@@ -8,7 +8,11 @@
 | 🪟 **Windows 10/11** | [התקנה](https://github.com/dor2500/israel-tv-plus/releases/latest/download/IsraelTVPlus-windows-setup.exe) · [נייד ZIP](https://github.com/dor2500/israel-tv-plus/releases/latest/download/IsraelTVPlus-windows-portable.zip) | WebView2 (מובנה ב-Windows 11). F11 = מסך מלא |
 | 🖥️ **LG webOS** | [com.israeltv.plus_all.ipk](https://github.com/dor2500/israel-tv-plus/releases/latest/download/com.israeltv.plus_all.ipk) | Developer Mode + webOS Dev Manager (ראו למטה) |
 | 🔷 **Samsung Tizen** | [פרויקט Tizen](https://github.com/dor2500/israel-tv-plus/releases/latest/download/IsraelTVPlus-tizen-project.zip) | סמסונג מתקינה רק חבילות חתומות: ייבוא ל-Tizen Studio, תעודת Samsung עם ה-DUID של הטלוויזיה, Run |
-| 🍎 **iPhone / iPad / Mac / Linux** | [האתר](https://dor2500.github.io/israel-tv-plus/) | Safari ← שיתוף ← "הוסף למסך הבית" (אפליקציית PWA) |
+| 🍏 **macOS** (Apple Silicon / Intel) | [M1–M4](https://github.com/dor2500/israel-tv-plus/releases/latest/download/IsraelTVPlus-macos-arm64.zip) · [Intel](https://github.com/dor2500/israel-tv-plus/releases/latest/download/IsraelTVPlus-macos-x64.zip) | גוררים ל-Applications. האפליקציה לא חתומה ב-Apple: פעם אחת `xattr -cr "/Applications/Israel TV Plus.app"` |
+| 🐧 **Linux** (x64) / 🍓 **Raspberry Pi 4/5** (ARM64) | [x64](https://github.com/dor2500/israel-tv-plus/releases/latest/download/IsraelTVPlus-linux-x64.zip) · [ARM64](https://github.com/dor2500/israel-tv-plus/releases/latest/download/IsraelTVPlus-linux-arm64.zip) | חולצים ומריצים `./israel-tv-plus` (לתפריט: `./install-menu.sh`) |
+| 📋 **כל נגן IPTV** – Kodi, VLC, TiviMate, IPTV Smarters, OTT Navigator, Perfect Player, Enigma2, iPlayTV/Channels (Apple TV), GSE (iPhone), Smart IPTV | [playlist.m3u](https://dor2500.github.io/israel-tv-plus/playlist.m3u) · [ישראל בלבד](https://dor2500.github.io/israel-tv-plus/playlist-israel.m3u) · [טלוויזיה](https://dor2500.github.io/israel-tv-plus/playlist-tv.m3u) · [רדיו](https://dor2500.github.io/israel-tv-plus/radio.m3u) | מדביקים את הקישור בנגן ("Add playlist / M3U URL"). ב-Kodi: תוסף PVR IPTV Simple Client ← M3U Play List URL |
+| 🍎 **iPhone / iPad** | [האתר](https://dor2500.github.io/israel-tv-plus/) | Safari ← שיתוף ← "הוסף למסך הבית" (PWA), או קישור ה-M3U בנגן IPTV |
+| 💻 **Chromebook / Xbox / כל דפדפן** | [האתר](https://dor2500.github.io/israel-tv-plus/) | אפשר גם להתקין כאפליקציה (PWA) מ-Chrome/Edge. ב-Chromebook עם אנדרואיד – גם ה-APK |
 
 > **למה אפליקציה ולא רק אתר?** חלק מהערוצים (למשל קשת 12, ערוץ 24, ערוצי הילדים והסרטים) משדרים ב-HTTP,
 > ודפדפנים חוסמים אותם בתוך אתר מאובטח. באפליקציות (אנדרואיד, Windows, LG, סמסונג) **כל הערוצים פועלים**.
@@ -209,6 +213,7 @@ israel-tv-plus/
 ├── platforms/
 │   ├── android/       # אפליקציית Android / Android TV (WebView, שלט רחוק, פתיחת אפליקציות השירותים)
 │   ├── windows/       # אפליקציית Windows (C# + WebView2) + מתקין Inno Setup
+│   ├── desktop/       # main.js של אפליקציית Linux / macOS (Electron)
 │   └── tizen/         # config.xml לטלוויזיות סמסונג
 ├── tools/
 │   ├── check_channels.py  # בדיקת כל הערוצים: פלייליסט, הפניות, CORS ותמונה אמיתית מכל ערוץ
@@ -217,6 +222,9 @@ israel-tv-plus/
 │   ├── build_apk.ps1      # APK בלי Gradle (aapt2 + d8 + apksigner)
 │   ├── build_windows.ps1  # exe + ZIP נייד + מתקין
 │   ├── build_tizen.ps1    # פרויקט Tizen
+│   ├── build_desktop.py   # Linux x64/ARM64 + macOS arm64/x64 מקבצי Electron הרשמיים
+│   ├── make_playlists.py  # playlist*.m3u לנגני IPTV + לוגואים ב-PNG
+│   ├── make_sources.py    # SOURCES.md – מקור כל ערוץ
 │   └── build_ipk.py       # חבילת LG webOS
 ├── manifest.webmanifest, sw.js  # התקנת האתר כאפליקציה (PWA)
 ├── appinfo.json       # הגדרות webOS (disableBackHistoryAPI)

@@ -215,7 +215,7 @@ def fit(text, room, biggest):
 
 def logo_svg(big, small, bg, accent, icon):
     """300x120 tile, brand text centred; radio stations get a small antenna badge on the right (RTL start)."""
-    font = "Heebo, Rubik, Arial, sans-serif"
+    font = "Segoe UI, Heebo, Arial, sans-serif"  # weight 900 makes Windows fall back to a serif Hebrew font
     if icon == "radio":
         cx, room = 128, 196
         badge = (f'<circle cx="256" cy="60" r="26" fill="{accent}" fill-opacity="0.2" stroke="{accent}" stroke-width="2"/>'
@@ -228,7 +228,7 @@ def logo_svg(big, small, bg, accent, icon):
   <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="{bg}"/><stop offset="1" stop-color="#05070d"/></linearGradient></defs>
   <rect x="1" y="1" width="298" height="118" rx="22" fill="url(#g)" stroke="{accent}" stroke-opacity="0.7" stroke-width="2"/>
   {badge}
-  <text x="{cx}" y="64" font-family="{font}" font-size="{fit(big, room, 46)}" font-weight="900" fill="#ffffff" text-anchor="middle">{esc(big)}</text>
+  <text x="{cx}" y="64" font-family="{font}" font-size="{fit(big, room, 46)}" font-weight="700" fill="#ffffff" text-anchor="middle">{esc(big)}</text>
   <text x="{cx}" y="93" font-family="{font}" font-size="{fit(small, room, 19)}" font-weight="700" fill="{accent}" text-anchor="middle">{esc(small)}</text>
 </svg>
 """

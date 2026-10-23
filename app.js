@@ -59,6 +59,7 @@
     : (window.chrome && window.chrome.webview) ? 'windows'
     : (window.webOS || window.PalmSystem || /Web0S|webOS/i.test(UA)) ? 'webos'
     : (window.tizen || /Tizen/i.test(UA)) ? 'tizen'
+    : /IsraelTVPlus\/\d+ Desktop/.test(UA) ? 'desktop' // Linux / macOS app (Electron)
     : location.protocol === 'https:' ? 'web' : 'local'); // ?platform=web previews the web site's view locally
   const IS_WEB = PLATFORM === 'web';
   // Android TV boxes report a ~960px wide screen (density 2): lay the guide out at 1600px like on LG TVs.
