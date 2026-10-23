@@ -1318,5 +1318,41 @@ window.CHANNELS_DATA = [
     "badge": "FHD",
     "desc": "ערוץ הרפתקאות, אנימציה וסרטים מצוירים צבעוניים לילדים ולכל המשפחה",
     "number": 110
+  },
+  {
+    "id": "cineman_comedy_hd",
+    "name": "קולנוע קומדיה CineMan Comedy HD",
+    "title": "CineMan Comedy HD",
+    "category": "סרטים וסדרות (Movies & Series)",
+    "categoryEn": "movies",
+    "url": "http://stream.mcquack.net/356/index.m3u8",
+    "logo": "assets/logos/cineman_comedy.png",
+    "badge": "FHD",
+    "desc": "ערוץ סרטי הקומדיה, בידור משפחתי וקומדיות רומנטיות ברצף",
+    "number": 111
+  },
+  {
+    "id": "jimjam_kids_hd",
+    "name": "ג'ים ג'אם JimJam לילדים HD",
+    "title": "JimJam Kids TV HD",
+    "category": "ילדים ונוער (בעברית)",
+    "categoryEn": "kids",
+    "url": "http://stream.mcquack.net/150/index.m3u8",
+    "logo": "assets/logos/jimjam.png",
+    "badge": "HD",
+    "desc": "ערוץ הילדים והפעוטות האהוב - סדרות חינוכיות, דמיון ומשחק",
+    "number": 112
+  },
+  {
+    "id": "gulli_kids_hd",
+    "name": "ערוץ הילדים גולי Gulli Kids HD",
+    "title": "Gulli Kids Animation HD",
+    "category": "ילדים ונוער (בעברית)",
+    "categoryEn": "kids",
+    "url": "http://stream.mcquack.net/305/index.m3u8",
+    "logo": "assets/logos/gulli.png",
+    "badge": "FHD",
+    "desc": "ערוץ הרפתקאות, אנימציה וסדרות נוער מהנות לכל המשפחה",
+    "number": 113
   }
 ];
