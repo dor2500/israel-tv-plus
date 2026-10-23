@@ -1,0 +1,19 @@
+{
+  "id": "com.israeltv.plus",
+  "version": "1.0.0",
+  "vendor": "Dorp",
+  "type": "web",
+  "main": "index.html",
+  "title": "ישראל TV פלוס",
+  "icon": "icon.png",
+  "largeIcon": "largeIcon.png",
+  "resolution": "1920x1080",
+  "supportTouchMode": true,
+  "enableDirectRendering": true,
+  "supportHighResolution": true,
+  "disableBackHistoryAPI": true,
+  "handlesRelaunch": true,
+  "requiredPermissions": [
+    "media"
+  ]
+}

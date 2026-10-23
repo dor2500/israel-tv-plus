@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ישראל TV פלוס | Israel TV Plus</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="assets/hls.min.js"></script>
+  <script src="channels.js"></script>
+</head>
+<body class="oled-theme">
+
+  <!-- SVG FILTERS FOR HARDWARE RETRO SHARPEN -->
+  <svg style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1">
+    <defs>
+      <filter id="retro-sharpen-filter" x="0%" y="0%" width="100%" height="100%">
+        <feConvolveMatrix order="3" preserveAlpha="true" kernelMatrix="0 -0.8 0 -0.8 4.2 -0.8 0 -0.8 0"/>
+      </filter>
+    </defs>
+  </svg>
+
+  <!-- MAIN APP CONTAINER -->
+  <div id="app" class="app-container">
+    
+    <!-- TOP NAVBAR -->
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo-icon">
+          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="7" width="20" height="15" rx="3" fill="url(#brandGrad)"/>
+            <polyline points="17 2 12 7 7 2" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round"/>
+            <defs>
+              <linearGradient id="brandGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#0284c7"/>
+                <stop offset="100%" stop-color="#4f46e5"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <h1>ישראל <span class="highlight">TV+</span></h1>
+          <span class="live-tag"><span class="pulse-dot"></span>שידור חי</span>
+        </div>
+      </div>
+
+      <!-- SEARCH / FILTER INPUT -->
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="channel-search" placeholder="חיפוש ערוץ לפי שם או מספר..." tabindex="0">
+      </div>
+
+      <!-- OLED & RETRO ENHANCER BADGES -->
+      <div class="header-right">
+        <button id="btn-retro-mode" class="tool-badge-btn retro-badge" title="לחץ או לחץ ירוק בשלט לשיפור סדרות ישנות">
+          <span class="btn-icon">🎞️</span>
+          <span id="retro-mode-label">חידוד רטרו: כבוי</span>
+        </button>
+        <button id="btn-oled-mode" class="tool-badge-btn oled-badge" title="לחץ או לחץ צהוב בשלט למשפר תמונה OLED">
+          <span class="btn-icon">✨</span>
+          <span id="oled-mode-label">OLED: צבעים עשירים</span>
+        </button>
+        <div class="channels-count" id="channels-count-badge">88 ערוצים</div>
+        <div class="clock" id="live-clock">12:00:00</div>
+      </div>
+    </header>
+
+    <!-- CONTENT WRAPPER -->
+    <div class="main-layout">
+      
+      <!-- CATEGORIES SIDEBAR -->
+      <aside class="sidebar" id="categories-sidebar">
+        <div class="sidebar-title">קטגוריות ראשיות</div>
+        <div class="category-list" id="category-list">
+          <!-- Dynamically inserted categories -->
+        </div>
+      </aside>
+
+      <!-- CHANNELS VIEW & HERO SPOTLIGHT -->
+      <main class="channels-section">
+        
+        <!-- HERO CHANNEL SPOTLIGHT -->
+        <div class="hero-spotlight" id="hero-spotlight">
+          <div class="hero-left">
+            <div class="hero-meta">
+              <span class="hero-badge" id="hero-number">#1</span>
+              <span class="hero-cat" id="hero-category">ערוצי ישראל - שידור חי</span>
+              <span class="hero-res-badge" id="hero-badge-tag">FHD 1080p</span>
+            </div>
+            <h2 class="hero-title" id="hero-title">קשת 12 HD</h2>
+            <p class="hero-desc" id="hero-desc">ערוץ הטלוויזיה המוביל בישראל - חדשות 12, ריאליטי, תוכניות בידור וסדרות מקור</p>
+            <div class="hero-action-hint">לחץ <span class="key-pill ok-pill">OK</span> לצפייה מיידית במסך מלא</div>
+          </div>
+          <div class="hero-right">
+            <div class="hero-logo-box">
+              <img id="hero-logo" class="hero-logo-img" src="" alt="logo">
+            </div>
+          </div>
+        </div>
+
+        <div class="section-header">
+          <div class="section-header-left">
+            <h3 id="current-category-title">כל הערוצים</h3>
+            <span class="category-meta" id="category-meta-text">מציג 88 ערוצים</span>
+          </div>
+        </div>
+
+        <div class="channels-grid" id="channels-grid" tabindex="0">
+          <!-- Dynamically inserted channel cards -->
+        </div>
+      </main>
+    </div>
+
+    <!-- BOTTOM REMOTE HELP FOOTER -->
+    <footer class="remote-hints">
+      <div class="hint-item"><span class="key-pill">◄ ▲ ▼ ►</span> ניווט</div>
+      <div class="hint-item"><span class="key-pill ok-pill">OK</span> מסך מלא</div>
+      <div class="hint-item"><span class="key-pill back-pill">BACK</span> חזרה אחורה</div>
+      <div class="hint-item"><span class="key-pill">CH ▲ / ▼</span> החלפת ערוץ מהירה</div>
+      <div class="hint-item"><span class="key-pill yellow-pill">צהוב</span> משפר OLED</div>
+      <div class="hint-item"><span class="key-pill green-pill">ירוק</span> חידוד רטרו / יחס תמונה</div>
+      <div class="hint-item"><span class="key-pill red-pill">אדום</span> כל הערוצים</div>
+      <div class="hint-item"><span class="key-pill blue-pill">כחול</span> חיפוש</div>
+    </footer>
+
+    <!-- FULLSCREEN VIDEO PLAYER OVERLAY -->
+    <div id="player-container" class="player-container hidden">
+      <div class="video-wrapper" id="video-wrapper">
+        <video id="tv-video" class="oled-filter-vivid aspect-fit" playsinline webkit-playsinline preload="auto"></video>
+      </div>
+
+      <!-- SPINNER / BUFFERING INDICATOR -->
+      <div id="player-spinner" class="player-spinner hidden">
+        <div class="spinner-ring"></div>
+        <div class="spinner-text" id="spinner-text">מתחבר לשידור...</div>
+      </div>
+
+      <!-- OSD (ON SCREEN DISPLAY) -->
+      <div id="player-osd" class="player-osd">
+        <div class="osd-top">
+          <div class="osd-channel-meta">
+            <span class="osd-badge" id="osd-number">#1</span>
+            <div class="osd-logo-wrap">
+              <img id="osd-logo" class="osd-logo" src="" alt="logo">
+            </div>
+            <div class="osd-titles">
+              <h2 id="osd-name">קשת 12 HD</h2>
+              <div class="osd-tags">
+                <span id="osd-category" class="osd-category">ערוצי ישראל</span>
+                <span id="osd-retro-status" class="osd-retro-tag hidden">🎞️ חידוד רטרו פעיל</span>
+                <span id="osd-aspect-tag" class="osd-aspect-tag">16:9</span>
+              </div>
+            </div>
+          </div>
+          <div class="osd-right">
+            <div class="osd-live-indicator"><span class="pulse-dot"></span>שידור חי</div>
+            <div class="osd-clock" id="osd-clock">12:00</div>
+          </div>
+        </div>
+
+        <!-- CONTROLS & HINTS -->
+        <div class="osd-bottom">
+          <div class="osd-controls-hint">
+            <span>[▲/▼ / CH+/-] החלף ערוץ</span>
+            <span>[צהוב] OLED: <strong id="osd-oled-status">צבעים עשירים</strong></span>
+            <span>[ירוק] חידוד ויחס תמונה: <strong id="osd-aspect-status">מילוי מסך</strong></span>
+            <span>[OK] הפעל / השהה</span>
+            <span>[חזור / BACK] חזרה לרשימת הערוצים</span>
+            <span>[◄ שמאלה] מגירת ערוצים</span>
+          </div>
+          <div class="osd-status" id="osd-quality">HLS Live 1080p</div>
+        </div>
+      </div>
+
+      <!-- QUICK CHANNEL SWITCHER SIDE-DRAWER IN PLAYER -->
+      <div id="quick-drawer" class="quick-drawer hidden">
+        <div class="drawer-header">
+          <h3>רשימת ערוצים</h3>
+          <span class="drawer-close-hint">[◄ / BACK] סגור</span>
+        </div>
+        <div id="drawer-channel-list" class="drawer-channel-list">
+          <!-- Dynamically inserted in player -->
+        </div>
+      </div>
+
+      <!-- TOAST NOTIFICATION -->
+      <div id="player-toast" class="player-toast hidden">
+        <span id="toast-message">עובר ערוץ...</span>
+      </div>
+    </div>
+
+    <!-- OLED SCREENSAVER / BURN-IN PROTECTION OVERLAY -->
+    <div id="oled-screensaver" class="oled-screensaver hidden">
+      <div class="screensaver-content" id="screensaver-content">
+        <div class="screensaver-clock" id="screensaver-clock">12:00</div>
+        <div class="screensaver-text">LG OLED - הגנת פיקסלים פעילה (לחץ בכל מקש להמשך)</div>
+      </div>
+    </div>
+
+    <!-- EXIT CONFIRMATION MODAL -->
+    <div id="exit-modal" class="exit-modal hidden">
+      <div class="exit-dialog">
+        <div class="exit-icon">📺</div>
+        <h3>יציאה מ-ישראל TV פלוס</h3>
+        <p>האם ברצונך לחזור לטלוויזיה או להמשיך לצפות?</p>
+        <div class="exit-actions">
+          <button id="btn-cancel-exit" class="exit-btn cancel-btn focused">המשך צפייה (חזור)</button>
+          <button id="btn-confirm-exit" class="exit-btn confirm-btn">יציאה מהאפליקציה</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
