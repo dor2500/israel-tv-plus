@@ -646,19 +646,23 @@
     loadVideoStream(channel.url);
   }
 
-  // HLS LOADER WITH DYNAMIC CORS / HTTPS PROXY FOR WEB BROWSERS
+  // HLS LOADER WITH NATIVE HTTPS UPGRADE FOR WEB BROWSERS
   function createHlsLoader() {
     if (!window.Hls || !Hls.DefaultConfig || !Hls.DefaultConfig.loader) {
       return null;
     }
     const BaseLoader = Hls.DefaultConfig.loader;
-    return class WebCorsLoader extends BaseLoader {
+    return class WebHttpsLoader extends BaseLoader {
       constructor(config) {
         super(config);
         const originalLoad = this.load.bind(this);
         this.load = function (context, config, callbacks) {
-          if (window.location.protocol === 'https:' && context.url && context.url.startsWith('http://')) {
-            context.url = 'https://corsproxy.io/?url=' + encodeURIComponent(context.url);
+          if (window.location.protocol === 'https:' && context.url) {
+            if (context.url.startsWith('http://stream.mcquack.net/')) {
+              context.url = context.url.replace('http://stream.mcquack.net/', 'https://stream.mcquack.net/');
+            } else if (context.url.startsWith('http://glzwizzlv.bynetcdn.com/')) {
+              context.url = context.url.replace('http://glzwizzlv.bynetcdn.com/', 'https://glzwizzlv.bynetcdn.com/');
+            }
           }
           originalLoad(context, config, callbacks);
         };
@@ -666,12 +670,21 @@
     };
   }
 
-  const WebCorsLoaderClass = createHlsLoader();
+  const WebHttpsLoaderClass = createHlsLoader();
 
   function loadVideoStream(url) {
     if (state.hlsInstance) {
       state.hlsInstance.destroy();
       state.hlsInstance = null;
+    }
+
+    let finalUrl = url;
+    if (window.location.protocol === 'https:' && url) {
+      if (url.startsWith('http://stream.mcquack.net/')) {
+        finalUrl = url.replace('http://stream.mcquack.net/', 'https://stream.mcquack.net/');
+      } else if (url.startsWith('http://glzwizzlv.bynetcdn.com/')) {
+        finalUrl = url.replace('http://glzwizzlv.bynetcdn.com/', 'https://glzwizzlv.bynetcdn.com/');
+      }
     }
 
     if (window.Hls && Hls.isSupported()) {
@@ -681,15 +694,15 @@
         backBufferLength: 60
       };
 
-      if (window.location.protocol === 'https:' && WebCorsLoaderClass) {
-        hlsConfig.pLoader = WebCorsLoaderClass;
-        hlsConfig.fLoader = WebCorsLoaderClass;
-        hlsConfig.loader = WebCorsLoaderClass;
+      if (window.location.protocol === 'https:' && WebHttpsLoaderClass) {
+        hlsConfig.pLoader = WebHttpsLoaderClass;
+        hlsConfig.fLoader = WebHttpsLoaderClass;
+        hlsConfig.loader = WebHttpsLoaderClass;
       }
 
       const hls = new Hls(hlsConfig);
 
-      hls.loadSource(url);
+      hls.loadSource(finalUrl);
       hls.attachMedia(el.video);
 
       hls.on(Hls.Events.MANIFEST_PARSED, () => {
@@ -719,10 +732,6 @@
 
       state.hlsInstance = hls;
     } else if (el.video.canPlayType('application/vnd.apple.mpegurl')) {
-      let finalUrl = url;
-      if (window.location.protocol === 'https:' && url.startsWith('http://')) {
-        finalUrl = 'https://corsproxy.io/?url=' + encodeURIComponent(url);
-      }
       el.video.src = finalUrl;
       el.video.addEventListener('loadedmetadata', () => {
         hideSpinner();
@@ -730,7 +739,7 @@
         updatePlayPauseButton(false);
       }, { once: true });
     } else {
-      el.video.src = url;
+      el.video.src = finalUrl;
       el.video.play().catch(() => {});
       updatePlayPauseButton(false);
     }
