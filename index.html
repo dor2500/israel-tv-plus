@@ -2,132 +2,132 @@
 <html lang="he" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>ישראל TV פלוס | Israel TV Plus (Web & TV)</title>
-  <meta name="theme-color" content="#000000">
+  <meta name="theme-color" content="#05070d">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <link rel="icon" type="image/png" href="icon.png">
+  <link rel="apple-touch-icon" href="assets/app/icon-512.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800;900&display=swap">
   <link rel="stylesheet" href="style.css">
   <script src="assets/hls.min.js"></script>
   <script src="channels.js"></script>
+  <script src="dub.js"></script>
 </head>
 <body class="oled-theme">
 
   <!-- SVG FILTERS FOR HARDWARE RETRO SHARPEN -->
-  <svg style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1">
+  <svg style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" aria-hidden="true">
     <defs>
       <filter id="retro-sharpen-filter" x="0%" y="0%" width="100%" height="100%">
         <feConvolveMatrix order="3" preserveAlpha="true" kernelMatrix="0 -0.8 0 -0.8 4.2 -0.8 0 -0.8 0"/>
       </filter>
+      <linearGradient id="brandGrad" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#38bdf8"/>
+        <stop offset="100%" stop-color="#6366f1"/>
+      </linearGradient>
     </defs>
   </svg>
 
   <!-- MAIN APP CONTAINER -->
   <div id="app" class="app-container">
-    
+
     <!-- TOP NAVBAR -->
     <header class="topbar">
       <div class="brand">
         <div class="logo-icon">
-          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
-            <rect x="2" y="7" width="20" height="15" rx="3" fill="url(#brandGrad)"/>
-            <polyline points="17 2 12 7 7 2" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round"/>
-            <defs>
-              <linearGradient id="brandGrad" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#0284c7"/>
-                <stop offset="100%" stop-color="#4f46e5"/>
-              </linearGradient>
-            </defs>
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="7" width="20" height="15" rx="3" fill="url(#brandGrad)" stroke="none"/>
+            <polyline points="17 2 12 7 7 2" stroke="#7dd3fc" stroke-width="2.5" stroke-linecap="round"/>
           </svg>
         </div>
         <div class="brand-text">
           <h1>ישראל <span class="highlight">TV+</span></h1>
-          <span class="live-tag"><span class="pulse-dot"></span>שידור חי</span>
+          <span class="live-tag"><span class="pulse-dot"></span>שידור חי • <span id="channels-count-badge" class="channels-count">116 ערוצים</span></span>
         </div>
       </div>
 
       <!-- SEARCH / FILTER INPUT -->
       <div class="search-box">
-        <span class="search-icon">🔍</span>
-        <input type="text" id="channel-search" placeholder="חיפוש ערוץ לפי שם או מספר..." tabindex="0">
+        <span class="search-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </span>
+        <input type="text" id="channel-search" placeholder="חיפוש ערוץ לפי שם או מספר..." tabindex="0" autocomplete="off">
       </div>
 
       <!-- HEADER ACTIONS -->
       <div class="header-right">
-        <!-- LIGHT / DARK THEME TOGGLE -->
-        <button id="btn-theme-toggle" class="tool-badge-btn theme-badge" title="החלף בין מצב לילה (OLED) למצב יום (Light)">
+        <button id="btn-get-app" class="pill-btn getapp-pill hidden" title="הורדת האפליקציה לאנדרואיד, Android TV, Windows וטלוויזיות">
+          <span class="pill-icon">📲</span>
+          <span class="badge-text">הורדת האפליקציה</span>
+        </button>
+        <button id="btn-dub-toggle" class="pill-btn dub-pill" title="דיבוב לעברית לערוצים זרים (D)">
+          <span class="pill-icon">🎙️</span>
+          <span id="dub-toggle-label" class="badge-text">דיבוב: כבוי</span>
+        </button>
+        <button id="btn-theme-toggle" class="icon-btn" title="החלף בין מצב לילה (OLED) למצב יום">
           <span id="theme-btn-icon">☀️</span>
-          <span id="theme-btn-label" class="badge-text">מצב יום</span>
+          <span id="theme-btn-label" class="sr-only">מצב יום</span>
         </button>
-
-        <button id="btn-retro-mode" class="tool-badge-btn retro-badge" title="חידוד רטרו לסדרות ישנות">
-          <span class="btn-icon">🎞️</span>
-          <span id="retro-mode-label" class="badge-text">חידוד: כבוי</span>
-        </button>
-
-        <button id="btn-oled-mode" class="tool-badge-btn oled-badge" title="משפר תמונה OLED">
-          <span class="btn-icon">✨</span>
-          <span id="oled-mode-label" class="badge-text">OLED: שחור מושלם</span>
-        </button>
-
-        <div class="channels-count" id="channels-count-badge">106 ערוצים</div>
-        <div class="clock" id="live-clock">12:00:00</div>
+        <button id="btn-open-settings" class="icon-btn" title="הגדרות (S)">⚙️</button>
+        <div class="clock" id="live-clock">12:00</div>
       </div>
     </header>
 
     <!-- CONTENT WRAPPER -->
     <div class="main-layout">
-      
+
       <!-- CATEGORIES SIDEBAR -->
       <aside class="sidebar" id="categories-sidebar">
-        <div class="sidebar-title">קטגוריות ראשיות</div>
+        <div class="sidebar-title">קטגוריות</div>
         <div class="category-list" id="category-list">
           <!-- Dynamically inserted categories -->
         </div>
       </aside>
 
       <!-- CHANNELS VIEW & HERO SPOTLIGHT -->
-      <main class="channels-section">
-        
+      <main class="channels-section" id="channels-section">
+
         <!-- HERO CHANNEL SPOTLIGHT -->
         <div class="hero-spotlight" id="hero-spotlight">
+          <div class="hero-backdrop" aria-hidden="true"></div>
+          <div class="hero-glow" id="hero-glow"></div>
           <div class="hero-left">
             <div class="hero-meta">
               <span class="hero-badge" id="hero-number">#1</span>
               <span class="hero-cat" id="hero-category">ערוצי ישראל - שידור חי</span>
-              <span class="hero-res-badge" id="hero-badge-tag">FHD 1080p</span>
+              <span class="hero-res-badge" id="hero-badge-tag">FHD</span>
+              <span class="hero-lang-tag hidden" id="hero-lang-tag">🎙️ אנגלית ← עברית</span>
               <span class="hero-fav-tag hidden" id="hero-fav-tag">⭐ מועדף</span>
             </div>
             <h2 class="hero-title" id="hero-title">קשת 12 HD</h2>
-            <p class="hero-desc" id="hero-desc">ערוץ הטלוויזיה המוביל בישראל - חדשות 12, ריאליטי, תוכניות בידור וסדרות מקור</p>
-            <div class="hero-action-hint">
-              <span class="key-pill ok-pill">OK / לחיצה</span> צפייה במסך מלא
-              <span class="sep">•</span>
-              <span class="key-pill yellow-pill">צהוב</span> הוסף למועדפים ⭐
-              <span class="sep">•</span>
-              <span class="key-pill green-pill">ירוק</span> מצב רטרו 4:3
-              <span class="sep">•</span>
-              <span class="key-pill blue-pill">כחול</span> חיפוש
+            <p class="hero-desc" id="hero-desc">ערוץ הטלוויזיה המוביל בישראל</p>
+            <div class="hero-actions">
+              <button class="hero-btn primary" id="hero-btn-play"><span>▶</span> צפייה</button>
+              <button class="hero-btn dub hidden" id="hero-btn-dub"><span>🎙️</span> צפייה עם דיבוב לעברית</button>
+              <button class="hero-btn" id="hero-btn-fav"><span>☆</span> מועדפים</button>
             </div>
+            <p class="hero-note hidden" id="hero-note"></p>
           </div>
           <div class="hero-right">
-            <!-- Active Preview / Logo -->
             <div class="hero-logo-box" id="hero-logo-box">
-              <img id="hero-logo" class="hero-logo-img" src="assets/logos/keshet12.svg" alt="logo" onerror="this.style.display='none';">
+              <img id="hero-logo" class="hero-logo-img" src="assets/logos/keshet12.png" alt="">
+              <div class="monogram hidden" id="hero-monogram"></div>
             </div>
           </div>
         </div>
 
         <div class="section-header">
-          <div class="section-header-left">
-            <h3 id="current-category-title">כל הערוצים</h3>
-            <span class="category-meta" id="category-meta-text">מציג 106 ערוצים</span>
-          </div>
+          <h3 id="current-category-title">כל הערוצים</h3>
+          <span class="category-meta" id="category-meta-text">116 ערוצים</span>
         </div>
 
         <div class="channels-grid" id="channels-grid" tabindex="0">
-          <!-- Dynamically inserted channel cards with 100% reliable logos/fallbacks -->
+          <!-- Dynamically inserted channel cards -->
         </div>
       </main>
     </div>
@@ -136,26 +136,27 @@
     <div id="channel-number-hud" class="channel-number-hud hidden">
       <div class="hud-box">
         <div class="hud-digits" id="hud-digits">13</div>
-        <div class="hud-channel-name" id="hud-channel-name">ניקלודיאון ישראל בעברית HD</div>
+        <div class="hud-channel-name" id="hud-channel-name"></div>
         <div class="hud-hint">עובר ערוץ...</div>
       </div>
     </div>
 
     <!-- BOTTOM REMOTE HELP FOOTER -->
     <footer class="remote-hints">
-      <div class="hint-item"><span class="key-pill">◄ ▲ ▼ ►</span> ניווט בין ערוצים וקטגוריות</div>
-      <div class="hint-item"><span class="key-pill ok-pill">OK / קליק</span> מסך מלא</div>
-      <div class="hint-item"><span class="key-pill back-pill">BACK / Esc</span> חזרה למדריך (השידור ממשיך)</div>
-      <div class="hint-item"><span class="key-pill">CH ▲ / ▼</span> החלפת ערוץ</div>
-      <div class="hint-item"><span class="key-pill yellow-pill">צהוב</span> מועדפים ⭐</div>
-      <div class="hint-item"><span class="key-pill green-pill">ירוק</span> חידוד רטרו / 4:3</div>
-      <div class="hint-item"><span class="key-pill">F</span> מסך מלא דפדפן</div>
-      <div class="hint-item"><span class="key-pill">M</span> השתק/בטל השתקה</div>
+      <div class="hint-item"><span class="key-pill">◄ ▲ ▼ ►</span> ניווט</div>
+      <div class="hint-item"><span class="key-pill ok-pill">OK</span> צפייה</div>
+      <div class="hint-item"><span class="key-pill back-pill">BACK</span> חזרה (השידור ממשיך)</div>
+      <div class="hint-item"><span class="key-pill">CH ▲▼</span> החלפת ערוץ</div>
+      <div class="hint-item"><span class="key-pill yellow-pill">צהוב</span> מועדפים</div>
+      <div class="hint-item"><span class="key-pill blue-pill">כחול</span> דיבוב לעברית</div>
+      <div class="hint-item"><span class="key-pill">0-9</span> מספר ערוץ</div>
     </footer>
+
+    <!-- RADIO PLAYER (kept apart from the video element) -->
+    <audio id="radio-audio" preload="none"></audio>
 
     <!-- FULLSCREEN VIDEO PLAYER OVERLAY -->
     <div id="player-container" class="player-container hidden">
-      <!-- ALWAYS VISIBLE FLOATING CLOSE BUTTON FOR WEB & MOBILE -->
       <button id="btn-floating-close-player" class="player-floating-close" title="חזרה למדריך (Esc)">✕</button>
 
       <div class="video-wrapper" id="video-wrapper">
@@ -166,11 +167,11 @@
       <div id="player-radio-backdrop" class="player-radio-backdrop hidden">
         <div class="radio-backdrop-card">
           <div class="radio-logo-wrap">
-            <img id="radio-backdrop-logo" src="" alt="radio-logo" onerror="this.style.display='none';">
+            <img id="radio-backdrop-logo" src="" alt="" onerror="this.style.display='none';">
           </div>
           <h2 id="radio-backdrop-name">שם התחנה</h2>
           <div class="radio-live-status">
-            <span class="pulse-dot"></span> תחנת רדיו פעילה • שידור שמע חי
+            <span class="pulse-dot"></span> שידור רדיו חי
           </div>
           <div class="equalizer-bars">
             <span class="bar bar-1"></span>
@@ -188,15 +189,15 @@
         <div class="spinner-text" id="spinner-text">מתחבר לשידור חי...</div>
       </div>
 
-      <!-- STREAM ERROR / WEB NOTICE OVERLAY -->
+      <!-- STREAM ERROR OVERLAY -->
       <div id="player-error-overlay" class="player-error-overlay hidden">
         <div class="player-error-box">
           <div class="player-error-icon">⚠️</div>
           <h3 id="player-error-title">שידור אינו זמין כעת בדפדפן</h3>
-          <p id="player-error-desc">ערוץ זה מותאם לטלוויזיה (LG webOS). דפדפנים מאובטחים חוסמים שידורי וידאו ב-HTTP מתוך אתר HTTPS מאובטח.</p>
+          <p id="player-error-desc"></p>
           <div class="player-error-actions">
-            <button id="btn-error-back" class="error-action-btn primary">↩️ חזרה למדריך הערוצים</button>
-            <a id="btn-error-direct-link" href="#" target="_blank" rel="noopener noreferrer" class="error-action-btn secondary">🔗 פתח קישור ישיר בנגן</a>
+            <button id="btn-error-back" class="error-action-btn primary">↩ חזרה למדריך</button>
+            <a id="btn-error-direct-link" href="#" target="_blank" rel="noopener noreferrer" class="error-action-btn secondary">🔗 קישור ישיר לנגן</a>
           </div>
         </div>
       </div>
@@ -205,55 +206,51 @@
       <div id="player-osd" class="player-osd">
         <div class="osd-top">
           <div class="osd-channel-meta">
-            <span class="osd-badge" id="osd-number">#1</span>
             <div class="osd-logo-wrap">
-              <img id="osd-logo" class="osd-logo" src="" alt="logo" onerror="this.style.display='none';">
+              <img id="osd-logo" class="osd-logo" src="" alt="">
+              <div class="monogram small hidden" id="osd-monogram"></div>
             </div>
             <div class="osd-titles">
-              <h2 id="osd-name">קשת 12 HD</h2>
+              <div class="osd-name-row">
+                <span class="osd-badge" id="osd-number">#1</span>
+                <h2 id="osd-name">קשת 12 HD</h2>
+              </div>
               <div class="osd-tags">
+                <span class="osd-live-indicator"><span class="pulse-dot"></span>LIVE</span>
                 <span id="osd-category" class="osd-category">ערוצי ישראל</span>
-                <span id="osd-retro-status" class="osd-retro-tag hidden">🎞️ חידוד רטרו פעיל</span>
+                <span id="osd-retro-status" class="osd-retro-tag hidden">🎞️ חידוד רטרו</span>
                 <span id="osd-aspect-tag" class="osd-aspect-tag">16:9</span>
               </div>
             </div>
           </div>
           <div class="osd-right">
-            <!-- INTERACTIVE WEB PLAYER BUTTONS -->
-            <div class="osd-web-actions">
-              <button id="web-btn-back" class="web-action-btn" title="חזרה למדריך (Esc)">
-                <span>↩️</span> חזרה לרשימה
-              </button>
-              <button id="web-btn-playpause" class="web-action-btn" title="השהה / נגן (Space)">
-                <span id="web-play-icon">⏸️</span>
-              </button>
-              <button id="web-btn-mute" class="web-action-btn" title="השתק / הפעל שמע (M)">
-                <span id="web-mute-icon">🔊</span>
-              </button>
-              <button id="web-btn-aspect" class="web-action-btn" title="שנה יחס תמונה / חידוד (ירוק)">
-                <span>🎞️</span>
-              </button>
-              <button id="web-btn-fullscreen" class="web-action-btn" title="מסך מלא (F)">
-                <span>⛶</span>
-              </button>
-            </div>
-            <div class="osd-live-indicator"><span class="pulse-dot"></span>שידור חי</div>
             <div class="osd-clock" id="osd-clock">12:00</div>
           </div>
         </div>
 
-        <!-- CONTROLS & HINTS -->
         <div class="osd-bottom">
-          <div class="osd-controls-hint">
-            <span>[▲/▼ / CH+/-] החלף ערוץ</span>
-            <span>[צהוב] OLED: <strong id="osd-oled-status">שחור מושלם</strong></span>
-            <span>[ירוק] חידוד רטרו: <strong id="osd-aspect-status">מילוי מסך</strong></span>
-            <span>[Space/OK] השהה / הפעל</span>
-            <span>[Esc/BACK] חזרה למדריך (השידור ממשיך)</span>
-            <span>[M] השתק</span>
-            <span>[F] מסך מלא</span>
+          <div id="osd-dub-status" class="osd-dub-status hidden">
+            <span class="dub-dot"></span><span id="osd-dub-text">מאזין לשידור…</span>
           </div>
-          <div class="osd-status" id="osd-quality">HLS Live 1080p</div>
+          <div class="osd-web-actions">
+            <button id="web-btn-back" class="web-action-btn" title="חזרה למדריך (Esc)">↩<span class="btn-label">מדריך</span></button>
+            <button id="web-btn-prev" class="web-action-btn" title="ערוץ קודם (▲)">▲</button>
+            <button id="web-btn-playpause" class="web-action-btn" title="השהה / נגן (Space)"><span id="web-play-icon">⏸</span></button>
+            <button id="web-btn-next" class="web-action-btn" title="ערוץ הבא (▼)">▼</button>
+            <button id="web-btn-mute" class="web-action-btn" title="השתק (M)"><span id="web-mute-icon">🔊</span></button>
+            <button id="web-btn-dub" class="web-action-btn dub-action hidden" title="דיבוב לעברית (כחול / D)">🎙️<span class="btn-label" id="web-dub-label">דיבוב לעברית</span></button>
+            <button id="web-btn-aspect" class="web-action-btn" title="יחס תמונה / חידוד (ירוק)">🎞️</button>
+            <button id="web-btn-settings" class="web-action-btn" title="הגדרות (S)">⚙️</button>
+            <button id="web-btn-fullscreen" class="web-action-btn" title="מסך מלא (F)">⛶</button>
+          </div>
+          <div class="osd-controls-hint">
+            <span>▲▼ ערוץ</span>
+            <span>◄ רשימת ערוצים</span>
+            <span><b class="dot-blue"></b> דיבוב</span>
+            <span><b class="dot-yellow"></b> תמונה: <strong id="osd-oled-status">שחור מושלם</strong></span>
+            <span><b class="dot-green"></b> <strong id="osd-aspect-status">רגיל</strong></span>
+            <span class="osd-status" id="osd-quality">HLS Live</span>
+          </div>
         </div>
       </div>
 
@@ -261,16 +258,183 @@
       <div id="quick-drawer" class="quick-drawer hidden">
         <div class="drawer-header">
           <h3>רשימת ערוצים</h3>
-          <span class="drawer-close-hint">[◄ / BACK / Esc] סגור</span>
+          <span class="drawer-close-hint">► / BACK סגירה</span>
         </div>
-        <div id="drawer-channel-list" class="drawer-channel-list">
-          <!-- Dynamically inserted in player -->
-        </div>
+        <div id="drawer-channel-list" class="drawer-channel-list"></div>
       </div>
 
       <!-- TOAST NOTIFICATION -->
       <div id="player-toast" class="player-toast hidden">
-        <span id="toast-message">עובר ערוץ...</span>
+        <span id="toast-message"></span>
+      </div>
+    </div>
+
+    <!-- SETTINGS MODAL -->
+    <div id="settings-modal" class="settings-modal hidden" role="dialog" aria-modal="true" aria-labelledby="settings-title">
+      <div class="settings-panel">
+        <div class="settings-head">
+          <h3 id="settings-title">⚙️ הגדרות</h3>
+          <button id="btn-close-settings" class="icon-btn set-focus" title="סגירה (Back)">✕</button>
+        </div>
+
+        <div class="settings-body">
+          <section class="set-section">
+            <h4>🎙️ דיבוב לעברית <small>לערוצים שאינם בעברית</small></h4>
+            <p class="set-note">המנוע מאזין לשידור, מתמלל, מתרגם לעברית ומקריא בקול עברי תוך הנמכת הסאונד המקורי – עם כתוביות.</p>
+
+            <label class="set-row">
+              <span>דיבוב פעיל</span>
+              <input type="checkbox" id="set-dub-enabled" class="set-focus switch">
+            </label>
+
+            <label class="set-row">
+              <span>מנוע תרגום</span>
+              <select id="set-engine" class="set-focus">
+                <option value="gemini">Google Gemini – הכי איכותי (מפתח חינמי)</option>
+                <option value="openai">OpenAI – איכותי (מפתח בתשלום)</option>
+                <option value="local">מקומי בדפדפן – חינם, ללא מפתח (Whisper)</option>
+              </select>
+            </label>
+
+            <div class="set-group" data-engine="gemini">
+              <label class="set-row">
+                <span>מפתח Gemini API</span>
+                <input type="password" id="set-gemini-key" class="set-focus" placeholder="AIza..." autocomplete="off" spellcheck="false">
+              </label>
+              <label class="set-row">
+                <span>מודל</span>
+                <select id="set-gemini-model" class="set-focus"></select>
+              </label>
+              <p class="set-note">מפתח חינמי: <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">aistudio.google.com/apikey</a> • המפתח נשמר רק במכשיר הזה.</p>
+            </div>
+
+            <div class="set-group" data-engine="openai">
+              <label class="set-row">
+                <span>מפתח OpenAI API</span>
+                <input type="password" id="set-openai-key" class="set-focus" placeholder="sk-..." autocomplete="off" spellcheck="false">
+              </label>
+              <p class="set-note">המפתח נשמר רק במכשיר הזה. עם מפתח OpenAI אפשר לבחור גם בקול הדיבוב של OpenAI.</p>
+            </div>
+
+            <div class="set-group" data-engine="local">
+              <label class="set-row">
+                <span>מודל זיהוי דיבור</span>
+                <select id="set-local-model" class="set-focus">
+                  <option value="onnx-community/whisper-base">Whisper Base – מהיר (~80MB)</option>
+                  <option value="onnx-community/whisper-small">Whisper Small – מדויק יותר (~250MB)</option>
+                </select>
+              </label>
+              <p class="set-note">רץ במחשב שלך (WebGPU אם קיים). מתאים למחשב/טאבלט חזק; בטלוויזיה עדיף Gemini.</p>
+            </div>
+
+            <label class="set-row">
+              <span>קול הדיבוב</span>
+              <select id="set-tts" class="set-focus">
+                <option value="auto">אוטומטי (קול עברי של המכשיר, אחרת Google)</option>
+                <option value="browser">קול המכשיר</option>
+                <option value="google">Google (חינמי, דרך האינטרנט)</option>
+                <option value="openai">OpenAI (טבעי, דורש מפתח OpenAI)</option>
+                <option value="none">ללא קול – כתוביות בלבד</option>
+              </select>
+            </label>
+
+            <label class="set-row" id="row-voice">
+              <span>קול עברי במכשיר</span>
+              <select id="set-voice" class="set-focus"></select>
+            </label>
+
+            <label class="set-row">
+              <span>מהירות דיבור <output id="out-rate">1.1</output></span>
+              <input type="range" id="set-rate" class="set-focus" min="0.8" max="1.6" step="0.05">
+            </label>
+
+            <label class="set-row">
+              <span>עוצמת הסאונד המקורי בזמן דיבוב <output id="out-duck">20%</output></span>
+              <input type="range" id="set-duck" class="set-focus" min="0" max="1" step="0.05">
+            </label>
+
+            <label class="set-row">
+              <span>סנכרון לשפתיים <small>(התמונה מושהית כדי שהדיבוב יגיע בזמן)</small></span>
+              <input type="checkbox" id="set-sync" class="set-focus switch">
+            </label>
+
+            <label class="set-row" id="row-delay">
+              <span>השהיית תמונה</span>
+              <select id="set-delay" class="set-focus">
+                <option value="6">6 שניות</option>
+                <option value="8">8 שניות</option>
+                <option value="10">10 שניות</option>
+                <option value="12">12 שניות (מומלץ)</option>
+                <option value="15">15 שניות</option>
+                <option value="20">20 שניות</option>
+              </select>
+            </label>
+
+            <label class="set-row">
+              <span>כתוביות בעברית</span>
+              <input type="checkbox" id="set-subs" class="set-focus switch">
+            </label>
+
+            <label class="set-row">
+              <span>הצג גם את הטקסט המקורי</span>
+              <input type="checkbox" id="set-orig" class="set-focus switch">
+            </label>
+
+            <div class="set-actions">
+              <button id="btn-test-voice" class="hero-btn set-focus">🔊 בדיקת קול</button>
+            </div>
+          </section>
+
+          <section class="set-section">
+            <h4>🖥️ תמונה ותצוגה</h4>
+            <div class="set-actions wrap">
+              <button id="btn-oled-mode" class="hero-btn set-focus" title="מצב תמונה (צהוב בנגן)">
+                <span class="btn-icon">✨</span> <span id="oled-mode-label" class="badge-text">OLED: שחור מושלם</span>
+              </button>
+              <button id="btn-retro-mode" class="hero-btn set-focus" title="חידוד רטרו / יחס תמונה (ירוק)">
+                <span class="btn-icon">🎞️</span> <span id="retro-mode-label" class="badge-text">חידוד: כבוי</span>
+              </button>
+              <button id="btn-theme-toggle-2" class="hero-btn set-focus">🌓 החלף מצב יום / לילה</button>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <!-- GET THE APP: downloads for every platform (shown on the web site) -->
+    <div id="getapp-modal" class="getapp-modal hidden" role="dialog" aria-modal="true" aria-labelledby="getapp-title">
+      <div class="getapp-dialog">
+        <button id="btn-close-getapp" class="icon-btn getapp-close" title="סגירה (Esc)">✕</button>
+        <div class="getapp-hero">📲</div>
+        <h3 id="getapp-title">ישראל TV+ לכל המכשירים</h3>
+        <p id="getapp-desc" class="getapp-desc"></p>
+        <div class="getapp-grid">
+          <a class="getapp-item" data-asset="IsraelTVPlus-android.apk" target="_blank" rel="noopener">
+            <span class="gi-icon">🤖</span><span class="gi-name">אנדרואיד</span><span class="gi-sub">טלפון וטאבלט · APK</span></a>
+          <a class="getapp-item" data-asset="IsraelTVPlus-android.apk" target="_blank" rel="noopener">
+            <span class="gi-icon">📺</span><span class="gi-name">Android TV / Google TV</span><span class="gi-sub">כולל Xiaomi, Sony, TCL, Fire TV</span></a>
+          <a class="getapp-item" data-asset="IsraelTVPlus-windows-setup.exe" target="_blank" rel="noopener">
+            <span class="gi-icon">🪟</span><span class="gi-name">Windows</span><span class="gi-sub">התקנה · Windows 10/11</span></a>
+          <a class="getapp-item" data-asset="IsraelTVPlus-windows-portable.zip" target="_blank" rel="noopener">
+            <span class="gi-icon">💼</span><span class="gi-name">Windows נייד</span><span class="gi-sub">ZIP ללא התקנה</span></a>
+          <a class="getapp-item" data-asset="com.israeltv.plus_all.ipk" target="_blank" rel="noopener">
+            <span class="gi-icon">🖥️</span><span class="gi-name">LG webOS</span><span class="gi-sub">IPK · Developer Mode</span></a>
+          <a class="getapp-item" data-asset="IsraelTVPlus-tizen-project.zip" target="_blank" rel="noopener">
+            <span class="gi-icon">🔷</span><span class="gi-name">Samsung Tizen</span><span class="gi-sub">פרויקט לחתימה ב-Tizen Studio</span></a>
+          <a class="getapp-item" data-asset="IsraelTVPlus-macos-arm64.zip" target="_blank" rel="noopener">
+            <span class="gi-icon">🍏</span><span class="gi-name">Mac (Apple Silicon)</span><span class="gi-sub">M1–M4 · ZIP</span></a>
+          <a class="getapp-item" data-asset="IsraelTVPlus-macos-x64.zip" target="_blank" rel="noopener">
+            <span class="gi-icon">💻</span><span class="gi-name">Mac (Intel)</span><span class="gi-sub">ZIP</span></a>
+          <a class="getapp-item" data-asset="IsraelTVPlus-linux-x64.zip" target="_blank" rel="noopener">
+            <span class="gi-icon">🐧</span><span class="gi-name">Linux</span><span class="gi-sub">x64 · ZIP</span></a>
+          <a class="getapp-item" data-asset="IsraelTVPlus-linux-arm64.zip" target="_blank" rel="noopener">
+            <span class="gi-icon">🍓</span><span class="gi-name">Linux ARM64</span><span class="gi-sub">Raspberry Pi 4/5 · ZIP</span></a>
+          <a class="getapp-item" href="https://dor2500.github.io/israel-tv-plus/playlist.m3u" target="_blank" rel="noopener">
+            <span class="gi-icon">📋</span><span class="gi-name">נגני IPTV (M3U)</span><span class="gi-sub">Kodi, VLC, TiviMate, Smarters, Enigma2</span></a>
+          <a class="getapp-item" href="https://dor2500.github.io/israel-tv-plus/" target="_blank" rel="noopener">
+            <span class="gi-icon">🍎</span><span class="gi-name">iPhone / iPad</span><span class="gi-sub">Safari ← שיתוף ← הוסף למסך הבית</span></a>
+        </div>
+        <p class="getapp-foot">כל הקבצים בעמוד ה-Releases של הפרויקט ב-GitHub.</p>
       </div>
     </div>
 
@@ -278,7 +442,7 @@
     <div id="oled-screensaver" class="oled-screensaver hidden">
       <div class="screensaver-content" id="screensaver-content">
         <div class="screensaver-clock" id="screensaver-clock">12:00</div>
-        <div class="screensaver-text">LG OLED - הגנת פיקסלים פעילה (לחץ בכל מקש להמשך)</div>
+        <div class="screensaver-text">הגנת מסך OLED פעילה • לחץ על מקש כלשהו להמשך</div>
       </div>
     </div>
 
@@ -287,10 +451,10 @@
       <div class="exit-dialog">
         <div class="exit-icon">📺</div>
         <h3>יציאה מ-ישראל TV פלוס</h3>
-        <p>האם ברצונך לחזור לטלוויזיה או להמשיך לצפות?</p>
+        <p>האם ברצונך לצאת או להמשיך לצפות?</p>
         <div class="exit-actions">
-          <button id="btn-cancel-exit" class="exit-btn cancel-btn focused">המשך צפייה (חזור)</button>
-          <button id="btn-confirm-exit" class="exit-btn confirm-btn">יציאה מהאפליקציה</button>
+          <button id="btn-cancel-exit" class="exit-btn cancel-btn focused">המשך צפייה</button>
+          <button id="btn-confirm-exit" class="exit-btn confirm-btn">יציאה</button>
         </div>
       </div>
     </div>
@@ -298,5 +462,11 @@
   </div>
 
   <script src="app.js"></script>
+  <script>
+    // Installable web app (PWA) on the https site only; the native apps load from local files.
+    if ('serviceWorker' in navigator && location.protocol === 'https:') {
+      navigator.serviceWorker.register('sw.js').catch(function () {});
+    }
+  </script>
 </body>
 </html>

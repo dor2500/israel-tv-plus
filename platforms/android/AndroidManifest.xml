@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- One APK for phones, tablets, Android TV / Google TV and Fire TV. -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.israeltv.plus">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!-- TVs have no touch screen; Leanback makes it show up in the Android TV launcher -->
+    <uses-feature android:name="android.hardware.touchscreen" android:required="false" />
+    <uses-feature android:name="android.software.leanback" android:required="false" />
+
+    <!-- the TV-service apps the "מנויים ואפליקציות" tiles open (Android 11+ package visibility) -->
+    <queries>
+        <package android:name="il.co.partnertv" />
+        <package android:name="il.co.partnertv.atv" />
+        <package android:name="com.cellcom.cellcomtv" />
+        <package android:name="com.cellcom.cellcom_tv" />
+        <package android:name="il.co.stingtv" />
+        <package android:name="il.co.stingtv.atv" />
+        <package android:name="il.co.yes.yesgo" />
+        <package android:name="il.net.hot.nexttv" />
+        <package android:name="com.applicaster.il.ch1" />
+        <package android:name="com.channel23" />
+        <package android:name="com.goldtouch.mako" />
+        <package android:name="com.keshet.mako.VODAndroidTV" />
+        <package android:name="com.applicaster.iReshet" />
+        <package android:name="com.channel.fourteen.univ" />
+        <package android:name="com.rge.sport5" />
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="https" />
+        </intent>
+    </queries>
+
+    <application
+        android:label="ישראל TV+"
+        android:icon="@mipmap/ic_launcher"
+        android:banner="@drawable/banner"
+        android:hardwareAccelerated="true"
+        android:largeHeap="true"
+        android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
+        android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboard|keyboardHidden|navigation|uiMode|density"
+            android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>

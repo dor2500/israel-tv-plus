@@ -1,0 +1,95 @@
+#EXTM3U x-tvg-url="https://epgshare01.online/epgshare01/epg_ripper_IL1.xml.gz"
+#EXTINF:-1 tvg-id="" tvg-name="כאן ב - רשת ב" tvg-chno="15" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/kan_bet.png" group-title="רדיו ישראלי" radio="true",כאן ב - רשת ב
+https://playerservices.streamtheworld.com/api/livestream-redirect/KAN_BET.mp3
+#EXTINF:-1 tvg-id="" tvg-name="כאן גימל" tvg-chno="16" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/kan_gimel.png" group-title="רדיו ישראלי" radio="true",כאן גימל
+https://playerservices.streamtheworld.com/api/livestream-redirect/KAN_GIMMEL.mp3
+#EXTINF:-1 tvg-id="" tvg-name="כאן 88" tvg-chno="17" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/kan_88.png" group-title="רדיו ישראלי" radio="true",כאן 88
+https://playerservices.streamtheworld.com/api/livestream-redirect/KAN_88.mp3
+#EXTINF:-1 tvg-id="" tvg-name="כאן תרבות" tvg-chno="18" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/kan_tarbut.png" group-title="רדיו ישראלי" radio="true",כאן תרבות
+https://playerservices.streamtheworld.com/api/livestream-redirect/KAN_TARBUT.mp3
+#EXTINF:-1 tvg-id="" tvg-name="כאן מורשת" tvg-chno="19" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/kan_moreshet.png" group-title="רדיו ישראלי" radio="true",כאן מורשת
+https://playerservices.streamtheworld.com/api/livestream-redirect/KAN_MORESHET.mp3
+#EXTINF:-1 tvg-id="" tvg-name="כאן רקע" tvg-chno="20" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/kan_reka.png" group-title="רדיו ישראלי" radio="true",כאן רקע
+https://playerservices.streamtheworld.com/api/livestream-redirect/KAN_REKA.mp3
+#EXTINF:-1 tvg-id="" tvg-name="כאן קול המוזיקה" tvg-chno="21" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/kan_kol_hamusica.png" group-title="רדיו ישראלי" radio="true",כאן קול המוזיקה
+https://playerservices.streamtheworld.com/api/livestream-redirect/KAN_KOL_HAMUSICA.mp3
+#EXTINF:-1 tvg-id="" tvg-name="גלגלצ" tvg-chno="22" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/galgalatz_live.png" group-title="רדיו ישראלי" radio="true",גלגלצ
+https://glzwizzlv.bynetcdn.com/glglz_mp3
+#EXTINF:-1 tvg-id="" tvg-name="גלי צה"ל" tvg-chno="23" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/glz_live.png" group-title="רדיו ישראלי" radio="true",גלי צה"ל
+https://glzwizzlv.bynetcdn.com/glz_mp3
+#EXTINF:-1 tvg-id="" tvg-name="גלגלצ להיטים" tvg-chno="24" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/galgalatz_hits_live.png" group-title="רדיו ישראלי" radio="true",גלגלצ להיטים
+https://glzwizzlv.bynetcdn.com/glglz_hits_mp3
+#EXTINF:-1 tvg-id="" tvg-name="eco99fm" tvg-chno="25" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/eco99fm.png" group-title="רדיו ישראלי" radio="true",eco99fm
+https://eco-live.mediacast.co.il/99fm_aac
+#EXTINF:-1 tvg-id="" tvg-name="103FM" tvg-chno="26" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/radio_103fm.png" group-title="רדיו ישראלי" radio="true",103FM
+https://cdn.cybercdn.live/103FM/Live/icecast.audio
+#EXTINF:-1 tvg-id="" tvg-name="רדיוס 100FM" tvg-chno="27" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/radios_100fm.png" group-title="רדיו ישראלי" radio="true",רדיוס 100FM
+https://cdn.cybercdn.live/Radios_100FM/Audio/icecast.audio
+#EXTINF:-1 tvg-id="" tvg-name="102FM רדיו תל אביב" tvg-chno="28" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/radio_102fm.png" group-title="רדיו ישראלי" radio="true",102FM רדיו תל אביב
+https://102.livecdn.biz/102fm_aac
+#EXTINF:-1 tvg-id="" tvg-name="רדיו הקצה KZ" tvg-chno="29" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/kz_radio_live.png" group-title="רדיו ישראלי" radio="true",רדיו הקצה KZ
+https://kzradio.mediacast.co.il/kzradio_live/kzradio/icecast.audio
+#EXTINF:-1 tvg-id="" tvg-name="קול ברמה" tvg-chno="30" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/kol_barama_live.png" group-title="רדיו ישראלי" radio="true",קול ברמה
+https://cdn.cybercdn.live/Kol_Barama/Live_Audio/icecast.audio
+#EXTINF:-1 tvg-id="" tvg-name="רדיו דרום 101.5FM" tvg-chno="31" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/radio_darom_live.png" group-title="רדיו ישראלי" radio="true",רדיו דרום 101.5FM
+https://cdn.cybercdn.live/Darom_1015FM/Live/icecast.audio
+#EXTINF:-1 tvg-id="" tvg-name="רדיו 2000" tvg-chno="32" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/radio_2000_live.png" group-title="רדיו ישראלי" radio="true",רדיו 2000
+https://cdn.cybercdn.live/Radio2000/MP3/icecast.audio
+#EXTINF:-1 tvg-id="" tvg-name="קול ברמה מוזיקה (קול פליי)" tvg-chno="33" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/kol_barama_music_live.png" group-title="רדיו ישראלי" radio="true",קול ברמה מוזיקה (קול פליי)
+https://cdn.cybercdn.live/Kol_Barama/Music/icecast.audio
+#EXTINF:-1 tvg-id="" tvg-name="104.5FM רדיו צפון" tvg-chno="34" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/radio_1045fm.png" group-title="רדיו ישראלי" radio="true",104.5FM רדיו צפון
+https://radio.streamgates.net/stream/1045fm
+#EXTINF:-1 tvg-id="" tvg-name="101FM רדיו ירושלים" tvg-chno="35" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/radio_101fm.png" group-title="רדיו ישראלי" radio="true",101FM רדיו ירושלים
+https://radio.streamgates.net/stream/101fm
+#EXTINF:-1 tvg-id="" tvg-name="רדיו חיפה 107.5FM" tvg-chno="36" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/radio_haifa.png" group-title="רדיו ישראלי" radio="true",רדיו חיפה 107.5FM
+https://1075.livecdn.biz/radiohaifa
+#EXTINF:-1 tvg-id="" tvg-name="90FM אמצע הדרך" tvg-chno="37" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/radio_90fm.png" group-title="רדיו ישראלי" radio="true",90FM אמצע הדרך
+https://cdn.cybercdn.live/Emtza_Haderech/Live_Audio/icecast.audio
+#EXTINF:-1 tvg-id="" tvg-name="רדיו דרום 97FM" tvg-chno="38" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/radio_darom_97.png" group-title="רדיו ישראלי" radio="true",רדיו דרום 97FM
+https://cdn.cybercdn.live/Darom_97FM/Live/icecast.audio
+#EXTINF:-1 tvg-id="" tvg-name="רדיו התחנה 101.5" tvg-chno="39" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/radio_hatahana.png" group-title="רדיו ישראלי" radio="true",רדיו התחנה 101.5
+https://cdn.cybercdn.live/Hatahana_1015/Live_Audio/icecast.audio
+#EXTINF:-1 tvg-id="" tvg-name="גלי ישראל 94FM" tvg-chno="40" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/galei_israel.png" group-title="רדיו ישראלי" radio="true",גלי ישראל 94FM
+https://cdn.cybercdn.live/Galei_Israel/Live/icecast.audio
+#EXTINF:-1 tvg-id="" tvg-name="קול חי 93FM" tvg-chno="41" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/kol_chai.png" group-title="רדיו ישראלי" radio="true",קול חי 93FM
+https://media2.93fm.co.il/live-new
+#EXTINF:-1 tvg-id="" tvg-name="קול חי מיוזיק" tvg-chno="42" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/kol_chai_music.png" group-title="רדיו ישראלי" radio="true",קול חי מיוזיק
+https://media2.93fm.co.il/livemusic
+#EXTINF:-1 tvg-id="" tvg-name="קול רגע 96FM" tvg-chno="43" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/kol_rega.png" group-title="רדיו ישראלי" radio="true",קול רגע 96FM
+https://cdn.cybercdn.live/Kol_Rega/Live_Audio/icecast.audio
+#EXTINF:-1 tvg-id="" tvg-name="לב המדינה 91FM" tvg-chno="44" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/lev_hamedina.png" group-title="רדיו ישראלי" radio="true",לב המדינה 91FM
+https://cdn.cybercdn.live/Lev_Hamedina/Audio/icecast.audio
+#EXTINF:-1 tvg-id="" tvg-name="רדיוס נוסטלגי 96.3" tvg-chno="45" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/radios_nostalgia.png" group-title="רדיו ישראלי" radio="true",רדיוס נוסטלגי 96.3
+https://cdna.streamgates.net/radios-audio/Nostalgia_963fm/icecast.audio
+#EXTINF:-1 tvg-id="" tvg-name="קול הצפון" tvg-chno="46" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/kol_hatzafon.png" group-title="רדיו ישראלי" radio="true",קול הצפון
+https://live.ecast.co.il/stream/khz
+#EXTINF:-1 tvg-id="" tvg-name="גלגלצ רוק" tvg-chno="47" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/glglz_rock.png" group-title="רדיו ישראלי" radio="true",גלגלצ רוק
+https://glzwizzlv.bynetcdn.com/glglz_rock_mp3
+#EXTINF:-1 tvg-id="" tvg-name="גלגלצ עשורים" tvg-chno="48" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/glglz_decades.png" group-title="רדיו ישראלי" radio="true",גלגלצ עשורים
+https://glzwizzlv.bynetcdn.com/glglz_alt_mp3
+#EXTINF:-1 tvg-id="" tvg-name="גלגלצ רגוע" tvg-chno="49" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/glglz_weekend.png" group-title="רדיו ישראלי" radio="true",גלגלצ רגוע
+https://glzwizzlv.bynetcdn.com/glglz_sofshavua_mp3
+#EXTINF:-1 tvg-id="" tvg-name="רדיוס 100% מזרחית" tvg-chno="50" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/radios_mizrahit.png" group-title="רדיו ישראלי" radio="true",רדיוס 100% מזרחית
+https://gb25.streamgates.net/radios-audio/100Mizrachit/icecast.audio
+#EXTINF:-1 tvg-id="" tvg-name="רדיוס 100% יהודי" tvg-chno="51" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/radios_yehudi.png" group-title="רדיו ישראלי" radio="true",רדיוס 100% יהודי
+https://gb25.streamgates.net/radios-audio/100yehudi/playlist.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="רדיוס 100% להיטים" tvg-chno="52" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/radios_hits.png" group-title="רדיו ישראלי" radio="true",רדיוס 100% להיטים
+https://gb25.streamgates.net/radios-audio/100Hits/playlist.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="רדיוס 100% שנות ה-80" tvg-chno="53" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/radios_80s.png" group-title="רדיו ישראלי" radio="true",רדיוס 100% שנות ה-80
+https://gb25.streamgates.net/radios-audio/10080s/icecast.audio
+#EXTINF:-1 tvg-id="" tvg-name="רדיוס 100% שנות ה-90" tvg-chno="54" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/radios_90s.png" group-title="רדיו ישראלי" radio="true",רדיוס 100% שנות ה-90
+https://gb25.streamgates.net/radios-audio/10090s/icecast.audio
+#EXTINF:-1 tvg-id="" tvg-name="רדיוס 100% ילדים" tvg-chno="55" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/radios_kids.png" group-title="רדיו ישראלי" radio="true",רדיוס 100% ילדים
+https://gb25.streamgates.net/radios-audio/100Kids/icecast.audio
+#EXTINF:-1 tvg-id="" tvg-name="רדיוס 100% רגוע" tvg-chno="56" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/radios_relax.png" group-title="רדיו ישראלי" radio="true",רדיוס 100% רגוע
+https://gb25.streamgates.net/radios-audio/100Relax/icecast.audio
+#EXTINF:-1 tvg-id="" tvg-name="א-שמס A-Shams" tvg-chno="57" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/a_shams.png" group-title="רדיו ישראלי" radio="true",א-שמס A-Shams
+https://cdna.streamgates.net/Ashams/Live/icecast.audio
+#EXTINF:-1 tvg-id="" tvg-name="רדיו נאס Radio Nas" tvg-chno="58" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/radio_nas.png" group-title="רדיו ישראלי" radio="true",רדיו נאס Radio Nas
+https://cdna.streamgates.net/RadioNas/Live-Audio/icecast.audio
+#EXTINF:-1 tvg-id="" tvg-name="הרדיו הראשון 89.1FM (רוסית)" tvg-chno="59" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/pervoe_radio.png" group-title="רדיו ישראלי" radio="true",הרדיו הראשון 89.1FM (רוסית)
+https://cdn.cybercdn.live/Pervoia/Audio/icecast.audio
+#EXTINF:-1 tvg-id="" tvg-name="רדיו ברסלב" tvg-chno="60" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/radio_breslev.png" group-title="רדיו ישראלי" radio="true",רדיו ברסלב
+https://cast.breslevforyou.co.il/listen/radiobreslev/radio.mp3
+#EXTINF:-1 tvg-id="" tvg-name="רדיו נהריה" tvg-chno="61" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/radio_nahariya.png" group-title="רדיו ישראלי" radio="true",רדיו נהריה
+https://cast.radionahariya.com:8443/main.mp3

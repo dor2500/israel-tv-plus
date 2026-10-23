@@ -1,6 +1,7 @@
 /**
- * ISRAEL TV PLUS - LG webOS Smart TV Application Engine
- * Optimized for LG OLED, Light Mode, Magic Remote, and 60fps Hardware Acceleration
+ * ISRAEL TV PLUS - LG webOS Smart TV & Web Application Engine
+ * Optimized for LG OLED, Light Mode, Magic Remote, touch screens and 60fps hardware acceleration.
+ * Hebrew live dubbing for foreign channels: see dub.js.
  */
 
 (function () {
@@ -14,10 +15,13 @@
     activeCategory: 'ALL',
     searchQuery: '',
     favorites: [],
+    recents: [], // last watched channel ids, newest first
+    getAppOpen: false,
     theme: 'oled', // 'oled' | 'light'
 
     // Focus & Navigation
-    currentSection: 'grid', // 'grid' | 'sidebar' | 'search' | 'player' | 'drawer' | 'exit_modal'
+    currentSection: 'grid', // 'grid' | 'sidebar' | 'search' | 'player' | 'drawer' | 'exit_modal' | 'settings'
+    sectionBeforeSettings: 'grid',
     focusedGridIdx: 0,
     focusedCategoryIdx: 0,
     focusedDrawerIdx: 0,
@@ -25,6 +29,8 @@
 
     // Playback
     playingChannelIndex: -1,
+    playingChannel: null,
+    isRadio: false,
     hlsInstance: null,
     osdTimeout: null,
     toastTimeout: null,
@@ -32,6 +38,7 @@
     screensaverActive: false,
     drawerOpen: false,
     exitModalOpen: false,
+    settingsOpen: false,
 
     // OLED & Retro Remaster Modes
     oledModeIdx: 0,
@@ -43,20 +50,54 @@
     lastBackPressTime: 0
   };
 
+  const Dub = window.HebrewDub;
+
+  // PLATFORM: the native apps (Android / Android TV, Windows, LG webOS, Samsung Tizen) load the app from local
+  // files, so http streams and streams without CORS play there. The https web site can't play those.
+  const UA = navigator.userAgent;
+  const PLATFORM = new URLSearchParams(location.search).get('platform') || (window.AndroidApp ? 'android'
+    : (window.chrome && window.chrome.webview) ? 'windows'
+    : (window.webOS || window.PalmSystem || /Web0S|webOS/i.test(UA)) ? 'webos'
+    : (window.tizen || /Tizen/i.test(UA)) ? 'tizen'
+    : /IsraelTVPlus\/\d+ Desktop/.test(UA) ? 'desktop' // Linux / macOS app (Electron)
+    : location.protocol === 'https:' ? 'web' : 'local'); // ?platform=web previews the web site's view locally
+  const IS_WEB = PLATFORM === 'web';
+  // Android TV boxes report a ~960px wide screen (density 2): lay the guide out at 1600px like on LG TVs.
+  if (/AndroidTV/.test(UA)) {
+    const vp = document.querySelector('meta[name="viewport"]');
+    if (vp) vp.setAttribute('content', 'width=1600, user-scalable=no');
+  }
+  const RELEASES = 'https://github.com/dor2500/israel-tv-plus/releases/latest';
+  const MAX_RECENTS = 12;
+
+  const isApp = (ch) => ch && ch.kind === 'app';
+  const isRadioCh = (ch) => ch && (ch.kind === 'radio' || ch.categoryEn === 'radio');
+  /** True when this channel can't play inside the https web site (it works in the apps). */
+  /** The stream to play here: the web site uses an https copy (webUrl) where the main source is http-only. */
+  const streamUrl = (ch) => (IS_WEB && ch.webUrl) || ch.url;
+  const appOnly = (ch) => IS_WEB && ch && !isApp(ch) && (ch.webOk === false || /^http:/i.test(streamUrl(ch)));
+
   // OLED PRESETS
   const OLED_MODES = [
-    { id: 'cinema', label: 'קולנוע שחור מושלם', filterClass: 'oled-filter-cinema', desc: 'True Black 0.0 nits' },
-    { id: 'vivid', label: 'צבעים עשירים Vivid', filterClass: 'oled-filter-vivid', desc: 'צבעוניות חיה מוגברת' },
+    { id: 'cinema', label: 'קולנוע שחור מושלם', filterClass: 'oled-filter-cinema', desc: 'True Black' },
+    { id: 'vivid', label: 'צבעים עשירים', filterClass: 'oled-filter-vivid', desc: 'צבעוניות חיה מוגברת' },
     { id: 'sports', label: 'ספורט Boost', filterClass: 'oled-filter-sports', desc: 'תנועה מהירה וחדות' },
     { id: 'natural', label: 'טבעי ומאוזן', filterClass: 'oled-filter-natural', desc: 'צבעי מקור נאמנים' }
   ];
 
   // RETRO REMASTER (SD / VINTAGE 4:3 UPSCALE) PRESETS
   const RETRO_MODES = [
-    { id: 'off', label: 'כבוי (רגיל)', sharpen: false, aspectClass: 'aspect-fit', desc: 'ללא שינוי' },
+    { id: 'off', label: 'חידוד: כבוי', sharpen: false, aspectClass: 'aspect-fit', desc: 'ללא שינוי' },
     { id: 'pillarbox', label: 'חידוד רטרו: 4:3 מקורי', sharpen: true, aspectClass: 'aspect-pillarbox', desc: 'פילטר חידוד + יחס 4:3 ללא עיוות' },
     { id: 'zoom', label: 'חידוד רטרו: 16:9 מילוי', sharpen: true, aspectClass: 'aspect-zoom', desc: 'פילטר חידוד + חיתוך חכם 16:9' },
     { id: 'stretch', label: 'חידוד רטרו: מתיחה', sharpen: true, aspectClass: 'aspect-stretch', desc: 'פילטר חידוד + מתיחה מלאה' }
+  ];
+
+  // CATEGORY ICONS (matched by keyword)
+  const CATEGORY_ICONS = [
+    [/אפליקציות|מנויים/, '📲'], [/רדיו/, '📻'],
+    [/ישראל/, '📡'], [/ילדים/, '🧸'], [/סרטים|סדרות/, '🎬'], [/ספורט/, '⚽'], [/מוזיקה/, '🎵'],
+    [/לייף|בידור/, '🏖️'], [/דוקו|טבע/, '🌍'], [/חדשות|News/i, '📰'], [/מסורת|יהדות/, '🕍'], [/דת|אמונה/, '🙏'], [/בינלאומי|World/i, '🌐']
   ];
 
   // DOM ELEMENTS CACHE
@@ -69,108 +110,217 @@
     cacheDomElements();
     loadTheme();
     loadFavorites();
+    loadRecents();
+    document.body.classList.add('platform-' + PLATFORM);
     loadChannels();
+    setupNativeBridge();
+    setupGetApp();
     setupClock();
     setupOledMode();
     setupRetroMode();
     setupWebPlayerControls();
+    setupHeroButtons();
+    setupDub();
+    setupSettings();
     setupKeyListeners();
     setupMouseListeners();
     resetScreensaverTimer();
+    window.addEventListener('resize', () => highlightFocusedItem(true));
+    // Mouse / touch scrolling: add the next page of cards when nearing the bottom.
+    const moreOnScroll = () => {
+      const g = el.channelsGrid;
+      const nearGrid = g.scrollHeight - g.scrollTop - g.clientHeight < 800;
+      const nearPage = document.documentElement.scrollHeight - window.scrollY - window.innerHeight < 800;
+      if (nearGrid || nearPage) ensureGridRendered(gridRendered);
+    };
+    el.channelsGrid.addEventListener('scroll', moreOnScroll, { passive: true });
+    window.addEventListener('scroll', moreOnScroll, { passive: true });
 
     // Initial Focus on the first channel card
     setFocus('grid', 0);
   }
 
+  function $(id) { return document.getElementById(id); }
+
   function cacheDomElements() {
     el = {
-      app: document.getElementById('app'),
-      search: document.getElementById('channel-search'),
-      channelsGrid: document.getElementById('channels-grid'),
-      categoryList: document.getElementById('category-list'),
-      channelsCountBadge: document.getElementById('channels-count-badge'),
-      currentCategoryTitle: document.getElementById('current-category-title'),
-      categoryMetaText: document.getElementById('category-meta-text'),
-      liveClock: document.getElementById('live-clock'),
+      app: $('app'),
+      search: $('channel-search'),
+      channelsGrid: $('channels-grid'),
+      categoryList: $('category-list'),
+      channelsCountBadge: $('channels-count-badge'),
+      currentCategoryTitle: $('current-category-title'),
+      categoryMetaText: $('category-meta-text'),
+      liveClock: $('live-clock'),
 
       // Theme Toggle
-      btnThemeToggle: document.getElementById('btn-theme-toggle'),
-      themeBtnIcon: document.getElementById('theme-btn-icon'),
-      themeBtnLabel: document.getElementById('theme-btn-label'),
+      btnThemeToggle: $('btn-theme-toggle'),
+      btnThemeToggle2: $('btn-theme-toggle-2'),
+      themeBtnIcon: $('theme-btn-icon'),
+      themeBtnLabel: $('theme-btn-label'),
 
       // Hero Spotlight
-      heroSpotlight: document.getElementById('hero-spotlight'),
-      heroNumber: document.getElementById('hero-number'),
-      heroCategory: document.getElementById('hero-category'),
-      heroBadgeTag: document.getElementById('hero-badge-tag'),
-      heroFavTag: document.getElementById('hero-fav-tag'),
-      heroTitle: document.getElementById('hero-title'),
-      heroDesc: document.getElementById('hero-desc'),
-      heroLogo: document.getElementById('hero-logo'),
+      heroSpotlight: $('hero-spotlight'),
+      heroGlow: $('hero-glow'),
+      heroNumber: $('hero-number'),
+      heroCategory: $('hero-category'),
+      heroBadgeTag: $('hero-badge-tag'),
+      heroLangTag: $('hero-lang-tag'),
+      heroFavTag: $('hero-fav-tag'),
+      heroTitle: $('hero-title'),
+      heroDesc: $('hero-desc'),
+      heroLogo: $('hero-logo'),
+      heroMonogram: $('hero-monogram'),
+      heroBtnPlay: $('hero-btn-play'),
+      heroBtnDub: $('hero-btn-dub'),
+      heroBtnFav: $('hero-btn-fav'),
+      heroNote: $('hero-note'),
 
-      // Quick Badges
-      btnOled: document.getElementById('btn-oled-mode'),
-      btnRetro: document.getElementById('btn-retro-mode'),
-      oledLabel: document.getElementById('oled-mode-label'),
-      retroLabel: document.getElementById('retro-mode-label'),
+      // "Get the app" panel
+      btnGetApp: $('btn-get-app'),
+      getAppModal: $('getapp-modal'),
+      getAppTitle: $('getapp-title'),
+      getAppDesc: $('getapp-desc'),
+      btnCloseGetApp: $('btn-close-getapp'),
+
+      // Picture modes
+      btnOled: $('btn-oled-mode'),
+      btnRetro: $('btn-retro-mode'),
+      oledLabel: $('oled-mode-label'),
+      retroLabel: $('retro-mode-label'),
+
+      // Dubbing
+      btnDubToggle: $('btn-dub-toggle'),
+      dubToggleLabel: $('dub-toggle-label'),
+      osdDubStatus: $('osd-dub-status'),
+      osdDubText: $('osd-dub-text'),
+      webBtnDub: $('web-btn-dub'),
+      webDubLabel: $('web-dub-label'),
+
+      // Settings
+      btnOpenSettings: $('btn-open-settings'),
+      settingsModal: $('settings-modal'),
+      btnCloseSettings: $('btn-close-settings'),
 
       // Direct Number HUD
-      channelNumberHud: document.getElementById('channel-number-hud'),
-      hudDigits: document.getElementById('hud-digits'),
-      hudChannelName: document.getElementById('hud-channel-name'),
+      channelNumberHud: $('channel-number-hud'),
+      hudDigits: $('hud-digits'),
+      hudChannelName: $('hud-channel-name'),
 
       // Player Container
-      playerContainer: document.getElementById('player-container'),
-      btnFloatingClose: document.getElementById('btn-floating-close-player'),
-      video: document.getElementById('tv-video'),
-      spinner: document.getElementById('player-spinner'),
-      spinnerText: document.getElementById('spinner-text'),
-      playerRadioBackdrop: document.getElementById('player-radio-backdrop'),
-      radioBackdropLogo: document.getElementById('radio-backdrop-logo'),
-      radioBackdropName: document.getElementById('radio-backdrop-name'),
-      playerErrorOverlay: document.getElementById('player-error-overlay'),
-      playerErrorTitle: document.getElementById('player-error-title'),
-      playerErrorDesc: document.getElementById('player-error-desc'),
-      btnErrorBack: document.getElementById('btn-error-back'),
-      btnErrorDirectLink: document.getElementById('btn-error-direct-link'),
-      osd: document.getElementById('player-osd'),
-      osdNumber: document.getElementById('osd-number'),
-      osdLogo: document.getElementById('osd-logo'),
-      osdName: document.getElementById('osd-name'),
-      osdCategory: document.getElementById('osd-category'),
-      osdRetroStatus: document.getElementById('osd-retro-status'),
-      osdAspectTag: document.getElementById('osd-aspect-tag'),
-      osdClock: document.getElementById('osd-clock'),
-      osdOledStatus: document.getElementById('osd-oled-status'),
-      osdAspectStatus: document.getElementById('osd-aspect-status'),
-      osdQuality: document.getElementById('osd-quality'),
+      playerContainer: $('player-container'),
+      btnFloatingClose: $('btn-floating-close-player'),
+      video: $('tv-video'),
+      radio: $('radio-audio'),
+      spinner: $('player-spinner'),
+      spinnerText: $('spinner-text'),
+      playerRadioBackdrop: $('player-radio-backdrop'),
+      radioBackdropLogo: $('radio-backdrop-logo'),
+      radioBackdropName: $('radio-backdrop-name'),
+      playerErrorOverlay: $('player-error-overlay'),
+      playerErrorTitle: $('player-error-title'),
+      playerErrorDesc: $('player-error-desc'),
+      btnErrorBack: $('btn-error-back'),
+      btnErrorDirectLink: $('btn-error-direct-link'),
+      osd: $('player-osd'),
+      osdNumber: $('osd-number'),
+      osdLogo: $('osd-logo'),
+      osdMonogram: $('osd-monogram'),
+      osdName: $('osd-name'),
+      osdCategory: $('osd-category'),
+      osdRetroStatus: $('osd-retro-status'),
+      osdAspectTag: $('osd-aspect-tag'),
+      osdClock: $('osd-clock'),
+      osdOledStatus: $('osd-oled-status'),
+      osdAspectStatus: $('osd-aspect-status'),
+      osdQuality: $('osd-quality'),
 
       // Web Player Actions
-      webBtnBack: document.getElementById('web-btn-back'),
-      webBtnPlayPause: document.getElementById('web-btn-playpause'),
-      webPlayIcon: document.getElementById('web-play-icon'),
-      webBtnMute: document.getElementById('web-btn-mute'),
-      webMuteIcon: document.getElementById('web-mute-icon'),
-      webBtnAspect: document.getElementById('web-btn-aspect'),
-      webBtnFullscreen: document.getElementById('web-btn-fullscreen'),
+      webBtnBack: $('web-btn-back'),
+      webBtnPrev: $('web-btn-prev'),
+      webBtnNext: $('web-btn-next'),
+      webBtnPlayPause: $('web-btn-playpause'),
+      webPlayIcon: $('web-play-icon'),
+      webBtnMute: $('web-btn-mute'),
+      webMuteIcon: $('web-mute-icon'),
+      webBtnAspect: $('web-btn-aspect'),
+      webBtnSettings: $('web-btn-settings'),
+      webBtnFullscreen: $('web-btn-fullscreen'),
 
       // Drawer
-      quickDrawer: document.getElementById('quick-drawer'),
-      drawerChannelList: document.getElementById('drawer-channel-list'),
+      quickDrawer: $('quick-drawer'),
+      drawerChannelList: $('drawer-channel-list'),
 
       // Toast
-      toast: document.getElementById('player-toast'),
-      toastMessage: document.getElementById('toast-message'),
+      toast: $('player-toast'),
+      toastMessage: $('toast-message'),
 
       // Screensaver
-      screensaver: document.getElementById('oled-screensaver'),
-      screensaverClock: document.getElementById('screensaver-clock'),
+      screensaver: $('oled-screensaver'),
+      screensaverClock: $('screensaver-clock'),
 
       // Exit Modal
-      exitModal: document.getElementById('exit-modal'),
-      btnCancelExit: document.getElementById('btn-cancel-exit'),
-      btnConfirmExit: document.getElementById('btn-confirm-exit')
+      exitModal: $('exit-modal'),
+      btnCancelExit: $('btn-cancel-exit'),
+      btnConfirmExit: $('btn-confirm-exit')
     };
+  }
+
+  // HELPERS
+  function escapeHtml(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  }
+
+  function hueOf(id) {
+    let h = 7;
+    for (let i = 0; i < id.length; i++) h = (h * 31 + id.charCodeAt(i)) % 360;
+    return h;
+  }
+
+  /** Short brand text for channels without a logo (prefers the Latin brand name). */
+  function monogramText(ch) {
+    const latin = (ch.name.match(/[A-Za-z0-9][A-Za-z0-9!+&'.:-]*(?:\s+[A-Za-z0-9!+&'.:-]+)*/g) || [])
+      .map(s => s.replace(/\b(HD|Live|TV)\b/g, '').trim())
+      .filter(s => /[A-Za-z]{2,}/.test(s))
+      .sort((a, b) => b.length - a.length);
+    if (latin.length) return latin[0].slice(0, 18);
+    return ch.name.replace(/\bHD\b|\(.*?\)/g, '').trim().split(/\s+/).slice(0, 2).join(' ');
+  }
+
+  function fillMonogram(node, ch) {
+    const h = hueOf(ch.id);
+    node.textContent = monogramText(ch);
+    node.style.background = `linear-gradient(135deg, hsl(${h} 70% 42%), hsl(${(h + 40) % 360} 75% 30%))`;
+  }
+
+  /** Shows the logo image, or a monogram tile when there is none / it fails to load. */
+  function setLogo(img, mono, ch) {
+    if (!img || !mono) return;
+    fillMonogram(mono, ch);
+    const showMono = () => { img.classList.add('hidden'); mono.classList.remove('hidden'); };
+    if (!ch.logo) { img.removeAttribute('src'); showMono(); return; }
+    img.onerror = showMono;
+    img.onload = () => { img.classList.remove('hidden'); mono.classList.add('hidden'); };
+    img.classList.remove('hidden');
+    mono.classList.add('hidden');
+    img.referrerPolicy = 'no-referrer'; // remote logo hosts (imgur) refuse some referrers
+    img.src = ch.logo;
+  }
+
+  function splitCategoryName(name) {
+    const m = name.match(/^(.*?)\s*\(([^)]*[A-Za-z][^)]*)\)\s*$/);
+    const parts = m ? { main: m[1], sub: m[2] } : { main: name, sub: '' };
+    parts.main = parts.main.replace(/\s*-\s*שידור חי\s*$/, '').replace(/\s*-\s*$/, '');
+    return parts;
+  }
+
+  function categoryIcon(name) {
+    for (const [re, icon] of CATEGORY_ICONS) if (re.test(name)) return icon;
+    return '📺';
+  }
+
+  function media() {
+    return state.isRadio ? el.radio : el.video;
   }
 
   // THEME MANAGEMENT (OLED PURE BLACK vs LIGHT MODE)
@@ -183,9 +333,8 @@
     }
     applyTheme();
 
-    if (el.btnThemeToggle) {
-      el.btnThemeToggle.addEventListener('click', toggleTheme);
-    }
+    if (el.btnThemeToggle) el.btnThemeToggle.addEventListener('click', toggleTheme);
+    if (el.btnThemeToggle2) el.btnThemeToggle2.addEventListener('click', toggleTheme);
   }
 
   function toggleTheme() {
@@ -194,19 +343,17 @@
       localStorage.setItem('israel_tv_theme', state.theme);
     } catch (e) {}
     applyTheme();
-    showToast(state.theme === 'light' ? '☀️ הופעל מצב יום (Light Mode)' : '🌙 הופעל מצב לילה (OLED True Black)');
+    showToast(state.theme === 'light' ? '☀️ מצב יום' : '🌙 מצב לילה (OLED)');
   }
 
   function applyTheme() {
-    if (state.theme === 'light') {
-      document.body.className = 'light-theme';
-      if (el.themeBtnIcon) el.themeBtnIcon.textContent = '🌙';
-      if (el.themeBtnLabel) el.themeBtnLabel.textContent = 'מצב לילה (OLED)';
-    } else {
-      document.body.className = 'oled-theme';
-      if (el.themeBtnIcon) el.themeBtnIcon.textContent = '☀️';
-      if (el.themeBtnLabel) el.themeBtnLabel.textContent = 'מצב יום (Light)';
-    }
+    const light = state.theme === 'light';
+    document.body.classList.toggle('light-theme', light);
+    document.body.classList.toggle('oled-theme', !light);
+    if (el.themeBtnIcon) el.themeBtnIcon.textContent = light ? '🌙' : '☀️';
+    if (el.themeBtnLabel) el.themeBtnLabel.textContent = light ? 'מצב לילה' : 'מצב יום';
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute('content', light ? '#f1f5f9' : '#05070d');
   }
 
   // FAVORITES
@@ -248,22 +395,113 @@
   }
 
   function updateCardFavoriteIcon(channelId, isFav) {
-    const cards = el.channelsGrid.querySelectorAll('.channel-card');
-    cards.forEach(card => {
-      if (card.dataset.id === channelId) {
-        const star = card.querySelector('.card-fav-star');
-        if (star) star.style.display = isFav ? 'inline-block' : 'none';
-      }
+    el.channelsGrid.querySelectorAll('.channel-card').forEach(card => {
+      if (card.dataset.id === channelId) card.classList.toggle('is-fav', isFav);
     });
+  }
+
+  // RECENTLY WATCHED
+  function loadRecents() {
+    try {
+      const saved = JSON.parse(localStorage.getItem('israel_tv_recents') || '[]');
+      state.recents = Array.isArray(saved) ? saved.slice(0, MAX_RECENTS) : [];
+    } catch (e) {
+      state.recents = [];
+    }
+  }
+
+  function addRecent(ch) {
+    const had = state.recents.length;
+    state.recents = [ch.id, ...state.recents.filter(id => id !== ch.id)].slice(0, MAX_RECENTS);
+    try { localStorage.setItem('israel_tv_recents', JSON.stringify(state.recents)); } catch (e) {}
+    // The category list only needs a rebuild when "recent" appears for the first time.
+    if (!had) { buildCategories(); }
+    else {
+      const cat = state.categories.find(c => c.id === 'RECENT');
+      if (cat) cat.count = state.recents.length;
+    }
+  }
+
+  // NATIVE APPS BRIDGE (Android / Windows) + opening the TV-service apps
+  function setupNativeBridge() {
+    // The Android / Windows shells send remote keys (Back, colour keys, CH+/-) through here.
+    window.__itvKey = (code) => handleKeyDown({
+      keyCode: code, which: code, target: document.body, preventDefault() {}, stopPropagation() {}
+    });
+    // Samsung remotes only send these keys to apps that ask for them.
+    if (PLATFORM === 'tizen' && window.tizen && window.tizen.tvinputdevice) {
+      ['ColorF0Red', 'ColorF1Green', 'ColorF2Yellow', 'ColorF3Blue', 'ChannelUp', 'ChannelDown', 'MediaPlayPause',
+        '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'].forEach(k => {
+        try { window.tizen.tvinputdevice.registerKey(k); } catch (e) {}
+      });
+    }
+  }
+
+  function webosLaunch(id, params) {
+    try {
+      const bridge = new window.PalmServiceBridge();
+      bridge.call('luna://com.webos.applicationManager/launch', JSON.stringify({ id, params: params || {} }));
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  /** Opens a TV-service app (Partner / Cellcom / STING / yes / HOT ...): the installed app on Android, else its site. */
+  function openServiceApp(ch) {
+    if (PLATFORM === 'android' && window.AndroidApp.openApp) {
+      window.AndroidApp.openApp(ch.androidTv || '', ch.android || '', ch.site || ch.url);
+      showToast(`📲 פותח את ${ch.name}...`);
+      return;
+    }
+    if (PLATFORM === 'windows') {
+      window.chrome.webview.postMessage(JSON.stringify({ open: ch.site || ch.url }));
+      showToast(`🌐 פותח את ${ch.name} בדפדפן`);
+      return;
+    }
+    if (PLATFORM === 'webos' && webosLaunch('com.webos.app.browser', { target: ch.site || ch.url })) {
+      showToast(`🌐 פותח את ${ch.name} בדפדפן הטלוויזיה`);
+      return;
+    }
+    window.open(ch.site || ch.url, '_blank', 'noopener');
+  }
+
+  // "GET THE APP" PANEL (web site only: downloads for every platform)
+  function setupGetApp() {
+    if (!el.getAppModal) return;
+    el.getAppModal.querySelectorAll('a[data-asset]').forEach(a => {
+      a.href = a.dataset.asset ? `${RELEASES}/download/${a.dataset.asset}` : RELEASES;
+    });
+    if (el.btnGetApp) {
+      el.btnGetApp.classList.toggle('hidden', PLATFORM !== 'web' && PLATFORM !== 'local');
+      el.btnGetApp.addEventListener('click', () => openGetApp());
+    }
+    if (el.btnCloseGetApp) el.btnCloseGetApp.addEventListener('click', closeGetApp);
+    el.getAppModal.addEventListener('click', (e) => { if (e.target === el.getAppModal) closeGetApp(); });
+  }
+
+  function openGetApp(ch) {
+    state.getAppOpen = true;
+    el.getAppTitle.textContent = ch ? `"${ch.name}" זמין באפליקציה` : 'ישראל TV+ לכל המכשירים';
+    el.getAppDesc.textContent = ch
+      ? 'הערוץ משדר בפרוטוקול HTTP, ודפדפנים חוסמים שידור כזה מתוך אתר מאובטח. באפליקציה הוא פועל – וגם כל שאר הערוצים.'
+      : 'באפליקציות פועלים כל הערוצים (גם אלה שהדפדפן חוסם), עם שלט רחוק, מועדפים ודיבוב לעברית.';
+    el.getAppModal.classList.remove('hidden');
+    const first = el.getAppModal.querySelector('.getapp-item');
+    if (first) first.focus();
+  }
+
+  function closeGetApp() {
+    state.getAppOpen = false;
+    el.getAppModal.classList.add('hidden');
   }
 
   // CLOCK
   function setupClock() {
     function update() {
       const now = new Date();
-      const timeStr = now.toLocaleTimeString('he-IL', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
       const shortStr = now.toLocaleTimeString('he-IL', { hour: '2-digit', minute: '2-digit' });
-      if (el.liveClock) el.liveClock.textContent = timeStr;
+      if (el.liveClock) el.liveClock.textContent = shortStr;
       if (el.osdClock) el.osdClock.textContent = shortStr;
       if (el.screensaverClock) el.screensaverClock.textContent = shortStr;
     }
@@ -282,10 +520,7 @@
     } catch (e) {}
 
     applyOledMode();
-
-    if (el.btnOled) {
-      el.btnOled.addEventListener('click', cycleOledMode);
-    }
+    if (el.btnOled) el.btnOled.addEventListener('click', cycleOledMode);
   }
 
   function cycleOledMode() {
@@ -300,7 +535,7 @@
 
   function applyOledMode() {
     const current = OLED_MODES[state.oledModeIdx];
-    if (el.oledLabel) el.oledLabel.textContent = `OLED: ${current.label}`;
+    if (el.oledLabel) el.oledLabel.textContent = `תמונה: ${current.label}`;
     if (el.osdOledStatus) el.osdOledStatus.textContent = current.label;
 
     if (el.video) {
@@ -320,10 +555,7 @@
     } catch (e) {}
 
     applyRetroMode();
-
-    if (el.btnRetro) {
-      el.btnRetro.addEventListener('click', cycleRetroMode);
-    }
+    if (el.btnRetro) el.btnRetro.addEventListener('click', cycleRetroMode);
   }
 
   function cycleRetroMode() {
@@ -344,15 +576,8 @@
     if (el.video) {
       RETRO_MODES.forEach(m => el.video.classList.remove(m.aspectClass));
       el.video.classList.add(current.aspectClass);
-
-      if (current.sharpen) {
-        el.video.classList.add('retro-sharpen-active');
-        if (el.osdRetroStatus) el.osdRetroStatus.classList.remove('hidden');
-      } else {
-        el.video.classList.remove('retro-sharpen-active');
-        if (el.osdRetroStatus) el.osdRetroStatus.classList.add('hidden');
-      }
-
+      el.video.classList.toggle('retro-sharpen-active', current.sharpen);
+      if (el.osdRetroStatus) el.osdRetroStatus.classList.toggle('hidden', !current.sharpen);
       if (el.osdAspectTag) {
         el.osdAspectTag.textContent = current.id === 'pillarbox' ? '4:3' : (current.id === 'zoom' ? '16:9 Zoom' : '16:9');
       }
@@ -365,7 +590,8 @@
     if (state.screensaverTimeout) clearTimeout(state.screensaverTimeout);
 
     state.screensaverTimeout = setTimeout(() => {
-      if (state.currentSection !== 'player' || (el.video && el.video.paused)) {
+      const m = media();
+      if (state.currentSection !== 'player' || (m && m.paused)) {
         startScreensaver();
       }
     }, 120000);
@@ -384,12 +610,16 @@
 
   // CHANNELS LOADING & CATEGORIES
   function loadChannels() {
-    const raw = window.CHANNELS_DATA || [];
+    // On the https web site, imported channels that a browser can't play (http / no CORS) are hidden;
+    // the webOS app (file://) shows them all.
+    const inBrowser = location.protocol === 'https:';
+    const raw = (window.CHANNELS_DATA || []).filter(c => !(inBrowser && c.web === false));
     state.allChannels = raw.map((c, i) => ({
       ...c,
       number: c.number || (i + 1),
       category: c.category || 'ערוצים',
-      desc: c.desc || 'שידור חי באיכות HD'
+      desc: c.desc || 'שידור חי באיכות HD',
+      lang: c.lang || 'he'
     }));
 
     buildCategories();
@@ -399,41 +629,51 @@
   function buildCategories() {
     const catMap = {};
     state.allChannels.forEach(c => {
-      const cat = c.category;
-      catMap[cat] = (catMap[cat] || 0) + 1;
+      catMap[c.category] = (catMap[c.category] || 0) + 1;
     });
 
     const list = [
-      { id: 'ALL', name: 'כל הערוצים 📺', count: state.allChannels.length }
+      { id: 'ALL', name: 'כל הערוצים', icon: '📺', count: state.allChannels.length }
     ];
 
     if (state.favorites.length > 0) {
-      list.push({ id: 'FAVORITES', name: 'מועדפים ⭐', count: state.favorites.length });
+      list.push({ id: 'FAVORITES', name: 'מועדפים', icon: '⭐', count: state.favorites.length });
+    }
+    if (state.recents.length > 0) {
+      list.push({ id: 'RECENT', name: 'צפית לאחרונה', icon: '🕘', count: state.recents.length });
+    }
+
+    const foreignCount = state.allChannels.filter(c => Dub && Dub.isForeign(c)).length;
+    if (foreignCount) {
+      list.push({ id: 'DUB', name: 'דיבוב לעברית', sub: 'ערוצים זרים', icon: '🎙️', count: foreignCount, special: true });
     }
 
     // Ordered categories
     const priority = [
       'ערוצי ישראל - שידור חי',
+      'רדיו ישראלי (Israeli Radio)',
+      'מנויים ואפליקציות (TV Apps)',
       'ילדים ונוער (בעברית)',
+      'חדשות מהעולם (News)',
       'סרטים וסדרות (Movies & Series)',
-      'ערוצי ספורט (Sports)',
+      'ספורט (Sports)',
+      'ילדים מהעולם (Kids World)',
+      'מוזיקה (Music TV)',
       'מוזיקה ורדיו חי (Music & Radio)',
+      'טבע ודוקו (Documentary & Nature)',
       'לייף סטייל ובידור',
-      'דוקו וטבע',
+      'מסורת וקהילה',
+      'דת ואמונה (Religion)',
       'ערוצים בינלאומיים (World)'
     ];
 
-    priority.forEach(cat => {
-      if (catMap[cat]) {
-        list.push({ id: cat, name: cat, count: catMap[cat] });
-        delete catMap[cat];
-      }
-    });
-
-    // Any remaining
-    Object.keys(catMap).forEach(cat => {
-      list.push({ id: cat, name: cat, count: catMap[cat] });
-    });
+    const pushCat = (cat) => {
+      const parts = splitCategoryName(cat);
+      list.push({ id: cat, name: parts.main, sub: parts.sub, icon: categoryIcon(cat), count: catMap[cat] });
+      delete catMap[cat];
+    };
+    priority.forEach(cat => { if (catMap[cat]) pushCat(cat); });
+    Object.keys(catMap).forEach(pushCat);
 
     state.categories = list;
     renderSidebar();
@@ -443,12 +683,16 @@
     el.categoryList.innerHTML = '';
     state.categories.forEach((cat, idx) => {
       const item = document.createElement('div');
-      item.className = `category-item ${cat.id === state.activeCategory ? 'active' : ''}`;
+      item.className = `category-item ${cat.id === state.activeCategory ? 'active' : ''} ${cat.special ? 'special' : ''}`;
       item.dataset.index = idx;
       item.dataset.id = cat.id;
 
       item.innerHTML = `
-        <span>${cat.name}</span>
+        <span class="category-icon">${cat.icon}</span>
+        <span class="category-name">
+          <span class="category-main">${escapeHtml(cat.name)}</span>
+          ${cat.sub ? `<span class="category-sub" dir="auto">${escapeHtml(cat.sub)}</span>` : ''}
+        </span>
         <span class="category-count">${cat.count}</span>
       `;
 
@@ -464,8 +708,10 @@
   function selectCategory(catId, idx) {
     state.activeCategory = catId;
     state.focusedCategoryIdx = idx;
+    state.focusedGridIdx = 0;
     renderSidebar();
     applyFilter();
+    el.channelsGrid.scrollTop = 0;
   }
 
   function applyFilter() {
@@ -474,6 +720,11 @@
 
     if (state.activeCategory === 'FAVORITES') {
       result = result.filter(c => state.favorites.includes(c.id));
+    } else if (state.activeCategory === 'RECENT') {
+      const byId = new Map(result.map(c => [c.id, c]));
+      result = state.recents.map(id => byId.get(id)).filter(Boolean);
+    } else if (state.activeCategory === 'DUB') {
+      result = result.filter(c => Dub && Dub.isForeign(c));
     } else if (state.activeCategory !== 'ALL') {
       result = result.filter(c => c.category === state.activeCategory);
     }
@@ -482,6 +733,7 @@
       result = result.filter(c =>
         c.name.toLowerCase().includes(q) ||
         (c.title && c.title.toLowerCase().includes(q)) ||
+        (c.desc && c.desc.toLowerCase().includes(q)) ||
         (c.number && c.number.toString() === q)
       );
     }
@@ -489,10 +741,14 @@
     state.filteredChannels = result;
 
     const currentCatObj = state.categories.find(c => c.id === state.activeCategory);
-    const catName = currentCatObj ? currentCatObj.name : 'ערוצים';
-    el.currentCategoryTitle.textContent = catName;
-    el.categoryMetaText.textContent = `מציג ${result.length} ערוצים`;
+    el.currentCategoryTitle.textContent = currentCatObj ? `${currentCatObj.icon} ${currentCatObj.name}` : 'ערוצים';
+    el.categoryMetaText.textContent = `${result.length} ערוצים`;
     if (el.channelsCountBadge) el.channelsCountBadge.textContent = `${state.allChannels.length} ערוצים`;
+
+    // Keep the "playing" index pointing at the same channel inside the new list.
+    if (state.playingChannel) {
+      state.playingChannelIndex = result.findIndex(c => c.id === state.playingChannel.id);
+    }
 
     renderGrid();
     renderDrawerList();
@@ -504,61 +760,99 @@
   }
 
   // RENDER CHANNELS GRID
+  // With 1000+ channels the cards are added in pages (as focus / scroll gets near the end), so the TV stays fast.
+  const GRID_PAGE = 60;
+  let gridRendered = 0;
+
   function renderGrid() {
     el.channelsGrid.innerHTML = '';
+    gridRendered = 0;
 
     if (state.filteredChannels.length === 0) {
-      el.channelsGrid.innerHTML = `
-        <div style="grid-column: 1 / -1; text-align: center; padding: 60px 0; color: var(--text-muted); font-size: 18px;">
-          לא נמצאו ערוצים מתאימים לקטגוריה או לחיפוש הנוכחי
-        </div>
-      `;
+      el.channelsGrid.innerHTML = `<div class="grid-empty">לא נמצאו ערוצים מתאימים לקטגוריה או לחיפוש</div>`;
       return;
     }
 
-    state.filteredChannels.forEach((ch, idx) => {
-      const card = document.createElement('div');
-      const isPlaying = state.playingChannelIndex !== -1 && state.filteredChannels[state.playingChannelIndex]?.id === ch.id;
-      const isFav = state.favorites.includes(ch.id);
+    ensureGridRendered(Math.max(GRID_PAGE, state.focusedGridIdx + GRID_PAGE / 2));
+    highlightFocusedItem();
+  }
 
-      card.className = `channel-card ${isPlaying ? 'is-playing' : ''}`;
+  /** Makes sure cards 0..idx exist (plus a little look-ahead). */
+  function ensureGridRendered(idx) {
+    const total = state.filteredChannels.length;
+    const want = Math.min(total, Math.ceil((idx + 1) / GRID_PAGE) * GRID_PAGE);
+    if (want <= gridRendered) return;
+
+    const frag = document.createDocumentFragment();
+    state.filteredChannels.slice(gridRendered, want).forEach((ch, i) => {
+      const idx = gridRendered + i;
+      const card = document.createElement('div');
+      const isPlaying = state.playingChannel && state.playingChannel.id === ch.id;
+      const isFav = state.favorites.includes(ch.id);
+      const foreign = Dub && Dub.isForeign(ch);
+
+      const app = isApp(ch), radio = isRadioCh(ch), locked = appOnly(ch);
+      card.className = `channel-card${isPlaying ? ' is-playing' : ''}${isFav ? ' is-fav' : ''}` +
+        `${app ? ' is-app' : ''}${radio ? ' is-radio' : ''}${locked ? ' is-locked' : ''}`;
       card.dataset.index = idx;
       card.dataset.id = ch.id;
+      card.style.setProperty('--card-hue', hueOf(ch.id));
 
       card.innerHTML = `
         <div class="card-top">
-          <span class="channel-num-badge">#${ch.number}</span>
+          <span class="channel-num-badge">${ch.number}</span>
           <div class="card-top-right">
-            <span class="card-playing-indicator"><span class="pulse-dot"></span>משדר</span>
-            <span class="card-fav-star" style="display: ${isFav ? 'inline-block' : 'none'};">⭐</span>
+            <span class="card-playing-indicator"><span class="pulse-dot"></span>${radio ? 'מנגן' : 'משדר'}</span>
+            <span class="card-fav-star">⭐</span>
+            ${foreign ? `<span class="dub-chip" title="ניתן לדיבוב לעברית">🎙️ ${ch.lang === 'auto' ? 'זר' : ch.lang.toUpperCase()}</span>` : ''}
+            ${app ? '<span class="app-chip" title="פותח את האפליקציה הרשמית">↗ אפליקציה</span>' : ''}
+            ${locked ? '<span class="lock-chip" title="פועל באפליקציות (אנדרואיד, Windows, טלוויזיה)">📲 באפליקציה</span>' : ''}
+            ${radio ? '<span class="music-chip" title="רדיו">📻</span>' : (ch.lang === 'music' ? '<span class="music-chip" title="מוזיקה">♪</span>' : '')}
           </div>
         </div>
         <div class="channel-logo-wrap">
-          <img class="channel-logo-img" src="${ch.logo}" alt="${ch.name}" loading="lazy"
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          <div class="channel-logo-fallback" style="display: none;">
-            <span class="fallback-num">#${ch.number}</span>
-            <span class="fallback-name">${ch.name}</span>
-          </div>
+          <img class="channel-logo-img" alt="" loading="lazy">
+          <div class="monogram hidden"></div>
         </div>
-        <div class="channel-card-footer">
-          <div class="channel-card-title">${ch.name}</div>
-        </div>
+        <div class="channel-card-title">${escapeHtml(ch.name)}</div>
+        <div class="channel-card-meta">${escapeHtml(cardMeta(ch))}</div>
       `;
+      setLogo(card.querySelector('.channel-logo-img'), card.querySelector('.monogram'), ch);
 
       card.addEventListener('click', () => {
         setFocus('grid', idx);
+        if (Dub) Dub.unlockAudio();
         playChannel(idx);
       });
 
       card.addEventListener('mouseenter', () => {
-        setFocus('grid', idx);
+        if (state.currentSection === 'grid' || state.currentSection === 'sidebar' || state.currentSection === 'search') {
+          setFocus('grid', idx, true);
+        }
       });
 
-      el.channelsGrid.appendChild(card);
+      frag.appendChild(card);
     });
+    el.channelsGrid.appendChild(frag);
+    gridRendered = want;
+  }
 
-    highlightFocusedItem();
+  /** Short second line on a card: what it is + language. */
+  function cardMeta(ch) {
+    if (isApp(ch)) return 'שירות / אפליקציה רשמית';
+    if (isRadioCh(ch)) return 'רדיו בשידור חי';
+    const cat = splitCategoryName(ch.category).main.replace(/^ערוצי ישראל$/, 'ישראל');
+    const lang = Dub && Dub.isForeign(ch) && ch.lang !== 'auto' ? Dub.langName(ch.lang) : '';
+    return lang ? `${cat} · ${lang}` : cat;
+  }
+
+  function gridColumns() {
+    const cards = el.channelsGrid.querySelectorAll('.channel-card');
+    if (cards.length < 2) return 1;
+    const top = cards[0].offsetTop;
+    let n = 0;
+    while (n < cards.length && cards[n].offsetTop === top) n++;
+    return Math.max(1, n);
   }
 
   // HERO SPOTLIGHT
@@ -566,31 +860,69 @@
     if (!ch) return;
 
     el.heroNumber.textContent = `#${ch.number}`;
-    el.heroCategory.textContent = ch.category;
-    el.heroBadgeTag.textContent = ch.badge || 'FHD 1080p';
+    el.heroCategory.textContent = splitCategoryName(ch.category).main;
+    el.heroBadgeTag.textContent = ch.badge || 'HD';
     el.heroTitle.textContent = ch.name;
     el.heroDesc.textContent = ch.desc || 'שידור חי רציף ואיכותי';
+    el.heroSpotlight.style.setProperty('--card-hue', hueOf(ch.id));
 
     const isFav = state.favorites.includes(ch.id);
-    if (el.heroFavTag) {
-      if (isFav) el.heroFavTag.classList.remove('hidden');
-      else el.heroFavTag.classList.add('hidden');
-    }
+    if (el.heroFavTag) el.heroFavTag.classList.toggle('hidden', !isFav);
+    if (el.heroBtnFav) el.heroBtnFav.innerHTML = isFav ? '<span>★</span> הסר ממועדפים' : '<span>☆</span> מועדפים';
 
-    if (el.heroLogo) {
-      el.heroLogo.style.display = 'block';
-      el.heroLogo.src = ch.logo;
+    const foreign = Dub && Dub.isForeign(ch);
+    if (el.heroLangTag) {
+      el.heroLangTag.classList.toggle('hidden', !foreign);
+      if (foreign) el.heroLangTag.textContent = `🎙️ ${Dub.langName(ch.lang)} ← דיבוב לעברית`;
     }
+    const app = isApp(ch), locked = appOnly(ch);
+    if (el.heroBtnDub) el.heroBtnDub.classList.toggle('hidden', !foreign || app || locked);
+    if (el.heroBtnPlay) {
+      el.heroBtnPlay.innerHTML = app ? '<span>↗</span> פתיחת האפליקציה'
+        : locked ? '<span>📲</span> צפייה באפליקציה'
+        : isRadioCh(ch) ? '<span>🎧</span> האזנה' : '<span>▶</span> צפייה';
+    }
+    if (el.heroNote) {
+      el.heroNote.textContent = app ? (PLATFORM === 'android' ? 'נפתח באפליקציה הרשמית (אם אינה מותקנת – בחנות Google Play)' : 'נפתח באתר הרשמי של השירות')
+        : locked ? 'הדפדפן חוסם את השידור הזה – הוא פועל באפליקציות לאנדרואיד, Windows וטלוויזיה' : '';
+      el.heroNote.classList.toggle('hidden', !el.heroNote.textContent);
+    }
+    el.heroSpotlight.style.setProperty('--hero-img', ch.logo ? `url("${String(ch.logo).replace(/"/g, '%22')}")` : 'none');
+
+    setLogo(el.heroLogo, el.heroMonogram, ch);
+  }
+
+  function setupHeroButtons() {
+    const current = () => state.filteredChannels[state.focusedGridIdx];
+    if (el.heroBtnPlay) el.heroBtnPlay.addEventListener('click', () => {
+      if (Dub) Dub.unlockAudio();
+      playChannel(state.focusedGridIdx);
+    });
+    if (el.heroBtnDub) el.heroBtnDub.addEventListener('click', () => {
+      if (!Dub) return;
+      Dub.unlockAudio();
+      if (Dub.missingConfig()) {
+        showToast('🎙️ ' + Dub.missingConfig());
+        openSettings();
+        return;
+      }
+      Dub.save({ enabled: true });
+      refreshDubUi();
+      playChannel(state.focusedGridIdx);
+    });
+    if (el.heroBtnFav) el.heroBtnFav.addEventListener('click', () => {
+      const ch = current();
+      if (ch) toggleFavorite(ch.id);
+    });
   }
 
   // FOCUS SYSTEM
-  function setFocus(section, index) {
+  function setFocus(section, index, noScroll) {
     state.currentSection = section;
 
     if (section === 'grid') {
       state.focusedGridIdx = Math.max(0, Math.min(index, state.filteredChannels.length - 1));
-      const ch = state.filteredChannels[state.focusedGridIdx];
-      updateHeroSpotlight(ch);
+      updateHeroSpotlight(state.filteredChannels[state.focusedGridIdx]);
     } else if (section === 'sidebar') {
       state.focusedCategoryIdx = Math.max(0, Math.min(index, state.categories.length - 1));
     } else if (section === 'drawer') {
@@ -599,39 +931,29 @@
       state.focusedExitBtn = index;
     }
 
-    highlightFocusedItem();
+    highlightFocusedItem(noScroll);
   }
 
-  function highlightFocusedItem() {
+  function highlightFocusedItem(noScroll) {
     document.querySelectorAll('.focused').forEach(elem => elem.classList.remove('focused'));
+    const reveal = (target) => {
+      if (!target) return;
+      target.classList.add('focused');
+      if (!noScroll) target.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
+    };
 
     if (state.currentSection === 'grid') {
-      const cards = el.channelsGrid.querySelectorAll('.channel-card');
-      const target = cards[state.focusedGridIdx];
-      if (target) {
-        target.classList.add('focused');
-        target.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      }
+      ensureGridRendered(state.focusedGridIdx + GRID_PAGE / 2);
+      reveal(el.channelsGrid.querySelectorAll('.channel-card')[state.focusedGridIdx]);
     } else if (state.currentSection === 'sidebar') {
-      const items = el.categoryList.querySelectorAll('.category-item');
-      const target = items[state.focusedCategoryIdx];
-      if (target) {
-        target.classList.add('focused');
-        target.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      }
+      reveal(el.categoryList.querySelectorAll('.category-item')[state.focusedCategoryIdx]);
     } else if (state.currentSection === 'search') {
-      el.search.classList.add('focused');
+      el.search.parentElement.classList.add('focused');
       el.search.focus();
     } else if (state.currentSection === 'drawer') {
-      const items = el.drawerChannelList.querySelectorAll('.drawer-item');
-      const target = items[state.focusedDrawerIdx];
-      if (target) {
-        target.classList.add('focused');
-        target.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      }
+      reveal(el.drawerChannelList.querySelectorAll('.drawer-item')[state.focusedDrawerIdx]);
     } else if (state.currentSection === 'exit_modal') {
-      if (state.focusedExitBtn === 0) el.btnCancelExit.classList.add('focused');
-      else el.btnConfirmExit.classList.add('focused');
+      (state.focusedExitBtn === 0 ? el.btnCancelExit : el.btnConfirmExit).classList.add('focused');
     }
   }
 
@@ -639,40 +961,43 @@
   let networkRetryCount = 0;
 
   function hidePlayerError() {
-    if (el.playerErrorOverlay) {
-      el.playerErrorOverlay.classList.add('hidden');
-    }
+    if (el.playerErrorOverlay) el.playerErrorOverlay.classList.add('hidden');
   }
 
   function showPlayerError(channel, reason) {
     hideSpinner();
+    if (Dub) Dub.detach();
     if (state.hlsInstance) {
       try { state.hlsInstance.destroy(); } catch (e) {}
       state.hlsInstance = null;
     }
     if (el.playerErrorOverlay) {
-      if (el.playerErrorTitle) {
-        el.playerErrorTitle.textContent = 'שידור מותאם לאפליקציית הטלוויזיה';
-      }
-      if (el.playerErrorDesc) {
-        el.playerErrorDesc.textContent = `הערוץ "${channel.name}" משדר בפרוטוקול HTTP המותאם לטלוויזיית LG webOS ולנגנים חיצוניים (VLC). דפדפנים מאובטחים (HTTPS) חוסמים שידורי HTTP מסוג זה. ערוצים אחרים בעלי שידור HTTPS פועלים כאן באופן מלא!`;
-      }
-      if (el.btnErrorDirectLink) {
-        el.btnErrorDirectLink.href = channel.url;
-      }
+      const insecure = location.protocol === 'https:' && /^http:/i.test(streamUrl(channel));
+      el.playerErrorTitle.textContent = insecure ? 'השידור זמין באפליקציית הטלוויזיה' : 'השידור אינו זמין כרגע';
+      el.playerErrorDesc.textContent = insecure
+        ? `הערוץ "${channel.name}" משדר ב-HTTP, ודפדפנים חוסמים שידור כזה מתוך אתר מאובטח (HTTPS). הוא פועל באפליקציית LG webOS ובנגנים חיצוניים כמו VLC.`
+        : `לא הצלחנו להתחבר לשידור של "${channel.name}" (${reason || 'שגיאת רשת'}). ייתכן שהשידור כבוי זמנית – נסו שוב מאוחר יותר או ערוץ אחר.`;
+      if (el.btnErrorDirectLink) el.btnErrorDirectLink.href = streamUrl(channel);
       el.playerErrorOverlay.classList.remove('hidden');
     }
   }
 
-  // PLAYBACK SYSTEM
   function playChannel(index) {
     if (index < 0 || index >= state.filteredChannels.length) return;
-
-    state.playingChannelIndex = index;
     const channel = state.filteredChannels[index];
 
-    const cards = el.channelsGrid.querySelectorAll('.channel-card');
-    cards.forEach((c, idx) => {
+    // Service apps open outside; http channels on the web site point to the apps.
+    if (isApp(channel)) { openServiceApp(channel); addRecent(channel); return; }
+    if (appOnly(channel)) { openGetApp(channel); return; }
+
+    state.playingChannelIndex = index;
+    state.playingChannel = channel;
+    addRecent(channel);
+
+    el.channelsGrid.querySelectorAll('.channel-card').forEach((c, idx) => {
+      c.classList.toggle('is-playing', idx === index);
+    });
+    el.drawerChannelList.querySelectorAll('.drawer-item').forEach((c, idx) => {
       c.classList.toggle('is-playing', idx === index);
     });
 
@@ -680,85 +1005,111 @@
     updateOSD(channel);
     showOSD();
     showSpinner('מתחבר לשידור חי...');
+    refreshDubUi();
 
-    loadVideoStream(channel.url, channel);
+    loadVideoStream(streamUrl(channel), channel);
+  }
+
+  function isAudioUrl(url, channel) {
+    return url.includes('.mp3') || url.includes('.audio') || url.includes('_mp3') || url.includes('_aac') ||
+      url.endsWith('.aac') || (channel && channel.categoryEn === 'music' && !url.includes('.m3u8'));
+  }
+
+  function startPlayback(m, channel) {
+    const p = m.play();
+    if (!p) { hideSpinner(); return; }
+    p.then(() => {
+      hideSpinner();
+      updatePlayPauseButton(false);
+    }).catch(() => {
+      // Autoplay blocked: try muted
+      m.muted = true;
+      m.play().then(() => {
+        hideSpinner();
+        updatePlayPauseButton(false);
+        showToast('השידור פועל במצב מושתק (לחץ 🔊 לשמע)');
+      }).catch(e => showPlayerError(channel, e && e.message));
+    });
   }
 
   function loadVideoStream(url, channel) {
     hidePlayerError();
     networkRetryCount = 0;
+    if (Dub) Dub.detach();
 
     if (state.hlsInstance) {
       try { state.hlsInstance.destroy(); } catch (e) {}
       state.hlsInstance = null;
     }
 
-    let finalUrl = url;
-
-    // Check if this is an audio/radio stream (Icecast/MP3/AAC)
-    const isAudioStream = url.includes('.mp3') || url.includes('.audio') || url.includes('_mp3') || url.includes('_aac') || url.endsWith('.aac') || (channel && channel.categoryEn === 'music' && !url.includes('.m3u8'));
-
-    if (isAudioStream) {
-      if (el.playerRadioBackdrop) {
-        if (el.radioBackdropLogo) {
-          el.radioBackdropLogo.src = channel.logo || '';
-          el.radioBackdropLogo.style.display = channel.logo ? 'block' : 'none';
-        }
-        if (el.radioBackdropName) el.radioBackdropName.textContent = channel.name;
-        el.playerRadioBackdrop.classList.remove('hidden');
+    // Radio streams play in their own <audio> element, so the video element stays HLS-only.
+    if (isAudioUrl(url, channel)) {
+      el.video.pause();
+      el.video.removeAttribute('src');
+      el.video.load();
+      state.isRadio = true;
+      if (el.radioBackdropLogo) {
+        el.radioBackdropLogo.src = channel.logo || '';
+        el.radioBackdropLogo.style.display = channel.logo ? 'block' : 'none';
       }
-      el.video.src = finalUrl;
-      const playPromise = el.video.play();
-      if (playPromise !== undefined) {
-        playPromise.then(() => {
-          hideSpinner();
-          updatePlayPauseButton(false);
-        }).catch(() => {
-          // Autoplay blocked: try muted
-          el.video.muted = true;
-          el.video.play().then(() => {
-            hideSpinner();
-            updatePlayPauseButton(false);
-            showToast('השידור פועל במצב מושתק (לחץ 🔊 לשמע)');
-          }).catch(e => {
-            showPlayerError(channel, e);
-          });
-        });
-      }
+      if (el.radioBackdropName) el.radioBackdropName.textContent = channel.name;
+      el.playerRadioBackdrop.classList.remove('hidden');
+      el.osdQuality.textContent = 'רדיו • שמע חי';
+      el.radio.src = url;
+      el.radio.onerror = () => showPlayerError(channel, 'שגיאה בניגון השמע');
+      startPlayback(el.radio, channel);
       return;
     }
 
-    if (el.playerRadioBackdrop) {
-      el.playerRadioBackdrop.classList.add('hidden');
-    }
+    state.isRadio = false;
+    el.radio.pause();
+    el.radio.removeAttribute('src');
+    el.playerRadioBackdrop.classList.add('hidden');
+    el.osdQuality.textContent = 'HLS Live';
 
     // Video / HLS Stream
     if (window.Hls && Hls.isSupported()) {
-      const hlsConfig = {
+      const delayed = Dub && Dub.wantsSync(channel);
+      const hls = new Hls({
         enableWorker: true,
-        lowLatencyMode: true,
+        lowLatencyMode: !delayed,
         backBufferLength: 60,
         manifestLoadingMaxRetry: 2,
         levelLoadingMaxRetry: 2
-      };
-
-      const hls = new Hls(hlsConfig);
-      hls.loadSource(finalUrl);
+      });
+      hls.loadSource(url);
       hls.attachMedia(el.video);
 
-      hls.on(Hls.Events.MANIFEST_PARSED, () => {
-        hideSpinner();
+      let levelAdjusted = false;
+      hls.on(Hls.Events.LEVEL_LOADED, (event, data) => {
+        if (!levelAdjusted && Dub) {
+          levelAdjusted = true;
+          Dub.adjustMainHls(hls, data.details, channel);
+        }
+      });
+
+      hls.on(Hls.Events.MANIFEST_PARSED, (event, data) => {
+        if (delayed) showSpinner(`מכין דיבוב מסונכרן… התמונה מושהית ב-${Dub.settings.delay} שניות`);
+        else hideSpinner();
         const p = el.video.play();
+        const onPlaying = () => {
+          hideSpinner();
+          updatePlayPauseButton(false);
+        };
         if (p !== undefined) {
-          p.then(() => {
-            updatePlayPauseButton(false);
-          }).catch(() => {
+          p.then(onPlaying).catch(() => {
             el.video.muted = true;
             el.video.play().then(() => {
-              updatePlayPauseButton(false);
+              onPlaying();
               showToast('השידור פועל במצב מושתק (לחץ 🔊 לשמע)');
             }).catch(() => {});
           });
+        }
+        el.video.addEventListener('playing', hideSpinner, { once: true });
+        const lvl = data.levels && data.levels[data.levels.length - 1];
+        if (lvl && lvl.height) el.osdQuality.textContent = `HLS Live ${lvl.height}p`;
+        if (Dub && state.playingChannel === channel) {
+          Dub.attach({ video: el.video, hls: hls, channel: channel, url: url });
         }
       });
 
@@ -786,140 +1137,308 @@
 
       state.hlsInstance = hls;
     } else if (el.video.canPlayType('application/vnd.apple.mpegurl')) {
-      // Native Apple HLS (Safari iOS & Mac)
-      el.video.src = finalUrl;
-      el.video.addEventListener('loadedmetadata', () => {
-        hideSpinner();
-        const p = el.video.play();
-        if (p !== undefined) {
-          p.then(() => {
-            updatePlayPauseButton(false);
-          }).catch(() => {
-            el.video.muted = true;
-            el.video.play().catch(() => {});
-          });
-        }
-      }, { once: true });
-      el.video.addEventListener('error', () => {
-        showPlayerError(channel, 'שגיאה בניגון הווידאו');
-      }, { once: true });
+      // Native Apple HLS (Safari iOS & Mac) – dubbing needs hls.js, so it is not offered here.
+      el.video.src = url;
+      el.video.addEventListener('loadedmetadata', () => startPlayback(el.video, channel), { once: true });
+      el.video.addEventListener('error', () => showPlayerError(channel, 'שגיאה בניגון הווידאו'), { once: true });
     } else {
-      el.video.src = finalUrl;
-      el.video.play().catch(() => {});
-      updatePlayPauseButton(false);
+      el.video.src = url;
+      startPlayback(el.video, channel);
+    }
+  }
+
+  // HEBREW DUBBING
+  const DUB_STATE_CLASS = ['off', 'loading', 'listening', 'translating', 'speaking', 'error'];
+
+  function setupDub() {
+    if (!Dub) return;
+    Dub.init({
+      container: el.playerContainer,
+      toast: showToast,
+      onStatus: (st, text) => {
+        if (el.osdDubStatus) {
+          el.osdDubStatus.classList.toggle('hidden', st === 'off');
+          DUB_STATE_CLASS.forEach(c => el.osdDubStatus.classList.remove('st-' + c));
+          el.osdDubStatus.classList.add('st-' + st);
+        }
+        if (el.osdDubText) el.osdDubText.textContent = text;
+        if (st === 'error') {
+          showOSD();
+          showToast('🎙️ ' + text);
+        }
+        if (st === 'listening' || st === 'speaking') hideSpinner();
+      }
+    });
+    if (el.btnDubToggle) el.btnDubToggle.addEventListener('click', () => toggleDub());
+    if (el.webBtnDub) el.webBtnDub.addEventListener('click', (e) => { e.stopPropagation(); toggleDub(); });
+    refreshDubUi();
+  }
+
+  function refreshDubUi() {
+    if (!Dub) return;
+    const on = Dub.settings.enabled;
+    if (el.btnDubToggle) el.btnDubToggle.classList.toggle('active', on);
+    if (el.dubToggleLabel) el.dubToggleLabel.textContent = on ? 'דיבוב: פעיל' : 'דיבוב: כבוי';
+    const ch = state.playingChannel;
+    const foreign = !!ch && Dub.isForeign(ch);
+    if (el.webBtnDub) {
+      el.webBtnDub.classList.toggle('hidden', !foreign);
+      el.webBtnDub.classList.toggle('active', on);
+      if (el.webDubLabel) el.webDubLabel.textContent = on ? 'דיבוב פעיל' : 'דיבוב לעברית';
+    }
+  }
+
+  function toggleDub() {
+    if (!Dub) return;
+    Dub.unlockAudio();
+    const turnOn = !Dub.settings.enabled;
+    if (turnOn && Dub.missingConfig()) {
+      showToast('🎙️ ' + Dub.missingConfig());
+      openSettings();
+      return;
+    }
+    Dub.save({ enabled: turnOn });
+    refreshDubUi();
+    const ch = state.playingChannel;
+    const inPlayer = !el.playerContainer.classList.contains('hidden');
+    if (!turnOn) {
+      Dub.detach();
+      showToast('🎙️ הדיבוב כובה');
+      return;
+    }
+    if (ch && !Dub.isForeign(ch)) {
+      showToast('🎙️ הדיבוב הופעל – יפעל אוטומטית בערוצים שאינם בעברית');
+      return;
+    }
+    showToast(`🎙️ דיבוב לעברית הופעל${Dub.settings.sync ? ' (מסונכרן)' : ''}`);
+    if (ch && inPlayer && state.hlsInstance) {
+      if (Dub.settings.sync) {
+        // Lip-sync needs the picture to be delayed: restart the stream with the delay.
+        loadVideoStream(streamUrl(ch), ch);
+        showSpinner('מכין דיבוב מסונכרן…');
+      } else {
+        Dub.attach({ video: el.video, hls: state.hlsInstance, channel: ch, url: streamUrl(ch) });
+      }
+    }
+  }
+
+  // SETTINGS
+  function setupSettings() {
+    if (el.btnOpenSettings) el.btnOpenSettings.addEventListener('click', openSettings);
+    if (el.webBtnSettings) el.webBtnSettings.addEventListener('click', (e) => { e.stopPropagation(); openSettings(); });
+    if (el.btnCloseSettings) el.btnCloseSettings.addEventListener('click', closeSettings);
+    el.settingsModal.addEventListener('click', (e) => { if (e.target === el.settingsModal) closeSettings(); });
+    if (!Dub) return;
+
+    const s = () => Dub.settings;
+    const f = {
+      enabled: $('set-dub-enabled'), engine: $('set-engine'), geminiKey: $('set-gemini-key'), geminiModel: $('set-gemini-model'),
+      openaiKey: $('set-openai-key'), localModel: $('set-local-model'), tts: $('set-tts'), voice: $('set-voice'),
+      rate: $('set-rate'), duck: $('set-duck'), sync: $('set-sync'), delay: $('set-delay'), subs: $('set-subs'), orig: $('set-orig'),
+      outRate: $('out-rate'), outDuck: $('out-duck'), rowVoice: $('row-voice'), rowDelay: $('row-delay')
+    };
+    el.settingsFields = f;
+
+    const fillModels = (models) => {
+      const cur = s().geminiModel;
+      const list = Array.from(new Set([cur, 'gemini-flash-latest'].concat(models || [])));
+      f.geminiModel.innerHTML = list.map(m => `<option value="${escapeHtml(m)}">${escapeHtml(m)}</option>`).join('');
+      f.geminiModel.value = cur;
+    };
+    const fillVoices = () => {
+      const voices = Dub.hebrewVoices();
+      f.voice.innerHTML = '<option value="">אוטומטי (לפי מין הדובר)</option>' +
+        voices.map(v => `<option value="${escapeHtml(v.name)}">${escapeHtml(v.name)}</option>`).join('');
+      f.voice.value = s().voiceName;
+      if (!voices.length) f.voice.innerHTML = '<option value="">לא נמצא קול עברי במכשיר – ישמש קול Google</option>';
+    };
+    const loadModels = () => {
+      if (!s().geminiKey) return;
+      Dub.listGeminiModels(s().geminiKey).then(fillModels).catch(() => {});
+    };
+
+    el.syncSettingsForm = () => {
+      const st = s();
+      f.enabled.checked = st.enabled;
+      f.engine.value = st.engine;
+      f.geminiKey.value = st.geminiKey;
+      f.openaiKey.value = st.openaiKey;
+      f.localModel.value = st.localModel;
+      f.tts.value = st.tts;
+      f.rate.value = st.rate;
+      f.duck.value = st.duck;
+      f.sync.checked = st.sync;
+      f.delay.value = String(st.delay);
+      f.subs.checked = st.subtitles;
+      f.orig.checked = st.showOriginal;
+      fillModels();
+      fillVoices();
+      updateVisibility();
+    };
+
+    function updateVisibility() {
+      const st = s();
+      el.settingsModal.querySelectorAll('.set-group').forEach(g => g.classList.toggle('hidden', g.dataset.engine !== st.engine));
+      f.rowVoice.classList.toggle('hidden', !(st.tts === 'auto' || st.tts === 'browser'));
+      f.rowDelay.classList.toggle('hidden', !st.sync);
+      f.outRate.textContent = Number(st.rate).toFixed(2).replace(/0$/, '');
+      f.outDuck.textContent = Math.round(st.duck * 100) + '%';
+    }
+
+    const bind = (node, evt, fn) => node.addEventListener(evt, () => { fn(); updateVisibility(); refreshDubUi(); });
+    bind(f.enabled, 'change', () => {
+      if (f.enabled.checked && Dub.missingConfig()) showToast('🎙️ ' + Dub.missingConfig());
+      Dub.save({ enabled: f.enabled.checked });
+      if (!f.enabled.checked) Dub.detach();
+    });
+    bind(f.engine, 'change', () => Dub.save({ engine: f.engine.value }));
+    bind(f.geminiKey, 'change', () => { Dub.save({ geminiKey: f.geminiKey.value.trim() }); loadModels(); });
+    bind(f.geminiModel, 'change', () => Dub.save({ geminiModel: f.geminiModel.value }));
+    bind(f.openaiKey, 'change', () => Dub.save({ openaiKey: f.openaiKey.value.trim() }));
+    bind(f.localModel, 'change', () => Dub.save({ localModel: f.localModel.value }));
+    bind(f.tts, 'change', () => Dub.save({ tts: f.tts.value }));
+    bind(f.voice, 'change', () => Dub.save({ voiceName: f.voice.value }));
+    bind(f.rate, 'input', () => Dub.save({ rate: parseFloat(f.rate.value) }));
+    bind(f.duck, 'input', () => Dub.save({ duck: parseFloat(f.duck.value) }));
+    bind(f.sync, 'change', () => Dub.save({ sync: f.sync.checked }));
+    bind(f.delay, 'change', () => Dub.save({ delay: parseInt(f.delay.value, 10) }));
+    bind(f.subs, 'change', () => Dub.save({ subtitles: f.subs.checked }));
+    bind(f.orig, 'change', () => Dub.save({ showOriginal: f.orig.checked }));
+    $('btn-test-voice').addEventListener('click', () => { Dub.unlockAudio(); Dub.testVoice(); });
+    if ('speechSynthesis' in window && speechSynthesis.addEventListener) {
+      speechSynthesis.addEventListener('voiceschanged', () => { if (state.settingsOpen) fillVoices(); });
+    }
+    loadModels();
+  }
+
+  function settingsFocusables() {
+    return Array.from(el.settingsModal.querySelectorAll('.set-focus'))
+      .filter(n => n.offsetParent !== null && !n.closest('.hidden'));
+  }
+
+  function openSettings() {
+    if (state.settingsOpen) return;
+    state.settingsOpen = true;
+    state.sectionBeforeSettings = state.currentSection === 'settings' ? 'grid' : state.currentSection;
+    if (el.syncSettingsForm) el.syncSettingsForm();
+    el.settingsModal.classList.remove('hidden');
+    state.currentSection = 'settings';
+    document.querySelectorAll('.focused').forEach(n => n.classList.remove('focused'));
+    const first = settingsFocusables()[0];
+    if (first) first.focus();
+  }
+
+  function closeSettings() {
+    if (!state.settingsOpen) return;
+    state.settingsOpen = false;
+    if (document.activeElement && el.settingsModal.contains(document.activeElement)) document.activeElement.blur();
+    el.settingsModal.classList.add('hidden');
+    const back = state.sectionBeforeSettings;
+    if (back === 'player' && !el.playerContainer.classList.contains('hidden')) {
+      state.currentSection = 'player';
+      showOSD();
+    } else {
+      setFocus('grid', state.focusedGridIdx, true);
+    }
+  }
+
+  function handleSettingsKeys(code, e) {
+    const list = settingsFocusables();
+    const cur = document.activeElement;
+    let i = list.indexOf(cur);
+    if (code === 38 || code === 40) {
+      e.preventDefault();
+      if (i === -1) i = 0;
+      else i = (i + (code === 40 ? 1 : -1) + list.length) % list.length;
+      list[i].focus();
+      list[i].scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+      return;
+    }
+    if (!cur || i === -1) return;
+    const step = code === 37 ? 1 : code === 39 ? -1 : 0; // RTL: left = next
+    if (step && cur.tagName === 'SELECT') {
+      e.preventDefault();
+      const n = cur.options.length;
+      cur.selectedIndex = (cur.selectedIndex + step + n) % n;
+      cur.dispatchEvent(new Event('change'));
+    } else if (step && cur.type === 'range') {
+      e.preventDefault();
+      const st = parseFloat(cur.step) || 0.05;
+      cur.value = Math.min(parseFloat(cur.max), Math.max(parseFloat(cur.min), parseFloat(cur.value) - step * st));
+      cur.dispatchEvent(new Event('input'));
+    } else if (code === 13 && cur.type === 'checkbox') {
+      e.preventDefault();
+      cur.checked = !cur.checked;
+      cur.dispatchEvent(new Event('change'));
     }
   }
 
   // INTERACTIVE WEB PLAYER CONTROLS
   function setupWebPlayerControls() {
-    if (el.btnFloatingClose) {
-      el.btnFloatingClose.addEventListener('click', (e) => {
-        e.stopPropagation();
-        exitFullscreenToGrid();
-      });
-    }
+    const on = (node, fn) => {
+      if (node) node.addEventListener('click', (e) => { e.stopPropagation(); fn(); });
+    };
+    on(el.btnFloatingClose, exitFullscreenToGrid);
+    on(el.btnErrorBack, exitFullscreenToGrid);
+    on(el.webBtnBack, handleBackKey);
+    on(el.webBtnPrev, () => zapChannel(-1));
+    on(el.webBtnNext, () => zapChannel(1));
+    on(el.webBtnPlayPause, togglePlayPause);
+    on(el.webBtnMute, toggleMute);
+    on(el.webBtnAspect, cycleRetroMode);
+    on(el.webBtnFullscreen, toggleBrowserFullscreen);
 
-    if (el.btnErrorBack) {
-      el.btnErrorBack.addEventListener('click', (e) => {
-        e.stopPropagation();
-        exitFullscreenToGrid();
+    [el.video, el.radio].forEach(m => {
+      m.addEventListener('play', () => { if (m === media()) updatePlayPauseButton(false); });
+      m.addEventListener('pause', () => { if (m === media()) updatePlayPauseButton(true); });
+      m.addEventListener('volumechange', () => {
+        if (m === media() && el.webMuteIcon) el.webMuteIcon.textContent = m.muted ? '🔇' : '🔊';
       });
-    }
+    });
 
-    if (el.webBtnBack) {
-      el.webBtnBack.addEventListener('click', (e) => {
-        e.stopPropagation();
-        handleBackKey();
-      });
-    }
+    el.playerContainer.addEventListener('mousemove', () => {
+      showOSD();
+      resetScreensaverTimer();
+    });
 
-    if (el.webBtnPlayPause) {
-      el.webBtnPlayPause.addEventListener('click', (e) => {
-        e.stopPropagation();
-        togglePlayPause();
-      });
-    }
+    el.playerContainer.addEventListener('click', (e) => {
+      if (e.target.closest('.osd-web-actions') || e.target.closest('.quick-drawer') ||
+          e.target.closest('.player-error-box') || e.target.closest('.player-floating-close')) return;
+      if (el.osd.classList.contains('osd-hidden')) showOSD();
+      else el.osd.classList.add('osd-hidden');
+    });
 
-    if (el.webBtnMute) {
-      el.webBtnMute.addEventListener('click', (e) => {
-        e.stopPropagation();
-        toggleMute();
-      });
-    }
-
-    if (el.webBtnAspect) {
-      el.webBtnAspect.addEventListener('click', (e) => {
-        e.stopPropagation();
-        cycleRetroMode();
-      });
-    }
-
-    if (el.webBtnFullscreen) {
-      el.webBtnFullscreen.addEventListener('click', (e) => {
-        e.stopPropagation();
-        toggleBrowserFullscreen();
-      });
-    }
-
-    if (el.video) {
-      el.video.addEventListener('play', () => updatePlayPauseButton(false));
-      el.video.addEventListener('pause', () => updatePlayPauseButton(true));
-      el.video.addEventListener('volumechange', () => {
-        if (el.webMuteIcon) {
-          el.webMuteIcon.textContent = (el.video.muted || el.video.volume === 0) ? '🔇' : '🔊';
-        }
-      });
-    }
-
-    if (el.playerContainer) {
-      el.playerContainer.addEventListener('mousemove', () => {
-        showOSD();
-        resetScreensaverTimer();
-      });
-
-      el.playerContainer.addEventListener('click', (e) => {
-        if (e.target.closest('.osd-web-actions') || e.target.closest('.quick-drawer') || e.target.closest('.remote-hints')) return;
-        if (el.osd.classList.contains('hidden')) {
-          showOSD();
-        } else {
-          el.osd.classList.add('hidden');
-        }
-      });
-
-      el.playerContainer.addEventListener('dblclick', (e) => {
-        if (e.target.closest('.osd-web-actions') || e.target.closest('.quick-drawer')) return;
-        toggleBrowserFullscreen();
-      });
-    }
+    el.playerContainer.addEventListener('dblclick', (e) => {
+      if (e.target.closest('.osd-web-actions') || e.target.closest('.quick-drawer')) return;
+      toggleBrowserFullscreen();
+    });
   }
 
   function togglePlayPause() {
-    if (!el.video) return;
-    if (el.video.paused) {
-      el.video.play().then(() => {
+    const m = media();
+    if (!m) return;
+    if (m.paused) {
+      m.play().then(() => {
         updatePlayPauseButton(false);
-        showToast('מנגן ▶️');
+        showToast('מנגן ▶');
       }).catch(() => {});
     } else {
-      el.video.pause();
+      m.pause();
       updatePlayPauseButton(true);
-      showToast('מושהה ⏸️');
+      showToast('מושהה ⏸');
     }
   }
 
   function updatePlayPauseButton(isPaused) {
-    if (el.webPlayIcon) {
-      el.webPlayIcon.textContent = isPaused ? '▶️' : '⏸️';
-    }
+    if (el.webPlayIcon) el.webPlayIcon.textContent = isPaused ? '▶' : '⏸';
   }
 
   function toggleMute() {
-    if (!el.video) return;
-    el.video.muted = !el.video.muted;
-    if (el.webMuteIcon) {
-      el.webMuteIcon.textContent = el.video.muted ? '🔇' : '🔊';
-    }
-    showToast(el.video.muted ? 'מושתק 🔇' : 'שמע מופעל 🔊');
+    const m = media();
+    if (!m) return;
+    m.muted = !m.muted;
+    if (el.webMuteIcon) el.webMuteIcon.textContent = m.muted ? '🔇' : '🔊';
+    showToast(m.muted ? 'מושתק 🔇' : 'שמע מופעל 🔊');
   }
 
   function toggleBrowserFullscreen() {
@@ -927,78 +1446,60 @@
     const docEl = document.documentElement;
 
     if (!doc.fullscreenElement && !doc.webkitFullscreenElement) {
-      if (docEl.requestFullscreen) {
-        docEl.requestFullscreen();
-      } else if (docEl.webkitRequestFullscreen) {
-        docEl.webkitRequestFullscreen();
-      }
-      showToast('מסך מלא הופעל ⛶');
+      if (docEl.requestFullscreen) docEl.requestFullscreen().catch(() => {});
+      else if (docEl.webkitRequestFullscreen) docEl.webkitRequestFullscreen();
     } else {
-      if (doc.exitFullscreen) {
-        doc.exitFullscreen();
-      } else if (doc.webkitExitFullscreen) {
-        doc.webkitExitFullscreen();
-      }
-      showToast('יצאת ממסך מלא');
+      if (doc.exitFullscreen) doc.exitFullscreen();
+      else if (doc.webkitExitFullscreen) doc.webkitExitFullscreen();
     }
   }
 
   function enterFullscreenPlayer() {
     state.currentSection = 'player';
     el.playerContainer.classList.remove('hidden');
+    document.body.classList.add('player-open');
     showOSD();
   }
 
   function exitFullscreenToGrid() {
     hidePlayerError();
     hideSpinner();
-    if (el.playerRadioBackdrop) {
-      el.playerRadioBackdrop.classList.add('hidden');
-    }
     el.playerContainer.classList.add('hidden');
+    document.body.classList.remove('player-open');
     closeQuickDrawer();
     state.currentSection = 'grid';
     setFocus('grid', state.focusedGridIdx);
-    showToast('חזרת למדריך הערוצים');
-  }
-
-  function stopPlayback() {
-    if (state.hlsInstance) {
-      state.hlsInstance.destroy();
-      state.hlsInstance = null;
-    }
-    el.video.pause();
-    el.video.src = '';
-    state.playingChannelIndex = -1;
-    exitFullscreenToGrid();
+    if (state.playingChannel) showToast('חזרת למדריך – השידור ממשיך ברקע');
   }
 
   function zapChannel(direction) {
-    if (state.filteredChannels.length === 0) return;
-    let next = state.playingChannelIndex + direction;
-    if (next < 0) next = state.filteredChannels.length - 1;
-    if (next >= state.filteredChannels.length) next = 0;
-
+    const list = state.filteredChannels;
+    if (list.length === 0) return;
+    let next = state.playingChannelIndex;
+    // skip service apps and (on the web site) channels that only play in the apps
+    for (let i = 0; i < list.length; i++) {
+      next = (next + direction + list.length) % list.length;
+      if (!isApp(list[next]) && !appOnly(list[next])) break;
+    }
     playChannel(next);
   }
 
   // OSD & TOAST
   function updateOSD(channel) {
-    el.osdNumber.textContent = `#${channel.number}`;
+    el.osdNumber.textContent = `${channel.number}`;
     el.osdName.textContent = channel.name;
-    el.osdCategory.textContent = channel.category;
-
-    if (el.osdLogo) {
-      el.osdLogo.style.display = 'block';
-      el.osdLogo.src = channel.logo;
-    }
+    el.osdCategory.textContent = splitCategoryName(channel.category).main;
+    setLogo(el.osdLogo, el.osdMonogram, channel);
   }
 
   function showOSD() {
-    el.osd.classList.remove('hidden');
+    el.osd.classList.remove('osd-hidden');
+    el.playerContainer.classList.remove('cursor-hidden');
     if (state.osdTimeout) clearTimeout(state.osdTimeout);
     state.osdTimeout = setTimeout(() => {
-      el.osd.classList.add('hidden');
+      if (state.settingsOpen || state.drawerOpen) return;
+      el.osd.classList.add('osd-hidden');
+      el.playerContainer.classList.add('cursor-hidden');
     }, 4500);
   }
 
@@ -1008,7 +1509,7 @@
     if (state.toastTimeout) clearTimeout(state.toastTimeout);
     state.toastTimeout = setTimeout(() => {
       el.toast.classList.add('hidden');
-    }, 3000);
+    }, 3200);
   }
 
   function showSpinner(text) {
@@ -1022,21 +1523,24 @@
 
   // QUICK DRAWER IN PLAYER
   function renderDrawerList() {
-    el.drawerChannelList.innerHTML = '';
-    state.filteredChannels.forEach((ch, idx) => {
-      const item = document.createElement('div');
-      item.className = 'drawer-item';
-      item.dataset.index = idx;
-      item.innerHTML = `
-        <span class="drawer-num">#${ch.number}</span>
-        <span class="drawer-name">${ch.name}</span>
-      `;
-      item.addEventListener('click', () => {
+    // One HTML string + one delegated click handler: cheap even for 1000+ channels.
+    const playingId = state.playingChannel && state.playingChannel.id;
+    el.drawerChannelList.innerHTML = state.filteredChannels.map((ch, idx) => `
+      <div class="drawer-item${ch.id === playingId ? ' is-playing' : ''}" data-index="${idx}">
+        <span class="drawer-num">${ch.number}</span>
+        <span class="drawer-name">${escapeHtml(ch.name)}</span>
+        ${Dub && Dub.isForeign(ch) ? '<span class="drawer-dub">🎙️</span>' : ''}
+      </div>`).join('');
+    if (!el.drawerChannelList.dataset.wired) {
+      el.drawerChannelList.dataset.wired = '1';
+      el.drawerChannelList.addEventListener('click', (e) => {
+        const item = e.target.closest('.drawer-item');
+        if (!item) return;
+        e.stopPropagation();
         closeQuickDrawer();
-        playChannel(idx);
+        playChannel(parseInt(item.dataset.index, 10));
       });
-      el.drawerChannelList.appendChild(item);
-    });
+    }
   }
 
   function openQuickDrawer() {
@@ -1048,9 +1552,7 @@
   function closeQuickDrawer() {
     state.drawerOpen = false;
     el.quickDrawer.classList.add('hidden');
-    if (state.currentSection === 'drawer') {
-      state.currentSection = 'player';
-    }
+    if (state.currentSection === 'drawer') state.currentSection = 'player';
   }
 
   // DIRECT CHANNEL NUMBER TYPING
@@ -1071,17 +1573,14 @@
       state.typedDigits = '';
 
       if (target) {
-        const gridIdx = state.filteredChannels.findIndex(c => c.id === target.id);
+        let gridIdx = state.filteredChannels.findIndex(c => c.id === target.id);
+        if (gridIdx === -1) {
+          selectCategory('ALL', 0);
+          gridIdx = state.filteredChannels.findIndex(c => c.id === target.id);
+        }
         if (gridIdx !== -1) {
           setFocus('grid', gridIdx);
           playChannel(gridIdx);
-        } else {
-          selectCategory('ALL', 0);
-          const newIdx = state.filteredChannels.findIndex(c => c.id === target.id);
-          if (newIdx !== -1) {
-            setFocus('grid', newIdx);
-            playChannel(newIdx);
-          }
         }
       } else {
         showToast(`ערוץ מספר ${finalNum} לא קיים`);
@@ -1091,6 +1590,15 @@
 
   // SMART BACK BUTTON: NEVER ACCIDENTALLY EXITS!
   function handleBackKey() {
+    if (state.getAppOpen) {
+      closeGetApp();
+      return;
+    }
+    if (state.settingsOpen) {
+      closeSettings();
+      return;
+    }
+
     // 1. If Quick Drawer is open inside player -> close it
     if (state.drawerOpen) {
       closeQuickDrawer();
@@ -1112,6 +1620,7 @@
     // 4. If Search box is focused or has query -> clear it and return to grid
     if (state.currentSection === 'search' || state.searchQuery.trim().length > 0) {
       el.search.value = '';
+      el.search.blur();
       state.searchQuery = '';
       applyFilter();
       setFocus('grid', 0);
@@ -1128,18 +1637,18 @@
     // 6. If on a filtered category (e.g. "ילדים" or "מועדפים") -> return to "כל הערוצים"
     if (state.activeCategory !== 'ALL') {
       selectCategory('ALL', 0);
+      setFocus('grid', 0);
       showToast('חזרת לכל הערוצים');
       return;
     }
 
-    // 7. If already at the root of the Guide:
-    // Require double-click within 2.5 seconds to exit gracefully.
+    // 7. Already at the root of the Guide: require a double press within 2.5 seconds to exit.
     const now = Date.now();
     if (now - state.lastBackPressTime < 2500) {
       performActualExit();
     } else {
       state.lastBackPressTime = now;
-      showToast('לחץ שוב לחזרה / יציאה מהאפליקציה');
+      showToast('לחץ שוב BACK ליציאה מהאפליקציה');
     }
   }
 
@@ -1158,7 +1667,13 @@
   function performActualExit() {
     showToast('להתראות!');
     try {
-      if (window.webOS && window.webOS.platformBack) {
+      if (PLATFORM === 'android' && window.AndroidApp.exit) {
+        window.AndroidApp.exit();
+      } else if (PLATFORM === 'windows') {
+        window.chrome.webview.postMessage(JSON.stringify({ exit: true }));
+      } else if (PLATFORM === 'tizen' && window.tizen) {
+        window.tizen.application.getCurrentApplication().exit();
+      } else if (window.webOS && window.webOS.platformBack) {
         window.webOS.platformBack();
       } else {
         window.close();
@@ -1174,11 +1689,19 @@
 
     el.search.addEventListener('input', (e) => {
       state.searchQuery = e.target.value;
+      state.focusedGridIdx = 0;
       applyFilter();
+    });
+    el.search.addEventListener('focus', () => {
+      if (state.currentSection !== 'search') setFocus('search', 0);
     });
 
     el.btnCancelExit.addEventListener('click', closeExitModal);
     el.btnConfirmExit.addEventListener('click', performActualExit);
+  }
+
+  function isTypingTarget(t) {
+    return t && ((t.tagName === 'INPUT' && /^(text|password|search|email|url)$/i.test(t.type)) || t.tagName === 'TEXTAREA');
   }
 
   function handleKeyDown(e) {
@@ -1186,37 +1709,70 @@
 
     const code = e.keyCode || e.which;
 
-    // Web & Keyboard Shortcuts (when not focused on search input)
-    if (state.currentSection !== 'search') {
+    // Samsung Tizen remote: Back = 10009, colour keys 403-406 like webOS, CH+/- = 427/428.
+    if (code === 10009) { e.preventDefault(); handleBackKey(); return; }
+
+    // "Get the app" panel: Back / Escape closes it, Tab / arrows move between the links.
+    if (state.getAppOpen) {
+      if (code === 461 || code === 27 || code === 8) { e.preventDefault(); closeGetApp(); }
+      return;
+    }
+
+    // Settings dialog has its own navigation; text fields keep their keys.
+    if (state.settingsOpen) {
+      if (code === 461 || code === 27 || (code === 8 && !isTypingTarget(e.target))) {
+        e.preventDefault();
+        if (isTypingTarget(e.target)) e.target.blur();
+        else closeSettings();
+        return;
+      }
+      if (isTypingTarget(e.target) && code !== 38 && code !== 40) return;
+      handleSettingsKeys(code, e);
+      return;
+    }
+
+    // Web & Keyboard Shortcuts (when not typing in the search box)
+    if (state.currentSection !== 'search' && !isTypingTarget(e.target)) {
       // Space (32) -> Play / Pause
-      if (code === 32) {
-        if (state.currentSection === 'player' || (el.video && !el.video.paused)) {
-          e.preventDefault();
-          togglePlayPause();
-          return;
-        }
+      if (code === 32 && (state.currentSection === 'player' || (media() && !media().paused))) {
+        e.preventDefault();
+        togglePlayPause();
+        return;
       }
 
-      // 'F' or 'f' (70) -> Browser Fullscreen
+      // 'F' (70) -> Browser Fullscreen
       if (code === 70) {
         e.preventDefault();
         toggleBrowserFullscreen();
         return;
       }
 
-      // 'M' or 'm' (77) -> Mute / Unmute
+      // 'M' (77) -> Mute / Unmute
       if (code === 77) {
         e.preventDefault();
         toggleMute();
         return;
       }
 
-      // Number keys (0-9)
+      // 'D' (68) -> Hebrew dubbing on/off
+      if (code === 68) {
+        e.preventDefault();
+        toggleDub();
+        return;
+      }
+
+      // 'S' (83) -> Settings
+      if (code === 83) {
+        e.preventDefault();
+        openSettings();
+        return;
+      }
+
+      // Number keys (0-9) and numpad
       if (code >= 48 && code <= 57) {
         handleDigitInput(String(code - 48));
         return;
       }
-      // Numpad (0-9)
       if (code >= 96 && code <= 105) {
         handleDigitInput(String(code - 96));
         return;
@@ -1228,7 +1784,7 @@
       case 461: // webOS Back
       case 27:  // Escape
       case 8:   // Backspace
-        if (state.currentSection !== 'search' || el.search.value === '') {
+        if (state.currentSection !== 'search' || el.search.value === '' || code !== 8) {
           e.preventDefault();
           handleBackKey();
         }
@@ -1248,7 +1804,7 @@
         cycleRetroMode();
         break;
 
-      // YELLOW BUTTON (405) -> In Grid: Toggle Favorite ⭐ | In Player: Cycle OLED Mode
+      // YELLOW BUTTON (405) -> In Grid: Toggle Favorite | In Player: Cycle OLED Mode
       case 405:
         e.preventDefault();
         if (state.currentSection === 'player') {
@@ -1259,10 +1815,11 @@
         }
         break;
 
-      // BLUE BUTTON (406) -> Search
+      // BLUE BUTTON (406) -> Hebrew dubbing (in player) / Search (in guide)
       case 406:
         e.preventDefault();
-        setFocus('search', 0);
+        if (state.currentSection === 'player' || state.currentSection === 'drawer') toggleDub();
+        else setFocus('search', 0);
         break;
 
       // CHANNEL UP / DOWN (33 / 34, 427 / 428)
@@ -1302,44 +1859,39 @@
 
   function handleGridKeys(code, e) {
     const total = state.filteredChannels.length;
-    if (total === 0) return;
+    if (total === 0) {
+      if (code === 39) { e.preventDefault(); setFocus('sidebar', state.focusedCategoryIdx); }
+      return;
+    }
 
-    const COLS = 5;
-    let next = state.focusedGridIdx;
+    const COLS = gridColumns();
+    const next = state.focusedGridIdx;
 
-    if (code === 37) { // Left (RTL moves to next card on the left)
+    if (code === 37) { // Left (RTL: next card)
       e.preventDefault();
-      if (next % COLS < COLS - 1 && next < total - 1) {
-        setFocus('grid', next + 1);
-      }
-    } else if (code === 39) { // Right (RTL moves to previous card or opens sidebar)
+      if (next % COLS < COLS - 1 && next < total - 1) setFocus('grid', next + 1);
+    } else if (code === 39) { // Right (RTL: previous card or sidebar)
       e.preventDefault();
-      if (next % COLS > 0) {
-        setFocus('grid', next - 1);
-      } else {
-        setFocus('sidebar', state.focusedCategoryIdx);
-      }
+      if (next % COLS > 0) setFocus('grid', next - 1);
+      else setFocus('sidebar', state.focusedCategoryIdx);
     } else if (code === 38) { // Up
       e.preventDefault();
-      if (next - COLS >= 0) {
-        setFocus('grid', next - COLS);
-      } else {
-        setFocus('search', 0);
-      }
+      if (next - COLS >= 0) setFocus('grid', next - COLS);
+      else setFocus('search', 0);
     } else if (code === 40) { // Down
       e.preventDefault();
-      if (next + COLS < total) {
-        setFocus('grid', next + COLS);
-      }
+      if (next + COLS < total) setFocus('grid', next + COLS);
+      else if (Math.floor(next / COLS) < Math.floor((total - 1) / COLS)) setFocus('grid', total - 1);
     } else if (code === 13) { // Enter / OK
       e.preventDefault();
+      if (Dub) Dub.unlockAudio();
       playChannel(state.focusedGridIdx);
     }
   }
 
   function handleSidebarKeys(code, e) {
     const total = state.categories.length;
-    let next = state.focusedCategoryIdx;
+    const next = state.focusedCategoryIdx;
 
     if (code === 38) { // Up
       e.preventDefault();
@@ -1356,11 +1908,9 @@
   }
 
   function handleSearchKeys(code, e) {
-    if (code === 40) {
+    if (code === 40 || code === 13) {
       e.preventDefault();
-      setFocus('grid', 0);
-    } else if (code === 13) {
-      e.preventDefault();
+      el.search.blur();
       setFocus('grid', 0);
     }
   }
@@ -1379,19 +1929,13 @@
       openQuickDrawer();
     } else if (code === 13) {
       e.preventDefault();
-      if (el.video.paused) {
-        el.video.play();
-        showToast('מנגן');
-      } else {
-        el.video.pause();
-        showToast('מושהה');
-      }
+      togglePlayPause();
     }
   }
 
   function handleDrawerKeys(code, e) {
     const total = state.filteredChannels.length;
-    let next = state.focusedDrawerIdx;
+    const next = state.focusedDrawerIdx;
 
     if (code === 38) {
       e.preventDefault();
@@ -1403,7 +1947,7 @@
       e.preventDefault();
       closeQuickDrawer();
       playChannel(next);
-    } else if (code === 39 || code === 461 || code === 27) {
+    } else if (code === 39) {
       e.preventDefault();
       closeQuickDrawer();
     }
@@ -1417,9 +1961,6 @@
       e.preventDefault();
       if (state.focusedExitBtn === 0) closeExitModal();
       else performActualExit();
-    } else if (code === 461 || code === 27) {
-      e.preventDefault();
-      closeExitModal();
     }
   }
 
@@ -1427,6 +1968,9 @@
   function setupMouseListeners() {
     window.addEventListener('mousemove', resetScreensaverTimer);
     window.addEventListener('click', resetScreensaverTimer);
+    window.addEventListener('touchstart', resetScreensaverTimer, { passive: true });
   }
 
+  // Exposed for debugging / automated checks.
+  window.__itv = { state, playChannel, toggleDub, openSettings };
 })();

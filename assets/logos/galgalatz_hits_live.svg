@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 120" width="300" height="120">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#780000"/><stop offset="1" stop-color="#05070d"/></linearGradient></defs>
+  <rect x="1" y="1" width="298" height="118" rx="22" fill="url(#g)" stroke="#ef4444" stroke-opacity="0.7" stroke-width="2"/>
+  <circle cx="256" cy="60" r="26" fill="#ef4444" fill-opacity="0.2" stroke="#ef4444" stroke-width="2"/><g fill="none" stroke="#ef4444" stroke-width="3.2" stroke-linecap="round"><path d="M246 52a14 14 0 0 1 20 0"/><path d="M240 46a22 22 0 0 1 32 0"/></g><circle cx="256" cy="64" r="5" fill="#ef4444"/><rect x="254" y="68" width="4" height="12" rx="2" fill="#ef4444"/>
+  <text x="128" y="64" font-family="Segoe UI, Heebo, Arial, sans-serif" font-size="46" font-weight="700" fill="#ffffff" text-anchor="middle">גלגלצ</text>
+  <text x="128" y="93" font-family="Segoe UI, Heebo, Arial, sans-serif" font-size="19" font-weight="700" fill="#ef4444" text-anchor="middle">להיטים</text>
+</svg>
