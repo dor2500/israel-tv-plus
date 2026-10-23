@@ -4,7 +4,8 @@
 
 | פלטפורמה | קובץ | התקנה |
 |---|---|---|
-| 🤖 **אנדרואיד** (טלפון/טאבלט) + 📺 **Android TV / Google TV / Fire TV** | [IsraelTVPlus-android.apk](https://github.com/dor2500/israel-tv-plus/releases/latest/download/IsraelTVPlus-android.apk) | אותו APK לכולם. בטלוויזיה: התקנה דרך "Downloader" / כונן USB, האפליקציה מופיעה במסך הבית של ה-TV |
+| 🤖 **אנדרואיד** (טלפון/טאבלט) | [IsraelTVPlus-android.apk](https://github.com/dor2500/israel-tv-plus/releases/latest/download/IsraelTVPlus-android.apk) | התקנה ישירה מהקובץ |
+| 📺 **Android TV / Google TV / Fire TV** (Xiaomi, Sony, TCL, Philips, Chromecast) | [IsraelTVPlus-androidtv.apk](https://github.com/dor2500/israel-tv-plus/releases/latest/download/IsraelTVPlus-androidtv.apk) | התקנה דרך אפליקציית "Downloader" (להקליד את הקישור) / כונן USB / "Send Files to TV"; האפליקציה מופיעה במסך הבית של ה-TV עם באנר, ניווט מלא בשלט |
 | 🪟 **Windows 10/11** | [התקנה](https://github.com/dor2500/israel-tv-plus/releases/latest/download/IsraelTVPlus-windows-setup.exe) · [נייד ZIP](https://github.com/dor2500/israel-tv-plus/releases/latest/download/IsraelTVPlus-windows-portable.zip) | WebView2 (מובנה ב-Windows 11). F11 = מסך מלא |
 | 🖥️ **LG webOS** | [com.israeltv.plus_all.ipk](https://github.com/dor2500/israel-tv-plus/releases/latest/download/com.israeltv.plus_all.ipk) | Developer Mode + webOS Dev Manager (ראו למטה) |
 | 🔷 **Samsung Tizen** | [פרויקט Tizen](https://github.com/dor2500/israel-tv-plus/releases/latest/download/IsraelTVPlus-tizen-project.zip) | סמסונג מתקינה רק חבילות חתומות: ייבוא ל-Tizen Studio, תעודת Samsung עם ה-DUID של הטלוויזיה, Run |
