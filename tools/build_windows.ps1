@@ -1,10 +1,11 @@
-param([string]$Version = '2.0.0', [string]$Out = '')
+param([string]$Version = '', [string]$Out = '')
 # Windows app: platforms\windows\IsraelTVPlus.cs (WebView2) compiled with the .NET Framework csc.exe that ships
 # with Windows, + the web app in www\. Outputs dist\IsraelTVPlus-windows-portable.zip and, when Inno Setup 6 is
 # installed, dist\IsraelTVPlus-windows-setup.exe.
 # WebView2 SDK: the Microsoft.Web.WebView2 NuGet package is downloaded once into build\webview2.
 $ErrorActionPreference = 'Stop'
 $root = Split-Path $PSScriptRoot
+if (-not $Version) { $Version = (Get-Content "$root\VERSION" -Raw).Trim() }
 if (-not $Out) { $Out = "$root\dist" }
 $b = "$root\build\windows"
 $app = "$b\IsraelTVPlus"
@@ -29,7 +30,7 @@ $fx = "$env:WINDIR\Microsoft.NET\Framework64\v4.0.30319"
   /r:"$app\Microsoft.Web.WebView2.WinForms.dll" "$root\platforms\windows\IsraelTVPlus.cs"
 if ($LASTEXITCODE) { throw 'csc failed' }
 
-foreach ($f in 'index.html', 'style.css', 'app.js', 'dub.js', 'dub-local-worker.js', 'channels.js', 'icon.png', 'manifest.webmanifest') {
+foreach ($f in (Get-Content "$PSScriptRoot\webfiles.txt" | Where-Object { $_ -and $_ -notmatch '^#' })) {
   Copy-Item "$root\$f" "$app\www\$f"
 }
 Copy-Item "$root\assets" "$app\www\assets" -Recurse

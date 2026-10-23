@@ -1,4 +1,4 @@
-param([string]$Version = '2.0.0', [int]$Code = 2, [string]$Out = '')
+param([string]$Version = '', [int]$Code = 0, [string]$Out = '')
 # Android app (phones, tablets, Android TV / Google TV / Fire TV): platforms\android + the web app as assets.
 # No Gradle: aapt2 (resources + manifest), javac + d8 (code), zipalign + apksigner.
 # Signing key: %USERPROFILE%\.android\israel-tv-plus.jks, password in israel-tv-plus.pass next to it
@@ -6,6 +6,8 @@ param([string]$Version = '2.0.0', [int]$Code = 2, [string]$Out = '')
 $ErrorActionPreference = 'Stop'
 $root = Split-Path $PSScriptRoot
 if (-not $Out) { $Out = "$root\dist" }
+if (-not $Version) { $Version = (Get-Content "$root\VERSION" -Raw).Trim() }
+if (-not $Code) { $p = $Version.Split('.'); $Code = [int]$p[0] * 100 + [int]$p[1] * 10 + [int]$p[2] }  # 3.0.0 -> 300
 $sdk = if ($env:ANDROID_HOME) { $env:ANDROID_HOME } else { "$env:LOCALAPPDATA\Android\Sdk" }
 $bt = Get-ChildItem "$sdk\build-tools" | Sort-Object { [version]$_.Name } | Select-Object -Last 1 -ExpandProperty FullName
 $plat = Get-ChildItem "$sdk\platforms" | Where-Object Name -match '^android-\d+$' | Sort-Object { [int]($_.Name -replace '\D') } | Select-Object -Last 1 -ExpandProperty FullName
@@ -25,7 +27,7 @@ foreach ($p in @(@('mdpi', 48), @('hdpi', 72), @('xhdpi', 96), @('xxhdpi', 144),
 Copy-Item "$app\banner-320x180.png" "$b\res\drawable-xhdpi\banner.png"
 
 # the web app
-foreach ($f in 'index.html', 'style.css', 'app.js', 'dub.js', 'dub-local-worker.js', 'channels.js', 'icon.png', 'manifest.webmanifest') {
+foreach ($f in (Get-Content "$PSScriptRoot\webfiles.txt" | Where-Object { $_ -and $_ -notmatch '^#' })) {
   Copy-Item "$root\$f" "$b\assets\www\$f"
 }
 Copy-Item "$root\assets" "$b\assets\www\assets" -Recurse

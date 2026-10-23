@@ -1,7 +1,7 @@
 ; Israel TV+ Windows installer (Inno Setup 6). Built by tools\build_windows.ps1, which passes
 ; AppVersion, SrcDir (the built app folder), OutDir and IconFile.
 #ifndef AppVersion
-  #define AppVersion "2.0.0"
+  #define AppVersion "3.0.0"
 #endif
 
 [Setup]
@@ -42,3 +42,5 @@ Name: "{autodesktop}\ישראל TV+"; Filename: "{app}\IsraelTVPlus.exe"; Tasks:
 
 [Run]
 Filename: "{app}\IsraelTVPlus.exe"; Description: "{cm:LaunchProgram,ישראל TV+}"; Flags: nowait postinstall skipifsilent
+; in-app updates run the installer with /SILENT: start the new version afterwards
+Filename: "{app}\IsraelTVPlus.exe"; Flags: nowait runasoriginaluser; Check: WizardSilent

@@ -10,7 +10,7 @@ $p = "$root\build\tizen\IsraelTVPlus"
 if (Test-Path $p) { Remove-Item $p -Recurse -Force }
 New-Item -ItemType Directory -Force $p, $Out | Out-Null
 Copy-Item "$root\platforms\tizen\config.xml" $p
-foreach ($f in 'index.html', 'style.css', 'app.js', 'dub.js', 'dub-local-worker.js', 'channels.js') { Copy-Item "$root\$f" "$p\$f" }
+foreach ($f in (Get-Content "$PSScriptRoot\webfiles.txt" | Where-Object { $_ -and $_ -notmatch '^#' -and $_ -ne 'icon.png' })) { Copy-Item "$root\$f" "$p\$f" }
 Copy-Item "$root\assets\app\icon-512.png" "$p\icon.png"
 Copy-Item "$root\assets" "$p\assets" -Recurse
 $zip = "$Out\IsraelTVPlus-tizen-project.zip"

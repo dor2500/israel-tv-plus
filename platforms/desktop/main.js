@@ -6,7 +6,7 @@ const path = require('path');
 
 app.commandLine.appendSwitch('autoplay-policy', 'no-user-gesture-required');
 app.setName('Israel TV Plus');
-app.userAgentFallback = app.userAgentFallback + ' IsraelTVPlus/2 Desktop';
+app.userAgentFallback = app.userAgentFallback + ' IsraelTVPlus/3 Desktop';
 if (process.platform !== 'darwin') Menu.setApplicationMenu(null);
 
 function openExternal(url) {

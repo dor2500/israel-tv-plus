@@ -12,7 +12,7 @@ using Microsoft.Web.WebView2.WinForms;
 
 [assembly: System.Reflection.AssemblyTitle("Israel TV+")]
 [assembly: System.Reflection.AssemblyProduct("Israel TV+")]
-[assembly: System.Reflection.AssemblyVersion("2.0.0.0")]
+[assembly: System.Reflection.AssemblyVersion("3.0.0.0")]
 
 namespace IsraelTVPlus
 {
@@ -63,7 +63,7 @@ namespace IsraelTVPlus
             core.Settings.AreDevToolsEnabled = true;
             core.Settings.IsStatusBarEnabled = false;
             core.Settings.AreDefaultContextMenusEnabled = false;
-            core.Settings.UserAgent = core.Settings.UserAgent + " IsraelTVPlus/2 Windows";
+            core.Settings.UserAgent = core.Settings.UserAgent + " IsraelTVPlus/3 Windows";
             core.WebMessageReceived += OnMessage;
             core.NewWindowRequested += (s, e) => { e.Handled = true; Open(e.Uri); };
             core.NavigationStarting += (s, e) =>
@@ -85,7 +85,48 @@ namespace IsraelTVPlus
                 int a = msg.IndexOf('"', msg.IndexOf(':', i) + 1), b = a < 0 ? -1 : msg.IndexOf('"', a + 1);
                 if (a >= 0 && b > a) Open(msg.Substring(a + 1, b - a - 1).Replace("\\/", "/"));
             }
+            else if (msg.Contains("\"update\"")) Update(Value(msg, "update"));
             else if (msg.Contains("\"exit\"")) Close();
+        }
+
+        static string Value(string msg, string key)
+        {
+            int i = msg.IndexOf("\"" + key + "\"", StringComparison.Ordinal);
+            if (i < 0) return null;
+            int a = msg.IndexOf('"', msg.IndexOf(':', i) + 1), b = a < 0 ? -1 : msg.IndexOf('"', a + 1);
+            return a >= 0 && b > a ? msg.Substring(a + 1, b - a - 1).Replace("\\/", "/") : null;
+        }
+
+        void Report(string state, string value)
+        {
+            string js = "window.__itvUpdate && window.__itvUpdate('" + state + "','" + (value ?? "").Replace("\\", "\\\\").Replace("'", "\\'") + "')";
+            BeginInvoke((Action)(() => { if (web.CoreWebView2 != null) web.CoreWebView2.ExecuteScriptAsync(js); }));
+        }
+
+        // In-app update: download the new installer from the GitHub release and run it silently (it closes this
+        // app, installs over it and starts the new version). The portable ZIP has no installer: open the page.
+        void Update(string url)
+        {
+            if (url == null || !url.StartsWith("https://")) return;
+            string dir = Path.GetDirectoryName(Application.ExecutablePath);
+            if (!File.Exists(Path.Combine(dir, "unins000.exe")))
+            {
+                Report("error", "הגרסה הניידת (ZIP) – מורידים את הגרסה החדשה מדף ההורדות");
+                Open("https://github.com/dor2500/israel-tv-plus/releases/latest");
+                return;
+            }
+            string file = Path.Combine(Path.GetTempPath(), "IsraelTVPlus-windows-setup.exe");
+            System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12;
+            var wc = new System.Net.WebClient();
+            wc.DownloadProgressChanged += (s, e) => Report("progress", e.ProgressPercentage.ToString());
+            wc.DownloadFileCompleted += (s, e) =>
+            {
+                if (e.Error != null) { Report("error", e.Error.Message); return; }
+                Report("installing", "");
+                Process.Start(new ProcessStartInfo(file, "/SILENT /SUPPRESSMSGBOXES /NORESTART /CLOSEAPPLICATIONS") { UseShellExecute = true });
+                BeginInvoke((Action)Close);
+            };
+            wc.DownloadFileAsync(new Uri(url), file);
         }
 
         static void Open(string url)

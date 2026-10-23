@@ -1,0 +1,52 @@
+{
+  "version": "3.0.0",
+  "code": 202610232308,
+  "app": 300,
+  "shell": 3,
+  "date": "2026-10-23",
+  "notes": [
+    "ממשק חדש לטלוויזיה: כרטיסים, טקסטים ואייקונים גדולים, מסגרת פוקוס בולטת, מותאם למסכים 720p / 1080p / 4K",
+    "הרבה יותר מהיר: בלי אפקטי טשטוש כבדים, גלילה מיידית, מצב ביצועים אוטומטי לטלוויזיות ומכשירים חלשים, גופן מקומי",
+    "הגדרות מלאות: תצוגה, ערוצים, נגן, שלט רחוק, דיבוב, מצב ילדים, שומר מסך, עדכונים ואודות",
+    "שלט רחוק לכל סוג טלוויזיה: זיהוי LG / סמסונג / Android TV / מקלדת, הסברים מתאימים במסך, בחירת פעולה לכל כפתור צבע, ולחיצה ארוכה על OK לתפריט אפשרויות (גם בשלטים בלי כפתורי צבע)",
+    "זיהוי המכשיר: דגם הטלוויזיה וגרסת המערכת מוצגים בהגדרות וקובעים את מצב הביצועים",
+    "עדכונים מתוך האפליקציה: מסך, קוד וערוצים מתעדכנים אונליין בכל המכשירים; באנדרואיד וב-Windows גם הורדה והתקנה של גרסה חדשה בלחיצה",
+    "מקור השידור של כל ערוץ במסך \"מידע ומקור\" (רשמי / FAST / ממסר צד שלישי, שרת וכתובת)",
+    "מצב ילדים עם קוד יציאה, הסתרת ערוצים וקטגוריות, נגן עם בחירת איכות, ניסיון חיבור חוזר וכפתורי \"נסה שוב / ערוץ הבא\"",
+    "ערוץ חדש: ZOOM (ילדים ונוער בעברית); כאן חינוכית מהשידור הרשמי של כאן (עובד גם באתר); כל הערוצים נבדקו מחדש",
+    "הרחבה ל-Stremio עם כל הערוצים והתחנות"
+  ],
+  "native": {
+    "android": {
+      "version": "3.0.0",
+      "app": 300,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/latest/download/IsraelTVPlus-android.apk"
+    },
+    "windows": {
+      "version": "3.0.0",
+      "app": 300,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/latest/download/IsraelTVPlus-windows-setup.exe"
+    },
+    "webos": {
+      "version": "3.0.0",
+      "app": 300,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/latest/download/com.israeltv.plus_all.ipk",
+      "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
+    },
+    "tizen": {
+      "version": "3.0.0",
+      "app": 300,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/latest/download/IsraelTVPlus-tizen-project.zip"
+    },
+    "mac": {
+      "version": "3.0.0",
+      "app": 300,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/latest/download/IsraelTVPlus-macos-arm64.zip"
+    },
+    "linux": {
+      "version": "3.0.0",
+      "app": 300,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/latest/download/IsraelTVPlus-linux-x64.zip"
+    }
+  }
+}

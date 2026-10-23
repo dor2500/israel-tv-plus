@@ -11,8 +11,9 @@ import tarfile
 import time
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-FILES = ["appinfo.json", "index.html", "style.css", "app.js", "dub.js", "dub-local-worker.js", "channels.js",
-         "icon.png", "largeIcon.png", "splash.png"]
+FILES = ["appinfo.json", "largeIcon.png", "splash.png"] + [
+    l.strip() for l in open(os.path.join(ROOT, "tools", "webfiles.txt"), encoding="utf-8")
+    if l.strip() and not l.startswith("#") and l.strip() != "manifest.webmanifest"]
 DIRS = ["assets"]
 SKIP = ("&", ".map")  # junk downloads with query strings in the name, source maps
 

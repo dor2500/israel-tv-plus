@@ -11,7 +11,14 @@
     "desc": "ערוץ הטלוויזיה המוביל בישראל - חדשות 12, ריאליטי, תוכניות בידור וסדרות מקור",
     "number": 1,
     "lang": "he",
-    "iptv": "Keshet12.il"
+    "iptv": "Keshet12.il",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "iptv-org (Keshet12.il)",
+      "web": "❌ רק באפליקציה (HTTP)"
+    }
   },
   {
     "id": "reshet13",
@@ -24,7 +31,14 @@
     "badge": "FHD",
     "desc": "חדשות 13, הישרדות, האח הגדול, משחקי השף ותוכניות תחקירים מובילות",
     "number": 2,
-    "lang": "he"
+    "lang": "he",
+    "src": {
+      "by": "רשת 13 – AWS CloudFront",
+      "kind": "official",
+      "host": "d18b0e6mopany4.cloudfront.net",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "✅"
+    }
   },
   {
     "id": "kan11",
@@ -38,7 +52,14 @@
     "desc": "תאגיד השידור הישראלי - חדשות כאן, סדרות דרמה מוערכות, תעודה ואירועי ספורט",
     "number": 3,
     "lang": "he",
-    "iptv": "Kan11.il"
+    "iptv": "Kan11.il",
+    "src": {
+      "by": "כאן – תאגיד השידור (CDN רשמי)",
+      "kind": "official",
+      "host": "kancdn.medonecdn.net",
+      "found": "iptv-org (Kan11.il)",
+      "web": "✅"
+    }
   },
   {
     "id": "now14",
@@ -52,7 +73,14 @@
     "desc": "ערוץ החדשות והאקטואליה - מהדורות חדשות, הפטריוטים ופאנלים פוליטיים",
     "number": 4,
     "lang": "he",
-    "iptv": "Now14.il"
+    "iptv": "Now14.il",
+    "src": {
+      "by": "ערוץ 14 – CDN רשמי (Redge)",
+      "kind": "official",
+      "host": "r.il.cdn-redge.media",
+      "found": "iptv-org (Now14.il)",
+      "web": "✅"
+    }
   },
   {
     "id": "i24news_he",
@@ -66,7 +94,14 @@
     "desc": "ערוץ החדשות הבינלאומי של ישראל בעברית - דיווחי חדשות ומבזקים 24/7",
     "number": 5,
     "lang": "he",
-    "iptv": "i24NEWSHebrew.il"
+    "iptv": "i24NEWSHebrew.il",
+    "src": {
+      "by": "i24NEWS – שרת רשמי",
+      "kind": "official",
+      "host": "i24newshebrew-cdn.encoders.immergo.tv",
+      "found": "iptv-org (i24NEWSHebrew.il)",
+      "web": "✅"
+    }
   },
   {
     "id": "channel9",
@@ -80,7 +115,14 @@
     "desc": "ערוץ 9 - ערוץ ישראלי בשפה הרוסית: חדשות, אקטואליה ותוכניות",
     "number": 6,
     "lang": "ru",
-    "iptv": "Channel9.il"
+    "iptv": "Channel9.il",
+    "src": {
+      "by": "GoStreaming – ספק השידור של ערוץ 9",
+      "kind": "official",
+      "host": "contact.gostreaming.tv",
+      "found": "iptv-org (Channel9.il)",
+      "web": "✅"
+    }
   },
   {
     "id": "channel24",
@@ -94,7 +136,14 @@
     "desc": "ערוץ המוזיקה, השמחה והבידור הישראלי - קליפים, הופעות ואירוח",
     "number": 7,
     "lang": "he",
-    "iptv": "Channel24.il"
+    "iptv": "Channel24.il",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "iptv-org (Channel24.il)",
+      "web": "❌ רק באפליקציה (HTTP)"
+    }
   },
   {
     "id": "makan33",
@@ -108,7 +157,14 @@
     "desc": "הערוץ הציבורי של ישראל בשפה הערבית - חדשות, תרבות ותעודה",
     "number": 8,
     "lang": "ar",
-    "iptv": "Makan33.il"
+    "iptv": "Makan33.il",
+    "src": {
+      "by": "כאן – תאגיד השידור (CDN רשמי)",
+      "kind": "official",
+      "host": "kancdn.medonecdn.net",
+      "found": "iptv-org (Makan33.il)",
+      "web": "✅"
+    }
   },
   {
     "id": "knesset",
@@ -122,7 +178,14 @@
     "desc": "שידורים ישירים ממליאת הכנסת, ועדות, תוכניות אקטואליה ופוליטיקה",
     "number": 9,
     "lang": "he",
-    "iptv": "KnessetChannel.il"
+    "iptv": "KnessetChannel.il",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "iptv-org (KnessetChannel.il)",
+      "web": "❌ רק באפליקציה (HTTP)"
+    }
   },
   {
     "id": "i24news_fr",
@@ -136,7 +199,14 @@
     "desc": "שידורי i24NEWS בשפה הצרפתית",
     "number": 10,
     "lang": "fr",
-    "iptv": "i24NEWSFrench.il"
+    "iptv": "i24NEWSFrench.il",
+    "src": {
+      "by": "i24NEWS – שרת רשמי",
+      "kind": "official",
+      "host": "i24newsfrench-cdn.encoders.immergo.tv",
+      "found": "iptv-org (i24NEWSFrench.il)",
+      "web": "✅"
+    }
   },
   {
     "id": "i24news_ar",
@@ -150,7 +220,14 @@
     "desc": "שידורי i24NEWS בשפה הערבית",
     "number": 11,
     "lang": "ar",
-    "iptv": "i24NEWSArabic.il"
+    "iptv": "i24NEWSArabic.il",
+    "src": {
+      "by": "i24NEWS – שרת רשמי",
+      "kind": "official",
+      "host": "i24newsarabic-cdn.encoders.immergo.tv",
+      "found": "iptv-org (i24NEWSArabic.il)",
+      "web": "✅"
+    }
   },
   {
     "id": "i24news_en",
@@ -163,7 +240,14 @@
     "badge": "FHD",
     "desc": "ערוץ החדשות הבינלאומי של i24NEWS מישראל - באנגלית",
     "logo": "assets/logos/i24news_en.svg",
-    "number": 12
+    "number": 12,
+    "src": {
+      "by": "i24NEWS – שרת רשמי",
+      "kind": "official",
+      "host": "i24newsenglish-cdn.encoders.immergo.tv",
+      "found": "iptv-org",
+      "web": "✅"
+    }
   },
   {
     "id": "kan_hinuchit",
@@ -177,7 +261,14 @@
     "desc": "כראמל, קופה ראשית לנוער, ילדי בית העץ, להציל את חיות הבר",
     "number": 13,
     "lang": "he",
-    "iptv": "KanEducational.il"
+    "iptv": "KanEducational.il",
+    "src": {
+      "by": "כאן – תאגיד השידור (CDN רשמי)",
+      "kind": "official",
+      "host": "kancdn.medonecdn.net",
+      "found": "iptv-org (KanEducational.il)",
+      "web": "✅"
+    }
   },
   {
     "id": "hop_kids",
@@ -191,7 +282,14 @@
     "desc": "ערוץ הופ! לגיל הרך - מולי וצומי, תותית, יובל המבולבל והפעלות",
     "number": 14,
     "lang": "he",
-    "iptv": "Hop.il"
+    "iptv": "Hop.il",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "iptv-org (Hop.il)",
+      "web": "❌ רק באפליקציה (HTTP)"
+    }
   },
   {
     "id": "zoom_kids",
@@ -205,7 +303,14 @@
     "iptv": "Zoom.il",
     "desc": "ערוץ הילדים והנוער הישראלי - סדרות נוער, דרמות וקומדיות בעברית",
     "logo": "assets/logos/zoom_kids.svg",
-    "number": 15
+    "number": 15,
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "iptv-org (Zoom.il)",
+      "web": "❌ רק באפליקציה (HTTP)"
+    }
   },
   {
     "id": "kan_bet",
@@ -219,7 +324,14 @@
     "desc": "רשת החדשות והאקטואליה של תאגיד השידור",
     "lang": "music",
     "logo": "assets/logos/kan_bet.svg",
-    "number": 16
+    "number": 16,
+    "src": {
+      "by": "Triton StreamTheWorld – מפיץ הרדיו של כאן",
+      "kind": "official",
+      "host": "playerservices.streamtheworld.com",
+      "found": "radio-browser.info + בדיקת שמות הזרמים של כאן",
+      "web": "✅"
+    }
   },
   {
     "id": "kan_gimel",
@@ -233,7 +345,14 @@
     "desc": "רק מוזיקה ישראלית - מכל התקופות",
     "lang": "music",
     "logo": "assets/logos/kan_gimel.svg",
-    "number": 17
+    "number": 17,
+    "src": {
+      "by": "Triton StreamTheWorld – מפיץ הרדיו של כאן",
+      "kind": "official",
+      "host": "playerservices.streamtheworld.com",
+      "found": "radio-browser.info + בדיקת שמות הזרמים של כאן",
+      "web": "✅"
+    }
   },
   {
     "id": "kan_88",
@@ -247,7 +366,14 @@
     "desc": "רוק, אינדי, ג'אז ומוזיקה איכותית מהעולם",
     "lang": "music",
     "logo": "assets/logos/kan_88.svg",
-    "number": 18
+    "number": 18,
+    "src": {
+      "by": "Triton StreamTheWorld – מפיץ הרדיו של כאן",
+      "kind": "official",
+      "host": "playerservices.streamtheworld.com",
+      "found": "radio-browser.info + בדיקת שמות הזרמים של כאן",
+      "web": "✅"
+    }
   },
   {
     "id": "kan_tarbut",
@@ -261,7 +387,14 @@
     "desc": "תרבות, ספרות, הגות ושיחות",
     "lang": "music",
     "logo": "assets/logos/kan_tarbut.svg",
-    "number": 19
+    "number": 19,
+    "src": {
+      "by": "Triton StreamTheWorld – מפיץ הרדיו של כאן",
+      "kind": "official",
+      "host": "playerservices.streamtheworld.com",
+      "found": "radio-browser.info + בדיקת שמות הזרמים של כאן",
+      "web": "✅"
+    }
   },
   {
     "id": "kan_moreshet",
@@ -275,7 +408,14 @@
     "desc": "יהדות, מסורת, פיוט וחזנות",
     "lang": "music",
     "logo": "assets/logos/kan_moreshet.svg",
-    "number": 20
+    "number": 20,
+    "src": {
+      "by": "Triton StreamTheWorld – מפיץ הרדיו של כאן",
+      "kind": "official",
+      "host": "playerservices.streamtheworld.com",
+      "found": "radio-browser.info + בדיקת שמות הזרמים של כאן",
+      "web": "✅"
+    }
   },
   {
     "id": "kan_reka",
@@ -289,7 +429,14 @@
     "desc": "רדיו העלייה - שידורים בשפות רבות",
     "lang": "music",
     "logo": "assets/logos/kan_reka.svg",
-    "number": 21
+    "number": 21,
+    "src": {
+      "by": "Triton StreamTheWorld – מפיץ הרדיו של כאן",
+      "kind": "official",
+      "host": "playerservices.streamtheworld.com",
+      "found": "radio-browser.info + בדיקת שמות הזרמים של כאן",
+      "web": "✅"
+    }
   },
   {
     "id": "kan_kol_hamusica",
@@ -303,7 +450,14 @@
     "desc": "מוזיקה קלאסית, אופרה וג'אז",
     "lang": "music",
     "logo": "assets/logos/kan_kol_hamusica.svg",
-    "number": 22
+    "number": 22,
+    "src": {
+      "by": "Triton StreamTheWorld – מפיץ הרדיו של כאן",
+      "kind": "official",
+      "host": "playerservices.streamtheworld.com",
+      "found": "radio-browser.info + בדיקת שמות הזרמים של כאן",
+      "web": "✅"
+    }
   },
   {
     "id": "galgalatz_live",
@@ -317,7 +471,14 @@
     "desc": "תחנת הרדיו והמוזיקה הפופולרית בישראל בשידור חי",
     "number": 23,
     "lang": "music",
-    "kind": "radio"
+    "kind": "radio",
+    "src": {
+      "by": "גלי צה\"ל / גלגלצ – CDN רשמי (Bynet)",
+      "kind": "official",
+      "host": "glzwizzlv.bynetcdn.com",
+      "found": "radio-browser.info",
+      "web": "✅"
+    }
   },
   {
     "id": "glz_live",
@@ -331,7 +492,14 @@
     "desc": "חדשות, אקטואליה ושיח ציבורי 24/7",
     "number": 24,
     "lang": "music",
-    "kind": "radio"
+    "kind": "radio",
+    "src": {
+      "by": "גלי צה\"ל / גלגלצ – CDN רשמי (Bynet)",
+      "kind": "official",
+      "host": "glzwizzlv.bynetcdn.com",
+      "found": "radio-browser.info",
+      "web": "✅"
+    }
   },
   {
     "id": "galgalatz_hits_live",
@@ -345,7 +513,14 @@
     "desc": "ערוץ הלהיטים של גלגלצ - הלהיטים הגדולים ביותר בישראל ובעולם ברצף",
     "number": 25,
     "lang": "music",
-    "kind": "radio"
+    "kind": "radio",
+    "src": {
+      "by": "גלי צה\"ל / גלגלצ – CDN רשמי (Bynet)",
+      "kind": "official",
+      "host": "glzwizzlv.bynetcdn.com",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "✅"
+    }
   },
   {
     "id": "eco99fm",
@@ -359,7 +534,14 @@
     "desc": "התחנה המובילה בישראל - להיטים ותוכניות אישיות",
     "lang": "music",
     "logo": "assets/logos/eco99fm.svg",
-    "number": 26
+    "number": 26,
+    "src": {
+      "by": "eco99fm – Mediacast (רשמי)",
+      "kind": "official",
+      "host": "eco-live.mediacast.co.il",
+      "found": "radio-browser.info",
+      "web": "✅"
+    }
   },
   {
     "id": "radio_103fm",
@@ -373,7 +555,14 @@
     "desc": "שידורי רדיו חיים של 103FM",
     "number": 27,
     "lang": "music",
-    "kind": "radio"
+    "kind": "radio",
+    "src": {
+      "by": "CyberCDN – ה-CDN של תחנות הרדיו עצמן",
+      "kind": "official",
+      "host": "cdn.cybercdn.live",
+      "found": "radio-browser.info",
+      "web": "✅"
+    }
   },
   {
     "id": "radios_100fm",
@@ -387,7 +576,14 @@
     "desc": "תחנת הרדיו המובילה בישראל למוזיקה בינלאומית, להיטים עכשוויים ותוכניות מובילות",
     "number": 28,
     "lang": "music",
-    "kind": "radio"
+    "kind": "radio",
+    "src": {
+      "by": "CyberCDN – ה-CDN של תחנות הרדיו עצמן",
+      "kind": "official",
+      "host": "cdn.cybercdn.live",
+      "found": "radio-browser.info",
+      "web": "✅"
+    }
   },
   {
     "id": "radio_102fm",
@@ -401,7 +597,14 @@
     "desc": "רדיו תל אביב - מוזיקה, שיח ואקטואליה",
     "lang": "music",
     "logo": "assets/logos/radio_102fm.svg",
-    "number": 29
+    "number": 29,
+    "src": {
+      "by": "102FM – LiveCDN (רשמי)",
+      "kind": "official",
+      "host": "102.livecdn.biz",
+      "found": "radio-browser.info",
+      "web": "✅"
+    }
   },
   {
     "id": "kz_radio_live",
@@ -415,7 +618,14 @@
     "desc": "תחנת הרדיו העצמאית המובילה למוזיקה אלטרנטיבית, אינדי ויצירה ישראלית",
     "number": 30,
     "lang": "music",
-    "kind": "radio"
+    "kind": "radio",
+    "src": {
+      "by": "רדיו הקצה – Mediacast (רשמי)",
+      "kind": "official",
+      "host": "kzradio.mediacast.co.il",
+      "found": "radio-browser.info",
+      "web": "✅"
+    }
   },
   {
     "id": "kol_barama_live",
@@ -429,7 +639,14 @@
     "desc": "שידורי רדיו קול ברמה",
     "number": 31,
     "lang": "music",
-    "kind": "radio"
+    "kind": "radio",
+    "src": {
+      "by": "CyberCDN – ה-CDN של תחנות הרדיו עצמן",
+      "kind": "official",
+      "host": "cdn.cybercdn.live",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "✅"
+    }
   },
   {
     "id": "radio_darom_live",
@@ -443,7 +660,14 @@
     "desc": "התחנה המובילה בדרום - מוזיקה ישראלית, ים תיכונית, אקטואליה וחדשות",
     "number": 32,
     "lang": "music",
-    "kind": "radio"
+    "kind": "radio",
+    "src": {
+      "by": "CyberCDN – ה-CDN של תחנות הרדיו עצמן",
+      "kind": "official",
+      "host": "cdn.cybercdn.live",
+      "found": "radio-browser.info",
+      "web": "✅"
+    }
   },
   {
     "id": "radio_2000_live",
@@ -457,7 +681,14 @@
     "desc": "ערוץ רדיו ליהדות, מורשת ישראל, שיעורים ומוזיקה יהודית וחסידית",
     "number": 33,
     "lang": "music",
-    "kind": "radio"
+    "kind": "radio",
+    "src": {
+      "by": "CyberCDN – ה-CDN של תחנות הרדיו עצמן",
+      "kind": "official",
+      "host": "cdn.cybercdn.live",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "✅"
+    }
   },
   {
     "id": "kol_barama_music_live",
@@ -471,7 +702,14 @@
     "desc": "ערוץ המוזיקה של קול ברמה - 24 שעות של שירים חסידיים, מזרחיים ויהודיים",
     "number": 34,
     "lang": "music",
-    "kind": "radio"
+    "kind": "radio",
+    "src": {
+      "by": "CyberCDN – ה-CDN של תחנות הרדיו עצמן",
+      "kind": "official",
+      "host": "cdn.cybercdn.live",
+      "found": "radio-browser.info",
+      "web": "✅"
+    }
   },
   {
     "id": "radio_1045fm",
@@ -485,7 +723,14 @@
     "desc": "הרדיו האזורי של הצפון",
     "lang": "music",
     "logo": "assets/logos/radio_1045fm.svg",
-    "number": 35
+    "number": 35,
+    "src": {
+      "by": "StreamGates – ה-CDN של התחנה",
+      "kind": "official",
+      "host": "radio.streamgates.net",
+      "found": "radio-browser.info",
+      "web": "✅"
+    }
   },
   {
     "id": "radio_101fm",
@@ -499,7 +744,14 @@
     "desc": "הרדיו האזורי של ירושלים",
     "lang": "music",
     "logo": "assets/logos/radio_101fm.svg",
-    "number": 36
+    "number": 36,
+    "src": {
+      "by": "StreamGates – ה-CDN של התחנה",
+      "kind": "official",
+      "host": "radio.streamgates.net",
+      "found": "radio-browser.info",
+      "web": "✅"
+    }
   },
   {
     "id": "radio_haifa",
@@ -513,7 +765,14 @@
     "desc": "הרדיו האזורי של חיפה והקריות",
     "lang": "music",
     "logo": "assets/logos/radio_haifa.svg",
-    "number": 37
+    "number": 37,
+    "src": {
+      "by": "רדיו חיפה – LiveCDN (רשמי)",
+      "kind": "official",
+      "host": "1075.livecdn.biz",
+      "found": "radio-browser.info",
+      "web": "✅"
+    }
   },
   {
     "id": "radio_90fm",
@@ -527,7 +786,14 @@
     "desc": "רדיו אמצע הדרך - מוזיקה ישראלית",
     "lang": "music",
     "logo": "assets/logos/radio_90fm.svg",
-    "number": 38
+    "number": 38,
+    "src": {
+      "by": "CyberCDN – ה-CDN של תחנות הרדיו עצמן",
+      "kind": "official",
+      "host": "cdn.cybercdn.live",
+      "found": "radio-browser.info",
+      "web": "✅"
+    }
   },
   {
     "id": "radio_darom_97",
@@ -541,7 +807,14 @@
     "desc": "רדיו דרום - הרדיו של הנגב",
     "lang": "music",
     "logo": "assets/logos/radio_darom_97.svg",
-    "number": 39
+    "number": 39,
+    "src": {
+      "by": "CyberCDN – ה-CDN של תחנות הרדיו עצמן",
+      "kind": "official",
+      "host": "cdn.cybercdn.live",
+      "found": "radio-browser.info",
+      "web": "✅"
+    }
   },
   {
     "id": "radio_hatahana",
@@ -555,7 +828,14 @@
     "desc": "נותנים למוזיקה לדבר",
     "lang": "music",
     "logo": "assets/logos/radio_hatahana.svg",
-    "number": 40
+    "number": 40,
+    "src": {
+      "by": "CyberCDN – ה-CDN של תחנות הרדיו עצמן",
+      "kind": "official",
+      "host": "cdn.cybercdn.live",
+      "found": "radio-browser.info",
+      "web": "✅"
+    }
   },
   {
     "id": "galei_israel",
@@ -569,7 +849,14 @@
     "desc": "רדיו גלי ישראל - אקטואליה, שיח ומוזיקה",
     "lang": "music",
     "logo": "assets/logos/galei_israel.svg",
-    "number": 41
+    "number": 41,
+    "src": {
+      "by": "CyberCDN – ה-CDN של תחנות הרדיו עצמן",
+      "kind": "official",
+      "host": "cdn.cybercdn.live",
+      "found": "radio-browser.info",
+      "web": "✅"
+    }
   },
   {
     "id": "kol_chai",
@@ -583,7 +870,14 @@
     "desc": "רדיו קול חי - אקטואליה ותוכן יהודי",
     "lang": "music",
     "logo": "assets/logos/kol_chai.svg",
-    "number": 42
+    "number": 42,
+    "src": {
+      "by": "קול חי – שרת התחנה",
+      "kind": "official",
+      "host": "media2.93fm.co.il",
+      "found": "radio-browser.info",
+      "web": "✅"
+    }
   },
   {
     "id": "kol_chai_music",
@@ -597,7 +891,14 @@
     "desc": "מוזיקה יהודית וחסידית ברצף",
     "lang": "music",
     "logo": "assets/logos/kol_chai_music.svg",
-    "number": 43
+    "number": 43,
+    "src": {
+      "by": "קול חי – שרת התחנה",
+      "kind": "official",
+      "host": "media2.93fm.co.il",
+      "found": "radio-browser.info",
+      "web": "✅"
+    }
   },
   {
     "id": "kol_rega",
@@ -611,7 +912,14 @@
     "desc": "הרדיו של הצפון והעמקים",
     "lang": "music",
     "logo": "assets/logos/kol_rega.svg",
-    "number": 44
+    "number": 44,
+    "src": {
+      "by": "CyberCDN – ה-CDN של תחנות הרדיו עצמן",
+      "kind": "official",
+      "host": "cdn.cybercdn.live",
+      "found": "radio-browser.info",
+      "web": "✅"
+    }
   },
   {
     "id": "lev_hamedina",
@@ -625,7 +933,14 @@
     "desc": "רדיו לב המדינה - השרון והמרכז",
     "lang": "music",
     "logo": "assets/logos/lev_hamedina.svg",
-    "number": 45
+    "number": 45,
+    "src": {
+      "by": "CyberCDN – ה-CDN של תחנות הרדיו עצמן",
+      "kind": "official",
+      "host": "cdn.cybercdn.live",
+      "found": "radio-browser.info",
+      "web": "✅"
+    }
   },
   {
     "id": "radios_nostalgia",
@@ -639,7 +954,14 @@
     "desc": "להיטי נוסטלגיה ישראליים ולועזיים",
     "lang": "music",
     "logo": "assets/logos/radios_nostalgia.svg",
-    "number": 46
+    "number": 46,
+    "src": {
+      "by": "StreamGates – ה-CDN של התחנה",
+      "kind": "official",
+      "host": "cdna.streamgates.net",
+      "found": "radio-browser.info",
+      "web": "✅"
+    }
   },
   {
     "id": "kol_hatzafon",
@@ -653,7 +975,14 @@
     "desc": "רדיו קול הצפון",
     "lang": "music",
     "logo": "assets/logos/kol_hatzafon.svg",
-    "number": 47
+    "number": 47,
+    "src": {
+      "by": "eCast – שרת התחנה",
+      "kind": "official",
+      "host": "live.ecast.co.il",
+      "found": "radio-browser.info",
+      "web": "✅"
+    }
   },
   {
     "id": "glglz_rock",
@@ -667,7 +996,14 @@
     "desc": "ערוץ הרוק של גלגלצ",
     "lang": "music",
     "logo": "assets/logos/glglz_rock.svg",
-    "number": 48
+    "number": 48,
+    "src": {
+      "by": "גלי צה\"ל / גלגלצ – CDN רשמי (Bynet)",
+      "kind": "official",
+      "host": "glzwizzlv.bynetcdn.com",
+      "found": "radio-browser.info",
+      "web": "✅"
+    }
   },
   {
     "id": "glglz_decades",
@@ -681,7 +1017,14 @@
     "desc": "להיטים מכל העשורים",
     "lang": "music",
     "logo": "assets/logos/glglz_decades.svg",
-    "number": 49
+    "number": 49,
+    "src": {
+      "by": "גלי צה\"ל / גלגלצ – CDN רשמי (Bynet)",
+      "kind": "official",
+      "host": "glzwizzlv.bynetcdn.com",
+      "found": "radio-browser.info",
+      "web": "✅"
+    }
   },
   {
     "id": "glglz_weekend",
@@ -695,7 +1038,14 @@
     "desc": "מוזיקה רגועה לסוף השבוע",
     "lang": "music",
     "logo": "assets/logos/glglz_weekend.svg",
-    "number": 50
+    "number": 50,
+    "src": {
+      "by": "גלי צה\"ל / גלגלצ – CDN רשמי (Bynet)",
+      "kind": "official",
+      "host": "glzwizzlv.bynetcdn.com",
+      "found": "radio-browser.info",
+      "web": "✅"
+    }
   },
   {
     "id": "radios_mizrahit",
@@ -709,7 +1059,14 @@
     "desc": "מוזיקה מזרחית ים תיכונית ברצף",
     "lang": "music",
     "logo": "assets/logos/radios_mizrahit.svg",
-    "number": 51
+    "number": 51,
+    "src": {
+      "by": "StreamGates – ערוצי רדיוס 100FM",
+      "kind": "official",
+      "host": "gb25.streamgates.net",
+      "found": "radio-browser.info",
+      "web": "✅"
+    }
   },
   {
     "id": "radios_yehudi",
@@ -723,7 +1080,14 @@
     "desc": "מוזיקה יהודית וחסידית",
     "lang": "music",
     "logo": "assets/logos/radios_yehudi.svg",
-    "number": 52
+    "number": 52,
+    "src": {
+      "by": "StreamGates – ערוצי רדיוס 100FM",
+      "kind": "official",
+      "host": "gb25.streamgates.net",
+      "found": "radio-browser.info",
+      "web": "✅"
+    }
   },
   {
     "id": "radios_hits",
@@ -737,7 +1101,14 @@
     "desc": "הלהיטים הגדולים ברצף",
     "lang": "music",
     "logo": "assets/logos/radios_hits.svg",
-    "number": 53
+    "number": 53,
+    "src": {
+      "by": "StreamGates – ערוצי רדיוס 100FM",
+      "kind": "official",
+      "host": "gb25.streamgates.net",
+      "found": "radio-browser.info",
+      "web": "✅"
+    }
   },
   {
     "id": "radios_80s",
@@ -751,7 +1122,14 @@
     "desc": "להיטי שנות ה-80",
     "lang": "music",
     "logo": "assets/logos/radios_80s.svg",
-    "number": 54
+    "number": 54,
+    "src": {
+      "by": "StreamGates – ערוצי רדיוס 100FM",
+      "kind": "official",
+      "host": "gb25.streamgates.net",
+      "found": "radio-browser.info",
+      "web": "✅"
+    }
   },
   {
     "id": "radios_90s",
@@ -765,7 +1143,14 @@
     "desc": "להיטי שנות ה-90",
     "lang": "music",
     "logo": "assets/logos/radios_90s.svg",
-    "number": 55
+    "number": 55,
+    "src": {
+      "by": "StreamGates – ערוצי רדיוס 100FM",
+      "kind": "official",
+      "host": "gb25.streamgates.net",
+      "found": "radio-browser.info",
+      "web": "✅"
+    }
   },
   {
     "id": "radios_kids",
@@ -779,7 +1164,14 @@
     "desc": "שירי ילדים ברצף",
     "lang": "music",
     "logo": "assets/logos/radios_kids.svg",
-    "number": 56
+    "number": 56,
+    "src": {
+      "by": "StreamGates – ערוצי רדיוס 100FM",
+      "kind": "official",
+      "host": "gb25.streamgates.net",
+      "found": "radio-browser.info",
+      "web": "✅"
+    }
   },
   {
     "id": "radios_relax",
@@ -793,7 +1185,14 @@
     "desc": "מוזיקה רגועה",
     "lang": "music",
     "logo": "assets/logos/radios_relax.svg",
-    "number": 57
+    "number": 57,
+    "src": {
+      "by": "StreamGates – ערוצי רדיוס 100FM",
+      "kind": "official",
+      "host": "gb25.streamgates.net",
+      "found": "radio-browser.info",
+      "web": "✅"
+    }
   },
   {
     "id": "a_shams",
@@ -807,7 +1206,14 @@
     "desc": "רדיו א-שמס - הרדיו הערבי בישראל",
     "lang": "music",
     "logo": "assets/logos/a_shams.svg",
-    "number": 58
+    "number": 58,
+    "src": {
+      "by": "StreamGates – ה-CDN של התחנה",
+      "kind": "official",
+      "host": "cdna.streamgates.net",
+      "found": "radio-browser.info",
+      "web": "✅"
+    }
   },
   {
     "id": "radio_nas",
@@ -821,7 +1227,14 @@
     "desc": "רדיו נאס - מוזיקה ושיח בערבית",
     "lang": "music",
     "logo": "assets/logos/radio_nas.svg",
-    "number": 59
+    "number": 59,
+    "src": {
+      "by": "StreamGates – ה-CDN של התחנה",
+      "kind": "official",
+      "host": "cdna.streamgates.net",
+      "found": "radio-browser.info",
+      "web": "✅"
+    }
   },
   {
     "id": "pervoe_radio",
@@ -835,7 +1248,14 @@
     "desc": "Первое радио - רדיו ישראלי בשפה הרוסית",
     "lang": "music",
     "logo": "assets/logos/pervoe_radio.svg",
-    "number": 60
+    "number": 60,
+    "src": {
+      "by": "CyberCDN – ה-CDN של תחנות הרדיו עצמן",
+      "kind": "official",
+      "host": "cdn.cybercdn.live",
+      "found": "radio-browser.info",
+      "web": "✅"
+    }
   },
   {
     "id": "radio_breslev",
@@ -849,7 +1269,14 @@
     "desc": "שיעורים, ניגונים ומוזיקה חסידית",
     "lang": "music",
     "logo": "assets/logos/radio_breslev.svg",
-    "number": 61
+    "number": 61,
+    "src": {
+      "by": "רדיו ברסלב – שרת התחנה",
+      "kind": "official",
+      "host": "cast.breslevforyou.co.il",
+      "found": "radio-browser.info",
+      "web": "✅"
+    }
   },
   {
     "id": "radio_nahariya",
@@ -863,7 +1290,14 @@
     "desc": "רדיו מקומי מנהריה",
     "lang": "music",
     "logo": "assets/logos/radio_nahariya.svg",
-    "number": 62
+    "number": 62,
+    "src": {
+      "by": "רדיו נהריה – שרת התחנה",
+      "kind": "official",
+      "host": "cast.radionahariya.com",
+      "found": "radio-browser.info",
+      "web": "✅"
+    }
   },
   {
     "id": "app_partner_tv",
@@ -1064,7 +1498,14 @@
     "desc": "הערוץ הים תיכוני - סדרות ודרמות ישראליות וים תיכוניות",
     "number": 74,
     "lang": "he",
-    "iptv": "YamTichoni.il"
+    "iptv": "YamTichoni.il",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "iptv-org (YamTichoni.il)",
+      "web": "❌ רק באפליקציה (HTTP)"
+    }
   },
   {
     "id": "yes_movies_action",
@@ -1078,7 +1519,14 @@
     "desc": "שובר קופות, מותחנים, אקשן ללא הפסקה וסרטי פעולה מהוליווד ומהעולם",
     "number": 75,
     "lang": "he",
-    "iptv": "YesMoviesAction.il"
+    "iptv": "YesMoviesAction.il",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "iptv-org (YesMoviesAction.il)",
+      "web": "❌ רק באפליקציה (HTTP)"
+    }
   },
   {
     "id": "hot_drama",
@@ -1092,7 +1540,14 @@
     "desc": "סרטי דרמה עטורי פרסים, קולנוע מרגש וסרטים בינלאומיים מובילים",
     "number": 76,
     "lang": "he",
-    "iptv": "HOTDrama.il"
+    "iptv": "HOTDrama.il",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "iptv-org (HOTDrama.il)",
+      "web": "❌ רק באפליקציה (HTTP)"
+    }
   },
   {
     "id": "hot_zone",
@@ -1106,7 +1561,14 @@
     "desc": "סדרות מתח, אקשן, משטרה וחקירות מכל העולם",
     "number": 77,
     "lang": "he",
-    "iptv": "HOTZone.il"
+    "iptv": "HOTZone.il",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "iptv-org (HOTZone.il)",
+      "web": "❌ רק באפליקציה (HTTP)"
+    }
   },
   {
     "id": "yes_reality",
@@ -1120,7 +1582,14 @@
     "desc": "כל תוכניות הריאליטי המובילות מהעולם 24 שעות ביממה",
     "number": 78,
     "lang": "he",
-    "iptv": "RealityChannel.il"
+    "iptv": "RealityChannel.il",
+    "src": {
+      "by": "ערוץ FAST ישראלי – AWS CloudFront",
+      "kind": "fast",
+      "host": "d2dffl3588mvfk.cloudfront.net",
+      "found": "iptv-org (RealityChannel.il)",
+      "web": "✅"
+    }
   },
   {
     "id": "comedy_channel",
@@ -1134,7 +1603,14 @@
     "desc": "קומדיות, סיטקומים מצחיקים, מופעי סטנדאפ וסרטי צחוק",
     "number": 79,
     "lang": "he",
-    "iptv": "ComedyChannel.il"
+    "iptv": "ComedyChannel.il",
+    "src": {
+      "by": "ערוץ FAST ישראלי – AWS CloudFront",
+      "kind": "fast",
+      "host": "d15ds134q59udk.cloudfront.net",
+      "found": "iptv-org (ComedyChannel.il)",
+      "web": "✅"
+    }
   },
   {
     "id": "viva_premium",
@@ -1148,7 +1624,14 @@
     "desc": "ערוץ הטלנובלות והסדרות הדרמטיות הגדול בישראל - סדרות טורקיות, לטיניות וספרדיות",
     "number": 80,
     "lang": "he",
-    "iptv": "VivaPremium.il"
+    "iptv": "VivaPremium.il",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "iptv-org (VivaPremium.il)",
+      "web": "❌ רק באפליקציה (HTTP)"
+    }
   },
   {
     "id": "premialnoe",
@@ -1162,7 +1645,14 @@
     "desc": "סרטים חדשים ישר מהקולנוע באיכות פרימיום",
     "number": 81,
     "lang": "ru",
-    "iptv": "Premialnoe.ru"
+    "iptv": "Premialnoe.ru",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "iptv-org (Premialnoe.ru)",
+      "web": "❌ רק באפליקציה (HTTP)"
+    }
   },
   {
     "id": "ostrosyuzhetnoye",
@@ -1176,7 +1666,14 @@
     "desc": "סרטי פעולה, מרדפים, מותחנים פסיכולוגיים ואקשן עולמי",
     "number": 82,
     "lang": "ru",
-    "iptv": "Ostrosyuzhetnoye.ru"
+    "iptv": "Ostrosyuzhetnoye.ru",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "iptv-org (Ostrosyuzhetnoye.ru)",
+      "web": "❌ רק באפליקציה (HTTP)"
+    }
   },
   {
     "id": "kinouzhas",
@@ -1190,7 +1687,14 @@
     "desc": "סרטי אימה מצמררים, מתח אפל, פרא-נורמלי וסרטי אימה קלאסיים",
     "number": 83,
     "lang": "ru",
-    "iptv": "Kinouzhas.ru"
+    "iptv": "Kinouzhas.ru",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "iptv-org (Kinouzhas.ru)",
+      "web": "❌ רק באפליקציה (HTTP)"
+    }
   },
   {
     "id": "kinohit",
@@ -1205,7 +1709,14 @@
     "number": 84,
     "lang": "ru",
     "iptv": "KinoHit.ru",
-    "webUrl": "https://stream8.cinerama.uz/1055/tracks-v1a1/mono.m3u8"
+    "webUrl": "https://stream8.cinerama.uz/1055/tracks-v1a1/mono.m3u8",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "iptv-org (KinoHit.ru)",
+      "web": "✅ דרך מקור חלופי: Cinerama.uz – ספק IPTV באוזבקיסטן"
+    }
   },
   {
     "id": "kinosemja",
@@ -1219,7 +1730,14 @@
     "desc": "סרטים מעולים לצפייה משותפת של כל המשפחה",
     "number": 85,
     "lang": "ru",
-    "iptv": "Kinosemja.ru"
+    "iptv": "Kinosemja.ru",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "iptv-org (Kinosemja.ru)",
+      "web": "❌ רק באפליקציה (HTTP)"
+    }
   },
   {
     "id": "megahit",
@@ -1233,7 +1751,14 @@
     "desc": "הפקות ענק וסרטים שזכו בפרסים בינלאומיים",
     "number": 86,
     "lang": "ru",
-    "iptv": "vijuPlusMegahit.ru"
+    "iptv": "vijuPlusMegahit.ru",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "iptv-org (vijuPlusMegahit.ru)",
+      "web": "❌ רק באפליקציה (HTTP)"
+    }
   },
   {
     "id": "premiere",
@@ -1247,7 +1772,14 @@
     "desc": "הקרנות בכורה של סרטים מובילים",
     "number": 87,
     "lang": "ru",
-    "iptv": "vijuPlusPremiere.ru"
+    "iptv": "vijuPlusPremiere.ru",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "iptv-org (vijuPlusPremiere.ru)",
+      "web": "❌ רק באפליקציה (HTTP)"
+    }
   },
   {
     "id": "comedy_ru",
@@ -1261,7 +1793,14 @@
     "desc": "קומדיות משעשעות וסרטי צחוק",
     "number": 88,
     "lang": "ru",
-    "iptv": "vijuPlusComedy.ru"
+    "iptv": "vijuPlusComedy.ru",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "iptv-org (vijuPlusComedy.ru)",
+      "web": "❌ רק באפליקציה (HTTP)"
+    }
   },
   {
     "id": "action_tv1000",
@@ -1276,7 +1815,14 @@
     "number": 89,
     "lang": "ru",
     "iptv": "vijuTV1000action.ru",
-    "webUrl": "https://stream8.cinerama.uz/1225/tracks-v1a1/mono.m3u8"
+    "webUrl": "https://stream8.cinerama.uz/1225/tracks-v1a1/mono.m3u8",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "iptv-org (vijuTV1000action.ru)",
+      "web": "✅ דרך מקור חלופי: Cinerama.uz – ספק IPTV באוזבקיסטן"
+    }
   },
   {
     "id": "tv1000_classic",
@@ -1290,7 +1836,14 @@
     "desc": "יצירות מופת וקלאסיקות קולנוע מכל הזמנים",
     "number": 90,
     "lang": "ru",
-    "iptv": "vijuTV1000.ru"
+    "iptv": "vijuTV1000.ru",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "iptv-org (vijuTV1000.ru)",
+      "web": "❌ רק באפליקציה (HTTP)"
+    }
   },
   {
     "id": "serial_tv",
@@ -1304,7 +1857,14 @@
     "desc": "סדרות דרמה, פשע ומתח ברצף",
     "number": 91,
     "lang": "ru",
-    "iptv": "vijuPlusSerial.ru"
+    "iptv": "vijuPlusSerial.ru",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "iptv-org (vijuPlusSerial.ru)",
+      "web": "❌ רק באפליקציה (HTTP)"
+    }
   },
   {
     "id": "vacation_channel",
@@ -1318,7 +1878,14 @@
     "desc": "סיורים ביעדים מרהיבים, מלונות יוקרה וחופשות חלומיות",
     "number": 92,
     "lang": "he",
-    "iptv": "VacationChannel.il"
+    "iptv": "VacationChannel.il",
+    "src": {
+      "by": "ערוץ FAST ישראלי – AWS CloudFront",
+      "kind": "fast",
+      "host": "d1yd8hohnldm33.cloudfront.net",
+      "found": "iptv-org (VacationChannel.il)",
+      "web": "✅"
+    }
   },
   {
     "id": "rewind_80s",
@@ -1333,7 +1900,14 @@
     "number": 93,
     "lang": "auto",
     "iptv": "80sRewind.us",
-    "webOk": false
+    "webOk": false,
+    "src": {
+      "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
+      "kind": "fast",
+      "host": "jmp2.uk",
+      "found": "iptv-org (80sRewind.us)",
+      "web": "❌ רק באפליקציה (הפניה בלי CORS)"
+    }
   },
   {
     "id": "cinema_70s",
@@ -1348,7 +1922,14 @@
     "number": 94,
     "lang": "auto",
     "iptv": "70sCinema.us",
-    "webOk": false
+    "webOk": false,
+    "src": {
+      "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
+      "kind": "fast",
+      "host": "jmp2.uk",
+      "found": "iptv-org (70sCinema.us)",
+      "web": "❌ רק באפליקציה (הפניה בלי CORS)"
+    }
   },
   {
     "id": "replay_00s",
@@ -1363,7 +1944,14 @@
     "number": 95,
     "lang": "auto",
     "iptv": "00sReplay.us",
-    "webOk": false
+    "webOk": false,
+    "src": {
+      "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
+      "kind": "fast",
+      "host": "jmp2.uk",
+      "found": "iptv-org (00sReplay.us)",
+      "web": "❌ רק באפליקציה (הפניה בלי CORS)"
+    }
   },
   {
     "id": "simpsons_247",
@@ -1376,7 +1964,14 @@
     "badge": "FHD",
     "desc": "ערוץ שידורים רציף של כל עונות משפחת סימפסון 24 שעות ביממה",
     "number": 96,
-    "lang": "ru"
+    "lang": "ru",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "❌ רק באפליקציה (HTTP)"
+    }
   },
   {
     "id": "cineman_comedy_hd",
@@ -1389,7 +1984,14 @@
     "badge": "FHD",
     "desc": "ערוץ סרטי הקומדיה, בידור משפחתי וקומדיות רומנטיות ברצף",
     "number": 97,
-    "lang": "ru"
+    "lang": "ru",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "❌ רק באפליקציה (HTTP)"
+    }
   },
   {
     "id": "cineman_vhs_retro",
@@ -1402,7 +2004,14 @@
     "badge": "HD",
     "desc": "ערוץ קלאסיקות הקולנוע הנוסטלגיות של שנות ה-80 וה-90",
     "number": 98,
-    "lang": "ru"
+    "lang": "ru",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "❌ רק באפליקציה (HTTP)"
+    }
   },
   {
     "id": "sport5",
@@ -1416,7 +2025,14 @@
     "desc": "ערוץ ספורט אוקראיני - כדורגל אירופי, כדורסל, פוקר וספורט מוטורי",
     "number": 99,
     "lang": "uk",
-    "iptv": "Sport5.ua"
+    "iptv": "Sport5.ua",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "iptv-org (Sport5.ua)",
+      "web": "❌ רק באפליקציה (HTTP)"
+    }
   },
   {
     "id": "sport2",
@@ -1430,7 +2046,14 @@
     "desc": "שידורי ספורט ישירים, ליגות אירופיות ומפעלים בינלאומיים",
     "number": 100,
     "lang": "uk",
-    "iptv": "Sport2.ua"
+    "iptv": "Sport2.ua",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "iptv-org (Sport2.ua)",
+      "web": "❌ רק באפליקציה (HTTP)"
+    }
   },
   {
     "id": "sport3",
@@ -1444,7 +2067,14 @@
     "desc": "שידורי כדורגל מליגות בכירות וטורנירים חיים",
     "number": 101,
     "lang": "uk",
-    "iptv": "Sport3.ua"
+    "iptv": "Sport3.ua",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "iptv-org (Sport3.ua)",
+      "web": "❌ רק באפליקציה (HTTP)"
+    }
   },
   {
     "id": "sport4",
@@ -1458,7 +2088,14 @@
     "desc": "ערוץ משחקים חיים וסיקורי ספורט נוספים",
     "number": 102,
     "lang": "uk",
-    "iptv": "Sport4.ua"
+    "iptv": "Sport4.ua",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "iptv-org (Sport4.ua)",
+      "web": "❌ רק באפליקציה (HTTP)"
+    }
   },
   {
     "id": "viju_sport",
@@ -1473,7 +2110,14 @@
     "number": 103,
     "lang": "ru",
     "iptv": "vijuPlusSport.ru",
-    "webUrl": "https://stream8.cinerama.uz/1229/tracks-v1a1/mono.m3u8"
+    "webUrl": "https://stream8.cinerama.uz/1229/tracks-v1a1/mono.m3u8",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "iptv-org (vijuPlusSport.ru)",
+      "web": "✅ דרך מקור חלופי: Cinerama.uz – ספק IPTV באוזבקיסטן"
+    }
   },
   {
     "id": "setanta_sports_2_hd",
@@ -1487,7 +2131,14 @@
     "desc": "שידורי כדורגל מליגות אירופה הבכירות, טניס וכדורסל",
     "number": 104,
     "lang": "ru",
-    "iptv": "SetantaSports2Eurasia.ie"
+    "iptv": "SetantaSports2Eurasia.ie",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "iptv-org (SetantaSports2Eurasia.ie)",
+      "web": "❌ רק באפליקציה (HTTP)"
+    }
   },
   {
     "id": "redbull_tv",
@@ -1501,7 +2152,14 @@
     "desc": "ספורט אקסטרים, דאונהיל, סקי, ברייקדאנס ופסטיבלי מוזיקה חיים",
     "number": 105,
     "lang": "en",
-    "iptv": "RedBullTV.at"
+    "iptv": "RedBullTV.at",
+    "src": {
+      "by": "Red Bull TV – Akamai (רשמי)",
+      "kind": "official",
+      "host": "rbmn-live.akamaized.net",
+      "found": "iptv-org (RedBullTV.at)",
+      "web": "✅"
+    }
   },
   {
     "id": "extreme_sports_hd",
@@ -1514,7 +2172,14 @@
     "badge": "4K HDR",
     "desc": "ערוץ ספורט האקסטרים העולמי",
     "number": 106,
-    "lang": "ru"
+    "lang": "ru",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "❌ רק באפליקציה (HTTP)"
+    }
   },
   {
     "id": "nickelodeon_he",
@@ -1528,7 +2193,14 @@
     "desc": "ערוץ ניקלודיאון בשפה הרוסית - בובספוג, הרעשנים וסדרות אנימציה",
     "number": 107,
     "lang": "ru",
-    "iptv": "Nickelodeon.ru"
+    "iptv": "Nickelodeon.ru",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "iptv-org (Nickelodeon.ru)",
+      "web": "❌ רק באפליקציה (HTTP)"
+    }
   },
   {
     "id": "nick_jr_he",
@@ -1543,7 +2215,14 @@
     "number": 108,
     "lang": "ru",
     "iptv": "NickJr.ru",
-    "webUrl": "https://stream8.cinerama.uz/1501/playlist.m3u8"
+    "webUrl": "https://stream8.cinerama.uz/1501/playlist.m3u8",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "iptv-org (NickJr.ru)",
+      "web": "✅ דרך מקור חלופי: Cinerama.uz – ספק IPTV באוזבקיסטן"
+    }
   },
   {
     "id": "gulli_kids_hd",
@@ -1558,7 +2237,14 @@
     "number": 109,
     "lang": "ru",
     "iptv": "GulliGirl.ru",
-    "webUrl": "https://stream8.cinerama.uz/1445/tracks-v1a1/mono.m3u8"
+    "webUrl": "https://stream8.cinerama.uz/1445/tracks-v1a1/mono.m3u8",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "iptv-org (GulliGirl.ru)",
+      "web": "✅ דרך מקור חלופי: Cinerama.uz – ספק IPTV באוזבקיסטן"
+    }
   },
   {
     "id": "ducktv_plus_hd",
@@ -1572,7 +2258,14 @@
     "desc": "ערוץ תוכניות העשרה והפעלות נוספות לגיל הרך מבית ducktv",
     "number": 110,
     "lang": "auto",
-    "iptv": "ducktvPLUS.sk"
+    "iptv": "ducktvPLUS.sk",
+    "src": {
+      "by": "Antik Telecom (סלובקיה), נתיבי test",
+      "kind": "restream",
+      "host": "dash3.antik.sk",
+      "found": "iptv-org (ducktvPLUS.sk)",
+      "web": "✅"
+    }
   },
   {
     "id": "babyfirst_hd",
@@ -1586,7 +2279,14 @@
     "desc": "ערוץ למידה מוקדמת, מילים ראשונות, מוטוריקה ומוזיקה לגיל הרך",
     "number": 111,
     "lang": "en",
-    "iptv": "BabyFirst.us"
+    "iptv": "BabyFirst.us",
+    "src": {
+      "by": "BabyFirst – JW Player FAST",
+      "kind": "fast",
+      "host": "cdn.fast.jwp.services",
+      "found": "iptv-org (BabyFirst.us)",
+      "web": "✅"
+    }
   },
   {
     "id": "cartoons_short_hd",
@@ -1599,7 +2299,14 @@
     "badge": "HD",
     "desc": "סרטוני אנימציה קצרים ומצחיקים ברצף לילדים ולנוער",
     "number": 112,
-    "lang": "ru"
+    "lang": "ru",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "❌ רק באפליקציה (HTTP)"
+    }
   },
   {
     "id": "lego_channel_hd",
@@ -1613,7 +2320,14 @@
     "desc": "ערוץ סדרות וסרטי לגו נינג'גו, לגו חברים, הרפתקאות ובנייה",
     "number": 113,
     "lang": "en",
-    "iptv": "LegoChannel.us"
+    "iptv": "LegoChannel.us",
+    "src": {
+      "by": "LEGO Channel – AWS CloudFront FAST",
+      "kind": "fast",
+      "host": "dltiqboxjw21d.cloudfront.net",
+      "found": "iptv-org (LegoChannel.us)",
+      "web": "✅"
+    }
   },
   {
     "id": "tiji_kids_hd",
@@ -1628,7 +2342,14 @@
     "number": 114,
     "lang": "ru",
     "iptv": "TiJi.ru",
-    "webUrl": "https://stream8.cinerama.uz/1441/tracks-v1a1/mono.m3u8"
+    "webUrl": "https://stream8.cinerama.uz/1441/tracks-v1a1/mono.m3u8",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "iptv-org (TiJi.ru)",
+      "web": "✅ דרך מקור חלופי: Cinerama.uz – ספק IPTV באוזבקיסטן"
+    }
   },
   {
     "id": "jimjam_kids_hd",
@@ -1642,7 +2363,14 @@
     "desc": "ערוץ הילדים והפעוטות האהוב - סדרות חינוכיות, דמיון ומשחק",
     "number": 115,
     "lang": "ru",
-    "iptv": "JimJamEurope.uk"
+    "iptv": "JimJamEurope.uk",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "iptv-org (JimJamEurope.uk)",
+      "web": "❌ רק באפליקציה (HTTP)"
+    }
   },
   {
     "id": "fresh_kids_hd",
@@ -1655,7 +2383,14 @@
     "badge": "HD",
     "desc": "ערוץ הרפתקאות, אנימציה וסרטים מצוירים צבעוניים לילדים ולכל המשפחה",
     "number": 116,
-    "lang": "ru"
+    "lang": "ru",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "❌ רק באפליקציה (HTTP)"
+    }
   },
   {
     "id": "cartoons_90s",
@@ -1668,7 +2403,14 @@
     "badge": "FHD",
     "desc": "ערוץ סדרות האנימציה הנוסטלגיות של שנות ה-90 באיכות גבוהה",
     "number": 117,
-    "lang": "ru"
+    "lang": "ru",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "❌ רק באפליקציה (HTTP)"
+    }
   },
   {
     "id": "cartoons_big_hd",
@@ -1681,7 +2423,14 @@
     "badge": "FHD",
     "desc": "סרטי אנימציה באורך מלא לכל המשפחה",
     "number": 118,
-    "lang": "ru"
+    "lang": "ru",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "❌ רק באפליקציה (HTTP)"
+    }
   },
   {
     "id": "kinokazka",
@@ -1695,7 +2444,14 @@
     "desc": "סרטי אגדות, קולנוע לילדים ונוער, פנטזיה וסיפורים קלאסיים",
     "number": 119,
     "lang": "ru",
-    "iptv": "KinoKazka.es"
+    "iptv": "KinoKazka.es",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "iptv-org (KinoKazka.es)",
+      "web": "❌ רק באפליקציה (HTTP)"
+    }
   },
   {
     "id": "pixel_tv",
@@ -1710,7 +2466,14 @@
     "number": 120,
     "lang": "ru",
     "iptv": "PixelTV.ua",
-    "webUrl": "https://cdn15.live-tv.cloud/ua_infinitas_tv/pixel-abr/playlist.m3u8"
+    "webUrl": "https://cdn15.live-tv.cloud/ua_infinitas_tv/pixel-abr/playlist.m3u8",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "iptv-org (PixelTV.ua)",
+      "web": "✅ דרך מקור חלופי: live-tv.cloud – ספק IPTV אוקראיני"
+    }
   },
   {
     "id": "niki_kids",
@@ -1724,7 +2487,14 @@
     "desc": "ערוץ בינלאומי לילדים עם דיבוב איכותי וסדרות חינוכיות",
     "number": 121,
     "lang": "ru",
-    "iptv": "NikiKids.ua"
+    "iptv": "NikiKids.ua",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "iptv-org (NikiKids.ua)",
+      "web": "❌ רק באפליקציה (HTTP)"
+    }
   },
   {
     "id": "kapitan_fantastika",
@@ -1739,7 +2509,14 @@
     "number": 122,
     "lang": "ru",
     "iptv": "KapitanFantastika.ru",
-    "webUrl": "https://stream8.cinerama.uz/1406/tracks-v1a1/mono.m3u8"
+    "webUrl": "https://stream8.cinerama.uz/1406/tracks-v1a1/mono.m3u8",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "iptv-org (KapitanFantastika.ru)",
+      "web": "✅ דרך מקור חלופי: Cinerama.uz – ספק IPTV באוזבקיסטן"
+    }
   },
   {
     "id": "okids",
@@ -1753,7 +2530,14 @@
     "desc": "תגליות, חיות ועולם הטבע בשפה פשוטה ומהנה לילדים",
     "number": 123,
     "lang": "ru",
-    "iptv": "O.ru"
+    "iptv": "O.ru",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "iptv-org (O.ru)",
+      "web": "❌ רק באפליקציה (HTTP)"
+    }
   },
   {
     "id": "ducktv_hd",
@@ -1767,7 +2551,14 @@
     "desc": "ערוץ הפעוטות וההתפתחות המוביל מבית yes ו-HOT - אנימציה עדינה וצבעים",
     "number": 124,
     "lang": "auto",
-    "iptv": "ducktv.sk"
+    "iptv": "ducktv.sk",
+    "src": {
+      "by": "Antik Telecom (סלובקיה), נתיבי test",
+      "kind": "restream",
+      "host": "dash3.antik.sk",
+      "found": "iptv-org (ducktv.sk)",
+      "web": "✅"
+    }
   },
   {
     "id": "babyshark_tv_hd",
@@ -1781,7 +2572,14 @@
     "desc": "ערוץ שירי הילדים המפורסם של בייבי שארק ופינקפונג 24/7",
     "number": 125,
     "lang": "en",
-    "iptv": "BabySharkTV.us"
+    "iptv": "BabySharkTV.us",
+    "src": {
+      "by": "Baby Shark TV – Wurl (Roku FAST)",
+      "kind": "fast",
+      "host": "newidco-babysharktv-1-us.roku.wurl.tv",
+      "found": "iptv-org (BabySharkTV.us)",
+      "web": "✅"
+    }
   },
   {
     "id": "solntse_kids",
@@ -1796,7 +2594,14 @@
     "number": 126,
     "lang": "ru",
     "iptv": "Solnce.ru",
-    "webUrl": "https://tv.mediacdn.ru/live/solntse/playlist.m3u8"
+    "webUrl": "https://tv.mediacdn.ru/live/solntse/playlist.m3u8",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "iptv-org (Solnce.ru)",
+      "web": "✅ דרך מקור חלופי: ערוץ השמש (Солнце) – CDN"
+    }
   },
   {
     "id": "mult_kids",
@@ -1811,7 +2616,14 @@
     "number": 127,
     "lang": "ru",
     "iptv": "Mult.ru",
-    "webUrl": "https://stream8.cinerama.uz/1246/tracks-v1a1/mono.m3u8"
+    "webUrl": "https://stream8.cinerama.uz/1246/tracks-v1a1/mono.m3u8",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "iptv-org (Mult.ru)",
+      "web": "✅ דרך מקור חלופי: Cinerama.uz – ספק IPTV באוזבקיסטן"
+    }
   },
   {
     "id": "mult_music_kids",
@@ -1825,7 +2637,14 @@
     "desc": "שירי ילדים, קליפים מוזיקליים מונפשים וסדרות לקטנטנים 24/7",
     "number": 128,
     "lang": "ru",
-    "iptv": "Multimuzyka.ru"
+    "iptv": "Multimuzyka.ru",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "iptv-org (Multimuzyka.ru)",
+      "web": "❌ רק באפליקציה (HTTP)"
+    }
   },
   {
     "id": "carousel_kids",
@@ -1840,7 +2659,14 @@
     "number": 129,
     "lang": "ru",
     "iptv": "Carousel.ru",
-    "webUrl": "https://stream.smotrim.ru/hls2/karusel/playlist_3.m3u8"
+    "webUrl": "https://stream.smotrim.ru/hls2/karusel/playlist_3.m3u8",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "iptv-org (Carousel.ru)",
+      "web": "✅ דרך מקור חלופי: Smotrim (VGTRK) – הבעלים של קרוסלה"
+    }
   },
   {
     "id": "ctc_kids",
@@ -1854,7 +2680,14 @@
     "desc": "סדרות אנימציה עולמיות, סרטים מצוירים ותוכניות בידור לילדים",
     "number": 130,
     "lang": "ru",
-    "iptv": "STSkids.ru"
+    "iptv": "STSkids.ru",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "iptv-org (STSkids.ru)",
+      "web": "❌ רק באפליקציה (HTTP)"
+    }
   },
   {
     "id": "fairy_tales_kids",
@@ -1869,7 +2702,14 @@
     "number": 131,
     "lang": "ru",
     "iptv": "Vgostyakhuskazki.ru",
-    "webUrl": "https://stream8.cinerama.uz/1270/tracks-v1a1/mono.m3u8"
+    "webUrl": "https://stream8.cinerama.uz/1270/tracks-v1a1/mono.m3u8",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "iptv-org (Vgostyakhuskazki.ru)",
+      "web": "✅ דרך מקור חלופי: Cinerama.uz – ספק IPTV באוזבקיסטן"
+    }
   },
   {
     "id": "music_4ever",
@@ -1883,7 +2723,14 @@
     "desc": "הלהיטים הגדולים מכל הזמנים ברצף קליפים מרהיב",
     "number": 132,
     "lang": "music",
-    "iptv": "4everMusic.ua"
+    "iptv": "4everMusic.ua",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "iptv-org (4everMusic.ua)",
+      "web": "❌ רק באפליקציה (HTTP)"
+    }
   },
   {
     "id": "music_4fun",
@@ -1897,7 +2744,14 @@
     "desc": "להיטי הפופ האירופיים והמצעדים החמים ביותר",
     "number": 133,
     "lang": "music",
-    "iptv": "4FunTV.pl"
+    "iptv": "4FunTV.pl",
+    "src": {
+      "by": "4FUN TV – שרת רשמי",
+      "kind": "official",
+      "host": "stream.4fun.tv",
+      "found": "iptv-org (4FunTV.pl)",
+      "web": "✅"
+    }
   },
   {
     "id": "music_vivalatino",
@@ -1911,7 +2765,14 @@
     "desc": "רגאטון, מוזיקה לטינית סוחפת, סלסה ודאנס קצבי",
     "number": 134,
     "lang": "music",
-    "iptv": "VivaLatino.ua"
+    "iptv": "VivaLatino.ua",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "iptv-org (VivaLatino.ua)",
+      "web": "❌ רק באפליקציה (HTTP)"
+    }
   },
   {
     "id": "music_1hd",
@@ -1925,7 +2786,14 @@
     "desc": "ערוץ מוזיקה בינלאומי באיכות תמונה וסאונד מדהימים",
     "number": 135,
     "lang": "music",
-    "iptv": "1HDMusicTelevision.ru"
+    "iptv": "1HDMusicTelevision.ru",
+    "src": {
+      "by": "שרת IP ללא שם (1HD)",
+      "kind": "restream",
+      "host": "176.118.197.101",
+      "found": "iptv-org (1HDMusicTelevision.ru)",
+      "web": "❌ רק באפליקציה (HTTP)"
+    }
   },
   {
     "id": "music_retro7080",
@@ -1939,7 +2807,14 @@
     "desc": "דיסקו, רוק ופופ קלאסי משנות ה-70 וה-80",
     "number": 136,
     "lang": "music",
-    "iptv": "7080TV.it"
+    "iptv": "7080TV.it",
+    "src": {
+      "by": "70-80 TV – Wowza Streamlock",
+      "kind": "official",
+      "host": "585b674743bbb.streamlock.net",
+      "found": "iptv-org (7080TV.it)",
+      "web": "✅"
+    }
   },
   {
     "id": "animal_planet",
@@ -1953,7 +2828,14 @@
     "desc": "עולם החיות, ספארי באפריקה, חיות מחמד והגנה על חיות הבר",
     "number": 137,
     "lang": "ru",
-    "iptv": "AnimalPlanet.ru"
+    "iptv": "AnimalPlanet.ru",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "iptv-org (AnimalPlanet.ru)",
+      "web": "❌ רק באפליקציה (HTTP)"
+    }
   },
   {
     "id": "investigation_discovery",
@@ -1967,7 +2849,14 @@
     "desc": "תעלומות פשע אמיתי, חקירות בלשיות ופיענוח פרשיות מסתוריות",
     "number": 138,
     "lang": "ru",
-    "iptv": "InvestigationDiscovery.ru"
+    "iptv": "InvestigationDiscovery.ru",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "iptv-org (InvestigationDiscovery.ru)",
+      "web": "❌ רק באפליקציה (HTTP)"
+    }
   },
   {
     "id": "travel_channel",
@@ -1981,7 +2870,14 @@
     "desc": "מסעות ברחבי העולם, תרבויות מרתקות, הרפתקאות וטבע פראי",
     "number": 139,
     "lang": "ru",
-    "iptv": "TravelChannel.ru"
+    "iptv": "TravelChannel.ru",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "iptv-org (TravelChannel.ru)",
+      "web": "❌ רק באפליקציה (HTTP)"
+    }
   },
   {
     "id": "viju_explore",
@@ -1995,7 +2891,14 @@
     "desc": "מדע, טכנולוגיה, ארכיאולוגיה וגילויים היסטוריים",
     "number": 140,
     "lang": "ru",
-    "iptv": "vijuExplore.ru"
+    "iptv": "vijuExplore.ru",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "iptv-org (vijuExplore.ru)",
+      "web": "❌ רק באפליקציה (HTTP)"
+    }
   },
   {
     "id": "viju_planet",
@@ -2009,7 +2912,14 @@
     "desc": "נופי טבע מרהיבים, בעלי חיים וסביבה באיכות FHD",
     "number": 141,
     "lang": "ru",
-    "iptv": "vijuPlusPlanet.ru"
+    "iptv": "vijuPlusPlanet.ru",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "iptv-org (vijuPlusPlanet.ru)",
+      "web": "❌ רק באפליקציה (HTTP)"
+    }
   },
   {
     "id": "bbc_earth",
@@ -2023,7 +2933,14 @@
     "desc": "סדרות הטבע וההיסטוריה הידועות של ה-BBC בהנחיית דיוויד אטנבורו",
     "number": 142,
     "lang": "auto",
-    "iptv": "BBCEarth.uk"
+    "iptv": "BBCEarth.uk",
+    "src": {
+      "by": "BBC Earth – Amagi / Xumo FAST",
+      "kind": "fast",
+      "host": "amg00793-amg00793c6-xumo-us-2669.playouts.now.amagi.tv",
+      "found": "iptv-org (BBCEarth.uk)",
+      "web": "✅"
+    }
   },
   {
     "id": "asharq_discovery",
@@ -2037,7 +2954,14 @@
     "desc": "תוכניות דיסקברי מקוריות, חלל, מכונאות ומדע",
     "number": 143,
     "lang": "ar",
-    "iptv": "AsharqDiscovery.sa"
+    "iptv": "AsharqDiscovery.sa",
+    "src": {
+      "by": "Asharq Discovery – ItWorks (רשמי)",
+      "kind": "official",
+      "host": "svs.itworkscdn.net",
+      "found": "iptv-org (AsharqDiscovery.sa)",
+      "web": "✅"
+    }
   },
   {
     "id": "history_365",
@@ -2052,7 +2976,14 @@
     "number": 144,
     "lang": "ru",
     "iptv": "365daysTV.ru",
-    "webUrl": "https://stream8.cinerama.uz/1242/tracks-v1a1/mono.m3u8"
+    "webUrl": "https://stream8.cinerama.uz/1242/tracks-v1a1/mono.m3u8",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "iptv-org (365daysTV.ru)",
+      "web": "✅ דרך מקור חלופי: Cinerama.uz – ספק IPTV באוזבקיסטן"
+    }
   },
   {
     "id": "good_life_israel",
@@ -2066,7 +2997,14 @@
     "desc": "תוכניות בישול, לייף סטייל, עיצוב ואירוח",
     "number": 145,
     "lang": "he",
-    "iptv": "GoodLife.il"
+    "iptv": "GoodLife.il",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "iptv-org (GoodLife.il)",
+      "web": "❌ רק באפליקציה (HTTP)"
+    }
   },
   {
     "id": "hidabroot",
@@ -2080,7 +3018,14 @@
     "desc": "ערוץ היהדות והקירוב הגדול - שיעורים, תוכניות אירוח, חינוך וערכים",
     "number": 146,
     "lang": "he",
-    "iptv": "Hidabroot.il"
+    "iptv": "Hidabroot.il",
+    "src": {
+      "by": "CyberCDN – ה-CDN של תחנות הרדיו עצמן",
+      "kind": "official",
+      "host": "cdn.cybercdn.live",
+      "found": "iptv-org (Hidabroot.il)",
+      "web": "✅"
+    }
   },
   {
     "id": "hala_tv",
@@ -2094,7 +3039,14 @@
     "desc": "ערוץ הטלוויזיה המסחרי הערבי בישראל מאת אתר פאנט",
     "number": 147,
     "lang": "ar",
-    "iptv": "HalaTV.il"
+    "iptv": "HalaTV.il",
+    "src": {
+      "by": "פאנט – הלא TV (רשמי)",
+      "kind": "official",
+      "host": "stream.panet.com",
+      "found": "iptv-org (HalaTV.il)",
+      "web": "✅"
+    }
   },
   {
     "id": "kabbalah",
@@ -2108,7 +3060,14 @@
     "desc": "שיעורי קבלה בשידור חי, פילוסופיה וחוכמת הקבלה",
     "number": 148,
     "lang": "he",
-    "iptv": "KabbalahforthePeopleIsrael.il"
+    "iptv": "KabbalahforthePeopleIsrael.il",
+    "src": {
+      "by": "קבלה לעם – שרת רשמי",
+      "kind": "official",
+      "host": "edge3.uk.kab.tv",
+      "found": "iptv-org (KabbalahforthePeopleIsrael.il)",
+      "web": "✅"
+    }
   },
   {
     "id": "shelanu_tv",
@@ -2122,7 +3081,14 @@
     "desc": "ערוץ תרבות וקהילה בישראל",
     "number": 149,
     "lang": "auto",
-    "iptv": "ShelanuTV.il"
+    "iptv": "ShelanuTV.il",
+    "src": {
+      "by": "שלנו TV – CDN77",
+      "kind": "official",
+      "host": "1247634592.rsc.cdn77.org",
+      "found": "iptv-org (ShelanuTV.il)",
+      "web": "✅"
+    }
   },
   {
     "id": "channel16",
@@ -2136,7 +3102,14 @@
     "desc": "ערוץ קהילתי ישראלי בשידור ישיר",
     "number": 150,
     "lang": "auto",
-    "iptv": "Channel16.il"
+    "iptv": "Channel16.il",
+    "src": {
+      "by": "ערוץ 16 – שרת רשמי",
+      "kind": "official",
+      "host": "ch16israel-cdn.encoders.immergo.tv",
+      "found": "iptv-org (Channel16.il)",
+      "web": "✅"
+    }
   },
   {
     "id": "dw_english",
@@ -2149,7 +3122,14 @@
     "badge": "FHD",
     "desc": "רשת השידור הגרמנית הבינלאומית באנגלית - סיקור עולמי אובייקטיבי",
     "number": 151,
-    "lang": "en"
+    "lang": "en",
+    "src": {
+      "by": "DW – Akamai (רשמי)",
+      "kind": "official",
+      "host": "dwamdstream102.akamaized.net",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "✅"
+    }
   },
   {
     "id": "aljazeera_en",
@@ -2163,7 +3143,14 @@
     "desc": "ערוץ החדשות הבינלאומי באנגלית",
     "number": 152,
     "lang": "en",
-    "iptv": "AlJazeera.qa"
+    "iptv": "AlJazeera.qa",
+    "src": {
+      "by": "אל-ג'זירה – שרת רשמי",
+      "kind": "official",
+      "host": "live-hls-apps-aje-fa.getaj.net",
+      "found": "iptv-org (AlJazeera.qa)",
+      "web": "✅"
+    }
   },
   {
     "id": "bfmtv",
@@ -2177,7 +3164,14 @@
     "desc": "רשת החדשות המובילה בצרפת",
     "number": 153,
     "lang": "fr",
-    "iptv": "BFMTV.fr"
+    "iptv": "BFMTV.fr",
+    "src": {
+      "by": "BFM – SFR (רשמי)",
+      "kind": "official",
+      "host": "ncdn-live-bfm.pfd.sfr.net",
+      "found": "iptv-org (BFMTV.fr)",
+      "web": "✅"
+    }
   },
   {
     "id": "bfm_tech",
@@ -2191,6 +3185,13 @@
     "desc": "ערוץ טכנולוגיה, גאדג'טים, AI והיי-טק",
     "number": 154,
     "lang": "fr",
-    "iptv": "BFMTechCo.fr"
+    "iptv": "BFMTechCo.fr",
+    "src": {
+      "by": "BFM – SFR (רשמי)",
+      "kind": "official",
+      "host": "ncdn-live-bfm.pfd.sfr.net",
+      "found": "iptv-org (BFMTechCo.fr)",
+      "web": "✅"
+    }
   }
 ]

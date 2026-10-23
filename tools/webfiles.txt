@@ -1,0 +1,13 @@
+# The files of the app itself (the installed apps carry these + the assets folder). Read by every build script.
+index.html
+version.js
+boot.js
+ui.js
+fonts.css
+style.css
+app.js
+dub.js
+dub-local-worker.js
+channels.js
+icon.png
+manifest.webmanifest
