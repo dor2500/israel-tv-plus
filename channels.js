@@ -87,12 +87,12 @@ window.CHANNELS_DATA = [
     "id": "kan_hinuchit",
     "name": "כאן חינוכית 23 HD",
     "title": "כאן חינוכית (Kan Hinuchit)",
-    "category": "ערוצי ישראל - שידור חי",
+    "category": "ילדים ונוער (בעברית)",
     "categoryEn": "israel",
     "url": "https://stream.mcquack.net/378/index.m3u8",
-    "logo": "assets/logos/kan_educational.svg",
+    "logo": "assets/logos/kan23.png",
     "badge": "HD",
-    "desc": "ערוץ הילדים, הנוער וההעשרה של תאגיד השידור - תוכניות קלאסיות ומודרניות",
+    "desc": "כראמל, קופה ראשית לנוער, ילדי בית העץ, להציל את חיות הבר",
     "number": 8
   },
   {
@@ -150,9 +150,9 @@ window.CHANNELS_DATA = [
     "category": "ילדים ונוער (בעברית)",
     "categoryEn": "kids",
     "url": "https://stream.mcquack.net/443/index.m3u8",
-    "logo": "assets/logos/nickelodeon_he.svg",
+    "logo": "assets/logos/nickelodeon.png",
     "badge": "FHD",
-    "desc": "בובספוג מכנסמרובע, הרעשנים, הנרי דנג'ר, מנצחים ומפסידים וסדרות נוער בדיבוב עברי מלא",
+    "desc": "ערוץ ניקלודיאון ישראל - בובספוג, הרעשנים, הנרי דנג'ר וסדרות נוער מובילות",
     "number": 13
   },
   {
@@ -161,22 +161,22 @@ window.CHANNELS_DATA = [
     "title": "ניק ג'וניור ישראל (Nick Jr. Israel)",
     "category": "ילדים ונוער (בעברית)",
     "categoryEn": "kids",
-    "url": "https://stream.mcquack.net/443/index.m3u8",
-    "logo": "assets/logos/nick_jr_he.svg",
+    "url": "https://stream.mcquack.net/220/index.m3u8",
+    "logo": "assets/logos/nick_jr.png",
     "badge": "FHD",
-    "desc": "מפרץ ההרפתקאות, בלייז ומכוניות הענק, סמי הכבאי, פפה פיג ותכנים מעשירים לגיל הרך בעברית",
+    "desc": "מפרץ ההרפתקאות, בלייז ומכוניות הענק, סמי הכבאי ופפה פיג",
     "number": 14
   },
   {
-    "id": "teennick_he",
-    "name": "טין ניק TeenNick ישראל בעברית",
+    "id": "gulli_kids_hd",
+    "name": "ערוץ הילדים גולי Gulli Kids HD",
     "title": "טין ניק ישראל (TeenNick Israel)",
     "category": "ילדים ונוער (בעברית)",
     "categoryEn": "kids",
-    "url": "https://stream.mcquack.net/443/index.m3u8",
-    "logo": "assets/logos/teennick.svg",
+    "url": "https://stream.mcquack.net/305/index.m3u8",
+    "logo": "assets/logos/gulli.png",
     "badge": "HD",
-    "desc": "סדרות נוער ישראליות מובילות: החממה, גאליס, נעלמים, שכונה וסדרות דרמה לנוער",
+    "desc": "ערוץ הרפתקאות, אנימציה וסדרות נוער מהנות לכל המשפחה",
     "number": 15
   },
   {
@@ -188,31 +188,31 @@ window.CHANNELS_DATA = [
     "url": "https://stream.mcquack.net/44/index.m3u8",
     "logo": "assets/logos/hop.png",
     "badge": "FHD",
-    "desc": "הערוץ המוביל לגיל הרך בישראל - סמי הכבאי, תותית, מולי וצומי, יובל המבולבל ושירי בוקר טוב",
+    "desc": "ערוץ הופ! לגיל הרך - מולי וצומי, תותית, יובל המבולבל והפעלות",
     "number": 16
   },
   {
-    "id": "hop_yaldut",
-    "name": "הופ! ילדות ישראלית HD",
+    "id": "ducktv_plus_hd",
+    "name": "דאק טי וי פלוס ducktv PLUS HD",
     "title": "הופ! ילדות ישראלית",
     "category": "ילדים ונוער (בעברית)",
     "categoryEn": "kids",
-    "url": "https://stream.mcquack.net/44/index.m3u8",
-    "logo": "assets/logos/hop_yaldut.svg",
+    "url": "https://dash3.antik.sk/live/test_duck_plus/playlist.m3u8",
+    "logo": "assets/logos/ducktv_plus.png",
     "badge": "FHD",
-    "desc": "שירי ילדות ישראליים קלאסיים, סיפורים, מורשת ושירי חגים לילדים בעברית",
+    "desc": "ערוץ תוכניות העשרה והפעלות נוספות לגיל הרך מבית ducktv",
     "number": 17
   },
   {
-    "id": "luli_tv",
-    "name": "ערוץ לולי Luli TV לפעוטות בעברית",
+    "id": "babyfirst_hd",
+    "name": "בייבי פירסט BabyFirst HD",
     "title": "ערוץ לולי (Luli TV)",
     "category": "ילדים ונוער (בעברית)",
     "categoryEn": "kids",
-    "url": "https://stream.mcquack.net/44/index.m3u8",
-    "logo": "assets/logos/luli_tv.svg",
+    "url": "https://cdn.fast.jwp.services/v1/channel/1_jB6940Ei_TvhvIHDL/manifest.m3u8",
+    "logo": "assets/logos/babyfirst.png",
     "badge": "HD",
-    "desc": "תכנים רגועים, מנגינות והתפתחות מוקדמת לפעוטות מבית ערוץ הופ!",
+    "desc": "ערוץ למידה מוקדמת, מילים ראשונות, מוטוריקה ומוזיקה לגיל הרך",
     "number": 18
   },
   {
@@ -222,130 +222,106 @@ window.CHANNELS_DATA = [
     "category": "ילדים ונוער (בעברית)",
     "categoryEn": "kids",
     "url": "https://stream.mcquack.net/377/index.m3u8",
-    "logo": "assets/logos/zoom.svg",
+    "logo": "assets/logos/zoom.png",
     "badge": "FHD",
-    "desc": "הרפתקאות, אנימציה, קומדיות וסדרות אקשן לילדים ונוער בדיבוב עברי והפקות מקור",
+    "desc": "סדרות ילדים ונוער מדובבות והפקות מקור",
     "number": 19
   },
   {
-    "id": "kan_hinuchit",
-    "name": "כאן חינוכית 23 HD",
-    "title": "כאן חינוכית 23 (Kan Hinuchit)",
-    "category": "ילדים ונוער (בעברית)",
-    "categoryEn": "kids",
-    "url": "https://stream.mcquack.net/378/index.m3u8",
-    "logo": "assets/logos/kan_educational.svg",
-    "badge": "FHD",
-    "desc": "כראמל, קופה ראשית לנוער, ילדי בית העץ, להציל את חיות הבר ותוכניות העשרה מובילות",
-    "number": 20
-  },
-  {
-    "id": "kan_hinuchit_classics",
-    "name": "חינוכית קלאסיקות ישראליות",
-    "title": "כאן חינוכית - קלאסיקות נוסטלגיה",
-    "category": "ילדים ונוער (בעברית)",
-    "categoryEn": "kids",
-    "url": "https://stream.mcquack.net/378/index.m3u8",
-    "logo": "assets/logos/kan_educational.svg",
-    "badge": "Retro 4:3",
-    "desc": "פרפר נחמד, בלי סודות, קישקשתא, הופה היי, רגע עם דודלי וסדרות הילדות האהובות",
-    "number": 21
-  },
-  {
-    "id": "junior_israel",
-    "name": "ערוץ ג'וניור Junior ישראל בעברית HD",
+    "id": "cartoons_short_hd",
+    "name": "אנימציה קצרצרה Cartoons Short HD",
     "title": "ערוץ ג'וניור (Junior Channel)",
     "category": "ילדים ונוער (בעברית)",
     "categoryEn": "kids",
-    "url": "https://stream.mcquack.net/377/index.m3u8",
-    "logo": "assets/logos/junior.svg",
+    "url": "https://stream.mcquack.net/347/index.m3u8",
+    "logo": "assets/logos/cartoons_short.png",
     "badge": "HD",
-    "desc": "ארתור, עיר הממתקים, סדרות הרפתקאות וסרטי ילדים בדיבוב עברי מלא",
-    "number": 22
+    "desc": "סרטוני אנימציה קצרים ומצחיקים ברצף לילדים ולנוער",
+    "number": 20
   },
   {
-    "id": "disney_israel",
-    "name": "ערוץ דיסני Disney ישראל בעברית HD",
+    "id": "lego_channel_hd",
+    "name": "ערוץ לגו Lego Channel HD",
     "title": "ערוץ דיסני ישראל (Disney Israel)",
     "category": "ילדים ונוער (בעברית)",
     "categoryEn": "kids",
-    "url": "https://stream.mcquack.net/443/index.m3u8",
-    "logo": "assets/logos/disney.svg",
+    "url": "https://dltiqboxjw21d.cloudfront.net/index.m3u8",
+    "logo": "assets/logos/lego.png",
     "badge": "FHD",
-    "desc": "פיניאס ופרב, ליידי באג, הגראוויטי פולס, סרטי דיסני המדובבים וסדרות מקור",
-    "number": 23
+    "desc": "ערוץ סדרות וסרטי לגו נינג'גו, לגו חברים, הרפתקאות ובנייה",
+    "number": 21
   },
   {
-    "id": "disney_junior_israel",
-    "name": "דיסני ג'וניור Disney Junior בעברית HD",
+    "id": "tiji_kids_hd",
+    "name": "ערוץ טיז'י TiJi לילדים HD",
     "title": "דיסני ג'וניור (Disney Junior)",
     "category": "ילדים ונוער (בעברית)",
     "categoryEn": "kids",
-    "url": "https://stream.mcquack.net/44/index.m3u8",
-    "logo": "assets/logos/disney_junior.svg",
+    "url": "https://stream.mcquack.net/111/index.m3u8",
+    "logo": "assets/logos/tiji.png",
     "badge": "FHD",
-    "desc": "מועדון החברים של מיקי מאוס, ספיידי וחבריו המופלאים, מלחמת הכוכבים להרפתקנים צעירים",
-    "number": 24
+    "desc": "ערוץ הילדים והפעוטות הבינלאומי המוביל לתכנים חינוכיים וצבעוניים",
+    "number": 22
   },
   {
-    "id": "baby_tv_he",
-    "name": "ערוץ בייבי Baby TV ישראל בעברית HD",
+    "id": "jimjam_kids_hd",
+    "name": "ג'ים ג'אם JimJam לילדים HD",
     "title": "ערוץ בייבי (Baby TV Hebrew)",
     "category": "ילדים ונוער (בעברית)",
     "categoryEn": "kids",
-    "url": "https://stream.mcquack.net/44/index.m3u8",
-    "logo": "assets/logos/baby_tv_he.svg",
+    "url": "https://stream.mcquack.net/150/index.m3u8",
+    "logo": "assets/logos/jimjam.png",
     "badge": "HD",
-    "desc": "תכנים רגועים, צבעים, מספרים, חיות ושירי פעוטות אהובים בעברית",
-    "number": 25
+    "desc": "ערוץ הילדים והפעוטות האהוב - סדרות חינוכיות, דמיון ומשחק",
+    "number": 23
   },
   {
-    "id": "meir_kids",
-    "name": "ערוץ מאיר לילדים בעברית HD",
+    "id": "fresh_kids_hd",
+    "name": "אנימציה וילדים Fresh Kids HD",
     "title": "ערוץ מאיר לילדים",
     "category": "ילדים ונוער (בעברית)",
     "categoryEn": "kids",
-    "url": "https://stream.mcquack.net/378/index.m3u8",
-    "logo": "assets/logos/hop_yaldut.svg",
+    "url": "https://stream.mcquack.net/425/index.m3u8",
+    "logo": "assets/logos/freshkids.png",
     "badge": "HD",
-    "desc": "תוכן חינוכי ישראלי, ערכים, חברות, הצגות וסיפורים לילדים ונוער",
-    "number": 26
+    "desc": "ערוץ הרפתקאות, אנימציה וסרטים מצוירים צבעוניים לילדים ולכל המשפחה",
+    "number": 24
   },
   {
-    "id": "kochavim_kids",
-    "name": "ערוץ כוכבים - שירי ילדים והצגות בעברית",
+    "id": "cartoons_90s",
+    "name": "קלאסיקות מצוירות 90s HD",
     "title": "ערוץ כוכבי הילדים",
     "category": "ילדים ונוער (בעברית)",
     "categoryEn": "kids",
-    "url": "https://stream.mcquack.net/44/index.m3u8",
-    "logo": "assets/logos/junior.svg",
+    "url": "https://stream.mcquack.net/484/index.m3u8",
+    "logo": "assets/logos/cartoons90.png",
     "badge": "FHD",
-    "desc": "שירי הפעלה, הצגות, רינת גבאי, יובל המבולבל, מיקי, דוד חיים ופסטיגל",
-    "number": 27
+    "desc": "ערוץ סדרות האנימציה הנוסטלגיות של שנות ה-90 באיכות גבוהה",
+    "number": 25
   },
   {
-    "id": "israeli_kids_songs",
-    "name": "שירי ילדים ישראליים ברצף HD",
+    "id": "yam_tichoni_hd",
+    "name": "ערוץ הים התיכון HD",
     "title": "שירי ילדים ישראליים",
-    "category": "ילדים ונוער (בעברית)",
+    "category": "מוזיקה ורדיו חי (Music & Radio)",
     "categoryEn": "kids",
-    "url": "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan11/live.livx/playlist.m3u8",
-    "logo": "assets/logos/kids_songs_he.svg",
+    "url": "https://stream.mcquack.net/46/index.m3u8",
+    "logo": "assets/logos/yam_tichoni.png",
     "badge": "Music HD",
-    "desc": "מיטב שירי הילדים מכל הזמנים: עוזי חיטמן, אריק איינשטיין, שירי נעמי שמר ומקהלות ילדים",
-    "number": 28
+    "desc": "ערוץ המוזיקה הים-תיכונית והמזרחית של ישראל",
+    "number": 26
   },
   {
-    "id": "plusplus",
-    "name": "ערוץ האנימציה PLUSPLUS HD",
+    "id": "cartoons_big_hd",
+    "name": "סרטי אנימציה Cartoons Big HD",
     "title": "ערוץ פלוס פלוס (PLUSPLUS)",
     "category": "ילדים ונוער (בעברית)",
     "categoryEn": "kids",
-    "url": "https://stream.mcquack.net/377/index.m3u8",
-    "logo": "assets/logos/plusplus.svg",
+    "url": "https://stream.mcquack.net/348/index.m3u8",
+    "logo": "assets/logos/cartoons_big.png",
     "badge": "FHD",
-    "desc": "ערוץ אנימציה וסרטים מצוירים צבעוני לכל המשפחה",
-    "number": 29
+    "desc": "סרטי אנימציה באורך מלא לכל המשפחה",
+    "number": 27
   },
   {
     "id": "yes_movies_action",
@@ -357,7 +333,7 @@ window.CHANNELS_DATA = [
     "logo": "assets/logos/yes_action.svg",
     "badge": "FHD",
     "desc": "שובר קופות, מותחנים, אקשן ללא הפסקה וסרטי פעולה מהוליווד ומהעולם",
-    "number": 30
+    "number": 28
   },
   {
     "id": "hot_drama",
@@ -369,7 +345,7 @@ window.CHANNELS_DATA = [
     "logo": "assets/logos/hot_drama.svg",
     "badge": "FHD",
     "desc": "סרטי דרמה עטורי פרסים, קולנוע מרגש וסרטים בינלאומיים מובילים",
-    "number": 31
+    "number": 29
   },
   {
     "id": "hot_zone",
@@ -381,7 +357,7 @@ window.CHANNELS_DATA = [
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/HotNewLogo.svg/512px-HotNewLogo.svg.png",
     "badge": "FHD",
     "desc": "סדרות מתח, אקשן, משטרה וחקירות מכל העולם",
-    "number": 32
+    "number": 30
   },
   {
     "id": "yes_reality",
@@ -393,7 +369,7 @@ window.CHANNELS_DATA = [
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Yes_logo_2020.svg/512px-Yes_logo_2020.svg.png",
     "badge": "FHD",
     "desc": "כל תוכניות הריאליטי המובילות מהעולם 24 שעות ביממה",
-    "number": 33
+    "number": 31
   },
   {
     "id": "comedy_channel",
@@ -405,7 +381,7 @@ window.CHANNELS_DATA = [
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Yes_logo_2020.svg/512px-Yes_logo_2020.svg.png",
     "badge": "FHD",
     "desc": "קומדיות, סיטקומים מצחיקים, מופעי סטנדאפ וסרטי צחוק",
-    "number": 34
+    "number": 32
   },
   {
     "id": "viva_premium",
@@ -417,19 +393,7 @@ window.CHANNELS_DATA = [
     "logo": "https://upload.wikimedia.org/wikipedia/he/thumb/6/66/Viva_Channel_Israel.svg/512px-Viva_Channel_Israel.svg.png",
     "badge": "FHD",
     "desc": "ערוץ הטלנובלות והסדרות הדרמטיות הגדול בישראל - סדרות טורקיות, לטיניות וספרדיות",
-    "number": 35
-  },
-  {
-    "id": "yam_tichoni",
-    "name": "ערוץ הים התיכון HD",
-    "title": "ערוץ הים התיכון (Yam Tichoni)",
-    "category": "סרטים וסדרות (Movies & Series)",
-    "categoryEn": "movies",
-    "url": "https://stream.mcquack.net/46/index.m3u8",
-    "logo": "https://upload.wikimedia.org/wikipedia/he/thumb/5/58/YamTichoniChannel.svg/512px-YamTichoniChannel.svg.png",
-    "badge": "FHD",
-    "desc": "סדרות יווניות, טורקיות וים-תיכוניות בשידור רציף",
-    "number": 36
+    "number": 33
   },
   {
     "id": "premialnoe",
@@ -441,7 +405,7 @@ window.CHANNELS_DATA = [
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Yes_logo_2020.svg/512px-Yes_logo_2020.svg.png",
     "badge": "FHD",
     "desc": "סרטים חדשים ישר מהקולנוע באיכות פרימיום",
-    "number": 37
+    "number": 34
   },
   {
     "id": "ostrosyuzhetnoye",
@@ -453,7 +417,7 @@ window.CHANNELS_DATA = [
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Yes_logo_2020.svg/512px-Yes_logo_2020.svg.png",
     "badge": "FHD",
     "desc": "סרטי פעולה, מרדפים, מותחנים פסיכולוגיים ואקשן עולמי",
-    "number": 38
+    "number": 35
   },
   {
     "id": "kinouzhas",
@@ -465,7 +429,7 @@ window.CHANNELS_DATA = [
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/HotNewLogo.svg/512px-HotNewLogo.svg.png",
     "badge": "FHD",
     "desc": "סרטי אימה מצמררים, מתח אפל, פרא-נורמלי וסרטי אימה קלאסיים",
-    "number": 39
+    "number": 36
   },
   {
     "id": "kinohit",
@@ -477,7 +441,7 @@ window.CHANNELS_DATA = [
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Yes_logo_2020.svg/512px-Yes_logo_2020.svg.png",
     "badge": "HD",
     "desc": "שוברי הקופות והסרטים האהובים מכל הזמנים",
-    "number": 40
+    "number": 37
   },
   {
     "id": "kinosemja",
@@ -489,7 +453,7 @@ window.CHANNELS_DATA = [
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Yes_logo_2020.svg/512px-Yes_logo_2020.svg.png",
     "badge": "HD",
     "desc": "סרטים מעולים לצפייה משותפת של כל המשפחה",
-    "number": 41
+    "number": 38
   },
   {
     "id": "megahit",
@@ -501,7 +465,7 @@ window.CHANNELS_DATA = [
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Yes_logo_2020.svg/512px-Yes_logo_2020.svg.png",
     "badge": "FHD",
     "desc": "הפקות ענק וסרטים שזכו בפרסים בינלאומיים",
-    "number": 42
+    "number": 39
   },
   {
     "id": "premiere",
@@ -513,7 +477,7 @@ window.CHANNELS_DATA = [
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Yes_logo_2020.svg/512px-Yes_logo_2020.svg.png",
     "badge": "FHD",
     "desc": "הקרנות בכורה של סרטים מובילים",
-    "number": 43
+    "number": 40
   },
   {
     "id": "comedy_ru",
@@ -525,7 +489,7 @@ window.CHANNELS_DATA = [
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Yes_logo_2020.svg/512px-Yes_logo_2020.svg.png",
     "badge": "FHD",
     "desc": "קומדיות משעשעות וסרטי צחוק",
-    "number": 44
+    "number": 41
   },
   {
     "id": "action_tv1000",
@@ -537,7 +501,7 @@ window.CHANNELS_DATA = [
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Yes_logo_2020.svg/512px-Yes_logo_2020.svg.png",
     "badge": "HD",
     "desc": "ערוץ הסרטים הבינלאומי הידוע במהדורת אקשן",
-    "number": 45
+    "number": 42
   },
   {
     "id": "tv1000_classic",
@@ -549,7 +513,7 @@ window.CHANNELS_DATA = [
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Yes_logo_2020.svg/512px-Yes_logo_2020.svg.png",
     "badge": "SD",
     "desc": "יצירות מופת וקלאסיקות קולנוע מכל הזמנים",
-    "number": 46
+    "number": 43
   },
   {
     "id": "serial_tv",
@@ -561,19 +525,19 @@ window.CHANNELS_DATA = [
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/HotNewLogo.svg/512px-HotNewLogo.svg.png",
     "badge": "FHD",
     "desc": "סדרות דרמה, פשע ומתח ברצף",
-    "number": 47
+    "number": 44
   },
   {
-    "id": "good_life",
-    "name": "ערוץ החיים הטובים",
+    "id": "good_life_israel",
+    "name": "ערוץ החיים הטובים HD",
     "title": "ערוץ החיים הטובים (Good Life)",
-    "category": "סרטים וסדרות (Movies & Series)",
+    "category": "לייף סטייל ובידור",
     "categoryEn": "movies",
     "url": "https://stream.mcquack.net/47/index.m3u8",
-    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Yes_logo_2020.svg/512px-Yes_logo_2020.svg.png",
+    "logo": "assets/logos/goodlife.png",
     "badge": "SD",
-    "desc": "לייפסטייל, בישול וקולינריה, עיצוב הבית ונופש",
-    "number": 48
+    "desc": "תוכניות בישול, לייף סטייל, עיצוב ואירוח",
+    "number": 45
   },
   {
     "id": "vacation_channel",
@@ -585,7 +549,7 @@ window.CHANNELS_DATA = [
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Yes_logo_2020.svg/512px-Yes_logo_2020.svg.png",
     "badge": "FHD",
     "desc": "סיורים ביעדים מרהיבים, מלונות יוקרה וחופשות חלומיות",
-    "number": 49
+    "number": 46
   },
   {
     "id": "sport5",
@@ -597,7 +561,7 @@ window.CHANNELS_DATA = [
     "logo": "assets/logos/sport5.svg",
     "badge": "FHD",
     "desc": "ערוץ הספורט הלאומי - ליגת האלופות, ליגת העל בכדורסל, חדשות הספורט",
-    "number": 50
+    "number": 47
   },
   {
     "id": "sport1",
@@ -609,7 +573,7 @@ window.CHANNELS_DATA = [
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Setanta_Sports_logo.svg/512px-Setanta_Sports_logo.svg.png",
     "badge": "HD",
     "desc": "שידורים ישירים של משחקי כדורגל, כדורסל וספורט עולמי",
-    "number": 51
+    "number": 48
   },
   {
     "id": "sport2",
@@ -621,7 +585,7 @@ window.CHANNELS_DATA = [
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Setanta_Sports_logo.svg/512px-Setanta_Sports_logo.svg.png",
     "badge": "HD",
     "desc": "שידורי ספורט ישירים, ליגות אירופיות ומפעלים בינלאומיים",
-    "number": 52
+    "number": 49
   },
   {
     "id": "sport3",
@@ -633,7 +597,7 @@ window.CHANNELS_DATA = [
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Setanta_Sports_logo.svg/512px-Setanta_Sports_logo.svg.png",
     "badge": "HD",
     "desc": "שידורי כדורגל מליגות בכירות וטורנירים חיים",
-    "number": 53
+    "number": 50
   },
   {
     "id": "sport4",
@@ -645,7 +609,7 @@ window.CHANNELS_DATA = [
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Setanta_Sports_logo.svg/512px-Setanta_Sports_logo.svg.png",
     "badge": "HD",
     "desc": "ערוץ משחקים חיים וסיקורי ספורט נוספים",
-    "number": 54
+    "number": 51
   },
   {
     "id": "viju_sport",
@@ -657,7 +621,7 @@ window.CHANNELS_DATA = [
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Setanta_Sports_logo.svg/512px-Setanta_Sports_logo.svg.png",
     "badge": "HD",
     "desc": "אירועי ספורט, כדורסל, מרוצים ואירועי אליפות בינלאומיים",
-    "number": 55
+    "number": 52
   },
   {
     "id": "setanta1",
@@ -669,19 +633,19 @@ window.CHANNELS_DATA = [
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Setanta_Sports_logo.svg/512px-Setanta_Sports_logo.svg.png",
     "badge": "FHD",
     "desc": "פרמייר ליג, סרייה A, ליגה צרפתית וקרבות MMA",
-    "number": 56
+    "number": 53
   },
   {
-    "id": "setanta2",
-    "name": "Setanta Sports 2 HD",
+    "id": "setanta_sports_2_hd",
+    "name": "ספורט סטאנטה Setanta Sports 2 HD",
     "title": "Setanta Sports 2 HD",
     "category": "ספורט (Sports)",
     "categoryEn": "sports",
     "url": "https://stream.mcquack.net/235/index.m3u8",
-    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Setanta_Sports_logo.svg/512px-Setanta_Sports_logo.svg.png",
+    "logo": "assets/logos/setanta2.png",
     "badge": "FHD",
-    "desc": "טניס בינלאומי, יורוליג, כדורגל ומרוצי פורמולה",
-    "number": 57
+    "desc": "שידורי כדורגל מליגות אירופה הבכירות, טניס וכדורסל",
+    "number": 54
   },
   {
     "id": "redbull_tv",
@@ -693,19 +657,7 @@ window.CHANNELS_DATA = [
     "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/e/eb/Red_Bull_TV_logo.svg/512px-Red_Bull_TV_logo.svg.png",
     "badge": "FHD",
     "desc": "ספורט אקסטרים, דאונהיל, סקי, ברייקדאנס ופסטיבלי מוזיקה חיים",
-    "number": 58
-  },
-  {
-    "id": "ninja_warrior",
-    "name": "American Ninja Warrior HD",
-    "title": "American Ninja Warrior 24/7",
-    "category": "ספורט (Sports)",
-    "categoryEn": "sports",
-    "url": "https://d4whmvwm0rdvi.cloudfront.net/10007/99951318/hls/master.m3u8",
-    "logo": "https://raw.githubusercontent.com/RoqueDJ/iptv-svg/main/1792421696158.png",
-    "badge": "FHD",
-    "desc": "מסלול הנינג'ה האמריקאי - מתחרים, מסלולי מכשולים ואקשן 24/7",
-    "number": 59
+    "number": 55
   },
   {
     "id": "arena1",
@@ -717,7 +669,7 @@ window.CHANNELS_DATA = [
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Setanta_Sports_logo.svg/512px-Setanta_Sports_logo.svg.png",
     "badge": "HD",
     "desc": "כדורגל אירופי, כדוריד וכדורמים אירופי",
-    "number": 60
+    "number": 56
   },
   {
     "id": "arena2",
@@ -729,7 +681,7 @@ window.CHANNELS_DATA = [
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Setanta_Sports_logo.svg/512px-Setanta_Sports_logo.svg.png",
     "badge": "HD",
     "desc": "שידורי ספורט אירופיים ישירים",
-    "number": 61
+    "number": 57
   },
   {
     "id": "arena4",
@@ -741,31 +693,31 @@ window.CHANNELS_DATA = [
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Setanta_Sports_logo.svg/512px-Setanta_Sports_logo.svg.png",
     "badge": "HD",
     "desc": "שידורי NFL, אופנועים וספורט מוטורי",
-    "number": 62
+    "number": 58
   },
   {
-    "id": "galgalatz",
+    "id": "galgalatz_live",
     "name": "גלגלצ Live (Galgalatz)",
     "title": "גלגלצ (Galgalatz Live)",
     "category": "מוזיקה ורדיו חי (Music & Radio)",
     "categoryEn": "radio",
-    "url": "https://contact.gostreaming.tv/Con-11/index.m3u8",
-    "logo": "assets/logos/galgalatz.svg",
+    "url": "https://glzwizzlv.bynetcdn.com/glglz_mp3",
+    "logo": "assets/logos/galgalatz.png",
     "badge": "LIVE",
-    "desc": "תחנת הרדיו המובילה בישראל - מוזיקה ללא הפסקה, להיטים ודיווחי תנועה",
-    "number": 63
+    "desc": "תחנת הרדיו והמוזיקה הפופולרית בישראל בשידור חי",
+    "number": 59
   },
   {
-    "id": "glz",
+    "id": "glz_live",
     "name": "גלי צה\"ל Live (GLZ)",
     "title": "גלי צה\"ל (Galei Tzahal Live)",
     "category": "מוזיקה ורדיו חי (Music & Radio)",
     "categoryEn": "radio",
     "url": "https://glzwizzlv.bynetcdn.com/glz_mp3",
-    "logo": "https://upload.wikimedia.org/wikipedia/he/thumb/a/ab/Galei_Zahal_logo_2020.svg/512px-Galei_Zahal_logo_2020.svg.png",
+    "logo": "assets/logos/glz.png",
     "badge": "LIVE",
-    "desc": "תחנת החדשות והאקטואליה הצבאית-ציבורית של ישראל",
-    "number": 64
+    "desc": "חדשות, אקטואליה ושיח ציבורי 24/7",
+    "number": 60
   },
   {
     "id": "music_4ever",
@@ -777,7 +729,7 @@ window.CHANNELS_DATA = [
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Channel_24_logo_%28Israel%29.svg/512px-Channel_24_logo_%28Israel%29.svg.png",
     "badge": "FHD",
     "desc": "הלהיטים הגדולים מכל הזמנים ברצף קליפים מרהיב",
-    "number": 65
+    "number": 61
   },
   {
     "id": "music_4fun",
@@ -789,7 +741,7 @@ window.CHANNELS_DATA = [
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Channel_24_logo_%28Israel%29.svg/512px-Channel_24_logo_%28Israel%29.svg.png",
     "badge": "HD",
     "desc": "להיטי הפופ האירופיים והמצעדים החמים ביותר",
-    "number": 66
+    "number": 62
   },
   {
     "id": "music_vivalatino",
@@ -801,7 +753,7 @@ window.CHANNELS_DATA = [
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Channel_24_logo_%28Israel%29.svg/512px-Channel_24_logo_%28Israel%29.svg.png",
     "badge": "FHD",
     "desc": "רגאטון, מוזיקה לטינית סוחפת, סלסה ודאנס קצבי",
-    "number": 67
+    "number": 63
   },
   {
     "id": "music_1hd",
@@ -813,7 +765,7 @@ window.CHANNELS_DATA = [
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Channel_24_logo_%28Israel%29.svg/512px-Channel_24_logo_%28Israel%29.svg.png",
     "badge": "FHD",
     "desc": "ערוץ מוזיקה בינלאומי באיכות תמונה וסאונד מדהימים",
-    "number": 68
+    "number": 64
   },
   {
     "id": "music_retro7080",
@@ -825,55 +777,31 @@ window.CHANNELS_DATA = [
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Channel_24_logo_%28Israel%29.svg/512px-Channel_24_logo_%28Israel%29.svg.png",
     "badge": "SD",
     "desc": "דיסקו, רוק ופופ קלאסי משנות ה-70 וה-80",
-    "number": 69
+    "number": 65
   },
   {
-    "id": "galgalatz_tv",
-    "name": "גלגלצ TV אולפן חי",
-    "title": "גלגלצ שידור חי מהאולפן",
-    "category": "מוזיקה ורדיו חי (Music & Radio)",
-    "categoryEn": "music",
-    "url": "https://contact.gostreaming.tv/Con-11/index.m3u8",
-    "logo": "assets/logos/galgalatz.svg",
-    "badge": "Live Studio",
-    "desc": "תחנת הרדיו המובילה בישראל במצלמות אולפן - הלהיטים החמים ודיווחי תנועה",
-    "number": 70
-  },
-  {
-    "id": "kan_gimel_tv",
-    "name": "כאן גימל TV - רק מוזיקה ישראלית",
-    "title": "כאן גימל (Kan Gimel Live)",
-    "category": "מוזיקה ורדיו חי (Music & Radio)",
-    "categoryEn": "music",
-    "url": "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan11/live.livx/playlist.m3u8",
-    "logo": "assets/logos/kan_gimel.svg",
-    "badge": "Live Music",
-    "desc": "הבית של המוזיקה הישראלית - רוק, פופ, ים תיכוני ושירי ארץ ישראל היפה",
-    "number": 71
-  },
-  {
-    "id": "radio_103fm_tv",
-    "name": "103FM אולפן שידור חי",
+    "id": "radio_103fm",
+    "name": "103FM רדיו ללא הפסקה",
     "title": "103FM רדיו ללא הפסקה TV",
     "category": "מוזיקה ורדיו חי (Music & Radio)",
     "categoryEn": "music",
-    "url": "https://contact.gostreaming.tv/Con-11/index.m3u8",
-    "logo": "assets/logos/galgalatz.svg",
+    "url": "https://cdn.cybercdn.live/103FM/Live/icecast.audio",
+    "logo": "assets/logos/103fm.png",
     "badge": "Live Studio",
-    "desc": "התוכניות המובילות בישראל במצלמות אולפן - אקטואליה, ספורט וייעוץ",
-    "number": 72
+    "desc": "שידורי רדיו חיים של 103FM",
+    "number": 66
   },
   {
-    "id": "radio_haifa_tv",
-    "name": "רדיו חיפה TV אולפן חי",
+    "id": "kol_barama_live",
+    "name": "רדיו קול ברמה Live",
     "title": "רדיו חיפה 107.5FM שידור חי",
     "category": "מוזיקה ורדיו חי (Music & Radio)",
     "categoryEn": "music",
-    "url": "https://contact.gostreaming.tv/Con-11/index.m3u8",
-    "logo": "assets/logos/galgalatz.svg",
+    "url": "https://cdn.cybercdn.live/Kol_Barama/Live_Audio/icecast.audio",
+    "logo": "assets/logos/kol_barama.png",
     "badge": "Live Studio",
-    "desc": "שידורי אולפן חיים מצפון הארץ - חדשות, מוזיקה ומבזקים",
-    "number": 73
+    "desc": "שידורי רדיו קול ברמה",
+    "number": 67
   },
   {
     "id": "animal_planet",
@@ -885,7 +813,7 @@ window.CHANNELS_DATA = [
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/2018_Animal_Planet_logo.svg/512px-2018_Animal_Planet_logo.svg.png",
     "badge": "FHD",
     "desc": "עולם החיות, ספארי באפריקה, חיות מחמד והגנה על חיות הבר",
-    "number": 74
+    "number": 68
   },
   {
     "id": "investigation_discovery",
@@ -897,7 +825,7 @@ window.CHANNELS_DATA = [
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Investigation_Discovery_logo.svg/512px-Investigation_Discovery_logo.svg.png",
     "badge": "HD",
     "desc": "תעלומות פשע אמיתי, חקירות בלשיות ופיענוח פרשיות מסתוריות",
-    "number": 75
+    "number": 69
   },
   {
     "id": "travel_channel",
@@ -909,7 +837,7 @@ window.CHANNELS_DATA = [
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Travel_Channel_Logo_2018.svg/512px-Travel_Channel_Logo_2018.svg.png",
     "badge": "HD",
     "desc": "מסעות ברחבי העולם, תרבויות מרתקות, הרפתקאות וטבע פראי",
-    "number": 76
+    "number": 70
   },
   {
     "id": "viju_explore",
@@ -921,7 +849,7 @@ window.CHANNELS_DATA = [
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/2018_Animal_Planet_logo.svg/512px-2018_Animal_Planet_logo.svg.png",
     "badge": "HD",
     "desc": "מדע, טכנולוגיה, ארכיאולוגיה וגילויים היסטוריים",
-    "number": 77
+    "number": 71
   },
   {
     "id": "viju_planet",
@@ -933,7 +861,7 @@ window.CHANNELS_DATA = [
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/2018_Animal_Planet_logo.svg/512px-2018_Animal_Planet_logo.svg.png",
     "badge": "FHD",
     "desc": "נופי טבע מרהיבים, בעלי חיים וסביבה באיכות FHD",
-    "number": 78
+    "number": 72
   },
   {
     "id": "bbc_earth",
@@ -945,7 +873,7 @@ window.CHANNELS_DATA = [
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/BBC_Earth_logo.svg/512px-BBC_Earth_logo.svg.png",
     "badge": "FHD",
     "desc": "סדרות הטבע וההיסטוריה הידועות של ה-BBC בהנחיית דיוויד אטנבורו",
-    "number": 79
+    "number": 73
   },
   {
     "id": "asharq_discovery",
@@ -957,7 +885,7 @@ window.CHANNELS_DATA = [
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Investigation_Discovery_logo.svg/512px-Investigation_Discovery_logo.svg.png",
     "badge": "FHD",
     "desc": "תוכניות דיסקברי מקוריות, חלל, מכונאות ומדע",
-    "number": 80
+    "number": 74
   },
   {
     "id": "history_365",
@@ -969,43 +897,19 @@ window.CHANNELS_DATA = [
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/BBC_Earth_logo.svg/512px-BBC_Earth_logo.svg.png",
     "badge": "SD",
     "desc": "תעודה היסטורית, מלחמות עולם, ממלכות ומנהיגים ששינו את העולם",
-    "number": 81
+    "number": 75
   },
   {
-    "id": "food_israel",
-    "name": "ערוץ האוכל והבישול HD",
-    "title": "ערוץ האוכל (The Food Channel)",
-    "category": "לייף סטייל ובידור",
-    "categoryEn": "lifestyle",
-    "url": "https://contact.gostreaming.tv/Con-11/index.m3u8",
-    "logo": "assets/logos/food_channel.svg",
-    "badge": "FHD",
-    "desc": "השפים המובילים בישראל, מתכונים מסורתיים וחדשניים, סיורי שווקים ואפייה",
-    "number": 82
-  },
-  {
-    "id": "nature_wild",
-    "name": "ערוץ טבע ופרא HD",
+    "id": "extreme_sports_hd",
+    "name": "ערוץ אקסטרים Extreme Sports HD",
     "title": "טבע ודוקו עולמי (Nature & Wildlife)",
-    "category": "טבע ודוקו (Documentary & Nature)",
+    "category": "ספורט (Sports)",
     "categoryEn": "docu",
-    "url": "https://contact.gostreaming.tv/Con-11/index.m3u8",
-    "logo": "assets/logos/nature_docu.svg",
+    "url": "https://stream.mcquack.net/148/index.m3u8",
+    "logo": "assets/logos/extreme.png",
     "badge": "4K HDR",
-    "desc": "מסעות בטבע הפראי, שמורות טבע בארץ ובעולם, אוקיינוסים וחיות בסכנת הכחדה",
-    "number": 83
-  },
-  {
-    "id": "babyfirst",
-    "name": "בייבי פירסט BabyFirst HD",
-    "title": "בייבי פירסט (BabyFirst TV)",
-    "category": "ערוצים בינלאומיים (World)",
-    "categoryEn": "world",
-    "url": "https://cdn.fast.jwp.services/v1/channel/1_jB6940Ei_TvhvIHDL/manifest.m3u8",
-    "logo": "assets/logos/babyfirst.svg",
-    "badge": "FHD",
-    "desc": "ערוץ מוזיקה, צבעים וצלילים מותאם במיוחד לתינוקות ופעוטות",
-    "number": 84
+    "desc": "ערוץ ספורט האקסטרים העולמי",
+    "number": 76
   },
   {
     "id": "kinokazka",
@@ -1017,7 +921,7 @@ window.CHANNELS_DATA = [
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Nickelodeon_2009_logo.svg/512px-Nickelodeon_2009_logo.svg.png",
     "badge": "FHD",
     "desc": "סרטי אגדות, קולנוע לילדים ונוער, פנטזיה וסיפורים קלאסיים",
-    "number": 85
+    "number": 77
   },
   {
     "id": "pixel_tv",
@@ -1029,7 +933,7 @@ window.CHANNELS_DATA = [
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/2022_Disney_Channel_logo.svg/512px-2022_Disney_Channel_logo.svg.png",
     "badge": "FHD",
     "desc": "ערוץ הגיימינג, האנימציה והסדרות המובילות לילדים",
-    "number": 86
+    "number": 78
   },
   {
     "id": "niki_kids",
@@ -1041,7 +945,7 @@ window.CHANNELS_DATA = [
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Nickelodeon_2009_logo.svg/512px-Nickelodeon_2009_logo.svg.png",
     "badge": "FHD",
     "desc": "ערוץ בינלאומי לילדים עם דיבוב איכותי וסדרות חינוכיות",
-    "number": 87
+    "number": 79
   },
   {
     "id": "niki_junior",
@@ -1053,7 +957,7 @@ window.CHANNELS_DATA = [
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Nick_Jr._logo_2023.svg/512px-Nick_Jr._logo_2023.svg.png",
     "badge": "FHD",
     "desc": "ערוץ לילדי הגן ופעוטות - שירים, סיפורים והרפתקאות",
-    "number": 88
+    "number": 80
   },
   {
     "id": "kapitan_fantastika",
@@ -1065,19 +969,7 @@ window.CHANNELS_DATA = [
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/2022_Disney_Channel_logo.svg/512px-2022_Disney_Channel_logo.svg.png",
     "badge": "FHD",
     "desc": "הרפתקאות גיבורי על ומדע בדיוני לילדים ונוער",
-    "number": 89
-  },
-  {
-    "id": "tiji_kids",
-    "name": "טי-ג'י TiJi ילדים",
-    "title": "ערוץ טי-ג'י (TiJi Kids)",
-    "category": "ערוצים בינלאומיים (World)",
-    "categoryEn": "world",
-    "url": "https://stream.mcquack.net/111/index.m3u8",
-    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/BabyFirst_logo_2019.svg/512px-BabyFirst_logo_2019.svg.png",
-    "badge": "SD",
-    "desc": "ערוץ הילדים הצרפתי האהוב לילדי הגיל הרך",
-    "number": 90
+    "number": 81
   },
   {
     "id": "okids",
@@ -1089,7 +981,7 @@ window.CHANNELS_DATA = [
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/2018_Animal_Planet_logo.svg/512px-2018_Animal_Planet_logo.svg.png",
     "badge": "SD",
     "desc": "תגליות, חיות ועולם הטבע בשפה פשוטה ומהנה לילדים",
-    "number": 91
+    "number": 82
   },
   {
     "id": "hidabroot",
@@ -1101,7 +993,7 @@ window.CHANNELS_DATA = [
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Kan11Logo.svg/512px-Kan11Logo.svg.png",
     "badge": "FHD",
     "desc": "ערוץ היהדות והקירוב הגדול - שיעורים, תוכניות אירוח, חינוך וערכים",
-    "number": 92
+    "number": 83
   },
   {
     "id": "hala_tv",
@@ -1113,7 +1005,7 @@ window.CHANNELS_DATA = [
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Kan11Logo.svg/512px-Kan11Logo.svg.png",
     "badge": "FHD",
     "desc": "ערוץ הטלוויזיה המסחרי הערבי בישראל מאת אתר פאנט",
-    "number": 93
+    "number": 84
   },
   {
     "id": "kabbalah",
@@ -1125,7 +1017,7 @@ window.CHANNELS_DATA = [
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Kan11Logo.svg/512px-Kan11Logo.svg.png",
     "badge": "SD",
     "desc": "שיעורי קבלה בשידור חי, פילוסופיה וחוכמת הקבלה",
-    "number": 94
+    "number": 85
   },
   {
     "id": "shelanu_tv",
@@ -1137,7 +1029,7 @@ window.CHANNELS_DATA = [
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Kan11Logo.svg/512px-Kan11Logo.svg.png",
     "badge": "HD",
     "desc": "ערוץ תרבות וקהילה בישראל",
-    "number": 95
+    "number": 86
   },
   {
     "id": "channel16",
@@ -1149,7 +1041,7 @@ window.CHANNELS_DATA = [
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Kan11Logo.svg/512px-Kan11Logo.svg.png",
     "badge": "HD",
     "desc": "ערוץ קהילתי ישראלי בשידור ישיר",
-    "number": 96
+    "number": 87
   },
   {
     "id": "abc_news",
@@ -1161,7 +1053,7 @@ window.CHANNELS_DATA = [
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/ABC_News_Live_logo.svg/512px-ABC_News_Live_logo.svg.png",
     "badge": "FHD",
     "desc": "רשת החדשות האמריקאית ABC - שידור חי סביב השעון",
-    "number": 97
+    "number": 88
   },
   {
     "id": "cbs_news",
@@ -1173,7 +1065,7 @@ window.CHANNELS_DATA = [
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/CBS_News_24-7_logo.svg/512px-CBS_News_24-7_logo.svg.png",
     "badge": "FHD",
     "desc": "רשת החדשות האמריקאית CBS - מבזקים, פרשנויות ואירועים חיים",
-    "number": 98
+    "number": 89
   },
   {
     "id": "dw_english",
@@ -1185,7 +1077,7 @@ window.CHANNELS_DATA = [
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Deutsche_Welle_symbol_2012.svg/512px-Deutsche_Welle_symbol_2012.svg.png",
     "badge": "FHD",
     "desc": "רשת השידור הגרמנית הבינלאומית באנגלית - סיקור עולמי אובייקטיבי",
-    "number": 99
+    "number": 90
   },
   {
     "id": "aljazeera_en",
@@ -1197,7 +1089,7 @@ window.CHANNELS_DATA = [
     "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/f/f2/Al_Jazeera_English_logo.svg/512px-Al_Jazeera_English_logo.svg.png",
     "badge": "FHD",
     "desc": "ערוץ החדשות הבינלאומי באנגלית",
-    "number": 100
+    "number": 91
   },
   {
     "id": "bfmtv",
@@ -1209,7 +1101,7 @@ window.CHANNELS_DATA = [
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/BFMTV_logo_2017.svg/512px-BFMTV_logo_2017.svg.png",
     "badge": "FHD",
     "desc": "רשת החדשות המובילה בצרפת",
-    "number": 101
+    "number": 92
   },
   {
     "id": "bfm_tech",
@@ -1221,7 +1113,7 @@ window.CHANNELS_DATA = [
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/BFMTV_logo_2017.svg/512px-BFMTV_logo_2017.svg.png",
     "badge": "FHD",
     "desc": "ערוץ טכנולוגיה, גאדג'טים, AI והיי-טק",
-    "number": 102
+    "number": 93
   },
   {
     "id": "rewind_80s",
@@ -1233,7 +1125,7 @@ window.CHANNELS_DATA = [
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Yes_logo_2020.svg/512px-Yes_logo_2020.svg.png",
     "badge": "HD",
     "desc": "הסרטים והקלאסיקות הבלתי נשכחות של שנות ה-80",
-    "number": 103
+    "number": 94
   },
   {
     "id": "cinema_70s",
@@ -1245,7 +1137,7 @@ window.CHANNELS_DATA = [
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Yes_logo_2020.svg/512px-Yes_logo_2020.svg.png",
     "badge": "HD",
     "desc": "קולנוע אמריקאי קלאסי מתור הזהב של שנות ה-70",
-    "number": 104
+    "number": 95
   },
   {
     "id": "replay_00s",
@@ -1257,7 +1149,7 @@ window.CHANNELS_DATA = [
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Yes_logo_2020.svg/512px-Yes_logo_2020.svg.png",
     "badge": "HD",
     "desc": "להיטי שנות ה-2000 - קומדיות נעורים, אקשן ודרמות",
-    "number": 105
+    "number": 96
   },
   {
     "id": "aflam_movies",
@@ -1269,19 +1161,7 @@ window.CHANNELS_DATA = [
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Yes_logo_2020.svg/512px-Yes_logo_2020.svg.png",
     "badge": "FHD",
     "desc": "סרטי קולנוע ערביים ומזרח-תיכוניים מודרניים",
-    "number": 106
-  },
-  {
-    "id": "cartoons_90s",
-    "name": "קלאסיקות מצוירות 90s HD",
-    "title": "קלאסיקות מצוירות שנות ה-90 (Cartoons 90)",
-    "category": "ילדים ונוער (בעברית)",
-    "categoryEn": "kids",
-    "url": "https://stream.mcquack.net/484/index.m3u8",
-    "logo": "assets/logos/cartoons90.png",
-    "badge": "FHD",
-    "desc": "ערוץ סדרות האנימציה הנוסטלגיות של שנות ה-90 - שידורים רצופים באיכות גבוהה",
-    "number": 107
+    "number": 97
   },
   {
     "id": "simpsons_247",
@@ -1293,31 +1173,7 @@ window.CHANNELS_DATA = [
     "logo": "assets/logos/simpsons.png",
     "badge": "FHD",
     "desc": "ערוץ שידורים רציף של כל עונות משפחת סימפסון 24 שעות ביממה",
-    "number": 108
-  },
-  {
-    "id": "extreme_sports_hd",
-    "name": "ערוץ אקסטרים Extreme Sports HD",
-    "title": "Extreme Sports Channel HD",
-    "category": "ספורט (Sports)",
-    "categoryEn": "sports",
-    "url": "https://stream.mcquack.net/148/index.m3u8",
-    "logo": "assets/logos/extreme.png",
-    "badge": "FHD",
-    "desc": "ערוץ ספורט האקסטרים העולמי - סקייטבורד, אופני הרים, גלישת גלים ומוטוקרוס",
-    "number": 109
-  },
-  {
-    "id": "fresh_kids_hd",
-    "name": "אנימציה וילדים Fresh Kids HD",
-    "title": "Fresh Kids Animation HD",
-    "category": "ילדים ונוער (בעברית)",
-    "categoryEn": "kids",
-    "url": "https://stream.mcquack.net/425/index.m3u8",
-    "logo": "assets/logos/freshkids.png",
-    "badge": "FHD",
-    "desc": "ערוץ הרפתקאות, אנימציה וסרטים מצוירים צבעוניים לילדים ולכל המשפחה",
-    "number": 110
+    "number": 98
   },
   {
     "id": "cineman_comedy_hd",
@@ -1329,31 +1185,7 @@ window.CHANNELS_DATA = [
     "logo": "assets/logos/cineman_comedy.png",
     "badge": "FHD",
     "desc": "ערוץ סרטי הקומדיה, בידור משפחתי וקומדיות רומנטיות ברצף",
-    "number": 111
-  },
-  {
-    "id": "jimjam_kids_hd",
-    "name": "ג'ים ג'אם JimJam לילדים HD",
-    "title": "JimJam Kids TV HD",
-    "category": "ילדים ונוער (בעברית)",
-    "categoryEn": "kids",
-    "url": "https://stream.mcquack.net/150/index.m3u8",
-    "logo": "assets/logos/jimjam.png",
-    "badge": "HD",
-    "desc": "ערוץ הילדים והפעוטות האהוב - סדרות חינוכיות, דמיון ומשחק",
-    "number": 112
-  },
-  {
-    "id": "gulli_kids_hd",
-    "name": "ערוץ הילדים גולי Gulli Kids HD",
-    "title": "Gulli Kids Animation HD",
-    "category": "ילדים ונוער (בעברית)",
-    "categoryEn": "kids",
-    "url": "https://stream.mcquack.net/305/index.m3u8",
-    "logo": "assets/logos/gulli.png",
-    "badge": "FHD",
-    "desc": "ערוץ הרפתקאות, אנימציה וסדרות נוער מהנות לכל המשפחה",
-    "number": 113
+    "number": 99
   },
   {
     "id": "cineman_vhs_retro",
@@ -1365,31 +1197,7 @@ window.CHANNELS_DATA = [
     "logo": "assets/logos/vhs.png",
     "badge": "HD",
     "desc": "ערוץ קלאסיקות הקולנוע הנוסטלגיות של שנות ה-80 וה-90",
-    "number": 114
-  },
-  {
-    "id": "cartoons_short_hd",
-    "name": "אנימציה קצרצרה Cartoons Short HD",
-    "title": "Cartoons Short HD",
-    "category": "ילדים ונוער (בעברית)",
-    "categoryEn": "kids",
-    "url": "https://stream.mcquack.net/347/index.m3u8",
-    "logo": "assets/logos/cartoons_short.png",
-    "badge": "FHD",
-    "desc": "סרטוני אנימציה קצרים ומצחיקים ברצף לילדים ולנוער",
-    "number": 115
-  },
-  {
-    "id": "cartoons_big_hd",
-    "name": "סרטי אנימציה Cartoons Big HD",
-    "title": "Cartoons Big Animation HD",
-    "category": "ילדים ונוער (בעברית)",
-    "categoryEn": "kids",
-    "url": "https://stream.mcquack.net/348/index.m3u8",
-    "logo": "assets/logos/cartoons_big.png",
-    "badge": "FHD",
-    "desc": "סרטי אנימציה באורך מלא לכל המשפחה",
-    "number": 116
+    "number": 100
   },
   {
     "id": "ducktv_hd",
@@ -1400,32 +1208,8 @@ window.CHANNELS_DATA = [
     "url": "https://dash3.antik.sk/live/duck_tv/index.m3u8",
     "logo": "assets/logos/ducktv.png",
     "badge": "FHD",
-    "desc": "ערוץ הפעוטות וההתפתחות המוביל מבית yes ו-HOT - אנימציה עדינה, מוזיקה וצבעים",
-    "number": 117
-  },
-  {
-    "id": "ducktv_plus_hd",
-    "name": "דאק טי וי פלוס ducktv PLUS HD",
-    "title": "ducktv PLUS Kids HD",
-    "category": "ילדים ונוער (בעברית)",
-    "categoryEn": "kids",
-    "url": "https://dash3.antik.sk/live/test_duck_plus/playlist.m3u8",
-    "logo": "assets/logos/ducktv_plus.png",
-    "badge": "HD",
-    "desc": "ערוץ תוכניות העשרה והפעלות נוספות מבית ducktv",
-    "number": 118
-  },
-  {
-    "id": "lego_channel_hd",
-    "name": "ערוץ לגו Lego Channel HD",
-    "title": "Lego Channel HD",
-    "category": "ילדים ונוער (בעברית)",
-    "categoryEn": "kids",
-    "url": "https://dltiqboxjw21d.cloudfront.net/index.m3u8",
-    "logo": "assets/logos/lego.png",
-    "badge": "FHD",
-    "desc": "ערוץ סדרות וסרטי לגו נינג'גו, לגו חברים, הרפתקאות ובנייה לילדים",
-    "number": 119
+    "desc": "ערוץ הפעוטות וההתפתחות המוביל מבית yes ו-HOT - אנימציה עדינה וצבעים",
+    "number": 101
   },
   {
     "id": "babyshark_tv_hd",
@@ -1436,7 +1220,7 @@ window.CHANNELS_DATA = [
     "url": "https://newidco-babysharktv-1-us.roku.wurl.tv/playlist.m3u8",
     "logo": "assets/logos/babyshark.png",
     "badge": "FHD",
-    "desc": "ערוץ שירי הילדים המפורסם של בייבי שארק, פינקפונג והחברים 24/7",
-    "number": 120
+    "desc": "ערוץ שירי הילדים המפורסם של בייבי שארק ופינקפונג 24/7",
+    "number": 102
   }
 ];

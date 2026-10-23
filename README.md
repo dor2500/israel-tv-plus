@@ -7,7 +7,7 @@
 [![Live Web App](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-10b981?style=for-the-badge&logo=github)](https://dor2500.github.io/israel-tv-plus/)
 [![Mobile Optimized](https://img.shields.io/badge/Mobile-Responsive%20iOS%20%26%20Android-38bdf8?style=for-the-badge&logo=apple)](https://dor2500.github.io/israel-tv-plus/)
 [![LG webOS](https://img.shields.io/badge/LG-webOS%20TV-c4004f?style=for-the-badge&logo=lg)](https://github.com/dor2500/israel-tv-plus/releases)
-[![Channels](https://img.shields.io/badge/Channels-106%20Live-f59e0b?style=for-the-badge)](https://dor2500.github.io/israel-tv-plus/)
+[![Channels](https://img.shields.io/badge/Channels-102%20Live-f59e0b?style=for-the-badge)](https://dor2500.github.io/israel-tv-plus/)
 [![Theme](https://img.shields.io/badge/Theme-OLED%20Pure%20Black%20%7C%20Light-black?style=for-the-badge)](https://dor2500.github.io/israel-tv-plus/)
 
 אפליקציית שידור חי מתקדמת ומעוצבת הפועלת ישירות בדפדפן (מחשב, טאבלט, סמארטפון) וכן מותקנת כחבילת IPK בטלוויזיות **LG webOS Smart TV**.  
@@ -146,7 +146,7 @@ israel-tv-plus/
 ├── index.html         # שלד ה-GUI, בורר מצב יום/לילה, Hero Spotlight, HUD
 ├── style.css          # עיצוב דואלי (OLED True Black & Light Mode) ב-60fps
 ├── app.js             # מנוע הניווט, ניהול מועדפים, הקלדת מספרים, נגן וידאו
-└── channels.js        # מאגר 106 ערוצים מסודרים עם הפניות ללוגואים מקומיים
+└── channels.js        # מאגר 102 ערוצים מסודרים עם הפניות ללוגואים מקומיים
 ```
 
 ---
