@@ -155,14 +155,50 @@
 
     <!-- FULLSCREEN VIDEO PLAYER OVERLAY -->
     <div id="player-container" class="player-container hidden">
+      <!-- ALWAYS VISIBLE FLOATING CLOSE BUTTON FOR WEB & MOBILE -->
+      <button id="btn-floating-close-player" class="player-floating-close" title="חזרה למדריך (Esc)">✕</button>
+
       <div class="video-wrapper" id="video-wrapper">
         <video id="tv-video" class="oled-filter-cinema aspect-fit" playsinline webkit-playsinline preload="auto"></video>
+      </div>
+
+      <!-- RADIO / AUDIO STREAM BACKDROP -->
+      <div id="player-radio-backdrop" class="player-radio-backdrop hidden">
+        <div class="radio-backdrop-card">
+          <div class="radio-logo-wrap">
+            <img id="radio-backdrop-logo" src="" alt="radio-logo" onerror="this.style.display='none';">
+          </div>
+          <h2 id="radio-backdrop-name">שם התחנה</h2>
+          <div class="radio-live-status">
+            <span class="pulse-dot"></span> תחנת רדיו פעילה • שידור שמע חי
+          </div>
+          <div class="equalizer-bars">
+            <span class="bar bar-1"></span>
+            <span class="bar bar-2"></span>
+            <span class="bar bar-3"></span>
+            <span class="bar bar-4"></span>
+            <span class="bar bar-5"></span>
+          </div>
+        </div>
       </div>
 
       <!-- SPINNER / BUFFERING INDICATOR -->
       <div id="player-spinner" class="player-spinner hidden">
         <div class="spinner-ring"></div>
         <div class="spinner-text" id="spinner-text">מתחבר לשידור חי...</div>
+      </div>
+
+      <!-- STREAM ERROR / WEB NOTICE OVERLAY -->
+      <div id="player-error-overlay" class="player-error-overlay hidden">
+        <div class="player-error-box">
+          <div class="player-error-icon">⚠️</div>
+          <h3 id="player-error-title">שידור אינו זמין כעת בדפדפן</h3>
+          <p id="player-error-desc">ערוץ זה מותאם לטלוויזיה (LG webOS). דפדפנים מאובטחים חוסמים שידורי וידאו ב-HTTP מתוך אתר HTTPS מאובטח.</p>
+          <div class="player-error-actions">
+            <button id="btn-error-back" class="error-action-btn primary">↩️ חזרה למדריך הערוצים</button>
+            <a id="btn-error-direct-link" href="#" target="_blank" rel="noopener noreferrer" class="error-action-btn secondary">🔗 פתח קישור ישיר בנגן</a>
+          </div>
+        </div>
       </div>
 
       <!-- OSD (ON SCREEN DISPLAY) -->

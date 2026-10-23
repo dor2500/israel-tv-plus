@@ -121,9 +121,18 @@
 
       // Player Container
       playerContainer: document.getElementById('player-container'),
+      btnFloatingClose: document.getElementById('btn-floating-close-player'),
       video: document.getElementById('tv-video'),
       spinner: document.getElementById('player-spinner'),
       spinnerText: document.getElementById('spinner-text'),
+      playerRadioBackdrop: document.getElementById('player-radio-backdrop'),
+      radioBackdropLogo: document.getElementById('radio-backdrop-logo'),
+      radioBackdropName: document.getElementById('radio-backdrop-name'),
+      playerErrorOverlay: document.getElementById('player-error-overlay'),
+      playerErrorTitle: document.getElementById('player-error-title'),
+      playerErrorDesc: document.getElementById('player-error-desc'),
+      btnErrorBack: document.getElementById('btn-error-back'),
+      btnErrorDirectLink: document.getElementById('btn-error-direct-link'),
       osd: document.getElementById('player-osd'),
       osdNumber: document.getElementById('osd-number'),
       osdLogo: document.getElementById('osd-logo'),
@@ -627,6 +636,35 @@
   }
 
   // PLAYBACK SYSTEM
+  let networkRetryCount = 0;
+
+  function hidePlayerError() {
+    if (el.playerErrorOverlay) {
+      el.playerErrorOverlay.classList.add('hidden');
+    }
+  }
+
+  function showPlayerError(channel, reason) {
+    hideSpinner();
+    if (state.hlsInstance) {
+      try { state.hlsInstance.destroy(); } catch (e) {}
+      state.hlsInstance = null;
+    }
+    if (el.playerErrorOverlay) {
+      if (el.playerErrorTitle) {
+        el.playerErrorTitle.textContent = 'שידור מותאם לאפליקציית הטלוויזיה';
+      }
+      if (el.playerErrorDesc) {
+        el.playerErrorDesc.textContent = `הערוץ "${channel.name}" משדר בפרוטוקול HTTP המותאם לטלוויזיית LG webOS ולנגנים חיצוניים (VLC). דפדפנים מאובטחים (HTTPS) חוסמים שידורי HTTP מסוג זה. ערוצים אחרים בעלי שידור HTTPS פועלים כאן באופן מלא!`;
+      }
+      if (el.btnErrorDirectLink) {
+        el.btnErrorDirectLink.href = channel.url;
+      }
+      el.playerErrorOverlay.classList.remove('hidden');
+    }
+  }
+
+  // PLAYBACK SYSTEM
   function playChannel(index) {
     if (index < 0 || index >= state.filteredChannels.length) return;
 
@@ -643,88 +681,104 @@
     showOSD();
     showSpinner('מתחבר לשידור חי...');
 
-    loadVideoStream(channel.url);
+    loadVideoStream(channel.url, channel);
   }
 
-  // HLS LOADER WITH NATIVE HTTPS UPGRADE FOR WEB BROWSERS
-  function createHlsLoader() {
-    if (!window.Hls || !Hls.DefaultConfig || !Hls.DefaultConfig.loader) {
-      return null;
-    }
-    const BaseLoader = Hls.DefaultConfig.loader;
-    return class WebHttpsLoader extends BaseLoader {
-      constructor(config) {
-        super(config);
-        const originalLoad = this.load.bind(this);
-        this.load = function (context, config, callbacks) {
-          if (window.location.protocol === 'https:' && context.url) {
-            if (context.url.startsWith('http://stream.mcquack.net/')) {
-              context.url = context.url.replace('http://stream.mcquack.net/', 'https://stream.mcquack.net/');
-            } else if (context.url.startsWith('http://glzwizzlv.bynetcdn.com/')) {
-              context.url = context.url.replace('http://glzwizzlv.bynetcdn.com/', 'https://glzwizzlv.bynetcdn.com/');
-            }
-          }
-          originalLoad(context, config, callbacks);
-        };
-      }
-    };
-  }
+  function loadVideoStream(url, channel) {
+    hidePlayerError();
+    networkRetryCount = 0;
 
-  const WebHttpsLoaderClass = createHlsLoader();
-
-  function loadVideoStream(url) {
     if (state.hlsInstance) {
-      state.hlsInstance.destroy();
+      try { state.hlsInstance.destroy(); } catch (e) {}
       state.hlsInstance = null;
     }
 
     let finalUrl = url;
-    if (window.location.protocol === 'https:' && url) {
-      if (url.startsWith('http://stream.mcquack.net/')) {
-        finalUrl = url.replace('http://stream.mcquack.net/', 'https://stream.mcquack.net/');
-      } else if (url.startsWith('http://glzwizzlv.bynetcdn.com/')) {
-        finalUrl = url.replace('http://glzwizzlv.bynetcdn.com/', 'https://glzwizzlv.bynetcdn.com/');
+
+    // Check if this is an audio/radio stream (Icecast/MP3/AAC)
+    const isAudioStream = url.includes('.mp3') || url.includes('.audio') || url.includes('_mp3') || url.includes('_aac') || url.endsWith('.aac') || (channel && channel.categoryEn === 'music' && !url.includes('.m3u8'));
+
+    if (isAudioStream) {
+      if (el.playerRadioBackdrop) {
+        if (el.radioBackdropLogo) {
+          el.radioBackdropLogo.src = channel.logo || '';
+          el.radioBackdropLogo.style.display = channel.logo ? 'block' : 'none';
+        }
+        if (el.radioBackdropName) el.radioBackdropName.textContent = channel.name;
+        el.playerRadioBackdrop.classList.remove('hidden');
       }
+      el.video.src = finalUrl;
+      const playPromise = el.video.play();
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          hideSpinner();
+          updatePlayPauseButton(false);
+        }).catch(() => {
+          // Autoplay blocked: try muted
+          el.video.muted = true;
+          el.video.play().then(() => {
+            hideSpinner();
+            updatePlayPauseButton(false);
+            showToast('השידור פועל במצב מושתק (לחץ 🔊 לשמע)');
+          }).catch(e => {
+            showPlayerError(channel, e);
+          });
+        });
+      }
+      return;
     }
 
+    if (el.playerRadioBackdrop) {
+      el.playerRadioBackdrop.classList.add('hidden');
+    }
+
+    // Video / HLS Stream
     if (window.Hls && Hls.isSupported()) {
       const hlsConfig = {
         enableWorker: true,
         lowLatencyMode: true,
-        backBufferLength: 60
+        backBufferLength: 60,
+        manifestLoadingMaxRetry: 2,
+        levelLoadingMaxRetry: 2
       };
 
-      if (window.location.protocol === 'https:' && WebHttpsLoaderClass) {
-        hlsConfig.pLoader = WebHttpsLoaderClass;
-        hlsConfig.fLoader = WebHttpsLoaderClass;
-        hlsConfig.loader = WebHttpsLoaderClass;
-      }
-
       const hls = new Hls(hlsConfig);
-
       hls.loadSource(finalUrl);
       hls.attachMedia(el.video);
 
       hls.on(Hls.Events.MANIFEST_PARSED, () => {
         hideSpinner();
-        el.video.play().catch(() => {});
-        updatePlayPauseButton(false);
+        const p = el.video.play();
+        if (p !== undefined) {
+          p.then(() => {
+            updatePlayPauseButton(false);
+          }).catch(() => {
+            el.video.muted = true;
+            el.video.play().then(() => {
+              updatePlayPauseButton(false);
+              showToast('השידור פועל במצב מושתק (לחץ 🔊 לשמע)');
+            }).catch(() => {});
+          });
+        }
       });
 
       hls.on(Hls.Events.ERROR, (event, data) => {
         if (data.fatal) {
           switch (data.type) {
             case Hls.ErrorTypes.NETWORK_ERROR:
-              showToast('שגיאת רשת בשידור, מנסה להתחבר מחדש...');
-              hls.startLoad();
+              if (networkRetryCount < 1) {
+                networkRetryCount++;
+                showToast('מנסה להתחבר לשידור...');
+                hls.startLoad();
+              } else {
+                showPlayerError(channel, 'שגיאת חיבור ברשת');
+              }
               break;
             case Hls.ErrorTypes.MEDIA_ERROR:
-              showToast('מתקן שגיאת וידאו...');
               hls.recoverMediaError();
               break;
             default:
-              showToast('לא ניתן לטעון שידור זה כעת');
-              hideSpinner();
+              showPlayerError(channel, 'פורמט אינו נתמך בדפדפן');
               break;
           }
         }
@@ -732,11 +786,22 @@
 
       state.hlsInstance = hls;
     } else if (el.video.canPlayType('application/vnd.apple.mpegurl')) {
+      // Native Apple HLS (Safari iOS & Mac)
       el.video.src = finalUrl;
       el.video.addEventListener('loadedmetadata', () => {
         hideSpinner();
-        el.video.play().catch(() => {});
-        updatePlayPauseButton(false);
+        const p = el.video.play();
+        if (p !== undefined) {
+          p.then(() => {
+            updatePlayPauseButton(false);
+          }).catch(() => {
+            el.video.muted = true;
+            el.video.play().catch(() => {});
+          });
+        }
+      }, { once: true });
+      el.video.addEventListener('error', () => {
+        showPlayerError(channel, 'שגיאה בניגון הווידאו');
       }, { once: true });
     } else {
       el.video.src = finalUrl;
@@ -747,6 +812,20 @@
 
   // INTERACTIVE WEB PLAYER CONTROLS
   function setupWebPlayerControls() {
+    if (el.btnFloatingClose) {
+      el.btnFloatingClose.addEventListener('click', (e) => {
+        e.stopPropagation();
+        exitFullscreenToGrid();
+      });
+    }
+
+    if (el.btnErrorBack) {
+      el.btnErrorBack.addEventListener('click', (e) => {
+        e.stopPropagation();
+        exitFullscreenToGrid();
+      });
+    }
+
     if (el.webBtnBack) {
       el.webBtnBack.addEventListener('click', (e) => {
         e.stopPropagation();
@@ -871,12 +950,16 @@
   }
 
   function exitFullscreenToGrid() {
-    // Exit fullscreen, keep video playing smoothly in background!
+    hidePlayerError();
+    hideSpinner();
+    if (el.playerRadioBackdrop) {
+      el.playerRadioBackdrop.classList.add('hidden');
+    }
     el.playerContainer.classList.add('hidden');
     closeQuickDrawer();
     state.currentSection = 'grid';
     setFocus('grid', state.focusedGridIdx);
-    showToast('חזרת למדריך הערוצים (השידור ממשיך ברקע)');
+    showToast('חזרת למדריך הערוצים');
   }
 
   function stopPlayback() {
@@ -1049,13 +1132,7 @@
       return;
     }
 
-    // 7. If video is currently playing in background, return to Fullscreen!
-    if (state.playingChannelIndex !== -1 && el.video && !el.video.paused) {
-      enterFullscreenPlayer();
-      return;
-    }
-
-    // 8. If already at the root of the Guide:
+    // 7. If already at the root of the Guide:
     // Require double-click within 2.5 seconds to exit gracefully.
     const now = Date.now();
     if (now - state.lastBackPressTime < 2500) {

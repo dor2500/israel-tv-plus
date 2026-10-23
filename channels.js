@@ -17,7 +17,7 @@ window.CHANNELS_DATA = [
     "title": "רשת 13 HD (Reshet 13)",
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
-    "url": "http://stream.mcquack.net/295/index.m3u8",
+    "url": "https://d18b0e6mopany4.cloudfront.net/out/v1/2f2bc414a3db4698a8e94b89eaf2da2a/index.m3u8",
     "logo": "assets/logos/reshet13.png",
     "badge": "FHD",
     "desc": "חדשות 13, הישרדות, האח הגדול, משחקי השף ותוכניות תחקירים מובילות",
