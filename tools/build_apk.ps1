@@ -72,4 +72,6 @@ $apk = "$Out\IsraelTVPlus-android.apk"
 if ($LASTEXITCODE) { throw 'apksigner failed' }
 & "$bt\apksigner.bat" verify $apk
 if ($LASTEXITCODE) { throw 'verify failed' }
-"apk: $apk ($([math]::Round((Get-Item $apk).Length / 1MB, 1)) MB)"
+# the same APK under a TV name, so Android TV users find it in the release
+Copy-Item $apk "$Out\IsraelTVPlus-androidtv.apk" -Force
+"apk: $apk ($([math]::Round((Get-Item $apk).Length / 1MB, 1)) MB) + IsraelTVPlus-androidtv.apk"
