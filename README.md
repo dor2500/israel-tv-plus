@@ -1,12 +1,17 @@
-# Israel TV Plus (LG webOS Smart TV) 🇮🇱 📺
+# Israel TV Plus (Web & LG webOS Smart TV) 🇮🇱 📺
 
-אפליקציית שידור חי מתקדמת ומעוצבת לטלוויזיות **LG webOS Smart TV** עם תמיכה מלאה במסכי **OLED True Black**, מצב יום בהיר (**Light Mode**), שלט ה-Magic Remote, ומאגר עשיר של ערוצים ישראליים עם דגש מיוחד על **ילדים ונוער בעברית**!
+> ### 🌐 לצפייה ישירה מהירה בדפדפן ובסמארטפון (Live Web App):  
+> 👉 **[https://dor2500.github.io/israel-tv-plus/](https://dor2500.github.io/israel-tv-plus/)**  
+> *(או קישור ישיר לקובץ: [https://dor2500.github.io/israel-tv-plus/index.html](https://dor2500.github.io/israel-tv-plus/index.html))*
 
-![LG webOS](https://img.shields.io/badge/LG-webOS%20TV-c4004f?style=for-the-badge&logo=lg)
-![OLED Optimized](https://img.shields.io/badge/Display-OLED%204K%20Pure%20Black-black?style=for-the-badge)
-![Light Mode](https://img.shields.io/badge/Theme-Light%20&%20Dark%20OLED-38bdf8?style=for-the-badge)
-![Channels](https://img.shields.io/badge/Channels-106%20Live-10b981?style=for-the-badge)
-![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)
+[![Live Web App](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-10b981?style=for-the-badge&logo=github)](https://dor2500.github.io/israel-tv-plus/)
+[![Mobile Optimized](https://img.shields.io/badge/Mobile-Responsive%20iOS%20%26%20Android-38bdf8?style=for-the-badge&logo=apple)](https://dor2500.github.io/israel-tv-plus/)
+[![LG webOS](https://img.shields.io/badge/LG-webOS%20TV-c4004f?style=for-the-badge&logo=lg)](https://github.com/dor2500/israel-tv-plus/releases)
+[![Channels](https://img.shields.io/badge/Channels-106%20Live-f59e0b?style=for-the-badge)](https://dor2500.github.io/israel-tv-plus/)
+[![Theme](https://img.shields.io/badge/Theme-OLED%20Pure%20Black%20%7C%20Light-black?style=for-the-badge)](https://dor2500.github.io/israel-tv-plus/)
+
+אפליקציית שידור חי מתקדמת ומעוצבת הפועלת ישירות בדפדפן (מחשב, טאבלט, סמארטפון) וכן מותקנת כחבילת IPK בטלוויזיות **LG webOS Smart TV**.  
+כוללת תמיכה מלאה במסכי **OLED True Black**, מצב יום בהיר (**Light Mode**), שלט ה-Magic Remote, ומאגר עשיר של ערוצים ישראליים עם דגש מיוחד על **ילדים ונוער בעברית**!
 
 ---
 
