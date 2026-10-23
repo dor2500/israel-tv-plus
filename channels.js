@@ -1270,5 +1270,53 @@ window.CHANNELS_DATA = [
     "badge": "FHD",
     "desc": "סרטי קולנוע ערביים ומזרח-תיכוניים מודרניים",
     "number": 106
+  },
+  {
+    "id": "cartoons_90s",
+    "name": "קלאסיקות מצוירות 90s HD",
+    "title": "קלאסיקות מצוירות שנות ה-90 (Cartoons 90)",
+    "category": "ילדים ונוער (בעברית)",
+    "categoryEn": "kids",
+    "url": "http://stream.mcquack.net/484/index.m3u8",
+    "logo": "assets/logos/cartoons90.png",
+    "badge": "FHD",
+    "desc": "ערוץ סדרות האנימציה הנוסטלגיות של שנות ה-90 - שידורים רצופים באיכות גבוהה",
+    "number": 107
+  },
+  {
+    "id": "simpsons_247",
+    "name": "משפחת סימפסון 24/7 HD",
+    "title": "ערוץ משפחת סימפסון (The Simpsons 24/7)",
+    "category": "סרטים וסדרות (Movies & Series)",
+    "categoryEn": "movies",
+    "url": "http://stream.mcquack.net/476/index.m3u8",
+    "logo": "assets/logos/simpsons.png",
+    "badge": "FHD",
+    "desc": "ערוץ שידורים רציף של כל עונות משפחת סימפסון 24 שעות ביממה",
+    "number": 108
+  },
+  {
+    "id": "extreme_sports_hd",
+    "name": "ערוץ אקסטרים Extreme Sports HD",
+    "title": "Extreme Sports Channel HD",
+    "category": "ספורט (Sports)",
+    "categoryEn": "sports",
+    "url": "http://stream.mcquack.net/148/index.m3u8",
+    "logo": "assets/logos/extreme.png",
+    "badge": "FHD",
+    "desc": "ערוץ ספורט האקסטרים העולמי - סקייטבורד, אופני הרים, גלישת גלים ומוטוקרוס",
+    "number": 109
+  },
+  {
+    "id": "fresh_kids_hd",
+    "name": "אנימציה וילדים Fresh Kids HD",
+    "title": "Fresh Kids Animation HD",
+    "category": "ילדים ונוער (בעברית)",
+    "categoryEn": "kids",
+    "url": "http://stream.mcquack.net/425/index.m3u8",
+    "logo": "assets/logos/freshkids.png",
+    "badge": "FHD",
+    "desc": "ערוץ הרפתקאות, אנימציה וסרטים מצוירים צבעוניים לילדים ולכל המשפחה",
+    "number": 110
   }
 ];
