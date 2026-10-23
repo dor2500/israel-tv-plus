@@ -17,9 +17,9 @@ import zipfile
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CACHE = os.path.join(ROOT, "build", "electron")
 DIST = os.path.join(ROOT, "dist")
-VERSION = "2.0.0"
-WEB_FILES = ["index.html", "style.css", "app.js", "dub.js", "dub-local-worker.js", "channels.js", "icon.png",
-             "manifest.webmanifest"]
+VERSION = open(os.path.join(ROOT, "VERSION"), encoding="utf-8").read().strip()
+WEB_FILES = [l.strip() for l in open(os.path.join(ROOT, "tools", "webfiles.txt"), encoding="utf-8")
+             if l.strip() and not l.startswith("#")]
 LINUX_README = """ישראל TV+ ללינוקס
 ================
 1. חלצו את התיקייה.

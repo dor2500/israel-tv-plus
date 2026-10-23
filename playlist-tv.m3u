@@ -24,75 +24,75 @@ https://i24newsarabic-cdn.encoders.immergo.tv/master.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="i24NEWS English" tvg-chno="12" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/i24news_en.png" group-title="ערוצי ישראל",i24NEWS English
 https://i24newsenglish-cdn.encoders.immergo.tv/master.m3u8
 #EXTINF:-1 tvg-id="KanEducational.il" tvg-name="כאן חינוכית 23 HD" tvg-chno="13" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/kan_educational.png" group-title="ילדים ונוער (בעברית)",כאן חינוכית 23 HD
-http://stream.mcquack.net/378/index.m3u8
+https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan_edu/live.livx/playlist.m3u8
 #EXTINF:-1 tvg-id="Hop.il" tvg-name="ערוץ הופ! ילדים בעברית HD" tvg-chno="14" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hop.png" group-title="ילדים ונוער (בעברית)",ערוץ הופ! ילדים בעברית HD
 http://stream.mcquack.net/44/index.m3u8
-#EXTINF:-1 tvg-id="YamTichoni.il" tvg-name="ערוץ הים התיכון HD" tvg-chno="73" tvg-logo="" group-title="סרטים וסדרות",ערוץ הים התיכון HD
+#EXTINF:-1 tvg-id="Zoom.il" tvg-name="ZOOM ילדים ונוער" tvg-chno="15" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/zoom_kids.png" group-title="ילדים ונוער (בעברית)",ZOOM ילדים ונוער
+http://stream.mcquack.net/377/index.m3u8
+#EXTINF:-1 tvg-id="YamTichoni.il" tvg-name="ערוץ הים התיכון HD" tvg-chno="74" tvg-logo="" group-title="סרטים וסדרות",ערוץ הים התיכון HD
 http://stream.mcquack.net/46/index.m3u8
-#EXTINF:-1 tvg-id="YesMoviesAction.il" tvg-name="yes סרטים אקשן HD" tvg-chno="74" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/yes_action.png" group-title="סרטים וסדרות",yes סרטים אקשן HD
+#EXTINF:-1 tvg-id="YesMoviesAction.il" tvg-name="yes סרטים אקשן HD" tvg-chno="75" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/yes_action.png" group-title="סרטים וסדרות",yes סרטים אקשן HD
 http://stream.mcquack.net/380/index.m3u8
-#EXTINF:-1 tvg-id="HOTDrama.il" tvg-name="HOT דרמה HD" tvg-chno="75" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/hot_drama.png" group-title="סרטים וסדרות",HOT דרמה HD
+#EXTINF:-1 tvg-id="HOTDrama.il" tvg-name="HOT דרמה HD" tvg-chno="76" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/hot_drama.png" group-title="סרטים וסדרות",HOT דרמה HD
 http://stream.mcquack.net/381/index.m3u8
-#EXTINF:-1 tvg-id="HOTZone.il" tvg-name="HOT זון HD" tvg-chno="76" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/HotNewLogo.svg/512px-HotNewLogo.svg.png" group-title="סרטים וסדרות",HOT זון HD
+#EXTINF:-1 tvg-id="HOTZone.il" tvg-name="HOT זון HD" tvg-chno="77" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/HotNewLogo.svg/512px-HotNewLogo.svg.png" group-title="סרטים וסדרות",HOT זון HD
 http://stream.mcquack.net/379/index.m3u8
-#EXTINF:-1 tvg-id="RealityChannel.il" tvg-name="yes ריאליטי HD" tvg-chno="77" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Yes_logo_2020.svg/512px-Yes_logo_2020.svg.png" group-title="סרטים וסדרות",yes ריאליטי HD
+#EXTINF:-1 tvg-id="RealityChannel.il" tvg-name="yes ריאליטי HD" tvg-chno="78" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Yes_logo_2020.svg/512px-Yes_logo_2020.svg.png" group-title="סרטים וסדרות",yes ריאליטי HD
 https://d2dffl3588mvfk.cloudfront.net/out/v1/d8e15050ca4148aab0ee387a5e2eb46b/index_1.m3u8
-#EXTINF:-1 tvg-id="ComedyChannel.il" tvg-name="ערוץ הקומדיה HD" tvg-chno="78" tvg-logo="" group-title="סרטים וסדרות",ערוץ הקומדיה HD
+#EXTINF:-1 tvg-id="ComedyChannel.il" tvg-name="ערוץ הקומדיה HD" tvg-chno="79" tvg-logo="" group-title="סרטים וסדרות",ערוץ הקומדיה HD
 https://d15ds134q59udk.cloudfront.net/out/v1/fbba879221d045598540ee783b140fe2/index.m3u8
-#EXTINF:-1 tvg-id="VivaPremium.il" tvg-name="ויוה פרימיום HD" tvg-chno="79" tvg-logo="https://upload.wikimedia.org/wikipedia/he/thumb/6/66/Viva_Channel_Israel.svg/512px-Viva_Channel_Israel.svg.png" group-title="סרטים וסדרות",ויוה פרימיום HD
+#EXTINF:-1 tvg-id="VivaPremium.il" tvg-name="ויוה פרימיום HD" tvg-chno="80" tvg-logo="https://upload.wikimedia.org/wikipedia/he/thumb/6/66/Viva_Channel_Israel.svg/512px-Viva_Channel_Israel.svg.png" group-title="סרטים וסדרות",ויוה פרימיום HD
 http://stream.mcquack.net/43/index.m3u8
-#EXTINF:-1 tvg-id="Premialnoe.ru" tvg-name="סינמה פרימיום HD" tvg-chno="80" tvg-logo="" group-title="סרטים וסדרות",סינמה פרימיום HD
+#EXTINF:-1 tvg-id="Premialnoe.ru" tvg-name="סינמה פרימיום HD" tvg-chno="81" tvg-logo="" group-title="סרטים וסדרות",סינמה פרימיום HD
 http://stream.mcquack.net/421/index.m3u8
-#EXTINF:-1 tvg-id="Ostrosyuzhetnoye.ru" tvg-name="סינמה מתח ואקשן HD" tvg-chno="81" tvg-logo="" group-title="סרטים וסדרות",סינמה מתח ואקשן HD
+#EXTINF:-1 tvg-id="Ostrosyuzhetnoye.ru" tvg-name="סינמה מתח ואקשן HD" tvg-chno="82" tvg-logo="" group-title="סרטים וסדרות",סינמה מתח ואקשן HD
 http://stream.mcquack.net/214/index.m3u8
-#EXTINF:-1 tvg-id="Kinouzhas.ru" tvg-name="ערוץ סרטי אימה HD" tvg-chno="82" tvg-logo="" group-title="סרטים וסדרות",ערוץ סרטי אימה HD
+#EXTINF:-1 tvg-id="Kinouzhas.ru" tvg-name="ערוץ סרטי אימה HD" tvg-chno="83" tvg-logo="" group-title="סרטים וסדרות",ערוץ סרטי אימה HD
 http://stream.mcquack.net/278/index.m3u8
-#EXTINF:-1 tvg-id="KinoHit.ru" tvg-name="קולנוע להיטים KinoHit HD" tvg-chno="83" tvg-logo="" group-title="סרטים וסדרות",קולנוע להיטים KinoHit HD
+#EXTINF:-1 tvg-id="KinoHit.ru" tvg-name="קולנוע להיטים KinoHit HD" tvg-chno="84" tvg-logo="" group-title="סרטים וסדרות",קולנוע להיטים KinoHit HD
 http://stream.mcquack.net/126/index.m3u8
-#EXTINF:-1 tvg-id="Kinosemja.ru" tvg-name="קולנוע משפחתי Kinosemja HD" tvg-chno="84" tvg-logo="" group-title="סרטים וסדרות",קולנוע משפחתי Kinosemja HD
+#EXTINF:-1 tvg-id="Kinosemja.ru" tvg-name="קולנוע משפחתי Kinosemja HD" tvg-chno="85" tvg-logo="" group-title="סרטים וסדרות",קולנוע משפחתי Kinosemja HD
 http://stream.mcquack.net/170/index.m3u8
-#EXTINF:-1 tvg-id="vijuPlusMegahit.ru" tvg-name="סינמה מגה-להיטים HD" tvg-chno="85" tvg-logo="" group-title="סרטים וסדרות",סינמה מגה-להיטים HD
+#EXTINF:-1 tvg-id="vijuPlusMegahit.ru" tvg-name="סינמה מגה-להיטים HD" tvg-chno="86" tvg-logo="" group-title="סרטים וסדרות",סינמה מגה-להיטים HD
 http://stream.mcquack.net/200/index.m3u8
-#EXTINF:-1 tvg-id="vijuPlusPremiere.ru" tvg-name="סינמה בכורה Premiere HD" tvg-chno="86" tvg-logo="" group-title="סרטים וסדרות",סינמה בכורה Premiere HD
+#EXTINF:-1 tvg-id="vijuPlusPremiere.ru" tvg-name="סינמה בכורה Premiere HD" tvg-chno="87" tvg-logo="" group-title="סרטים וסדרות",סינמה בכורה Premiere HD
 http://stream.mcquack.net/202/index.m3u8
-#EXTINF:-1 tvg-id="vijuPlusComedy.ru" tvg-name="סינמה קומדיה HD" tvg-chno="87" tvg-logo="" group-title="סרטים וסדרות",סינמה קומדיה HD
+#EXTINF:-1 tvg-id="vijuPlusComedy.ru" tvg-name="סינמה קומדיה HD" tvg-chno="88" tvg-logo="" group-title="סרטים וסדרות",סינמה קומדיה HD
 http://stream.mcquack.net/201/index.m3u8
-#EXTINF:-1 tvg-id="vijuTV1000action.ru" tvg-name="קולנוע TV1000 אקשן HD" tvg-chno="88" tvg-logo="" group-title="סרטים וסדרות",קולנוע TV1000 אקשן HD
+#EXTINF:-1 tvg-id="vijuTV1000action.ru" tvg-name="קולנוע TV1000 אקשן HD" tvg-chno="89" tvg-logo="" group-title="סרטים וסדרות",קולנוע TV1000 אקשן HD
 http://stream.mcquack.net/100/index.m3u8
-#EXTINF:-1 tvg-id="vijuTV1000.ru" tvg-name="קולנוע TV1000 קלאסי" tvg-chno="89" tvg-logo="" group-title="סרטים וסדרות",קולנוע TV1000 קלאסי
+#EXTINF:-1 tvg-id="vijuTV1000.ru" tvg-name="קולנוע TV1000 קלאסי" tvg-chno="90" tvg-logo="" group-title="סרטים וסדרות",קולנוע TV1000 קלאסי
 http://stream.mcquack.net/110/index.m3u8
-#EXTINF:-1 tvg-id="vijuPlusSerial.ru" tvg-name="ערוץ הסדרות Serial HD" tvg-chno="90" tvg-logo="" group-title="סרטים וסדרות",ערוץ הסדרות Serial HD
+#EXTINF:-1 tvg-id="vijuPlusSerial.ru" tvg-name="ערוץ הסדרות Serial HD" tvg-chno="91" tvg-logo="" group-title="סרטים וסדרות",ערוץ הסדרות Serial HD
 http://stream.mcquack.net/311/index.m3u8
-#EXTINF:-1 tvg-id="VacationChannel.il" tvg-name="ערוץ החופשות והנופש HD" tvg-chno="91" tvg-logo="" group-title="סרטים וסדרות",ערוץ החופשות והנופש HD
+#EXTINF:-1 tvg-id="VacationChannel.il" tvg-name="ערוץ החופשות והנופש HD" tvg-chno="92" tvg-logo="" group-title="סרטים וסדרות",ערוץ החופשות והנופש HD
 https://d1yd8hohnldm33.cloudfront.net/out/v1/19dee23c2cc24f689bd4e1288661ee0c/index_2.m3u8
-#EXTINF:-1 tvg-id="80sRewind.us" tvg-name="סרטי שנות ה-80 Rewind HD" tvg-chno="92" tvg-logo="" group-title="סרטים וסדרות",סרטי שנות ה-80 Rewind HD
+#EXTINF:-1 tvg-id="80sRewind.us" tvg-name="סרטי שנות ה-80 Rewind HD" tvg-chno="93" tvg-logo="" group-title="סרטים וסדרות",סרטי שנות ה-80 Rewind HD
 https://jmp2.uk/plu-5ca525b650be2571e3943c63.m3u8
-#EXTINF:-1 tvg-id="70sCinema.us" tvg-name="סרטי שנות ה-70 Cinema HD" tvg-chno="93" tvg-logo="" group-title="סרטים וסדרות",סרטי שנות ה-70 Cinema HD
+#EXTINF:-1 tvg-id="70sCinema.us" tvg-name="סרטי שנות ה-70 Cinema HD" tvg-chno="94" tvg-logo="" group-title="סרטים וסדרות",סרטי שנות ה-70 Cinema HD
 https://jmp2.uk/plu-5f4d878d3d19b30007d2e782.m3u8
-#EXTINF:-1 tvg-id="00sReplay.us" tvg-name="סרטי שנות ה-2000 Replay HD" tvg-chno="94" tvg-logo="" group-title="סרטים וסדרות",סרטי שנות ה-2000 Replay HD
+#EXTINF:-1 tvg-id="00sReplay.us" tvg-name="סרטי שנות ה-2000 Replay HD" tvg-chno="95" tvg-logo="" group-title="סרטים וסדרות",סרטי שנות ה-2000 Replay HD
 https://jmp2.uk/plu-62ba60f059624e000781c436.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="משפחת סימפסון 24/7 HD" tvg-chno="95" tvg-logo="" group-title="סרטים וסדרות",משפחת סימפסון 24/7 HD
+#EXTINF:-1 tvg-id="" tvg-name="משפחת סימפסון 24/7 HD" tvg-chno="96" tvg-logo="" group-title="סרטים וסדרות",משפחת סימפסון 24/7 HD
 http://stream.mcquack.net/476/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="קולנוע קומדיה CineMan Comedy HD" tvg-chno="96" tvg-logo="" group-title="סרטים וסדרות",קולנוע קומדיה CineMan Comedy HD
+#EXTINF:-1 tvg-id="" tvg-name="קולנוע קומדיה CineMan Comedy HD" tvg-chno="97" tvg-logo="" group-title="סרטים וסדרות",קולנוע קומדיה CineMan Comedy HD
 http://stream.mcquack.net/356/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="קולנוע רטרו VHS Cinema HD" tvg-chno="97" tvg-logo="" group-title="סרטים וסדרות",קולנוע רטרו VHS Cinema HD
+#EXTINF:-1 tvg-id="" tvg-name="קולנוע רטרו VHS Cinema HD" tvg-chno="98" tvg-logo="" group-title="סרטים וסדרות",קולנוע רטרו VHS Cinema HD
 http://stream.mcquack.net/474/index.m3u8
-#EXTINF:-1 tvg-id="Sport5.ua" tvg-name="Sport 5 אוקראינה" tvg-chno="98" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/c/c5/Sport5UA.jpg" group-title="ספורט",Sport 5 אוקראינה
+#EXTINF:-1 tvg-id="Sport5.ua" tvg-name="Sport 5 אוקראינה" tvg-chno="99" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/c/c5/Sport5UA.jpg" group-title="ספורט",Sport 5 אוקראינה
 http://stream.mcquack.net/212/index.m3u8
-#EXTINF:-1 tvg-id="Sport2.ua" tvg-name="Sport 2 אוקראינה" tvg-chno="99" tvg-logo="https://i.imgur.com/vk0j1mY.png" group-title="ספורט",Sport 2 אוקראינה
+#EXTINF:-1 tvg-id="Sport2.ua" tvg-name="Sport 2 אוקראינה" tvg-chno="100" tvg-logo="https://i.imgur.com/vk0j1mY.png" group-title="ספורט",Sport 2 אוקראינה
 http://stream.mcquack.net/392/index.m3u8
-#EXTINF:-1 tvg-id="Sport3.ua" tvg-name="Sport 3 אוקראינה" tvg-chno="100" tvg-logo="https://i.imgur.com/qkvavfH.png" group-title="ספורט",Sport 3 אוקראינה
+#EXTINF:-1 tvg-id="Sport3.ua" tvg-name="Sport 3 אוקראינה" tvg-chno="101" tvg-logo="https://i.imgur.com/qkvavfH.png" group-title="ספורט",Sport 3 אוקראינה
 http://stream.mcquack.net/393/index.m3u8
-#EXTINF:-1 tvg-id="Sport4.ua" tvg-name="Sport 4 אוקראינה" tvg-chno="101" tvg-logo="https://i.imgur.com/xW6oGIx.png" group-title="ספורט",Sport 4 אוקראינה
+#EXTINF:-1 tvg-id="Sport4.ua" tvg-name="Sport 4 אוקראינה" tvg-chno="102" tvg-logo="https://i.imgur.com/xW6oGIx.png" group-title="ספורט",Sport 4 אוקראינה
 http://stream.mcquack.net/394/index.m3u8
-#EXTINF:-1 tvg-id="vijuPlusSport.ru" tvg-name="ספורט פלוס HD (viju+ Sport)" tvg-chno="102" tvg-logo="" group-title="ספורט",ספורט פלוס HD (viju+ Sport)
+#EXTINF:-1 tvg-id="vijuPlusSport.ru" tvg-name="ספורט פלוס HD (viju+ Sport)" tvg-chno="103" tvg-logo="" group-title="ספורט",ספורט פלוס HD (viju+ Sport)
 http://stream.mcquack.net/333/index.m3u8
-#EXTINF:-1 tvg-id="SetantaSports2Eurasia.ie" tvg-name="ספורט סטאנטה Setanta Sports 2 HD" tvg-chno="103" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Setanta_Sports_logo.svg/512px-Setanta_Sports_logo.svg.png" group-title="ספורט",ספורט סטאנטה Setanta Sports 2 HD
+#EXTINF:-1 tvg-id="SetantaSports2Eurasia.ie" tvg-name="ספורט סטאנטה Setanta Sports 2 HD" tvg-chno="104" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Setanta_Sports_logo.svg/512px-Setanta_Sports_logo.svg.png" group-title="ספורט",ספורט סטאנטה Setanta Sports 2 HD
 http://stream.mcquack.net/235/index.m3u8
-#EXTINF:-1 tvg-id="RedBullTV.at" tvg-name="Red Bull TV HD" tvg-chno="104" tvg-logo="https://upload.wikimedia.org/wikipedia/en/thumb/e/eb/Red_Bull_TV_logo.svg/512px-Red_Bull_TV_logo.svg.png" group-title="ספורט",Red Bull TV HD
+#EXTINF:-1 tvg-id="RedBullTV.at" tvg-name="Red Bull TV HD" tvg-chno="105" tvg-logo="https://upload.wikimedia.org/wikipedia/en/thumb/e/eb/Red_Bull_TV_logo.svg/512px-Red_Bull_TV_logo.svg.png" group-title="ספורט",Red Bull TV HD
 https://rbmn-live.akamaized.net/hls/live/590964/BoRB-AT/master.m3u8
-#EXTINF:-1 tvg-id="Arena4.hu" tvg-name="Arena4 Sports Live" tvg-chno="105" tvg-logo="" group-title="ספורט",Arena4 Sports Live
-http://88.212.15.17/live/arena4/index.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="ערוץ אקסטרים Extreme Sports HD" tvg-chno="106" tvg-logo="" group-title="ספורט",ערוץ אקסטרים Extreme Sports HD
 http://stream.mcquack.net/148/index.m3u8
 #EXTINF:-1 tvg-id="Nickelodeon.ru" tvg-name="ניקלודיאון (ברוסית)" tvg-chno="107" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/nickelodeon.png" group-title="ילדים מהעולם",ניקלודיאון (ברוסית)
@@ -166,7 +166,7 @@ http://stream.mcquack.net/239/index.m3u8
 #EXTINF:-1 tvg-id="vijuPlusPlanet.ru" tvg-name="עולם וטבע HD (viju+ Planet)" tvg-chno="141" tvg-logo="" group-title="טבע ודוקו",עולם וטבע HD (viju+ Planet)
 http://stream.mcquack.net/240/index.m3u8
 #EXTINF:-1 tvg-id="BBCEarth.uk" tvg-name="BBC Earth Live HD" tvg-chno="142" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/BBC_Earth_logo.svg/512px-BBC_Earth_logo.svg.png" group-title="טבע ודוקו",BBC Earth Live HD
-http://88.212.15.17/live/test_bbc_eartch_hevc/playlist.m3u8
+https://amg00793-amg00793c6-xumo-us-2669.playouts.now.amagi.tv/BBCStudios-BBCEarthA-hls/playlist.m3u8
 #EXTINF:-1 tvg-id="AsharqDiscovery.sa" tvg-name="Asharq Discovery HD" tvg-chno="143" tvg-logo="" group-title="טבע ודוקו",Asharq Discovery HD
 https://svs.itworkscdn.net/asharqdiscoverylive/asharqd.smil/playlist_dvr.m3u8
 #EXTINF:-1 tvg-id="365daysTV.ru" tvg-name="365 ימי היסטוריה (History TV)" tvg-chno="144" tvg-logo="" group-title="טבע ודוקו",365 ימי היסטוריה (History TV)

@@ -188,6 +188,20 @@ def main():
         f.write("\n".join(L))
     print("SOURCES.md:", len(chans), "items,", kinds)
 
+    # the same details inside the channel list, for the app's "info & source" screen and the Stremio addon
+    plain = lambda s: str(s).replace("`", "").replace("\\|", "|")
+    for c in chans:
+        if c.get("kind") == "app":
+            c.pop("src", None)
+            continue
+        name, k = who(c["url"])
+        c["src"] = {"by": name, "kind": k, "host": host(c["url"]), "found": plain(found(c)), "web": plain(web(c))}
+    with open(os.path.join(ROOT, "channels.json"), "w", encoding="utf-8") as f:
+        json.dump(chans, f, ensure_ascii=False, indent=2)
+    with open(os.path.join(ROOT, "channels.js"), "w", encoding="utf-8") as f:
+        f.write("window.CHANNELS_DATA = " + json.dumps(chans, ensure_ascii=False, indent=1) + ";\n")
+    print("channels.json / channels.js: source details written")
+
 
 if __name__ == "__main__":
     main()

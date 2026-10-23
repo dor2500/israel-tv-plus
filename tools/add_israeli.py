@@ -30,7 +30,8 @@ CAT_WORLD = "ערוצים בינלאומיים (World)"
 CAT_NEWS = "חדשות מהעולם (News)"
 
 # source plays only an "OTT Club" promo loop instead of the channel (frame check 2026-10-23)
-REMOVE = {"sport1", "ani_kids", "plusplus_kids"}
+REMOVE = {"sport1", "ani_kids", "plusplus_kids",
+          "arena4"}  # server gone (connection refused, 2026-10-23)
 
 ISRAELI_RADIO_IDS = {"galgalatz_live", "glz_live", "radio_103fm", "kol_barama_live", "radios_100fm", "radio_darom_live",
                      "kz_radio_live", "radio_2000_live", "kol_barama_music_live", "galgalatz_hits_live"}
@@ -41,6 +42,21 @@ FIX = {
     "knesset": {"url": "http://stream.mcquack.net/48/index.m3u8"},  # the https gostreaming feed is gone (404)
     "channel9": {"desc": "ערוץ 9 - ערוץ ישראלי בשפה הרוסית: חדשות, אקטואליה ותוכניות"},
     "galgalatz_hits_live": {"url": "https://glzwizzlv.bynetcdn.com/glglz_hits_mp3"},  # was http (blocked on the site)
+    # Kan's own feed (kankids.org.il/kids-live): https + CORS, so it plays on the site too
+    "kan_hinuchit": {"url": "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan_edu/live.livx/playlist.m3u8"},
+    "bbc_earth": {"url": "https://amg00793-amg00793c6-xumo-us-2669.playouts.now.amagi.tv/BBCStudios-BBCEarthA-hls/playlist.m3u8"},
+    # titles are searched: these named other channels than the one the stream shows
+    "yam_tichoni_hd": {"title": "הערוץ הים תיכוני (Yam Tichoni)"},
+    "extreme_sports_hd": {"title": "ערוץ אקסטרים (Extreme Sports)"},
+    "ducktv_plus_hd": {"title": "דאק טי וי פלוס (ducktv PLUS)"},
+    "babyfirst_hd": {"title": "בייבי פירסט (BabyFirst)"},
+    "cartoons_short_hd": {"title": "אנימציה קצרצרה (Cartoons Short)"},
+    "lego_channel_hd": {"title": "ערוץ לגו (Lego Channel)"},
+    "tiji_kids_hd": {"title": "טיז'י (TiJi)"},
+    "jimjam_kids_hd": {"title": "ג'ים ג'אם (JimJam)"},
+    "fresh_kids_hd": {"title": "אנימציה וילדים (Fresh Kids)"},
+    "cartoons_90s": {"title": "קלאסיקות מצוירות (Cartoons 90s)"},
+    "cartoons_big_hd": {"title": "סרטי אנימציה (Cartoons Big)"},
 }
 # https copies for the web site of channels whose main source is http (browsers block http on an https page).
 # Each played in Chromium and its picture was checked against the channel (2026-10-23); the apps keep `url`.
@@ -57,7 +73,6 @@ WEB_URLS = {
     "mult_kids": "https://stream8.cinerama.uz/1246/tracks-v1a1/mono.m3u8",
     "carousel_kids": "https://stream.smotrim.ru/hls2/karusel/playlist_3.m3u8",
     "fairy_tales_kids": "https://stream8.cinerama.uz/1270/tracks-v1a1/mono.m3u8",
-    "bbc_earth": "https://amg00793-amg00793c6-xumo-us-2669.playouts.now.amagi.tv/BBCStudios-BBCEarthA-hls/playlist.m3u8",
     "history_365": "https://stream8.cinerama.uz/1242/tracks-v1a1/mono.m3u8",
 }
 # Pluto TV via jmp2.uk: the redirect has no CORS header, so browsers can't follow it (the apps can)
@@ -84,6 +99,10 @@ TV = [
     dict(id="i24news_en", name="i24NEWS English", title="i24NEWS English (Israel)", category=CAT_ISRAEL, categoryEn="israel",
          url="https://i24newsenglish-cdn.encoders.immergo.tv/master.m3u8", lang="en", badge="FHD",
          desc="ערוץ החדשות הבינלאומי של i24NEWS מישראל - באנגלית", logo_style=("i24NEWS", "English", "#0f172a", "#38bdf8")),
+    dict(id="zoom_kids", name="ZOOM ילדים ונוער", title="ערוץ זום (Zoom Israel)", category=CAT_KIDS_HE, categoryEn="kids",
+         url="http://stream.mcquack.net/377/index.m3u8", lang="he", badge="SD", iptv="Zoom.il",
+         desc="ערוץ הילדים והנוער הישראלי - סדרות נוער, דרמות וקומדיות בעברית",
+         logo_style=("ZOOM", "ילדים ונוער", "#831843", "#f472b6")),
 ]
 
 # ----------------------------------------------------------------------------- Israeli radio
@@ -261,6 +280,8 @@ def main():
             c["kind"] = "radio"
         if c["id"] in WEB_URLS:
             c["webUrl"] = WEB_URLS[c["id"]]
+        elif c.get("webUrl") == c["url"]:  # main source became the https one
+            del c["webUrl"]
         if c["id"] in WEB_BLOCKED:
             c["webOk"] = False
         if c["id"] in OLD_RADIO:
