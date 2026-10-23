@@ -73,6 +73,7 @@
     setupClock();
     setupOledMode();
     setupRetroMode();
+    setupWebPlayerControls();
     setupKeyListeners();
     setupMouseListeners();
     resetScreensaverTimer();
@@ -134,6 +135,15 @@
       osdOledStatus: document.getElementById('osd-oled-status'),
       osdAspectStatus: document.getElementById('osd-aspect-status'),
       osdQuality: document.getElementById('osd-quality'),
+
+      // Web Player Actions
+      webBtnBack: document.getElementById('web-btn-back'),
+      webBtnPlayPause: document.getElementById('web-btn-playpause'),
+      webPlayIcon: document.getElementById('web-play-icon'),
+      webBtnMute: document.getElementById('web-btn-mute'),
+      webMuteIcon: document.getElementById('web-mute-icon'),
+      webBtnAspect: document.getElementById('web-btn-aspect'),
+      webBtnFullscreen: document.getElementById('web-btn-fullscreen'),
 
       // Drawer
       quickDrawer: document.getElementById('quick-drawer'),
@@ -636,6 +646,28 @@
     loadVideoStream(channel.url);
   }
 
+  // HLS LOADER WITH DYNAMIC CORS / HTTPS PROXY FOR WEB BROWSERS
+  function createHlsLoader() {
+    if (!window.Hls || !Hls.DefaultConfig || !Hls.DefaultConfig.loader) {
+      return null;
+    }
+    const BaseLoader = Hls.DefaultConfig.loader;
+    return class WebCorsLoader extends BaseLoader {
+      constructor(config) {
+        super(config);
+        const originalLoad = this.load.bind(this);
+        this.load = function (context, config, callbacks) {
+          if (window.location.protocol === 'https:' && context.url && context.url.startsWith('http://')) {
+            context.url = 'https://corsproxy.io/?url=' + encodeURIComponent(context.url);
+          }
+          originalLoad(context, config, callbacks);
+        };
+      }
+    };
+  }
+
+  const WebCorsLoaderClass = createHlsLoader();
+
   function loadVideoStream(url) {
     if (state.hlsInstance) {
       state.hlsInstance.destroy();
@@ -643,11 +675,19 @@
     }
 
     if (window.Hls && Hls.isSupported()) {
-      const hls = new Hls({
+      const hlsConfig = {
         enableWorker: true,
         lowLatencyMode: true,
         backBufferLength: 60
-      });
+      };
+
+      if (window.location.protocol === 'https:' && WebCorsLoaderClass) {
+        hlsConfig.pLoader = WebCorsLoaderClass;
+        hlsConfig.fLoader = WebCorsLoaderClass;
+        hlsConfig.loader = WebCorsLoaderClass;
+      }
+
+      const hls = new Hls(hlsConfig);
 
       hls.loadSource(url);
       hls.attachMedia(el.video);
@@ -655,6 +695,7 @@
       hls.on(Hls.Events.MANIFEST_PARSED, () => {
         hideSpinner();
         el.video.play().catch(() => {});
+        updatePlayPauseButton(false);
       });
 
       hls.on(Hls.Events.ERROR, (event, data) => {
@@ -678,14 +719,139 @@
 
       state.hlsInstance = hls;
     } else if (el.video.canPlayType('application/vnd.apple.mpegurl')) {
-      el.video.src = url;
+      let finalUrl = url;
+      if (window.location.protocol === 'https:' && url.startsWith('http://')) {
+        finalUrl = 'https://corsproxy.io/?url=' + encodeURIComponent(url);
+      }
+      el.video.src = finalUrl;
       el.video.addEventListener('loadedmetadata', () => {
         hideSpinner();
         el.video.play().catch(() => {});
+        updatePlayPauseButton(false);
       }, { once: true });
     } else {
       el.video.src = url;
       el.video.play().catch(() => {});
+      updatePlayPauseButton(false);
+    }
+  }
+
+  // INTERACTIVE WEB PLAYER CONTROLS
+  function setupWebPlayerControls() {
+    if (el.webBtnBack) {
+      el.webBtnBack.addEventListener('click', (e) => {
+        e.stopPropagation();
+        handleBackKey();
+      });
+    }
+
+    if (el.webBtnPlayPause) {
+      el.webBtnPlayPause.addEventListener('click', (e) => {
+        e.stopPropagation();
+        togglePlayPause();
+      });
+    }
+
+    if (el.webBtnMute) {
+      el.webBtnMute.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleMute();
+      });
+    }
+
+    if (el.webBtnAspect) {
+      el.webBtnAspect.addEventListener('click', (e) => {
+        e.stopPropagation();
+        cycleRetroMode();
+      });
+    }
+
+    if (el.webBtnFullscreen) {
+      el.webBtnFullscreen.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleBrowserFullscreen();
+      });
+    }
+
+    if (el.video) {
+      el.video.addEventListener('play', () => updatePlayPauseButton(false));
+      el.video.addEventListener('pause', () => updatePlayPauseButton(true));
+      el.video.addEventListener('volumechange', () => {
+        if (el.webMuteIcon) {
+          el.webMuteIcon.textContent = (el.video.muted || el.video.volume === 0) ? '🔇' : '🔊';
+        }
+      });
+    }
+
+    if (el.playerContainer) {
+      el.playerContainer.addEventListener('mousemove', () => {
+        showOSD();
+        resetScreensaverTimer();
+      });
+
+      el.playerContainer.addEventListener('click', (e) => {
+        if (e.target.closest('.osd-web-actions') || e.target.closest('.quick-drawer') || e.target.closest('.remote-hints')) return;
+        if (el.osd.classList.contains('hidden')) {
+          showOSD();
+        } else {
+          el.osd.classList.add('hidden');
+        }
+      });
+
+      el.playerContainer.addEventListener('dblclick', (e) => {
+        if (e.target.closest('.osd-web-actions') || e.target.closest('.quick-drawer')) return;
+        toggleBrowserFullscreen();
+      });
+    }
+  }
+
+  function togglePlayPause() {
+    if (!el.video) return;
+    if (el.video.paused) {
+      el.video.play().then(() => {
+        updatePlayPauseButton(false);
+        showToast('מנגן ▶️');
+      }).catch(() => {});
+    } else {
+      el.video.pause();
+      updatePlayPauseButton(true);
+      showToast('מושהה ⏸️');
+    }
+  }
+
+  function updatePlayPauseButton(isPaused) {
+    if (el.webPlayIcon) {
+      el.webPlayIcon.textContent = isPaused ? '▶️' : '⏸️';
+    }
+  }
+
+  function toggleMute() {
+    if (!el.video) return;
+    el.video.muted = !el.video.muted;
+    if (el.webMuteIcon) {
+      el.webMuteIcon.textContent = el.video.muted ? '🔇' : '🔊';
+    }
+    showToast(el.video.muted ? 'מושתק 🔇' : 'שמע מופעל 🔊');
+  }
+
+  function toggleBrowserFullscreen() {
+    const doc = document;
+    const docEl = document.documentElement;
+
+    if (!doc.fullscreenElement && !doc.webkitFullscreenElement) {
+      if (docEl.requestFullscreen) {
+        docEl.requestFullscreen();
+      } else if (docEl.webkitRequestFullscreen) {
+        docEl.webkitRequestFullscreen();
+      }
+      showToast('מסך מלא הופעל ⛶');
+    } else {
+      if (doc.exitFullscreen) {
+        doc.exitFullscreen();
+      } else if (doc.webkitExitFullscreen) {
+        doc.webkitExitFullscreen();
+      }
+      showToast('יצאת ממסך מלא');
     }
   }
 
@@ -934,15 +1100,41 @@
 
     const code = e.keyCode || e.which;
 
-    // Number keys (0-9)
-    if (code >= 48 && code <= 57) {
-      handleDigitInput(String(code - 48));
-      return;
-    }
-    // Numpad (0-9)
-    if (code >= 96 && code <= 105) {
-      handleDigitInput(String(code - 96));
-      return;
+    // Web & Keyboard Shortcuts (when not focused on search input)
+    if (state.currentSection !== 'search') {
+      // Space (32) -> Play / Pause
+      if (code === 32) {
+        if (state.currentSection === 'player' || (el.video && !el.video.paused)) {
+          e.preventDefault();
+          togglePlayPause();
+          return;
+        }
+      }
+
+      // 'F' or 'f' (70) -> Browser Fullscreen
+      if (code === 70) {
+        e.preventDefault();
+        toggleBrowserFullscreen();
+        return;
+      }
+
+      // 'M' or 'm' (77) -> Mute / Unmute
+      if (code === 77) {
+        e.preventDefault();
+        toggleMute();
+        return;
+      }
+
+      // Number keys (0-9)
+      if (code >= 48 && code <= 57) {
+        handleDigitInput(String(code - 48));
+        return;
+      }
+      // Numpad (0-9)
+      if (code >= 96 && code <= 105) {
+        handleDigitInput(String(code - 96));
+        return;
+      }
     }
 
     switch (code) {

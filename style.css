@@ -1,4 +1,4 @@
-/* ISRAEL TV PLUS - MODERN DUAL THEME (OLED PURE BLACK & LIGHT MODE) */
+/* ISRAEL TV PLUS - RESPONSIVE MODERN DUAL THEME (WEB & WEBOS TV) */
 
 :root {
   --accent-blue: #0284c7;
@@ -61,11 +61,10 @@ body.light-theme {
   -webkit-font-smoothing: antialiased;
 }
 
-body {
-  width: 1920px;
-  height: 1080px;
-  max-width: 1920px;
-  max-height: 1080px;
+html, body {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
   overflow: hidden;
   background-color: var(--bg-primary);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -164,7 +163,7 @@ body {
   border: 1px solid var(--border-glass);
   border-radius: 12px;
   padding: 0 16px;
-  width: 400px;
+  width: 380px;
   height: 44px;
   transition: var(--transition-fast);
   box-shadow: var(--card-shadow);
@@ -280,7 +279,7 @@ body {
 .main-layout {
   display: flex;
   flex: 1;
-  height: calc(1080px - 75px - 48px);
+  height: calc(100vh - 75px - 48px);
   overflow: hidden;
   background-color: var(--bg-primary);
 }
@@ -504,7 +503,7 @@ body {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
-  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.4));
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.35));
 }
 
 .section-header {
@@ -699,15 +698,17 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 24px;
+  gap: 20px;
   font-size: 13px;
   color: var(--text-muted);
+  flex-wrap: wrap;
+  padding: 0 10px;
 }
 
 .hint-item {
   display: flex;
   align-items: center;
-  gap: 7px;
+  gap: 6px;
 }
 
 .key-pill {
@@ -798,7 +799,7 @@ body {
   color: #10b981;
 }
 
-/* FULLSCREEN PLAYER CONTAINER (ALWAYS TRUE OLED BLACK FOR BEST MOVIE VIEWING) */
+/* FULLSCREEN PLAYER CONTAINER */
 .player-container {
   position: fixed;
   inset: 0;
@@ -905,7 +906,7 @@ video.aspect-pillarbox {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 40px 60px;
+  padding: 35px 50px;
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.88) 0%, transparent 35%, transparent 65%, rgba(0, 0, 0, 0.94) 100%);
   z-index: 30;
   opacity: 1;
@@ -922,26 +923,27 @@ video.aspect-pillarbox {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  pointer-events: auto;
 }
 
 .osd-channel-meta {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 18px;
 }
 
 .osd-badge {
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 900;
   background: #38bdf8;
   color: #000;
-  padding: 4px 14px;
+  padding: 4px 12px;
   border-radius: 10px;
 }
 
 .osd-logo-wrap {
-  width: 90px;
-  height: 60px;
+  width: 85px;
+  height: 55px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -957,23 +959,23 @@ video.aspect-pillarbox {
 }
 
 .osd-titles h2 {
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 800;
 }
 
 .osd-tags {
   display: flex;
-  gap: 12px;
+  gap: 10px;
   margin-top: 4px;
 }
 
 .osd-category {
-  font-size: 15px;
+  font-size: 14px;
   color: #38bdf8;
 }
 
 .osd-retro-tag {
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 700;
   color: #34d399;
   background: rgba(16, 185, 129, 0.2);
@@ -982,7 +984,7 @@ video.aspect-pillarbox {
 }
 
 .osd-aspect-tag {
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 700;
   color: #f59e0b;
   background: rgba(245, 158, 11, 0.2);
@@ -996,17 +998,47 @@ video.aspect-pillarbox {
   gap: 20px;
 }
 
+/* INTERACTIVE WEB PLAYER BUTTONS */
+.osd-web-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.web-action-btn {
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: var(--transition-fast);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.web-action-btn:hover {
+  background: rgba(56, 189, 248, 0.35);
+  border-color: #38bdf8;
+  transform: scale(1.05);
+}
+
 .osd-live-indicator {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 700;
   color: #34d399;
 }
 
 .osd-clock {
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 800;
   font-variant-numeric: tabular-nums;
 }
@@ -1017,13 +1049,15 @@ video.aspect-pillarbox {
   justify-content: space-between;
   border-top: 1px solid rgba(255, 255, 255, 0.15);
   padding-top: 15px;
+  pointer-events: auto;
 }
 
 .osd-controls-hint {
   display: flex;
-  gap: 24px;
-  font-size: 14px;
+  gap: 20px;
+  font-size: 13px;
   color: #cbd5e1;
+  flex-wrap: wrap;
 }
 
 .osd-controls-hint strong {
@@ -1031,7 +1065,7 @@ video.aspect-pillarbox {
 }
 
 .osd-status {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
   color: #94a3b8;
 }
@@ -1041,7 +1075,7 @@ video.aspect-pillarbox {
   position: absolute;
   top: 0;
   left: 0;
-  width: 380px;
+  width: 360px;
   height: 100%;
   background: rgba(5, 8, 17, 0.95);
   border-right: 1px solid rgba(255, 255, 255, 0.1);
@@ -1074,6 +1108,7 @@ video.aspect-pillarbox {
 .drawer-close-hint {
   font-size: 12px;
   color: #94a3b8;
+  cursor: pointer;
 }
 
 .drawer-channel-list {
@@ -1095,6 +1130,7 @@ video.aspect-pillarbox {
   transition: var(--transition-fast);
 }
 
+.drawer-item:hover,
 .drawer-item.focused {
   background: rgba(2, 132, 199, 0.35);
   outline: 2px solid #38bdf8;
@@ -1258,4 +1294,114 @@ video.aspect-pillarbox {
 
 .hidden {
   display: none !important;
+}
+
+/* ===================================================
+   RESPONSIVE DESIGN BREAKPOINTS (FOR WEB & SCREENS)
+   =================================================== */
+
+@media (max-width: 1650px) {
+  .channels-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 1280px) {
+  .sidebar {
+    width: 270px;
+  }
+  .channels-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .search-box {
+    width: 280px;
+  }
+}
+
+@media (max-width: 980px) {
+  .sidebar {
+    width: 230px;
+  }
+  .channels-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .topbar {
+    padding: 0 20px;
+  }
+  .search-box {
+    width: 220px;
+  }
+  .badge-text {
+    display: none;
+  }
+  .hero-spotlight {
+    padding: 14px 20px;
+  }
+  .hero-title {
+    font-size: 22px;
+  }
+  .remote-hints {
+    font-size: 11px;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 720px) {
+  .main-layout {
+    flex-direction: column;
+  }
+  .sidebar {
+    width: 100%;
+    height: 55px;
+    padding: 6px 12px;
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+  .sidebar-title {
+    display: none;
+  }
+  .category-list {
+    flex-direction: row;
+    gap: 6px;
+  }
+  .category-item {
+    padding: 6px 12px;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+  .channels-section {
+    padding: 10px 15px;
+  }
+  .hero-spotlight {
+    display: none;
+  }
+  .channels-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .channel-card {
+    height: 155px;
+    padding: 8px 10px;
+  }
+  .channel-logo-wrap {
+    width: 90px;
+    height: 60px;
+  }
+  .topbar {
+    height: 60px;
+    padding: 0 12px;
+  }
+  .brand-text h1 {
+    font-size: 18px;
+  }
+  .search-box {
+    display: none;
+  }
+  .clock {
+    display: none;
+  }
+  .remote-hints {
+    display: none;
+  }
 }

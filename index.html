@@ -2,8 +2,12 @@
 <html lang="he" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ישראל TV פלוס | Israel TV Plus</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>ישראל TV פלוס | Israel TV Plus (Web & TV)</title>
+  <meta name="theme-color" content="#000000">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="icon" type="image/png" href="icon.png">
   <link rel="stylesheet" href="style.css">
   <script src="assets/hls.min.js"></script>
   <script src="channels.js"></script>
@@ -26,7 +30,7 @@
     <header class="topbar">
       <div class="brand">
         <div class="logo-icon">
-          <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2">
+          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
             <rect x="2" y="7" width="20" height="15" rx="3" fill="url(#brandGrad)"/>
             <polyline points="17 2 12 7 7 2" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round"/>
             <defs>
@@ -49,22 +53,22 @@
         <input type="text" id="channel-search" placeholder="חיפוש ערוץ לפי שם או מספר..." tabindex="0">
       </div>
 
-      <!-- HEADER ACTIONS: LIGHT/DARK THEME, OLED, RETRO -->
+      <!-- HEADER ACTIONS -->
       <div class="header-right">
         <!-- LIGHT / DARK THEME TOGGLE -->
         <button id="btn-theme-toggle" class="tool-badge-btn theme-badge" title="החלף בין מצב לילה (OLED) למצב יום (Light)">
           <span id="theme-btn-icon">☀️</span>
-          <span id="theme-btn-label">מצב יום (Light)</span>
+          <span id="theme-btn-label" class="badge-text">מצב יום</span>
         </button>
 
-        <button id="btn-retro-mode" class="tool-badge-btn retro-badge" title="לחץ או לחץ ירוק בשלט לשיפור סדרות ישנות">
+        <button id="btn-retro-mode" class="tool-badge-btn retro-badge" title="חידוד רטרו לסדרות ישנות">
           <span class="btn-icon">🎞️</span>
-          <span id="retro-mode-label">חידוד רטרו: כבוי</span>
+          <span id="retro-mode-label" class="badge-text">חידוד: כבוי</span>
         </button>
 
-        <button id="btn-oled-mode" class="tool-badge-btn oled-badge" title="לחץ בשלט למשפר תמונה OLED">
+        <button id="btn-oled-mode" class="tool-badge-btn oled-badge" title="משפר תמונה OLED">
           <span class="btn-icon">✨</span>
-          <span id="oled-mode-label">OLED: שחור מושלם</span>
+          <span id="oled-mode-label" class="badge-text">OLED: שחור מושלם</span>
         </button>
 
         <div class="channels-count" id="channels-count-badge">106 ערוצים</div>
@@ -98,9 +102,9 @@
             <h2 class="hero-title" id="hero-title">קשת 12 HD</h2>
             <p class="hero-desc" id="hero-desc">ערוץ הטלוויזיה המוביל בישראל - חדשות 12, ריאליטי, תוכניות בידור וסדרות מקור</p>
             <div class="hero-action-hint">
-              <span class="key-pill ok-pill">OK</span> צפייה במסך מלא
+              <span class="key-pill ok-pill">OK / לחיצה</span> צפייה במסך מלא
               <span class="sep">•</span>
-              <span class="key-pill yellow-pill">צהוב</span> הוסף/הסר מועדף ⭐
+              <span class="key-pill yellow-pill">צהוב</span> הוסף למועדפים ⭐
               <span class="sep">•</span>
               <span class="key-pill green-pill">ירוק</span> מצב רטרו 4:3
               <span class="sep">•</span>
@@ -140,13 +144,13 @@
     <!-- BOTTOM REMOTE HELP FOOTER -->
     <footer class="remote-hints">
       <div class="hint-item"><span class="key-pill">◄ ▲ ▼ ►</span> ניווט בין ערוצים וקטגוריות</div>
-      <div class="hint-item"><span class="key-pill ok-pill">OK</span> מסך מלא / השהייה</div>
-      <div class="hint-item"><span class="key-pill back-pill">BACK</span> חזרה אחורה (ללא יציאה)</div>
-      <div class="hint-item"><span class="key-pill">CH ▲ / ▼</span> החלפת ערוץ מהירה</div>
+      <div class="hint-item"><span class="key-pill ok-pill">OK / קליק</span> מסך מלא</div>
+      <div class="hint-item"><span class="key-pill back-pill">BACK / Esc</span> חזרה למדריך (השידור ממשיך)</div>
+      <div class="hint-item"><span class="key-pill">CH ▲ / ▼</span> החלפת ערוץ</div>
       <div class="hint-item"><span class="key-pill yellow-pill">צהוב</span> מועדפים ⭐</div>
       <div class="hint-item"><span class="key-pill green-pill">ירוק</span> חידוד רטרו / 4:3</div>
-      <div class="hint-item"><span class="key-pill red-pill">אדום</span> כל הערוצים</div>
-      <div class="hint-item"><span class="key-pill blue-pill">כחול</span> חיפוש</div>
+      <div class="hint-item"><span class="key-pill">F</span> מסך מלא דפדפן</div>
+      <div class="hint-item"><span class="key-pill">M</span> השתק/בטל השתקה</div>
     </footer>
 
     <!-- FULLSCREEN VIDEO PLAYER OVERLAY -->
@@ -158,7 +162,7 @@
       <!-- SPINNER / BUFFERING INDICATOR -->
       <div id="player-spinner" class="player-spinner hidden">
         <div class="spinner-ring"></div>
-        <div class="spinner-text" id="spinner-text">מתחבר לשידור...</div>
+        <div class="spinner-text" id="spinner-text">מתחבר לשידור חי...</div>
       </div>
 
       <!-- OSD (ON SCREEN DISPLAY) -->
@@ -179,6 +183,24 @@
             </div>
           </div>
           <div class="osd-right">
+            <!-- INTERACTIVE WEB PLAYER BUTTONS -->
+            <div class="osd-web-actions">
+              <button id="web-btn-back" class="web-action-btn" title="חזרה למדריך (Esc)">
+                <span>↩️</span> חזרה לרשימה
+              </button>
+              <button id="web-btn-playpause" class="web-action-btn" title="השהה / נגן (Space)">
+                <span id="web-play-icon">⏸️</span>
+              </button>
+              <button id="web-btn-mute" class="web-action-btn" title="השתק / הפעל שמע (M)">
+                <span id="web-mute-icon">🔊</span>
+              </button>
+              <button id="web-btn-aspect" class="web-action-btn" title="שנה יחס תמונה / חידוד (ירוק)">
+                <span>🎞️</span>
+              </button>
+              <button id="web-btn-fullscreen" class="web-action-btn" title="מסך מלא (F)">
+                <span>⛶</span>
+              </button>
+            </div>
             <div class="osd-live-indicator"><span class="pulse-dot"></span>שידור חי</div>
             <div class="osd-clock" id="osd-clock">12:00</div>
           </div>
@@ -190,9 +212,10 @@
             <span>[▲/▼ / CH+/-] החלף ערוץ</span>
             <span>[צהוב] OLED: <strong id="osd-oled-status">שחור מושלם</strong></span>
             <span>[ירוק] חידוד רטרו: <strong id="osd-aspect-status">מילוי מסך</strong></span>
-            <span>[OK] השהה / הפעל</span>
-            <span>[BACK] חזרה למדריך (השידור ממשיך)</span>
-            <span>[◄ שמאלה] רשימת ערוצים</span>
+            <span>[Space/OK] השהה / הפעל</span>
+            <span>[Esc/BACK] חזרה למדריך (השידור ממשיך)</span>
+            <span>[M] השתק</span>
+            <span>[F] מסך מלא</span>
           </div>
           <div class="osd-status" id="osd-quality">HLS Live 1080p</div>
         </div>
@@ -202,7 +225,7 @@
       <div id="quick-drawer" class="quick-drawer hidden">
         <div class="drawer-header">
           <h3>רשימת ערוצים</h3>
-          <span class="drawer-close-hint">[◄ / BACK] סגור</span>
+          <span class="drawer-close-hint">[◄ / BACK / Esc] סגור</span>
         </div>
         <div id="drawer-channel-list" class="drawer-channel-list">
           <!-- Dynamically inserted in player -->
@@ -223,7 +246,7 @@
       </div>
     </div>
 
-    <!-- EXIT CONFIRMATION MODAL (ONLY OPENED ON INTENTIONAL EXIT) -->
+    <!-- EXIT CONFIRMATION MODAL -->
     <div id="exit-modal" class="exit-modal hidden">
       <div class="exit-dialog">
         <div class="exit-icon">📺</div>
