@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 120" width="300" height="120">
+      <defs>
+        <linearGradient id="lulig" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#ffeedd"/>
+          <stop offset="100%" stop-color="#ffd6a5"/>
+        </linearGradient>
+      </defs>
+      <rect width="300" height="120" rx="24" fill="url(#lulig)" stroke="#ff9f1c" stroke-width="3"/>
+      <circle cx="65" cy="60" r="34" fill="#ff9f1c"/>
+      <text x="65" y="72" font-size="34" text-anchor="middle">🐣</text>
+      <text x="180" y="65" font-family="Rubik, sans-serif" font-size="44" font-weight="900" fill="#d90429" text-anchor="middle">לולי LULI</text>
+      <text x="180" y="98" font-family="Rubik, sans-serif" font-size="16" font-weight="800" fill="#ff7b00" text-anchor="middle">ערוץ לולי לפעוטות בעברית</text>
+    </svg>

@@ -49,17 +49,25 @@
         <input type="text" id="channel-search" placeholder="חיפוש ערוץ לפי שם או מספר..." tabindex="0">
       </div>
 
-      <!-- OLED & RETRO ENHANCER BADGES -->
+      <!-- HEADER ACTIONS: LIGHT/DARK THEME, OLED, RETRO -->
       <div class="header-right">
+        <!-- LIGHT / DARK THEME TOGGLE -->
+        <button id="btn-theme-toggle" class="tool-badge-btn theme-badge" title="החלף בין מצב לילה (OLED) למצב יום (Light)">
+          <span id="theme-btn-icon">☀️</span>
+          <span id="theme-btn-label">מצב יום (Light)</span>
+        </button>
+
         <button id="btn-retro-mode" class="tool-badge-btn retro-badge" title="לחץ או לחץ ירוק בשלט לשיפור סדרות ישנות">
           <span class="btn-icon">🎞️</span>
           <span id="retro-mode-label">חידוד רטרו: כבוי</span>
         </button>
+
         <button id="btn-oled-mode" class="tool-badge-btn oled-badge" title="לחץ בשלט למשפר תמונה OLED">
           <span class="btn-icon">✨</span>
           <span id="oled-mode-label">OLED: שחור מושלם</span>
         </button>
-        <div class="channels-count" id="channels-count-badge">100 ערוצים</div>
+
+        <div class="channels-count" id="channels-count-badge">106 ערוצים</div>
         <div class="clock" id="live-clock">12:00:00</div>
       </div>
     </header>
@@ -95,10 +103,12 @@
               <span class="key-pill yellow-pill">צהוב</span> הוסף/הסר מועדף ⭐
               <span class="sep">•</span>
               <span class="key-pill green-pill">ירוק</span> מצב רטרו 4:3
+              <span class="sep">•</span>
+              <span class="key-pill blue-pill">כחול</span> חיפוש
             </div>
           </div>
           <div class="hero-right">
-            <!-- Active Mini Preview / Logo -->
+            <!-- Active Preview / Logo -->
             <div class="hero-logo-box" id="hero-logo-box">
               <img id="hero-logo" class="hero-logo-img" src="assets/logos/keshet12.svg" alt="logo" onerror="this.style.display='none';">
             </div>
@@ -108,7 +118,7 @@
         <div class="section-header">
           <div class="section-header-left">
             <h3 id="current-category-title">כל הערוצים</h3>
-            <span class="category-meta" id="category-meta-text">מציג 100 ערוצים</span>
+            <span class="category-meta" id="category-meta-text">מציג 106 ערוצים</span>
           </div>
         </div>
 
@@ -122,18 +132,18 @@
     <div id="channel-number-hud" class="channel-number-hud hidden">
       <div class="hud-box">
         <div class="hud-digits" id="hud-digits">13</div>
-        <div class="hud-channel-name" id="hud-channel-name">רשת 13 HD</div>
+        <div class="hud-channel-name" id="hud-channel-name">ניקלודיאון ישראל בעברית HD</div>
         <div class="hud-hint">עובר ערוץ...</div>
       </div>
     </div>
 
     <!-- BOTTOM REMOTE HELP FOOTER -->
     <footer class="remote-hints">
-      <div class="hint-item"><span class="key-pill">◄ ▲ ▼ ►</span> ניווט</div>
-      <div class="hint-item"><span class="key-pill ok-pill">OK</span> מסך מלא</div>
-      <div class="hint-item"><span class="key-pill back-pill">BACK</span> חזרה אחורה</div>
+      <div class="hint-item"><span class="key-pill">◄ ▲ ▼ ►</span> ניווט בין ערוצים וקטגוריות</div>
+      <div class="hint-item"><span class="key-pill ok-pill">OK</span> מסך מלא / השהייה</div>
+      <div class="hint-item"><span class="key-pill back-pill">BACK</span> חזרה אחורה (ללא יציאה)</div>
       <div class="hint-item"><span class="key-pill">CH ▲ / ▼</span> החלפת ערוץ מהירה</div>
-      <div class="hint-item"><span class="key-pill yellow-pill">צהוב</span> מועדפים / OLED</div>
+      <div class="hint-item"><span class="key-pill yellow-pill">צהוב</span> מועדפים ⭐</div>
       <div class="hint-item"><span class="key-pill green-pill">ירוק</span> חידוד רטרו / 4:3</div>
       <div class="hint-item"><span class="key-pill red-pill">אדום</span> כל הערוצים</div>
       <div class="hint-item"><span class="key-pill blue-pill">כחול</span> חיפוש</div>
@@ -181,7 +191,7 @@
             <span>[צהוב] OLED: <strong id="osd-oled-status">שחור מושלם</strong></span>
             <span>[ירוק] חידוד רטרו: <strong id="osd-aspect-status">מילוי מסך</strong></span>
             <span>[OK] השהה / הפעל</span>
-            <span>[BACK] חזרה למדריך הערוצים</span>
+            <span>[BACK] חזרה למדריך (השידור ממשיך)</span>
             <span>[◄ שמאלה] רשימת ערוצים</span>
           </div>
           <div class="osd-status" id="osd-quality">HLS Live 1080p</div>
@@ -213,7 +223,7 @@
       </div>
     </div>
 
-    <!-- EXIT CONFIRMATION MODAL (ONLY OPENED VIA EXPLICIT MENU OR INTENTIONAL DOUBLE BACK) -->
+    <!-- EXIT CONFIRMATION MODAL (ONLY OPENED ON INTENTIONAL EXIT) -->
     <div id="exit-modal" class="exit-modal hidden">
       <div class="exit-dialog">
         <div class="exit-icon">📺</div>

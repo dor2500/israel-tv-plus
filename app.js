@@ -1,6 +1,6 @@
 /**
  * ISRAEL TV PLUS - LG webOS Smart TV Application Engine
- * Optimized for LG OLED, Magic Remote, and 60fps Hardware Acceleration
+ * Optimized for LG OLED, Light Mode, Magic Remote, and 60fps Hardware Acceleration
  */
 
 (function () {
@@ -14,6 +14,7 @@
     activeCategory: 'ALL',
     searchQuery: '',
     favorites: [],
+    theme: 'oled', // 'oled' | 'light'
 
     // Focus & Navigation
     currentSection: 'grid', // 'grid' | 'sidebar' | 'search' | 'player' | 'drawer' | 'exit_modal'
@@ -66,6 +67,7 @@
 
   function initApp() {
     cacheDomElements();
+    loadTheme();
     loadFavorites();
     loadChannels();
     setupClock();
@@ -89,6 +91,11 @@
       currentCategoryTitle: document.getElementById('current-category-title'),
       categoryMetaText: document.getElementById('category-meta-text'),
       liveClock: document.getElementById('live-clock'),
+
+      // Theme Toggle
+      btnThemeToggle: document.getElementById('btn-theme-toggle'),
+      themeBtnIcon: document.getElementById('theme-btn-icon'),
+      themeBtnLabel: document.getElementById('theme-btn-label'),
 
       // Hero Spotlight
       heroSpotlight: document.getElementById('hero-spotlight'),
@@ -147,6 +154,42 @@
     };
   }
 
+  // THEME MANAGEMENT (OLED PURE BLACK vs LIGHT MODE)
+  function loadTheme() {
+    try {
+      const saved = localStorage.getItem('israel_tv_theme');
+      state.theme = saved === 'light' ? 'light' : 'oled';
+    } catch (e) {
+      state.theme = 'oled';
+    }
+    applyTheme();
+
+    if (el.btnThemeToggle) {
+      el.btnThemeToggle.addEventListener('click', toggleTheme);
+    }
+  }
+
+  function toggleTheme() {
+    state.theme = state.theme === 'oled' ? 'light' : 'oled';
+    try {
+      localStorage.setItem('israel_tv_theme', state.theme);
+    } catch (e) {}
+    applyTheme();
+    showToast(state.theme === 'light' ? '☀️ הופעל מצב יום (Light Mode)' : '🌙 הופעל מצב לילה (OLED True Black)');
+  }
+
+  function applyTheme() {
+    if (state.theme === 'light') {
+      document.body.className = 'light-theme';
+      if (el.themeBtnIcon) el.themeBtnIcon.textContent = '🌙';
+      if (el.themeBtnLabel) el.themeBtnLabel.textContent = 'מצב לילה (OLED)';
+    } else {
+      document.body.className = 'oled-theme';
+      if (el.themeBtnIcon) el.themeBtnIcon.textContent = '☀️';
+      if (el.themeBtnLabel) el.themeBtnLabel.textContent = 'מצב יום (Light)';
+    }
+  }
+
   // FAVORITES
   function loadFavorites() {
     try {
@@ -176,7 +219,6 @@
     }
     saveFavorites();
 
-    // Update categories count & re-render if on favorites
     buildCategories();
     if (state.activeCategory === 'FAVORITES') {
       applyFilter();
@@ -234,7 +276,7 @@
     try {
       localStorage.setItem('israel_tv_oled_mode', current.id);
     } catch (e) {}
-    showToast(`✨ מצב OLED: ${current.label} (${current.desc})`);
+    showToast(`✨ מצב תמונה: ${current.label} (${current.desc})`);
   }
 
   function applyOledMode() {
@@ -307,7 +349,7 @@
       if (state.currentSection !== 'player' || (el.video && el.video.paused)) {
         startScreensaver();
       }
-    }, 120000); // 2 minutes idle
+    }, 120000);
   }
 
   function startScreensaver() {
@@ -327,7 +369,7 @@
     state.allChannels = raw.map((c, i) => ({
       ...c,
       number: c.number || (i + 1),
-      category: c.category || 'כללי',
+      category: c.category || 'ערוצים',
       desc: c.desc || 'שידור חי באיכות HD'
     }));
 
@@ -350,6 +392,26 @@
       list.push({ id: 'FAVORITES', name: 'מועדפים ⭐', count: state.favorites.length });
     }
 
+    // Ordered categories
+    const priority = [
+      'ערוצי ישראל - שידור חי',
+      'ילדים ונוער (בעברית)',
+      'סרטים וסדרות (Movies & Series)',
+      'ערוצי ספורט (Sports)',
+      'מוזיקה ורדיו חי (Music & Radio)',
+      'לייף סטייל ובידור',
+      'דוקו וטבע',
+      'ערוצים בינלאומיים (World)'
+    ];
+
+    priority.forEach(cat => {
+      if (catMap[cat]) {
+        list.push({ id: cat, name: cat, count: catMap[cat] });
+        delete catMap[cat];
+      }
+    });
+
+    // Any remaining
     Object.keys(catMap).forEach(cat => {
       list.push({ id: cat, name: cat, count: catMap[cat] });
     });
@@ -428,7 +490,7 @@
 
     if (state.filteredChannels.length === 0) {
       el.channelsGrid.innerHTML = `
-        <div style="grid-column: 1 / -1; text-align: center; padding: 60px 0; color: #64748b; font-size: 18px;">
+        <div style="grid-column: 1 / -1; text-align: center; padding: 60px 0; color: var(--text-muted); font-size: 18px;">
           לא נמצאו ערוצים מתאימים לקטגוריה או לחיפוש הנוכחי
         </div>
       `;
@@ -522,7 +584,6 @@
   }
 
   function highlightFocusedItem() {
-    // Clear all existing focus classes
     document.querySelectorAll('.focused').forEach(elem => elem.classList.remove('focused'));
 
     if (state.currentSection === 'grid') {
@@ -562,7 +623,6 @@
     state.playingChannelIndex = index;
     const channel = state.filteredChannels[index];
 
-    // Mark active card
     const cards = el.channelsGrid.querySelectorAll('.channel-card');
     cards.forEach((c, idx) => {
       c.classList.toggle('is-playing', idx === index);
@@ -618,7 +678,6 @@
 
       state.hlsInstance = hls;
     } else if (el.video.canPlayType('application/vnd.apple.mpegurl')) {
-      // Native webOS / Safari HLS
       el.video.src = url;
       el.video.addEventListener('loadedmetadata', () => {
         hideSpinner();
@@ -637,7 +696,7 @@
   }
 
   function exitFullscreenToGrid() {
-    // Exit fullscreen, but KEEP video playing smoothly in background/hero!
+    // Exit fullscreen, keep video playing smoothly in background!
     el.playerContainer.classList.add('hidden');
     closeQuickDrawer();
     state.currentSection = 'grid';
@@ -759,7 +818,6 @@
           setFocus('grid', gridIdx);
           playChannel(gridIdx);
         } else {
-          // Switch to ALL channels and play
           selectCategory('ALL', 0);
           const newIdx = state.filteredChannels.findIndex(c => c.id === target.id);
           if (newIdx !== -1) {
@@ -773,7 +831,7 @@
     }, 1200);
   }
 
-  // SMART BACK BUTTON LOGIC: NEVER ACCIDENTALLY EXITS!
+  // SMART BACK BUTTON: NEVER ACCIDENTALLY EXITS!
   function handleBackKey() {
     // 1. If Quick Drawer is open inside player -> close it
     if (state.drawerOpen) {
@@ -823,7 +881,6 @@
     }
 
     // 8. If already at the root of the Guide:
-    // DO NOT show an annoying exit modal!
     // Require double-click within 2.5 seconds to exit gracefully.
     const now = Date.now();
     if (now - state.lastBackPressTime < 2500) {
@@ -982,7 +1039,6 @@
       if (next % COLS > 0) {
         setFocus('grid', next - 1);
       } else {
-        // Move focus into Categories Sidebar
         setFocus('sidebar', state.focusedCategoryIdx);
       }
     } else if (code === 38) { // Up
@@ -1022,10 +1078,10 @@
   }
 
   function handleSearchKeys(code, e) {
-    if (code === 40) { // Down from search into grid
+    if (code === 40) {
       e.preventDefault();
       setFocus('grid', 0);
-    } else if (code === 13) { // Enter on search
+    } else if (code === 13) {
       e.preventDefault();
       setFocus('grid', 0);
     }
@@ -1034,16 +1090,16 @@
   function handlePlayerKeys(code, e) {
     showOSD();
 
-    if (code === 38) { // Up -> Zap Prev
+    if (code === 38) {
       e.preventDefault();
       zapChannel(-1);
-    } else if (code === 40) { // Down -> Zap Next
+    } else if (code === 40) {
       e.preventDefault();
       zapChannel(1);
-    } else if (code === 37) { // Left -> Open quick drawer
+    } else if (code === 37) {
       e.preventDefault();
       openQuickDrawer();
-    } else if (code === 13) { // OK -> Toggle Pause / Play
+    } else if (code === 13) {
       e.preventDefault();
       if (el.video.paused) {
         el.video.play();
