@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 120" width="300" height="120">
+  <rect width="300" height="120" rx="24" fill="#1c1917" stroke="#e11d48" stroke-width="2"/>
+  <text x="95" y="72" font-family="Rubik, sans-serif" font-size="38" font-weight="900" fill="#ffffff" text-anchor="middle">מכאן</text>
+  <text x="210" y="82" font-family="Arial Black, sans-serif" font-size="64" font-weight="900" fill="#e11d48" text-anchor="middle">33</text>
+</svg>

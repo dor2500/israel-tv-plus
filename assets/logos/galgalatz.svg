@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 120" width="300" height="120">
+      <rect width="300" height="120" rx="24" fill="#780000" stroke="#c1121f" stroke-width="2"/>
+      <circle cx="65" cy="60" r="34" fill="#c1121f" stroke="#ffffff" stroke-width="3"/>
+      <text x="65" y="70" font-size="32" text-anchor="middle">📻</text>
+      <text x="185" y="72" font-family="Rubik, sans-serif" font-size="38" font-weight="900" fill="#ffffff" text-anchor="middle">גלגלצ TV</text>
+      <text x="185" y="98" font-family="Rubik, sans-serif" font-size="16" font-weight="700" fill="#fdf0d5" text-anchor="middle">מוזיקה ישראלית ולועזית</text>
+    </svg>

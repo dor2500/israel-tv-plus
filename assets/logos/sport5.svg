@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 120" width="300" height="120">
+  <defs>
+    <linearGradient id="s5g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#b30000"/>
+      <stop offset="100%" stop-color="#e60000"/>
+    </linearGradient>
+  </defs>
+  <rect width="300" height="120" rx="24" fill="url(#s5g)" stroke="#ff4d4d" stroke-width="2"/>
+  <text x="100" y="76" font-family="Rubik, sans-serif" font-size="34" font-weight="900" fill="#ffffff" text-anchor="middle">ספורט</text>
+  <text x="205" y="86" font-family="Arial Black, Impact, sans-serif" font-size="74" font-weight="900" fill="#ffff00" text-anchor="middle">5</text>
+</svg>

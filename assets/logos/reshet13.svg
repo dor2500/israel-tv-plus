@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 120" width="300" height="120">
+  <defs>
+    <linearGradient id="r13g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#240046"/>
+      <stop offset="100%" stop-color="#5a189a"/>
+    </linearGradient>
+  </defs>
+  <rect width="300" height="120" rx="24" fill="url(#r13g)" stroke="#9d4edd" stroke-width="2"/>
+  <circle cx="65" cy="60" r="32" fill="#e0aaff"/>
+  <path d="M 60 40 L 70 60 L 60 80" stroke="#240046" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <text x="185" y="84" font-family="Rubik, Assistant, Arial, sans-serif" font-size="72" font-weight="900" fill="#ffffff" text-anchor="middle">13</text>
+  <text x="185" y="108" font-family="Rubik, sans-serif" font-size="16" font-weight="800" fill="#e0aaff" text-anchor="middle">רשת</text>
+</svg>

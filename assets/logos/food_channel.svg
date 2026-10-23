@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 120" width="300" height="120">
+      <rect width="300" height="120" rx="24" fill="#441111" stroke="#f28482" stroke-width="2"/>
+      <circle cx="65" cy="60" r="32" fill="#f28482"/>
+      <text x="65" y="70" font-size="32" text-anchor="middle">🍳</text>
+      <text x="185" y="70" font-family="Rubik, sans-serif" font-size="32" font-weight="900" fill="#ffffff" text-anchor="middle">ערוץ האוכל HD</text>
+      <text x="185" y="96" font-family="Rubik, sans-serif" font-size="16" font-weight="700" fill="#f7cac9" text-anchor="middle">תוכניות בישול ושפים</text>
+    </svg>

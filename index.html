@@ -26,7 +26,7 @@
     <header class="topbar">
       <div class="brand">
         <div class="logo-icon">
-          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+          <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2">
             <rect x="2" y="7" width="20" height="15" rx="3" fill="url(#brandGrad)"/>
             <polyline points="17 2 12 7 7 2" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round"/>
             <defs>
@@ -55,11 +55,11 @@
           <span class="btn-icon">🎞️</span>
           <span id="retro-mode-label">חידוד רטרו: כבוי</span>
         </button>
-        <button id="btn-oled-mode" class="tool-badge-btn oled-badge" title="לחץ או לחץ צהוב בשלט למשפר תמונה OLED">
+        <button id="btn-oled-mode" class="tool-badge-btn oled-badge" title="לחץ בשלט למשפר תמונה OLED">
           <span class="btn-icon">✨</span>
-          <span id="oled-mode-label">OLED: צבעים עשירים</span>
+          <span id="oled-mode-label">OLED: שחור מושלם</span>
         </button>
-        <div class="channels-count" id="channels-count-badge">88 ערוצים</div>
+        <div class="channels-count" id="channels-count-badge">100 ערוצים</div>
         <div class="clock" id="live-clock">12:00:00</div>
       </div>
     </header>
@@ -85,14 +85,22 @@
               <span class="hero-badge" id="hero-number">#1</span>
               <span class="hero-cat" id="hero-category">ערוצי ישראל - שידור חי</span>
               <span class="hero-res-badge" id="hero-badge-tag">FHD 1080p</span>
+              <span class="hero-fav-tag hidden" id="hero-fav-tag">⭐ מועדף</span>
             </div>
             <h2 class="hero-title" id="hero-title">קשת 12 HD</h2>
             <p class="hero-desc" id="hero-desc">ערוץ הטלוויזיה המוביל בישראל - חדשות 12, ריאליטי, תוכניות בידור וסדרות מקור</p>
-            <div class="hero-action-hint">לחץ <span class="key-pill ok-pill">OK</span> לצפייה מיידית במסך מלא</div>
+            <div class="hero-action-hint">
+              <span class="key-pill ok-pill">OK</span> צפייה במסך מלא
+              <span class="sep">•</span>
+              <span class="key-pill yellow-pill">צהוב</span> הוסף/הסר מועדף ⭐
+              <span class="sep">•</span>
+              <span class="key-pill green-pill">ירוק</span> מצב רטרו 4:3
+            </div>
           </div>
           <div class="hero-right">
-            <div class="hero-logo-box">
-              <img id="hero-logo" class="hero-logo-img" src="" alt="logo">
+            <!-- Active Mini Preview / Logo -->
+            <div class="hero-logo-box" id="hero-logo-box">
+              <img id="hero-logo" class="hero-logo-img" src="assets/logos/keshet12.svg" alt="logo" onerror="this.style.display='none';">
             </div>
           </div>
         </div>
@@ -100,14 +108,23 @@
         <div class="section-header">
           <div class="section-header-left">
             <h3 id="current-category-title">כל הערוצים</h3>
-            <span class="category-meta" id="category-meta-text">מציג 88 ערוצים</span>
+            <span class="category-meta" id="category-meta-text">מציג 100 ערוצים</span>
           </div>
         </div>
 
         <div class="channels-grid" id="channels-grid" tabindex="0">
-          <!-- Dynamically inserted channel cards -->
+          <!-- Dynamically inserted channel cards with 100% reliable logos/fallbacks -->
         </div>
       </main>
+    </div>
+
+    <!-- DIRECT NUMBER TYPING HUD -->
+    <div id="channel-number-hud" class="channel-number-hud hidden">
+      <div class="hud-box">
+        <div class="hud-digits" id="hud-digits">13</div>
+        <div class="hud-channel-name" id="hud-channel-name">רשת 13 HD</div>
+        <div class="hud-hint">עובר ערוץ...</div>
+      </div>
     </div>
 
     <!-- BOTTOM REMOTE HELP FOOTER -->
@@ -116,8 +133,8 @@
       <div class="hint-item"><span class="key-pill ok-pill">OK</span> מסך מלא</div>
       <div class="hint-item"><span class="key-pill back-pill">BACK</span> חזרה אחורה</div>
       <div class="hint-item"><span class="key-pill">CH ▲ / ▼</span> החלפת ערוץ מהירה</div>
-      <div class="hint-item"><span class="key-pill yellow-pill">צהוב</span> משפר OLED</div>
-      <div class="hint-item"><span class="key-pill green-pill">ירוק</span> חידוד רטרו / יחס תמונה</div>
+      <div class="hint-item"><span class="key-pill yellow-pill">צהוב</span> מועדפים / OLED</div>
+      <div class="hint-item"><span class="key-pill green-pill">ירוק</span> חידוד רטרו / 4:3</div>
       <div class="hint-item"><span class="key-pill red-pill">אדום</span> כל הערוצים</div>
       <div class="hint-item"><span class="key-pill blue-pill">כחול</span> חיפוש</div>
     </footer>
@@ -125,7 +142,7 @@
     <!-- FULLSCREEN VIDEO PLAYER OVERLAY -->
     <div id="player-container" class="player-container hidden">
       <div class="video-wrapper" id="video-wrapper">
-        <video id="tv-video" class="oled-filter-vivid aspect-fit" playsinline webkit-playsinline preload="auto"></video>
+        <video id="tv-video" class="oled-filter-cinema aspect-fit" playsinline webkit-playsinline preload="auto"></video>
       </div>
 
       <!-- SPINNER / BUFFERING INDICATOR -->
@@ -140,7 +157,7 @@
           <div class="osd-channel-meta">
             <span class="osd-badge" id="osd-number">#1</span>
             <div class="osd-logo-wrap">
-              <img id="osd-logo" class="osd-logo" src="" alt="logo">
+              <img id="osd-logo" class="osd-logo" src="" alt="logo" onerror="this.style.display='none';">
             </div>
             <div class="osd-titles">
               <h2 id="osd-name">קשת 12 HD</h2>
@@ -161,11 +178,11 @@
         <div class="osd-bottom">
           <div class="osd-controls-hint">
             <span>[▲/▼ / CH+/-] החלף ערוץ</span>
-            <span>[צהוב] OLED: <strong id="osd-oled-status">צבעים עשירים</strong></span>
-            <span>[ירוק] חידוד ויחס תמונה: <strong id="osd-aspect-status">מילוי מסך</strong></span>
-            <span>[OK] הפעל / השהה</span>
-            <span>[חזור / BACK] חזרה לרשימת הערוצים</span>
-            <span>[◄ שמאלה] מגירת ערוצים</span>
+            <span>[צהוב] OLED: <strong id="osd-oled-status">שחור מושלם</strong></span>
+            <span>[ירוק] חידוד רטרו: <strong id="osd-aspect-status">מילוי מסך</strong></span>
+            <span>[OK] השהה / הפעל</span>
+            <span>[BACK] חזרה למדריך הערוצים</span>
+            <span>[◄ שמאלה] רשימת ערוצים</span>
           </div>
           <div class="osd-status" id="osd-quality">HLS Live 1080p</div>
         </div>
@@ -196,7 +213,7 @@
       </div>
     </div>
 
-    <!-- EXIT CONFIRMATION MODAL -->
+    <!-- EXIT CONFIRMATION MODAL (ONLY OPENED VIA EXPLICIT MENU OR INTENTIONAL DOUBLE BACK) -->
     <div id="exit-modal" class="exit-modal hidden">
       <div class="exit-dialog">
         <div class="exit-icon">📺</div>

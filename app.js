@@ -1,132 +1,208 @@
-// ISRAEL TV PLUS - OLED ULTRA & WEBOS ACCELERATED PLAYER
+/**
+ * ISRAEL TV PLUS - LG webOS Smart TV Application Engine
+ * Optimized for LG OLED, Magic Remote, and 60fps Hardware Acceleration
+ */
 
 (function () {
   'use strict';
 
-  // OLED PICTURE ENHANCER PROFILES
-  const OLED_MODES = [
-    { id: 'vivid', label: 'OLED: צבעים עשירים', filterClass: 'oled-filter-vivid', description: 'ניגודיות וצבעים חיים' },
-    { id: 'cinema', label: 'OLED: שחור קולנועי', filterClass: 'oled-filter-cinema', description: 'שחור מוחלט 0-Nit' },
-    { id: 'sports', label: 'OLED: ספורט חד', filterClass: 'oled-filter-sports', description: 'חדות גבוהה לתנועה' },
-    { id: 'natural', label: 'OLED: טבעי', filterClass: 'oled-filter-natural', description: 'שידור טבעי ללא שינוי' }
-  ];
-
-  // RETRO REMASTER & ASPECT PROFILES FOR OLD SERIES
-  const RETRO_MODES = [
-    { id: 'off', label: 'חידוד רטרו: כבוי', aspectClass: 'aspect-fit', sharpen: false, desc: 'שידור רגיל' },
-    { id: 'sharpen', label: 'חידוד רטרו: פעיל', aspectClass: 'aspect-fit', sharpen: true, desc: 'חידוד פנים וטקסטורות SD' },
-    { id: 'zoom', label: 'רטרו + מילוי מסך 16:9', aspectClass: 'aspect-zoom', sharpen: true, desc: 'חידוד + מילוי מסך ללא פסים' },
-    { id: 'pillarbox', label: 'רטרו + 4:3 קלאסי', aspectClass: 'aspect-43', sharpen: true, desc: 'יחס 4:3 מדויק לסדרות ישנות' },
-    { id: 'stretch', label: 'רטרו + מתיחה מלאה', aspectClass: 'aspect-stretch', sharpen: true, desc: 'מתיחה לכל רוחב המסך' }
-  ];
-
   // APPLICATION STATE
   const state = {
-    allChannels: window.CHANNELS_DATA || [],
+    allChannels: [],
     filteredChannels: [],
     categories: [],
     activeCategory: 'ALL',
     searchQuery: '',
-    
+    favorites: [],
+
     // Focus & Navigation
-    currentSection: 'grid', // 'sidebar' | 'grid' | 'search' | 'player' | 'drawer' | 'exit_modal'
-    focusedCategoryIdx: 0,
+    currentSection: 'grid', // 'grid' | 'sidebar' | 'search' | 'player' | 'drawer' | 'exit_modal'
     focusedGridIdx: 0,
+    focusedCategoryIdx: 0,
     focusedDrawerIdx: 0,
-    focusedExitBtn: 0, // 0 = cancel, 1 = confirm
-    
-    // OLED & Retro State
+    focusedExitBtn: 0, // 0 = Cancel, 1 = Exit
+
+    // Playback
+    playingChannelIndex: -1,
+    hlsInstance: null,
+    osdTimeout: null,
+    toastTimeout: null,
+    screensaverTimeout: null,
+    screensaverActive: false,
+    drawerOpen: false,
+    exitModalOpen: false,
+
+    // OLED & Retro Remaster Modes
     oledModeIdx: 0,
     retroModeIdx: 0,
-    screensaverActive: false,
-    screensaverTimeout: null,
-    
-    // Player State
-    currentChannelIdx: -1,
-    hls: null,
-    isPlaying: false,
-    osdTimeout: null,
-    drawerOpen: false,
-    exitModalOpen: false
+
+    // Direct Number Typing
+    typedDigits: '',
+    digitTimeout: null,
+    lastBackPressTime: 0
   };
 
-  // DOM ELEMENTS
-  const el = {
-    clock: document.getElementById('live-clock'),
-    osdClock: document.getElementById('osd-clock'),
-    screensaverClock: document.getElementById('screensaver-clock'),
-    search: document.getElementById('channel-search'),
-    categoryList: document.getElementById('category-list'),
-    channelsGrid: document.getElementById('channels-grid'),
-    categoryTitle: document.getElementById('current-category-title'),
-    categoryMeta: document.getElementById('category-meta-text'),
-    channelsCountBadge: document.getElementById('channels-count-badge'),
-    
-    // Hero Spotlight
-    heroSpotlight: document.getElementById('hero-spotlight'),
-    heroNumber: document.getElementById('hero-number'),
-    heroCategory: document.getElementById('hero-category'),
-    heroBadgeTag: document.getElementById('hero-badge-tag'),
-    heroTitle: document.getElementById('hero-title'),
-    heroDesc: document.getElementById('hero-desc'),
-    heroLogo: document.getElementById('hero-logo'),
-    
-    // Badges
-    btnOled: document.getElementById('btn-oled-mode'),
-    oledLabel: document.getElementById('oled-mode-label'),
-    osdOledStatus: document.getElementById('osd-oled-status'),
-    btnRetro: document.getElementById('btn-retro-mode'),
-    retroLabel: document.getElementById('retro-mode-label'),
-    osdRetroStatus: document.getElementById('osd-retro-status'),
-    osdAspectStatus: document.getElementById('osd-aspect-status'),
-    osdAspectTag: document.getElementById('osd-aspect-tag'),
-    screensaver: document.getElementById('oled-screensaver'),
-    
-    // Player
-    playerContainer: document.getElementById('player-container'),
-    video: document.getElementById('tv-video'),
-    spinner: document.getElementById('player-spinner'),
-    spinnerText: document.getElementById('spinner-text'),
-    osd: document.getElementById('player-osd'),
-    osdNumber: document.getElementById('osd-number'),
-    osdLogo: document.getElementById('osd-logo'),
-    osdName: document.getElementById('osd-name'),
-    osdCategory: document.getElementById('osd-category'),
-    osdQuality: document.getElementById('osd-quality'),
-    quickDrawer: document.getElementById('quick-drawer'),
-    drawerList: document.getElementById('drawer-channel-list'),
-    toast: document.getElementById('player-toast'),
-    toastMessage: document.getElementById('toast-message'),
+  // OLED PRESETS
+  const OLED_MODES = [
+    { id: 'cinema', label: 'קולנוע שחור מושלם', filterClass: 'oled-filter-cinema', desc: 'True Black 0.0 nits' },
+    { id: 'vivid', label: 'צבעים עשירים Vivid', filterClass: 'oled-filter-vivid', desc: 'צבעוניות חיה מוגברת' },
+    { id: 'sports', label: 'ספורט Boost', filterClass: 'oled-filter-sports', desc: 'תנועה מהירה וחדות' },
+    { id: 'natural', label: 'טבעי ומאוזן', filterClass: 'oled-filter-natural', desc: 'צבעי מקור נאמנים' }
+  ];
 
-    // Exit Modal
-    exitModal: document.getElementById('exit-modal'),
-    btnCancelExit: document.getElementById('btn-cancel-exit'),
-    btnConfirmExit: document.getElementById('btn-confirm-exit')
-  };
+  // RETRO REMASTER (SD / VINTAGE 4:3 UPSCALE) PRESETS
+  const RETRO_MODES = [
+    { id: 'off', label: 'כבוי (רגיל)', sharpen: false, aspectClass: 'aspect-fit', desc: 'ללא שינוי' },
+    { id: 'pillarbox', label: 'חידוד רטרו: 4:3 מקורי', sharpen: true, aspectClass: 'aspect-pillarbox', desc: 'פילטר חידוד + יחס 4:3 ללא עיוות' },
+    { id: 'zoom', label: 'חידוד רטרו: 16:9 מילוי', sharpen: true, aspectClass: 'aspect-zoom', desc: 'פילטר חידוד + חיתוך חכם 16:9' },
+    { id: 'stretch', label: 'חידוד רטרו: מתיחה', sharpen: true, aspectClass: 'aspect-stretch', desc: 'פילטר חידוד + מתיחה מלאה' }
+  ];
+
+  // DOM ELEMENTS CACHE
+  let el = {};
 
   // INITIALIZATION
-  function init() {
+  window.addEventListener('DOMContentLoaded', initApp);
+
+  function initApp() {
+    cacheDomElements();
+    loadFavorites();
+    loadChannels();
     setupClock();
     setupOledMode();
     setupRetroMode();
-    extractCategories();
-    renderCategories();
-    applyFilter();
     setupKeyListeners();
     setupMouseListeners();
     resetScreensaverTimer();
-    
-    // Default focus
+
+    // Initial Focus on the first channel card
     setFocus('grid', 0);
+  }
+
+  function cacheDomElements() {
+    el = {
+      app: document.getElementById('app'),
+      search: document.getElementById('channel-search'),
+      channelsGrid: document.getElementById('channels-grid'),
+      categoryList: document.getElementById('category-list'),
+      channelsCountBadge: document.getElementById('channels-count-badge'),
+      currentCategoryTitle: document.getElementById('current-category-title'),
+      categoryMetaText: document.getElementById('category-meta-text'),
+      liveClock: document.getElementById('live-clock'),
+
+      // Hero Spotlight
+      heroSpotlight: document.getElementById('hero-spotlight'),
+      heroNumber: document.getElementById('hero-number'),
+      heroCategory: document.getElementById('hero-category'),
+      heroBadgeTag: document.getElementById('hero-badge-tag'),
+      heroFavTag: document.getElementById('hero-fav-tag'),
+      heroTitle: document.getElementById('hero-title'),
+      heroDesc: document.getElementById('hero-desc'),
+      heroLogo: document.getElementById('hero-logo'),
+
+      // Quick Badges
+      btnOled: document.getElementById('btn-oled-mode'),
+      btnRetro: document.getElementById('btn-retro-mode'),
+      oledLabel: document.getElementById('oled-mode-label'),
+      retroLabel: document.getElementById('retro-mode-label'),
+
+      // Direct Number HUD
+      channelNumberHud: document.getElementById('channel-number-hud'),
+      hudDigits: document.getElementById('hud-digits'),
+      hudChannelName: document.getElementById('hud-channel-name'),
+
+      // Player Container
+      playerContainer: document.getElementById('player-container'),
+      video: document.getElementById('tv-video'),
+      spinner: document.getElementById('player-spinner'),
+      spinnerText: document.getElementById('spinner-text'),
+      osd: document.getElementById('player-osd'),
+      osdNumber: document.getElementById('osd-number'),
+      osdLogo: document.getElementById('osd-logo'),
+      osdName: document.getElementById('osd-name'),
+      osdCategory: document.getElementById('osd-category'),
+      osdRetroStatus: document.getElementById('osd-retro-status'),
+      osdAspectTag: document.getElementById('osd-aspect-tag'),
+      osdClock: document.getElementById('osd-clock'),
+      osdOledStatus: document.getElementById('osd-oled-status'),
+      osdAspectStatus: document.getElementById('osd-aspect-status'),
+      osdQuality: document.getElementById('osd-quality'),
+
+      // Drawer
+      quickDrawer: document.getElementById('quick-drawer'),
+      drawerChannelList: document.getElementById('drawer-channel-list'),
+
+      // Toast
+      toast: document.getElementById('player-toast'),
+      toastMessage: document.getElementById('toast-message'),
+
+      // Screensaver
+      screensaver: document.getElementById('oled-screensaver'),
+      screensaverClock: document.getElementById('screensaver-clock'),
+
+      // Exit Modal
+      exitModal: document.getElementById('exit-modal'),
+      btnCancelExit: document.getElementById('btn-cancel-exit'),
+      btnConfirmExit: document.getElementById('btn-confirm-exit')
+    };
+  }
+
+  // FAVORITES
+  function loadFavorites() {
+    try {
+      const saved = localStorage.getItem('israel_tv_favorites');
+      state.favorites = saved ? JSON.parse(saved) : [];
+    } catch (e) {
+      state.favorites = [];
+    }
+  }
+
+  function saveFavorites() {
+    try {
+      localStorage.setItem('israel_tv_favorites', JSON.stringify(state.favorites));
+    } catch (e) {}
+  }
+
+  function toggleFavorite(channelId) {
+    const idx = state.favorites.indexOf(channelId);
+    let isFav = false;
+    if (idx !== -1) {
+      state.favorites.splice(idx, 1);
+      showToast('הוסר ממועדפים');
+    } else {
+      state.favorites.push(channelId);
+      isFav = true;
+      showToast('נוסף למועדפים ⭐');
+    }
+    saveFavorites();
+
+    // Update categories count & re-render if on favorites
+    buildCategories();
+    if (state.activeCategory === 'FAVORITES') {
+      applyFilter();
+    } else {
+      updateCardFavoriteIcon(channelId, isFav);
+      updateHeroSpotlight(state.filteredChannels[state.focusedGridIdx]);
+    }
+  }
+
+  function updateCardFavoriteIcon(channelId, isFav) {
+    const cards = el.channelsGrid.querySelectorAll('.channel-card');
+    cards.forEach(card => {
+      if (card.dataset.id === channelId) {
+        const star = card.querySelector('.card-fav-star');
+        if (star) star.style.display = isFav ? 'inline-block' : 'none';
+      }
+    });
   }
 
   // CLOCK
   function setupClock() {
     function update() {
       const now = new Date();
-      const timeStr = now.toLocaleTimeString('he-IL', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
-      const shortStr = now.toLocaleTimeString('he-IL', { hour: '2-digit', minute: '2-digit', hour12: false });
-      if (el.clock) el.clock.textContent = timeStr;
+      const timeStr = now.toLocaleTimeString('he-IL', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+      const shortStr = now.toLocaleTimeString('he-IL', { hour: '2-digit', minute: '2-digit' });
+      if (el.liveClock) el.liveClock.textContent = timeStr;
       if (el.osdClock) el.osdClock.textContent = shortStr;
       if (el.screensaverClock) el.screensaverClock.textContent = shortStr;
     }
@@ -134,7 +210,7 @@
     setInterval(update, 1000);
   }
 
-  // OLED ENHANCER LOGIC
+  // OLED MODES
   function setupOledMode() {
     try {
       const saved = localStorage.getItem('israel_tv_oled_mode');
@@ -158,13 +234,13 @@
     try {
       localStorage.setItem('israel_tv_oled_mode', current.id);
     } catch (e) {}
-    showToast(`✨ משפר תמונה OLED: ${current.label} (${current.description})`);
+    showToast(`✨ מצב OLED: ${current.label} (${current.desc})`);
   }
 
   function applyOledMode() {
     const current = OLED_MODES[state.oledModeIdx];
-    if (el.oledLabel) el.oledLabel.textContent = current.label;
-    if (el.osdOledStatus) el.osdOledStatus.textContent = current.label.replace('OLED: ', '');
+    if (el.oledLabel) el.oledLabel.textContent = `OLED: ${current.label}`;
+    if (el.osdOledStatus) el.osdOledStatus.textContent = current.label;
 
     if (el.video) {
       OLED_MODES.forEach(m => el.video.classList.remove(m.filterClass));
@@ -172,7 +248,7 @@
     }
   }
 
-  // RETRO REMASTER LOGIC (SD / OLD SERIES UPSCALE)
+  // RETRO REMASTER (SD UPSCALE & ASPECT RATIO)
   function setupRetroMode() {
     try {
       const saved = localStorage.getItem('israel_tv_retro_mode');
@@ -205,11 +281,9 @@
     if (el.osdAspectStatus) el.osdAspectStatus.textContent = current.label.replace('חידוד רטרו: ', '');
 
     if (el.video) {
-      // Remove all aspect classes
       RETRO_MODES.forEach(m => el.video.classList.remove(m.aspectClass));
       el.video.classList.add(current.aspectClass);
 
-      // Apply SVG sharpen filter
       if (current.sharpen) {
         el.video.classList.add('retro-sharpen-active');
         if (el.osdRetroStatus) el.osdRetroStatus.classList.remove('hidden');
@@ -224,18 +298,16 @@
     }
   }
 
-  // OLED BURN-IN PROTECTION & IDLE SCREENSAVER
+  // SCREENSAVER
   function resetScreensaverTimer() {
-    if (state.screensaverActive) {
-      wakeScreensaver();
-    }
+    if (state.screensaverActive) wakeScreensaver();
     if (state.screensaverTimeout) clearTimeout(state.screensaverTimeout);
 
     state.screensaverTimeout = setTimeout(() => {
-      if (state.currentSection !== 'player' || el.video.paused) {
+      if (state.currentSection !== 'player' || (el.video && el.video.paused)) {
         startScreensaver();
       }
-    }, 90000);
+    }, 120000); // 2 minutes idle
   }
 
   function startScreensaver() {
@@ -249,57 +321,61 @@
     resetScreensaverTimer();
   }
 
-  // CATEGORIES
-  function extractCategories() {
-    const counts = {};
-    state.allChannels.forEach(c => {
-      const cat = c.category || 'כללי';
-      counts[cat] = (counts[cat] || 0) + 1;
-    });
+  // CHANNELS LOADING & CATEGORIES
+  function loadChannels() {
+    const raw = window.CHANNELS_DATA || [];
+    state.allChannels = raw.map((c, i) => ({
+      ...c,
+      number: c.number || (i + 1),
+      category: c.category || 'כללי',
+      desc: c.desc || 'שידור חי באיכות HD'
+    }));
 
-    state.categories = [
-      { id: 'ALL', name: 'כל הערוצים', icon: '🌟', count: state.allChannels.length }
-    ];
-
-    const priority = [
-      { id: 'ערוצי ישראל - שידור חי', icon: '📺' },
-      { id: 'ילדים ונוער (Kids)', icon: '👶' },
-      { id: 'סרטים וסדרות (Movies & Series)', icon: '🎬' },
-      { id: 'ספורט (Sports)', icon: '⚽' },
-      { id: 'טבע ודוקו (Documentary & Nature)', icon: '🌿' },
-      { id: 'חדשות עולמיות (World News)', icon: '🌍' },
-      { id: 'קולנוע עולמי (World Movies)', icon: '🍿' },
-      { id: 'מוזיקה בינלאומית (Music)', icon: '🎵' },
-      { id: 'רדיו ישראלי', icon: '📻' },
-      { id: 'מסורת וקהילה', icon: '🕊️' }
-    ];
-
-    priority.forEach(p => {
-      if (counts[p.id]) {
-        state.categories.push({ id: p.id, name: p.id, icon: p.icon, count: counts[p.id] });
-        delete counts[p.id];
-      }
-    });
-
-    Object.keys(counts).forEach(k => {
-      state.categories.push({ id: k, name: k, icon: '📺', count: counts[k] });
-    });
+    buildCategories();
+    applyFilter();
   }
 
-  function renderCategories() {
+  function buildCategories() {
+    const catMap = {};
+    state.allChannels.forEach(c => {
+      const cat = c.category;
+      catMap[cat] = (catMap[cat] || 0) + 1;
+    });
+
+    const list = [
+      { id: 'ALL', name: 'כל הערוצים 📺', count: state.allChannels.length }
+    ];
+
+    if (state.favorites.length > 0) {
+      list.push({ id: 'FAVORITES', name: 'מועדפים ⭐', count: state.favorites.length });
+    }
+
+    Object.keys(catMap).forEach(cat => {
+      list.push({ id: cat, name: cat, count: catMap[cat] });
+    });
+
+    state.categories = list;
+    renderSidebar();
+  }
+
+  function renderSidebar() {
     el.categoryList.innerHTML = '';
     state.categories.forEach((cat, idx) => {
       const item = document.createElement('div');
-      item.className = 'category-item' + (cat.id === state.activeCategory ? ' active' : '');
+      item.className = `category-item ${cat.id === state.activeCategory ? 'active' : ''}`;
       item.dataset.index = idx;
       item.dataset.id = cat.id;
+
       item.innerHTML = `
-        <span>${cat.icon || ''} ${cat.name}</span>
+        <span>${cat.name}</span>
         <span class="category-count">${cat.count}</span>
       `;
+
       item.addEventListener('click', () => {
         selectCategory(cat.id, idx);
+        setFocus('grid', 0);
       });
+
       el.categoryList.appendChild(item);
     });
   }
@@ -307,262 +383,573 @@
   function selectCategory(catId, idx) {
     state.activeCategory = catId;
     state.focusedCategoryIdx = idx;
-    renderCategories();
+    renderSidebar();
     applyFilter();
-    setFocus('grid', 0);
   }
 
-  // FILTERING
   function applyFilter() {
-    let list = state.allChannels;
+    const q = state.searchQuery.trim().toLowerCase();
+    let result = state.allChannels;
 
-    if (state.activeCategory !== 'ALL') {
-      list = list.filter(c => c.category === state.activeCategory);
+    if (state.activeCategory === 'FAVORITES') {
+      result = result.filter(c => state.favorites.includes(c.id));
+    } else if (state.activeCategory !== 'ALL') {
+      result = result.filter(c => c.category === state.activeCategory);
     }
 
-    if (state.searchQuery.trim()) {
-      const q = state.searchQuery.trim().toLowerCase();
-      list = list.filter(c => {
-        const name = (c.name || '').toLowerCase();
-        const title = (c.title || '').toLowerCase();
-        const num = String(c.number || '');
-        return name.includes(q) || title.includes(q) || num === q;
-      });
+    if (q) {
+      result = result.filter(c =>
+        c.name.toLowerCase().includes(q) ||
+        (c.title && c.title.toLowerCase().includes(q)) ||
+        (c.number && c.number.toString() === q)
+      );
     }
 
-    state.filteredChannels = list;
+    state.filteredChannels = result;
 
-    const activeCatObj = state.categories.find(c => c.id === state.activeCategory);
-    el.categoryTitle.textContent = activeCatObj ? activeCatObj.name : 'ערוצים';
-    el.categoryMeta.textContent = `מציג ${state.filteredChannels.length} מתוך ${state.allChannels.length} ערוצים`;
-    el.channelsCountBadge.textContent = `${state.allChannels.length} ערוצים`;
+    const currentCatObj = state.categories.find(c => c.id === state.activeCategory);
+    const catName = currentCatObj ? currentCatObj.name : 'ערוצים';
+    el.currentCategoryTitle.textContent = catName;
+    el.categoryMetaText.textContent = `מציג ${result.length} ערוצים`;
+    if (el.channelsCountBadge) el.channelsCountBadge.textContent = `${state.allChannels.length} ערוצים`;
 
     renderGrid();
+    renderDrawerList();
+
+    if (state.filteredChannels.length > 0) {
+      state.focusedGridIdx = Math.min(state.focusedGridIdx, state.filteredChannels.length - 1);
+      updateHeroSpotlight(state.filteredChannels[state.focusedGridIdx]);
+    }
   }
 
-  // GRID RENDERING - ULTRA FAST WITH HARDWARE ACCELERATION
+  // RENDER CHANNELS GRID
   function renderGrid() {
     el.channelsGrid.innerHTML = '';
 
     if (state.filteredChannels.length === 0) {
       el.channelsGrid.innerHTML = `
-        <div style="grid-column: 1 / -1; text-align: center; padding: 60px; color: var(--text-muted); font-size: 20px;">
-          לא נמצאו ערוצים מתאימים לחיפוש
+        <div style="grid-column: 1 / -1; text-align: center; padding: 60px 0; color: #64748b; font-size: 18px;">
+          לא נמצאו ערוצים מתאימים לקטגוריה או לחיפוש הנוכחי
         </div>
       `;
       return;
     }
 
-    const fragment = document.createDocumentFragment();
-
     state.filteredChannels.forEach((ch, idx) => {
       const card = document.createElement('div');
-      card.className = 'channel-card';
-      card.dataset.index = idx;
+      const isPlaying = state.playingChannelIndex !== -1 && state.filteredChannels[state.playingChannelIndex]?.id === ch.id;
+      const isFav = state.favorites.includes(ch.id);
 
-      const logoHtml = ch.logo
-        ? `<img class="channel-logo-img" src="${ch.logo}" alt="${ch.name}" loading="lazy" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\\'channel-logo-fallback\\'>${ch.number || '#'}</div>';">`
-        : `<div class="channel-logo-fallback">${ch.number || '#'}</div>`;
+      card.className = `channel-card ${isPlaying ? 'is-playing' : ''}`;
+      card.dataset.index = idx;
+      card.dataset.id = ch.id;
 
       card.innerHTML = `
         <div class="card-top">
-          <span class="channel-num-badge">#${ch.number || (idx + 1)}</span>
-          <span class="channel-cat-pill">${ch.category || ''}</span>
+          <span class="channel-num-badge">#${ch.number}</span>
+          <div class="card-top-right">
+            <span class="card-playing-indicator"><span class="pulse-dot"></span>משדר</span>
+            <span class="card-fav-star" style="display: ${isFav ? 'inline-block' : 'none'};">⭐</span>
+          </div>
         </div>
         <div class="channel-logo-wrap">
-          ${logoHtml}
+          <img class="channel-logo-img" src="${ch.logo}" alt="${ch.name}" loading="lazy"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="channel-logo-fallback" style="display: none;">
+            <span class="fallback-num">#${ch.number}</span>
+            <span class="fallback-name">${ch.name}</span>
+          </div>
         </div>
         <div class="channel-card-footer">
-          <div class="channel-card-title">${ch.name || ch.title}</div>
+          <div class="channel-card-title">${ch.name}</div>
         </div>
       `;
 
       card.addEventListener('click', () => {
+        setFocus('grid', idx);
         playChannel(idx);
       });
 
       card.addEventListener('mouseenter', () => {
-        updateHeroSpotlight(ch);
+        setFocus('grid', idx);
       });
 
-      fragment.appendChild(card);
+      el.channelsGrid.appendChild(card);
     });
 
-    el.channelsGrid.appendChild(fragment);
-    updateFocusVisuals();
-
-    // Initialize Hero with first item
-    if (state.filteredChannels.length > 0) {
-      updateHeroSpotlight(state.filteredChannels[0]);
-    }
+    highlightFocusedItem();
   }
 
   // HERO SPOTLIGHT
   function updateHeroSpotlight(ch) {
     if (!ch) return;
-    if (el.heroNumber) el.heroNumber.textContent = `#${ch.number || ''}`;
-    if (el.heroCategory) el.heroCategory.textContent = ch.category || '';
-    if (el.heroBadgeTag) el.heroBadgeTag.textContent = ch.badge ? `${ch.badge} 1080p` : 'HD Live';
-    if (el.heroTitle) el.heroTitle.textContent = ch.name || ch.title;
-    if (el.heroDesc) el.heroDesc.textContent = ch.desc || 'שידור חי באיכות גבוהה';
+
+    el.heroNumber.textContent = `#${ch.number}`;
+    el.heroCategory.textContent = ch.category;
+    el.heroBadgeTag.textContent = ch.badge || 'FHD 1080p';
+    el.heroTitle.textContent = ch.name;
+    el.heroDesc.textContent = ch.desc || 'שידור חי רציף ואיכותי';
+
+    const isFav = state.favorites.includes(ch.id);
+    if (el.heroFavTag) {
+      if (isFav) el.heroFavTag.classList.remove('hidden');
+      else el.heroFavTag.classList.add('hidden');
+    }
+
     if (el.heroLogo) {
-      if (ch.logo) {
-        el.heroLogo.src = ch.logo;
-        el.heroLogo.style.display = 'block';
-      } else {
-        el.heroLogo.style.display = 'none';
-      }
+      el.heroLogo.style.display = 'block';
+      el.heroLogo.src = ch.logo;
     }
   }
 
-  // FOCUS MANAGEMENT
-  function setFocus(section, idx) {
+  // FOCUS SYSTEM
+  function setFocus(section, index) {
     state.currentSection = section;
 
-    document.querySelectorAll('.focused').forEach(e => e.classList.remove('focused'));
-
-    if (section === 'sidebar') {
-      const items = el.categoryList.children;
-      if (items.length > 0) {
-        state.focusedCategoryIdx = Math.max(0, Math.min(idx, items.length - 1));
-        const target = items[state.focusedCategoryIdx];
-        target.classList.add('focused');
-        target.scrollIntoView({ block: 'nearest' });
-      }
-    } else if (section === 'grid') {
-      const cards = el.channelsGrid.querySelectorAll('.channel-card');
-      if (cards.length > 0) {
-        state.focusedGridIdx = Math.max(0, Math.min(idx, cards.length - 1));
-        const target = cards[state.focusedGridIdx];
-        target.classList.add('focused');
-        target.scrollIntoView({ block: 'nearest' });
-        updateHeroSpotlight(state.filteredChannels[state.focusedGridIdx]);
-      }
-    } else if (section === 'search') {
-      el.search.parentElement.classList.add('focused');
-      el.search.focus();
+    if (section === 'grid') {
+      state.focusedGridIdx = Math.max(0, Math.min(index, state.filteredChannels.length - 1));
+      const ch = state.filteredChannels[state.focusedGridIdx];
+      updateHeroSpotlight(ch);
+    } else if (section === 'sidebar') {
+      state.focusedCategoryIdx = Math.max(0, Math.min(index, state.categories.length - 1));
     } else if (section === 'drawer') {
-      const items = el.drawerList.children;
-      if (items.length > 0) {
-        state.focusedDrawerIdx = Math.max(0, Math.min(idx, items.length - 1));
-        const target = items[state.focusedDrawerIdx];
-        target.classList.add('focused');
-        target.scrollIntoView({ block: 'nearest' });
-      }
+      state.focusedDrawerIdx = Math.max(0, Math.min(index, state.filteredChannels.length - 1));
     } else if (section === 'exit_modal') {
-      state.focusedExitBtn = idx;
-      if (idx === 0) el.btnCancelExit.classList.add('focused');
+      state.focusedExitBtn = index;
+    }
+
+    highlightFocusedItem();
+  }
+
+  function highlightFocusedItem() {
+    // Clear all existing focus classes
+    document.querySelectorAll('.focused').forEach(elem => elem.classList.remove('focused'));
+
+    if (state.currentSection === 'grid') {
+      const cards = el.channelsGrid.querySelectorAll('.channel-card');
+      const target = cards[state.focusedGridIdx];
+      if (target) {
+        target.classList.add('focused');
+        target.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    } else if (state.currentSection === 'sidebar') {
+      const items = el.categoryList.querySelectorAll('.category-item');
+      const target = items[state.focusedCategoryIdx];
+      if (target) {
+        target.classList.add('focused');
+        target.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    } else if (state.currentSection === 'search') {
+      el.search.classList.add('focused');
+      el.search.focus();
+    } else if (state.currentSection === 'drawer') {
+      const items = el.drawerChannelList.querySelectorAll('.drawer-item');
+      const target = items[state.focusedDrawerIdx];
+      if (target) {
+        target.classList.add('focused');
+        target.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    } else if (state.currentSection === 'exit_modal') {
+      if (state.focusedExitBtn === 0) el.btnCancelExit.classList.add('focused');
       else el.btnConfirmExit.classList.add('focused');
     }
   }
 
-  function updateFocusVisuals() {
-    setFocus(state.currentSection, state.currentSection === 'grid' ? state.focusedGridIdx : state.focusedCategoryIdx);
-  }
+  // PLAYBACK SYSTEM
+  function playChannel(index) {
+    if (index < 0 || index >= state.filteredChannels.length) return;
 
-  // KEYBOARD & REMOTE NAVIGATION
-  function setupKeyListeners() {
-    window.addEventListener('keydown', handleKey);
-    
-    el.search.addEventListener('keydown', (e) => {
-      resetScreensaverTimer();
-      if (e.keyCode === 13) {
-        state.searchQuery = el.search.value;
-        applyFilter();
-        setFocus('grid', 0);
-      } else if (e.keyCode === 40 || e.keyCode === 38) {
-        setFocus('grid', 0);
-      } else if (e.keyCode === 27 || e.keyCode === 461) {
-        e.preventDefault();
-        el.search.value = '';
-        state.searchQuery = '';
-        applyFilter();
-        setFocus('grid', 0);
-      }
+    state.playingChannelIndex = index;
+    const channel = state.filteredChannels[index];
+
+    // Mark active card
+    const cards = el.channelsGrid.querySelectorAll('.channel-card');
+    cards.forEach((c, idx) => {
+      c.classList.toggle('is-playing', idx === index);
     });
 
-    el.search.addEventListener('input', () => {
-      resetScreensaverTimer();
-      state.searchQuery = el.search.value;
+    enterFullscreenPlayer();
+    updateOSD(channel);
+    showOSD();
+    showSpinner('מתחבר לשידור חי...');
+
+    loadVideoStream(channel.url);
+  }
+
+  function loadVideoStream(url) {
+    if (state.hlsInstance) {
+      state.hlsInstance.destroy();
+      state.hlsInstance = null;
+    }
+
+    if (window.Hls && Hls.isSupported()) {
+      const hls = new Hls({
+        enableWorker: true,
+        lowLatencyMode: true,
+        backBufferLength: 60
+      });
+
+      hls.loadSource(url);
+      hls.attachMedia(el.video);
+
+      hls.on(Hls.Events.MANIFEST_PARSED, () => {
+        hideSpinner();
+        el.video.play().catch(() => {});
+      });
+
+      hls.on(Hls.Events.ERROR, (event, data) => {
+        if (data.fatal) {
+          switch (data.type) {
+            case Hls.ErrorTypes.NETWORK_ERROR:
+              showToast('שגיאת רשת בשידור, מנסה להתחבר מחדש...');
+              hls.startLoad();
+              break;
+            case Hls.ErrorTypes.MEDIA_ERROR:
+              showToast('מתקן שגיאת וידאו...');
+              hls.recoverMediaError();
+              break;
+            default:
+              showToast('לא ניתן לטעון שידור זה כעת');
+              hideSpinner();
+              break;
+          }
+        }
+      });
+
+      state.hlsInstance = hls;
+    } else if (el.video.canPlayType('application/vnd.apple.mpegurl')) {
+      // Native webOS / Safari HLS
+      el.video.src = url;
+      el.video.addEventListener('loadedmetadata', () => {
+        hideSpinner();
+        el.video.play().catch(() => {});
+      }, { once: true });
+    } else {
+      el.video.src = url;
+      el.video.play().catch(() => {});
+    }
+  }
+
+  function enterFullscreenPlayer() {
+    state.currentSection = 'player';
+    el.playerContainer.classList.remove('hidden');
+    showOSD();
+  }
+
+  function exitFullscreenToGrid() {
+    // Exit fullscreen, but KEEP video playing smoothly in background/hero!
+    el.playerContainer.classList.add('hidden');
+    closeQuickDrawer();
+    state.currentSection = 'grid';
+    setFocus('grid', state.focusedGridIdx);
+    showToast('חזרת למדריך הערוצים (השידור ממשיך ברקע)');
+  }
+
+  function stopPlayback() {
+    if (state.hlsInstance) {
+      state.hlsInstance.destroy();
+      state.hlsInstance = null;
+    }
+    el.video.pause();
+    el.video.src = '';
+    state.playingChannelIndex = -1;
+    exitFullscreenToGrid();
+  }
+
+  function zapChannel(direction) {
+    if (state.filteredChannels.length === 0) return;
+    let next = state.playingChannelIndex + direction;
+    if (next < 0) next = state.filteredChannels.length - 1;
+    if (next >= state.filteredChannels.length) next = 0;
+
+    playChannel(next);
+  }
+
+  // OSD & TOAST
+  function updateOSD(channel) {
+    el.osdNumber.textContent = `#${channel.number}`;
+    el.osdName.textContent = channel.name;
+    el.osdCategory.textContent = channel.category;
+
+    if (el.osdLogo) {
+      el.osdLogo.style.display = 'block';
+      el.osdLogo.src = channel.logo;
+    }
+  }
+
+  function showOSD() {
+    el.osd.classList.remove('hidden');
+    if (state.osdTimeout) clearTimeout(state.osdTimeout);
+    state.osdTimeout = setTimeout(() => {
+      el.osd.classList.add('hidden');
+    }, 4500);
+  }
+
+  function showToast(msg) {
+    el.toastMessage.textContent = msg;
+    el.toast.classList.remove('hidden');
+    if (state.toastTimeout) clearTimeout(state.toastTimeout);
+    state.toastTimeout = setTimeout(() => {
+      el.toast.classList.add('hidden');
+    }, 3000);
+  }
+
+  function showSpinner(text) {
+    el.spinnerText.textContent = text || 'טוען...';
+    el.spinner.classList.remove('hidden');
+  }
+
+  function hideSpinner() {
+    el.spinner.classList.add('hidden');
+  }
+
+  // QUICK DRAWER IN PLAYER
+  function renderDrawerList() {
+    el.drawerChannelList.innerHTML = '';
+    state.filteredChannels.forEach((ch, idx) => {
+      const item = document.createElement('div');
+      item.className = 'drawer-item';
+      item.dataset.index = idx;
+      item.innerHTML = `
+        <span class="drawer-num">#${ch.number}</span>
+        <span class="drawer-name">${ch.name}</span>
+      `;
+      item.addEventListener('click', () => {
+        closeQuickDrawer();
+        playChannel(idx);
+      });
+      el.drawerChannelList.appendChild(item);
+    });
+  }
+
+  function openQuickDrawer() {
+    state.drawerOpen = true;
+    el.quickDrawer.classList.remove('hidden');
+    setFocus('drawer', state.playingChannelIndex !== -1 ? state.playingChannelIndex : 0);
+  }
+
+  function closeQuickDrawer() {
+    state.drawerOpen = false;
+    el.quickDrawer.classList.add('hidden');
+    if (state.currentSection === 'drawer') {
+      state.currentSection = 'player';
+    }
+  }
+
+  // DIRECT CHANNEL NUMBER TYPING
+  function handleDigitInput(digit) {
+    state.typedDigits += digit;
+
+    const num = parseInt(state.typedDigits, 10);
+    const target = state.allChannels.find(c => c.number === num);
+
+    el.channelNumberHud.classList.remove('hidden');
+    el.hudDigits.textContent = state.typedDigits;
+    el.hudChannelName.textContent = target ? target.name : 'מחפש ערוץ...';
+
+    if (state.digitTimeout) clearTimeout(state.digitTimeout);
+    state.digitTimeout = setTimeout(() => {
+      el.channelNumberHud.classList.add('hidden');
+      const finalNum = parseInt(state.typedDigits, 10);
+      state.typedDigits = '';
+
+      if (target) {
+        const gridIdx = state.filteredChannels.findIndex(c => c.id === target.id);
+        if (gridIdx !== -1) {
+          setFocus('grid', gridIdx);
+          playChannel(gridIdx);
+        } else {
+          // Switch to ALL channels and play
+          selectCategory('ALL', 0);
+          const newIdx = state.filteredChannels.findIndex(c => c.id === target.id);
+          if (newIdx !== -1) {
+            setFocus('grid', newIdx);
+            playChannel(newIdx);
+          }
+        }
+      } else {
+        showToast(`ערוץ מספר ${finalNum} לא קיים`);
+      }
+    }, 1200);
+  }
+
+  // SMART BACK BUTTON LOGIC: NEVER ACCIDENTALLY EXITS!
+  function handleBackKey() {
+    // 1. If Quick Drawer is open inside player -> close it
+    if (state.drawerOpen) {
+      closeQuickDrawer();
+      return;
+    }
+
+    // 2. If Exit Modal is open -> close it
+    if (state.exitModalOpen) {
+      closeExitModal();
+      return;
+    }
+
+    // 3. If in Fullscreen Player -> return to Grid (Keep video playing smoothly!)
+    if (state.currentSection === 'player') {
+      exitFullscreenToGrid();
+      return;
+    }
+
+    // 4. If Search box is focused or has query -> clear it and return to grid
+    if (state.currentSection === 'search' || state.searchQuery.trim().length > 0) {
+      el.search.value = '';
+      state.searchQuery = '';
+      applyFilter();
+      setFocus('grid', 0);
+      showToast('חזרת לכל הערוצים');
+      return;
+    }
+
+    // 5. If focused in sidebar -> return to grid
+    if (state.currentSection === 'sidebar') {
+      setFocus('grid', state.focusedGridIdx || 0);
+      return;
+    }
+
+    // 6. If on a filtered category (e.g. "ילדים" or "מועדפים") -> return to "כל הערוצים"
+    if (state.activeCategory !== 'ALL') {
+      selectCategory('ALL', 0);
+      showToast('חזרת לכל הערוצים');
+      return;
+    }
+
+    // 7. If video is currently playing in background, return to Fullscreen!
+    if (state.playingChannelIndex !== -1 && el.video && !el.video.paused) {
+      enterFullscreenPlayer();
+      return;
+    }
+
+    // 8. If already at the root of the Guide:
+    // DO NOT show an annoying exit modal!
+    // Require double-click within 2.5 seconds to exit gracefully.
+    const now = Date.now();
+    if (now - state.lastBackPressTime < 2500) {
+      performActualExit();
+    } else {
+      state.lastBackPressTime = now;
+      showToast('לחץ שוב לחזרה / יציאה מהאפליקציה');
+    }
+  }
+
+  function openExitModal() {
+    state.exitModalOpen = true;
+    el.exitModal.classList.remove('hidden');
+    setFocus('exit_modal', 0);
+  }
+
+  function closeExitModal() {
+    state.exitModalOpen = false;
+    el.exitModal.classList.add('hidden');
+    setFocus('grid', state.focusedGridIdx);
+  }
+
+  function performActualExit() {
+    showToast('להתראות!');
+    try {
+      if (window.webOS && window.webOS.platformBack) {
+        window.webOS.platformBack();
+      } else {
+        window.close();
+      }
+    } catch (e) {
+      window.close();
+    }
+  }
+
+  // REMOTE CONTROL KEYBOARD DISPATCHER
+  function setupKeyListeners() {
+    window.addEventListener('keydown', handleKeyDown);
+
+    el.search.addEventListener('input', (e) => {
+      state.searchQuery = e.target.value;
       applyFilter();
     });
 
-    // Exit Modal Buttons
-    if (el.btnCancelExit) {
-      el.btnCancelExit.addEventListener('click', closeExitModal);
+    el.btnCancelExit.addEventListener('click', closeExitModal);
+    el.btnConfirmExit.addEventListener('click', performActualExit);
+  }
+
+  function handleKeyDown(e) {
+    resetScreensaverTimer();
+
+    const code = e.keyCode || e.which;
+
+    // Number keys (0-9)
+    if (code >= 48 && code <= 57) {
+      handleDigitInput(String(code - 48));
+      return;
     }
-    if (el.btnConfirmExit) {
-      el.btnConfirmExit.addEventListener('click', performActualExit);
+    // Numpad (0-9)
+    if (code >= 96 && code <= 105) {
+      handleDigitInput(String(code - 96));
+      return;
+    }
+
+    switch (code) {
+      // BACK BUTTON (webOS, Escape, Backspace)
+      case 461: // webOS Back
+      case 27:  // Escape
+      case 8:   // Backspace
+        if (state.currentSection !== 'search' || el.search.value === '') {
+          e.preventDefault();
+          handleBackKey();
+        }
+        break;
+
+      // RED BUTTON (403) -> Return to All Channels
+      case 403:
+        e.preventDefault();
+        selectCategory('ALL', 0);
+        setFocus('grid', 0);
+        showToast('כל הערוצים 📺');
+        break;
+
+      // GREEN BUTTON (404) -> Retro Remaster & Aspect Ratio Mode
+      case 404:
+        e.preventDefault();
+        cycleRetroMode();
+        break;
+
+      // YELLOW BUTTON (405) -> In Grid: Toggle Favorite ⭐ | In Player: Cycle OLED Mode
+      case 405:
+        e.preventDefault();
+        if (state.currentSection === 'player') {
+          cycleOledMode();
+        } else {
+          const ch = state.filteredChannels[state.focusedGridIdx];
+          if (ch) toggleFavorite(ch.id);
+        }
+        break;
+
+      // BLUE BUTTON (406) -> Search
+      case 406:
+        e.preventDefault();
+        setFocus('search', 0);
+        break;
+
+      // CHANNEL UP / DOWN (33 / 34, 427 / 428)
+      case 33:
+      case 427:
+        e.preventDefault();
+        zapChannel(1);
+        break;
+      case 34:
+      case 428:
+        e.preventDefault();
+        zapChannel(-1);
+        break;
+
+      // SECTION-SPECIFIC KEYS
+      default:
+        dispatchSectionKey(code, e);
+        break;
     }
   }
 
-  function handleKey(e) {
-    resetScreensaverTimer();
-    const code = e.keyCode || e.which;
-
-    if (state.screensaverActive) {
-      wakeScreensaver();
-      e.preventDefault();
-      return;
-    }
-
-    // WebOS specific Back keys: 461 (webOS Back), 27 (Esc)
-    if (code === 461 || code === 27) {
-      e.preventDefault();
-      handleBackKey();
-      return;
-    }
-
-    // Color keys: 403 (Red), 404 (Green), 405 (Yellow), 406 (Blue)
-    if (code === 405) { // Yellow -> Cycle OLED Enhancer Mode!
-      e.preventDefault();
-      cycleOledMode();
-      return;
-    }
-    if (code === 404) { // Green -> Cycle Retro Remaster & Aspect Ratio!
-      e.preventDefault();
-      cycleRetroMode();
-      return;
-    }
-    if (code === 403) { // Red -> Show All Channels
-      e.preventDefault();
-      selectCategory('ALL', 0);
-      showToast('מציג את כל הערוצים');
-      return;
-    }
-    if (code === 406) { // Blue -> Focus search
-      e.preventDefault();
-      setFocus('search', 0);
-      return;
-    }
-
-    // Media keys in player
-    if (state.currentSection === 'player') {
-      if (code === 415) { // Play
-        e.preventDefault();
-        el.video.play();
-        showToast('מנגן');
-        return;
-      }
-      if (code === 19) { // Pause
-        e.preventDefault();
-        el.video.pause();
-        showToast('מושהה');
-        return;
-      }
-      if (code === 33) {
-        e.preventDefault();
-        zapChannel(1);
-        return;
-      }
-      if (code === 34) {
-        e.preventDefault();
-        zapChannel(-1);
-        return;
-      }
-    }
-
-    // Section specific navigation
+  function dispatchSectionKey(code, e) {
     if (state.currentSection === 'grid') {
       handleGridKeys(code, e);
     } else if (state.currentSection === 'sidebar') {
@@ -571,29 +958,32 @@
       handlePlayerKeys(code, e);
     } else if (state.currentSection === 'drawer') {
       handleDrawerKeys(code, e);
+    } else if (state.currentSection === 'search') {
+      handleSearchKeys(code, e);
     } else if (state.currentSection === 'exit_modal') {
       handleExitModalKeys(code, e);
     }
   }
 
   function handleGridKeys(code, e) {
-    const COLS = 5;
     const total = state.filteredChannels.length;
     if (total === 0) return;
 
+    const COLS = 5;
     let next = state.focusedGridIdx;
 
-    if (code === 37) { // Left (In RTL: forward or stay)
+    if (code === 37) { // Left (RTL moves to next card on the left)
       e.preventDefault();
-      if ((next + 1) % COLS !== 0 && next + 1 < total) {
+      if (next % COLS < COLS - 1 && next < total - 1) {
         setFocus('grid', next + 1);
       }
-    } else if (code === 39) { // Right (In RTL: back or enter sidebar)
+    } else if (code === 39) { // Right (RTL moves to previous card or opens sidebar)
       e.preventDefault();
-      if (next % COLS === 0) {
-        setFocus('sidebar', state.focusedCategoryIdx);
-      } else {
+      if (next % COLS > 0) {
         setFocus('grid', next - 1);
+      } else {
+        // Move focus into Categories Sidebar
+        setFocus('sidebar', state.focusedCategoryIdx);
       }
     } else if (code === 38) { // Up
       e.preventDefault();
@@ -617,13 +1007,13 @@
     const total = state.categories.length;
     let next = state.focusedCategoryIdx;
 
-    if (code === 38) {
+    if (code === 38) { // Up
       e.preventDefault();
       if (next > 0) setFocus('sidebar', next - 1);
-    } else if (code === 40) {
+    } else if (code === 40) { // Down
       e.preventDefault();
       if (next < total - 1) setFocus('sidebar', next + 1);
-    } else if (code === 37 || code === 13) {
+    } else if (code === 37 || code === 13) { // Left (into grid) or OK
       e.preventDefault();
       const cat = state.categories[next];
       selectCategory(cat.id, next);
@@ -631,19 +1021,29 @@
     }
   }
 
+  function handleSearchKeys(code, e) {
+    if (code === 40) { // Down from search into grid
+      e.preventDefault();
+      setFocus('grid', 0);
+    } else if (code === 13) { // Enter on search
+      e.preventDefault();
+      setFocus('grid', 0);
+    }
+  }
+
   function handlePlayerKeys(code, e) {
     showOSD();
 
-    if (code === 38) {
+    if (code === 38) { // Up -> Zap Prev
       e.preventDefault();
       zapChannel(-1);
-    } else if (code === 40) {
+    } else if (code === 40) { // Down -> Zap Next
       e.preventDefault();
       zapChannel(1);
-    } else if (code === 37) {
+    } else if (code === 37) { // Left -> Open quick drawer
       e.preventDefault();
       openQuickDrawer();
-    } else if (code === 13) {
+    } else if (code === 13) { // OK -> Toggle Pause / Play
       e.preventDefault();
       if (el.video.paused) {
         el.video.play();
@@ -676,272 +1076,23 @@
   }
 
   function handleExitModalKeys(code, e) {
-    if (code === 37 || code === 39) { // Left / Right toggle
+    if (code === 37 || code === 39) {
       e.preventDefault();
       setFocus('exit_modal', state.focusedExitBtn === 0 ? 1 : 0);
-    } else if (code === 13) { // OK
+    } else if (code === 13) {
       e.preventDefault();
-      if (state.focusedExitBtn === 0) {
-        closeExitModal();
-      } else {
-        performActualExit();
-      }
+      if (state.focusedExitBtn === 0) closeExitModal();
+      else performActualExit();
     } else if (code === 461 || code === 27) {
       e.preventDefault();
       closeExitModal();
     }
   }
 
-  // SAFE BACK BUTTON BEHAVIOR: NEVER ACCIDENTALLY EXITS THE APP!
-  function handleBackKey() {
-    // 1. If Exit Modal is open -> close it
-    if (state.exitModalOpen) {
-      closeExitModal();
-      return;
-    }
-
-    // 2. If Quick Drawer inside player is open -> close it
-    if (state.drawerOpen) {
-      closeQuickDrawer();
-      return;
-    }
-
-    // 3. If in Player -> return to Grid
-    if (state.currentSection === 'player') {
-      stopPlayback();
-      return;
-    }
-
-    // 4. If Search box is focused or has query -> clear it and return to grid
-    if (state.currentSection === 'search' || state.searchQuery.trim().length > 0) {
-      el.search.value = '';
-      state.searchQuery = '';
-      applyFilter();
-      setFocus('grid', 0);
-      return;
-    }
-
-    // 5. If focused in sidebar -> return to grid
-    if (state.currentSection === 'sidebar') {
-      setFocus('grid', 0);
-      return;
-    }
-
-    // 6. If on a filtered category (e.g. "ילדים" or "סרטים") -> return to "כל הערוצים"
-    if (state.activeCategory !== 'ALL') {
-      selectCategory('ALL', 0);
-      showToast('חזרת לכל הערוצים');
-      return;
-    }
-
-    // 7. If on main grid at "ALL" -> show Exit Confirmation Modal instead of quitting!
-    openExitModal();
-  }
-
-  function openExitModal() {
-    state.exitModalOpen = true;
-    el.exitModal.classList.remove('hidden');
-    setFocus('exit_modal', 0); // Focus "המשך צפייה" by default
-  }
-
-  function closeExitModal() {
-    state.exitModalOpen = false;
-    el.exitModal.classList.add('hidden');
-    setFocus('grid', state.focusedGridIdx);
-  }
-
-  function performActualExit() {
-    if (window.webOS && window.webOS.platformBack) {
-      window.webOS.platformBack();
-    } else if (window.close) {
-      window.close();
-    }
-  }
-
-  // PLAYER CORE
-  function playChannel(idx) {
-    const ch = state.filteredChannels[idx];
-    if (!ch) return;
-
-    state.currentChannelIdx = idx;
-    state.currentSection = 'player';
-    el.playerContainer.classList.remove('hidden');
-
-    el.osdNumber.textContent = `#${ch.number || (idx + 1)}`;
-    el.osdName.textContent = ch.name || ch.title;
-    el.osdCategory.textContent = ch.category || 'ערוץ חי';
-    el.osdQuality.textContent = ch.badge ? `${ch.badge} Live Stream` : 'HLS 1080p';
-    if (ch.logo) {
-      el.osdLogo.style.display = 'block';
-      el.osdLogo.src = ch.logo;
-    } else {
-      el.osdLogo.style.display = 'none';
-    }
-
-    showSpinner('מתחבר לשידור...');
-    showOSD();
-
-    startStream(ch.url);
-  }
-
-  function startStream(url) {
-    if (state.hls) {
-      state.hls.destroy();
-      state.hls = null;
-    }
-
-    el.video.pause();
-    el.video.removeAttribute('src');
-    el.video.load();
-
-    if (window.Hls && window.Hls.isSupported()) {
-      const hls = new window.Hls({
-        enableWorker: true,
-        lowLatencyMode: true,
-        capLevelToPlayerSize: true,
-        maxBufferLength: 8,
-        maxMaxBufferLength: 20,
-        maxBufferSize: 25 * 1024 * 1024,
-        backBufferLength: 30
-      });
-
-      state.hls = hls;
-      hls.loadSource(url);
-      hls.attachMedia(el.video);
-
-      hls.on(window.Hls.Events.MANIFEST_PARSED, () => {
-        hideSpinner();
-        el.video.play().catch(e => console.log('Autoplay:', e));
-        el.osdQuality.textContent = 'שידור חי יציב 1080p';
-      });
-
-      hls.on(window.Hls.Events.ERROR, (event, data) => {
-        if (data.fatal) {
-          switch (data.type) {
-            case window.Hls.ErrorTypes.NETWORK_ERROR:
-              showToast('מנסה להתחבר מחדש...');
-              hls.startLoad();
-              break;
-            case window.Hls.ErrorTypes.MEDIA_ERROR:
-              showToast('משחזר מקודד וידאו...');
-              hls.recoverMediaError();
-              break;
-            default:
-              showToast('שידור אינו זמין כעת');
-              hls.destroy();
-              break;
-          }
-        }
-      });
-    } else if (el.video.canPlayType('application/vnd.apple.mpegurl')) {
-      el.video.src = url;
-      el.video.addEventListener('loadedmetadata', () => {
-        hideSpinner();
-        el.video.play();
-        el.osdQuality.textContent = 'Native HLS Stream';
-      }, { once: true });
-    } else {
-      showToast('פורמט שידור אינו נתמך במכשיר זה');
-      hideSpinner();
-    }
-  }
-
-  function stopPlayback() {
-    if (state.hls) {
-      state.hls.destroy();
-      state.hls = null;
-    }
-    el.video.pause();
-    el.video.removeAttribute('src');
-    el.video.load();
-
-    el.playerContainer.classList.add('hidden');
-    state.currentSection = 'grid';
-    setFocus('grid', state.currentChannelIdx >= 0 ? state.currentChannelIdx : 0);
-  }
-
-  function zapChannel(direction) {
-    const total = state.filteredChannels.length;
-    if (total <= 1) return;
-
-    let nextIdx = state.currentChannelIdx + direction;
-    if (nextIdx >= total) nextIdx = 0;
-    if (nextIdx < 0) nextIdx = total - 1;
-
-    showToast(`עובר לערוץ: ${state.filteredChannels[nextIdx].name}`);
-    playChannel(nextIdx);
-  }
-
-  // OSD HELPERS
-  function showOSD() {
-    el.osd.classList.remove('fade-out');
-    if (state.osdTimeout) clearTimeout(state.osdTimeout);
-    state.osdTimeout = setTimeout(() => {
-      if (!state.drawerOpen) {
-        el.osd.classList.add('fade-out');
-      }
-    }, 5500);
-  }
-
-  function showSpinner(text) {
-    el.spinnerText.textContent = text || 'טוען שידור...';
-    el.spinner.classList.remove('hidden');
-  }
-
-  function hideSpinner() {
-    el.spinner.classList.add('hidden');
-  }
-
-  function showToast(msg) {
-    el.toastMessage.textContent = msg;
-    el.toast.classList.remove('hidden');
-    setTimeout(() => {
-      el.toast.classList.add('hidden');
-    }, 2800);
-  }
-
-  // QUICK DRAWER
-  function openQuickDrawer() {
-    state.drawerOpen = true;
-    el.quickDrawer.classList.remove('hidden');
-    el.drawerList.innerHTML = '';
-
-    const fragment = document.createDocumentFragment();
-
-    state.filteredChannels.forEach((ch, idx) => {
-      const item = document.createElement('div');
-      item.className = 'drawer-channel-item' + (idx === state.currentChannelIdx ? ' active' : '');
-      item.dataset.index = idx;
-      item.innerHTML = `
-        <span class="drawer-item-num">#${ch.number || (idx + 1)}</span>
-        ${ch.logo ? `<img class="drawer-item-logo" src="${ch.logo}" alt="logo">` : ''}
-        <span class="drawer-item-title">${ch.name || ch.title}</span>
-      `;
-      item.addEventListener('click', () => {
-        closeQuickDrawer();
-        playChannel(idx);
-      });
-      fragment.appendChild(item);
-    });
-
-    el.drawerList.appendChild(fragment);
-    setFocus('drawer', state.currentChannelIdx >= 0 ? state.currentChannelIdx : 0);
-  }
-
-  function closeQuickDrawer() {
-    state.drawerOpen = false;
-    el.quickDrawer.classList.add('hidden');
-    state.currentSection = 'player';
-    showOSD();
-  }
-
-  // MOUSE & MAGIC REMOTE POINTER
+  // MAGIC REMOTE MOUSE SUPPORT
   function setupMouseListeners() {
-    document.addEventListener('mousemove', resetScreensaverTimer);
-    document.addEventListener('click', resetScreensaverTimer);
+    window.addEventListener('mousemove', resetScreensaverTimer);
+    window.addEventListener('click', resetScreensaverTimer);
   }
-
-  // RUN APP
-  window.addEventListener('DOMContentLoaded', init);
 
 })();
