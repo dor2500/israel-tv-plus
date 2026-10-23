@@ -173,6 +173,7 @@
   function start() {
     if (started) return;
     started = true;
+    setupCrashLog();
     var root = $('root');
     root.innerHTML = window.ITV_UI || '';
     cacheEls();
@@ -202,6 +203,7 @@
       if (LIVE && LIVE.code <= BUILD.code) localStorage.removeItem('itv_live');
     } catch (e) {}
     if (S.autoUpdate) setTimeout(function () { checkUpdates(false); }, 4000);
+    if (Dub && Dub.settings.migratedFromLocal) setTimeout(explainTvDub, 1500);
     window.__itv = { state: state, S: S, playIndex: playIndex, openSettings: openSettings, checkUpdates: checkUpdates };
   }
 
@@ -220,14 +222,58 @@
     });
   }
 
+  // ================================================================== crash log
+  // A "crumb" (what the app was doing) is kept in localStorage while the app is on screen. If the next start finds
+  // one that was not closed cleanly, the app was killed (e.g. out of memory) – recorded for Settings → About.
+  var crashes = lsGet('itv_crashes', []);
+  var errors = lsGet('itv_errors', []);
+  function crumb(what) {
+    lsSet('itv_crumb', { t: Date.now(), what: what, ch: state.playing ? state.playing.id : '',
+      dub: Dub && Dub.settings.enabled ? Dub.settings.engine : '', v: (LIVE || BUILD).version });
+  }
+  function setupCrashLog() {
+    var prev = lsGet('itv_crumb', null);
+    var clean = false;
+    try { clean = localStorage.getItem('itv_clean') === '1'; } catch (e) {}
+    if (prev && !clean) {
+      crashes.unshift(prev);
+      crashes = crashes.slice(0, 10);
+      lsSet('itv_crashes', crashes);
+    }
+    var mark = function (c) { try { localStorage.setItem('itv_clean', c ? '1' : ''); } catch (e) {} };
+    mark(false);
+    document.addEventListener('visibilitychange', function () { mark(document.hidden); });
+    window.addEventListener('pagehide', function () { mark(true); });
+    window.addEventListener('error', function (e) {
+      errors.unshift({ t: Date.now(), m: String(e.message || 'error').slice(0, 160), at: (e.filename || '').split('/').pop() + ':' + (e.lineno || 0) });
+      errors = errors.slice(0, 10);
+      lsSet('itv_errors', errors);
+    });
+    crumb('start');
+  }
+  function when(t) {
+    var d = new Date(t);
+    return d.getDate() + '/' + (d.getMonth() + 1) + ' ' + d.getHours() + ':' + (d.getMinutes() < 10 ? '0' : '') + d.getMinutes();
+  }
+  function crashText() {
+    if (!crashes.length) return 'אין';
+    var c = crashes[0];
+    var ch = c.ch ? (function () { var i = indexInAll(c.ch); return i === -1 ? c.ch : state.all[i].name; })() : '';
+    return crashes.length + ' · אחרונה ' + when(c.t) + (ch ? ' בזמן ' + ch : '') + (c.dub ? ' (דיבוב: ' + c.dub + ')' : '');
+  }
+
   // ================================================================== look & performance
   function detectPerformance() {
     var chrome = /Chrome\/(\d+)/.exec(UA);
     var cv = chrome ? parseInt(chrome[1], 10) : 99;
     var mem = navigator.deviceMemory || 0;
     var cores = navigator.hardwareConcurrency || 0;
-    state.lowEnd = cv < 70 || (mem && mem <= 2) || (cores && cores <= 2) ||
-      (PLATFORM === 'webos' && cv < 80) || /SMART-TV.*Tizen [2-4]\./.test(UA);
+    if (PLATFORM === 'webos' || PLATFORM === 'tizen') {
+      // TVs report deviceMemory 2 even on strong models (LG C6): judge by the browser / webOS version instead
+      state.lowEnd = cv < 80 || /SMART-TV.*Tizen [2-4]\./.test(UA);
+    } else {
+      state.lowEnd = cv < 70 || (mem && mem <= 2) || (cores && cores <= 2);
+    }
   }
   function fastMode() { return S.perf === 'fast' || (S.perf === 'auto' && state.lowEnd); }
 
@@ -546,6 +592,7 @@
     state.playIdx = i;
     state.playing = ch;
     addRecent(ch);
+    crumb('play');
     for (var k = 0; k < cards.length; k++) toggleClass(cards[k], 'is-playing', k === i);
     openPlayer();
     fillOsd(ch);
@@ -971,6 +1018,7 @@
         el.osdDubText.textContent = text;
         if (st === 'error') { showOsd(); toast('🎙️ ' + text); }
         if (st === 'listening' || st === 'speaking') spinner(false);
+        if (st === 'loading' || st === 'error') crumb('dub-' + st);
       }
     });
   }
@@ -979,7 +1027,7 @@
     if (!Dub) return;
     Dub.unlockAudio();
     var on = !Dub.settings.enabled;
-    if (on && Dub.missingConfig()) { toast('🎙️ ' + Dub.missingConfig()); openSettings('dub'); return; }
+    if (on && Dub.missingConfig()) { needKey(); return; }
     Dub.save({ enabled: on });
     var ch = state.playing;
     if (!on) { Dub.detach(); toast('🎙️ הדיבוב כובה'); return; }
@@ -993,10 +1041,111 @@
   function watchDubbed(ch) {
     if (!Dub) return;
     Dub.unlockAudio();
-    if (Dub.missingConfig()) { toast('🎙️ ' + Dub.missingConfig()); openSettings('dub'); return; }
+    if (Dub.missingConfig()) { needKey(ch); return; }
     Dub.save({ enabled: true });
     var i = indexInList(ch.id);
     if (i !== -1) playIndex(i);
+  }
+
+  /** Dubbing needs a key: on TVs (no keyboard) the easy way is to send it from a phone. */
+  function needKey(ch) {
+    openDialog({
+      ico: '🎙️', title: 'לדיבוב צריך מפתח Gemini חינמי',
+      html: '<p>' + esc(Dub.missingConfig()) + '</p><p>הכי קל: סורקים קוד בטלפון, מדביקים שם את המפתח והוא מגיע לכאן מוצפן. ' +
+        'מפתח חינמי מקבלים תוך דקה ב-aistudio.google.com/apikey</p>',
+      buttons: [{ label: '📱 חיבור מהטלפון (QR)', primary: true, act: function () { pairKey(ch); } },
+        { label: '⌨️ הקלדה בהגדרות', act: function () { openSettings('dub'); } }, { label: 'ביטול' }]
+    });
+  }
+
+  function explainTvDub() {
+    Dub.save({ migratedFromLocal: false });
+    openDialog({
+      ico: '🎙️', title: 'שינוי בדיבוב בטלוויזיה',
+      html: '<p>הדיבוב היה מוגדר למנוע "מקומי" (Whisper בתוך המכשיר). בטלוויזיה הוא כבד מדי – זה מה שגרם לאפליקציה להיסגר ולחזור למסך הפתיחה.</p>' +
+        '<p>בטלוויזיה הדיבוב עובד דרך Gemini (מפתח חינמי). אפשר לחבר את המפתח מהטלפון בסריקת קוד.</p>',
+      buttons: [{ label: '📱 חיבור מהטלפון (QR)', primary: true, act: function () { pairKey(); } }, { label: 'אחר כך' }]
+    });
+  }
+
+  // ---- send the API key from a phone: QR → pair.html on the site → encrypted message via ntfy.sh → here
+  // The AES key travels only inside the QR (URL #fragment, never sent to a server); ntfy.sh sees ciphertext only.
+  var pairTimer = null;
+  function b64(bytes) { var s = ''; for (var i = 0; i < bytes.length; i++) s += String.fromCharCode(bytes[i]); return btoa(s).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, ''); }
+  function unb64(str) { var s = atob(str.replace(/-/g, '+').replace(/_/g, '/')); var a = new Uint8Array(s.length); for (var i = 0; i < s.length; i++) a[i] = s.charCodeAt(i); return a; }
+  function loadQrLib(done) {
+    if (window.qrcode) { done(); return; }
+    var urls = [(window.ITV_BASE || '') + 'assets/qrcode.js', REMOTE + 'assets/qrcode.js'];
+    var i = 0;
+    (function next() {
+      if (i >= urls.length) { done(); return; }
+      var s = document.createElement('script');
+      s.src = urls[i++];
+      s.onload = done;
+      s.onerror = next;
+      document.head.appendChild(s);
+    })();
+  }
+  function pairKey(ch) {
+    if (!window.crypto || !crypto.subtle) { toast('המכשיר לא תומך בחיבור מוצפן – הקלידו את המפתח בהגדרות'); openSettings('dub'); return; }
+    var rnd = new Uint8Array(16), tb = new Uint8Array(12);
+    crypto.getRandomValues(rnd);
+    crypto.getRandomValues(tb);
+    var topic = 'itv' + b64(tb).replace(/[-_]/g, 'x');
+    var url = REMOTE + 'pair.html#t=' + topic + '&k=' + b64(rnd);
+    var since = Math.floor(Date.now() / 1000) - 5;
+    loadQrLib(function () {
+      var qr = '';
+      try { var q = window.qrcode(0, 'M'); q.addData(url); q.make(); qr = q.createSvgTag(7, 3); } catch (e) {}
+      openDialog({
+        ico: '📱', title: 'חיבור מפתח הדיבוב מהטלפון',
+        html: '<div class="qr">' + qr + '</div><p>סרקו במצלמת הטלפון, הדביקו את מפתח ה-Gemini ולחצו "שליחה לטלוויזיה".</p>' +
+          '<p class="small">או פתחו בטלפון: <code>' + esc(url) + '</code></p><p id="pair-status">⏳ ממתין לטלפון…</p>',
+        buttons: [{ label: 'ביטול' }],
+        onClose: function () { clearInterval(pairTimer); pairTimer = null; }
+      });
+    });
+    var busy = false;
+    clearInterval(pairTimer);
+    pairTimer = setInterval(function () {
+      if (busy) return;
+      busy = true;
+      var x = new XMLHttpRequest();
+      x.open('GET', 'https://ntfy.sh/' + topic + '/json?poll=1&since=' + since, true);
+      x.timeout = 10000;
+      x.onload = function () {
+        busy = false;
+        var lines = (x.responseText || '').split('\n');
+        for (var i = 0; i < lines.length; i++) {
+          var m = null;
+          try { m = JSON.parse(lines[i]); } catch (e) { continue; }
+          if (m && m.event === 'message' && m.message) { clearInterval(pairTimer); pairTimer = null; receiveKey(m.message, rnd, ch); return; }
+        }
+      };
+      x.onerror = x.ontimeout = function () { busy = false; };
+      x.send();
+    }, 2500);
+    setTimeout(function () { if (pairTimer) { clearInterval(pairTimer); pairTimer = null; var st = $('pair-status'); if (st) st.textContent = 'הזמן עבר – פתחו שוב את החיבור'; } }, 15 * 60000);
+  }
+  function receiveKey(msg, raw, ch) {
+    var data = unb64(msg);
+    crypto.subtle.importKey('raw', raw, { name: 'AES-GCM' }, false, ['decrypt']).then(function (k) {
+      return crypto.subtle.decrypt({ name: 'AES-GCM', iv: data.slice(0, 12) }, k, data.slice(12));
+    }).then(function (plain) {
+      var p = JSON.parse(new TextDecoder().decode(plain));
+      var patch = { enabled: true };
+      if (p.gemini) { patch.geminiKey = p.gemini; patch.engine = 'gemini'; }
+      if (p.openai) { patch.openaiKey = p.openai; if (!p.gemini) patch.engine = 'openai'; }
+      Dub.save(patch);
+      closeDialog();
+      toast('✅ המפתח התקבל – הדיבוב לעברית פועל');
+      refreshSettingsIfOpen();
+      if (ch) watchDubbed(ch);
+      else if (state.playing && foreign(state.playing) && state.hls) Dub.attach({ video: el.video, hls: state.hls, channel: state.playing, url: streamUrl(state.playing) });
+    }).catch(function () {
+      var st = $('pair-status');
+      if (st) st.textContent = '⚠️ ההודעה לא פוענחה – נסו שוב';
+    });
   }
 
   // ================================================================== remote profiles & hints
@@ -1159,7 +1308,10 @@
       ] },
       { id: 'dub', ico: '🎙️', name: 'דיבוב לעברית', desc: 'תרגום והקראה בעברית של ערוצים זרים', rows: Dub ? [
         dubToggle('enabled', 'דיבוב פעיל'),
-        dubChoice('engine', 'מנוע תרגום', [['gemini', 'Google Gemini (מפתח חינמי)'], ['openai', 'OpenAI (בתשלום)'], ['local', 'מקומי – Whisper במכשיר']]),
+        dubChoice('engine', 'מנוע תרגום', [['gemini', 'Google Gemini (מפתח חינמי)'], ['openai', 'OpenAI (בתשלום)']]
+          .concat(Dub.IS_TV ? [] : [['local', 'מקומי – Whisper במכשיר (מחשב חזק)']])),
+        info('מצב', function () { return Dub.missingConfig() || (Dub.settings.enabled ? '✅ מוכן' : 'כבוי'); }),
+        action('📱 חיבור מפתח מהטלפון (QR)', function () { pairKey(); }, 'בלי הקלדה בשלט: סורקים, מדביקים בטלפון, והמפתח מגיע מוצפן'),
         dubText('geminiKey', 'מפתח Gemini API', 'מפתח חינמי: aistudio.google.com/apikey • נשמר רק במכשיר', 'AIza...'),
         dubText('openaiKey', 'מפתח OpenAI API', 'נשמר רק במכשיר', 'sk-...'),
         dubChoice('tts', 'קול הדיבוב', [['auto', 'אוטומטי'], ['browser', 'קול המכשיר'], ['google', 'Google'], ['openai', 'OpenAI'], ['none', 'כתוביות בלבד']]),
@@ -1167,12 +1319,14 @@
           step: function (st) { Dub.save({ rate: clamp(Math.round((Dub.settings.rate + 0.05 * st) * 100) / 100, 0.8, 1.6) }); } },
         { type: 'choice', label: 'עוצמת הסאונד המקורי בזמן דיבוב', get: function () { return Math.round(Dub.settings.duck * 100) + '%'; },
           step: function (st) { Dub.save({ duck: clamp(Math.round((Dub.settings.duck + 0.05 * st) * 100) / 100, 0, 1) }); } },
+      ].concat(Dub.IS_TV ? [info('סנכרון לשפתיים', 'אוטומטי בטלוויזיה – כל משפט נאמר כשהתמונה מגיעה אליו')] : [
         dubToggle('sync', 'סנכרון לשפתיים', 'התמונה מושהית כדי שהדיבוב יגיע בזמן'),
-        dubChoice('delay', 'השהיית תמונה', [[6, '6 שניות'], [8, '8 שניות'], [10, '10 שניות'], [12, '12 שניות'], [15, '15 שניות'], [20, '20 שניות']]),
+        dubChoice('delay', 'השהיית תמונה', [[6, '6 שניות'], [8, '8 שניות'], [10, '10 שניות'], [12, '12 שניות'], [15, '15 שניות'], [20, '20 שניות']])
+      ]).concat([
         dubToggle('subtitles', 'כתוביות בעברית'),
         dubToggle('showOriginal', 'גם הטקסט המקורי'),
         action('🔊 בדיקת קול', function () { Dub.unlockAudio(); Dub.testVoice(); })
-      ] : [info('דיבוב', 'לא זמין במכשיר הזה')] },
+      ]) : [info('דיבוב', 'לא זמין במכשיר הזה')] },
       { id: 'kids', ico: '🧸', name: 'מצב ילדים', desc: 'רק ערוצי ילדים, ויציאה עם קוד', rows: [
         { type: 'toggle', label: 'מצב ילדים', help: 'מציג רק ערוצי ילדים (בעברית ומהעולם) ותחנת רדיו לילדים', on: function () { return S.kids; },
           act: function () { if (S.kids) askPin(function () { setSetting('kids', false); renderSettings(); }); else { setSetting('kids', true); toast('🧸 מצב ילדים פועל'); } } },
@@ -1197,6 +1351,9 @@
         info('מסך', function () { return screen.width + '×' + screen.height + ' (תצוגה ' + window.innerWidth + '×' + window.innerHeight + ')'; }),
         info('דפדפן המערכת', function () { var m = /Chrome\/([\d.]+)/.exec(UA); return m ? 'Chromium ' + m[1] : UA.slice(0, 60); }),
         info('שלט', remoteName),
+        info('סגירות לא צפויות', crashText),
+        info('שגיאה אחרונה', function () { return errors.length ? when(errors[0].t) + ' · ' + errors[0].m + ' (' + errors[0].at + ')' : 'אין'; }),
+        action('ניקוי יומן התקלות', function () { crashes = []; errors = []; lsSet('itv_crashes', []); lsSet('itv_errors', []); toast('נוקה'); }),
         info('ערוצים', function () { return (window.CHANNELS_DATA || []).length + ' (מתוכם ' + state.all.length + ' מוצגים)'; }),
         action('📋 מאיפה מגיע כל ערוץ', function () { openUrl(REPO + '/blob/master/SOURCES.md'); }),
         action('🌐 הפרויקט ב-GitHub', function () { openUrl(REPO); }),

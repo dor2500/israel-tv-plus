@@ -6,7 +6,7 @@ env.allowLocalModels = false;
 
 let asr = null;
 
-async function load(model) {
+async function load(model, lowMem) {
   const files = {};
   const progress = (p) => {
     if (p.status !== 'progress' || !p.total) return;
@@ -15,7 +15,8 @@ async function load(model) {
     for (const k in files) { loaded += files[k][0]; total += files[k][1]; }
     self.postMessage({ type: 'progress', pct: Math.round(loaded / total * 100) });
   };
-  const webgpu = !!(self.navigator && self.navigator.gpu);
+  // WebGPU with an fp32 encoder needs a lot of memory: only on devices that report more than 4 GB
+  const webgpu = !lowMem && !!(self.navigator && self.navigator.gpu);
   try {
     asr = await pipeline('automatic-speech-recognition', model, webgpu
       ? { device: 'webgpu', dtype: { encoder_model: 'fp32', decoder_model_merged: 'q4' }, progress_callback: progress }
@@ -30,7 +31,7 @@ self.onmessage = async (e) => {
   const m = e.data;
   if (m.type === 'load') {
     try {
-      await load(m.model);
+      await load(m.model, m.lowMem);
       self.postMessage({ type: 'ready' });
     } catch (err) {
       self.postMessage({ type: 'error', message: String(err && err.message || err) });

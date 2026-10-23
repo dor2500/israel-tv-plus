@@ -315,6 +315,9 @@ body.touch .osd-hints, body.no-hints .osd-hints { display: none; }
 .dialog-body .kv b { flex: none; width: 16rem; color: var(--text); }
 .dialog-body .kv span { flex: 1; min-width: 0; word-break: break-all; }
 .dialog-body code { direction: ltr; unicode-bidi: embed; font-size: 1.25rem; }
+.dialog-body .qr { display: flex; justify-content: center; margin: .4rem 0 1.2rem; }
+.dialog-body .qr svg { width: 24rem; height: 24rem; background: #fff; border-radius: 1rem; padding: .6rem; }
+.dialog-body .small { font-size: 1.2rem; }
 .progress { height: 1.2rem; border-radius: .6rem; background: var(--line); overflow: hidden; margin: 1.4rem 0 .4rem; }
 .progress i { display: block; height: 100%; width: 0; background: var(--ok); }
 .pin { display: flex; justify-content: center; margin: 1rem 0; direction: ltr; }

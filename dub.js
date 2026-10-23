@@ -17,6 +17,9 @@
 
   const LS_KEY = 'israel_tv_dub';
   const IS_WEBOS = /Web0S|webOS/i.test(navigator.userAgent);
+  // TVs: one video decoder (no lip-sync listener) and too little memory for the in-device Whisper model –
+  // loading it there made the LG app crash back to its start screen.
+  const IS_TV = /Web0S|webOS|Tizen|SMART-TV|AndroidTV/i.test(navigator.userAgent);
 
   const DEFAULTS = {
     enabled: false,          // dubbing switched on (applies to foreign channels)
@@ -35,7 +38,7 @@
     duck: 0.2,               // level of the original sound while the Hebrew voice speaks (0..1)
     subtitles: true,
     showOriginal: false,
-    sync: !IS_WEBOS,         // lip-sync mode (picture delayed); TVs usually have a single video decoder
+    sync: !IS_TV,            // lip-sync mode (picture delayed); TVs usually have a single video decoder
     delay: 12
   };
 
@@ -78,7 +81,17 @@
   function load() {
     try {
       const saved = JSON.parse(localStorage.getItem(LS_KEY) || '{}');
-      return Object.assign({}, DEFAULTS, saved);
+      const s = Object.assign({}, DEFAULTS, saved);
+      if (IS_TV) {
+        if (s.engine === 'local') {   // settings from before 3.0.1: move to the cloud engine, pause until it has a key
+          s.engine = 'gemini';
+          s.migratedFromLocal = true;
+          if (!s.geminiKey) s.enabled = false;
+        }
+        s.sync = false;
+        localStorage.setItem(LS_KEY, JSON.stringify(s));
+      }
+      return s;
     } catch (e) {
       return Object.assign({}, DEFAULTS);
     }
@@ -101,6 +114,7 @@
   function missingConfig() {
     if (settings.engine === 'gemini' && !settings.geminiKey) return 'חסר מפתח Gemini API (חינמי) – הזן אותו בהגדרות הדיבוב';
     if (settings.engine === 'openai' && !settings.openaiKey) return 'חסר מפתח OpenAI API – הזן אותו בהגדרות הדיבוב';
+    if (settings.engine === 'local' && IS_TV) return 'המנוע המקומי כבד מדי לטלוויזיה – בחרו Gemini (מפתח חינמי)';
     if (settings.engine === 'local' && !('Worker' in window)) return 'הדפדפן אינו תומך במנוע המקומי';
     return '';
   }
@@ -110,7 +124,7 @@
   }
 
   function wantsSync(ch) {
-    return settings.enabled && settings.sync && isForeign(ch) && hlsAvailable() && !missingConfig();
+    return !IS_TV && settings.enabled && settings.sync && isForeign(ch) && hlsAvailable() && !missingConfig();
   }
 
   /** Called from hls.js LEVEL_LOADED of the main player: delays the picture in lip-sync mode. */
@@ -169,6 +183,51 @@
     return ac;
   }
 
+  /**
+   * TVs: the audio is taken from the stream fragments hls.js appends (decoded in software by the Web Audio API),
+   * not from the <video> element – LG/Samsung play video through a hardware pipeline the page can't hear, and they
+   * have one decoder (no second "listener" player). Fragments are appended seconds before they are shown, so every
+   * line is translated in advance and spoken when the picture reaches it (lip-sync for free).
+   */
+  function attachFragmentCapture(sess) {
+    const H = window.Hls;
+    const hls = sess.mainHls;
+    const init = {};
+    let chain = Promise.resolve();
+    const onInit = (e, d) => { for (const k in d.tracks) if (d.tracks[k].initSegment) init[k] = d.tracks[k].initSegment; };
+    const onAppend = (e, d) => {
+      if (!sess.alive || (d.type !== 'audio' && d.type !== 'audiovideo') || !init[d.type] || !d.data) return;
+      const head = init[d.type];
+      const bytes = new Uint8Array(head.length + d.data.length);
+      bytes.set(head);
+      bytes.set(d.data, head.length);
+      const start = d.frag && typeof d.frag.start === 'number' ? d.frag.start + (d.part ? d.part.start - d.frag.start : 0) : null;
+      chain = chain.then(() => ac.decodeAudioData(bytes.buffer)).then((ab) => {
+        if (!sess.alive) return;
+        sess.fragPush(downmix16k(ab), start);
+      }).catch(() => {});
+    };
+    hls.on(H.Events.FRAG_PARSING_INIT_SEGMENT, onInit);
+    hls.on(H.Events.BUFFER_APPENDING, onAppend);
+    sess.detachFrag = () => {
+      try { hls.off(H.Events.FRAG_PARSING_INIT_SEGMENT, onInit); hls.off(H.Events.BUFFER_APPENDING, onAppend); } catch (e) {}
+    };
+  }
+
+  function downmix16k(ab) {
+    const a = ab.getChannelData(0);
+    const b = ab.numberOfChannels > 1 ? ab.getChannelData(1) : a;
+    const ratio = ab.sampleRate / TARGET_SR;
+    const out = new Float32Array(Math.floor(a.length / ratio));
+    for (let n = 0; n < out.length; n++) {
+      const i0 = Math.floor(n * ratio), i1 = Math.min(a.length, Math.floor((n + 1) * ratio));
+      let s = 0;
+      for (let i = i0; i < i1; i++) s += a[i] + b[i];
+      out[n] = i1 > i0 ? s / (2 * (i1 - i0)) : 0;
+    }
+    return out;
+  }
+
   function setOriginalLevel(level) {
     if (!session) return;
     if (session.mode === 'instant' && mainTap) {
@@ -217,6 +276,7 @@
     let rms = [];          // per 20 ms frame
     let pending = 0, pendingSum = 0;
     let startWall = 0;
+    let startMedia = null;   // media time (video.currentTime scale) of buf[0], when the audio comes from fragments
     const floorWin = [];
 
     function noiseFloor() {
@@ -230,17 +290,25 @@
       const segFrames = rms.slice(0, Math.floor(at / FRAME));
       const loud = segFrames.filter(v => v > noiseFloor() * 2.2).length;
       const startedAt = startWall;
+      const mediaAt = startMedia;
       buf.copyWithin(0, at, len);
       len -= at;
       rms = rms.slice(Math.floor(at / FRAME));
       startWall = startedAt + at / TARGET_SR * 1000;
+      if (startMedia != null) startMedia += at / TARGET_SR;
       // Skip silence: need at least ~0.6 s of sound clearly above the floor.
       if (loud * FRAME / TARGET_SR < 0.6) return;
-      sess.onSegment({ audio: seg, wall: startedAt, dur: seg.length / TARGET_SR, sourceLatency: sess.listenerLatency(), media: sess.listenerMediaTime(startedAt) });
+      sess.onSegment({ audio: seg, wall: startedAt, dur: seg.length / TARGET_SR, sourceLatency: sess.listenerLatency(),
+        media: mediaAt != null ? mediaAt : sess.listenerMediaTime(startedAt) });
     }
 
-    return function push(samples) {
+    return function push(samples, mediaStart) {
       if (!sess.alive) return;
+      if (mediaStart != null) {
+        // a jump in the timeline (level switch, gap): start a new phrase there
+        if (len && Math.abs(mediaStart - (startMedia + len / TARGET_SR)) > 1.5) { len = 0; rms = []; pending = 0; pendingSum = 0; }
+        if (len === 0) startMedia = mediaStart;
+      }
       if (len === 0) startWall = Date.now() - samples.length / TARGET_SR * 1000;
       if (len + samples.length > buf.length) {
         const nb = new Float32Array((len + samples.length) * 2);
@@ -451,7 +519,7 @@
         }
       };
       localWorker.onerror = (e) => reject(new Error(e.message || 'worker error'));
-      localWorker.postMessage({ type: 'load', model: settings.localModel });
+      localWorker.postMessage({ type: 'load', model: settings.localModel, lowMem: (navigator.deviceMemory || 8) <= 4 });
     });
     localReady.catch(() => { localReady = null; });
     return localReady;
@@ -645,7 +713,7 @@
     const sess = {
       id: ++sessionSeq,
       alive: true,
-      mode: settings.sync && hlsAvailable() ? 'sync' : 'instant',
+      mode: IS_TV ? 'frag' : settings.sync && hlsAvailable() ? 'sync' : 'instant',
       channel: opts.channel,
       url: opts.url,
       video: opts.video,
@@ -678,7 +746,7 @@
       if (!sess.alive) return;
       sess.pending.push(seg);
       // Instant mode must stay close to live: drop old audio when the engine can't keep up.
-      const maxPending = sess.mode === 'sync' ? MAX_BATCH * 2 : MAX_BATCH;
+      const maxPending = sess.mode === 'instant' ? MAX_BATCH : MAX_BATCH * 2;
       while (sess.pending.reduce((s, x) => s + x.dur, 0) > maxPending) sess.pending.shift();
       pump(sess);
     };
@@ -741,6 +809,11 @@
         if (ctDiff > 0 && Math.abs(ctDiff - latDiff) < 3.5) wait = (item.media - sess.video.currentTime) * 1000 - 150;
       }
       if (sess.video && sess.video.paused) wait = Math.max(wait, 250);
+    } else if (sess.mode === 'frag' && item.media != null && sess.video) {
+      // spoken when the picture reaches the moment the words were said
+      wait = (item.media - sess.video.currentTime) * 1000 - 150;
+      if (sess.video.paused) wait = Math.max(wait, 250);
+      if (wait < -8000) { sess.speakQueue.shift(); tick(sess); return; } // far behind (seek / stall): skip the line
     }
     if (wait > 30) {
       clearTimeout(sess.ticker);
@@ -753,7 +826,7 @@
     let rate = settings.rate;
     rate = Math.max(rate, Math.min(1.6, est / Math.max(1.5, item.dur * 0.95)));
     if (sess.speakQueue.length) rate = Math.min(1.7, rate + 0.15 * sess.speakQueue.length);
-    if (sess.mode === 'sync' && wait < -2500) rate = Math.min(1.7, rate + 0.2);
+    if (sess.mode !== 'instant' && wait < -2500) rate = Math.min(1.7, rate + 0.2);
 
     sess.speaking = true;
     if (sess.mode === 'sync' && sess.mainHls) {
@@ -832,6 +905,12 @@
     status('loading', sess.mode === 'sync' ? 'מכין דיבוב מסונכרן (התמונה מושהית ב-' + settings.delay + ' שנ׳)…' : 'מכין דיבוב…');
     if (settings.engine === 'local') localEngine().catch(e => status('error', 'טעינת המודל המקומי נכשלה: ' + e.message));
     try {
+      if (sess.mode === 'frag') {
+        sess.fragPush = makeSegmenter(sess);
+        attachFragmentCapture(sess);
+        if (sess.alive) status('listening', 'מאזין לשידור…');
+        return;
+      }
       sess.capture = makeCaptureNode(makeSegmenter(sess));
       if (sess.mode === 'sync') {
         await startListener(sess);
@@ -867,6 +946,7 @@
     } else if (sess.video) {
       sess.video.volume = 1;
     }
+    if (sess.detachFrag) sess.detachFrag();
     if (sess.capture) { try { sess.capture.disconnect(); } catch (e) {} sess.capture.onaudioprocess = null; }
     if (sess.listenerHls) { try { sess.listenerHls.destroy(); } catch (e) {} }
     if (sess.srcNode) { try { sess.srcNode.disconnect(); } catch (e) {} }
@@ -882,6 +962,7 @@
   window.HebrewDub = {
     DEFAULTS,
     LANG_NAMES,
+    IS_TV,
     get settings() { return settings; },
     log: debugLog,
     save,
