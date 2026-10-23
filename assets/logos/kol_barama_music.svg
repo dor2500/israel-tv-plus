@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 120" width="300" height="120">
+      <rect width="300" height="120" rx="24" fill="#1e1035" stroke="#b5179e" stroke-width="2"/>
+      <circle cx="60" cy="60" r="28" fill="#7209b7"/>
+      <text x="60" y="72" font-family="Arial, sans-serif" font-size="32" fill="#ffd166" text-anchor="middle">♫</text>
+      <text x="185" y="56" font-family="Rubik, Arial, sans-serif" font-size="24" font-weight="900" fill="#ffffff" text-anchor="middle">קול ברמה מוזיקה</text>
+      <text x="185" y="84" font-family="Rubik, Arial, sans-serif" font-size="15" font-weight="700" fill="#f72585" text-anchor="middle">KOL BARAMA MUSIC</text>
+    </svg>
