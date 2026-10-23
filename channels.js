@@ -1354,5 +1354,89 @@ window.CHANNELS_DATA = [
     "badge": "FHD",
     "desc": "ערוץ הרפתקאות, אנימציה וסדרות נוער מהנות לכל המשפחה",
     "number": 113
+  },
+  {
+    "id": "cineman_vhs_retro",
+    "name": "קולנוע רטרו VHS Cinema HD",
+    "title": "Cineman VHS Retro Cinema HD",
+    "category": "סרטים וסדרות (Movies & Series)",
+    "categoryEn": "movies",
+    "url": "http://stream.mcquack.net/474/index.m3u8",
+    "logo": "assets/logos/vhs.png",
+    "badge": "HD",
+    "desc": "ערוץ קלאסיקות הקולנוע הנוסטלגיות של שנות ה-80 וה-90",
+    "number": 114
+  },
+  {
+    "id": "cartoons_short_hd",
+    "name": "אנימציה קצרצרה Cartoons Short HD",
+    "title": "Cartoons Short HD",
+    "category": "ילדים ונוער (בעברית)",
+    "categoryEn": "kids",
+    "url": "http://stream.mcquack.net/347/index.m3u8",
+    "logo": "assets/logos/cartoons_short.png",
+    "badge": "FHD",
+    "desc": "סרטוני אנימציה קצרים ומצחיקים ברצף לילדים ולנוער",
+    "number": 115
+  },
+  {
+    "id": "cartoons_big_hd",
+    "name": "סרטי אנימציה Cartoons Big HD",
+    "title": "Cartoons Big Animation HD",
+    "category": "ילדים ונוער (בעברית)",
+    "categoryEn": "kids",
+    "url": "http://stream.mcquack.net/348/index.m3u8",
+    "logo": "assets/logos/cartoons_big.png",
+    "badge": "FHD",
+    "desc": "סרטי אנימציה באורך מלא לכל המשפחה",
+    "number": 116
+  },
+  {
+    "id": "ducktv_hd",
+    "name": "דאק טי וי ducktv HD",
+    "title": "ערוץ דאק טי וי ducktv HD",
+    "category": "ילדים ונוער (בעברית)",
+    "categoryEn": "kids",
+    "url": "https://dash3.antik.sk/live/duck_tv/index.m3u8",
+    "logo": "assets/logos/ducktv.png",
+    "badge": "FHD",
+    "desc": "ערוץ הפעוטות וההתפתחות המוביל מבית yes ו-HOT - אנימציה עדינה, מוזיקה וצבעים",
+    "number": 117
+  },
+  {
+    "id": "ducktv_plus_hd",
+    "name": "דאק טי וי פלוס ducktv PLUS HD",
+    "title": "ducktv PLUS Kids HD",
+    "category": "ילדים ונוער (בעברית)",
+    "categoryEn": "kids",
+    "url": "https://dash3.antik.sk/live/test_duck_plus/playlist.m3u8",
+    "logo": "assets/logos/ducktv_plus.png",
+    "badge": "HD",
+    "desc": "ערוץ תוכניות העשרה והפעלות נוספות מבית ducktv",
+    "number": 118
+  },
+  {
+    "id": "lego_channel_hd",
+    "name": "ערוץ לגו Lego Channel HD",
+    "title": "Lego Channel HD",
+    "category": "ילדים ונוער (בעברית)",
+    "categoryEn": "kids",
+    "url": "https://dltiqboxjw21d.cloudfront.net/index.m3u8",
+    "logo": "assets/logos/lego.png",
+    "badge": "FHD",
+    "desc": "ערוץ סדרות וסרטי לגו נינג'גו, לגו חברים, הרפתקאות ובנייה לילדים",
+    "number": 119
+  },
+  {
+    "id": "babyshark_tv_hd",
+    "name": "בייבי שארק Baby Shark TV HD",
+    "title": "Baby Shark TV HD",
+    "category": "ילדים ונוער (בעברית)",
+    "categoryEn": "kids",
+    "url": "https://newidco-babysharktv-1-us.roku.wurl.tv/playlist.m3u8",
+    "logo": "assets/logos/babyshark.png",
+    "badge": "FHD",
+    "desc": "ערוץ שירי הילדים המפורסם של בייבי שארק, פינקפונג והחברים 24/7",
+    "number": 120
   }
 ];
