@@ -42,6 +42,26 @@ FIX = {
     "channel9": {"desc": "ערוץ 9 - ערוץ ישראלי בשפה הרוסית: חדשות, אקטואליה ותוכניות"},
     "galgalatz_hits_live": {"url": "https://glzwizzlv.bynetcdn.com/glglz_hits_mp3"},  # was http (blocked on the site)
 }
+# https copies for the web site of channels whose main source is http (browsers block http on an https page).
+# Each played in Chromium and its picture was checked against the channel (2026-10-23); the apps keep `url`.
+WEB_URLS = {
+    "kinohit": "https://stream8.cinerama.uz/1055/tracks-v1a1/mono.m3u8",
+    "action_tv1000": "https://stream8.cinerama.uz/1225/tracks-v1a1/mono.m3u8",
+    "viju_sport": "https://stream8.cinerama.uz/1229/tracks-v1a1/mono.m3u8",
+    "nick_jr_he": "https://stream8.cinerama.uz/1501/playlist.m3u8",
+    "gulli_kids_hd": "https://stream8.cinerama.uz/1445/tracks-v1a1/mono.m3u8",
+    "tiji_kids_hd": "https://stream8.cinerama.uz/1441/tracks-v1a1/mono.m3u8",
+    "pixel_tv": "https://cdn15.live-tv.cloud/ua_infinitas_tv/pixel-abr/playlist.m3u8",
+    "kapitan_fantastika": "https://stream8.cinerama.uz/1406/tracks-v1a1/mono.m3u8",
+    "solntse_kids": "https://tv.mediacdn.ru/live/solntse/playlist.m3u8",
+    "mult_kids": "https://stream8.cinerama.uz/1246/tracks-v1a1/mono.m3u8",
+    "carousel_kids": "https://stream.smotrim.ru/hls2/karusel/playlist_3.m3u8",
+    "fairy_tales_kids": "https://stream8.cinerama.uz/1270/tracks-v1a1/mono.m3u8",
+    "bbc_earth": "https://amg00793-amg00793c6-xumo-us-2669.playouts.now.amagi.tv/BBCStudios-BBCEarthA-hls/playlist.m3u8",
+    "history_365": "https://stream8.cinerama.uz/1242/tracks-v1a1/mono.m3u8",
+}
+# Pluto TV via jmp2.uk: the redirect has no CORS header, so browsers can't follow it (the apps can)
+WEB_BLOCKED = {"rewind_80s", "cinema_70s", "replay_00s"}
 # older radio entries: clean names + logos in the same style as the new ones
 OLD_RADIO = {
     "galgalatz_live": ("גלגלצ", "גלגלצ", "91.8FM", "#780000", "#ef4444"),
@@ -239,6 +259,10 @@ def main():
             c["category"], c["categoryEn"] = CAT_MUSIC, "music"
         if c.get("lang") == "music" and ".m3u8" not in c["url"]:
             c["kind"] = "radio"
+        if c["id"] in WEB_URLS:
+            c["webUrl"] = WEB_URLS[c["id"]]
+        if c["id"] in WEB_BLOCKED:
+            c["webOk"] = False
         if c["id"] in OLD_RADIO:
             name, big, small, bg, accent = OLD_RADIO[c["id"]]
             c["name"] = c["title"] = name

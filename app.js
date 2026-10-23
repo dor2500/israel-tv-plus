@@ -72,7 +72,9 @@
   const isApp = (ch) => ch && ch.kind === 'app';
   const isRadioCh = (ch) => ch && (ch.kind === 'radio' || ch.categoryEn === 'radio');
   /** True when this channel can't play inside the https web site (it works in the apps). */
-  const appOnly = (ch) => IS_WEB && ch && !isApp(ch) && /^http:/i.test(ch.url);
+  /** The stream to play here: the web site uses an https copy (webUrl) where the main source is http-only. */
+  const streamUrl = (ch) => (IS_WEB && ch.webUrl) || ch.url;
+  const appOnly = (ch) => IS_WEB && ch && !isApp(ch) && (ch.webOk === false || /^http:/i.test(streamUrl(ch)));
 
   // OLED PRESETS
   const OLED_MODES = [
@@ -969,12 +971,12 @@
       state.hlsInstance = null;
     }
     if (el.playerErrorOverlay) {
-      const insecure = location.protocol === 'https:' && /^http:/i.test(channel.url);
+      const insecure = location.protocol === 'https:' && /^http:/i.test(streamUrl(channel));
       el.playerErrorTitle.textContent = insecure ? 'השידור זמין באפליקציית הטלוויזיה' : 'השידור אינו זמין כרגע';
       el.playerErrorDesc.textContent = insecure
         ? `הערוץ "${channel.name}" משדר ב-HTTP, ודפדפנים חוסמים שידור כזה מתוך אתר מאובטח (HTTPS). הוא פועל באפליקציית LG webOS ובנגנים חיצוניים כמו VLC.`
         : `לא הצלחנו להתחבר לשידור של "${channel.name}" (${reason || 'שגיאת רשת'}). ייתכן שהשידור כבוי זמנית – נסו שוב מאוחר יותר או ערוץ אחר.`;
-      if (el.btnErrorDirectLink) el.btnErrorDirectLink.href = channel.url;
+      if (el.btnErrorDirectLink) el.btnErrorDirectLink.href = streamUrl(channel);
       el.playerErrorOverlay.classList.remove('hidden');
     }
   }
@@ -1004,7 +1006,7 @@
     showSpinner('מתחבר לשידור חי...');
     refreshDubUi();
 
-    loadVideoStream(channel.url, channel);
+    loadVideoStream(streamUrl(channel), channel);
   }
 
   function isAudioUrl(url, channel) {
@@ -1211,10 +1213,10 @@
     if (ch && inPlayer && state.hlsInstance) {
       if (Dub.settings.sync) {
         // Lip-sync needs the picture to be delayed: restart the stream with the delay.
-        loadVideoStream(ch.url, ch);
+        loadVideoStream(streamUrl(ch), ch);
         showSpinner('מכין דיבוב מסונכרן…');
       } else {
-        Dub.attach({ video: el.video, hls: state.hlsInstance, channel: ch, url: ch.url });
+        Dub.attach({ video: el.video, hls: state.hlsInstance, channel: ch, url: streamUrl(ch) });
       }
     }
   }

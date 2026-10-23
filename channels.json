@@ -1190,7 +1190,8 @@
     "desc": "שוברי הקופות והסרטים האהובים מכל הזמנים",
     "number": 83,
     "lang": "ru",
-    "iptv": "KinoHit.ru"
+    "iptv": "KinoHit.ru",
+    "webUrl": "https://stream8.cinerama.uz/1055/tracks-v1a1/mono.m3u8"
   },
   {
     "id": "kinosemja",
@@ -1260,7 +1261,8 @@
     "desc": "ערוץ הסרטים הבינלאומי הידוע במהדורת אקשן",
     "number": 88,
     "lang": "ru",
-    "iptv": "vijuTV1000action.ru"
+    "iptv": "vijuTV1000action.ru",
+    "webUrl": "https://stream8.cinerama.uz/1225/tracks-v1a1/mono.m3u8"
   },
   {
     "id": "tv1000_classic",
@@ -1316,7 +1318,8 @@
     "desc": "הסרטים והקלאסיקות הבלתי נשכחות של שנות ה-80",
     "number": 92,
     "lang": "auto",
-    "iptv": "80sRewind.us"
+    "iptv": "80sRewind.us",
+    "webOk": false
   },
   {
     "id": "cinema_70s",
@@ -1330,7 +1333,8 @@
     "desc": "קולנוע אמריקאי קלאסי מתור הזהב של שנות ה-70",
     "number": 93,
     "lang": "auto",
-    "iptv": "70sCinema.us"
+    "iptv": "70sCinema.us",
+    "webOk": false
   },
   {
     "id": "replay_00s",
@@ -1344,7 +1348,8 @@
     "desc": "להיטי שנות ה-2000 - קומדיות נעורים, אקשן ודרמות",
     "number": 94,
     "lang": "auto",
-    "iptv": "00sReplay.us"
+    "iptv": "00sReplay.us",
+    "webOk": false
   },
   {
     "id": "simpsons_247",
@@ -1453,7 +1458,8 @@
     "desc": "אירועי ספורט, כדורסל, מרוצים ואירועי אליפות בינלאומיים",
     "number": 102,
     "lang": "ru",
-    "iptv": "vijuPlusSport.ru"
+    "iptv": "vijuPlusSport.ru",
+    "webUrl": "https://stream8.cinerama.uz/1229/tracks-v1a1/mono.m3u8"
   },
   {
     "id": "setanta_sports_2_hd",
@@ -1536,7 +1542,8 @@
     "desc": "ערוץ ניק ג'וניור בשפה הרוסית - סדרות לגיל הרך",
     "number": 108,
     "lang": "ru",
-    "iptv": "NickJr.ru"
+    "iptv": "NickJr.ru",
+    "webUrl": "https://stream8.cinerama.uz/1501/playlist.m3u8"
   },
   {
     "id": "gulli_kids_hd",
@@ -1550,7 +1557,8 @@
     "desc": "ערוץ הרפתקאות, אנימציה וסדרות נוער מהנות לכל המשפחה",
     "number": 109,
     "lang": "ru",
-    "iptv": "GulliGirl.ru"
+    "iptv": "GulliGirl.ru",
+    "webUrl": "https://stream8.cinerama.uz/1445/tracks-v1a1/mono.m3u8"
   },
   {
     "id": "ducktv_plus_hd",
@@ -1619,7 +1627,8 @@
     "desc": "ערוץ הילדים והפעוטות הבינלאומי המוביל לתכנים חינוכיים וצבעוניים",
     "number": 114,
     "lang": "ru",
-    "iptv": "TiJi.ru"
+    "iptv": "TiJi.ru",
+    "webUrl": "https://stream8.cinerama.uz/1441/tracks-v1a1/mono.m3u8"
   },
   {
     "id": "jimjam_kids_hd",
@@ -1700,7 +1709,8 @@
     "desc": "ערוץ הגיימינג, האנימציה והסדרות המובילות לילדים",
     "number": 120,
     "lang": "ru",
-    "iptv": "PixelTV.ua"
+    "iptv": "PixelTV.ua",
+    "webUrl": "https://cdn15.live-tv.cloud/ua_infinitas_tv/pixel-abr/playlist.m3u8"
   },
   {
     "id": "niki_kids",
@@ -1728,7 +1738,8 @@
     "desc": "הרפתקאות גיבורי על ומדע בדיוני לילדים ונוער",
     "number": 122,
     "lang": "ru",
-    "iptv": "KapitanFantastika.ru"
+    "iptv": "KapitanFantastika.ru",
+    "webUrl": "https://stream8.cinerama.uz/1406/tracks-v1a1/mono.m3u8"
   },
   {
     "id": "okids",
@@ -1784,7 +1795,8 @@
     "desc": "ערוץ ילדים ומשפחה עשיר בסדרות אנימציה, קומדיה ובידור לכל הגילאים",
     "number": 126,
     "lang": "ru",
-    "iptv": "Solnce.ru"
+    "iptv": "Solnce.ru",
+    "webUrl": "https://tv.mediacdn.ru/live/solntse/playlist.m3u8"
   },
   {
     "id": "mult_kids",
@@ -1798,7 +1810,8 @@
     "desc": "ערוץ אנימציה מוביל לילדים ופעוטות - סדרות מצוירות מודרניות וקלאסיות",
     "number": 127,
     "lang": "ru",
-    "iptv": "Mult.ru"
+    "iptv": "Mult.ru",
+    "webUrl": "https://stream8.cinerama.uz/1246/tracks-v1a1/mono.m3u8"
   },
   {
     "id": "mult_music_kids",
@@ -1826,7 +1839,8 @@
     "desc": "ערוץ הילדים והנוער המוביל - תוכניות לימודיות, חידונים וסדרות הרפתקאות",
     "number": 129,
     "lang": "ru",
-    "iptv": "Carousel.ru"
+    "iptv": "Carousel.ru",
+    "webUrl": "https://stream.smotrim.ru/hls2/karusel/playlist_3.m3u8"
   },
   {
     "id": "ctc_kids",
@@ -1854,7 +1868,8 @@
     "desc": "ערוץ עולם האגדות - סיפורי עם קלאסיים, סרטי פנטזיה והרפתקאות מונפשות",
     "number": 131,
     "lang": "ru",
-    "iptv": "Vgostyakhuskazki.ru"
+    "iptv": "Vgostyakhuskazki.ru",
+    "webUrl": "https://stream8.cinerama.uz/1270/tracks-v1a1/mono.m3u8"
   },
   {
     "id": "music_4ever",
@@ -2008,7 +2023,8 @@
     "desc": "סדרות הטבע וההיסטוריה הידועות של ה-BBC בהנחיית דיוויד אטנבורו",
     "number": 142,
     "lang": "auto",
-    "iptv": "BBCEarth.uk"
+    "iptv": "BBCEarth.uk",
+    "webUrl": "https://amg00793-amg00793c6-xumo-us-2669.playouts.now.amagi.tv/BBCStudios-BBCEarthA-hls/playlist.m3u8"
   },
   {
     "id": "asharq_discovery",
@@ -2036,7 +2052,8 @@
     "desc": "תעודה היסטורית, מלחמות עולם, ממלכות ומנהיגים ששינו את העולם",
     "number": 144,
     "lang": "ru",
-    "iptv": "365daysTV.ru"
+    "iptv": "365daysTV.ru",
+    "webUrl": "https://stream8.cinerama.uz/1242/tracks-v1a1/mono.m3u8"
   },
   {
     "id": "good_life_israel",
