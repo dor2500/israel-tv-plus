@@ -1,4 +1,24 @@
-# Israel TV Plus (Web & LG webOS Smart TV) 🇮🇱 📺
+# Israel TV Plus – Web, Android, Android TV, Windows, LG & Samsung 🇮🇱 📺
+
+## 📲 הורדה לכל הפלטפורמות (v2.0)
+
+| פלטפורמה | קובץ | התקנה |
+|---|---|---|
+| 🤖 **אנדרואיד** (טלפון/טאבלט) + 📺 **Android TV / Google TV / Fire TV** | [IsraelTVPlus-android.apk](https://github.com/dor2500/israel-tv-plus/releases/latest/download/IsraelTVPlus-android.apk) | אותו APK לכולם. בטלוויזיה: התקנה דרך "Downloader" / כונן USB, האפליקציה מופיעה במסך הבית של ה-TV |
+| 🪟 **Windows 10/11** | [התקנה](https://github.com/dor2500/israel-tv-plus/releases/latest/download/IsraelTVPlus-windows-setup.exe) · [נייד ZIP](https://github.com/dor2500/israel-tv-plus/releases/latest/download/IsraelTVPlus-windows-portable.zip) | WebView2 (מובנה ב-Windows 11). F11 = מסך מלא |
+| 🖥️ **LG webOS** | [com.israeltv.plus_all.ipk](https://github.com/dor2500/israel-tv-plus/releases/latest/download/com.israeltv.plus_all.ipk) | Developer Mode + webOS Dev Manager (ראו למטה) |
+| 🔷 **Samsung Tizen** | [פרויקט Tizen](https://github.com/dor2500/israel-tv-plus/releases/latest/download/IsraelTVPlus-tizen-project.zip) | סמסונג מתקינה רק חבילות חתומות: ייבוא ל-Tizen Studio, תעודת Samsung עם ה-DUID של הטלוויזיה, Run |
+| 🍎 **iPhone / iPad / Mac / Linux** | [האתר](https://dor2500.github.io/israel-tv-plus/) | Safari ← שיתוף ← "הוסף למסך הבית" (אפליקציית PWA) |
+
+> **למה אפליקציה ולא רק אתר?** חלק מהערוצים (למשל קשת 12, ערוץ 24, ערוצי הילדים והסרטים) משדרים ב-HTTP,
+> ודפדפנים חוסמים אותם בתוך אתר מאובטח. באפליקציות (אנדרואיד, Windows, LG, סמסונג) **כל הערוצים פועלים**.
+> באתר הם מסומנים בתג **📲 באפליקציה**.
+
+## 🆕 מה חדש ב-v2.0
+- **154 ערוצים ותחנות**: 47 תחנות רדיו ישראליות (כל תחנות **כאן** – ב, גימל, 88, תרבות, מורשת, רקע, קול המוזיקה; גלגלצ, גלי צה"ל, eco99, 103, 102, רדיוס, קול חי, קול ברמה, תחנות אזוריות ועוד), i24NEWS English.
+- **מנויים ואפליקציות**: Partner tv+, סלקום tv+, STING+, yes+, HOT NEXT, כאן, כאן ילדים, 12+, 13+, 14 LIVE, ספורט 5 – באנדרואיד/Android TV פותח את האפליקציה הרשמית (או את דף ההתקנה ב-Google Play), במקומות אחרים את האתר הרשמי. *ערוצי השירותים בתשלום זמינים רק דרך האפליקציות שלהם עם מנוי.*
+- **בדיקת כל הערוצים**: כל שידור נבדק עם תמונה אמיתית מול שם הערוץ (`tools/check_channels.py`); 3 ערוצים שהציגו רק פרסומת "OTT Club" במקום הערוץ הוסרו, וכל תחנת רדיו נבדקה בדפדפן אמיתי.
+- **ממשק**: קטגוריית "צפית לאחרונה", שורת תיאור בכל כרטיס, לוגו מטושטש ברקע ה-Hero, כרטיסי רדיו/אפליקציות ייעודיים, חלון הורדת אפליקציות, מספור לפי קטגוריות (ערוצי ישראל 1–14, רדיו 15–61), תמיכה בשלט Android TV וסמסונג.
 
 > ### 🌐 לצפייה ישירה מהירה בדפדפן ובסמארטפון (Live Web App):  
 > 👉 **[https://dor2500.github.io/israel-tv-plus/](https://dor2500.github.io/israel-tv-plus/)**  
@@ -184,8 +204,19 @@ israel-tv-plus/
 │   └── hls.min.js     # ספריית ניגון HLS מואצת בחומרה
 ├── docs/
 │   └── screenshots/   # צילומי מסך באיכות 4K/FHD
+├── platforms/
+│   ├── android/       # אפליקציית Android / Android TV (WebView, שלט רחוק, פתיחת אפליקציות השירותים)
+│   ├── windows/       # אפליקציית Windows (C# + WebView2) + מתקין Inno Setup
+│   └── tizen/         # config.xml לטלוויזיות סמסונג
 ├── tools/
-│   └── set_lang_logos.py  # שפת השידור (lang) של כל ערוץ + תיקון לוגואים שגויים
+│   ├── check_channels.py  # בדיקת כל הערוצים: פלייליסט, הפניות, CORS ותמונה אמיתית מכל ערוץ
+│   ├── add_israeli.py     # ערוצים/רדיו/אפליקציות ישראליים – כל שידור נבדק לפני שנכנס
+│   ├── make_icons.py      # אייקונים לכל הפלטפורמות (PWA, אנדרואיד, באנר Android TV, ico)
+│   ├── build_apk.ps1      # APK בלי Gradle (aapt2 + d8 + apksigner)
+│   ├── build_windows.ps1  # exe + ZIP נייד + מתקין
+│   ├── build_tizen.ps1    # פרויקט Tizen
+│   └── build_ipk.py       # חבילת LG webOS
+├── manifest.webmanifest, sw.js  # התקנת האתר כאפליקציה (PWA)
 ├── appinfo.json       # הגדרות webOS (disableBackHistoryAPI)
 ├── index.html         # שלד ה-GUI, Hero Spotlight, נגן, חלון הגדרות
 ├── style.css          # עיצוב דואלי (OLED True Black & Light Mode), רספונסיבי לנייד

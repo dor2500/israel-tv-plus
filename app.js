@@ -15,6 +15,8 @@
     activeCategory: 'ALL',
     searchQuery: '',
     favorites: [],
+    recents: [], // last watched channel ids, newest first
+    getAppOpen: false,
     theme: 'oled', // 'oled' | 'light'
 
     // Focus & Navigation
@@ -50,6 +52,28 @@
 
   const Dub = window.HebrewDub;
 
+  // PLATFORM: the native apps (Android / Android TV, Windows, LG webOS, Samsung Tizen) load the app from local
+  // files, so http streams and streams without CORS play there. The https web site can't play those.
+  const UA = navigator.userAgent;
+  const PLATFORM = new URLSearchParams(location.search).get('platform') || (window.AndroidApp ? 'android'
+    : (window.chrome && window.chrome.webview) ? 'windows'
+    : (window.webOS || window.PalmSystem || /Web0S|webOS/i.test(UA)) ? 'webos'
+    : (window.tizen || /Tizen/i.test(UA)) ? 'tizen'
+    : location.protocol === 'https:' ? 'web' : 'local'); // ?platform=web previews the web site's view locally
+  const IS_WEB = PLATFORM === 'web';
+  // Android TV boxes report a ~960px wide screen (density 2): lay the guide out at 1600px like on LG TVs.
+  if (/AndroidTV/.test(UA)) {
+    const vp = document.querySelector('meta[name="viewport"]');
+    if (vp) vp.setAttribute('content', 'width=1600, user-scalable=no');
+  }
+  const RELEASES = 'https://github.com/dor2500/israel-tv-plus/releases/latest';
+  const MAX_RECENTS = 12;
+
+  const isApp = (ch) => ch && ch.kind === 'app';
+  const isRadioCh = (ch) => ch && (ch.kind === 'radio' || ch.categoryEn === 'radio');
+  /** True when this channel can't play inside the https web site (it works in the apps). */
+  const appOnly = (ch) => IS_WEB && ch && !isApp(ch) && /^http:/i.test(ch.url);
+
   // OLED PRESETS
   const OLED_MODES = [
     { id: 'cinema', label: 'קולנוע שחור מושלם', filterClass: 'oled-filter-cinema', desc: 'True Black' },
@@ -68,7 +92,8 @@
 
   // CATEGORY ICONS (matched by keyword)
   const CATEGORY_ICONS = [
-    [/ישראל/, '📡'],[/ילדים/, '🧸'], [/סרטים|סדרות/, '🎬'], [/ספורט/, '⚽'], [/מוזיקה|רדיו/, '🎵'],
+    [/אפליקציות|מנויים/, '📲'], [/רדיו/, '📻'],
+    [/ישראל/, '📡'], [/ילדים/, '🧸'], [/סרטים|סדרות/, '🎬'], [/ספורט/, '⚽'], [/מוזיקה/, '🎵'],
     [/לייף|בידור/, '🏖️'], [/דוקו|טבע/, '🌍'], [/חדשות|News/i, '📰'], [/מסורת|יהדות/, '🕍'], [/דת|אמונה/, '🙏'], [/בינלאומי|World/i, '🌐']
   ];
 
@@ -82,7 +107,11 @@
     cacheDomElements();
     loadTheme();
     loadFavorites();
+    loadRecents();
+    document.body.classList.add('platform-' + PLATFORM);
     loadChannels();
+    setupNativeBridge();
+    setupGetApp();
     setupClock();
     setupOledMode();
     setupRetroMode();
@@ -142,6 +171,14 @@
       heroBtnPlay: $('hero-btn-play'),
       heroBtnDub: $('hero-btn-dub'),
       heroBtnFav: $('hero-btn-fav'),
+      heroNote: $('hero-note'),
+
+      // "Get the app" panel
+      btnGetApp: $('btn-get-app'),
+      getAppModal: $('getapp-modal'),
+      getAppTitle: $('getapp-title'),
+      getAppDesc: $('getapp-desc'),
+      btnCloseGetApp: $('btn-close-getapp'),
 
       // Picture modes
       btnOled: $('btn-oled-mode'),
@@ -360,6 +397,102 @@
     });
   }
 
+  // RECENTLY WATCHED
+  function loadRecents() {
+    try {
+      const saved = JSON.parse(localStorage.getItem('israel_tv_recents') || '[]');
+      state.recents = Array.isArray(saved) ? saved.slice(0, MAX_RECENTS) : [];
+    } catch (e) {
+      state.recents = [];
+    }
+  }
+
+  function addRecent(ch) {
+    const had = state.recents.length;
+    state.recents = [ch.id, ...state.recents.filter(id => id !== ch.id)].slice(0, MAX_RECENTS);
+    try { localStorage.setItem('israel_tv_recents', JSON.stringify(state.recents)); } catch (e) {}
+    // The category list only needs a rebuild when "recent" appears for the first time.
+    if (!had) { buildCategories(); }
+    else {
+      const cat = state.categories.find(c => c.id === 'RECENT');
+      if (cat) cat.count = state.recents.length;
+    }
+  }
+
+  // NATIVE APPS BRIDGE (Android / Windows) + opening the TV-service apps
+  function setupNativeBridge() {
+    // The Android / Windows shells send remote keys (Back, colour keys, CH+/-) through here.
+    window.__itvKey = (code) => handleKeyDown({
+      keyCode: code, which: code, target: document.body, preventDefault() {}, stopPropagation() {}
+    });
+    // Samsung remotes only send these keys to apps that ask for them.
+    if (PLATFORM === 'tizen' && window.tizen && window.tizen.tvinputdevice) {
+      ['ColorF0Red', 'ColorF1Green', 'ColorF2Yellow', 'ColorF3Blue', 'ChannelUp', 'ChannelDown', 'MediaPlayPause',
+        '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'].forEach(k => {
+        try { window.tizen.tvinputdevice.registerKey(k); } catch (e) {}
+      });
+    }
+  }
+
+  function webosLaunch(id, params) {
+    try {
+      const bridge = new window.PalmServiceBridge();
+      bridge.call('luna://com.webos.applicationManager/launch', JSON.stringify({ id, params: params || {} }));
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  /** Opens a TV-service app (Partner / Cellcom / STING / yes / HOT ...): the installed app on Android, else its site. */
+  function openServiceApp(ch) {
+    if (PLATFORM === 'android' && window.AndroidApp.openApp) {
+      window.AndroidApp.openApp(ch.androidTv || '', ch.android || '', ch.site || ch.url);
+      showToast(`📲 פותח את ${ch.name}...`);
+      return;
+    }
+    if (PLATFORM === 'windows') {
+      window.chrome.webview.postMessage(JSON.stringify({ open: ch.site || ch.url }));
+      showToast(`🌐 פותח את ${ch.name} בדפדפן`);
+      return;
+    }
+    if (PLATFORM === 'webos' && webosLaunch('com.webos.app.browser', { target: ch.site || ch.url })) {
+      showToast(`🌐 פותח את ${ch.name} בדפדפן הטלוויזיה`);
+      return;
+    }
+    window.open(ch.site || ch.url, '_blank', 'noopener');
+  }
+
+  // "GET THE APP" PANEL (web site only: downloads for every platform)
+  function setupGetApp() {
+    if (!el.getAppModal) return;
+    el.getAppModal.querySelectorAll('a[data-asset]').forEach(a => {
+      a.href = a.dataset.asset ? `${RELEASES}/download/${a.dataset.asset}` : RELEASES;
+    });
+    if (el.btnGetApp) {
+      el.btnGetApp.classList.toggle('hidden', PLATFORM !== 'web' && PLATFORM !== 'local');
+      el.btnGetApp.addEventListener('click', () => openGetApp());
+    }
+    if (el.btnCloseGetApp) el.btnCloseGetApp.addEventListener('click', closeGetApp);
+    el.getAppModal.addEventListener('click', (e) => { if (e.target === el.getAppModal) closeGetApp(); });
+  }
+
+  function openGetApp(ch) {
+    state.getAppOpen = true;
+    el.getAppTitle.textContent = ch ? `"${ch.name}" זמין באפליקציה` : 'ישראל TV+ לכל המכשירים';
+    el.getAppDesc.textContent = ch
+      ? 'הערוץ משדר בפרוטוקול HTTP, ודפדפנים חוסמים שידור כזה מתוך אתר מאובטח. באפליקציה הוא פועל – וגם כל שאר הערוצים.'
+      : 'באפליקציות פועלים כל הערוצים (גם אלה שהדפדפן חוסם), עם שלט רחוק, מועדפים ודיבוב לעברית.';
+    el.getAppModal.classList.remove('hidden');
+    const first = el.getAppModal.querySelector('.getapp-item');
+    if (first) first.focus();
+  }
+
+  function closeGetApp() {
+    state.getAppOpen = false;
+    el.getAppModal.classList.add('hidden');
+  }
+
   // CLOCK
   function setupClock() {
     function update() {
@@ -503,6 +636,9 @@
     if (state.favorites.length > 0) {
       list.push({ id: 'FAVORITES', name: 'מועדפים', icon: '⭐', count: state.favorites.length });
     }
+    if (state.recents.length > 0) {
+      list.push({ id: 'RECENT', name: 'צפית לאחרונה', icon: '🕘', count: state.recents.length });
+    }
 
     const foreignCount = state.allChannels.filter(c => Dub && Dub.isForeign(c)).length;
     if (foreignCount) {
@@ -512,11 +648,14 @@
     // Ordered categories
     const priority = [
       'ערוצי ישראל - שידור חי',
+      'רדיו ישראלי (Israeli Radio)',
+      'מנויים ואפליקציות (TV Apps)',
       'ילדים ונוער (בעברית)',
       'חדשות מהעולם (News)',
       'סרטים וסדרות (Movies & Series)',
       'ספורט (Sports)',
       'ילדים מהעולם (Kids World)',
+      'מוזיקה (Music TV)',
       'מוזיקה ורדיו חי (Music & Radio)',
       'טבע ודוקו (Documentary & Nature)',
       'לייף סטייל ובידור',
@@ -578,6 +717,9 @@
 
     if (state.activeCategory === 'FAVORITES') {
       result = result.filter(c => state.favorites.includes(c.id));
+    } else if (state.activeCategory === 'RECENT') {
+      const byId = new Map(result.map(c => [c.id, c]));
+      result = state.recents.map(id => byId.get(id)).filter(Boolean);
     } else if (state.activeCategory === 'DUB') {
       result = result.filter(c => Dub && Dub.isForeign(c));
     } else if (state.activeCategory !== 'ALL') {
@@ -646,7 +788,9 @@
       const isFav = state.favorites.includes(ch.id);
       const foreign = Dub && Dub.isForeign(ch);
 
-      card.className = `channel-card${isPlaying ? ' is-playing' : ''}${isFav ? ' is-fav' : ''}`;
+      const app = isApp(ch), radio = isRadioCh(ch), locked = appOnly(ch);
+      card.className = `channel-card${isPlaying ? ' is-playing' : ''}${isFav ? ' is-fav' : ''}` +
+        `${app ? ' is-app' : ''}${radio ? ' is-radio' : ''}${locked ? ' is-locked' : ''}`;
       card.dataset.index = idx;
       card.dataset.id = ch.id;
       card.style.setProperty('--card-hue', hueOf(ch.id));
@@ -655,10 +799,12 @@
         <div class="card-top">
           <span class="channel-num-badge">${ch.number}</span>
           <div class="card-top-right">
-            <span class="card-playing-indicator"><span class="pulse-dot"></span>משדר</span>
+            <span class="card-playing-indicator"><span class="pulse-dot"></span>${radio ? 'מנגן' : 'משדר'}</span>
             <span class="card-fav-star">⭐</span>
             ${foreign ? `<span class="dub-chip" title="ניתן לדיבוב לעברית">🎙️ ${ch.lang === 'auto' ? 'זר' : ch.lang.toUpperCase()}</span>` : ''}
-            ${ch.lang === 'music' ? '<span class="music-chip" title="מוזיקה / רדיו">♪</span>' : ''}
+            ${app ? '<span class="app-chip" title="פותח את האפליקציה הרשמית">↗ אפליקציה</span>' : ''}
+            ${locked ? '<span class="lock-chip" title="פועל באפליקציות (אנדרואיד, Windows, טלוויזיה)">📲 באפליקציה</span>' : ''}
+            ${radio ? '<span class="music-chip" title="רדיו">📻</span>' : (ch.lang === 'music' ? '<span class="music-chip" title="מוזיקה">♪</span>' : '')}
           </div>
         </div>
         <div class="channel-logo-wrap">
@@ -666,6 +812,7 @@
           <div class="monogram hidden"></div>
         </div>
         <div class="channel-card-title">${escapeHtml(ch.name)}</div>
+        <div class="channel-card-meta">${escapeHtml(cardMeta(ch))}</div>
       `;
       setLogo(card.querySelector('.channel-logo-img'), card.querySelector('.monogram'), ch);
 
@@ -685,6 +832,15 @@
     });
     el.channelsGrid.appendChild(frag);
     gridRendered = want;
+  }
+
+  /** Short second line on a card: what it is + language. */
+  function cardMeta(ch) {
+    if (isApp(ch)) return 'שירות / אפליקציה רשמית';
+    if (isRadioCh(ch)) return 'רדיו בשידור חי';
+    const cat = splitCategoryName(ch.category).main.replace(/^ערוצי ישראל$/, 'ישראל');
+    const lang = Dub && Dub.isForeign(ch) && ch.lang !== 'auto' ? Dub.langName(ch.lang) : '';
+    return lang ? `${cat} · ${lang}` : cat;
   }
 
   function gridColumns() {
@@ -716,7 +872,19 @@
       el.heroLangTag.classList.toggle('hidden', !foreign);
       if (foreign) el.heroLangTag.textContent = `🎙️ ${Dub.langName(ch.lang)} ← דיבוב לעברית`;
     }
-    if (el.heroBtnDub) el.heroBtnDub.classList.toggle('hidden', !foreign);
+    const app = isApp(ch), locked = appOnly(ch);
+    if (el.heroBtnDub) el.heroBtnDub.classList.toggle('hidden', !foreign || app || locked);
+    if (el.heroBtnPlay) {
+      el.heroBtnPlay.innerHTML = app ? '<span>↗</span> פתיחת האפליקציה'
+        : locked ? '<span>📲</span> צפייה באפליקציה'
+        : isRadioCh(ch) ? '<span>🎧</span> האזנה' : '<span>▶</span> צפייה';
+    }
+    if (el.heroNote) {
+      el.heroNote.textContent = app ? (PLATFORM === 'android' ? 'נפתח באפליקציה הרשמית (אם אינה מותקנת – בחנות Google Play)' : 'נפתח באתר הרשמי של השירות')
+        : locked ? 'הדפדפן חוסם את השידור הזה – הוא פועל באפליקציות לאנדרואיד, Windows וטלוויזיה' : '';
+      el.heroNote.classList.toggle('hidden', !el.heroNote.textContent);
+    }
+    el.heroSpotlight.style.setProperty('--hero-img', ch.logo ? `url("${String(ch.logo).replace(/"/g, '%22')}")` : 'none');
 
     setLogo(el.heroLogo, el.heroMonogram, ch);
   }
@@ -813,10 +981,15 @@
 
   function playChannel(index) {
     if (index < 0 || index >= state.filteredChannels.length) return;
+    const channel = state.filteredChannels[index];
+
+    // Service apps open outside; http channels on the web site point to the apps.
+    if (isApp(channel)) { openServiceApp(channel); addRecent(channel); return; }
+    if (appOnly(channel)) { openGetApp(channel); return; }
 
     state.playingChannelIndex = index;
-    const channel = state.filteredChannels[index];
     state.playingChannel = channel;
+    addRecent(channel);
 
     el.channelsGrid.querySelectorAll('.channel-card').forEach((c, idx) => {
       c.classList.toggle('is-playing', idx === index);
@@ -1297,11 +1470,14 @@
   }
 
   function zapChannel(direction) {
-    if (state.filteredChannels.length === 0) return;
-    let next = state.playingChannelIndex + direction;
-    if (next < 0) next = state.filteredChannels.length - 1;
-    if (next >= state.filteredChannels.length) next = 0;
-
+    const list = state.filteredChannels;
+    if (list.length === 0) return;
+    let next = state.playingChannelIndex;
+    // skip service apps and (on the web site) channels that only play in the apps
+    for (let i = 0; i < list.length; i++) {
+      next = (next + direction + list.length) % list.length;
+      if (!isApp(list[next]) && !appOnly(list[next])) break;
+    }
     playChannel(next);
   }
 
@@ -1411,6 +1587,10 @@
 
   // SMART BACK BUTTON: NEVER ACCIDENTALLY EXITS!
   function handleBackKey() {
+    if (state.getAppOpen) {
+      closeGetApp();
+      return;
+    }
     if (state.settingsOpen) {
       closeSettings();
       return;
@@ -1484,7 +1664,13 @@
   function performActualExit() {
     showToast('להתראות!');
     try {
-      if (window.webOS && window.webOS.platformBack) {
+      if (PLATFORM === 'android' && window.AndroidApp.exit) {
+        window.AndroidApp.exit();
+      } else if (PLATFORM === 'windows') {
+        window.chrome.webview.postMessage(JSON.stringify({ exit: true }));
+      } else if (PLATFORM === 'tizen' && window.tizen) {
+        window.tizen.application.getCurrentApplication().exit();
+      } else if (window.webOS && window.webOS.platformBack) {
         window.webOS.platformBack();
       } else {
         window.close();
@@ -1519,6 +1705,15 @@
     resetScreensaverTimer();
 
     const code = e.keyCode || e.which;
+
+    // Samsung Tizen remote: Back = 10009, colour keys 403-406 like webOS, CH+/- = 427/428.
+    if (code === 10009) { e.preventDefault(); handleBackKey(); return; }
+
+    // "Get the app" panel: Back / Escape closes it, Tab / arrows move between the links.
+    if (state.getAppOpen) {
+      if (code === 461 || code === 27 || code === 8) { e.preventDefault(); closeGetApp(); }
+      return;
+    }
 
     // Settings dialog has its own navigation; text fields keep their keys.
     if (state.settingsOpen) {

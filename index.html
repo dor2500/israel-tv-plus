@@ -8,6 +8,8 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <link rel="icon" type="image/png" href="icon.png">
+  <link rel="apple-touch-icon" href="assets/app/icon-512.png">
+  <link rel="manifest" href="manifest.webmanifest">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800;900&display=swap">
@@ -59,6 +61,10 @@
 
       <!-- HEADER ACTIONS -->
       <div class="header-right">
+        <button id="btn-get-app" class="pill-btn getapp-pill hidden" title="הורדת האפליקציה לאנדרואיד, Android TV, Windows וטלוויזיות">
+          <span class="pill-icon">📲</span>
+          <span class="badge-text">הורדת האפליקציה</span>
+        </button>
         <button id="btn-dub-toggle" class="pill-btn dub-pill" title="דיבוב לעברית לערוצים זרים (D)">
           <span class="pill-icon">🎙️</span>
           <span id="dub-toggle-label" class="badge-text">דיבוב: כבוי</span>
@@ -88,6 +94,7 @@
 
         <!-- HERO CHANNEL SPOTLIGHT -->
         <div class="hero-spotlight" id="hero-spotlight">
+          <div class="hero-backdrop" aria-hidden="true"></div>
           <div class="hero-glow" id="hero-glow"></div>
           <div class="hero-left">
             <div class="hero-meta">
@@ -104,6 +111,7 @@
               <button class="hero-btn dub hidden" id="hero-btn-dub"><span>🎙️</span> צפייה עם דיבוב לעברית</button>
               <button class="hero-btn" id="hero-btn-fav"><span>☆</span> מועדפים</button>
             </div>
+            <p class="hero-note hidden" id="hero-note"></p>
           </div>
           <div class="hero-right">
             <div class="hero-logo-box" id="hero-logo-box">
@@ -393,6 +401,33 @@
       </div>
     </div>
 
+    <!-- GET THE APP: downloads for every platform (shown on the web site) -->
+    <div id="getapp-modal" class="getapp-modal hidden" role="dialog" aria-modal="true" aria-labelledby="getapp-title">
+      <div class="getapp-dialog">
+        <button id="btn-close-getapp" class="icon-btn getapp-close" title="סגירה (Esc)">✕</button>
+        <div class="getapp-hero">📲</div>
+        <h3 id="getapp-title">ישראל TV+ לכל המכשירים</h3>
+        <p id="getapp-desc" class="getapp-desc"></p>
+        <div class="getapp-grid">
+          <a class="getapp-item" data-asset="IsraelTVPlus-android.apk" target="_blank" rel="noopener">
+            <span class="gi-icon">🤖</span><span class="gi-name">אנדרואיד</span><span class="gi-sub">טלפון וטאבלט · APK</span></a>
+          <a class="getapp-item" data-asset="IsraelTVPlus-android.apk" target="_blank" rel="noopener">
+            <span class="gi-icon">📺</span><span class="gi-name">Android TV / Google TV</span><span class="gi-sub">כולל Xiaomi, Sony, TCL, Fire TV</span></a>
+          <a class="getapp-item" data-asset="IsraelTVPlus-windows-setup.exe" target="_blank" rel="noopener">
+            <span class="gi-icon">🪟</span><span class="gi-name">Windows</span><span class="gi-sub">התקנה · Windows 10/11</span></a>
+          <a class="getapp-item" data-asset="IsraelTVPlus-windows-portable.zip" target="_blank" rel="noopener">
+            <span class="gi-icon">💼</span><span class="gi-name">Windows נייד</span><span class="gi-sub">ZIP ללא התקנה</span></a>
+          <a class="getapp-item" data-asset="com.israeltv.plus_all.ipk" target="_blank" rel="noopener">
+            <span class="gi-icon">🖥️</span><span class="gi-name">LG webOS</span><span class="gi-sub">IPK · Developer Mode</span></a>
+          <a class="getapp-item" data-asset="IsraelTVPlus-tizen-project.zip" target="_blank" rel="noopener">
+            <span class="gi-icon">🔷</span><span class="gi-name">Samsung Tizen</span><span class="gi-sub">פרויקט לחתימה ב-Tizen Studio</span></a>
+          <a class="getapp-item" href="https://dor2500.github.io/israel-tv-plus/" target="_blank" rel="noopener">
+            <span class="gi-icon">🍎</span><span class="gi-name">iPhone / Mac</span><span class="gi-sub">Safari ← שיתוף ← הוסף למסך הבית</span></a>
+        </div>
+        <p class="getapp-foot">כל הקבצים בעמוד ה-Releases של הפרויקט ב-GitHub.</p>
+      </div>
+    </div>
+
     <!-- OLED SCREENSAVER / BURN-IN PROTECTION OVERLAY -->
     <div id="oled-screensaver" class="oled-screensaver hidden">
       <div class="screensaver-content" id="screensaver-content">
@@ -417,5 +452,11 @@
   </div>
 
   <script src="app.js"></script>
+  <script>
+    // Installable web app (PWA) on the https site only; the native apps load from local files.
+    if ('serviceWorker' in navigator && location.protocol === 'https:') {
+      navigator.serviceWorker.register('sw.js').catch(function () {});
+    }
+  </script>
 </body>
 </html>
