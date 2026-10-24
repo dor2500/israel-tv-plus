@@ -3203,17 +3203,19 @@
   }
 
   // ================================================================== Apple TV+ (tvOS) Flagship Engine
+  // ================================================================== Apple TV+ (tvOS) Flagship Engine
   var tvState = {
     zone: 'shelf', // 'tabs' | 'shelf'
     tabIdx: 0,
     tabs: [
-      { id: 'now', name: 'צפייה כעת' },
-      { id: 'israel', name: 'ערוצי ישראל' },
-      { id: 'sports', name: 'ספורט' },
-      { id: 'kids', name: 'ילדים' },
-      { id: 'movies', name: 'סרטים ודיבוב' },
-      { id: 'favs', name: 'מועדפים' },
-      { id: 'search', name: '🔍' }
+      { id: 'favs', name: 'מועדפים', shelfIndex: 0 },
+      { id: 'broadcast', name: 'ערוצי ברודקאסט', shelfIndex: 1 },
+      { id: 'sports', name: 'ספורט חי', shelfIndex: 2 },
+      { id: 'movies', name: 'סרטים וסדרות', shelfIndex: 3 },
+      { id: 'kids', name: 'ילדים ונוער', shelfIndex: 4 },
+      { id: 'ent', name: 'בידור ומוזיקה', shelfIndex: 5 },
+      { id: 'world', name: 'ערוצים מהעולם', shelfIndex: 6 },
+      { id: 'search', name: 'חיפוש', shelfIndex: -1 }
     ],
     shelves: [],
     shelfIdx: 0,
@@ -3226,6 +3228,7 @@
 
   function initTvOS() {
     setupTvTabs();
+    buildAllTvShelves();
     selectTvTab(0);
 
     // LG webOS Magic Remote wheel navigation
@@ -3275,16 +3278,26 @@
   }
 
   function selectTvTab(idx) {
+    var tab = tvState.tabs[idx];
+    if (!tab) return;
     tvState.tabIdx = idx;
     var tabEls = el.tvTopPill ? el.tvTopPill.querySelectorAll('.tv-tab') : [];
     for (var i = 0; i < tabEls.length; i++) {
       toggleClass(tabEls[i], 'active', i === idx);
     }
     updateTvPillPos();
-    buildTvShelvesForTab(tvState.tabs[idx].id);
-    tvState.shelfIdx = 0;
-    tvState.cardIdx = 0;
-    markTvFocus();
+
+    if (tab.id === 'search') {
+      focusSearch();
+      return;
+    }
+
+    if (tab.shelfIndex >= 0 && tab.shelfIndex < tvState.shelves.length) {
+      tvState.shelfIdx = tab.shelfIndex;
+      tvState.cardIdx = 0;
+      tvState.zone = 'shelf';
+      markTvFocus();
+    }
   }
 
   function updateTvPillPos() {
@@ -3298,7 +3311,7 @@
     el.tvPillIndicator.style.width = width + 'px';
   }
 
-  function buildTvShelvesForTab(tabId) {
+  function buildAllTvShelves() {
     var shelves = [];
     var all = state.all || [];
 
@@ -3318,54 +3331,53 @@
       });
     }
 
-    if (tabId === 'now') {
-      var topIds = ['kan11', 'keshet12', 'reshet13', 'now14', 'i24news_he', 'sport5', 'one_hd', 'makan33', 'knesset99', 'hot3', 'kan_educational'];
-      var topChannels = byIds(topIds);
-      if (topChannels.length < 5) topChannels = all.slice(0, 15);
-      shelves.push({ title: 'ערוצים נבחרים ומובילים', channels: topChannels });
-
-      var newsChannels = filterByKeyword('חדשות');
-      if (newsChannels.length) shelves.push({ title: 'חדשות ואקטואליה בשידור חי', channels: newsChannels.slice(0, 24) });
-
-      var sportsChannels = filterByKeyword('ספורט');
-      if (sportsChannels.length) shelves.push({ title: 'ספורט ישראלי ובינלאומי', channels: sportsChannels.slice(0, 24) });
-
-      var entChannels = filterByKeyword('סדרות');
-      if (entChannels.length) shelves.push({ title: 'סדרות ובידור', channels: entChannels.slice(0, 24) });
-
-      var radioChannels = all.filter(isRadioCh);
-      if (radioChannels.length) shelves.push({ title: 'רדיו ישראלי חי', channels: radioChannels.slice(0, 24) });
-    } else if (tabId === 'israel') {
-      var broadcast = all.filter(function (c) { return ['kan11', 'keshet12', 'reshet13', 'now14', 'i24news_he', 'ch9', 'makan33', 'knesset99', 'kan_educational'].indexOf(c.id) !== -1; });
-      shelves.push({ title: 'ערוצי ברודקאסט ישראליים', channels: broadcast.length ? broadcast : all.slice(0, 10) });
-
-      var specific = all.filter(function (c) { return ['hala_tv', 'musawa', 'hidabroot', 'ch16', 'kabbalah', 'ietv', 'maran', 'tov'].indexOf(c.id) !== -1; });
-      if (specific.length) shelves.push({ title: 'ערוצים ייעודיים ומגזריים', channels: specific });
-
-      var ilGeneral = all.filter(function (c) { return (c.category || '').indexOf('ישראל') !== -1; });
-      shelves.push({ title: 'כל ערוצי ישראל', channels: ilGeneral.length ? ilGeneral : all.slice(0, 30) });
-    } else if (tabId === 'sports') {
-      var sports = filterByKeyword('ספורט');
-      shelves.push({ title: 'ערוצי ספורט ישראליים', channels: sports.slice(0, 15) });
-      if (sports.length > 15) shelves.push({ title: 'ספורט בינלאומי בשידור חי', channels: sports.slice(15, 40) });
-    } else if (tabId === 'kids') {
-      var kids = filterByKeyword('ילדים');
-      shelves.push({ title: 'ערוצי ילדים ישראליים', channels: kids.slice(0, 20) });
-      if (kids.length > 20) shelves.push({ title: 'אנימציה ובידור לילדים', channels: kids.slice(20, 45) });
-    } else if (tabId === 'movies') {
-      var movies = filterByKeyword('סרטים');
-      shelves.push({ title: 'סרטים עם דיבוב ועברית', channels: movies.slice(0, 20) });
-      if (movies.length > 20) shelves.push({ title: 'ערוצי קולנוע וסרטים', channels: movies.slice(20, 45) });
-    } else if (tabId === 'favs') {
-      var favChannels = byIds(state.favorites || []);
-      if (!favChannels.length) favChannels = all.slice(0, 8);
-      shelves.push({ title: 'הערוצים המועדפים שלי', channels: favChannels });
-
-      var recentChannels = byIds(state.recents || []);
-      if (recentChannels.length) shelves.push({ title: 'נצפו לאחרונה', channels: recentChannels });
-    } else if (tabId === 'search') {
-      shelves.push({ title: 'כל הערוצים', channels: all.slice(0, 40) });
+    // 1. צפייה לאחרונה ומועדפים (Continue Watching & Favorites)
+    var favIds = state.favorites || [];
+    var recentIds = state.recents || [];
+    var combinedIds = [];
+    favIds.forEach(function (id) { if (combinedIds.indexOf(id) === -1) combinedIds.push(id); });
+    recentIds.forEach(function (id) { if (combinedIds.indexOf(id) === -1) combinedIds.push(id); });
+    var favRecents = byIds(combinedIds);
+    if (favRecents.length < 5) {
+      var topDefaults = byIds(['keshet12', 'reshet13', 'kan11', 'now14', 'i24news_he', 'sport5', 'one_hd', 'makan33', 'knesset99', 'hot3']);
+      topDefaults.forEach(function (c) { if (favRecents.indexOf(c) === -1) favRecents.push(c); });
     }
+    shelves.push({ title: 'צפייה לאחרונה ומועדפים', channels: favRecents });
+
+    // 2. ערוצי ברודקאסט וחדשות (כאן 11, קשת 12, רשת 13, עכשיו 14, i24NEWS, ערוץ הכנסת)
+    var broadcastPrimary = byIds(['kan11', 'keshet12', 'reshet13', 'now14', 'i24news_he', 'ch9', 'makan33', 'knesset99', 'kan_educational', 'tov', 'hala_tv', 'musawa', 'hidabroot', 'ch16', 'kabbalah', 'ietv', 'maran']);
+    var newsGeneral = filterByKeyword('חדשות');
+    newsGeneral.forEach(function (c) { if (broadcastPrimary.indexOf(c) === -1) broadcastPrimary.push(c); });
+    shelves.push({ title: 'ערוצי ברודקאסט וחדשות', channels: broadcastPrimary });
+
+    // 3. ספורט בשידור חי (כל ערוצי הספורט)
+    var sportsChannels = filterByKeyword('ספורט');
+    shelves.push({ title: 'ספורט בשידור חי', channels: sportsChannels.length ? sportsChannels : all.slice(0, 40) });
+
+    // 4. סרטים וסדרות (ערוצי סרטים, דרמה ואקשן)
+    var moviesChannels = all.filter(function (c) {
+      var str = ((c.category || '') + ' ' + (c.name || '')).toLowerCase();
+      return str.indexOf('סרט') !== -1 || str.indexOf('סדרות') !== -1 || str.indexOf('קולנוע') !== -1 || str.indexOf('movie') !== -1 || str.indexOf('cinema') !== -1;
+    });
+    shelves.push({ title: 'סרטים וסדרות', channels: moviesChannels.length ? moviesChannels : all.slice(0, 40) });
+
+    // 5. ילדים ונוער (ערוצי ילדים ודיבוב לעברית)
+    var kidsChannels = filterByKeyword('ילדים');
+    shelves.push({ title: 'ילדים ונוער', channels: kidsChannels.length ? kidsChannels : all.slice(0, 40) });
+
+    // 6. בידור, טבע ומוזיקה (ערוץ 24, דוקו, מוזיקה ולייף סטייל)
+    var entChannels = all.filter(function (c) {
+      var str = ((c.category || '') + ' ' + (c.name || '')).toLowerCase();
+      return str.indexOf('בידור') !== -1 || str.indexOf('טבע') !== -1 || str.indexOf('דוקו') !== -1 || str.indexOf('מוזיקה') !== -1 || str.indexOf('music') !== -1 || str.indexOf('24') !== -1;
+    });
+    shelves.push({ title: 'בידור, טבע ומוזיקה', channels: entChannels.length ? entChannels : all.slice(0, 40) });
+
+    // 7. ערוצים בינלאומיים (חדשות וערוצים מהעולם)
+    var worldChannels = all.filter(function (c) {
+      var cat = c.category || '';
+      return cat.indexOf('ישראל') === -1 && cat.indexOf('רדיו') === -1;
+    });
+    shelves.push({ title: 'ערוצים בינלאומיים מהעולם', channels: worldChannels.length ? worldChannels : all.slice(0, 80) });
 
     tvState.shelves = shelves;
     renderTvShelvesHtml();
@@ -3378,20 +3390,23 @@
       html += '<section class="tv-shelf" data-shelf="' + sIdx + '">';
       html += '<h2 class="tv-shelf-title">' + esc(shelf.title) + '</h2>';
       html += '<div class="tv-shelf-row-wrapper">';
-      html += '<div class="tv-shelf-row">';
+      html += '<div class="shelf-track tv-shelf-row">';
       shelf.channels.forEach(function (ch, cIdx) {
         var flags = '<span class="f-live">● LIVE</span>' + (isFav(ch) ? '<span>⭐</span>' : '') +
           (isRadioCh(ch) ? '<span>📻</span>' : '') + (appOnly(ch) ? '<span>📲</span>' : '');
-        html += '<div class="tv-card' + (isFav(ch) ? ' is-fav' : '') + '" data-shelf="' + sIdx + '" data-card="' + cIdx + '">';
-        html += '<div class="tv-card-visual" style="background-image:' + tintOf(ch) + '">';
+        html += '<div class="tv-card channel-card' + (isFav(ch) ? ' is-fav' : '') + '" data-shelf="' + sIdx + '" data-card="' + cIdx + '">';
+        html += '<div class="tv-card-visual tv-card-media" style="background-image:' + tintOf(ch) + '">';
         html += '<div class="tv-card-glare"></div>';
         html += '<div class="tv-card-num">' + ch.number + '</div>';
         html += '<div class="tv-card-badges">' + flags + '</div>';
-        html += '<img alt="" loading="lazy" />';
+        html += '<img alt="" loading="lazy" class="tv-card-logo" />';
         html += '<div class="mono hidden"></div>';
-        html += '</div>';
+        html += '<div class="tv-card-bottom-scrim"></div>';
+        html += '<div class="tv-card-text-overlay">';
         html += '<div class="tv-card-name">' + esc(ch.name) + '</div>';
         html += '<div class="tv-card-meta">' + esc(cardMeta(ch)) + '</div>';
+        html += '</div>';
+        html += '</div>';
         html += '</div>';
       });
       html += '</div></div></section>';
@@ -3449,31 +3464,49 @@
         var curCardEl = cardEls[tvState.cardIdx];
         if (curCardEl) curCardEl.classList.add('focused');
 
-        // Fluid Shelf Camera Tracking: translate horizontal track with spring interpolation
-        // In RTL Hebrew layout, card step: 290px card width + 24px gap = 314px
-        var rowEl = curShelfEl.querySelector('.tv-shelf-row');
+        // Fluid Shelf Camera Tracking: 280px card + 24px gap = 304px per step
+        var rowEl = curShelfEl.querySelector('.shelf-track') || curShelfEl.querySelector('.tv-shelf-row');
         if (rowEl) {
-          var tx = tvState.cardIdx * 314;
+          var tx = tvState.cardIdx * 304;
           rowEl.style.transform = 'translate3d(' + tx + 'px, 0, 0)';
         }
       }
 
-      // Vertical Shelf Cascade: translateY the shelves track
-      var ty = tvState.shelfIdx * 285;
+      // Vertical Shelf Cascade: translateY the shelves track (-1 * activeRow * 230px)
+      var ty = tvState.shelfIdx * 230;
       shelfTrack.style.transform = 'translate3d(0, -' + ty + 'px, 0)';
 
-      // Cascade dimming: dim unfocused rows above to opacity: 0.25
+      // Cascade dimming: rows above active row fade to opacity: 0 so they never cover top Hero info,
+      // active row at opacity: 1, next row below visible at opacity: 0.5
       for (var s = 0; s < shelfEls.length; s++) {
         if (s < tvState.shelfIdx) {
-          shelfEls[s].style.opacity = '0.25';
+          shelfEls[s].style.opacity = '0';
           shelfEls[s].style.transform = 'scale3d(0.96, 0.96, 1)';
+          shelfEls[s].style.pointerEvents = 'none';
         } else if (s === tvState.shelfIdx) {
           shelfEls[s].style.opacity = '1';
           shelfEls[s].style.transform = 'scale3d(1, 1, 1)';
-        } else {
-          shelfEls[s].style.opacity = '0.75';
+          shelfEls[s].style.pointerEvents = 'auto';
+        } else if (s === tvState.shelfIdx + 1) {
+          shelfEls[s].style.opacity = '0.5';
           shelfEls[s].style.transform = 'scale3d(0.98, 0.98, 1)';
+          shelfEls[s].style.pointerEvents = 'none';
+        } else {
+          shelfEls[s].style.opacity = '0';
+          shelfEls[s].style.transform = 'scale3d(0.96, 0.96, 1)';
+          shelfEls[s].style.pointerEvents = 'none';
         }
+      }
+
+      // Sync top pill bar active tab with current shelf
+      if (el.tvTopPill) {
+        var tabEls = el.tvTopPill.querySelectorAll('.tv-tab');
+        for (var t = 0; t < tvState.tabs.length; t++) {
+          var isCurrentShelf = tvState.tabs[t].shelfIndex === tvState.shelfIdx;
+          toggleClass(tabEls[t], 'active', isCurrentShelf);
+          if (isCurrentShelf) tvState.tabIdx = t;
+        }
+        updateTvPillPos();
       }
 
       var ch = getCurTvCh();
@@ -3483,6 +3516,7 @@
       }
     }
   }
+
 
   function updateTvHero(ch) {
     if (!ch || !el.tvHeroMeta) return;
@@ -3543,8 +3577,13 @@
     if (streamUrl.indexOf('.m3u8') !== -1 && window.Hls && Hls.isSupported()) {
       var hls = new Hls({
         capLevelToPlayerSize: true,
-        maxBufferLength: 8,
-        maxMaxBufferLength: 14,
+        maxBufferLength: 4,
+        maxMaxBufferLength: 8,
+        liveSyncDurationCount: 1,
+        liveMaxLatencyDurationCount: 3,
+        maxLiveSyncPlaybackRate: 1.15,
+        liveDurationInfinity: true,
+        lowLatencyMode: true,
         startLevel: 0
       });
       hls.loadSource(streamUrl);

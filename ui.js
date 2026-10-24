@@ -108,15 +108,16 @@ window.ITV_UI = (function (I) {
     '<div class="tv-backdrop-scrim" id="tv-backdrop-scrim"></div>' +
   '</div>' +
 
-  '<nav class="tv-top-pill tv" id="tv-top-pill" role="tablist">' +
+  '<nav class="tv-top-pill tv shelves-viewport" id="tv-top-pill" role="tablist">' +
     '<div class="tv-pill-indicator" id="tv-pill-indicator"></div>' +
-    '<button class="tv-tab active" data-tab="now" role="tab">צפייה כעת</button>' +
-    '<button class="tv-tab" data-tab="israel" role="tab">ערוצי ישראל</button>' +
-    '<button class="tv-tab" data-tab="sports" role="tab">ספורט</button>' +
-    '<button class="tv-tab" data-tab="kids" role="tab">ילדים</button>' +
-    '<button class="tv-tab" data-tab="movies" role="tab">סרטים ודיבוב</button>' +
-    '<button class="tv-tab" data-tab="favs" role="tab">מועדפים</button>' +
-    '<button class="tv-tab tv-tab-search" data-tab="search" role="tab" aria-label="חיפוש">🔍</button>' +
+    '<button class="tv-tab active" data-tab="favs" role="tab">מועדפים</button>' +
+    '<button class="tv-tab" data-tab="broadcast" role="tab">ערוצי ברודקאסט</button>' +
+    '<button class="tv-tab" data-tab="sports" role="tab">ספורט חי</button>' +
+    '<button class="tv-tab" data-tab="movies" role="tab">סרטים וסדרות</button>' +
+    '<button class="tv-tab" data-tab="kids" role="tab">ילדים ונוער</button>' +
+    '<button class="tv-tab" data-tab="ent" role="tab">בידור ומוזיקה</button>' +
+    '<button class="tv-tab" data-tab="world" role="tab">ערוצים מהעולם</button>' +
+    '<button class="tv-tab tv-tab-search" data-tab="search" role="tab" aria-label="חיפוש">חיפוש</button>' +
   '</nav>' +
 
   '<div class="tv-stage tv" id="tv-stage">' +

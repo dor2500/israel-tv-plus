@@ -131,10 +131,20 @@ private fun buildPlayer(context: Context): ExoPlayer {
     val http = DefaultHttpDataSource.Factory()
         .setUserAgent(USER_AGENT)
         .setAllowCrossProtocolRedirects(true)
-        .setConnectTimeoutMs(12_000)
-        .setReadTimeoutMs(15_000)
+        .setConnectTimeoutMs(8_000)
+        .setReadTimeoutMs(10_000)
+    val loadControl = androidx.media3.exoplayer.DefaultLoadControl.Builder()
+        .setBufferDurationsMs(
+            /* minBufferMs = */ 1_500,
+            /* maxBufferMs = */ 4_000,
+            /* bufferForPlaybackMs = */ 500,
+            /* bufferForPlaybackAfterRebufferMs = */ 1_000,
+        )
+        .setPrioritizeTimeOverSizeThresholds(true)
+        .build()
     return ExoPlayer.Builder(context)
         .setMediaSourceFactory(DefaultMediaSourceFactory(http))
+        .setLoadControl(loadControl)
         .setAudioAttributes(
             AudioAttributes.Builder().setUsage(C.USAGE_MEDIA).setContentType(C.AUDIO_CONTENT_TYPE_MOVIE).build(),
             /* handleAudioFocus = */ true,
@@ -219,7 +229,16 @@ fun PlayerScreen(
             buffering = false
             return@LaunchedEffect
         }
-        val item = MediaItem.Builder().setUri(url)
+        val liveConfig = MediaItem.LiveConfiguration.Builder()
+            .setTargetOffsetMs(1500)
+            .setMinOffsetMs(500)
+            .setMaxOffsetMs(3500)
+            .setMinPlaybackSpeed(0.97f)
+            .setMaxPlaybackSpeed(1.06f)
+            .build()
+        val item = MediaItem.Builder()
+            .setUri(url)
+            .setLiveConfiguration(liveConfig)
         if (current.url.contains(".m3u8", ignoreCase = true)) item.setMimeType(MimeTypes.APPLICATION_M3U8)
         player.setMediaItem(item.build())
         player.volume = 1.0f
