@@ -3555,10 +3555,13 @@
         lazyLogo(cEl.querySelector('img'), cEl.querySelector('.mono'), ch);
 
         cEl.addEventListener('mouseenter', function () {
+          var oldCards = document.querySelectorAll('.tv-card.focused');
+          for (var oi = 0; oi < oldCards.length; oi++) oldCards[oi].classList.remove('focused');
+          cEl.classList.add('focused');
           tvState.zone = 'shelf';
           tvState.shelfIdx = sIdx;
           tvState.cardIdx = cIdx;
-          markTvFocus();
+          updateTvHero(ch);
         });
         cEl.addEventListener('click', function () {
           tvState.zone = 'shelf';
@@ -3602,37 +3605,30 @@
         var curCardEl = cardEls[tvState.cardIdx];
         if (curCardEl) curCardEl.classList.add('focused');
 
-        // Fluid Shelf Camera Tracking: 280px card + 24px gap = 304px per step
+        // Smooth RTL Sliding Window: 260px card + 20px margin = 280px step
+        // 5 cards fit on screen without any sliding needed
         var rowEl = curShelfEl.querySelector('.shelf-track') || curShelfEl.querySelector('.tv-shelf-row');
         if (rowEl) {
-          var tx = tvState.cardIdx * 304;
+          var tx = tvState.cardIdx >= 4 ? (tvState.cardIdx - 3) * 280 : 0;
           rowEl.style.transform = 'translate3d(' + tx + 'px, 0, 0)';
         }
       }
 
-      // Vertical Shelf Cascade: translateY the shelves track (-1 * activeRow * 230px)
-      var ty = tvState.shelfIdx * 230;
+      // Vertical Shelf Cascade: translateY the shelves track (-1 * activeRow * 232px)
+      var ty = tvState.shelfIdx * 232;
       shelfTrack.style.transform = 'translate3d(0, -' + ty + 'px, 0)';
 
-      // Cascade dimming: rows above active row fade to opacity: 0 so they never cover top Hero info,
-      // active row at opacity: 1, next row below visible at opacity: 0.5
+      // All shelves visible: active row full bright, upcoming rows clearly visible (0.78), past rows dimmed (0.35)
       for (var s = 0; s < shelfEls.length; s++) {
         if (s < tvState.shelfIdx) {
-          shelfEls[s].style.opacity = '0';
+          shelfEls[s].style.opacity = '0.35';
           shelfEls[s].style.transform = 'scale3d(0.96, 0.96, 1)';
-          shelfEls[s].style.pointerEvents = 'none';
         } else if (s === tvState.shelfIdx) {
           shelfEls[s].style.opacity = '1';
           shelfEls[s].style.transform = 'scale3d(1, 1, 1)';
-          shelfEls[s].style.pointerEvents = 'auto';
-        } else if (s === tvState.shelfIdx + 1) {
-          shelfEls[s].style.opacity = '0.5';
-          shelfEls[s].style.transform = 'scale3d(0.98, 0.98, 1)';
-          shelfEls[s].style.pointerEvents = 'none';
         } else {
-          shelfEls[s].style.opacity = '0';
-          shelfEls[s].style.transform = 'scale3d(0.96, 0.96, 1)';
-          shelfEls[s].style.pointerEvents = 'none';
+          shelfEls[s].style.opacity = '0.78';
+          shelfEls[s].style.transform = 'scale3d(0.98, 0.98, 1)';
         }
       }
 
@@ -3839,6 +3835,10 @@
         return;
       }
     } else if (tvState.zone === 'hero') {
+      if (code === 38) { // Up from hero opens Settings
+        openSettings();
+        return;
+      }
       if (code === 37) { // Left (next CTA button in RTL)
         if (tvState.heroBtnIdx < 3) {
           tvState.heroBtnIdx++;

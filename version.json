@@ -1,50 +1,41 @@
 {
-  "version": "3.6.2",
-  "code": 202610242231,
-  "app": 362,
+  "version": "3.6.3",
+  "code": 202610242239,
+  "app": 363,
   "shell": 3,
   "date": "2026-10-24",
-  "notes": [
-    "עיצוב עתידני מהפכני ובלתי ניתן לזיהוי עבור LG webOS (Futuristic Prism TV OS):",
-    "עיצוב חדש לחלוטין ששונה מקצה לקצה מכל מה שהיה ב-3.6.0: אי אלגנטי צף בראש המסך (⚡ ISRAEL TV ULTRA), כרטיסי 3D Acrylic Glass עם הילת Prism צבעונית רדיאלית ותאורת ניאון Cyan-Magenta עשירה.",
-    "פתרון מלא ונגישות מוחלטת למסך ההגדרות (Settings Overhaul):",
-    "הוספת כפתור הגדרות מהיר זוהר [⚙️ הגדרות] בסרגל העליון הצף לצד השעון ומזג האוויר.",
-    "כפתור הגדרות ייעודי [⚙️ הגדרות] בכפתורי הפעולה של ההירו (Billboard CTAs).",
-    "תיקון שכבת התצוגה (z-index 99999) כך שמסך ההגדרות מוצג בבירור ובמלואו מעל כל שכבות הטלוויזיה עם זכוכית OLED חלבית יוקרתית.",
-    "התקנה ועדכון ישירים לטלוויזיה של המשתמש (LG webOS @ 192.168.1.5):",
-    "שימוש ב-webOS CLI הרשמי (ares-install & ares-launch) להתקנה חיה ומיידית על גבי מסך ה-OLED ללא צורך בהתערבות ידנית."
-  ],
+  "notes": [],
   "native": {
     "android": {
-      "version": "3.6.2",
-      "app": 362,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.6.2/IsraelTVPlus-android.apk"
+      "version": "3.6.3",
+      "app": 363,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.6.3/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "3.6.2",
-      "app": 362,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.6.2/IsraelTVPlus-windows-setup.exe"
+      "version": "3.6.3",
+      "app": 363,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.6.3/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "3.6.2",
-      "app": 362,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.6.2/com.israeltv.plus_all.ipk",
+      "version": "3.6.3",
+      "app": 363,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.6.3/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "3.6.2",
-      "app": 362,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.6.2/IsraelTVPlus-tizen-project.zip"
+      "version": "3.6.3",
+      "app": 363,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.6.3/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "3.6.2",
-      "app": 362,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.6.2/IsraelTVPlus-macos-arm64.zip"
+      "version": "3.6.3",
+      "app": 363,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.6.3/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "3.6.2",
-      "app": 362,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.6.2/IsraelTVPlus-linux-x64.zip"
+      "version": "3.6.3",
+      "app": 363,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.6.3/IsraelTVPlus-linux-x64.zip"
     }
   }
 }
