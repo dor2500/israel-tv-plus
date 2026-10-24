@@ -3,13 +3,9 @@ package com.israeltv.plus.ui
 import androidx.activity.compose.BackHandler
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.core.Spring
-import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
-import androidx.compose.animation.scaleIn
-import androidx.compose.animation.scaleOut
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
 import androidx.compose.animation.togetherWith
@@ -35,7 +31,6 @@ import com.israeltv.plus.data.Updater
 import com.israeltv.plus.data.subtitle
 import com.israeltv.plus.ui.components.AmbientBackground
 import com.israeltv.plus.ui.components.AppHeader
-import com.israeltv.plus.ui.components.CinematicSplashPortal
 import com.israeltv.plus.ui.components.FloatingTabBar
 import com.israeltv.plus.ui.components.LocalHaze
 import com.israeltv.plus.ui.components.Tab
@@ -45,7 +40,6 @@ import com.israeltv.plus.ui.screens.ChannelInfoSheet
 import com.israeltv.plus.ui.screens.ChannelsScreen
 import com.israeltv.plus.ui.screens.HomeScreen
 import com.israeltv.plus.ui.screens.MineScreen
-import com.israeltv.plus.ui.screens.ProfileSelectionScreen
 import com.israeltv.plus.ui.screens.SearchOverlay
 import com.israeltv.plus.ui.screens.SettingsScreen
 import com.israeltv.plus.ui.screens.UpdateModal
@@ -76,7 +70,6 @@ fun ItvApp(
     var updateOpen by remember { mutableStateOf(false) }
     var info by remember { mutableStateOf<Channel?>(null) }
     var play by remember { mutableStateOf<PlayRequest?>(null) }
-    var showSplashPortal by rememberSaveable { mutableStateOf(true) }
 
     val logo: (Channel) -> String = remember(store) { { store.logoUrl(it) } }
     val subtitle: (Channel) -> String = remember { { it.subtitle() } }
@@ -137,19 +130,8 @@ fun ItvApp(
             }
         }
 
-        AnimatedVisibility(
-            visible = play != null,
-            modifier = Modifier.fillMaxSize().zIndex(20f),
-            enter = fadeIn(tween(300)) + scaleIn(
-                initialScale = 0.85f,
-                animationSpec = spring(dampingRatio = 0.82f, stiffness = Spring.StiffnessMediumLow),
-            ),
-            exit = fadeOut(tween(200)) + scaleOut(
-                targetScale = 0.85f,
-                animationSpec = spring(dampingRatio = 0.82f, stiffness = Spring.StiffnessMediumLow),
-            ),
-        ) {
-            play?.let { req ->
+        play?.let { req ->
+            Box(Modifier.fillMaxSize().zIndex(20f)) {
                 PlayerScreen(
                     start = req.channel,
                     playlist = req.playlist,
@@ -165,15 +147,10 @@ fun ItvApp(
 
         CompositionLocalProvider(LocalHaze provides haze) {
             Box(Modifier.fillMaxSize().zIndex(30f)) {
-                if (avatarOpen) ProfileSelectionScreen(prefs = prefs, onDismiss = { avatarOpen = false })
+                if (avatarOpen) AvatarDialog(prefs, updater) { avatarOpen = false }
                 if (updateOpen && play == null) UpdateModal(updater) { updateOpen = false }
             }
         }
         info?.let { ch -> ChannelInfoSheet(ch, logo(ch), prefs, onPlay = { onPlay(ch, listOf(ch)) }, onDismiss = { info = null }) }
-
-        // Two-stage cinematic splash portal on launch
-        if (showSplashPortal) {
-            CinematicSplashPortal(onFinished = { showSplashPortal = false })
-        }
     }
 }

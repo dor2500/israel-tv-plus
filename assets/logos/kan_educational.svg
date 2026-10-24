@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 120" width="300" height="120">
-  <rect width="300" height="120" rx="24" fill="#1a0f00" stroke="#ff6b35" stroke-width="2"/>
-  <circle cx="65" cy="60" r="36" fill="#ff6b35"/>
-  <text x="65" y="74" font-family="Rubik, sans-serif" font-size="40" font-weight="900" fill="#ffffff" text-anchor="middle">כאן</text>
-  <text x="195" y="82" font-family="Rubik, sans-serif" font-size="64" font-weight="900" fill="#ffffff" text-anchor="middle">23</text>
-  <text x="195" y="106" font-family="Rubik, sans-serif" font-size="16" font-weight="700" fill="#ff9e00" text-anchor="middle">חינוכית</text>
-</svg>
