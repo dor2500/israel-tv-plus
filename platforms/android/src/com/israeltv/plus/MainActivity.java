@@ -107,6 +107,16 @@ public class MainActivity extends Activity {
             public void onPageFinished(WebView v, String url) {
                 sendInsets();
             }
+
+            /** The page's process ran out of memory or crashed: start the app again instead of closing it. */
+            @Override
+            public boolean onRenderProcessGone(WebView v, android.webkit.RenderProcessGoneDetail d) {
+                if (web == v) web = null;
+                try { ((android.view.ViewGroup) v.getParent()).removeView(v); } catch (Exception ignored) { }
+                v.destroy();
+                recreate();
+                return true;
+            }
         });
         web.setWebChromeClient(new WebChromeClient());
         web.addJavascriptInterface(new Bridge(), "AndroidApp");
@@ -520,7 +530,7 @@ public class MainActivity extends Activity {
     @Override
     protected void onSaveInstanceState(Bundle out) {
         super.onSaveInstanceState(out);
-        web.saveState(out);
+        if (web != null) web.saveState(out);
     }
 
     @Override
@@ -528,18 +538,18 @@ public class MainActivity extends Activity {
         super.onPause();
         // keep playing in picture-in-picture; otherwise pause the page (saves battery)
         if (Build.VERSION.SDK_INT >= 24 && isInPictureInPictureMode()) return;
-        web.onPause();
+        if (web != null) web.onPause();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        web.onResume();
+        if (web != null) web.onResume();
     }
 
     @Override
     protected void onDestroy() {
-        web.destroy();
+        if (web != null) web.destroy();
         super.onDestroy();
     }
 }

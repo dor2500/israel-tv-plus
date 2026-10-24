@@ -20,6 +20,12 @@
   // TVs: one video decoder (no lip-sync listener) and too little memory for the in-device Whisper model –
   // loading it there made the LG app crash back to its start screen.
   const IS_TV = /Web0S|webOS|Tizen|SMART-TV|AndroidTV/i.test(navigator.userAgent);
+  // The in-device engine (Whisper in a WebView) takes ~800 MB of the page's memory while it starts – measured on an
+  // Android TV WebView even with the tiny model. TVs / small devices can't spare that (the LG app crashed in 3.0.0):
+  // there only the cloud engines run. Phones / computers with more memory use the tiny model in the app.
+  const NO_LOCAL = IS_TV || (navigator.deviceMemory || 8) <= 3;
+  const LITE = /IsraelTVPlus\/\d+ AndroidPhone/.test(navigator.userAgent) || (navigator.deviceMemory || 8) <= 4;
+  const LITE_MODEL = 'onnx-community/whisper-tiny';
 
   const DEFAULTS = {
     enabled: false,          // dubbing switched on (applies to foreign channels)
@@ -82,15 +88,11 @@
     try {
       const saved = JSON.parse(localStorage.getItem(LS_KEY) || '{}');
       const s = Object.assign({}, DEFAULTS, saved);
-      if (IS_TV) {
-        if (s.engine === 'local') {   // settings from before 3.0.1: move to the cloud engine, pause until it has a key
-          s.engine = 'gemini';
-          s.migratedFromLocal = true;
-          if (!s.geminiKey) s.enabled = false;
-        }
-        s.sync = false;
-        localStorage.setItem(LS_KEY, JSON.stringify(s));
-      }
+      // no key = the free in-device engine (works without any account); a key switches to Gemini automatically
+      if (s.engine === 'gemini' && !s.geminiKey && !NO_LOCAL) s.engine = 'local';
+      if (s.engine === 'local' && NO_LOCAL) s.engine = 'gemini';
+      if (IS_TV) s.sync = false;
+      s.migratedFromLocal = false;
       return s;
     } catch (e) {
       return Object.assign({}, DEFAULTS);
@@ -98,6 +100,8 @@
   }
 
   function save(patch) {
+    // typing a Gemini key while on the keyless engine: use the key (better translation)
+    if (patch && patch.geminiKey && !patch.engine && settings.engine === 'local') patch.engine = 'gemini';
     Object.assign(settings, patch || {});
     try { localStorage.setItem(LS_KEY, JSON.stringify(settings)); } catch (e) {}
   }
@@ -114,7 +118,7 @@
   function missingConfig() {
     if (settings.engine === 'gemini' && !settings.geminiKey) return 'חסר מפתח Gemini API (חינמי) – הזן אותו בהגדרות הדיבוב';
     if (settings.engine === 'openai' && !settings.openaiKey) return 'חסר מפתח OpenAI API – הזן אותו בהגדרות הדיבוב';
-    if (settings.engine === 'local' && IS_TV) return 'המנוע המקומי כבד מדי לטלוויזיה – בחרו Gemini (מפתח חינמי)';
+    if (settings.engine === 'local' && NO_LOCAL) return 'במכשיר הזה אין מספיק זיכרון לזיהוי דיבור מקומי – הדיבוב עובד עם מפתח Gemini חינמי';
     if (settings.engine === 'local' && !('Worker' in window)) return 'הדפדפן אינו תומך במנוע המקומי';
     return '';
   }
@@ -519,7 +523,7 @@
         }
       };
       localWorker.onerror = (e) => reject(new Error(e.message || 'worker error'));
-      localWorker.postMessage({ type: 'load', model: settings.localModel, lowMem: (navigator.deviceMemory || 8) <= 4 });
+      localWorker.postMessage({ type: 'load', model: LITE ? LITE_MODEL : settings.localModel, lowMem: LITE || (navigator.deviceMemory || 8) <= 4, lite: LITE });
     });
     localReady.catch(() => { localReady = null; });
     return localReady;
@@ -963,6 +967,7 @@
     DEFAULTS,
     LANG_NAMES,
     IS_TV,
+    NO_LOCAL,
     get settings() { return settings; },
     log: debugLog,
     save,

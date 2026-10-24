@@ -53,6 +53,13 @@ def main():
     code = int(now.strftime("%Y%m%d%H%M"))
     date = now.strftime("%Y-%m-%d")
     build = {"version": version, "code": code, "app": app, "shell": SHELL, "date": date}
+    # https relay for the web site's http channels (relay/worker.js); the file relay.url holds its address once deployed
+    try:
+        relay = read("relay.url").strip()
+    except FileNotFoundError:
+        relay = ""
+    if relay:
+        build["relay"] = relay
     write("version.js", "// written by tools/make_version.py\nwindow.ITV_BUILD = " + json.dumps(build) + ";\n")
 
     native = {

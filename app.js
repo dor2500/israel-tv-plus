@@ -99,8 +99,16 @@
   function toggleClass(node, cls, on) { if (node) node.classList[on ? 'add' : 'remove'](cls); }
   function isApp(ch) { return ch && ch.kind === 'app'; }
   function isRadioCh(ch) { return ch && (ch.kind === 'radio' || ch.categoryEn === 'radio'); }
-  function streamUrl(ch) { return (IS_WEB && ch.webUrl) || ch.url; }
-  function appOnly(ch) { return IS_WEB && ch && !isApp(ch) && (ch.webOk === false || /^http:/i.test(streamUrl(ch))); }
+  // The web site can't play http streams (mixed content) or https ones without CORS: they go through the https relay
+  // (relay/worker.js, a Cloudflare Worker) when one is configured (file relay.url → version.js); the apps play them directly.
+  var RELAY = (new URLSearchParams(location.search).get('relay') || BUILD.relay || '').replace(/\/+$/, '');
+  function needsRelay(ch) { return IS_WEB && !ch.webUrl && (ch.webOk === false || /^http:/i.test(ch.url)); }
+  function streamUrl(ch) {
+    if (IS_WEB && ch.webUrl) return ch.webUrl;
+    if (RELAY && needsRelay(ch)) return RELAY + '/?u=' + encodeURIComponent(ch.url);
+    return ch.url;
+  }
+  function appOnly(ch) { return IS_WEB && ch && !isApp(ch) && !RELAY && (ch.webOk === false || /^http:/i.test(streamUrl(ch))); }
   function isKidsCh(ch) { return /ילדים/.test(ch.category) || ch.id === 'radios_kids'; }
   function isFav(ch) { return ch && state.favorites.indexOf(ch.id) !== -1; }
   function foreign(ch) { return !!(Dub && ch && Dub.isForeign(ch)); }
@@ -1550,6 +1558,7 @@
 
   /** Dubbing needs a key: on TVs (no keyboard) the easy way is to send it from a phone. */
   function needKey(ch) {
+    if (IS_TV) { pairKey(ch); return; }   // TVs: straight to the QR – no typing with the remote
     openDialog({
       ico: '🎙️', title: 'לדיבוב צריך מפתח Gemini חינמי',
       html: '<p>' + esc(Dub.missingConfig()) + '</p><p>הכי קל: סורקים קוד בטלפון, מדביקים שם את המפתח והוא מגיע לכאן מוצפן. ' +
@@ -1600,7 +1609,8 @@
       try { var q = window.qrcode(0, 'M'); q.addData(url); q.make(); qr = q.createSvgTag(7, 3); } catch (e) {}
       openDialog({
         ico: '📱', title: 'חיבור מפתח הדיבוב מהטלפון',
-        html: '<div class="qr">' + qr + '</div><p>סרקו במצלמת הטלפון, הדביקו את מפתח ה-Gemini ולחצו "שליחה לטלוויזיה".</p>' +
+        html: '<p>הדיבוב בטלוויזיה עובד עם מפתח Gemini חינמי – מגדירים פעם אחת, דקה מהטלפון.</p>' +
+          '<div class="qr">' + qr + '</div><p>סרקו במצלמת הטלפון, צרו / הדביקו מפתח Gemini ולחצו "שליחה לטלוויזיה".</p>' +
           '<p class="small">או פתחו בטלפון: <code>' + esc(url) + '</code></p><p id="pair-status">⏳ ממתין לטלפון…</p>',
         buttons: [{ label: 'ביטול' }],
         onClose: function () { clearInterval(pairTimer); pairTimer = null; }
@@ -1815,8 +1825,10 @@
       ] },
       { id: 'dub', ico: '🎙️', name: 'דיבוב לעברית', desc: 'תרגום והקראה בעברית של ערוצים זרים', rows: Dub ? [
         dubToggle('enabled', 'דיבוב פעיל'),
-        dubChoice('engine', 'מנוע תרגום', [['gemini', 'Google Gemini (מפתח חינמי)'], ['openai', 'OpenAI (בתשלום)']]
-          .concat(Dub.IS_TV ? [] : [['local', 'מקומי – Whisper במכשיר (מחשב חזק)']])),
+        dubChoice('engine', 'מנוע תרגום', (Dub.NO_LOCAL ? [] : [['local', 'בלי מפתח – זיהוי דיבור במכשיר']]).concat([
+          ['gemini', 'Google Gemini (מפתח חינמי, הכי מדויק)'], ['openai', 'OpenAI (בתשלום)']]),
+          Dub.NO_LOCAL ? 'בטלוויזיה הדיבוב עובד דרך Gemini – זיהוי דיבור בתוך הטלוויזיה צורך יותר זיכרון ממה שיש לה'
+            : 'בלי מפתח עובד מיד; עם מפתח Gemini התרגום מדויק יותר ומזהה דוברים'),
         info('מצב', function () { return Dub.missingConfig() || (Dub.settings.enabled ? '✅ מוכן' : 'כבוי'); }),
         action('📱 חיבור מפתח מהטלפון (QR)', function () { pairKey(); }, 'בלי הקלדה בשלט: סורקים, מדביקים בטלפון, והמפתח מגיע מוצפן'),
         dubText('geminiKey', 'מפתח Gemini API', 'מפתח חינמי: aistudio.google.com/apikey • נשמר רק במכשיר', 'AIza...'),

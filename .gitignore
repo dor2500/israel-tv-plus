@@ -6,3 +6,6 @@ dist/
 __pycache__/
 output/
 build/
+
+relay/.wrangler/
+relay/node_modules/

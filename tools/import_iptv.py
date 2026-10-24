@@ -319,6 +319,7 @@ def cmd_merge(work):
     logos = pick_logos(work)
     taken_ids = {c["id"] for c in ours}
     taken_names = {norm(c.get("title") or c["name"]) for c in ours} | {norm(c["name"]) for c in ours}
+    taken_iptv = {c.get("iptv") for c in ours if c.get("iptv")}
     taken_urls = {c["url"].split("://", 1)[-1] for c in ours} | {c.get("webUrl", "").split("://", 1)[-1] for c in ours}
 
     order = [CAT_ISRAEL, CAT_KIDS_HE, CAT_NEWS, CAT_MOVIES, CAT_SPORTS, CAT_KIDS_WORLD, CAT_MUSIC, CAT_DOCU,
@@ -332,7 +333,7 @@ def cmd_merge(work):
             cat = CAT_KIDS_HE if c["lang"] == "he" else CAT_KIDS_WORLD
         else:
             cat = CAT_NAME[k]
-        if norm(c["name"]) in taken_names and c["country"] == "IL" or c["iptv"] in SKIP_IDS:
+        if norm(c["name"]) in taken_names and c["country"] == "IL" or c["iptv"] in SKIP_IDS or c["iptv"] in taken_iptv:
             continue  # curated version already there
         if c["url"].split("://", 1)[-1] in taken_urls:
             continue  # same stream under another name
@@ -366,6 +367,9 @@ def cmd_merge(work):
     new.sort(key=lambda c: order.index(c["category"]))
     for i, c in enumerate(new):
         c["number"] = FIRST_NUMBER + i
+    ours.sort(key=lambda c: c.get("number", 0))   # curated: 1.. in their own order, below FIRST_NUMBER
+    for i, c in enumerate(ours):
+        c["number"] = i + 1
     allc = ours + new
     with open(os.path.join(ROOT, "channels.json"), "w", encoding="utf-8") as f:
         json.dump(allc, f, ensure_ascii=False, indent=2)
