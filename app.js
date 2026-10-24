@@ -555,7 +555,8 @@
     if (q) {
       r = r.filter(function (c) {
         return c.name.toLowerCase().indexOf(q) !== -1 || (c.title && c.title.toLowerCase().indexOf(q) !== -1) ||
-          (c.desc && c.desc.toLowerCase().indexOf(q) !== -1) || String(c.number) === q;
+          (c.desc && c.desc.toLowerCase().indexOf(q) !== -1) || (c.id && c.id.toLowerCase().indexOf(q) !== -1) ||
+          (c.country && c.country.toLowerCase() === q) || String(c.number) === q;
       });
     }
     state.list = r;
@@ -2782,10 +2783,14 @@
   function setupInput() {
     window.addEventListener('keydown', onKeyDown);
     window.addEventListener('keyup', onKeyUp);
+    var searchTimer = null;
     el.searchInput.addEventListener('input', function () {
-      state.query = el.searchInput.value;
-      state.gridIdx = 0;
-      filterList();
+      if (searchTimer) clearTimeout(searchTimer);
+      searchTimer = setTimeout(function () {
+        state.query = el.searchInput.value;
+        state.gridIdx = 0;
+        filterList();
+      }, 90);
     });
     el.searchInput.addEventListener('focus', function () { if (!state.overlay) { state.zone = 'top'; state.topIdx = topItems().indexOf(el.topSearch); markFocus(); } });
 
