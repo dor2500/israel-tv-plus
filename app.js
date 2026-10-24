@@ -2885,6 +2885,14 @@
       lastMove = now;
       if (state.overlay === 'player') showOsd();
     });
+    window.addEventListener('wheel', function (e) {
+      var row = e.target && e.target.closest ? e.target.closest('.shelf-row') : null;
+      if (row && Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+        if (e.preventDefault) e.preventDefault();
+        try { row.scrollBy({ left: (e.deltaY > 0 ? 1 : -1) * (document.dir === 'rtl' ? -360 : 360), behavior: 'smooth' }); }
+        catch (x) { row.scrollLeft += (e.deltaY > 0 ? 1 : -1) * (document.dir === 'rtl' ? -360 : 360); }
+      }
+    }, { passive: false });
     window.addEventListener('touchstart', resetSaver, { passive: true });
     el.grid.addEventListener('scroll', function () {
       if (el.grid.scrollHeight - el.grid.scrollTop - el.grid.clientHeight < 600) ensureRendered(rendered);

@@ -220,6 +220,8 @@ body.tv-android-mode .pc-media {
   border: 2.5px solid transparent;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
   transition: border-color 0.25s, box-shadow 0.25s;
+  position: relative;
+  overflow: hidden;
 }
 
 body.tv-android-mode .pcard.focused, 
@@ -232,6 +234,19 @@ body.tv-android-mode .pcard.focused .pc-media,
 body.tv-android-mode .pcard:hover .pc-media {
   border-color: #ffffff !important;
   box-shadow: 0 26px 55px rgba(0, 0, 0, 0.95), 0 0 35px rgba(255, 255, 255, 0.55) !important;
+}
+
+body.tv-android-mode .pcard.focused .pc-media::after,
+body.tv-android-mode .pcard:hover .pc-media::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.04) 40%, transparent 60%);
+  pointer-events: none;
+  border-radius: inherit;
 }
 
 body.tv-android-mode .pc-name {
