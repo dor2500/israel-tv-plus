@@ -5,7 +5,7 @@
     "title": "קשת 12 HD (Keshet 12)",
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
-    "url": "http://stream.mcquack.net/294/index.m3u8",
+    "url": "https://mako-streaming.akamaized.net/stream/hls/live/2033791/k12/index.m3u8",
     "logo": "assets/logos/keshet12.png",
     "badge": "FHD",
     "desc": "ערוץ הטלוויזיה המוביל בישראל - חדשות 12, ריאליטי, תוכניות בידור וסדרות מקור",
@@ -13,12 +13,14 @@
     "lang": "he",
     "iptv": "Keshet12.il",
     "src": {
-      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
-      "kind": "restream",
-      "host": "stream.mcquack.net",
+      "by": "קשת – ה-CDN של mako (עם הרשאת צפייה של mako)",
+      "kind": "official",
+      "host": "mako-streaming.akamaized.net",
       "found": "iptv-org (Keshet12.il)",
-      "web": "❌ רק באפליקציה (HTTP)"
-    }
+      "web": "❌ רק באפליקציה (הפניה בלי CORS)"
+    },
+    "auth": "mako",
+    "webOk": false
   },
   {
     "id": "reshet13",
@@ -130,7 +132,7 @@
     "title": "ערוץ 24 (Channel 24)",
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
-    "url": "http://stream.mcquack.net/42/index.m3u8",
+    "url": "https://mako-streaming.akamaized.net/direct/hls/live/2035340/ch24live/index.m3u8?as=1",
     "logo": "assets/logos/ch24.png",
     "badge": "HD",
     "desc": "ערוץ המוזיקה, השמחה והבידור הישראלי - קליפים, הופעות ואירוח",
@@ -138,12 +140,14 @@
     "lang": "he",
     "iptv": "Channel24.il",
     "src": {
-      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
-      "kind": "restream",
-      "host": "stream.mcquack.net",
+      "by": "קשת – ה-CDN של mako (עם הרשאת צפייה של mako)",
+      "kind": "official",
+      "host": "mako-streaming.akamaized.net",
       "found": "iptv-org (Channel24.il)",
-      "web": "❌ רק באפליקציה (HTTP)"
-    }
+      "web": "❌ רק באפליקציה (הפניה בלי CORS)"
+    },
+    "auth": "mako",
+    "webOk": false
   },
   {
     "id": "makan33",
@@ -172,7 +176,7 @@
     "title": "ערוץ הכנסת (Knesset Channel)",
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
-    "url": "http://stream.mcquack.net/48/index.m3u8",
+    "url": "https://kneset.gostreaming.tv/p2-kneset/_definst_/myStream/index.m3u8",
     "logo": "assets/logos/knesset.svg",
     "badge": "SD",
     "desc": "שידורים ישירים ממליאת הכנסת, ועדות, תוכניות אקטואליה ופוליטיקה",
@@ -180,11 +184,11 @@
     "lang": "he",
     "iptv": "KnessetChannel.il",
     "src": {
-      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
-      "kind": "restream",
-      "host": "stream.mcquack.net",
+      "by": "ערוץ הכנסת – השידור של הכנסת (GoStreaming)",
+      "kind": "official",
+      "host": "kneset.gostreaming.tv",
       "found": "iptv-org (KnessetChannel.il)",
-      "web": "❌ רק באפליקציה (HTTP)"
+      "web": "✅"
     }
   },
   {

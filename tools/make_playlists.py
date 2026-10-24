@@ -76,7 +76,8 @@ def write(name, items):
 
 def main():
     with open(os.path.join(ROOT, "channels.json"), encoding="utf-8") as f:
-        chans = [c for c in json.load(f) if c.get("kind") != "app"]
+        # channels that need a viewing ticket from the broadcaster (Keshet on mako) only play in the apps
+        chans = [c for c in json.load(f) if c.get("kind") != "app" and not c.get("auth")]
     write("playlist.m3u", chans)
     write("playlist-israel.m3u", [c for c in chans if c["category"] in ISRAELI])
     write("playlist-tv.m3u", [c for c in chans if c.get("kind") != "radio"])

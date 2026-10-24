@@ -1,50 +1,46 @@
 {
-  "version": "3.4.0",
-  "code": 202610241858,
-  "app": 340,
+  "version": "3.4.1",
+  "code": 202610241922,
+  "app": 341,
   "shell": 3,
   "date": "2026-10-24",
   "notes": [
-    "אפליקציית אנדרואיד חדשה לגמרי לטלפון: נכתבה מחדש כאפליקציה מקורית (Kotlin + Jetpack Compose) במקום אתר בתוך WebView – מהירה וחלקה יותר, ב-120Hz",
-    "עיצוב Material 3 Expressive + Apple TV: זכוכית חלבית אמיתית (טשטוש + קצה מבריק), כרטיסים 16:9 שמתכווצים ונוטים לכיוון האצבע עם רטט, באנר ראשי גדול עם כפתור \"צפייה\", בצבעי הטפט של הטלפון (Material You)",
-    "פס ניווט צף אחד עם כל חמשת היעדים – בית, ערוצים, שלי, הגדרות וחיפוש – וגלולה שמחליקה ליעד הפעיל; כותרת בסגנון Apple TV עם אווטאר תלת-ממדי",
-    "גלילה כמו ב-BitChord: תנופה חזקה יותר וקפיצה רכה בקצוות, גם בשורות לצדדים",
-    "נגן חדש: בלי כפתורים כפולים – בזמן התחברות מופיעה רק גלולת \"מתחבר לשידור...\", ואחריה כפתורי ניגון; פס עליון עם לוגו, LIVE ואיכות; מעגן תחתון (ערוצים, שמע, חלון צף, אפשרויות, מסך מלא); החלקה למעלה / למטה מחליפה ערוץ",
-    "אף פעם לא מושתק: אין באפליקציה שום קוד השתקה – העוצמה קבועה על 100% בכל ערוץ, ורק כפתורי העוצמה של הטלפון משנים אותה",
-    "עדכונים בסגנון Pixel: כרטיס עדכון גדול בהגדרות, וחלון זכוכית עם פס התקדמות גלי כשיוצאת גרסה חדשה",
-    "בטלוויזיות Android TV האפליקציה ממשיכה לפתוח את הממשק המוכר. האפליקציה החדשה דורשת אנדרואיד 7 ומעלה"
+    "ערוצי עידן+ רק מהמקור הרשמי: קשת 12 וערוץ 24 מתנגנים עכשיו ישירות מהשרתים של קשת (mako), וערוץ הכנסת 99 מהשידור של הכנסת עצמה – בלי אתרי ממסר של צד שלישי (ובלי הפרסומות שלהם באמצע). כל שאר ערוצי עידן+ (כאן 11, רשת 13, עכשיו 14, כאן חינוכית, מכאן 33, ערוץ 9) כבר מתנגנים מהשרתים של הגופים עצמם",
+    "תיקון עדכון האפליקציה: מיד אחרי פרסום גרסה, הקישור \"האחרון\" ב-GitHub עוד הוריד את הגרסה הקודמת, אז האפליקציה \"התעדכנה\" לאותה גרסה. עכשיו כל עדכון מוריד בדיוק את הגרסה שמוצגת",
+    "קיצורי דרך ישנים במסך הבית של הטלפון פותחים את האפליקציה החדשה",
+    "באתר (בדפדפן) קשת 12 וערוץ 24 מסומנים \"פועל באפליקציה\": השרת של mako מאפשר צפייה רק מהאתר שלהם ומהאפליקציות. מאותה סיבה הם לא בפלייליסטים של נגני IPTV וב-Stremio"
   ],
   "native": {
     "android": {
-      "version": "3.4.0",
-      "app": 340,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/latest/download/IsraelTVPlus-android.apk"
+      "version": "3.4.1",
+      "app": 341,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.4.1/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "3.4.0",
-      "app": 340,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/latest/download/IsraelTVPlus-windows-setup.exe"
+      "version": "3.4.1",
+      "app": 341,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.4.1/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "3.4.0",
-      "app": 340,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/latest/download/com.israeltv.plus_all.ipk",
+      "version": "3.4.1",
+      "app": 341,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.4.1/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "3.4.0",
-      "app": 340,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/latest/download/IsraelTVPlus-tizen-project.zip"
+      "version": "3.4.1",
+      "app": 341,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.4.1/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "3.4.0",
-      "app": 340,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/latest/download/IsraelTVPlus-macos-arm64.zip"
+      "version": "3.4.1",
+      "app": 341,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.4.1/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "3.4.0",
-      "app": 340,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/latest/download/IsraelTVPlus-linux-x64.zip"
+      "version": "3.4.1",
+      "app": 341,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.4.1/IsraelTVPlus-linux-x64.zip"
     }
   }
 }

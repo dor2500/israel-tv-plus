@@ -1,6 +1,4 @@
 #EXTM3U x-tvg-url="https://epgshare01.online/epgshare01/epg_ripper_IL1.xml.gz"
-#EXTINF:-1 tvg-id="Keshet12.il" tvg-name="קשת 12 HD" tvg-chno="1" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/keshet12.png" group-title="ערוצי ישראל",קשת 12 HD
-http://stream.mcquack.net/294/index.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="רשת 13 HD" tvg-chno="2" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/reshet13.png" group-title="ערוצי ישראל",רשת 13 HD
 https://d18b0e6mopany4.cloudfront.net/out/v1/2f2bc414a3db4698a8e94b89eaf2da2a/index.m3u8
 #EXTINF:-1 tvg-id="Kan11.il" tvg-name="כאן 11 HD" tvg-chno="3" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/kan11.png" group-title="ערוצי ישראל",כאן 11 HD
@@ -11,12 +9,10 @@ https://r.il.cdn-redge.media/livehls/oil/ch14/live/ch14/live.livx/playlist.m3u8
 https://i24newshebrew-cdn.encoders.immergo.tv/master.m3u8
 #EXTINF:-1 tvg-id="Channel9.il" tvg-name="ערוץ 9 ישראל HD" tvg-chno="6" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/ch9.png" group-title="ערוצי ישראל",ערוץ 9 ישראל HD
 https://contact.gostreaming.tv/Con-11/index.m3u8
-#EXTINF:-1 tvg-id="Channel24.il" tvg-name="ערוץ 24 HD" tvg-chno="7" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/ch24.png" group-title="ערוצי ישראל",ערוץ 24 HD
-http://stream.mcquack.net/42/index.m3u8
 #EXTINF:-1 tvg-id="Makan33.il" tvg-name="מכאן 33 HD" tvg-chno="8" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/makan33.png" group-title="ערוצי ישראל",מכאן 33 HD
 https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/makan/live.livx/playlist.m3u8
 #EXTINF:-1 tvg-id="KnessetChannel.il" tvg-name="ערוץ הכנסת 99" tvg-chno="9" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/knesset.png" group-title="ערוצי ישראל",ערוץ הכנסת 99
-http://stream.mcquack.net/48/index.m3u8
+https://kneset.gostreaming.tv/p2-kneset/_definst_/myStream/index.m3u8
 #EXTINF:-1 tvg-id="i24NEWSFrench.il" tvg-name="i24NEWS צרפתית HD" tvg-chno="10" tvg-logo="" group-title="ערוצי ישראל",i24NEWS צרפתית HD
 https://i24newsfrench-cdn.encoders.immergo.tv/master.m3u8
 #EXTINF:-1 tvg-id="i24NEWSArabic.il" tvg-name="i24NEWS ערבית HD" tvg-chno="11" tvg-logo="" group-title="ערוצי ישראל",i24NEWS ערבית HD

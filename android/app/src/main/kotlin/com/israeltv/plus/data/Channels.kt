@@ -34,8 +34,31 @@ data class Channel(
     val lang: String = "",
     val kind: String = "",
     val countryHe: String = "",
+    /** "mako": Keshet's own CDN, the URL needs a viewing ticket from mako (see [playableUrl]). */
+    val auth: String = "",
 ) {
     val isRadio: Boolean get() = kind == "radio"
+}
+
+private const val MAKO_ENTITLEMENT = "https://mass.mako.co.il/ClicksStatistics/entitlementsServicesV2.jsp"
+
+/**
+ * The URL to hand to the player. Keshet 12 / 24 stream from mako's CDN (the broadcaster, not a re-stream) and need a
+ * short-lived ticket from mako's entitlement service, fetched right before playing; every other channel plays as is.
+ */
+suspend fun playableUrl(ch: Channel): String = withContext(Dispatchers.IO) {
+    if (ch.auth != "mako") return@withContext ch.url
+    val path = java.net.URI(ch.url).let { it.rawPath + (it.rawQuery?.let { q -> "?$q" } ?: "") }
+    val req = java.net.URL(MAKO_ENTITLEMENT + "?et=ngt&rv=AKAMAI&lp=" + java.net.URLEncoder.encode(path, "UTF-8"))
+    val text = (req.openConnection() as java.net.HttpURLConnection).run {
+        connectTimeout = 10_000
+        readTimeout = 10_000
+        setRequestProperty("User-Agent", USER_AGENT)
+        inputStream.bufferedReader().use { it.readText() }
+    }
+    val ticket = Regex("\"ticket\"\\s*:\\s*\"([^\"]+)\"").find(text)?.groupValues?.get(1)
+        ?: error("no mako ticket")
+    ch.url + (if ('?' in ch.url) "&" else "?") + java.net.URLDecoder.decode(ticket, "UTF-8")
 }
 
 @Immutable
@@ -67,7 +90,8 @@ fun Channel.subtitle(): String = when {
 @Stable
 class ChannelStore(private val context: Context, private val http: OkHttpClient) {
     private val json = Json { ignoreUnknownKeys = true; coerceInputValues = true }
-    private val cache = File(context.filesDir, "channels.json")
+    // per app version: after an update the list bundled with the new APK is used until the site's list is fetched
+    private val cache = File(context.filesDir, "channels-${com.israeltv.plus.BuildConfig.VERSION_CODE}.json")
     private val bundledLogos: Set<String> by lazy {
         runCatching { context.assets.list("www/assets/logos")?.toSet() }.getOrNull().orEmpty()
     }

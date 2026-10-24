@@ -1,6 +1,6 @@
 # 📺 כל הערוצים – ישראל TV+
 
-נוצר אוטומטית מ-`channels.json` (`tools/make_channel_list.py`). **1541** פריטים: **1476** ערוצי טלוויזיה, **65** תחנות רדיו ו-**0** שירותי מנויים, מ-**156** מדינות. 1335 מהם מתנגנים גם באתר; כל השאר באפליקציות (Android, טלוויזיה, Windows, Mac, Linux) וב-Stremio.
+נוצר אוטומטית מ-`channels.json` (`tools/make_channel_list.py`). **1541** פריטים: **1476** ערוצי טלוויזיה, **65** תחנות רדיו ו-**0** שירותי מנויים, מ-**156** מדינות. 1336 מהם מתנגנים גם באתר; כל השאר באפליקציות (Android, טלוויזיה, Windows, Mac, Linux) וב-Stremio.
 
 **▶ צפייה:** https://dor2500.github.io/israel-tv-plus/ · **🎬 Stremio:** https://dor2500.github.io/israel-tv-plus/stremio/ · **📋 מקור כל שידור:** [SOURCES.md](SOURCES.md)
 
@@ -39,7 +39,7 @@
 | 6 | <img src="assets/logos/ch9.png" width="56" alt=""> | **ערוץ 9 ישראל HD** | 🇮🇱 ישראל | רוסית | FHD | 🌐 אתר + 📲 אפליקציות |
 | 7 | <img src="assets/logos/ch24.png" width="56" alt=""> | **ערוץ 24 HD** | 🇮🇱 ישראל | עברית | HD | 📲 אפליקציות בלבד |
 | 8 | <img src="playlist-logos/makan33.png" width="56" alt=""> | **מכאן 33 HD** | 🇮🇱 ישראל | ערבית | FHD | 🌐 אתר + 📲 אפליקציות |
-| 9 | <img src="playlist-logos/knesset.png" width="56" alt=""> | **ערוץ הכנסת 99** | 🇮🇱 ישראל | עברית | SD | 📲 אפליקציות בלבד |
+| 9 | <img src="playlist-logos/knesset.png" width="56" alt=""> | **ערוץ הכנסת 99** | 🇮🇱 ישראל | עברית | SD | 🌐 אתר + 📲 אפליקציות |
 | 10 |  | **i24NEWS צרפתית HD** | 🇮🇱 ישראל | צרפתית | FHD | 🌐 אתר + 📲 אפליקציות |
 | 11 |  | **i24NEWS ערבית HD** | 🇮🇱 ישראל | ערבית | FHD | 🌐 אתר + 📲 אפליקציות |
 | 12 | <img src="playlist-logos/i24news_en.png" width="56" alt=""> | **i24NEWS English** | 🇮🇱 ישראל | אנגלית | FHD | 🌐 אתר + 📲 אפליקציות |

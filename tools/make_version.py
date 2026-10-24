@@ -62,14 +62,17 @@ def main():
         build["relay"] = relay
     write("version.js", "// written by tools/make_version.py\nwindow.ITV_BUILD = " + json.dumps(build) + ";\n")
 
+    # the release of this exact version, not releases/latest: right after a release GitHub's CDN can still answer
+    # "latest" with the previous file, and the apps would reinstall the old version (seen with 3.4.0)
+    dl = DL.replace("/latest/download/", "/download/v%s/" % version)
     native = {
-        "android": {"version": version, "app": app, "url": DL + "IsraelTVPlus-android.apk"},
-        "windows": {"version": version, "app": app, "url": DL + "IsraelTVPlus-windows-setup.exe"},
-        "webos": {"version": version, "app": app, "url": DL + "com.israeltv.plus_all.ipk",
+        "android": {"version": version, "app": app, "url": dl + "IsraelTVPlus-android.apk"},
+        "windows": {"version": version, "app": app, "url": dl + "IsraelTVPlus-windows-setup.exe"},
+        "webos": {"version": version, "app": app, "url": dl + "com.israeltv.plus_all.ipk",
                   "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"},
-        "tizen": {"version": version, "app": app, "url": DL + "IsraelTVPlus-tizen-project.zip"},
-        "mac": {"version": version, "app": app, "url": DL + "IsraelTVPlus-macos-arm64.zip"},
-        "linux": {"version": version, "app": app, "url": DL + "IsraelTVPlus-linux-x64.zip"},
+        "tizen": {"version": version, "app": app, "url": dl + "IsraelTVPlus-tizen-project.zip"},
+        "mac": {"version": version, "app": app, "url": dl + "IsraelTVPlus-macos-arm64.zip"},
+        "linux": {"version": version, "app": app, "url": dl + "IsraelTVPlus-linux-x64.zip"},
     }
     data = dict(build, notes=notes(version), native=native)
     write("version.json", json.dumps(data, ensure_ascii=False, indent=2) + "\n")
