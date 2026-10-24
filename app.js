@@ -251,8 +251,9 @@
     if (S.kids) startCat = 'ALL';
     selectCategory(state.cats.some(function (c) { return c.id === startCat; }) ? startCat : 'ALL', true);
     focusGrid(0);
-    if (PHONE) { buildHome(); setTab(S.startCat === 'FAVORITES' && state.favorites.length ? 'library' : 'home', true); }
-    else { initTvOS(); }
+    buildHome();
+    setTab(S.startCat === 'FAVORITES' && state.favorites.length ? 'library' : 'home', true);
+    if (IS_TV) initTvRemoteNav();
     if (S.autoplay && S.lastId) {
       var idx = indexInList(S.lastId);
       if (idx !== -1) { focusGrid(idx); playIndex(idx); }
@@ -361,14 +362,14 @@
   function applyScale() {
     var w = window.innerWidth, hgt = window.innerHeight;
     var compact = w < 900 || (TOUCH && w < 1100 && hgt > w * 0.9);
-    // phones: portrait, or a touch screen whose short side is phone-sized (landscape phones too); never TVs
-    PHONE = !IS_TV && (w < 700 || (TOUCH && (Math.min(w, hgt) < 600 || hgt > w)));
-    var base = PHONE ? clamp(Math.min(w, hgt) / 40, 8.5, 11) : compact ? clamp(w / 40, 8.5, 11) : w / 120;
-    document.documentElement.style.fontSize = (base * (compact || PHONE ? 1 : S.uiScale)) + 'px';
+    // Unify all platforms with the Android UI architecture!
+    PHONE = true;
+    var base = IS_TV ? clamp(w / 110, 15, 20) * S.uiScale : (compact ? clamp(w / 40, 8.5, 11) : clamp(Math.min(w, hgt) / 40, 8.5, 11));
+    document.documentElement.style.fontSize = base + 'px';
     toggleClass(document.body, 'compact', compact);
-    toggleClass(document.body, 'phone', PHONE);
-    var cols = S.cols || (PHONE ? (w < 600 ? 2 : w < 900 ? 3 : 4) : compact ? (w < 600 ? 2 : 3) : clamp(Math.round(5 / S.uiScale), 3, 7));
-    if (PHONE && S.cols) cols = Math.min(S.cols, w < 600 ? 3 : 5);
+    toggleClass(document.body, 'phone', true);
+    toggleClass(document.body, 'tv-android-mode', IS_TV);
+    var cols = S.cols || (IS_TV ? 5 : (w < 600 ? 2 : w < 900 ? 3 : 4));
     state.cols = cols;
     document.documentElement.style.setProperty('--card-cols', cols);
   }
@@ -3083,16 +3084,14 @@
       case 'menu': menuKey(code); return;
       case 'drawer': drawerKey(code); return;
       case 'player': playerKey(code); return;
-      case 'tv-player': tvPlayerKey(code); return;
       default:
-        if (!PHONE) { tvKey(code, e); return; }
+        if (state.tab === 'home') { homeKey(code, e); return; }
         guideKey(code);
     }
   }
 
   function zapOrPage(dir) {
     if (state.overlay === 'player') { zap(dir); return; }
-    if (state.overlay === 'tv-player') { zapTvChannel(dir > 0 ? 1 : -1); return; }
     if (!state.overlay && state.zone === 'grid') focusGrid(state.gridIdx + (dir > 0 ? -1 : 1) * state.cols * 3);
   }
 
@@ -3106,12 +3105,9 @@
         if (state.zone === 'perror') { errorButtons()[state.perrIdx || 0].click(); return; }
         if (el.osd.classList.contains('off')) showOsd(); else playerMenu();
         return;
-      case 'tv-player':
-        exitTvFullscreen();
-        return;
     }
-    if (!PHONE) {
-      tvOk();
+    if (state.tab === 'home') {
+      homeOk();
       return;
     }
     if (state.zone === 'grid') { if (Dub) Dub.unlockAudio(); playIndex(state.gridIdx); }
@@ -3207,796 +3203,214 @@
     markFocus();
   }
 
-  // ================================================================== Apple TV+ (tvOS) Flagship Engine
-  // ================================================================== Netflix-Style Flagship Smart TV Engine
-  var tvState = {
-    zone: 'shelf', // 'sidebar' | 'hero' | 'shelf'
-    sideIdx: 1, // default 1 = home
-    heroBtnIdx: 0, // 0 = play, 1 = fav, 2 = info
-    sidebarItems: [
-      { id: 'search', act: 'search' },
-      { id: 'home', shelf: 0 },
-      { id: 'broadcast', shelf: 1 },
-      { id: 'sports', shelf: 2 },
-      { id: 'movies', shelf: 3 },
-      { id: 'kids', shelf: 4 },
-      { id: 'world', shelf: 6 },
-      { id: 'favs', shelf: 0 },
-      { id: 'settings', act: 'settings' }
-    ],
-    shelves: [],
+  // ================================================================== Android TV & webOS Remote Controller
+  var homeNav = {
+    zone: 'shelves', // 'pager' | 'shelves' | 'navbar'
     shelfIdx: 0,
     cardIdx: 0,
-    previewTimer: null,
-    previewHls: null,
-    previewChannel: null,
-    isFullscreen: false
+    pagerBtnIdx: 0, // 0 = play, 1 = fav, 2 = info
+    navTabIdx: 0 // 0 = home, 1 = explore, 2 = library, 3 = settings, 4 = search
   };
 
-  var tvNumpadBuffer = '';
-  var tvNumpadTimer = null;
-
-  function handleTvDigit(digit) {
-    tvNumpadBuffer += String(digit);
-    if (el.tvNumpadDigits) el.tvNumpadDigits.textContent = tvNumpadBuffer;
-    var targetNum = parseInt(tvNumpadBuffer, 10);
-    var found = (state.all || []).find(function(c) { return c.number === targetNum; });
-    if (el.tvNumpadName) el.tvNumpadName.textContent = found ? found.name : 'מחפש ערוץ...';
-    if (el.tvNumpadHud) el.tvNumpadHud.classList.remove('hidden');
-
-    if (tvNumpadTimer) clearTimeout(tvNumpadTimer);
-    tvNumpadTimer = setTimeout(function () {
-      if (found) {
-        enterTvFullscreen(found);
-      }
-      if (el.tvNumpadHud) el.tvNumpadHud.classList.add('hidden');
-      tvNumpadBuffer = '';
-      tvNumpadTimer = null;
-    }, 950);
-  }
-
-  function setupTvDock() {
-    if (!el.tvPlayerDock) return;
-    var ratios = ['contain', 'cover', 'fill'];
-    var ratioIdx = 0;
-    if (el.tvBtnRatio) {
-      el.tvBtnRatio.addEventListener('click', function () {
-        ratioIdx = (ratioIdx + 1) % ratios.length;
-        var r = ratios[ratioIdx];
-        if (el.tvPreviewVideo) el.tvPreviewVideo.style.objectFit = r;
-        el.tvBtnRatio.textContent = '📐 ' + (r === 'contain' ? '16:9 מקורי' : (r === 'cover' ? 'מילוי מסך' : '4:3 מותאם'));
-        toast('יחס מסך: ' + el.tvBtnRatio.textContent);
-      });
-    }
-    if (el.tvBtnFav) {
-      el.tvBtnFav.addEventListener('click', function () {
-        if (state.playing) {
-          toggleFav(state.playing);
-          el.tvBtnFav.textContent = isFav(state.playing) ? '★ מועדף' : '☆ הוסף למועדפים';
-          toast(isFav(state.playing) ? 'התווסף למועדפים' : 'הוסר מהמועדפים');
-        }
-      });
-    }
-    if (el.tvBtnExit) {
-      el.tvBtnExit.addEventListener('click', function () {
-        exitTvFullscreen();
-      });
-    }
-  }
-
-  function toggleTvPlayerDock() {
-    if (!el.tvPlayerDock) return;
-    var isHidden = el.tvPlayerDock.classList.contains('hidden');
-    if (isHidden) {
-      el.tvPlayerDock.classList.remove('hidden');
-      if (state.playing && el.tvBtnFav) {
-        el.tvBtnFav.textContent = isFav(state.playing) ? '★ מועדף' : '☆ הוסף למועדפים';
-      }
-    } else {
-      el.tvPlayerDock.classList.add('hidden');
-    }
-  }
-
-  function initTvOS() {
-    setupTvSidebar();
-    setupTvHeroActions();
-    setupTvDock();
-    buildAllTvShelves();
-    selectTvSidebar(1); // default to Home
-
-    function updateTvStatusWidget() {
-      if (el.tvStatusTime) {
-        var now = new Date();
-        var hh = String(now.getHours()).padStart(2, '0');
-        var mm = String(now.getMinutes()).padStart(2, '0');
-        el.tvStatusTime.textContent = hh + ':' + mm;
-      }
-    }
-    updateTvStatusWidget();
-    setInterval(updateTvStatusWidget, 10000);
-
-    if (el.tvBtnQuickSettings) {
-      el.tvBtnQuickSettings.addEventListener('click', function () {
-        openSettings();
-      });
-    }
-
-    // LG webOS Magic Remote wheel navigation
-    if (el.tvShelvesContainer) {
-      el.tvShelvesContainer.addEventListener('wheel', function (e) {
-        if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
-          if (e.deltaY > 20) {
-            if (tvState.shelfIdx < tvState.shelves.length - 1) {
-              tvState.shelfIdx++;
-              markTvFocus();
-            }
-          } else if (e.deltaY < -20) {
-            if (tvState.shelfIdx > 0) {
-              tvState.shelfIdx--;
-              markTvFocus();
-            } else {
-              tvState.zone = 'hero';
-              markTvFocus();
-            }
-          }
-        } else {
-          var curShelf = tvState.shelves[tvState.shelfIdx];
-          var numCards = curShelf ? curShelf.channels.length : 0;
-          if (e.deltaX > 20) {
-            if (tvState.cardIdx > 0) { tvState.cardIdx--; markTvFocus(); }
-            else { tvState.zone = 'sidebar'; markTvFocus(); }
-          } else if (e.deltaX < -20) {
-            if (tvState.cardIdx < numCards - 1) { tvState.cardIdx++; markTvFocus(); }
-          }
-        }
-      }, { passive: true });
-    }
-  }
-
-  function setupTvSidebar() {
-    if (!el.tvSidebar) return;
-    var sideEls = el.tvSidebar.querySelectorAll('.tv-side-item');
-    sideEls.forEach(function (btn, idx) {
-      btn.addEventListener('mouseenter', function () {
-        tvState.zone = 'sidebar';
-        tvState.sideIdx = idx;
-        markTvFocus();
-      });
-      btn.addEventListener('click', function () {
-        selectTvSidebar(idx);
-      });
-    });
-  }
-
-  function setupTvHeroActions() {
-    if (el.tvHeroBtnPlay) {
-      el.tvHeroBtnPlay.addEventListener('click', function () {
-        var ch = getCurTvCh();
-        if (ch) enterTvFullscreen(ch);
-      });
-    }
-    if (el.tvHeroBtnFav) {
-      el.tvHeroBtnFav.addEventListener('click', function () {
-        var ch = getCurTvCh();
-        if (ch) {
-          toggleFav(ch);
-          updateTvHero(ch);
-          toast(isFav(ch) ? '★ התווסף לרשימה שלי' : 'הוסר מהרשימה שלי');
-        }
-      });
-    }
-    if (el.tvHeroBtnSettings) {
-      el.tvHeroBtnSettings.addEventListener('click', function () {
-        openSettings();
-      });
-    }
-    if (el.tvHeroBtnInfo) {
-      el.tvHeroBtnInfo.addEventListener('click', function () {
-        var ch = getCurTvCh();
-        if (ch) {
-          toast('ℹ️ ' + ch.name + ' · שידור חי איכותי 1080p · ערוץ ' + ch.number);
-        }
-      });
-    }
-  }
-
-  function selectTvSidebar(idx) {
-    var it = tvState.sidebarItems[idx];
-    if (!it) return;
-    tvState.sideIdx = idx;
-    var sideEls = el.tvSidebar ? el.tvSidebar.querySelectorAll('.tv-side-item') : [];
-    for (var i = 0; i < sideEls.length; i++) {
-      toggleClass(sideEls[i], 'active', i === idx);
-    }
-
-    if (it.act === 'search') {
-      focusSearch();
-      return;
-    }
-    if (it.act === 'settings') {
-      openSettings();
-      return;
-    }
-
-    if (it.shelf !== undefined && it.shelf >= 0 && it.shelf < tvState.shelves.length) {
-      tvState.shelfIdx = it.shelf;
-      tvState.cardIdx = 0;
-      tvState.zone = 'shelf';
-      markTvFocus();
-    }
-  }
-
-  function activateTvHeroBtn() {
-    var ch = getCurTvCh();
-    if (!ch) return;
-    if (tvState.heroBtnIdx === 0) { // Play
-      enterTvFullscreen(ch);
-    } else if (tvState.heroBtnIdx === 1) { // Fav
-      toggleFav(ch);
-      updateTvHero(ch);
-      toast(isFav(ch) ? '★ התווסף לרשימה שלי' : 'הוסר מהרשימה שלי');
-    } else if (tvState.heroBtnIdx === 2) { // Settings
-      openSettings();
-    } else if (tvState.heroBtnIdx === 3) { // Info
-      toast('ℹ️ ' + ch.name + ' · שידור חי איכותי 1080p · ערוץ ' + ch.number);
-    }
-  }
-
-  function buildAllTvShelves() {
-    var shelves = [];
-    var all = state.all || [];
-
-    function byIds(ids) {
-      var map = {};
-      all.forEach(function (c) { map[c.id] = c; });
-      var res = [];
-      ids.forEach(function (id) { if (map[id]) res.push(map[id]); });
-      return res;
-    }
-
-    function filterByKeyword(kw) {
-      var lkw = kw.toLowerCase();
-      return all.filter(function (c) {
-        var str = (c.category || '') + ' ' + (c.categoryEn || '') + ' ' + (c.name || '');
-        return str.toLowerCase().indexOf(lkw) !== -1;
-      });
-    }
-
-    // 1. צפייה לאחרונה ומועדפים (Continue Watching & Favorites)
-    var favIds = state.favorites || [];
-    var recentIds = state.recents || [];
-    var combinedIds = [];
-    favIds.forEach(function (id) { if (combinedIds.indexOf(id) === -1) combinedIds.push(id); });
-    recentIds.forEach(function (id) { if (combinedIds.indexOf(id) === -1) combinedIds.push(id); });
-    var favRecents = byIds(combinedIds);
-    if (favRecents.length < 5) {
-      var topDefaults = byIds(['keshet12', 'reshet13', 'kan11', 'now14', 'i24news_he', 'sport5', 'one_hd', 'makan33', 'knesset99', 'hot3']);
-      topDefaults.forEach(function (c) { if (favRecents.indexOf(c) === -1) favRecents.push(c); });
-    }
-    shelves.push({ title: 'צפייה לאחרונה ומועדפים', channels: favRecents });
-
-    // 2. ערוצי ברודקאסט וחדשות (כאן 11, קשת 12, רשת 13, עכשיו 14, i24NEWS, ערוץ הכנסת)
-    var broadcastPrimary = byIds(['kan11', 'keshet12', 'reshet13', 'now14', 'i24news_he', 'ch9', 'makan33', 'knesset99', 'kan_educational', 'tov', 'hala_tv', 'musawa', 'hidabroot', 'ch16', 'kabbalah', 'ietv', 'maran']);
-    var newsGeneral = filterByKeyword('חדשות');
-    newsGeneral.forEach(function (c) { if (broadcastPrimary.indexOf(c) === -1) broadcastPrimary.push(c); });
-    shelves.push({ title: 'ערוצי ברודקאסט וחדשות', channels: broadcastPrimary });
-
-    // 3. ספורט בשידור חי (כל ערוצי הספורט)
-    var sportsChannels = filterByKeyword('ספורט');
-    shelves.push({ title: 'ספורט בשידור חי', channels: sportsChannels.length ? sportsChannels : all.slice(0, 40) });
-
-    // 4. סרטים וסדרות (ערוצי סרטים, דרמה ואקשן)
-    var moviesChannels = all.filter(function (c) {
-      var str = ((c.category || '') + ' ' + (c.name || '')).toLowerCase();
-      return str.indexOf('סרט') !== -1 || str.indexOf('סדרות') !== -1 || str.indexOf('קולנוע') !== -1 || str.indexOf('movie') !== -1 || str.indexOf('cinema') !== -1;
-    });
-    shelves.push({ title: 'סרטים וסדרות', channels: moviesChannels.length ? moviesChannels : all.slice(0, 40) });
-
-    // 5. ילדים ונוער (ערוצי ילדים ודיבוב לעברית)
-    var kidsChannels = filterByKeyword('ילדים');
-    shelves.push({ title: 'ילדים ונוער', channels: kidsChannels.length ? kidsChannels : all.slice(0, 40) });
-
-    // 6. בידור, טבע ומוזיקה (ערוץ 24, דוקו, מוזיקה ולייף סטייל)
-    var entChannels = all.filter(function (c) {
-      var str = ((c.category || '') + ' ' + (c.name || '')).toLowerCase();
-      return str.indexOf('בידור') !== -1 || str.indexOf('טבע') !== -1 || str.indexOf('דוקו') !== -1 || str.indexOf('מוזיקה') !== -1 || str.indexOf('music') !== -1 || str.indexOf('24') !== -1;
-    });
-    shelves.push({ title: 'בידור, טבע ומוזיקה', channels: entChannels.length ? entChannels : all.slice(0, 40) });
-
-    // 7. ערוצים בינלאומיים (חדשות וערוצים מהעולם)
-    var worldChannels = all.filter(function (c) {
-      var cat = c.category || '';
-      return cat.indexOf('ישראל') === -1 && cat.indexOf('רדיו') === -1;
-    });
-    shelves.push({ title: 'ערוצים בינלאומיים מהעולם', channels: worldChannels.length ? worldChannels : all.slice(0, 80) });
-
-    tvState.shelves = shelves;
-    renderTvShelvesHtml();
-  }
-
-  function renderTvShelvesHtml() {
-    if (!el.tvShelvesTrack) return;
-    var html = '';
-    tvState.shelves.forEach(function (shelf, sIdx) {
-      html += '<section class="tv-shelf" data-shelf="' + sIdx + '">';
-      html += '<h2 class="tv-shelf-title">' + esc(shelf.title) + '</h2>';
-      html += '<div class="tv-shelf-row-wrapper">';
-      html += '<div class="shelf-track tv-shelf-row">';
-      shelf.channels.forEach(function (ch, cIdx) {
-        var flags = '<span class="f-live">● LIVE</span>' + (isFav(ch) ? '<span>⭐</span>' : '') +
-          (isRadioCh(ch) ? '<span>📻</span>' : '') + (appOnly(ch) ? '<span>📲</span>' : '');
-        html += '<div class="tv-card channel-card' + (isFav(ch) ? ' is-fav' : '') + '" data-shelf="' + sIdx + '" data-card="' + cIdx + '">';
-        html += '<div class="tv-card-visual tv-card-media" style="background-image:' + tintOf(ch) + '">';
-        html += '<div class="tv-card-glare"></div>';
-        html += '<div class="tv-card-num">' + ch.number + '</div>';
-        html += '<div class="tv-card-badges">' + flags + '</div>';
-        html += '<img alt="" loading="lazy" class="tv-card-logo" />';
-        html += '<div class="mono hidden"></div>';
-        html += '<div class="tv-card-bottom-scrim"></div>';
-        html += '<div class="tv-card-text-overlay">';
-        html += '<div class="tv-card-name">' + esc(ch.name) + '</div>';
-        html += '<div class="tv-card-meta">' + esc(cardMeta(ch)) + '</div>';
-        html += '</div>';
-        html += '</div>';
-        html += '</div>';
-      });
-      html += '</div></div></section>';
-    });
-    el.tvShelvesTrack.innerHTML = html;
-
-    var shelfEls = el.tvShelvesTrack.querySelectorAll('.tv-shelf');
-    shelfEls.forEach(function (sEl, sIdx) {
-      var shelf = tvState.shelves[sIdx];
-      if (!shelf) return;
-      var cardEls = sEl.querySelectorAll('.tv-card');
-      cardEls.forEach(function (cEl, cIdx) {
-        var ch = shelf.channels[cIdx];
-        if (!ch) return;
-        lazyLogo(cEl.querySelector('img'), cEl.querySelector('.mono'), ch);
-
-        cEl.addEventListener('mouseenter', function () {
-          var oldCards = document.querySelectorAll('.tv-card.focused');
-          for (var oi = 0; oi < oldCards.length; oi++) oldCards[oi].classList.remove('focused');
-          cEl.classList.add('focused');
-          tvState.zone = 'shelf';
-          tvState.shelfIdx = sIdx;
-          tvState.cardIdx = cIdx;
-          updateTvHero(ch);
-        });
-        cEl.addEventListener('click', function () {
-          tvState.zone = 'shelf';
-          tvState.shelfIdx = sIdx;
-          tvState.cardIdx = cIdx;
-          tvOk();
-        });
-      });
-    });
-  }
-
-  function getCurTvCh() {
-    var shelf = tvState.shelves[tvState.shelfIdx];
-    if (!shelf || !shelf.channels) return null;
-    return shelf.channels[tvState.cardIdx] || null;
-  }
-
-  function markTvFocus(immediate) {
-    var oldFocus = document.querySelectorAll('.tv-side-item.focused, .tv-cta-btn.focused, .tv-card.focused');
+  function markHomeFocus() {
+    var oldFocus = document.querySelectorAll('.pcard.focused, .slide-actions .focused, .nb-item.focused, .nb-search.focused');
     for (var i = 0; i < oldFocus.length; i++) oldFocus[i].classList.remove('focused');
 
-    toggleClass(el.tvSidebar, 'expanded', tvState.zone === 'sidebar');
-
-    if (tvState.zone === 'sidebar') {
-      var sideEls = el.tvSidebar ? el.tvSidebar.querySelectorAll('.tv-side-item') : [];
-      if (sideEls[tvState.sideIdx]) {
-        sideEls[tvState.sideIdx].classList.add('focused');
-      }
-    } else if (tvState.zone === 'hero') {
-      var heroBtns = [el.tvHeroBtnPlay, el.tvHeroBtnFav, el.tvHeroBtnSettings, el.tvHeroBtnInfo];
-      if (heroBtns[tvState.heroBtnIdx]) {
-        heroBtns[tvState.heroBtnIdx].classList.add('focused');
-      }
-    } else if (tvState.zone === 'shelf') {
-      var shelfTrack = el.tvShelvesTrack;
-      if (!shelfTrack) return;
-      var shelfEls = shelfTrack.querySelectorAll('.tv-shelf');
-      var curShelfEl = shelfEls[tvState.shelfIdx];
-      if (curShelfEl) {
-        var cardEls = curShelfEl.querySelectorAll('.tv-card');
-        var curCardEl = cardEls[tvState.cardIdx];
-        if (curCardEl) curCardEl.classList.add('focused');
-
-        // Smooth RTL Sliding Window: 260px card + 20px margin = 280px step
-        // 5 cards fit on screen without any sliding needed
-        var rowEl = curShelfEl.querySelector('.shelf-track') || curShelfEl.querySelector('.tv-shelf-row');
-        if (rowEl) {
-          var tx = tvState.cardIdx >= 4 ? (tvState.cardIdx - 3) * 280 : 0;
-          rowEl.style.transform = 'translate3d(' + tx + 'px, 0, 0)';
+    if (homeNav.zone === 'pager') {
+      var activeSlide = el.pagerTrack ? el.pagerTrack.children[pagerIndex()] : null;
+      if (activeSlide) {
+        var btns = [
+          activeSlide.querySelector('.fab-play'),
+          activeSlide.querySelector('[data-act="fav"]'),
+          activeSlide.querySelector('[data-act="info"]')
+        ].filter(Boolean);
+        var b = btns[clamp(homeNav.pagerBtnIdx, 0, btns.length - 1)];
+        if (b) {
+          b.classList.add('focused');
+          if (b.scrollIntoView) { try { b.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); } catch (e) {} }
         }
       }
-
-      // Vertical Shelf Cascade: translateY the shelves track (-1 * activeRow * 232px)
-      var ty = tvState.shelfIdx * 232;
-      shelfTrack.style.transform = 'translate3d(0, -' + ty + 'px, 0)';
-
-      // All shelves visible: active row full bright, upcoming rows clearly visible (0.78), past rows dimmed (0.35)
-      for (var s = 0; s < shelfEls.length; s++) {
-        if (s < tvState.shelfIdx) {
-          shelfEls[s].style.opacity = '0.35';
-          shelfEls[s].style.transform = 'scale3d(0.96, 0.96, 1)';
-        } else if (s === tvState.shelfIdx) {
-          shelfEls[s].style.opacity = '1';
-          shelfEls[s].style.transform = 'scale3d(1, 1, 1)';
-        } else {
-          shelfEls[s].style.opacity = '0.78';
-          shelfEls[s].style.transform = 'scale3d(0.98, 0.98, 1)';
-        }
-      }
-
-      // Sync active sidebar item with current shelf
-      if (el.tvSidebar) {
-        var sideItems = el.tvSidebar.querySelectorAll('.tv-side-item');
-        for (var si = 0; si < tvState.sidebarItems.length; si++) {
-          var isMatch = tvState.sidebarItems[si].shelf === tvState.shelfIdx;
-          if (isMatch) {
-            for (var k = 0; k < sideItems.length; k++) toggleClass(sideItems[k], 'active', k === si);
-            tvState.sideIdx = si;
-            break;
+    } else if (homeNav.zone === 'shelves') {
+      var shelfEls = el.shelves ? el.shelves.querySelectorAll('.shelf') : [];
+      if (!shelfEls.length) return;
+      homeNav.shelfIdx = clamp(homeNav.shelfIdx, 0, shelfEls.length - 1);
+      var curShelf = shelfEls[homeNav.shelfIdx];
+      if (curShelf) {
+        var cards = curShelf.querySelectorAll('.pcard');
+        if (cards.length) {
+          homeNav.cardIdx = clamp(homeNav.cardIdx, 0, cards.length - 1);
+          var curCard = cards[homeNav.cardIdx];
+          if (curCard) {
+            curCard.classList.add('focused');
+            try { curCard.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: 'smooth' }); } catch (e) {}
           }
         }
+        try { curShelf.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); } catch (e) {}
       }
-
-      var ch = getCurTvCh();
-      if (ch) {
-        updateTvHero(ch);
-        scheduleTvLivePreview(ch);
-      }
-    }
-  }
-
-  function updateTvHero(ch) {
-    if (!ch || !el.tvHeroMeta) return;
-    el.tvHeroMeta.classList.remove('anim-slide');
-    void el.tvHeroMeta.offsetWidth;
-    el.tvHeroMeta.classList.add('anim-slide');
-
-    if (el.tvHeroTitle) el.tvHeroTitle.textContent = ch.name;
-    if (el.tvHeroDesc) el.tvHeroDesc.textContent = ch.desc || ('ערוץ ' + ch.name + ' בשידור ישיר 24/7 באיכות הגבוהה ביותר FHD 1080p עם 98% התאמה');
-    if (el.tvHeroNum) el.tvHeroNum.textContent = ch.number || '1';
-    if (el.tvHeroCat) el.tvHeroCat.textContent = splitCat(ch.category) || 'ערוצי ישראל';
-    if (el.tvHeroQuality) el.tvHeroQuality.textContent = ch.badge || (isRadioCh(ch) ? 'רדיו' : '4K Ultra HD');
-    if (el.tvHeroFav) toggleClass(el.tvHeroFav, 'hidden', !isFav(ch));
-    if (el.tvHeroBtnFavTxt) {
-      el.tvHeroBtnFavTxt.textContent = isFav(ch) ? 'ברשימה שלי ★' : '+ לרשימה שלי';
-    }
-
-    // Live EPG Program Timeline Generator
-    if (el.tvEpgTitle && el.tvEpgTime && el.tvEpgFill) {
-      var now = new Date();
-      var hr = now.getHours();
-      var min = now.getMinutes();
-      var progName = 'שידור חי מסביב לשעון';
-      var startTime = (hr < 10 ? '0' + hr : hr) + ':00';
-      var endHr = (hr + 1) % 24;
-      var endTime = (endHr < 10 ? '0' + endHr : endHr) + ':00';
-      var cat = (ch.category || '').toLowerCase();
-      var cname = (ch.name || '').toLowerCase();
-
-      if (cat.indexOf('חדשות') !== -1 || cname.indexOf('12') !== -1 || cname.indexOf('13') !== -1 || cname.indexOf('11') !== -1 || cname.indexOf('14') !== -1) {
-        if (hr >= 19 && hr < 21) progName = 'המהדורה המרכזית בשידור חי';
-        else if (hr >= 17 && hr < 19) progName = 'המהדורה המוקדמת ותוכנית אקטואליה';
-        else if (hr >= 6 && hr < 10) progName = 'חדשות הבוקר - משדר פותח יום';
-        else progName = 'מבזק מיוחד ומשדר אקטואליה רציף';
-      } else if (cat.indexOf('ספורט') !== -1) {
-        progName = 'שידור ישיר: משחק המרכז, אולפן וסיכומים';
-      } else if (cat.indexOf('סרט') !== -1 || cat.indexOf('סדרות') !== -1) {
-        progName = 'קולנוע עכשיו: סרט עלילתי באורך מלא';
-      } else if (cat.indexOf('ילדים') !== -1) {
-        progName = 'עולם הילדים: סדרות אנימציה והרפתקאות בעברית';
-      } else if (cat.indexOf('מוזיקה') !== -1) {
-        progName = 'מצעד הלהיטים הרשמי וקליפים ברצף';
-      }
-      el.tvEpgTitle.textContent = progName;
-      el.tvEpgTime.textContent = startTime + ' - ' + endTime;
-      var pct = Math.min(100, Math.max(12, Math.round((min / 60) * 100)));
-      el.tvEpgFill.style.width = pct + '%';
-    }
-
-    setLogo(el.tvHeroLogo, el.tvHeroMono, ch);
-
-    if (el.tvBackdropArt) {
-      var h = hueOf(ch.id);
-      el.tvBackdropArt.style.background = 'radial-gradient(circle at 75% 30%, hsla(' + h + ',80%,40%,.45), transparent 65%), linear-gradient(180deg, rgba(5,7,13,0.3) 0%, rgba(5,7,13,0.96) 100%)';
-    }
-  }
-
-  function scheduleTvLivePreview(ch) {
-    if (tvState.previewTimer) {
-      clearTimeout(tvState.previewTimer);
-      tvState.previewTimer = null;
-    }
-    if (tvState.isFullscreen) return;
-    tvState.previewTimer = setTimeout(function () {
-      startTvLivePreview(ch);
-    }, 550);
-  }
-
-  function startTvLivePreview(ch) {
-    if (!ch || !el.tvPreviewVideo) return;
-    if (tvState.previewChannel && tvState.previewChannel.id === ch.id && !el.tvPreviewVideo.paused) return;
-    tvState.previewChannel = ch;
-
-    if (tvState.previewHls) {
-      try { tvState.previewHls.destroy(); } catch (e) {}
-      tvState.previewHls = null;
-    }
-
-    var vid = el.tvPreviewVideo;
-    vid.classList.remove('active');
-    vid.muted = true;
-    vid.volume = 0;
-
-    var streamUrl = ch.url;
-    if (!streamUrl || isApp(ch) || appOnly(ch)) return;
-
-    var onPlaying = function () {
-      vid.classList.add('active');
-      vid.removeEventListener('playing', onPlaying);
-    };
-    vid.addEventListener('playing', onPlaying);
-
-    if (streamUrl.indexOf('.m3u8') !== -1 && window.Hls && Hls.isSupported()) {
-      var hls = new Hls({
-        capLevelToPlayerSize: true,
-        maxBufferLength: 4,
-        maxMaxBufferLength: 8,
-        liveSyncDurationCount: 1,
-        liveMaxLatencyDurationCount: 3,
-        maxLiveSyncPlaybackRate: 1.15,
-        liveDurationInfinity: true,
-        lowLatencyMode: true,
-        startLevel: 0
-      });
-      hls.loadSource(streamUrl);
-      hls.attachMedia(vid);
-      hls.on(Hls.Events.MANIFEST_PARSED, function () {
-        var p = vid.play();
-        if (p && p.catch) p.catch(function () {});
-      });
-      tvState.previewHls = hls;
-    } else {
-      vid.src = streamUrl;
-      var p = vid.play();
-      if (p && p.catch) p.catch(function () {});
-    }
-  }
-
-  function enterTvFullscreen(ch) {
-    tvState.isFullscreen = true;
-    state.playing = ch;
-    state.overlay = 'tv-player';
-    addRecent(ch);
-
-    document.body.classList.add('tv-fullscreen-playing');
-
-    var vid = el.tvPreviewVideo;
-    if (tvState.previewChannel && tvState.previewChannel.id === ch.id && !vid.paused) {
-      vid.muted = false;
-      vid.volume = 1;
-    } else {
-      vid.muted = false;
-      vid.volume = 1;
-      startTvLivePreview(ch);
-      vid.classList.add('active');
-    }
-    toast('▶ ' + ch.name);
-  }
-
-  function exitTvFullscreen() {
-    tvState.isFullscreen = false;
-    state.overlay = null;
-    document.body.classList.remove('tv-fullscreen-playing');
-    if (el.tvPreviewVideo) {
-      el.tvPreviewVideo.muted = true;
-    }
-    markTvFocus();
-  }
-
-  function tvKey(code, e) {
-    if (isBack(code)) { tvBack(); return; }
-    // Numpad 0-9 on LG Magic Remote
-    if ((code >= 48 && code <= 57) || (code >= 96 && code <= 105)) {
-      var d = code >= 96 ? code - 96 : code - 48;
-      handleTvDigit(d);
-      return;
-    }
-
-    if (tvState.zone === 'sidebar') {
-      if (code === 37) { // Left (in RTL, moving into main content from right sidebar)
-        tvState.zone = 'shelf';
-        markTvFocus();
-        return;
-      }
-      if (code === 38) { // Up
-        if (tvState.sideIdx > 0) {
-          tvState.sideIdx--;
-          markTvFocus();
-        }
-        return;
-      }
-      if (code === 40) { // Down
-        if (tvState.sideIdx < tvState.sidebarItems.length - 1) {
-          tvState.sideIdx++;
-          markTvFocus();
-        }
-        return;
-      }
-      if (code === 13 || code === 23 || code === 66) {
-        selectTvSidebar(tvState.sideIdx);
-        return;
-      }
-    } else if (tvState.zone === 'hero') {
-      if (code === 38) { // Up from hero opens Settings
-        openSettings();
-        return;
-      }
-      if (code === 37) { // Left (next CTA button in RTL)
-        if (tvState.heroBtnIdx < 3) {
-          tvState.heroBtnIdx++;
-          markTvFocus();
-        }
-        return;
-      }
-      if (code === 39) { // Right (prev CTA button, or into sidebar)
-        if (tvState.heroBtnIdx > 0) {
-          tvState.heroBtnIdx--;
-          markTvFocus();
-        } else {
-          tvState.zone = 'sidebar';
-          markTvFocus();
-        }
-        return;
-      }
-      if (code === 40) { // Down from hero moves to active shelf
-        tvState.zone = 'shelf';
-        markTvFocus();
-        return;
-      }
-      if (code === 13 || code === 23 || code === 66) {
-        activateTvHeroBtn();
-        return;
-      }
-    } else if (tvState.zone === 'shelf') {
-      var curShelf = tvState.shelves[tvState.shelfIdx];
-      var numCards = curShelf ? curShelf.channels.length : 0;
-      if (code === 37) { // Left (next card in RTL)
-        if (tvState.cardIdx < numCards - 1) {
-          tvState.cardIdx++;
-          markTvFocus();
-        }
-        return;
-      }
-      if (code === 39) { // Right (prev card or enter sidebar in RTL)
-        if (tvState.cardIdx > 0) {
-          tvState.cardIdx--;
-          markTvFocus();
-        } else {
-          tvState.zone = 'sidebar';
-          markTvFocus();
-        }
-        return;
-      }
-      if (code === 38) { // Up
-        if (tvState.shelfIdx > 0) {
-          tvState.shelfIdx--;
-          var newShelf = tvState.shelves[tvState.shelfIdx];
-          if (tvState.cardIdx >= newShelf.channels.length) {
-            tvState.cardIdx = Math.max(0, newShelf.channels.length - 1);
-          }
-          markTvFocus();
-        } else {
-          tvState.zone = 'hero';
-          tvState.heroBtnIdx = 0;
-          markTvFocus();
-        }
-        return;
-      }
-      if (code === 40) { // Down
-        if (tvState.shelfIdx < tvState.shelves.length - 1) {
-          tvState.shelfIdx++;
-          var nextShelf = tvState.shelves[tvState.shelfIdx];
-          if (tvState.cardIdx >= nextShelf.channels.length) {
-            tvState.cardIdx = Math.max(0, nextShelf.channels.length - 1);
-          }
-          markTvFocus();
-        }
-        return;
+    } else if (homeNav.zone === 'navbar') {
+      var navItems = el.navbar ? el.navbar.querySelectorAll('.nb-item') : [];
+      if (homeNav.navTabIdx < navItems.length && navItems[homeNav.navTabIdx]) {
+        navItems[homeNav.navTabIdx].classList.add('focused');
+      } else if (el.nbSearch) {
+        el.nbSearch.classList.add('focused');
       }
     }
   }
 
-  function tvOk() {
-    if (tvState.zone === 'sidebar') {
-      selectTvSidebar(tvState.sideIdx);
-      return;
-    }
-    if (tvState.zone === 'hero') {
-      activateTvHeroBtn();
-      return;
-    }
-    var ch = getCurTvCh();
-    if (ch) {
-      if (isApp(ch)) { openServiceApp(ch); addRecent(ch); return; }
-      if (appOnly(ch)) { showGetApp(ch); return; }
-      enterTvFullscreen(ch);
-    }
-  }
-
-  function tvBack() {
-    if (tvState.isFullscreen) {
-      if (el.tvPlayerDock && !el.tvPlayerDock.classList.contains('hidden')) {
-        el.tvPlayerDock.classList.add('hidden');
-        return;
-      }
-      exitTvFullscreen();
-      return;
-    }
-    if (tvState.zone === 'shelf' && tvState.shelfIdx > 0) {
-      tvState.shelfIdx = 0;
-      tvState.cardIdx = 0;
-      markTvFocus();
-      return;
-    }
-    if (tvState.tabIdx !== 0) {
-      selectTvTab(0);
-      return;
-    }
-    var now = Date.now();
-    if (now - (state.lastBack || 0) < 2500) {
-      exitApp();
-    } else {
-      state.lastBack = now;
-      toast('לחצו שוב BACK ליציאה');
-    }
-  }
-
-  function tvPlayerKey(code) {
+  function homeKey(code, e) {
     if (isBack(code)) {
-      if (el.tvPlayerDock && !el.tvPlayerDock.classList.contains('hidden')) {
-        el.tvPlayerDock.classList.add('hidden');
+      if (homeNav.zone !== 'shelves' || homeNav.shelfIdx > 0) {
+        homeNav.zone = 'shelves';
+        homeNav.shelfIdx = 0;
+        homeNav.cardIdx = 0;
+        markHomeFocus();
         return;
       }
-      exitTvFullscreen();
+      var now = Date.now();
+      if (now - (state.lastBack || 0) < 2500) exitApp();
+      else { state.lastBack = now; toast('לחצו שוב BACK ליציאה'); }
       return;
     }
-    // Number keys on remote while playing
+
+    // Number keys on remote 0-9
     if ((code >= 48 && code <= 57) || (code >= 96 && code <= 105)) {
       var d = code >= 96 ? code - 96 : code - 48;
-      handleTvDigit(d);
+      digit(d);
       return;
     }
-    // Toggle player dock with OK (13/23/66) or UP (38) or INFO (457)
-    if (code === 13 || code === 23 || code === 66 || code === 38 || code === 457) {
-      toggleTvPlayerDock();
-      return;
-    }
-    if (code === 37 || code === 39) {
-      zapTvChannel(code === 37 ? 1 : -1);
-      return;
-    }
-    if (code === 40) {
-      zapTvChannel(-1);
-      return;
+
+    if (homeNav.zone === 'pager') {
+      if (code === 37) { // Left (next button in RTL)
+        if (homeNav.pagerBtnIdx < 2) homeNav.pagerBtnIdx++;
+        else {
+          var t = el.pagerTrack, n = (pagerIndex() + 1) % (pagerItems.length || 1);
+          var left = -n * t.clientWidth;
+          try { t.scrollTo({ left: left, behavior: 'smooth' }); } catch (x) { t.scrollLeft = left; }
+          homeNav.pagerBtnIdx = 0;
+        }
+        markHomeFocus();
+        return;
+      }
+      if (code === 39) { // Right (prev button)
+        if (homeNav.pagerBtnIdx > 0) homeNav.pagerBtnIdx--;
+        else {
+          var t = el.pagerTrack, n = (pagerIndex() - 1 + (pagerItems.length || 1)) % (pagerItems.length || 1);
+          var left = -n * t.clientWidth;
+          try { t.scrollTo({ left: left, behavior: 'smooth' }); } catch (x) { t.scrollLeft = left; }
+          homeNav.pagerBtnIdx = 2;
+        }
+        markHomeFocus();
+        return;
+      }
+      if (code === 40) { // Down to shelves
+        homeNav.zone = 'shelves';
+        homeNav.shelfIdx = 0;
+        homeNav.cardIdx = 0;
+        markHomeFocus();
+        return;
+      }
+      if (code === 13 || code === 23 || code === 66) {
+        homeOk();
+        return;
+      }
+    } else if (homeNav.zone === 'shelves') {
+      var shelfEls = el.shelves ? el.shelves.querySelectorAll('.shelf') : [];
+      var curShelf = shelfEls[homeNav.shelfIdx];
+      var cards = curShelf ? curShelf.querySelectorAll('.pcard') : [];
+      if (code === 37) { // Left (next card)
+        if (homeNav.cardIdx < cards.length - 1) homeNav.cardIdx++;
+        markHomeFocus();
+        return;
+      }
+      if (code === 39) { // Right (prev card)
+        if (homeNav.cardIdx > 0) homeNav.cardIdx--;
+        markHomeFocus();
+        return;
+      }
+      if (code === 38) { // Up
+        if (homeNav.shelfIdx > 0) {
+          homeNav.shelfIdx--;
+          markHomeFocus();
+        } else {
+          homeNav.zone = 'pager';
+          homeNav.pagerBtnIdx = 0;
+          markHomeFocus();
+        }
+        return;
+      }
+      if (code === 40) { // Down
+        if (homeNav.shelfIdx < shelfEls.length - 1) {
+          homeNav.shelfIdx++;
+          markHomeFocus();
+        } else {
+          homeNav.zone = 'navbar';
+          homeNav.navTabIdx = 0;
+          markHomeFocus();
+        }
+        return;
+      }
+      if (code === 13 || code === 23 || code === 66) {
+        homeOk();
+        return;
+      }
+    } else if (homeNav.zone === 'navbar') {
+      var navItems = el.navbar ? el.navbar.querySelectorAll('.nb-item') : [];
+      var totalTabs = navItems.length + 1; // +1 for search
+      if (code === 37) { // Left (next tab)
+        homeNav.navTabIdx = (homeNav.navTabIdx + 1) % totalTabs;
+        markHomeFocus();
+        return;
+      }
+      if (code === 39) { // Right (prev tab)
+        homeNav.navTabIdx = (homeNav.navTabIdx - 1 + totalTabs) % totalTabs;
+        markHomeFocus();
+        return;
+      }
+      if (code === 38) { // Up back to shelves
+        homeNav.zone = 'shelves';
+        homeNav.shelfIdx = Math.max(0, (el.shelves ? el.shelves.querySelectorAll('.shelf').length : 1) - 1);
+        markHomeFocus();
+        return;
+      }
+      if (code === 13 || code === 23 || code === 66) {
+        homeOk();
+        return;
+      }
     }
   }
 
-  function zapTvChannel(dir) {
-    var curShelf = tvState.shelves[tvState.shelfIdx];
-    if (!curShelf || !curShelf.channels.length) return;
-    var nextCardIdx = (tvState.cardIdx + dir + curShelf.channels.length) % curShelf.channels.length;
-    tvState.cardIdx = nextCardIdx;
-    var nextCh = curShelf.channels[nextCardIdx];
-    if (nextCh) {
-      enterTvFullscreen(nextCh);
+  function homeOk() {
+    if (homeNav.zone === 'shelves') {
+      var shelfEls = el.shelves ? el.shelves.querySelectorAll('.shelf') : [];
+      var curShelf = shelfEls[homeNav.shelfIdx];
+      var cards = curShelf ? curShelf.querySelectorAll('.pcard') : [];
+      var curCard = cards[homeNav.cardIdx];
+      if (curCard) curCard.click();
+    } else if (homeNav.zone === 'pager') {
+      var activeSlide = el.pagerTrack ? el.pagerTrack.children[pagerIndex()] : null;
+      if (activeSlide) {
+        var btns = [
+          activeSlide.querySelector('.fab-play'),
+          activeSlide.querySelector('[data-act="fav"]'),
+          activeSlide.querySelector('[data-act="info"]')
+        ].filter(Boolean);
+        var b = btns[clamp(homeNav.pagerBtnIdx, 0, btns.length - 1)];
+        if (b) b.click();
+      }
+    } else if (homeNav.zone === 'navbar') {
+      var navItems = el.navbar ? el.navbar.querySelectorAll('.nb-item') : [];
+      if (homeNav.navTabIdx < navItems.length && navItems[homeNav.navTabIdx]) {
+        navItems[homeNav.navTabIdx].click();
+      } else if (el.nbSearch) {
+        el.nbSearch.click();
+      }
     }
+  }
+
+  function initTvRemoteNav() {
+    homeNav.zone = 'shelves';
+    homeNav.shelfIdx = 0;
+    homeNav.cardIdx = 0;
+    setTimeout(markHomeFocus, 300);
   }
 })();

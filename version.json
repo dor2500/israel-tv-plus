@@ -1,41 +1,59 @@
 {
-  "version": "3.6.3",
-  "code": 202610242239,
-  "app": 363,
+  "version": "3.7.0",
+  "code": 202610242249,
+  "app": 370,
   "shell": 3,
   "date": "2026-10-24",
-  "notes": [],
+  "notes": [
+    "בנייה מחדש מאפס של ממשק LG webOS ברוח ממשק האנדרואיד (Unified Android Flagship UI for webOS):",
+    "עיצוב זהה ומרהיב לאנדרואיד על גבי מסך הטלוויזיה: איחוד מלא עם מנוע ה-Nuvio של אפליקציית האנדרואיד. תצוגת Hero Pager אינטראקטיבית ענקית עם מעברי גרדיאנט רדיאליים דינמיים, כפתורי [▶ צפייה] ו-[⭐], ותגיות שידור חיות באיכות 4K.",
+    "מדפי ערוצים אופקיים עשירים ואינטואיטיביים: תצוגת שורות מרווחות (\"המשך צפייה\", \"המועדפים שלי\", \"ערוצי ישראל\", \"ספורט\", \"סרטים וסדרות\", \"ילדים ונוער\", \"מוזיקה\", \"עולם\") עם כרטיסי פרימיום מעוגלים, הדגשת פוקוס זוהרת ומידע EPG חי.",
+    "סרגל ניווט תחתון צף מזכוכית (Floating Glass Pill Navbar): גישה נוחה ומידית בלחיצת שלט לטאבים ראשיים: בית (Home), ערוצים (Explore), שלי (Library), הגדרות (Settings) וחיפוש.",
+    "שליטה מושלמת בשלטי טלוויזיה ו-Magic Remote: מנוע ניווט חומרה מותאם D-Pad ושלט חכם המאפשר בחירה חלקה, ריחוף ללא קפיצות מסך ומעבר מיידי בין אזורי המסך.",
+    "השקת גרסאות ייעודיות ל-Mac, Stremio ו-Linux:",
+    "חבילות עצמאיות למחשבי Mac: גרסת Apple Silicon (M1/M2/M3/M4 - ARM64) וגרסת Intel (x64).",
+    "חבילות עצמאיות ל-Linux (x64 ו-ARM64).",
+    "תוסף רשמי ל-Stremio עם מעל 10,240 ערוצים ב-20 קטלוגים מסונכרנים (stremio/manifest.json).",
+    "חבילות מעודכנות ל-Android (טלפון וטלוויזיה), Windows, Samsung Tizen ו-LG webOS.",
+    "תיקון יסודי של ממשק הטלוויזיה (LG webOS / Smart TV Overhaul):",
+    "תצוגת קטגוריות מלאה ועשירה: הגדלת שטח המדפים (58vh) כך שרואים מספר שורות ערוצים עשירות בבת אחת (ערוצי ישראל, ספורט, סרטים וסדרות, ילדים ונוער, בידור ומוזיקה, עולם) במקום שורה בודדת.",
+    "תיקון גלילת שורות מדויקת ב-RTL: חלון הזזה אופקי המציג 5 כרטיסים שלמים על המסך בו-זמנית, ללא בריחה של כרטיסים ימינה.",
+    "תיקון שלט Magic Remote ב-LG: ביטול קפיצות המדף בריחוף עכבר/מצביע (pointer hover) – כעת ניתן להצביע וללחוץ על כל כרטיס בדיוק מושלם ובקלות.",
+    "נגישות מיידית להגדרות: מקש למעלה (UP) מכפתורי ההירו פותח ישירות את ההגדרות, כפתור הגדרות בולט בראש המסך ובשורת ה-Hero.",
+    "עיצוב זכוכית OLED ניאון יוקרתי: כרטיסי 16:9 רחבים (260x148) עם מרווחי מרג'ין מובנים התואמים לכל דפדפני webOS, מסגרת פוקוס ניאון ציאן זוהרת (Cyan glow) ו-z-index תקין לכל השכבות.",
+    "התקנה ישירה ומיידית לטלוויזיה (192.168.1.5) באמצעות ares-install."
+  ],
   "native": {
     "android": {
-      "version": "3.6.3",
-      "app": 363,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.6.3/IsraelTVPlus-android.apk"
+      "version": "3.7.0",
+      "app": 370,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.7.0/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "3.6.3",
-      "app": 363,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.6.3/IsraelTVPlus-windows-setup.exe"
+      "version": "3.7.0",
+      "app": 370,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.7.0/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "3.6.3",
-      "app": 363,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.6.3/com.israeltv.plus_all.ipk",
+      "version": "3.7.0",
+      "app": 370,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.7.0/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "3.6.3",
-      "app": 363,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.6.3/IsraelTVPlus-tizen-project.zip"
+      "version": "3.7.0",
+      "app": 370,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.7.0/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "3.6.3",
-      "app": 363,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.6.3/IsraelTVPlus-macos-arm64.zip"
+      "version": "3.7.0",
+      "app": 370,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.7.0/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "3.6.3",
-      "app": 363,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.6.3/IsraelTVPlus-linux-x64.zip"
+      "version": "3.7.0",
+      "app": 370,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.7.0/IsraelTVPlus-linux-x64.zip"
     }
   }
 }
