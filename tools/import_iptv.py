@@ -70,7 +70,8 @@ CAT_KIND_HE = {"kids": "ערוץ ילדים", "news": "ערוץ חדשות", "sp
 SKIP_CATS = {"xxx", "shop", "interactive"}
 SKIP_IDS = {"Channel13.il",  # curated "רשת 13" already plays Channel 13
             # paid Israeli channels (Sport 5 etc.) re-streamed from a bare IP without a licence
-            "5Plus.il", "5Stars.il", "HealthChannel.il", "TeenNick.il"}
+            "5Plus.il", "5Stars.il", "HealthChannel.il", "TeenNick.il",
+            "NickOnline.br"}  # Nickelodeon cartoons on an unofficial site
 # pay-TV sports / premium brands: a free stream of these is a re-stream without a licence (the free ESPN8 The Ocho,
 # DAZN / Pluto FAST channels and public broadcasters don't match)
 PAID_RE = re.compile(r"^(ESPN(?!8)|ESPN Premium|Fox Sports|Eurosport|Star Sports|Sony Sports|Ten Cricket|Eleven Sports|"
