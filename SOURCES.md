@@ -1,6 +1,6 @@
 # מקורות – מאיפה מגיע כל ערוץ
 
-נוצר אוטומטית מ-`channels.json` על ידי `tools/make_sources.py`. סה"כ **1541** פריטים: 1476 ערוצי טלוויזיה, 65 תחנות רדיו, 0 אפליקציות/שירותים.
+נוצר אוטומטית מ-`channels.json` על ידי `tools/make_sources.py`. סה"כ **1559** פריטים: 1489 ערוצי טלוויזיה, 70 תחנות רדיו, 0 אפליקציות/שירותים.
 
 ## איך הערוצים נאספו ונבדקו
 
@@ -17,7 +17,7 @@
 
 ## ⚖️ מצב הזכויות – חשוב לדעת
 
-- **95 שידורים רשמיים** – מהשרתים של הגוף המשדר עצמו או של המפיץ שלו (כאן, 13, 14, i24NEWS, גלי צה"ל, תחנות הרדיו, DW, אל-ג'זירה...).
+- **113 שידורים רשמיים** – מהשרתים של הגוף המשדר עצמו או של המפיץ שלו (כאן, 13, 14, i24NEWS, גלי צה"ל, תחנות הרדיו, DW, אל-ג'זירה...).
 - **175 ערוצי FAST** – ערוצים חינמיים עם פרסומות שהבעלים מפיצים בעצמם (Pluto TV, BabyFirst, LEGO, Baby Shark...).
 - **1173 ערוצים מהעולם** – שידורים פתוחים מהמאגר הציבורי iptv-org (ייבוא אוטומטי, `tools/import_iptv.py`): כל אחד נבדק שהוא משדר ושיש בו תמונה, ללא ערוצים שדורשים מנוי/כתובת מיוחדת. רובם מהשרתים של הערוצים עצמם, אבל הבעלים לא נבדקו אחד-אחד.
 - **98 ממסרי צד שלישי** – בעיקר `stream.mcquack.net` (76 ערוצים). אלה **אינם** השרתים של הערוצים: אתר חיצוני קולט את השידור ומפיץ אותו מחדש. בהם נמצאים גם ערוצים בתשלום (HOT, yes, viju/TV1000, ערוצי ספורט) – סביר מאוד שההפצה הזו **ללא רישיון** מבעלי הזכויות, והם עלולים להיעלם בכל רגע. ההחלטה אם להשאיר אותם היא שלך; הסקריפטים לא מוסיפים ממסרים חדשים של ערוצים בתשלום.
@@ -32,14 +32,15 @@
 | `jmp2.uk` | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | 168 |
 | `stream.mcquack.net` | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | 76 |
 | `92.114.85.87` | 92.114.85.87 | 🌐 ציבורי (iptv-org) | 18 |
+| `cdn.cybercdn.live` | CyberCDN – ה-CDN של תחנות הרדיו עצמן | ✅ רשמי | 16 |
 | `gb25.streamgates.net` | StreamGates – ערוצי רדיוס 100FM | ✅ רשמי | 16 |
 | `freem3u.xyz` | freem3u.xyz | 🌐 ציבורי (iptv-org) | 15 |
-| `cdn.cybercdn.live` | CyberCDN – ה-CDN של תחנות הרדיו עצמן | ✅ רשמי | 14 |
 | `rpn.bozztv.com` | rpn.bozztv.com | 🌐 ציבורי (iptv-org) | 13 |
 | `38.75.136.137` | 38.75.136.137 | 🌐 ציבורי (iptv-org) | 10 |
 | `cityeden.catcast.tv` | cityeden.catcast.tv | 🌐 ציבורי (iptv-org) | 10 |
 | `dash2.antik.sk` | dash2.antik.sk | 🌐 ציבורי (iptv-org) | 9 |
 | `live.kwikmotion.com` | live.kwikmotion.com | 🌐 ציבורי (iptv-org) | 9 |
+| `mako-streaming.akamaized.net` | קשת – ה-CDN של mako (עם הרשאת צפייה של mako) | ✅ רשמי | 7 |
 | `dash3.antik.sk` | Antik Telecom (סלובקיה), נתיבי test | ⚠️ ממסר צד שלישי | 7 |
 | `a-cdn.klowdtv.com` | a-cdn.klowdtv.com | 🌐 ציבורי (iptv-org) | 7 |
 | `stream-us-east-1.getpublica.com` | stream-us-east-1.getpublica.com | 🌐 ציבורי (iptv-org) | 7 |
@@ -77,7 +78,9 @@
 | `ebsonair.ebs.co.kr` | ebsonair.ebs.co.kr | 🌐 ציבורי (iptv-org) | 4 |
 | `drk6xq0vhn.gpcdn.net` | drk6xq0vhn.gpcdn.net | 🌐 ציבורי (iptv-org) | 4 |
 | `edge12.vedge.infomaniak.com` | edge12.vedge.infomaniak.com | 🌐 ציבורי (iptv-org) | 4 |
+| `cdna.streamgates.net` | StreamGates – ה-CDN של התחנה | ✅ רשמי | 4 |
 | `kancdn.medonecdn.net` | כאן – תאגיד השידור (CDN רשמי) | ✅ רשמי | 3 |
+| `r.il.cdn-redge.media` | Redge – ה-CDN הרשמי של כאן, ערוץ 14 וכלכלה 10 | ✅ רשמי | 3 |
 | `rnttwmjcin.turknet.ercdn.net` | rnttwmjcin.turknet.ercdn.net | 🌐 ציבורי (iptv-org) | 3 |
 | `5c7b683162943.streamlock.net` | 5c7b683162943.streamlock.net | 🌐 ציבורי (iptv-org) | 3 |
 | `streaming.onnethn.com` | streaming.onnethn.com | 🌐 ציבורי (iptv-org) | 3 |
@@ -120,9 +123,9 @@
 | `cdn01.setar.aw` | cdn01.setar.aw | 🌐 ציבורי (iptv-org) | 3 |
 | `edge13.vedge.infomaniak.com` | edge13.vedge.infomaniak.com | 🌐 ציבורי (iptv-org) | 3 |
 | `cdn.freevisiontv.co.za` | cdn.freevisiontv.co.za | 🌐 ציבורי (iptv-org) | 3 |
-| `cdna.streamgates.net` | StreamGates – ה-CDN של התחנה | ✅ רשמי | 3 |
 | `jointil.com` | jointil.com | ⚠️ ממסר צד שלישי | 3 |
-| `mako-streaming.akamaized.net` | קשת – ה-CDN של mako (עם הרשאת צפייה של mako) | ✅ רשמי | 2 |
+| `kneset.gostreaming.tv` | ערוץ הכנסת – השידור של הכנסת (GoStreaming) | ✅ רשמי | 2 |
+| `rgelive.akamaized.net` | ספורט 5 – השידור הרשמי של RGE (Akamai) | ✅ רשמי | 2 |
 | `stream.4fun.tv` | 4FUN TV – שרת רשמי | ✅ רשמי | 2 |
 | `585b674743bbb.streamlock.net` | 70-80 TV – Wowza Streamlock | ✅ רשמי | 2 |
 | `ncdn-live-bfm.pfd.sfr.net` | BFM – SFR (רשמי) | ✅ רשמי | 2 |
@@ -206,14 +209,14 @@
 | `live.ecast.co.il` | eCast – שרת התחנה | ✅ רשמי | 2 |
 | `cast.breslevforyou.co.il` | רדיו ברסלב – שרת התחנה | ✅ רשמי | 2 |
 | `d18b0e6mopany4.cloudfront.net` | רשת 13 – AWS CloudFront | ✅ רשמי | 1 |
-| `r.il.cdn-redge.media` | ערוץ 14 – CDN רשמי (Redge) | ✅ רשמי | 1 |
 | `i24newshebrew-cdn.encoders.immergo.tv` | i24NEWS – שרת רשמי | ✅ רשמי | 1 |
 | `contact.gostreaming.tv` | GoStreaming – ספק השידור של ערוץ 9 | ✅ רשמי | 1 |
-| `kneset.gostreaming.tv` | ערוץ הכנסת – השידור של הכנסת (GoStreaming) | ✅ רשמי | 1 |
 | `i24newsfrench-cdn.encoders.immergo.tv` | i24NEWS – שרת רשמי | ✅ רשמי | 1 |
 | `i24newsarabic-cdn.encoders.immergo.tv` | i24NEWS – שרת רשמי | ✅ רשמי | 1 |
 | `i24newsenglish-cdn.encoders.immergo.tv` | i24NEWS – שרת רשמי | ✅ רשמי | 1 |
 | `live.creacast.com` | live.creacast.com | ⚠️ ממסר צד שלישי | 1 |
+| `ynet-live-01.ynet-pic1.yit.co.il` | ynet – השרת של ידיעות אחרונות | ✅ רשמי | 1 |
+| `reshet.g-mana.live` | רשת 13 – השרת הרשמי (G-Mana) | ✅ רשמי | 1 |
 | `rbmn-live.akamaized.net` | Red Bull TV – Akamai (רשמי) | ✅ רשמי | 1 |
 | `d2dffl3588mvfk.cloudfront.net` | ערוץ FAST ישראלי – AWS CloudFront | ✅ FAST חינמי | 1 |
 | `d15ds134q59udk.cloudfront.net` | ערוץ FAST ישראלי – AWS CloudFront | ✅ FAST חינמי | 1 |
@@ -228,6 +231,7 @@
 | `1247634592.rsc.cdn77.org` | שלנו TV – CDN77 | ✅ רשמי | 1 |
 | `ch16israel-cdn.encoders.immergo.tv` | ערוץ 16 – שרת רשמי | ✅ רשמי | 1 |
 | `jlt-jltv-xumo.otteravision.com` | jlt-jltv-xumo.otteravision.com | ⚠️ ממסר צד שלישי | 1 |
+| `edge2.il.kab.tv` | קבלה לעם – השרת של הערוץ | ✅ רשמי | 1 |
 | `dwamdstream102.akamaized.net` | DW – Akamai (רשמי) | ✅ רשמי | 1 |
 | `live-hls-apps-aje-fa.getaj.net` | אל-ג'זירה – שרת רשמי | ✅ רשמי | 1 |
 | `raycom-accdn-firetv.amagi.tv` | raycom-accdn-firetv.amagi.tv | 🌐 ציבורי (iptv-org) | 1 |
@@ -901,6 +905,8 @@
 | `icecast.live` | icecast.live | ⚠️ ממסר צד שלישי | 1 |
 | `icecast.kab.tv` | icecast.kab.tv | ⚠️ ממסר צד שלישי | 1 |
 | `stream10.vestaradio.com` | stream10.vestaradio.com | ⚠️ ממסר צד שלישי | 1 |
+| `995.livecdn.biz` | 99.5FM – LiveCDN (רשמי) | ✅ רשמי | 1 |
+| `radio.diki-mizrahit.co.il` | רדיו שירי דיכאון – השרת של התחנה | ✅ רשמי | 1 |
 
 ## 📺 ערוצי ישראל - שידור חי
 
@@ -909,7 +915,7 @@
 | 1 | קשת 12 HD | קשת – ה-CDN של mako (עם הרשאת צפייה של mako) | ✅ רשמי | iptv-org (`Keshet12.il`) | ❌ רק באפליקציה (הפניה בלי CORS) |
 | 2 | רשת 13 HD | רשת 13 – AWS CloudFront | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
 | 3 | כאן 11 HD | כאן – תאגיד השידור (CDN רשמי) | ✅ רשמי | iptv-org (`Kan11.il`) | ✅ |
-| 4 | עכשיו 14 HD | ערוץ 14 – CDN רשמי (Redge) | ✅ רשמי | iptv-org (`Now14.il`) | ✅ |
+| 4 | עכשיו 14 HD | Redge – ה-CDN הרשמי של כאן, ערוץ 14 וכלכלה 10 | ✅ רשמי | iptv-org (`Now14.il`) | ✅ |
 | 5 | i24NEWS עברית HD | i24NEWS – שרת רשמי | ✅ רשמי | iptv-org (`i24NEWSHebrew.il`) | ✅ |
 | 6 | ערוץ 9 ישראל HD | GoStreaming – ספק השידור של ערוץ 9 | ✅ רשמי | iptv-org (`Channel9.il`) | ✅ |
 | 7 | ערוץ 24 HD | קשת – ה-CDN של mako (עם הרשאת צפייה של mako) | ✅ רשמי | iptv-org (`Channel24.il`) | ❌ רק באפליקציה (הפניה בלי CORS) |
@@ -919,28 +925,33 @@
 | 11 | i24NEWS ערבית HD | i24NEWS – שרת רשמי | ✅ רשמי | iptv-org (`i24NEWSArabic.il`) | ✅ |
 | 12 | i24NEWS English | i24NEWS – שרת רשמי | ✅ רשמי | iptv-org | ✅ |
 | 13 | ILTV ישראל בצרפתית | live.creacast.com | ⚠️ ממסר צד שלישי | iptv-org (`ILTV.fr`) | ✅ |
+| 14 | ynet Live | ynet – השרת של ידיעות אחרונות | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 15 | כאן 11 – כתוביות | Redge – ה-CDN הרשמי של כאן, ערוץ 14 וכלכלה 10 | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 16 | רשת 13 – נגיש | רשת 13 – השרת הרשמי (G-Mana) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 17 | ערוץ הכנסת – נגיש | ערוץ הכנסת – השידור של הכנסת (GoStreaming) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
 
 ## 📺 ילדים ונוער (בעברית)
 
 | # | ערוץ | שרת השידור | סוג | נמצא ב | באתר (דפדפן) |
 |---|---|---|---|---|---|
-| 14 | כאן חינוכית 23 HD | כאן – תאגיד השידור (CDN רשמי) | ✅ רשמי | iptv-org (`KanEducational.il`) | ✅ |
-| 15 | ערוץ הופ! ילדים בעברית HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`Hop.il`) | ❌ רק באפליקציה (HTTP) |
-| 16 | ZOOM ילדים ונוער | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`Zoom.il`) | ❌ רק באפליקציה (HTTP) |
+| 18 | כאן חינוכית 23 HD | כאן – תאגיד השידור (CDN רשמי) | ✅ רשמי | iptv-org (`KanEducational.il`) | ✅ |
+| 19 | ערוץ הופ! ילדים בעברית HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`Hop.il`) | ❌ רק באפליקציה (HTTP) |
+| 20 | ZOOM ילדים ונוער | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`Zoom.il`) | ❌ רק באפליקציה (HTTP) |
 
 ## 📺 ספורט (Sports)
 
 | # | ערוץ | שרת השידור | סוג | נמצא ב | באתר (דפדפן) |
 |---|---|---|---|---|---|
-| 82 | Sport 5 אוקראינה | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`Sport5.ua`) | ❌ רק באפליקציה (HTTP) |
-| 83 | Sport 2 אוקראינה | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`Sport2.ua`) | ❌ רק באפליקציה (HTTP) |
-| 84 | Sport 3 אוקראינה | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`Sport3.ua`) | ❌ רק באפליקציה (HTTP) |
-| 85 | Sport 4 אוקראינה | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`Sport4.ua`) | ❌ רק באפליקציה (HTTP) |
-| 86 | ספורט פלוס HD (viju+ Sport) | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`vijuPlusSport.ru`) | ✅ דרך מקור חלופי: Cinerama.uz – ספק IPTV באוזבקיסטן |
-| 87 | ספורט סטאנטה Setanta Sports 2 HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`SetantaSports2Eurasia.ie`) | ❌ רק באפליקציה (HTTP) |
-| 88 | Red Bull TV HD | Red Bull TV – Akamai (רשמי) | ✅ רשמי | iptv-org (`RedBullTV.at`) | ✅ |
-| 89 | ערוץ אקסטרים Extreme Sports HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
-| 90 | Sport 1 אוקראינה | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`Sport1.ua`) | ❌ רק באפליקציה (HTTP) |
+| 91 | Sport 5 אוקראינה | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`Sport5.ua`) | ❌ רק באפליקציה (HTTP) |
+| 92 | Sport 2 אוקראינה | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`Sport2.ua`) | ❌ רק באפליקציה (HTTP) |
+| 93 | Sport 3 אוקראינה | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`Sport3.ua`) | ❌ רק באפליקציה (HTTP) |
+| 94 | Sport 4 אוקראינה | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`Sport4.ua`) | ❌ רק באפליקציה (HTTP) |
+| 95 | ספורט פלוס HD (viju+ Sport) | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`vijuPlusSport.ru`) | ✅ דרך מקור חלופי: Cinerama.uz – ספק IPTV באוזבקיסטן |
+| 96 | ספורט סטאנטה Setanta Sports 2 HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`SetantaSports2Eurasia.ie`) | ❌ רק באפליקציה (HTTP) |
+| 97 | Red Bull TV HD | Red Bull TV – Akamai (רשמי) | ✅ רשמי | iptv-org (`RedBullTV.at`) | ✅ |
+| 98 | ערוץ אקסטרים Extreme Sports HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
+| 99 | Sport 1 אוקראינה | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`Sport1.ua`) | ❌ רק באפליקציה (HTTP) |
+| 100 | ספורט 5 – שידור חי | ספורט 5 – השידור הרשמי של RGE (Akamai) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
 | 201 | ACC Digital Network | raycom-accdn-firetv.amagi.tv | 🌐 ציבורי (iptv-org) | iptv-org (`ACCDigitalNetwork.us`) | ✅ |
 | 202 | talkSPORT | af7a8b4e.wurl.com | 🌐 ציבורי (iptv-org) | iptv-org (`talkSPORT.uk`) | ✅ |
 | 203 | Kozoom TV | streams2.sofast.tv | 🌐 ציבורי (iptv-org) | iptv-org (`KozoomTV.fr`) | ✅ |
@@ -1070,33 +1081,76 @@
 | 327 | Pluto TV Competition | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVCompetition.us`) | ✅ |
 | 328 | PokerGo | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PokerGo.us`) | ✅ |
 
+## 📺 כלכלה ועסקים (Business)
+
+| # | ערוץ | שרת השידור | סוג | נמצא ב | באתר (דפדפן) |
+|---|---|---|---|---|---|
+| 101 | כלכלה 10 | Redge – ה-CDN הרשמי של כאן, ערוץ 14 וכלכלה 10 | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 509 | Ameritrade | tdameritrade-vizio.amagi.tv | 🌐 ציבורי (iptv-org) | iptv-org (`Ameritrade.us`) | ✅ |
+| 510 | BFM Business | live-cdn-stream-euw1.bfmb.bct.nextradiotv.com | 🌐 ציבורי (iptv-org) | iptv-org (`BFMBusiness.fr`) | ✅ |
+| 511 | Negocios TV | streaming013.gestec-video.com | 🌐 ציבורי (iptv-org) | iptv-org (`NegociosTV.es`) | ✅ |
+| 512 | Pro Business | tv-streaming.bsh.ru | 🌐 ציבורי (iptv-org) | iptv-org (`ProBusiness.ru`) | ✅ |
+| 513 | Ausbiz TV | d9quh89lh7dtw.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`AusbizTV.au`) | ✅ |
+| 514 | Al Arabiya Business | live.alarabiya.net | 🌐 ציבורי (iptv-org) | iptv-org (`AlArabiyaBusiness.ae`) | ✅ |
+| 515 | Asharq News | live-news.asharq.com | 🌐 ציבורי (iptv-org) | iptv-org (`AsharqNews.sa`) | ✅ |
+| 516 | Bloomberg HT | tv.ensonhaber.com | 🌐 ציבורי (iptv-org) | iptv-org (`BloombergHT.tr`) | ✅ |
+| 517 | CNBC TV18 | n18syndication.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`CNBCTV18.in`) | ✅ |
+| 518 | CGTN Global Biz | fastlive.cctvplus.com | 🌐 ציבורי (iptv-org) | iptv-org (`CGTNGlobalBiz.cn`) | ✅ |
+| 519 | Canal Z | d1hz1p2gea2zy4.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`CanalZ.be`) | ✅ |
+| 520 | Telewizja Biznesowa | s-pl-01.mediatool.tv | 🌐 ציבורי (iptv-org) | iptv-org (`TelewizjaBiznesowa.pl`) | ✅ |
+| 521 | Aleph Business | streamw.m.ro | 🌐 ציבורי (iptv-org) | iptv-org (`AlephBusiness.ro`) | ✅ |
+| 522 | CNBC Asia | freem3u.xyz | 🌐 ציבורי (iptv-org) | iptv-org (`CNBCAsia.sg`) | ✅ |
+| 523 | DeFiance Media | amg01529-defiancetv-defiancemedia-glewed-tre8x.amagi.tv | 🌐 ציבורי (iptv-org) | iptv-org (`DeFianceMedia.pr`) | ✅ |
+| 524 | Champion TV | stream.berosat.live | 🌐 ציבורי (iptv-org) | iptv-org (`ChampionTV.ci`) | ✅ |
+| 525 | NW Economie | hls.newworldtv.com | 🌐 ציבורי (iptv-org) | iptv-org (`NWEconomie.tg`) | ✅ |
+| 526 | Zuraca TV | tv3.bitstreaming.net | 🌐 ציבורי (iptv-org) | iptv-org (`ZuracaTV.bo`) | ✅ |
+| 527 | MNTV | www.khuwemultimedia.com | 🌐 ציבורי (iptv-org) | iptv-org (`MNTV.mz`) | ✅ |
+| 528 | apart TV | 2-fss-2.streamhoster.com | 🌐 ציבורי (iptv-org) | iptv-org (`apartTV.lu`) | ✅ |
+| 529 | Bloomberg Originals | bloomberg.com | 🌐 ציבורי (iptv-org) | iptv-org (`BloombergOriginals.us`) | ✅ |
+| 530 | CNBC Arabiya | cnbc-live.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`CNBCArabiya.ae`) | ✅ |
+| 531 | Asharq Radio | Asharq Discovery – ItWorks (רשמי) | ✅ רשמי | iptv-org (`AsharqRadio.sa`) | ✅ |
+| 532 | CNBC-e | hnpsechtsc.turknet.ercdn.net | 🌐 ציבורי (iptv-org) | iptv-org (`CNBCe.tr`) | ✅ |
+| 533 | CNBC TV18 Prime HD | n18syndication.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`CNBCTV18PrimeHD.in`) | ✅ |
+| 534 | CCTV-2 | 74.91.26.218 | 🌐 ציבורי (iptv-org) | iptv-org (`CCTV2.cn`) | ❌ רק באפליקציה (HTTP) |
+| 535 | Kanaal Z | d1hz1p2gea2zy4.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`KanaalZ.be`) | ✅ |
+| 536 | JOB TV | jobtvserver.eu | 🌐 ציבורי (iptv-org) | iptv-org (`JOBTV.ro`) | ✅ |
+| 537 | Bloomberg TV | d8975dc3.wurl.com | 🌐 ציבורי (iptv-org) | iptv-org (`BloombergTV.us`) | ✅ |
+| 538 | NDTV Profit | ndtvprofit.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`NDTVProfit.in`) | ✅ |
+| 539 | Yahoo! Finance | d1ewctnvcwvvvu.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`YahooFinance.us`) | ✅ |
+| 540 | CNBC Awaaz | n18syndication.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`CNBCAwaaz.in`) | ✅ |
+| 541 | EntrepreneurTV | stream-us-east-1.getpublica.com | 🌐 ציבורי (iptv-org) | iptv-org (`EntrepreneurTV.us`) | ✅ |
+| 542 | CNBC Bajar | n18syndication.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`CNBCBajar.in`) | ✅ |
+| 543 | Fox Business Network | tvsen6.aynaott.com | 🌐 ציבורי (iptv-org) | iptv-org (`FoxBusinessNetwork.us`) | ✅ |
+| 544 | News Capital Market | newscapital.com | 🌐 ציבורי (iptv-org) | iptv-org (`NewsCapitalMarket.in`) | ✅ |
+
 ## 📺 סרטים וסדרות (Movies & Series)
 
 | # | ערוץ | שרת השידור | סוג | נמצא ב | באתר (דפדפן) |
 |---|---|---|---|---|---|
-| 91 | ערוץ הים התיכון HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`YamTichoni.il`) | ❌ רק באפליקציה (HTTP) |
-| 92 | yes סרטים אקשן HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`YesMoviesAction.il`) | ❌ רק באפליקציה (HTTP) |
-| 93 | HOT דרמה HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`HOTDrama.il`) | ❌ רק באפליקציה (HTTP) |
-| 94 | HOT זון HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`HOTZone.il`) | ❌ רק באפליקציה (HTTP) |
-| 95 | yes ריאליטי HD | ערוץ FAST ישראלי – AWS CloudFront | ✅ FAST חינמי | iptv-org (`RealityChannel.il`) | ✅ |
-| 96 | ויוה פרימיום HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`VivaPremium.il`) | ❌ רק באפליקציה (HTTP) |
-| 97 | סינמה פרימיום HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`Premialnoe.ru`) | ❌ רק באפליקציה (HTTP) |
-| 98 | סינמה מתח ואקשן HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`Ostrosyuzhetnoye.ru`) | ❌ רק באפליקציה (HTTP) |
-| 99 | ערוץ סרטי אימה HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`Kinouzhas.ru`) | ❌ רק באפליקציה (HTTP) |
-| 100 | קולנוע להיטים KinoHit HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`KinoHit.ru`) | ✅ דרך מקור חלופי: Cinerama.uz – ספק IPTV באוזבקיסטן |
-| 101 | קולנוע משפחתי Kinosemja HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`Kinosemja.ru`) | ❌ רק באפליקציה (HTTP) |
-| 102 | סינמה מגה-להיטים HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`vijuPlusMegahit.ru`) | ❌ רק באפליקציה (HTTP) |
-| 103 | סינמה בכורה Premiere HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`vijuPlusPremiere.ru`) | ❌ רק באפליקציה (HTTP) |
-| 104 | סינמה קומדיה HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`vijuPlusComedy.ru`) | ❌ רק באפליקציה (HTTP) |
-| 105 | קולנוע TV1000 אקשן HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`vijuTV1000action.ru`) | ✅ דרך מקור חלופי: Cinerama.uz – ספק IPTV באוזבקיסטן |
-| 106 | קולנוע TV1000 קלאסי | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`vijuTV1000.ru`) | ❌ רק באפליקציה (HTTP) |
-| 107 | ערוץ הסדרות Serial HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`vijuPlusSerial.ru`) | ❌ רק באפליקציה (HTTP) |
-| 108 | סרטי שנות ה-80 Rewind HD | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`80sRewind.us`) | ❌ רק באפליקציה (הפניה בלי CORS) |
-| 109 | סרטי שנות ה-70 Cinema HD | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`70sCinema.us`) | ❌ רק באפליקציה (הפניה בלי CORS) |
-| 110 | סרטי שנות ה-2000 Replay HD | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`00sReplay.us`) | ❌ רק באפליקציה (הפניה בלי CORS) |
-| 111 | משפחת סימפסון 24/7 HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
-| 112 | קולנוע קומדיה CineMan Comedy HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
-| 113 | קולנוע רטרו VHS Cinema HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
+| 102 | ערוץ הים התיכון HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`YamTichoni.il`) | ❌ רק באפליקציה (HTTP) |
+| 103 | yes סרטים אקשן HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`YesMoviesAction.il`) | ❌ רק באפליקציה (HTTP) |
+| 104 | HOT דרמה HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`HOTDrama.il`) | ❌ רק באפליקציה (HTTP) |
+| 105 | HOT זון HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`HOTZone.il`) | ❌ רק באפליקציה (HTTP) |
+| 106 | yes ריאליטי HD | ערוץ FAST ישראלי – AWS CloudFront | ✅ FAST חינמי | iptv-org (`RealityChannel.il`) | ✅ |
+| 107 | ויוה פרימיום HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`VivaPremium.il`) | ❌ רק באפליקציה (HTTP) |
+| 108 | סינמה פרימיום HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`Premialnoe.ru`) | ❌ רק באפליקציה (HTTP) |
+| 109 | סינמה מתח ואקשן HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`Ostrosyuzhetnoye.ru`) | ❌ רק באפליקציה (HTTP) |
+| 110 | ערוץ סרטי אימה HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`Kinouzhas.ru`) | ❌ רק באפליקציה (HTTP) |
+| 111 | קולנוע להיטים KinoHit HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`KinoHit.ru`) | ✅ דרך מקור חלופי: Cinerama.uz – ספק IPTV באוזבקיסטן |
+| 112 | קולנוע משפחתי Kinosemja HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`Kinosemja.ru`) | ❌ רק באפליקציה (HTTP) |
+| 113 | סינמה מגה-להיטים HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`vijuPlusMegahit.ru`) | ❌ רק באפליקציה (HTTP) |
+| 114 | סינמה בכורה Premiere HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`vijuPlusPremiere.ru`) | ❌ רק באפליקציה (HTTP) |
+| 115 | סינמה קומדיה HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`vijuPlusComedy.ru`) | ❌ רק באפליקציה (HTTP) |
+| 116 | קולנוע TV1000 אקשן HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`vijuTV1000action.ru`) | ✅ דרך מקור חלופי: Cinerama.uz – ספק IPTV באוזבקיסטן |
+| 117 | קולנוע TV1000 קלאסי | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`vijuTV1000.ru`) | ❌ רק באפליקציה (HTTP) |
+| 118 | ערוץ הסדרות Serial HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`vijuPlusSerial.ru`) | ❌ רק באפליקציה (HTTP) |
+| 119 | סרטי שנות ה-80 Rewind HD | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`80sRewind.us`) | ❌ רק באפליקציה (הפניה בלי CORS) |
+| 120 | סרטי שנות ה-70 Cinema HD | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`70sCinema.us`) | ❌ רק באפליקציה (הפניה בלי CORS) |
+| 121 | סרטי שנות ה-2000 Replay HD | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`00sReplay.us`) | ❌ רק באפליקציה (הפניה בלי CORS) |
+| 122 | משפחת סימפסון 24/7 HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
+| 123 | קולנוע קומדיה CineMan Comedy HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
+| 124 | קולנוע רטרו VHS Cinema HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
+| 125 | ערוץ הדרמה של קשת | קשת – ה-CDN של mako (עם הרשאת צפייה של mako) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
 | 545 | 48 Hours | dai.google.com | 🌐 ציבורי (iptv-org) | iptv-org (`48Hours.us`) | ✅ |
 | 546 | True Crime | b6cca454.wurl.com | 🌐 ציבורי (iptv-org) | iptv-org (`TrueCrime.uk`) | ✅ |
 | 547 | Cine Nanar | zylo-cinenanar-rakuten.amagi.tv | 🌐 ציבורי (iptv-org) | iptv-org (`CineNanar.fr`) | ✅ |
@@ -1302,7 +1356,10 @@
 
 | # | ערוץ | שרת השידור | סוג | נמצא ב | באתר (דפדפן) |
 |---|---|---|---|---|---|
-| 114 | ערוץ הקומדיה HD | ערוץ FAST ישראלי – AWS CloudFront | ✅ FAST חינמי | iptv-org (`ComedyChannel.il`) | ✅ |
+| 126 | ערוץ הקומדיה HD | ערוץ FAST ישראלי – AWS CloudFront | ✅ FAST חינמי | iptv-org (`ComedyChannel.il`) | ✅ |
+| 127 | ערוץ הקומדיה של קשת | קשת – ה-CDN של mako (עם הרשאת צפייה של mako) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 128 | ארץ נהדרת 24/7 | קשת – ה-CDN של mako (עם הרשאת צפייה של mako) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 129 | סברי מרנן 24/7 | קשת – ה-CDN של mako (עם הרשאת צפייה של mako) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
 | 745 | NBC Comedy Vault | xumo-xumoent-vc-105-z0vpm.fast.nbcuni.com | 🌐 ציבורי (iptv-org) | iptv-org (`NBCComedyVault.us`) | ✅ |
 | 746 | Persiana Comedy | comedyhls.persiana.live | 🌐 ציבורי (iptv-org) | iptv-org (`PersianaComedy.fr`) | ✅ |
 | 747 | Ridiculousness | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`Ridiculousness.de`) | ✅ |
@@ -1349,33 +1406,33 @@
 
 | # | ערוץ | שרת השידור | סוג | נמצא ב | באתר (דפדפן) |
 |---|---|---|---|---|---|
-| 115 | ניקלודיאון (ברוסית) | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`Nickelodeon.ru`) | ❌ רק באפליקציה (HTTP) |
-| 116 | ניק ג'וניור (ברוסית) | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`NickJr.ru`) | ✅ דרך מקור חלופי: Cinerama.uz – ספק IPTV באוזבקיסטן |
-| 117 | גולי גירל Gulli Girl (ברוסית) | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`GulliGirl.ru`) | ✅ דרך מקור חלופי: Cinerama.uz – ספק IPTV באוזבקיסטן |
-| 118 | דאק טי וי פלוס ducktv PLUS HD | Antik Telecom (סלובקיה), נתיבי test | ⚠️ ממסר צד שלישי | iptv-org (`ducktvPLUS.sk`) | ✅ |
-| 119 | בייבי פירסט BabyFirst HD | BabyFirst – JW Player FAST | ✅ FAST חינמי | iptv-org (`BabyFirst.us`) | ✅ |
-| 120 | אנימציה קצרצרה Cartoons Short HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
-| 121 | ערוץ לגו Lego Channel HD | LEGO Channel – AWS CloudFront FAST | ✅ FAST חינמי | iptv-org (`LegoChannel.us`) | ✅ |
-| 122 | ערוץ טיז'י TiJi לילדים HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`TiJi.ru`) | ✅ דרך מקור חלופי: Cinerama.uz – ספק IPTV באוזבקיסטן |
-| 123 | ג'ים ג'אם JimJam לילדים HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`JimJamEurope.uk`) | ❌ רק באפליקציה (HTTP) |
-| 124 | אנימציה וילדים Fresh Kids HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
-| 125 | קלאסיקות מצוירות 90s HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
-| 126 | סרטי אנימציה Cartoons Big HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
-| 127 | קולנוע אגדות וילדים HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`KinoKazka.es`) | ❌ רק באפליקציה (HTTP) |
-| 128 | פיקסל TV ילדים HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`PixelTV.ua`) | ✅ דרך מקור חלופי: live-tv.cloud – ספק IPTV אוקראיני |
-| 129 | ניקי קידס Niki Kids HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`NikiKids.ua`) | ❌ רק באפליקציה (HTTP) |
-| 130 | קפטן פנטסטיקה HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`KapitanFantastika.ru`) | ✅ דרך מקור חלופי: Cinerama.uz – ספק IPTV באוזבקיסטן |
-| 131 | ערוץ O! ילדים וטבע | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`O.ru`) | ❌ רק באפליקציה (HTTP) |
-| 132 | דאק טי וי ducktv HD | Antik Telecom (סלובקיה), נתיבי test | ⚠️ ממסר צד שלישי | iptv-org (`ducktv.sk`) | ✅ |
-| 133 | בייבי שארק Baby Shark TV HD | Baby Shark TV – Wurl (Roku FAST) | ✅ FAST חינמי | iptv-org (`BabySharkTV.us`) | ✅ |
-| 134 | ערוץ השמש לילדים HD (Solntse Kids) | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`Solnce.ru`) | ✅ דרך מקור חלופי: ערוץ השמש (Солнце) – CDN |
-| 135 | ערוץ מולט ילדים HD (Mult Kids) | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`Mult.ru`) | ✅ דרך מקור חלופי: Cinerama.uz – ספק IPTV באוזבקיסטן |
-| 136 | מולט ומוזיקה לילדים HD (Mult & Music) | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`Multimuzyka.ru`) | ❌ רק באפליקציה (HTTP) |
-| 137 | קרוסלה ערוץ הילדים HD (Carousel Kids) | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`Carousel.ru`) | ✅ דרך מקור חלופי: Smotrim (VGTRK) – הבעלים של קרוסלה |
-| 138 | סי טי סי קידס HD (CTC Kids) | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`STSkids.ru`) | ❌ רק באפליקציה (HTTP) |
-| 139 | ערוץ אגדות וסיפורים HD (Fairy Tales Kids) | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`Vgostyakhuskazki.ru`) | ✅ דרך מקור חלופי: Cinerama.uz – ספק IPTV באוזבקיסטן |
-| 140 | ערוץ אני אנימציה HD (Ani Kids) | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`Ani.ru`) | ❌ רק באפליקציה (HTTP) |
-| 141 | ערוץ האנימציה PLUSPLUS HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`PLUSPLUS.ua`) | ❌ רק באפליקציה (HTTP) |
+| 130 | ניקלודיאון (ברוסית) | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`Nickelodeon.ru`) | ❌ רק באפליקציה (HTTP) |
+| 131 | ניק ג'וניור (ברוסית) | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`NickJr.ru`) | ✅ דרך מקור חלופי: Cinerama.uz – ספק IPTV באוזבקיסטן |
+| 132 | גולי גירל Gulli Girl (ברוסית) | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`GulliGirl.ru`) | ✅ דרך מקור חלופי: Cinerama.uz – ספק IPTV באוזבקיסטן |
+| 133 | דאק טי וי פלוס ducktv PLUS HD | Antik Telecom (סלובקיה), נתיבי test | ⚠️ ממסר צד שלישי | iptv-org (`ducktvPLUS.sk`) | ✅ |
+| 134 | בייבי פירסט BabyFirst HD | BabyFirst – JW Player FAST | ✅ FAST חינמי | iptv-org (`BabyFirst.us`) | ✅ |
+| 135 | אנימציה קצרצרה Cartoons Short HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
+| 136 | ערוץ לגו Lego Channel HD | LEGO Channel – AWS CloudFront FAST | ✅ FAST חינמי | iptv-org (`LegoChannel.us`) | ✅ |
+| 137 | ערוץ טיז'י TiJi לילדים HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`TiJi.ru`) | ✅ דרך מקור חלופי: Cinerama.uz – ספק IPTV באוזבקיסטן |
+| 138 | ג'ים ג'אם JimJam לילדים HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`JimJamEurope.uk`) | ❌ רק באפליקציה (HTTP) |
+| 139 | אנימציה וילדים Fresh Kids HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
+| 140 | קלאסיקות מצוירות 90s HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
+| 141 | סרטי אנימציה Cartoons Big HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
+| 142 | קולנוע אגדות וילדים HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`KinoKazka.es`) | ❌ רק באפליקציה (HTTP) |
+| 143 | פיקסל TV ילדים HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`PixelTV.ua`) | ✅ דרך מקור חלופי: live-tv.cloud – ספק IPTV אוקראיני |
+| 144 | ניקי קידס Niki Kids HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`NikiKids.ua`) | ❌ רק באפליקציה (HTTP) |
+| 145 | קפטן פנטסטיקה HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`KapitanFantastika.ru`) | ✅ דרך מקור חלופי: Cinerama.uz – ספק IPTV באוזבקיסטן |
+| 146 | ערוץ O! ילדים וטבע | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`O.ru`) | ❌ רק באפליקציה (HTTP) |
+| 147 | דאק טי וי ducktv HD | Antik Telecom (סלובקיה), נתיבי test | ⚠️ ממסר צד שלישי | iptv-org (`ducktv.sk`) | ✅ |
+| 148 | בייבי שארק Baby Shark TV HD | Baby Shark TV – Wurl (Roku FAST) | ✅ FAST חינמי | iptv-org (`BabySharkTV.us`) | ✅ |
+| 149 | ערוץ השמש לילדים HD (Solntse Kids) | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`Solnce.ru`) | ✅ דרך מקור חלופי: ערוץ השמש (Солнце) – CDN |
+| 150 | ערוץ מולט ילדים HD (Mult Kids) | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`Mult.ru`) | ✅ דרך מקור חלופי: Cinerama.uz – ספק IPTV באוזבקיסטן |
+| 151 | מולט ומוזיקה לילדים HD (Mult & Music) | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`Multimuzyka.ru`) | ❌ רק באפליקציה (HTTP) |
+| 152 | קרוסלה ערוץ הילדים HD (Carousel Kids) | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`Carousel.ru`) | ✅ דרך מקור חלופי: Smotrim (VGTRK) – הבעלים של קרוסלה |
+| 153 | סי טי סי קידס HD (CTC Kids) | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`STSkids.ru`) | ❌ רק באפליקציה (HTTP) |
+| 154 | ערוץ אגדות וסיפורים HD (Fairy Tales Kids) | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`Vgostyakhuskazki.ru`) | ✅ דרך מקור חלופי: Cinerama.uz – ספק IPTV באוזבקיסטן |
+| 155 | ערוץ אני אנימציה HD (Ani Kids) | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`Ani.ru`) | ❌ רק באפליקציה (HTTP) |
+| 156 | ערוץ האנימציה PLUSPLUS HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`PLUSPLUS.ua`) | ❌ רק באפליקציה (HTTP) |
 | 822 | Botflix TV | hls.botflix.tv | 🌐 ציבורי (iptv-org) | iptv-org (`BotflixTV.us`) | ✅ |
 | 823 | Moonbug Kids | moonbug-rokuus.amagi.tv | 🌐 ציבורי (iptv-org) | iptv-org (`MoonbugKids.uk`) | ✅ |
 | 824 | ADN TV+ | d3b73b34o7cvkq.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`ADNTVPlus.fr`) | ✅ |
@@ -1520,11 +1577,13 @@
 
 | # | ערוץ | שרת השידור | סוג | נמצא ב | באתר (דפדפן) |
 |---|---|---|---|---|---|
-| 142 | 4ever Music Hits HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`4everMusic.ua`) | ❌ רק באפליקציה (HTTP) |
-| 143 | 4Fun TV Pop Hits HD | 4FUN TV – שרת רשמי | ✅ רשמי | iptv-org (`4FunTV.pl`) | ✅ |
-| 144 | ¡Viva Latino! Dance HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`VivaLatino.ua`) | ❌ רק באפליקציה (HTTP) |
-| 145 | 1HD Music Television | שרת IP ללא שם (1HD) | ⚠️ ממסר צד שלישי | iptv-org (`1HDMusicTelevision.ru`) | ❌ רק באפליקציה (HTTP) |
-| 146 | 70-80 TV Retro Hits | 70-80 TV – Wowza Streamlock | ✅ רשמי | iptv-org (`7080TV.it`) | ✅ |
+| 157 | 4ever Music Hits HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`4everMusic.ua`) | ❌ רק באפליקציה (HTTP) |
+| 158 | 4Fun TV Pop Hits HD | 4FUN TV – שרת רשמי | ✅ רשמי | iptv-org (`4FunTV.pl`) | ✅ |
+| 159 | ¡Viva Latino! Dance HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`VivaLatino.ua`) | ❌ רק באפליקציה (HTTP) |
+| 160 | 1HD Music Television | שרת IP ללא שם (1HD) | ⚠️ ממסר צד שלישי | iptv-org (`1HDMusicTelevision.ru`) | ❌ רק באפליקציה (HTTP) |
+| 161 | 70-80 TV Retro Hits | 70-80 TV – Wowza Streamlock | ✅ רשמי | iptv-org (`7080TV.it`) | ✅ |
+| 162 | ערוץ המוזיקה של קשת | קשת – ה-CDN של mako (עם הרשאת צפייה של mako) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 163 | רדיוס 100FM – וידאו | CyberCDN – ה-CDN של תחנות הרדיו עצמן | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
 | 961 | Botflix Radioo | hls.botflix.tv | 🌐 ציבורי (iptv-org) | iptv-org (`BotflixRadioo.us`) | ✅ |
 | 962 | Afrobeat TV Entertainment | stream.ecable.tv | 🌐 ציבורי (iptv-org) | iptv-org (`AfrobeatTVEntertainment.uk`) | ✅ |
 | 963 | Trace Africa | channels.trace.plus | 🌐 ציבורי (iptv-org) | iptv-org (`TraceAfrica.fr`) | ✅ |
@@ -1660,12 +1719,12 @@
 
 | # | ערוץ | שרת השידור | סוג | נמצא ב | באתר (דפדפן) |
 |---|---|---|---|---|---|
-| 147 | Animal Planet World HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`AnimalPlanet.ru`) | ❌ רק באפליקציה (HTTP) |
-| 148 | Discovery חקירות (ID) | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`InvestigationDiscovery.ru`) | ❌ רק באפליקציה (HTTP) |
-| 149 | עולם וטבע HD (viju+ Planet) | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`vijuPlusPlanet.ru`) | ❌ רק באפליקציה (HTTP) |
-| 150 | BBC Earth Live HD | BBC Earth – Amagi / Xumo FAST | ✅ FAST חינמי | iptv-org (`BBCEarth.uk`) | ✅ |
-| 151 | Asharq Discovery HD | Asharq Discovery – ItWorks (רשמי) | ✅ רשמי | iptv-org (`AsharqDiscovery.sa`) | ✅ |
-| 152 | 365 ימי היסטוריה (History TV) | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`365daysTV.ru`) | ✅ דרך מקור חלופי: Cinerama.uz – ספק IPTV באוזבקיסטן |
+| 164 | Animal Planet World HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`AnimalPlanet.ru`) | ❌ רק באפליקציה (HTTP) |
+| 165 | Discovery חקירות (ID) | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`InvestigationDiscovery.ru`) | ❌ רק באפליקציה (HTTP) |
+| 166 | עולם וטבע HD (viju+ Planet) | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`vijuPlusPlanet.ru`) | ❌ רק באפליקציה (HTTP) |
+| 167 | BBC Earth Live HD | BBC Earth – Amagi / Xumo FAST | ✅ FAST חינמי | iptv-org (`BBCEarth.uk`) | ✅ |
+| 168 | Asharq Discovery HD | Asharq Discovery – ItWorks (רשמי) | ✅ רשמי | iptv-org (`AsharqDiscovery.sa`) | ✅ |
+| 169 | 365 ימי היסטוריה (History TV) | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`365daysTV.ru`) | ✅ דרך מקור חלופי: Cinerama.uz – ספק IPTV באוזבקיסטן |
 | 1091 | Dateline 24/7 | d1si3n1st4nkgb.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`Dateline247.us`) | ✅ |
 | 1092 | History Hit | lds-timeline-rakuten.amagi.tv | 🌐 ציבורי (iptv-org) | iptv-org (`HistoryHit.uk`) | ❌ רק באפליקציה (הפניה בלי CORS) |
 | 1093 | Francophonie24 | 5421175365ea3.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`Francophonie24.fr`) | ✅ |
@@ -1735,8 +1794,8 @@
 
 | # | ערוץ | שרת השידור | סוג | נמצא ב | באתר (דפדפן) |
 |---|---|---|---|---|---|
-| 153 | ערוץ החופשות והנופש HD | ערוץ FAST ישראלי – AWS CloudFront | ✅ FAST חינמי | iptv-org (`VacationChannel.il`) | ✅ |
-| 154 | ערוץ הטיולים Travel Channel | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`TravelChannel.ru`) | ❌ רק באפליקציה (HTTP) |
+| 170 | ערוץ החופשות והנופש HD | ערוץ FAST ישראלי – AWS CloudFront | ✅ FAST חינמי | iptv-org (`VacationChannel.il`) | ✅ |
+| 171 | ערוץ הטיולים Travel Channel | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`TravelChannel.ru`) | ❌ רק באפליקציה (HTTP) |
 | 1155 | AKC TV | broadcast.blivenyc.com | 🌐 ציבורי (iptv-org) | iptv-org (`AKCTV.us`) | ✅ |
 | 1156 | Horse & Country TV | hnc-free-viewlift.amagi.tv | 🌐 ציבורי (iptv-org) | iptv-org (`HorseCountryTV.uk`) | ✅ |
 | 1157 | Voyages & Saveurs | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`VoyagesSaveurs.es`) | ✅ |
@@ -1793,7 +1852,7 @@
 
 | # | ערוץ | שרת השידור | סוג | נמצא ב | באתר (דפדפן) |
 |---|---|---|---|---|---|
-| 155 | ערוץ החקר והמדע (viju Explore) | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`vijuExplore.ru`) | ❌ רק באפליקציה (HTTP) |
+| 172 | ערוץ החקר והמדע (viju Explore) | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`vijuExplore.ru`) | ❌ רק באפליקציה (HTTP) |
 | 1206 | BUTV10 | cdnapisec.kaltura.com | 🌐 ציבורי (iptv-org) | iptv-org (`BUTV10.us`) | ✅ |
 | 1207 | Al Hiwar TV | mn-nl.mncdn.com | 🌐 ציבורי (iptv-org) | iptv-org (`AlHiwarTV.uk`) | ✅ |
 | 1208 | Persiana Medical | phd2hls.persiana.live | 🌐 ציבורי (iptv-org) | iptv-org (`PersianaMedical.fr`) | ✅ |
@@ -1869,7 +1928,7 @@
 
 | # | ערוץ | שרת השידור | סוג | נמצא ב | באתר (דפדפן) |
 |---|---|---|---|---|---|
-| 156 | ערוץ החיים הטובים HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`GoodLife.il`) | ❌ רק באפליקציה (HTTP) |
+| 173 | ערוץ החיים הטובים HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`GoodLife.il`) | ❌ רק באפליקציה (HTTP) |
 | 1276 | AfroLandTV | alt-al.otteravision.com | 🌐 ציבורי (iptv-org) | iptv-org (`AfroLandTV.us`) | ✅ |
 | 1277 | The Graham Norton Show | amg00654-itv-amg00654c35-rakuten-gb-7598.playouts.now.amagi.tv | 🌐 ציבורי (iptv-org) | iptv-org (`TheGrahamNortonShow.uk`) | ✅ |
 | 1278 | Monte Carlo Digital Television | fl718492-exthls-p1.flovp.com | 🌐 ציבורי (iptv-org) | iptv-org (`MonteCarloDigitalTelevision.fr`) | ✅ |
@@ -2005,21 +2064,22 @@
 
 | # | ערוץ | שרת השידור | סוג | נמצא ב | באתר (דפדפן) |
 |---|---|---|---|---|---|
-| 157 | ערוץ הידברות HD | CyberCDN – ה-CDN של תחנות הרדיו עצמן | ✅ רשמי | iptv-org (`Hidabroot.il`) | ✅ |
-| 158 | הלא TV HD (Hala TV) | פאנט – הלא TV (רשמי) | ✅ רשמי | iptv-org (`HalaTV.il`) | ✅ |
-| 159 | ערוץ קבלה לעם | קבלה לעם – שרת רשמי | ✅ רשמי | iptv-org (`KabbalahforthePeopleIsrael.il`) | ✅ |
-| 160 | שלנו TV HD (Shelanu TV) | שלנו TV – CDN77 | ✅ רשמי | iptv-org (`ShelanuTV.il`) | ✅ |
-| 161 | ערוץ 16 ישראל | ערוץ 16 – שרת רשמי | ✅ רשמי | iptv-org (`Channel16.il`) | ✅ |
-| 162 | JLTV טלוויזיה יהודית | jlt-jltv-xumo.otteravision.com | ⚠️ ממסר צד שלישי | iptv-org (`JewishLifeTelevision.us`) | ✅ |
+| 174 | ערוץ הידברות HD | CyberCDN – ה-CDN של תחנות הרדיו עצמן | ✅ רשמי | iptv-org (`Hidabroot.il`) | ✅ |
+| 175 | הלא TV HD (Hala TV) | פאנט – הלא TV (רשמי) | ✅ רשמי | iptv-org (`HalaTV.il`) | ✅ |
+| 176 | ערוץ קבלה לעם | קבלה לעם – שרת רשמי | ✅ רשמי | iptv-org (`KabbalahforthePeopleIsrael.il`) | ✅ |
+| 177 | שלנו TV HD (Shelanu TV) | שלנו TV – CDN77 | ✅ רשמי | iptv-org (`ShelanuTV.il`) | ✅ |
+| 178 | ערוץ 16 ישראל | ערוץ 16 – שרת רשמי | ✅ רשמי | iptv-org (`Channel16.il`) | ✅ |
+| 179 | JLTV טלוויזיה יהודית | jlt-jltv-xumo.otteravision.com | ⚠️ ממסר צד שלישי | iptv-org (`JewishLifeTelevision.us`) | ✅ |
+| 180 | קבלה לעם – רוסית | קבלה לעם – השרת של הערוץ | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
 
 ## 📺 ערוצים בינלאומיים (World)
 
 | # | ערוץ | שרת השידור | סוג | נמצא ב | באתר (דפדפן) |
 |---|---|---|---|---|---|
-| 163 | DW News English HD | DW – Akamai (רשמי) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
-| 164 | Al Jazeera English HD | אל-ג'זירה – שרת רשמי | ✅ רשמי | iptv-org (`AlJazeera.qa`) | ✅ |
-| 165 | BFM TV HD (France) | BFM – SFR (רשמי) | ✅ רשמי | iptv-org (`BFMTV.fr`) | ✅ |
-| 166 | BFM Tech & Co HD | BFM – SFR (רשמי) | ✅ רשמי | iptv-org (`BFMTechCo.fr`) | ✅ |
+| 181 | DW News English HD | DW – Akamai (רשמי) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 182 | Al Jazeera English HD | אל-ג'זירה – שרת רשמי | ✅ רשמי | iptv-org (`AlJazeera.qa`) | ✅ |
+| 183 | BFM TV HD (France) | BFM – SFR (רשמי) | ✅ רשמי | iptv-org (`BFMTV.fr`) | ✅ |
+| 184 | BFM Tech & Co HD | BFM – SFR (רשמי) | ✅ רשמי | iptv-org (`BFMTechCo.fr`) | ✅ |
 | 1436 | ABC | amg01942-amg01942c6-stirr-us-10178.playouts.now.amagi.tv | 🌐 ציבורי (iptv-org) | iptv-org (`ABC.us`) | ✅ |
 | 1437 | Brit Asia TV | hls.autopo.st | 🌐 ציבורי (iptv-org) | iptv-org (`BritAsiaTV.uk`) | ✅ |
 | 1438 | 20 Minutes TV | live-20minutestv.digiteka.com | 🌐 ציבורי (iptv-org) | iptv-org (`20MinutesTV.fr`) | ✅ |
@@ -2346,47 +2406,6 @@
 | 507 | Hermanas Mirabal TV | fox.hostlagarto.com | 🌐 ציבורי (iptv-org) | iptv-org (`HermanasMirabalTV.do`) | ✅ |
 | 508 | Nanduti | nanduti.b-cdn.net | 🌐 ציבורי (iptv-org) | iptv-org (`Nanduti.py`) | ✅ |
 
-## 📺 כלכלה ועסקים (Business)
-
-| # | ערוץ | שרת השידור | סוג | נמצא ב | באתר (דפדפן) |
-|---|---|---|---|---|---|
-| 509 | Ameritrade | tdameritrade-vizio.amagi.tv | 🌐 ציבורי (iptv-org) | iptv-org (`Ameritrade.us`) | ✅ |
-| 510 | BFM Business | live-cdn-stream-euw1.bfmb.bct.nextradiotv.com | 🌐 ציבורי (iptv-org) | iptv-org (`BFMBusiness.fr`) | ✅ |
-| 511 | Negocios TV | streaming013.gestec-video.com | 🌐 ציבורי (iptv-org) | iptv-org (`NegociosTV.es`) | ✅ |
-| 512 | Pro Business | tv-streaming.bsh.ru | 🌐 ציבורי (iptv-org) | iptv-org (`ProBusiness.ru`) | ✅ |
-| 513 | Ausbiz TV | d9quh89lh7dtw.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`AusbizTV.au`) | ✅ |
-| 514 | Al Arabiya Business | live.alarabiya.net | 🌐 ציבורי (iptv-org) | iptv-org (`AlArabiyaBusiness.ae`) | ✅ |
-| 515 | Asharq News | live-news.asharq.com | 🌐 ציבורי (iptv-org) | iptv-org (`AsharqNews.sa`) | ✅ |
-| 516 | Bloomberg HT | tv.ensonhaber.com | 🌐 ציבורי (iptv-org) | iptv-org (`BloombergHT.tr`) | ✅ |
-| 517 | CNBC TV18 | n18syndication.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`CNBCTV18.in`) | ✅ |
-| 518 | CGTN Global Biz | fastlive.cctvplus.com | 🌐 ציבורי (iptv-org) | iptv-org (`CGTNGlobalBiz.cn`) | ✅ |
-| 519 | Canal Z | d1hz1p2gea2zy4.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`CanalZ.be`) | ✅ |
-| 520 | Telewizja Biznesowa | s-pl-01.mediatool.tv | 🌐 ציבורי (iptv-org) | iptv-org (`TelewizjaBiznesowa.pl`) | ✅ |
-| 521 | Aleph Business | streamw.m.ro | 🌐 ציבורי (iptv-org) | iptv-org (`AlephBusiness.ro`) | ✅ |
-| 522 | CNBC Asia | freem3u.xyz | 🌐 ציבורי (iptv-org) | iptv-org (`CNBCAsia.sg`) | ✅ |
-| 523 | DeFiance Media | amg01529-defiancetv-defiancemedia-glewed-tre8x.amagi.tv | 🌐 ציבורי (iptv-org) | iptv-org (`DeFianceMedia.pr`) | ✅ |
-| 524 | Champion TV | stream.berosat.live | 🌐 ציבורי (iptv-org) | iptv-org (`ChampionTV.ci`) | ✅ |
-| 525 | NW Economie | hls.newworldtv.com | 🌐 ציבורי (iptv-org) | iptv-org (`NWEconomie.tg`) | ✅ |
-| 526 | Zuraca TV | tv3.bitstreaming.net | 🌐 ציבורי (iptv-org) | iptv-org (`ZuracaTV.bo`) | ✅ |
-| 527 | MNTV | www.khuwemultimedia.com | 🌐 ציבורי (iptv-org) | iptv-org (`MNTV.mz`) | ✅ |
-| 528 | apart TV | 2-fss-2.streamhoster.com | 🌐 ציבורי (iptv-org) | iptv-org (`apartTV.lu`) | ✅ |
-| 529 | Bloomberg Originals | bloomberg.com | 🌐 ציבורי (iptv-org) | iptv-org (`BloombergOriginals.us`) | ✅ |
-| 530 | CNBC Arabiya | cnbc-live.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`CNBCArabiya.ae`) | ✅ |
-| 531 | Asharq Radio | Asharq Discovery – ItWorks (רשמי) | ✅ רשמי | iptv-org (`AsharqRadio.sa`) | ✅ |
-| 532 | CNBC-e | hnpsechtsc.turknet.ercdn.net | 🌐 ציבורי (iptv-org) | iptv-org (`CNBCe.tr`) | ✅ |
-| 533 | CNBC TV18 Prime HD | n18syndication.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`CNBCTV18PrimeHD.in`) | ✅ |
-| 534 | CCTV-2 | 74.91.26.218 | 🌐 ציבורי (iptv-org) | iptv-org (`CCTV2.cn`) | ❌ רק באפליקציה (HTTP) |
-| 535 | Kanaal Z | d1hz1p2gea2zy4.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`KanaalZ.be`) | ✅ |
-| 536 | JOB TV | jobtvserver.eu | 🌐 ציבורי (iptv-org) | iptv-org (`JOBTV.ro`) | ✅ |
-| 537 | Bloomberg TV | d8975dc3.wurl.com | 🌐 ציבורי (iptv-org) | iptv-org (`BloombergTV.us`) | ✅ |
-| 538 | NDTV Profit | ndtvprofit.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`NDTVProfit.in`) | ✅ |
-| 539 | Yahoo! Finance | d1ewctnvcwvvvu.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`YahooFinance.us`) | ✅ |
-| 540 | CNBC Awaaz | n18syndication.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`CNBCAwaaz.in`) | ✅ |
-| 541 | EntrepreneurTV | stream-us-east-1.getpublica.com | 🌐 ציבורי (iptv-org) | iptv-org (`EntrepreneurTV.us`) | ✅ |
-| 542 | CNBC Bajar | n18syndication.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`CNBCBajar.in`) | ✅ |
-| 543 | Fox Business Network | tvsen6.aynaott.com | 🌐 ציבורי (iptv-org) | iptv-org (`FoxBusinessNetwork.us`) | ✅ |
-| 544 | News Capital Market | newscapital.com | 🌐 ציבורי (iptv-org) | iptv-org (`NewsCapitalMarket.in`) | ✅ |
-
 ## 📺 אוכל ובישול (Food)
 
 | # | ערוץ | שרת השידור | סוג | נמצא ב | באתר (דפדפן) |
@@ -2467,71 +2486,76 @@
 
 | # | ערוץ | שרת השידור | סוג | נמצא ב | באתר (דפדפן) |
 |---|---|---|---|---|---|
-| 17 | כאן ב - רשת ב | Triton StreamTheWorld – מפיץ הרדיו של כאן | ✅ רשמי | radio-browser.info + בדיקת שמות הזרמים של כאן | ✅ |
-| 18 | כאן גימל | Triton StreamTheWorld – מפיץ הרדיו של כאן | ✅ רשמי | radio-browser.info + בדיקת שמות הזרמים של כאן | ✅ |
-| 19 | כאן 88 | Triton StreamTheWorld – מפיץ הרדיו של כאן | ✅ רשמי | radio-browser.info + בדיקת שמות הזרמים של כאן | ✅ |
-| 20 | כאן תרבות | Triton StreamTheWorld – מפיץ הרדיו של כאן | ✅ רשמי | radio-browser.info + בדיקת שמות הזרמים של כאן | ✅ |
-| 21 | כאן מורשת | Triton StreamTheWorld – מפיץ הרדיו של כאן | ✅ רשמי | radio-browser.info + בדיקת שמות הזרמים של כאן | ✅ |
-| 22 | כאן רקע | Triton StreamTheWorld – מפיץ הרדיו של כאן | ✅ רשמי | radio-browser.info + בדיקת שמות הזרמים של כאן | ✅ |
-| 23 | כאן קול המוזיקה | Triton StreamTheWorld – מפיץ הרדיו של כאן | ✅ רשמי | radio-browser.info + בדיקת שמות הזרמים של כאן | ✅ |
-| 24 | גלגלצ | גלי צה"ל / גלגלצ – CDN רשמי (Bynet) | ✅ רשמי | radio-browser.info | ✅ |
-| 25 | גלי צה"ל | גלי צה"ל / גלגלצ – CDN רשמי (Bynet) | ✅ רשמי | radio-browser.info | ✅ |
-| 26 | גלגלצ להיטים | גלי צה"ל / גלגלצ – CDN רשמי (Bynet) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
-| 27 | eco99fm | eco99fm – Mediacast (רשמי) | ✅ רשמי | radio-browser.info | ✅ |
-| 28 | 103FM | CyberCDN – ה-CDN של תחנות הרדיו עצמן | ✅ רשמי | radio-browser.info | ✅ |
-| 29 | רדיוס 100FM | CyberCDN – ה-CDN של תחנות הרדיו עצמן | ✅ רשמי | radio-browser.info | ✅ |
-| 30 | 102FM רדיו תל אביב | 102FM – LiveCDN (רשמי) | ✅ רשמי | radio-browser.info | ✅ |
-| 31 | רדיו הקצה KZ | רדיו הקצה – Mediacast (רשמי) | ✅ רשמי | radio-browser.info | ✅ |
-| 32 | קול ברמה | CyberCDN – ה-CDN של תחנות הרדיו עצמן | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
-| 33 | רדיו דרום 101.5FM | CyberCDN – ה-CDN של תחנות הרדיו עצמן | ✅ רשמי | radio-browser.info | ✅ |
-| 34 | רדיו 2000 | CyberCDN – ה-CDN של תחנות הרדיו עצמן | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
-| 35 | קול ברמה מוזיקה (קול פליי) | CyberCDN – ה-CDN של תחנות הרדיו עצמן | ✅ רשמי | radio-browser.info | ✅ |
-| 36 | 104.5FM רדיו צפון | StreamGates – ה-CDN של התחנה | ✅ רשמי | radio-browser.info | ✅ |
-| 37 | 101FM רדיו ירושלים | StreamGates – ה-CDN של התחנה | ✅ רשמי | radio-browser.info | ✅ |
-| 38 | רדיו חיפה 107.5FM | רדיו חיפה – LiveCDN (רשמי) | ✅ רשמי | radio-browser.info | ✅ |
-| 39 | 90FM אמצע הדרך | CyberCDN – ה-CDN של תחנות הרדיו עצמן | ✅ רשמי | radio-browser.info | ✅ |
-| 40 | רדיו דרום 97FM | CyberCDN – ה-CDN של תחנות הרדיו עצמן | ✅ רשמי | radio-browser.info | ✅ |
-| 41 | רדיו התחנה 101.5 | CyberCDN – ה-CDN של תחנות הרדיו עצמן | ✅ רשמי | radio-browser.info | ✅ |
-| 42 | גלי ישראל 94FM | CyberCDN – ה-CDN של תחנות הרדיו עצמן | ✅ רשמי | radio-browser.info | ✅ |
-| 43 | קול חי 93FM | קול חי – שרת התחנה | ✅ רשמי | radio-browser.info | ✅ |
-| 44 | קול חי מיוזיק | קול חי – שרת התחנה | ✅ רשמי | radio-browser.info | ✅ |
-| 45 | קול רגע 96FM | CyberCDN – ה-CDN של תחנות הרדיו עצמן | ✅ רשמי | radio-browser.info | ✅ |
-| 46 | לב המדינה 91FM | CyberCDN – ה-CDN של תחנות הרדיו עצמן | ✅ רשמי | radio-browser.info | ✅ |
-| 47 | רדיוס נוסטלגי 96.3 | StreamGates – ה-CDN של התחנה | ✅ רשמי | radio-browser.info | ✅ |
-| 48 | קול הצפון | eCast – שרת התחנה | ✅ רשמי | radio-browser.info | ✅ |
-| 49 | גלגלצ רוק | גלי צה"ל / גלגלצ – CDN רשמי (Bynet) | ✅ רשמי | radio-browser.info | ✅ |
-| 50 | גלגלצ עשורים | גלי צה"ל / גלגלצ – CDN רשמי (Bynet) | ✅ רשמי | radio-browser.info | ✅ |
-| 51 | גלגלצ רגוע | גלי צה"ל / גלגלצ – CDN רשמי (Bynet) | ✅ רשמי | radio-browser.info | ✅ |
-| 52 | רדיוס 100% מזרחית | StreamGates – ערוצי רדיוס 100FM | ✅ רשמי | radio-browser.info | ✅ |
-| 53 | רדיוס 100% יהודי | StreamGates – ערוצי רדיוס 100FM | ✅ רשמי | radio-browser.info | ✅ |
-| 54 | רדיוס 100% להיטים | StreamGates – ערוצי רדיוס 100FM | ✅ רשמי | radio-browser.info | ✅ |
-| 55 | רדיוס 100% שנות ה-80 | StreamGates – ערוצי רדיוס 100FM | ✅ רשמי | radio-browser.info | ✅ |
-| 56 | רדיוס 100% שנות ה-90 | StreamGates – ערוצי רדיוס 100FM | ✅ רשמי | radio-browser.info | ✅ |
-| 57 | רדיוס 100% ילדים | StreamGates – ערוצי רדיוס 100FM | ✅ רשמי | radio-browser.info | ✅ |
-| 58 | רדיוס 100% רגוע | StreamGates – ערוצי רדיוס 100FM | ✅ רשמי | radio-browser.info | ✅ |
-| 59 | א-שמס A-Shams | StreamGates – ה-CDN של התחנה | ✅ רשמי | radio-browser.info | ✅ |
-| 60 | רדיו נאס Radio Nas | StreamGates – ה-CDN של התחנה | ✅ רשמי | radio-browser.info | ✅ |
-| 61 | הרדיו הראשון 89.1FM (רוסית) | CyberCDN – ה-CDN של תחנות הרדיו עצמן | ✅ רשמי | radio-browser.info | ✅ |
-| 62 | רדיו ברסלב | רדיו ברסלב – שרת התחנה | ✅ רשמי | radio-browser.info | ✅ |
-| 63 | רדיו נהריה | רדיו נהריה – שרת התחנה | ✅ רשמי | radio-browser.info | ✅ |
-| 64 | רדיוס 100% אימון | StreamGates – ערוצי רדיוס 100FM | ✅ רשמי | radio-browser.info | ✅ |
-| 65 | רדיוס 100% טופ 40 | StreamGates – ערוצי רדיוס 100FM | ✅ רשמי | radio-browser.info | ✅ |
-| 66 | רדיוס 100% סרטים | StreamGates – ערוצי רדיוס 100FM | ✅ רשמי | radio-browser.info | ✅ |
-| 67 | רדיוס 100% אולדיז | StreamGates – ערוצי רדיוס 100FM | ✅ רשמי | radio-browser.info | ✅ |
-| 68 | רדיוס 100% רטרו | StreamGates – ערוצי רדיוס 100FM | ✅ רשמי | radio-browser.info | ✅ |
-| 69 | רדיוס 100% צ'ילאאוט | StreamGates – ערוצי רדיוס 100FM | ✅ רשמי | radio-browser.info | ✅ |
-| 70 | רדיוס 100% קאנטרי | StreamGates – ערוצי רדיוס 100FM | ✅ רשמי | radio-browser.info | ✅ |
-| 71 | רדיוס 100% K-Pop | StreamGates – ערוצי רדיוס 100FM | ✅ רשמי | radio-browser.info | ✅ |
-| 72 | רדיוס 100% גיימר | StreamGates – ערוצי רדיוס 100FM | ✅ רשמי | radio-browser.info | ✅ |
-| 73 | נושמים מזרחית | www.rs.mizrahit.fm | ⚠️ ממסר צד שלישי | radio-browser.info | ❌ רק באפליקציה (HTTP) |
-| 74 | רדיו סהר | eCast – שרת התחנה | ✅ רשמי | radio-browser.info | ✅ |
-| 75 | Israeli Voice Radio | icecast.live | ⚠️ ממסר צד שלישי | radio-browser.info | ✅ |
-| 76 | ג'וינט רדיו בלוז רוק | jointil.com | ⚠️ ממסר צד שלישי | radio-browser.info | ✅ |
-| 77 | ג'וינט רדיו רגאיי | jointil.com | ⚠️ ממסר צד שלישי | radio-browser.info | ✅ |
-| 78 | ג'וינט רדיו טראנס | jointil.com | ⚠️ ממסר צד שלישי | radio-browser.info | ✅ |
-| 79 | קבלה לעם רדיו | icecast.kab.tv | ⚠️ ממסר צד שלישי | radio-browser.info | ❌ רק באפליקציה (HTTP) |
-| 80 | ברסלב: תורה וזימרה | רדיו ברסלב – שרת התחנה | ✅ רשמי | radio-browser.info | ✅ |
-| 81 | Radio France Israël | stream10.vestaradio.com | ⚠️ ממסר צד שלישי | radio-browser.info | ✅ |
+| 21 | כאן ב - רשת ב | Triton StreamTheWorld – מפיץ הרדיו של כאן | ✅ רשמי | radio-browser.info + בדיקת שמות הזרמים של כאן | ✅ |
+| 22 | כאן גימל | Triton StreamTheWorld – מפיץ הרדיו של כאן | ✅ רשמי | radio-browser.info + בדיקת שמות הזרמים של כאן | ✅ |
+| 23 | כאן 88 | Triton StreamTheWorld – מפיץ הרדיו של כאן | ✅ רשמי | radio-browser.info + בדיקת שמות הזרמים של כאן | ✅ |
+| 24 | כאן תרבות | Triton StreamTheWorld – מפיץ הרדיו של כאן | ✅ רשמי | radio-browser.info + בדיקת שמות הזרמים של כאן | ✅ |
+| 25 | כאן מורשת | Triton StreamTheWorld – מפיץ הרדיו של כאן | ✅ רשמי | radio-browser.info + בדיקת שמות הזרמים של כאן | ✅ |
+| 26 | כאן רקע | Triton StreamTheWorld – מפיץ הרדיו של כאן | ✅ רשמי | radio-browser.info + בדיקת שמות הזרמים של כאן | ✅ |
+| 27 | כאן קול המוזיקה | Triton StreamTheWorld – מפיץ הרדיו של כאן | ✅ רשמי | radio-browser.info + בדיקת שמות הזרמים של כאן | ✅ |
+| 28 | גלגלצ | גלי צה"ל / גלגלצ – CDN רשמי (Bynet) | ✅ רשמי | radio-browser.info | ✅ |
+| 29 | גלי צה"ל | גלי צה"ל / גלגלצ – CDN רשמי (Bynet) | ✅ רשמי | radio-browser.info | ✅ |
+| 30 | גלגלצ להיטים | גלי צה"ל / גלגלצ – CDN רשמי (Bynet) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 31 | eco99fm | eco99fm – Mediacast (רשמי) | ✅ רשמי | radio-browser.info | ✅ |
+| 32 | 103FM | CyberCDN – ה-CDN של תחנות הרדיו עצמן | ✅ רשמי | radio-browser.info | ✅ |
+| 33 | רדיוס 100FM | CyberCDN – ה-CDN של תחנות הרדיו עצמן | ✅ רשמי | radio-browser.info | ✅ |
+| 34 | 102FM רדיו תל אביב | 102FM – LiveCDN (רשמי) | ✅ רשמי | radio-browser.info | ✅ |
+| 35 | רדיו הקצה KZ | רדיו הקצה – Mediacast (רשמי) | ✅ רשמי | radio-browser.info | ✅ |
+| 36 | קול ברמה | CyberCDN – ה-CDN של תחנות הרדיו עצמן | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 37 | רדיו דרום 101.5FM | CyberCDN – ה-CDN של תחנות הרדיו עצמן | ✅ רשמי | radio-browser.info | ✅ |
+| 38 | רדיו 2000 | CyberCDN – ה-CDN של תחנות הרדיו עצמן | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 39 | קול ברמה מוזיקה (קול פליי) | CyberCDN – ה-CDN של תחנות הרדיו עצמן | ✅ רשמי | radio-browser.info | ✅ |
+| 40 | 104.5FM רדיו צפון | StreamGates – ה-CDN של התחנה | ✅ רשמי | radio-browser.info | ✅ |
+| 41 | 101FM רדיו ירושלים | StreamGates – ה-CDN של התחנה | ✅ רשמי | radio-browser.info | ✅ |
+| 42 | רדיו חיפה 107.5FM | רדיו חיפה – LiveCDN (רשמי) | ✅ רשמי | radio-browser.info | ✅ |
+| 43 | 90FM אמצע הדרך | CyberCDN – ה-CDN של תחנות הרדיו עצמן | ✅ רשמי | radio-browser.info | ✅ |
+| 44 | רדיו דרום 97FM | CyberCDN – ה-CDN של תחנות הרדיו עצמן | ✅ רשמי | radio-browser.info | ✅ |
+| 45 | רדיו התחנה 101.5 | CyberCDN – ה-CDN של תחנות הרדיו עצמן | ✅ רשמי | radio-browser.info | ✅ |
+| 46 | גלי ישראל 94FM | CyberCDN – ה-CDN של תחנות הרדיו עצמן | ✅ רשמי | radio-browser.info | ✅ |
+| 47 | קול חי 93FM | קול חי – שרת התחנה | ✅ רשמי | radio-browser.info | ✅ |
+| 48 | קול חי מיוזיק | קול חי – שרת התחנה | ✅ רשמי | radio-browser.info | ✅ |
+| 49 | קול רגע 96FM | CyberCDN – ה-CDN של תחנות הרדיו עצמן | ✅ רשמי | radio-browser.info | ✅ |
+| 50 | לב המדינה 91FM | CyberCDN – ה-CDN של תחנות הרדיו עצמן | ✅ רשמי | radio-browser.info | ✅ |
+| 51 | רדיוס נוסטלגי 96.3 | StreamGates – ה-CDN של התחנה | ✅ רשמי | radio-browser.info | ✅ |
+| 52 | קול הצפון | eCast – שרת התחנה | ✅ רשמי | radio-browser.info | ✅ |
+| 53 | גלגלצ רוק | גלי צה"ל / גלגלצ – CDN רשמי (Bynet) | ✅ רשמי | radio-browser.info | ✅ |
+| 54 | גלגלצ עשורים | גלי צה"ל / גלגלצ – CDN רשמי (Bynet) | ✅ רשמי | radio-browser.info | ✅ |
+| 55 | גלגלצ רגוע | גלי צה"ל / גלגלצ – CDN רשמי (Bynet) | ✅ רשמי | radio-browser.info | ✅ |
+| 56 | רדיוס 100% מזרחית | StreamGates – ערוצי רדיוס 100FM | ✅ רשמי | radio-browser.info | ✅ |
+| 57 | רדיוס 100% יהודי | StreamGates – ערוצי רדיוס 100FM | ✅ רשמי | radio-browser.info | ✅ |
+| 58 | רדיוס 100% להיטים | StreamGates – ערוצי רדיוס 100FM | ✅ רשמי | radio-browser.info | ✅ |
+| 59 | רדיוס 100% שנות ה-80 | StreamGates – ערוצי רדיוס 100FM | ✅ רשמי | radio-browser.info | ✅ |
+| 60 | רדיוס 100% שנות ה-90 | StreamGates – ערוצי רדיוס 100FM | ✅ רשמי | radio-browser.info | ✅ |
+| 61 | רדיוס 100% ילדים | StreamGates – ערוצי רדיוס 100FM | ✅ רשמי | radio-browser.info | ✅ |
+| 62 | רדיוס 100% רגוע | StreamGates – ערוצי רדיוס 100FM | ✅ רשמי | radio-browser.info | ✅ |
+| 63 | א-שמס A-Shams | StreamGates – ה-CDN של התחנה | ✅ רשמי | radio-browser.info | ✅ |
+| 64 | רדיו נאס Radio Nas | StreamGates – ה-CDN של התחנה | ✅ רשמי | radio-browser.info | ✅ |
+| 65 | הרדיו הראשון 89.1FM (רוסית) | CyberCDN – ה-CDN של תחנות הרדיו עצמן | ✅ רשמי | radio-browser.info | ✅ |
+| 66 | רדיו ברסלב | רדיו ברסלב – שרת התחנה | ✅ רשמי | radio-browser.info | ✅ |
+| 67 | רדיו נהריה | רדיו נהריה – שרת התחנה | ✅ רשמי | radio-browser.info | ✅ |
+| 68 | רדיוס 100% אימון | StreamGates – ערוצי רדיוס 100FM | ✅ רשמי | radio-browser.info | ✅ |
+| 69 | רדיוס 100% טופ 40 | StreamGates – ערוצי רדיוס 100FM | ✅ רשמי | radio-browser.info | ✅ |
+| 70 | רדיוס 100% סרטים | StreamGates – ערוצי רדיוס 100FM | ✅ רשמי | radio-browser.info | ✅ |
+| 71 | רדיוס 100% אולדיז | StreamGates – ערוצי רדיוס 100FM | ✅ רשמי | radio-browser.info | ✅ |
+| 72 | רדיוס 100% רטרו | StreamGates – ערוצי רדיוס 100FM | ✅ רשמי | radio-browser.info | ✅ |
+| 73 | רדיוס 100% צ'ילאאוט | StreamGates – ערוצי רדיוס 100FM | ✅ רשמי | radio-browser.info | ✅ |
+| 74 | רדיוס 100% קאנטרי | StreamGates – ערוצי רדיוס 100FM | ✅ רשמי | radio-browser.info | ✅ |
+| 75 | רדיוס 100% K-Pop | StreamGates – ערוצי רדיוס 100FM | ✅ רשמי | radio-browser.info | ✅ |
+| 76 | רדיוס 100% גיימר | StreamGates – ערוצי רדיוס 100FM | ✅ רשמי | radio-browser.info | ✅ |
+| 77 | נושמים מזרחית | www.rs.mizrahit.fm | ⚠️ ממסר צד שלישי | radio-browser.info | ❌ רק באפליקציה (HTTP) |
+| 78 | רדיו סהר | eCast – שרת התחנה | ✅ רשמי | radio-browser.info | ✅ |
+| 79 | Israeli Voice Radio | icecast.live | ⚠️ ממסר צד שלישי | radio-browser.info | ✅ |
+| 80 | ג'וינט רדיו בלוז רוק | jointil.com | ⚠️ ממסר צד שלישי | radio-browser.info | ✅ |
+| 81 | ג'וינט רדיו רגאיי | jointil.com | ⚠️ ממסר צד שלישי | radio-browser.info | ✅ |
+| 82 | ג'וינט רדיו טראנס | jointil.com | ⚠️ ממסר צד שלישי | radio-browser.info | ✅ |
+| 83 | קבלה לעם רדיו | icecast.kab.tv | ⚠️ ממסר צד שלישי | radio-browser.info | ❌ רק באפליקציה (HTTP) |
+| 84 | ברסלב: תורה וזימרה | רדיו ברסלב – שרת התחנה | ✅ רשמי | radio-browser.info | ✅ |
+| 85 | Radio France Israël | stream10.vestaradio.com | ⚠️ ממסר צד שלישי | radio-browser.info | ✅ |
+| 86 | רדיו ספורט 5 | ספורט 5 – השידור הרשמי של RGE (Akamai) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 87 | 102FM קול הים האדום | CyberCDN – ה-CDN של תחנות הרדיו עצמן | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 88 | 99.5FM רדיו | 99.5FM – LiveCDN (רשמי) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 89 | הרדיו הטוב 106.4FM (רוסית) | StreamGates – ה-CDN של התחנה | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 90 | רדיו שירי דיכאון | רדיו שירי דיכאון – השרת של התחנה | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
 
 ## 📲 מנויים ואפליקציות
 
