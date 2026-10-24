@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 120" width="300" height="120">
-      <rect width="300" height="120" rx="24" fill="#032b43" stroke="#00b4d8" stroke-width="2"/>
-      <circle cx="60" cy="60" r="28" fill="#e63946"/>
-      <polygon points="52,44 76,60 52,76" fill="#ffffff"/>
-      <text x="180" y="58" font-family="Rubik, Arial, sans-serif" font-size="30" font-weight="900" fill="#00b4d8" text-anchor="middle">ערוץ מולט</text>
-      <text x="180" y="86" font-family="Rubik, Arial, sans-serif" font-size="16" font-weight="700" fill="#ffffff" text-anchor="middle">MULT KIDS HD</text>
-    </svg>

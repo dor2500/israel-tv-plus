@@ -265,6 +265,11 @@
     // the Android app's splash screen (core-splashscreen) waits for this: the first screen is ready to draw
     setTimeout(function () { native('ready'); }, 30);
     if (S.autoUpdate) setTimeout(function () { checkUpdates(false); }, 4000);
+    if (PLATFORM === 'webos') {
+      // LG: TV apps stay open for days – check again every 6 hours, and apply a downloaded update on returning to the app
+      setInterval(function () { if (S.autoUpdate) checkUpdates(false); }, 6 * 3600 * 1000);
+      document.addEventListener('visibilitychange', function () { if (!document.hidden) applyLiveIfIdle(); });
+    }
     if (Dub && Dub.settings.migratedFromLocal) setTimeout(explainTvDub, 1500);
     window.__itv = { state: state, S: S, playIndex: playIndex, openSettings: openSettings, checkUpdates: checkUpdates };
   }
@@ -2345,10 +2350,11 @@
       x.send();
     });
   }
+  // LG: no "download the IPK" prompts – the IPK only holds the web app, and the live update below brings all of it
+  // (screen, code, channels) by itself; it is applied automatically (applyLiveIfIdle)
   function nativeKey() {
     if (PLATFORM === 'android') return 'android';
     if (PLATFORM === 'windows') return 'windows';
-    if (PLATFORM === 'webos') return 'webos';
     if (PLATFORM === 'tizen') return 'tizen';
     if (PLATFORM === 'desktop') return /Mac/.test(UA) ? 'mac' : 'linux';
     return '';
@@ -2401,8 +2407,10 @@
           if (ok) {
             state.liveReady = { code: data.code, version: data.version, shell: data.shell || 0 };
             try { localStorage.setItem('itv_live', JSON.stringify(state.liveReady)); localStorage.removeItem('itv_bad'); } catch (e) {}
-            showUpdateButton();
-            toast('⬆️ עדכון ' + data.version + ' מוכן – יופעל בפתיחה הבאה (או בהגדרות ← עדכונים)');
+            if (!applyLiveIfIdle()) {
+              showUpdateButton();
+              toast('⬆️ עדכון ' + data.version + ' מוכן – יופעל בפתיחה הבאה (או בהגדרות ← עדכונים)');
+            }
           }
           refreshSettingsIfOpen();
         });
@@ -2416,12 +2424,19 @@
       refreshSettingsIfOpen();
     });
   }
+  /** LG: a downloaded live update is switched to at once when nothing is playing and no menu is open (else later). */
+  function applyLiveIfIdle() {
+    if (PLATFORM !== 'webos' || !state.liveReady || state.playing || state.overlay) return false;
+    toast('⬆️ מתעדכן לגרסה ' + state.liveReady.version + '...');
+    setTimeout(function () { try { sessionStorage.removeItem('itv_local'); } catch (e) {} location.reload(); }, 1500);
+    return true;
+  }
   function refreshSettingsIfOpen() { if (state.overlay === 'settings') renderSettings(); }
   function showUpdateButton() { el.btnUpdate.classList.remove('hidden'); toggleClass(el.avatarDot, 'hidden', false); }
 
   // ---- GitHub Releases (api.github.com, no key: 60 checks an hour per address – one per start is plenty)
   var RELEASES_API = 'https://api.github.com/repos/dor2500/israel-tv-plus/releases/latest';
-  var RELEASE_ASSETS = { android: 'IsraelTVPlus-android.apk', windows: 'IsraelTVPlus-windows-setup.exe', webos: 'com.israeltv.plus_all.ipk' };
+  var RELEASE_ASSETS = { android: 'IsraelTVPlus-android.apk', windows: 'IsraelTVPlus-windows-setup.exe' };
   function verNum(v) { var p = String(v || '0').replace(/^v/i, '').split('.'); return (+p[0] || 0) * 1e6 + (+p[1] || 0) * 1e3 + (+p[2] || 0); }
   function installedAppVersion() { return state.device.appVersion || BUILD.version; }
   function releaseNotes(body) {
