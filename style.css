@@ -27,8 +27,6 @@
   --ease-out: cubic-bezier(.05, .7, .1, 1);     /* M3 emphasized decelerate (enter) */
   --ease-in: cubic-bezier(.3, 0, .8, .15);      /* M3 emphasized accelerate (exit) */
   --spring: cubic-bezier(.34, 1.4, .64, 1);
-  --tvos-spring: cubic-bezier(0.16, 1, 0.3, 1);
-  --tvos-dur: 420ms;
 }
 @supports (transition-timing-function: linear(0, 1)) {
   :root { --spring: linear(0, .06 2.4%, .235 5.1%, .529 9.3%, .794 14.1%, .946 18.9%, 1.025 23.9%, 1.054 29%, 1.05 34.4%, 1.026 41.4%, 1.006 50.2%, .998 61.3%, 1); }
@@ -65,1338 +63,299 @@ body.anim-off *, body.anim-off *::before, body.anim-off *::after { transition: n
   margin-left: .5rem; vertical-align: middle; animation: pulse 1.6s infinite; }
 @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .35; } }
 
-/* ================================================================== 
-   FLAGSHIP APPLE TV+ (tvOS) ENGINE - HARDWARE ACCELERATED (60/120 FPS)
-/* ================================================================== 
-   FLAGSHIP APPLE TV+ (tvOS) EXPERIENCE FOR SMART TVS (webOS, Tizen, Android TV)
-   ================================================================== */
-body.tv-android-mode {
-  background: #05070d !important;
-}
-
-body.tv-android-mode .tv {
-  display: none !important;
-}
-
-body.tv-android-mode .ph {
-  display: flex !important;
-}
-
-/* Apple TV Top Bar (Brand & Live Clock framing the centered glass capsule) */
-body.tv-android-mode #topbar {
-  display: flex !important;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+/* ------------------------------------------------------------------ top bar */
+/* ------------------------------------------------------------------ top bar */
+.topbar {
+  flex: none;
   height: 7.2rem;
-  padding: 0 5rem;
-  align-items: center;
-  justify-content: space-between;
-  pointer-events: none;
-  z-index: 950;
-  background: linear-gradient(to bottom, rgba(5, 7, 13, 0.92) 0%, rgba(5, 7, 13, 0.4) 65%, transparent 100%);
-}
-
-body.tv-android-mode #topbar .brand {
-  pointer-events: auto;
-}
-
-body.tv-android-mode #topbar .top-search {
-  display: none !important;
-}
-
-body.tv-android-mode #topbar .top-actions {
-  pointer-events: auto;
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  padding: 0 3.5rem;
+  background: rgba(10, 12, 18, 0.88);
+  backdrop-filter: blur(35px) saturate(180%);
+  -webkit-backdrop-filter: blur(35px) saturate(180%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 50;
 }
-
-body.tv-android-mode #topbar .clock {
-  font-size: 1.7rem;
+.brand { display: flex; align-items: center; margin-left: 3rem; }
+.brand-icon { width: 4.6rem; height: 4.6rem; border-radius: 1.4rem; margin-left: 1.4rem; box-shadow: 0 4px 16px rgba(0,0,0,0.5); }
+.brand-name { font-size: 2.6rem; font-weight: 900; line-height: 1; letter-spacing: -.05rem; }
+.brand-name b { color: #ffffff; text-shadow: 0 0 15px rgba(255, 255, 255, 0.6); direction: ltr; unicode-bidi: isolate; display: inline-block; }
+.brand-sub { font-size: 1.25rem; font-weight: 700; color: var(--muted); margin-top: .4rem; }
+.top-search {
+  flex: 1;
+  max-width: 52rem;
+  height: 4.8rem;
+  display: flex;
+  align-items: center;
+  padding: 0 1.8rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1.8px solid rgba(255, 255, 255, 0.14);
+  border-radius: 9999px;
+  transition: all 0.25s var(--ease);
+}
+.top-search.focused, .top-search:focus-within {
+  border-color: #ffffff;
+  background: rgba(255, 255, 255, 0.16);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+}
+.top-search .ico { font-size: 2.2rem; margin-left: 1.2rem; color: var(--muted); display: flex; }
+.top-search input {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  font: inherit;
+  font-size: 1.65rem;
+  color: var(--text);
+  background: none;
+  border: 0;
+  outline: 0;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.top-search input::-webkit-search-cancel-button { display: none; }
+.top-search input::placeholder { color: var(--dim); }
+.top-actions { display: flex; align-items: center; margin-right: auto; gap: 1.2rem; }
+.top-btn {
+  display: flex;
+  align-items: center;
+  height: 4.8rem;
+  padding: 0 2.2rem;
+  font-size: 1.55rem;
+  font-weight: 800;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1.8px solid rgba(255, 255, 255, 0.16);
+  border-radius: 9999px;
+  color: #f1f5f9;
+  transition: all 0.25s var(--ease);
+}
+.top-btn .ico { margin-left: .8rem; font-size: 2rem; display: flex; }
+.top-btn.focused, .top-btn:hover {
+  background: #ffffff !important;
+  color: #05070d !important;
+  font-weight: 900;
+  border-color: #ffffff !important;
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
+  transform: scale(1.05);
+}
+#btn-update { background: linear-gradient(135deg, #38ef7d 0%, #11998e 100%); color: #05070d; }
+.clock {
+  font-size: 1.8rem;
   font-weight: 800;
   color: rgba(255, 255, 255, 0.9);
-  background: rgba(255, 255, 255, 0.12);
-  padding: 0.5rem 1.6rem;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 0.5rem 1.8rem;
   border-radius: 9999px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(25px);
-  -webkit-backdrop-filter: blur(25px);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  min-width: 8rem;
+  text-align: center;
 }
 
-/* Main Home Container - Padded for Apple TV Top Floating Glass Bar */
-body.tv-android-mode main.home {
-  display: block !important;
+/* ------------------------------------------------------------------ body: rail + guide */
+.body { flex: 1; min-height: 0; display: flex; }
+.rail {
+  flex: none;
+  width: 28rem;
+  padding: 1.2rem 0 2rem;
+  overflow: hidden;
+  background: rgba(8, 10, 16, 0.8);
+  backdrop-filter: blur(35px);
+  -webkit-backdrop-filter: blur(35px);
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+}
+.rail-list { height: 100%; overflow-y: auto; overflow-x: hidden; padding: .4rem 1.6rem; scrollbar-width: none; }
+.rail-list::-webkit-scrollbar { display: none; }
+.rail-item {
+  display: flex;
+  align-items: center;
+  height: 5.4rem;
+  padding: 0 1.6rem;
+  margin-bottom: .6rem;
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  color: #94a3b8;
+  cursor: pointer;
+  transition: all 0.22s var(--ease);
+}
+.rail-item .ri-ico { width: 2.8rem; font-size: 2rem; text-align: center; margin-left: 1.2rem; }
+.rail-item .ri-name { flex: 1; min-width: 0; font-size: 1.65rem; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.rail-item .ri-count { font-size: 1.25rem; font-weight: 800; padding: .2rem .9rem; border-radius: 9999px; background: rgba(255, 255, 255, 0.1); color: #cbd5e1; }
+.rail-item.active {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.12);
+  border-right: 4px solid #ffffff;
+}
+.rail-item.active .ri-count { background: #ffffff; color: #05070d; font-weight: 900; }
+.rail-item.focused, .rail-item:hover {
+  border-color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.25) !important;
+  color: #ffffff !important;
+  font-weight: 800;
+  transform: scale(1.04);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 255, 255, 0.35);
+}
+
+.guide { flex: 1; min-width: 0; display: flex; flex-direction: column; padding: 1.6rem 3.5rem 0 3.5rem; }
+
+/* hero: the focused channel, big, on a soft backdrop in the channel's colour */
+.hero {
+  position: relative;
+  flex: none;
+  display: flex;
+  align-items: center;
+  height: 22rem;
+  padding: 0 3rem 2rem 0;
+  margin-bottom: 1.2rem;
+  border-radius: 2.6rem;
+  overflow: hidden;
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.6);
+}
+.hero-bg { position: absolute; top: 0; left: 0; right: 0; bottom: 0; opacity: .95; }
+.hero-bg::after {
+  content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(to left, rgba(0, 0, 0, 0) 25%, #05070d 100%);
+}
+.hero-logo {
+  position: relative;
+  flex: none;
+  width: 28rem;
+  height: 16.5rem;
+  border-radius: 2rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin: 0 3rem 0 3rem;
+}
+.hero-logo img { max-width: 84%; max-height: 80%; object-fit: contain; filter: drop-shadow(0 8px 18px rgba(0,0,0,0.6)); }
+.hero-info { position: relative; flex: 1; min-width: 0; }
+.hero-tags { display: flex; flex-wrap: wrap; align-items: center; margin-bottom: .6rem; }
+.tag {
+  font-size: 1.25rem;
+  font-weight: 800;
+  padding: .35rem 1.2rem;
+  border-radius: 99rem;
+  background: rgba(255, 255, 255, .12);
+  color: var(--text2);
+  margin: 0 0 .4rem .8rem;
+  white-space: nowrap;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+.tag.num { background: #ffffff; color: #05070d; font-size: 1.35rem; font-weight: 900; }
+.tag.q { border-color: rgba(255, 255, 255, 0.3); background: rgba(255, 255, 255, 0.05); }
+.tag.lang { background: rgba(255, 255, 255, 0.15); color: #ffffff; }
+.tag.fav { background: #5a420b; color: #ffd45c; border-color: #ffd45c; }
+body.light .tag { background: rgba(0, 0, 0, .06); }
+.hero-title {
+  font-size: 4rem;
+  font-weight: 900;
+  line-height: 1.12;
+  margin: 0 0 .6rem;
+  letter-spacing: -.08rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.9);
+}
+.hero-desc { font-size: 1.65rem; color: #cbd5e1; margin: 0; max-height: 4.8rem; overflow: hidden; }
+.hero-src { font-size: 1.3rem; color: #94a3b8; margin: .8rem 0 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+body.no-hero .hero { display: none; }
+
+.grid-head { flex: none; display: flex; align-items: baseline; padding: .6rem 0 1rem; }
+.grid-head h2 { font-size: 2.3rem; font-weight: 800; margin: 0 0 0 1.6rem; letter-spacing: -.04rem; color: #ffffff; }
+.grid-head span { font-size: 1.4rem; font-weight: 700; color: var(--muted); }
+
+/* channel cards: 16:9 posters, name under the poster; fixed number per row */
+.grid {
+  flex: 1;
+  min-height: 0;
   overflow-y: auto;
   overflow-x: hidden;
-  padding-top: 8.5rem;
-  padding-bottom: 5rem;
+  padding: 1.4rem 1.2rem 4rem;
+  margin: 0 -1.2rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
   scrollbar-width: none;
 }
-body.tv-android-mode main.home::-webkit-scrollbar {
-  display: none;
-}
-
-/* Apple TV Top Shelf / Hero Billboard (Cinematic Widescreen 16:9) */
-body.tv-android-mode .pager {
-  height: 42rem;
-  width: 100%;
-  max-width: 1720px;
-  margin: 0 auto 3rem;
-  border-radius: 0 0 3.2rem 3.2rem;
-  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.85);
-  overflow: hidden;
+.grid::-webkit-scrollbar { display: none; }
+.card { position: relative; width: calc(100% / var(--card-cols) - 2.2rem); margin: 0 1.1rem 2.4rem; cursor: pointer; }
+.card-logo {
   position: relative;
-}
-
-body.tv-android-mode .slide-body {
-  padding: 0 6.5rem 4rem;
-}
-
-body.tv-android-mode .slide-title {
-  font-size: 4.2rem;
-  font-weight: 900;
-  letter-spacing: -0.06rem;
-  margin: 0.8rem 0 1.4rem;
-  color: #ffffff;
-  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.95);
-}
-
-body.tv-android-mode .slide-logo {
-  width: 22rem;
-  height: 12rem;
-  border-radius: 2rem;
-  filter: drop-shadow(0 10px 25px rgba(0,0,0,0.7));
-}
-
-/* Apple TV Signature Action Buttons */
-body.tv-android-mode .fab-play {
-  height: 5.6rem;
-  padding: 0 3.4rem;
-  border-radius: 9999px !important;
-  font-size: 1.8rem;
-  font-weight: 900;
-  background: #ffffff !important;
-  color: #05070d !important;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s;
-  will-change: transform;
-}
-
-body.tv-android-mode .fab-play.focused, 
-body.tv-android-mode .fab-play:hover {
-  transform: scale(1.1);
-  background: #ffffff !important;
-  color: #05070d !important;
-  box-shadow: 0 16px 45px rgba(255, 255, 255, 0.7), 0 0 0 3.5px #ffffff !important;
-}
-
-body.tv-android-mode .icon-tonal {
-  height: 5.6rem;
-  padding: 0 2.2rem;
-  border-radius: 9999px !important;
-  background: rgba(255, 255, 255, 0.15) !important;
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1.5px solid rgba(255, 255, 255, 0.25) !important;
-  color: #ffffff !important;
-  transition: transform 0.25s, box-shadow 0.25s, background 0.25s;
-}
-
-body.tv-android-mode .icon-tonal.focused, 
-body.tv-android-mode .icon-tonal:hover {
-  transform: scale(1.12);
-  background: rgba(255, 255, 255, 0.35) !important;
-  box-shadow: 0 0 0 3px #ffffff, 0 12px 30px rgba(0, 0, 0, 0.7) !important;
-}
-
-/* Apple TV 3D Parallax Shelves */
-body.tv-android-mode .shelf {
-  padding: 0 5.5rem;
-  margin-bottom: 3.2rem;
-}
-
-body.tv-android-mode .shelf-head {
-  padding: 0 0.8rem 1.2rem;
-}
-
-body.tv-android-mode .shelf-head h3 {
-  font-size: 2.3rem;
-  font-weight: 800;
-  letter-spacing: -0.02rem;
-  color: #ffffff;
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.85);
-}
-
-body.tv-android-mode .shelf-row {
-  display: flex !important;
-  flex-direction: row !important;
-  overflow-x: auto;
-  overflow-y: hidden;
-  padding: 1.6rem 1rem 2.8rem;
-  scrollbar-width: none;
-}
-body.tv-android-mode .shelf-row::-webkit-scrollbar {
-  display: none;
-}
-
-/* Apple TV 16:9 Glass Cards with Specular Parallax Outline */
-body.tv-android-mode .pcard {
-  flex: 0 0 29rem;
-  width: 29rem;
-  margin-left: 2.2rem;
-  cursor: pointer;
-  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s;
-  will-change: transform;
-}
-
-body.tv-android-mode .pc-media {
-  height: 16.4rem;
+  height: 0;
+  padding-bottom: 56.25%;
   border-radius: 1.8rem;
+  overflow: hidden;
   background: rgba(255, 255, 255, 0.06);
   border: 2.5px solid transparent;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
-  transition: border-color 0.25s, box-shadow 0.25s;
-  position: relative;
-  overflow: hidden;
-}
-
-body.tv-android-mode .pcard.focused, 
-body.tv-android-mode .pcard:hover {
-  transform: scale3d(1.12, 1.12, 1) translate3d(0, -8px, 0);
-  z-index: 50;
-}
-
-body.tv-android-mode .pcard.focused .pc-media, 
-body.tv-android-mode .pcard:hover .pc-media {
-  border-color: #ffffff !important;
-  box-shadow: 0 26px 55px rgba(0, 0, 0, 0.95), 0 0 35px rgba(255, 255, 255, 0.55) !important;
-}
-
-body.tv-android-mode .pcard.focused .pc-media::after,
-body.tv-android-mode .pcard:hover .pc-media::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.04) 40%, transparent 60%);
-  pointer-events: none;
-  border-radius: inherit;
-}
-
-body.tv-android-mode .pc-name {
-  font-size: 1.65rem;
-  font-weight: 800;
-  margin-top: 0.9rem;
-  color: #e2e8f0;
-  transition: color 0.2s;
-}
-
-body.tv-android-mode .pcard.focused .pc-name {
-  color: #ffffff;
-  font-weight: 900;
-  text-shadow: 0 0 14px rgba(255, 255, 255, 0.7);
-}
-
-body.tv-android-mode .pc-meta {
-  font-size: 1.3rem;
-  color: #94a3b8;
-}
-
-/* Apple TV Floating Top Glass Navigation Bar (Frosted Acrylic Capsule) */
-body.tv-android-mode .navbar {
-  position: fixed;
-  top: 1.8rem;
-  bottom: auto;
-  left: 50%;
-  transform: translateX(-50%);
-  width: auto;
-  max-width: 64rem;
-  padding: 0;
-  z-index: 1000;
-}
-
-body.tv-android-mode .nb-track {
-  height: 5.6rem;
-  border-radius: 9999px;
-  background: rgba(24, 26, 34, 0.82);
-  backdrop-filter: blur(45px) saturate(210%);
-  -webkit-backdrop-filter: blur(45px) saturate(210%);
-  border: 1.2px solid rgba(255, 255, 255, 0.22);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.75), 0 0 25px rgba(255, 255, 255, 0.15);
-  padding: 0 0.8rem;
-}
-
-body.tv-android-mode .nb-item {
-  height: 4.4rem;
-  padding: 0 2rem;
-  font-size: 1.55rem;
-  font-weight: 700;
-  border-radius: 9999px;
-  color: rgba(255, 255, 255, 0.78);
-  transition: background 0.2s, color 0.2s, transform 0.2s;
-}
-
-body.tv-android-mode .nb-item.active {
-  color: #ffffff;
-  font-weight: 800;
-}
-
-body.tv-android-mode .nb-item.focused,
-body.tv-android-mode .nb-item:hover {
-  background: #ffffff !important;
-  color: #05070d !important;
-  font-weight: 900;
-  transform: scale(1.05);
-  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.5);
-}
-
-body.tv-android-mode .nb-search {
-  width: 5.6rem;
-  height: 5.6rem;
-  border-radius: 9999px;
-  background: rgba(24, 26, 34, 0.82);
-  backdrop-filter: blur(45px) saturate(210%);
-  -webkit-backdrop-filter: blur(45px) saturate(210%);
-  border: 1.2px solid rgba(255, 255, 255, 0.22);
-  color: #ffffff;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-body.tv-android-mode .nb-search.focused,
-body.tv-android-mode .nb-search:hover {
-  background: #ffffff !important;
-  color: #05070d !important;
-  transform: scale(1.08);
-  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.6);
-}
-
-/* Modal Windows on TV (Settings, Search) - Apple TV Frosted Glass Sheet */
-body.tv-android-mode .modal {
-  z-index: 99999 !important;
-}
-
-body.tv-android-mode .modal-box {
-  background: rgba(18, 20, 28, 0.94) !important;
-  backdrop-filter: blur(40px) saturate(180%);
-  -webkit-backdrop-filter: blur(40px) saturate(180%);
-  border: 1.5px solid rgba(255, 255, 255, 0.2) !important;
-  border-radius: 2.8rem !important;
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.95), 0 0 40px rgba(255, 255, 255, 0.12) !important;
-}
-
-body:not(.phone) {
-  background: #05070d !important;
-  overflow: hidden !important;
-}
-
-/* Kill legacy clutter on Smart TV platforms */
-body:not(.phone) #topbar,
-body:not(.phone) #guide-body,
-body:not(.phone) #hints,
-body:not(.phone) .rail {
-  display: none !important;
-}
-
-/* 1. Full-Bleed Live Video Preview Stage (100vw x 100vh) */
-.tv-backdrop-stage {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 1;
-  pointer-events: none;
-  overflow: hidden;
-  background: #05070d;
-}
-.tv-backdrop-art {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center 30%;
-  opacity: 0.95;
-  transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
-  transition: opacity 700ms var(--tvos-spring), transform 1200ms var(--tvos-spring);
-  will-change: opacity, transform;
-  backface-visibility: hidden;
-}
-.tv-preview-video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0;
-  transform: translate3d(0, 0, 0);
-  transition: opacity 700ms var(--tvos-spring);
-  will-change: opacity;
-  backface-visibility: hidden;
-}
-.tv-preview-video.active {
-  opacity: 1;
-}
-.tv-backdrop-scrim {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(circle at 80% 20%, rgba(56, 189, 248, 0.14) 0%, rgba(5, 7, 13, 0) 65%),
-              linear-gradient(to top, #05070d 0%, rgba(5, 7, 13, 0.92) 36%, rgba(5, 7, 13, 0.45) 75%, rgba(5, 7, 13, 0.2) 100%),
-              linear-gradient(to left, rgba(5, 7, 13, 0.96) 0%, rgba(5, 7, 13, 0.6) 45%, transparent 80%);
-  transition: opacity 500ms var(--tvos-spring);
-  will-change: opacity;
-}
-
-/* 2. Netflix-Style Collapsible Vertical Sidebar (RTL: right edge) */
-.tv-sidebar {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  width: 78px;
-  background: rgba(10, 10, 14, 0.75);
-  backdrop-filter: blur(40px) saturate(160%);
-  -webkit-backdrop-filter: blur(40px) saturate(160%);
-  border-left: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: -10px 0 35px rgba(0, 0, 0, 0.7);
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 3rem 0;
-  z-index: 150;
-  transition: width 380ms cubic-bezier(0.16, 1, 0.3, 1), background 380ms;
-  will-change: width;
-  overflow: hidden;
-}
-.tv-sidebar:hover, .tv-sidebar.expanded {
-  width: 250px;
-  background: rgba(10, 10, 14, 0.94);
-  box-shadow: -16px 0 50px rgba(0, 0, 0, 0.9);
-}
-.tv-sidebar-brand {
-  padding: 0 2.2rem 2.5rem;
-  width: 100%;
-}
-.tv-n-logo {
-  font-size: 2.6rem;
-  font-weight: 900;
-  letter-spacing: -1px;
-  color: #E50914;
-  text-shadow: 0 0 20px rgba(229, 9, 20, 0.8);
-}
-.tv-n-logo b {
-  color: #ffffff;
-}
-.tv-sidebar-menu {
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-  width: 100%;
-  padding: 0 1rem;
-}
-.tv-side-item {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  height: 52px;
-  padding: 0 1.4rem;
-  border-radius: 12px;
-  color: #94a3b8;
-  background: transparent;
-  border: 0;
-  outline: 0;
-  cursor: pointer;
-  white-space: nowrap;
-  transition: all 260ms cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform, color, background;
-}
-.tv-side-ico {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 28px;
-  height: 28px;
-  flex: none;
-  margin-left: 1.6rem;
-}
-.tv-side-ico .ic {
-  width: 24px;
-  height: 24px;
-}
-.tv-side-label {
-  font-size: 1.55rem;
-  font-weight: 700;
-  opacity: 0;
-  transform: translateX(12px);
-  transition: opacity 300ms, transform 300ms;
-}
-.tv-sidebar:hover .tv-side-label, .tv-sidebar.expanded .tv-side-label {
-  opacity: 1;
-  transform: translateX(0);
-}
-.tv-side-item.active {
-  color: #ffffff;
-  background: rgba(229, 9, 20, 0.16);
-  border-right: 4px solid #E50914;
-}
-.tv-side-item:hover, .tv-side-item.focused {
-  color: #ffffff;
-  background: rgba(255, 255, 255, 0.14);
-  transform: translateX(-4px);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
-}
-.tv-side-item.active.focused {
-  background: rgba(229, 9, 20, 0.28);
-  border-right: 4px solid #ff4d58;
-}
-
-/* Futuristic Prism Top Brand Header */
-.tv-top-brand {
-  position: fixed;
-  top: 3.2rem;
-  left: 4.5rem;
-  display: flex;
-  align-items: center;
-  gap: 2.8rem;
-  z-index: 100;
-}
-.tv-brand-prism {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-.tv-brand-icon {
-  font-size: 2.6rem;
-  color: #00f2fe;
-  text-shadow: 0 0 16px #00f2fe;
-  animation: pulse 2s infinite;
-}
-.tv-brand-text {
-  font-size: 2.6rem;
-  font-weight: 900;
-  letter-spacing: -0.5px;
-  background: linear-gradient(135deg, #00f2fe 0%, #4facfe 50%, #00c6ff 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 2px 14px rgba(0, 242, 254, 0.4));
-}
-.tv-brand-text b {
-  -webkit-text-fill-color: #ffffff;
-  color: #ffffff;
-}
-.tv-top-actions-group {
-  display: flex;
-  align-items: center;
-  gap: 1.4rem;
-}
-.tv-btn-quick-settings {
-  height: 44px;
-  padding: 0 1.8rem;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(28px);
-  -webkit-backdrop-filter: blur(28px);
-  border: 1.5px solid rgba(255, 255, 255, 0.22);
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.4);
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  color: #ffffff;
-  font-size: 1.45rem;
-  font-weight: 800;
-  cursor: pointer;
-  outline: 0;
-  transition: all 260ms;
-}
-.tv-btn-quick-settings .ic {
-  width: 22px;
-  height: 22px;
-}
-.tv-btn-quick-settings:hover, .tv-btn-quick-settings.focused {
-  background: #00f2fe;
-  color: #05070d;
-  box-shadow: 0 0 25px rgba(0, 242, 254, 0.7);
-  transform: scale(1.08);
-}
-
-/* Status Widget (Clock & Weather) */
-.tv-status-widget {
-  height: 44px;
-  padding: 0 1.6rem;
-  border-radius: 999px;
-  background: rgba(18, 20, 28, 0.65);
-  backdrop-filter: blur(28px);
-  -webkit-backdrop-filter: blur(28px);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.4);
-  display: flex;
-  align-items: center;
-  gap: 1.2rem;
-  color: #f1f5f9;
-  font-size: 1.45rem;
-  font-weight: 700;
-  direction: ltr;
-}
-.tv-status-sep {
-  color: rgba(255, 255, 255, 0.25);
-}
-.tv-status-time {
-  font-weight: 800;
-  letter-spacing: 0.5px;
-}
-
-/* Glass Numpad HUD for LG Magic Remote direct number input */
-.tv-numpad-hud {
-  position: fixed;
-  top: 3.5rem;
-  right: 4.5rem;
-  min-width: 14rem;
-  height: 64px;
-  padding: 0 2rem;
-  border-radius: 20px;
-  background: rgba(14, 16, 24, 0.88);
-  backdrop-filter: blur(32px);
-  -webkit-backdrop-filter: blur(32px);
-  border: 1.5px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.75), 0 0 24px rgba(56, 189, 248, 0.35);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.6rem;
-  z-index: 200;
-  direction: rtl;
-  animation: tvHudPop 280ms cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-@keyframes tvHudPop {
-  from { opacity: 0; transform: translate3d(0, -12px, 0) scale3d(0.92, 0.92, 1); }
-  to { opacity: 1; transform: translate3d(0, 0, 0) scale3d(1, 1, 1); }
-}
-.tv-numpad-digits {
-  font-size: 3rem;
-  font-weight: 900;
-  color: #38bdf8;
-  text-shadow: 0 0 14px rgba(56, 189, 248, 0.7);
-  letter-spacing: 2px;
-}
-.tv-numpad-name {
-  font-size: 1.4rem;
-  font-weight: 800;
-  color: #ffffff;
-  white-space: nowrap;
-}
-
-/* EPG Now Playing Bar in Hero Meta */
-.tv-epg-pill {
-  display: flex;
-  align-items: center;
-  gap: 1.2rem;
-  margin-top: 1rem;
-  padding: 0.6rem 1.4rem;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  width: fit-content;
-}
-.tv-epg-live-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #E53935;
-  box-shadow: 0 0 8px #E53935;
-  animation: tvDotPulse 1.5s infinite;
-}
-@keyframes tvDotPulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.4; transform: scale(0.85); }
-}
-.tv-epg-label {
-  font-size: 1.2rem;
-  font-weight: 800;
-  color: #f87171;
-}
-.tv-epg-title {
-  font-size: 1.35rem;
-  font-weight: 800;
-  color: #ffffff;
-}
-.tv-epg-time {
-  font-size: 1.15rem;
-  color: #94a3b8;
-}
-.tv-epg-bar {
-  width: 90px;
-  height: 4px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.2);
-  overflow: hidden;
-}
-.tv-epg-fill {
-  width: 62%;
-  height: 100%;
-  background: linear-gradient(90deg, #38bdf8, #818cf8);
-  border-radius: 999px;
-}
-
-/* Fullscreen Player Controls Dock */
-.tv-player-dock {
-  position: fixed;
-  bottom: 3.5rem;
-  left: 50%;
-  transform: translate3d(-50%, 0, 0);
-  z-index: 300;
-  transition: transform 380ms cubic-bezier(0.16, 1, 0.3, 1), opacity 380ms;
-}
-.tv-player-dock.hidden {
-  transform: translate3d(-50%, 100px, 0) !important;
-  opacity: 0 !important;
-  pointer-events: none;
-}
-.tv-dock-pill {
-  display: flex;
-  align-items: center;
-  gap: 1.2rem;
-  padding: 0.8rem 1.6rem;
-  border-radius: 999px;
-  background: rgba(18, 20, 30, 0.78);
-  backdrop-filter: blur(32px);
-  -webkit-backdrop-filter: blur(32px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7);
-}
-.tv-dock-btn {
-  background: transparent;
-  border: 0;
-  outline: 0;
-  color: #cbd5e1;
-  font-size: 1.4rem;
-  font-weight: 700;
-  padding: 0.7rem 1.6rem;
-  border-radius: 999px;
-  cursor: pointer;
-  transition: all 260ms;
-}
-.tv-dock-btn:hover, .tv-dock-btn.focused {
-  background: #ffffff;
-  color: #000000;
-  font-weight: 800;
-  box-shadow: 0 4px 16px rgba(255, 255, 255, 0.4);
-  transform: scale(1.06);
-}
-
-/* 3. Apple TV Content Stage & RTL Hero Metadata */
-/* 3. Netflix-Grade Content Stage & Cinematic Hero */
-.tv-stage {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 10;
-  display: flex;
-  flex-direction: column;
-  padding: 8.5rem 9.5rem 0 4.5rem;
-  pointer-events: auto;
-  transition: transform 480ms var(--tvos-spring), opacity 480ms var(--tvos-spring);
-  will-change: transform, opacity;
-  backface-visibility: hidden;
-}
-.tv-hero-meta {
-  flex: none;
-  height: 20rem;
-  display: flex;
-  align-items: center;
-  padding: 0 1rem;
-  margin-bottom: 0.8rem;
-  transition: transform 420ms var(--tvos-spring), opacity 420ms var(--tvos-spring);
-  will-change: transform, opacity;
-  backface-visibility: hidden;
-}
-.tv-hero-meta.anim-slide {
-  animation: tvHeroSlideIn 420ms var(--tvos-spring) both;
-}
-@keyframes tvHeroSlideIn {
-  from { opacity: 0; transform: translate3d(0, 16px, 0); }
-  to { opacity: 1; transform: translate3d(0, 0, 0); }
-}
-.tv-hero-logo-box {
-  width: 24rem;
-  height: 14rem;
-  flex: none;
-  border-radius: 2.2rem;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1.5px solid rgba(255, 255, 255, 0.14);
-  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.7), 0 0 30px rgba(229, 9, 20, 0.25);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: 3.5rem;
-  overflow: hidden;
-}
-.tv-hero-logo-box img {
-  max-width: 82%;
-  max-height: 80%;
-  object-fit: contain;
-  filter: drop-shadow(0 6px 14px rgba(0,0,0,0.6));
-}
-.tv-hero-text {
-  flex: 1;
-  min-width: 0;
-}
-.tv-hero-badges {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-bottom: 1rem;
-}
-.tv-badge {
-  font-size: 1.3rem;
-  font-weight: 800;
-  padding: 0.35rem 1.1rem;
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: #f1f5f9;
-  letter-spacing: -0.02rem;
-}
-.tv-badge.prism-live {
-  background: linear-gradient(135deg, rgba(239, 68, 68, 0.5), rgba(244, 63, 94, 0.3)) !important;
-  color: #ffffff !important;
-  font-weight: 900;
-  border: 1px solid #f43f5e !important;
-  box-shadow: 0 0 16px rgba(244, 63, 94, 0.6);
-  letter-spacing: 0.5px;
-}
-.tv-badge.prism-4k {
-  background: linear-gradient(135deg, #7928ca, #ff0080) !important;
-  color: #ffffff !important;
-  font-weight: 900;
-  border: none !important;
-  box-shadow: 0 0 16px rgba(255, 0, 128, 0.55);
-}
-.tv-badge.prism-match {
-  background: rgba(16, 185, 129, 0.22) !important;
-  border-color: rgba(16, 185, 129, 0.6) !important;
-  color: #34d399 !important;
-  font-weight: 900;
-}
-.tv-badge.quality {
-  background: rgba(0, 242, 254, 0.15);
-  border-color: rgba(0, 242, 254, 0.4);
-  color: #00f2fe;
-  font-weight: 800;
-}
-.tv-badge.age {
-  background: rgba(255, 255, 255, 0.15);
-  border-color: rgba(255, 255, 255, 0.3);
-  color: #e2e8f0;
-}
-.tv-badge.num {
-  background: #ffffff;
-  color: #0f172a;
-  border: none;
-  font-weight: 900;
-}
-.tv-hero-title {
-  font-size: 4.6rem;
-  font-weight: 900;
-  line-height: 1.05;
-  letter-spacing: -0.07rem;
-  margin: 0 0 0.8rem;
-  color: #ffffff;
-  text-shadow: 0 4px 25px rgba(0, 0, 0, 0.9);
-}
-.tv-hero-desc {
-  font-size: 1.65rem;
-  color: #cbd5e1;
-  line-height: 1.45;
-  margin: 0;
-  max-width: 78rem;
-  max-height: 4.8rem;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
-}
-
-/* Futuristic Prism Action Buttons */
-.tv-hero-actions {
-  display: flex;
-  align-items: center;
-  gap: 1.6rem;
-  margin-top: 1.8rem;
-}
-.tv-cta-btn {
-  height: 52px;
-  padding: 0 2.6rem;
-  border-radius: 999px;
-  font-size: 1.65rem;
-  font-weight: 800;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  cursor: pointer;
-  border: 0;
-  outline: 0;
-  transition: all 280ms cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform, box-shadow;
-}
-.tv-cta-ico {
-  font-size: 1.8rem;
-  display: flex;
-  align-items: center;
-}
-.tv-cta-play {
-  background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%) !important;
-  color: #05070d !important;
-  font-weight: 900;
-  box-shadow: 0 8px 25px rgba(0, 242, 254, 0.45);
-}
-.tv-cta-play:hover, .tv-cta-play.focused {
-  transform: scale(1.08);
-  box-shadow: 0 12px 35px rgba(0, 242, 254, 0.75), 0 0 30px #ffffff;
-  border: 2px solid #ffffff;
-}
-.tv-cta-fav, .tv-cta-settings, .tv-cta-info {
-  background: rgba(255, 255, 255, 0.1);
-  color: #ffffff;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1.5px solid rgba(255, 255, 255, 0.22);
-}
-.tv-cta-fav:hover, .tv-cta-fav.focused,
-.tv-cta-settings:hover, .tv-cta-settings.focused,
-.tv-cta-info:hover, .tv-cta-info.focused {
-  background: rgba(255, 255, 255, 0.95);
-  color: #000000;
-  transform: scale(1.08);
-  box-shadow: 0 8px 30px rgba(255, 255, 255, 0.4);
-  border: 2px solid #ffffff;
-}
-.tv-cta-settings.focused {
-  background: #00f2fe !important;
-  color: #05070d !important;
-}
-
-/* 4. Continuous Vertical Scrolling Feed of Logical Categories (Apple TV+ Reference) */
-.tv-shelves-container, .shelves-viewport {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100vw;
-  height: 58vh;
-  overflow: hidden;
-  z-index: 20;
-  background: linear-gradient(to top, rgba(5, 7, 13, 0.98) 0%, rgba(5, 7, 13, 0.88) 75%, transparent 100%);
-  pointer-events: auto;
-  box-sizing: border-box;
-  padding-bottom: 2rem;
-}
-
-.tv-shelves-track, .shelves-container {
-  display: flex !important;
-  flex-direction: column !important;
-  transform: translate3d(0, 0, 0);
-  transition: transform 0.42s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform .24s var(--ease), border-color .2s, box-shadow .24s;
   will-change: transform;
-  backface-visibility: hidden;
-  padding-top: 8px;
 }
-
-.tv-shelf {
-  flex: none;
-  height: 220px;
-  box-sizing: border-box;
-  transform: translate3d(0, 0, 0);
-  transition: opacity 0.38s cubic-bezier(0.16, 1, 0.3, 1), transform 0.38s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
-  backface-visibility: hidden;
-  margin-bottom: 12px;
-}
-
-.tv-shelf-title {
-  font-size: 1.85rem;
-  font-weight: 800;
-  letter-spacing: -0.02rem;
-  margin: 0 0 0.8rem;
-  padding: 0 95px 0 64px;
-  color: #ffffff;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
-}
-
-.tv-shelf-row-wrapper {
-  overflow: visible;
-  position: relative;
-  width: 100vw;
-}
-
-/* 5–6 Channels Per Horizontal Row with Sidebar Clearance */
-.shelf-track, .tv-shelf-row, .tv-shelf-track {
-  display: flex !important;
-  flex-direction: row !important;
-  flex-wrap: nowrap !important;
-  align-items: center;
-  width: max-content !important;
-  min-width: 100vw;
-  padding: 10px 95px 22px 64px;
-  overflow: visible;
-  direction: rtl;
-  transition: transform 0.42s cubic-bezier(0.16, 1, 0.3, 1);
-  box-sizing: border-box;
-}
-
-.channel-card, .tv-card {
-  flex: 0 0 260px !important;
-  width: 260px !important;
-  height: 148px !important;
-  margin-left: 20px !important;
-  border-radius: 16px;
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
-  background: rgba(255, 255, 255, 0.07);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1.5px solid rgba(255, 255, 255, 0.14);
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.55);
-  transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
-  transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.38s, box-shadow 0.38s;
-  will-change: transform, box-shadow, border-color;
-  backface-visibility: hidden;
-  box-sizing: border-box;
-}
-
-/* 3D Card Focus & Specular Glare (Neon Highlight) */
-.tv-card.focused, .channel-card.focused {
-  z-index: 50;
-  transform: scale3d(1.08, 1.08, 1) translate3d(0, -6px, 0) !important;
-  border: 3px solid #00f2fe !important;
-  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.95), 0 0 30px rgba(0, 242, 254, 0.65), inset 0 0 0 1px #ffffff !important;
-}
-
-.tv-card-visual, .tv-card-media {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  background-size: cover;
-  background-position: center;
-}
-
-/* Subtle radial glow behind dark logos (like Kan 11) */
-.tv-card-visual::after, .tv-card-media::after {
+.card-logo::after {
   content: '';
   position: absolute;
-  top: 45%;
-  left: 50%;
-  width: 65%;
-  height: 65%;
-  transform: translate(-50%, -50%);
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0) 70%);
-  pointer-events: none;
-  border-radius: 50%;
+  left: 0; right: 0; bottom: 0; height: 50%;
+  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, .55));
 }
-
-/* Dynamic Specular Light Sweep (Apple TV Sheen) */
-.tv-card-visual::before, .tv-card-media::before {
-  content: '';
+.card-logo img, .card-logo .mono { position: absolute; top: 12%; left: 12%; width: 76%; height: 76%; object-fit: contain; }
+.card-body { padding: 1rem .4rem 0; }
+.card-name { font-size: 1.65rem; font-weight: 700; color: #e2e8f0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; transition: color 0.2s; }
+.card-meta { font-size: 1.25rem; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: .2rem; }
+.card-num {
   position: absolute;
-  top: 0;
-  left: -120%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(115deg, transparent 20%, rgba(255, 255, 255, 0.25) 50%, transparent 80%);
-  pointer-events: none;
-  z-index: 5;
-  transition: transform 0s;
-}
-
-.tv-card.focused .tv-card-visual::before, .tv-card.focused .tv-card-media::before {
-  transform: translate3d(240%, 0, 0);
-  transition: transform 750ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.tv-card-logo, .tv-card-media img, .tv-card-visual img {
-  max-width: 65%;
-  max-height: 55%;
-  object-fit: contain;
-  position: relative;
-  z-index: 2;
-  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5));
-  margin-bottom: 22px;
-}
-
-.tv-card-glare {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.12) 0%, transparent 70%);
-  pointer-events: none;
-}
-
-.tv-card-num {
-  position: absolute;
-  top: 10px;
-  right: 12px;
-  font-size: 1.15rem;
-  font-weight: 800;
-  color: rgba(255, 255, 255, 0.65);
-  background: rgba(0, 0, 0, 0.4);
-  padding: 1px 7px;
-  border-radius: 6px;
-  backdrop-filter: blur(8px);
-  z-index: 4;
-}
-
-.tv-card-badges {
-  position: absolute;
-  top: 10px;
-  left: 12px;
-  display: flex;
-  gap: 5px;
-  z-index: 4;
-}
-
-.tv-card-badges span {
-  font-size: 1rem;
-  font-weight: 800;
-  padding: 1px 6px;
-  border-radius: 5px;
-  background: rgba(0, 0, 0, 0.5);
-  color: #ffffff;
-  backdrop-filter: blur(8px);
-}
-
-.tv-card-badges .f-live {
-  background: #E53935;
-  color: #ffffff;
-}
-
-.tv-card-bottom-scrim {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 52px;
-  background: linear-gradient(to top, rgba(8, 8, 12, 0.95) 0%, rgba(8, 8, 12, 0.7) 60%, transparent 100%);
-  z-index: 3;
-}
-
-.tv-card-text-overlay {
-  position: absolute;
-  bottom: 6px;
-  right: 12px;
-  left: 12px;
-  z-index: 4;
-  direction: rtl;
-  text-align: right;
-}
-
-.tv-card-name {
-  font-size: 1.35rem;
-  font-weight: 800;
-  color: #f1f5f9;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  letter-spacing: -0.02rem;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
-}
-
-.tv-card.focused .tv-card-name {
-  color: #ffffff;
+  top: .8rem;
+  right: .8rem;
+  z-index: 1;
+  min-width: 2.8rem;
+  padding: .2rem .8rem;
+  font-size: 1.2rem;
   font-weight: 900;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+  text-align: center;
+  border-radius: .8rem;
+  background: rgba(0, 0, 0, .75);
+  color: #fff;
 }
-
-.tv-card-meta {
-  font-size: 1.05rem;
-  color: #94a3b8;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  margin-top: 1px;
-}
-
-/* 6. Zero-Cut Fullscreen Zoom Transition */
-body.tv-fullscreen-playing #tv-top-pill {
-  transform: translate3d(-50%, -100px, 0) !important;
-  opacity: 0 !important;
-  pointer-events: none;
-}
-body.tv-fullscreen-playing #tv-stage {
-  transform: translate3d(0, 80px, 0) !important;
-  opacity: 0 !important;
-  pointer-events: none;
-}
-body.tv-fullscreen-playing #tv-backdrop-scrim {
-  opacity: 0 !important;
-}
-body.tv-fullscreen-playing .tv-preview-video {
-  opacity: 1 !important;
-  z-index: 25 !important;
-}
-
-/* ------------------------------------------------------------------ top bar (Redesigned webOS / Smart TV Glassmorphism) */
-.topbar { flex: none; height: 7.2rem; display: flex; align-items: center; padding: 0 3.2rem;
-  background: rgba(6, 10, 22, 0.78); backdrop-filter: blur(28px); -webkit-backdrop-filter: blur(28px);
-  border-bottom: .12rem solid rgba(255, 255, 255, 0.08); box-shadow: 0 .8rem 3.2rem rgba(0, 0, 0, 0.65); z-index: 20; }
-.brand { display: flex; align-items: center; margin-left: 3.2rem; }
-.brand-icon { width: 4.6rem; height: 4.6rem; border-radius: 1.4rem; margin-left: 1.4rem;
-  box-shadow: 0 0 2.2rem rgba(56, 189, 248, 0.4); border: .15rem solid rgba(255, 255, 255, 0.16); }
-.brand-name { font-size: 2.6rem; font-weight: 900; line-height: 1; letter-spacing: -.05rem; }
-.brand-name b { color: #38bdf8; text-shadow: 0 0 1.6rem rgba(56, 189, 248, 0.6); direction: ltr; unicode-bidi: isolate; display: inline-block; }
-.brand-sub { font-size: 1.15rem; color: var(--muted); margin-top: .4rem; font-weight: 600; }
-.top-search { flex: 1; max-width: 52rem; height: 4.8rem; display: flex; align-items: center; padding: 0 1.8rem;
-  background: rgba(255, 255, 255, 0.06); border: .18rem solid rgba(255, 255, 255, 0.1); border-radius: 2.4rem;
-  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); transition: border-color .2s, box-shadow .2s; }
-.top-search .ico { font-size: 2.1rem; margin-left: 1.2rem; color: var(--muted); display: flex; }
-.top-search input { flex: 1; min-width: 0; height: 100%; font: inherit; font-size: 1.65rem; color: var(--text);
-  background: none; border: 0; outline: 0; -webkit-appearance: none; appearance: none; }
-.top-search input::-webkit-search-cancel-button { display: none; }
-.top-search input::placeholder { color: var(--dim); }
-.top-actions { display: flex; align-items: center; margin-right: auto; }
-.top-btn { display: flex; align-items: center; height: 4.8rem; padding: 0 2rem; margin-right: 1.2rem;
-  font-size: 1.45rem; font-weight: 800; background: rgba(255, 255, 255, 0.06); border: .18rem solid rgba(255, 255, 255, 0.1);
-  border-radius: 2.4rem; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
-.top-btn .ico { margin-left: .8rem; font-size: 2rem; display: flex; }
-#btn-update { background: linear-gradient(135deg, #38bdf8, #0284c7); color: #020617; border-color: rgba(255, 255, 255, 0.3);
-  box-shadow: 0 0 2rem rgba(56, 189, 248, 0.5); }
-.clock { font-size: 2.4rem; font-weight: 900; margin-right: 2.2rem; min-width: 7.5rem; text-align: center;
-  letter-spacing: .08rem; font-variant-numeric: tabular-nums; color: #f8fafc; text-shadow: 0 0 1.2rem rgba(255, 255, 255, 0.3); }
-
-/* ------------------------------------------------------------------ body: rail + guide (Floating Capsule Rail) */
-.body { flex: 1; min-height: 0; display: flex; }
-.rail { flex: none; width: 28rem; padding: 1.2rem 0 1.8rem; overflow: hidden;
-  background: rgba(6, 10, 22, 0.65); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
-  border-left: .12rem solid rgba(255, 255, 255, 0.06); }
-.rail-list { height: 100%; overflow-y: auto; overflow-x: hidden; padding: .4rem 1.6rem; scrollbar-width: none; }
-.rail-list::-webkit-scrollbar { display: none; }
-.rail-item { display: flex; align-items: center; height: 5.4rem; padding: 0 1.6rem; margin-bottom: .6rem;
-  border-radius: 2.7rem; border: .2rem solid transparent; color: var(--muted); cursor: pointer;
-  transition: transform .22s cubic-bezier(0.2, 0, 0, 1), background-color .22s, border-color .22s, box-shadow .22s, color .22s; }
-.rail-item .ri-ico { width: 2.8rem; font-size: 2rem; text-align: center; margin-left: 1.1rem; }
-.rail-item .ri-name { flex: 1; min-width: 0; font-size: 1.65rem; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.rail-item .ri-count { font-size: 1.25rem; font-weight: 800; padding: .15rem .9rem; border-radius: 1.2rem;
-  background: rgba(255, 255, 255, 0.08); color: var(--muted); border: .1rem solid rgba(255, 255, 255, 0.06); }
-.rail-item.active { color: #ffffff; background: linear-gradient(135deg, rgba(56, 189, 248, 0.22), rgba(56, 189, 248, 0.06));
-  border-color: rgba(56, 189, 248, 0.45); box-shadow: 0 .4rem 2rem rgba(56, 189, 248, 0.22); }
-.rail-item.active .ri-count { background: #38bdf8; color: #020617; border-color: transparent; }
-.rail-item.focused { transform: scale(1.04) translateX(-.4rem); border-color: #ffffff !important;
-  background: rgba(255, 255, 255, 0.16) !important; color: #ffffff !important; box-shadow: 0 0 2.4rem rgba(255, 255, 255, 0.45) !important; }
-
-.guide { flex: 1; min-width: 0; display: flex; flex-direction: column; padding: 1.6rem 3.4rem 0 3.4rem; }
-
-/* hero: Cinematic OLED Stage */
-.hero { position: relative; flex: none; display: flex; align-items: center; height: 21rem; padding: 0 3rem 1.8rem 0;
-  margin-bottom: .8rem; border-radius: 2.8rem; overflow: hidden; border: .12rem solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 1.2rem 3.6rem rgba(0, 0, 0, 0.65); }
-.hero-bg { position: absolute; top: 0; left: 0; right: 0; bottom: 0; opacity: .95; }
-.hero-bg::after { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(to left, rgba(0, 0, 0, 0) 25%, rgba(6, 10, 22, 0.95) 90%, var(--bg) 100%); }
-.hero-logo { position: relative; flex: none; width: 28rem; height: 16rem; border-radius: 2rem;
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(0, 0, 0, 0.55));
-  border: .18rem solid rgba(255, 255, 255, 0.14); display: flex; align-items: center; justify-content: center;
-  overflow: hidden; margin: 0 2.8rem 0 2.8rem; box-shadow: 0 1.6rem 4.8rem rgba(0, 0, 0, 0.75), 0 0 3.2rem rgba(56, 189, 248, 0.18); }
-.hero-logo img { max-width: 84%; max-height: 80%; object-fit: contain; }
-.hero-info { position: relative; flex: 1; min-width: 0; }
-.hero-tags { display: flex; flex-wrap: wrap; align-items: center; margin-bottom: .6rem; }
-.tag { font-size: 1.25rem; font-weight: 800; padding: .35rem 1.2rem; border-radius: 99rem;
-  background: rgba(255, 255, 255, 0.08); border: .12rem solid rgba(255, 255, 255, 0.12);
-  color: var(--text); margin: 0 0 .4rem .8rem; white-space: nowrap; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
-.tag.num { background: linear-gradient(135deg, #38bdf8, #0284c7); color: #020617; font-size: 1.35rem; border: none; font-weight: 900; }
-.tag.q { border: .12rem solid rgba(56, 189, 248, 0.4); background: rgba(56, 189, 248, 0.1); color: #38bdf8; }
-.tag.lang { background: rgba(255, 255, 255, 0.12); color: #ffffff; }
-.tag.fav { background: #583c07; color: #fde047; border-color: #fde047; }
-body.light .tag { background: rgba(0, 0, 0, .06); }
-.hero-title { font-size: 3.8rem; font-weight: 900; line-height: 1.12; margin: 0 0 .5rem; letter-spacing: -.08rem;
-  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-shadow: 0 .4rem 1.6rem rgba(0, 0, 0, 0.7); }
-.hero-desc { font-size: 1.6rem; color: #cbd5e1; margin: 0; max-height: 4.4rem; overflow: hidden; line-height: 1.38; }
-.hero-src { font-size: 1.25rem; color: var(--dim); margin: .7rem 0 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-body.no-hero .hero { display: none; }
-
-.grid-head { flex: none; display: flex; align-items: baseline; padding: .5rem 0 1rem; }
-.grid-head h2 { font-size: 2.2rem; font-weight: 800; margin: 0 0 0 1.6rem; letter-spacing: -.04rem; }
-.grid-head span { font-size: 1.35rem; color: var(--muted); font-weight: 600; }
-
-/* channel cards: 16:9 posters, name under the poster; Apple TV & webOS OLED Cards */
-.grid { flex: 1; min-height: 0; overflow-y: auto; overflow-x: hidden; padding: 1.4rem 1rem 3.4rem; margin: 0 -1rem;
-  display: flex; flex-wrap: wrap; align-content: flex-start; scrollbar-width: none; }
-.grid::-webkit-scrollbar { display: none; }
-.card { position: relative; width: calc(100% / var(--card-cols) - 2rem); margin: 0 1rem 2.4rem; cursor: pointer; }
-.card-logo { position: relative; height: 0; padding-bottom: 56.25%; border-radius: 1.6rem; overflow: hidden;
-  background: linear-gradient(145deg, #101626 0%, #060913 100%); border: .2rem solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 .8rem 2.4rem rgba(0, 0, 0, 0.5);
-  transition: transform .22s cubic-bezier(0.2, 0, 0, 1), border-color .18s, box-shadow .22s; }
-.card-logo::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 48%;
-  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, .55)); }
-.card-logo img, .card-logo .mono { position: absolute; top: 12%; left: 10%; width: 80%; height: 76%; object-fit: contain; }
-.card-body { padding: .9rem .4rem 0; }
-.card-name { font-size: 1.55rem; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.card-meta { font-size: 1.2rem; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: .15rem; }
-.card-num { position: absolute; top: .8rem; right: .8rem; z-index: 1; min-width: 2.8rem; padding: .15rem .8rem;
-  font-size: 1.2rem; font-weight: 900; text-align: center; border-radius: .8rem;
-  background: rgba(0, 0, 0, 0.75); border: .1rem solid rgba(255, 255, 255, 0.16); color: #ffffff;
-  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
 .card-flags { position: absolute; top: .8rem; left: .8rem; z-index: 1; display: flex; }
-.card-flags span { font-size: 1.1rem; font-weight: 800; padding: .15rem .65rem; margin-right: .4rem; border-radius: .8rem;
-  background: rgba(0, 0, 0, 0.75); border: .1rem solid rgba(255, 255, 255, 0.16); color: #ffffff;
-  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+.card-flags span { font-size: 1.1rem; font-weight: 800; padding: .15rem .6rem; margin-right: .4rem; border-radius: .8rem; background: rgba(0, 0, 0, .75); color: #fff; }
 .card .f-fav, .card .f-live { display: none; }
 .card.is-fav .f-fav { display: block; color: #ffd45c; }
-.card.is-playing .f-live { display: block; background: linear-gradient(135deg, #ef4444, #dc2626);
-  box-shadow: 0 0 1.2rem rgba(239, 68, 68, 0.8); border: none; }
+.card.is-playing .f-live { display: block; background: var(--live); }
 .card.is-locked { opacity: .55; }
 body.no-numbers .card-num { display: none; }
 .grid-empty { width: 100%; padding: 6rem 2rem; text-align: center; font-size: 1.8rem; color: var(--muted); }
 
 .mono { display: flex; align-items: center; justify-content: center; text-align: center; color: #fff;
   font-weight: 800; font-size: 1.7rem; line-height: 1.1; border-radius: 1rem; padding: .4rem; word-break: break-word; }
-.hero-logo .mono { width: 84%; height: 80%; font-size: 2.8rem; }
+.hero-logo .mono { width: 82%; height: 78%; font-size: 2.6rem; }
 
-/* ------------------------------------------------------------------ focus: Apple TV / webOS OLED Focus Rings */
-.card.focused { z-index: 10; }
-.card.focused .card-logo { transform: scale(1.09) translateY(-.6rem); border-color: #ffffff !important;
-  box-shadow: 0 0 0 .32rem #ffffff, 0 2.2rem 4.8rem rgba(0, 0, 0, 0.95), 0 0 3.6rem rgba(56, 189, 248, 0.45) !important; }
-.card.focused .card-name { color: #ffffff; text-shadow: 0 0 1.2rem rgba(255, 255, 255, 0.6); }
-.rail-item.focused, .top-btn.focused, .top-search.focused { border-color: #ffffff; background: rgba(255, 255, 255, 0.16); color: #ffffff; }
+/* ------------------------------------------------------------------ focus: accent ring + glow (Nuvio focusRing) */
+.card.focused { z-index: 20; }
+.card.focused .card-logo {
+  transform: scale3d(1.1, 1.1, 1) translate3d(0, -6px, 0);
+  border-color: #ffffff !important;
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.9), 0 0 30px rgba(255, 255, 255, 0.5) !important;
+}
+.card.focused .card-name { color: #ffffff; font-weight: 900; text-shadow: 0 0 12px rgba(255, 255, 255, 0.5); }
+.rail-item.focused, .top-btn.focused, .top-search.focused { border-color: #ffffff; background: rgba(255, 255, 255, 0.25); color: #ffffff; }
 .btn.focused, .obtn.focused, .menu-item.focused, .drawer-item.focused, .nav-item.focused, .set-row.focused {
-  border-color: #ffffff !important; background: rgba(255, 255, 255, 0.16) !important; color: #ffffff !important;
-  box-shadow: 0 0 2rem rgba(255, 255, 255, 0.35) !important; }
+  border-color: #ffffff !important; background: rgba(255, 255, 255, 0.25) !important; color: #ffffff !important; }
 body.light .card.focused .card-logo { box-shadow: 0 .8rem 2rem rgba(15, 23, 42, .25); }
 
 /* ------------------------------------------------------------------ remote hints */
-.hints { flex: none; height: 4.6rem; display: flex; align-items: center; justify-content: center; padding: 0 2rem;
-  background: rgba(6, 10, 22, 0.88); border-top: .12rem solid rgba(255, 255, 255, 0.08); font-size: 1.35rem; color: var(--muted);
-  overflow: hidden; white-space: nowrap; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
-.hint { display: flex; align-items: center; margin: 0 1.4rem; }
-.key { display: inline-block; font-size: 1.15rem; font-weight: 800; padding: .2rem .75rem; border-radius: .7rem;
-  border: .12rem solid rgba(255, 255, 255, 0.14); background: rgba(255, 255, 255, 0.06); color: var(--text); margin-left: .65rem; }
+.hints { flex: none; height: 4.4rem; display: flex; align-items: center; justify-content: center; padding: 0 2rem;
+  background: var(--bg); border-top: .1rem solid var(--line); font-size: 1.3rem; color: var(--muted); overflow: hidden; white-space: nowrap; }
+.hint { display: flex; align-items: center; margin: 0 1.3rem; }
+.key { display: inline-block; font-size: 1.1rem; font-weight: 800; padding: .15rem .7rem; border-radius: .6rem;
+  border: .12rem solid var(--line2); background: var(--bg2); color: var(--text); margin-left: .6rem; }
 .cdot { display: inline-block; width: 1.3rem; height: 1.3rem; border-radius: 50%; margin-left: .55rem; }
-.cdot.red { background: var(--red); box-shadow: 0 0 .8rem rgba(239, 68, 68, 0.6); }
-.cdot.green { background: var(--green); box-shadow: 0 0 .8rem rgba(34, 197, 94, 0.6); }
-.cdot.yellow { background: var(--yellow); box-shadow: 0 0 .8rem rgba(250, 204, 21, 0.6); }
-.cdot.blue { background: var(--blue); box-shadow: 0 0 .8rem rgba(59, 130, 246, 0.6); }
+.cdot.red { background: var(--red); } .cdot.green { background: var(--green); }
+.cdot.yellow { background: var(--yellow); } .cdot.blue { background: var(--blue); }
 body.no-hints .hints { display: none; }
 
 /* ------------------------------------------------------------------ number entry HUD */
@@ -1503,22 +462,10 @@ body.touch .osd-hints, body.no-hints .osd-hints { display: none; }
 .drawer-item.focused { background: var(--focus-bg) !important; border-color: var(--focus) !important; color: #fff !important; }
 
 /* ------------------------------------------------------------------ overlays: menu, settings, dialog */
-.overlay, .settings, #settings, #dialog, #menu {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 99999 !important;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0, 0, 0, .85);
-  backdrop-filter: blur(28px);
-  -webkit-backdrop-filter: blur(28px);
-}
+.overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 50; display: flex; align-items: center; justify-content: center;
+  background: rgba(0, 0, 0, .72); }
 .menu-box { width: 56rem; max-width: 94%; max-height: 90%; display: flex; flex-direction: column; padding: 2.2rem; border-radius: 2.8rem;
-  background: var(--bg2); z-index: 99999 !important; }
+  background: var(--bg2); }
 .menu-head { flex: none; display: flex; align-items: center; padding-bottom: 1.4rem; margin-bottom: 1rem; border-bottom: .1rem solid var(--line); }
 .menu-logo { flex: none; width: 9rem; height: 5.4rem; border-radius: 1.2rem; background: var(--surface); margin-left: 1.4rem;
   display: flex; align-items: center; justify-content: center; overflow: hidden; }
@@ -1535,15 +482,7 @@ body.touch .osd-hints, body.no-hints .osd-hints { display: none; }
 .menu-item .mi-val { font-size: 1.35rem; color: var(--muted); }
 .menu-item .cdot { margin: 0 .8rem 0 0; }
 
-.settings-box {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  background: rgba(10, 12, 18, 0.98);
-  backdrop-filter: blur(48px);
-  -webkit-backdrop-filter: blur(48px);
-  z-index: 99999 !important;
-}
+.settings-box { width: 100%; height: 100%; display: flex; background: var(--bg); }
 .settings-side { flex: none; width: 34rem; padding: 3rem 2rem; background: var(--bg); overflow-y: auto; }
 .settings-title { display: flex; align-items: center; font-size: 2.8rem; font-weight: 800; padding: 0 1.4rem 2rem; letter-spacing: -.06rem; }
 .settings-title .ic { font-size: 3rem; margin-left: 1rem; color: var(--focus); }

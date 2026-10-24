@@ -41,7 +41,7 @@
     theme: 'oled', accent: 'auto', uiScale: 1, cols: 0, hero: true, numbers: true, hints: true, perf: 'auto',
     startCat: 'ALL', autoplay: false, hideAppOnly: false, hiddenCats: [], hidden: [], showSource: true,
     pic: 'off', aspect: 'fit', sharpen: false, quality: 'auto', latency: 'stable', osdSec: 5, osdClock: true,
-    retry: true, zap: 'category', upNext: true,
+    retry: true, zap: 'category', upNext: false,
     remote: 'auto', keyRed: 'menu', keyGreen: 'aspect', keyYellow: 'fav', keyBlue: 'dub', longOk: 'menu', numWait: 1.2,
     saver: 2, kids: false, kidsPin: '', autoUpdate: true, liveUpdates: true, avatar: '1f60e',
     lastId: '', lastCat: 'ALL', seenColors: false
@@ -251,9 +251,7 @@
     if (S.kids) startCat = 'ALL';
     selectCategory(state.cats.some(function (c) { return c.id === startCat; }) ? startCat : 'ALL', true);
     focusGrid(0);
-    buildHome();
-    setTab(S.startCat === 'FAVORITES' && state.favorites.length ? 'library' : 'home', true);
-    if (IS_TV) initTvRemoteNav();
+    if (PHONE) { buildHome(); setTab(S.startCat === 'FAVORITES' && state.favorites.length ? 'library' : 'home', true); }
     if (S.autoplay && S.lastId) {
       var idx = indexInList(S.lastId);
       if (idx !== -1) { focusGrid(idx); playIndex(idx); }
@@ -282,16 +280,7 @@
       'menu-sub', 'menu-list', 'settings', 'settings-nav', 'settings-h', 'settings-p', 'settings-rows', 'dialog', 'dialog-box',
       'dialog-ico', 'dialog-title', 'dialog-body', 'dialog-actions', 'toast', 'saver', 'saver-in', 'saver-clock',
       'topbar', 'home', 'pager', 'pager-track', 'pager-dots', 'shelves', 'navbar', 'nb-pill', 'btn-search', 'hero-bg',
-      'osd-center', 'ob-pip', 'guide-body', 'brand-tab', 'btn-avatar', 'avatar-img', 'avatar-dot', 'nb-search',
-      'tv-backdrop-stage', 'tv-backdrop-art', 'tv-preview-video', 'tv-backdrop-scrim',
-      'tv-sidebar', 'tv-top-brand', 'tv-btn-quick-settings', 'tv-stage', 'tv-hero-meta', 'tv-hero-logo',
-      'tv-hero-mono', 'tv-hero-quality', 'tv-hero-cat', 'tv-hero-num', 'tv-hero-fav',
-      'tv-hero-title', 'tv-hero-desc', 'tv-hero-actions', 'tv-hero-btn-play',
-      'tv-hero-btn-fav', 'tv-hero-btn-fav-txt', 'tv-hero-btn-settings', 'tv-hero-btn-info',
-      'tv-shelves-container', 'tv-shelves-track',
-      'tv-status-widget', 'tv-status-time', 'tv-status-weather', 'tv-numpad-hud',
-      'tv-numpad-digits', 'tv-numpad-name', 'tv-epg-pill', 'tv-epg-title', 'tv-epg-time',
-      'tv-epg-fill', 'tv-player-dock', 'tv-btn-ratio', 'tv-btn-audio', 'tv-btn-fav', 'tv-btn-exit'
+      'osd-center', 'ob-pip', 'guide-body', 'brand-tab', 'btn-avatar', 'avatar-img', 'avatar-dot', 'nb-search'
     ].forEach(function (id) {
       el[id.replace(/-([a-z])/g, function (m, c) { return c.toUpperCase(); })] = $(id);
     });
@@ -362,14 +351,14 @@
   function applyScale() {
     var w = window.innerWidth, hgt = window.innerHeight;
     var compact = w < 900 || (TOUCH && w < 1100 && hgt > w * 0.9);
-    // Unify all platforms with the Android UI architecture!
-    PHONE = true;
-    var base = IS_TV ? clamp(w / 110, 15, 20) * S.uiScale : (compact ? clamp(w / 40, 8.5, 11) : clamp(Math.min(w, hgt) / 40, 8.5, 11));
-    document.documentElement.style.fontSize = base + 'px';
+    // phones: portrait, or a touch screen whose short side is phone-sized (landscape phones too); never TVs
+    PHONE = !IS_TV && (w < 700 || (TOUCH && (Math.min(w, hgt) < 600 || hgt > w)));
+    var base = PHONE ? clamp(Math.min(w, hgt) / 40, 8.5, 11) : compact ? clamp(w / 40, 8.5, 11) : w / 120;
+    document.documentElement.style.fontSize = (base * (compact || PHONE ? 1 : S.uiScale)) + 'px';
     toggleClass(document.body, 'compact', compact);
-    toggleClass(document.body, 'phone', true);
-    toggleClass(document.body, 'tv-android-mode', IS_TV);
-    var cols = S.cols || (IS_TV ? 5 : (w < 600 ? 2 : w < 900 ? 3 : 4));
+    toggleClass(document.body, 'phone', PHONE);
+    var cols = S.cols || (PHONE ? (w < 600 ? 2 : w < 900 ? 3 : 4) : compact ? (w < 600 ? 2 : 3) : clamp(Math.round(5 / S.uiScale), 3, 7));
+    if (PHONE && S.cols) cols = Math.min(S.cols, w < 600 ? 3 : 5);
     state.cols = cols;
     document.documentElement.style.setProperty('--card-cols', cols);
   }
@@ -2521,67 +2510,19 @@
       if ((PLATFORM === 'android' && window.AndroidApp && window.AndroidApp.installUpdate) || PLATFORM === 'windows') {
         buttons.push({ label: 'עדכון עכשיו', primary: true, keep: true, act: function () { installNative(u.native); } });
       } else if (PLATFORM === 'webos') {
-        html += '<p>בטלוויזיית LG webOS: העדכון מוחל ישירות בתוך האפליקציה ללא צורך בהתקנה ידנית מחדש של קובץ ה-IPK!</p>';
-        if (state.liveReady) {
-          buttons.push({
-            label: '⚡ החל עדכון והפעל מחדש עכשיו',
-            primary: true,
-            act: function () { try { sessionStorage.removeItem('itv_local'); } catch (e) {} location.reload(); }
-          });
-        } else {
-          buttons.push({
-            label: '⚡ עדכן עכשיו בטלוויזיה (ללא התקנה)',
-            primary: true,
-            keep: true,
-            act: function () { updateWebOSInPlace(u); }
-          });
-        }
-        buttons.push({ label: '🌐 קובץ IPK ידני (למפתחים)', act: function () { openUrl(u.native && u.native.url ? u.native.url : RELEASES); } });
+        html += '<p>בטלוויזיית LG: התקנה מחדש של קובץ ה-IPK (Developer Mode / Homebrew Channel). המסך, הקוד והערוצים מתעדכנים גם בלי זה.</p>';
+        buttons.push({ label: '🌐 דף ההורדה', act: function () { openUrl(RELEASES); } });
       } else {
         buttons.push({ label: '🌐 דף ההורדה', primary: true, act: function () { openUrl(u.native.url || RELEASES); } });
       }
     }
-    if (state.liveReady && PLATFORM !== 'webos') {
+    if (state.liveReady) {
       buttons.push({ label: u.native ? 'הפעלה מחדש עם עדכון המסך' : 'הפעלה מחדש עכשיו', primary: !buttons.length,
         act: function () { try { sessionStorage.removeItem('itv_local'); } catch (e) {} location.reload(); } });
     }
     if (!buttons.length) { toast('✅ הגרסה עדכנית'); return; }
     buttons.push({ label: 'אחר כך' });
     openDialog({ ico: '', title: 'עדכון זמין', html: html, buttons: buttons, cls: 'upd' });
-  }
-
-  function updateWebOSInPlace(u) {
-    if (state.overlay !== 'dialog' || !$('upd-prog')) showUpdateDialog();
-    var box = el.dialogBox;
-    if (box) box.classList.add('downloading');
-    var prog = $('upd-prog'), bar = $('upd-bar'), txt = $('upd-text');
-    if (prog) prog.classList.add('indet');
-    var targetVer = (u.data && u.data.version) || (u.native && u.native.version) || '3.5.2';
-    var targetCode = (u.data && u.data.code) || Date.now();
-    if (txt) txt.textContent = 'מוריד את כל הערוצים, הלוגואים והעיצוב החדש (' + targetVer + ')...';
-    
-    var q = '?v=' + targetCode;
-    var files = ['style.css', 'ui.js', 'channels.js', 'dub.js', 'app.js'];
-    prefetch(files.map(function (f) { return REMOTE + f + q; }), function (ok) {
-      if (ok) {
-        if (prog) { prog.classList.remove('indet'); if (bar) bar.style.width = '100%'; }
-        if (txt) txt.textContent = 'העדכון הושלם בהצלחה! מפעיל מחדש...';
-        var liveObj = { code: targetCode, version: targetVer, shell: (u.data && u.data.shell) || 0 };
-        try {
-          localStorage.setItem('itv_live', JSON.stringify(liveObj));
-          localStorage.removeItem('itv_bad');
-          sessionStorage.removeItem('itv_local');
-        } catch (e) {}
-        toast('🎉 עודכן בהצלחה! מפעיל מחדש...');
-        setTimeout(function () {
-          location.reload();
-        }, 1200);
-      } else {
-        if (prog) prog.classList.remove('indet');
-        if (txt) txt.textContent = 'שגיאה בהורדת קובצי העדכון. נסה שוב מאוחר יותר.';
-        toast('⚠️ שגיאה בהורדת העדכון');
-      }
-    });
   }
 
   function installNative(n) {
@@ -2832,7 +2773,7 @@
   }
 
   // ================================================================== input: keys, long OK, mouse, touch
-  function isBack(code) { return code === 461 || code === 27 || code === 10009 || code === 8 || code === 4; }
+  function isBack(code) { return code === 461 || code === 27 || code === 10009 || code === 8; }
   function typing(t) { return t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA'); }
 
   function setupInput() {
@@ -2885,14 +2826,6 @@
       lastMove = now;
       if (state.overlay === 'player') showOsd();
     });
-    window.addEventListener('wheel', function (e) {
-      var row = e.target && e.target.closest ? e.target.closest('.shelf-row') : null;
-      if (row && Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
-        if (e.preventDefault) e.preventDefault();
-        try { row.scrollBy({ left: (e.deltaY > 0 ? 1 : -1) * (document.dir === 'rtl' ? -360 : 360), behavior: 'smooth' }); }
-        catch (x) { row.scrollLeft += (e.deltaY > 0 ? 1 : -1) * (document.dir === 'rtl' ? -360 : 360); }
-      }
-    }, { passive: false });
     window.addEventListener('touchstart', resetSaver, { passive: true });
     el.grid.addEventListener('scroll', function () {
       if (el.grid.scrollHeight - el.grid.scrollTop - el.grid.clientHeight < 600) ensureRendered(rendered);
@@ -3036,7 +2969,7 @@
       return;
     }
 
-    // OK / Enter: short press on release, long press = options (normalized across Android TV 13/23/66, Tizen 13, webOS 13)
+    // OK / Enter: short press on release, long press = options (13 Enter, 23 DPAD_CENTER, 66 KEYCODE_ENTER)
     if (code === 13 || code === 23 || code === 66) {
       if (e.preventDefault) e.preventDefault();
       if (!state.okUpSeen) { shortOk(); return; }
@@ -3092,9 +3025,7 @@
       case 'menu': menuKey(code); return;
       case 'drawer': drawerKey(code); return;
       case 'player': playerKey(code); return;
-      default:
-        if (state.tab === 'home') { homeKey(code, e); return; }
-        guideKey(code);
+      default: guideKey(code);
     }
   }
 
@@ -3113,10 +3044,6 @@
         if (state.zone === 'perror') { errorButtons()[state.perrIdx || 0].click(); return; }
         if (el.osd.classList.contains('off')) showOsd(); else playerMenu();
         return;
-    }
-    if (state.tab === 'home') {
-      homeOk();
-      return;
     }
     if (state.zone === 'grid') { if (Dub) Dub.unlockAudio(); playIndex(state.gridIdx); }
     else if (state.zone === 'rail') { selectCategory(state.cats[state.railIdx].id); focusGrid(0); }
@@ -3176,7 +3103,7 @@
       var b = errorButtons();
       if (code === 37) state.perrIdx = clamp((state.perrIdx || 0) + 1, 0, b.length - 1);
       else if (code === 39) state.perrIdx = clamp((state.perrIdx || 0) - 1, 0, b.length - 1);
-      else if (code === 38 || code === 40) { zap(code === 38 ? (S.upNext ? 1 : -1) : (S.upNext ? -1 : 1)); return; }
+      else if (code === 38 || code === 40) { zap(code === 40 ? 1 : -1); return; }
       else if (isBack(code)) { closePlayer(false); return; }
       markFocus();
       return;
@@ -3209,218 +3136,5 @@
     else if (code === 39 || code === 38) state.dialogIdx = clamp(state.dialogIdx - 1, 0, n - 1);
     else if (isBack(code)) { closeDialog(); return; }
     markFocus();
-  }
-
-  // ================================================================== Android TV & webOS Remote Controller
-  var homeNav = {
-    zone: 'shelves', // 'pager' | 'shelves' | 'navbar'
-    shelfIdx: 0,
-    cardIdx: 0,
-    pagerBtnIdx: 0, // 0 = play, 1 = fav, 2 = info
-    navTabIdx: 0 // 0 = home, 1 = explore, 2 = library, 3 = settings, 4 = search
-  };
-
-  function markHomeFocus() {
-    var oldFocus = document.querySelectorAll('.pcard.focused, .slide-actions .focused, .nb-item.focused, .nb-search.focused');
-    for (var i = 0; i < oldFocus.length; i++) oldFocus[i].classList.remove('focused');
-
-    if (homeNav.zone === 'pager') {
-      var activeSlide = el.pagerTrack ? el.pagerTrack.children[pagerIndex()] : null;
-      if (activeSlide) {
-        var btns = [
-          activeSlide.querySelector('.fab-play'),
-          activeSlide.querySelector('[data-act="fav"]'),
-          activeSlide.querySelector('[data-act="info"]')
-        ].filter(Boolean);
-        var b = btns[clamp(homeNav.pagerBtnIdx, 0, btns.length - 1)];
-        if (b) {
-          b.classList.add('focused');
-          if (b.scrollIntoView) { try { b.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); } catch (e) {} }
-        }
-      }
-    } else if (homeNav.zone === 'shelves') {
-      var shelfEls = el.shelves ? el.shelves.querySelectorAll('.shelf') : [];
-      if (!shelfEls.length) return;
-      homeNav.shelfIdx = clamp(homeNav.shelfIdx, 0, shelfEls.length - 1);
-      var curShelf = shelfEls[homeNav.shelfIdx];
-      if (curShelf) {
-        var cards = curShelf.querySelectorAll('.pcard');
-        if (cards.length) {
-          homeNav.cardIdx = clamp(homeNav.cardIdx, 0, cards.length - 1);
-          var curCard = cards[homeNav.cardIdx];
-          if (curCard) {
-            curCard.classList.add('focused');
-            try { curCard.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: 'smooth' }); } catch (e) {}
-          }
-        }
-        try { curShelf.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); } catch (e) {}
-      }
-    } else if (homeNav.zone === 'navbar') {
-      var navItems = el.navbar ? el.navbar.querySelectorAll('.nb-item') : [];
-      if (homeNav.navTabIdx < navItems.length && navItems[homeNav.navTabIdx]) {
-        navItems[homeNav.navTabIdx].classList.add('focused');
-      } else if (el.nbSearch) {
-        el.nbSearch.classList.add('focused');
-      }
-    }
-  }
-
-  function homeKey(code, e) {
-    if (isBack(code)) {
-      if (homeNav.zone !== 'shelves' || homeNav.shelfIdx > 0) {
-        homeNav.zone = 'shelves';
-        homeNav.shelfIdx = 0;
-        homeNav.cardIdx = 0;
-        markHomeFocus();
-        return;
-      }
-      var now = Date.now();
-      if (now - (state.lastBack || 0) < 2500) exitApp();
-      else { state.lastBack = now; toast('לחצו שוב BACK ליציאה'); }
-      return;
-    }
-
-    // Number keys on remote 0-9
-    if ((code >= 48 && code <= 57) || (code >= 96 && code <= 105)) {
-      var d = code >= 96 ? code - 96 : code - 48;
-      digit(d);
-      return;
-    }
-
-    if (homeNav.zone === 'pager') {
-      if (code === 37) { // Left (next button in RTL)
-        if (homeNav.pagerBtnIdx < 2) homeNav.pagerBtnIdx++;
-        else {
-          var t = el.pagerTrack, n = (pagerIndex() + 1) % (pagerItems.length || 1);
-          var left = -n * t.clientWidth;
-          try { t.scrollTo({ left: left, behavior: 'smooth' }); } catch (x) { t.scrollLeft = left; }
-          homeNav.pagerBtnIdx = 0;
-        }
-        markHomeFocus();
-        return;
-      }
-      if (code === 39) { // Right (prev button)
-        if (homeNav.pagerBtnIdx > 0) homeNav.pagerBtnIdx--;
-        else {
-          var t = el.pagerTrack, n = (pagerIndex() - 1 + (pagerItems.length || 1)) % (pagerItems.length || 1);
-          var left = -n * t.clientWidth;
-          try { t.scrollTo({ left: left, behavior: 'smooth' }); } catch (x) { t.scrollLeft = left; }
-          homeNav.pagerBtnIdx = 2;
-        }
-        markHomeFocus();
-        return;
-      }
-      if (code === 38) { // Up to Apple TV Top Floating Navbar
-        homeNav.zone = 'navbar';
-        homeNav.navTabIdx = 0;
-        markHomeFocus();
-        return;
-      }
-      if (code === 40) { // Down to shelves
-        homeNav.zone = 'shelves';
-        homeNav.shelfIdx = 0;
-        homeNav.cardIdx = 0;
-        markHomeFocus();
-        return;
-      }
-      if (code === 13 || code === 23 || code === 66) {
-        homeOk();
-        return;
-      }
-    } else if (homeNav.zone === 'shelves') {
-      var shelfEls = el.shelves ? el.shelves.querySelectorAll('.shelf') : [];
-      var curShelf = shelfEls[homeNav.shelfIdx];
-      var cards = curShelf ? curShelf.querySelectorAll('.pcard') : [];
-      if (code === 37) { // Left (next card)
-        if (homeNav.cardIdx < cards.length - 1) homeNav.cardIdx++;
-        markHomeFocus();
-        return;
-      }
-      if (code === 39) { // Right (prev card)
-        if (homeNav.cardIdx > 0) homeNav.cardIdx--;
-        markHomeFocus();
-        return;
-      }
-      if (code === 38) { // Up
-        if (homeNav.shelfIdx > 0) {
-          homeNav.shelfIdx--;
-          markHomeFocus();
-        } else {
-          homeNav.zone = 'pager';
-          homeNav.pagerBtnIdx = 0;
-          markHomeFocus();
-        }
-        return;
-      }
-      if (code === 40) { // Down
-        if (homeNav.shelfIdx < shelfEls.length - 1) {
-          homeNav.shelfIdx++;
-          markHomeFocus();
-        }
-        return;
-      }
-      if (code === 13 || code === 23 || code === 66) {
-        homeOk();
-        return;
-      }
-    } else if (homeNav.zone === 'navbar') {
-      var navItems = el.navbar ? el.navbar.querySelectorAll('.nb-item') : [];
-      var totalTabs = navItems.length + 1; // +1 for search
-      if (code === 37) { // Left (next tab)
-        homeNav.navTabIdx = (homeNav.navTabIdx + 1) % totalTabs;
-        markHomeFocus();
-        return;
-      }
-      if (code === 39) { // Right (prev tab)
-        homeNav.navTabIdx = (homeNav.navTabIdx - 1 + totalTabs) % totalTabs;
-        markHomeFocus();
-        return;
-      }
-      if (code === 40) { // Down to Pager Hero / Shelves
-        homeNav.zone = 'pager';
-        homeNav.pagerBtnIdx = 0;
-        markHomeFocus();
-        return;
-      }
-      if (code === 13 || code === 23 || code === 66) {
-        homeOk();
-        return;
-      }
-    }
-  }
-
-  function homeOk() {
-    if (homeNav.zone === 'shelves') {
-      var shelfEls = el.shelves ? el.shelves.querySelectorAll('.shelf') : [];
-      var curShelf = shelfEls[homeNav.shelfIdx];
-      var cards = curShelf ? curShelf.querySelectorAll('.pcard') : [];
-      var curCard = cards[homeNav.cardIdx];
-      if (curCard) curCard.click();
-    } else if (homeNav.zone === 'pager') {
-      var activeSlide = el.pagerTrack ? el.pagerTrack.children[pagerIndex()] : null;
-      if (activeSlide) {
-        var btns = [
-          activeSlide.querySelector('.fab-play'),
-          activeSlide.querySelector('[data-act="fav"]'),
-          activeSlide.querySelector('[data-act="info"]')
-        ].filter(Boolean);
-        var b = btns[clamp(homeNav.pagerBtnIdx, 0, btns.length - 1)];
-        if (b) b.click();
-      }
-    } else if (homeNav.zone === 'navbar') {
-      var navItems = el.navbar ? el.navbar.querySelectorAll('.nb-item') : [];
-      if (homeNav.navTabIdx < navItems.length && navItems[homeNav.navTabIdx]) {
-        navItems[homeNav.navTabIdx].click();
-      } else if (el.nbSearch) {
-        el.nbSearch.click();
-      }
-    }
-  }
-
-  function initTvRemoteNav() {
-    homeNav.zone = 'shelves';
-    homeNav.shelfIdx = 0;
-    homeNav.cardIdx = 0;
-    setTimeout(markHomeFocus, 300);
   }
 })();
