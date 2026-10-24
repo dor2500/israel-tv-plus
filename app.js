@@ -29,12 +29,16 @@
   var IS_TV = PLATFORM === 'webos' || PLATFORM === 'tizen' || /AndroidTV/.test(UA) ||
     (PLATFORM === 'android' && window.AndroidApp && window.AndroidApp.isTv && window.AndroidApp.isTv());
   var TOUCH = !IS_TV && ('ontouchstart' in window) && window.matchMedia && matchMedia('(pointer: coarse)').matches;
+  var PHONE = false;            // phone layout (Nuvio home + navigation bar), set by applyScale()
+  var I = window.ITV_ICON || function () { return ''; };
+  var NATIVE = window.AndroidApp || null;
+  function native(fn) { try { return NATIVE && NATIVE[fn] ? NATIVE[fn].apply(NATIVE, [].slice.call(arguments, 1)) : undefined; } catch (e) { return undefined; } }
   var PLATFORM_NAMES = { webos: 'LG webOS', tizen: 'Samsung Tizen', android: IS_TV ? 'Android TV' : 'Android',
     windows: 'Windows', desktop: /Mac/.test(UA) ? 'macOS' : 'Linux', web: 'דפדפן (אתר)', local: 'דפדפן (מקומי)' };
 
   // ================================================================== settings
   var DEFAULTS = {
-    theme: 'oled', uiScale: 1, cols: 0, hero: true, numbers: true, hints: true, perf: 'auto',
+    theme: 'oled', accent: 'auto', uiScale: 1, cols: 0, hero: true, numbers: true, hints: true, perf: 'auto',
     startCat: 'ALL', autoplay: false, hideAppOnly: false, hiddenCats: [], hidden: [], showSource: true,
     pic: 'off', aspect: 'fit', sharpen: false, quality: 'auto', latency: 'stable', osdSec: 5, osdClock: true,
     retry: true, zap: 'category', upNext: false,
@@ -74,7 +78,8 @@
     digits: '', digitTimer: null, osdTimer: null, toastTimer: null, saverTimer: null, heroTimer: null,
     okTimer: null, okLong: false, okDown: false,
     device: { platform: PLATFORM_NAMES[PLATFORM] || PLATFORM },
-    lowEnd: false, cols: 5, update: null, liveReady: null
+    lowEnd: false, cols: 5, update: null, liveReady: null,
+    tab: 'home', prevTab: 'home', openFrom: null   // phone: current tab, rect of the tapped poster (open motion)
   };
   var MAX_RECENTS = 12;
   var GRID_PAGE = 60;
@@ -101,7 +106,7 @@
   function foreign(ch) { return !!(Dub && ch && Dub.isForeign(ch)); }
 
   function monogramText(ch) {
-    var latin = (ch.name.match(/[A-Za-z0-9][A-Za-z0-9!+&'.:-]*(?:\s+[A-Za-z0-9!+&'.:-]+)*/g) || [])
+    var latin = (ch.name.replace(/\(.*?\)/g, ' ').match(/[A-Za-z0-9][A-Za-z0-9!+&'.:-]*(?:\s+[A-Za-z0-9!+&'.:-]+)*/g) || [])
       .map(function (s) { return s.replace(/\b(HD|Live|TV)\b/g, '').trim(); })
       .filter(function (s) { return /[A-Za-z]{2,}/.test(s); })
       .sort(function (a, b) { return b.length - a.length; });
@@ -137,6 +142,34 @@
     tryNext();
   }
 
+  /** A soft wash in the channel's own colour behind its logo (Nuvio posters are never flat grey). */
+  function tintOf(ch) {
+    var h = hueOf(ch.id);
+    return 'linear-gradient(135deg, hsla(' + h + ',65%,48%,.32), hsla(' + ((h + 40) % 360) + ',65%,40%,0) 72%)';
+  }
+
+  // Logos load only when their card comes near the screen (hundreds of channels, phones and TVs on slow Wi-Fi)
+  var logoObserver = null;
+  function lazyLogo(img, mono, ch) {
+    if (!('IntersectionObserver' in window)) { setLogo(img, mono, ch); return; }
+    if (!logoObserver) {
+      logoObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          var im = e.target;
+          logoObserver.unobserve(im);
+          if (im.__ch) { setLogo(im, im.__mono, im.__ch); im.__ch = null; im.__mono = null; }
+        });
+      }, { rootMargin: '400px 600px' });
+    }
+    img.__ch = ch;
+    img.__mono = mono;
+    var h = hueOf(ch.id);
+    mono.textContent = monogramText(ch);
+    mono.style.background = 'linear-gradient(135deg, hsl(' + h + ',70%,42%), hsl(' + ((h + 40) % 360) + ',75%,30%))';
+    logoObserver.observe(img);
+  }
+
   var CAT_SHORT = { 'ילדים ונוער (בעברית)': 'ילדים בעברית', 'מנויים ואפליקציות (TV Apps)': 'מנויים ואפליקציות' };
   function splitCat(name) {
     if (CAT_SHORT[name]) return CAT_SHORT[name];
@@ -150,7 +183,7 @@
   function catIcon(name) { for (var i = 0; i < CAT_ICONS.length; i++) if (CAT_ICONS[i][0].test(name)) return CAT_ICONS[i][1]; return '📺'; }
   var CAT_ORDER = ['ערוצי ישראל - שידור חי', 'ילדים ונוער (בעברית)', 'רדיו ישראלי (Israeli Radio)', 'מנויים ואפליקציות (TV Apps)',
     'חדשות מהעולם (News)', 'סרטים וסדרות (Movies & Series)', 'ספורט (Sports)', 'ילדים מהעולם (Kids World)', 'מוזיקה (Music TV)',
-    'טבע ודוקו (Documentary & Nature)', 'לייף סטייל ובידור', 'מסורת וקהילה', 'ערוצים בינלאומיים (World)'];
+    'טבע ודוקו (Documentary & Nature)', 'לייף סטייל ובידור', 'מסורת וקהילה', 'דת ואמונה (Religion)', 'ערוצים בינלאומיים (World)'];
 
   var KIND_LABEL = { official: '✅ שידור רשמי', fast: '✅ ערוץ FAST חינמי (רשמי, עם פרסומות)', restream: '⚠️ ממסר של צד שלישי (לא השרת של הערוץ)' };
   function hostOf(url) { var m = /^[a-z]+:\/\/([^/:?#]+)/i.exec(url || ''); return m ? m[1] : ''; }
@@ -183,15 +216,27 @@
     setupDub();
     setupInput();
     setupNativeBridge();
+    setupPhone();
     setupClock();
     readDeviceInfo();
     resetSaver();
-    window.addEventListener('resize', function () { applyScale(); renderGridFresh(); });
+    var resizeTimer = null;
+    window.addEventListener('resize', function () {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function () {
+        var was = PHONE;
+        applyScale();
+        renderGridFresh();
+        if (PHONE && !was) { buildHome(); setTab(state.tab, true); }
+        else if (PHONE) movePill(false);
+      }, 120);
+    });
 
     var startCat = S.startCat === 'LAST' ? S.lastCat : S.startCat;
     if (S.kids) startCat = 'ALL';
     selectCategory(state.cats.some(function (c) { return c.id === startCat; }) ? startCat : 'ALL', true);
     focusGrid(0);
+    if (PHONE) { buildHome(); setTab(S.startCat === 'FAVORITES' && state.favorites.length ? 'library' : 'home', true); }
     if (S.autoplay && S.lastId) {
       var idx = indexInList(S.lastId);
       if (idx !== -1) { focusGrid(idx); playIndex(idx); }
@@ -216,7 +261,9 @@
       'osd-num', 'osd-name', 'osd-cat', 'osd-quality', 'osd-pic', 'osd-clock', 'osd-dub', 'osd-dub-text', 'osd-buttons',
       'osd-hints', 'ob-play', 'ob-mute', 'drawer', 'drawer-list', 'drawer-cat', 'menu', 'menu-logo', 'menu-mono', 'menu-title',
       'menu-sub', 'menu-list', 'settings', 'settings-nav', 'settings-h', 'settings-p', 'settings-rows', 'dialog', 'dialog-box',
-      'dialog-ico', 'dialog-title', 'dialog-body', 'dialog-actions', 'toast', 'saver', 'saver-in', 'saver-clock'
+      'dialog-ico', 'dialog-title', 'dialog-body', 'dialog-actions', 'toast', 'saver', 'saver-in', 'saver-clock',
+      'topbar', 'home', 'pager', 'pager-track', 'pager-dots', 'shelves', 'navbar', 'nb-pill', 'btn-search', 'hero-bg',
+      'osd-center', 'ob-pip', 'guide-body'
     ].forEach(function (id) {
       el[id.replace(/-([a-z])/g, function (m, c) { return c.toUpperCase(); })] = $(id);
     });
@@ -287,21 +334,90 @@
   function applyScale() {
     var w = window.innerWidth, hgt = window.innerHeight;
     var compact = w < 900 || (TOUCH && w < 1100 && hgt > w * 0.9);
-    var base = compact ? clamp(w / 40, 8.5, 11) : w / 120;
-    document.documentElement.style.fontSize = (base * (compact ? 1 : S.uiScale)) + 'px';
+    // phones: portrait, or a touch screen whose short side is phone-sized (landscape phones too); never TVs
+    PHONE = !IS_TV && (w < 700 || (TOUCH && (Math.min(w, hgt) < 600 || hgt > w)));
+    var base = PHONE ? clamp(Math.min(w, hgt) / 40, 8.5, 11) : compact ? clamp(w / 40, 8.5, 11) : w / 120;
+    document.documentElement.style.fontSize = (base * (compact || PHONE ? 1 : S.uiScale)) + 'px';
     toggleClass(document.body, 'compact', compact);
-    var cols = S.cols || (compact ? (w < 600 ? 2 : 3) : clamp(Math.round(5 / S.uiScale), 3, 7));
+    toggleClass(document.body, 'phone', PHONE);
+    var cols = S.cols || (PHONE ? (w < 600 ? 2 : w < 900 ? 3 : 4) : compact ? (w < 600 ? 2 : 3) : clamp(Math.round(5 / S.uiScale), 3, 7));
+    if (PHONE && S.cols) cols = Math.min(S.cols, w < 600 ? 3 : 5);
     state.cols = cols;
     document.documentElement.style.setProperty('--card-cols', cols);
   }
 
+  // ---- colours: Nuvio accent palettes, or Material You (the Android 12+ wallpaper colours from the native app)
+  var PALETTES = [['auto', 'אוטומטי'], ['system', 'צבעי המערכת (Material You)'], ['white', 'לבן'], ['arctic', 'כחול ארקטי'],
+    ['gold', 'זהב'], ['jade', 'ירקן'], ['rosegold', 'רוז גולד'], ['crimson', 'ארגמן'], ['ocean', 'אוקיינוס'], ['violet', 'סגול'],
+    ['emerald', 'אמרלד'], ['amber', 'ענבר'], ['rose', 'ורוד'], ['graphite', 'גרפיט']];
+  // accent, on accent, variant, focus ring, focus / container background, background, elevated, card (Nuvio ThemeColors.kt)
+  var PAL = {
+    white: ['#f5f5f5', '#111111', '#e0e0e0', '#ffffff', '#333333', '#0d0d0d', '#1a1a1a', '#242424'],
+    arctic: ['#3185f5', '#ffffff', '#4d55e8', '#4de3ff', '#172844', '#0b0e14', '#141a24', '#161e2a'],
+    gold: ['#e8a91c', '#111111', '#9a6200', '#ffd45c', '#3d2d1a', '#0f0e0b', '#1d1a14', '#262116'],
+    jade: ['#22d37c', '#111111', '#0bbf9a', '#7bf08d', '#153a2c', '#0b0f0d', '#141d18', '#16251d'],
+    rosegold: ['#ec70a9', '#111111', '#b75aff', '#ffb37a', '#442037', '#100c0f', '#1f161d', '#281a24'],
+    crimson: ['#e53935', '#ffffff', '#c62828', '#ff5252', '#3d1a1a', '#0d0d0d', '#1a1a1a', '#241a1a'],
+    ocean: ['#1e88e5', '#ffffff', '#1565c0', '#42a5f5', '#1a2d3d', '#0d0d0f', '#1a1a1e', '#1a1f24'],
+    violet: ['#8e24aa', '#ffffff', '#6a1b9a', '#ab47bc', '#2d1a3d', '#0d0d0f', '#1a1a1e', '#1f1a24'],
+    emerald: ['#43a047', '#ffffff', '#2e7d32', '#66bb6a', '#1a3d1e', '#0d0d0d', '#1a1a1a', '#1a241a'],
+    amber: ['#fb8c00', '#111111', '#ef6c00', '#ffa726', '#3d2d1a', '#0f0d0d', '#1e1a1a', '#24201a'],
+    rose: ['#d81b60', '#ffffff', '#c2185b', '#ec407a', '#3d1a2d', '#0d0d0d', '#1a1a1a', '#241a1f'],
+    graphite: ['#aab2be', '#111111', '#687381', '#f3f5f7', '#30343a', '#0c0d0f', '#17191d', '#20242a']
+  };
+  var systemColors = null;
+  function readSystemColors() {
+    if (systemColors !== null) return systemColors;
+    systemColors = false;
+    var raw = native('dynamicColors');
+    if (raw) { try { var c = JSON.parse(raw); if (c && c.a1_200) systemColors = c; } catch (e) {} }
+    return systemColors;
+  }
+  function accentName() {
+    if (S.accent === 'auto') return readSystemColors() ? 'system' : 'white';
+    if (S.accent === 'system' && !readSystemColors()) return 'white';
+    return (PAL[S.accent] || S.accent === 'system') ? S.accent : 'white';
+  }
+  function hexRgb(h) { h = h.replace('#', ''); if (h.length === 3) h = h.replace(/./g, '$&$&'); var n = parseInt(h, 16); return [n >> 16 & 255, n >> 8 & 255, n & 255]; }
+  function mix(a, b, t) {
+    var x = hexRgb(a), y = hexRgb(b), o = '#';
+    for (var i = 0; i < 3; i++) { var v = Math.round(x[i] + (y[i] - x[i]) * t); o += (v < 16 ? '0' : '') + v.toString(16); }
+    return o;
+  }
+  function rgba(h, a) { var c = hexRgb(h); return 'rgba(' + c[0] + ',' + c[1] + ',' + c[2] + ',' + a + ')'; }
+  function applyColors() {
+    var name = accentName(), sc = readSystemColors(), light = S.theme === 'light', oled = S.theme === 'oled';
+    var p;
+    if (name === 'system' && sc) {
+      p = light ? [sc.a1_600, '#ffffff', sc.a2_600, sc.a1_700, sc.a1_100, sc.n1_50, sc.n1_100 || mix(sc.n1_50, sc.n1_200, .5), '#ffffff']
+        : [sc.a1_200, sc.a1_800, sc.a2_200, sc.a1_100, sc.a1_700, sc.n1_900, mix(sc.n1_900, sc.n1_800, .5), sc.n1_800];
+    } else {
+      p = (PAL[name] || PAL.white).slice();
+      if (light) {
+        var acc = name === 'white' || name === 'graphite' ? '#202124' : mix(p[0], '#000000', .12);
+        p = [acc, '#ffffff', p[2], mix(acc, '#000000', .2), mix(p[0], '#ffffff', .82), '#f6f6f8', '#ececf0', '#ffffff'];
+      }
+    }
+    var r = document.documentElement.style;
+    var bg = oled && !light ? '#000000' : p[5];
+    var set = function (k, v) { r.setProperty(k, v); };
+    set('--accent', p[0]); set('--on-accent', p[1]); set('--accent2', p[2]); set('--focus', p[3]);
+    set('--focus-bg', p[4]); set('--container', p[4]);
+    set('--on-container', light ? mix(p[0], '#000000', .5) : mix(p[3], '#ffffff', .55));
+    set('--glow', rgba(p[3], light ? .25 : .35)); set('--pill', rgba(p[0], light ? .16 : .2));
+    set('--bg', bg); set('--bg2', oled && !light ? mix(p[6], '#000000', .35) : p[6]); set('--surface', p[7]);
+    set('--surface2', light ? '#f0f0f3' : mix(p[7], '#ffffff', .06)); set('--bg-a34', rgba(bg, .34));
+    var meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute('content', bg);
+    native('setBarsLight', !!light);
+  }
+
   function applySetting(k) {
     var b = document.body;
-    if (k === 'theme') {
+    if (k === 'theme' || k === 'accent') {
       b.classList.remove('oled', 'light', 'dark');
       b.classList.add(S.theme);
-      var meta = document.querySelector('meta[name="theme-color"]');
-      if (meta) meta.setAttribute('content', S.theme === 'light' ? '#e2e8f0' : '#05070d');
+      applyColors();
     } else if (k === 'uiScale' || k === 'cols') { applyScale(); renderGridFresh(); }
     else if (k === 'hero') toggleClass(b, 'no-hero', !S.hero);
     else if (k === 'numbers') toggleClass(b, 'no-numbers', !S.numbers);
@@ -461,10 +577,10 @@
       var flags = '<span class="f-live">● משדר</span><span class="f-fav">⭐</span>' +
         (foreign(ch) ? '<span>🎙️</span>' : '') + (isApp(ch) ? '<span>↗</span>' : '') +
         (isRadioCh(ch) ? '<span>📻</span>' : '') + (appOnly(ch) ? '<span>📲</span>' : '');
-      card.innerHTML = '<div class="card-num">' + ch.number + '</div><div class="card-flags">' + flags + '</div>' +
-        '<div class="card-logo"><img alt="" loading="lazy"><div class="mono hidden"></div></div>' +
+      card.innerHTML = '<div class="card-logo" style="background-image:' + tintOf(ch) + '"><div class="card-num">' + ch.number + '</div>' +
+        '<div class="card-flags">' + flags + '</div><img alt="" loading="lazy"><div class="mono hidden"></div></div>' +
         '<div class="card-body"><div class="card-name">' + esc(ch.name) + '</div><div class="card-meta">' + esc(cardMeta(ch)) + '</div></div>';
-      setLogo(card.querySelector('img'), card.querySelector('.mono'), ch);
+      lazyLogo(card.querySelector('img'), card.querySelector('.mono'), ch);
       frag.appendChild(card);
       cards.push(card);
     }
@@ -492,6 +608,11 @@
     toggleClass(el.heroFav, 'hidden', !isFav(ch));
     el.heroSrc.textContent = S.showSource ? sourceLine(ch) + (appOnly(ch) ? ' · בדפדפן חסום – פועל באפליקציות' : '') : '';
     setLogo(el.heroLogo, el.heroMono, ch);
+    if (el.heroBg) {
+      var h = hueOf(ch.id);
+      el.heroBg.style.background = 'radial-gradient(ellipse at 88% 40%, hsla(' + h + ',70%,45%,.55), hsla(' + h + ',70%,45%,0) 55%),' +
+        'radial-gradient(ellipse at 55% 120%, hsla(' + ((h + 40) % 360) + ',70%,35%,.45), hsla(' + ((h + 40) % 360) + ',70%,35%,0) 60%)';
+    }
   }
 
   // ================================================================== focus
@@ -558,6 +679,7 @@
     if (i === -1) { state.favorites.push(ch.id); toast('⭐ ' + ch.name + ' נוסף למועדפים'); }
     else { state.favorites.splice(i, 1); toast('הוסר מהמועדפים'); }
     lsSet('israel_tv_favorites', state.favorites);
+    homeDirty = true;
     var had = state.cats.length;
     buildCategories();
     if (state.cat === 'FAVORITES') filterList();
@@ -571,11 +693,354 @@
   function addRecent(ch) {
     state.recents = [ch.id].concat(state.recents.filter(function (id) { return id !== ch.id; })).slice(0, MAX_RECENTS);
     lsSet('israel_tv_recents', state.recents);
+    homeDirty = true;
     S.lastId = ch.id;
     saveSettings();
     var has = state.cats.some(function (c) { return c.id === 'RECENT'; });
     if (!has) buildCategories();
   }
+  // ================================================================== phone: tabs, home (hero pager + shelves), navigation bar
+  var TABS = ['home', 'explore', 'library', 'settings'];
+  var pagerTimer = null, pagerItems = [], homeDirty = true;
+
+  function haptic(kind) { if (native('haptic', kind || 'tick') === undefined && navigator.vibrate && kind === 'long') { try { navigator.vibrate(12); } catch (e) {} } }
+
+  /** Runs a DOM change as a View Transition where the browser has it (Chrome 111+), else straight away. */
+  function withTransition(fn) {
+    if (document.startViewTransition && !fastMode() && !document.hidden) {
+      try { document.startViewTransition(fn); return; } catch (e) {}
+    }
+    fn();
+  }
+
+  function setTab(tab, instant) {
+    if (!PHONE) return;
+    if (TABS.indexOf(tab) === -1) tab = 'home';
+    var prev = state.tab;
+    var go = function () {
+      if (tab !== 'settings' && state.overlay === 'settings') closeSettings(true);
+      if (tab !== 'settings') state.prevTab = tab;
+      state.tab = tab;
+      TABS.forEach(function (t) { toggleClass(document.body, 'tab-' + t, t === tab || (tab === 'settings' && t === state.prevTab)); });
+      var items = el.navbar.querySelectorAll('.nb-item');
+      for (var i = 0; i < items.length; i++) toggleClass(items[i], 'on', items[i].getAttribute('data-tab') === tab);
+      if (tab === 'home') { if (homeDirty) buildHome(); updateTopbar(); }
+      else if (tab === 'library') {
+        var target = state.cats.some(function (c) { return c.id === 'FAVORITES'; }) ? 'FAVORITES' : 'RECENT';
+        if (state.query) { state.query = ''; el.searchInput.value = ''; }
+        selectCategory(target, true);
+        if (!state.list.length) el.grid.innerHTML = emptyState('star', 'עוד אין כאן ערוצים',
+          'לחיצה ארוכה על ערוץ ← "הוספה למועדפים". ערוצים שצפיתם בהם מופיעים כאן ובמסך הבית.');
+        el.gridTitle.textContent = target === 'FAVORITES' ? '★ המועדפים שלי' : '🕘 צפית לאחרונה';
+      } else if (tab === 'explore') {
+        if (prev === 'library' && (state.cat === 'FAVORITES' || state.cat === 'RECENT')) selectCategory('ALL', true);
+        el.grid.scrollTop = el.grid.scrollTop;
+      } else if (tab === 'settings' && state.overlay !== 'settings') openSettings();
+      el.navbar.classList.remove('mini');
+      movePill(!instant);
+    };
+    if (instant || prev === tab) go(); else { haptic('tick'); withTransition(go); }
+  }
+
+  function emptyState(icon, title, text) {
+    return '<div class="grid-empty empty-state">' + I(icon) + '<b>' + esc(title) + '</b>' + esc(text) + '</div>';
+  }
+
+  /** Moves the selected pill under the active tab with a short "jelly" stretch (Nuvio JellyMotion). */
+  var pillX = null;
+  function movePill(animate) {
+    if (!el.nbPill) return;
+    var items = el.navbar.querySelectorAll('.nb-item'), item = null;
+    for (var i = 0; i < items.length; i++) if (items[i].getAttribute('data-tab') === state.tab) item = items[i];
+    if (!item) return;
+    el.nbPill.style.width = item.offsetWidth + 'px';
+    var x = item.offsetLeft - el.nbPill.offsetLeft;   // offsetLeft ignores the transform: distance from the pill's own spot
+    var to = 'translateX(' + x + 'px)';
+    if (animate && pillX !== null && pillX !== x && el.nbPill.animate && !fastMode()) {
+      var mid = (pillX + x) / 2;
+      el.nbPill.animate([
+        { transform: 'translateX(' + pillX + 'px) scaleX(1)' },
+        { transform: 'translateX(' + mid + 'px) scaleX(1.32) scaleY(.9)', offset: 0.45 },
+        { transform: to + ' scaleX(1)' }
+      ], { duration: 420, easing: 'cubic-bezier(.2, 0, 0, 1)' });
+    }
+    el.nbPill.style.transform = to;
+    pillX = x;
+  }
+
+  function updateTopbar() {
+    if (!PHONE || !el.topbar) return;
+    var solid = state.tab !== 'home' || el.home.scrollTop > Math.max(60, el.pager.offsetHeight - el.topbar.offsetHeight - 40);
+    toggleClass(el.topbar, 'solid', solid);
+  }
+
+  /** Channels for the hero pager: favourites, recently watched, then the main Israeli channels. */
+  function featured() {
+    var out = [], seen = {};
+    var add = function (ch) { if (ch && !seen[ch.id] && !isApp(ch) && !appOnly(ch) && out.length < 7) { seen[ch.id] = 1; out.push(ch); } };
+    state.favorites.slice(0, 2).forEach(function (id) { add(state.all[indexInAll(id)]); });
+    state.recents.slice(0, 2).forEach(function (id) { add(state.all[indexInAll(id)]); });
+    state.all.forEach(function (c) { if (/ערוצי ישראל/.test(c.category) && c.logo) add(c); });
+    state.all.forEach(function (c) { if (/חדשות|ספורט|ילדים/.test(c.category) && c.logo && !c.imported) add(c); });
+    state.all.forEach(function (c) { if (c.logo) add(c); });
+    return out;
+  }
+
+  function slideMeta(ch) {
+    var parts = ['<span class="live">LIVE</span>', esc(splitCat(ch.category))];
+    if (ch.countryHe) parts.push(esc(ch.countryHe));
+    else if (foreign(ch) && ch.lang !== 'auto') parts.push(esc(Dub.langName(ch.lang)));
+    if (ch.badge && !isRadioCh(ch)) parts.push(esc(ch.badge));
+    return '<span>' + parts.join('</span><span>') + '</span>';
+  }
+
+  function buildHome() {
+    if (!PHONE || !el.home) return;
+    homeDirty = false;
+    // ---- hero pager
+    pagerItems = featured();
+    el.pagerTrack.innerHTML = pagerItems.map(function (ch, i) {
+      var h = hueOf(ch.id);
+      return '<div class="slide" data-i="' + i + '"><div class="slide-bg" style="background:radial-gradient(ellipse at 50% 30%, hsla(' + h + ',70%,45%,.55), hsla(' + h + ',70%,30%,0) 70%),' +
+        'radial-gradient(ellipse at 15% 85%, hsla(' + ((h + 50) % 360) + ',70%,40%,.4), hsla(0,0%,0%,0) 60%)"><img alt=""></div><div class="slide-shade"></div>' +
+        '<div class="slide-body"><div class="slide-logo"><img alt=""><div class="mono hidden"></div></div>' +
+        '<div class="slide-meta">' + slideMeta(ch) + '</div><h2 class="slide-title">' + esc(ch.name) + '</h2>' +
+        '<div class="slide-actions"><button class="fab-play" data-act="play">' + I('play') + (isRadioCh(ch) ? 'האזנה' : 'צפייה') + '</button>' +
+        '<button class="icon-tonal' + (isFav(ch) ? ' on' : '') + '" data-act="fav" aria-label="מועדף">' + I(isFav(ch) ? 'star' : 'starOutline') + '</button>' +
+        '<button class="icon-tonal" data-act="info" aria-label="מידע">' + I('info') + '</button></div></div></div>';
+    }).join('');
+    Array.prototype.forEach.call(el.pagerTrack.children, function (slide, i) {
+      var ch = pagerItems[i];
+      setLogo(slide.querySelector('.slide-logo img'), slide.querySelector('.slide-logo .mono'), ch);
+      var bg = slide.querySelector('.slide-bg img');
+      var url = ch.logo ? (/^https?:/i.test(ch.logo) ? ch.logo : (window.ITV_BASE || '') + ch.logo) : '';
+      if (url) { bg.referrerPolicy = 'no-referrer'; bg.onerror = function () { bg.remove(); }; bg.src = url; } else bg.remove();
+    });
+    el.pagerDots.innerHTML = pagerItems.map(function (c, i) { return '<i class="' + (i === 0 ? 'on' : '') + '"></i>'; }).join('');
+    restartPager();
+
+    // ---- shelves
+    var shelves = [];
+    var recents = state.recents.map(function (id) { return state.all[indexInAll(id)]; }).filter(Boolean);
+    if (recents.length) shelves.push({ id: 'RECENT', title: 'המשך צפייה', list: recents, wide: true });
+    var favs = state.all.filter(isFav);
+    if (favs.length) shelves.push({ id: 'FAVORITES', title: 'המועדפים שלי', list: favs });
+    var dubShelf = null, israeli = /ישראל|בעברית|מנויים|מסורת/;
+    state.cats.forEach(function (c) {
+      if (c.id === 'ALL' || c.id === 'FAVORITES' || c.id === 'RECENT') return;
+      var list = c.id === 'DUB' ? state.all.filter(function (x) { return foreign(x) && !/ישראל/.test(x.category); })
+        : state.all.filter(function (x) { return x.category === c.id; });
+      if (IS_WEB) list = list.filter(function (x) { return !appOnly(x); }).concat(list.filter(appOnly));
+      if (!list.length) return;
+      var sh = { id: c.id, title: (c.id === 'DUB' ? 'מהעולם, עם דיבוב לעברית' : c.name), icon: c.icon, list: list, count: list.length };
+      if (c.id === 'DUB') { dubShelf = sh; return; }
+      if (dubShelf && !israeli.test(c.id)) { shelves.push(dubShelf); dubShelf = null; }   // after the Israeli rows
+      shelves.push(sh);
+    });
+    if (dubShelf) shelves.push(dubShelf);
+    el.shelves.innerHTML = '';
+    var frag = document.createDocumentFragment();
+    shelves.forEach(function (sh, si) {
+      var sec = document.createElement('section');
+      sec.className = 'shelf' + (sh.wide ? ' wide' : '');
+      sec.style.animationDelay = Math.min(si, 6) * 45 + 'ms';
+      sec.setAttribute('data-cat', sh.id);
+      sec.innerHTML = '<div class="shelf-head"><h3>' + (sh.icon ? sh.icon + ' ' : '') + esc(sh.title) +
+        (sh.count > 18 ? '<small>' + sh.count + '</small>' : '') + '</h3>' +
+        (sh.list.length > 4 ? '<button class="view-all" data-cat="' + esc(sh.id) + '">הכל' + I('chevron') + '</button>' : '') + '</div>' +
+        '<div class="shelf-row"></div>';
+      var row = sec.querySelector('.shelf-row');
+      sh.list.slice(0, 18).forEach(function (ch) { row.appendChild(posterCard(ch, sh)); });
+      frag.appendChild(sec);
+    });
+    el.shelves.appendChild(frag);
+    updateTopbar();
+  }
+
+  function posterCard(ch, shelf) {
+    var d = document.createElement('div');
+    d.className = 'pcard' + (appOnly(ch) ? ' is-locked' : '');
+    d.setAttribute('data-id', ch.id);
+    d.setAttribute('data-cat', shelf.id);
+    var badges = (shelf.wide ? '' : '') + (foreign(ch) ? '<span>🎙️</span>' : '') + (isRadioCh(ch) ? '<span>📻</span>' : '') +
+      (isApp(ch) ? '<span>↗</span>' : '') + (appOnly(ch) ? '<span>📲</span>' : '');
+    d.innerHTML = '<div class="pc-media" style="--tint:' + tintOf(ch).replace(/"/g, '') + '"><div class="pc-badges">' + badges + '</div>' +
+      '<img alt=""><div class="mono hidden"></div>' + (shelf.wide ? '<div class="pc-live-bar"></div>' : '') + '</div>' +
+      '<div class="pc-name">' + esc(ch.name) + '</div><div class="pc-meta">' + esc(ch.countryHe ? ch.countryHe : cardMeta(ch)) + '</div>';
+    lazyLogo(d.querySelector('img'), d.querySelector('.mono'), ch);
+    return d;
+  }
+
+  function pagerIndex() {
+    var t = el.pagerTrack;
+    return t && t.clientWidth ? Math.round(Math.abs(t.scrollLeft) / t.clientWidth) : 0;
+  }
+  function restartPager() {
+    clearInterval(pagerTimer);
+    if (pagerItems.length < 2 || fastMode()) return;
+    pagerTimer = setInterval(function () {
+      if (!PHONE || state.tab !== 'home' || state.overlay || document.hidden || state.pagerTouch) return;
+      if (el.home.scrollTop > el.pager.offsetHeight) return;
+      var t = el.pagerTrack, n = (pagerIndex() + 1) % pagerItems.length;
+      var left = (document.dir === 'rtl' || getComputedStyle(t).direction === 'rtl') ? -n * t.clientWidth : n * t.clientWidth;
+      try { t.scrollTo({ left: left, behavior: 'smooth' }); } catch (e) { t.scrollLeft = left; }
+    }, 6500);
+  }
+
+  /** Plays a channel from the home screen: zapping then stays inside that shelf's category. */
+  function playFromHome(id, cat, from) {
+    var ch = state.all[indexInAll(id)];
+    if (!ch) return;
+    var target = cat === 'RECENT' || cat === 'FAVORITES' || cat === 'DUB' || state.cats.some(function (c) { return c.id === cat; }) ? cat : ch.category;
+    if (state.query) { state.query = ''; el.searchInput.value = ''; }
+    if (state.cat !== target) selectCategory(target, true);
+    var i = indexInList(id);
+    if (i === -1) { selectCategory('ALL', true); i = indexInList(id); }
+    state.gridIdx = i;
+    state.openFrom = from ? from.getBoundingClientRect() : null;
+    if (Dub) Dub.unlockAudio();
+    playIndex(i);
+  }
+
+  function setupPhone() {
+    // navigation bar
+    el.navbar.addEventListener('click', function (e) {
+      var b = e.target.closest('.nb-item');
+      if (!b) return;
+      var tab = b.getAttribute('data-tab');
+      if (tab === state.tab && tab === 'home') { try { el.home.scrollTo({ top: 0, behavior: 'smooth' }); } catch (x) { el.home.scrollTop = 0; } return; }
+      if (tab === state.tab && tab === 'explore') { try { el.grid.scrollTo({ top: 0, behavior: 'smooth' }); } catch (x) { el.grid.scrollTop = 0; } return; }
+      setTab(tab);
+    });
+    el.btnSearch.addEventListener('click', function () { setTab('explore'); setTimeout(function () { el.searchInput.focus(); }, 280); });
+
+    // home: posters, "view all", hero buttons
+    el.home.addEventListener('click', function (e) {
+      var all = e.target.closest('.view-all');
+      if (all) {
+        var cat = all.getAttribute('data-cat');
+        setTab(cat === 'FAVORITES' || cat === 'RECENT' ? 'library' : 'explore');
+        if (cat !== 'FAVORITES' && cat !== 'RECENT') { selectCategory(cat); focusGrid(0); }
+        return;
+      }
+      var card = e.target.closest('.pcard');
+      if (card) { playFromHome(card.getAttribute('data-id'), card.getAttribute('data-cat'), card.querySelector('.pc-media')); return; }
+      var btn = e.target.closest('.slide [data-act]');
+      if (btn) {
+        var slide = btn.closest('.slide'), ch = pagerItems[parseInt(slide.getAttribute('data-i'), 10)];
+        var act = btn.getAttribute('data-act');
+        if (act === 'play') playFromHome(ch.id, ch.category, slide.querySelector('.slide-logo'));
+        else if (act === 'fav') { toggleFav(ch); btn.classList.toggle('on', isFav(ch)); btn.innerHTML = I(isFav(ch) ? 'star' : 'starOutline'); haptic('tick'); }
+        else if (act === 'info') showInfo(ch);
+        return;
+      }
+      var s = e.target.closest('.slide');
+      if (s) { var c2 = pagerItems[parseInt(s.getAttribute('data-i'), 10)]; playFromHome(c2.id, c2.category, s.querySelector('.slide-logo')); }
+    });
+    el.home.addEventListener('contextmenu', function (e) {
+      var card = e.target.closest('.pcard') || e.target.closest('.slide');
+      if (!card) return;
+      e.preventDefault();
+      var ch = card.classList.contains('slide') ? pagerItems[parseInt(card.getAttribute('data-i'), 10)] : state.all[indexInAll(card.getAttribute('data-id'))];
+      if (ch) { haptic('long'); channelMenu(ch); }
+    });
+    // pager dots follow the swipe; touching the pager pauses auto-advance
+    var dotsTimer = null;
+    el.pagerTrack.addEventListener('scroll', function () {
+      if (dotsTimer) return;
+      dotsTimer = setTimeout(function () {
+        dotsTimer = null;
+        var n = pagerIndex(), dots = el.pagerDots.children;
+        for (var i = 0; i < dots.length; i++) toggleClass(dots[i], 'on', i === n);
+      }, 60);
+    }, { passive: true });
+    el.pagerTrack.addEventListener('touchstart', function () { state.pagerTouch = true; }, { passive: true });
+    el.pagerTrack.addEventListener('touchend', function () { state.pagerTouch = false; restartPager(); }, { passive: true });
+
+    // top bar turns solid over the content; the navigation bar shrinks while scrolling down (labels hide)
+    var lastY = 0, ticking = false;
+    var onScroll = function (box) {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function () {
+        ticking = false;
+        var y = box.scrollTop;
+        if (box === el.home) updateTopbar();
+        if (Math.abs(y - lastY) > 12) { toggleClass(el.navbar, 'mini', y > lastY && y > 80); lastY = y; }
+      });
+    };
+    el.home.addEventListener('scroll', function () { onScroll(el.home); }, { passive: true });
+    el.grid.addEventListener('scroll', function () { if (PHONE) onScroll(el.grid); }, { passive: true });
+
+    // ripple (M3 state layer) where the finger touches
+    document.addEventListener('pointerdown', function (e) {
+      if (!PHONE || fastMode() || e.pointerType === 'mouse') return;
+      var t = e.target.closest && e.target.closest('.pc-media, .card-logo, .menu-item, .set-row, .drawer-item, .btn, .fab-play, .icon-tonal, .view-all, .rail-item, .nav-item, .nb-item, .top-btn');
+      if (!t) return;
+      var cs = getComputedStyle(t);
+      if (cs.position === 'static') t.style.position = 'relative';
+      if (cs.overflow !== 'hidden') t.style.overflow = 'hidden';
+      var r = t.getBoundingClientRect(), rip = document.createElement('span');
+      rip.className = 'rip';
+      rip.style.left = (e.clientX - r.left) + 'px';
+      rip.style.top = (e.clientY - r.top) + 'px';
+      if (/fab-play|primary/.test(t.className)) rip.style.color = 'var(--on-accent)';
+      else if (document.body.classList.contains('light')) rip.style.color = '#000';
+      t.appendChild(rip);
+      setTimeout(function () { if (rip.parentNode) rip.parentNode.removeChild(rip); }, 600);
+    }, { passive: true });
+
+    // player: swipe up / down = next / previous channel (like TV apps)
+    var sx = 0, sy = 0, st = 0;
+    el.player.addEventListener('touchstart', function (e) {
+      if (e.touches.length !== 1) return;
+      sx = e.touches[0].clientX; sy = e.touches[0].clientY; st = Date.now();
+    }, { passive: true });
+    el.player.addEventListener('touchend', function (e) {
+      if (!PHONE || state.overlay !== 'player' || !e.changedTouches.length || e.target.closest('.drawer, .perror-box, .osd-buttons')) return;
+      var dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy;
+      if (Date.now() - st < 600 && Math.abs(dy) > 70 && Math.abs(dx) < Math.abs(dy) * 0.6) {
+        haptic('tick');
+        zap(dy < 0 ? 1 : -1);
+        state.swiped = Date.now();
+      }
+    }, { passive: true });
+
+    // bottom sheets: drag the handle / header down to close
+    [el.menu, el.drawer].forEach(function (layer) {
+      var sheet = layer === el.menu ? layer.querySelector('.sheet') : layer;
+      var y0 = null, dy = 0, t0 = 0;
+      sheet.addEventListener('touchstart', function (e) {
+        if (!PHONE) return;
+        var list = sheet.querySelector('.menu-list, .drawer-list');
+        var onHead = !e.target.closest('.menu-list, .drawer-list') || (list && list.scrollTop <= 0 && e.target.closest('.menu-head, .drawer-head, .sheet-handle'));
+        if (!onHead) return;
+        y0 = e.touches[0].clientY; dy = 0; t0 = Date.now();
+      }, { passive: true });
+      sheet.addEventListener('touchmove', function (e) {
+        if (y0 === null) return;
+        dy = Math.max(0, e.touches[0].clientY - y0);
+        sheet.classList.add('dragging');
+        sheet.style.transform = 'translateY(' + dy + 'px)';
+      }, { passive: true });
+      sheet.addEventListener('touchend', function () {
+        if (y0 === null) return;
+        y0 = null;
+        sheet.classList.remove('dragging');
+        var fast = dy > 40 && Date.now() - t0 < 250;
+        if (dy > sheet.offsetHeight * 0.3 || fast) {
+          sheet.style.transform = '';
+          sheet.classList.add('closing');
+          setTimeout(function () { sheet.classList.remove('closing'); if (layer === el.menu) closeMenu(); else closeDrawer(); }, 200);
+        } else {
+          sheet.style.transition = 'transform .25s cubic-bezier(.2,0,0,1)';
+          sheet.style.transform = '';
+          setTimeout(function () { sheet.style.transition = ''; }, 260);
+        }
+      }, { passive: true });
+    });
+  }
+
   function hideChannel(ch) {
     var h = (S.hidden || []).slice();
     h.push(ch.id);
@@ -602,26 +1067,50 @@
 
   function openPlayer() {
     if (state.overlay !== 'player') {
+      if (state.overlay === 'settings') closeSettings(true);
       state.stack = [];
       state.overlay = 'player';
       state.zone = 'video';
       el.player.classList.remove('hidden');
       document.body.classList.add('player-open');
       renderOsdHints();
+      // phones: the poster grows into the full-screen player (Nuvio PosterOpenMotion)
+      var r = state.openFrom;
+      state.openFrom = null;
+      if (PHONE && r && el.player.animate && !fastMode()) {
+        var W = window.innerWidth, H = window.innerHeight;
+        el.player.animate([
+          { clipPath: 'inset(' + r.top + 'px ' + (W - r.right) + 'px ' + (H - r.bottom) + 'px ' + r.left + 'px round 14px)', opacity: 0.6 },
+          { clipPath: 'inset(0px 0px 0px 0px round 0px)', opacity: 1 }
+        ], { duration: 420, easing: 'cubic-bezier(.2, 0, 0, 1)' });
+      }
+      if (PHONE) native('setImmersive', true);
     }
+    native('setPlaying', true);
+    toggleClass(el.obPip, 'hidden', !(native('canPip') || (document.pictureInPictureEnabled && !state.isRadio)));
   }
 
   function closePlayer(keepPlaying) {
     hideError();
     spinner(false);
     closeDrawer(true);
-    el.player.classList.add('hidden');
-    document.body.classList.remove('player-open');
+    var finish = function () {
+      el.player.classList.add('hidden');
+      document.body.classList.remove('player-open');
+    };
+    if (PHONE && el.player.animate && !fastMode()) {
+      var a = el.player.animate([{ opacity: 1, transform: 'scale(1)' }, { opacity: 0, transform: 'scale(.94)' }],
+        { duration: 200, easing: 'cubic-bezier(.3, 0, .8, .15)' });
+      a.onfinish = finish;
+    } else finish();
+    if (PHONE) native('setImmersive', false);
     state.overlay = null;
     if (!keepPlaying) stopPlayback();
+    native('setPlaying', false);   // picture-in-picture on "home" only while the player is on screen
     var idx = state.playing ? indexInList(state.playing.id) : -1;
     focusGrid(idx !== -1 ? idx : state.gridIdx);
-    if (state.playing && keepPlaying !== false) toast('השידור ממשיך ברקע · OK על הערוץ לחזרה');
+    if (PHONE && state.tab === 'home' && homeDirty) { var y = el.home.scrollTop; buildHome(); el.home.scrollTop = y; }
+    if (state.playing && keepPlaying !== false) toast(PHONE ? 'השידור ממשיך ברקע' : 'השידור ממשיך ברקע · OK על הערוץ לחזרה');
   }
 
   function stopPlayback() {
@@ -764,7 +1253,11 @@
     else { m.pause(); toast('⏸ מושהה'); }
     updatePlayIcon();
   }
-  function updatePlayIcon() { var m = media(); if (el.obPlay) el.obPlay.textContent = m && m.paused ? '▶' : '⏸'; }
+  function updatePlayIcon() {
+    var m = media(), icon = I(m && m.paused ? 'play' : 'pause');
+    var nodes = document.querySelectorAll('.ob-play');
+    for (var i = 0; i < nodes.length; i++) nodes[i].innerHTML = icon;
+  }
   function toggleMute() {
     var m = media();
     if (!m) return;
@@ -772,7 +1265,15 @@
     updateMuteIcon();
     toast(m.muted ? '🔇 מושתק' : '🔊 שמע פועל');
   }
-  function updateMuteIcon() { var m = media(); if (el.obMute) el.obMute.textContent = m && m.muted ? '🔇' : '🔊'; }
+  function updateMuteIcon() { var m = media(); if (el.obMute) el.obMute.innerHTML = I(m && m.muted ? 'mute' : 'volume'); }
+
+  function enterPip() {
+    if (native('canPip')) { native('enterPip'); return; }
+    if (document.pictureInPictureEnabled && el.video.requestPictureInPicture) {
+      var p = el.video.requestPictureInPicture();
+      if (p && p.catch) p.catch(function () { toast('תמונה בתוך תמונה לא זמינה כאן'); });
+    }
+  }
 
   function zap(dir) {
     var list = S.zap === 'all' ? state.all : state.list;
@@ -1265,14 +1766,20 @@
     var secs = [
       { id: 'display', ico: '🖥️', name: 'תצוגה', desc: 'גודל, צבעים ומה מופיע במסך', rows: [
         choice('theme', 'ערכת צבעים', THEMES),
-        { type: 'choice', label: 'גודל הממשק', help: 'הגדלה לצפייה מרחוק – משנה את כל הטקסטים והכרטיסים', get: function () { return label(SCALES, S.uiScale); },
+        { type: 'choice', label: 'צבע הדגשה', help: readSystemColors() ? 'צבעי המערכת = הצבעים של הטפט (Material You)' : 'ערכות הצבע של Nuvio',
+          get: function () { return label(PALETTES, S.accent) + (S.accent === 'auto' ? ' (' + label(PALETTES, accentName()) + ')' : ''); },
+          step: function (st) {
+            var list = PALETTES.filter(function (p) { return p[0] !== 'system' || readSystemColors(); });
+            setSetting('accent', cycle(list, S.accent, st));
+          } },
+        { type: 'choice', tvOnly: true, label: 'גודל הממשק', help: 'הגדלה לצפייה מרחוק – משנה את כל הטקסטים והכרטיסים', get: function () { return label(SCALES, S.uiScale); },
           step: function (st) { setSetting('uiScale', cycle(SCALES, S.uiScale, st)); } },
         { type: 'choice', label: 'כרטיסים בשורה', get: function () { return S.cols ? String(S.cols) : 'אוטומטי (' + state.cols + ')'; },
           step: function (st) { setSetting('cols', cycle(COLS, S.cols, st)); } },
-        toggle('hero', 'הצגת פרטי הערוץ הנבחר (למעלה)'),
+        tvRow(toggle('hero', 'הצגת פרטי הערוץ הנבחר (למעלה)')),
         toggle('numbers', 'מספרי ערוצים על הכרטיסים'),
         toggle('showSource', 'הצגת מקור השידור', 'שורת "מקור" בפרטי הערוץ ובנגן', function () { updateHero(state.list[state.gridIdx]); }),
-        toggle('hints', 'שורת עזרה לשלט בתחתית'),
+        tvRow(toggle('hints', 'שורת עזרה לשלט בתחתית')),
         { type: 'choice', label: 'ביצועים', help: 'מהיר = בלי אנימציות, למכשירים חלשים. ' + (S.perf === 'auto' ? 'זוהה: ' + (state.lowEnd ? 'מכשיר חלש – מצב מהיר' : 'מצב מלא') : ''),
           get: function () { return label(PERF, S.perf); }, step: function (st) { setSetting('perf', cycle(PERF, S.perf, st)); } }
       ] },
@@ -1296,7 +1803,7 @@
         choice('osdSec', 'משך הצגת פרטי הערוץ בנגן', OSDS),
         toggle('osdClock', 'שעון בנגן')
       ] },
-      { id: 'remote', ico: '🎮', name: 'שלט רחוק', desc: 'זוהה: ' + remoteName(), rows: [
+      { id: 'remote', tvOnly: true, ico: '🎮', name: 'שלט רחוק', desc: 'זוהה: ' + remoteName(), rows: [
         { type: 'choice', label: 'סוג השלט', help: 'קובע את ההסברים במסך. אוטומטי: לפי סוג המכשיר, ועובר לכפתורי צבע ברגע שלוחצים על אחד',
           get: function () { return label(REMOTES, S.remote); }, step: function (st) { setSetting('remote', cycle(REMOTES, S.remote, st)); } },
         { type: 'choice', label: '🔴 כפתור אדום', get: function () { return label(ACTIONS, S.keyRed); }, step: function (st) { setSetting('keyRed', cycle(ACTIONS, S.keyRed, st)); } },
@@ -1333,7 +1840,7 @@
         { type: 'action', label: S.kidsPin ? 'שינוי קוד יציאה (' + S.kidsPin.replace(/./g, '•') + ')' : 'הגדרת קוד יציאה (4 ספרות)', help: 'בלי קוד – כל אחד יכול לצאת ממצב ילדים',
           act: function () { askPin(function () { newPin(); }); } }
       ] },
-      { id: 'saver', ico: '🌙', name: 'שומר מסך', desc: 'הגנה על מסכי OLED כשאין צפייה', rows: [
+      { id: 'saver', tvOnly: true, ico: '🌙', name: 'שומר מסך', desc: 'הגנה על מסכי OLED כשאין צפייה', rows: [
         choice('saver', 'הפעלה אחרי', SAVERS, 'רק במדריך או כשהשידור מושהה – לא בזמן צפייה')
       ] },
       { id: 'updates', ico: '⬆️', name: 'עדכונים', desc: 'עדכונים מגיעים ישירות מ-GitHub', rows: [
@@ -1361,8 +1868,14 @@
         action('איפוס כל ההגדרות', function () { confirmBox('לאפס את כל ההגדרות? (מועדפים נשמרים)', function () { try { localStorage.removeItem('itv_settings'); } catch (e) {} location.reload(); }); }, '', true)
       ] }
     ];
+    if (PHONE) {
+      secs = secs.filter(function (s) { return !s.tvOnly; });
+      secs.forEach(function (s) { s.rows = s.rows.filter(function (r) { return !r.tvOnly; }); });
+    }
     return secs;
   }
+
+  function tvRow(r) { r.tvOnly = true; return r; }
 
   var sections = [];
   function openSettings(sectionId) {
@@ -1383,14 +1896,16 @@
     state.setIdx = 0;
     el.settings.classList.remove('hidden');
     renderSettings();
+    if (PHONE && state.tab !== 'settings' && state.overlay === 'settings' && !state.stack.length) setTab('settings', true);
   }
-  function closeSettings() {
+  function closeSettings(fromTab) {
     blurInputs();
     el.settings.classList.add('hidden');
     state.overlay = state.stack.pop() || null;
     if (state.overlay === 'player') { renderOsdHints(); showOsd(); }
     renderHints();
     markFocus();
+    if (PHONE && state.tab === 'settings' && fromTab !== true) setTab(state.prevTab || 'home', true);
   }
   function rowsOf() { return (sections[state.setSection] || { rows: [] }).rows.filter(function (r) { return r.type !== 'sep'; }); }
 
@@ -1634,9 +2149,37 @@
   // ================================================================== native bridges
   function setupNativeBridge() {
     window.__itvKey = function (code) {
+      if (code === 461) backReset(true);
       onKeyDown({ keyCode: code, which: code, target: document.body, preventDefault: function () {}, stopPropagation: function () {} });
       if (code === 13) onKeyUp({ keyCode: 13, which: 13, target: document.body, preventDefault: function () {} });
     };
+    // edge-to-edge (Android 15+): the system bar / cutout sizes in CSS px, from the native app
+    window.__itvInsets = function (t, r, b, l) {
+      var s = document.documentElement.style;
+      s.setProperty('--sat', (t || 0) + 'px'); s.setProperty('--sar', (r || 0) + 'px');
+      s.setProperty('--sab', (b || 0) + 'px'); s.setProperty('--sal', (l || 0) + 'px');
+      if (PHONE) { movePill(false); updateTopbar(); }
+    };
+    // picture-in-picture: only the picture, no controls
+    window.__itvPip = function (on) {
+      toggleClass(document.body, 'in-pip', !!on);
+      if (on) { el.osd.classList.add('off'); closeDrawer(true); if (state.overlay === 'menu') closeMenu(); }
+    };
+    // the wallpaper changed (Material You)
+    window.__itvColors = function () { systemColors = null; applyColors(); };
+    // predictive back (Android 14+): the top layer shrinks and follows the finger; the release sends key 461
+    window.__itvBackProgress = function (p, fromLeft) {
+      var t = backTarget();
+      if (!t) return;
+      t.classList.add('pb-target');
+      var sheet = t.classList.contains('sheet') || t.classList.contains('menu-box');
+      t.style.transform = sheet ? 'translateY(' + (p * 6) + 'rem) scale(' + (1 - p * 0.05) + ')'
+        : 'translateX(' + ((fromLeft ? 1 : -1) * p * 3) + 'rem) scale(' + (1 - p * 0.1) + ')';
+      t.style.borderRadius = (p * 3) + 'rem';
+    };
+    window.__itvBackCancel = function () { backReset(false); };
+    var nativeInsets = native('insets');
+    if (nativeInsets) { try { var ins = JSON.parse(nativeInsets); window.__itvInsets(ins.t, ins.r, ins.b, ins.l); } catch (e) {} }
     if (PLATFORM === 'tizen' && window.tizen && window.tizen.tvinputdevice) {
       ['ColorF0Red', 'ColorF1Green', 'ColorF2Yellow', 'ColorF3Blue', 'ChannelUp', 'ChannelDown', 'MediaPlayPause', 'MediaPlay', 'MediaPause',
         'Info', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'].forEach(function (k) {
@@ -1647,6 +2190,29 @@
     document.addEventListener('cursorStateChange', function (e) {
       if (e.detail && e.detail.visibility) state.pointer = true;
     });
+  }
+
+  /** The layer the back gesture would close. */
+  function backTarget() {
+    if (state.overlay === 'dialog') return el.dialogBox;
+    if (state.overlay === 'menu') return el.menu.querySelector('.menu-box');
+    if (state.overlay === 'drawer') return el.drawer;
+    if (state.overlay === 'settings') return el.settings.querySelector('.settings-box');
+    if (state.overlay === 'player') return el.player;
+    if (PHONE && state.tab !== 'home') return $(state.tab === 'settings' ? 'settings' : 'guide-body');
+    return null;
+  }
+  function backReset(committed) {
+    var nodes = document.querySelectorAll('.pb-target');
+    for (var i = 0; i < nodes.length; i++) {
+      var n = nodes[i];
+      n.classList.remove('pb-target');
+      if (committed) { n.style.transform = ''; n.style.borderRadius = ''; continue; }
+      n.style.transition = 'transform .25s cubic-bezier(.2,0,0,1), border-radius .25s';
+      n.style.transform = '';
+      n.style.borderRadius = '';
+      (function (x) { setTimeout(function () { x.style.transition = ''; }, 260); })(n);
+    }
   }
 
   var lunaRefs = [];
@@ -1821,6 +2387,7 @@
       var i = parseInt(c.getAttribute('data-i'), 10);
       focusGrid(i);
       if (Dub) Dub.unlockAudio();
+      state.openFrom = PHONE ? c.querySelector('.card-logo').getBoundingClientRect() : null;
       playIndex(i);
     });
     el.grid.addEventListener('contextmenu', function (e) {
@@ -1829,6 +2396,7 @@
       e.preventDefault();
       var i = parseInt(c.getAttribute('data-i'), 10);
       focusGrid(i);
+      if (PHONE) haptic('long');
       channelMenu(state.list[i]);
     });
     var lastMove = 0;
@@ -1857,17 +2425,18 @@
     toggleClass(el.btnGetapp, 'hidden', !(PLATFORM === 'web' || PLATFORM === 'local'));
     toggleClass(el.btnKidsExit, 'hidden', !S.kids);
 
-    el.osdButtons.addEventListener('click', function (e) {
+    el.osd.addEventListener('click', function (e) {
       var b = e.target.closest('.obtn');
       if (!b) return;
       e.stopPropagation();
       osdAction(b.getAttribute('data-act'));
     });
     el.player.addEventListener('click', function (e) {
-      if (e.target.closest('.osd-buttons') || e.target.closest('.drawer') || e.target.closest('.perror-box')) return;
+      if (e.target.closest('.obtn') || e.target.closest('.drawer') || e.target.closest('.perror-box')) return;
+      if (state.swiped && Date.now() - state.swiped < 500) return;
       if (el.osd.classList.contains('off')) showOsd(); else el.osd.classList.add('off');
     });
-    el.player.addEventListener('dblclick', function (e) { if (!e.target.closest('.osd-buttons')) toggleFullscreen(); });
+    el.player.addEventListener('dblclick', function (e) { if (!e.target.closest('.obtn')) toggleFullscreen(); });
     el.perrorRetry.addEventListener('click', function (e) { e.stopPropagation(); if (state.playing) loadStream(state.playing); });
     el.perrorNext.addEventListener('click', function (e) { e.stopPropagation(); zap(1); });
     el.perrorBack.addEventListener('click', function (e) { e.stopPropagation(); closePlayer(false); });
@@ -1941,6 +2510,9 @@
     else if (a === 'list') openDrawer();
     else if (a === 'menu') playerMenu();
     else if (a === 'fullscreen') toggleFullscreen();
+    else if (a === 'dub') toggleDub();
+    else if (a === 'pip') enterPip();
+    if (PHONE) haptic('tick');
     showOsd();
   }
 
@@ -2103,12 +2675,15 @@
   }
 
   function guideBack() {
+    if (PHONE && state.tab === 'explore' && !state.query && state.cat !== 'ALL') { selectCategory('ALL'); focusGrid(0); return; }
+    if (PHONE && state.tab !== 'home' && !state.query) { setTab('home'); return; }
+    if (PHONE && state.tab === 'home' && el.home.scrollTop > 200) { try { el.home.scrollTo({ top: 0, behavior: 'smooth' }); } catch (e) { el.home.scrollTop = 0; } return; }
     if (state.query) { state.query = ''; el.searchInput.value = ''; filterList(); focusGrid(0); toast('החיפוש נוקה'); return; }
     if (state.zone !== 'grid') { focusGrid(state.gridIdx); return; }
     if (state.cat !== 'ALL') { selectCategory('ALL'); focusGrid(0); return; }
     var now = Date.now();
     if (now - (state.lastBack || 0) < 2500) exitApp();
-    else { state.lastBack = now; toast('לחצו שוב BACK ליציאה'); }
+    else { state.lastBack = now; toast(PHONE ? 'חזרה נוספת ליציאה' : 'לחצו שוב BACK ליציאה'); }
   }
 
   function playerKey(code) {

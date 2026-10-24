@@ -16,13 +16,35 @@ import shutil
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE = "https://dor2500.github.io/israel-tv-plus/"
 OUT = os.path.join(ROOT, "stremio")
-KIND = {"official": "✅ שידור רשמי", "fast": "✅ ערוץ FAST רשמי", "restream": "⚠️ ממסר צד שלישי"}
+KIND = {"official": "✅ שידור רשמי", "fast": "✅ ערוץ FAST רשמי", "restream": "⚠️ ממסר צד שלישי",
+        "public": "🌐 שידור פתוח (iptv-org)"}
+ISRAELI_CATS = {"ערוצי ישראל - שידור חי", "ילדים ונוער (בעברית)", "רדיו ישראלי (Israeli Radio)", "מנויים ואפליקציות (TV Apps)",
+                "מסורת וקהילה"}
+# catalog order on the Stremio board: Israel first, then the world categories
+CAT_ORDER = ["ערוצי ישראל - שידור חי", "ילדים ונוער (בעברית)", "רדיו ישראלי (Israeli Radio)", "מסורת וקהילה",
+             "חדשות מהעולם (News)", "סרטים וסדרות (Movies & Series)", "ספורט (Sports)", "ילדים מהעולם (Kids World)",
+             "טבע ודוקו (Documentary & Nature)", "מוזיקה (Music TV)", "לייף סטייל ובידור", "דת ואמונה (Religion)",
+             "ערוצים בינלאומיים (World)", "מנויים ואפליקציות (TV Apps)"]
+
+
+def flag(cc):
+    cc = {"UK": "GB"}.get(cc or "", cc or "")
+    return "".join(chr(0x1F1E6 + ord(ch) - 65) for ch in cc) if re.fullmatch(r"[A-Z]{2}", cc) else ""
+
+
+def country_of(c):
+    """Hebrew country name for the genre filter ("ישראל" for the curated Israeli channels)."""
+    if c.get("countryHe"):
+        return c["countryHe"]
+    if c["category"] in ISRAELI_CATS or c.get("lang") == "he":
+        return "ישראל"
+    return "בינלאומי"
 CAT_IDS = {
     "ערוצי ישראל - שידור חי": "israel", "ילדים ונוער (בעברית)": "kids_he", "רדיו ישראלי (Israeli Radio)": "radio",
     "מנויים ואפליקציות (TV Apps)": "apps", "סרטים וסדרות (Movies & Series)": "movies", "ספורט (Sports)": "sports",
     "ילדים מהעולם (Kids World)": "kids_world", "מוזיקה (Music TV)": "music", "טבע ודוקו (Documentary & Nature)": "docu",
     "לייף סטייל ובידור": "life", "מסורת וקהילה": "community", "ערוצים בינלאומיים (World)": "world",
-    "חדשות מהעולם (News)": "news",
+    "חדשות מהעולם (News)": "news", "דת ואמונה (Religion)": "religion",
 }
 CAT_NAMES = {"ערוצי ישראל - שידור חי": "ערוצי ישראל", "ילדים ונוער (בעברית)": "ילדים בעברית",
              "רדיו ישראלי (Israeli Radio)": "רדיו ישראלי", "מנויים ואפליקציות (TV Apps)": "מנויים ואפליקציות"}
@@ -64,11 +86,20 @@ def main():
     for c in chans:
         if c["category"] not in cats:
             cats.append(c["category"])
+    cats.sort(key=lambda k: CAT_ORDER.index(k) if k in CAT_ORDER else len(CAT_ORDER))
+    countries = {}  # catalog -> countries by number of channels (the "genre" filter = country)
+    for cat in cats:
+        n = {}
+        for c in chans:
+            if c["category"] == cat:
+                n[country_of(c)] = n.get(country_of(c), 0) + 1
+        countries[cat] = sorted(n, key=lambda k: (-n[k], k)) if len(n) > 1 else []
     manifest = {
         "id": "com.israeltv.plus",
         "version": version,
         "name": "ישראל TV+",
-        "description": f"{len(chans)} ערוצי טלוויזיה ותחנות רדיו בשידור חי: ערוצי ישראל, ילדים בעברית, רדיו, סרטים, ספורט ועוד. "
+        "description": f"{len(chans)} ערוצי טלוויזיה ותחנות רדיו בשידור חי מישראל ומכל העולם: חדשות, סרטים, ספורט, ילדים, מוזיקה, דוקו, רדיו ועוד – "
+                       "כל קטגוריה בשורה משלה, עם סינון לפי מדינה. "
                        "בכל ערוץ כתוב מאיפה מגיע השידור. github.com/dor2500/israel-tv-plus",
         "logo": SITE + "assets/app/icon-512.png",
         "background": SITE + "assets/app/banner-1280x720.png",
@@ -76,8 +107,10 @@ def main():
         "resources": ["catalog", {"name": "meta", "types": ["tv"], "idPrefixes": ["itv_"]},
                       {"name": "stream", "types": ["tv"], "idPrefixes": ["itv_"]}],
         "idPrefixes": ["itv_"],
-        "catalogs": [{"type": "tv", "id": "itv_" + CAT_IDS.get(cat, re.sub(r"\W+", "_", cat)),
-                      "name": "ישראל TV+ · " + short_cat(cat)} for cat in cats],
+        "catalogs": [dict({"type": "tv", "id": "itv_" + CAT_IDS.get(cat, re.sub(r"\W+", "_", cat)),
+                           "name": "ישראל TV+ · " + short_cat(cat)},
+                          **({"extra": [{"name": "genre", "options": countries[cat], "isRequired": False}]}
+                             if countries[cat] else {})) for cat in cats],
         "behaviorHints": {"configurable": False, "configurationRequired": False},
     }
     dump("manifest.json", manifest)
@@ -95,12 +128,14 @@ def main():
             else:
                 desc += f"\n\n📡 מקור השידור: {src.get('by', '')}\n{KIND.get(src.get('kind'), '')}"
             meta = {
-                "id": "itv_" + c["id"], "type": "tv", "name": f"{c['number']}. {c['name']}",
+                "id": "itv_" + c["id"], "type": "tv",
+                "name": f"{c['number']}. {c['name']}" + (f" {flag(c['country'])}" if flag(c.get("country")) else ""),
                 "poster": image(c), "posterShape": "landscape", "logo": image(c), "background": image(c),
-                "description": desc.strip(), "genres": [short_cat(cat)],
+                "description": desc.strip(), "genres": [short_cat(cat), country_of(c)],
                 "releaseInfo": "רדיו" if c.get("kind") == "radio" else ("אפליקציה" if app else "LIVE"),
             }
             metas.append({k: meta[k] for k in ("id", "type", "name", "poster", "posterShape", "description", "genres")})
+            meta["country"] = country_of(c)
             dump(f"meta/tv/itv_{c['id']}.json", {"meta": meta})
 
             if app:
@@ -116,6 +151,8 @@ def main():
                                     "behaviorHints": {"bingeGroup": "itv-live"}})
             dump(f"stream/tv/itv_{c['id']}.json", {"streams": streams})
         dump(f"catalog/tv/{cat_info['id']}.json", {"metas": metas})
+        for country in countries[cat]:  # static "extra": catalog/tv/<id>/genre=<value>.json
+            dump(f"catalog/tv/{cat_info['id']}/genre={country}.json", {"metas": [m for m in metas if country in m["genres"][1:]]})
 
     url = SITE + "stremio/manifest.json"
     page = f"""<!DOCTYPE html>

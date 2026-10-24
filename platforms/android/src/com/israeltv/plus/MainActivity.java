@@ -3,6 +3,7 @@ package com.israeltv.plus;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.PendingIntent;
+import android.app.PictureInPictureParams;
 import android.app.UiModeManager;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
@@ -10,12 +11,18 @@ import android.content.Intent;
 import android.content.pm.PackageInstaller;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.util.Rational;
+import android.view.HapticFeedbackConstants;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowInsets;
+import android.view.WindowInsetsController;
 import android.view.WindowManager;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebChromeClient;
@@ -23,6 +30,10 @@ import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.window.BackEvent;
+import android.window.OnBackAnimationCallback;
+import android.window.OnBackInvokedCallback;
+import android.window.OnBackInvokedDispatcher;
 
 import org.json.JSONObject;
 
@@ -30,28 +41,41 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Locale;
 
 /**
- * Israel TV+ for Android phones, tablets and Android TV / Google TV / Fire TV.
+ * Israel TV+ for Android phones, tablets and Android TV / Google TV / Fire TV (targets Android 17, runs on 5.0+).
  *
  * The web app is bundled in assets/www and loaded from file:///android_asset, with file pages allowed to
  * reach any origin: hls.js can then read streams that send no CORS headers, and http streams play
  * (the https web site can't play either). The remote control's Back, colour and channel keys are
  * forwarded to the app's key handler (the same key codes as LG webOS).
+ *
+ * Phones: edge-to-edge (the app draws behind transparent system bars; the bar / cutout sizes go to the page as
+ * CSS insets), Material You colours (Android 12+ wallpaper palette), predictive back with the in-app layer
+ * following the gesture (Android 14+), picture-in-picture (auto-enter on Android 12+) and haptic ticks.
+ * TVs: immersive full screen as before.
  * Updates: the web app checks GitHub; a new APK is downloaded and handed to the system installer from here.
  */
 public class MainActivity extends Activity {
     static final String ACTION_INSTALL_STATUS = "com.israeltv.plus.INSTALL_STATUS";
     private WebView web;
+    private boolean tv;
+    private boolean immersive;
+    private boolean playing;
+    private String insetsJson = "{\"t\":0,\"r\":0,\"b\":0,\"l\":0}";
 
     @Override
     @SuppressWarnings("deprecation")
     protected void onCreate(Bundle state) {
         super.onCreate(state);
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-        if (Build.VERSION.SDK_INT >= 28) {
-            getWindow().getAttributes().layoutInDisplayCutoutMode =
-                WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES;
+        tv = isTv();
+        Window w = getWindow();
+        w.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        if (Build.VERSION.SDK_INT >= 30) {
+            w.getAttributes().layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_ALWAYS;
+        } else if (Build.VERSION.SDK_INT >= 28) {
+            w.getAttributes().layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES;
         }
         WebView.setWebContentsDebuggingEnabled(true);
         web = new WebView(this);
@@ -68,7 +92,7 @@ public class MainActivity extends Activity {
         // TVs: honour the page's fixed-width viewport (app.js sets width=1600 for "AndroidTV"), like the LG app
         s.setUseWideViewPort(true);
         s.setLoadWithOverviewMode(true);
-        s.setUserAgentString(s.getUserAgentString() + " IsraelTVPlus/3 " + (isTv() ? "AndroidTV" : "AndroidPhone"));
+        s.setUserAgentString(s.getUserAgentString() + " IsraelTVPlus/3 " + (tv ? "AndroidTV" : "AndroidPhone"));
 
         web.setWebViewClient(new WebViewClient() {
             @Override
@@ -78,32 +102,236 @@ public class MainActivity extends Activity {
                 openUrl(u.toString()); // links (downloads page, service sites) go to the browser
                 return true;
             }
+
+            @Override
+            public void onPageFinished(WebView v, String url) {
+                sendInsets();
+            }
         });
         web.setWebChromeClient(new WebChromeClient());
         web.addJavascriptInterface(new Bridge(), "AndroidApp");
         setContentView(web);
-        hideSystemBars();
+        if (tv) hideSystemBars();
+        else edgeToEdge();
+        if (Build.VERSION.SDK_INT >= 33) registerBack();
         if (state != null) web.restoreState(state);
         else web.loadUrl("file:///android_asset/www/index.html");
     }
 
+    // ------------------------------------------------------------------ edge-to-edge (phones)
+    @SuppressWarnings("deprecation")
+    void edgeToEdge() {
+        Window w = getWindow();
+        if (Build.VERSION.SDK_INT >= 30) {
+            w.setDecorFitsSystemWindows(false);
+        } else {
+            web.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+        }
+        if (Build.VERSION.SDK_INT < 35) {   // Android 15+ draws transparent bars by itself
+            w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            w.setStatusBarColor(Color.TRANSPARENT);
+            w.setNavigationBarColor(Color.TRANSPARENT);
+        }
+        if (Build.VERSION.SDK_INT >= 29) {
+            w.setNavigationBarContrastEnforced(false);
+            w.setStatusBarContrastEnforced(false);
+        }
+        web.setOnApplyWindowInsetsListener((v, insets) -> {
+            float d = getResources().getDisplayMetrics().density;
+            int t, r, b, l;
+            if (Build.VERSION.SDK_INT >= 30) {
+                android.graphics.Insets i = insets.getInsetsIgnoringVisibility(WindowInsets.Type.systemBars() | WindowInsets.Type.displayCutout());
+                t = i.top; r = i.right; b = i.bottom; l = i.left;
+            } else {
+                t = insets.getSystemWindowInsetTop(); r = insets.getSystemWindowInsetRight();
+                b = insets.getSystemWindowInsetBottom(); l = insets.getSystemWindowInsetLeft();
+            }
+            insetsJson = String.format(Locale.US, "{\"t\":%.1f,\"r\":%.1f,\"b\":%.1f,\"l\":%.1f}", t / d, r / d, b / d, l / d);
+            sendInsets();
+            return insets;
+        });
+        web.requestApplyInsets();
+    }
+
+    void sendInsets() {
+        if (tv || web == null) return;
+        web.evaluateJavascript("(function(i){window.__itvInsets&&window.__itvInsets(i.t,i.r,i.b,i.l)})(" + insetsJson + ")", null);
+    }
+
+    @SuppressWarnings("deprecation")
+    void setBarsLight(boolean light) {
+        if (tv) return;
+        if (Build.VERSION.SDK_INT >= 30) {
+            WindowInsetsController c = getWindow().getInsetsController();
+            if (c == null) return;
+            int mask = WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS | WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS;
+            c.setSystemBarsAppearance(light ? mask : 0, mask);
+        } else if (Build.VERSION.SDK_INT >= 23) {
+            int f = web.getSystemUiVisibility();
+            f = light ? f | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR : f & ~View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
+            web.setSystemUiVisibility(f);
+        }
+    }
+
+    /** Phones: the bars hide while a channel plays full screen (swipe from the edge shows them). */
+    @SuppressWarnings("deprecation")
+    void setBarsHidden(boolean on) {
+        immersive = on;
+        if (tv) return;
+        if (Build.VERSION.SDK_INT >= 30) {
+            WindowInsetsController c = getWindow().getInsetsController();
+            if (c == null) return;
+            c.setSystemBarsBehavior(WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE);
+            if (on) c.hide(WindowInsets.Type.systemBars());
+            else c.show(WindowInsets.Type.systemBars());
+        } else {
+            int base = View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN;
+            web.setSystemUiVisibility(on ? base | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_FULLSCREEN
+                | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY : base);
+        }
+    }
+
+    // ------------------------------------------------------------------ Material You
+    /** The Android 12+ dynamic (wallpaper) palette as #rrggbb, or "" before Android 12. */
+    String dynamicColors() {
+        if (Build.VERSION.SDK_INT < 31) return "";
+        JSONObject o = new JSONObject();
+        int[][] ids = {
+            {android.R.color.system_accent1_100, android.R.color.system_accent1_200, android.R.color.system_accent1_600,
+                android.R.color.system_accent1_700, android.R.color.system_accent1_800},
+            {android.R.color.system_accent2_200, android.R.color.system_accent2_600},
+            {android.R.color.system_neutral1_50, android.R.color.system_neutral1_100, android.R.color.system_neutral1_200,
+                android.R.color.system_neutral1_800, android.R.color.system_neutral1_900}};
+        String[][] names = {{"a1_100", "a1_200", "a1_600", "a1_700", "a1_800"}, {"a2_200", "a2_600"},
+            {"n1_50", "n1_100", "n1_200", "n1_800", "n1_900"}};
+        try {
+            for (int g = 0; g < ids.length; g++)
+                for (int i = 0; i < ids[g].length; i++)
+                    o.put(names[g][i], String.format("#%06x", getColor(ids[g][i]) & 0xffffff));
+        } catch (Exception e) {
+            return "";
+        }
+        return o.toString();
+    }
+
+    // ------------------------------------------------------------------ predictive back (Android 13+ / 14+ with progress)
+    private Object backCallback;
+
+    void registerBack() {
+        OnBackInvokedDispatcher d = getOnBackInvokedDispatcher();
+        if (Build.VERSION.SDK_INT >= 34) {
+            OnBackAnimationCallback cb = new OnBackAnimationCallback() {
+                @Override public void onBackStarted(BackEvent e) { progress(0f, e.getSwipeEdge()); }
+                @Override public void onBackProgressed(BackEvent e) { progress(e.getProgress(), e.getSwipeEdge()); }
+                @Override public void onBackCancelled() { js("window.__itvBackCancel && window.__itvBackCancel()"); }
+                @Override public void onBackInvoked() { key(461); }
+            };
+            backCallback = cb;
+            d.registerOnBackInvokedCallback(OnBackInvokedDispatcher.PRIORITY_DEFAULT, cb);
+        } else {
+            OnBackInvokedCallback cb = () -> key(461);
+            backCallback = cb;
+            d.registerOnBackInvokedCallback(OnBackInvokedDispatcher.PRIORITY_DEFAULT, cb);
+        }
+    }
+
+    void progress(float p, int edge) {
+        if (tv) return;
+        js(String.format(Locale.US, "window.__itvBackProgress && window.__itvBackProgress(%.3f,%b)", p, edge == BackEvent.EDGE_LEFT));
+    }
+
+    void key(int code) { js("window.__itvKey && window.__itvKey(" + code + ")"); }
+
+    void js(String code) { if (web != null) web.evaluateJavascript(code, null); }
+
+    // ------------------------------------------------------------------ picture-in-picture
+    boolean canPip() {
+        return !tv && Build.VERSION.SDK_INT >= 26 && getPackageManager().hasSystemFeature(PackageManager.FEATURE_PICTURE_IN_PICTURE);
+    }
+
+    PictureInPictureParams pipParams() {
+        PictureInPictureParams.Builder b = new PictureInPictureParams.Builder().setAspectRatio(new Rational(16, 9));
+        if (Build.VERSION.SDK_INT >= 31) b.setAutoEnterEnabled(playing).setSeamlessResizeEnabled(true);
+        return b.build();
+    }
+
+    void setPlaying(boolean on) {
+        playing = on;
+        if (canPip()) {
+            try { setPictureInPictureParams(pipParams()); } catch (Exception ignored) { }
+        }
+    }
+
+    void enterPip() {
+        if (!canPip()) return;
+        try { enterPictureInPictureMode(pipParams()); } catch (Exception ignored) { }
+    }
+
+    @Override
+    protected void onUserLeaveHint() {
+        super.onUserLeaveHint();
+        // Android 8-11: no auto-enter, so go to picture-in-picture when the user leaves while a channel plays
+        if (playing && Build.VERSION.SDK_INT >= 26 && Build.VERSION.SDK_INT < 31) enterPip();
+    }
+
+    @Override
+    public void onPictureInPictureModeChanged(boolean inPip, Configuration c) {
+        super.onPictureInPictureModeChanged(inPip, c);
+        js("window.__itvPip && window.__itvPip(" + inPip + ")");
+    }
+
+    // ------------------------------------------------------------------ JavaScript bridge
     /** Called from JavaScript as window.AndroidApp.* */
     public class Bridge {
         @JavascriptInterface
         public void exit() { runOnUiThread(MainActivity.this::finish); }
 
         @JavascriptInterface
-        public boolean isTv() { return MainActivity.this.isTv(); }
+        public boolean isTv() { return tv; }
+
+        @JavascriptInterface
+        public String insets() { return insetsJson; }
+
+        @JavascriptInterface
+        public String dynamicColors() { return MainActivity.this.dynamicColors(); }
+
+        @JavascriptInterface
+        public void setBarsLight(boolean light) { runOnUiThread(() -> MainActivity.this.setBarsLight(light)); }
+
+        @JavascriptInterface
+        public void setImmersive(boolean on) { runOnUiThread(() -> MainActivity.this.setBarsHidden(on)); }
+
+        @JavascriptInterface
+        public void setPlaying(boolean on) { runOnUiThread(() -> MainActivity.this.setPlaying(on)); }
+
+        @JavascriptInterface
+        public boolean canPip() { return MainActivity.this.canPip(); }
+
+        @JavascriptInterface
+        public void enterPip() { runOnUiThread(MainActivity.this::enterPip); }
+
+        /** "tick" (navigation, switches) or "long" (long press). Follows the system haptics setting. */
+        @JavascriptInterface
+        public boolean haptic(String kind) {
+            runOnUiThread(() -> {
+                int c = "long".equals(kind) ? HapticFeedbackConstants.LONG_PRESS
+                    : Build.VERSION.SDK_INT >= 34 ? HapticFeedbackConstants.SEGMENT_FREQUENT_TICK
+                    : Build.VERSION.SDK_INT >= 27 ? HapticFeedbackConstants.KEYBOARD_PRESS : HapticFeedbackConstants.VIRTUAL_KEY;
+                web.performHapticFeedback(c);
+            });
+            return true;
+        }
 
         /** Opens a TV-service app: the TV build on a TV, else the phone build; not installed -> Play Store, else the site. */
         @JavascriptInterface
         public void openApp(String tvPkg, String pkg, String url) {
             runOnUiThread(() -> {
                 PackageManager pm = getPackageManager();
-                String[] order = MainActivity.this.isTv() ? new String[]{tvPkg, pkg} : new String[]{pkg, tvPkg};
+                String[] order = tv ? new String[]{tvPkg, pkg} : new String[]{pkg, tvPkg};
                 for (String p : order) {
                     if (p == null || p.isEmpty()) continue;
-                    Intent i = MainActivity.this.isTv() && Build.VERSION.SDK_INT >= 21 ? pm.getLeanbackLaunchIntentForPackage(p) : null;
+                    Intent i = tv ? pm.getLeanbackLaunchIntentForPackage(p) : null;
                     if (i == null) i = pm.getLaunchIntentForPackage(p);
                     if (i != null && start(i)) return;
                 }
@@ -126,7 +354,7 @@ public class MainActivity extends Activity {
                 o.put("model", Build.MODEL);
                 o.put("release", Build.VERSION.RELEASE);
                 o.put("sdk", Build.VERSION.SDK_INT);
-                o.put("tv", MainActivity.this.isTv());
+                o.put("tv", tv);
                 ActivityManager am = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
                 if (am != null) {
                     ActivityManager.MemoryInfo mi = new ActivityManager.MemoryInfo();
@@ -253,14 +481,20 @@ public class MainActivity extends Activity {
 
     @Override
     public boolean dispatchKeyEvent(KeyEvent e) {
+        // Android 13+: Back goes through the OnBackInvokedCallback (predictive back), not as a key
+        if (e.getKeyCode() == KeyEvent.KEYCODE_BACK && backCallback != null) return super.dispatchKeyEvent(e);
         int code = mapKey(e.getKeyCode());
         if (code != 0) {
-            if (e.getAction() == KeyEvent.ACTION_DOWN) {
-                web.evaluateJavascript("window.__itvKey && window.__itvKey(" + code + ")", null);
-            }
+            if (e.getAction() == KeyEvent.ACTION_DOWN) key(code);
             return true;
         }
         return super.dispatchKeyEvent(e);
+    }
+
+    @Override
+    @SuppressWarnings("deprecation")
+    public void onBackPressed() {
+        if (backCallback == null) key(461);   // never reached on Android 13+ (callback); kept for odd OEM builds
     }
 
     @SuppressWarnings("deprecation")
@@ -273,7 +507,14 @@ public class MainActivity extends Activity {
     @Override
     public void onWindowFocusChanged(boolean focus) {
         super.onWindowFocusChanged(focus);
-        if (focus) hideSystemBars();
+        if (focus && tv) hideSystemBars();
+        else if (focus && immersive) setBarsHidden(true);
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration c) {
+        super.onConfigurationChanged(c);
+        js("window.__itvColors && window.__itvColors()");   // dark/light or wallpaper colours may have changed
     }
 
     @Override
@@ -285,6 +526,8 @@ public class MainActivity extends Activity {
     @Override
     protected void onPause() {
         super.onPause();
+        // keep playing in picture-in-picture; otherwise pause the page (saves battery)
+        if (Build.VERSION.SDK_INT >= 24 && isInPictureInPictureMode()) return;
         web.onPause();
     }
 

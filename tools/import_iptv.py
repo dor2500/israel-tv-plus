@@ -8,8 +8,9 @@ closed channels, shopping channels and everything on the iptv-org blocklist are 
 usage:
   python -I tools/import_iptv.py probe  [work_dir]   # download db + test streams   (~20-40 min)
   python -I tools/import_iptv.py frames [work_dir]   # grab one frame per working stream
-  python -I tools/import_iptv.py merge  [work_dir]   # write channels.json + channels.js
-Imported entries carry "src": "iptv-org"; merge replaces them, curated entries are left alone.
+  python -I tools/import_iptv.py pick   [work_dir]   # balanced selection (~800), probed again -> picked.json
+  python -I tools/import_iptv.py merge  [work_dir]   # write channels.json + channels.js (picked.json if present)
+Imported entries carry "imported": true; merge replaces them, curated entries are left alone.
 """
 import json
 import os
@@ -41,7 +42,7 @@ CAT_KIDS_WORLD = "ילדים מהעולם (Kids World)"
 CAT_NEWS = "חדשות מהעולם (News)"
 CAT_MOVIES = "סרטים וסדרות (Movies & Series)"
 CAT_SPORTS = "ספורט (Sports)"
-CAT_MUSIC = "מוזיקה ורדיו חי (Music & Radio)"
+CAT_MUSIC = "מוזיקה (Music TV)"
 CAT_DOCU = "טבע ודוקו (Documentary & Nature)"
 CAT_LIFE = "לייף סטייל ובידור"
 CAT_RELIGION = "דת ואמונה (Religion)"
@@ -59,6 +60,7 @@ CAT_KIND_HE = {"kids": "ערוץ ילדים", "news": "ערוץ חדשות", "sp
                "movies": "סרטים וסדרות", "docu": "דוקו, טבע ומדע", "religion": "ערוץ דת ואמונה",
                "life": "בידור ולייף סטייל", "world": "ערוץ כללי"}
 SKIP_CATS = {"xxx", "shop", "interactive"}
+SKIP_IDS = {"Channel13.il"}  # curated "רשת 13" already plays Channel 13
 
 
 def load(work, name):
@@ -85,7 +87,7 @@ def candidates(work):
             feeds[f["channel"]] = f
     blocked = {b["channel"] for b in load(work, "blocklist")}
     with open(os.path.join(ROOT, "channels.json"), encoding="utf-8") as f:
-        ours = [c for c in json.load(f) if c.get("src") != "iptv-org"]
+        ours = [c for c in json.load(f) if c.get("src") != "iptv-org" and not c.get("imported")]
     our_urls = {c["url"].split("://", 1)[-1] for c in ours}
     our_iptv = {c.get("iptv") for c in ours if c.get("iptv")}
 
@@ -258,15 +260,66 @@ def kind(c):
     return next((k for cat, k in CATS if cat in cats), "world")
 
 
-def cmd_merge(work):
+# "pick": a balanced selection (~800) out of the thousands of working streams: every Israeli / Hebrew channel,
+# then per category a quota filled round-robin over countries (big / relevant countries first, a cap per country),
+# preferring streams the https web app can play, HD, and channels that have a logo. The pick is probed again.
+QUOTA = {"news": 160, "movies": 130, "life": 110, "music": 90, "world": 90, "kids": 80, "sports": 70, "docu": 70,
+         "religion": 30}
+COUNTRY_ORDER = ["IL", "US", "UK", "FR", "DE", "ES", "IT", "RU", "UA", "CA", "AU", "AE", "QA", "SA", "EG", "LB", "TR",
+                 "IN", "JP", "KR", "CN", "BR", "MX", "AR", "PT", "NL", "BE", "CH", "AT", "PL", "GR", "SE", "NO", "DK",
+                 "FI", "IE", "CZ", "RO", "HU", "CL", "CO", "PE", "PH", "ID", "TH", "VN", "PK", "IR", "MA", "ZA", "NG"]
+
+
+def cmd_pick(work):
     with open(os.path.join(work, "frames.json"), encoding="utf-8") as f:
         res = [c for c in json.load(f) if c.get("frame") and not c.get("dup_of")]
+    logos = pick_logos(work)
+    web = lambda c: c["url"].startswith("https") and bool(c.get("cors"))
+    qual = lambda c: min(int(re.sub(r"\D", "", c.get("quality") or "") or 0), 1080)
+    score = lambda c: (c["iptv"] in logos, web(c), qual(c), c["lang"] in LANG_ORDER)
+    crank = lambda cc: COUNTRY_ORDER.index(cc) if cc in COUNTRY_ORDER else len(COUNTRY_ORDER)
+    must = [c for c in res if c["country"] == "IL" or c["lang"] in ("he", "yi")]
+    rest = [c for c in res if c not in must]
+    pool = []
+    for k, quota in QUOTA.items():
+        groups = {}
+        for c in rest:
+            if kind(c) == k:
+                groups.setdefault(c["country"] or "", []).append(c)
+        for g in groups.values():
+            g.sort(key=score, reverse=True)
+        order = sorted(groups, key=lambda cc: (crank(cc), -len(groups[cc])))
+        cap = max(4, quota // 8)
+        want, taken, rnd = int(quota * 1.3), [], 0
+        while len(taken) < want and rnd < cap:
+            for cc in order:
+                if rnd < len(groups[cc]) and len(taken) < want:
+                    taken.append(groups[cc][rnd])
+            rnd += 1
+        pool.extend((k, c) for c in taken)
+    print(len(must), "Israeli/Hebrew +", len(pool), "pool candidates, re-probing...")
+    fresh = list(ThreadPoolExecutor(48).map(lambda c: probe(dict(c, ok=False, error=None)), must + [c for _, c in pool]))
+    alive = {c["iptv"] for c in fresh if c.get("ok")}
+    out = [c for c in must if c["iptv"] in alive]
+    for k, quota in QUOTA.items():
+        out.extend([c for kk, c in pool if kk == k and c["iptv"] in alive][:quota])
+    with open(os.path.join(work, "picked.json"), "w", encoding="utf-8") as f:
+        json.dump(out, f, ensure_ascii=False, indent=0)
+    print(len(out), "picked;", sum(1 for c in out if web(c)), "play on the web;",
+          len({c['country'] for c in out}), "countries")
+
+
+def cmd_merge(work):
+    picked = os.path.join(work, "picked.json")
+    with open(picked if os.path.isfile(picked) else os.path.join(work, "frames.json"), encoding="utf-8") as f:
+        res = [c for c in json.load(f) if c.get("frame") and not c.get("dup_of")]
     with open(os.path.join(ROOT, "channels.json"), encoding="utf-8") as f:
-        ours = [c for c in json.load(f) if c.get("src") != "iptv-org"]
+        ours = [c for c in json.load(f) if c.get("src") != "iptv-org" and not c.get("imported")]
     names = he_names(work)
     logos = pick_logos(work)
     taken_ids = {c["id"] for c in ours}
     taken_names = {norm(c.get("title") or c["name"]) for c in ours} | {norm(c["name"]) for c in ours}
+    taken_urls = {c["url"].split("://", 1)[-1] for c in ours} | {c.get("webUrl", "").split("://", 1)[-1] for c in ours}
 
     order = [CAT_ISRAEL, CAT_KIDS_HE, CAT_NEWS, CAT_MOVIES, CAT_SPORTS, CAT_KIDS_WORLD, CAT_MUSIC, CAT_DOCU,
              CAT_LIFE, CAT_RELIGION, CAT_WORLD]
@@ -279,8 +332,11 @@ def cmd_merge(work):
             cat = CAT_KIDS_HE if c["lang"] == "he" else CAT_KIDS_WORLD
         else:
             cat = CAT_NAME[k]
-        if norm(c["name"]) in taken_names and c["country"] == "IL":
+        if norm(c["name"]) in taken_names and c["country"] == "IL" or c["iptv"] in SKIP_IDS:
             continue  # curated version already there
+        if c["url"].split("://", 1)[-1] in taken_urls:
+            continue  # same stream under another name
+        taken_urls.add(c["url"].split("://", 1)[-1])
         cid = "iptv_" + re.sub(r"[^a-z0-9]+", "_", c["iptv"].lower()).strip("_")
         if cid in taken_ids:
             continue
@@ -301,10 +357,12 @@ def cmd_merge(work):
             "desc": " · ".join(x for x in (CAT_KIND_HE[k], country, lang_he) if x),
             "lang": lang,
             "country": c["country"],
-            "web": bool(c["url"].startswith("https") and c.get("cors")),  # playable from the https web app
+            "countryHe": country,
             "iptv": c["iptv"],
-            "src": "iptv-org",
+            "imported": True,
         })
+        if c["url"].startswith("https") and not c.get("cors"):
+            new[-1]["webOk"] = False  # the https web app can't read it (no CORS); the apps can
     new.sort(key=lambda c: order.index(c["category"]))
     for i, c in enumerate(new):
         c["number"] = FIRST_NUMBER + i
@@ -322,12 +380,13 @@ def cmd_merge(work):
 
 
 def main():
-    if len(sys.argv) < 2 or sys.argv[1] not in ("probe", "frames", "merge"):
+    cmds = {"probe": cmd_probe, "frames": cmd_frames, "pick": cmd_pick, "merge": cmd_merge}
+    if len(sys.argv) < 2 or sys.argv[1] not in cmds:
         print(__doc__)
         sys.exit(1)
     work = sys.argv[2] if len(sys.argv) > 2 else WORK
     os.makedirs(work, exist_ok=True)
-    {"probe": cmd_probe, "frames": cmd_frames, "merge": cmd_merge}[sys.argv[1]](work)
+    cmds[sys.argv[1]](work)
 
 
 if __name__ == "__main__":

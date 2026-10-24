@@ -64,15 +64,17 @@ HOSTS = {
     "stream.smotrim.ru": ("Smotrim (VGTRK) – הבעלים של קרוסלה", "official"),
     "amg00793-amg00793c6-xumo-us-2669.playouts.now.amagi.tv": ("BBC Earth – Amagi / Xumo FAST", "fast"),
 }
-KIND_HE = {"official": "✅ רשמי", "fast": "✅ FAST חינמי", "restream": "⚠️ ממסר צד שלישי"}
+KIND_HE = {"official": "✅ רשמי", "fast": "✅ FAST חינמי", "restream": "⚠️ ממסר צד שלישי", "public": "🌐 ציבורי (iptv-org)"}
 
 
 def host(url):
     return urllib.parse.urlparse(url).hostname or ""
 
 
-def who(url):
+def who(url, c=None):
     h = host(url)
+    if h not in HOSTS and c is not None and c.get("imported"):
+        return h, "public"  # bulk import from iptv-org: public stream, owner not checked one by one
     return HOSTS.get(h, (h, "official" if h.endswith(".co.il") else "restream"))
 
 
@@ -123,7 +125,7 @@ def main():
     apps = [c for c in chans if c.get("kind") == "app"]
     kinds = {}
     for c in tv + radio:
-        k = who(c["url"])[1]
+        k = who(c["url"], c)[1]
         kinds[k] = kinds.get(k, 0) + 1
     hosts = {}
     for c in tv + radio:
@@ -146,6 +148,7 @@ def main():
           "## ⚖️ מצב הזכויות – חשוב לדעת", "",
           f"- **{kinds.get('official', 0)} שידורים רשמיים** – מהשרתים של הגוף המשדר עצמו או של המפיץ שלו (כאן, 13, 14, i24NEWS, גלי צה\"ל, תחנות הרדיו, DW, אל-ג'זירה...).",
           f"- **{kinds.get('fast', 0)} ערוצי FAST** – ערוצים חינמיים עם פרסומות שהבעלים מפיצים בעצמם (Pluto TV, BabyFirst, LEGO, Baby Shark...).",
+          f"- **{kinds.get('public', 0)} ערוצים מהעולם** – שידורים פתוחים מהמאגר הציבורי iptv-org (ייבוא אוטומטי, `tools/import_iptv.py`): כל אחד נבדק שהוא משדר ושיש בו תמונה, ללא ערוצים שדורשים מנוי/כתובת מיוחדת. רובם מהשרתים של הערוצים עצמם, אבל הבעלים לא נבדקו אחד-אחד.",
           f"- **{kinds.get('restream', 0)} ממסרי צד שלישי** – בעיקר `stream.mcquack.net` ({len(hosts.get('stream.mcquack.net', []))} ערוצים). "
           "אלה **אינם** השרתים של הערוצים: אתר חיצוני קולט את השידור ומפיץ אותו מחדש. בהם נמצאים גם ערוצים בתשלום "
           "(HOT, yes, viju/TV1000, ערוצי ספורט) – סביר מאוד שההפצה הזו **ללא רישיון** מבעלי הזכויות, והם עלולים להיעלם בכל רגע. "
@@ -155,13 +158,13 @@ def main():
           "ולא אושר מול כל גוף משדר בנפרד.", "",
           "## לפי שרת", "", "| שרת | מי זה | סוג | מספר |", "|---|---|---|---|"]
     for h, cs in sorted(hosts.items(), key=lambda x: -len(x[1])):
-        name, k = who(cs[0]["url"])
+        name, k = who(cs[0]["url"], cs[0])
         L.append(f"| `{h}` | {md(name)} | {KIND_HE[k]} | {len(cs)} |")
 
     def table(title, items):
         out = ["", f"## {title}", "", "| # | ערוץ | שרת השידור | סוג | נמצא ב | באתר (דפדפן) |", "|---|---|---|---|---|---|"]
         for c in items:
-            name, k = who(c["url"])
+            name, k = who(c["url"], c)
             out.append(f"| {c['number']} | {md(c['name'])} | {md(name)} | {KIND_HE[k]} | {found(c)} | {web(c)} |")
         return out
 
@@ -194,7 +197,7 @@ def main():
         if c.get("kind") == "app":
             c.pop("src", None)
             continue
-        name, k = who(c["url"])
+        name, k = who(c["url"], c)
         c["src"] = {"by": name, "kind": k, "host": host(c["url"]), "found": plain(found(c)), "web": plain(web(c))}
     with open(os.path.join(ROOT, "channels.json"), "w", encoding="utf-8") as f:
         json.dump(chans, f, ensure_ascii=False, indent=2)

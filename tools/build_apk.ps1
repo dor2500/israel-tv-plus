@@ -10,7 +10,9 @@ if (-not $Version) { $Version = (Get-Content "$root\VERSION" -Raw).Trim() }
 if (-not $Code) { $p = $Version.Split('.'); $Code = [int]$p[0] * 100 + [int]$p[1] * 10 + [int]$p[2] }  # 3.0.0 -> 300
 $sdk = if ($env:ANDROID_HOME) { $env:ANDROID_HOME } else { "$env:LOCALAPPDATA\Android\Sdk" }
 $bt = Get-ChildItem "$sdk\build-tools" | Sort-Object { [version]$_.Name } | Select-Object -Last 1 -ExpandProperty FullName
-$plat = Get-ChildItem "$sdk\platforms" | Where-Object Name -match '^android-\d+$' | Sort-Object { [int]($_.Name -replace '\D') } | Select-Object -Last 1 -ExpandProperty FullName
+# newest stable platform (android-37.2 > android-36); previews (letters) are skipped
+$plat = Get-ChildItem "$sdk\platforms" | Where-Object Name -match '^android-\d+(\.\d+)?$' | Sort-Object { [double]($_.Name -replace '^android-', '') } | Select-Object -Last 1 -ExpandProperty FullName
+$target = [int](((Split-Path $plat -Leaf) -replace '^android-', '').Split('.')[0])
 $jar = "$plat\android.jar"
 $and = "$root\platforms\android"
 $b = "$root\build\apk"
@@ -25,6 +27,8 @@ foreach ($p in @(@('mdpi', 48), @('hdpi', 72), @('xhdpi', 96), @('xxhdpi', 144),
   Copy-Item "$app\icon-$($p[1]).png" "$b\res\mipmap-$($p[0])\ic_launcher.png"
 }
 Copy-Item "$app\banner-320x180.png" "$b\res\drawable-xhdpi\banner.png"
+# theme (edge-to-edge, Android 12+ splash screen)
+Copy-Item "$and\res\*" "$b\res" -Recurse -Force
 
 # the web app
 foreach ($f in (Get-Content "$PSScriptRoot\webfiles.txt" | Where-Object { $_ -and $_ -notmatch '^#' })) {
@@ -36,7 +40,7 @@ Get-ChildItem "$b\assets\www\assets" -Recurse -File | Where-Object { $_.Name -ma
 & "$bt\aapt2.exe" compile --dir "$b\res" -o "$b\res.zip"
 if ($LASTEXITCODE) { throw 'aapt2 compile failed' }
 & "$bt\aapt2.exe" link -I $jar --manifest "$and\AndroidManifest.xml" -A "$b\assets" -o "$b\base.apk" `
-  --min-sdk-version 21 --target-sdk-version 35 --version-code $Code --version-name $Version "$b\res.zip" -0 png
+  --min-sdk-version 21 --target-sdk-version $target --version-code $Code --version-name $Version "$b\res.zip" -0 png
 if ($LASTEXITCODE) { throw 'aapt2 link failed' }
 
 $src = Get-ChildItem "$and\src" -Recurse -Filter *.java | ForEach-Object FullName
