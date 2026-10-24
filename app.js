@@ -2510,19 +2510,67 @@
       if ((PLATFORM === 'android' && window.AndroidApp && window.AndroidApp.installUpdate) || PLATFORM === 'windows') {
         buttons.push({ label: 'עדכון עכשיו', primary: true, keep: true, act: function () { installNative(u.native); } });
       } else if (PLATFORM === 'webos') {
-        html += '<p>בטלוויזיית LG: התקנה מחדש של קובץ ה-IPK (Developer Mode / Homebrew Channel). המסך, הקוד והערוצים מתעדכנים גם בלי זה.</p>';
-        buttons.push({ label: '🌐 דף ההורדה', act: function () { openUrl(RELEASES); } });
+        html += '<p>בטלוויזיית LG webOS: העדכון מוחל ישירות בתוך האפליקציה ללא צורך בהתקנה ידנית מחדש של קובץ ה-IPK!</p>';
+        if (state.liveReady) {
+          buttons.push({
+            label: '⚡ החל עדכון והפעל מחדש עכשיו',
+            primary: true,
+            act: function () { try { sessionStorage.removeItem('itv_local'); } catch (e) {} location.reload(); }
+          });
+        } else {
+          buttons.push({
+            label: '⚡ עדכן עכשיו בטלוויזיה (ללא התקנה)',
+            primary: true,
+            keep: true,
+            act: function () { updateWebOSInPlace(u); }
+          });
+        }
+        buttons.push({ label: '🌐 קובץ IPK ידני (למפתחים)', act: function () { openUrl(u.native && u.native.url ? u.native.url : RELEASES); } });
       } else {
         buttons.push({ label: '🌐 דף ההורדה', primary: true, act: function () { openUrl(u.native.url || RELEASES); } });
       }
     }
-    if (state.liveReady) {
+    if (state.liveReady && PLATFORM !== 'webos') {
       buttons.push({ label: u.native ? 'הפעלה מחדש עם עדכון המסך' : 'הפעלה מחדש עכשיו', primary: !buttons.length,
         act: function () { try { sessionStorage.removeItem('itv_local'); } catch (e) {} location.reload(); } });
     }
     if (!buttons.length) { toast('✅ הגרסה עדכנית'); return; }
     buttons.push({ label: 'אחר כך' });
     openDialog({ ico: '', title: 'עדכון זמין', html: html, buttons: buttons, cls: 'upd' });
+  }
+
+  function updateWebOSInPlace(u) {
+    if (state.overlay !== 'dialog' || !$('upd-prog')) showUpdateDialog();
+    var box = el.dialogBox;
+    if (box) box.classList.add('downloading');
+    var prog = $('upd-prog'), bar = $('upd-bar'), txt = $('upd-text');
+    if (prog) prog.classList.add('indet');
+    var targetVer = (u.data && u.data.version) || (u.native && u.native.version) || '3.5.2';
+    var targetCode = (u.data && u.data.code) || Date.now();
+    if (txt) txt.textContent = 'מוריד את כל הערוצים, הלוגואים והעיצוב החדש (' + targetVer + ')...';
+    
+    var q = '?v=' + targetCode;
+    var files = ['style.css', 'ui.js', 'channels.js', 'dub.js', 'app.js'];
+    prefetch(files.map(function (f) { return REMOTE + f + q; }), function (ok) {
+      if (ok) {
+        if (prog) { prog.classList.remove('indet'); if (bar) bar.style.width = '100%'; }
+        if (txt) txt.textContent = 'העדכון הושלם בהצלחה! מפעיל מחדש...';
+        var liveObj = { code: targetCode, version: targetVer, shell: (u.data && u.data.shell) || 0 };
+        try {
+          localStorage.setItem('itv_live', JSON.stringify(liveObj));
+          localStorage.removeItem('itv_bad');
+          sessionStorage.removeItem('itv_local');
+        } catch (e) {}
+        toast('🎉 עודכן בהצלחה! מפעיל מחדש...');
+        setTimeout(function () {
+          location.reload();
+        }, 1200);
+      } else {
+        if (prog) prog.classList.remove('indet');
+        if (txt) txt.textContent = 'שגיאה בהורדת קובצי העדכון. נסה שוב מאוחר יותר.';
+        toast('⚠️ שגיאה בהורדת העדכון');
+      }
+    });
   }
 
   function installNative(n) {

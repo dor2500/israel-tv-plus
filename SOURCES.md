@@ -1,6 +1,6 @@
 # מקורות – מאיפה מגיע כל ערוץ
 
-נוצר אוטומטית מ-`channels.json` על ידי `tools/make_sources.py`. סה"כ **1593** פריטים: 1493 ערוצי טלוויזיה, 100 תחנות רדיו, 0 אפליקציות/שירותים.
+נוצר אוטומטית מ-`channels.json` על ידי `tools/make_sources.py`. סה"כ **1693** פריטים: 1593 ערוצי טלוויזיה, 100 תחנות רדיו, 0 אפליקציות/שירותים.
 
 ## איך הערוצים נאספו ונבדקו
 
@@ -18,9 +18,9 @@
 ## ⚖️ מצב הזכויות – חשוב לדעת
 
 - **134 שידורים רשמיים** – מהשרתים של הגוף המשדר עצמו או של המפיץ שלו (כאן, 13, 14, i24NEWS, גלי צה"ל, תחנות הרדיו, DW, אל-ג'זירה...).
-- **175 ערוצי FAST** – ערוצים חינמיים עם פרסומות שהבעלים מפיצים בעצמם (Pluto TV, BabyFirst, LEGO, Baby Shark...).
+- **176 ערוצי FAST** – ערוצים חינמיים עם פרסומות שהבעלים מפיצים בעצמם (Pluto TV, BabyFirst, LEGO, Baby Shark...).
 - **1173 ערוצים מהעולם** – שידורים פתוחים מהמאגר הציבורי iptv-org (ייבוא אוטומטי, `tools/import_iptv.py`): כל אחד נבדק שהוא משדר ושיש בו תמונה, ללא ערוצים שדורשים מנוי/כתובת מיוחדת. רובם מהשרתים של הערוצים עצמם, אבל הבעלים לא נבדקו אחד-אחד.
-- **111 ממסרי צד שלישי** – בעיקר `stream.mcquack.net` (80 ערוצים). אלה **אינם** השרתים של הערוצים: אתר חיצוני קולט את השידור ומפיץ אותו מחדש. בהם נמצאים גם ערוצים בתשלום (HOT, yes, viju/TV1000, ערוצי ספורט) – סביר מאוד שההפצה הזו **ללא רישיון** מבעלי הזכויות, והם עלולים להיעלם בכל רגע. ההחלטה אם להשאיר אותם היא שלך; הסקריפטים לא מוסיפים ממסרים חדשים של ערוצים בתשלום.
+- **210 ממסרי צד שלישי** – בעיקר `stream.mcquack.net` (87 ערוצים). אלה **אינם** השרתים של הערוצים: אתר חיצוני קולט את השידור ומפיץ אותו מחדש. בהם נמצאים גם ערוצים בתשלום (HOT, yes, viju/TV1000, ערוצי ספורט) – סביר מאוד שההפצה הזו **ללא רישיון** מבעלי הזכויות, והם עלולים להיעלם בכל רגע. ההחלטה אם להשאיר אותם היא שלך; הסקריפטים לא מוסיפים ממסרים חדשים של ערוצים בתשלום.
 - **שירותי המנויים** (פרטנר, סלקום, STING, yes, HOT) – אין בפרויקט שום שידור שלהם; הכרטיס רק פותח את האפליקציה/האתר הרשמי, וצפייה דורשת מנוי.
 
 > הסיווג רשמי / FAST / ממסר נקבע לפי שם השרת שממנו מגיע השידור (למשל CDN של הגוף המשדר), ולא אושר מול כל גוף משדר בנפרד.
@@ -29,21 +29,23 @@
 
 | שרת | מי זה | סוג | מספר |
 |---|---|---|---|
-| `jmp2.uk` | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | 168 |
-| `stream.mcquack.net` | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | 80 |
+| `jmp2.uk` | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | 169 |
+| `stream.mcquack.net` | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | 87 |
 | `gb25.streamgates.net` | StreamGates – ערוצי רדיוס 100FM | ✅ רשמי | 34 |
-| `92.114.85.87` | 92.114.85.87 | 🌐 ציבורי (iptv-org) | 18 |
+| `92.114.85.87` | 92.114.85.87 | 🌐 ציבורי (iptv-org) | 24 |
 | `cdn.cybercdn.live` | CyberCDN – ה-CDN של תחנות הרדיו עצמן | ✅ רשמי | 16 |
 | `freem3u.xyz` | freem3u.xyz | 🌐 ציבורי (iptv-org) | 15 |
 | `rpn.bozztv.com` | rpn.bozztv.com | 🌐 ציבורי (iptv-org) | 13 |
 | `38.75.136.137` | 38.75.136.137 | 🌐 ציבורי (iptv-org) | 10 |
 | `cityeden.catcast.tv` | cityeden.catcast.tv | 🌐 ציבורי (iptv-org) | 10 |
+| `barinaslive1.boldmss.com` | barinaslive1.boldmss.com | 🌐 ציבורי (iptv-org) | 10 |
 | `dash2.antik.sk` | dash2.antik.sk | 🌐 ציבורי (iptv-org) | 9 |
 | `live.kwikmotion.com` | live.kwikmotion.com | 🌐 ציבורי (iptv-org) | 9 |
 | `mako-streaming.akamaized.net` | קשת – ה-CDN של mako (עם הרשאת צפייה של mako) | ✅ רשמי | 7 |
 | `dash3.antik.sk` | Antik Telecom (סלובקיה), נתיבי test | ⚠️ ממסר צד שלישי | 7 |
 | `a-cdn.klowdtv.com` | a-cdn.klowdtv.com | 🌐 ציבורי (iptv-org) | 7 |
 | `stream-us-east-1.getpublica.com` | stream-us-east-1.getpublica.com | 🌐 ציבורי (iptv-org) | 7 |
+| `cdn.pishow.tv` | cdn.pishow.tv | 🌐 ציבורי (iptv-org) | 7 |
 | `playerservices.streamtheworld.com` | Triton StreamTheWorld – מפיץ הרדיו של כאן | ✅ רשמי | 7 |
 | `ngtrk.dc.beltelecom.by` | ngtrk.dc.beltelecom.by | 🌐 ציבורי (iptv-org) | 6 |
 | `n18syndication.akamaized.net` | n18syndication.akamaized.net | 🌐 ציבורי (iptv-org) | 6 |
@@ -57,11 +59,12 @@
 | `nosignal1.antenaplay.ro` | nosignal1.antenaplay.ro | 🌐 ציבורי (iptv-org) | 5 |
 | `168.196.127.137` | 168.196.127.137 | 🌐 ציבורי (iptv-org) | 5 |
 | `hlspackager.akamaized.net` | hlspackager.akamaized.net | 🌐 ציבורי (iptv-org) | 5 |
+| `video1.getstreamhosting.com` | video1.getstreamhosting.com | 🌐 ציבורי (iptv-org) | 5 |
 | `mdstrm.com` | mdstrm.com | 🌐 ציבורי (iptv-org) | 5 |
 | `livefta.malimarcdn.com` | livefta.malimarcdn.com | 🌐 ציבורי (iptv-org) | 5 |
 | `mn-nl.mncdn.com` | mn-nl.mncdn.com | 🌐 ציבורי (iptv-org) | 5 |
-| `cdn.pishow.tv` | cdn.pishow.tv | 🌐 ציבורי (iptv-org) | 5 |
 | `livestream.pbskids.org` | livestream.pbskids.org | 🌐 ציבורי (iptv-org) | 5 |
+| `drk6xq0vhn.gpcdn.net` | drk6xq0vhn.gpcdn.net | 🌐 ציבורי (iptv-org) | 5 |
 | `cdn-live.dltv.ac.th` | cdn-live.dltv.ac.th | 🌐 ציבורי (iptv-org) | 5 |
 | `cast.breslevforyou.co.il` | רדיו ברסלב – שרת התחנה | ✅ רשמי | 5 |
 | `streams2.sofast.tv` | streams2.sofast.tv | 🌐 ציבורי (iptv-org) | 4 |
@@ -69,21 +72,23 @@
 | `cdn3.wowza.com` | cdn3.wowza.com | 🌐 ציבורי (iptv-org) | 4 |
 | `dash4.antik.sk` | dash4.antik.sk | 🌐 ציבורי (iptv-org) | 4 |
 | `hls.newworldtv.com` | hls.newworldtv.com | 🌐 ציבורי (iptv-org) | 4 |
-| `video1.getstreamhosting.com` | video1.getstreamhosting.com | 🌐 ציבורי (iptv-org) | 4 |
 | `tgn.bozztv.com` | tgn.bozztv.com | 🌐 ציבורי (iptv-org) | 4 |
 | `svs.itworkscdn.net` | Asharq Discovery – ItWorks (רשמי) | ✅ רשמי | 4 |
 | `edge.enhdtv.com` | edge.enhdtv.com | 🌐 ציבורי (iptv-org) | 4 |
 | `w2.manasat.com` | w2.manasat.com | 🌐 ציבורי (iptv-org) | 4 |
 | `live-fi.tvkaista.net` | live-fi.tvkaista.net | 🌐 ציבורי (iptv-org) | 4 |
+| `fl.biztv.media` | fl.biztv.media | 🌐 ציבורי (iptv-org) | 4 |
 | `playlist.fasttvcdn.com` | playlist.fasttvcdn.com | 🌐 ציבורי (iptv-org) | 4 |
 | `ebsonair.ebs.co.kr` | ebsonair.ebs.co.kr | 🌐 ציבורי (iptv-org) | 4 |
-| `drk6xq0vhn.gpcdn.net` | drk6xq0vhn.gpcdn.net | 🌐 ציבורי (iptv-org) | 4 |
 | `edge12.vedge.infomaniak.com` | edge12.vedge.infomaniak.com | 🌐 ציבורי (iptv-org) | 4 |
+| `cdn4.mjunoon.tv` | cdn4.mjunoon.tv | 🌐 ציבורי (iptv-org) | 4 |
+| `85.237.89.160` | 85.237.89.160 | ⚠️ ממסר צד שלישי | 4 |
 | `cdna.streamgates.net` | StreamGates – ה-CDN של התחנה | ✅ רשמי | 4 |
 | `icecast.kab.tv` | icecast.kab.tv | ⚠️ ממסר צד שלישי | 4 |
 | `kancdn.medonecdn.net` | כאן – תאגיד השידור (CDN רשמי) | ✅ רשמי | 3 |
 | `r.il.cdn-redge.media` | Redge – ה-CDN הרשמי של כאן, ערוץ 14 וכלכלה 10 | ✅ רשמי | 3 |
 | `rnttwmjcin.turknet.ercdn.net` | rnttwmjcin.turknet.ercdn.net | 🌐 ציבורי (iptv-org) | 3 |
+| `158.172.155.130` | 158.172.155.130 | 🌐 ציבורי (iptv-org) | 3 |
 | `5c7b683162943.streamlock.net` | 5c7b683162943.streamlock.net | 🌐 ציבורי (iptv-org) | 3 |
 | `streaming.onnethn.com` | streaming.onnethn.com | 🌐 ציבורי (iptv-org) | 3 |
 | `master.tucableip.com` | master.tucableip.com | 🌐 ציבורי (iptv-org) | 3 |
@@ -98,19 +103,23 @@
 | `viewmedia7219.bozztv.com` | viewmedia7219.bozztv.com | 🌐 ציבורי (iptv-org) | 3 |
 | `eu1.servers10.com` | eu1.servers10.com | 🌐 ציבורי (iptv-org) | 3 |
 | `stream.berosat.live` | stream.berosat.live | 🌐 ציבורי (iptv-org) | 3 |
+| `directes-tv-int.3catdirectes.cat` | directes-tv-int.3catdirectes.cat | 🌐 ציבורי (iptv-org) | 3 |
 | `cdn15.live-tv.cloud` | live-tv.cloud – ספק IPTV אוקראיני | ⚠️ ממסר צד שלישי | 3 |
 | `fastlive.cctvplus.com` | fastlive.cctvplus.com | 🌐 ציבורי (iptv-org) | 3 |
-| `fl.biztv.media` | fl.biztv.media | 🌐 ציבורי (iptv-org) | 3 |
+| `103.151.60.162` | 103.151.60.162 | 🌐 ציבורי (iptv-org) | 3 |
 | `103.172.187.30` | 103.172.187.30 | 🌐 ציבורי (iptv-org) | 3 |
 | `203.81.84.130` | 203.81.84.130 | 🌐 ציבורי (iptv-org) | 3 |
+| `raw.githubusercontent.com` | raw.githubusercontent.com | 🌐 ציבורי (iptv-org) | 3 |
 | `stream1.antenaplay.ro` | stream1.antenaplay.ro | 🌐 ציבורי (iptv-org) | 3 |
+| `190.61.47.54` | 190.61.47.54 | 🌐 ציבורי (iptv-org) | 3 |
 | `stmv1.srvif.com` | stmv1.srvif.com | 🌐 ציבורי (iptv-org) | 3 |
 | `200.115.120.1` | 200.115.120.1 | 🌐 ציבורי (iptv-org) | 3 |
 | `fs.uplink.kz` | fs.uplink.kz | 🌐 ציבורי (iptv-org) | 3 |
-| `barinaslive1.boldmss.com` | barinaslive1.boldmss.com | 🌐 ציבורי (iptv-org) | 3 |
 | `da86m1sqpm3o0.cloudfront.net` | da86m1sqpm3o0.cloudfront.net | 🌐 ציבורי (iptv-org) | 3 |
 | `138.121.15.230` | 138.121.15.230 | 🌐 ציבורי (iptv-org) | 3 |
+| `30a-tv.com` | 30a-tv.com | 🌐 ציבורי (iptv-org) | 3 |
 | `cdnlive.klicgo.net` | cdnlive.klicgo.net | 🌐 ציבורי (iptv-org) | 3 |
+| `cloudvideo.servers10.com` | cloudvideo.servers10.com | 🌐 ציבורי (iptv-org) | 3 |
 | `sb.err.ee` | sb.err.ee | 🌐 ציבורי (iptv-org) | 3 |
 | `185.227.34.179` | 185.227.34.179 | 🌐 ציבורי (iptv-org) | 3 |
 | `lotus.stingray.com` | lotus.stingray.com | 🌐 ציבורי (iptv-org) | 3 |
@@ -118,11 +127,13 @@
 | `live2.tensila.com` | live2.tensila.com | 🌐 ציבורי (iptv-org) | 3 |
 | `stream.nasatv.com.mk` | stream.nasatv.com.mk | 🌐 ציבורי (iptv-org) | 3 |
 | `stream.sen-gt.com` | stream.sen-gt.com | 🌐 ציבורי (iptv-org) | 3 |
+| `tls-cl.cdnz.cl` | tls-cl.cdnz.cl | 🌐 ציבורי (iptv-org) | 3 |
 | `movil.ejeserver.com` | movil.ejeserver.com | 🌐 ציבורי (iptv-org) | 3 |
 | `aegis-cloudfront-1.tubi.video` | aegis-cloudfront-1.tubi.video | 🌐 ציבורי (iptv-org) | 3 |
 | `stream.swamiji.tv` | stream.swamiji.tv | 🌐 ציבורי (iptv-org) | 3 |
 | `cdn01.setar.aw` | cdn01.setar.aw | 🌐 ציבורי (iptv-org) | 3 |
-| `cdn4.mjunoon.tv` | cdn4.mjunoon.tv | 🌐 ציבורי (iptv-org) | 3 |
+| `178.134.1.158` | 178.134.1.158 | 🌐 ציבורי (iptv-org) | 3 |
+| `videostream.shockmedia.com.ar` | videostream.shockmedia.com.ar | 🌐 ציבורי (iptv-org) | 3 |
 | `edge13.vedge.infomaniak.com` | edge13.vedge.infomaniak.com | 🌐 ציבורי (iptv-org) | 3 |
 | `cdn.freevisiontv.co.za` | cdn.freevisiontv.co.za | 🌐 ציבורי (iptv-org) | 3 |
 | `jointil.com` | jointil.com | ⚠️ ממסר צד שלישי | 3 |
@@ -138,6 +149,7 @@
 | `unlimited6-cl.dps.live` | unlimited6-cl.dps.live | 🌐 ציבורי (iptv-org) | 2 |
 | `mumbai-edge.smartplaytv.in` | mumbai-edge.smartplaytv.in | 🌐 ציבורי (iptv-org) | 2 |
 | `tvsen5.aynaott.com` | tvsen5.aynaott.com | 🌐 ציבורי (iptv-org) | 2 |
+| `skynewsau-live-premium.akamaized.net` | skynewsau-live-premium.akamaized.net | 🌐 ציבורי (iptv-org) | 2 |
 | `streams.prd.commavservices.eu` | streams.prd.commavservices.eu | 🌐 ציבורי (iptv-org) | 2 |
 | `ss2.tvrdomi.com` | ss2.tvrdomi.com | 🌐 ציבורי (iptv-org) | 2 |
 | `jmc-live.ercdn.net` | jmc-live.ercdn.net | 🌐 ציבורי (iptv-org) | 2 |
@@ -145,31 +157,31 @@
 | `partwota.cdn.mgmlcdn.com` | partwota.cdn.mgmlcdn.com | 🌐 ציבורי (iptv-org) | 2 |
 | `gjirafa-video-live.gjirafa.net` | gjirafa-video-live.gjirafa.net | 🌐 ציבורי (iptv-org) | 2 |
 | `africa24.vedge.infomaniak.com` | africa24.vedge.infomaniak.com | 🌐 ציבורי (iptv-org) | 2 |
-| `directes-tv-int.3catdirectes.cat` | directes-tv-int.3catdirectes.cat | 🌐 ציבורי (iptv-org) | 2 |
 | `live-vgtrksmotrim.cdnvideo.ru` | live-vgtrksmotrim.cdnvideo.ru | 🌐 ציבורי (iptv-org) | 2 |
 | `citynewsregional.akamaized.net` | citynewsregional.akamaized.net | 🌐 ציבורי (iptv-org) | 2 |
 | `cdn.live.br1.jmvstream.com` | cdn.live.br1.jmvstream.com | 🌐 ציבורי (iptv-org) | 2 |
 | `cdn0-03837-liveedge0.dna.ip-only.net` | cdn0-03837-liveedge0.dna.ip-only.net | 🌐 ציבורי (iptv-org) | 2 |
 | `live.obslivestream.com` | live.obslivestream.com | 🌐 ציבורי (iptv-org) | 2 |
 | `edge.essastream.com` | edge.essastream.com | 🌐 ציבורי (iptv-org) | 2 |
+| `live1.acangroup.org` | live1.acangroup.org | 🌐 ציבורי (iptv-org) | 2 |
 | `fox.hostlagarto.com` | fox.hostlagarto.com | 🌐 ציבורי (iptv-org) | 2 |
 | `d1hz1p2gea2zy4.cloudfront.net` | d1hz1p2gea2zy4.cloudfront.net | 🌐 ציבורי (iptv-org) | 2 |
 | `2-fss-2.streamhoster.com` | 2-fss-2.streamhoster.com | 🌐 ציבורי (iptv-org) | 2 |
 | `tvsen6.aynaott.com` | tvsen6.aynaott.com | 🌐 ציבורי (iptv-org) | 2 |
+| `dai.google.com` | dai.google.com | 🌐 ציבורי (iptv-org) | 2 |
 | `cdn.streamhispanatv.net` | cdn.streamhispanatv.net | 🌐 ציבורי (iptv-org) | 2 |
 | `cnn.hostlagarto.com` | cnn.hostlagarto.com | 🌐 ציבורי (iptv-org) | 2 |
-| `103.151.60.162` | 103.151.60.162 | 🌐 ציבורי (iptv-org) | 2 |
 | `stream.qazcdn.net` | stream.qazcdn.net | 🌐 ציבורי (iptv-org) | 2 |
 | `15.204.196.147` | 15.204.196.147 | 🌐 ציבורי (iptv-org) | 2 |
-| `raw.githubusercontent.com` | raw.githubusercontent.com | 🌐 ציבורי (iptv-org) | 2 |
+| `canal.mediaserver.com.co` | canal.mediaserver.com.co | 🌐 ציבורי (iptv-org) | 2 |
 | `fast-channels.sinclairstoryline.com` | fast-channels.sinclairstoryline.com | 🌐 ציבורי (iptv-org) | 2 |
 | `45.162.64.114` | 45.162.64.114 | 🌐 ציבורי (iptv-org) | 2 |
 | `hls.botflix.tv` | hls.botflix.tv | 🌐 ציבורי (iptv-org) | 2 |
 | `streamer1.streamhost.org` | streamer1.streamhost.org | 🌐 ציבורי (iptv-org) | 2 |
+| `138.59.227.20` | 138.59.227.20 | 🌐 ציבורי (iptv-org) | 2 |
 | `stream.4fun.tv` | 4FUN TV – שרת רשמי | ✅ רשמי | 2 |
 | `hls01ns.antenaplay.ro` | hls01ns.antenaplay.ro | 🌐 ציבורי (iptv-org) | 2 |
 | `s.emisoras.tv` | s.emisoras.tv | 🌐 ציבורי (iptv-org) | 2 |
-| `cloudvideo.servers10.com` | cloudvideo.servers10.com | 🌐 ציבורי (iptv-org) | 2 |
 | `c.mjh.nz` | c.mjh.nz | 🌐 ציבורי (iptv-org) | 2 |
 | `170.83.49.66` | 170.83.49.66 | 🌐 ציבורי (iptv-org) | 2 |
 | `tv.wracanal10.com` | tv.wracanal10.com | 🌐 ציבורי (iptv-org) | 2 |
@@ -185,13 +197,11 @@
 | `peer2.tdiradio.com` | peer2.tdiradio.com | 🌐 ציבורי (iptv-org) | 2 |
 | `stream.rtl.lu` | stream.rtl.lu | 🌐 ציבורי (iptv-org) | 2 |
 | `rp.tactivemedia.com` | rp.tactivemedia.com | 🌐 ציבורי (iptv-org) | 2 |
-| `tls-cl.cdnz.cl` | tls-cl.cdnz.cl | 🌐 ציבורי (iptv-org) | 2 |
 | `rds3.desdeparaguay.net` | rds3.desdeparaguay.net | 🌐 ציבורי (iptv-org) | 2 |
 | `vdo2.pro-fhi.net` | vdo2.pro-fhi.net | 🌐 ציבורי (iptv-org) | 2 |
 | `video0.rogohosting.com` | video0.rogohosting.com | 🌐 ציבורי (iptv-org) | 2 |
 | `5ed325193d4e1.streamlock.net` | 5ed325193d4e1.streamlock.net | 🌐 ציבורי (iptv-org) | 2 |
 | `live.artidijitalmedya.com` | live.artidijitalmedya.com | 🌐 ציבורי (iptv-org) | 2 |
-| `videostream.shockmedia.com.ar` | videostream.shockmedia.com.ar | 🌐 ציבורי (iptv-org) | 2 |
 | `streamingcws30.com` | streamingcws30.com | 🌐 ציבורי (iptv-org) | 2 |
 | `video.hostingcaaguazu.com` | video.hostingcaaguazu.com | 🌐 ציבורי (iptv-org) | 2 |
 | `live.koryocdn.org` | live.koryocdn.org | 🌐 ציבורי (iptv-org) | 2 |
@@ -205,7 +215,14 @@
 | `streaming.aurora.enhanced.live` | streaming.aurora.enhanced.live | 🌐 ציבורי (iptv-org) | 2 |
 | `ncdn-live-bfm.pfd.sfr.net` | BFM – SFR (רשמי) | ✅ רשמי | 2 |
 | `strhlslb01.streamakaci.tv` | strhlslb01.streamakaci.tv | 🌐 ציבורי (iptv-org) | 2 |
+| `2-fss-1.streamhoster.com` | 2-fss-1.streamhoster.com | 🌐 ציבורי (iptv-org) | 2 |
+| `mumt03.tangotv.in` | mumt03.tangotv.in | 🌐 ציבורי (iptv-org) | 2 |
 | `23.237.104.106` | 23.237.104.106 | 🌐 ציבורי (iptv-org) | 2 |
+| `3abn.bozztv.com` | 3abn.bozztv.com | 🌐 ציבורי (iptv-org) | 2 |
+| `23.239.31.26` | 23.239.31.26 | ⚠️ ממסר צד שלישי | 2 |
+| `181.78.197.59` | 181.78.197.59 | ⚠️ ממסר צד שלישי | 2 |
+| `atomic.streamnet.ro` | atomic.streamnet.ro | ⚠️ ממסר צד שלישי | 2 |
+| `rtmp.streams.ovh` | rtmp.streams.ovh | ⚠️ ממסר צד שלישי | 2 |
 | `radio.streamgates.net` | StreamGates – ה-CDN של התחנה | ✅ רשמי | 2 |
 | `media2.93fm.co.il` | קול חי – שרת התחנה | ✅ רשמי | 2 |
 | `live.ecast.co.il` | eCast – שרת התחנה | ✅ רשמי | 2 |
@@ -226,7 +243,6 @@
 | `d3pnbvng3bx2nj.cloudfront.net` | d3pnbvng3bx2nj.cloudfront.net | 🌐 ציבורי (iptv-org) | 1 |
 | `138.204.86.4` | 138.204.86.4 | 🌐 ציבורי (iptv-org) | 1 |
 | `live-manifest.production-public.tubi.io` | live-manifest.production-public.tubi.io | 🌐 ציבורי (iptv-org) | 1 |
-| `158.172.155.130` | 158.172.155.130 | 🌐 ציבורי (iptv-org) | 1 |
 | `stmv2.voxtvhd.com.br` | stmv2.voxtvhd.com.br | 🌐 ציבורי (iptv-org) | 1 |
 | `h.jcp.live.opencaster.com` | h.jcp.live.opencaster.com | 🌐 ציבורי (iptv-org) | 1 |
 | `live-us1.thaimomo.com` | live-us1.thaimomo.com | 🌐 ציבורי (iptv-org) | 1 |
@@ -280,7 +296,6 @@
 | `limited2.todostreaming.es` | limited2.todostreaming.es | 🌐 ציבורי (iptv-org) | 1 |
 | `rt-glb.rttv.com` | rt-glb.rttv.com | 🌐 ציבורי (iptv-org) | 1 |
 | `tv.hamdardtv.com` | tv.hamdardtv.com | 🌐 ציבורי (iptv-org) | 1 |
-| `skynewsau-live-premium.akamaized.net` | skynewsau-live-premium.akamaized.net | 🌐 ציבורי (iptv-org) | 1 |
 | `av.alarabiya.net` | av.alarabiya.net | 🌐 ציבורי (iptv-org) | 1 |
 | `eazyvwqssi.erbvr.com` | eazyvwqssi.erbvr.com | 🌐 ציבורי (iptv-org) | 1 |
 | `tv-trtworld.medya.trt.com.tr` | tv-trtworld.medya.trt.com.tr | 🌐 ציבורי (iptv-org) | 1 |
@@ -354,7 +369,6 @@
 | `www.desde-paraguay.com` | www.desde-paraguay.com | 🌐 ציבורי (iptv-org) | 1 |
 | `lencatelevision.com` | lencatelevision.com | 🌐 ציבורי (iptv-org) | 1 |
 | `protokolldns.xyz` | protokolldns.xyz | 🌐 ציבורי (iptv-org) | 1 |
-| `live1.acangroup.org` | live1.acangroup.org | 🌐 ציבורי (iptv-org) | 1 |
 | `mblenmain01.telesur.ultrabase.net` | mblenmain01.telesur.ultrabase.net | 🌐 ציבורי (iptv-org) | 1 |
 | `n11.stv.livebox.sk` | n11.stv.livebox.sk | 🌐 ציבורי (iptv-org) | 1 |
 | `stream.apa.tv` | stream.apa.tv | 🌐 ציבורי (iptv-org) | 1 |
@@ -410,7 +424,6 @@
 | `d1ewctnvcwvvvu.cloudfront.net` | d1ewctnvcwvvvu.cloudfront.net | 🌐 ציבורי (iptv-org) | 1 |
 | `newscapital.com` | newscapital.com | 🌐 ציבורי (iptv-org) | 1 |
 | `d2dffl3588mvfk.cloudfront.net` | ערוץ FAST ישראלי – AWS CloudFront | ✅ FAST חינמי | 1 |
-| `dai.google.com` | dai.google.com | 🌐 ציבורי (iptv-org) | 1 |
 | `b6cca454.wurl.com` | b6cca454.wurl.com | 🌐 ציבורי (iptv-org) | 1 |
 | `zylo-cinenanar-rakuten.amagi.tv` | zylo-cinenanar-rakuten.amagi.tv | 🌐 ציבורי (iptv-org) | 1 |
 | `amogonetworx-grjngo-3-dk.samsung.wurl.tv` | amogonetworx-grjngo-3-dk.samsung.wurl.tv | 🌐 ציבורי (iptv-org) | 1 |
@@ -438,7 +451,6 @@
 | `appletree-mytime-samsungbrazil.amagi.tv` | appletree-mytime-samsungbrazil.amagi.tv | 🌐 ציבורי (iptv-org) | 1 |
 | `web.onair-radio.eu` | web.onair-radio.eu | 🌐 ציבורי (iptv-org) | 1 |
 | `origin.dpsgo.com` | origin.dpsgo.com | 🌐 ציבורי (iptv-org) | 1 |
-| `canal.mediaserver.com.co` | canal.mediaserver.com.co | 🌐 ציבורי (iptv-org) | 1 |
 | `slonehls.wns.live` | slonehls.wns.live | 🌐 ציבורי (iptv-org) | 1 |
 | `appletree-mytimeuk-rakuten.amagi.tv` | appletree-mytimeuk-rakuten.amagi.tv | 🌐 ציבורי (iptv-org) | 1 |
 | `49d735318d6b4c30a24a7997ea594e1b.mediatailor.us-west-2.amazonaws.com` | 49d735318d6b4c30a24a7997ea594e1b.mediatailor.us-west-2.amazonaws.com | 🌐 ציבורי (iptv-org) | 1 |
@@ -447,7 +459,6 @@
 | `d3arbp6l7f096k.cloudfront.net` | d3arbp6l7f096k.cloudfront.net | 🌐 ציבורי (iptv-org) | 1 |
 | `stmv1.video.brstream.com.br` | stmv1.video.brstream.com.br | 🌐 ציבורי (iptv-org) | 1 |
 | `158.172.217.18` | 158.172.217.18 | 🌐 ציבורי (iptv-org) | 1 |
-| `190.61.47.54` | 190.61.47.54 | 🌐 ציבורי (iptv-org) | 1 |
 | `sltwohls.wns.live` | sltwohls.wns.live | 🌐 ציבורי (iptv-org) | 1 |
 | `bbc-classicdrwho-1-us.roku.wurl.tv` | bbc-classicdrwho-1-us.roku.wurl.tv | 🌐 ציבורי (iptv-org) | 1 |
 | `5098a8b860504a3690fd2e7c0a18d68f.mediatailor.us-west-2.amazonaws.com` | 5098a8b860504a3690fd2e7c0a18d68f.mediatailor.us-west-2.amazonaws.com | 🌐 ציבורי (iptv-org) | 1 |
@@ -499,7 +510,6 @@
 | `cc-wie8j8y69d2uy.akamaized.net` | cc-wie8j8y69d2uy.akamaized.net | 🌐 ציבורי (iptv-org) | 1 |
 | `segment.yuppcdn.net` | segment.yuppcdn.net | 🌐 ציבורי (iptv-org) | 1 |
 | `tvoetv.space` | tvoetv.space | 🌐 ציבורי (iptv-org) | 1 |
-| `30a-tv.com` | 30a-tv.com | 🌐 ציבורי (iptv-org) | 1 |
 | `linear-12.frequency.stream` | linear-12.frequency.stream | 🌐 ציבורי (iptv-org) | 1 |
 | `drybar-drybarcomedy-1-au.samsung.wurl.tv` | drybar-drybarcomedy-1-au.samsung.wurl.tv | 🌐 ציבורי (iptv-org) | 1 |
 | `failarmy-international-au.samsung.wurl.tv` | failarmy-international-au.samsung.wurl.tv | 🌐 ציבורי (iptv-org) | 1 |
@@ -518,7 +528,6 @@
 | `stream.starmenajo.com` | stream.starmenajo.com | 🌐 ציבורי (iptv-org) | 1 |
 | `tv-trtcocuk.medya.trt.com.tr` | tv-trtcocuk.medya.trt.com.tr | 🌐 ציבורי (iptv-org) | 1 |
 | `cc-t8lqe1o99pszu.akamaized.net` | cc-t8lqe1o99pszu.akamaized.net | 🌐 ציבורי (iptv-org) | 1 |
-| `138.59.227.20` | 138.59.227.20 | 🌐 ציבורי (iptv-org) | 1 |
 | `foxkidstv.be` | foxkidstv.be | 🌐 ציבורי (iptv-org) | 1 |
 | `45.70.201.81` | 45.70.201.81 | 🌐 ציבורי (iptv-org) | 1 |
 | `gist.githubusercontent.com` | gist.githubusercontent.com | 🌐 ציבורי (iptv-org) | 1 |
@@ -663,7 +672,6 @@
 | `m317.video-stream-hosting.de` | m317.video-stream-hosting.de | 🌐 ציבורי (iptv-org) | 1 |
 | `dfoiz3dv1euv7.cloudfront.net` | dfoiz3dv1euv7.cloudfront.net | 🌐 ציבורי (iptv-org) | 1 |
 | `d1p1siomv3cm7b.cloudfront.net` | d1p1siomv3cm7b.cloudfront.net | 🌐 ציבורי (iptv-org) | 1 |
-| `178.134.1.158` | 178.134.1.158 | 🌐 ציבורי (iptv-org) | 1 |
 | `cdnapisec.kaltura.com` | cdnapisec.kaltura.com | 🌐 ציבורי (iptv-org) | 1 |
 | `phd2hls.persiana.live` | phd2hls.persiana.live | 🌐 ציבורי (iptv-org) | 1 |
 | `fms.nrwision.de` | fms.nrwision.de | 🌐 ציבורי (iptv-org) | 1 |
@@ -865,7 +873,6 @@
 | `livesg1.rtva.hiway.media` | livesg1.rtva.hiway.media | 🌐 ציבורי (iptv-org) | 1 |
 | `goliveafrica.media` | goliveafrica.media | 🌐 ציבורי (iptv-org) | 1 |
 | `stream2.nostvbonaire.com` | stream2.nostvbonaire.com | 🌐 ציבורי (iptv-org) | 1 |
-| `2-fss-1.streamhoster.com` | 2-fss-1.streamhoster.com | 🌐 ציבורי (iptv-org) | 1 |
 | `oqgdrog4d4rm-hls-live.5centscdn.com` | oqgdrog4d4rm-hls-live.5centscdn.com | 🌐 ציבורי (iptv-org) | 1 |
 | `radio.serv.si` | radio.serv.si | 🌐 ציבורי (iptv-org) | 1 |
 | `candlelightmedia-sparklightlove-4-us.roku.wurl.tv` | candlelightmedia-sparklightlove-4-us.roku.wurl.tv | 🌐 ציבורי (iptv-org) | 1 |
@@ -876,14 +883,12 @@
 | `tvf-tv5ch.otteravision.com` | tvf-tv5ch.otteravision.com | 🌐 ציבורי (iptv-org) | 1 |
 | `api.alpaca.t62a.com` | api.alpaca.t62a.com | 🌐 ציבורי (iptv-org) | 1 |
 | `e75fc053c0d2406fb74cdd71d77e1a7f.mediatailor.us-east-1.amazonaws.com` | e75fc053c0d2406fb74cdd71d77e1a7f.mediatailor.us-east-1.amazonaws.com | 🌐 ציבורי (iptv-org) | 1 |
-| `mumt03.tangotv.in` | mumt03.tangotv.in | 🌐 ציבורי (iptv-org) | 1 |
 | `op-flashcon-digdayahd-1.dens.tv` | op-flashcon-digdayahd-1.dens.tv | 🌐 ציבורי (iptv-org) | 1 |
 | `faithworldtv.abs.tv` | faithworldtv.abs.tv | 🌐 ציבורי (iptv-org) | 1 |
 | `evandis.streamakaci.tv` | evandis.streamakaci.tv | 🌐 ציבורי (iptv-org) | 1 |
 | `bild-und-ton.stream` | bild-und-ton.stream | 🌐 ציבורי (iptv-org) | 1 |
 | `600f07e114306.streamlock.net` | 600f07e114306.streamlock.net | 🌐 ציבורי (iptv-org) | 1 |
 | `hls-mycdn08724960135.cdnvideo.ru` | hls-mycdn08724960135.cdnvideo.ru | 🌐 ציבורי (iptv-org) | 1 |
-| `3abn.bozztv.com` | 3abn.bozztv.com | 🌐 ציבורי (iptv-org) | 1 |
 | `dzkyvlfyge.erbvr.com` | dzkyvlfyge.erbvr.com | 🌐 ציבורי (iptv-org) | 1 |
 | `qatartv.akamaized.net` | qatartv.akamaized.net | 🌐 ציבורי (iptv-org) | 1 |
 | `5b622f07944df.streamlock.net` | 5b622f07944df.streamlock.net | 🌐 ציבורי (iptv-org) | 1 |
@@ -897,6 +902,45 @@
 | `aom-live.maghost.ro` | aom-live.maghost.ro | 🌐 ציבורי (iptv-org) | 1 |
 | `live.apostoltv.hu` | live.apostoltv.hu | 🌐 ציבורי (iptv-org) | 1 |
 | `multimedia.fortalezatv.cl` | multimedia.fortalezatv.cl | 🌐 ציבורי (iptv-org) | 1 |
+| `strhls.streamakaci.tv` | strhls.streamakaci.tv | ⚠️ ממסר צד שלישי | 1 |
+| `bein-xtra-bein.amagi.tv` | bein-xtra-bein.amagi.tv | ⚠️ ממסר צד שלישי | 1 |
+| `178.124.179.122` | 178.124.179.122 | ⚠️ ממסר צד שלישי | 1 |
+| `edge59.dc.beltelecom.by` | edge59.dc.beltelecom.by | ⚠️ ממסר צד שלישי | 1 |
+| `livestream.lumpentv.com.ar` | livestream.lumpentv.com.ar | ⚠️ ממסר צד שלישי | 1 |
+| `hls.tvabierta.net` | hls.tvabierta.net | ⚠️ ממסר צד שלישי | 1 |
+| `37b4c228.wurl.com` | 37b4c228.wurl.com | ⚠️ ממסר צד שלישי | 1 |
+| `4397879b.wurl.com` | 4397879b.wurl.com | ⚠️ ממסר צד שלישי | 1 |
+| `6c849fb3.wurl.com` | 6c849fb3.wurl.com | ⚠️ ממסר צד שלישי | 1 |
+| `5d95f7d7.wurl.com` | 5d95f7d7.wurl.com | ⚠️ ממסר צד שלישי | 1 |
+| `e3be9ac5.wurl.com` | e3be9ac5.wurl.com | ⚠️ ממסר צד שלישי | 1 |
+| `d63fabad.wurl.com` | d63fabad.wurl.com | ⚠️ ממסר צד שלישי | 1 |
+| `d2w9q46ikgrcwx.cloudfront.net` | d2w9q46ikgrcwx.cloudfront.net | ⚠️ ממסר צד שלישי | 1 |
+| `tvsen7.aynascope.net` | tvsen7.aynascope.net | ⚠️ ממסר צד שלישי | 1 |
+| `1593604785.rsc.cdn77.org` | 1593604785.rsc.cdn77.org | ⚠️ ממסר צד שלישי | 1 |
+| `dnf08l6u6uxnz.cloudfront.net` | dnf08l6u6uxnz.cloudfront.net | ⚠️ ממסר צד שלישי | 1 |
+| `amg00477-samsungelectron-worldpokertour-samsunguk-81igb.amagi.tv` | amg00477-samsungelectron-worldpokertour-samsunguk-81igb.amagi.tv | ⚠️ ממסר צד שלישי | 1 |
+| `4kuhls.persiana.live` | 4kuhls.persiana.live | ⚠️ ממסר צד שלישי | 1 |
+| `musichls.persiana.live` | musichls.persiana.live | ⚠️ ממסר צד שלישי | 1 |
+| `cdn2.in` | cdn2.in | ⚠️ ממסר צד שלישי | 1 |
+| `wms.shared.streamshow.it` | wms.shared.streamshow.it | ⚠️ ממסר צד שלישי | 1 |
+| `k3.usastreams.com` | k3.usastreams.com | ⚠️ ממסר צד שלישי | 1 |
+| `d2hng5r56zpsbw.cloudfront.net` | d2hng5r56zpsbw.cloudfront.net | ⚠️ ממסר צד שלישי | 1 |
+| `streamtv.mediasector.es` | streamtv.mediasector.es | ⚠️ ממסר צד שלישי | 1 |
+| `video.wilohosting.com` | video.wilohosting.com | ⚠️ ממסר צד שלישי | 1 |
+| `tv.alterna.ar` | tv.alterna.ar | ⚠️ ממסר צד שלישי | 1 |
+| `istream.binarywaves.com` | istream.binarywaves.com | ⚠️ ממסר צד שלישי | 1 |
+| `hls.avang.live` | hls.avang.live | ⚠️ ממסר צד שלישי | 1 |
+| `streamyes.alsolnet.com` | streamyes.alsolnet.com | ⚠️ ממסר צד שלישי | 1 |
+| `amg01408-amg01408c5-amgplt0747.playout.now3.amagi.tv` | amg01408-amg01408c5-amgplt0747.playout.now3.amagi.tv | ⚠️ ממסר צד שלישי | 1 |
+| `streams.tangotv.in` | streams.tangotv.in | ⚠️ ממסר צד שלישי | 1 |
+| `mcncdndigital.com` | mcncdndigital.com | ⚠️ ממסר צד שלישי | 1 |
+| `181.78.106.127` | 181.78.106.127 | ⚠️ ממסר צד שלישי | 1 |
+| `tv.beatfm.nl` | tv.beatfm.nl | ⚠️ ממסר צד שלישי | 1 |
+| `bibeltv03.iptv-playoutcenter.de` | bibeltv03.iptv-playoutcenter.de | ⚠️ ממסר צד שלישי | 1 |
+| `livestream2.bokradio.co.za` | livestream2.bokradio.co.za | ⚠️ ממסר צד שלישי | 1 |
+| `yuppnimrestreammum.akamaized.net` | yuppnimrestreammum.akamaized.net | ⚠️ ממסר צד שלישי | 1 |
+| `tvboom.ro` | tvboom.ro | ⚠️ ממסר צד שלישי | 1 |
+| `cmc-cmctv-cineverse.amagi.tv` | cmc-cmctv-cineverse.amagi.tv | ⚠️ ממסר צד שלישי | 1 |
 | `eco-live.mediacast.co.il` | eco99fm – Mediacast (רשמי) | ✅ רשמי | 1 |
 | `102.livecdn.biz` | 102FM – LiveCDN (רשמי) | ✅ רשמי | 1 |
 | `kzradio.mediacast.co.il` | רדיו הקצה – Mediacast (רשמי) | ✅ רשמי | 1 |
@@ -1087,6 +1131,58 @@
 | 257 | Pluto TV Competition | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVCompetition.us`) | ✅ |
 | 258 | PokerGo | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PokerGo.us`) | ✅ |
 | 259 | Sport 1 בלטיק HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
+| 1594 | 30A Golf Kingdom HD | 30a-tv.com | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 1595 | ACC Network HD | 23.239.31.26 | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
+| 1596 | ADO TV HD | strhls.streamakaci.tv | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 1597 | beIN SPORTS XTRA HD | bein-xtra-bein.amagi.tv | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 1598 | Belarus-5 HD HD | 178.124.179.122 | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
+| 1599 | Belarus-5 Internet HD | edge59.dc.beltelecom.by | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 1600 | Canal Showsport HD | livestream.lumpentv.com.ar | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 1601 | CBS Sports Golazo Network HD | dai.google.com | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 1602 | CBS Sports HQ HD | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 1603 | CDN Deportes HD | hls.tvabierta.net | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 1604 | CRTV Sports and Entertainment SD HD | live1.acangroup.org | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 1605 | DD Sports HD HD | cdn.pishow.tv | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 1606 | Dynamo Kyiv TV HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
+| 1607 | Eleven Sports 1 HD | 92.114.85.87 | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
+| 1608 | Eleven Sports 2 HD | 92.114.85.87 | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
+| 1609 | Eleven Sports 3 HD | 92.114.85.87 | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
+| 1610 | Eleven Sports 4 HD | 92.114.85.87 | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
+| 1611 | Equalympic HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
+| 1612 | Equidia HD | raw.githubusercontent.com | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 1613 | ESPN 2  HD HD | 85.237.89.160 | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
+| 1614 | ESPN 2 Latin America HD | barinaslive1.boldmss.com | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 1615 | ESPN 2 Latin America Colombia HD | 190.61.47.54 | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
+| 1616 | ESPN 3 Latin America HD | barinaslive1.boldmss.com | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 1617 | ESPN 4 HD | 181.78.197.59 | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
+| 1618 | ESPN 4 Latin America HD | barinaslive1.boldmss.com | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 1619 | ESPN 5 Latin America HD | barinaslive1.boldmss.com | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 1620 | ESPN 6 Latin America HD | barinaslive1.boldmss.com | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 1621 | ESPN 7 Latin America HD | barinaslive1.boldmss.com | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 1622 | ESPN HD | 181.78.197.59 | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
+| 1623 | ESPN  HD HD | 85.237.89.160 | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
+| 1624 | ESPN Latin America HD | barinaslive1.boldmss.com | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 1625 | ESPN Latin America Colombia HD | 190.61.47.54 | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
+| 1626 | ESPN Premium  HD HD | 158.172.155.130 | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
+| 1627 | ESPNU HD HD | 85.237.89.160 | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
+| 1628 | Esport3 Originals HD | directes-tv-int.3catdirectes.cat | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 1629 | Eurosport HD | drk6xq0vhn.gpcdn.net | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 1630 | FIFA+ French HD | 37b4c228.wurl.com | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 1631 | FIFA+ German HD | 4397879b.wurl.com | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 1632 | FIFA+ Hispanic America HD | 6c849fb3.wurl.com | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 1633 | FIFA+ Italy HD | 5d95f7d7.wurl.com | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 1634 | FIFA+ Portuguese HD | e3be9ac5.wurl.com | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 1635 | FIFA+ Spain HD | d63fabad.wurl.com | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 1636 | FIFA+ United States HD | d2w9q46ikgrcwx.cloudfront.net | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 1637 | FightBox Poland HD | 92.114.85.87 | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
+| 1638 | Fox Sports 1 HD | 85.237.89.160 | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
+| 1639 | Fox Sports 2 HD | tvsen7.aynascope.net | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 1640 | Fox Sports HD | 138.59.227.20 | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
+| 1641 | Fox Sports News HD | skynewsau-live-premium.akamaized.net | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 1642 | FTF Sports HD | 1593604785.rsc.cdn77.org | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 1643 | Fubo Sports Network HD | dnf08l6u6uxnz.cloudfront.net | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 1644 | World Poker Tour UK HD | amg00477-samsungelectron-worldpokertour-samsunguk-81igb.amagi.tv | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 1645 | WWE Network HD | 103.151.60.162 | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
 
 ## 📺 חדשות מהעולם (News)
 
@@ -1906,6 +2002,54 @@
 | 1046 | Love TV | stream.nasatv.com.mk | 🌐 ציבורי (iptv-org) | iptv-org (`LoveTV.mk`) | ❌ רק באפליקציה (הפניה בלי CORS) |
 | 1047 | Hit FM | hitfm.nfthost.net | 🌐 ציבורי (iptv-org) | iptv-org (`HitFM.md`) | ✅ |
 | 1048 | Today Radio | stream.rtl.lu | 🌐 ציבורי (iptv-org) | iptv-org (`TodayRadio.lu`) | ✅ |
+| 1646 | 3ABN Praise Him Music Network HD | 3abn.bozztv.com | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 1647 | 4 Fun Dance HD | 92.114.85.87 | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
+| 1648 | 4Kurd HD | 4kuhls.persiana.live | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 1649 | 4 Music HD | musichls.persiana.live | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 1650 | 7S Music HD | cdn.pishow.tv | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 1651 | 7X Music HD | cdn2.in | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 1652 | 8XM HD | cdn4.mjunoon.tv | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 1653 | 30A Music HD | 30a-tv.com | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 1654 | 51 Radio TV HD | wms.shared.streamshow.it | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
+| 1655 | 88 Stereo HD | k3.usastreams.com | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
+| 1656 | Abdulmajeed Abdullah HD | d2hng5r56zpsbw.cloudfront.net | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 1657 | ACE Country Radio KPVM-LD HD | 2-fss-1.streamhoster.com | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 1658 | Activa TV HD | streamtv.mediasector.es | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 1659 | AE Radio TV HD | tls-cl.cdnz.cl | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 1660 | Alcance FM PLAY TV HD | video.wilohosting.com | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 1661 | Allegro HD HD | 158.172.155.130 | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
+| 1662 | AlternaTV HD | tv.alterna.ar | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 1663 | Andy Haryana HD | mumt03.tangotv.in | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 1664 | Arabica TV HD | istream.binarywaves.com | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
+| 1665 | Atomic Academy TV HD | atomic.streamnet.ro | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 1666 | Atomic TV HD | atomic.streamnet.ro | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 1667 | Avang TV HD | hls.avang.live | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 1668 | AXS TV HD | 23.239.31.26 | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
+| 1669 | Azahares Radiovisual Multimedia HD | streamyes.alsolnet.com | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 1670 | B4U Music HD | amg01408-amg01408c5-amgplt0747.playout.now3.amagi.tv | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 1671 | Baby Time HD | 178.134.1.158 | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
+| 1672 | Balle Balle HD | streams.tangotv.in | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 1673 | Balle Balle HD HD | mcncdndigital.com | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 1674 | Bandamax HD | 181.78.106.127 | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
+| 1675 | Baraza TV Deep House HD | rtmp.streams.ovh | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 1676 | Baraza TV Relaxing HD | rtmp.streams.ovh | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 1677 | Beats Radio HD | videostream.shockmedia.com.ar | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 1678 | BEATTV HD | tv.beatfm.nl | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 1679 | Bibel TV Musik HD | bibeltv03.iptv-playoutcenter.de | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 1680 | BIZ Music HD | fl.biztv.media | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 1681 | Black HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
+| 1682 | BOKTV HD | livestream2.bokradio.co.za | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 1683 | Boogle Bollywood HD | yuppnimrestreammum.akamaized.net | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 1684 | Boom TV HD | tvboom.ro | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 1685 | BPX TV Radio HD | video1.getstreamhosting.com | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 1686 | BRIDGE HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
+| 1687 | BRIDGE Classic HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
+| 1688 | BRIDGE Deluxe HD HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
+| 1689 | BRIDGE Hits HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
+| 1690 | BRIDGE Rock HD | 178.134.1.158 | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
+| 1691 | Buenisima Radio TV HD | canal.mediaserver.com.co | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 1692 | Cadena Elite HD | cloudvideo.servers10.com | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 1693 | California Music Channel HD | cmc-cmctv-cineverse.amagi.tv | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
 
 ## 📺 טבע ודוקו (Documentary & Nature)
 

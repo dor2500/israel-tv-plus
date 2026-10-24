@@ -1,6 +1,6 @@
 # 📺 כל הערוצים – ישראל TV+
 
-נוצר אוטומטית מ-`channels.json` (`tools/make_channel_list.py`). **1593** פריטים: **1493** ערוצי טלוויזיה, **100** תחנות רדיו ו-**0** שירותי מנויים, מ-**156** מדינות. 1379 מהם מתנגנים גם באתר; כל השאר באפליקציות (Android, טלוויזיה, Windows, Mac, Linux) וב-Stremio.
+נוצר אוטומטית מ-`channels.json` (`tools/make_channel_list.py`). **1693** פריטים: **1593** ערוצי טלוויזיה, **100** תחנות רדיו ו-**0** שירותי מנויים, מ-**156** מדינות. 1445 מהם מתנגנים גם באתר; כל השאר באפליקציות (Android, טלוויזיה, Windows, Mac, Linux) וב-Stremio.
 
 **▶ צפייה:** https://dor2500.github.io/israel-tv-plus/ · **🎬 Stremio:** https://dor2500.github.io/israel-tv-plus/stremio/ · **📋 מקור כל שידור:** [SOURCES.md](SOURCES.md)
 
@@ -10,7 +10,7 @@
 - 🧸 [ילדים ונוער (בעברית)](#ילדים-ונוער-בעברית) – 3
 - 📻 [רדיו ישראלי (Israeli Radio)](#רדיו-ישראלי-israeli-radio) – 100
 - 🕯️ [מסורת וקהילה](#מסורת-וקהילה) – 7
-- ⚽ [ספורט (Sports)](#ספורט-sports) – 139
+- ⚽ [ספורט (Sports)](#ספורט-sports) – 191
 - 📰 [חדשות מהעולם (News)](#חדשות-מהעולם-news) – 180
 - 📈 [כלכלה ועסקים (Business)](#כלכלה-ועסקים-business) – 37
 - 🎬 [סרטים וסדרות (Movies & Series)](#סרטים-וסדרות-movies--series) – 224
@@ -20,7 +20,7 @@
 - 🌍 [טבע ודוקו (Documentary & Nature)](#טבע-ודוקו-documentary--nature) – 73
 - ✈️ [טיולים והרפתקאות (Travel)](#טיולים-והרפתקאות-travel) – 53
 - 🔬 [מדע ולמידה (Science)](#מדע-ולמידה-science) – 71
-- 🎵 [מוזיקה (Music TV)](#מוזיקה-music-tv) – 137
+- 🎵 [מוזיקה (Music TV)](#מוזיקה-music-tv) – 185
 - 🍿 [לייף סטייל ובידור](#לייף-סטייל-ובידור) – 131
 - 🙏 [דת ואמונה (Religion)](#דת-ואמונה-religion) – 30
 - 🌐 [ערוצים בינלאומיים (World)](#ערוצים-בינלאומיים-world) – 144
@@ -35,13 +35,13 @@
 | 2 | <img src="assets/logos/reshet13.png" width="56" alt=""> | **רשת 13 HD** | 🇮🇱 ישראל | עברית | FHD | 🌐 אתר + 📲 אפליקציות |
 | 3 | <img src="assets/logos/kan11.png" width="56" alt=""> | **כאן 11 HD** | 🇮🇱 ישראל | עברית | FHD | 🌐 אתר + 📲 אפליקציות |
 | 4 | <img src="playlist-logos/now14.png" width="56" alt=""> | **עכשיו 14 HD** | 🇮🇱 ישראל | עברית | FHD | 🌐 אתר + 📲 אפליקציות |
-| 5 |  | **i24NEWS עברית HD** | 🇮🇱 ישראל | עברית | FHD | 🌐 אתר + 📲 אפליקציות |
+| 5 | <img src="playlist-logos/i24news_he.png" width="56" alt=""> | **i24NEWS עברית HD** | 🇮🇱 ישראל | עברית | FHD | 🌐 אתר + 📲 אפליקציות |
 | 6 | <img src="assets/logos/ch9.png" width="56" alt=""> | **ערוץ 9 ישראל HD** | 🇮🇱 ישראל | רוסית | FHD | 🌐 אתר + 📲 אפליקציות |
 | 7 | <img src="assets/logos/ch24.png" width="56" alt=""> | **ערוץ 24 HD** | 🇮🇱 ישראל | עברית | HD | 📲 אפליקציות בלבד |
 | 8 | <img src="playlist-logos/makan33.png" width="56" alt=""> | **מכאן 33 HD** | 🇮🇱 ישראל | ערבית | FHD | 🌐 אתר + 📲 אפליקציות |
 | 9 | <img src="playlist-logos/knesset.png" width="56" alt=""> | **ערוץ הכנסת 99** | 🇮🇱 ישראל | עברית | SD | 🌐 אתר + 📲 אפליקציות |
-| 10 |  | **i24NEWS צרפתית HD** | 🇮🇱 ישראל | צרפתית | FHD | 🌐 אתר + 📲 אפליקציות |
-| 11 |  | **i24NEWS ערבית HD** | 🇮🇱 ישראל | ערבית | FHD | 🌐 אתר + 📲 אפליקציות |
+| 10 | <img src="playlist-logos/i24news_fr.png" width="56" alt=""> | **i24NEWS צרפתית HD** | 🇮🇱 ישראל | צרפתית | FHD | 🌐 אתר + 📲 אפליקציות |
+| 11 | <img src="playlist-logos/i24news_ar.png" width="56" alt=""> | **i24NEWS ערבית HD** | 🇮🇱 ישראל | ערבית | FHD | 🌐 אתר + 📲 אפליקציות |
 | 12 | <img src="playlist-logos/i24news_en.png" width="56" alt=""> | **i24NEWS English** | 🇮🇱 ישראל | אנגלית | FHD | 🌐 אתר + 📲 אפליקציות |
 | 13 | <img src="playlist-logos/iltv_fr.png" width="56" alt=""> | **ILTV ישראל בצרפתית** | 🇮🇱 ישראל | צרפתית | HD | 🌐 אתר + 📲 אפליקציות |
 | 14 | <img src="playlist-logos/ynet_live.png" width="56" alt=""> | **ynet Live** | 🇮🇱 ישראל | עברית | HD | 🌐 אתר + 📲 אפליקציות |
@@ -172,17 +172,17 @@
 
 | # | | ערוץ | מדינה | שפה | איכות | איפה מתנגן |
 |---|---|---|---|---|---|---|
-| 1377 |  | **ערוץ הידברות HD** | 🇮🇱 ישראל | עברית | FHD | 🌐 אתר + 📲 אפליקציות |
-| 1378 |  | **הלא TV HD (Hala TV)** | 🇮🇱 ישראל | ערבית | FHD | 🌐 אתר + 📲 אפליקציות |
-| 1379 |  | **ערוץ קבלה לעם** | 🇮🇱 ישראל | עברית | SD | 🌐 אתר + 📲 אפליקציות |
-| 1380 |  | **שלנו TV HD (Shelanu TV)** | 🇮🇱 ישראל | — | HD | 🌐 אתר + 📲 אפליקציות |
-| 1381 |  | **ערוץ 16 ישראל** | 🇮🇱 ישראל | — | HD | 🌐 אתר + 📲 אפליקציות |
+| 1377 | <img src="playlist-logos/hidabroot.png" width="56" alt=""> | **ערוץ הידברות HD** | 🇮🇱 ישראל | עברית | FHD | 🌐 אתר + 📲 אפליקציות |
+| 1378 | <img src="playlist-logos/hala_tv.png" width="56" alt=""> | **הלא TV HD (Hala TV)** | 🇮🇱 ישראל | ערבית | FHD | 🌐 אתר + 📲 אפליקציות |
+| 1379 | <img src="playlist-logos/kabbalah.png" width="56" alt=""> | **ערוץ קבלה לעם** | 🇮🇱 ישראל | עברית | SD | 🌐 אתר + 📲 אפליקציות |
+| 1380 | <img src="playlist-logos/shelanu_tv.png" width="56" alt=""> | **שלנו TV HD (Shelanu TV)** | 🇮🇱 ישראל | — | HD | 🌐 אתר + 📲 אפליקציות |
+| 1381 | <img src="playlist-logos/channel16.png" width="56" alt=""> | **ערוץ 16 ישראל** | 🇮🇱 ישראל | — | HD | 🌐 אתר + 📲 אפליקציות |
 | 1382 | <img src="playlist-logos/jltv.png" width="56" alt=""> | **JLTV טלוויזיה יהודית** | 🇮🇱 ישראל | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
 | 1383 | <img src="playlist-logos/kabbalah_ru.png" width="56" alt=""> | **קבלה לעם – רוסית** | 🇮🇱 ישראל | רוסית | HD | 🌐 אתר + 📲 אפליקציות |
 
 ## ספורט (Sports)
 
-⚽ 139 ערוצים
+⚽ 191 ערוצים
 
 | # | | ערוץ | מדינה | שפה | איכות | איפה מתנגן |
 |---|---|---|---|---|---|---|
@@ -190,10 +190,10 @@
 | 122 | <img src="https://i.imgur.com/vk0j1mY.png" width="56" alt=""> | **Sport 2 אוקראינה** |  | אוקראינית | HD | 📲 אפליקציות בלבד |
 | 123 | <img src="https://i.imgur.com/qkvavfH.png" width="56" alt=""> | **Sport 3 אוקראינה** |  | אוקראינית | HD | 📲 אפליקציות בלבד |
 | 124 | <img src="https://i.imgur.com/xW6oGIx.png" width="56" alt=""> | **Sport 4 אוקראינה** |  | אוקראינית | HD | 📲 אפליקציות בלבד |
-| 125 |  | **ספורט פלוס HD (viju+ Sport)** |  | רוסית | HD | 🌐 אתר + 📲 אפליקציות |
+| 125 | <img src="playlist-logos/viju_sport.png" width="56" alt=""> | **ספורט פלוס HD (viju+ Sport)** |  | רוסית | HD | 🌐 אתר + 📲 אפליקציות |
 | 126 | <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Setanta_Sports_logo.svg/512px-Setanta_Sports_logo.svg.png" width="56" alt=""> | **ספורט סטאנטה Setanta Sports 2 HD** |  | רוסית | FHD | 📲 אפליקציות בלבד |
 | 127 | <img src="https://upload.wikimedia.org/wikipedia/en/thumb/e/eb/Red_Bull_TV_logo.svg/512px-Red_Bull_TV_logo.svg.png" width="56" alt=""> | **Red Bull TV HD** |  | אנגלית | FHD | 🌐 אתר + 📲 אפליקציות |
-| 128 |  | **ערוץ אקסטרים Extreme Sports HD** |  | רוסית | 4K HDR | 📲 אפליקציות בלבד |
+| 128 | <img src="playlist-logos/extreme_sports_hd.png" width="56" alt=""> | **ערוץ אקסטרים Extreme Sports HD** |  | רוסית | 4K HDR | 📲 אפליקציות בלבד |
 | 129 | <img src="https://i.imgur.com/Zjb8awW.png" width="56" alt=""> | **Sport 1 אוקראינה** |  | אוקראינית | HD | 📲 אפליקציות בלבד |
 | 130 | <img src="playlist-logos/sport5_live.png" width="56" alt=""> | **ספורט 5 – שידור חי** |  | עברית | HD | 🌐 אתר + 📲 אפליקציות |
 | 131 | <img src="https://i.imgur.com/V6Kaqha.png" width="56" alt=""> | **ACC Digital Network** | 🇺🇸 ארצות הברית | אנגלית | FHD | 🌐 אתר + 📲 אפליקציות |
@@ -207,7 +207,7 @@
 | 139 | <img src="https://i.imgur.com/ZhkZzLf.png" width="56" alt=""> | **A Spor** | 🇹🇷 טורקיה | טורקית | FHD | 🌐 אתר + 📲 אפליקציות |
 | 140 | <img src="https://dtil.tmsimg.com/assets/s158255_ld_h15_aa.png?lock=720x540" width="56" alt=""> | **DD Sports** | 🇮🇳 הודו | הינדי | FHD | 🌐 אתר + 📲 אפליקציות |
 | 141 | <img src="https://i.imgur.com/WK3keM9.png" width="56" alt=""> | **CCTV-Billiards** | 🇨🇳 סין | סינית | FHD | 📲 אפליקציות בלבד |
-| 142 |  | **CazeTV** | 🇧🇷 ברזיל | פורטוגזית | SD | 📲 אפליקציות בלבד |
+| 142 | <img src="playlist-logos/iptv_cazetv_br.png" width="56" alt=""> | **CazeTV** | 🇧🇷 ברזיל | פורטוגזית | SD | 📲 אפליקציות בלבד |
 | 143 | <img src="https://match-images.icdb.tv/5913207f2494844101287828e87625eb.jpg" width="56" alt=""> | **Azteca Deportes Network** | 🇲🇽 מקסיקו | ספרדית | HD | 🌐 אתר + 📲 אפליקציות |
 | 144 | <img src="https://i.imgur.com/THk9ARS.png" width="56" alt=""> | **DeporTV** | 🇦🇷 ארגנטינה | ספרדית | FHD | 📲 אפליקציות בלבד |
 | 145 | <img src="https://i.imgur.com/a9ZtP17.png" width="56" alt=""> | **Fast&FunBox** | 🇳🇱 הולנד | אנגלית | SD | 🌐 אתר + 📲 אפליקציות |
@@ -260,7 +260,7 @@
 | 192 | <img src="https://i.imgur.com/ZeUgLCa.png" width="56" alt=""> | **Colimdo TV** | 🇩🇴 הרפובליקה הדומיניקנית | ספרדית | HD | 🌐 אתר + 📲 אפליקציות |
 | 193 | <img src="https://i.imgur.com/SFYhgrt.png" width="56" alt=""> | **DraftKings Network** | 🇺🇸 ארצות הברית | אנגלית | FHD | 🌐 אתר + 📲 אפליקציות |
 | 194 | <img src="https://i.ibb.co/LhpwRm8V/GB3800009-F0-20251028-T010335-SQUARE.png" width="56" alt=""> | **FIFA+ Women** | 🇬🇧 בריטניה | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
-| 195 |  | **Persiana Fight** | 🇫🇷 צרפת | פרסית | SD | 🌐 אתר + 📲 אפליקציות |
+| 195 | <img src="playlist-logos/iptv_persianafight_fr.png" width="56" alt=""> | **Persiana Fight** | 🇫🇷 צרפת | פרסית | SD | 🌐 אתר + 📲 אפליקציות |
 | 196 | <img src="https://images.pluto.tv/channels/64b67f0424ade50008a3be17/colorLogoPNG.png" width="56" alt=""> | **DAZN Darts x Pluto TV** | 🇩🇪 גרמניה | גרמנית | SD | 🌐 אתר + 📲 אפליקציות |
 | 197 | <img src="https://i.imgur.com/47X44DD.png" width="56" alt=""> | **MadeinBO TV** | 🇮🇹 איטליה | איטלקית | FHD | 🌐 אתר + 📲 אפליקציות |
 | 198 | <img src="https://i.imgur.com/Dk8VbAc.png" width="56" alt=""> | **Russian Extreme Ultra** | 🇷🇺 רוסיה | רוסית | SD | 📲 אפליקציות בלבד |
@@ -325,6 +325,58 @@
 | 257 | <img src="https://images.pluto.tv/channels/603fde9026ecbf0007752c2c/colorLogoPNG.png" width="56" alt=""> | **Pluto TV Competition** | 🇺🇸 ארצות הברית | אנגלית | SD | 🌐 אתר + 📲 אפליקציות |
 | 258 | <img src="https://i.imgur.com/1603HED.png" width="56" alt=""> | **PokerGo** | 🇺🇸 ארצות הברית | אנגלית | SD | 🌐 אתר + 📲 אפליקציות |
 | 259 | <img src="playlist-logos/sport1_baltic.png" width="56" alt=""> | **Sport 1 בלטיק HD** |  | אנגלית | FHD | 📲 אפליקציות בלבד |
+| 1594 | <img src="playlist-logos/30a_golf_kingdom.png" width="56" alt=""> | **30A Golf Kingdom HD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 1595 | <img src="playlist-logos/acc_network.png" width="56" alt=""> | **ACC Network HD** |  |  | HD | 📲 אפליקציות בלבד |
+| 1596 | <img src="playlist-logos/ado_tv.png" width="56" alt=""> | **ADO TV HD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 1597 | <img src="playlist-logos/bein_sports_xtra.png" width="56" alt=""> | **beIN SPORTS XTRA HD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 1598 | <img src="playlist-logos/belarus5_hd.png" width="56" alt=""> | **Belarus-5 HD HD** |  |  | HD | 📲 אפליקציות בלבד |
+| 1599 | <img src="playlist-logos/belarus5_internet.png" width="56" alt=""> | **Belarus-5 Internet HD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 1600 | <img src="playlist-logos/canal_showsport.png" width="56" alt=""> | **Canal Showsport HD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 1601 | <img src="playlist-logos/cbs_sports_golazo_network.png" width="56" alt=""> | **CBS Sports Golazo Network HD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 1602 | <img src="playlist-logos/cbs_sports_hq.png" width="56" alt=""> | **CBS Sports HQ HD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 1603 | <img src="playlist-logos/cdn_deportes.png" width="56" alt=""> | **CDN Deportes HD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 1604 | <img src="playlist-logos/crtv_sports_and_entertainment_sd.png" width="56" alt=""> | **CRTV Sports and Entertainment SD HD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 1605 | <img src="playlist-logos/dd_sports_hd.png" width="56" alt=""> | **DD Sports HD HD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 1606 | <img src="playlist-logos/dynamo_kyiv_tv.png" width="56" alt=""> | **Dynamo Kyiv TV HD** |  |  | HD | 📲 אפליקציות בלבד |
+| 1607 | <img src="playlist-logos/eleven_sports_1.png" width="56" alt=""> | **Eleven Sports 1 HD** |  |  | HD | 📲 אפליקציות בלבד |
+| 1608 | <img src="playlist-logos/eleven_sports_2.png" width="56" alt=""> | **Eleven Sports 2 HD** |  |  | HD | 📲 אפליקציות בלבד |
+| 1609 | <img src="playlist-logos/eleven_sports_3.png" width="56" alt=""> | **Eleven Sports 3 HD** |  |  | HD | 📲 אפליקציות בלבד |
+| 1610 | <img src="playlist-logos/eleven_sports_4.png" width="56" alt=""> | **Eleven Sports 4 HD** |  |  | HD | 📲 אפליקציות בלבד |
+| 1611 | <img src="playlist-logos/equalympic.png" width="56" alt=""> | **Equalympic HD** |  |  | HD | 📲 אפליקציות בלבד |
+| 1612 | <img src="playlist-logos/equidia.png" width="56" alt=""> | **Equidia HD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 1613 | <img src="playlist-logos/espn_2__hd.png" width="56" alt=""> | **ESPN 2  HD HD** |  |  | HD | 📲 אפליקציות בלבד |
+| 1614 | <img src="playlist-logos/espn_2_latin_america.png" width="56" alt=""> | **ESPN 2 Latin America HD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 1615 | <img src="playlist-logos/espn_2_latin_america_colombia.png" width="56" alt=""> | **ESPN 2 Latin America Colombia HD** |  |  | HD | 📲 אפליקציות בלבד |
+| 1616 | <img src="playlist-logos/espn_3_latin_america.png" width="56" alt=""> | **ESPN 3 Latin America HD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 1617 | <img src="playlist-logos/espn_4.png" width="56" alt=""> | **ESPN 4 HD** |  |  | HD | 📲 אפליקציות בלבד |
+| 1618 | <img src="playlist-logos/espn_4_latin_america.png" width="56" alt=""> | **ESPN 4 Latin America HD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 1619 | <img src="playlist-logos/espn_5_latin_america.png" width="56" alt=""> | **ESPN 5 Latin America HD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 1620 | <img src="playlist-logos/espn_6_latin_america.png" width="56" alt=""> | **ESPN 6 Latin America HD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 1621 | <img src="playlist-logos/espn_7_latin_america.png" width="56" alt=""> | **ESPN 7 Latin America HD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 1622 | <img src="playlist-logos/espn.png" width="56" alt=""> | **ESPN HD** |  |  | HD | 📲 אפליקציות בלבד |
+| 1623 | <img src="playlist-logos/espn__hd.png" width="56" alt=""> | **ESPN  HD HD** |  |  | HD | 📲 אפליקציות בלבד |
+| 1624 | <img src="playlist-logos/espn_latin_america.png" width="56" alt=""> | **ESPN Latin America HD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 1625 | <img src="playlist-logos/espn_latin_america_colombia.png" width="56" alt=""> | **ESPN Latin America Colombia HD** |  |  | HD | 📲 אפליקציות בלבד |
+| 1626 | <img src="playlist-logos/espn_premium__hd.png" width="56" alt=""> | **ESPN Premium  HD HD** |  |  | HD | 📲 אפליקציות בלבד |
+| 1627 | <img src="playlist-logos/espnu_hd.png" width="56" alt=""> | **ESPNU HD HD** |  |  | HD | 📲 אפליקציות בלבד |
+| 1628 | <img src="playlist-logos/esport3_originals.png" width="56" alt=""> | **Esport3 Originals HD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 1629 | <img src="playlist-logos/eurosport.png" width="56" alt=""> | **Eurosport HD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 1630 | <img src="playlist-logos/fifa_french.png" width="56" alt=""> | **FIFA+ French HD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 1631 | <img src="playlist-logos/fifa_german.png" width="56" alt=""> | **FIFA+ German HD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 1632 | <img src="playlist-logos/fifa_hispanic_america.png" width="56" alt=""> | **FIFA+ Hispanic America HD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 1633 | <img src="playlist-logos/fifa_italy.png" width="56" alt=""> | **FIFA+ Italy HD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 1634 | <img src="playlist-logos/fifa_portuguese.png" width="56" alt=""> | **FIFA+ Portuguese HD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 1635 | <img src="playlist-logos/fifa_spain.png" width="56" alt=""> | **FIFA+ Spain HD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 1636 | <img src="playlist-logos/fifa_united_states.png" width="56" alt=""> | **FIFA+ United States HD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 1637 | <img src="playlist-logos/fightbox_poland.png" width="56" alt=""> | **FightBox Poland HD** |  |  | HD | 📲 אפליקציות בלבד |
+| 1638 | <img src="playlist-logos/fox_sports_1.png" width="56" alt=""> | **Fox Sports 1 HD** |  |  | HD | 📲 אפליקציות בלבד |
+| 1639 | <img src="playlist-logos/fox_sports_2.png" width="56" alt=""> | **Fox Sports 2 HD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 1640 | <img src="playlist-logos/fox_sports.png" width="56" alt=""> | **Fox Sports HD** |  |  | HD | 📲 אפליקציות בלבד |
+| 1641 | <img src="playlist-logos/fox_sports_news.png" width="56" alt=""> | **Fox Sports News HD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 1642 | <img src="playlist-logos/ftf_sports.png" width="56" alt=""> | **FTF Sports HD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 1643 | <img src="playlist-logos/fubo_sports_network.png" width="56" alt=""> | **Fubo Sports Network HD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 1644 | <img src="playlist-logos/world_poker_tour_uk.png" width="56" alt=""> | **World Poker Tour UK HD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 1645 | <img src="playlist-logos/wwe_network.png" width="56" alt=""> | **WWE Network HD** |  |  | HD | 📲 אפליקציות בלבד |
 
 ## חדשות מהעולם (News)
 
@@ -473,7 +525,7 @@
 | 398 | <img src="https://i.imgur.com/eIiXRAI.png" width="56" alt=""> | **Perviy Informationniy** | 🇧🇾 בלארוס | — | FHD | 🌐 אתר + 📲 אפליקציות |
 | 399 | <img src="https://i.imgur.com/0xHb3XM.jpg" width="56" alt=""> | **Al Masirah Mubacher** | 🇾🇪 תימן | ערבית | SD | 🌐 אתר + 📲 אפליקציות |
 | 400 | <img src="https://i.imgur.com/hRFa03k.png" width="56" alt=""> | **Ma'an TV** | 🇵🇸 השטחים הפלסטיניים | ערבית | HD | 🌐 אתר + 📲 אפליקציות |
-| 401 |  | **Alhaqeqa Aldawlia** | 🇯🇴 ירדן | ערבית | FHD | 🌐 אתר + 📲 אפליקציות |
+| 401 | <img src="playlist-logos/iptv_alhaqeqaaldawlia_jo.png" width="56" alt=""> | **Alhaqeqa Aldawlia** | 🇯🇴 ירדן | ערבית | FHD | 🌐 אתר + 📲 אפליקציות |
 | 402 | <img src="https://i.imgur.com/pVlZUSV.png" width="56" alt=""> | **Ecotel TV** | 🇪🇨 אקוודור | ספרדית | HD | 🌐 אתר + 📲 אפליקציות |
 | 403 | <img src="https://i.imgur.com/ijuJfmd.png" width="56" alt=""> | **News 21 Bangla TV** | 🇧🇩 בנגלדש | — | SD | 📲 אפליקציות בלבד |
 | 404 | <img src="https://i.imgur.com/BW95PMF.png" width="56" alt=""> | **Palitra News** | 🇬🇪 גאורגיה | — | SD | 🌐 אתר + 📲 אפליקציות |
@@ -563,29 +615,29 @@
 
 | # | | ערוץ | מדינה | שפה | איכות | איפה מתנגן |
 |---|---|---|---|---|---|---|
-| 477 |  | **ערוץ הים התיכון HD** |  | עברית | Music HD | 📲 אפליקציות בלבד |
+| 477 | <img src="playlist-logos/yam_tichoni_hd.png" width="56" alt=""> | **ערוץ הים התיכון HD** |  | עברית | Music HD | 📲 אפליקציות בלבד |
 | 478 | <img src="assets/logos/yes_action.svg" width="56" alt=""> | **yes סרטים אקשן HD** |  | עברית | FHD | 📲 אפליקציות בלבד |
 | 479 | <img src="playlist-logos/hot_drama.png" width="56" alt=""> | **HOT דרמה HD** |  | עברית | FHD | 📲 אפליקציות בלבד |
 | 480 | <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/HotNewLogo.svg/512px-HotNewLogo.svg.png" width="56" alt=""> | **HOT זון HD** |  | עברית | FHD | 📲 אפליקציות בלבד |
 | 481 | <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Yes_logo_2020.svg/512px-Yes_logo_2020.svg.png" width="56" alt=""> | **yes ריאליטי HD** |  | עברית | FHD | 🌐 אתר + 📲 אפליקציות |
 | 482 | <img src="https://upload.wikimedia.org/wikipedia/he/thumb/6/66/Viva_Channel_Israel.svg/512px-Viva_Channel_Israel.svg.png" width="56" alt=""> | **ויוה פרימיום HD** |  | עברית | FHD | 📲 אפליקציות בלבד |
-| 483 |  | **סינמה פרימיום HD** |  | רוסית | FHD | 📲 אפליקציות בלבד |
-| 484 |  | **סינמה מתח ואקשן HD** |  | רוסית | FHD | 📲 אפליקציות בלבד |
-| 485 |  | **ערוץ סרטי אימה HD** |  | רוסית | FHD | 📲 אפליקציות בלבד |
-| 486 |  | **קולנוע להיטים KinoHit HD** |  | רוסית | HD | 🌐 אתר + 📲 אפליקציות |
-| 487 |  | **קולנוע משפחתי Kinosemja HD** |  | רוסית | HD | 📲 אפליקציות בלבד |
-| 488 |  | **סינמה מגה-להיטים HD** |  | רוסית | FHD | 📲 אפליקציות בלבד |
-| 489 |  | **סינמה בכורה Premiere HD** |  | רוסית | FHD | 📲 אפליקציות בלבד |
-| 490 |  | **סינמה קומדיה HD** |  | רוסית | FHD | 📲 אפליקציות בלבד |
-| 491 |  | **קולנוע TV1000 אקשן HD** |  | רוסית | HD | 🌐 אתר + 📲 אפליקציות |
-| 492 |  | **קולנוע TV1000 קלאסי** |  | רוסית | SD | 📲 אפליקציות בלבד |
-| 493 |  | **ערוץ הסדרות Serial HD** |  | רוסית | FHD | 📲 אפליקציות בלבד |
-| 494 |  | **סרטי שנות ה-80 Rewind HD** |  | — | HD | 📲 אפליקציות בלבד |
-| 495 |  | **סרטי שנות ה-70 Cinema HD** |  | — | HD | 📲 אפליקציות בלבד |
-| 496 |  | **סרטי שנות ה-2000 Replay HD** |  | — | HD | 📲 אפליקציות בלבד |
-| 497 |  | **משפחת סימפסון 24/7 HD** |  | רוסית | FHD | 📲 אפליקציות בלבד |
-| 498 |  | **קולנוע קומדיה CineMan Comedy HD** |  | רוסית | FHD | 📲 אפליקציות בלבד |
-| 499 |  | **קולנוע רטרו VHS Cinema HD** |  | רוסית | HD | 📲 אפליקציות בלבד |
+| 483 | <img src="playlist-logos/premialnoe.png" width="56" alt=""> | **סינמה פרימיום HD** |  | רוסית | FHD | 📲 אפליקציות בלבד |
+| 484 | <img src="playlist-logos/ostrosyuzhetnoye.png" width="56" alt=""> | **סינמה מתח ואקשן HD** |  | רוסית | FHD | 📲 אפליקציות בלבד |
+| 485 | <img src="playlist-logos/kinouzhas.png" width="56" alt=""> | **ערוץ סרטי אימה HD** |  | רוסית | FHD | 📲 אפליקציות בלבד |
+| 486 | <img src="playlist-logos/kinohit.png" width="56" alt=""> | **קולנוע להיטים KinoHit HD** |  | רוסית | HD | 🌐 אתר + 📲 אפליקציות |
+| 487 | <img src="playlist-logos/kinosemja.png" width="56" alt=""> | **קולנוע משפחתי Kinosemja HD** |  | רוסית | HD | 📲 אפליקציות בלבד |
+| 488 | <img src="playlist-logos/megahit.png" width="56" alt=""> | **סינמה מגה-להיטים HD** |  | רוסית | FHD | 📲 אפליקציות בלבד |
+| 489 | <img src="playlist-logos/premiere.png" width="56" alt=""> | **סינמה בכורה Premiere HD** |  | רוסית | FHD | 📲 אפליקציות בלבד |
+| 490 | <img src="playlist-logos/comedy_ru.png" width="56" alt=""> | **סינמה קומדיה HD** |  | רוסית | FHD | 📲 אפליקציות בלבד |
+| 491 | <img src="playlist-logos/action_tv1000.png" width="56" alt=""> | **קולנוע TV1000 אקשן HD** |  | רוסית | HD | 🌐 אתר + 📲 אפליקציות |
+| 492 | <img src="playlist-logos/tv1000_classic.png" width="56" alt=""> | **קולנוע TV1000 קלאסי** |  | רוסית | SD | 📲 אפליקציות בלבד |
+| 493 | <img src="playlist-logos/serial_tv.png" width="56" alt=""> | **ערוץ הסדרות Serial HD** |  | רוסית | FHD | 📲 אפליקציות בלבד |
+| 494 | <img src="playlist-logos/rewind_80s.png" width="56" alt=""> | **סרטי שנות ה-80 Rewind HD** |  | — | HD | 📲 אפליקציות בלבד |
+| 495 | <img src="playlist-logos/cinema_70s.png" width="56" alt=""> | **סרטי שנות ה-70 Cinema HD** |  | — | HD | 📲 אפליקציות בלבד |
+| 496 | <img src="playlist-logos/replay_00s.png" width="56" alt=""> | **סרטי שנות ה-2000 Replay HD** |  | — | HD | 📲 אפליקציות בלבד |
+| 497 | <img src="playlist-logos/simpsons_247.png" width="56" alt=""> | **משפחת סימפסון 24/7 HD** |  | רוסית | FHD | 📲 אפליקציות בלבד |
+| 498 | <img src="playlist-logos/cineman_comedy_hd.png" width="56" alt=""> | **קולנוע קומדיה CineMan Comedy HD** |  | רוסית | FHD | 📲 אפליקציות בלבד |
+| 499 | <img src="playlist-logos/cineman_vhs_retro.png" width="56" alt=""> | **קולנוע רטרו VHS Cinema HD** |  | רוסית | HD | 📲 אפליקציות בלבד |
 | 500 | <img src="assets/logos/keshet_drama.svg" width="56" alt=""> | **ערוץ הדרמה של קשת** |  | עברית | HD | 🌐 אתר + 📲 אפליקציות |
 | 501 | <img src="https://images.pluto.tv/channels/6176f39e709f160007ec61c3/colorLogoPNG.png" width="56" alt=""> | **48 Hours** | 🇺🇸 ארצות הברית | אנגלית | FHD | 🌐 אתר + 📲 אפליקציות |
 | 502 | <img src="https://i.imgur.com/LK2NFst.png" width="56" alt=""> | **True Crime** | 🇬🇧 בריטניה | אנגלית | FHD | 🌐 אתר + 📲 אפליקציות |
@@ -596,7 +648,7 @@
 | 507 | <img src="https://cdn-st3.smotrim.ru/vh/pictures/svg/444/241/8.svg" width="56" alt=""> | **Smotrim Chestnyy Detektiv** | 🇷🇺 רוסיה | רוסית | FHD | 🌐 אתר + 📲 אפליקציות |
 | 508 | <img src="https://i.imgur.com/Hnwsh5d.png" width="56" alt=""> | **FilmUADrama** | 🇺🇦 אוקראינה | רוסית | SD | 🌐 אתר + 📲 אפליקציות |
 | 509 | <img src="https://i.imgur.com/1ENdbZn.png" width="56" alt=""> | **Mix Hollywood** | 🇪🇬 מצרים | ערבית | FHD | 🌐 אתר + 📲 אפליקציות |
-| 510 |  | **Grand Cinema** | 🇹🇷 טורקיה | פרסית | SD | 🌐 אתר + 📲 אפליקציות |
+| 510 | <img src="playlist-logos/iptv_grandcinema_tr.png" width="56" alt=""> | **Grand Cinema** | 🇹🇷 טורקיה | פרסית | SD | 🌐 אתר + 📲 אפליקציות |
 | 511 | <img src="https://i.imgur.com/NwOQUDp.png" width="56" alt=""> | **B4U Bhojpuri** | 🇮🇳 הודו | — | FHD | 🌐 אתר + 📲 אפליקציות |
 | 512 | <img src="https://www.tvchinese.net/uploads/tv/haerbin.jpg" width="56" alt=""> | **Harbin Movie Channel** | 🇨🇳 סין | סינית | SD | 🌐 אתר + 📲 אפליקציות |
 | 513 | <img src="https://a.jsrdn.com/hls/23208/cindie-tv/logo_20250225_222520_68.png" width="56" alt=""> | **CINDIE TV** | 🇧🇷 ברזיל | אנגלית | FHD | 🌐 אתר + 📲 אפליקציות |
@@ -682,7 +734,7 @@
 | 593 | <img src="https://images.pluto.tv/channels/6728c9c85534bb0008b320a4/colorLogoPNG.png" width="56" alt=""> | **7th Heaven** | 🇸🇪 שוודיה | אנגלית | SD | 🌐 אתר + 📲 אפליקציות |
 | 594 | <img src="https://i.imgur.com/ugPo6ca.png" width="56" alt=""> | **Bollywood Classic** | 🇷🇴 רומניה | רומנית | SD | 🌐 אתר + 📲 אפליקציות |
 | 595 | <img src="https://i.imgur.com/WZeMZNy.png" width="56" alt=""> | **TeleNostalgia** | 🇨🇴 קולומביה | ספרדית | FHD | 📲 אפליקציות בלבד |
-| 596 |  | **Afra Film** | 🇮🇷 איראן | פרסית | SD | 🌐 אתר + 📲 אפליקציות |
+| 596 | <img src="playlist-logos/iptv_afrafilm_ir.png" width="56" alt=""> | **Afra Film** | 🇮🇷 איראן | פרסית | SD | 🌐 אתר + 📲 אפליקציות |
 | 597 | <img src="https://i.imgur.com/vMcSlwm.png" width="56" alt=""> | **Duck Dynasty** | 🇺🇸 ארצות הברית | אנגלית | FHD | 🌐 אתר + 📲 אפליקציות |
 | 598 | <img src="https://i.imgur.com/8sHuxxS.png" width="56" alt=""> | **Sony One Hits Comedie** | 🇫🇷 צרפת | צרפתית | FHD | 🌐 אתר + 📲 אפליקציות |
 | 599 | <img src="https://images.pluto.tv/channels/639b558c73423d00071ce624/colorLogoPNG.png" width="56" alt=""> | **More TV Crime** | 🇩🇪 גרמניה | אנגלית | SD | 🌐 אתר + 📲 אפליקציות |
@@ -694,7 +746,7 @@
 | 605 | <img src="https://i.imgur.com/i5wOhkf.png" width="56" alt=""> | **AXN Poland** | 🇵🇱 פולין | פולנית | FHD | 📲 אפליקציות בלבד |
 | 606 | <img src="https://images.pluto.tv/channels/62da73c4ec46c000070f4cb1/colorLogoPNG.png" width="56" alt=""> | **Auction Hunters** | 🇸🇪 שוודיה | אנגלית | SD | 🌐 אתר + 📲 אפליקציות |
 | 607 | <img src="https://cdn.gamma.app/tfnglu66dwji8hw/d36b2d5c45a544749b3739d46fb119cc/original/CineWow.png" width="56" alt=""> | **CineWow** | 🇷🇴 רומניה | רומנית | SD | 🌐 אתר + 📲 אפליקציות |
-| 608 |  | **Cafe Film** | 🇮🇷 איראן | פרסית | SD | 🌐 אתר + 📲 אפליקציות |
+| 608 | <img src="playlist-logos/iptv_cafefilm_ir.png" width="56" alt=""> | **Cafe Film** | 🇮🇷 איראן | פרסית | SD | 🌐 אתר + 📲 אפליקציות |
 | 609 | <img src="https://i.imgur.com/H2hD4vT.png" width="56" alt=""> | **Gravitas Movies** | 🇺🇸 ארצות הברית | אנגלית | FHD | 🌐 אתר + 📲 אפליקציות |
 | 610 | <img src="https://i.imgur.com/hgIro9r.png" width="56" alt=""> | **Persiana Cinema** | 🇫🇷 צרפת | פרסית | SD | 🌐 אתר + 📲 אפליקציות |
 | 611 | <img src="https://images.pluto.tv/channels/692ebafce72f03e07e7df985/colorLogoPNG_1768902223754.png" width="56" alt=""> | **Pluto TV American True Crime** | 🇩🇪 גרמניה | אנגלית | SD | 🌐 אתר + 📲 אפליקציות |
@@ -705,7 +757,7 @@
 | 616 | <img src="https://i.imgur.com/H3PzGZW.png" width="56" alt=""> | **MultiPremier** | 🇲🇽 מקסיקו | ספרדית | FHD | 📲 אפליקציות בלבד |
 | 617 | <img src="https://i.imgur.com/MuRtvXk.png" width="56" alt=""> | **TVP Seriale** | 🇵🇱 פולין | פולנית | FHD | 📲 אפליקציות בלבד |
 | 618 | <img src="https://images.pluto.tv/channels/672e157d7d5da5000812872d/colorLogoPNG-1731073515797.png" width="56" alt=""> | **Becker** | 🇸🇪 שוודיה | אנגלית | SD | 🌐 אתר + 📲 אפליקציות |
-| 619 |  | **Classic TV** | 🇮🇷 איראן | פרסית | SD | 🌐 אתר + 📲 אפליקציות |
+| 619 | <img src="playlist-logos/iptv_classictv_ir.png" width="56" alt=""> | **Classic TV** | 🇮🇷 איראן | פרסית | SD | 🌐 אתר + 📲 אפליקציות |
 | 620 | <img src="https://i.imgur.com/9EWffqx.png" width="56" alt=""> | **Impossible Quiz Show** | 🇺🇸 ארצות הברית | אנגלית | FHD | 🌐 אתר + 📲 אפליקציות |
 | 621 | <img src="https://i.imgur.com/lMZsuWi.png" width="56" alt=""> | **Persiana Family** | 🇫🇷 צרפת | פרסית | SD | 🌐 אתר + 📲 אפליקציות |
 | 622 | <img src="https://images.pluto.tv/channels/5d134a74ca91eedee1630faa/colorLogoPNG.png" width="56" alt=""> | **Pluto TV Classic TV** | 🇩🇪 גרמניה | אנגלית | SD | 🌐 אתר + 📲 אפליקציות |
@@ -716,7 +768,7 @@
 | 627 | <img src="https://upload.wikimedia.org/wikipedia/commons/6/62/Tlnovelas_logo_2021.png" width="56" alt=""> | **Tlnovelas Mexico** | 🇲🇽 מקסיקו | ספרדית | FHD | 📲 אפליקציות בלבד |
 | 628 | <img src="https://spiintl.com/data/files/kcfinderUploadDir/images/filmboxplus/filmbox%2Baction.png" width="56" alt=""> | **FILMBOX+ Action** | 🇵🇱 פולין | אנגלית | HD | 📲 אפליקציות בלבד |
 | 629 | <img src="https://images.pluto.tv/channels/61c1939b8929e40007ff6382/colorLogoPNG.png" width="56" alt=""> | **BET** | 🇸🇪 שוודיה | אנגלית | SD | 🌐 אתר + 📲 אפליקציות |
-| 630 |  | **Gold Star** | 🇮🇷 איראן | פרסית | SD | 🌐 אתר + 📲 אפליקציות |
+| 630 | <img src="playlist-logos/iptv_goldstar_ir.png" width="56" alt=""> | **Gold Star** | 🇮🇷 איראן | פרסית | SD | 🌐 אתר + 📲 אפליקציות |
 | 631 | <img src="https://images.fubo.tv/station_logos/maverick_black_cinema_c.png" width="56" alt=""> | **Maverick Black Cinema** | 🇺🇸 ארצות הברית | אנגלית | FHD | 🌐 אתר + 📲 אפליקציות |
 | 632 | <img src="https://i.imgur.com/vqrrpBi.png" width="56" alt=""> | **Persiana Iranian** | 🇫🇷 צרפת | פרסית | SD | 🌐 אתר + 📲 אפליקציות |
 | 633 | <img src="https://images.pluto.tv/channels/5c5c31f2f21b553c1f673fb0/colorLogoPNG.png" width="56" alt=""> | **Pluto TV Cult Films** | 🇩🇪 גרמניה | אנגלית | SD | 🌐 אתר + 📲 אפליקציות |
@@ -726,7 +778,7 @@
 | 637 | <img src="https://i.imgur.com/KIpSdQC.png" width="56" alt=""> | **Az Corazon** | 🇲🇽 מקסיקו | ספרדית | HD | 📲 אפליקציות בלבד |
 | 638 | <img src="https://spiintl.com/data/files/kcfinderUploadDir/images/filmboxplus/filmbox%2Bemotion.png" width="56" alt=""> | **FILMBOX+ Emotion** | 🇵🇱 פולין | פולנית | HD | 📲 אפליקציות בלבד |
 | 639 | <img src="https://images.pluto.tv/channels/67a09ddc21af380008088dc3/colorLogoPNG.png" width="56" alt=""> | **Britain's Next Top Model** | 🇸🇪 שוודיה | אנגלית | SD | 🌐 אתר + 📲 אפליקציות |
-| 640 |  | **Meta Film TV** | 🇮🇷 איראן | פרסית | SD | 🌐 אתר + 📲 אפליקציות |
+| 640 | <img src="playlist-logos/iptv_metafilmtv_ir.png" width="56" alt=""> | **Meta Film TV** | 🇮🇷 איראן | פרסית | SD | 🌐 אתר + 📲 אפליקציות |
 | 641 | <img src="https://i.imgur.com/VFqfyfY.png" width="56" alt=""> | **Midsomer Murders** | 🇺🇸 ארצות הברית | אנגלית | FHD | 🌐 אתר + 📲 אפליקציות |
 | 642 | <img src="https://i.imgur.com/si2ZnIA.png" width="56" alt=""> | **Persiana Korea** | 🇫🇷 צרפת | פרסית | SD | 🌐 אתר + 📲 אפליקציות |
 | 643 | <img src="https://images.pluto.tv/channels/5dc3fc6b9133f500099c7d98/colorLogoPNG.png" width="56" alt=""> | **Pluto TV Family Movie Club** | 🇩🇪 גרמניה | אנגלית | SD | 🌐 אתר + 📲 אפליקציות |
@@ -744,7 +796,7 @@
 | 655 | <img src="https://i.imgur.com/DaAyLE7.png" width="56" alt=""> | **AXN White** | 🇵🇱 פולין | פולנית | SD | 📲 אפליקציות בלבד |
 | 656 | <img src="https://images.pluto.tv/channels/6525419dc52b3600083db9c3/colorLogoPNG.png" width="56" alt=""> | **CSI** | 🇸🇪 שוודיה | אנגלית | SD | 🌐 אתר + 📲 אפליקציות |
 | 657 | <img src="https://provider-static.plex.tv/epg/cms/production/f162df8b-6532-43fe-9202-83a658090651/OuterSphere_1500x1000_Logo_Dark_-_Chris_Connors__1_.png" width="56" alt=""> | **OuterSphere** | 🇺🇸 ארצות הברית | אנגלית | FHD | 🌐 אתר + 📲 אפליקציות |
-| 658 |  | **Persiana Series** | 🇫🇷 צרפת | פרסית | SD | 🌐 אתר + 📲 אפליקציות |
+| 658 | <img src="playlist-logos/iptv_persianaseries_fr.png" width="56" alt=""> | **Persiana Series** | 🇫🇷 צרפת | פרסית | SD | 🌐 אתר + 📲 אפליקציות |
 | 659 | <img src="https://images.pluto.tv/channels/63808dc806aa4700075f319a/colorLogoPNG.png" width="56" alt=""> | **Pluto TV Investigation** | 🇩🇪 גרמניה | אנגלית | SD | 🌐 אתר + 📲 אפליקציות |
 | 660 | <img src="https://i.imgur.com/67CWCtz.png" width="56" alt=""> | **City Eden KinoArt** | 🇷🇺 רוסיה | רוסית | SD | 🌐 אתר + 📲 אפליקציות |
 | 661 | <img src="https://dtil.tmsimg.com/assets/s142713_ld_h15_aa.png?lock=720x540" width="56" alt=""> | **Bhojpuri Cinema** | 🇮🇳 הודו | — | HD | 🌐 אתר + 📲 אפליקציות |
@@ -794,7 +846,7 @@
 
 | # | | ערוץ | מדינה | שפה | איכות | איפה מתנגן |
 |---|---|---|---|---|---|---|
-| 701 |  | **ערוץ הקומדיה HD** |  | עברית | FHD | 🌐 אתר + 📲 אפליקציות |
+| 701 | <img src="playlist-logos/comedy_channel.png" width="56" alt=""> | **ערוץ הקומדיה HD** |  | עברית | FHD | 🌐 אתר + 📲 אפליקציות |
 | 702 | <img src="assets/logos/keshet_comedy.svg" width="56" alt=""> | **ערוץ הקומדיה של קשת** |  | עברית | HD | 🌐 אתר + 📲 אפליקציות |
 | 703 | <img src="assets/logos/eretz_nehederet.svg" width="56" alt=""> | **ארץ נהדרת 24/7** |  | עברית | HD | 🌐 אתר + 📲 אפליקציות |
 | 704 | <img src="assets/logos/savri_maranan.svg" width="56" alt=""> | **סברי מרנן 24/7** |  | עברית | HD | 🌐 אתר + 📲 אפליקציות |
@@ -808,7 +860,7 @@
 | 712 | <img src="https://images.pluto.tv/channels/61c0925c738ecd000882450a/colorLogoPNG.png" width="56" alt=""> | **Awkward** | 🇸🇪 שוודיה | אנגלית | SD | 🌐 אתר + 📲 אפליקציות |
 | 713 | <img src="https://i.imgur.com/6kAeVOk.png" width="56" alt=""> | **Comedy Play** | 🇷🇴 רומניה | רומנית | SD | 🌐 אתר + 📲 אפליקציות |
 | 714 | <img src="https://i.imgur.com/DuwwoO2.png" width="56" alt=""> | **Jordan Comedy** | 🇯🇴 ירדן | ערבית | FHD | 🌐 אתר + 📲 אפליקציות |
-| 715 |  | **HAHA TV** | 🇸🇰 סלובקיה | סלובקית | SD | 🌐 אתר + 📲 אפליקציות |
+| 715 | <img src="playlist-logos/iptv_hahatv_sk.png" width="56" alt=""> | **HAHA TV** | 🇸🇰 סלובקיה | סלובקית | SD | 🌐 אתר + 📲 אפליקציות |
 | 716 | <img src="https://provider-static.plex.tv/epg/cms/production/712dae9e-9111-4bbc-8ea4-242e891ab5b3/snl-vault-fclogo-72-dpi-1500-x-1000-3-2-channel-logo-dark-plex-1.png" width="56" alt=""> | **SNL Vault** | 🇺🇸 ארצות הברית | אנגלית | FHD | 🌐 אתר + 📲 אפליקציות |
 | 717 | <img src="https://images.pluto.tv/channels/68de3db35fc0afe85de0b843/colorLogoPNG_1759402494389.png" width="56" alt=""> | **Comedia a lo bestia de Pluto TV** | 🇩🇪 גרמניה | ספרדית | SD | 🌐 אתר + 📲 אפליקציות |
 | 718 | <img src="https://i.imgur.com/cEKe8XC.png" width="56" alt=""> | **Komediynoe** | 🇷🇺 רוסיה | רוסית | FHD | 📲 אפליקציות בלבד |
@@ -856,7 +908,7 @@
 | 1535 | <img src="https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/transparentImages/Food%20Food.png" width="56" alt=""> | **Food Food** | 🇮🇳 הודו | הינדי | SD | 🌐 אתר + 📲 אפליקציות |
 | 1536 | <img src="https://images.pluto.tv/channels/63c6a1c46d126a000760b91c/colorLogoPNG.png" width="56" alt=""> | **Boligkjop i blinde** | 🇸🇪 שוודיה | אנגלית | SD | 🌐 אתר + 📲 אפליקציות |
 | 1537 | <img src="https://picture.dens.tv/wp/img/tvchannels_v1/340x160/1687501416_tvchannels_v1.jpg" width="56" alt=""> | **Dens Food Channel** | 🇮🇩 אינדונזיה | — | SD | 🌐 אתר + 📲 אפליקציות |
-| 1538 |  | **Masala TV** | 🇵🇰 פקיסטן | — | SD | 🌐 אתר + 📲 אפליקציות |
+| 1538 | <img src="playlist-logos/iptv_masalatv_pk.png" width="56" alt=""> | **Masala TV** | 🇵🇰 פקיסטן | — | SD | 🌐 אתר + 📲 אפליקציות |
 | 1539 | <img src="https://i.imgur.com/pux6WN8.png" width="56" alt=""> | **Asian Food Network** | 🇸🇬 סינגפור | אנגלית | FHD | 🌐 אתר + 📲 אפליקציות |
 | 1540 | <img src="https://i.imgur.com/B45qcQX.png" width="56" alt=""> | **Jordan Kitchen** | 🇯🇴 ירדן | ערבית | FHD | 🌐 אתר + 📲 אפליקציות |
 | 1541 | <img src="https://i.imgur.com/15a9pG9.png" width="56" alt=""> | **Chef Champion** | 🇺🇸 ארצות הברית | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
@@ -891,23 +943,23 @@
 |---|---|---|---|---|---|---|
 | 746 | <img src="assets/logos/nickelodeon.png" width="56" alt=""> | **ניקלודיאון (ברוסית)** |  | רוסית | FHD | 📲 אפליקציות בלבד |
 | 747 | <img src="playlist-logos/nick_jr_he.png" width="56" alt=""> | **ניק ג'וניור (ברוסית)** |  | רוסית | FHD | 🌐 אתר + 📲 אפליקציות |
-| 748 |  | **גולי גירל Gulli Girl (ברוסית)** |  | רוסית | HD | 🌐 אתר + 📲 אפליקציות |
-| 749 |  | **דאק טי וי פלוס ducktv PLUS HD** |  | — | FHD | 🌐 אתר + 📲 אפליקציות |
+| 748 | <img src="playlist-logos/gulli_kids_hd.png" width="56" alt=""> | **גולי גירל Gulli Girl (ברוסית)** |  | רוסית | HD | 🌐 אתר + 📲 אפליקציות |
+| 749 | <img src="playlist-logos/ducktv_plus_hd.png" width="56" alt=""> | **דאק טי וי פלוס ducktv PLUS HD** |  | — | FHD | 🌐 אתר + 📲 אפליקציות |
 | 750 | <img src="assets/logos/babyfirst.svg" width="56" alt=""> | **בייבי פירסט BabyFirst HD** |  | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
-| 751 |  | **אנימציה קצרצרה Cartoons Short HD** |  | רוסית | HD | 📲 אפליקציות בלבד |
-| 752 |  | **ערוץ לגו Lego Channel HD** |  | אנגלית | FHD | 🌐 אתר + 📲 אפליקציות |
-| 753 |  | **ערוץ טיז'י TiJi לילדים HD** |  | רוסית | FHD | 🌐 אתר + 📲 אפליקציות |
-| 754 |  | **ג'ים ג'אם JimJam לילדים HD** |  | רוסית | HD | 📲 אפליקציות בלבד |
-| 755 |  | **אנימציה וילדים Fresh Kids HD** |  | רוסית | HD | 📲 אפליקציות בלבד |
-| 756 |  | **קלאסיקות מצוירות 90s HD** |  | רוסית | FHD | 📲 אפליקציות בלבד |
-| 757 |  | **סרטי אנימציה Cartoons Big HD** |  | רוסית | FHD | 📲 אפליקציות בלבד |
-| 758 |  | **קולנוע אגדות וילדים HD** |  | רוסית | FHD | 📲 אפליקציות בלבד |
-| 759 |  | **פיקסל TV ילדים HD** |  | רוסית | FHD | 🌐 אתר + 📲 אפליקציות |
-| 760 |  | **ניקי קידס Niki Kids HD** |  | רוסית | FHD | 📲 אפליקציות בלבד |
-| 761 |  | **קפטן פנטסטיקה HD** |  | רוסית | FHD | 🌐 אתר + 📲 אפליקציות |
-| 762 |  | **ערוץ O! ילדים וטבע** |  | רוסית | SD | 📲 אפליקציות בלבד |
-| 763 |  | **דאק טי וי ducktv HD** |  | — | FHD | 🌐 אתר + 📲 אפליקציות |
-| 764 |  | **בייבי שארק Baby Shark TV HD** |  | אנגלית | FHD | 🌐 אתר + 📲 אפליקציות |
+| 751 | <img src="playlist-logos/cartoons_short_hd.png" width="56" alt=""> | **אנימציה קצרצרה Cartoons Short HD** |  | רוסית | HD | 📲 אפליקציות בלבד |
+| 752 | <img src="playlist-logos/lego_channel_hd.png" width="56" alt=""> | **ערוץ לגו Lego Channel HD** |  | אנגלית | FHD | 🌐 אתר + 📲 אפליקציות |
+| 753 | <img src="playlist-logos/tiji_kids_hd.png" width="56" alt=""> | **ערוץ טיז'י TiJi לילדים HD** |  | רוסית | FHD | 🌐 אתר + 📲 אפליקציות |
+| 754 | <img src="playlist-logos/jimjam_kids_hd.png" width="56" alt=""> | **ג'ים ג'אם JimJam לילדים HD** |  | רוסית | HD | 📲 אפליקציות בלבד |
+| 755 | <img src="playlist-logos/fresh_kids_hd.png" width="56" alt=""> | **אנימציה וילדים Fresh Kids HD** |  | רוסית | HD | 📲 אפליקציות בלבד |
+| 756 | <img src="playlist-logos/cartoons_90s.png" width="56" alt=""> | **קלאסיקות מצוירות 90s HD** |  | רוסית | FHD | 📲 אפליקציות בלבד |
+| 757 | <img src="playlist-logos/cartoons_big_hd.png" width="56" alt=""> | **סרטי אנימציה Cartoons Big HD** |  | רוסית | FHD | 📲 אפליקציות בלבד |
+| 758 | <img src="playlist-logos/kinokazka.png" width="56" alt=""> | **קולנוע אגדות וילדים HD** |  | רוסית | FHD | 📲 אפליקציות בלבד |
+| 759 | <img src="playlist-logos/pixel_tv.png" width="56" alt=""> | **פיקסל TV ילדים HD** |  | רוסית | FHD | 🌐 אתר + 📲 אפליקציות |
+| 760 | <img src="playlist-logos/niki_kids.png" width="56" alt=""> | **ניקי קידס Niki Kids HD** |  | רוסית | FHD | 📲 אפליקציות בלבד |
+| 761 | <img src="playlist-logos/kapitan_fantastika.png" width="56" alt=""> | **קפטן פנטסטיקה HD** |  | רוסית | FHD | 🌐 אתר + 📲 אפליקציות |
+| 762 | <img src="playlist-logos/okids.png" width="56" alt=""> | **ערוץ O! ילדים וטבע** |  | רוסית | SD | 📲 אפליקציות בלבד |
+| 763 | <img src="playlist-logos/ducktv_hd.png" width="56" alt=""> | **דאק טי וי ducktv HD** |  | — | FHD | 🌐 אתר + 📲 אפליקציות |
+| 764 | <img src="playlist-logos/babyshark_tv_hd.png" width="56" alt=""> | **בייבי שארק Baby Shark TV HD** |  | אנגלית | FHD | 🌐 אתר + 📲 אפליקציות |
 | 765 | <img src="assets/logos/solntse.svg" width="56" alt=""> | **ערוץ השמש לילדים HD (Solntse Kids)** |  | רוסית | HD | 🌐 אתר + 📲 אפליקציות |
 | 766 | <img src="assets/logos/mult.svg" width="56" alt=""> | **ערוץ מולט ילדים HD (Mult Kids)** |  | רוסית | HD | 🌐 אתר + 📲 אפליקציות |
 | 767 | <img src="assets/logos/mult_music.svg" width="56" alt=""> | **מולט ומוזיקה לילדים HD (Mult & Music)** |  | רוסית | HD | 📲 אפליקציות בלבד |
@@ -1064,10 +1116,10 @@
 |---|---|---|---|---|---|---|
 | 1049 | <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/2018_Animal_Planet_logo.svg/512px-2018_Animal_Planet_logo.svg.png" width="56" alt=""> | **Animal Planet World HD** |  | רוסית | FHD | 📲 אפליקציות בלבד |
 | 1050 | <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Investigation_Discovery_logo.svg/512px-Investigation_Discovery_logo.svg.png" width="56" alt=""> | **Discovery חקירות (ID)** |  | רוסית | HD | 📲 אפליקציות בלבד |
-| 1051 |  | **עולם וטבע HD (viju+ Planet)** |  | רוסית | FHD | 📲 אפליקציות בלבד |
+| 1051 | <img src="playlist-logos/viju_planet.png" width="56" alt=""> | **עולם וטבע HD (viju+ Planet)** |  | רוסית | FHD | 📲 אפליקציות בלבד |
 | 1052 | <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/BBC_Earth_logo.svg/512px-BBC_Earth_logo.svg.png" width="56" alt=""> | **BBC Earth Live HD** |  | — | FHD | 🌐 אתר + 📲 אפליקציות |
-| 1053 |  | **Asharq Discovery HD** |  | ערבית | FHD | 🌐 אתר + 📲 אפליקציות |
-| 1054 |  | **365 ימי היסטוריה (History TV)** |  | רוסית | SD | 🌐 אתר + 📲 אפליקציות |
+| 1053 | <img src="playlist-logos/asharq_discovery.png" width="56" alt=""> | **Asharq Discovery HD** |  | ערבית | FHD | 🌐 אתר + 📲 אפליקציות |
+| 1054 | <img src="playlist-logos/history_365.png" width="56" alt=""> | **365 ימי היסטוריה (History TV)** |  | רוסית | SD | 🌐 אתר + 📲 אפליקציות |
 | 1055 | <img src="https://i.imgur.com/8mAJuut.png" width="56" alt=""> | **Dateline 24/7** | 🇺🇸 ארצות הברית | אנגלית | FHD | 🌐 אתר + 📲 אפליקציות |
 | 1056 | <img src="https://i.imgur.com/ulHoqlP.png" width="56" alt=""> | **History Hit** | 🇬🇧 בריטניה | אנגלית | FHD | 📲 אפליקציות בלבד |
 | 1057 | <img src="https://i.imgur.com/uM1v1sd.png" width="56" alt=""> | **Francophonie24** | 🇫🇷 צרפת | צרפתית | FHD | 🌐 אתר + 📲 אפליקציות |
@@ -1096,7 +1148,7 @@
 | 1080 | <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/History_%282021%29.svg/500px-History_%282021%29.svg.png" width="56" alt=""> | **History** | 🇵🇱 פולין | אנגלית | SD | 📲 אפליקציות בלבד |
 | 1081 | <img src="https://images.pluto.tv/channels/677d3ad04bd63600082f7c54/colorLogoPNG_1759445391825.png" width="56" alt=""> | **Pluto TV Varldskrigen** | 🇸🇪 שוודיה | אנגלית | SD | 🌐 אתר + 📲 אפליקציות |
 | 1082 | <img src="https://i.imgur.com/x57klfS.png" width="56" alt=""> | **Documentary+** | 🇺🇸 ארצות הברית | אנגלית | FHD | 🌐 אתר + 📲 אפליקציות |
-| 1083 |  | **Persiana Docs** | 🇫🇷 צרפת | פרסית | SD | 🌐 אתר + 📲 אפליקציות |
+| 1083 | <img src="playlist-logos/iptv_persianadocs_fr.png" width="56" alt=""> | **Persiana Docs** | 🇫🇷 צרפת | פרסית | SD | 🌐 אתר + 📲 אפליקציות |
 | 1084 | <img src="https://i.imgur.com/GadfTwF.png" width="56" alt=""> | **Dokusat** | 🇩🇪 גרמניה | גרמנית | FHD | 🌐 אתר + 📲 אפליקציות |
 | 1085 | <img src="https://images.pluto.tv/channels/66177d18c8311c0008d077d0/colorLogoPNG.png" width="56" alt=""> | **Storie Criminali** | 🇪🇸 ספרד | איטלקית | SD | 🌐 אתר + 📲 אפליקציות |
 | 1086 | <img src="https://i.imgur.com/dYj3XDa.png" width="56" alt=""> | **Nano** | 🇷🇺 רוסיה | רוסית | FHD | 📲 אפליקציות בלבד |
@@ -1105,7 +1157,7 @@
 | 1089 | <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Natgeologo.svg/960px-Natgeologo.svg.png" width="56" alt=""> | **National Geographic** | 🇵🇱 פולין | אנגלית | SD | 📲 אפליקציות בלבד |
 | 1090 | <img src="https://images.pluto.tv/channels/61fb988e032c0100077d5252/colorLogoPNG.png" width="56" alt=""> | **Smithsonian Channel Selects** | 🇸🇪 שוודיה | אנגלית | SD | 🌐 אתר + 📲 אפליקציות |
 | 1091 | <img src="https://iili.io/JGqD21e.png" width="56" alt=""> | **The Nest** | 🇺🇸 ארצות הברית | אנגלית | FHD | 🌐 אתר + 📲 אפליקציות |
-| 1092 |  | **Persiana Travel** | 🇫🇷 צרפת | פרסית | SD | 🌐 אתר + 📲 אפליקציות |
+| 1092 | <img src="playlist-logos/iptv_persianatravel_fr.png" width="56" alt=""> | **Persiana Travel** | 🇫🇷 צרפת | פרסית | SD | 🌐 אתר + 📲 אפליקציות |
 | 1093 | <img src="https://i.imgur.com/EbMK3Ph.png" width="56" alt=""> | **Terra Mater WILD** | 🇩🇪 גרמניה | גרמנית | FHD | 🌐 אתר + 📲 אפליקציות |
 | 1094 | <img src="https://dtil.tmsimg.com/assets/s157811_ld_h15_aa.png?lock=720x540" width="56" alt=""> | **Investigation Discovery** | 🇮🇳 הודו | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
 | 1095 | <img src="https://i.imgur.com/QlF96eS.png" width="56" alt=""> | **CCTV-Weapon & Technology** | 🇨🇳 סין | סינית | FHD | 📲 אפליקציות בלבד |
@@ -1142,7 +1194,7 @@
 
 | # | | ערוץ | מדינה | שפה | איכות | איפה מתנגן |
 |---|---|---|---|---|---|---|
-| 1122 |  | **ערוץ החופשות והנופש HD** |  | עברית | FHD | 🌐 אתר + 📲 אפליקציות |
+| 1122 | <img src="playlist-logos/vacation_channel.png" width="56" alt=""> | **ערוץ החופשות והנופש HD** |  | עברית | FHD | 🌐 אתר + 📲 אפליקציות |
 | 1123 | <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Travel_Channel_Logo_2018.svg/512px-Travel_Channel_Logo_2018.svg.png" width="56" alt=""> | **ערוץ הטיולים Travel Channel** |  | רוסית | HD | 📲 אפליקציות בלבד |
 | 1124 | <img src="https://i.imgur.com/XRTfoSp.png" width="56" alt=""> | **AKC TV** | 🇺🇸 ארצות הברית | אנגלית | FHD | 🌐 אתר + 📲 אפליקציות |
 | 1125 | <img src="https://i.imgur.com/1x6zYZr.png" width="56" alt=""> | **Horse & Country TV** | 🇬🇧 בריטניה | אנגלית | FHD | 🌐 אתר + 📲 אפליקציות |
@@ -1202,10 +1254,10 @@
 
 | # | | ערוץ | מדינה | שפה | איכות | איפה מתנגן |
 |---|---|---|---|---|---|---|
-| 1175 |  | **ערוץ החקר והמדע (viju Explore)** |  | רוסית | HD | 📲 אפליקציות בלבד |
+| 1175 | <img src="playlist-logos/viju_explore.png" width="56" alt=""> | **ערוץ החקר והמדע (viju Explore)** |  | רוסית | HD | 📲 אפליקציות בלבד |
 | 1176 | <img src="https://i.imgur.com/Iv1Fe67.png" width="56" alt=""> | **BUTV10** | 🇺🇸 ארצות הברית | אנגלית | FHD | 🌐 אתר + 📲 אפליקציות |
 | 1177 | <img src="https://i.imgur.com/UjOxwdd.png" width="56" alt=""> | **Al Hiwar TV** | 🇬🇧 בריטניה | ערבית | FHD | 🌐 אתר + 📲 אפליקציות |
-| 1178 |  | **Persiana Medical** | 🇫🇷 צרפת | פרסית | SD | 🌐 אתר + 📲 אפליקציות |
+| 1178 | <img src="playlist-logos/iptv_persianamedical_fr.png" width="56" alt=""> | **Persiana Medical** | 🇫🇷 צרפת | פרסית | SD | 🌐 אתר + 📲 אפליקציות |
 | 1179 | <img src="https://i.imgur.com/RkF2Kmx.png" width="56" alt=""> | **NRWision** | 🇩🇪 גרמניה | גרמנית | FHD | 🌐 אתר + 📲 אפליקציות |
 | 1180 | <img src="https://i.imgur.com/vEzeqHP.png" width="56" alt=""> | **Platzi TV** | 🇪🇸 ספרד | ספרדית | FHD | 🌐 אתר + 📲 אפליקציות |
 | 1181 | <img src="https://i.imgur.com/hE4i2ft.png" width="56" alt=""> | **Telepace 3** | 🇮🇹 איטליה | איטלקית | FHD | 🌐 אתר + 📲 אפליקציות |
@@ -1276,15 +1328,15 @@
 
 ## מוזיקה (Music TV)
 
-🎵 137 ערוצים
+🎵 185 ערוצים
 
 | # | | ערוץ | מדינה | שפה | איכות | איפה מתנגן |
 |---|---|---|---|---|---|---|
-| 912 |  | **4ever Music Hits HD** |  | מוזיקה | FHD | 📲 אפליקציות בלבד |
-| 913 |  | **4Fun TV Pop Hits HD** |  | מוזיקה | HD | 🌐 אתר + 📲 אפליקציות |
-| 914 |  | **¡Viva Latino! Dance HD** |  | מוזיקה | FHD | 📲 אפליקציות בלבד |
-| 915 |  | **1HD Music Television** |  | מוזיקה | FHD | 📲 אפליקציות בלבד |
-| 916 |  | **70-80 TV Retro Hits** |  | מוזיקה | SD | 🌐 אתר + 📲 אפליקציות |
+| 912 | <img src="playlist-logos/music_4ever.png" width="56" alt=""> | **4ever Music Hits HD** |  | מוזיקה | FHD | 📲 אפליקציות בלבד |
+| 913 | <img src="playlist-logos/music_4fun.png" width="56" alt=""> | **4Fun TV Pop Hits HD** |  | מוזיקה | HD | 🌐 אתר + 📲 אפליקציות |
+| 914 | <img src="playlist-logos/music_vivalatino.png" width="56" alt=""> | **¡Viva Latino! Dance HD** |  | מוזיקה | FHD | 📲 אפליקציות בלבד |
+| 915 | <img src="playlist-logos/music_1hd.png" width="56" alt=""> | **1HD Music Television** |  | מוזיקה | FHD | 📲 אפליקציות בלבד |
+| 916 | <img src="playlist-logos/music_retro7080.png" width="56" alt=""> | **70-80 TV Retro Hits** |  | מוזיקה | SD | 🌐 אתר + 📲 אפליקציות |
 | 917 | <img src="assets/logos/keshet_music.svg" width="56" alt=""> | **ערוץ המוזיקה של קשת** |  | עברית | HD | 🌐 אתר + 📲 אפליקציות |
 | 918 | <img src="playlist-logos/radios_video.png" width="56" alt=""> | **רדיוס 100FM – וידאו** |  | עברית | HD | 🌐 אתר + 📲 אפליקציות |
 | 919 | <img src="https://botflix.tv/assets/img/botflix-mark.90c6a6f9a4.webp" width="56" alt=""> | **Botflix Radioo** | 🇺🇸 ארצות הברית | מוזיקה | FHD | 🌐 אתר + 📲 אפליקציות |
@@ -1417,6 +1469,54 @@
 | 1046 | <img src="https://i.imgur.com/B8iaejQ.png" width="56" alt=""> | **Love TV** | 🇲🇰 מקדוניה הצפונית | מוזיקה | FHD | 📲 אפליקציות בלבד |
 | 1047 | <img src="https://i.imgur.com/QwqM5j6.png" width="56" alt=""> | **Hit FM** | 🇲🇩 מולדובה | מוזיקה | SD | 🌐 אתר + 📲 אפליקציות |
 | 1048 | <img src="https://i.imgur.com/O1c6wpt.png" width="56" alt=""> | **Today Radio** | 🇱🇺 לוקסמבורג | מוזיקה | HD | 🌐 אתר + 📲 אפליקציות |
+| 1646 | <img src="playlist-logos/3abn_praise_him_music_network.png" width="56" alt=""> | **3ABN Praise Him Music Network HD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 1647 | <img src="playlist-logos/4_fun_dance.png" width="56" alt=""> | **4 Fun Dance HD** |  |  | HD | 📲 אפליקציות בלבד |
+| 1648 | <img src="playlist-logos/4kurd.png" width="56" alt=""> | **4Kurd HD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 1649 | <img src="playlist-logos/4_music.png" width="56" alt=""> | **4 Music HD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 1650 | <img src="playlist-logos/7s_music.png" width="56" alt=""> | **7S Music HD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 1651 | <img src="playlist-logos/7x_music.png" width="56" alt=""> | **7X Music HD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 1652 | <img src="playlist-logos/8xm.png" width="56" alt=""> | **8XM HD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 1653 | <img src="playlist-logos/30a_music.png" width="56" alt=""> | **30A Music HD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 1654 | <img src="playlist-logos/51_radio_tv.png" width="56" alt=""> | **51 Radio TV HD** |  |  | HD | 📲 אפליקציות בלבד |
+| 1655 | <img src="playlist-logos/88_stereo.png" width="56" alt=""> | **88 Stereo HD** |  |  | HD | 📲 אפליקציות בלבד |
+| 1656 | <img src="playlist-logos/abdulmajeed_abdullah.png" width="56" alt=""> | **Abdulmajeed Abdullah HD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 1657 | <img src="playlist-logos/ace_country_radio_kpvmld.png" width="56" alt=""> | **ACE Country Radio KPVM-LD HD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 1658 | <img src="playlist-logos/activa_tv.png" width="56" alt=""> | **Activa TV HD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 1659 | <img src="playlist-logos/ae_radio_tv.png" width="56" alt=""> | **AE Radio TV HD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 1660 | <img src="playlist-logos/alcance_fm_play_tv.png" width="56" alt=""> | **Alcance FM PLAY TV HD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 1661 | <img src="playlist-logos/allegro_hd.png" width="56" alt=""> | **Allegro HD HD** |  |  | HD | 📲 אפליקציות בלבד |
+| 1662 | <img src="playlist-logos/alternatv.png" width="56" alt=""> | **AlternaTV HD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 1663 | <img src="playlist-logos/andy_haryana.png" width="56" alt=""> | **Andy Haryana HD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 1664 | <img src="playlist-logos/arabica_tv.png" width="56" alt=""> | **Arabica TV HD** |  |  | HD | 📲 אפליקציות בלבד |
+| 1665 | <img src="playlist-logos/atomic_academy_tv.png" width="56" alt=""> | **Atomic Academy TV HD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 1666 | <img src="playlist-logos/atomic_tv.png" width="56" alt=""> | **Atomic TV HD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 1667 | <img src="playlist-logos/avang_tv.png" width="56" alt=""> | **Avang TV HD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 1668 | <img src="playlist-logos/axs_tv.png" width="56" alt=""> | **AXS TV HD** |  |  | HD | 📲 אפליקציות בלבד |
+| 1669 | <img src="playlist-logos/azahares_radiovisual_multimedia.png" width="56" alt=""> | **Azahares Radiovisual Multimedia HD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 1670 | <img src="playlist-logos/b4u_music.png" width="56" alt=""> | **B4U Music HD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 1671 | <img src="playlist-logos/baby_time.png" width="56" alt=""> | **Baby Time HD** |  |  | HD | 📲 אפליקציות בלבד |
+| 1672 | <img src="playlist-logos/balle_balle.png" width="56" alt=""> | **Balle Balle HD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 1673 | <img src="playlist-logos/balle_balle_hd.png" width="56" alt=""> | **Balle Balle HD HD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 1674 | <img src="playlist-logos/bandamax.png" width="56" alt=""> | **Bandamax HD** |  |  | HD | 📲 אפליקציות בלבד |
+| 1675 | <img src="playlist-logos/baraza_tv_deep_house.png" width="56" alt=""> | **Baraza TV Deep House HD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 1676 | <img src="playlist-logos/baraza_tv_relaxing.png" width="56" alt=""> | **Baraza TV Relaxing HD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 1677 | <img src="playlist-logos/beats_radio.png" width="56" alt=""> | **Beats Radio HD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 1678 | <img src="playlist-logos/beattv.png" width="56" alt=""> | **BEATTV HD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 1679 | <img src="playlist-logos/bibel_tv_musik.png" width="56" alt=""> | **Bibel TV Musik HD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 1680 | <img src="playlist-logos/biz_music.png" width="56" alt=""> | **BIZ Music HD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 1681 | <img src="playlist-logos/black.png" width="56" alt=""> | **Black HD** |  |  | HD | 📲 אפליקציות בלבד |
+| 1682 | <img src="playlist-logos/boktv.png" width="56" alt=""> | **BOKTV HD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 1683 | <img src="playlist-logos/boogle_bollywood.png" width="56" alt=""> | **Boogle Bollywood HD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 1684 | <img src="playlist-logos/boom_tv.png" width="56" alt=""> | **Boom TV HD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 1685 | <img src="playlist-logos/bpx_tv_radio.png" width="56" alt=""> | **BPX TV Radio HD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 1686 | <img src="playlist-logos/bridge.png" width="56" alt=""> | **BRIDGE HD** |  |  | HD | 📲 אפליקציות בלבד |
+| 1687 | <img src="playlist-logos/bridge_classic.png" width="56" alt=""> | **BRIDGE Classic HD** |  |  | HD | 📲 אפליקציות בלבד |
+| 1688 | <img src="playlist-logos/bridge_deluxe_hd.png" width="56" alt=""> | **BRIDGE Deluxe HD HD** |  |  | HD | 📲 אפליקציות בלבד |
+| 1689 | <img src="playlist-logos/bridge_hits.png" width="56" alt=""> | **BRIDGE Hits HD** |  |  | HD | 📲 אפליקציות בלבד |
+| 1690 | <img src="playlist-logos/bridge_rock.png" width="56" alt=""> | **BRIDGE Rock HD** |  |  | HD | 📲 אפליקציות בלבד |
+| 1691 | <img src="playlist-logos/buenisima_radio_tv.png" width="56" alt=""> | **Buenisima Radio TV HD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 1692 | <img src="playlist-logos/cadena_elite.png" width="56" alt=""> | **Cadena Elite HD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 1693 | <img src="playlist-logos/california_music_channel.png" width="56" alt=""> | **California Music Channel HD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
 
 ## לייף סטייל ובידור
 
@@ -1424,7 +1524,7 @@
 
 | # | | ערוץ | מדינה | שפה | איכות | איפה מתנגן |
 |---|---|---|---|---|---|---|
-| 1246 |  | **ערוץ החיים הטובים HD** |  | עברית | SD | 📲 אפליקציות בלבד |
+| 1246 | <img src="playlist-logos/good_life_israel.png" width="56" alt=""> | **ערוץ החיים הטובים HD** |  | עברית | SD | 📲 אפליקציות בלבד |
 | 1247 | <img src="https://i.imgur.com/jvnkrEF.png" width="56" alt=""> | **AfroLandTV** | 🇺🇸 ארצות הברית | אנגלית | FHD | 🌐 אתר + 📲 אפליקציות |
 | 1248 | <img src="https://images.pluto.tv/channels/66e06576abec540008cc17a9/colorLogoPNG.png" width="56" alt=""> | **The Graham Norton Show** | 🇬🇧 בריטניה | אנגלית | FHD | 🌐 אתר + 📲 אפליקציות |
 | 1249 | <img src="https://i.imgur.com/99h8F1y.jpeg" width="56" alt=""> | **Monte Carlo Digital Television** | 🇫🇷 צרפת | אנגלית | FHD | 🌐 אתר + 📲 אפליקציות |
