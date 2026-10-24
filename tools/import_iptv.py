@@ -47,20 +47,34 @@ CAT_DOCU = "טבע ודוקו (Documentary & Nature)"
 CAT_LIFE = "לייף סטייל ובידור"
 CAT_RELIGION = "דת ואמונה (Religion)"
 CAT_WORLD = "ערוצים בינלאומיים (World)"
+CAT_FOOD = "אוכל ובישול (Food)"
+CAT_TRAVEL = "טיולים והרפתקאות (Travel)"
+CAT_COMEDY = "קומדיה (Comedy)"
+CAT_SCIENCE = "מדע ולמידה (Science)"
+CAT_BUSINESS = "כלכלה ועסקים (Business)"
 CATS = [  # first matching iptv-org category wins
-    ("kids", "kids"), ("animation", "kids"), ("news", "news"), ("business", "news"), ("legislative", "news"),
-    ("weather", "news"), ("sports", "sports"), ("music", "music"), ("movies", "movies"), ("series", "movies"),
-    ("classic", "movies"), ("documentary", "docu"), ("science", "docu"), ("outdoor", "docu"), ("education", "docu"),
-    ("religious", "religion"), ("cooking", "life"), ("travel", "life"), ("lifestyle", "life"), ("comedy", "life"),
-    ("entertainment", "life"), ("culture", "life"), ("family", "life"), ("auto", "life"), ("relax", "life"),
+    ("kids", "kids"), ("animation", "kids"), ("business", "business"), ("news", "news"), ("legislative", "news"),
+    ("weather", "news"), ("sports", "sports"), ("cooking", "food"), ("music", "music"), ("movies", "movies"),
+    ("series", "movies"), ("classic", "movies"), ("comedy", "comedy"), ("travel", "travel"), ("outdoor", "travel"),
+    ("documentary", "docu"), ("science", "science"), ("education", "science"), ("religious", "religion"),
+    ("lifestyle", "life"), ("entertainment", "life"), ("culture", "life"), ("family", "life"), ("auto", "life"),
+    ("relax", "life"),
 ]
 CAT_NAME = {"news": CAT_NEWS, "sports": CAT_SPORTS, "music": CAT_MUSIC, "movies": CAT_MOVIES, "docu": CAT_DOCU,
-            "religion": CAT_RELIGION, "life": CAT_LIFE, "world": CAT_WORLD}
+            "religion": CAT_RELIGION, "life": CAT_LIFE, "world": CAT_WORLD, "food": CAT_FOOD, "travel": CAT_TRAVEL,
+            "comedy": CAT_COMEDY, "science": CAT_SCIENCE, "business": CAT_BUSINESS}
 CAT_KIND_HE = {"kids": "ערוץ ילדים", "news": "ערוץ חדשות", "sports": "ערוץ ספורט", "music": "ערוץ מוזיקה",
-               "movies": "סרטים וסדרות", "docu": "דוקו, טבע ומדע", "religion": "ערוץ דת ואמונה",
-               "life": "בידור ולייף סטייל", "world": "ערוץ כללי"}
+               "movies": "סרטים וסדרות", "docu": "דוקו וטבע", "religion": "ערוץ דת ואמונה",
+               "life": "בידור ולייף סטייל", "world": "ערוץ כללי", "food": "אוכל ובישול", "travel": "טיולים ומסעות",
+               "comedy": "ערוץ קומדיה", "science": "מדע ולמידה", "business": "כלכלה ועסקים"}
 SKIP_CATS = {"xxx", "shop", "interactive"}
-SKIP_IDS = {"Channel13.il"}  # curated "רשת 13" already plays Channel 13
+SKIP_IDS = {"Channel13.il",  # curated "רשת 13" already plays Channel 13
+            # paid Israeli channels (Sport 5 etc.) re-streamed from a bare IP without a licence
+            "5Plus.il", "5Stars.il", "HealthChannel.il", "TeenNick.il"}
+# pay-TV sports / premium brands: a free stream of these is a re-stream without a licence (the free ESPN8 The Ocho,
+# DAZN / Pluto FAST channels and public broadcasters don't match)
+PAID_RE = re.compile(r"^(ESPN(?!8)|ESPN Premium|Fox Sports|Eurosport|Star Sports|Sony Sports|Ten Cricket|Eleven Sports|"
+                     r"Okko|Match[!4 ]|TyC Sports|Win[+ ]|Win Sports|Tigo Sports|Canal\+|Golf Channel|Sky )", re.I)
 
 
 def load(work, name):
@@ -263,8 +277,8 @@ def kind(c):
 # "pick": a balanced selection (~800) out of the thousands of working streams: every Israeli / Hebrew channel,
 # then per category a quota filled round-robin over countries (big / relevant countries first, a cap per country),
 # preferring streams the https web app can play, HD, and channels that have a logo. The pick is probed again.
-QUOTA = {"news": 160, "movies": 130, "life": 110, "music": 90, "world": 90, "kids": 80, "sports": 70, "docu": 70,
-         "religion": 30}
+QUOTA = {"news": 160, "sports": 160, "movies": 140, "life": 100, "music": 90, "world": 120, "kids": 80, "docu": 70,
+         "food": 60, "travel": 50, "comedy": 50, "science": 50, "business": 40, "religion": 30}
 COUNTRY_ORDER = ["IL", "US", "UK", "FR", "DE", "ES", "IT", "RU", "UA", "CA", "AU", "AE", "QA", "SA", "EG", "LB", "TR",
                  "IN", "JP", "KR", "CN", "BR", "MX", "AR", "PT", "NL", "BE", "CH", "AT", "PL", "GR", "SE", "NO", "DK",
                  "FI", "IE", "CZ", "RO", "HU", "CL", "CO", "PE", "PH", "ID", "TH", "VN", "PK", "IR", "MA", "ZA", "NG"]
@@ -322,8 +336,8 @@ def cmd_merge(work):
     taken_iptv = {c.get("iptv") for c in ours if c.get("iptv")}
     taken_urls = {c["url"].split("://", 1)[-1] for c in ours} | {c.get("webUrl", "").split("://", 1)[-1] for c in ours}
 
-    order = [CAT_ISRAEL, CAT_KIDS_HE, CAT_NEWS, CAT_MOVIES, CAT_SPORTS, CAT_KIDS_WORLD, CAT_MUSIC, CAT_DOCU,
-             CAT_LIFE, CAT_RELIGION, CAT_WORLD]
+    order = [CAT_ISRAEL, CAT_KIDS_HE, CAT_SPORTS, CAT_NEWS, CAT_BUSINESS, CAT_MOVIES, CAT_COMEDY, CAT_FOOD,
+             CAT_KIDS_WORLD, CAT_MUSIC, CAT_DOCU, CAT_TRAVEL, CAT_SCIENCE, CAT_LIFE, CAT_RELIGION, CAT_WORLD]
     new = []
     for c in res:
         k = kind(c)
@@ -333,6 +347,8 @@ def cmd_merge(work):
             cat = CAT_KIDS_HE if c["lang"] == "he" else CAT_KIDS_WORLD
         else:
             cat = CAT_NAME[k]
+        if PAID_RE.match(c["name"]):
+            continue
         if norm(c["name"]) in taken_names and c["country"] == "IL" or c["iptv"] in SKIP_IDS or c["iptv"] in taken_iptv:
             continue  # curated version already there
         if c["url"].split("://", 1)[-1] in taken_urls:

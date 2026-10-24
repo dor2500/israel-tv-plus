@@ -1,50 +1,46 @@
 {
-  "version": "3.2.0",
-  "code": 202610241425,
-  "app": 320,
+  "version": "3.3.0",
+  "code": 202610241515,
+  "app": 330,
   "shell": 3,
   "date": "2026-10-24",
   "notes": [
-    "עיצוב \"זכוכית\" חדש לטלפון (Material 3 Expressive + Apple TV): זכוכית חלבית עם טשטוש וקצה מבריק, שכבות עומק עם צללים, צורות \"גלולה\" ופינות א-סימטריות, כותרות גדולות ומודגשות, והכל בצבעי הטפט של הטלפון (Material You)",
-    "כותרת בסגנון Apple TV: שם המסך בגדול מימין, ואווטאר תלת-ממדי (3D Noto Emoji) משמאל – לחיצה עליו בוחרת אווטאר ומציגה את מצב העדכונים",
-    "מקצה לקצה: רשימת הערוצים והמסך הראשי גוללים מתחת לכותרת ולפס הניווט השקופים",
-    "פס ניווט צף מזכוכית עם חיפוש: כפתור החיפוש העגול נפתח לשדה חיפוש בתוך הפס, מעל המקלדת",
-    "גלילה כמו באייפון: מתיחה כשמושכים מעבר לקצה וקפיצה חזרה עם קפיץ (אותה פיזיקה כמו באפליקציית BitChord), גם בשורות שגוללים לצדדים",
-    "כרטיסים שמגיבים למגע: הכרטיס נוטה לכיוון האצבע, הלוגו \"צף\" מעליו ואור מחליק עליו (כמו ב-Apple TV); בטלוויזיה הכרטיס הנבחר מתרומם ואור עובר עליו",
-    "עדכונים בסגנון Pixel: כרטיס עדכון גדול בהגדרות ← עדכונים; כשיוצאת גרסה חדשה ב-GitHub נפתח חלון זכוכית עם מה חדש, וההורדה מתקדמת בו עם פס התקדמות של Material You",
-    "טעינה יפה: שלדים מזכוכית מנצנצים (בסגנון VisionOS) עד שהמסך והלוגואים נטענים",
-    "אנדרואיד: מסך פתיחה של AndroidX (core-splashscreen) בכל גרסה של אנדרואיד – נשאר עד שהמסך מוכן ואז מתרחב ונעלם, צליל פתיחה קצר (אפשר לכבות בהגדרות ← תצוגה; שקט כשהטלפון על שקט), קצב הרענון הגבוה של המסך (120Hz), רטט מדויק לכל פעולה (מתג, בחירה, אישור, שגיאה)"
+    "1220 ערוצים מ-152 מדינות (היו 976): כל ערוץ נבדק שוב שהוא משדר ויש בו תמונה",
+    "קטגוריות חדשות: 🍳 אוכל ובישול (Food Network, bon appétit, TV5MONDE Chefs, Tastemade, Gusto TV...), ✈️ טיולים והרפתקאות, 🔬 מדע ולמידה, 📈 כלכלה ועסקים ו-😂 קומדיה (ערוץ הקומדיה הישראלי פותח אותה)",
+    "הרבה יותר ספורט: 114 ערוצים (היו 79) – FIFA+, Red Bull TV, PGA Tour, NBC Sports NOW, Tennis Channel, DAZN Combat, talkSPORT, Sportitalia, Claro Sports ועוד. ערוצי ספורט בתשלום (ספורט 5, ESPN, Eurosport, Eleven...) לא נכנסים – שידור \"חינמי\" שלהם הוא ממסר בלי זכויות",
+    "ערוצים ישראליים ויהודיים חדשים: ILTV (ישראל בצרפתית) ו-JLTV (טלוויזיה יהודית מארה\"ב)",
+    "בלי כפתור השתקה: הכפתור, המקש M והפריט בתפריט הוסרו. אם הדפדפן מתחיל שידור בלי קול, השמע עולה בנגיעה הראשונה במסך"
   ],
   "native": {
     "android": {
-      "version": "3.2.0",
-      "app": 320,
+      "version": "3.3.0",
+      "app": 330,
       "url": "https://github.com/dor2500/israel-tv-plus/releases/latest/download/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "3.2.0",
-      "app": 320,
+      "version": "3.3.0",
+      "app": 330,
       "url": "https://github.com/dor2500/israel-tv-plus/releases/latest/download/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "3.2.0",
-      "app": 320,
+      "version": "3.3.0",
+      "app": 330,
       "url": "https://github.com/dor2500/israel-tv-plus/releases/latest/download/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "3.2.0",
-      "app": 320,
+      "version": "3.3.0",
+      "app": 330,
       "url": "https://github.com/dor2500/israel-tv-plus/releases/latest/download/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "3.2.0",
-      "app": 320,
+      "version": "3.3.0",
+      "app": 330,
       "url": "https://github.com/dor2500/israel-tv-plus/releases/latest/download/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "3.2.0",
-      "app": 320,
+      "version": "3.3.0",
+      "app": 330,
       "url": "https://github.com/dor2500/israel-tv-plus/releases/latest/download/IsraelTVPlus-linux-x64.zip"
     }
   }

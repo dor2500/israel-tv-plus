@@ -71,6 +71,11 @@ FIX = {
     "fresh_kids_hd": {"title": "אנימציה וילדים (Fresh Kids)"},
     "cartoons_90s": {"title": "קלאסיקות מצוירות (Cartoons 90s)"},
     "cartoons_big_hd": {"title": "סרטי אנימציה (Cartoons Big)"},
+    # the new categories (2026-10-24) open with the curated channels that belong in them
+    "comedy_channel": {"category": "קומדיה (Comedy)", "categoryEn": "comedy"},
+    "vacation_channel": {"category": "טיולים והרפתקאות (Travel)", "categoryEn": "travel"},
+    "travel_channel": {"category": "טיולים והרפתקאות (Travel)", "categoryEn": "travel"},
+    "viju_explore": {"category": "מדע ולמידה (Science)", "categoryEn": "science"},
 }
 # https copies for the web site of channels whose main source is http (browsers block http on an https page).
 # Each played in Chromium and its picture was checked against the channel (2026-10-23); the apps keep `url`.
@@ -117,6 +122,15 @@ TV = [
          url="http://stream.mcquack.net/377/index.m3u8", lang="he", badge="SD", iptv="Zoom.il",
          desc="ערוץ הילדים והנוער הישראלי - סדרות נוער, דרמות וקומדיות בעברית",
          logo_style=("ZOOM", "ילדים ונוער", "#831843", "#f472b6")),
+    # 2026-10-24: Israeli / Jewish channels with an open stream that iptv-org lists outside the IL country code
+    dict(id="iltv_fr", name="ILTV ישראל בצרפתית", title="ILTV - Israël en français", category=CAT_ISRAEL, categoryEn="israel",
+         url="https://live.creacast.com/iltv/smil:iltv.smil/playlist.m3u8", lang="fr", badge="HD", iptv="ILTV.fr",
+         desc="ערוץ ישראלי בצרפתית - חדשות, אקטואליה, תרבות ואוכל מישראל",
+         logo_style=("ILTV", "ישראל בצרפתית", "#1e3a8a", "#93c5fd")),
+    dict(id="jltv", name="JLTV טלוויזיה יהודית", title="Jewish Life Television (JLTV)", category="מסורת וקהילה",
+         categoryEn="community", url="https://jlt-jltv-xumo.otteravision.com/jlt/jltv/jltv.m3u8", lang="en", badge="HD",
+         iptv="JewishLifeTelevision.us", desc="ערוץ התרבות היהודית מארה\"ב - ישראל, אוכל, היסטוריה, מוזיקה וראיונות (באנגלית)",
+         logo_style=("JLTV", "Jewish Life", "#0c4a6e", "#7dd3fc")),
 ]
 
 # ----------------------------------------------------------------------------- Israeli radio
@@ -352,8 +366,9 @@ def main():
 
     # numbering follows the category order (Israeli first); inside a category the existing order stays,
     # except the radio list, which starts with Kan and the big national stations
-    cats = [CAT_ISRAEL, CAT_KIDS_HE, CAT_RADIO, CAT_APPS, CAT_NEWS, CAT_MOVIES, "ספורט (Sports)", CAT_KIDS_WORLD,
-            CAT_MUSIC, "טבע ודוקו (Documentary & Nature)", "לייף סטייל ובידור", "מסורת וקהילה", CAT_WORLD]
+    cats = [CAT_ISRAEL, CAT_KIDS_HE, CAT_RADIO, CAT_APPS, "ספורט (Sports)", CAT_NEWS, CAT_MOVIES, "קומדיה (Comedy)",
+            CAT_KIDS_WORLD, CAT_MUSIC, "טבע ודוקו (Documentary & Nature)", "טיולים והרפתקאות (Travel)",
+            "מדע ולמידה (Science)", "לייף סטייל ובידור", "מסורת וקהילה", CAT_WORLD]
     allc = out + added
     pos = {c["id"]: i for i, c in enumerate(allc)}
     first = {cid: i for i, cid in enumerate(RADIO_FIRST)}
