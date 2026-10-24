@@ -94,10 +94,16 @@ public class MainActivity extends Activity {
         splash.setOnExitAnimationListener(p -> {
             // the icon grows and the splash fades: Material "emphasized decelerate"
             PathInterpolator ease = new PathInterpolator(0.05f, 0.7f, 0.1f, 1f);
-            View icon = p.getIconView();
+            View icon = null;
+            // core-splashscreen 1.0.1 throws on Android 12+ when the system's splash has no icon view (warm starts)
+            try { icon = p.getIconView(); } catch (RuntimeException ignored) { }
             if (icon != null) icon.animate().scaleX(1.6f).scaleY(1.6f).alpha(0f).setDuration(420).setInterpolator(ease).start();
-            p.getView().animate().alpha(0f).setStartDelay(80).setDuration(380).setInterpolator(ease)
-                .withEndAction(p::remove).start();
+            try {
+                p.getView().animate().alpha(0f).setStartDelay(80).setDuration(380).setInterpolator(ease)
+                    .withEndAction(p::remove).start();
+            } catch (RuntimeException e) {
+                p.remove();
+            }
         });
         if (state == null) playLaunchSound();
         tv = isTv();
