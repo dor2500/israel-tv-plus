@@ -38,6 +38,13 @@ window.ITV_ICON = function (name, cls) {
 };
 
 window.ITV_UI = (function (I) {
+  // VisionOS-style glass skeletons: what the phone home shows until app.js has built the real one
+  var rep = function (s, n) { var o = ''; for (var i = 0; i < n; i++) o += s; return o; };
+  var skelCard = '<div class="pcard"><div class="pc-media skel"></div><div class="skel skel-t"></div><div class="skel skel-s"></div></div>';
+  var skelHome = '<div class="slide skel-slide"><div class="slide-body"><div class="skel skel-logo"></div><div class="skel skel-line"></div>' +
+    '<div class="skel skel-pill"></div></div></div>';
+  var skelShelves = rep('<section class="shelf skel-shelf"><div class="shelf-head"><div class="skel skel-h"></div></div>' +
+    '<div class="shelf-row">' + rep(skelCard, 4) + '</div></section>', 3);
   return '' +
 '<svg class="defs" aria-hidden="true"><defs>' +
   '<filter id="retro-sharpen-filter" x="0%" y="0%" width="100%" height="100%">' +
@@ -48,7 +55,7 @@ window.ITV_UI = (function (I) {
   // ---------------------------------------------------------------- top bar (TV: brand + search + actions; phone: top app bar)
   '<header class="topbar" id="topbar">' +
     '<div class="brand"><img class="brand-icon" src="icon.png" alt=""><div class="brand-text">' +
-      '<div class="brand-name">ישראל <b>TV+</b></div><div class="brand-sub"><span class="live-dot"></span>' +
+      '<div class="brand-name">ישראל <b>TV+</b></div><div class="brand-tab ph" id="brand-tab"></div><div class="brand-sub"><span class="live-dot"></span>' +
       '<span id="count-badge">ערוצים</span></div></div></div>' +
     '<div class="top-search nav-top" id="top-search" data-nav="search">' +
       '<span class="ico">' + I('search') + '</span><input id="search-input" type="search" autocomplete="off" spellcheck="false" ' +
@@ -60,14 +67,17 @@ window.ITV_UI = (function (I) {
       '<button class="top-btn ph" id="btn-search" aria-label="חיפוש"><span class="ico">' + I('search') + '</span></button>' +
       '<button class="top-btn nav-top tv" id="btn-settings" data-nav="settings"><span class="ico">' + I('settings') + '</span><span>הגדרות</span></button>' +
       '<div class="clock" id="clock">00:00</div>' +
+      // phone: the profile avatar (3D Noto Emoji) at the trailing end of the Apple TV-style header; a dot = update
+      '<button class="avatar ph" id="btn-avatar" aria-label="פרופיל ועדכונים"><img id="avatar-img" alt="">' +
+        '<i class="avatar-dot hidden" id="avatar-dot"></i></button>' +
     '</div>' +
   '</header>' +
 
   // ---------------------------------------------------------------- phone home: hero pager + shelves (Nuvio style)
   '<main class="home ph" id="home">' +
-    '<section class="pager" id="pager"><div class="pager-track" id="pager-track"></div>' +
+    '<section class="pager" id="pager"><div class="pager-track" id="pager-track">' + skelHome + '</div>' +
       '<div class="pager-dots" id="pager-dots"></div></section>' +
-    '<div class="shelves" id="shelves"></div>' +
+    '<div class="shelves" id="shelves">' + skelShelves + '</div>' +
   '</main>' +
 
   '<div class="body" id="guide-body">' +
@@ -102,7 +112,10 @@ window.ITV_UI = (function (I) {
     '<button class="nb-item" data-tab="explore" role="tab">' + I('tv') + '<span>ערוצים</span></button>' +
     '<button class="nb-item" data-tab="library" role="tab">' + I('star') + '<span>שלי</span></button>' +
     '<button class="nb-item" data-tab="settings" role="tab">' + I('settings') + '<span>הגדרות</span></button>' +
-  '</div></nav>' +
+    '</div>' +
+    // the search action of the glass bar: a round glass button that opens into the search field (app.js moves #top-search here)
+    '<button class="nb-search" id="nb-search" aria-label="חיפוש">' + I('search', 'nbs-find') + I('close', 'nbs-close') + '</button>' +
+  '</nav>' +
 
   // ---------------------------------------------------------------- number entry
   '<div class="numhud hidden" id="numhud"><div class="numhud-digits" id="numhud-digits"></div>' +

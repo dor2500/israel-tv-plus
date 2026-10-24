@@ -11,15 +11,24 @@ import android.content.Intent;
 import android.content.pm.PackageInstaller;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
+import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.media.AudioAttributes;
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.SystemClock;
 import android.provider.Settings;
 import android.util.Rational;
+import android.view.Display;
 import android.view.HapticFeedbackConstants;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.animation.PathInterpolator;
 import android.view.Window;
 import android.view.WindowInsets;
 import android.view.WindowInsetsController;
@@ -34,6 +43,8 @@ import android.window.BackEvent;
 import android.window.OnBackAnimationCallback;
 import android.window.OnBackInvokedCallback;
 import android.window.OnBackInvokedDispatcher;
+
+import androidx.core.splashscreen.SplashScreen;
 
 import org.json.JSONObject;
 
@@ -55,20 +66,40 @@ import java.util.Locale;
  * CSS insets), Material You colours (Android 12+ wallpaper palette), predictive back with the in-app layer
  * following the gesture (Android 14+), picture-in-picture (auto-enter on Android 12+) and haptic ticks.
  * TVs: immersive full screen as before.
+ * Start: the AndroidX core-splashscreen (the Android 12 splash on every version) stays until the page has drawn
+ * its first screen (Bridge.ready, at most SPLASH_MAX_MS), then zooms away; a short launch sound plays on a cold
+ * start (setting, silent when the phone is on silent / vibrate). Phones run at the screen's highest refresh rate.
  * Updates: the web app checks GitHub; a new APK is downloaded and handed to the system installer from here.
  */
 public class MainActivity extends Activity {
     static final String ACTION_INSTALL_STATUS = "com.israeltv.plus.INSTALL_STATUS";
+    static final long SPLASH_MAX_MS = 3000;
     private WebView web;
     private boolean tv;
     private boolean immersive;
     private boolean playing;
+    private volatile boolean pageReady;
+    private long splashUntil;
+    private SharedPreferences prefs;
     private String insetsJson = "{\"t\":0,\"r\":0,\"b\":0,\"l\":0}";
 
     @Override
     @SuppressWarnings("deprecation")
     protected void onCreate(Bundle state) {
+        SplashScreen splash = SplashScreen.installSplashScreen(this);   // before super.onCreate (sets the app theme back)
         super.onCreate(state);
+        prefs = getSharedPreferences("itv", MODE_PRIVATE);
+        splashUntil = SystemClock.uptimeMillis() + SPLASH_MAX_MS;
+        splash.setKeepOnScreenCondition(() -> !pageReady && SystemClock.uptimeMillis() < splashUntil);
+        splash.setOnExitAnimationListener(p -> {
+            // the icon grows and the splash fades: Material "emphasized decelerate"
+            PathInterpolator ease = new PathInterpolator(0.05f, 0.7f, 0.1f, 1f);
+            View icon = p.getIconView();
+            if (icon != null) icon.animate().scaleX(1.6f).scaleY(1.6f).alpha(0f).setDuration(420).setInterpolator(ease).start();
+            p.getView().animate().alpha(0f).setStartDelay(80).setDuration(380).setInterpolator(ease)
+                .withEndAction(p::remove).start();
+        });
+        if (state == null) playLaunchSound();
         tv = isTv();
         Window w = getWindow();
         w.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
@@ -106,6 +137,8 @@ public class MainActivity extends Activity {
             @Override
             public void onPageFinished(WebView v, String url) {
                 sendInsets();
+                // builds without Bridge.ready (older live updates): the scripts have loaded by now
+                v.postDelayed(() -> pageReady = true, 250);
             }
 
             /** The page's process ran out of memory or crashed: start the app again instead of closing it. */
@@ -122,7 +155,7 @@ public class MainActivity extends Activity {
         web.addJavascriptInterface(new Bridge(), "AndroidApp");
         setContentView(web);
         if (tv) hideSystemBars();
-        else edgeToEdge();
+        else { edgeToEdge(); highRefreshRate(); }
         if (Build.VERSION.SDK_INT >= 33) registerBack();
         if (state != null) web.restoreState(state);
         else web.loadUrl("file:///android_asset/www/index.html");
@@ -149,15 +182,18 @@ public class MainActivity extends Activity {
         }
         web.setOnApplyWindowInsetsListener((v, insets) -> {
             float d = getResources().getDisplayMetrics().density;
-            int t, r, b, l;
+            int t, r, b, l, k = 0;
             if (Build.VERSION.SDK_INT >= 30) {
                 android.graphics.Insets i = insets.getInsetsIgnoringVisibility(WindowInsets.Type.systemBars() | WindowInsets.Type.displayCutout());
                 t = i.top; r = i.right; b = i.bottom; l = i.left;
+                // the keyboard: edge-to-edge windows don't shrink for it, so the page lifts its glass bar by this much
+                k = insets.getInsets(WindowInsets.Type.ime()).bottom;
             } else {
+                // Android 5-10: adjustResize shrinks the window for the keyboard, nothing to add
                 t = insets.getSystemWindowInsetTop(); r = insets.getSystemWindowInsetRight();
                 b = insets.getSystemWindowInsetBottom(); l = insets.getSystemWindowInsetLeft();
             }
-            insetsJson = String.format(Locale.US, "{\"t\":%.1f,\"r\":%.1f,\"b\":%.1f,\"l\":%.1f}", t / d, r / d, b / d, l / d);
+            insetsJson = String.format(Locale.US, "{\"t\":%.1f,\"r\":%.1f,\"b\":%.1f,\"l\":%.1f,\"k\":%.1f}", t / d, r / d, b / d, l / d, k / d);
             sendInsets();
             return insets;
         });
@@ -166,7 +202,7 @@ public class MainActivity extends Activity {
 
     void sendInsets() {
         if (tv || web == null) return;
-        web.evaluateJavascript("(function(i){window.__itvInsets&&window.__itvInsets(i.t,i.r,i.b,i.l)})(" + insetsJson + ")", null);
+        web.evaluateJavascript("(function(i){window.__itvInsets&&window.__itvInsets(i.t,i.r,i.b,i.l,i.k)})(" + insetsJson + ")", null);
     }
 
     @SuppressWarnings("deprecation")
@@ -202,6 +238,70 @@ public class MainActivity extends Activity {
         }
     }
 
+    // ------------------------------------------------------------------ 120 Hz, launch sound
+    /** Phones: ask for the screen's fastest mode at the current resolution (120 Hz on most phones), not the 60 Hz default. */
+    @SuppressWarnings("deprecation")
+    void highRefreshRate() {
+        if (Build.VERSION.SDK_INT < 23) return;
+        try {
+            Display d = Build.VERSION.SDK_INT >= 30 ? getDisplay() : getWindowManager().getDefaultDisplay();
+            if (d == null) return;
+            Display.Mode cur = d.getMode(), best = cur;
+            for (Display.Mode m : d.getSupportedModes()) {
+                if (m.getPhysicalWidth() == cur.getPhysicalWidth() && m.getPhysicalHeight() == cur.getPhysicalHeight()
+                        && m.getRefreshRate() > best.getRefreshRate()) best = m;
+            }
+            WindowManager.LayoutParams lp = getWindow().getAttributes();
+            lp.preferredDisplayModeId = best.getModeId();
+            lp.preferredRefreshRate = best.getRefreshRate();
+            getWindow().setAttributes(lp);
+            // Android 15+: the WebView asks for the high frame-rate category too (else ARR may drop it to 60 when idle-ish)
+            if (Build.VERSION.SDK_INT >= 35) web.setRequestedFrameRate(View.REQUESTED_FRAME_RATE_CATEGORY_HIGH);
+        } catch (Exception ignored) {
+        }
+    }
+
+    /** A short chime (res/raw/launch.wav, tools/make_launch_sound.py) on a cold start, unless off or the phone is silent. */
+    void playLaunchSound() {
+        if (!prefs.getBoolean("launchSound", true)) return;
+        AudioManager am = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+        if (am == null || am.getRingerMode() != AudioManager.RINGER_MODE_NORMAL) return;
+        try {
+            final SoundPool pool = new SoundPool.Builder().setMaxStreams(1).setAudioAttributes(new AudioAttributes.Builder()
+                .setUsage(AudioAttributes.USAGE_ASSISTANCE_SONIFICATION)
+                .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION).build()).build();
+            pool.setOnLoadCompleteListener((sp, id, status) -> {
+                if (status == 0) sp.play(id, 0.55f, 0.55f, 1, 0, 1f);
+                new Handler(Looper.getMainLooper()).postDelayed(sp::release, 2500);
+            });
+            pool.load(this, R.raw.launch, 1);
+        } catch (Exception ignored) {
+        }
+    }
+
+    /**
+     * The web app's haptic kinds -> the system haptic constants (the same set Compose's HapticFeedbackType maps to),
+     * newest constant first. Follows the system haptics setting.
+     */
+    static int hapticConstant(String kind) {
+        int sdk = Build.VERSION.SDK_INT;
+        switch (kind == null ? "" : kind) {
+            case "long": return HapticFeedbackConstants.LONG_PRESS;
+            case "press": return sdk >= 27 ? HapticFeedbackConstants.KEYBOARD_PRESS : HapticFeedbackConstants.VIRTUAL_KEY;
+            case "confirm": return sdk >= 30 ? HapticFeedbackConstants.CONFIRM : HapticFeedbackConstants.VIRTUAL_KEY;
+            case "reject": return sdk >= 30 ? HapticFeedbackConstants.REJECT : HapticFeedbackConstants.LONG_PRESS;
+            case "on": return sdk >= 34 ? HapticFeedbackConstants.TOGGLE_ON : HapticFeedbackConstants.CLOCK_TICK;
+            case "off": return sdk >= 34 ? HapticFeedbackConstants.TOGGLE_OFF : HapticFeedbackConstants.CLOCK_TICK;
+            case "start": return sdk >= 30 ? HapticFeedbackConstants.GESTURE_START : HapticFeedbackConstants.CLOCK_TICK;
+            case "end": return sdk >= 30 ? HapticFeedbackConstants.GESTURE_END : HapticFeedbackConstants.CLOCK_TICK;
+            case "edge": return sdk >= 34 ? HapticFeedbackConstants.GESTURE_THRESHOLD_ACTIVATE : HapticFeedbackConstants.CLOCK_TICK;
+            case "segment": return sdk >= 34 ? HapticFeedbackConstants.SEGMENT_TICK : HapticFeedbackConstants.CLOCK_TICK;
+            default:   // "tick": tabs, chips, small switches
+                return sdk >= 34 ? HapticFeedbackConstants.SEGMENT_FREQUENT_TICK
+                    : sdk >= 27 ? HapticFeedbackConstants.KEYBOARD_PRESS : HapticFeedbackConstants.VIRTUAL_KEY;
+        }
+    }
+
     // ------------------------------------------------------------------ Material You
     /** The Android 12+ dynamic (wallpaper) palette as #rrggbb, or "" before Android 12. */
     String dynamicColors() {
@@ -211,10 +311,12 @@ public class MainActivity extends Activity {
             {android.R.color.system_accent1_100, android.R.color.system_accent1_200, android.R.color.system_accent1_600,
                 android.R.color.system_accent1_700, android.R.color.system_accent1_800},
             {android.R.color.system_accent2_200, android.R.color.system_accent2_600},
+            {android.R.color.system_accent3_200, android.R.color.system_accent3_400, android.R.color.system_accent3_600},
             {android.R.color.system_neutral1_50, android.R.color.system_neutral1_100, android.R.color.system_neutral1_200,
-                android.R.color.system_neutral1_800, android.R.color.system_neutral1_900}};
-        String[][] names = {{"a1_100", "a1_200", "a1_600", "a1_700", "a1_800"}, {"a2_200", "a2_600"},
-            {"n1_50", "n1_100", "n1_200", "n1_800", "n1_900"}};
+                android.R.color.system_neutral1_800, android.R.color.system_neutral1_900},
+            {android.R.color.system_neutral2_700, android.R.color.system_neutral2_800}};
+        String[][] names = {{"a1_100", "a1_200", "a1_600", "a1_700", "a1_800"}, {"a2_200", "a2_600"}, {"a3_200", "a3_400", "a3_600"},
+            {"n1_50", "n1_100", "n1_200", "n1_800", "n1_900"}, {"n2_700", "n2_800"}};
         try {
             for (int g = 0; g < ids.length; g++)
                 for (int i = 0; i < ids[g].length; i++)
@@ -321,17 +423,23 @@ public class MainActivity extends Activity {
         @JavascriptInterface
         public void enterPip() { runOnUiThread(MainActivity.this::enterPip); }
 
-        /** "tick" (navigation, switches) or "long" (long press). Follows the system haptics setting. */
+        /** tick / press / long / confirm / reject / on / off / start / end / edge / segment (see hapticConstant). */
         @JavascriptInterface
         public boolean haptic(String kind) {
-            runOnUiThread(() -> {
-                int c = "long".equals(kind) ? HapticFeedbackConstants.LONG_PRESS
-                    : Build.VERSION.SDK_INT >= 34 ? HapticFeedbackConstants.SEGMENT_FREQUENT_TICK
-                    : Build.VERSION.SDK_INT >= 27 ? HapticFeedbackConstants.KEYBOARD_PRESS : HapticFeedbackConstants.VIRTUAL_KEY;
-                web.performHapticFeedback(c);
-            });
+            final int c = hapticConstant(kind);
+            runOnUiThread(() -> { if (web != null) web.performHapticFeedback(c); });
             return true;
         }
+
+        /** The page drew its first screen: the splash screen may leave. */
+        @JavascriptInterface
+        public void ready() { pageReady = true; }
+
+        @JavascriptInterface
+        public boolean launchSound() { return prefs.getBoolean("launchSound", true); }
+
+        @JavascriptInterface
+        public void setLaunchSound(boolean on) { prefs.edit().putBoolean("launchSound", on).apply(); }
 
         /** Opens a TV-service app: the TV build on a TV, else the phone build; not installed -> Play Store, else the site. */
         @JavascriptInterface

@@ -1,0 +1,2 @@
+3D Noto Emoji (https://github.com/googlefonts/noto-emoji/tree/main/3D) by Google, Apache License 2.0.
+Resized to 160x160 WebP for the profile avatar.
