@@ -150,6 +150,6 @@ with open(os.path.join(ROOT, "channels.json"), "w", encoding="utf-8") as f:
     json.dump(channels, f, ensure_ascii=False, indent=2)
 
 with open(os.path.join(ROOT, "channels.js"), "w", encoding="utf-8") as f:
-    f.write("window.ITV_CHANNELS = " + json.dumps(channels, ensure_ascii=False) + ";\n")
+    f.write("window.CHANNELS_DATA = window.ITV_CHANNELS = " + json.dumps(channels, ensure_ascii=False) + ";\n")
 
 print("Saved channels.json and channels.js successfully!")

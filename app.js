@@ -9,6 +9,9 @@
 (function () {
   'use strict';
 
+  window.CHANNELS_DATA = window.CHANNELS_DATA || window.ITV_CHANNELS || [];
+  window.ITV_CHANNELS = window.CHANNELS_DATA;
+
   var REMOTE = 'https://dor2500.github.io/israel-tv-plus/';
   var RELEASES = 'https://github.com/dor2500/israel-tv-plus/releases/latest';
   var REPO = 'https://github.com/dor2500/israel-tv-plus';
