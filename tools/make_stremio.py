@@ -22,9 +22,10 @@ ISRAELI_CATS = {"ערוצי ישראל - שידור חי", "ילדים ונוע�
                 "מסורת וקהילה"}
 # catalog order on the Stremio board: Israel first, then the world categories
 CAT_ORDER = ["ערוצי ישראל - שידור חי", "ילדים ונוער (בעברית)", "רדיו ישראלי (Israeli Radio)", "מסורת וקהילה",
-             "חדשות מהעולם (News)", "סרטים וסדרות (Movies & Series)", "ספורט (Sports)", "ילדים מהעולם (Kids World)",
-             "טבע ודוקו (Documentary & Nature)", "מוזיקה (Music TV)", "לייף סטייל ובידור", "דת ואמונה (Religion)",
-             "ערוצים בינלאומיים (World)", "מנויים ואפליקציות (TV Apps)"]
+             "ספורט (Sports)", "חדשות מהעולם (News)", "כלכלה ועסקים (Business)", "סרטים וסדרות (Movies & Series)",
+             "קומדיה (Comedy)", "אוכל ובישול (Food)", "ילדים מהעולם (Kids World)", "טבע ודוקו (Documentary & Nature)",
+             "טיולים והרפתקאות (Travel)", "מדע ולמידה (Science)", "מוזיקה (Music TV)", "לייף סטייל ובידור",
+             "דת ואמונה (Religion)", "ערוצים בינלאומיים (World)", "מנויים ואפליקציות (TV Apps)"]
 
 
 def flag(cc):
@@ -44,7 +45,9 @@ CAT_IDS = {
     "מנויים ואפליקציות (TV Apps)": "apps", "סרטים וסדרות (Movies & Series)": "movies", "ספורט (Sports)": "sports",
     "ילדים מהעולם (Kids World)": "kids_world", "מוזיקה (Music TV)": "music", "טבע ודוקו (Documentary & Nature)": "docu",
     "לייף סטייל ובידור": "life", "מסורת וקהילה": "community", "ערוצים בינלאומיים (World)": "world",
-    "חדשות מהעולם (News)": "news", "דת ואמונה (Religion)": "religion",
+    "חדשות מהעולם (News)": "news", "דת ואמונה (Religion)": "religion", "אוכל ובישול (Food)": "food",
+    "טיולים והרפתקאות (Travel)": "travel", "קומדיה (Comedy)": "comedy", "מדע ולמידה (Science)": "science",
+    "כלכלה ועסקים (Business)": "business",
 }
 CAT_NAMES = {"ערוצי ישראל - שידור חי": "ערוצי ישראל", "ילדים ונוער (בעברית)": "ילדים בעברית",
              "רדיו ישראלי (Israeli Radio)": "רדיו ישראלי", "מנויים ואפליקציות (TV Apps)": "מנויים ואפליקציות"}

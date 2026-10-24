@@ -189,12 +189,15 @@
     return main.replace(/\s*-\s*שידור חי\s*$/, '').replace(/\s*-\s*$/, '');
   }
   var CAT_ICONS = [[/אפליקציות|מנויים/, '📲'], [/רדיו/, '📻'], [/ישראל/, '📡'], [/ילדים/, '🧸'], [/סרטים|סדרות/, '🎬'],
-    [/ספורט/, '⚽'], [/מוזיקה/, '🎵'], [/לייף|בידור/, '🏖️'], [/דוקו|טבע/, '🌍'], [/חדשות|News/i, '📰'],
+    [/ספורט/, '⚽'], [/אוכל|בישול/, '🍳'], [/קומדיה/, '😂'], [/טיולים/, '✈️'], [/מדע/, '🔬'], [/כלכלה/, '📈'],
+    [/מוזיקה/, '🎵'], [/לייף|בידור/, '🏖️'], [/דוקו|טבע/, '🌍'], [/חדשות|News/i, '📰'],
     [/מסורת|יהדות/, '🕍'], [/דת|אמונה/, '🙏'], [/בינלאומי|World/i, '🌐']];
   function catIcon(name) { for (var i = 0; i < CAT_ICONS.length; i++) if (CAT_ICONS[i][0].test(name)) return CAT_ICONS[i][1]; return '📺'; }
   var CAT_ORDER = ['ערוצי ישראל - שידור חי', 'ילדים ונוער (בעברית)', 'רדיו ישראלי (Israeli Radio)', 'מנויים ואפליקציות (TV Apps)',
-    'חדשות מהעולם (News)', 'סרטים וסדרות (Movies & Series)', 'ספורט (Sports)', 'ילדים מהעולם (Kids World)', 'מוזיקה (Music TV)',
-    'טבע ודוקו (Documentary & Nature)', 'לייף סטייל ובידור', 'מסורת וקהילה', 'דת ואמונה (Religion)', 'ערוצים בינלאומיים (World)'];
+    'ספורט (Sports)', 'חדשות מהעולם (News)', 'כלכלה ועסקים (Business)', 'סרטים וסדרות (Movies & Series)', 'קומדיה (Comedy)',
+    'אוכל ובישול (Food)', 'ילדים מהעולם (Kids World)', 'מוזיקה (Music TV)', 'טבע ודוקו (Documentary & Nature)',
+    'טיולים והרפתקאות (Travel)', 'מדע ולמידה (Science)', 'לייף סטייל ובידור', 'מסורת וקהילה', 'דת ואמונה (Religion)',
+    'ערוצים בינלאומיים (World)'];
 
   var KIND_LABEL = { official: '✅ שידור רשמי', fast: '✅ ערוץ FAST חינמי (רשמי, עם פרסומות)', restream: '⚠️ ממסר של צד שלישי (לא השרת של הערוץ)' };
   function hostOf(url) { var m = /^[a-z]+:\/\/([^/:?#]+)/i.exec(url || ''); return m ? m[1] : ''; }
@@ -273,7 +276,7 @@
       'radio-audio', 'player', 'video', 'radio-view', 'radio-logo', 'radio-mono', 'radio-name', 'spinner', 'spinner-text',
       'perror', 'perror-title', 'perror-desc', 'perror-retry', 'perror-next', 'perror-back', 'osd', 'osd-logo', 'osd-mono',
       'osd-num', 'osd-name', 'osd-cat', 'osd-quality', 'osd-pic', 'osd-clock', 'osd-dub', 'osd-dub-text', 'osd-buttons',
-      'osd-hints', 'ob-play', 'ob-mute', 'drawer', 'drawer-list', 'drawer-cat', 'menu', 'menu-logo', 'menu-mono', 'menu-title',
+      'osd-hints', 'ob-play','drawer', 'drawer-list', 'drawer-cat', 'menu', 'menu-logo', 'menu-mono', 'menu-title',
       'menu-sub', 'menu-list', 'settings', 'settings-nav', 'settings-h', 'settings-p', 'settings-rows', 'dialog', 'dialog-box',
       'dialog-ico', 'dialog-title', 'dialog-body', 'dialog-actions', 'toast', 'saver', 'saver-in', 'saver-clock',
       'topbar', 'home', 'pager', 'pager-track', 'pager-dots', 'shelves', 'navbar', 'nb-pill', 'btn-search', 'hero-bg',
@@ -1502,7 +1505,7 @@
     p.then(done).catch(function () {
       m.muted = true;
       var p2 = m.play();
-      if (p2 && p2.then) p2.then(function () { done(); toast('🔇 השידור מושתק – לחצו על 🔊 להפעלת שמע'); updateMuteIcon(); })
+      if (p2 && p2.then) p2.then(function () { done(); toast('🔇 הקישו על המסך כדי להפעיל שמע'); unmuteOnTouch(m); })
         .catch(function (e) { if (state.playing === ch) onFatal(ch, e && e.message); });
     });
   }
@@ -1538,14 +1541,15 @@
     var nodes = document.querySelectorAll('.ob-play');
     for (var i = 0; i < nodes.length; i++) nodes[i].innerHTML = icon;
   }
-  function toggleMute() {
-    var m = media();
-    if (!m) return;
-    m.muted = !m.muted;
-    updateMuteIcon();
-    toast(m.muted ? '🔇 מושתק' : '🔊 שמע פועל');
+  // the browser only allowed muted autoplay: sound comes back with the first tap / key (there is no mute button)
+  function unmuteOnTouch(m) {
+    var evs = ['pointerdown', 'keydown'];
+    var on = function () {
+      evs.forEach(function (t) { document.removeEventListener(t, on, true); });
+      m.muted = false;
+    };
+    evs.forEach(function (t) { document.addEventListener(t, on, true); });
   }
-  function updateMuteIcon() { var m = media(); if (el.obMute) el.obMute.innerHTML = I(m && m.muted ? 'mute' : 'volume'); }
 
   function enterPip() {
     if (native('canPip')) { native('enterPip'); return; }
@@ -1694,7 +1698,6 @@
     }
     if (foreign(ch)) items.push({ ico: '🎙️', label: 'דיבוב לעברית', stay: true, dot: colourOf('dub'), val: function () { return Dub.settings.enabled ? 'פועל' : 'כבוי'; },
       act: function () { toggleDub(); } });
-    items.push({ ico: '🔊', label: 'השתקה', stay: true, val: function () { var m = media(); return m && m.muted ? 'מושתק' : 'שמע פועל'; }, act: toggleMute });
     items.push({ ico: isFav(ch) ? '★' : '☆', label: isFav(ch) ? 'הסרה מהמועדפים' : 'הוספה למועדפים', dot: colourOf('fav'), act: function () { toggleFav(ch); } });
     items.push({ ico: '☰', label: 'רשימת ערוצים', dot: colourOf('drawer'), act: openDrawer });
     items.push({ ico: 'ℹ️', label: 'מידע ומקור השידור', dot: colourOf('info'), act: function () { showInfo(ch); } });
@@ -1962,7 +1965,7 @@
     if (p === 'touch') return '';
     if (p === 'keyboard') {
       return inPlayer
-        ? h('▲▼', 'ערוץ') + h('◄', 'רשימת ערוצים') + h('Enter', 'אפשרויות') + h('M', 'השתקה') + h('F', 'מסך מלא') + h('D', 'דיבוב') + h('Esc', 'למדריך')
+        ? h('▲▼', 'ערוץ') + h('◄', 'רשימת ערוצים') + h('Enter', 'אפשרויות') + h('F', 'מסך מלא') + h('D', 'דיבוב') + h('Esc', 'למדריך')
         : h('Enter', 'צפייה') + h('קליק ימני / O', 'אפשרויות') + h('/', 'חיפוש') + h('S', 'הגדרות') + h('F', 'מסך מלא') + h('0-9', 'מספר ערוץ');
     }
     var nav = inPlayer ? h(S.upNext ? '▲ הבא ▼ קודם' : '▲▼', 'החלפת ערוץ') + h('◄', 'רשימת ערוצים') + h('OK', 'אפשרויות')
@@ -2880,7 +2883,6 @@
     [el.video, el.radioAudio].forEach(function (m) {
       m.addEventListener('play', updatePlayIcon);
       m.addEventListener('pause', updatePlayIcon);
-      m.addEventListener('volumechange', updateMuteIcon);
     });
     renderHints();
   }
@@ -2896,7 +2898,6 @@
     else if (a === 'prev') zap(-1);
     else if (a === 'next') zap(1);
     else if (a === 'playpause') togglePlay();
-    else if (a === 'mute') toggleMute();
     else if (a === 'list') openDrawer();
     else if (a === 'menu') playerMenu();
     else if (a === 'fullscreen') toggleFullscreen();
@@ -2988,7 +2989,6 @@
     // keyboard shortcuts (computers); the Android TV ☰ / settings key arrives as S
     if (!state.overlay || state.overlay === 'player') {
       if (code === 70) { toggleFullscreen(); return; }       // F
-      if (code === 77) { toggleMute(); return; }             // M
       if (code === 68) { toggleDub(); return; }              // D
       if (code === 83) { openSettings(); return; }           // S
       if (code === 79 || code === 93) { runAction('menu'); return; } // O / context-menu key
