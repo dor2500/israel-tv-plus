@@ -138,6 +138,59 @@ TV = [
          categoryEn="community", url="https://jlt-jltv-xumo.otteravision.com/jlt/jltv/jltv.m3u8", lang="en", badge="HD",
          iptv="JewishLifeTelevision.us", desc="ערוץ התרבות היהודית מארה\"ב - ישראל, אוכל, היסטוריה, מוזיקה וראיונות (באנגלית)",
          logo_style=("JLTV", "Jewish Life", "#0c4a6e", "#7dd3fc")),
+    # 2026-10-24: Israeli channels from the broadcasters' own servers (the list of the Idan Plus Kodi add-on,
+    # every stream checked with a frame). Sport 5's free live channel is its own web stream (RGE on Akamai).
+    dict(id="sport5_live", name="ספורט 5 – שידור חי", title="ספורט 5 שידור חי (Sport 5 Live)", category="ספורט (Sports)",
+         categoryEn="sports", url="https://rgelive.akamaized.net/hls/live/2043095/live3/playlist.m3u8", lang="he",
+         badge="HD", desc="השידור החי החינמי מאתר ספורט 5 (sport5.co.il) – משדר בזמן משחקים ושידורים חיים באתר; בין השידורים המסך שחור",
+         logo_style=("ספורט 5", "שידור חי", "#0b0b0b", "#22c55e")),
+    dict(id="calcala10", name="כלכלה 10", title="ערוץ כלכלה 10", category="כלכלה ועסקים (Business)",
+         categoryEn="business",
+         url="https://r.il.cdn-redge.media/livehls/oil/calcala-live/live/channel10/live.livx/playlist.m3u8",
+         lang="he", badge="HD", desc="ערוץ הכלכלה הישראלי – שוק ההון, נדל\"ן, צרכנות ועסקים",
+         logo_style=("כלכלה 10", "ערוץ כלכלה", "#0f172a", "#38bdf8")),
+    dict(id="ynet_live", name="ynet Live", title="ynet Live (ידיעות אחרונות)", category=CAT_ISRAEL, categoryEn="israel",
+         url="https://ynet-live-01.ynet-pic1.yit.co.il/ynet/live.m3u8", lang="he", badge="HD",
+         desc="השידור החי של ynet – חדשות, אולפן ושידורים מיוחדים",
+         logo_style=("ynet", "Live", "#7f1d1d", "#f87171")),
+    dict(id="kan11_subs", name="כאן 11 – כתוביות", title="כאן 11 לקויי שמיעה (כתוביות)", category=CAT_ISRAEL,
+         categoryEn="israel",
+         url="https://r.il.cdn-redge.media/livehls/oil/kancdn-live/live/kan11_subs/live.livx/playlist.m3u8",
+         lang="he", badge="HD", desc="כאן 11 עם כתוביות פתוחות בעברית לכל השידורים",
+         logo_style=("כאן 11", "כתוביות", "#003049", "#669bbc")),
+    dict(id="reshet13_access", name="רשת 13 – נגיש", title="רשת 13 לקויי שמיעה", category=CAT_ISRAEL, categoryEn="israel",
+         url="https://reshet.g-mana.live/media/4607e158-e4d4-4e18-9160-3dc3ea9bc677/mainManifest.m3u8", lang="he",
+         badge="HD", desc="רשת 13 בשידור נגיש לכבדי שמיעה", logo_style=("רשת 13", "נגיש", "#111827", "#ec4899")),
+    dict(id="knesset_access", name="ערוץ הכנסת – נגיש", title="ערוץ הכנסת 99 לקויי שמיעה", category=CAT_ISRAEL,
+         categoryEn="israel", url="https://kneset.gostreaming.tv/p2-Accessibility/_definst_/myStream/index.m3u8",
+         lang="he", badge="SD", desc="ערוץ הכנסת בשידור נגיש לכבדי שמיעה",
+         logo_style=("כנסת 99", "נגיש", "#1e3a8a", "#93c5fd")),
+    dict(id="keshet_comedy", name="ערוץ הקומדיה של קשת", title="ערוץ הקומדיה – קשת (mako)", category="קומדיה (Comedy)",
+         categoryEn="comedy", url="https://mako-streaming.akamaized.net/evrideo/hls/live/20001278/free_comedy/index.m3u8",
+         auth="mako", lang="he", badge="HD", desc="קומדיות ישראליות של קשת 24/7 – ערוץ חינמי של mako",
+         logo_style=("קשת", "קומדיה", "#7c2d12", "#fdba74")),
+    dict(id="eretz_nehederet", name="ארץ נהדרת 24/7", title="ערוץ ארץ נהדרת – קשת (mako)", category="קומדיה (Comedy)",
+         categoryEn="comedy", url="https://mako-streaming.akamaized.net/evrideo/hls/live/20001278/erets/index.m3u8",
+         auth="mako", lang="he", badge="HD", desc="כל העונות של ארץ נהדרת ברצף – ערוץ חינמי של mako",
+         logo_style=("ארץ", "נהדרת", "#1e3a8a", "#fde047")),
+    dict(id="savri_maranan", name="סברי מרנן 24/7", title="ערוץ סברי מרנן – קשת (mako)", category="קומדיה (Comedy)",
+         categoryEn="comedy", url="https://mako-streaming.akamaized.net/evrideo/hls/live/20001278/savri/index.m3u8",
+         auth="mako", lang="he", badge="HD", desc="סברי מרנן ברצף – ערוץ חינמי של mako",
+         logo_style=("סברי", "מרנן", "#4c1d95", "#f0abfc")),
+    dict(id="keshet_drama", name="ערוץ הדרמה של קשת", title="ערוץ הדרמה – קשת (mako)", category=CAT_MOVIES,
+         categoryEn="movies", url="https://mako-streaming.akamaized.net/evrideo/hls/live/20001278/free_drama/index.m3u8",
+         auth="mako", lang="he", badge="HD", desc="דרמות וסדרות ישראליות של קשת 24/7 – ערוץ חינמי של mako",
+         logo_style=("קשת", "דרמה", "#831843", "#f9a8d4")),
+    dict(id="keshet_music", name="ערוץ המוזיקה של קשת", title="ערוץ המוזיקה – קשת (mako)", category=CAT_MUSIC,
+         categoryEn="music", url="https://mako-streaming.akamaized.net/evrideo/hls/live/20001278/free_music/index.m3u8",
+         auth="mako", lang="he", badge="HD", desc="מוזיקה ישראלית, הופעות ותוכניות מוזיקה של קשת – ערוץ חינמי של mako",
+         logo_style=("קשת", "מוזיקה", "#14532d", "#86efac")),
+    dict(id="radios_video", name="רדיוס 100FM – וידאו", title="רדיוס 100FM בשידור וידאו", category=CAT_MUSIC,
+         categoryEn="music", url="https://cdn.cybercdn.live/Radios_100FM/Video/playlist.m3u8", lang="he", badge="HD",
+         desc="האולפן של רדיוס 100FM בשידור חי עם תמונה", logo_style=("100FM", "וידאו", "#14532d", "#4ade80")),
+    dict(id="kabbalah_ru", name="קבלה לעם – רוסית", title="ערוץ קבלה לעם ברוסית", category="מסורת וקהילה",
+         categoryEn="community", url="https://edge2.il.kab.tv/live/tv66-rus-high/playlist.m3u8", lang="ru", badge="HD",
+         desc="ערוץ קבלה לעם – שידורים ברוסית", logo_style=("קבלה", "לעם · RU", "#1e3a8a", "#bfdbfe")),
 ]
 
 # ----------------------------------------------------------------------------- Israeli radio
@@ -200,6 +253,11 @@ RADIO = [
     ("joint_beat", "ג'וינט רדיו טראנס", "https://jointil.com/stream-beat", "טראנס ואלקטרוני – תחנה ישראלית", "joint", "טראנס", "#3b0764", "#e879f9"),
     ("kabbalah_radio", "קבלה לעם רדיו", "http://icecast.kab.tv/live1-heb-574bcfd5.mp3", "שיעורי קבלה בעברית", "קבלה", "לעם", "#1e3a8a", "#bfdbfe"),
     ("breslev_torah", "ברסלב: תורה וזימרה", "https://cast.breslevforyou.co.il/listen/music-toravezimra/radio.mp3", "שיעורים ונגינה חסידית", "ברסלב", "תורה וזימרה", "#1e3a8a", "#fde68a"),
+    ("radio_sport5", "רדיו ספורט 5", "https://rgelive.akamaized.net/hls/live/2043150/radio5/playlist.m3u8", "הרדיו של ספורט 5 – שידורי משחקים, פרשנות ושיחות ספורט", "ספורט 5", "רדיו", "#0b0b0b", "#22c55e"),
+    ("radio_eilat", "102FM קול הים האדום", "https://cdn.cybercdn.live/Eilat_Radio/Live/icecast.audio", "הרדיו של אילת והערבה", "102FM", "אילת", "#7c2d12", "#fdba74"),
+    ("radio_995", "99.5FM רדיו", "https://995.livecdn.biz/995fm", "רדיו אזורי 99.5FM", "99.5FM", "רדיו", "#0c4a6e", "#7dd3fc"),
+    ("radio_best_1064", "הרדיו הטוב 106.4FM (רוסית)", "https://cdna.streamgates.net/TheBest/live/playlist.m3u8", "Лучшее Радио – רדיו ברוסית מישראל", "106.4FM", "Лучшее", "#312e81", "#c4b5fd"),
+    ("radio_diki", "רדיו שירי דיכאון", "https://radio.diki-mizrahit.co.il", "שירים מזרחיים עצובים ברצף", "דיכאון", "מזרחית", "#1f2937", "#9ca3af"),
     ("radio_france_israel", "Radio France Israël", "https://stream10.vestaradio.com/Radio-France-Israel", "הרדיו של יוצאי צרפת בישראל", "RFI", "France Israël", "#1e3a8a", "#fca5a5"),
 ]
 
@@ -259,9 +317,23 @@ def probe_hls(url):
     return "playlist loop"
 
 
-def probe(url):
+MAKO_ENTITLEMENT = "https://mass.mako.co.il/ClicksStatistics/entitlementsServicesV2.jsp"
+
+
+def mako_url(url):
+    """mako's CDN needs a viewing ticket (the apps fetch one the same way before playing: app.js makoUrl)."""
+    p = urllib.parse.urlsplit(url)
+    lp = p.path + ("?" + p.query if p.query else "")
+    r = requests.get(MAKO_ENTITLEMENT, params={"et": "ngt", "lp": lp, "rv": "AKAMAI"}, headers=HEADERS, timeout=15)
+    ticket = urllib.parse.unquote_plus(r.json()["tickets"][0]["ticket"])
+    return url + ("&" if "?" in url else "?") + ticket
+
+
+def probe(url, auth=""):
     """None when the stream really delivers media, else the reason."""
     try:
+        if auth == "mako":
+            url = mako_url(url)
         if ".m3u8" in url:
             return probe_hls(url)
         r, data = get(url, 16384)
@@ -363,7 +435,7 @@ def main():
         if r[0] not in have and r[2] not in have_urls:
             todo.append(("radio", r))
     with ThreadPoolExecutor(16) as ex:
-        results = list(ex.map(lambda x: (x, probe(x[1]["url"] if x[0] == "tv" else x[1][2])), todo))
+        results = list(ex.map(lambda x: (x, probe(x[1]["url"], x[1].get("auth", "")) if x[0] == "tv" else probe(x[1][2])), todo))
 
     added, failed = [], []
     for (kind, item), err in results:
@@ -392,7 +464,8 @@ def main():
 
     # numbering follows the category order (Israeli first); inside a category the existing order stays,
     # except the radio list, which starts with Kan and the big national stations
-    cats = [CAT_ISRAEL, CAT_KIDS_HE, CAT_RADIO, CAT_APPS, "ספורט (Sports)", CAT_NEWS, CAT_MOVIES, "קומדיה (Comedy)",
+    cats = [CAT_ISRAEL, CAT_KIDS_HE, CAT_RADIO, CAT_APPS, "ספורט (Sports)", CAT_NEWS, "כלכלה ועסקים (Business)",
+            CAT_MOVIES, "קומדיה (Comedy)",
             CAT_KIDS_WORLD, CAT_MUSIC, "טבע ודוקו (Documentary & Nature)", "טיולים והרפתקאות (Travel)",
             "מדע ולמידה (Science)", "לייף סטייל ובידור", "מסורת וקהילה", CAT_WORLD]
     allc = out + added
