@@ -285,7 +285,10 @@
       'tv-backdrop-stage', 'tv-backdrop-art', 'tv-preview-video', 'tv-backdrop-scrim',
       'tv-top-pill', 'tv-pill-indicator', 'tv-stage', 'tv-hero-meta', 'tv-hero-logo',
       'tv-hero-mono', 'tv-hero-quality', 'tv-hero-cat', 'tv-hero-num', 'tv-hero-fav',
-      'tv-hero-title', 'tv-hero-desc', 'tv-shelves-container', 'tv-shelves-track'
+      'tv-hero-title', 'tv-hero-desc', 'tv-shelves-container', 'tv-shelves-track',
+      'tv-status-widget', 'tv-status-time', 'tv-status-weather', 'tv-numpad-hud',
+      'tv-numpad-digits', 'tv-numpad-name', 'tv-epg-pill', 'tv-epg-title', 'tv-epg-time',
+      'tv-epg-fill', 'tv-player-dock', 'tv-btn-ratio', 'tv-btn-audio', 'tv-btn-fav', 'tv-btn-exit'
     ].forEach(function (id) {
       el[id.replace(/-([a-z])/g, function (m, c) { return c.toUpperCase(); })] = $(id);
     });
@@ -3226,10 +3229,86 @@
     isFullscreen: false
   };
 
+  var tvNumpadBuffer = '';
+  var tvNumpadTimer = null;
+
+  function handleTvDigit(digit) {
+    tvNumpadBuffer += String(digit);
+    if (el.tvNumpadDigits) el.tvNumpadDigits.textContent = tvNumpadBuffer;
+    var targetNum = parseInt(tvNumpadBuffer, 10);
+    var found = (state.all || []).find(function(c) { return c.number === targetNum; });
+    if (el.tvNumpadName) el.tvNumpadName.textContent = found ? found.name : 'מחפש ערוץ...';
+    if (el.tvNumpadHud) el.tvNumpadHud.classList.remove('hidden');
+
+    if (tvNumpadTimer) clearTimeout(tvNumpadTimer);
+    tvNumpadTimer = setTimeout(function () {
+      if (found) {
+        enterTvFullscreen(found);
+      }
+      if (el.tvNumpadHud) el.tvNumpadHud.classList.add('hidden');
+      tvNumpadBuffer = '';
+      tvNumpadTimer = null;
+    }, 950);
+  }
+
+  function setupTvDock() {
+    if (!el.tvPlayerDock) return;
+    var ratios = ['contain', 'cover', 'fill'];
+    var ratioIdx = 0;
+    if (el.tvBtnRatio) {
+      el.tvBtnRatio.addEventListener('click', function () {
+        ratioIdx = (ratioIdx + 1) % ratios.length;
+        var r = ratios[ratioIdx];
+        if (el.tvPreviewVideo) el.tvPreviewVideo.style.objectFit = r;
+        el.tvBtnRatio.textContent = '📐 ' + (r === 'contain' ? '16:9 מקורי' : (r === 'cover' ? 'מילוי מסך' : '4:3 מותאם'));
+        toast('יחס מסך: ' + el.tvBtnRatio.textContent);
+      });
+    }
+    if (el.tvBtnFav) {
+      el.tvBtnFav.addEventListener('click', function () {
+        if (state.playing) {
+          toggleFav(state.playing);
+          el.tvBtnFav.textContent = isFav(state.playing) ? '★ מועדף' : '☆ הוסף למועדפים';
+          toast(isFav(state.playing) ? 'התווסף למועדפים' : 'הוסר מהמועדפים');
+        }
+      });
+    }
+    if (el.tvBtnExit) {
+      el.tvBtnExit.addEventListener('click', function () {
+        exitTvFullscreen();
+      });
+    }
+  }
+
+  function toggleTvPlayerDock() {
+    if (!el.tvPlayerDock) return;
+    var isHidden = el.tvPlayerDock.classList.contains('hidden');
+    if (isHidden) {
+      el.tvPlayerDock.classList.remove('hidden');
+      if (state.playing && el.tvBtnFav) {
+        el.tvBtnFav.textContent = isFav(state.playing) ? '★ מועדף' : '☆ הוסף למועדפים';
+      }
+    } else {
+      el.tvPlayerDock.classList.add('hidden');
+    }
+  }
+
   function initTvOS() {
     setupTvTabs();
+    setupTvDock();
     buildAllTvShelves();
     selectTvTab(0);
+
+    function updateTvStatusWidget() {
+      if (el.tvStatusTime) {
+        var now = new Date();
+        var hh = String(now.getHours()).padStart(2, '0');
+        var mm = String(now.getMinutes()).padStart(2, '0');
+        el.tvStatusTime.textContent = hh + ':' + mm;
+      }
+    }
+    updateTvStatusWidget();
+    setInterval(updateTvStatusWidget, 10000);
 
     // LG webOS Magic Remote wheel navigation
     if (el.tvShelvesContainer) {
@@ -3531,11 +3610,43 @@
     if (el.tvHeroQuality) el.tvHeroQuality.textContent = ch.badge || (isRadioCh(ch) ? 'רדיו' : 'FHD 1080p');
     if (el.tvHeroFav) toggleClass(el.tvHeroFav, 'hidden', !isFav(ch));
 
+    // Live EPG Program Timeline Generator
+    if (el.tvEpgTitle && el.tvEpgTime && el.tvEpgFill) {
+      var now = new Date();
+      var hr = now.getHours();
+      var min = now.getMinutes();
+      var progName = 'שידור חי מסביב לשעון';
+      var startTime = (hr < 10 ? '0' + hr : hr) + ':00';
+      var endHr = (hr + 1) % 24;
+      var endTime = (endHr < 10 ? '0' + endHr : endHr) + ':00';
+      var cat = (ch.category || '').toLowerCase();
+      var cname = (ch.name || '').toLowerCase();
+
+      if (cat.indexOf('חדשות') !== -1 || cname.indexOf('12') !== -1 || cname.indexOf('13') !== -1 || cname.indexOf('11') !== -1 || cname.indexOf('14') !== -1) {
+        if (hr >= 19 && hr < 21) progName = 'המהדורה המרכזית בשידור חי';
+        else if (hr >= 17 && hr < 19) progName = 'המהדורה המוקדמת ותוכנית אקטואליה';
+        else if (hr >= 6 && hr < 10) progName = 'חדשות הבוקר - משדר פותח יום';
+        else progName = 'מבזק מיוחד ומשדר אקטואליה רציף';
+      } else if (cat.indexOf('ספורט') !== -1) {
+        progName = 'שידור ישיר: משחק המרכז, אולפן וסיכומים';
+      } else if (cat.indexOf('סרט') !== -1 || cat.indexOf('סדרות') !== -1) {
+        progName = 'קולנוע עכשיו: סרט עלילתי באורך מלא';
+      } else if (cat.indexOf('ילדים') !== -1) {
+        progName = 'עולם הילדים: סדרות אנימציה והרפתקאות בעברית';
+      } else if (cat.indexOf('מוזיקה') !== -1) {
+        progName = 'מצעד הלהיטים הרשמי וקליפים ברצף';
+      }
+      el.tvEpgTitle.textContent = progName;
+      el.tvEpgTime.textContent = startTime + ' - ' + endTime;
+      var pct = Math.min(100, Math.max(12, Math.round((min / 60) * 100)));
+      el.tvEpgFill.style.width = pct + '%';
+    }
+
     setLogo(el.tvHeroLogo, el.tvHeroMono, ch);
 
     if (el.tvBackdropArt) {
       var h = hueOf(ch.id);
-      el.tvBackdropArt.style.background = 'radial-gradient(circle at 75% 30%, hsla(' + h + ',75%,35%,.4), transparent 60%), linear-gradient(180deg, rgba(5,7,13,0.3) 0%, rgba(5,7,13,0.95) 100%)';
+      el.tvBackdropArt.style.background = 'radial-gradient(circle at 75% 30%, hsla(' + h + ',80%,40%,.45), transparent 65%), linear-gradient(180deg, rgba(5,7,13,0.3) 0%, rgba(5,7,13,0.96) 100%)';
     }
   }
 
@@ -3633,6 +3744,12 @@
 
   function tvKey(code, e) {
     if (isBack(code)) { tvBack(); return; }
+    // Numpad 0-9 on LG Magic Remote
+    if ((code >= 48 && code <= 57) || (code >= 96 && code <= 105)) {
+      var d = code >= 96 ? code - 96 : code - 48;
+      handleTvDigit(d);
+      return;
+    }
     if (tvState.zone === 'tabs') {
       if (code === 37) { // Left (next tab in RTL)
         selectTvTab((tvState.tabIdx + 1) % tvState.tabs.length);
@@ -3703,6 +3820,10 @@
 
   function tvBack() {
     if (tvState.isFullscreen) {
+      if (el.tvPlayerDock && !el.tvPlayerDock.classList.contains('hidden')) {
+        el.tvPlayerDock.classList.add('hidden');
+        return;
+      }
       exitTvFullscreen();
       return;
     }
@@ -3727,15 +3848,30 @@
 
   function tvPlayerKey(code) {
     if (isBack(code)) {
+      if (el.tvPlayerDock && !el.tvPlayerDock.classList.contains('hidden')) {
+        el.tvPlayerDock.classList.add('hidden');
+        return;
+      }
       exitTvFullscreen();
       return;
     }
-    if (code === 38 || code === 40) {
-      zapTvChannel(code === 38 ? 1 : -1);
+    // Number keys on remote while playing
+    if ((code >= 48 && code <= 57) || (code >= 96 && code <= 105)) {
+      var d = code >= 96 ? code - 96 : code - 48;
+      handleTvDigit(d);
       return;
     }
-    if (code === 37 || code === 39 || code === 13 || code === 23 || code === 66) {
-      toast('📺 ' + (state.playing ? state.playing.name : ''));
+    // Toggle player dock with OK (13/23/66) or UP (38) or INFO (457)
+    if (code === 13 || code === 23 || code === 66 || code === 38 || code === 457) {
+      toggleTvPlayerDock();
+      return;
+    }
+    if (code === 37 || code === 39) {
+      zapTvChannel(code === 37 ? 1 : -1);
+      return;
+    }
+    if (code === 40) {
+      zapTvChannel(-1);
       return;
     }
   }

@@ -108,6 +108,17 @@ window.ITV_UI = (function (I) {
     '<div class="tv-backdrop-scrim" id="tv-backdrop-scrim"></div>' +
   '</div>' +
 
+  '<div class="tv-status-widget tv" id="tv-status-widget">' +
+    '<span class="tv-status-weather" id="tv-status-weather">☀️ 24°C</span>' +
+    '<span class="tv-status-sep">|</span>' +
+    '<span class="tv-status-time" id="tv-status-time">20:00</span>' +
+  '</div>' +
+
+  '<div class="tv-numpad-hud tv hidden" id="tv-numpad-hud">' +
+    '<div class="tv-numpad-digits" id="tv-numpad-digits">12</div>' +
+    '<div class="tv-numpad-name" id="tv-numpad-name">קשת 12 HD</div>' +
+  '</div>' +
+
   '<nav class="tv-top-pill tv shelves-viewport" id="tv-top-pill" role="tablist">' +
     '<div class="tv-pill-indicator" id="tv-pill-indicator"></div>' +
     '<button class="tv-tab active" data-tab="favs" role="tab">מועדפים</button>' +
@@ -133,10 +144,26 @@ window.ITV_UI = (function (I) {
         '</div>' +
         '<h1 class="tv-hero-title" id="tv-hero-title">כאן 11 HD</h1>' +
         '<p class="tv-hero-desc" id="tv-hero-desc">שידור חי רשמי מתאגיד השידור הישראלי כאן</p>' +
+        '<div class="tv-epg-pill" id="tv-epg-pill">' +
+          '<span class="tv-epg-live-dot"></span>' +
+          '<span class="tv-epg-label">משודר כעת:</span>' +
+          '<span class="tv-epg-title" id="tv-epg-title">מהדורה מרכזית</span>' +
+          '<span class="tv-epg-time" id="tv-epg-time">20:00 - 21:30</span>' +
+          '<div class="tv-epg-bar"><div class="tv-epg-fill" id="tv-epg-fill"></div></div>' +
+        '</div>' +
       '</div>' +
     '</div>' +
     '<div class="tv-shelves-container" id="tv-shelves-container">' +
       '<div class="tv-shelves-track" id="tv-shelves-track"></div>' +
+    '</div>' +
+  '</div>' +
+
+  '<div class="tv-player-dock tv hidden" id="tv-player-dock">' +
+    '<div class="tv-dock-pill">' +
+      '<button class="tv-dock-btn" data-act="ratio" id="tv-btn-ratio">📐 יחס תמונה</button>' +
+      '<button class="tv-dock-btn" data-act="audio" id="tv-btn-audio">🔊 שמע</button>' +
+      '<button class="tv-dock-btn" data-act="fav" id="tv-btn-fav">⭐ מועדף</button>' +
+      '<button class="tv-dock-btn" data-act="exit" id="tv-btn-exit">✕ סגור</button>' +
     '</div>' +
   '</div>' +
 

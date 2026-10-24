@@ -210,6 +210,176 @@ body:not(.phone) .rail {
   transform: translate3d(0, -2px, 0) scale3d(1.05, 1.05, 1);
 }
 
+/* Status Widget (Clock & Weather) */
+.tv-status-widget {
+  position: fixed;
+  top: 3.5rem;
+  left: 4.5rem;
+  height: 48px;
+  padding: 0 1.8rem;
+  border-radius: 999px;
+  background: rgba(22, 22, 28, 0.65);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  z-index: 100;
+  color: #f1f5f9;
+  font-size: 1.45rem;
+  font-weight: 700;
+  direction: ltr;
+}
+.tv-status-sep {
+  color: rgba(255, 255, 255, 0.25);
+}
+.tv-status-time {
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+/* Glass Numpad HUD for LG Magic Remote direct number input */
+.tv-numpad-hud {
+  position: fixed;
+  top: 3.5rem;
+  right: 4.5rem;
+  min-width: 14rem;
+  height: 64px;
+  padding: 0 2rem;
+  border-radius: 20px;
+  background: rgba(14, 16, 24, 0.88);
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.75), 0 0 24px rgba(56, 189, 248, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.6rem;
+  z-index: 200;
+  direction: rtl;
+  animation: tvHudPop 280ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes tvHudPop {
+  from { opacity: 0; transform: translate3d(0, -12px, 0) scale3d(0.92, 0.92, 1); }
+  to { opacity: 1; transform: translate3d(0, 0, 0) scale3d(1, 1, 1); }
+}
+.tv-numpad-digits {
+  font-size: 3rem;
+  font-weight: 900;
+  color: #38bdf8;
+  text-shadow: 0 0 14px rgba(56, 189, 248, 0.7);
+  letter-spacing: 2px;
+}
+.tv-numpad-name {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+/* EPG Now Playing Bar in Hero Meta */
+.tv-epg-pill {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  margin-top: 1rem;
+  padding: 0.6rem 1.4rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  width: fit-content;
+}
+.tv-epg-live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #E53935;
+  box-shadow: 0 0 8px #E53935;
+  animation: tvDotPulse 1.5s infinite;
+}
+@keyframes tvDotPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+.tv-epg-label {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #f87171;
+}
+.tv-epg-title {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #ffffff;
+}
+.tv-epg-time {
+  font-size: 1.15rem;
+  color: #94a3b8;
+}
+.tv-epg-bar {
+  width: 90px;
+  height: 4px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+}
+.tv-epg-fill {
+  width: 62%;
+  height: 100%;
+  background: linear-gradient(90deg, #38bdf8, #818cf8);
+  border-radius: 999px;
+}
+
+/* Fullscreen Player Controls Dock */
+.tv-player-dock {
+  position: fixed;
+  bottom: 3.5rem;
+  left: 50%;
+  transform: translate3d(-50%, 0, 0);
+  z-index: 300;
+  transition: transform 380ms cubic-bezier(0.16, 1, 0.3, 1), opacity 380ms;
+}
+.tv-player-dock.hidden {
+  transform: translate3d(-50%, 100px, 0) !important;
+  opacity: 0 !important;
+  pointer-events: none;
+}
+.tv-dock-pill {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 0.8rem 1.6rem;
+  border-radius: 999px;
+  background: rgba(18, 20, 30, 0.78);
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7);
+}
+.tv-dock-btn {
+  background: transparent;
+  border: 0;
+  outline: 0;
+  color: #cbd5e1;
+  font-size: 1.4rem;
+  font-weight: 700;
+  padding: 0.7rem 1.6rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 260ms;
+}
+.tv-dock-btn:hover, .tv-dock-btn.focused {
+  background: #ffffff;
+  color: #000000;
+  font-weight: 800;
+  box-shadow: 0 4px 16px rgba(255, 255, 255, 0.4);
+  transform: scale(1.06);
+}
+
 /* 3. Apple TV Content Stage & RTL Hero Metadata */
 .tv-stage {
   position: fixed;
