@@ -68,7 +68,7 @@ body.anim-off *, body.anim-off *::before, body.anim-off *::after { transition: n
 /* ================================================================== 
    FLAGSHIP APPLE TV+ (tvOS) ENGINE - HARDWARE ACCELERATED (60/120 FPS)
 /* ================================================================== 
-   FLAGSHIP ANDROID TV UI (Adapted from Nuvio / Pixel Material 3 for Smart TVs)
+   FLAGSHIP APPLE TV+ (tvOS) EXPERIENCE FOR SMART TVS (webOS, Tizen, Android TV)
    ================================================================== */
 body.tv-android-mode {
   background: #05070d !important;
@@ -82,6 +82,7 @@ body.tv-android-mode .ph {
   display: flex !important;
 }
 
+/* Main Home Container - Padded for Apple TV Top Floating Glass Bar */
 body.tv-android-mode main.home {
   display: block !important;
   position: absolute;
@@ -91,80 +92,103 @@ body.tv-android-mode main.home {
   bottom: 0;
   overflow-y: auto;
   overflow-x: hidden;
-  padding-bottom: 14rem;
+  padding-top: 8.5rem;
+  padding-bottom: 5rem;
   scrollbar-width: none;
 }
 body.tv-android-mode main.home::-webkit-scrollbar {
   display: none;
 }
 
-/* TV Pager Hero (Cinematic widescreen) */
+/* Apple TV Top Shelf / Hero Billboard (Cinematic Widescreen 16:9) */
 body.tv-android-mode .pager {
-  height: 38rem;
+  height: 42rem;
   width: 100%;
-  max-width: 1680px;
-  margin: 0 auto 2.5rem;
-  border-radius: 0 0 3.6rem 3.6rem;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+  max-width: 1720px;
+  margin: 0 auto 3rem;
+  border-radius: 0 0 3.2rem 3.2rem;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.85);
   overflow: hidden;
+  position: relative;
 }
 
 body.tv-android-mode .slide-body {
-  padding: 0 6rem 3.5rem;
+  padding: 0 6.5rem 4rem;
 }
 
 body.tv-android-mode .slide-title {
-  font-size: 4rem;
+  font-size: 4.2rem;
   font-weight: 900;
-  letter-spacing: -0.08rem;
-  margin: 0.6rem 0 1.2rem;
-  text-shadow: 0 4px 20px rgba(0,0,0,0.85);
+  letter-spacing: -0.06rem;
+  margin: 0.8rem 0 1.4rem;
+  color: #ffffff;
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.95);
 }
 
 body.tv-android-mode .slide-logo {
   width: 22rem;
   height: 12rem;
   border-radius: 2rem;
+  filter: drop-shadow(0 10px 25px rgba(0,0,0,0.7));
 }
 
+/* Apple TV Signature Action Buttons */
 body.tv-android-mode .fab-play {
   height: 5.6rem;
-  padding: 0 3.2rem;
-  border-radius: 2.8rem;
+  padding: 0 3.4rem;
+  border-radius: 9999px !important;
   font-size: 1.8rem;
-  font-weight: 800;
-  background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%) !important;
+  font-weight: 900;
+  background: #ffffff !important;
   color: #05070d !important;
-  box-shadow: 0 8px 30px rgba(0, 242, 254, 0.5);
-  transition: transform 0.25s, box-shadow 0.25s;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s;
+  will-change: transform;
 }
 
-body.tv-android-mode .fab-play.focused, body.tv-android-mode .fab-play:hover {
-  transform: scale(1.08);
-  box-shadow: 0 12px 40px rgba(0, 242, 254, 0.8), 0 0 0 3px #ffffff;
+body.tv-android-mode .fab-play.focused, 
+body.tv-android-mode .fab-play:hover {
+  transform: scale(1.1);
+  background: #ffffff !important;
+  color: #05070d !important;
+  box-shadow: 0 16px 45px rgba(255, 255, 255, 0.7), 0 0 0 3.5px #ffffff !important;
 }
 
-body.tv-android-mode .icon-tonal.focused, body.tv-android-mode .icon-tonal:hover {
+body.tv-android-mode .icon-tonal {
+  height: 5.6rem;
+  padding: 0 2.2rem;
+  border-radius: 9999px !important;
+  background: rgba(255, 255, 255, 0.15) !important;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1.5px solid rgba(255, 255, 255, 0.25) !important;
+  color: #ffffff !important;
+  transition: transform 0.25s, box-shadow 0.25s, background 0.25s;
+}
+
+body.tv-android-mode .icon-tonal.focused, 
+body.tv-android-mode .icon-tonal:hover {
   transform: scale(1.12);
-  box-shadow: 0 0 0 3px #ffffff, 0 8px 24px rgba(0, 0, 0, 0.6);
-  background: rgba(255, 255, 255, 0.3) !important;
+  background: rgba(255, 255, 255, 0.35) !important;
+  box-shadow: 0 0 0 3px #ffffff, 0 12px 30px rgba(0, 0, 0, 0.7) !important;
 }
 
-/* Shelves on TV */
+/* Apple TV 3D Parallax Shelves */
 body.tv-android-mode .shelf {
-  padding: 0 5rem;
-  margin-bottom: 2.8rem;
+  padding: 0 5.5rem;
+  margin-bottom: 3.2rem;
 }
 
 body.tv-android-mode .shelf-head {
-  padding: 0 0.8rem 1rem;
+  padding: 0 0.8rem 1.2rem;
 }
 
 body.tv-android-mode .shelf-head h3 {
-  font-size: 2.4rem;
+  font-size: 2.3rem;
   font-weight: 800;
+  letter-spacing: -0.02rem;
   color: #ffffff;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.85);
 }
 
 body.tv-android-mode .shelf-row {
@@ -172,105 +196,143 @@ body.tv-android-mode .shelf-row {
   flex-direction: row !important;
   overflow-x: auto;
   overflow-y: hidden;
-  padding: 1.2rem 0.8rem 2.4rem;
+  padding: 1.6rem 1rem 2.8rem;
   scrollbar-width: none;
 }
 body.tv-android-mode .shelf-row::-webkit-scrollbar {
   display: none;
 }
 
+/* Apple TV 16:9 Glass Cards with Specular Parallax Outline */
 body.tv-android-mode .pcard {
-  flex: 0 0 28rem;
-  width: 28rem;
-  margin-left: 2rem;
+  flex: 0 0 29rem;
+  width: 29rem;
+  margin-left: 2.2rem;
   cursor: pointer;
-  transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.32s;
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s;
   will-change: transform;
 }
 
 body.tv-android-mode .pc-media {
-  height: 15.8rem;
+  height: 16.4rem;
   border-radius: 1.8rem;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1.5px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.06);
+  border: 2.5px solid transparent;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
-  transition: border-color 0.3s, box-shadow 0.3s;
+  transition: border-color 0.25s, box-shadow 0.25s;
 }
 
-body.tv-android-mode .pcard.focused, body.tv-android-mode .pcard:hover {
-  transform: scale3d(1.08, 1.08, 1) translate3d(0, -6px, 0);
+body.tv-android-mode .pcard.focused, 
+body.tv-android-mode .pcard:hover {
+  transform: scale3d(1.12, 1.12, 1) translate3d(0, -8px, 0);
+  z-index: 50;
 }
 
-body.tv-android-mode .pcard.focused .pc-media, body.tv-android-mode .pcard:hover .pc-media {
-  border: 3px solid #00f2fe !important;
-  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.9), 0 0 30px rgba(0, 242, 254, 0.65), inset 0 0 0 1px #ffffff !important;
+body.tv-android-mode .pcard.focused .pc-media, 
+body.tv-android-mode .pcard:hover .pc-media {
+  border-color: #ffffff !important;
+  box-shadow: 0 26px 55px rgba(0, 0, 0, 0.95), 0 0 35px rgba(255, 255, 255, 0.55) !important;
 }
 
 body.tv-android-mode .pc-name {
-  font-size: 1.6rem;
+  font-size: 1.65rem;
   font-weight: 800;
-  margin-top: 0.8rem;
-  color: #f1f5f9;
+  margin-top: 0.9rem;
+  color: #e2e8f0;
+  transition: color 0.2s;
 }
 
 body.tv-android-mode .pcard.focused .pc-name {
   color: #ffffff;
   font-weight: 900;
-  text-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
+  text-shadow: 0 0 14px rgba(255, 255, 255, 0.7);
 }
 
 body.tv-android-mode .pc-meta {
-  font-size: 1.25rem;
+  font-size: 1.3rem;
   color: #94a3b8;
 }
 
-/* Floating Glass Bottom Navbar on TV */
+/* Apple TV Floating Top Glass Navigation Bar (Frosted Acrylic Capsule) */
 body.tv-android-mode .navbar {
   position: fixed;
-  bottom: 2.8rem;
+  top: 1.8rem;
+  bottom: auto;
   left: 50%;
   transform: translateX(-50%);
   width: auto;
-  max-width: 58rem;
+  max-width: 64rem;
   padding: 0;
-  z-index: 100;
+  z-index: 1000;
 }
 
 body.tv-android-mode .nb-track {
-  height: 6.2rem;
-  border-radius: 3.1rem;
-  background: rgba(14, 18, 28, 0.88);
-  backdrop-filter: blur(32px);
-  -webkit-backdrop-filter: blur(32px);
-  border: 1.5px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.75), 0 0 25px rgba(0, 242, 254, 0.25);
-  padding: 0 1rem;
+  height: 5.6rem;
+  border-radius: 9999px;
+  background: rgba(24, 26, 34, 0.82);
+  backdrop-filter: blur(45px) saturate(210%);
+  -webkit-backdrop-filter: blur(45px) saturate(210%);
+  border: 1.2px solid rgba(255, 255, 255, 0.22);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.75), 0 0 25px rgba(255, 255, 255, 0.15);
+  padding: 0 0.8rem;
 }
 
 body.tv-android-mode .nb-item {
-  height: 5rem;
-  padding: 0 2.2rem;
-  font-size: 1.6rem;
-  font-weight: 800;
-  border-radius: 2.5rem;
+  height: 4.4rem;
+  padding: 0 2rem;
+  font-size: 1.55rem;
+  font-weight: 700;
+  border-radius: 9999px;
+  color: rgba(255, 255, 255, 0.78);
+  transition: background 0.2s, color 0.2s, transform 0.2s;
 }
 
-body.tv-android-mode .nb-item.focused {
-  background: rgba(255, 255, 255, 0.25);
-  box-shadow: 0 0 0 2px #ffffff;
+body.tv-android-mode .nb-item.active {
+  color: #ffffff;
+  font-weight: 800;
+}
+
+body.tv-android-mode .nb-item.focused,
+body.tv-android-mode .nb-item:hover {
+  background: #ffffff !important;
+  color: #05070d !important;
+  font-weight: 900;
+  transform: scale(1.05);
+  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.5);
 }
 
 body.tv-android-mode .nb-search {
-  width: 6.2rem;
-  height: 6.2rem;
-  background: rgba(14, 18, 28, 0.88);
-  backdrop-filter: blur(32px);
-  -webkit-backdrop-filter: blur(32px);
-  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  width: 5.6rem;
+  height: 5.6rem;
+  border-radius: 9999px;
+  background: rgba(24, 26, 34, 0.82);
+  backdrop-filter: blur(45px) saturate(210%);
+  -webkit-backdrop-filter: blur(45px) saturate(210%);
+  border: 1.2px solid rgba(255, 255, 255, 0.22);
+  color: #ffffff;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
-body.tv-android-mode .nb-search.focused {
-  box-shadow: 0 0 0 3px #00f2fe;
+body.tv-android-mode .nb-search.focused,
+body.tv-android-mode .nb-search:hover {
+  background: #ffffff !important;
+  color: #05070d !important;
+  transform: scale(1.08);
+  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.6);
+}
+
+/* Modal Windows on TV (Settings, Search) - Apple TV Frosted Glass Sheet */
+body.tv-android-mode .modal {
+  z-index: 99999 !important;
+}
+
+body.tv-android-mode .modal-box {
+  background: rgba(18, 20, 28, 0.94) !important;
+  backdrop-filter: blur(40px) saturate(180%);
+  -webkit-backdrop-filter: blur(40px) saturate(180%);
+  border: 1.5px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 2.8rem !important;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.95), 0 0 40px rgba(255, 255, 255, 0.12) !important;
 }
 
 body:not(.phone) {

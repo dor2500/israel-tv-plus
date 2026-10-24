@@ -3302,6 +3302,12 @@
         markHomeFocus();
         return;
       }
+      if (code === 38) { // Up to Apple TV Top Floating Navbar
+        homeNav.zone = 'navbar';
+        homeNav.navTabIdx = 0;
+        markHomeFocus();
+        return;
+      }
       if (code === 40) { // Down to shelves
         homeNav.zone = 'shelves';
         homeNav.shelfIdx = 0;
@@ -3342,10 +3348,6 @@
         if (homeNav.shelfIdx < shelfEls.length - 1) {
           homeNav.shelfIdx++;
           markHomeFocus();
-        } else {
-          homeNav.zone = 'navbar';
-          homeNav.navTabIdx = 0;
-          markHomeFocus();
         }
         return;
       }
@@ -3366,9 +3368,9 @@
         markHomeFocus();
         return;
       }
-      if (code === 38) { // Up back to shelves
-        homeNav.zone = 'shelves';
-        homeNav.shelfIdx = Math.max(0, (el.shelves ? el.shelves.querySelectorAll('.shelf').length : 1) - 1);
+      if (code === 40) { // Down to Pager Hero / Shelves
+        homeNav.zone = 'pager';
+        homeNav.pagerBtnIdx = 0;
         markHomeFocus();
         return;
       }
