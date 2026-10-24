@@ -380,6 +380,9 @@ def logo_svg(big, small, bg, accent, icon):
 
 
 def write_logo(cid, big, small, bg, accent, icon):
+    """The channel's real logo (assets/logos/<id>.png, tools/fetch_logos.py) when there is one, else a drawn one."""
+    if os.path.isfile(os.path.join(LOGOS, cid + ".png")):
+        return "assets/logos/" + cid + ".png"
     path = os.path.join(LOGOS, cid + ".svg")
     with open(path, "w", encoding="utf-8") as f:
         f.write(logo_svg(big, small, bg, accent, icon))
