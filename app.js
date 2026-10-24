@@ -2941,7 +2941,7 @@
 
   function onKeyUp(e) {
     var code = e.keyCode || e.which;
-    if (code !== 13 && code !== 23 && code !== 66) return;
+    if (code !== 13) return;
     // Long-press OK needs key-up events; until one is seen, OK acts on key-down (some remotes send no key-up).
     if (!state.okUpSeen) { state.okUpSeen = true; return; }
     if (!state.okDown) return;
@@ -2961,7 +2961,7 @@
     if (typing(t)) {
       if (state.overlay === 'settings') { settingsKey(code, e); return; }
       if (t === el.searchInput) {
-        if (code === 40 || code === 13 || code === 23 || code === 66) { e.preventDefault(); t.blur(); focusGrid(0); }
+        if (code === 40 || code === 13) { e.preventDefault(); t.blur(); focusGrid(0); }
         else if (isBack(code) && code !== 8) { e.preventDefault(); t.blur(); focusGrid(state.gridIdx); }
         else if (code === 8 && !t.value) { e.preventDefault(); t.blur(); focusGrid(state.gridIdx); }
         return;
@@ -2969,8 +2969,8 @@
       return;
     }
 
-    // OK / Enter: short press on release, long press = options (13 Enter, 23 DPAD_CENTER, 66 KEYCODE_ENTER)
-    if (code === 13 || code === 23 || code === 66) {
+    // OK / Enter: short press on release, long press = options
+    if (code === 13) {
       if (e.preventDefault) e.preventDefault();
       if (!state.okUpSeen) { shortOk(); return; }
       if (state.okDown) return; // key repeat while held

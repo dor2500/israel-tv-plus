@@ -1,49 +1,48 @@
 {
-  "version": "3.8.0",
-  "code": 202610242314,
-  "app": 380,
+  "version": "3.9.0",
+  "code": 202610242317,
+  "app": 390,
   "shell": 3,
   "date": "2026-10-24",
   "notes": [
-    "בנייה מחדש מאפס על בסיס ממשק גרסה 3.5.0 האהוב (Clean Rebuild based on 3.5.0 TV Architecture):",
-    "איחוד מחדש עם הארכיטקטורה המקורית, היציבה והאהובה: הסרת כל השכבות העודפות ופירוק המוקים המפוצלים לטובת הממשק היציב והמהיר של גרסה 3.5.0.",
-    "סרגל קטגוריות צדדי מזכוכית (Frosted Category Rail): גישה מיידית מצידו הימני של המסך לכל הקטגוריות (ערוצי ישראל, רדיו, ספורט, סרטים וסדרות, ילדים ונוער, עולם ועוד) עם מספרי ערוצים פעילים וסימון קטגוריה זוהר.",
-    "הירו קולנועי רחב (Cinematic Hero Banner): חלון תצוגה מוגדל (22rem) עם לוגו ערוץ חד, תאורת אווירה דינמית בצבעי הערוץ, תגיות איכות (4K, LIVE, HD), תיאור מלא ומקור השידור.",
-    "גריד כרטיסים 16:9 יוקרתי (Glassmorphic Cards): כרטיסי ערוצים רחבים בגימור זכוכית, פוקוס לבן בוהק במעבר עם השלט והרחבת GPU חלקה (scale 1.1).",
-    "סנכרון שלטים מושלם (Unified Remote Input Normalization): תמיכה אחידה בכל שלטי הטלוויזיה (LG Magic Remote, Samsung, Android TV) ללא קפיצות מסך, ניווט חיצים טבעי לחלוטין וגישה קלה להגדרות.",
-    "מעל 10,240 ערוצים מישראל ומהעולם בכל הפלטפורמות."
+    "שחזור מלא ומדויק של עיצוב וממשק גרסה 3.5.0 (Exact 3.5.0 GUI & Architecture):",
+    "עיצוב ו-GUI אותנטי 1:1 של גרסה 3.5.0: שחזור מלא של קבצי ה-GUI (style.css, ui.js, app.js) בדיוק כפי שהיו בגרסה 3.5.0 האהובה.",
+    "סרגל קטגוריות צדדי חלק (Classic Category Rail): גלילה אנכית מושלמת בין הקטגוריות עם מספרי ערוצים ותגיות.",
+    "הירו ערוצים אותנטי (Classic Focused Hero): תצוגת לוגו נקייה וגדולה, תגיות שידור, תיאור ערוץ ומקור.",
+    "גריד ערוצים מהיר ויציב (5-Column Grid): גלילה יציבה וחלקה, פוקוס שלטים טבעי לחלוטין ללא שום באגים.",
+    "שמירה על כל מאגר 10,240 הערוצים מישראל ומהעולם וכל הגרסאות לכל הפלטפורמות."
   ],
   "native": {
     "android": {
-      "version": "3.8.0",
-      "app": 380,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.8.0/IsraelTVPlus-android.apk"
+      "version": "3.9.0",
+      "app": 390,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.9.0/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "3.8.0",
-      "app": 380,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.8.0/IsraelTVPlus-windows-setup.exe"
+      "version": "3.9.0",
+      "app": 390,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.9.0/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "3.8.0",
-      "app": 380,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.8.0/com.israeltv.plus_all.ipk",
+      "version": "3.9.0",
+      "app": 390,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.9.0/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "3.8.0",
-      "app": 380,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.8.0/IsraelTVPlus-tizen-project.zip"
+      "version": "3.9.0",
+      "app": 390,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.9.0/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "3.8.0",
-      "app": 380,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.8.0/IsraelTVPlus-macos-arm64.zip"
+      "version": "3.9.0",
+      "app": 390,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.9.0/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "3.8.0",
-      "app": 380,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.8.0/IsraelTVPlus-linux-x64.zip"
+      "version": "3.9.0",
+      "app": 390,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.9.0/IsraelTVPlus-linux-x64.zip"
     }
   }
 }
