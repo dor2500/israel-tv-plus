@@ -30,6 +30,22 @@ Copy-Item "$app\banner-320x180.png" "$b\res\drawable-xhdpi\banner.png"
 # theme (edge-to-edge, Android 12+ splash screen)
 Copy-Item "$and\res\*" "$b\res" -Recurse -Force
 
+# AndroidX core-splashscreen (+ the Kotlin standard library it is written with), from Google Maven / Maven Central,
+# cached in build\maven. Its resources are linked with the app's; its classes are dexed into the APK.
+$m2 = "$root\build\maven"
+New-Item -ItemType Directory -Force $m2 | Out-Null
+$libs = @(
+  @('core-splashscreen-1.0.1.aar', 'https://dl.google.com/android/maven2/androidx/core/core-splashscreen/1.0.1/core-splashscreen-1.0.1.aar'),
+  @('kotlin-stdlib-1.6.21.jar', 'https://repo1.maven.org/maven2/org/jetbrains/kotlin/kotlin-stdlib/1.6.21/kotlin-stdlib-1.6.21.jar'),
+  @('annotation-1.2.0.jar', 'https://dl.google.com/android/maven2/androidx/annotation/annotation/1.2.0/annotation-1.2.0.jar')
+)
+foreach ($l in $libs) {
+  if (-not (Test-Path "$m2\$($l[0])")) { Invoke-WebRequest $l[1] -OutFile "$m2\$($l[0])" -UseBasicParsing }
+}
+$splashDir = "$m2\core-splashscreen"
+if (-not (Test-Path "$splashDir\classes.jar")) { Expand-Archive "$m2\core-splashscreen-1.0.1.aar" $splashDir -Force }
+$kotlin = "$m2\kotlin-stdlib-1.6.21.jar"
+
 # the web app
 foreach ($f in (Get-Content "$PSScriptRoot\webfiles.txt" | Where-Object { $_ -and $_ -notmatch '^#' })) {
   Copy-Item "$root\$f" "$b\assets\www\$f"
@@ -37,17 +53,23 @@ foreach ($f in (Get-Content "$PSScriptRoot\webfiles.txt" | Where-Object { $_ -an
 Copy-Item "$root\assets" "$b\assets\www\assets" -Recurse
 Get-ChildItem "$b\assets\www\assets" -Recurse -File | Where-Object { $_.Name -match '&|\.map$|banner-1280|icon-1024' } | Remove-Item
 
+& "$bt\aapt2.exe" compile --dir "$splashDir\res" -o "$b\lib-res.zip"
+if ($LASTEXITCODE) { throw 'aapt2 compile (splashscreen) failed' }
 & "$bt\aapt2.exe" compile --dir "$b\res" -o "$b\res.zip"
 if ($LASTEXITCODE) { throw 'aapt2 compile failed' }
+# R.java for the app and the library; the launch sound stays uncompressed (SoundPool reads it from the APK directly)
 & "$bt\aapt2.exe" link -I $jar --manifest "$and\AndroidManifest.xml" -A "$b\assets" -o "$b\base.apk" `
-  --min-sdk-version 21 --target-sdk-version $target --version-code $Code --version-name $Version "$b\res.zip" -0 png
+  --min-sdk-version 21 --target-sdk-version $target --version-code $Code --version-name $Version `
+  --java "$b\gen" --extra-packages androidx.core.splashscreen "$b\lib-res.zip" "$b\res.zip" -0 png -0 wav
 if ($LASTEXITCODE) { throw 'aapt2 link failed' }
 
-$src = Get-ChildItem "$and\src" -Recurse -Filter *.java | ForEach-Object FullName
-javac -encoding UTF-8 --release 11 -classpath $jar -d "$b\cls" $src 2>&1 | Where-Object { $_ -notmatch 'warning|^Note' }
+$src = @(Get-ChildItem "$and\src", "$b\gen" -Recurse -Filter *.java | ForEach-Object FullName)
+$cp = "$jar;$splashDir\classes.jar;$kotlin;$m2\annotation-1.2.0.jar"
+javac -encoding UTF-8 --release 11 -classpath $cp -d "$b\cls" $src 2>&1 | Where-Object { $_ -notmatch 'warning|^Note' }
 if ($LASTEXITCODE) { throw 'javac failed' }
 $classes = Get-ChildItem "$b\cls" -Recurse -Filter *.class | ForEach-Object FullName
-& "$bt\d8.bat" --release --min-api 21 --lib $jar --output "$b\dex" $classes
+# the library's own R class comes from gen (above), not from its classes.jar (which has none)
+& "$bt\d8.bat" --release --min-api 21 --lib $jar --output "$b\dex" $classes "$splashDir\classes.jar" $kotlin
 if ($LASTEXITCODE) { throw 'd8 failed' }
 # rewrite the zip with classes.dex added (appending in place leaves mismatched local headers)
 python -I -c @"

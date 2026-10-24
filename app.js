@@ -43,7 +43,7 @@
     pic: 'off', aspect: 'fit', sharpen: false, quality: 'auto', latency: 'stable', osdSec: 5, osdClock: true,
     retry: true, zap: 'category', upNext: false,
     remote: 'auto', keyRed: 'menu', keyGreen: 'aspect', keyYellow: 'fav', keyBlue: 'dub', longOk: 'menu', numWait: 1.2,
-    saver: 2, kids: false, kidsPin: '', autoUpdate: true, liveUpdates: true,
+    saver: 2, kids: false, kidsPin: '', autoUpdate: true, liveUpdates: true, avatar: '1f60e',
     lastId: '', lastCat: 'ALL', seenColors: false
   };
   var S = loadSettings();
@@ -136,14 +136,16 @@
         if (!IS_SITE && !window.ITV_BASE) urls.push(REMOTE + ch.logo);
       }
     }
-    var i = 0;
-    function showMono() { img.classList.add('hidden'); mono.classList.remove('hidden'); }
+    var i = 0, box = img.parentNode;
+    var loaded = function () { if (box && box.classList) box.classList.remove('loading'); };
+    if (box && box.classList && urls.length) box.classList.add('loading');   // glass shimmer until the logo is in
+    function showMono() { img.classList.add('hidden'); mono.classList.remove('hidden'); loaded(); }
     function tryNext() {
       if (i >= urls.length) { img.removeAttribute('src'); showMono(); return; }
       img.src = urls[i++];
     }
     img.onerror = tryNext;
-    img.onload = function () { img.classList.remove('hidden'); mono.classList.add('hidden'); };
+    img.onload = function () { img.classList.remove('hidden'); mono.classList.add('hidden'); loaded(); };
     img.referrerPolicy = 'no-referrer';
     img.classList.remove('hidden');
     mono.classList.add('hidden');
@@ -172,6 +174,7 @@
     }
     img.__ch = ch;
     img.__mono = mono;
+    if (ch.logo && img.parentNode) img.parentNode.classList.add('loading');
     var h = hueOf(ch.id);
     mono.textContent = monogramText(ch);
     mono.style.background = 'linear-gradient(135deg, hsl(' + h + ',70%,42%), hsl(' + ((h + 40) % 360) + ',75%,30%))';
@@ -234,6 +237,7 @@
       resizeTimer = setTimeout(function () {
         var was = PHONE;
         applyScale();
+        placeSearch();
         renderGridFresh();
         if (PHONE && !was) { buildHome(); setTab(state.tab, true); }
         else if (PHONE) movePill(false);
@@ -255,6 +259,8 @@
       localStorage.removeItem('itv_pending');
       if (LIVE && LIVE.code <= BUILD.code) localStorage.removeItem('itv_live');
     } catch (e) {}
+    // the Android app's splash screen (core-splashscreen) waits for this: the first screen is ready to draw
+    setTimeout(function () { native('ready'); }, 30);
     if (S.autoUpdate) setTimeout(function () { checkUpdates(false); }, 4000);
     if (Dub && Dub.settings.migratedFromLocal) setTimeout(explainTvDub, 1500);
     window.__itv = { state: state, S: S, playIndex: playIndex, openSettings: openSettings, checkUpdates: checkUpdates };
@@ -271,7 +277,7 @@
       'menu-sub', 'menu-list', 'settings', 'settings-nav', 'settings-h', 'settings-p', 'settings-rows', 'dialog', 'dialog-box',
       'dialog-ico', 'dialog-title', 'dialog-body', 'dialog-actions', 'toast', 'saver', 'saver-in', 'saver-clock',
       'topbar', 'home', 'pager', 'pager-track', 'pager-dots', 'shelves', 'navbar', 'nb-pill', 'btn-search', 'hero-bg',
-      'osd-center', 'ob-pip', 'guide-body'
+      'osd-center', 'ob-pip', 'guide-body', 'brand-tab', 'btn-avatar', 'avatar-img', 'avatar-dot', 'nb-search'
     ].forEach(function (id) {
       el[id.replace(/-([a-z])/g, function (m, c) { return c.toUpperCase(); })] = $(id);
     });
@@ -415,6 +421,14 @@
     set('--glow', rgba(p[3], light ? .25 : .35)); set('--pill', rgba(p[0], light ? .16 : .2));
     set('--bg', bg); set('--bg2', oled && !light ? mix(p[6], '#000000', .35) : p[6]); set('--surface', p[7]);
     set('--surface2', light ? '#f0f0f3' : mix(p[7], '#ffffff', .06)); set('--bg-a34', rgba(bg, .34));
+    // Glass Expressive: tertiary accent, the glass tint (the background with a touch of the accent) and the ambient light
+    var a3 = name === 'system' && sc && sc.a3_200 ? (light ? sc.a3_600 : sc.a3_200) : p[2];
+    var tintBase = light ? '#ffffff' : (oled ? mix(p[6], '#000000', .3) : p[6]);
+    set('--accent3', a3);
+    set('--glass', rgba(mix(tintBase, p[0], light ? .05 : .1), light ? .64 : .58));
+    set('--glass-strong', rgba(mix(tintBase, p[0], light ? .04 : .08), light ? .84 : .78));
+    var grey = name === 'white' || name === 'graphite';
+    set('--amb1', rgba(p[0], grey ? .06 : light ? .16 : .2)); set('--amb2', rgba(a3, grey ? .04 : light ? .12 : .14));
     var meta = document.querySelector('meta[name="theme-color"]');
     if (meta) meta.setAttribute('content', bg);
     native('setBarsLight', !!light);
@@ -443,6 +457,7 @@
       toggleClass(el.btnKidsExit, 'hidden', !S.kids);
     } else if (k === 'remote' || k.indexOf('key') === 0 || k === 'longOk') renderHints();
     else if (k === 'saver') resetSaver();
+    else if (k === 'avatar') updateAvatar();
   }
 
   var PICS = [['off', 'רגיל (ללא שינוי)'], ['cinema', 'קולנוע'], ['vivid', 'צבעים חיים'], ['sports', 'ספורט'], ['warm', 'חם']];
@@ -709,6 +724,7 @@
   }
   // ================================================================== phone: tabs, home (hero pager + shelves), navigation bar
   var TABS = ['home', 'explore', 'library', 'settings'];
+  var TAB_TITLES = { explore: 'ערוצים', library: 'שלי', settings: 'הגדרות' };
   var pagerTimer = null, pagerItems = [], homeDirty = true;
 
   function haptic(kind) { if (native('haptic', kind || 'tick') === undefined && navigator.vibrate && kind === 'long') { try { navigator.vibrate(12); } catch (e) {} } }
@@ -732,6 +748,8 @@
       TABS.forEach(function (t) { toggleClass(document.body, 'tab-' + t, t === tab || (tab === 'settings' && t === state.prevTab)); });
       var items = el.navbar.querySelectorAll('.nb-item');
       for (var i = 0; i < items.length; i++) toggleClass(items[i], 'on', items[i].getAttribute('data-tab') === tab);
+      if (el.brandTab) el.brandTab.textContent = TAB_TITLES[tab] || '';
+      if (tab !== 'explore' && el.navbar.classList.contains('searching')) setSearching(false);
       if (tab === 'home') { if (homeDirty) buildHome(); updateTopbar(); }
       else if (tab === 'library') {
         var target = state.cats.some(function (c) { return c.id === 'FAVORITES'; }) ? 'FAVORITES' : 'RECENT';
@@ -780,6 +798,242 @@
     if (!PHONE || !el.topbar) return;
     var solid = state.tab !== 'home' || el.home.scrollTop > Math.max(60, el.pager.offsetHeight - el.topbar.offsetHeight - 40);
     toggleClass(el.topbar, 'solid', solid);
+  }
+
+  // ---- search: on phones the field lives in the floating glass bar and opens from its search button
+  function placeSearch() {
+    if (!el.topSearch || !el.navbar) return;
+    if (PHONE && el.topSearch.parentNode !== el.navbar) el.navbar.insertBefore(el.topSearch, el.nbSearch);
+    else if (!PHONE && el.topSearch.parentNode === el.navbar) {
+      setSearching(false);
+      el.topbar.insertBefore(el.topSearch, el.topbar.querySelector('.top-actions'));
+    }
+  }
+  function setSearching(on) {
+    if (!PHONE || !el.navbar) return;
+    if (on === el.navbar.classList.contains('searching')) { if (on) el.searchInput.focus(); return; }
+    haptic(on ? 'press' : 'tick');
+    // Android builds that don't report the keyboard height: the field opens under the header, not behind the keyboard
+    toggleClass(document.body, 'search-top', on && PLATFORM === 'android' && !state.kbAware);
+    toggleClass(el.navbar, 'searching', on);
+    el.navbar.classList.remove('mini');
+    if (on) {
+      if (state.tab !== 'explore') setTab('explore');
+      el.searchInput.focus();
+    } else {
+      el.searchInput.blur();
+      if (state.query) { el.searchInput.value = ''; state.query = ''; state.gridIdx = 0; filterList(); }
+    }
+  }
+
+  // ---- profile: the 3D Noto Emoji avatar (assets/avatars, Apache 2.0) + the update card
+  var AVATARS = ['1f60e', '1f981', '1f98a', '1f43c', '1f431', '1f436', '1f984', '1f47d', '1f916', '1f9b8', '1f9d1-1f680'];
+  function avatarUrl(code) { return (window.ITV_BASE || '') + 'assets/avatars/' + code + '.webp'; }
+  function updateAvatar() {
+    if (!el.avatarImg) return;
+    var code = AVATARS.indexOf(S.avatar) !== -1 ? S.avatar : AVATARS[0];
+    el.avatarImg.src = avatarUrl(code);
+  }
+  function openProfile() {
+    var html = '<div class="av-grid">' + AVATARS.map(function (c) {
+      return '<button class="btn dlg-focus av-opt' + (c === S.avatar ? ' on' : '') + '" data-av="' + c + '"><img alt="" src="' + avatarUrl(c) + '"></button>';
+    }).join('') + '</div>' + '<div class="upd-card dlg-focus ' + updateCardState() + '" id="profile-upd">' + updateCardHtml() + '</div>';
+    openDialog({ ico: '', title: 'הפרופיל שלי', html: html, cls: 'profile',
+      buttons: [{ label: 'סגירה', primary: true }, { label: 'הגדרות', act: function () { setTab('settings'); } }] });
+    Array.prototype.forEach.call(el.dialogBody.querySelectorAll('.av-opt'), function (b) {
+      b.onclickAction = function () {
+        setSetting('avatar', b.getAttribute('data-av'));
+        updateAvatar();
+        Array.prototype.forEach.call(el.dialogBody.querySelectorAll('.av-opt'), function (x) { toggleClass(x, 'on', x === b); });
+        haptic('confirm');
+      };
+      b.addEventListener('click', function (e) { e.stopPropagation(); b.onclickAction(); });
+    });
+    var card = $('profile-upd');
+    card.onclickAction = function () { closeDialog(); updateCardAction(); };
+    card.addEventListener('click', function (e) { e.stopPropagation(); card.onclickAction(); });
+  }
+
+  // ================================================================== phone: scroll physics (BitChord)
+  /**
+   * iOS-style rubber band + bounce for the phone's scroll containers: a port of BitChord's IosOverscroll.kt
+   * (kushagrasinghx/BitChord, adapted there from Convx). While the finger pulls past an edge the content follows
+   * UIKit's self-limiting rubber band (constant 0.55, sized by the container); pulling back pays the stretch off before
+   * the list scrolls again. On release – or when a fling runs into the edge – it returns with a critically damped
+   * spring: stiffness 247, or 130 above 5000 px/s, velocity capped at 10000 px/s (Compose's device pixels: converted with
+   * devicePixelRatio). Flings are the WebView's own (Chromium on Android uses the platform's spline fling, like
+   * Compose's default fling behaviour); a fling started from a stretched drag continues here with the same decay.
+   */
+  var Bounce = (function () {
+    var BAND = 0.55, MAX_V = 10000, FAST_V = 5000, K_NORMAL = 247, K_FAST = 130, FLING_TAU = 0.325;
+    function band(raw, dim) {
+      var d = Math.abs(raw), b = (1 - 1 / (d * BAND / dim + 1)) * dim / BAND;
+      return raw < 0 ? -b : b;
+    }
+    function attach(box, axis) {
+      if (!box || box.__bounce) return;
+      var o = box.__bounce = { pull: 0, raf: 0, quietUntil: 0 };
+      var xAxis = axis === 'x', f = 1, dim = 2000, touching = false;
+      // finger -> scroll position: forward = finger up (y) / left (x, LTR) / right (x, RTL)
+      var sign = function () { f = xAxis && getComputedStyle(box).direction === 'rtl' ? -1 : 1; };
+      var pos = function () { return xAxis ? Math.abs(box.scrollLeft) : box.scrollTop; };
+      var max = function () { return Math.max(0, xAxis ? box.scrollWidth - box.clientWidth : box.scrollHeight - box.clientHeight); };
+      var setPos = function (p) { if (xAxis) box.scrollLeft = p * f; else box.scrollTop = p; };
+      var render = function () {
+        var b = o.pull ? Math.round(band(o.pull, dim) * 10) / 10 : 0;
+        box.style.transform = b ? (xAxis ? 'translate3d(' + b + 'px,0,0)' : 'translate3d(0,' + b + 'px,0)') : '';
+      };
+      var stop = function () { if (o.raf) cancelAnimationFrame(o.raf); o.raf = 0; };
+      var measure = function () { dim = (xAxis ? box.clientWidth : box.clientHeight) || 2000; sign(); };
+      // the spring back to rest, from the current stretch with the given velocity (screen px/s)
+      var settle = function (v) {
+        stop();
+        var dpr = window.devicePixelRatio || 1;
+        var vd = clamp(v * dpr, -MAX_V, MAX_V), w = Math.sqrt(Math.abs(vd) > FAST_V ? K_FAST : K_NORMAL);
+        var x0 = o.pull, v0 = vd / dpr, b = v0 + w * x0, t0 = 0;
+        if (!x0 && !v0) return;
+        var step = function (now) {
+          if (!t0) t0 = now;
+          var t = (now - t0) / 1000, e = Math.exp(-w * t);
+          o.pull = (x0 + b * t) * e;
+          var vel = (v0 - w * b * t) * e;
+          if ((Math.abs(o.pull) < 0.3 && Math.abs(vel) < 30) || t > 2.5) { o.pull = 0; o.raf = 0; render(); return; }
+          render();
+          o.raf = requestAnimationFrame(step);
+        };
+        o.raf = requestAnimationFrame(step);
+      };
+      // scroll the list by a finger delta; whatever runs past an edge becomes stretch
+      var scrollBy = function (d) {
+        var m = max(), target = pos() - d * f;
+        if (target < 0) { setPos(0); o.pull += -target * f; }
+        else if (target > m) { setPos(m); o.pull += -(target - m) * f; }
+        else setPos(target);
+      };
+      // a fling that this code runs (the drag began as a stretch, so the WebView never started its own)
+      var fling = function (v) {
+        stop();
+        var t0 = 0, p0 = pos(), m = max(), dir = -f;   // content moves with the finger: position changes by -v·f
+        var step = function (now) {
+          if (!t0) t0 = now;
+          var t = (now - t0) / 1000, e = Math.exp(-t / FLING_TAU);
+          var p = p0 + dir * v * FLING_TAU * (1 - e), vNow = v * e;
+          if (p < 0 || p > m) { setPos(p < 0 ? 0 : m); o.raf = 0; settle(vNow); return; }
+          setPos(p);
+          if (Math.abs(vNow) < 20) { o.raf = 0; return; }
+          o.raf = requestAnimationFrame(step);
+        };
+        o.raf = requestAnimationFrame(step);
+      };
+
+      var tracking = false, decided = false, owned = false, sx = 0, sy = 0, last = 0, lastT = 0, vel = 0;
+      box.addEventListener('touchstart', function (e) {
+        if (!PHONE || fastMode() || e.touches.length !== 1) { tracking = false; return; }
+        stop();
+        measure();
+        var t = e.touches[0];
+        tracking = true; decided = false; owned = false; touching = true;
+        sx = t.clientX; sy = t.clientY; last = xAxis ? sx : sy; lastT = e.timeStamp; vel = 0;
+      }, { passive: true });
+      box.addEventListener('touchmove', function (e) {
+        if (!tracking) return;
+        var t = e.touches[0], c = xAxis ? t.clientX : t.clientY;
+        if (!decided) {
+          var dx = Math.abs(t.clientX - sx), dy = Math.abs(t.clientY - sy);
+          if (dx < 3 && dy < 3) return;
+          decided = true;
+          if ((xAxis ? dx <= dy : dx > dy) && !o.pull) { tracking = false; touching = false; return; }   // the other axis' gesture
+        }
+        var d = c - last, dt = e.timeStamp - lastT;
+        last = c; lastT = e.timeStamp;
+        if (dt > 0) vel = 0.7 * (d / dt * 1000) + 0.3 * vel;
+        if (!d) return;
+        var p = pos(), m = max(), mine = false;
+        if (o.pull) {
+          var next = o.pull + d;
+          if (o.pull > 0 !== next > 0 && next !== 0) { o.pull = 0; scrollBy(next); }   // paid off: the rest scrolls the list
+          else o.pull = next;
+          mine = true;
+        } else if ((p <= 0 && d * f > 0) || (p >= m - 1 && d * f < 0)) { o.pull = d; mine = true; }
+        else if (owned) { scrollBy(d); mine = true; }
+        if (!mine) return;
+        if (e.cancelable) { e.preventDefault(); owned = true; }
+        else if (o.pull) setPos(o.pull * f > 0 ? 0 : m);   // the WebView is scrolling this drag: keep it at the edge
+        render();
+      }, { passive: false });
+      var end = function (e) {
+        if (!tracking) return;
+        tracking = false; touching = false;
+        if (e.timeStamp - lastT > 90) vel = 0;   // the finger stopped before lifting
+        if (o.pull) settle(vel);
+        else if (owned && Math.abs(vel) > 150) fling(vel);
+      };
+      box.addEventListener('touchend', end, { passive: true });
+      box.addEventListener('touchcancel', end, { passive: true });
+
+      // a WebView fling that runs into an edge hands its velocity (just before the edge) to the spring
+      var sp = -1, st = 0, sv = 0;
+      box.addEventListener('scroll', function (e) {
+        var now = e.timeStamp || performance.now(), p = pos(), m = max();
+        if (sp >= 0 && now - st < 70) {
+          var hitStart = p <= 0 && sp > 0 && sv < -200, hitEnd = p >= m - 1 && sp < m - 1 && sv > 200;
+          if ((hitStart || hitEnd) && !touching && !o.raf && !o.pull && now > o.quietUntil && PHONE && !fastMode()) {
+            measure();
+            settle(-sv * f);   // content velocity on screen = -(position velocity)·f
+          }
+          sv = (p - sp) / (now - st) * 1000;
+        } else sv = 0;
+        sp = p; st = now;
+      }, { passive: true });
+    }
+    /** Programmatic scrolls (back to top) end without a bounce. */
+    function quiet(box) { if (box && box.__bounce) box.__bounce.quietUntil = performance.now() + 1500; }
+    return { attach: attach, quiet: quiet, band: band };
+  })();
+
+  // ================================================================== phone: Apple TV-style tilt + parallax + sheen on press
+  function setupTilt() {
+    var cur = null, layer = null, raf = 0, px = 0, py = 0, rect = null;
+    var apply = function () {
+      raf = 0;
+      if (!cur) return;
+      var nx = clamp((px - rect.left) / rect.width * 2 - 1, -1, 1), ny = clamp((py - rect.top) / rect.height * 2 - 1, -1, 1);
+      // the pressed side sinks (Apple TV), the logo floats the other way (parallax), the light follows the finger
+      cur.style.transform = 'perspective(60rem) rotateX(' + (-ny * 7).toFixed(2) + 'deg) rotateY(' + (nx * 9).toFixed(2) + 'deg) scale(.97)';
+      cur.style.setProperty('--mx', ((nx + 1) * 50).toFixed(1) + '%');
+      cur.style.setProperty('--my', ((ny + 1) * 50).toFixed(1) + '%');
+      if (layer) layer.style.transform = 'translate3d(' + (-nx * 5).toFixed(1) + 'px,' + (-ny * 4).toFixed(1) + 'px,0) scale(1.05)';
+    };
+    var release = function () {
+      if (!cur) return;
+      cur.classList.remove('tilting');
+      cur.style.transform = '';
+      if (layer) layer.style.transform = '';
+      cur = layer = null;
+    };
+    document.addEventListener('pointerdown', function (e) {
+      if (!PHONE || fastMode() || e.pointerType === 'mouse' || !e.target.closest) return;
+      var t = e.target.closest('.pc-media, .card-logo, .slide-logo');
+      if (!t || t.classList.contains('skel')) return;
+      release();
+      cur = t;
+      rect = t.getBoundingClientRect();
+      layer = t.querySelector('img:not(.hidden)') || t.querySelector('.mono:not(.hidden)');
+      if (!t.querySelector('.sheen') && !t.classList.contains('slide-logo')) {
+        var s = document.createElement('span');
+        s.className = 'sheen';
+        t.appendChild(s);
+      }
+      t.classList.add('tilting');
+      px = e.clientX; py = e.clientY;
+      apply();
+    }, { passive: true });
+    document.addEventListener('pointermove', function (e) {
+      if (!cur) return;
+      px = e.clientX; py = e.clientY;
+      if (!raf) raf = requestAnimationFrame(apply);
+    }, { passive: true });
+    ['pointerup', 'pointercancel', 'pointerleave'].forEach(function (n) { document.addEventListener(n, release, { passive: true }); });
   }
 
   /** Channels for the hero pager: favourites, recently watched, then the main Israeli channels. */
@@ -859,6 +1113,7 @@
         '<div class="shelf-row"></div>';
       var row = sec.querySelector('.shelf-row');
       sh.list.slice(0, 18).forEach(function (ch) { row.appendChild(posterCard(ch, sh)); });
+      Bounce.attach(row, 'x');
       frag.appendChild(sec);
     });
     el.shelves.appendChild(frag);
@@ -916,11 +1171,28 @@
       var b = e.target.closest('.nb-item');
       if (!b) return;
       var tab = b.getAttribute('data-tab');
-      if (tab === state.tab && tab === 'home') { try { el.home.scrollTo({ top: 0, behavior: 'smooth' }); } catch (x) { el.home.scrollTop = 0; } return; }
-      if (tab === state.tab && tab === 'explore') { try { el.grid.scrollTo({ top: 0, behavior: 'smooth' }); } catch (x) { el.grid.scrollTop = 0; } return; }
+      var box = tab === state.tab && tab === 'home' ? el.home : tab === state.tab && tab === 'explore' ? el.grid : null;
+      if (box) { Bounce.quiet(box); try { box.scrollTo({ top: 0, behavior: 'smooth' }); } catch (x) { box.scrollTop = 0; } return; }
       setTab(tab);
     });
-    el.btnSearch.addEventListener('click', function () { setTab('explore'); setTimeout(function () { el.searchInput.focus(); }, 280); });
+    el.btnSearch.addEventListener('click', function () { setSearching(true); });
+    // the glass bar's search action: opens into the search field (and closes it again)
+    placeSearch();
+    el.nbSearch.addEventListener('click', function () { setSearching(!el.navbar.classList.contains('searching')); });
+    el.searchInput.addEventListener('keydown', function (e) { if (PHONE && e.keyCode === 13) el.searchInput.blur(); });
+    // the avatar: profile sheet (pick the 3D avatar) with the update card
+    updateAvatar();
+    el.btnAvatar.addEventListener('click', function () { haptic('press'); openProfile(); });
+    // keyboard height: native inset from the Android app (__itvInsets k), else the visual viewport (browsers)
+    if (!NATIVE && window.visualViewport) {
+      var vv = window.visualViewport;
+      var onVv = function () { document.documentElement.style.setProperty('--kb', Math.max(0, Math.round(window.innerHeight - vv.height - vv.offsetTop)) + 'px'); };
+      vv.addEventListener('resize', onVv);
+      vv.addEventListener('scroll', onVv);
+    }
+    // iOS-style rubber band + bounce (BitChord physics) on every phone scroller; tilt + parallax on press
+    [el.home, el.grid, el.settingsRows, el.menuList, el.drawerList].forEach(function (b) { Bounce.attach(b, 'y'); });
+    setupTilt();
 
     // home: posters, "view all", hero buttons
     el.home.addEventListener('click', function (e) {
@@ -1442,7 +1714,7 @@
     el.dialogActions.innerHTML = btns.map(function (b, i) {
       return '<button class="btn' + (b.primary ? ' primary' : '') + '" data-i="' + i + '">' + b.label + '</button>';
     }).join('');
-    el.dialogBox.className = 'dialog-box' + (opts.wide ? ' wide' : '');
+    el.dialogBox.className = 'dialog-box' + (opts.wide ? ' wide' : '') + (opts.cls ? ' ' + opts.cls : '');
     el.dialog.classList.remove('hidden');
     if (state.overlay && state.overlay !== 'dialog') state.stack.push(state.overlay);
     state.overlay = 'dialog';
@@ -1792,7 +2064,10 @@
         tvRow(toggle('hints', 'שורת עזרה לשלט בתחתית')),
         { type: 'choice', label: 'ביצועים', help: 'מהיר = בלי אנימציות, למכשירים חלשים. ' + (S.perf === 'auto' ? 'זוהה: ' + (state.lowEnd ? 'מכשיר חלש – מצב מהיר' : 'מצב מלא') : ''),
           get: function () { return label(PERF, S.perf); }, step: function (st) { setSetting('perf', cycle(PERF, S.perf, st)); } }
-      ] },
+      ].concat(NATIVE && NATIVE.launchSound ? [
+        { type: 'toggle', label: 'צליל פתיחה', help: 'צליל קצר כשהאפליקציה נפתחת (שקט כשהמכשיר על שקט או רטט)',
+          on: function () { return native('launchSound') !== false; }, act: function () { native('setLaunchSound', native('launchSound') === false); } }
+      ] : []) },
       { id: 'channels', ico: '📺', name: 'ערוצים', desc: 'מה מופיע במדריך ואיך האפליקציה נפתחת', rows: [
         choice('startCat', 'בפתיחת האפליקציה', STARTS),
         toggle('autoplay', 'לנגן את הערוץ האחרון בפתיחה'),
@@ -1856,10 +2131,9 @@
         choice('saver', 'הפעלה אחרי', SAVERS, 'רק במדריך או כשהשידור מושהה – לא בזמן צפייה')
       ] },
       { id: 'updates', ico: '⬆️', name: 'עדכונים', desc: 'עדכונים מגיעים ישירות מ-GitHub', rows: [
-        info('גרסה מותקנת', BUILD.version + (BUILD.date ? ' (' + BUILD.date + ')' : '')),
+        { type: 'card', state: updateCardState, html: updateCardHtml, act: updateCardAction },
+        info('גרסה מותקנת', (d.appVersion ? 'אפליקציה ' + d.appVersion + ' · ' : '') + BUILD.version + (BUILD.date ? ' (' + BUILD.date + ')' : '')),
         info('גרסה פעילה', function () { return LIVE ? LIVE.version + ' – עודכנה אונליין' : BUILD.version; }),
-        info('מצב', function () { return updateStatusText(); }),
-        action('בדיקת עדכונים עכשיו', function () { checkUpdates(true); }),
         toggle('autoUpdate', 'בדיקה אוטומטית בכל פתיחה'),
         toggle('liveUpdates', 'עדכון אונליין של המסך, הקוד והערוצים', 'עדכונים קטנים מגיעים לכל המכשירים בלי להתקין מחדש'),
         action('📋 מה חדש (GitHub)', function () { openUrl(RELEASES); })
@@ -1931,6 +2205,7 @@
     var n = 0;
     el.settingsRows.innerHTML = sec.rows.map(function (r) {
       if (r.type === 'sep') return '<div class="set-sep">' + esc(r.label) + '</div>';
+      if (r.type === 'card') return '<div class="set-row upd-row" data-i="' + (n++) + '"><div class="upd-card ' + r.state() + '">' + r.html() + '</div></div>';
       var val = '';
       if (r.type === 'choice') val = '<span class="arr">▶</span><span class="v">' + esc(r.get()) + '</span><span class="arr">◀</span>';
       else if (r.type === 'toggle') val = '<span class="switch' + (r.on() ? ' on' : '') + '"></span>';
@@ -1972,7 +2247,7 @@
     if (r.type === 'choice' && (code === 37 || code === 39 || code === 13)) { r.step(code === 39 ? -1 : 1); renderSettings(); return; }
     if (code === 39) { state.setZone = 'nav'; markFocus(); return; }
     if (code === 13) {
-      if (r.type === 'toggle' || r.type === 'action') { r.act(); if (state.overlay === 'settings') renderSettings(); }
+      if (r.type === 'toggle' || r.type === 'action' || r.type === 'card') { r.act(); if (state.overlay === 'settings') renderSettings(); }
       else if (r.type === 'text' && input) { input.focus(); }
     }
   }
@@ -2084,6 +2359,16 @@
       var nk = nativeKey();
       var n = data.native && data.native[nk];
       if (n && n.app > (BUILD.app || 0)) { u.native = n; showUpdateButton(); }
+      // the newest GitHub release too (it can be out before version.json): a new app version opens the update modal
+      checkRelease(u, function () {
+        state.lastCheck = Date.now();
+        if (u.native) {
+          showUpdateButton();
+          if (!manual) offerOnce(u.native);
+          else if (state.overlay !== 'dialog') showUpdateDialog();
+        }
+        refreshSettingsIfOpen();
+      });
       if (data.code > activeCode && S.liveUpdates && (data.shell || 0) <= (BUILD.shell || 0)) {
         u.liveDownloading = true;
         var q = '?v=' + data.code;
@@ -2108,7 +2393,67 @@
     });
   }
   function refreshSettingsIfOpen() { if (state.overlay === 'settings') renderSettings(); }
-  function showUpdateButton() { el.btnUpdate.classList.remove('hidden'); }
+  function showUpdateButton() { el.btnUpdate.classList.remove('hidden'); toggleClass(el.avatarDot, 'hidden', false); }
+
+  // ---- GitHub Releases (api.github.com, no key: 60 checks an hour per address – one per start is plenty)
+  var RELEASES_API = 'https://api.github.com/repos/dor2500/israel-tv-plus/releases/latest';
+  var RELEASE_ASSETS = { android: 'IsraelTVPlus-android.apk', windows: 'IsraelTVPlus-windows-setup.exe', webos: 'com.israeltv.plus_all.ipk' };
+  function verNum(v) { var p = String(v || '0').replace(/^v/i, '').split('.'); return (+p[0] || 0) * 1e6 + (+p[1] || 0) * 1e3 + (+p[2] || 0); }
+  function installedAppVersion() { return state.device.appVersion || BUILD.version; }
+  function releaseNotes(body) {
+    return String(body || '').split(/\r?\n/).filter(function (l) { return /^\s*[-*•]\s+/.test(l); }).slice(0, 10).map(function (l) {
+      return l.replace(/^\s*[-*•]\s+/, '').replace(/\*\*|__|`/g, '').replace(/\[([^\]]+)\]\([^)]*\)/g, '$1').trim();
+    });
+  }
+  function checkRelease(u, done) {
+    var file = RELEASE_ASSETS[nativeKey()];
+    if (!file || IS_SITE) { done(); return; }
+    xhrJson(RELEASES_API, 10000, function (r) {
+      var v = String(r && r.tag_name || '').replace(/^v/i, '');
+      var asset = ((r && r.assets) || []).filter(function (a) { return a.name === file; })[0];
+      if (asset && !r.draft && !r.prerelease && verNum(v) > verNum(installedAppVersion()) && (!u.native || verNum(v) > verNum(u.native.version))) {
+        u.native = { version: v, url: asset.browser_download_url, size: asset.size, notes: releaseNotes(r.body),
+          date: String(r.published_at || '').slice(0, 10), release: true };
+      }
+      done();
+    }, function () { done(); });
+  }
+  /** A new app version opens the update modal by itself once (per version), when nothing else is on screen. */
+  function offerOnce(n) {
+    if (lsGet('itv_upd_offered', '') === n.version || state.overlay || state.playing) return;
+    lsSet('itv_upd_offered', n.version);
+    showUpdateDialog();
+  }
+
+  // ---- the Pixel-style update card (Settings → Updates, profile sheet)
+  function updateCardState() {
+    var u = state.update;
+    if (state.checking) return 'busy';
+    return u && (u.native || state.liveReady) ? 'new' : 'ok';
+  }
+  function updateCardHtml() {
+    var u = state.update, st = updateCardState(), title, sub, btn, icon;
+    var ago = state.lastCheck ? 'נבדק לאחרונה ' + when(state.lastCheck).split(' ')[1] : 'עוד לא נבדק בהפעלה הזאת';
+    if (st === 'busy') { icon = 'settings'; title = 'בודק עדכונים…'; sub = 'מתחבר ל-GitHub'; btn = ''; }
+    else if (st === 'new') {
+      icon = 'download';
+      title = u.native ? 'גרסה ' + u.native.version + ' זמינה' : 'עדכון ' + state.liveReady.version + ' מוכן';
+      sub = u.native ? 'גרסה חדשה של האפליקציה' + (u.native.size ? ' · ' + Math.round(u.native.size / 1048576 * 10) / 10 + 'MB' : '')
+        : 'המסך, הקוד והערוצים – יופעל בהפעלה מחדש';
+      btn = u.native ? 'עדכון עכשיו' : 'הפעלה מחדש';
+    } else {
+      icon = 'info'; title = u && u.error ? 'לא הצלחנו לבדוק' : 'המכשיר מעודכן';
+      sub = (u && u.error ? u.error + ' · ' : 'גרסה ' + (LIVE ? LIVE.version : BUILD.version) + ' · ') + ago;
+      btn = 'בדיקת עדכונים';
+    }
+    return '<div class="uc-ico">' + I(icon) + '</div><div class="uc-title">' + esc(title) + '</div><div class="uc-sub">' + esc(sub) + '</div>' +
+      (btn ? '<div class="uc-btn">' + esc(btn) + '</div>' : '');
+  }
+  function updateCardAction() {
+    var u = state.update;
+    if (state.checking) return;
+    if (u && (u.native || state.liveReady)) showUpdateDialog(); else checkUpdates(true);
+  }
   function offerReload(data) {
     openDialog({ ico: '⬆️', title: 'גרסה ' + data.version + ' זמינה', html: notesHtml(data),
       buttons: [{ label: 'רענון עכשיו', primary: true, act: function () { location.reload(true); } }, { label: 'אחר כך' }] });
@@ -2118,41 +2463,70 @@
     return notes.length ? '<ul>' + notes.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') + '</ul>' : '';
   }
 
+  /**
+   * The update modal (frosted glass on phones): the app icon, "installed → new" version chips and the release notes;
+   * "update now" downloads in place – the notes fold away and an M3 Expressive linear progress bar takes their spot.
+   */
   function showUpdateDialog() {
     var u = state.update;
     if (!u || !u.data) { checkUpdates(true); return; }
     if (IS_SITE) { offerReload(u.data); return; }
-    var buttons = [], html = notesHtml(u.data);
-    if (state.liveReady) {
-      html = '<p>עדכון ' + esc(state.liveReady.version) + ' (מסך, קוד וערוצים) הורד ומוכן.</p>' + html;
-      buttons.push({ label: '⟳ הפעלה מחדש עם העדכון', primary: true, act: function () { try { sessionStorage.removeItem('itv_local'); } catch (e) {} location.reload(); } });
-    }
+    // notes: version.json's list when it describes the same version (one line each), else the release's bullet lines
+    var sameVer = !u.native || u.data.version === u.native.version;
+    var buttons = [], notes = !sameVer && u.native.notes && u.native.notes.length ? u.native.notes : (sameVer ? u.data.notes || [] : []);
+    var from = u.native ? installedAppVersion() : (LIVE ? LIVE.version : BUILD.version);
+    var to = u.native ? u.native.version : state.liveReady ? state.liveReady.version : u.data.version;
+    var html = '<div class="upd-hero"><img alt="" src="' + (window.ITV_BASE || '') + 'icon.png"><div><b>' +
+      (u.native ? 'עדכון לאפליקציה' : 'עדכון מוכן') + '</b><div class="upd-ver"><span>' + esc(from) + '</span><i>←</i><span class="new">' + esc(to) + '</span>' +
+      (u.native && u.native.size ? '<i>·</i>' + Math.round(u.native.size / 1048576 * 10) / 10 + 'MB' : '') + '</div></div></div>' +
+      (notes.length ? '<div class="upd-notes"><ul>' + notes.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') + '</ul></div>' : '') +
+      '<div class="upd-dl"><div class="m3p indet" id="upd-prog"><i class="m3p-ind" id="upd-bar"></i><i class="m3p-track"></i></div>' +
+      '<p id="upd-text">מתחבר...</p></div>';
     if (u.native) {
-      html += '<p>גרסה ' + esc(u.native.version) + ' של האפליקציה עצמה זמינה' + (u.native.note ? ' – ' + esc(u.native.note) : '') + '.</p>';
-      if (PLATFORM === 'android' && window.AndroidApp && window.AndroidApp.installUpdate) {
-        buttons.push({ label: '⬇️ הורדה והתקנה', primary: !buttons.length, act: function () { installNative(u.native); } });
-      } else if (PLATFORM === 'windows') {
-        buttons.push({ label: '⬇️ הורדה והתקנה', primary: !buttons.length, act: function () { installNative(u.native); } });
+      if ((PLATFORM === 'android' && window.AndroidApp && window.AndroidApp.installUpdate) || PLATFORM === 'windows') {
+        buttons.push({ label: 'עדכון עכשיו', primary: true, keep: true, act: function () { installNative(u.native); } });
       } else if (PLATFORM === 'webos') {
         html += '<p>בטלוויזיית LG: התקנה מחדש של קובץ ה-IPK (Developer Mode / Homebrew Channel). המסך, הקוד והערוצים מתעדכנים גם בלי זה.</p>';
         buttons.push({ label: '🌐 דף ההורדה', act: function () { openUrl(RELEASES); } });
       } else {
-        buttons.push({ label: '🌐 דף ההורדה', primary: !buttons.length, act: function () { openUrl(u.native.url || RELEASES); } });
+        buttons.push({ label: '🌐 דף ההורדה', primary: true, act: function () { openUrl(u.native.url || RELEASES); } });
       }
+    }
+    if (state.liveReady) {
+      buttons.push({ label: u.native ? 'הפעלה מחדש עם עדכון המסך' : 'הפעלה מחדש עכשיו', primary: !buttons.length,
+        act: function () { try { sessionStorage.removeItem('itv_local'); } catch (e) {} location.reload(); } });
     }
     if (!buttons.length) { toast('✅ הגרסה עדכנית'); return; }
     buttons.push({ label: 'אחר כך' });
-    openDialog({ ico: '⬆️', title: 'עדכון זמין', html: html, buttons: buttons });
+    openDialog({ ico: '', title: 'עדכון זמין', html: html, buttons: buttons, cls: 'upd' });
   }
 
   function installNative(n) {
-    openDialog({ ico: '⬇️', title: 'מוריד את גרסה ' + n.version, html: '<div class="progress"><i id="upd-bar"></i></div><p id="upd-text">מתחיל...</p>',
-      buttons: [{ label: 'הסתרה' }] });
+    if (state.overlay !== 'dialog' || !$('upd-prog')) showUpdateDialog();
+    var box = el.dialogBox;
+    box.classList.add('downloading');
+    // the actions become a single "hide" (the download goes on; the system installer opens by itself)
+    state.dialog.buttons = [{ label: 'הסתרה', primary: true }];
+    el.dialogActions.innerHTML = '<button class="btn primary" data-i="0">הסתרה</button>';
+    state.dialogIdx = 0;
+    markFocus();
+    haptic('start');
     window.__itvUpdate = function (st, v) {
-      var bar = $('upd-bar'), txt = $('upd-text');
-      if (st === 'progress') { if (bar) bar.style.width = v + '%'; if (txt) txt.textContent = v + '%'; }
-      else if (st === 'installing') { if (txt) txt.textContent = 'פותח את ההתקנה – אשרו במסך שייפתח'; if (bar) bar.style.width = '100%'; }
-      else if (st === 'error') { if (txt) txt.textContent = 'שגיאה: ' + v; toast('⚠️ ההורדה נכשלה'); }
+      var prog = $('upd-prog'), bar = $('upd-bar'), txt = $('upd-text');
+      if (st === 'progress') {
+        if (prog) prog.classList.remove('indet');
+        if (bar) bar.style.width = v + '%';
+        if (txt) txt.textContent = 'מוריד את גרסה ' + n.version + ' · ' + v + '%';
+      } else if (st === 'installing') {
+        if (prog) { prog.classList.remove('indet'); prog.classList.add('done'); }
+        if (txt) txt.textContent = 'פותח את ההתקנה – אשרו במסך שייפתח';
+        haptic('confirm');
+      } else if (st === 'error') {
+        if (txt) txt.textContent = 'שגיאה: ' + v;
+        if (prog) prog.classList.remove('indet');
+        haptic('reject');
+        toast('⚠️ ההורדה נכשלה');
+      }
     };
     if (PLATFORM === 'android') window.AndroidApp.installUpdate(n.url);
     else if (PLATFORM === 'windows') window.chrome.webview.postMessage(JSON.stringify({ update: n.url }));
@@ -2166,10 +2540,12 @@
       if (code === 13) onKeyUp({ keyCode: 13, which: 13, target: document.body, preventDefault: function () {} });
     };
     // edge-to-edge (Android 15+): the system bar / cutout sizes in CSS px, from the native app
-    window.__itvInsets = function (t, r, b, l) {
+    window.__itvInsets = function (t, r, b, l, k) {
       var s = document.documentElement.style;
       s.setProperty('--sat', (t || 0) + 'px'); s.setProperty('--sar', (r || 0) + 'px');
       s.setProperty('--sab', (b || 0) + 'px'); s.setProperty('--sal', (l || 0) + 'px');
+      // k: the keyboard height (Android app 3.2+): the glass bar with the search field rides on top of it
+      if (k !== undefined) { state.kbAware = true; s.setProperty('--kb', (k || 0) + 'px'); }
       if (PHONE) { movePill(false); updateTopbar(); }
     };
     // picture-in-picture: only the picture, no controls
@@ -2191,7 +2567,7 @@
     };
     window.__itvBackCancel = function () { backReset(false); };
     var nativeInsets = native('insets');
-    if (nativeInsets) { try { var ins = JSON.parse(nativeInsets); window.__itvInsets(ins.t, ins.r, ins.b, ins.l); } catch (e) {} }
+    if (nativeInsets) { try { var ins = JSON.parse(nativeInsets); window.__itvInsets(ins.t, ins.r, ins.b, ins.l, ins.k); } catch (e) {} }
     if (PLATFORM === 'tizen' && window.tizen && window.tizen.tvinputdevice) {
       ['ColorF0Red', 'ColorF1Green', 'ColorF2Yellow', 'ColorF3Blue', 'ChannelUp', 'ChannelDown', 'MediaPlayPause', 'MediaPlay', 'MediaPause',
         'Info', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'].forEach(function (k) {
@@ -2257,6 +2633,7 @@
         var a = JSON.parse(window.AndroidApp.deviceInfo());
         d.model = (a.manufacturer || '') + ' ' + (a.model || '');
         d.os = 'Android ' + (a.release || '') + ' (API ' + (a.sdk || '') + ')' + (a.ramMb ? ' · ' + Math.round(a.ramMb / 1024 * 10) / 10 + 'GB RAM' : '');
+        d.appVersion = a.versionName || '';
         if (a.lowRam || (a.ramMb && a.ramMb < 2500)) { state.lowEnd = true; applySetting('perf'); }
       } catch (e) {}
     } else if (PLATFORM === 'tizen' && window.tizen && window.tizen.systeminfo) {
@@ -2481,8 +2858,9 @@
       state.setIdx = parseInt(row.getAttribute('data-i'), 10);
       var r = rowsOf()[state.setIdx];
       if (e.target.tagName === 'INPUT') { markFocus(); return; }
-      if (r.type === 'choice') r.step(1);
-      else if (r.type === 'toggle' || r.type === 'action') r.act();
+      if (r.type === 'choice') { r.step(1); if (PHONE) haptic('segment'); }
+      else if (r.type === 'toggle') { r.act(); if (PHONE) haptic(r.on() ? 'on' : 'off'); }
+      else if (r.type === 'action' || r.type === 'card') { if (PHONE) haptic('press'); r.act(); }
       if (state.overlay === 'settings') renderSettings();
     });
     el.settingsRows.addEventListener('change', function (e) {
