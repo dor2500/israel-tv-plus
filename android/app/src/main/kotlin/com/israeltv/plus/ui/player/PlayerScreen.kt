@@ -37,9 +37,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.windowInsetsPadding
-import com.israeltv.plus.ui.components.frostedGlass
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
@@ -131,20 +129,10 @@ private fun buildPlayer(context: Context): ExoPlayer {
     val http = DefaultHttpDataSource.Factory()
         .setUserAgent(USER_AGENT)
         .setAllowCrossProtocolRedirects(true)
-        .setConnectTimeoutMs(8_000)
-        .setReadTimeoutMs(10_000)
-    val loadControl = androidx.media3.exoplayer.DefaultLoadControl.Builder()
-        .setBufferDurationsMs(
-            /* minBufferMs = */ 1_500,
-            /* maxBufferMs = */ 4_000,
-            /* bufferForPlaybackMs = */ 500,
-            /* bufferForPlaybackAfterRebufferMs = */ 1_000,
-        )
-        .setPrioritizeTimeOverSizeThresholds(true)
-        .build()
+        .setConnectTimeoutMs(12_000)
+        .setReadTimeoutMs(15_000)
     return ExoPlayer.Builder(context)
         .setMediaSourceFactory(DefaultMediaSourceFactory(http))
-        .setLoadControl(loadControl)
         .setAudioAttributes(
             AudioAttributes.Builder().setUsage(C.USAGE_MEDIA).setContentType(C.AUDIO_CONTENT_TYPE_MOVIE).build(),
             /* handleAudioFocus = */ true,
@@ -229,16 +217,7 @@ fun PlayerScreen(
             buffering = false
             return@LaunchedEffect
         }
-        val liveConfig = MediaItem.LiveConfiguration.Builder()
-            .setTargetOffsetMs(1500)
-            .setMinOffsetMs(500)
-            .setMaxOffsetMs(3500)
-            .setMinPlaybackSpeed(0.97f)
-            .setMaxPlaybackSpeed(1.06f)
-            .build()
-        val item = MediaItem.Builder()
-            .setUri(url)
-            .setLiveConfiguration(liveConfig)
+        val item = MediaItem.Builder().setUri(url)
         if (current.url.contains(".m3u8", ignoreCase = true)) item.setMimeType(MimeTypes.APPLICATION_M3U8)
         player.setMediaItem(item.build())
         player.volume = 1.0f
@@ -297,12 +276,6 @@ fun PlayerScreen(
                     this.player = player
                 }
             },
-            update = { view ->
-                view.subtitleView?.let { sub ->
-                    val dp92 = (92 * view.resources.displayMetrics.density).toInt()
-                    sub.setPadding(sub.paddingLeft, sub.paddingTop, sub.paddingRight, if (controls) dp92 else 0)
-                }
-            },
             modifier = Modifier.fillMaxSize(),
         )
         // the touch layer over the video (the PlayerView itself would take the touches)
@@ -343,55 +316,17 @@ fun PlayerScreen(
         ) { mode ->
             when (mode) {
                 "buffering" -> BufferingPill()
-                "controls" -> {
-                    val scheme = MaterialTheme.colorScheme
-                    Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(24.dp)) {
-                        // Previous / Next: Tall squircle shapes (width = 52.dp, height = 72.dp, RoundedCornerShape(24.dp), secondaryContainer)
-                        Box(
-                            modifier = Modifier
-                                .size(width = 52.dp, height = 72.dp)
-                                .clip(RoundedCornerShape(24.dp))
-                                .background(scheme.secondaryContainer)
-                                .specularBorder(RoundedCornerShape(24.dp))
-                                .clickable { switchTo(index + 1) },
-                            contentAlignment = Alignment.Center,
-                        ) {
-                            Icon(Icons.Rounded.SkipNext, "ערוץ הבא", Modifier.size(28.dp), tint = scheme.onSecondaryContainer)
-                        }
-
-                        // Center Play/Pause: 84.dp circle (MaterialTheme.colorScheme.primaryContainer)
-                        Box(
-                            modifier = Modifier
-                                .size(84.dp)
-                                .clip(CircleShape)
-                                .background(scheme.primaryContainer)
-                                .specularBorder(CircleShape)
-                                .clickable {
-                                    touchTick++
-                                    if (player.isPlaying) player.pause() else { player.volume = 1.0f; player.play() }
-                                },
-                            contentAlignment = Alignment.Center,
-                        ) {
-                            Icon(
-                                if (playing) Icons.Rounded.Pause else Icons.Rounded.PlayArrow,
-                                "נגן / השהה",
-                                Modifier.size(44.dp),
-                                tint = scheme.onPrimaryContainer,
-                            )
-                        }
-
-                        Box(
-                            modifier = Modifier
-                                .size(width = 52.dp, height = 72.dp)
-                                .clip(RoundedCornerShape(24.dp))
-                                .background(scheme.secondaryContainer)
-                                .specularBorder(RoundedCornerShape(24.dp))
-                                .clickable { switchTo(index - 1) },
-                            contentAlignment = Alignment.Center,
-                        ) {
-                            Icon(Icons.Rounded.SkipPrevious, "ערוץ קודם", Modifier.size(28.dp), tint = scheme.onSecondaryContainer)
-                        }
-                    }
+                "controls" -> Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(28.dp)) {
+                    GlassIconButton(Icons.Rounded.SkipNext, "ערוץ הבא", { switchTo(index + 1) }, size = 52.dp, tint = GlassDark)
+                    GlassIconButton(
+                        if (playing) Icons.Rounded.Pause else Icons.Rounded.PlayArrow, "נגן / השהה",
+                        {
+                            touchTick++
+                            if (player.isPlaying) player.pause() else { player.volume = 1.0f; player.play() }
+                        },
+                        size = 72.dp, tint = GlassDark,
+                    )
+                    GlassIconButton(Icons.Rounded.SkipPrevious, "ערוץ קודם", { switchTo(index - 1) }, size = 52.dp, tint = GlassDark)
                 }
                 "error" -> ErrorCard(current, error.orEmpty(), onRetry = { attempt++ }, onNext = { switchTo(index + 1) })
                 else -> Spacer(Modifier.size(1.dp))
@@ -523,30 +458,26 @@ private fun TopBar(ch: Channel, logo: String, onBack: () -> Unit) {
     }
 }
 
-/** Apple TV-style compact bottom player dock (widthIn(max = 400.dp).height(58.dp)) with heavy frosted blur */
+/** Apple TV-style dock: one frosted capsule with evenly spaced icon + label items. */
 @Composable
 private fun Dock(landscape: Boolean, onItem: (String) -> Unit) {
     val shape = RoundedCornerShape(32.dp)
-    Box(
-        modifier = Modifier
+    Row(
+        Modifier
             .navigationBarsPadding()
-            .padding(horizontal = 20.dp, vertical = 20.dp)
-            .widthIn(max = 400.dp)
-            .height(58.dp)
-            .frostedGlass(shape, blur = 90.dp),
-        contentAlignment = Alignment.Center,
+            .padding(horizontal = 20.dp, vertical = 24.dp)
+            .fillMaxWidth()
+            .height(64.dp)
+            .clip(shape)
+            .background(GlassDark)
+            .specularBorder(shape),
+        horizontalArrangement = Arrangement.SpaceEvenly,
     ) {
-        Row(
-            modifier = Modifier.fillMaxSize(),
-            horizontalArrangement = Arrangement.SpaceEvenly,
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            DockItem(Icons.AutoMirrored.Rounded.List, "ערוצים") { onItem("list") }
-            DockItem(Icons.Rounded.Audiotrack, "שמע") { onItem("audio") }
-            DockItem(Icons.Rounded.PictureInPictureAlt, "חלון צף") { onItem("pip") }
-            DockItem(Icons.Rounded.MoreHoriz, "אפשרויות") { onItem("more") }
-            DockItem(if (landscape) Icons.Rounded.FullscreenExit else Icons.Rounded.Fullscreen, "מסך מלא") { onItem("full") }
-        }
+        DockItem(Icons.AutoMirrored.Rounded.List, "ערוצים") { onItem("list") }
+        DockItem(Icons.Rounded.Audiotrack, "שמע") { onItem("audio") }
+        DockItem(Icons.Rounded.PictureInPictureAlt, "חלון צף") { onItem("pip") }
+        DockItem(Icons.Rounded.MoreHoriz, "אפשרויות") { onItem("more") }
+        DockItem(if (landscape) Icons.Rounded.FullscreenExit else Icons.Rounded.Fullscreen, "מסך מלא") { onItem("full") }
     }
 }
 

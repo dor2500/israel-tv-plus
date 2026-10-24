@@ -52,7 +52,6 @@ import com.israeltv.plus.data.ChannelData
 import com.israeltv.plus.data.UpdateState
 import com.israeltv.plus.data.Updater
 import com.israeltv.plus.data.avatarUrl
-import com.israeltv.plus.ui.components.PixelThemePicker
 import com.israeltv.plus.ui.components.SectionHeader
 import com.israeltv.plus.ui.components.feedPadding
 import com.israeltv.plus.ui.components.rememberBitChordFlingBehavior
@@ -67,12 +66,6 @@ fun SettingsScreen(data: ChannelData?, prefs: AppPrefs, updater: Updater, onAvat
     val haptic = LocalHapticFeedback.current
     LazyColumn(Modifier.fillMaxSize(), contentPadding = feedPadding(), flingBehavior = rememberBitChordFlingBehavior()) {
         item(key = "update") { UpdateCard(updater, Modifier.padding(horizontal = 16.dp).padding(bottom = 28.dp)) }
-        item(key = "theme_picker") {
-            SectionHeader("ערכת צבעים וסגנון (Pixel Wallpaper & Style)")
-            Box(Modifier.padding(horizontal = 16.dp).padding(bottom = 28.dp)) {
-                PixelThemePicker(prefs = prefs)
-            }
-        }
         item(key = "look") {
             SectionHeader("תצוגה וצליל")
             SettingsGroup {

@@ -9,9 +9,6 @@
 (function () {
   'use strict';
 
-  window.CHANNELS_DATA = window.CHANNELS_DATA || window.ITV_CHANNELS || [];
-  window.ITV_CHANNELS = window.CHANNELS_DATA;
-
   var REMOTE = 'https://dor2500.github.io/israel-tv-plus/';
   var RELEASES = 'https://github.com/dor2500/israel-tv-plus/releases/latest';
   var REPO = 'https://github.com/dor2500/israel-tv-plus';
@@ -199,7 +196,7 @@
   var CAT_ORDER = ['ערוצי ישראל - שידור חי', 'ילדים ונוער (בעברית)', 'רדיו ישראלי (Israeli Radio)', 'מנויים ואפליקציות (TV Apps)',
     'ספורט (Sports)', 'חדשות מהעולם (News)', 'כלכלה ועסקים (Business)', 'סרטים וסדרות (Movies & Series)', 'קומדיה (Comedy)',
     'אוכל ובישול (Food)', 'ילדים מהעולם (Kids World)', 'מוזיקה (Music TV)', 'טבע ודוקו (Documentary & Nature)',
-    'טיולים והרפתקאות (Travel)', 'מדע ולמידה (Science)', 'לייף סטייל ובידור', 'מסורת וקהילה', 'דת ומסורת', 'דת ואמונה (Religion)',
+    'טיולים והרפתקאות (Travel)', 'מדע ולמידה (Science)', 'לייף סטייל ובידור', 'מסורת וקהילה', 'דת ואמונה (Religion)',
     'ערוצים בינלאומיים (World)'];
 
   var KIND_LABEL = { official: '✅ שידור רשמי', fast: '✅ ערוץ FAST חינמי (רשמי, עם פרסומות)', restream: '⚠️ ממסר של צד שלישי (לא השרת של הערוץ)' };
@@ -555,8 +552,7 @@
     if (q) {
       r = r.filter(function (c) {
         return c.name.toLowerCase().indexOf(q) !== -1 || (c.title && c.title.toLowerCase().indexOf(q) !== -1) ||
-          (c.desc && c.desc.toLowerCase().indexOf(q) !== -1) || (c.id && c.id.toLowerCase().indexOf(q) !== -1) ||
-          (c.country && c.country.toLowerCase() === q) || String(c.number) === q;
+          (c.desc && c.desc.toLowerCase().indexOf(q) !== -1) || String(c.number) === q;
       });
     }
     state.list = r;
@@ -2783,14 +2779,10 @@
   function setupInput() {
     window.addEventListener('keydown', onKeyDown);
     window.addEventListener('keyup', onKeyUp);
-    var searchTimer = null;
     el.searchInput.addEventListener('input', function () {
-      if (searchTimer) clearTimeout(searchTimer);
-      searchTimer = setTimeout(function () {
-        state.query = el.searchInput.value;
-        state.gridIdx = 0;
-        filterList();
-      }, 90);
+      state.query = el.searchInput.value;
+      state.gridIdx = 0;
+      filterList();
     });
     el.searchInput.addEventListener('focus', function () { if (!state.overlay) { state.zone = 'top'; state.topIdx = topItems().indexOf(el.topSearch); markFocus(); } });
 
