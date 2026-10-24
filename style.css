@@ -82,6 +82,50 @@ body.tv-android-mode .ph {
   display: flex !important;
 }
 
+/* Apple TV Top Bar (Brand & Live Clock framing the centered glass capsule) */
+body.tv-android-mode #topbar {
+  display: flex !important;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 7.2rem;
+  padding: 0 5rem;
+  align-items: center;
+  justify-content: space-between;
+  pointer-events: none;
+  z-index: 950;
+  background: linear-gradient(to bottom, rgba(5, 7, 13, 0.92) 0%, rgba(5, 7, 13, 0.4) 65%, transparent 100%);
+}
+
+body.tv-android-mode #topbar .brand {
+  pointer-events: auto;
+}
+
+body.tv-android-mode #topbar .top-search {
+  display: none !important;
+}
+
+body.tv-android-mode #topbar .top-actions {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+body.tv-android-mode #topbar .clock {
+  font-size: 1.7rem;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.12);
+  padding: 0.5rem 1.6rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+}
+
 /* Main Home Container - Padded for Apple TV Top Floating Glass Bar */
 body.tv-android-mode main.home {
   display: block !important;
