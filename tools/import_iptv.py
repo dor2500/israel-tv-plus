@@ -70,11 +70,15 @@ CAT_KIND_HE = {"kids": "ערוץ ילדים", "news": "ערוץ חדשות", "sp
 SKIP_CATS = {"xxx", "shop", "interactive"}
 SKIP_IDS = {"Channel13.il",  # curated "רשת 13" already plays Channel 13
             # paid Israeli channels (Sport 5 etc.) re-streamed from a bare IP without a licence
-            "5Plus.il", "5Stars.il", "HealthChannel.il", "TeenNick.il"}
+            "5Plus.il", "5Stars.il", "HealthChannel.il", "TeenNick.il",
+            "NickOnline.br"}  # Nickelodeon cartoons on an unofficial site
 # pay-TV sports / premium brands: a free stream of these is a re-stream without a licence (the free ESPN8 The Ocho,
 # DAZN / Pluto FAST channels and public broadcasters don't match)
 PAID_RE = re.compile(r"^(ESPN(?!8)|ESPN Premium|Fox Sports|Eurosport|Star Sports|Sony Sports|Ten Cricket|Eleven Sports|"
-                     r"Okko|Match[!4 ]|TyC Sports|Win[+ ]|Win Sports|Tigo Sports|Canal\+|Golf Channel|Sky )", re.I)
+                     r"Okko|Match[!4 ]|TyC Sports|Win[+ ]|Win Sports|Tigo Sports|Canal\+|Golf Channel|Sky |"
+                     # pay-TV kids / movie brands (their free FAST spin-offs on Pluto etc. are named differently)
+                     r"Disney|Nickelodeon|Nick Jr|NickToons|Cartoon Network|Cartoonito|Boomerang|Baby ?TV|HBO|Cinemax|"
+                     r"Showtime|Starz|beIN(?! SPORTS XTRA))", re.I)
 
 
 def load(work, name):
@@ -277,8 +281,8 @@ def kind(c):
 # "pick": a balanced selection (~800) out of the thousands of working streams: every Israeli / Hebrew channel,
 # then per category a quota filled round-robin over countries (big / relevant countries first, a cap per country),
 # preferring streams the https web app can play, HD, and channels that have a logo. The pick is probed again.
-QUOTA = {"news": 160, "sports": 160, "movies": 140, "life": 100, "music": 90, "world": 120, "kids": 80, "docu": 70,
-         "food": 60, "travel": 50, "comedy": 50, "science": 50, "business": 40, "religion": 30}
+QUOTA = {"news": 180, "sports": 300, "movies": 200, "life": 130, "music": 130, "world": 140, "kids": 220, "docu": 100,
+         "food": 120, "travel": 70, "comedy": 80, "science": 70, "business": 50, "religion": 30}
 COUNTRY_ORDER = ["IL", "US", "UK", "FR", "DE", "ES", "IT", "RU", "UA", "CA", "AU", "AE", "QA", "SA", "EG", "LB", "TR",
                  "IN", "JP", "KR", "CN", "BR", "MX", "AR", "PT", "NL", "BE", "CH", "AT", "PL", "GR", "SE", "NO", "DK",
                  "FI", "IE", "CZ", "RO", "HU", "CL", "CO", "PE", "PH", "ID", "TH", "VN", "PK", "IR", "MA", "ZA", "NG"]
@@ -293,7 +297,7 @@ def cmd_pick(work):
     score = lambda c: (c["iptv"] in logos, web(c), qual(c), c["lang"] in LANG_ORDER)
     crank = lambda cc: COUNTRY_ORDER.index(cc) if cc in COUNTRY_ORDER else len(COUNTRY_ORDER)
     must = [c for c in res if c["country"] == "IL" or c["lang"] in ("he", "yi")]
-    rest = [c for c in res if c not in must]
+    rest = [c for c in res if c not in must and not PAID_RE.match(c["name"])]
     pool = []
     for k, quota in QUOTA.items():
         groups = {}

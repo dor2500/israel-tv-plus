@@ -175,6 +175,25 @@ RADIO = [
     ("pervoe_radio", "הרדיו הראשון 89.1FM (רוסית)", "https://cdn.cybercdn.live/Pervoia/Audio/icecast.audio", "Первое радио - רדיו ישראלי בשפה הרוסית", "89.1FM", "Первое радио", "#1e293b", "#f87171"),
     ("radio_breslev", "רדיו ברסלב", "https://cast.breslevforyou.co.il/listen/radiobreslev/radio.mp3", "שיעורים, ניגונים ומוזיקה חסידית", "ברסלב", "רדיו", "#1e3a8a", "#fde68a"),
     ("radio_nahariya", "רדיו נהריה", "https://cast.radionahariya.com:8443/main.mp3", "רדיו מקומי מנהריה", "נהריה", "רדיו", "#0c4a6e", "#7dd3fc"),
+    # 2026-10-24: more Israeli stations from radio-browser.info (each one tested below before it goes in)
+    ("radios_workout", "רדיוס 100% אימון", "https://gb25.streamgates.net/radios-audio/100Workout/icecast.audio", "מוזיקה קצבית לאימון ולספורט", "100%", "אימון", "#7c2d12", "#fdba74"),
+    ("radios_top40", "רדיוס 100% טופ 40", "https://gb25.streamgates.net/radios-audio/100Top40/icecast.audio", "40 הלהיטים הגדולים עכשיו", "100%", "טופ 40", "#831843", "#f9a8d4"),
+    ("radios_movies", "רדיוס 100% סרטים", "https://gb25.streamgates.net/radios-audio/100Movies/icecast.audio", "פסקולים ומוזיקה מהסרטים", "100%", "סרטים", "#312e81", "#a5b4fc"),
+    ("radios_oldies", "רדיוס 100% אולדיז", "https://gb25.streamgates.net/radios-audio/100Oldies/icecast.audio", "להיטי הזהב של שנות ה-50 וה-60", "100%", "אולדיז", "#78350f", "#fcd34d"),
+    ("radios_retro", "רדיוס 100% רטרו", "https://gb25.streamgates.net/radios-audio/100Retro/icecast.audio", "להיטי רטרו", "100%", "רטרו", "#4c1d95", "#d8b4fe"),
+    ("radios_chillout", "רדיוס 100% צ'ילאאוט", "https://gb25.streamgates.net/radios-audio/100Chillout/playlist.m3u8", "מוזיקה רגועה ואלקטרונית", "100%", "צ'יל", "#134e4a", "#99f6e4"),
+    ("radios_country", "רדיוס 100% קאנטרי", "https://gb25.streamgates.net/radios-audio/100Country/playlist.m3u8", "קאנטרי אמריקאי", "100%", "קאנטרי", "#713f12", "#fde68a"),
+    ("radios_kpop", "רדיוס 100% K-Pop", "https://gb25.streamgates.net/radios-audio/100kpop/icecast.audio", "קיי-פופ קוריאני", "100%", "K-Pop", "#9d174d", "#fbcfe8"),
+    ("radios_gamer", "רדיוס 100% גיימר", "https://gb25.streamgates.net/radios-audio/100Gamer/icecast.audio", "מוזיקה למשחקים", "100%", "גיימר", "#1e1b4b", "#a5f3fc"),
+    ("noshmim_mizrahit", "נושמים מזרחית", "http://www.rs.mizrahit.fm:7777/", "מוזיקה מזרחית ים תיכונית 24/7", "נושמים", "מזרחית", "#7c2d12", "#fed7aa"),
+    ("radio_sahar", "רדיו סהר", "https://live.ecast.co.il/stream/sahar/stream", "רוק, אינדי והיפ הופ ישראלי", "סהר", "רדיו", "#1f2937", "#fca5a5"),
+    ("israeli_voice", "Israeli Voice Radio", "https://icecast.live/ivr", "מוזיקה ישראלית ברצף", "IVR", "קול ישראלי", "#1e3a8a", "#93c5fd"),
+    ("joint_blues", "ג'וינט רדיו בלוז רוק", "https://jointil.com/stream-blues", "בלוז ורוק קלאסי – תחנה ישראלית", "joint", "בלוז", "#0f172a", "#7dd3fc"),
+    ("joint_reggae", "ג'וינט רדיו רגאיי", "https://jointil.com/stream-reggae", "רגאיי ודאב – תחנה ישראלית", "joint", "רגאיי", "#14532d", "#fde047"),
+    ("joint_beat", "ג'וינט רדיו טראנס", "https://jointil.com/stream-beat", "טראנס ואלקטרוני – תחנה ישראלית", "joint", "טראנס", "#3b0764", "#e879f9"),
+    ("kabbalah_radio", "קבלה לעם רדיו", "http://icecast.kab.tv/live1-heb-574bcfd5.mp3", "שיעורי קבלה בעברית", "קבלה", "לעם", "#1e3a8a", "#bfdbfe"),
+    ("breslev_torah", "ברסלב: תורה וזימרה", "https://cast.breslevforyou.co.il/listen/music-toravezimra/radio.mp3", "שיעורים ונגינה חסידית", "ברסלב", "תורה וזימרה", "#1e3a8a", "#fde68a"),
+    ("radio_france_israel", "Radio France Israël", "https://stream10.vestaradio.com/Radio-France-Israel", "הרדיו של יוצאי צרפת בישראל", "RFI", "France Israël", "#1e3a8a", "#fca5a5"),
 ]
 
 # ----------------------------------------------------------------------------- TV services / official apps
