@@ -1497,16 +1497,22 @@
     }
   }
 
+  // The app never mutes a channel: every channel starts with full sound, and only the TV's own mute key silences it.
   function startPlay(m, ch) {
     var done = function () { spinner(false); updatePlayIcon(); };
+    m.muted = false;
+    m.volume = 1;
     m.addEventListener('playing', function onp() { m.removeEventListener('playing', onp); done(); });
     var p = m.play();
     if (!p || !p.then) return;
-    p.then(done).catch(function () {
-      m.muted = true;
-      var p2 = m.play();
-      if (p2 && p2.then) p2.then(function () { done(); toast('🔇 הקישו על המסך כדי להפעיל שמע'); unmuteOnTouch(m); })
-        .catch(function (e) { if (state.playing === ch) onFatal(ch, e && e.message); });
+    p.then(done).catch(function (e) {
+      if (state.playing !== ch || (e && e.name === 'AbortError')) return;   // zapped on: the next channel's load took over
+      if (e && e.name === 'NotAllowedError') {   // a browser without a tap yet: wait for ▶ instead of playing silently
+        done();
+        toast('▶ לחצו על נגן כדי להתחיל');
+        return;
+      }
+      onFatal(ch, e && e.message);
     });
   }
 
@@ -1540,15 +1546,6 @@
     var m = media(), icon = I(m && m.paused ? 'play' : 'pause');
     var nodes = document.querySelectorAll('.ob-play');
     for (var i = 0; i < nodes.length; i++) nodes[i].innerHTML = icon;
-  }
-  // the browser only allowed muted autoplay: sound comes back with the first tap / key (there is no mute button)
-  function unmuteOnTouch(m) {
-    var evs = ['pointerdown', 'keydown'];
-    var on = function () {
-      evs.forEach(function (t) { document.removeEventListener(t, on, true); });
-      m.muted = false;
-    };
-    evs.forEach(function (t) { document.addEventListener(t, on, true); });
   }
 
   function enterPip() {
@@ -2115,7 +2112,7 @@
         { type: 'choice', label: 'מהירות דיבור', get: function () { return Number(Dub.settings.rate).toFixed(2); },
           step: function (st) { Dub.save({ rate: clamp(Math.round((Dub.settings.rate + 0.05 * st) * 100) / 100, 0.8, 1.6) }); } },
         { type: 'choice', label: 'עוצמת הסאונד המקורי בזמן דיבוב', get: function () { return Math.round(Dub.settings.duck * 100) + '%'; },
-          step: function (st) { Dub.save({ duck: clamp(Math.round((Dub.settings.duck + 0.05 * st) * 100) / 100, 0, 1) }); } },
+          step: function (st) { Dub.save({ duck: clamp(Math.round((Dub.settings.duck + 0.05 * st) * 100) / 100, 0.1, 1) }); } },
       ].concat(Dub.IS_TV ? [info('סנכרון לשפתיים', 'אוטומטי בטלוויזיה – כל משפט נאמר כשהתמונה מגיעה אליו')] : [
         dubToggle('sync', 'סנכרון לשפתיים', 'התמונה מושהית כדי שהדיבוב יגיע בזמן'),
         dubChoice('delay', 'השהיית תמונה', [[6, '6 שניות'], [8, '8 שניות'], [10, '10 שניות'], [12, '12 שניות'], [15, '15 שניות'], [20, '20 שניות']])
