@@ -281,8 +281,8 @@ def kind(c):
 # "pick": a balanced selection (~800) out of the thousands of working streams: every Israeli / Hebrew channel,
 # then per category a quota filled round-robin over countries (big / relevant countries first, a cap per country),
 # preferring streams the https web app can play, HD, and channels that have a logo. The pick is probed again.
-QUOTA = {"news": 180, "sports": 300, "movies": 200, "life": 130, "music": 130, "world": 140, "kids": 220, "docu": 100,
-         "food": 120, "travel": 70, "comedy": 80, "science": 70, "business": 50, "religion": 30}
+QUOTA = {"news": 400, "sports": 300, "movies": 450, "life": 350, "music": 350, "world": 500, "kids": 220, "docu": 110,
+         "food": 120, "travel": 70, "comedy": 80, "science": 110, "business": 50, "religion": 100}
 COUNTRY_ORDER = ["IL", "US", "UK", "FR", "DE", "ES", "IT", "RU", "UA", "CA", "AU", "AE", "QA", "SA", "EG", "LB", "TR",
                  "IN", "JP", "KR", "CN", "BR", "MX", "AR", "PT", "NL", "BE", "CH", "AT", "PL", "GR", "SE", "NO", "DK",
                  "FI", "IE", "CZ", "RO", "HU", "CL", "CO", "PE", "PH", "ID", "TH", "VN", "PK", "IR", "MA", "ZA", "NG"]
@@ -307,7 +307,7 @@ def cmd_pick(work):
         for g in groups.values():
             g.sort(key=score, reverse=True)
         order = sorted(groups, key=lambda cc: (crank(cc), -len(groups[cc])))
-        cap = max(4, quota // 8)
+        cap = max(8, quota // 4)  # rounds per country: small categories can use their whole pool
         want, taken, rnd = int(quota * 1.3), [], 0
         while len(taken) < want and rnd < cap:
             for cc in order:

@@ -43,6 +43,8 @@ MAP = {
     "keshet_comedy": "12comedy.jpg", "keshet_drama": "12drama.jpg", "eretz_nehederet": "12eretz.jpg",
     "savri_maranan": "12savri.jpg", "keshet_music": "12music.jpg", "radios_video": "100fm.jpg",
     "kabbalah": "kabbalah.jpg", "kabbalah_ru": "kabbalah.jpg", "kabbalah_radio": "kabbalah.jpg",
+    "kabbalah_radio_ru": "kabbalah.jpg", "kabbalah_radio_en": "kabbalah.jpg", "kabbalah_radio_fr": "kabbalah.jpg",
+    "kabbalah_radio_es": "kabbalah.jpg", "mizrahit_fm": "mizrahit.png",
     "hidabroot": "hidabroot.jpg", "channel16": "16tv.jpg", "comedy_channel": "13comedy.jpg",
     "vacation_channel": "13nofesh.jpg",
 }
