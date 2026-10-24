@@ -283,10 +283,10 @@
       'topbar', 'home', 'pager', 'pager-track', 'pager-dots', 'shelves', 'navbar', 'nb-pill', 'btn-search', 'hero-bg',
       'osd-center', 'ob-pip', 'guide-body', 'brand-tab', 'btn-avatar', 'avatar-img', 'avatar-dot', 'nb-search',
       'tv-backdrop-stage', 'tv-backdrop-art', 'tv-preview-video', 'tv-backdrop-scrim',
-      'tv-sidebar', 'tv-top-brand', 'tv-stage', 'tv-hero-meta', 'tv-hero-logo',
+      'tv-sidebar', 'tv-top-brand', 'tv-btn-quick-settings', 'tv-stage', 'tv-hero-meta', 'tv-hero-logo',
       'tv-hero-mono', 'tv-hero-quality', 'tv-hero-cat', 'tv-hero-num', 'tv-hero-fav',
       'tv-hero-title', 'tv-hero-desc', 'tv-hero-actions', 'tv-hero-btn-play',
-      'tv-hero-btn-fav', 'tv-hero-btn-fav-txt', 'tv-hero-btn-info',
+      'tv-hero-btn-fav', 'tv-hero-btn-fav-txt', 'tv-hero-btn-settings', 'tv-hero-btn-info',
       'tv-shelves-container', 'tv-shelves-track',
       'tv-status-widget', 'tv-status-time', 'tv-status-weather', 'tv-numpad-hud',
       'tv-numpad-digits', 'tv-numpad-name', 'tv-epg-pill', 'tv-epg-title', 'tv-epg-time',
@@ -3315,6 +3315,12 @@
     updateTvStatusWidget();
     setInterval(updateTvStatusWidget, 10000);
 
+    if (el.tvBtnQuickSettings) {
+      el.tvBtnQuickSettings.addEventListener('click', function () {
+        openSettings();
+      });
+    }
+
     // LG webOS Magic Remote wheel navigation
     if (el.tvShelvesContainer) {
       el.tvShelvesContainer.addEventListener('wheel', function (e) {
@@ -3379,6 +3385,11 @@
         }
       });
     }
+    if (el.tvHeroBtnSettings) {
+      el.tvHeroBtnSettings.addEventListener('click', function () {
+        openSettings();
+      });
+    }
     if (el.tvHeroBtnInfo) {
       el.tvHeroBtnInfo.addEventListener('click', function () {
         var ch = getCurTvCh();
@@ -3424,7 +3435,9 @@
       toggleFav(ch);
       updateTvHero(ch);
       toast(isFav(ch) ? '★ התווסף לרשימה שלי' : 'הוסר מהרשימה שלי');
-    } else if (tvState.heroBtnIdx === 2) { // Info
+    } else if (tvState.heroBtnIdx === 2) { // Settings
+      openSettings();
+    } else if (tvState.heroBtnIdx === 3) { // Info
       toast('ℹ️ ' + ch.name + ' · שידור חי איכותי 1080p · ערוץ ' + ch.number);
     }
   }
@@ -3575,7 +3588,7 @@
         sideEls[tvState.sideIdx].classList.add('focused');
       }
     } else if (tvState.zone === 'hero') {
-      var heroBtns = [el.tvHeroBtnPlay, el.tvHeroBtnFav, el.tvHeroBtnInfo];
+      var heroBtns = [el.tvHeroBtnPlay, el.tvHeroBtnFav, el.tvHeroBtnSettings, el.tvHeroBtnInfo];
       if (heroBtns[tvState.heroBtnIdx]) {
         heroBtns[tvState.heroBtnIdx].classList.add('focused');
       }
@@ -3827,7 +3840,7 @@
       }
     } else if (tvState.zone === 'hero') {
       if (code === 37) { // Left (next CTA button in RTL)
-        if (tvState.heroBtnIdx < 2) {
+        if (tvState.heroBtnIdx < 3) {
           tvState.heroBtnIdx++;
           markTvFocus();
         }

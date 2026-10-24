@@ -138,11 +138,15 @@ window.ITV_UI = (function (I) {
   '</aside>' +
 
   '<div class="tv-top-brand tv" id="tv-top-brand">' +
-    '<span class="tv-brand-netflix">ISRAEL <b>TV+</b></span>' +
-    '<div class="tv-status-widget">' +
-      '<span class="tv-status-weather" id="tv-status-weather">☀️ 24°C</span>' +
-      '<span class="tv-status-sep">|</span>' +
-      '<span class="tv-status-time" id="tv-status-time">20:00</span>' +
+    '<div class="tv-brand-prism"><span class="tv-brand-icon">⚡</span><span class="tv-brand-text">ISRAEL <b>TV ULTRA</b></span></div>' +
+    '<div class="tv-top-actions-group">' +
+      '<button class="tv-btn-quick-settings" id="tv-btn-quick-settings" role="button" aria-label="הגדרות">' +
+        I('settings') + '<span>הגדרות</span></button>' +
+      '<div class="tv-status-widget">' +
+        '<span class="tv-status-weather" id="tv-status-weather">☀️ 24°C</span>' +
+        '<span class="tv-status-sep">|</span>' +
+        '<span class="tv-status-time" id="tv-status-time">20:00</span>' +
+      '</div>' +
     '</div>' +
   '</div>' +
 
@@ -156,10 +160,10 @@ window.ITV_UI = (function (I) {
       '<div class="tv-hero-logo-box" id="tv-hero-logo-box"><img id="tv-hero-logo" alt=""><div class="mono hidden" id="tv-hero-mono"></div></div>' +
       '<div class="tv-hero-text">' +
         '<div class="tv-hero-badges">' +
-          '<span class="tv-badge netflix-top10">TOP 10 בישראל</span>' +
-          '<span class="tv-badge live"><span class="live-dot"></span>שידור חי</span>' +
-          '<span class="tv-badge match">98% התאמה</span>' +
-          '<span class="tv-badge quality" id="tv-hero-quality">4K Ultra HD</span>' +
+          '<span class="tv-badge prism-live"><span class="live-dot"></span>שידור חי</span>' +
+          '<span class="tv-badge prism-4k">ULTRA HD 4K</span>' +
+          '<span class="tv-badge prism-match">99% התאמה</span>' +
+          '<span class="tv-badge quality" id="tv-hero-quality">FHD 1080p</span>' +
           '<span class="tv-badge age">12+</span>' +
           '<span class="tv-badge cat" id="tv-hero-cat">ערוצי ישראל</span>' +
           '<span class="tv-badge num" id="tv-hero-num">1</span>' +
@@ -175,9 +179,10 @@ window.ITV_UI = (function (I) {
           '<div class="tv-epg-bar"><div class="tv-epg-fill" id="tv-epg-fill"></div></div>' +
         '</div>' +
         '<div class="tv-hero-actions" id="tv-hero-actions">' +
-          '<button class="tv-cta-btn tv-cta-play" id="tv-hero-btn-play"><span class="tv-cta-ico">▶</span><span>צפה עכשיו</span></button>' +
+          '<button class="tv-cta-btn tv-cta-play" id="tv-hero-btn-play"><span class="tv-cta-ico">▶</span><span>צפייה ישירה</span></button>' +
           '<button class="tv-cta-btn tv-cta-fav" id="tv-hero-btn-fav"><span class="tv-cta-ico">⭐</span><span id="tv-hero-btn-fav-txt">הרשימה שלי</span></button>' +
-          '<button class="tv-cta-btn tv-cta-info" id="tv-hero-btn-info"><span class="tv-cta-ico">ℹ️</span><span>מידע ואיכות</span></button>' +
+          '<button class="tv-cta-btn tv-cta-settings" id="tv-hero-btn-settings"><span class="tv-cta-ico">' + I('settings') + '</span><span>הגדרות</span></button>' +
+          '<button class="tv-cta-btn tv-cta-info" id="tv-hero-btn-info"><span class="tv-cta-ico">ℹ️</span><span>לוח שידורים</span></button>' +
         '</div>' +
       '</div>' +
     '</div>' +
