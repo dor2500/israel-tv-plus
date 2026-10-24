@@ -205,6 +205,13 @@ def main():
         f.write("window.CHANNELS_DATA = " + json.dumps(chans, ensure_ascii=False, indent=1) + ";\n")
     print("channels.json / channels.js: source details written")
 
+    # hosts the https relay (relay/worker.js) may fetch for the web site: http streams + https ones without CORS
+    relay = sorted({urllib.parse.urlparse(c["url"]).netloc for c in chans if c.get("kind") != "app" and not c.get("webUrl")
+                    and (c["url"].startswith("http:") or c.get("webOk") is False)})
+    with open(os.path.join(ROOT, "relay-hosts.json"), "w", encoding="utf-8", newline="\n") as f:
+        json.dump(relay, f, indent=0)
+    print("relay-hosts.json:", len(relay), "hosts")
+
 
 if __name__ == "__main__":
     main()

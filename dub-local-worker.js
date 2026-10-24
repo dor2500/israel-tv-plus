@@ -6,7 +6,15 @@ env.allowLocalModels = false;
 
 let asr = null;
 
-async function load(model, lowMem) {
+let lite = false;
+// TVs / phones: no memory arena or pattern planning and no graph rewriting (each keeps extra copies of the weights)
+const LITE_SESSION = { enableCpuMemArena: false, enableMemPattern: false, graphOptimizationLevel: 'basic', executionMode: 'sequential' };
+
+async function load(model, lowMem, isLite) {
+  lite = !!isLite;
+  if (lite && env.backends && env.backends.onnx && env.backends.onnx.wasm) {
+    env.backends.onnx.wasm.numThreads = 1;   // TVs / phones: one thread, small memory footprint
+  }
   const files = {};
   const progress = (p) => {
     if (p.status !== 'progress' || !p.total) return;
@@ -20,7 +28,7 @@ async function load(model, lowMem) {
   try {
     asr = await pipeline('automatic-speech-recognition', model, webgpu
       ? { device: 'webgpu', dtype: { encoder_model: 'fp32', decoder_model_merged: 'q4' }, progress_callback: progress }
-      : { dtype: 'q8', progress_callback: progress });
+      : { dtype: 'q8', progress_callback: progress, session_options: lite ? LITE_SESSION : undefined });
   } catch (e) {
     if (!webgpu) throw e;
     asr = await pipeline('automatic-speech-recognition', model, { dtype: 'q8', progress_callback: progress });
@@ -31,14 +39,15 @@ self.onmessage = async (e) => {
   const m = e.data;
   if (m.type === 'load') {
     try {
-      await load(m.model, m.lowMem);
+      await load(m.model, m.lowMem, m.lite);
       self.postMessage({ type: 'ready' });
     } catch (err) {
       self.postMessage({ type: 'error', message: String(err && err.message || err) });
     }
   } else if (m.type === 'run') {
     try {
-      const opts = { task: 'transcribe', chunk_length_s: 30 };
+      // clips are at most ~20 s: no chunking needed (saves memory on TVs)
+      const opts = lite ? { task: 'transcribe' } : { task: 'transcribe', chunk_length_s: 30 };
       if (m.language) opts.language = m.language;
       const out = await asr(m.audio, opts);
       self.postMessage({ type: 'text', id: m.id, text: out.text || '' });

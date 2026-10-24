@@ -1,0 +1,6 @@
+# Israel TV+ HTTPS relay – deploy once with:  npx wrangler login  then  npx wrangler deploy  (from this folder)
+# The address it prints (https://itv-relay.<your-subdomain>.workers.dev) goes into the file relay.url in the repo root.
+name = "itv-relay"
+main = "worker.js"
+compatibility_date = "2026-10-01"
+workers_dev = true

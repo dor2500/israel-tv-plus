@@ -29,9 +29,23 @@ CAT_MUSIC = "מוזיקה (Music TV)"
 CAT_WORLD = "ערוצים בינלאומיים (World)"
 CAT_NEWS = "חדשות מהעולם (News)"
 
-# source plays only an "OTT Club" promo loop instead of the channel (frame check 2026-10-23)
-REMOVE = {"sport1", "ani_kids", "plusplus_kids",
-          "arena4"}  # server gone (connection refused, 2026-10-23)
+REMOVE = {"arena4"}  # server gone (connection refused, 2026-10-23)
+# The TV-service tiles (Partner / Cellcom / STING / yes / HOT ...) are no longer shown (user's choice, 2026-10-24):
+# they only opened other apps. APPS below stays as a record; set INCLUDE_APPS to bring them back.
+INCLUDE_APPS = False
+# On 2026-10-23 these mcquack feeds showed an "OTT Club" promo loop and were dropped; on 2026-10-24 all three showed
+# the real channel again (frames: football on Sport 1, cartoons on Ani and PLUSPLUS) – back in.
+RESTORE = [
+    {"id": "sport1", "name": "Sport 1 אוקראינה", "title": "Sport 1 (Ukraine)", "category": "ספורט (Sports)", "categoryEn": "sports",
+     "url": "http://stream.mcquack.net/391/index.m3u8", "logo": "https://i.imgur.com/Zjb8awW.png", "badge": "HD",
+     "desc": "שידורים ישירים של משחקי כדורגל, כדורסל וספורט עולמי", "lang": "uk", "iptv": "Sport1.ua"},
+    {"id": "ani_kids", "name": "ערוץ אני אנימציה HD (Ani Kids)", "title": "ערוץ אני אנימציה HD", "category": "ילדים מהעולם (Kids World)",
+     "categoryEn": "kids", "url": "http://stream.mcquack.net/306/index.m3u8", "logo": "assets/logos/ani_kids.svg", "badge": "HD",
+     "desc": "ערוץ סדרות אנימציה לילדים (ברוסית)", "lang": "ru", "iptv": "Ani.ru"},
+    {"id": "plusplus_kids", "name": "ערוץ האנימציה PLUSPLUS HD", "title": "ערוץ האנימציה PLUSPLUS HD", "category": "ילדים מהעולם (Kids World)",
+     "categoryEn": "kids", "url": "http://stream.mcquack.net/339/index.m3u8", "logo": "assets/logos/plusplus.svg", "badge": "HD",
+     "desc": "ערוץ הילדים והאנימציה - סדרות חינוכיות, הרפתקאות ומדע לילדים (באוקראינית)", "lang": "uk", "iptv": "PLUSPLUS.ua"},
+]
 
 ISRAELI_RADIO_IDS = {"galgalatz_live", "glz_live", "radio_103fm", "kol_barama_live", "radios_100fm", "radio_darom_live",
                      "kz_radio_live", "radio_2000_live", "kol_barama_music_live", "galgalatz_hits_live"}
@@ -267,7 +281,7 @@ def main():
 
     out = []
     for c in chans:
-        if c["id"] in REMOVE:
+        if c["id"] in REMOVE or (c.get("kind") == "app" and not INCLUDE_APPS):
             continue
         c.update(FIX.get(c["id"], {}))
         if c["id"] in ISRAELI_RADIO_IDS:
@@ -326,8 +340,11 @@ def main():
             added.append({"id": cid, "name": name, "title": name, "category": CAT_RADIO, "categoryEn": "radio",
                           "kind": "radio", "url": url, "badge": "LIVE", "desc": desc, "lang": "music",
                           "logo": write_logo(cid, big, small, bg, accent, "radio") if not dry else ""})
+    for r in RESTORE:
+        if r["id"] not in have and r["url"] not in have_urls:
+            added.append(dict(r))
     for cid, name, tv_pkg, pkg, web, desc, big, small, bg, accent in APPS:
-        if cid in have:
+        if cid in have or not INCLUDE_APPS:
             continue
         added.append({"id": cid, "name": name, "title": name, "category": CAT_APPS, "categoryEn": "apps", "kind": "app",
                       "url": web, "site": web, "android": pkg, "androidTv": tv_pkg, "badge": "APP", "desc": desc,
