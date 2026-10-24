@@ -283,9 +283,11 @@
       'topbar', 'home', 'pager', 'pager-track', 'pager-dots', 'shelves', 'navbar', 'nb-pill', 'btn-search', 'hero-bg',
       'osd-center', 'ob-pip', 'guide-body', 'brand-tab', 'btn-avatar', 'avatar-img', 'avatar-dot', 'nb-search',
       'tv-backdrop-stage', 'tv-backdrop-art', 'tv-preview-video', 'tv-backdrop-scrim',
-      'tv-top-pill', 'tv-pill-indicator', 'tv-stage', 'tv-hero-meta', 'tv-hero-logo',
+      'tv-sidebar', 'tv-top-brand', 'tv-stage', 'tv-hero-meta', 'tv-hero-logo',
       'tv-hero-mono', 'tv-hero-quality', 'tv-hero-cat', 'tv-hero-num', 'tv-hero-fav',
-      'tv-hero-title', 'tv-hero-desc', 'tv-shelves-container', 'tv-shelves-track',
+      'tv-hero-title', 'tv-hero-desc', 'tv-hero-actions', 'tv-hero-btn-play',
+      'tv-hero-btn-fav', 'tv-hero-btn-fav-txt', 'tv-hero-btn-info',
+      'tv-shelves-container', 'tv-shelves-track',
       'tv-status-widget', 'tv-status-time', 'tv-status-weather', 'tv-numpad-hud',
       'tv-numpad-digits', 'tv-numpad-name', 'tv-epg-pill', 'tv-epg-title', 'tv-epg-time',
       'tv-epg-fill', 'tv-player-dock', 'tv-btn-ratio', 'tv-btn-audio', 'tv-btn-fav', 'tv-btn-exit'
@@ -3206,19 +3208,21 @@
   }
 
   // ================================================================== Apple TV+ (tvOS) Flagship Engine
-  // ================================================================== Apple TV+ (tvOS) Flagship Engine
+  // ================================================================== Netflix-Style Flagship Smart TV Engine
   var tvState = {
-    zone: 'shelf', // 'tabs' | 'shelf'
-    tabIdx: 0,
-    tabs: [
-      { id: 'favs', name: 'מועדפים', shelfIndex: 0 },
-      { id: 'broadcast', name: 'ערוצי ברודקאסט', shelfIndex: 1 },
-      { id: 'sports', name: 'ספורט חי', shelfIndex: 2 },
-      { id: 'movies', name: 'סרטים וסדרות', shelfIndex: 3 },
-      { id: 'kids', name: 'ילדים ונוער', shelfIndex: 4 },
-      { id: 'ent', name: 'בידור ומוזיקה', shelfIndex: 5 },
-      { id: 'world', name: 'ערוצים מהעולם', shelfIndex: 6 },
-      { id: 'search', name: 'חיפוש', shelfIndex: -1 }
+    zone: 'shelf', // 'sidebar' | 'hero' | 'shelf'
+    sideIdx: 1, // default 1 = home
+    heroBtnIdx: 0, // 0 = play, 1 = fav, 2 = info
+    sidebarItems: [
+      { id: 'search', act: 'search' },
+      { id: 'home', shelf: 0 },
+      { id: 'broadcast', shelf: 1 },
+      { id: 'sports', shelf: 2 },
+      { id: 'movies', shelf: 3 },
+      { id: 'kids', shelf: 4 },
+      { id: 'world', shelf: 6 },
+      { id: 'favs', shelf: 0 },
+      { id: 'settings', act: 'settings' }
     ],
     shelves: [],
     shelfIdx: 0,
@@ -3294,10 +3298,11 @@
   }
 
   function initTvOS() {
-    setupTvTabs();
+    setupTvSidebar();
+    setupTvHeroActions();
     setupTvDock();
     buildAllTvShelves();
-    selectTvTab(0);
+    selectTvSidebar(1); // default to Home
 
     function updateTvStatusWidget() {
       if (el.tvStatusTime) {
@@ -3324,7 +3329,7 @@
               tvState.shelfIdx--;
               markTvFocus();
             } else {
-              tvState.zone = 'tabs';
+              tvState.zone = 'hero';
               markTvFocus();
             }
           }
@@ -3333,6 +3338,7 @@
           var numCards = curShelf ? curShelf.channels.length : 0;
           if (e.deltaX > 20) {
             if (tvState.cardIdx > 0) { tvState.cardIdx--; markTvFocus(); }
+            else { tvState.zone = 'sidebar'; markTvFocus(); }
           } else if (e.deltaX < -20) {
             if (tvState.cardIdx < numCards - 1) { tvState.cardIdx++; markTvFocus(); }
           }
@@ -3341,53 +3347,86 @@
     }
   }
 
-  function setupTvTabs() {
-    if (!el.tvTopPill) return;
-    var tabEls = el.tvTopPill.querySelectorAll('.tv-tab');
-    tabEls.forEach(function (tabEl, idx) {
-      tabEl.addEventListener('mouseenter', function () {
-        tvState.zone = 'tabs';
-        tvState.tabIdx = idx;
+  function setupTvSidebar() {
+    if (!el.tvSidebar) return;
+    var sideEls = el.tvSidebar.querySelectorAll('.tv-side-item');
+    sideEls.forEach(function (btn, idx) {
+      btn.addEventListener('mouseenter', function () {
+        tvState.zone = 'sidebar';
+        tvState.sideIdx = idx;
         markTvFocus();
       });
-      tabEl.addEventListener('click', function () {
-        selectTvTab(idx);
+      btn.addEventListener('click', function () {
+        selectTvSidebar(idx);
       });
     });
   }
 
-  function selectTvTab(idx) {
-    var tab = tvState.tabs[idx];
-    if (!tab) return;
-    tvState.tabIdx = idx;
-    var tabEls = el.tvTopPill ? el.tvTopPill.querySelectorAll('.tv-tab') : [];
-    for (var i = 0; i < tabEls.length; i++) {
-      toggleClass(tabEls[i], 'active', i === idx);
+  function setupTvHeroActions() {
+    if (el.tvHeroBtnPlay) {
+      el.tvHeroBtnPlay.addEventListener('click', function () {
+        var ch = getCurTvCh();
+        if (ch) enterTvFullscreen(ch);
+      });
     }
-    updateTvPillPos();
+    if (el.tvHeroBtnFav) {
+      el.tvHeroBtnFav.addEventListener('click', function () {
+        var ch = getCurTvCh();
+        if (ch) {
+          toggleFav(ch);
+          updateTvHero(ch);
+          toast(isFav(ch) ? '★ התווסף לרשימה שלי' : 'הוסר מהרשימה שלי');
+        }
+      });
+    }
+    if (el.tvHeroBtnInfo) {
+      el.tvHeroBtnInfo.addEventListener('click', function () {
+        var ch = getCurTvCh();
+        if (ch) {
+          toast('ℹ️ ' + ch.name + ' · שידור חי איכותי 1080p · ערוץ ' + ch.number);
+        }
+      });
+    }
+  }
 
-    if (tab.id === 'search') {
+  function selectTvSidebar(idx) {
+    var it = tvState.sidebarItems[idx];
+    if (!it) return;
+    tvState.sideIdx = idx;
+    var sideEls = el.tvSidebar ? el.tvSidebar.querySelectorAll('.tv-side-item') : [];
+    for (var i = 0; i < sideEls.length; i++) {
+      toggleClass(sideEls[i], 'active', i === idx);
+    }
+
+    if (it.act === 'search') {
       focusSearch();
       return;
     }
+    if (it.act === 'settings') {
+      openSettings();
+      return;
+    }
 
-    if (tab.shelfIndex >= 0 && tab.shelfIndex < tvState.shelves.length) {
-      tvState.shelfIdx = tab.shelfIndex;
+    if (it.shelf !== undefined && it.shelf >= 0 && it.shelf < tvState.shelves.length) {
+      tvState.shelfIdx = it.shelf;
       tvState.cardIdx = 0;
       tvState.zone = 'shelf';
       markTvFocus();
     }
   }
 
-  function updateTvPillPos() {
-    if (!el.tvTopPill || !el.tvPillIndicator) return;
-    var tabEls = el.tvTopPill.querySelectorAll('.tv-tab');
-    var curTab = tabEls[tvState.tabIdx];
-    if (!curTab) return;
-    var left = curTab.offsetLeft;
-    var width = curTab.offsetWidth;
-    el.tvPillIndicator.style.transform = 'translate3d(' + left + 'px, 0, 0)';
-    el.tvPillIndicator.style.width = width + 'px';
+  function activateTvHeroBtn() {
+    var ch = getCurTvCh();
+    if (!ch) return;
+    if (tvState.heroBtnIdx === 0) { // Play
+      enterTvFullscreen(ch);
+    } else if (tvState.heroBtnIdx === 1) { // Fav
+      toggleFav(ch);
+      updateTvHero(ch);
+      toast(isFav(ch) ? '★ התווסף לרשימה שלי' : 'הוסר מהרשימה שלי');
+    } else if (tvState.heroBtnIdx === 2) { // Info
+      toast('ℹ️ ' + ch.name + ' · שידור חי איכותי 1080p · ערוץ ' + ch.number);
+    }
   }
 
   function buildAllTvShelves() {
@@ -3525,13 +3564,20 @@
   }
 
   function markTvFocus(immediate) {
-    var oldFocus = document.querySelectorAll('.tv-tab.focused, .tv-card.focused');
+    var oldFocus = document.querySelectorAll('.tv-side-item.focused, .tv-cta-btn.focused, .tv-card.focused');
     for (var i = 0; i < oldFocus.length; i++) oldFocus[i].classList.remove('focused');
 
-    if (tvState.zone === 'tabs') {
-      var tabEls = el.tvTopPill ? el.tvTopPill.querySelectorAll('.tv-tab') : [];
-      if (tabEls[tvState.tabIdx]) {
-        tabEls[tvState.tabIdx].classList.add('focused');
+    toggleClass(el.tvSidebar, 'expanded', tvState.zone === 'sidebar');
+
+    if (tvState.zone === 'sidebar') {
+      var sideEls = el.tvSidebar ? el.tvSidebar.querySelectorAll('.tv-side-item') : [];
+      if (sideEls[tvState.sideIdx]) {
+        sideEls[tvState.sideIdx].classList.add('focused');
+      }
+    } else if (tvState.zone === 'hero') {
+      var heroBtns = [el.tvHeroBtnPlay, el.tvHeroBtnFav, el.tvHeroBtnInfo];
+      if (heroBtns[tvState.heroBtnIdx]) {
+        heroBtns[tvState.heroBtnIdx].classList.add('focused');
       }
     } else if (tvState.zone === 'shelf') {
       var shelfTrack = el.tvShelvesTrack;
@@ -3577,15 +3623,17 @@
         }
       }
 
-      // Sync top pill bar active tab with current shelf
-      if (el.tvTopPill) {
-        var tabEls = el.tvTopPill.querySelectorAll('.tv-tab');
-        for (var t = 0; t < tvState.tabs.length; t++) {
-          var isCurrentShelf = tvState.tabs[t].shelfIndex === tvState.shelfIdx;
-          toggleClass(tabEls[t], 'active', isCurrentShelf);
-          if (isCurrentShelf) tvState.tabIdx = t;
+      // Sync active sidebar item with current shelf
+      if (el.tvSidebar) {
+        var sideItems = el.tvSidebar.querySelectorAll('.tv-side-item');
+        for (var si = 0; si < tvState.sidebarItems.length; si++) {
+          var isMatch = tvState.sidebarItems[si].shelf === tvState.shelfIdx;
+          if (isMatch) {
+            for (var k = 0; k < sideItems.length; k++) toggleClass(sideItems[k], 'active', k === si);
+            tvState.sideIdx = si;
+            break;
+          }
         }
-        updateTvPillPos();
       }
 
       var ch = getCurTvCh();
@@ -3596,7 +3644,6 @@
     }
   }
 
-
   function updateTvHero(ch) {
     if (!ch || !el.tvHeroMeta) return;
     el.tvHeroMeta.classList.remove('anim-slide');
@@ -3604,11 +3651,14 @@
     el.tvHeroMeta.classList.add('anim-slide');
 
     if (el.tvHeroTitle) el.tvHeroTitle.textContent = ch.name;
-    if (el.tvHeroDesc) el.tvHeroDesc.textContent = ch.desc || ('ערוץ ' + ch.name + ' באיכות שידור גבוהה FHD 1080p');
+    if (el.tvHeroDesc) el.tvHeroDesc.textContent = ch.desc || ('ערוץ ' + ch.name + ' בשידור ישיר 24/7 באיכות הגבוהה ביותר FHD 1080p עם 98% התאמה');
     if (el.tvHeroNum) el.tvHeroNum.textContent = ch.number || '1';
     if (el.tvHeroCat) el.tvHeroCat.textContent = splitCat(ch.category) || 'ערוצי ישראל';
-    if (el.tvHeroQuality) el.tvHeroQuality.textContent = ch.badge || (isRadioCh(ch) ? 'רדיו' : 'FHD 1080p');
+    if (el.tvHeroQuality) el.tvHeroQuality.textContent = ch.badge || (isRadioCh(ch) ? 'רדיו' : '4K Ultra HD');
     if (el.tvHeroFav) toggleClass(el.tvHeroFav, 'hidden', !isFav(ch));
+    if (el.tvHeroBtnFavTxt) {
+      el.tvHeroBtnFavTxt.textContent = isFav(ch) ? 'ברשימה שלי ★' : '+ לרשימה שלי';
+    }
 
     // Live EPG Program Timeline Generator
     if (el.tvEpgTitle && el.tvEpgTime && el.tvEpgFill) {
@@ -3750,16 +3800,57 @@
       handleTvDigit(d);
       return;
     }
-    if (tvState.zone === 'tabs') {
-      if (code === 37) { // Left (next tab in RTL)
-        selectTvTab((tvState.tabIdx + 1) % tvState.tabs.length);
-      } else if (code === 39) { // Right (prev tab in RTL)
-        selectTvTab((tvState.tabIdx - 1 + tvState.tabs.length) % tvState.tabs.length);
-      } else if (code === 40) { // Down
-        if (tvState.shelves.length) {
-          tvState.zone = 'shelf';
+
+    if (tvState.zone === 'sidebar') {
+      if (code === 37) { // Left (in RTL, moving into main content from right sidebar)
+        tvState.zone = 'shelf';
+        markTvFocus();
+        return;
+      }
+      if (code === 38) { // Up
+        if (tvState.sideIdx > 0) {
+          tvState.sideIdx--;
           markTvFocus();
         }
+        return;
+      }
+      if (code === 40) { // Down
+        if (tvState.sideIdx < tvState.sidebarItems.length - 1) {
+          tvState.sideIdx++;
+          markTvFocus();
+        }
+        return;
+      }
+      if (code === 13 || code === 23 || code === 66) {
+        selectTvSidebar(tvState.sideIdx);
+        return;
+      }
+    } else if (tvState.zone === 'hero') {
+      if (code === 37) { // Left (next CTA button in RTL)
+        if (tvState.heroBtnIdx < 2) {
+          tvState.heroBtnIdx++;
+          markTvFocus();
+        }
+        return;
+      }
+      if (code === 39) { // Right (prev CTA button, or into sidebar)
+        if (tvState.heroBtnIdx > 0) {
+          tvState.heroBtnIdx--;
+          markTvFocus();
+        } else {
+          tvState.zone = 'sidebar';
+          markTvFocus();
+        }
+        return;
+      }
+      if (code === 40) { // Down from hero moves to active shelf
+        tvState.zone = 'shelf';
+        markTvFocus();
+        return;
+      }
+      if (code === 13 || code === 23 || code === 66) {
+        activateTvHeroBtn();
+        return;
       }
     } else if (tvState.zone === 'shelf') {
       var curShelf = tvState.shelves[tvState.shelfIdx];
@@ -3769,12 +3860,19 @@
           tvState.cardIdx++;
           markTvFocus();
         }
-      } else if (code === 39) { // Right (prev card in RTL)
+        return;
+      }
+      if (code === 39) { // Right (prev card or enter sidebar in RTL)
         if (tvState.cardIdx > 0) {
           tvState.cardIdx--;
           markTvFocus();
+        } else {
+          tvState.zone = 'sidebar';
+          markTvFocus();
         }
-      } else if (code === 38) { // Up
+        return;
+      }
+      if (code === 38) { // Up
         if (tvState.shelfIdx > 0) {
           tvState.shelfIdx--;
           var newShelf = tvState.shelves[tvState.shelfIdx];
@@ -3783,10 +3881,13 @@
           }
           markTvFocus();
         } else {
-          tvState.zone = 'tabs';
+          tvState.zone = 'hero';
+          tvState.heroBtnIdx = 0;
           markTvFocus();
         }
-      } else if (code === 40) { // Down
+        return;
+      }
+      if (code === 40) { // Down
         if (tvState.shelfIdx < tvState.shelves.length - 1) {
           tvState.shelfIdx++;
           var nextShelf = tvState.shelves[tvState.shelfIdx];
@@ -3795,19 +3896,18 @@
           }
           markTvFocus();
         }
+        return;
       }
     }
   }
 
   function tvOk() {
-    if (tvState.zone === 'tabs') {
-      var tab = tvState.tabs[tvState.tabIdx];
-      if (tab.id === 'search') {
-        focusSearch();
-      } else {
-        tvState.zone = 'shelf';
-        markTvFocus();
-      }
+    if (tvState.zone === 'sidebar') {
+      selectTvSidebar(tvState.sideIdx);
+      return;
+    }
+    if (tvState.zone === 'hero') {
+      activateTvHeroBtn();
       return;
     }
     var ch = getCurTvCh();

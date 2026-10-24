@@ -1,7 +1,7 @@
 ; Israel TV+ Windows installer (Inno Setup 6). Built by tools\build_windows.ps1, which passes
 ; AppVersion, SrcDir (the built app folder), OutDir and IconFile.
 #ifndef AppVersion
-  #define AppVersion "3.6.0"
+  #define AppVersion "3.6.1"
 #endif
 
 [Setup]
