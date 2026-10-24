@@ -27,6 +27,8 @@ HOSTS = {
     "d15ds134q59udk.cloudfront.net": ("ערוץ FAST ישראלי – AWS CloudFront", "fast"),
     "d1yd8hohnldm33.cloudfront.net": ("ערוץ FAST ישראלי – AWS CloudFront", "fast"),
     "contact.gostreaming.tv": ("GoStreaming – ספק השידור של ערוץ 9", "official"),
+    "kneset.gostreaming.tv": ("ערוץ הכנסת – השידור של הכנסת (GoStreaming)", "official"),
+    "mako-streaming.akamaized.net": ("קשת – ה-CDN של mako (עם הרשאת צפייה של mako)", "official"),
     "i24newshebrew-cdn.encoders.immergo.tv": ("i24NEWS – שרת רשמי", "official"),
     "i24newsfrench-cdn.encoders.immergo.tv": ("i24NEWS – שרת רשמי", "official"),
     "i24newsarabic-cdn.encoders.immergo.tv": ("i24NEWS – שרת רשמי", "official"),

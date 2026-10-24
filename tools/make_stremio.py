@@ -79,7 +79,8 @@ def dump(path, data):
 
 def main():
     with open(os.path.join(ROOT, "channels.json"), encoding="utf-8") as f:
-        chans = json.load(f)
+        # channels that need a viewing ticket from the broadcaster (Keshet on mako) only play in the apps
+        chans = [c for c in json.load(f) if not c.get("auth")]
     with open(os.path.join(ROOT, "VERSION"), encoding="utf-8") as f:
         version = f.read().strip()
     if os.path.isdir(OUT):

@@ -1415,8 +1415,32 @@
     if (on) el.spinnerText.textContent = text || 'מתחבר לשידור...';
   }
 
+  // Keshet 12 / 24 play from mako's own CDN (the broadcaster, not a re-stream): the stream URL needs a short-lived
+  // ticket from mako's entitlement service, fetched right before playing (it then holds for the whole session)
+  var MAKO_ENTITLEMENT = 'https://mass.mako.co.il/ClicksStatistics/entitlementsServicesV2.jsp';
+  function makoUrl(url, ok, fail) {
+    var m = /^(https:\/\/[^/]+)(\/.*)$/.exec(url);
+    if (!m) { fail(new Error('url')); return; }
+    xhrJson(MAKO_ENTITLEMENT + '?et=ngt&rv=AKAMAI&lp=' + encodeURIComponent(m[2]), 10000, function (d) {
+      var t = d && d.tickets && d.tickets[0] && d.tickets[0].ticket;
+      if (!t) { fail(new Error('ticket')); return; }
+      ok(url + (url.indexOf('?') === -1 ? '?' : '&') + decodeURIComponent(t.replace(/\+/g, ' ')));
+    }, fail);
+  }
+
   function loadStream(ch) {
-    var url = streamUrl(ch);
+    if (ch.auth === 'mako') {
+      hideError();
+      spinner(true);
+      makoUrl(streamUrl(ch), function (url) { if (state.playing === ch) loadResolved(ch, url); },
+        function () { if (state.playing === ch) onFatal(ch, 'לא התקבלה הרשאת צפייה מ-mako'); });
+      return;
+    }
+    loadResolved(ch, streamUrl(ch));
+  }
+
+  function loadResolved(ch, url) {
+    state.streamUrl = url;
     hideError();
     state.retries = 0;
     if (Dub) Dub.detach();
@@ -1816,7 +1840,7 @@
     toast('🎙️ דיבוב לעברית הופעל' + (Dub.settings.sync ? ' (מסונכרן)' : ''));
     if (ch && state.overlay && state.hls) {
       if (Dub.settings.sync) loadStream(ch);
-      else Dub.attach({ video: el.video, hls: state.hls, channel: ch, url: streamUrl(ch) });
+      else Dub.attach({ video: el.video, hls: state.hls, channel: ch, url: state.streamUrl || streamUrl(ch) });
     }
   }
   function watchDubbed(ch) {

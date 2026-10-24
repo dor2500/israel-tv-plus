@@ -1,1 +1,1 @@
-{"streams":[{"name":"ישראל TV+\nLIVE","title":"ערוץ הכנסת 99\n📡 mcquack.net – אתר ממסר (restream) של צד שלישי\n⚠️ ממסר צד שלישי","url":"http://stream.mcquack.net/48/index.m3u8","behaviorHints":{"notWebReady":true,"bingeGroup":"itv-live"}}]}
+{"streams":[{"name":"ישראל TV+\nLIVE","title":"ערוץ הכנסת 99\n📡 ערוץ הכנסת – השידור של הכנסת (GoStreaming)\n✅ שידור רשמי","url":"https://kneset.gostreaming.tv/p2-kneset/_definst_/myStream/index.m3u8","behaviorHints":{"bingeGroup":"itv-live"}}]}

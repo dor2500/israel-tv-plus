@@ -110,6 +110,7 @@ import androidx.media3.ui.PlayerView
 import com.israeltv.plus.data.AppPrefs
 import com.israeltv.plus.data.Channel
 import com.israeltv.plus.data.USER_AGENT
+import com.israeltv.plus.data.playableUrl
 import com.israeltv.plus.ui.components.ChannelLogo
 import com.israeltv.plus.ui.components.GlassIconButton
 import com.israeltv.plus.ui.components.specularBorder
@@ -205,12 +206,18 @@ fun PlayerScreen(
         touchTick++
     }
 
-    // every channel switch: the stream, full volume, play
-    LaunchedEffect(current.id) {
+    // every channel switch (and "נסו שוב"): the stream, full volume, play
+    var attempt by remember { mutableIntStateOf(0) }
+    LaunchedEffect(current.id, attempt) {
         error = null
         buffering = true
         prefs.addRecent(current.id)
-        val item = MediaItem.Builder().setUri(current.url)
+        val url = runCatching { playableUrl(current) }.getOrElse {
+            error = "לא התקבלה הרשאת צפייה מ-mako"
+            buffering = false
+            return@LaunchedEffect
+        }
+        val item = MediaItem.Builder().setUri(url)
         if (current.url.contains(".m3u8", ignoreCase = true)) item.setMimeType(MimeTypes.APPLICATION_M3U8)
         player.setMediaItem(item.build())
         player.volume = 1.0f
@@ -321,13 +328,7 @@ fun PlayerScreen(
                     )
                     GlassIconButton(Icons.Rounded.SkipPrevious, "ערוץ קודם", { switchTo(index - 1) }, size = 52.dp, tint = GlassDark)
                 }
-                "error" -> ErrorCard(current, error.orEmpty(), onRetry = {
-                    error = null
-                    buffering = true
-                    player.volume = 1.0f
-                    player.prepare()
-                    player.play()
-                }, onNext = { switchTo(index + 1) })
+                "error" -> ErrorCard(current, error.orEmpty(), onRetry = { attempt++ }, onNext = { switchTo(index + 1) })
                 else -> Spacer(Modifier.size(1.dp))
             }
         }

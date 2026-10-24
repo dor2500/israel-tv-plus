@@ -53,7 +53,14 @@ KIDS_WORLD_IDS = {"kinokazka", "pixel_tv", "niki_kids", "kapitan_fantastika", "o
 FIX = {
     "yam_tichoni_hd": {"category": CAT_MOVIES, "categoryEn": "movies", "lang": "he",
                        "desc": "הערוץ הים תיכוני - סדרות ודרמות ישראליות וים תיכוניות"},
-    "knesset": {"url": "http://stream.mcquack.net/48/index.m3u8"},  # the https gostreaming feed is gone (404)
+    # Idan+ channels play from the broadcaster's own servers only, never a third-party re-stream (2026-10-24):
+    # the Knesset's own GoStreaming feed; Keshet 12 and 24 from mako's CDN with a ticket fetched before playing
+    # ("auth": "mako" – app.js / the Android app). mako's CDN only allows mako.co.il pages: app-only on the web site.
+    "knesset": {"url": "https://kneset.gostreaming.tv/p2-kneset/_definst_/myStream/index.m3u8"},
+    "keshet12": {"url": "https://mako-streaming.akamaized.net/stream/hls/live/2033791/k12/index.m3u8", "auth": "mako",
+                 "webOk": False},
+    "channel24": {"url": "https://mako-streaming.akamaized.net/direct/hls/live/2035340/ch24live/index.m3u8?as=1",
+                  "auth": "mako", "webOk": False},
     "channel9": {"desc": "ערוץ 9 - ערוץ ישראלי בשפה הרוסית: חדשות, אקטואליה ותוכניות"},
     "galgalatz_hits_live": {"url": "https://glzwizzlv.bynetcdn.com/glglz_hits_mp3"},  # was http (blocked on the site)
     # Kan's own feed (kankids.org.il/kids-live): https + CORS, so it plays on the site too
