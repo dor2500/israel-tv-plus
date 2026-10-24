@@ -1,6 +1,7 @@
 package com.israeltv.plus.ui.screens
 
 import android.os.Build
+import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -30,10 +31,12 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
@@ -54,12 +57,11 @@ import com.israeltv.plus.ui.components.ShelfSkeleton
 import com.israeltv.plus.ui.components.feedPadding
 import com.israeltv.plus.ui.components.glassShimmer
 import com.israeltv.plus.ui.components.rememberBitChordFlingBehavior
-import com.israeltv.plus.ui.components.specularBorder
 import kotlinx.coroutines.delay
 
-private val HeroShape = RoundedCornerShape(32.dp)
+private val HeroShape = RoundedCornerShape(bottomStart = 32.dp, bottomEnd = 32.dp)
 
-/** Home: one master LazyColumn – the hero, "continue watching", favourites, then a carousel per category. */
+/** Home: one master LazyColumn – the full-bleed hero, "continue watching", favourites, then a carousel per category. */
 @Composable
 fun HomeScreen(
     data: ChannelData?,
@@ -72,11 +74,11 @@ fun HomeScreen(
 ) {
     LazyColumn(
         Modifier.fillMaxSize(),
-        contentPadding = feedPadding(),
+        contentPadding = feedPadding(topHeaderSpace = false),
         flingBehavior = rememberBitChordFlingBehavior(),
     ) {
         if (data == null) {
-            item { Box(Modifier.padding(horizontal = 16.dp).padding(bottom = 28.dp).fillMaxWidth().height(380.dp).glassShimmer(HeroShape)) }
+            item { Box(Modifier.fillMaxWidth().height(580.dp).glassShimmer(HeroShape)) }
             items(4) { ShelfSkeleton() }
             return@LazyColumn
         }
@@ -102,6 +104,11 @@ fun HomeScreen(
     }
 }
 
+/**
+ * 100% Full-Bleed Top Hero Carousel (Apple TV+ Reference):
+ * Bleeding directly behind status bar (height = 580.dp), centered cinematic layout,
+ * bottom vignette, bold white full-pill CTA and animated capsule indicator dots.
+ */
 @Composable
 private fun HeroPager(
     featured: List<Channel>,
@@ -117,28 +124,32 @@ private fun HeroPager(
         delay(7000)
         pager.animateScrollToPage((pager.currentPage + 1) % featured.size)
     }
-    Column(Modifier.padding(bottom = 28.dp)) {
+    Column(Modifier.fillMaxWidth().padding(bottom = 28.dp)) {
         HorizontalPager(
             pager,
-            contentPadding = PaddingValues(horizontal = 16.dp),
-            pageSpacing = 12.dp,
+            contentPadding = PaddingValues(0.dp),
+            pageSpacing = 0.dp,
             key = { featured[it].id },
+            modifier = Modifier.fillMaxWidth().height(580.dp),
         ) { page ->
             HeroCard(featured[page], logo(featured[page]), prefs.isFavorite(featured[page].id), onPlay, onInfo) {
                 prefs.toggleFavorite(featured[page].id)
             }
         }
+        // Animated capsule page indicator dots below Hero
         Row(
-            Modifier.fillMaxWidth().padding(top = 12.dp),
+            Modifier.fillMaxWidth().padding(top = 16.dp),
             horizontalArrangement = Arrangement.Center,
+            verticalAlignment = Alignment.CenterVertically,
         ) {
             repeat(featured.size) { i ->
                 val on = i == pager.currentPage
+                val dotWidth by animateDpAsState(if (on) 24.dp else 6.dp, label = "dotWidth")
                 Box(
                     Modifier
                         .padding(horizontal = 3.dp)
                         .height(6.dp)
-                        .width(if (on) 22.dp else 6.dp)
+                        .width(dotWidth)
                         .clip(RoundedCornerShape(50))
                         .background(if (on) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.35f))
                 )
@@ -147,7 +158,13 @@ private fun HeroPager(
     }
 }
 
-/** 380 dp hero: the channel artwork edge to edge, a bottom-up scrim, "צפייה" pill + favourite / info glass buttons. */
+/**
+ * 580 dp Full-Bleed Hero:
+ * - Edge-to-edge artwork bleeding behind status bar
+ * - Center-aligned massive channel logo with subtle light radial back-glow
+ * - Centered metadata row (Live • ערוצי ישראל • FHD)
+ * - Bold white full-pill CTA button ("צפייה", height = 50.dp, RoundedCornerShape(50))
+ */
 @Composable
 private fun HeroCard(
     ch: Channel,
@@ -162,65 +179,111 @@ private fun HeroCard(
     Box(
         Modifier
             .fillMaxWidth()
-            .height(380.dp)
+            .height(580.dp)
             .clip(HeroShape)
             .background(Brush.linearGradient(listOf(scheme.primaryContainer, scheme.surfaceContainerHigh, scheme.tertiaryContainer)))
-            .specularBorder(HeroShape)
     ) {
-        // artwork: the logo, huge and blurred as ambient light (Android 12+), sharp in front
+        // Artwork ambient blurred light in background
         if (logo.isNotEmpty()) {
             AsyncImage(
                 logo, null,
                 Modifier
                     .fillMaxSize()
-                    .graphicsLayer { scaleX = 1.8f; scaleY = 1.8f; alpha = if (Build.VERSION.SDK_INT >= 31) 0.55f else 0.18f }
-                    .blur(70.dp),
+                    .graphicsLayer { scaleX = 2.0f; scaleY = 2.0f; alpha = if (Build.VERSION.SDK_INT >= 31) 0.55f else 0.22f }
+                    .blur(90.dp),
                 contentScale = ContentScale.Crop,
             )
-            AsyncImage(
-                logo, ch.name,
-                Modifier.align(Alignment.TopCenter).padding(top = 52.dp).fillMaxWidth(0.52f).height(150.dp),
-                contentScale = ContentScale.Fit,
-            )
         }
+
+        // Smooth bottom gradient vignette
         Box(
             Modifier
                 .fillMaxSize()
                 .background(
                     Brush.verticalGradient(
                         0.35f to Color.Transparent,
-                        1f to scheme.surfaceContainerLowest.copy(alpha = 0.95f),
+                        1.0f to scheme.surfaceContainerLowest,
                     )
                 )
         )
-        Column(Modifier.align(Alignment.BottomStart).fillMaxWidth().padding(20.dp)) {
-            Row(verticalAlignment = Alignment.CenterVertically) {
+
+        // Centered Cinematic Content Layout
+        Column(
+            modifier = Modifier
+                .align(Alignment.BottomCenter)
+                .fillMaxWidth()
+                .padding(horizontal = 24.dp, vertical = 32.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+        ) {
+            // Center-aligned massive channel logo with subtle light radial back-glow
+            if (logo.isNotEmpty()) {
+                Box(
+                    modifier = Modifier
+                        .size(190.dp, 120.dp)
+                        .drawBehind {
+                            drawCircle(Color.White.copy(alpha = 0.22f), radius = size.minDimension * 0.65f)
+                        },
+                    contentAlignment = Alignment.Center,
+                ) {
+                    AsyncImage(
+                        logo, ch.name,
+                        Modifier.fillMaxSize(),
+                        contentScale = ContentScale.Fit,
+                    )
+                }
+            }
+
+            Spacer(Modifier.height(14.dp))
+
+            // Metadata Row: LIVE • Category • FHD
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.Center,
+            ) {
                 Text(
                     "LIVE",
-                    Modifier.clip(RoundedCornerShape(6.dp)).background(Color(0xFFE53935)).padding(horizontal = 7.dp, vertical = 1.dp),
+                    Modifier.clip(RoundedCornerShape(6.dp)).background(Color(0xFFE53935)).padding(horizontal = 8.dp, vertical = 2.dp),
                     color = Color.White, fontSize = 11.sp, fontWeight = FontWeight.ExtraBold,
                 )
                 Text(
-                    "  ${shortCategory(ch.category)}${if (ch.badge.isNotEmpty()) " · " + ch.badge else ""}",
-                    color = scheme.onSurfaceVariant, fontSize = 13.sp, fontWeight = FontWeight.Medium,
+                    " • ${shortCategory(ch.category)} • ${if (ch.badge.isNotEmpty()) ch.badge else "FHD"}",
+                    color = scheme.onSurfaceVariant, fontSize = 13.sp, fontWeight = FontWeight.Bold,
                 )
             }
-            Text(ch.name, fontSize = 30.sp, fontWeight = FontWeight.ExtraBold, color = scheme.onSurface, maxLines = 1)
-            Spacer(Modifier.height(14.dp))
-            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+
+            Spacer(Modifier.height(8.dp))
+
+            Text(
+                ch.name,
+                fontSize = 32.sp,
+                fontWeight = FontWeight.Black,
+                color = scheme.onSurface,
+                maxLines = 1,
+            )
+
+            Spacer(Modifier.height(20.dp))
+
+            // CTA Buttons Row: Bold white full-pill CTA button ("צפייה", height = 50.dp) + favourite & info
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(14.dp),
+            ) {
                 Button(
                     onClick = {
                         haptic.performHapticFeedback(HapticFeedbackType.Confirm)
                         onPlay(ch)
                     },
                     shape = RoundedCornerShape(50),
-                    colors = ButtonDefaults.buttonColors(containerColor = scheme.primaryContainer, contentColor = scheme.onPrimaryContainer),
-                    contentPadding = PaddingValues(horizontal = 28.dp),
-                    modifier = Modifier.height(52.dp),
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Color.White,
+                        contentColor = Color.Black,
+                    ),
+                    contentPadding = PaddingValues(horizontal = 34.dp),
+                    modifier = Modifier.height(50.dp),
                 ) {
-                    Icon(Icons.Rounded.PlayArrow, null, Modifier.size(26.dp))
+                    Icon(Icons.Rounded.PlayArrow, null, Modifier.size(26.dp), tint = Color.Black)
                     Spacer(Modifier.width(6.dp))
-                    Text("צפייה", fontSize = 17.sp, fontWeight = FontWeight.ExtraBold)
+                    Text("צפייה", fontSize = 17.sp, fontWeight = FontWeight.Black, color = Color.Black)
                 }
                 GlassIconButton(if (favorite) Icons.Rounded.Star else Icons.Rounded.StarBorder, "מועדף", onFavorite)
                 GlassIconButton(Icons.Rounded.Info, "מידע", { onInfo(ch) })

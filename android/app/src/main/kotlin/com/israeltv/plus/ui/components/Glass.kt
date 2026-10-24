@@ -56,18 +56,23 @@ fun Modifier.specularBorder(shape: Shape, width: Dp = 1.dp, alpha: Float = 0.28f
     border(width, Brush.verticalGradient(listOf(Color.White.copy(alpha = alpha), Color.Transparent)), shape)
 
 /**
- * Frosted glass: the content behind is blurred (real blur, Haze: RenderEffect on Android 12+, a tinted scrim
- * before), tinted with [tint], clipped to [shape], with the specular edge. [mask] fades the glass out (header).
+ * Frosted glass: Real-time heavy backdrop blur refracting scrolling artwork underneath,
+ * using the flagship Glass Surface Recipe: Color(0xFF14141C).copy(alpha = 0.62f) mixed with
+ * MaterialTheme.colorScheme.surfaceTint.copy(alpha = 0.18f), topped with a crisp 1.dp specular border.
  */
 fun Modifier.frostedGlass(
     shape: Shape,
-    tint: Color,
-    blur: Dp = 25.dp,
+    tint: Color? = null,
+    blur: Dp = 90.dp,
     border: Boolean = true,
     mask: Brush? = null,
 ): Modifier = composed {
     val haze = LocalHaze.current
     val base = MaterialTheme.colorScheme.surfaceContainerLowest
+    val defaultGlassTint = Color(0xFF14141C).copy(alpha = 0.62f)
+    val tintMix = MaterialTheme.colorScheme.surfaceTint.copy(alpha = 0.18f)
+    val effectiveTint = tint ?: defaultGlassTint
+
     val clipped = clip(shape)
     val glass = if (haze != null) {
         clipped.hazeBlur(
@@ -75,13 +80,13 @@ fun Modifier.frostedGlass(
             HazeBlurStyle {
                 blurRadius(blur)
                 backgroundColor(base)
-                colorEffects(listOf(HazeColorEffect.tint(tint)))
-                noiseFactor(0.05f)
+                colorEffects(listOf(HazeColorEffect.tint(effectiveTint), HazeColorEffect.tint(tintMix)))
+                noiseFactor(0.04f)
                 if (mask != null) mask(mask)
             },
         )
-    } else clipped.background(tint)
-    if (border) glass.specularBorder(shape) else glass
+    } else clipped.background(effectiveTint)
+    if (border) glass.border(1.dp, Brush.verticalGradient(listOf(Color.White.copy(alpha = 0.32f), Color.Transparent)), shape) else glass
 }
 
 /**

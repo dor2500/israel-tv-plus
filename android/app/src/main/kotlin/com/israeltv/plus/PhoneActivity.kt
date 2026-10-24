@@ -111,7 +111,7 @@ class PhoneActivity : ComponentActivity() {
         }
 
         setContent {
-            ItvTheme {
+            ItvTheme(prefs = prefs) {
                 ItvApp(
                     store = store,
                     prefs = prefs,

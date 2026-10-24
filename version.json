@@ -1,50 +1,56 @@
 {
-  "version": "3.5.3",
-  "code": 202610242132,
-  "app": 353,
+  "version": "3.5.4",
+  "code": 202610242147,
+  "app": 354,
   "shell": 3,
   "date": "2026-10-24",
   "notes": [
-    "חוויית Apple TV+ (tvOS) דגל חדשה לכל הטלוויזיות החכמות (Samsung Tizen, LG webOS, Android TV):",
-    "מנוע תנועה מואץ חומרה (60/120fps): כל תנועות המדפים, סרגלי הניווט והכרטיסים משתמשים אך ורק ב-translate3d ו-scale3d עם חוקי GPU קפדניים למסכי טלוויזיה ללא נפילות פריימים.",
-    "סרגל קפסולה עליון צף בסגנון Apple TV (Centered Frosted Top Pill): קפסולת זכוכית מעוצבת צפה במרכז העליון (rgba(22, 22, 28, 0.68), blur 36px), עם אינדיקטור גולש פיזיקלי (#F5F5F7) המחליק ומשנה את רוחבו בעקומת קפיץ Apple (cubic-bezier(0.16, 1, 0.3, 1)).",
-    "פיזיקת פוקוס תלת-ממדית והברקת אור (Apple TV Sheen & Parallax): בהתמקדות על כרטיס, הכרטיס מרחף (translate3d(0, -8px, 0) scale3d(1.14, 1.14, 1)) עם צל עמוק רב-שכבתי, מסגרת זוהרת ופס הברקת אור ספקולרי אלכסוני.",
-    "מעקב מצלמה מדפי ועמעום קסקדה אנכי: ניווט אופקי גולש בצורה חלקה ב-RTL ומעגן את הכרטיס הממוקד בנקודה האופטית המושלמת, בעוד מעבר אנכי מעמעם שורות עליונות ל-0.25 שקיפות.",
-    "במת תצוגה מקדימה מלאה מקצה לקצה (Full-Bleed 100vw x 100vh): שהייה של 550ms על כרטיס ערוץ מפעילה מעבר חלק (Cross-fade) לרקע של שידור חי מושתק ב-0ms.",
-    "מעבר אפס-חיתוך למסך מלא (Zero-Cut Fullscreen Zoom): לחיצה על OK מבטלת השתקה ומחליקה את המדפים החוצה ב-0ms ללא טעינה מחדש של הזרם; לחיצה על Back מחזירה את המדפים ברכות מעל השידור.",
-    "סנכרון שלטים אחיד (Unified KeyCode Mapper): תמיכה אחידה וחלקה בכל השלטים – Samsung Tizen (10009 Return, 403-406 כפתורי צבע, מקשי מדיה), LG webOS (461 Back, עכבר Magic Remote וגלגלת), ו-Android TV (Enter/DPAD_CENTER 13/23/66, Back/Escape)."
+    "שדרוג דגל מרהיב לארכיטקטורת ה-UI ב-Android (Jetpack Compose & Material 3 Expressive):",
+    "בורר ערכות צבעים מדויק בסגנון Pixel ('Wallpaper & Style' Color Palette Picker):",
+    "מסך תצוגה מקדימה חי ואינטראקטיבי של סמארטפון (Live Interactive Device Frame Preview) המציג מיני-מוקאפ של האפליקציה המגיב מיידית לשינויי צבע ומצב כהה.",
+    "דוגמיות צבע משולשות בסגנון פיקסל (Pixel Tri-Tone Swatches): חצי עליון 180° עם גוון ראשי/דגש, רבע שמאלי תחתון עם גוון כהה ניטרלי, ורבע ימני תחתון עם גוון שלישוני/משני.",
+    "אנימציית שינוי צורה חלקה (Morphing Active Selection): עיגול מושלם שהופך ברכות לריבוע מעוגל (Squircle) עם טבעת לבנה מוארת ומרווח קפיצי מדויק לפיקסל.",
+    "מתג 'מצב כהה' בעיצוב Material 3 Expressive עם אייקון Checkmark בתוך האגודל.",
+    "בורר כפתורי קפסולה תחתון למעבר בין 'צבעי מערכת' (Dynamic Monet) ל'צבעים נוספים' (חבילות גוונים דגל שנבחרו בקפידה).",
+    "טשטוש רקע חי עמוק (Real-Time Heavy Backdrop Blur): זכוכית חלבית אמיתית (Frosted Glass) עם נוסחת שכבות פרימיום (Color(0xFF14141C).copy(alpha = 0.62f) משולב ב-surfaceTint), מסגרת ספקולרית 1.dp וטשטוש עמוק 90.dp מאחורי סרגלי הניווט.",
+    "סרגל ניווט תחתון מתכווץ דינמית (Dynamic Collapsing Pill Navbar): קפסולה צפה מורפולוגית – במצב פתוח (רוחב 92%, גובה 70.dp עם תוויות טקסט) ובמצב גלילה למטה (מתכווצת בקפיץ ל-72%, גובה 56.dp עם אייקונים בלבד ללא טקסט).",
+    "מסך בחירת פרופילים בסגנון נטפליקס ('מי צופה?'): מסך כניסה קולנועי מטושטש עם גריד פרופילים מעוצבים בגודל 100.dp עם Noto Emoji תלת-ממדיים, אפשרות הוספת ועריכת פרופילים ואנימציית מעבר קפיצית חלקה (Shared Element Fly-In).",
+    "אנימציית פתיחה קולנועית (Cinematic Splash & Startup Animation): פעימה כרומטית עם גל אור זוהר (Specular Light Sweep) ופתיחת שער (Portal Reveal) דרך משולש ה-Play היישר אל תוך מסך הבית.",
+    "הירו קרוסלה מקצה לקצה בסגנון Apple TV+ (Full-Screen Edge-to-Edge Hero): גובה 580.dp מלא מאחורי ה-Status Bar ללא שוליים, לוגו ערוץ מרכזי עם הילת אור רדיאלית, שורת מטא-דאטה מופרדת בנקודות, כפתור פעולה ראשי לבן מלא ואינדיקטורי נקודות קפסולה גולשים.",
+    "נגן וידאו וכפתורי שליטה Material 3 Expressive: מעבר חלק בהתרחבות לנגן (Shared Bounds Transform), כפתור Play/Pause ענק 84.dp, כפתורי קדימה/אחורה Squircle (52x72.dp), ודוק תחתון קומפקטי שמגן על הכתוביות.",
+    "טיפוגרפיה משתנה Google Sans Flex ו-Rubik Variable: התאמה אופטית הדוקה (letterSpacing = -0.4.sp) ומשקלים כבדים (Black / ExtraBold) לקריאות מקסימלית בעברית."
   ],
   "native": {
     "android": {
-      "version": "3.5.3",
-      "app": 353,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.5.3/IsraelTVPlus-android.apk"
+      "version": "3.5.4",
+      "app": 354,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.5.4/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "3.5.3",
-      "app": 353,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.5.3/IsraelTVPlus-windows-setup.exe"
+      "version": "3.5.4",
+      "app": 354,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.5.4/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "3.5.3",
-      "app": 353,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.5.3/com.israeltv.plus_all.ipk",
+      "version": "3.5.4",
+      "app": 354,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.5.4/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "3.5.3",
-      "app": 353,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.5.3/IsraelTVPlus-tizen-project.zip"
+      "version": "3.5.4",
+      "app": 354,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.5.4/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "3.5.3",
-      "app": 353,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.5.3/IsraelTVPlus-macos-arm64.zip"
+      "version": "3.5.4",
+      "app": 354,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.5.4/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "3.5.3",
-      "app": 353,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.5.3/IsraelTVPlus-linux-x64.zip"
+      "version": "3.5.4",
+      "app": 354,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.5.4/IsraelTVPlus-linux-x64.zip"
     }
   }
 }

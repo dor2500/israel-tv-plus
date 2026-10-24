@@ -1,8 +1,14 @@
 package com.israeltv.plus.ui.components
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.spring
+import androidx.compose.animation.expandVertically
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.shrinkVertically
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -67,12 +73,12 @@ enum class Tab(val label: String, val title: String, val icon: ImageVector) {
     Settings("הגדרות", "הגדרות", Icons.Rounded.Settings),
 }
 
-/** The master LazyColumn's insets: under the header (88 dp) and clear of the floating bar (130 dp). */
+/** The master LazyColumn's insets: under the header (88 dp) or edge-to-edge for full-bleed hero. */
 @Composable
-fun feedPadding(): PaddingValues {
-    val top = WindowInsets.statusBars.asPaddingValues().calculateTopPadding()
+fun feedPadding(topHeaderSpace: Boolean = true): PaddingValues {
+    val top = if (topHeaderSpace) WindowInsets.statusBars.asPaddingValues().calculateTopPadding() + 88.dp else 0.dp
     val bottom = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
-    return PaddingValues(top = top + 88.dp, bottom = bottom + 130.dp)
+    return PaddingValues(top = top, bottom = bottom + 130.dp)
 }
 
 /** surfaceContainerLowest with a soft ambient glow of the wallpaper colour from the top. */
@@ -149,8 +155,13 @@ fun AppHeader(title: String, avatar: String, onAvatar: () -> Unit, modifier: Mod
 }
 
 /**
- * One floating frosted capsule (68 dp) with all five destinations; the active tab sits on a sliding
- * secondaryContainer pill. Search opens the search overlay.
+ * Dynamic Collapsing Pill Navbar (Video Reference Matched):
+ * - Expanded State (At Top / Scrolling Up): Wide floating frosted-glass capsule (fillMaxWidth(0.92f), height = 70.dp).
+ *   Displays Noveo-style solid icon on top and label underneath (11.sp). Active tab highlighted inside
+ *   soft tonal pill (MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.4f)).
+ * - Collapsed State (Scrolling Down): Smoothly animates capsule down to compact centered pod (fillMaxWidth(0.72f), height = 56.dp)
+ *   using spring(dampingRatio = 0.8f, stiffness = Spring.StiffnessMediumLow). Fades out and shrinks text labels
+ *   leaving icons centered inside the glass pill.
  */
 @Composable
 fun FloatingTabBar(
@@ -158,57 +169,96 @@ fun FloatingTabBar(
     searchOpen: Boolean,
     onSelect: (Tab) -> Unit,
     onSearch: () -> Unit,
+    collapsed: Boolean = false,
     modifier: Modifier = Modifier,
 ) {
     val scheme = MaterialTheme.colorScheme
     val haptic = LocalHapticFeedback.current
     val pill = RoundedCornerShape(50)
-    BoxWithConstraints(
-        modifier
+
+    val capsuleWidthFraction by animateFloatAsState(
+        targetValue = if (collapsed) 0.72f else 0.92f,
+        animationSpec = spring(dampingRatio = 0.8f, stiffness = Spring.StiffnessMediumLow),
+        label = "capsuleWidth",
+    )
+
+    val capsuleHeight by animateDpAsState(
+        targetValue = if (collapsed) 56.dp else 70.dp,
+        animationSpec = spring(dampingRatio = 0.8f, stiffness = Spring.StiffnessMediumLow),
+        label = "capsuleHeight",
+    )
+
+    Box(
+        modifier = modifier
             .zIndex(10f)
             .navigationBarsPadding()
-            .padding(horizontal = 24.dp, vertical = 20.dp)
-            .height(68.dp)
-            .fillMaxWidth()
-            .frostedGlass(pill, scheme.surfaceContainerHighest.copy(alpha = 0.85f), blur = 25.dp)
+            .padding(bottom = 16.dp)
+            .fillMaxWidth(),
+        contentAlignment = Alignment.Center,
     ) {
-        val count = Tab.entries.size + 1
-        val itemWidth: Dp = maxWidth / count
-        val index = if (searchOpen) Tab.entries.size else selected.ordinal
-        val x by animateDpAsState(
-            itemWidth * index,
-            spring(dampingRatio = Spring.DampingRatioLowBouncy, stiffness = Spring.StiffnessMediumLow),
-            label = "indicator",
-        )
-        // the indicator: offset() follows the layout direction, so index 0 is the rightmost slot in Hebrew
-        Box(
-            Modifier
-                .offset(x = x)
-                .width(itemWidth)
-                .fillMaxHeight()
-                .padding(6.dp)
-                .clip(pill)
-                .background(scheme.secondaryContainer)
-        )
-        Row(Modifier.fillMaxSize(), horizontalArrangement = Arrangement.SpaceEvenly) {
-            Tab.entries.forEach { tab ->
-                BarItem(tab.icon, tab.label, !searchOpen && tab == selected, Modifier.weight(1f)) {
-                    haptic.performHapticFeedback(HapticFeedbackType.SegmentTick)
-                    onSelect(tab)
+        BoxWithConstraints(
+            modifier = Modifier
+                .fillMaxWidth(capsuleWidthFraction)
+                .height(capsuleHeight)
+                .frostedGlass(pill, blur = 90.dp)
+        ) {
+            val count = Tab.entries.size + 1
+            val itemWidth: Dp = maxWidth / count
+            val index = if (searchOpen) Tab.entries.size else selected.ordinal
+            val x by animateDpAsState(
+                itemWidth * index,
+                spring(dampingRatio = 0.8f, stiffness = Spring.StiffnessMediumLow),
+                label = "indicator",
+            )
+            // Active tonal pill indicator
+            Box(
+                Modifier
+                    .offset(x = x)
+                    .width(itemWidth)
+                    .fillMaxHeight()
+                    .padding(vertical = 5.dp, horizontal = 4.dp)
+                    .clip(pill)
+                    .background(scheme.primaryContainer.copy(alpha = 0.4f))
+            )
+            Row(Modifier.fillMaxSize(), horizontalArrangement = Arrangement.SpaceEvenly) {
+                Tab.entries.forEach { tab ->
+                    BarItem(
+                        icon = tab.icon,
+                        label = tab.label,
+                        active = !searchOpen && tab == selected,
+                        collapsed = collapsed,
+                        modifier = Modifier.weight(1f),
+                    ) {
+                        haptic.performHapticFeedback(HapticFeedbackType.SegmentTick)
+                        onSelect(tab)
+                    }
                 }
-            }
-            BarItem(Icons.Rounded.Search, "חיפוש", searchOpen, Modifier.weight(1f)) {
-                haptic.performHapticFeedback(HapticFeedbackType.SegmentTick)
-                onSearch()
+                BarItem(
+                    icon = Icons.Rounded.Search,
+                    label = "חיפוש",
+                    active = searchOpen,
+                    collapsed = collapsed,
+                    modifier = Modifier.weight(1f),
+                ) {
+                    haptic.performHapticFeedback(HapticFeedbackType.SegmentTick)
+                    onSearch()
+                }
             }
         }
     }
 }
 
 @Composable
-private fun BarItem(icon: ImageVector, label: String, active: Boolean, modifier: Modifier, onClick: () -> Unit) {
+private fun BarItem(
+    icon: ImageVector,
+    label: String,
+    active: Boolean,
+    collapsed: Boolean,
+    modifier: Modifier,
+    onClick: () -> Unit,
+) {
     val scheme = MaterialTheme.colorScheme
-    val color = if (active) scheme.onSecondaryContainer else scheme.onSurfaceVariant
+    val color = if (active) scheme.primary else scheme.onSurfaceVariant
     Column(
         modifier
             .fillMaxHeight()
@@ -217,6 +267,18 @@ private fun BarItem(icon: ImageVector, label: String, active: Boolean, modifier:
         verticalArrangement = Arrangement.Center,
     ) {
         Icon(icon, label, Modifier.size(24.dp), tint = color)
-        Text(label, fontSize = 11.sp, fontWeight = if (active) FontWeight.ExtraBold else FontWeight.Medium, color = color)
+        AnimatedVisibility(
+            visible = !collapsed,
+            enter = fadeIn() + expandVertically(),
+            exit = fadeOut() + shrinkVertically(),
+        ) {
+            Text(
+                label,
+                fontSize = 11.sp,
+                fontWeight = if (active) FontWeight.ExtraBold else FontWeight.Medium,
+                color = color,
+                maxLines = 1,
+            )
+        }
     }
 }

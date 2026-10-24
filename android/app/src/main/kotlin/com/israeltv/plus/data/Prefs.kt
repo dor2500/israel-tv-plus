@@ -3,6 +3,7 @@ package com.israeltv.plus.data
 import android.content.Context
 import androidx.compose.runtime.Stable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.core.content.edit
@@ -12,10 +13,17 @@ val AVATARS = listOf("1f60e", "1f431", "1f436", "1f98a", "1f981", "1f43c", "1f98
 
 fun avatarUrl(id: String) = "file:///android_asset/www/assets/avatars/$id.webp"
 
+data class UserProfile(
+    val id: String,
+    val name: String,
+    val avatar: String,
+    val paletteIndex: Int = 0,
+    val isWallpaper: Boolean = true,
+)
+
 /**
- * What the phone app remembers: favourites, recently watched, the avatar, the launch sound. Kept in the same
- * SharedPreferences file as MainActivity ("itv"), so the launch-sound switch is shared with it.
- * There is no mute setting of any kind: playback always runs at full volume.
+ * What the phone app remembers: favourites, recently watched, the avatar, the launch sound,
+ * theme/palette preferences and user profiles.
  */
 @Stable
 class AppPrefs(context: Context) {
@@ -29,8 +37,19 @@ class AppPrefs(context: Context) {
         private set
     var launchSound by mutableStateOf(sp.getBoolean("launchSound", true))
         private set
-    /** The update version whose modal was already shown on start (it opens once per version). */
     var updatePrompted by mutableStateOf(sp.getString("phoneUpdatePrompted", "") ?: "")
+        private set
+
+    // Pixel Wallpaper & Style theme preferences
+    var isDarkTheme by mutableStateOf(sp.getBoolean("isDarkTheme", true))
+        private set
+    var isWallpaperColors by mutableStateOf(sp.getBoolean("isWallpaperColors", true))
+        private set
+    var selectedPaletteIndex by mutableIntStateOf(sp.getInt("selectedPaletteIndex", 0))
+        private set
+
+    // Profiles
+    var activeProfileId by mutableStateOf(sp.getString("activeProfileId", "default") ?: "default")
         private set
 
     fun isFavorite(id: String) = id in favorites
@@ -58,6 +77,30 @@ class AppPrefs(context: Context) {
     fun markUpdatePrompted(version: String) {
         updatePrompted = version
         sp.edit { putString("phoneUpdatePrompted", version) }
+    }
+
+    fun updateDarkTheme(dark: Boolean) {
+        isDarkTheme = dark
+        sp.edit { putBoolean("isDarkTheme", dark) }
+    }
+
+    fun setWallpaperColorsMode(wallpaper: Boolean) {
+        isWallpaperColors = wallpaper
+        sp.edit { putBoolean("isWallpaperColors", wallpaper) }
+    }
+
+    fun selectPalette(index: Int) {
+        selectedPaletteIndex = index
+        sp.edit { putInt("selectedPaletteIndex", index) }
+    }
+
+    fun selectProfile(profileId: String, newAvatar: String) {
+        activeProfileId = profileId
+        avatar = newAvatar
+        sp.edit {
+            putString("activeProfileId", profileId)
+            putString("phoneAvatar", newAvatar)
+        }
     }
 
     private fun android.content.SharedPreferences.list(key: String): List<String> =
