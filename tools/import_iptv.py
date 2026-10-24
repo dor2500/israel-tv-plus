@@ -74,6 +74,17 @@ SKIP_IDS = {"Channel13.il",  # curated "רשת 13" already plays Channel 13
             "NickOnline.br"}  # Nickelodeon cartoons on an unofficial site
 # pay-TV sports / premium brands: a free stream of these is a re-stream without a licence (the free ESPN8 The Ocho,
 # DAZN / Pluto FAST channels and public broadcasters don't match)
+# re-stream servers that carry pay channels without a licence (AXN, Filmbox, Viasat, NatGeo, Star Channel,
+# Sony Movies, Food Network US, Fox News, Discovery India...) – nothing from them goes in (2026-10-24)
+PIRATE_HOSTS = {"92.114.85.87", "138.121.15.230", "190.61.47.54", "45.162.64.114", "168.196.127.137",
+                "23.237.104.106", "tvsen6.aynaott.com", "freem3u.xyz", "drk6xq0vhn.gpcdn.net", "stmv2.srvif.com",
+                "streaming.onnethn.com", "s6.hopslan.com", "nosignal1.antenaplay.ro"}
+
+
+def pirate_host(url):
+    return urllib.parse.urlsplit(url).hostname in PIRATE_HOSTS
+
+
 PAID_RE = re.compile(r"^(ESPN(?!8)|ESPN Premium|Fox Sports|Eurosport|Star Sports|Sony Sports|Ten Cricket|Eleven Sports|"
                      r"Okko|Match[!4 ]|TyC Sports|Win[+ ]|Win Sports|Tigo Sports|Canal\+|Golf Channel|Sky |"
                      # pay-TV kids / movie brands (their free FAST spin-offs on Pluto etc. are named differently)
@@ -297,7 +308,7 @@ def cmd_pick(work):
     score = lambda c: (c["iptv"] in logos, web(c), qual(c), c["lang"] in LANG_ORDER)
     crank = lambda cc: COUNTRY_ORDER.index(cc) if cc in COUNTRY_ORDER else len(COUNTRY_ORDER)
     must = [c for c in res if c["country"] == "IL" or c["lang"] in ("he", "yi")]
-    rest = [c for c in res if c not in must and not PAID_RE.match(c["name"])]
+    rest = [c for c in res if c not in must and not PAID_RE.match(c["name"]) and not pirate_host(c["url"])]
     pool = []
     for k, quota in QUOTA.items():
         groups = {}
@@ -351,7 +362,7 @@ def cmd_merge(work):
             cat = CAT_KIDS_HE if c["lang"] == "he" else CAT_KIDS_WORLD
         else:
             cat = CAT_NAME[k]
-        if PAID_RE.match(c["name"]):
+        if PAID_RE.match(c["name"]) or pirate_host(c["url"]):
             continue
         if norm(c["name"]) in taken_names and c["country"] == "IL" or c["iptv"] in SKIP_IDS or c["iptv"] in taken_iptv:
             continue  # curated version already there
