@@ -41,7 +41,7 @@
     theme: 'oled', accent: 'auto', uiScale: 1, cols: 0, hero: true, numbers: true, hints: true, perf: 'auto',
     startCat: 'ALL', autoplay: false, hideAppOnly: false, hiddenCats: [], hidden: [], showSource: true,
     pic: 'off', aspect: 'fit', sharpen: false, quality: 'auto', latency: 'stable', osdSec: 5, osdClock: true,
-    retry: true, zap: 'category', upNext: false,
+    retry: true, zap: 'category', upNext: true,
     remote: 'auto', keyRed: 'menu', keyGreen: 'aspect', keyYellow: 'fav', keyBlue: 'dub', longOk: 'menu', numWait: 1.2,
     saver: 2, kids: false, kidsPin: '', autoUpdate: true, liveUpdates: true, avatar: '1f60e',
     lastId: '', lastCat: 'ALL', seenColors: false
@@ -3103,7 +3103,7 @@
       var b = errorButtons();
       if (code === 37) state.perrIdx = clamp((state.perrIdx || 0) + 1, 0, b.length - 1);
       else if (code === 39) state.perrIdx = clamp((state.perrIdx || 0) - 1, 0, b.length - 1);
-      else if (code === 38 || code === 40) { zap(code === 40 ? 1 : -1); return; }
+      else if (code === 38 || code === 40) { zap(code === 38 ? (S.upNext ? 1 : -1) : (S.upNext ? -1 : 1)); return; }
       else if (isBack(code)) { closePlayer(false); return; }
       markFocus();
       return;

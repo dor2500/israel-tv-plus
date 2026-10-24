@@ -5802,6 +5802,26 @@ window.CHANNELS_DATA = [
   }
  },
  {
+  "id": "sport1_baltic",
+  "name": "Sport 1 בלטיק HD",
+  "title": "Sport 1 Baltic HD",
+  "category": "ספורט (Sports)",
+  "categoryEn": "sports",
+  "url": "http://stream.mcquack.net/461/index.m3u8",
+  "logo": "assets/logos/sport1_baltic.svg",
+  "badge": "FHD",
+  "desc": "ערוץ ספורט 1 הבלטי - שידורי כדורגל, כדורסל וספורט עולמי חי",
+  "lang": "en",
+  "number": 259,
+  "src": {
+   "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+   "kind": "restream",
+   "host": "stream.mcquack.net",
+   "found": "רשימה ידנית (גרסה קודמת)",
+   "web": "❌ רק באפליקציה (HTTP)"
+  }
+ },
+ {
   "id": "iptv_blacknewschannel_us",
   "name": "Black News Channel",
   "title": "Black News Channel (ארצות הברית)",
@@ -5816,7 +5836,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "BlackNewsChannel.us",
   "imported": true,
-  "number": 259,
+  "number": 260,
   "src": {
    "by": "blacknewschannel-xumo-us.amagi.tv",
    "kind": "public",
@@ -5840,7 +5860,7 @@ window.CHANNELS_DATA = [
   "countryHe": "בריטניה",
   "iptv": "IranInternational.uk",
   "imported": true,
-  "number": 260,
+  "number": 261,
   "src": {
    "by": "hlspackager.akamaized.net",
    "kind": "public",
@@ -5864,7 +5884,7 @@ window.CHANNELS_DATA = [
   "countryHe": "צרפת",
   "iptv": "Africa24English.fr",
   "imported": true,
-  "number": 261,
+  "number": 262,
   "src": {
    "by": "edge20.vedge.infomaniak.com",
    "kind": "public",
@@ -5888,7 +5908,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "DW.de",
   "imported": true,
-  "number": 262,
+  "number": 263,
   "src": {
    "by": "dwamdstream103.akamaized.net",
    "kind": "public",
@@ -5912,7 +5932,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ספרד",
   "iptv": "M95TelevisionMarbella.es",
   "imported": true,
-  "number": 263,
+  "number": 264,
   "src": {
    "by": "limited2.todostreaming.es",
    "kind": "public",
@@ -5936,7 +5956,7 @@ window.CHANNELS_DATA = [
   "countryHe": "איטליה",
   "iptv": "RaiNews24.it",
   "imported": true,
-  "number": 264,
+  "number": 265,
   "src": {
    "by": "d3k8wzt41aflvx.cloudfront.net",
    "kind": "public",
@@ -5960,7 +5980,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רוסיה",
   "iptv": "RT.ru",
   "imported": true,
-  "number": 265,
+  "number": 266,
   "src": {
    "by": "rt-glb.rttv.com",
    "kind": "public",
@@ -5984,7 +6004,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אוקראינה",
   "iptv": "FREEDOM.ua",
   "imported": true,
-  "number": 266,
+  "number": 267,
   "src": {
    "by": "dash4.antik.sk",
    "kind": "public",
@@ -6008,7 +6028,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קנדה",
   "iptv": "HamdardTV.ca",
   "imported": true,
-  "number": 267,
+  "number": 268,
   "src": {
    "by": "tv.hamdardtv.com",
    "kind": "public",
@@ -6032,7 +6052,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אוסטרליה",
   "iptv": "News24.au",
   "imported": true,
-  "number": 268,
+  "number": 269,
   "src": {
    "by": "skynewsau-live-premium.akamaized.net",
    "kind": "public",
@@ -6056,7 +6076,7 @@ window.CHANNELS_DATA = [
   "countryHe": "איחוד האמירויות הערביות",
   "iptv": "AlArabiyaPrograms.ae",
   "imported": true,
-  "number": 269,
+  "number": 270,
   "src": {
    "by": "live.alarabiya.net",
    "kind": "public",
@@ -6080,7 +6100,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קטאר",
   "iptv": "AlArabyTV.qa",
   "imported": true,
-  "number": 270,
+  "number": 271,
   "src": {
    "by": "live.kwikmotion.com",
    "kind": "public",
@@ -6104,7 +6124,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ערב הסעודית",
   "iptv": "AlHadath.sa",
   "imported": true,
-  "number": 271,
+  "number": 272,
   "src": {
    "by": "av.alarabiya.net",
    "kind": "public",
@@ -6128,7 +6148,7 @@ window.CHANNELS_DATA = [
   "countryHe": "מצרים",
   "iptv": "AlGhadTV.eg",
   "imported": true,
-  "number": 272,
+  "number": 273,
   "src": {
    "by": "eazyvwqssi.erbvr.com",
    "kind": "public",
@@ -6152,7 +6172,7 @@ window.CHANNELS_DATA = [
   "countryHe": "לבנון",
   "iptv": "RedTVLebanon.lb",
   "imported": true,
-  "number": 273,
+  "number": 274,
   "src": {
    "by": "live.kwikmotion.com",
    "kind": "public",
@@ -6176,7 +6196,7 @@ window.CHANNELS_DATA = [
   "countryHe": "טורקיה",
   "iptv": "TRTWorld.tr",
   "imported": true,
-  "number": 274,
+  "number": 275,
   "src": {
    "by": "tv-trtworld.medya.trt.com.tr",
    "kind": "public",
@@ -6200,7 +6220,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הודו",
   "iptv": "CNNNews18.in",
   "imported": true,
-  "number": 275,
+  "number": 276,
   "src": {
    "by": "n18syndication.akamaized.net",
    "kind": "public",
@@ -6224,7 +6244,7 @@ window.CHANNELS_DATA = [
   "countryHe": "יפן",
   "iptv": "NHKWorldJapan.jp",
   "imported": true,
-  "number": 276,
+  "number": 277,
   "src": {
    "by": "masterpl.hls.nhkworld.jp",
    "kind": "public",
@@ -6248,7 +6268,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קוריאה הדרומית",
   "iptv": "ArirangTV.kr",
   "imported": true,
-  "number": 277,
+  "number": 278,
   "src": {
    "by": "freem3u.xyz",
    "kind": "public",
@@ -6272,7 +6292,7 @@ window.CHANNELS_DATA = [
   "countryHe": "סין",
   "iptv": "CGTN.cn",
   "imported": true,
-  "number": 278,
+  "number": 279,
   "src": {
    "by": "amg00405-rakutentv-cgtn-rakuten-i9tar.amagi.tv",
    "kind": "public",
@@ -6296,7 +6316,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ברזיל",
   "iptv": "CNNBrasil.br",
   "imported": true,
-  "number": 279,
+  "number": 280,
   "src": {
    "by": "d25usgadhphvwi.cloudfront.net",
    "kind": "public",
@@ -6320,7 +6340,7 @@ window.CHANNELS_DATA = [
   "countryHe": "מקסיקו",
   "iptv": "IcrtvColima.mx",
   "imported": true,
-  "number": 280,
+  "number": 281,
   "src": {
    "by": "5fc584f3f19c9.streamlock.net",
    "kind": "public",
@@ -6344,7 +6364,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארגנטינה",
   "iptv": "Canal26.ar",
   "imported": true,
-  "number": 281,
+  "number": 282,
   "src": {
    "by": "stream-gtlc.telecentro.net.ar",
    "kind": "public",
@@ -6368,7 +6388,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פורטוגל",
   "iptv": "ARTV.pt",
   "imported": true,
-  "number": 282,
+  "number": 283,
   "src": {
    "by": "playout172.livextend.cloud",
    "kind": "public",
@@ -6392,7 +6412,7 @@ window.CHANNELS_DATA = [
   "countryHe": "בלגיה",
   "iptv": "EbS.be",
   "imported": true,
-  "number": 283,
+  "number": 284,
   "src": {
    "by": "streams.prd.commavservices.eu",
    "kind": "public",
@@ -6417,7 +6437,7 @@ window.CHANNELS_DATA = [
   "iptv": "Meteonews.ch",
   "imported": true,
   "webOk": false,
-  "number": 284,
+  "number": 285,
   "src": {
    "by": "streaming.meteonews.net",
    "kind": "public",
@@ -6441,7 +6461,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פולין",
   "iptv": "Euronews.pl",
   "imported": true,
-  "number": 285,
+  "number": 286,
   "src": {
    "by": "cdn-euronews.akamaized.net",
    "kind": "public",
@@ -6465,7 +6485,7 @@ window.CHANNELS_DATA = [
   "countryHe": "יוון",
   "iptv": "AstraTV.gr",
   "imported": true,
-  "number": 286,
+  "number": 287,
   "src": {
    "by": "server.gointernet.gr",
    "kind": "public",
@@ -6489,7 +6509,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שוודיה",
   "iptv": "MiracleChannel.se",
   "imported": true,
-  "number": 287,
+  "number": 288,
   "src": {
    "by": "live.miracleonline.org",
    "kind": "public",
@@ -6513,7 +6533,7 @@ window.CHANNELS_DATA = [
   "countryHe": "דנמרק",
   "iptv": "TVfromtheDanishParliament.dk",
   "imported": true,
-  "number": 288,
+  "number": 289,
   "src": {
    "by": "cdnapi.kaltura.com",
    "kind": "public",
@@ -6537,7 +6557,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פינלנד",
   "iptv": "NopolaNews.fi",
   "imported": true,
-  "number": 289,
+  "number": 290,
   "src": {
    "by": "virta2.nopolanews.fi",
    "kind": "public",
@@ -6561,7 +6581,7 @@ window.CHANNELS_DATA = [
   "countryHe": "צ׳כיה",
   "iptv": "CurrentTimeTV.cz",
   "imported": true,
-  "number": 290,
+  "number": 291,
   "src": {
    "by": "rfe-ingest.akamaized.net",
    "kind": "public",
@@ -6585,7 +6605,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רומניה",
   "iptv": "DottoTV.ro",
   "imported": true,
-  "number": 291,
+  "number": 292,
   "src": {
    "by": "live.dottotv.ro",
    "kind": "public",
@@ -6609,7 +6629,7 @@ window.CHANNELS_DATA = [
   "countryHe": "צ׳ילה",
   "iptv": "NCTV.cl",
   "imported": true,
-  "number": 292,
+  "number": 293,
   "src": {
    "by": "pantera1-100gb-cl-movistar.dps.live",
    "kind": "public",
@@ -6633,7 +6653,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קולומביה",
   "iptv": "Noticiero90Minutos.co",
   "imported": true,
-  "number": 293,
+  "number": 294,
   "src": {
    "by": "play.cdn.enetres.net",
    "kind": "public",
@@ -6657,7 +6677,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פרו",
   "iptv": "RPPTV.pe",
   "imported": true,
-  "number": 294,
+  "number": 295,
   "src": {
    "by": "redirector.rudo.video",
    "kind": "public",
@@ -6681,7 +6701,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אינדונזיה",
   "iptv": "BTV.id",
   "imported": true,
-  "number": 295,
+  "number": 296,
   "src": {
    "by": "lnd0t3b922.tenbytecdn.com",
    "kind": "public",
@@ -6705,7 +6725,7 @@ window.CHANNELS_DATA = [
   "countryHe": "תאילנד",
   "iptv": "13SiamThai.th",
   "imported": true,
-  "number": 296,
+  "number": 297,
   "src": {
    "by": "live.x2.co.th",
    "kind": "public",
@@ -6729,7 +6749,7 @@ window.CHANNELS_DATA = [
   "countryHe": "וייטנאם",
   "iptv": "DongNaiTV1.vn",
   "imported": true,
-  "number": 297,
+  "number": 298,
   "src": {
    "by": "freem3u.xyz",
    "kind": "public",
@@ -6753,7 +6773,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פקיסטן",
   "iptv": "NeoNews.pk",
   "imported": true,
-  "number": 298,
+  "number": 299,
   "src": {
    "by": "vodzong.mjunoon.tv",
    "kind": "public",
@@ -6777,7 +6797,7 @@ window.CHANNELS_DATA = [
   "countryHe": "איראן",
   "iptv": "MihanTV.ir",
   "imported": true,
-  "number": 299,
+  "number": 300,
   "src": {
    "by": "iptv.mihantv.com",
    "kind": "public",
@@ -6801,7 +6821,7 @@ window.CHANNELS_DATA = [
   "countryHe": "מרוקו",
   "iptv": "Medi1TVArabic.ma",
   "imported": true,
-  "number": 300,
+  "number": 301,
   "src": {
    "by": "cdn.live.easybroadcast.io",
    "kind": "public",
@@ -6825,7 +6845,7 @@ window.CHANNELS_DATA = [
   "countryHe": "דרום אפריקה",
   "iptv": "LN24SA.za",
   "imported": true,
-  "number": 301,
+  "number": 302,
   "src": {
    "by": "cdnstack.internetmultimediaonline.org",
    "kind": "public",
@@ -6849,7 +6869,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ניגריה",
   "iptv": "SilverbirdNews24.ng",
   "imported": true,
-  "number": 302,
+  "number": 303,
   "src": {
    "by": "viewmedia7219.bozztv.com",
    "kind": "public",
@@ -6873,7 +6893,7 @@ window.CHANNELS_DATA = [
   "countryHe": "עיראק",
   "iptv": "AlSharqiyaNews.iq",
   "imported": true,
-  "number": 303,
+  "number": 304,
   "src": {
    "by": "indexforce.com",
    "kind": "public",
@@ -6897,7 +6917,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הרפובליקה הדומיניקנית",
   "iptv": "Carivision.do",
   "imported": true,
-  "number": 304,
+  "number": 305,
   "src": {
    "by": "ss2.tvrdomi.com",
    "kind": "public",
@@ -6921,7 +6941,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הונדורס",
   "iptv": "HCH.hn",
   "imported": true,
-  "number": 305,
+  "number": 306,
   "src": {
    "by": "live.streamhch.com",
    "kind": "public",
@@ -6945,7 +6965,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אלבניה",
   "iptv": "CNA.al",
   "imported": true,
-  "number": 306,
+  "number": 307,
   "src": {
    "by": "live1.mediadesk.al",
    "kind": "public",
@@ -6969,7 +6989,7 @@ window.CHANNELS_DATA = [
   "countryHe": "סוריה",
   "iptv": "HalabTodayTV.sy",
   "imported": true,
-  "number": 307,
+  "number": 308,
   "src": {
    "by": "halabtoday-live.lg.mncdn.com",
    "kind": "public",
@@ -6993,7 +7013,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ונצואלה",
   "iptv": "CanalI.ve",
   "imported": true,
-  "number": 308,
+  "number": 309,
   "src": {
    "by": "streaming.canal-i.com",
    "kind": "public",
@@ -7017,7 +7037,7 @@ window.CHANNELS_DATA = [
   "countryHe": "בוליביה",
   "iptv": "CEACOMTV.bo",
   "imported": true,
-  "number": 309,
+  "number": 310,
   "src": {
    "by": "eu1.servers10.com",
    "kind": "public",
@@ -7041,7 +7061,7 @@ window.CHANNELS_DATA = [
   "countryHe": "סלובקיה",
   "iptv": "AntikInfoTV.sk",
   "imported": true,
-  "number": 310,
+  "number": 311,
   "src": {
    "by": "dash4.antik.sk",
    "kind": "public",
@@ -7065,7 +7085,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אזרבייג׳ן",
   "iptv": "BakuTV.az",
   "imported": true,
-  "number": 311,
+  "number": 312,
   "src": {
    "by": "rtmp.baku.tv",
    "kind": "public",
@@ -7089,7 +7109,7 @@ window.CHANNELS_DATA = [
   "countryHe": "כווית",
   "iptv": "KTV2.kw",
   "imported": true,
-  "number": 312,
+  "number": 313,
   "src": {
    "by": "kwtktv2ta.cdn.mangomolo.com",
    "kind": "public",
@@ -7113,7 +7133,7 @@ window.CHANNELS_DATA = [
   "countryHe": "טוגו",
   "iptv": "NWInfo2.tg",
   "imported": true,
-  "number": 313,
+  "number": 314,
   "src": {
    "by": "hls.newworldtv.com",
    "kind": "public",
@@ -7137,7 +7157,7 @@ window.CHANNELS_DATA = [
   "countryHe": "בלארוס",
   "iptv": "Belarus24.by",
   "imported": true,
-  "number": 314,
+  "number": 315,
   "src": {
    "by": "ngtrk.dc.beltelecom.by",
    "kind": "public",
@@ -7161,7 +7181,7 @@ window.CHANNELS_DATA = [
   "countryHe": "תימן",
   "iptv": "AlMasirah.ye",
   "imported": true,
-  "number": 315,
+  "number": 316,
   "src": {
    "by": "live.cdnbridge.tv",
    "kind": "public",
@@ -7185,7 +7205,7 @@ window.CHANNELS_DATA = [
   "countryHe": "השטחים הפלסטיניים",
   "iptv": "AlNajahNews.ps",
   "imported": true,
-  "number": 316,
+  "number": 317,
   "src": {
    "by": "streaming.najah.edu",
    "kind": "public",
@@ -7209,7 +7229,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ירדן",
   "iptv": "AltaghierTV.jo",
   "imported": true,
-  "number": 317,
+  "number": 318,
   "src": {
    "by": "jmc-live.ercdn.net",
    "kind": "public",
@@ -7233,7 +7253,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אקוודור",
   "iptv": "TVLegislativa.ec",
   "imported": true,
-  "number": 318,
+  "number": 319,
   "src": {
    "by": "streamingav.asambleanacional.gob.ec",
    "kind": "public",
@@ -7258,7 +7278,7 @@ window.CHANNELS_DATA = [
   "iptv": "EkusheyTV.bd",
   "imported": true,
   "webOk": false,
-  "number": 319,
+  "number": 320,
   "src": {
    "by": "ekusheyserver.com",
    "kind": "public",
@@ -7282,7 +7302,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גאורגיה",
   "iptv": "Formula.ge",
   "imported": true,
-  "number": 320,
+  "number": 321,
   "src": {
    "by": "c4635.cdn.xsg.ge",
    "kind": "public",
@@ -7306,7 +7326,7 @@ window.CHANNELS_DATA = [
   "countryHe": "מולדובה",
   "iptv": "PrivescEuTV.md",
   "imported": true,
-  "number": 321,
+  "number": 322,
   "src": {
    "by": "cachestar.privesc.eu",
    "kind": "public",
@@ -7330,7 +7350,7 @@ window.CHANNELS_DATA = [
   "countryHe": "סינגפור",
   "iptv": "CNA.sg",
   "imported": true,
-  "number": 322,
+  "number": 323,
   "src": {
    "by": "d2e1asnsl7br7b.cloudfront.net",
    "kind": "public",
@@ -7354,7 +7374,7 @@ window.CHANNELS_DATA = [
   "countryHe": "איי בהאמה",
   "iptv": "GuardianTalkRadio.bs",
   "imported": true,
-  "number": 323,
+  "number": 324,
   "src": {
    "by": "cdn-edge1.streamcomedia.com",
    "kind": "public",
@@ -7378,7 +7398,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ניו זילנד",
   "iptv": "ParliamentTV.nz",
   "imported": true,
-  "number": 324,
+  "number": 325,
   "src": {
    "by": "ptvlive.kordia.net.nz",
    "kind": "public",
@@ -7402,7 +7422,7 @@ window.CHANNELS_DATA = [
   "countryHe": "לוב",
   "iptv": "AlMasarTV.ly",
   "imported": true,
-  "number": 325,
+  "number": 326,
   "src": {
    "by": "starmenajo.com",
    "kind": "public",
@@ -7426,7 +7446,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אלג׳יריה",
   "iptv": "AL24News.dz",
   "imported": true,
-  "number": 326,
+  "number": 327,
   "src": {
    "by": "cdn.live.easybroadcast.io",
    "kind": "public",
@@ -7450,7 +7470,7 @@ window.CHANNELS_DATA = [
   "countryHe": "סודן",
   "iptv": "DabangaTV.sd",
   "imported": true,
-  "number": 327,
+  "number": 328,
   "src": {
    "by": "hls.dabangasudan.org",
    "kind": "public",
@@ -7474,7 +7494,7 @@ window.CHANNELS_DATA = [
   "countryHe": "עומאן",
   "iptv": "OmanTVMubashir.om",
   "imported": true,
-  "number": 328,
+  "number": 329,
   "src": {
    "by": "partwota.cdn.mgmlcdn.com",
    "kind": "public",
@@ -7498,7 +7518,7 @@ window.CHANNELS_DATA = [
   "countryHe": "מאוריטניה",
   "iptv": "Sahara24.mr",
   "imported": true,
-  "number": 329,
+  "number": 330,
   "src": {
    "by": "live.saharamedias.net",
    "kind": "public",
@@ -7522,7 +7542,7 @@ window.CHANNELS_DATA = [
   "countryHe": "חוף השנהב",
   "iptv": "7Info.ci",
   "imported": true,
-  "number": 330,
+  "number": 331,
   "src": {
    "by": "video1.getstreamhosting.com",
    "kind": "public",
@@ -7546,7 +7566,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קונגו - קינשאסה",
   "iptv": "BarakaTelevision.cd",
   "imported": true,
-  "number": 331,
+  "number": 332,
   "src": {
    "by": "stream.berosat.live",
    "kind": "public",
@@ -7570,7 +7590,7 @@ window.CHANNELS_DATA = [
   "countryHe": "האיטי",
   "iptv": "HaitiNewsChannel.ht",
   "imported": true,
-  "number": 332,
+  "number": 333,
   "src": {
    "by": "cdn.haititivi.com",
    "kind": "public",
@@ -7594,7 +7614,7 @@ window.CHANNELS_DATA = [
   "countryHe": "מונקו",
   "iptv": "MonacoInfo.mc",
   "imported": true,
-  "number": 333,
+  "number": 334,
   "src": {
    "by": "webtv.monacoinfo.com",
    "kind": "public",
@@ -7618,7 +7638,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גואטמלה",
   "iptv": "Guatevision.gt",
   "imported": true,
-  "number": 334,
+  "number": 335,
   "src": {
    "by": "mdstrm.com",
    "kind": "public",
@@ -7642,7 +7662,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קוסטה ריקה",
   "iptv": "NorteInformativoTV.cr",
   "imported": true,
-  "number": 335,
+  "number": 336,
   "src": {
    "by": "videohd.live",
    "kind": "public",
@@ -7666,7 +7686,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קובה",
   "iptv": "PrensaLatinaTV.cu",
   "imported": true,
-  "number": 336,
+  "number": 337,
   "src": {
    "by": "eu1.servers10.com",
    "kind": "public",
@@ -7690,7 +7710,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פנמה",
   "iptv": "RadioAncon.pa",
   "imported": true,
-  "number": 337,
+  "number": 338,
   "src": {
    "by": "www.streaming507.net",
    "kind": "public",
@@ -7714,7 +7734,7 @@ window.CHANNELS_DATA = [
   "countryHe": "לאוס",
   "iptv": "BrianTV.la",
   "imported": true,
-  "number": 338,
+  "number": 339,
   "src": {
    "by": "livefta.malimarcdn.com",
    "kind": "public",
@@ -7738,7 +7758,7 @@ window.CHANNELS_DATA = [
   "countryHe": "מיאנמר (בורמה)",
   "iptv": "DVBTV.mm",
   "imported": true,
-  "number": 339,
+  "number": 340,
   "src": {
    "by": "live-stream.dvb.no",
    "kind": "public",
@@ -7762,7 +7782,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארמניה",
   "iptv": "FirstChannelNews.am",
   "imported": true,
-  "number": 340,
+  "number": 341,
   "src": {
    "by": "amtvusdvr.tulix.tv",
    "kind": "public",
@@ -7786,7 +7806,7 @@ window.CHANNELS_DATA = [
   "countryHe": "בוסניה והרצגובינה",
   "iptv": "NewsmaxBalkans.ba",
   "imported": true,
-  "number": 341,
+  "number": 342,
   "src": {
    "by": "newsmaxadria.mts-si.tv",
    "kind": "public",
@@ -7810,7 +7830,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אפגניסטן",
   "iptv": "TOLOnews.af",
   "imported": true,
-  "number": 342,
+  "number": 343,
   "src": {
    "by": "tgn.bozztv.com",
    "kind": "public",
@@ -7834,7 +7854,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קוסובו",
   "iptv": "TVArta.xk",
   "imported": true,
-  "number": 343,
+  "number": 344,
   "src": {
    "by": "gjirafa-video-live.gjirafa.net",
    "kind": "public",
@@ -7858,7 +7878,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קרואטיה",
   "iptv": "TVJadran.hr",
   "imported": true,
-  "number": 344,
+  "number": 345,
   "src": {
    "by": "tvjadran.stream.agatin.hr",
    "kind": "public",
@@ -7882,7 +7902,7 @@ window.CHANNELS_DATA = [
   "countryHe": "איסלנד",
   "iptv": "Visir.is",
   "imported": true,
-  "number": 345,
+  "number": 346,
   "src": {
    "by": "live.visir.is",
    "kind": "public",
@@ -7906,7 +7926,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "BXInform.us",
   "imported": true,
-  "number": 346,
+  "number": 347,
   "src": {
    "by": "reflect-stream-bronxnet.cablecast.tv",
    "kind": "public",
@@ -7930,7 +7950,7 @@ window.CHANNELS_DATA = [
   "countryHe": "בריטניה",
   "iptv": "DunyaNewsUK.uk",
   "imported": true,
-  "number": 347,
+  "number": 348,
   "src": {
    "by": "ukintl.dunyanews.tv",
    "kind": "public",
@@ -7954,7 +7974,7 @@ window.CHANNELS_DATA = [
   "countryHe": "צרפת",
   "iptv": "Africa24.fr",
   "imported": true,
-  "number": 348,
+  "number": 349,
   "src": {
    "by": "africa24.vedge.infomaniak.com",
    "kind": "public",
@@ -7978,7 +7998,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ספרד",
   "iptv": "3CatCameresdeltemps.es",
   "imported": true,
-  "number": 349,
+  "number": 350,
   "src": {
    "by": "directes-tv-int.3catdirectes.cat",
    "kind": "public",
@@ -8002,7 +8022,7 @@ window.CHANNELS_DATA = [
   "countryHe": "איטליה",
   "iptv": "SenatoTV.it",
   "imported": true,
-  "number": 350,
+  "number": 351,
   "src": {
    "by": "senato-live.morescreens.com",
    "kind": "public",
@@ -8026,7 +8046,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רוסיה",
   "iptv": "360News.ru",
   "imported": true,
-  "number": 351,
+  "number": 352,
   "src": {
    "by": "live-vgtrksmotrim.cdnvideo.ru",
    "kind": "public",
@@ -8050,7 +8070,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אוקראינה",
   "iptv": "Channel24.ua",
   "imported": true,
-  "number": 352,
+  "number": 353,
   "src": {
    "by": "streamvideol1.luxnet.ua",
    "kind": "public",
@@ -8074,7 +8094,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קנדה",
   "iptv": "CityNewsCalgary.ca",
   "imported": true,
-  "number": 353,
+  "number": 354,
   "src": {
    "by": "citynewsregional.akamaized.net",
    "kind": "public",
@@ -8098,7 +8118,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אוסטרליה",
   "iptv": "tickerNews.au",
   "imported": true,
-  "number": 354,
+  "number": 355,
   "src": {
    "by": "live-hls-7agy.livepush.io",
    "kind": "public",
@@ -8122,7 +8142,7 @@ window.CHANNELS_DATA = [
   "countryHe": "איחוד האמירויות הערביות",
   "iptv": "AlYaumTV.ae",
   "imported": true,
-  "number": 355,
+  "number": 356,
   "src": {
    "by": "hlspackager.akamaized.net",
    "kind": "public",
@@ -8146,7 +8166,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קטאר",
   "iptv": "AlArabyTV2.qa",
   "imported": true,
-  "number": 356,
+  "number": 357,
   "src": {
    "by": "live.kwikmotion.com",
    "kind": "public",
@@ -8170,7 +8190,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ערב הסעודית",
   "iptv": "AlAlamAlYawm.sa",
   "imported": true,
-  "number": 357,
+  "number": 358,
   "src": {
    "by": "mn-nl.mncdn.com",
    "kind": "public",
@@ -8194,7 +8214,7 @@ window.CHANNELS_DATA = [
   "countryHe": "לבנון",
   "iptv": "VoiceofLebanon.lb",
   "imported": true,
-  "number": 358,
+  "number": 359,
   "src": {
    "by": "Asharq Discovery – ItWorks (רשמי)",
    "kind": "official",
@@ -8218,7 +8238,7 @@ window.CHANNELS_DATA = [
   "countryHe": "טורקיה",
   "iptv": "MekameleenTV.tr",
   "imported": true,
-  "number": 359,
+  "number": 360,
   "src": {
    "by": "mn-nl.mncdn.com",
    "kind": "public",
@@ -8242,7 +8262,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הודו",
   "iptv": "News18AssamNorthEast.in",
   "imported": true,
-  "number": 360,
+  "number": 361,
   "src": {
    "by": "n18syndication.akamaized.net",
    "kind": "public",
@@ -8266,7 +8286,7 @@ window.CHANNELS_DATA = [
   "countryHe": "יפן",
   "iptv": "Weathernews.jp",
   "imported": true,
-  "number": 361,
+  "number": 362,
   "src": {
    "by": "rch01e-alive-hls.akamaized.net",
    "kind": "public",
@@ -8290,7 +8310,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קוריאה הדרומית",
   "iptv": "ArirangUN.kr",
   "imported": true,
-  "number": 362,
+  "number": 363,
   "src": {
    "by": "amdlive-ch02-ctnd-com.akamaized.net",
    "kind": "public",
@@ -8314,7 +8334,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ברזיל",
   "iptv": "STZTV.br",
   "imported": true,
-  "number": 363,
+  "number": 364,
   "src": {
    "by": "cdn.live.br1.jmvstream.com",
    "kind": "public",
@@ -8338,7 +8358,7 @@ window.CHANNELS_DATA = [
   "countryHe": "מקסיקו",
   "iptv": "AMXNoticias.mx",
   "imported": true,
-  "number": 364,
+  "number": 365,
   "src": {
    "by": "5e50264bd6766.streamlock.net",
    "kind": "public",
@@ -8362,7 +8382,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארגנטינה",
   "iptv": "VIVETV.ar",
   "imported": true,
-  "number": 365,
+  "number": 366,
   "src": {
    "by": "vivo.solumedia.com",
    "kind": "public",
@@ -8386,7 +8406,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פורטוגל",
   "iptv": "CNNPortugal.pt",
   "imported": true,
-  "number": 366,
+  "number": 367,
   "src": {
    "by": "github.com",
    "kind": "public",
@@ -8410,7 +8430,7 @@ window.CHANNELS_DATA = [
   "countryHe": "בלגיה",
   "iptv": "EbSPlus.be",
   "imported": true,
-  "number": 367,
+  "number": 368,
   "src": {
    "by": "streams.prd.commavservices.eu",
    "kind": "public",
@@ -8434,7 +8454,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פולין",
   "iptv": "TVKStella.pl",
   "imported": true,
-  "number": 368,
+  "number": 369,
   "src": {
    "by": "stream.tvkstella.pl",
    "kind": "public",
@@ -8458,7 +8478,7 @@ window.CHANNELS_DATA = [
   "countryHe": "יוון",
   "iptv": "HellenicParliamentTV.gr",
   "imported": true,
-  "number": 369,
+  "number": 370,
   "src": {
    "by": "ert-ucdn.broadpeak-aas.com",
    "kind": "public",
@@ -8482,7 +8502,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שוודיה",
   "iptv": "DiTV.se",
   "imported": true,
-  "number": 370,
+  "number": 371,
   "src": {
    "by": "cdn0-03837-liveedge0.dna.ip-only.net",
    "kind": "public",
@@ -8506,7 +8526,7 @@ window.CHANNELS_DATA = [
   "countryHe": "צ׳כיה",
   "iptv": "CT24.cz",
   "imported": true,
-  "number": 371,
+  "number": 372,
   "src": {
    "by": "dash2.antik.sk",
    "kind": "public",
@@ -8530,7 +8550,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רומניה",
   "iptv": "AlephNews.ro",
   "imported": true,
-  "number": 372,
+  "number": 373,
   "src": {
    "by": "stream-aleph.m.ro",
    "kind": "public",
@@ -8554,7 +8574,7 @@ window.CHANNELS_DATA = [
   "countryHe": "צ׳ילה",
   "iptv": "T13EnVivo.cl",
   "imported": true,
-  "number": 373,
+  "number": 374,
   "src": {
    "by": "redirector.dps.live",
    "kind": "public",
@@ -8578,7 +8598,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קולומביה",
   "iptv": "NTN24.co",
   "imported": true,
-  "number": 374,
+  "number": 375,
   "src": {
    "by": "stream1.bitred.cl",
    "kind": "public",
@@ -8602,7 +8622,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פרו",
   "iptv": "Conecta2TV.pe",
   "imported": true,
-  "number": 375,
+  "number": 376,
   "src": {
    "by": "live.obslivestream.com",
    "kind": "public",
@@ -8626,7 +8646,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אינדונזיה",
   "iptv": "LingkarTV.id",
   "imported": true,
-  "number": 376,
+  "number": 377,
   "src": {
    "by": "lingkartv.my.id",
    "kind": "public",
@@ -8650,7 +8670,7 @@ window.CHANNELS_DATA = [
   "countryHe": "תאילנד",
   "iptv": "ThaiParliamentTelevision.th",
   "imported": true,
-  "number": 377,
+  "number": 378,
   "src": {
    "by": "tv-live.tpchannel.org",
    "kind": "public",
@@ -8674,7 +8694,7 @@ window.CHANNELS_DATA = [
   "countryHe": "וייטנאם",
   "iptv": "TraVinhTV.vn",
   "imported": true,
-  "number": 378,
+  "number": 379,
   "src": {
    "by": "freem3u.xyz",
    "kind": "public",
@@ -8698,7 +8718,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פקיסטן",
   "iptv": "DunyaNews.pk",
   "imported": true,
-  "number": 379,
+  "number": 380,
   "src": {
    "by": "imob.dunyanews.tv",
    "kind": "public",
@@ -8722,7 +8742,7 @@ window.CHANNELS_DATA = [
   "countryHe": "מרוקו",
   "iptv": "Medi1TVAfrique.ma",
   "imported": true,
-  "number": 380,
+  "number": 381,
   "src": {
    "by": "cdn.live.easybroadcast.io",
    "kind": "public",
@@ -8746,7 +8766,7 @@ window.CHANNELS_DATA = [
   "countryHe": "דרום אפריקה",
   "iptv": "SABCNews.za",
   "imported": true,
-  "number": 381,
+  "number": 382,
   "src": {
    "by": "sabconetanw.cdn.mangomolo.com",
    "kind": "public",
@@ -8770,7 +8790,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ניגריה",
   "iptv": "NewsCentral.ng",
   "imported": true,
-  "number": 382,
+  "number": 383,
   "src": {
    "by": "wf.newscentral.ng",
    "kind": "public",
@@ -8794,7 +8814,7 @@ window.CHANNELS_DATA = [
   "countryHe": "עיראק",
   "iptv": "AlghadeerTV.iq",
   "imported": true,
-  "number": 383,
+  "number": 384,
   "src": {
    "by": "sd343444.vodu.store",
    "kind": "public",
@@ -8818,7 +8838,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הרפובליקה הדומיניקנית",
   "iptv": "RDN.do",
   "imported": true,
-  "number": 384,
+  "number": 385,
   "src": {
    "by": "edge.essastream.com",
    "kind": "public",
@@ -8842,7 +8862,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פרגוואי",
   "iptv": "MegaTV.py",
   "imported": true,
-  "number": 385,
+  "number": 386,
   "src": {
    "by": "www.desde-paraguay.com",
    "kind": "public",
@@ -8866,7 +8886,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הונדורס",
   "iptv": "LencaTV.hn",
   "imported": true,
-  "number": 386,
+  "number": 387,
   "src": {
    "by": "lencatelevision.com",
    "kind": "public",
@@ -8890,7 +8910,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אלבניה",
   "iptv": "ntv.al",
   "imported": true,
-  "number": 387,
+  "number": 388,
   "src": {
    "by": "protokolldns.xyz",
    "kind": "public",
@@ -8914,7 +8934,7 @@ window.CHANNELS_DATA = [
   "countryHe": "סוריה",
   "iptv": "SyriaTV.sy",
   "imported": true,
-  "number": 388,
+  "number": 389,
   "src": {
    "by": "live.kwikmotion.com",
    "kind": "public",
@@ -8938,7 +8958,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קמרון",
   "iptv": "CRTVNews.cm",
   "imported": true,
-  "number": 389,
+  "number": 390,
   "src": {
    "by": "live1.acangroup.org",
    "kind": "public",
@@ -8962,7 +8982,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ונצואלה",
   "iptv": "Telesur.ve",
   "imported": true,
-  "number": 390,
+  "number": 391,
   "src": {
    "by": "mblenmain01.telesur.ultrabase.net",
    "kind": "public",
@@ -8986,7 +9006,7 @@ window.CHANNELS_DATA = [
   "countryHe": "בוליביה",
   "iptv": "UMSATVULP.bo",
   "imported": true,
-  "number": 391,
+  "number": 392,
   "src": {
    "by": "edge.enhdtv.com",
    "kind": "public",
@@ -9010,7 +9030,7 @@ window.CHANNELS_DATA = [
   "countryHe": "סלובקיה",
   "iptv": "TVNRSR.sk",
   "imported": true,
-  "number": 392,
+  "number": 393,
   "src": {
    "by": "n11.stv.livebox.sk",
    "kind": "public",
@@ -9034,7 +9054,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אזרבייג׳ן",
   "iptv": "APATv.az",
   "imported": true,
-  "number": 393,
+  "number": 394,
   "src": {
    "by": "stream.apa.tv",
    "kind": "public",
@@ -9058,7 +9078,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קמבודיה",
   "iptv": "FreshNews.kh",
   "imported": true,
-  "number": 394,
+  "number": 395,
   "src": {
    "by": "streaming-android.freshnewsasia.tv",
    "kind": "public",
@@ -9082,7 +9102,7 @@ window.CHANNELS_DATA = [
   "countryHe": "כווית",
   "iptv": "KTVNews.kw",
   "imported": true,
-  "number": 395,
+  "number": 396,
   "src": {
    "by": "kwtkbta.cdn.mangomolo.com",
    "kind": "public",
@@ -9106,7 +9126,7 @@ window.CHANNELS_DATA = [
   "countryHe": "טוגו",
   "iptv": "NWInfo.tg",
   "imported": true,
-  "number": 396,
+  "number": 397,
   "src": {
    "by": "hls.newworldtv.com",
    "kind": "public",
@@ -9130,7 +9150,7 @@ window.CHANNELS_DATA = [
   "countryHe": "בלארוס",
   "iptv": "PerviyInformationniy.by",
   "imported": true,
-  "number": 397,
+  "number": 398,
   "src": {
    "by": "ngtrk.dc.beltelecom.by",
    "kind": "public",
@@ -9154,7 +9174,7 @@ window.CHANNELS_DATA = [
   "countryHe": "תימן",
   "iptv": "AlMasirahMubacher.ye",
   "imported": true,
-  "number": 398,
+  "number": 399,
   "src": {
    "by": "live2.cdnbridge.tv",
    "kind": "public",
@@ -9178,7 +9198,7 @@ window.CHANNELS_DATA = [
   "countryHe": "השטחים הפלסטיניים",
   "iptv": "MaanTV.ps",
   "imported": true,
-  "number": 399,
+  "number": 400,
   "src": {
    "by": "htvmada.mada.ps",
    "kind": "public",
@@ -9202,7 +9222,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ירדן",
   "iptv": "AlhaqeqaAldawlia.jo",
   "imported": true,
-  "number": 400,
+  "number": 401,
   "src": {
    "by": "ghaasiflu.online",
    "kind": "public",
@@ -9226,7 +9246,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אקוודור",
   "iptv": "EcotelTV.ec",
   "imported": true,
-  "number": 401,
+  "number": 402,
   "src": {
    "by": "ecoteltv.streamseguro.com",
    "kind": "public",
@@ -9250,7 +9270,7 @@ window.CHANNELS_DATA = [
   "countryHe": "בנגלדש",
   "iptv": "News21BanglaTV.bd",
   "imported": true,
-  "number": 402,
+  "number": 403,
   "src": {
    "by": "103.190.133.68",
    "kind": "public",
@@ -9274,7 +9294,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גאורגיה",
   "iptv": "PalitraNews.ge",
   "imported": true,
-  "number": 403,
+  "number": 404,
   "src": {
    "by": "live.palitranews.ge",
    "kind": "public",
@@ -9298,7 +9318,7 @@ window.CHANNELS_DATA = [
   "countryHe": "מולדובה",
   "iptv": "RealitateaTV.md",
   "imported": true,
-  "number": 404,
+  "number": 405,
   "src": {
    "by": "realitatealive.md",
    "kind": "public",
@@ -9322,7 +9342,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "CheddarNews.us",
   "imported": true,
-  "number": 405,
+  "number": 406,
   "src": {
    "by": "hls.livecdn.io",
    "kind": "public",
@@ -9346,7 +9366,7 @@ window.CHANNELS_DATA = [
   "countryHe": "בריטניה",
   "iptv": "AfghanistanInternational.uk",
   "imported": true,
-  "number": 406,
+  "number": 407,
   "src": {
    "by": "hls.afintl.com",
    "kind": "public",
@@ -9370,7 +9390,7 @@ window.CHANNELS_DATA = [
   "countryHe": "צרפת",
   "iptv": "Africa24Sport.fr",
   "imported": true,
-  "number": 407,
+  "number": 408,
   "src": {
    "by": "africa24.vedge.infomaniak.com",
    "kind": "public",
@@ -9394,7 +9414,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "WELT.de",
   "imported": true,
-  "number": 408,
+  "number": 409,
   "src": {
    "by": "dash4.antik.sk",
    "kind": "public",
@@ -9418,7 +9438,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ספרד",
   "iptv": "3CatInfo.es",
   "imported": true,
-  "number": 409,
+  "number": 410,
   "src": {
    "by": "directes-tv-int.3catdirectes.cat",
    "kind": "public",
@@ -9442,7 +9462,7 @@ window.CHANNELS_DATA = [
   "countryHe": "איטליה",
   "iptv": "EtnaEspressoChannel.it",
   "imported": true,
-  "number": 410,
+  "number": 411,
   "src": {
    "by": "5db313b643fd8.streamlock.net",
    "kind": "public",
@@ -9466,7 +9486,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רוסיה",
   "iptv": "RTArabic.ru",
   "imported": true,
-  "number": 411,
+  "number": 412,
   "src": {
    "by": "rt-arb.rttv.com",
    "kind": "public",
@@ -9490,7 +9510,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אוקראינה",
   "iptv": "RadaTV.ua",
   "imported": true,
-  "number": 412,
+  "number": 413,
   "src": {
    "by": "live-tv.cloud – ספק IPTV אוקראיני",
    "kind": "restream",
@@ -9514,7 +9534,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קנדה",
   "iptv": "CityNewsToronto.ca",
   "imported": true,
-  "number": 413,
+  "number": 414,
   "src": {
    "by": "citynewsregional.akamaized.net",
    "kind": "public",
@@ -9538,7 +9558,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אוסטרליה",
   "iptv": "ABCNews.au",
   "imported": true,
-  "number": 414,
+  "number": 415,
   "src": {
    "by": "abc-news-dmd-streams-1.akamaized.net",
    "kind": "public",
@@ -9562,7 +9582,7 @@ window.CHANNELS_DATA = [
   "countryHe": "איחוד האמירויות הערביות",
   "iptv": "Alarabiya.ae",
   "imported": true,
-  "number": 415,
+  "number": 416,
   "src": {
    "by": "live.alarabiya.net",
    "kind": "public",
@@ -9586,7 +9606,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קטאר",
   "iptv": "AlJazeera2.qa",
   "imported": true,
-  "number": 416,
+  "number": 417,
   "src": {
    "by": "live-hls-web-aja2-gcp.thehlive.com",
    "kind": "public",
@@ -9610,7 +9630,7 @@ window.CHANNELS_DATA = [
   "countryHe": "לבנון",
   "iptv": "PalestineAlYawm.lb",
   "imported": true,
-  "number": 417,
+  "number": 418,
   "src": {
    "by": "live.paltodaytv.com",
    "kind": "public",
@@ -9634,7 +9654,7 @@ window.CHANNELS_DATA = [
   "countryHe": "טורקיה",
   "iptv": "TRTArabi.tr",
   "imported": true,
-  "number": 418,
+  "number": 419,
   "src": {
    "by": "tv-trtarabi.medya.trt.com.tr",
    "kind": "public",
@@ -9658,7 +9678,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הודו",
   "iptv": "RepublicTV.in",
   "imported": true,
-  "number": 419,
+  "number": 420,
   "src": {
    "by": "d3qs3d2rkhfqrt.cloudfront.net",
    "kind": "public",
@@ -9682,7 +9702,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קוריאה הדרומית",
   "iptv": "KTV.kr",
   "imported": true,
-  "number": 420,
+  "number": 421,
   "src": {
    "by": "hlive.ktv.go.kr",
    "kind": "public",
@@ -9706,7 +9726,7 @@ window.CHANNELS_DATA = [
   "countryHe": "סין",
   "iptv": "DongguanComprehensiveNewsChannel.cn",
   "imported": true,
-  "number": 421,
+  "number": 422,
   "src": {
    "by": "stream.sun0769.com",
    "kind": "public",
@@ -9730,7 +9750,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ברזיל",
   "iptv": "TVCamara.br",
   "imported": true,
-  "number": 422,
+  "number": 423,
   "src": {
    "by": "stream3.camara.gov.br",
    "kind": "public",
@@ -9754,7 +9774,7 @@ window.CHANNELS_DATA = [
   "countryHe": "מקסיקו",
   "iptv": "Canal33Tijuana.mx",
   "imported": true,
-  "number": 423,
+  "number": 424,
   "src": {
    "by": "5f2c1b0d880e5.streamlock.net",
    "kind": "public",
@@ -9778,7 +9798,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארגנטינה",
   "iptv": "CatamarcaTV.ar",
   "imported": true,
-  "number": 424,
+  "number": 425,
   "src": {
    "by": "stream.arcast.com.ar",
    "kind": "public",
@@ -9802,7 +9822,7 @@ window.CHANNELS_DATA = [
   "countryHe": "בלגיה",
   "iptv": "SterkTV.be",
   "imported": true,
-  "number": 425,
+  "number": 426,
   "src": {
    "by": "hlspackager.akamaized.net",
    "kind": "public",
@@ -9826,7 +9846,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פולין",
   "iptv": "TVPWorld.pl",
   "imported": true,
-  "number": 426,
+  "number": 427,
   "src": {
    "by": "dash2.antik.sk",
    "kind": "public",
@@ -9850,7 +9870,7 @@ window.CHANNELS_DATA = [
   "countryHe": "יוון",
   "iptv": "NaftemporikiTV.gr",
   "imported": true,
-  "number": 427,
+  "number": 428,
   "src": {
    "by": "telmaco.ascdn.broadpeak.io",
    "kind": "public",
@@ -9874,7 +9894,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שוודיה",
   "iptv": "ExpressenTV.se",
   "imported": true,
-  "number": 428,
+  "number": 429,
   "src": {
    "by": "cdn0-03837-liveedge0.dna.ip-only.net",
    "kind": "public",
@@ -9898,7 +9918,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רומניה",
   "iptv": "Digi24.ro",
   "imported": true,
-  "number": 429,
+  "number": 430,
   "src": {
    "by": "edge-ar.rcs-rds.ro",
    "kind": "public",
@@ -9922,7 +9942,7 @@ window.CHANNELS_DATA = [
   "countryHe": "צ׳ילה",
   "iptv": "ADNTV.cl",
   "imported": true,
-  "number": 430,
+  "number": 431,
   "src": {
    "by": "redirector.rudo.video",
    "kind": "public",
@@ -9946,7 +9966,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קולומביה",
   "iptv": "RedPlus.co",
   "imported": true,
-  "number": 431,
+  "number": 432,
   "src": {
    "by": "inforedvos.lcdn.claro.net.co",
    "kind": "public",
@@ -9970,7 +9990,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פרו",
   "iptv": "ExitosaTV.pe",
   "imported": true,
-  "number": 432,
+  "number": 433,
   "src": {
    "by": "luna-4-video.mediaserver.digital",
    "kind": "public",
@@ -9994,7 +10014,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אינדונזיה",
   "iptv": "MetroTV.id",
   "imported": true,
-  "number": 433,
+  "number": 434,
   "src": {
    "by": "edge.medcom.id",
    "kind": "public",
@@ -10018,7 +10038,7 @@ window.CHANNELS_DATA = [
   "countryHe": "תאילנד",
   "iptv": "TopNews.th",
   "imported": true,
-  "number": 434,
+  "number": 435,
   "src": {
    "by": "live.topnews.co.th",
    "kind": "public",
@@ -10042,7 +10062,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פקיסטן",
   "iptv": "LahoreNews.pk",
   "imported": true,
-  "number": 435,
+  "number": 436,
   "src": {
    "by": "vcdn.dunyanews.tv",
    "kind": "public",
@@ -10066,7 +10086,7 @@ window.CHANNELS_DATA = [
   "countryHe": "דרום אפריקה",
   "iptv": "SABCLehae.za",
   "imported": true,
-  "number": 436,
+  "number": 437,
   "src": {
    "by": "sabctretalh.cdn.mangomolo.com",
    "kind": "public",
@@ -10090,7 +10110,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הרפובליקה הדומיניקנית",
   "iptv": "HermanasMirabalTV.do",
   "imported": true,
-  "number": 437,
+  "number": 438,
   "src": {
    "by": "fox.hostlagarto.com",
    "kind": "public",
@@ -10114,7 +10134,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פרגוואי",
   "iptv": "Nanduti.py",
   "imported": true,
-  "number": 438,
+  "number": 439,
   "src": {
    "by": "nanduti.b-cdn.net",
    "kind": "public",
@@ -10134,7 +10154,7 @@ window.CHANNELS_DATA = [
   "badge": "HD",
   "desc": "ערוץ הכלכלה הישראלי – שוק ההון, נדל\"ן, צרכנות ועסקים",
   "logo": "assets/logos/calcala10.svg",
-  "number": 439,
+  "number": 440,
   "src": {
    "by": "Redge – ה-CDN הרשמי של כאן, ערוץ 14 וכלכלה 10",
    "kind": "official",
@@ -10158,7 +10178,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "Ameritrade.us",
   "imported": true,
-  "number": 440,
+  "number": 441,
   "src": {
    "by": "tdameritrade-vizio.amagi.tv",
    "kind": "public",
@@ -10182,7 +10202,7 @@ window.CHANNELS_DATA = [
   "countryHe": "צרפת",
   "iptv": "BFMBusiness.fr",
   "imported": true,
-  "number": 441,
+  "number": 442,
   "src": {
    "by": "live-cdn-stream-euw1.bfmb.bct.nextradiotv.com",
    "kind": "public",
@@ -10206,7 +10226,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ספרד",
   "iptv": "NegociosTV.es",
   "imported": true,
-  "number": 442,
+  "number": 443,
   "src": {
    "by": "streaming013.gestec-video.com",
    "kind": "public",
@@ -10230,7 +10250,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רוסיה",
   "iptv": "ProBusiness.ru",
   "imported": true,
-  "number": 443,
+  "number": 444,
   "src": {
    "by": "tv-streaming.bsh.ru",
    "kind": "public",
@@ -10254,7 +10274,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אוסטרליה",
   "iptv": "AusbizTV.au",
   "imported": true,
-  "number": 444,
+  "number": 445,
   "src": {
    "by": "d9quh89lh7dtw.cloudfront.net",
    "kind": "public",
@@ -10278,7 +10298,7 @@ window.CHANNELS_DATA = [
   "countryHe": "איחוד האמירויות הערביות",
   "iptv": "AlArabiyaBusiness.ae",
   "imported": true,
-  "number": 445,
+  "number": 446,
   "src": {
    "by": "live.alarabiya.net",
    "kind": "public",
@@ -10302,7 +10322,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ערב הסעודית",
   "iptv": "AsharqNews.sa",
   "imported": true,
-  "number": 446,
+  "number": 447,
   "src": {
    "by": "live-news.asharq.com",
    "kind": "public",
@@ -10326,7 +10346,7 @@ window.CHANNELS_DATA = [
   "countryHe": "טורקיה",
   "iptv": "BloombergHT.tr",
   "imported": true,
-  "number": 447,
+  "number": 448,
   "src": {
    "by": "tv.ensonhaber.com",
    "kind": "public",
@@ -10350,7 +10370,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הודו",
   "iptv": "CNBCTV18.in",
   "imported": true,
-  "number": 448,
+  "number": 449,
   "src": {
    "by": "n18syndication.akamaized.net",
    "kind": "public",
@@ -10374,7 +10394,7 @@ window.CHANNELS_DATA = [
   "countryHe": "סין",
   "iptv": "CGTNGlobalBiz.cn",
   "imported": true,
-  "number": 449,
+  "number": 450,
   "src": {
    "by": "fastlive.cctvplus.com",
    "kind": "public",
@@ -10398,7 +10418,7 @@ window.CHANNELS_DATA = [
   "countryHe": "בלגיה",
   "iptv": "CanalZ.be",
   "imported": true,
-  "number": 450,
+  "number": 451,
   "src": {
    "by": "d1hz1p2gea2zy4.cloudfront.net",
    "kind": "public",
@@ -10422,7 +10442,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פולין",
   "iptv": "TelewizjaBiznesowa.pl",
   "imported": true,
-  "number": 451,
+  "number": 452,
   "src": {
    "by": "s-pl-01.mediatool.tv",
    "kind": "public",
@@ -10446,7 +10466,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רומניה",
   "iptv": "AlephBusiness.ro",
   "imported": true,
-  "number": 452,
+  "number": 453,
   "src": {
    "by": "streamw.m.ro",
    "kind": "public",
@@ -10470,7 +10490,7 @@ window.CHANNELS_DATA = [
   "countryHe": "סינגפור",
   "iptv": "CNBCAsia.sg",
   "imported": true,
-  "number": 453,
+  "number": 454,
   "src": {
    "by": "freem3u.xyz",
    "kind": "public",
@@ -10494,7 +10514,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פוארטו ריקו",
   "iptv": "DeFianceMedia.pr",
   "imported": true,
-  "number": 454,
+  "number": 455,
   "src": {
    "by": "amg01529-defiancetv-defiancemedia-glewed-tre8x.amagi.tv",
    "kind": "public",
@@ -10518,7 +10538,7 @@ window.CHANNELS_DATA = [
   "countryHe": "חוף השנהב",
   "iptv": "ChampionTV.ci",
   "imported": true,
-  "number": 455,
+  "number": 456,
   "src": {
    "by": "stream.berosat.live",
    "kind": "public",
@@ -10542,7 +10562,7 @@ window.CHANNELS_DATA = [
   "countryHe": "טוגו",
   "iptv": "NWEconomie.tg",
   "imported": true,
-  "number": 456,
+  "number": 457,
   "src": {
    "by": "hls.newworldtv.com",
    "kind": "public",
@@ -10566,7 +10586,7 @@ window.CHANNELS_DATA = [
   "countryHe": "בוליביה",
   "iptv": "ZuracaTV.bo",
   "imported": true,
-  "number": 457,
+  "number": 458,
   "src": {
    "by": "tv3.bitstreaming.net",
    "kind": "public",
@@ -10590,7 +10610,7 @@ window.CHANNELS_DATA = [
   "countryHe": "מוזמביק",
   "iptv": "MNTV.mz",
   "imported": true,
-  "number": 458,
+  "number": 459,
   "src": {
    "by": "www.khuwemultimedia.com",
    "kind": "public",
@@ -10614,7 +10634,7 @@ window.CHANNELS_DATA = [
   "countryHe": "לוקסמבורג",
   "iptv": "apartTV.lu",
   "imported": true,
-  "number": 459,
+  "number": 460,
   "src": {
    "by": "2-fss-2.streamhoster.com",
    "kind": "public",
@@ -10638,7 +10658,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "BloombergOriginals.us",
   "imported": true,
-  "number": 460,
+  "number": 461,
   "src": {
    "by": "bloomberg.com",
    "kind": "public",
@@ -10662,7 +10682,7 @@ window.CHANNELS_DATA = [
   "countryHe": "איחוד האמירויות הערביות",
   "iptv": "CNBCArabiya.ae",
   "imported": true,
-  "number": 461,
+  "number": 462,
   "src": {
    "by": "cnbc-live.akamaized.net",
    "kind": "public",
@@ -10686,7 +10706,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ערב הסעודית",
   "iptv": "AsharqRadio.sa",
   "imported": true,
-  "number": 462,
+  "number": 463,
   "src": {
    "by": "Asharq Discovery – ItWorks (רשמי)",
    "kind": "official",
@@ -10710,7 +10730,7 @@ window.CHANNELS_DATA = [
   "countryHe": "טורקיה",
   "iptv": "CNBCe.tr",
   "imported": true,
-  "number": 463,
+  "number": 464,
   "src": {
    "by": "hnpsechtsc.turknet.ercdn.net",
    "kind": "public",
@@ -10734,7 +10754,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הודו",
   "iptv": "CNBCTV18PrimeHD.in",
   "imported": true,
-  "number": 464,
+  "number": 465,
   "src": {
    "by": "n18syndication.akamaized.net",
    "kind": "public",
@@ -10758,7 +10778,7 @@ window.CHANNELS_DATA = [
   "countryHe": "סין",
   "iptv": "CCTV2.cn",
   "imported": true,
-  "number": 465,
+  "number": 466,
   "src": {
    "by": "74.91.26.218",
    "kind": "public",
@@ -10782,7 +10802,7 @@ window.CHANNELS_DATA = [
   "countryHe": "בלגיה",
   "iptv": "KanaalZ.be",
   "imported": true,
-  "number": 466,
+  "number": 467,
   "src": {
    "by": "d1hz1p2gea2zy4.cloudfront.net",
    "kind": "public",
@@ -10806,7 +10826,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רומניה",
   "iptv": "JOBTV.ro",
   "imported": true,
-  "number": 467,
+  "number": 468,
   "src": {
    "by": "jobtvserver.eu",
    "kind": "public",
@@ -10830,7 +10850,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "BloombergTV.us",
   "imported": true,
-  "number": 468,
+  "number": 469,
   "src": {
    "by": "d8975dc3.wurl.com",
    "kind": "public",
@@ -10854,7 +10874,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הודו",
   "iptv": "NDTVProfit.in",
   "imported": true,
-  "number": 469,
+  "number": 470,
   "src": {
    "by": "ndtvprofit.akamaized.net",
    "kind": "public",
@@ -10878,7 +10898,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "YahooFinance.us",
   "imported": true,
-  "number": 470,
+  "number": 471,
   "src": {
    "by": "d1ewctnvcwvvvu.cloudfront.net",
    "kind": "public",
@@ -10902,7 +10922,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הודו",
   "iptv": "CNBCAwaaz.in",
   "imported": true,
-  "number": 471,
+  "number": 472,
   "src": {
    "by": "n18syndication.akamaized.net",
    "kind": "public",
@@ -10926,7 +10946,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "EntrepreneurTV.us",
   "imported": true,
-  "number": 472,
+  "number": 473,
   "src": {
    "by": "stream-us-east-1.getpublica.com",
    "kind": "public",
@@ -10950,7 +10970,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הודו",
   "iptv": "CNBCBajar.in",
   "imported": true,
-  "number": 473,
+  "number": 474,
   "src": {
    "by": "n18syndication.akamaized.net",
    "kind": "public",
@@ -10974,7 +10994,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "FoxBusinessNetwork.us",
   "imported": true,
-  "number": 474,
+  "number": 475,
   "src": {
    "by": "tvsen6.aynaott.com",
    "kind": "public",
@@ -10998,7 +11018,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הודו",
   "iptv": "NewsCapitalMarket.in",
   "imported": true,
-  "number": 475,
+  "number": 476,
   "src": {
    "by": "newscapital.com",
    "kind": "public",
@@ -11017,7 +11037,7 @@ window.CHANNELS_DATA = [
   "logo": "",
   "badge": "Music HD",
   "desc": "הערוץ הים תיכוני - סדרות ודרמות ישראליות וים תיכוניות",
-  "number": 476,
+  "number": 477,
   "lang": "he",
   "iptv": "YamTichoni.il",
   "src": {
@@ -11038,7 +11058,7 @@ window.CHANNELS_DATA = [
   "logo": "assets/logos/yes_action.svg",
   "badge": "FHD",
   "desc": "שובר קופות, מותחנים, אקשן ללא הפסקה וסרטי פעולה מהוליווד ומהעולם",
-  "number": 477,
+  "number": 478,
   "lang": "he",
   "iptv": "YesMoviesAction.il",
   "src": {
@@ -11059,7 +11079,7 @@ window.CHANNELS_DATA = [
   "logo": "assets/logos/hot_drama.svg",
   "badge": "FHD",
   "desc": "סרטי דרמה עטורי פרסים, קולנוע מרגש וסרטים בינלאומיים מובילים",
-  "number": 478,
+  "number": 479,
   "lang": "he",
   "iptv": "HOTDrama.il",
   "src": {
@@ -11080,7 +11100,7 @@ window.CHANNELS_DATA = [
   "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/HotNewLogo.svg/512px-HotNewLogo.svg.png",
   "badge": "FHD",
   "desc": "סדרות מתח, אקשן, משטרה וחקירות מכל העולם",
-  "number": 479,
+  "number": 480,
   "lang": "he",
   "iptv": "HOTZone.il",
   "src": {
@@ -11101,7 +11121,7 @@ window.CHANNELS_DATA = [
   "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Yes_logo_2020.svg/512px-Yes_logo_2020.svg.png",
   "badge": "FHD",
   "desc": "כל תוכניות הריאליטי המובילות מהעולם 24 שעות ביממה",
-  "number": 480,
+  "number": 481,
   "lang": "he",
   "iptv": "RealityChannel.il",
   "src": {
@@ -11122,7 +11142,7 @@ window.CHANNELS_DATA = [
   "logo": "https://upload.wikimedia.org/wikipedia/he/thumb/6/66/Viva_Channel_Israel.svg/512px-Viva_Channel_Israel.svg.png",
   "badge": "FHD",
   "desc": "ערוץ הטלנובלות והסדרות הדרמטיות הגדול בישראל - סדרות טורקיות, לטיניות וספרדיות",
-  "number": 481,
+  "number": 482,
   "lang": "he",
   "iptv": "VivaPremium.il",
   "src": {
@@ -11143,7 +11163,7 @@ window.CHANNELS_DATA = [
   "logo": "",
   "badge": "FHD",
   "desc": "סרטים חדשים ישר מהקולנוע באיכות פרימיום",
-  "number": 482,
+  "number": 483,
   "lang": "ru",
   "iptv": "Premialnoe.ru",
   "src": {
@@ -11164,7 +11184,7 @@ window.CHANNELS_DATA = [
   "logo": "",
   "badge": "FHD",
   "desc": "סרטי פעולה, מרדפים, מותחנים פסיכולוגיים ואקשן עולמי",
-  "number": 483,
+  "number": 484,
   "lang": "ru",
   "iptv": "Ostrosyuzhetnoye.ru",
   "src": {
@@ -11185,7 +11205,7 @@ window.CHANNELS_DATA = [
   "logo": "",
   "badge": "FHD",
   "desc": "סרטי אימה מצמררים, מתח אפל, פרא-נורמלי וסרטי אימה קלאסיים",
-  "number": 484,
+  "number": 485,
   "lang": "ru",
   "iptv": "Kinouzhas.ru",
   "src": {
@@ -11206,7 +11226,7 @@ window.CHANNELS_DATA = [
   "logo": "",
   "badge": "HD",
   "desc": "שוברי הקופות והסרטים האהובים מכל הזמנים",
-  "number": 485,
+  "number": 486,
   "lang": "ru",
   "iptv": "KinoHit.ru",
   "webUrl": "https://stream8.cinerama.uz/1055/tracks-v1a1/mono.m3u8",
@@ -11228,7 +11248,7 @@ window.CHANNELS_DATA = [
   "logo": "",
   "badge": "HD",
   "desc": "סרטים מעולים לצפייה משותפת של כל המשפחה",
-  "number": 486,
+  "number": 487,
   "lang": "ru",
   "iptv": "Kinosemja.ru",
   "src": {
@@ -11249,7 +11269,7 @@ window.CHANNELS_DATA = [
   "logo": "",
   "badge": "FHD",
   "desc": "הפקות ענק וסרטים שזכו בפרסים בינלאומיים",
-  "number": 487,
+  "number": 488,
   "lang": "ru",
   "iptv": "vijuPlusMegahit.ru",
   "src": {
@@ -11270,7 +11290,7 @@ window.CHANNELS_DATA = [
   "logo": "",
   "badge": "FHD",
   "desc": "הקרנות בכורה של סרטים מובילים",
-  "number": 488,
+  "number": 489,
   "lang": "ru",
   "iptv": "vijuPlusPremiere.ru",
   "src": {
@@ -11291,7 +11311,7 @@ window.CHANNELS_DATA = [
   "logo": "",
   "badge": "FHD",
   "desc": "קומדיות משעשעות וסרטי צחוק",
-  "number": 489,
+  "number": 490,
   "lang": "ru",
   "iptv": "vijuPlusComedy.ru",
   "src": {
@@ -11312,7 +11332,7 @@ window.CHANNELS_DATA = [
   "logo": "",
   "badge": "HD",
   "desc": "ערוץ הסרטים הבינלאומי הידוע במהדורת אקשן",
-  "number": 490,
+  "number": 491,
   "lang": "ru",
   "iptv": "vijuTV1000action.ru",
   "webUrl": "https://stream8.cinerama.uz/1225/tracks-v1a1/mono.m3u8",
@@ -11334,7 +11354,7 @@ window.CHANNELS_DATA = [
   "logo": "",
   "badge": "SD",
   "desc": "יצירות מופת וקלאסיקות קולנוע מכל הזמנים",
-  "number": 491,
+  "number": 492,
   "lang": "ru",
   "iptv": "vijuTV1000.ru",
   "src": {
@@ -11355,7 +11375,7 @@ window.CHANNELS_DATA = [
   "logo": "",
   "badge": "FHD",
   "desc": "סדרות דרמה, פשע ומתח ברצף",
-  "number": 492,
+  "number": 493,
   "lang": "ru",
   "iptv": "vijuPlusSerial.ru",
   "src": {
@@ -11376,7 +11396,7 @@ window.CHANNELS_DATA = [
   "logo": "",
   "badge": "HD",
   "desc": "הסרטים והקלאסיקות הבלתי נשכחות של שנות ה-80",
-  "number": 493,
+  "number": 494,
   "lang": "auto",
   "iptv": "80sRewind.us",
   "webOk": false,
@@ -11398,7 +11418,7 @@ window.CHANNELS_DATA = [
   "logo": "",
   "badge": "HD",
   "desc": "קולנוע אמריקאי קלאסי מתור הזהב של שנות ה-70",
-  "number": 494,
+  "number": 495,
   "lang": "auto",
   "iptv": "70sCinema.us",
   "webOk": false,
@@ -11420,7 +11440,7 @@ window.CHANNELS_DATA = [
   "logo": "",
   "badge": "HD",
   "desc": "להיטי שנות ה-2000 - קומדיות נעורים, אקשן ודרמות",
-  "number": 495,
+  "number": 496,
   "lang": "auto",
   "iptv": "00sReplay.us",
   "webOk": false,
@@ -11442,7 +11462,7 @@ window.CHANNELS_DATA = [
   "logo": "",
   "badge": "FHD",
   "desc": "ערוץ שידורים רציף של כל עונות משפחת סימפסון 24 שעות ביממה",
-  "number": 496,
+  "number": 497,
   "lang": "ru",
   "src": {
    "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
@@ -11462,7 +11482,7 @@ window.CHANNELS_DATA = [
   "logo": "",
   "badge": "FHD",
   "desc": "ערוץ סרטי הקומדיה, בידור משפחתי וקומדיות רומנטיות ברצף",
-  "number": 497,
+  "number": 498,
   "lang": "ru",
   "src": {
    "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
@@ -11482,7 +11502,7 @@ window.CHANNELS_DATA = [
   "logo": "",
   "badge": "HD",
   "desc": "ערוץ קלאסיקות הקולנוע הנוסטלגיות של שנות ה-80 וה-90",
-  "number": 498,
+  "number": 499,
   "lang": "ru",
   "src": {
    "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
@@ -11504,7 +11524,7 @@ window.CHANNELS_DATA = [
   "badge": "HD",
   "desc": "דרמות וסדרות ישראליות של קשת 24/7 – ערוץ חינמי של mako",
   "logo": "assets/logos/keshet_drama.svg",
-  "number": 499,
+  "number": 500,
   "src": {
    "by": "קשת – ה-CDN של mako (עם הרשאת צפייה של mako)",
    "kind": "official",
@@ -11528,7 +11548,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "48Hours.us",
   "imported": true,
-  "number": 500,
+  "number": 501,
   "src": {
    "by": "dai.google.com",
    "kind": "public",
@@ -11552,7 +11572,7 @@ window.CHANNELS_DATA = [
   "countryHe": "בריטניה",
   "iptv": "TrueCrime.uk",
   "imported": true,
-  "number": 501,
+  "number": 502,
   "src": {
    "by": "b6cca454.wurl.com",
    "kind": "public",
@@ -11576,7 +11596,7 @@ window.CHANNELS_DATA = [
   "countryHe": "צרפת",
   "iptv": "CineNanar.fr",
   "imported": true,
-  "number": 502,
+  "number": 503,
   "src": {
    "by": "zylo-cinenanar-rakuten.amagi.tv",
    "kind": "public",
@@ -11600,7 +11620,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "GrjngoWesternMovies.de",
   "imported": true,
-  "number": 503,
+  "number": 504,
   "src": {
    "by": "amogonetworx-grjngo-3-dk.samsung.wurl.tv",
    "kind": "public",
@@ -11624,7 +11644,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ספרד",
   "iptv": "CineFriki.es",
   "imported": true,
-  "number": 504,
+  "number": 505,
   "src": {
    "by": "d2mr4fu91mjx9m.cloudfront.net",
    "kind": "public",
@@ -11648,7 +11668,7 @@ window.CHANNELS_DATA = [
   "countryHe": "איטליה",
   "iptv": "SuperTV.it",
   "imported": true,
-  "number": 505,
+  "number": 506,
   "src": {
    "by": "59d7d6f47d7fc.streamlock.net",
    "kind": "public",
@@ -11672,7 +11692,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רוסיה",
   "iptv": "SmotrimChestnyyDetektiv.ru",
   "imported": true,
-  "number": 506,
+  "number": 507,
   "src": {
    "by": "live-vgtrksmotrim.cdnvideo.ru",
    "kind": "public",
@@ -11696,7 +11716,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אוקראינה",
   "iptv": "FilmUADrama.ua",
   "imported": true,
-  "number": 507,
+  "number": 508,
   "src": {
    "by": "dash2.antik.sk",
    "kind": "public",
@@ -11720,7 +11740,7 @@ window.CHANNELS_DATA = [
   "countryHe": "מצרים",
   "iptv": "MixHollywood.eg",
   "imported": true,
-  "number": 508,
+  "number": 509,
   "src": {
    "by": "ml-pull-hwc.myco.io",
    "kind": "public",
@@ -11744,7 +11764,7 @@ window.CHANNELS_DATA = [
   "countryHe": "טורקיה",
   "iptv": "GrandCinema.tr",
   "imported": true,
-  "number": 509,
+  "number": 510,
   "src": {
    "by": "gcinemahls.wns.live",
    "kind": "public",
@@ -11768,7 +11788,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הודו",
   "iptv": "B4UBhojpuri.in",
   "imported": true,
-  "number": 510,
+  "number": 511,
   "src": {
    "by": "cdnb4u.wiseplayout.com",
    "kind": "public",
@@ -11792,7 +11812,7 @@ window.CHANNELS_DATA = [
   "countryHe": "סין",
   "iptv": "HarbinMovieChannel.cn",
   "imported": true,
-  "number": 511,
+  "number": 512,
   "src": {
    "by": "stream.hrbtv.net",
    "kind": "public",
@@ -11816,7 +11836,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ברזיל",
   "iptv": "CINDIETV.br",
   "imported": true,
-  "number": 512,
+  "number": 513,
   "src": {
    "by": "cc-hqw8u5r1nshjc.akamaized.net",
    "kind": "public",
@@ -11840,7 +11860,7 @@ window.CHANNELS_DATA = [
   "countryHe": "מקסיקו",
   "iptv": "PopcornCentral.mx",
   "imported": true,
-  "number": 513,
+  "number": 514,
   "src": {
    "by": "oly-ftvpc.otteravision.com",
    "kind": "public",
@@ -11864,7 +11884,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארגנטינה",
   "iptv": "EuropaEuropa.ar",
   "imported": true,
-  "number": 514,
+  "number": 515,
   "src": {
    "by": "iptv.bitred.cl",
    "kind": "public",
@@ -11888,7 +11908,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פורטוגל",
   "iptv": "KuriakosCine.pt",
   "imported": true,
-  "number": 515,
+  "number": 516,
   "src": {
    "by": "w2.manasat.com",
    "kind": "public",
@@ -11912,7 +11932,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פולין",
   "iptv": "FILMBOXPlusFestival.pl",
   "imported": true,
-  "number": 516,
+  "number": 517,
   "src": {
    "by": "nosignal1.antenaplay.ro",
    "kind": "public",
@@ -11936,7 +11956,7 @@ window.CHANNELS_DATA = [
   "countryHe": "יוון",
   "iptv": "Action24.gr",
   "imported": true,
-  "number": 517,
+  "number": 518,
   "src": {
    "by": "actionlive.siliconweb.com",
    "kind": "public",
@@ -11960,7 +11980,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שוודיה",
   "iptv": "BondiRescue.se",
   "imported": true,
-  "number": 518,
+  "number": 519,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -11984,7 +12004,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פינלנד",
   "iptv": "Hero.fi",
   "imported": true,
-  "number": 519,
+  "number": 520,
   "src": {
    "by": "live-fi.tvkaista.net",
    "kind": "public",
@@ -12008,7 +12028,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רומניה",
   "iptv": "CinemaratonPlus.ro",
   "imported": true,
-  "number": 520,
+  "number": 521,
   "src": {
    "by": "hls02ns.antenaplay.ro",
    "kind": "public",
@@ -12032,7 +12052,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הונגריה",
   "iptv": "MAX4.hu",
   "imported": true,
-  "number": 521,
+  "number": 522,
   "src": {
    "by": "141.94.193.53",
    "kind": "public",
@@ -12056,7 +12076,7 @@ window.CHANNELS_DATA = [
   "countryHe": "צ׳ילה",
   "iptv": "TVN3.cl",
   "imported": true,
-  "number": 522,
+  "number": 523,
   "src": {
    "by": "mdstrm.com",
    "kind": "public",
@@ -12080,7 +12100,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קולומביה",
   "iptv": "MCITelevision.co",
   "imported": true,
-  "number": 523,
+  "number": 524,
   "src": {
    "by": "video.ejeserver.com",
    "kind": "public",
@@ -12104,7 +12124,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פרו",
   "iptv": "LatinaClasicos.pe",
   "imported": true,
-  "number": 524,
+  "number": 525,
   "src": {
    "by": "redirector.rudo.video",
    "kind": "public",
@@ -12128,7 +12148,7 @@ window.CHANNELS_DATA = [
   "countryHe": "וייטנאם",
   "iptv": "ONMovies.vn",
   "imported": true,
-  "number": 525,
+  "number": 526,
   "src": {
    "by": "freem3u.xyz",
    "kind": "public",
@@ -12152,7 +12172,7 @@ window.CHANNELS_DATA = [
   "countryHe": "איראן",
   "iptv": "AVASeries.ir",
   "imported": true,
-  "number": 526,
+  "number": 527,
   "src": {
    "by": "avaserieshls.wns.live",
    "kind": "public",
@@ -12176,7 +12196,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ניגריה",
   "iptv": "ItageTV.ng",
   "imported": true,
-  "number": 527,
+  "number": 528,
   "src": {
    "by": "viewmedia7219.bozztv.com",
    "kind": "public",
@@ -12200,7 +12220,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גואטמלה",
   "iptv": "AuroraMediaFilms.gt",
   "imported": true,
-  "number": 528,
+  "number": 529,
   "src": {
    "by": "cdn.streamhispanatv.net",
    "kind": "public",
@@ -12224,7 +12244,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הרפובליקה הדומיניקנית",
   "iptv": "MegaCineTV.do",
   "imported": true,
-  "number": 529,
+  "number": 530,
   "src": {
    "by": "cnn.hostlagarto.com",
    "kind": "public",
@@ -12248,7 +12268,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קמרון",
   "iptv": "AlloCine.cm",
   "imported": true,
-  "number": 530,
+  "number": 531,
   "src": {
    "by": "d1yl6bf4hrzbr0.cloudfront.net",
    "kind": "public",
@@ -12272,7 +12292,7 @@ window.CHANNELS_DATA = [
   "countryHe": "סינגפור",
   "iptv": "HITSMovies.sg",
   "imported": true,
-  "number": 531,
+  "number": 532,
   "src": {
    "by": "103.151.60.162",
    "kind": "public",
@@ -12296,7 +12316,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קזחסטן",
   "iptv": "SilkWayCinema.kz",
   "imported": true,
-  "number": 532,
+  "number": 533,
   "src": {
    "by": "stream.qazcdn.net",
    "kind": "public",
@@ -12320,7 +12340,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קונגו - קינשאסה",
   "iptv": "LollywoodHDTV.cd",
   "imported": true,
-  "number": 533,
+  "number": 534,
   "src": {
    "by": "stream.berosat.live",
    "kind": "public",
@@ -12344,7 +12364,7 @@ window.CHANNELS_DATA = [
   "countryHe": "חוף השנהב",
   "iptv": "SerieMax.ci",
   "imported": true,
-  "number": 534,
+  "number": 535,
   "src": {
    "by": "video1.getstreamhosting.com",
    "kind": "public",
@@ -12368,7 +12388,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אוזבקיסטן",
   "iptv": "BIZCinema.uz",
   "imported": true,
-  "number": 535,
+  "number": 536,
   "src": {
    "by": "fl.biztv.media",
    "kind": "public",
@@ -12392,7 +12412,7 @@ window.CHANNELS_DATA = [
   "countryHe": "מלזיה",
   "iptv": "MaahTV.my",
   "imported": true,
-  "number": 536,
+  "number": 537,
   "src": {
    "by": "hls.maahtv.live",
    "kind": "public",
@@ -12416,7 +12436,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הונג קונג (אזור מנהלי מיוחד של סין)",
   "iptv": "MeiAhMovieChannel.hk",
   "imported": true,
-  "number": 537,
+  "number": 538,
   "src": {
    "by": "103.172.187.30",
    "kind": "public",
@@ -12440,7 +12460,7 @@ window.CHANNELS_DATA = [
   "countryHe": "בנגלדש",
   "iptv": "MovieBangla.bd",
   "imported": true,
-  "number": 538,
+  "number": 539,
   "src": {
    "by": "alvetv.com",
    "kind": "public",
@@ -12464,7 +12484,7 @@ window.CHANNELS_DATA = [
   "countryHe": "מיאנמר (בורמה)",
   "iptv": "MWDMovies.mm",
   "imported": true,
-  "number": 539,
+  "number": 540,
   "src": {
    "by": "203.81.84.130",
    "kind": "public",
@@ -12488,7 +12508,7 @@ window.CHANNELS_DATA = [
   "countryHe": "בולגריה",
   "iptv": "TV1000.bg",
   "imported": true,
-  "number": 540,
+  "number": 541,
   "src": {
    "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
    "kind": "restream",
@@ -12512,7 +12532,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "AntiquesRoadshowUK.us",
   "imported": true,
-  "number": 541,
+  "number": 542,
   "src": {
    "by": "bbc-antiquesroadshowuk-1-us.roku.wurl.tv",
    "kind": "public",
@@ -12536,7 +12556,7 @@ window.CHANNELS_DATA = [
   "countryHe": "בריטניה",
   "iptv": "BBCDrama.uk",
   "imported": true,
-  "number": 542,
+  "number": 543,
   "src": {
    "by": "amg00793-amg00793c40-rakuten-es-5444.playouts.now.amagi.tv",
    "kind": "public",
@@ -12560,7 +12580,7 @@ window.CHANNELS_DATA = [
   "countryHe": "צרפת",
   "iptv": "SonyOneBlacklist.fr",
   "imported": true,
-  "number": 543,
+  "number": 544,
   "src": {
    "by": "06cb85ad6ccb4a6b97f561e62d16ad3f.mediatailor.us-west-2.amazonaws.com",
    "kind": "public",
@@ -12584,7 +12604,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "PlutoTVDating.de",
   "imported": true,
-  "number": 544,
+  "number": 545,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -12608,7 +12628,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ספרד",
   "iptv": "MyTimeMovieNetwork.es",
   "imported": true,
-  "number": 545,
+  "number": 546,
   "src": {
    "by": "appletree-mytimespain-rakuten.amagi.tv",
    "kind": "public",
@@ -12632,7 +12652,7 @@ window.CHANNELS_DATA = [
   "countryHe": "איטליה",
   "iptv": "RaiMovie.it",
   "imported": true,
-  "number": 546,
+  "number": 547,
   "src": {
    "by": "team-tv.co",
    "kind": "public",
@@ -12656,7 +12676,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רוסיה",
   "iptv": "StarFamily.ru",
   "imported": true,
-  "number": 547,
+  "number": 548,
   "src": {
    "by": "dash2.antik.sk",
    "kind": "public",
@@ -12680,7 +12700,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אוקראינה",
   "iptv": "FilmUALive.ua",
   "imported": true,
-  "number": 548,
+  "number": 549,
   "src": {
    "by": "dash2.antik.sk",
    "kind": "public",
@@ -12704,7 +12724,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הודו",
   "iptv": "EpicBhojpuri.in",
   "imported": true,
-  "number": 549,
+  "number": 550,
   "src": {
    "by": "cc-8hy4a26pz2uos.akamaized.net",
    "kind": "public",
@@ -12728,7 +12748,7 @@ window.CHANNELS_DATA = [
   "countryHe": "סין",
   "iptv": "CCTVNostalgiaTheater.cn",
   "imported": true,
-  "number": 550,
+  "number": 551,
   "src": {
    "by": "38.75.136.137",
    "kind": "public",
@@ -12752,7 +12772,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ברזיל",
   "iptv": "MyTimeMovieNetwork.br",
   "imported": true,
-  "number": 551,
+  "number": 552,
   "src": {
    "by": "appletree-mytime-samsungbrazil.amagi.tv",
    "kind": "public",
@@ -12776,7 +12796,7 @@ window.CHANNELS_DATA = [
   "countryHe": "מקסיקו",
   "iptv": "AzCinema.mx",
   "imported": true,
-  "number": 552,
+  "number": 553,
   "src": {
    "by": "15.204.196.147",
    "kind": "public",
@@ -12800,7 +12820,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פורטוגל",
   "iptv": "TVIFiccao.pt",
   "imported": true,
-  "number": 553,
+  "number": 554,
   "src": {
    "by": "raw.githubusercontent.com",
    "kind": "public",
@@ -12824,7 +12844,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פולין",
   "iptv": "FILMBOXPlusHits.pl",
   "imported": true,
-  "number": 554,
+  "number": 555,
   "src": {
    "by": "nosignal1.antenaplay.ro",
    "kind": "public",
@@ -12848,7 +12868,7 @@ window.CHANNELS_DATA = [
   "countryHe": "יוון",
   "iptv": "GroovyTV.gr",
   "imported": true,
-  "number": 555,
+  "number": 556,
   "src": {
    "by": "web.onair-radio.eu",
    "kind": "public",
@@ -12872,7 +12892,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שוודיה",
   "iptv": "CarChase.se",
   "imported": true,
-  "number": 556,
+  "number": 557,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -12896,7 +12916,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רומניה",
   "iptv": "NostalgiaTV.ro",
   "imported": true,
-  "number": 557,
+  "number": 558,
   "src": {
    "by": "hls02ns.antenaplay.ro",
    "kind": "public",
@@ -12920,7 +12940,7 @@ window.CHANNELS_DATA = [
   "countryHe": "צ׳ילה",
   "iptv": "13T.cl",
   "imported": true,
-  "number": 558,
+  "number": 559,
   "src": {
    "by": "origin.dpsgo.com",
    "kind": "public",
@@ -12944,7 +12964,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קולומביה",
   "iptv": "CanalCineDios.co",
   "imported": true,
-  "number": 559,
+  "number": 560,
   "src": {
    "by": "canal.mediaserver.com.co",
    "kind": "public",
@@ -12968,7 +12988,7 @@ window.CHANNELS_DATA = [
   "countryHe": "וייטנאם",
   "iptv": "ONCine.vn",
   "imported": true,
-  "number": 560,
+  "number": 561,
   "src": {
    "by": "freem3u.xyz",
    "kind": "public",
@@ -12992,7 +13012,7 @@ window.CHANNELS_DATA = [
   "countryHe": "איראן",
   "iptv": "SL1.ir",
   "imported": true,
-  "number": 561,
+  "number": 562,
   "src": {
    "by": "slonehls.wns.live",
    "kind": "public",
@@ -13016,7 +13036,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גואטמלה",
   "iptv": "TVSRetro.gt",
   "imported": true,
-  "number": 562,
+  "number": 563,
   "src": {
    "by": "cdn.streamhispanatv.net",
    "kind": "public",
@@ -13040,7 +13060,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הרפובליקה הדומיניקנית",
   "iptv": "Boreal.do",
   "imported": true,
-  "number": 563,
+  "number": 564,
   "src": {
    "by": "edge.essastream.com",
    "kind": "public",
@@ -13064,7 +13084,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "Charge.us",
   "imported": true,
-  "number": 564,
+  "number": 565,
   "src": {
    "by": "fast-channels.sinclairstoryline.com",
    "kind": "public",
@@ -13089,7 +13109,7 @@ window.CHANNELS_DATA = [
   "iptv": "MyTimeMovieNetwork.uk",
   "imported": true,
   "webOk": false,
-  "number": 565,
+  "number": 566,
   "src": {
    "by": "appletree-mytimeuk-rakuten.amagi.tv",
    "kind": "public",
@@ -13113,7 +13133,7 @@ window.CHANNELS_DATA = [
   "countryHe": "צרפת",
   "iptv": "SonyOneFavoris.fr",
   "imported": true,
-  "number": 566,
+  "number": 567,
   "src": {
    "by": "49d735318d6b4c30a24a7997ea594e1b.mediatailor.us-west-2.amazonaws.com",
    "kind": "public",
@@ -13137,7 +13157,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "CagneyLacey.de",
   "imported": true,
-  "number": 567,
+  "number": 568,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -13161,7 +13181,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ספרד",
   "iptv": "RakutenTVActionMovies.es",
   "imported": true,
-  "number": 568,
+  "number": 569,
   "src": {
    "by": "a9c57ec7ec5e4b7daeacc6316a0bb404.mediatailor.eu-west-1.amazonaws.com",
    "kind": "public",
@@ -13185,7 +13205,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רוסיה",
   "iptv": "HorosheeKino.ru",
   "imported": true,
-  "number": 569,
+  "number": 570,
   "src": {
    "by": "live-rian.cdnvideo.ru",
    "kind": "public",
@@ -13209,7 +13229,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אוקראינה",
   "iptv": "4everCinema.ua",
   "imported": true,
-  "number": 570,
+  "number": 571,
   "src": {
    "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
    "kind": "restream",
@@ -13233,7 +13253,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הודו",
   "iptv": "NHTamilGold.in",
   "imported": true,
-  "number": 571,
+  "number": 572,
   "src": {
    "by": "d3arbp6l7f096k.cloudfront.net",
    "kind": "public",
@@ -13257,7 +13277,7 @@ window.CHANNELS_DATA = [
   "countryHe": "סין",
   "iptv": "CCTVStormTheater.cn",
   "imported": true,
-  "number": 572,
+  "number": 573,
   "src": {
    "by": "38.75.136.137",
    "kind": "public",
@@ -13281,7 +13301,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ברזיל",
   "iptv": "RetroCartoon.br",
   "imported": true,
-  "number": 573,
+  "number": 574,
   "src": {
    "by": "stmv1.video.brstream.com.br",
    "kind": "public",
@@ -13305,7 +13325,7 @@ window.CHANNELS_DATA = [
   "countryHe": "מקסיקו",
   "iptv": "ClaroCinema.mx",
   "imported": true,
-  "number": 574,
+  "number": 575,
   "src": {
    "by": "158.172.217.18",
    "kind": "public",
@@ -13329,7 +13349,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פולין",
   "iptv": "FILMBOXPlusComedy.pl",
   "imported": true,
-  "number": 575,
+  "number": 576,
   "src": {
    "by": "nosignal1.antenaplay.ro",
    "kind": "public",
@@ -13353,7 +13373,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שוודיה",
   "iptv": "2900Happiness.se",
   "imported": true,
-  "number": 576,
+  "number": 577,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -13377,7 +13397,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רומניה",
   "iptv": "Mireasa.ro",
   "imported": true,
-  "number": 577,
+  "number": 578,
   "src": {
    "by": "stream1.antenaplay.ro",
    "kind": "public",
@@ -13401,7 +13421,7 @@ window.CHANNELS_DATA = [
   "countryHe": "צ׳ילה",
   "iptv": "MegaFiccion.cl",
   "imported": true,
-  "number": 578,
+  "number": 579,
   "src": {
    "by": "15.204.196.147",
    "kind": "public",
@@ -13425,7 +13445,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קולומביה",
   "iptv": "StarChannel.co",
   "imported": true,
-  "number": 579,
+  "number": 580,
   "src": {
    "by": "190.61.47.54",
    "kind": "public",
@@ -13449,7 +13469,7 @@ window.CHANNELS_DATA = [
   "countryHe": "איראן",
   "iptv": "SL2.ir",
   "imported": true,
-  "number": 580,
+  "number": 581,
   "src": {
    "by": "sltwohls.wns.live",
    "kind": "public",
@@ -13473,7 +13493,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "DoctorWhoClassic.us",
   "imported": true,
-  "number": 581,
+  "number": 582,
   "src": {
    "by": "bbc-classicdrwho-1-us.roku.wurl.tv",
    "kind": "public",
@@ -13497,7 +13517,7 @@ window.CHANNELS_DATA = [
   "countryHe": "בריטניה",
   "iptv": "ViasatEpicDrama.uk",
   "imported": true,
-  "number": 582,
+  "number": 583,
   "src": {
    "by": "92.114.85.87",
    "kind": "public",
@@ -13521,7 +13541,7 @@ window.CHANNELS_DATA = [
   "countryHe": "צרפת",
   "iptv": "SonyOneHitsAction.fr",
   "imported": true,
-  "number": 583,
+  "number": 584,
   "src": {
    "by": "5098a8b860504a3690fd2e7c0a18d68f.mediatailor.us-west-2.amazonaws.com",
    "kind": "public",
@@ -13545,7 +13565,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "CSICrimeSceneInvestigation.de",
   "imported": true,
-  "number": 584,
+  "number": 585,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -13569,7 +13589,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ספרד",
   "iptv": "RakutenTVComedyMovies.es",
   "imported": true,
-  "number": 585,
+  "number": 586,
   "src": {
    "by": "71db867f03ce4d71a29e92155f07ab87.mediatailor.eu-west-1.amazonaws.com",
    "kind": "public",
@@ -13593,7 +13613,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רוסיה",
   "iptv": "Smotrim100Klassika.ru",
   "imported": true,
-  "number": 586,
+  "number": 587,
   "src": {
    "by": "Smotrim (VGTRK) – הבעלים של קרוסלה",
    "kind": "official",
@@ -13617,7 +13637,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אוקראינה",
   "iptv": "4everDrama.ua",
   "imported": true,
-  "number": 587,
+  "number": 588,
   "src": {
    "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
    "kind": "restream",
@@ -13641,7 +13661,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הודו",
   "iptv": "PunjabiShorts.in",
   "imported": true,
-  "number": 588,
+  "number": 589,
   "src": {
    "by": "vglivessai.akamaized.net",
    "kind": "public",
@@ -13665,7 +13685,7 @@ window.CHANNELS_DATA = [
   "countryHe": "סין",
   "iptv": "CCTVTheFirstTheater.cn",
   "imported": true,
-  "number": 589,
+  "number": 590,
   "src": {
    "by": "38.75.136.137",
    "kind": "public",
@@ -13689,7 +13709,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ברזיל",
   "iptv": "TVSeries.br",
   "imported": true,
-  "number": 590,
+  "number": 591,
   "src": {
    "by": "stmv1.srvif.com",
    "kind": "public",
@@ -13713,7 +13733,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פולין",
   "iptv": "FILMBOXPlusLoveCrime.pl",
   "imported": true,
-  "number": 591,
+  "number": 592,
   "src": {
    "by": "nosignal1.antenaplay.ro",
    "kind": "public",
@@ -13737,7 +13757,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שוודיה",
   "iptv": "7thHeaven.se",
   "imported": true,
-  "number": 592,
+  "number": 593,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -13761,7 +13781,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רומניה",
   "iptv": "BollywoodClassic.ro",
   "imported": true,
-  "number": 593,
+  "number": 594,
   "src": {
    "by": "hls02ns.antenaplay.ro",
    "kind": "public",
@@ -13785,7 +13805,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קולומביה",
   "iptv": "TeleNostalgia.co",
   "imported": true,
-  "number": 594,
+  "number": 595,
   "src": {
    "by": "38.134.250.110",
    "kind": "public",
@@ -13809,7 +13829,7 @@ window.CHANNELS_DATA = [
   "countryHe": "איראן",
   "iptv": "AfraFilm.ir",
   "imported": true,
-  "number": 595,
+  "number": 596,
   "src": {
    "by": "afrafhls.wns.live",
    "kind": "public",
@@ -13833,7 +13853,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "DuckDynasty.us",
   "imported": true,
-  "number": 596,
+  "number": 597,
   "src": {
    "by": "amg00276-amg00276c2-rakuten-uk-3449.playouts.now.amagi.tv",
    "kind": "public",
@@ -13857,7 +13877,7 @@ window.CHANNELS_DATA = [
   "countryHe": "צרפת",
   "iptv": "SonyOneHitsComedie.fr",
   "imported": true,
-  "number": 597,
+  "number": 598,
   "src": {
    "by": "7aa9671895264ec9a384dfed1b992171.mediatailor.us-west-2.amazonaws.com",
    "kind": "public",
@@ -13881,7 +13901,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "MoreTVCrime.de",
   "imported": true,
-  "number": 598,
+  "number": 599,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -13905,7 +13925,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ספרד",
   "iptv": "RakutenTVDramaMovies.es",
   "imported": true,
-  "number": 599,
+  "number": 600,
   "src": {
    "by": "a7089c89d85f453d850c4a1518b43076.mediatailor.eu-west-1.amazonaws.com",
    "kind": "public",
@@ -13929,7 +13949,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רוסיה",
   "iptv": "Smotrim100Lyubov.ru",
   "imported": true,
-  "number": 600,
+  "number": 601,
   "src": {
    "by": "Smotrim (VGTRK) – הבעלים של קרוסלה",
    "kind": "official",
@@ -13953,7 +13973,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הודו",
   "iptv": "RajDigitalPlus.in",
   "imported": true,
-  "number": 601,
+  "number": 602,
   "src": {
    "by": "livestream.rajtv.tv",
    "kind": "public",
@@ -13977,7 +13997,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ברזיל",
   "iptv": "ClassiqueTV.br",
   "imported": true,
-  "number": 602,
+  "number": 603,
   "src": {
    "by": "stmv1.srvif.com",
    "kind": "public",
@@ -14001,7 +14021,7 @@ window.CHANNELS_DATA = [
   "countryHe": "מקסיקו",
   "iptv": "DePeliculaPlus.mx",
   "imported": true,
-  "number": 603,
+  "number": 604,
   "src": {
    "by": "200.115.120.1",
    "kind": "public",
@@ -14025,7 +14045,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פולין",
   "iptv": "AXNPoland.pl",
   "imported": true,
-  "number": 604,
+  "number": 605,
   "src": {
    "by": "92.114.85.87",
    "kind": "public",
@@ -14049,7 +14069,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שוודיה",
   "iptv": "AuctionHunters.se",
   "imported": true,
-  "number": 605,
+  "number": 606,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -14073,7 +14093,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רומניה",
   "iptv": "CineWow.ro",
   "imported": true,
-  "number": 606,
+  "number": 607,
   "src": {
    "by": "hls02ns.antenaplay.ro",
    "kind": "public",
@@ -14097,7 +14117,7 @@ window.CHANNELS_DATA = [
   "countryHe": "איראן",
   "iptv": "CafeFilm.ir",
   "imported": true,
-  "number": 607,
+  "number": 608,
   "src": {
    "by": "cafefhls.wns.live",
    "kind": "public",
@@ -14121,7 +14141,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "GravitasMovies.us",
   "imported": true,
-  "number": 608,
+  "number": 609,
   "src": {
    "by": "d6dg3ebeih71x.cloudfront.net",
    "kind": "public",
@@ -14145,7 +14165,7 @@ window.CHANNELS_DATA = [
   "countryHe": "צרפת",
   "iptv": "PersianaCinema.fr",
   "imported": true,
-  "number": 609,
+  "number": 610,
   "src": {
    "by": "cinehls.persiana.live",
    "kind": "public",
@@ -14169,7 +14189,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "PlutoTVAmericanTrueCrime.de",
   "imported": true,
-  "number": 610,
+  "number": 611,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -14193,7 +14213,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ספרד",
   "iptv": "RakutenTVFamilyMovies.es",
   "imported": true,
-  "number": 611,
+  "number": 612,
   "src": {
    "by": "b0d59c8c98974e708e5ccb9a27cdfdfc.mediatailor.eu-west-1.amazonaws.com",
    "kind": "public",
@@ -14217,7 +14237,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רוסיה",
   "iptv": "Smotrim100Muzhskoe.ru",
   "imported": true,
-  "number": 612,
+  "number": 613,
   "src": {
    "by": "Smotrim (VGTRK) – הבעלים של קרוסלה",
    "kind": "official",
@@ -14241,7 +14261,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הודו",
   "iptv": "SouthStation.in",
   "imported": true,
-  "number": 613,
+  "number": 614,
   "src": {
    "by": "cc-yw7ztecy8do3q.akamaized.net",
    "kind": "public",
@@ -14265,7 +14285,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ברזיל",
   "iptv": "AXN.br",
   "imported": true,
-  "number": 614,
+  "number": 615,
   "src": {
    "by": "170.83.16.50",
    "kind": "public",
@@ -14289,7 +14309,7 @@ window.CHANNELS_DATA = [
   "countryHe": "מקסיקו",
   "iptv": "MultiPremier.mx",
   "imported": true,
-  "number": 615,
+  "number": 616,
   "src": {
    "by": "168.196.127.137",
    "kind": "public",
@@ -14313,7 +14333,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פולין",
   "iptv": "TVPSeriale.pl",
   "imported": true,
-  "number": 616,
+  "number": 617,
   "src": {
    "by": "92.114.85.87",
    "kind": "public",
@@ -14337,7 +14357,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שוודיה",
   "iptv": "Becker.se",
   "imported": true,
-  "number": 617,
+  "number": 618,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -14361,7 +14381,7 @@ window.CHANNELS_DATA = [
   "countryHe": "איראן",
   "iptv": "ClassicTV.ir",
   "imported": true,
-  "number": 618,
+  "number": 619,
   "src": {
    "by": "clshls.wns.live",
    "kind": "public",
@@ -14385,7 +14405,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "ImpossibleQuizShow.us",
   "imported": true,
-  "number": 619,
+  "number": 620,
   "src": {
    "by": "bbc-impossible-1-us.roku.wurl.tv",
    "kind": "public",
@@ -14409,7 +14429,7 @@ window.CHANNELS_DATA = [
   "countryHe": "צרפת",
   "iptv": "PersianaFamily.fr",
   "imported": true,
-  "number": 620,
+  "number": 621,
   "src": {
    "by": "familyhls.persiana.live",
    "kind": "public",
@@ -14433,7 +14453,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "PlutoTVClassicTV.de",
   "imported": true,
-  "number": 621,
+  "number": 622,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -14457,7 +14477,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ספרד",
   "iptv": "RakutenTVTopMovies.es",
   "imported": true,
-  "number": 622,
+  "number": 623,
   "src": {
    "by": "ff335120300e4742a2b135ee9a9e7df8.mediatailor.eu-west-1.amazonaws.com",
    "kind": "public",
@@ -14481,7 +14501,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רוסיה",
   "iptv": "Dorama.ru",
   "imported": true,
-  "number": 623,
+  "number": 624,
   "src": {
    "by": "fs.uplink.kz",
    "kind": "public",
@@ -14505,7 +14525,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הודו",
   "iptv": "ThalaaTV.in",
   "imported": true,
-  "number": 624,
+  "number": 625,
   "src": {
    "by": "streams2.sofast.tv",
    "kind": "public",
@@ -14529,7 +14549,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ברזיל",
   "iptv": "SonyMovies.br",
   "imported": true,
-  "number": 625,
+  "number": 626,
   "src": {
    "by": "45.162.64.114",
    "kind": "public",
@@ -14553,7 +14573,7 @@ window.CHANNELS_DATA = [
   "countryHe": "מקסיקו",
   "iptv": "TlnovelasMexico.mx",
   "imported": true,
-  "number": 626,
+  "number": 627,
   "src": {
    "by": "167.249.23.102",
    "kind": "public",
@@ -14577,7 +14597,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פולין",
   "iptv": "FILMBOXPlusAction.pl",
   "imported": true,
-  "number": 627,
+  "number": 628,
   "src": {
    "by": "92.114.85.87",
    "kind": "public",
@@ -14601,7 +14621,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שוודיה",
   "iptv": "BET.se",
   "imported": true,
-  "number": 628,
+  "number": 629,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -14625,7 +14645,7 @@ window.CHANNELS_DATA = [
   "countryHe": "איראן",
   "iptv": "GoldStar.ir",
   "imported": true,
-  "number": 629,
+  "number": 630,
   "src": {
    "by": "moviethls.wns.live",
    "kind": "public",
@@ -14649,7 +14669,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "MaverickBlackCinema.us",
   "imported": true,
-  "number": 630,
+  "number": 631,
   "src": {
    "by": "maverick-maverick-black-cinema-3-us.roku.wurl.tv",
    "kind": "public",
@@ -14673,7 +14693,7 @@ window.CHANNELS_DATA = [
   "countryHe": "צרפת",
   "iptv": "PersianaIranian.fr",
   "imported": true,
-  "number": 631,
+  "number": 632,
   "src": {
    "by": "irhls.persiana.live",
    "kind": "public",
@@ -14697,7 +14717,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "PlutoTVCultFilms.de",
   "imported": true,
-  "number": 632,
+  "number": 633,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -14721,7 +14741,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ספרד",
   "iptv": "3CatPlatsbruts.es",
   "imported": true,
-  "number": 633,
+  "number": 634,
   "src": {
    "by": "fast-tailor.3catdirectes.cat",
    "kind": "public",
@@ -14745,7 +14765,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רוסיה",
   "iptv": "Kinoseriya.ru",
   "imported": true,
-  "number": 634,
+  "number": 635,
   "src": {
    "by": "fs.uplink.kz",
    "kind": "public",
@@ -14769,7 +14789,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הודו",
   "iptv": "TheMovieClub.in",
   "imported": true,
-  "number": 635,
+  "number": 636,
   "src": {
    "by": "sis-global.prod.samsungtv.plus",
    "kind": "public",
@@ -14793,7 +14813,7 @@ window.CHANNELS_DATA = [
   "countryHe": "מקסיקו",
   "iptv": "AzCorazon.mx",
   "imported": true,
-  "number": 636,
+  "number": 637,
   "src": {
    "by": "200.115.120.1",
    "kind": "public",
@@ -14817,7 +14837,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פולין",
   "iptv": "FILMBOXPlusEmotion.pl",
   "imported": true,
-  "number": 637,
+  "number": 638,
   "src": {
    "by": "92.114.85.87",
    "kind": "public",
@@ -14841,7 +14861,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שוודיה",
   "iptv": "BritainsNextTopModel.se",
   "imported": true,
-  "number": 638,
+  "number": 639,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -14865,7 +14885,7 @@ window.CHANNELS_DATA = [
   "countryHe": "איראן",
   "iptv": "MetaFilmTV.ir",
   "imported": true,
-  "number": 639,
+  "number": 640,
   "src": {
    "by": "metafilmhls.wns.live",
    "kind": "public",
@@ -14889,7 +14909,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "MidsomerMurders.us",
   "imported": true,
-  "number": 640,
+  "number": 641,
   "src": {
    "by": "all3media-midsomer-1-us.roku.wurl.tv",
    "kind": "public",
@@ -14913,7 +14933,7 @@ window.CHANNELS_DATA = [
   "countryHe": "צרפת",
   "iptv": "PersianaKorea.fr",
   "imported": true,
-  "number": 641,
+  "number": 642,
   "src": {
    "by": "korhls.persiana.live",
    "kind": "public",
@@ -14937,7 +14957,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "PlutoTVFamilyMovieClub.de",
   "imported": true,
-  "number": 642,
+  "number": 643,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -14961,7 +14981,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ספרד",
   "iptv": "XPTVUS.es",
   "imported": true,
-  "number": 643,
+  "number": 644,
   "src": {
    "by": "janus.xpbroadcasting.com",
    "kind": "public",
@@ -14985,7 +15005,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רוסיה",
   "iptv": "Russkiyroman.ru",
   "imported": true,
-  "number": 644,
+  "number": 645,
   "src": {
    "by": "vod.tuva.ru",
    "kind": "public",
@@ -15009,7 +15029,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הודו",
   "iptv": "TollyTV.in",
   "imported": true,
-  "number": 645,
+  "number": 646,
   "src": {
    "by": "streams2.sofast.tv",
    "kind": "public",
@@ -15034,7 +15054,7 @@ window.CHANNELS_DATA = [
   "iptv": "MyTimeMovieNetwork.mx",
   "imported": true,
   "webOk": false,
-  "number": 646,
+  "number": 647,
   "src": {
    "by": "appletree-mytime-samsungmexico.amagi.tv",
    "kind": "public",
@@ -15058,7 +15078,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פולין",
   "iptv": "AXNBlack.pl",
   "imported": true,
-  "number": 647,
+  "number": 648,
   "src": {
    "by": "92.114.85.87",
    "kind": "public",
@@ -15082,7 +15102,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שוודיה",
   "iptv": "Bull.se",
   "imported": true,
-  "number": 648,
+  "number": 649,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -15106,7 +15126,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "NEWKMOVIES.us",
   "imported": true,
-  "number": 649,
+  "number": 650,
   "src": {
    "by": "ads.its-newid.net",
    "kind": "public",
@@ -15130,7 +15150,7 @@ window.CHANNELS_DATA = [
   "countryHe": "צרפת",
   "iptv": "PersianaPlus.fr",
   "imported": true,
-  "number": 650,
+  "number": 651,
   "src": {
    "by": "euhls.persiana.live",
    "kind": "public",
@@ -15154,7 +15174,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "PlutoTVFantasyHorror.de",
   "imported": true,
-  "number": 651,
+  "number": 652,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -15178,7 +15198,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רוסיה",
   "iptv": "CityEdenKinoAction.ru",
   "imported": true,
-  "number": 652,
+  "number": 653,
   "src": {
    "by": "cityeden.catcast.tv",
    "kind": "public",
@@ -15202,7 +15222,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הודו",
   "iptv": "AlankarTV.in",
   "imported": true,
-  "number": 653,
+  "number": 654,
   "src": {
    "by": "livetv.tarangplus.in",
    "kind": "public",
@@ -15226,7 +15246,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פולין",
   "iptv": "AXNWhite.pl",
   "imported": true,
-  "number": 654,
+  "number": 655,
   "src": {
    "by": "92.114.85.87",
    "kind": "public",
@@ -15250,7 +15270,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שוודיה",
   "iptv": "CSI.se",
   "imported": true,
-  "number": 655,
+  "number": 656,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -15274,7 +15294,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "OuterSphere.us",
   "imported": true,
-  "number": 656,
+  "number": 657,
   "src": {
    "by": "d3o593mz1glx8d.cloudfront.net",
    "kind": "public",
@@ -15298,7 +15318,7 @@ window.CHANNELS_DATA = [
   "countryHe": "צרפת",
   "iptv": "PersianaSeries.fr",
   "imported": true,
-  "number": 657,
+  "number": 658,
   "src": {
    "by": "onehls.persiana.live",
    "kind": "public",
@@ -15322,7 +15342,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "PlutoTVInvestigation.de",
   "imported": true,
-  "number": 658,
+  "number": 659,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -15346,7 +15366,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רוסיה",
   "iptv": "CityEdenKinoArt.ru",
   "imported": true,
-  "number": 659,
+  "number": 660,
   "src": {
    "by": "cityeden.catcast.tv",
    "kind": "public",
@@ -15370,7 +15390,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הודו",
   "iptv": "BhojpuriCinema.in",
   "imported": true,
-  "number": 660,
+  "number": 661,
   "src": {
    "by": "live-bhojpuri.akamaized.net",
    "kind": "public",
@@ -15394,7 +15414,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פולין",
   "iptv": "SundanceTV.pl",
   "imported": true,
-  "number": 661,
+  "number": 662,
   "src": {
    "by": "92.114.85.87",
    "kind": "public",
@@ -15418,7 +15438,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שוודיה",
   "iptv": "DallasCowboysCheerleaders.se",
   "imported": true,
-  "number": 662,
+  "number": 663,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -15442,7 +15462,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "TheLoop.us",
   "imported": true,
-  "number": 663,
+  "number": 664,
   "src": {
    "by": "tgn.bozztv.com",
    "kind": "public",
@@ -15466,7 +15486,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "PlutoTVScifiSeries.de",
   "imported": true,
-  "number": 664,
+  "number": 665,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -15490,7 +15510,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רוסיה",
   "iptv": "CityEdenKinoAsia.ru",
   "imported": true,
-  "number": 665,
+  "number": 666,
   "src": {
    "by": "cityeden.catcast.tv",
    "kind": "public",
@@ -15514,7 +15534,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הודו",
   "iptv": "ManoranjanGrand.in",
   "imported": true,
-  "number": 666,
+  "number": 667,
   "src": {
    "by": "cdn.pishow.tv",
    "kind": "public",
@@ -15538,7 +15558,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פולין",
   "iptv": "AXNSpin.pl",
   "imported": true,
-  "number": 667,
+  "number": 668,
   "src": {
    "by": "92.114.85.87",
    "kind": "public",
@@ -15562,7 +15582,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שוודיה",
   "iptv": "DatingNakedUK.se",
   "imported": true,
-  "number": 668,
+  "number": 669,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -15586,7 +15606,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "ThisOldHouse.us",
   "imported": true,
-  "number": 669,
+  "number": 670,
   "src": {
    "by": "thisoldhouse-2-us.roku.wurl.tv",
    "kind": "public",
@@ -15610,7 +15630,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "PlutoTVSherlock.de",
   "imported": true,
-  "number": 670,
+  "number": 671,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -15634,7 +15654,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רוסיה",
   "iptv": "CityEdenKinoDetektiv.ru",
   "imported": true,
-  "number": 671,
+  "number": 672,
   "src": {
    "by": "cityeden.catcast.tv",
    "kind": "public",
@@ -15658,7 +15678,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הודו",
   "iptv": "MoviePunjab.in",
   "imported": true,
-  "number": 672,
+  "number": 673,
   "src": {
    "by": "samitaorigin.tangotv.in",
    "kind": "public",
@@ -15682,7 +15702,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פולין",
   "iptv": "PolsatFilm.pl",
   "imported": true,
-  "number": 673,
+  "number": 674,
   "src": {
    "by": "92.63.196.180",
    "kind": "public",
@@ -15706,7 +15726,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שוודיה",
   "iptv": "DiagnosisMurder.se",
   "imported": true,
-  "number": 674,
+  "number": 675,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -15730,7 +15750,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "UniversalCrime.us",
   "imported": true,
-  "number": 675,
+  "number": 676,
   "src": {
    "by": "xumo-xumoent-vc-107-xmuvk.fast.nbcuni.com",
    "kind": "public",
@@ -15754,7 +15774,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "PlutoTVToughJobs.de",
   "imported": true,
-  "number": 676,
+  "number": 677,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -15778,7 +15798,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רוסיה",
   "iptv": "CityEdenKinoDok.ru",
   "imported": true,
-  "number": 677,
+  "number": 678,
   "src": {
    "by": "cityeden.catcast.tv",
    "kind": "public",
@@ -15802,7 +15822,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הודו",
   "iptv": "OscarMoviesBhojpuri.in",
   "imported": true,
-  "number": 678,
+  "number": 679,
   "src": {
    "by": "cdn.pishow.tv",
    "kind": "public",
@@ -15826,7 +15846,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שוודיה",
   "iptv": "FBoyIsland.se",
   "imported": true,
-  "number": 679,
+  "number": 680,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -15850,7 +15870,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "AXNLatinAmerica.us",
   "imported": true,
-  "number": 680,
+  "number": 681,
   "src": {
    "by": "streaming.onnethn.com",
    "kind": "public",
@@ -15874,7 +15894,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "PlutoTVWesterns.de",
   "imported": true,
-  "number": 681,
+  "number": 682,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -15898,7 +15918,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רוסיה",
   "iptv": "CityEdenKinoDrama.ru",
   "imported": true,
-  "number": 682,
+  "number": 683,
   "src": {
    "by": "cityeden.catcast.tv",
    "kind": "public",
@@ -15922,7 +15942,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הודו",
   "iptv": "Pitaara.in",
   "imported": true,
-  "number": 683,
+  "number": 684,
   "src": {
    "by": "vg-pitaaratvlive.akamaized.net",
    "kind": "public",
@@ -15946,7 +15966,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שוודיה",
   "iptv": "HappyDays.se",
   "imported": true,
-  "number": 684,
+  "number": 685,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -15970,7 +15990,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "Cinecanal.us",
   "imported": true,
-  "number": 685,
+  "number": 686,
   "src": {
    "by": "barinaslive1.boldmss.com",
    "kind": "public",
@@ -15994,7 +16014,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "TheNewDetectives.de",
   "imported": true,
-  "number": 686,
+  "number": 687,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -16018,7 +16038,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רוסיה",
   "iptv": "CityEdenKinoFantastika.ru",
   "imported": true,
-  "number": 687,
+  "number": 688,
   "src": {
    "by": "cityeden.catcast.tv",
    "kind": "public",
@@ -16042,7 +16062,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הודו",
   "iptv": "ShubhCinemaTV.in",
   "imported": true,
-  "number": 688,
+  "number": 689,
   "src": {
    "by": "d393sxaxig6bax.cloudfront.net",
    "kind": "public",
@@ -16066,7 +16086,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שוודיה",
   "iptv": "HouseofLies.se",
   "imported": true,
-  "number": 689,
+  "number": 690,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -16090,7 +16110,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "50CentAction.us",
   "imported": true,
-  "number": 690,
+  "number": 691,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -16114,7 +16134,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "Cine666byPlutoTV.de",
   "imported": true,
-  "number": 691,
+  "number": 692,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -16138,7 +16158,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רוסיה",
   "iptv": "CityEdenKinoKomediya.ru",
   "imported": true,
-  "number": 692,
+  "number": 693,
   "src": {
    "by": "cityeden.catcast.tv",
    "kind": "public",
@@ -16162,7 +16182,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הודו",
   "iptv": "StarMaaMovies.in",
   "imported": true,
-  "number": 693,
+  "number": 694,
   "src": {
    "by": "da86m1sqpm3o0.cloudfront.net",
    "kind": "public",
@@ -16186,7 +16206,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שוודיה",
   "iptv": "JAG.se",
   "imported": true,
-  "number": 694,
+  "number": 695,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -16210,7 +16230,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "ABNBibleMoviesChannel.us",
   "imported": true,
-  "number": 695,
+  "number": 696,
   "src": {
    "by": "mediaserver.abnvideos.com",
    "kind": "public",
@@ -16234,7 +16254,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "CineActionbyPlutoTV.de",
   "imported": true,
-  "number": 696,
+  "number": 697,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -16258,7 +16278,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רוסיה",
   "iptv": "CityEdenKinoMistika.ru",
   "imported": true,
-  "number": 697,
+  "number": 698,
   "src": {
    "by": "cityeden.catcast.tv",
    "kind": "public",
@@ -16282,7 +16302,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הודו",
   "iptv": "StudioOnePlus.in",
   "imported": true,
-  "number": 698,
+  "number": 699,
   "src": {
    "by": "cdn.pishow.tv",
    "kind": "public",
@@ -16306,7 +16326,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שוודיה",
   "iptv": "JudgeJudy.se",
   "imported": true,
-  "number": 699,
+  "number": 700,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -16325,7 +16345,7 @@ window.CHANNELS_DATA = [
   "logo": "",
   "badge": "FHD",
   "desc": "קומדיות, סיטקומים מצחיקים, מופעי סטנדאפ וסרטי צחוק",
-  "number": 700,
+  "number": 701,
   "lang": "he",
   "iptv": "ComedyChannel.il",
   "src": {
@@ -16348,7 +16368,7 @@ window.CHANNELS_DATA = [
   "badge": "HD",
   "desc": "קומדיות ישראליות של קשת 24/7 – ערוץ חינמי של mako",
   "logo": "assets/logos/keshet_comedy.svg",
-  "number": 701,
+  "number": 702,
   "src": {
    "by": "קשת – ה-CDN של mako (עם הרשאת צפייה של mako)",
    "kind": "official",
@@ -16369,7 +16389,7 @@ window.CHANNELS_DATA = [
   "badge": "HD",
   "desc": "כל העונות של ארץ נהדרת ברצף – ערוץ חינמי של mako",
   "logo": "assets/logos/eretz_nehederet.svg",
-  "number": 702,
+  "number": 703,
   "src": {
    "by": "קשת – ה-CDN של mako (עם הרשאת צפייה של mako)",
    "kind": "official",
@@ -16390,7 +16410,7 @@ window.CHANNELS_DATA = [
   "badge": "HD",
   "desc": "סברי מרנן ברצף – ערוץ חינמי של mako",
   "logo": "assets/logos/savri_maranan.svg",
-  "number": 703,
+  "number": 704,
   "src": {
    "by": "קשת – ה-CDN של mako (עם הרשאת צפייה של mako)",
    "kind": "official",
@@ -16414,7 +16434,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "NBCComedyVault.us",
   "imported": true,
-  "number": 704,
+  "number": 705,
   "src": {
    "by": "xumo-xumoent-vc-105-z0vpm.fast.nbcuni.com",
    "kind": "public",
@@ -16438,7 +16458,7 @@ window.CHANNELS_DATA = [
   "countryHe": "צרפת",
   "iptv": "PersianaComedy.fr",
   "imported": true,
-  "number": 705,
+  "number": 706,
   "src": {
    "by": "comedyhls.persiana.live",
    "kind": "public",
@@ -16462,7 +16482,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "Ridiculousness.de",
   "imported": true,
-  "number": 706,
+  "number": 707,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -16486,7 +16506,7 @@ window.CHANNELS_DATA = [
   "countryHe": "איטליה",
   "iptv": "ComedyCentral.it",
   "imported": true,
-  "number": 707,
+  "number": 708,
   "src": {
    "by": "team-tv.co",
    "kind": "public",
@@ -16510,7 +16530,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רוסיה",
   "iptv": "KVNTV.ru",
   "imported": true,
-  "number": 708,
+  "number": 709,
   "src": {
    "by": "fs.uplink.kz",
    "kind": "public",
@@ -16534,7 +16554,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הודו",
   "iptv": "ETVComedy.in",
   "imported": true,
-  "number": 709,
+  "number": 710,
   "src": {
    "by": "cc-wie8j8y69d2uy.akamaized.net",
    "kind": "public",
@@ -16558,7 +16578,7 @@ window.CHANNELS_DATA = [
   "countryHe": "מקסיקו",
   "iptv": "DistritoComedia.mx",
   "imported": true,
-  "number": 710,
+  "number": 711,
   "src": {
    "by": "138.121.15.230",
    "kind": "public",
@@ -16582,7 +16602,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שוודיה",
   "iptv": "Awkward.se",
   "imported": true,
-  "number": 711,
+  "number": 712,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -16606,7 +16626,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רומניה",
   "iptv": "ComedyPlay.ro",
   "imported": true,
-  "number": 712,
+  "number": 713,
   "src": {
    "by": "stream1.antenaplay.ro",
    "kind": "public",
@@ -16630,7 +16650,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ירדן",
   "iptv": "JordanComedy.jo",
   "imported": true,
-  "number": 713,
+  "number": 714,
   "src": {
    "by": "playlist.fasttvcdn.com",
    "kind": "public",
@@ -16654,7 +16674,7 @@ window.CHANNELS_DATA = [
   "countryHe": "סלובקיה",
   "iptv": "HAHATV.sk",
   "imported": true,
-  "number": 714,
+  "number": 715,
   "src": {
    "by": "Antik Telecom (סלובקיה), נתיבי test",
    "kind": "restream",
@@ -16678,7 +16698,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "SNLVault.us",
   "imported": true,
-  "number": 715,
+  "number": 716,
   "src": {
    "by": "d4whmvwm0rdvi.cloudfront.net",
    "kind": "public",
@@ -16702,7 +16722,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "ComediaalobestiadePlutoTV.de",
   "imported": true,
-  "number": 716,
+  "number": 717,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -16726,7 +16746,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רוסיה",
   "iptv": "Komediynoe.ru",
   "imported": true,
-  "number": 717,
+  "number": 718,
   "src": {
    "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
    "kind": "restream",
@@ -16750,7 +16770,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הודו",
   "iptv": "SirippoliTV.in",
   "imported": true,
-  "number": 718,
+  "number": 719,
   "src": {
    "by": "segment.yuppcdn.net",
    "kind": "public",
@@ -16774,7 +16794,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שוודיה",
   "iptv": "BeavisandButtHead.se",
   "imported": true,
-  "number": 719,
+  "number": 720,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -16798,7 +16818,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "ComedyCentralLatinAmerica.us",
   "imported": true,
-  "number": 720,
+  "number": 721,
   "src": {
    "by": "barinaslive1.boldmss.com",
    "kind": "public",
@@ -16822,7 +16842,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "PlutoTVComediamadeinSpain.de",
   "imported": true,
-  "number": 721,
+  "number": 722,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -16846,7 +16866,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רוסיה",
   "iptv": "TvoyeTVYumor.ru",
   "imported": true,
-  "number": 722,
+  "number": 723,
   "src": {
    "by": "tvoetv.space",
    "kind": "public",
@@ -16870,7 +16890,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שוודיה",
   "iptv": "BroadCity.se",
   "imported": true,
-  "number": 723,
+  "number": 724,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -16894,7 +16914,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "30ARidiculousTV.us",
   "imported": true,
-  "number": 724,
+  "number": 725,
   "src": {
    "by": "30a-tv.com",
    "kind": "public",
@@ -16918,7 +16938,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "AllehassenChris.de",
   "imported": true,
-  "number": 725,
+  "number": 726,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -16942,7 +16962,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רוסיה",
   "iptv": "Komedia.ru",
   "imported": true,
-  "number": 726,
+  "number": 727,
   "src": {
    "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
    "kind": "restream",
@@ -16966,7 +16986,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שוודיה",
   "iptv": "CarolineintheCity.se",
   "imported": true,
-  "number": 727,
+  "number": 728,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -16990,7 +17010,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "AFV.us",
   "imported": true,
-  "number": 728,
+  "number": 729,
   "src": {
    "by": "linear-12.frequency.stream",
    "kind": "public",
@@ -17014,7 +17034,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "Becker.de",
   "imported": true,
-  "number": 729,
+  "number": 730,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -17038,7 +17058,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שוודיה",
   "iptv": "ChappellesShow.se",
   "imported": true,
-  "number": 730,
+  "number": 731,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -17062,7 +17082,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "DryBarComedyPlus.us",
   "imported": true,
-  "number": 731,
+  "number": 732,
   "src": {
    "by": "drybar-drybarcomedy-1-au.samsung.wurl.tv",
    "kind": "public",
@@ -17086,7 +17106,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "CCPlutoTV.de",
   "imported": true,
-  "number": 732,
+  "number": 733,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -17110,7 +17130,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שוודיה",
   "iptv": "Cheers.se",
   "imported": true,
-  "number": 733,
+  "number": 734,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -17134,7 +17154,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "FailArmy.us",
   "imported": true,
-  "number": 734,
+  "number": 735,
   "src": {
    "by": "failarmy-international-au.samsung.wurl.tv",
    "kind": "public",
@@ -17158,7 +17178,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "PlutoTVDeutscheComedy.de",
   "imported": true,
-  "number": 735,
+  "number": 736,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -17182,7 +17202,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שוודיה",
   "iptv": "ComedyCentralRoast.se",
   "imported": true,
-  "number": 736,
+  "number": 737,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -17206,7 +17226,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "RiffTrax.us",
   "imported": true,
-  "number": 737,
+  "number": 738,
   "src": {
    "by": "wurlrifftrax.global.transmit.live",
    "kind": "public",
@@ -17230,7 +17250,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "SabrinaTotalverhext.de",
   "imported": true,
-  "number": 738,
+  "number": 739,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -17254,7 +17274,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שוודיה",
   "iptv": "CrazyExGirlfriend.se",
   "imported": true,
-  "number": 739,
+  "number": 740,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -17278,7 +17298,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "TVSComedyNetwork.us",
   "imported": true,
-  "number": 740,
+  "number": 741,
   "src": {
    "by": "rpn.bozztv.com",
    "kind": "public",
@@ -17302,7 +17322,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "PlutoTVScherzierisate.de",
   "imported": true,
-  "number": 741,
+  "number": 742,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -17326,7 +17346,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שוודיה",
   "iptv": "EverybodyHatesChris.se",
   "imported": true,
-  "number": 742,
+  "number": 743,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -17350,7 +17370,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "CameraSmileTV.us",
   "imported": true,
-  "number": 743,
+  "number": 744,
   "src": {
    "by": "rpn.bozztv.com",
    "kind": "public",
@@ -17374,7 +17394,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שוודיה",
   "iptv": "FamilyTies.se",
   "imported": true,
-  "number": 744,
+  "number": 745,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -17393,7 +17413,7 @@ window.CHANNELS_DATA = [
   "logo": "assets/logos/nickelodeon.png",
   "badge": "FHD",
   "desc": "ערוץ ניקלודיאון בשפה הרוסית - בובספוג, הרעשנים וסדרות אנימציה",
-  "number": 745,
+  "number": 746,
   "lang": "ru",
   "iptv": "Nickelodeon.ru",
   "src": {
@@ -17414,7 +17434,7 @@ window.CHANNELS_DATA = [
   "logo": "assets/logos/nick_jr_he.svg",
   "badge": "FHD",
   "desc": "ערוץ ניק ג'וניור בשפה הרוסית - סדרות לגיל הרך",
-  "number": 746,
+  "number": 747,
   "lang": "ru",
   "iptv": "NickJr.ru",
   "webUrl": "https://stream8.cinerama.uz/1501/playlist.m3u8",
@@ -17436,7 +17456,7 @@ window.CHANNELS_DATA = [
   "logo": "",
   "badge": "HD",
   "desc": "ערוץ הרפתקאות, אנימציה וסדרות נוער מהנות לכל המשפחה",
-  "number": 747,
+  "number": 748,
   "lang": "ru",
   "iptv": "GulliGirl.ru",
   "webUrl": "https://stream8.cinerama.uz/1445/tracks-v1a1/mono.m3u8",
@@ -17458,7 +17478,7 @@ window.CHANNELS_DATA = [
   "logo": "",
   "badge": "FHD",
   "desc": "ערוץ תוכניות העשרה והפעלות נוספות לגיל הרך מבית ducktv",
-  "number": 748,
+  "number": 749,
   "lang": "auto",
   "iptv": "ducktvPLUS.sk",
   "src": {
@@ -17479,7 +17499,7 @@ window.CHANNELS_DATA = [
   "logo": "assets/logos/babyfirst.svg",
   "badge": "HD",
   "desc": "ערוץ למידה מוקדמת, מילים ראשונות, מוטוריקה ומוזיקה לגיל הרך",
-  "number": 749,
+  "number": 750,
   "lang": "en",
   "iptv": "BabyFirst.us",
   "src": {
@@ -17500,7 +17520,7 @@ window.CHANNELS_DATA = [
   "logo": "",
   "badge": "HD",
   "desc": "סרטוני אנימציה קצרים ומצחיקים ברצף לילדים ולנוער",
-  "number": 750,
+  "number": 751,
   "lang": "ru",
   "src": {
    "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
@@ -17520,7 +17540,7 @@ window.CHANNELS_DATA = [
   "logo": "",
   "badge": "FHD",
   "desc": "ערוץ סדרות וסרטי לגו נינג'גו, לגו חברים, הרפתקאות ובנייה",
-  "number": 751,
+  "number": 752,
   "lang": "en",
   "iptv": "LegoChannel.us",
   "src": {
@@ -17541,7 +17561,7 @@ window.CHANNELS_DATA = [
   "logo": "",
   "badge": "FHD",
   "desc": "ערוץ הילדים והפעוטות הבינלאומי המוביל לתכנים חינוכיים וצבעוניים",
-  "number": 752,
+  "number": 753,
   "lang": "ru",
   "iptv": "TiJi.ru",
   "webUrl": "https://stream8.cinerama.uz/1441/tracks-v1a1/mono.m3u8",
@@ -17563,7 +17583,7 @@ window.CHANNELS_DATA = [
   "logo": "",
   "badge": "HD",
   "desc": "ערוץ הילדים והפעוטות האהוב - סדרות חינוכיות, דמיון ומשחק",
-  "number": 753,
+  "number": 754,
   "lang": "ru",
   "iptv": "JimJamEurope.uk",
   "src": {
@@ -17584,7 +17604,7 @@ window.CHANNELS_DATA = [
   "logo": "",
   "badge": "HD",
   "desc": "ערוץ הרפתקאות, אנימציה וסרטים מצוירים צבעוניים לילדים ולכל המשפחה",
-  "number": 754,
+  "number": 755,
   "lang": "ru",
   "src": {
    "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
@@ -17604,7 +17624,7 @@ window.CHANNELS_DATA = [
   "logo": "",
   "badge": "FHD",
   "desc": "ערוץ סדרות האנימציה הנוסטלגיות של שנות ה-90 באיכות גבוהה",
-  "number": 755,
+  "number": 756,
   "lang": "ru",
   "src": {
    "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
@@ -17624,7 +17644,7 @@ window.CHANNELS_DATA = [
   "logo": "",
   "badge": "FHD",
   "desc": "סרטי אנימציה באורך מלא לכל המשפחה",
-  "number": 756,
+  "number": 757,
   "lang": "ru",
   "src": {
    "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
@@ -17644,7 +17664,7 @@ window.CHANNELS_DATA = [
   "logo": "",
   "badge": "FHD",
   "desc": "סרטי אגדות, קולנוע לילדים ונוער, פנטזיה וסיפורים קלאסיים",
-  "number": 757,
+  "number": 758,
   "lang": "ru",
   "iptv": "KinoKazka.es",
   "src": {
@@ -17665,7 +17685,7 @@ window.CHANNELS_DATA = [
   "logo": "",
   "badge": "FHD",
   "desc": "ערוץ הגיימינג, האנימציה והסדרות המובילות לילדים",
-  "number": 758,
+  "number": 759,
   "lang": "ru",
   "iptv": "PixelTV.ua",
   "webUrl": "https://cdn15.live-tv.cloud/ua_infinitas_tv/pixel-abr/playlist.m3u8",
@@ -17687,7 +17707,7 @@ window.CHANNELS_DATA = [
   "logo": "",
   "badge": "FHD",
   "desc": "ערוץ בינלאומי לילדים עם דיבוב איכותי וסדרות חינוכיות",
-  "number": 759,
+  "number": 760,
   "lang": "ru",
   "iptv": "NikiKids.ua",
   "src": {
@@ -17708,7 +17728,7 @@ window.CHANNELS_DATA = [
   "logo": "",
   "badge": "FHD",
   "desc": "הרפתקאות גיבורי על ומדע בדיוני לילדים ונוער",
-  "number": 760,
+  "number": 761,
   "lang": "ru",
   "iptv": "KapitanFantastika.ru",
   "webUrl": "https://stream8.cinerama.uz/1406/tracks-v1a1/mono.m3u8",
@@ -17730,7 +17750,7 @@ window.CHANNELS_DATA = [
   "logo": "",
   "badge": "SD",
   "desc": "תגליות, חיות ועולם הטבע בשפה פשוטה ומהנה לילדים",
-  "number": 761,
+  "number": 762,
   "lang": "ru",
   "iptv": "O.ru",
   "src": {
@@ -17751,7 +17771,7 @@ window.CHANNELS_DATA = [
   "logo": "",
   "badge": "FHD",
   "desc": "ערוץ הפעוטות וההתפתחות המוביל מבית yes ו-HOT - אנימציה עדינה וצבעים",
-  "number": 762,
+  "number": 763,
   "lang": "auto",
   "iptv": "ducktv.sk",
   "src": {
@@ -17772,7 +17792,7 @@ window.CHANNELS_DATA = [
   "logo": "",
   "badge": "FHD",
   "desc": "ערוץ שירי הילדים המפורסם של בייבי שארק ופינקפונג 24/7",
-  "number": 763,
+  "number": 764,
   "lang": "en",
   "iptv": "BabySharkTV.us",
   "src": {
@@ -17793,7 +17813,7 @@ window.CHANNELS_DATA = [
   "logo": "assets/logos/solntse.svg",
   "badge": "HD",
   "desc": "ערוץ ילדים ומשפחה עשיר בסדרות אנימציה, קומדיה ובידור לכל הגילאים",
-  "number": 764,
+  "number": 765,
   "lang": "ru",
   "iptv": "Solnce.ru",
   "webUrl": "https://tv.mediacdn.ru/live/solntse/playlist.m3u8",
@@ -17815,7 +17835,7 @@ window.CHANNELS_DATA = [
   "logo": "assets/logos/mult.svg",
   "badge": "HD",
   "desc": "ערוץ אנימציה מוביל לילדים ופעוטות - סדרות מצוירות מודרניות וקלאסיות",
-  "number": 765,
+  "number": 766,
   "lang": "ru",
   "iptv": "Mult.ru",
   "webUrl": "https://stream8.cinerama.uz/1246/tracks-v1a1/mono.m3u8",
@@ -17837,7 +17857,7 @@ window.CHANNELS_DATA = [
   "logo": "assets/logos/mult_music.svg",
   "badge": "HD",
   "desc": "שירי ילדים, קליפים מוזיקליים מונפשים וסדרות לקטנטנים 24/7",
-  "number": 766,
+  "number": 767,
   "lang": "ru",
   "iptv": "Multimuzyka.ru",
   "src": {
@@ -17858,7 +17878,7 @@ window.CHANNELS_DATA = [
   "logo": "assets/logos/carousel.svg",
   "badge": "HD",
   "desc": "ערוץ הילדים והנוער המוביל - תוכניות לימודיות, חידונים וסדרות הרפתקאות",
-  "number": 767,
+  "number": 768,
   "lang": "ru",
   "iptv": "Carousel.ru",
   "webUrl": "https://stream.smotrim.ru/hls2/karusel/playlist_3.m3u8",
@@ -17880,7 +17900,7 @@ window.CHANNELS_DATA = [
   "logo": "assets/logos/ctc_kids.svg",
   "badge": "HD",
   "desc": "סדרות אנימציה עולמיות, סרטים מצוירים ותוכניות בידור לילדים",
-  "number": 768,
+  "number": 769,
   "lang": "ru",
   "iptv": "STSkids.ru",
   "src": {
@@ -17901,7 +17921,7 @@ window.CHANNELS_DATA = [
   "logo": "assets/logos/fairy_tales.svg",
   "badge": "HD",
   "desc": "ערוץ עולם האגדות - סיפורי עם קלאסיים, סרטי פנטזיה והרפתקאות מונפשות",
-  "number": 769,
+  "number": 770,
   "lang": "ru",
   "iptv": "Vgostyakhuskazki.ru",
   "webUrl": "https://stream8.cinerama.uz/1270/tracks-v1a1/mono.m3u8",
@@ -17925,7 +17945,7 @@ window.CHANNELS_DATA = [
   "desc": "ערוץ סדרות אנימציה לילדים (ברוסית)",
   "lang": "ru",
   "iptv": "Ani.ru",
-  "number": 770,
+  "number": 771,
   "src": {
    "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
    "kind": "restream",
@@ -17946,7 +17966,7 @@ window.CHANNELS_DATA = [
   "desc": "ערוץ הילדים והאנימציה - סדרות חינוכיות, הרפתקאות ומדע לילדים (באוקראינית)",
   "lang": "uk",
   "iptv": "PLUSPLUS.ua",
-  "number": 771,
+  "number": 772,
   "src": {
    "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
    "kind": "restream",
@@ -17970,7 +17990,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "BotflixTV.us",
   "imported": true,
-  "number": 772,
+  "number": 773,
   "src": {
    "by": "hls.botflix.tv",
    "kind": "public",
@@ -17994,7 +18014,7 @@ window.CHANNELS_DATA = [
   "countryHe": "בריטניה",
   "iptv": "MoonbugKids.uk",
   "imported": true,
-  "number": 773,
+  "number": 774,
   "src": {
    "by": "moonbug-rokuus.amagi.tv",
    "kind": "public",
@@ -18018,7 +18038,7 @@ window.CHANNELS_DATA = [
   "countryHe": "צרפת",
   "iptv": "ADNTVPlus.fr",
   "imported": true,
-  "number": 774,
+  "number": 775,
   "src": {
    "by": "d3b73b34o7cvkq.cloudfront.net",
    "kind": "public",
@@ -18042,7 +18062,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "KiKA.de",
   "imported": true,
-  "number": 775,
+  "number": 776,
   "src": {
    "by": "kikageohls.akamaized.net",
    "kind": "public",
@@ -18066,7 +18086,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ספרד",
   "iptv": "LogosTVKids.es",
   "imported": true,
-  "number": 776,
+  "number": 777,
   "src": {
    "by": "streamer1.streamhost.org",
    "kind": "public",
@@ -18090,7 +18110,7 @@ window.CHANNELS_DATA = [
   "countryHe": "איטליה",
   "iptv": "BeJoykids.it",
   "imported": true,
-  "number": 777,
+  "number": 778,
   "src": {
    "by": "stream.paroledivita.org",
    "kind": "public",
@@ -18114,7 +18134,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רוסיה",
   "iptv": "SmileTV.ru",
   "imported": true,
-  "number": 778,
+  "number": 779,
   "src": {
    "by": "5d23269b3ec0c.streamlock.net",
    "kind": "public",
@@ -18138,7 +18158,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אוקראינה",
   "iptv": "NikiJunior.ua",
   "imported": true,
-  "number": 779,
+  "number": 780,
   "src": {
    "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
    "kind": "restream",
@@ -18162,7 +18182,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קנדה",
   "iptv": "KnowledgeNetwork.ca",
   "imported": true,
-  "number": 780,
+  "number": 781,
   "src": {
    "by": "d1wal6k3d7ssin.cloudfront.net",
    "kind": "public",
@@ -18186,7 +18206,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ערב הסעודית",
   "iptv": "AtfalMawahebTV.sa",
   "imported": true,
-  "number": 781,
+  "number": 782,
   "src": {
    "by": "5aafcc5de91f1.streamlock.net",
    "kind": "public",
@@ -18210,7 +18230,7 @@ window.CHANNELS_DATA = [
   "countryHe": "מצרים",
   "iptv": "KoogiTV.eg",
   "imported": true,
-  "number": 782,
+  "number": 783,
   "src": {
    "by": "5d658d7e9f562.streamlock.net",
    "kind": "public",
@@ -18234,7 +18254,7 @@ window.CHANNELS_DATA = [
   "countryHe": "לבנון",
   "iptv": "TahaTV.lb",
   "imported": true,
-  "number": 783,
+  "number": 784,
   "src": {
    "by": "stream.starmenajo.com",
    "kind": "public",
@@ -18258,7 +18278,7 @@ window.CHANNELS_DATA = [
   "countryHe": "טורקיה",
   "iptv": "TRTCocuk.tr",
   "imported": true,
-  "number": 784,
+  "number": 785,
   "src": {
    "by": "tv-trtcocuk.medya.trt.com.tr",
    "kind": "public",
@@ -18282,7 +18302,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הודו",
   "iptv": "EpicKids.in",
   "imported": true,
-  "number": 785,
+  "number": 786,
   "src": {
    "by": "cc-t8lqe1o99pszu.akamaized.net",
    "kind": "public",
@@ -18306,7 +18326,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קוריאה הדרומית",
   "iptv": "EBSKids.kr",
   "imported": true,
-  "number": 786,
+  "number": 787,
   "src": {
    "by": "ebsonair.ebs.co.kr",
    "kind": "public",
@@ -18330,7 +18350,7 @@ window.CHANNELS_DATA = [
   "countryHe": "סין",
   "iptv": "CCTV14.cn",
   "imported": true,
-  "number": 787,
+  "number": 788,
   "src": {
    "by": "74.91.26.218",
    "kind": "public",
@@ -18354,7 +18374,7 @@ window.CHANNELS_DATA = [
   "countryHe": "מקסיקו",
   "iptv": "ElChavoTV.mx",
   "imported": true,
-  "number": 788,
+  "number": 789,
   "src": {
    "by": "live20.bozztv.com",
    "kind": "public",
@@ -18378,7 +18398,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארגנטינה",
   "iptv": "Pakapaka.ar",
   "imported": true,
-  "number": 789,
+  "number": 790,
   "src": {
    "by": "138.59.227.20",
    "kind": "public",
@@ -18402,7 +18422,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פורטוגל",
   "iptv": "KuriakosKids.pt",
   "imported": true,
-  "number": 790,
+  "number": 791,
   "src": {
    "by": "w2.manasat.com",
    "kind": "public",
@@ -18426,7 +18446,7 @@ window.CHANNELS_DATA = [
   "countryHe": "בלגיה",
   "iptv": "JapanimTV.be",
   "imported": true,
-  "number": 791,
+  "number": 792,
   "src": {
    "by": "foxkidstv.be",
    "kind": "public",
@@ -18450,7 +18470,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פולין",
   "iptv": "4FunKids.pl",
   "imported": true,
-  "number": 792,
+  "number": 793,
   "src": {
    "by": "4FUN TV – שרת רשמי",
    "kind": "official",
@@ -18474,7 +18494,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שוודיה",
   "iptv": "PlutoTVJuniorklubben.se",
   "imported": true,
-  "number": 793,
+  "number": 794,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -18498,7 +18518,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רומניה",
   "iptv": "TraLaLaDSN.ro",
   "imported": true,
-  "number": 794,
+  "number": 795,
   "src": {
    "by": "hls01ns.antenaplay.ro",
    "kind": "public",
@@ -18522,7 +18542,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פרו",
   "iptv": "Chikitoonz.pe",
   "imported": true,
-  "number": 795,
+  "number": 796,
   "src": {
    "by": "45.70.201.81",
    "kind": "public",
@@ -18546,7 +18566,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אינדונזיה",
   "iptv": "GrooviaKids.id",
   "imported": true,
-  "number": 796,
+  "number": 797,
   "src": {
    "by": "gist.githubusercontent.com",
    "kind": "public",
@@ -18570,7 +18590,7 @@ window.CHANNELS_DATA = [
   "countryHe": "וייטנאם",
   "iptv": "ONKids.vn",
   "imported": true,
-  "number": 797,
+  "number": 798,
   "src": {
    "by": "freem3u.xyz",
    "kind": "public",
@@ -18594,7 +18614,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פקיסטן",
   "iptv": "Minimax.pk",
   "imported": true,
-  "number": 798,
+  "number": 799,
   "src": {
    "by": "vodzong.mjunoon.tv",
    "kind": "public",
@@ -18618,7 +18638,7 @@ window.CHANNELS_DATA = [
   "countryHe": "איראן",
   "iptv": "PooyaTV.ir",
   "imported": true,
-  "number": 799,
+  "number": 800,
   "src": {
    "by": "tgn.bozztv.com",
    "kind": "public",
@@ -18642,7 +18662,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הרפובליקה הדומיניקנית",
   "iptv": "TomAndJerry.do",
   "imported": true,
-  "number": 800,
+  "number": 801,
   "src": {
    "by": "live20.bozztv.com",
    "kind": "public",
@@ -18666,7 +18686,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ונצואלה",
   "iptv": "MAXAnime.ve",
   "imported": true,
-  "number": 801,
+  "number": 802,
   "src": {
    "by": "cdnlive.klicgo.net",
    "kind": "public",
@@ -18690,7 +18710,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קניה",
   "iptv": "AkiliKids.ke",
   "imported": true,
-  "number": 802,
+  "number": 803,
   "src": {
    "by": "m6.livecdn.io",
    "kind": "public",
@@ -18715,7 +18735,7 @@ window.CHANNELS_DATA = [
   "iptv": "ZooMoo.sg",
   "imported": true,
   "webOk": false,
-  "number": 803,
+  "number": 804,
   "src": {
    "by": "zoomoo-samsungau.amagi.tv",
    "kind": "public",
@@ -18739,7 +18759,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אלג׳יריה",
   "iptv": "AmouYazidTV.dz",
   "imported": true,
-  "number": 804,
+  "number": 805,
   "src": {
    "by": "mkstream.servehttp.com",
    "kind": "public",
@@ -18763,7 +18783,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הונדורס",
   "iptv": "DiosTeVeKids.hn",
   "imported": true,
-  "number": 805,
+  "number": 806,
   "src": {
    "by": "s.emisoras.tv",
    "kind": "public",
@@ -18787,7 +18807,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פנמה",
   "iptv": "DreikoTV.pa",
   "imported": true,
-  "number": 806,
+  "number": 807,
   "src": {
    "by": "cloudvideo.servers10.com",
    "kind": "public",
@@ -18811,7 +18831,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קוסטה ריקה",
   "iptv": "ExtremaKidsTV.cr",
   "imported": true,
-  "number": 807,
+  "number": 808,
   "src": {
    "by": "627bb251f23c7.streamlock.net",
    "kind": "public",
@@ -18835,7 +18855,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קזחסטן",
   "iptv": "Balapan.kz",
   "imported": true,
-  "number": 808,
+  "number": 809,
   "src": {
    "by": "balapantv-stream.qazcdn.com",
    "kind": "public",
@@ -18859,7 +18879,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אסטוניה",
   "iptv": "ETV2.ee",
   "imported": true,
-  "number": 809,
+  "number": 810,
   "src": {
    "by": "sb.err.ee",
    "kind": "public",
@@ -18883,7 +18903,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "HappyKids.us",
   "imported": true,
-  "number": 810,
+  "number": 811,
   "src": {
    "by": "dil9xdvretp0f.cloudfront.net",
    "kind": "public",
@@ -18907,7 +18927,7 @@ window.CHANNELS_DATA = [
   "countryHe": "צרפת",
   "iptv": "PersianaJunior.fr",
   "imported": true,
-  "number": 811,
+  "number": 812,
   "src": {
    "by": "junhls.persiana.live",
    "kind": "public",
@@ -18931,7 +18951,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "RiC.de",
   "imported": true,
-  "number": 812,
+  "number": 813,
   "src": {
    "by": "rictv.iptv-playoutcenter.de",
    "kind": "public",
@@ -18955,7 +18975,7 @@ window.CHANNELS_DATA = [
   "countryHe": "איטליה",
   "iptv": "Boing.it",
   "imported": true,
-  "number": 813,
+  "number": 814,
   "src": {
    "by": "boing.akamaized.net",
    "kind": "public",
@@ -18979,7 +18999,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רוסיה",
   "iptv": "Smotrim100Detskoe.ru",
   "imported": true,
-  "number": 814,
+  "number": 815,
   "src": {
    "by": "Smotrim (VGTRK) – הבעלים של קרוסלה",
    "kind": "official",
@@ -19003,7 +19023,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קנדה",
   "iptv": "TVOKids.ca",
   "imported": true,
-  "number": 815,
+  "number": 816,
   "src": {
    "by": "fastly.live.brightcove.com",
    "kind": "public",
@@ -19027,7 +19047,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אוסטרליה",
   "iptv": "ABCKids.au",
   "imported": true,
-  "number": 816,
+  "number": 817,
   "src": {
    "by": "c.mjh.nz",
    "kind": "public",
@@ -19051,7 +19071,7 @@ window.CHANNELS_DATA = [
   "countryHe": "טורקיה",
   "iptv": "MinikaCocuk.tr",
   "imported": true,
-  "number": 817,
+  "number": 818,
   "src": {
    "by": "rnttwmjcin.turknet.ercdn.net",
    "kind": "public",
@@ -19075,7 +19095,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הודו",
   "iptv": "TheJungleBook.in",
   "imported": true,
-  "number": 818,
+  "number": 819,
   "src": {
    "by": "cc-4bhi5osabejc9.akamaized.net",
    "kind": "public",
@@ -19099,7 +19119,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ברזיל",
   "iptv": "BoxKidsTV.br",
   "imported": true,
-  "number": 819,
+  "number": 820,
   "src": {
    "by": "170.83.49.66",
    "kind": "public",
@@ -19124,7 +19144,7 @@ window.CHANNELS_DATA = [
   "iptv": "GikTVMX.mx",
   "imported": true,
   "webOk": false,
-  "number": 820,
+  "number": 821,
   "src": {
    "by": "pistream.ddns.net",
    "kind": "public",
@@ -19148,7 +19168,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארגנטינה",
   "iptv": "PlimPlim.ar",
   "imported": true,
-  "number": 821,
+  "number": 822,
   "src": {
    "by": "200.115.120.1",
    "kind": "public",
@@ -19172,7 +19192,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פולין",
   "iptv": "TeletoonPlus.pl",
   "imported": true,
-  "number": 822,
+  "number": 823,
   "src": {
    "by": "92.114.85.87",
    "kind": "public",
@@ -19196,7 +19216,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שוודיה",
   "iptv": "PlutoTVTecknadeklassiker.se",
   "imported": true,
-  "number": 823,
+  "number": 824,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -19220,7 +19240,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רומניה",
   "iptv": "TraLaLaTV.ro",
   "imported": true,
-  "number": 824,
+  "number": 825,
   "src": {
    "by": "hls01ns.antenaplay.ro",
    "kind": "public",
@@ -19244,7 +19264,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פקיסטן",
   "iptv": "GodStandsKidsClubTV.pk",
   "imported": true,
-  "number": 825,
+  "number": 826,
   "src": {
    "by": "online.godstands.tv",
    "kind": "public",
@@ -19268,7 +19288,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הרפובליקה הדומיניקנית",
   "iptv": "TigueritoTV.do",
   "imported": true,
-  "number": 826,
+  "number": 827,
   "src": {
    "by": "ss2.tvrdomi.com",
    "kind": "public",
@@ -19292,7 +19312,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ונצואלה",
   "iptv": "eSportsMaxTV.ve",
   "imported": true,
-  "number": 827,
+  "number": 828,
   "src": {
    "by": "cdnlive.klicgo.net",
    "kind": "public",
@@ -19316,7 +19336,7 @@ window.CHANNELS_DATA = [
   "countryHe": "עיראק",
   "iptv": "AfarinTV.iq",
   "imported": true,
-  "number": 828,
+  "number": 829,
   "src": {
    "by": "65f16f0fdfc51.streamlock.net",
    "kind": "public",
@@ -19340,7 +19360,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "KidsFlix.us",
   "imported": true,
-  "number": 829,
+  "number": 830,
   "src": {
    "by": "stream-us-east-1.getpublica.com",
    "kind": "public",
@@ -19364,7 +19384,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "TortuesNinjaTV.de",
   "imported": true,
-  "number": 830,
+  "number": 831,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -19388,7 +19408,7 @@ window.CHANNELS_DATA = [
   "countryHe": "איטליה",
   "iptv": "Super.it",
   "imported": true,
-  "number": 831,
+  "number": 832,
   "src": {
    "by": "495c5a85d9074f29acffeaea9e0215eb.msvdn.net",
    "kind": "public",
@@ -19412,7 +19432,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רוסיה",
   "iptv": "RadostMoya.ru",
   "imported": true,
-  "number": 832,
+  "number": 833,
   "src": {
    "by": "radm.mediacdn.ru",
    "kind": "public",
@@ -19436,7 +19456,7 @@ window.CHANNELS_DATA = [
   "countryHe": "טורקיה",
   "iptv": "MinikaGo.tr",
   "imported": true,
-  "number": 833,
+  "number": 834,
   "src": {
    "by": "rnttwmjcin.turknet.ercdn.net",
    "kind": "public",
@@ -19460,7 +19480,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הודו",
   "iptv": "ZBCartoon.in",
   "imported": true,
-  "number": 834,
+  "number": 835,
   "src": {
    "by": "server.zillarbarta.com",
    "kind": "public",
@@ -19484,7 +19504,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ברזיל",
   "iptv": "DumDum.br",
   "imported": true,
-  "number": 835,
+  "number": 836,
   "src": {
    "by": "45.162.64.114",
    "kind": "public",
@@ -19508,7 +19528,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פולין",
   "iptv": "TeenNick.pl",
   "imported": true,
-  "number": 836,
+  "number": 837,
   "src": {
    "by": "92.114.85.87",
    "kind": "public",
@@ -19532,7 +19552,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שוודיה",
   "iptv": "PlutoTVTecknat.se",
   "imported": true,
-  "number": 837,
+  "number": 838,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -19556,7 +19576,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הרפובליקה הדומיניקנית",
   "iptv": "ChinolaTV.do",
   "imported": true,
-  "number": 838,
+  "number": 839,
   "src": {
    "by": "tv.wracanal10.com",
    "kind": "public",
@@ -19580,7 +19600,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "PBSKidsAlaska.us",
   "imported": true,
-  "number": 839,
+  "number": 840,
   "src": {
    "by": "livestream.pbskids.org",
    "kind": "public",
@@ -19604,7 +19624,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "BobEsponja.de",
   "imported": true,
-  "number": 840,
+  "number": 841,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -19628,7 +19648,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רוסיה",
   "iptv": "Tamyr.ru",
   "imported": true,
-  "number": 841,
+  "number": 842,
   "src": {
    "by": "bsttv.bonus-tv.ru",
    "kind": "public",
@@ -19652,7 +19672,7 @@ window.CHANNELS_DATA = [
   "countryHe": "טורקיה",
   "iptv": "TRTDiyanetCocuk.tr",
   "imported": true,
-  "number": 842,
+  "number": 843,
   "src": {
    "by": "tv-trtdiyanetcocuk.medya.trt.com.tr",
    "kind": "public",
@@ -19676,7 +19696,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הודו",
   "iptv": "DiscoveryKids.in",
   "imported": true,
-  "number": 843,
+  "number": 844,
   "src": {
    "by": "drk6xq0vhn.gpcdn.net",
    "kind": "public",
@@ -19700,7 +19720,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פולין",
   "iptv": "PolsatJimJam.pl",
   "imported": true,
-  "number": 844,
+  "number": 845,
   "src": {
    "by": "185.227.34.179",
    "kind": "public",
@@ -19724,7 +19744,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שוודיה",
   "iptv": "PlutoTVUngdomsserier.se",
   "imported": true,
-  "number": 845,
+  "number": 846,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -19748,7 +19768,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "PBSKidsMountain.us",
   "imported": true,
-  "number": 846,
+  "number": 847,
   "src": {
    "by": "livestream.pbskids.org",
    "kind": "public",
@@ -19772,7 +19792,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "PlutoTVKidsClassics.de",
   "imported": true,
-  "number": 847,
+  "number": 848,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -19796,7 +19816,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רוסיה",
   "iptv": "Tooku.ru",
   "imported": true,
-  "number": 848,
+  "number": 849,
   "src": {
    "by": "live-saha.cdnvideo.ru",
    "kind": "public",
@@ -19820,7 +19840,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הודו",
   "iptv": "WOWKidz.in",
   "imported": true,
-  "number": 849,
+  "number": 850,
   "src": {
    "by": "yuppparoriglin.akamaized.net",
    "kind": "public",
@@ -19844,7 +19864,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פולין",
   "iptv": "TVPABC.pl",
   "imported": true,
-  "number": 850,
+  "number": 851,
   "src": {
    "by": "92.114.85.87",
    "kind": "public",
@@ -19868,7 +19888,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שוודיה",
   "iptv": "SvampBobFyrkant.se",
   "imported": true,
-  "number": 851,
+  "number": 852,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -19892,7 +19912,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "PBSKidsPacific.us",
   "imported": true,
-  "number": 852,
+  "number": 853,
   "src": {
    "by": "livestream.pbskids.org",
    "kind": "public",
@@ -19916,7 +19936,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "PlutoTVTeen.de",
   "imported": true,
-  "number": 853,
+  "number": 854,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -19940,7 +19960,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הודו",
   "iptv": "Chithiram.in",
   "imported": true,
-  "number": 854,
+  "number": 855,
   "src": {
    "by": "cdn.pishow.tv",
    "kind": "public",
@@ -19964,7 +19984,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שוודיה",
   "iptv": "SvampeBobFirkant.se",
   "imported": true,
-  "number": 855,
+  "number": 856,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -19988,7 +20008,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "Placid.us",
   "imported": true,
-  "number": 856,
+  "number": 857,
   "src": {
    "by": "toy.vcdn.fyi",
    "kind": "public",
@@ -20012,7 +20032,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "PlutoTVToons.de",
   "imported": true,
-  "number": 857,
+  "number": 858,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -20036,7 +20056,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הודו",
   "iptv": "UniqueTV.in",
   "imported": true,
-  "number": 858,
+  "number": 859,
   "src": {
    "by": "mumt05.tangotv.in",
    "kind": "public",
@@ -20060,7 +20080,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שוודיה",
   "iptv": "TotallyTurtles.se",
   "imported": true,
-  "number": 859,
+  "number": 860,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -20084,7 +20104,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "RetroCrush.us",
   "imported": true,
-  "number": 860,
+  "number": 861,
   "src": {
    "by": "linear-899.frequency.stream",
    "kind": "public",
@@ -20108,7 +20128,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "SpongeBobSchwammkopf.de",
   "imported": true,
-  "number": 861,
+  "number": 862,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -20132,7 +20152,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הודו",
   "iptv": "Pogo.in",
   "imported": true,
-  "number": 862,
+  "number": 863,
   "src": {
    "by": "103.151.60.162",
    "kind": "public",
@@ -20156,7 +20176,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שוודיה",
   "iptv": "PlutoTVTegnefilm.se",
   "imported": true,
-  "number": 863,
+  "number": 864,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -20180,7 +20200,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "SkwadPlay.us",
   "imported": true,
-  "number": 864,
+  "number": 865,
   "src": {
    "by": "stream-us-east-1.getpublica.com",
    "kind": "public",
@@ -20204,7 +20224,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "TotallyTurtles.de",
   "imported": true,
-  "number": 865,
+  "number": 866,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -20228,7 +20248,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שוודיה",
   "iptv": "Avatar.se",
   "imported": true,
-  "number": 866,
+  "number": 867,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -20252,7 +20272,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "SuperSimpleSongs.us",
   "imported": true,
-  "number": 867,
+  "number": 868,
   "src": {
    "by": "janson-supersimplesongs-1-us.roku.wurl.tv",
    "kind": "public",
@@ -20276,7 +20296,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "TeenageMutantNinjaTurtles.de",
   "imported": true,
-  "number": 868,
+  "number": 869,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -20300,7 +20320,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שוודיה",
   "iptv": "iCarly.se",
   "imported": true,
-  "number": 869,
+  "number": 870,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -20324,7 +20344,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "Crunchyroll.us",
   "imported": true,
-  "number": 870,
+  "number": 871,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -20348,7 +20368,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "Avatar.de",
   "imported": true,
-  "number": 871,
+  "number": 872,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -20372,7 +20392,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שוודיה",
   "iptv": "SouthPark.se",
   "imported": true,
-  "number": 872,
+  "number": 873,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -20396,7 +20416,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "NinjaKidzTV.us",
   "imported": true,
-  "number": 873,
+  "number": 874,
   "src": {
    "by": "d3868b4ny0rgdf.cloudfront.net",
    "kind": "public",
@@ -20420,7 +20440,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "PlutoTVAnimation.de",
   "imported": true,
-  "number": 874,
+  "number": 875,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -20444,7 +20464,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שוודיה",
   "iptv": "SouthParkArmageddon.se",
   "imported": true,
-  "number": 875,
+  "number": 876,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -20468,7 +20488,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "PBSKids.us",
   "imported": true,
-  "number": 876,
+  "number": 877,
   "src": {
    "by": "livestream.pbskids.org",
    "kind": "public",
@@ -20492,7 +20512,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "PlutoTVRetroToons.de",
   "imported": true,
-  "number": 877,
+  "number": 878,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -20516,7 +20536,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שוודיה",
   "iptv": "SouthParkRockinOut.se",
   "imported": true,
-  "number": 878,
+  "number": 879,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -20540,7 +20560,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "PBSKidsHawaii.us",
   "imported": true,
-  "number": 879,
+  "number": 880,
   "src": {
    "by": "livestream.pbskids.org",
    "kind": "public",
@@ -20564,7 +20584,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "PlutoTVSuperKids.de",
   "imported": true,
-  "number": 880,
+  "number": 881,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -20588,7 +20608,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שוודיה",
   "iptv": "SouthParkButtersCollection.se",
   "imported": true,
-  "number": 881,
+  "number": 882,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -20612,7 +20632,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "SonicTV.us",
   "imported": true,
-  "number": 882,
+  "number": 883,
   "src": {
    "by": "stream-us-east-1.getpublica.com",
    "kind": "public",
@@ -20636,7 +20656,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "Rugrats.de",
   "imported": true,
-  "number": 883,
+  "number": 884,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -20660,7 +20680,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שוודיה",
   "iptv": "SouthParkCartmanCollection.se",
   "imported": true,
-  "number": 884,
+  "number": 885,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -20684,7 +20704,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "SpongeBobSquarePants.us",
   "imported": true,
-  "number": 885,
+  "number": 886,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -20708,7 +20728,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "SouthPark.de",
   "imported": true,
-  "number": 886,
+  "number": 887,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -20732,7 +20752,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שוודיה",
   "iptv": "SouthParkIntotheStars.se",
   "imported": true,
-  "number": 887,
+  "number": 888,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -20756,7 +20776,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "TGJunior.us",
   "imported": true,
-  "number": 888,
+  "number": 889,
   "src": {
    "by": "d3i6upqaqzosi1.cloudfront.net",
    "kind": "public",
@@ -20780,7 +20800,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "SouthParkVersionOriginal.de",
   "imported": true,
-  "number": 889,
+  "number": 890,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -20804,7 +20824,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שוודיה",
   "iptv": "SouthParkKennyCollection.se",
   "imported": true,
-  "number": 890,
+  "number": 891,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -20828,7 +20848,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "TortuesNinjaTV.us",
   "imported": true,
-  "number": 891,
+  "number": 892,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -20852,7 +20872,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "DrakeJosh.de",
   "imported": true,
-  "number": 892,
+  "number": 893,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -20876,7 +20896,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שוודיה",
   "iptv": "SouthParkKyleCollection.se",
   "imported": true,
-  "number": 893,
+  "number": 894,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -20900,7 +20920,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "TVSHiTops.us",
   "imported": true,
-  "number": 894,
+  "number": 895,
   "src": {
    "by": "rpn.bozztv.com",
    "kind": "public",
@@ -20924,7 +20944,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "PlutoTVAdultAnimation.de",
   "imported": true,
-  "number": 895,
+  "number": 896,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -20948,7 +20968,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שוודיה",
   "iptv": "SouthParkStanCollection.se",
   "imported": true,
-  "number": 896,
+  "number": 897,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -20972,7 +20992,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "Bobleponge.us",
   "imported": true,
-  "number": 897,
+  "number": 898,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -20996,7 +21016,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "PlutoTVStarTrekAnimation.de",
   "imported": true,
-  "number": 898,
+  "number": 899,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -21020,7 +21040,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "DetectiveConan.us",
   "imported": true,
-  "number": 899,
+  "number": 900,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -21044,7 +21064,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "SouthParkCartmanCollection.de",
   "imported": true,
-  "number": 900,
+  "number": 901,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -21068,7 +21088,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "LasTortugasNinja.us",
   "imported": true,
-  "number": 901,
+  "number": 902,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -21092,7 +21112,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "SouthParkKennyCollection.de",
   "imported": true,
-  "number": 902,
+  "number": 903,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -21116,7 +21136,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "SuperSpongeBob.us",
   "imported": true,
-  "number": 903,
+  "number": 904,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -21140,7 +21160,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "SouthParkKyleCollection.de",
   "imported": true,
-  "number": 904,
+  "number": 905,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -21164,7 +21184,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "BobEsponjaCalcaQuadrada.us",
   "imported": true,
-  "number": 905,
+  "number": 906,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -21188,7 +21208,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "SouthParkOriginalVersion.de",
   "imported": true,
-  "number": 906,
+  "number": 907,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -21212,7 +21232,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "CampSpoopy.us",
   "imported": true,
-  "number": 907,
+  "number": 908,
   "src": {
    "by": "stream.ads.ottera.tv",
    "kind": "public",
@@ -21236,7 +21256,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "SouthParkStanCollection.de",
   "imported": true,
-  "number": 908,
+  "number": 909,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -21260,7 +21280,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "GiggleMug.us",
   "imported": true,
-  "number": 909,
+  "number": 910,
   "src": {
    "by": "tvsen6.aynaott.com",
    "kind": "public",
@@ -21284,7 +21304,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "SCorbyTV.us",
   "imported": true,
-  "number": 910,
+  "number": 911,
   "src": {
    "by": "vodcdn.bamboo-cloud.com",
    "kind": "public",
@@ -21303,7 +21323,7 @@ window.CHANNELS_DATA = [
   "logo": "",
   "badge": "FHD",
   "desc": "הלהיטים הגדולים מכל הזמנים ברצף קליפים מרהיב",
-  "number": 911,
+  "number": 912,
   "lang": "music",
   "iptv": "4everMusic.ua",
   "src": {
@@ -21324,7 +21344,7 @@ window.CHANNELS_DATA = [
   "logo": "",
   "badge": "HD",
   "desc": "להיטי הפופ האירופיים והמצעדים החמים ביותר",
-  "number": 912,
+  "number": 913,
   "lang": "music",
   "iptv": "4FunTV.pl",
   "src": {
@@ -21345,7 +21365,7 @@ window.CHANNELS_DATA = [
   "logo": "",
   "badge": "FHD",
   "desc": "רגאטון, מוזיקה לטינית סוחפת, סלסה ודאנס קצבי",
-  "number": 913,
+  "number": 914,
   "lang": "music",
   "iptv": "VivaLatino.ua",
   "src": {
@@ -21366,7 +21386,7 @@ window.CHANNELS_DATA = [
   "logo": "",
   "badge": "FHD",
   "desc": "ערוץ מוזיקה בינלאומי באיכות תמונה וסאונד מדהימים",
-  "number": 914,
+  "number": 915,
   "lang": "music",
   "iptv": "1HDMusicTelevision.ru",
   "src": {
@@ -21387,7 +21407,7 @@ window.CHANNELS_DATA = [
   "logo": "",
   "badge": "SD",
   "desc": "דיסקו, רוק ופופ קלאסי משנות ה-70 וה-80",
-  "number": 915,
+  "number": 916,
   "lang": "music",
   "iptv": "7080TV.it",
   "src": {
@@ -21410,7 +21430,7 @@ window.CHANNELS_DATA = [
   "badge": "HD",
   "desc": "מוזיקה ישראלית, הופעות ותוכניות מוזיקה של קשת – ערוץ חינמי של mako",
   "logo": "assets/logos/keshet_music.svg",
-  "number": 916,
+  "number": 917,
   "src": {
    "by": "קשת – ה-CDN של mako (עם הרשאת צפייה של mako)",
    "kind": "official",
@@ -21430,7 +21450,7 @@ window.CHANNELS_DATA = [
   "badge": "HD",
   "desc": "האולפן של רדיוס 100FM בשידור חי עם תמונה",
   "logo": "assets/logos/radios_video.svg",
-  "number": 917,
+  "number": 918,
   "src": {
    "by": "CyberCDN – ה-CDN של תחנות הרדיו עצמן",
    "kind": "official",
@@ -21454,7 +21474,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "BotflixRadioo.us",
   "imported": true,
-  "number": 918,
+  "number": 919,
   "src": {
    "by": "hls.botflix.tv",
    "kind": "public",
@@ -21478,7 +21498,7 @@ window.CHANNELS_DATA = [
   "countryHe": "בריטניה",
   "iptv": "AfrobeatTVEntertainment.uk",
   "imported": true,
-  "number": 919,
+  "number": 920,
   "src": {
    "by": "stream.ecable.tv",
    "kind": "public",
@@ -21502,7 +21522,7 @@ window.CHANNELS_DATA = [
   "countryHe": "צרפת",
   "iptv": "TraceAfrica.fr",
   "imported": true,
-  "number": 920,
+  "number": 921,
   "src": {
    "by": "channels.trace.plus",
    "kind": "public",
@@ -21526,7 +21546,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "DMF.de",
   "imported": true,
-  "number": 921,
+  "number": 922,
   "src": {
    "by": "d-m-f.iptv-playoutcenter.de",
    "kind": "public",
@@ -21550,7 +21570,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ספרד",
   "iptv": "MusicTVGranada.es",
   "imported": true,
-  "number": 922,
+  "number": 923,
   "src": {
    "by": "cloudvideo.servers10.com",
    "kind": "public",
@@ -21574,7 +21594,7 @@ window.CHANNELS_DATA = [
   "countryHe": "איטליה",
   "iptv": "FMITALIA.it",
   "imported": true,
-  "number": 923,
+  "number": 924,
   "src": {
    "by": "stream2.xdevel.com",
    "kind": "public",
@@ -21598,7 +21618,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רוסיה",
   "iptv": "Maidan.ru",
   "imported": true,
-  "number": 924,
+  "number": 925,
   "src": {
    "by": "live-maidantv.cdnvideo.ru",
    "kind": "public",
@@ -21622,7 +21642,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אוקראינה",
   "iptv": "HappyRadioTV.ua",
   "imported": true,
-  "number": 925,
+  "number": 926,
   "src": {
    "by": "tv.mediacp.eu",
    "kind": "public",
@@ -21646,7 +21666,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קנדה",
   "iptv": "MovieMusicbyStingray.ca",
   "imported": true,
-  "number": 926,
+  "number": 927,
   "src": {
    "by": "lotus.stingray.com",
    "kind": "public",
@@ -21670,7 +21690,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אוסטרליה",
   "iptv": "FolkKlubTV.au",
   "imported": true,
-  "number": 927,
+  "number": 928,
   "src": {
    "by": "tv1.intv.mk",
    "kind": "public",
@@ -21694,7 +21714,7 @@ window.CHANNELS_DATA = [
   "countryHe": "איחוד האמירויות הערביות",
   "iptv": "MBCFM.ae",
   "imported": true,
-  "number": 928,
+  "number": 929,
   "src": {
    "by": "dbbv9umqcd7cs.cloudfront.net",
    "kind": "public",
@@ -21718,7 +21738,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ערב הסעודית",
   "iptv": "JeddahRadio.sa",
   "imported": true,
-  "number": 929,
+  "number": 930,
   "src": {
    "by": "live.kwikmotion.com",
    "kind": "public",
@@ -21742,7 +21762,7 @@ window.CHANNELS_DATA = [
   "countryHe": "מצרים",
   "iptv": "NogoumFMTV.eg",
   "imported": true,
-  "number": 930,
+  "number": 931,
   "src": {
    "by": "nogoumtv.nrpstream.com",
    "kind": "public",
@@ -21766,7 +21786,7 @@ window.CHANNELS_DATA = [
   "countryHe": "לבנון",
   "iptv": "AghaniAghaniTV.lb",
   "imported": true,
-  "number": 931,
+  "number": 932,
   "src": {
    "by": "cdn.streamlane.tv",
    "kind": "public",
@@ -21790,7 +21810,7 @@ window.CHANNELS_DATA = [
   "countryHe": "טורקיה",
   "iptv": "PowerDance.tr",
   "imported": true,
-  "number": 932,
+  "number": 933,
   "src": {
    "by": "livetv.powerapp.com.tr",
    "kind": "public",
@@ -21814,7 +21834,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הודו",
   "iptv": "9XJalwa.in",
   "imported": true,
-  "number": 933,
+  "number": 934,
   "src": {
    "by": "wiselp.wiseplayout.com",
    "kind": "public",
@@ -21838,7 +21858,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קוריאה הדרומית",
   "iptv": "GugakTV.kr",
   "imported": true,
-  "number": 934,
+  "number": 935,
   "src": {
    "by": "mgugaklive.nowcdn.co.kr",
    "kind": "public",
@@ -21862,7 +21882,7 @@ window.CHANNELS_DATA = [
   "countryHe": "סין",
   "iptv": "CCTVStormMusic.cn",
   "imported": true,
-  "number": 935,
+  "number": 936,
   "src": {
    "by": "38.75.136.137",
    "kind": "public",
@@ -21886,7 +21906,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ברזיל",
   "iptv": "TikTokRadioBrasil.br",
   "imported": true,
-  "number": 936,
+  "number": 937,
   "src": {
    "by": "d1bl6tskrpq9ze.cloudfront.net",
    "kind": "public",
@@ -21910,7 +21930,7 @@ window.CHANNELS_DATA = [
   "countryHe": "מקסיקו",
   "iptv": "Bandamax.mx",
   "imported": true,
-  "number": 937,
+  "number": 938,
   "src": {
    "by": "streaming.onnethn.com",
    "kind": "public",
@@ -21934,7 +21954,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארגנטינה",
   "iptv": "La100.ar",
   "imported": true,
-  "number": 938,
+  "number": 939,
   "src": {
    "by": "mdstrm.com",
    "kind": "public",
@@ -21958,7 +21978,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פורטוגל",
   "iptv": "ONFM.pt",
   "imported": true,
-  "number": 939,
+  "number": 940,
   "src": {
    "by": "5ce9406b73c33.streamlock.net",
    "kind": "public",
@@ -21982,7 +22002,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הולנד",
   "iptv": "360TuneBox.nl",
   "imported": true,
-  "number": 940,
+  "number": 941,
   "src": {
    "by": "Antik Telecom (סלובקיה), נתיבי test",
    "kind": "restream",
@@ -22006,7 +22026,7 @@ window.CHANNELS_DATA = [
   "countryHe": "בלגיה",
   "iptv": "StuBru.be",
   "imported": true,
-  "number": 941,
+  "number": 942,
   "src": {
    "by": "live.vrtcdn.be",
    "kind": "public",
@@ -22030,7 +22050,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שווייץ",
   "iptv": "RADIODISCOuntTV.ch",
   "imported": true,
-  "number": 942,
+  "number": 943,
   "src": {
    "by": "70-80 TV – Wowza Streamlock",
    "kind": "official",
@@ -22054,7 +22074,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אוסטריה",
   "iptv": "AntenneKaernten.at",
   "imported": true,
-  "number": 943,
+  "number": 944,
   "src": {
    "by": "60efd7a2b4d02.streamlock.net",
    "kind": "public",
@@ -22078,7 +22098,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פולין",
   "iptv": "RadioRAM.pl",
   "imported": true,
-  "number": 944,
+  "number": 945,
   "src": {
    "by": "1888165924.rsc.cdn77.org",
    "kind": "public",
@@ -22102,7 +22122,7 @@ window.CHANNELS_DATA = [
   "countryHe": "יוון",
   "iptv": "BarazaTV.gr",
   "imported": true,
-  "number": 945,
+  "number": 946,
   "src": {
    "by": "eco.streams.ovh",
    "kind": "public",
@@ -22126,7 +22146,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פינלנד",
   "iptv": "JRTVJarviradio.fi",
   "imported": true,
-  "number": 946,
+  "number": 947,
   "src": {
    "by": "streamer.radiotaajuus.fi",
    "kind": "public",
@@ -22150,7 +22170,7 @@ window.CHANNELS_DATA = [
   "countryHe": "צ׳כיה",
   "iptv": "OckoExpres.cz",
   "imported": true,
-  "number": 947,
+  "number": 948,
   "src": {
    "by": "ocko-live.ssl.cdn.cra.cz",
    "kind": "public",
@@ -22174,7 +22194,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רומניה",
   "iptv": "PartyMix.ro",
   "imported": true,
-  "number": 948,
+  "number": 949,
   "src": {
    "by": "hls02ns.antenaplay.ro",
    "kind": "public",
@@ -22198,7 +22218,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הונגריה",
   "iptv": "OxygenMusic.hu",
   "imported": true,
-  "number": 949,
+  "number": 950,
   "src": {
    "by": "oxygenmusic.hu",
    "kind": "public",
@@ -22222,7 +22242,7 @@ window.CHANNELS_DATA = [
   "countryHe": "צ׳ילה",
   "iptv": "Pauta.cl",
   "imported": true,
-  "number": 950,
+  "number": 951,
   "src": {
    "by": "redirector.rudo.video",
    "kind": "public",
@@ -22246,7 +22266,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קולומביה",
   "iptv": "LaKalle.co",
   "imported": true,
-  "number": 951,
+  "number": 952,
   "src": {
    "by": "mdstrm.com",
    "kind": "public",
@@ -22270,7 +22290,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פרו",
   "iptv": "RadioOndaDigital.pe",
   "imported": true,
-  "number": 952,
+  "number": 953,
   "src": {
    "by": "live.ondadigitaltv.com",
    "kind": "public",
@@ -22294,7 +22314,7 @@ window.CHANNELS_DATA = [
   "countryHe": "וייטנאם",
   "iptv": "ONMusic.vn",
   "imported": true,
-  "number": 953,
+  "number": 954,
   "src": {
    "by": "freem3u.xyz",
    "kind": "public",
@@ -22318,7 +22338,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פקיסטן",
   "iptv": "JooMusic.pk",
   "imported": true,
-  "number": 954,
+  "number": 955,
   "src": {
    "by": "livecdn.live247stream.com",
    "kind": "public",
@@ -22342,7 +22362,7 @@ window.CHANNELS_DATA = [
   "countryHe": "איראן",
   "iptv": "AFNTV.ir",
   "imported": true,
-  "number": 955,
+  "number": 956,
   "src": {
    "by": "bozztv.com",
    "kind": "public",
@@ -22366,7 +22386,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ניגריה",
   "iptv": "HMTV.ng",
   "imported": true,
-  "number": 956,
+  "number": 957,
   "src": {
    "by": "customer-yzxu6n447dx2x45h.cloudflarestream.com",
    "kind": "public",
@@ -22390,7 +22410,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קוסטה ריקה",
   "iptv": "GexTV.cr",
   "imported": true,
-  "number": 957,
+  "number": 958,
   "src": {
    "by": "live20.bozztv.com",
    "kind": "public",
@@ -22414,7 +22434,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פרגוואי",
   "iptv": "VenusMedia.py",
   "imported": true,
-  "number": 958,
+  "number": 959,
   "src": {
    "by": "tigocloud.desdeparaguay.net",
    "kind": "public",
@@ -22438,7 +22458,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אקוודור",
   "iptv": "ElSolNetworkTV.ec",
   "imported": true,
-  "number": 959,
+  "number": 960,
   "src": {
    "by": "tv.wracanal10.com",
    "kind": "public",
@@ -22462,7 +22482,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אסטוניה",
   "iptv": "BestofDanceTV.ee",
   "imported": true,
-  "number": 960,
+  "number": 961,
   "src": {
    "by": "m1b2.worldcast.tv",
    "kind": "public",
@@ -22486,7 +22506,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הרפובליקה הדומיניקנית",
   "iptv": "MakaoTV.do",
   "imported": true,
-  "number": 961,
+  "number": 962,
   "src": {
    "by": "live.obslivestream.com",
    "kind": "public",
@@ -22510,7 +22530,7 @@ window.CHANNELS_DATA = [
   "countryHe": "בולגריה",
   "iptv": "MagicTV.bg",
   "imported": true,
-  "number": 962,
+  "number": 963,
   "src": {
    "by": "bss1.neterra.tv",
    "kind": "public",
@@ -22534,7 +22554,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארובה",
   "iptv": "CoolFM989.aw",
   "imported": true,
-  "number": 963,
+  "number": 964,
   "src": {
    "by": "live2.tensila.com",
    "kind": "public",
@@ -22558,7 +22578,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פנמה",
   "iptv": "Planet1009FM.pa",
   "imported": true,
-  "number": 964,
+  "number": 965,
   "src": {
    "by": "streamlov.alsolnet.com",
    "kind": "public",
@@ -22582,7 +22602,7 @@ window.CHANNELS_DATA = [
   "countryHe": "סרביה",
   "iptv": "RadioHitFMTV.rs",
   "imported": true,
-  "number": 965,
+  "number": 966,
   "src": {
    "by": "peer2.tdiradio.com",
    "kind": "public",
@@ -22606,7 +22626,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הונדורס",
   "iptv": "ImagenFM1051.hn",
   "imported": true,
-  "number": 966,
+  "number": 967,
   "src": {
    "by": "streaming.imagenfm105-1.com",
    "kind": "public",
@@ -22630,7 +22650,7 @@ window.CHANNELS_DATA = [
   "countryHe": "מרטיניק",
   "iptv": "FUSIONTV.mq",
   "imported": true,
-  "number": 967,
+  "number": 968,
   "src": {
    "by": "edge20.vedge.infomaniak.com",
    "kind": "public",
@@ -22654,7 +22674,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גוואדלופ",
   "iptv": "MadrasFMTV.gp",
   "imported": true,
-  "number": 968,
+  "number": 969,
   "src": {
    "by": "edge12.vedge.infomaniak.com",
    "kind": "public",
@@ -22678,7 +22698,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ונצואלה",
   "iptv": "BTATV.ve",
   "imported": true,
-  "number": 969,
+  "number": 970,
   "src": {
    "by": "cloud.fastchannel.es",
    "kind": "public",
@@ -22702,7 +22722,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פוארטו ריקו",
   "iptv": "TheRetroChannel.pr",
   "imported": true,
-  "number": 970,
+  "number": 971,
   "src": {
    "by": "583ed2f226ac2.streamlock.net",
    "kind": "public",
@@ -22727,7 +22747,7 @@ window.CHANNELS_DATA = [
   "iptv": "FolkTV.mk",
   "imported": true,
   "webOk": false,
-  "number": 971,
+  "number": 972,
   "src": {
    "by": "stream.nasatv.com.mk",
    "kind": "public",
@@ -22751,7 +22771,7 @@ window.CHANNELS_DATA = [
   "countryHe": "מולדובה",
   "iptv": "TezaurTV.md",
   "imported": true,
-  "number": 972,
+  "number": 973,
   "src": {
    "by": "tezaurtv.md",
    "kind": "public",
@@ -22775,7 +22795,7 @@ window.CHANNELS_DATA = [
   "countryHe": "לוקסמבורג",
   "iptv": "RTLGold.lu",
   "imported": true,
-  "number": 973,
+  "number": 974,
   "src": {
    "by": "stream.rtl.lu",
    "kind": "public",
@@ -22799,7 +22819,7 @@ window.CHANNELS_DATA = [
   "countryHe": "בוליביה",
   "iptv": "Audiokiss.bo",
   "imported": true,
-  "number": 974,
+  "number": 975,
   "src": {
    "by": "master.tucableip.com",
    "kind": "public",
@@ -22823,7 +22843,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קרואטיה",
   "iptv": "CMCTV.hr",
   "imported": true,
-  "number": 975,
+  "number": 976,
   "src": {
    "by": "stream.cmctv.hr",
    "kind": "public",
@@ -22847,7 +22867,7 @@ window.CHANNELS_DATA = [
   "countryHe": "סנט מארטן",
   "iptv": "981PearlFM.sx",
   "imported": true,
-  "number": 976,
+  "number": 977,
   "src": {
    "by": "live2.tensila.com",
    "kind": "public",
@@ -22871,7 +22891,7 @@ window.CHANNELS_DATA = [
   "countryHe": "טרינידד וטובגו",
   "iptv": "ScorchTV.tt",
   "imported": true,
-  "number": 977,
+  "number": 978,
   "src": {
    "by": "w6oy7x7jlxrg-hls-live.5centscdn.com",
    "kind": "public",
@@ -22895,7 +22915,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גואם",
   "iptv": "Star101FM.gu",
   "imported": true,
-  "number": 978,
+  "number": 979,
   "src": {
    "by": "live2.tensila.com",
    "kind": "public",
@@ -22919,7 +22939,7 @@ window.CHANNELS_DATA = [
   "countryHe": "נמיביה",
   "iptv": "TjilTV.na",
   "imported": true,
-  "number": 979,
+  "number": 980,
   "src": {
    "by": "hls-1zdhtxpm-livepush.akamaized.net",
    "kind": "public",
@@ -22943,7 +22963,7 @@ window.CHANNELS_DATA = [
   "countryHe": "השטחים הפלסטיניים",
   "iptv": "FalastiniTV.ps",
   "imported": true,
-  "number": 980,
+  "number": 981,
   "src": {
    "by": "rp.tactivemedia.com",
    "kind": "public",
@@ -22967,7 +22987,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ירדן",
   "iptv": "JordanSongs.jo",
   "imported": true,
-  "number": 981,
+  "number": 982,
   "src": {
    "by": "playlist.fasttvcdn.com",
    "kind": "public",
@@ -22991,7 +23011,7 @@ window.CHANNELS_DATA = [
   "countryHe": "תוניסיה",
   "iptv": "MosaiqueFM.tn",
   "imported": true,
-  "number": 982,
+  "number": 983,
   "src": {
    "by": "webcam.mosaiquefm.net",
    "kind": "public",
@@ -23015,7 +23035,7 @@ window.CHANNELS_DATA = [
   "countryHe": "סנגל",
   "iptv": "A2iMusic.sn",
   "imported": true,
-  "number": 983,
+  "number": 984,
   "src": {
    "by": "stream.sen-gt.com",
    "kind": "public",
@@ -23039,7 +23059,7 @@ window.CHANNELS_DATA = [
   "countryHe": "חוף השנהב",
   "iptv": "IvoireChannel.ci",
   "imported": true,
-  "number": 984,
+  "number": 985,
   "src": {
    "by": "video1.getstreamhosting.com",
    "kind": "public",
@@ -23063,7 +23083,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אנגולה",
   "iptv": "MuzangalaTV.ao",
   "imported": true,
-  "number": 985,
+  "number": 986,
   "src": {
    "by": "5cf4a2c2512a2.streamlock.net",
    "kind": "public",
@@ -23087,7 +23107,7 @@ window.CHANNELS_DATA = [
   "countryHe": "כף ורדה",
   "iptv": "TVCidade.cv",
   "imported": true,
-  "number": 986,
+  "number": 987,
   "src": {
    "by": "stmv1.srvif.com",
    "kind": "public",
@@ -23112,7 +23132,7 @@ window.CHANNELS_DATA = [
   "iptv": "AlbKanaleMusicTV.al",
   "imported": true,
   "webOk": false,
-  "number": 987,
+  "number": 988,
   "src": {
    "by": "albportal.net",
    "kind": "public",
@@ -23136,7 +23156,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רואנדה",
   "iptv": "IsangoTV.rw",
   "imported": true,
-  "number": 988,
+  "number": 989,
   "src": {
    "by": "80.241.215.175",
    "kind": "public",
@@ -23160,7 +23180,7 @@ window.CHANNELS_DATA = [
   "countryHe": "עיראק",
   "iptv": "IshtarTV.iq",
   "imported": true,
-  "number": 989,
+  "number": 990,
   "src": {
    "by": "stream.ishtartv.com",
    "kind": "public",
@@ -23184,7 +23204,7 @@ window.CHANNELS_DATA = [
   "countryHe": "איסלנד",
   "iptv": "K100.is",
   "imported": true,
-  "number": 990,
+  "number": 991,
   "src": {
    "by": "k100streymi.mbl.is",
    "kind": "public",
@@ -23208,7 +23228,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אפגניסטן",
   "iptv": "KayhanTV.af",
   "imported": true,
-  "number": 991,
+  "number": 992,
   "src": {
    "by": "playout395.livestreamingcdn.com",
    "kind": "public",
@@ -23232,7 +23252,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אזרבייג׳ן",
   "iptv": "KNMusicTV.az",
   "imported": true,
-  "number": 992,
+  "number": 993,
   "src": {
    "by": "cdn4.yayin.com.tr",
    "kind": "public",
@@ -23256,7 +23276,7 @@ window.CHANNELS_DATA = [
   "countryHe": "לאוס",
   "iptv": "LookThoongTV.la",
   "imported": true,
-  "number": 993,
+  "number": 994,
   "src": {
    "by": "livefta.malimarcdn.com",
    "kind": "public",
@@ -23280,7 +23300,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ליטא",
   "iptv": "M1.lt",
   "imported": true,
-  "number": 994,
+  "number": 995,
   "src": {
    "by": "m-1.data.lt",
    "kind": "public",
@@ -23304,7 +23324,7 @@ window.CHANNELS_DATA = [
   "countryHe": "לטביה",
   "iptv": "RadioSWHTV.lv",
   "imported": true,
-  "number": 995,
+  "number": 996,
   "src": {
    "by": "00ff00.latnet.media",
    "kind": "public",
@@ -23329,7 +23349,7 @@ window.CHANNELS_DATA = [
   "iptv": "TurkmenOwazy.tm",
   "imported": true,
   "webOk": false,
-  "number": 996,
+  "number": 997,
   "src": {
    "by": "alpha.tv.online.tm",
    "kind": "public",
@@ -23353,7 +23373,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "HarmonyGospelMusicTV.us",
   "imported": true,
-  "number": 997,
+  "number": 998,
   "src": {
    "by": "tgn.bozztv.com",
    "kind": "public",
@@ -23377,7 +23397,7 @@ window.CHANNELS_DATA = [
   "countryHe": "בריטניה",
   "iptv": "NOWRock.uk",
   "imported": true,
-  "number": 998,
+  "number": 999,
   "src": {
    "by": "lightning-now90s-samsungnz.amagi.tv",
    "kind": "public",
@@ -23401,7 +23421,7 @@ window.CHANNELS_DATA = [
   "countryHe": "צרפת",
   "iptv": "TraceJama.fr",
   "imported": true,
-  "number": 999,
+  "number": 1000,
   "src": {
    "by": "channels.trace.plus",
    "kind": "public",
@@ -23425,7 +23445,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "Lausitzwelle.de",
   "imported": true,
-  "number": 1000,
+  "number": 1001,
   "src": {
    "by": "h056.video-stream-hosting.de",
    "kind": "public",
@@ -23449,7 +23469,7 @@ window.CHANNELS_DATA = [
   "countryHe": "איטליה",
   "iptv": "KissKissTV.it",
   "imported": true,
-  "number": 1001,
+  "number": 1002,
   "src": {
    "by": "58f12ffd2447a.streamlock.net",
    "kind": "public",
@@ -23473,7 +23493,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רוסיה",
   "iptv": "MuzSoyuz.ru",
   "imported": true,
-  "number": 1002,
+  "number": 1003,
   "src": {
    "by": "hls-tvsoyuz.cdnvideo.ru",
    "kind": "public",
@@ -23497,7 +23517,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אוקראינה",
   "iptv": "Muzvar.ua",
   "imported": true,
-  "number": 1003,
+  "number": 1004,
   "src": {
    "by": "live-tv.cloud – ספק IPTV אוקראיני",
    "kind": "restream",
@@ -23521,7 +23541,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קנדה",
   "iptv": "QelloConcertsbyStingray.ca",
   "imported": true,
-  "number": 1004,
+  "number": 1005,
   "src": {
    "by": "lotus.stingray.com",
    "kind": "public",
@@ -23545,7 +23565,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אוסטרליה",
   "iptv": "INTVAustralia.au",
   "imported": true,
-  "number": 1005,
+  "number": 1006,
   "src": {
    "by": "tv1.intv.mk",
    "kind": "public",
@@ -23569,7 +23589,7 @@ window.CHANNELS_DATA = [
   "countryHe": "איחוד האמירויות הערביות",
   "iptv": "PMC.ae",
   "imported": true,
-  "number": 1006,
+  "number": 1007,
   "src": {
    "by": "pmchls.wns.live",
    "kind": "public",
@@ -23593,7 +23613,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ערב הסעודית",
   "iptv": "NidaeAlIslamRadio.sa",
   "imported": true,
-  "number": 1007,
+  "number": 1008,
   "src": {
    "by": "live.kwikmotion.com",
    "kind": "public",
@@ -23617,7 +23637,7 @@ window.CHANNELS_DATA = [
   "countryHe": "מצרים",
   "iptv": "ElRadio9090FM.eg",
   "imported": true,
-  "number": 1008,
+  "number": 1009,
   "src": {
    "by": "9090video.mobtada.com",
    "kind": "public",
@@ -23641,7 +23661,7 @@ window.CHANNELS_DATA = [
   "countryHe": "לבנון",
   "iptv": "mfm.lb",
   "imported": true,
-  "number": 1009,
+  "number": 1010,
   "src": {
    "by": "hms.pfs.gdn",
    "kind": "public",
@@ -23665,7 +23685,7 @@ window.CHANNELS_DATA = [
   "countryHe": "טורקיה",
   "iptv": "PowerLove.tr",
   "imported": true,
-  "number": 1010,
+  "number": 1011,
   "src": {
    "by": "livetv.powerapp.com.tr",
    "kind": "public",
@@ -23689,7 +23709,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הודו",
   "iptv": "AaryaaTV.in",
   "imported": true,
-  "number": 1011,
+  "number": 1012,
   "src": {
    "by": "stream.ottlive.co.in",
    "kind": "public",
@@ -23713,7 +23733,7 @@ window.CHANNELS_DATA = [
   "countryHe": "סין",
   "iptv": "CCTV11.cn",
   "imported": true,
-  "number": 1012,
+  "number": 1013,
   "src": {
    "by": "74.91.26.218",
    "kind": "public",
@@ -23737,7 +23757,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ברזיל",
   "iptv": "PlusMaisUm.br",
   "imported": true,
-  "number": 1013,
+  "number": 1014,
   "src": {
    "by": "stream.ichibansys.com",
    "kind": "public",
@@ -23761,7 +23781,7 @@ window.CHANNELS_DATA = [
   "countryHe": "מקסיקו",
   "iptv": "ConectaTV.mx",
   "imported": true,
-  "number": 1014,
+  "number": 1015,
   "src": {
    "by": "stream8.mexiserver.com",
    "kind": "public",
@@ -23785,7 +23805,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארגנטינה",
   "iptv": "XLevelMedia.ar",
   "imported": true,
-  "number": 1015,
+  "number": 1016,
   "src": {
    "by": "tuvideoonline.com.ar",
    "kind": "public",
@@ -23809,7 +23829,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פורטוגל",
   "iptv": "RFPtv.pt",
   "imported": true,
-  "number": 1016,
+  "number": 1017,
   "src": {
    "by": "video03.logicahost.com.br",
    "kind": "public",
@@ -23833,7 +23853,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הולנד",
   "iptv": "XITEHits.nl",
   "imported": true,
-  "number": 1017,
+  "number": 1018,
   "src": {
    "by": "d726x48n2pd5h.cloudfront.net",
    "kind": "public",
@@ -23857,7 +23877,7 @@ window.CHANNELS_DATA = [
   "countryHe": "בלגיה",
   "iptv": "Klara.be",
   "imported": true,
-  "number": 1018,
+  "number": 1019,
   "src": {
    "by": "live.vrtcdn.be",
    "kind": "public",
@@ -23881,7 +23901,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אוסטריה",
   "iptv": "AntenneSteiermark.at",
   "imported": true,
-  "number": 1019,
+  "number": 1020,
   "src": {
    "by": "60efd7a2b4d02.streamlock.net",
    "kind": "public",
@@ -23905,7 +23925,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פולין",
   "iptv": "DiscoPoloMusic.pl",
   "imported": true,
-  "number": 1020,
+  "number": 1021,
   "src": {
    "by": "185.227.34.179",
    "kind": "public",
@@ -23929,7 +23949,7 @@ window.CHANNELS_DATA = [
   "countryHe": "יוון",
   "iptv": "PanikTV.gr",
   "imported": true,
-  "number": 1021,
+  "number": 1022,
   "src": {
    "by": "livetv.streams.ovh",
    "kind": "public",
@@ -23953,7 +23973,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פינלנד",
   "iptv": "NavahangTV.fi",
   "imported": true,
-  "number": 1022,
+  "number": 1023,
   "src": {
    "by": "hls.navahang.live",
    "kind": "public",
@@ -23977,7 +23997,7 @@ window.CHANNELS_DATA = [
   "countryHe": "צ׳כיה",
   "iptv": "RetroMusicTV.cz",
   "imported": true,
-  "number": 1023,
+  "number": 1024,
   "src": {
    "by": "stream.mediawork.cz",
    "kind": "public",
@@ -24001,7 +24021,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רומניה",
   "iptv": "ImpactTV2.ro",
   "imported": true,
-  "number": 1024,
+  "number": 1025,
   "src": {
    "by": "online.tvimpact.live",
    "kind": "public",
@@ -24025,7 +24045,7 @@ window.CHANNELS_DATA = [
   "countryHe": "צ׳ילה",
   "iptv": "RewindTV.cl",
   "imported": true,
-  "number": 1025,
+  "number": 1026,
   "src": {
    "by": "tls-cl.cdnz.cl",
    "kind": "public",
@@ -24049,7 +24069,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קולומביה",
   "iptv": "LaMoradaRadioTV.co",
   "imported": true,
-  "number": 1026,
+  "number": 1027,
   "src": {
    "by": "movil.ejeserver.com",
    "kind": "public",
@@ -24073,7 +24093,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פרו",
   "iptv": "LaFabulosaTV.pe",
   "imported": true,
-  "number": 1027,
+  "number": 1028,
   "src": {
    "by": "eu1.servers10.com",
    "kind": "public",
@@ -24097,7 +24117,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פקיסטן",
   "iptv": "JalwaTV.pk",
   "imported": true,
-  "number": 1028,
+  "number": 1029,
   "src": {
    "by": "vodzong.mjunoon.tv",
    "kind": "public",
@@ -24121,7 +24141,7 @@ window.CHANNELS_DATA = [
   "countryHe": "איראן",
   "iptv": "T2TV.ir",
   "imported": true,
-  "number": 1029,
+  "number": 1030,
   "src": {
    "by": "t2hls.wns.live",
    "kind": "public",
@@ -24145,7 +24165,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ניגריה",
   "iptv": "AMusicChannel.ng",
   "imported": true,
-  "number": 1030,
+  "number": 1031,
   "src": {
    "by": "viewmedia7219.bozztv.com",
    "kind": "public",
@@ -24169,7 +24189,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קוסטה ריקה",
   "iptv": "Canal3KMKTV.cr",
   "imported": true,
-  "number": 1031,
+  "number": 1032,
   "src": {
    "by": "live20.bozztv.com",
    "kind": "public",
@@ -24193,7 +24213,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פרגוואי",
   "iptv": "DismarRadioTV.py",
   "imported": true,
-  "number": 1032,
+  "number": 1033,
   "src": {
    "by": "rds3.desdeparaguay.net",
    "kind": "public",
@@ -24217,7 +24237,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אקוודור",
   "iptv": "FMMundo.ec",
   "imported": true,
-  "number": 1033,
+  "number": 1034,
   "src": {
    "by": "video2.makrodigital.com",
    "kind": "public",
@@ -24241,7 +24261,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אסטוניה",
   "iptv": "DanceTVDeepHouseDistrict.ee",
   "imported": true,
-  "number": 1034,
+  "number": 1035,
   "src": {
    "by": "m1b2.worldcast.tv",
    "kind": "public",
@@ -24265,7 +24285,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הרפובליקה הדומיניקנית",
   "iptv": "MontonesTV.do",
   "imported": true,
-  "number": 1035,
+  "number": 1036,
   "src": {
    "by": "lbgo.bozztv.com",
    "kind": "public",
@@ -24289,7 +24309,7 @@ window.CHANNELS_DATA = [
   "countryHe": "בולגריה",
   "iptv": "TheVoice.bg",
   "imported": true,
-  "number": 1036,
+  "number": 1037,
   "src": {
    "by": "bss1.neterra.tv",
    "kind": "public",
@@ -24313,7 +24333,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארובה",
   "iptv": "Power1017FM.aw",
   "imported": true,
-  "number": 1037,
+  "number": 1038,
   "src": {
    "by": "vcp11.myplaytv.com",
    "kind": "public",
@@ -24337,7 +24357,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פנמה",
   "iptv": "SuperQPanama.pa",
   "imported": true,
-  "number": 1038,
+  "number": 1039,
   "src": {
    "by": "vcp8.myplaytv.com",
    "kind": "public",
@@ -24361,7 +24381,7 @@ window.CHANNELS_DATA = [
   "countryHe": "סרביה",
   "iptv": "RadioKarolinaTV.rs",
   "imported": true,
-  "number": 1039,
+  "number": 1040,
   "src": {
    "by": "peer2.tdiradio.com",
    "kind": "public",
@@ -24385,7 +24405,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הונדורס",
   "iptv": "LaTop1029.hn",
   "imported": true,
-  "number": 1040,
+  "number": 1041,
   "src": {
    "by": "59d39900ebfb8.streamlock.net",
    "kind": "public",
@@ -24409,7 +24429,7 @@ window.CHANNELS_DATA = [
   "countryHe": "מרטיניק",
   "iptv": "IdentiteTeleCaraibes.mq",
   "imported": true,
-  "number": 1041,
+  "number": 1042,
   "src": {
    "by": "vdo2.pro-fhi.net",
    "kind": "public",
@@ -24433,7 +24453,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גוואדלופ",
   "iptv": "RHTGuadeloupe.gp",
   "imported": true,
-  "number": 1042,
+  "number": 1043,
   "src": {
    "by": "edge12.vedge.infomaniak.com",
    "kind": "public",
@@ -24457,7 +24477,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ונצואלה",
   "iptv": "ShowVenTV.ve",
   "imported": true,
-  "number": 1043,
+  "number": 1044,
   "src": {
    "by": "cdnbarinas.tvzamora.com",
    "kind": "public",
@@ -24481,7 +24501,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פוארטו ריקו",
   "iptv": "LaX.pr",
   "imported": true,
-  "number": 1044,
+  "number": 1045,
   "src": {
    "by": "stream.eleden.com",
    "kind": "public",
@@ -24506,7 +24526,7 @@ window.CHANNELS_DATA = [
   "iptv": "LoveTV.mk",
   "imported": true,
   "webOk": false,
-  "number": 1045,
+  "number": 1046,
   "src": {
    "by": "stream.nasatv.com.mk",
    "kind": "public",
@@ -24530,7 +24550,7 @@ window.CHANNELS_DATA = [
   "countryHe": "מולדובה",
   "iptv": "HitFM.md",
   "imported": true,
-  "number": 1046,
+  "number": 1047,
   "src": {
    "by": "hitfm.nfthost.net",
    "kind": "public",
@@ -24554,7 +24574,7 @@ window.CHANNELS_DATA = [
   "countryHe": "לוקסמבורג",
   "iptv": "TodayRadio.lu",
   "imported": true,
-  "number": 1047,
+  "number": 1048,
   "src": {
    "by": "stream.rtl.lu",
    "kind": "public",
@@ -24573,7 +24593,7 @@ window.CHANNELS_DATA = [
   "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/2018_Animal_Planet_logo.svg/512px-2018_Animal_Planet_logo.svg.png",
   "badge": "FHD",
   "desc": "עולם החיות, ספארי באפריקה, חיות מחמד והגנה על חיות הבר",
-  "number": 1048,
+  "number": 1049,
   "lang": "ru",
   "iptv": "AnimalPlanet.ru",
   "src": {
@@ -24594,7 +24614,7 @@ window.CHANNELS_DATA = [
   "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Investigation_Discovery_logo.svg/512px-Investigation_Discovery_logo.svg.png",
   "badge": "HD",
   "desc": "תעלומות פשע אמיתי, חקירות בלשיות ופיענוח פרשיות מסתוריות",
-  "number": 1049,
+  "number": 1050,
   "lang": "ru",
   "iptv": "InvestigationDiscovery.ru",
   "src": {
@@ -24615,7 +24635,7 @@ window.CHANNELS_DATA = [
   "logo": "",
   "badge": "FHD",
   "desc": "נופי טבע מרהיבים, בעלי חיים וסביבה באיכות FHD",
-  "number": 1050,
+  "number": 1051,
   "lang": "ru",
   "iptv": "vijuPlusPlanet.ru",
   "src": {
@@ -24636,7 +24656,7 @@ window.CHANNELS_DATA = [
   "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/BBC_Earth_logo.svg/512px-BBC_Earth_logo.svg.png",
   "badge": "FHD",
   "desc": "סדרות הטבע וההיסטוריה הידועות של ה-BBC בהנחיית דיוויד אטנבורו",
-  "number": 1051,
+  "number": 1052,
   "lang": "auto",
   "iptv": "BBCEarth.uk",
   "src": {
@@ -24657,7 +24677,7 @@ window.CHANNELS_DATA = [
   "logo": "",
   "badge": "FHD",
   "desc": "תוכניות דיסקברי מקוריות, חלל, מכונאות ומדע",
-  "number": 1052,
+  "number": 1053,
   "lang": "ar",
   "iptv": "AsharqDiscovery.sa",
   "src": {
@@ -24678,7 +24698,7 @@ window.CHANNELS_DATA = [
   "logo": "",
   "badge": "SD",
   "desc": "תעודה היסטורית, מלחמות עולם, ממלכות ומנהיגים ששינו את העולם",
-  "number": 1053,
+  "number": 1054,
   "lang": "ru",
   "iptv": "365daysTV.ru",
   "webUrl": "https://stream8.cinerama.uz/1242/tracks-v1a1/mono.m3u8",
@@ -24705,7 +24725,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "Dateline247.us",
   "imported": true,
-  "number": 1054,
+  "number": 1055,
   "src": {
    "by": "d1si3n1st4nkgb.cloudfront.net",
    "kind": "public",
@@ -24730,7 +24750,7 @@ window.CHANNELS_DATA = [
   "iptv": "HistoryHit.uk",
   "imported": true,
   "webOk": false,
-  "number": 1055,
+  "number": 1056,
   "src": {
    "by": "lds-timeline-rakuten.amagi.tv",
    "kind": "public",
@@ -24754,7 +24774,7 @@ window.CHANNELS_DATA = [
   "countryHe": "צרפת",
   "iptv": "Francophonie24.fr",
   "imported": true,
-  "number": 1056,
+  "number": 1057,
   "src": {
    "by": "5421175365ea3.streamlock.net",
    "kind": "public",
@@ -24778,7 +24798,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "AdventureEarth.de",
   "imported": true,
-  "number": 1057,
+  "number": 1058,
   "src": {
    "by": "a57e9c69976649b582a8d7604c00e69a.mediatailor.us-east-1.amazonaws.com",
    "kind": "public",
@@ -24802,7 +24822,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ספרד",
   "iptv": "CrimenHistoria.es",
   "imported": true,
-  "number": 1058,
+  "number": 1059,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -24826,7 +24846,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קנדה",
   "iptv": "TotalCrime.ca",
   "imported": true,
-  "number": 1059,
+  "number": 1060,
   "src": {
    "by": "aegis-cloudfront-1.tubi.video",
    "kind": "public",
@@ -24850,7 +24870,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הודו",
   "iptv": "DocuBayTV.in",
   "imported": true,
-  "number": 1060,
+  "number": 1061,
   "src": {
    "by": "cc-mgr91yrk4pehy.akamaized.net",
    "kind": "public",
@@ -24874,7 +24894,7 @@ window.CHANNELS_DATA = [
   "countryHe": "סין",
   "iptv": "CGTNDocumentary.cn",
   "imported": true,
-  "number": 1061,
+  "number": 1062,
   "src": {
    "by": "amg00405-rakutentv-cgtndocumentary-rakuten-0ql8j.amagi.tv",
    "kind": "public",
@@ -24898,7 +24918,7 @@ window.CHANNELS_DATA = [
   "countryHe": "מקסיקו",
   "iptv": "NationalGeographic.mx",
   "imported": true,
-  "number": 1062,
+  "number": 1063,
   "src": {
    "by": "138.121.15.230",
    "kind": "public",
@@ -24922,7 +24942,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הולנד",
   "iptv": "DocuBox.nl",
   "imported": true,
-  "number": 1063,
+  "number": 1064,
   "src": {
    "by": "Antik Telecom (סלובקיה), נתיבי test",
    "kind": "restream",
@@ -24946,7 +24966,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פולין",
   "iptv": "PolsatViasatHistory.pl",
   "imported": true,
-  "number": 1064,
+  "number": 1065,
   "src": {
    "by": "185.227.34.179",
    "kind": "public",
@@ -24970,7 +24990,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שוודיה",
   "iptv": "PlutoTVDokumentar.se",
   "imported": true,
-  "number": 1065,
+  "number": 1066,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -24994,7 +25014,7 @@ window.CHANNELS_DATA = [
   "countryHe": "סינגפור",
   "iptv": "CNAOriginals.sg",
   "imported": true,
-  "number": 1066,
+  "number": 1067,
   "src": {
    "by": "amg01082-cna-amg01082c1-rlaxx-us-11304.playouts.now.amagi.tv",
    "kind": "public",
@@ -25018,7 +25038,7 @@ window.CHANNELS_DATA = [
   "countryHe": "עיראק",
   "iptv": "KarbalaDocumentary.iq",
   "imported": true,
-  "number": 1067,
+  "number": 1068,
   "src": {
    "by": "ktvlive.online",
    "kind": "public",
@@ -25042,7 +25062,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הרפובליקה הדומיניקנית",
   "iptv": "Ecovision.do",
   "imported": true,
-  "number": 1068,
+  "number": 1069,
   "src": {
    "by": "streaming.grupomediosdelnorte.com",
    "kind": "public",
@@ -25066,7 +25086,7 @@ window.CHANNELS_DATA = [
   "countryHe": "בוליביה",
   "iptv": "UMSATVUInternacional.bo",
   "imported": true,
-  "number": 1069,
+  "number": 1070,
   "src": {
    "by": "edge.enhdtv.com",
    "kind": "public",
@@ -25090,7 +25110,7 @@ window.CHANNELS_DATA = [
   "countryHe": "מיאנמר (בורמה)",
   "iptv": "MWDDocumentary.mm",
   "imported": true,
-  "number": 1070,
+  "number": 1071,
   "src": {
    "by": "203.81.84.130",
    "kind": "public",
@@ -25114,7 +25134,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "DeadlyWomen.us",
   "imported": true,
-  "number": 1071,
+  "number": 1072,
   "src": {
    "by": "d1mgh147xpmgs8.cloudfront.net",
    "kind": "public",
@@ -25138,7 +25158,7 @@ window.CHANNELS_DATA = [
   "countryHe": "צרפת",
   "iptv": "IntoCrime.fr",
   "imported": true,
-  "number": 1072,
+  "number": 1073,
   "src": {
    "by": "amg00711-zylo-amg00711c10-rakuten-fr-6731.playouts.now.amagi.tv",
    "kind": "public",
@@ -25162,7 +25182,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "AutenticHistory.de",
   "imported": true,
-  "number": 1073,
+  "number": 1074,
   "src": {
    "by": "9e754fa707344ccca6d84955c8fcaf36.mediatailor.us-east-1.amazonaws.com",
    "kind": "public",
@@ -25186,7 +25206,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ספרד",
   "iptv": "HistoriaYVida.es",
   "imported": true,
-  "number": 1074,
+  "number": 1075,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -25210,7 +25230,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רוסיה",
   "iptv": "Smotrim100Fakty.ru",
   "imported": true,
-  "number": 1075,
+  "number": 1076,
   "src": {
    "by": "Smotrim (VGTRK) – הבעלים של קרוסלה",
    "kind": "official",
@@ -25234,7 +25254,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קנדה",
   "iptv": "NatureTime.ca",
   "imported": true,
-  "number": 1076,
+  "number": 1077,
   "src": {
    "by": "bamusa-naturetime-emea-eng-rakuten.amagi.tv",
    "kind": "public",
@@ -25258,7 +25278,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הודו",
   "iptv": "EpicCrimes.in",
   "imported": true,
-  "number": 1077,
+  "number": 1078,
   "src": {
    "by": "cc-wsuyg2uxeak04.akamaized.net",
    "kind": "public",
@@ -25282,7 +25302,7 @@ window.CHANNELS_DATA = [
   "countryHe": "סין",
   "iptv": "DiscoveringChina.cn",
   "imported": true,
-  "number": 1078,
+  "number": 1079,
   "src": {
    "by": "fastlive.cctvplus.com",
    "kind": "public",
@@ -25306,7 +25326,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פולין",
   "iptv": "History.pl",
   "imported": true,
-  "number": 1079,
+  "number": 1080,
   "src": {
    "by": "92.114.85.87",
    "kind": "public",
@@ -25330,7 +25350,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שוודיה",
   "iptv": "PlutoTVVarldskrigen.se",
   "imported": true,
-  "number": 1080,
+  "number": 1081,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -25354,7 +25374,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "DocumentaryPlus.us",
   "imported": true,
-  "number": 1081,
+  "number": 1082,
   "src": {
    "by": "ef79b15c8c7c46c7a9de9d33001dbd07.mediatailor.us-west-2.amazonaws.com",
    "kind": "public",
@@ -25378,7 +25398,7 @@ window.CHANNELS_DATA = [
   "countryHe": "צרפת",
   "iptv": "PersianaDocs.fr",
   "imported": true,
-  "number": 1082,
+  "number": 1083,
   "src": {
    "by": "scihls.persiana.live",
    "kind": "public",
@@ -25402,7 +25422,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "Dokusat.de",
   "imported": true,
-  "number": 1083,
+  "number": 1084,
   "src": {
    "by": "muc3.iptv-playoutcenter.de",
    "kind": "public",
@@ -25426,7 +25446,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ספרד",
   "iptv": "StorieCriminali.es",
   "imported": true,
-  "number": 1084,
+  "number": 1085,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -25450,7 +25470,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רוסיה",
   "iptv": "Nano.ru",
   "imported": true,
-  "number": 1085,
+  "number": 1086,
   "src": {
    "by": "185.23.80.23",
    "kind": "public",
@@ -25474,7 +25494,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הודו",
   "iptv": "AnimalPlanet.in",
   "imported": true,
-  "number": 1086,
+  "number": 1087,
   "src": {
    "by": "drk6xq0vhn.gpcdn.net",
    "kind": "public",
@@ -25498,7 +25518,7 @@ window.CHANNELS_DATA = [
   "countryHe": "סין",
   "iptv": "CCTV9.cn",
   "imported": true,
-  "number": 1087,
+  "number": 1088,
   "src": {
    "by": "xykt-fix.github.io",
    "kind": "public",
@@ -25522,7 +25542,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פולין",
   "iptv": "NationalGeographic.pl",
   "imported": true,
-  "number": 1088,
+  "number": 1089,
   "src": {
    "by": "92.114.85.87",
    "kind": "public",
@@ -25546,7 +25566,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שוודיה",
   "iptv": "SmithsonianChannelSelects.se",
   "imported": true,
-  "number": 1089,
+  "number": 1090,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -25570,7 +25590,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "TheNest.us",
   "imported": true,
-  "number": 1090,
+  "number": 1091,
   "src": {
    "by": "fast-channels.sinclairstoryline.com",
    "kind": "public",
@@ -25594,7 +25614,7 @@ window.CHANNELS_DATA = [
   "countryHe": "צרפת",
   "iptv": "PersianaTravel.fr",
   "imported": true,
-  "number": 1091,
+  "number": 1092,
   "src": {
    "by": "ptravelhls.persiana.live",
    "kind": "public",
@@ -25618,7 +25638,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "TerraMaterWILD.de",
   "imported": true,
-  "number": 1092,
+  "number": 1093,
   "src": {
    "by": "53ff3982.wurl.com",
    "kind": "public",
@@ -25642,7 +25662,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הודו",
   "iptv": "InvestigationDiscovery.in",
   "imported": true,
-  "number": 1093,
+  "number": 1094,
   "src": {
    "by": "drk6xq0vhn.gpcdn.net",
    "kind": "public",
@@ -25666,7 +25686,7 @@ window.CHANNELS_DATA = [
   "countryHe": "סין",
   "iptv": "CCTVWeaponTechnology.cn",
   "imported": true,
-  "number": 1094,
+  "number": 1095,
   "src": {
    "by": "38.75.136.137",
    "kind": "public",
@@ -25690,7 +25710,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פולין",
   "iptv": "NationalGeographicWild.pl",
   "imported": true,
-  "number": 1095,
+  "number": 1096,
   "src": {
    "by": "92.114.85.87",
    "kind": "public",
@@ -25714,7 +25734,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שוודיה",
   "iptv": "PlutoTVAlienInvasion.se",
   "imported": true,
-  "number": 1096,
+  "number": 1097,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -25738,7 +25758,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "NationalGeographicLatinAmerica.us",
   "imported": true,
-  "number": 1097,
+  "number": 1098,
   "src": {
    "by": "barinaslive1.boldmss.com",
    "kind": "public",
@@ -25762,7 +25782,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "PlutoTVHistoire.de",
   "imported": true,
-  "number": 1098,
+  "number": 1099,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -25786,7 +25806,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הודו",
   "iptv": "SafariTV.in",
   "imported": true,
-  "number": 1099,
+  "number": 1100,
   "src": {
    "by": "mumt04.tangotv.in",
    "kind": "public",
@@ -25810,7 +25830,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פולין",
   "iptv": "PolsatViasatExplore.pl",
   "imported": true,
-  "number": 1100,
+  "number": 1101,
   "src": {
    "by": "92.114.85.87",
    "kind": "public",
@@ -25834,7 +25854,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שוודיה",
   "iptv": "PlutoTVSpace.se",
   "imported": true,
-  "number": 1101,
+  "number": 1102,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -25858,7 +25878,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "Crime360.us",
   "imported": true,
-  "number": 1102,
+  "number": 1103,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -25882,7 +25902,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "PlutoTVHistoria.de",
   "imported": true,
-  "number": 1103,
+  "number": 1104,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -25906,7 +25926,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פולין",
   "iptv": "PolsatViasatNature.pl",
   "imported": true,
-  "number": 1104,
+  "number": 1105,
   "src": {
    "by": "92.114.85.87",
    "kind": "public",
@@ -25930,7 +25950,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שוודיה",
   "iptv": "PlutoTVVerdenskrigene.se",
   "imported": true,
-  "number": 1105,
+  "number": 1106,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -25954,7 +25974,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "Getfactual.us",
   "imported": true,
-  "number": 1106,
+  "number": 1107,
   "src": {
    "by": "d1nhni5l2n8hjt.cloudfront.net",
    "kind": "public",
@@ -25978,7 +25998,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "kabeleinsDoku.de",
   "imported": true,
-  "number": 1107,
+  "number": 1108,
   "src": {
    "by": "s6.hopslan.com",
    "kind": "public",
@@ -26002,7 +26022,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "HistoryAsia.us",
   "imported": true,
-  "number": 1108,
+  "number": 1109,
   "src": {
    "by": "freem3u.xyz",
    "kind": "public",
@@ -26026,7 +26046,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "PlutoTVAlienInvasion.de",
   "imported": true,
-  "number": 1109,
+  "number": 1110,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -26050,7 +26070,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "LawCrime.us",
   "imported": true,
-  "number": 1110,
+  "number": 1111,
   "src": {
    "by": "a-cdn.klowdtv.com",
    "kind": "public",
@@ -26074,7 +26094,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "PlutoTVBritainatWar.de",
   "imported": true,
-  "number": 1111,
+  "number": 1112,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -26098,7 +26118,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "Atlas.us",
   "imported": true,
-  "number": 1112,
+  "number": 1113,
   "src": {
    "by": "cdn.whiplash.cc",
    "kind": "public",
@@ -26122,7 +26142,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "PlutoTVConspiracy.de",
   "imported": true,
-  "number": 1113,
+  "number": 1114,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -26146,7 +26166,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "FBIFiles.us",
   "imported": true,
-  "number": 1114,
+  "number": 1115,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -26170,7 +26190,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "PlutoTVAnimaux.de",
   "imported": true,
-  "number": 1115,
+  "number": 1116,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -26194,7 +26214,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "InkMaster.us",
   "imported": true,
-  "number": 1116,
+  "number": 1117,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -26218,13 +26238,73 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "PlutoTVAventure.de",
   "imported": true,
-  "number": 1117,
+  "number": 1118,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
    "host": "jmp2.uk",
    "found": "iptv-org (PlutoTVAventure.de)",
    "web": "✅"
+  }
+ },
+ {
+  "id": "nat_geo_live",
+  "name": "National Geographic HD",
+  "title": "National Geographic Channel HD",
+  "category": "טבע ודוקו (Documentary & Nature)",
+  "categoryEn": "docu",
+  "url": "http://stream.mcquack.net/116/index.m3u8",
+  "logo": "assets/logos/nat_geo_live.svg",
+  "badge": "HD",
+  "desc": "ערוץ נשיונל ג'יאוגרפיק - טבע, מדע, חקר העולם והיסטוריה",
+  "lang": "en",
+  "number": 1119,
+  "src": {
+   "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+   "kind": "restream",
+   "host": "stream.mcquack.net",
+   "found": "רשימה ידנית (גרסה קודמת)",
+   "web": "❌ רק באפליקציה (HTTP)"
+  }
+ },
+ {
+  "id": "discovery_live",
+  "name": "Discovery Channel HD",
+  "title": "ערוץ דיסקברי Discovery Channel HD",
+  "category": "טבע ודוקו (Documentary & Nature)",
+  "categoryEn": "docu",
+  "url": "http://stream.mcquack.net/177/index.m3u8",
+  "logo": "assets/logos/discovery_live.svg",
+  "badge": "HD",
+  "desc": "ערוץ דיסקברי - מדע, טכנולוגיה, הרפתקאות וסדרות דוקו",
+  "lang": "en",
+  "number": 1120,
+  "src": {
+   "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+   "kind": "restream",
+   "host": "stream.mcquack.net",
+   "found": "רשימה ידנית (גרסה קודמת)",
+   "web": "❌ רק באפליקציה (HTTP)"
+  }
+ },
+ {
+  "id": "nat_geo_wild_live",
+  "name": "Nat Geo Wild HD",
+  "title": "ערוץ נשיונל ג'יאוגרפיק וויילד HD",
+  "category": "טבע ודוקו (Documentary & Nature)",
+  "categoryEn": "docu",
+  "url": "http://stream.mcquack.net/149/index.m3u8",
+  "logo": "assets/logos/nat_geo_wild_live.svg",
+  "badge": "HD",
+  "desc": "ערוץ חיות הבר והטבע הפראי של נשיונל ג'יאוגרפיק",
+  "lang": "en",
+  "number": 1121,
+  "src": {
+   "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+   "kind": "restream",
+   "host": "stream.mcquack.net",
+   "found": "רשימה ידנית (גרסה קודמת)",
+   "web": "❌ רק באפליקציה (HTTP)"
   }
  },
  {
@@ -26237,7 +26317,7 @@ window.CHANNELS_DATA = [
   "logo": "",
   "badge": "FHD",
   "desc": "סיורים ביעדים מרהיבים, מלונות יוקרה וחופשות חלומיות",
-  "number": 1118,
+  "number": 1122,
   "lang": "he",
   "iptv": "VacationChannel.il",
   "src": {
@@ -26258,7 +26338,7 @@ window.CHANNELS_DATA = [
   "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Travel_Channel_Logo_2018.svg/512px-Travel_Channel_Logo_2018.svg.png",
   "badge": "HD",
   "desc": "מסעות ברחבי העולם, תרבויות מרתקות, הרפתקאות וטבע פראי",
-  "number": 1119,
+  "number": 1123,
   "lang": "ru",
   "iptv": "TravelChannel.ru",
   "src": {
@@ -26284,7 +26364,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "AKCTV.us",
   "imported": true,
-  "number": 1120,
+  "number": 1124,
   "src": {
    "by": "broadcast.blivenyc.com",
    "kind": "public",
@@ -26308,7 +26388,7 @@ window.CHANNELS_DATA = [
   "countryHe": "בריטניה",
   "iptv": "HorseCountryTV.uk",
   "imported": true,
-  "number": 1121,
+  "number": 1125,
   "src": {
    "by": "hnc-free-viewlift.amagi.tv",
    "kind": "public",
@@ -26332,7 +26412,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ספרד",
   "iptv": "VoyagesSaveurs.es",
   "imported": true,
-  "number": 1122,
+  "number": 1126,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -26356,7 +26436,7 @@ window.CHANNELS_DATA = [
   "countryHe": "איטליה",
   "iptv": "PeerTVSouthTyrol.it",
   "imported": true,
-  "number": 1123,
+  "number": 1127,
   "src": {
    "by": "iptv.peer.biz",
    "kind": "public",
@@ -26380,7 +26460,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רוסיה",
   "iptv": "Dikij.ru",
   "imported": true,
-  "number": 1124,
+  "number": 1128,
   "src": {
    "by": "stream3.cinerama.uz",
    "kind": "public",
@@ -26404,7 +26484,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אוקראינה",
   "iptv": "Rybalka.ua",
   "imported": true,
-  "number": 1125,
+  "number": 1129,
   "src": {
    "by": "dash2.antik.sk",
    "kind": "public",
@@ -26428,7 +26508,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קנדה",
   "iptv": "LoveNature.ca",
   "imported": true,
-  "number": 1126,
+  "number": 1130,
   "src": {
    "by": "aegis-cloudfront-1.tubi.video",
    "kind": "public",
@@ -26452,7 +26532,7 @@ window.CHANNELS_DATA = [
   "countryHe": "סין",
   "iptv": "ChinaTravel.cn",
   "imported": true,
-  "number": 1127,
+  "number": 1131,
   "src": {
    "by": "fastlive.cctvplus.com",
    "kind": "public",
@@ -26476,7 +26556,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ברזיל",
   "iptv": "TerraViva.br",
   "imported": true,
-  "number": 1128,
+  "number": 1132,
   "src": {
    "by": "9ada494d.wurl.com",
    "kind": "public",
@@ -26500,7 +26580,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארגנטינה",
   "iptv": "CiudadMagica.ar",
   "imported": true,
-  "number": 1129,
+  "number": 1133,
   "src": {
    "by": "lbgo.bozztv.com",
    "kind": "public",
@@ -26524,7 +26604,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הולנד",
   "iptv": "INTRAVEL.nl",
   "imported": true,
-  "number": 1130,
+  "number": 1134,
   "src": {
    "by": "amg00861-amg00861c10-rakuten-uk-3152.playouts.now.amagi.tv",
    "kind": "public",
@@ -26548,7 +26628,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אוסטריה",
   "iptv": "SwamijiTVAmerican.at",
   "imported": true,
-  "number": 1131,
+  "number": 1135,
   "src": {
    "by": "stream.swamiji.tv",
    "kind": "public",
@@ -26572,7 +26652,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פולין",
   "iptv": "TravelChannel.pl",
   "imported": true,
-  "number": 1132,
+  "number": 1136,
   "src": {
    "by": "92.114.85.87",
    "kind": "public",
@@ -26596,7 +26676,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רומניה",
   "iptv": "AgroTV.ro",
   "imported": true,
-  "number": 1133,
+  "number": 1137,
   "src": {
    "by": "agrotv.streamnet.ro",
    "kind": "public",
@@ -26620,7 +26700,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קולומביה",
   "iptv": "ElMundodelCampo.co",
   "imported": true,
-  "number": 1134,
+  "number": 1138,
   "src": {
    "by": "movil.ejeserver.com",
    "kind": "public",
@@ -26644,7 +26724,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פקיסטן",
   "iptv": "DiscoverPakistan.pk",
   "imported": true,
-  "number": 1135,
+  "number": 1139,
   "src": {
    "by": "livecdn.live247stream.com",
    "kind": "public",
@@ -26668,7 +26748,7 @@ window.CHANNELS_DATA = [
   "countryHe": "דרום אפריקה",
   "iptv": "WildEarth.za",
   "imported": true,
-  "number": 1136,
+  "number": 1140,
   "src": {
    "by": "dqga3jatxofgx.cloudfront.net",
    "kind": "public",
@@ -26692,7 +26772,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קוסטה ריקה",
   "iptv": "AgrotendenciaTV.cr",
   "imported": true,
-  "number": 1137,
+  "number": 1141,
   "src": {
    "by": "5fc584f3f19c9.streamlock.net",
    "kind": "public",
@@ -26716,7 +26796,7 @@ window.CHANNELS_DATA = [
   "countryHe": "בולגריה",
   "iptv": "TravelTV.bg",
   "imported": true,
-  "number": 1138,
+  "number": 1142,
   "src": {
    "by": "streamer103.neterra.tv",
    "kind": "public",
@@ -26740,7 +26820,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארובה",
   "iptv": "ArubaTV.aw",
   "imported": true,
-  "number": 1139,
+  "number": 1143,
   "src": {
    "by": "cdn01.setar.aw",
    "kind": "public",
@@ -26764,7 +26844,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הרפובליקה הדומיניקנית",
   "iptv": "OEPMTV.do",
   "imported": true,
-  "number": 1140,
+  "number": 1144,
   "src": {
    "by": "cnn.hostlagarto.com",
    "kind": "public",
@@ -26788,7 +26868,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פרגוואי",
   "iptv": "ProductivaTV.py",
   "imported": true,
-  "number": 1141,
+  "number": 1145,
   "src": {
    "by": "copacoradios.desdeparaguay.net",
    "kind": "public",
@@ -26812,7 +26892,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ונצואלה",
   "iptv": "SunChannel.ve",
   "imported": true,
-  "number": 1142,
+  "number": 1146,
   "src": {
    "by": "168.196.127.137",
    "kind": "public",
@@ -26836,7 +26916,7 @@ window.CHANNELS_DATA = [
   "countryHe": "בוליביה",
   "iptv": "TVOFF.bo",
   "imported": true,
-  "number": 1143,
+  "number": 1147,
   "src": {
    "by": "edge.enhdtv.com",
    "kind": "public",
@@ -26860,7 +26940,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קמבודיה",
   "iptv": "ARDBTV.kh",
   "imported": true,
-  "number": 1144,
+  "number": 1148,
   "src": {
    "by": "ardbtv.ardb.com.kh",
    "kind": "public",
@@ -26884,7 +26964,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "DroneTV.us",
   "imported": true,
-  "number": 1145,
+  "number": 1149,
   "src": {
    "by": "airvuz-dronetv-1-us.ohlscdn.wurl.tv",
    "kind": "public",
@@ -26908,7 +26988,7 @@ window.CHANNELS_DATA = [
   "countryHe": "בריטניה",
   "iptv": "SpaceLivepoweredbysen.uk",
   "imported": true,
-  "number": 1146,
+  "number": 1150,
   "src": {
    "by": "linear-1224.frequency.stream",
    "kind": "public",
@@ -26932,7 +27012,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רוסיה",
   "iptv": "Dikayaokhota.ru",
   "imported": true,
-  "number": 1147,
+  "number": 1151,
   "src": {
    "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
    "kind": "restream",
@@ -26956,7 +27036,7 @@ window.CHANNELS_DATA = [
   "countryHe": "סין",
   "iptv": "CCTV17.cn",
   "imported": true,
-  "number": 1148,
+  "number": 1152,
   "src": {
    "by": "74.91.26.218",
    "kind": "public",
@@ -26980,7 +27060,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ברזיל",
   "iptv": "AgroCanal.br",
   "imported": true,
-  "number": 1149,
+  "number": 1153,
   "src": {
    "by": "aovivo.equipea.com.br",
    "kind": "public",
@@ -27004,7 +27084,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אוסטריה",
   "iptv": "SwamijiTVAustralian.at",
   "imported": true,
-  "number": 1150,
+  "number": 1154,
   "src": {
    "by": "stream.swamiji.tv",
    "kind": "public",
@@ -27028,7 +27108,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רומניה",
   "iptv": "TravelMix.ro",
   "imported": true,
-  "number": 1151,
+  "number": 1155,
   "src": {
    "by": "hls02ns.antenaplay.ro",
    "kind": "public",
@@ -27052,7 +27132,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קולומביה",
   "iptv": "UMCTV.co",
   "imported": true,
-  "number": 1152,
+  "number": 1156,
   "src": {
    "by": "streaming5.globalhostla.com",
    "kind": "public",
@@ -27076,7 +27156,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קוסטה ריקה",
   "iptv": "CostaRicaChannel.cr",
   "imported": true,
-  "number": 1153,
+  "number": 1157,
   "src": {
    "by": "video0.rogohosting.com",
    "kind": "public",
@@ -27100,7 +27180,7 @@ window.CHANNELS_DATA = [
   "countryHe": "בולגריה",
   "iptv": "AgroTV.bg",
   "imported": true,
-  "number": 1154,
+  "number": 1158,
   "src": {
    "by": "restr2.bgtv.bg",
    "kind": "public",
@@ -27124,7 +27204,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "DuckHuntingTV.us",
   "imported": true,
-  "number": 1155,
+  "number": 1159,
   "src": {
    "by": "main.duckhunting.playout.vju.tv",
    "kind": "public",
@@ -27148,7 +27228,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רוסיה",
   "iptv": "Dikayarybalka.ru",
   "imported": true,
-  "number": 1156,
+  "number": 1160,
   "src": {
    "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
    "kind": "restream",
@@ -27172,7 +27252,7 @@ window.CHANNELS_DATA = [
   "countryHe": "סין",
   "iptv": "GuangxiVarietyTravelChannel.cn",
   "imported": true,
-  "number": 1157,
+  "number": 1161,
   "src": {
    "by": "111.59.24.227",
    "kind": "public",
@@ -27196,7 +27276,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ברזיל",
   "iptv": "CanalRural.br",
   "imported": true,
-  "number": 1158,
+  "number": 1162,
   "src": {
    "by": "170.83.49.66",
    "kind": "public",
@@ -27220,7 +27300,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אוסטריה",
   "iptv": "SwamijiTVEuropean.at",
   "imported": true,
-  "number": 1159,
+  "number": 1163,
   "src": {
    "by": "stream.swamiji.tv",
    "kind": "public",
@@ -27244,7 +27324,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "OutdoorAmerica.us",
   "imported": true,
-  "number": 1160,
+  "number": 1164,
   "src": {
    "by": "d1e354daam8g5r.cloudfront.net",
    "kind": "public",
@@ -27268,7 +27348,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רוסיה",
   "iptv": "Moyastikhiya.ru",
   "imported": true,
-  "number": 1161,
+  "number": 1165,
   "src": {
    "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
    "kind": "restream",
@@ -27292,7 +27372,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ברזיל",
   "iptv": "TVParanaTurismo.br",
   "imported": true,
-  "number": 1162,
+  "number": 1166,
   "src": {
    "by": "200.189.113.201",
    "kind": "public",
@@ -27316,7 +27396,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אוסטריה",
   "iptv": "SchladmingDachsteinTV.at",
   "imported": true,
-  "number": 1163,
+  "number": 1167,
   "src": {
    "by": "m317.video-stream-hosting.de",
    "kind": "public",
@@ -27340,7 +27420,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "PoconoTelevisionNetwork.us",
   "imported": true,
-  "number": 1164,
+  "number": 1168,
   "src": {
    "by": "dfoiz3dv1euv7.cloudfront.net",
    "kind": "public",
@@ -27364,7 +27444,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רוסיה",
   "iptv": "RTGTV.ru",
   "imported": true,
-  "number": 1165,
+  "number": 1169,
   "src": {
    "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
    "kind": "restream",
@@ -27388,7 +27468,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "PursuitUP.us",
   "imported": true,
-  "number": 1166,
+  "number": 1170,
   "src": {
    "by": "d1p1siomv3cm7b.cloudfront.net",
    "kind": "public",
@@ -27412,7 +27492,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רוסיה",
   "iptv": "Rybolov.ru",
   "imported": true,
-  "number": 1167,
+  "number": 1171,
   "src": {
    "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
    "kind": "restream",
@@ -27436,7 +27516,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "BeachTVFloridaAlabama.us",
   "imported": true,
-  "number": 1168,
+  "number": 1172,
   "src": {
    "by": "5ed325193d4e1.streamlock.net",
    "kind": "public",
@@ -27460,7 +27540,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רוסיה",
   "iptv": "Vkus.ru",
   "imported": true,
-  "number": 1169,
+  "number": 1173,
   "src": {
    "by": "178.134.1.158",
    "kind": "public",
@@ -27484,7 +27564,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "BeachTVKeyWestFloridaKeys.us",
   "imported": true,
-  "number": 1170,
+  "number": 1174,
   "src": {
    "by": "5ed325193d4e1.streamlock.net",
    "kind": "public",
@@ -27503,7 +27583,7 @@ window.CHANNELS_DATA = [
   "logo": "",
   "badge": "HD",
   "desc": "מדע, טכנולוגיה, ארכיאולוגיה וגילויים היסטוריים",
-  "number": 1171,
+  "number": 1175,
   "lang": "ru",
   "iptv": "vijuExplore.ru",
   "src": {
@@ -27529,7 +27609,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "BUTV10.us",
   "imported": true,
-  "number": 1172,
+  "number": 1176,
   "src": {
    "by": "cdnapisec.kaltura.com",
    "kind": "public",
@@ -27553,7 +27633,7 @@ window.CHANNELS_DATA = [
   "countryHe": "בריטניה",
   "iptv": "AlHiwarTV.uk",
   "imported": true,
-  "number": 1173,
+  "number": 1177,
   "src": {
    "by": "mn-nl.mncdn.com",
    "kind": "public",
@@ -27577,7 +27657,7 @@ window.CHANNELS_DATA = [
   "countryHe": "צרפת",
   "iptv": "PersianaMedical.fr",
   "imported": true,
-  "number": 1174,
+  "number": 1178,
   "src": {
    "by": "phd2hls.persiana.live",
    "kind": "public",
@@ -27601,7 +27681,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "NRWision.de",
   "imported": true,
-  "number": 1175,
+  "number": 1179,
   "src": {
    "by": "fms.nrwision.de",
    "kind": "public",
@@ -27625,7 +27705,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ספרד",
   "iptv": "PlatziTV.es",
   "imported": true,
-  "number": 1176,
+  "number": 1180,
   "src": {
    "by": "mdstrm.com",
    "kind": "public",
@@ -27649,7 +27729,7 @@ window.CHANNELS_DATA = [
   "countryHe": "איטליה",
   "iptv": "Telepace3.it",
   "imported": true,
-  "number": 1177,
+  "number": 1181,
   "src": {
    "by": "932y4273djv8-hls-live.mariatvcdn.it",
    "kind": "public",
@@ -27673,7 +27753,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רוסיה",
   "iptv": "scifi.ru",
   "imported": true,
-  "number": 1178,
+  "number": 1182,
   "src": {
    "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
    "kind": "restream",
@@ -27697,7 +27777,7 @@ window.CHANNELS_DATA = [
   "countryHe": "טורקיה",
   "iptv": "CiftciTV.tr",
   "imported": true,
-  "number": 1179,
+  "number": 1183,
   "src": {
    "by": "live.artidijitalmedya.com",
    "kind": "public",
@@ -27721,7 +27801,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הודו",
   "iptv": "DiscoveryScience.in",
   "imported": true,
-  "number": 1180,
+  "number": 1184,
   "src": {
    "by": "drk6xq0vhn.gpcdn.net",
    "kind": "public",
@@ -27745,7 +27825,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קוריאה הדרומית",
   "iptv": "OUN.kr",
   "imported": true,
-  "number": 1181,
+  "number": 1185,
   "src": {
    "by": "live.knou.ac.kr",
    "kind": "public",
@@ -27769,7 +27849,7 @@ window.CHANNELS_DATA = [
   "countryHe": "סין",
   "iptv": "CCTVWorldGeography.cn",
   "imported": true,
-  "number": 1182,
+  "number": 1186,
   "src": {
    "by": "38.75.136.137",
    "kind": "public",
@@ -27793,7 +27873,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ברזיל",
   "iptv": "TVUFOP.br",
   "imported": true,
-  "number": 1183,
+  "number": 1187,
   "src": {
    "by": "app.tvufop.com.br",
    "kind": "public",
@@ -27817,7 +27897,7 @@ window.CHANNELS_DATA = [
   "countryHe": "מקסיקו",
   "iptv": "TVBUAP.mx",
   "imported": true,
-  "number": 1184,
+  "number": 1188,
   "src": {
    "by": "tvenvivo.buap.mx",
    "kind": "public",
@@ -27841,7 +27921,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארגנטינה",
   "iptv": "CanalUniversidad.ar",
   "imported": true,
-  "number": 1185,
+  "number": 1189,
   "src": {
    "by": "videostream.shockmedia.com.ar",
    "kind": "public",
@@ -27865,7 +27945,7 @@ window.CHANNELS_DATA = [
   "countryHe": "צ׳ילה",
   "iptv": "UTalcaTV.cl",
   "imported": true,
-  "number": 1186,
+  "number": 1190,
   "src": {
    "by": "unlimited1-us.dps.live",
    "kind": "public",
@@ -27889,7 +27969,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קולומביה",
   "iptv": "Eduvision.co",
   "imported": true,
-  "number": 1187,
+  "number": 1191,
   "src": {
    "by": "stmv3.voxtvhd.com.br",
    "kind": "public",
@@ -27913,7 +27993,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אינדונזיה",
   "iptv": "TheIndonesiaChannel.id",
   "imported": true,
-  "number": 1188,
+  "number": 1192,
   "src": {
    "by": "restreamer.indonusa.id",
    "kind": "public",
@@ -27937,7 +28017,7 @@ window.CHANNELS_DATA = [
   "countryHe": "תאילנד",
   "iptv": "DLTV1.th",
   "imported": true,
-  "number": 1189,
+  "number": 1193,
   "src": {
    "by": "cdn-live.dltv.ac.th",
    "kind": "public",
@@ -27961,7 +28041,7 @@ window.CHANNELS_DATA = [
   "countryHe": "וייטנאם",
   "iptv": "CanThoTV2.vn",
   "imported": true,
-  "number": 1190,
+  "number": 1194,
   "src": {
    "by": "live.canthotv.vn",
    "kind": "public",
@@ -27985,7 +28065,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פקיסטן",
   "iptv": "PaighanTV.pk",
   "imported": true,
-  "number": 1191,
+  "number": 1195,
   "src": {
    "by": "cdn4.mjunoon.tv",
    "kind": "public",
@@ -28009,7 +28089,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קמבודיה",
   "iptv": "TVK2.kh",
   "imported": true,
-  "number": 1192,
+  "number": 1196,
   "src": {
    "by": "live.kh.malimarcdn.com",
    "kind": "public",
@@ -28033,7 +28113,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הונדורס",
   "iptv": "STVETelebasica.hn",
   "imported": true,
-  "number": 1193,
+  "number": 1197,
   "src": {
    "by": "streamingcws30.com",
    "kind": "public",
@@ -28057,7 +28137,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פרגוואי",
   "iptv": "CosmosTV.py",
   "imported": true,
-  "number": 1194,
+  "number": 1198,
   "src": {
    "by": "video.hostingcaaguazu.com",
    "kind": "public",
@@ -28081,7 +28161,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אקוודור",
   "iptv": "EducaTV.ec",
   "imported": true,
-  "number": 1195,
+  "number": 1199,
   "src": {
    "by": "avm.ecuamedia.net",
    "kind": "public",
@@ -28105,7 +28185,7 @@ window.CHANNELS_DATA = [
   "countryHe": "בוליביה",
   "iptv": "RadioUniversitariaSanAndres.bo",
   "imported": true,
-  "number": 1196,
+  "number": 1200,
   "src": {
    "by": "edge.enhdtv.com",
    "kind": "public",
@@ -28130,7 +28210,7 @@ window.CHANNELS_DATA = [
   "iptv": "RyongnamsanTelevision.kp",
   "imported": true,
   "webOk": false,
-  "number": 1197,
+  "number": 1201,
   "src": {
    "by": "live.koryocdn.org",
    "kind": "public",
@@ -28154,7 +28234,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גואטמלה",
   "iptv": "TVMaya.gt",
   "imported": true,
-  "number": 1198,
+  "number": 1202,
   "src": {
    "by": "5ca9af4645e15.streamlock.net",
    "kind": "public",
@@ -28179,7 +28259,7 @@ window.CHANNELS_DATA = [
   "iptv": "Yaslyk.tm",
   "imported": true,
   "webOk": false,
-  "number": 1199,
+  "number": 1203,
   "src": {
    "by": "alpha.tv.online.tm",
    "kind": "public",
@@ -28203,7 +28283,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "Create.us",
   "imported": true,
-  "number": 1200,
+  "number": 1204,
   "src": {
    "by": "create.lls.pbs.org",
    "kind": "public",
@@ -28227,7 +28307,7 @@ window.CHANNELS_DATA = [
   "countryHe": "בריטניה",
   "iptv": "EnglishClubTV.uk",
   "imported": true,
-  "number": 1201,
+  "number": 1205,
   "src": {
    "by": "Cinerama.uz – ספק IPTV באוזבקיסטן",
    "kind": "restream",
@@ -28251,7 +28331,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "CuriosityChannel.de",
   "imported": true,
-  "number": 1202,
+  "number": 1206,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -28275,7 +28355,7 @@ window.CHANNELS_DATA = [
   "countryHe": "טורקיה",
   "iptv": "TRTEBA.tr",
   "imported": true,
-  "number": 1203,
+  "number": 1207,
   "src": {
    "by": "tv-e-okul01.medya.trt.com.tr",
    "kind": "public",
@@ -28299,7 +28379,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הודו",
   "iptv": "Gyandarshan.in",
   "imported": true,
-  "number": 1204,
+  "number": 1208,
   "src": {
    "by": "cdn.pishow.tv",
    "kind": "public",
@@ -28323,7 +28403,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קוריאה הדרומית",
   "iptv": "NBS.kr",
   "imported": true,
-  "number": 1205,
+  "number": 1209,
   "src": {
    "by": "media.joycorp.co.kr",
    "kind": "public",
@@ -28347,7 +28427,7 @@ window.CHANNELS_DATA = [
   "countryHe": "סין",
   "iptv": "CCTV10.cn",
   "imported": true,
-  "number": 1206,
+  "number": 1210,
   "src": {
    "by": "74.91.26.218",
    "kind": "public",
@@ -28371,7 +28451,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ברזיל",
   "iptv": "TVERS.br",
   "imported": true,
-  "number": 1207,
+  "number": 1211,
   "src": {
    "by": "streaming.procergs.com.br",
    "kind": "public",
@@ -28395,7 +28475,7 @@ window.CHANNELS_DATA = [
   "countryHe": "מקסיקו",
   "iptv": "TVUG.mx",
   "imported": true,
-  "number": 1208,
+  "number": 1212,
   "src": {
    "by": "5ca3e84a76d30.streamlock.net",
    "kind": "public",
@@ -28419,7 +28499,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הונגריה",
   "iptv": "LiceumTV.hu",
   "imported": true,
-  "number": 1209,
+  "number": 1213,
   "src": {
    "by": "193.225.32.62",
    "kind": "public",
@@ -28443,7 +28523,7 @@ window.CHANNELS_DATA = [
   "countryHe": "צ׳ילה",
   "iptv": "TVUsach.cl",
   "imported": true,
-  "number": 1210,
+  "number": 1214,
   "src": {
    "by": "stv4.janus.cl",
    "kind": "public",
@@ -28467,7 +28547,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קולומביה",
   "iptv": "Zoom.co",
   "imported": true,
-  "number": 1211,
+  "number": 1215,
   "src": {
    "by": "138.121.15.230",
    "kind": "public",
@@ -28491,7 +28571,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אינדונזיה",
   "iptv": "RinjaniTV.id",
   "imported": true,
-  "number": 1212,
+  "number": 1216,
   "src": {
    "by": "rinjanitv.cloud",
    "kind": "public",
@@ -28515,7 +28595,7 @@ window.CHANNELS_DATA = [
   "countryHe": "תאילנד",
   "iptv": "DLTV10.th",
   "imported": true,
-  "number": 1213,
+  "number": 1217,
   "src": {
    "by": "cdn-live.dltv.ac.th",
    "kind": "public",
@@ -28539,7 +28619,7 @@ window.CHANNELS_DATA = [
   "countryHe": "וייטנאם",
   "iptv": "HTV4.vn",
   "imported": true,
-  "number": 1214,
+  "number": 1218,
   "src": {
    "by": "freem3u.xyz",
    "kind": "public",
@@ -28563,7 +28643,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קמבודיה",
   "iptv": "WikiTV.kh",
   "imported": true,
-  "number": 1215,
+  "number": 1219,
   "src": {
    "by": "stream.wikitv.asia",
    "kind": "public",
@@ -28587,7 +28667,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הונדורס",
   "iptv": "CampusTV.hn",
   "imported": true,
-  "number": 1216,
+  "number": 1220,
   "src": {
    "by": "5e85d90130e77.streamlock.net",
    "kind": "public",
@@ -28611,7 +28691,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פרגוואי",
   "iptv": "Educanal.py",
   "imported": true,
-  "number": 1217,
+  "number": 1221,
   "src": {
    "by": "190.128.214.97",
    "kind": "public",
@@ -28635,7 +28715,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אקוודור",
   "iptv": "UNIANDESTV.ec",
   "imported": true,
-  "number": 1218,
+  "number": 1222,
   "src": {
    "by": "video.compuwebecuador.com",
    "kind": "public",
@@ -28659,7 +28739,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "DKN.us",
   "imported": true,
-  "number": 1219,
+  "number": 1223,
   "src": {
    "by": "video.oct.dc.gov",
    "kind": "public",
@@ -28684,7 +28764,7 @@ window.CHANNELS_DATA = [
   "iptv": "Wonder.uk",
   "imported": true,
   "webOk": false,
-  "number": 1220,
+  "number": 1224,
   "src": {
    "by": "lds-wonder-rakuten.amagi.tv",
    "kind": "public",
@@ -28708,7 +28788,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "iSTUFF.de",
   "imported": true,
-  "number": 1221,
+  "number": 1225,
   "src": {
    "by": "relay2.cdn.fem-net.de",
    "kind": "public",
@@ -28732,7 +28812,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הודו",
   "iptv": "KiteVicters.in",
   "imported": true,
-  "number": 1222,
+  "number": 1226,
   "src": {
    "by": "932y4x26ljv8-hls-live.5centscdn.com",
    "kind": "public",
@@ -28756,7 +28836,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קוריאה הדרומית",
   "iptv": "EBSEnglish.kr",
   "imported": true,
-  "number": 1223,
+  "number": 1227,
   "src": {
    "by": "ebsonair.ebs.co.kr",
    "kind": "public",
@@ -28780,7 +28860,7 @@ window.CHANNELS_DATA = [
   "countryHe": "סין",
   "iptv": "CCTV7.cn",
   "imported": true,
-  "number": 1224,
+  "number": 1228,
   "src": {
    "by": "74.91.26.218",
    "kind": "public",
@@ -28804,7 +28884,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ברזיל",
   "iptv": "CanalEducacao.br",
   "imported": true,
-  "number": 1225,
+  "number": 1229,
   "src": {
    "by": "canaleducacao-stream.ebc.com.br",
    "kind": "public",
@@ -28828,7 +28908,7 @@ window.CHANNELS_DATA = [
   "countryHe": "מקסיקו",
   "iptv": "UAATV.mx",
   "imported": true,
-  "number": 1226,
+  "number": 1230,
   "src": {
    "by": "5fe2654d6127d.streamlock.net",
    "kind": "public",
@@ -28852,7 +28932,7 @@ window.CHANNELS_DATA = [
   "countryHe": "צ׳ילה",
   "iptv": "GVision.cl",
   "imported": true,
-  "number": 1227,
+  "number": 1231,
   "src": {
    "by": "videostream.chileservidores.com",
    "kind": "public",
@@ -28876,7 +28956,7 @@ window.CHANNELS_DATA = [
   "countryHe": "תאילנד",
   "iptv": "DLTV11.th",
   "imported": true,
-  "number": 1228,
+  "number": 1232,
   "src": {
    "by": "cdn-live.dltv.ac.th",
    "kind": "public",
@@ -28900,7 +28980,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קמבודיה",
   "iptv": "OneTVESchoolCambodia.kh",
   "imported": true,
-  "number": 1229,
+  "number": 1233,
   "src": {
    "by": "49.156.33.114",
    "kind": "public",
@@ -28924,7 +29004,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "LA36.us",
   "imported": true,
-  "number": 1230,
+  "number": 1234,
   "src": {
    "by": "reflect-channel36-la.cablecast.tv",
    "kind": "public",
@@ -28948,7 +29028,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הודו",
   "iptv": "VyasChannel.in",
   "imported": true,
-  "number": 1231,
+  "number": 1235,
   "src": {
    "by": "playhls.media.nic.in",
    "kind": "public",
@@ -28972,7 +29052,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קוריאה הדרומית",
   "iptv": "EBSPlus2.kr",
   "imported": true,
-  "number": 1232,
+  "number": 1236,
   "src": {
    "by": "ebsonair.ebs.co.kr",
    "kind": "public",
@@ -28996,7 +29076,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ברזיל",
   "iptv": "ISTV.br",
   "imported": true,
-  "number": 1233,
+  "number": 1237,
   "src": {
    "by": "stmv1.srvstm.com",
    "kind": "public",
@@ -29020,7 +29100,7 @@ window.CHANNELS_DATA = [
   "countryHe": "מקסיקו",
   "iptv": "ILCECanal15SummaSaberes.mx",
   "imported": true,
-  "number": 1234,
+  "number": 1238,
   "src": {
    "by": "live-ilce.ovp-vivaro.digital",
    "kind": "public",
@@ -29044,7 +29124,7 @@ window.CHANNELS_DATA = [
   "countryHe": "צ׳ילה",
   "iptv": "UMAGTV.cl",
   "imported": true,
-  "number": 1235,
+  "number": 1239,
   "src": {
    "by": "tls-cl.cdnz.cl",
    "kind": "public",
@@ -29068,7 +29148,7 @@ window.CHANNELS_DATA = [
   "countryHe": "תאילנד",
   "iptv": "DLTV12.th",
   "imported": true,
-  "number": 1236,
+  "number": 1240,
   "src": {
    "by": "cdn-live.dltv.ac.th",
    "kind": "public",
@@ -29092,7 +29172,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "TUTV.us",
   "imported": true,
-  "number": 1237,
+  "number": 1241,
   "src": {
    "by": "livestream.telvue.com",
    "kind": "public",
@@ -29116,7 +29196,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קוריאה הדרומית",
   "iptv": "EBS1TV.kr",
   "imported": true,
-  "number": 1238,
+  "number": 1242,
   "src": {
    "by": "ebsonair.ebs.co.kr",
    "kind": "public",
@@ -29140,7 +29220,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ברזיל",
   "iptv": "UnisulTV.br",
   "imported": true,
-  "number": 1239,
+  "number": 1243,
   "src": {
    "by": "sitetv.brasilstream.com.br",
    "kind": "public",
@@ -29164,7 +29244,7 @@ window.CHANNELS_DATA = [
   "countryHe": "מקסיקו",
   "iptv": "JaliscoTV.mx",
   "imported": true,
-  "number": 1240,
+  "number": 1244,
   "src": {
    "by": "video0.rogohosting.com",
    "kind": "public",
@@ -29188,7 +29268,7 @@ window.CHANNELS_DATA = [
   "countryHe": "תאילנד",
   "iptv": "DLTV13.th",
   "imported": true,
-  "number": 1241,
+  "number": 1245,
   "src": {
    "by": "cdn-live.dltv.ac.th",
    "kind": "public",
@@ -29207,7 +29287,7 @@ window.CHANNELS_DATA = [
   "logo": "",
   "badge": "SD",
   "desc": "תוכניות בישול, לייף סטייל, עיצוב ואירוח",
-  "number": 1242,
+  "number": 1246,
   "lang": "he",
   "iptv": "GoodLife.il",
   "src": {
@@ -29233,7 +29313,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "AfroLandTV.us",
   "imported": true,
-  "number": 1243,
+  "number": 1247,
   "src": {
    "by": "alt-al.otteravision.com",
    "kind": "public",
@@ -29257,7 +29337,7 @@ window.CHANNELS_DATA = [
   "countryHe": "בריטניה",
   "iptv": "TheGrahamNortonShow.uk",
   "imported": true,
-  "number": 1244,
+  "number": 1248,
   "src": {
    "by": "amg00654-itv-amg00654c35-rakuten-gb-7598.playouts.now.amagi.tv",
    "kind": "public",
@@ -29281,7 +29361,7 @@ window.CHANNELS_DATA = [
   "countryHe": "צרפת",
   "iptv": "MonteCarloDigitalTelevision.fr",
   "imported": true,
-  "number": 1245,
+  "number": 1249,
   "src": {
    "by": "fl718492-exthls-p1.flovp.com",
    "kind": "public",
@@ -29305,7 +29385,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "AutenticTravel.de",
   "imported": true,
-  "number": 1246,
+  "number": 1250,
   "src": {
    "by": "cb0c87cc605942ff9766a4e6744bbadc.mediatailor.us-east-1.amazonaws.com",
    "kind": "public",
@@ -29329,7 +29409,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ספרד",
   "iptv": "HamaikaTelebista.es",
   "imported": true,
-  "number": 1247,
+  "number": 1251,
   "src": {
    "by": "cdn3.wowza.com",
    "kind": "public",
@@ -29353,7 +29433,7 @@ window.CHANNELS_DATA = [
   "countryHe": "איטליה",
   "iptv": "7Gold.it",
   "imported": true,
-  "number": 1248,
+  "number": 1252,
   "src": {
    "by": "streamcdnr6-dddfac816632463dac50b21109dc1bb3.msvdn.net",
    "kind": "public",
@@ -29377,7 +29457,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רוסיה",
   "iptv": "Ministerstvoidey.ru",
   "imported": true,
-  "number": 1249,
+  "number": 1253,
   "src": {
    "by": "live-minidey.cdnvideo.ru",
    "kind": "public",
@@ -29401,7 +29481,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אוקראינה",
   "iptv": "K2.ua",
   "imported": true,
-  "number": 1250,
+  "number": 1254,
   "src": {
    "by": "live-tv.cloud – ספק IPTV אוקראיני",
    "kind": "restream",
@@ -29425,7 +29505,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קנדה",
   "iptv": "EETTV.ca",
   "imported": true,
-  "number": 1251,
+  "number": 1255,
   "src": {
    "by": "eu.streamjo.com",
    "kind": "public",
@@ -29449,7 +29529,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אוסטרליה",
   "iptv": "10Bold.au",
   "imported": true,
-  "number": 1252,
+  "number": 1256,
   "src": {
    "by": "dce3793146fef017.mediapackage.us-west-2.amazonaws.com",
    "kind": "public",
@@ -29473,7 +29553,7 @@ window.CHANNELS_DATA = [
   "countryHe": "טורקיה",
   "iptv": "EdessaTV.tr",
   "imported": true,
-  "number": 1253,
+  "number": 1257,
   "src": {
    "by": "canli.edessatv.com",
    "kind": "public",
@@ -29497,7 +29577,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הודו",
   "iptv": "Asianet.in",
   "imported": true,
-  "number": 1254,
+  "number": 1258,
   "src": {
    "by": "da86m1sqpm3o0.cloudfront.net",
    "kind": "public",
@@ -29521,7 +29601,7 @@ window.CHANNELS_DATA = [
   "countryHe": "יפן",
   "iptv": "NHKWorldPremium.jp",
   "imported": true,
-  "number": 1255,
+  "number": 1259,
   "src": {
    "by": "media-tyo.hls.nhkworld.jp",
    "kind": "public",
@@ -29545,7 +29625,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קוריאה הדרומית",
   "iptv": "NHTV.kr",
   "imported": true,
-  "number": 1256,
+  "number": 1260,
   "src": {
    "by": "nonghyup.flive.skcdn.com",
    "kind": "public",
@@ -29569,7 +29649,7 @@ window.CHANNELS_DATA = [
   "countryHe": "סין",
   "iptv": "LanzhouCultureTourismChannel.cn",
   "imported": true,
-  "number": 1257,
+  "number": 1261,
   "src": {
    "by": "liveplus.lzr.com.cn",
    "kind": "public",
@@ -29593,7 +29673,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ברזיל",
   "iptv": "RedeNGT.br",
   "imported": true,
-  "number": 1258,
+  "number": 1262,
   "src": {
    "by": "isaocorp.cloudecast.com",
    "kind": "public",
@@ -29617,7 +29697,7 @@ window.CHANNELS_DATA = [
   "countryHe": "מקסיקו",
   "iptv": "AztecaInternacional.mx",
   "imported": true,
-  "number": 1259,
+  "number": 1263,
   "src": {
    "by": "azt-mun.otteravision.com",
    "kind": "public",
@@ -29641,7 +29721,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארגנטינה",
   "iptv": "MetroTV.ar",
   "imported": true,
-  "number": 1260,
+  "number": 1264,
   "src": {
    "by": "streamtv12.ddns.net",
    "kind": "public",
@@ -29665,7 +29745,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פורטוגל",
   "iptv": "TVIReality.pt",
   "imported": true,
-  "number": 1261,
+  "number": 1265,
   "src": {
    "by": "raw.githubusercontent.com",
    "kind": "public",
@@ -29689,7 +29769,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הולנד",
   "iptv": "MaLive.nl",
   "imported": true,
-  "number": 1262,
+  "number": 1266,
   "src": {
    "by": "live.salto.nl",
    "kind": "public",
@@ -29713,7 +29793,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שווייץ",
   "iptv": "Carac1.ch",
   "imported": true,
-  "number": 1263,
+  "number": 1267,
   "src": {
    "by": "edge13.vedge.infomaniak.com",
    "kind": "public",
@@ -29737,7 +29817,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פולין",
   "iptv": "BialogardzkaTelewizjaKablowa.pl",
   "imported": true,
-  "number": 1264,
+  "number": 1268,
   "src": {
    "by": "bsmbialogard.pl",
    "kind": "public",
@@ -29761,7 +29841,7 @@ window.CHANNELS_DATA = [
   "countryHe": "יוון",
   "iptv": "NetmaxTV.gr",
   "imported": true,
-  "number": 1265,
+  "number": 1269,
   "src": {
    "by": "es1.crystalweb.net",
    "kind": "public",
@@ -29785,7 +29865,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שוודיה",
   "iptv": "MTVCatfish.se",
   "imported": true,
-  "number": 1266,
+  "number": 1270,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -29809,7 +29889,7 @@ window.CHANNELS_DATA = [
   "countryHe": "נורווגיה",
   "iptv": "CanalMotor.no",
   "imported": true,
-  "number": 1267,
+  "number": 1271,
   "src": {
    "by": "digicom.hls.iptvdc.com",
    "kind": "public",
@@ -29833,7 +29913,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פינלנד",
   "iptv": "Jim.fi",
   "imported": true,
-  "number": 1268,
+  "number": 1272,
   "src": {
    "by": "live-fi.tvkaista.net",
    "kind": "public",
@@ -29857,7 +29937,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רומניה",
   "iptv": "AntenaMonden.ro",
   "imported": true,
-  "number": 1269,
+  "number": 1273,
   "src": {
    "by": "stream1.antenaplay.ro",
    "kind": "public",
@@ -29881,7 +29961,7 @@ window.CHANNELS_DATA = [
   "countryHe": "צ׳ילה",
   "iptv": "SuyaiTV.cl",
   "imported": true,
-  "number": 1270,
+  "number": 1274,
   "src": {
    "by": "trun.suyaitv.cl",
    "kind": "public",
@@ -29905,7 +29985,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קולומביה",
   "iptv": "RCNMas.co",
   "imported": true,
-  "number": 1271,
+  "number": 1275,
   "src": {
    "by": "rcntv-rcnmas-1-us.roku.wurl.tv",
    "kind": "public",
@@ -29929,7 +30009,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פרו",
   "iptv": "AsiriTV.pe",
   "imported": true,
-  "number": 1272,
+  "number": 1276,
   "src": {
    "by": "video2.lhdserver.es",
    "kind": "public",
@@ -29953,7 +30033,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אינדונזיה",
   "iptv": "SaliraTV.id",
   "imported": true,
-  "number": 1273,
+  "number": 1277,
   "src": {
    "by": "live.salira.tv",
    "kind": "public",
@@ -29977,7 +30057,7 @@ window.CHANNELS_DATA = [
   "countryHe": "תאילנד",
   "iptv": "GoodIdeaTV.th",
   "imported": true,
-  "number": 1274,
+  "number": 1278,
   "src": {
    "by": "stream1.ai-net.net",
    "kind": "public",
@@ -30001,7 +30081,7 @@ window.CHANNELS_DATA = [
   "countryHe": "וייטנאם",
   "iptv": "ONVieGiaiTri.vn",
   "imported": true,
-  "number": 1275,
+  "number": 1279,
   "src": {
    "by": "freem3u.xyz",
    "kind": "public",
@@ -30025,7 +30105,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פקיסטן",
   "iptv": "HumTV.pk",
   "imported": true,
-  "number": 1276,
+  "number": 1280,
   "src": {
    "by": "g4wlkwx8l23a-hls-live.5centscdn.com",
    "kind": "public",
@@ -30049,7 +30129,7 @@ window.CHANNELS_DATA = [
   "countryHe": "איראן",
   "iptv": "247BoxTV.ir",
   "imported": true,
-  "number": 1277,
+  "number": 1281,
   "src": {
    "by": "hls.247box.live",
    "kind": "public",
@@ -30073,7 +30153,7 @@ window.CHANNELS_DATA = [
   "countryHe": "מרוקו",
   "iptv": "StoryChannelTV.ma",
   "imported": true,
-  "number": 1278,
+  "number": 1282,
   "src": {
    "by": "136044159.r.cdnsun.net",
    "kind": "public",
@@ -30097,7 +30177,7 @@ window.CHANNELS_DATA = [
   "countryHe": "דרום אפריקה",
   "iptv": "1KZNTV.za",
   "imported": true,
-  "number": 1279,
+  "number": 1283,
   "src": {
    "by": "cdn.freevisiontv.co.za",
    "kind": "public",
@@ -30121,7 +30201,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ניגריה",
   "iptv": "QausainTV.ng",
   "imported": true,
-  "number": 1280,
+  "number": 1284,
   "src": {
    "by": "acasmedia3.acangroup.org",
    "kind": "public",
@@ -30145,7 +30225,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הרפובליקה הדומיניקנית",
   "iptv": "Bellavision.do",
   "imported": true,
-  "number": 1281,
+  "number": 1285,
   "src": {
    "by": "fox.hostlagarto.com",
    "kind": "public",
@@ -30169,7 +30249,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ונצואלה",
   "iptv": "AguacateTV.ve",
   "imported": true,
-  "number": 1282,
+  "number": 1286,
   "src": {
    "by": "stream.aguacatetv.com",
    "kind": "public",
@@ -30193,7 +30273,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אקוודור",
   "iptv": "LaNuevaRadioTV977.ec",
   "imported": true,
-  "number": 1283,
+  "number": 1287,
   "src": {
    "by": "sv72.ecuaradiotv.net",
    "kind": "public",
@@ -30217,7 +30297,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הונג קונג (אזור מנהלי מיוחד של סין)",
   "iptv": "KIX.hk",
   "imported": true,
-  "number": 1284,
+  "number": 1288,
   "src": {
    "by": "freem3u.xyz",
    "kind": "public",
@@ -30241,7 +30321,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קוסטה ריקה",
   "iptv": "OPA.cr",
   "imported": true,
-  "number": 1285,
+  "number": 1289,
   "src": {
    "by": "5fc584f3f19c9.streamlock.net",
    "kind": "public",
@@ -30265,7 +30345,7 @@ window.CHANNELS_DATA = [
   "countryHe": "עיראק",
   "iptv": "Kurdsat.iq",
   "imported": true,
-  "number": 1286,
+  "number": 1290,
   "src": {
    "by": "hlspackager.akamaized.net",
    "kind": "public",
@@ -30289,7 +30369,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פרגוואי",
   "iptv": "MiTV.py",
   "imported": true,
-  "number": 1287,
+  "number": 1291,
   "src": {
    "by": "rds3.desdeparaguay.net",
    "kind": "public",
@@ -30313,7 +30393,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הונדורס",
   "iptv": "EDNTV.hn",
   "imported": true,
-  "number": 1288,
+  "number": 1292,
   "src": {
    "by": "60417ddeaf0d9.streamlock.net",
    "kind": "public",
@@ -30337,7 +30417,7 @@ window.CHANNELS_DATA = [
   "countryHe": "בולגריה",
   "iptv": "CodeFashionTV.bg",
   "imported": true,
-  "number": 1289,
+  "number": 1293,
   "src": {
    "by": "cdn2.invivo.bg",
    "kind": "public",
@@ -30361,7 +30441,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אוגנדה",
   "iptv": "BTV.ug",
   "imported": true,
-  "number": 1290,
+  "number": 1294,
   "src": {
    "by": "streamfi-alphadgtl1.zettawiseroutes.com",
    "kind": "public",
@@ -30385,7 +30465,7 @@ window.CHANNELS_DATA = [
   "countryHe": "בלארוס",
   "iptv": "Belarus2.by",
   "imported": true,
-  "number": 1291,
+  "number": 1295,
   "src": {
    "by": "ngtrk.dc.beltelecom.by",
    "kind": "public",
@@ -30409,7 +30489,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אסטוניה",
   "iptv": "ETVPlus.ee",
   "imported": true,
-  "number": 1292,
+  "number": 1296,
   "src": {
    "by": "sb.err.ee",
    "kind": "public",
@@ -30433,7 +30513,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אוזבקיסטן",
   "iptv": "BIZTV.uz",
   "imported": true,
-  "number": 1293,
+  "number": 1297,
   "src": {
    "by": "fl.biztv.media",
    "kind": "public",
@@ -30457,7 +30537,7 @@ window.CHANNELS_DATA = [
   "countryHe": "סרי לנקה",
   "iptv": "ImaiTV.lk",
   "imported": true,
-  "number": 1294,
+  "number": 1298,
   "src": {
    "by": "live20.bozztv.com",
    "kind": "public",
@@ -30481,7 +30561,7 @@ window.CHANNELS_DATA = [
   "countryHe": "לאוס",
   "iptv": "NingTV.la",
   "imported": true,
-  "number": 1295,
+  "number": 1299,
   "src": {
    "by": "livefta.malimarcdn.com",
    "kind": "public",
@@ -30505,7 +30585,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קרואטיה",
   "iptv": "ShiftTV.hr",
   "imported": true,
-  "number": 1296,
+  "number": 1300,
   "src": {
    "by": "hls.shift.tv",
    "kind": "public",
@@ -30529,7 +30609,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רואנדה",
   "iptv": "KC2.rw",
   "imported": true,
-  "number": 1297,
+  "number": 1301,
   "src": {
    "by": "5c46fa289c89f.streamlock.net",
    "kind": "public",
@@ -30553,7 +30633,7 @@ window.CHANNELS_DATA = [
   "countryHe": "מלטה",
   "iptv": "MedTV.mt",
   "imported": true,
-  "number": 1298,
+  "number": 1302,
   "src": {
    "by": "med-tv-it.fast.rakuten.tv",
    "kind": "public",
@@ -30577,7 +30657,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גאנה",
   "iptv": "OTV.gh",
   "imported": true,
-  "number": 1299,
+  "number": 1303,
   "src": {
    "by": "5dcabf026b188.streamlock.net",
    "kind": "public",
@@ -30602,7 +30682,7 @@ window.CHANNELS_DATA = [
   "iptv": "RTNBDivertissement.bi",
   "imported": true,
   "webOk": false,
-  "number": 1300,
+  "number": 1304,
   "src": {
    "by": "tv2-stream.rtnb.bi",
    "kind": "public",
@@ -30626,7 +30706,7 @@ window.CHANNELS_DATA = [
   "countryHe": "מונקו",
   "iptv": "SuperyachtTV.mc",
   "imported": true,
-  "number": 1301,
+  "number": 1305,
   "src": {
    "by": "sy.wns.live",
    "kind": "public",
@@ -30650,7 +30730,7 @@ window.CHANNELS_DATA = [
   "countryHe": "סורינאם",
   "iptv": "TrishulBroadcastingNetwork.sr",
   "imported": true,
-  "number": 1302,
+  "number": 1306,
   "src": {
    "by": "live.suricloud.com",
    "kind": "public",
@@ -30674,7 +30754,7 @@ window.CHANNELS_DATA = [
   "countryHe": "כווית",
   "iptv": "KTVArabe.kw",
   "imported": true,
-  "number": 1303,
+  "number": 1307,
   "src": {
    "by": "kwtktvata.cdn.mangomolo.com",
    "kind": "public",
@@ -30698,7 +30778,7 @@ window.CHANNELS_DATA = [
   "countryHe": "עומאן",
   "iptv": "OmanTVCultural.om",
   "imported": true,
-  "number": 1304,
+  "number": 1308,
   "src": {
    "by": "partwota.cdn.mgmlcdn.com",
    "kind": "public",
@@ -30722,7 +30802,7 @@ window.CHANNELS_DATA = [
   "countryHe": "חוף השנהב",
   "iptv": "AfrocultureTV.ci",
   "imported": true,
-  "number": 1305,
+  "number": 1309,
   "src": {
    "by": "streamtv.cmediahosthosting.net",
    "kind": "public",
@@ -30746,7 +30826,7 @@ window.CHANNELS_DATA = [
   "countryHe": "מאלי",
   "iptv": "D3TV.ml",
   "imported": true,
-  "number": 1306,
+  "number": 1310,
   "src": {
    "by": "lbgo.bozztv.com",
    "kind": "public",
@@ -30770,7 +30850,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קונגו - קינשאסה",
   "iptv": "EVITV.cd",
   "imported": true,
-  "number": 1307,
+  "number": 1311,
   "src": {
    "by": "mistserver.evi-tv.com",
    "kind": "public",
@@ -30794,7 +30874,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קמרון",
   "iptv": "PLEXTV.cm",
   "imported": true,
-  "number": 1308,
+  "number": 1312,
   "src": {
    "by": "connectiktv.ddns.net",
    "kind": "public",
@@ -30818,7 +30898,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פוארטו ריקו",
   "iptv": "AmericaTeVe.pr",
   "imported": true,
-  "number": 1309,
+  "number": 1313,
   "src": {
    "by": "live.gideo.video",
    "kind": "public",
@@ -30842,7 +30922,7 @@ window.CHANNELS_DATA = [
   "countryHe": "סנט מארטן",
   "iptv": "TVCARiBLatino.sx",
   "imported": true,
-  "number": 1310,
+  "number": 1314,
   "src": {
    "by": "cdn.mycloudstream.io",
    "kind": "public",
@@ -30866,7 +30946,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אורוגוואי",
   "iptv": "UCL.uy",
   "imported": true,
-  "number": 1311,
+  "number": 1315,
   "src": {
    "by": "livedelta.cdn.antel.net.uy",
    "kind": "public",
@@ -30890,7 +30970,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קזחסטן",
   "iptv": "AbaiTV.kz",
   "imported": true,
-  "number": 1312,
+  "number": 1316,
   "src": {
    "by": "abaitv-stream.qazcdn.com",
    "kind": "public",
@@ -30914,7 +30994,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קפריסין",
   "iptv": "ANT1Cyprus.cy",
   "imported": true,
-  "number": 1313,
+  "number": 1317,
   "src": {
    "by": "l2.cloudskep.com",
    "kind": "public",
@@ -30938,7 +31018,7 @@ window.CHANNELS_DATA = [
   "countryHe": "האיים הקריביים ההולנדיים",
   "iptv": "Bonairetv.bq",
   "imported": true,
-  "number": 1314,
+  "number": 1318,
   "src": {
    "by": "media.streambrothers.com",
    "kind": "public",
@@ -30962,7 +31042,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קוראסאו",
   "iptv": "BonceTV.cw",
   "imported": true,
-  "number": 1315,
+  "number": 1319,
   "src": {
    "by": "seswa.bonce.tv",
    "kind": "public",
@@ -30986,7 +31066,7 @@ window.CHANNELS_DATA = [
   "countryHe": "לוקסמבורג",
   "iptv": "eldoTV.lu",
   "imported": true,
-  "number": 1316,
+  "number": 1320,
   "src": {
    "by": "stream.eldo.lu",
    "kind": "public",
@@ -31010,7 +31090,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ליטא",
   "iptv": "LietuvosRytasTV.lt",
   "imported": true,
-  "number": 1317,
+  "number": 1321,
   "src": {
    "by": "live.lietuvosryto.tv",
    "kind": "public",
@@ -31034,7 +31114,7 @@ window.CHANNELS_DATA = [
   "countryHe": "בנגלדש",
   "iptv": "MaasrangaTV.bd",
   "imported": true,
-  "number": 1318,
+  "number": 1322,
   "src": {
    "by": "tvsen5.aynaott.com",
    "kind": "public",
@@ -31059,7 +31139,7 @@ window.CHANNELS_DATA = [
   "iptv": "Miras.tm",
   "imported": true,
   "webOk": false,
-  "number": 1319,
+  "number": 1323,
   "src": {
    "by": "alpha.tv.online.tm",
    "kind": "public",
@@ -31083,7 +31163,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארובה",
   "iptv": "NosIslaTV.aw",
   "imported": true,
-  "number": 1320,
+  "number": 1324,
   "src": {
    "by": "cdn01.setar.aw",
    "kind": "public",
@@ -31107,7 +31187,7 @@ window.CHANNELS_DATA = [
   "countryHe": "נפאל",
   "iptv": "RayTVHD.np",
   "imported": true,
-  "number": 1321,
+  "number": 1325,
   "src": {
    "by": "streaming.tvnepal.com",
    "kind": "public",
@@ -31131,7 +31211,7 @@ window.CHANNELS_DATA = [
   "countryHe": "בורקינה פאסו",
   "iptv": "RTB3.bf",
   "imported": true,
-  "number": 1322,
+  "number": 1326,
   "src": {
    "by": "edge13.vedge.infomaniak.com",
    "kind": "public",
@@ -31155,7 +31235,7 @@ window.CHANNELS_DATA = [
   "countryHe": "טנזניה",
   "iptv": "TBC2.tz",
   "imported": true,
-  "number": 1323,
+  "number": 1327,
   "src": {
    "by": "stream-134630.castr.net",
    "kind": "public",
@@ -31179,7 +31259,7 @@ window.CHANNELS_DATA = [
   "countryHe": "סלובקיה",
   "iptv": "TVVita.sk",
   "imported": true,
-  "number": 1324,
+  "number": 1328,
   "src": {
    "by": "Antik Telecom (סלובקיה), נתיבי test",
    "kind": "restream",
@@ -31203,7 +31283,7 @@ window.CHANNELS_DATA = [
   "countryHe": "טייוואן",
   "iptv": "TVBSAsia.tw",
   "imported": true,
-  "number": 1325,
+  "number": 1329,
   "src": {
    "by": "38.64.72.148",
    "kind": "public",
@@ -31227,7 +31307,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "AMGTV.us",
   "imported": true,
-  "number": 1326,
+  "number": 1330,
   "src": {
    "by": "2-fss-2.streamhoster.com",
    "kind": "public",
@@ -31251,7 +31331,7 @@ window.CHANNELS_DATA = [
   "countryHe": "בריטניה",
   "iptv": "HobbyMaker.uk",
   "imported": true,
-  "number": 1327,
+  "number": 1331,
   "src": {
    "by": "lo3.gemporia.com",
    "kind": "public",
@@ -31275,7 +31355,7 @@ window.CHANNELS_DATA = [
   "countryHe": "צרפת",
   "iptv": "FashionTVParisLOriginal.fr",
   "imported": true,
-  "number": 1328,
+  "number": 1332,
   "src": {
    "by": "edge-fast3.evrideo.tv",
    "kind": "public",
@@ -31299,7 +31379,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "Motorvision.de",
   "imported": true,
-  "number": 1329,
+  "number": 1333,
   "src": {
    "by": "mvg-mv-xumo.otteravision.com",
    "kind": "public",
@@ -31323,7 +31403,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ספרד",
   "iptv": "Historia.es",
   "imported": true,
-  "number": 1330,
+  "number": 1334,
   "src": {
    "by": "d1k3vzh2ivy22k.cloudfront.net",
    "kind": "public",
@@ -31347,7 +31427,7 @@ window.CHANNELS_DATA = [
   "countryHe": "איטליה",
   "iptv": "DiscoveryChannel.it",
   "imported": true,
-  "number": 1331,
+  "number": 1335,
   "src": {
    "by": "streaming.aurora.enhanced.live",
    "kind": "public",
@@ -31371,7 +31451,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רוסיה",
   "iptv": "RussiaK.ru",
   "imported": true,
-  "number": 1332,
+  "number": 1336,
   "src": {
    "by": "Smotrim (VGTRK) – הבעלים של קרוסלה",
    "kind": "official",
@@ -31395,7 +31475,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אוקראינה",
   "iptv": "366TV.ua",
   "imported": true,
-  "number": 1333,
+  "number": 1337,
   "src": {
    "by": "dash2.antik.sk",
    "kind": "public",
@@ -31419,7 +31499,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קנדה",
   "iptv": "ZenLIFEbyStingray.ca",
   "imported": true,
-  "number": 1334,
+  "number": 1338,
   "src": {
    "by": "lotus.stingray.com",
    "kind": "public",
@@ -31443,7 +31523,7 @@ window.CHANNELS_DATA = [
   "countryHe": "טורקיה",
   "iptv": "FortunaTV.tr",
   "imported": true,
-  "number": 1335,
+  "number": 1339,
   "src": {
    "by": "edge.taksimbilisim.com",
    "kind": "public",
@@ -31467,7 +31547,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הודו",
   "iptv": "ColorsKannada.in",
   "imported": true,
-  "number": 1336,
+  "number": 1340,
   "src": {
    "by": "da86m1sqpm3o0.cloudfront.net",
    "kind": "public",
@@ -31491,7 +31571,7 @@ window.CHANNELS_DATA = [
   "countryHe": "סין",
   "iptv": "CCTVHealth.cn",
   "imported": true,
-  "number": 1337,
+  "number": 1341,
   "src": {
    "by": "38.75.136.137",
    "kind": "public",
@@ -31515,7 +31595,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ברזיל",
   "iptv": "ConectaMaisTV.br",
   "imported": true,
-  "number": 1338,
+  "number": 1342,
   "src": {
    "by": "adylnet.streampool.net",
    "kind": "public",
@@ -31539,7 +31619,7 @@ window.CHANNELS_DATA = [
   "countryHe": "מקסיקו",
   "iptv": "Capital21.mx",
   "imported": true,
-  "number": 1339,
+  "number": 1343,
   "src": {
    "by": "video.cdmx.gob.mx",
    "kind": "public",
@@ -31563,7 +31643,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארגנטינה",
   "iptv": "PowerMaxRadioTV.ar",
   "imported": true,
-  "number": 1340,
+  "number": 1344,
   "src": {
    "by": "videostream.shockmedia.com.ar",
    "kind": "public",
@@ -31587,7 +31667,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הולנד",
   "iptv": "SBS6Classics.nl",
   "imported": true,
-  "number": 1341,
+  "number": 1345,
   "src": {
    "by": "sbs6classic.prd1.talpatvcdn.nl",
    "kind": "public",
@@ -31611,7 +31691,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שווייץ",
   "iptv": "Carac2.ch",
   "imported": true,
-  "number": 1342,
+  "number": 1346,
   "src": {
    "by": "onefmhd.vedge.infomaniak.com",
    "kind": "public",
@@ -31635,7 +31715,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פולין",
   "iptv": "RadiowaCzworka.pl",
   "imported": true,
-  "number": 1343,
+  "number": 1347,
   "src": {
    "by": "stream14.polskieradio.pl",
    "kind": "public",
@@ -31659,7 +31739,7 @@ window.CHANNELS_DATA = [
   "countryHe": "יוון",
   "iptv": "StarChannelInternational.gr",
   "imported": true,
-  "number": 1344,
+  "number": 1348,
   "src": {
    "by": "livestar.siliconweb.com",
    "kind": "public",
@@ -31683,7 +31763,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שוודיה",
   "iptv": "MTVDating.se",
   "imported": true,
-  "number": 1345,
+  "number": 1349,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -31707,7 +31787,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פינלנד",
   "iptv": "Liv.fi",
   "imported": true,
-  "number": 1346,
+  "number": 1350,
   "src": {
    "by": "live-fi.tvkaista.net",
    "kind": "public",
@@ -31731,7 +31811,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רומניה",
   "iptv": "TVRCultural.ro",
   "imported": true,
-  "number": 1347,
+  "number": 1351,
   "src": {
    "by": "tvr-cultural.lg.mncdn.com",
    "kind": "public",
@@ -31755,7 +31835,7 @@ window.CHANNELS_DATA = [
   "countryHe": "צ׳ילה",
   "iptv": "CanalChilote.cl",
   "imported": true,
-  "number": 1348,
+  "number": 1352,
   "src": {
    "by": "videostream.chileservidores.com",
    "kind": "public",
@@ -31779,7 +31859,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קולומביה",
   "iptv": "RCNNovelas.co",
   "imported": true,
-  "number": 1349,
+  "number": 1353,
   "src": {
    "by": "cdnlive.klicgo.net",
    "kind": "public",
@@ -31803,7 +31883,7 @@ window.CHANNELS_DATA = [
   "countryHe": "וייטנאם",
   "iptv": "ONLife.vn",
   "imported": true,
-  "number": 1350,
+  "number": 1354,
   "src": {
    "by": "freem3u.xyz",
    "kind": "public",
@@ -31827,7 +31907,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פקיסטן",
   "iptv": "APlusTV.pk",
   "imported": true,
-  "number": 1351,
+  "number": 1355,
   "src": {
    "by": "cdn4.mjunoon.tv",
    "kind": "public",
@@ -31851,7 +31931,7 @@ window.CHANNELS_DATA = [
   "countryHe": "איראן",
   "iptv": "OXIRTV.ir",
   "imported": true,
-  "number": 1352,
+  "number": 1356,
   "src": {
    "by": "hls.oxir.live",
    "kind": "public",
@@ -31875,7 +31955,7 @@ window.CHANNELS_DATA = [
   "countryHe": "דרום אפריקה",
   "iptv": "SowetoTV.za",
   "imported": true,
-  "number": 1353,
+  "number": 1357,
   "src": {
    "by": "cdn.freevisiontv.co.za",
    "kind": "public",
@@ -31899,7 +31979,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ניגריה",
   "iptv": "SuperscreenTV.ng",
   "imported": true,
-  "number": 1354,
+  "number": 1358,
   "src": {
    "by": "video1.getstreamhosting.com",
    "kind": "public",
@@ -31923,7 +32003,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הרפובליקה הדומיניקנית",
   "iptv": "Canal17RTVD.do",
   "imported": true,
-  "number": 1355,
+  "number": 1359,
   "src": {
    "by": "cdn.protvradiostream.com",
    "kind": "public",
@@ -31947,7 +32027,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ונצואלה",
   "iptv": "InterTV.ve",
   "imported": true,
-  "number": 1356,
+  "number": 1360,
   "src": {
    "by": "streamtv.intervenhosting.net",
    "kind": "public",
@@ -31971,7 +32051,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אקוודור",
   "iptv": "CiracuTV.ec",
   "imported": true,
-  "number": 1357,
+  "number": 1361,
   "src": {
    "by": "cloud37.ecuatel.com",
    "kind": "public",
@@ -31995,7 +32075,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הונג קונג (אזור מנהלי מיוחד של סין)",
   "iptv": "AsianDrama.hk",
   "imported": true,
-  "number": 1358,
+  "number": 1362,
   "src": {
    "by": "103.172.187.30",
    "kind": "public",
@@ -32019,7 +32099,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קוסטה ריקה",
   "iptv": "TeleMas.cr",
   "imported": true,
-  "number": 1359,
+  "number": 1363,
   "src": {
    "by": "acceso.mediosdecostarica.com",
    "kind": "public",
@@ -32043,7 +32123,7 @@ window.CHANNELS_DATA = [
   "countryHe": "עיראק",
   "iptv": "EmanTv.iq",
   "imported": true,
-  "number": 1360,
+  "number": 1364,
   "src": {
    "by": "avr.host247.net",
    "kind": "public",
@@ -32067,7 +32147,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פרגוואי",
   "iptv": "OasisTV.py",
   "imported": true,
-  "number": 1361,
+  "number": 1365,
   "src": {
    "by": "video.hostingcaaguazu.com",
    "kind": "public",
@@ -32091,7 +32171,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הונדורס",
   "iptv": "GirasolTV.hn",
   "imported": true,
-  "number": 1362,
+  "number": 1366,
   "src": {
    "by": "s.emisoras.tv",
    "kind": "public",
@@ -32115,7 +32195,7 @@ window.CHANNELS_DATA = [
   "countryHe": "בולגריה",
   "iptv": "CodeHealthTV.bg",
   "imported": true,
-  "number": 1363,
+  "number": 1367,
   "src": {
    "by": "cdn2.invivo.bg",
    "kind": "public",
@@ -32139,7 +32219,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אוגנדה",
   "iptv": "FORTTV.ug",
   "imported": true,
-  "number": 1364,
+  "number": 1368,
   "src": {
    "by": "fort.co-works.org",
    "kind": "public",
@@ -32163,7 +32243,7 @@ window.CHANNELS_DATA = [
   "countryHe": "בלארוס",
   "iptv": "Belarus3.by",
   "imported": true,
-  "number": 1365,
+  "number": 1369,
   "src": {
    "by": "ngtrk.dc.beltelecom.by",
    "kind": "public",
@@ -32187,7 +32267,7 @@ window.CHANNELS_DATA = [
   "countryHe": "טוגו",
   "iptv": "NWMagazine.tg",
   "imported": true,
-  "number": 1366,
+  "number": 1370,
   "src": {
    "by": "hls.newworldtv.com",
    "kind": "public",
@@ -32211,7 +32291,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אוזבקיסטן",
   "iptv": "CheksizTV.uz",
   "imported": true,
-  "number": 1367,
+  "number": 1371,
   "src": {
    "by": "fl.biztv.media",
    "kind": "public",
@@ -32235,7 +32315,7 @@ window.CHANNELS_DATA = [
   "countryHe": "סרי לנקה",
   "iptv": "HiruTV.lk",
   "imported": true,
-  "number": 1368,
+  "number": 1372,
   "src": {
    "by": "tv.hiruhost.com",
    "kind": "public",
@@ -32259,7 +32339,7 @@ window.CHANNELS_DATA = [
   "countryHe": "לאוס",
   "iptv": "VatiLao.la",
   "imported": true,
-  "number": 1369,
+  "number": 1373,
   "src": {
    "by": "livefta.malimarcdn.com",
    "kind": "public",
@@ -32283,7 +32363,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קרואטיה",
   "iptv": "TVNova.hr",
   "imported": true,
-  "number": 1370,
+  "number": 1374,
   "src": {
    "by": "stream.agatin.hr",
    "kind": "public",
@@ -32307,7 +32387,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "AsianCrush.us",
   "imported": true,
-  "number": 1371,
+  "number": 1375,
   "src": {
    "by": "linear-900.frequency.stream",
    "kind": "public",
@@ -32331,7 +32411,7 @@ window.CHANNELS_DATA = [
   "countryHe": "בריטניה",
   "iptv": "TopGear.uk",
   "imported": true,
-  "number": 1372,
+  "number": 1376,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -32350,7 +32430,7 @@ window.CHANNELS_DATA = [
   "logo": "",
   "badge": "FHD",
   "desc": "ערוץ היהדות והקירוב הגדול - שיעורים, תוכניות אירוח, חינוך וערכים",
-  "number": 1373,
+  "number": 1377,
   "lang": "he",
   "iptv": "Hidabroot.il",
   "src": {
@@ -32371,7 +32451,7 @@ window.CHANNELS_DATA = [
   "logo": "",
   "badge": "FHD",
   "desc": "ערוץ הטלוויזיה המסחרי הערבי בישראל מאת אתר פאנט",
-  "number": 1374,
+  "number": 1378,
   "lang": "ar",
   "iptv": "HalaTV.il",
   "src": {
@@ -32392,7 +32472,7 @@ window.CHANNELS_DATA = [
   "logo": "",
   "badge": "SD",
   "desc": "שיעורי קבלה בשידור חי, פילוסופיה וחוכמת הקבלה",
-  "number": 1375,
+  "number": 1379,
   "lang": "he",
   "iptv": "KabbalahforthePeopleIsrael.il",
   "src": {
@@ -32413,7 +32493,7 @@ window.CHANNELS_DATA = [
   "logo": "",
   "badge": "HD",
   "desc": "ערוץ תרבות וקהילה בישראל",
-  "number": 1376,
+  "number": 1380,
   "lang": "auto",
   "iptv": "ShelanuTV.il",
   "src": {
@@ -32434,7 +32514,7 @@ window.CHANNELS_DATA = [
   "logo": "",
   "badge": "HD",
   "desc": "ערוץ קהילתי ישראלי בשידור ישיר",
-  "number": 1377,
+  "number": 1381,
   "lang": "auto",
   "iptv": "Channel16.il",
   "src": {
@@ -32457,7 +32537,7 @@ window.CHANNELS_DATA = [
   "iptv": "JewishLifeTelevision.us",
   "desc": "ערוץ התרבות היהודית מארה\"ב - ישראל, אוכל, היסטוריה, מוזיקה וראיונות (באנגלית)",
   "logo": "assets/logos/jltv.svg",
-  "number": 1378,
+  "number": 1382,
   "src": {
    "by": "jlt-jltv-xumo.otteravision.com",
    "kind": "restream",
@@ -32477,7 +32557,7 @@ window.CHANNELS_DATA = [
   "badge": "HD",
   "desc": "ערוץ קבלה לעם – שידורים ברוסית",
   "logo": "assets/logos/kabbalah_ru.svg",
-  "number": 1379,
+  "number": 1383,
   "src": {
    "by": "קבלה לעם – השרת של הערוץ",
    "kind": "official",
@@ -32496,7 +32576,7 @@ window.CHANNELS_DATA = [
   "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Deutsche_Welle_symbol_2012.svg/512px-Deutsche_Welle_symbol_2012.svg.png",
   "badge": "FHD",
   "desc": "רשת השידור הגרמנית הבינלאומית באנגלית - סיקור עולמי אובייקטיבי",
-  "number": 1380,
+  "number": 1384,
   "lang": "en",
   "src": {
    "by": "DW – Akamai (רשמי)",
@@ -32516,7 +32596,7 @@ window.CHANNELS_DATA = [
   "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/f/f2/Al_Jazeera_English_logo.svg/512px-Al_Jazeera_English_logo.svg.png",
   "badge": "FHD",
   "desc": "ערוץ החדשות הבינלאומי באנגלית",
-  "number": 1381,
+  "number": 1385,
   "lang": "en",
   "iptv": "AlJazeera.qa",
   "src": {
@@ -32537,7 +32617,7 @@ window.CHANNELS_DATA = [
   "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/BFMTV_logo_2017.svg/512px-BFMTV_logo_2017.svg.png",
   "badge": "FHD",
   "desc": "רשת החדשות המובילה בצרפת",
-  "number": 1382,
+  "number": 1386,
   "lang": "fr",
   "iptv": "BFMTV.fr",
   "src": {
@@ -32558,7 +32638,7 @@ window.CHANNELS_DATA = [
   "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/BFMTV_logo_2017.svg/512px-BFMTV_logo_2017.svg.png",
   "badge": "FHD",
   "desc": "ערוץ טכנולוגיה, גאדג'טים, AI והיי-טק",
-  "number": 1383,
+  "number": 1387,
   "lang": "fr",
   "iptv": "BFMTechCo.fr",
   "src": {
@@ -32584,7 +32664,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "ABC.us",
   "imported": true,
-  "number": 1384,
+  "number": 1388,
   "src": {
    "by": "amg01942-amg01942c6-stirr-us-10178.playouts.now.amagi.tv",
    "kind": "public",
@@ -32608,7 +32688,7 @@ window.CHANNELS_DATA = [
   "countryHe": "בריטניה",
   "iptv": "BritAsiaTV.uk",
   "imported": true,
-  "number": 1385,
+  "number": 1389,
   "src": {
    "by": "hls.autopo.st",
    "kind": "public",
@@ -32632,7 +32712,7 @@ window.CHANNELS_DATA = [
   "countryHe": "צרפת",
   "iptv": "20MinutesTV.fr",
   "imported": true,
-  "number": 1386,
+  "number": 1390,
   "src": {
    "by": "live-20minutestv.digiteka.com",
    "kind": "public",
@@ -32656,7 +32736,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "AlexBerlin.de",
   "imported": true,
-  "number": 1387,
+  "number": 1391,
   "src": {
    "by": "alex-stream.rosebud-media.de",
    "kind": "public",
@@ -32680,7 +32760,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ספרד",
   "iptv": "ArabiTV.es",
   "imported": true,
-  "number": 1388,
+  "number": 1392,
   "src": {
    "by": "streamtv2.elitecomunicacion.cloud",
    "kind": "public",
@@ -32704,7 +32784,7 @@ window.CHANNELS_DATA = [
   "countryHe": "איטליה",
   "iptv": "A2iTV.it",
   "imported": true,
-  "number": 1389,
+  "number": 1393,
   "src": {
    "by": "stream.sen-gt.com",
    "kind": "public",
@@ -32728,7 +32808,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רוסיה",
   "iptv": "InsaytTV.ru",
   "imported": true,
-  "number": 1390,
+  "number": 1394,
   "src": {
    "by": "Cinerama.uz – ספק IPTV באוזבקיסטן",
    "kind": "restream",
@@ -32752,7 +32832,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אוקראינה",
   "iptv": "1Plus1Marafon.ua",
   "imported": true,
-  "number": 1391,
+  "number": 1395,
   "src": {
    "by": "dash2.antik.sk",
    "kind": "public",
@@ -32776,7 +32856,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קנדה",
   "iptv": "WildTV.ca",
   "imported": true,
-  "number": 1392,
+  "number": 1396,
   "src": {
    "by": "dfhsahpa45kk2.cloudfront.net",
    "kind": "public",
@@ -32800,7 +32880,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אוסטרליה",
   "iptv": "ABCTV.au",
   "imported": true,
-  "number": 1393,
+  "number": 1397,
   "src": {
    "by": "c.mjh.nz",
    "kind": "public",
@@ -32824,7 +32904,7 @@ window.CHANNELS_DATA = [
   "countryHe": "איחוד האמירויות הערביות",
   "iptv": "AjmanTV.ae",
   "imported": true,
-  "number": 1394,
+  "number": 1398,
   "src": {
    "by": "cdn1.logichost.in",
    "kind": "public",
@@ -32848,7 +32928,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קטאר",
   "iptv": "AlRayyanOldTV.qa",
   "imported": true,
-  "number": 1395,
+  "number": 1399,
   "src": {
    "by": "alrayyancdn.vidgyor.com",
    "kind": "public",
@@ -32872,7 +32952,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ערב הסעודית",
   "iptv": "AlRiyadhRadio.sa",
   "imported": true,
-  "number": 1396,
+  "number": 1400,
   "src": {
    "by": "live.kwikmotion.com",
    "kind": "public",
@@ -32896,7 +32976,7 @@ window.CHANNELS_DATA = [
   "countryHe": "מצרים",
   "iptv": "WatanTV.eg",
   "imported": true,
-  "number": 1397,
+  "number": 1401,
   "src": {
    "by": "rp.tactivemedia.com",
    "kind": "public",
@@ -32920,7 +33000,7 @@ window.CHANNELS_DATA = [
   "countryHe": "לבנון",
   "iptv": "LanaTV.lb",
   "imported": true,
-  "number": 1398,
+  "number": 1402,
   "src": {
    "by": "cdn.streamlane.tv",
    "kind": "public",
@@ -32944,7 +33024,7 @@ window.CHANNELS_DATA = [
   "countryHe": "טורקיה",
   "iptv": "ElsharqTV.tr",
   "imported": true,
-  "number": 1399,
+  "number": 1403,
   "src": {
    "by": "mn-nl.mncdn.com",
    "kind": "public",
@@ -32968,7 +33048,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הודו",
   "iptv": "DDIndia.in",
   "imported": true,
-  "number": 1400,
+  "number": 1404,
   "src": {
    "by": "mumbai-edge.smartplaytv.in",
    "kind": "public",
@@ -32992,7 +33072,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קוריאה הדרומית",
   "iptv": "HLATDTV.kr",
   "imported": true,
-  "number": 1401,
+  "number": 1405,
   "src": {
    "by": "5c3639aa99149.streamlock.net",
    "kind": "public",
@@ -33016,7 +33096,7 @@ window.CHANNELS_DATA = [
   "countryHe": "סין",
   "iptv": "HebeiTV.cn",
   "imported": true,
-  "number": 1402,
+  "number": 1406,
   "src": {
    "by": "event.pull.hebtv.com",
    "kind": "public",
@@ -33040,7 +33120,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ברזיל",
   "iptv": "AmazonSat.br",
   "imported": true,
-  "number": 1403,
+  "number": 1407,
   "src": {
    "by": "amazonsat.brasilstream.com.br",
    "kind": "public",
@@ -33064,7 +33144,7 @@ window.CHANNELS_DATA = [
   "countryHe": "מקסיקו",
   "iptv": "8NTV.mx",
   "imported": true,
-  "number": 1404,
+  "number": 1408,
   "src": {
    "by": "60417ddeaf0d9.streamlock.net",
    "kind": "public",
@@ -33088,7 +33168,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארגנטינה",
   "iptv": "Canal12VenadoTuerto.ar",
   "imported": true,
-  "number": 1405,
+  "number": 1409,
   "src": {
    "by": "nd106.republicaservers.com",
    "kind": "public",
@@ -33112,7 +33192,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פורטוגל",
   "iptv": "SICAltaDefinicao.pt",
   "imported": true,
-  "number": 1406,
+  "number": 1410,
   "src": {
    "by": "production-fast-sic.content.okast.tv",
    "kind": "public",
@@ -33136,7 +33216,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הולנד",
   "iptv": "TVRain.nl",
   "imported": true,
-  "number": 1407,
+  "number": 1411,
   "src": {
    "by": "wl.tvrain.tv",
    "kind": "public",
@@ -33160,7 +33240,7 @@ window.CHANNELS_DATA = [
   "countryHe": "בלגיה",
   "iptv": "Matele.be",
   "imported": true,
-  "number": 1408,
+  "number": 1412,
   "src": {
    "by": "live.matele.be",
    "kind": "public",
@@ -33184,7 +33264,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שווייץ",
   "iptv": "MaxTV.ch",
   "imported": true,
-  "number": 1409,
+  "number": 1413,
   "src": {
    "by": "cdn.katapy.io",
    "kind": "public",
@@ -33208,7 +33288,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אוסטריה",
   "iptv": "LandleTV.at",
   "imported": true,
-  "number": 1410,
+  "number": 1414,
   "src": {
    "by": "streaming13.huberwebmedia.at",
    "kind": "public",
@@ -33232,7 +33312,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פולין",
   "iptv": "NewTV.pl",
   "imported": true,
-  "number": 1411,
+  "number": 1415,
   "src": {
    "by": "1409502578.rsc.cdn77.org",
    "kind": "public",
@@ -33256,7 +33336,7 @@ window.CHANNELS_DATA = [
   "countryHe": "יוון",
   "iptv": "AlphaTV.gr",
   "imported": true,
-  "number": 1412,
+  "number": 1416,
   "src": {
    "by": "alphatvlive2.siliconweb.com",
    "kind": "public",
@@ -33280,7 +33360,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שוודיה",
   "iptv": "MTVReality.se",
   "imported": true,
-  "number": 1413,
+  "number": 1417,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -33304,7 +33384,7 @@ window.CHANNELS_DATA = [
   "countryHe": "נורווגיה",
   "iptv": "Frikanalen.no",
   "imported": true,
-  "number": 1414,
+  "number": 1418,
   "src": {
    "by": "frikanalen.no",
    "kind": "public",
@@ -33328,7 +33408,7 @@ window.CHANNELS_DATA = [
   "countryHe": "דנמרק",
   "iptv": "DRTV.dk",
   "imported": true,
-  "number": 1415,
+  "number": 1419,
   "src": {
    "by": "drlivedrtvahls.akamaized.net",
    "kind": "public",
@@ -33352,7 +33432,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פינלנד",
   "iptv": "MTVSub.fi",
   "imported": true,
-  "number": 1416,
+  "number": 1420,
   "src": {
    "by": "live-fi.tvkaista.net",
    "kind": "public",
@@ -33376,7 +33456,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אירלנד",
   "iptv": "TG4.ie",
   "imported": true,
-  "number": 1417,
+  "number": 1421,
   "src": {
    "by": "fastly.live.brightcove.com",
    "kind": "public",
@@ -33400,7 +33480,7 @@ window.CHANNELS_DATA = [
   "countryHe": "צ׳כיה",
   "iptv": "BarrandovKrimi.cz",
   "imported": true,
-  "number": 1418,
+  "number": 1422,
   "src": {
    "by": "dash4.antik.sk",
    "kind": "public",
@@ -33424,7 +33504,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רומניה",
   "iptv": "A7TV.ro",
   "imported": true,
-  "number": 1419,
+  "number": 1423,
   "src": {
    "by": "a7tvlive.ro",
    "kind": "public",
@@ -33448,7 +33528,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הונגריה",
   "iptv": "HeviziTV.hu",
   "imported": true,
-  "number": 1420,
+  "number": 1424,
   "src": {
    "by": "cloudfront44.lexanetwork.com",
    "kind": "public",
@@ -33472,7 +33552,7 @@ window.CHANNELS_DATA = [
   "countryHe": "צ׳ילה",
   "iptv": "AntofagastaTV.cl",
   "imported": true,
-  "number": 1421,
+  "number": 1425,
   "src": {
    "by": "unlimited6-cl.dps.live",
    "kind": "public",
@@ -33496,7 +33576,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קולומביה",
   "iptv": "AupurTelevision.co",
   "imported": true,
-  "number": 1422,
+  "number": 1426,
   "src": {
    "by": "canal.aupurtv.co",
    "kind": "public",
@@ -33520,7 +33600,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פרו",
   "iptv": "Latina.pe",
   "imported": true,
-  "number": 1423,
+  "number": 1427,
   "src": {
    "by": "redirector.rudo.video",
    "kind": "public",
@@ -33544,7 +33624,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אינדונזיה",
   "iptv": "TVRIWorld.id",
   "imported": true,
-  "number": 1424,
+  "number": 1428,
   "src": {
    "by": "ott-balancer.tvri.go.id",
    "kind": "public",
@@ -33568,7 +33648,7 @@ window.CHANNELS_DATA = [
   "countryHe": "תאילנד",
   "iptv": "NBTWorld.th",
   "imported": true,
-  "number": 1425,
+  "number": 1429,
   "src": {
    "by": "cdn-edge.iiptvcdn.com",
    "kind": "public",
@@ -33592,7 +33672,7 @@ window.CHANNELS_DATA = [
   "countryHe": "וייטנאם",
   "iptv": "VietnamToday.vn",
   "imported": true,
-  "number": 1426,
+  "number": 1430,
   "src": {
    "by": "amagi-live.ondemandkorea.com",
    "kind": "public",
@@ -33616,7 +33696,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פקיסטן",
   "iptv": "PMITV.pk",
   "imported": true,
-  "number": 1427,
+  "number": 1431,
   "src": {
    "by": "cdn.live247stream.com",
    "kind": "public",
@@ -33640,7 +33720,7 @@ window.CHANNELS_DATA = [
   "countryHe": "איראן",
   "iptv": "AsilTV.ir",
   "imported": true,
-  "number": 1428,
+  "number": 1432,
   "src": {
    "by": "live.asil.tv",
    "kind": "public",
@@ -33664,7 +33744,7 @@ window.CHANNELS_DATA = [
   "countryHe": "מרוקו",
   "iptv": "2MMonde.ma",
   "imported": true,
-  "number": 1429,
+  "number": 1433,
   "src": {
    "by": "d2qh3gh0k5vp3v.cloudfront.net",
    "kind": "public",
@@ -33688,7 +33768,7 @@ window.CHANNELS_DATA = [
   "countryHe": "דרום אפריקה",
   "iptv": "TVBRICSAfrica.za",
   "imported": true,
-  "number": 1430,
+  "number": 1434,
   "src": {
    "by": "cdn.freevisiontv.co.za",
    "kind": "public",
@@ -33712,7 +33792,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ניגריה",
   "iptv": "TVWEST.ng",
   "imported": true,
-  "number": 1431,
+  "number": 1435,
   "src": {
    "by": "tv-west.lg.mncdn.com",
    "kind": "public",
@@ -33736,7 +33816,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הרפובליקה הדומיניקנית",
   "iptv": "A7TV.do",
   "imported": true,
-  "number": 1432,
+  "number": 1436,
   "src": {
    "by": "183.bozztv.com",
    "kind": "public",
@@ -33760,7 +33840,7 @@ window.CHANNELS_DATA = [
   "countryHe": "בוליביה",
   "iptv": "DmodaChannel.bo",
   "imported": true,
-  "number": 1433,
+  "number": 1437,
   "src": {
    "by": "master.tucableip.com",
    "kind": "public",
@@ -33784,7 +33864,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פרגוואי",
   "iptv": "ParaguayTV.py",
   "imported": true,
-  "number": 1434,
+  "number": 1438,
   "src": {
    "by": "stream.paraguaytv.gov.py",
    "kind": "public",
@@ -33808,7 +33888,7 @@ window.CHANNELS_DATA = [
   "countryHe": "סלובקיה",
   "iptv": "MTR.sk",
   "imported": true,
-  "number": 1435,
+  "number": 1439,
   "src": {
    "by": "cdnsk003.panaccess.com",
    "kind": "public",
@@ -33832,7 +33912,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ונצואלה",
   "iptv": "LatinaTV.ve",
   "imported": true,
-  "number": 1436,
+  "number": 1440,
   "src": {
    "by": "streamtv.latinamedios.com",
    "kind": "public",
@@ -33856,7 +33936,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אקוודור",
   "iptv": "AmericaEstereoQuito.ec",
   "imported": true,
-  "number": 1437,
+  "number": 1441,
   "src": {
    "by": "video.makrodigital.com",
    "kind": "public",
@@ -33880,7 +33960,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קוסטה ריקה",
   "iptv": "TVSurCanal14.cr",
   "imported": true,
-  "number": 1438,
+  "number": 1442,
   "src": {
    "by": "k20.usastreams.com",
    "kind": "public",
@@ -33904,7 +33984,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גואטמלה",
   "iptv": "Canal100Chinique.gt",
   "imported": true,
-  "number": 1439,
+  "number": 1443,
   "src": {
    "by": "live20.bozztv.com",
    "kind": "public",
@@ -33928,7 +34008,7 @@ window.CHANNELS_DATA = [
   "countryHe": "עיראק",
   "iptv": "AlRasheedTV.iq",
   "imported": true,
-  "number": 1440,
+  "number": 1444,
   "src": {
    "by": "media1.livaat.com",
    "kind": "public",
@@ -33952,7 +34032,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הונדורס",
   "iptv": "Canal11.hn",
   "imported": true,
-  "number": 1441,
+  "number": 1445,
   "src": {
    "by": "redirector.rudo.video",
    "kind": "public",
@@ -33976,7 +34056,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ירדן",
   "iptv": "JordanArchive.jo",
   "imported": true,
-  "number": 1442,
+  "number": 1446,
   "src": {
    "by": "playlist.fasttvcdn.com",
    "kind": "public",
@@ -34000,7 +34080,7 @@ window.CHANNELS_DATA = [
   "countryHe": "בלארוס",
   "iptv": "Belarus1.by",
   "imported": true,
-  "number": 1443,
+  "number": 1447,
   "src": {
    "by": "ngtrk.dc.beltelecom.by",
    "kind": "public",
@@ -34024,7 +34104,7 @@ window.CHANNELS_DATA = [
   "countryHe": "השטחים הפלסטיניים",
   "iptv": "RajeenTV.ps",
   "imported": true,
-  "number": 1444,
+  "number": 1448,
   "src": {
    "by": "mn-nl.mncdn.com",
    "kind": "public",
@@ -34048,7 +34128,7 @@ window.CHANNELS_DATA = [
   "countryHe": "מולדובה",
   "iptv": "TSV.md",
   "imported": true,
-  "number": 1445,
+  "number": 1449,
   "src": {
    "by": "tsv.md",
    "kind": "public",
@@ -34072,7 +34152,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קזחסטן",
   "iptv": "JibekJoly.kz",
   "imported": true,
-  "number": 1446,
+  "number": 1450,
   "src": {
    "by": "stream.qazcdn.net",
    "kind": "public",
@@ -34096,7 +34176,7 @@ window.CHANNELS_DATA = [
   "countryHe": "סנגל",
   "iptv": "LougaTV.sn",
   "imported": true,
-  "number": 1447,
+  "number": 1451,
   "src": {
    "by": "stream.sen-gt.com",
    "kind": "public",
@@ -34120,7 +34200,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פוארטו ריקו",
   "iptv": "TeleOnce.pr",
   "imported": true,
-  "number": 1448,
+  "number": 1452,
   "src": {
    "by": "live.11-cdn.com",
    "kind": "public",
@@ -34144,7 +34224,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קפריסין",
   "iptv": "Sat7Turk.cy",
   "imported": true,
-  "number": 1449,
+  "number": 1453,
   "src": {
    "by": "live.artidijitalmedya.com",
    "kind": "public",
@@ -34168,7 +34248,7 @@ window.CHANNELS_DATA = [
   "countryHe": "בנגלדש",
   "iptv": "RajdhaniTV.bd",
   "imported": true,
-  "number": 1450,
+  "number": 1454,
   "src": {
    "by": "stream.shariarsuvo.com",
    "kind": "public",
@@ -34192,7 +34272,7 @@ window.CHANNELS_DATA = [
   "countryHe": "מקדוניה הצפונית",
   "iptv": "NasaTV.mk",
   "imported": true,
-  "number": 1451,
+  "number": 1455,
   "src": {
    "by": "stream.nasatv.com.mk",
    "kind": "public",
@@ -34216,7 +34296,7 @@ window.CHANNELS_DATA = [
   "countryHe": "סרביה",
   "iptv": "PannonTV.rs",
   "imported": true,
-  "number": 1452,
+  "number": 1456,
   "src": {
    "by": "stream.nmih.hu",
    "kind": "public",
@@ -34240,7 +34320,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קוסובו",
   "iptv": "RTK3.xk",
   "imported": true,
-  "number": 1453,
+  "number": 1457,
   "src": {
    "by": "gjirafa-video-live.gjirafa.net",
    "kind": "public",
@@ -34264,7 +34344,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רואנדה",
   "iptv": "TV10.rw",
   "imported": true,
-  "number": 1454,
+  "number": 1458,
   "src": {
    "by": "5c46fa289c89f.streamlock.net",
    "kind": "public",
@@ -34288,7 +34368,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גאורגיה",
   "iptv": "ImediTV.ge",
   "imported": true,
-  "number": 1455,
+  "number": 1459,
   "src": {
    "by": "tv.cdn.xsg.ge",
    "kind": "public",
@@ -34313,7 +34393,7 @@ window.CHANNELS_DATA = [
   "iptv": "Turkmenistan.tm",
   "imported": true,
   "webOk": false,
-  "number": 1456,
+  "number": 1460,
   "src": {
    "by": "alpha.tv.online.tm",
    "kind": "public",
@@ -34337,7 +34417,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קמרון",
   "iptv": "CAM10TV.cm",
   "imported": true,
-  "number": 1457,
+  "number": 1461,
   "src": {
    "by": "stream.it-innov.com",
    "kind": "public",
@@ -34361,7 +34441,7 @@ window.CHANNELS_DATA = [
   "countryHe": "לוקסמבורג",
   "iptv": "RTLZwee.lu",
   "imported": true,
-  "number": 1458,
+  "number": 1462,
   "src": {
    "by": "live-edge.rtl.lu",
    "kind": "public",
@@ -34385,7 +34465,7 @@ window.CHANNELS_DATA = [
   "countryHe": "סרי לנקה",
   "iptv": "VerbumTV.lk",
   "imported": true,
-  "number": 1459,
+  "number": 1463,
   "src": {
    "by": "video-eu1.streamerr.co",
    "kind": "public",
@@ -34409,7 +34489,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אלבניה",
   "iptv": "VizionPlus.al",
   "imported": true,
-  "number": 1460,
+  "number": 1464,
   "src": {
    "by": "tringliveviz.akamaized.net",
    "kind": "public",
@@ -34433,7 +34513,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ניו זילנד",
   "iptv": "KordiaTV.nz",
   "imported": true,
-  "number": 1461,
+  "number": 1465,
   "src": {
    "by": "ptvlive.kordia.net.nz",
    "kind": "public",
@@ -34457,7 +34537,7 @@ window.CHANNELS_DATA = [
   "countryHe": "מונגוליה",
   "iptv": "MNBWorld.mn",
   "imported": true,
-  "number": 1462,
+  "number": 1466,
   "src": {
    "by": "live.mnb.mn",
    "kind": "public",
@@ -34481,7 +34561,7 @@ window.CHANNELS_DATA = [
   "countryHe": "סנט קיטס ונוויס",
   "iptv": "TelevisionCaribbean.kn",
   "imported": true,
-  "number": 1463,
+  "number": 1467,
   "src": {
    "by": "live.kingdom-tv.com",
    "kind": "public",
@@ -34505,7 +34585,7 @@ window.CHANNELS_DATA = [
   "countryHe": "סוריה",
   "iptv": "Althania.sy",
   "imported": true,
-  "number": 1464,
+  "number": 1468,
   "src": {
    "by": "live.kwikmotion.com",
    "kind": "public",
@@ -34529,7 +34609,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אזרבייג׳ן",
   "iptv": "AyazTV.az",
   "imported": true,
-  "number": 1465,
+  "number": 1469,
   "src": {
    "by": "janya-ayaztv.vgcdn.net",
    "kind": "public",
@@ -34553,7 +34633,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארמניה",
   "iptv": "Armenia2.am",
   "imported": true,
-  "number": 1466,
+  "number": 1470,
   "src": {
    "by": "amtv.tulixcdn.com",
    "kind": "public",
@@ -34577,7 +34657,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קמבודיה",
   "iptv": "SEATV.kh",
   "imported": true,
-  "number": 1467,
+  "number": 1471,
   "src": {
    "by": "seatv.netlinkbroadcaster.com",
    "kind": "public",
@@ -34601,7 +34681,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אפגניסטן",
   "iptv": "TamadonTV.af",
   "imported": true,
-  "number": 1468,
+  "number": 1472,
   "src": {
    "by": "hls.tamadon.live",
    "kind": "public",
@@ -34625,7 +34705,7 @@ window.CHANNELS_DATA = [
   "countryHe": "לאוס",
   "iptv": "LaoNetTV.la",
   "imported": true,
-  "number": 1469,
+  "number": 1473,
   "src": {
    "by": "livefta.malimarcdn.com",
    "kind": "public",
@@ -34649,7 +34729,7 @@ window.CHANNELS_DATA = [
   "countryHe": "לטביה",
   "iptv": "LTV1.lv",
   "imported": true,
-  "number": 1470,
+  "number": 1474,
   "src": {
    "by": "lsm.eu.cdns-redge.media",
    "kind": "public",
@@ -34673,7 +34753,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קרואטיה",
   "iptv": "RadioTelevizijaBanovina.hr",
   "imported": true,
-  "number": 1471,
+  "number": 1475,
   "src": {
    "by": "pool.alter-media.hr",
    "kind": "public",
@@ -34697,7 +34777,7 @@ window.CHANNELS_DATA = [
   "countryHe": "בוסניה והרצגובינה",
   "iptv": "RTVZenica.ba",
   "imported": true,
-  "number": 1472,
+  "number": 1476,
   "src": {
    "by": "stream.rtvze.ba",
    "kind": "public",
@@ -34721,7 +34801,7 @@ window.CHANNELS_DATA = [
   "countryHe": "מונטנגרו",
   "iptv": "TVCGMNE.me",
   "imported": true,
-  "number": 1473,
+  "number": 1477,
   "src": {
    "by": "rtcg-live-open.morescreens.com",
    "kind": "public",
@@ -34745,7 +34825,7 @@ window.CHANNELS_DATA = [
   "countryHe": "בחריין",
   "iptv": "BahrainInternational.bh",
   "imported": true,
-  "number": 1474,
+  "number": 1478,
   "src": {
    "by": "5c7b683162943.streamlock.net",
    "kind": "public",
@@ -34769,7 +34849,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גיאנה",
   "iptv": "IgniteTelevision.gy",
   "imported": true,
-  "number": 1475,
+  "number": 1479,
   "src": {
    "by": "rpn.bozztv.com",
    "kind": "public",
@@ -34793,7 +34873,7 @@ window.CHANNELS_DATA = [
   "countryHe": "טייוואן",
   "iptv": "SupremeMasterTV.tw",
   "imported": true,
-  "number": 1476,
+  "number": 1480,
   "src": {
    "by": "lbs-us1.suprememastertv.com",
    "kind": "public",
@@ -34817,7 +34897,7 @@ window.CHANNELS_DATA = [
   "countryHe": "האיטי",
   "iptv": "RadioTelePlanetCompas.ht",
   "imported": true,
-  "number": 1477,
+  "number": 1481,
   "src": {
    "by": "5dcab9aed5331.streamlock.net",
    "kind": "public",
@@ -34841,7 +34921,7 @@ window.CHANNELS_DATA = [
   "countryHe": "לוב",
   "iptv": "TanasuhTV.ly",
   "imported": true,
-  "number": 1478,
+  "number": 1482,
   "src": {
    "by": "kilolink.pulsarstarsolutions.com",
    "kind": "public",
@@ -34865,7 +34945,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גוואדלופ",
   "iptv": "ETV.gp",
   "imported": true,
-  "number": 1479,
+  "number": 1483,
   "src": {
    "by": "edge12.vedge.infomaniak.com",
    "kind": "public",
@@ -34889,7 +34969,7 @@ window.CHANNELS_DATA = [
   "countryHe": "חוף השנהב",
   "iptv": "NTV.ci",
   "imported": true,
-  "number": 1480,
+  "number": 1484,
   "src": {
    "by": "strhlslb01.streamakaci.tv",
    "kind": "public",
@@ -34913,7 +34993,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ניקרגואה",
   "iptv": "TN8.ni",
   "imported": true,
-  "number": 1481,
+  "number": 1485,
   "src": {
    "by": "streamingcws30.com",
    "kind": "public",
@@ -34937,7 +35017,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פנמה",
   "iptv": "NexTVCanal21.pa",
   "imported": true,
-  "number": 1482,
+  "number": 1486,
   "src": {
    "by": "movil.ejeserver.com",
    "kind": "public",
@@ -34961,7 +35041,7 @@ window.CHANNELS_DATA = [
   "countryHe": "איסלנד",
   "iptv": "RUV.is",
   "imported": true,
-  "number": 1483,
+  "number": 1487,
   "src": {
    "by": "ruv-web-live.akamaized.net",
    "kind": "public",
@@ -34985,7 +35065,7 @@ window.CHANNELS_DATA = [
   "countryHe": "בולגריה",
   "iptv": "TVSpravedlivaBulgariya.bg",
   "imported": true,
-  "number": 1484,
+  "number": 1488,
   "src": {
    "by": "tv.tvsb.bg",
    "kind": "public",
@@ -35009,7 +35089,7 @@ window.CHANNELS_DATA = [
   "countryHe": "איי הבתולה הבריטיים",
   "iptv": "CBNTV.vg",
   "imported": true,
-  "number": 1485,
+  "number": 1489,
   "src": {
    "by": "5790d294af2dc.streamlock.net",
    "kind": "public",
@@ -35033,7 +35113,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קניה",
   "iptv": "InooroTV.ke",
   "imported": true,
-  "number": 1486,
+  "number": 1490,
   "src": {
    "by": "live-onesignal.royalmedia.co.ke",
    "kind": "public",
@@ -35057,7 +35137,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אנטיגואה וברבודה",
   "iptv": "PointeTV.ag",
   "imported": true,
-  "number": 1487,
+  "number": 1491,
   "src": {
    "by": "tv.pointville.ag",
    "kind": "public",
@@ -35081,7 +35161,7 @@ window.CHANNELS_DATA = [
   "countryHe": "האיים המלדיביים",
   "iptv": "RaajjeTV.mv",
   "imported": true,
-  "number": 1488,
+  "number": 1492,
   "src": {
    "by": "raajjetv.yarr-myn.workers.dev",
    "kind": "public",
@@ -35105,7 +35185,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ג׳מייקה",
   "iptv": "TVJ.jm",
   "imported": true,
-  "number": 1489,
+  "number": 1493,
   "src": {
    "by": "vod2live.univtec.com",
    "kind": "public",
@@ -35129,7 +35209,7 @@ window.CHANNELS_DATA = [
   "countryHe": "איי בהאמה",
   "iptv": "ZNSTV.bs",
   "imported": true,
-  "number": 1490,
+  "number": 1494,
   "src": {
    "by": "zns-edge1.streamcomedia.cloud",
    "kind": "public",
@@ -35153,7 +35233,7 @@ window.CHANNELS_DATA = [
   "countryHe": "תוניסיה",
   "iptv": "ElWatania1.tn",
   "imported": true,
-  "number": 1491,
+  "number": 1495,
   "src": {
    "by": "sw1.tanitweb.net",
    "kind": "public",
@@ -35177,7 +35257,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אריתריאה",
   "iptv": "ERiTV1.er",
   "imported": true,
-  "number": 1492,
+  "number": 1496,
   "src": {
    "by": "jmc-live.ercdn.net",
    "kind": "public",
@@ -35201,7 +35281,7 @@ window.CHANNELS_DATA = [
   "countryHe": "כווית",
   "iptv": "KTV1.kw",
   "imported": true,
-  "number": 1493,
+  "number": 1497,
   "src": {
    "by": "kwtktv1ta.cdn.mangomolo.com",
    "kind": "public",
@@ -35225,7 +35305,7 @@ window.CHANNELS_DATA = [
   "countryHe": "עומאן",
   "iptv": "OmanTV.om",
   "imported": true,
-  "number": 1494,
+  "number": 1498,
   "src": {
    "by": "partneta.cdn.mgmlcdn.com",
    "kind": "public",
@@ -35249,7 +35329,7 @@ window.CHANNELS_DATA = [
   "countryHe": "סהרה המערבית",
   "iptv": "RASDTV.eh",
   "imported": true,
-  "number": 1495,
+  "number": 1499,
   "src": {
    "by": "cloud.streamingconnect.tv",
    "kind": "public",
@@ -35273,7 +35353,7 @@ window.CHANNELS_DATA = [
   "countryHe": "סודן",
   "iptv": "SudanTV.sd",
   "imported": true,
-  "number": 1496,
+  "number": 1500,
   "src": {
    "by": "cdn-globecast.akamaized.net",
    "kind": "public",
@@ -35297,7 +35377,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אלג׳יריה",
   "iptv": "TV2.dz",
   "imported": true,
-  "number": 1497,
+  "number": 1501,
   "src": {
    "by": "185.9.2.18",
    "kind": "public",
@@ -35321,7 +35401,7 @@ window.CHANNELS_DATA = [
   "countryHe": "תימן",
   "iptv": "YemenTodayTV.ye",
   "imported": true,
-  "number": 1498,
+  "number": 1502,
   "src": {
    "by": "video.yementdy.tv",
    "kind": "public",
@@ -35345,7 +35425,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גינאה",
   "iptv": "KalacTV.gn",
   "imported": true,
-  "number": 1499,
+  "number": 1503,
   "src": {
    "by": "edge13.vedge.infomaniak.com",
    "kind": "public",
@@ -35369,7 +35449,7 @@ window.CHANNELS_DATA = [
   "countryHe": "בורקינה פאסו",
   "iptv": "RTB.bf",
   "imported": true,
-  "number": 1500,
+  "number": 1504,
   "src": {
    "by": "edge12.vedge.infomaniak.com",
    "kind": "public",
@@ -35393,7 +35473,7 @@ window.CHANNELS_DATA = [
   "countryHe": "בורונדי",
   "iptv": "RTNBTV.bi",
   "imported": true,
-  "number": 1501,
+  "number": 1505,
   "src": {
    "by": "tv1-stream.rtnb.bi",
    "kind": "public",
@@ -35417,7 +35497,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גיאנה הצרפתית",
   "iptv": "TelePeyi.gf",
   "imported": true,
-  "number": 1502,
+  "number": 1506,
   "src": {
    "by": "edge20.vedge.infomaniak.com",
    "kind": "public",
@@ -35441,7 +35521,7 @@ window.CHANNELS_DATA = [
   "countryHe": "צ׳אד",
   "iptv": "TeleTchad.td",
   "imported": true,
-  "number": 1503,
+  "number": 1507,
   "src": {
    "by": "strhlslb01.streamakaci.tv",
    "kind": "public",
@@ -35465,7 +35545,7 @@ window.CHANNELS_DATA = [
   "countryHe": "טוגו",
   "iptv": "TelevisionEspoir47.tg",
   "imported": true,
-  "number": 1504,
+  "number": 1508,
   "src": {
    "by": "cdn140m.panaccess.com",
    "kind": "public",
@@ -35489,7 +35569,7 @@ window.CHANNELS_DATA = [
   "countryHe": "מונקו",
   "iptv": "TVMonaco.mc",
   "imported": true,
-  "number": 1505,
+  "number": 1509,
   "src": {
    "by": "production-fast-mcrtv.content.okast.tv",
    "kind": "public",
@@ -35513,7 +35593,7 @@ window.CHANNELS_DATA = [
   "countryHe": "מרטיניק",
   "iptv": "ZitataTV.mq",
   "imported": true,
-  "number": 1506,
+  "number": 1510,
   "src": {
    "by": "live.zitata.tv",
    "kind": "public",
@@ -35537,7 +35617,7 @@ window.CHANNELS_DATA = [
   "countryHe": "מוזמביק",
   "iptv": "TVM.mz",
   "imported": true,
-  "number": 1507,
+  "number": 1511,
   "src": {
    "by": "stream.tvm.co.mz",
    "kind": "public",
@@ -35561,7 +35641,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אנדורה",
   "iptv": "AndorraTV.ad",
   "imported": true,
-  "number": 1508,
+  "number": 1512,
   "src": {
    "by": "livesg1.rtva.hiway.media",
    "kind": "public",
@@ -35585,7 +35665,7 @@ window.CHANNELS_DATA = [
   "countryHe": "טנזניה",
   "iptv": "DodomaTV.tz",
   "imported": true,
-  "number": 1509,
+  "number": 1513,
   "src": {
    "by": "goliveafrica.media",
    "kind": "public",
@@ -35609,7 +35689,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אסטוניה",
   "iptv": "ETV.ee",
   "imported": true,
-  "number": 1510,
+  "number": 1514,
   "src": {
    "by": "sb.err.ee",
    "kind": "public",
@@ -35633,7 +35713,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הונג קונג (אזור מנהלי מיוחד של סין)",
   "iptv": "GoldenJade.hk",
   "imported": true,
-  "number": 1511,
+  "number": 1515,
   "src": {
    "by": "103.172.187.30",
    "kind": "public",
@@ -35658,7 +35738,7 @@ window.CHANNELS_DATA = [
   "iptv": "KoreanCentralTelevision.kp",
   "imported": true,
   "webOk": false,
-  "number": 1512,
+  "number": 1516,
   "src": {
    "by": "live.koryocdn.org",
    "kind": "public",
@@ -35682,7 +35762,7 @@ window.CHANNELS_DATA = [
   "countryHe": "מיאנמר (בורמה)",
   "iptv": "MWD.mm",
   "imported": true,
-  "number": 1513,
+  "number": 1517,
   "src": {
    "by": "203.81.84.130",
    "kind": "public",
@@ -35706,7 +35786,7 @@ window.CHANNELS_DATA = [
   "countryHe": "האיים הקריביים ההולנדיים",
   "iptv": "NosTVBonaire2.bq",
   "imported": true,
-  "number": 1514,
+  "number": 1518,
   "src": {
    "by": "stream2.nostvbonaire.com",
    "kind": "public",
@@ -35730,7 +35810,7 @@ window.CHANNELS_DATA = [
   "countryHe": "מלטה",
   "iptv": "One.mt",
   "imported": true,
-  "number": 1515,
+  "number": 1519,
   "src": {
    "by": "2-fss-1.streamhoster.com",
    "kind": "public",
@@ -35754,7 +35834,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארובה",
   "iptv": "Telearuba.aw",
   "imported": true,
-  "number": 1516,
+  "number": 1520,
   "src": {
    "by": "cdn01.setar.aw",
    "kind": "public",
@@ -35778,7 +35858,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קוראסאו",
   "iptv": "TVDirect13.cw",
   "imported": true,
-  "number": 1517,
+  "number": 1521,
   "src": {
    "by": "oqgdrog4d4rm-hls-live.5centscdn.com",
    "kind": "public",
@@ -35802,7 +35882,7 @@ window.CHANNELS_DATA = [
   "countryHe": "סלובניה",
   "iptv": "TVVeseljakGolicaHD.si",
   "imported": true,
-  "number": 1518,
+  "number": 1522,
   "src": {
    "by": "radio.serv.si",
    "kind": "public",
@@ -35826,7 +35906,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "AFTV.us",
   "imported": true,
-  "number": 1519,
+  "number": 1523,
   "src": {
    "by": "livestream.telvue.com",
    "kind": "public",
@@ -35850,7 +35930,7 @@ window.CHANNELS_DATA = [
   "countryHe": "בריטניה",
   "iptv": "SparkTV.uk",
   "imported": true,
-  "number": 1520,
+  "number": 1524,
   "src": {
    "by": "candlelightmedia-sparklightlove-4-us.roku.wurl.tv",
    "kind": "public",
@@ -35874,7 +35954,7 @@ window.CHANNELS_DATA = [
   "countryHe": "צרפת",
   "iptv": "CannesLerinsTV.fr",
   "imported": true,
-  "number": 1521,
+  "number": 1525,
   "src": {
    "by": "vdo2.pro-fhi.net",
    "kind": "public",
@@ -35898,7 +35978,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "AllgauTV.de",
   "imported": true,
-  "number": 1522,
+  "number": 1526,
   "src": {
    "by": "stream01.welocal.stream",
    "kind": "public",
@@ -35922,7 +36002,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ספרד",
   "iptv": "CanalSanRoque.es",
   "imported": true,
-  "number": 1523,
+  "number": 1527,
   "src": {
    "by": "cdnlivevlc.codev8.net",
    "kind": "public",
@@ -35946,7 +36026,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "bonappetit.us",
   "imported": true,
-  "number": 1524,
+  "number": 1528,
   "src": {
    "by": "bonappetit-samsung.amagi.tv",
    "kind": "public",
@@ -35971,7 +36051,7 @@ window.CHANNELS_DATA = [
   "iptv": "MasterChefsAcademyTV.uk",
   "imported": true,
   "webOk": false,
-  "number": 1525,
+  "number": 1529,
   "src": {
    "by": "platform-iuoamc.uk",
    "kind": "public",
@@ -35995,7 +36075,7 @@ window.CHANNELS_DATA = [
   "countryHe": "צרפת",
   "iptv": "TV5MONDEChefs.fr",
   "imported": true,
-  "number": 1526,
+  "number": 1530,
   "src": {
    "by": "tvf-tv5ch.otteravision.com",
    "kind": "public",
@@ -36019,7 +36099,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "PlutoTVCuisine.de",
   "imported": true,
-  "number": 1527,
+  "number": 1531,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -36043,7 +36123,7 @@ window.CHANNELS_DATA = [
   "countryHe": "איטליה",
   "iptv": "FoodNetwork.it",
   "imported": true,
-  "number": 1528,
+  "number": 1532,
   "src": {
    "by": "streaming.aurora.enhanced.live",
    "kind": "public",
@@ -36067,7 +36147,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רוסיה",
   "iptv": "KulinarTV.ru",
   "imported": true,
-  "number": 1529,
+  "number": 1533,
   "src": {
    "by": "api.alpaca.t62a.com",
    "kind": "public",
@@ -36091,7 +36171,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קנדה",
   "iptv": "GustoTV.ca",
   "imported": true,
-  "number": 1530,
+  "number": 1534,
   "src": {
    "by": "e75fc053c0d2406fb74cdd71d77e1a7f.mediatailor.us-east-1.amazonaws.com",
    "kind": "public",
@@ -36115,7 +36195,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הודו",
   "iptv": "FoodFood.in",
   "imported": true,
-  "number": 1531,
+  "number": 1535,
   "src": {
    "by": "mumt03.tangotv.in",
    "kind": "public",
@@ -36139,7 +36219,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שוודיה",
   "iptv": "Boligkjopiblinde.se",
   "imported": true,
-  "number": 1532,
+  "number": 1536,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -36163,7 +36243,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אינדונזיה",
   "iptv": "DensFoodChannel.id",
   "imported": true,
-  "number": 1533,
+  "number": 1537,
   "src": {
    "by": "op-flashcon-digdayahd-1.dens.tv",
    "kind": "public",
@@ -36187,7 +36267,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פקיסטן",
   "iptv": "MasalaTV.pk",
   "imported": true,
-  "number": 1534,
+  "number": 1538,
   "src": {
    "by": "cdn4.mjunoon.tv",
    "kind": "public",
@@ -36211,7 +36291,7 @@ window.CHANNELS_DATA = [
   "countryHe": "סינגפור",
   "iptv": "AsianFoodNetwork.sg",
   "imported": true,
-  "number": 1535,
+  "number": 1539,
   "src": {
    "by": "freem3u.xyz",
    "kind": "public",
@@ -36235,7 +36315,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ירדן",
   "iptv": "JordanKitchen.jo",
   "imported": true,
-  "number": 1536,
+  "number": 1540,
   "src": {
    "by": "playlist.fasttvcdn.com",
    "kind": "public",
@@ -36259,7 +36339,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "ChefChampion.us",
   "imported": true,
-  "number": 1537,
+  "number": 1541,
   "src": {
    "by": "rpn.bozztv.com",
    "kind": "public",
@@ -36283,7 +36363,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "PlutoTVCocina.de",
   "imported": true,
-  "number": 1538,
+  "number": 1542,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -36307,7 +36387,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רוסיה",
   "iptv": "CityEdenReceptyGurmana.ru",
   "imported": true,
-  "number": 1539,
+  "number": 1543,
   "src": {
    "by": "cityeden.catcast.tv",
    "kind": "public",
@@ -36331,7 +36411,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שוודיה",
   "iptv": "Boligkobiblinde.se",
   "imported": true,
-  "number": 1540,
+  "number": 1544,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -36355,7 +36435,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "ChefRocShow.us",
   "imported": true,
-  "number": 1541,
+  "number": 1545,
   "src": {
    "by": "rpn.bozztv.com",
    "kind": "public",
@@ -36379,7 +36459,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "PlutoTVFood.de",
   "imported": true,
-  "number": 1542,
+  "number": 1546,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -36403,7 +36483,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רוסיה",
   "iptv": "FoodTime.ru",
   "imported": true,
-  "number": 1543,
+  "number": 1547,
   "src": {
    "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
    "kind": "restream",
@@ -36427,7 +36507,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שוודיה",
   "iptv": "BuyingBlindDenmark.se",
   "imported": true,
-  "number": 1544,
+  "number": 1548,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -36451,7 +36531,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "GordonRamsaysHellsKitchen.us",
   "imported": true,
-  "number": 1545,
+  "number": 1549,
   "src": {
    "by": "aegis-cloudfront-1.tubi.video",
    "kind": "public",
@@ -36475,7 +36555,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "PlutoTVCucina.de",
   "imported": true,
-  "number": 1546,
+  "number": 1550,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -36499,7 +36579,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שוודיה",
   "iptv": "Kochenpatoppen.se",
   "imported": true,
-  "number": 1547,
+  "number": 1551,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -36523,7 +36603,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "TastemadeBrasil.us",
   "imported": true,
-  "number": 1548,
+  "number": 1552,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -36547,7 +36627,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שוודיה",
   "iptv": "MasterChefDanmarksstorstemadtalenter.se",
   "imported": true,
-  "number": 1549,
+  "number": 1553,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -36571,7 +36651,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "CookingPanda.us",
   "imported": true,
-  "number": 1550,
+  "number": 1554,
   "src": {
    "by": "stream-us-east-1.getpublica.com",
    "kind": "public",
@@ -36595,7 +36675,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שוודיה",
   "iptv": "Medknivenforstruben.se",
   "imported": true,
-  "number": 1551,
+  "number": 1555,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -36619,7 +36699,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "MadDogandMerrill.us",
   "imported": true,
-  "number": 1552,
+  "number": 1556,
   "src": {
    "by": "rpn.bozztv.com",
    "kind": "public",
@@ -36643,7 +36723,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שוודיה",
   "iptv": "Skonneombygninger.se",
   "imported": true,
-  "number": 1553,
+  "number": 1557,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -36667,7 +36747,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "PlutoTVKFOOD.us",
   "imported": true,
-  "number": 1554,
+  "number": 1558,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -36691,7 +36771,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שוודיה",
   "iptv": "StugfixarnaNorge.se",
   "imported": true,
-  "number": 1555,
+  "number": 1559,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -36715,7 +36795,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "FoodNetworkLatinAmerica.us",
   "imported": true,
-  "number": 1556,
+  "number": 1560,
   "src": {
    "by": "168.196.127.137",
    "kind": "public",
@@ -36739,7 +36819,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שוודיה",
   "iptv": "TilMiddagHos.se",
   "imported": true,
-  "number": 1557,
+  "number": 1561,
   "src": {
    "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
    "kind": "fast",
@@ -36763,7 +36843,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "CookingChannel.us",
   "imported": true,
-  "number": 1558,
+  "number": 1562,
   "src": {
    "by": "23.237.104.106",
    "kind": "public",
@@ -36787,7 +36867,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "FoodNetwork.us",
   "imported": true,
-  "number": 1559,
+  "number": 1563,
   "src": {
    "by": "23.237.104.106",
    "kind": "public",
@@ -36811,7 +36891,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארצות הברית",
   "iptv": "AmazingFactsTV.us",
   "imported": true,
-  "number": 1560,
+  "number": 1564,
   "src": {
    "by": "hlspackager.akamaized.net",
    "kind": "public",
@@ -36835,7 +36915,7 @@ window.CHANNELS_DATA = [
   "countryHe": "בריטניה",
   "iptv": "FaithWorldTV.uk",
   "imported": true,
-  "number": 1561,
+  "number": 1565,
   "src": {
    "by": "faithworldtv.abs.tv",
    "kind": "public",
@@ -36859,7 +36939,7 @@ window.CHANNELS_DATA = [
   "countryHe": "צרפת",
   "iptv": "EvandisGospelTV.fr",
   "imported": true,
-  "number": 1562,
+  "number": 1566,
   "src": {
    "by": "evandis.streamakaci.tv",
    "kind": "public",
@@ -36883,7 +36963,7 @@ window.CHANNELS_DATA = [
   "countryHe": "גרמניה",
   "iptv": "SophiaTVFrancais.de",
   "imported": true,
-  "number": 1563,
+  "number": 1567,
   "src": {
    "by": "bild-und-ton.stream",
    "kind": "public",
@@ -36907,7 +36987,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ספרד",
   "iptv": "LogosTV.es",
   "imported": true,
-  "number": 1564,
+  "number": 1568,
   "src": {
    "by": "streamer1.streamhost.org",
    "kind": "public",
@@ -36931,7 +37011,7 @@ window.CHANNELS_DATA = [
   "countryHe": "איטליה",
   "iptv": "PadrePioTV.it",
   "imported": true,
-  "number": 1565,
+  "number": 1569,
   "src": {
    "by": "600f07e114306.streamlock.net",
    "kind": "public",
@@ -36955,7 +37035,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רוסיה",
   "iptv": "HuzurTV.ru",
   "imported": true,
-  "number": 1566,
+  "number": 1570,
   "src": {
    "by": "hls-mycdn08724960135.cdnvideo.ru",
    "kind": "public",
@@ -36979,7 +37059,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אוקראינה",
   "iptv": "EWTNUkraine.ua",
   "imported": true,
-  "number": 1567,
+  "number": 1571,
   "src": {
    "by": "cdn3.wowza.com",
    "kind": "public",
@@ -37003,7 +37083,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קנדה",
   "iptv": "3ABNCanada.ca",
   "imported": true,
-  "number": 1568,
+  "number": 1572,
   "src": {
    "by": "3abn.bozztv.com",
    "kind": "public",
@@ -37027,7 +37107,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אוסטרליה",
   "iptv": "MissionAsia.au",
   "imported": true,
-  "number": 1569,
+  "number": 1573,
   "src": {
    "by": "livecdn.live247stream.com",
    "kind": "public",
@@ -37051,7 +37131,7 @@ window.CHANNELS_DATA = [
   "countryHe": "איחוד האמירויות הערביות",
   "iptv": "PeaceTVEnglish.ae",
   "imported": true,
-  "number": 1570,
+  "number": 1574,
   "src": {
    "by": "dzkyvlfyge.erbvr.com",
    "kind": "public",
@@ -37075,7 +37155,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קטאר",
   "iptv": "QatarTVTheHolyQuran.qa",
   "imported": true,
-  "number": 1571,
+  "number": 1575,
   "src": {
    "by": "qatartv.akamaized.net",
    "kind": "public",
@@ -37099,7 +37179,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ערב הסעודית",
   "iptv": "HolyQuranRadio.sa",
   "imported": true,
-  "number": 1572,
+  "number": 1576,
   "src": {
    "by": "live.kwikmotion.com",
    "kind": "public",
@@ -37123,7 +37203,7 @@ window.CHANNELS_DATA = [
   "countryHe": "מצרים",
   "iptv": "AghapyTV.eg",
   "imported": true,
-  "number": 1573,
+  "number": 1577,
   "src": {
    "by": "5b622f07944df.streamlock.net",
    "kind": "public",
@@ -37147,7 +37227,7 @@ window.CHANNELS_DATA = [
   "countryHe": "לבנון",
   "iptv": "NoursatEnglish.lb",
   "imported": true,
-  "number": 1574,
+  "number": 1578,
   "src": {
    "by": "Asharq Discovery – ItWorks (רשמי)",
    "kind": "official",
@@ -37171,7 +37251,7 @@ window.CHANNELS_DATA = [
   "countryHe": "טורקיה",
   "iptv": "DiyanetTV.tr",
   "imported": true,
-  "number": 1575,
+  "number": 1579,
   "src": {
    "by": "eustr73.mediatriple.net",
    "kind": "public",
@@ -37195,7 +37275,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הודו",
   "iptv": "SalvationTV.in",
   "imported": true,
-  "number": 1576,
+  "number": 1580,
   "src": {
    "by": "ktismaservers.in",
    "kind": "public",
@@ -37219,7 +37299,7 @@ window.CHANNELS_DATA = [
   "countryHe": "קוריאה הדרומית",
   "iptv": "BTNTV.kr",
   "imported": true,
-  "number": 1577,
+  "number": 1581,
   "src": {
    "by": "btn.nowcdn.co.kr",
    "kind": "public",
@@ -37243,7 +37323,7 @@ window.CHANNELS_DATA = [
   "countryHe": "סין",
   "iptv": "AndoTV.cn",
   "imported": true,
-  "number": 1578,
+  "number": 1582,
   "src": {
    "by": "play.kankanlive.com",
    "kind": "public",
@@ -37267,7 +37347,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ברזיל",
   "iptv": "RedeGospel.br",
   "imported": true,
-  "number": 1579,
+  "number": 1583,
   "src": {
    "by": "cdn.live.br1.jmvstream.com",
    "kind": "public",
@@ -37291,7 +37371,7 @@ window.CHANNELS_DATA = [
   "countryHe": "מקסיקו",
   "iptv": "MonteMaria.mx",
   "imported": true,
-  "number": 1580,
+  "number": 1584,
   "src": {
    "by": "5ca9af4645e15.streamlock.net",
    "kind": "public",
@@ -37315,7 +37395,7 @@ window.CHANNELS_DATA = [
   "countryHe": "ארגנטינה",
   "iptv": "TVManaArgentina.ar",
   "imported": true,
-  "number": 1581,
+  "number": 1585,
   "src": {
    "by": "w2.manasat.com",
    "kind": "public",
@@ -37339,7 +37419,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פורטוגל",
   "iptv": "ManaChurchOnline.pt",
   "imported": true,
-  "number": 1582,
+  "number": 1586,
   "src": {
    "by": "w2.manasat.com",
    "kind": "public",
@@ -37363,7 +37443,7 @@ window.CHANNELS_DATA = [
   "countryHe": "שווייץ",
   "iptv": "ImmaculataTV.ch",
   "imported": true,
-  "number": 1583,
+  "number": 1587,
   "src": {
    "by": "g5nl63z8lpq6-hls-live.5centscdn.com",
    "kind": "public",
@@ -37387,7 +37467,7 @@ window.CHANNELS_DATA = [
   "countryHe": "אוסטריה",
   "iptv": "KITTV.at",
   "imported": true,
-  "number": 1584,
+  "number": 1588,
   "src": {
    "by": "everest.pa-hosting.de",
    "kind": "public",
@@ -37411,7 +37491,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פולין",
   "iptv": "EWTNPoland.pl",
   "imported": true,
-  "number": 1585,
+  "number": 1589,
   "src": {
    "by": "cdn3.wowza.com",
    "kind": "public",
@@ -37435,7 +37515,7 @@ window.CHANNELS_DATA = [
   "countryHe": "פינלנד",
   "iptv": "HimlenTV7.fi",
   "imported": true,
-  "number": 1586,
+  "number": 1590,
   "src": {
    "by": "vod.tv7.fi",
    "kind": "public",
@@ -37459,7 +37539,7 @@ window.CHANNELS_DATA = [
   "countryHe": "רומניה",
   "iptv": "AlfaOmegaTV.ro",
   "imported": true,
-  "number": 1587,
+  "number": 1591,
   "src": {
    "by": "aom-live.maghost.ro",
    "kind": "public",
@@ -37483,7 +37563,7 @@ window.CHANNELS_DATA = [
   "countryHe": "הונגריה",
   "iptv": "ApostolTV.hu",
   "imported": true,
-  "number": 1588,
+  "number": 1592,
   "src": {
    "by": "live.apostoltv.hu",
    "kind": "public",
@@ -37507,7 +37587,7 @@ window.CHANNELS_DATA = [
   "countryHe": "צ׳ילה",
   "iptv": "FortalezaTV.cl",
   "imported": true,
-  "number": 1589,
+  "number": 1593,
   "src": {
    "by": "multimedia.fortalezatv.cl",
    "kind": "public",

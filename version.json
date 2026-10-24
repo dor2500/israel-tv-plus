@@ -1,48 +1,48 @@
 {
-  "version": "3.5.0",
-  "code": 202610242035,
-  "app": 350,
+  "version": "3.5.1",
+  "code": 202610242058,
+  "app": 351,
   "shell": 3,
   "date": "2026-10-24",
   "notes": [
-    "30 תחנות רדיו ישראליות חדשות – עכשיו 100 תחנות רדיו ישראליות (היו 70), כולן נבדקו שהן משדרות לפני שנכנסו:",
-    "רדיוס 100FM: קלאסיק רוק, ג'אז, בלוז, רוק, אירוויזיון, סטנד-אפ, קלאב, ציפורי כוכבים, דיסני, לטין, אגדות, קאברים, בריטפופ, מוזיקת עולם, סלפי, טיקטוק ועוד",
-    "מוזיקה מזרחית FM, רק מוזיקה, עברי 6, סטאר 33, אלי נסימן, AVIV media",
-    "ברסלב פוריו: הלכות ודף יומי, קצר וקולע, ספרי ברסלב",
-    "קבלה לעם בצרפתית ובאנגלית",
-    "הרשימה כוללת עכשיו 1589 ערוצים ותחנות"
+    "תיקון שלט בטלוויזיה (LG webOS, Android TV, Samsung Tizen):",
+    "לחיצה על הכפתור העליון (חץ למעלה ▲ / כפתור ערוץ הבא) מעבירה עכשיו קדימה לערוץ הבא (במקום אחורה).",
+    "תיקון כיוון הניווט בעת שגיאת שידור ובמעבר דפים.",
+    "הוספת ערוצים פופולריים חדשים (סה\"כ 1593 ערוצים ותחנות):",
+    "Sport 1 Baltic HD, National Geographic HD, Discovery Channel HD, Nat Geo Wild HD",
+    "שילוב מערכת בדיקת ערוצים רציפה לשמירה על שידורים פעילים."
   ],
   "native": {
     "android": {
-      "version": "3.5.0",
-      "app": 350,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.5.0/IsraelTVPlus-android.apk"
+      "version": "3.5.1",
+      "app": 351,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.5.1/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "3.5.0",
-      "app": 350,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.5.0/IsraelTVPlus-windows-setup.exe"
+      "version": "3.5.1",
+      "app": 351,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.5.1/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "3.5.0",
-      "app": 350,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.5.0/com.israeltv.plus_all.ipk",
+      "version": "3.5.1",
+      "app": 351,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.5.1/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "3.5.0",
-      "app": 350,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.5.0/IsraelTVPlus-tizen-project.zip"
+      "version": "3.5.1",
+      "app": 351,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.5.1/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "3.5.0",
-      "app": 350,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.5.0/IsraelTVPlus-macos-arm64.zip"
+      "version": "3.5.1",
+      "app": 351,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.5.1/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "3.5.0",
-      "app": 350,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.5.0/IsraelTVPlus-linux-x64.zip"
+      "version": "3.5.1",
+      "app": 351,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.5.1/IsraelTVPlus-linux-x64.zip"
     }
   }
 }

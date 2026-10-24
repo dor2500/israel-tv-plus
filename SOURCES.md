@@ -1,6 +1,6 @@
 # מקורות – מאיפה מגיע כל ערוץ
 
-נוצר אוטומטית מ-`channels.json` על ידי `tools/make_sources.py`. סה"כ **1589** פריטים: 1489 ערוצי טלוויזיה, 100 תחנות רדיו, 0 אפליקציות/שירותים.
+נוצר אוטומטית מ-`channels.json` על ידי `tools/make_sources.py`. סה"כ **1593** פריטים: 1493 ערוצי טלוויזיה, 100 תחנות רדיו, 0 אפליקציות/שירותים.
 
 ## איך הערוצים נאספו ונבדקו
 
@@ -20,7 +20,7 @@
 - **134 שידורים רשמיים** – מהשרתים של הגוף המשדר עצמו או של המפיץ שלו (כאן, 13, 14, i24NEWS, גלי צה"ל, תחנות הרדיו, DW, אל-ג'זירה...).
 - **175 ערוצי FAST** – ערוצים חינמיים עם פרסומות שהבעלים מפיצים בעצמם (Pluto TV, BabyFirst, LEGO, Baby Shark...).
 - **1173 ערוצים מהעולם** – שידורים פתוחים מהמאגר הציבורי iptv-org (ייבוא אוטומטי, `tools/import_iptv.py`): כל אחד נבדק שהוא משדר ושיש בו תמונה, ללא ערוצים שדורשים מנוי/כתובת מיוחדת. רובם מהשרתים של הערוצים עצמם, אבל הבעלים לא נבדקו אחד-אחד.
-- **107 ממסרי צד שלישי** – בעיקר `stream.mcquack.net` (76 ערוצים). אלה **אינם** השרתים של הערוצים: אתר חיצוני קולט את השידור ומפיץ אותו מחדש. בהם נמצאים גם ערוצים בתשלום (HOT, yes, viju/TV1000, ערוצי ספורט) – סביר מאוד שההפצה הזו **ללא רישיון** מבעלי הזכויות, והם עלולים להיעלם בכל רגע. ההחלטה אם להשאיר אותם היא שלך; הסקריפטים לא מוסיפים ממסרים חדשים של ערוצים בתשלום.
+- **111 ממסרי צד שלישי** – בעיקר `stream.mcquack.net` (80 ערוצים). אלה **אינם** השרתים של הערוצים: אתר חיצוני קולט את השידור ומפיץ אותו מחדש. בהם נמצאים גם ערוצים בתשלום (HOT, yes, viju/TV1000, ערוצי ספורט) – סביר מאוד שההפצה הזו **ללא רישיון** מבעלי הזכויות, והם עלולים להיעלם בכל רגע. ההחלטה אם להשאיר אותם היא שלך; הסקריפטים לא מוסיפים ממסרים חדשים של ערוצים בתשלום.
 - **שירותי המנויים** (פרטנר, סלקום, STING, yes, HOT) – אין בפרויקט שום שידור שלהם; הכרטיס רק פותח את האפליקציה/האתר הרשמי, וצפייה דורשת מנוי.
 
 > הסיווג רשמי / FAST / ממסר נקבע לפי שם השרת שממנו מגיע השידור (למשל CDN של הגוף המשדר), ולא אושר מול כל גוף משדר בנפרד.
@@ -30,7 +30,7 @@
 | שרת | מי זה | סוג | מספר |
 |---|---|---|---|
 | `jmp2.uk` | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | 168 |
-| `stream.mcquack.net` | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | 76 |
+| `stream.mcquack.net` | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | 80 |
 | `gb25.streamgates.net` | StreamGates – ערוצי רדיוס 100FM | ✅ רשמי | 34 |
 | `92.114.85.87` | 92.114.85.87 | 🌐 ציבורי (iptv-org) | 18 |
 | `cdn.cybercdn.live` | CyberCDN – ה-CDN של תחנות הרדיו עצמן | ✅ רשמי | 16 |
@@ -1086,1407 +1086,1411 @@
 | 256 | Bellator MMA | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`BellatorMMA.us`) | ✅ |
 | 257 | Pluto TV Competition | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVCompetition.us`) | ✅ |
 | 258 | PokerGo | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PokerGo.us`) | ✅ |
+| 259 | Sport 1 בלטיק HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
 
 ## 📺 חדשות מהעולם (News)
 
 | # | ערוץ | שרת השידור | סוג | נמצא ב | באתר (דפדפן) |
 |---|---|---|---|---|---|
-| 259 | Black News Channel | blacknewschannel-xumo-us.amagi.tv | 🌐 ציבורי (iptv-org) | iptv-org (`BlackNewsChannel.us`) | ✅ |
-| 260 | Iran International | hlspackager.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`IranInternational.uk`) | ✅ |
-| 261 | Africa 24 English | edge20.vedge.infomaniak.com | 🌐 ציבורי (iptv-org) | iptv-org (`Africa24English.fr`) | ✅ |
-| 262 | DW | dwamdstream103.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`DW.de`) | ✅ |
-| 263 | M95 Television Marbella | limited2.todostreaming.es | 🌐 ציבורי (iptv-org) | iptv-org (`M95TelevisionMarbella.es`) | ✅ |
-| 264 | Rai News 24 | d3k8wzt41aflvx.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`RaiNews24.it`) | ✅ |
-| 265 | RT | rt-glb.rttv.com | 🌐 ציבורי (iptv-org) | iptv-org (`RT.ru`) | ✅ |
-| 266 | FREEDOM | dash4.antik.sk | 🌐 ציבורי (iptv-org) | iptv-org (`FREEDOM.ua`) | ✅ |
-| 267 | Hamdard TV | tv.hamdardtv.com | 🌐 ציבורי (iptv-org) | iptv-org (`HamdardTV.ca`) | ✅ |
-| 268 | News24 | skynewsau-live-premium.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`News24.au`) | ✅ |
-| 269 | Al Arabiya Programs | live.alarabiya.net | 🌐 ציבורי (iptv-org) | iptv-org (`AlArabiyaPrograms.ae`) | ✅ |
-| 270 | Al Araby TV | live.kwikmotion.com | 🌐 ציבורי (iptv-org) | iptv-org (`AlArabyTV.qa`) | ✅ |
-| 271 | Al Hadath | av.alarabiya.net | 🌐 ציבורי (iptv-org) | iptv-org (`AlHadath.sa`) | ✅ |
-| 272 | Al Ghad TV | eazyvwqssi.erbvr.com | 🌐 ציבורי (iptv-org) | iptv-org (`AlGhadTV.eg`) | ✅ |
-| 273 | Red TV Lebanon | live.kwikmotion.com | 🌐 ציבורי (iptv-org) | iptv-org (`RedTVLebanon.lb`) | ✅ |
-| 274 | TRT World | tv-trtworld.medya.trt.com.tr | 🌐 ציבורי (iptv-org) | iptv-org (`TRTWorld.tr`) | ✅ |
-| 275 | CNN News 18 | n18syndication.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`CNNNews18.in`) | ✅ |
-| 276 | NHK World-Japan | masterpl.hls.nhkworld.jp | 🌐 ציבורי (iptv-org) | iptv-org (`NHKWorldJapan.jp`) | ✅ |
-| 277 | Arirang TV | freem3u.xyz | 🌐 ציבורי (iptv-org) | iptv-org (`ArirangTV.kr`) | ✅ |
-| 278 | CGTN | amg00405-rakutentv-cgtn-rakuten-i9tar.amagi.tv | 🌐 ציבורי (iptv-org) | iptv-org (`CGTN.cn`) | ✅ |
-| 279 | CNN Brasil | d25usgadhphvwi.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`CNNBrasil.br`) | ✅ |
-| 280 | Icrtv Colima | 5fc584f3f19c9.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`IcrtvColima.mx`) | ✅ |
-| 281 | Canal 26 | stream-gtlc.telecentro.net.ar | 🌐 ציבורי (iptv-org) | iptv-org (`Canal26.ar`) | ✅ |
-| 282 | ARTV | playout172.livextend.cloud | 🌐 ציבורי (iptv-org) | iptv-org (`ARTV.pt`) | ✅ |
-| 283 | EbS | streams.prd.commavservices.eu | 🌐 ציבורי (iptv-org) | iptv-org (`EbS.be`) | ✅ |
-| 284 | Meteonews | streaming.meteonews.net | 🌐 ציבורי (iptv-org) | iptv-org (`Meteonews.ch`) | ❌ רק באפליקציה (הפניה בלי CORS) |
-| 285 | Euronews | cdn-euronews.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`Euronews.pl`) | ✅ |
-| 286 | Astra TV | server.gointernet.gr | 🌐 ציבורי (iptv-org) | iptv-org (`AstraTV.gr`) | ✅ |
-| 287 | Miracle Channel | live.miracleonline.org | 🌐 ציבורי (iptv-org) | iptv-org (`MiracleChannel.se`) | ✅ |
-| 288 | TV from the Danish Parliament | cdnapi.kaltura.com | 🌐 ציבורי (iptv-org) | iptv-org (`TVfromtheDanishParliament.dk`) | ✅ |
-| 289 | Nopola News | virta2.nopolanews.fi | 🌐 ציבורי (iptv-org) | iptv-org (`NopolaNews.fi`) | ✅ |
-| 290 | Current Time TV | rfe-ingest.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`CurrentTimeTV.cz`) | ✅ |
-| 291 | Dotto TV | live.dottotv.ro | 🌐 ציבורי (iptv-org) | iptv-org (`DottoTV.ro`) | ✅ |
-| 292 | NCTV | pantera1-100gb-cl-movistar.dps.live | 🌐 ציבורי (iptv-org) | iptv-org (`NCTV.cl`) | ✅ |
-| 293 | Noticiero 90 Minutos | play.cdn.enetres.net | 🌐 ציבורי (iptv-org) | iptv-org (`Noticiero90Minutos.co`) | ✅ |
-| 294 | RPP TV | redirector.rudo.video | 🌐 ציבורי (iptv-org) | iptv-org (`RPPTV.pe`) | ✅ |
-| 295 | BTV | lnd0t3b922.tenbytecdn.com | 🌐 ציבורי (iptv-org) | iptv-org (`BTV.id`) | ✅ |
-| 296 | 13 Siam Thai | live.x2.co.th | 🌐 ציבורי (iptv-org) | iptv-org (`13SiamThai.th`) | ✅ |
-| 297 | Dong Nai TV 1 | freem3u.xyz | 🌐 ציבורי (iptv-org) | iptv-org (`DongNaiTV1.vn`) | ✅ |
-| 298 | Neo News | vodzong.mjunoon.tv | 🌐 ציבורי (iptv-org) | iptv-org (`NeoNews.pk`) | ✅ |
-| 299 | Mihan TV | iptv.mihantv.com | 🌐 ציבורי (iptv-org) | iptv-org (`MihanTV.ir`) | ✅ |
-| 300 | Medi1TV Arabic | cdn.live.easybroadcast.io | 🌐 ציבורי (iptv-org) | iptv-org (`Medi1TVArabic.ma`) | ✅ |
-| 301 | LN24SA | cdnstack.internetmultimediaonline.org | 🌐 ציבורי (iptv-org) | iptv-org (`LN24SA.za`) | ✅ |
-| 302 | Silverbird News 24 | viewmedia7219.bozztv.com | 🌐 ציבורי (iptv-org) | iptv-org (`SilverbirdNews24.ng`) | ✅ |
-| 303 | Al Sharqiya News | indexforce.com | 🌐 ציבורי (iptv-org) | iptv-org (`AlSharqiyaNews.iq`) | ✅ |
-| 304 | Carivision | ss2.tvrdomi.com | 🌐 ציבורי (iptv-org) | iptv-org (`Carivision.do`) | ✅ |
-| 305 | HCH | live.streamhch.com | 🌐 ציבורי (iptv-org) | iptv-org (`HCH.hn`) | ✅ |
-| 306 | CNA | live1.mediadesk.al | 🌐 ציבורי (iptv-org) | iptv-org (`CNA.al`) | ✅ |
-| 307 | Halab Today TV | halabtoday-live.lg.mncdn.com | 🌐 ציבורי (iptv-org) | iptv-org (`HalabTodayTV.sy`) | ✅ |
-| 308 | Canal I | streaming.canal-i.com | 🌐 ציבורי (iptv-org) | iptv-org (`CanalI.ve`) | ✅ |
-| 309 | CEACOM TV | eu1.servers10.com | 🌐 ציבורי (iptv-org) | iptv-org (`CEACOMTV.bo`) | ✅ |
-| 310 | Antik Info TV | dash4.antik.sk | 🌐 ציבורי (iptv-org) | iptv-org (`AntikInfoTV.sk`) | ✅ |
-| 311 | Baku.TV | rtmp.baku.tv | 🌐 ציבורי (iptv-org) | iptv-org (`BakuTV.az`) | ✅ |
-| 312 | KTV 2 | kwtktv2ta.cdn.mangomolo.com | 🌐 ציבורי (iptv-org) | iptv-org (`KTV2.kw`) | ✅ |
-| 313 | NW Info 2 | hls.newworldtv.com | 🌐 ציבורי (iptv-org) | iptv-org (`NWInfo2.tg`) | ✅ |
-| 314 | Belarus-24 | ngtrk.dc.beltelecom.by | 🌐 ציבורי (iptv-org) | iptv-org (`Belarus24.by`) | ✅ |
-| 315 | Al Masirah | live.cdnbridge.tv | 🌐 ציבורי (iptv-org) | iptv-org (`AlMasirah.ye`) | ✅ |
-| 316 | Al Najah News | streaming.najah.edu | 🌐 ציבורי (iptv-org) | iptv-org (`AlNajahNews.ps`) | ✅ |
-| 317 | Altaghier TV | jmc-live.ercdn.net | 🌐 ציבורי (iptv-org) | iptv-org (`AltaghierTV.jo`) | ✅ |
-| 318 | TV Legislativa | streamingav.asambleanacional.gob.ec | 🌐 ציבורי (iptv-org) | iptv-org (`TVLegislativa.ec`) | ✅ |
-| 319 | Ekushey TV | ekusheyserver.com | 🌐 ציבורי (iptv-org) | iptv-org (`EkusheyTV.bd`) | ❌ רק באפליקציה (הפניה בלי CORS) |
-| 320 | Formula | c4635.cdn.xsg.ge | 🌐 ציבורי (iptv-org) | iptv-org (`Formula.ge`) | ✅ |
-| 321 | Privesc.Eu TV | cachestar.privesc.eu | 🌐 ציבורי (iptv-org) | iptv-org (`PrivescEuTV.md`) | ✅ |
-| 322 | CNA | d2e1asnsl7br7b.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`CNA.sg`) | ✅ |
-| 323 | Guardian Talk Radio | cdn-edge1.streamcomedia.com | 🌐 ציבורי (iptv-org) | iptv-org (`GuardianTalkRadio.bs`) | ✅ |
-| 324 | Parliament TV | ptvlive.kordia.net.nz | 🌐 ציבורי (iptv-org) | iptv-org (`ParliamentTV.nz`) | ✅ |
-| 325 | Al Masar TV | starmenajo.com | 🌐 ציבורי (iptv-org) | iptv-org (`AlMasarTV.ly`) | ✅ |
-| 326 | AL24 News | cdn.live.easybroadcast.io | 🌐 ציבורי (iptv-org) | iptv-org (`AL24News.dz`) | ✅ |
-| 327 | Dabanga TV | hls.dabangasudan.org | 🌐 ציבורי (iptv-org) | iptv-org (`DabangaTV.sd`) | ✅ |
-| 328 | Oman TV Mubashir | partwota.cdn.mgmlcdn.com | 🌐 ציבורי (iptv-org) | iptv-org (`OmanTVMubashir.om`) | ✅ |
-| 329 | Sahara 24 | live.saharamedias.net | 🌐 ציבורי (iptv-org) | iptv-org (`Sahara24.mr`) | ✅ |
-| 330 | 7 Info | video1.getstreamhosting.com | 🌐 ציבורי (iptv-org) | iptv-org (`7Info.ci`) | ✅ |
-| 331 | Baraka Television | stream.berosat.live | 🌐 ציבורי (iptv-org) | iptv-org (`BarakaTelevision.cd`) | ✅ |
-| 332 | Haiti News Channel | cdn.haititivi.com | 🌐 ציבורי (iptv-org) | iptv-org (`HaitiNewsChannel.ht`) | ✅ |
-| 333 | Monaco Info | webtv.monacoinfo.com | 🌐 ציבורי (iptv-org) | iptv-org (`MonacoInfo.mc`) | ✅ |
-| 334 | Guatevision | mdstrm.com | 🌐 ציבורי (iptv-org) | iptv-org (`Guatevision.gt`) | ✅ |
-| 335 | Norte Informativo TV | videohd.live | 🌐 ציבורי (iptv-org) | iptv-org (`NorteInformativoTV.cr`) | ✅ |
-| 336 | Prensa Latina TV | eu1.servers10.com | 🌐 ציבורי (iptv-org) | iptv-org (`PrensaLatinaTV.cu`) | ✅ |
-| 337 | Radio Ancon | www.streaming507.net | 🌐 ציבורי (iptv-org) | iptv-org (`RadioAncon.pa`) | ✅ |
-| 338 | Brian TV | livefta.malimarcdn.com | 🌐 ציבורי (iptv-org) | iptv-org (`BrianTV.la`) | ✅ |
-| 339 | DVB TV | live-stream.dvb.no | 🌐 ציבורי (iptv-org) | iptv-org (`DVBTV.mm`) | ✅ |
-| 340 | First Channel News | amtvusdvr.tulix.tv | 🌐 ציבורי (iptv-org) | iptv-org (`FirstChannelNews.am`) | ✅ |
-| 341 | Newsmax Balkans | newsmaxadria.mts-si.tv | 🌐 ציבורי (iptv-org) | iptv-org (`NewsmaxBalkans.ba`) | ✅ |
-| 342 | TOLOnews | tgn.bozztv.com | 🌐 ציבורי (iptv-org) | iptv-org (`TOLOnews.af`) | ✅ |
-| 343 | TV Arta | gjirafa-video-live.gjirafa.net | 🌐 ציבורי (iptv-org) | iptv-org (`TVArta.xk`) | ✅ |
-| 344 | TV Jadran | tvjadran.stream.agatin.hr | 🌐 ציבורי (iptv-org) | iptv-org (`TVJadran.hr`) | ✅ |
-| 345 | Visir | live.visir.is | 🌐 ציבורי (iptv-org) | iptv-org (`Visir.is`) | ✅ |
-| 346 | BX Inform | reflect-stream-bronxnet.cablecast.tv | 🌐 ציבורי (iptv-org) | iptv-org (`BXInform.us`) | ✅ |
-| 347 | Dunya News UK | ukintl.dunyanews.tv | 🌐 ציבורי (iptv-org) | iptv-org (`DunyaNewsUK.uk`) | ✅ |
-| 348 | Africa 24 | africa24.vedge.infomaniak.com | 🌐 ציבורי (iptv-org) | iptv-org (`Africa24.fr`) | ✅ |
-| 349 | 3Cat Cameres del temps | directes-tv-int.3catdirectes.cat | 🌐 ציבורי (iptv-org) | iptv-org (`3CatCameresdeltemps.es`) | ✅ |
-| 350 | Senato TV | senato-live.morescreens.com | 🌐 ציבורי (iptv-org) | iptv-org (`SenatoTV.it`) | ✅ |
-| 351 | 360° News | live-vgtrksmotrim.cdnvideo.ru | 🌐 ציבורי (iptv-org) | iptv-org (`360News.ru`) | ✅ |
-| 352 | Channel 24 | streamvideol1.luxnet.ua | 🌐 ציבורי (iptv-org) | iptv-org (`Channel24.ua`) | ✅ |
-| 353 | CityNews Calgary | citynewsregional.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`CityNewsCalgary.ca`) | ✅ |
-| 354 | ticker News | live-hls-7agy.livepush.io | 🌐 ציבורי (iptv-org) | iptv-org (`tickerNews.au`) | ✅ |
-| 355 | Al Yaum TV | hlspackager.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`AlYaumTV.ae`) | ✅ |
-| 356 | Al Araby TV 2 | live.kwikmotion.com | 🌐 ציבורי (iptv-org) | iptv-org (`AlArabyTV2.qa`) | ✅ |
-| 357 | Al Alam Al Yawm | mn-nl.mncdn.com | 🌐 ציבורי (iptv-org) | iptv-org (`AlAlamAlYawm.sa`) | ✅ |
-| 358 | Voice of Lebanon | Asharq Discovery – ItWorks (רשמי) | ✅ רשמי | iptv-org (`VoiceofLebanon.lb`) | ✅ |
-| 359 | Mekameleen TV | mn-nl.mncdn.com | 🌐 ציבורי (iptv-org) | iptv-org (`MekameleenTV.tr`) | ✅ |
-| 360 | News18 Assam North-East | n18syndication.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`News18AssamNorthEast.in`) | ✅ |
-| 361 | Weathernews | rch01e-alive-hls.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`Weathernews.jp`) | ✅ |
-| 362 | Arirang UN | amdlive-ch02-ctnd-com.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`ArirangUN.kr`) | ✅ |
-| 363 | STZ TV | cdn.live.br1.jmvstream.com | 🌐 ציבורי (iptv-org) | iptv-org (`STZTV.br`) | ✅ |
-| 364 | AMX Noticias | 5e50264bd6766.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`AMXNoticias.mx`) | ✅ |
-| 365 | VIVE TV | vivo.solumedia.com | 🌐 ציבורי (iptv-org) | iptv-org (`VIVETV.ar`) | ✅ |
-| 366 | CNN Portugal | github.com | 🌐 ציבורי (iptv-org) | iptv-org (`CNNPortugal.pt`) | ✅ |
-| 367 | EbS+ | streams.prd.commavservices.eu | 🌐 ציבורי (iptv-org) | iptv-org (`EbSPlus.be`) | ✅ |
-| 368 | TVK Stella | stream.tvkstella.pl | 🌐 ציבורי (iptv-org) | iptv-org (`TVKStella.pl`) | ✅ |
-| 369 | Hellenic Parliament TV | ert-ucdn.broadpeak-aas.com | 🌐 ציבורי (iptv-org) | iptv-org (`HellenicParliamentTV.gr`) | ✅ |
-| 370 | Di TV | cdn0-03837-liveedge0.dna.ip-only.net | 🌐 ציבורי (iptv-org) | iptv-org (`DiTV.se`) | ✅ |
-| 371 | CT24 | dash2.antik.sk | 🌐 ציבורי (iptv-org) | iptv-org (`CT24.cz`) | ✅ |
-| 372 | Aleph News | stream-aleph.m.ro | 🌐 ציבורי (iptv-org) | iptv-org (`AlephNews.ro`) | ✅ |
-| 373 | T13 En Vivo | redirector.dps.live | 🌐 ציבורי (iptv-org) | iptv-org (`T13EnVivo.cl`) | ✅ |
-| 374 | NTN24 | stream1.bitred.cl | 🌐 ציבורי (iptv-org) | iptv-org (`NTN24.co`) | ✅ |
-| 375 | Conecta2TV | live.obslivestream.com | 🌐 ציבורי (iptv-org) | iptv-org (`Conecta2TV.pe`) | ✅ |
-| 376 | Lingkar TV | lingkartv.my.id | 🌐 ציבורי (iptv-org) | iptv-org (`LingkarTV.id`) | ✅ |
-| 377 | Thai Parliament Television | tv-live.tpchannel.org | 🌐 ציבורי (iptv-org) | iptv-org (`ThaiParliamentTelevision.th`) | ✅ |
-| 378 | Tra Vinh TV | freem3u.xyz | 🌐 ציבורי (iptv-org) | iptv-org (`TraVinhTV.vn`) | ✅ |
-| 379 | Dunya News | imob.dunyanews.tv | 🌐 ציבורי (iptv-org) | iptv-org (`DunyaNews.pk`) | ✅ |
-| 380 | Medi1TV Afrique | cdn.live.easybroadcast.io | 🌐 ציבורי (iptv-org) | iptv-org (`Medi1TVAfrique.ma`) | ✅ |
-| 381 | SABC News | sabconetanw.cdn.mangomolo.com | 🌐 ציבורי (iptv-org) | iptv-org (`SABCNews.za`) | ✅ |
-| 382 | News Central | wf.newscentral.ng | 🌐 ציבורי (iptv-org) | iptv-org (`NewsCentral.ng`) | ✅ |
-| 383 | Alghadeer TV | sd343444.vodu.store | 🌐 ציבורי (iptv-org) | iptv-org (`AlghadeerTV.iq`) | ✅ |
-| 384 | RDN | edge.essastream.com | 🌐 ציבורי (iptv-org) | iptv-org (`RDN.do`) | ✅ |
-| 385 | Mega TV | www.desde-paraguay.com | 🌐 ציבורי (iptv-org) | iptv-org (`MegaTV.py`) | ✅ |
-| 386 | Lenca TV | lencatelevision.com | 🌐 ציבורי (iptv-org) | iptv-org (`LencaTV.hn`) | ✅ |
-| 387 | ntv | protokolldns.xyz | 🌐 ציבורי (iptv-org) | iptv-org (`ntv.al`) | ✅ |
-| 388 | Syria TV | live.kwikmotion.com | 🌐 ציבורי (iptv-org) | iptv-org (`SyriaTV.sy`) | ✅ |
-| 389 | CRTV News | live1.acangroup.org | 🌐 ציבורי (iptv-org) | iptv-org (`CRTVNews.cm`) | ✅ |
-| 390 | Telesur | mblenmain01.telesur.ultrabase.net | 🌐 ציבורי (iptv-org) | iptv-org (`Telesur.ve`) | ✅ |
-| 391 | UMSA TVU LP | edge.enhdtv.com | 🌐 ציבורי (iptv-org) | iptv-org (`UMSATVULP.bo`) | ✅ |
-| 392 | TV NRSR | n11.stv.livebox.sk | 🌐 ציבורי (iptv-org) | iptv-org (`TVNRSR.sk`) | ✅ |
-| 393 | APA Tv | stream.apa.tv | 🌐 ציבורי (iptv-org) | iptv-org (`APATv.az`) | ❌ רק באפליקציה (HTTP) |
-| 394 | Fresh News | streaming-android.freshnewsasia.tv | 🌐 ציבורי (iptv-org) | iptv-org (`FreshNews.kh`) | ❌ רק באפליקציה (HTTP) |
-| 395 | KTV News | kwtkbta.cdn.mangomolo.com | 🌐 ציבורי (iptv-org) | iptv-org (`KTVNews.kw`) | ✅ |
-| 396 | NW Info | hls.newworldtv.com | 🌐 ציבורי (iptv-org) | iptv-org (`NWInfo.tg`) | ✅ |
-| 397 | Perviy Informationniy | ngtrk.dc.beltelecom.by | 🌐 ציבורי (iptv-org) | iptv-org (`PerviyInformationniy.by`) | ✅ |
-| 398 | Al Masirah Mubacher | live2.cdnbridge.tv | 🌐 ציבורי (iptv-org) | iptv-org (`AlMasirahMubacher.ye`) | ✅ |
-| 399 | Ma'an TV | htvmada.mada.ps | 🌐 ציבורי (iptv-org) | iptv-org (`MaanTV.ps`) | ✅ |
-| 400 | Alhaqeqa Aldawlia | ghaasiflu.online | 🌐 ציבורי (iptv-org) | iptv-org (`AlhaqeqaAldawlia.jo`) | ✅ |
-| 401 | Ecotel TV | ecoteltv.streamseguro.com | 🌐 ציבורי (iptv-org) | iptv-org (`EcotelTV.ec`) | ✅ |
-| 402 | News 21 Bangla TV | 103.190.133.68 | 🌐 ציבורי (iptv-org) | iptv-org (`News21BanglaTV.bd`) | ❌ רק באפליקציה (HTTP) |
-| 403 | Palitra News | live.palitranews.ge | 🌐 ציבורי (iptv-org) | iptv-org (`PalitraNews.ge`) | ✅ |
-| 404 | Realitatea TV | realitatealive.md | 🌐 ציבורי (iptv-org) | iptv-org (`RealitateaTV.md`) | ✅ |
-| 405 | Cheddar News | hls.livecdn.io | 🌐 ציבורי (iptv-org) | iptv-org (`CheddarNews.us`) | ✅ |
-| 406 | Afghanistan International | hls.afintl.com | 🌐 ציבורי (iptv-org) | iptv-org (`AfghanistanInternational.uk`) | ✅ |
-| 407 | Africa 24 Sport | africa24.vedge.infomaniak.com | 🌐 ציבורי (iptv-org) | iptv-org (`Africa24Sport.fr`) | ✅ |
-| 408 | WELT | dash4.antik.sk | 🌐 ציבורי (iptv-org) | iptv-org (`WELT.de`) | ✅ |
-| 409 | 3CatInfo | directes-tv-int.3catdirectes.cat | 🌐 ציבורי (iptv-org) | iptv-org (`3CatInfo.es`) | ✅ |
-| 410 | Etna Espresso Channel | 5db313b643fd8.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`EtnaEspressoChannel.it`) | ✅ |
-| 411 | RT Arabic | rt-arb.rttv.com | 🌐 ציבורי (iptv-org) | iptv-org (`RTArabic.ru`) | ✅ |
-| 412 | Rada TV | live-tv.cloud – ספק IPTV אוקראיני | ⚠️ ממסר צד שלישי | iptv-org (`RadaTV.ua`) | ✅ |
-| 413 | CityNews Toronto | citynewsregional.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`CityNewsToronto.ca`) | ✅ |
-| 414 | ABC News | abc-news-dmd-streams-1.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`ABCNews.au`) | ✅ |
-| 415 | Alarabiya | live.alarabiya.net | 🌐 ציבורי (iptv-org) | iptv-org (`Alarabiya.ae`) | ✅ |
-| 416 | Al Jazeera 2 | live-hls-web-aja2-gcp.thehlive.com | 🌐 ציבורי (iptv-org) | iptv-org (`AlJazeera2.qa`) | ✅ |
-| 417 | Palestine Al Yawm | live.paltodaytv.com | 🌐 ציבורי (iptv-org) | iptv-org (`PalestineAlYawm.lb`) | ✅ |
-| 418 | TRT Arabi | tv-trtarabi.medya.trt.com.tr | 🌐 ציבורי (iptv-org) | iptv-org (`TRTArabi.tr`) | ✅ |
-| 419 | Republic TV | d3qs3d2rkhfqrt.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`RepublicTV.in`) | ✅ |
-| 420 | KTV | hlive.ktv.go.kr | 🌐 ציבורי (iptv-org) | iptv-org (`KTV.kr`) | ✅ |
-| 421 | Dongguan Comprehensive News Channel | stream.sun0769.com | 🌐 ציבורי (iptv-org) | iptv-org (`DongguanComprehensiveNewsChannel.cn`) | ✅ |
-| 422 | TV Camara | stream3.camara.gov.br | 🌐 ציבורי (iptv-org) | iptv-org (`TVCamara.br`) | ✅ |
-| 423 | Canal 33 Tijuana | 5f2c1b0d880e5.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`Canal33Tijuana.mx`) | ✅ |
-| 424 | Catamarca TV | stream.arcast.com.ar | 🌐 ציבורי (iptv-org) | iptv-org (`CatamarcaTV.ar`) | ✅ |
-| 425 | Sterk TV | hlspackager.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`SterkTV.be`) | ✅ |
-| 426 | TVP World | dash2.antik.sk | 🌐 ציבורי (iptv-org) | iptv-org (`TVPWorld.pl`) | ✅ |
-| 427 | Naftemporiki TV | telmaco.ascdn.broadpeak.io | 🌐 ציבורי (iptv-org) | iptv-org (`NaftemporikiTV.gr`) | ✅ |
-| 428 | Expressen TV | cdn0-03837-liveedge0.dna.ip-only.net | 🌐 ציבורי (iptv-org) | iptv-org (`ExpressenTV.se`) | ✅ |
-| 429 | Digi 24 | edge-ar.rcs-rds.ro | 🌐 ציבורי (iptv-org) | iptv-org (`Digi24.ro`) | ✅ |
-| 430 | ADN TV | redirector.rudo.video | 🌐 ציבורי (iptv-org) | iptv-org (`ADNTV.cl`) | ✅ |
-| 431 | Red+ | inforedvos.lcdn.claro.net.co | 🌐 ציבורי (iptv-org) | iptv-org (`RedPlus.co`) | ✅ |
-| 432 | Exitosa TV | luna-4-video.mediaserver.digital | 🌐 ציבורי (iptv-org) | iptv-org (`ExitosaTV.pe`) | ✅ |
-| 433 | Metro TV | edge.medcom.id | 🌐 ציבורי (iptv-org) | iptv-org (`MetroTV.id`) | ✅ |
-| 434 | Top News | live.topnews.co.th | 🌐 ציבורי (iptv-org) | iptv-org (`TopNews.th`) | ✅ |
-| 435 | Lahore News | vcdn.dunyanews.tv | 🌐 ציבורי (iptv-org) | iptv-org (`LahoreNews.pk`) | ✅ |
-| 436 | SABC Lehae | sabctretalh.cdn.mangomolo.com | 🌐 ציבורי (iptv-org) | iptv-org (`SABCLehae.za`) | ✅ |
-| 437 | Hermanas Mirabal TV | fox.hostlagarto.com | 🌐 ציבורי (iptv-org) | iptv-org (`HermanasMirabalTV.do`) | ✅ |
-| 438 | Nanduti | nanduti.b-cdn.net | 🌐 ציבורי (iptv-org) | iptv-org (`Nanduti.py`) | ✅ |
+| 260 | Black News Channel | blacknewschannel-xumo-us.amagi.tv | 🌐 ציבורי (iptv-org) | iptv-org (`BlackNewsChannel.us`) | ✅ |
+| 261 | Iran International | hlspackager.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`IranInternational.uk`) | ✅ |
+| 262 | Africa 24 English | edge20.vedge.infomaniak.com | 🌐 ציבורי (iptv-org) | iptv-org (`Africa24English.fr`) | ✅ |
+| 263 | DW | dwamdstream103.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`DW.de`) | ✅ |
+| 264 | M95 Television Marbella | limited2.todostreaming.es | 🌐 ציבורי (iptv-org) | iptv-org (`M95TelevisionMarbella.es`) | ✅ |
+| 265 | Rai News 24 | d3k8wzt41aflvx.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`RaiNews24.it`) | ✅ |
+| 266 | RT | rt-glb.rttv.com | 🌐 ציבורי (iptv-org) | iptv-org (`RT.ru`) | ✅ |
+| 267 | FREEDOM | dash4.antik.sk | 🌐 ציבורי (iptv-org) | iptv-org (`FREEDOM.ua`) | ✅ |
+| 268 | Hamdard TV | tv.hamdardtv.com | 🌐 ציבורי (iptv-org) | iptv-org (`HamdardTV.ca`) | ✅ |
+| 269 | News24 | skynewsau-live-premium.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`News24.au`) | ✅ |
+| 270 | Al Arabiya Programs | live.alarabiya.net | 🌐 ציבורי (iptv-org) | iptv-org (`AlArabiyaPrograms.ae`) | ✅ |
+| 271 | Al Araby TV | live.kwikmotion.com | 🌐 ציבורי (iptv-org) | iptv-org (`AlArabyTV.qa`) | ✅ |
+| 272 | Al Hadath | av.alarabiya.net | 🌐 ציבורי (iptv-org) | iptv-org (`AlHadath.sa`) | ✅ |
+| 273 | Al Ghad TV | eazyvwqssi.erbvr.com | 🌐 ציבורי (iptv-org) | iptv-org (`AlGhadTV.eg`) | ✅ |
+| 274 | Red TV Lebanon | live.kwikmotion.com | 🌐 ציבורי (iptv-org) | iptv-org (`RedTVLebanon.lb`) | ✅ |
+| 275 | TRT World | tv-trtworld.medya.trt.com.tr | 🌐 ציבורי (iptv-org) | iptv-org (`TRTWorld.tr`) | ✅ |
+| 276 | CNN News 18 | n18syndication.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`CNNNews18.in`) | ✅ |
+| 277 | NHK World-Japan | masterpl.hls.nhkworld.jp | 🌐 ציבורי (iptv-org) | iptv-org (`NHKWorldJapan.jp`) | ✅ |
+| 278 | Arirang TV | freem3u.xyz | 🌐 ציבורי (iptv-org) | iptv-org (`ArirangTV.kr`) | ✅ |
+| 279 | CGTN | amg00405-rakutentv-cgtn-rakuten-i9tar.amagi.tv | 🌐 ציבורי (iptv-org) | iptv-org (`CGTN.cn`) | ✅ |
+| 280 | CNN Brasil | d25usgadhphvwi.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`CNNBrasil.br`) | ✅ |
+| 281 | Icrtv Colima | 5fc584f3f19c9.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`IcrtvColima.mx`) | ✅ |
+| 282 | Canal 26 | stream-gtlc.telecentro.net.ar | 🌐 ציבורי (iptv-org) | iptv-org (`Canal26.ar`) | ✅ |
+| 283 | ARTV | playout172.livextend.cloud | 🌐 ציבורי (iptv-org) | iptv-org (`ARTV.pt`) | ✅ |
+| 284 | EbS | streams.prd.commavservices.eu | 🌐 ציבורי (iptv-org) | iptv-org (`EbS.be`) | ✅ |
+| 285 | Meteonews | streaming.meteonews.net | 🌐 ציבורי (iptv-org) | iptv-org (`Meteonews.ch`) | ❌ רק באפליקציה (הפניה בלי CORS) |
+| 286 | Euronews | cdn-euronews.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`Euronews.pl`) | ✅ |
+| 287 | Astra TV | server.gointernet.gr | 🌐 ציבורי (iptv-org) | iptv-org (`AstraTV.gr`) | ✅ |
+| 288 | Miracle Channel | live.miracleonline.org | 🌐 ציבורי (iptv-org) | iptv-org (`MiracleChannel.se`) | ✅ |
+| 289 | TV from the Danish Parliament | cdnapi.kaltura.com | 🌐 ציבורי (iptv-org) | iptv-org (`TVfromtheDanishParliament.dk`) | ✅ |
+| 290 | Nopola News | virta2.nopolanews.fi | 🌐 ציבורי (iptv-org) | iptv-org (`NopolaNews.fi`) | ✅ |
+| 291 | Current Time TV | rfe-ingest.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`CurrentTimeTV.cz`) | ✅ |
+| 292 | Dotto TV | live.dottotv.ro | 🌐 ציבורי (iptv-org) | iptv-org (`DottoTV.ro`) | ✅ |
+| 293 | NCTV | pantera1-100gb-cl-movistar.dps.live | 🌐 ציבורי (iptv-org) | iptv-org (`NCTV.cl`) | ✅ |
+| 294 | Noticiero 90 Minutos | play.cdn.enetres.net | 🌐 ציבורי (iptv-org) | iptv-org (`Noticiero90Minutos.co`) | ✅ |
+| 295 | RPP TV | redirector.rudo.video | 🌐 ציבורי (iptv-org) | iptv-org (`RPPTV.pe`) | ✅ |
+| 296 | BTV | lnd0t3b922.tenbytecdn.com | 🌐 ציבורי (iptv-org) | iptv-org (`BTV.id`) | ✅ |
+| 297 | 13 Siam Thai | live.x2.co.th | 🌐 ציבורי (iptv-org) | iptv-org (`13SiamThai.th`) | ✅ |
+| 298 | Dong Nai TV 1 | freem3u.xyz | 🌐 ציבורי (iptv-org) | iptv-org (`DongNaiTV1.vn`) | ✅ |
+| 299 | Neo News | vodzong.mjunoon.tv | 🌐 ציבורי (iptv-org) | iptv-org (`NeoNews.pk`) | ✅ |
+| 300 | Mihan TV | iptv.mihantv.com | 🌐 ציבורי (iptv-org) | iptv-org (`MihanTV.ir`) | ✅ |
+| 301 | Medi1TV Arabic | cdn.live.easybroadcast.io | 🌐 ציבורי (iptv-org) | iptv-org (`Medi1TVArabic.ma`) | ✅ |
+| 302 | LN24SA | cdnstack.internetmultimediaonline.org | 🌐 ציבורי (iptv-org) | iptv-org (`LN24SA.za`) | ✅ |
+| 303 | Silverbird News 24 | viewmedia7219.bozztv.com | 🌐 ציבורי (iptv-org) | iptv-org (`SilverbirdNews24.ng`) | ✅ |
+| 304 | Al Sharqiya News | indexforce.com | 🌐 ציבורי (iptv-org) | iptv-org (`AlSharqiyaNews.iq`) | ✅ |
+| 305 | Carivision | ss2.tvrdomi.com | 🌐 ציבורי (iptv-org) | iptv-org (`Carivision.do`) | ✅ |
+| 306 | HCH | live.streamhch.com | 🌐 ציבורי (iptv-org) | iptv-org (`HCH.hn`) | ✅ |
+| 307 | CNA | live1.mediadesk.al | 🌐 ציבורי (iptv-org) | iptv-org (`CNA.al`) | ✅ |
+| 308 | Halab Today TV | halabtoday-live.lg.mncdn.com | 🌐 ציבורי (iptv-org) | iptv-org (`HalabTodayTV.sy`) | ✅ |
+| 309 | Canal I | streaming.canal-i.com | 🌐 ציבורי (iptv-org) | iptv-org (`CanalI.ve`) | ✅ |
+| 310 | CEACOM TV | eu1.servers10.com | 🌐 ציבורי (iptv-org) | iptv-org (`CEACOMTV.bo`) | ✅ |
+| 311 | Antik Info TV | dash4.antik.sk | 🌐 ציבורי (iptv-org) | iptv-org (`AntikInfoTV.sk`) | ✅ |
+| 312 | Baku.TV | rtmp.baku.tv | 🌐 ציבורי (iptv-org) | iptv-org (`BakuTV.az`) | ✅ |
+| 313 | KTV 2 | kwtktv2ta.cdn.mangomolo.com | 🌐 ציבורי (iptv-org) | iptv-org (`KTV2.kw`) | ✅ |
+| 314 | NW Info 2 | hls.newworldtv.com | 🌐 ציבורי (iptv-org) | iptv-org (`NWInfo2.tg`) | ✅ |
+| 315 | Belarus-24 | ngtrk.dc.beltelecom.by | 🌐 ציבורי (iptv-org) | iptv-org (`Belarus24.by`) | ✅ |
+| 316 | Al Masirah | live.cdnbridge.tv | 🌐 ציבורי (iptv-org) | iptv-org (`AlMasirah.ye`) | ✅ |
+| 317 | Al Najah News | streaming.najah.edu | 🌐 ציבורי (iptv-org) | iptv-org (`AlNajahNews.ps`) | ✅ |
+| 318 | Altaghier TV | jmc-live.ercdn.net | 🌐 ציבורי (iptv-org) | iptv-org (`AltaghierTV.jo`) | ✅ |
+| 319 | TV Legislativa | streamingav.asambleanacional.gob.ec | 🌐 ציבורי (iptv-org) | iptv-org (`TVLegislativa.ec`) | ✅ |
+| 320 | Ekushey TV | ekusheyserver.com | 🌐 ציבורי (iptv-org) | iptv-org (`EkusheyTV.bd`) | ❌ רק באפליקציה (הפניה בלי CORS) |
+| 321 | Formula | c4635.cdn.xsg.ge | 🌐 ציבורי (iptv-org) | iptv-org (`Formula.ge`) | ✅ |
+| 322 | Privesc.Eu TV | cachestar.privesc.eu | 🌐 ציבורי (iptv-org) | iptv-org (`PrivescEuTV.md`) | ✅ |
+| 323 | CNA | d2e1asnsl7br7b.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`CNA.sg`) | ✅ |
+| 324 | Guardian Talk Radio | cdn-edge1.streamcomedia.com | 🌐 ציבורי (iptv-org) | iptv-org (`GuardianTalkRadio.bs`) | ✅ |
+| 325 | Parliament TV | ptvlive.kordia.net.nz | 🌐 ציבורי (iptv-org) | iptv-org (`ParliamentTV.nz`) | ✅ |
+| 326 | Al Masar TV | starmenajo.com | 🌐 ציבורי (iptv-org) | iptv-org (`AlMasarTV.ly`) | ✅ |
+| 327 | AL24 News | cdn.live.easybroadcast.io | 🌐 ציבורי (iptv-org) | iptv-org (`AL24News.dz`) | ✅ |
+| 328 | Dabanga TV | hls.dabangasudan.org | 🌐 ציבורי (iptv-org) | iptv-org (`DabangaTV.sd`) | ✅ |
+| 329 | Oman TV Mubashir | partwota.cdn.mgmlcdn.com | 🌐 ציבורי (iptv-org) | iptv-org (`OmanTVMubashir.om`) | ✅ |
+| 330 | Sahara 24 | live.saharamedias.net | 🌐 ציבורי (iptv-org) | iptv-org (`Sahara24.mr`) | ✅ |
+| 331 | 7 Info | video1.getstreamhosting.com | 🌐 ציבורי (iptv-org) | iptv-org (`7Info.ci`) | ✅ |
+| 332 | Baraka Television | stream.berosat.live | 🌐 ציבורי (iptv-org) | iptv-org (`BarakaTelevision.cd`) | ✅ |
+| 333 | Haiti News Channel | cdn.haititivi.com | 🌐 ציבורי (iptv-org) | iptv-org (`HaitiNewsChannel.ht`) | ✅ |
+| 334 | Monaco Info | webtv.monacoinfo.com | 🌐 ציבורי (iptv-org) | iptv-org (`MonacoInfo.mc`) | ✅ |
+| 335 | Guatevision | mdstrm.com | 🌐 ציבורי (iptv-org) | iptv-org (`Guatevision.gt`) | ✅ |
+| 336 | Norte Informativo TV | videohd.live | 🌐 ציבורי (iptv-org) | iptv-org (`NorteInformativoTV.cr`) | ✅ |
+| 337 | Prensa Latina TV | eu1.servers10.com | 🌐 ציבורי (iptv-org) | iptv-org (`PrensaLatinaTV.cu`) | ✅ |
+| 338 | Radio Ancon | www.streaming507.net | 🌐 ציבורי (iptv-org) | iptv-org (`RadioAncon.pa`) | ✅ |
+| 339 | Brian TV | livefta.malimarcdn.com | 🌐 ציבורי (iptv-org) | iptv-org (`BrianTV.la`) | ✅ |
+| 340 | DVB TV | live-stream.dvb.no | 🌐 ציבורי (iptv-org) | iptv-org (`DVBTV.mm`) | ✅ |
+| 341 | First Channel News | amtvusdvr.tulix.tv | 🌐 ציבורי (iptv-org) | iptv-org (`FirstChannelNews.am`) | ✅ |
+| 342 | Newsmax Balkans | newsmaxadria.mts-si.tv | 🌐 ציבורי (iptv-org) | iptv-org (`NewsmaxBalkans.ba`) | ✅ |
+| 343 | TOLOnews | tgn.bozztv.com | 🌐 ציבורי (iptv-org) | iptv-org (`TOLOnews.af`) | ✅ |
+| 344 | TV Arta | gjirafa-video-live.gjirafa.net | 🌐 ציבורי (iptv-org) | iptv-org (`TVArta.xk`) | ✅ |
+| 345 | TV Jadran | tvjadran.stream.agatin.hr | 🌐 ציבורי (iptv-org) | iptv-org (`TVJadran.hr`) | ✅ |
+| 346 | Visir | live.visir.is | 🌐 ציבורי (iptv-org) | iptv-org (`Visir.is`) | ✅ |
+| 347 | BX Inform | reflect-stream-bronxnet.cablecast.tv | 🌐 ציבורי (iptv-org) | iptv-org (`BXInform.us`) | ✅ |
+| 348 | Dunya News UK | ukintl.dunyanews.tv | 🌐 ציבורי (iptv-org) | iptv-org (`DunyaNewsUK.uk`) | ✅ |
+| 349 | Africa 24 | africa24.vedge.infomaniak.com | 🌐 ציבורי (iptv-org) | iptv-org (`Africa24.fr`) | ✅ |
+| 350 | 3Cat Cameres del temps | directes-tv-int.3catdirectes.cat | 🌐 ציבורי (iptv-org) | iptv-org (`3CatCameresdeltemps.es`) | ✅ |
+| 351 | Senato TV | senato-live.morescreens.com | 🌐 ציבורי (iptv-org) | iptv-org (`SenatoTV.it`) | ✅ |
+| 352 | 360° News | live-vgtrksmotrim.cdnvideo.ru | 🌐 ציבורי (iptv-org) | iptv-org (`360News.ru`) | ✅ |
+| 353 | Channel 24 | streamvideol1.luxnet.ua | 🌐 ציבורי (iptv-org) | iptv-org (`Channel24.ua`) | ✅ |
+| 354 | CityNews Calgary | citynewsregional.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`CityNewsCalgary.ca`) | ✅ |
+| 355 | ticker News | live-hls-7agy.livepush.io | 🌐 ציבורי (iptv-org) | iptv-org (`tickerNews.au`) | ✅ |
+| 356 | Al Yaum TV | hlspackager.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`AlYaumTV.ae`) | ✅ |
+| 357 | Al Araby TV 2 | live.kwikmotion.com | 🌐 ציבורי (iptv-org) | iptv-org (`AlArabyTV2.qa`) | ✅ |
+| 358 | Al Alam Al Yawm | mn-nl.mncdn.com | 🌐 ציבורי (iptv-org) | iptv-org (`AlAlamAlYawm.sa`) | ✅ |
+| 359 | Voice of Lebanon | Asharq Discovery – ItWorks (רשמי) | ✅ רשמי | iptv-org (`VoiceofLebanon.lb`) | ✅ |
+| 360 | Mekameleen TV | mn-nl.mncdn.com | 🌐 ציבורי (iptv-org) | iptv-org (`MekameleenTV.tr`) | ✅ |
+| 361 | News18 Assam North-East | n18syndication.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`News18AssamNorthEast.in`) | ✅ |
+| 362 | Weathernews | rch01e-alive-hls.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`Weathernews.jp`) | ✅ |
+| 363 | Arirang UN | amdlive-ch02-ctnd-com.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`ArirangUN.kr`) | ✅ |
+| 364 | STZ TV | cdn.live.br1.jmvstream.com | 🌐 ציבורי (iptv-org) | iptv-org (`STZTV.br`) | ✅ |
+| 365 | AMX Noticias | 5e50264bd6766.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`AMXNoticias.mx`) | ✅ |
+| 366 | VIVE TV | vivo.solumedia.com | 🌐 ציבורי (iptv-org) | iptv-org (`VIVETV.ar`) | ✅ |
+| 367 | CNN Portugal | github.com | 🌐 ציבורי (iptv-org) | iptv-org (`CNNPortugal.pt`) | ✅ |
+| 368 | EbS+ | streams.prd.commavservices.eu | 🌐 ציבורי (iptv-org) | iptv-org (`EbSPlus.be`) | ✅ |
+| 369 | TVK Stella | stream.tvkstella.pl | 🌐 ציבורי (iptv-org) | iptv-org (`TVKStella.pl`) | ✅ |
+| 370 | Hellenic Parliament TV | ert-ucdn.broadpeak-aas.com | 🌐 ציבורי (iptv-org) | iptv-org (`HellenicParliamentTV.gr`) | ✅ |
+| 371 | Di TV | cdn0-03837-liveedge0.dna.ip-only.net | 🌐 ציבורי (iptv-org) | iptv-org (`DiTV.se`) | ✅ |
+| 372 | CT24 | dash2.antik.sk | 🌐 ציבורי (iptv-org) | iptv-org (`CT24.cz`) | ✅ |
+| 373 | Aleph News | stream-aleph.m.ro | 🌐 ציבורי (iptv-org) | iptv-org (`AlephNews.ro`) | ✅ |
+| 374 | T13 En Vivo | redirector.dps.live | 🌐 ציבורי (iptv-org) | iptv-org (`T13EnVivo.cl`) | ✅ |
+| 375 | NTN24 | stream1.bitred.cl | 🌐 ציבורי (iptv-org) | iptv-org (`NTN24.co`) | ✅ |
+| 376 | Conecta2TV | live.obslivestream.com | 🌐 ציבורי (iptv-org) | iptv-org (`Conecta2TV.pe`) | ✅ |
+| 377 | Lingkar TV | lingkartv.my.id | 🌐 ציבורי (iptv-org) | iptv-org (`LingkarTV.id`) | ✅ |
+| 378 | Thai Parliament Television | tv-live.tpchannel.org | 🌐 ציבורי (iptv-org) | iptv-org (`ThaiParliamentTelevision.th`) | ✅ |
+| 379 | Tra Vinh TV | freem3u.xyz | 🌐 ציבורי (iptv-org) | iptv-org (`TraVinhTV.vn`) | ✅ |
+| 380 | Dunya News | imob.dunyanews.tv | 🌐 ציבורי (iptv-org) | iptv-org (`DunyaNews.pk`) | ✅ |
+| 381 | Medi1TV Afrique | cdn.live.easybroadcast.io | 🌐 ציבורי (iptv-org) | iptv-org (`Medi1TVAfrique.ma`) | ✅ |
+| 382 | SABC News | sabconetanw.cdn.mangomolo.com | 🌐 ציבורי (iptv-org) | iptv-org (`SABCNews.za`) | ✅ |
+| 383 | News Central | wf.newscentral.ng | 🌐 ציבורי (iptv-org) | iptv-org (`NewsCentral.ng`) | ✅ |
+| 384 | Alghadeer TV | sd343444.vodu.store | 🌐 ציבורי (iptv-org) | iptv-org (`AlghadeerTV.iq`) | ✅ |
+| 385 | RDN | edge.essastream.com | 🌐 ציבורי (iptv-org) | iptv-org (`RDN.do`) | ✅ |
+| 386 | Mega TV | www.desde-paraguay.com | 🌐 ציבורי (iptv-org) | iptv-org (`MegaTV.py`) | ✅ |
+| 387 | Lenca TV | lencatelevision.com | 🌐 ציבורי (iptv-org) | iptv-org (`LencaTV.hn`) | ✅ |
+| 388 | ntv | protokolldns.xyz | 🌐 ציבורי (iptv-org) | iptv-org (`ntv.al`) | ✅ |
+| 389 | Syria TV | live.kwikmotion.com | 🌐 ציבורי (iptv-org) | iptv-org (`SyriaTV.sy`) | ✅ |
+| 390 | CRTV News | live1.acangroup.org | 🌐 ציבורי (iptv-org) | iptv-org (`CRTVNews.cm`) | ✅ |
+| 391 | Telesur | mblenmain01.telesur.ultrabase.net | 🌐 ציבורי (iptv-org) | iptv-org (`Telesur.ve`) | ✅ |
+| 392 | UMSA TVU LP | edge.enhdtv.com | 🌐 ציבורי (iptv-org) | iptv-org (`UMSATVULP.bo`) | ✅ |
+| 393 | TV NRSR | n11.stv.livebox.sk | 🌐 ציבורי (iptv-org) | iptv-org (`TVNRSR.sk`) | ✅ |
+| 394 | APA Tv | stream.apa.tv | 🌐 ציבורי (iptv-org) | iptv-org (`APATv.az`) | ❌ רק באפליקציה (HTTP) |
+| 395 | Fresh News | streaming-android.freshnewsasia.tv | 🌐 ציבורי (iptv-org) | iptv-org (`FreshNews.kh`) | ❌ רק באפליקציה (HTTP) |
+| 396 | KTV News | kwtkbta.cdn.mangomolo.com | 🌐 ציבורי (iptv-org) | iptv-org (`KTVNews.kw`) | ✅ |
+| 397 | NW Info | hls.newworldtv.com | 🌐 ציבורי (iptv-org) | iptv-org (`NWInfo.tg`) | ✅ |
+| 398 | Perviy Informationniy | ngtrk.dc.beltelecom.by | 🌐 ציבורי (iptv-org) | iptv-org (`PerviyInformationniy.by`) | ✅ |
+| 399 | Al Masirah Mubacher | live2.cdnbridge.tv | 🌐 ציבורי (iptv-org) | iptv-org (`AlMasirahMubacher.ye`) | ✅ |
+| 400 | Ma'an TV | htvmada.mada.ps | 🌐 ציבורי (iptv-org) | iptv-org (`MaanTV.ps`) | ✅ |
+| 401 | Alhaqeqa Aldawlia | ghaasiflu.online | 🌐 ציבורי (iptv-org) | iptv-org (`AlhaqeqaAldawlia.jo`) | ✅ |
+| 402 | Ecotel TV | ecoteltv.streamseguro.com | 🌐 ציבורי (iptv-org) | iptv-org (`EcotelTV.ec`) | ✅ |
+| 403 | News 21 Bangla TV | 103.190.133.68 | 🌐 ציבורי (iptv-org) | iptv-org (`News21BanglaTV.bd`) | ❌ רק באפליקציה (HTTP) |
+| 404 | Palitra News | live.palitranews.ge | 🌐 ציבורי (iptv-org) | iptv-org (`PalitraNews.ge`) | ✅ |
+| 405 | Realitatea TV | realitatealive.md | 🌐 ציבורי (iptv-org) | iptv-org (`RealitateaTV.md`) | ✅ |
+| 406 | Cheddar News | hls.livecdn.io | 🌐 ציבורי (iptv-org) | iptv-org (`CheddarNews.us`) | ✅ |
+| 407 | Afghanistan International | hls.afintl.com | 🌐 ציבורי (iptv-org) | iptv-org (`AfghanistanInternational.uk`) | ✅ |
+| 408 | Africa 24 Sport | africa24.vedge.infomaniak.com | 🌐 ציבורי (iptv-org) | iptv-org (`Africa24Sport.fr`) | ✅ |
+| 409 | WELT | dash4.antik.sk | 🌐 ציבורי (iptv-org) | iptv-org (`WELT.de`) | ✅ |
+| 410 | 3CatInfo | directes-tv-int.3catdirectes.cat | 🌐 ציבורי (iptv-org) | iptv-org (`3CatInfo.es`) | ✅ |
+| 411 | Etna Espresso Channel | 5db313b643fd8.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`EtnaEspressoChannel.it`) | ✅ |
+| 412 | RT Arabic | rt-arb.rttv.com | 🌐 ציבורי (iptv-org) | iptv-org (`RTArabic.ru`) | ✅ |
+| 413 | Rada TV | live-tv.cloud – ספק IPTV אוקראיני | ⚠️ ממסר צד שלישי | iptv-org (`RadaTV.ua`) | ✅ |
+| 414 | CityNews Toronto | citynewsregional.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`CityNewsToronto.ca`) | ✅ |
+| 415 | ABC News | abc-news-dmd-streams-1.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`ABCNews.au`) | ✅ |
+| 416 | Alarabiya | live.alarabiya.net | 🌐 ציבורי (iptv-org) | iptv-org (`Alarabiya.ae`) | ✅ |
+| 417 | Al Jazeera 2 | live-hls-web-aja2-gcp.thehlive.com | 🌐 ציבורי (iptv-org) | iptv-org (`AlJazeera2.qa`) | ✅ |
+| 418 | Palestine Al Yawm | live.paltodaytv.com | 🌐 ציבורי (iptv-org) | iptv-org (`PalestineAlYawm.lb`) | ✅ |
+| 419 | TRT Arabi | tv-trtarabi.medya.trt.com.tr | 🌐 ציבורי (iptv-org) | iptv-org (`TRTArabi.tr`) | ✅ |
+| 420 | Republic TV | d3qs3d2rkhfqrt.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`RepublicTV.in`) | ✅ |
+| 421 | KTV | hlive.ktv.go.kr | 🌐 ציבורי (iptv-org) | iptv-org (`KTV.kr`) | ✅ |
+| 422 | Dongguan Comprehensive News Channel | stream.sun0769.com | 🌐 ציבורי (iptv-org) | iptv-org (`DongguanComprehensiveNewsChannel.cn`) | ✅ |
+| 423 | TV Camara | stream3.camara.gov.br | 🌐 ציבורי (iptv-org) | iptv-org (`TVCamara.br`) | ✅ |
+| 424 | Canal 33 Tijuana | 5f2c1b0d880e5.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`Canal33Tijuana.mx`) | ✅ |
+| 425 | Catamarca TV | stream.arcast.com.ar | 🌐 ציבורי (iptv-org) | iptv-org (`CatamarcaTV.ar`) | ✅ |
+| 426 | Sterk TV | hlspackager.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`SterkTV.be`) | ✅ |
+| 427 | TVP World | dash2.antik.sk | 🌐 ציבורי (iptv-org) | iptv-org (`TVPWorld.pl`) | ✅ |
+| 428 | Naftemporiki TV | telmaco.ascdn.broadpeak.io | 🌐 ציבורי (iptv-org) | iptv-org (`NaftemporikiTV.gr`) | ✅ |
+| 429 | Expressen TV | cdn0-03837-liveedge0.dna.ip-only.net | 🌐 ציבורי (iptv-org) | iptv-org (`ExpressenTV.se`) | ✅ |
+| 430 | Digi 24 | edge-ar.rcs-rds.ro | 🌐 ציבורי (iptv-org) | iptv-org (`Digi24.ro`) | ✅ |
+| 431 | ADN TV | redirector.rudo.video | 🌐 ציבורי (iptv-org) | iptv-org (`ADNTV.cl`) | ✅ |
+| 432 | Red+ | inforedvos.lcdn.claro.net.co | 🌐 ציבורי (iptv-org) | iptv-org (`RedPlus.co`) | ✅ |
+| 433 | Exitosa TV | luna-4-video.mediaserver.digital | 🌐 ציבורי (iptv-org) | iptv-org (`ExitosaTV.pe`) | ✅ |
+| 434 | Metro TV | edge.medcom.id | 🌐 ציבורי (iptv-org) | iptv-org (`MetroTV.id`) | ✅ |
+| 435 | Top News | live.topnews.co.th | 🌐 ציבורי (iptv-org) | iptv-org (`TopNews.th`) | ✅ |
+| 436 | Lahore News | vcdn.dunyanews.tv | 🌐 ציבורי (iptv-org) | iptv-org (`LahoreNews.pk`) | ✅ |
+| 437 | SABC Lehae | sabctretalh.cdn.mangomolo.com | 🌐 ציבורי (iptv-org) | iptv-org (`SABCLehae.za`) | ✅ |
+| 438 | Hermanas Mirabal TV | fox.hostlagarto.com | 🌐 ציבורי (iptv-org) | iptv-org (`HermanasMirabalTV.do`) | ✅ |
+| 439 | Nanduti | nanduti.b-cdn.net | 🌐 ציבורי (iptv-org) | iptv-org (`Nanduti.py`) | ✅ |
 
 ## 📺 כלכלה ועסקים (Business)
 
 | # | ערוץ | שרת השידור | סוג | נמצא ב | באתר (דפדפן) |
 |---|---|---|---|---|---|
-| 439 | כלכלה 10 | Redge – ה-CDN הרשמי של כאן, ערוץ 14 וכלכלה 10 | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
-| 440 | Ameritrade | tdameritrade-vizio.amagi.tv | 🌐 ציבורי (iptv-org) | iptv-org (`Ameritrade.us`) | ✅ |
-| 441 | BFM Business | live-cdn-stream-euw1.bfmb.bct.nextradiotv.com | 🌐 ציבורי (iptv-org) | iptv-org (`BFMBusiness.fr`) | ✅ |
-| 442 | Negocios TV | streaming013.gestec-video.com | 🌐 ציבורי (iptv-org) | iptv-org (`NegociosTV.es`) | ✅ |
-| 443 | Pro Business | tv-streaming.bsh.ru | 🌐 ציבורי (iptv-org) | iptv-org (`ProBusiness.ru`) | ✅ |
-| 444 | Ausbiz TV | d9quh89lh7dtw.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`AusbizTV.au`) | ✅ |
-| 445 | Al Arabiya Business | live.alarabiya.net | 🌐 ציבורי (iptv-org) | iptv-org (`AlArabiyaBusiness.ae`) | ✅ |
-| 446 | Asharq News | live-news.asharq.com | 🌐 ציבורי (iptv-org) | iptv-org (`AsharqNews.sa`) | ✅ |
-| 447 | Bloomberg HT | tv.ensonhaber.com | 🌐 ציבורי (iptv-org) | iptv-org (`BloombergHT.tr`) | ✅ |
-| 448 | CNBC TV18 | n18syndication.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`CNBCTV18.in`) | ✅ |
-| 449 | CGTN Global Biz | fastlive.cctvplus.com | 🌐 ציבורי (iptv-org) | iptv-org (`CGTNGlobalBiz.cn`) | ✅ |
-| 450 | Canal Z | d1hz1p2gea2zy4.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`CanalZ.be`) | ✅ |
-| 451 | Telewizja Biznesowa | s-pl-01.mediatool.tv | 🌐 ציבורי (iptv-org) | iptv-org (`TelewizjaBiznesowa.pl`) | ✅ |
-| 452 | Aleph Business | streamw.m.ro | 🌐 ציבורי (iptv-org) | iptv-org (`AlephBusiness.ro`) | ✅ |
-| 453 | CNBC Asia | freem3u.xyz | 🌐 ציבורי (iptv-org) | iptv-org (`CNBCAsia.sg`) | ✅ |
-| 454 | DeFiance Media | amg01529-defiancetv-defiancemedia-glewed-tre8x.amagi.tv | 🌐 ציבורי (iptv-org) | iptv-org (`DeFianceMedia.pr`) | ✅ |
-| 455 | Champion TV | stream.berosat.live | 🌐 ציבורי (iptv-org) | iptv-org (`ChampionTV.ci`) | ✅ |
-| 456 | NW Economie | hls.newworldtv.com | 🌐 ציבורי (iptv-org) | iptv-org (`NWEconomie.tg`) | ✅ |
-| 457 | Zuraca TV | tv3.bitstreaming.net | 🌐 ציבורי (iptv-org) | iptv-org (`ZuracaTV.bo`) | ✅ |
-| 458 | MNTV | www.khuwemultimedia.com | 🌐 ציבורי (iptv-org) | iptv-org (`MNTV.mz`) | ✅ |
-| 459 | apart TV | 2-fss-2.streamhoster.com | 🌐 ציבורי (iptv-org) | iptv-org (`apartTV.lu`) | ✅ |
-| 460 | Bloomberg Originals | bloomberg.com | 🌐 ציבורי (iptv-org) | iptv-org (`BloombergOriginals.us`) | ✅ |
-| 461 | CNBC Arabiya | cnbc-live.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`CNBCArabiya.ae`) | ✅ |
-| 462 | Asharq Radio | Asharq Discovery – ItWorks (רשמי) | ✅ רשמי | iptv-org (`AsharqRadio.sa`) | ✅ |
-| 463 | CNBC-e | hnpsechtsc.turknet.ercdn.net | 🌐 ציבורי (iptv-org) | iptv-org (`CNBCe.tr`) | ✅ |
-| 464 | CNBC TV18 Prime HD | n18syndication.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`CNBCTV18PrimeHD.in`) | ✅ |
-| 465 | CCTV-2 | 74.91.26.218 | 🌐 ציבורי (iptv-org) | iptv-org (`CCTV2.cn`) | ❌ רק באפליקציה (HTTP) |
-| 466 | Kanaal Z | d1hz1p2gea2zy4.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`KanaalZ.be`) | ✅ |
-| 467 | JOB TV | jobtvserver.eu | 🌐 ציבורי (iptv-org) | iptv-org (`JOBTV.ro`) | ✅ |
-| 468 | Bloomberg TV | d8975dc3.wurl.com | 🌐 ציבורי (iptv-org) | iptv-org (`BloombergTV.us`) | ✅ |
-| 469 | NDTV Profit | ndtvprofit.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`NDTVProfit.in`) | ✅ |
-| 470 | Yahoo! Finance | d1ewctnvcwvvvu.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`YahooFinance.us`) | ✅ |
-| 471 | CNBC Awaaz | n18syndication.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`CNBCAwaaz.in`) | ✅ |
-| 472 | EntrepreneurTV | stream-us-east-1.getpublica.com | 🌐 ציבורי (iptv-org) | iptv-org (`EntrepreneurTV.us`) | ✅ |
-| 473 | CNBC Bajar | n18syndication.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`CNBCBajar.in`) | ✅ |
-| 474 | Fox Business Network | tvsen6.aynaott.com | 🌐 ציבורי (iptv-org) | iptv-org (`FoxBusinessNetwork.us`) | ✅ |
-| 475 | News Capital Market | newscapital.com | 🌐 ציבורי (iptv-org) | iptv-org (`NewsCapitalMarket.in`) | ✅ |
+| 440 | כלכלה 10 | Redge – ה-CDN הרשמי של כאן, ערוץ 14 וכלכלה 10 | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 441 | Ameritrade | tdameritrade-vizio.amagi.tv | 🌐 ציבורי (iptv-org) | iptv-org (`Ameritrade.us`) | ✅ |
+| 442 | BFM Business | live-cdn-stream-euw1.bfmb.bct.nextradiotv.com | 🌐 ציבורי (iptv-org) | iptv-org (`BFMBusiness.fr`) | ✅ |
+| 443 | Negocios TV | streaming013.gestec-video.com | 🌐 ציבורי (iptv-org) | iptv-org (`NegociosTV.es`) | ✅ |
+| 444 | Pro Business | tv-streaming.bsh.ru | 🌐 ציבורי (iptv-org) | iptv-org (`ProBusiness.ru`) | ✅ |
+| 445 | Ausbiz TV | d9quh89lh7dtw.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`AusbizTV.au`) | ✅ |
+| 446 | Al Arabiya Business | live.alarabiya.net | 🌐 ציבורי (iptv-org) | iptv-org (`AlArabiyaBusiness.ae`) | ✅ |
+| 447 | Asharq News | live-news.asharq.com | 🌐 ציבורי (iptv-org) | iptv-org (`AsharqNews.sa`) | ✅ |
+| 448 | Bloomberg HT | tv.ensonhaber.com | 🌐 ציבורי (iptv-org) | iptv-org (`BloombergHT.tr`) | ✅ |
+| 449 | CNBC TV18 | n18syndication.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`CNBCTV18.in`) | ✅ |
+| 450 | CGTN Global Biz | fastlive.cctvplus.com | 🌐 ציבורי (iptv-org) | iptv-org (`CGTNGlobalBiz.cn`) | ✅ |
+| 451 | Canal Z | d1hz1p2gea2zy4.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`CanalZ.be`) | ✅ |
+| 452 | Telewizja Biznesowa | s-pl-01.mediatool.tv | 🌐 ציבורי (iptv-org) | iptv-org (`TelewizjaBiznesowa.pl`) | ✅ |
+| 453 | Aleph Business | streamw.m.ro | 🌐 ציבורי (iptv-org) | iptv-org (`AlephBusiness.ro`) | ✅ |
+| 454 | CNBC Asia | freem3u.xyz | 🌐 ציבורי (iptv-org) | iptv-org (`CNBCAsia.sg`) | ✅ |
+| 455 | DeFiance Media | amg01529-defiancetv-defiancemedia-glewed-tre8x.amagi.tv | 🌐 ציבורי (iptv-org) | iptv-org (`DeFianceMedia.pr`) | ✅ |
+| 456 | Champion TV | stream.berosat.live | 🌐 ציבורי (iptv-org) | iptv-org (`ChampionTV.ci`) | ✅ |
+| 457 | NW Economie | hls.newworldtv.com | 🌐 ציבורי (iptv-org) | iptv-org (`NWEconomie.tg`) | ✅ |
+| 458 | Zuraca TV | tv3.bitstreaming.net | 🌐 ציבורי (iptv-org) | iptv-org (`ZuracaTV.bo`) | ✅ |
+| 459 | MNTV | www.khuwemultimedia.com | 🌐 ציבורי (iptv-org) | iptv-org (`MNTV.mz`) | ✅ |
+| 460 | apart TV | 2-fss-2.streamhoster.com | 🌐 ציבורי (iptv-org) | iptv-org (`apartTV.lu`) | ✅ |
+| 461 | Bloomberg Originals | bloomberg.com | 🌐 ציבורי (iptv-org) | iptv-org (`BloombergOriginals.us`) | ✅ |
+| 462 | CNBC Arabiya | cnbc-live.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`CNBCArabiya.ae`) | ✅ |
+| 463 | Asharq Radio | Asharq Discovery – ItWorks (רשמי) | ✅ רשמי | iptv-org (`AsharqRadio.sa`) | ✅ |
+| 464 | CNBC-e | hnpsechtsc.turknet.ercdn.net | 🌐 ציבורי (iptv-org) | iptv-org (`CNBCe.tr`) | ✅ |
+| 465 | CNBC TV18 Prime HD | n18syndication.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`CNBCTV18PrimeHD.in`) | ✅ |
+| 466 | CCTV-2 | 74.91.26.218 | 🌐 ציבורי (iptv-org) | iptv-org (`CCTV2.cn`) | ❌ רק באפליקציה (HTTP) |
+| 467 | Kanaal Z | d1hz1p2gea2zy4.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`KanaalZ.be`) | ✅ |
+| 468 | JOB TV | jobtvserver.eu | 🌐 ציבורי (iptv-org) | iptv-org (`JOBTV.ro`) | ✅ |
+| 469 | Bloomberg TV | d8975dc3.wurl.com | 🌐 ציבורי (iptv-org) | iptv-org (`BloombergTV.us`) | ✅ |
+| 470 | NDTV Profit | ndtvprofit.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`NDTVProfit.in`) | ✅ |
+| 471 | Yahoo! Finance | d1ewctnvcwvvvu.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`YahooFinance.us`) | ✅ |
+| 472 | CNBC Awaaz | n18syndication.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`CNBCAwaaz.in`) | ✅ |
+| 473 | EntrepreneurTV | stream-us-east-1.getpublica.com | 🌐 ציבורי (iptv-org) | iptv-org (`EntrepreneurTV.us`) | ✅ |
+| 474 | CNBC Bajar | n18syndication.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`CNBCBajar.in`) | ✅ |
+| 475 | Fox Business Network | tvsen6.aynaott.com | 🌐 ציבורי (iptv-org) | iptv-org (`FoxBusinessNetwork.us`) | ✅ |
+| 476 | News Capital Market | newscapital.com | 🌐 ציבורי (iptv-org) | iptv-org (`NewsCapitalMarket.in`) | ✅ |
 
 ## 📺 סרטים וסדרות (Movies & Series)
 
 | # | ערוץ | שרת השידור | סוג | נמצא ב | באתר (דפדפן) |
 |---|---|---|---|---|---|
-| 476 | ערוץ הים התיכון HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`YamTichoni.il`) | ❌ רק באפליקציה (HTTP) |
-| 477 | yes סרטים אקשן HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`YesMoviesAction.il`) | ❌ רק באפליקציה (HTTP) |
-| 478 | HOT דרמה HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`HOTDrama.il`) | ❌ רק באפליקציה (HTTP) |
-| 479 | HOT זון HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`HOTZone.il`) | ❌ רק באפליקציה (HTTP) |
-| 480 | yes ריאליטי HD | ערוץ FAST ישראלי – AWS CloudFront | ✅ FAST חינמי | iptv-org (`RealityChannel.il`) | ✅ |
-| 481 | ויוה פרימיום HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`VivaPremium.il`) | ❌ רק באפליקציה (HTTP) |
-| 482 | סינמה פרימיום HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`Premialnoe.ru`) | ❌ רק באפליקציה (HTTP) |
-| 483 | סינמה מתח ואקשן HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`Ostrosyuzhetnoye.ru`) | ❌ רק באפליקציה (HTTP) |
-| 484 | ערוץ סרטי אימה HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`Kinouzhas.ru`) | ❌ רק באפליקציה (HTTP) |
-| 485 | קולנוע להיטים KinoHit HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`KinoHit.ru`) | ✅ דרך מקור חלופי: Cinerama.uz – ספק IPTV באוזבקיסטן |
-| 486 | קולנוע משפחתי Kinosemja HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`Kinosemja.ru`) | ❌ רק באפליקציה (HTTP) |
-| 487 | סינמה מגה-להיטים HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`vijuPlusMegahit.ru`) | ❌ רק באפליקציה (HTTP) |
-| 488 | סינמה בכורה Premiere HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`vijuPlusPremiere.ru`) | ❌ רק באפליקציה (HTTP) |
-| 489 | סינמה קומדיה HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`vijuPlusComedy.ru`) | ❌ רק באפליקציה (HTTP) |
-| 490 | קולנוע TV1000 אקשן HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`vijuTV1000action.ru`) | ✅ דרך מקור חלופי: Cinerama.uz – ספק IPTV באוזבקיסטן |
-| 491 | קולנוע TV1000 קלאסי | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`vijuTV1000.ru`) | ❌ רק באפליקציה (HTTP) |
-| 492 | ערוץ הסדרות Serial HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`vijuPlusSerial.ru`) | ❌ רק באפליקציה (HTTP) |
-| 493 | סרטי שנות ה-80 Rewind HD | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`80sRewind.us`) | ❌ רק באפליקציה (הפניה בלי CORS) |
-| 494 | סרטי שנות ה-70 Cinema HD | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`70sCinema.us`) | ❌ רק באפליקציה (הפניה בלי CORS) |
-| 495 | סרטי שנות ה-2000 Replay HD | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`00sReplay.us`) | ❌ רק באפליקציה (הפניה בלי CORS) |
-| 496 | משפחת סימפסון 24/7 HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
-| 497 | קולנוע קומדיה CineMan Comedy HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
-| 498 | קולנוע רטרו VHS Cinema HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
-| 499 | ערוץ הדרמה של קשת | קשת – ה-CDN של mako (עם הרשאת צפייה של mako) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
-| 500 | 48 Hours | dai.google.com | 🌐 ציבורי (iptv-org) | iptv-org (`48Hours.us`) | ✅ |
-| 501 | True Crime | b6cca454.wurl.com | 🌐 ציבורי (iptv-org) | iptv-org (`TrueCrime.uk`) | ✅ |
-| 502 | Cine Nanar | zylo-cinenanar-rakuten.amagi.tv | 🌐 ציבורי (iptv-org) | iptv-org (`CineNanar.fr`) | ✅ |
-| 503 | Grjngo Western Movies | amogonetworx-grjngo-3-dk.samsung.wurl.tv | 🌐 ציבורי (iptv-org) | iptv-org (`GrjngoWesternMovies.de`) | ✅ |
-| 504 | Cine Friki | d2mr4fu91mjx9m.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`CineFriki.es`) | ✅ |
-| 505 | Super TV | 59d7d6f47d7fc.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`SuperTV.it`) | ✅ |
-| 506 | Smotrim Chestnyy Detektiv | live-vgtrksmotrim.cdnvideo.ru | 🌐 ציבורי (iptv-org) | iptv-org (`SmotrimChestnyyDetektiv.ru`) | ✅ |
-| 507 | FilmUADrama | dash2.antik.sk | 🌐 ציבורי (iptv-org) | iptv-org (`FilmUADrama.ua`) | ✅ |
-| 508 | Mix Hollywood | ml-pull-hwc.myco.io | 🌐 ציבורי (iptv-org) | iptv-org (`MixHollywood.eg`) | ✅ |
-| 509 | Grand Cinema | gcinemahls.wns.live | 🌐 ציבורי (iptv-org) | iptv-org (`GrandCinema.tr`) | ✅ |
-| 510 | B4U Bhojpuri | cdnb4u.wiseplayout.com | 🌐 ציבורי (iptv-org) | iptv-org (`B4UBhojpuri.in`) | ✅ |
-| 511 | Harbin Movie Channel | stream.hrbtv.net | 🌐 ציבורי (iptv-org) | iptv-org (`HarbinMovieChannel.cn`) | ✅ |
-| 512 | CINDIE TV | cc-hqw8u5r1nshjc.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`CINDIETV.br`) | ✅ |
-| 513 | Popcorn Central | oly-ftvpc.otteravision.com | 🌐 ציבורי (iptv-org) | iptv-org (`PopcornCentral.mx`) | ✅ |
-| 514 | Europa Europa | iptv.bitred.cl | 🌐 ציבורי (iptv-org) | iptv-org (`EuropaEuropa.ar`) | ✅ |
-| 515 | Kuriakos Cine | w2.manasat.com | 🌐 ציבורי (iptv-org) | iptv-org (`KuriakosCine.pt`) | ✅ |
-| 516 | FILMBOX+ Festival | nosignal1.antenaplay.ro | 🌐 ציבורי (iptv-org) | iptv-org (`FILMBOXPlusFestival.pl`) | ✅ |
-| 517 | Action 24 | actionlive.siliconweb.com | 🌐 ציבורי (iptv-org) | iptv-org (`Action24.gr`) | ❌ רק באפליקציה (HTTP) |
-| 518 | Bondi Rescue | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`BondiRescue.se`) | ✅ |
-| 519 | Hero | live-fi.tvkaista.net | 🌐 ציבורי (iptv-org) | iptv-org (`Hero.fi`) | ✅ |
-| 520 | Cinemaraton Plus | hls02ns.antenaplay.ro | 🌐 ציבורי (iptv-org) | iptv-org (`CinemaratonPlus.ro`) | ✅ |
-| 521 | MAX4 | 141.94.193.53 | 🌐 ציבורי (iptv-org) | iptv-org (`MAX4.hu`) | ❌ רק באפליקציה (HTTP) |
-| 522 | TVN3 | mdstrm.com | 🌐 ציבורי (iptv-org) | iptv-org (`TVN3.cl`) | ✅ |
-| 523 | MCI Television | video.ejeserver.com | 🌐 ציבורי (iptv-org) | iptv-org (`MCITelevision.co`) | ✅ |
-| 524 | Latina Clasicos | redirector.rudo.video | 🌐 ציבורי (iptv-org) | iptv-org (`LatinaClasicos.pe`) | ✅ |
-| 525 | ON Movies | freem3u.xyz | 🌐 ציבורי (iptv-org) | iptv-org (`ONMovies.vn`) | ✅ |
-| 526 | AVA Series | avaserieshls.wns.live | 🌐 ציבורי (iptv-org) | iptv-org (`AVASeries.ir`) | ✅ |
-| 527 | Itage TV | viewmedia7219.bozztv.com | 🌐 ציבורי (iptv-org) | iptv-org (`ItageTV.ng`) | ✅ |
-| 528 | Aurora Media Films | cdn.streamhispanatv.net | 🌐 ציבורי (iptv-org) | iptv-org (`AuroraMediaFilms.gt`) | ✅ |
-| 529 | Mega Cine TV | cnn.hostlagarto.com | 🌐 ציבורי (iptv-org) | iptv-org (`MegaCineTV.do`) | ✅ |
-| 530 | Allo Cine | d1yl6bf4hrzbr0.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`AlloCine.cm`) | ✅ |
-| 531 | HITS Movies | 103.151.60.162 | 🌐 ציבורי (iptv-org) | iptv-org (`HITSMovies.sg`) | ❌ רק באפליקציה (HTTP) |
-| 532 | Silk Way Cinema | stream.qazcdn.net | 🌐 ציבורי (iptv-org) | iptv-org (`SilkWayCinema.kz`) | ✅ |
-| 533 | Lollywood HD TV | stream.berosat.live | 🌐 ציבורי (iptv-org) | iptv-org (`LollywoodHDTV.cd`) | ✅ |
-| 534 | Serie Max | video1.getstreamhosting.com | 🌐 ציבורי (iptv-org) | iptv-org (`SerieMax.ci`) | ✅ |
-| 535 | BIZ Cinema | fl.biztv.media | 🌐 ציבורי (iptv-org) | iptv-org (`BIZCinema.uz`) | ✅ |
-| 536 | Maah TV | hls.maahtv.live | 🌐 ציבורי (iptv-org) | iptv-org (`MaahTV.my`) | ✅ |
-| 537 | Mei Ah Movie Channel | 103.172.187.30 | 🌐 ציבורי (iptv-org) | iptv-org (`MeiAhMovieChannel.hk`) | ❌ רק באפליקציה (HTTP) |
-| 538 | Movie Bangla | alvetv.com | 🌐 ציבורי (iptv-org) | iptv-org (`MovieBangla.bd`) | ❌ רק באפליקציה (HTTP) |
-| 539 | MWD Movies | 203.81.84.130 | 🌐 ציבורי (iptv-org) | iptv-org (`MWDMovies.mm`) | ❌ רק באפליקציה (HTTP) |
-| 540 | TV1000 | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`TV1000.bg`) | ❌ רק באפליקציה (HTTP) |
-| 541 | Antiques Roadshow UK | bbc-antiquesroadshowuk-1-us.roku.wurl.tv | 🌐 ציבורי (iptv-org) | iptv-org (`AntiquesRoadshowUK.us`) | ✅ |
-| 542 | BBC Drama | amg00793-amg00793c40-rakuten-es-5444.playouts.now.amagi.tv | 🌐 ציבורי (iptv-org) | iptv-org (`BBCDrama.uk`) | ✅ |
-| 543 | Sony One Blacklist | 06cb85ad6ccb4a6b97f561e62d16ad3f.mediatailor.us-west-2.amazonaws.com | 🌐 ציבורי (iptv-org) | iptv-org (`SonyOneBlacklist.fr`) | ✅ |
-| 544 | Pluto TV Dating | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVDating.de`) | ✅ |
-| 545 | MyTime Movie Network | appletree-mytimespain-rakuten.amagi.tv | 🌐 ציבורי (iptv-org) | iptv-org (`MyTimeMovieNetwork.es`) | ✅ |
-| 546 | Rai Movie | team-tv.co | 🌐 ציבורי (iptv-org) | iptv-org (`RaiMovie.it`) | ❌ רק באפליקציה (HTTP) |
-| 547 | Star Family | dash2.antik.sk | 🌐 ציבורי (iptv-org) | iptv-org (`StarFamily.ru`) | ✅ |
-| 548 | FilmUA Live | dash2.antik.sk | 🌐 ציבורי (iptv-org) | iptv-org (`FilmUALive.ua`) | ✅ |
-| 549 | Epic Bhojpuri | cc-8hy4a26pz2uos.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`EpicBhojpuri.in`) | ✅ |
-| 550 | CCTV-Nostalgia Theater | 38.75.136.137 | 🌐 ציבורי (iptv-org) | iptv-org (`CCTVNostalgiaTheater.cn`) | ❌ רק באפליקציה (HTTP) |
-| 551 | MyTime Movie Network | appletree-mytime-samsungbrazil.amagi.tv | 🌐 ציבורי (iptv-org) | iptv-org (`MyTimeMovieNetwork.br`) | ✅ |
-| 552 | Az Cinema | 15.204.196.147 | 🌐 ציבורי (iptv-org) | iptv-org (`AzCinema.mx`) | ❌ רק באפליקציה (HTTP) |
-| 553 | TVI Ficcao | raw.githubusercontent.com | 🌐 ציבורי (iptv-org) | iptv-org (`TVIFiccao.pt`) | ✅ |
-| 554 | FILMBOX+ Hits | nosignal1.antenaplay.ro | 🌐 ציבורי (iptv-org) | iptv-org (`FILMBOXPlusHits.pl`) | ✅ |
-| 555 | Groovy TV | web.onair-radio.eu | 🌐 ציבורי (iptv-org) | iptv-org (`GroovyTV.gr`) | ❌ רק באפליקציה (HTTP) |
-| 556 | Car Chase | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`CarChase.se`) | ✅ |
-| 557 | Nostalgia TV | hls02ns.antenaplay.ro | 🌐 ציבורי (iptv-org) | iptv-org (`NostalgiaTV.ro`) | ✅ |
-| 558 | 13T | origin.dpsgo.com | 🌐 ציבורי (iptv-org) | iptv-org (`13T.cl`) | ✅ |
-| 559 | Canal Cine Dios | canal.mediaserver.com.co | 🌐 ציבורי (iptv-org) | iptv-org (`CanalCineDios.co`) | ✅ |
-| 560 | ON Cine | freem3u.xyz | 🌐 ציבורי (iptv-org) | iptv-org (`ONCine.vn`) | ✅ |
-| 561 | SL 1 | slonehls.wns.live | 🌐 ציבורי (iptv-org) | iptv-org (`SL1.ir`) | ✅ |
-| 562 | TVS Retro | cdn.streamhispanatv.net | 🌐 ציבורי (iptv-org) | iptv-org (`TVSRetro.gt`) | ✅ |
-| 563 | Boreal | edge.essastream.com | 🌐 ציבורי (iptv-org) | iptv-org (`Boreal.do`) | ✅ |
-| 564 | Charge! | fast-channels.sinclairstoryline.com | 🌐 ציבורי (iptv-org) | iptv-org (`Charge.us`) | ✅ |
-| 565 | MyTime Movie Network | appletree-mytimeuk-rakuten.amagi.tv | 🌐 ציבורי (iptv-org) | iptv-org (`MyTimeMovieNetwork.uk`) | ❌ רק באפליקציה (הפניה בלי CORS) |
-| 566 | Sony One Favoris | 49d735318d6b4c30a24a7997ea594e1b.mediatailor.us-west-2.amazonaws.com | 🌐 ציבורי (iptv-org) | iptv-org (`SonyOneFavoris.fr`) | ✅ |
-| 567 | Cagney & Lacey | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`CagneyLacey.de`) | ✅ |
-| 568 | Rakuten TV Action Movies | a9c57ec7ec5e4b7daeacc6316a0bb404.mediatailor.eu-west-1.amazonaws.com | 🌐 ציבורי (iptv-org) | iptv-org (`RakutenTVActionMovies.es`) | ✅ |
-| 569 | Horoshee Kino | live-rian.cdnvideo.ru | 🌐 ציבורי (iptv-org) | iptv-org (`HorosheeKino.ru`) | ✅ |
-| 570 | 4ever Cinema | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`4everCinema.ua`) | ❌ רק באפליקציה (HTTP) |
-| 571 | NH Tamil Gold | d3arbp6l7f096k.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`NHTamilGold.in`) | ✅ |
-| 572 | CCTV-Storm Theater | 38.75.136.137 | 🌐 ציבורי (iptv-org) | iptv-org (`CCTVStormTheater.cn`) | ❌ רק באפליקציה (HTTP) |
-| 573 | Retro Cartoon | stmv1.video.brstream.com.br | 🌐 ציבורי (iptv-org) | iptv-org (`RetroCartoon.br`) | ✅ |
-| 574 | Claro Cinema | 158.172.217.18 | 🌐 ציבורי (iptv-org) | iptv-org (`ClaroCinema.mx`) | ❌ רק באפליקציה (HTTP) |
-| 575 | FILMBOX+ Comedy | nosignal1.antenaplay.ro | 🌐 ציבורי (iptv-org) | iptv-org (`FILMBOXPlusComedy.pl`) | ✅ |
-| 576 | 2900 Happiness | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`2900Happiness.se`) | ✅ |
-| 577 | Mireasa | stream1.antenaplay.ro | 🌐 ציבורי (iptv-org) | iptv-org (`Mireasa.ro`) | ✅ |
-| 578 | Mega Ficcion | 15.204.196.147 | 🌐 ציבורי (iptv-org) | iptv-org (`MegaFiccion.cl`) | ❌ רק באפליקציה (HTTP) |
-| 579 | Star Channel | 190.61.47.54 | 🌐 ציבורי (iptv-org) | iptv-org (`StarChannel.co`) | ❌ רק באפליקציה (HTTP) |
-| 580 | SL 2 | sltwohls.wns.live | 🌐 ציבורי (iptv-org) | iptv-org (`SL2.ir`) | ✅ |
-| 581 | Doctor Who Classic | bbc-classicdrwho-1-us.roku.wurl.tv | 🌐 ציבורי (iptv-org) | iptv-org (`DoctorWhoClassic.us`) | ✅ |
-| 582 | Viasat Epic Drama | 92.114.85.87 | 🌐 ציבורי (iptv-org) | iptv-org (`ViasatEpicDrama.uk`) | ❌ רק באפליקציה (HTTP) |
-| 583 | Sony One Hits Action | 5098a8b860504a3690fd2e7c0a18d68f.mediatailor.us-west-2.amazonaws.com | 🌐 ציבורי (iptv-org) | iptv-org (`SonyOneHitsAction.fr`) | ✅ |
-| 584 | CSI: Crime Scene Investigation | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`CSICrimeSceneInvestigation.de`) | ✅ |
-| 585 | Rakuten TV Comedy Movies | 71db867f03ce4d71a29e92155f07ab87.mediatailor.eu-west-1.amazonaws.com | 🌐 ציבורי (iptv-org) | iptv-org (`RakutenTVComedyMovies.es`) | ✅ |
-| 586 | Smotrim 100% Klassika | Smotrim (VGTRK) – הבעלים של קרוסלה | ✅ רשמי | iptv-org (`Smotrim100Klassika.ru`) | ✅ |
-| 587 | 4ever Drama | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`4everDrama.ua`) | ❌ רק באפליקציה (HTTP) |
-| 588 | Punjabi Shorts | vglivessai.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`PunjabiShorts.in`) | ✅ |
-| 589 | CCTV-The First Theater | 38.75.136.137 | 🌐 ציבורי (iptv-org) | iptv-org (`CCTVTheFirstTheater.cn`) | ❌ רק באפליקציה (HTTP) |
-| 590 | TV Series | stmv1.srvif.com | 🌐 ציבורי (iptv-org) | iptv-org (`TVSeries.br`) | ✅ |
-| 591 | FILMBOX+ Love & Crime | nosignal1.antenaplay.ro | 🌐 ציבורי (iptv-org) | iptv-org (`FILMBOXPlusLoveCrime.pl`) | ✅ |
-| 592 | 7th Heaven | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`7thHeaven.se`) | ✅ |
-| 593 | Bollywood Classic | hls02ns.antenaplay.ro | 🌐 ציבורי (iptv-org) | iptv-org (`BollywoodClassic.ro`) | ✅ |
-| 594 | TeleNostalgia | 38.134.250.110 | 🌐 ציבורי (iptv-org) | iptv-org (`TeleNostalgia.co`) | ❌ רק באפליקציה (HTTP) |
-| 595 | Afra Film | afrafhls.wns.live | 🌐 ציבורי (iptv-org) | iptv-org (`AfraFilm.ir`) | ✅ |
-| 596 | Duck Dynasty | amg00276-amg00276c2-rakuten-uk-3449.playouts.now.amagi.tv | 🌐 ציבורי (iptv-org) | iptv-org (`DuckDynasty.us`) | ✅ |
-| 597 | Sony One Hits Comedie | 7aa9671895264ec9a384dfed1b992171.mediatailor.us-west-2.amazonaws.com | 🌐 ציבורי (iptv-org) | iptv-org (`SonyOneHitsComedie.fr`) | ✅ |
-| 598 | More TV Crime | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`MoreTVCrime.de`) | ✅ |
-| 599 | Rakuten TV Drama Movies | a7089c89d85f453d850c4a1518b43076.mediatailor.eu-west-1.amazonaws.com | 🌐 ציבורי (iptv-org) | iptv-org (`RakutenTVDramaMovies.es`) | ✅ |
-| 600 | Smotrim 100% Lyubov | Smotrim (VGTRK) – הבעלים של קרוסלה | ✅ רשמי | iptv-org (`Smotrim100Lyubov.ru`) | ✅ |
-| 601 | Raj Digital Plus | livestream.rajtv.tv | 🌐 ציבורי (iptv-org) | iptv-org (`RajDigitalPlus.in`) | ✅ |
-| 602 | Classique TV | stmv1.srvif.com | 🌐 ציבורי (iptv-org) | iptv-org (`ClassiqueTV.br`) | ✅ |
-| 603 | De Pelicula Plus | 200.115.120.1 | 🌐 ציבורי (iptv-org) | iptv-org (`DePeliculaPlus.mx`) | ❌ רק באפליקציה (HTTP) |
-| 604 | AXN Poland | 92.114.85.87 | 🌐 ציבורי (iptv-org) | iptv-org (`AXNPoland.pl`) | ❌ רק באפליקציה (HTTP) |
-| 605 | Auction Hunters | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`AuctionHunters.se`) | ✅ |
-| 606 | CineWow | hls02ns.antenaplay.ro | 🌐 ציבורי (iptv-org) | iptv-org (`CineWow.ro`) | ✅ |
-| 607 | Cafe Film | cafefhls.wns.live | 🌐 ציבורי (iptv-org) | iptv-org (`CafeFilm.ir`) | ✅ |
-| 608 | Gravitas Movies | d6dg3ebeih71x.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`GravitasMovies.us`) | ✅ |
-| 609 | Persiana Cinema | cinehls.persiana.live | 🌐 ציבורי (iptv-org) | iptv-org (`PersianaCinema.fr`) | ✅ |
-| 610 | Pluto TV American True Crime | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVAmericanTrueCrime.de`) | ✅ |
-| 611 | Rakuten TV Family Movies | b0d59c8c98974e708e5ccb9a27cdfdfc.mediatailor.eu-west-1.amazonaws.com | 🌐 ציבורי (iptv-org) | iptv-org (`RakutenTVFamilyMovies.es`) | ✅ |
-| 612 | Smotrim 100% Muzhskoe | Smotrim (VGTRK) – הבעלים של קרוסלה | ✅ רשמי | iptv-org (`Smotrim100Muzhskoe.ru`) | ✅ |
-| 613 | South Station | cc-yw7ztecy8do3q.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`SouthStation.in`) | ✅ |
-| 614 | AXN | 170.83.16.50 | 🌐 ציבורי (iptv-org) | iptv-org (`AXN.br`) | ❌ רק באפליקציה (HTTP) |
-| 615 | MultiPremier | 168.196.127.137 | 🌐 ציבורי (iptv-org) | iptv-org (`MultiPremier.mx`) | ❌ רק באפליקציה (HTTP) |
-| 616 | TVP Seriale | 92.114.85.87 | 🌐 ציבורי (iptv-org) | iptv-org (`TVPSeriale.pl`) | ❌ רק באפליקציה (HTTP) |
-| 617 | Becker | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`Becker.se`) | ✅ |
-| 618 | Classic TV | clshls.wns.live | 🌐 ציבורי (iptv-org) | iptv-org (`ClassicTV.ir`) | ✅ |
-| 619 | Impossible Quiz Show | bbc-impossible-1-us.roku.wurl.tv | 🌐 ציבורי (iptv-org) | iptv-org (`ImpossibleQuizShow.us`) | ✅ |
-| 620 | Persiana Family | familyhls.persiana.live | 🌐 ציבורי (iptv-org) | iptv-org (`PersianaFamily.fr`) | ✅ |
-| 621 | Pluto TV Classic TV | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVClassicTV.de`) | ✅ |
-| 622 | Rakuten TV Top Movies | ff335120300e4742a2b135ee9a9e7df8.mediatailor.eu-west-1.amazonaws.com | 🌐 ציבורי (iptv-org) | iptv-org (`RakutenTVTopMovies.es`) | ✅ |
-| 623 | Dorama | fs.uplink.kz | 🌐 ציבורי (iptv-org) | iptv-org (`Dorama.ru`) | ✅ |
-| 624 | Thalaa TV | streams2.sofast.tv | 🌐 ציבורי (iptv-org) | iptv-org (`ThalaaTV.in`) | ✅ |
-| 625 | Sony Movies | 45.162.64.114 | 🌐 ציבורי (iptv-org) | iptv-org (`SonyMovies.br`) | ❌ רק באפליקציה (HTTP) |
-| 626 | Tlnovelas Mexico | 167.249.23.102 | 🌐 ציבורי (iptv-org) | iptv-org (`TlnovelasMexico.mx`) | ❌ רק באפליקציה (HTTP) |
-| 627 | FILMBOX+ Action | 92.114.85.87 | 🌐 ציבורי (iptv-org) | iptv-org (`FILMBOXPlusAction.pl`) | ❌ רק באפליקציה (HTTP) |
-| 628 | BET | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`BET.se`) | ✅ |
-| 629 | Gold Star | moviethls.wns.live | 🌐 ציבורי (iptv-org) | iptv-org (`GoldStar.ir`) | ✅ |
-| 630 | Maverick Black Cinema | maverick-maverick-black-cinema-3-us.roku.wurl.tv | 🌐 ציבורי (iptv-org) | iptv-org (`MaverickBlackCinema.us`) | ✅ |
-| 631 | Persiana Iranian | irhls.persiana.live | 🌐 ציבורי (iptv-org) | iptv-org (`PersianaIranian.fr`) | ✅ |
-| 632 | Pluto TV Cult Films | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVCultFilms.de`) | ✅ |
-| 633 | 3Cat Plats bruts | fast-tailor.3catdirectes.cat | 🌐 ציבורי (iptv-org) | iptv-org (`3CatPlatsbruts.es`) | ✅ |
-| 634 | Kinoseriya | fs.uplink.kz | 🌐 ציבורי (iptv-org) | iptv-org (`Kinoseriya.ru`) | ✅ |
-| 635 | The Movie Club | sis-global.prod.samsungtv.plus | 🌐 ציבורי (iptv-org) | iptv-org (`TheMovieClub.in`) | ✅ |
-| 636 | Az Corazon | 200.115.120.1 | 🌐 ציבורי (iptv-org) | iptv-org (`AzCorazon.mx`) | ❌ רק באפליקציה (HTTP) |
-| 637 | FILMBOX+ Emotion | 92.114.85.87 | 🌐 ציבורי (iptv-org) | iptv-org (`FILMBOXPlusEmotion.pl`) | ❌ רק באפליקציה (HTTP) |
-| 638 | Britain's Next Top Model | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`BritainsNextTopModel.se`) | ✅ |
-| 639 | Meta Film TV | metafilmhls.wns.live | 🌐 ציבורי (iptv-org) | iptv-org (`MetaFilmTV.ir`) | ✅ |
-| 640 | Midsomer Murders | all3media-midsomer-1-us.roku.wurl.tv | 🌐 ציבורי (iptv-org) | iptv-org (`MidsomerMurders.us`) | ✅ |
-| 641 | Persiana Korea | korhls.persiana.live | 🌐 ציבורי (iptv-org) | iptv-org (`PersianaKorea.fr`) | ✅ |
-| 642 | Pluto TV Family Movie Club | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVFamilyMovieClub.de`) | ✅ |
-| 643 | XPTV US | janus.xpbroadcasting.com | 🌐 ציבורי (iptv-org) | iptv-org (`XPTVUS.es`) | ✅ |
-| 644 | Russkiy roman | vod.tuva.ru | 🌐 ציבורי (iptv-org) | iptv-org (`Russkiyroman.ru`) | ✅ |
-| 645 | Tolly TV | streams2.sofast.tv | 🌐 ציבורי (iptv-org) | iptv-org (`TollyTV.in`) | ✅ |
-| 646 | MyTime Movie Network | appletree-mytime-samsungmexico.amagi.tv | 🌐 ציבורי (iptv-org) | iptv-org (`MyTimeMovieNetwork.mx`) | ❌ רק באפליקציה (הפניה בלי CORS) |
-| 647 | AXN Black | 92.114.85.87 | 🌐 ציבורי (iptv-org) | iptv-org (`AXNBlack.pl`) | ❌ רק באפליקציה (HTTP) |
-| 648 | Bull | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`Bull.se`) | ✅ |
-| 649 | NEW K.MOVIES | ads.its-newid.net | 🌐 ציבורי (iptv-org) | iptv-org (`NEWKMOVIES.us`) | ✅ |
-| 650 | Persiana Plus | euhls.persiana.live | 🌐 ציבורי (iptv-org) | iptv-org (`PersianaPlus.fr`) | ✅ |
-| 651 | Pluto TV Fantasy & Horror | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVFantasyHorror.de`) | ✅ |
-| 652 | City Eden KinoAction | cityeden.catcast.tv | 🌐 ציבורי (iptv-org) | iptv-org (`CityEdenKinoAction.ru`) | ✅ |
-| 653 | Alankar TV | livetv.tarangplus.in | 🌐 ציבורי (iptv-org) | iptv-org (`AlankarTV.in`) | ✅ |
-| 654 | AXN White | 92.114.85.87 | 🌐 ציבורי (iptv-org) | iptv-org (`AXNWhite.pl`) | ❌ רק באפליקציה (HTTP) |
-| 655 | CSI | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`CSI.se`) | ✅ |
-| 656 | OuterSphere | d3o593mz1glx8d.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`OuterSphere.us`) | ✅ |
-| 657 | Persiana Series | onehls.persiana.live | 🌐 ציבורי (iptv-org) | iptv-org (`PersianaSeries.fr`) | ✅ |
-| 658 | Pluto TV Investigation | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVInvestigation.de`) | ✅ |
-| 659 | City Eden KinoArt | cityeden.catcast.tv | 🌐 ציבורי (iptv-org) | iptv-org (`CityEdenKinoArt.ru`) | ✅ |
-| 660 | Bhojpuri Cinema | live-bhojpuri.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`BhojpuriCinema.in`) | ✅ |
-| 661 | Sundance TV | 92.114.85.87 | 🌐 ציבורי (iptv-org) | iptv-org (`SundanceTV.pl`) | ❌ רק באפליקציה (HTTP) |
-| 662 | Dallas Cowboys Cheerleaders | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`DallasCowboysCheerleaders.se`) | ✅ |
-| 663 | The Loop | tgn.bozztv.com | 🌐 ציבורי (iptv-org) | iptv-org (`TheLoop.us`) | ✅ |
-| 664 | Pluto TV Sci-fi Series | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVScifiSeries.de`) | ✅ |
-| 665 | City Eden KinoAsia | cityeden.catcast.tv | 🌐 ציבורי (iptv-org) | iptv-org (`CityEdenKinoAsia.ru`) | ✅ |
-| 666 | Manoranjan Grand | cdn.pishow.tv | 🌐 ציבורי (iptv-org) | iptv-org (`ManoranjanGrand.in`) | ✅ |
-| 667 | AXN Spin | 92.114.85.87 | 🌐 ציבורי (iptv-org) | iptv-org (`AXNSpin.pl`) | ❌ רק באפליקציה (HTTP) |
-| 668 | Dating Naked UK | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`DatingNakedUK.se`) | ✅ |
-| 669 | This Old House | thisoldhouse-2-us.roku.wurl.tv | 🌐 ציבורי (iptv-org) | iptv-org (`ThisOldHouse.us`) | ✅ |
-| 670 | Pluto TV Sherlock | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVSherlock.de`) | ✅ |
-| 671 | City Eden KinoDetektiv | cityeden.catcast.tv | 🌐 ציבורי (iptv-org) | iptv-org (`CityEdenKinoDetektiv.ru`) | ✅ |
-| 672 | Movie Punjab | samitaorigin.tangotv.in | 🌐 ציבורי (iptv-org) | iptv-org (`MoviePunjab.in`) | ✅ |
-| 673 | Polsat Film | 92.63.196.180 | 🌐 ציבורי (iptv-org) | iptv-org (`PolsatFilm.pl`) | ❌ רק באפליקציה (HTTP) |
-| 674 | Diagnosis Murder | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`DiagnosisMurder.se`) | ✅ |
-| 675 | Universal Crime | xumo-xumoent-vc-107-xmuvk.fast.nbcuni.com | 🌐 ציבורי (iptv-org) | iptv-org (`UniversalCrime.us`) | ✅ |
-| 676 | Pluto TV Tough Jobs | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVToughJobs.de`) | ✅ |
-| 677 | City Eden KinoDok | cityeden.catcast.tv | 🌐 ציבורי (iptv-org) | iptv-org (`CityEdenKinoDok.ru`) | ✅ |
-| 678 | Oscar Movies Bhojpuri | cdn.pishow.tv | 🌐 ציבורי (iptv-org) | iptv-org (`OscarMoviesBhojpuri.in`) | ✅ |
-| 679 | FBoy Island | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`FBoyIsland.se`) | ✅ |
-| 680 | AXN Latin America | streaming.onnethn.com | 🌐 ציבורי (iptv-org) | iptv-org (`AXNLatinAmerica.us`) | ✅ |
-| 681 | Pluto TV Westerns | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVWesterns.de`) | ✅ |
-| 682 | City Eden KinoDrama | cityeden.catcast.tv | 🌐 ציבורי (iptv-org) | iptv-org (`CityEdenKinoDrama.ru`) | ✅ |
-| 683 | Pitaara | vg-pitaaratvlive.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`Pitaara.in`) | ✅ |
-| 684 | Happy Days | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`HappyDays.se`) | ✅ |
-| 685 | Cinecanal | barinaslive1.boldmss.com | 🌐 ציבורי (iptv-org) | iptv-org (`Cinecanal.us`) | ✅ |
-| 686 | The New Detectives | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`TheNewDetectives.de`) | ✅ |
-| 687 | City Eden KinoFantastika | cityeden.catcast.tv | 🌐 ציבורי (iptv-org) | iptv-org (`CityEdenKinoFantastika.ru`) | ✅ |
-| 688 | Shubh Cinema TV | d393sxaxig6bax.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`ShubhCinemaTV.in`) | ✅ |
-| 689 | House of Lies | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`HouseofLies.se`) | ✅ |
-| 690 | 50 Cent Action | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`50CentAction.us`) | ✅ |
-| 691 | Cine 666 by Pluto TV | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`Cine666byPlutoTV.de`) | ✅ |
-| 692 | City Eden KinoKomediya | cityeden.catcast.tv | 🌐 ציבורי (iptv-org) | iptv-org (`CityEdenKinoKomediya.ru`) | ✅ |
-| 693 | Star Maa Movies | da86m1sqpm3o0.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`StarMaaMovies.in`) | ✅ |
-| 694 | JAG | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`JAG.se`) | ✅ |
-| 695 | ABN Bible Movies Channel | mediaserver.abnvideos.com | 🌐 ציבורי (iptv-org) | iptv-org (`ABNBibleMoviesChannel.us`) | ✅ |
-| 696 | Cine Action by Pluto TV | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`CineActionbyPlutoTV.de`) | ✅ |
-| 697 | City Eden KinoMistika | cityeden.catcast.tv | 🌐 ציבורי (iptv-org) | iptv-org (`CityEdenKinoMistika.ru`) | ✅ |
-| 698 | Studio One + | cdn.pishow.tv | 🌐 ציבורי (iptv-org) | iptv-org (`StudioOnePlus.in`) | ✅ |
-| 699 | Judge Judy | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`JudgeJudy.se`) | ✅ |
+| 477 | ערוץ הים התיכון HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`YamTichoni.il`) | ❌ רק באפליקציה (HTTP) |
+| 478 | yes סרטים אקשן HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`YesMoviesAction.il`) | ❌ רק באפליקציה (HTTP) |
+| 479 | HOT דרמה HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`HOTDrama.il`) | ❌ רק באפליקציה (HTTP) |
+| 480 | HOT זון HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`HOTZone.il`) | ❌ רק באפליקציה (HTTP) |
+| 481 | yes ריאליטי HD | ערוץ FAST ישראלי – AWS CloudFront | ✅ FAST חינמי | iptv-org (`RealityChannel.il`) | ✅ |
+| 482 | ויוה פרימיום HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`VivaPremium.il`) | ❌ רק באפליקציה (HTTP) |
+| 483 | סינמה פרימיום HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`Premialnoe.ru`) | ❌ רק באפליקציה (HTTP) |
+| 484 | סינמה מתח ואקשן HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`Ostrosyuzhetnoye.ru`) | ❌ רק באפליקציה (HTTP) |
+| 485 | ערוץ סרטי אימה HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`Kinouzhas.ru`) | ❌ רק באפליקציה (HTTP) |
+| 486 | קולנוע להיטים KinoHit HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`KinoHit.ru`) | ✅ דרך מקור חלופי: Cinerama.uz – ספק IPTV באוזבקיסטן |
+| 487 | קולנוע משפחתי Kinosemja HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`Kinosemja.ru`) | ❌ רק באפליקציה (HTTP) |
+| 488 | סינמה מגה-להיטים HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`vijuPlusMegahit.ru`) | ❌ רק באפליקציה (HTTP) |
+| 489 | סינמה בכורה Premiere HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`vijuPlusPremiere.ru`) | ❌ רק באפליקציה (HTTP) |
+| 490 | סינמה קומדיה HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`vijuPlusComedy.ru`) | ❌ רק באפליקציה (HTTP) |
+| 491 | קולנוע TV1000 אקשן HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`vijuTV1000action.ru`) | ✅ דרך מקור חלופי: Cinerama.uz – ספק IPTV באוזבקיסטן |
+| 492 | קולנוע TV1000 קלאסי | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`vijuTV1000.ru`) | ❌ רק באפליקציה (HTTP) |
+| 493 | ערוץ הסדרות Serial HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`vijuPlusSerial.ru`) | ❌ רק באפליקציה (HTTP) |
+| 494 | סרטי שנות ה-80 Rewind HD | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`80sRewind.us`) | ❌ רק באפליקציה (הפניה בלי CORS) |
+| 495 | סרטי שנות ה-70 Cinema HD | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`70sCinema.us`) | ❌ רק באפליקציה (הפניה בלי CORS) |
+| 496 | סרטי שנות ה-2000 Replay HD | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`00sReplay.us`) | ❌ רק באפליקציה (הפניה בלי CORS) |
+| 497 | משפחת סימפסון 24/7 HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
+| 498 | קולנוע קומדיה CineMan Comedy HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
+| 499 | קולנוע רטרו VHS Cinema HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
+| 500 | ערוץ הדרמה של קשת | קשת – ה-CDN של mako (עם הרשאת צפייה של mako) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 501 | 48 Hours | dai.google.com | 🌐 ציבורי (iptv-org) | iptv-org (`48Hours.us`) | ✅ |
+| 502 | True Crime | b6cca454.wurl.com | 🌐 ציבורי (iptv-org) | iptv-org (`TrueCrime.uk`) | ✅ |
+| 503 | Cine Nanar | zylo-cinenanar-rakuten.amagi.tv | 🌐 ציבורי (iptv-org) | iptv-org (`CineNanar.fr`) | ✅ |
+| 504 | Grjngo Western Movies | amogonetworx-grjngo-3-dk.samsung.wurl.tv | 🌐 ציבורי (iptv-org) | iptv-org (`GrjngoWesternMovies.de`) | ✅ |
+| 505 | Cine Friki | d2mr4fu91mjx9m.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`CineFriki.es`) | ✅ |
+| 506 | Super TV | 59d7d6f47d7fc.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`SuperTV.it`) | ✅ |
+| 507 | Smotrim Chestnyy Detektiv | live-vgtrksmotrim.cdnvideo.ru | 🌐 ציבורי (iptv-org) | iptv-org (`SmotrimChestnyyDetektiv.ru`) | ✅ |
+| 508 | FilmUADrama | dash2.antik.sk | 🌐 ציבורי (iptv-org) | iptv-org (`FilmUADrama.ua`) | ✅ |
+| 509 | Mix Hollywood | ml-pull-hwc.myco.io | 🌐 ציבורי (iptv-org) | iptv-org (`MixHollywood.eg`) | ✅ |
+| 510 | Grand Cinema | gcinemahls.wns.live | 🌐 ציבורי (iptv-org) | iptv-org (`GrandCinema.tr`) | ✅ |
+| 511 | B4U Bhojpuri | cdnb4u.wiseplayout.com | 🌐 ציבורי (iptv-org) | iptv-org (`B4UBhojpuri.in`) | ✅ |
+| 512 | Harbin Movie Channel | stream.hrbtv.net | 🌐 ציבורי (iptv-org) | iptv-org (`HarbinMovieChannel.cn`) | ✅ |
+| 513 | CINDIE TV | cc-hqw8u5r1nshjc.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`CINDIETV.br`) | ✅ |
+| 514 | Popcorn Central | oly-ftvpc.otteravision.com | 🌐 ציבורי (iptv-org) | iptv-org (`PopcornCentral.mx`) | ✅ |
+| 515 | Europa Europa | iptv.bitred.cl | 🌐 ציבורי (iptv-org) | iptv-org (`EuropaEuropa.ar`) | ✅ |
+| 516 | Kuriakos Cine | w2.manasat.com | 🌐 ציבורי (iptv-org) | iptv-org (`KuriakosCine.pt`) | ✅ |
+| 517 | FILMBOX+ Festival | nosignal1.antenaplay.ro | 🌐 ציבורי (iptv-org) | iptv-org (`FILMBOXPlusFestival.pl`) | ✅ |
+| 518 | Action 24 | actionlive.siliconweb.com | 🌐 ציבורי (iptv-org) | iptv-org (`Action24.gr`) | ❌ רק באפליקציה (HTTP) |
+| 519 | Bondi Rescue | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`BondiRescue.se`) | ✅ |
+| 520 | Hero | live-fi.tvkaista.net | 🌐 ציבורי (iptv-org) | iptv-org (`Hero.fi`) | ✅ |
+| 521 | Cinemaraton Plus | hls02ns.antenaplay.ro | 🌐 ציבורי (iptv-org) | iptv-org (`CinemaratonPlus.ro`) | ✅ |
+| 522 | MAX4 | 141.94.193.53 | 🌐 ציבורי (iptv-org) | iptv-org (`MAX4.hu`) | ❌ רק באפליקציה (HTTP) |
+| 523 | TVN3 | mdstrm.com | 🌐 ציבורי (iptv-org) | iptv-org (`TVN3.cl`) | ✅ |
+| 524 | MCI Television | video.ejeserver.com | 🌐 ציבורי (iptv-org) | iptv-org (`MCITelevision.co`) | ✅ |
+| 525 | Latina Clasicos | redirector.rudo.video | 🌐 ציבורי (iptv-org) | iptv-org (`LatinaClasicos.pe`) | ✅ |
+| 526 | ON Movies | freem3u.xyz | 🌐 ציבורי (iptv-org) | iptv-org (`ONMovies.vn`) | ✅ |
+| 527 | AVA Series | avaserieshls.wns.live | 🌐 ציבורי (iptv-org) | iptv-org (`AVASeries.ir`) | ✅ |
+| 528 | Itage TV | viewmedia7219.bozztv.com | 🌐 ציבורי (iptv-org) | iptv-org (`ItageTV.ng`) | ✅ |
+| 529 | Aurora Media Films | cdn.streamhispanatv.net | 🌐 ציבורי (iptv-org) | iptv-org (`AuroraMediaFilms.gt`) | ✅ |
+| 530 | Mega Cine TV | cnn.hostlagarto.com | 🌐 ציבורי (iptv-org) | iptv-org (`MegaCineTV.do`) | ✅ |
+| 531 | Allo Cine | d1yl6bf4hrzbr0.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`AlloCine.cm`) | ✅ |
+| 532 | HITS Movies | 103.151.60.162 | 🌐 ציבורי (iptv-org) | iptv-org (`HITSMovies.sg`) | ❌ רק באפליקציה (HTTP) |
+| 533 | Silk Way Cinema | stream.qazcdn.net | 🌐 ציבורי (iptv-org) | iptv-org (`SilkWayCinema.kz`) | ✅ |
+| 534 | Lollywood HD TV | stream.berosat.live | 🌐 ציבורי (iptv-org) | iptv-org (`LollywoodHDTV.cd`) | ✅ |
+| 535 | Serie Max | video1.getstreamhosting.com | 🌐 ציבורי (iptv-org) | iptv-org (`SerieMax.ci`) | ✅ |
+| 536 | BIZ Cinema | fl.biztv.media | 🌐 ציבורי (iptv-org) | iptv-org (`BIZCinema.uz`) | ✅ |
+| 537 | Maah TV | hls.maahtv.live | 🌐 ציבורי (iptv-org) | iptv-org (`MaahTV.my`) | ✅ |
+| 538 | Mei Ah Movie Channel | 103.172.187.30 | 🌐 ציבורי (iptv-org) | iptv-org (`MeiAhMovieChannel.hk`) | ❌ רק באפליקציה (HTTP) |
+| 539 | Movie Bangla | alvetv.com | 🌐 ציבורי (iptv-org) | iptv-org (`MovieBangla.bd`) | ❌ רק באפליקציה (HTTP) |
+| 540 | MWD Movies | 203.81.84.130 | 🌐 ציבורי (iptv-org) | iptv-org (`MWDMovies.mm`) | ❌ רק באפליקציה (HTTP) |
+| 541 | TV1000 | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`TV1000.bg`) | ❌ רק באפליקציה (HTTP) |
+| 542 | Antiques Roadshow UK | bbc-antiquesroadshowuk-1-us.roku.wurl.tv | 🌐 ציבורי (iptv-org) | iptv-org (`AntiquesRoadshowUK.us`) | ✅ |
+| 543 | BBC Drama | amg00793-amg00793c40-rakuten-es-5444.playouts.now.amagi.tv | 🌐 ציבורי (iptv-org) | iptv-org (`BBCDrama.uk`) | ✅ |
+| 544 | Sony One Blacklist | 06cb85ad6ccb4a6b97f561e62d16ad3f.mediatailor.us-west-2.amazonaws.com | 🌐 ציבורי (iptv-org) | iptv-org (`SonyOneBlacklist.fr`) | ✅ |
+| 545 | Pluto TV Dating | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVDating.de`) | ✅ |
+| 546 | MyTime Movie Network | appletree-mytimespain-rakuten.amagi.tv | 🌐 ציבורי (iptv-org) | iptv-org (`MyTimeMovieNetwork.es`) | ✅ |
+| 547 | Rai Movie | team-tv.co | 🌐 ציבורי (iptv-org) | iptv-org (`RaiMovie.it`) | ❌ רק באפליקציה (HTTP) |
+| 548 | Star Family | dash2.antik.sk | 🌐 ציבורי (iptv-org) | iptv-org (`StarFamily.ru`) | ✅ |
+| 549 | FilmUA Live | dash2.antik.sk | 🌐 ציבורי (iptv-org) | iptv-org (`FilmUALive.ua`) | ✅ |
+| 550 | Epic Bhojpuri | cc-8hy4a26pz2uos.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`EpicBhojpuri.in`) | ✅ |
+| 551 | CCTV-Nostalgia Theater | 38.75.136.137 | 🌐 ציבורי (iptv-org) | iptv-org (`CCTVNostalgiaTheater.cn`) | ❌ רק באפליקציה (HTTP) |
+| 552 | MyTime Movie Network | appletree-mytime-samsungbrazil.amagi.tv | 🌐 ציבורי (iptv-org) | iptv-org (`MyTimeMovieNetwork.br`) | ✅ |
+| 553 | Az Cinema | 15.204.196.147 | 🌐 ציבורי (iptv-org) | iptv-org (`AzCinema.mx`) | ❌ רק באפליקציה (HTTP) |
+| 554 | TVI Ficcao | raw.githubusercontent.com | 🌐 ציבורי (iptv-org) | iptv-org (`TVIFiccao.pt`) | ✅ |
+| 555 | FILMBOX+ Hits | nosignal1.antenaplay.ro | 🌐 ציבורי (iptv-org) | iptv-org (`FILMBOXPlusHits.pl`) | ✅ |
+| 556 | Groovy TV | web.onair-radio.eu | 🌐 ציבורי (iptv-org) | iptv-org (`GroovyTV.gr`) | ❌ רק באפליקציה (HTTP) |
+| 557 | Car Chase | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`CarChase.se`) | ✅ |
+| 558 | Nostalgia TV | hls02ns.antenaplay.ro | 🌐 ציבורי (iptv-org) | iptv-org (`NostalgiaTV.ro`) | ✅ |
+| 559 | 13T | origin.dpsgo.com | 🌐 ציבורי (iptv-org) | iptv-org (`13T.cl`) | ✅ |
+| 560 | Canal Cine Dios | canal.mediaserver.com.co | 🌐 ציבורי (iptv-org) | iptv-org (`CanalCineDios.co`) | ✅ |
+| 561 | ON Cine | freem3u.xyz | 🌐 ציבורי (iptv-org) | iptv-org (`ONCine.vn`) | ✅ |
+| 562 | SL 1 | slonehls.wns.live | 🌐 ציבורי (iptv-org) | iptv-org (`SL1.ir`) | ✅ |
+| 563 | TVS Retro | cdn.streamhispanatv.net | 🌐 ציבורי (iptv-org) | iptv-org (`TVSRetro.gt`) | ✅ |
+| 564 | Boreal | edge.essastream.com | 🌐 ציבורי (iptv-org) | iptv-org (`Boreal.do`) | ✅ |
+| 565 | Charge! | fast-channels.sinclairstoryline.com | 🌐 ציבורי (iptv-org) | iptv-org (`Charge.us`) | ✅ |
+| 566 | MyTime Movie Network | appletree-mytimeuk-rakuten.amagi.tv | 🌐 ציבורי (iptv-org) | iptv-org (`MyTimeMovieNetwork.uk`) | ❌ רק באפליקציה (הפניה בלי CORS) |
+| 567 | Sony One Favoris | 49d735318d6b4c30a24a7997ea594e1b.mediatailor.us-west-2.amazonaws.com | 🌐 ציבורי (iptv-org) | iptv-org (`SonyOneFavoris.fr`) | ✅ |
+| 568 | Cagney & Lacey | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`CagneyLacey.de`) | ✅ |
+| 569 | Rakuten TV Action Movies | a9c57ec7ec5e4b7daeacc6316a0bb404.mediatailor.eu-west-1.amazonaws.com | 🌐 ציבורי (iptv-org) | iptv-org (`RakutenTVActionMovies.es`) | ✅ |
+| 570 | Horoshee Kino | live-rian.cdnvideo.ru | 🌐 ציבורי (iptv-org) | iptv-org (`HorosheeKino.ru`) | ✅ |
+| 571 | 4ever Cinema | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`4everCinema.ua`) | ❌ רק באפליקציה (HTTP) |
+| 572 | NH Tamil Gold | d3arbp6l7f096k.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`NHTamilGold.in`) | ✅ |
+| 573 | CCTV-Storm Theater | 38.75.136.137 | 🌐 ציבורי (iptv-org) | iptv-org (`CCTVStormTheater.cn`) | ❌ רק באפליקציה (HTTP) |
+| 574 | Retro Cartoon | stmv1.video.brstream.com.br | 🌐 ציבורי (iptv-org) | iptv-org (`RetroCartoon.br`) | ✅ |
+| 575 | Claro Cinema | 158.172.217.18 | 🌐 ציבורי (iptv-org) | iptv-org (`ClaroCinema.mx`) | ❌ רק באפליקציה (HTTP) |
+| 576 | FILMBOX+ Comedy | nosignal1.antenaplay.ro | 🌐 ציבורי (iptv-org) | iptv-org (`FILMBOXPlusComedy.pl`) | ✅ |
+| 577 | 2900 Happiness | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`2900Happiness.se`) | ✅ |
+| 578 | Mireasa | stream1.antenaplay.ro | 🌐 ציבורי (iptv-org) | iptv-org (`Mireasa.ro`) | ✅ |
+| 579 | Mega Ficcion | 15.204.196.147 | 🌐 ציבורי (iptv-org) | iptv-org (`MegaFiccion.cl`) | ❌ רק באפליקציה (HTTP) |
+| 580 | Star Channel | 190.61.47.54 | 🌐 ציבורי (iptv-org) | iptv-org (`StarChannel.co`) | ❌ רק באפליקציה (HTTP) |
+| 581 | SL 2 | sltwohls.wns.live | 🌐 ציבורי (iptv-org) | iptv-org (`SL2.ir`) | ✅ |
+| 582 | Doctor Who Classic | bbc-classicdrwho-1-us.roku.wurl.tv | 🌐 ציבורי (iptv-org) | iptv-org (`DoctorWhoClassic.us`) | ✅ |
+| 583 | Viasat Epic Drama | 92.114.85.87 | 🌐 ציבורי (iptv-org) | iptv-org (`ViasatEpicDrama.uk`) | ❌ רק באפליקציה (HTTP) |
+| 584 | Sony One Hits Action | 5098a8b860504a3690fd2e7c0a18d68f.mediatailor.us-west-2.amazonaws.com | 🌐 ציבורי (iptv-org) | iptv-org (`SonyOneHitsAction.fr`) | ✅ |
+| 585 | CSI: Crime Scene Investigation | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`CSICrimeSceneInvestigation.de`) | ✅ |
+| 586 | Rakuten TV Comedy Movies | 71db867f03ce4d71a29e92155f07ab87.mediatailor.eu-west-1.amazonaws.com | 🌐 ציבורי (iptv-org) | iptv-org (`RakutenTVComedyMovies.es`) | ✅ |
+| 587 | Smotrim 100% Klassika | Smotrim (VGTRK) – הבעלים של קרוסלה | ✅ רשמי | iptv-org (`Smotrim100Klassika.ru`) | ✅ |
+| 588 | 4ever Drama | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`4everDrama.ua`) | ❌ רק באפליקציה (HTTP) |
+| 589 | Punjabi Shorts | vglivessai.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`PunjabiShorts.in`) | ✅ |
+| 590 | CCTV-The First Theater | 38.75.136.137 | 🌐 ציבורי (iptv-org) | iptv-org (`CCTVTheFirstTheater.cn`) | ❌ רק באפליקציה (HTTP) |
+| 591 | TV Series | stmv1.srvif.com | 🌐 ציבורי (iptv-org) | iptv-org (`TVSeries.br`) | ✅ |
+| 592 | FILMBOX+ Love & Crime | nosignal1.antenaplay.ro | 🌐 ציבורי (iptv-org) | iptv-org (`FILMBOXPlusLoveCrime.pl`) | ✅ |
+| 593 | 7th Heaven | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`7thHeaven.se`) | ✅ |
+| 594 | Bollywood Classic | hls02ns.antenaplay.ro | 🌐 ציבורי (iptv-org) | iptv-org (`BollywoodClassic.ro`) | ✅ |
+| 595 | TeleNostalgia | 38.134.250.110 | 🌐 ציבורי (iptv-org) | iptv-org (`TeleNostalgia.co`) | ❌ רק באפליקציה (HTTP) |
+| 596 | Afra Film | afrafhls.wns.live | 🌐 ציבורי (iptv-org) | iptv-org (`AfraFilm.ir`) | ✅ |
+| 597 | Duck Dynasty | amg00276-amg00276c2-rakuten-uk-3449.playouts.now.amagi.tv | 🌐 ציבורי (iptv-org) | iptv-org (`DuckDynasty.us`) | ✅ |
+| 598 | Sony One Hits Comedie | 7aa9671895264ec9a384dfed1b992171.mediatailor.us-west-2.amazonaws.com | 🌐 ציבורי (iptv-org) | iptv-org (`SonyOneHitsComedie.fr`) | ✅ |
+| 599 | More TV Crime | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`MoreTVCrime.de`) | ✅ |
+| 600 | Rakuten TV Drama Movies | a7089c89d85f453d850c4a1518b43076.mediatailor.eu-west-1.amazonaws.com | 🌐 ציבורי (iptv-org) | iptv-org (`RakutenTVDramaMovies.es`) | ✅ |
+| 601 | Smotrim 100% Lyubov | Smotrim (VGTRK) – הבעלים של קרוסלה | ✅ רשמי | iptv-org (`Smotrim100Lyubov.ru`) | ✅ |
+| 602 | Raj Digital Plus | livestream.rajtv.tv | 🌐 ציבורי (iptv-org) | iptv-org (`RajDigitalPlus.in`) | ✅ |
+| 603 | Classique TV | stmv1.srvif.com | 🌐 ציבורי (iptv-org) | iptv-org (`ClassiqueTV.br`) | ✅ |
+| 604 | De Pelicula Plus | 200.115.120.1 | 🌐 ציבורי (iptv-org) | iptv-org (`DePeliculaPlus.mx`) | ❌ רק באפליקציה (HTTP) |
+| 605 | AXN Poland | 92.114.85.87 | 🌐 ציבורי (iptv-org) | iptv-org (`AXNPoland.pl`) | ❌ רק באפליקציה (HTTP) |
+| 606 | Auction Hunters | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`AuctionHunters.se`) | ✅ |
+| 607 | CineWow | hls02ns.antenaplay.ro | 🌐 ציבורי (iptv-org) | iptv-org (`CineWow.ro`) | ✅ |
+| 608 | Cafe Film | cafefhls.wns.live | 🌐 ציבורי (iptv-org) | iptv-org (`CafeFilm.ir`) | ✅ |
+| 609 | Gravitas Movies | d6dg3ebeih71x.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`GravitasMovies.us`) | ✅ |
+| 610 | Persiana Cinema | cinehls.persiana.live | 🌐 ציבורי (iptv-org) | iptv-org (`PersianaCinema.fr`) | ✅ |
+| 611 | Pluto TV American True Crime | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVAmericanTrueCrime.de`) | ✅ |
+| 612 | Rakuten TV Family Movies | b0d59c8c98974e708e5ccb9a27cdfdfc.mediatailor.eu-west-1.amazonaws.com | 🌐 ציבורי (iptv-org) | iptv-org (`RakutenTVFamilyMovies.es`) | ✅ |
+| 613 | Smotrim 100% Muzhskoe | Smotrim (VGTRK) – הבעלים של קרוסלה | ✅ רשמי | iptv-org (`Smotrim100Muzhskoe.ru`) | ✅ |
+| 614 | South Station | cc-yw7ztecy8do3q.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`SouthStation.in`) | ✅ |
+| 615 | AXN | 170.83.16.50 | 🌐 ציבורי (iptv-org) | iptv-org (`AXN.br`) | ❌ רק באפליקציה (HTTP) |
+| 616 | MultiPremier | 168.196.127.137 | 🌐 ציבורי (iptv-org) | iptv-org (`MultiPremier.mx`) | ❌ רק באפליקציה (HTTP) |
+| 617 | TVP Seriale | 92.114.85.87 | 🌐 ציבורי (iptv-org) | iptv-org (`TVPSeriale.pl`) | ❌ רק באפליקציה (HTTP) |
+| 618 | Becker | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`Becker.se`) | ✅ |
+| 619 | Classic TV | clshls.wns.live | 🌐 ציבורי (iptv-org) | iptv-org (`ClassicTV.ir`) | ✅ |
+| 620 | Impossible Quiz Show | bbc-impossible-1-us.roku.wurl.tv | 🌐 ציבורי (iptv-org) | iptv-org (`ImpossibleQuizShow.us`) | ✅ |
+| 621 | Persiana Family | familyhls.persiana.live | 🌐 ציבורי (iptv-org) | iptv-org (`PersianaFamily.fr`) | ✅ |
+| 622 | Pluto TV Classic TV | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVClassicTV.de`) | ✅ |
+| 623 | Rakuten TV Top Movies | ff335120300e4742a2b135ee9a9e7df8.mediatailor.eu-west-1.amazonaws.com | 🌐 ציבורי (iptv-org) | iptv-org (`RakutenTVTopMovies.es`) | ✅ |
+| 624 | Dorama | fs.uplink.kz | 🌐 ציבורי (iptv-org) | iptv-org (`Dorama.ru`) | ✅ |
+| 625 | Thalaa TV | streams2.sofast.tv | 🌐 ציבורי (iptv-org) | iptv-org (`ThalaaTV.in`) | ✅ |
+| 626 | Sony Movies | 45.162.64.114 | 🌐 ציבורי (iptv-org) | iptv-org (`SonyMovies.br`) | ❌ רק באפליקציה (HTTP) |
+| 627 | Tlnovelas Mexico | 167.249.23.102 | 🌐 ציבורי (iptv-org) | iptv-org (`TlnovelasMexico.mx`) | ❌ רק באפליקציה (HTTP) |
+| 628 | FILMBOX+ Action | 92.114.85.87 | 🌐 ציבורי (iptv-org) | iptv-org (`FILMBOXPlusAction.pl`) | ❌ רק באפליקציה (HTTP) |
+| 629 | BET | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`BET.se`) | ✅ |
+| 630 | Gold Star | moviethls.wns.live | 🌐 ציבורי (iptv-org) | iptv-org (`GoldStar.ir`) | ✅ |
+| 631 | Maverick Black Cinema | maverick-maverick-black-cinema-3-us.roku.wurl.tv | 🌐 ציבורי (iptv-org) | iptv-org (`MaverickBlackCinema.us`) | ✅ |
+| 632 | Persiana Iranian | irhls.persiana.live | 🌐 ציבורי (iptv-org) | iptv-org (`PersianaIranian.fr`) | ✅ |
+| 633 | Pluto TV Cult Films | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVCultFilms.de`) | ✅ |
+| 634 | 3Cat Plats bruts | fast-tailor.3catdirectes.cat | 🌐 ציבורי (iptv-org) | iptv-org (`3CatPlatsbruts.es`) | ✅ |
+| 635 | Kinoseriya | fs.uplink.kz | 🌐 ציבורי (iptv-org) | iptv-org (`Kinoseriya.ru`) | ✅ |
+| 636 | The Movie Club | sis-global.prod.samsungtv.plus | 🌐 ציבורי (iptv-org) | iptv-org (`TheMovieClub.in`) | ✅ |
+| 637 | Az Corazon | 200.115.120.1 | 🌐 ציבורי (iptv-org) | iptv-org (`AzCorazon.mx`) | ❌ רק באפליקציה (HTTP) |
+| 638 | FILMBOX+ Emotion | 92.114.85.87 | 🌐 ציבורי (iptv-org) | iptv-org (`FILMBOXPlusEmotion.pl`) | ❌ רק באפליקציה (HTTP) |
+| 639 | Britain's Next Top Model | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`BritainsNextTopModel.se`) | ✅ |
+| 640 | Meta Film TV | metafilmhls.wns.live | 🌐 ציבורי (iptv-org) | iptv-org (`MetaFilmTV.ir`) | ✅ |
+| 641 | Midsomer Murders | all3media-midsomer-1-us.roku.wurl.tv | 🌐 ציבורי (iptv-org) | iptv-org (`MidsomerMurders.us`) | ✅ |
+| 642 | Persiana Korea | korhls.persiana.live | 🌐 ציבורי (iptv-org) | iptv-org (`PersianaKorea.fr`) | ✅ |
+| 643 | Pluto TV Family Movie Club | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVFamilyMovieClub.de`) | ✅ |
+| 644 | XPTV US | janus.xpbroadcasting.com | 🌐 ציבורי (iptv-org) | iptv-org (`XPTVUS.es`) | ✅ |
+| 645 | Russkiy roman | vod.tuva.ru | 🌐 ציבורי (iptv-org) | iptv-org (`Russkiyroman.ru`) | ✅ |
+| 646 | Tolly TV | streams2.sofast.tv | 🌐 ציבורי (iptv-org) | iptv-org (`TollyTV.in`) | ✅ |
+| 647 | MyTime Movie Network | appletree-mytime-samsungmexico.amagi.tv | 🌐 ציבורי (iptv-org) | iptv-org (`MyTimeMovieNetwork.mx`) | ❌ רק באפליקציה (הפניה בלי CORS) |
+| 648 | AXN Black | 92.114.85.87 | 🌐 ציבורי (iptv-org) | iptv-org (`AXNBlack.pl`) | ❌ רק באפליקציה (HTTP) |
+| 649 | Bull | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`Bull.se`) | ✅ |
+| 650 | NEW K.MOVIES | ads.its-newid.net | 🌐 ציבורי (iptv-org) | iptv-org (`NEWKMOVIES.us`) | ✅ |
+| 651 | Persiana Plus | euhls.persiana.live | 🌐 ציבורי (iptv-org) | iptv-org (`PersianaPlus.fr`) | ✅ |
+| 652 | Pluto TV Fantasy & Horror | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVFantasyHorror.de`) | ✅ |
+| 653 | City Eden KinoAction | cityeden.catcast.tv | 🌐 ציבורי (iptv-org) | iptv-org (`CityEdenKinoAction.ru`) | ✅ |
+| 654 | Alankar TV | livetv.tarangplus.in | 🌐 ציבורי (iptv-org) | iptv-org (`AlankarTV.in`) | ✅ |
+| 655 | AXN White | 92.114.85.87 | 🌐 ציבורי (iptv-org) | iptv-org (`AXNWhite.pl`) | ❌ רק באפליקציה (HTTP) |
+| 656 | CSI | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`CSI.se`) | ✅ |
+| 657 | OuterSphere | d3o593mz1glx8d.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`OuterSphere.us`) | ✅ |
+| 658 | Persiana Series | onehls.persiana.live | 🌐 ציבורי (iptv-org) | iptv-org (`PersianaSeries.fr`) | ✅ |
+| 659 | Pluto TV Investigation | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVInvestigation.de`) | ✅ |
+| 660 | City Eden KinoArt | cityeden.catcast.tv | 🌐 ציבורי (iptv-org) | iptv-org (`CityEdenKinoArt.ru`) | ✅ |
+| 661 | Bhojpuri Cinema | live-bhojpuri.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`BhojpuriCinema.in`) | ✅ |
+| 662 | Sundance TV | 92.114.85.87 | 🌐 ציבורי (iptv-org) | iptv-org (`SundanceTV.pl`) | ❌ רק באפליקציה (HTTP) |
+| 663 | Dallas Cowboys Cheerleaders | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`DallasCowboysCheerleaders.se`) | ✅ |
+| 664 | The Loop | tgn.bozztv.com | 🌐 ציבורי (iptv-org) | iptv-org (`TheLoop.us`) | ✅ |
+| 665 | Pluto TV Sci-fi Series | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVScifiSeries.de`) | ✅ |
+| 666 | City Eden KinoAsia | cityeden.catcast.tv | 🌐 ציבורי (iptv-org) | iptv-org (`CityEdenKinoAsia.ru`) | ✅ |
+| 667 | Manoranjan Grand | cdn.pishow.tv | 🌐 ציבורי (iptv-org) | iptv-org (`ManoranjanGrand.in`) | ✅ |
+| 668 | AXN Spin | 92.114.85.87 | 🌐 ציבורי (iptv-org) | iptv-org (`AXNSpin.pl`) | ❌ רק באפליקציה (HTTP) |
+| 669 | Dating Naked UK | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`DatingNakedUK.se`) | ✅ |
+| 670 | This Old House | thisoldhouse-2-us.roku.wurl.tv | 🌐 ציבורי (iptv-org) | iptv-org (`ThisOldHouse.us`) | ✅ |
+| 671 | Pluto TV Sherlock | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVSherlock.de`) | ✅ |
+| 672 | City Eden KinoDetektiv | cityeden.catcast.tv | 🌐 ציבורי (iptv-org) | iptv-org (`CityEdenKinoDetektiv.ru`) | ✅ |
+| 673 | Movie Punjab | samitaorigin.tangotv.in | 🌐 ציבורי (iptv-org) | iptv-org (`MoviePunjab.in`) | ✅ |
+| 674 | Polsat Film | 92.63.196.180 | 🌐 ציבורי (iptv-org) | iptv-org (`PolsatFilm.pl`) | ❌ רק באפליקציה (HTTP) |
+| 675 | Diagnosis Murder | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`DiagnosisMurder.se`) | ✅ |
+| 676 | Universal Crime | xumo-xumoent-vc-107-xmuvk.fast.nbcuni.com | 🌐 ציבורי (iptv-org) | iptv-org (`UniversalCrime.us`) | ✅ |
+| 677 | Pluto TV Tough Jobs | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVToughJobs.de`) | ✅ |
+| 678 | City Eden KinoDok | cityeden.catcast.tv | 🌐 ציבורי (iptv-org) | iptv-org (`CityEdenKinoDok.ru`) | ✅ |
+| 679 | Oscar Movies Bhojpuri | cdn.pishow.tv | 🌐 ציבורי (iptv-org) | iptv-org (`OscarMoviesBhojpuri.in`) | ✅ |
+| 680 | FBoy Island | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`FBoyIsland.se`) | ✅ |
+| 681 | AXN Latin America | streaming.onnethn.com | 🌐 ציבורי (iptv-org) | iptv-org (`AXNLatinAmerica.us`) | ✅ |
+| 682 | Pluto TV Westerns | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVWesterns.de`) | ✅ |
+| 683 | City Eden KinoDrama | cityeden.catcast.tv | 🌐 ציבורי (iptv-org) | iptv-org (`CityEdenKinoDrama.ru`) | ✅ |
+| 684 | Pitaara | vg-pitaaratvlive.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`Pitaara.in`) | ✅ |
+| 685 | Happy Days | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`HappyDays.se`) | ✅ |
+| 686 | Cinecanal | barinaslive1.boldmss.com | 🌐 ציבורי (iptv-org) | iptv-org (`Cinecanal.us`) | ✅ |
+| 687 | The New Detectives | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`TheNewDetectives.de`) | ✅ |
+| 688 | City Eden KinoFantastika | cityeden.catcast.tv | 🌐 ציבורי (iptv-org) | iptv-org (`CityEdenKinoFantastika.ru`) | ✅ |
+| 689 | Shubh Cinema TV | d393sxaxig6bax.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`ShubhCinemaTV.in`) | ✅ |
+| 690 | House of Lies | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`HouseofLies.se`) | ✅ |
+| 691 | 50 Cent Action | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`50CentAction.us`) | ✅ |
+| 692 | Cine 666 by Pluto TV | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`Cine666byPlutoTV.de`) | ✅ |
+| 693 | City Eden KinoKomediya | cityeden.catcast.tv | 🌐 ציבורי (iptv-org) | iptv-org (`CityEdenKinoKomediya.ru`) | ✅ |
+| 694 | Star Maa Movies | da86m1sqpm3o0.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`StarMaaMovies.in`) | ✅ |
+| 695 | JAG | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`JAG.se`) | ✅ |
+| 696 | ABN Bible Movies Channel | mediaserver.abnvideos.com | 🌐 ציבורי (iptv-org) | iptv-org (`ABNBibleMoviesChannel.us`) | ✅ |
+| 697 | Cine Action by Pluto TV | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`CineActionbyPlutoTV.de`) | ✅ |
+| 698 | City Eden KinoMistika | cityeden.catcast.tv | 🌐 ציבורי (iptv-org) | iptv-org (`CityEdenKinoMistika.ru`) | ✅ |
+| 699 | Studio One + | cdn.pishow.tv | 🌐 ציבורי (iptv-org) | iptv-org (`StudioOnePlus.in`) | ✅ |
+| 700 | Judge Judy | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`JudgeJudy.se`) | ✅ |
 
 ## 📺 קומדיה (Comedy)
 
 | # | ערוץ | שרת השידור | סוג | נמצא ב | באתר (דפדפן) |
 |---|---|---|---|---|---|
-| 700 | ערוץ הקומדיה HD | ערוץ FAST ישראלי – AWS CloudFront | ✅ FAST חינמי | iptv-org (`ComedyChannel.il`) | ✅ |
-| 701 | ערוץ הקומדיה של קשת | קשת – ה-CDN של mako (עם הרשאת צפייה של mako) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
-| 702 | ארץ נהדרת 24/7 | קשת – ה-CDN של mako (עם הרשאת צפייה של mako) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
-| 703 | סברי מרנן 24/7 | קשת – ה-CDN של mako (עם הרשאת צפייה של mako) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
-| 704 | NBC Comedy Vault | xumo-xumoent-vc-105-z0vpm.fast.nbcuni.com | 🌐 ציבורי (iptv-org) | iptv-org (`NBCComedyVault.us`) | ✅ |
-| 705 | Persiana Comedy | comedyhls.persiana.live | 🌐 ציבורי (iptv-org) | iptv-org (`PersianaComedy.fr`) | ✅ |
-| 706 | Ridiculousness | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`Ridiculousness.de`) | ✅ |
-| 707 | Comedy Central | team-tv.co | 🌐 ציבורי (iptv-org) | iptv-org (`ComedyCentral.it`) | ❌ רק באפליקציה (HTTP) |
-| 708 | KVN TV | fs.uplink.kz | 🌐 ציבורי (iptv-org) | iptv-org (`KVNTV.ru`) | ✅ |
-| 709 | ETV Comedy | cc-wie8j8y69d2uy.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`ETVComedy.in`) | ✅ |
-| 710 | Distrito Comedia | 138.121.15.230 | 🌐 ציבורי (iptv-org) | iptv-org (`DistritoComedia.mx`) | ❌ רק באפליקציה (HTTP) |
-| 711 | Awkward | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`Awkward.se`) | ✅ |
-| 712 | Comedy Play | stream1.antenaplay.ro | 🌐 ציבורי (iptv-org) | iptv-org (`ComedyPlay.ro`) | ✅ |
-| 713 | Jordan Comedy | playlist.fasttvcdn.com | 🌐 ציבורי (iptv-org) | iptv-org (`JordanComedy.jo`) | ✅ |
-| 714 | HAHA TV | Antik Telecom (סלובקיה), נתיבי test | ⚠️ ממסר צד שלישי | iptv-org (`HAHATV.sk`) | ✅ |
-| 715 | SNL Vault | d4whmvwm0rdvi.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`SNLVault.us`) | ✅ |
-| 716 | Comedia a lo bestia de Pluto TV | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`ComediaalobestiadePlutoTV.de`) | ✅ |
-| 717 | Komediynoe | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`Komediynoe.ru`) | ❌ רק באפליקציה (HTTP) |
-| 718 | Sirippoli TV | segment.yuppcdn.net | 🌐 ציבורי (iptv-org) | iptv-org (`SirippoliTV.in`) | ✅ |
-| 719 | Beavis and Butt-Head | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`BeavisandButtHead.se`) | ✅ |
-| 720 | Comedy Central Latin America | barinaslive1.boldmss.com | 🌐 ציבורי (iptv-org) | iptv-org (`ComedyCentralLatinAmerica.us`) | ✅ |
-| 721 | Pluto TV Comedia made in Spain | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVComediamadeinSpain.de`) | ✅ |
-| 722 | Tvoye TV Yumor | tvoetv.space | 🌐 ציבורי (iptv-org) | iptv-org (`TvoyeTVYumor.ru`) | ❌ רק באפליקציה (HTTP) |
-| 723 | Broad City | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`BroadCity.se`) | ✅ |
-| 724 | 30A Ridiculous TV | 30a-tv.com | 🌐 ציבורי (iptv-org) | iptv-org (`30ARidiculousTV.us`) | ✅ |
-| 725 | Alle hassen Chris | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`AllehassenChris.de`) | ✅ |
-| 726 | Komedia | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`Komedia.ru`) | ❌ רק באפליקציה (HTTP) |
-| 727 | Caroline in the City | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`CarolineintheCity.se`) | ✅ |
-| 728 | AFV | linear-12.frequency.stream | 🌐 ציבורי (iptv-org) | iptv-org (`AFV.us`) | ✅ |
-| 729 | Becker | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`Becker.de`) | ✅ |
-| 730 | Chappelle's Show | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`ChappellesShow.se`) | ✅ |
-| 731 | Dry Bar Comedy+ | drybar-drybarcomedy-1-au.samsung.wurl.tv | 🌐 ציבורי (iptv-org) | iptv-org (`DryBarComedyPlus.us`) | ✅ |
-| 732 | CC Pluto TV | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`CCPlutoTV.de`) | ✅ |
-| 733 | Cheers | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`Cheers.se`) | ✅ |
-| 734 | FailArmy | failarmy-international-au.samsung.wurl.tv | 🌐 ציבורי (iptv-org) | iptv-org (`FailArmy.us`) | ✅ |
-| 735 | Pluto TV Deutsche Comedy | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVDeutscheComedy.de`) | ✅ |
-| 736 | Comedy Central Roast | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`ComedyCentralRoast.se`) | ✅ |
-| 737 | RiffTrax | wurlrifftrax.global.transmit.live | 🌐 ציבורי (iptv-org) | iptv-org (`RiffTrax.us`) | ✅ |
-| 738 | Sabrina: Total verhext! | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`SabrinaTotalverhext.de`) | ✅ |
-| 739 | Crazy Ex-Girlfriend | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`CrazyExGirlfriend.se`) | ✅ |
-| 740 | TVS Comedy Network | rpn.bozztv.com | 🌐 ציבורי (iptv-org) | iptv-org (`TVSComedyNetwork.us`) | ✅ |
-| 741 | Pluto TV Scherzi e risate | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVScherzierisate.de`) | ✅ |
-| 742 | Everybody Hates Chris | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`EverybodyHatesChris.se`) | ✅ |
-| 743 | Camera Smile TV | rpn.bozztv.com | 🌐 ציבורי (iptv-org) | iptv-org (`CameraSmileTV.us`) | ✅ |
-| 744 | Family Ties | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`FamilyTies.se`) | ✅ |
+| 701 | ערוץ הקומדיה HD | ערוץ FAST ישראלי – AWS CloudFront | ✅ FAST חינמי | iptv-org (`ComedyChannel.il`) | ✅ |
+| 702 | ערוץ הקומדיה של קשת | קשת – ה-CDN של mako (עם הרשאת צפייה של mako) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 703 | ארץ נהדרת 24/7 | קשת – ה-CDN של mako (עם הרשאת צפייה של mako) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 704 | סברי מרנן 24/7 | קשת – ה-CDN של mako (עם הרשאת צפייה של mako) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 705 | NBC Comedy Vault | xumo-xumoent-vc-105-z0vpm.fast.nbcuni.com | 🌐 ציבורי (iptv-org) | iptv-org (`NBCComedyVault.us`) | ✅ |
+| 706 | Persiana Comedy | comedyhls.persiana.live | 🌐 ציבורי (iptv-org) | iptv-org (`PersianaComedy.fr`) | ✅ |
+| 707 | Ridiculousness | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`Ridiculousness.de`) | ✅ |
+| 708 | Comedy Central | team-tv.co | 🌐 ציבורי (iptv-org) | iptv-org (`ComedyCentral.it`) | ❌ רק באפליקציה (HTTP) |
+| 709 | KVN TV | fs.uplink.kz | 🌐 ציבורי (iptv-org) | iptv-org (`KVNTV.ru`) | ✅ |
+| 710 | ETV Comedy | cc-wie8j8y69d2uy.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`ETVComedy.in`) | ✅ |
+| 711 | Distrito Comedia | 138.121.15.230 | 🌐 ציבורי (iptv-org) | iptv-org (`DistritoComedia.mx`) | ❌ רק באפליקציה (HTTP) |
+| 712 | Awkward | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`Awkward.se`) | ✅ |
+| 713 | Comedy Play | stream1.antenaplay.ro | 🌐 ציבורי (iptv-org) | iptv-org (`ComedyPlay.ro`) | ✅ |
+| 714 | Jordan Comedy | playlist.fasttvcdn.com | 🌐 ציבורי (iptv-org) | iptv-org (`JordanComedy.jo`) | ✅ |
+| 715 | HAHA TV | Antik Telecom (סלובקיה), נתיבי test | ⚠️ ממסר צד שלישי | iptv-org (`HAHATV.sk`) | ✅ |
+| 716 | SNL Vault | d4whmvwm0rdvi.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`SNLVault.us`) | ✅ |
+| 717 | Comedia a lo bestia de Pluto TV | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`ComediaalobestiadePlutoTV.de`) | ✅ |
+| 718 | Komediynoe | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`Komediynoe.ru`) | ❌ רק באפליקציה (HTTP) |
+| 719 | Sirippoli TV | segment.yuppcdn.net | 🌐 ציבורי (iptv-org) | iptv-org (`SirippoliTV.in`) | ✅ |
+| 720 | Beavis and Butt-Head | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`BeavisandButtHead.se`) | ✅ |
+| 721 | Comedy Central Latin America | barinaslive1.boldmss.com | 🌐 ציבורי (iptv-org) | iptv-org (`ComedyCentralLatinAmerica.us`) | ✅ |
+| 722 | Pluto TV Comedia made in Spain | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVComediamadeinSpain.de`) | ✅ |
+| 723 | Tvoye TV Yumor | tvoetv.space | 🌐 ציבורי (iptv-org) | iptv-org (`TvoyeTVYumor.ru`) | ❌ רק באפליקציה (HTTP) |
+| 724 | Broad City | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`BroadCity.se`) | ✅ |
+| 725 | 30A Ridiculous TV | 30a-tv.com | 🌐 ציבורי (iptv-org) | iptv-org (`30ARidiculousTV.us`) | ✅ |
+| 726 | Alle hassen Chris | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`AllehassenChris.de`) | ✅ |
+| 727 | Komedia | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`Komedia.ru`) | ❌ רק באפליקציה (HTTP) |
+| 728 | Caroline in the City | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`CarolineintheCity.se`) | ✅ |
+| 729 | AFV | linear-12.frequency.stream | 🌐 ציבורי (iptv-org) | iptv-org (`AFV.us`) | ✅ |
+| 730 | Becker | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`Becker.de`) | ✅ |
+| 731 | Chappelle's Show | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`ChappellesShow.se`) | ✅ |
+| 732 | Dry Bar Comedy+ | drybar-drybarcomedy-1-au.samsung.wurl.tv | 🌐 ציבורי (iptv-org) | iptv-org (`DryBarComedyPlus.us`) | ✅ |
+| 733 | CC Pluto TV | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`CCPlutoTV.de`) | ✅ |
+| 734 | Cheers | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`Cheers.se`) | ✅ |
+| 735 | FailArmy | failarmy-international-au.samsung.wurl.tv | 🌐 ציבורי (iptv-org) | iptv-org (`FailArmy.us`) | ✅ |
+| 736 | Pluto TV Deutsche Comedy | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVDeutscheComedy.de`) | ✅ |
+| 737 | Comedy Central Roast | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`ComedyCentralRoast.se`) | ✅ |
+| 738 | RiffTrax | wurlrifftrax.global.transmit.live | 🌐 ציבורי (iptv-org) | iptv-org (`RiffTrax.us`) | ✅ |
+| 739 | Sabrina: Total verhext! | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`SabrinaTotalverhext.de`) | ✅ |
+| 740 | Crazy Ex-Girlfriend | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`CrazyExGirlfriend.se`) | ✅ |
+| 741 | TVS Comedy Network | rpn.bozztv.com | 🌐 ציבורי (iptv-org) | iptv-org (`TVSComedyNetwork.us`) | ✅ |
+| 742 | Pluto TV Scherzi e risate | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVScherzierisate.de`) | ✅ |
+| 743 | Everybody Hates Chris | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`EverybodyHatesChris.se`) | ✅ |
+| 744 | Camera Smile TV | rpn.bozztv.com | 🌐 ציבורי (iptv-org) | iptv-org (`CameraSmileTV.us`) | ✅ |
+| 745 | Family Ties | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`FamilyTies.se`) | ✅ |
 
 ## 📺 ילדים מהעולם (Kids World)
 
 | # | ערוץ | שרת השידור | סוג | נמצא ב | באתר (דפדפן) |
 |---|---|---|---|---|---|
-| 745 | ניקלודיאון (ברוסית) | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`Nickelodeon.ru`) | ❌ רק באפליקציה (HTTP) |
-| 746 | ניק ג'וניור (ברוסית) | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`NickJr.ru`) | ✅ דרך מקור חלופי: Cinerama.uz – ספק IPTV באוזבקיסטן |
-| 747 | גולי גירל Gulli Girl (ברוסית) | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`GulliGirl.ru`) | ✅ דרך מקור חלופי: Cinerama.uz – ספק IPTV באוזבקיסטן |
-| 748 | דאק טי וי פלוס ducktv PLUS HD | Antik Telecom (סלובקיה), נתיבי test | ⚠️ ממסר צד שלישי | iptv-org (`ducktvPLUS.sk`) | ✅ |
-| 749 | בייבי פירסט BabyFirst HD | BabyFirst – JW Player FAST | ✅ FAST חינמי | iptv-org (`BabyFirst.us`) | ✅ |
-| 750 | אנימציה קצרצרה Cartoons Short HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
-| 751 | ערוץ לגו Lego Channel HD | LEGO Channel – AWS CloudFront FAST | ✅ FAST חינמי | iptv-org (`LegoChannel.us`) | ✅ |
-| 752 | ערוץ טיז'י TiJi לילדים HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`TiJi.ru`) | ✅ דרך מקור חלופי: Cinerama.uz – ספק IPTV באוזבקיסטן |
-| 753 | ג'ים ג'אם JimJam לילדים HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`JimJamEurope.uk`) | ❌ רק באפליקציה (HTTP) |
-| 754 | אנימציה וילדים Fresh Kids HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
-| 755 | קלאסיקות מצוירות 90s HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
-| 756 | סרטי אנימציה Cartoons Big HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
-| 757 | קולנוע אגדות וילדים HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`KinoKazka.es`) | ❌ רק באפליקציה (HTTP) |
-| 758 | פיקסל TV ילדים HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`PixelTV.ua`) | ✅ דרך מקור חלופי: live-tv.cloud – ספק IPTV אוקראיני |
-| 759 | ניקי קידס Niki Kids HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`NikiKids.ua`) | ❌ רק באפליקציה (HTTP) |
-| 760 | קפטן פנטסטיקה HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`KapitanFantastika.ru`) | ✅ דרך מקור חלופי: Cinerama.uz – ספק IPTV באוזבקיסטן |
-| 761 | ערוץ O! ילדים וטבע | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`O.ru`) | ❌ רק באפליקציה (HTTP) |
-| 762 | דאק טי וי ducktv HD | Antik Telecom (סלובקיה), נתיבי test | ⚠️ ממסר צד שלישי | iptv-org (`ducktv.sk`) | ✅ |
-| 763 | בייבי שארק Baby Shark TV HD | Baby Shark TV – Wurl (Roku FAST) | ✅ FAST חינמי | iptv-org (`BabySharkTV.us`) | ✅ |
-| 764 | ערוץ השמש לילדים HD (Solntse Kids) | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`Solnce.ru`) | ✅ דרך מקור חלופי: ערוץ השמש (Солнце) – CDN |
-| 765 | ערוץ מולט ילדים HD (Mult Kids) | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`Mult.ru`) | ✅ דרך מקור חלופי: Cinerama.uz – ספק IPTV באוזבקיסטן |
-| 766 | מולט ומוזיקה לילדים HD (Mult & Music) | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`Multimuzyka.ru`) | ❌ רק באפליקציה (HTTP) |
-| 767 | קרוסלה ערוץ הילדים HD (Carousel Kids) | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`Carousel.ru`) | ✅ דרך מקור חלופי: Smotrim (VGTRK) – הבעלים של קרוסלה |
-| 768 | סי טי סי קידס HD (CTC Kids) | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`STSkids.ru`) | ❌ רק באפליקציה (HTTP) |
-| 769 | ערוץ אגדות וסיפורים HD (Fairy Tales Kids) | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`Vgostyakhuskazki.ru`) | ✅ דרך מקור חלופי: Cinerama.uz – ספק IPTV באוזבקיסטן |
-| 770 | ערוץ אני אנימציה HD (Ani Kids) | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`Ani.ru`) | ❌ רק באפליקציה (HTTP) |
-| 771 | ערוץ האנימציה PLUSPLUS HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`PLUSPLUS.ua`) | ❌ רק באפליקציה (HTTP) |
-| 772 | Botflix TV | hls.botflix.tv | 🌐 ציבורי (iptv-org) | iptv-org (`BotflixTV.us`) | ✅ |
-| 773 | Moonbug Kids | moonbug-rokuus.amagi.tv | 🌐 ציבורי (iptv-org) | iptv-org (`MoonbugKids.uk`) | ✅ |
-| 774 | ADN TV+ | d3b73b34o7cvkq.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`ADNTVPlus.fr`) | ✅ |
-| 775 | KiKA | kikageohls.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`KiKA.de`) | ✅ |
-| 776 | Logos TV Kids | streamer1.streamhost.org | 🌐 ציבורי (iptv-org) | iptv-org (`LogosTVKids.es`) | ✅ |
-| 777 | BeJoy.kids | stream.paroledivita.org | 🌐 ציבורי (iptv-org) | iptv-org (`BeJoykids.it`) | ✅ |
-| 778 | Smile TV | 5d23269b3ec0c.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`SmileTV.ru`) | ✅ |
-| 779 | Niki Junior | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`NikiJunior.ua`) | ❌ רק באפליקציה (HTTP) |
-| 780 | Knowledge Network | d1wal6k3d7ssin.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`KnowledgeNetwork.ca`) | ✅ |
-| 781 | Atfal & Mawaheb TV | 5aafcc5de91f1.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`AtfalMawahebTV.sa`) | ✅ |
-| 782 | Koogi TV | 5d658d7e9f562.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`KoogiTV.eg`) | ✅ |
-| 783 | Taha TV | stream.starmenajo.com | 🌐 ציבורי (iptv-org) | iptv-org (`TahaTV.lb`) | ✅ |
-| 784 | TRT Cocuk | tv-trtcocuk.medya.trt.com.tr | 🌐 ציבורי (iptv-org) | iptv-org (`TRTCocuk.tr`) | ✅ |
-| 785 | Epic Kids | cc-t8lqe1o99pszu.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`EpicKids.in`) | ✅ |
-| 786 | EBS Kids | ebsonair.ebs.co.kr | 🌐 ציבורי (iptv-org) | iptv-org (`EBSKids.kr`) | ✅ |
-| 787 | CCTV-14 | 74.91.26.218 | 🌐 ציבורי (iptv-org) | iptv-org (`CCTV14.cn`) | ❌ רק באפליקציה (HTTP) |
-| 788 | El Chavo TV | live20.bozztv.com | 🌐 ציבורי (iptv-org) | iptv-org (`ElChavoTV.mx`) | ✅ |
-| 789 | Pakapaka | 138.59.227.20 | 🌐 ציבורי (iptv-org) | iptv-org (`Pakapaka.ar`) | ❌ רק באפליקציה (HTTP) |
-| 790 | Kuriakos Kids | w2.manasat.com | 🌐 ציבורי (iptv-org) | iptv-org (`KuriakosKids.pt`) | ✅ |
-| 791 | JapanimTV | foxkidstv.be | 🌐 ציבורי (iptv-org) | iptv-org (`JapanimTV.be`) | ✅ |
-| 792 | 4 Fun Kids | 4FUN TV – שרת רשמי | ✅ רשמי | iptv-org (`4FunKids.pl`) | ✅ |
-| 793 | Pluto TV Juniorklubben | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVJuniorklubben.se`) | ✅ |
-| 794 | TraLaLa DSN | hls01ns.antenaplay.ro | 🌐 ציבורי (iptv-org) | iptv-org (`TraLaLaDSN.ro`) | ✅ |
-| 795 | Chikitoonz | 45.70.201.81 | 🌐 ציבורי (iptv-org) | iptv-org (`Chikitoonz.pe`) | ❌ רק באפליקציה (HTTP) |
-| 796 | Groovia Kids | gist.githubusercontent.com | 🌐 ציבורי (iptv-org) | iptv-org (`GrooviaKids.id`) | ✅ |
-| 797 | ON Kids | freem3u.xyz | 🌐 ציבורי (iptv-org) | iptv-org (`ONKids.vn`) | ✅ |
-| 798 | Minimax | vodzong.mjunoon.tv | 🌐 ציבורי (iptv-org) | iptv-org (`Minimax.pk`) | ✅ |
-| 799 | Pooya TV | tgn.bozztv.com | 🌐 ציבורי (iptv-org) | iptv-org (`PooyaTV.ir`) | ✅ |
-| 800 | Tom And Jerry | live20.bozztv.com | 🌐 ציבורי (iptv-org) | iptv-org (`TomAndJerry.do`) | ✅ |
-| 801 | MAX Anime | cdnlive.klicgo.net | 🌐 ציבורי (iptv-org) | iptv-org (`MAXAnime.ve`) | ✅ |
-| 802 | Akili Kids! | m6.livecdn.io | 🌐 ציבורי (iptv-org) | iptv-org (`AkiliKids.ke`) | ✅ |
-| 803 | ZooMoo | zoomoo-samsungau.amagi.tv | 🌐 ציבורי (iptv-org) | iptv-org (`ZooMoo.sg`) | ❌ רק באפליקציה (הפניה בלי CORS) |
-| 804 | Amou Yazid TV | mkstream.servehttp.com | 🌐 ציבורי (iptv-org) | iptv-org (`AmouYazidTV.dz`) | ❌ רק באפליקציה (HTTP) |
-| 805 | Dios Te Ve Kids | s.emisoras.tv | 🌐 ציבורי (iptv-org) | iptv-org (`DiosTeVeKids.hn`) | ✅ |
-| 806 | Dreiko TV | cloudvideo.servers10.com | 🌐 ציבורי (iptv-org) | iptv-org (`DreikoTV.pa`) | ✅ |
-| 807 | Extrema Kids TV | 627bb251f23c7.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`ExtremaKidsTV.cr`) | ✅ |
-| 808 | Balapan | balapantv-stream.qazcdn.com | 🌐 ציבורי (iptv-org) | iptv-org (`Balapan.kz`) | ✅ |
-| 809 | ETV 2 | sb.err.ee | 🌐 ציבורי (iptv-org) | iptv-org (`ETV2.ee`) | ✅ |
-| 810 | HappyKids | dil9xdvretp0f.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`HappyKids.us`) | ✅ |
-| 811 | Persiana Junior | junhls.persiana.live | 🌐 ציבורי (iptv-org) | iptv-org (`PersianaJunior.fr`) | ✅ |
-| 812 | RiC | rictv.iptv-playoutcenter.de | 🌐 ציבורי (iptv-org) | iptv-org (`RiC.de`) | ✅ |
-| 813 | Boing | boing.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`Boing.it`) | ✅ |
-| 814 | Smotrim 100% Detskoe | Smotrim (VGTRK) – הבעלים של קרוסלה | ✅ רשמי | iptv-org (`Smotrim100Detskoe.ru`) | ✅ |
-| 815 | TVOKids | fastly.live.brightcove.com | 🌐 ציבורי (iptv-org) | iptv-org (`TVOKids.ca`) | ✅ |
-| 816 | ABC Kids | c.mjh.nz | 🌐 ציבורי (iptv-org) | iptv-org (`ABCKids.au`) | ✅ |
-| 817 | Minika Cocuk | rnttwmjcin.turknet.ercdn.net | 🌐 ציבורי (iptv-org) | iptv-org (`MinikaCocuk.tr`) | ✅ |
-| 818 | The Jungle Book | cc-4bhi5osabejc9.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`TheJungleBook.in`) | ✅ |
-| 819 | Box Kids TV | 170.83.49.66 | 🌐 ציבורי (iptv-org) | iptv-org (`BoxKidsTV.br`) | ❌ רק באפליקציה (HTTP) |
-| 820 | GikTVMX | pistream.ddns.net | 🌐 ציבורי (iptv-org) | iptv-org (`GikTVMX.mx`) | ❌ רק באפליקציה (הפניה בלי CORS) |
-| 821 | Plim Plim | 200.115.120.1 | 🌐 ציבורי (iptv-org) | iptv-org (`PlimPlim.ar`) | ❌ רק באפליקציה (HTTP) |
-| 822 | Teletoon+ | 92.114.85.87 | 🌐 ציבורי (iptv-org) | iptv-org (`TeletoonPlus.pl`) | ❌ רק באפליקציה (HTTP) |
-| 823 | Pluto TV Tecknade klassiker | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVTecknadeklassiker.se`) | ✅ |
-| 824 | TraLaLa TV | hls01ns.antenaplay.ro | 🌐 ציבורי (iptv-org) | iptv-org (`TraLaLaTV.ro`) | ✅ |
-| 825 | God Stands Kids Club TV | online.godstands.tv | 🌐 ציבורי (iptv-org) | iptv-org (`GodStandsKidsClubTV.pk`) | ✅ |
-| 826 | Tiguerito TV | ss2.tvrdomi.com | 🌐 ציבורי (iptv-org) | iptv-org (`TigueritoTV.do`) | ✅ |
-| 827 | eSports Max TV | cdnlive.klicgo.net | 🌐 ציבורי (iptv-org) | iptv-org (`eSportsMaxTV.ve`) | ✅ |
-| 828 | Afarin TV | 65f16f0fdfc51.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`AfarinTV.iq`) | ✅ |
-| 829 | KidsFlix | stream-us-east-1.getpublica.com | 🌐 ציבורי (iptv-org) | iptv-org (`KidsFlix.us`) | ✅ |
-| 830 | Tortues Ninja TV | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`TortuesNinjaTV.de`) | ✅ |
-| 831 | Super! | 495c5a85d9074f29acffeaea9e0215eb.msvdn.net | 🌐 ציבורי (iptv-org) | iptv-org (`Super.it`) | ✅ |
-| 832 | Radost Moya | radm.mediacdn.ru | 🌐 ציבורי (iptv-org) | iptv-org (`RadostMoya.ru`) | ✅ |
-| 833 | Minika Go | rnttwmjcin.turknet.ercdn.net | 🌐 ציבורי (iptv-org) | iptv-org (`MinikaGo.tr`) | ✅ |
-| 834 | ZB Cartoon | server.zillarbarta.com | 🌐 ציבורי (iptv-org) | iptv-org (`ZBCartoon.in`) | ✅ |
-| 835 | DumDum | 45.162.64.114 | 🌐 ציבורי (iptv-org) | iptv-org (`DumDum.br`) | ❌ רק באפליקציה (HTTP) |
-| 836 | TeenNick | 92.114.85.87 | 🌐 ציבורי (iptv-org) | iptv-org (`TeenNick.pl`) | ❌ רק באפליקציה (HTTP) |
-| 837 | Pluto TV Tecknat | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVTecknat.se`) | ✅ |
-| 838 | Chinola TV | tv.wracanal10.com | 🌐 ציבורי (iptv-org) | iptv-org (`ChinolaTV.do`) | ✅ |
-| 839 | PBS Kids Alaska | livestream.pbskids.org | 🌐 ציבורי (iptv-org) | iptv-org (`PBSKidsAlaska.us`) | ✅ |
-| 840 | Bob Esponja | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`BobEsponja.de`) | ✅ |
-| 841 | Tamyr | bsttv.bonus-tv.ru | 🌐 ציבורי (iptv-org) | iptv-org (`Tamyr.ru`) | ✅ |
-| 842 | TRT Diyanet Cocuk | tv-trtdiyanetcocuk.medya.trt.com.tr | 🌐 ציבורי (iptv-org) | iptv-org (`TRTDiyanetCocuk.tr`) | ✅ |
-| 843 | Discovery Kids | drk6xq0vhn.gpcdn.net | 🌐 ציבורי (iptv-org) | iptv-org (`DiscoveryKids.in`) | ✅ |
-| 844 | Polsat JimJam | 185.227.34.179 | 🌐 ציבורי (iptv-org) | iptv-org (`PolsatJimJam.pl`) | ❌ רק באפליקציה (HTTP) |
-| 845 | Pluto TV Ungdomsserier | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVUngdomsserier.se`) | ✅ |
-| 846 | PBS Kids Mountain | livestream.pbskids.org | 🌐 ציבורי (iptv-org) | iptv-org (`PBSKidsMountain.us`) | ✅ |
-| 847 | Pluto TV Kids Classics | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVKidsClassics.de`) | ✅ |
-| 848 | Tooku | live-saha.cdnvideo.ru | 🌐 ציבורי (iptv-org) | iptv-org (`Tooku.ru`) | ❌ רק באפליקציה (HTTP) |
-| 849 | WOW Kidz | yuppparoriglin.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`WOWKidz.in`) | ✅ |
-| 850 | TVP ABC | 92.114.85.87 | 🌐 ציבורי (iptv-org) | iptv-org (`TVPABC.pl`) | ❌ רק באפליקציה (HTTP) |
-| 851 | SvampBob Fyrkant | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`SvampBobFyrkant.se`) | ✅ |
-| 852 | PBS Kids Pacific | livestream.pbskids.org | 🌐 ציבורי (iptv-org) | iptv-org (`PBSKidsPacific.us`) | ✅ |
-| 853 | Pluto TV Teen | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVTeen.de`) | ✅ |
-| 854 | Chithiram | cdn.pishow.tv | 🌐 ציבורי (iptv-org) | iptv-org (`Chithiram.in`) | ✅ |
-| 855 | SvampeBob Firkant | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`SvampeBobFirkant.se`) | ✅ |
-| 856 | Placid | toy.vcdn.fyi | 🌐 ציבורי (iptv-org) | iptv-org (`Placid.us`) | ✅ |
-| 857 | Pluto TV Toons | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVToons.de`) | ✅ |
-| 858 | Unique TV | mumt05.tangotv.in | 🌐 ציבורי (iptv-org) | iptv-org (`UniqueTV.in`) | ✅ |
-| 859 | Totally Turtles | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`TotallyTurtles.se`) | ✅ |
-| 860 | RetroCrush | linear-899.frequency.stream | 🌐 ציבורי (iptv-org) | iptv-org (`RetroCrush.us`) | ✅ |
-| 861 | SpongeBob Schwammkopf | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`SpongeBobSchwammkopf.de`) | ✅ |
-| 862 | Pogo | 103.151.60.162 | 🌐 ציבורי (iptv-org) | iptv-org (`Pogo.in`) | ❌ רק באפליקציה (HTTP) |
-| 863 | Pluto TV Tegnefilm | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVTegnefilm.se`) | ✅ |
-| 864 | Skwad Play | stream-us-east-1.getpublica.com | 🌐 ציבורי (iptv-org) | iptv-org (`SkwadPlay.us`) | ✅ |
-| 865 | Totally Turtles | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`TotallyTurtles.de`) | ✅ |
-| 866 | Avatar | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`Avatar.se`) | ✅ |
-| 867 | Super Simple Songs | janson-supersimplesongs-1-us.roku.wurl.tv | 🌐 ציבורי (iptv-org) | iptv-org (`SuperSimpleSongs.us`) | ✅ |
-| 868 | Teenage Mutant Ninja Turtles | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`TeenageMutantNinjaTurtles.de`) | ✅ |
-| 869 | iCarly | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`iCarly.se`) | ✅ |
-| 870 | Crunchyroll | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`Crunchyroll.us`) | ✅ |
-| 871 | Avatar | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`Avatar.de`) | ✅ |
-| 872 | South Park | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`SouthPark.se`) | ✅ |
-| 873 | Ninja Kidz TV | d3868b4ny0rgdf.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`NinjaKidzTV.us`) | ✅ |
-| 874 | Pluto TV Animation | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVAnimation.de`) | ✅ |
-| 875 | South Park Armageddon | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`SouthParkArmageddon.se`) | ✅ |
-| 876 | PBS Kids | livestream.pbskids.org | 🌐 ציבורי (iptv-org) | iptv-org (`PBSKids.us`) | ✅ |
-| 877 | Pluto TV Retro Toons | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVRetroToons.de`) | ✅ |
-| 878 | South Park Rockin' Out | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`SouthParkRockinOut.se`) | ✅ |
-| 879 | PBS Kids Hawaii | livestream.pbskids.org | 🌐 ציבורי (iptv-org) | iptv-org (`PBSKidsHawaii.us`) | ✅ |
-| 880 | Pluto TV Super Kids | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVSuperKids.de`) | ✅ |
-| 881 | South Park: Butters Collection | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`SouthParkButtersCollection.se`) | ✅ |
-| 882 | Sonic TV | stream-us-east-1.getpublica.com | 🌐 ציבורי (iptv-org) | iptv-org (`SonicTV.us`) | ✅ |
-| 883 | Rugrats | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`Rugrats.de`) | ✅ |
-| 884 | South Park: Cartman Collection | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`SouthParkCartmanCollection.se`) | ✅ |
-| 885 | SpongeBob SquarePants | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`SpongeBobSquarePants.us`) | ✅ |
-| 886 | South Park | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`SouthPark.de`) | ✅ |
-| 887 | South Park: Into the Stars | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`SouthParkIntotheStars.se`) | ✅ |
-| 888 | TG Junior | d3i6upqaqzosi1.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`TGJunior.us`) | ✅ |
-| 889 | South Park Version Original | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`SouthParkVersionOriginal.de`) | ✅ |
-| 890 | South Park: Kenny Collection | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`SouthParkKennyCollection.se`) | ✅ |
-| 891 | Tortues Ninja TV | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`TortuesNinjaTV.us`) | ✅ |
-| 892 | Drake & Josh | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`DrakeJosh.de`) | ✅ |
-| 893 | South Park: Kyle Collection | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`SouthParkKyleCollection.se`) | ✅ |
-| 894 | TVS Hi Tops | rpn.bozztv.com | 🌐 ציבורי (iptv-org) | iptv-org (`TVSHiTops.us`) | ✅ |
-| 895 | Pluto TV Adult Animation | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVAdultAnimation.de`) | ✅ |
-| 896 | South Park: Stan Collection | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`SouthParkStanCollection.se`) | ✅ |
-| 897 | Bob l'eponge | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`Bobleponge.us`) | ✅ |
-| 898 | Pluto TV Star Trek: Animation | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVStarTrekAnimation.de`) | ✅ |
-| 899 | Detective Conan | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`DetectiveConan.us`) | ✅ |
-| 900 | South Park: Cartman Collection | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`SouthParkCartmanCollection.de`) | ✅ |
-| 901 | Las Tortugas Ninja | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`LasTortugasNinja.us`) | ✅ |
-| 902 | South Park: Kenny Collection | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`SouthParkKennyCollection.de`) | ✅ |
-| 903 | Super! SpongeBob | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`SuperSpongeBob.us`) | ✅ |
-| 904 | South Park: Kyle Collection | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`SouthParkKyleCollection.de`) | ✅ |
-| 905 | Bob Esponja Calca Quadrada | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`BobEsponjaCalcaQuadrada.us`) | ✅ |
-| 906 | South Park: Original Version | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`SouthParkOriginalVersion.de`) | ✅ |
-| 907 | Camp Spoopy | stream.ads.ottera.tv | 🌐 ציבורי (iptv-org) | iptv-org (`CampSpoopy.us`) | ✅ |
-| 908 | South Park: Stan Collection | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`SouthParkStanCollection.de`) | ✅ |
-| 909 | Giggle Mug | tvsen6.aynaott.com | 🌐 ציבורי (iptv-org) | iptv-org (`GiggleMug.us`) | ✅ |
-| 910 | S Corby TV | vodcdn.bamboo-cloud.com | 🌐 ציבורי (iptv-org) | iptv-org (`SCorbyTV.us`) | ✅ |
+| 746 | ניקלודיאון (ברוסית) | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`Nickelodeon.ru`) | ❌ רק באפליקציה (HTTP) |
+| 747 | ניק ג'וניור (ברוסית) | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`NickJr.ru`) | ✅ דרך מקור חלופי: Cinerama.uz – ספק IPTV באוזבקיסטן |
+| 748 | גולי גירל Gulli Girl (ברוסית) | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`GulliGirl.ru`) | ✅ דרך מקור חלופי: Cinerama.uz – ספק IPTV באוזבקיסטן |
+| 749 | דאק טי וי פלוס ducktv PLUS HD | Antik Telecom (סלובקיה), נתיבי test | ⚠️ ממסר צד שלישי | iptv-org (`ducktvPLUS.sk`) | ✅ |
+| 750 | בייבי פירסט BabyFirst HD | BabyFirst – JW Player FAST | ✅ FAST חינמי | iptv-org (`BabyFirst.us`) | ✅ |
+| 751 | אנימציה קצרצרה Cartoons Short HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
+| 752 | ערוץ לגו Lego Channel HD | LEGO Channel – AWS CloudFront FAST | ✅ FAST חינמי | iptv-org (`LegoChannel.us`) | ✅ |
+| 753 | ערוץ טיז'י TiJi לילדים HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`TiJi.ru`) | ✅ דרך מקור חלופי: Cinerama.uz – ספק IPTV באוזבקיסטן |
+| 754 | ג'ים ג'אם JimJam לילדים HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`JimJamEurope.uk`) | ❌ רק באפליקציה (HTTP) |
+| 755 | אנימציה וילדים Fresh Kids HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
+| 756 | קלאסיקות מצוירות 90s HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
+| 757 | סרטי אנימציה Cartoons Big HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
+| 758 | קולנוע אגדות וילדים HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`KinoKazka.es`) | ❌ רק באפליקציה (HTTP) |
+| 759 | פיקסל TV ילדים HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`PixelTV.ua`) | ✅ דרך מקור חלופי: live-tv.cloud – ספק IPTV אוקראיני |
+| 760 | ניקי קידס Niki Kids HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`NikiKids.ua`) | ❌ רק באפליקציה (HTTP) |
+| 761 | קפטן פנטסטיקה HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`KapitanFantastika.ru`) | ✅ דרך מקור חלופי: Cinerama.uz – ספק IPTV באוזבקיסטן |
+| 762 | ערוץ O! ילדים וטבע | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`O.ru`) | ❌ רק באפליקציה (HTTP) |
+| 763 | דאק טי וי ducktv HD | Antik Telecom (סלובקיה), נתיבי test | ⚠️ ממסר צד שלישי | iptv-org (`ducktv.sk`) | ✅ |
+| 764 | בייבי שארק Baby Shark TV HD | Baby Shark TV – Wurl (Roku FAST) | ✅ FAST חינמי | iptv-org (`BabySharkTV.us`) | ✅ |
+| 765 | ערוץ השמש לילדים HD (Solntse Kids) | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`Solnce.ru`) | ✅ דרך מקור חלופי: ערוץ השמש (Солнце) – CDN |
+| 766 | ערוץ מולט ילדים HD (Mult Kids) | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`Mult.ru`) | ✅ דרך מקור חלופי: Cinerama.uz – ספק IPTV באוזבקיסטן |
+| 767 | מולט ומוזיקה לילדים HD (Mult & Music) | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`Multimuzyka.ru`) | ❌ רק באפליקציה (HTTP) |
+| 768 | קרוסלה ערוץ הילדים HD (Carousel Kids) | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`Carousel.ru`) | ✅ דרך מקור חלופי: Smotrim (VGTRK) – הבעלים של קרוסלה |
+| 769 | סי טי סי קידס HD (CTC Kids) | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`STSkids.ru`) | ❌ רק באפליקציה (HTTP) |
+| 770 | ערוץ אגדות וסיפורים HD (Fairy Tales Kids) | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`Vgostyakhuskazki.ru`) | ✅ דרך מקור חלופי: Cinerama.uz – ספק IPTV באוזבקיסטן |
+| 771 | ערוץ אני אנימציה HD (Ani Kids) | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`Ani.ru`) | ❌ רק באפליקציה (HTTP) |
+| 772 | ערוץ האנימציה PLUSPLUS HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`PLUSPLUS.ua`) | ❌ רק באפליקציה (HTTP) |
+| 773 | Botflix TV | hls.botflix.tv | 🌐 ציבורי (iptv-org) | iptv-org (`BotflixTV.us`) | ✅ |
+| 774 | Moonbug Kids | moonbug-rokuus.amagi.tv | 🌐 ציבורי (iptv-org) | iptv-org (`MoonbugKids.uk`) | ✅ |
+| 775 | ADN TV+ | d3b73b34o7cvkq.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`ADNTVPlus.fr`) | ✅ |
+| 776 | KiKA | kikageohls.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`KiKA.de`) | ✅ |
+| 777 | Logos TV Kids | streamer1.streamhost.org | 🌐 ציבורי (iptv-org) | iptv-org (`LogosTVKids.es`) | ✅ |
+| 778 | BeJoy.kids | stream.paroledivita.org | 🌐 ציבורי (iptv-org) | iptv-org (`BeJoykids.it`) | ✅ |
+| 779 | Smile TV | 5d23269b3ec0c.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`SmileTV.ru`) | ✅ |
+| 780 | Niki Junior | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`NikiJunior.ua`) | ❌ רק באפליקציה (HTTP) |
+| 781 | Knowledge Network | d1wal6k3d7ssin.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`KnowledgeNetwork.ca`) | ✅ |
+| 782 | Atfal & Mawaheb TV | 5aafcc5de91f1.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`AtfalMawahebTV.sa`) | ✅ |
+| 783 | Koogi TV | 5d658d7e9f562.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`KoogiTV.eg`) | ✅ |
+| 784 | Taha TV | stream.starmenajo.com | 🌐 ציבורי (iptv-org) | iptv-org (`TahaTV.lb`) | ✅ |
+| 785 | TRT Cocuk | tv-trtcocuk.medya.trt.com.tr | 🌐 ציבורי (iptv-org) | iptv-org (`TRTCocuk.tr`) | ✅ |
+| 786 | Epic Kids | cc-t8lqe1o99pszu.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`EpicKids.in`) | ✅ |
+| 787 | EBS Kids | ebsonair.ebs.co.kr | 🌐 ציבורי (iptv-org) | iptv-org (`EBSKids.kr`) | ✅ |
+| 788 | CCTV-14 | 74.91.26.218 | 🌐 ציבורי (iptv-org) | iptv-org (`CCTV14.cn`) | ❌ רק באפליקציה (HTTP) |
+| 789 | El Chavo TV | live20.bozztv.com | 🌐 ציבורי (iptv-org) | iptv-org (`ElChavoTV.mx`) | ✅ |
+| 790 | Pakapaka | 138.59.227.20 | 🌐 ציבורי (iptv-org) | iptv-org (`Pakapaka.ar`) | ❌ רק באפליקציה (HTTP) |
+| 791 | Kuriakos Kids | w2.manasat.com | 🌐 ציבורי (iptv-org) | iptv-org (`KuriakosKids.pt`) | ✅ |
+| 792 | JapanimTV | foxkidstv.be | 🌐 ציבורי (iptv-org) | iptv-org (`JapanimTV.be`) | ✅ |
+| 793 | 4 Fun Kids | 4FUN TV – שרת רשמי | ✅ רשמי | iptv-org (`4FunKids.pl`) | ✅ |
+| 794 | Pluto TV Juniorklubben | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVJuniorklubben.se`) | ✅ |
+| 795 | TraLaLa DSN | hls01ns.antenaplay.ro | 🌐 ציבורי (iptv-org) | iptv-org (`TraLaLaDSN.ro`) | ✅ |
+| 796 | Chikitoonz | 45.70.201.81 | 🌐 ציבורי (iptv-org) | iptv-org (`Chikitoonz.pe`) | ❌ רק באפליקציה (HTTP) |
+| 797 | Groovia Kids | gist.githubusercontent.com | 🌐 ציבורי (iptv-org) | iptv-org (`GrooviaKids.id`) | ✅ |
+| 798 | ON Kids | freem3u.xyz | 🌐 ציבורי (iptv-org) | iptv-org (`ONKids.vn`) | ✅ |
+| 799 | Minimax | vodzong.mjunoon.tv | 🌐 ציבורי (iptv-org) | iptv-org (`Minimax.pk`) | ✅ |
+| 800 | Pooya TV | tgn.bozztv.com | 🌐 ציבורי (iptv-org) | iptv-org (`PooyaTV.ir`) | ✅ |
+| 801 | Tom And Jerry | live20.bozztv.com | 🌐 ציבורי (iptv-org) | iptv-org (`TomAndJerry.do`) | ✅ |
+| 802 | MAX Anime | cdnlive.klicgo.net | 🌐 ציבורי (iptv-org) | iptv-org (`MAXAnime.ve`) | ✅ |
+| 803 | Akili Kids! | m6.livecdn.io | 🌐 ציבורי (iptv-org) | iptv-org (`AkiliKids.ke`) | ✅ |
+| 804 | ZooMoo | zoomoo-samsungau.amagi.tv | 🌐 ציבורי (iptv-org) | iptv-org (`ZooMoo.sg`) | ❌ רק באפליקציה (הפניה בלי CORS) |
+| 805 | Amou Yazid TV | mkstream.servehttp.com | 🌐 ציבורי (iptv-org) | iptv-org (`AmouYazidTV.dz`) | ❌ רק באפליקציה (HTTP) |
+| 806 | Dios Te Ve Kids | s.emisoras.tv | 🌐 ציבורי (iptv-org) | iptv-org (`DiosTeVeKids.hn`) | ✅ |
+| 807 | Dreiko TV | cloudvideo.servers10.com | 🌐 ציבורי (iptv-org) | iptv-org (`DreikoTV.pa`) | ✅ |
+| 808 | Extrema Kids TV | 627bb251f23c7.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`ExtremaKidsTV.cr`) | ✅ |
+| 809 | Balapan | balapantv-stream.qazcdn.com | 🌐 ציבורי (iptv-org) | iptv-org (`Balapan.kz`) | ✅ |
+| 810 | ETV 2 | sb.err.ee | 🌐 ציבורי (iptv-org) | iptv-org (`ETV2.ee`) | ✅ |
+| 811 | HappyKids | dil9xdvretp0f.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`HappyKids.us`) | ✅ |
+| 812 | Persiana Junior | junhls.persiana.live | 🌐 ציבורי (iptv-org) | iptv-org (`PersianaJunior.fr`) | ✅ |
+| 813 | RiC | rictv.iptv-playoutcenter.de | 🌐 ציבורי (iptv-org) | iptv-org (`RiC.de`) | ✅ |
+| 814 | Boing | boing.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`Boing.it`) | ✅ |
+| 815 | Smotrim 100% Detskoe | Smotrim (VGTRK) – הבעלים של קרוסלה | ✅ רשמי | iptv-org (`Smotrim100Detskoe.ru`) | ✅ |
+| 816 | TVOKids | fastly.live.brightcove.com | 🌐 ציבורי (iptv-org) | iptv-org (`TVOKids.ca`) | ✅ |
+| 817 | ABC Kids | c.mjh.nz | 🌐 ציבורי (iptv-org) | iptv-org (`ABCKids.au`) | ✅ |
+| 818 | Minika Cocuk | rnttwmjcin.turknet.ercdn.net | 🌐 ציבורי (iptv-org) | iptv-org (`MinikaCocuk.tr`) | ✅ |
+| 819 | The Jungle Book | cc-4bhi5osabejc9.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`TheJungleBook.in`) | ✅ |
+| 820 | Box Kids TV | 170.83.49.66 | 🌐 ציבורי (iptv-org) | iptv-org (`BoxKidsTV.br`) | ❌ רק באפליקציה (HTTP) |
+| 821 | GikTVMX | pistream.ddns.net | 🌐 ציבורי (iptv-org) | iptv-org (`GikTVMX.mx`) | ❌ רק באפליקציה (הפניה בלי CORS) |
+| 822 | Plim Plim | 200.115.120.1 | 🌐 ציבורי (iptv-org) | iptv-org (`PlimPlim.ar`) | ❌ רק באפליקציה (HTTP) |
+| 823 | Teletoon+ | 92.114.85.87 | 🌐 ציבורי (iptv-org) | iptv-org (`TeletoonPlus.pl`) | ❌ רק באפליקציה (HTTP) |
+| 824 | Pluto TV Tecknade klassiker | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVTecknadeklassiker.se`) | ✅ |
+| 825 | TraLaLa TV | hls01ns.antenaplay.ro | 🌐 ציבורי (iptv-org) | iptv-org (`TraLaLaTV.ro`) | ✅ |
+| 826 | God Stands Kids Club TV | online.godstands.tv | 🌐 ציבורי (iptv-org) | iptv-org (`GodStandsKidsClubTV.pk`) | ✅ |
+| 827 | Tiguerito TV | ss2.tvrdomi.com | 🌐 ציבורי (iptv-org) | iptv-org (`TigueritoTV.do`) | ✅ |
+| 828 | eSports Max TV | cdnlive.klicgo.net | 🌐 ציבורי (iptv-org) | iptv-org (`eSportsMaxTV.ve`) | ✅ |
+| 829 | Afarin TV | 65f16f0fdfc51.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`AfarinTV.iq`) | ✅ |
+| 830 | KidsFlix | stream-us-east-1.getpublica.com | 🌐 ציבורי (iptv-org) | iptv-org (`KidsFlix.us`) | ✅ |
+| 831 | Tortues Ninja TV | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`TortuesNinjaTV.de`) | ✅ |
+| 832 | Super! | 495c5a85d9074f29acffeaea9e0215eb.msvdn.net | 🌐 ציבורי (iptv-org) | iptv-org (`Super.it`) | ✅ |
+| 833 | Radost Moya | radm.mediacdn.ru | 🌐 ציבורי (iptv-org) | iptv-org (`RadostMoya.ru`) | ✅ |
+| 834 | Minika Go | rnttwmjcin.turknet.ercdn.net | 🌐 ציבורי (iptv-org) | iptv-org (`MinikaGo.tr`) | ✅ |
+| 835 | ZB Cartoon | server.zillarbarta.com | 🌐 ציבורי (iptv-org) | iptv-org (`ZBCartoon.in`) | ✅ |
+| 836 | DumDum | 45.162.64.114 | 🌐 ציבורי (iptv-org) | iptv-org (`DumDum.br`) | ❌ רק באפליקציה (HTTP) |
+| 837 | TeenNick | 92.114.85.87 | 🌐 ציבורי (iptv-org) | iptv-org (`TeenNick.pl`) | ❌ רק באפליקציה (HTTP) |
+| 838 | Pluto TV Tecknat | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVTecknat.se`) | ✅ |
+| 839 | Chinola TV | tv.wracanal10.com | 🌐 ציבורי (iptv-org) | iptv-org (`ChinolaTV.do`) | ✅ |
+| 840 | PBS Kids Alaska | livestream.pbskids.org | 🌐 ציבורי (iptv-org) | iptv-org (`PBSKidsAlaska.us`) | ✅ |
+| 841 | Bob Esponja | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`BobEsponja.de`) | ✅ |
+| 842 | Tamyr | bsttv.bonus-tv.ru | 🌐 ציבורי (iptv-org) | iptv-org (`Tamyr.ru`) | ✅ |
+| 843 | TRT Diyanet Cocuk | tv-trtdiyanetcocuk.medya.trt.com.tr | 🌐 ציבורי (iptv-org) | iptv-org (`TRTDiyanetCocuk.tr`) | ✅ |
+| 844 | Discovery Kids | drk6xq0vhn.gpcdn.net | 🌐 ציבורי (iptv-org) | iptv-org (`DiscoveryKids.in`) | ✅ |
+| 845 | Polsat JimJam | 185.227.34.179 | 🌐 ציבורי (iptv-org) | iptv-org (`PolsatJimJam.pl`) | ❌ רק באפליקציה (HTTP) |
+| 846 | Pluto TV Ungdomsserier | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVUngdomsserier.se`) | ✅ |
+| 847 | PBS Kids Mountain | livestream.pbskids.org | 🌐 ציבורי (iptv-org) | iptv-org (`PBSKidsMountain.us`) | ✅ |
+| 848 | Pluto TV Kids Classics | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVKidsClassics.de`) | ✅ |
+| 849 | Tooku | live-saha.cdnvideo.ru | 🌐 ציבורי (iptv-org) | iptv-org (`Tooku.ru`) | ❌ רק באפליקציה (HTTP) |
+| 850 | WOW Kidz | yuppparoriglin.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`WOWKidz.in`) | ✅ |
+| 851 | TVP ABC | 92.114.85.87 | 🌐 ציבורי (iptv-org) | iptv-org (`TVPABC.pl`) | ❌ רק באפליקציה (HTTP) |
+| 852 | SvampBob Fyrkant | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`SvampBobFyrkant.se`) | ✅ |
+| 853 | PBS Kids Pacific | livestream.pbskids.org | 🌐 ציבורי (iptv-org) | iptv-org (`PBSKidsPacific.us`) | ✅ |
+| 854 | Pluto TV Teen | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVTeen.de`) | ✅ |
+| 855 | Chithiram | cdn.pishow.tv | 🌐 ציבורי (iptv-org) | iptv-org (`Chithiram.in`) | ✅ |
+| 856 | SvampeBob Firkant | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`SvampeBobFirkant.se`) | ✅ |
+| 857 | Placid | toy.vcdn.fyi | 🌐 ציבורי (iptv-org) | iptv-org (`Placid.us`) | ✅ |
+| 858 | Pluto TV Toons | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVToons.de`) | ✅ |
+| 859 | Unique TV | mumt05.tangotv.in | 🌐 ציבורי (iptv-org) | iptv-org (`UniqueTV.in`) | ✅ |
+| 860 | Totally Turtles | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`TotallyTurtles.se`) | ✅ |
+| 861 | RetroCrush | linear-899.frequency.stream | 🌐 ציבורי (iptv-org) | iptv-org (`RetroCrush.us`) | ✅ |
+| 862 | SpongeBob Schwammkopf | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`SpongeBobSchwammkopf.de`) | ✅ |
+| 863 | Pogo | 103.151.60.162 | 🌐 ציבורי (iptv-org) | iptv-org (`Pogo.in`) | ❌ רק באפליקציה (HTTP) |
+| 864 | Pluto TV Tegnefilm | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVTegnefilm.se`) | ✅ |
+| 865 | Skwad Play | stream-us-east-1.getpublica.com | 🌐 ציבורי (iptv-org) | iptv-org (`SkwadPlay.us`) | ✅ |
+| 866 | Totally Turtles | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`TotallyTurtles.de`) | ✅ |
+| 867 | Avatar | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`Avatar.se`) | ✅ |
+| 868 | Super Simple Songs | janson-supersimplesongs-1-us.roku.wurl.tv | 🌐 ציבורי (iptv-org) | iptv-org (`SuperSimpleSongs.us`) | ✅ |
+| 869 | Teenage Mutant Ninja Turtles | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`TeenageMutantNinjaTurtles.de`) | ✅ |
+| 870 | iCarly | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`iCarly.se`) | ✅ |
+| 871 | Crunchyroll | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`Crunchyroll.us`) | ✅ |
+| 872 | Avatar | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`Avatar.de`) | ✅ |
+| 873 | South Park | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`SouthPark.se`) | ✅ |
+| 874 | Ninja Kidz TV | d3868b4ny0rgdf.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`NinjaKidzTV.us`) | ✅ |
+| 875 | Pluto TV Animation | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVAnimation.de`) | ✅ |
+| 876 | South Park Armageddon | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`SouthParkArmageddon.se`) | ✅ |
+| 877 | PBS Kids | livestream.pbskids.org | 🌐 ציבורי (iptv-org) | iptv-org (`PBSKids.us`) | ✅ |
+| 878 | Pluto TV Retro Toons | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVRetroToons.de`) | ✅ |
+| 879 | South Park Rockin' Out | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`SouthParkRockinOut.se`) | ✅ |
+| 880 | PBS Kids Hawaii | livestream.pbskids.org | 🌐 ציבורי (iptv-org) | iptv-org (`PBSKidsHawaii.us`) | ✅ |
+| 881 | Pluto TV Super Kids | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVSuperKids.de`) | ✅ |
+| 882 | South Park: Butters Collection | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`SouthParkButtersCollection.se`) | ✅ |
+| 883 | Sonic TV | stream-us-east-1.getpublica.com | 🌐 ציבורי (iptv-org) | iptv-org (`SonicTV.us`) | ✅ |
+| 884 | Rugrats | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`Rugrats.de`) | ✅ |
+| 885 | South Park: Cartman Collection | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`SouthParkCartmanCollection.se`) | ✅ |
+| 886 | SpongeBob SquarePants | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`SpongeBobSquarePants.us`) | ✅ |
+| 887 | South Park | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`SouthPark.de`) | ✅ |
+| 888 | South Park: Into the Stars | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`SouthParkIntotheStars.se`) | ✅ |
+| 889 | TG Junior | d3i6upqaqzosi1.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`TGJunior.us`) | ✅ |
+| 890 | South Park Version Original | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`SouthParkVersionOriginal.de`) | ✅ |
+| 891 | South Park: Kenny Collection | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`SouthParkKennyCollection.se`) | ✅ |
+| 892 | Tortues Ninja TV | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`TortuesNinjaTV.us`) | ✅ |
+| 893 | Drake & Josh | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`DrakeJosh.de`) | ✅ |
+| 894 | South Park: Kyle Collection | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`SouthParkKyleCollection.se`) | ✅ |
+| 895 | TVS Hi Tops | rpn.bozztv.com | 🌐 ציבורי (iptv-org) | iptv-org (`TVSHiTops.us`) | ✅ |
+| 896 | Pluto TV Adult Animation | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVAdultAnimation.de`) | ✅ |
+| 897 | South Park: Stan Collection | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`SouthParkStanCollection.se`) | ✅ |
+| 898 | Bob l'eponge | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`Bobleponge.us`) | ✅ |
+| 899 | Pluto TV Star Trek: Animation | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVStarTrekAnimation.de`) | ✅ |
+| 900 | Detective Conan | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`DetectiveConan.us`) | ✅ |
+| 901 | South Park: Cartman Collection | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`SouthParkCartmanCollection.de`) | ✅ |
+| 902 | Las Tortugas Ninja | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`LasTortugasNinja.us`) | ✅ |
+| 903 | South Park: Kenny Collection | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`SouthParkKennyCollection.de`) | ✅ |
+| 904 | Super! SpongeBob | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`SuperSpongeBob.us`) | ✅ |
+| 905 | South Park: Kyle Collection | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`SouthParkKyleCollection.de`) | ✅ |
+| 906 | Bob Esponja Calca Quadrada | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`BobEsponjaCalcaQuadrada.us`) | ✅ |
+| 907 | South Park: Original Version | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`SouthParkOriginalVersion.de`) | ✅ |
+| 908 | Camp Spoopy | stream.ads.ottera.tv | 🌐 ציבורי (iptv-org) | iptv-org (`CampSpoopy.us`) | ✅ |
+| 909 | South Park: Stan Collection | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`SouthParkStanCollection.de`) | ✅ |
+| 910 | Giggle Mug | tvsen6.aynaott.com | 🌐 ציבורי (iptv-org) | iptv-org (`GiggleMug.us`) | ✅ |
+| 911 | S Corby TV | vodcdn.bamboo-cloud.com | 🌐 ציבורי (iptv-org) | iptv-org (`SCorbyTV.us`) | ✅ |
 
 ## 📺 מוזיקה (Music TV)
 
 | # | ערוץ | שרת השידור | סוג | נמצא ב | באתר (דפדפן) |
 |---|---|---|---|---|---|
-| 911 | 4ever Music Hits HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`4everMusic.ua`) | ❌ רק באפליקציה (HTTP) |
-| 912 | 4Fun TV Pop Hits HD | 4FUN TV – שרת רשמי | ✅ רשמי | iptv-org (`4FunTV.pl`) | ✅ |
-| 913 | ¡Viva Latino! Dance HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`VivaLatino.ua`) | ❌ רק באפליקציה (HTTP) |
-| 914 | 1HD Music Television | שרת IP ללא שם (1HD) | ⚠️ ממסר צד שלישי | iptv-org (`1HDMusicTelevision.ru`) | ❌ רק באפליקציה (HTTP) |
-| 915 | 70-80 TV Retro Hits | 70-80 TV – Wowza Streamlock | ✅ רשמי | iptv-org (`7080TV.it`) | ✅ |
-| 916 | ערוץ המוזיקה של קשת | קשת – ה-CDN של mako (עם הרשאת צפייה של mako) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
-| 917 | רדיוס 100FM – וידאו | CyberCDN – ה-CDN של תחנות הרדיו עצמן | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
-| 918 | Botflix Radioo | hls.botflix.tv | 🌐 ציבורי (iptv-org) | iptv-org (`BotflixRadioo.us`) | ✅ |
-| 919 | Afrobeat TV Entertainment | stream.ecable.tv | 🌐 ציבורי (iptv-org) | iptv-org (`AfrobeatTVEntertainment.uk`) | ✅ |
-| 920 | Trace Africa | channels.trace.plus | 🌐 ציבורי (iptv-org) | iptv-org (`TraceAfrica.fr`) | ✅ |
-| 921 | DMF | d-m-f.iptv-playoutcenter.de | 🌐 ציבורי (iptv-org) | iptv-org (`DMF.de`) | ✅ |
-| 922 | Music TV Granada | cloudvideo.servers10.com | 🌐 ציבורי (iptv-org) | iptv-org (`MusicTVGranada.es`) | ✅ |
-| 923 | FM ITALIA | stream2.xdevel.com | 🌐 ציבורי (iptv-org) | iptv-org (`FMITALIA.it`) | ✅ |
-| 924 | Maidan | live-maidantv.cdnvideo.ru | 🌐 ציבורי (iptv-org) | iptv-org (`Maidan.ru`) | ✅ |
-| 925 | Happy Radio TV | tv.mediacp.eu | 🌐 ציבורי (iptv-org) | iptv-org (`HappyRadioTV.ua`) | ✅ |
-| 926 | Movie Music by Stingray | lotus.stingray.com | 🌐 ציבורי (iptv-org) | iptv-org (`MovieMusicbyStingray.ca`) | ✅ |
-| 927 | Folk Klub TV | tv1.intv.mk | 🌐 ציבורי (iptv-org) | iptv-org (`FolkKlubTV.au`) | ❌ רק באפליקציה (HTTP) |
-| 928 | MBC FM | dbbv9umqcd7cs.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`MBCFM.ae`) | ✅ |
-| 929 | Jeddah Radio | live.kwikmotion.com | 🌐 ציבורי (iptv-org) | iptv-org (`JeddahRadio.sa`) | ✅ |
-| 930 | NogoumFMTV | nogoumtv.nrpstream.com | 🌐 ציבורי (iptv-org) | iptv-org (`NogoumFMTV.eg`) | ✅ |
-| 931 | Aghani Aghani TV | cdn.streamlane.tv | 🌐 ציבורי (iptv-org) | iptv-org (`AghaniAghaniTV.lb`) | ✅ |
-| 932 | Power Dance | livetv.powerapp.com.tr | 🌐 ציבורי (iptv-org) | iptv-org (`PowerDance.tr`) | ✅ |
-| 933 | 9X Jalwa | wiselp.wiseplayout.com | 🌐 ציבורי (iptv-org) | iptv-org (`9XJalwa.in`) | ✅ |
-| 934 | Gugak TV | mgugaklive.nowcdn.co.kr | 🌐 ציבורי (iptv-org) | iptv-org (`GugakTV.kr`) | ✅ |
-| 935 | CCTV-Storm Music | 38.75.136.137 | 🌐 ציבורי (iptv-org) | iptv-org (`CCTVStormMusic.cn`) | ❌ רק באפליקציה (HTTP) |
-| 936 | TikTok Radio Brasil | d1bl6tskrpq9ze.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`TikTokRadioBrasil.br`) | ✅ |
-| 937 | Bandamax | streaming.onnethn.com | 🌐 ציבורי (iptv-org) | iptv-org (`Bandamax.mx`) | ✅ |
-| 938 | La 100 | mdstrm.com | 🌐 ציבורי (iptv-org) | iptv-org (`La100.ar`) | ✅ |
-| 939 | ON FM | 5ce9406b73c33.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`ONFM.pt`) | ✅ |
-| 940 | 360TuneBox | Antik Telecom (סלובקיה), נתיבי test | ⚠️ ממסר צד שלישי | iptv-org (`360TuneBox.nl`) | ✅ |
-| 941 | StuBru | live.vrtcdn.be | 🌐 ציבורי (iptv-org) | iptv-org (`StuBru.be`) | ✅ |
-| 942 | RADIO DISCOunt TV | 70-80 TV – Wowza Streamlock | ✅ רשמי | iptv-org (`RADIODISCOuntTV.ch`) | ✅ |
-| 943 | Antenne Kaernten | 60efd7a2b4d02.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`AntenneKaernten.at`) | ✅ |
-| 944 | Radio RAM | 1888165924.rsc.cdn77.org | 🌐 ציבורי (iptv-org) | iptv-org (`RadioRAM.pl`) | ✅ |
-| 945 | Baraza TV | eco.streams.ovh | 🌐 ציבורי (iptv-org) | iptv-org (`BarazaTV.gr`) | ✅ |
-| 946 | JRTV Jarviradio | streamer.radiotaajuus.fi | 🌐 ציבורי (iptv-org) | iptv-org (`JRTVJarviradio.fi`) | ✅ |
-| 947 | Ocko Expres | ocko-live.ssl.cdn.cra.cz | 🌐 ציבורי (iptv-org) | iptv-org (`OckoExpres.cz`) | ✅ |
-| 948 | Party Mix | hls02ns.antenaplay.ro | 🌐 ציבורי (iptv-org) | iptv-org (`PartyMix.ro`) | ✅ |
-| 949 | Oxygen Music | oxygenmusic.hu | 🌐 ציבורי (iptv-org) | iptv-org (`OxygenMusic.hu`) | ✅ |
-| 950 | Pauta | redirector.rudo.video | 🌐 ציבורי (iptv-org) | iptv-org (`Pauta.cl`) | ✅ |
-| 951 | La Kalle | mdstrm.com | 🌐 ציבורי (iptv-org) | iptv-org (`LaKalle.co`) | ✅ |
-| 952 | Radio Onda Digital | live.ondadigitaltv.com | 🌐 ציבורי (iptv-org) | iptv-org (`RadioOndaDigital.pe`) | ✅ |
-| 953 | ON Music | freem3u.xyz | 🌐 ציבורי (iptv-org) | iptv-org (`ONMusic.vn`) | ✅ |
-| 954 | JooMusic | livecdn.live247stream.com | 🌐 ציבורי (iptv-org) | iptv-org (`JooMusic.pk`) | ✅ |
-| 955 | AFN TV | bozztv.com | 🌐 ציבורי (iptv-org) | iptv-org (`AFNTV.ir`) | ✅ |
-| 956 | HMTV | customer-yzxu6n447dx2x45h.cloudflarestream.com | 🌐 ציבורי (iptv-org) | iptv-org (`HMTV.ng`) | ✅ |
-| 957 | Gex TV | live20.bozztv.com | 🌐 ציבורי (iptv-org) | iptv-org (`GexTV.cr`) | ✅ |
-| 958 | Venus Media | tigocloud.desdeparaguay.net | 🌐 ציבורי (iptv-org) | iptv-org (`VenusMedia.py`) | ✅ |
-| 959 | El Sol Network TV | tv.wracanal10.com | 🌐 ציבורי (iptv-org) | iptv-org (`ElSolNetworkTV.ec`) | ✅ |
-| 960 | Best of Dance TV | m1b2.worldcast.tv | 🌐 ציבורי (iptv-org) | iptv-org (`BestofDanceTV.ee`) | ✅ |
-| 961 | Makao TV | live.obslivestream.com | 🌐 ציבורי (iptv-org) | iptv-org (`MakaoTV.do`) | ✅ |
-| 962 | Magic TV | bss1.neterra.tv | 🌐 ציבורי (iptv-org) | iptv-org (`MagicTV.bg`) | ✅ |
-| 963 | Cool FM 98.9 | live2.tensila.com | 🌐 ציבורי (iptv-org) | iptv-org (`CoolFM989.aw`) | ✅ |
-| 964 | Planet 100.9 FM | streamlov.alsolnet.com | 🌐 ציבורי (iptv-org) | iptv-org (`Planet1009FM.pa`) | ✅ |
-| 965 | Radio Hit FM TV | peer2.tdiradio.com | 🌐 ציבורי (iptv-org) | iptv-org (`RadioHitFMTV.rs`) | ✅ |
-| 966 | Imagen FM 105.1 | streaming.imagenfm105-1.com | 🌐 ציבורי (iptv-org) | iptv-org (`ImagenFM1051.hn`) | ✅ |
-| 967 | FUSION TV | edge20.vedge.infomaniak.com | 🌐 ציבורי (iptv-org) | iptv-org (`FUSIONTV.mq`) | ✅ |
-| 968 | Madras FM TV | edge12.vedge.infomaniak.com | 🌐 ציבורי (iptv-org) | iptv-org (`MadrasFMTV.gp`) | ✅ |
-| 969 | BTA TV | cloud.fastchannel.es | 🌐 ציבורי (iptv-org) | iptv-org (`BTATV.ve`) | ✅ |
-| 970 | The Retro Channel | 583ed2f226ac2.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`TheRetroChannel.pr`) | ✅ |
-| 971 | Folk TV | stream.nasatv.com.mk | 🌐 ציבורי (iptv-org) | iptv-org (`FolkTV.mk`) | ❌ רק באפליקציה (הפניה בלי CORS) |
-| 972 | Tezaur TV | tezaurtv.md | 🌐 ציבורי (iptv-org) | iptv-org (`TezaurTV.md`) | ✅ |
-| 973 | RTL Gold | stream.rtl.lu | 🌐 ציבורי (iptv-org) | iptv-org (`RTLGold.lu`) | ✅ |
-| 974 | Audiokiss | master.tucableip.com | 🌐 ציבורי (iptv-org) | iptv-org (`Audiokiss.bo`) | ✅ |
-| 975 | CMC TV | stream.cmctv.hr | 🌐 ציבורי (iptv-org) | iptv-org (`CMCTV.hr`) | ✅ |
-| 976 | 98.1 Pearl FM | live2.tensila.com | 🌐 ציבורי (iptv-org) | iptv-org (`981PearlFM.sx`) | ✅ |
-| 977 | Scorch TV | w6oy7x7jlxrg-hls-live.5centscdn.com | 🌐 ציבורי (iptv-org) | iptv-org (`ScorchTV.tt`) | ✅ |
-| 978 | Star 101 FM | live2.tensila.com | 🌐 ציבורי (iptv-org) | iptv-org (`Star101FM.gu`) | ✅ |
-| 979 | Tjil TV | hls-1zdhtxpm-livepush.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`TjilTV.na`) | ✅ |
-| 980 | Falastini TV | rp.tactivemedia.com | 🌐 ציבורי (iptv-org) | iptv-org (`FalastiniTV.ps`) | ✅ |
-| 981 | Jordan Songs | playlist.fasttvcdn.com | 🌐 ציבורי (iptv-org) | iptv-org (`JordanSongs.jo`) | ✅ |
-| 982 | Mosaique FM | webcam.mosaiquefm.net | 🌐 ציבורי (iptv-org) | iptv-org (`MosaiqueFM.tn`) | ✅ |
-| 983 | A2i Music | stream.sen-gt.com | 🌐 ציבורי (iptv-org) | iptv-org (`A2iMusic.sn`) | ✅ |
-| 984 | Ivoire Channel | video1.getstreamhosting.com | 🌐 ציבורי (iptv-org) | iptv-org (`IvoireChannel.ci`) | ✅ |
-| 985 | Muzangala TV | 5cf4a2c2512a2.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`MuzangalaTV.ao`) | ✅ |
-| 986 | TV Cidade | stmv1.srvif.com | 🌐 ציבורי (iptv-org) | iptv-org (`TVCidade.cv`) | ✅ |
-| 987 | AlbKanale Music TV | albportal.net | 🌐 ציבורי (iptv-org) | iptv-org (`AlbKanaleMusicTV.al`) | ❌ רק באפליקציה (הפניה בלי CORS) |
-| 988 | Isango TV | 80.241.215.175 | 🌐 ציבורי (iptv-org) | iptv-org (`IsangoTV.rw`) | ❌ רק באפליקציה (HTTP) |
-| 989 | Ishtar TV | stream.ishtartv.com | 🌐 ציבורי (iptv-org) | iptv-org (`IshtarTV.iq`) | ✅ |
-| 990 | K100 | k100streymi.mbl.is | 🌐 ציבורי (iptv-org) | iptv-org (`K100.is`) | ✅ |
-| 991 | Kayhan TV | playout395.livestreamingcdn.com | 🌐 ציבורי (iptv-org) | iptv-org (`KayhanTV.af`) | ✅ |
-| 992 | KN Music TV | cdn4.yayin.com.tr | 🌐 ציבורי (iptv-org) | iptv-org (`KNMusicTV.az`) | ✅ |
-| 993 | Look Thoong TV | livefta.malimarcdn.com | 🌐 ציבורי (iptv-org) | iptv-org (`LookThoongTV.la`) | ✅ |
-| 994 | M-1 | m-1.data.lt | 🌐 ציבורי (iptv-org) | iptv-org (`M1.lt`) | ✅ |
-| 995 | Radio SWH TV | 00ff00.latnet.media | 🌐 ציבורי (iptv-org) | iptv-org (`RadioSWHTV.lv`) | ✅ |
-| 996 | Turkmen Owazy | alpha.tv.online.tm | 🌐 ציבורי (iptv-org) | iptv-org (`TurkmenOwazy.tm`) | ❌ רק באפליקציה (הפניה בלי CORS) |
-| 997 | Harmony Gospel Music TV | tgn.bozztv.com | 🌐 ציבורי (iptv-org) | iptv-org (`HarmonyGospelMusicTV.us`) | ✅ |
-| 998 | NOW Rock | lightning-now90s-samsungnz.amagi.tv | 🌐 ציבורי (iptv-org) | iptv-org (`NOWRock.uk`) | ✅ |
-| 999 | Trace Jama | channels.trace.plus | 🌐 ציבורי (iptv-org) | iptv-org (`TraceJama.fr`) | ✅ |
-| 1000 | Lausitzwelle | h056.video-stream-hosting.de | 🌐 ציבורי (iptv-org) | iptv-org (`Lausitzwelle.de`) | ✅ |
-| 1001 | Kiss Kiss TV | 58f12ffd2447a.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`KissKissTV.it`) | ✅ |
-| 1002 | Muz Soyuz | hls-tvsoyuz.cdnvideo.ru | 🌐 ציבורי (iptv-org) | iptv-org (`MuzSoyuz.ru`) | ✅ |
-| 1003 | Muzvar | live-tv.cloud – ספק IPTV אוקראיני | ⚠️ ממסר צד שלישי | iptv-org (`Muzvar.ua`) | ✅ |
-| 1004 | Qello Concerts by Stingray | lotus.stingray.com | 🌐 ציבורי (iptv-org) | iptv-org (`QelloConcertsbyStingray.ca`) | ✅ |
-| 1005 | INTV Australia | tv1.intv.mk | 🌐 ציבורי (iptv-org) | iptv-org (`INTVAustralia.au`) | ❌ רק באפליקציה (HTTP) |
-| 1006 | PMC | pmchls.wns.live | 🌐 ציבורי (iptv-org) | iptv-org (`PMC.ae`) | ✅ |
-| 1007 | Nidae AlIslam Radio | live.kwikmotion.com | 🌐 ציבורי (iptv-org) | iptv-org (`NidaeAlIslamRadio.sa`) | ✅ |
-| 1008 | El Radio 9090 FM | 9090video.mobtada.com | 🌐 ציבורי (iptv-org) | iptv-org (`ElRadio9090FM.eg`) | ✅ |
-| 1009 | mfm | hms.pfs.gdn | 🌐 ציבורי (iptv-org) | iptv-org (`mfm.lb`) | ✅ |
-| 1010 | Power Love | livetv.powerapp.com.tr | 🌐 ציבורי (iptv-org) | iptv-org (`PowerLove.tr`) | ✅ |
-| 1011 | Aaryaa TV | stream.ottlive.co.in | 🌐 ציבורי (iptv-org) | iptv-org (`AaryaaTV.in`) | ✅ |
-| 1012 | CCTV-11 | 74.91.26.218 | 🌐 ציבורי (iptv-org) | iptv-org (`CCTV11.cn`) | ❌ רק באפליקציה (HTTP) |
-| 1013 | +MaisUm | stream.ichibansys.com | 🌐 ציבורי (iptv-org) | iptv-org (`PlusMaisUm.br`) | ✅ |
-| 1014 | Conecta TV | stream8.mexiserver.com | 🌐 ציבורי (iptv-org) | iptv-org (`ConectaTV.mx`) | ✅ |
-| 1015 | X Level Media | tuvideoonline.com.ar | 🌐 ציבורי (iptv-org) | iptv-org (`XLevelMedia.ar`) | ✅ |
-| 1016 | RFPtv | video03.logicahost.com.br | 🌐 ציבורי (iptv-org) | iptv-org (`RFPtv.pt`) | ✅ |
-| 1017 | XITE Hits | d726x48n2pd5h.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`XITEHits.nl`) | ✅ |
-| 1018 | Klara | live.vrtcdn.be | 🌐 ציבורי (iptv-org) | iptv-org (`Klara.be`) | ✅ |
-| 1019 | Antenne Steiermark | 60efd7a2b4d02.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`AntenneSteiermark.at`) | ✅ |
-| 1020 | Disco Polo Music | 185.227.34.179 | 🌐 ציבורי (iptv-org) | iptv-org (`DiscoPoloMusic.pl`) | ❌ רק באפליקציה (HTTP) |
-| 1021 | Panik TV | livetv.streams.ovh | 🌐 ציבורי (iptv-org) | iptv-org (`PanikTV.gr`) | ✅ |
-| 1022 | Navahang TV | hls.navahang.live | 🌐 ציבורי (iptv-org) | iptv-org (`NavahangTV.fi`) | ✅ |
-| 1023 | Retro Music TV | stream.mediawork.cz | 🌐 ציבורי (iptv-org) | iptv-org (`RetroMusicTV.cz`) | ✅ |
-| 1024 | Impact TV 2 | online.tvimpact.live | 🌐 ציבורי (iptv-org) | iptv-org (`ImpactTV2.ro`) | ✅ |
-| 1025 | Rewind TV | tls-cl.cdnz.cl | 🌐 ציבורי (iptv-org) | iptv-org (`RewindTV.cl`) | ✅ |
-| 1026 | La Morada Radio TV | movil.ejeserver.com | 🌐 ציבורי (iptv-org) | iptv-org (`LaMoradaRadioTV.co`) | ✅ |
-| 1027 | La Fabulosa TV | eu1.servers10.com | 🌐 ציבורי (iptv-org) | iptv-org (`LaFabulosaTV.pe`) | ✅ |
-| 1028 | Jalwa TV | vodzong.mjunoon.tv | 🌐 ציבורי (iptv-org) | iptv-org (`JalwaTV.pk`) | ✅ |
-| 1029 | T2 TV | t2hls.wns.live | 🌐 ציבורי (iptv-org) | iptv-org (`T2TV.ir`) | ✅ |
-| 1030 | AMusic Channel | viewmedia7219.bozztv.com | 🌐 ציבורי (iptv-org) | iptv-org (`AMusicChannel.ng`) | ✅ |
-| 1031 | Canal 3 KMK TV | live20.bozztv.com | 🌐 ציבורי (iptv-org) | iptv-org (`Canal3KMKTV.cr`) | ✅ |
-| 1032 | Dismar Radio TV | rds3.desdeparaguay.net | 🌐 ציבורי (iptv-org) | iptv-org (`DismarRadioTV.py`) | ✅ |
-| 1033 | FM Mundo | video2.makrodigital.com | 🌐 ציבורי (iptv-org) | iptv-org (`FMMundo.ec`) | ✅ |
-| 1034 | DanceTV Deep House District | m1b2.worldcast.tv | 🌐 ציבורי (iptv-org) | iptv-org (`DanceTVDeepHouseDistrict.ee`) | ✅ |
-| 1035 | Montones TV | lbgo.bozztv.com | 🌐 ציבורי (iptv-org) | iptv-org (`MontonesTV.do`) | ✅ |
-| 1036 | The Voice | bss1.neterra.tv | 🌐 ציבורי (iptv-org) | iptv-org (`TheVoice.bg`) | ✅ |
-| 1037 | Power 101.7 FM | vcp11.myplaytv.com | 🌐 ציבורי (iptv-org) | iptv-org (`Power1017FM.aw`) | ✅ |
-| 1038 | Super Q Panama | vcp8.myplaytv.com | 🌐 ציבורי (iptv-org) | iptv-org (`SuperQPanama.pa`) | ✅ |
-| 1039 | Radio Karolina TV | peer2.tdiradio.com | 🌐 ציבורי (iptv-org) | iptv-org (`RadioKarolinaTV.rs`) | ✅ |
-| 1040 | La Top 102.9 | 59d39900ebfb8.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`LaTop1029.hn`) | ✅ |
-| 1041 | Identite Tele Caraibes | vdo2.pro-fhi.net | 🌐 ציבורי (iptv-org) | iptv-org (`IdentiteTeleCaraibes.mq`) | ✅ |
-| 1042 | RHT Guadeloupe | edge12.vedge.infomaniak.com | 🌐 ציבורי (iptv-org) | iptv-org (`RHTGuadeloupe.gp`) | ✅ |
-| 1043 | ShowVen TV | cdnbarinas.tvzamora.com | 🌐 ציבורי (iptv-org) | iptv-org (`ShowVenTV.ve`) | ✅ |
-| 1044 | La-X | stream.eleden.com | 🌐 ציבורי (iptv-org) | iptv-org (`LaX.pr`) | ✅ |
-| 1045 | Love TV | stream.nasatv.com.mk | 🌐 ציבורי (iptv-org) | iptv-org (`LoveTV.mk`) | ❌ רק באפליקציה (הפניה בלי CORS) |
-| 1046 | Hit FM | hitfm.nfthost.net | 🌐 ציבורי (iptv-org) | iptv-org (`HitFM.md`) | ✅ |
-| 1047 | Today Radio | stream.rtl.lu | 🌐 ציבורי (iptv-org) | iptv-org (`TodayRadio.lu`) | ✅ |
+| 912 | 4ever Music Hits HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`4everMusic.ua`) | ❌ רק באפליקציה (HTTP) |
+| 913 | 4Fun TV Pop Hits HD | 4FUN TV – שרת רשמי | ✅ רשמי | iptv-org (`4FunTV.pl`) | ✅ |
+| 914 | ¡Viva Latino! Dance HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`VivaLatino.ua`) | ❌ רק באפליקציה (HTTP) |
+| 915 | 1HD Music Television | שרת IP ללא שם (1HD) | ⚠️ ממסר צד שלישי | iptv-org (`1HDMusicTelevision.ru`) | ❌ רק באפליקציה (HTTP) |
+| 916 | 70-80 TV Retro Hits | 70-80 TV – Wowza Streamlock | ✅ רשמי | iptv-org (`7080TV.it`) | ✅ |
+| 917 | ערוץ המוזיקה של קשת | קשת – ה-CDN של mako (עם הרשאת צפייה של mako) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 918 | רדיוס 100FM – וידאו | CyberCDN – ה-CDN של תחנות הרדיו עצמן | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 919 | Botflix Radioo | hls.botflix.tv | 🌐 ציבורי (iptv-org) | iptv-org (`BotflixRadioo.us`) | ✅ |
+| 920 | Afrobeat TV Entertainment | stream.ecable.tv | 🌐 ציבורי (iptv-org) | iptv-org (`AfrobeatTVEntertainment.uk`) | ✅ |
+| 921 | Trace Africa | channels.trace.plus | 🌐 ציבורי (iptv-org) | iptv-org (`TraceAfrica.fr`) | ✅ |
+| 922 | DMF | d-m-f.iptv-playoutcenter.de | 🌐 ציבורי (iptv-org) | iptv-org (`DMF.de`) | ✅ |
+| 923 | Music TV Granada | cloudvideo.servers10.com | 🌐 ציבורי (iptv-org) | iptv-org (`MusicTVGranada.es`) | ✅ |
+| 924 | FM ITALIA | stream2.xdevel.com | 🌐 ציבורי (iptv-org) | iptv-org (`FMITALIA.it`) | ✅ |
+| 925 | Maidan | live-maidantv.cdnvideo.ru | 🌐 ציבורי (iptv-org) | iptv-org (`Maidan.ru`) | ✅ |
+| 926 | Happy Radio TV | tv.mediacp.eu | 🌐 ציבורי (iptv-org) | iptv-org (`HappyRadioTV.ua`) | ✅ |
+| 927 | Movie Music by Stingray | lotus.stingray.com | 🌐 ציבורי (iptv-org) | iptv-org (`MovieMusicbyStingray.ca`) | ✅ |
+| 928 | Folk Klub TV | tv1.intv.mk | 🌐 ציבורי (iptv-org) | iptv-org (`FolkKlubTV.au`) | ❌ רק באפליקציה (HTTP) |
+| 929 | MBC FM | dbbv9umqcd7cs.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`MBCFM.ae`) | ✅ |
+| 930 | Jeddah Radio | live.kwikmotion.com | 🌐 ציבורי (iptv-org) | iptv-org (`JeddahRadio.sa`) | ✅ |
+| 931 | NogoumFMTV | nogoumtv.nrpstream.com | 🌐 ציבורי (iptv-org) | iptv-org (`NogoumFMTV.eg`) | ✅ |
+| 932 | Aghani Aghani TV | cdn.streamlane.tv | 🌐 ציבורי (iptv-org) | iptv-org (`AghaniAghaniTV.lb`) | ✅ |
+| 933 | Power Dance | livetv.powerapp.com.tr | 🌐 ציבורי (iptv-org) | iptv-org (`PowerDance.tr`) | ✅ |
+| 934 | 9X Jalwa | wiselp.wiseplayout.com | 🌐 ציבורי (iptv-org) | iptv-org (`9XJalwa.in`) | ✅ |
+| 935 | Gugak TV | mgugaklive.nowcdn.co.kr | 🌐 ציבורי (iptv-org) | iptv-org (`GugakTV.kr`) | ✅ |
+| 936 | CCTV-Storm Music | 38.75.136.137 | 🌐 ציבורי (iptv-org) | iptv-org (`CCTVStormMusic.cn`) | ❌ רק באפליקציה (HTTP) |
+| 937 | TikTok Radio Brasil | d1bl6tskrpq9ze.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`TikTokRadioBrasil.br`) | ✅ |
+| 938 | Bandamax | streaming.onnethn.com | 🌐 ציבורי (iptv-org) | iptv-org (`Bandamax.mx`) | ✅ |
+| 939 | La 100 | mdstrm.com | 🌐 ציבורי (iptv-org) | iptv-org (`La100.ar`) | ✅ |
+| 940 | ON FM | 5ce9406b73c33.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`ONFM.pt`) | ✅ |
+| 941 | 360TuneBox | Antik Telecom (סלובקיה), נתיבי test | ⚠️ ממסר צד שלישי | iptv-org (`360TuneBox.nl`) | ✅ |
+| 942 | StuBru | live.vrtcdn.be | 🌐 ציבורי (iptv-org) | iptv-org (`StuBru.be`) | ✅ |
+| 943 | RADIO DISCOunt TV | 70-80 TV – Wowza Streamlock | ✅ רשמי | iptv-org (`RADIODISCOuntTV.ch`) | ✅ |
+| 944 | Antenne Kaernten | 60efd7a2b4d02.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`AntenneKaernten.at`) | ✅ |
+| 945 | Radio RAM | 1888165924.rsc.cdn77.org | 🌐 ציבורי (iptv-org) | iptv-org (`RadioRAM.pl`) | ✅ |
+| 946 | Baraza TV | eco.streams.ovh | 🌐 ציבורי (iptv-org) | iptv-org (`BarazaTV.gr`) | ✅ |
+| 947 | JRTV Jarviradio | streamer.radiotaajuus.fi | 🌐 ציבורי (iptv-org) | iptv-org (`JRTVJarviradio.fi`) | ✅ |
+| 948 | Ocko Expres | ocko-live.ssl.cdn.cra.cz | 🌐 ציבורי (iptv-org) | iptv-org (`OckoExpres.cz`) | ✅ |
+| 949 | Party Mix | hls02ns.antenaplay.ro | 🌐 ציבורי (iptv-org) | iptv-org (`PartyMix.ro`) | ✅ |
+| 950 | Oxygen Music | oxygenmusic.hu | 🌐 ציבורי (iptv-org) | iptv-org (`OxygenMusic.hu`) | ✅ |
+| 951 | Pauta | redirector.rudo.video | 🌐 ציבורי (iptv-org) | iptv-org (`Pauta.cl`) | ✅ |
+| 952 | La Kalle | mdstrm.com | 🌐 ציבורי (iptv-org) | iptv-org (`LaKalle.co`) | ✅ |
+| 953 | Radio Onda Digital | live.ondadigitaltv.com | 🌐 ציבורי (iptv-org) | iptv-org (`RadioOndaDigital.pe`) | ✅ |
+| 954 | ON Music | freem3u.xyz | 🌐 ציבורי (iptv-org) | iptv-org (`ONMusic.vn`) | ✅ |
+| 955 | JooMusic | livecdn.live247stream.com | 🌐 ציבורי (iptv-org) | iptv-org (`JooMusic.pk`) | ✅ |
+| 956 | AFN TV | bozztv.com | 🌐 ציבורי (iptv-org) | iptv-org (`AFNTV.ir`) | ✅ |
+| 957 | HMTV | customer-yzxu6n447dx2x45h.cloudflarestream.com | 🌐 ציבורי (iptv-org) | iptv-org (`HMTV.ng`) | ✅ |
+| 958 | Gex TV | live20.bozztv.com | 🌐 ציבורי (iptv-org) | iptv-org (`GexTV.cr`) | ✅ |
+| 959 | Venus Media | tigocloud.desdeparaguay.net | 🌐 ציבורי (iptv-org) | iptv-org (`VenusMedia.py`) | ✅ |
+| 960 | El Sol Network TV | tv.wracanal10.com | 🌐 ציבורי (iptv-org) | iptv-org (`ElSolNetworkTV.ec`) | ✅ |
+| 961 | Best of Dance TV | m1b2.worldcast.tv | 🌐 ציבורי (iptv-org) | iptv-org (`BestofDanceTV.ee`) | ✅ |
+| 962 | Makao TV | live.obslivestream.com | 🌐 ציבורי (iptv-org) | iptv-org (`MakaoTV.do`) | ✅ |
+| 963 | Magic TV | bss1.neterra.tv | 🌐 ציבורי (iptv-org) | iptv-org (`MagicTV.bg`) | ✅ |
+| 964 | Cool FM 98.9 | live2.tensila.com | 🌐 ציבורי (iptv-org) | iptv-org (`CoolFM989.aw`) | ✅ |
+| 965 | Planet 100.9 FM | streamlov.alsolnet.com | 🌐 ציבורי (iptv-org) | iptv-org (`Planet1009FM.pa`) | ✅ |
+| 966 | Radio Hit FM TV | peer2.tdiradio.com | 🌐 ציבורי (iptv-org) | iptv-org (`RadioHitFMTV.rs`) | ✅ |
+| 967 | Imagen FM 105.1 | streaming.imagenfm105-1.com | 🌐 ציבורי (iptv-org) | iptv-org (`ImagenFM1051.hn`) | ✅ |
+| 968 | FUSION TV | edge20.vedge.infomaniak.com | 🌐 ציבורי (iptv-org) | iptv-org (`FUSIONTV.mq`) | ✅ |
+| 969 | Madras FM TV | edge12.vedge.infomaniak.com | 🌐 ציבורי (iptv-org) | iptv-org (`MadrasFMTV.gp`) | ✅ |
+| 970 | BTA TV | cloud.fastchannel.es | 🌐 ציבורי (iptv-org) | iptv-org (`BTATV.ve`) | ✅ |
+| 971 | The Retro Channel | 583ed2f226ac2.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`TheRetroChannel.pr`) | ✅ |
+| 972 | Folk TV | stream.nasatv.com.mk | 🌐 ציבורי (iptv-org) | iptv-org (`FolkTV.mk`) | ❌ רק באפליקציה (הפניה בלי CORS) |
+| 973 | Tezaur TV | tezaurtv.md | 🌐 ציבורי (iptv-org) | iptv-org (`TezaurTV.md`) | ✅ |
+| 974 | RTL Gold | stream.rtl.lu | 🌐 ציבורי (iptv-org) | iptv-org (`RTLGold.lu`) | ✅ |
+| 975 | Audiokiss | master.tucableip.com | 🌐 ציבורי (iptv-org) | iptv-org (`Audiokiss.bo`) | ✅ |
+| 976 | CMC TV | stream.cmctv.hr | 🌐 ציבורי (iptv-org) | iptv-org (`CMCTV.hr`) | ✅ |
+| 977 | 98.1 Pearl FM | live2.tensila.com | 🌐 ציבורי (iptv-org) | iptv-org (`981PearlFM.sx`) | ✅ |
+| 978 | Scorch TV | w6oy7x7jlxrg-hls-live.5centscdn.com | 🌐 ציבורי (iptv-org) | iptv-org (`ScorchTV.tt`) | ✅ |
+| 979 | Star 101 FM | live2.tensila.com | 🌐 ציבורי (iptv-org) | iptv-org (`Star101FM.gu`) | ✅ |
+| 980 | Tjil TV | hls-1zdhtxpm-livepush.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`TjilTV.na`) | ✅ |
+| 981 | Falastini TV | rp.tactivemedia.com | 🌐 ציבורי (iptv-org) | iptv-org (`FalastiniTV.ps`) | ✅ |
+| 982 | Jordan Songs | playlist.fasttvcdn.com | 🌐 ציבורי (iptv-org) | iptv-org (`JordanSongs.jo`) | ✅ |
+| 983 | Mosaique FM | webcam.mosaiquefm.net | 🌐 ציבורי (iptv-org) | iptv-org (`MosaiqueFM.tn`) | ✅ |
+| 984 | A2i Music | stream.sen-gt.com | 🌐 ציבורי (iptv-org) | iptv-org (`A2iMusic.sn`) | ✅ |
+| 985 | Ivoire Channel | video1.getstreamhosting.com | 🌐 ציבורי (iptv-org) | iptv-org (`IvoireChannel.ci`) | ✅ |
+| 986 | Muzangala TV | 5cf4a2c2512a2.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`MuzangalaTV.ao`) | ✅ |
+| 987 | TV Cidade | stmv1.srvif.com | 🌐 ציבורי (iptv-org) | iptv-org (`TVCidade.cv`) | ✅ |
+| 988 | AlbKanale Music TV | albportal.net | 🌐 ציבורי (iptv-org) | iptv-org (`AlbKanaleMusicTV.al`) | ❌ רק באפליקציה (הפניה בלי CORS) |
+| 989 | Isango TV | 80.241.215.175 | 🌐 ציבורי (iptv-org) | iptv-org (`IsangoTV.rw`) | ❌ רק באפליקציה (HTTP) |
+| 990 | Ishtar TV | stream.ishtartv.com | 🌐 ציבורי (iptv-org) | iptv-org (`IshtarTV.iq`) | ✅ |
+| 991 | K100 | k100streymi.mbl.is | 🌐 ציבורי (iptv-org) | iptv-org (`K100.is`) | ✅ |
+| 992 | Kayhan TV | playout395.livestreamingcdn.com | 🌐 ציבורי (iptv-org) | iptv-org (`KayhanTV.af`) | ✅ |
+| 993 | KN Music TV | cdn4.yayin.com.tr | 🌐 ציבורי (iptv-org) | iptv-org (`KNMusicTV.az`) | ✅ |
+| 994 | Look Thoong TV | livefta.malimarcdn.com | 🌐 ציבורי (iptv-org) | iptv-org (`LookThoongTV.la`) | ✅ |
+| 995 | M-1 | m-1.data.lt | 🌐 ציבורי (iptv-org) | iptv-org (`M1.lt`) | ✅ |
+| 996 | Radio SWH TV | 00ff00.latnet.media | 🌐 ציבורי (iptv-org) | iptv-org (`RadioSWHTV.lv`) | ✅ |
+| 997 | Turkmen Owazy | alpha.tv.online.tm | 🌐 ציבורי (iptv-org) | iptv-org (`TurkmenOwazy.tm`) | ❌ רק באפליקציה (הפניה בלי CORS) |
+| 998 | Harmony Gospel Music TV | tgn.bozztv.com | 🌐 ציבורי (iptv-org) | iptv-org (`HarmonyGospelMusicTV.us`) | ✅ |
+| 999 | NOW Rock | lightning-now90s-samsungnz.amagi.tv | 🌐 ציבורי (iptv-org) | iptv-org (`NOWRock.uk`) | ✅ |
+| 1000 | Trace Jama | channels.trace.plus | 🌐 ציבורי (iptv-org) | iptv-org (`TraceJama.fr`) | ✅ |
+| 1001 | Lausitzwelle | h056.video-stream-hosting.de | 🌐 ציבורי (iptv-org) | iptv-org (`Lausitzwelle.de`) | ✅ |
+| 1002 | Kiss Kiss TV | 58f12ffd2447a.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`KissKissTV.it`) | ✅ |
+| 1003 | Muz Soyuz | hls-tvsoyuz.cdnvideo.ru | 🌐 ציבורי (iptv-org) | iptv-org (`MuzSoyuz.ru`) | ✅ |
+| 1004 | Muzvar | live-tv.cloud – ספק IPTV אוקראיני | ⚠️ ממסר צד שלישי | iptv-org (`Muzvar.ua`) | ✅ |
+| 1005 | Qello Concerts by Stingray | lotus.stingray.com | 🌐 ציבורי (iptv-org) | iptv-org (`QelloConcertsbyStingray.ca`) | ✅ |
+| 1006 | INTV Australia | tv1.intv.mk | 🌐 ציבורי (iptv-org) | iptv-org (`INTVAustralia.au`) | ❌ רק באפליקציה (HTTP) |
+| 1007 | PMC | pmchls.wns.live | 🌐 ציבורי (iptv-org) | iptv-org (`PMC.ae`) | ✅ |
+| 1008 | Nidae AlIslam Radio | live.kwikmotion.com | 🌐 ציבורי (iptv-org) | iptv-org (`NidaeAlIslamRadio.sa`) | ✅ |
+| 1009 | El Radio 9090 FM | 9090video.mobtada.com | 🌐 ציבורי (iptv-org) | iptv-org (`ElRadio9090FM.eg`) | ✅ |
+| 1010 | mfm | hms.pfs.gdn | 🌐 ציבורי (iptv-org) | iptv-org (`mfm.lb`) | ✅ |
+| 1011 | Power Love | livetv.powerapp.com.tr | 🌐 ציבורי (iptv-org) | iptv-org (`PowerLove.tr`) | ✅ |
+| 1012 | Aaryaa TV | stream.ottlive.co.in | 🌐 ציבורי (iptv-org) | iptv-org (`AaryaaTV.in`) | ✅ |
+| 1013 | CCTV-11 | 74.91.26.218 | 🌐 ציבורי (iptv-org) | iptv-org (`CCTV11.cn`) | ❌ רק באפליקציה (HTTP) |
+| 1014 | +MaisUm | stream.ichibansys.com | 🌐 ציבורי (iptv-org) | iptv-org (`PlusMaisUm.br`) | ✅ |
+| 1015 | Conecta TV | stream8.mexiserver.com | 🌐 ציבורי (iptv-org) | iptv-org (`ConectaTV.mx`) | ✅ |
+| 1016 | X Level Media | tuvideoonline.com.ar | 🌐 ציבורי (iptv-org) | iptv-org (`XLevelMedia.ar`) | ✅ |
+| 1017 | RFPtv | video03.logicahost.com.br | 🌐 ציבורי (iptv-org) | iptv-org (`RFPtv.pt`) | ✅ |
+| 1018 | XITE Hits | d726x48n2pd5h.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`XITEHits.nl`) | ✅ |
+| 1019 | Klara | live.vrtcdn.be | 🌐 ציבורי (iptv-org) | iptv-org (`Klara.be`) | ✅ |
+| 1020 | Antenne Steiermark | 60efd7a2b4d02.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`AntenneSteiermark.at`) | ✅ |
+| 1021 | Disco Polo Music | 185.227.34.179 | 🌐 ציבורי (iptv-org) | iptv-org (`DiscoPoloMusic.pl`) | ❌ רק באפליקציה (HTTP) |
+| 1022 | Panik TV | livetv.streams.ovh | 🌐 ציבורי (iptv-org) | iptv-org (`PanikTV.gr`) | ✅ |
+| 1023 | Navahang TV | hls.navahang.live | 🌐 ציבורי (iptv-org) | iptv-org (`NavahangTV.fi`) | ✅ |
+| 1024 | Retro Music TV | stream.mediawork.cz | 🌐 ציבורי (iptv-org) | iptv-org (`RetroMusicTV.cz`) | ✅ |
+| 1025 | Impact TV 2 | online.tvimpact.live | 🌐 ציבורי (iptv-org) | iptv-org (`ImpactTV2.ro`) | ✅ |
+| 1026 | Rewind TV | tls-cl.cdnz.cl | 🌐 ציבורי (iptv-org) | iptv-org (`RewindTV.cl`) | ✅ |
+| 1027 | La Morada Radio TV | movil.ejeserver.com | 🌐 ציבורי (iptv-org) | iptv-org (`LaMoradaRadioTV.co`) | ✅ |
+| 1028 | La Fabulosa TV | eu1.servers10.com | 🌐 ציבורי (iptv-org) | iptv-org (`LaFabulosaTV.pe`) | ✅ |
+| 1029 | Jalwa TV | vodzong.mjunoon.tv | 🌐 ציבורי (iptv-org) | iptv-org (`JalwaTV.pk`) | ✅ |
+| 1030 | T2 TV | t2hls.wns.live | 🌐 ציבורי (iptv-org) | iptv-org (`T2TV.ir`) | ✅ |
+| 1031 | AMusic Channel | viewmedia7219.bozztv.com | 🌐 ציבורי (iptv-org) | iptv-org (`AMusicChannel.ng`) | ✅ |
+| 1032 | Canal 3 KMK TV | live20.bozztv.com | 🌐 ציבורי (iptv-org) | iptv-org (`Canal3KMKTV.cr`) | ✅ |
+| 1033 | Dismar Radio TV | rds3.desdeparaguay.net | 🌐 ציבורי (iptv-org) | iptv-org (`DismarRadioTV.py`) | ✅ |
+| 1034 | FM Mundo | video2.makrodigital.com | 🌐 ציבורי (iptv-org) | iptv-org (`FMMundo.ec`) | ✅ |
+| 1035 | DanceTV Deep House District | m1b2.worldcast.tv | 🌐 ציבורי (iptv-org) | iptv-org (`DanceTVDeepHouseDistrict.ee`) | ✅ |
+| 1036 | Montones TV | lbgo.bozztv.com | 🌐 ציבורי (iptv-org) | iptv-org (`MontonesTV.do`) | ✅ |
+| 1037 | The Voice | bss1.neterra.tv | 🌐 ציבורי (iptv-org) | iptv-org (`TheVoice.bg`) | ✅ |
+| 1038 | Power 101.7 FM | vcp11.myplaytv.com | 🌐 ציבורי (iptv-org) | iptv-org (`Power1017FM.aw`) | ✅ |
+| 1039 | Super Q Panama | vcp8.myplaytv.com | 🌐 ציבורי (iptv-org) | iptv-org (`SuperQPanama.pa`) | ✅ |
+| 1040 | Radio Karolina TV | peer2.tdiradio.com | 🌐 ציבורי (iptv-org) | iptv-org (`RadioKarolinaTV.rs`) | ✅ |
+| 1041 | La Top 102.9 | 59d39900ebfb8.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`LaTop1029.hn`) | ✅ |
+| 1042 | Identite Tele Caraibes | vdo2.pro-fhi.net | 🌐 ציבורי (iptv-org) | iptv-org (`IdentiteTeleCaraibes.mq`) | ✅ |
+| 1043 | RHT Guadeloupe | edge12.vedge.infomaniak.com | 🌐 ציבורי (iptv-org) | iptv-org (`RHTGuadeloupe.gp`) | ✅ |
+| 1044 | ShowVen TV | cdnbarinas.tvzamora.com | 🌐 ציבורי (iptv-org) | iptv-org (`ShowVenTV.ve`) | ✅ |
+| 1045 | La-X | stream.eleden.com | 🌐 ציבורי (iptv-org) | iptv-org (`LaX.pr`) | ✅ |
+| 1046 | Love TV | stream.nasatv.com.mk | 🌐 ציבורי (iptv-org) | iptv-org (`LoveTV.mk`) | ❌ רק באפליקציה (הפניה בלי CORS) |
+| 1047 | Hit FM | hitfm.nfthost.net | 🌐 ציבורי (iptv-org) | iptv-org (`HitFM.md`) | ✅ |
+| 1048 | Today Radio | stream.rtl.lu | 🌐 ציבורי (iptv-org) | iptv-org (`TodayRadio.lu`) | ✅ |
 
 ## 📺 טבע ודוקו (Documentary & Nature)
 
 | # | ערוץ | שרת השידור | סוג | נמצא ב | באתר (דפדפן) |
 |---|---|---|---|---|---|
-| 1048 | Animal Planet World HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`AnimalPlanet.ru`) | ❌ רק באפליקציה (HTTP) |
-| 1049 | Discovery חקירות (ID) | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`InvestigationDiscovery.ru`) | ❌ רק באפליקציה (HTTP) |
-| 1050 | עולם וטבע HD (viju+ Planet) | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`vijuPlusPlanet.ru`) | ❌ רק באפליקציה (HTTP) |
-| 1051 | BBC Earth Live HD | BBC Earth – Amagi / Xumo FAST | ✅ FAST חינמי | iptv-org (`BBCEarth.uk`) | ✅ |
-| 1052 | Asharq Discovery HD | Asharq Discovery – ItWorks (רשמי) | ✅ רשמי | iptv-org (`AsharqDiscovery.sa`) | ✅ |
-| 1053 | 365 ימי היסטוריה (History TV) | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`365daysTV.ru`) | ✅ דרך מקור חלופי: Cinerama.uz – ספק IPTV באוזבקיסטן |
-| 1054 | Dateline 24/7 | d1si3n1st4nkgb.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`Dateline247.us`) | ✅ |
-| 1055 | History Hit | lds-timeline-rakuten.amagi.tv | 🌐 ציבורי (iptv-org) | iptv-org (`HistoryHit.uk`) | ❌ רק באפליקציה (הפניה בלי CORS) |
-| 1056 | Francophonie24 | 5421175365ea3.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`Francophonie24.fr`) | ✅ |
-| 1057 | Adventure Earth | a57e9c69976649b582a8d7604c00e69a.mediatailor.us-east-1.amazonaws.com | 🌐 ציבורי (iptv-org) | iptv-org (`AdventureEarth.de`) | ✅ |
-| 1058 | Crimen & Historia | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`CrimenHistoria.es`) | ✅ |
-| 1059 | Total Crime | aegis-cloudfront-1.tubi.video | 🌐 ציבורי (iptv-org) | iptv-org (`TotalCrime.ca`) | ✅ |
-| 1060 | DocuBay TV | cc-mgr91yrk4pehy.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`DocuBayTV.in`) | ✅ |
-| 1061 | CGTN Documentary | amg00405-rakutentv-cgtndocumentary-rakuten-0ql8j.amagi.tv | 🌐 ציבורי (iptv-org) | iptv-org (`CGTNDocumentary.cn`) | ✅ |
-| 1062 | National Geographic | 138.121.15.230 | 🌐 ציבורי (iptv-org) | iptv-org (`NationalGeographic.mx`) | ❌ רק באפליקציה (HTTP) |
-| 1063 | DocuBox | Antik Telecom (סלובקיה), נתיבי test | ⚠️ ממסר צד שלישי | iptv-org (`DocuBox.nl`) | ✅ |
-| 1064 | Polsat Viasat History | 185.227.34.179 | 🌐 ציבורי (iptv-org) | iptv-org (`PolsatViasatHistory.pl`) | ❌ רק באפליקציה (HTTP) |
-| 1065 | Pluto TV Dokumentar | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVDokumentar.se`) | ✅ |
-| 1066 | CNA Originals | amg01082-cna-amg01082c1-rlaxx-us-11304.playouts.now.amagi.tv | 🌐 ציבורי (iptv-org) | iptv-org (`CNAOriginals.sg`) | ✅ |
-| 1067 | Karbala Documentary | ktvlive.online | 🌐 ציבורי (iptv-org) | iptv-org (`KarbalaDocumentary.iq`) | ✅ |
-| 1068 | Ecovision | streaming.grupomediosdelnorte.com | 🌐 ציבורי (iptv-org) | iptv-org (`Ecovision.do`) | ✅ |
-| 1069 | UMSA TVU Internacional | edge.enhdtv.com | 🌐 ציבורי (iptv-org) | iptv-org (`UMSATVUInternacional.bo`) | ✅ |
-| 1070 | MWD Documentary | 203.81.84.130 | 🌐 ציבורי (iptv-org) | iptv-org (`MWDDocumentary.mm`) | ❌ רק באפליקציה (HTTP) |
-| 1071 | Deadly Women | d1mgh147xpmgs8.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`DeadlyWomen.us`) | ✅ |
-| 1072 | Into Crime | amg00711-zylo-amg00711c10-rakuten-fr-6731.playouts.now.amagi.tv | 🌐 ציבורי (iptv-org) | iptv-org (`IntoCrime.fr`) | ✅ |
-| 1073 | Autentic History | 9e754fa707344ccca6d84955c8fcaf36.mediatailor.us-east-1.amazonaws.com | 🌐 ציבורי (iptv-org) | iptv-org (`AutenticHistory.de`) | ✅ |
-| 1074 | Historia Y Vida | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`HistoriaYVida.es`) | ✅ |
-| 1075 | Smotrim 100% Fakty | Smotrim (VGTRK) – הבעלים של קרוסלה | ✅ רשמי | iptv-org (`Smotrim100Fakty.ru`) | ✅ |
-| 1076 | NatureTime | bamusa-naturetime-emea-eng-rakuten.amagi.tv | 🌐 ציבורי (iptv-org) | iptv-org (`NatureTime.ca`) | ✅ |
-| 1077 | Epic Crimes | cc-wsuyg2uxeak04.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`EpicCrimes.in`) | ✅ |
-| 1078 | Discovering China | fastlive.cctvplus.com | 🌐 ציבורי (iptv-org) | iptv-org (`DiscoveringChina.cn`) | ✅ |
-| 1079 | History | 92.114.85.87 | 🌐 ציבורי (iptv-org) | iptv-org (`History.pl`) | ❌ רק באפליקציה (HTTP) |
-| 1080 | Pluto TV Varldskrigen | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVVarldskrigen.se`) | ✅ |
-| 1081 | Documentary+ | ef79b15c8c7c46c7a9de9d33001dbd07.mediatailor.us-west-2.amazonaws.com | 🌐 ציבורי (iptv-org) | iptv-org (`DocumentaryPlus.us`) | ✅ |
-| 1082 | Persiana Docs | scihls.persiana.live | 🌐 ציבורי (iptv-org) | iptv-org (`PersianaDocs.fr`) | ✅ |
-| 1083 | Dokusat | muc3.iptv-playoutcenter.de | 🌐 ציבורי (iptv-org) | iptv-org (`Dokusat.de`) | ✅ |
-| 1084 | Storie Criminali | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`StorieCriminali.es`) | ✅ |
-| 1085 | Nano | 185.23.80.23 | 🌐 ציבורי (iptv-org) | iptv-org (`Nano.ru`) | ❌ רק באפליקציה (HTTP) |
-| 1086 | Animal Planet | drk6xq0vhn.gpcdn.net | 🌐 ציבורי (iptv-org) | iptv-org (`AnimalPlanet.in`) | ✅ |
-| 1087 | CCTV-9 | xykt-fix.github.io | 🌐 ציבורי (iptv-org) | iptv-org (`CCTV9.cn`) | ✅ |
-| 1088 | National Geographic | 92.114.85.87 | 🌐 ציבורי (iptv-org) | iptv-org (`NationalGeographic.pl`) | ❌ רק באפליקציה (HTTP) |
-| 1089 | Smithsonian Channel Selects | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`SmithsonianChannelSelects.se`) | ✅ |
-| 1090 | The Nest | fast-channels.sinclairstoryline.com | 🌐 ציבורי (iptv-org) | iptv-org (`TheNest.us`) | ✅ |
-| 1091 | Persiana Travel | ptravelhls.persiana.live | 🌐 ציבורי (iptv-org) | iptv-org (`PersianaTravel.fr`) | ✅ |
-| 1092 | Terra Mater WILD | 53ff3982.wurl.com | 🌐 ציבורי (iptv-org) | iptv-org (`TerraMaterWILD.de`) | ✅ |
-| 1093 | Investigation Discovery | drk6xq0vhn.gpcdn.net | 🌐 ציבורי (iptv-org) | iptv-org (`InvestigationDiscovery.in`) | ✅ |
-| 1094 | CCTV-Weapon & Technology | 38.75.136.137 | 🌐 ציבורי (iptv-org) | iptv-org (`CCTVWeaponTechnology.cn`) | ❌ רק באפליקציה (HTTP) |
-| 1095 | National Geographic Wild | 92.114.85.87 | 🌐 ציבורי (iptv-org) | iptv-org (`NationalGeographicWild.pl`) | ❌ רק באפליקציה (HTTP) |
-| 1096 | Pluto TV Alien Invasion | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVAlienInvasion.se`) | ✅ |
-| 1097 | National Geographic Latin America | barinaslive1.boldmss.com | 🌐 ציבורי (iptv-org) | iptv-org (`NationalGeographicLatinAmerica.us`) | ✅ |
-| 1098 | Pluto TV Histoire | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVHistoire.de`) | ✅ |
-| 1099 | Safari TV | mumt04.tangotv.in | 🌐 ציבורי (iptv-org) | iptv-org (`SafariTV.in`) | ✅ |
-| 1100 | Polsat Viasat Explore | 92.114.85.87 | 🌐 ציבורי (iptv-org) | iptv-org (`PolsatViasatExplore.pl`) | ❌ רק באפליקציה (HTTP) |
-| 1101 | Pluto TV Space | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVSpace.se`) | ✅ |
-| 1102 | Crime 360 | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`Crime360.us`) | ✅ |
-| 1103 | Pluto TV Historia | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVHistoria.de`) | ✅ |
-| 1104 | Polsat Viasat Nature | 92.114.85.87 | 🌐 ציבורי (iptv-org) | iptv-org (`PolsatViasatNature.pl`) | ❌ רק באפליקציה (HTTP) |
-| 1105 | Pluto TV Verdenskrigene | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVVerdenskrigene.se`) | ✅ |
-| 1106 | Get.factual | d1nhni5l2n8hjt.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`Getfactual.us`) | ✅ |
-| 1107 | kabel eins Doku | s6.hopslan.com | 🌐 ציבורי (iptv-org) | iptv-org (`kabeleinsDoku.de`) | ✅ |
-| 1108 | History Asia | freem3u.xyz | 🌐 ציבורי (iptv-org) | iptv-org (`HistoryAsia.us`) | ✅ |
-| 1109 | Pluto TV Alien Invasion | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVAlienInvasion.de`) | ✅ |
-| 1110 | Law & Crime | a-cdn.klowdtv.com | 🌐 ציבורי (iptv-org) | iptv-org (`LawCrime.us`) | ✅ |
-| 1111 | Pluto TV Britain at War | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVBritainatWar.de`) | ✅ |
-| 1112 | Atlas | cdn.whiplash.cc | 🌐 ציבורי (iptv-org) | iptv-org (`Atlas.us`) | ✅ |
-| 1113 | Pluto TV Conspiracy | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVConspiracy.de`) | ✅ |
-| 1114 | FBI Files | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`FBIFiles.us`) | ✅ |
-| 1115 | Pluto TV Animaux | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVAnimaux.de`) | ✅ |
-| 1116 | Ink Master | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`InkMaster.us`) | ✅ |
-| 1117 | Pluto TV Aventure | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVAventure.de`) | ✅ |
+| 1049 | Animal Planet World HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`AnimalPlanet.ru`) | ❌ רק באפליקציה (HTTP) |
+| 1050 | Discovery חקירות (ID) | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`InvestigationDiscovery.ru`) | ❌ רק באפליקציה (HTTP) |
+| 1051 | עולם וטבע HD (viju+ Planet) | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`vijuPlusPlanet.ru`) | ❌ רק באפליקציה (HTTP) |
+| 1052 | BBC Earth Live HD | BBC Earth – Amagi / Xumo FAST | ✅ FAST חינמי | iptv-org (`BBCEarth.uk`) | ✅ |
+| 1053 | Asharq Discovery HD | Asharq Discovery – ItWorks (רשמי) | ✅ רשמי | iptv-org (`AsharqDiscovery.sa`) | ✅ |
+| 1054 | 365 ימי היסטוריה (History TV) | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`365daysTV.ru`) | ✅ דרך מקור חלופי: Cinerama.uz – ספק IPTV באוזבקיסטן |
+| 1055 | Dateline 24/7 | d1si3n1st4nkgb.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`Dateline247.us`) | ✅ |
+| 1056 | History Hit | lds-timeline-rakuten.amagi.tv | 🌐 ציבורי (iptv-org) | iptv-org (`HistoryHit.uk`) | ❌ רק באפליקציה (הפניה בלי CORS) |
+| 1057 | Francophonie24 | 5421175365ea3.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`Francophonie24.fr`) | ✅ |
+| 1058 | Adventure Earth | a57e9c69976649b582a8d7604c00e69a.mediatailor.us-east-1.amazonaws.com | 🌐 ציבורי (iptv-org) | iptv-org (`AdventureEarth.de`) | ✅ |
+| 1059 | Crimen & Historia | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`CrimenHistoria.es`) | ✅ |
+| 1060 | Total Crime | aegis-cloudfront-1.tubi.video | 🌐 ציבורי (iptv-org) | iptv-org (`TotalCrime.ca`) | ✅ |
+| 1061 | DocuBay TV | cc-mgr91yrk4pehy.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`DocuBayTV.in`) | ✅ |
+| 1062 | CGTN Documentary | amg00405-rakutentv-cgtndocumentary-rakuten-0ql8j.amagi.tv | 🌐 ציבורי (iptv-org) | iptv-org (`CGTNDocumentary.cn`) | ✅ |
+| 1063 | National Geographic | 138.121.15.230 | 🌐 ציבורי (iptv-org) | iptv-org (`NationalGeographic.mx`) | ❌ רק באפליקציה (HTTP) |
+| 1064 | DocuBox | Antik Telecom (סלובקיה), נתיבי test | ⚠️ ממסר צד שלישי | iptv-org (`DocuBox.nl`) | ✅ |
+| 1065 | Polsat Viasat History | 185.227.34.179 | 🌐 ציבורי (iptv-org) | iptv-org (`PolsatViasatHistory.pl`) | ❌ רק באפליקציה (HTTP) |
+| 1066 | Pluto TV Dokumentar | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVDokumentar.se`) | ✅ |
+| 1067 | CNA Originals | amg01082-cna-amg01082c1-rlaxx-us-11304.playouts.now.amagi.tv | 🌐 ציבורי (iptv-org) | iptv-org (`CNAOriginals.sg`) | ✅ |
+| 1068 | Karbala Documentary | ktvlive.online | 🌐 ציבורי (iptv-org) | iptv-org (`KarbalaDocumentary.iq`) | ✅ |
+| 1069 | Ecovision | streaming.grupomediosdelnorte.com | 🌐 ציבורי (iptv-org) | iptv-org (`Ecovision.do`) | ✅ |
+| 1070 | UMSA TVU Internacional | edge.enhdtv.com | 🌐 ציבורי (iptv-org) | iptv-org (`UMSATVUInternacional.bo`) | ✅ |
+| 1071 | MWD Documentary | 203.81.84.130 | 🌐 ציבורי (iptv-org) | iptv-org (`MWDDocumentary.mm`) | ❌ רק באפליקציה (HTTP) |
+| 1072 | Deadly Women | d1mgh147xpmgs8.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`DeadlyWomen.us`) | ✅ |
+| 1073 | Into Crime | amg00711-zylo-amg00711c10-rakuten-fr-6731.playouts.now.amagi.tv | 🌐 ציבורי (iptv-org) | iptv-org (`IntoCrime.fr`) | ✅ |
+| 1074 | Autentic History | 9e754fa707344ccca6d84955c8fcaf36.mediatailor.us-east-1.amazonaws.com | 🌐 ציבורי (iptv-org) | iptv-org (`AutenticHistory.de`) | ✅ |
+| 1075 | Historia Y Vida | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`HistoriaYVida.es`) | ✅ |
+| 1076 | Smotrim 100% Fakty | Smotrim (VGTRK) – הבעלים של קרוסלה | ✅ רשמי | iptv-org (`Smotrim100Fakty.ru`) | ✅ |
+| 1077 | NatureTime | bamusa-naturetime-emea-eng-rakuten.amagi.tv | 🌐 ציבורי (iptv-org) | iptv-org (`NatureTime.ca`) | ✅ |
+| 1078 | Epic Crimes | cc-wsuyg2uxeak04.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`EpicCrimes.in`) | ✅ |
+| 1079 | Discovering China | fastlive.cctvplus.com | 🌐 ציבורי (iptv-org) | iptv-org (`DiscoveringChina.cn`) | ✅ |
+| 1080 | History | 92.114.85.87 | 🌐 ציבורי (iptv-org) | iptv-org (`History.pl`) | ❌ רק באפליקציה (HTTP) |
+| 1081 | Pluto TV Varldskrigen | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVVarldskrigen.se`) | ✅ |
+| 1082 | Documentary+ | ef79b15c8c7c46c7a9de9d33001dbd07.mediatailor.us-west-2.amazonaws.com | 🌐 ציבורי (iptv-org) | iptv-org (`DocumentaryPlus.us`) | ✅ |
+| 1083 | Persiana Docs | scihls.persiana.live | 🌐 ציבורי (iptv-org) | iptv-org (`PersianaDocs.fr`) | ✅ |
+| 1084 | Dokusat | muc3.iptv-playoutcenter.de | 🌐 ציבורי (iptv-org) | iptv-org (`Dokusat.de`) | ✅ |
+| 1085 | Storie Criminali | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`StorieCriminali.es`) | ✅ |
+| 1086 | Nano | 185.23.80.23 | 🌐 ציבורי (iptv-org) | iptv-org (`Nano.ru`) | ❌ רק באפליקציה (HTTP) |
+| 1087 | Animal Planet | drk6xq0vhn.gpcdn.net | 🌐 ציבורי (iptv-org) | iptv-org (`AnimalPlanet.in`) | ✅ |
+| 1088 | CCTV-9 | xykt-fix.github.io | 🌐 ציבורי (iptv-org) | iptv-org (`CCTV9.cn`) | ✅ |
+| 1089 | National Geographic | 92.114.85.87 | 🌐 ציבורי (iptv-org) | iptv-org (`NationalGeographic.pl`) | ❌ רק באפליקציה (HTTP) |
+| 1090 | Smithsonian Channel Selects | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`SmithsonianChannelSelects.se`) | ✅ |
+| 1091 | The Nest | fast-channels.sinclairstoryline.com | 🌐 ציבורי (iptv-org) | iptv-org (`TheNest.us`) | ✅ |
+| 1092 | Persiana Travel | ptravelhls.persiana.live | 🌐 ציבורי (iptv-org) | iptv-org (`PersianaTravel.fr`) | ✅ |
+| 1093 | Terra Mater WILD | 53ff3982.wurl.com | 🌐 ציבורי (iptv-org) | iptv-org (`TerraMaterWILD.de`) | ✅ |
+| 1094 | Investigation Discovery | drk6xq0vhn.gpcdn.net | 🌐 ציבורי (iptv-org) | iptv-org (`InvestigationDiscovery.in`) | ✅ |
+| 1095 | CCTV-Weapon & Technology | 38.75.136.137 | 🌐 ציבורי (iptv-org) | iptv-org (`CCTVWeaponTechnology.cn`) | ❌ רק באפליקציה (HTTP) |
+| 1096 | National Geographic Wild | 92.114.85.87 | 🌐 ציבורי (iptv-org) | iptv-org (`NationalGeographicWild.pl`) | ❌ רק באפליקציה (HTTP) |
+| 1097 | Pluto TV Alien Invasion | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVAlienInvasion.se`) | ✅ |
+| 1098 | National Geographic Latin America | barinaslive1.boldmss.com | 🌐 ציבורי (iptv-org) | iptv-org (`NationalGeographicLatinAmerica.us`) | ✅ |
+| 1099 | Pluto TV Histoire | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVHistoire.de`) | ✅ |
+| 1100 | Safari TV | mumt04.tangotv.in | 🌐 ציבורי (iptv-org) | iptv-org (`SafariTV.in`) | ✅ |
+| 1101 | Polsat Viasat Explore | 92.114.85.87 | 🌐 ציבורי (iptv-org) | iptv-org (`PolsatViasatExplore.pl`) | ❌ רק באפליקציה (HTTP) |
+| 1102 | Pluto TV Space | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVSpace.se`) | ✅ |
+| 1103 | Crime 360 | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`Crime360.us`) | ✅ |
+| 1104 | Pluto TV Historia | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVHistoria.de`) | ✅ |
+| 1105 | Polsat Viasat Nature | 92.114.85.87 | 🌐 ציבורי (iptv-org) | iptv-org (`PolsatViasatNature.pl`) | ❌ רק באפליקציה (HTTP) |
+| 1106 | Pluto TV Verdenskrigene | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVVerdenskrigene.se`) | ✅ |
+| 1107 | Get.factual | d1nhni5l2n8hjt.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`Getfactual.us`) | ✅ |
+| 1108 | kabel eins Doku | s6.hopslan.com | 🌐 ציבורי (iptv-org) | iptv-org (`kabeleinsDoku.de`) | ✅ |
+| 1109 | History Asia | freem3u.xyz | 🌐 ציבורי (iptv-org) | iptv-org (`HistoryAsia.us`) | ✅ |
+| 1110 | Pluto TV Alien Invasion | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVAlienInvasion.de`) | ✅ |
+| 1111 | Law & Crime | a-cdn.klowdtv.com | 🌐 ציבורי (iptv-org) | iptv-org (`LawCrime.us`) | ✅ |
+| 1112 | Pluto TV Britain at War | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVBritainatWar.de`) | ✅ |
+| 1113 | Atlas | cdn.whiplash.cc | 🌐 ציבורי (iptv-org) | iptv-org (`Atlas.us`) | ✅ |
+| 1114 | Pluto TV Conspiracy | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVConspiracy.de`) | ✅ |
+| 1115 | FBI Files | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`FBIFiles.us`) | ✅ |
+| 1116 | Pluto TV Animaux | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVAnimaux.de`) | ✅ |
+| 1117 | Ink Master | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`InkMaster.us`) | ✅ |
+| 1118 | Pluto TV Aventure | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVAventure.de`) | ✅ |
+| 1119 | National Geographic HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
+| 1120 | Discovery Channel HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
+| 1121 | Nat Geo Wild HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
 
 ## 📺 טיולים והרפתקאות (Travel)
 
 | # | ערוץ | שרת השידור | סוג | נמצא ב | באתר (דפדפן) |
 |---|---|---|---|---|---|
-| 1118 | ערוץ החופשות והנופש HD | ערוץ FAST ישראלי – AWS CloudFront | ✅ FAST חינמי | iptv-org (`VacationChannel.il`) | ✅ |
-| 1119 | ערוץ הטיולים Travel Channel | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`TravelChannel.ru`) | ❌ רק באפליקציה (HTTP) |
-| 1120 | AKC TV | broadcast.blivenyc.com | 🌐 ציבורי (iptv-org) | iptv-org (`AKCTV.us`) | ✅ |
-| 1121 | Horse & Country TV | hnc-free-viewlift.amagi.tv | 🌐 ציבורי (iptv-org) | iptv-org (`HorseCountryTV.uk`) | ✅ |
-| 1122 | Voyages & Saveurs | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`VoyagesSaveurs.es`) | ✅ |
-| 1123 | Peer TV South Tyrol | iptv.peer.biz | 🌐 ציבורי (iptv-org) | iptv-org (`PeerTVSouthTyrol.it`) | ✅ |
-| 1124 | Dikij | stream3.cinerama.uz | 🌐 ציבורי (iptv-org) | iptv-org (`Dikij.ru`) | ✅ |
-| 1125 | Rybalka | dash2.antik.sk | 🌐 ציבורי (iptv-org) | iptv-org (`Rybalka.ua`) | ✅ |
-| 1126 | Love Nature | aegis-cloudfront-1.tubi.video | 🌐 ציבורי (iptv-org) | iptv-org (`LoveNature.ca`) | ✅ |
-| 1127 | China Travel | fastlive.cctvplus.com | 🌐 ציבורי (iptv-org) | iptv-org (`ChinaTravel.cn`) | ✅ |
-| 1128 | Terra Viva | 9ada494d.wurl.com | 🌐 ציבורי (iptv-org) | iptv-org (`TerraViva.br`) | ✅ |
-| 1129 | Ciudad Magica | lbgo.bozztv.com | 🌐 ציבורי (iptv-org) | iptv-org (`CiudadMagica.ar`) | ✅ |
-| 1130 | INTRAVEL | amg00861-amg00861c10-rakuten-uk-3152.playouts.now.amagi.tv | 🌐 ציבורי (iptv-org) | iptv-org (`INTRAVEL.nl`) | ✅ |
-| 1131 | Swamiji TV American | stream.swamiji.tv | 🌐 ציבורי (iptv-org) | iptv-org (`SwamijiTVAmerican.at`) | ✅ |
-| 1132 | Travel Channel | 92.114.85.87 | 🌐 ציבורי (iptv-org) | iptv-org (`TravelChannel.pl`) | ❌ רק באפליקציה (HTTP) |
-| 1133 | Agro TV | agrotv.streamnet.ro | 🌐 ציבורי (iptv-org) | iptv-org (`AgroTV.ro`) | ✅ |
-| 1134 | El Mundo del Campo | movil.ejeserver.com | 🌐 ציבורי (iptv-org) | iptv-org (`ElMundodelCampo.co`) | ✅ |
-| 1135 | Discover Pakistan | livecdn.live247stream.com | 🌐 ציבורי (iptv-org) | iptv-org (`DiscoverPakistan.pk`) | ✅ |
-| 1136 | WildEarth | dqga3jatxofgx.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`WildEarth.za`) | ✅ |
-| 1137 | Agrotendencia TV | 5fc584f3f19c9.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`AgrotendenciaTV.cr`) | ✅ |
-| 1138 | Travel TV | streamer103.neterra.tv | 🌐 ציבורי (iptv-org) | iptv-org (`TravelTV.bg`) | ✅ |
-| 1139 | Aruba.TV | cdn01.setar.aw | 🌐 ציבורי (iptv-org) | iptv-org (`ArubaTV.aw`) | ✅ |
-| 1140 | OEPM TV | cnn.hostlagarto.com | 🌐 ציבורי (iptv-org) | iptv-org (`OEPMTV.do`) | ✅ |
-| 1141 | Productiva TV | copacoradios.desdeparaguay.net | 🌐 ציבורי (iptv-org) | iptv-org (`ProductivaTV.py`) | ✅ |
-| 1142 | Sun Channel | 168.196.127.137 | 🌐 ציבורי (iptv-org) | iptv-org (`SunChannel.ve`) | ❌ רק באפליקציה (HTTP) |
-| 1143 | TV OFF | edge.enhdtv.com | 🌐 ציבורי (iptv-org) | iptv-org (`TVOFF.bo`) | ✅ |
-| 1144 | ARDB TV | ardbtv.ardb.com.kh | 🌐 ציבורי (iptv-org) | iptv-org (`ARDBTV.kh`) | ✅ |
-| 1145 | DroneTV | airvuz-dronetv-1-us.ohlscdn.wurl.tv | 🌐 ציבורי (iptv-org) | iptv-org (`DroneTV.us`) | ✅ |
-| 1146 | Space Live powered by sen | linear-1224.frequency.stream | 🌐 ציבורי (iptv-org) | iptv-org (`SpaceLivepoweredbysen.uk`) | ✅ |
-| 1147 | Dikaya okhota | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`Dikayaokhota.ru`) | ❌ רק באפליקציה (HTTP) |
-| 1148 | CCTV-17 | 74.91.26.218 | 🌐 ציבורי (iptv-org) | iptv-org (`CCTV17.cn`) | ❌ רק באפליקציה (HTTP) |
-| 1149 | AgroCanal | aovivo.equipea.com.br | 🌐 ציבורי (iptv-org) | iptv-org (`AgroCanal.br`) | ✅ |
-| 1150 | Swamiji TV Australian | stream.swamiji.tv | 🌐 ציבורי (iptv-org) | iptv-org (`SwamijiTVAustralian.at`) | ✅ |
-| 1151 | Travel Mix | hls02ns.antenaplay.ro | 🌐 ציבורי (iptv-org) | iptv-org (`TravelMix.ro`) | ✅ |
-| 1152 | UMC TV | streaming5.globalhostla.com | 🌐 ציבורי (iptv-org) | iptv-org (`UMCTV.co`) | ✅ |
-| 1153 | Costa Rica Channel | video0.rogohosting.com | 🌐 ציבורי (iptv-org) | iptv-org (`CostaRicaChannel.cr`) | ✅ |
-| 1154 | Agro TV | restr2.bgtv.bg | 🌐 ציבורי (iptv-org) | iptv-org (`AgroTV.bg`) | ✅ |
-| 1155 | Duck Hunting TV | main.duckhunting.playout.vju.tv | 🌐 ציבורי (iptv-org) | iptv-org (`DuckHuntingTV.us`) | ✅ |
-| 1156 | Dikaya rybalka | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`Dikayarybalka.ru`) | ❌ רק באפליקציה (HTTP) |
-| 1157 | Guangxi Variety & Travel Channel | 111.59.24.227 | 🌐 ציבורי (iptv-org) | iptv-org (`GuangxiVarietyTravelChannel.cn`) | ❌ רק באפליקציה (HTTP) |
-| 1158 | Canal Rural | 170.83.49.66 | 🌐 ציבורי (iptv-org) | iptv-org (`CanalRural.br`) | ❌ רק באפליקציה (HTTP) |
-| 1159 | Swamiji TV European | stream.swamiji.tv | 🌐 ציבורי (iptv-org) | iptv-org (`SwamijiTVEuropean.at`) | ✅ |
-| 1160 | Outdoor America | d1e354daam8g5r.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`OutdoorAmerica.us`) | ✅ |
-| 1161 | Moya stikhiya | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`Moyastikhiya.ru`) | ❌ רק באפליקציה (HTTP) |
-| 1162 | TV Parana Turismo | 200.189.113.201 | 🌐 ציבורי (iptv-org) | iptv-org (`TVParanaTurismo.br`) | ❌ רק באפליקציה (HTTP) |
-| 1163 | Schladming-Dachstein TV | m317.video-stream-hosting.de | 🌐 ציבורי (iptv-org) | iptv-org (`SchladmingDachsteinTV.at`) | ✅ |
-| 1164 | Pocono Television Network | dfoiz3dv1euv7.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`PoconoTelevisionNetwork.us`) | ✅ |
-| 1165 | RTG TV | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`RTGTV.ru`) | ❌ רק באפליקציה (HTTP) |
-| 1166 | PursuitUP | d1p1siomv3cm7b.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`PursuitUP.us`) | ✅ |
-| 1167 | Rybolov | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`Rybolov.ru`) | ❌ רק באפליקציה (HTTP) |
-| 1168 | Beach TV Florida & Alabama | 5ed325193d4e1.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`BeachTVFloridaAlabama.us`) | ✅ |
-| 1169 | Vkus | 178.134.1.158 | 🌐 ציבורי (iptv-org) | iptv-org (`Vkus.ru`) | ❌ רק באפליקציה (HTTP) |
-| 1170 | Beach TV Key West & Florida Keys | 5ed325193d4e1.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`BeachTVKeyWestFloridaKeys.us`) | ✅ |
+| 1122 | ערוץ החופשות והנופש HD | ערוץ FAST ישראלי – AWS CloudFront | ✅ FAST חינמי | iptv-org (`VacationChannel.il`) | ✅ |
+| 1123 | ערוץ הטיולים Travel Channel | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`TravelChannel.ru`) | ❌ רק באפליקציה (HTTP) |
+| 1124 | AKC TV | broadcast.blivenyc.com | 🌐 ציבורי (iptv-org) | iptv-org (`AKCTV.us`) | ✅ |
+| 1125 | Horse & Country TV | hnc-free-viewlift.amagi.tv | 🌐 ציבורי (iptv-org) | iptv-org (`HorseCountryTV.uk`) | ✅ |
+| 1126 | Voyages & Saveurs | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`VoyagesSaveurs.es`) | ✅ |
+| 1127 | Peer TV South Tyrol | iptv.peer.biz | 🌐 ציבורי (iptv-org) | iptv-org (`PeerTVSouthTyrol.it`) | ✅ |
+| 1128 | Dikij | stream3.cinerama.uz | 🌐 ציבורי (iptv-org) | iptv-org (`Dikij.ru`) | ✅ |
+| 1129 | Rybalka | dash2.antik.sk | 🌐 ציבורי (iptv-org) | iptv-org (`Rybalka.ua`) | ✅ |
+| 1130 | Love Nature | aegis-cloudfront-1.tubi.video | 🌐 ציבורי (iptv-org) | iptv-org (`LoveNature.ca`) | ✅ |
+| 1131 | China Travel | fastlive.cctvplus.com | 🌐 ציבורי (iptv-org) | iptv-org (`ChinaTravel.cn`) | ✅ |
+| 1132 | Terra Viva | 9ada494d.wurl.com | 🌐 ציבורי (iptv-org) | iptv-org (`TerraViva.br`) | ✅ |
+| 1133 | Ciudad Magica | lbgo.bozztv.com | 🌐 ציבורי (iptv-org) | iptv-org (`CiudadMagica.ar`) | ✅ |
+| 1134 | INTRAVEL | amg00861-amg00861c10-rakuten-uk-3152.playouts.now.amagi.tv | 🌐 ציבורי (iptv-org) | iptv-org (`INTRAVEL.nl`) | ✅ |
+| 1135 | Swamiji TV American | stream.swamiji.tv | 🌐 ציבורי (iptv-org) | iptv-org (`SwamijiTVAmerican.at`) | ✅ |
+| 1136 | Travel Channel | 92.114.85.87 | 🌐 ציבורי (iptv-org) | iptv-org (`TravelChannel.pl`) | ❌ רק באפליקציה (HTTP) |
+| 1137 | Agro TV | agrotv.streamnet.ro | 🌐 ציבורי (iptv-org) | iptv-org (`AgroTV.ro`) | ✅ |
+| 1138 | El Mundo del Campo | movil.ejeserver.com | 🌐 ציבורי (iptv-org) | iptv-org (`ElMundodelCampo.co`) | ✅ |
+| 1139 | Discover Pakistan | livecdn.live247stream.com | 🌐 ציבורי (iptv-org) | iptv-org (`DiscoverPakistan.pk`) | ✅ |
+| 1140 | WildEarth | dqga3jatxofgx.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`WildEarth.za`) | ✅ |
+| 1141 | Agrotendencia TV | 5fc584f3f19c9.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`AgrotendenciaTV.cr`) | ✅ |
+| 1142 | Travel TV | streamer103.neterra.tv | 🌐 ציבורי (iptv-org) | iptv-org (`TravelTV.bg`) | ✅ |
+| 1143 | Aruba.TV | cdn01.setar.aw | 🌐 ציבורי (iptv-org) | iptv-org (`ArubaTV.aw`) | ✅ |
+| 1144 | OEPM TV | cnn.hostlagarto.com | 🌐 ציבורי (iptv-org) | iptv-org (`OEPMTV.do`) | ✅ |
+| 1145 | Productiva TV | copacoradios.desdeparaguay.net | 🌐 ציבורי (iptv-org) | iptv-org (`ProductivaTV.py`) | ✅ |
+| 1146 | Sun Channel | 168.196.127.137 | 🌐 ציבורי (iptv-org) | iptv-org (`SunChannel.ve`) | ❌ רק באפליקציה (HTTP) |
+| 1147 | TV OFF | edge.enhdtv.com | 🌐 ציבורי (iptv-org) | iptv-org (`TVOFF.bo`) | ✅ |
+| 1148 | ARDB TV | ardbtv.ardb.com.kh | 🌐 ציבורי (iptv-org) | iptv-org (`ARDBTV.kh`) | ✅ |
+| 1149 | DroneTV | airvuz-dronetv-1-us.ohlscdn.wurl.tv | 🌐 ציבורי (iptv-org) | iptv-org (`DroneTV.us`) | ✅ |
+| 1150 | Space Live powered by sen | linear-1224.frequency.stream | 🌐 ציבורי (iptv-org) | iptv-org (`SpaceLivepoweredbysen.uk`) | ✅ |
+| 1151 | Dikaya okhota | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`Dikayaokhota.ru`) | ❌ רק באפליקציה (HTTP) |
+| 1152 | CCTV-17 | 74.91.26.218 | 🌐 ציבורי (iptv-org) | iptv-org (`CCTV17.cn`) | ❌ רק באפליקציה (HTTP) |
+| 1153 | AgroCanal | aovivo.equipea.com.br | 🌐 ציבורי (iptv-org) | iptv-org (`AgroCanal.br`) | ✅ |
+| 1154 | Swamiji TV Australian | stream.swamiji.tv | 🌐 ציבורי (iptv-org) | iptv-org (`SwamijiTVAustralian.at`) | ✅ |
+| 1155 | Travel Mix | hls02ns.antenaplay.ro | 🌐 ציבורי (iptv-org) | iptv-org (`TravelMix.ro`) | ✅ |
+| 1156 | UMC TV | streaming5.globalhostla.com | 🌐 ציבורי (iptv-org) | iptv-org (`UMCTV.co`) | ✅ |
+| 1157 | Costa Rica Channel | video0.rogohosting.com | 🌐 ציבורי (iptv-org) | iptv-org (`CostaRicaChannel.cr`) | ✅ |
+| 1158 | Agro TV | restr2.bgtv.bg | 🌐 ציבורי (iptv-org) | iptv-org (`AgroTV.bg`) | ✅ |
+| 1159 | Duck Hunting TV | main.duckhunting.playout.vju.tv | 🌐 ציבורי (iptv-org) | iptv-org (`DuckHuntingTV.us`) | ✅ |
+| 1160 | Dikaya rybalka | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`Dikayarybalka.ru`) | ❌ רק באפליקציה (HTTP) |
+| 1161 | Guangxi Variety & Travel Channel | 111.59.24.227 | 🌐 ציבורי (iptv-org) | iptv-org (`GuangxiVarietyTravelChannel.cn`) | ❌ רק באפליקציה (HTTP) |
+| 1162 | Canal Rural | 170.83.49.66 | 🌐 ציבורי (iptv-org) | iptv-org (`CanalRural.br`) | ❌ רק באפליקציה (HTTP) |
+| 1163 | Swamiji TV European | stream.swamiji.tv | 🌐 ציבורי (iptv-org) | iptv-org (`SwamijiTVEuropean.at`) | ✅ |
+| 1164 | Outdoor America | d1e354daam8g5r.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`OutdoorAmerica.us`) | ✅ |
+| 1165 | Moya stikhiya | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`Moyastikhiya.ru`) | ❌ רק באפליקציה (HTTP) |
+| 1166 | TV Parana Turismo | 200.189.113.201 | 🌐 ציבורי (iptv-org) | iptv-org (`TVParanaTurismo.br`) | ❌ רק באפליקציה (HTTP) |
+| 1167 | Schladming-Dachstein TV | m317.video-stream-hosting.de | 🌐 ציבורי (iptv-org) | iptv-org (`SchladmingDachsteinTV.at`) | ✅ |
+| 1168 | Pocono Television Network | dfoiz3dv1euv7.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`PoconoTelevisionNetwork.us`) | ✅ |
+| 1169 | RTG TV | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`RTGTV.ru`) | ❌ רק באפליקציה (HTTP) |
+| 1170 | PursuitUP | d1p1siomv3cm7b.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`PursuitUP.us`) | ✅ |
+| 1171 | Rybolov | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`Rybolov.ru`) | ❌ רק באפליקציה (HTTP) |
+| 1172 | Beach TV Florida & Alabama | 5ed325193d4e1.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`BeachTVFloridaAlabama.us`) | ✅ |
+| 1173 | Vkus | 178.134.1.158 | 🌐 ציבורי (iptv-org) | iptv-org (`Vkus.ru`) | ❌ רק באפליקציה (HTTP) |
+| 1174 | Beach TV Key West & Florida Keys | 5ed325193d4e1.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`BeachTVKeyWestFloridaKeys.us`) | ✅ |
 
 ## 📺 מדע ולמידה (Science)
 
 | # | ערוץ | שרת השידור | סוג | נמצא ב | באתר (דפדפן) |
 |---|---|---|---|---|---|
-| 1171 | ערוץ החקר והמדע (viju Explore) | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`vijuExplore.ru`) | ❌ רק באפליקציה (HTTP) |
-| 1172 | BUTV10 | cdnapisec.kaltura.com | 🌐 ציבורי (iptv-org) | iptv-org (`BUTV10.us`) | ✅ |
-| 1173 | Al Hiwar TV | mn-nl.mncdn.com | 🌐 ציבורי (iptv-org) | iptv-org (`AlHiwarTV.uk`) | ✅ |
-| 1174 | Persiana Medical | phd2hls.persiana.live | 🌐 ציבורי (iptv-org) | iptv-org (`PersianaMedical.fr`) | ✅ |
-| 1175 | NRWision | fms.nrwision.de | 🌐 ציבורי (iptv-org) | iptv-org (`NRWision.de`) | ✅ |
-| 1176 | Platzi TV | mdstrm.com | 🌐 ציבורי (iptv-org) | iptv-org (`PlatziTV.es`) | ✅ |
-| 1177 | Telepace 3 | 932y4273djv8-hls-live.mariatvcdn.it | 🌐 ציבורי (iptv-org) | iptv-org (`Telepace3.it`) | ✅ |
-| 1178 | .sci-fi | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`scifi.ru`) | ❌ רק באפליקציה (HTTP) |
-| 1179 | Ciftci TV | live.artidijitalmedya.com | 🌐 ציבורי (iptv-org) | iptv-org (`CiftciTV.tr`) | ✅ |
-| 1180 | Discovery Science | drk6xq0vhn.gpcdn.net | 🌐 ציבורי (iptv-org) | iptv-org (`DiscoveryScience.in`) | ✅ |
-| 1181 | OUN | live.knou.ac.kr | 🌐 ציבורי (iptv-org) | iptv-org (`OUN.kr`) | ✅ |
-| 1182 | CCTV-World Geography | 38.75.136.137 | 🌐 ציבורי (iptv-org) | iptv-org (`CCTVWorldGeography.cn`) | ❌ רק באפליקציה (HTTP) |
-| 1183 | TV UFOP | app.tvufop.com.br | 🌐 ציבורי (iptv-org) | iptv-org (`TVUFOP.br`) | ✅ |
-| 1184 | TV BUAP | tvenvivo.buap.mx | 🌐 ציבורי (iptv-org) | iptv-org (`TVBUAP.mx`) | ✅ |
-| 1185 | Canal Universidad | videostream.shockmedia.com.ar | 🌐 ציבורי (iptv-org) | iptv-org (`CanalUniversidad.ar`) | ✅ |
-| 1186 | UTalca TV | unlimited1-us.dps.live | 🌐 ציבורי (iptv-org) | iptv-org (`UTalcaTV.cl`) | ✅ |
-| 1187 | Eduvision | stmv3.voxtvhd.com.br | 🌐 ציבורי (iptv-org) | iptv-org (`Eduvision.co`) | ✅ |
-| 1188 | The Indonesia Channel | restreamer.indonusa.id | 🌐 ציבורי (iptv-org) | iptv-org (`TheIndonesiaChannel.id`) | ✅ |
-| 1189 | DLTV 1 | cdn-live.dltv.ac.th | 🌐 ציבורי (iptv-org) | iptv-org (`DLTV1.th`) | ✅ |
-| 1190 | Can Tho TV 2 | live.canthotv.vn | 🌐 ציבורי (iptv-org) | iptv-org (`CanThoTV2.vn`) | ✅ |
-| 1191 | Paighan TV | cdn4.mjunoon.tv | 🌐 ציבורי (iptv-org) | iptv-org (`PaighanTV.pk`) | ✅ |
-| 1192 | TVK 2 | live.kh.malimarcdn.com | 🌐 ציבורי (iptv-org) | iptv-org (`TVK2.kh`) | ✅ |
-| 1193 | STVE Telebasica | streamingcws30.com | 🌐 ציבורי (iptv-org) | iptv-org (`STVETelebasica.hn`) | ✅ |
-| 1194 | Cosmos TV | video.hostingcaaguazu.com | 🌐 ציבורי (iptv-org) | iptv-org (`CosmosTV.py`) | ✅ |
-| 1195 | Educa TV | avm.ecuamedia.net | 🌐 ציבורי (iptv-org) | iptv-org (`EducaTV.ec`) | ✅ |
-| 1196 | Radio Universitaria San Andres | edge.enhdtv.com | 🌐 ציבורי (iptv-org) | iptv-org (`RadioUniversitariaSanAndres.bo`) | ✅ |
-| 1197 | Ryongnamsan Television | live.koryocdn.org | 🌐 ציבורי (iptv-org) | iptv-org (`RyongnamsanTelevision.kp`) | ❌ רק באפליקציה (הפניה בלי CORS) |
-| 1198 | TV Maya | 5ca9af4645e15.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`TVMaya.gt`) | ✅ |
-| 1199 | Yaslyk | alpha.tv.online.tm | 🌐 ציבורי (iptv-org) | iptv-org (`Yaslyk.tm`) | ❌ רק באפליקציה (הפניה בלי CORS) |
-| 1200 | Create | create.lls.pbs.org | 🌐 ציבורי (iptv-org) | iptv-org (`Create.us`) | ✅ |
-| 1201 | English Club TV | Cinerama.uz – ספק IPTV באוזבקיסטן | ⚠️ ממסר צד שלישי | iptv-org (`EnglishClubTV.uk`) | ✅ |
-| 1202 | Curiosity Channel | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`CuriosityChannel.de`) | ✅ |
-| 1203 | TRT EBA | tv-e-okul01.medya.trt.com.tr | 🌐 ציבורי (iptv-org) | iptv-org (`TRTEBA.tr`) | ✅ |
-| 1204 | Gyandarshan | cdn.pishow.tv | 🌐 ציבורי (iptv-org) | iptv-org (`Gyandarshan.in`) | ✅ |
-| 1205 | NBS | media.joycorp.co.kr | 🌐 ציבורי (iptv-org) | iptv-org (`NBS.kr`) | ✅ |
-| 1206 | CCTV-10 | 74.91.26.218 | 🌐 ציבורי (iptv-org) | iptv-org (`CCTV10.cn`) | ❌ רק באפליקציה (HTTP) |
-| 1207 | TVE RS | streaming.procergs.com.br | 🌐 ציבורי (iptv-org) | iptv-org (`TVERS.br`) | ✅ |
-| 1208 | TV UG | 5ca3e84a76d30.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`TVUG.mx`) | ✅ |
-| 1209 | Liceum TV | 193.225.32.62 | 🌐 ציבורי (iptv-org) | iptv-org (`LiceumTV.hu`) | ❌ רק באפליקציה (HTTP) |
-| 1210 | TV Usach | stv4.janus.cl | 🌐 ציבורי (iptv-org) | iptv-org (`TVUsach.cl`) | ✅ |
-| 1211 | Zoom | 138.121.15.230 | 🌐 ציבורי (iptv-org) | iptv-org (`Zoom.co`) | ❌ רק באפליקציה (HTTP) |
-| 1212 | Rinjani TV | rinjanitv.cloud | 🌐 ציבורי (iptv-org) | iptv-org (`RinjaniTV.id`) | ✅ |
-| 1213 | DLTV 10 | cdn-live.dltv.ac.th | 🌐 ציבורי (iptv-org) | iptv-org (`DLTV10.th`) | ✅ |
-| 1214 | HTV4 | freem3u.xyz | 🌐 ציבורי (iptv-org) | iptv-org (`HTV4.vn`) | ✅ |
-| 1215 | Wiki TV | stream.wikitv.asia | 🌐 ציבורי (iptv-org) | iptv-org (`WikiTV.kh`) | ✅ |
-| 1216 | Campus TV | 5e85d90130e77.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`CampusTV.hn`) | ✅ |
-| 1217 | Educanal | 190.128.214.97 | 🌐 ציבורי (iptv-org) | iptv-org (`Educanal.py`) | ❌ רק באפליקציה (HTTP) |
-| 1218 | UNIANDES TV | video.compuwebecuador.com | 🌐 ציבורי (iptv-org) | iptv-org (`UNIANDESTV.ec`) | ✅ |
-| 1219 | DKN | video.oct.dc.gov | 🌐 ציבורי (iptv-org) | iptv-org (`DKN.us`) | ✅ |
-| 1220 | Wonder | lds-wonder-rakuten.amagi.tv | 🌐 ציבורי (iptv-org) | iptv-org (`Wonder.uk`) | ❌ רק באפליקציה (הפניה בלי CORS) |
-| 1221 | iSTUFF | relay2.cdn.fem-net.de | 🌐 ציבורי (iptv-org) | iptv-org (`iSTUFF.de`) | ✅ |
-| 1222 | Kite Victers | 932y4x26ljv8-hls-live.5centscdn.com | 🌐 ציבורי (iptv-org) | iptv-org (`KiteVicters.in`) | ✅ |
-| 1223 | EBS English | ebsonair.ebs.co.kr | 🌐 ציבורי (iptv-org) | iptv-org (`EBSEnglish.kr`) | ✅ |
-| 1224 | CCTV-7 | 74.91.26.218 | 🌐 ציבורי (iptv-org) | iptv-org (`CCTV7.cn`) | ❌ רק באפליקציה (HTTP) |
-| 1225 | Canal Educacao | canaleducacao-stream.ebc.com.br | 🌐 ציבורי (iptv-org) | iptv-org (`CanalEducacao.br`) | ✅ |
-| 1226 | UAA TV | 5fe2654d6127d.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`UAATV.mx`) | ✅ |
-| 1227 | GVision | videostream.chileservidores.com | 🌐 ציבורי (iptv-org) | iptv-org (`GVision.cl`) | ✅ |
-| 1228 | DLTV 11 | cdn-live.dltv.ac.th | 🌐 ציבורי (iptv-org) | iptv-org (`DLTV11.th`) | ✅ |
-| 1229 | One TV E-School Cambodia | 49.156.33.114 | 🌐 ציבורי (iptv-org) | iptv-org (`OneTVESchoolCambodia.kh`) | ❌ רק באפליקציה (HTTP) |
-| 1230 | LA36 | reflect-channel36-la.cablecast.tv | 🌐 ציבורי (iptv-org) | iptv-org (`LA36.us`) | ✅ |
-| 1231 | Vyas Channel | playhls.media.nic.in | 🌐 ציבורי (iptv-org) | iptv-org (`VyasChannel.in`) | ✅ |
-| 1232 | EBS Plus 2 | ebsonair.ebs.co.kr | 🌐 ציבורי (iptv-org) | iptv-org (`EBSPlus2.kr`) | ✅ |
-| 1233 | ISTV | stmv1.srvstm.com | 🌐 ציבורי (iptv-org) | iptv-org (`ISTV.br`) | ✅ |
-| 1234 | ILCE Canal 15 Summa Saberes | live-ilce.ovp-vivaro.digital | 🌐 ציבורי (iptv-org) | iptv-org (`ILCECanal15SummaSaberes.mx`) | ✅ |
-| 1235 | UMAGTV | tls-cl.cdnz.cl | 🌐 ציבורי (iptv-org) | iptv-org (`UMAGTV.cl`) | ✅ |
-| 1236 | DLTV 12 | cdn-live.dltv.ac.th | 🌐 ציבורי (iptv-org) | iptv-org (`DLTV12.th`) | ✅ |
-| 1237 | TUTV | livestream.telvue.com | 🌐 ציבורי (iptv-org) | iptv-org (`TUTV.us`) | ✅ |
-| 1238 | EBS 1TV | ebsonair.ebs.co.kr | 🌐 ציבורי (iptv-org) | iptv-org (`EBS1TV.kr`) | ✅ |
-| 1239 | Unisul TV | sitetv.brasilstream.com.br | 🌐 ציבורי (iptv-org) | iptv-org (`UnisulTV.br`) | ✅ |
-| 1240 | Jalisco TV | video0.rogohosting.com | 🌐 ציבורי (iptv-org) | iptv-org (`JaliscoTV.mx`) | ✅ |
-| 1241 | DLTV 13 | cdn-live.dltv.ac.th | 🌐 ציבורי (iptv-org) | iptv-org (`DLTV13.th`) | ✅ |
+| 1175 | ערוץ החקר והמדע (viju Explore) | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`vijuExplore.ru`) | ❌ רק באפליקציה (HTTP) |
+| 1176 | BUTV10 | cdnapisec.kaltura.com | 🌐 ציבורי (iptv-org) | iptv-org (`BUTV10.us`) | ✅ |
+| 1177 | Al Hiwar TV | mn-nl.mncdn.com | 🌐 ציבורי (iptv-org) | iptv-org (`AlHiwarTV.uk`) | ✅ |
+| 1178 | Persiana Medical | phd2hls.persiana.live | 🌐 ציבורי (iptv-org) | iptv-org (`PersianaMedical.fr`) | ✅ |
+| 1179 | NRWision | fms.nrwision.de | 🌐 ציבורי (iptv-org) | iptv-org (`NRWision.de`) | ✅ |
+| 1180 | Platzi TV | mdstrm.com | 🌐 ציבורי (iptv-org) | iptv-org (`PlatziTV.es`) | ✅ |
+| 1181 | Telepace 3 | 932y4273djv8-hls-live.mariatvcdn.it | 🌐 ציבורי (iptv-org) | iptv-org (`Telepace3.it`) | ✅ |
+| 1182 | .sci-fi | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`scifi.ru`) | ❌ רק באפליקציה (HTTP) |
+| 1183 | Ciftci TV | live.artidijitalmedya.com | 🌐 ציבורי (iptv-org) | iptv-org (`CiftciTV.tr`) | ✅ |
+| 1184 | Discovery Science | drk6xq0vhn.gpcdn.net | 🌐 ציבורי (iptv-org) | iptv-org (`DiscoveryScience.in`) | ✅ |
+| 1185 | OUN | live.knou.ac.kr | 🌐 ציבורי (iptv-org) | iptv-org (`OUN.kr`) | ✅ |
+| 1186 | CCTV-World Geography | 38.75.136.137 | 🌐 ציבורי (iptv-org) | iptv-org (`CCTVWorldGeography.cn`) | ❌ רק באפליקציה (HTTP) |
+| 1187 | TV UFOP | app.tvufop.com.br | 🌐 ציבורי (iptv-org) | iptv-org (`TVUFOP.br`) | ✅ |
+| 1188 | TV BUAP | tvenvivo.buap.mx | 🌐 ציבורי (iptv-org) | iptv-org (`TVBUAP.mx`) | ✅ |
+| 1189 | Canal Universidad | videostream.shockmedia.com.ar | 🌐 ציבורי (iptv-org) | iptv-org (`CanalUniversidad.ar`) | ✅ |
+| 1190 | UTalca TV | unlimited1-us.dps.live | 🌐 ציבורי (iptv-org) | iptv-org (`UTalcaTV.cl`) | ✅ |
+| 1191 | Eduvision | stmv3.voxtvhd.com.br | 🌐 ציבורי (iptv-org) | iptv-org (`Eduvision.co`) | ✅ |
+| 1192 | The Indonesia Channel | restreamer.indonusa.id | 🌐 ציבורי (iptv-org) | iptv-org (`TheIndonesiaChannel.id`) | ✅ |
+| 1193 | DLTV 1 | cdn-live.dltv.ac.th | 🌐 ציבורי (iptv-org) | iptv-org (`DLTV1.th`) | ✅ |
+| 1194 | Can Tho TV 2 | live.canthotv.vn | 🌐 ציבורי (iptv-org) | iptv-org (`CanThoTV2.vn`) | ✅ |
+| 1195 | Paighan TV | cdn4.mjunoon.tv | 🌐 ציבורי (iptv-org) | iptv-org (`PaighanTV.pk`) | ✅ |
+| 1196 | TVK 2 | live.kh.malimarcdn.com | 🌐 ציבורי (iptv-org) | iptv-org (`TVK2.kh`) | ✅ |
+| 1197 | STVE Telebasica | streamingcws30.com | 🌐 ציבורי (iptv-org) | iptv-org (`STVETelebasica.hn`) | ✅ |
+| 1198 | Cosmos TV | video.hostingcaaguazu.com | 🌐 ציבורי (iptv-org) | iptv-org (`CosmosTV.py`) | ✅ |
+| 1199 | Educa TV | avm.ecuamedia.net | 🌐 ציבורי (iptv-org) | iptv-org (`EducaTV.ec`) | ✅ |
+| 1200 | Radio Universitaria San Andres | edge.enhdtv.com | 🌐 ציבורי (iptv-org) | iptv-org (`RadioUniversitariaSanAndres.bo`) | ✅ |
+| 1201 | Ryongnamsan Television | live.koryocdn.org | 🌐 ציבורי (iptv-org) | iptv-org (`RyongnamsanTelevision.kp`) | ❌ רק באפליקציה (הפניה בלי CORS) |
+| 1202 | TV Maya | 5ca9af4645e15.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`TVMaya.gt`) | ✅ |
+| 1203 | Yaslyk | alpha.tv.online.tm | 🌐 ציבורי (iptv-org) | iptv-org (`Yaslyk.tm`) | ❌ רק באפליקציה (הפניה בלי CORS) |
+| 1204 | Create | create.lls.pbs.org | 🌐 ציבורי (iptv-org) | iptv-org (`Create.us`) | ✅ |
+| 1205 | English Club TV | Cinerama.uz – ספק IPTV באוזבקיסטן | ⚠️ ממסר צד שלישי | iptv-org (`EnglishClubTV.uk`) | ✅ |
+| 1206 | Curiosity Channel | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`CuriosityChannel.de`) | ✅ |
+| 1207 | TRT EBA | tv-e-okul01.medya.trt.com.tr | 🌐 ציבורי (iptv-org) | iptv-org (`TRTEBA.tr`) | ✅ |
+| 1208 | Gyandarshan | cdn.pishow.tv | 🌐 ציבורי (iptv-org) | iptv-org (`Gyandarshan.in`) | ✅ |
+| 1209 | NBS | media.joycorp.co.kr | 🌐 ציבורי (iptv-org) | iptv-org (`NBS.kr`) | ✅ |
+| 1210 | CCTV-10 | 74.91.26.218 | 🌐 ציבורי (iptv-org) | iptv-org (`CCTV10.cn`) | ❌ רק באפליקציה (HTTP) |
+| 1211 | TVE RS | streaming.procergs.com.br | 🌐 ציבורי (iptv-org) | iptv-org (`TVERS.br`) | ✅ |
+| 1212 | TV UG | 5ca3e84a76d30.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`TVUG.mx`) | ✅ |
+| 1213 | Liceum TV | 193.225.32.62 | 🌐 ציבורי (iptv-org) | iptv-org (`LiceumTV.hu`) | ❌ רק באפליקציה (HTTP) |
+| 1214 | TV Usach | stv4.janus.cl | 🌐 ציבורי (iptv-org) | iptv-org (`TVUsach.cl`) | ✅ |
+| 1215 | Zoom | 138.121.15.230 | 🌐 ציבורי (iptv-org) | iptv-org (`Zoom.co`) | ❌ רק באפליקציה (HTTP) |
+| 1216 | Rinjani TV | rinjanitv.cloud | 🌐 ציבורי (iptv-org) | iptv-org (`RinjaniTV.id`) | ✅ |
+| 1217 | DLTV 10 | cdn-live.dltv.ac.th | 🌐 ציבורי (iptv-org) | iptv-org (`DLTV10.th`) | ✅ |
+| 1218 | HTV4 | freem3u.xyz | 🌐 ציבורי (iptv-org) | iptv-org (`HTV4.vn`) | ✅ |
+| 1219 | Wiki TV | stream.wikitv.asia | 🌐 ציבורי (iptv-org) | iptv-org (`WikiTV.kh`) | ✅ |
+| 1220 | Campus TV | 5e85d90130e77.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`CampusTV.hn`) | ✅ |
+| 1221 | Educanal | 190.128.214.97 | 🌐 ציבורי (iptv-org) | iptv-org (`Educanal.py`) | ❌ רק באפליקציה (HTTP) |
+| 1222 | UNIANDES TV | video.compuwebecuador.com | 🌐 ציבורי (iptv-org) | iptv-org (`UNIANDESTV.ec`) | ✅ |
+| 1223 | DKN | video.oct.dc.gov | 🌐 ציבורי (iptv-org) | iptv-org (`DKN.us`) | ✅ |
+| 1224 | Wonder | lds-wonder-rakuten.amagi.tv | 🌐 ציבורי (iptv-org) | iptv-org (`Wonder.uk`) | ❌ רק באפליקציה (הפניה בלי CORS) |
+| 1225 | iSTUFF | relay2.cdn.fem-net.de | 🌐 ציבורי (iptv-org) | iptv-org (`iSTUFF.de`) | ✅ |
+| 1226 | Kite Victers | 932y4x26ljv8-hls-live.5centscdn.com | 🌐 ציבורי (iptv-org) | iptv-org (`KiteVicters.in`) | ✅ |
+| 1227 | EBS English | ebsonair.ebs.co.kr | 🌐 ציבורי (iptv-org) | iptv-org (`EBSEnglish.kr`) | ✅ |
+| 1228 | CCTV-7 | 74.91.26.218 | 🌐 ציבורי (iptv-org) | iptv-org (`CCTV7.cn`) | ❌ רק באפליקציה (HTTP) |
+| 1229 | Canal Educacao | canaleducacao-stream.ebc.com.br | 🌐 ציבורי (iptv-org) | iptv-org (`CanalEducacao.br`) | ✅ |
+| 1230 | UAA TV | 5fe2654d6127d.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`UAATV.mx`) | ✅ |
+| 1231 | GVision | videostream.chileservidores.com | 🌐 ציבורי (iptv-org) | iptv-org (`GVision.cl`) | ✅ |
+| 1232 | DLTV 11 | cdn-live.dltv.ac.th | 🌐 ציבורי (iptv-org) | iptv-org (`DLTV11.th`) | ✅ |
+| 1233 | One TV E-School Cambodia | 49.156.33.114 | 🌐 ציבורי (iptv-org) | iptv-org (`OneTVESchoolCambodia.kh`) | ❌ רק באפליקציה (HTTP) |
+| 1234 | LA36 | reflect-channel36-la.cablecast.tv | 🌐 ציבורי (iptv-org) | iptv-org (`LA36.us`) | ✅ |
+| 1235 | Vyas Channel | playhls.media.nic.in | 🌐 ציבורי (iptv-org) | iptv-org (`VyasChannel.in`) | ✅ |
+| 1236 | EBS Plus 2 | ebsonair.ebs.co.kr | 🌐 ציבורי (iptv-org) | iptv-org (`EBSPlus2.kr`) | ✅ |
+| 1237 | ISTV | stmv1.srvstm.com | 🌐 ציבורי (iptv-org) | iptv-org (`ISTV.br`) | ✅ |
+| 1238 | ILCE Canal 15 Summa Saberes | live-ilce.ovp-vivaro.digital | 🌐 ציבורי (iptv-org) | iptv-org (`ILCECanal15SummaSaberes.mx`) | ✅ |
+| 1239 | UMAGTV | tls-cl.cdnz.cl | 🌐 ציבורי (iptv-org) | iptv-org (`UMAGTV.cl`) | ✅ |
+| 1240 | DLTV 12 | cdn-live.dltv.ac.th | 🌐 ציבורי (iptv-org) | iptv-org (`DLTV12.th`) | ✅ |
+| 1241 | TUTV | livestream.telvue.com | 🌐 ציבורי (iptv-org) | iptv-org (`TUTV.us`) | ✅ |
+| 1242 | EBS 1TV | ebsonair.ebs.co.kr | 🌐 ציבורי (iptv-org) | iptv-org (`EBS1TV.kr`) | ✅ |
+| 1243 | Unisul TV | sitetv.brasilstream.com.br | 🌐 ציבורי (iptv-org) | iptv-org (`UnisulTV.br`) | ✅ |
+| 1244 | Jalisco TV | video0.rogohosting.com | 🌐 ציבורי (iptv-org) | iptv-org (`JaliscoTV.mx`) | ✅ |
+| 1245 | DLTV 13 | cdn-live.dltv.ac.th | 🌐 ציבורי (iptv-org) | iptv-org (`DLTV13.th`) | ✅ |
 
 ## 📺 לייף סטייל ובידור
 
 | # | ערוץ | שרת השידור | סוג | נמצא ב | באתר (דפדפן) |
 |---|---|---|---|---|---|
-| 1242 | ערוץ החיים הטובים HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`GoodLife.il`) | ❌ רק באפליקציה (HTTP) |
-| 1243 | AfroLandTV | alt-al.otteravision.com | 🌐 ציבורי (iptv-org) | iptv-org (`AfroLandTV.us`) | ✅ |
-| 1244 | The Graham Norton Show | amg00654-itv-amg00654c35-rakuten-gb-7598.playouts.now.amagi.tv | 🌐 ציבורי (iptv-org) | iptv-org (`TheGrahamNortonShow.uk`) | ✅ |
-| 1245 | Monte Carlo Digital Television | fl718492-exthls-p1.flovp.com | 🌐 ציבורי (iptv-org) | iptv-org (`MonteCarloDigitalTelevision.fr`) | ✅ |
-| 1246 | Autentic Travel | cb0c87cc605942ff9766a4e6744bbadc.mediatailor.us-east-1.amazonaws.com | 🌐 ציבורי (iptv-org) | iptv-org (`AutenticTravel.de`) | ✅ |
-| 1247 | Hamaika Telebista | cdn3.wowza.com | 🌐 ציבורי (iptv-org) | iptv-org (`HamaikaTelebista.es`) | ✅ |
-| 1248 | 7 Gold | streamcdnr6-dddfac816632463dac50b21109dc1bb3.msvdn.net | 🌐 ציבורי (iptv-org) | iptv-org (`7Gold.it`) | ✅ |
-| 1249 | Ministerstvo idey | live-minidey.cdnvideo.ru | 🌐 ציבורי (iptv-org) | iptv-org (`Ministerstvoidey.ru`) | ✅ |
-| 1250 | K2 | live-tv.cloud – ספק IPTV אוקראיני | ⚠️ ממסר צד שלישי | iptv-org (`K2.ua`) | ✅ |
-| 1251 | EET TV | eu.streamjo.com | 🌐 ציבורי (iptv-org) | iptv-org (`EETTV.ca`) | ✅ |
-| 1252 | 10 Bold | dce3793146fef017.mediapackage.us-west-2.amazonaws.com | 🌐 ציבורי (iptv-org) | iptv-org (`10Bold.au`) | ✅ |
-| 1253 | Edessa TV | canli.edessatv.com | 🌐 ציבורי (iptv-org) | iptv-org (`EdessaTV.tr`) | ✅ |
-| 1254 | Asianet | da86m1sqpm3o0.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`Asianet.in`) | ✅ |
-| 1255 | NHK World Premium | media-tyo.hls.nhkworld.jp | 🌐 ציבורי (iptv-org) | iptv-org (`NHKWorldPremium.jp`) | ✅ |
-| 1256 | NHTV | nonghyup.flive.skcdn.com | 🌐 ציבורי (iptv-org) | iptv-org (`NHTV.kr`) | ❌ רק באפליקציה (HTTP) |
-| 1257 | Lanzhou Culture & Tourism Channel | liveplus.lzr.com.cn | 🌐 ציבורי (iptv-org) | iptv-org (`LanzhouCultureTourismChannel.cn`) | ✅ |
-| 1258 | Rede NGT | isaocorp.cloudecast.com | 🌐 ציבורי (iptv-org) | iptv-org (`RedeNGT.br`) | ✅ |
-| 1259 | Azteca Internacional | azt-mun.otteravision.com | 🌐 ציבורי (iptv-org) | iptv-org (`AztecaInternacional.mx`) | ✅ |
-| 1260 | Metro TV | streamtv12.ddns.net | 🌐 ציבורי (iptv-org) | iptv-org (`MetroTV.ar`) | ✅ |
-| 1261 | TVI Reality | raw.githubusercontent.com | 🌐 ציבורי (iptv-org) | iptv-org (`TVIReality.pt`) | ✅ |
-| 1262 | MaLive | live.salto.nl | 🌐 ציבורי (iptv-org) | iptv-org (`MaLive.nl`) | ✅ |
-| 1263 | Carac 1 | edge13.vedge.infomaniak.com | 🌐 ציבורי (iptv-org) | iptv-org (`Carac1.ch`) | ✅ |
-| 1264 | Bialogardzka Telewizja Kablowa | bsmbialogard.pl | 🌐 ציבורי (iptv-org) | iptv-org (`BialogardzkaTelewizjaKablowa.pl`) | ✅ |
-| 1265 | Netmax TV | es1.crystalweb.net | 🌐 ציבורי (iptv-org) | iptv-org (`NetmaxTV.gr`) | ✅ |
-| 1266 | MTV Catfish | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`MTVCatfish.se`) | ✅ |
-| 1267 | Canal Motor | digicom.hls.iptvdc.com | 🌐 ציבורי (iptv-org) | iptv-org (`CanalMotor.no`) | ✅ |
-| 1268 | Jim | live-fi.tvkaista.net | 🌐 ציבורי (iptv-org) | iptv-org (`Jim.fi`) | ✅ |
-| 1269 | Antena Monden | stream1.antenaplay.ro | 🌐 ציבורי (iptv-org) | iptv-org (`AntenaMonden.ro`) | ✅ |
-| 1270 | Suyai TV | trun.suyaitv.cl | 🌐 ציבורי (iptv-org) | iptv-org (`SuyaiTV.cl`) | ✅ |
-| 1271 | RCN Mas | rcntv-rcnmas-1-us.roku.wurl.tv | 🌐 ציבורי (iptv-org) | iptv-org (`RCNMas.co`) | ✅ |
-| 1272 | AsiriTV | video2.lhdserver.es | 🌐 ציבורי (iptv-org) | iptv-org (`AsiriTV.pe`) | ✅ |
-| 1273 | Salira TV | live.salira.tv | 🌐 ציבורי (iptv-org) | iptv-org (`SaliraTV.id`) | ✅ |
-| 1274 | Good Idea TV | stream1.ai-net.net | 🌐 ציבורי (iptv-org) | iptv-org (`GoodIdeaTV.th`) | ❌ רק באפליקציה (HTTP) |
-| 1275 | ON Vie Giai Tri | freem3u.xyz | 🌐 ציבורי (iptv-org) | iptv-org (`ONVieGiaiTri.vn`) | ✅ |
-| 1276 | Hum TV | g4wlkwx8l23a-hls-live.5centscdn.com | 🌐 ציבורי (iptv-org) | iptv-org (`HumTV.pk`) | ✅ |
-| 1277 | 247 Box TV | hls.247box.live | 🌐 ציבורי (iptv-org) | iptv-org (`247BoxTV.ir`) | ✅ |
-| 1278 | StoryChannel TV | 136044159.r.cdnsun.net | 🌐 ציבורי (iptv-org) | iptv-org (`StoryChannelTV.ma`) | ✅ |
-| 1279 | 1KZN TV | cdn.freevisiontv.co.za | 🌐 ציבורי (iptv-org) | iptv-org (`1KZNTV.za`) | ✅ |
-| 1280 | Qausain TV | acasmedia3.acangroup.org | 🌐 ציבורי (iptv-org) | iptv-org (`QausainTV.ng`) | ✅ |
-| 1281 | Bellavision | fox.hostlagarto.com | 🌐 ציבורי (iptv-org) | iptv-org (`Bellavision.do`) | ✅ |
-| 1282 | Aguacate TV | stream.aguacatetv.com | 🌐 ציבורי (iptv-org) | iptv-org (`AguacateTV.ve`) | ✅ |
-| 1283 | La Nueva Radio TV 97.7 | sv72.ecuaradiotv.net | 🌐 ציבורי (iptv-org) | iptv-org (`LaNuevaRadioTV977.ec`) | ✅ |
-| 1284 | KIX | freem3u.xyz | 🌐 ציבורי (iptv-org) | iptv-org (`KIX.hk`) | ✅ |
-| 1285 | ¡OPA! | 5fc584f3f19c9.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`OPA.cr`) | ✅ |
-| 1286 | Kurdsat | hlspackager.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`Kurdsat.iq`) | ✅ |
-| 1287 | MiTV | rds3.desdeparaguay.net | 🌐 ציבורי (iptv-org) | iptv-org (`MiTV.py`) | ✅ |
-| 1288 | EDN TV | 60417ddeaf0d9.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`EDNTV.hn`) | ✅ |
-| 1289 | Code Fashion TV | cdn2.invivo.bg | 🌐 ציבורי (iptv-org) | iptv-org (`CodeFashionTV.bg`) | ✅ |
-| 1290 | BTV | streamfi-alphadgtl1.zettawiseroutes.com | 🌐 ציבורי (iptv-org) | iptv-org (`BTV.ug`) | ✅ |
-| 1291 | Belarus-2 | ngtrk.dc.beltelecom.by | 🌐 ציבורי (iptv-org) | iptv-org (`Belarus2.by`) | ✅ |
-| 1292 | ETV+ | sb.err.ee | 🌐 ציבורי (iptv-org) | iptv-org (`ETVPlus.ee`) | ✅ |
-| 1293 | BIZ TV | fl.biztv.media | 🌐 ציבורי (iptv-org) | iptv-org (`BIZTV.uz`) | ✅ |
-| 1294 | Imai TV | live20.bozztv.com | 🌐 ציבורי (iptv-org) | iptv-org (`ImaiTV.lk`) | ✅ |
-| 1295 | Ning TV | livefta.malimarcdn.com | 🌐 ציבורי (iptv-org) | iptv-org (`NingTV.la`) | ✅ |
-| 1296 | Shift TV | hls.shift.tv | 🌐 ציבורי (iptv-org) | iptv-org (`ShiftTV.hr`) | ✅ |
-| 1297 | KC2 | 5c46fa289c89f.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`KC2.rw`) | ✅ |
-| 1298 | Med.TV | med-tv-it.fast.rakuten.tv | 🌐 ציבורי (iptv-org) | iptv-org (`MedTV.mt`) | ✅ |
-| 1299 | OTV | 5dcabf026b188.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`OTV.gh`) | ✅ |
-| 1300 | RTNB Divertissement | tv2-stream.rtnb.bi | 🌐 ציבורי (iptv-org) | iptv-org (`RTNBDivertissement.bi`) | ❌ רק באפליקציה (הפניה בלי CORS) |
-| 1301 | Superyacht TV | sy.wns.live | 🌐 ציבורי (iptv-org) | iptv-org (`SuperyachtTV.mc`) | ✅ |
-| 1302 | Trishul Broadcasting Network | live.suricloud.com | 🌐 ציבורי (iptv-org) | iptv-org (`TrishulBroadcastingNetwork.sr`) | ✅ |
-| 1303 | KTV Arabe | kwtktvata.cdn.mangomolo.com | 🌐 ציבורי (iptv-org) | iptv-org (`KTVArabe.kw`) | ✅ |
-| 1304 | Oman TV Cultural | partwota.cdn.mgmlcdn.com | 🌐 ציבורי (iptv-org) | iptv-org (`OmanTVCultural.om`) | ✅ |
-| 1305 | Afroculture TV | streamtv.cmediahosthosting.net | 🌐 ציבורי (iptv-org) | iptv-org (`AfrocultureTV.ci`) | ✅ |
-| 1306 | D3 TV | lbgo.bozztv.com | 🌐 ציבורי (iptv-org) | iptv-org (`D3TV.ml`) | ✅ |
-| 1307 | EVI TV | mistserver.evi-tv.com | 🌐 ציבורי (iptv-org) | iptv-org (`EVITV.cd`) | ✅ |
-| 1308 | PLEX TV | connectiktv.ddns.net | 🌐 ציבורי (iptv-org) | iptv-org (`PLEXTV.cm`) | ❌ רק באפליקציה (HTTP) |
-| 1309 | America TeVe | live.gideo.video | 🌐 ציבורי (iptv-org) | iptv-org (`AmericaTeVe.pr`) | ✅ |
-| 1310 | TVCARiB Latino | cdn.mycloudstream.io | 🌐 ציבורי (iptv-org) | iptv-org (`TVCARiBLatino.sx`) | ✅ |
-| 1311 | UCL | livedelta.cdn.antel.net.uy | 🌐 ציבורי (iptv-org) | iptv-org (`UCL.uy`) | ✅ |
-| 1312 | Abai TV | abaitv-stream.qazcdn.com | 🌐 ציבורי (iptv-org) | iptv-org (`AbaiTV.kz`) | ✅ |
-| 1313 | ANT1 Cyprus | l2.cloudskep.com | 🌐 ציבורי (iptv-org) | iptv-org (`ANT1Cyprus.cy`) | ❌ רק באפליקציה (HTTP) |
-| 1314 | Bonaire.tv | media.streambrothers.com | 🌐 ציבורי (iptv-org) | iptv-org (`Bonairetv.bq`) | ✅ |
-| 1315 | Bonce TV | seswa.bonce.tv | 🌐 ציבורי (iptv-org) | iptv-org (`BonceTV.cw`) | ✅ |
-| 1316 | eldo.TV | stream.eldo.lu | 🌐 ציבורי (iptv-org) | iptv-org (`eldoTV.lu`) | ✅ |
-| 1317 | Lietuvos Rytas TV | live.lietuvosryto.tv | 🌐 ציבורי (iptv-org) | iptv-org (`LietuvosRytasTV.lt`) | ✅ |
-| 1318 | Maasranga TV | tvsen5.aynaott.com | 🌐 ציבורי (iptv-org) | iptv-org (`MaasrangaTV.bd`) | ✅ |
-| 1319 | Miras | alpha.tv.online.tm | 🌐 ציבורי (iptv-org) | iptv-org (`Miras.tm`) | ❌ רק באפליקציה (הפניה בלי CORS) |
-| 1320 | Nos Isla TV | cdn01.setar.aw | 🌐 ציבורי (iptv-org) | iptv-org (`NosIslaTV.aw`) | ✅ |
-| 1321 | Ray TV HD | streaming.tvnepal.com | 🌐 ציבורי (iptv-org) | iptv-org (`RayTVHD.np`) | ✅ |
-| 1322 | RTB 3 | edge13.vedge.infomaniak.com | 🌐 ציבורי (iptv-org) | iptv-org (`RTB3.bf`) | ✅ |
-| 1323 | TBC2 | stream-134630.castr.net | 🌐 ציבורי (iptv-org) | iptv-org (`TBC2.tz`) | ✅ |
-| 1324 | TV Vita | Antik Telecom (סלובקיה), נתיבי test | ⚠️ ממסר צד שלישי | iptv-org (`TVVita.sk`) | ✅ |
-| 1325 | TVBS-Asia | 38.64.72.148 | 🌐 ציבורי (iptv-org) | iptv-org (`TVBSAsia.tw`) | ❌ רק באפליקציה (HTTP) |
-| 1326 | AMG TV | 2-fss-2.streamhoster.com | 🌐 ציבורי (iptv-org) | iptv-org (`AMGTV.us`) | ✅ |
-| 1327 | Hobby Maker | lo3.gemporia.com | 🌐 ציבורי (iptv-org) | iptv-org (`HobbyMaker.uk`) | ✅ |
-| 1328 | FashionTV Paris L'Original | edge-fast3.evrideo.tv | 🌐 ציבורי (iptv-org) | iptv-org (`FashionTVParisLOriginal.fr`) | ✅ |
-| 1329 | Motorvision | mvg-mv-xumo.otteravision.com | 🌐 ציבורי (iptv-org) | iptv-org (`Motorvision.de`) | ✅ |
-| 1330 | Historia | d1k3vzh2ivy22k.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`Historia.es`) | ✅ |
-| 1331 | Discovery Channel | streaming.aurora.enhanced.live | 🌐 ציבורי (iptv-org) | iptv-org (`DiscoveryChannel.it`) | ✅ |
-| 1332 | Russia-K | Smotrim (VGTRK) – הבעלים של קרוסלה | ✅ רשמי | iptv-org (`RussiaK.ru`) | ✅ |
-| 1333 | 36.6 TV | dash2.antik.sk | 🌐 ציבורי (iptv-org) | iptv-org (`366TV.ua`) | ✅ |
-| 1334 | ZenLIFE by Stingray | lotus.stingray.com | 🌐 ציבורי (iptv-org) | iptv-org (`ZenLIFEbyStingray.ca`) | ✅ |
-| 1335 | Fortuna TV | edge.taksimbilisim.com | 🌐 ציבורי (iptv-org) | iptv-org (`FortunaTV.tr`) | ✅ |
-| 1336 | Colors Kannada | da86m1sqpm3o0.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`ColorsKannada.in`) | ✅ |
-| 1337 | CCTV-Health | 38.75.136.137 | 🌐 ציבורי (iptv-org) | iptv-org (`CCTVHealth.cn`) | ❌ רק באפליקציה (HTTP) |
-| 1338 | Conecta Mais TV | adylnet.streampool.net | 🌐 ציבורי (iptv-org) | iptv-org (`ConectaMaisTV.br`) | ✅ |
-| 1339 | Capital 21 | video.cdmx.gob.mx | 🌐 ציבורי (iptv-org) | iptv-org (`Capital21.mx`) | ✅ |
-| 1340 | Power Max Radio TV | videostream.shockmedia.com.ar | 🌐 ציבורי (iptv-org) | iptv-org (`PowerMaxRadioTV.ar`) | ✅ |
-| 1341 | SBS6 Classics | sbs6classic.prd1.talpatvcdn.nl | 🌐 ציבורי (iptv-org) | iptv-org (`SBS6Classics.nl`) | ✅ |
-| 1342 | Carac 2 | onefmhd.vedge.infomaniak.com | 🌐 ציבורי (iptv-org) | iptv-org (`Carac2.ch`) | ✅ |
-| 1343 | Radiowa Czworka | stream14.polskieradio.pl | 🌐 ציבורי (iptv-org) | iptv-org (`RadiowaCzworka.pl`) | ✅ |
-| 1344 | Star Channel International | livestar.siliconweb.com | 🌐 ציבורי (iptv-org) | iptv-org (`StarChannelInternational.gr`) | ✅ |
-| 1345 | MTV Dating | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`MTVDating.se`) | ✅ |
-| 1346 | Liv | live-fi.tvkaista.net | 🌐 ציבורי (iptv-org) | iptv-org (`Liv.fi`) | ✅ |
-| 1347 | TVR Cultural | tvr-cultural.lg.mncdn.com | 🌐 ציבורי (iptv-org) | iptv-org (`TVRCultural.ro`) | ✅ |
-| 1348 | Canal Chilote | videostream.chileservidores.com | 🌐 ציבורי (iptv-org) | iptv-org (`CanalChilote.cl`) | ✅ |
-| 1349 | RCN Novelas | cdnlive.klicgo.net | 🌐 ציבורי (iptv-org) | iptv-org (`RCNNovelas.co`) | ✅ |
-| 1350 | ON Life | freem3u.xyz | 🌐 ציבורי (iptv-org) | iptv-org (`ONLife.vn`) | ✅ |
-| 1351 | A-Plus TV | cdn4.mjunoon.tv | 🌐 ציבורי (iptv-org) | iptv-org (`APlusTV.pk`) | ✅ |
-| 1352 | OXIR TV | hls.oxir.live | 🌐 ציבורי (iptv-org) | iptv-org (`OXIRTV.ir`) | ✅ |
-| 1353 | Soweto TV | cdn.freevisiontv.co.za | 🌐 ציבורי (iptv-org) | iptv-org (`SowetoTV.za`) | ✅ |
-| 1354 | Superscreen TV | video1.getstreamhosting.com | 🌐 ציבורי (iptv-org) | iptv-org (`SuperscreenTV.ng`) | ✅ |
-| 1355 | Canal 17 RTVD | cdn.protvradiostream.com | 🌐 ציבורי (iptv-org) | iptv-org (`Canal17RTVD.do`) | ✅ |
-| 1356 | Inter TV | streamtv.intervenhosting.net | 🌐 ציבורי (iptv-org) | iptv-org (`InterTV.ve`) | ✅ |
-| 1357 | Ciracu TV | cloud37.ecuatel.com | 🌐 ציבורי (iptv-org) | iptv-org (`CiracuTV.ec`) | ✅ |
-| 1358 | Asian Drama | 103.172.187.30 | 🌐 ציבורי (iptv-org) | iptv-org (`AsianDrama.hk`) | ❌ רק באפליקציה (HTTP) |
-| 1359 | TeleMas | acceso.mediosdecostarica.com | 🌐 ציבורי (iptv-org) | iptv-org (`TeleMas.cr`) | ✅ |
-| 1360 | EmanTv | avr.host247.net | 🌐 ציבורי (iptv-org) | iptv-org (`EmanTv.iq`) | ✅ |
-| 1361 | Oasis TV | video.hostingcaaguazu.com | 🌐 ציבורי (iptv-org) | iptv-org (`OasisTV.py`) | ✅ |
-| 1362 | Girasol TV | s.emisoras.tv | 🌐 ציבורי (iptv-org) | iptv-org (`GirasolTV.hn`) | ✅ |
-| 1363 | Code Health TV | cdn2.invivo.bg | 🌐 ציבורי (iptv-org) | iptv-org (`CodeHealthTV.bg`) | ✅ |
-| 1364 | FORT TV | fort.co-works.org | 🌐 ציבורי (iptv-org) | iptv-org (`FORTTV.ug`) | ✅ |
-| 1365 | Belarus-3 | ngtrk.dc.beltelecom.by | 🌐 ציבורי (iptv-org) | iptv-org (`Belarus3.by`) | ✅ |
-| 1366 | NW Magazine | hls.newworldtv.com | 🌐 ציבורי (iptv-org) | iptv-org (`NWMagazine.tg`) | ✅ |
-| 1367 | Cheksiz TV | fl.biztv.media | 🌐 ציבורי (iptv-org) | iptv-org (`CheksizTV.uz`) | ✅ |
-| 1368 | Hiru TV | tv.hiruhost.com | 🌐 ציבורי (iptv-org) | iptv-org (`HiruTV.lk`) | ✅ |
-| 1369 | Vati Lao | livefta.malimarcdn.com | 🌐 ציבורי (iptv-org) | iptv-org (`VatiLao.la`) | ✅ |
-| 1370 | TV Nova | stream.agatin.hr | 🌐 ציבורי (iptv-org) | iptv-org (`TVNova.hr`) | ✅ |
-| 1371 | AsianCrush | linear-900.frequency.stream | 🌐 ציבורי (iptv-org) | iptv-org (`AsianCrush.us`) | ✅ |
-| 1372 | Top Gear | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`TopGear.uk`) | ✅ |
+| 1246 | ערוץ החיים הטובים HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`GoodLife.il`) | ❌ רק באפליקציה (HTTP) |
+| 1247 | AfroLandTV | alt-al.otteravision.com | 🌐 ציבורי (iptv-org) | iptv-org (`AfroLandTV.us`) | ✅ |
+| 1248 | The Graham Norton Show | amg00654-itv-amg00654c35-rakuten-gb-7598.playouts.now.amagi.tv | 🌐 ציבורי (iptv-org) | iptv-org (`TheGrahamNortonShow.uk`) | ✅ |
+| 1249 | Monte Carlo Digital Television | fl718492-exthls-p1.flovp.com | 🌐 ציבורי (iptv-org) | iptv-org (`MonteCarloDigitalTelevision.fr`) | ✅ |
+| 1250 | Autentic Travel | cb0c87cc605942ff9766a4e6744bbadc.mediatailor.us-east-1.amazonaws.com | 🌐 ציבורי (iptv-org) | iptv-org (`AutenticTravel.de`) | ✅ |
+| 1251 | Hamaika Telebista | cdn3.wowza.com | 🌐 ציבורי (iptv-org) | iptv-org (`HamaikaTelebista.es`) | ✅ |
+| 1252 | 7 Gold | streamcdnr6-dddfac816632463dac50b21109dc1bb3.msvdn.net | 🌐 ציבורי (iptv-org) | iptv-org (`7Gold.it`) | ✅ |
+| 1253 | Ministerstvo idey | live-minidey.cdnvideo.ru | 🌐 ציבורי (iptv-org) | iptv-org (`Ministerstvoidey.ru`) | ✅ |
+| 1254 | K2 | live-tv.cloud – ספק IPTV אוקראיני | ⚠️ ממסר צד שלישי | iptv-org (`K2.ua`) | ✅ |
+| 1255 | EET TV | eu.streamjo.com | 🌐 ציבורי (iptv-org) | iptv-org (`EETTV.ca`) | ✅ |
+| 1256 | 10 Bold | dce3793146fef017.mediapackage.us-west-2.amazonaws.com | 🌐 ציבורי (iptv-org) | iptv-org (`10Bold.au`) | ✅ |
+| 1257 | Edessa TV | canli.edessatv.com | 🌐 ציבורי (iptv-org) | iptv-org (`EdessaTV.tr`) | ✅ |
+| 1258 | Asianet | da86m1sqpm3o0.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`Asianet.in`) | ✅ |
+| 1259 | NHK World Premium | media-tyo.hls.nhkworld.jp | 🌐 ציבורי (iptv-org) | iptv-org (`NHKWorldPremium.jp`) | ✅ |
+| 1260 | NHTV | nonghyup.flive.skcdn.com | 🌐 ציבורי (iptv-org) | iptv-org (`NHTV.kr`) | ❌ רק באפליקציה (HTTP) |
+| 1261 | Lanzhou Culture & Tourism Channel | liveplus.lzr.com.cn | 🌐 ציבורי (iptv-org) | iptv-org (`LanzhouCultureTourismChannel.cn`) | ✅ |
+| 1262 | Rede NGT | isaocorp.cloudecast.com | 🌐 ציבורי (iptv-org) | iptv-org (`RedeNGT.br`) | ✅ |
+| 1263 | Azteca Internacional | azt-mun.otteravision.com | 🌐 ציבורי (iptv-org) | iptv-org (`AztecaInternacional.mx`) | ✅ |
+| 1264 | Metro TV | streamtv12.ddns.net | 🌐 ציבורי (iptv-org) | iptv-org (`MetroTV.ar`) | ✅ |
+| 1265 | TVI Reality | raw.githubusercontent.com | 🌐 ציבורי (iptv-org) | iptv-org (`TVIReality.pt`) | ✅ |
+| 1266 | MaLive | live.salto.nl | 🌐 ציבורי (iptv-org) | iptv-org (`MaLive.nl`) | ✅ |
+| 1267 | Carac 1 | edge13.vedge.infomaniak.com | 🌐 ציבורי (iptv-org) | iptv-org (`Carac1.ch`) | ✅ |
+| 1268 | Bialogardzka Telewizja Kablowa | bsmbialogard.pl | 🌐 ציבורי (iptv-org) | iptv-org (`BialogardzkaTelewizjaKablowa.pl`) | ✅ |
+| 1269 | Netmax TV | es1.crystalweb.net | 🌐 ציבורי (iptv-org) | iptv-org (`NetmaxTV.gr`) | ✅ |
+| 1270 | MTV Catfish | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`MTVCatfish.se`) | ✅ |
+| 1271 | Canal Motor | digicom.hls.iptvdc.com | 🌐 ציבורי (iptv-org) | iptv-org (`CanalMotor.no`) | ✅ |
+| 1272 | Jim | live-fi.tvkaista.net | 🌐 ציבורי (iptv-org) | iptv-org (`Jim.fi`) | ✅ |
+| 1273 | Antena Monden | stream1.antenaplay.ro | 🌐 ציבורי (iptv-org) | iptv-org (`AntenaMonden.ro`) | ✅ |
+| 1274 | Suyai TV | trun.suyaitv.cl | 🌐 ציבורי (iptv-org) | iptv-org (`SuyaiTV.cl`) | ✅ |
+| 1275 | RCN Mas | rcntv-rcnmas-1-us.roku.wurl.tv | 🌐 ציבורי (iptv-org) | iptv-org (`RCNMas.co`) | ✅ |
+| 1276 | AsiriTV | video2.lhdserver.es | 🌐 ציבורי (iptv-org) | iptv-org (`AsiriTV.pe`) | ✅ |
+| 1277 | Salira TV | live.salira.tv | 🌐 ציבורי (iptv-org) | iptv-org (`SaliraTV.id`) | ✅ |
+| 1278 | Good Idea TV | stream1.ai-net.net | 🌐 ציבורי (iptv-org) | iptv-org (`GoodIdeaTV.th`) | ❌ רק באפליקציה (HTTP) |
+| 1279 | ON Vie Giai Tri | freem3u.xyz | 🌐 ציבורי (iptv-org) | iptv-org (`ONVieGiaiTri.vn`) | ✅ |
+| 1280 | Hum TV | g4wlkwx8l23a-hls-live.5centscdn.com | 🌐 ציבורי (iptv-org) | iptv-org (`HumTV.pk`) | ✅ |
+| 1281 | 247 Box TV | hls.247box.live | 🌐 ציבורי (iptv-org) | iptv-org (`247BoxTV.ir`) | ✅ |
+| 1282 | StoryChannel TV | 136044159.r.cdnsun.net | 🌐 ציבורי (iptv-org) | iptv-org (`StoryChannelTV.ma`) | ✅ |
+| 1283 | 1KZN TV | cdn.freevisiontv.co.za | 🌐 ציבורי (iptv-org) | iptv-org (`1KZNTV.za`) | ✅ |
+| 1284 | Qausain TV | acasmedia3.acangroup.org | 🌐 ציבורי (iptv-org) | iptv-org (`QausainTV.ng`) | ✅ |
+| 1285 | Bellavision | fox.hostlagarto.com | 🌐 ציבורי (iptv-org) | iptv-org (`Bellavision.do`) | ✅ |
+| 1286 | Aguacate TV | stream.aguacatetv.com | 🌐 ציבורי (iptv-org) | iptv-org (`AguacateTV.ve`) | ✅ |
+| 1287 | La Nueva Radio TV 97.7 | sv72.ecuaradiotv.net | 🌐 ציבורי (iptv-org) | iptv-org (`LaNuevaRadioTV977.ec`) | ✅ |
+| 1288 | KIX | freem3u.xyz | 🌐 ציבורי (iptv-org) | iptv-org (`KIX.hk`) | ✅ |
+| 1289 | ¡OPA! | 5fc584f3f19c9.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`OPA.cr`) | ✅ |
+| 1290 | Kurdsat | hlspackager.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`Kurdsat.iq`) | ✅ |
+| 1291 | MiTV | rds3.desdeparaguay.net | 🌐 ציבורי (iptv-org) | iptv-org (`MiTV.py`) | ✅ |
+| 1292 | EDN TV | 60417ddeaf0d9.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`EDNTV.hn`) | ✅ |
+| 1293 | Code Fashion TV | cdn2.invivo.bg | 🌐 ציבורי (iptv-org) | iptv-org (`CodeFashionTV.bg`) | ✅ |
+| 1294 | BTV | streamfi-alphadgtl1.zettawiseroutes.com | 🌐 ציבורי (iptv-org) | iptv-org (`BTV.ug`) | ✅ |
+| 1295 | Belarus-2 | ngtrk.dc.beltelecom.by | 🌐 ציבורי (iptv-org) | iptv-org (`Belarus2.by`) | ✅ |
+| 1296 | ETV+ | sb.err.ee | 🌐 ציבורי (iptv-org) | iptv-org (`ETVPlus.ee`) | ✅ |
+| 1297 | BIZ TV | fl.biztv.media | 🌐 ציבורי (iptv-org) | iptv-org (`BIZTV.uz`) | ✅ |
+| 1298 | Imai TV | live20.bozztv.com | 🌐 ציבורי (iptv-org) | iptv-org (`ImaiTV.lk`) | ✅ |
+| 1299 | Ning TV | livefta.malimarcdn.com | 🌐 ציבורי (iptv-org) | iptv-org (`NingTV.la`) | ✅ |
+| 1300 | Shift TV | hls.shift.tv | 🌐 ציבורי (iptv-org) | iptv-org (`ShiftTV.hr`) | ✅ |
+| 1301 | KC2 | 5c46fa289c89f.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`KC2.rw`) | ✅ |
+| 1302 | Med.TV | med-tv-it.fast.rakuten.tv | 🌐 ציבורי (iptv-org) | iptv-org (`MedTV.mt`) | ✅ |
+| 1303 | OTV | 5dcabf026b188.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`OTV.gh`) | ✅ |
+| 1304 | RTNB Divertissement | tv2-stream.rtnb.bi | 🌐 ציבורי (iptv-org) | iptv-org (`RTNBDivertissement.bi`) | ❌ רק באפליקציה (הפניה בלי CORS) |
+| 1305 | Superyacht TV | sy.wns.live | 🌐 ציבורי (iptv-org) | iptv-org (`SuperyachtTV.mc`) | ✅ |
+| 1306 | Trishul Broadcasting Network | live.suricloud.com | 🌐 ציבורי (iptv-org) | iptv-org (`TrishulBroadcastingNetwork.sr`) | ✅ |
+| 1307 | KTV Arabe | kwtktvata.cdn.mangomolo.com | 🌐 ציבורי (iptv-org) | iptv-org (`KTVArabe.kw`) | ✅ |
+| 1308 | Oman TV Cultural | partwota.cdn.mgmlcdn.com | 🌐 ציבורי (iptv-org) | iptv-org (`OmanTVCultural.om`) | ✅ |
+| 1309 | Afroculture TV | streamtv.cmediahosthosting.net | 🌐 ציבורי (iptv-org) | iptv-org (`AfrocultureTV.ci`) | ✅ |
+| 1310 | D3 TV | lbgo.bozztv.com | 🌐 ציבורי (iptv-org) | iptv-org (`D3TV.ml`) | ✅ |
+| 1311 | EVI TV | mistserver.evi-tv.com | 🌐 ציבורי (iptv-org) | iptv-org (`EVITV.cd`) | ✅ |
+| 1312 | PLEX TV | connectiktv.ddns.net | 🌐 ציבורי (iptv-org) | iptv-org (`PLEXTV.cm`) | ❌ רק באפליקציה (HTTP) |
+| 1313 | America TeVe | live.gideo.video | 🌐 ציבורי (iptv-org) | iptv-org (`AmericaTeVe.pr`) | ✅ |
+| 1314 | TVCARiB Latino | cdn.mycloudstream.io | 🌐 ציבורי (iptv-org) | iptv-org (`TVCARiBLatino.sx`) | ✅ |
+| 1315 | UCL | livedelta.cdn.antel.net.uy | 🌐 ציבורי (iptv-org) | iptv-org (`UCL.uy`) | ✅ |
+| 1316 | Abai TV | abaitv-stream.qazcdn.com | 🌐 ציבורי (iptv-org) | iptv-org (`AbaiTV.kz`) | ✅ |
+| 1317 | ANT1 Cyprus | l2.cloudskep.com | 🌐 ציבורי (iptv-org) | iptv-org (`ANT1Cyprus.cy`) | ❌ רק באפליקציה (HTTP) |
+| 1318 | Bonaire.tv | media.streambrothers.com | 🌐 ציבורי (iptv-org) | iptv-org (`Bonairetv.bq`) | ✅ |
+| 1319 | Bonce TV | seswa.bonce.tv | 🌐 ציבורי (iptv-org) | iptv-org (`BonceTV.cw`) | ✅ |
+| 1320 | eldo.TV | stream.eldo.lu | 🌐 ציבורי (iptv-org) | iptv-org (`eldoTV.lu`) | ✅ |
+| 1321 | Lietuvos Rytas TV | live.lietuvosryto.tv | 🌐 ציבורי (iptv-org) | iptv-org (`LietuvosRytasTV.lt`) | ✅ |
+| 1322 | Maasranga TV | tvsen5.aynaott.com | 🌐 ציבורי (iptv-org) | iptv-org (`MaasrangaTV.bd`) | ✅ |
+| 1323 | Miras | alpha.tv.online.tm | 🌐 ציבורי (iptv-org) | iptv-org (`Miras.tm`) | ❌ רק באפליקציה (הפניה בלי CORS) |
+| 1324 | Nos Isla TV | cdn01.setar.aw | 🌐 ציבורי (iptv-org) | iptv-org (`NosIslaTV.aw`) | ✅ |
+| 1325 | Ray TV HD | streaming.tvnepal.com | 🌐 ציבורי (iptv-org) | iptv-org (`RayTVHD.np`) | ✅ |
+| 1326 | RTB 3 | edge13.vedge.infomaniak.com | 🌐 ציבורי (iptv-org) | iptv-org (`RTB3.bf`) | ✅ |
+| 1327 | TBC2 | stream-134630.castr.net | 🌐 ציבורי (iptv-org) | iptv-org (`TBC2.tz`) | ✅ |
+| 1328 | TV Vita | Antik Telecom (סלובקיה), נתיבי test | ⚠️ ממסר צד שלישי | iptv-org (`TVVita.sk`) | ✅ |
+| 1329 | TVBS-Asia | 38.64.72.148 | 🌐 ציבורי (iptv-org) | iptv-org (`TVBSAsia.tw`) | ❌ רק באפליקציה (HTTP) |
+| 1330 | AMG TV | 2-fss-2.streamhoster.com | 🌐 ציבורי (iptv-org) | iptv-org (`AMGTV.us`) | ✅ |
+| 1331 | Hobby Maker | lo3.gemporia.com | 🌐 ציבורי (iptv-org) | iptv-org (`HobbyMaker.uk`) | ✅ |
+| 1332 | FashionTV Paris L'Original | edge-fast3.evrideo.tv | 🌐 ציבורי (iptv-org) | iptv-org (`FashionTVParisLOriginal.fr`) | ✅ |
+| 1333 | Motorvision | mvg-mv-xumo.otteravision.com | 🌐 ציבורי (iptv-org) | iptv-org (`Motorvision.de`) | ✅ |
+| 1334 | Historia | d1k3vzh2ivy22k.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`Historia.es`) | ✅ |
+| 1335 | Discovery Channel | streaming.aurora.enhanced.live | 🌐 ציבורי (iptv-org) | iptv-org (`DiscoveryChannel.it`) | ✅ |
+| 1336 | Russia-K | Smotrim (VGTRK) – הבעלים של קרוסלה | ✅ רשמי | iptv-org (`RussiaK.ru`) | ✅ |
+| 1337 | 36.6 TV | dash2.antik.sk | 🌐 ציבורי (iptv-org) | iptv-org (`366TV.ua`) | ✅ |
+| 1338 | ZenLIFE by Stingray | lotus.stingray.com | 🌐 ציבורי (iptv-org) | iptv-org (`ZenLIFEbyStingray.ca`) | ✅ |
+| 1339 | Fortuna TV | edge.taksimbilisim.com | 🌐 ציבורי (iptv-org) | iptv-org (`FortunaTV.tr`) | ✅ |
+| 1340 | Colors Kannada | da86m1sqpm3o0.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`ColorsKannada.in`) | ✅ |
+| 1341 | CCTV-Health | 38.75.136.137 | 🌐 ציבורי (iptv-org) | iptv-org (`CCTVHealth.cn`) | ❌ רק באפליקציה (HTTP) |
+| 1342 | Conecta Mais TV | adylnet.streampool.net | 🌐 ציבורי (iptv-org) | iptv-org (`ConectaMaisTV.br`) | ✅ |
+| 1343 | Capital 21 | video.cdmx.gob.mx | 🌐 ציבורי (iptv-org) | iptv-org (`Capital21.mx`) | ✅ |
+| 1344 | Power Max Radio TV | videostream.shockmedia.com.ar | 🌐 ציבורי (iptv-org) | iptv-org (`PowerMaxRadioTV.ar`) | ✅ |
+| 1345 | SBS6 Classics | sbs6classic.prd1.talpatvcdn.nl | 🌐 ציבורי (iptv-org) | iptv-org (`SBS6Classics.nl`) | ✅ |
+| 1346 | Carac 2 | onefmhd.vedge.infomaniak.com | 🌐 ציבורי (iptv-org) | iptv-org (`Carac2.ch`) | ✅ |
+| 1347 | Radiowa Czworka | stream14.polskieradio.pl | 🌐 ציבורי (iptv-org) | iptv-org (`RadiowaCzworka.pl`) | ✅ |
+| 1348 | Star Channel International | livestar.siliconweb.com | 🌐 ציבורי (iptv-org) | iptv-org (`StarChannelInternational.gr`) | ✅ |
+| 1349 | MTV Dating | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`MTVDating.se`) | ✅ |
+| 1350 | Liv | live-fi.tvkaista.net | 🌐 ציבורי (iptv-org) | iptv-org (`Liv.fi`) | ✅ |
+| 1351 | TVR Cultural | tvr-cultural.lg.mncdn.com | 🌐 ציבורי (iptv-org) | iptv-org (`TVRCultural.ro`) | ✅ |
+| 1352 | Canal Chilote | videostream.chileservidores.com | 🌐 ציבורי (iptv-org) | iptv-org (`CanalChilote.cl`) | ✅ |
+| 1353 | RCN Novelas | cdnlive.klicgo.net | 🌐 ציבורי (iptv-org) | iptv-org (`RCNNovelas.co`) | ✅ |
+| 1354 | ON Life | freem3u.xyz | 🌐 ציבורי (iptv-org) | iptv-org (`ONLife.vn`) | ✅ |
+| 1355 | A-Plus TV | cdn4.mjunoon.tv | 🌐 ציבורי (iptv-org) | iptv-org (`APlusTV.pk`) | ✅ |
+| 1356 | OXIR TV | hls.oxir.live | 🌐 ציבורי (iptv-org) | iptv-org (`OXIRTV.ir`) | ✅ |
+| 1357 | Soweto TV | cdn.freevisiontv.co.za | 🌐 ציבורי (iptv-org) | iptv-org (`SowetoTV.za`) | ✅ |
+| 1358 | Superscreen TV | video1.getstreamhosting.com | 🌐 ציבורי (iptv-org) | iptv-org (`SuperscreenTV.ng`) | ✅ |
+| 1359 | Canal 17 RTVD | cdn.protvradiostream.com | 🌐 ציבורי (iptv-org) | iptv-org (`Canal17RTVD.do`) | ✅ |
+| 1360 | Inter TV | streamtv.intervenhosting.net | 🌐 ציבורי (iptv-org) | iptv-org (`InterTV.ve`) | ✅ |
+| 1361 | Ciracu TV | cloud37.ecuatel.com | 🌐 ציבורי (iptv-org) | iptv-org (`CiracuTV.ec`) | ✅ |
+| 1362 | Asian Drama | 103.172.187.30 | 🌐 ציבורי (iptv-org) | iptv-org (`AsianDrama.hk`) | ❌ רק באפליקציה (HTTP) |
+| 1363 | TeleMas | acceso.mediosdecostarica.com | 🌐 ציבורי (iptv-org) | iptv-org (`TeleMas.cr`) | ✅ |
+| 1364 | EmanTv | avr.host247.net | 🌐 ציבורי (iptv-org) | iptv-org (`EmanTv.iq`) | ✅ |
+| 1365 | Oasis TV | video.hostingcaaguazu.com | 🌐 ציבורי (iptv-org) | iptv-org (`OasisTV.py`) | ✅ |
+| 1366 | Girasol TV | s.emisoras.tv | 🌐 ציבורי (iptv-org) | iptv-org (`GirasolTV.hn`) | ✅ |
+| 1367 | Code Health TV | cdn2.invivo.bg | 🌐 ציבורי (iptv-org) | iptv-org (`CodeHealthTV.bg`) | ✅ |
+| 1368 | FORT TV | fort.co-works.org | 🌐 ציבורי (iptv-org) | iptv-org (`FORTTV.ug`) | ✅ |
+| 1369 | Belarus-3 | ngtrk.dc.beltelecom.by | 🌐 ציבורי (iptv-org) | iptv-org (`Belarus3.by`) | ✅ |
+| 1370 | NW Magazine | hls.newworldtv.com | 🌐 ציבורי (iptv-org) | iptv-org (`NWMagazine.tg`) | ✅ |
+| 1371 | Cheksiz TV | fl.biztv.media | 🌐 ציבורי (iptv-org) | iptv-org (`CheksizTV.uz`) | ✅ |
+| 1372 | Hiru TV | tv.hiruhost.com | 🌐 ציבורי (iptv-org) | iptv-org (`HiruTV.lk`) | ✅ |
+| 1373 | Vati Lao | livefta.malimarcdn.com | 🌐 ציבורי (iptv-org) | iptv-org (`VatiLao.la`) | ✅ |
+| 1374 | TV Nova | stream.agatin.hr | 🌐 ציבורי (iptv-org) | iptv-org (`TVNova.hr`) | ✅ |
+| 1375 | AsianCrush | linear-900.frequency.stream | 🌐 ציבורי (iptv-org) | iptv-org (`AsianCrush.us`) | ✅ |
+| 1376 | Top Gear | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`TopGear.uk`) | ✅ |
 
 ## 📺 מסורת וקהילה
 
 | # | ערוץ | שרת השידור | סוג | נמצא ב | באתר (דפדפן) |
 |---|---|---|---|---|---|
-| 1373 | ערוץ הידברות HD | CyberCDN – ה-CDN של תחנות הרדיו עצמן | ✅ רשמי | iptv-org (`Hidabroot.il`) | ✅ |
-| 1374 | הלא TV HD (Hala TV) | פאנט – הלא TV (רשמי) | ✅ רשמי | iptv-org (`HalaTV.il`) | ✅ |
-| 1375 | ערוץ קבלה לעם | קבלה לעם – שרת רשמי | ✅ רשמי | iptv-org (`KabbalahforthePeopleIsrael.il`) | ✅ |
-| 1376 | שלנו TV HD (Shelanu TV) | שלנו TV – CDN77 | ✅ רשמי | iptv-org (`ShelanuTV.il`) | ✅ |
-| 1377 | ערוץ 16 ישראל | ערוץ 16 – שרת רשמי | ✅ רשמי | iptv-org (`Channel16.il`) | ✅ |
-| 1378 | JLTV טלוויזיה יהודית | jlt-jltv-xumo.otteravision.com | ⚠️ ממסר צד שלישי | iptv-org (`JewishLifeTelevision.us`) | ✅ |
-| 1379 | קבלה לעם – רוסית | קבלה לעם – השרת של הערוץ | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 1377 | ערוץ הידברות HD | CyberCDN – ה-CDN של תחנות הרדיו עצמן | ✅ רשמי | iptv-org (`Hidabroot.il`) | ✅ |
+| 1378 | הלא TV HD (Hala TV) | פאנט – הלא TV (רשמי) | ✅ רשמי | iptv-org (`HalaTV.il`) | ✅ |
+| 1379 | ערוץ קבלה לעם | קבלה לעם – שרת רשמי | ✅ רשמי | iptv-org (`KabbalahforthePeopleIsrael.il`) | ✅ |
+| 1380 | שלנו TV HD (Shelanu TV) | שלנו TV – CDN77 | ✅ רשמי | iptv-org (`ShelanuTV.il`) | ✅ |
+| 1381 | ערוץ 16 ישראל | ערוץ 16 – שרת רשמי | ✅ רשמי | iptv-org (`Channel16.il`) | ✅ |
+| 1382 | JLTV טלוויזיה יהודית | jlt-jltv-xumo.otteravision.com | ⚠️ ממסר צד שלישי | iptv-org (`JewishLifeTelevision.us`) | ✅ |
+| 1383 | קבלה לעם – רוסית | קבלה לעם – השרת של הערוץ | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
 
 ## 📺 ערוצים בינלאומיים (World)
 
 | # | ערוץ | שרת השידור | סוג | נמצא ב | באתר (דפדפן) |
 |---|---|---|---|---|---|
-| 1380 | DW News English HD | DW – Akamai (רשמי) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
-| 1381 | Al Jazeera English HD | אל-ג'זירה – שרת רשמי | ✅ רשמי | iptv-org (`AlJazeera.qa`) | ✅ |
-| 1382 | BFM TV HD (France) | BFM – SFR (רשמי) | ✅ רשמי | iptv-org (`BFMTV.fr`) | ✅ |
-| 1383 | BFM Tech & Co HD | BFM – SFR (רשמי) | ✅ רשמי | iptv-org (`BFMTechCo.fr`) | ✅ |
-| 1384 | ABC | amg01942-amg01942c6-stirr-us-10178.playouts.now.amagi.tv | 🌐 ציבורי (iptv-org) | iptv-org (`ABC.us`) | ✅ |
-| 1385 | Brit Asia TV | hls.autopo.st | 🌐 ציבורי (iptv-org) | iptv-org (`BritAsiaTV.uk`) | ✅ |
-| 1386 | 20 Minutes TV | live-20minutestv.digiteka.com | 🌐 ציבורי (iptv-org) | iptv-org (`20MinutesTV.fr`) | ✅ |
-| 1387 | Alex Berlin | alex-stream.rosebud-media.de | 🌐 ציבורי (iptv-org) | iptv-org (`AlexBerlin.de`) | ✅ |
-| 1388 | Arabi TV | streamtv2.elitecomunicacion.cloud | 🌐 ציבורי (iptv-org) | iptv-org (`ArabiTV.es`) | ✅ |
-| 1389 | A2i TV | stream.sen-gt.com | 🌐 ציבורי (iptv-org) | iptv-org (`A2iTV.it`) | ✅ |
-| 1390 | Insayt TV | Cinerama.uz – ספק IPTV באוזבקיסטן | ⚠️ ממסר צד שלישי | iptv-org (`InsaytTV.ru`) | ✅ |
-| 1391 | 1+1 Marafon | dash2.antik.sk | 🌐 ציבורי (iptv-org) | iptv-org (`1Plus1Marafon.ua`) | ✅ |
-| 1392 | Wild TV | dfhsahpa45kk2.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`WildTV.ca`) | ✅ |
-| 1393 | ABC TV | c.mjh.nz | 🌐 ציבורי (iptv-org) | iptv-org (`ABCTV.au`) | ✅ |
-| 1394 | Ajman TV | cdn1.logichost.in | 🌐 ציבורי (iptv-org) | iptv-org (`AjmanTV.ae`) | ✅ |
-| 1395 | Al Rayyan Old TV | alrayyancdn.vidgyor.com | 🌐 ציבורי (iptv-org) | iptv-org (`AlRayyanOldTV.qa`) | ✅ |
-| 1396 | Al Riyadh Radio | live.kwikmotion.com | 🌐 ציבורי (iptv-org) | iptv-org (`AlRiyadhRadio.sa`) | ✅ |
-| 1397 | Watan TV | rp.tactivemedia.com | 🌐 ציבורי (iptv-org) | iptv-org (`WatanTV.eg`) | ✅ |
-| 1398 | Lana TV | cdn.streamlane.tv | 🌐 ציבורי (iptv-org) | iptv-org (`LanaTV.lb`) | ✅ |
-| 1399 | Elsharq TV | mn-nl.mncdn.com | 🌐 ציבורי (iptv-org) | iptv-org (`ElsharqTV.tr`) | ✅ |
-| 1400 | DD India | mumbai-edge.smartplaytv.in | 🌐 ציבורי (iptv-org) | iptv-org (`DDIndia.in`) | ✅ |
-| 1401 | HLAT-DTV | 5c3639aa99149.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`HLATDTV.kr`) | ✅ |
-| 1402 | Hebei TV | event.pull.hebtv.com | 🌐 ציבורי (iptv-org) | iptv-org (`HebeiTV.cn`) | ✅ |
-| 1403 | Amazon Sat | amazonsat.brasilstream.com.br | 🌐 ציבורי (iptv-org) | iptv-org (`AmazonSat.br`) | ✅ |
-| 1404 | 8NTV | 60417ddeaf0d9.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`8NTV.mx`) | ✅ |
-| 1405 | Canal 12 Venado Tuerto | nd106.republicaservers.com | 🌐 ציבורי (iptv-org) | iptv-org (`Canal12VenadoTuerto.ar`) | ✅ |
-| 1406 | SIC Alta Definicao | production-fast-sic.content.okast.tv | 🌐 ציבורי (iptv-org) | iptv-org (`SICAltaDefinicao.pt`) | ✅ |
-| 1407 | TV Rain | wl.tvrain.tv | 🌐 ציבורי (iptv-org) | iptv-org (`TVRain.nl`) | ✅ |
-| 1408 | Matele | live.matele.be | 🌐 ציבורי (iptv-org) | iptv-org (`Matele.be`) | ✅ |
-| 1409 | Max TV | cdn.katapy.io | 🌐 ציבורי (iptv-org) | iptv-org (`MaxTV.ch`) | ✅ |
-| 1410 | Landle TV | streaming13.huberwebmedia.at | 🌐 ציבורי (iptv-org) | iptv-org (`LandleTV.at`) | ✅ |
-| 1411 | NewTV | 1409502578.rsc.cdn77.org | 🌐 ציבורי (iptv-org) | iptv-org (`NewTV.pl`) | ✅ |
-| 1412 | Alpha TV | alphatvlive2.siliconweb.com | 🌐 ציבורי (iptv-org) | iptv-org (`AlphaTV.gr`) | ✅ |
-| 1413 | MTV Reality | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`MTVReality.se`) | ✅ |
-| 1414 | Frikanalen | frikanalen.no | 🌐 ציבורי (iptv-org) | iptv-org (`Frikanalen.no`) | ✅ |
-| 1415 | DRTV | drlivedrtvahls.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`DRTV.dk`) | ✅ |
-| 1416 | MTV Sub | live-fi.tvkaista.net | 🌐 ציבורי (iptv-org) | iptv-org (`MTVSub.fi`) | ✅ |
-| 1417 | TG4 | fastly.live.brightcove.com | 🌐 ציבורי (iptv-org) | iptv-org (`TG4.ie`) | ✅ |
-| 1418 | Barrandov Krimi | dash4.antik.sk | 🌐 ציבורי (iptv-org) | iptv-org (`BarrandovKrimi.cz`) | ✅ |
-| 1419 | A7TV | a7tvlive.ro | 🌐 ציבורי (iptv-org) | iptv-org (`A7TV.ro`) | ✅ |
-| 1420 | Hevizi TV | cloudfront44.lexanetwork.com | 🌐 ציבורי (iptv-org) | iptv-org (`HeviziTV.hu`) | ✅ |
-| 1421 | Antofagasta TV | unlimited6-cl.dps.live | 🌐 ציבורי (iptv-org) | iptv-org (`AntofagastaTV.cl`) | ✅ |
-| 1422 | Aupur Television | canal.aupurtv.co | 🌐 ציבורי (iptv-org) | iptv-org (`AupurTelevision.co`) | ✅ |
-| 1423 | Latina | redirector.rudo.video | 🌐 ציבורי (iptv-org) | iptv-org (`Latina.pe`) | ✅ |
-| 1424 | TVRI World | ott-balancer.tvri.go.id | 🌐 ציבורי (iptv-org) | iptv-org (`TVRIWorld.id`) | ✅ |
-| 1425 | NBT World | cdn-edge.iiptvcdn.com | 🌐 ציבורי (iptv-org) | iptv-org (`NBTWorld.th`) | ✅ |
-| 1426 | Vietnam Today | amagi-live.ondemandkorea.com | 🌐 ציבורי (iptv-org) | iptv-org (`VietnamToday.vn`) | ✅ |
-| 1427 | PMI TV | cdn.live247stream.com | 🌐 ציבורי (iptv-org) | iptv-org (`PMITV.pk`) | ✅ |
-| 1428 | Asil TV | live.asil.tv | 🌐 ציבורי (iptv-org) | iptv-org (`AsilTV.ir`) | ✅ |
-| 1429 | 2M Monde | d2qh3gh0k5vp3v.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`2MMonde.ma`) | ✅ |
-| 1430 | TV BRICS Africa | cdn.freevisiontv.co.za | 🌐 ציבורי (iptv-org) | iptv-org (`TVBRICSAfrica.za`) | ✅ |
-| 1431 | TV-WEST | tv-west.lg.mncdn.com | 🌐 ציבורי (iptv-org) | iptv-org (`TVWEST.ng`) | ✅ |
-| 1432 | A7 TV | 183.bozztv.com | 🌐 ציבורי (iptv-org) | iptv-org (`A7TV.do`) | ✅ |
-| 1433 | Dmoda Channel | master.tucableip.com | 🌐 ציבורי (iptv-org) | iptv-org (`DmodaChannel.bo`) | ✅ |
-| 1434 | Paraguay TV | stream.paraguaytv.gov.py | 🌐 ציבורי (iptv-org) | iptv-org (`ParaguayTV.py`) | ✅ |
-| 1435 | MTR | cdnsk003.panaccess.com | 🌐 ציבורי (iptv-org) | iptv-org (`MTR.sk`) | ✅ |
-| 1436 | Latina TV | streamtv.latinamedios.com | 🌐 ציבורי (iptv-org) | iptv-org (`LatinaTV.ve`) | ✅ |
-| 1437 | America Estereo Quito | video.makrodigital.com | 🌐 ציבורי (iptv-org) | iptv-org (`AmericaEstereoQuito.ec`) | ✅ |
-| 1438 | TV Sur Canal 14 | k20.usastreams.com | 🌐 ציבורי (iptv-org) | iptv-org (`TVSurCanal14.cr`) | ✅ |
-| 1439 | Canal 100 Chinique | live20.bozztv.com | 🌐 ציבורי (iptv-org) | iptv-org (`Canal100Chinique.gt`) | ✅ |
-| 1440 | Al Rasheed TV | media1.livaat.com | 🌐 ציבורי (iptv-org) | iptv-org (`AlRasheedTV.iq`) | ✅ |
-| 1441 | Canal 11 | redirector.rudo.video | 🌐 ציבורי (iptv-org) | iptv-org (`Canal11.hn`) | ✅ |
-| 1442 | Jordan Archive | playlist.fasttvcdn.com | 🌐 ציבורי (iptv-org) | iptv-org (`JordanArchive.jo`) | ✅ |
-| 1443 | Belarus-1 | ngtrk.dc.beltelecom.by | 🌐 ציבורי (iptv-org) | iptv-org (`Belarus1.by`) | ✅ |
-| 1444 | Rajeen TV | mn-nl.mncdn.com | 🌐 ציבורי (iptv-org) | iptv-org (`RajeenTV.ps`) | ✅ |
-| 1445 | TSV | tsv.md | 🌐 ציבורי (iptv-org) | iptv-org (`TSV.md`) | ✅ |
-| 1446 | Jibek Joly | stream.qazcdn.net | 🌐 ציבורי (iptv-org) | iptv-org (`JibekJoly.kz`) | ✅ |
-| 1447 | Louga TV | stream.sen-gt.com | 🌐 ציבורי (iptv-org) | iptv-org (`LougaTV.sn`) | ✅ |
-| 1448 | TeleOnce | live.11-cdn.com | 🌐 ציבורי (iptv-org) | iptv-org (`TeleOnce.pr`) | ✅ |
-| 1449 | Sat 7 Turk | live.artidijitalmedya.com | 🌐 ציבורי (iptv-org) | iptv-org (`Sat7Turk.cy`) | ✅ |
-| 1450 | Rajdhani TV | stream.shariarsuvo.com | 🌐 ציבורי (iptv-org) | iptv-org (`RajdhaniTV.bd`) | ✅ |
-| 1451 | Nasa TV | stream.nasatv.com.mk | 🌐 ציבורי (iptv-org) | iptv-org (`NasaTV.mk`) | ✅ |
-| 1452 | Pannon TV | stream.nmih.hu | 🌐 ציבורי (iptv-org) | iptv-org (`PannonTV.rs`) | ✅ |
-| 1453 | RTK 3 | gjirafa-video-live.gjirafa.net | 🌐 ציבורי (iptv-org) | iptv-org (`RTK3.xk`) | ✅ |
-| 1454 | TV10 | 5c46fa289c89f.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`TV10.rw`) | ✅ |
-| 1455 | Imedi TV | tv.cdn.xsg.ge | 🌐 ציבורי (iptv-org) | iptv-org (`ImediTV.ge`) | ✅ |
-| 1456 | Turkmenistan | alpha.tv.online.tm | 🌐 ציבורי (iptv-org) | iptv-org (`Turkmenistan.tm`) | ❌ רק באפליקציה (הפניה בלי CORS) |
-| 1457 | CAM 10 TV | stream.it-innov.com | 🌐 ציבורי (iptv-org) | iptv-org (`CAM10TV.cm`) | ✅ |
-| 1458 | RTL Zwee | live-edge.rtl.lu | 🌐 ציבורי (iptv-org) | iptv-org (`RTLZwee.lu`) | ✅ |
-| 1459 | Verbum TV | video-eu1.streamerr.co | 🌐 ציבורי (iptv-org) | iptv-org (`VerbumTV.lk`) | ✅ |
-| 1460 | Vizion Plus | tringliveviz.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`VizionPlus.al`) | ✅ |
-| 1461 | Kordia TV | ptvlive.kordia.net.nz | 🌐 ציבורי (iptv-org) | iptv-org (`KordiaTV.nz`) | ✅ |
-| 1462 | MNB World | live.mnb.mn | 🌐 ציבורי (iptv-org) | iptv-org (`MNBWorld.mn`) | ✅ |
-| 1463 | Television Caribbean | live.kingdom-tv.com | 🌐 ציבורי (iptv-org) | iptv-org (`TelevisionCaribbean.kn`) | ✅ |
-| 1464 | Althania | live.kwikmotion.com | 🌐 ציבורי (iptv-org) | iptv-org (`Althania.sy`) | ✅ |
-| 1465 | Ayaz TV | janya-ayaztv.vgcdn.net | 🌐 ציבורי (iptv-org) | iptv-org (`AyazTV.az`) | ✅ |
-| 1466 | Armenia 2 | amtv.tulixcdn.com | 🌐 ציבורי (iptv-org) | iptv-org (`Armenia2.am`) | ✅ |
-| 1467 | SEA TV | seatv.netlinkbroadcaster.com | 🌐 ציבורי (iptv-org) | iptv-org (`SEATV.kh`) | ✅ |
-| 1468 | Tamadon TV | hls.tamadon.live | 🌐 ציבורי (iptv-org) | iptv-org (`TamadonTV.af`) | ✅ |
-| 1469 | Lao Net TV | livefta.malimarcdn.com | 🌐 ציבורי (iptv-org) | iptv-org (`LaoNetTV.la`) | ✅ |
-| 1470 | LTV1 | lsm.eu.cdns-redge.media | 🌐 ציבורי (iptv-org) | iptv-org (`LTV1.lv`) | ✅ |
-| 1471 | Radio Televizija Banovina | pool.alter-media.hr | 🌐 ציבורי (iptv-org) | iptv-org (`RadioTelevizijaBanovina.hr`) | ✅ |
-| 1472 | RTV Zenica | stream.rtvze.ba | 🌐 ציבורי (iptv-org) | iptv-org (`RTVZenica.ba`) | ✅ |
-| 1473 | TVCG MNE | rtcg-live-open.morescreens.com | 🌐 ציבורי (iptv-org) | iptv-org (`TVCGMNE.me`) | ✅ |
-| 1474 | Bahrain International | 5c7b683162943.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`BahrainInternational.bh`) | ✅ |
-| 1475 | Ignite Television | rpn.bozztv.com | 🌐 ציבורי (iptv-org) | iptv-org (`IgniteTelevision.gy`) | ✅ |
-| 1476 | Supreme Master TV | lbs-us1.suprememastertv.com | 🌐 ציבורי (iptv-org) | iptv-org (`SupremeMasterTV.tw`) | ✅ |
-| 1477 | Radio Tele Planet Compas | 5dcab9aed5331.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`RadioTelePlanetCompas.ht`) | ✅ |
-| 1478 | Tanasuh TV | kilolink.pulsarstarsolutions.com | 🌐 ציבורי (iptv-org) | iptv-org (`TanasuhTV.ly`) | ✅ |
-| 1479 | ETV | edge12.vedge.infomaniak.com | 🌐 ציבורי (iptv-org) | iptv-org (`ETV.gp`) | ✅ |
-| 1480 | NTV | strhlslb01.streamakaci.tv | 🌐 ציבורי (iptv-org) | iptv-org (`NTV.ci`) | ✅ |
-| 1481 | TN8 | streamingcws30.com | 🌐 ציבורי (iptv-org) | iptv-org (`TN8.ni`) | ✅ |
-| 1482 | Nex TV Canal 21 | movil.ejeserver.com | 🌐 ציבורי (iptv-org) | iptv-org (`NexTVCanal21.pa`) | ✅ |
-| 1483 | RUV | ruv-web-live.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`RUV.is`) | ✅ |
-| 1484 | TV Spravedliva Bulgariya | tv.tvsb.bg | 🌐 ציבורי (iptv-org) | iptv-org (`TVSpravedlivaBulgariya.bg`) | ✅ |
-| 1485 | CBN TV | 5790d294af2dc.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`CBNTV.vg`) | ✅ |
-| 1486 | Inooro TV | live-onesignal.royalmedia.co.ke | 🌐 ציבורי (iptv-org) | iptv-org (`InooroTV.ke`) | ✅ |
-| 1487 | Pointe TV | tv.pointville.ag | 🌐 ציבורי (iptv-org) | iptv-org (`PointeTV.ag`) | ✅ |
-| 1488 | Raajje TV | raajjetv.yarr-myn.workers.dev | 🌐 ציבורי (iptv-org) | iptv-org (`RaajjeTV.mv`) | ✅ |
-| 1489 | TVJ | vod2live.univtec.com | 🌐 ציבורי (iptv-org) | iptv-org (`TVJ.jm`) | ✅ |
-| 1490 | ZNS-TV | zns-edge1.streamcomedia.cloud | 🌐 ציבורי (iptv-org) | iptv-org (`ZNSTV.bs`) | ✅ |
-| 1491 | El Watania 1 | sw1.tanitweb.net | 🌐 ציבורי (iptv-org) | iptv-org (`ElWatania1.tn`) | ✅ |
-| 1492 | ERi-TV 1 | jmc-live.ercdn.net | 🌐 ציבורי (iptv-org) | iptv-org (`ERiTV1.er`) | ✅ |
-| 1493 | KTV 1 | kwtktv1ta.cdn.mangomolo.com | 🌐 ציבורי (iptv-org) | iptv-org (`KTV1.kw`) | ✅ |
-| 1494 | Oman TV | partneta.cdn.mgmlcdn.com | 🌐 ציבורי (iptv-org) | iptv-org (`OmanTV.om`) | ✅ |
-| 1495 | RASD TV | cloud.streamingconnect.tv | 🌐 ציבורי (iptv-org) | iptv-org (`RASDTV.eh`) | ✅ |
-| 1496 | Sudan TV | cdn-globecast.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`SudanTV.sd`) | ✅ |
-| 1497 | TV2 | 185.9.2.18 | 🌐 ציבורי (iptv-org) | iptv-org (`TV2.dz`) | ❌ רק באפליקציה (HTTP) |
-| 1498 | Yemen Today TV | video.yementdy.tv | 🌐 ציבורי (iptv-org) | iptv-org (`YemenTodayTV.ye`) | ✅ |
-| 1499 | Kalac TV | edge13.vedge.infomaniak.com | 🌐 ציבורי (iptv-org) | iptv-org (`KalacTV.gn`) | ✅ |
-| 1500 | RTB | edge12.vedge.infomaniak.com | 🌐 ציבורי (iptv-org) | iptv-org (`RTB.bf`) | ✅ |
-| 1501 | RTNB TV | tv1-stream.rtnb.bi | 🌐 ציבורי (iptv-org) | iptv-org (`RTNBTV.bi`) | ✅ |
-| 1502 | Tele Peyi | edge20.vedge.infomaniak.com | 🌐 ציבורי (iptv-org) | iptv-org (`TelePeyi.gf`) | ✅ |
-| 1503 | Tele Tchad | strhlslb01.streamakaci.tv | 🌐 ציבורי (iptv-org) | iptv-org (`TeleTchad.td`) | ✅ |
-| 1504 | Television Espoir 47 | cdn140m.panaccess.com | 🌐 ציבורי (iptv-org) | iptv-org (`TelevisionEspoir47.tg`) | ✅ |
-| 1505 | TV Monaco | production-fast-mcrtv.content.okast.tv | 🌐 ציבורי (iptv-org) | iptv-org (`TVMonaco.mc`) | ✅ |
-| 1506 | Zitata TV | live.zitata.tv | 🌐 ציבורי (iptv-org) | iptv-org (`ZitataTV.mq`) | ✅ |
-| 1507 | TVM | stream.tvm.co.mz | 🌐 ציבורי (iptv-org) | iptv-org (`TVM.mz`) | ✅ |
-| 1508 | Andorra TV | livesg1.rtva.hiway.media | 🌐 ציבורי (iptv-org) | iptv-org (`AndorraTV.ad`) | ✅ |
-| 1509 | Dodoma TV | goliveafrica.media | 🌐 ציבורי (iptv-org) | iptv-org (`DodomaTV.tz`) | ✅ |
-| 1510 | ETV | sb.err.ee | 🌐 ציבורי (iptv-org) | iptv-org (`ETV.ee`) | ✅ |
-| 1511 | Golden Jade | 103.172.187.30 | 🌐 ציבורי (iptv-org) | iptv-org (`GoldenJade.hk`) | ❌ רק באפליקציה (HTTP) |
-| 1512 | Korean Central Television | live.koryocdn.org | 🌐 ציבורי (iptv-org) | iptv-org (`KoreanCentralTelevision.kp`) | ❌ רק באפליקציה (הפניה בלי CORS) |
-| 1513 | MWD | 203.81.84.130 | 🌐 ציבורי (iptv-org) | iptv-org (`MWD.mm`) | ❌ רק באפליקציה (HTTP) |
-| 1514 | NosTV Bonaire 2 | stream2.nostvbonaire.com | 🌐 ציבורי (iptv-org) | iptv-org (`NosTVBonaire2.bq`) | ✅ |
-| 1515 | One | 2-fss-1.streamhoster.com | 🌐 ציבורי (iptv-org) | iptv-org (`One.mt`) | ✅ |
-| 1516 | Telearuba | cdn01.setar.aw | 🌐 ציבורי (iptv-org) | iptv-org (`Telearuba.aw`) | ✅ |
-| 1517 | TV Direct 13 | oqgdrog4d4rm-hls-live.5centscdn.com | 🌐 ציבורי (iptv-org) | iptv-org (`TVDirect13.cw`) | ✅ |
-| 1518 | TV Veseljak Golica HD | radio.serv.si | 🌐 ציבורי (iptv-org) | iptv-org (`TVVeseljakGolicaHD.si`) | ✅ |
-| 1519 | AFTV | livestream.telvue.com | 🌐 ציבורי (iptv-org) | iptv-org (`AFTV.us`) | ✅ |
-| 1520 | Spark TV | candlelightmedia-sparklightlove-4-us.roku.wurl.tv | 🌐 ציבורי (iptv-org) | iptv-org (`SparkTV.uk`) | ✅ |
-| 1521 | Cannes Lerins TV | vdo2.pro-fhi.net | 🌐 ציבורי (iptv-org) | iptv-org (`CannesLerinsTV.fr`) | ✅ |
-| 1522 | Allgau TV | stream01.welocal.stream | 🌐 ציבורי (iptv-org) | iptv-org (`AllgauTV.de`) | ✅ |
-| 1523 | Canal San Roque | cdnlivevlc.codev8.net | 🌐 ציבורי (iptv-org) | iptv-org (`CanalSanRoque.es`) | ✅ |
+| 1384 | DW News English HD | DW – Akamai (רשמי) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 1385 | Al Jazeera English HD | אל-ג'זירה – שרת רשמי | ✅ רשמי | iptv-org (`AlJazeera.qa`) | ✅ |
+| 1386 | BFM TV HD (France) | BFM – SFR (רשמי) | ✅ רשמי | iptv-org (`BFMTV.fr`) | ✅ |
+| 1387 | BFM Tech & Co HD | BFM – SFR (רשמי) | ✅ רשמי | iptv-org (`BFMTechCo.fr`) | ✅ |
+| 1388 | ABC | amg01942-amg01942c6-stirr-us-10178.playouts.now.amagi.tv | 🌐 ציבורי (iptv-org) | iptv-org (`ABC.us`) | ✅ |
+| 1389 | Brit Asia TV | hls.autopo.st | 🌐 ציבורי (iptv-org) | iptv-org (`BritAsiaTV.uk`) | ✅ |
+| 1390 | 20 Minutes TV | live-20minutestv.digiteka.com | 🌐 ציבורי (iptv-org) | iptv-org (`20MinutesTV.fr`) | ✅ |
+| 1391 | Alex Berlin | alex-stream.rosebud-media.de | 🌐 ציבורי (iptv-org) | iptv-org (`AlexBerlin.de`) | ✅ |
+| 1392 | Arabi TV | streamtv2.elitecomunicacion.cloud | 🌐 ציבורי (iptv-org) | iptv-org (`ArabiTV.es`) | ✅ |
+| 1393 | A2i TV | stream.sen-gt.com | 🌐 ציבורי (iptv-org) | iptv-org (`A2iTV.it`) | ✅ |
+| 1394 | Insayt TV | Cinerama.uz – ספק IPTV באוזבקיסטן | ⚠️ ממסר צד שלישי | iptv-org (`InsaytTV.ru`) | ✅ |
+| 1395 | 1+1 Marafon | dash2.antik.sk | 🌐 ציבורי (iptv-org) | iptv-org (`1Plus1Marafon.ua`) | ✅ |
+| 1396 | Wild TV | dfhsahpa45kk2.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`WildTV.ca`) | ✅ |
+| 1397 | ABC TV | c.mjh.nz | 🌐 ציבורי (iptv-org) | iptv-org (`ABCTV.au`) | ✅ |
+| 1398 | Ajman TV | cdn1.logichost.in | 🌐 ציבורי (iptv-org) | iptv-org (`AjmanTV.ae`) | ✅ |
+| 1399 | Al Rayyan Old TV | alrayyancdn.vidgyor.com | 🌐 ציבורי (iptv-org) | iptv-org (`AlRayyanOldTV.qa`) | ✅ |
+| 1400 | Al Riyadh Radio | live.kwikmotion.com | 🌐 ציבורי (iptv-org) | iptv-org (`AlRiyadhRadio.sa`) | ✅ |
+| 1401 | Watan TV | rp.tactivemedia.com | 🌐 ציבורי (iptv-org) | iptv-org (`WatanTV.eg`) | ✅ |
+| 1402 | Lana TV | cdn.streamlane.tv | 🌐 ציבורי (iptv-org) | iptv-org (`LanaTV.lb`) | ✅ |
+| 1403 | Elsharq TV | mn-nl.mncdn.com | 🌐 ציבורי (iptv-org) | iptv-org (`ElsharqTV.tr`) | ✅ |
+| 1404 | DD India | mumbai-edge.smartplaytv.in | 🌐 ציבורי (iptv-org) | iptv-org (`DDIndia.in`) | ✅ |
+| 1405 | HLAT-DTV | 5c3639aa99149.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`HLATDTV.kr`) | ✅ |
+| 1406 | Hebei TV | event.pull.hebtv.com | 🌐 ציבורי (iptv-org) | iptv-org (`HebeiTV.cn`) | ✅ |
+| 1407 | Amazon Sat | amazonsat.brasilstream.com.br | 🌐 ציבורי (iptv-org) | iptv-org (`AmazonSat.br`) | ✅ |
+| 1408 | 8NTV | 60417ddeaf0d9.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`8NTV.mx`) | ✅ |
+| 1409 | Canal 12 Venado Tuerto | nd106.republicaservers.com | 🌐 ציבורי (iptv-org) | iptv-org (`Canal12VenadoTuerto.ar`) | ✅ |
+| 1410 | SIC Alta Definicao | production-fast-sic.content.okast.tv | 🌐 ציבורי (iptv-org) | iptv-org (`SICAltaDefinicao.pt`) | ✅ |
+| 1411 | TV Rain | wl.tvrain.tv | 🌐 ציבורי (iptv-org) | iptv-org (`TVRain.nl`) | ✅ |
+| 1412 | Matele | live.matele.be | 🌐 ציבורי (iptv-org) | iptv-org (`Matele.be`) | ✅ |
+| 1413 | Max TV | cdn.katapy.io | 🌐 ציבורי (iptv-org) | iptv-org (`MaxTV.ch`) | ✅ |
+| 1414 | Landle TV | streaming13.huberwebmedia.at | 🌐 ציבורי (iptv-org) | iptv-org (`LandleTV.at`) | ✅ |
+| 1415 | NewTV | 1409502578.rsc.cdn77.org | 🌐 ציבורי (iptv-org) | iptv-org (`NewTV.pl`) | ✅ |
+| 1416 | Alpha TV | alphatvlive2.siliconweb.com | 🌐 ציבורי (iptv-org) | iptv-org (`AlphaTV.gr`) | ✅ |
+| 1417 | MTV Reality | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`MTVReality.se`) | ✅ |
+| 1418 | Frikanalen | frikanalen.no | 🌐 ציבורי (iptv-org) | iptv-org (`Frikanalen.no`) | ✅ |
+| 1419 | DRTV | drlivedrtvahls.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`DRTV.dk`) | ✅ |
+| 1420 | MTV Sub | live-fi.tvkaista.net | 🌐 ציבורי (iptv-org) | iptv-org (`MTVSub.fi`) | ✅ |
+| 1421 | TG4 | fastly.live.brightcove.com | 🌐 ציבורי (iptv-org) | iptv-org (`TG4.ie`) | ✅ |
+| 1422 | Barrandov Krimi | dash4.antik.sk | 🌐 ציבורי (iptv-org) | iptv-org (`BarrandovKrimi.cz`) | ✅ |
+| 1423 | A7TV | a7tvlive.ro | 🌐 ציבורי (iptv-org) | iptv-org (`A7TV.ro`) | ✅ |
+| 1424 | Hevizi TV | cloudfront44.lexanetwork.com | 🌐 ציבורי (iptv-org) | iptv-org (`HeviziTV.hu`) | ✅ |
+| 1425 | Antofagasta TV | unlimited6-cl.dps.live | 🌐 ציבורי (iptv-org) | iptv-org (`AntofagastaTV.cl`) | ✅ |
+| 1426 | Aupur Television | canal.aupurtv.co | 🌐 ציבורי (iptv-org) | iptv-org (`AupurTelevision.co`) | ✅ |
+| 1427 | Latina | redirector.rudo.video | 🌐 ציבורי (iptv-org) | iptv-org (`Latina.pe`) | ✅ |
+| 1428 | TVRI World | ott-balancer.tvri.go.id | 🌐 ציבורי (iptv-org) | iptv-org (`TVRIWorld.id`) | ✅ |
+| 1429 | NBT World | cdn-edge.iiptvcdn.com | 🌐 ציבורי (iptv-org) | iptv-org (`NBTWorld.th`) | ✅ |
+| 1430 | Vietnam Today | amagi-live.ondemandkorea.com | 🌐 ציבורי (iptv-org) | iptv-org (`VietnamToday.vn`) | ✅ |
+| 1431 | PMI TV | cdn.live247stream.com | 🌐 ציבורי (iptv-org) | iptv-org (`PMITV.pk`) | ✅ |
+| 1432 | Asil TV | live.asil.tv | 🌐 ציבורי (iptv-org) | iptv-org (`AsilTV.ir`) | ✅ |
+| 1433 | 2M Monde | d2qh3gh0k5vp3v.cloudfront.net | 🌐 ציבורי (iptv-org) | iptv-org (`2MMonde.ma`) | ✅ |
+| 1434 | TV BRICS Africa | cdn.freevisiontv.co.za | 🌐 ציבורי (iptv-org) | iptv-org (`TVBRICSAfrica.za`) | ✅ |
+| 1435 | TV-WEST | tv-west.lg.mncdn.com | 🌐 ציבורי (iptv-org) | iptv-org (`TVWEST.ng`) | ✅ |
+| 1436 | A7 TV | 183.bozztv.com | 🌐 ציבורי (iptv-org) | iptv-org (`A7TV.do`) | ✅ |
+| 1437 | Dmoda Channel | master.tucableip.com | 🌐 ציבורי (iptv-org) | iptv-org (`DmodaChannel.bo`) | ✅ |
+| 1438 | Paraguay TV | stream.paraguaytv.gov.py | 🌐 ציבורי (iptv-org) | iptv-org (`ParaguayTV.py`) | ✅ |
+| 1439 | MTR | cdnsk003.panaccess.com | 🌐 ציבורי (iptv-org) | iptv-org (`MTR.sk`) | ✅ |
+| 1440 | Latina TV | streamtv.latinamedios.com | 🌐 ציבורי (iptv-org) | iptv-org (`LatinaTV.ve`) | ✅ |
+| 1441 | America Estereo Quito | video.makrodigital.com | 🌐 ציבורי (iptv-org) | iptv-org (`AmericaEstereoQuito.ec`) | ✅ |
+| 1442 | TV Sur Canal 14 | k20.usastreams.com | 🌐 ציבורי (iptv-org) | iptv-org (`TVSurCanal14.cr`) | ✅ |
+| 1443 | Canal 100 Chinique | live20.bozztv.com | 🌐 ציבורי (iptv-org) | iptv-org (`Canal100Chinique.gt`) | ✅ |
+| 1444 | Al Rasheed TV | media1.livaat.com | 🌐 ציבורי (iptv-org) | iptv-org (`AlRasheedTV.iq`) | ✅ |
+| 1445 | Canal 11 | redirector.rudo.video | 🌐 ציבורי (iptv-org) | iptv-org (`Canal11.hn`) | ✅ |
+| 1446 | Jordan Archive | playlist.fasttvcdn.com | 🌐 ציבורי (iptv-org) | iptv-org (`JordanArchive.jo`) | ✅ |
+| 1447 | Belarus-1 | ngtrk.dc.beltelecom.by | 🌐 ציבורי (iptv-org) | iptv-org (`Belarus1.by`) | ✅ |
+| 1448 | Rajeen TV | mn-nl.mncdn.com | 🌐 ציבורי (iptv-org) | iptv-org (`RajeenTV.ps`) | ✅ |
+| 1449 | TSV | tsv.md | 🌐 ציבורי (iptv-org) | iptv-org (`TSV.md`) | ✅ |
+| 1450 | Jibek Joly | stream.qazcdn.net | 🌐 ציבורי (iptv-org) | iptv-org (`JibekJoly.kz`) | ✅ |
+| 1451 | Louga TV | stream.sen-gt.com | 🌐 ציבורי (iptv-org) | iptv-org (`LougaTV.sn`) | ✅ |
+| 1452 | TeleOnce | live.11-cdn.com | 🌐 ציבורי (iptv-org) | iptv-org (`TeleOnce.pr`) | ✅ |
+| 1453 | Sat 7 Turk | live.artidijitalmedya.com | 🌐 ציבורי (iptv-org) | iptv-org (`Sat7Turk.cy`) | ✅ |
+| 1454 | Rajdhani TV | stream.shariarsuvo.com | 🌐 ציבורי (iptv-org) | iptv-org (`RajdhaniTV.bd`) | ✅ |
+| 1455 | Nasa TV | stream.nasatv.com.mk | 🌐 ציבורי (iptv-org) | iptv-org (`NasaTV.mk`) | ✅ |
+| 1456 | Pannon TV | stream.nmih.hu | 🌐 ציבורי (iptv-org) | iptv-org (`PannonTV.rs`) | ✅ |
+| 1457 | RTK 3 | gjirafa-video-live.gjirafa.net | 🌐 ציבורי (iptv-org) | iptv-org (`RTK3.xk`) | ✅ |
+| 1458 | TV10 | 5c46fa289c89f.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`TV10.rw`) | ✅ |
+| 1459 | Imedi TV | tv.cdn.xsg.ge | 🌐 ציבורי (iptv-org) | iptv-org (`ImediTV.ge`) | ✅ |
+| 1460 | Turkmenistan | alpha.tv.online.tm | 🌐 ציבורי (iptv-org) | iptv-org (`Turkmenistan.tm`) | ❌ רק באפליקציה (הפניה בלי CORS) |
+| 1461 | CAM 10 TV | stream.it-innov.com | 🌐 ציבורי (iptv-org) | iptv-org (`CAM10TV.cm`) | ✅ |
+| 1462 | RTL Zwee | live-edge.rtl.lu | 🌐 ציבורי (iptv-org) | iptv-org (`RTLZwee.lu`) | ✅ |
+| 1463 | Verbum TV | video-eu1.streamerr.co | 🌐 ציבורי (iptv-org) | iptv-org (`VerbumTV.lk`) | ✅ |
+| 1464 | Vizion Plus | tringliveviz.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`VizionPlus.al`) | ✅ |
+| 1465 | Kordia TV | ptvlive.kordia.net.nz | 🌐 ציבורי (iptv-org) | iptv-org (`KordiaTV.nz`) | ✅ |
+| 1466 | MNB World | live.mnb.mn | 🌐 ציבורי (iptv-org) | iptv-org (`MNBWorld.mn`) | ✅ |
+| 1467 | Television Caribbean | live.kingdom-tv.com | 🌐 ציבורי (iptv-org) | iptv-org (`TelevisionCaribbean.kn`) | ✅ |
+| 1468 | Althania | live.kwikmotion.com | 🌐 ציבורי (iptv-org) | iptv-org (`Althania.sy`) | ✅ |
+| 1469 | Ayaz TV | janya-ayaztv.vgcdn.net | 🌐 ציבורי (iptv-org) | iptv-org (`AyazTV.az`) | ✅ |
+| 1470 | Armenia 2 | amtv.tulixcdn.com | 🌐 ציבורי (iptv-org) | iptv-org (`Armenia2.am`) | ✅ |
+| 1471 | SEA TV | seatv.netlinkbroadcaster.com | 🌐 ציבורי (iptv-org) | iptv-org (`SEATV.kh`) | ✅ |
+| 1472 | Tamadon TV | hls.tamadon.live | 🌐 ציבורי (iptv-org) | iptv-org (`TamadonTV.af`) | ✅ |
+| 1473 | Lao Net TV | livefta.malimarcdn.com | 🌐 ציבורי (iptv-org) | iptv-org (`LaoNetTV.la`) | ✅ |
+| 1474 | LTV1 | lsm.eu.cdns-redge.media | 🌐 ציבורי (iptv-org) | iptv-org (`LTV1.lv`) | ✅ |
+| 1475 | Radio Televizija Banovina | pool.alter-media.hr | 🌐 ציבורי (iptv-org) | iptv-org (`RadioTelevizijaBanovina.hr`) | ✅ |
+| 1476 | RTV Zenica | stream.rtvze.ba | 🌐 ציבורי (iptv-org) | iptv-org (`RTVZenica.ba`) | ✅ |
+| 1477 | TVCG MNE | rtcg-live-open.morescreens.com | 🌐 ציבורי (iptv-org) | iptv-org (`TVCGMNE.me`) | ✅ |
+| 1478 | Bahrain International | 5c7b683162943.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`BahrainInternational.bh`) | ✅ |
+| 1479 | Ignite Television | rpn.bozztv.com | 🌐 ציבורי (iptv-org) | iptv-org (`IgniteTelevision.gy`) | ✅ |
+| 1480 | Supreme Master TV | lbs-us1.suprememastertv.com | 🌐 ציבורי (iptv-org) | iptv-org (`SupremeMasterTV.tw`) | ✅ |
+| 1481 | Radio Tele Planet Compas | 5dcab9aed5331.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`RadioTelePlanetCompas.ht`) | ✅ |
+| 1482 | Tanasuh TV | kilolink.pulsarstarsolutions.com | 🌐 ציבורי (iptv-org) | iptv-org (`TanasuhTV.ly`) | ✅ |
+| 1483 | ETV | edge12.vedge.infomaniak.com | 🌐 ציבורי (iptv-org) | iptv-org (`ETV.gp`) | ✅ |
+| 1484 | NTV | strhlslb01.streamakaci.tv | 🌐 ציבורי (iptv-org) | iptv-org (`NTV.ci`) | ✅ |
+| 1485 | TN8 | streamingcws30.com | 🌐 ציבורי (iptv-org) | iptv-org (`TN8.ni`) | ✅ |
+| 1486 | Nex TV Canal 21 | movil.ejeserver.com | 🌐 ציבורי (iptv-org) | iptv-org (`NexTVCanal21.pa`) | ✅ |
+| 1487 | RUV | ruv-web-live.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`RUV.is`) | ✅ |
+| 1488 | TV Spravedliva Bulgariya | tv.tvsb.bg | 🌐 ציבורי (iptv-org) | iptv-org (`TVSpravedlivaBulgariya.bg`) | ✅ |
+| 1489 | CBN TV | 5790d294af2dc.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`CBNTV.vg`) | ✅ |
+| 1490 | Inooro TV | live-onesignal.royalmedia.co.ke | 🌐 ציבורי (iptv-org) | iptv-org (`InooroTV.ke`) | ✅ |
+| 1491 | Pointe TV | tv.pointville.ag | 🌐 ציבורי (iptv-org) | iptv-org (`PointeTV.ag`) | ✅ |
+| 1492 | Raajje TV | raajjetv.yarr-myn.workers.dev | 🌐 ציבורי (iptv-org) | iptv-org (`RaajjeTV.mv`) | ✅ |
+| 1493 | TVJ | vod2live.univtec.com | 🌐 ציבורי (iptv-org) | iptv-org (`TVJ.jm`) | ✅ |
+| 1494 | ZNS-TV | zns-edge1.streamcomedia.cloud | 🌐 ציבורי (iptv-org) | iptv-org (`ZNSTV.bs`) | ✅ |
+| 1495 | El Watania 1 | sw1.tanitweb.net | 🌐 ציבורי (iptv-org) | iptv-org (`ElWatania1.tn`) | ✅ |
+| 1496 | ERi-TV 1 | jmc-live.ercdn.net | 🌐 ציבורי (iptv-org) | iptv-org (`ERiTV1.er`) | ✅ |
+| 1497 | KTV 1 | kwtktv1ta.cdn.mangomolo.com | 🌐 ציבורי (iptv-org) | iptv-org (`KTV1.kw`) | ✅ |
+| 1498 | Oman TV | partneta.cdn.mgmlcdn.com | 🌐 ציבורי (iptv-org) | iptv-org (`OmanTV.om`) | ✅ |
+| 1499 | RASD TV | cloud.streamingconnect.tv | 🌐 ציבורי (iptv-org) | iptv-org (`RASDTV.eh`) | ✅ |
+| 1500 | Sudan TV | cdn-globecast.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`SudanTV.sd`) | ✅ |
+| 1501 | TV2 | 185.9.2.18 | 🌐 ציבורי (iptv-org) | iptv-org (`TV2.dz`) | ❌ רק באפליקציה (HTTP) |
+| 1502 | Yemen Today TV | video.yementdy.tv | 🌐 ציבורי (iptv-org) | iptv-org (`YemenTodayTV.ye`) | ✅ |
+| 1503 | Kalac TV | edge13.vedge.infomaniak.com | 🌐 ציבורי (iptv-org) | iptv-org (`KalacTV.gn`) | ✅ |
+| 1504 | RTB | edge12.vedge.infomaniak.com | 🌐 ציבורי (iptv-org) | iptv-org (`RTB.bf`) | ✅ |
+| 1505 | RTNB TV | tv1-stream.rtnb.bi | 🌐 ציבורי (iptv-org) | iptv-org (`RTNBTV.bi`) | ✅ |
+| 1506 | Tele Peyi | edge20.vedge.infomaniak.com | 🌐 ציבורי (iptv-org) | iptv-org (`TelePeyi.gf`) | ✅ |
+| 1507 | Tele Tchad | strhlslb01.streamakaci.tv | 🌐 ציבורי (iptv-org) | iptv-org (`TeleTchad.td`) | ✅ |
+| 1508 | Television Espoir 47 | cdn140m.panaccess.com | 🌐 ציבורי (iptv-org) | iptv-org (`TelevisionEspoir47.tg`) | ✅ |
+| 1509 | TV Monaco | production-fast-mcrtv.content.okast.tv | 🌐 ציבורי (iptv-org) | iptv-org (`TVMonaco.mc`) | ✅ |
+| 1510 | Zitata TV | live.zitata.tv | 🌐 ציבורי (iptv-org) | iptv-org (`ZitataTV.mq`) | ✅ |
+| 1511 | TVM | stream.tvm.co.mz | 🌐 ציבורי (iptv-org) | iptv-org (`TVM.mz`) | ✅ |
+| 1512 | Andorra TV | livesg1.rtva.hiway.media | 🌐 ציבורי (iptv-org) | iptv-org (`AndorraTV.ad`) | ✅ |
+| 1513 | Dodoma TV | goliveafrica.media | 🌐 ציבורי (iptv-org) | iptv-org (`DodomaTV.tz`) | ✅ |
+| 1514 | ETV | sb.err.ee | 🌐 ציבורי (iptv-org) | iptv-org (`ETV.ee`) | ✅ |
+| 1515 | Golden Jade | 103.172.187.30 | 🌐 ציבורי (iptv-org) | iptv-org (`GoldenJade.hk`) | ❌ רק באפליקציה (HTTP) |
+| 1516 | Korean Central Television | live.koryocdn.org | 🌐 ציבורי (iptv-org) | iptv-org (`KoreanCentralTelevision.kp`) | ❌ רק באפליקציה (הפניה בלי CORS) |
+| 1517 | MWD | 203.81.84.130 | 🌐 ציבורי (iptv-org) | iptv-org (`MWD.mm`) | ❌ רק באפליקציה (HTTP) |
+| 1518 | NosTV Bonaire 2 | stream2.nostvbonaire.com | 🌐 ציבורי (iptv-org) | iptv-org (`NosTVBonaire2.bq`) | ✅ |
+| 1519 | One | 2-fss-1.streamhoster.com | 🌐 ציבורי (iptv-org) | iptv-org (`One.mt`) | ✅ |
+| 1520 | Telearuba | cdn01.setar.aw | 🌐 ציבורי (iptv-org) | iptv-org (`Telearuba.aw`) | ✅ |
+| 1521 | TV Direct 13 | oqgdrog4d4rm-hls-live.5centscdn.com | 🌐 ציבורי (iptv-org) | iptv-org (`TVDirect13.cw`) | ✅ |
+| 1522 | TV Veseljak Golica HD | radio.serv.si | 🌐 ציבורי (iptv-org) | iptv-org (`TVVeseljakGolicaHD.si`) | ✅ |
+| 1523 | AFTV | livestream.telvue.com | 🌐 ציבורי (iptv-org) | iptv-org (`AFTV.us`) | ✅ |
+| 1524 | Spark TV | candlelightmedia-sparklightlove-4-us.roku.wurl.tv | 🌐 ציבורי (iptv-org) | iptv-org (`SparkTV.uk`) | ✅ |
+| 1525 | Cannes Lerins TV | vdo2.pro-fhi.net | 🌐 ציבורי (iptv-org) | iptv-org (`CannesLerinsTV.fr`) | ✅ |
+| 1526 | Allgau TV | stream01.welocal.stream | 🌐 ציבורי (iptv-org) | iptv-org (`AllgauTV.de`) | ✅ |
+| 1527 | Canal San Roque | cdnlivevlc.codev8.net | 🌐 ציבורי (iptv-org) | iptv-org (`CanalSanRoque.es`) | ✅ |
 
 ## 📺 אוכל ובישול (Food)
 
 | # | ערוץ | שרת השידור | סוג | נמצא ב | באתר (דפדפן) |
 |---|---|---|---|---|---|
-| 1524 | bon appetit | bonappetit-samsung.amagi.tv | 🌐 ציבורי (iptv-org) | iptv-org (`bonappetit.us`) | ✅ |
-| 1525 | Master Chefs Academy TV | platform-iuoamc.uk | 🌐 ציבורי (iptv-org) | iptv-org (`MasterChefsAcademyTV.uk`) | ❌ רק באפליקציה (הפניה בלי CORS) |
-| 1526 | TV5MONDE Chefs | tvf-tv5ch.otteravision.com | 🌐 ציבורי (iptv-org) | iptv-org (`TV5MONDEChefs.fr`) | ✅ |
-| 1527 | Pluto TV Cuisine | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVCuisine.de`) | ✅ |
-| 1528 | Food Network | streaming.aurora.enhanced.live | 🌐 ציבורי (iptv-org) | iptv-org (`FoodNetwork.it`) | ✅ |
-| 1529 | Kulinar TV | api.alpaca.t62a.com | 🌐 ציבורי (iptv-org) | iptv-org (`KulinarTV.ru`) | ✅ |
-| 1530 | Gusto TV | e75fc053c0d2406fb74cdd71d77e1a7f.mediatailor.us-east-1.amazonaws.com | 🌐 ציבורי (iptv-org) | iptv-org (`GustoTV.ca`) | ✅ |
-| 1531 | Food Food | mumt03.tangotv.in | 🌐 ציבורי (iptv-org) | iptv-org (`FoodFood.in`) | ✅ |
-| 1532 | Boligkjop i blinde | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`Boligkjopiblinde.se`) | ✅ |
-| 1533 | Dens Food Channel | op-flashcon-digdayahd-1.dens.tv | 🌐 ציבורי (iptv-org) | iptv-org (`DensFoodChannel.id`) | ✅ |
-| 1534 | Masala TV | cdn4.mjunoon.tv | 🌐 ציבורי (iptv-org) | iptv-org (`MasalaTV.pk`) | ✅ |
-| 1535 | Asian Food Network | freem3u.xyz | 🌐 ציבורי (iptv-org) | iptv-org (`AsianFoodNetwork.sg`) | ✅ |
-| 1536 | Jordan Kitchen | playlist.fasttvcdn.com | 🌐 ציבורי (iptv-org) | iptv-org (`JordanKitchen.jo`) | ✅ |
-| 1537 | Chef Champion | rpn.bozztv.com | 🌐 ציבורי (iptv-org) | iptv-org (`ChefChampion.us`) | ✅ |
-| 1538 | Pluto TV Cocina | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVCocina.de`) | ✅ |
-| 1539 | City Eden Recepty Gurmana | cityeden.catcast.tv | 🌐 ציבורי (iptv-org) | iptv-org (`CityEdenReceptyGurmana.ru`) | ✅ |
-| 1540 | Boligkob i blinde | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`Boligkobiblinde.se`) | ✅ |
-| 1541 | Chef Roc Show | rpn.bozztv.com | 🌐 ציבורי (iptv-org) | iptv-org (`ChefRocShow.us`) | ✅ |
-| 1542 | Pluto TV Food | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVFood.de`) | ✅ |
-| 1543 | FoodTime | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`FoodTime.ru`) | ❌ רק באפליקציה (HTTP) |
-| 1544 | Buying Blind Denmark | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`BuyingBlindDenmark.se`) | ✅ |
-| 1545 | Gordon Ramsay's Hell's Kitchen | aegis-cloudfront-1.tubi.video | 🌐 ציבורי (iptv-org) | iptv-org (`GordonRamsaysHellsKitchen.us`) | ✅ |
-| 1546 | Pluto TV Cucina | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVCucina.de`) | ✅ |
-| 1547 | Koch'en pa toppen | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`Kochenpatoppen.se`) | ✅ |
-| 1548 | Tastemade Brasil | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`TastemadeBrasil.us`) | ✅ |
-| 1549 | MasterChef Danmarks storste madtalenter | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`MasterChefDanmarksstorstemadtalenter.se`) | ✅ |
-| 1550 | Cooking Panda | stream-us-east-1.getpublica.com | 🌐 ציבורי (iptv-org) | iptv-org (`CookingPanda.us`) | ✅ |
-| 1551 | Med kniven for struben | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`Medknivenforstruben.se`) | ✅ |
-| 1552 | Mad Dog and Merrill | rpn.bozztv.com | 🌐 ציבורי (iptv-org) | iptv-org (`MadDogandMerrill.us`) | ✅ |
-| 1553 | Skonne ombygninger | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`Skonneombygninger.se`) | ✅ |
-| 1554 | Pluto TV KFOOD | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVKFOOD.us`) | ✅ |
-| 1555 | Stugfixarna Norge | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`StugfixarnaNorge.se`) | ✅ |
-| 1556 | Food Network Latin America | 168.196.127.137 | 🌐 ציבורי (iptv-org) | iptv-org (`FoodNetworkLatinAmerica.us`) | ❌ רק באפליקציה (HTTP) |
-| 1557 | Til Middag Hos | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`TilMiddagHos.se`) | ✅ |
-| 1558 | Cooking Channel | 23.237.104.106 | 🌐 ציבורי (iptv-org) | iptv-org (`CookingChannel.us`) | ❌ רק באפליקציה (HTTP) |
-| 1559 | Food Network | 23.237.104.106 | 🌐 ציבורי (iptv-org) | iptv-org (`FoodNetwork.us`) | ❌ רק באפליקציה (HTTP) |
+| 1528 | bon appetit | bonappetit-samsung.amagi.tv | 🌐 ציבורי (iptv-org) | iptv-org (`bonappetit.us`) | ✅ |
+| 1529 | Master Chefs Academy TV | platform-iuoamc.uk | 🌐 ציבורי (iptv-org) | iptv-org (`MasterChefsAcademyTV.uk`) | ❌ רק באפליקציה (הפניה בלי CORS) |
+| 1530 | TV5MONDE Chefs | tvf-tv5ch.otteravision.com | 🌐 ציבורי (iptv-org) | iptv-org (`TV5MONDEChefs.fr`) | ✅ |
+| 1531 | Pluto TV Cuisine | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVCuisine.de`) | ✅ |
+| 1532 | Food Network | streaming.aurora.enhanced.live | 🌐 ציבורי (iptv-org) | iptv-org (`FoodNetwork.it`) | ✅ |
+| 1533 | Kulinar TV | api.alpaca.t62a.com | 🌐 ציבורי (iptv-org) | iptv-org (`KulinarTV.ru`) | ✅ |
+| 1534 | Gusto TV | e75fc053c0d2406fb74cdd71d77e1a7f.mediatailor.us-east-1.amazonaws.com | 🌐 ציבורי (iptv-org) | iptv-org (`GustoTV.ca`) | ✅ |
+| 1535 | Food Food | mumt03.tangotv.in | 🌐 ציבורי (iptv-org) | iptv-org (`FoodFood.in`) | ✅ |
+| 1536 | Boligkjop i blinde | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`Boligkjopiblinde.se`) | ✅ |
+| 1537 | Dens Food Channel | op-flashcon-digdayahd-1.dens.tv | 🌐 ציבורי (iptv-org) | iptv-org (`DensFoodChannel.id`) | ✅ |
+| 1538 | Masala TV | cdn4.mjunoon.tv | 🌐 ציבורי (iptv-org) | iptv-org (`MasalaTV.pk`) | ✅ |
+| 1539 | Asian Food Network | freem3u.xyz | 🌐 ציבורי (iptv-org) | iptv-org (`AsianFoodNetwork.sg`) | ✅ |
+| 1540 | Jordan Kitchen | playlist.fasttvcdn.com | 🌐 ציבורי (iptv-org) | iptv-org (`JordanKitchen.jo`) | ✅ |
+| 1541 | Chef Champion | rpn.bozztv.com | 🌐 ציבורי (iptv-org) | iptv-org (`ChefChampion.us`) | ✅ |
+| 1542 | Pluto TV Cocina | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVCocina.de`) | ✅ |
+| 1543 | City Eden Recepty Gurmana | cityeden.catcast.tv | 🌐 ציבורי (iptv-org) | iptv-org (`CityEdenReceptyGurmana.ru`) | ✅ |
+| 1544 | Boligkob i blinde | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`Boligkobiblinde.se`) | ✅ |
+| 1545 | Chef Roc Show | rpn.bozztv.com | 🌐 ציבורי (iptv-org) | iptv-org (`ChefRocShow.us`) | ✅ |
+| 1546 | Pluto TV Food | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVFood.de`) | ✅ |
+| 1547 | FoodTime | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (`FoodTime.ru`) | ❌ רק באפליקציה (HTTP) |
+| 1548 | Buying Blind Denmark | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`BuyingBlindDenmark.se`) | ✅ |
+| 1549 | Gordon Ramsay's Hell's Kitchen | aegis-cloudfront-1.tubi.video | 🌐 ציבורי (iptv-org) | iptv-org (`GordonRamsaysHellsKitchen.us`) | ✅ |
+| 1550 | Pluto TV Cucina | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVCucina.de`) | ✅ |
+| 1551 | Koch'en pa toppen | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`Kochenpatoppen.se`) | ✅ |
+| 1552 | Tastemade Brasil | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`TastemadeBrasil.us`) | ✅ |
+| 1553 | MasterChef Danmarks storste madtalenter | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`MasterChefDanmarksstorstemadtalenter.se`) | ✅ |
+| 1554 | Cooking Panda | stream-us-east-1.getpublica.com | 🌐 ציבורי (iptv-org) | iptv-org (`CookingPanda.us`) | ✅ |
+| 1555 | Med kniven for struben | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`Medknivenforstruben.se`) | ✅ |
+| 1556 | Mad Dog and Merrill | rpn.bozztv.com | 🌐 ציבורי (iptv-org) | iptv-org (`MadDogandMerrill.us`) | ✅ |
+| 1557 | Skonne ombygninger | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`Skonneombygninger.se`) | ✅ |
+| 1558 | Pluto TV KFOOD | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`PlutoTVKFOOD.us`) | ✅ |
+| 1559 | Stugfixarna Norge | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`StugfixarnaNorge.se`) | ✅ |
+| 1560 | Food Network Latin America | 168.196.127.137 | 🌐 ציבורי (iptv-org) | iptv-org (`FoodNetworkLatinAmerica.us`) | ❌ רק באפליקציה (HTTP) |
+| 1561 | Til Middag Hos | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org (`TilMiddagHos.se`) | ✅ |
+| 1562 | Cooking Channel | 23.237.104.106 | 🌐 ציבורי (iptv-org) | iptv-org (`CookingChannel.us`) | ❌ רק באפליקציה (HTTP) |
+| 1563 | Food Network | 23.237.104.106 | 🌐 ציבורי (iptv-org) | iptv-org (`FoodNetwork.us`) | ❌ רק באפליקציה (HTTP) |
 
 ## 📺 דת ואמונה (Religion)
 
 | # | ערוץ | שרת השידור | סוג | נמצא ב | באתר (דפדפן) |
 |---|---|---|---|---|---|
-| 1560 | Amazing Facts TV | hlspackager.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`AmazingFactsTV.us`) | ✅ |
-| 1561 | Faith World TV | faithworldtv.abs.tv | 🌐 ציבורי (iptv-org) | iptv-org (`FaithWorldTV.uk`) | ✅ |
-| 1562 | Evandis Gospel TV | evandis.streamakaci.tv | 🌐 ציבורי (iptv-org) | iptv-org (`EvandisGospelTV.fr`) | ✅ |
-| 1563 | Sophia TV Francais | bild-und-ton.stream | 🌐 ציבורי (iptv-org) | iptv-org (`SophiaTVFrancais.de`) | ✅ |
-| 1564 | Logos TV | streamer1.streamhost.org | 🌐 ציבורי (iptv-org) | iptv-org (`LogosTV.es`) | ✅ |
-| 1565 | Padre Pio TV | 600f07e114306.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`PadrePioTV.it`) | ✅ |
-| 1566 | Huzur TV | hls-mycdn08724960135.cdnvideo.ru | 🌐 ציבורי (iptv-org) | iptv-org (`HuzurTV.ru`) | ✅ |
-| 1567 | EWTN Ukraine | cdn3.wowza.com | 🌐 ציבורי (iptv-org) | iptv-org (`EWTNUkraine.ua`) | ✅ |
-| 1568 | 3ABN Canada | 3abn.bozztv.com | 🌐 ציבורי (iptv-org) | iptv-org (`3ABNCanada.ca`) | ✅ |
-| 1569 | Mission Asia | livecdn.live247stream.com | 🌐 ציבורי (iptv-org) | iptv-org (`MissionAsia.au`) | ✅ |
-| 1570 | Peace TV English | dzkyvlfyge.erbvr.com | 🌐 ציבורי (iptv-org) | iptv-org (`PeaceTVEnglish.ae`) | ✅ |
-| 1571 | Qatar TV The Holy Quran | qatartv.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`QatarTVTheHolyQuran.qa`) | ✅ |
-| 1572 | Holy Quran Radio | live.kwikmotion.com | 🌐 ציבורי (iptv-org) | iptv-org (`HolyQuranRadio.sa`) | ✅ |
-| 1573 | Aghapy TV | 5b622f07944df.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`AghapyTV.eg`) | ✅ |
-| 1574 | Noursat English | Asharq Discovery – ItWorks (רשמי) | ✅ רשמי | iptv-org (`NoursatEnglish.lb`) | ✅ |
-| 1575 | Diyanet TV | eustr73.mediatriple.net | 🌐 ציבורי (iptv-org) | iptv-org (`DiyanetTV.tr`) | ✅ |
-| 1576 | Salvation TV | ktismaservers.in | 🌐 ציבורי (iptv-org) | iptv-org (`SalvationTV.in`) | ✅ |
-| 1577 | BTN TV | btn.nowcdn.co.kr | 🌐 ציבורי (iptv-org) | iptv-org (`BTNTV.kr`) | ✅ |
-| 1578 | Ando TV | play.kankanlive.com | 🌐 ציבורי (iptv-org) | iptv-org (`AndoTV.cn`) | ❌ רק באפליקציה (HTTP) |
-| 1579 | Rede Gospel | cdn.live.br1.jmvstream.com | 🌐 ציבורי (iptv-org) | iptv-org (`RedeGospel.br`) | ✅ |
-| 1580 | Monte Maria | 5ca9af4645e15.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`MonteMaria.mx`) | ✅ |
-| 1581 | TV Mana Argentina | w2.manasat.com | 🌐 ציבורי (iptv-org) | iptv-org (`TVManaArgentina.ar`) | ✅ |
-| 1582 | Mana Church Online | w2.manasat.com | 🌐 ציבורי (iptv-org) | iptv-org (`ManaChurchOnline.pt`) | ✅ |
-| 1583 | Immaculata TV | g5nl63z8lpq6-hls-live.5centscdn.com | 🌐 ציבורי (iptv-org) | iptv-org (`ImmaculataTV.ch`) | ✅ |
-| 1584 | KIT-TV | everest.pa-hosting.de | 🌐 ציבורי (iptv-org) | iptv-org (`KITTV.at`) | ✅ |
-| 1585 | EWTN Poland | cdn3.wowza.com | 🌐 ציבורי (iptv-org) | iptv-org (`EWTNPoland.pl`) | ✅ |
-| 1586 | Himlen TV7 | vod.tv7.fi | 🌐 ציבורי (iptv-org) | iptv-org (`HimlenTV7.fi`) | ✅ |
-| 1587 | Alfa Omega TV | aom-live.maghost.ro | 🌐 ציבורי (iptv-org) | iptv-org (`AlfaOmegaTV.ro`) | ✅ |
-| 1588 | Apostol TV | live.apostoltv.hu | 🌐 ציבורי (iptv-org) | iptv-org (`ApostolTV.hu`) | ✅ |
-| 1589 | Fortaleza TV | multimedia.fortalezatv.cl | 🌐 ציבורי (iptv-org) | iptv-org (`FortalezaTV.cl`) | ✅ |
+| 1564 | Amazing Facts TV | hlspackager.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`AmazingFactsTV.us`) | ✅ |
+| 1565 | Faith World TV | faithworldtv.abs.tv | 🌐 ציבורי (iptv-org) | iptv-org (`FaithWorldTV.uk`) | ✅ |
+| 1566 | Evandis Gospel TV | evandis.streamakaci.tv | 🌐 ציבורי (iptv-org) | iptv-org (`EvandisGospelTV.fr`) | ✅ |
+| 1567 | Sophia TV Francais | bild-und-ton.stream | 🌐 ציבורי (iptv-org) | iptv-org (`SophiaTVFrancais.de`) | ✅ |
+| 1568 | Logos TV | streamer1.streamhost.org | 🌐 ציבורי (iptv-org) | iptv-org (`LogosTV.es`) | ✅ |
+| 1569 | Padre Pio TV | 600f07e114306.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`PadrePioTV.it`) | ✅ |
+| 1570 | Huzur TV | hls-mycdn08724960135.cdnvideo.ru | 🌐 ציבורי (iptv-org) | iptv-org (`HuzurTV.ru`) | ✅ |
+| 1571 | EWTN Ukraine | cdn3.wowza.com | 🌐 ציבורי (iptv-org) | iptv-org (`EWTNUkraine.ua`) | ✅ |
+| 1572 | 3ABN Canada | 3abn.bozztv.com | 🌐 ציבורי (iptv-org) | iptv-org (`3ABNCanada.ca`) | ✅ |
+| 1573 | Mission Asia | livecdn.live247stream.com | 🌐 ציבורי (iptv-org) | iptv-org (`MissionAsia.au`) | ✅ |
+| 1574 | Peace TV English | dzkyvlfyge.erbvr.com | 🌐 ציבורי (iptv-org) | iptv-org (`PeaceTVEnglish.ae`) | ✅ |
+| 1575 | Qatar TV The Holy Quran | qatartv.akamaized.net | 🌐 ציבורי (iptv-org) | iptv-org (`QatarTVTheHolyQuran.qa`) | ✅ |
+| 1576 | Holy Quran Radio | live.kwikmotion.com | 🌐 ציבורי (iptv-org) | iptv-org (`HolyQuranRadio.sa`) | ✅ |
+| 1577 | Aghapy TV | 5b622f07944df.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`AghapyTV.eg`) | ✅ |
+| 1578 | Noursat English | Asharq Discovery – ItWorks (רשמי) | ✅ רשמי | iptv-org (`NoursatEnglish.lb`) | ✅ |
+| 1579 | Diyanet TV | eustr73.mediatriple.net | 🌐 ציבורי (iptv-org) | iptv-org (`DiyanetTV.tr`) | ✅ |
+| 1580 | Salvation TV | ktismaservers.in | 🌐 ציבורי (iptv-org) | iptv-org (`SalvationTV.in`) | ✅ |
+| 1581 | BTN TV | btn.nowcdn.co.kr | 🌐 ציבורי (iptv-org) | iptv-org (`BTNTV.kr`) | ✅ |
+| 1582 | Ando TV | play.kankanlive.com | 🌐 ציבורי (iptv-org) | iptv-org (`AndoTV.cn`) | ❌ רק באפליקציה (HTTP) |
+| 1583 | Rede Gospel | cdn.live.br1.jmvstream.com | 🌐 ציבורי (iptv-org) | iptv-org (`RedeGospel.br`) | ✅ |
+| 1584 | Monte Maria | 5ca9af4645e15.streamlock.net | 🌐 ציבורי (iptv-org) | iptv-org (`MonteMaria.mx`) | ✅ |
+| 1585 | TV Mana Argentina | w2.manasat.com | 🌐 ציבורי (iptv-org) | iptv-org (`TVManaArgentina.ar`) | ✅ |
+| 1586 | Mana Church Online | w2.manasat.com | 🌐 ציבורי (iptv-org) | iptv-org (`ManaChurchOnline.pt`) | ✅ |
+| 1587 | Immaculata TV | g5nl63z8lpq6-hls-live.5centscdn.com | 🌐 ציבורי (iptv-org) | iptv-org (`ImmaculataTV.ch`) | ✅ |
+| 1588 | KIT-TV | everest.pa-hosting.de | 🌐 ציבורי (iptv-org) | iptv-org (`KITTV.at`) | ✅ |
+| 1589 | EWTN Poland | cdn3.wowza.com | 🌐 ציבורי (iptv-org) | iptv-org (`EWTNPoland.pl`) | ✅ |
+| 1590 | Himlen TV7 | vod.tv7.fi | 🌐 ציבורי (iptv-org) | iptv-org (`HimlenTV7.fi`) | ✅ |
+| 1591 | Alfa Omega TV | aom-live.maghost.ro | 🌐 ציבורי (iptv-org) | iptv-org (`AlfaOmegaTV.ro`) | ✅ |
+| 1592 | Apostol TV | live.apostoltv.hu | 🌐 ציבורי (iptv-org) | iptv-org (`ApostolTV.hu`) | ✅ |
+| 1593 | Fortaleza TV | multimedia.fortalezatv.cl | 🌐 ציבורי (iptv-org) | iptv-org (`FortalezaTV.cl`) | ✅ |
 
 ## 📻 רדיו
 
