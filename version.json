@@ -1,57 +1,50 @@
 {
-  "version": "3.5.2",
-  "code": 202610242116,
-  "app": 352,
+  "version": "3.5.3",
+  "code": 202610242132,
+  "app": 353,
   "shell": 3,
   "date": "2026-10-24",
   "notes": [
-    "עיצוב מחדש לחלוטין של ה-GUI ל-LG webOS ולמסכי טלוויזיה חכמות:",
-    "ממשק OLED True Black מודרני ועמוק עם תאורת אווירה דינמית (Ambient glow).",
-    "סרגל עליון (Top Bar) בעיצוב Glassmorphism שקוף ויוקרתי עם שעון דיגיטלי מודרני וממשק חיפוש משודרג.",
-    "סרגל קטגוריות צף (Floating Capsule Rail) עם תגיות מוארות ומעברי פוקוס חלקים.",
-    "במת הירו (Hero Stage) קולנועית מרהיבה עם פודיום זכוכית מואר ללוגו הערוץ ותגיות שידור חיות (4K UHD, LIVE, שפה ואיכות).",
-    "כרטיסי ערוצים 16:9 בעיצוב חדש עם מעבר פוקוס מרהיב בסגנון Apple TV (הגדלה חלקה, הילת ניאון והברקת אור).",
-    "עדכון מתוך האפליקציה ב-webOS ללא צורך בהתקנה מחדש (In-App Auto-Update):",
-    "מעכשיו בטלוויזיית LG: לחיצה על \"עדכן עכשיו בטלוויזיה\" מורידה את כל הערוצים, הלוגואים והעיצוב החדש ומחילה אותם מיד ישירות בטלוויזיה ללא צורך בהתקנה ידנית של קובץ IPK.",
-    "לוגואים מקוריים ואותנטיים באיכות HD לכל הערוצים:",
-    "סמליל וקטורי רשמי ומדויק לעכשיו 14 (now14.svg) באיכות מקסימלית.",
-    "לוגואים רשמיים מלאים לערוצי i24NEWS בעברית, צרפתית וערבית.",
-    "לוגואים מקוריים לערוצי החיים הטובים, הידברות, הלא TV, קבלה לעם, ערוץ 16, ערוצי סינמה וספורט (כיסוי של 100% לכל 1,693 הערוצים).",
-    "הרחבת רשימת הערוצים ל-1,693 ערוצים ושידורים חיים:",
-    "עשרות ערוצי ספורט, מוזיקה, ילדים, סרטים וחדשות נוספים שנבדקו ונמצאו פעילים.",
-    "סנכרון מלא של כל רשימות הנגינה (M3U, Stremio, JSON ו-Markdown)."
+    "חוויית Apple TV+ (tvOS) דגל חדשה לכל הטלוויזיות החכמות (Samsung Tizen, LG webOS, Android TV):",
+    "מנוע תנועה מואץ חומרה (60/120fps): כל תנועות המדפים, סרגלי הניווט והכרטיסים משתמשים אך ורק ב-translate3d ו-scale3d עם חוקי GPU קפדניים למסכי טלוויזיה ללא נפילות פריימים.",
+    "סרגל קפסולה עליון צף בסגנון Apple TV (Centered Frosted Top Pill): קפסולת זכוכית מעוצבת צפה במרכז העליון (rgba(22, 22, 28, 0.68), blur 36px), עם אינדיקטור גולש פיזיקלי (#F5F5F7) המחליק ומשנה את רוחבו בעקומת קפיץ Apple (cubic-bezier(0.16, 1, 0.3, 1)).",
+    "פיזיקת פוקוס תלת-ממדית והברקת אור (Apple TV Sheen & Parallax): בהתמקדות על כרטיס, הכרטיס מרחף (translate3d(0, -8px, 0) scale3d(1.14, 1.14, 1)) עם צל עמוק רב-שכבתי, מסגרת זוהרת ופס הברקת אור ספקולרי אלכסוני.",
+    "מעקב מצלמה מדפי ועמעום קסקדה אנכי: ניווט אופקי גולש בצורה חלקה ב-RTL ומעגן את הכרטיס הממוקד בנקודה האופטית המושלמת, בעוד מעבר אנכי מעמעם שורות עליונות ל-0.25 שקיפות.",
+    "במת תצוגה מקדימה מלאה מקצה לקצה (Full-Bleed 100vw x 100vh): שהייה של 550ms על כרטיס ערוץ מפעילה מעבר חלק (Cross-fade) לרקע של שידור חי מושתק ב-0ms.",
+    "מעבר אפס-חיתוך למסך מלא (Zero-Cut Fullscreen Zoom): לחיצה על OK מבטלת השתקה ומחליקה את המדפים החוצה ב-0ms ללא טעינה מחדש של הזרם; לחיצה על Back מחזירה את המדפים ברכות מעל השידור.",
+    "סנכרון שלטים אחיד (Unified KeyCode Mapper): תמיכה אחידה וחלקה בכל השלטים – Samsung Tizen (10009 Return, 403-406 כפתורי צבע, מקשי מדיה), LG webOS (461 Back, עכבר Magic Remote וגלגלת), ו-Android TV (Enter/DPAD_CENTER 13/23/66, Back/Escape)."
   ],
   "native": {
     "android": {
-      "version": "3.5.2",
-      "app": 352,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.5.2/IsraelTVPlus-android.apk"
+      "version": "3.5.3",
+      "app": 353,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.5.3/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "3.5.2",
-      "app": 352,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.5.2/IsraelTVPlus-windows-setup.exe"
+      "version": "3.5.3",
+      "app": 353,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.5.3/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "3.5.2",
-      "app": 352,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.5.2/com.israeltv.plus_all.ipk",
+      "version": "3.5.3",
+      "app": 353,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.5.3/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "3.5.2",
-      "app": 352,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.5.2/IsraelTVPlus-tizen-project.zip"
+      "version": "3.5.3",
+      "app": 353,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.5.3/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "3.5.2",
-      "app": 352,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.5.2/IsraelTVPlus-macos-arm64.zip"
+      "version": "3.5.3",
+      "app": 353,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.5.3/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "3.5.2",
-      "app": 352,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.5.2/IsraelTVPlus-linux-x64.zip"
+      "version": "3.5.3",
+      "app": 353,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v3.5.3/IsraelTVPlus-linux-x64.zip"
     }
   }
 }

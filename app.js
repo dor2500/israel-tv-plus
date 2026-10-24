@@ -252,6 +252,7 @@
     selectCategory(state.cats.some(function (c) { return c.id === startCat; }) ? startCat : 'ALL', true);
     focusGrid(0);
     if (PHONE) { buildHome(); setTab(S.startCat === 'FAVORITES' && state.favorites.length ? 'library' : 'home', true); }
+    else { initTvOS(); }
     if (S.autoplay && S.lastId) {
       var idx = indexInList(S.lastId);
       if (idx !== -1) { focusGrid(idx); playIndex(idx); }
@@ -280,7 +281,11 @@
       'menu-sub', 'menu-list', 'settings', 'settings-nav', 'settings-h', 'settings-p', 'settings-rows', 'dialog', 'dialog-box',
       'dialog-ico', 'dialog-title', 'dialog-body', 'dialog-actions', 'toast', 'saver', 'saver-in', 'saver-clock',
       'topbar', 'home', 'pager', 'pager-track', 'pager-dots', 'shelves', 'navbar', 'nb-pill', 'btn-search', 'hero-bg',
-      'osd-center', 'ob-pip', 'guide-body', 'brand-tab', 'btn-avatar', 'avatar-img', 'avatar-dot', 'nb-search'
+      'osd-center', 'ob-pip', 'guide-body', 'brand-tab', 'btn-avatar', 'avatar-img', 'avatar-dot', 'nb-search',
+      'tv-backdrop-stage', 'tv-backdrop-art', 'tv-preview-video', 'tv-backdrop-scrim',
+      'tv-top-pill', 'tv-pill-indicator', 'tv-stage', 'tv-hero-meta', 'tv-hero-logo',
+      'tv-hero-mono', 'tv-hero-quality', 'tv-hero-cat', 'tv-hero-num', 'tv-hero-fav',
+      'tv-hero-title', 'tv-hero-desc', 'tv-shelves-container', 'tv-shelves-track'
     ].forEach(function (id) {
       el[id.replace(/-([a-z])/g, function (m, c) { return c.toUpperCase(); })] = $(id);
     });
@@ -2821,7 +2826,7 @@
   }
 
   // ================================================================== input: keys, long OK, mouse, touch
-  function isBack(code) { return code === 461 || code === 27 || code === 10009 || code === 8; }
+  function isBack(code) { return code === 461 || code === 27 || code === 10009 || code === 8 || code === 4; }
   function typing(t) { return t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA'); }
 
   function setupInput() {
@@ -2989,7 +2994,7 @@
 
   function onKeyUp(e) {
     var code = e.keyCode || e.which;
-    if (code !== 13) return;
+    if (code !== 13 && code !== 23 && code !== 66) return;
     // Long-press OK needs key-up events; until one is seen, OK acts on key-down (some remotes send no key-up).
     if (!state.okUpSeen) { state.okUpSeen = true; return; }
     if (!state.okDown) return;
@@ -3009,7 +3014,7 @@
     if (typing(t)) {
       if (state.overlay === 'settings') { settingsKey(code, e); return; }
       if (t === el.searchInput) {
-        if (code === 40 || code === 13) { e.preventDefault(); t.blur(); focusGrid(0); }
+        if (code === 40 || code === 13 || code === 23 || code === 66) { e.preventDefault(); t.blur(); focusGrid(0); }
         else if (isBack(code) && code !== 8) { e.preventDefault(); t.blur(); focusGrid(state.gridIdx); }
         else if (code === 8 && !t.value) { e.preventDefault(); t.blur(); focusGrid(state.gridIdx); }
         return;
@@ -3017,8 +3022,8 @@
       return;
     }
 
-    // OK / Enter: short press on release, long press = options
-    if (code === 13) {
+    // OK / Enter: short press on release, long press = options (normalized across Android TV 13/23/66, Tizen 13, webOS 13)
+    if (code === 13 || code === 23 || code === 66) {
       if (e.preventDefault) e.preventDefault();
       if (!state.okUpSeen) { shortOk(); return; }
       if (state.okDown) return; // key repeat while held
@@ -3073,12 +3078,16 @@
       case 'menu': menuKey(code); return;
       case 'drawer': drawerKey(code); return;
       case 'player': playerKey(code); return;
-      default: guideKey(code);
+      case 'tv-player': tvPlayerKey(code); return;
+      default:
+        if (!PHONE) { tvKey(code, e); return; }
+        guideKey(code);
     }
   }
 
   function zapOrPage(dir) {
     if (state.overlay === 'player') { zap(dir); return; }
+    if (state.overlay === 'tv-player') { zapTvChannel(dir > 0 ? 1 : -1); return; }
     if (!state.overlay && state.zone === 'grid') focusGrid(state.gridIdx + (dir > 0 ? -1 : 1) * state.cols * 3);
   }
 
@@ -3092,6 +3101,13 @@
         if (state.zone === 'perror') { errorButtons()[state.perrIdx || 0].click(); return; }
         if (el.osd.classList.contains('off')) showOsd(); else playerMenu();
         return;
+      case 'tv-player':
+        exitTvFullscreen();
+        return;
+    }
+    if (!PHONE) {
+      tvOk();
+      return;
     }
     if (state.zone === 'grid') { if (Dub) Dub.unlockAudio(); playIndex(state.gridIdx); }
     else if (state.zone === 'rail') { selectCategory(state.cats[state.railIdx].id); focusGrid(0); }
@@ -3184,5 +3200,515 @@
     else if (code === 39 || code === 38) state.dialogIdx = clamp(state.dialogIdx - 1, 0, n - 1);
     else if (isBack(code)) { closeDialog(); return; }
     markFocus();
+  }
+
+  // ================================================================== Apple TV+ (tvOS) Flagship Engine
+  var tvState = {
+    zone: 'shelf', // 'tabs' | 'shelf'
+    tabIdx: 0,
+    tabs: [
+      { id: 'now', name: 'צפייה כעת' },
+      { id: 'israel', name: 'ערוצי ישראל' },
+      { id: 'sports', name: 'ספורט' },
+      { id: 'kids', name: 'ילדים' },
+      { id: 'movies', name: 'סרטים ודיבוב' },
+      { id: 'favs', name: 'מועדפים' },
+      { id: 'search', name: '🔍' }
+    ],
+    shelves: [],
+    shelfIdx: 0,
+    cardIdx: 0,
+    previewTimer: null,
+    previewHls: null,
+    previewChannel: null,
+    isFullscreen: false
+  };
+
+  function initTvOS() {
+    setupTvTabs();
+    selectTvTab(0);
+
+    // LG webOS Magic Remote wheel navigation
+    if (el.tvShelvesContainer) {
+      el.tvShelvesContainer.addEventListener('wheel', function (e) {
+        if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+          if (e.deltaY > 20) {
+            if (tvState.shelfIdx < tvState.shelves.length - 1) {
+              tvState.shelfIdx++;
+              markTvFocus();
+            }
+          } else if (e.deltaY < -20) {
+            if (tvState.shelfIdx > 0) {
+              tvState.shelfIdx--;
+              markTvFocus();
+            } else {
+              tvState.zone = 'tabs';
+              markTvFocus();
+            }
+          }
+        } else {
+          var curShelf = tvState.shelves[tvState.shelfIdx];
+          var numCards = curShelf ? curShelf.channels.length : 0;
+          if (e.deltaX > 20) {
+            if (tvState.cardIdx > 0) { tvState.cardIdx--; markTvFocus(); }
+          } else if (e.deltaX < -20) {
+            if (tvState.cardIdx < numCards - 1) { tvState.cardIdx++; markTvFocus(); }
+          }
+        }
+      }, { passive: true });
+    }
+  }
+
+  function setupTvTabs() {
+    if (!el.tvTopPill) return;
+    var tabEls = el.tvTopPill.querySelectorAll('.tv-tab');
+    tabEls.forEach(function (tabEl, idx) {
+      tabEl.addEventListener('mouseenter', function () {
+        tvState.zone = 'tabs';
+        tvState.tabIdx = idx;
+        markTvFocus();
+      });
+      tabEl.addEventListener('click', function () {
+        selectTvTab(idx);
+      });
+    });
+  }
+
+  function selectTvTab(idx) {
+    tvState.tabIdx = idx;
+    var tabEls = el.tvTopPill ? el.tvTopPill.querySelectorAll('.tv-tab') : [];
+    for (var i = 0; i < tabEls.length; i++) {
+      toggleClass(tabEls[i], 'active', i === idx);
+    }
+    updateTvPillPos();
+    buildTvShelvesForTab(tvState.tabs[idx].id);
+    tvState.shelfIdx = 0;
+    tvState.cardIdx = 0;
+    markTvFocus();
+  }
+
+  function updateTvPillPos() {
+    if (!el.tvTopPill || !el.tvPillIndicator) return;
+    var tabEls = el.tvTopPill.querySelectorAll('.tv-tab');
+    var curTab = tabEls[tvState.tabIdx];
+    if (!curTab) return;
+    var left = curTab.offsetLeft;
+    var width = curTab.offsetWidth;
+    el.tvPillIndicator.style.transform = 'translate3d(' + left + 'px, 0, 0)';
+    el.tvPillIndicator.style.width = width + 'px';
+  }
+
+  function buildTvShelvesForTab(tabId) {
+    var shelves = [];
+    var all = state.all || [];
+
+    function byIds(ids) {
+      var map = {};
+      all.forEach(function (c) { map[c.id] = c; });
+      var res = [];
+      ids.forEach(function (id) { if (map[id]) res.push(map[id]); });
+      return res;
+    }
+
+    function filterByKeyword(kw) {
+      var lkw = kw.toLowerCase();
+      return all.filter(function (c) {
+        var str = (c.category || '') + ' ' + (c.categoryEn || '') + ' ' + (c.name || '');
+        return str.toLowerCase().indexOf(lkw) !== -1;
+      });
+    }
+
+    if (tabId === 'now') {
+      var topIds = ['kan11', 'keshet12', 'reshet13', 'now14', 'i24news_he', 'sport5', 'one_hd', 'makan33', 'knesset99', 'hot3', 'kan_educational'];
+      var topChannels = byIds(topIds);
+      if (topChannels.length < 5) topChannels = all.slice(0, 15);
+      shelves.push({ title: 'ערוצים נבחרים ומובילים', channels: topChannels });
+
+      var newsChannels = filterByKeyword('חדשות');
+      if (newsChannels.length) shelves.push({ title: 'חדשות ואקטואליה בשידור חי', channels: newsChannels.slice(0, 24) });
+
+      var sportsChannels = filterByKeyword('ספורט');
+      if (sportsChannels.length) shelves.push({ title: 'ספורט ישראלי ובינלאומי', channels: sportsChannels.slice(0, 24) });
+
+      var entChannels = filterByKeyword('סדרות');
+      if (entChannels.length) shelves.push({ title: 'סדרות ובידור', channels: entChannels.slice(0, 24) });
+
+      var radioChannels = all.filter(isRadioCh);
+      if (radioChannels.length) shelves.push({ title: 'רדיו ישראלי חי', channels: radioChannels.slice(0, 24) });
+    } else if (tabId === 'israel') {
+      var broadcast = all.filter(function (c) { return ['kan11', 'keshet12', 'reshet13', 'now14', 'i24news_he', 'ch9', 'makan33', 'knesset99', 'kan_educational'].indexOf(c.id) !== -1; });
+      shelves.push({ title: 'ערוצי ברודקאסט ישראליים', channels: broadcast.length ? broadcast : all.slice(0, 10) });
+
+      var specific = all.filter(function (c) { return ['hala_tv', 'musawa', 'hidabroot', 'ch16', 'kabbalah', 'ietv', 'maran', 'tov'].indexOf(c.id) !== -1; });
+      if (specific.length) shelves.push({ title: 'ערוצים ייעודיים ומגזריים', channels: specific });
+
+      var ilGeneral = all.filter(function (c) { return (c.category || '').indexOf('ישראל') !== -1; });
+      shelves.push({ title: 'כל ערוצי ישראל', channels: ilGeneral.length ? ilGeneral : all.slice(0, 30) });
+    } else if (tabId === 'sports') {
+      var sports = filterByKeyword('ספורט');
+      shelves.push({ title: 'ערוצי ספורט ישראליים', channels: sports.slice(0, 15) });
+      if (sports.length > 15) shelves.push({ title: 'ספורט בינלאומי בשידור חי', channels: sports.slice(15, 40) });
+    } else if (tabId === 'kids') {
+      var kids = filterByKeyword('ילדים');
+      shelves.push({ title: 'ערוצי ילדים ישראליים', channels: kids.slice(0, 20) });
+      if (kids.length > 20) shelves.push({ title: 'אנימציה ובידור לילדים', channels: kids.slice(20, 45) });
+    } else if (tabId === 'movies') {
+      var movies = filterByKeyword('סרטים');
+      shelves.push({ title: 'סרטים עם דיבוב ועברית', channels: movies.slice(0, 20) });
+      if (movies.length > 20) shelves.push({ title: 'ערוצי קולנוע וסרטים', channels: movies.slice(20, 45) });
+    } else if (tabId === 'favs') {
+      var favChannels = byIds(state.favorites || []);
+      if (!favChannels.length) favChannels = all.slice(0, 8);
+      shelves.push({ title: 'הערוצים המועדפים שלי', channels: favChannels });
+
+      var recentChannels = byIds(state.recents || []);
+      if (recentChannels.length) shelves.push({ title: 'נצפו לאחרונה', channels: recentChannels });
+    } else if (tabId === 'search') {
+      shelves.push({ title: 'כל הערוצים', channels: all.slice(0, 40) });
+    }
+
+    tvState.shelves = shelves;
+    renderTvShelvesHtml();
+  }
+
+  function renderTvShelvesHtml() {
+    if (!el.tvShelvesTrack) return;
+    var html = '';
+    tvState.shelves.forEach(function (shelf, sIdx) {
+      html += '<section class="tv-shelf" data-shelf="' + sIdx + '">';
+      html += '<h2 class="tv-shelf-title">' + esc(shelf.title) + '</h2>';
+      html += '<div class="tv-shelf-row-wrapper">';
+      html += '<div class="tv-shelf-row">';
+      shelf.channels.forEach(function (ch, cIdx) {
+        var flags = '<span class="f-live">● LIVE</span>' + (isFav(ch) ? '<span>⭐</span>' : '') +
+          (isRadioCh(ch) ? '<span>📻</span>' : '') + (appOnly(ch) ? '<span>📲</span>' : '');
+        html += '<div class="tv-card' + (isFav(ch) ? ' is-fav' : '') + '" data-shelf="' + sIdx + '" data-card="' + cIdx + '">';
+        html += '<div class="tv-card-visual" style="background-image:' + tintOf(ch) + '">';
+        html += '<div class="tv-card-glare"></div>';
+        html += '<div class="tv-card-num">' + ch.number + '</div>';
+        html += '<div class="tv-card-badges">' + flags + '</div>';
+        html += '<img alt="" loading="lazy" />';
+        html += '<div class="mono hidden"></div>';
+        html += '</div>';
+        html += '<div class="tv-card-name">' + esc(ch.name) + '</div>';
+        html += '<div class="tv-card-meta">' + esc(cardMeta(ch)) + '</div>';
+        html += '</div>';
+      });
+      html += '</div></div></section>';
+    });
+    el.tvShelvesTrack.innerHTML = html;
+
+    var shelfEls = el.tvShelvesTrack.querySelectorAll('.tv-shelf');
+    shelfEls.forEach(function (sEl, sIdx) {
+      var shelf = tvState.shelves[sIdx];
+      if (!shelf) return;
+      var cardEls = sEl.querySelectorAll('.tv-card');
+      cardEls.forEach(function (cEl, cIdx) {
+        var ch = shelf.channels[cIdx];
+        if (!ch) return;
+        lazyLogo(cEl.querySelector('img'), cEl.querySelector('.mono'), ch);
+
+        cEl.addEventListener('mouseenter', function () {
+          tvState.zone = 'shelf';
+          tvState.shelfIdx = sIdx;
+          tvState.cardIdx = cIdx;
+          markTvFocus();
+        });
+        cEl.addEventListener('click', function () {
+          tvState.zone = 'shelf';
+          tvState.shelfIdx = sIdx;
+          tvState.cardIdx = cIdx;
+          tvOk();
+        });
+      });
+    });
+  }
+
+  function getCurTvCh() {
+    var shelf = tvState.shelves[tvState.shelfIdx];
+    if (!shelf || !shelf.channels) return null;
+    return shelf.channels[tvState.cardIdx] || null;
+  }
+
+  function markTvFocus(immediate) {
+    var oldFocus = document.querySelectorAll('.tv-tab.focused, .tv-card.focused');
+    for (var i = 0; i < oldFocus.length; i++) oldFocus[i].classList.remove('focused');
+
+    if (tvState.zone === 'tabs') {
+      var tabEls = el.tvTopPill ? el.tvTopPill.querySelectorAll('.tv-tab') : [];
+      if (tabEls[tvState.tabIdx]) {
+        tabEls[tvState.tabIdx].classList.add('focused');
+      }
+    } else if (tvState.zone === 'shelf') {
+      var shelfTrack = el.tvShelvesTrack;
+      if (!shelfTrack) return;
+      var shelfEls = shelfTrack.querySelectorAll('.tv-shelf');
+      var curShelfEl = shelfEls[tvState.shelfIdx];
+      if (curShelfEl) {
+        var cardEls = curShelfEl.querySelectorAll('.tv-card');
+        var curCardEl = cardEls[tvState.cardIdx];
+        if (curCardEl) curCardEl.classList.add('focused');
+
+        // Fluid Shelf Camera Tracking: translate horizontal track with spring interpolation
+        // In RTL Hebrew layout, card step: 290px card width + 24px gap = 314px
+        var rowEl = curShelfEl.querySelector('.tv-shelf-row');
+        if (rowEl) {
+          var tx = tvState.cardIdx * 314;
+          rowEl.style.transform = 'translate3d(' + tx + 'px, 0, 0)';
+        }
+      }
+
+      // Vertical Shelf Cascade: translateY the shelves track
+      var ty = tvState.shelfIdx * 285;
+      shelfTrack.style.transform = 'translate3d(0, -' + ty + 'px, 0)';
+
+      // Cascade dimming: dim unfocused rows above to opacity: 0.25
+      for (var s = 0; s < shelfEls.length; s++) {
+        if (s < tvState.shelfIdx) {
+          shelfEls[s].style.opacity = '0.25';
+          shelfEls[s].style.transform = 'scale3d(0.96, 0.96, 1)';
+        } else if (s === tvState.shelfIdx) {
+          shelfEls[s].style.opacity = '1';
+          shelfEls[s].style.transform = 'scale3d(1, 1, 1)';
+        } else {
+          shelfEls[s].style.opacity = '0.75';
+          shelfEls[s].style.transform = 'scale3d(0.98, 0.98, 1)';
+        }
+      }
+
+      var ch = getCurTvCh();
+      if (ch) {
+        updateTvHero(ch);
+        scheduleTvLivePreview(ch);
+      }
+    }
+  }
+
+  function updateTvHero(ch) {
+    if (!ch || !el.tvHeroMeta) return;
+    el.tvHeroMeta.classList.remove('anim-slide');
+    void el.tvHeroMeta.offsetWidth;
+    el.tvHeroMeta.classList.add('anim-slide');
+
+    if (el.tvHeroTitle) el.tvHeroTitle.textContent = ch.name;
+    if (el.tvHeroDesc) el.tvHeroDesc.textContent = ch.desc || ('ערוץ ' + ch.name + ' באיכות שידור גבוהה FHD 1080p');
+    if (el.tvHeroNum) el.tvHeroNum.textContent = ch.number || '1';
+    if (el.tvHeroCat) el.tvHeroCat.textContent = splitCat(ch.category) || 'ערוצי ישראל';
+    if (el.tvHeroQuality) el.tvHeroQuality.textContent = ch.badge || (isRadioCh(ch) ? 'רדיו' : 'FHD 1080p');
+    if (el.tvHeroFav) toggleClass(el.tvHeroFav, 'hidden', !isFav(ch));
+
+    setLogo(el.tvHeroLogo, el.tvHeroMono, ch);
+
+    if (el.tvBackdropArt) {
+      var h = hueOf(ch.id);
+      el.tvBackdropArt.style.background = 'radial-gradient(circle at 75% 30%, hsla(' + h + ',75%,35%,.4), transparent 60%), linear-gradient(180deg, rgba(5,7,13,0.3) 0%, rgba(5,7,13,0.95) 100%)';
+    }
+  }
+
+  function scheduleTvLivePreview(ch) {
+    if (tvState.previewTimer) {
+      clearTimeout(tvState.previewTimer);
+      tvState.previewTimer = null;
+    }
+    if (tvState.isFullscreen) return;
+    tvState.previewTimer = setTimeout(function () {
+      startTvLivePreview(ch);
+    }, 550);
+  }
+
+  function startTvLivePreview(ch) {
+    if (!ch || !el.tvPreviewVideo) return;
+    if (tvState.previewChannel && tvState.previewChannel.id === ch.id && !el.tvPreviewVideo.paused) return;
+    tvState.previewChannel = ch;
+
+    if (tvState.previewHls) {
+      try { tvState.previewHls.destroy(); } catch (e) {}
+      tvState.previewHls = null;
+    }
+
+    var vid = el.tvPreviewVideo;
+    vid.classList.remove('active');
+    vid.muted = true;
+    vid.volume = 0;
+
+    var streamUrl = ch.url;
+    if (!streamUrl || isApp(ch) || appOnly(ch)) return;
+
+    var onPlaying = function () {
+      vid.classList.add('active');
+      vid.removeEventListener('playing', onPlaying);
+    };
+    vid.addEventListener('playing', onPlaying);
+
+    if (streamUrl.indexOf('.m3u8') !== -1 && window.Hls && Hls.isSupported()) {
+      var hls = new Hls({
+        capLevelToPlayerSize: true,
+        maxBufferLength: 8,
+        maxMaxBufferLength: 14,
+        startLevel: 0
+      });
+      hls.loadSource(streamUrl);
+      hls.attachMedia(vid);
+      hls.on(Hls.Events.MANIFEST_PARSED, function () {
+        var p = vid.play();
+        if (p && p.catch) p.catch(function () {});
+      });
+      tvState.previewHls = hls;
+    } else {
+      vid.src = streamUrl;
+      var p = vid.play();
+      if (p && p.catch) p.catch(function () {});
+    }
+  }
+
+  function enterTvFullscreen(ch) {
+    tvState.isFullscreen = true;
+    state.playing = ch;
+    state.overlay = 'tv-player';
+    addRecent(ch);
+
+    document.body.classList.add('tv-fullscreen-playing');
+
+    var vid = el.tvPreviewVideo;
+    if (tvState.previewChannel && tvState.previewChannel.id === ch.id && !vid.paused) {
+      vid.muted = false;
+      vid.volume = 1;
+    } else {
+      vid.muted = false;
+      vid.volume = 1;
+      startTvLivePreview(ch);
+      vid.classList.add('active');
+    }
+    toast('▶ ' + ch.name);
+  }
+
+  function exitTvFullscreen() {
+    tvState.isFullscreen = false;
+    state.overlay = null;
+    document.body.classList.remove('tv-fullscreen-playing');
+    if (el.tvPreviewVideo) {
+      el.tvPreviewVideo.muted = true;
+    }
+    markTvFocus();
+  }
+
+  function tvKey(code, e) {
+    if (isBack(code)) { tvBack(); return; }
+    if (tvState.zone === 'tabs') {
+      if (code === 37) { // Left (next tab in RTL)
+        selectTvTab((tvState.tabIdx + 1) % tvState.tabs.length);
+      } else if (code === 39) { // Right (prev tab in RTL)
+        selectTvTab((tvState.tabIdx - 1 + tvState.tabs.length) % tvState.tabs.length);
+      } else if (code === 40) { // Down
+        if (tvState.shelves.length) {
+          tvState.zone = 'shelf';
+          markTvFocus();
+        }
+      }
+    } else if (tvState.zone === 'shelf') {
+      var curShelf = tvState.shelves[tvState.shelfIdx];
+      var numCards = curShelf ? curShelf.channels.length : 0;
+      if (code === 37) { // Left (next card in RTL)
+        if (tvState.cardIdx < numCards - 1) {
+          tvState.cardIdx++;
+          markTvFocus();
+        }
+      } else if (code === 39) { // Right (prev card in RTL)
+        if (tvState.cardIdx > 0) {
+          tvState.cardIdx--;
+          markTvFocus();
+        }
+      } else if (code === 38) { // Up
+        if (tvState.shelfIdx > 0) {
+          tvState.shelfIdx--;
+          var newShelf = tvState.shelves[tvState.shelfIdx];
+          if (tvState.cardIdx >= newShelf.channels.length) {
+            tvState.cardIdx = Math.max(0, newShelf.channels.length - 1);
+          }
+          markTvFocus();
+        } else {
+          tvState.zone = 'tabs';
+          markTvFocus();
+        }
+      } else if (code === 40) { // Down
+        if (tvState.shelfIdx < tvState.shelves.length - 1) {
+          tvState.shelfIdx++;
+          var nextShelf = tvState.shelves[tvState.shelfIdx];
+          if (tvState.cardIdx >= nextShelf.channels.length) {
+            tvState.cardIdx = Math.max(0, nextShelf.channels.length - 1);
+          }
+          markTvFocus();
+        }
+      }
+    }
+  }
+
+  function tvOk() {
+    if (tvState.zone === 'tabs') {
+      var tab = tvState.tabs[tvState.tabIdx];
+      if (tab.id === 'search') {
+        focusSearch();
+      } else {
+        tvState.zone = 'shelf';
+        markTvFocus();
+      }
+      return;
+    }
+    var ch = getCurTvCh();
+    if (ch) {
+      if (isApp(ch)) { openServiceApp(ch); addRecent(ch); return; }
+      if (appOnly(ch)) { showGetApp(ch); return; }
+      enterTvFullscreen(ch);
+    }
+  }
+
+  function tvBack() {
+    if (tvState.isFullscreen) {
+      exitTvFullscreen();
+      return;
+    }
+    if (tvState.zone === 'shelf' && tvState.shelfIdx > 0) {
+      tvState.shelfIdx = 0;
+      tvState.cardIdx = 0;
+      markTvFocus();
+      return;
+    }
+    if (tvState.tabIdx !== 0) {
+      selectTvTab(0);
+      return;
+    }
+    var now = Date.now();
+    if (now - (state.lastBack || 0) < 2500) {
+      exitApp();
+    } else {
+      state.lastBack = now;
+      toast('לחצו שוב BACK ליציאה');
+    }
+  }
+
+  function tvPlayerKey(code) {
+    if (isBack(code)) {
+      exitTvFullscreen();
+      return;
+    }
+    if (code === 38 || code === 40) {
+      zapTvChannel(code === 38 ? 1 : -1);
+      return;
+    }
+    if (code === 37 || code === 39 || code === 13 || code === 23 || code === 66) {
+      toast('📺 ' + (state.playing ? state.playing.name : ''));
+      return;
+    }
+  }
+
+  function zapTvChannel(dir) {
+    var curShelf = tvState.shelves[tvState.shelfIdx];
+    if (!curShelf || !curShelf.channels.length) return;
+    var nextCardIdx = (tvState.cardIdx + dir + curShelf.channels.length) % curShelf.channels.length;
+    tvState.cardIdx = nextCardIdx;
+    var nextCh = curShelf.channels[nextCardIdx];
+    if (nextCh) {
+      enterTvFullscreen(nextCh);
+    }
   }
 })();

@@ -27,6 +27,8 @@
   --ease-out: cubic-bezier(.05, .7, .1, 1);     /* M3 emphasized decelerate (enter) */
   --ease-in: cubic-bezier(.3, 0, .8, .15);      /* M3 emphasized accelerate (exit) */
   --spring: cubic-bezier(.34, 1.4, .64, 1);
+  --tvos-spring: cubic-bezier(0.16, 1, 0.3, 1);
+  --tvos-dur: 420ms;
 }
 @supports (transition-timing-function: linear(0, 1)) {
   :root { --spring: linear(0, .06 2.4%, .235 5.1%, .529 9.3%, .794 14.1%, .946 18.9%, 1.025 23.9%, 1.054 29%, 1.05 34.4%, 1.026 41.4%, 1.006 50.2%, .998 61.3%, 1); }
@@ -62,6 +64,431 @@ body.anim-off *, body.anim-off *::before, body.anim-off *::after { transition: n
 .live-dot { display: inline-block; width: .8rem; height: .8rem; border-radius: 50%; background: var(--live);
   margin-left: .5rem; vertical-align: middle; animation: pulse 1.6s infinite; }
 @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .35; } }
+
+/* ================================================================== 
+   FLAGSHIP APPLE TV+ (tvOS) ENGINE - HARDWARE ACCELERATED (60/120 FPS)
+   ================================================================== */
+body:not(.phone) {
+  background: #05070d !important;
+  overflow: hidden !important;
+}
+
+/* Kill legacy clutter on Smart TV platforms (LG webOS, Samsung Tizen, Android TV) */
+body:not(.phone) #topbar,
+body:not(.phone) #guide-body,
+body:not(.phone) #hints,
+body:not(.phone) .rail {
+  display: none !important;
+}
+
+/* 1. Full-Bleed Live Video Preview Stage (100vw x 100vh) */
+.tv-backdrop-stage {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+  background: #05070d;
+}
+.tv-backdrop-art {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center 30%;
+  opacity: 0.95;
+  transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+  transition: opacity 700ms var(--tvos-spring), transform 1200ms var(--tvos-spring);
+  will-change: opacity, transform;
+  backface-visibility: hidden;
+}
+.tv-preview-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transform: translate3d(0, 0, 0);
+  transition: opacity 700ms var(--tvos-spring);
+  will-change: opacity;
+  backface-visibility: hidden;
+}
+.tv-preview-video.active {
+  opacity: 1;
+}
+.tv-backdrop-scrim {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 80% 20%, rgba(56, 189, 248, 0.14) 0%, rgba(5, 7, 13, 0) 65%),
+              linear-gradient(to top, #05070d 0%, rgba(5, 7, 13, 0.92) 36%, rgba(5, 7, 13, 0.45) 75%, rgba(5, 7, 13, 0.2) 100%),
+              linear-gradient(to left, rgba(5, 7, 13, 0.96) 0%, rgba(5, 7, 13, 0.6) 45%, transparent 80%);
+  transition: opacity 500ms var(--tvos-spring);
+  will-change: opacity;
+}
+
+/* 2. Centered Frosted tvOS Top Pill Bar */
+.tv-top-pill {
+  position: fixed;
+  top: 44px;
+  left: 50%;
+  transform: translate3d(-50%, 0, 0);
+  height: 58px;
+  border-radius: 999px;
+  background: rgba(22, 22, 28, 0.68);
+  backdrop-filter: blur(36px) saturate(180%);
+  -webkit-backdrop-filter: blur(36px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  padding: 4px 6px;
+  z-index: 100;
+  transition: transform 420ms var(--tvos-spring), opacity 420ms var(--tvos-spring);
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+}
+.tv-pill-indicator {
+  position: absolute;
+  top: 5px;
+  left: 0;
+  height: 48px;
+  border-radius: 999px;
+  background: #F5F5F7;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+  transition: transform 420ms var(--tvos-spring), width 420ms var(--tvos-spring);
+  will-change: transform, width;
+  pointer-events: none;
+  z-index: 1;
+}
+.tv-tab {
+  position: relative;
+  z-index: 2;
+  font-family: Heebo, -apple-system, BlinkMacSystemFont, 'SF Pro Display', Arial, sans-serif;
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: #a1a1aa;
+  padding: 0 2rem;
+  height: 48px;
+  line-height: 48px;
+  border-radius: 999px;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 320ms var(--tvos-spring), transform 320ms var(--tvos-spring);
+  will-change: transform, color;
+}
+.tv-tab.active {
+  color: #16161c;
+  font-weight: 800;
+}
+.tv-tab.focused {
+  color: #ffffff;
+  transform: translate3d(0, -2px, 0) scale3d(1.05, 1.05, 1);
+}
+.tv-tab.active.focused {
+  color: #000000;
+  transform: translate3d(0, -2px, 0) scale3d(1.05, 1.05, 1);
+}
+
+/* 3. Apple TV Content Stage & RTL Hero Metadata */
+.tv-stage {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  padding: 13rem 5rem 0 5rem;
+  pointer-events: auto;
+  transition: transform 480ms var(--tvos-spring), opacity 480ms var(--tvos-spring);
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+}
+.tv-hero-meta {
+  flex: none;
+  height: 19rem;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  margin-bottom: 2rem;
+  transition: transform 420ms var(--tvos-spring), opacity 420ms var(--tvos-spring);
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+}
+.tv-hero-meta.anim-slide {
+  animation: tvHeroSlideIn 420ms var(--tvos-spring) both;
+}
+@keyframes tvHeroSlideIn {
+  from { opacity: 0; transform: translate3d(0, 14px, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+.tv-hero-logo-box {
+  width: 22rem;
+  height: 13rem;
+  flex: none;
+  border-radius: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1.5px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 24px rgba(56, 189, 248, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 3rem;
+  overflow: hidden;
+}
+.tv-hero-logo-box img {
+  max-width: 82%;
+  max-height: 78%;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.5));
+}
+.tv-hero-text {
+  flex: 1;
+  min-width: 0;
+}
+.tv-hero-badges {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-bottom: 0.8rem;
+}
+.tv-badge {
+  font-size: 1.25rem;
+  font-weight: 800;
+  padding: 0.35rem 1.1rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #f1f5f9;
+  letter-spacing: -0.02rem;
+}
+.tv-badge.live {
+  background: rgba(239, 68, 68, 0.25);
+  border-color: rgba(239, 68, 68, 0.6);
+  color: #fca5a5;
+  box-shadow: 0 0 12px rgba(239, 68, 68, 0.4);
+}
+.tv-badge.quality {
+  background: rgba(56, 189, 248, 0.2);
+  border-color: rgba(56, 189, 248, 0.5);
+  color: #38bdf8;
+}
+.tv-badge.num {
+  background: #f5f5f7;
+  color: #0f172a;
+  border: none;
+  font-weight: 900;
+}
+.tv-hero-title {
+  font-size: 3.8rem;
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.06rem;
+  margin: 0 0 0.6rem;
+  color: #ffffff;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+}
+.tv-hero-desc {
+  font-size: 1.6rem;
+  color: #cbd5e1;
+  line-height: 1.4;
+  margin: 0;
+  max-width: 75rem;
+  max-height: 4.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+}
+
+/* 4. Apple TV Shelves & Vertical Cascade Physics */
+.tv-shelves-container {
+  flex: 1;
+  min-height: 0;
+  overflow: visible;
+  position: relative;
+}
+.tv-shelves-track {
+  display: flex;
+  flex-direction: column;
+  transform: translate3d(0, 0, 0);
+  transition: transform 420ms var(--tvos-spring);
+  will-change: transform;
+  backface-visibility: hidden;
+}
+.tv-shelf {
+  flex: none;
+  margin-bottom: 3.6rem;
+  transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+  transition: opacity 420ms var(--tvos-spring), transform 420ms var(--tvos-spring);
+  will-change: opacity, transform;
+  backface-visibility: hidden;
+}
+.tv-shelf.dimmed {
+  opacity: 0.25 !important;
+  transform: translate3d(0, 0, 0) scale3d(0.97, 0.97, 1) !important;
+}
+.tv-shelf-title {
+  font-size: 2.1rem;
+  font-weight: 800;
+  letter-spacing: -0.03rem;
+  margin: 0 0 1.2rem;
+  color: #ffffff;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+}
+.tv-shelf-viewport {
+  overflow: visible;
+  position: relative;
+  padding: 1.2rem 0;
+}
+.tv-shelf-track {
+  display: flex;
+  align-items: center;
+  transform: translate3d(0, 0, 0);
+  transition: transform 420ms var(--tvos-spring);
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* 5. 3D Card Focus & Specular Glare (Apple TV Sheen) */
+.tv-card {
+  flex: none;
+  width: 290px;
+  margin-left: 24px;
+  cursor: pointer;
+  position: relative;
+  transform: translate3d(0, 0, 0);
+  transition: transform 420ms var(--tvos-spring);
+  will-change: transform;
+  backface-visibility: hidden;
+}
+.tv-card-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1.5px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+  transition: transform 420ms var(--tvos-spring), border-color 420ms, box-shadow 420ms;
+  will-change: transform, box-shadow, border-color;
+  backface-visibility: hidden;
+}
+/* Subtle radial glow behind dark logos (like Kan 11) */
+.tv-card-media::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 72%;
+  height: 72%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0) 70%);
+  pointer-events: none;
+  border-radius: 50%;
+}
+/* Dynamic Specular Light Sweep (Apple TV Sheen) */
+.tv-card-media::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(115deg, transparent 20%, rgba(255, 255, 255, 0.22) 50%, transparent 80%);
+  pointer-events: none;
+  z-index: 5;
+  transition: transform 0s;
+}
+.tv-card.focused {
+  z-index: 50;
+}
+.tv-card.focused .tv-card-media {
+  transform: translate3d(0, -8px, 0) scale3d(1.14, 1.14, 1) !important;
+  border: 2.5px solid rgba(255, 255, 255, 0.95) !important;
+  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.9), 0 0 28px rgba(255, 255, 255, 0.35) !important;
+}
+.tv-card.focused .tv-card-media::before {
+  transform: translate3d(240%, 0, 0);
+  transition: transform 750ms var(--tvos-spring);
+}
+.tv-card-logo {
+  max-width: 76%;
+  max-height: 72%;
+  object-fit: contain;
+  position: relative;
+  z-index: 2;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4));
+}
+.tv-card-info {
+  margin-top: 10px;
+  padding: 0 4px;
+}
+.tv-card-name {
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: #e2e8f0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: -0.02rem;
+  transition: color 300ms;
+}
+.tv-card.focused .tv-card-name {
+  color: #ffffff;
+  font-weight: 800;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+}
+.tv-card-meta {
+  font-size: 1.15rem;
+  color: #94a3b8;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 2px;
+}
+
+/* 6. Zero-Cut Fullscreen Zoom Transition */
+body.tv-fullscreen-playing #tv-top-pill {
+  transform: translate3d(-50%, -100px, 0) !important;
+  opacity: 0 !important;
+  pointer-events: none;
+}
+body.tv-fullscreen-playing #tv-stage {
+  transform: translate3d(0, 80px, 0) !important;
+  opacity: 0 !important;
+  pointer-events: none;
+}
+body.tv-fullscreen-playing #tv-backdrop-scrim {
+  opacity: 0 !important;
+}
+body.tv-fullscreen-playing .tv-preview-video {
+  opacity: 1 !important;
+  z-index: 25 !important;
+}
 
 /* ------------------------------------------------------------------ top bar (Redesigned webOS / Smart TV Glassmorphism) */
 .topbar { flex: none; height: 7.2rem; display: flex; align-items: center; padding: 0 3.2rem;

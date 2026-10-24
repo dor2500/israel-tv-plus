@@ -101,6 +101,44 @@ window.ITV_UI = (function (I) {
     '</main>' +
   '</div>' +
 
+  // ---------------------------------------------------------------- Apple TV+ (tvOS) Flagship Stage
+  '<div class="tv-backdrop-stage tv" id="tv-backdrop-stage">' +
+    '<div class="tv-backdrop-art" id="tv-backdrop-art"></div>' +
+    '<video class="tv-preview-video" id="tv-preview-video" playsinline muted preload="auto"></video>' +
+    '<div class="tv-backdrop-scrim" id="tv-backdrop-scrim"></div>' +
+  '</div>' +
+
+  '<nav class="tv-top-pill tv" id="tv-top-pill" role="tablist">' +
+    '<div class="tv-pill-indicator" id="tv-pill-indicator"></div>' +
+    '<button class="tv-tab active" data-tab="now" role="tab">צפייה כעת</button>' +
+    '<button class="tv-tab" data-tab="israel" role="tab">ערוצי ישראל</button>' +
+    '<button class="tv-tab" data-tab="sports" role="tab">ספורט</button>' +
+    '<button class="tv-tab" data-tab="kids" role="tab">ילדים</button>' +
+    '<button class="tv-tab" data-tab="movies" role="tab">סרטים ודיבוב</button>' +
+    '<button class="tv-tab" data-tab="favs" role="tab">מועדפים</button>' +
+    '<button class="tv-tab tv-tab-search" data-tab="search" role="tab" aria-label="חיפוש">🔍</button>' +
+  '</nav>' +
+
+  '<div class="tv-stage tv" id="tv-stage">' +
+    '<div class="tv-hero-meta" id="tv-hero-meta">' +
+      '<div class="tv-hero-logo-box" id="tv-hero-logo-box"><img id="tv-hero-logo" alt=""><div class="mono hidden" id="tv-hero-mono"></div></div>' +
+      '<div class="tv-hero-text">' +
+        '<div class="tv-hero-badges">' +
+          '<span class="tv-badge live"><span class="live-dot"></span>LIVE</span>' +
+          '<span class="tv-badge quality" id="tv-hero-quality">FHD</span>' +
+          '<span class="tv-badge cat" id="tv-hero-cat">ערוצי ישראל</span>' +
+          '<span class="tv-badge num" id="tv-hero-num">1</span>' +
+          '<span class="tv-badge fav hidden" id="tv-hero-fav">★ מועדף</span>' +
+        '</div>' +
+        '<h1 class="tv-hero-title" id="tv-hero-title">כאן 11 HD</h1>' +
+        '<p class="tv-hero-desc" id="tv-hero-desc">שידור חי רשמי מתאגיד השידור הישראלי כאן</p>' +
+      '</div>' +
+    '</div>' +
+    '<div class="tv-shelves-container" id="tv-shelves-container">' +
+      '<div class="tv-shelves-track" id="tv-shelves-track"></div>' +
+    '</div>' +
+  '</div>' +
+
   '<footer class="hints tv" id="hints"></footer>' +
 
   // ---------------------------------------------------------------- phone: floating navigation bar
