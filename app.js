@@ -2943,7 +2943,8 @@
   }
   /** LG: a downloaded live update is switched to at once when nothing is playing and no menu is open (else later). */
   function applyLiveIfIdle() {
-    if (PLATFORM !== 'webos' || !state.liveReady || state.playing || state.overlay) return false;
+    // the TV browse screen's silent preview is not watching: it must not hold the update back
+    if (PLATFORM !== 'webos' || !state.liveReady || (state.playing && !state.preview) || state.overlay) return false;
     toast('⬆️ מתעדכן לגרסה ' + state.liveReady.version + '...');
     setTimeout(function () { try { sessionStorage.removeItem('itv_local'); } catch (e) {} location.reload(); }, 1500);
     return true;
