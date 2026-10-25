@@ -25,7 +25,7 @@ CAT_ORDER = ["ערוצי ישראל - שידור חי", "ילדים ונוער (
              "ספורט (Sports)", "חדשות מהעולם (News)", "כלכלה ועסקים (Business)", "סרטים וסדרות (Movies & Series)",
              "קומדיה (Comedy)", "אוכל ובישול (Food)", "ילדים מהעולם (Kids World)", "טבע ודוקו (Documentary & Nature)",
              "טיולים והרפתקאות (Travel)", "מדע ולמידה (Science)", "מוזיקה (Music TV)", "לייף סטייל ובידור",
-             "דת ואמונה (Religion)", "ערוצים בינלאומיים (World)", "מנויים ואפליקציות (TV Apps)"]
+             "דת ומסורת", "דת ואמונה (Religion)", "ערוצים בינלאומיים (World)", "מנויים ואפליקציות (TV Apps)"]
 
 
 def flag(cc):
@@ -44,7 +44,7 @@ CAT_IDS = {
     "ערוצי ישראל - שידור חי": "israel", "ילדים ונוער (בעברית)": "kids_he", "רדיו ישראלי (Israeli Radio)": "radio",
     "מנויים ואפליקציות (TV Apps)": "apps", "סרטים וסדרות (Movies & Series)": "movies", "ספורט (Sports)": "sports",
     "ילדים מהעולם (Kids World)": "kids_world", "מוזיקה (Music TV)": "music", "טבע ודוקו (Documentary & Nature)": "docu",
-    "לייף סטייל ובידור": "life", "מסורת וקהילה": "community", "ערוצים בינלאומיים (World)": "world",
+    "לייף סטייל ובידור": "life", "מסורת וקהילה": "community", "דת ומסורת": "tradition", "ערוצים בינלאומיים (World)": "world",
     "חדשות מהעולם (News)": "news", "דת ואמונה (Religion)": "religion", "אוכל ובישול (Food)": "food",
     "טיולים והרפתקאות (Travel)": "travel", "קומדיה (Comedy)": "comedy", "מדע ולמידה (Science)": "science",
     "כלכלה ועסקים (Business)": "business",
