@@ -1,5 +1,7 @@
 package com.israeltv.plus.ui.player
 
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.Role
 import android.app.Activity
 import android.content.Context
 import android.content.pm.ActivityInfo
@@ -91,6 +93,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
+import androidx.compose.ui.platform.LocalAccessibilityManager
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.platform.LocalView
@@ -252,10 +255,11 @@ fun PlayerScreen(
         player.playWhenReady = true
     }
 
-    // controls hide after 4 s of playback without a touch
+    // controls hide after 4 s of playback without a touch (longer when the phone's accessibility timeout asks for it)
+    val a11y = LocalAccessibilityManager.current
     LaunchedEffect(controls, touchTick, playing, buffering, error) {
         if (controls && playing && !buffering && error == null) {
-            delay(4000)
+            delay(a11y?.calculateRecommendedTimeoutMillis(4000, containsIcons = true, containsControls = true) ?: 4000)
             controls = false
         }
     }
@@ -576,11 +580,11 @@ private fun Dock(landscape: Boolean, onItem: (String) -> Unit) {
 @Composable
 private fun androidx.compose.foundation.layout.RowScope.DockItem(icon: ImageVector, label: String, onClick: () -> Unit) {
     Column(
-        Modifier.weight(1f).fillMaxHeight().clickable(onClick = onClick),
+        Modifier.weight(1f).fillMaxHeight().clickable(role = Role.Button, onClick = onClick).semantics(mergeDescendants = true) {},
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
     ) {
-        Icon(icon, label, Modifier.size(22.dp), tint = Color.White)
+        Icon(icon, null, Modifier.size(22.dp), tint = Color.White)
         Text(label, color = Color.White.copy(alpha = 0.85f), fontSize = 10.sp, fontWeight = FontWeight.Medium)
     }
 }

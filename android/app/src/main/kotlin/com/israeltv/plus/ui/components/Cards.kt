@@ -1,5 +1,8 @@
 package com.israeltv.plus.ui.components
 
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.Role
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -98,11 +101,13 @@ fun ChannelCard(
                 .clip(CardShape)
                 .background(scheme.surfaceContainerHigh.copy(alpha = 0.75f))
                 .specularBorder(CardShape)
-                .clickable(interaction, ripple()) {
+                .clickable(interaction, ripple(), onClickLabel = "צפייה", role = Role.Button) {
                     haptic.performHapticFeedback(HapticFeedbackType.Confirm)
                     origin.key = sharedKey
                     onClick()
-                },
+                }
+                // TalkBack reads the tile as the channel (the logo is an image without text)
+                .semantics(mergeDescendants = true) { contentDescription = "${channel.name}, $subtitle" },
             contentAlignment = Alignment.Center,
         ) {
             ChannelLogo(logo, Modifier.fillMaxSize(0.6f), channel.isRadio)

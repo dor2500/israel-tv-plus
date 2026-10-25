@@ -251,7 +251,8 @@ private fun HeroPage(
             Spacer(Modifier.height(18.dp))
             Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                 GlassIconButton(
-                    if (favorite) Icons.Rounded.Star else Icons.Rounded.StarBorder, "מועדף", onFavorite, size = 50.dp,
+                    if (favorite) Icons.Rounded.Star else Icons.Rounded.StarBorder,
+                    if (favorite) "הסרה מהמועדפים" else "הוספה למועדפים", onFavorite, size = 50.dp,
                     tint = scheme.onSurface.copy(alpha = 0.14f), iconTint = scheme.onSurface,
                 )
                 Button(

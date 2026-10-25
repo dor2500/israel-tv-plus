@@ -1,5 +1,12 @@
 package com.israeltv.plus.ui.components
 
+import androidx.compose.ui.semantics.selected
+import androidx.compose.ui.semantics.role
+import androidx.compose.ui.semantics.onClick
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.clearAndSetSemantics
+import androidx.compose.ui.semantics.Role
+import androidx.compose.foundation.selection.selectable
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateFloatAsState
@@ -142,7 +149,7 @@ fun AppHeader(title: String, profileId: String, avatar: String, onAvatar: () -> 
                     .clip(RoundedCornerShape(14.dp))
                     .background(scheme.primaryContainer)
                     .specularBorder(RoundedCornerShape(14.dp), alpha = 0.32f)
-                    .clickable(interaction, null) {
+                    .clickable(interaction, null, onClickLabel = "החלפת פרופיל", role = Role.Button) {
                         haptic.performHapticFeedback(HapticFeedbackType.ContextClick)
                         onAvatar()
                     },
@@ -223,14 +230,21 @@ fun FloatingTabBar(
 private fun BarItem(icon: ImageVector, label: String, active: Boolean, showLabel: Boolean, modifier: Modifier, onClick: () -> Unit) {
     val scheme = MaterialTheme.colorScheme
     val color = if (active) scheme.onPrimaryContainer else scheme.onSurfaceVariant
+    // TalkBack: one tab with its name and selected state (also while the collapsed bar hides the label)
     Column(
         modifier
             .fillMaxHeight()
-            .clickable(remember { MutableInteractionSource() }, null, onClick = onClick),
+            .selectable(active, remember { MutableInteractionSource() }, null, role = Role.Tab, onClick = onClick)
+            .clearAndSetSemantics {
+                contentDescription = label
+                selected = active
+                role = Role.Tab
+                onClick { onClick(); true }
+            },
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
     ) {
-        Icon(icon, label, Modifier.size(26.dp), tint = if (active) scheme.onSurface else color)
+        Icon(icon, null, Modifier.size(26.dp), tint = if (active) scheme.onSurface else color)
         AnimatedVisibility(showLabel, enter = expandVertically() + fadeIn(), exit = shrinkVertically() + fadeOut()) {
             Text(label, fontSize = 11.sp, fontWeight = if (active) FontWeight.ExtraBold else FontWeight.Medium, color = if (active) scheme.onSurface else color)
         }
