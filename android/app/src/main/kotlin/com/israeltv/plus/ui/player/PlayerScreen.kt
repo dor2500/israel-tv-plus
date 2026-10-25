@@ -207,6 +207,12 @@ fun PlayerScreen(
                 onPlaying(isPlaying)
             }
             override fun onPlayerError(e: PlaybackException) {
+                // a live stream paused for a while fell behind its window: back to the live edge, no error card
+                if (e.errorCode == PlaybackException.ERROR_CODE_BEHIND_LIVE_WINDOW) {
+                    player.seekToDefaultPosition()
+                    player.prepare()
+                    return
+                }
                 error = describe(e)
                 buffering = false
             }
@@ -268,12 +274,15 @@ fun PlayerScreen(
         }
     }
 
-    // the app in the background: pause (except in picture-in-picture)
+    // the app in the background: pause. Picture-in-picture keeps the activity started (only paused), so ON_STOP
+    // there means the floating window was closed – then it pauses too. Back in front it plays again only if it
+    // was playing when it left (a channel the user paused stays paused).
     val lifecycle = LocalLifecycleOwner.current.lifecycle
-    DisposableEffect(lifecycle, inPip) {
+    DisposableEffect(lifecycle) {
+        var resume = false
         val obs = LifecycleEventObserver { _, e ->
-            if (e == Lifecycle.Event.ON_STOP && !inPip) player.pause()
-            if (e == Lifecycle.Event.ON_START) { player.volume = 1.0f; player.play() }
+            if (e == Lifecycle.Event.ON_STOP) { resume = player.playWhenReady; player.pause() }
+            if (e == Lifecycle.Event.ON_START && resume) { resume = false; player.volume = 1.0f; player.play() }
         }
         lifecycle.addObserver(obs)
         onDispose { lifecycle.removeObserver(obs) }
