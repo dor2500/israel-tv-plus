@@ -1393,7 +1393,12 @@
     }
     var buckets = {};
     ATV_ROWS.forEach(function (r) { buckets[r[0]] = []; });
-    state.all.forEach(function (c) { buckets[atvBucket(c)].push(c); });
+    state.all.forEach(function (c) {
+      var b = atvBucket(c);
+      // Israeli sports radio (Radio Sport 5) also opens the sports shelf, next to Sport 5's live stream
+      if (b === 'radio' && !c.imported && /ספורט/.test(c.name)) buckets.sports.unshift(c);
+      buckets[b].push(c);
+    });
     var rows = [], seen = {}, mine = [];
     state.recents.concat(state.favorites).forEach(function (id) {
       var i = indexInAll(id);

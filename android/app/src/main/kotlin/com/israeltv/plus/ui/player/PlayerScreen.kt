@@ -237,7 +237,8 @@ fun PlayerScreen(
             return@LaunchedEffect
         }
         val item = MediaItem.Builder().setUri(url)
-        if (current.url.contains(".m3u8", ignoreCase = true)) item.setMimeType(MimeTypes.APPLICATION_M3U8)
+        // every TV channel is HLS, also the ones whose address has no .m3u8 (Samsung TV Plus redirects)
+        if (current.url.contains(".m3u8", ignoreCase = true) || !current.isRadio) item.setMimeType(MimeTypes.APPLICATION_M3U8)
         player.setMediaItem(item.build())
         player.volume = 1.0f
         player.prepare()

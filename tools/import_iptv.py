@@ -116,7 +116,9 @@ def candidates(work):
             feeds[f["channel"]] = f
     blocked = {b["channel"] for b in load(work, "blocklist")}
     with open(os.path.join(ROOT, "channels.json"), encoding="utf-8") as f:
-        ours = [c for c in json.load(f) if c.get("src") != "iptv-org" and not c.get("imported")]
+        every = json.load(f)
+    ours = [c for c in every if c.get("src") != "iptv-org" and not c.get("imported")]
+    fast = [c for c in every if c.get("fast")]   # tools/import_fast.py: kept, numbered with the rest
     our_urls = {c["url"].split("://", 1)[-1] for c in ours}
     our_iptv = {c.get("iptv") for c in ours if c.get("iptv")}
 
@@ -343,7 +345,9 @@ def cmd_merge(work):
     with open(picked if os.path.isfile(picked) else os.path.join(work, "frames.json"), encoding="utf-8") as f:
         res = [c for c in json.load(f) if c.get("frame") and not c.get("dup_of")]
     with open(os.path.join(ROOT, "channels.json"), encoding="utf-8") as f:
-        ours = [c for c in json.load(f) if c.get("src") != "iptv-org" and not c.get("imported")]
+        every = json.load(f)
+    ours = [c for c in every if c.get("src") != "iptv-org" and not c.get("imported")]
+    fast = [c for c in every if c.get("fast")]   # tools/import_fast.py: kept, numbered with the rest
     names = he_names(work)
     logos = pick_logos(work)
     taken_ids = {c["id"] for c in ours}
@@ -395,6 +399,11 @@ def cmd_merge(work):
         })
         if c["url"].startswith("https") and not c.get("cors"):
             new[-1]["webOk"] = False  # the https web app can't read it (no CORS); the apps can
+    for c in fast:
+        if c["url"].split("://", 1)[-1] not in taken_urls and c["id"] not in taken_ids:
+            taken_urls.add(c["url"].split("://", 1)[-1])
+            taken_ids.add(c["id"])
+            new.append(c)
     new.sort(key=lambda c: order.index(c["category"]))
     for i, c in enumerate(new):
         c["number"] = FIRST_NUMBER + i
