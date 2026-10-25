@@ -1,5 +1,6 @@
 package com.israeltv.plus.ui.player
 
+import com.israeltv.plus.ui.theme.RequestDarkSystemBars
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.Role
 import android.app.Activity
@@ -298,7 +299,8 @@ fun PlayerScreen(
         }
     }
 
-    // full screen while watching: bars hidden (swipe from the edge shows them), screen kept on
+    // full screen while watching: bars hidden (swipe from the edge shows them, light icons on the video), screen kept on
+    RequestDarkSystemBars()
     val view = LocalView.current
     DisposableEffect(Unit) {
         val window = (context as Activity).window
