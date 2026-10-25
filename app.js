@@ -1389,10 +1389,13 @@
   function atvRowsData() {
     if (atv.search) {
       var q = atv.query.trim().toLowerCase();
-      var res = !q ? [] : state.all.filter(function (c) {
-        return c.name.toLowerCase().indexOf(q) !== -1 || String(c.number) === q ||
-          (c.countryHe && c.countryHe.indexOf(q) !== -1) || (c.title && c.title.toLowerCase().indexOf(q) !== -1);
+      var res = [], genre = [];
+      if (q) state.all.forEach(function (c) {
+        if (c.name.toLowerCase().indexOf(q) !== -1 || String(c.number) === q ||
+            (c.countryHe && c.countryHe.indexOf(q) !== -1) || (c.title && c.title.toLowerCase().indexOf(q) !== -1)) res.push(c);
+        else if (q.length > 2 && c.category && c.category.indexOf(q) !== -1) genre.push(c);   // "ספורט", "ילדים": the genre, after the names
       });
+      res = res.concat(genre);
       return [{ id: 'search', title: q ? 'תוצאות לחיפוש "' + atv.query.trim() + '" · ' + res.length : 'הקלידו שם ערוץ, מדינה או מספר', list: res }];
     }
     var buckets = {};
@@ -1433,7 +1436,7 @@
     atv.rows.forEach(function (row, r) {
       var sec = document.createElement('section');
       sec.className = 'atv-row';
-      sec.innerHTML = '<h3 class="atv-row-title">' + esc(row.title) + (row.list.length > 30 ? '<small>' + row.list.length + '</small>' : '') +
+      sec.innerHTML = '<h3 class="atv-row-title">' + esc(row.title) + (row.list.length > 30 && row.id !== 'search' ? '<small>' + row.list.length + '</small>' : '') +
         '</h3><div class="atv-track"></div>';
       atv.rowEls.push(sec);
       atv.tracks.push(sec.querySelector('.atv-track'));
@@ -1666,6 +1669,7 @@
       if (t === 'search') atvOpenSearch();
       else if (t === 'settings') openSettings();
       else if (t === 'kids-exit') askPin(function () { setSetting('kids', false); toast('יצאתם ממצב ילדים'); });
+      else if (atv.search && t !== 'search') { atvCloseSearch(t === 'top' ? '' : t); }   // a shelf tab leaves the search
       else atvFocus(atv.row, atv.cols[atv.row] || 0);
       return;
     }
@@ -1704,6 +1708,7 @@
 
   // ---- search: the field takes the details' place, the results are one shelf
   function atvOpenSearch() {
+    if (!atv.search) { var cur = atvCurrent(); atv.before = { id: atv.rows[atv.row] && atv.rows[atv.row].id, ch: cur && cur.id }; }
     atv.search = true;
     atv.query = '';
     $('atv-q').value = '';
@@ -1719,13 +1724,19 @@
     $('atv-search').classList.add('focused');
     try { $('atv-q').focus(); } catch (e) {}
   }
-  function atvCloseSearch() {
+  /** Leaves the search: back to where it was opened, or to the shelf of a tab chosen meanwhile ('' = the first one). */
+  function atvCloseSearch(rowId) {
     atv.search = false;
     try { $('atv-q').blur(); } catch (e) {}
     $('atv-search').classList.remove('focused');
     document.body.classList.remove('atv-searching');
     atvBuild();
-    atvFocus(0, 0);
+    var b = rowId == null ? atv.before || {} : { id: rowId };
+    atv.before = null;
+    var r = b.id ? atvRowIndex(b.id) : -1, c = 0;
+    if (r === -1) r = 0;
+    else if (b.ch) { var list = atv.rows[r].list; for (var k = 0; k < list.length; k++) if (list[k].id === b.ch) { c = k; break; } }
+    atvFocus(r, c);
   }
   function atvSearchKey(code, e) {
     var q = $('atv-q');
