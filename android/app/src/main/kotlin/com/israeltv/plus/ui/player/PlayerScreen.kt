@@ -81,6 +81,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -207,6 +208,12 @@ fun PlayerScreen(
                 onPlaying(isPlaying)
             }
             override fun onPlayerError(e: PlaybackException) {
+                // a live stream paused for long (or a slow network) falls behind the live window: back to the live edge
+                if (e.errorCode == PlaybackException.ERROR_CODE_BEHIND_LIVE_WINDOW) {
+                    player.seekToDefaultPosition()
+                    player.prepare()
+                    return
+                }
                 error = describe(e)
                 buffering = false
             }
@@ -268,12 +275,25 @@ fun PlayerScreen(
         }
     }
 
-    // the app in the background: pause (except in picture-in-picture)
+    // the app in the background: pause. A picture-in-picture window is never stopped while it is on screen, so a stop
+    // there means the window was closed – that stays paused. Back in front, only what was playing plays on.
     val lifecycle = LocalLifecycleOwner.current.lifecycle
-    DisposableEffect(lifecycle, inPip) {
+    val pipNow by rememberUpdatedState(inPip)
+    DisposableEffect(lifecycle) {
+        var resume = false
         val obs = LifecycleEventObserver { _, e ->
-            if (e == Lifecycle.Event.ON_STOP && !inPip) player.pause()
-            if (e == Lifecycle.Event.ON_START) { player.volume = 1.0f; player.play() }
+            when (e) {
+                Lifecycle.Event.ON_STOP -> {
+                    resume = player.playWhenReady && !pipNow
+                    player.pause()
+                }
+                Lifecycle.Event.ON_START -> if (resume) {
+                    resume = false
+                    player.volume = 1.0f
+                    player.play()
+                }
+                else -> Unit
+            }
         }
         lifecycle.addObserver(obs)
         onDispose { lifecycle.removeObserver(obs) }
