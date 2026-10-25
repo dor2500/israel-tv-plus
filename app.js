@@ -1579,7 +1579,9 @@
     var t = atv.tabs[atv.tab][1];
     // a row tab jumps the shelves straight to its row
     if (t === 'top' && atv.rows.length) { atv.row = 0; atvLayout(); }
-    else if (atvRowIndex(t) !== -1) { atv.row = atvRowIndex(t); atvLayout(); state.list = atv.rows[atv.row].list; }
+    else if (atvRowIndex(t) !== -1) { atv.row = atvRowIndex(t); atvLayout(); }
+    // number keys, Info and the colour keys act on that shelf's focused card
+    if (atv.rows[atv.row]) { state.list = atv.rows[atv.row].list; state.gridIdx = atv.cols[atv.row] || 0; }
     atvMark();
     atvPillState();
     var btns = $('atv-pill').children;
