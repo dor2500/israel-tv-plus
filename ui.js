@@ -151,7 +151,8 @@ window.ITV_UI = (function (I) {
         '<div class="osd-ch"><div class="osd-logo"><img id="osd-logo" alt=""><div class="mono hidden" id="osd-mono"></div></div>' +
           '<div class="osd-titles"><div class="osd-name"><span class="osd-num" id="osd-num">1</span><span id="osd-name"></span></div>' +
           '<div class="osd-tags"><span class="live-pill"><span class="live-dot"></span>LIVE</span>' +
-          '<span id="osd-cat"></span><span id="osd-quality"></span><span id="osd-pic"></span></div></div></div>' +
+          '<span id="osd-cat"></span><span id="osd-quality"></span><span id="osd-pic"></span></div>' +
+          '<div class="osd-epg" id="osd-epg"></div></div></div>' +
         '<div class="osd-clock" id="osd-clock">00:00</div>' +
       '</div>' +
       '<div class="osd-center ph" id="osd-center">' +
