@@ -56,7 +56,12 @@
   css.href = base + 'style.css' + q;
   document.head.appendChild(css);
 
-  var files = ['ui.js', 'channels.js', 'dub.js', 'app.js'];
+  var yttvCss = document.createElement('link');
+  yttvCss.rel = 'stylesheet';
+  yttvCss.href = base + 'yttv.css' + q;
+  document.head.appendChild(yttvCss);
+
+  var files = ['ui.js', 'channels.js', 'dub.js', 'app.js', 'yttv.js'];
   var i = 0;
   (function next() {
     if (i >= files.length) return;

@@ -293,7 +293,7 @@
   }
 
   function cacheEls() {
-    ['app', 'search-input', 'top-search', 'btn-update', 'btn-getapp', 'btn-kids-exit', 'btn-settings', 'clock', 'count-badge',
+    ['app', 'search-input', 'top-search', 'btn-yttv', 'btn-update', 'btn-getapp', 'btn-kids-exit', 'btn-settings', 'clock', 'count-badge',
       'rail-list', 'hero', 'hero-logo', 'hero-mono', 'hero-num', 'hero-cat', 'hero-q', 'hero-lang', 'hero-fav', 'hero-title',
       'hero-desc', 'hero-src', 'grid-title', 'grid-count', 'grid', 'hints', 'numhud', 'numhud-digits', 'numhud-name',
       'radio-audio', 'player', 'video', 'radio-view', 'radio-logo', 'radio-mono', 'radio-name', 'spinner', 'spinner-text',
@@ -542,6 +542,7 @@
     var favs = state.all.filter(isFav).length;
     var recents = state.recents.filter(function (id) { return indexInAll(id) !== -1; }).length;
     var list = [{ id: 'ALL', name: S.kids ? 'כל ערוצי הילדים' : 'כל הערוצים', icon: '📺', count: state.all.length }];
+    list.push({ id: 'YTTV', name: 'יוטיוב TV', icon: '▶', count: 'YouTube' });
     if (favs) list.push({ id: 'FAVORITES', name: 'מועדפים', icon: '⭐', count: favs });
     if (recents) list.push({ id: 'RECENT', name: 'צפית לאחרונה', icon: '🕘', count: recents });
     var dub = state.all.filter(foreign).length;
@@ -567,6 +568,13 @@
   function indexInList(id) { for (var i = 0; i < state.list.length; i++) if (state.list[i].id === id) return i; return -1; }
 
   function selectCategory(id, quiet) {
+    if (id === 'YTTV') {
+      if (window.YTTV) {
+        state.overlay = 'yttv';
+        window.YTTV.open();
+      }
+      return;
+    }
     state.cat = id;
     for (var i = 0; i < state.cats.length; i++) if (state.cats[i].id === id) state.railIdx = i;
     if (!quiet && !S.kids) setSetting('lastCat', id);
@@ -3509,6 +3517,14 @@
       if (el.grid.scrollHeight - el.grid.scrollTop - el.grid.clientHeight < 600) ensureRendered(rendered);
     }, { passive: true });
 
+    if (el.btnYttv) {
+      el.btnYttv.addEventListener('click', function () {
+        if (window.YTTV) {
+          state.overlay = 'yttv';
+          window.YTTV.open();
+        }
+      });
+    }
     el.btnSettings.addEventListener('click', function () { openSettings(); });
     el.btnUpdate.addEventListener('click', showUpdateDialog);
     el.btnGetapp.addEventListener('click', function () { showGetApp(); });
@@ -3636,6 +3652,15 @@
     state.keyAt = Date.now();
     if (state.saverOn) { resetSaver(); if (e.preventDefault) e.preventDefault(); return; }
     resetSaver();
+
+    if (state.overlay === 'yttv' || (window.YTTV && window.YTTV.isOpen())) {
+      window.YTTV.handleKey(code, e);
+      if (!window.YTTV.isOpen()) {
+        state.overlay = null;
+        markFocus();
+      }
+      return;
+    }
 
     // text fields keep their keys (search box, API keys)
     var t = e.target;

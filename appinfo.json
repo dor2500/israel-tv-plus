@@ -13,6 +13,15 @@
   "supportHighResolution": true,
   "disableBackHistoryAPI": true,
   "handlesRelaunch": true,
+  "trustLevel": "netcast",
+  "privilegedJail": true,
+  "supportQuickStart": true,
+  "vendorExtension": {
+    "userAgent": "$browserName$/$browserVersion$ ($platformName$-$platformVersion$), _TV_O18/$firmwareVersion$ (LG, $modelName$, $networkMode$)",
+    "allowCrossDomain": true
+  },
+  "deeplinkingParams": "{\"contentTarget\":\"v=$CONTENTID\"}",
+  "inAppSearchParams": "{\"target\":\"q=$SEARCH_KEYWORD\"}",
   "requiredPermissions": [
     "media"
   ]
