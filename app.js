@@ -1427,6 +1427,7 @@
   function atvBuild() {
     var keepId = atv.rows[atv.row] && atv.rows[atv.row].id;
     var keepCh = atv.rows[atv.row] && atv.rows[atv.row].list[atv.cols[atv.row] || 0];
+    var keepCol = atv.cols[atv.row] || 0;
     atv.rows = atvRowsData();
     atv.built = true;
     atv.dirty = false;
@@ -1453,7 +1454,9 @@
     atv.row = r0 === -1 ? 0 : r0;
     if (r0 !== -1 && keepCh) {
       var list = atv.rows[r0].list;
+      atv.cols[r0] = Math.min(keepCol, list.length - 1);   // the card itself is gone (hidden): its neighbour
       for (var k = 0; k < list.length; k++) if (list[k].id === keepCh.id) atv.cols[r0] = k;
+      if (atv.cols[r0] > atv.rendered[r0] - 8) atvRender(r0, atv.cols[r0] + ATV_MORE);
     }
     atvRenderPill();
     if (!atv.rows.length) { $('atv-rows').innerHTML = '<div class="atv-empty">' + (atv.search ? '' : 'אין ערוצים להצגה') + '</div>'; }
@@ -1775,7 +1778,8 @@
     atvMark();
     atvMeta(atvCurrent());
     // nothing on yet (start, after settings): the focused card starts its preview after the usual rest
-    if (!state.overlay && atv.zone === 'rows' && !state.playing) atvSettle(atvCurrent());
+    // (or the preview's card is gone – a hidden channel – and the new focused card takes over)
+    if (!state.overlay && atv.zone === 'rows' && (!state.playing || (state.preview && state.preview !== atvCurrent()))) atvSettle(atvCurrent());
   }
 
   function atvAction(action) {
