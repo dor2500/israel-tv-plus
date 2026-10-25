@@ -81,6 +81,23 @@ PIRATE_HOSTS = {"92.114.85.87", "138.121.15.230", "190.61.47.54", "45.162.64.114
                 "streaming.onnethn.com", "s6.hopslan.com", "nosignal1.antenaplay.ro"}
 
 
+# channels hostile to Israel are never in the app (owner's decision, 2026-10-25): the Al Jazeera network (banned in
+# Israel), Hezbollah (Al-Manar), Al Mayadeen, the Houthis (Al Masirah, Al-Sahat), Iran's state media (Al-Alam,
+# Pooya / IRIB), Iraqi pro-Iran militias (Al Ghadeer), Palestinian Islamic Jihad (Palestine Al Yawm), Turkey's
+# state Arabic channel (TRT Arabi), and Palestinian channels (iptv-org country PS)
+HOSTILE_IPTV = {"AlJazeera.qa", "AlJazeera2.qa", "AlJazeeraMubasher.qa", "AlJazeeraMubasher24.qa", "AlJazeeraBalkans.ba",
+                "AlMayadeenTV.lb", "AlManar.lb", "AlMasirah.ye", "AlMasirahMubacher.ye", "AlSahatTV.ye",
+                "PalestineAlYawm.lb", "AlalamNewsChannelSyria.sy", "AlAlam.ir", "AlghadeerTV.iq", "PooyaTV.ir",
+                "TRTArabi.tr"}
+HOSTILE_RE = re.compile(r"jazeera|mayadeen|al-?manar|masirah|al[ -]?aqsa|al[ -]?quds|hezbollah|\bhamas\b|press ?tv|"
+                        r"al[ -]?alam(?! al)|hispan ?tv|al[ -]?kawthar|sahar tv|\bifilm\b", re.I)
+
+
+def hostile(c):
+    return (c.get("iptv") in HOSTILE_IPTV or c.get("country") == "PS" or c.get("id") == "aljazeera_en"
+            or bool(HOSTILE_RE.search(c.get("title") or "")) or bool(HOSTILE_RE.search(c["name"])))
+
+
 def pirate_host(url):
     return urllib.parse.urlsplit(url).hostname in PIRATE_HOSTS
 
@@ -346,8 +363,8 @@ def cmd_merge(work):
         res = [c for c in json.load(f) if c.get("frame") and not c.get("dup_of")]
     with open(os.path.join(ROOT, "channels.json"), encoding="utf-8") as f:
         every = json.load(f)
-    ours = [c for c in every if c.get("src") != "iptv-org" and not c.get("imported")]
-    fast = [c for c in every if c.get("fast")]   # tools/import_fast.py: kept, numbered with the rest
+    ours = [c for c in every if c.get("src") != "iptv-org" and not c.get("imported") and not hostile(c)]
+    fast = [c for c in every if c.get("fast") and not hostile(c)]   # tools/import_fast.py: kept, numbered with the rest
     names = he_names(work)
     logos = pick_logos(work)
     taken_ids = {c["id"] for c in ours}
@@ -366,7 +383,7 @@ def cmd_merge(work):
             cat = CAT_KIDS_HE if c["lang"] == "he" else CAT_KIDS_WORLD
         else:
             cat = CAT_NAME[k]
-        if PAID_RE.match(c["name"]) or pirate_host(c["url"]):
+        if PAID_RE.match(c["name"]) or pirate_host(c["url"]) or hostile(c):
             continue
         if norm(c["name"]) in taken_names and c["country"] == "IL" or c["iptv"] in SKIP_IDS or c["iptv"] in taken_iptv:
             continue  # curated version already there
