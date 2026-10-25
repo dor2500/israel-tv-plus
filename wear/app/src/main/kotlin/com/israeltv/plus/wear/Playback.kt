@@ -56,6 +56,12 @@ object Playback {
                 p.volume = 1f
                 p.addListener(object : Player.Listener {
                     override fun onPlayerError(error: PlaybackException) {
+                        // a live stream paused for a while fell behind its window: back to the live edge
+                        if (error.errorCode == PlaybackException.ERROR_CODE_BEHIND_LIVE_WINDOW) {
+                            p.seekToDefaultPosition()
+                            p.prepare()
+                            return
+                        }
                         _error.value = if (error.errorCode in 2000..2999) "אין חיבור לשידור" else "השידור לא זמין כרגע"
                     }
                 })
@@ -68,6 +74,8 @@ object Playback {
         val p = player(app)
         _current.value = ch
         _error.value = null
+        // started now, on the tap (the app is in front): after the network wait below it may already be left
+        runCatching { app.startService(Intent(app, PlaybackService::class.java)) }
         loading?.cancel()
         loading = scope.launch {
             val url = runCatching { playableUrl(ch) }.getOrElse {
@@ -78,14 +86,13 @@ object Playback {
                 .apply { if (ch.logoUrl.isNotEmpty()) setArtworkUri(Uri.parse(ch.logoUrl)) }
                 .build()
             val item = MediaItem.Builder().setUri(url).setMediaId(ch.id).setMediaMetadata(meta)
-                .apply { if (".m3u8" in url) setMimeType(MimeTypes.APPLICATION_M3U8) }
+                // every TV channel is HLS, also the ones whose address has no .m3u8 (Samsung TV Plus redirects)
+                .apply { if (url.contains(".m3u8", ignoreCase = true) || !ch.isRadio) setMimeType(MimeTypes.APPLICATION_M3U8) }
                 .build()
             p.setMediaItem(item)
             p.volume = 1f
             p.prepare()
             p.play()
-            // the session service keeps it playing (and in the media controls) when the app is left
-            runCatching { app.startService(Intent(app, PlaybackService::class.java)) }
         }
     }
 
@@ -96,11 +103,6 @@ object Playback {
         exo?.run { stop(); clearMediaItems() }
         _current.value = null
         _error.value = null
-    }
-
-    internal fun released() {
-        exo = null
-        _current.value = null
     }
 }
 
@@ -124,12 +126,10 @@ class PlaybackService : MediaSessionService() {
     }
 
     override fun onDestroy() {
-        session?.run {
-            player.release()
-            release()
-        }
+        // the player itself stays: the screens hold it, and the next channel starts the service again
+        session?.release()
         session = null
-        Playback.released()
+        Playback.stop()
         super.onDestroy()
     }
 }
