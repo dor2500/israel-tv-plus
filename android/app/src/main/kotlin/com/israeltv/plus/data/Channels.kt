@@ -15,7 +15,7 @@ import java.io.File
 
 /** The published site: channel list, logos, version.json (GitHub Pages). */
 const val REMOTE = "https://dor2500.github.io/israel-tv-plus/"
-const val USER_AGENT = "Mozilla/5.0 (Linux; Android 14) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Mobile Safari/537.36 IsraelTVPlus/3 AndroidPhone"
+const val USER_AGENT = "Mozilla/5.0 (Linux; Android 14) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Mobile Safari/537.36 IsraelTVPlus/4 AndroidPhone"
 
 /** One entry of channels.json (the same file the web app, the M3U playlists and Stremio are made from). */
 @Immutable

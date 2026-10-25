@@ -137,7 +137,7 @@ public class MainActivity extends Activity {
         // TVs: honour the page's fixed-width viewport (app.js sets width=1600 for "AndroidTV"), like the LG app
         s.setUseWideViewPort(true);
         s.setLoadWithOverviewMode(true);
-        s.setUserAgentString(s.getUserAgentString() + " IsraelTVPlus/3 " + (tv ? "AndroidTV" : "AndroidPhone"));
+        s.setUserAgentString(s.getUserAgentString() + " IsraelTVPlus/4 " + (tv ? "AndroidTV" : "AndroidPhone"));
 
         web.setWebViewClient(new WebViewClient() {
             @Override

@@ -85,6 +85,9 @@ def main():
     path = os.path.join(out_dir, f"{app_id}_{version}_all.ipk")
     with open(path, "wb") as f:
         f.write(ipk)
+    latest_path = os.path.join(out_dir, f"{app_id}_all.ipk")
+    with open(latest_path, "wb") as f:
+        f.write(ipk)
     print(f"{path}  {len(ipk) // 1024} KB, {len(files)} files")
 
 

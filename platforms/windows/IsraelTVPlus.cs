@@ -63,7 +63,7 @@ namespace IsraelTVPlus
             core.Settings.AreDevToolsEnabled = true;
             core.Settings.IsStatusBarEnabled = false;
             core.Settings.AreDefaultContextMenusEnabled = false;
-            core.Settings.UserAgent = core.Settings.UserAgent + " IsraelTVPlus/3 Windows";
+            core.Settings.UserAgent = core.Settings.UserAgent + " IsraelTVPlus/4 Windows";
             core.WebMessageReceived += OnMessage;
             core.NewWindowRequested += (s, e) => { e.Handled = true; Open(e.Uri); };
             core.NavigationStarting += (s, e) =>
