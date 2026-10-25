@@ -163,6 +163,12 @@ private fun buildPlayer(context: Context): ExoPlayer {
         .apply { volume = 1.0f }
 }
 
+private val NetworkErrors = setOf(
+    PlaybackException.ERROR_CODE_IO_UNSPECIFIED,
+    PlaybackException.ERROR_CODE_IO_NETWORK_CONNECTION_FAILED,
+    PlaybackException.ERROR_CODE_IO_NETWORK_CONNECTION_TIMEOUT,
+)
+
 private fun describe(e: PlaybackException): String = when (e.errorCode) {
     PlaybackException.ERROR_CODE_IO_NETWORK_CONNECTION_FAILED,
     PlaybackException.ERROR_CODE_IO_NETWORK_CONNECTION_TIMEOUT -> "השרת לא עונה"
@@ -204,12 +210,16 @@ fun PlayerScreen(
     var sheet by remember { mutableStateOf<String?>(null) }
     var landscape by remember { mutableStateOf(false) }
     var tracks by remember { mutableStateOf(Tracks.EMPTY) }
+    // a dropped connection (tunnel, Wi-Fi to mobile) is retried quietly twice before the error card shows
+    var autoRetries by remember { mutableIntStateOf(0) }
+    var retrying by remember { mutableStateOf(false) }
 
     DisposableEffect(player) {
         val listener = object : Player.Listener {
             override fun onPlaybackStateChanged(state: Int) {
                 player.volume = 1.0f
                 buffering = state == Player.STATE_BUFFERING || (state == Player.STATE_IDLE && error == null)
+                if (state == Player.STATE_READY) autoRetries = 0
             }
             override fun onIsPlayingChanged(isPlaying: Boolean) {
                 playing = isPlaying
@@ -220,6 +230,12 @@ fun PlayerScreen(
                 if (e.errorCode == PlaybackException.ERROR_CODE_BEHIND_LIVE_WINDOW) {
                     player.seekToDefaultPosition()
                     player.prepare()
+                    return
+                }
+                if (e.errorCode in NetworkErrors && autoRetries < 2) {
+                    autoRetries++
+                    retrying = true
+                    buffering = true
                     return
                 }
                 error = describe(e)
@@ -288,6 +304,14 @@ fun PlayerScreen(
         player.volume = 1.0f
         player.prepare()
         player.playWhenReady = true
+    }
+
+    LaunchedEffect(current.id) { autoRetries = 0 }
+    LaunchedEffect(retrying) {
+        if (!retrying) return@LaunchedEffect
+        delay(2500)
+        retrying = false
+        attempt++   // a fresh URL too (mako's ticket may have expired meanwhile)
     }
 
     // controls hide after 4 s of playback without a touch (longer when the phone's accessibility timeout asks for it)
