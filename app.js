@@ -1895,6 +1895,8 @@
   }
 
   function closePlayer(keepPlaying) {
+    // a channel that failed has nothing to keep playing behind the shelves (the OSD's ← with the error showing)
+    if (el.perror && !el.perror.classList.contains('hidden')) keepPlaying = false;
     hideError();
     spinner(false);
     closeDrawer(true);
@@ -2032,10 +2034,16 @@
       hls.on(Hls.Events.ERROR, function (e, data) {
         if (!data.fatal) return;
         if (data.type === Hls.ErrorTypes.MEDIA_ERROR && state.retries < 2) { state.retries++; hls.recoverMediaError(); return; }
-        if (data.type === Hls.ErrorTypes.NETWORK_ERROR && S.retry && state.retries < 3) {
+        // (the silent TV preview does not retry: it just goes away, OK on the card loads the channel afresh)
+        var previewing = state.preview === ch && state.overlay !== 'player';
+        if (data.type === Hls.ErrorTypes.NETWORK_ERROR && S.retry && state.retries < 3 && !previewing) {
           state.retries++;
           spinner(true, 'מתחבר מחדש... (' + state.retries + '/3)');
-          setTimeout(function () { if (state.hls === hls) hls.startLoad(); }, 1500 * state.retries);
+          setTimeout(function () {
+            if (state.hls !== hls) return;
+            // no manifest yet (the server did not answer at all): startLoad() would wait forever – load it again
+            if (hls.levels && hls.levels.length) hls.startLoad(); else hls.loadSource(url);
+          }, 1500 * state.retries);
           return;
         }
         onFatal(ch, data.type === Hls.ErrorTypes.NETWORK_ERROR ? 'השרת לא עונה' : 'פורמט לא נתמך');
