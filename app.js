@@ -2356,7 +2356,7 @@
     if (!on) { Dub.detach(); toast('🎙️ הדיבוב כובה'); return; }
     if (ch && !foreign(ch)) { toast('🎙️ הדיבוב פועל – יופעל אוטומטית בערוצים שאינם בעברית'); return; }
     toast('🎙️ דיבוב לעברית הופעל' + (Dub.settings.sync ? ' (מסונכרן)' : ''));
-    if (ch && state.overlay && state.hls) {
+    if (ch && state.overlay && state.hls && !state.preview) {   // (never on the silent TV preview)
       if (Dub.settings.sync) loadStream(ch);
       else Dub.attach({ video: el.video, hls: state.hls, channel: ch, url: state.streamUrl || streamUrl(ch) });
     }
@@ -2366,6 +2366,8 @@
     Dub.unlockAudio();
     if (Dub.missingConfig()) { needKey(ch); return; }
     Dub.save({ enabled: true });
+    // the TV preview of this channel was loaded without the dubbing delay: synced dubbing needs a fresh load
+    if (state.playing === ch && Dub.wantsSync(ch)) stopPlayback();
     var i = indexInList(ch.id);
     if (i !== -1) playIndex(i);
   }
@@ -2466,7 +2468,7 @@
       toast('✅ המפתח התקבל – הדיבוב לעברית פועל');
       refreshSettingsIfOpen();
       if (ch) watchDubbed(ch);
-      else if (state.playing && foreign(state.playing) && state.hls) Dub.attach({ video: el.video, hls: state.hls, channel: state.playing, url: streamUrl(state.playing) });
+      else if (state.playing && !state.preview && foreign(state.playing) && state.hls) Dub.attach({ video: el.video, hls: state.hls, channel: state.playing, url: streamUrl(state.playing) });
     }).catch(function () {
       var st = $('pair-status');
       if (st) st.textContent = '⚠️ ההודעה לא פוענחה – נסו שוב';
@@ -2977,7 +2979,7 @@
   }
   /** A new app version opens the update modal by itself once (per version), when nothing else is on screen. */
   function offerOnce(n) {
-    if (lsGet('itv_upd_offered', '') === n.version || state.overlay || state.playing) return;
+    if (lsGet('itv_upd_offered', '') === n.version || state.overlay || (state.playing && !state.preview)) return;
     lsSet('itv_upd_offered', n.version);
     showUpdateDialog();
   }
@@ -3544,7 +3546,10 @@
     if (code === 427 || code === 33) { if (e.preventDefault) e.preventDefault(); zapOrPage(1); return; }
     if (code === 428 || code === 34) { if (e.preventDefault) e.preventDefault(); zapOrPage(-1); return; }
     if (code === 415 || code === 19 || code === 179 || (code === 32 && state.overlay === 'player')) {
-      if (e.preventDefault) e.preventDefault(); togglePlay(); return;
+      if (e.preventDefault) e.preventDefault();
+      // TV browse screen: ▶ watches the focused card (the silent preview is not something to pause)
+      if (code !== 19 && TVUI && !state.overlay && state.zone === 'atv' && atv.zone === 'rows') { atvWatch(); return; }
+      togglePlay(); return;
     }
     if (code === 457) { runAction('info'); return; } // Info key
     if (code === 10135 || code === 18) { runAction('menu'); return; } // Samsung Tools
