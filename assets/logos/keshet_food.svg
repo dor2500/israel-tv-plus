@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 120" width="300" height="120">
+  <defs>
+    <linearGradient id="foodGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#C2410C"/>
+      <stop offset="100%" stop-color="#7C2D12"/>
+    </linearGradient>
+  </defs>
+  <rect width="300" height="120" rx="24" fill="url(#foodGrad)" stroke="#FB923C" stroke-width="2"/>
+  <circle cx="60" cy="60" r="32" fill="#EA580C" stroke="#FDBA74" stroke-width="2"/>
+  <text x="60" y="71" font-size="30" text-anchor="middle">🍳</text>
+  <text x="175" y="55" font-family="Rubik, sans-serif" font-size="28" font-weight="900" fill="#FFFFFF" text-anchor="middle">ערוץ האוכל HD</text>
+  <text x="175" y="85" font-family="Rubik, sans-serif" font-size="16" font-weight="700" fill="#FED7AA" text-anchor="middle">קשת 12 · FreeTV בישול</text>
+</svg>
