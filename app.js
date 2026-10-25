@@ -1865,10 +1865,10 @@
     var up = epg.upcoming || [];
     var upHtml = '';
     if (up.length) {
-      upHtml = '<div class="atv-epg-upcoming"><div class="atv-epg-subhead">לוח שידורים – בהמשך:</div>' +
-        up.slice(0, 2).map(function (item) {
+      upHtml = '<div class="atv-epg-upcoming">' +
+        up.slice(0, 1).map(function (item) {
           return '<div class="atv-epg-item">' +
-            '<span class="atv-epg-item-title">' + esc(item.title) + '</span>' +
+            '<span class="atv-epg-item-title"><small style="opacity:.6;margin-left:.5rem">בהמשך:</small>' + esc(item.title) + '</span>' +
             '<span class="atv-epg-item-time">' + esc(item.t) + '</span>' +
             '</div>';
         }).join('') + '</div>';

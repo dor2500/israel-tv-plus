@@ -1,58 +1,60 @@
 {
-  "version": "4.3.4",
-  "code": 202610252045,
-  "app": 504,
+  "version": "4.3.5",
+  "code": 202610252057,
+  "app": 505,
   "shell": 3,
   "date": "2026-10-25",
   "notes": [
-    "תיקון קריסת האפליקציה בטלוויזיה (LG webOS / Samsung Tizen):",
-    "זיהוי ותיקון שורש הקריסה: מנגנון ה-preview שהפעיל וידאו ברקע בעת עמידה על כרטיס יצר עומס על מפענח הווידאו החומרתי (MediaDecoderPipeline) של הטלוויזיה.",
-    "פענוח וידאו ברקע הושבת בטלוויזיות חכמות, כך שהמפענח החומרתי נטען אך ורק בעת כניסה לצפייה ישירה – אפס קריסות ויציבות של 100%.",
-    "ביטול מלא של לאגים ושיפור ביצועים 60FPS בממשק הטלוויזיה:",
-    "קיצור זמני מעברים ל-0.18s לתגובה מיידית ללחיצות שלט.",
-    "הסרת שכבות GPU עודפות (will-change: transform) מכרטיסי הערוצים שגרמו לתקיעות זיכרון גרפי ב-webOS.",
-    "הפעלת מצב ביצועים קל אוטומטית בכל מסכי הטלוויזיה החכמה.",
-    "העברת i24NEWS עברית לערוץ 15 הרשמי:",
-    "ערוץ 15: i24NEWS עברית HD (בהתאמה מלאה למספור בחברות הכבלים והלוויין בישראל HOT/yes/Partner/Cellcom).",
-    "שמירה על מספור רציף ללא חורים של כל 2,944 הערוצים מ-1 עד 2944.",
-    "תיקון שלט LG Magic Remote ולחצני קדימה/אחורה סביב הגלגלת:",
-    "הכפתור העליון מעל הגלגלת (חץ למעלה 38) ומקש Channel Up: מעביר תמיד ערוץ קדימה (הערוץ הבא).",
-    "הכפתור התחתון מתחת לגלגלת (חץ למטה 40) ומקש Channel Down: מעביר תמיד ערוץ אחורה (הערוץ הקודם).",
-    "גלגלת השלט (Wheel): גלגול קדימה מעביר ערוץ קדימה, גלגול אחורה מעביר ערוץ אחורה.",
-    "עדכון אוטומטי מתוך האפליקציה בטלוויזיה ובטלפון:",
-    "הודעת עדכון וסנכרון ערוצים מופיעים מיידית בכל המכשירים."
+    "הסרת כל הערוצים הזרים – ישראל TV+ נטו 100% ישראלי:",
+    "הוסרו כל 2,628 הערוצים הזרים והבינלאומיים (talkSPORT, ACC, Pluto TV, אירופה, רוסיה וארה\"ב) – נשארו אך ורק ערוצים ישראליים אמיתיים.",
+    "קטלוג ישראלי עשיר וממוקד של 316 ערוצי טלוויזיה ורדיו ישראליים מקוריים בלבד.",
+    "שחזור והרחבת ערוצי YES ו-HOT, ספורט וילדים:",
+    "כל ערוצי הסרטים והסדרות: yes קולנוע קומדיה, yes דרמה, yes קלאסי, yes אקשן, yes ישראלי, yes TV דרמה, yes TV אקשן, yes TV קומדיה, yes דוקו.",
+    "כל ערוצי HOT: HOT סינמה 1-4, HOT אקשן ומתח, HOT קומדי, HOT דרמה, HOT zone, HOT ריאליטי, HOT ערוץ החופש, HOT 8.",
+    "כל ערוצי הספורט הישראליים: ספורט 1-4, ספורט 5 HD, ספורט 5 לייב, ספורט 5 כוכבים, ONE HD, ONE 2 HD.",
+    "כל ערוצי הילדים בעברית: כאן חינוכית 23, הופ! ילדים, זום ZOOM, לולי, ג'וניור, בייבי, ניק ג'וניור, טין ניק.",
+    "ערוצי האוכל, הלייף סטייל והמוזיקה: ערוץ האוכל והבישול (קשת/FreeTV), ערוץ החיים הטובים HD, ערוץ 24, ערוץ ויוה, הערוץ הים תיכוני, ערוץ הדרמות הטורקיות פלוס.",
+    "כל 105 תחנות הרדיו הישראליות (כאן ב, כאן גימל, גלגלצ, גל\"צ, 103FM, 99FM, רדיו תל אביב ועוד).",
+    "לוגואים מקוריים ורשמיים באיכות גבוהה לכל ערוץ:",
+    "החלפת כל הריבועים והטקסטים בלוגואים הרשמיים, החדים והאמיתיים של שידורי HOT, yes, ספורט 5, קשת, רשת, כאן ועוד.",
+    "תיקון ממשק הטלוויזיה ומניעת חפיפת לוח השידורים (Zero EPG Overlap):",
+    "פתרון מוחלט לחפיפה שנראתה במסך בין תיבת ה-EPG למדף הערוצים הראשון: תכנון מדויק וקומפקטי של אזור המידע עם מרווח נדיב וברור מעל המדפים.",
+    "הגדלת סמלי הערוצים בכרטיסים ב-25% לקריאות מושלמת ממרחק הסלון.",
+    "חלקות שיא (60FPS Silky Smooth):",
+    "ביטול אלפי הערוצים הזרים הפך את הממשק למהיר וקליל פי כמה.",
+    "אפס לאגים, תגובה מיידית לחיצים ולגלגלת השלט."
   ],
   "native": {
     "android": {
-      "version": "4.3.4",
-      "app": 504,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.4/IsraelTVPlus-android.apk"
+      "version": "4.3.5",
+      "app": 505,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.5/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "4.3.4",
-      "app": 504,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.4/IsraelTVPlus-windows-setup.exe"
+      "version": "4.3.5",
+      "app": 505,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.5/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "4.3.4",
-      "app": 504,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.4/com.israeltv.plus_all.ipk",
+      "version": "4.3.5",
+      "app": 505,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.5/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "4.3.4",
-      "app": 504,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.4/IsraelTVPlus-tizen-project.zip"
+      "version": "4.3.5",
+      "app": 505,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.5/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "4.3.4",
-      "app": 504,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.4/IsraelTVPlus-macos-arm64.zip"
+      "version": "4.3.5",
+      "app": 505,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.5/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "4.3.4",
-      "app": 504,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.4/IsraelTVPlus-linux-x64.zip"
+      "version": "4.3.5",
+      "app": 505,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.5/IsraelTVPlus-linux-x64.zip"
     }
   }
 }
