@@ -26,6 +26,8 @@ ISRAELI = ("ערוצי ישראל - שידור חי", "ילדים ונוער (ב
 def png_logo(svg_rel):
     """assets/logos/x.svg -> playlist-logos/x.png (600x240), drawn by Edge; '' when it can't be made."""
     svg = os.path.join(ROOT, svg_rel)
+    if not os.path.isfile(svg):
+        return ""
     rel = "playlist-logos/" + os.path.splitext(os.path.basename(svg_rel))[0] + ".png"
     png = os.path.join(ROOT, rel)
     if os.path.isfile(png) and os.path.getmtime(png) >= os.path.getmtime(svg):

@@ -1,51 +1,66 @@
 {
-  "version": "4.6.0",
-  "code": 202610251713,
-  "app": 460,
+  "version": "4.3.0",
+  "code": 202610251729,
+  "app": 430,
   "shell": 3,
   "date": "2026-10-25",
   "notes": [
-    "מבוסס ישירות על גרסה 4.3.0 האהובה: עיצוב Material 3 Expressive טהור, נגן Nuvio עם זכוכית וקפיצים, פס ניווט BitChord וסאונד סאב-באס קולנועי בפתיחה",
-    "טעינה מהירה בזק (Instant Cold Start): ביטול כל עומסי ה-EPG והקבצים המנופחים; האפליקציה עולה מיד תוך שבריר שנייה ללא כל השהיה",
-    "ערוצי YES ו-HOT ישראליים באיכות 1080p FHD:",
-    "ערוצי תוכן וסרטים: yes קולנוע אקשן, HOT דרמה, HOT זון, HOT קומדי, HOT ריאליטי, ערוץ החופש",
-    "ויוה פרימיום HD, ערוץ החיים הטובים HD, הערוץ הים תיכוני HD",
-    "כניסות ישירות לשירותי yes+, STING+ ו-HOT NEXT TV",
-    "קטגוריית \"כל הערוצים (הכל)\" חדשה: מדף וטאב ייעודי המציגים את כל הערוצים יחד במקום אחד לניווט קל ומהיר",
-    "מאגר איכותי מנופה וממוקד: 3,125 ערוצים פעילים (ישראל, עולם, רדיו) ללא ערוצים עוינים או בלתי-פעילים",
-    "מערכת ניטור ובדיקות אוטומטיות שוטפות: מנגנון אוטונומי לבדיקת תקינות ערוצים, ביצועים ותיקוני באגים שוטפים"
+    "עיצוב Material 3 Expressive מלא ודינמי לטלפון (Zero Hardcoded Colors): כל פקד, גלולה, כרטיס וסליידר שואבים צבעים דינמית מ-Material You של המכשיר",
+    "תוספת ענק של ערוצי YES ו-HOT ישראליים באיכות 1080p FHD:",
+    "סרטים וקולנוע: yes קולנוע אקשן HD, yes קולנוע קומדיה HD, yes קולנוע דרמה HD, yes קולנוע קלאסי HD, yes קולנוע ישראלי HD",
+    "סדרות ודוקו מבית yes: yes TV סדרות דרמה HD, yes TV אקשן HD, yes TV קומדיה HD, yes דוקו HD",
+    "ערוצי HOT מובילים: HOT דרמה HD, HOT זון HD, HOT קומדי HD, HOT ריאליטי HD, HOT ערוץ החופש HD",
+    "HOT סינמה 1, 2 ו-3 באיכות 1080p FHD, HOT אקשן ומתח, HOT פאן, HOT בידור ישראלי",
+    "ויוה ישראלי HD, ויוה פרימיום HD, ערוץ החיים הטובים HD, הערוץ הים תיכוני HD, ערוץ 24 מוזיקה HD",
+    "ילדים: ערוץ הופ! ילדים בעברית HD, ערוץ זום ZOOM ילדים ונוער HD",
+    "ספורט ישראלי: ספורט 1, ספורט 2, ספורט 3, ספורט 4, ספורט 5 HD",
+    "כניסות ישירות לשירותי הסטרימינג הרשמיים: yes+, STING+, HOT NEXT TV, Partner tv+, סלקום tv+",
+    "קטגוריית \"כל הערוצים (הכל)\" ייעודית: מדף וטאב מרוכז לצפייה בכל הערוצים במקום אחד",
+    "שער כניסה מחייב \"מי צופה?\" וצליל פתיחה קולנועי עמוק:",
+    "פתיחה ישירה למסך בחירת פרופיל (עם אפשרות לביטול בהגדרות: 'בקש בחירת פרופיל בפתיחה')",
+    "צורות פרופיל אורגניות אקספרסיביות (Squircle, Clover, Pill, Asymmetric) שמשנות צורה לעיגול מושלם בלחיצה",
+    "מנוע סינתוז שמע עצמאי ב-AudioTrack (דרופ סאב-באס 110Hz->55Hz ואקורד הרמוני 1.4 שניות) בלי קבצים חיצוניים, עם רטט LongPress עמוק",
+    "נגן Nuvio עם פקדי זכוכית וסליידרים עבים:",
+    "כפתור ניגון/השהיה מרכזי משנה צורה (Squircle <-> עיגול) ורוחב בפיזיקת קפיץ קשיחה",
+    "סליידרים שמנמנים מחוותיים לבהירות (שמאל) ועוצמת שמע (ימין) עם רטט נקישות מכני",
+    "פס התקדמות עם מרווח וקפסולות זמנים מתוחות; מעגן זכוכית תחתון 50dp עם גלולות בחירה מודגשות",
+    "פס ניווט מפוצל BitChord (3+1) וכפתור הגדרות עליון:",
+    "קפסולה חלבית מרכזית לשלושת היעדים (בית, ערוצים, שלי) + כפתור חיפוש עגול נפרד משמאל עם טשטוש Haze וגרדיאנט אופקי",
+    "כפתור הגדרות זכוכית צף בראש המסך לצד האווטאר",
+    "באנר ראשי Full-Bleed בשידור חי: ניגון שקט של השידור החי (HLS) מקצה לקצה מאחורי ה-Status Bar עם כפתור 'צפייה' בולט ותגיות איכות",
+    "פיזיקת רטט ולחיצות Pixel/Essentials: רטט שקוע ואנימציית קפיץ מורגשת (0.92x לחיצה, קפיצה ל-1.08x) בכל הכפתורים ופס הניווט"
   ],
   "native": {
     "android": {
-      "version": "4.6.0",
-      "app": 460,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.0/IsraelTVPlus-android.apk"
+      "version": "4.3.0",
+      "app": 430,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.0/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "4.6.0",
-      "app": 460,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.0/IsraelTVPlus-windows-setup.exe"
+      "version": "4.3.0",
+      "app": 430,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.0/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "4.6.0",
-      "app": 460,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.0/com.israeltv.plus_all.ipk",
+      "version": "4.3.0",
+      "app": 430,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.0/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "4.6.0",
-      "app": 460,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.0/IsraelTVPlus-tizen-project.zip"
+      "version": "4.3.0",
+      "app": 430,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.0/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "4.6.0",
-      "app": 460,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.0/IsraelTVPlus-macos-arm64.zip"
+      "version": "4.3.0",
+      "app": 430,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.0/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "4.6.0",
-      "app": 460,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.0/IsraelTVPlus-linux-x64.zip"
+      "version": "4.3.0",
+      "app": 430,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.0/IsraelTVPlus-linux-x64.zip"
     }
   }
 }

@@ -7,8 +7,8 @@ plugins {
 }
 
 val repo: File = rootDir.parentFile                      // the israel-tv-plus repository
-val appVersion = repo.resolve("VERSION").readText().trim()   // 3.4.0
-val appCode = appVersion.split(".").let { it[0].toInt() * 100 + it[1].toInt() * 10 + it[2].toInt() }   // -> 340
+val appVersion = repo.resolve("VERSION").readText().trim()   // 4.3.0
+val appCode = maxOf(500, appVersion.split(".").let { it[0].toInt() * 100 + it[1].toInt() * 10 + it[2].toInt() })
 
 // Release key: the same one tools/build_apk.ps1 always used, so the update installs over every earlier APK.
 val keyStore = File(System.getProperty("user.home"), ".android/israel-tv-plus.jks")
