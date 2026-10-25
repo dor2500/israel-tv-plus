@@ -1,4 +1,4 @@
-window.CHANNELS_DATA = [
+window.CHANNELS_DATA = window.ITV_CHANNELS = [
  {
   "id": "keshet12",
   "name": "קשת 12 HD",
