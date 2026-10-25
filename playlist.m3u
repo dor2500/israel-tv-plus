@@ -1,73 +1,73 @@
 #EXTM3U x-tvg-url="https://epgshare01.online/epgshare01/epg_ripper_IL1.xml.gz"
-#EXTINF:-1 tvg-id="" tvg-name="רשת 13 HD" tvg-chno="2" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/reshet13.png" group-title="ערוצי ישראל",רשת 13 HD
-https://d18b0e6mopany4.cloudfront.net/out/v1/2f2bc414a3db4698a8e94b89eaf2da2a/index.m3u8
-#EXTINF:-1 tvg-id="Kan11.il" tvg-name="כאן 11 HD" tvg-chno="3" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/kan11.png" group-title="ערוצי ישראל",כאן 11 HD
-https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan11/live.livx/playlist.m3u8
-#EXTINF:-1 tvg-id="Now14.il" tvg-name="עכשיו 14 HD" tvg-chno="4" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/now14.png" group-title="ערוצי ישראל",עכשיו 14 HD
-https://r.il.cdn-redge.media/livehls/oil/ch14/live/ch14/live.livx/playlist.m3u8
-#EXTINF:-1 tvg-id="i24NEWSHebrew.il" tvg-name="i24NEWS עברית HD" tvg-chno="5" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/i24news_he.png" group-title="ערוצי ישראל",i24NEWS עברית HD
+#EXTINF:-1 tvg-id="i24NEWSHebrew.il" tvg-name="i24NEWS עברית HD" tvg-chno="1" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/i24news_he.png" group-title="ערוצי ישראל",i24NEWS עברית HD
 https://i24newshebrew-cdn.encoders.immergo.tv/master.m3u8
-#EXTINF:-1 tvg-id="Channel9.il" tvg-name="ערוץ 9 ישראל HD" tvg-chno="10" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/ch9.png" group-title="ערוצי ישראל",ערוץ 9 ישראל HD
-https://contact.gostreaming.tv/Con-11/index.m3u8
-#EXTINF:-1 tvg-id="KnessetChannel.il" tvg-name="ערוץ הכנסת 99" tvg-chno="12" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/knesset.png" group-title="ערוצי ישראל",ערוץ הכנסת 99
-https://kneset.gostreaming.tv/p2-kneset/_definst_/myStream/index.m3u8
-#EXTINF:-1 tvg-id="KanEducational.il" tvg-name="כאן חינוכית 23 HD" tvg-chno="13" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/kan_hinuchit.png" group-title="ערוצי ישראל",כאן חינוכית 23 HD
-https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan_edu/live.livx/playlist.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ערוץ החיים הטובים HD" tvg-chno="14" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/good_life_israel.svg" group-title="ערוצי ישראל",ערוץ החיים הטובים HD
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ החיים הטובים HD" tvg-chno="7" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/good_life_israel.png" group-title="ערוצי ישראל",ערוץ החיים הטובים HD
 http://stream.mcquack.net/47/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="HOT קומדי HD" tvg-chno="15" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hot_comedy.svg" group-title="ערוצי ישראל",HOT קומדי HD
-https://d15ds134q59udk.cloudfront.net/out/v1/fbba879221d045598540ee783b140fe2/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="HOT ריאליטי HD" tvg-chno="16" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hot_reality.svg" group-title="ערוצי ישראל",HOT ריאליטי HD
+#EXTINF:-1 tvg-id="" tvg-name="HOT ריאליטי HD" tvg-chno="8" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hot_reality.png" group-title="ערוצי ישראל",HOT ריאליטי HD
 https://d2dffl3588mvfk.cloudfront.net/out/v1/d8e15050ca4148aab0ee387a5e2eb46b/index_1.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="HOT ערוץ החופש HD" tvg-chno="17" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hot_vacation.svg" group-title="ערוצי ישראל",HOT ערוץ החופש HD
-https://d1yd8hohnldm33.cloudfront.net/out/v1/19dee23c2cc24f689bd4e1288661ee0c/index_2.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="הערוץ הים תיכוני HD" tvg-chno="18" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/yam_tichoni_israel.svg" group-title="ערוצי ישראל",הערוץ הים תיכוני HD
-http://stream.mcquack.net/46/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ערוץ כלכלה 10 HD" tvg-chno="19" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/calcala10.svg" group-title="ערוצי ישראל",ערוץ כלכלה 10 HD
+#EXTINF:-1 tvg-id="Channel9.il" tvg-name="ערוץ 9 ישראל HD" tvg-chno="9" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/ch9.png" group-title="ערוצי ישראל",ערוץ 9 ישראל HD
+https://contact.gostreaming.tv/Con-11/index.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ כלכלה 10 HD" tvg-chno="10" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/calcala10.png" group-title="ערוצי ישראל",ערוץ כלכלה 10 HD
 https://r.il.cdn-redge.media/livehls/oil/calcala-live/live/channel10/live.livx/playlist.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="yes קולנוע קומדיה HD" tvg-chno="20" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/yes_movies_comedy.svg" group-title="ערוצי ישראל",yes קולנוע קומדיה HD
+#EXTINF:-1 tvg-id="Kan11.il" tvg-name="כאן 11 HD" tvg-chno="11" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/kan11.png" group-title="ערוצי ישראל",כאן 11 HD
+https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan11/live.livx/playlist.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="רשת 13 HD" tvg-chno="13" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/reshet13.png" group-title="ערוצי ישראל",רשת 13 HD
+https://d18b0e6mopany4.cloudfront.net/out/v1/2f2bc414a3db4698a8e94b89eaf2da2a/index.m3u8
+#EXTINF:-1 tvg-id="Now14.il" tvg-name="עכשיו 14 HD" tvg-chno="14" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/now14.png" group-title="ערוצי ישראל",עכשיו 14 HD
+https://r.il.cdn-redge.media/livehls/oil/ch14/live/ch14/live.livx/playlist.m3u8
+#EXTINF:-1 tvg-id="KnessetChannel.il" tvg-name="ערוץ הכנסת 99" tvg-chno="15" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/knesset.png" group-title="ערוצי ישראל",ערוץ הכנסת 99
+https://kneset.gostreaming.tv/p2-kneset/_definst_/myStream/index.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="HOT קומדי HD" tvg-chno="16" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hot_comedy.png" group-title="ערוצי ישראל",HOT קומדי HD
+https://d15ds134q59udk.cloudfront.net/out/v1/fbba879221d045598540ee783b140fe2/index.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="HOT ערוץ החופש HD" tvg-chno="17" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hot_vacation.png" group-title="ערוצי ישראל",HOT ערוץ החופש HD
+https://d1yd8hohnldm33.cloudfront.net/out/v1/19dee23c2cc24f689bd4e1288661ee0c/index_2.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="הערוץ הים תיכוני HD" tvg-chno="18" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/yam_tichoni_israel.png" group-title="ערוצי ישראל",הערוץ הים תיכוני HD
+http://stream.mcquack.net/46/index.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="yes קולנוע קומדיה HD" tvg-chno="19" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/yes_movies_comedy.png" group-title="ערוצי ישראל",yes קולנוע קומדיה HD
 http://stream.mcquack.net/201/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="yes קולנוע דרמה HD" tvg-chno="21" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/yes_movies_drama.svg" group-title="ערוצי ישראל",yes קולנוע דרמה HD
+#EXTINF:-1 tvg-id="" tvg-name="yes קולנוע דרמה HD" tvg-chno="20" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/yes_movies_drama.png" group-title="ערוצי ישראל",yes קולנוע דרמה HD
 http://stream.mcquack.net/170/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="yes קולנוע קלאסי HD" tvg-chno="22" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/yes_movies_classic.svg" group-title="ערוצי ישראל",yes קולנוע קלאסי HD
+#EXTINF:-1 tvg-id="" tvg-name="yes קולנוע קלאסי HD" tvg-chno="21" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/yes_movies_classic.png" group-title="ערוצי ישראל",yes קולנוע קלאסי HD
 http://stream.mcquack.net/110/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="yes קולנוע אקשן HD" tvg-chno="23" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/yes_movies_action.svg" group-title="ערוצי ישראל" radio="true",yes קולנוע אקשן HD
+#EXTINF:-1 tvg-id="" tvg-name="yes קולנוע אקשן HD" tvg-chno="22" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/yes_movies_action.png" group-title="ערוצי ישראל" radio="true",yes קולנוע אקשן HD
 http://stream.mcquack.net/380/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="yes TV סדרות דרמה HD" tvg-chno="24" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/yes_tv_drama.svg" group-title="ערוצי ישראל",yes TV סדרות דרמה HD
+#EXTINF:-1 tvg-id="KanEducational.il" tvg-name="כאן חינוכית 23 HD" tvg-chno="23" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/kan_hinuchit.png" group-title="ערוצי ישראל",כאן חינוכית 23 HD
+https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan_edu/live.livx/playlist.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="yes TV סדרות דרמה HD" tvg-chno="25" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/yes_tv_drama.png" group-title="ערוצי ישראל",yes TV סדרות דרמה HD
 http://stream.mcquack.net/311/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="yes TV אקשן HD" tvg-chno="25" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/yes_tv_action.svg" group-title="ערוצי ישראל",yes TV אקשן HD
+#EXTINF:-1 tvg-id="" tvg-name="yes TV אקשן HD" tvg-chno="26" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/yes_tv_action.png" group-title="ערוצי ישראל",yes TV אקשן HD
 http://stream.mcquack.net/214/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="yes TV קומדיה HD" tvg-chno="26" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/yes_tv_comedy.svg" group-title="ערוצי ישראל",yes TV קומדיה HD
+#EXTINF:-1 tvg-id="" tvg-name="yes TV קומדיה HD" tvg-chno="27" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/yes_tv_comedy.png" group-title="ערוצי ישראל",yes TV קומדיה HD
 http://stream.mcquack.net/356/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="yes דוקו HD" tvg-chno="27" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/yes_docu.svg" group-title="ערוצי ישראל",yes דוקו HD
+#EXTINF:-1 tvg-id="" tvg-name="yes דוקו HD" tvg-chno="28" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/yes_docu.png" group-title="ערוצי ישראל",yes דוקו HD
 http://stream.mcquack.net/70/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="HOT סינמה 1 HD" tvg-chno="28" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hot_cinema_1.svg" group-title="ערוצי ישראל",HOT סינמה 1 HD
+#EXTINF:-1 tvg-id="" tvg-name="HOT סינמה 1 HD" tvg-chno="29" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hot_cinema_1.png" group-title="ערוצי ישראל",HOT סינמה 1 HD
 http://stream.mcquack.net/200/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="HOT סינמה 2 HD" tvg-chno="29" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hot_cinema_2.svg" group-title="ערוצי ישראל",HOT סינמה 2 HD
+#EXTINF:-1 tvg-id="" tvg-name="HOT סינמה 2 HD" tvg-chno="30" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hot_cinema_2.png" group-title="ערוצי ישראל",HOT סינמה 2 HD
 http://stream.mcquack.net/202/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="HOT סינמה 3 HD" tvg-chno="30" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hot_cinema_3.svg" group-title="ערוצי ישראל",HOT סינמה 3 HD
+#EXTINF:-1 tvg-id="" tvg-name="HOT סינמה 3 HD" tvg-chno="31" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hot_cinema_3.png" group-title="ערוצי ישראל",HOT סינמה 3 HD
 http://stream.mcquack.net/421/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="HOT אקשן ומתח HD" tvg-chno="31" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hot_action.svg" group-title="ערוצי ישראל",HOT אקשן ומתח HD
+#EXTINF:-1 tvg-id="" tvg-name="HOT אקשן ומתח HD" tvg-chno="32" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hot_action.png" group-title="ערוצי ישראל",HOT אקשן ומתח HD
 http://stream.mcquack.net/100/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="HOT דרמה HD" tvg-chno="32" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hot_drama.svg" group-title="ערוצי ישראל" radio="true",HOT דרמה HD
+#EXTINF:-1 tvg-id="" tvg-name="HOT דרמה HD" tvg-chno="33" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hot_drama.png" group-title="ערוצי ישראל" radio="true",HOT דרמה HD
 http://stream.mcquack.net/381/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="HOT זון HD" tvg-chno="33" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hot_zone.svg" group-title="ערוצי ישראל" radio="true",HOT זון HD
+#EXTINF:-1 tvg-id="" tvg-name="HOT זון HD" tvg-chno="34" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hot_zone.png" group-title="ערוצי ישראל" radio="true",HOT זון HD
 http://stream.mcquack.net/379/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ערוץ ויוה HD" tvg-chno="34" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/viva_israel.svg" group-title="ערוצי ישראל",ערוץ ויוה HD
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ ויוה HD" tvg-chno="35" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/viva_israel.png" group-title="ערוצי ישראל",ערוץ ויוה HD
 http://stream.mcquack.net/43/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ערוץ הופ! ילדים בעברית HD" tvg-chno="35" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hop_kids_israel.svg" group-title="ערוצי ישראל",ערוץ הופ! ילדים בעברית HD
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ הופ! ילדים בעברית HD" tvg-chno="36" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hop_kids_israel.png" group-title="ערוצי ישראל",ערוץ הופ! ילדים בעברית HD
 http://stream.mcquack.net/44/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ערוץ זום ZOOM ילדים HD" tvg-chno="36" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/zoom_kids_israel.svg" group-title="ערוצי ישראל",ערוץ זום ZOOM ילדים HD
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ זום ZOOM ילדים HD" tvg-chno="37" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/zoom_kids_israel.png" group-title="ערוצי ישראל",ערוץ זום ZOOM ילדים HD
 http://stream.mcquack.net/377/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ספורט 1 HD (Sport 1)" tvg-chno="37" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/sport1_israel.svg" group-title="ערוצי ישראל",ספורט 1 HD (Sport 1)
+#EXTINF:-1 tvg-id="" tvg-name="ספורט 1 HD (Sport 1)" tvg-chno="38" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/sport1_israel.png" group-title="ערוצי ישראל",ספורט 1 HD (Sport 1)
 http://stream.mcquack.net/391/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ספורט 2 HD (Sport 2)" tvg-chno="38" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/sport2_israel.svg" group-title="ערוצי ישראל",ספורט 2 HD (Sport 2)
+#EXTINF:-1 tvg-id="" tvg-name="ספורט 2 HD (Sport 2)" tvg-chno="39" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/sport2_israel.png" group-title="ערוצי ישראל",ספורט 2 HD (Sport 2)
 http://stream.mcquack.net/392/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ספורט 3 HD (Sport 3)" tvg-chno="39" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/sport3_israel.svg" group-title="ערוצי ישראל",ספורט 3 HD (Sport 3)
+#EXTINF:-1 tvg-id="" tvg-name="ספורט 3 HD (Sport 3)" tvg-chno="40" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/sport3_israel.png" group-title="ערוצי ישראל",ספורט 3 HD (Sport 3)
 http://stream.mcquack.net/393/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ספורט 4 HD (Sport 4)" tvg-chno="40" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/sport4_israel.svg" group-title="ערוצי ישראל",ספורט 4 HD (Sport 4)
+#EXTINF:-1 tvg-id="" tvg-name="ספורט 4 HD (Sport 4)" tvg-chno="41" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/sport4_israel.png" group-title="ערוצי ישראל",ספורט 4 HD (Sport 4)
 http://stream.mcquack.net/394/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ספורט 5 HD" tvg-chno="41" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/sport5_israel_hd.svg" group-title="ערוצי ישראל",ספורט 5 HD
+#EXTINF:-1 tvg-id="" tvg-name="ספורט 5 HD" tvg-chno="42" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/sport5_israel_hd.png" group-title="ערוצי ישראל",ספורט 5 HD
 https://rgelive.akamaized.net/hls/live/2043095/live3/playlist.m3u8
 #EXTINF:-1 tvg-id="Hidabroot.il" tvg-name="ערוץ הידברות HD" tvg-chno="43" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hidabroot.png" group-title="ערוצי ישראל",ערוץ הידברות HD
 https://cdn.cybercdn.live/HidabrootIL/Live97/playlist.m3u8
@@ -85,7 +85,7 @@ https://live.creacast.com/iltv/smil:iltv.smil/playlist.m3u8
 https://ynet-live-01.ynet-pic1.yit.co.il/ynet/live.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="רשת 13 ישיר CloudFront HD" tvg-chno="50" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/reshet13.png" group-title="ערוצי ישראל",רשת 13 ישיר CloudFront HD
 https://d2xg1g9o5vns8m.cloudfront.net/out/v1/0855d703f7d5436fae6a9c7ce8ca5075/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ערוץ 24 מוזיקה HD" tvg-chno="51" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/channel24_israel.svg" group-title="ערוצי ישראל",ערוץ 24 מוזיקה HD
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ 24 מוזיקה HD" tvg-chno="51" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/channel24_israel.png" group-title="ערוצי ישראל",ערוץ 24 מוזיקה HD
 http://stream.mcquack.net/42/index.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="ערוץ 16 ילדים ונוער HD" tvg-chno="52" tvg-logo="https://ch16israel.vod.immergo.tv/ch16israel/uploaded/bfbd4781-67a7-437e-8f7e-898a5cbc4ab4.png" group-title="ילדים ונוער (בעברית)",ערוץ 16 ילדים ונוער HD
 https://ch16israel-cdn.encoders.immergo.tv/1/streamPlaylist.m3u8
@@ -5005,873 +5005,871 @@ https://hls.autopo.st/hls/britasiatv/index.m3u8
 https://live-20minutestv.digiteka.com/1961167769/index.m3u8
 #EXTINF:-1 tvg-id="AlexBerlin.de" tvg-name="Alex Berlin" tvg-chno="2510" tvg-logo="https://i.imgur.com/eTmHk4e.png" group-title="ערוצים בינלאומיים",Alex Berlin
 https://alex-stream.rosebud-media.de/bounce/alexlivetv50.smil/index.m3u8
-#EXTINF:-1 tvg-id="ArabiTV.es" tvg-name="Arabi TV" tvg-chno="2511" tvg-logo="https://i.ibb.co/9Vp9Ghg/LOGO-WEB-ARABI-TV-3.png" group-title="ערוצים בינלאומיים",Arabi TV
-https://streamtv2.elitecomunicacion.cloud:3628/live/arabitv2025live.m3u8
-#EXTINF:-1 tvg-id="A2iTV.it" tvg-name="A2i TV" tvg-chno="2512" tvg-logo="https://i.imgur.com/YlDFir7.jpg" group-title="ערוצים בינלאומיים",A2i TV
+#EXTINF:-1 tvg-id="A2iTV.it" tvg-name="A2i TV" tvg-chno="2511" tvg-logo="https://i.imgur.com/YlDFir7.jpg" group-title="ערוצים בינלאומיים",A2i TV
 https://stream.sen-gt.com/A2itv/myStream/playlist.m3u8
-#EXTINF:-1 tvg-id="InsaytTV.ru" tvg-name="Insayt TV" tvg-chno="2513" tvg-logo="https://i.imgur.com/slLuRel.png" group-title="ערוצים בינלאומיים",Insayt TV
+#EXTINF:-1 tvg-id="InsaytTV.ru" tvg-name="Insayt TV" tvg-chno="2512" tvg-logo="https://i.imgur.com/slLuRel.png" group-title="ערוצים בינלאומיים",Insayt TV
 https://stream8.cinerama.uz/1416/tracks-v1a1/mono.m3u8
-#EXTINF:-1 tvg-id="1Plus1Marafon.ua" tvg-name="1+1 Marafon" tvg-chno="2514" tvg-logo="https://i.imgur.com/smQKa2G.png" group-title="ערוצים בינלאומיים",1+1 Marafon
+#EXTINF:-1 tvg-id="1Plus1Marafon.ua" tvg-name="1+1 Marafon" tvg-chno="2513" tvg-logo="https://i.imgur.com/smQKa2G.png" group-title="ערוצים בינלאומיים",1+1 Marafon
 https://dash2.antik.sk/live/1plus1_marathon/playlist.m3u8
-#EXTINF:-1 tvg-id="WildTV.ca" tvg-name="Wild TV" tvg-chno="2515" tvg-logo="https://upload.wikimedia.org/wikipedia/en/thumb/a/a7/Wild_TV_logo_2020.png/960px-Wild_TV_logo_2020.png" group-title="ערוצים בינלאומיים",Wild TV
+#EXTINF:-1 tvg-id="WildTV.ca" tvg-name="Wild TV" tvg-chno="2514" tvg-logo="https://upload.wikimedia.org/wikipedia/en/thumb/a/a7/Wild_TV_logo_2020.png/960px-Wild_TV_logo_2020.png" group-title="ערוצים בינלאומיים",Wild TV
 https://dfhsahpa45kk2.cloudfront.net/scheduler/scheduleMaster/476.m3u8
-#EXTINF:-1 tvg-id="ABCTV.au" tvg-name="ABC TV" tvg-chno="2516" tvg-logo="https://i.imgur.com/DPVQSjM.png" group-title="ערוצים בינלאומיים",ABC TV
+#EXTINF:-1 tvg-id="ABCTV.au" tvg-name="ABC TV" tvg-chno="2515" tvg-logo="https://i.imgur.com/DPVQSjM.png" group-title="ערוצים בינלאומיים",ABC TV
 https://c.mjh.nz/abc-nsw.m3u8
-#EXTINF:-1 tvg-id="DDIndia.in" tvg-name="DD India" tvg-chno="2517" tvg-logo="https://dtil.tmsimg.com/assets/s158251_ld_h15_aa.png?lock=720x540" group-title="ערוצים בינלאומיים",DD India
+#EXTINF:-1 tvg-id="DDIndia.in" tvg-name="DD India" tvg-chno="2516" tvg-logo="https://dtil.tmsimg.com/assets/s158251_ld_h15_aa.png?lock=720x540" group-title="ערוצים בינלאומיים",DD India
 https://mumbai-edge.smartplaytv.in/DDIndia/index.m3u8
-#EXTINF:-1 tvg-id="HLATDTV.kr" tvg-name="HLAT-DTV" tvg-chno="2518" tvg-logo="https://i.imgur.com/3VSuYsn.png" group-title="ערוצים בינלאומיים",HLAT-DTV
+#EXTINF:-1 tvg-id="HLATDTV.kr" tvg-name="HLAT-DTV" tvg-chno="2517" tvg-logo="https://i.imgur.com/3VSuYsn.png" group-title="ערוצים בינלאומיים",HLAT-DTV
 https://5c3639aa99149.streamlock.net/live_TV/tv/playlist.m3u8
-#EXTINF:-1 tvg-id="HebeiTV.cn" tvg-name="Hebei TV" tvg-chno="2519" tvg-logo="https://i.imgur.com/Z5Ppzbi.png" group-title="ערוצים בינלאומיים",Hebei TV
+#EXTINF:-1 tvg-id="HebeiTV.cn" tvg-name="Hebei TV" tvg-chno="2518" tvg-logo="https://i.imgur.com/Z5Ppzbi.png" group-title="ערוצים בינלאומיים",Hebei TV
 https://event.pull.hebtv.com/live/live101.m3u8
-#EXTINF:-1 tvg-id="AmazonSat.br" tvg-name="Amazon Sat" tvg-chno="2520" tvg-logo="https://i.imgur.com/7rjCS5i.png" group-title="ערוצים בינלאומיים",Amazon Sat
+#EXTINF:-1 tvg-id="AmazonSat.br" tvg-name="Amazon Sat" tvg-chno="2519" tvg-logo="https://i.imgur.com/7rjCS5i.png" group-title="ערוצים בינלאומיים",Amazon Sat
 https://amazonsat.brasilstream.com.br/hls/amazonsat/index.m3u8
-#EXTINF:-1 tvg-id="8NTV.mx" tvg-name="8NTV" tvg-chno="2521" tvg-logo="https://i.imgur.com/7ecgGIG.png" group-title="ערוצים בינלאומיים",8NTV
+#EXTINF:-1 tvg-id="8NTV.mx" tvg-name="8NTV" tvg-chno="2520" tvg-logo="https://i.imgur.com/7ecgGIG.png" group-title="ערוצים בינלאומיים",8NTV
 https://60417ddeaf0d9.streamlock.net/ntv/videontv/playlist.m3u8
-#EXTINF:-1 tvg-id="Canal12VenadoTuerto.ar" tvg-name="Canal 12 Venado Tuerto" tvg-chno="2522" tvg-logo="https://i.imgur.com/b93YC0V.jpeg" group-title="ערוצים בינלאומיים",Canal 12 Venado Tuerto
+#EXTINF:-1 tvg-id="Canal12VenadoTuerto.ar" tvg-name="Canal 12 Venado Tuerto" tvg-chno="2521" tvg-logo="https://i.imgur.com/b93YC0V.jpeg" group-title="ערוצים בינלאומיים",Canal 12 Venado Tuerto
 https://nd106.republicaservers.com:4433/hls/diegologonitv/index.m3u8
-#EXTINF:-1 tvg-id="SICAltaDefinicao.pt" tvg-name="SIC Alta Definicao" tvg-chno="2523" tvg-logo="https://i.imgur.com/VdPwyQv.png" group-title="ערוצים בינלאומיים",SIC Alta Definicao
+#EXTINF:-1 tvg-id="SICAltaDefinicao.pt" tvg-name="SIC Alta Definicao" tvg-chno="2522" tvg-logo="https://i.imgur.com/VdPwyQv.png" group-title="ערוצים בינלאומיים",SIC Alta Definicao
 https://production-fast-sic.content.okast.tv/fa2e8c4385712f9aa54bbe52b1bd9b6b/channels/d9070446-8448-455e-8075-773b1ba12562/fc831b20-f252-4e7d-8cc5-2d05f4d43c1c/media_.m3u8
-#EXTINF:-1 tvg-id="TVRain.nl" tvg-name="TV Rain" tvg-chno="2524" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Tvrain.svg/960px-Tvrain.svg.png" group-title="ערוצים בינלאומיים",TV Rain
+#EXTINF:-1 tvg-id="TVRain.nl" tvg-name="TV Rain" tvg-chno="2523" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Tvrain.svg/960px-Tvrain.svg.png" group-title="ערוצים בינלאומיים",TV Rain
 https://wl.tvrain.tv/transcode/ngrp:ses_all/playlist.m3u8
-#EXTINF:-1 tvg-id="Matele.be" tvg-name="Matele" tvg-chno="2525" tvg-logo="https://i.imgur.com/rw72POr.png" group-title="ערוצים בינלאומיים",Matele
+#EXTINF:-1 tvg-id="Matele.be" tvg-name="Matele" tvg-chno="2524" tvg-logo="https://i.imgur.com/rw72POr.png" group-title="ערוצים בינלאומיים",Matele
 https://live.matele.be/hls/live.m3u8
-#EXTINF:-1 tvg-id="MaxTV.ch" tvg-name="Max TV" tvg-chno="2526" tvg-logo="https://i.imgur.com/13PjEk8.png" group-title="ערוצים בינלאומיים",Max TV
+#EXTINF:-1 tvg-id="MaxTV.ch" tvg-name="Max TV" tvg-chno="2525" tvg-logo="https://i.imgur.com/13PjEk8.png" group-title="ערוצים בינלאומיים",Max TV
 https://cdn.katapy.io/cache/stream/katapytv/dieu/playlist.m3u8
-#EXTINF:-1 tvg-id="LandleTV.at" tvg-name="Landle TV" tvg-chno="2527" tvg-logo="https://i.imgur.com/omLVQ4r.png" group-title="ערוצים בינלאומיים",Landle TV
+#EXTINF:-1 tvg-id="LandleTV.at" tvg-name="Landle TV" tvg-chno="2526" tvg-logo="https://i.imgur.com/omLVQ4r.png" group-title="ערוצים בינלאומיים",Landle TV
 https://streaming13.huberwebmedia.at/LiveApp/streams/985585225397790082777809.m3u8
-#EXTINF:-1 tvg-id="NewTV.pl" tvg-name="NewTV" tvg-chno="2528" tvg-logo="https://i.imgur.com/fH8rKs3.png" group-title="ערוצים בינלאומיים",NewTV
+#EXTINF:-1 tvg-id="NewTV.pl" tvg-name="NewTV" tvg-chno="2527" tvg-logo="https://i.imgur.com/fH8rKs3.png" group-title="ערוצים בינלאומיים",NewTV
 https://1409502578.rsc.cdn77.org/live/stream-1/chunklist.m3u8
-#EXTINF:-1 tvg-id="AlphaTV.gr" tvg-name="Alpha TV" tvg-chno="2529" tvg-logo="https://i.imgur.com/6twzd38.png" group-title="ערוצים בינלאומיים",Alpha TV
+#EXTINF:-1 tvg-id="AlphaTV.gr" tvg-name="Alpha TV" tvg-chno="2528" tvg-logo="https://i.imgur.com/6twzd38.png" group-title="ערוצים בינלאומיים",Alpha TV
 https://alphatvlive2.siliconweb.com/alphatvlive/live_abr/playlist.m3u8
-#EXTINF:-1 tvg-id="MTVReality.se" tvg-name="MTV Reality" tvg-chno="2530" tvg-logo="https://images.pluto.tv/channels/685137f4a1e091e16f2dd471/colorLogoPNG_1780301718240.png" group-title="ערוצים בינלאומיים",MTV Reality
+#EXTINF:-1 tvg-id="MTVReality.se" tvg-name="MTV Reality" tvg-chno="2529" tvg-logo="https://images.pluto.tv/channels/685137f4a1e091e16f2dd471/colorLogoPNG_1780301718240.png" group-title="ערוצים בינלאומיים",MTV Reality
 https://jmp2.uk/plu-685139b0f7d8b74b62f41c96.m3u8
-#EXTINF:-1 tvg-id="Frikanalen.no" tvg-name="Frikanalen" tvg-chno="2531" tvg-logo="https://i.imgur.com/rY3Owxl.png" group-title="ערוצים בינלאומיים",Frikanalen
+#EXTINF:-1 tvg-id="Frikanalen.no" tvg-name="Frikanalen" tvg-chno="2530" tvg-logo="https://i.imgur.com/rY3Owxl.png" group-title="ערוצים בינלאומיים",Frikanalen
 https://frikanalen.no/stream/index.m3u8
-#EXTINF:-1 tvg-id="DRTV.dk" tvg-name="DRTV" tvg-chno="2532" tvg-logo="https://i.ibb.co/c6n2vbW/512px-DR-TV-logo-svg.png" group-title="ערוצים בינלאומיים",DRTV
+#EXTINF:-1 tvg-id="DRTV.dk" tvg-name="DRTV" tvg-chno="2531" tvg-logo="https://i.ibb.co/c6n2vbW/512px-DR-TV-logo-svg.png" group-title="ערוצים בינלאומיים",DRTV
 https://drlivedrtvahls.akamaized.net/hls/live/2113613/drlivedrtva/master.m3u8
-#EXTINF:-1 tvg-id="MTVSub.fi" tvg-name="MTV Sub" tvg-chno="2533" tvg-logo="https://i.imgur.com/rmV8LO1.png" group-title="ערוצים בינלאומיים",MTV Sub
+#EXTINF:-1 tvg-id="MTVSub.fi" tvg-name="MTV Sub" tvg-chno="2532" tvg-logo="https://i.imgur.com/rmV8LO1.png" group-title="ערוצים בינלאומיים",MTV Sub
 https://live-fi.tvkaista.net/sub/live.m3u8
-#EXTINF:-1 tvg-id="TG4.ie" tvg-name="TG4" tvg-chno="2534" tvg-logo="https://i.imgur.com/XiAKb4E.png" group-title="ערוצים בינלאומיים",TG4
+#EXTINF:-1 tvg-id="TG4.ie" tvg-name="TG4" tvg-chno="2533" tvg-logo="https://i.imgur.com/XiAKb4E.png" group-title="ערוצים בינלאומיים",TG4
 https://fastly.live.brightcove.com/6384196213112/eu-west-1/1555966122001/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJob3N0IjoieDl2YzlnLmVncmVzcy55ODN1ZWIiLCJhY2NvdW50X2lkIjoiMTU1NTk2NjEyMjAwMSIsImVobiI6ImZhc3RseS5saXZlLmJyaWdodGNvdmUuY29tIiwiaXNzIjoiYmxpdmUtcGxheWJhY2stc291cmNlLWFwaSIsInN1YiI6InBhdGhtYXB0b2tlbiIsImF1ZCI6WyIxNTU1OTY2MTIyMDAxIl0sImp0aSI6IjYzODQxOTYyMTMxMTIifQ.Co2xR3kmJBoxTaFTpwU0b37lJ05vNt-y32-SwfM26EA/chunklist.m3u8
-#EXTINF:-1 tvg-id="BarrandovKrimi.cz" tvg-name="Barrandov Krimi" tvg-chno="2535" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Logo-krimi-barrandov-color.svg/960px-Logo-krimi-barrandov-color.svg.png" group-title="ערוצים בינלאומיים",Barrandov Krimi
+#EXTINF:-1 tvg-id="BarrandovKrimi.cz" tvg-name="Barrandov Krimi" tvg-chno="2534" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Logo-krimi-barrandov-color.svg/960px-Logo-krimi-barrandov-color.svg.png" group-title="ערוצים בינלאומיים",Barrandov Krimi
 https://dash4.antik.sk/live/test_barrandov_plus_atk_1200/playlist.m3u8
-#EXTINF:-1 tvg-id="A7TV.ro" tvg-name="A7TV" tvg-chno="2536" tvg-logo="https://i.imgur.com/RmFg8BN.png" group-title="ערוצים בינלאומיים",A7TV
+#EXTINF:-1 tvg-id="A7TV.ro" tvg-name="A7TV" tvg-chno="2535" tvg-logo="https://i.imgur.com/RmFg8BN.png" group-title="ערוצים בינלאומיים",A7TV
 https://a7tvlive.ro/A7TV/A7TV/playlist.m3u8
-#EXTINF:-1 tvg-id="HeviziTV.hu" tvg-name="Hevizi TV" tvg-chno="2537" tvg-logo="https://i.imgur.com/zuWQKDm.png" group-title="ערוצים בינלאומיים",Hevizi TV
+#EXTINF:-1 tvg-id="HeviziTV.hu" tvg-name="Hevizi TV" tvg-chno="2536" tvg-logo="https://i.imgur.com/zuWQKDm.png" group-title="ערוצים בינלאומיים",Hevizi TV
 https://cloudfront44.lexanetwork.com:1344/relay03/livestream003.sdp/playlist.m3u8
-#EXTINF:-1 tvg-id="AntofagastaTV.cl" tvg-name="Antofagasta TV" tvg-chno="2538" tvg-logo="https://i.imgur.com/XIQr0fs.png" group-title="ערוצים בינלאומיים",Antofagasta TV
+#EXTINF:-1 tvg-id="AntofagastaTV.cl" tvg-name="Antofagasta TV" tvg-chno="2537" tvg-logo="https://i.imgur.com/XIQr0fs.png" group-title="ערוצים בינלאומיים",Antofagasta TV
 https://unlimited6-cl.dps.live/atv/atv.smil/playlist.m3u8
-#EXTINF:-1 tvg-id="AupurTelevision.co" tvg-name="Aupur Television" tvg-chno="2539" tvg-logo="https://i.imgur.com/FTv7zpJ.jpeg" group-title="ערוצים בינלאומיים",Aupur Television
+#EXTINF:-1 tvg-id="AupurTelevision.co" tvg-name="Aupur Television" tvg-chno="2538" tvg-logo="https://i.imgur.com/FTv7zpJ.jpeg" group-title="ערוצים בינלאומיים",Aupur Television
 https://canal.aupurtv.co/live/stream/index.m3u8
-#EXTINF:-1 tvg-id="Latina.pe" tvg-name="Latina" tvg-chno="2540" tvg-logo="https://i.imgur.com/MOsWriY.png" group-title="ערוצים בינלאומיים",Latina
+#EXTINF:-1 tvg-id="Latina.pe" tvg-name="Latina" tvg-chno="2539" tvg-logo="https://i.imgur.com/MOsWriY.png" group-title="ערוצים בינלאומיים",Latina
 https://redirector.rudo.video/hls-video/567ffde3fa319fadf3419efda25619456231dfea/latina/latina.smil/playlist.m3u8
-#EXTINF:-1 tvg-id="TVRIWorld.id" tvg-name="TVRI World" tvg-chno="2541" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/TVRIWorld.png/960px-TVRIWorld.png" group-title="ערוצים בינלאומיים",TVRI World
+#EXTINF:-1 tvg-id="TVRIWorld.id" tvg-name="TVRI World" tvg-chno="2540" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/TVRIWorld.png/960px-TVRIWorld.png" group-title="ערוצים בינלאומיים",TVRI World
 https://ott-balancer.tvri.go.id/live/eds/TVRIWorld/hls/TVRIWorld.m3u8
-#EXTINF:-1 tvg-id="NBTWorld.th" tvg-name="NBT World" tvg-chno="2542" tvg-logo="https://i.imgur.com/GUQhLeg.png" group-title="ערוצים בינלאומיים",NBT World
+#EXTINF:-1 tvg-id="NBTWorld.th" tvg-name="NBT World" tvg-chno="2541" tvg-logo="https://i.imgur.com/GUQhLeg.png" group-title="ערוצים בינלאומיים",NBT World
 https://cdn-edge.iiptvcdn.com/live_event/smil:d36f-93c1-9c58-fdcc-427f.smil/playlist.m3u8
-#EXTINF:-1 tvg-id="VietnamToday.vn" tvg-name="Vietnam Today" tvg-chno="2543" tvg-logo="https://i.imgur.com/xW9rY7s.png" group-title="ערוצים בינלאומיים",Vietnam Today
+#EXTINF:-1 tvg-id="VietnamToday.vn" tvg-name="Vietnam Today" tvg-chno="2542" tvg-logo="https://i.imgur.com/xW9rY7s.png" group-title="ערוצים בינלאומיים",Vietnam Today
 https://amagi-live.ondemandkorea.com/amgplt0456.m3u8
-#EXTINF:-1 tvg-id="PMITV.pk" tvg-name="PMI TV" tvg-chno="2544" tvg-logo="https://i.imgur.com/SfyCwXj.png" group-title="ערוצים בינלאומיים",PMI TV
+#EXTINF:-1 tvg-id="PMITV.pk" tvg-name="PMI TV" tvg-chno="2543" tvg-logo="https://i.imgur.com/SfyCwXj.png" group-title="ערוצים בינלאומיים",PMI TV
 https://cdn.live247stream.com/pmi/tv/playlist.m3u8
-#EXTINF:-1 tvg-id="TVBRICSAfrica.za" tvg-name="TV BRICS Africa" tvg-chno="2545" tvg-logo="https://admango.cdn.mangomolo.com/analytics/uploads/188/666abcee75.jpeg" group-title="ערוצים בינלאומיים",TV BRICS Africa
+#EXTINF:-1 tvg-id="TVBRICSAfrica.za" tvg-name="TV BRICS Africa" tvg-chno="2544" tvg-logo="https://admango.cdn.mangomolo.com/analytics/uploads/188/666abcee75.jpeg" group-title="ערוצים בינלאומיים",TV BRICS Africa
 https://cdn.freevisiontv.co.za/sttv/smil:brics.stream.smil/playlist.m3u8
-#EXTINF:-1 tvg-id="TVWEST.ng" tvg-name="TV-WEST" tvg-chno="2546" tvg-logo="https://tvwest.ng/wp-content/uploads/2026/07/cropped-TW.jpg" group-title="ערוצים בינלאומיים",TV-WEST
+#EXTINF:-1 tvg-id="TVWEST.ng" tvg-name="TV-WEST" tvg-chno="2545" tvg-logo="https://tvwest.ng/wp-content/uploads/2026/07/cropped-TW.jpg" group-title="ערוצים בינלאומיים",TV-WEST
 https://tv-west.lg.mncdn.com/tv_west/tv_west.stream/playlist.m3u8
-#EXTINF:-1 tvg-id="A7TV.do" tvg-name="A7 TV" tvg-chno="2547" tvg-logo="https://a7tvjarabacoa.netlify.app/IMG_1968.PNG" group-title="ערוצים בינלאומיים",A7 TV
+#EXTINF:-1 tvg-id="A7TV.do" tvg-name="A7 TV" tvg-chno="2546" tvg-logo="https://a7tvjarabacoa.netlify.app/IMG_1968.PNG" group-title="ערוצים בינלאומיים",A7 TV
 https://183.bozztv.com/ssh101/ssh101/a7tvjarabacoa/playlist.m3u8
-#EXTINF:-1 tvg-id="DmodaChannel.bo" tvg-name="Dmoda Channel" tvg-chno="2548" tvg-logo="https://dmoda.com.bo/wp-content/uploads/2025/07/09-LOGO-EN-BLANCO-LIGHT-380-X-180-pixeles.png" group-title="ערוצים בינלאומיים",Dmoda Channel
+#EXTINF:-1 tvg-id="DmodaChannel.bo" tvg-name="Dmoda Channel" tvg-chno="2547" tvg-logo="https://dmoda.com.bo/wp-content/uploads/2025/07/09-LOGO-EN-BLANCO-LIGHT-380-X-180-pixeles.png" group-title="ערוצים בינלאומיים",Dmoda Channel
 https://master.tucableip.com/dmoda/index.m3u8
-#EXTINF:-1 tvg-id="ParaguayTV.py" tvg-name="Paraguay TV" tvg-chno="2549" tvg-logo="https://i.imgur.com/TWnTZ3c.png" group-title="ערוצים בינלאומיים",Paraguay TV
+#EXTINF:-1 tvg-id="ParaguayTV.py" tvg-name="Paraguay TV" tvg-chno="2548" tvg-logo="https://i.imgur.com/TWnTZ3c.png" group-title="ערוצים בינלאומיים",Paraguay TV
 https://stream.paraguaytv.gov.py/memfs/bbe36fed-9b49-4d1d-adaa-4bd6d1b2e386.m3u8
-#EXTINF:-1 tvg-id="MTR.sk" tvg-name="MTR" tvg-chno="2550" tvg-logo="https://www.mtr.sk/img/logo-mtr-0.png" group-title="ערוצים בינלאומיים",MTR
+#EXTINF:-1 tvg-id="MTR.sk" tvg-name="MTR" tvg-chno="2549" tvg-logo="https://www.mtr.sk/img/logo-mtr-0.png" group-title="ערוצים בינלאומיים",MTR
 https://cdnsk003.panaccess.com/local/Ruzomberok/index.m3u8
-#EXTINF:-1 tvg-id="LatinaTV.ve" tvg-name="Latina TV" tvg-chno="2551" tvg-logo="https://i0.wp.com/latinamedios.com/wp-content/uploads/2023/03/LOGO-LATINA-TV-H-500.png?w=500&ssl=1" group-title="ערוצים בינלאומיים",Latina TV
+#EXTINF:-1 tvg-id="LatinaTV.ve" tvg-name="Latina TV" tvg-chno="2550" tvg-logo="https://i0.wp.com/latinamedios.com/wp-content/uploads/2023/03/LOGO-LATINA-TV-H-500.png?w=500&ssl=1" group-title="ערוצים בינלאומיים",Latina TV
 https://streamtv.latinamedios.com:3413/live/latinatvlive.m3u8
-#EXTINF:-1 tvg-id="AmericaEstereoQuito.ec" tvg-name="America Estereo Quito" tvg-chno="2552" tvg-logo="https://i.imgur.com/gUqKymM.png" group-title="ערוצים בינלאומיים",America Estereo Quito
+#EXTINF:-1 tvg-id="AmericaEstereoQuito.ec" tvg-name="America Estereo Quito" tvg-chno="2551" tvg-logo="https://i.imgur.com/gUqKymM.png" group-title="ערוצים בינלאומיים",America Estereo Quito
 https://video.makrodigital.com/americaestereoquito/americaestereoquito/playlist.m3u8
-#EXTINF:-1 tvg-id="TVSurCanal14.cr" tvg-name="TV Sur Canal 14" tvg-chno="2553" tvg-logo="https://i.imgur.com/OpHYYZA.png" group-title="ערוצים בינלאומיים",TV Sur Canal 14
+#EXTINF:-1 tvg-id="TVSurCanal14.cr" tvg-name="TV Sur Canal 14" tvg-chno="2552" tvg-logo="https://i.imgur.com/OpHYYZA.png" group-title="ערוצים בינלאומיים",TV Sur Canal 14
 https://k20.usastreams.com:8081/tvsur/index.m3u8
-#EXTINF:-1 tvg-id="Canal100Chinique.gt" tvg-name="Canal 100 Chinique" tvg-chno="2554" tvg-logo="https://i.imgur.com/ygNKJXx.png" group-title="ערוצים בינלאומיים",Canal 100 Chinique
+#EXTINF:-1 tvg-id="Canal100Chinique.gt" tvg-name="Canal 100 Chinique" tvg-chno="2553" tvg-logo="https://i.imgur.com/ygNKJXx.png" group-title="ערוצים בינלאומיים",Canal 100 Chinique
 https://live20.bozztv.com/giatv/giatv-chinique100tvenvivo/chinique100tvenvivo/playlist.m3u8
-#EXTINF:-1 tvg-id="Canal11.hn" tvg-name="Canal 11" tvg-chno="2555" tvg-logo="https://i.imgur.com/Sht2Rd4.png" group-title="ערוצים בינלאומיים",Canal 11
+#EXTINF:-1 tvg-id="Canal11.hn" tvg-name="Canal 11" tvg-chno="2554" tvg-logo="https://i.imgur.com/Sht2Rd4.png" group-title="ערוצים בינלאומיים",Canal 11
 https://redirector.rudo.video/hls-video/c54ac2799874375c81c1672abb700870537c5223/canal11hn/canal11hn.smil/playlist.m3u8
-#EXTINF:-1 tvg-id="Belarus1.by" tvg-name="Belarus-1" tvg-chno="2556" tvg-logo="https://i.imgur.com/sUD9t5j.png" group-title="ערוצים בינלאומיים",Belarus-1
+#EXTINF:-1 tvg-id="Belarus1.by" tvg-name="Belarus-1" tvg-chno="2555" tvg-logo="https://i.imgur.com/sUD9t5j.png" group-title="ערוצים בינלאומיים",Belarus-1
 https://ngtrk.dc.beltelecom.by/ngtrk/_definst_/smil:belarus1.smil/playlist.m3u8
-#EXTINF:-1 tvg-id="TSV.md" tvg-name="TSV" tvg-chno="2557" tvg-logo="https://i.imgur.com/6p4weSK.png" group-title="ערוצים בינלאומיים",TSV
+#EXTINF:-1 tvg-id="TSV.md" tvg-name="TSV" tvg-chno="2556" tvg-logo="https://i.imgur.com/6p4weSK.png" group-title="ערוצים בינלאומיים",TSV
 https://tsv.md/stream/hls/tsv-online/index.m3u8
-#EXTINF:-1 tvg-id="TayariWestTV.ug" tvg-name="Tayari West TV" tvg-chno="2558" tvg-logo="https://i.imgur.com/tbnOtUZ.jpeg" group-title="ערוצים בינלאומיים",Tayari West TV
+#EXTINF:-1 tvg-id="TayariWestTV.ug" tvg-name="Tayari West TV" tvg-chno="2557" tvg-logo="https://i.imgur.com/tbnOtUZ.jpeg" group-title="ערוצים בינלאומיים",Tayari West TV
 https://stream.hydeinnovations.com/tarari-west/index.m3u8
-#EXTINF:-1 tvg-id="JibekJoly.kz" tvg-name="Jibek Joly" tvg-chno="2559" tvg-logo="https://i.imgur.com/SqyXtgK.png" group-title="ערוצים בינלאומיים",Jibek Joly
+#EXTINF:-1 tvg-id="JibekJoly.kz" tvg-name="Jibek Joly" tvg-chno="2558" tvg-logo="https://i.imgur.com/SqyXtgK.png" group-title="ערוצים בינלאומיים",Jibek Joly
 https://stream.qazcdn.net/ex6r514/jjtv/playlist.m3u8
-#EXTINF:-1 tvg-id="LougaTV.sn" tvg-name="Louga TV" tvg-chno="2560" tvg-logo="https://i.ibb.co/xXZ5kFy/unnamed.jpg" group-title="ערוצים בינלאומיים",Louga TV
+#EXTINF:-1 tvg-id="LougaTV.sn" tvg-name="Louga TV" tvg-chno="2559" tvg-logo="https://i.ibb.co/xXZ5kFy/unnamed.jpg" group-title="ערוצים בינלאומיים",Louga TV
 https://stream.sen-gt.com/Mbacke/myStream/playlist.m3u8
-#EXTINF:-1 tvg-id="TeleOnce.pr" tvg-name="TeleOnce" tvg-chno="2561" tvg-logo="https://i.imgur.com/Crt3P4N.png" group-title="ערוצים בינלאומיים",TeleOnce
+#EXTINF:-1 tvg-id="TeleOnce.pr" tvg-name="TeleOnce" tvg-chno="2560" tvg-logo="https://i.imgur.com/Crt3P4N.png" group-title="ערוצים בינלאומיים",TeleOnce
 https://live.11-cdn.com/TeleOnce/3fc63fe00050c646635f16b071cd33e2.sdp/playlist.m3u8
-#EXTINF:-1 tvg-id="Sat7Turk.cy" tvg-name="Sat 7 Turk" tvg-chno="2562" tvg-logo="https://i.imgur.com/cKQIK4i.png" group-title="ערוצים בינלאומיים",Sat 7 Turk
+#EXTINF:-1 tvg-id="Sat7Turk.cy" tvg-name="Sat 7 Turk" tvg-chno="2561" tvg-logo="https://i.imgur.com/cKQIK4i.png" group-title="ערוצים בינלאומיים",Sat 7 Turk
 https://live.artidijitalmedya.com/artidijital_sat7turk/sat7turk/playlist.m3u8
-#EXTINF:-1 tvg-id="RajdhaniTV.bd" tvg-name="Rajdhani TV" tvg-chno="2563" tvg-logo="https://i.imgur.com/MBm2gPz.jpeg" group-title="ערוצים בינלאומיים",Rajdhani TV
+#EXTINF:-1 tvg-id="RajdhaniTV.bd" tvg-name="Rajdhani TV" tvg-chno="2562" tvg-logo="https://i.imgur.com/MBm2gPz.jpeg" group-title="ערוצים בינלאומיים",Rajdhani TV
 https://stream.shariarsuvo.com/hls5/rajdhanicable.m3u8
-#EXTINF:-1 tvg-id="NasaTV.mk" tvg-name="Nasa TV" tvg-chno="2564" tvg-logo="https://i.imgur.com/9rB4VZy.png" group-title="ערוצים בינלאומיים",Nasa TV
+#EXTINF:-1 tvg-id="NasaTV.mk" tvg-name="Nasa TV" tvg-chno="2563" tvg-logo="https://i.imgur.com/9rB4VZy.png" group-title="ערוצים בינלאומיים",Nasa TV
 https://stream.nasatv.com.mk/hls/nasatv_live.m3u8
-#EXTINF:-1 tvg-id="PannonTV.rs" tvg-name="Pannon TV" tvg-chno="2565" tvg-logo="https://i.imgur.com/xQa2idL.png" group-title="ערוצים בינלאומיים",Pannon TV
+#EXTINF:-1 tvg-id="PannonTV.rs" tvg-name="Pannon TV" tvg-chno="2564" tvg-logo="https://i.imgur.com/xQa2idL.png" group-title="ערוצים בינלאומיים",Pannon TV
 https://stream.nmih.hu:4102/live.m3u8
-#EXTINF:-1 tvg-id="RTK3.xk" tvg-name="RTK 3" tvg-chno="2566" tvg-logo="https://i.imgur.com/Ut9VcT3.png" group-title="ערוצים בינלאומיים",RTK 3
+#EXTINF:-1 tvg-id="RTK3.xk" tvg-name="RTK 3" tvg-chno="2565" tvg-logo="https://i.imgur.com/Ut9VcT3.png" group-title="ערוצים בינלאומיים",RTK 3
 https://gjirafa-video-live.gjirafa.net/gjvideo-livestream/rtk3/index.m3u8
-#EXTINF:-1 tvg-id="TV10.rw" tvg-name="TV10" tvg-chno="2567" tvg-logo="https://i.imgur.com/DeaWC1N.png" group-title="ערוצים בינלאומיים",TV10
+#EXTINF:-1 tvg-id="TV10.rw" tvg-name="TV10" tvg-chno="2566" tvg-logo="https://i.imgur.com/DeaWC1N.png" group-title="ערוצים בינלאומיים",TV10
 https://5c46fa289c89f.streamlock.net/pub1live/mystream/playlist.m3u8
-#EXTINF:-1 tvg-id="ImediTV.ge" tvg-name="Imedi TV" tvg-chno="2568" tvg-logo="https://i.imgur.com/94hNyxZ.png" group-title="ערוצים בינלאומיים",Imedi TV
+#EXTINF:-1 tvg-id="ImediTV.ge" tvg-name="Imedi TV" tvg-chno="2567" tvg-logo="https://i.imgur.com/94hNyxZ.png" group-title="ערוצים בינלאומיים",Imedi TV
 https://tv.cdn.xsg.ge/imedihd/index.m3u8
-#EXTINF:-1 tvg-id="Turkmenistan.tm" tvg-name="Turkmenistan" tvg-chno="2569" tvg-logo="https://i.imgur.com/iBBpBx4.png" group-title="ערוצים בינלאומיים",Turkmenistan
+#EXTINF:-1 tvg-id="Turkmenistan.tm" tvg-name="Turkmenistan" tvg-chno="2568" tvg-logo="https://i.imgur.com/iBBpBx4.png" group-title="ערוצים בינלאומיים",Turkmenistan
 https://alpha.tv.online.tm/hls/ch007.m3u8
-#EXTINF:-1 tvg-id="CAM10TV.cm" tvg-name="CAM 10 TV" tvg-chno="2570" tvg-logo="https://i.imgur.com/xspb9uY.png" group-title="ערוצים בינלאומיים",CAM 10 TV
+#EXTINF:-1 tvg-id="CAM10TV.cm" tvg-name="CAM 10 TV" tvg-chno="2569" tvg-logo="https://i.imgur.com/xspb9uY.png" group-title="ערוצים בינלאומיים",CAM 10 TV
 https://stream.it-innov.com/cam10tv/index.m3u8
-#EXTINF:-1 tvg-id="RTLZwee.lu" tvg-name="RTL Zwee" tvg-chno="2571" tvg-logo="https://i.imgur.com/7SmCtyy.png" group-title="ערוצים בינלאומיים",RTL Zwee
+#EXTINF:-1 tvg-id="RTLZwee.lu" tvg-name="RTL Zwee" tvg-chno="2570" tvg-logo="https://i.imgur.com/7SmCtyy.png" group-title="ערוצים בינלאומיים",RTL Zwee
 https://live-edge.rtl.lu/channel2/smil:channel2/playlist.m3u8
-#EXTINF:-1 tvg-id="VerbumTV.lk" tvg-name="Verbum TV" tvg-chno="2572" tvg-logo="https://i.imgur.com/YEKEaB4.png" group-title="ערוצים בינלאומיים",Verbum TV
+#EXTINF:-1 tvg-id="VerbumTV.lk" tvg-name="Verbum TV" tvg-chno="2571" tvg-logo="https://i.imgur.com/YEKEaB4.png" group-title="ערוצים בינלאומיים",Verbum TV
 https://video-eu1.streamerr.co/hls/scb80244b91/live.m3u8
-#EXTINF:-1 tvg-id="VizionPlus.al" tvg-name="Vizion Plus" tvg-chno="2573" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Vizion_Plus.svg/960px-Vizion_Plus.svg.png" group-title="ערוצים בינלאומיים",Vizion Plus
+#EXTINF:-1 tvg-id="VizionPlus.al" tvg-name="Vizion Plus" tvg-chno="2572" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Vizion_Plus.svg/960px-Vizion_Plus.svg.png" group-title="ערוצים בינלאומיים",Vizion Plus
 https://tringliveviz.akamaized.net/delta/105/out/u/qwaszxerdfcvrtryuy.m3u8
-#EXTINF:-1 tvg-id="KordiaTV.nz" tvg-name="Kordia TV" tvg-chno="2574" tvg-logo="https://i.imgur.com/BQ0qWzX.png" group-title="ערוצים בינלאומיים",Kordia TV
+#EXTINF:-1 tvg-id="KordiaTV.nz" tvg-name="Kordia TV" tvg-chno="2573" tvg-logo="https://i.imgur.com/BQ0qWzX.png" group-title="ערוצים בינלאומיים",Kordia TV
 https://ptvlive.kordia.net.nz/out/v1/3fc2254c865a457c8d7fbbce227a2aae/index.m3u8
-#EXTINF:-1 tvg-id="MNBWorld.mn" tvg-name="MNB World" tvg-chno="2575" tvg-logo="https://www.mongolsat.mn/assets/img/channel/22.png" group-title="ערוצים בינלאומיים",MNB World
+#EXTINF:-1 tvg-id="MNBWorld.mn" tvg-name="MNB World" tvg-chno="2574" tvg-logo="https://www.mongolsat.mn/assets/img/channel/22.png" group-title="ערוצים בינלאומיים",MNB World
 https://live.mnb.mn/hls/mnb_world.stream.m3u8
-#EXTINF:-1 tvg-id="TelevisionCaribbean.kn" tvg-name="Television Caribbean" tvg-chno="2576" tvg-logo="https://i.imgur.com/Ogw0COv.png" group-title="ערוצים בינלאומיים",Television Caribbean
+#EXTINF:-1 tvg-id="TelevisionCaribbean.kn" tvg-name="Television Caribbean" tvg-chno="2575" tvg-logo="https://i.imgur.com/Ogw0COv.png" group-title="ערוצים בינלאומיים",Television Caribbean
 https://live.kingdom-tv.com:3545/stream/play.m3u8
-#EXTINF:-1 tvg-id="AyazTV.az" tvg-name="Ayaz TV" tvg-chno="2577" tvg-logo="https://www.ayaztv.com/storage/assets/site_logo.png" group-title="ערוצים בינלאומיים",Ayaz TV
+#EXTINF:-1 tvg-id="AyazTV.az" tvg-name="Ayaz TV" tvg-chno="2576" tvg-logo="https://www.ayaztv.com/storage/assets/site_logo.png" group-title="ערוצים בינלאומיים",Ayaz TV
 https://janya-ayaztv.vgcdn.net/ptnr-WebApp/title-Ayaz_TV/v1/vglive-sk-934820/main.m3u8
-#EXTINF:-1 tvg-id="Armenia2.am" tvg-name="Armenia 2" tvg-chno="2578" tvg-logo="https://i.imgur.com/AXmXw9X.png" group-title="ערוצים בינלאומיים",Armenia 2
+#EXTINF:-1 tvg-id="Armenia2.am" tvg-name="Armenia 2" tvg-chno="2577" tvg-logo="https://i.imgur.com/AXmXw9X.png" group-title="ערוצים בינלאומיים",Armenia 2
 https://amtv.tulixcdn.com/amtv3/am3abr/index.m3u8
-#EXTINF:-1 tvg-id="SEATV.kh" tvg-name="SEA TV" tvg-chno="2579" tvg-logo="https://i.imgur.com/oZPorvg.png" group-title="ערוצים בינלאומיים",SEA TV
+#EXTINF:-1 tvg-id="SEATV.kh" tvg-name="SEA TV" tvg-chno="2578" tvg-logo="https://i.imgur.com/oZPorvg.png" group-title="ערוצים בינלאומיים",SEA TV
 https://seatv.netlinkbroadcaster.com/hls/test.m3u8
-#EXTINF:-1 tvg-id="TamadonTV.af" tvg-name="Tamadon TV" tvg-chno="2580" tvg-logo="https://i.imgur.com/edGyj5H.png" group-title="ערוצים בינלאומיים",Tamadon TV
+#EXTINF:-1 tvg-id="TamadonTV.af" tvg-name="Tamadon TV" tvg-chno="2579" tvg-logo="https://i.imgur.com/edGyj5H.png" group-title="ערוצים בינלאומיים",Tamadon TV
 https://hls.tamadon.live/hls/stream.m3u8
-#EXTINF:-1 tvg-id="LaoNetTV.la" tvg-name="Lao Net TV" tvg-chno="2581" tvg-logo="https://i.imgur.com/ohbRT05.png" group-title="ערוצים בינלאומיים",Lao Net TV
+#EXTINF:-1 tvg-id="LaoNetTV.la" tvg-name="Lao Net TV" tvg-chno="2580" tvg-logo="https://i.imgur.com/ohbRT05.png" group-title="ערוצים בינלאומיים",Lao Net TV
 https://livefta.malimarcdn.com/ftaedge00/laonet.sdp/playlist.m3u8
-#EXTINF:-1 tvg-id="LTV1.lv" tvg-name="LTV1" tvg-chno="2582" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/LTV1_%282022%29.svg/960px-LTV1_%282022%29.svg.png" group-title="ערוצים בינלאומיים",LTV1
+#EXTINF:-1 tvg-id="LTV1.lv" tvg-name="LTV1" tvg-chno="2581" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/LTV1_%282022%29.svg/960px-LTV1_%282022%29.svg.png" group-title="ערוצים בינלאומיים",LTV1
 https://lsm.eu.cdns-redge.media/livehls/o2/lsm-live/live/ltv1_pasaule/live.livx/playlist.m3u8
-#EXTINF:-1 tvg-id="RadioTelevizijaBanovina.hr" tvg-name="Radio Televizija Banovina" tvg-chno="2583" tvg-logo="https://i.imgur.com/gCFgC5D.png" group-title="ערוצים בינלאומיים",Radio Televizija Banovina
+#EXTINF:-1 tvg-id="RadioTelevizijaBanovina.hr" tvg-name="Radio Televizija Banovina" tvg-chno="2582" tvg-logo="https://i.imgur.com/gCFgC5D.png" group-title="ערוצים בינלאומיים",Radio Televizija Banovina
 https://pool.alter-media.hr:1936/live/myStream/playlist.m3u8?DVR=
-#EXTINF:-1 tvg-id="RTVZenica.ba" tvg-name="RTV Zenica" tvg-chno="2584" tvg-logo="https://i.imgur.com/TKUaflB.png" group-title="ערוצים בינלאומיים",RTV Zenica
+#EXTINF:-1 tvg-id="RTVZenica.ba" tvg-name="RTV Zenica" tvg-chno="2583" tvg-logo="https://i.imgur.com/TKUaflB.png" group-title="ערוצים בינלאומיים",RTV Zenica
 https://stream.rtvze.ba/live/123/123.m3u8
-#EXTINF:-1 tvg-id="TVCGMNE.me" tvg-name="TVCG MNE" tvg-chno="2585" tvg-logo="https://i.imgur.com/pf8VEwf.png" group-title="ערוצים בינלאומיים",TVCG MNE
+#EXTINF:-1 tvg-id="TVCGMNE.me" tvg-name="TVCG MNE" tvg-chno="2584" tvg-logo="https://i.imgur.com/pf8VEwf.png" group-title="ערוצים בינלאומיים",TVCG MNE
 https://rtcg-live-open.morescreens.com/RTCG_1_004/playlist.m3u8
-#EXTINF:-1 tvg-id="IgniteTelevision.gy" tvg-name="Ignite Television" tvg-chno="2586" tvg-logo="https://i.imgur.com/aQI9tsg.jpeg" group-title="ערוצים בינלאומיים",Ignite Television
+#EXTINF:-1 tvg-id="IgniteTelevision.gy" tvg-name="Ignite Television" tvg-chno="2585" tvg-logo="https://i.imgur.com/aQI9tsg.jpeg" group-title="ערוצים בינלאומיים",Ignite Television
 https://rpn.bozztv.com/ignitelive/ignitetv/ignitetv/tracks-v1a1/mono.m3u8
-#EXTINF:-1 tvg-id="KantipurTV.np" tvg-name="Kantipur TV" tvg-chno="2587" tvg-logo="https://i.imgur.com/HEVo2Gc.png" group-title="ערוצים בינלאומיים",Kantipur TV
+#EXTINF:-1 tvg-id="KantipurTV.np" tvg-name="Kantipur TV" tvg-chno="2586" tvg-logo="https://i.imgur.com/HEVo2Gc.png" group-title="ערוצים בינלאומיים",Kantipur TV
 https://ktvhdsg.ekantipur.com:8443/high_quality_85840165/hd/playlist.m3u8
-#EXTINF:-1 tvg-id="SupremeMasterTV.tw" tvg-name="Supreme Master TV" tvg-chno="2588" tvg-logo="https://i.imgur.com/kFMHayP.png" group-title="ערוצים בינלאומיים",Supreme Master TV
+#EXTINF:-1 tvg-id="SupremeMasterTV.tw" tvg-name="Supreme Master TV" tvg-chno="2587" tvg-logo="https://i.imgur.com/kFMHayP.png" group-title="ערוצים בינלאומיים",Supreme Master TV
 https://lbs-us1.suprememastertv.com/720p.m3u8
-#EXTINF:-1 tvg-id="RadioTelePlanetCompas.ht" tvg-name="Radio Tele Planet Compas" tvg-chno="2589" tvg-logo="https://i.imgur.com/ddb4lsa.png" group-title="ערוצים בינלאומיים",Radio Tele Planet Compas
+#EXTINF:-1 tvg-id="RadioTelePlanetCompas.ht" tvg-name="Radio Tele Planet Compas" tvg-chno="2588" tvg-logo="https://i.imgur.com/ddb4lsa.png" group-title="ערוצים בינלאומיים",Radio Tele Planet Compas
 https://5dcab9aed5331.streamlock.net/mrcompas1/livestream/playlist.m3u8
-#EXTINF:-1 tvg-id="ETV.gp" tvg-name="ETV" tvg-chno="2590" tvg-logo="https://i.imgur.com/m5E2VP0.png" group-title="ערוצים בינלאומיים",ETV
+#EXTINF:-1 tvg-id="ETV.gp" tvg-name="ETV" tvg-chno="2589" tvg-logo="https://i.imgur.com/m5E2VP0.png" group-title="ערוצים בינלאומיים",ETV
 https://edge12.vedge.infomaniak.com/livecast/ik:etvgp/manifest.m3u8
-#EXTINF:-1 tvg-id="NTV.ci" tvg-name="NTV" tvg-chno="2591" tvg-logo="https://i.imgur.com/qqLXdHz.png" group-title="ערוצים בינלאומיים",NTV
+#EXTINF:-1 tvg-id="NTV.ci" tvg-name="NTV" tvg-chno="2590" tvg-logo="https://i.imgur.com/qqLXdHz.png" group-title="ערוצים בינלאומיים",NTV
 https://strhlslb01.streamakaci.tv/str_ntv_ntv/str_ntv_ntv_multi/playlist.m3u8
-#EXTINF:-1 tvg-id="TN8.ni" tvg-name="TN8" tvg-chno="2592" tvg-logo="https://i.imgur.com/m0Zdxiz.png" group-title="ערוצים בינלאומיים",TN8
+#EXTINF:-1 tvg-id="TN8.ni" tvg-name="TN8" tvg-chno="2591" tvg-logo="https://i.imgur.com/m0Zdxiz.png" group-title="ערוצים בינלאומיים",TN8
 https://streamingcws30.com/tn8/videotn8/playlist.m3u8
-#EXTINF:-1 tvg-id="NexTVCanal21.pa" tvg-name="Nex TV Canal 21" tvg-chno="2593" tvg-logo="https://i.imgur.com/QQBd052.png" group-title="ערוצים בינלאומיים",Nex TV Canal 21
+#EXTINF:-1 tvg-id="NexTVCanal21.pa" tvg-name="Nex TV Canal 21" tvg-chno="2592" tvg-logo="https://i.imgur.com/QQBd052.png" group-title="ערוצים בינלאומיים",Nex TV Canal 21
 https://movil.ejeserver.com/live/nextv.m3u8
-#EXTINF:-1 tvg-id="RUV.is" tvg-name="RUV" tvg-chno="2594" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/R%C3%9AV_ohf_2019_logo.svg/960px-R%C3%9AV_ohf_2019_logo.svg.png" group-title="ערוצים בינלאומיים",RUV
+#EXTINF:-1 tvg-id="RUV.is" tvg-name="RUV" tvg-chno="2593" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/R%C3%9AV_ohf_2019_logo.svg/960px-R%C3%9AV_ohf_2019_logo.svg.png" group-title="ערוצים בינלאומיים",RUV
 https://ruv-web-live.akamaized.net/streymi/ruverl/ruverl/stream1_.m3u8
-#EXTINF:-1 tvg-id="TVSpravedlivaBulgariya.bg" tvg-name="TV Spravedliva Bulgariya" tvg-chno="2595" tvg-logo="https://tvsb.bg/theme/images/logo.png" group-title="ערוצים בינלאומיים",TV Spravedliva Bulgariya
+#EXTINF:-1 tvg-id="TVSpravedlivaBulgariya.bg" tvg-name="TV Spravedliva Bulgariya" tvg-chno="2594" tvg-logo="https://tvsb.bg/theme/images/logo.png" group-title="ערוצים בינלאומיים",TV Spravedliva Bulgariya
 https://tv.tvsb.bg/112.m3u8
-#EXTINF:-1 tvg-id="CBNTV.vg" tvg-name="CBN TV" tvg-chno="2596" tvg-logo="https://i.imgur.com/SHBAblV.png" group-title="ערוצים בינלאומיים",CBN TV
+#EXTINF:-1 tvg-id="CBNTV.vg" tvg-name="CBN TV" tvg-chno="2595" tvg-logo="https://i.imgur.com/SHBAblV.png" group-title="ערוצים בינלאומיים",CBN TV
 https://5790d294af2dc.streamlock.net/CBNVI/CBNVI/playlist.m3u8
-#EXTINF:-1 tvg-id="InooroTV.ke" tvg-name="Inooro TV" tvg-chno="2597" tvg-logo="https://i.imgur.com/5qFJtmo.png" group-title="ערוצים בינלאומיים",Inooro TV
+#EXTINF:-1 tvg-id="InooroTV.ke" tvg-name="Inooro TV" tvg-chno="2596" tvg-logo="https://i.imgur.com/5qFJtmo.png" group-title="ערוצים בינלאומיים",Inooro TV
 https://live-onesignal.royalmedia.co.ke/live/T-MxRsFebq6zx7k2QFMbLw.m3u8
-#EXTINF:-1 tvg-id="PointeTV.ag" tvg-name="Pointe TV" tvg-chno="2598" tvg-logo="https://i.ibb.co/7tyD2kr/IMG-20240421-154850.jpg" group-title="ערוצים בינלאומיים",Pointe TV
+#EXTINF:-1 tvg-id="PointeTV.ag" tvg-name="Pointe TV" tvg-chno="2597" tvg-logo="https://i.ibb.co/7tyD2kr/IMG-20240421-154850.jpg" group-title="ערוצים בינלאומיים",Pointe TV
 https://tv.pointville.ag/hls/mystream.m3u8
-#EXTINF:-1 tvg-id="TVJ.jm" tvg-name="TVJ" tvg-chno="2599" tvg-logo="https://i.imgur.com/R4PoC3L.png" group-title="ערוצים בינלאומיים",TVJ
+#EXTINF:-1 tvg-id="TVJ.jm" tvg-name="TVJ" tvg-chno="2598" tvg-logo="https://i.imgur.com/R4PoC3L.png" group-title="ערוצים בינלאומיים",TVJ
 https://vod2live.univtec.com/manifest/a99a1804-dc83-411f-8c1c-b62f08cdfa59.m3u8
-#EXTINF:-1 tvg-id="ZNSTV.bs" tvg-name="ZNS-TV" tvg-chno="2600" tvg-logo="https://i.imgur.com/h6nC8fe.png" group-title="ערוצים בינלאומיים",ZNS-TV
+#EXTINF:-1 tvg-id="ZNSTV.bs" tvg-name="ZNS-TV" tvg-chno="2599" tvg-logo="https://i.imgur.com/h6nC8fe.png" group-title="ערוצים בינלאומיים",ZNS-TV
 https://zns-edge1.streamcomedia.cloud/znstv13/zns1080p_stream/playlist.m3u8
-#EXTINF:-1 tvg-id="KalacTV.gn" tvg-name="Kalac TV" tvg-chno="2601" tvg-logo="https://i.imgur.com/FgKJiHZ.png" group-title="ערוצים בינלאומיים",Kalac TV
+#EXTINF:-1 tvg-id="KalacTV.gn" tvg-name="Kalac TV" tvg-chno="2600" tvg-logo="https://i.imgur.com/FgKJiHZ.png" group-title="ערוצים בינלאומיים",Kalac TV
 https://edge13.vedge.infomaniak.com/livecast/ik:kalactv/chunklist_w280736538.m3u8
-#EXTINF:-1 tvg-id="RTB.bf" tvg-name="RTB" tvg-chno="2602" tvg-logo="https://i.imgur.com/BFfLV0y.png" group-title="ערוצים בינלאומיים",RTB
+#EXTINF:-1 tvg-id="RTB.bf" tvg-name="RTB" tvg-chno="2601" tvg-logo="https://i.imgur.com/BFfLV0y.png" group-title="ערוצים בינלאומיים",RTB
 https://edge12.vedge.infomaniak.com/livecast/ik:rtblive1_8/manifest.m3u8
-#EXTINF:-1 tvg-id="RTNBTV.bi" tvg-name="RTNB TV" tvg-chno="2603" tvg-logo="https://i.imgur.com/xfR5P9F.png" group-title="ערוצים בינלאומיים",RTNB TV
+#EXTINF:-1 tvg-id="RTNBTV.bi" tvg-name="RTNB TV" tvg-chno="2602" tvg-logo="https://i.imgur.com/xfR5P9F.png" group-title="ערוצים בינלאומיים",RTNB TV
 https://tv1-stream.rtnb.bi/hls/master.m3u8
-#EXTINF:-1 tvg-id="TelePeyi.gf" tvg-name="Tele Peyi" tvg-chno="2604" tvg-logo="https://i.imgur.com/LJ9sXaB.png" group-title="ערוצים בינלאומיים",Tele Peyi
+#EXTINF:-1 tvg-id="TelePeyi.gf" tvg-name="Tele Peyi" tvg-chno="2603" tvg-logo="https://i.imgur.com/LJ9sXaB.png" group-title="ערוצים בינלאומיים",Tele Peyi
 https://edge20.vedge.infomaniak.com/livecast/ik:33dm06/manifest.m3u8
-#EXTINF:-1 tvg-id="TeleTchad.td" tvg-name="Tele Tchad" tvg-chno="2605" tvg-logo="https://i.imgur.com/udSzfHD.png" group-title="ערוצים בינלאומיים",Tele Tchad
+#EXTINF:-1 tvg-id="TeleTchad.td" tvg-name="Tele Tchad" tvg-chno="2604" tvg-logo="https://i.imgur.com/udSzfHD.png" group-title="ערוצים בינלאומיים",Tele Tchad
 https://strhlslb01.streamakaci.tv/str_tchad_tchad/str_tchad_multi/playlist.m3u8
-#EXTINF:-1 tvg-id="TelevisionEspoir47.tg" tvg-name="Television Espoir 47" tvg-chno="2606" tvg-logo="https://i.imgur.com/utBh0xL.png" group-title="ערוצים בינלאומיים",Television Espoir 47
+#EXTINF:-1 tvg-id="TelevisionEspoir47.tg" tvg-name="Television Espoir 47" tvg-chno="2605" tvg-logo="https://i.imgur.com/utBh0xL.png" group-title="ערוצים בינלאומיים",Television Espoir 47
 https://cdn140m.panaccess.com/HLS/Espoir47/index.m3u8
-#EXTINF:-1 tvg-id="TVMonaco.mc" tvg-name="TV Monaco" tvg-chno="2607" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/4/4b/TVMonaco_2023.svg" group-title="ערוצים בינלאומיים",TV Monaco
+#EXTINF:-1 tvg-id="TVMonaco.mc" tvg-name="TV Monaco" tvg-chno="2606" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/4/4b/TVMonaco_2023.svg" group-title="ערוצים בינלאומיים",TV Monaco
 https://production-fast-mcrtv.content.okast.tv/channels/2116dc08-1959-465d-857f-3619daefb66b/b702b2b9-aebd-436c-be69-2118f56f3d86/master.m3u8
-#EXTINF:-1 tvg-id="ZitataTV.mq" tvg-name="Zitata TV" tvg-chno="2608" tvg-logo="https://i.imgur.com/KJmefse.png" group-title="ערוצים בינלאומיים",Zitata TV
+#EXTINF:-1 tvg-id="ZitataTV.mq" tvg-name="Zitata TV" tvg-chno="2607" tvg-logo="https://i.imgur.com/KJmefse.png" group-title="ערוצים בינלאומיים",Zitata TV
 https://live.zitata.tv/direct-hls/playlist.m3u8
-#EXTINF:-1 tvg-id="TVM.mz" tvg-name="TVM" tvg-chno="2609" tvg-logo="https://i.imgur.com/Vqv7R3Y.png" group-title="ערוצים בינלאומיים",TVM
+#EXTINF:-1 tvg-id="TVM.mz" tvg-name="TVM" tvg-chno="2608" tvg-logo="https://i.imgur.com/Vqv7R3Y.png" group-title="ערוצים בינלאומיים",TVM
 https://stream.tvm.co.mz/hls/tvm/playlist.m3u8
-#EXTINF:-1 tvg-id="AndorraTV.ad" tvg-name="Andorra TV" tvg-chno="2610" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/3/32/Logo_Andorra_Televisi%C3%B3.png" group-title="ערוצים בינלאומיים",Andorra TV
+#EXTINF:-1 tvg-id="AndorraTV.ad" tvg-name="Andorra TV" tvg-chno="2609" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/3/32/Logo_Andorra_Televisi%C3%B3.png" group-title="ערוצים בינלאומיים",Andorra TV
 https://livesg1.rtva.hiway.media/11a6d6f4-ee13-47c7-9c27-7313cf5424e2/manifest.m3u8
-#EXTINF:-1 tvg-id="DodomaTV.tz" tvg-name="Dodoma TV" tvg-chno="2611" tvg-logo="https://i.imgur.com/bLq9eFa.png" group-title="ערוצים בינלאומיים",Dodoma TV
+#EXTINF:-1 tvg-id="DodomaTV.tz" tvg-name="Dodoma TV" tvg-chno="2610" tvg-logo="https://i.imgur.com/bLq9eFa.png" group-title="ערוצים בינלאומיים",Dodoma TV
 https://goliveafrica.media:9998/live/625965017ed69/index.m3u8
-#EXTINF:-1 tvg-id="ETV.ee" tvg-name="ETV" tvg-chno="2612" tvg-logo="https://i.imgur.com/5URjPgG.png" group-title="ערוצים בינלאומיים",ETV
+#EXTINF:-1 tvg-id="ETV.ee" tvg-name="ETV" tvg-chno="2611" tvg-logo="https://i.imgur.com/5URjPgG.png" group-title="ערוצים בינלאומיים",ETV
 https://sb.err.ee/live/etv.m3u8
-#EXTINF:-1 tvg-id="KoreanCentralTelevision.kp" tvg-name="Korean Central Television" tvg-chno="2613" tvg-logo="https://i.imgur.com/p02AEOF.png" group-title="ערוצים בינלאומיים",Korean Central Television
+#EXTINF:-1 tvg-id="KoreanCentralTelevision.kp" tvg-name="Korean Central Television" tvg-chno="2612" tvg-logo="https://i.imgur.com/p02AEOF.png" group-title="ערוצים בינלאומיים",Korean Central Television
 https://live.koryocdn.org/kctv/index.m3u8
-#EXTINF:-1 tvg-id="MWD.mm" tvg-name="MWD" tvg-chno="2614" tvg-logo="https://i.imgur.com/zyTQG9F.png" group-title="ערוצים בינלאומיים",MWD
+#EXTINF:-1 tvg-id="MWD.mm" tvg-name="MWD" tvg-chno="2613" tvg-logo="https://i.imgur.com/zyTQG9F.png" group-title="ערוצים בינלאומיים",MWD
 http://203.81.84.130/hls/mwd/index.m3u8
-#EXTINF:-1 tvg-id="NosTVBonaire2.bq" tvg-name="NosTV Bonaire 2" tvg-chno="2615" tvg-logo="https://i.imgur.com/9pQdGw1.png" group-title="ערוצים בינלאומיים",NosTV Bonaire 2
+#EXTINF:-1 tvg-id="NosTVBonaire2.bq" tvg-name="NosTV Bonaire 2" tvg-chno="2614" tvg-logo="https://i.imgur.com/9pQdGw1.png" group-title="ערוצים בינלאומיים",NosTV Bonaire 2
 https://stream2.nostvbonaire.com/hls/0/stream.m3u8
-#EXTINF:-1 tvg-id="One.mt" tvg-name="One" tvg-chno="2616" tvg-logo="https://i.imgur.com/UPlfzFx.png" group-title="ערוצים בינלאומיים",One
+#EXTINF:-1 tvg-id="One.mt" tvg-name="One" tvg-chno="2615" tvg-logo="https://i.imgur.com/UPlfzFx.png" group-title="ערוצים בינלאומיים",One
 https://2-fss-1.streamhoster.com/pl_148/201830-1293592-1/playlist.m3u8
-#EXTINF:-1 tvg-id="Telearuba.aw" tvg-name="Telearuba" tvg-chno="2617" tvg-logo="https://i.imgur.com/PY3P0aM.png" group-title="ערוצים בינלאומיים",Telearuba
+#EXTINF:-1 tvg-id="Telearuba.aw" tvg-name="Telearuba" tvg-chno="2616" tvg-logo="https://i.imgur.com/PY3P0aM.png" group-title="ערוצים בינלאומיים",Telearuba
 https://cdn01.setar.aw/Telearuba/telearuba/playlist.m3u8
-#EXTINF:-1 tvg-id="TVDirect13.cw" tvg-name="TV Direct 13" tvg-chno="2618" tvg-logo="https://i.imgur.com/T2IbQqv.png" group-title="ערוצים בינלאומיים",TV Direct 13
+#EXTINF:-1 tvg-id="TVDirect13.cw" tvg-name="TV Direct 13" tvg-chno="2617" tvg-logo="https://i.imgur.com/T2IbQqv.png" group-title="ערוצים בינלאומיים",TV Direct 13
 https://oqgdrog4d4rm-hls-live.5centscdn.com/tvdirect/f7b44cfafd5c52223d5498196c8a2e7b.sdp/playlist.m3u8
-#EXTINF:-1 tvg-id="TVVeseljakGolicaHD.si" tvg-name="TV Veseljak Golica HD" tvg-chno="2619" tvg-logo="https://i.imgur.com/49VrbSW.png" group-title="ערוצים בינלאומיים",TV Veseljak Golica HD
+#EXTINF:-1 tvg-id="TVVeseljakGolicaHD.si" tvg-name="TV Veseljak Golica HD" tvg-chno="2618" tvg-logo="https://i.imgur.com/49VrbSW.png" group-title="ערוצים בינלאומיים",TV Veseljak Golica HD
 https://radio.serv.si/VeseljakGolicaTV/tracks-v1a1/mono.m3u8
-#EXTINF:-1 tvg-id="AFTV.us" tvg-name="AFTV" tvg-chno="2620" tvg-logo="https://i.imgur.com/UoiUwFj.png" group-title="ערוצים בינלאומיים",AFTV
+#EXTINF:-1 tvg-id="AFTV.us" tvg-name="AFTV" tvg-chno="2619" tvg-logo="https://i.imgur.com/UoiUwFj.png" group-title="ערוצים בינלאומיים",AFTV
 https://livestream.telvue.com/accframingham1/f7b44cfafd5c52223d5498196c8a2e7b.sdp/playlist.m3u8
-#EXTINF:-1 tvg-id="SparkTV.uk" tvg-name="Spark TV" tvg-chno="2621" tvg-logo="https://i.imgur.com/svc98Kg.png" group-title="ערוצים בינלאומיים",Spark TV
+#EXTINF:-1 tvg-id="SparkTV.uk" tvg-name="Spark TV" tvg-chno="2620" tvg-logo="https://i.imgur.com/svc98Kg.png" group-title="ערוצים בינלאומיים",Spark TV
 https://candlelightmedia-sparklightlove-4-us.roku.wurl.tv/playlist.m3u8
-#EXTINF:-1 tvg-id="CannesLerinsTV.fr" tvg-name="Cannes Lerins TV" tvg-chno="2622" tvg-logo="https://i.imgur.com/atlgnum.png" group-title="ערוצים בינלאומיים",Cannes Lerins TV
+#EXTINF:-1 tvg-id="CannesLerinsTV.fr" tvg-name="Cannes Lerins TV" tvg-chno="2621" tvg-logo="https://i.imgur.com/atlgnum.png" group-title="ערוצים בינלאומיים",Cannes Lerins TV
 https://vdo2.pro-fhi.net:3628/live/uppodsfqlive.m3u8
-#EXTINF:-1 tvg-id="AllgauTV.de" tvg-name="Allgau TV" tvg-chno="2623" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Allg%C3%A4u_TV_Logo_%282021%29.svg/960px-Allg%C3%A4u_TV_Logo_%282021%29.svg.png" group-title="ערוצים בינלאומיים",Allgau TV
+#EXTINF:-1 tvg-id="AllgauTV.de" tvg-name="Allgau TV" tvg-chno="2622" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Allg%C3%A4u_TV_Logo_%282021%29.svg/960px-Allg%C3%A4u_TV_Logo_%282021%29.svg.png" group-title="ערוצים בינלאומיים",Allgau TV
 https://stream01.welocal.stream/stream/fhd-allgaeutv_25679/ngrp:stream_all/playlist.m3u8
-#EXTINF:-1 tvg-id="CanalSanRoque.es" tvg-name="Canal San Roque" tvg-chno="2624" tvg-logo="https://i.imgur.com/SN9kFKh.png" group-title="ערוצים בינלאומיים",Canal San Roque
+#EXTINF:-1 tvg-id="CanalSanRoque.es" tvg-name="Canal San Roque" tvg-chno="2623" tvg-logo="https://i.imgur.com/SN9kFKh.png" group-title="ערוצים בינלאומיים",Canal San Roque
 https://cdnlivevlc.codev8.net/aytosanroquelive/smil:channel1.smil/playlist.m3u8
-#EXTINF:-1 tvg-id="BergamoTV.it" tvg-name="Bergamo TV" tvg-chno="2625" tvg-logo="https://i.imgur.com/Np3RaKv.png" group-title="ערוצים בינלאומיים",Bergamo TV
+#EXTINF:-1 tvg-id="BergamoTV.it" tvg-name="Bergamo TV" tvg-chno="2624" tvg-logo="https://i.imgur.com/Np3RaKv.png" group-title="ערוצים בינלאומיים",Bergamo TV
 https://db142859fd5541b09de25d6507f1f2d3.msvdn.net/live/S17501676/oIxAsgEEA46M/playlist_dvr.m3u8
-#EXTINF:-1 tvg-id="NVKSakha.ru" tvg-name="NVK Sakha" tvg-chno="2626" tvg-logo="https://i.imgur.com/LwXNUhf.png" group-title="ערוצים בינלאומיים",NVK Sakha
+#EXTINF:-1 tvg-id="NVKSakha.ru" tvg-name="NVK Sakha" tvg-chno="2625" tvg-logo="https://i.imgur.com/LwXNUhf.png" group-title="ערוצים בינלאומיים",NVK Sakha
 https://live-saha.cdnvideo.ru/saha/saha/playlist.m3u8
-#EXTINF:-1 tvg-id="Dacha.ua" tvg-name="Dacha" tvg-chno="2627" tvg-logo="https://i.imgur.com/xq6p9BZ.png" group-title="ערוצים בינלאומיים",Dacha
+#EXTINF:-1 tvg-id="Dacha.ua" tvg-name="Dacha" tvg-chno="2626" tvg-logo="https://i.imgur.com/xq6p9BZ.png" group-title="ערוצים בינלאומיים",Dacha
 https://dash2.antik.sk/live/test_dacha_tv_atktv/playlist.m3u8
-#EXTINF:-1 tvg-id="AzStarTV.ca" tvg-name="Az Star TV" tvg-chno="2628" tvg-logo="https://i.imgur.com/di3XX5L.png" group-title="ערוצים בינלאומיים",Az Star TV
+#EXTINF:-1 tvg-id="AzStarTV.ca" tvg-name="Az Star TV" tvg-chno="2627" tvg-logo="https://i.imgur.com/di3XX5L.png" group-title="ערוצים בינלאומיים",Az Star TV
 https://live.livestreamtv.ca/azstar/amlst:azstar/playlist.m3u8
-#EXTINF:-1 tvg-id="Channel44.au" tvg-name="Channel 44" tvg-chno="2629" tvg-logo="https://i.imgur.com/P2wUGh9.png" group-title="ערוצים בינלאומיים",Channel 44
+#EXTINF:-1 tvg-id="Channel44.au" tvg-name="Channel 44" tvg-chno="2628" tvg-logo="https://i.imgur.com/P2wUGh9.png" group-title="ערוצים בינלאומיים",Channel 44
 https://d1k6kax80wecy5.cloudfront.net/WFqZJc/index.m3u8
-#EXTINF:-1 tvg-id="TVBRICSEnglish.in" tvg-name="TV BRICS English" tvg-chno="2630" tvg-logo="https://i.imgur.com/8rKNuS6.png" group-title="ערוצים בינלאומיים",TV BRICS English
+#EXTINF:-1 tvg-id="TVBRICSEnglish.in" tvg-name="TV BRICS English" tvg-chno="2629" tvg-logo="https://i.imgur.com/8rKNuS6.png" group-title="ערוצים בינלאומיים",TV BRICS English
 https://engbrics.mediacdn.ru/cdn/brics/english/playlist.m3u8
-#EXTINF:-1 tvg-id="HLDHDTV.kr" tvg-name="HLDH-DTV" tvg-chno="2631" tvg-logo="https://i.imgur.com/Srsw4Mi.png" group-title="ערוצים בינלאומיים",HLDH-DTV
+#EXTINF:-1 tvg-id="HLDHDTV.kr" tvg-name="HLDH-DTV" tvg-chno="2630" tvg-logo="https://i.imgur.com/Srsw4Mi.png" group-title="ערוצים בינלאומיים",HLDH-DTV
 https://vod.ikbc.co.kr/KBCTV/tv/playlist.m3u8
-#EXTINF:-1 tvg-id="TVBRICSChinese.cn" tvg-name="TV BRICS Chinese" tvg-chno="2632" tvg-logo="https://i.imgur.com/896132Z.png" group-title="ערוצים בינלאומיים",TV BRICS Chinese
+#EXTINF:-1 tvg-id="TVBRICSChinese.cn" tvg-name="TV BRICS Chinese" tvg-chno="2631" tvg-logo="https://i.imgur.com/896132Z.png" group-title="ערוצים בינלאומיים",TV BRICS Chinese
 https://chibrics.mediacdn.ru/cdn/brics/chinese/playlist.m3u8
-#EXTINF:-1 tvg-id="BoasNovas.br" tvg-name="Boas Novas" tvg-chno="2633" tvg-logo="https://i.imgur.com/ZqhizdP.png" group-title="ערוצים בינלאומיים",Boas Novas
+#EXTINF:-1 tvg-id="BoasNovas.br" tvg-name="Boas Novas" tvg-chno="2632" tvg-logo="https://i.imgur.com/ZqhizdP.png" group-title="ערוצים בינלאומיים",Boas Novas
 https://cdn.jmvstream.com/w/LVW-9375/LVW9375_6i0wPBCHYc/playlist.m3u8
-#EXTINF:-1 tvg-id="B15Fresnillo.mx" tvg-name="B15 Fresnillo" tvg-chno="2634" tvg-logo="https://i.imgur.com/kaUhEQy.png" group-title="ערוצים בינלאומיים",B15 Fresnillo
+#EXTINF:-1 tvg-id="B15Fresnillo.mx" tvg-name="B15 Fresnillo" tvg-chno="2633" tvg-logo="https://i.imgur.com/kaUhEQy.png" group-title="ערוצים בינלאומיים",B15 Fresnillo
 https://s5.mexside.net:1936/lsac/lsac/playlist.m3u8
-#EXTINF:-1 tvg-id="Canal2Misiones.ar" tvg-name="Canal 2 Misiones" tvg-chno="2635" tvg-logo="https://i.imgur.com/YqTNXDf.png" group-title="ערוצים בינלאומיים",Canal 2 Misiones
+#EXTINF:-1 tvg-id="Canal2Misiones.ar" tvg-name="Canal 2 Misiones" tvg-chno="2634" tvg-logo="https://i.imgur.com/YqTNXDf.png" group-title="ערוצים בינלאומיים",Canal 2 Misiones
 https://nd106.republicaservers.com:4433/hls/canal2misioness/index.m3u8
-#EXTINF:-1 tvg-id="SICReplay.pt" tvg-name="SIC Replay" tvg-chno="2636" tvg-logo="https://i.imgur.com/fj84mXz.png" group-title="ערוצים בינלאומיים",SIC Replay
+#EXTINF:-1 tvg-id="SICReplay.pt" tvg-name="SIC Replay" tvg-chno="2635" tvg-logo="https://i.imgur.com/fj84mXz.png" group-title="ערוצים בינלאומיים",SIC Replay
 https://production-fast-sic.content.okast.tv/fa2e8c4385712f9a7dce4ff2dcebac2e/channels/d9070446-8448-455e-8075-773b1ba12562/d47eae0f-ad77-414a-9a1d-2a6628ba18c3/media_.m3u8
-#EXTINF:-1 tvg-id="1TwenteTV.nl" tvg-name="1Twente TV" tvg-chno="2637" tvg-logo="https://i.imgur.com/ftiuNK3.png" group-title="ערוצים בינלאומיים",1Twente TV
+#EXTINF:-1 tvg-id="1TwenteTV.nl" tvg-name="1Twente TV" tvg-chno="2636" tvg-logo="https://i.imgur.com/ftiuNK3.png" group-title="ערוצים בינלאומיים",1Twente TV
 https://ms7.mx-cd.net/dtv-11/198-989148/1Twente_TV.smil/chunklist_w954512639_b4292608_slNLD.m3u8
-#EXTINF:-1 tvg-id="ATV.be" tvg-name="ATV" tvg-chno="2638" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/ATV_Belgium_logo.svg/960px-ATV_Belgium_logo.svg.png" group-title="ערוצים בינלאומיים",ATV
+#EXTINF:-1 tvg-id="ATV.be" tvg-name="ATV" tvg-chno="2637" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/ATV_Belgium_logo.svg/960px-ATV_Belgium_logo.svg.png" group-title="ערוצים בינלאומיים",ATV
 https://live.zendzend.com/mpegts/29375_107244/media_mpegts_0.m3u8
-#EXTINF:-1 tvg-id="CanalAlphaJura.ch" tvg-name="Canal Alpha Jura" tvg-chno="2639" tvg-logo="https://i.imgur.com/eQ8xHK9.jpg" group-title="ערוצים בינלאומיים",Canal Alpha Jura
+#EXTINF:-1 tvg-id="CanalAlphaJura.ch" tvg-name="Canal Alpha Jura" tvg-chno="2638" tvg-logo="https://i.imgur.com/eQ8xHK9.jpg" group-title="ערוצים בינלאומיים",Canal Alpha Jura
 https://canalalphaju.vedge.infomaniak.com/livecast/ik:canalalphaju/playlist.m3u8
-#EXTINF:-1 tvg-id="Okto.at" tvg-name="Okto" tvg-chno="2640" tvg-logo="https://i.imgur.com/9XfhgbS.png" group-title="ערוצים בינלאומיים",Okto
+#EXTINF:-1 tvg-id="Okto.at" tvg-name="Okto" tvg-chno="2639" tvg-logo="https://i.imgur.com/9XfhgbS.png" group-title="ערוצים בינלאומיים",Okto
 https://cdn3.wowza.com/1/MHFtazJReW5rOFhP/N2NWNDZ2/hls/live/playlist.m3u8
-#EXTINF:-1 tvg-id="RedCarpetTVInternational.pl" tvg-name="Red Carpet TV International" tvg-chno="2641" tvg-logo="https://i.imgur.com/xf7UXCA.png" group-title="ערוצים בינלאומיים",Red Carpet TV International
+#EXTINF:-1 tvg-id="RedCarpetTVInternational.pl" tvg-name="Red Carpet TV International" tvg-chno="2640" tvg-logo="https://i.imgur.com/xf7UXCA.png" group-title="ערוצים בינלאומיים",Red Carpet TV International
 https://fast-rakuten.okast.tv/fa2e8c4385712f9a9076eaf728c751de/channels/1a6ecfaa-40c6-41b8-8634-595c424f856e/21f67fd1-4d21-43ba-8ad8-3afac9982c25/master.m3u8
-#EXTINF:-1 tvg-id="CenterTV.gr" tvg-name="Center TV" tvg-chno="2642" tvg-logo="https://i.imgur.com/52JW71Q.png" group-title="ערוצים בינלאומיים",Center TV
+#EXTINF:-1 tvg-id="CenterTV.gr" tvg-name="Center TV" tvg-chno="2641" tvg-logo="https://i.imgur.com/52JW71Q.png" group-title="ערוצים בינלאומיים",Center TV
 https://eu1.streams.gr:8081/centertv/index.m3u8
-#EXTINF:-1 tvg-id="Frasier.se" tvg-name="Frasier" tvg-chno="2643" tvg-logo="https://images.pluto.tv/channels/6400c095498393000878a634/colorLogoPNG.png" group-title="ערוצים בינלאומיים",Frasier
+#EXTINF:-1 tvg-id="Frasier.se" tvg-name="Frasier" tvg-chno="2642" tvg-logo="https://images.pluto.tv/channels/6400c095498393000878a634/colorLogoPNG.png" group-title="ערוצים בינלאומיים",Frasier
 https://jmp2.uk/plu-6400c095498393000878a634.m3u8
-#EXTINF:-1 tvg-id="TV2Bornholm.dk" tvg-name="TV 2/Bornholm" tvg-chno="2644" tvg-logo="https://i.imgur.com/cEOpXU6.png" group-title="ערוצים בינלאומיים",TV 2/Bornholm
+#EXTINF:-1 tvg-id="TV2Bornholm.dk" tvg-name="TV 2/Bornholm" tvg-chno="2643" tvg-logo="https://i.imgur.com/cEOpXU6.png" group-title="ערוצים בינלאומיים",TV 2/Bornholm
 https://livecdn.euw1-0005.jwplive.com/live/sites/J42OBHtp/media/vvNWt4O9/live.isml/.m3u8
-#EXTINF:-1 tvg-id="MTV3.fi" tvg-name="MTV3" tvg-chno="2645" tvg-logo="https://i.imgur.com/C5rQbBM.png" group-title="ערוצים בינלאומיים",MTV3
+#EXTINF:-1 tvg-id="MTV3.fi" tvg-name="MTV3" tvg-chno="2644" tvg-logo="https://i.imgur.com/C5rQbBM.png" group-title="ערוצים בינלאומיים",MTV3
 https://live-fi.tvkaista.net/mtv3/live.m3u8
-#EXTINF:-1 tvg-id="ElektrikaTV.cz" tvg-name="Elektrika TV" tvg-chno="2646" tvg-logo="https://i.imgur.com/OLd5od5.png" group-title="ערוצים בינלאומיים",Elektrika TV
+#EXTINF:-1 tvg-id="ElektrikaTV.cz" tvg-name="Elektrika TV" tvg-chno="2645" tvg-logo="https://i.imgur.com/OLd5od5.png" group-title="ערוצים בינלאומיים",Elektrika TV
 https://rtmp.elektrika.cz/live/myStream.sdp/playlist.m3u8
-#EXTINF:-1 tvg-id="MetropolaTV.ro" tvg-name="Metropola TV" tvg-chno="2647" tvg-logo="https://i.imgur.com/Gzq05v8.png" group-title="ערוצים בינלאומיים",Metropola TV
+#EXTINF:-1 tvg-id="MetropolaTV.ro" tvg-name="Metropola TV" tvg-chno="2646" tvg-logo="https://i.imgur.com/Gzq05v8.png" group-title="ערוצים בינלאומיים",Metropola TV
 https://www.livemetropolatv.ro/MetropolaTV/Metro/playlist.m3u8
-#EXTINF:-1 tvg-id="SzolnokTV.hu" tvg-name="Szolnok TV" tvg-chno="2648" tvg-logo="https://i.imgur.com/Eiab9MP.png" group-title="ערוצים בינלאומיים",Szolnok TV
+#EXTINF:-1 tvg-id="SzolnokTV.hu" tvg-name="Szolnok TV" tvg-chno="2647" tvg-logo="https://i.imgur.com/Eiab9MP.png" group-title="ערוצים בינלאומיים",Szolnok TV
 https://cloudfront44.lexanetwork.com:1344/relay01/livestream004.sdp/playlist.m3u8
-#EXTINF:-1 tvg-id="Canal2Quellon.cl" tvg-name="Canal 2 Quellon" tvg-chno="2649" tvg-logo="https://i.imgur.com/MOwLCwT.png" group-title="ערוצים בינלאומיים",Canal 2 Quellon
+#EXTINF:-1 tvg-id="Canal2Quellon.cl" tvg-name="Canal 2 Quellon" tvg-chno="2648" tvg-logo="https://i.imgur.com/MOwLCwT.png" group-title="ערוצים בינלאומיים",Canal 2 Quellon
 https://pantera1-100gb-cl-movistar.dps.live/tvquellon/tvquellon.smil/playlist.m3u8
-#EXTINF:-1 tvg-id="CanalRCN.co" tvg-name="Canal RCN" tvg-chno="2650" tvg-logo="https://i.imgur.com/5PhTaHp.png" group-title="ערוצים בינלאומיים",Canal RCN
+#EXTINF:-1 tvg-id="CanalRCN.co" tvg-name="Canal RCN" tvg-chno="2649" tvg-logo="https://i.imgur.com/5PhTaHp.png" group-title="ערוצים בינלאומיים",Canal RCN
 https://barinaslive1.boldmss.com/RCN/RCN.isml/RCN.m3u8
-#EXTINF:-1 tvg-id="TVenLinea.pe" tvg-name="TVenLinea" tvg-chno="2651" tvg-logo="https://i.imgur.com/txV8lw0.png" group-title="ערוצים בינלאומיים",TVenLinea
+#EXTINF:-1 tvg-id="TVenLinea.pe" tvg-name="TVenLinea" tvg-chno="2650" tvg-logo="https://i.imgur.com/txV8lw0.png" group-title="ערוצים בינלאומיים",TVenLinea
 https://srt.tvdatta.com/tvenlinea/index.m3u8
-#EXTINF:-1 tvg-id="SMNI.ph" tvg-name="SMNI" tvg-chno="2652" tvg-logo="https://i.imgur.com/9QhVnqY.jpg" group-title="ערוצים בינלאומיים",SMNI
+#EXTINF:-1 tvg-id="SMNI.ph" tvg-name="SMNI" tvg-chno="2651" tvg-logo="https://i.imgur.com/9QhVnqY.jpg" group-title="ערוצים בינלאומיים",SMNI
 https://stream.kdlc.click/hls/0/stream.m3u8
-#EXTINF:-1 tvg-id="GarudaTV.id" tvg-name="Garuda TV" tvg-chno="2653" tvg-logo="https://i.imgur.com/sXsAcZ3.png" group-title="ערוצים בינלאומיים",Garuda TV
+#EXTINF:-1 tvg-id="GarudaTV.id" tvg-name="Garuda TV" tvg-chno="2652" tvg-logo="https://i.imgur.com/sXsAcZ3.png" group-title="ערוצים בינלאומיים",Garuda TV
 https://hgmtv.com:19360/garudatvlivestreaming/garudatvlivestreaming.m3u8
-#EXTINF:-1 tvg-id="NBT2HD.th" tvg-name="NBT 2 HD" tvg-chno="2654" tvg-logo="https://i.imgur.com/IJh6SHb.png" group-title="ערוצים בינלאומיים",NBT 2 HD
+#EXTINF:-1 tvg-id="NBT2HD.th" tvg-name="NBT 2 HD" tvg-chno="2653" tvg-logo="https://i.imgur.com/IJh6SHb.png" group-title="ערוצים בינלאומיים",NBT 2 HD
 https://cdn-edge.iiptvcdn.com/live_event/smil:f180-054a-38d7-ce66-f7cf.smil/playlist.m3u8
-#EXTINF:-1 tvg-id="CanThoTV.vn" tvg-name="Can Tho TV" tvg-chno="2655" tvg-logo="https://i.ibb.co/MDhNH26J/cantho1-2025.png" group-title="ערוצים בינלאומיים",Can Tho TV
+#EXTINF:-1 tvg-id="CanThoTV.vn" tvg-name="Can Tho TV" tvg-chno="2654" tvg-logo="https://i.ibb.co/MDhNH26J/cantho1-2025.png" group-title="ערוצים בינלאומיים",Can Tho TV
 https://live.canthotv.vn/live/tv/chunklist.m3u8
-#EXTINF:-1 tvg-id="PraiseTV.pk" tvg-name="Praise TV" tvg-chno="2656" tvg-logo="https://i.imgur.com/T9fIdLs.png" group-title="ערוצים בינלאומיים",Praise TV
+#EXTINF:-1 tvg-id="PraiseTV.pk" tvg-name="Praise TV" tvg-chno="2655" tvg-logo="https://i.imgur.com/T9fIdLs.png" group-title="ערוצים בינלאומיים",Praise TV
 https://livecdn.live247stream.com/praise/tv/playlist.m3u8
-#EXTINF:-1 tvg-id="TBNNejatTV.ir" tvg-name="TBN Nejat TV" tvg-chno="2657" tvg-logo="https://i.imgur.com/e4WffQA.png" group-title="ערוצים בינלאומיים",TBN Nejat TV
+#EXTINF:-1 tvg-id="TBNNejatTV.ir" tvg-name="TBN Nejat TV" tvg-chno="2656" tvg-logo="https://i.imgur.com/e4WffQA.png" group-title="ערוצים בינלאומיים",TBN Nejat TV
 https://hls.nejat.live/hls/stream.m3u8
-#EXTINF:-1 tvg-id="CapeTownTV.za" tvg-name="Cape Town TV" tvg-chno="2658" tvg-logo="https://i.imgur.com/Y8FK1Kk.png" group-title="ערוצים בינלאומיים",Cape Town TV
+#EXTINF:-1 tvg-id="CapeTownTV.za" tvg-name="Cape Town TV" tvg-chno="2657" tvg-logo="https://i.imgur.com/Y8FK1Kk.png" group-title="ערוצים בינלאומיים",Cape Town TV
 https://cdn.freevisiontv.co.za/sttv/smil:ctv.stream.smil/playlist.m3u8
-#EXTINF:-1 tvg-id="WazobiaMaxTVNigeria.ng" tvg-name="Wazobia Max TV Nigeria" tvg-chno="2659" tvg-logo="https://i.imgur.com/IeioxBp.png" group-title="ערוצים בינלאומיים",Wazobia Max TV Nigeria
+#EXTINF:-1 tvg-id="WazobiaMaxTVNigeria.ng" tvg-name="Wazobia Max TV Nigeria" tvg-chno="2658" tvg-logo="https://i.imgur.com/IeioxBp.png" group-title="ערוצים בינלאומיים",Wazobia Max TV Nigeria
 https://wazobia.live:8333/channel/wmax.m3u8
-#EXTINF:-1 tvg-id="AguilaTV.do" tvg-name="Aguila TV" tvg-chno="2660" tvg-logo="https://www.vivalivetv.com/public/files/shows/0/1/3770-294x165-FFFFFF.jpg" group-title="ערוצים בינלאומיים",Aguila TV
+#EXTINF:-1 tvg-id="AguilaTV.do" tvg-name="Aguila TV" tvg-chno="2659" tvg-logo="https://www.vivalivetv.com/public/files/shows/0/1/3770-294x165-FFFFFF.jpg" group-title="ערוצים בינלאומיים",Aguila TV
 https://fox.hostlagarto.com:8081/aguilatv/playlist.m3u8
-#EXTINF:-1 tvg-id="ELDEBER.bo" tvg-name="EL DEBER" tvg-chno="2661" tvg-logo="https://www.trabajopolis.bo/attachment/images/cw600_ch315_sw585_sh300_clfff_q100_id618378_8e3aaf1db590f10.jpeg" group-title="ערוצים בינלאומיים",EL DEBER
+#EXTINF:-1 tvg-id="ELDEBER.bo" tvg-name="EL DEBER" tvg-chno="2660" tvg-logo="https://www.trabajopolis.bo/attachment/images/cw600_ch315_sw585_sh300_clfff_q100_id618378_8e3aaf1db590f10.jpeg" group-title="ערוצים בינלאומיים",EL DEBER
 https://master.tucableip.com/eldebertv/index.m3u8
-#EXTINF:-1 tvg-id="RBTV.py" tvg-name="RB TV" tvg-chno="2662" tvg-logo="https://i.imgur.com/EMFAFX0.png" group-title="ערוצים בינלאומיים",RB TV
+#EXTINF:-1 tvg-id="RBTV.py" tvg-name="RB TV" tvg-chno="2661" tvg-logo="https://i.imgur.com/EMFAFX0.png" group-title="ערוצים בינלאומיים",RB TV
 https://video.hostingcaaguazu.com:19360/rbtv/rbtv.m3u8
-#EXTINF:-1 tvg-id="TurboTV.sk" tvg-name="Turbo TV" tvg-chno="2663" tvg-logo="https://i.imgur.com/HI7bCHq.png" group-title="ערוצים בינלאומיים",Turbo TV
+#EXTINF:-1 tvg-id="TurboTV.sk" tvg-name="Turbo TV" tvg-chno="2662" tvg-logo="https://i.imgur.com/HI7bCHq.png" group-title="ערוצים בינלאומיים",Turbo TV
 https://dash3.antik.sk/live/turbo_tv_avc_25p/playlist.m3u8
-#EXTINF:-1 tvg-id="SomosTV.ve" tvg-name="Somos TV" tvg-chno="2664" tvg-logo="https://i.imgur.com/jOroeJZ.png" group-title="ערוצים בינלאומיים",Somos TV
+#EXTINF:-1 tvg-id="SomosTV.ve" tvg-name="Somos TV" tvg-chno="2663" tvg-logo="https://i.imgur.com/jOroeJZ.png" group-title="ערוצים בינלאומיים",Somos TV
 https://vcp3.myplaytv.com/somostv/somostv/playlist.m3u8
-#EXTINF:-1 tvg-id="AustralTV.ec" tvg-name="Austral TV" tvg-chno="2665" tvg-logo="https://i.imgur.com/zgGuCYL.png" group-title="ערוצים בינלאומיים",Austral TV
+#EXTINF:-1 tvg-id="AustralTV.ec" tvg-name="Austral TV" tvg-chno="2664" tvg-logo="https://i.imgur.com/zgGuCYL.png" group-title="ערוצים בינלאומיים",Austral TV
 https://stmv3.voxtvhd.com.br/australtv/australtv/playlist.m3u8
-#EXTINF:-1 tvg-id="BestClasicosTV.cr" tvg-name="BestClasicosTV" tvg-chno="2666" tvg-logo="https://i.imgur.com/a/BRb8AVL.png" group-title="ערוצים בינלאומיים",BestClasicosTV
+#EXTINF:-1 tvg-id="BestClasicosTV.cr" tvg-name="BestClasicosTV" tvg-chno="2665" tvg-logo="https://i.imgur.com/a/BRb8AVL.png" group-title="ערוצים בינלאומיים",BestClasicosTV
 https://acceso.mediosdecostarica.com:3873/hybrid/play.m3u8
-#EXTINF:-1 tvg-id="BarbeTV.gt" tvg-name="Barbe TV" tvg-chno="2667" tvg-logo="https://i.imgur.com/2Sekew2.png" group-title="ערוצים בינלאומיים",Barbe TV
+#EXTINF:-1 tvg-id="BarbeTV.gt" tvg-name="Barbe TV" tvg-chno="2666" tvg-logo="https://i.imgur.com/2Sekew2.png" group-title="ערוצים בינלאומיים",Barbe TV
 https://cdn.streamhispanatv.net:3549/live/barbetvlive.m3u8
-#EXTINF:-1 tvg-id="Telemas.hn" tvg-name="Telemas" tvg-chno="2668" tvg-logo="https://i.imgur.com/eORs1yt.jpg" group-title="ערוצים בינלאומיים",Telemas
+#EXTINF:-1 tvg-id="Telemas.hn" tvg-name="Telemas" tvg-chno="2667" tvg-logo="https://i.imgur.com/eORs1yt.jpg" group-title="ערוצים בינלאומיים",Telemas
 https://s.emisoras.tv:8081/telemas/index.m3u8
-#EXTINF:-1 tvg-id="Belarus4.by" tvg-name="Belarus-4" tvg-chno="2669" tvg-logo="https://i.imgur.com/XNkQrMr.png" group-title="ערוצים בינלאומיים",Belarus-4
+#EXTINF:-1 tvg-id="Belarus4.by" tvg-name="Belarus-4" tvg-chno="2668" tvg-logo="https://i.imgur.com/XNkQrMr.png" group-title="ערוצים בינלאומיים",Belarus-4
 https://ngtrk.dc.beltelecom.by/vtv/bt4.stream/playlist.m3u8
-#EXTINF:-1 tvg-id="Moldova1.md" tvg-name="Moldova 1" tvg-chno="2670" tvg-logo="https://i.imgur.com/ZbQY56v.png" group-title="ערוצים בינלאומיים",Moldova 1
+#EXTINF:-1 tvg-id="Moldova1.md" tvg-name="Moldova 1" tvg-chno="2669" tvg-logo="https://i.imgur.com/ZbQY56v.png" group-title="ערוצים בינלאומיים",Moldova 1
 https://v0.trm.md/static/streaming-playlists/hls/9b79338b-1870-4cd7-91d4-0f6ce5cac7ca/master.m3u8
-#EXTINF:-1 tvg-id="MegavisionCanal19.sv" tvg-name="Megavision Canal 19" tvg-chno="2671" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/b/b8/Canal_19%27s_logo_%28Second_Era%29_in_2002.png" group-title="ערוצים בינלאומיים",Megavision Canal 19
+#EXTINF:-1 tvg-id="MegavisionCanal19.sv" tvg-name="Megavision Canal 19" tvg-chno="2670" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/b/b8/Canal_19%27s_logo_%28Second_Era%29_in_2002.png" group-title="ערוצים בינלאומיים",Megavision Canal 19
 https://mgvchannel19-ioriver-cdn.encoders.immergo.tv/master.m3u8
-#EXTINF:-1 tvg-id="TVWest.ug" tvg-name="TV West" tvg-chno="2672" tvg-logo="https://i.imgur.com/EiJzkIz.png" group-title="ערוצים בינלאומיים",TV West
+#EXTINF:-1 tvg-id="TVWest.ug" tvg-name="TV West" tvg-chno="2671" tvg-logo="https://i.imgur.com/EiJzkIz.png" group-title="ערוצים בינלאומיים",TV West
 https://stream.hydeinnovations.com/tvwest-flussonic/index.m3u8
-#EXTINF:-1 tvg-id="SilkWay.kz" tvg-name="Silk Way" tvg-chno="2673" tvg-logo="https://i.imgur.com/SJNDksF.png" group-title="ערוצים בינלאומיים",Silk Way
+#EXTINF:-1 tvg-id="SilkWay.kz" tvg-name="Silk Way" tvg-chno="2672" tvg-logo="https://i.imgur.com/SJNDksF.png" group-title="ערוצים בינלאומיים",Silk Way
 https://hlspackager.akamaized.net/live/DB/SILKWAY/SILKWAY/SILKWAY.m3u8
-#EXTINF:-1 tvg-id="SenJeunesTV.sn" tvg-name="SenJeunes TV" tvg-chno="2674" tvg-logo="https://i.imgur.com/MeCSPsI.jpg" group-title="ערוצים בינלאומיים",SenJeunes TV
+#EXTINF:-1 tvg-id="SenJeunesTV.sn" tvg-name="SenJeunes TV" tvg-chno="2673" tvg-logo="https://i.imgur.com/MeCSPsI.jpg" group-title="ערוצים בינלאומיים",SenJeunes TV
 https://stream.sen-gt.com/senjeunestv/myStream/playlist.m3u8
-#EXTINF:-1 tvg-id="WKAQTV22.pr" tvg-name="WKAQ-TV 2.2" tvg-chno="2675" tvg-logo="https://i.imgur.com/TL6xy4y.png" group-title="ערוצים בינלאומיים",WKAQ-TV 2.2
+#EXTINF:-1 tvg-id="WKAQTV22.pr" tvg-name="WKAQ-TV 2.2" tvg-chno="2674" tvg-logo="https://i.imgur.com/TL6xy4y.png" group-title="ערוצים בינלאומיים",WKAQ-TV 2.2
 https://nbculocallive.akamaized.net/hls/live/2037499/puertorico/stream2/master_720.m3u8
-#EXTINF:-1 tvg-id="ERTCosmosCyprus.cy" tvg-name="ERT Cosmos Cyprus" tvg-chno="2676" tvg-logo="https://www.ert.gr/wp-content/uploads/2026/05/ert-cosmos-cyprus.svg" group-title="ערוצים בינלאומיים",ERT Cosmos Cyprus
+#EXTINF:-1 tvg-id="ERTCosmosCyprus.cy" tvg-name="ERT Cosmos Cyprus" tvg-chno="2675" tvg-logo="https://www.ert.gr/wp-content/uploads/2026/05/ert-cosmos-cyprus.svg" group-title="ערוצים בינלאומיים",ERT Cosmos Cyprus
 https://ert-live.ascdn.broadpeak.io/bpk-tv/ERTCosmos_Cyprus/default/index.m3u8
-#EXTINF:-1 tvg-id="ATNBangla.bd" tvg-name="ATN Bangla" tvg-chno="2677" tvg-logo="https://i.imgur.com/K1HmMRz.png" group-title="ערוצים בינלאומיים",ATN Bangla
+#EXTINF:-1 tvg-id="ATNBangla.bd" tvg-name="ATN Bangla" tvg-chno="2676" tvg-logo="https://i.imgur.com/K1HmMRz.png" group-title="ערוצים בינלאומיים",ATN Bangla
 https://tvsen5.aynaott.com/atnbangla/index.m3u8
-#EXTINF:-1 tvg-id="Sitel.mk" tvg-name="Sitel" tvg-chno="2678" tvg-logo="https://i.imgur.com/pdobwKt.png" group-title="ערוצים בינלאומיים",Sitel
+#EXTINF:-1 tvg-id="Sitel.mk" tvg-name="Sitel" tvg-chno="2677" tvg-logo="https://i.imgur.com/pdobwKt.png" group-title="ערוצים בינלאומיים",Sitel
 https://teve.mk/tvstanici/s1/playlist.m3u8
-#EXTINF:-1 tvg-id="SandzakTV.rs" tvg-name="Sandzak TV" tvg-chno="2679" tvg-logo="https://i.imgur.com/lm9Fgsp.png" group-title="ערוצים בינלאומיים",Sandzak TV
+#EXTINF:-1 tvg-id="SandzakTV.rs" tvg-name="Sandzak TV" tvg-chno="2678" tvg-logo="https://i.imgur.com/lm9Fgsp.png" group-title="ערוצים בינלאומיים",Sandzak TV
 https://streaming.iptv.nextfiber.rs/nxt004/master.m3u8
-#EXTINF:-1 tvg-id="1TV.ge" tvg-name="1TV" tvg-chno="2680" tvg-logo="https://i.imgur.com/FSkYLPK.png" group-title="ערוצים בינלאומיים",1TV
+#EXTINF:-1 tvg-id="1TV.ge" tvg-name="1TV" tvg-chno="2679" tvg-logo="https://i.imgur.com/FSkYLPK.png" group-title="ערוצים בינלאומיים",1TV
 https://tv.cdn.xsg.ge/gpb-1tv/index.m3u8
-#EXTINF:-1 tvg-id="AltynAsyr.tm" tvg-name="Altyn Asyr" tvg-chno="2681" tvg-logo="https://i.imgur.com/D7RBtZ2.png" group-title="ערוצים בינלאומיים",Altyn Asyr
+#EXTINF:-1 tvg-id="AltynAsyr.tm" tvg-name="Altyn Asyr" tvg-chno="2680" tvg-logo="https://i.imgur.com/D7RBtZ2.png" group-title="ערוצים בינלאומיים",Altyn Asyr
 https://alpha.tv.online.tm/hls/ch001.m3u8
-#EXTINF:-1 tvg-id="LauraDaveMediaTV.cm" tvg-name="Laura Dave Media TV" tvg-chno="2682" tvg-logo="https://i.imgur.com/zzG1S2n.png" group-title="ערוצים בינלאומיים",Laura Dave Media TV
+#EXTINF:-1 tvg-id="LauraDaveMediaTV.cm" tvg-name="Laura Dave Media TV" tvg-chno="2681" tvg-logo="https://i.imgur.com/zzG1S2n.png" group-title="ערוצים בינלאומיים",Laura Dave Media TV
 https://streaming.lauradavemedia.com/ldm/index.m3u8
-#EXTINF:-1 tvg-id="RTLTeleLetzebuerg.lu" tvg-name="RTL Tele Letzebuerg" tvg-chno="2683" tvg-logo="https://i.imgur.com/fkW5Gbl.png" group-title="ערוצים בינלאומיים",RTL Tele Letzebuerg
+#EXTINF:-1 tvg-id="RTLTeleLetzebuerg.lu" tvg-name="RTL Tele Letzebuerg" tvg-chno="2682" tvg-logo="https://i.imgur.com/fkW5Gbl.png" group-title="ערוצים בינלאומיים",RTL Tele Letzebuerg
 https://live-edge.rtl.lu/channel1/smil:channel1/playlist.m3u8
-#EXTINF:-1 tvg-id="Rupavahini.lk" tvg-name="Rupavahini" tvg-chno="2684" tvg-logo="https://i.imgur.com/vgHTfR0.png" group-title="ערוצים בינלאומיים",Rupavahini
+#EXTINF:-1 tvg-id="Rupavahini.lk" tvg-name="Rupavahini" tvg-chno="2683" tvg-logo="https://i.imgur.com/vgHTfR0.png" group-title="ערוצים בינלאומיים",Rupavahini
 https://rpn.bozztv.com/slrclive/slrc/slrclive/index.m3u8
-#EXTINF:-1 tvg-id="TVJohaniter.al" tvg-name="TV Johaniter" tvg-chno="2685" tvg-logo="https://i.imgur.com/Zo9lJgP.png" group-title="ערוצים בינלאומיים",TV Johaniter
+#EXTINF:-1 tvg-id="TVJohaniter.al" tvg-name="TV Johaniter" tvg-chno="2684" tvg-logo="https://i.imgur.com/Zo9lJgP.png" group-title="ערוצים בינלאומיים",TV Johaniter
 https://protokolldns.xyz/johaniterweb44547dsd/index.m3u8
-#EXTINF:-1 tvg-id="TeReo.nz" tvg-name="Te Reo" tvg-chno="2686" tvg-logo="https://i.imgur.com/3CNvYUN.png" group-title="ערוצים בינלאומיים",Te Reo
+#EXTINF:-1 tvg-id="TeReo.nz" tvg-name="Te Reo" tvg-chno="2685" tvg-logo="https://i.imgur.com/3CNvYUN.png" group-title="ערוצים בינלאומיים",Te Reo
 https://i.mjh.nz/.r/te-reo.m3u8
-#EXTINF:-1 tvg-id="MNB.mn" tvg-name="MNB" tvg-chno="2687" tvg-logo="https://i.imgur.com/RdRd0to.png" group-title="ערוצים בינלאומיים",MNB
+#EXTINF:-1 tvg-id="MNB.mn" tvg-name="MNB" tvg-chno="2686" tvg-logo="https://i.imgur.com/RdRd0to.png" group-title="ערוצים בינלאומיים",MNB
 https://live.mnb.mn/hls/mnb.stream.m3u8
-#EXTINF:-1 tvg-id="ZIZTV.kn" tvg-name="ZIZ TV" tvg-chno="2688" tvg-logo="https://i.imgur.com/fB09i6X.png" group-title="ערוצים בינלאומיים",ZIZ TV
+#EXTINF:-1 tvg-id="ZIZTV.kn" tvg-name="ZIZ TV" tvg-chno="2687" tvg-logo="https://i.imgur.com/fB09i6X.png" group-title="ערוצים בינלאומיים",ZIZ TV
 https://media.slactech.com:1936/ZIZDirect/ZIZDirect/playlist.m3u8
-#EXTINF:-1 tvg-id="TVCBenin.bj" tvg-name="TVC Benin" tvg-chno="2689" tvg-logo="https://i.imgur.com/oUnEYl5.png" group-title="ערוצים בינלאומיים",TVC Benin
+#EXTINF:-1 tvg-id="TVCBenin.bj" tvg-name="TVC Benin" tvg-chno="2688" tvg-logo="https://i.imgur.com/oUnEYl5.png" group-title="ערוצים בינלאומיים",TVC Benin
 https://live.tvcbenin.com/direct/729c37a1d3319ee21991227b1f84c687.sdp/playlist.m3u8
-#EXTINF:-1 tvg-id="ShantTV.am" tvg-name="Shant TV" tvg-chno="2690" tvg-logo="https://i.imgur.com/AyitGj7.png" group-title="ערוצים בינלאומיים",Shant TV
+#EXTINF:-1 tvg-id="ShantTV.am" tvg-name="Shant TV" tvg-chno="2689" tvg-logo="https://i.imgur.com/AyitGj7.png" group-title="ערוצים בינלאומיים",Shant TV
 http://stream.mcquack.net/37/index.m3u8
-#EXTINF:-1 tvg-id="CTV9.kh" tvg-name="CTV 9" tvg-chno="2691" tvg-logo="https://i.imgur.com/jgVJt2G.png" group-title="ערוצים בינלאומיים",CTV 9
+#EXTINF:-1 tvg-id="CTV9.kh" tvg-name="CTV 9" tvg-chno="2690" tvg-logo="https://i.imgur.com/jgVJt2G.png" group-title="ערוצים בינלאומיים",CTV 9
 https://stream.pdtvhd.com/live/streams/ctv9_hd_playlist.m3u8
-#EXTINF:-1 tvg-id="DunyaNawTV.af" tvg-name="Dunya Naw TV" tvg-chno="2692" tvg-logo="https://i.ibb.co/nQkLgyn/dunya-naw-tv.png" group-title="ערוצים בינלאומיים",Dunya Naw TV
+#EXTINF:-1 tvg-id="DunyaNawTV.af" tvg-name="Dunya Naw TV" tvg-chno="2691" tvg-logo="https://i.ibb.co/nQkLgyn/dunya-naw-tv.png" group-title="ערוצים בינלאומיים",Dunya Naw TV
 https://dunyanhls.wns.live/hls/stream.m3u8
-#EXTINF:-1 tvg-id="OhMuangLaoTV.la" tvg-name="Oh Muang Lao TV" tvg-chno="2693" tvg-logo="https://i.imgur.com/SdB3Vyr.jpg" group-title="ערוצים בינלאומיים",Oh Muang Lao TV
+#EXTINF:-1 tvg-id="OhMuangLaoTV.la" tvg-name="Oh Muang Lao TV" tvg-chno="2692" tvg-logo="https://i.imgur.com/SdB3Vyr.jpg" group-title="ערוצים בינלאומיים",Oh Muang Lao TV
 https://livefta.malimarcdn.com/ftaedge00/ohmuanglao.stream/playlist.m3u8
-#EXTINF:-1 tvg-id="ReTV.lv" tvg-name="Re TV" tvg-chno="2694" tvg-logo="https://i.imgur.com/Z3cre5Xm.png" group-title="ערוצים בינלאומיים",Re TV
+#EXTINF:-1 tvg-id="ReTV.lv" tvg-name="Re TV" tvg-chno="2693" tvg-logo="https://i.imgur.com/Z3cre5Xm.png" group-title="ערוצים בינלאומיים",Re TV
 https://retv2132.cloudycdn.services/slive/_definst_/retv_retv_channel_5k7_42787_default_891_hls.smil/playlist.m3u8
-#EXTINF:-1 tvg-id="SBTV.hr" tvg-name="SBTV" tvg-chno="2695" tvg-logo="https://i.imgur.com/MIampxZ.png" group-title="ערוצים בינלאומיים",SBTV
+#EXTINF:-1 tvg-id="SBTV.hr" tvg-name="SBTV" tvg-chno="2694" tvg-logo="https://i.imgur.com/MIampxZ.png" group-title="ערוצים בינלאומיים",SBTV
 https://live.leveex.hr/hls/live.m3u8
-#EXTINF:-1 tvg-id="RTVHB.ba" tvg-name="RTV HB" tvg-chno="2696" tvg-logo="https://i.imgur.com/6FNL8Iv.png" group-title="ערוצים בינלאומיים",RTV HB
+#EXTINF:-1 tvg-id="RTVHB.ba" tvg-name="RTV HB" tvg-chno="2695" tvg-logo="https://i.imgur.com/6FNL8Iv.png" group-title="ערוצים בינלאומיים",RTV HB
 https://prd-hometv-live-open.spectar.tv/ERO_1_083/playlist.m3u8
-#EXTINF:-1 tvg-id="TVNiksic.me" tvg-name="TV Niksic" tvg-chno="2697" tvg-logo="https://i.imgur.com/51fGwzn.png" group-title="ערוצים בינלאומיים",TV Niksic
+#EXTINF:-1 tvg-id="TVNiksic.me" tvg-name="TV Niksic" tvg-chno="2696" tvg-logo="https://i.imgur.com/51fGwzn.png" group-title="ערוצים בינלאומיים",TV Niksic
 https://tv.rtv-niksic.me/hls/stream.m3u8
-#EXTINF:-1 tvg-id="HGPTV.gy" tvg-name="HGPTV" tvg-chno="2698" tvg-logo="https://i.imgur.com/0aIH6V5.png" group-title="ערוצים בינלאומיים",HGPTV
+#EXTINF:-1 tvg-id="HGPTV.gy" tvg-name="HGPTV" tvg-chno="2697" tvg-logo="https://i.imgur.com/0aIH6V5.png" group-title="ערוצים בינלאומיים",HGPTV
 https://cdn-us-east-prod-ingest-infra-dacast-com.akamaized.net/8424fb7f-99a9-87ae-3861-f0620849d11c/source/index.m3u8
-#EXTINF:-1 tvg-id="CapitalTVHD.np" tvg-name="Capital TV HD" tvg-chno="2699" tvg-logo="https://i.imgur.com/hb4bq1t.png" group-title="ערוצים בינלאומיים",Capital TV HD
+#EXTINF:-1 tvg-id="CapitalTVHD.np" tvg-name="Capital TV HD" tvg-chno="2698" tvg-logo="https://i.imgur.com/hb4bq1t.png" group-title="ערוצים בינלאומיים",Capital TV HD
 https://streaming.tvnepal.com:19360/capitaltv/capitaltv.m3u8
-#EXTINF:-1 tvg-id="TaiwanIndigenousTV.tw" tvg-name="Taiwan Indigenous TV" tvg-chno="2700" tvg-logo="https://i.imgur.com/QqIdVqz.png" group-title="ערוצים בינלאומיים",Taiwan Indigenous TV
+#EXTINF:-1 tvg-id="TaiwanIndigenousTV.tw" tvg-name="Taiwan Indigenous TV" tvg-chno="2699" tvg-logo="https://i.imgur.com/QqIdVqz.png" group-title="ערוצים בינלאומיים",Taiwan Indigenous TV
 https://streamipcfapp.akamaized.net/live/_definst_/live_720/key_b1500.m3u8
-#EXTINF:-1 tvg-id="TVPanou.ht" tvg-name="TV Panou" tvg-chno="2701" tvg-logo="https://i.imgur.com/zee6sWn.png" group-title="ערוצים בינלאומיים",TV Panou
+#EXTINF:-1 tvg-id="TVPanou.ht" tvg-name="TV Panou" tvg-chno="2700" tvg-logo="https://i.imgur.com/zee6sWn.png" group-title="ערוצים בינלאומיים",TV Panou
 http://tvpanoucom.srfms.com:1935/tvpanoucom/livestream/playlist.m3u8
-#EXTINF:-1 tvg-id="RadioTVBasseTerre.gp" tvg-name="Radio TV Basse-Terre" tvg-chno="2702" tvg-logo="https://i.imgur.com/OvnRplq.png" group-title="ערוצים בינלאומיים",Radio TV Basse-Terre
+#EXTINF:-1 tvg-id="RadioTVBasseTerre.gp" tvg-name="Radio TV Basse-Terre" tvg-chno="2701" tvg-logo="https://i.imgur.com/OvnRplq.png" group-title="ערוצים בינלאומיים",Radio TV Basse-Terre
 https://vdo.ssl-stream.com:3412/stream/play.m3u8
-#EXTINF:-1 tvg-id="RefletTV.ci" tvg-name="Reflet TV" tvg-chno="2703" tvg-logo="https://i.imgur.com/EauXR22.png" group-title="ערוצים בינלאומיים",Reflet TV
+#EXTINF:-1 tvg-id="RefletTV.ci" tvg-name="Reflet TV" tvg-chno="2702" tvg-logo="https://i.imgur.com/EauXR22.png" group-title="ערוצים בינלאומיים",Reflet TV
 https://edge-a3.evrideo.tv/8f37c9f0-fe22-44f4-b64a-76ad11730daf_1000026630_HLS/manifest.m3u8
-#EXTINF:-1 tvg-id="Canal10.ni" tvg-name="Canal 10" tvg-chno="2704" tvg-logo="https://i.imgur.com/ztp781b.png" group-title="ערוצים בינלאומיים",Canal 10
+#EXTINF:-1 tvg-id="Canal10.ni" tvg-name="Canal 10" tvg-chno="2703" tvg-logo="https://i.imgur.com/ztp781b.png" group-title="ערוצים בינלאומיים",Canal 10
 https://ddycmnicl95kp.cloudfront.net/live/ja5k3h31wv9r/master.m3u8
-#EXTINF:-1 tvg-id="Telemetro.pa" tvg-name="Telemetro" tvg-chno="2705" tvg-logo="https://i.imgur.com/vJJrGgV.png" group-title="ערוצים בינלאומיים",Telemetro
+#EXTINF:-1 tvg-id="Telemetro.pa" tvg-name="Telemetro" tvg-chno="2704" tvg-logo="https://i.imgur.com/vJJrGgV.png" group-title="ערוצים בינלאומיים",Telemetro
 http://181.78.121.15:8000/play/a001/index.m3u8
-#EXTINF:-1 tvg-id="RUV2.is" tvg-name="RUV 2" tvg-chno="2706" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/R%C3%9AV_2_2019_logo.svg/960px-R%C3%9AV_2_2019_logo.svg.png" group-title="ערוצים בינלאומיים",RUV 2
+#EXTINF:-1 tvg-id="RUV2.is" tvg-name="RUV 2" tvg-chno="2705" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/R%C3%9AV_2_2019_logo.svg/960px-R%C3%9AV_2_2019_logo.svg.png" group-title="ערוצים בינלאומיים",RUV 2
 https://ruvlive.akamaized.net/out/v1/2ff7673de40f419fa5164498fae89089/index.m3u8
-#EXTINF:-1 tvg-id="TVZagora.bg" tvg-name="TV Zagora" tvg-chno="2707" tvg-logo="https://i.imgur.com/DvBboqe.png" group-title="ערוצים בינלאומיים",TV Zagora
+#EXTINF:-1 tvg-id="TVZagora.bg" tvg-name="TV Zagora" tvg-chno="2706" tvg-logo="https://i.imgur.com/DvBboqe.png" group-title="ערוצים בינלאומיים",TV Zagora
 http://zagoratv.ddns.net:8080/tvzagora.m3u8
-#EXTINF:-1 tvg-id="Akaku53.us" tvg-name="Akaku 53" tvg-chno="2708" tvg-logo="https://www.akaku.org/wp-content/uploads/bb-plugin/cache/Channel53-147x150-square.png" group-title="ערוצים בינלאומיים",Akaku 53
+#EXTINF:-1 tvg-id="Akaku53.us" tvg-name="Akaku 53" tvg-chno="2707" tvg-logo="https://www.akaku.org/wp-content/uploads/bb-plugin/cache/Channel53-147x150-square.png" group-title="ערוצים בינלאומיים",Akaku 53
 https://castus-vod-dev.s3.amazonaws.com/vod_clients/akaku/live/ch1/video.m3u8
-#EXTINF:-1 tvg-id="TalkTV.uk" tvg-name="TalkTV" tvg-chno="2709" tvg-logo="https://i.imgur.com/KxHWpQB.png" group-title="ערוצים בינלאומיים",TalkTV
+#EXTINF:-1 tvg-id="TalkTV.uk" tvg-name="TalkTV" tvg-chno="2708" tvg-logo="https://i.imgur.com/KxHWpQB.png" group-title="ערוצים בינלאומיים",TalkTV
 https://488f4ce4.wurl.com/master/f36d25e7e52f1ba8d7e56eb859c636563214f541/TEctZ2JfVGFsa19ITFM/playlist.m3u8
-#EXTINF:-1 tvg-id="LeFigaroTVIledeFrance.fr" tvg-name="Le Figaro TV Ile-de-France" tvg-chno="2710" tvg-logo="https://i.imgur.com/a8RuRUQ.png" group-title="ערוצים בינלאומיים",Le Figaro TV Ile-de-France
+#EXTINF:-1 tvg-id="LeFigaroTVIledeFrance.fr" tvg-name="Le Figaro TV Ile-de-France" tvg-chno="2709" tvg-logo="https://i.imgur.com/a8RuRUQ.png" group-title="ערוצים בינלאומיים",Le Figaro TV Ile-de-France
 https://figarotv-live.freecaster.com/live/freecaster/figarotv.m3u8
-#EXTINF:-1 tvg-id="AugsburgTV.de" tvg-name="Augsburg TV" tvg-chno="2711" tvg-logo="https://i.imgur.com/27AKMUL.png" group-title="ערוצים בינלאומיים",Augsburg TV
+#EXTINF:-1 tvg-id="AugsburgTV.de" tvg-name="Augsburg TV" tvg-chno="2710" tvg-logo="https://i.imgur.com/27AKMUL.png" group-title="ערוצים בינלאומיים",Augsburg TV
 https://stream02.welocal.stream/stream/fhd-augsburgtv_104951/ngrp:stream_all/playlist.m3u8
-#EXTINF:-1 tvg-id="CanalSierradeCadiz.es" tvg-name="Canal Sierra de Cadiz" tvg-chno="2712" tvg-logo="https://i.imgur.com/94rn7pb.png" group-title="ערוצים בינלאומיים",Canal Sierra de Cadiz
+#EXTINF:-1 tvg-id="CanalSierradeCadiz.es" tvg-name="Canal Sierra de Cadiz" tvg-chno="2711" tvg-logo="https://i.imgur.com/94rn7pb.png" group-title="ערוצים בינלאומיים",Canal Sierra de Cadiz
 https://s.emisoras.tv:8081/sierradecadiz/index.m3u8
-#EXTINF:-1 tvg-id="DeejayTV.it" tvg-name="Deejay TV" tvg-chno="2713" tvg-logo="https://i.imgur.com/YV27Chs.png" group-title="ערוצים בינלאומיים",Deejay TV
+#EXTINF:-1 tvg-id="DeejayTV.it" tvg-name="Deejay TV" tvg-chno="2712" tvg-logo="https://i.imgur.com/YV27Chs.png" group-title="ערוצים בינלאומיים",Deejay TV
 https://4c4b867c89244861ac216426883d1ad0.msvdn.net/live/S85984808/sMO0tz9Sr2Rk/playlist.m3u8
-#EXTINF:-1 tvg-id="360.ru" tvg-name="360°" tvg-chno="2714" tvg-logo="https://i.imgur.com/VTJqdoX.png" group-title="ערוצים בינלאומיים",360°
+#EXTINF:-1 tvg-id="360.ru" tvg-name="360°" tvg-chno="2713" tvg-logo="https://i.imgur.com/VTJqdoX.png" group-title="ערוצים בינלאומיים",360°
 https://cdn-evacoder-tv.facecast.io/evacoder_hls_hi/CkxfR1xNUAJwTgtXTBZTAJli/index.m3u8
-#EXTINF:-1 tvg-id="NTKTV.ua" tvg-name="NTK TV" tvg-chno="2715" tvg-logo="https://www.ntktv.ua/bitrix/templates/ntk_copy/images/logo.png" group-title="ערוצים בינלאומיים",NTK TV
+#EXTINF:-1 tvg-id="NTKTV.ua" tvg-name="NTK TV" tvg-chno="2714" tvg-logo="https://www.ntktv.ua/bitrix/templates/ntk_copy/images/logo.png" group-title="ערוצים בינלאומיים",NTK TV
 https://stream.ntktv.ua/s/ntk/ntk.m3u8
-#EXTINF:-1 tvg-id="C31Melbourne.au" tvg-name="C31 Melbourne" tvg-chno="2716" tvg-logo="https://i.imgur.com/Ge1EutY.png" group-title="ערוצים בינלאומיים",C31 Melbourne
+#EXTINF:-1 tvg-id="C31Melbourne.au" tvg-name="C31 Melbourne" tvg-chno="2715" tvg-logo="https://i.imgur.com/Ge1EutY.png" group-title="ערוצים בינלאומיים",C31 Melbourne
 https://d1k6kax80wecy5.cloudfront.net/RLnAKY/index.m3u8
-#EXTINF:-1 tvg-id="AlanyaPostaTV.tr" tvg-name="Alanya Posta TV" tvg-chno="2717" tvg-logo="https://i.imgur.com/a3w9eFe.png" group-title="ערוצים בינלאומיים",Alanya Posta TV
+#EXTINF:-1 tvg-id="AlanyaPostaTV.tr" tvg-name="Alanya Posta TV" tvg-chno="2716" tvg-logo="https://i.imgur.com/a3w9eFe.png" group-title="ערוצים בינלאומיים",Alanya Posta TV
 https://api-tv3.yayin.com.tr/postatv/postatv/playlist.m3u8
-#EXTINF:-1 tvg-id="DDTamil.in" tvg-name="DD Tamil" tvg-chno="2718" tvg-logo="https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/transparentImages/PHOTO-_HD_2000_X_1125_Transpharent.png" group-title="ערוצים בינלאומיים",DD Tamil
+#EXTINF:-1 tvg-id="DDTamil.in" tvg-name="DD Tamil" tvg-chno="2717" tvg-logo="https://ltsk-cdn.s3.eu-west-1.amazonaws.com/jumpstart/Temp_Live/cdn/HLS/Channel/transparentImages/PHOTO-_HD_2000_X_1125_Transpharent.png" group-title="ערוצים בינלאומיים",DD Tamil
 https://cdn.pishow.tv/ott/live/1737/master.m3u8
-#EXTINF:-1 tvg-id="ABN.kr" tvg-name="ABN" tvg-chno="2719" tvg-logo="https://www.abn.co.kr/resources/images/logo.png" group-title="ערוצים בינלאומיים",ABN
+#EXTINF:-1 tvg-id="ABN.kr" tvg-name="ABN" tvg-chno="2718" tvg-logo="https://www.abn.co.kr/resources/images/logo.png" group-title="ערוצים בינלאומיים",ABN
 https://vod2.abn.co.kr/IPHONE/abn.m3u8
-#EXTINF:-1 tvg-id="VoATVChina.cn" tvg-name="VoA TV China" tvg-chno="2720" tvg-logo="https://i.imgur.com/XCTZkoq.png" group-title="ערוצים בינלאומיים",VoA TV China
+#EXTINF:-1 tvg-id="VoATVChina.cn" tvg-name="VoA TV China" tvg-chno="2719" tvg-logo="https://i.imgur.com/XCTZkoq.png" group-title="ערוצים בינלאומיים",VoA TV China
 https://voa-ingest.akamaized.net/hls/live/2033878/tvmc08/playlist.m3u8
-#EXTINF:-1 tvg-id="COMBrasil.br" tvg-name="COM Brasil" tvg-chno="2721" tvg-logo="https://i.imgur.com/GrjGwKM.png" group-title="ערוצים בינלאומיים",COM Brasil
+#EXTINF:-1 tvg-id="COMBrasil.br" tvg-name="COM Brasil" tvg-chno="2720" tvg-logo="https://i.imgur.com/GrjGwKM.png" group-title="ערוצים בינלאומיים",COM Brasil
 https://br5093.streamingdevideo.com.br/abc/abc/playlist.m3u8
-#EXTINF:-1 tvg-id="Canal10Durango.mx" tvg-name="Canal 10 Durango" tvg-chno="2722" tvg-logo="https://i.imgur.com/H34quHQ.png" group-title="ערוצים בינלאומיים",Canal 10 Durango
+#EXTINF:-1 tvg-id="Canal10Durango.mx" tvg-name="Canal 10 Durango" tvg-chno="2721" tvg-logo="https://i.imgur.com/H34quHQ.png" group-title="ערוצים בינלאומיים",Canal 10 Durango
 https://5e50264bd6766.streamlock.net/canal10durango/videocanal10durango/playlist.m3u8
-#EXTINF:-1 tvg-id="Canal21TV.ar" tvg-name="Canal 21 TV" tvg-chno="2723" tvg-logo="https://i.imgur.com/Am7yMXg.png" group-title="ערוצים בינלאומיים",Canal 21 TV
+#EXTINF:-1 tvg-id="Canal21TV.ar" tvg-name="Canal 21 TV" tvg-chno="2722" tvg-logo="https://i.imgur.com/Am7yMXg.png" group-title="ערוצים בינלאומיים",Canal 21 TV
 https://iptv.ixfo.com.ar:30443/c21tv/hd/c21tv/playlist.m3u8
-#EXTINF:-1 tvg-id="PortoCanal.pt" tvg-name="Porto Canal" tvg-chno="2724" tvg-logo="https://i.imgur.com/DwziwMY.png" group-title="ערוצים בינלאומיים",Porto Canal
+#EXTINF:-1 tvg-id="PortoCanal.pt" tvg-name="Porto Canal" tvg-chno="2723" tvg-logo="https://i.imgur.com/DwziwMY.png" group-title="ערוצים בינלאומיים",Porto Canal
 https://pull-live-156-1.global.ssl.fastly.net/pc5865dc25400thmb-ea6bf03b14fa318f7133/smil:pc1-jhrgyuoqe5865db-68tkgb14fa318f7133f03.smil/playlist.m3u8
-#EXTINF:-1 tvg-id="A1TV.nl" tvg-name="A1 TV" tvg-chno="2725" tvg-logo="https://i.imgur.com/JZ1oTM2.png" group-title="ערוצים בינלאומיים",A1 TV
+#EXTINF:-1 tvg-id="A1TV.nl" tvg-name="A1 TV" tvg-chno="2724" tvg-logo="https://i.imgur.com/JZ1oTM2.png" group-title="ערוצים בינלאומיים",A1 TV
 https://stream.a1mediagroep.nl/hls/a1tv.m3u8
-#EXTINF:-1 tvg-id="BX1.be" tvg-name="BX1" tvg-chno="2726" tvg-logo="https://i.imgur.com/0OkSa6c.png" group-title="ערוצים בינלאומיים",BX1
+#EXTINF:-1 tvg-id="BX1.be" tvg-name="BX1" tvg-chno="2725" tvg-logo="https://i.imgur.com/0OkSa6c.png" group-title="ערוצים בינלאומיים",BX1
 https://59959724487e3.streamlock.net/stream/live/playlist.m3u8
-#EXTINF:-1 tvg-id="CanalAlphaNeuchatel.ch" tvg-name="Canal Alpha Neuchatel" tvg-chno="2727" tvg-logo="https://i.imgur.com/eQ8xHK9.jpg" group-title="ערוצים בינלאומיים",Canal Alpha Neuchatel
+#EXTINF:-1 tvg-id="CanalAlphaNeuchatel.ch" tvg-name="Canal Alpha Neuchatel" tvg-chno="2726" tvg-logo="https://i.imgur.com/eQ8xHK9.jpg" group-title="ערוצים בינלאומיים",Canal Alpha Neuchatel
 https://canalalpha.vedge.infomaniak.com/livecast/ik:canalalpha/playlist.m3u8
-#EXTINF:-1 tvg-id="TV1Oberosterreich.at" tvg-name="TV 1 Oberosterreich" tvg-chno="2728" tvg-logo="https://i.imgur.com/KbMkEIn.png" group-title="ערוצים בינלאומיים",TV 1 Oberosterreich
+#EXTINF:-1 tvg-id="TV1Oberosterreich.at" tvg-name="TV 1 Oberosterreich" tvg-chno="2727" tvg-logo="https://i.imgur.com/KbMkEIn.png" group-title="ערוצים בינלאומיים",TV 1 Oberosterreich
 https://streaming10.huberwebmedia.at/LiveApp/streams/238985177034727564068269_adaptive.m3u8
-#EXTINF:-1 tvg-id="TelewizjaRelax.pl" tvg-name="Telewizja Relax" tvg-chno="2729" tvg-logo="https://i.imgur.com/dejnH0O.png" group-title="ערוצים בינלאומיים",Telewizja Relax
+#EXTINF:-1 tvg-id="TelewizjaRelax.pl" tvg-name="Telewizja Relax" tvg-chno="2728" tvg-logo="https://i.imgur.com/dejnH0O.png" group-title="ערוצים בינלאומיים",Telewizja Relax
 https://srv1.streamingo.pl/memfs/be50f17e-6579-4bdf-86b1-31207aec85b8.m3u8
-#EXTINF:-1 tvg-id="Channel8.gr" tvg-name="Channel 8" tvg-chno="2730" tvg-logo="https://www.channel8.gr/img/channel8.png" group-title="ערוצים בינלאומיים",Channel 8
+#EXTINF:-1 tvg-id="Channel8.gr" tvg-name="Channel 8" tvg-chno="2729" tvg-logo="https://www.channel8.gr/img/channel8.png" group-title="ערוצים בינלאומיים",Channel 8
 https://gra1.crystalweb.net:1936/channel8/channel8/playlist.m3u8
-#EXTINF:-1 tvg-id="GustavLinsepaudebane.se" tvg-name="Gustav & Linse pa udebane" tvg-chno="2731" tvg-logo="https://images.pluto.tv/channels/69c290eeed1b1f1acb446dd8/colorLogoPNG_1778675778733.png" group-title="ערוצים בינלאומיים",Gustav & Linse pa udebane
+#EXTINF:-1 tvg-id="GustavLinsepaudebane.se" tvg-name="Gustav & Linse pa udebane" tvg-chno="2730" tvg-logo="https://images.pluto.tv/channels/69c290eeed1b1f1acb446dd8/colorLogoPNG_1778675778733.png" group-title="ערוצים בינלאומיים",Gustav & Linse pa udebane
 https://jmp2.uk/plu-69c290eeed1b1f1acb446dd8.m3u8
-#EXTINF:-1 tvg-id="TVMarineret.dk" tvg-name="TVMarineret" tvg-chno="2732" tvg-logo="https://i.imgur.com/r1Caske.jpg" group-title="ערוצים בינלאומיים",TVMarineret
+#EXTINF:-1 tvg-id="TVMarineret.dk" tvg-name="TVMarineret" tvg-chno="2731" tvg-logo="https://i.imgur.com/r1Caske.jpg" group-title="ערוצים בינלאומיים",TVMarineret
 http://sdream.info:8080/hls/livestream/index.m3u8
-#EXTINF:-1 tvg-id="Nelonen.fi" tvg-name="Nelonen" tvg-chno="2733" tvg-logo="https://i.imgur.com/BFbCyfY.png" group-title="ערוצים בינלאומיים",Nelonen
+#EXTINF:-1 tvg-id="Nelonen.fi" tvg-name="Nelonen" tvg-chno="2732" tvg-logo="https://i.imgur.com/BFbCyfY.png" group-title="ערוצים בינלאומיים",Nelonen
 https://live-fi.tvkaista.net/nelonen/live.m3u8
-#EXTINF:-1 tvg-id="JC1.cz" tvg-name="JC1" tvg-chno="2734" tvg-logo="https://i.imgur.com/AM8YtcV.png" group-title="ערוצים בינלאומיים",JC1
+#EXTINF:-1 tvg-id="JC1.cz" tvg-name="JC1" tvg-chno="2733" tvg-logo="https://i.imgur.com/AM8YtcV.png" group-title="ערוצים בינלאומיים",JC1
 https://stream.jc1.cz/hls/jc1.m3u8
-#EXTINF:-1 tvg-id="ArgesTV.ro" tvg-name="Arges TV" tvg-chno="2735" tvg-logo="https://i.imgur.com/qufz6nk.png" group-title="ערוצים בינלאומיים",Arges TV
+#EXTINF:-1 tvg-id="ArgesTV.ro" tvg-name="Arges TV" tvg-chno="2734" tvg-logo="https://i.imgur.com/qufz6nk.png" group-title="ערוצים בינלאומיים",Arges TV
 https://btutzctahuf0wjoq.cdn.streamingserver.io/hls/yjvam8hlp2g3u08z02tv0yz66rq3cy.m3u8
-#EXTINF:-1 tvg-id="OroszlanyiVarosiTelevizio.hu" tvg-name="Oroszlanyi Varosi Televizio" tvg-chno="2736" tvg-logo="https://i.imgur.com/P0fxUH5.png" group-title="ערוצים בינלאומיים",Oroszlanyi Varosi Televizio
+#EXTINF:-1 tvg-id="OroszlanyiVarosiTelevizio.hu" tvg-name="Oroszlanyi Varosi Televizio" tvg-chno="2735" tvg-logo="https://i.imgur.com/P0fxUH5.png" group-title="ערוצים בינלאומיים",Oroszlanyi Varosi Televizio
 https://cloudfront44.lexanetwork.com:1344/relay01/broadcast002.sdp/playlist.m3u8
-#EXTINF:-1 tvg-id="Canal9BioBioTelevision.cl" tvg-name="Canal 9 Bio-Bio Television" tvg-chno="2737" tvg-logo="https://i.imgur.com/J2G1WMs.png" group-title="ערוצים בינלאומיים",Canal 9 Bio-Bio Television
+#EXTINF:-1 tvg-id="Canal9BioBioTelevision.cl" tvg-name="Canal 9 Bio-Bio Television" tvg-chno="2736" tvg-logo="https://i.imgur.com/J2G1WMs.png" group-title="ערוצים בינלאומיים",Canal 9 Bio-Bio Television
 https://unlimited6-cl.dps.live/c9/c9.smil/playlist.m3u8
-#EXTINF:-1 tvg-id="Unitel.pe" tvg-name="Unitel" tvg-chno="2738" tvg-logo="https://i.imgur.com/F0PWpyc.png" group-title="ערוצים בינלאומיים",Unitel
+#EXTINF:-1 tvg-id="Unitel.pe" tvg-name="Unitel" tvg-chno="2737" tvg-logo="https://i.imgur.com/F0PWpyc.png" group-title="ערוצים בינלאומיים",Unitel
 https://play.agenciastreaming.com:8081/uniteltv/index.m3u8
-#EXTINF:-1 tvg-id="MagnaChannel.id" tvg-name="Magna Channel" tvg-chno="2739" tvg-logo="https://i.imgur.com/tfJo0SO.png" group-title="ערוצים בינלאומיים",Magna Channel
+#EXTINF:-1 tvg-id="MagnaChannel.id" tvg-name="Magna Channel" tvg-chno="2738" tvg-logo="https://i.imgur.com/tfJo0SO.png" group-title="ערוצים בינלאומיים",Magna Channel
 https://edge.medcom.id/live-edge/smil:magna.smil/playlist.m3u8
-#EXTINF:-1 tvg-id="VipaTV.th" tvg-name="Vipa TV" tvg-chno="2740" tvg-logo="https://raw.githubusercontent.com/songwenhui239/Songwenhui239/refs/heads/main/Vipa%20TV.jpg" group-title="ערוצים בינלאומיים",Vipa TV
+#EXTINF:-1 tvg-id="VipaTV.th" tvg-name="Vipa TV" tvg-chno="2739" tvg-logo="https://raw.githubusercontent.com/songwenhui239/Songwenhui239/refs/heads/main/Vipa%20TV.jpg" group-title="ערוצים בינלאומיים",Vipa TV
 https://fastly.live.brightcove.com/1846248737588002042/ap-southeast-1/6075037809001/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJob3N0IjoibzRoaGc2LmVncmVzcy5zYjBmOGsiLCJhY2NvdW50X2lkIjoiNjA3NTAzNzgwOTAwMSIsImVobiI6ImZhc3RseS5saXZlLmJyaWdodGNvdmUuY29tIiwiaXNzIjoiYmxpdmUtcGxheWJhY2stc291cmNlLWFwaSIsInN1YiI6InBhdGhtYXB0b2tlbiIsImF1ZCI6WyI2MDc1MDM3ODA5MDAxIl0sImp0aSI6IjE4NDYyNDg3Mzc1ODgwMDIwNDIifQ.HbjGHxGv87ivAdsCtAdEDjj2SVCfRnCUMYWn2fCkVPY/playlist-hls.m3u8
-#EXTINF:-1 tvg-id="BSFilm.pk" tvg-name="BS Film" tvg-chno="2741" tvg-logo="https://www.vivalivetv.com/public/files/shows/0/1/3953-640x360-FFFFFF.jpg" group-title="ערוצים בינלאומיים",BS Film
+#EXTINF:-1 tvg-id="BSFilm.pk" tvg-name="BS Film" tvg-chno="2740" tvg-logo="https://www.vivalivetv.com/public/files/shows/0/1/3953-640x360-FFFFFF.jpg" group-title="ערוצים בינלאומיים",BS Film
 https://lbgo.bozztv.com/ssh101/ssh101/bsfilm/playlist.m3u8
-#EXTINF:-1 tvg-id="AraxTV.ir" tvg-name="Arax TV" tvg-chno="2742" tvg-logo="" group-title="ערוצים בינלאומיים",Arax TV
+#EXTINF:-1 tvg-id="AraxTV.ir" tvg-name="Arax TV" tvg-chno="2741" tvg-logo="" group-title="ערוצים בינלאומיים",Arax TV
 https://araxhls.wns.live/hls/stream.m3u8
-#EXTINF:-1 tvg-id="ROVTV.za" tvg-name="ROV TV" tvg-chno="2743" tvg-logo="https://i.imgur.com/sbeuEYY.png" group-title="ערוצים בינלאומיים",ROV TV
+#EXTINF:-1 tvg-id="ROVTV.za" tvg-name="ROV TV" tvg-chno="2742" tvg-logo="https://i.imgur.com/sbeuEYY.png" group-title="ערוצים בינלאומיים",ROV TV
 https://viewmedia7219.bozztv.com/wmedia/viewmedia100/web_012/Stream/playlist.m3u8
-#EXTINF:-1 tvg-id="WazobiaMaxTVPortHarcourt.ng" tvg-name="Wazobia Max TV Port-Harcourt" tvg-chno="2744" tvg-logo="https://rndcdn.dstv.com/dstvcms/2016/10/20/WazobiaMaz_new4-4logo_001_xlrg.png" group-title="ערוצים בינלאומיים",Wazobia Max TV Port-Harcourt
+#EXTINF:-1 tvg-id="WazobiaMaxTVPortHarcourt.ng" tvg-name="Wazobia Max TV Port-Harcourt" tvg-chno="2743" tvg-logo="https://rndcdn.dstv.com/dstvcms/2016/10/20/WazobiaMaz_new4-4logo_001_xlrg.png" group-title="ערוצים בינלאומיים",Wazobia Max TV Port-Harcourt
 https://wazobia.live:8333/channel/wmaxph.m3u8
-#EXTINF:-1 tvg-id="AhoraTV.do" tvg-name="Ahora TV" tvg-chno="2745" tvg-logo="https://i.imgur.com/dyJyuXc.png" group-title="ערוצים בינלאומיים",Ahora TV
+#EXTINF:-1 tvg-id="AhoraTV.do" tvg-name="Ahora TV" tvg-chno="2744" tvg-logo="https://i.imgur.com/dyJyuXc.png" group-title="ערוצים בינלאומיים",Ahora TV
 https://stream.haislin.com/ahoratv/index.m3u8
-#EXTINF:-1 tvg-id="RedAmericaTV.bo" tvg-name="Red America TV" tvg-chno="2746" tvg-logo="https://i.imgur.com/qYNmeDe.png" group-title="ערוצים בינלאומיים",Red America TV
+#EXTINF:-1 tvg-id="RedAmericaTV.bo" tvg-name="Red America TV" tvg-chno="2745" tvg-logo="https://i.imgur.com/qYNmeDe.png" group-title="ערוצים בינלאומיים",Red America TV
 https://edge.enhdtv.com/redamerica/index.m3u8
-#EXTINF:-1 tvg-id="RedDigital.py" tvg-name="Red Digital" tvg-chno="2747" tvg-logo="https://i.imgur.com/3jj0MQP.jpg" group-title="ערוצים בינלאומיים",Red Digital
+#EXTINF:-1 tvg-id="RedDigital.py" tvg-name="Red Digital" tvg-chno="2746" tvg-logo="https://i.imgur.com/3jj0MQP.jpg" group-title="ערוצים בינלאומיים",Red Digital
 https://video.hostingcaaguazu.com:19360/reddigitalsanpedro/reddigitalsanpedro.m3u8
-#EXTINF:-1 tvg-id="TVPovazie.sk" tvg-name="TV Povazie" tvg-chno="2748" tvg-logo="https://i.imgur.com/JRD9YIY.png" group-title="ערוצים בינלאומיים",TV Povazie
+#EXTINF:-1 tvg-id="TVPovazie.sk" tvg-name="TV Povazie" tvg-chno="2747" tvg-logo="https://i.imgur.com/JRD9YIY.png" group-title="ערוצים בינלאומיים",TV Povazie
 https://dash3.antik.sk/live/test_povazie/playlist.m3u8
-#EXTINF:-1 tvg-id="TNORadio.ve" tvg-name="TNO Radio" tvg-chno="2749" tvg-logo="https://i.ibb.co/0rYsbRk/Logo-TNO-2021-white.png" group-title="ערוצים בינלאומיים",TNO Radio
+#EXTINF:-1 tvg-id="TNORadio.ve" tvg-name="TNO Radio" tvg-chno="2748" tvg-logo="https://i.ibb.co/0rYsbRk/Logo-TNO-2021-white.png" group-title="ערוצים בינלאומיים",TNO Radio
 https://stmv1.srvstm.com/tnovideo1/tnovideo1/playlist.m3u8
-#EXTINF:-1 tvg-id="Ecuavisa.ec" tvg-name="Ecuavisa" tvg-chno="2750" tvg-logo="https://i.imgur.com/Hl5wowk.png" group-title="ערוצים בינלאומיים",Ecuavisa
+#EXTINF:-1 tvg-id="Ecuavisa.ec" tvg-name="Ecuavisa" tvg-chno="2749" tvg-logo="https://i.imgur.com/Hl5wowk.png" group-title="ערוצים בינלאומיים",Ecuavisa
 https://redirector.dps.live/hls-video/c54ac2799874375c81c1672abb700870537c5223/ecuavisa/ecuavisa.smil/playlist.m3u8
-#EXTINF:-1 tvg-id="MultivisionCanal3.gt" tvg-name="Multivision Canal 3" tvg-chno="2751" tvg-logo="https://i.imgur.com/6bdj2BV.jpg" group-title="ערוצים בינלאומיים",Multivision Canal 3
+#EXTINF:-1 tvg-id="MultivisionCanal3.gt" tvg-name="Multivision Canal 3" tvg-chno="2750" tvg-logo="https://i.imgur.com/6bdj2BV.jpg" group-title="ערוצים בינלאומיים",Multivision Canal 3
 https://stream.digitalgt.com:3136/live/multivisionlive.m3u8
-#EXTINF:-1 tvg-id="TelevisionMetropolis191.hn" tvg-name="Television Metropolis 19.1" tvg-chno="2752" tvg-logo="https://i.imgur.com/X5C1GzB.png" group-title="ערוצים בינלאומיים",Television Metropolis 19.1
+#EXTINF:-1 tvg-id="TelevisionMetropolis191.hn" tvg-name="Television Metropolis 19.1" tvg-chno="2751" tvg-logo="https://i.imgur.com/X5C1GzB.png" group-title="ערוצים בינלאומיים",Television Metropolis 19.1
 https://5e85d90130e77.streamlock.net/6028/6028/playlist.m3u8
-#EXTINF:-1 tvg-id="Moldova2.md" tvg-name="Moldova 2" tvg-chno="2753" tvg-logo="https://i.imgur.com/Hv6Nk8A.png" group-title="ערוצים בינלאומיים",Moldova 2
+#EXTINF:-1 tvg-id="Moldova2.md" tvg-name="Moldova 2" tvg-chno="2752" tvg-logo="https://i.imgur.com/Hv6Nk8A.png" group-title="ערוצים בינלאומיים",Moldova 2
 https://v0.trm.md/static/streaming-playlists/hls/d5fafab0-9c37-4746-9e7a-b2d6c0427015/master.m3u8
-#EXTINF:-1 tvg-id="MegavisionCanal21.sv" tvg-name="Megavision Canal 21" tvg-chno="2754" tvg-logo="https://i.imgur.com/HbdYU9k.png" group-title="ערוצים בינלאומיים",Megavision Canal 21
+#EXTINF:-1 tvg-id="MegavisionCanal21.sv" tvg-name="Megavision Canal 21" tvg-chno="2753" tvg-logo="https://i.imgur.com/HbdYU9k.png" group-title="ערוצים בינלאומיים",Megavision Canal 21
 https://mgvchannel21-ioriver-cdn.encoders.immergo.tv/master.m3u8
-#EXTINF:-1 tvg-id="BukeddeTV2.ug" tvg-name="Bukedde TV 2" tvg-chno="2755" tvg-logo="https://i.imgur.com/ukwPZeY.png" group-title="ערוצים בינלאומיים",Bukedde TV 2
+#EXTINF:-1 tvg-id="BukeddeTV2.ug" tvg-name="Bukedde TV 2" tvg-chno="2754" tvg-logo="https://i.imgur.com/ukwPZeY.png" group-title="ערוצים בינלאומיים",Bukedde TV 2
 https://stream.hydeinnovations.com/bukedde2flussonic/index.m3u8
-#EXTINF:-1 tvg-id="RikaTV.kz" tvg-name="Rika TV" tvg-chno="2756" tvg-logo="https://i.imgur.com/KJHWZ3B.png" group-title="ערוצים בינלאומיים",Rika TV
+#EXTINF:-1 tvg-id="RikaTV.kz" tvg-name="Rika TV" tvg-chno="2755" tvg-logo="https://i.imgur.com/KJHWZ3B.png" group-title="ערוצים בינלאומיים",Rika TV
 https://live-rikatv.cdnvideo.ru/rikatv/rikatv_tcode.sdp/playlist.m3u8
-#EXTINF:-1 tvg-id="Diaspora24.sn" tvg-name="Diaspora 24" tvg-chno="2757" tvg-logo="https://i.imgur.com/4devfx1.png" group-title="ערוצים בינלאומיים",Diaspora 24
+#EXTINF:-1 tvg-id="Diaspora24.sn" tvg-name="Diaspora 24" tvg-chno="2756" tvg-logo="https://i.imgur.com/4devfx1.png" group-title="ערוצים בינלאומיים",Diaspora 24
 https://vdo3.pro-fhi.net:3218/stream/play.m3u8
-#EXTINF:-1 tvg-id="Telenorte.pr" tvg-name="Telenorte" tvg-chno="2758" tvg-logo="https://i.imgur.com/LCiYFrh.jpg" group-title="ערוצים בינלאומיים",Telenorte
+#EXTINF:-1 tvg-id="Telenorte.pr" tvg-name="Telenorte" tvg-chno="2757" tvg-logo="https://i.imgur.com/LCiYFrh.jpg" group-title="ערוצים בינלאומיים",Telenorte
 https://627bb251f23c7.streamlock.net:444/TopRadioTV/TopRadioTV/playlist.m3u8
-#EXTINF:-1 tvg-id="RIKSat.cy" tvg-name="RIK Sat" tvg-chno="2759" tvg-logo="https://i.imgur.com/BIKwFhD.png" group-title="ערוצים בינלאומיים",RIK Sat
+#EXTINF:-1 tvg-id="RIKSat.cy" tvg-name="RIK Sat" tvg-chno="2758" tvg-logo="https://i.imgur.com/BIKwFhD.png" group-title="ערוצים בינלאומיים",RIK Sat
 https://l3.cloudskep.com/cybcsat/abr/playlist.m3u8
-#EXTINF:-1 tvg-id="BanglaVision.bd" tvg-name="Bangla Vision" tvg-chno="2760" tvg-logo="https://i.imgur.com/nCWgp38.png" group-title="ערוצים בינלאומיים",Bangla Vision
+#EXTINF:-1 tvg-id="BanglaVision.bd" tvg-name="Bangla Vision" tvg-chno="2759" tvg-logo="https://i.imgur.com/nCWgp38.png" group-title="ערוצים בינלאומיים",Bangla Vision
 https://tvsen5.aynaott.com/banglavision/index.m3u8
-#EXTINF:-1 tvg-id="CoolTV.mk" tvg-name="Cool TV" tvg-chno="2761" tvg-logo="https://i.imgur.com/2tFrjUz.png" group-title="ערוצים בינלאומיים",Cool TV
+#EXTINF:-1 tvg-id="CoolTV.mk" tvg-name="Cool TV" tvg-chno="2760" tvg-logo="https://i.imgur.com/2tFrjUz.png" group-title="ערוצים בינלאומיים",Cool TV
 https://stream.nasatv.com.mk/cooltv/hls/cooltv_live.m3u8
-#EXTINF:-1 tvg-id="TVHram.rs" tvg-name="TV Hram" tvg-chno="2762" tvg-logo="https://i.imgur.com/XzAYOFK.png" group-title="ערוצים בינלאומיים",TV Hram
+#EXTINF:-1 tvg-id="TVHram.rs" tvg-name="TV Hram" tvg-chno="2761" tvg-logo="https://i.imgur.com/XzAYOFK.png" group-title="ערוצים בינלאומיים",TV Hram
 https://vod1.laki.eu/live/hram/index.m3u8
-#EXTINF:-1 tvg-id="TVSyri.xk" tvg-name="TV Syri" tvg-chno="2763" tvg-logo="https://i.imgur.com/ZQuFosn.png" group-title="ערוצים בינלאומיים",TV Syri
+#EXTINF:-1 tvg-id="TVSyri.xk" tvg-name="TV Syri" tvg-chno="2762" tvg-logo="https://i.imgur.com/ZQuFosn.png" group-title="ערוצים בינלאומיים",TV Syri
 https://gjirafa-video-live.gjirafa.net/gjvideo-live/xej-xnb-ba0-kup/index.m3u8
-#EXTINF:-1 tvg-id="IsiboTV.rw" tvg-name="Isibo TV" tvg-chno="2764" tvg-logo="https://i.imgur.com/bXhEeTC.png" group-title="ערוצים בינלאומיים",Isibo TV
+#EXTINF:-1 tvg-id="IsiboTV.rw" tvg-name="Isibo TV" tvg-chno="2763" tvg-logo="https://i.imgur.com/bXhEeTC.png" group-title="ערוצים בינלאומיים",Isibo TV
 https://5c46fa289c89f.streamlock.net/pub2live/myStream/playlist.m3u8
-#EXTINF:-1 tvg-id="2TV.ge" tvg-name="2 TV" tvg-chno="2765" tvg-logo="https://i.imgur.com/FJBL6zI.png" group-title="ערוצים בינלאומיים",2 TV
+#EXTINF:-1 tvg-id="2TV.ge" tvg-name="2 TV" tvg-chno="2764" tvg-logo="https://i.imgur.com/FJBL6zI.png" group-title="ערוצים בינלאומיים",2 TV
 https://tv.cdn.xsg.ge/gpb-2tv/index.m3u8
-#EXTINF:-1 tvg-id="ArkadagTV.tm" tvg-name="Arkadag TV" tvg-chno="2766" tvg-logo="https://i.imgur.com/JdEb4Ug.png" group-title="ערוצים בינלאומיים",Arkadag TV
+#EXTINF:-1 tvg-id="ArkadagTV.tm" tvg-name="Arkadag TV" tvg-chno="2765" tvg-logo="https://i.imgur.com/JdEb4Ug.png" group-title="ערוצים בינלאומיים",Arkadag TV
 https://alpha.tv.online.tm/hls/ch000.m3u8
-#EXTINF:-1 tvg-id="CRTV.cm" tvg-name="CRTV" tvg-chno="2767" tvg-logo="https://i.imgur.com/cQWNh3L.png" group-title="ערוצים בינלאומיים",CRTV
+#EXTINF:-1 tvg-id="CRTV.cm" tvg-name="CRTV" tvg-chno="2766" tvg-logo="https://i.imgur.com/cQWNh3L.png" group-title="ערוצים בינלאומיים",CRTV
 https://10gb1.acangroup.org:1929/crtv/crtv_all/playlist.m3u8
-#EXTINF:-1 tvg-id="DudelangeTV.lu" tvg-name="Dudelange TV" tvg-chno="2768" tvg-logo="https://i.imgur.com/2dLYZsc.png" group-title="ערוצים בינלאומיים",Dudelange TV
+#EXTINF:-1 tvg-id="DudelangeTV.lu" tvg-name="Dudelange TV" tvg-chno="2767" tvg-logo="https://i.imgur.com/2dLYZsc.png" group-title="ערוצים בינלאומיים",Dudelange TV
 https://streamer20.multimedia.blue/Eltrona/DudelangeTV/playlist.m3u8
-#EXTINF:-1 tvg-id="ShakthiTV.lk" tvg-name="Shakthi TV" tvg-chno="2769" tvg-logo="https://i.imgur.com/RX6IwK8.png" group-title="ערוצים בינלאומיים",Shakthi TV
+#EXTINF:-1 tvg-id="ShakthiTV.lk" tvg-name="Shakthi TV" tvg-chno="2768" tvg-logo="https://i.imgur.com/RX6IwK8.png" group-title="ערוצים בינלאומיים",Shakthi TV
 https://mumbai-edge.smartplaytv.in/ShakthiTV/index.m3u8
-#EXTINF:-1 tvg-id="ZjarrTV.al" tvg-name="Zjarr TV" tvg-chno="2770" tvg-logo="https://i.imgur.com/hNuWZWe.png" group-title="ערוצים בינלאומיים",Zjarr TV
+#EXTINF:-1 tvg-id="ZjarrTV.al" tvg-name="Zjarr TV" tvg-chno="2769" tvg-logo="https://i.imgur.com/hNuWZWe.png" group-title="ערוצים בינלאומיים",Zjarr TV
 https://zjarr.future.al/hls/playlist.m3u8
-#EXTINF:-1 tvg-id="WhakaataMaori.nz" tvg-name="Whakaata Maori" tvg-chno="2771" tvg-logo="https://i.imgur.com/oT3PrHZ.png" group-title="ערוצים בינלאומיים",Whakaata Maori
+#EXTINF:-1 tvg-id="WhakaataMaori.nz" tvg-name="Whakaata Maori" tvg-chno="2770" tvg-logo="https://i.imgur.com/oT3PrHZ.png" group-title="ערוצים בינלאומיים",Whakaata Maori
 https://i.mjh.nz/.r/maori-tv.m3u8
-#EXTINF:-1 tvg-id="MNBMongoliinMedee.mn" tvg-name="MNB Mongoliin Medee" tvg-chno="2772" tvg-logo="https://www.mongolsat.mn/assets/img/channel/21.png" group-title="ערוצים בינלאומיים",MNB Mongoliin Medee
+#EXTINF:-1 tvg-id="MNBMongoliinMedee.mn" tvg-name="MNB Mongoliin Medee" tvg-chno="2771" tvg-logo="https://www.mongolsat.mn/assets/img/channel/21.png" group-title="ערוצים בינלאומיים",MNB Mongoliin Medee
 https://live.mnb.mn/hls/mn2.stream.m3u8
-#EXTINF:-1 tvg-id="NevisTelevision.kn" tvg-name="Nevis Television" tvg-chno="2773" tvg-logo="https://i.imgur.com/u76GqAi.png" group-title="ערוצים בינלאומיים",Nevis Television
+#EXTINF:-1 tvg-id="NevisTelevision.kn" tvg-name="Nevis Television" tvg-chno="2772" tvg-logo="https://i.imgur.com/u76GqAi.png" group-title="ערוצים בינלאומיים",Nevis Television
 https://media.slactech.com:1936/NTvDirect/ngrp:NTvDirect_all/playlist.m3u8
-#EXTINF:-1 tvg-id="KanalS.az" tvg-name="Kanal S" tvg-chno="2774" tvg-logo="https://raw.githubusercontent.com/songwenhui239/Songwenhui239/refs/heads/main/Kanal%20S.png" group-title="ערוצים בינלאומיים",Kanal S
+#EXTINF:-1 tvg-id="KanalS.az" tvg-name="Kanal S" tvg-chno="2773" tvg-logo="https://raw.githubusercontent.com/songwenhui239/Songwenhui239/refs/heads/main/Kanal%20S.png" group-title="ערוצים בינלאומיים",Kanal S
 https://lives.atv.az:5443/KANAL-S/streams/kanals.m3u8
-#EXTINF:-1 tvg-id="EdenTV.bj" tvg-name="Eden TV" tvg-chno="2775" tvg-logo="https://i.imgur.com/4ClnG0x.png" group-title="ערוצים בינלאומיים",Eden TV
+#EXTINF:-1 tvg-id="EdenTV.bj" tvg-name="Eden TV" tvg-chno="2774" tvg-logo="https://i.imgur.com/4ClnG0x.png" group-title="ערוצים בינלאומיים",Eden TV
 https://rtmp.edentv.bj/hls/stream.m3u8
-#EXTINF:-1 tvg-id="YerkirMedia.am" tvg-name="Yerkir Media" tvg-chno="2776" tvg-logo="https://i.imgur.com/KqkOz6H.png" group-title="ערוצים בינלאומיים",Yerkir Media
+#EXTINF:-1 tvg-id="YerkirMedia.am" tvg-name="Yerkir Media" tvg-chno="2775" tvg-logo="https://i.imgur.com/KqkOz6H.png" group-title="ערוצים בינלאומיים",Yerkir Media
 http://yerkirmedia.am/yerkirmedia/live.m3u8
-#EXTINF:-1 tvg-id="TownTV.kh" tvg-name="Town TV" tvg-chno="2777" tvg-logo="https://i.imgur.com/9fUGvVG.png" group-title="ערוצים בינלאומיים",Town TV
+#EXTINF:-1 tvg-id="TownTV.kh" tvg-name="Town TV" tvg-chno="2776" tvg-logo="https://i.imgur.com/9fUGvVG.png" group-title="ערוצים בינלאומיים",Town TV
 https://stream.pdtvhd.com/LiveApp/streams/Townfullhd.m3u8
-#EXTINF:-1 tvg-id="ToloTV.af" tvg-name="Tolo TV" tvg-chno="2778" tvg-logo="https://upload.wikimedia.org/wikipedia/en/c/ca/TOLO_TV_logo_2016.png" group-title="ערוצים בינלאומיים",Tolo TV
+#EXTINF:-1 tvg-id="ToloTV.af" tvg-name="Tolo TV" tvg-chno="2777" tvg-logo="https://upload.wikimedia.org/wikipedia/en/c/ca/TOLO_TV_logo_2016.png" group-title="ערוצים בינלאומיים",Tolo TV
 https://tgn.bozztv.com/eshgtv-dvrfl05/gin-tolohd/tracks-v1a1/mono.m3u8
-#EXTINF:-1 tvg-id="ISTV.la" tvg-name="ISTV" tvg-chno="2779" tvg-logo="https://i.imgur.com/TGAKFcV.jpg" group-title="ערוצים בינלאומיים",ISTV
+#EXTINF:-1 tvg-id="ISTV.la" tvg-name="ISTV" tvg-chno="2778" tvg-logo="https://i.imgur.com/TGAKFcV.jpg" group-title="ערוצים בינלאומיים",ISTV
 https://livefta.malimarcdn.com/ftaedge00/ichannel.sdp/playlist.m3u8
-#EXTINF:-1 tvg-id="VidusdaugavasTelevizija.lv" tvg-name="Vidusdaugavas Televizija" tvg-chno="2780" tvg-logo="https://i.imgur.com/L5U3PQR.png" group-title="ערוצים בינלאומיים",Vidusdaugavas Televizija
+#EXTINF:-1 tvg-id="VidusdaugavasTelevizija.lv" tvg-name="Vidusdaugavas Televizija" tvg-chno="2779" tvg-logo="https://i.imgur.com/L5U3PQR.png" group-title="ערוצים בינלאומיים",Vidusdaugavas Televizija
 https://straume.vdtv.lv/vdtv2/index.m3u8
-#EXTINF:-1 tvg-id="STV.hr" tvg-name="STV" tvg-chno="2781" tvg-logo="https://i.imgur.com/Z3yRl17.png" group-title="ערוצים בינלאומיים",STV
+#EXTINF:-1 tvg-id="STV.hr" tvg-name="STV" tvg-chno="2780" tvg-logo="https://i.imgur.com/Z3yRl17.png" group-title="ערוצים בינלאומיים",STV
 http://89.201.163.244:8080/hls/hdmi.m3u8
-#EXTINF:-1 tvg-id="Televizija5.ba" tvg-name="Televizija 5" tvg-chno="2782" tvg-logo="https://i.imgur.com/znpvJys.png" group-title="ערוצים בינלאומיים",Televizija 5
+#EXTINF:-1 tvg-id="Televizija5.ba" tvg-name="Televizija 5" tvg-chno="2781" tvg-logo="https://i.imgur.com/znpvJys.png" group-title="ערוצים בינלאומיים",Televizija 5
 https://balkanmedia.dynu.net/hls/tv5web.m3u8
-#EXTINF:-1 tvg-id="TVTeuta.me" tvg-name="TV Teuta" tvg-chno="2783" tvg-logo="https://i.imgur.com/sWVqBuW.png" group-title="ערוצים בינלאומיים",TV Teuta
+#EXTINF:-1 tvg-id="TVTeuta.me" tvg-name="TV Teuta" tvg-chno="2782" tvg-logo="https://i.imgur.com/sWVqBuW.png" group-title="ערוצים בינלאומיים",TV Teuta
 http://143.244.204.5/tvteuta/tracks-v1a1/mono.m3u8
-#EXTINF:-1 tvg-id="Akaku54.us" tvg-name="Akaku 54" tvg-chno="2784" tvg-logo="https://www.akaku.org/wp-content/uploads/bb-plugin/cache/Channel54-147x150-square.png" group-title="ערוצים בינלאומיים",Akaku 54
+#EXTINF:-1 tvg-id="Akaku54.us" tvg-name="Akaku 54" tvg-chno="2783" tvg-logo="https://www.akaku.org/wp-content/uploads/bb-plugin/cache/Channel54-147x150-square.png" group-title="ערוצים בינלאומיים",Akaku 54
 https://castus-vod-dev.s3.amazonaws.com/vod_clients/akaku/live/ch2/video.m3u8
-#EXTINF:-1 tvg-id="RMCDecouverte.fr" tvg-name="RMC Decouverte" tvg-chno="2785" tvg-logo="https://upload.wikimedia.org/wikipedia/fr/thumb/b/b3/RMC_D%C3%A9couverte_logo_2017.svg/960px-RMC_D%C3%A9couverte_logo_2017.svg.png" group-title="ערוצים בינלאומיים",RMC Decouverte
+#EXTINF:-1 tvg-id="RMCDecouverte.fr" tvg-name="RMC Decouverte" tvg-chno="2784" tvg-logo="https://upload.wikimedia.org/wikipedia/fr/thumb/b/b3/RMC_D%C3%A9couverte_logo_2017.svg/960px-RMC_D%C3%A9couverte_logo_2017.svg.png" group-title="ערוצים בינלאומיים",RMC Decouverte
 https://d16zzycxcd0m0r.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-hixvx5kymecr9/RMC_Decouverte_FR.m3u8
-#EXTINF:-1 tvg-id="BRFernsehen.de" tvg-name="BR Fernsehen" tvg-chno="2786" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Logo_Bayerischer_Rundfunk_2024.svg/960px-Logo_Bayerischer_Rundfunk_2024.svg.png" group-title="ערוצים בינלאומיים",BR Fernsehen
+#EXTINF:-1 tvg-id="BRFernsehen.de" tvg-name="BR Fernsehen" tvg-chno="2785" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Logo_Bayerischer_Rundfunk_2024.svg/960px-Logo_Bayerischer_Rundfunk_2024.svg.png" group-title="ערוצים בינלאומיים",BR Fernsehen
 https://mcdn.br.de/br/fs/bfs_sued/hls/de/master.m3u8
-#EXTINF:-1 tvg-id="CanalSurAndalucia.es" tvg-name="Canal Sur Andalucia" tvg-chno="2787" tvg-logo="https://i.imgur.com/lznnA4v.png" group-title="ערוצים בינלאומיים",Canal Sur Andalucia
+#EXTINF:-1 tvg-id="CanalSurAndalucia.es" tvg-name="Canal Sur Andalucia" tvg-chno="2786" tvg-logo="https://i.imgur.com/lznnA4v.png" group-title="ערוצים בינלאומיים",Canal Sur Andalucia
 https://dfk2a268yviz9.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-ddiii1m6jt6of/CanalSurAndaluciaES.m3u8
-#EXTINF:-1 tvg-id="LA7.it" tvg-name="LA7" tvg-chno="2788" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/LA7_-_Logo_2011.svg/960px-LA7_-_Logo_2011.svg.png" group-title="ערוצים בינלאומיים",LA7
+#EXTINF:-1 tvg-id="LA7.it" tvg-name="LA7" tvg-chno="2787" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/LA7_-_Logo_2011.svg/960px-LA7_-_Logo_2011.svg.png" group-title="ערוצים בינלאומיים",LA7
 https://d3k8wzt41aflvx.cloudfront.net/LA7HD/Live.m3u8
-#EXTINF:-1 tvg-id="86.ru" tvg-name="86" tvg-chno="2789" tvg-logo="https://i.imgur.com/0dRS4Cb.png" group-title="ערוצים בינלאומיים",86
+#EXTINF:-1 tvg-id="86.ru" tvg-name="86" tvg-chno="2788" tvg-logo="https://i.imgur.com/0dRS4Cb.png" group-title="ערוצים בינלאומיים",86
 https://sitv.ru/hls/s86.m3u8
-#EXTINF:-1 tvg-id="NTN.ua" tvg-name="NTN" tvg-chno="2790" tvg-logo="https://i.imgur.com/AmyCNJv.png" group-title="ערוצים בינלאומיים",NTN
+#EXTINF:-1 tvg-id="NTN.ua" tvg-name="NTN" tvg-chno="2789" tvg-logo="https://i.imgur.com/AmyCNJv.png" group-title="ערוצים בינלאומיים",NTN
 https://cdn15.live-tv.cloud/ua_infinitas_tv/ntn-abr/playlist.m3u8
-#EXTINF:-1 tvg-id="SohailTV.ca" tvg-name="Sohail TV" tvg-chno="2791" tvg-logo="https://i.ibb.co/dtzjKfT/Sohail-TV.png" group-title="ערוצים בינלאומיים",Sohail TV
+#EXTINF:-1 tvg-id="SohailTV.ca" tvg-name="Sohail TV" tvg-chno="2790" tvg-logo="https://i.ibb.co/dtzjKfT/Sohail-TV.png" group-title="ערוצים בינלאומיים",Sohail TV
 https://iptv.sohailtv.com/sohail/playlist/index.m3u8
-#EXTINF:-1 tvg-id="AnadoluNetTV.tr" tvg-name="Anadolu Net TV" tvg-chno="2792" tvg-logo="https://www.anadolunettv.com/d/r/logo.png" group-title="ערוצים בינלאומיים",Anadolu Net TV
+#EXTINF:-1 tvg-id="AnadoluNetTV.tr" tvg-name="Anadolu Net TV" tvg-chno="2791" tvg-logo="https://www.anadolunettv.com/d/r/logo.png" group-title="ערוצים בינלאומיים",Anadolu Net TV
 https://live.artidijitalmedya.com/artidijital_anadolunet/anadolunet/playlist.m3u8
-#EXTINF:-1 tvg-id="MetroTV.in" tvg-name="Metro TV" tvg-chno="2793" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Metro_TV.png" group-title="ערוצים בינלאומיים",Metro TV
+#EXTINF:-1 tvg-id="MetroTV.in" tvg-name="Metro TV" tvg-chno="2792" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/Metro_TV.png" group-title="ערוצים בינלאומיים",Metro TV
 https://mercury.streambridge.link:8042/telugu/metrotv/index.m3u8
-#EXTINF:-1 tvg-id="ArirangRadio.kr" tvg-name="Arirang Radio" tvg-chno="2794" tvg-logo="https://i.imgur.com/dtfiG9k.png" group-title="ערוצים בינלאומיים",Arirang Radio
+#EXTINF:-1 tvg-id="ArirangRadio.kr" tvg-name="Arirang Radio" tvg-chno="2793" tvg-logo="https://i.imgur.com/dtfiG9k.png" group-title="ערוצים בינלאומיים",Arirang Radio
 https://amdlive-ch02-ctnd-com.akamaized.net/arirang_3ch/smil:arirang_3ch.smil/playlist.m3u8
-#EXTINF:-1 tvg-id="BreadTV.cn" tvg-name="Bread TV" tvg-chno="2795" tvg-logo="https://bread-tv.com/uploads/allimg/241202/9_1836542371.png" group-title="ערוצים בינלאומיים",Bread TV
+#EXTINF:-1 tvg-id="BreadTV.cn" tvg-name="Bread TV" tvg-chno="2794" tvg-logo="https://bread-tv.com/uploads/allimg/241202/9_1836542371.png" group-title="ערוצים בינלאומיים",Bread TV
 https://video.bread-tv.com:8091/hls-live24/online/index.m3u8
-#EXTINF:-1 tvg-id="Lke.br" tvg-name="L!ke" tvg-chno="2796" tvg-logo="https://i.imgur.com/chHsCzB.png" group-title="ערוצים בינלאומיים",L!ke
+#EXTINF:-1 tvg-id="Lke.br" tvg-name="L!ke" tvg-chno="2795" tvg-logo="https://i.imgur.com/chHsCzB.png" group-title="ערוצים בינלאומיים",L!ke
 https://cnl-cl.otteravision.com/cnl/cl_h265/cl_h265.m3u8
-#EXTINF:-1 tvg-id="Canal26.mx" tvg-name="Canal 26" tvg-chno="2797" tvg-logo="https://i.imgur.com/PAvnVN9.png" group-title="ערוצים בינלאומיים",Canal 26
+#EXTINF:-1 tvg-id="Canal26.mx" tvg-name="Canal 26" tvg-chno="2796" tvg-logo="https://i.imgur.com/PAvnVN9.png" group-title="ערוצים בינלאומיים",Canal 26
 https://60417ddeaf0d9.streamlock.net/telemetrika3/smil:telemetrika3.smil/playlist.m3u8
-#EXTINF:-1 tvg-id="Canal3LaPampa.ar" tvg-name="Canal 3 La Pampa" tvg-chno="2798" tvg-logo="https://i.imgur.com/SsNFudZ.png" group-title="ערוצים בינלאומיים",Canal 3 La Pampa
+#EXTINF:-1 tvg-id="Canal3LaPampa.ar" tvg-name="Canal 3 La Pampa" tvg-chno="2797" tvg-logo="https://i.imgur.com/SsNFudZ.png" group-title="ערוצים בינלאומיים",Canal 3 La Pampa
 https://stream.arcast.com.ar/c3lapampa/ngrp:c3lapampa_all/playlist.m3u8
-#EXTINF:-1 tvg-id="RadioSines.pt" tvg-name="Radio Sines" tvg-chno="2799" tvg-logo="https://i.imgur.com/Oe6F1nL.png" group-title="ערוצים בינלאומיים",Radio Sines
+#EXTINF:-1 tvg-id="RadioSines.pt" tvg-name="Radio Sines" tvg-chno="2798" tvg-logo="https://i.imgur.com/Oe6F1nL.png" group-title="ערוצים בינלאומיים",Radio Sines
 https://load-balancer.azotosolutions.com/cdnedge19/smil:live19.smil/playlist.m3u8
-#EXTINF:-1 tvg-id="OmroepBrabant.nl" tvg-name="Omroep Brabant" tvg-chno="2800" tvg-logo="https://i.imgur.com/KLYsKKC.png" group-title="ערוצים בינלאומיים",Omroep Brabant
+#EXTINF:-1 tvg-id="OmroepBrabant.nl" tvg-name="Omroep Brabant" tvg-chno="2799" tvg-logo="https://i.imgur.com/KLYsKKC.png" group-title="ערוצים בינלאומיים",Omroep Brabant
 https://d3slqp9xhts6qb.cloudfront.net/live/omroepbrabant/tv/index.m3u8
-#EXTINF:-1 tvg-id="Radio1.be" tvg-name="Radio 1" tvg-chno="2801" tvg-logo="https://i.ibb.co/pwCs0YY/512px-VRT-Radio-1-logo-svg.png" group-title="ערוצים בינלאומיים",Radio 1
+#EXTINF:-1 tvg-id="Radio1.be" tvg-name="Radio 1" tvg-chno="2800" tvg-logo="https://i.ibb.co/pwCs0YY/512px-VRT-Radio-1-logo-svg.png" group-title="ערוצים בינלאומיים",Radio 1
 https://live.vrtcdn.be/groupa/live/3c3a12b5-093d-4a19-ae1f-3e775433286e/live.isml/.m3u8
-#EXTINF:-1 tvg-id="Radio3i.ch" tvg-name="Radio 3i" tvg-chno="2802" tvg-logo="https://i.imgur.com/0Kmh49G.png" group-title="ערוצים בינלאומיים",Radio 3i
+#EXTINF:-1 tvg-id="Radio3i.ch" tvg-name="Radio 3i" tvg-chno="2801" tvg-logo="https://i.imgur.com/0Kmh49G.png" group-title="ערוצים בינלאומיים",Radio 3i
 https://vstream-cdn.ch/hls/radio3i.m3u8
-#EXTINF:-1 tvg-id="FS1Salzburg.at" tvg-name="FS1 Salzburg" tvg-chno="2803" tvg-logo="https://i.imgur.com/74gMaPK.png" group-title="ערוצים בינלאומיים",FS1 Salzburg
+#EXTINF:-1 tvg-id="FS1Salzburg.at" tvg-name="FS1 Salzburg" tvg-chno="2802" tvg-logo="https://i.imgur.com/74gMaPK.png" group-title="ערוצים בינלאומיים",FS1 Salzburg
 https://stream.fs1.tv/hls/webstream.m3u8
-#EXTINF:-1 tvg-id="TopMoviesPolska.pl" tvg-name="Top Movies Polska" tvg-chno="2804" tvg-logo="https://images-3.rakuten.tv/storage/global-live-channel/translation/artwork/39a979b9-49df-48c1-8c1c-5763828b60aa-width200-quality90.png" group-title="ערוצים בינלאומיים",Top Movies Polska
+#EXTINF:-1 tvg-id="TopMoviesPolska.pl" tvg-name="Top Movies Polska" tvg-chno="2803" tvg-logo="https://images-3.rakuten.tv/storage/global-live-channel/translation/artwork/39a979b9-49df-48c1-8c1c-5763828b60aa-width200-quality90.png" group-title="ערוצים בינלאומיים",Top Movies Polska
 https://top-movies-rakuten-tv-pl.fast.rakuten.tv/v1/master/0547f18649bd788bec7b67b746e47670f558b6b2/production-LiveChannel-6059/master.m3u8
-#EXTINF:-1 tvg-id="EcclesiaTV.gr" tvg-name="Ecclesia TV" tvg-chno="2805" tvg-logo="https://i.imgur.com/QQSSMZx.png" group-title="ערוצים בינלאומיים",Ecclesia TV
+#EXTINF:-1 tvg-id="EcclesiaTV.gr" tvg-name="Ecclesia TV" tvg-chno="2804" tvg-logo="https://i.imgur.com/QQSSMZx.png" group-title="ערוצים בינלאומיים",Ecclesia TV
 https://liveopen.siliconweb.com/openTvLive/openEcclessia/playlist.m3u8
-#EXTINF:-1 tvg-id="TheMillers.se" tvg-name="The Millers" tvg-chno="2806" tvg-logo="https://images.pluto.tv/channels/69afeefa0a7f2095e768401c/colorLogoPNG_1776168453662.png" group-title="ערוצים בינלאומיים",The Millers
+#EXTINF:-1 tvg-id="TheMillers.se" tvg-name="The Millers" tvg-chno="2805" tvg-logo="https://images.pluto.tv/channels/69afeefa0a7f2095e768401c/colorLogoPNG_1776168453662.png" group-title="ערוצים בינלאומיים",The Millers
 https://jmp2.uk/plu-69afef4b0306b277744de1e4.m3u8
-#EXTINF:-1 tvg-id="KanalHovedstaden.dk" tvg-name="Kanal Hovedstaden" tvg-chno="2807" tvg-logo="https://i.imgur.com/afujBQs.jpeg" group-title="ערוצים בינלאומיים",Kanal Hovedstaden
+#EXTINF:-1 tvg-id="KanalHovedstaden.dk" tvg-name="Kanal Hovedstaden" tvg-chno="2806" tvg-logo="https://i.imgur.com/afujBQs.jpeg" group-title="ערוצים בינלאומיים",Kanal Hovedstaden
 http://khkbh.dk:8080/hls/livestream/index.m3u8
-#EXTINF:-1 tvg-id="OnniTV.fi" tvg-name="Onni TV" tvg-chno="2808" tvg-logo="https://i.imgur.com/Vba4jUk.png" group-title="ערוצים בינלאומיים",Onni TV
+#EXTINF:-1 tvg-id="OnniTV.fi" tvg-name="Onni TV" tvg-chno="2807" tvg-logo="https://i.imgur.com/Vba4jUk.png" group-title="ערוצים בינלאומיים",Onni TV
 https://onnitv.digitacdn.net/live/ott/onnitv/playlist.m3u8
-#EXTINF:-1 tvg-id="Jihoceskatelevize.cz" tvg-name="Jihoceska televize" tvg-chno="2809" tvg-logo="https://i.imgur.com/Hi8hZzl.png" group-title="ערוצים בינלאומיים",Jihoceska televize
+#EXTINF:-1 tvg-id="Jihoceskatelevize.cz" tvg-name="Jihoceska televize" tvg-chno="2808" tvg-logo="https://i.imgur.com/Hi8hZzl.png" group-title="ערוצים בינלאומיים",Jihoceska televize
 https://vysilani.zaktv.cz/broadcast/hls/jtv/index.m3u8
-#EXTINF:-1 tvg-id="MuscelTV.ro" tvg-name="Muscel TV" tvg-chno="2810" tvg-logo="https://i.ibb.co/Bq9CHyn/Musceltv1.png" group-title="ערוצים בינלאומיים",Muscel TV
+#EXTINF:-1 tvg-id="MuscelTV.ro" tvg-name="Muscel TV" tvg-chno="2809" tvg-logo="https://i.ibb.co/Bq9CHyn/Musceltv1.png" group-title="ערוצים בינלאומיים",Muscel TV
 https://cdn.streamnet.pro/musceltv/live/playlist.m3u8
-#EXTINF:-1 tvg-id="BudapestEuropaTelevizio.hu" tvg-name="Budapest Europa Televizio" tvg-chno="2811" tvg-logo="https://i.imgur.com/CqqWtzo.png" group-title="ערוצים בינלאומיים",Budapest Europa Televizio
+#EXTINF:-1 tvg-id="BudapestEuropaTelevizio.hu" tvg-name="Budapest Europa Televizio" tvg-chno="2810" tvg-logo="https://i.imgur.com/CqqWtzo.png" group-title="ערוצים בינלאומיים",Budapest Europa Televizio
 https://cloudfront44.lexanetwork.com:1344/freerelay/bpetv.sdp/playlist.m3u8
-#EXTINF:-1 tvg-id="DCHTV.cl" tvg-name="DCH TV" tvg-chno="2812" tvg-logo="https://i.imgur.com/65Xk6oI.png" group-title="ערוצים בינלאומיים",DCH TV
+#EXTINF:-1 tvg-id="DCHTV.cl" tvg-name="DCH TV" tvg-chno="2811" tvg-logo="https://i.imgur.com/65Xk6oI.png" group-title="ערוצים בינלאומיים",DCH TV
 https://v2.tustreaming.cl/dchtv/index.m3u8
-#EXTINF:-1 tvg-id="NuestraTeleInternacional.co" tvg-name="Nuestra Tele Internacional" tvg-chno="2813" tvg-logo="https://i.imgur.com/JoGQqmP.png" group-title="ערוצים בינלאומיים",Nuestra Tele Internacional
+#EXTINF:-1 tvg-id="NuestraTeleInternacional.co" tvg-name="Nuestra Tele Internacional" tvg-chno="2812" tvg-logo="https://i.imgur.com/JoGQqmP.png" group-title="ערוצים בינלאומיים",Nuestra Tele Internacional
 https://stream1.bitred.cl/nuestra-tele/index.m3u8
-#EXTINF:-1 tvg-id="VisionSur.pe" tvg-name="Vision Sur" tvg-chno="2814" tvg-logo="https://i.imgur.com/AbZYWEQ.png" group-title="ערוצים בינלאומיים",Vision Sur
+#EXTINF:-1 tvg-id="VisionSur.pe" tvg-name="Vision Sur" tvg-chno="2813" tvg-logo="https://i.imgur.com/AbZYWEQ.png" group-title="ערוצים בינלאומיים",Vision Sur
 https://ott1.hdlatam.tv/live_abr/webtvVisionSur/playlist.m3u8
-#EXTINF:-1 tvg-id="NusantaraTV.id" tvg-name="Nusantara TV" tvg-chno="2815" tvg-logo="https://i.imgur.com/viun5hj.png" group-title="ערוצים בינלאומיים",Nusantara TV
+#EXTINF:-1 tvg-id="NusantaraTV.id" tvg-name="Nusantara TV" tvg-chno="2814" tvg-logo="https://i.imgur.com/viun5hj.png" group-title="ערוצים בינלאומיים",Nusantara TV
 https://nusantaratv.siar.us/nusantaratv/live/playlist.m3u8
-#EXTINF:-1 tvg-id="STOUChannel.th" tvg-name="STOU Channel" tvg-chno="2816" tvg-logo="https://i.imgur.com/L3T2QZz.png" group-title="ערוצים בינלאומיים",STOU Channel
+#EXTINF:-1 tvg-id="STOUChannel.th" tvg-name="STOU Channel" tvg-chno="2815" tvg-logo="https://i.imgur.com/L3T2QZz.png" group-title="ערוצים בינלאומיים",STOU Channel
 https://stream1.stou.ac.th/live/stou_720p/playlist.m3u8
-#EXTINF:-1 tvg-id="DienBienTV.vn" tvg-name="Dien Bien TV" tvg-chno="2817" tvg-logo="https://i.imgur.com/u308o8q.png" group-title="ערוצים בינלאומיים",Dien Bien TV
+#EXTINF:-1 tvg-id="DienBienTV.vn" tvg-name="Dien Bien TV" tvg-chno="2816" tvg-logo="https://i.imgur.com/u308o8q.png" group-title="ערוצים בינלאומיים",Dien Bien TV
 https://stream.langsontv.vn/live/2855dfeccb7f49a41a2b0441b3bfeda413c/playlist.m3u8
-#EXTINF:-1 tvg-id="BSTV.pk" tvg-name="BSTV" tvg-chno="2818" tvg-logo="https://www.vivalivetv.com/public/files/shows/0/1/3952-640x360-FFFFFF.jpg" group-title="ערוצים בינלאומיים",BSTV
+#EXTINF:-1 tvg-id="BSTV.pk" tvg-name="BSTV" tvg-chno="2817" tvg-logo="https://www.vivalivetv.com/public/files/shows/0/1/3952-640x360-FFFFFF.jpg" group-title="ערוצים בינלאומיים",BSTV
 https://lbgo.bozztv.com/ssh101/ssh101/bstv/playlist.m3u8
-#EXTINF:-1 tvg-id="ArkoTV.ir" tvg-name="Arko TV" tvg-chno="2819" tvg-logo="" group-title="ערוצים בינלאומיים",Arko TV
+#EXTINF:-1 tvg-id="ArkoTV.ir" tvg-name="Arko TV" tvg-chno="2818" tvg-logo="" group-title="ערוצים בינלאומיים",Arko TV
 https://arkhls.wns.live/hls/stream.m3u8
-#EXTINF:-1 tvg-id="BCSStarCrossTV.ng" tvg-name="BCS StarCross TV" tvg-chno="2820" tvg-logo="https://i.imgur.com/VKv1Y6p.png" group-title="ערוצים בינלאומיים",BCS StarCross TV
+#EXTINF:-1 tvg-id="BCSStarCrossTV.ng" tvg-name="BCS StarCross TV" tvg-chno="2819" tvg-logo="https://i.imgur.com/VKv1Y6p.png" group-title="ערוצים בינלאומיים",BCS StarCross TV
 https://viewmedia7219.bozztv.com/wmedia/viewmedia100/web_001/Stream/playlist.m3u8
-#EXTINF:-1 tvg-id="AIONTV.do" tvg-name="AION TV" tvg-chno="2821" tvg-logo="https://i.imgur.com/DBvm7YS.png" group-title="ערוצים בינלאומיים",AION TV
+#EXTINF:-1 tvg-id="AIONTV.do" tvg-name="AION TV" tvg-chno="2820" tvg-logo="https://i.imgur.com/DBvm7YS.png" group-title="ערוצים בינלאומיים",AION TV
 https://edge.essastream.com/aiontelevision/playlist.m3u8
-#EXTINF:-1 tvg-id="TVLatina.bo" tvg-name="TV Latina" tvg-chno="2822" tvg-logo="https://i.imgur.com/V6wxEdh.png" group-title="ערוצים בינלאומיים",TV Latina
+#EXTINF:-1 tvg-id="TVLatina.bo" tvg-name="TV Latina" tvg-chno="2821" tvg-logo="https://i.imgur.com/V6wxEdh.png" group-title="ערוצים בינלאומיים",TV Latina
 https://castv10.plugstreaming.com:19360/redtv/redtv.m3u8
-#EXTINF:-1 tvg-id="RegionalTVYaguaron.py" tvg-name="Regional TV Yaguaron" tvg-chno="2823" tvg-logo="https://i.imgur.com/iL5JnSy.jpeg" group-title="ערוצים בינלאומיים",Regional TV Yaguaron
+#EXTINF:-1 tvg-id="RegionalTVYaguaron.py" tvg-name="Regional TV Yaguaron" tvg-chno="2822" tvg-logo="https://i.imgur.com/iL5JnSy.jpeg" group-title="ערוצים בינלאומיים",Regional TV Yaguaron
 https://video.hostingcaaguazu.com:19360/regionaltv/regionaltv.m3u8
-#EXTINF:-1 tvg-id="TeleviziaMocenok.sk" tvg-name="Televizia Mocenok" tvg-chno="2824" tvg-logo="https://i.imgur.com/psb8GxZ.png" group-title="ערוצים בינלאומיים",Televizia Mocenok
+#EXTINF:-1 tvg-id="TeleviziaMocenok.sk" tvg-name="Televizia Mocenok" tvg-chno="2823" tvg-logo="https://i.imgur.com/psb8GxZ.png" group-title="ערוצים בינלאומיים",Televizia Mocenok
 https://5ca49f2417d90.streamlock.net/mocenok/livestream/playlist.m3u8
-#EXTINF:-1 tvg-id="TuTV.ve" tvg-name="Tu TV" tvg-chno="2825" tvg-logo="https://i.imgur.com/OBEmXQF.png" group-title="ערוצים בינלאומיים",Tu TV
+#EXTINF:-1 tvg-id="TuTV.ve" tvg-name="Tu TV" tvg-chno="2824" tvg-logo="https://i.imgur.com/OBEmXQF.png" group-title="ערוצים בינלאומיים",Tu TV
 https://astl-mainstr.qvixsolutions.com/asltvtu_ext/index.m3u8
-#EXTINF:-1 tvg-id="HechosEcuador.ec" tvg-name="Hechos Ecuador" tvg-chno="2826" tvg-logo="https://i.imgur.com/koMQZNX.png" group-title="ערוצים בינלאומיים",Hechos Ecuador
+#EXTINF:-1 tvg-id="HechosEcuador.ec" tvg-name="Hechos Ecuador" tvg-chno="2825" tvg-logo="https://i.imgur.com/koMQZNX.png" group-title="ערוצים בינלאומיים",Hechos Ecuador
 https://online.hechosecuador.com:5443/WebRTCApp/streams/hechosecuador.m3u8
-#EXTINF:-1 tvg-id="SolTV.gt" tvg-name="Sol TV" tvg-chno="2827" tvg-logo="https://i.ibb.co/YXYv8sf/logo-soltv2.png" group-title="ערוצים בינלאומיים",Sol TV
+#EXTINF:-1 tvg-id="SolTV.gt" tvg-name="Sol TV" tvg-chno="2826" tvg-logo="https://i.ibb.co/YXYv8sf/logo-soltv2.png" group-title="ערוצים בינלאומיים",Sol TV
 https://cdn.streamhispanatv.net:3409/live/soltvlive.m3u8
-#EXTINF:-1 tvg-id="TelevisionMetropolis192.hn" tvg-name="Television Metropolis 19.2" tvg-chno="2828" tvg-logo="https://i.imgur.com/QaocW5x.png" group-title="ערוצים בינלאומיים",Television Metropolis 19.2
+#EXTINF:-1 tvg-id="TelevisionMetropolis192.hn" tvg-name="Television Metropolis 19.2" tvg-chno="2827" tvg-logo="https://i.imgur.com/QaocW5x.png" group-title="ערוצים בינלאומיים",Television Metropolis 19.2
 https://5e85d90130e77.streamlock.net/6014/6014/playlist.m3u8
-#EXTINF:-1 tvg-id="STV.by" tvg-name="STV" tvg-chno="2829" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF_%D0%B1%D0%B5%D0%BB%D0%BE%D1%80%D1%83%D1%81%D1%81%D0%BA%D0%BE%D0%B3%D0%BE_%D1%82%D0%B5%D0%BB%D0%B5%D0%BA%D0%B0%D0%BD%D0%B0%D0%BB%D0%B0_%C2%AB%D0%A1%D0%A2%D0%92%C2%BB.svg/960px-%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF_%D0%B1%D0%B5%D0%BB%D0%BE%D1%80%D1%83%D1%81%D1%81%D0%BA%D0%BE%D0%B3%D0%BE_%D1%82%D0%B5%D0%BB%D0%B5%D0%BA%D0%B0%D0%BD%D0%B0%D0%BB%D0%B0_%C2%AB%D0%A1%D0%A2%D0%92%C2%BB.svg.png" group-title="ערוצים בינלאומיים",STV
+#EXTINF:-1 tvg-id="STV.by" tvg-name="STV" tvg-chno="2828" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF_%D0%B1%D0%B5%D0%BB%D0%BE%D1%80%D1%83%D1%81%D1%81%D0%BA%D0%BE%D0%B3%D0%BE_%D1%82%D0%B5%D0%BB%D0%B5%D0%BA%D0%B0%D0%BD%D0%B0%D0%BB%D0%B0_%C2%AB%D0%A1%D0%A2%D0%92%C2%BB.svg/960px-%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF_%D0%B1%D0%B5%D0%BB%D0%BE%D1%80%D1%83%D1%81%D1%81%D0%BA%D0%BE%D0%B3%D0%BE_%D1%82%D0%B5%D0%BB%D0%B5%D0%BA%D0%B0%D0%BD%D0%B0%D0%BB%D0%B0_%C2%AB%D0%A1%D0%A2%D0%92%C2%BB.svg.png" group-title="ערוצים בינלאומיים",STV
 https://ctv.dc.beltelecom.by/ctv/ctv.stream/playlist.m3u8
-#EXTINF:-1 tvg-id="TVRMoldova.md" tvg-name="TVR Moldova" tvg-chno="2830" tvg-logo="https://i.imgur.com/wDe9gL2.png" group-title="ערוצים בינלאומיים",TVR Moldova
+#EXTINF:-1 tvg-id="TVRMoldova.md" tvg-name="TVR Moldova" tvg-chno="2829" tvg-logo="https://i.imgur.com/wDe9gL2.png" group-title="ערוצים בינלאומיים",TVR Moldova
 https://tvr-moldova.lg.mncdn.com/tvrmoldova/smil:tvrmoldova.smil/chunklist.m3u8
-#EXTINF:-1 tvg-id="RTVCanal57.sv" tvg-name="RTV Canal 57" tvg-chno="2831" tvg-logo="https://i.imgur.com/tnOGWqL.png" group-title="ערוצים בינלאומיים",RTV Canal 57
+#EXTINF:-1 tvg-id="RTVCanal57.sv" tvg-name="RTV Canal 57" tvg-chno="2830" tvg-logo="https://i.imgur.com/tnOGWqL.png" group-title="ערוצים בינלאומיים",RTV Canal 57
 https://stream.giostreaming.app/rtvcanal57/rtvcanal57.m3u8
-#EXTINF:-1 tvg-id="WanLuoTV.ug" tvg-name="Wan Luo TV" tvg-chno="2832" tvg-logo="https://i.imgur.com/4PUUp3E.png" group-title="ערוצים בינלאומיים",Wan Luo TV
+#EXTINF:-1 tvg-id="WanLuoTV.ug" tvg-name="Wan Luo TV" tvg-chno="2831" tvg-logo="https://i.imgur.com/4PUUp3E.png" group-title="ערוצים בינלאומיים",Wan Luo TV
 https://stream.hydeinnovations.com/luotv-flussonic/index.m3u8
-#EXTINF:-1 tvg-id="TDK42.kz" tvg-name="TDK 42" tvg-chno="2833" tvg-logo="https://i.imgur.com/iVhdcS7.png" group-title="ערוצים בינלאומיים",TDK 42
+#EXTINF:-1 tvg-id="TDK42.kz" tvg-name="TDK 42" tvg-chno="2832" tvg-logo="https://i.imgur.com/iVhdcS7.png" group-title="ערוצים בינלאומיים",TDK 42
 https://live-tdk42kz.cdnvideo.ru/tdk42kz/tdk42kz_720.smil/playlist.m3u8
-#EXTINF:-1 tvg-id="GMSTV.sn" tvg-name="GMS TV" tvg-chno="2834" tvg-logo="https://i.imgur.com/Ue02CIH.png" group-title="ערוצים בינלאומיים",GMS TV
+#EXTINF:-1 tvg-id="GMSTV.sn" tvg-name="GMS TV" tvg-chno="2833" tvg-logo="https://i.imgur.com/Ue02CIH.png" group-title="ערוצים בינלאומיים",GMS TV
 https://acasmedia6.acangroup.org/gmstv/gmstv_output/playlist.m3u8
-#EXTINF:-1 tvg-id="WXWZLD231.pr" tvg-name="WXWZ-LD 23.1" tvg-chno="2835" tvg-logo="https://i.imgur.com/rjmGc9p.png" group-title="ערוצים בינלאומיים",WXWZ-LD 23.1
+#EXTINF:-1 tvg-id="WXWZLD231.pr" tvg-name="WXWZ-LD 23.1" tvg-chno="2834" tvg-logo="https://i.imgur.com/rjmGc9p.png" group-title="ערוצים בינלאומיים",WXWZ-LD 23.1
 https://5bf8041cb3fed.streamlock.net/mastvpr/mastvpr/playlist.m3u8
-#EXTINF:-1 tvg-id="OmegaChannel.cy" tvg-name="Omega Channel" tvg-chno="2836" tvg-logo="https://i.ibb.co/QrSzNn6/31087.png" group-title="ערוצים בינלאומיים",Omega Channel
+#EXTINF:-1 tvg-id="OmegaChannel.cy" tvg-name="Omega Channel" tvg-chno="2835" tvg-logo="https://i.ibb.co/QrSzNn6/31087.png" group-title="ערוצים בינלאומיים",Omega Channel
 https://l1.cloudskep.com/omegatv/omcy/playlist.m3u8
-#EXTINF:-1 tvg-id="NTV.bd" tvg-name="NTV" tvg-chno="2837" tvg-logo="https://i.imgur.com/l75bDTx.png" group-title="ערוצים בינלאומיים",NTV
+#EXTINF:-1 tvg-id="NTV.bd" tvg-name="NTV" tvg-chno="2836" tvg-logo="https://i.imgur.com/l75bDTx.png" group-title="ערוצים בינלאומיים",NTV
 https://tvsen5.aynaott.com/xV4jEKf3D9zc/index.m3u8
-#EXTINF:-1 tvg-id="RTVNoviPazar.rs" tvg-name="RTV Novi Pazar" tvg-chno="2838" tvg-logo="https://i.imgur.com/NpyRVyC.png" group-title="ערוצים בינלאומיים",RTV Novi Pazar
+#EXTINF:-1 tvg-id="RTVNoviPazar.rs" tvg-name="RTV Novi Pazar" tvg-chno="2837" tvg-logo="https://i.imgur.com/NpyRVyC.png" group-title="ערוצים בינלאומיים",RTV Novi Pazar
 https://tv.rtvnp.rs/stream.m3u8
-#EXTINF:-1 tvg-id="TVDielli.xk" tvg-name="TV Dielli" tvg-chno="2839" tvg-logo="https://i.imgur.com/kLl3ar5.png" group-title="ערוצים בינלאומיים",TV Dielli
+#EXTINF:-1 tvg-id="TVDielli.xk" tvg-name="TV Dielli" tvg-chno="2838" tvg-logo="https://i.imgur.com/kLl3ar5.png" group-title="ערוצים בינלאומיים",TV Dielli
 http://stream.tvdielli.com:8081/dielli/index.m3u8
-#EXTINF:-1 tvg-id="TV1.rw" tvg-name="TV1" tvg-chno="2840" tvg-logo="https://i.imgur.com/nQNOHJx.png" group-title="ערוצים בינלאומיים",TV1
+#EXTINF:-1 tvg-id="TV1.rw" tvg-name="TV1" tvg-chno="2839" tvg-logo="https://i.imgur.com/nQNOHJx.png" group-title="ערוצים בינלאומיים",TV1
 https://live.tv1.rw/index.m3u8
-#EXTINF:-1 tvg-id="ApsuaTV.ge" tvg-name="Apsua TV" tvg-chno="2841" tvg-logo="https://i.imgur.com/TJowroY.png" group-title="ערוצים בינלאומיים",Apsua TV
+#EXTINF:-1 tvg-id="ApsuaTV.ge" tvg-name="Apsua TV" tvg-chno="2840" tvg-logo="https://i.imgur.com/TJowroY.png" group-title="ערוצים בינלאומיים",Apsua TV
 https://gcmx3v3owcj.a.trbcdn.net/livemaster/ba7pu_fgej0zelpw.smil/playlist.m3u8?blstid=null
-#EXTINF:-1 tvg-id="Asgabat.tm" tvg-name="Asgabat" tvg-chno="2842" tvg-logo="https://i.imgur.com/EzjR1vo.png" group-title="ערוצים בינלאומיים",Asgabat
+#EXTINF:-1 tvg-id="Asgabat.tm" tvg-name="Asgabat" tvg-chno="2841" tvg-logo="https://i.imgur.com/EzjR1vo.png" group-title="ערוצים בינלאומיים",Asgabat
 https://alpha.tv.online.tm/hls/ch006.m3u8
-#EXTINF:-1 tvg-id="MyTVChannel.cm" tvg-name="My TV Channel" tvg-chno="2843" tvg-logo="https://i.imgur.com/vh2373L.png" group-title="ערוצים בינלאומיים",My TV Channel
+#EXTINF:-1 tvg-id="MyTVChannel.cm" tvg-name="My TV Channel" tvg-chno="2842" tvg-logo="https://i.imgur.com/vh2373L.png" group-title="ערוצים בינלאומיים",My TV Channel
 http://connectiktv.ddns.net:5000/mytvchannel/@mytvchannel/playlist.m3u8
-#EXTINF:-1 tvg-id="MierschTV.lu" tvg-name="MierschTV" tvg-chno="2844" tvg-logo="https://i.imgur.com/Vdc1GYP.jpg" group-title="ערוצים בינלאומיים",MierschTV
+#EXTINF:-1 tvg-id="MierschTV.lu" tvg-name="MierschTV" tvg-chno="2843" tvg-logo="https://i.imgur.com/Vdc1GYP.jpg" group-title="ערוצים בינלאומיים",MierschTV
 https://streamer20.multimedia.blue/Post/MerschTV_IPTV/playlist.m3u8
-#EXTINF:-1 tvg-id="TropojaTelevizion.al" tvg-name="Tropoja Televizion" tvg-chno="2845" tvg-logo="https://i.imgur.com/D3hNOVS.png" group-title="ערוצים בינלאומיים",Tropoja Televizion
+#EXTINF:-1 tvg-id="TropojaTelevizion.al" tvg-name="Tropoja Televizion" tvg-chno="2844" tvg-logo="https://i.imgur.com/D3hNOVS.png" group-title="ערוצים בינלאומיים",Tropoja Televizion
 https://live.prostream.al/al/smil:tropojatv.smil/playlist.m3u8
-#EXTINF:-1 tvg-id="Akaku55.us" tvg-name="Akaku 55" tvg-chno="2846" tvg-logo="https://www.akaku.org/wp-content/uploads/bb-plugin/cache/Channel55-147x150-square.png" group-title="ערוצים בינלאומיים",Akaku 55
+#EXTINF:-1 tvg-id="Akaku55.us" tvg-name="Akaku 55" tvg-chno="2845" tvg-logo="https://www.akaku.org/wp-content/uploads/bb-plugin/cache/Channel55-147x150-square.png" group-title="ערוצים בינלאומיים",Akaku 55
 https://castus-vod-dev.s3.amazonaws.com/vod_clients/akaku/live/ch3/video.m3u8
-#EXTINF:-1 tvg-id="RMCStory.fr" tvg-name="RMC Story" tvg-chno="2847" tvg-logo="https://upload.wikimedia.org/wikipedia/fr/thumb/4/43/Logo_RMC_Story_2025.png/960px-Logo_RMC_Story_2025.png" group-title="ערוצים בינלאומיים",RMC Story
+#EXTINF:-1 tvg-id="RMCStory.fr" tvg-name="RMC Story" tvg-chno="2846" tvg-logo="https://upload.wikimedia.org/wikipedia/fr/thumb/4/43/Logo_RMC_Story_2025.png/960px-Logo_RMC_Story_2025.png" group-title="ערוצים בינלאומיים",RMC Story
 https://d15aro46bnpfm8.cloudfront.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-fqkqiax1078up/RMC_Story_FR.m3u8
-#EXTINF:-1 tvg-id="DasErste.de" tvg-name="Das Erste" tvg-chno="2848" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/ARD_Dachmarke_2014.svg/960px-ARD_Dachmarke_2014.svg.png" group-title="ערוצים בינלאומיים",Das Erste
+#EXTINF:-1 tvg-id="DasErste.de" tvg-name="Das Erste" tvg-chno="2847" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/ARD_Dachmarke_2014.svg/960px-ARD_Dachmarke_2014.svg.png" group-title="ערוצים בינלאומיים",Das Erste
 https://daserste-live.ard-mcdn.de/daserste/live/hls/int/master.m3u8
-#EXTINF:-1 tvg-id="CMMTV.es" tvg-name="CMM TV" tvg-chno="2849" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/CMMedia.svg/960px-CMMedia.svg.png" group-title="ערוצים בינלאומיים",CMM TV
+#EXTINF:-1 tvg-id="CMMTV.es" tvg-name="CMM TV" tvg-chno="2848" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/CMMedia.svg/960px-CMMedia.svg.png" group-title="ערוצים בינלאומיים",CMM TV
 https://cdnapisec.kaltura.com/p/2288691/sp/228869100/playManifest/entryId/1_gnz6ity9/protocol/https/format/applehttp/flavorIds/1_a9gxgxzy,1_v71ryg4b,1_vbfvtjw6,1_obo1bqsx,1_3shk3s5d/a.m3u8
-#EXTINF:-1 tvg-id="Nove.it" tvg-name="Nove" tvg-chno="2850" tvg-logo="https://i.imgur.com/rTjIkGO.png" group-title="ערוצים בינלאומיים",Nove
+#EXTINF:-1 tvg-id="Nove.it" tvg-name="Nove" tvg-chno="2849" tvg-logo="https://i.imgur.com/rTjIkGO.png" group-title="ערוצים בינלאומיים",Nove
 https://streaming.aurora.enhanced.live/live/mpc/enl0eG1mLmVncmVzcy5mZDJ2eHI=/out/v1/IT_SIMULCAST/NOVE/CMAF/index.m3u8
-#EXTINF:-1 tvg-id="Arkhyz24.ru" tvg-name="Arkhyz 24" tvg-chno="2851" tvg-logo="https://i.imgur.com/blAtdkJ.png" group-title="ערוצים בינלאומיים",Arkhyz 24
+#EXTINF:-1 tvg-id="Arkhyz24.ru" tvg-name="Arkhyz 24" tvg-chno="2850" tvg-logo="https://i.imgur.com/blAtdkJ.png" group-title="ערוצים בינלאומיים",Arkhyz 24
 https://live.mediacdn.ru/sr1/arhis24/playlist.m3u8
-#EXTINF:-1 tvg-id="1Plus1International.ua" tvg-name="1+1 International" tvg-chno="2852" tvg-logo="https://i.imgur.com/LOY0rtp.png" group-title="ערוצים בינלאומיים",1+1 International
+#EXTINF:-1 tvg-id="1Plus1International.ua" tvg-name="1+1 International" tvg-chno="2851" tvg-logo="https://i.imgur.com/LOY0rtp.png" group-title="ערוצים בינלאומיים",1+1 International
 https://dash2.antik.sk/live/test_one_plus_one_int_tizen/playlist.m3u8
-#EXTINF:-1 tvg-id="TLN.ca" tvg-name="TLN" tvg-chno="2853" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/TLN_2015.png/500px-TLN_2015.png" group-title="ערוצים בינלאומיים",TLN
+#EXTINF:-1 tvg-id="TLN.ca" tvg-name="TLN" tvg-chno="2852" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/TLN_2015.png/500px-TLN_2015.png" group-title="ערוצים בינלאומיים",TLN
 https://uni01rtmp.tulix.tv/kqsltv/kqsltv/playlist.m3u8
-#EXTINF:-1 tvg-id="ATV.tr" tvg-name="ATV" tvg-chno="2854" tvg-logo="https://i.imgur.com/HyVUwFC.png" group-title="ערוצים בינלאומיים",ATV
+#EXTINF:-1 tvg-id="ATV.tr" tvg-name="ATV" tvg-chno="2853" tvg-logo="https://i.imgur.com/HyVUwFC.png" group-title="ערוצים בינלאומיים",ATV
 https://rnttwmjcin.turknet.ercdn.net/lcpmvefbyo/atv/atv_1080p.m3u8
-#EXTINF:-1 tvg-id="NKRTVKannada.in" tvg-name="NKR TV Kannada" tvg-chno="2855" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/NKRTV.png" group-title="ערוצים בינלאומיים",NKR TV Kannada
+#EXTINF:-1 tvg-id="NKRTVKannada.in" tvg-name="NKR TV Kannada" tvg-chno="2854" tvg-logo="https://jiotvimages.cdn.jio.com/dare_images/images/NKRTV.png" group-title="ערוצים בינלאומיים",NKR TV Kannada
 https://stream.ottlive.co.in/nkrtv/index.m3u8
-#EXTINF:-1 tvg-id="HLCQDTV.kr" tvg-name="HLCQ-DTV" tvg-chno="2856" tvg-logo="https://i.imgur.com/HCbvAiM.png" group-title="ערוצים בינלאומיים",HLCQ-DTV
+#EXTINF:-1 tvg-id="HLCQDTV.kr" tvg-name="HLCQ-DTV" tvg-chno="2855" tvg-logo="https://i.imgur.com/HCbvAiM.png" group-title="ערוצים בינלאומיים",HLCQ-DTV
 https://ns1.tjmbc.co.kr/live/myStream.sdp/playlist.m3u8
-#EXTINF:-1 tvg-id="AnhuiTV.cn" tvg-name="Anhui TV" tvg-chno="2857" tvg-logo="https://i.imgur.com/gDn101f.png" group-title="ערוצים בינלאומיים",Anhui TV
+#EXTINF:-1 tvg-id="AnhuiTV.cn" tvg-name="Anhui TV" tvg-chno="2856" tvg-logo="https://i.imgur.com/gDn101f.png" group-title="ערוצים בינלאומיים",Anhui TV
 https://restream.pdtvhd.com/memfs/c1cd2ed0-3b2b-4c25-af98-a7fb0b1eb130.m3u8
-#EXTINF:-1 tvg-id="RedeBrasil.br" tvg-name="Rede Brasil" tvg-chno="2858" tvg-logo="https://i.imgur.com/TXJKwzZ.png" group-title="ערוצים בינלאומיים",Rede Brasil
+#EXTINF:-1 tvg-id="RedeBrasil.br" tvg-name="Rede Brasil" tvg-chno="2857" tvg-logo="https://i.imgur.com/TXJKwzZ.png" group-title="ערוצים בינלאומיים",Rede Brasil
 https://redebrasil.nuvemplay.live/hls/stream.m3u8
-#EXTINF:-1 tvg-id="Canal5TVCozumel.mx" tvg-name="Canal 5 TV Cozumel" tvg-chno="2859" tvg-logo="https://i.imgur.com/0nzNMuP.jpeg" group-title="ערוצים בינלאומיים",Canal 5 TV Cozumel
+#EXTINF:-1 tvg-id="Canal5TVCozumel.mx" tvg-name="Canal 5 TV Cozumel" tvg-chno="2858" tvg-logo="https://i.imgur.com/0nzNMuP.jpeg" group-title="ערוצים בינלאומיים",Canal 5 TV Cozumel
 https://video0.rogohosting.com:19360/tvcozumel/tvcozumel.m3u8
-#EXTINF:-1 tvg-id="Canal6Posadas.ar" tvg-name="Canal 6 Posadas" tvg-chno="2860" tvg-logo="https://i.imgur.com/OamBiS5.png" group-title="ערוצים בינלאומיים",Canal 6 Posadas
+#EXTINF:-1 tvg-id="Canal6Posadas.ar" tvg-name="Canal 6 Posadas" tvg-chno="2859" tvg-logo="https://i.imgur.com/OamBiS5.png" group-title="ערוצים בינלאומיים",Canal 6 Posadas
 https://iptv.ixfo.com.ar:30443/live/c6digital/playlist.m3u8
-#EXTINF:-1 tvg-id="TVI.pt" tvg-name="TVI" tvg-chno="2861" tvg-logo="https://i.imgur.com/H8Tgl7m.png" group-title="ערוצים בינלאומיים",TVI
+#EXTINF:-1 tvg-id="TVI.pt" tvg-name="TVI" tvg-chno="2860" tvg-logo="https://i.imgur.com/H8Tgl7m.png" group-title="ערוצים בינלאומיים",TVI
 https://raw.githubusercontent.com/thomraider12/canaistvpt/main/m3u8s/tvi.m3u8
-#EXTINF:-1 tvg-id="OmroepGelderland.nl" tvg-name="Omroep Gelderland" tvg-chno="2862" tvg-logo="https://i.imgur.com/G08hKit.png" group-title="ערוצים בינלאומיים",Omroep Gelderland
+#EXTINF:-1 tvg-id="OmroepGelderland.nl" tvg-name="Omroep Gelderland" tvg-chno="2861" tvg-logo="https://i.imgur.com/G08hKit.png" group-title="ערוצים בינלאומיים",Omroep Gelderland
 https://d2od87akyl46nm.cloudfront.net/live/omroepgelderland/tvgelderland-hls/index.m3u8
-#EXTINF:-1 tvg-id="Radio2.be" tvg-name="Radio 2" tvg-chno="2863" tvg-logo="https://i.ibb.co/47mc8nJ/VRT-Radio-2-2022-svg.png" group-title="ערוצים בינלאומיים",Radio 2
+#EXTINF:-1 tvg-id="Radio2.be" tvg-name="Radio 2" tvg-chno="2862" tvg-logo="https://i.ibb.co/47mc8nJ/VRT-Radio-2-2022-svg.png" group-title="ערוצים בינלאומיים",Radio 2
 https://live.vrtcdn.be/groupa/live/66a9668e-b37b-4de2-878e-0218563b2dd2/live.isml/.m3u8
-#EXTINF:-1 tvg-id="TeleTicino.ch" tvg-name="TeleTicino" tvg-chno="2864" tvg-logo="https://i.imgur.com/u6dLKa9.png" group-title="ערוצים בינלאומיים",TeleTicino
+#EXTINF:-1 tvg-id="TeleTicino.ch" tvg-name="TeleTicino" tvg-chno="2863" tvg-logo="https://i.imgur.com/u6dLKa9.png" group-title="ערוצים בינלאומיים",TeleTicino
 https://vstream-cdn.ch/hls/teleticino.m3u8
-#EXTINF:-1 tvg-id="R9.at" tvg-name="R9" tvg-chno="2865" tvg-logo="https://i.imgur.com/SVJiXxh.png" group-title="ערוצים בינלאומיים",R9
+#EXTINF:-1 tvg-id="R9.at" tvg-name="R9" tvg-chno="2864" tvg-logo="https://i.imgur.com/SVJiXxh.png" group-title="ערוצים בינלאומיים",R9
 https://ms01.w24.at/R9/smil:liveeventR9.smil/playlist.m3u8
-#EXTINF:-1 tvg-id="TNAWrestlingChannel.pl" tvg-name="TNA Wrestling Channel" tvg-chno="2866" tvg-logo="https://provider-static.plex.tv/epg/cms/production/5d4f68c3-82af-45e7-b2c4-39aff69f3ce0/TNAWrestling_Plex_LogoforDarkBG_1500x1000_-_Alex_TushinghamRDX.png" group-title="ערוצים בינלאומיים",TNA Wrestling Channel
+#EXTINF:-1 tvg-id="TNAWrestlingChannel.pl" tvg-name="TNA Wrestling Channel" tvg-chno="2865" tvg-logo="https://provider-static.plex.tv/epg/cms/production/5d4f68c3-82af-45e7-b2c4-39aff69f3ce0/TNAWrestling_Plex_LogoforDarkBG_1500x1000_-_Alex_TushinghamRDX.png" group-title="ערוצים בינלאומיים",TNA Wrestling Channel
 https://jmp2.uk/plu-59b722526996084038c01e1b.m3u8
-#EXTINF:-1 tvg-id="ENAChannel.gr" tvg-name="ENA Channel" tvg-chno="2867" tvg-logo="https://i.imgur.com/3g3yjAq.png" group-title="ערוצים בינלאומיים",ENA Channel
+#EXTINF:-1 tvg-id="ENAChannel.gr" tvg-name="ENA Channel" tvg-chno="2866" tvg-logo="https://i.imgur.com/3g3yjAq.png" group-title="ערוצים בינלאומיים",ENA Channel
 https://cdn5.smart-tv-data.com/ena/ena_channel/playlist.m3u8
-#EXTINF:-1 tvg-id="NarTV.fi" tvg-name="Nar-TV" tvg-chno="2868" tvg-logo="https://i.imgur.com/Ht5yePq.png" group-title="ערוצים בינלאומיים",Nar-TV
+#EXTINF:-1 tvg-id="NarTV.fi" tvg-name="Nar-TV" tvg-chno="2867" tvg-logo="https://i.imgur.com/Ht5yePq.png" group-title="ערוצים בינלאומיים",Nar-TV
 https://streaming.nartv.fi/live/ngrp:NAR_TV.stream_all/playlist.m3u8
-#EXTINF:-1 tvg-id="MnauTV.cz" tvg-name="Mnau TV" tvg-chno="2869" tvg-logo="https://i.imgur.com/deVHJKS.png" group-title="ערוצים בינלאומיים",Mnau TV
+#EXTINF:-1 tvg-id="MnauTV.cz" tvg-name="Mnau TV" tvg-chno="2868" tvg-logo="https://i.imgur.com/deVHJKS.png" group-title="ערוצים בינלאומיים",Mnau TV
 https://5ca49f2417d90.streamlock.net/mnau/livestream/playlist.m3u8
-#EXTINF:-1 tvg-id="NasulTV.ro" tvg-name="Nasul TV" tvg-chno="2870" tvg-logo="https://i.imgur.com/MoguWme.png" group-title="ערוצים בינלאומיים",Nasul TV
+#EXTINF:-1 tvg-id="NasulTV.ro" tvg-name="Nasul TV" tvg-chno="2869" tvg-logo="https://i.imgur.com/MoguWme.png" group-title="ערוצים בינלאומיים",Nasul TV
 https://live.nasul.tv/live/stream.m3u8
-#EXTINF:-1 tvg-id="MoraNetTV.hu" tvg-name="Mora-Net TV" tvg-chno="2871" tvg-logo="https://i.imgur.com/yT0RmKi.png" group-title="ערוצים בינלאומיים",Mora-Net TV
+#EXTINF:-1 tvg-id="MoraNetTV.hu" tvg-name="Mora-Net TV" tvg-chno="2870" tvg-logo="https://i.imgur.com/yT0RmKi.png" group-title="ערוצים בינלאומיים",Mora-Net TV
 https://stream.moranettv.hu/live/index.m3u8
-#EXTINF:-1 tvg-id="LaMetroTV.cl" tvg-name="La Metro TV" tvg-chno="2872" tvg-logo="https://i.imgur.com/0aoI5Zd.jpeg" group-title="ערוצים בינלאומיים",La Metro TV
+#EXTINF:-1 tvg-id="LaMetroTV.cl" tvg-name="La Metro TV" tvg-chno="2871" tvg-logo="https://i.imgur.com/0aoI5Zd.jpeg" group-title="ערוצים בינלאומיים",La Metro TV
 https://jireh-8-hls-video-us-isp.dps.live/hls-video/931b584451fa6dd1313ee66efbfd5802e3f3bcea/metropolitanatv/metropolitanatv.smil/playlist.m3u8
-#EXTINF:-1 tvg-id="Telepacifico.co" tvg-name="Telepacifico" tvg-chno="2873" tvg-logo="https://i.imgur.com/39hy97J.png" group-title="ערוצים בינלאומיים",Telepacifico
+#EXTINF:-1 tvg-id="Telepacifico.co" tvg-name="Telepacifico" tvg-chno="2872" tvg-logo="https://i.imgur.com/39hy97J.png" group-title="ערוצים בינלאומיים",Telepacifico
 https://play.cdn.enetres.net/6E5C615AA5FF4123ACAF0DAB57B7B8DC021/022/playlist.m3u8
-#EXTINF:-1 tvg-id="AntenaSUR.pe" tvg-name="Antena SUR" tvg-chno="2874" tvg-logo="https://i.imgur.com/4aHrD2l.jpeg" group-title="ערוצים בינלאומיים",Antena SUR
+#EXTINF:-1 tvg-id="AntenaSUR.pe" tvg-name="Antena SUR" tvg-chno="2873" tvg-logo="https://i.imgur.com/4aHrD2l.jpeg" group-title="ערוצים בינלאומיים",Antena SUR
 https://cloudpro.servidoresdestream.com:8081/8010/index.m3u8
-#EXTINF:-1 tvg-id="TVRI.id" tvg-name="TVRI" tvg-chno="2875" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/TVRILogo2019.svg/960px-TVRILogo2019.svg.png" group-title="ערוצים בינלאומיים",TVRI
+#EXTINF:-1 tvg-id="TVRI.id" tvg-name="TVRI" tvg-chno="2874" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/TVRILogo2019.svg/960px-TVRILogo2019.svg.png" group-title="ערוצים בינלאומיים",TVRI
 https://ott-balancer.tvri.go.id/live/eds/Nasional/hls/Nasional.m3u8
-#EXTINF:-1 tvg-id="SuwannabhumiChannel.th" tvg-name="Suwannabhumi Channel" tvg-chno="2876" tvg-logo="https://i.imgur.com/6AGKP0A.png" group-title="ערוצים בינלאומיים",Suwannabhumi Channel
+#EXTINF:-1 tvg-id="SuwannabhumiChannel.th" tvg-name="Suwannabhumi Channel" tvg-chno="2875" tvg-logo="https://i.imgur.com/6AGKP0A.png" group-title="ערוצים בינלאומיים",Suwannabhumi Channel
 https://live.bangkokstream.com:19360/suwannabhumi/suwannabhumi.m3u8
-#EXTINF:-1 tvg-id="LaoCaiTV.vn" tvg-name="Lao Cai TV" tvg-chno="2877" tvg-logo="https://i.imgur.com/TLvrDHa.png" group-title="ערוצים בינלאומיים",Lao Cai TV
+#EXTINF:-1 tvg-id="LaoCaiTV.vn" tvg-name="Lao Cai TV" tvg-chno="2876" tvg-logo="https://i.imgur.com/TLvrDHa.png" group-title="ערוצים בינלאומיים",Lao Cai TV
 https://live.baolaocai.vn/channel2/stream.m3u8
-#EXTINF:-1 tvg-id="SamaaTV.pk" tvg-name="Samaa TV" tvg-chno="2878" tvg-logo="https://i.imgur.com/r3U4A1P.png" group-title="ערוצים בינלאומיים",Samaa TV
+#EXTINF:-1 tvg-id="SamaaTV.pk" tvg-name="Samaa TV" tvg-chno="2877" tvg-logo="https://i.imgur.com/r3U4A1P.png" group-title="ערוצים בינלאומיים",Samaa TV
 https://vodzong.mjunoon.tv:8087/streamtest/SAMAA-173/playlist.m3u8
-#EXTINF:-1 tvg-id="ArvanTV.ir" tvg-name="Arvan TV" tvg-chno="2879" tvg-logo="" group-title="ערוצים בינלאומיים",Arvan TV
+#EXTINF:-1 tvg-id="ArvanTV.ir" tvg-name="Arvan TV" tvg-chno="2878" tvg-logo="" group-title="ערוצים בינלאומיים",Arvan TV
 https://arvhls.wns.live/hls/stream.m3u8
-#EXTINF:-1 tvg-id="BrideTV.ng" tvg-name="Bride TV" tvg-chno="2880" tvg-logo="https://i.imgur.com/snZMucg.png" group-title="ערוצים בינלאומיים",Bride TV
+#EXTINF:-1 tvg-id="BrideTV.ng" tvg-name="Bride TV" tvg-chno="2879" tvg-logo="https://i.imgur.com/snZMucg.png" group-title="ערוצים בינלאומיים",Bride TV
 https://viewmedia7219.bozztv.com/wmedia/viewmedia100/web_013/Stream/playlist.m3u8
-#EXTINF:-1 tvg-id="AltantoTV.do" tvg-name="Altanto TV" tvg-chno="2881" tvg-logo="https://i.imgur.com/KWvVLhc.png" group-title="ערוצים בינלאומיים",Altanto TV
+#EXTINF:-1 tvg-id="AltantoTV.do" tvg-name="Altanto TV" tvg-chno="2880" tvg-logo="https://i.imgur.com/KWvVLhc.png" group-title="ערוצים בינלאומיים",Altanto TV
 https://stream.haislin.com/ls_j3BOKxBbUJ/index.m3u8
-#EXTINF:-1 tvg-id="AsContenidos.bo" tvg-name="As Contenidos" tvg-chno="2882" tvg-logo="https://ascontenidos.com.bo/wp-content/uploads/2023/07/cropped-logo512.png" group-title="ערוצים בינלאומיים",As Contenidos
+#EXTINF:-1 tvg-id="AsContenidos.bo" tvg-name="As Contenidos" tvg-chno="2881" tvg-logo="https://ascontenidos.com.bo/wp-content/uploads/2023/07/cropped-logo512.png" group-title="ערוצים בינלאומיים",As Contenidos
 https://master.tucableip.com/ascontenido/index.m3u8
-#EXTINF:-1 tvg-id="TVCanindeyu.py" tvg-name="TV Canindeyu" tvg-chno="2883" tvg-logo="https://i.imgur.com/cateqjx.jpeg" group-title="ערוצים בינלאומיים",TV Canindeyu
+#EXTINF:-1 tvg-id="TVCanindeyu.py" tvg-name="TV Canindeyu" tvg-chno="2882" tvg-logo="https://i.imgur.com/cateqjx.jpeg" group-title="ערוצים בינלאומיים",TV Canindeyu
 https://video.hostingcaaguazu.com:19360/tvcanindeyu/tvcanindeyu.m3u8
-#EXTINF:-1 tvg-id="TVLux.sk" tvg-name="TV Lux" tvg-chno="2884" tvg-logo="https://i.imgur.com/mAMyTkq.png" group-title="ערוצים בינלאומיים",TV Lux
+#EXTINF:-1 tvg-id="TVLux.sk" tvg-name="TV Lux" tvg-chno="2883" tvg-logo="https://i.imgur.com/mAMyTkq.png" group-title="ערוצים בינלאומיים",TV Lux
 https://stream.tvlux.sk/luxtv/luxtv-livestream/chunklist_w617812057.m3u8
-#EXTINF:-1 tvg-id="PuruwaTV.ec" tvg-name="Puruwa TV" tvg-chno="2885" tvg-logo="https://i.imgur.com/CYldC2R.png" group-title="ערוצים בינלאומיים",Puruwa TV
+#EXTINF:-1 tvg-id="PuruwaTV.ec" tvg-name="Puruwa TV" tvg-chno="2884" tvg-logo="https://i.imgur.com/CYldC2R.png" group-title="ערוצים בינלאומיים",Puruwa TV
 https://live.tvcontrolcp.com:1936/puruwatv/puruwatv/playlist.m3u8
-#EXTINF:-1 tvg-id="LosSantosTV.cr" tvg-name="Los Santos TV" tvg-chno="2886" tvg-logo="https://i.imgur.com/5xw86wu.png" group-title="ערוצים בינלאומיים",Los Santos TV
+#EXTINF:-1 tvg-id="LosSantosTV.cr" tvg-name="Los Santos TV" tvg-chno="2885" tvg-logo="https://i.imgur.com/5xw86wu.png" group-title="ערוצים בינלאומיים",Los Santos TV
 https://lstv.duckdns.org:449/hls/lstv.m3u8
-#EXTINF:-1 tvg-id="AlsaciasTelevision.hn" tvg-name="Alsacias Television" tvg-chno="2887" tvg-logo="https://i.imgur.com/SbuD1UW.png" group-title="ערוצים בינלאומיים",Alsacias Television
+#EXTINF:-1 tvg-id="AlsaciasTelevision.hn" tvg-name="Alsacias Television" tvg-chno="2886" tvg-logo="https://i.imgur.com/SbuD1UW.png" group-title="ערוצים בינלאומיים",Alsacias Television
 https://s.emisoras.tv:8081/atv/index.m3u8
-#EXTINF:-1 tvg-id="Vitebsk.by" tvg-name="Vitebsk" tvg-chno="2888" tvg-logo="https://i.imgur.com/qr26qQn.png" group-title="ערוצים בינלאומיים",Vitebsk
+#EXTINF:-1 tvg-id="Vitebsk.by" tvg-name="Vitebsk" tvg-chno="2887" tvg-logo="https://i.imgur.com/qr26qQn.png" group-title="ערוצים בינלאומיים",Vitebsk
 https://live.dc.beltelecom.by/vtv/vitebsk.stream/playlist.m3u8
-#EXTINF:-1 tvg-id="MoldovaTV.md" tvg-name="Moldova TV" tvg-chno="2889" tvg-logo="https://i.imgur.com/gPMlDCP.png" group-title="ערוצים בינלאומיים",Moldova TV
+#EXTINF:-1 tvg-id="MoldovaTV.md" tvg-name="Moldova TV" tvg-chno="2888" tvg-logo="https://i.imgur.com/gPMlDCP.png" group-title="ערוצים בינלאומיים",Moldova TV
 https://moldovatv.ro/live-tv/live.m3u8
-#EXTINF:-1 tvg-id="SolTV.sv" tvg-name="SolTV" tvg-chno="2890" tvg-logo="https://i.imgur.com/jaBxxpt.png" group-title="ערוצים בינלאומיים",SolTV
+#EXTINF:-1 tvg-id="SolTV.sv" tvg-name="SolTV" tvg-chno="2889" tvg-logo="https://i.imgur.com/jaBxxpt.png" group-title="ערוצים בינלאומיים",SolTV
 https://videostream.shockmedia.com.ar/hls/canalsoltv/canalsoltv.m3u8
-#EXTINF:-1 tvg-id="KRCTV.ug" tvg-name="KRC TV" tvg-chno="2891" tvg-logo="https://i.imgur.com/8c9Uqks.jpeg" group-title="ערוצים בינלאומיים",KRC TV
+#EXTINF:-1 tvg-id="KRCTV.ug" tvg-name="KRC TV" tvg-chno="2890" tvg-logo="https://i.imgur.com/8c9Uqks.jpeg" group-title="ערוצים בינלאומיים",KRC TV
 https://channels.ad-ug.com/live/ch03/index.m3u8
-#EXTINF:-1 tvg-id="Ulytau.kz" tvg-name="Ulytau" tvg-chno="2892" tvg-logo="https://i.imgur.com/jTL6TvC.png" group-title="ערוצים בינלאומיים",Ulytau
+#EXTINF:-1 tvg-id="Ulytau.kz" tvg-name="Ulytau" tvg-chno="2891" tvg-logo="https://i.imgur.com/jTL6TvC.png" group-title="ערוצים בינלאומיים",Ulytau
 https://ulytau.tv/hls/master.m3u8
-#EXTINF:-1 tvg-id="SenewebTV.sn" tvg-name="Seneweb TV" tvg-chno="2893" tvg-logo="https://i.imgur.com/i9P2qjs.png" group-title="ערוצים בינלאומיים",Seneweb TV
+#EXTINF:-1 tvg-id="SenewebTV.sn" tvg-name="Seneweb TV" tvg-chno="2892" tvg-logo="https://i.imgur.com/i9P2qjs.png" group-title="ערוצים בינלאומיים",Seneweb TV
 https://vdo2.pro-fhi.net:3297/stream/play.m3u8
-#EXTINF:-1 tvg-id="PuraPalabra.pr" tvg-name="Pura Palabra" tvg-chno="2894" tvg-logo="https://i.imgur.com/nl5vyIw.png" group-title="ערוצים בינלאומיים",Pura Palabra
+#EXTINF:-1 tvg-id="PuraPalabra.pr" tvg-name="Pura Palabra" tvg-chno="2893" tvg-logo="https://i.imgur.com/nl5vyIw.png" group-title="ערוצים בינלאומיים",Pura Palabra
 https://59825a54e4454.streamlock.net:8443/william233/william233/playlist.m3u8
-#EXTINF:-1 tvg-id="SigmaTV.cy" tvg-name="Sigma TV" tvg-chno="2895" tvg-logo="https://i.imgur.com/DXKx102.png" group-title="ערוצים בינלאומיים",Sigma TV
+#EXTINF:-1 tvg-id="SigmaTV.cy" tvg-name="Sigma TV" tvg-chno="2894" tvg-logo="https://i.imgur.com/DXKx102.png" group-title="ערוצים בינלאומיים",Sigma TV
 https://sl2.sigmatv.com/hls/live.m3u8
-#EXTINF:-1 tvg-id="TVZdravkin.mk" tvg-name="TV Zdravkin" tvg-chno="2896" tvg-logo="https://i.imgur.com/w4rRUNQ.png" group-title="ערוצים בינלאומיים",TV Zdravkin
+#EXTINF:-1 tvg-id="TVZdravkin.mk" tvg-name="TV Zdravkin" tvg-chno="2895" tvg-logo="https://i.imgur.com/w4rRUNQ.png" group-title="ערוצים בינלאומיים",TV Zdravkin
 http://zdravkin.hugo.mk:1935/live/zdravkin/playlist.m3u8
-#EXTINF:-1 tvg-id="TVPanon.rs" tvg-name="TV Panon" tvg-chno="2897" tvg-logo="https://i.imgur.com/9ZKA4Gx.png" group-title="ערוצים בינלאומיים",TV Panon
+#EXTINF:-1 tvg-id="TVPanon.rs" tvg-name="TV Panon" tvg-chno="2896" tvg-logo="https://i.imgur.com/9ZKA4Gx.png" group-title="ערוצים בינלאומיים",TV Panon
 https://stream2.nmih.hu:4102/live.m3u8
-#EXTINF:-1 tvg-id="TVOpoja.xk" tvg-name="TV Opoja" tvg-chno="2898" tvg-logo="https://i.imgur.com/hxi4Qiq.png" group-title="ערוצים בינלאומיים",TV Opoja
+#EXTINF:-1 tvg-id="TVOpoja.xk" tvg-name="TV Opoja" tvg-chno="2897" tvg-logo="https://i.imgur.com/hxi4Qiq.png" group-title="ערוצים בינלאומיים",TV Opoja
 http://ip.opoja.tv:1935/tvopoja/tvopoja/playlist.m3u8
-#EXTINF:-1 tvg-id="BerksCommunityTV.us" tvg-name="Berks Community TV" tvg-chno="2899" tvg-logo="https://i.imgur.com/vQ6a4VL.png" group-title="ערוצים בינלאומיים",Berks Community TV
+#EXTINF:-1 tvg-id="BerksCommunityTV.us" tvg-name="Berks Community TV" tvg-chno="2898" tvg-logo="https://i.imgur.com/vQ6a4VL.png" group-title="ערוצים בינלאומיים",Berks Community TV
 https://livestream.telvue.com/berkscmttv2/f7b44cfafd5c52223d5498196c8a2e7b.sdp/playlist.m3u8
-#EXTINF:-1 tvg-id="AnandTV.uk" tvg-name="Anand TV" tvg-chno="2900" tvg-logo="https://i.imgur.com/5VOPFzs.png" group-title="ערוצים בינלאומיים",Anand TV
+#EXTINF:-1 tvg-id="AnandTV.uk" tvg-name="Anand TV" tvg-chno="2899" tvg-logo="https://i.imgur.com/5VOPFzs.png" group-title="ערוצים בינלאומיים",Anand TV
 https://live-anandtv.anandmedia.net/anandtvapp/anandtv/index.m3u8
-#EXTINF:-1 tvg-id="TV5MondeEurope.fr" tvg-name="TV5Monde Europe" tvg-chno="2901" tvg-logo="https://i.imgur.com/rPAbMSu.png" group-title="ערוצים בינלאומיים",TV5Monde Europe
+#EXTINF:-1 tvg-id="TV5MondeEurope.fr" tvg-name="TV5Monde Europe" tvg-chno="2900" tvg-logo="https://i.imgur.com/rPAbMSu.png" group-title="ערוצים בינלאומיים",TV5Monde Europe
 https://ott.tv5monde.com/Content/HLS/Live/channel(europe)/variant.m3u8
-#EXTINF:-1 tvg-id="Filstalwelle.de" tvg-name="Filstalwelle" tvg-chno="2902" tvg-logo="https://i.imgur.com/19iKLvf.png" group-title="ערוצים בינלאומיים",Filstalwelle
+#EXTINF:-1 tvg-id="Filstalwelle.de" tvg-name="Filstalwelle" tvg-chno="2901" tvg-logo="https://i.imgur.com/19iKLvf.png" group-title="ערוצים בינלאומיים",Filstalwelle
 https://h055.video-stream-hosting.de/filstalwelle-live/_definst_/mp4:livestream/playlist.m3u8
-#EXTINF:-1 tvg-id="CostaNoroesteTV.es" tvg-name="Costa Noroeste TV" tvg-chno="2903" tvg-logo="https://i.imgur.com/iM9AN6Z.png" group-title="ערוצים בינלאומיים",Costa Noroeste TV
+#EXTINF:-1 tvg-id="CostaNoroesteTV.es" tvg-name="Costa Noroeste TV" tvg-chno="2902" tvg-logo="https://i.imgur.com/iM9AN6Z.png" group-title="ערוצים בינלאומיים",Costa Noroeste TV
 https://limited31.todostreaming.es/live/noroestetv-livestream.m3u8
-#EXTINF:-1 tvg-id="Primocanale.it" tvg-name="Primocanale" tvg-chno="2904" tvg-logo="https://i.imgur.com/eunZ2Sa.png" group-title="ערוצים בינלאומיים",Primocanale
+#EXTINF:-1 tvg-id="Primocanale.it" tvg-name="Primocanale" tvg-chno="2903" tvg-logo="https://i.imgur.com/eunZ2Sa.png" group-title="ערוצים בינלאומיים",Primocanale
 https://msh0203.stream.seeweb.it/live/flv:stream2.sdp/playlist.m3u8
-#EXTINF:-1 tvg-id="Channel7Ukraine.ua" tvg-name="Channel 7 Ukraine" tvg-chno="2905" tvg-logo="https://i.imgur.com/9Ll0BIo.png" group-title="ערוצים בינלאומיים",Channel 7 Ukraine
+#EXTINF:-1 tvg-id="Channel7Ukraine.ua" tvg-name="Channel 7 Ukraine" tvg-chno="2904" tvg-logo="https://i.imgur.com/9Ll0BIo.png" group-title="ערוצים בינלאומיים",Channel 7 Ukraine
 https://cdn15.live-tv.cloud/ua_infinitas_tv/7tvod-abr/playlist.m3u8
-#EXTINF:-1 tvg-id="DeshiTV.ca" tvg-name="Deshi TV" tvg-chno="2906" tvg-logo="https://i.imgur.com/PzqzgMm.png" group-title="ערוצים בינלאומיים",Deshi TV
+#EXTINF:-1 tvg-id="DeshiTV.ca" tvg-name="Deshi TV" tvg-chno="2905" tvg-logo="https://i.imgur.com/PzqzgMm.png" group-title="ערוצים בינלאומיים",Deshi TV
 https://deshitv.deshitv24.net/live/myStream/playlist.m3u8
-#EXTINF:-1 tvg-id="ATVAlanya.tr" tvg-name="ATV Alanya" tvg-chno="2907" tvg-logo="https://i.imgur.com/bUwarR0.png" group-title="ערוצים בינלאומיים",ATV Alanya
+#EXTINF:-1 tvg-id="ATVAlanya.tr" tvg-name="ATV Alanya" tvg-chno="2906" tvg-logo="https://i.imgur.com/bUwarR0.png" group-title="ערוצים בינלאומיים",ATV Alanya
 https://cdn-alanyatv.yayin.com.tr/alanyatv/alanyatv/playlist.m3u8
-#EXTINF:-1 tvg-id="PravasiChannel.in" tvg-name="Pravasi Channel" tvg-chno="2908" tvg-logo="https://i.imgur.com/1dHarb7.png" group-title="ערוצים בינלאומיים",Pravasi Channel
+#EXTINF:-1 tvg-id="PravasiChannel.in" tvg-name="Pravasi Channel" tvg-chno="2907" tvg-logo="https://i.imgur.com/1dHarb7.png" group-title="ערוצים בינלאומיים",Pravasi Channel
 https://m6gdavepdn93-hls-live.5centscdn.com/pravasi/d0dbe915091d400bd8ee7f27f0791303.sdp/playlist.m3u8
-#EXTINF:-1 tvg-id="TBSTV.kr" tvg-name="TBS TV" tvg-chno="2909" tvg-logo="https://i.imgur.com/iOnWS6V.png" group-title="ערוצים בינלאומיים",TBS TV
+#EXTINF:-1 tvg-id="TBSTV.kr" tvg-name="TBS TV" tvg-chno="2908" tvg-logo="https://i.imgur.com/iOnWS6V.png" group-title="ערוצים בינלאומיים",TBS TV
 https://cdntv.tbs.seoul.kr/tbs/tbs_tv_web.smil/playlist.m3u8
-#EXTINF:-1 tvg-id="BaichengTV.cn" tvg-name="Baicheng TV" tvg-chno="2910" tvg-logo="https://www.tvchinese.net/uploads/tv/baicheng.jpg" group-title="ערוצים בינלאומיים",Baicheng TV
+#EXTINF:-1 tvg-id="BaichengTV.cn" tvg-name="Baicheng TV" tvg-chno="2909" tvg-logo="https://www.tvchinese.net/uploads/tv/baicheng.jpg" group-title="ערוצים בינלאומיים",Baicheng TV
 https://stream2.jlntv.cn/baicheng1/sd/live.m3u8
-#EXTINF:-1 tvg-id="SBTNacional.br" tvg-name="SBT Nacional" tvg-chno="2911" tvg-logo="https://i.imgur.com/tc1ALuu.png" group-title="ערוצים בינלאומיים",SBT Nacional
+#EXTINF:-1 tvg-id="SBTNacional.br" tvg-name="SBT Nacional" tvg-chno="2910" tvg-logo="https://i.imgur.com/tc1ALuu.png" group-title="ערוצים בינלאומיים",SBT Nacional
 https://cdn.live.br1.jmvstream.com/w/LVW-10801/LVW10801_Xvg4R0u57n/chunklist.m3u8
-#EXTINF:-1 tvg-id="CanalOnce.mx" tvg-name="Canal Once" tvg-chno="2912" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/2/2b/Canal_Once_logo_2025.png" group-title="ערוצים בינלאומיים",Canal Once
+#EXTINF:-1 tvg-id="CanalOnce.mx" tvg-name="Canal Once" tvg-chno="2911" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/2/2b/Canal_Once_logo_2025.png" group-title="ערוצים בינלאומיים",Canal Once
 https://vivo.canaloncelive.tv/securepkgr3/oncemexico/playlist.m3u8
-#EXTINF:-1 tvg-id="Canal7Neuquen.ar" tvg-name="Canal 7 Neuquen" tvg-chno="2913" tvg-logo="https://i.ibb.co/BrvQsWm/C7neuquenlogo2023.png" group-title="ערוצים בינלאומיים",Canal 7 Neuquen
+#EXTINF:-1 tvg-id="Canal7Neuquen.ar" tvg-name="Canal 7 Neuquen" tvg-chno="2912" tvg-logo="https://i.ibb.co/BrvQsWm/C7neuquenlogo2023.png" group-title="ערוצים בינלאומיים",Canal 7 Neuquen
 https://stream.arcast.com.ar/c7nq/ngrp:c7nq_all/playlist.m3u8
-#EXTINF:-1 tvg-id="VPlusTVI.pt" tvg-name="V+ TVI" tvg-chno="2914" tvg-logo="https://upload.wikimedia.org/wikipedia/pt/e/ef/V%2BTVI_Logo.png" group-title="ערוצים בינלאומיים",V+ TVI
+#EXTINF:-1 tvg-id="VPlusTVI.pt" tvg-name="V+ TVI" tvg-chno="2913" tvg-logo="https://upload.wikimedia.org/wikipedia/pt/e/ef/V%2BTVI_Logo.png" group-title="ערוצים בינלאומיים",V+ TVI
 https://raw.githubusercontent.com/thomraider12/canaistvpt/main/m3u8s/vmaistvi.m3u8
-#EXTINF:-1 tvg-id="OmroepWest.nl" tvg-name="Omroep West" tvg-chno="2915" tvg-logo="https://i.imgur.com/5IDb9fk.png" group-title="ערוצים בינלאומיים",Omroep West
+#EXTINF:-1 tvg-id="OmroepWest.nl" tvg-name="Omroep West" tvg-chno="2914" tvg-logo="https://i.imgur.com/5IDb9fk.png" group-title="ערוצים בינלאומיים",Omroep West
 https://d1axml5ozykh3g.cloudfront.net/live/omroepwest/tv/index.m3u8
-#EXTINF:-1 tvg-id="Notele.be" tvg-name="Notele" tvg-chno="2916" tvg-logo="https://i.imgur.com/fGS55nR.png" group-title="ערוצים בינלאומיים",Notele
+#EXTINF:-1 tvg-id="Notele.be" tvg-name="Notele" tvg-chno="2915" tvg-logo="https://i.imgur.com/fGS55nR.png" group-title="ערוצים בינלאומיים",Notele
 https://streaming01.divercom.be/notele_live/direct.stream/playlist.m3u8
-#EXTINF:-1 tvg-id="TirolTV.at" tvg-name="Tirol TV" tvg-chno="2917" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/TIROL_TV_Logo_2019.png/960px-TIROL_TV_Logo_2019.png" group-title="ערוצים בינלאומיים",Tirol TV
+#EXTINF:-1 tvg-id="TirolTV.at" tvg-name="Tirol TV" tvg-chno="2916" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/TIROL_TV_Logo_2019.png/960px-TIROL_TV_Logo_2019.png" group-title="ערוצים בינלאומיים",Tirol TV
 https://streaming14.huberwebmedia.at/LiveApp/streams/livestream.m3u8
-#EXTINF:-1 tvg-id="TelewizjaJaslo.pl" tvg-name="Telewizja Jaslo" tvg-chno="2918" tvg-logo="https://i.imgur.com/nV2jQQP.png" group-title="ערוצים בינלאומיים",Telewizja Jaslo
+#EXTINF:-1 tvg-id="TelewizjaJaslo.pl" tvg-name="Telewizja Jaslo" tvg-chno="2917" tvg-logo="https://i.imgur.com/nV2jQQP.png" group-title="ערוצים בינלאומיים",Telewizja Jaslo
 https://cdn01.aztv.pl/live_tvjaslo/live_tvjaslo.stream/playlist.m3u8
-#EXTINF:-1 tvg-id="PlzenTV.cz" tvg-name="Plzen TV" tvg-chno="2919" tvg-logo="https://i.imgur.com/TxLKSqL.png" group-title="ערוצים בינלאומיים",Plzen TV
+#EXTINF:-1 tvg-id="PlzenTV.cz" tvg-name="Plzen TV" tvg-chno="2918" tvg-logo="https://i.imgur.com/TxLKSqL.png" group-title="ערוצים בינלאומיים",Plzen TV
 https://vysilani.zaktv.cz/broadcast/hls/ptv/index.m3u8
-#EXTINF:-1 tvg-id="Tele7ABCHD.ro" tvg-name="Tele7ABC HD" tvg-chno="2920" tvg-logo="https://i.imgur.com/CheqyWH.png" group-title="ערוצים בינלאומיים",Tele7ABC HD
+#EXTINF:-1 tvg-id="Tele7ABCHD.ro" tvg-name="Tele7ABC HD" tvg-chno="2919" tvg-logo="https://i.imgur.com/CheqyWH.png" group-title="ערוצים בינלאומיים",Tele7ABC HD
 https://live.tele7abc.ro/hls/stream/index.m3u8
-#EXTINF:-1 tvg-id="XVTV.hu" tvg-name="XV TV" tvg-chno="2921" tvg-logo="https://i.ibb.co/hH2KF6W/4792.png" group-title="ערוצים בינלאומיים",XV TV
+#EXTINF:-1 tvg-id="XVTV.hu" tvg-name="XV TV" tvg-chno="2920" tvg-logo="https://i.ibb.co/hH2KF6W/4792.png" group-title="ערוצים בינלאומיים",XV TV
 https://cloudfront44.lexanetwork.com:1344/relay01/HDE051.sdp/playlist.m3u8
-#EXTINF:-1 tvg-id="PichilemuTV.cl" tvg-name="Pichilemu TV" tvg-chno="2922" tvg-logo="https://i.imgur.com/eaJVCwM.png" group-title="ערוצים בינלאומיים",Pichilemu TV
+#EXTINF:-1 tvg-id="PichilemuTV.cl" tvg-name="Pichilemu TV" tvg-chno="2921" tvg-logo="https://i.imgur.com/eaJVCwM.png" group-title="ערוצים בינלאומיים",Pichilemu TV
 https://5ff3d9babae13.streamlock.net/8028/8028/playlist.m3u8
-#EXTINF:-1 tvg-id="BluRadio.co" tvg-name="Blu Radio" tvg-chno="2923" tvg-logo="https://i.imgur.com/w2t8CGT.png" group-title="ערוצים בינלאומיים",Blu Radio
+#EXTINF:-1 tvg-id="BluRadio.co" tvg-name="Blu Radio" tvg-chno="2922" tvg-logo="https://i.imgur.com/w2t8CGT.png" group-title="ערוצים בינלאומיים",Blu Radio
 https://mdstrm.com/live-stream-playlist/58d1921a72e2b22e2905e493.m3u8
-#EXTINF:-1 tvg-id="BanjarTV.id" tvg-name="Banjar TV" tvg-chno="2924" tvg-logo="https://i.imgur.com/TA76a10.png" group-title="ערוצים בינלאומיים",Banjar TV
+#EXTINF:-1 tvg-id="BanjarTV.id" tvg-name="Banjar TV" tvg-chno="2923" tvg-logo="https://i.imgur.com/TA76a10.png" group-title="ערוצים בינלאומיים",Banjar TV
 https://banjartv.siar.us/banjartv/live/playlist.m3u8
-#EXTINF:-1 tvg-id="ZabbChannel.th" tvg-name="Zabb Channel" tvg-chno="2925" tvg-logo="https://i.imgur.com/4TMtUjW.png" group-title="ערוצים בינלאומיים",Zabb Channel
+#EXTINF:-1 tvg-id="ZabbChannel.th" tvg-name="Zabb Channel" tvg-chno="2924" tvg-logo="https://i.imgur.com/4TMtUjW.png" group-title="ערוצים בינלאומיים",Zabb Channel
 https://vdo.plathong.net/flash7057/flash7057/playlist.m3u8
-#EXTINF:-1 tvg-id="CaoBangTV.vn" tvg-name="Cao Bang TV" tvg-chno="2926" tvg-logo="https://i.imgur.com/dGonewm.png" group-title="ערוצים בינלאומיים",Cao Bang TV
+#EXTINF:-1 tvg-id="CaoBangTV.vn" tvg-name="Cao Bang TV" tvg-chno="2925" tvg-logo="https://i.imgur.com/dGonewm.png" group-title="ערוצים בינלאומיים",Cao Bang TV
 https://stream.thingnet.vn/live/smil:CRTV.smil/chunklist.m3u8
-#EXTINF:-1 tvg-id="ZindagiTV.pk" tvg-name="Zindagi TV" tvg-chno="2927" tvg-logo="https://i.imgur.com/XBHvR5J.png" group-title="ערוצים בינלאומיים",Zindagi TV
+#EXTINF:-1 tvg-id="ZindagiTV.pk" tvg-name="Zindagi TV" tvg-chno="2926" tvg-logo="https://i.imgur.com/XBHvR5J.png" group-title="ערוצים בינלאומיים",Zindagi TV
 https://5ad386ff92705.streamlock.net/live_transcoder/ngrp:zindagitv.stream_all/chunklist.m3u8
-#EXTINF:-1 tvg-id="DejTV.ir" tvg-name="Dej TV" tvg-chno="2928" tvg-logo="" group-title="ערוצים בינלאומיים",Dej TV
+#EXTINF:-1 tvg-id="DejTV.ir" tvg-name="Dej TV" tvg-chno="2927" tvg-logo="" group-title="ערוצים בינלאומיים",Dej TV
 https://rdejhls.wns.live/hls/stream.m3u8
-#EXTINF:-1 tvg-id="Antena7.do" tvg-name="Antena 7" tvg-chno="2929" tvg-logo="https://i.imgur.com/zKWFgeQ.png" group-title="ערוצים בינלאומיים",Antena 7
+#EXTINF:-1 tvg-id="Antena7.do" tvg-name="Antena 7" tvg-chno="2928" tvg-logo="https://i.imgur.com/zKWFgeQ.png" group-title="ערוצים בינלאומיים",Antena 7
 https://hls.tvabierta.net/hls/007.m3u8
-#EXTINF:-1 tvg-id="BoliviaTV.bo" tvg-name="Bolivia TV" tvg-chno="2930" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/8/8a/BTV_logo_2026.png" group-title="ערוצים בינלאומיים",Bolivia TV
+#EXTINF:-1 tvg-id="BoliviaTV.bo" tvg-name="Bolivia TV" tvg-chno="2929" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/8/8a/BTV_logo_2026.png" group-title="ערוצים בינלאומיים",Bolivia TV
 https://hls.tvabierta.net/hls/boliviatv.m3u8
-#EXTINF:-1 tvg-id="UniRadioTV.py" tvg-name="UniRadio TV" tvg-chno="2931" tvg-logo="https://i.imgur.com/Co3YrU0.png" group-title="ערוצים בינלאומיים",UniRadio TV
+#EXTINF:-1 tvg-id="UniRadioTV.py" tvg-name="UniRadio TV" tvg-chno="2930" tvg-logo="https://i.imgur.com/Co3YrU0.png" group-title="ערוצים בינלאומיים",UniRadio TV
 https://video.hostingcaaguazu.com:19360/uniradiotv/uniradiotv.m3u8
-#EXTINF:-1 tvg-id="TVCentral.sk" tvg-name="TV Central" tvg-chno="2932" tvg-logo="https://i.imgur.com/LqGT8o9.png" group-title="ערוצים בינלאומיים",TV Central
+#EXTINF:-1 tvg-id="TVCentral.sk" tvg-name="TV Central" tvg-chno="2931" tvg-logo="https://i.imgur.com/LqGT8o9.png" group-title="ערוצים בינלאומיים",TV Central
 https://arenasportslovakia.ddns.net/hls/cetv2.m3u8
-#EXTINF:-1 tvg-id="UniTV.ve" tvg-name="UniTV" tvg-chno="2933" tvg-logo="https://i.imgur.com/KLGeznX.png" group-title="ערוצים בינלאומיים",UniTV
+#EXTINF:-1 tvg-id="UniTV.ve" tvg-name="UniTV" tvg-chno="2932" tvg-logo="https://i.imgur.com/KLGeznX.png" group-title="ערוצים בינלאומיים",UniTV
 https://vcp6.myplaytv.com/unitv/unitv/playlist.m3u8
-#EXTINF:-1 tvg-id="RTRTV.ec" tvg-name="RTRTV" tvg-chno="2934" tvg-logo="https://i.imgur.com/dvP2yqB.png" group-title="ערוצים בינלאומיים",RTRTV
+#EXTINF:-1 tvg-id="RTRTV.ec" tvg-name="RTRTV" tvg-chno="2933" tvg-logo="https://i.imgur.com/dvP2yqB.png" group-title="ערוצים בינלאומיים",RTRTV
 https://tv3ecuador.site/hls/stream/index.m3u8
-#EXTINF:-1 tvg-id="QuinceUCR.cr" tvg-name="Quince UCR" tvg-chno="2935" tvg-logo="https://i.imgur.com/U7DUlem.png" group-title="ערוצים בינלאומיים",Quince UCR
+#EXTINF:-1 tvg-id="QuinceUCR.cr" tvg-name="Quince UCR" tvg-chno="2934" tvg-logo="https://i.imgur.com/U7DUlem.png" group-title="ערוצים בינלאומיים",Quince UCR
 https://wowza.ucr.ac.cr/quinceucr/_definst_/quinceucr.stream/playlist.m3u8
-#EXTINF:-1 tvg-id="TVFlorencia.gt" tvg-name="TV Florencia" tvg-chno="2936" tvg-logo="https://i.imgur.com/jsbwnRb.png" group-title="ערוצים בינלאומיים",TV Florencia
+#EXTINF:-1 tvg-id="TVFlorencia.gt" tvg-name="TV Florencia" tvg-chno="2935" tvg-logo="https://i.imgur.com/jsbwnRb.png" group-title="ערוצים בינלאומיים",TV Florencia
 https://cdn.streamhispanatv.net:3819/live/tvflorecialive.m3u8
-#EXTINF:-1 tvg-id="AztecaHonduras.hn" tvg-name="Azteca Honduras" tvg-chno="2937" tvg-logo="https://i.imgur.com/sxFh1dw.png" group-title="ערוצים בינלאומיים",Azteca Honduras
+#EXTINF:-1 tvg-id="AztecaHonduras.hn" tvg-name="Azteca Honduras" tvg-chno="2936" tvg-logo="https://i.imgur.com/sxFh1dw.png" group-title="ערוצים בינלאומיים",Azteca Honduras
 https://mdstrm.com/live-stream-playlist/65a1d2fd7e7f14355550d570.m3u8
-#EXTINF:-1 tvg-id="BugTV.by" tvg-name="Bug-TV" tvg-chno="2938" tvg-logo="https://i.imgur.com/KqB7YdO.png" group-title="ערוצים בינלאומיים",Bug-TV
+#EXTINF:-1 tvg-id="BugTV.by" tvg-name="Bug-TV" tvg-chno="2937" tvg-logo="https://i.imgur.com/KqB7YdO.png" group-title="ערוצים בינלאומיים",Bug-TV
 http://46.53.200.153:7777/play/Bug_TV_HD/index.m3u8
-#EXTINF:-1 tvg-id="SorTV.md" tvg-name="Sor TV" tvg-chno="2939" tvg-logo="https://i.imgur.com/BcfZgD8.png" group-title="ערוצים בינלאומיים",Sor TV
+#EXTINF:-1 tvg-id="SorTV.md" tvg-name="Sor TV" tvg-chno="2938" tvg-logo="https://i.imgur.com/BcfZgD8.png" group-title="ערוצים בינלאומיים",Sor TV
 http://188.237.212.16:8888/live/cameraFeed.m3u8
-#EXTINF:-1 tvg-id="Canal3Impresionante.sv" tvg-name="Canal 3 Impresionante" tvg-chno="2940" tvg-logo="https://i.imgur.com/mdfiWG9.png" group-title="ערוצים בינלאומיים",Canal 3 Impresionante
+#EXTINF:-1 tvg-id="Canal3Impresionante.sv" tvg-name="Canal 3 Impresionante" tvg-chno="2939" tvg-logo="https://i.imgur.com/mdfiWG9.png" group-title="ערוצים בינלאומיים",Canal 3 Impresionante
 https://cloud2.streaminglivehd.com:2020/hls/8036/8036.m3u8
-#EXTINF:-1 tvg-id="CANTV19.us" tvg-name="CAN TV19" tvg-chno="2941" tvg-logo="https://i.imgur.com/PUQtIa3.png" group-title="ערוצים בינלאומיים",CAN TV19
+#EXTINF:-1 tvg-id="CANTV19.us" tvg-name="CAN TV19" tvg-chno="2940" tvg-logo="https://i.imgur.com/PUQtIa3.png" group-title="ערוצים בינלאומיים",CAN TV19
 https://cantv.streamguys1.com/cantv/cantv19hls/playlist.m3u8
-#EXTINF:-1 tvg-id="BBCNewsPashto.uk" tvg-name="BBC News Pashto" tvg-chno="2942" tvg-logo="https://static.files.bbci.co.uk/ws/simorgh-assets/public/pashto/images/metadata/poster-1024x576.png" group-title="ערוצים בינלאומיים",BBC News Pashto
+#EXTINF:-1 tvg-id="BBCNewsPashto.uk" tvg-name="BBC News Pashto" tvg-chno="2941" tvg-logo="https://static.files.bbci.co.uk/ws/simorgh-assets/public/pashto/images/metadata/poster-1024x576.png" group-title="ערוצים בינלאומיים",BBC News Pashto
 https://vs-hls-pushb-ww-live.akamaized.net/x=4/i=urn:bbc:pips:service:bbc_afghan_tv/t=3840/v=pv14/b=5070016/main.m3u8
-#EXTINF:-1 tvg-id="ViaMatele.fr" tvg-name="ViaMatele" tvg-chno="2943" tvg-logo="https://i.imgur.com/XVCV9rj.png" group-title="ערוצים בינלאומיים",ViaMatele
+#EXTINF:-1 tvg-id="ViaMatele.fr" tvg-name="ViaMatele" tvg-chno="2942" tvg-logo="https://i.imgur.com/XVCV9rj.png" group-title="ערוצים בינלאומיים",ViaMatele
 https://5dd226f8f01e8.streamlock.net/via-matele-live/matelelive_1080/playlist.m3u8
-#EXTINF:-1 tvg-id="FrankenFernsehen.de" tvg-name="Franken Fernsehen" tvg-chno="2944" tvg-logo="https://i.imgur.com/3pGGLLD.png" group-title="ערוצים בינלאומיים",Franken Fernsehen
+#EXTINF:-1 tvg-id="FrankenFernsehen.de" tvg-name="Franken Fernsehen" tvg-chno="2943" tvg-logo="https://i.imgur.com/3pGGLLD.png" group-title="ערוצים בינלאומיים",Franken Fernsehen
 https://frankentv.iptv-playoutcenter.de/frankentv/frankentv.stream_1/playlist.m3u8
-#EXTINF:-1 tvg-id="DiezTVLasVillas.es" tvg-name="Diez TV Las Villas" tvg-chno="2945" tvg-logo="https://i.imgur.com/QTA40lP.png" group-title="ערוצים בינלאומיים",Diez TV Las Villas
+#EXTINF:-1 tvg-id="DiezTVLasVillas.es" tvg-name="Diez TV Las Villas" tvg-chno="2944" tvg-logo="https://i.imgur.com/QTA40lP.png" group-title="ערוצים בינלאומיים",Diez TV Las Villas
 https://streaming.cloud.innovasur.es/mmj2/index.m3u8

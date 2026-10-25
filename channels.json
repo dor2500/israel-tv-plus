@@ -1,5 +1,238 @@
 [
   {
+    "id": "i24news_he",
+    "name": "i24NEWS עברית HD",
+    "title": "i24NEWS עברית HD",
+    "category": "ערוצי ישראל - שידור חי",
+    "categoryEn": "israel",
+    "url": "https://i24newshebrew-cdn.encoders.immergo.tv/master.m3u8",
+    "logo": "assets/logos/i24news_he.png",
+    "badge": "FHD",
+    "desc": "ערוץ החדשות הבינלאומי של ישראל בעברית - דיווחי חדשות ומבזקים 24/7",
+    "number": 1,
+    "lang": "he",
+    "iptv": "i24NEWSHebrew.il",
+    "src": {
+      "by": "i24NEWS – שרת רשמי",
+      "kind": "official",
+      "host": "i24newshebrew-cdn.encoders.immergo.tv",
+      "found": "iptv-org (i24NEWSHebrew.il)",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "eretz_nehederet",
+    "name": "ארץ נהדרת 24/7 – קשת / FreeTV",
+    "title": "ארץ נהדרת 24/7 (FreeTV)",
+    "category": "ערוצי ישראל - שידור חי",
+    "categoryEn": "israel",
+    "url": "https://mako-streaming.akamaized.net/evrideo/hls/live/20001278/erets/index.m3u8",
+    "auth": "mako",
+    "lang": "he",
+    "badge": "HD",
+    "desc": "כל העונות והמערכונים של ארץ נהדרת ברצף 24/7 – ערוץ חינמי של קשת ו-FreeTV",
+    "logo": "assets/logos/eretz_nehederet.png",
+    "number": 2,
+    "src": {
+      "by": "קשת – ה-CDN של mako (עם הרשאת צפייה של mako)",
+      "kind": "official",
+      "host": "mako-streaming.akamaized.net",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "keshet_food",
+    "name": "ערוץ האוכל והבישול – קשת / FreeTV",
+    "title": "ערוץ האוכל והבישול – קשת (FreeTV)",
+    "category": "ערוצי ישראל - שידור חי",
+    "categoryEn": "israel",
+    "url": "https://mako-streaming.akamaized.net/evrideo/hls/live/20001278/free_food/index.m3u8",
+    "auth": "mako",
+    "lang": "he",
+    "badge": "HD",
+    "desc": "ערוץ האוכל והבישול של קשת ו-FreeTV 24/7 – מתכונים, שפים מובילים ומאסטר שף",
+    "logo": "assets/logos/keshet_food.svg",
+    "number": 3,
+    "src": {
+      "by": "קשת – ה-CDN של mako (עם הרשאת צפייה של mako)",
+      "kind": "official",
+      "host": "mako-streaming.akamaized.net",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "keshet_comedy",
+    "name": "ערוץ הקומדיה – קשת / FreeTV",
+    "title": "ערוץ הקומדיה של קשת (FreeTV)",
+    "category": "ערוצי ישראל - שידור חי",
+    "categoryEn": "israel",
+    "url": "https://mako-streaming.akamaized.net/evrideo/hls/live/20001278/free_comedy/index.m3u8",
+    "auth": "mako",
+    "lang": "he",
+    "badge": "HD",
+    "desc": "קומדיות ישראליות של קשת 24/7 – ערוץ חינמי של קשת ו-FreeTV",
+    "logo": "assets/logos/keshet_comedy.png",
+    "number": 4,
+    "src": {
+      "by": "קשת – ה-CDN של mako (עם הרשאת צפייה של mako)",
+      "kind": "official",
+      "host": "mako-streaming.akamaized.net",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "keshet_drama",
+    "name": "ערוץ הדרמה – קשת / FreeTV",
+    "title": "ערוץ הדרמה של קשת (FreeTV)",
+    "category": "ערוצי ישראל - שידור חי",
+    "categoryEn": "israel",
+    "url": "https://mako-streaming.akamaized.net/evrideo/hls/live/20001278/free_drama/index.m3u8",
+    "auth": "mako",
+    "lang": "he",
+    "badge": "HD",
+    "desc": "דרמות וסדרות ישראליות של קשת 24/7 – ערוץ חינמי של קשת ו-FreeTV",
+    "logo": "assets/logos/keshet_drama.png",
+    "number": 5,
+    "src": {
+      "by": "קשת – ה-CDN של mako (עם הרשאת צפייה של mako)",
+      "kind": "official",
+      "host": "mako-streaming.akamaized.net",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "keshet_music",
+    "name": "ערוץ המוזיקה – קשת / FreeTV",
+    "title": "ערוץ המוזיקה של קשת (FreeTV)",
+    "category": "ערוצי ישראל - שידור חי",
+    "categoryEn": "israel",
+    "url": "https://mako-streaming.akamaized.net/evrideo/hls/live/20001278/free_music/index.m3u8",
+    "auth": "mako",
+    "lang": "he",
+    "badge": "HD",
+    "desc": "מוזיקה ישראלית, הופעות ותוכניות מוזיקה של קשת – ערוץ חינמי של קשת ו-FreeTV",
+    "logo": "assets/logos/keshet_music.png",
+    "number": 6,
+    "src": {
+      "by": "קשת – ה-CDN של mako (עם הרשאת צפייה של mako)",
+      "kind": "official",
+      "host": "mako-streaming.akamaized.net",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "good_life_israel",
+    "name": "ערוץ החיים הטובים HD",
+    "title": "ערוץ החיים הטובים HD (Good Life)",
+    "category": "ערוצי ישראל - שידור חי",
+    "categoryEn": "israel",
+    "url": "http://stream.mcquack.net/47/index.m3u8",
+    "lang": "he",
+    "badge": "HD",
+    "desc": "ערוץ הלייף סטייל, העיצוב והאוכל של yes ו-HOT",
+    "logo": "assets/logos/good_life_israel.png",
+    "number": 7,
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "❌ רק באפליקציה (HTTP)"
+    },
+    "country": "IL"
+  },
+  {
+    "id": "hot_reality",
+    "name": "HOT ריאליטי HD",
+    "title": "HOT ריאליטי HD (HOT Reality)",
+    "category": "ערוצי ישראל - שידור חי",
+    "categoryEn": "israel",
+    "url": "https://d2dffl3588mvfk.cloudfront.net/out/v1/d8e15050ca4148aab0ee387a5e2eb46b/index_1.m3u8",
+    "logo": "assets/logos/hot_reality.png",
+    "badge": "HD",
+    "desc": "תוכניות הריאליטי והבידור הגדולות של HOT",
+    "lang": "he",
+    "country": "IL",
+    "countryHe": "ישראל",
+    "webOk": true,
+    "src": {
+      "by": "ערוץ FAST ישראלי – AWS CloudFront",
+      "kind": "fast",
+      "host": "d2dffl3588mvfk.cloudfront.net",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "✅"
+    },
+    "number": 8
+  },
+  {
+    "id": "channel9",
+    "name": "ערוץ 9 ישראל HD",
+    "title": "ערוץ 9 ישראל (Channel 9)",
+    "category": "ערוצי ישראל - שידור חי",
+    "categoryEn": "israel",
+    "url": "https://contact.gostreaming.tv/Con-11/index.m3u8",
+    "logo": "assets/logos/ch9.png",
+    "badge": "FHD",
+    "desc": "ערוץ 9 - ערוץ ישראלי בשפה הרוסית: חדשות, אקטואליה ותוכניות",
+    "number": 9,
+    "lang": "ru",
+    "iptv": "Channel9.il",
+    "src": {
+      "by": "GoStreaming – ספק השידור של ערוץ 9",
+      "kind": "official",
+      "host": "contact.gostreaming.tv",
+      "found": "iptv-org (Channel9.il)",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "calcala10",
+    "name": "ערוץ כלכלה 10 HD",
+    "title": "ערוץ כלכלה 10 HD",
+    "category": "ערוצי ישראל - שידור חי",
+    "categoryEn": "israel",
+    "url": "https://r.il.cdn-redge.media/livehls/oil/calcala-live/live/channel10/live.livx/playlist.m3u8",
+    "logo": "assets/logos/calcala10.png",
+    "badge": "HD",
+    "desc": "ערוץ הכלכלה הישראלי – שוק ההון, נדל\"ן, צרכנות ועסקים",
+    "lang": "he",
+    "country": "IL",
+    "number": 10,
+    "src": {
+      "by": "Redge – ה-CDN הרשמי של כאן, ערוץ 14 וכלכלה 10",
+      "kind": "official",
+      "host": "r.il.cdn-redge.media",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "kan11",
+    "name": "כאן 11 HD",
+    "title": "כאן 11 HD (Kan 11)",
+    "category": "ערוצי ישראל - שידור חי",
+    "categoryEn": "israel",
+    "url": "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan11/live.livx/playlist.m3u8",
+    "logo": "assets/logos/kan11.png",
+    "badge": "FHD",
+    "desc": "תאגיד השידור הישראלי - חדשות כאן, סדרות דרמה מוערכות, תעודה ואירועי ספורט",
+    "number": 11,
+    "lang": "he",
+    "iptv": "Kan11.il",
+    "src": {
+      "by": "כאן – תאגיד השידור (CDN רשמי)",
+      "kind": "official",
+      "host": "kancdn.medonecdn.net",
+      "found": "iptv-org (Kan11.il)",
+      "web": "✅"
+    }
+  },
+  {
     "id": "keshet12",
     "name": "קשת 12 HD",
     "title": "קשת 12 HD (Keshet 12)",
@@ -9,7 +242,7 @@
     "logo": "assets/logos/keshet12.png",
     "badge": "FHD",
     "desc": "ערוץ הטלוויזיה המוביל בישראל - חדשות 12, ריאליטי, תוכניות בידור וסדרות מקור",
-    "number": 1,
+    "number": 12,
     "lang": "he",
     "iptv": "Keshet12.il",
     "src": {
@@ -32,34 +265,13 @@
     "logo": "assets/logos/reshet13.png",
     "badge": "FHD",
     "desc": "חדשות 13, הישרדות, האח הגדול, משחקי השף ותוכניות תחקירים מובילות",
-    "number": 2,
+    "number": 13,
     "lang": "he",
     "src": {
       "by": "רשת 13 – AWS CloudFront",
       "kind": "official",
       "host": "d18b0e6mopany4.cloudfront.net",
       "found": "רשימה ידנית (גרסה קודמת)",
-      "web": "✅"
-    }
-  },
-  {
-    "id": "kan11",
-    "name": "כאן 11 HD",
-    "title": "כאן 11 HD (Kan 11)",
-    "category": "ערוצי ישראל - שידור חי",
-    "categoryEn": "israel",
-    "url": "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan11/live.livx/playlist.m3u8",
-    "logo": "assets/logos/kan11.png",
-    "badge": "FHD",
-    "desc": "תאגיד השידור הישראלי - חדשות כאן, סדרות דרמה מוערכות, תעודה ואירועי ספורט",
-    "number": 3,
-    "lang": "he",
-    "iptv": "Kan11.il",
-    "src": {
-      "by": "כאן – תאגיד השידור (CDN רשמי)",
-      "kind": "official",
-      "host": "kancdn.medonecdn.net",
-      "found": "iptv-org (Kan11.il)",
       "web": "✅"
     }
   },
@@ -73,7 +285,7 @@
     "logo": "assets/logos/now14.png",
     "badge": "FHD",
     "desc": "ערוץ החדשות והאקטואליה - מהדורות חדשות, הפטריוטים ופאנלים פוליטיים",
-    "number": 4,
+    "number": 14,
     "lang": "he",
     "iptv": "Now14.il",
     "src": {
@@ -85,155 +297,6 @@
     }
   },
   {
-    "id": "i24news_he",
-    "name": "i24NEWS עברית HD",
-    "title": "i24NEWS עברית HD",
-    "category": "ערוצי ישראל - שידור חי",
-    "categoryEn": "israel",
-    "url": "https://i24newshebrew-cdn.encoders.immergo.tv/master.m3u8",
-    "logo": "assets/logos/i24news_he.png",
-    "badge": "FHD",
-    "desc": "ערוץ החדשות הבינלאומי של ישראל בעברית - דיווחי חדשות ומבזקים 24/7",
-    "number": 5,
-    "lang": "he",
-    "iptv": "i24NEWSHebrew.il",
-    "src": {
-      "by": "i24NEWS – שרת רשמי",
-      "kind": "official",
-      "host": "i24newshebrew-cdn.encoders.immergo.tv",
-      "found": "iptv-org (i24NEWSHebrew.il)",
-      "web": "✅"
-    }
-  },
-  {
-    "id": "keshet_food",
-    "name": "ערוץ האוכל והבישול – קשת / FreeTV",
-    "title": "ערוץ האוכל והבישול – קשת (FreeTV)",
-    "category": "ערוצי ישראל - שידור חי",
-    "categoryEn": "israel",
-    "url": "https://mako-streaming.akamaized.net/evrideo/hls/live/20001278/free_food/index.m3u8",
-    "auth": "mako",
-    "lang": "he",
-    "badge": "HD",
-    "desc": "ערוץ האוכל והבישול של קשת ו-FreeTV 24/7 – מתכונים, שפים מובילים ומאסטר שף",
-    "logo": "assets/logos/keshet_food.svg",
-    "number": 6,
-    "src": {
-      "by": "קשת – ה-CDN של mako (עם הרשאת צפייה של mako)",
-      "kind": "official",
-      "host": "mako-streaming.akamaized.net",
-      "found": "רשימה ידנית (גרסה קודמת)",
-      "web": "✅"
-    }
-  },
-  {
-    "id": "eretz_nehederet",
-    "name": "ארץ נהדרת 24/7 – קשת / FreeTV",
-    "title": "ארץ נהדרת 24/7 (FreeTV)",
-    "category": "ערוצי ישראל - שידור חי",
-    "categoryEn": "israel",
-    "url": "https://mako-streaming.akamaized.net/evrideo/hls/live/20001278/erets/index.m3u8",
-    "auth": "mako",
-    "lang": "he",
-    "badge": "HD",
-    "desc": "כל העונות והמערכונים של ארץ נהדרת ברצף 24/7 – ערוץ חינמי של קשת ו-FreeTV",
-    "logo": "assets/logos/eretz_nehederet.png",
-    "number": 7,
-    "src": {
-      "by": "קשת – ה-CDN של mako (עם הרשאת צפייה של mako)",
-      "kind": "official",
-      "host": "mako-streaming.akamaized.net",
-      "found": "רשימה ידנית (גרסה קודמת)",
-      "web": "✅"
-    }
-  },
-  {
-    "id": "keshet_comedy",
-    "name": "ערוץ הקומדיה – קשת / FreeTV",
-    "title": "ערוץ הקומדיה של קשת (FreeTV)",
-    "category": "ערוצי ישראל - שידור חי",
-    "categoryEn": "israel",
-    "url": "https://mako-streaming.akamaized.net/evrideo/hls/live/20001278/free_comedy/index.m3u8",
-    "auth": "mako",
-    "lang": "he",
-    "badge": "HD",
-    "desc": "קומדיות ישראליות של קשת 24/7 – ערוץ חינמי של קשת ו-FreeTV",
-    "logo": "assets/logos/keshet_comedy.png",
-    "number": 8,
-    "src": {
-      "by": "קשת – ה-CDN של mako (עם הרשאת צפייה של mako)",
-      "kind": "official",
-      "host": "mako-streaming.akamaized.net",
-      "found": "רשימה ידנית (גרסה קודמת)",
-      "web": "✅"
-    }
-  },
-  {
-    "id": "keshet_drama",
-    "name": "ערוץ הדרמה – קשת / FreeTV",
-    "title": "ערוץ הדרמה של קשת (FreeTV)",
-    "category": "ערוצי ישראל - שידור חי",
-    "categoryEn": "israel",
-    "url": "https://mako-streaming.akamaized.net/evrideo/hls/live/20001278/free_drama/index.m3u8",
-    "auth": "mako",
-    "lang": "he",
-    "badge": "HD",
-    "desc": "דרמות וסדרות ישראליות של קשת 24/7 – ערוץ חינמי של קשת ו-FreeTV",
-    "logo": "assets/logos/keshet_drama.png",
-    "number": 9,
-    "src": {
-      "by": "קשת – ה-CDN של mako (עם הרשאת צפייה של mako)",
-      "kind": "official",
-      "host": "mako-streaming.akamaized.net",
-      "found": "רשימה ידנית (גרסה קודמת)",
-      "web": "✅"
-    }
-  },
-  {
-    "id": "channel9",
-    "name": "ערוץ 9 ישראל HD",
-    "title": "ערוץ 9 ישראל (Channel 9)",
-    "category": "ערוצי ישראל - שידור חי",
-    "categoryEn": "israel",
-    "url": "https://contact.gostreaming.tv/Con-11/index.m3u8",
-    "logo": "assets/logos/ch9.png",
-    "badge": "FHD",
-    "desc": "ערוץ 9 - ערוץ ישראלי בשפה הרוסית: חדשות, אקטואליה ותוכניות",
-    "number": 10,
-    "lang": "ru",
-    "iptv": "Channel9.il",
-    "src": {
-      "by": "GoStreaming – ספק השידור של ערוץ 9",
-      "kind": "official",
-      "host": "contact.gostreaming.tv",
-      "found": "iptv-org (Channel9.il)",
-      "web": "✅"
-    }
-  },
-  {
-    "id": "channel24",
-    "name": "ערוץ 24 HD",
-    "title": "ערוץ 24 (Channel 24)",
-    "category": "ערוצי ישראל - שידור חי",
-    "categoryEn": "israel",
-    "url": "https://mako-streaming.akamaized.net/direct/hls/live/2035340/ch24live/index.m3u8?as=1",
-    "logo": "assets/logos/ch24.png",
-    "badge": "HD",
-    "desc": "ערוץ המוזיקה, השמחה והבידור הישראלי - קליפים, הופעות ואירוח",
-    "number": 11,
-    "lang": "he",
-    "iptv": "Channel24.il",
-    "src": {
-      "by": "קשת – ה-CDN של mako (עם הרשאת צפייה של mako)",
-      "kind": "official",
-      "host": "mako-streaming.akamaized.net",
-      "found": "iptv-org (Channel24.il)",
-      "web": "❌ רק באפליקציה (הפניה בלי CORS)"
-    },
-    "auth": "mako",
-    "webOk": false
-  },
-  {
     "id": "knesset",
     "name": "ערוץ הכנסת 99",
     "title": "ערוץ הכנסת (Knesset Channel)",
@@ -243,7 +306,7 @@
     "logo": "assets/logos/knesset.png",
     "badge": "SD",
     "desc": "שידורים ישירים ממליאת הכנסת, ועדות, תוכניות אקטואליה ופוליטיקה",
-    "number": 12,
+    "number": 15,
     "lang": "he",
     "iptv": "KnessetChannel.il",
     "src": {
@@ -255,55 +318,13 @@
     }
   },
   {
-    "id": "kan_hinuchit",
-    "name": "כאן חינוכית 23 HD",
-    "title": "כאן חינוכית (Kan Hinuchit)",
-    "category": "ערוצי ישראל - שידור חי",
-    "categoryEn": "israel",
-    "url": "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan_edu/live.livx/playlist.m3u8",
-    "logo": "assets/logos/kan_hinuchit.png",
-    "badge": "HD",
-    "desc": "כראמל, קופה ראשית לנוער, ילדי בית העץ, להציל את חיות הבר ועוד",
-    "number": 13,
-    "lang": "he",
-    "iptv": "KanEducational.il",
-    "src": {
-      "by": "כאן – תאגיד השידור (CDN רשמי)",
-      "kind": "official",
-      "host": "kancdn.medonecdn.net",
-      "found": "iptv-org (KanEducational.il)",
-      "web": "✅"
-    }
-  },
-  {
-    "id": "good_life_israel",
-    "name": "ערוץ החיים הטובים HD",
-    "title": "ערוץ החיים הטובים HD (Good Life)",
-    "category": "ערוצי ישראל - שידור חי",
-    "categoryEn": "israel",
-    "url": "http://stream.mcquack.net/47/index.m3u8",
-    "lang": "he",
-    "badge": "HD",
-    "desc": "ערוץ הלייף סטייל, העיצוב והאוכל של yes ו-HOT",
-    "logo": "assets/logos/good_life_israel.svg",
-    "number": 14,
-    "src": {
-      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
-      "kind": "restream",
-      "host": "stream.mcquack.net",
-      "found": "רשימה ידנית (גרסה קודמת)",
-      "web": "❌ רק באפליקציה (HTTP)"
-    },
-    "country": "IL"
-  },
-  {
     "id": "hot_comedy",
     "name": "HOT קומדי HD",
     "title": "HOT קומדי HD (HOT Comedy)",
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
     "url": "https://d15ds134q59udk.cloudfront.net/out/v1/fbba879221d045598540ee783b140fe2/index.m3u8",
-    "logo": "assets/logos/hot_comedy.svg",
+    "logo": "assets/logos/hot_comedy.png",
     "badge": "HD",
     "desc": "ערוץ הקומדיה, הסטנדאפ והסדרות המצחיקות של HOT",
     "lang": "he",
@@ -317,29 +338,6 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
-    "number": 15
-  },
-  {
-    "id": "hot_reality",
-    "name": "HOT ריאליטי HD",
-    "title": "HOT ריאליטי HD (HOT Reality)",
-    "category": "ערוצי ישראל - שידור חי",
-    "categoryEn": "israel",
-    "url": "https://d2dffl3588mvfk.cloudfront.net/out/v1/d8e15050ca4148aab0ee387a5e2eb46b/index_1.m3u8",
-    "logo": "assets/logos/hot_reality.svg",
-    "badge": "HD",
-    "desc": "תוכניות הריאליטי והבידור הגדולות של HOT",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "webOk": true,
-    "src": {
-      "by": "ערוץ FAST ישראלי – AWS CloudFront",
-      "kind": "fast",
-      "host": "d2dffl3588mvfk.cloudfront.net",
-      "found": "רשימה ידנית (גרסה קודמת)",
-      "web": "✅"
-    },
     "number": 16
   },
   {
@@ -349,7 +347,7 @@
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
     "url": "https://d1yd8hohnldm33.cloudfront.net/out/v1/19dee23c2cc24f689bd4e1288661ee0c/index_2.m3u8",
-    "logo": "assets/logos/hot_vacation.svg",
+    "logo": "assets/logos/hot_vacation.png",
     "badge": "HD",
     "desc": "ערוץ התיירות, החופשות והנופש של HOT",
     "lang": "he",
@@ -372,7 +370,7 @@
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
     "url": "http://stream.mcquack.net/46/index.m3u8",
-    "logo": "assets/logos/yam_tichoni_israel.svg",
+    "logo": "assets/logos/yam_tichoni_israel.png",
     "badge": "FHD",
     "desc": "מוזיקה מזרחית, הופעות חיות ודרמות ישראליות ב-1080p FHD",
     "lang": "he",
@@ -389,39 +387,18 @@
     "number": 18
   },
   {
-    "id": "calcala10",
-    "name": "ערוץ כלכלה 10 HD",
-    "title": "ערוץ כלכלה 10 HD",
-    "category": "ערוצי ישראל - שידור חי",
-    "categoryEn": "israel",
-    "url": "https://r.il.cdn-redge.media/livehls/oil/calcala-live/live/channel10/live.livx/playlist.m3u8",
-    "logo": "assets/logos/calcala10.svg",
-    "badge": "HD",
-    "desc": "ערוץ הכלכלה הישראלי – שוק ההון, נדל\"ן, צרכנות ועסקים",
-    "lang": "he",
-    "country": "IL",
-    "number": 19,
-    "src": {
-      "by": "Redge – ה-CDN הרשמי של כאן, ערוץ 14 וכלכלה 10",
-      "kind": "official",
-      "host": "r.il.cdn-redge.media",
-      "found": "רשימה ידנית (גרסה קודמת)",
-      "web": "✅"
-    }
-  },
-  {
     "id": "yes_movies_comedy",
     "name": "yes קולנוע קומדיה HD",
     "title": "yes קולנוע קומדיה HD (Movies Comedy)",
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
     "url": "http://stream.mcquack.net/201/index.m3u8",
-    "logo": "assets/logos/yes_movies_comedy.svg",
+    "logo": "assets/logos/yes_movies_comedy.png",
     "badge": "FHD",
     "desc": "מיטב סרטי הקומדיה, הצחוק והבידור מבית yes באיכות 1080p FHD",
     "lang": "he",
     "country": "IL",
-    "number": 20,
+    "number": 19,
     "src": {
       "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
       "kind": "restream",
@@ -437,12 +414,12 @@
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
     "url": "http://stream.mcquack.net/170/index.m3u8",
-    "logo": "assets/logos/yes_movies_drama.svg",
+    "logo": "assets/logos/yes_movies_drama.png",
     "badge": "FHD",
     "desc": "סרטי דרמה מרגשים, קולנוע עולמי ופסטיבלים מבית yes באיכות 1080p FHD",
     "lang": "he",
     "country": "IL",
-    "number": 21,
+    "number": 20,
     "src": {
       "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
       "kind": "restream",
@@ -458,12 +435,12 @@
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
     "url": "http://stream.mcquack.net/110/index.m3u8",
-    "logo": "assets/logos/yes_movies_classic.svg",
+    "logo": "assets/logos/yes_movies_classic.png",
     "badge": "HD",
     "desc": "קלאסיקות קולנועיות אהובות וסרטי מופת מכל הזמנים",
     "lang": "he",
     "country": "IL",
-    "number": 22,
+    "number": 21,
     "src": {
       "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
       "kind": "restream",
@@ -483,8 +460,8 @@
     "badge": "FHD",
     "desc": "ערוץ סרטי האקשן, שוברי הקופות והמתח מבית yes באיכות 1080p FHD",
     "lang": "he",
-    "logo": "assets/logos/yes_movies_action.svg",
-    "number": 23,
+    "logo": "assets/logos/yes_movies_action.png",
+    "number": 22,
     "src": {
       "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
       "kind": "restream",
@@ -495,18 +472,62 @@
     "country": "IL"
   },
   {
+    "id": "kan_hinuchit",
+    "name": "כאן חינוכית 23 HD",
+    "title": "כאן חינוכית (Kan Hinuchit)",
+    "category": "ערוצי ישראל - שידור חי",
+    "categoryEn": "israel",
+    "url": "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan_edu/live.livx/playlist.m3u8",
+    "logo": "assets/logos/kan_hinuchit.png",
+    "badge": "HD",
+    "desc": "כראמל, קופה ראשית לנוער, ילדי בית העץ, להציל את חיות הבר ועוד",
+    "number": 23,
+    "lang": "he",
+    "iptv": "KanEducational.il",
+    "src": {
+      "by": "כאן – תאגיד השידור (CDN רשמי)",
+      "kind": "official",
+      "host": "kancdn.medonecdn.net",
+      "found": "iptv-org (KanEducational.il)",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "channel24",
+    "name": "ערוץ 24 HD",
+    "title": "ערוץ 24 (Channel 24)",
+    "category": "ערוצי ישראל - שידור חי",
+    "categoryEn": "israel",
+    "url": "https://mako-streaming.akamaized.net/direct/hls/live/2035340/ch24live/index.m3u8?as=1",
+    "logo": "assets/logos/ch24.png",
+    "badge": "HD",
+    "desc": "ערוץ המוזיקה, השמחה והבידור הישראלי - קליפים, הופעות ואירוח",
+    "number": 24,
+    "lang": "he",
+    "iptv": "Channel24.il",
+    "src": {
+      "by": "קשת – ה-CDN של mako (עם הרשאת צפייה של mako)",
+      "kind": "official",
+      "host": "mako-streaming.akamaized.net",
+      "found": "iptv-org (Channel24.il)",
+      "web": "❌ רק באפליקציה (הפניה בלי CORS)"
+    },
+    "auth": "mako",
+    "webOk": false
+  },
+  {
     "id": "yes_tv_drama",
     "name": "yes TV סדרות דרמה HD",
     "title": "yes TV סדרות דרמה HD (TV Drama)",
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
     "url": "http://stream.mcquack.net/311/index.m3u8",
-    "logo": "assets/logos/yes_tv_drama.svg",
+    "logo": "assets/logos/yes_tv_drama.png",
     "badge": "FHD",
     "desc": "סדרות הדרמה המדוברות ביותר בארץ ובעולם מבית yes",
     "lang": "he",
     "country": "IL",
-    "number": 24,
+    "number": 25,
     "src": {
       "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
       "kind": "restream",
@@ -522,12 +543,12 @@
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
     "url": "http://stream.mcquack.net/214/index.m3u8",
-    "logo": "assets/logos/yes_tv_action.svg",
+    "logo": "assets/logos/yes_tv_action.png",
     "badge": "FHD",
     "desc": "סדרות מתח, אקשן ומסתורין ללא הפסקה מבית yes",
     "lang": "he",
     "country": "IL",
-    "number": 25,
+    "number": 26,
     "src": {
       "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
       "kind": "restream",
@@ -543,12 +564,12 @@
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
     "url": "http://stream.mcquack.net/356/index.m3u8",
-    "logo": "assets/logos/yes_tv_comedy.svg",
+    "logo": "assets/logos/yes_tv_comedy.png",
     "badge": "HD",
     "desc": "סדרות קומדיה, סיטקומים ותוכניות בידור מבית yes",
     "lang": "he",
     "country": "IL",
-    "number": 26,
+    "number": 27,
     "src": {
       "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
       "kind": "restream",
@@ -564,12 +585,12 @@
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
     "url": "http://stream.mcquack.net/70/index.m3u8",
-    "logo": "assets/logos/yes_docu.svg",
+    "logo": "assets/logos/yes_docu.png",
     "badge": "HD",
     "desc": "ערוץ הסרטים והסדרות הדוקומנטריות עטורי הפרסים של yes",
     "lang": "he",
     "country": "IL",
-    "number": 27,
+    "number": 28,
     "src": {
       "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
       "kind": "restream",
@@ -585,12 +606,12 @@
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
     "url": "http://stream.mcquack.net/200/index.m3u8",
-    "logo": "assets/logos/hot_cinema_1.svg",
+    "logo": "assets/logos/hot_cinema_1.png",
     "badge": "FHD",
     "desc": "שוברי הקופות והסרטים החדשים ביותר של HOT באיכות 1080p FHD",
     "lang": "he",
     "country": "IL",
-    "number": 28,
+    "number": 29,
     "src": {
       "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
       "kind": "restream",
@@ -606,12 +627,12 @@
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
     "url": "http://stream.mcquack.net/202/index.m3u8",
-    "logo": "assets/logos/hot_cinema_2.svg",
+    "logo": "assets/logos/hot_cinema_2.png",
     "badge": "FHD",
     "desc": "סרטי הרפתקאות, פעולה ומדע בדיוני מבית HOT",
     "lang": "he",
     "country": "IL",
-    "number": 29,
+    "number": 30,
     "src": {
       "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
       "kind": "restream",
@@ -627,12 +648,12 @@
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
     "url": "http://stream.mcquack.net/421/index.m3u8",
-    "logo": "assets/logos/hot_cinema_3.svg",
+    "logo": "assets/logos/hot_cinema_3.png",
     "badge": "FHD",
     "desc": "סרטי איכות עטורי פרסים וקולנוע פרימיום של HOT",
     "lang": "he",
     "country": "IL",
-    "number": 30,
+    "number": 31,
     "src": {
       "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
       "kind": "restream",
@@ -648,12 +669,12 @@
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
     "url": "http://stream.mcquack.net/100/index.m3u8",
-    "logo": "assets/logos/hot_action.svg",
+    "logo": "assets/logos/hot_action.png",
     "badge": "HD",
     "desc": "סרטי פעולה, מתח וקרבות מסביב לשעון מבית HOT",
     "lang": "he",
     "country": "IL",
-    "number": 31,
+    "number": 32,
     "src": {
       "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
       "kind": "restream",
@@ -673,8 +694,8 @@
     "badge": "FHD",
     "desc": "ערוץ סדרות הדרמה המובילות וסרטי הקולנוע מבית HOT באיכות 1080p FHD",
     "lang": "he",
-    "logo": "assets/logos/hot_drama.svg",
-    "number": 32,
+    "logo": "assets/logos/hot_drama.png",
+    "number": 33,
     "src": {
       "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
       "kind": "restream",
@@ -695,8 +716,8 @@
     "badge": "FHD",
     "desc": "ערוץ האקשן, המתח והמסתורין מבית HOT באיכות 1080p FHD",
     "lang": "he",
-    "logo": "assets/logos/hot_zone.svg",
-    "number": 33,
+    "logo": "assets/logos/hot_zone.png",
+    "number": 34,
     "src": {
       "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
       "kind": "restream",
@@ -713,12 +734,12 @@
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
     "url": "http://stream.mcquack.net/43/index.m3u8",
-    "logo": "assets/logos/viva_israel.svg",
+    "logo": "assets/logos/viva_israel.png",
     "badge": "FHD",
     "desc": "ערוץ הטלנובלות והדרמות הרומנטיות המוביל בישראל ב-1080p FHD",
     "lang": "he",
     "country": "IL",
-    "number": 34,
+    "number": 35,
     "src": {
       "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
       "kind": "restream",
@@ -734,12 +755,12 @@
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
     "url": "http://stream.mcquack.net/44/index.m3u8",
-    "logo": "assets/logos/hop_kids_israel.svg",
+    "logo": "assets/logos/hop_kids_israel.png",
     "badge": "HD",
     "desc": "ערוץ הופ לגיל הרך - תוכניות חינוכיות בדיבוב עברי מלא",
     "lang": "he",
     "country": "IL",
-    "number": 35,
+    "number": 36,
     "src": {
       "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
       "kind": "restream",
@@ -755,12 +776,12 @@
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
     "url": "http://stream.mcquack.net/377/index.m3u8",
-    "logo": "assets/logos/zoom_kids_israel.svg",
+    "logo": "assets/logos/zoom_kids_israel.png",
     "badge": "HD",
     "desc": "ערוץ הילדים והנוער של HOT ו-yes - סדרות נוער וקומדיות בעברית",
     "lang": "he",
     "country": "IL",
-    "number": 36,
+    "number": 37,
     "src": {
       "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
       "kind": "restream",
@@ -776,12 +797,12 @@
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
     "url": "http://stream.mcquack.net/391/index.m3u8",
-    "logo": "assets/logos/sport1_israel.svg",
+    "logo": "assets/logos/sport1_israel.png",
     "badge": "HD",
     "desc": "שידורים ישירים של משחקי כדורגל, כדורסל וספורט עולמי",
     "lang": "he",
     "country": "IL",
-    "number": 37,
+    "number": 38,
     "countryHe": "ישראל",
     "src": {
       "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
@@ -798,12 +819,12 @@
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
     "url": "http://stream.mcquack.net/392/index.m3u8",
-    "logo": "assets/logos/sport2_israel.svg",
+    "logo": "assets/logos/sport2_israel.png",
     "badge": "HD",
     "desc": "ספורט עולמי, ליגות אירופאיות ומשחקים בשידור חי",
     "lang": "he",
     "country": "IL",
-    "number": 38,
+    "number": 39,
     "countryHe": "ישראל",
     "src": {
       "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
@@ -820,12 +841,12 @@
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
     "url": "http://stream.mcquack.net/393/index.m3u8",
-    "logo": "assets/logos/sport3_israel.svg",
+    "logo": "assets/logos/sport3_israel.png",
     "badge": "HD",
     "desc": "כדורגל, כדורסל וטורנירים בינלאומיים בשידור חי",
     "lang": "he",
     "country": "IL",
-    "number": 39,
+    "number": 40,
     "countryHe": "ישראל",
     "src": {
       "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
@@ -842,12 +863,12 @@
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
     "url": "http://stream.mcquack.net/394/index.m3u8",
-    "logo": "assets/logos/sport4_israel.svg",
+    "logo": "assets/logos/sport4_israel.png",
     "badge": "HD",
     "desc": "שידורי ספורט ישירים מסביב לשעון",
     "lang": "he",
     "country": "IL",
-    "number": 40,
+    "number": 41,
     "countryHe": "ישראל",
     "src": {
       "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
@@ -864,38 +885,17 @@
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
     "url": "https://rgelive.akamaized.net/hls/live/2043095/live3/playlist.m3u8",
-    "logo": "assets/logos/sport5_israel_hd.svg",
+    "logo": "assets/logos/sport5_israel_hd.png",
     "badge": "HD",
     "desc": "ערוץ הספורט המוביל של ישראל בשידור חי",
     "lang": "he",
     "country": "IL",
-    "number": 41,
+    "number": 42,
     "countryHe": "ישראל",
     "src": {
       "by": "ספורט 5 – השידור הרשמי של RGE (Akamai)",
       "kind": "official",
       "host": "rgelive.akamaized.net",
-      "found": "רשימה ידנית (גרסה קודמת)",
-      "web": "✅"
-    }
-  },
-  {
-    "id": "keshet_music",
-    "name": "ערוץ המוזיקה – קשת / FreeTV",
-    "title": "ערוץ המוזיקה של קשת (FreeTV)",
-    "category": "ערוצי ישראל - שידור חי",
-    "categoryEn": "israel",
-    "url": "https://mako-streaming.akamaized.net/evrideo/hls/live/20001278/free_music/index.m3u8",
-    "auth": "mako",
-    "lang": "he",
-    "badge": "HD",
-    "desc": "מוזיקה ישראלית, הופעות ותוכניות מוזיקה של קשת – ערוץ חינמי של קשת ו-FreeTV",
-    "logo": "assets/logos/keshet_music.png",
-    "number": 42,
-    "src": {
-      "by": "קשת – ה-CDN של mako (עם הרשאת צפייה של mako)",
-      "kind": "official",
-      "host": "mako-streaming.akamaized.net",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     }
@@ -1071,7 +1071,7 @@
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
     "url": "http://stream.mcquack.net/42/index.m3u8",
-    "logo": "assets/logos/channel24_israel.svg",
+    "logo": "assets/logos/channel24_israel.png",
     "badge": "HD",
     "desc": "ערוץ המוזיקה הלאומי של ישראל בשידור חי מסביב לשעון",
     "lang": "he",
@@ -59840,30 +59840,6 @@
     }
   },
   {
-    "id": "iptv_arabitv_es",
-    "name": "Arabi TV",
-    "title": "Arabi TV (ספרד)",
-    "category": "ערוצים בינלאומיים (World)",
-    "categoryEn": "world",
-    "url": "https://streamtv2.elitecomunicacion.cloud:3628/live/arabitv2025live.m3u8",
-    "logo": "https://i.ibb.co/9Vp9Ghg/LOGO-WEB-ARABI-TV-3.png",
-    "badge": "FHD",
-    "desc": "ערוץ כללי · ספרד · ספרדית",
-    "lang": "es",
-    "country": "ES",
-    "countryHe": "ספרד",
-    "iptv": "ArabiTV.es",
-    "imported": true,
-    "number": 2511,
-    "src": {
-      "by": "streamtv2.elitecomunicacion.cloud",
-      "kind": "public",
-      "host": "streamtv2.elitecomunicacion.cloud",
-      "found": "iptv-org (ArabiTV.es)",
-      "web": "✅"
-    }
-  },
-  {
     "id": "iptv_a2itv_it",
     "name": "A2i TV",
     "title": "A2i TV (איטליה)",
@@ -59878,7 +59854,7 @@
     "countryHe": "איטליה",
     "iptv": "A2iTV.it",
     "imported": true,
-    "number": 2512,
+    "number": 2511,
     "src": {
       "by": "stream.sen-gt.com",
       "kind": "public",
@@ -59902,7 +59878,7 @@
     "countryHe": "רוסיה",
     "iptv": "InsaytTV.ru",
     "imported": true,
-    "number": 2513,
+    "number": 2512,
     "src": {
       "by": "Cinerama.uz – ספק IPTV באוזבקיסטן",
       "kind": "restream",
@@ -59926,7 +59902,7 @@
     "countryHe": "אוקראינה",
     "iptv": "1Plus1Marafon.ua",
     "imported": true,
-    "number": 2514,
+    "number": 2513,
     "src": {
       "by": "dash2.antik.sk",
       "kind": "public",
@@ -59950,7 +59926,7 @@
     "countryHe": "קנדה",
     "iptv": "WildTV.ca",
     "imported": true,
-    "number": 2515,
+    "number": 2514,
     "src": {
       "by": "dfhsahpa45kk2.cloudfront.net",
       "kind": "public",
@@ -59974,7 +59950,7 @@
     "countryHe": "אוסטרליה",
     "iptv": "ABCTV.au",
     "imported": true,
-    "number": 2516,
+    "number": 2515,
     "src": {
       "by": "c.mjh.nz",
       "kind": "public",
@@ -59998,7 +59974,7 @@
     "countryHe": "הודו",
     "iptv": "DDIndia.in",
     "imported": true,
-    "number": 2517,
+    "number": 2516,
     "src": {
       "by": "mumbai-edge.smartplaytv.in",
       "kind": "public",
@@ -60022,7 +59998,7 @@
     "countryHe": "קוריאה הדרומית",
     "iptv": "HLATDTV.kr",
     "imported": true,
-    "number": 2518,
+    "number": 2517,
     "src": {
       "by": "5c3639aa99149.streamlock.net",
       "kind": "public",
@@ -60046,7 +60022,7 @@
     "countryHe": "סין",
     "iptv": "HebeiTV.cn",
     "imported": true,
-    "number": 2519,
+    "number": 2518,
     "src": {
       "by": "event.pull.hebtv.com",
       "kind": "public",
@@ -60070,7 +60046,7 @@
     "countryHe": "ברזיל",
     "iptv": "AmazonSat.br",
     "imported": true,
-    "number": 2520,
+    "number": 2519,
     "src": {
       "by": "amazonsat.brasilstream.com.br",
       "kind": "public",
@@ -60094,7 +60070,7 @@
     "countryHe": "מקסיקו",
     "iptv": "8NTV.mx",
     "imported": true,
-    "number": 2521,
+    "number": 2520,
     "src": {
       "by": "60417ddeaf0d9.streamlock.net",
       "kind": "public",
@@ -60118,7 +60094,7 @@
     "countryHe": "ארגנטינה",
     "iptv": "Canal12VenadoTuerto.ar",
     "imported": true,
-    "number": 2522,
+    "number": 2521,
     "src": {
       "by": "nd106.republicaservers.com",
       "kind": "public",
@@ -60142,7 +60118,7 @@
     "countryHe": "פורטוגל",
     "iptv": "SICAltaDefinicao.pt",
     "imported": true,
-    "number": 2523,
+    "number": 2522,
     "src": {
       "by": "production-fast-sic.content.okast.tv",
       "kind": "public",
@@ -60166,7 +60142,7 @@
     "countryHe": "הולנד",
     "iptv": "TVRain.nl",
     "imported": true,
-    "number": 2524,
+    "number": 2523,
     "src": {
       "by": "wl.tvrain.tv",
       "kind": "public",
@@ -60190,7 +60166,7 @@
     "countryHe": "בלגיה",
     "iptv": "Matele.be",
     "imported": true,
-    "number": 2525,
+    "number": 2524,
     "src": {
       "by": "live.matele.be",
       "kind": "public",
@@ -60214,7 +60190,7 @@
     "countryHe": "שווייץ",
     "iptv": "MaxTV.ch",
     "imported": true,
-    "number": 2526,
+    "number": 2525,
     "src": {
       "by": "cdn.katapy.io",
       "kind": "public",
@@ -60238,7 +60214,7 @@
     "countryHe": "אוסטריה",
     "iptv": "LandleTV.at",
     "imported": true,
-    "number": 2527,
+    "number": 2526,
     "src": {
       "by": "streaming13.huberwebmedia.at",
       "kind": "public",
@@ -60262,7 +60238,7 @@
     "countryHe": "פולין",
     "iptv": "NewTV.pl",
     "imported": true,
-    "number": 2528,
+    "number": 2527,
     "src": {
       "by": "1409502578.rsc.cdn77.org",
       "kind": "public",
@@ -60286,7 +60262,7 @@
     "countryHe": "יוון",
     "iptv": "AlphaTV.gr",
     "imported": true,
-    "number": 2529,
+    "number": 2528,
     "src": {
       "by": "alphatvlive2.siliconweb.com",
       "kind": "public",
@@ -60310,7 +60286,7 @@
     "countryHe": "שוודיה",
     "iptv": "MTVReality.se",
     "imported": true,
-    "number": 2530,
+    "number": 2529,
     "src": {
       "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
       "kind": "fast",
@@ -60334,7 +60310,7 @@
     "countryHe": "נורווגיה",
     "iptv": "Frikanalen.no",
     "imported": true,
-    "number": 2531,
+    "number": 2530,
     "src": {
       "by": "frikanalen.no",
       "kind": "public",
@@ -60358,7 +60334,7 @@
     "countryHe": "דנמרק",
     "iptv": "DRTV.dk",
     "imported": true,
-    "number": 2532,
+    "number": 2531,
     "src": {
       "by": "drlivedrtvahls.akamaized.net",
       "kind": "public",
@@ -60382,7 +60358,7 @@
     "countryHe": "פינלנד",
     "iptv": "MTVSub.fi",
     "imported": true,
-    "number": 2533,
+    "number": 2532,
     "src": {
       "by": "live-fi.tvkaista.net",
       "kind": "public",
@@ -60406,7 +60382,7 @@
     "countryHe": "אירלנד",
     "iptv": "TG4.ie",
     "imported": true,
-    "number": 2534,
+    "number": 2533,
     "src": {
       "by": "fastly.live.brightcove.com",
       "kind": "public",
@@ -60430,7 +60406,7 @@
     "countryHe": "צ׳כיה",
     "iptv": "BarrandovKrimi.cz",
     "imported": true,
-    "number": 2535,
+    "number": 2534,
     "src": {
       "by": "dash4.antik.sk",
       "kind": "public",
@@ -60454,7 +60430,7 @@
     "countryHe": "רומניה",
     "iptv": "A7TV.ro",
     "imported": true,
-    "number": 2536,
+    "number": 2535,
     "src": {
       "by": "a7tvlive.ro",
       "kind": "public",
@@ -60478,7 +60454,7 @@
     "countryHe": "הונגריה",
     "iptv": "HeviziTV.hu",
     "imported": true,
-    "number": 2537,
+    "number": 2536,
     "src": {
       "by": "cloudfront44.lexanetwork.com",
       "kind": "public",
@@ -60502,7 +60478,7 @@
     "countryHe": "צ׳ילה",
     "iptv": "AntofagastaTV.cl",
     "imported": true,
-    "number": 2538,
+    "number": 2537,
     "src": {
       "by": "unlimited6-cl.dps.live",
       "kind": "public",
@@ -60526,7 +60502,7 @@
     "countryHe": "קולומביה",
     "iptv": "AupurTelevision.co",
     "imported": true,
-    "number": 2539,
+    "number": 2538,
     "src": {
       "by": "canal.aupurtv.co",
       "kind": "public",
@@ -60550,7 +60526,7 @@
     "countryHe": "פרו",
     "iptv": "Latina.pe",
     "imported": true,
-    "number": 2540,
+    "number": 2539,
     "src": {
       "by": "redirector.rudo.video",
       "kind": "public",
@@ -60574,7 +60550,7 @@
     "countryHe": "אינדונזיה",
     "iptv": "TVRIWorld.id",
     "imported": true,
-    "number": 2541,
+    "number": 2540,
     "src": {
       "by": "ott-balancer.tvri.go.id",
       "kind": "public",
@@ -60598,7 +60574,7 @@
     "countryHe": "תאילנד",
     "iptv": "NBTWorld.th",
     "imported": true,
-    "number": 2542,
+    "number": 2541,
     "src": {
       "by": "cdn-edge.iiptvcdn.com",
       "kind": "public",
@@ -60622,7 +60598,7 @@
     "countryHe": "וייטנאם",
     "iptv": "VietnamToday.vn",
     "imported": true,
-    "number": 2543,
+    "number": 2542,
     "src": {
       "by": "amagi-live.ondemandkorea.com",
       "kind": "public",
@@ -60646,7 +60622,7 @@
     "countryHe": "פקיסטן",
     "iptv": "PMITV.pk",
     "imported": true,
-    "number": 2544,
+    "number": 2543,
     "src": {
       "by": "cdn.live247stream.com",
       "kind": "public",
@@ -60670,7 +60646,7 @@
     "countryHe": "דרום אפריקה",
     "iptv": "TVBRICSAfrica.za",
     "imported": true,
-    "number": 2545,
+    "number": 2544,
     "src": {
       "by": "cdn.freevisiontv.co.za",
       "kind": "public",
@@ -60694,7 +60670,7 @@
     "countryHe": "ניגריה",
     "iptv": "TVWEST.ng",
     "imported": true,
-    "number": 2546,
+    "number": 2545,
     "src": {
       "by": "tv-west.lg.mncdn.com",
       "kind": "public",
@@ -60718,7 +60694,7 @@
     "countryHe": "הרפובליקה הדומיניקנית",
     "iptv": "A7TV.do",
     "imported": true,
-    "number": 2547,
+    "number": 2546,
     "src": {
       "by": "183.bozztv.com",
       "kind": "public",
@@ -60742,7 +60718,7 @@
     "countryHe": "בוליביה",
     "iptv": "DmodaChannel.bo",
     "imported": true,
-    "number": 2548,
+    "number": 2547,
     "src": {
       "by": "master.tucableip.com",
       "kind": "public",
@@ -60766,7 +60742,7 @@
     "countryHe": "פרגוואי",
     "iptv": "ParaguayTV.py",
     "imported": true,
-    "number": 2549,
+    "number": 2548,
     "src": {
       "by": "stream.paraguaytv.gov.py",
       "kind": "public",
@@ -60790,7 +60766,7 @@
     "countryHe": "סלובקיה",
     "iptv": "MTR.sk",
     "imported": true,
-    "number": 2550,
+    "number": 2549,
     "src": {
       "by": "cdnsk003.panaccess.com",
       "kind": "public",
@@ -60814,7 +60790,7 @@
     "countryHe": "ונצואלה",
     "iptv": "LatinaTV.ve",
     "imported": true,
-    "number": 2551,
+    "number": 2550,
     "src": {
       "by": "streamtv.latinamedios.com",
       "kind": "public",
@@ -60838,7 +60814,7 @@
     "countryHe": "אקוודור",
     "iptv": "AmericaEstereoQuito.ec",
     "imported": true,
-    "number": 2552,
+    "number": 2551,
     "src": {
       "by": "video.makrodigital.com",
       "kind": "public",
@@ -60862,7 +60838,7 @@
     "countryHe": "קוסטה ריקה",
     "iptv": "TVSurCanal14.cr",
     "imported": true,
-    "number": 2553,
+    "number": 2552,
     "src": {
       "by": "k20.usastreams.com",
       "kind": "public",
@@ -60886,7 +60862,7 @@
     "countryHe": "גואטמלה",
     "iptv": "Canal100Chinique.gt",
     "imported": true,
-    "number": 2554,
+    "number": 2553,
     "src": {
       "by": "live20.bozztv.com",
       "kind": "public",
@@ -60910,7 +60886,7 @@
     "countryHe": "הונדורס",
     "iptv": "Canal11.hn",
     "imported": true,
-    "number": 2555,
+    "number": 2554,
     "src": {
       "by": "redirector.rudo.video",
       "kind": "public",
@@ -60934,7 +60910,7 @@
     "countryHe": "בלארוס",
     "iptv": "Belarus1.by",
     "imported": true,
-    "number": 2556,
+    "number": 2555,
     "src": {
       "by": "ngtrk.dc.beltelecom.by",
       "kind": "public",
@@ -60958,7 +60934,7 @@
     "countryHe": "מולדובה",
     "iptv": "TSV.md",
     "imported": true,
-    "number": 2557,
+    "number": 2556,
     "src": {
       "by": "tsv.md",
       "kind": "public",
@@ -60982,7 +60958,7 @@
     "countryHe": "אוגנדה",
     "iptv": "TayariWestTV.ug",
     "imported": true,
-    "number": 2558,
+    "number": 2557,
     "src": {
       "by": "stream.hydeinnovations.com",
       "kind": "public",
@@ -61006,7 +60982,7 @@
     "countryHe": "קזחסטן",
     "iptv": "JibekJoly.kz",
     "imported": true,
-    "number": 2559,
+    "number": 2558,
     "src": {
       "by": "stream.qazcdn.net",
       "kind": "public",
@@ -61030,7 +61006,7 @@
     "countryHe": "סנגל",
     "iptv": "LougaTV.sn",
     "imported": true,
-    "number": 2560,
+    "number": 2559,
     "src": {
       "by": "stream.sen-gt.com",
       "kind": "public",
@@ -61054,7 +61030,7 @@
     "countryHe": "פוארטו ריקו",
     "iptv": "TeleOnce.pr",
     "imported": true,
-    "number": 2561,
+    "number": 2560,
     "src": {
       "by": "live.11-cdn.com",
       "kind": "public",
@@ -61078,7 +61054,7 @@
     "countryHe": "קפריסין",
     "iptv": "Sat7Turk.cy",
     "imported": true,
-    "number": 2562,
+    "number": 2561,
     "src": {
       "by": "live.artidijitalmedya.com",
       "kind": "public",
@@ -61102,7 +61078,7 @@
     "countryHe": "בנגלדש",
     "iptv": "RajdhaniTV.bd",
     "imported": true,
-    "number": 2563,
+    "number": 2562,
     "src": {
       "by": "stream.shariarsuvo.com",
       "kind": "public",
@@ -61126,7 +61102,7 @@
     "countryHe": "מקדוניה הצפונית",
     "iptv": "NasaTV.mk",
     "imported": true,
-    "number": 2564,
+    "number": 2563,
     "src": {
       "by": "stream.nasatv.com.mk",
       "kind": "public",
@@ -61150,7 +61126,7 @@
     "countryHe": "סרביה",
     "iptv": "PannonTV.rs",
     "imported": true,
-    "number": 2565,
+    "number": 2564,
     "src": {
       "by": "stream.nmih.hu",
       "kind": "public",
@@ -61174,7 +61150,7 @@
     "countryHe": "קוסובו",
     "iptv": "RTK3.xk",
     "imported": true,
-    "number": 2566,
+    "number": 2565,
     "src": {
       "by": "gjirafa-video-live.gjirafa.net",
       "kind": "public",
@@ -61198,7 +61174,7 @@
     "countryHe": "רואנדה",
     "iptv": "TV10.rw",
     "imported": true,
-    "number": 2567,
+    "number": 2566,
     "src": {
       "by": "5c46fa289c89f.streamlock.net",
       "kind": "public",
@@ -61222,7 +61198,7 @@
     "countryHe": "גאורגיה",
     "iptv": "ImediTV.ge",
     "imported": true,
-    "number": 2568,
+    "number": 2567,
     "src": {
       "by": "tv.cdn.xsg.ge",
       "kind": "public",
@@ -61247,7 +61223,7 @@
     "iptv": "Turkmenistan.tm",
     "imported": true,
     "webOk": false,
-    "number": 2569,
+    "number": 2568,
     "src": {
       "by": "alpha.tv.online.tm",
       "kind": "public",
@@ -61271,7 +61247,7 @@
     "countryHe": "קמרון",
     "iptv": "CAM10TV.cm",
     "imported": true,
-    "number": 2570,
+    "number": 2569,
     "src": {
       "by": "stream.it-innov.com",
       "kind": "public",
@@ -61295,7 +61271,7 @@
     "countryHe": "לוקסמבורג",
     "iptv": "RTLZwee.lu",
     "imported": true,
-    "number": 2571,
+    "number": 2570,
     "src": {
       "by": "live-edge.rtl.lu",
       "kind": "public",
@@ -61319,7 +61295,7 @@
     "countryHe": "סרי לנקה",
     "iptv": "VerbumTV.lk",
     "imported": true,
-    "number": 2572,
+    "number": 2571,
     "src": {
       "by": "video-eu1.streamerr.co",
       "kind": "public",
@@ -61343,7 +61319,7 @@
     "countryHe": "אלבניה",
     "iptv": "VizionPlus.al",
     "imported": true,
-    "number": 2573,
+    "number": 2572,
     "src": {
       "by": "tringliveviz.akamaized.net",
       "kind": "public",
@@ -61367,7 +61343,7 @@
     "countryHe": "ניו זילנד",
     "iptv": "KordiaTV.nz",
     "imported": true,
-    "number": 2574,
+    "number": 2573,
     "src": {
       "by": "ptvlive.kordia.net.nz",
       "kind": "public",
@@ -61391,7 +61367,7 @@
     "countryHe": "מונגוליה",
     "iptv": "MNBWorld.mn",
     "imported": true,
-    "number": 2575,
+    "number": 2574,
     "src": {
       "by": "live.mnb.mn",
       "kind": "public",
@@ -61415,7 +61391,7 @@
     "countryHe": "סנט קיטס ונוויס",
     "iptv": "TelevisionCaribbean.kn",
     "imported": true,
-    "number": 2576,
+    "number": 2575,
     "src": {
       "by": "live.kingdom-tv.com",
       "kind": "public",
@@ -61439,7 +61415,7 @@
     "countryHe": "אזרבייג׳ן",
     "iptv": "AyazTV.az",
     "imported": true,
-    "number": 2577,
+    "number": 2576,
     "src": {
       "by": "janya-ayaztv.vgcdn.net",
       "kind": "public",
@@ -61463,7 +61439,7 @@
     "countryHe": "ארמניה",
     "iptv": "Armenia2.am",
     "imported": true,
-    "number": 2578,
+    "number": 2577,
     "src": {
       "by": "amtv.tulixcdn.com",
       "kind": "public",
@@ -61487,7 +61463,7 @@
     "countryHe": "קמבודיה",
     "iptv": "SEATV.kh",
     "imported": true,
-    "number": 2579,
+    "number": 2578,
     "src": {
       "by": "seatv.netlinkbroadcaster.com",
       "kind": "public",
@@ -61511,7 +61487,7 @@
     "countryHe": "אפגניסטן",
     "iptv": "TamadonTV.af",
     "imported": true,
-    "number": 2580,
+    "number": 2579,
     "src": {
       "by": "hls.tamadon.live",
       "kind": "public",
@@ -61535,7 +61511,7 @@
     "countryHe": "לאוס",
     "iptv": "LaoNetTV.la",
     "imported": true,
-    "number": 2581,
+    "number": 2580,
     "src": {
       "by": "livefta.malimarcdn.com",
       "kind": "public",
@@ -61559,7 +61535,7 @@
     "countryHe": "לטביה",
     "iptv": "LTV1.lv",
     "imported": true,
-    "number": 2582,
+    "number": 2581,
     "src": {
       "by": "lsm.eu.cdns-redge.media",
       "kind": "public",
@@ -61583,7 +61559,7 @@
     "countryHe": "קרואטיה",
     "iptv": "RadioTelevizijaBanovina.hr",
     "imported": true,
-    "number": 2583,
+    "number": 2582,
     "src": {
       "by": "pool.alter-media.hr",
       "kind": "public",
@@ -61607,7 +61583,7 @@
     "countryHe": "בוסניה והרצגובינה",
     "iptv": "RTVZenica.ba",
     "imported": true,
-    "number": 2584,
+    "number": 2583,
     "src": {
       "by": "stream.rtvze.ba",
       "kind": "public",
@@ -61631,7 +61607,7 @@
     "countryHe": "מונטנגרו",
     "iptv": "TVCGMNE.me",
     "imported": true,
-    "number": 2585,
+    "number": 2584,
     "src": {
       "by": "rtcg-live-open.morescreens.com",
       "kind": "public",
@@ -61655,7 +61631,7 @@
     "countryHe": "גיאנה",
     "iptv": "IgniteTelevision.gy",
     "imported": true,
-    "number": 2586,
+    "number": 2585,
     "src": {
       "by": "rpn.bozztv.com",
       "kind": "public",
@@ -61679,7 +61655,7 @@
     "countryHe": "נפאל",
     "iptv": "KantipurTV.np",
     "imported": true,
-    "number": 2587,
+    "number": 2586,
     "src": {
       "by": "ktvhdsg.ekantipur.com",
       "kind": "public",
@@ -61703,7 +61679,7 @@
     "countryHe": "טייוואן",
     "iptv": "SupremeMasterTV.tw",
     "imported": true,
-    "number": 2588,
+    "number": 2587,
     "src": {
       "by": "lbs-us1.suprememastertv.com",
       "kind": "public",
@@ -61727,7 +61703,7 @@
     "countryHe": "האיטי",
     "iptv": "RadioTelePlanetCompas.ht",
     "imported": true,
-    "number": 2589,
+    "number": 2588,
     "src": {
       "by": "5dcab9aed5331.streamlock.net",
       "kind": "public",
@@ -61751,7 +61727,7 @@
     "countryHe": "גוואדלופ",
     "iptv": "ETV.gp",
     "imported": true,
-    "number": 2590,
+    "number": 2589,
     "src": {
       "by": "edge12.vedge.infomaniak.com",
       "kind": "public",
@@ -61775,7 +61751,7 @@
     "countryHe": "חוף השנהב",
     "iptv": "NTV.ci",
     "imported": true,
-    "number": 2591,
+    "number": 2590,
     "src": {
       "by": "strhlslb01.streamakaci.tv",
       "kind": "public",
@@ -61799,7 +61775,7 @@
     "countryHe": "ניקרגואה",
     "iptv": "TN8.ni",
     "imported": true,
-    "number": 2592,
+    "number": 2591,
     "src": {
       "by": "streamingcws30.com",
       "kind": "public",
@@ -61823,7 +61799,7 @@
     "countryHe": "פנמה",
     "iptv": "NexTVCanal21.pa",
     "imported": true,
-    "number": 2593,
+    "number": 2592,
     "src": {
       "by": "movil.ejeserver.com",
       "kind": "public",
@@ -61847,7 +61823,7 @@
     "countryHe": "איסלנד",
     "iptv": "RUV.is",
     "imported": true,
-    "number": 2594,
+    "number": 2593,
     "src": {
       "by": "ruv-web-live.akamaized.net",
       "kind": "public",
@@ -61871,7 +61847,7 @@
     "countryHe": "בולגריה",
     "iptv": "TVSpravedlivaBulgariya.bg",
     "imported": true,
-    "number": 2595,
+    "number": 2594,
     "src": {
       "by": "tv.tvsb.bg",
       "kind": "public",
@@ -61895,7 +61871,7 @@
     "countryHe": "איי הבתולה הבריטיים",
     "iptv": "CBNTV.vg",
     "imported": true,
-    "number": 2596,
+    "number": 2595,
     "src": {
       "by": "5790d294af2dc.streamlock.net",
       "kind": "public",
@@ -61919,7 +61895,7 @@
     "countryHe": "קניה",
     "iptv": "InooroTV.ke",
     "imported": true,
-    "number": 2597,
+    "number": 2596,
     "src": {
       "by": "live-onesignal.royalmedia.co.ke",
       "kind": "public",
@@ -61943,7 +61919,7 @@
     "countryHe": "אנטיגואה וברבודה",
     "iptv": "PointeTV.ag",
     "imported": true,
-    "number": 2598,
+    "number": 2597,
     "src": {
       "by": "tv.pointville.ag",
       "kind": "public",
@@ -61967,7 +61943,7 @@
     "countryHe": "ג׳מייקה",
     "iptv": "TVJ.jm",
     "imported": true,
-    "number": 2599,
+    "number": 2598,
     "src": {
       "by": "vod2live.univtec.com",
       "kind": "public",
@@ -61991,7 +61967,7 @@
     "countryHe": "איי בהאמה",
     "iptv": "ZNSTV.bs",
     "imported": true,
-    "number": 2600,
+    "number": 2599,
     "src": {
       "by": "zns-edge1.streamcomedia.cloud",
       "kind": "public",
@@ -62015,7 +61991,7 @@
     "countryHe": "גינאה",
     "iptv": "KalacTV.gn",
     "imported": true,
-    "number": 2601,
+    "number": 2600,
     "src": {
       "by": "edge13.vedge.infomaniak.com",
       "kind": "public",
@@ -62039,7 +62015,7 @@
     "countryHe": "בורקינה פאסו",
     "iptv": "RTB.bf",
     "imported": true,
-    "number": 2602,
+    "number": 2601,
     "src": {
       "by": "edge12.vedge.infomaniak.com",
       "kind": "public",
@@ -62063,7 +62039,7 @@
     "countryHe": "בורונדי",
     "iptv": "RTNBTV.bi",
     "imported": true,
-    "number": 2603,
+    "number": 2602,
     "src": {
       "by": "tv1-stream.rtnb.bi",
       "kind": "public",
@@ -62087,7 +62063,7 @@
     "countryHe": "גיאנה הצרפתית",
     "iptv": "TelePeyi.gf",
     "imported": true,
-    "number": 2604,
+    "number": 2603,
     "src": {
       "by": "edge20.vedge.infomaniak.com",
       "kind": "public",
@@ -62111,7 +62087,7 @@
     "countryHe": "צ׳אד",
     "iptv": "TeleTchad.td",
     "imported": true,
-    "number": 2605,
+    "number": 2604,
     "src": {
       "by": "strhlslb01.streamakaci.tv",
       "kind": "public",
@@ -62135,7 +62111,7 @@
     "countryHe": "טוגו",
     "iptv": "TelevisionEspoir47.tg",
     "imported": true,
-    "number": 2606,
+    "number": 2605,
     "src": {
       "by": "cdn140m.panaccess.com",
       "kind": "public",
@@ -62159,7 +62135,7 @@
     "countryHe": "מונקו",
     "iptv": "TVMonaco.mc",
     "imported": true,
-    "number": 2607,
+    "number": 2606,
     "src": {
       "by": "production-fast-mcrtv.content.okast.tv",
       "kind": "public",
@@ -62183,7 +62159,7 @@
     "countryHe": "מרטיניק",
     "iptv": "ZitataTV.mq",
     "imported": true,
-    "number": 2608,
+    "number": 2607,
     "src": {
       "by": "live.zitata.tv",
       "kind": "public",
@@ -62207,7 +62183,7 @@
     "countryHe": "מוזמביק",
     "iptv": "TVM.mz",
     "imported": true,
-    "number": 2609,
+    "number": 2608,
     "src": {
       "by": "stream.tvm.co.mz",
       "kind": "public",
@@ -62231,7 +62207,7 @@
     "countryHe": "אנדורה",
     "iptv": "AndorraTV.ad",
     "imported": true,
-    "number": 2610,
+    "number": 2609,
     "src": {
       "by": "livesg1.rtva.hiway.media",
       "kind": "public",
@@ -62255,7 +62231,7 @@
     "countryHe": "טנזניה",
     "iptv": "DodomaTV.tz",
     "imported": true,
-    "number": 2611,
+    "number": 2610,
     "src": {
       "by": "goliveafrica.media",
       "kind": "public",
@@ -62279,7 +62255,7 @@
     "countryHe": "אסטוניה",
     "iptv": "ETV.ee",
     "imported": true,
-    "number": 2612,
+    "number": 2611,
     "src": {
       "by": "sb.err.ee",
       "kind": "public",
@@ -62304,7 +62280,7 @@
     "iptv": "KoreanCentralTelevision.kp",
     "imported": true,
     "webOk": false,
-    "number": 2613,
+    "number": 2612,
     "src": {
       "by": "live.koryocdn.org",
       "kind": "public",
@@ -62328,7 +62304,7 @@
     "countryHe": "מיאנמר (בורמה)",
     "iptv": "MWD.mm",
     "imported": true,
-    "number": 2614,
+    "number": 2613,
     "src": {
       "by": "203.81.84.130",
       "kind": "public",
@@ -62352,7 +62328,7 @@
     "countryHe": "האיים הקריביים ההולנדיים",
     "iptv": "NosTVBonaire2.bq",
     "imported": true,
-    "number": 2615,
+    "number": 2614,
     "src": {
       "by": "stream2.nostvbonaire.com",
       "kind": "public",
@@ -62376,7 +62352,7 @@
     "countryHe": "מלטה",
     "iptv": "One.mt",
     "imported": true,
-    "number": 2616,
+    "number": 2615,
     "src": {
       "by": "2-fss-1.streamhoster.com",
       "kind": "public",
@@ -62400,7 +62376,7 @@
     "countryHe": "ארובה",
     "iptv": "Telearuba.aw",
     "imported": true,
-    "number": 2617,
+    "number": 2616,
     "src": {
       "by": "cdn01.setar.aw",
       "kind": "public",
@@ -62424,7 +62400,7 @@
     "countryHe": "קוראסאו",
     "iptv": "TVDirect13.cw",
     "imported": true,
-    "number": 2618,
+    "number": 2617,
     "src": {
       "by": "oqgdrog4d4rm-hls-live.5centscdn.com",
       "kind": "public",
@@ -62448,7 +62424,7 @@
     "countryHe": "סלובניה",
     "iptv": "TVVeseljakGolicaHD.si",
     "imported": true,
-    "number": 2619,
+    "number": 2618,
     "src": {
       "by": "radio.serv.si",
       "kind": "public",
@@ -62472,7 +62448,7 @@
     "countryHe": "ארצות הברית",
     "iptv": "AFTV.us",
     "imported": true,
-    "number": 2620,
+    "number": 2619,
     "src": {
       "by": "livestream.telvue.com",
       "kind": "public",
@@ -62496,7 +62472,7 @@
     "countryHe": "בריטניה",
     "iptv": "SparkTV.uk",
     "imported": true,
-    "number": 2621,
+    "number": 2620,
     "src": {
       "by": "candlelightmedia-sparklightlove-4-us.roku.wurl.tv",
       "kind": "public",
@@ -62520,7 +62496,7 @@
     "countryHe": "צרפת",
     "iptv": "CannesLerinsTV.fr",
     "imported": true,
-    "number": 2622,
+    "number": 2621,
     "src": {
       "by": "vdo2.pro-fhi.net",
       "kind": "public",
@@ -62544,7 +62520,7 @@
     "countryHe": "גרמניה",
     "iptv": "AllgauTV.de",
     "imported": true,
-    "number": 2623,
+    "number": 2622,
     "src": {
       "by": "stream01.welocal.stream",
       "kind": "public",
@@ -62568,7 +62544,7 @@
     "countryHe": "ספרד",
     "iptv": "CanalSanRoque.es",
     "imported": true,
-    "number": 2624,
+    "number": 2623,
     "src": {
       "by": "cdnlivevlc.codev8.net",
       "kind": "public",
@@ -62592,7 +62568,7 @@
     "countryHe": "איטליה",
     "iptv": "BergamoTV.it",
     "imported": true,
-    "number": 2625,
+    "number": 2624,
     "src": {
       "by": "db142859fd5541b09de25d6507f1f2d3.msvdn.net",
       "kind": "public",
@@ -62616,7 +62592,7 @@
     "countryHe": "רוסיה",
     "iptv": "NVKSakha.ru",
     "imported": true,
-    "number": 2626,
+    "number": 2625,
     "src": {
       "by": "live-saha.cdnvideo.ru",
       "kind": "public",
@@ -62640,7 +62616,7 @@
     "countryHe": "אוקראינה",
     "iptv": "Dacha.ua",
     "imported": true,
-    "number": 2627,
+    "number": 2626,
     "src": {
       "by": "dash2.antik.sk",
       "kind": "public",
@@ -62664,7 +62640,7 @@
     "countryHe": "קנדה",
     "iptv": "AzStarTV.ca",
     "imported": true,
-    "number": 2628,
+    "number": 2627,
     "src": {
       "by": "live.livestreamtv.ca",
       "kind": "public",
@@ -62688,7 +62664,7 @@
     "countryHe": "אוסטרליה",
     "iptv": "Channel44.au",
     "imported": true,
-    "number": 2629,
+    "number": 2628,
     "src": {
       "by": "d1k6kax80wecy5.cloudfront.net",
       "kind": "public",
@@ -62712,7 +62688,7 @@
     "countryHe": "הודו",
     "iptv": "TVBRICSEnglish.in",
     "imported": true,
-    "number": 2630,
+    "number": 2629,
     "src": {
       "by": "engbrics.mediacdn.ru",
       "kind": "public",
@@ -62736,7 +62712,7 @@
     "countryHe": "קוריאה הדרומית",
     "iptv": "HLDHDTV.kr",
     "imported": true,
-    "number": 2631,
+    "number": 2630,
     "src": {
       "by": "vod.ikbc.co.kr",
       "kind": "public",
@@ -62760,7 +62736,7 @@
     "countryHe": "סין",
     "iptv": "TVBRICSChinese.cn",
     "imported": true,
-    "number": 2632,
+    "number": 2631,
     "src": {
       "by": "chibrics.mediacdn.ru",
       "kind": "public",
@@ -62784,7 +62760,7 @@
     "countryHe": "ברזיל",
     "iptv": "BoasNovas.br",
     "imported": true,
-    "number": 2633,
+    "number": 2632,
     "src": {
       "by": "cdn.jmvstream.com",
       "kind": "public",
@@ -62808,7 +62784,7 @@
     "countryHe": "מקסיקו",
     "iptv": "B15Fresnillo.mx",
     "imported": true,
-    "number": 2634,
+    "number": 2633,
     "src": {
       "by": "s5.mexside.net",
       "kind": "public",
@@ -62832,7 +62808,7 @@
     "countryHe": "ארגנטינה",
     "iptv": "Canal2Misiones.ar",
     "imported": true,
-    "number": 2635,
+    "number": 2634,
     "src": {
       "by": "nd106.republicaservers.com",
       "kind": "public",
@@ -62856,7 +62832,7 @@
     "countryHe": "פורטוגל",
     "iptv": "SICReplay.pt",
     "imported": true,
-    "number": 2636,
+    "number": 2635,
     "src": {
       "by": "production-fast-sic.content.okast.tv",
       "kind": "public",
@@ -62880,7 +62856,7 @@
     "countryHe": "הולנד",
     "iptv": "1TwenteTV.nl",
     "imported": true,
-    "number": 2637,
+    "number": 2636,
     "src": {
       "by": "ms7.mx-cd.net",
       "kind": "public",
@@ -62904,7 +62880,7 @@
     "countryHe": "בלגיה",
     "iptv": "ATV.be",
     "imported": true,
-    "number": 2638,
+    "number": 2637,
     "src": {
       "by": "live.zendzend.com",
       "kind": "public",
@@ -62928,7 +62904,7 @@
     "countryHe": "שווייץ",
     "iptv": "CanalAlphaJura.ch",
     "imported": true,
-    "number": 2639,
+    "number": 2638,
     "src": {
       "by": "canalalphaju.vedge.infomaniak.com",
       "kind": "public",
@@ -62952,7 +62928,7 @@
     "countryHe": "אוסטריה",
     "iptv": "Okto.at",
     "imported": true,
-    "number": 2640,
+    "number": 2639,
     "src": {
       "by": "cdn3.wowza.com",
       "kind": "public",
@@ -62976,7 +62952,7 @@
     "countryHe": "פולין",
     "iptv": "RedCarpetTVInternational.pl",
     "imported": true,
-    "number": 2641,
+    "number": 2640,
     "src": {
       "by": "fast-rakuten.okast.tv",
       "kind": "public",
@@ -63000,7 +62976,7 @@
     "countryHe": "יוון",
     "iptv": "CenterTV.gr",
     "imported": true,
-    "number": 2642,
+    "number": 2641,
     "src": {
       "by": "eu1.streams.gr",
       "kind": "public",
@@ -63024,7 +63000,7 @@
     "countryHe": "שוודיה",
     "iptv": "Frasier.se",
     "imported": true,
-    "number": 2643,
+    "number": 2642,
     "src": {
       "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
       "kind": "fast",
@@ -63048,7 +63024,7 @@
     "countryHe": "דנמרק",
     "iptv": "TV2Bornholm.dk",
     "imported": true,
-    "number": 2644,
+    "number": 2643,
     "src": {
       "by": "livecdn.euw1-0005.jwplive.com",
       "kind": "public",
@@ -63072,7 +63048,7 @@
     "countryHe": "פינלנד",
     "iptv": "MTV3.fi",
     "imported": true,
-    "number": 2645,
+    "number": 2644,
     "src": {
       "by": "live-fi.tvkaista.net",
       "kind": "public",
@@ -63096,7 +63072,7 @@
     "countryHe": "צ׳כיה",
     "iptv": "ElektrikaTV.cz",
     "imported": true,
-    "number": 2646,
+    "number": 2645,
     "src": {
       "by": "rtmp.elektrika.cz",
       "kind": "public",
@@ -63120,7 +63096,7 @@
     "countryHe": "רומניה",
     "iptv": "MetropolaTV.ro",
     "imported": true,
-    "number": 2647,
+    "number": 2646,
     "src": {
       "by": "www.livemetropolatv.ro",
       "kind": "public",
@@ -63144,7 +63120,7 @@
     "countryHe": "הונגריה",
     "iptv": "SzolnokTV.hu",
     "imported": true,
-    "number": 2648,
+    "number": 2647,
     "src": {
       "by": "cloudfront44.lexanetwork.com",
       "kind": "public",
@@ -63168,7 +63144,7 @@
     "countryHe": "צ׳ילה",
     "iptv": "Canal2Quellon.cl",
     "imported": true,
-    "number": 2649,
+    "number": 2648,
     "src": {
       "by": "pantera1-100gb-cl-movistar.dps.live",
       "kind": "public",
@@ -63192,7 +63168,7 @@
     "countryHe": "קולומביה",
     "iptv": "CanalRCN.co",
     "imported": true,
-    "number": 2650,
+    "number": 2649,
     "src": {
       "by": "barinaslive1.boldmss.com",
       "kind": "public",
@@ -63216,7 +63192,7 @@
     "countryHe": "פרו",
     "iptv": "TVenLinea.pe",
     "imported": true,
-    "number": 2651,
+    "number": 2650,
     "src": {
       "by": "srt.tvdatta.com",
       "kind": "public",
@@ -63240,7 +63216,7 @@
     "countryHe": "הפיליפינים",
     "iptv": "SMNI.ph",
     "imported": true,
-    "number": 2652,
+    "number": 2651,
     "src": {
       "by": "stream.kdlc.click",
       "kind": "public",
@@ -63264,7 +63240,7 @@
     "countryHe": "אינדונזיה",
     "iptv": "GarudaTV.id",
     "imported": true,
-    "number": 2653,
+    "number": 2652,
     "src": {
       "by": "hgmtv.com",
       "kind": "public",
@@ -63288,7 +63264,7 @@
     "countryHe": "תאילנד",
     "iptv": "NBT2HD.th",
     "imported": true,
-    "number": 2654,
+    "number": 2653,
     "src": {
       "by": "cdn-edge.iiptvcdn.com",
       "kind": "public",
@@ -63312,7 +63288,7 @@
     "countryHe": "וייטנאם",
     "iptv": "CanThoTV.vn",
     "imported": true,
-    "number": 2655,
+    "number": 2654,
     "src": {
       "by": "live.canthotv.vn",
       "kind": "public",
@@ -63336,7 +63312,7 @@
     "countryHe": "פקיסטן",
     "iptv": "PraiseTV.pk",
     "imported": true,
-    "number": 2656,
+    "number": 2655,
     "src": {
       "by": "livecdn.live247stream.com",
       "kind": "public",
@@ -63360,7 +63336,7 @@
     "countryHe": "איראן",
     "iptv": "TBNNejatTV.ir",
     "imported": true,
-    "number": 2657,
+    "number": 2656,
     "src": {
       "by": "hls.nejat.live",
       "kind": "public",
@@ -63384,7 +63360,7 @@
     "countryHe": "דרום אפריקה",
     "iptv": "CapeTownTV.za",
     "imported": true,
-    "number": 2658,
+    "number": 2657,
     "src": {
       "by": "cdn.freevisiontv.co.za",
       "kind": "public",
@@ -63408,7 +63384,7 @@
     "countryHe": "ניגריה",
     "iptv": "WazobiaMaxTVNigeria.ng",
     "imported": true,
-    "number": 2659,
+    "number": 2658,
     "src": {
       "by": "wazobia.live",
       "kind": "public",
@@ -63432,7 +63408,7 @@
     "countryHe": "הרפובליקה הדומיניקנית",
     "iptv": "AguilaTV.do",
     "imported": true,
-    "number": 2660,
+    "number": 2659,
     "src": {
       "by": "fox.hostlagarto.com",
       "kind": "public",
@@ -63456,7 +63432,7 @@
     "countryHe": "בוליביה",
     "iptv": "ELDEBER.bo",
     "imported": true,
-    "number": 2661,
+    "number": 2660,
     "src": {
       "by": "master.tucableip.com",
       "kind": "public",
@@ -63480,7 +63456,7 @@
     "countryHe": "פרגוואי",
     "iptv": "RBTV.py",
     "imported": true,
-    "number": 2662,
+    "number": 2661,
     "src": {
       "by": "video.hostingcaaguazu.com",
       "kind": "public",
@@ -63504,7 +63480,7 @@
     "countryHe": "סלובקיה",
     "iptv": "TurboTV.sk",
     "imported": true,
-    "number": 2663,
+    "number": 2662,
     "src": {
       "by": "Antik Telecom (סלובקיה), נתיבי test",
       "kind": "restream",
@@ -63528,7 +63504,7 @@
     "countryHe": "ונצואלה",
     "iptv": "SomosTV.ve",
     "imported": true,
-    "number": 2664,
+    "number": 2663,
     "src": {
       "by": "vcp3.myplaytv.com",
       "kind": "public",
@@ -63552,7 +63528,7 @@
     "countryHe": "אקוודור",
     "iptv": "AustralTV.ec",
     "imported": true,
-    "number": 2665,
+    "number": 2664,
     "src": {
       "by": "stmv3.voxtvhd.com.br",
       "kind": "public",
@@ -63576,7 +63552,7 @@
     "countryHe": "קוסטה ריקה",
     "iptv": "BestClasicosTV.cr",
     "imported": true,
-    "number": 2666,
+    "number": 2665,
     "src": {
       "by": "acceso.mediosdecostarica.com",
       "kind": "public",
@@ -63600,7 +63576,7 @@
     "countryHe": "גואטמלה",
     "iptv": "BarbeTV.gt",
     "imported": true,
-    "number": 2667,
+    "number": 2666,
     "src": {
       "by": "cdn.streamhispanatv.net",
       "kind": "public",
@@ -63624,7 +63600,7 @@
     "countryHe": "הונדורס",
     "iptv": "Telemas.hn",
     "imported": true,
-    "number": 2668,
+    "number": 2667,
     "src": {
       "by": "s.emisoras.tv",
       "kind": "public",
@@ -63648,7 +63624,7 @@
     "countryHe": "בלארוס",
     "iptv": "Belarus4.by",
     "imported": true,
-    "number": 2669,
+    "number": 2668,
     "src": {
       "by": "ngtrk.dc.beltelecom.by",
       "kind": "public",
@@ -63672,7 +63648,7 @@
     "countryHe": "מולדובה",
     "iptv": "Moldova1.md",
     "imported": true,
-    "number": 2670,
+    "number": 2669,
     "src": {
       "by": "v0.trm.md",
       "kind": "public",
@@ -63696,7 +63672,7 @@
     "countryHe": "אל סלבדור",
     "iptv": "MegavisionCanal19.sv",
     "imported": true,
-    "number": 2671,
+    "number": 2670,
     "src": {
       "by": "mgvchannel19-ioriver-cdn.encoders.immergo.tv",
       "kind": "public",
@@ -63720,7 +63696,7 @@
     "countryHe": "אוגנדה",
     "iptv": "TVWest.ug",
     "imported": true,
-    "number": 2672,
+    "number": 2671,
     "src": {
       "by": "stream.hydeinnovations.com",
       "kind": "public",
@@ -63744,7 +63720,7 @@
     "countryHe": "קזחסטן",
     "iptv": "SilkWay.kz",
     "imported": true,
-    "number": 2673,
+    "number": 2672,
     "src": {
       "by": "hlspackager.akamaized.net",
       "kind": "public",
@@ -63768,7 +63744,7 @@
     "countryHe": "סנגל",
     "iptv": "SenJeunesTV.sn",
     "imported": true,
-    "number": 2674,
+    "number": 2673,
     "src": {
       "by": "stream.sen-gt.com",
       "kind": "public",
@@ -63792,7 +63768,7 @@
     "countryHe": "פוארטו ריקו",
     "iptv": "WKAQTV22.pr",
     "imported": true,
-    "number": 2675,
+    "number": 2674,
     "src": {
       "by": "nbculocallive.akamaized.net",
       "kind": "public",
@@ -63816,7 +63792,7 @@
     "countryHe": "קפריסין",
     "iptv": "ERTCosmosCyprus.cy",
     "imported": true,
-    "number": 2676,
+    "number": 2675,
     "src": {
       "by": "ert-live.ascdn.broadpeak.io",
       "kind": "public",
@@ -63840,7 +63816,7 @@
     "countryHe": "בנגלדש",
     "iptv": "ATNBangla.bd",
     "imported": true,
-    "number": 2677,
+    "number": 2676,
     "src": {
       "by": "tvsen5.aynaott.com",
       "kind": "public",
@@ -63864,7 +63840,7 @@
     "countryHe": "מקדוניה הצפונית",
     "iptv": "Sitel.mk",
     "imported": true,
-    "number": 2678,
+    "number": 2677,
     "src": {
       "by": "teve.mk",
       "kind": "public",
@@ -63888,7 +63864,7 @@
     "countryHe": "סרביה",
     "iptv": "SandzakTV.rs",
     "imported": true,
-    "number": 2679,
+    "number": 2678,
     "src": {
       "by": "streaming.iptv.nextfiber.rs",
       "kind": "public",
@@ -63912,7 +63888,7 @@
     "countryHe": "גאורגיה",
     "iptv": "1TV.ge",
     "imported": true,
-    "number": 2680,
+    "number": 2679,
     "src": {
       "by": "tv.cdn.xsg.ge",
       "kind": "public",
@@ -63937,7 +63913,7 @@
     "iptv": "AltynAsyr.tm",
     "imported": true,
     "webOk": false,
-    "number": 2681,
+    "number": 2680,
     "src": {
       "by": "alpha.tv.online.tm",
       "kind": "public",
@@ -63961,7 +63937,7 @@
     "countryHe": "קמרון",
     "iptv": "LauraDaveMediaTV.cm",
     "imported": true,
-    "number": 2682,
+    "number": 2681,
     "src": {
       "by": "streaming.lauradavemedia.com",
       "kind": "public",
@@ -63985,7 +63961,7 @@
     "countryHe": "לוקסמבורג",
     "iptv": "RTLTeleLetzebuerg.lu",
     "imported": true,
-    "number": 2683,
+    "number": 2682,
     "src": {
       "by": "live-edge.rtl.lu",
       "kind": "public",
@@ -64009,7 +63985,7 @@
     "countryHe": "סרי לנקה",
     "iptv": "Rupavahini.lk",
     "imported": true,
-    "number": 2684,
+    "number": 2683,
     "src": {
       "by": "rpn.bozztv.com",
       "kind": "public",
@@ -64033,7 +64009,7 @@
     "countryHe": "אלבניה",
     "iptv": "TVJohaniter.al",
     "imported": true,
-    "number": 2685,
+    "number": 2684,
     "src": {
       "by": "protokolldns.xyz",
       "kind": "public",
@@ -64057,7 +64033,7 @@
     "countryHe": "ניו זילנד",
     "iptv": "TeReo.nz",
     "imported": true,
-    "number": 2686,
+    "number": 2685,
     "src": {
       "by": "i.mjh.nz",
       "kind": "public",
@@ -64081,7 +64057,7 @@
     "countryHe": "מונגוליה",
     "iptv": "MNB.mn",
     "imported": true,
-    "number": 2687,
+    "number": 2686,
     "src": {
       "by": "live.mnb.mn",
       "kind": "public",
@@ -64105,7 +64081,7 @@
     "countryHe": "סנט קיטס ונוויס",
     "iptv": "ZIZTV.kn",
     "imported": true,
-    "number": 2688,
+    "number": 2687,
     "src": {
       "by": "media.slactech.com",
       "kind": "public",
@@ -64129,7 +64105,7 @@
     "countryHe": "בנין",
     "iptv": "TVCBenin.bj",
     "imported": true,
-    "number": 2689,
+    "number": 2688,
     "src": {
       "by": "live.tvcbenin.com",
       "kind": "public",
@@ -64153,7 +64129,7 @@
     "countryHe": "ארמניה",
     "iptv": "ShantTV.am",
     "imported": true,
-    "number": 2690,
+    "number": 2689,
     "src": {
       "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
       "kind": "restream",
@@ -64177,7 +64153,7 @@
     "countryHe": "קמבודיה",
     "iptv": "CTV9.kh",
     "imported": true,
-    "number": 2691,
+    "number": 2690,
     "src": {
       "by": "stream.pdtvhd.com",
       "kind": "public",
@@ -64201,7 +64177,7 @@
     "countryHe": "אפגניסטן",
     "iptv": "DunyaNawTV.af",
     "imported": true,
-    "number": 2692,
+    "number": 2691,
     "src": {
       "by": "dunyanhls.wns.live",
       "kind": "public",
@@ -64225,7 +64201,7 @@
     "countryHe": "לאוס",
     "iptv": "OhMuangLaoTV.la",
     "imported": true,
-    "number": 2693,
+    "number": 2692,
     "src": {
       "by": "livefta.malimarcdn.com",
       "kind": "public",
@@ -64249,7 +64225,7 @@
     "countryHe": "לטביה",
     "iptv": "ReTV.lv",
     "imported": true,
-    "number": 2694,
+    "number": 2693,
     "src": {
       "by": "retv2132.cloudycdn.services",
       "kind": "public",
@@ -64273,7 +64249,7 @@
     "countryHe": "קרואטיה",
     "iptv": "SBTV.hr",
     "imported": true,
-    "number": 2695,
+    "number": 2694,
     "src": {
       "by": "live.leveex.hr",
       "kind": "public",
@@ -64297,7 +64273,7 @@
     "countryHe": "בוסניה והרצגובינה",
     "iptv": "RTVHB.ba",
     "imported": true,
-    "number": 2696,
+    "number": 2695,
     "src": {
       "by": "prd-hometv-live-open.spectar.tv",
       "kind": "public",
@@ -64321,7 +64297,7 @@
     "countryHe": "מונטנגרו",
     "iptv": "TVNiksic.me",
     "imported": true,
-    "number": 2697,
+    "number": 2696,
     "src": {
       "by": "tv.rtv-niksic.me",
       "kind": "public",
@@ -64345,7 +64321,7 @@
     "countryHe": "גיאנה",
     "iptv": "HGPTV.gy",
     "imported": true,
-    "number": 2698,
+    "number": 2697,
     "src": {
       "by": "cdn-us-east-prod-ingest-infra-dacast-com.akamaized.net",
       "kind": "public",
@@ -64369,7 +64345,7 @@
     "countryHe": "נפאל",
     "iptv": "CapitalTVHD.np",
     "imported": true,
-    "number": 2699,
+    "number": 2698,
     "src": {
       "by": "streaming.tvnepal.com",
       "kind": "public",
@@ -64393,7 +64369,7 @@
     "countryHe": "טייוואן",
     "iptv": "TaiwanIndigenousTV.tw",
     "imported": true,
-    "number": 2700,
+    "number": 2699,
     "src": {
       "by": "streamipcfapp.akamaized.net",
       "kind": "public",
@@ -64417,7 +64393,7 @@
     "countryHe": "האיטי",
     "iptv": "TVPanou.ht",
     "imported": true,
-    "number": 2701,
+    "number": 2700,
     "src": {
       "by": "tvpanoucom.srfms.com",
       "kind": "public",
@@ -64441,7 +64417,7 @@
     "countryHe": "גוואדלופ",
     "iptv": "RadioTVBasseTerre.gp",
     "imported": true,
-    "number": 2702,
+    "number": 2701,
     "src": {
       "by": "vdo.ssl-stream.com",
       "kind": "public",
@@ -64465,7 +64441,7 @@
     "countryHe": "חוף השנהב",
     "iptv": "RefletTV.ci",
     "imported": true,
-    "number": 2703,
+    "number": 2702,
     "src": {
       "by": "edge-a3.evrideo.tv",
       "kind": "public",
@@ -64489,7 +64465,7 @@
     "countryHe": "ניקרגואה",
     "iptv": "Canal10.ni",
     "imported": true,
-    "number": 2704,
+    "number": 2703,
     "src": {
       "by": "ddycmnicl95kp.cloudfront.net",
       "kind": "public",
@@ -64513,7 +64489,7 @@
     "countryHe": "פנמה",
     "iptv": "Telemetro.pa",
     "imported": true,
-    "number": 2705,
+    "number": 2704,
     "src": {
       "by": "181.78.121.15",
       "kind": "public",
@@ -64537,7 +64513,7 @@
     "countryHe": "איסלנד",
     "iptv": "RUV2.is",
     "imported": true,
-    "number": 2706,
+    "number": 2705,
     "src": {
       "by": "ruvlive.akamaized.net",
       "kind": "public",
@@ -64561,7 +64537,7 @@
     "countryHe": "בולגריה",
     "iptv": "TVZagora.bg",
     "imported": true,
-    "number": 2707,
+    "number": 2706,
     "src": {
       "by": "zagoratv.ddns.net",
       "kind": "public",
@@ -64585,7 +64561,7 @@
     "countryHe": "ארצות הברית",
     "iptv": "Akaku53.us",
     "imported": true,
-    "number": 2708,
+    "number": 2707,
     "src": {
       "by": "castus-vod-dev.s3.amazonaws.com",
       "kind": "public",
@@ -64609,7 +64585,7 @@
     "countryHe": "בריטניה",
     "iptv": "TalkTV.uk",
     "imported": true,
-    "number": 2709,
+    "number": 2708,
     "src": {
       "by": "488f4ce4.wurl.com",
       "kind": "public",
@@ -64633,7 +64609,7 @@
     "countryHe": "צרפת",
     "iptv": "LeFigaroTVIledeFrance.fr",
     "imported": true,
-    "number": 2710,
+    "number": 2709,
     "src": {
       "by": "figarotv-live.freecaster.com",
       "kind": "public",
@@ -64657,7 +64633,7 @@
     "countryHe": "גרמניה",
     "iptv": "AugsburgTV.de",
     "imported": true,
-    "number": 2711,
+    "number": 2710,
     "src": {
       "by": "stream02.welocal.stream",
       "kind": "public",
@@ -64681,7 +64657,7 @@
     "countryHe": "ספרד",
     "iptv": "CanalSierradeCadiz.es",
     "imported": true,
-    "number": 2712,
+    "number": 2711,
     "src": {
       "by": "s.emisoras.tv",
       "kind": "public",
@@ -64705,7 +64681,7 @@
     "countryHe": "איטליה",
     "iptv": "DeejayTV.it",
     "imported": true,
-    "number": 2713,
+    "number": 2712,
     "src": {
       "by": "4c4b867c89244861ac216426883d1ad0.msvdn.net",
       "kind": "public",
@@ -64729,7 +64705,7 @@
     "countryHe": "רוסיה",
     "iptv": "360.ru",
     "imported": true,
-    "number": 2714,
+    "number": 2713,
     "src": {
       "by": "cdn-evacoder-tv.facecast.io",
       "kind": "public",
@@ -64753,7 +64729,7 @@
     "countryHe": "אוקראינה",
     "iptv": "NTKTV.ua",
     "imported": true,
-    "number": 2715,
+    "number": 2714,
     "src": {
       "by": "stream.ntktv.ua",
       "kind": "public",
@@ -64777,7 +64753,7 @@
     "countryHe": "אוסטרליה",
     "iptv": "C31Melbourne.au",
     "imported": true,
-    "number": 2716,
+    "number": 2715,
     "src": {
       "by": "d1k6kax80wecy5.cloudfront.net",
       "kind": "public",
@@ -64801,7 +64777,7 @@
     "countryHe": "טורקיה",
     "iptv": "AlanyaPostaTV.tr",
     "imported": true,
-    "number": 2717,
+    "number": 2716,
     "src": {
       "by": "api-tv3.yayin.com.tr",
       "kind": "public",
@@ -64825,7 +64801,7 @@
     "countryHe": "הודו",
     "iptv": "DDTamil.in",
     "imported": true,
-    "number": 2718,
+    "number": 2717,
     "src": {
       "by": "cdn.pishow.tv",
       "kind": "public",
@@ -64849,7 +64825,7 @@
     "countryHe": "קוריאה הדרומית",
     "iptv": "ABN.kr",
     "imported": true,
-    "number": 2719,
+    "number": 2718,
     "src": {
       "by": "vod2.abn.co.kr",
       "kind": "public",
@@ -64873,7 +64849,7 @@
     "countryHe": "סין",
     "iptv": "VoATVChina.cn",
     "imported": true,
-    "number": 2720,
+    "number": 2719,
     "src": {
       "by": "voa-ingest.akamaized.net",
       "kind": "public",
@@ -64897,7 +64873,7 @@
     "countryHe": "ברזיל",
     "iptv": "COMBrasil.br",
     "imported": true,
-    "number": 2721,
+    "number": 2720,
     "src": {
       "by": "br5093.streamingdevideo.com.br",
       "kind": "public",
@@ -64921,7 +64897,7 @@
     "countryHe": "מקסיקו",
     "iptv": "Canal10Durango.mx",
     "imported": true,
-    "number": 2722,
+    "number": 2721,
     "src": {
       "by": "5e50264bd6766.streamlock.net",
       "kind": "public",
@@ -64945,7 +64921,7 @@
     "countryHe": "ארגנטינה",
     "iptv": "Canal21TV.ar",
     "imported": true,
-    "number": 2723,
+    "number": 2722,
     "src": {
       "by": "iptv.ixfo.com.ar",
       "kind": "public",
@@ -64969,7 +64945,7 @@
     "countryHe": "פורטוגל",
     "iptv": "PortoCanal.pt",
     "imported": true,
-    "number": 2724,
+    "number": 2723,
     "src": {
       "by": "pull-live-156-1.global.ssl.fastly.net",
       "kind": "public",
@@ -64993,7 +64969,7 @@
     "countryHe": "הולנד",
     "iptv": "A1TV.nl",
     "imported": true,
-    "number": 2725,
+    "number": 2724,
     "src": {
       "by": "stream.a1mediagroep.nl",
       "kind": "public",
@@ -65017,7 +64993,7 @@
     "countryHe": "בלגיה",
     "iptv": "BX1.be",
     "imported": true,
-    "number": 2726,
+    "number": 2725,
     "src": {
       "by": "59959724487e3.streamlock.net",
       "kind": "public",
@@ -65041,7 +65017,7 @@
     "countryHe": "שווייץ",
     "iptv": "CanalAlphaNeuchatel.ch",
     "imported": true,
-    "number": 2727,
+    "number": 2726,
     "src": {
       "by": "canalalpha.vedge.infomaniak.com",
       "kind": "public",
@@ -65065,7 +65041,7 @@
     "countryHe": "אוסטריה",
     "iptv": "TV1Oberosterreich.at",
     "imported": true,
-    "number": 2728,
+    "number": 2727,
     "src": {
       "by": "streaming10.huberwebmedia.at",
       "kind": "public",
@@ -65089,7 +65065,7 @@
     "countryHe": "פולין",
     "iptv": "TelewizjaRelax.pl",
     "imported": true,
-    "number": 2729,
+    "number": 2728,
     "src": {
       "by": "srv1.streamingo.pl",
       "kind": "public",
@@ -65113,7 +65089,7 @@
     "countryHe": "יוון",
     "iptv": "Channel8.gr",
     "imported": true,
-    "number": 2730,
+    "number": 2729,
     "src": {
       "by": "gra1.crystalweb.net",
       "kind": "public",
@@ -65137,7 +65113,7 @@
     "countryHe": "שוודיה",
     "iptv": "GustavLinsepaudebane.se",
     "imported": true,
-    "number": 2731,
+    "number": 2730,
     "src": {
       "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
       "kind": "fast",
@@ -65161,7 +65137,7 @@
     "countryHe": "דנמרק",
     "iptv": "TVMarineret.dk",
     "imported": true,
-    "number": 2732,
+    "number": 2731,
     "src": {
       "by": "sdream.info",
       "kind": "public",
@@ -65185,7 +65161,7 @@
     "countryHe": "פינלנד",
     "iptv": "Nelonen.fi",
     "imported": true,
-    "number": 2733,
+    "number": 2732,
     "src": {
       "by": "live-fi.tvkaista.net",
       "kind": "public",
@@ -65209,7 +65185,7 @@
     "countryHe": "צ׳כיה",
     "iptv": "JC1.cz",
     "imported": true,
-    "number": 2734,
+    "number": 2733,
     "src": {
       "by": "stream.jc1.cz",
       "kind": "public",
@@ -65233,7 +65209,7 @@
     "countryHe": "רומניה",
     "iptv": "ArgesTV.ro",
     "imported": true,
-    "number": 2735,
+    "number": 2734,
     "src": {
       "by": "btutzctahuf0wjoq.cdn.streamingserver.io",
       "kind": "public",
@@ -65257,7 +65233,7 @@
     "countryHe": "הונגריה",
     "iptv": "OroszlanyiVarosiTelevizio.hu",
     "imported": true,
-    "number": 2736,
+    "number": 2735,
     "src": {
       "by": "cloudfront44.lexanetwork.com",
       "kind": "public",
@@ -65281,7 +65257,7 @@
     "countryHe": "צ׳ילה",
     "iptv": "Canal9BioBioTelevision.cl",
     "imported": true,
-    "number": 2737,
+    "number": 2736,
     "src": {
       "by": "unlimited6-cl.dps.live",
       "kind": "public",
@@ -65305,7 +65281,7 @@
     "countryHe": "פרו",
     "iptv": "Unitel.pe",
     "imported": true,
-    "number": 2738,
+    "number": 2737,
     "src": {
       "by": "play.agenciastreaming.com",
       "kind": "public",
@@ -65329,7 +65305,7 @@
     "countryHe": "אינדונזיה",
     "iptv": "MagnaChannel.id",
     "imported": true,
-    "number": 2739,
+    "number": 2738,
     "src": {
       "by": "edge.medcom.id",
       "kind": "public",
@@ -65353,7 +65329,7 @@
     "countryHe": "תאילנד",
     "iptv": "VipaTV.th",
     "imported": true,
-    "number": 2740,
+    "number": 2739,
     "src": {
       "by": "fastly.live.brightcove.com",
       "kind": "public",
@@ -65377,7 +65353,7 @@
     "countryHe": "פקיסטן",
     "iptv": "BSFilm.pk",
     "imported": true,
-    "number": 2741,
+    "number": 2740,
     "src": {
       "by": "lbgo.bozztv.com",
       "kind": "public",
@@ -65401,7 +65377,7 @@
     "countryHe": "איראן",
     "iptv": "AraxTV.ir",
     "imported": true,
-    "number": 2742,
+    "number": 2741,
     "src": {
       "by": "araxhls.wns.live",
       "kind": "public",
@@ -65425,7 +65401,7 @@
     "countryHe": "דרום אפריקה",
     "iptv": "ROVTV.za",
     "imported": true,
-    "number": 2743,
+    "number": 2742,
     "src": {
       "by": "viewmedia7219.bozztv.com",
       "kind": "public",
@@ -65449,7 +65425,7 @@
     "countryHe": "ניגריה",
     "iptv": "WazobiaMaxTVPortHarcourt.ng",
     "imported": true,
-    "number": 2744,
+    "number": 2743,
     "src": {
       "by": "wazobia.live",
       "kind": "public",
@@ -65473,7 +65449,7 @@
     "countryHe": "הרפובליקה הדומיניקנית",
     "iptv": "AhoraTV.do",
     "imported": true,
-    "number": 2745,
+    "number": 2744,
     "src": {
       "by": "stream.haislin.com",
       "kind": "public",
@@ -65497,7 +65473,7 @@
     "countryHe": "בוליביה",
     "iptv": "RedAmericaTV.bo",
     "imported": true,
-    "number": 2746,
+    "number": 2745,
     "src": {
       "by": "edge.enhdtv.com",
       "kind": "public",
@@ -65521,7 +65497,7 @@
     "countryHe": "פרגוואי",
     "iptv": "RedDigital.py",
     "imported": true,
-    "number": 2747,
+    "number": 2746,
     "src": {
       "by": "video.hostingcaaguazu.com",
       "kind": "public",
@@ -65545,7 +65521,7 @@
     "countryHe": "סלובקיה",
     "iptv": "TVPovazie.sk",
     "imported": true,
-    "number": 2748,
+    "number": 2747,
     "src": {
       "by": "Antik Telecom (סלובקיה), נתיבי test",
       "kind": "restream",
@@ -65569,7 +65545,7 @@
     "countryHe": "ונצואלה",
     "iptv": "TNORadio.ve",
     "imported": true,
-    "number": 2749,
+    "number": 2748,
     "src": {
       "by": "stmv1.srvstm.com",
       "kind": "public",
@@ -65593,7 +65569,7 @@
     "countryHe": "אקוודור",
     "iptv": "Ecuavisa.ec",
     "imported": true,
-    "number": 2750,
+    "number": 2749,
     "src": {
       "by": "redirector.dps.live",
       "kind": "public",
@@ -65617,7 +65593,7 @@
     "countryHe": "גואטמלה",
     "iptv": "MultivisionCanal3.gt",
     "imported": true,
-    "number": 2751,
+    "number": 2750,
     "src": {
       "by": "stream.digitalgt.com",
       "kind": "public",
@@ -65641,7 +65617,7 @@
     "countryHe": "הונדורס",
     "iptv": "TelevisionMetropolis191.hn",
     "imported": true,
-    "number": 2752,
+    "number": 2751,
     "src": {
       "by": "5e85d90130e77.streamlock.net",
       "kind": "public",
@@ -65665,7 +65641,7 @@
     "countryHe": "מולדובה",
     "iptv": "Moldova2.md",
     "imported": true,
-    "number": 2753,
+    "number": 2752,
     "src": {
       "by": "v0.trm.md",
       "kind": "public",
@@ -65689,7 +65665,7 @@
     "countryHe": "אל סלבדור",
     "iptv": "MegavisionCanal21.sv",
     "imported": true,
-    "number": 2754,
+    "number": 2753,
     "src": {
       "by": "mgvchannel21-ioriver-cdn.encoders.immergo.tv",
       "kind": "public",
@@ -65713,7 +65689,7 @@
     "countryHe": "אוגנדה",
     "iptv": "BukeddeTV2.ug",
     "imported": true,
-    "number": 2755,
+    "number": 2754,
     "src": {
       "by": "stream.hydeinnovations.com",
       "kind": "public",
@@ -65737,7 +65713,7 @@
     "countryHe": "קזחסטן",
     "iptv": "RikaTV.kz",
     "imported": true,
-    "number": 2756,
+    "number": 2755,
     "src": {
       "by": "live-rikatv.cdnvideo.ru",
       "kind": "public",
@@ -65761,7 +65737,7 @@
     "countryHe": "סנגל",
     "iptv": "Diaspora24.sn",
     "imported": true,
-    "number": 2757,
+    "number": 2756,
     "src": {
       "by": "vdo3.pro-fhi.net",
       "kind": "public",
@@ -65785,7 +65761,7 @@
     "countryHe": "פוארטו ריקו",
     "iptv": "Telenorte.pr",
     "imported": true,
-    "number": 2758,
+    "number": 2757,
     "src": {
       "by": "627bb251f23c7.streamlock.net",
       "kind": "public",
@@ -65809,7 +65785,7 @@
     "countryHe": "קפריסין",
     "iptv": "RIKSat.cy",
     "imported": true,
-    "number": 2759,
+    "number": 2758,
     "src": {
       "by": "l3.cloudskep.com",
       "kind": "public",
@@ -65833,7 +65809,7 @@
     "countryHe": "בנגלדש",
     "iptv": "BanglaVision.bd",
     "imported": true,
-    "number": 2760,
+    "number": 2759,
     "src": {
       "by": "tvsen5.aynaott.com",
       "kind": "public",
@@ -65858,7 +65834,7 @@
     "iptv": "CoolTV.mk",
     "imported": true,
     "webOk": false,
-    "number": 2761,
+    "number": 2760,
     "src": {
       "by": "stream.nasatv.com.mk",
       "kind": "public",
@@ -65882,7 +65858,7 @@
     "countryHe": "סרביה",
     "iptv": "TVHram.rs",
     "imported": true,
-    "number": 2762,
+    "number": 2761,
     "src": {
       "by": "vod1.laki.eu",
       "kind": "public",
@@ -65906,7 +65882,7 @@
     "countryHe": "קוסובו",
     "iptv": "TVSyri.xk",
     "imported": true,
-    "number": 2763,
+    "number": 2762,
     "src": {
       "by": "gjirafa-video-live.gjirafa.net",
       "kind": "public",
@@ -65930,7 +65906,7 @@
     "countryHe": "רואנדה",
     "iptv": "IsiboTV.rw",
     "imported": true,
-    "number": 2764,
+    "number": 2763,
     "src": {
       "by": "5c46fa289c89f.streamlock.net",
       "kind": "public",
@@ -65954,7 +65930,7 @@
     "countryHe": "גאורגיה",
     "iptv": "2TV.ge",
     "imported": true,
-    "number": 2765,
+    "number": 2764,
     "src": {
       "by": "tv.cdn.xsg.ge",
       "kind": "public",
@@ -65979,7 +65955,7 @@
     "iptv": "ArkadagTV.tm",
     "imported": true,
     "webOk": false,
-    "number": 2766,
+    "number": 2765,
     "src": {
       "by": "alpha.tv.online.tm",
       "kind": "public",
@@ -66003,7 +65979,7 @@
     "countryHe": "קמרון",
     "iptv": "CRTV.cm",
     "imported": true,
-    "number": 2767,
+    "number": 2766,
     "src": {
       "by": "10gb1.acangroup.org",
       "kind": "public",
@@ -66027,7 +66003,7 @@
     "countryHe": "לוקסמבורג",
     "iptv": "DudelangeTV.lu",
     "imported": true,
-    "number": 2768,
+    "number": 2767,
     "src": {
       "by": "streamer20.multimedia.blue",
       "kind": "public",
@@ -66051,7 +66027,7 @@
     "countryHe": "סרי לנקה",
     "iptv": "ShakthiTV.lk",
     "imported": true,
-    "number": 2769,
+    "number": 2768,
     "src": {
       "by": "mumbai-edge.smartplaytv.in",
       "kind": "public",
@@ -66075,7 +66051,7 @@
     "countryHe": "אלבניה",
     "iptv": "ZjarrTV.al",
     "imported": true,
-    "number": 2770,
+    "number": 2769,
     "src": {
       "by": "zjarr.future.al",
       "kind": "public",
@@ -66099,7 +66075,7 @@
     "countryHe": "ניו זילנד",
     "iptv": "WhakaataMaori.nz",
     "imported": true,
-    "number": 2771,
+    "number": 2770,
     "src": {
       "by": "i.mjh.nz",
       "kind": "public",
@@ -66123,7 +66099,7 @@
     "countryHe": "מונגוליה",
     "iptv": "MNBMongoliinMedee.mn",
     "imported": true,
-    "number": 2772,
+    "number": 2771,
     "src": {
       "by": "live.mnb.mn",
       "kind": "public",
@@ -66147,7 +66123,7 @@
     "countryHe": "סנט קיטס ונוויס",
     "iptv": "NevisTelevision.kn",
     "imported": true,
-    "number": 2773,
+    "number": 2772,
     "src": {
       "by": "media.slactech.com",
       "kind": "public",
@@ -66171,7 +66147,7 @@
     "countryHe": "אזרבייג׳ן",
     "iptv": "KanalS.az",
     "imported": true,
-    "number": 2774,
+    "number": 2773,
     "src": {
       "by": "lives.atv.az",
       "kind": "public",
@@ -66195,7 +66171,7 @@
     "countryHe": "בנין",
     "iptv": "EdenTV.bj",
     "imported": true,
-    "number": 2775,
+    "number": 2774,
     "src": {
       "by": "rtmp.edentv.bj",
       "kind": "public",
@@ -66219,7 +66195,7 @@
     "countryHe": "ארמניה",
     "iptv": "YerkirMedia.am",
     "imported": true,
-    "number": 2776,
+    "number": 2775,
     "src": {
       "by": "yerkirmedia.am",
       "kind": "public",
@@ -66243,7 +66219,7 @@
     "countryHe": "קמבודיה",
     "iptv": "TownTV.kh",
     "imported": true,
-    "number": 2777,
+    "number": 2776,
     "src": {
       "by": "stream.pdtvhd.com",
       "kind": "public",
@@ -66267,7 +66243,7 @@
     "countryHe": "אפגניסטן",
     "iptv": "ToloTV.af",
     "imported": true,
-    "number": 2778,
+    "number": 2777,
     "src": {
       "by": "tgn.bozztv.com",
       "kind": "public",
@@ -66291,7 +66267,7 @@
     "countryHe": "לאוס",
     "iptv": "ISTV.la",
     "imported": true,
-    "number": 2779,
+    "number": 2778,
     "src": {
       "by": "livefta.malimarcdn.com",
       "kind": "public",
@@ -66315,7 +66291,7 @@
     "countryHe": "לטביה",
     "iptv": "VidusdaugavasTelevizija.lv",
     "imported": true,
-    "number": 2780,
+    "number": 2779,
     "src": {
       "by": "straume.vdtv.lv",
       "kind": "public",
@@ -66339,7 +66315,7 @@
     "countryHe": "קרואטיה",
     "iptv": "STV.hr",
     "imported": true,
-    "number": 2781,
+    "number": 2780,
     "src": {
       "by": "89.201.163.244",
       "kind": "public",
@@ -66363,7 +66339,7 @@
     "countryHe": "בוסניה והרצגובינה",
     "iptv": "Televizija5.ba",
     "imported": true,
-    "number": 2782,
+    "number": 2781,
     "src": {
       "by": "balkanmedia.dynu.net",
       "kind": "public",
@@ -66387,7 +66363,7 @@
     "countryHe": "מונטנגרו",
     "iptv": "TVTeuta.me",
     "imported": true,
-    "number": 2783,
+    "number": 2782,
     "src": {
       "by": "143.244.204.5",
       "kind": "public",
@@ -66411,7 +66387,7 @@
     "countryHe": "ארצות הברית",
     "iptv": "Akaku54.us",
     "imported": true,
-    "number": 2784,
+    "number": 2783,
     "src": {
       "by": "castus-vod-dev.s3.amazonaws.com",
       "kind": "public",
@@ -66435,7 +66411,7 @@
     "countryHe": "צרפת",
     "iptv": "RMCDecouverte.fr",
     "imported": true,
-    "number": 2785,
+    "number": 2784,
     "src": {
       "by": "d16zzycxcd0m0r.cloudfront.net",
       "kind": "public",
@@ -66459,7 +66435,7 @@
     "countryHe": "גרמניה",
     "iptv": "BRFernsehen.de",
     "imported": true,
-    "number": 2786,
+    "number": 2785,
     "src": {
       "by": "mcdn.br.de",
       "kind": "public",
@@ -66483,7 +66459,7 @@
     "countryHe": "ספרד",
     "iptv": "CanalSurAndalucia.es",
     "imported": true,
-    "number": 2787,
+    "number": 2786,
     "src": {
       "by": "dfk2a268yviz9.cloudfront.net",
       "kind": "public",
@@ -66507,7 +66483,7 @@
     "countryHe": "איטליה",
     "iptv": "LA7.it",
     "imported": true,
-    "number": 2788,
+    "number": 2787,
     "src": {
       "by": "d3k8wzt41aflvx.cloudfront.net",
       "kind": "public",
@@ -66531,7 +66507,7 @@
     "countryHe": "רוסיה",
     "iptv": "86.ru",
     "imported": true,
-    "number": 2789,
+    "number": 2788,
     "src": {
       "by": "sitv.ru",
       "kind": "public",
@@ -66555,7 +66531,7 @@
     "countryHe": "אוקראינה",
     "iptv": "NTN.ua",
     "imported": true,
-    "number": 2790,
+    "number": 2789,
     "src": {
       "by": "live-tv.cloud – ספק IPTV אוקראיני",
       "kind": "restream",
@@ -66579,7 +66555,7 @@
     "countryHe": "קנדה",
     "iptv": "SohailTV.ca",
     "imported": true,
-    "number": 2791,
+    "number": 2790,
     "src": {
       "by": "iptv.sohailtv.com",
       "kind": "public",
@@ -66603,7 +66579,7 @@
     "countryHe": "טורקיה",
     "iptv": "AnadoluNetTV.tr",
     "imported": true,
-    "number": 2792,
+    "number": 2791,
     "src": {
       "by": "live.artidijitalmedya.com",
       "kind": "public",
@@ -66627,7 +66603,7 @@
     "countryHe": "הודו",
     "iptv": "MetroTV.in",
     "imported": true,
-    "number": 2793,
+    "number": 2792,
     "src": {
       "by": "mercury.streambridge.link",
       "kind": "public",
@@ -66651,7 +66627,7 @@
     "countryHe": "קוריאה הדרומית",
     "iptv": "ArirangRadio.kr",
     "imported": true,
-    "number": 2794,
+    "number": 2793,
     "src": {
       "by": "amdlive-ch02-ctnd-com.akamaized.net",
       "kind": "public",
@@ -66675,7 +66651,7 @@
     "countryHe": "סין",
     "iptv": "BreadTV.cn",
     "imported": true,
-    "number": 2795,
+    "number": 2794,
     "src": {
       "by": "video.bread-tv.com",
       "kind": "public",
@@ -66699,7 +66675,7 @@
     "countryHe": "ברזיל",
     "iptv": "Lke.br",
     "imported": true,
-    "number": 2796,
+    "number": 2795,
     "src": {
       "by": "cnl-cl.otteravision.com",
       "kind": "public",
@@ -66723,7 +66699,7 @@
     "countryHe": "מקסיקו",
     "iptv": "Canal26.mx",
     "imported": true,
-    "number": 2797,
+    "number": 2796,
     "src": {
       "by": "60417ddeaf0d9.streamlock.net",
       "kind": "public",
@@ -66747,7 +66723,7 @@
     "countryHe": "ארגנטינה",
     "iptv": "Canal3LaPampa.ar",
     "imported": true,
-    "number": 2798,
+    "number": 2797,
     "src": {
       "by": "stream.arcast.com.ar",
       "kind": "public",
@@ -66771,7 +66747,7 @@
     "countryHe": "פורטוגל",
     "iptv": "RadioSines.pt",
     "imported": true,
-    "number": 2799,
+    "number": 2798,
     "src": {
       "by": "load-balancer.azotosolutions.com",
       "kind": "public",
@@ -66795,7 +66771,7 @@
     "countryHe": "הולנד",
     "iptv": "OmroepBrabant.nl",
     "imported": true,
-    "number": 2800,
+    "number": 2799,
     "src": {
       "by": "d3slqp9xhts6qb.cloudfront.net",
       "kind": "public",
@@ -66819,7 +66795,7 @@
     "countryHe": "בלגיה",
     "iptv": "Radio1.be",
     "imported": true,
-    "number": 2801,
+    "number": 2800,
     "src": {
       "by": "live.vrtcdn.be",
       "kind": "public",
@@ -66843,7 +66819,7 @@
     "countryHe": "שווייץ",
     "iptv": "Radio3i.ch",
     "imported": true,
-    "number": 2802,
+    "number": 2801,
     "src": {
       "by": "vstream-cdn.ch",
       "kind": "public",
@@ -66867,7 +66843,7 @@
     "countryHe": "אוסטריה",
     "iptv": "FS1Salzburg.at",
     "imported": true,
-    "number": 2803,
+    "number": 2802,
     "src": {
       "by": "stream.fs1.tv",
       "kind": "public",
@@ -66891,7 +66867,7 @@
     "countryHe": "פולין",
     "iptv": "TopMoviesPolska.pl",
     "imported": true,
-    "number": 2804,
+    "number": 2803,
     "src": {
       "by": "top-movies-rakuten-tv-pl.fast.rakuten.tv",
       "kind": "public",
@@ -66915,7 +66891,7 @@
     "countryHe": "יוון",
     "iptv": "EcclesiaTV.gr",
     "imported": true,
-    "number": 2805,
+    "number": 2804,
     "src": {
       "by": "liveopen.siliconweb.com",
       "kind": "public",
@@ -66939,7 +66915,7 @@
     "countryHe": "שוודיה",
     "iptv": "TheMillers.se",
     "imported": true,
-    "number": 2806,
+    "number": 2805,
     "src": {
       "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
       "kind": "fast",
@@ -66963,7 +66939,7 @@
     "countryHe": "דנמרק",
     "iptv": "KanalHovedstaden.dk",
     "imported": true,
-    "number": 2807,
+    "number": 2806,
     "src": {
       "by": "khkbh.dk",
       "kind": "public",
@@ -66987,7 +66963,7 @@
     "countryHe": "פינלנד",
     "iptv": "OnniTV.fi",
     "imported": true,
-    "number": 2808,
+    "number": 2807,
     "src": {
       "by": "onnitv.digitacdn.net",
       "kind": "public",
@@ -67011,7 +66987,7 @@
     "countryHe": "צ׳כיה",
     "iptv": "Jihoceskatelevize.cz",
     "imported": true,
-    "number": 2809,
+    "number": 2808,
     "src": {
       "by": "vysilani.zaktv.cz",
       "kind": "public",
@@ -67035,7 +67011,7 @@
     "countryHe": "רומניה",
     "iptv": "MuscelTV.ro",
     "imported": true,
-    "number": 2810,
+    "number": 2809,
     "src": {
       "by": "cdn.streamnet.pro",
       "kind": "public",
@@ -67059,7 +67035,7 @@
     "countryHe": "הונגריה",
     "iptv": "BudapestEuropaTelevizio.hu",
     "imported": true,
-    "number": 2811,
+    "number": 2810,
     "src": {
       "by": "cloudfront44.lexanetwork.com",
       "kind": "public",
@@ -67083,7 +67059,7 @@
     "countryHe": "צ׳ילה",
     "iptv": "DCHTV.cl",
     "imported": true,
-    "number": 2812,
+    "number": 2811,
     "src": {
       "by": "v2.tustreaming.cl",
       "kind": "public",
@@ -67107,7 +67083,7 @@
     "countryHe": "קולומביה",
     "iptv": "NuestraTeleInternacional.co",
     "imported": true,
-    "number": 2813,
+    "number": 2812,
     "src": {
       "by": "stream1.bitred.cl",
       "kind": "public",
@@ -67131,7 +67107,7 @@
     "countryHe": "פרו",
     "iptv": "VisionSur.pe",
     "imported": true,
-    "number": 2814,
+    "number": 2813,
     "src": {
       "by": "ott1.hdlatam.tv",
       "kind": "public",
@@ -67155,7 +67131,7 @@
     "countryHe": "אינדונזיה",
     "iptv": "NusantaraTV.id",
     "imported": true,
-    "number": 2815,
+    "number": 2814,
     "src": {
       "by": "nusantaratv.siar.us",
       "kind": "public",
@@ -67179,7 +67155,7 @@
     "countryHe": "תאילנד",
     "iptv": "STOUChannel.th",
     "imported": true,
-    "number": 2816,
+    "number": 2815,
     "src": {
       "by": "stream1.stou.ac.th",
       "kind": "public",
@@ -67203,7 +67179,7 @@
     "countryHe": "וייטנאם",
     "iptv": "DienBienTV.vn",
     "imported": true,
-    "number": 2817,
+    "number": 2816,
     "src": {
       "by": "stream.langsontv.vn",
       "kind": "public",
@@ -67227,7 +67203,7 @@
     "countryHe": "פקיסטן",
     "iptv": "BSTV.pk",
     "imported": true,
-    "number": 2818,
+    "number": 2817,
     "src": {
       "by": "lbgo.bozztv.com",
       "kind": "public",
@@ -67251,7 +67227,7 @@
     "countryHe": "איראן",
     "iptv": "ArkoTV.ir",
     "imported": true,
-    "number": 2819,
+    "number": 2818,
     "src": {
       "by": "arkhls.wns.live",
       "kind": "public",
@@ -67275,7 +67251,7 @@
     "countryHe": "ניגריה",
     "iptv": "BCSStarCrossTV.ng",
     "imported": true,
-    "number": 2820,
+    "number": 2819,
     "src": {
       "by": "viewmedia7219.bozztv.com",
       "kind": "public",
@@ -67299,7 +67275,7 @@
     "countryHe": "הרפובליקה הדומיניקנית",
     "iptv": "AIONTV.do",
     "imported": true,
-    "number": 2821,
+    "number": 2820,
     "src": {
       "by": "edge.essastream.com",
       "kind": "public",
@@ -67323,7 +67299,7 @@
     "countryHe": "בוליביה",
     "iptv": "TVLatina.bo",
     "imported": true,
-    "number": 2822,
+    "number": 2821,
     "src": {
       "by": "castv10.plugstreaming.com",
       "kind": "public",
@@ -67347,7 +67323,7 @@
     "countryHe": "פרגוואי",
     "iptv": "RegionalTVYaguaron.py",
     "imported": true,
-    "number": 2823,
+    "number": 2822,
     "src": {
       "by": "video.hostingcaaguazu.com",
       "kind": "public",
@@ -67371,7 +67347,7 @@
     "countryHe": "סלובקיה",
     "iptv": "TeleviziaMocenok.sk",
     "imported": true,
-    "number": 2824,
+    "number": 2823,
     "src": {
       "by": "5ca49f2417d90.streamlock.net",
       "kind": "public",
@@ -67395,7 +67371,7 @@
     "countryHe": "ונצואלה",
     "iptv": "TuTV.ve",
     "imported": true,
-    "number": 2825,
+    "number": 2824,
     "src": {
       "by": "astl-mainstr.qvixsolutions.com",
       "kind": "public",
@@ -67419,7 +67395,7 @@
     "countryHe": "אקוודור",
     "iptv": "HechosEcuador.ec",
     "imported": true,
-    "number": 2826,
+    "number": 2825,
     "src": {
       "by": "online.hechosecuador.com",
       "kind": "public",
@@ -67443,7 +67419,7 @@
     "countryHe": "גואטמלה",
     "iptv": "SolTV.gt",
     "imported": true,
-    "number": 2827,
+    "number": 2826,
     "src": {
       "by": "cdn.streamhispanatv.net",
       "kind": "public",
@@ -67467,7 +67443,7 @@
     "countryHe": "הונדורס",
     "iptv": "TelevisionMetropolis192.hn",
     "imported": true,
-    "number": 2828,
+    "number": 2827,
     "src": {
       "by": "5e85d90130e77.streamlock.net",
       "kind": "public",
@@ -67491,7 +67467,7 @@
     "countryHe": "בלארוס",
     "iptv": "STV.by",
     "imported": true,
-    "number": 2829,
+    "number": 2828,
     "src": {
       "by": "ctv.dc.beltelecom.by",
       "kind": "public",
@@ -67515,7 +67491,7 @@
     "countryHe": "מולדובה",
     "iptv": "TVRMoldova.md",
     "imported": true,
-    "number": 2830,
+    "number": 2829,
     "src": {
       "by": "tvr-moldova.lg.mncdn.com",
       "kind": "public",
@@ -67539,7 +67515,7 @@
     "countryHe": "אל סלבדור",
     "iptv": "RTVCanal57.sv",
     "imported": true,
-    "number": 2831,
+    "number": 2830,
     "src": {
       "by": "stream.giostreaming.app",
       "kind": "public",
@@ -67563,7 +67539,7 @@
     "countryHe": "אוגנדה",
     "iptv": "WanLuoTV.ug",
     "imported": true,
-    "number": 2832,
+    "number": 2831,
     "src": {
       "by": "stream.hydeinnovations.com",
       "kind": "public",
@@ -67587,7 +67563,7 @@
     "countryHe": "קזחסטן",
     "iptv": "TDK42.kz",
     "imported": true,
-    "number": 2833,
+    "number": 2832,
     "src": {
       "by": "live-tdk42kz.cdnvideo.ru",
       "kind": "public",
@@ -67611,7 +67587,7 @@
     "countryHe": "סנגל",
     "iptv": "GMSTV.sn",
     "imported": true,
-    "number": 2834,
+    "number": 2833,
     "src": {
       "by": "acasmedia6.acangroup.org",
       "kind": "public",
@@ -67635,7 +67611,7 @@
     "countryHe": "פוארטו ריקו",
     "iptv": "WXWZLD231.pr",
     "imported": true,
-    "number": 2835,
+    "number": 2834,
     "src": {
       "by": "5bf8041cb3fed.streamlock.net",
       "kind": "public",
@@ -67659,7 +67635,7 @@
     "countryHe": "קפריסין",
     "iptv": "OmegaChannel.cy",
     "imported": true,
-    "number": 2836,
+    "number": 2835,
     "src": {
       "by": "l1.cloudskep.com",
       "kind": "public",
@@ -67683,7 +67659,7 @@
     "countryHe": "בנגלדש",
     "iptv": "NTV.bd",
     "imported": true,
-    "number": 2837,
+    "number": 2836,
     "src": {
       "by": "tvsen5.aynaott.com",
       "kind": "public",
@@ -67707,7 +67683,7 @@
     "countryHe": "סרביה",
     "iptv": "RTVNoviPazar.rs",
     "imported": true,
-    "number": 2838,
+    "number": 2837,
     "src": {
       "by": "tv.rtvnp.rs",
       "kind": "public",
@@ -67731,7 +67707,7 @@
     "countryHe": "קוסובו",
     "iptv": "TVDielli.xk",
     "imported": true,
-    "number": 2839,
+    "number": 2838,
     "src": {
       "by": "stream.tvdielli.com",
       "kind": "public",
@@ -67756,7 +67732,7 @@
     "iptv": "TV1.rw",
     "imported": true,
     "webOk": false,
-    "number": 2840,
+    "number": 2839,
     "src": {
       "by": "live.tv1.rw",
       "kind": "public",
@@ -67780,7 +67756,7 @@
     "countryHe": "גאורגיה",
     "iptv": "ApsuaTV.ge",
     "imported": true,
-    "number": 2841,
+    "number": 2840,
     "src": {
       "by": "gcmx3v3owcj.a.trbcdn.net",
       "kind": "public",
@@ -67805,7 +67781,7 @@
     "iptv": "Asgabat.tm",
     "imported": true,
     "webOk": false,
-    "number": 2842,
+    "number": 2841,
     "src": {
       "by": "alpha.tv.online.tm",
       "kind": "public",
@@ -67829,7 +67805,7 @@
     "countryHe": "קמרון",
     "iptv": "MyTVChannel.cm",
     "imported": true,
-    "number": 2843,
+    "number": 2842,
     "src": {
       "by": "connectiktv.ddns.net",
       "kind": "public",
@@ -67853,7 +67829,7 @@
     "countryHe": "לוקסמבורג",
     "iptv": "MierschTV.lu",
     "imported": true,
-    "number": 2844,
+    "number": 2843,
     "src": {
       "by": "streamer20.multimedia.blue",
       "kind": "public",
@@ -67877,7 +67853,7 @@
     "countryHe": "אלבניה",
     "iptv": "TropojaTelevizion.al",
     "imported": true,
-    "number": 2845,
+    "number": 2844,
     "src": {
       "by": "live.prostream.al",
       "kind": "public",
@@ -67901,7 +67877,7 @@
     "countryHe": "ארצות הברית",
     "iptv": "Akaku55.us",
     "imported": true,
-    "number": 2846,
+    "number": 2845,
     "src": {
       "by": "castus-vod-dev.s3.amazonaws.com",
       "kind": "public",
@@ -67925,7 +67901,7 @@
     "countryHe": "צרפת",
     "iptv": "RMCStory.fr",
     "imported": true,
-    "number": 2847,
+    "number": 2846,
     "src": {
       "by": "d15aro46bnpfm8.cloudfront.net",
       "kind": "public",
@@ -67949,7 +67925,7 @@
     "countryHe": "גרמניה",
     "iptv": "DasErste.de",
     "imported": true,
-    "number": 2848,
+    "number": 2847,
     "src": {
       "by": "daserste-live.ard-mcdn.de",
       "kind": "public",
@@ -67973,7 +67949,7 @@
     "countryHe": "ספרד",
     "iptv": "CMMTV.es",
     "imported": true,
-    "number": 2849,
+    "number": 2848,
     "src": {
       "by": "cdnapisec.kaltura.com",
       "kind": "public",
@@ -67997,7 +67973,7 @@
     "countryHe": "איטליה",
     "iptv": "Nove.it",
     "imported": true,
-    "number": 2850,
+    "number": 2849,
     "src": {
       "by": "streaming.aurora.enhanced.live",
       "kind": "public",
@@ -68021,7 +67997,7 @@
     "countryHe": "רוסיה",
     "iptv": "Arkhyz24.ru",
     "imported": true,
-    "number": 2851,
+    "number": 2850,
     "src": {
       "by": "live.mediacdn.ru",
       "kind": "public",
@@ -68045,7 +68021,7 @@
     "countryHe": "אוקראינה",
     "iptv": "1Plus1International.ua",
     "imported": true,
-    "number": 2852,
+    "number": 2851,
     "src": {
       "by": "dash2.antik.sk",
       "kind": "public",
@@ -68069,7 +68045,7 @@
     "countryHe": "קנדה",
     "iptv": "TLN.ca",
     "imported": true,
-    "number": 2853,
+    "number": 2852,
     "src": {
       "by": "uni01rtmp.tulix.tv",
       "kind": "public",
@@ -68093,7 +68069,7 @@
     "countryHe": "טורקיה",
     "iptv": "ATV.tr",
     "imported": true,
-    "number": 2854,
+    "number": 2853,
     "src": {
       "by": "rnttwmjcin.turknet.ercdn.net",
       "kind": "public",
@@ -68117,7 +68093,7 @@
     "countryHe": "הודו",
     "iptv": "NKRTVKannada.in",
     "imported": true,
-    "number": 2855,
+    "number": 2854,
     "src": {
       "by": "stream.ottlive.co.in",
       "kind": "public",
@@ -68141,7 +68117,7 @@
     "countryHe": "קוריאה הדרומית",
     "iptv": "HLCQDTV.kr",
     "imported": true,
-    "number": 2856,
+    "number": 2855,
     "src": {
       "by": "ns1.tjmbc.co.kr",
       "kind": "public",
@@ -68165,7 +68141,7 @@
     "countryHe": "סין",
     "iptv": "AnhuiTV.cn",
     "imported": true,
-    "number": 2857,
+    "number": 2856,
     "src": {
       "by": "restream.pdtvhd.com",
       "kind": "public",
@@ -68189,7 +68165,7 @@
     "countryHe": "ברזיל",
     "iptv": "RedeBrasil.br",
     "imported": true,
-    "number": 2858,
+    "number": 2857,
     "src": {
       "by": "redebrasil.nuvemplay.live",
       "kind": "public",
@@ -68213,7 +68189,7 @@
     "countryHe": "מקסיקו",
     "iptv": "Canal5TVCozumel.mx",
     "imported": true,
-    "number": 2859,
+    "number": 2858,
     "src": {
       "by": "video0.rogohosting.com",
       "kind": "public",
@@ -68237,7 +68213,7 @@
     "countryHe": "ארגנטינה",
     "iptv": "Canal6Posadas.ar",
     "imported": true,
-    "number": 2860,
+    "number": 2859,
     "src": {
       "by": "iptv.ixfo.com.ar",
       "kind": "public",
@@ -68261,7 +68237,7 @@
     "countryHe": "פורטוגל",
     "iptv": "TVI.pt",
     "imported": true,
-    "number": 2861,
+    "number": 2860,
     "src": {
       "by": "raw.githubusercontent.com",
       "kind": "public",
@@ -68285,7 +68261,7 @@
     "countryHe": "הולנד",
     "iptv": "OmroepGelderland.nl",
     "imported": true,
-    "number": 2862,
+    "number": 2861,
     "src": {
       "by": "d2od87akyl46nm.cloudfront.net",
       "kind": "public",
@@ -68309,7 +68285,7 @@
     "countryHe": "בלגיה",
     "iptv": "Radio2.be",
     "imported": true,
-    "number": 2863,
+    "number": 2862,
     "src": {
       "by": "live.vrtcdn.be",
       "kind": "public",
@@ -68333,7 +68309,7 @@
     "countryHe": "שווייץ",
     "iptv": "TeleTicino.ch",
     "imported": true,
-    "number": 2864,
+    "number": 2863,
     "src": {
       "by": "vstream-cdn.ch",
       "kind": "public",
@@ -68357,7 +68333,7 @@
     "countryHe": "אוסטריה",
     "iptv": "R9.at",
     "imported": true,
-    "number": 2865,
+    "number": 2864,
     "src": {
       "by": "ms01.w24.at",
       "kind": "public",
@@ -68381,7 +68357,7 @@
     "countryHe": "פולין",
     "iptv": "TNAWrestlingChannel.pl",
     "imported": true,
-    "number": 2866,
+    "number": 2865,
     "src": {
       "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
       "kind": "fast",
@@ -68405,7 +68381,7 @@
     "countryHe": "יוון",
     "iptv": "ENAChannel.gr",
     "imported": true,
-    "number": 2867,
+    "number": 2866,
     "src": {
       "by": "cdn5.smart-tv-data.com",
       "kind": "public",
@@ -68429,7 +68405,7 @@
     "countryHe": "פינלנד",
     "iptv": "NarTV.fi",
     "imported": true,
-    "number": 2868,
+    "number": 2867,
     "src": {
       "by": "streaming.nartv.fi",
       "kind": "public",
@@ -68453,7 +68429,7 @@
     "countryHe": "צ׳כיה",
     "iptv": "MnauTV.cz",
     "imported": true,
-    "number": 2869,
+    "number": 2868,
     "src": {
       "by": "5ca49f2417d90.streamlock.net",
       "kind": "public",
@@ -68477,7 +68453,7 @@
     "countryHe": "רומניה",
     "iptv": "NasulTV.ro",
     "imported": true,
-    "number": 2870,
+    "number": 2869,
     "src": {
       "by": "live.nasul.tv",
       "kind": "public",
@@ -68501,7 +68477,7 @@
     "countryHe": "הונגריה",
     "iptv": "MoraNetTV.hu",
     "imported": true,
-    "number": 2871,
+    "number": 2870,
     "src": {
       "by": "stream.moranettv.hu",
       "kind": "public",
@@ -68525,7 +68501,7 @@
     "countryHe": "צ׳ילה",
     "iptv": "LaMetroTV.cl",
     "imported": true,
-    "number": 2872,
+    "number": 2871,
     "src": {
       "by": "jireh-8-hls-video-us-isp.dps.live",
       "kind": "public",
@@ -68549,7 +68525,7 @@
     "countryHe": "קולומביה",
     "iptv": "Telepacifico.co",
     "imported": true,
-    "number": 2873,
+    "number": 2872,
     "src": {
       "by": "play.cdn.enetres.net",
       "kind": "public",
@@ -68573,7 +68549,7 @@
     "countryHe": "פרו",
     "iptv": "AntenaSUR.pe",
     "imported": true,
-    "number": 2874,
+    "number": 2873,
     "src": {
       "by": "cloudpro.servidoresdestream.com",
       "kind": "public",
@@ -68597,7 +68573,7 @@
     "countryHe": "אינדונזיה",
     "iptv": "TVRI.id",
     "imported": true,
-    "number": 2875,
+    "number": 2874,
     "src": {
       "by": "ott-balancer.tvri.go.id",
       "kind": "public",
@@ -68621,7 +68597,7 @@
     "countryHe": "תאילנד",
     "iptv": "SuwannabhumiChannel.th",
     "imported": true,
-    "number": 2876,
+    "number": 2875,
     "src": {
       "by": "live.bangkokstream.com",
       "kind": "public",
@@ -68645,7 +68621,7 @@
     "countryHe": "וייטנאם",
     "iptv": "LaoCaiTV.vn",
     "imported": true,
-    "number": 2877,
+    "number": 2876,
     "src": {
       "by": "live.baolaocai.vn",
       "kind": "public",
@@ -68669,7 +68645,7 @@
     "countryHe": "פקיסטן",
     "iptv": "SamaaTV.pk",
     "imported": true,
-    "number": 2878,
+    "number": 2877,
     "src": {
       "by": "vodzong.mjunoon.tv",
       "kind": "public",
@@ -68693,7 +68669,7 @@
     "countryHe": "איראן",
     "iptv": "ArvanTV.ir",
     "imported": true,
-    "number": 2879,
+    "number": 2878,
     "src": {
       "by": "arvhls.wns.live",
       "kind": "public",
@@ -68717,7 +68693,7 @@
     "countryHe": "ניגריה",
     "iptv": "BrideTV.ng",
     "imported": true,
-    "number": 2880,
+    "number": 2879,
     "src": {
       "by": "viewmedia7219.bozztv.com",
       "kind": "public",
@@ -68741,7 +68717,7 @@
     "countryHe": "הרפובליקה הדומיניקנית",
     "iptv": "AltantoTV.do",
     "imported": true,
-    "number": 2881,
+    "number": 2880,
     "src": {
       "by": "stream.haislin.com",
       "kind": "public",
@@ -68765,7 +68741,7 @@
     "countryHe": "בוליביה",
     "iptv": "AsContenidos.bo",
     "imported": true,
-    "number": 2882,
+    "number": 2881,
     "src": {
       "by": "master.tucableip.com",
       "kind": "public",
@@ -68789,7 +68765,7 @@
     "countryHe": "פרגוואי",
     "iptv": "TVCanindeyu.py",
     "imported": true,
-    "number": 2883,
+    "number": 2882,
     "src": {
       "by": "video.hostingcaaguazu.com",
       "kind": "public",
@@ -68813,7 +68789,7 @@
     "countryHe": "סלובקיה",
     "iptv": "TVLux.sk",
     "imported": true,
-    "number": 2884,
+    "number": 2883,
     "src": {
       "by": "stream.tvlux.sk",
       "kind": "public",
@@ -68837,7 +68813,7 @@
     "countryHe": "אקוודור",
     "iptv": "PuruwaTV.ec",
     "imported": true,
-    "number": 2885,
+    "number": 2884,
     "src": {
       "by": "live.tvcontrolcp.com",
       "kind": "public",
@@ -68861,7 +68837,7 @@
     "countryHe": "קוסטה ריקה",
     "iptv": "LosSantosTV.cr",
     "imported": true,
-    "number": 2886,
+    "number": 2885,
     "src": {
       "by": "lstv.duckdns.org",
       "kind": "public",
@@ -68885,7 +68861,7 @@
     "countryHe": "הונדורס",
     "iptv": "AlsaciasTelevision.hn",
     "imported": true,
-    "number": 2887,
+    "number": 2886,
     "src": {
       "by": "s.emisoras.tv",
       "kind": "public",
@@ -68909,7 +68885,7 @@
     "countryHe": "בלארוס",
     "iptv": "Vitebsk.by",
     "imported": true,
-    "number": 2888,
+    "number": 2887,
     "src": {
       "by": "live.dc.beltelecom.by",
       "kind": "public",
@@ -68934,7 +68910,7 @@
     "iptv": "MoldovaTV.md",
     "imported": true,
     "webOk": false,
-    "number": 2889,
+    "number": 2888,
     "src": {
       "by": "moldovatv.ro",
       "kind": "public",
@@ -68958,7 +68934,7 @@
     "countryHe": "אל סלבדור",
     "iptv": "SolTV.sv",
     "imported": true,
-    "number": 2890,
+    "number": 2889,
     "src": {
       "by": "videostream.shockmedia.com.ar",
       "kind": "public",
@@ -68982,7 +68958,7 @@
     "countryHe": "אוגנדה",
     "iptv": "KRCTV.ug",
     "imported": true,
-    "number": 2891,
+    "number": 2890,
     "src": {
       "by": "channels.ad-ug.com",
       "kind": "public",
@@ -69007,7 +68983,7 @@
     "iptv": "Ulytau.kz",
     "imported": true,
     "webOk": false,
-    "number": 2892,
+    "number": 2891,
     "src": {
       "by": "ulytau.tv",
       "kind": "public",
@@ -69031,7 +69007,7 @@
     "countryHe": "סנגל",
     "iptv": "SenewebTV.sn",
     "imported": true,
-    "number": 2893,
+    "number": 2892,
     "src": {
       "by": "vdo2.pro-fhi.net",
       "kind": "public",
@@ -69055,7 +69031,7 @@
     "countryHe": "פוארטו ריקו",
     "iptv": "PuraPalabra.pr",
     "imported": true,
-    "number": 2894,
+    "number": 2893,
     "src": {
       "by": "59825a54e4454.streamlock.net",
       "kind": "public",
@@ -69079,7 +69055,7 @@
     "countryHe": "קפריסין",
     "iptv": "SigmaTV.cy",
     "imported": true,
-    "number": 2895,
+    "number": 2894,
     "src": {
       "by": "sl2.sigmatv.com",
       "kind": "public",
@@ -69103,7 +69079,7 @@
     "countryHe": "מקדוניה הצפונית",
     "iptv": "TVZdravkin.mk",
     "imported": true,
-    "number": 2896,
+    "number": 2895,
     "src": {
       "by": "zdravkin.hugo.mk",
       "kind": "public",
@@ -69127,7 +69103,7 @@
     "countryHe": "סרביה",
     "iptv": "TVPanon.rs",
     "imported": true,
-    "number": 2897,
+    "number": 2896,
     "src": {
       "by": "stream2.nmih.hu",
       "kind": "public",
@@ -69151,7 +69127,7 @@
     "countryHe": "קוסובו",
     "iptv": "TVOpoja.xk",
     "imported": true,
-    "number": 2898,
+    "number": 2897,
     "src": {
       "by": "ip.opoja.tv",
       "kind": "public",
@@ -69175,7 +69151,7 @@
     "countryHe": "ארצות הברית",
     "iptv": "BerksCommunityTV.us",
     "imported": true,
-    "number": 2899,
+    "number": 2898,
     "src": {
       "by": "livestream.telvue.com",
       "kind": "public",
@@ -69199,7 +69175,7 @@
     "countryHe": "בריטניה",
     "iptv": "AnandTV.uk",
     "imported": true,
-    "number": 2900,
+    "number": 2899,
     "src": {
       "by": "live-anandtv.anandmedia.net",
       "kind": "public",
@@ -69223,7 +69199,7 @@
     "countryHe": "צרפת",
     "iptv": "TV5MondeEurope.fr",
     "imported": true,
-    "number": 2901,
+    "number": 2900,
     "src": {
       "by": "ott.tv5monde.com",
       "kind": "public",
@@ -69247,7 +69223,7 @@
     "countryHe": "גרמניה",
     "iptv": "Filstalwelle.de",
     "imported": true,
-    "number": 2902,
+    "number": 2901,
     "src": {
       "by": "h055.video-stream-hosting.de",
       "kind": "public",
@@ -69271,7 +69247,7 @@
     "countryHe": "ספרד",
     "iptv": "CostaNoroesteTV.es",
     "imported": true,
-    "number": 2903,
+    "number": 2902,
     "src": {
       "by": "limited31.todostreaming.es",
       "kind": "public",
@@ -69295,7 +69271,7 @@
     "countryHe": "איטליה",
     "iptv": "Primocanale.it",
     "imported": true,
-    "number": 2904,
+    "number": 2903,
     "src": {
       "by": "msh0203.stream.seeweb.it",
       "kind": "public",
@@ -69319,7 +69295,7 @@
     "countryHe": "אוקראינה",
     "iptv": "Channel7Ukraine.ua",
     "imported": true,
-    "number": 2905,
+    "number": 2904,
     "src": {
       "by": "live-tv.cloud – ספק IPTV אוקראיני",
       "kind": "restream",
@@ -69343,7 +69319,7 @@
     "countryHe": "קנדה",
     "iptv": "DeshiTV.ca",
     "imported": true,
-    "number": 2906,
+    "number": 2905,
     "src": {
       "by": "deshitv.deshitv24.net",
       "kind": "public",
@@ -69367,7 +69343,7 @@
     "countryHe": "טורקיה",
     "iptv": "ATVAlanya.tr",
     "imported": true,
-    "number": 2907,
+    "number": 2906,
     "src": {
       "by": "cdn-alanyatv.yayin.com.tr",
       "kind": "public",
@@ -69391,7 +69367,7 @@
     "countryHe": "הודו",
     "iptv": "PravasiChannel.in",
     "imported": true,
-    "number": 2908,
+    "number": 2907,
     "src": {
       "by": "m6gdavepdn93-hls-live.5centscdn.com",
       "kind": "public",
@@ -69415,7 +69391,7 @@
     "countryHe": "קוריאה הדרומית",
     "iptv": "TBSTV.kr",
     "imported": true,
-    "number": 2909,
+    "number": 2908,
     "src": {
       "by": "cdntv.tbs.seoul.kr",
       "kind": "public",
@@ -69439,7 +69415,7 @@
     "countryHe": "סין",
     "iptv": "BaichengTV.cn",
     "imported": true,
-    "number": 2910,
+    "number": 2909,
     "src": {
       "by": "stream2.jlntv.cn",
       "kind": "public",
@@ -69463,7 +69439,7 @@
     "countryHe": "ברזיל",
     "iptv": "SBTNacional.br",
     "imported": true,
-    "number": 2911,
+    "number": 2910,
     "src": {
       "by": "cdn.live.br1.jmvstream.com",
       "kind": "public",
@@ -69487,7 +69463,7 @@
     "countryHe": "מקסיקו",
     "iptv": "CanalOnce.mx",
     "imported": true,
-    "number": 2912,
+    "number": 2911,
     "src": {
       "by": "vivo.canaloncelive.tv",
       "kind": "public",
@@ -69511,7 +69487,7 @@
     "countryHe": "ארגנטינה",
     "iptv": "Canal7Neuquen.ar",
     "imported": true,
-    "number": 2913,
+    "number": 2912,
     "src": {
       "by": "stream.arcast.com.ar",
       "kind": "public",
@@ -69535,7 +69511,7 @@
     "countryHe": "פורטוגל",
     "iptv": "VPlusTVI.pt",
     "imported": true,
-    "number": 2914,
+    "number": 2913,
     "src": {
       "by": "raw.githubusercontent.com",
       "kind": "public",
@@ -69559,7 +69535,7 @@
     "countryHe": "הולנד",
     "iptv": "OmroepWest.nl",
     "imported": true,
-    "number": 2915,
+    "number": 2914,
     "src": {
       "by": "d1axml5ozykh3g.cloudfront.net",
       "kind": "public",
@@ -69583,7 +69559,7 @@
     "countryHe": "בלגיה",
     "iptv": "Notele.be",
     "imported": true,
-    "number": 2916,
+    "number": 2915,
     "src": {
       "by": "streaming01.divercom.be",
       "kind": "public",
@@ -69607,7 +69583,7 @@
     "countryHe": "אוסטריה",
     "iptv": "TirolTV.at",
     "imported": true,
-    "number": 2917,
+    "number": 2916,
     "src": {
       "by": "streaming14.huberwebmedia.at",
       "kind": "public",
@@ -69631,7 +69607,7 @@
     "countryHe": "פולין",
     "iptv": "TelewizjaJaslo.pl",
     "imported": true,
-    "number": 2918,
+    "number": 2917,
     "src": {
       "by": "cdn01.aztv.pl",
       "kind": "public",
@@ -69655,7 +69631,7 @@
     "countryHe": "צ׳כיה",
     "iptv": "PlzenTV.cz",
     "imported": true,
-    "number": 2919,
+    "number": 2918,
     "src": {
       "by": "vysilani.zaktv.cz",
       "kind": "public",
@@ -69679,7 +69655,7 @@
     "countryHe": "רומניה",
     "iptv": "Tele7ABCHD.ro",
     "imported": true,
-    "number": 2920,
+    "number": 2919,
     "src": {
       "by": "live.tele7abc.ro",
       "kind": "public",
@@ -69703,7 +69679,7 @@
     "countryHe": "הונגריה",
     "iptv": "XVTV.hu",
     "imported": true,
-    "number": 2921,
+    "number": 2920,
     "src": {
       "by": "cloudfront44.lexanetwork.com",
       "kind": "public",
@@ -69727,7 +69703,7 @@
     "countryHe": "צ׳ילה",
     "iptv": "PichilemuTV.cl",
     "imported": true,
-    "number": 2922,
+    "number": 2921,
     "src": {
       "by": "5ff3d9babae13.streamlock.net",
       "kind": "public",
@@ -69751,7 +69727,7 @@
     "countryHe": "קולומביה",
     "iptv": "BluRadio.co",
     "imported": true,
-    "number": 2923,
+    "number": 2922,
     "src": {
       "by": "mdstrm.com",
       "kind": "public",
@@ -69775,7 +69751,7 @@
     "countryHe": "אינדונזיה",
     "iptv": "BanjarTV.id",
     "imported": true,
-    "number": 2924,
+    "number": 2923,
     "src": {
       "by": "banjartv.siar.us",
       "kind": "public",
@@ -69799,7 +69775,7 @@
     "countryHe": "תאילנד",
     "iptv": "ZabbChannel.th",
     "imported": true,
-    "number": 2925,
+    "number": 2924,
     "src": {
       "by": "vdo.plathong.net",
       "kind": "public",
@@ -69823,7 +69799,7 @@
     "countryHe": "וייטנאם",
     "iptv": "CaoBangTV.vn",
     "imported": true,
-    "number": 2926,
+    "number": 2925,
     "src": {
       "by": "stream.thingnet.vn",
       "kind": "public",
@@ -69847,7 +69823,7 @@
     "countryHe": "פקיסטן",
     "iptv": "ZindagiTV.pk",
     "imported": true,
-    "number": 2927,
+    "number": 2926,
     "src": {
       "by": "5ad386ff92705.streamlock.net",
       "kind": "public",
@@ -69871,7 +69847,7 @@
     "countryHe": "איראן",
     "iptv": "DejTV.ir",
     "imported": true,
-    "number": 2928,
+    "number": 2927,
     "src": {
       "by": "rdejhls.wns.live",
       "kind": "public",
@@ -69895,7 +69871,7 @@
     "countryHe": "הרפובליקה הדומיניקנית",
     "iptv": "Antena7.do",
     "imported": true,
-    "number": 2929,
+    "number": 2928,
     "src": {
       "by": "hls.tvabierta.net",
       "kind": "public",
@@ -69919,7 +69895,7 @@
     "countryHe": "בוליביה",
     "iptv": "BoliviaTV.bo",
     "imported": true,
-    "number": 2930,
+    "number": 2929,
     "src": {
       "by": "hls.tvabierta.net",
       "kind": "public",
@@ -69943,7 +69919,7 @@
     "countryHe": "פרגוואי",
     "iptv": "UniRadioTV.py",
     "imported": true,
-    "number": 2931,
+    "number": 2930,
     "src": {
       "by": "video.hostingcaaguazu.com",
       "kind": "public",
@@ -69967,7 +69943,7 @@
     "countryHe": "סלובקיה",
     "iptv": "TVCentral.sk",
     "imported": true,
-    "number": 2932,
+    "number": 2931,
     "src": {
       "by": "arenasportslovakia.ddns.net",
       "kind": "public",
@@ -69991,7 +69967,7 @@
     "countryHe": "ונצואלה",
     "iptv": "UniTV.ve",
     "imported": true,
-    "number": 2933,
+    "number": 2932,
     "src": {
       "by": "vcp6.myplaytv.com",
       "kind": "public",
@@ -70015,7 +69991,7 @@
     "countryHe": "אקוודור",
     "iptv": "RTRTV.ec",
     "imported": true,
-    "number": 2934,
+    "number": 2933,
     "src": {
       "by": "tv3ecuador.site",
       "kind": "public",
@@ -70039,7 +70015,7 @@
     "countryHe": "קוסטה ריקה",
     "iptv": "QuinceUCR.cr",
     "imported": true,
-    "number": 2935,
+    "number": 2934,
     "src": {
       "by": "wowza.ucr.ac.cr",
       "kind": "public",
@@ -70063,7 +70039,7 @@
     "countryHe": "גואטמלה",
     "iptv": "TVFlorencia.gt",
     "imported": true,
-    "number": 2936,
+    "number": 2935,
     "src": {
       "by": "cdn.streamhispanatv.net",
       "kind": "public",
@@ -70087,7 +70063,7 @@
     "countryHe": "הונדורס",
     "iptv": "AztecaHonduras.hn",
     "imported": true,
-    "number": 2937,
+    "number": 2936,
     "src": {
       "by": "mdstrm.com",
       "kind": "public",
@@ -70111,7 +70087,7 @@
     "countryHe": "בלארוס",
     "iptv": "BugTV.by",
     "imported": true,
-    "number": 2938,
+    "number": 2937,
     "src": {
       "by": "46.53.200.153",
       "kind": "public",
@@ -70135,7 +70111,7 @@
     "countryHe": "מולדובה",
     "iptv": "SorTV.md",
     "imported": true,
-    "number": 2939,
+    "number": 2938,
     "src": {
       "by": "188.237.212.16",
       "kind": "public",
@@ -70159,7 +70135,7 @@
     "countryHe": "אל סלבדור",
     "iptv": "Canal3Impresionante.sv",
     "imported": true,
-    "number": 2940,
+    "number": 2939,
     "src": {
       "by": "cloud2.streaminglivehd.com",
       "kind": "public",
@@ -70183,7 +70159,7 @@
     "countryHe": "ארצות הברית",
     "iptv": "CANTV19.us",
     "imported": true,
-    "number": 2941,
+    "number": 2940,
     "src": {
       "by": "cantv.streamguys1.com",
       "kind": "public",
@@ -70207,7 +70183,7 @@
     "countryHe": "בריטניה",
     "iptv": "BBCNewsPashto.uk",
     "imported": true,
-    "number": 2942,
+    "number": 2941,
     "src": {
       "by": "vs-hls-pushb-ww-live.akamaized.net",
       "kind": "public",
@@ -70231,7 +70207,7 @@
     "countryHe": "צרפת",
     "iptv": "ViaMatele.fr",
     "imported": true,
-    "number": 2943,
+    "number": 2942,
     "src": {
       "by": "5dd226f8f01e8.streamlock.net",
       "kind": "public",
@@ -70255,7 +70231,7 @@
     "countryHe": "גרמניה",
     "iptv": "FrankenFernsehen.de",
     "imported": true,
-    "number": 2944,
+    "number": 2943,
     "src": {
       "by": "frankentv.iptv-playoutcenter.de",
       "kind": "public",
@@ -70279,7 +70255,7 @@
     "countryHe": "ספרד",
     "iptv": "DiezTVLasVillas.es",
     "imported": true,
-    "number": 2945,
+    "number": 2944,
     "src": {
       "by": "streaming.cloud.innovasur.es",
       "kind": "public",

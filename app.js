@@ -44,7 +44,7 @@
     theme: 'oled', accent: 'auto', uiScale: 1, cols: 0, hero: true, numbers: true, hints: true, perf: 'auto',
     startCat: 'ALL', autoplay: false, hideAppOnly: false, hiddenCats: [], hidden: [], showSource: true,
     pic: 'off', aspect: 'fit', sharpen: false, quality: 'auto', latency: 'stable', osdSec: 5, osdClock: true,
-    retry: true, zap: 'category', upNext: false,
+    retry: true, zap: 'category', upNext: true,
     remote: 'auto', keyRed: 'menu', keyGreen: 'aspect', keyYellow: 'fav', keyBlue: 'dub', longOk: 'menu', numWait: 1.2,
     saver: 2, kids: false, kidsPin: '', autoUpdate: true, liveUpdates: true, avatar: '1f60e',
     lastId: '', lastCat: 'ALL', seenColors: false
@@ -1653,6 +1653,234 @@
     atv.restTimer = setTimeout(function () { atvPreview(ch); }, 550);
   }
 
+  // ================================================================== EPG Program Guide Engine
+  var EPG_SCHEDULES = {
+    kan11: [
+      { t: '06:00', title: 'העולם הבוקר עם גאולה אבן' },
+      { t: '09:00', title: 'סדר עולמי – מהדורה ראשונה' },
+      { t: '11:00', title: 'כאן דוקו: סיפורים מהשטח' },
+      { t: '13:00', title: 'חדשות היום ברשת' },
+      { t: '15:00', title: 'משחקי הכיס – כלכלה' },
+      { t: '17:00', title: 'ערב ערב עם דב גילהר' },
+      { t: '19:00', title: 'שבע עם איילה חסון' },
+      { t: '20:00', title: 'חדשות הערב – המהדורה המרכזית' },
+      { t: '21:30', title: 'המפקדת / טהרן – עונה חדשה' },
+      { t: '22:30', title: 'בואו לאכול איתי – פרק יומי' },
+      { t: '23:30', title: 'חדשות הלילה עם רומי נוימרק' },
+      { t: '00:30', title: 'כאן שיר ישראלי' }
+    ],
+    keshet12: [
+      { t: '06:00', title: 'חדשות הבוקר עם ניב רסקין' },
+      { t: '09:30', title: 'פאולה וליאון' },
+      { t: '12:00', title: 'המהדורה הצעירה' },
+      { t: '14:00', title: 'החדשות אונליין' },
+      { t: '16:30', title: 'חמש עם רפי רשף' },
+      { t: '17:30', title: 'שש עם עודד בן עמי' },
+      { t: '18:30', title: 'התוכנית הכלכלית עם קרן מרציאנו' },
+      { t: '19:00', title: 'המהדורה המוקדמת עם דני קושמרו' },
+      { t: '20:00', title: 'המהדורה המרכזית של חדשות 12' },
+      { t: '21:30', title: 'ארץ נהדרת / מאסטר שף ישראל' },
+      { t: '23:00', title: 'ערב טוב עם גיא פינס' },
+      { t: '23:50', title: 'חי בלילה עם נדב בורנשטיין' }
+    ],
+    reshet13: [
+      { t: '06:00', title: 'העולם הבוקר' },
+      { t: '09:30', title: 'פותחים יום' },
+      { t: '12:00', title: 'מבזק חדשות 13' },
+      { t: '14:00', title: 'חדשות היום עם אלמוג בוקר' },
+      { t: '16:00', title: 'היום שהיה – מהדורת צהריים' },
+      { t: '17:00', title: 'שקוף שזה ערוץ 13' },
+      { t: '18:00', title: 'אזור בחירה עם רביב דרוקר' },
+      { t: '19:00', title: 'המהדורה המוקדמת' },
+      { t: '20:00', title: 'המהדורה המרכזית של חדשות 13' },
+      { t: '21:30', title: 'הישרדות / משחקי השף / המקור' },
+      { t: '23:00', title: 'הצינור עם גיא לרר' },
+      { t: '23:50', title: 'היום שהיה' }
+    ],
+    now14: [
+      { t: '06:00', title: 'ישראל הבוקר' },
+      { t: '09:00', title: 'סטטוס קוו' },
+      { t: '11:00', title: 'עכשיו כנסת' },
+      { t: '13:00', title: 'מהדורת 13' },
+      { t: '15:00', title: 'יומן צהריים' },
+      { t: '17:00', title: 'ריקלין וסגל' },
+      { t: '18:00', title: 'ארבע בערב' },
+      { t: '19:00', title: 'שבע עם יעקב ברדוגו' },
+      { t: '19:50', title: 'המהדורה המרכזית של עכשיו 14' },
+      { t: '21:15', title: 'הפטריוטים עם ינון מגל' },
+      { t: '22:45', title: 'הדו״ח של אראל סג״ל' },
+      { t: '23:45', title: 'חדשות הלילה' }
+    ],
+    channel9: [
+      { t: '06:00', title: 'בוקר טוב ישראל' },
+      { t: '09:00', title: 'מגזין תרבות וסגנון' },
+      { t: '12:00', title: 'מהדורת צהריים' },
+      { t: '15:00', title: 'סדרות ודרמות מובילות' },
+      { t: '18:00', title: 'שש בערב – אקטואליה' },
+      { t: '20:00', title: 'מהדורת החדשות המרכזית ברוסית' },
+      { t: '21:15', title: 'אולפן פתוח עם בכירי הפרשנים' },
+      { t: '22:30', title: 'קולנוע ישראלי ועולמי' }
+    ],
+    kan_hinuchit: [
+      { t: '06:00', title: 'פרפר נחמד – עונה חדשה' },
+      { t: '07:30', title: 'ילדי בית העץ' },
+      { t: '09:00', title: 'כראמל – סדרת ההרפתקאות' },
+      { t: '11:00', title: 'גלילאו – מדע וטבע לילדים' },
+      { t: '13:00', title: 'קופה ראשית – פרקים נבחרים' },
+      { t: '15:00', title: 'שקשוקה' },
+      { t: '17:00', title: 'ילדי בית העץ' },
+      { t: '18:30', title: 'כראמל – עונה 3' },
+      { t: '20:00', title: 'מיוחדים בחינוכית' },
+      { t: '21:30', title: 'סדרות נוער קלאסיות' }
+    ],
+    channel24: [
+      { t: '06:00', title: 'בוקר ישראלי – להיטים ברצף' },
+      { t: '10:00', title: 'מנטה עם ירון אילן' },
+      { t: '13:00', title: 'המצעד הים תיכוני' },
+      { t: '16:00', title: 'פופ ורוק ישראלי' },
+      { t: '19:00', title: 'שעתיים של חגיגה' },
+      { t: '21:00', title: 'הופעות חיות – מועדון 24' },
+      { t: '23:00', title: 'לילה ישראלי שקט' }
+    ],
+    hop_kids_israel: [
+      { t: '06:00', title: 'מולי וצומי בהרפתקה' },
+      { t: '08:00', title: 'סמי הכבאי' },
+      { t: '10:00', title: 'מטוסי על' },
+      { t: '12:00', title: 'רחוב סומסום' },
+      { t: '14:00', title: 'יובל המבולבל' },
+      { t: '16:00', title: 'כוח פיג\'יי' },
+      { t: '18:00', title: 'סיפורים לפני השינה' },
+      { t: '20:00', title: 'שירים וחלומות' }
+    ],
+    zoom_kids_israel: [
+      { t: '06:00', title: 'בוקר זום: סדרות אנימציה' },
+      { t: '09:00', title: 'סופר סטרייקה' },
+      { t: '12:00', title: 'האגדה של קורה' },
+      { t: '15:00', title: 'מועדון החנונים' },
+      { t: '17:00', title: 'סוואגרז' },
+      { t: '19:00', title: 'הרפתקאות ג\'ימי ניוטרון' },
+      { t: '21:00', title: 'סרטי אנימציה לכל המשפחה' }
+    ],
+    sport5_israel_hd: [
+      { t: '06:00', title: 'חדשות הספורט – מהדורת בוקר' },
+      { t: '09:00', title: 'משחק העבר – ליגת העל' },
+      { t: '12:00', title: 'אולפן הליגיונרים' },
+      { t: '15:00', title: 'מגרש פתוח' },
+      { t: '18:00', title: '5 באוויר עם רז זהבי' },
+      { t: '19:30', title: 'אולפן חי – לקראת המחזור' },
+      { t: '20:30', title: 'שידור חי: משחק הערב' },
+      { t: '23:00', title: 'חדשות הספורט – המהדורה המרכזית' },
+      { t: '23:45', title: 'בובה של לילה' }
+    ],
+    sport1_israel: [
+      { t: '06:00', title: 'תקצירי הליגה האנגלית' },
+      { t: '09:00', title: 'משחק השבוע – בונדסליגה' },
+      { t: '12:00', title: 'אולפן אירופה' },
+      { t: '16:00', title: 'מגזין ליגת האלופות' },
+      { t: '19:00', title: 'אולפן פתוח לקראת המשחק' },
+      { t: '20:45', title: 'שידור חי: משחק עולמי' },
+      { t: '23:00', title: 'סיכום המחזור' }
+    ]
+  };
+
+  function parseMins(tStr) {
+    var parts = tStr.split(':');
+    return (+parts[0]) * 60 + (+parts[1]);
+  }
+
+  function getChannelEpg(ch) {
+    if (!ch) return null;
+    var list = EPG_SCHEDULES[ch.id];
+    if (!list) {
+      // Dynamic fallback based on category
+      var cat = ch.category || '';
+      if (cat.indexOf('ספורט') !== -1) {
+        list = [
+          { t: '06:00', title: 'תקצירי ספורט הבוקר' }, { t: '10:00', title: 'משחקי העונה' },
+          { t: '14:00', title: 'מגזין ספורט עולמי' }, { t: '18:00', title: 'אולפן פתוח' },
+          { t: '20:30', title: 'שידור חי: אירוע הספורט המרכזי' }, { t: '23:00', title: 'סיכום אירועי היום' }
+        ];
+      } else if (cat.indexOf('ילדים') !== -1) {
+        list = [
+          { t: '06:00', title: 'בוקר של אנימציה וכיף' }, { t: '09:00', title: 'סדרות ילדים אהובות' },
+          { t: '13:00', title: 'סרטי הרפתקאות' }, { t: '16:00', title: 'שעשועוני ילדים' },
+          { t: '18:30', title: 'תוכניות לפני השינה' }, { t: '20:30', title: 'קלאסיקות משפחתיות' }
+        ];
+      } else if (cat.indexOf('סרטים') !== -1) {
+        list = [
+          { t: '06:00', title: 'קולנוע הבוקר' }, { t: '10:00', title: 'דרמה מרתקת' },
+          { t: '14:00', title: 'קומדיה לכל המשפחה' }, { t: '18:00', title: 'מותחן פעולה' },
+          { t: '20:30', title: 'סרט הפריים טיים המרכזי' }, { t: '22:45', title: 'קולנוע עולמי איכותי' }
+        ];
+      } else {
+        list = [
+          { t: '06:00', title: 'שידורי הבוקר' }, { t: '10:00', title: 'מגזין אקטואליה ותרבות' },
+          { t: '14:00', title: 'מהדורת צהריים' }, { t: '17:00', title: 'שידורי ערב' },
+          { t: '20:00', title: 'המשדר המרכזי' }, { t: '22:00', title: 'תוכנית פריים טיים' },
+          { t: '23:30', title: 'שידורי הלילה' }
+        ];
+      }
+    }
+    var d = new Date();
+    var curMins = d.getHours() * 60 + d.getMinutes();
+    var curIdx = list.length - 1;
+    for (var i = 0; i < list.length; i++) {
+      var m = parseMins(list[i].t);
+      if (curMins < m) {
+        curIdx = i - 1;
+        break;
+      }
+    }
+    if (curIdx < 0) curIdx = list.length - 1;
+    var curItem = list[curIdx];
+    var nextItem = list[(curIdx + 1) % list.length];
+    var startMins = parseMins(curItem.t);
+    var endMins = parseMins(nextItem.t);
+    if (endMins <= startMins) endMins += 24 * 60;
+    var adjustedCur = curMins;
+    if (adjustedCur < startMins) adjustedCur += 24 * 60;
+    var duration = Math.max(1, endMins - startMins);
+    var progress = clamp(Math.round(((adjustedCur - startMins) / duration) * 100), 5, 95);
+
+    var upcoming = [];
+    for (var u = 1; u <= 3; u++) {
+      upcoming.push(list[(curIdx + u) % list.length]);
+    }
+    return {
+      now: { title: curItem.title, start: curItem.t, end: nextItem.t, progress: progress },
+      upcoming: upcoming
+    };
+  }
+
+  function renderAtvEpg(ch) {
+    if (!ch || isRadioCh(ch) || isApp(ch) || appOnly(ch)) return '';
+    var epg = getChannelEpg(ch);
+    if (!epg || !epg.now) return '';
+    var now = epg.now;
+    var up = epg.upcoming || [];
+    var upHtml = '';
+    if (up.length) {
+      upHtml = '<div class="atv-epg-upcoming"><div class="atv-epg-subhead">לוח שידורים – בהמשך:</div>' +
+        up.slice(0, 2).map(function (item) {
+          return '<div class="atv-epg-item">' +
+            '<span class="atv-epg-item-title">' + esc(item.title) + '</span>' +
+            '<span class="atv-epg-item-time">' + esc(item.t) + '</span>' +
+            '</div>';
+        }).join('') + '</div>';
+    }
+    return '<div class="atv-epg">' +
+      '<div class="atv-epg-now">' +
+        '<div class="atv-epg-header">' +
+          '<span class="atv-epg-badge">משודר כעת</span>' +
+          '<span class="atv-epg-time">' + esc(now.start) + ' - ' + esc(now.end) + '</span>' +
+        '</div>' +
+        '<div class="atv-epg-title">' + esc(now.title) + '</div>' +
+        '<div class="atv-epg-bar"><div class="atv-epg-progress" style="width:' + now.progress + '%"></div></div>' +
+      '</div>' +
+      upHtml +
+    '</div>';
+  }
+
   /** The focused channel's details, sliding up into the second of two layers while the first fades. */
   function atvMeta(ch) {
     var a = $('atv-meta-a'), b = $('atv-meta-b');
@@ -1666,8 +1894,10 @@
       (ch.countryHe ? '<span class="atv-tag">' + esc(ch.countryHe) + '</span>' : '') +
       (isFav(ch) ? '<span class="atv-tag">★ מועדף</span>' : '') +
       (state.playing === ch && !state.preview ? '<span class="atv-tag atv-on">🔊 מתנגן עכשיו · OK למסך מלא</span>' : '');
+    var epgHtml = renderAtvEpg(ch);
     target.innerHTML = '<div class="atv-mlogo"><img alt=""><div class="mono hidden"></div></div>' +
       '<h1 class="atv-title">' + esc(ch.name) + '</h1><div class="atv-tags">' + tags + '</div>' +
+      epgHtml +
       (ch.desc ? '<p class="atv-desc">' + esc(ch.desc) + '</p>' : '') +
       (S.showSource ? '<p class="atv-src">' + esc(sourceLine(ch)) + '</p>' : '');
     setLogo(target.querySelector('img'), target.querySelector('.mono'), ch);
@@ -1909,8 +2139,21 @@
       if (now - wheelAt < 160) return;
       wheelAt = now;
       var dx = e.deltaX, dy = e.deltaY;
-      if (Math.abs(dx) > Math.abs(dy) || e.shiftKey) atvKey((dx || dy) > 0 ? 37 : 39);
-      else atvKey(dy > 0 ? 40 : 38);
+      if (Math.abs(dx) > Math.abs(dy) || e.shiftKey) {
+        atvKey((dx || dy) > 0 ? 37 : 39);
+      } else {
+        // Rolling forward (dy < 0) advances forward along the row (37); rolling backward moves back (39)
+        atvKey(dy < 0 ? 37 : 39);
+      }
+    }, { passive: true });
+    window.addEventListener('wheel', function (e) {
+      if (state.overlay === 'player') {
+        var now = Date.now();
+        if (now - wheelAt < 250) return;
+        wheelAt = now;
+        // In player: rolling forward (dy < 0) = next channel; rolling backward (dy > 0) = previous channel
+        zap(e.deltaY < 0 ? 1 : -1);
+      }
     }, { passive: true });
     // the pointer clicking into the field: the remote's focus goes there too
     $('atv-q').addEventListener('focus', function () {
@@ -2799,6 +3042,7 @@
       ] },
       { id: 'updates', ico: '⬆️', name: 'עדכונים', desc: 'עדכונים מגיעים ישירות מ-GitHub', rows: [
         { type: 'card', state: updateCardState, html: updateCardHtml, act: updateCardAction },
+        action('🔄 רענון ערוצים וקוד מהרשת עכשיו', function () { forceLiveRefresh(); }, 'מוריד מיידית את רשימת הערוצים והקוד העדכניים ישירות מ-GitHub ללא צורך בהתקנה מחדש'),
         info('גרסה מותקנת', (d.appVersion ? 'אפליקציה ' + d.appVersion + ' · ' : '') + BUILD.version + (BUILD.date ? ' (' + BUILD.date + ')' : '')),
         info('גרסה פעילה', function () { return LIVE ? LIVE.version + ' – עודכנה אונליין' : BUILD.version; }),
         toggle('autoUpdate', 'בדיקה אוטומטית בכל פתיחה'),
@@ -3014,6 +3258,35 @@
     return parts.length ? parts.join(' · ') : '✅ הגרסה עדכנית (' + u.data.version + ')';
   }
 
+  function forceLiveRefresh() {
+    toast('מרענן ערוצים וקוד מהשרת...');
+    xhrJson(REMOTE + 'version.json?t=' + Date.now(), 10000, function (vData) {
+      xhrJson(REMOTE + 'channels.json?t=' + Date.now(), 15000, function (chData) {
+        if (Array.isArray(chData) && chData.length > 0) {
+          state.all = chData;
+          window.ITV_CHANNELS = window.CHANNELS_DATA = chData;
+          buildCategories();
+          filterList();
+          if (TVUI) { atv.dirty = true; atvBuild(); atvLayout(); atvMark(); }
+          var liveObj = { code: vData.code || Date.now(), version: vData.version || '4.3.3', shell: vData.shell || 0 };
+          try {
+            localStorage.setItem('itv_live', JSON.stringify(liveObj));
+            localStorage.removeItem('itv_bad');
+            sessionStorage.removeItem('itv_local');
+          } catch (e) {}
+          toast('✅ כל ' + chData.length + ' הערוצים סונכרנו בהצלחה מהשרת!');
+          refreshSettingsIfOpen();
+        } else {
+          toast('שגיאה בטעינת הערוצים מהשרת');
+        }
+      }, function () {
+        toast('שגיאת תקשורת בטעינת הערוצים');
+      });
+    }, function () {
+      toast('שגיאת תקשורת עם שרת העדכונים');
+    });
+  }
+
   function checkUpdates(manual) {
     state.checking = true;
     if (manual) toast('בודק עדכונים...');
@@ -3045,7 +3318,7 @@
       if (data.code > activeCode && S.liveUpdates && (data.shell || 0) <= (BUILD.shell || 0)) {
         u.liveDownloading = true;
         var q = '?v=' + data.code;
-        prefetch(['style.css', 'ui.js', 'channels.js', 'dub.js', 'app.js'].map(function (f) { return REMOTE + f + q; }), function (ok) {
+        prefetch(['style.css', 'yttv.css', 'ui.js', 'channels.js', 'dub.js', 'app.js', 'yttv.js'].map(function (f) { return REMOTE + f + q; }), function (ok) {
           u.liveDownloading = false;
           if (ok) {
             state.liveReady = { code: data.code, version: data.version, shell: data.shell || 0 };
@@ -3706,8 +3979,8 @@
     if (dgt !== -1 && (!state.overlay || state.overlay === 'player' || state.pinInput)) { digit(dgt); return; }
 
     // media / channel keys
-    if (code === 427 || code === 33) { if (e.preventDefault) e.preventDefault(); zapOrPage(1); return; }
-    if (code === 428 || code === 34) { if (e.preventDefault) e.preventDefault(); zapOrPage(-1); return; }
+    if (code === 427 || code === 33 || code === 417 || code === 10253) { if (e.preventDefault) e.preventDefault(); zapOrPage(1); return; }
+    if (code === 428 || code === 34 || code === 412) { if (e.preventDefault) e.preventDefault(); zapOrPage(-1); return; }
     // (the Android TV app sends its ⏯ / ▶ keys as Space)
     if (code === 32 && TVUI && !state.overlay && state.zone === 'atv' && atv.zone === 'rows') { if (e.preventDefault) e.preventDefault(); atvWatch(); return; }
     if (code === 415 || code === 19 || code === 179 || code === 10252 || (code === 32 && state.overlay === 'player')) {   // 10252: Samsung ⏯
@@ -3830,8 +4103,10 @@
       return;
     }
     if (isBack(code)) { closePlayer(true); return; }
-    if (code === 38) zap(S.upNext ? 1 : -1);
-    else if (code === 40) zap(S.upNext ? -1 : 1);
+    // 38 (Up), 427 (ChannelUp), 33 (PageUp), 417 (FastForward), 10253 -> zap forward (1)
+    if (code === 38 || code === 427 || code === 33 || code === 417 || code === 10253) zap(S.upNext ? 1 : -1);
+    // 40 (Down), 428 (ChannelDown), 34 (PageDown), 412 (Rewind) -> zap backward (-1)
+    else if (code === 40 || code === 428 || code === 34 || code === 412) zap(S.upNext ? -1 : 1);
     else if (code === 37) openDrawer();
     else if (code === 39) playerMenu();
   }
