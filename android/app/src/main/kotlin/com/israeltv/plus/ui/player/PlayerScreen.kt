@@ -5,6 +5,7 @@ import androidx.compose.ui.semantics.Role
 import android.app.Activity
 import android.content.Context
 import android.content.pm.ActivityInfo
+import android.net.Uri
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import androidx.activity.compose.BackHandler
@@ -112,7 +113,9 @@ import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.media3.common.AudioAttributes
 import androidx.media3.common.C
+import androidx.media3.common.ForwardingPlayer
 import androidx.media3.common.MediaItem
+import androidx.media3.common.MediaMetadata
 import androidx.media3.common.MimeTypes
 import androidx.media3.common.PlaybackException
 import androidx.media3.common.Player
@@ -122,6 +125,7 @@ import androidx.media3.datasource.DefaultHttpDataSource
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.exoplayer.source.DefaultMediaSourceFactory
 import androidx.media3.ui.AspectRatioFrameLayout
+import androidx.media3.session.MediaSession
 import androidx.media3.ui.PlayerView
 import com.israeltv.plus.data.AppPrefs
 import com.israeltv.plus.data.Channel
@@ -235,6 +239,30 @@ fun PlayerScreen(
         touchTick++
     }
 
+    // a media session: headset / Bluetooth buttons and the system's media controls (picture-in-picture too).
+    // "Next / previous" there change the channel; nothing outside can set the player's volume.
+    val nextChannel by rememberUpdatedState { switchTo(index + 1) }
+    val previousChannel by rememberUpdatedState { switchTo(index - 1) }
+    DisposableEffect(player) {
+        val channels = object : ForwardingPlayer(player) {
+            override fun getAvailableCommands(): Player.Commands = super.getAvailableCommands().buildUpon()
+                .addAll(Player.COMMAND_SEEK_TO_NEXT, Player.COMMAND_SEEK_TO_PREVIOUS)
+                .removeAll(Player.COMMAND_SET_VOLUME)
+                .build()
+            override fun isCommandAvailable(command: Int): Boolean = when (command) {
+                Player.COMMAND_SEEK_TO_NEXT, Player.COMMAND_SEEK_TO_PREVIOUS -> true
+                Player.COMMAND_SET_VOLUME -> false
+                else -> super.isCommandAvailable(command)
+            }
+            override fun seekToNext() = nextChannel()
+            override fun seekToPrevious() = previousChannel()
+            override fun seekToNextMediaItem() = nextChannel()
+            override fun seekToPreviousMediaItem() = previousChannel()
+        }
+        val session = runCatching { MediaSession.Builder(context, channels).build() }.getOrNull()
+        onDispose { session?.release() }
+    }
+
     // every channel switch (and "נסו שוב"): the stream, full volume, play
     var attempt by remember { mutableIntStateOf(0) }
     LaunchedEffect(current.id, attempt) {
@@ -246,7 +274,13 @@ fun PlayerScreen(
             buffering = false
             return@LaunchedEffect
         }
-        val item = MediaItem.Builder().setUri(url)
+        val item = MediaItem.Builder().setUri(url).setMediaMetadata(
+            MediaMetadata.Builder()
+                .setTitle(current.name)
+                .setArtist("ישראל TV+")
+                .apply { logo(current).takeIf { it.isNotEmpty() }?.let { setArtworkUri(Uri.parse(it)) } }
+                .build()
+        )
         // every TV channel is HLS, also the ones whose address has no .m3u8 (Samsung TV Plus redirects)
         if (current.url.contains(".m3u8", ignoreCase = true) || !current.isRadio) item.setMimeType(MimeTypes.APPLICATION_M3U8)
         player.setMediaItem(item.build())
