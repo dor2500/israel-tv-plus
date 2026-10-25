@@ -414,7 +414,7 @@ def cmd_merge(work):
     with open(os.path.join(ROOT, "channels.json"), "w", encoding="utf-8") as f:
         json.dump(allc, f, ensure_ascii=False, indent=2)
     with open(os.path.join(ROOT, "channels.js"), "w", encoding="utf-8") as f:
-        f.write("window.CHANNELS_DATA = " + json.dumps(allc, ensure_ascii=False, indent=1) + ";\n")
+        f.write("window.CHANNELS_DATA = window.ITV_CHANNELS = " + json.dumps(allc, ensure_ascii=False, indent=1) + ";\n")
     by = {}
     for c in new:
         by[c["category"]] = by.get(c["category"], 0) + 1
