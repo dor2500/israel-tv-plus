@@ -101,6 +101,16 @@ window.ITV_UI = (function (I) {
     '</main>' +
   '</div>' +
 
+  // ---------------------------------------------------------------- TV: Apple TV+ browse screen (app.js "TV: the Apple TV+")
+  '<div class="atv" id="atv">' +
+    '<div class="atv-stage"><div class="atv-bd" id="atv-bd-a"></div><div class="atv-bd" id="atv-bd-b"></div><div class="atv-shade"></div></div>' +
+    '<nav class="atv-pill" id="atv-pill"></nav>' +
+    '<section class="atv-meta" id="atv-meta-a"></section><section class="atv-meta" id="atv-meta-b"></section>' +
+    '<div class="atv-search" id="atv-search"><span class="ico">' + I('search') + '</span><input id="atv-q" type="search" ' +
+      'autocomplete="off" spellcheck="false" enterkeyhint="search" placeholder="חיפוש ערוץ – שם, מדינה או מספר"></div>' +
+    '<div class="atv-shelves" id="atv-shelves"><div class="atv-rows" id="atv-rows"></div></div>' +
+  '</div>' +
+
   '<footer class="hints tv" id="hints"></footer>' +
 
   // ---------------------------------------------------------------- phone: floating navigation bar
