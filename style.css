@@ -973,6 +973,10 @@ body.compact .atv-tab { padding: 0 .85rem; font-size: 1.15rem; }
 .atv-tab.focused { transform: scale3d(1.1, 1.1, 1); background: #f5f5f7; color: #000; font-weight: 700;
   box-shadow: 0 .4rem 1.4rem rgba(0, 0, 0, .45); }
 
+.atv-clock { position: absolute; top: 2.75rem; left: 4.5rem; z-index: 3; height: 3.625rem; line-height: 3.625rem;
+  font-size: 1.7rem; font-weight: 600; color: rgba(255, 255, 255, .85); direction: ltr; text-shadow: 0 .1rem .6rem rgba(0, 0, 0, .5); }
+body.no-osd-clock .atv-clock { display: none; }
+
 /* ---- the focused channel's details (two layers: the new one slides up, the old one fades) */
 .atv-meta { position: absolute; top: 9.5rem; right: 4.5rem; z-index: 2; width: 48rem; opacity: 0; pointer-events: none;
   -webkit-transform: translate3d(0, .75rem, 0); transform: translate3d(0, .75rem, 0);

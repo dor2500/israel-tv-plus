@@ -3338,7 +3338,10 @@
     var tick = function () {
       var d = new Date();
       var t = (d.getHours() < 10 ? '0' : '') + d.getHours() + ':' + (d.getMinutes() < 10 ? '0' : '') + d.getMinutes();
-      if (el.clock.textContent !== t) { el.clock.textContent = t; el.osdClock.textContent = t; el.saverClock.textContent = t; }
+      if (el.clock.textContent !== t) {
+        el.clock.textContent = t; el.osdClock.textContent = t; el.saverClock.textContent = t;
+        if ($('atv-clock')) $('atv-clock').textContent = t;   // the TV browse screen, beside the pill
+      }
     };
     tick();
     setInterval(tick, 5000);
