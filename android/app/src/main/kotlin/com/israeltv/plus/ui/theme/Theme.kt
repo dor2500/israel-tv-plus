@@ -1,5 +1,8 @@
 package com.israeltv.plus.ui.theme
 
+import androidx.compose.runtime.setValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.DisposableEffect
 import android.app.Activity
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.AnimationSpec
@@ -30,6 +33,23 @@ import androidx.core.view.WindowCompat
 import com.israeltv.plus.R
 import com.israeltv.plus.data.ThemeChoice
 import com.israeltv.plus.ui.components.RubberBandOverscrollFactory
+
+/**
+ * Screens that are always dark whatever the theme ("who's watching", the player) ask for light status and navigation
+ * bar icons while they are on screen; the theme sets the bars from this (a screen setting them itself was undone by
+ * the theme's next recomposition, e.g. during the palette cross-fade).
+ */
+object DarkSystemBars {
+    var requests by mutableIntStateOf(0)
+}
+
+@Composable
+fun RequestDarkSystemBars() {
+    DisposableEffect(Unit) {
+        DarkSystemBars.requests++
+        onDispose { DarkSystemBars.requests-- }
+    }
+}
 
 /** True when the app is in its dark theme (the glass recipe and a few hero colours depend on it). */
 val LocalDarkTheme = staticCompositionLocalOf { true }
@@ -83,11 +103,12 @@ fun ItvTheme(choice: ThemeChoice, content: @Composable () -> Unit) {
     val target = remember(choice) { schemeFor(context, choice) }
     val scheme = animateScheme(target)
     val view = LocalView.current
+    val lightBars = !choice.dark && DarkSystemBars.requests == 0
     if (!view.isInEditMode) SideEffect {
         val window = (view.context as? Activity)?.window ?: return@SideEffect
         WindowCompat.getInsetsController(window, view).apply {
-            isAppearanceLightStatusBars = !choice.dark
-            isAppearanceLightNavigationBars = !choice.dark
+            isAppearanceLightStatusBars = lightBars
+            isAppearanceLightNavigationBars = lightBars
         }
     }
     MaterialExpressiveTheme(colorScheme = scheme, motionScheme = MotionScheme.expressive(), typography = ItvTypography) {

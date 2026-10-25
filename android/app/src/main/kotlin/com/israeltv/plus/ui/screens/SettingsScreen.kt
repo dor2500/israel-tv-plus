@@ -1,5 +1,7 @@
 package com.israeltv.plus.ui.screens
 
+import androidx.compose.ui.semantics.Role
+import androidx.compose.foundation.selection.toggleable
 import android.content.Intent
 import android.net.Uri
 import androidx.compose.foundation.background
@@ -74,15 +76,14 @@ fun SettingsScreen(data: ChannelData?, prefs: AppPrefs, updater: Updater, onProf
                 SettingRow(Icons.Rounded.Face, "פרופילים", "${prefs.profile.name} · ${prefs.profiles.size} פרופילים", onClick = onProfiles) {
                     AsyncImage(avatarUrl(prefs.avatar), null, Modifier.size(34.dp))
                 }
+                // the whole row is the switch (one TalkBack item "on / off"), the Switch itself only shows it
                 SettingRow(Icons.Rounded.MusicNote, "צליל פתיחה", "צליל קצר כשהאפליקציה נפתחת (שקט כשהטלפון על שקט)",
+                    toggled = prefs.launchSound,
                     onClick = {
                         haptic.performHapticFeedback(if (prefs.launchSound) HapticFeedbackType.ToggleOff else HapticFeedbackType.ToggleOn)
                         prefs.setLaunchSoundOn(!prefs.launchSound)
                     }) {
-                    Switch(prefs.launchSound, {
-                        haptic.performHapticFeedback(if (it) HapticFeedbackType.ToggleOn else HapticFeedbackType.ToggleOff)
-                        prefs.setLaunchSoundOn(it)
-                    })
+                    Switch(prefs.launchSound, null)
                 }
             }
             Spacer(Modifier.height(28.dp))
@@ -92,11 +93,12 @@ fun SettingsScreen(data: ChannelData?, prefs: AppPrefs, updater: Updater, onProf
             SettingsGroup {
                 SettingRow(Icons.Rounded.Tv, "ישראל TV+ " + updater.installedVersion,
                     "${data?.channels?.size ?: 0} ערוצים ותחנות · ${data?.categories?.size ?: 0} קטגוריות")
+                // no browser on the phone (kiosk / work profiles): nothing happens instead of a crash
                 SettingRow(Icons.Rounded.Language, "האתר", "dor2500.github.io/israel-tv-plus", onClick = {
-                    ctx.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://dor2500.github.io/israel-tv-plus/")))
+                    runCatching { ctx.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://dor2500.github.io/israel-tv-plus/"))) }
                 })
                 SettingRow(Icons.Rounded.Code, "קוד המקור ומקורות השידור", "GitHub · SOURCES.md", onClick = {
-                    ctx.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/dor2500/israel-tv-plus")))
+                    runCatching { ctx.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/dor2500/israel-tv-plus"))) }
                 })
             }
         }
@@ -196,13 +198,20 @@ private fun SettingRow(
     title: String,
     subtitle: String,
     onClick: (() -> Unit)? = null,
+    toggled: Boolean? = null,
     trailing: (@Composable () -> Unit)? = null,
 ) {
     val scheme = MaterialTheme.colorScheme
     Row(
         Modifier
             .fillMaxWidth()
-            .then(if (onClick != null) Modifier.clickable(onClick = onClick) else Modifier)
+            .then(
+                when {
+                    onClick == null -> Modifier
+                    toggled != null -> Modifier.toggleable(toggled, role = Role.Switch) { onClick() }
+                    else -> Modifier.clickable(role = Role.Button, onClick = onClick)
+                }
+            )
             .padding(horizontal = 18.dp, vertical = 14.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {

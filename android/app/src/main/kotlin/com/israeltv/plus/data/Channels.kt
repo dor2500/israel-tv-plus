@@ -112,8 +112,13 @@ class ChannelStore(private val context: Context, private val http: OkHttpClient)
                 if (!r.isSuccessful) return@runCatching
                 val text = r.body.string()
                 val data = parse(text) ?: return@runCatching
-                cache.writeText(text)
+                // write then rename: a kill in the middle never leaves a cut file for the next start
+                val tmp = File(cache.path + ".tmp")
+                tmp.writeText(text)
+                if (!tmp.renameTo(cache)) { cache.delete(); tmp.renameTo(cache) }
                 _state.value = data
+                // the lists of earlier app versions are never read again
+                context.filesDir.listFiles { f -> f.name.startsWith("channels-") && f.name != cache.name }?.forEach { it.delete() }
             }
         }
     }

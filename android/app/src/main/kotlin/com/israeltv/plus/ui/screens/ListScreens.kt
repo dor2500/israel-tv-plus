@@ -1,5 +1,7 @@
 package com.israeltv.plus.ui.screens
 
+import androidx.compose.ui.semantics.Role
+import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -141,8 +143,16 @@ private fun CategoryPills(data: ChannelData, selected: String?, onSelect: (Strin
     val scheme = MaterialTheme.colorScheme
     val haptic = LocalHapticFeedback.current
     val entries = listOf<Pair<String?, String>>(null to "הכל") + data.categories.map { it.key to it.name }
+    // a category opened from home ("הכל · N") may sit far along the row: bring its pill into view
+    val row = rememberLazyListState()
+    LaunchedEffect(selected) {
+        val i = entries.indexOfFirst { it.first == selected }
+        if (i < 0 || row.layoutInfo.visibleItemsInfo.any { it.index == i && it.offset >= 0 }) return@LaunchedEffect
+        row.animateScrollToItem((i - 1).coerceAtLeast(0))
+    }
     LazyRow(
         Modifier.padding(bottom = 16.dp),
+        state = row,
         contentPadding = PaddingValues(horizontal = 16.dp),
         horizontalArrangement = Arrangement.spacedBy(8.dp),
         flingBehavior = rememberBitChordFlingBehavior(),
@@ -154,7 +164,7 @@ private fun CategoryPills(data: ChannelData, selected: String?, onSelect: (Strin
                 Modifier
                     .clip(RoundedCornerShape(50))
                     .background(if (on) scheme.secondaryContainer else scheme.surfaceContainerHigh.copy(alpha = 0.7f))
-                    .clickable {
+                    .selectable(on, role = Role.Tab) {
                         haptic.performHapticFeedback(HapticFeedbackType.SegmentTick)
                         onSelect(key)
                     }

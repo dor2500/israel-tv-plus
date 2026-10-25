@@ -1,5 +1,8 @@
 package com.israeltv.plus.ui.screens
 
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.platform.LocalWindowInfo
+import androidx.compose.ui.platform.LocalDensity
 import android.os.Build
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -71,6 +74,16 @@ import kotlinx.coroutines.delay
 
 private val HeroShape = RoundedCornerShape(0.dp)
 
+/**
+ * 580 dp on a phone held upright; in landscape (or split screen) the hero leaves the next shelf peeking in under it
+ * instead of filling more than the whole window.
+ */
+@Composable
+private fun heroHeight(): Dp {
+    val window = with(LocalDensity.current) { LocalWindowInfo.current.containerSize.height.toDp() }
+    return (window * 0.86f).coerceIn(340.dp, 580.dp)
+}
+
 /** Home: one master LazyColumn – the full-bleed hero, "continue watching", favourites, then a carousel per category. */
 @Composable
 fun HomeScreen(
@@ -91,7 +104,7 @@ fun HomeScreen(
         flingBehavior = rememberBitChordFlingBehavior(),
     ) {
         if (data == null) {
-            item { Box(Modifier.bleedToTop(padding).padding(bottom = 28.dp).fillMaxWidth().height(580.dp).glassShimmer(HeroShape)) }
+            item { Box(Modifier.bleedToTop(padding).padding(bottom = 28.dp).fillMaxWidth().height(heroHeight()).glassShimmer(HeroShape)) }
             items(4) { ShelfSkeleton() }
             return@LazyColumn
         }
@@ -196,10 +209,12 @@ private fun HeroPage(
     val haptic = LocalHapticFeedback.current
     val origin = LocalPlayOrigin.current
     val key = "hero:${ch.id}"
+    val height = heroHeight()
+    val compact = height < 500.dp
     Box(
         Modifier
             .fillMaxWidth()
-            .height(580.dp)
+            .height(height)
             .sharedContainer(key, HeroShape)
             .clipToBounds()
             .background(Brush.verticalGradient(listOf(scheme.primaryContainer, scheme.tertiaryContainer.copy(alpha = 0.7f), scheme.surfaceContainerLowest)))
@@ -227,11 +242,11 @@ private fun HeroPage(
                 // light back-glow so dark logos pop
                 Box(
                     Modifier
-                        .size(width = 300.dp, height = 190.dp)
+                        .size(width = 300.dp, height = if (compact) 120.dp else 190.dp)
                         .background(Brush.radialGradient(listOf(Color.White.copy(alpha = if (dark) 0.30f else 0.55f), Color.Transparent)))
                 )
                 if (logo.isNotEmpty()) {
-                    AsyncImage(logo, ch.name, Modifier.fillMaxWidth(0.62f).height(140.dp), contentScale = ContentScale.Fit)
+                    AsyncImage(logo, ch.name, Modifier.fillMaxWidth(0.62f).height(if (compact) 80.dp else 140.dp), contentScale = ContentScale.Fit)
                 } else {
                     Text(ch.name, style = MaterialTheme.typography.displaySmall, color = scheme.onSurface, maxLines = 2)
                 }
@@ -251,7 +266,8 @@ private fun HeroPage(
             Spacer(Modifier.height(18.dp))
             Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                 GlassIconButton(
-                    if (favorite) Icons.Rounded.Star else Icons.Rounded.StarBorder, "מועדף", onFavorite, size = 50.dp,
+                    if (favorite) Icons.Rounded.Star else Icons.Rounded.StarBorder,
+                    if (favorite) "הסרה מהמועדפים" else "הוספה למועדפים", onFavorite, size = 50.dp,
                     tint = scheme.onSurface.copy(alpha = 0.14f), iconTint = scheme.onSurface,
                 )
                 Button(

@@ -54,6 +54,11 @@ class Updater(private val context: Context, private val http: OkHttpClient, priv
 
     val installedVersion: String get() = BuildConfig.VERSION_NAME
 
+    init {
+        // the downloaded APK (about 20 MB) is only needed until it is installed: a start after that cleans it up
+        scope.launch(Dispatchers.IO) { runCatching { File(context.cacheDir, "update.apk").delete() } }
+    }
+
     fun check() {
         if (state is UpdateState.Checking || state is UpdateState.Downloading || state is UpdateState.Installing) return
         state = UpdateState.Checking
@@ -80,10 +85,12 @@ class Updater(private val context: Context, private val http: OkHttpClient, priv
     fun download(info: UpdateInfo) {
         if (Build.VERSION.SDK_INT >= 26 && !context.packageManager.canRequestPackageInstalls()) {
             // Android 8+: the user allows this app to install updates once
-            context.startActivity(
-                Intent(Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES, Uri.parse("package:" + context.packageName))
-                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-            )
+            runCatching {
+                context.startActivity(
+                    Intent(Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES, Uri.parse("package:" + context.packageName))
+                        .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                )
+            }
             state = UpdateState.Failed("אשרו התקנת עדכונים לאפליקציה ולחצו שוב", info)
             return
         }
@@ -142,7 +149,8 @@ class Updater(private val context: Context, private val http: OkHttpClient, priv
                 PackageInstaller.STATUS_PENDING_USER_ACTION -> {
                     @Suppress("DEPRECATION")
                     val confirm = intent.getParcelableExtra<Intent>(Intent.EXTRA_INTENT) ?: return
-                    c.startActivity(confirm.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
+                    runCatching { c.startActivity(confirm.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)) }
+                        .onFailure { state = UpdateState.Failed("ההתקנה בוטלה או נכשלה", (state as? UpdateState.Installing)?.info) }
                 }
                 PackageInstaller.STATUS_SUCCESS -> Unit
                 else -> {

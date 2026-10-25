@@ -1,8 +1,15 @@
 package com.israeltv.plus.ui.player
 
+import androidx.compose.foundation.layout.navigationBars
+import androidx.compose.foundation.layout.displayCutout
+import androidx.compose.foundation.layout.union
+import com.israeltv.plus.ui.theme.RequestDarkSystemBars
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.Role
 import android.app.Activity
 import android.content.Context
 import android.content.pm.ActivityInfo
+import android.net.Uri
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import androidx.activity.compose.BackHandler
@@ -81,6 +88,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -90,6 +98,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
+import androidx.compose.ui.platform.LocalAccessibilityManager
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.platform.LocalView
@@ -108,7 +117,9 @@ import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.media3.common.AudioAttributes
 import androidx.media3.common.C
+import androidx.media3.common.ForwardingPlayer
 import androidx.media3.common.MediaItem
+import androidx.media3.common.MediaMetadata
 import androidx.media3.common.MimeTypes
 import androidx.media3.common.PlaybackException
 import androidx.media3.common.Player
@@ -118,6 +129,7 @@ import androidx.media3.datasource.DefaultHttpDataSource
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.exoplayer.source.DefaultMediaSourceFactory
 import androidx.media3.ui.AspectRatioFrameLayout
+import androidx.media3.session.MediaSession
 import androidx.media3.ui.PlayerView
 import com.israeltv.plus.data.AppPrefs
 import com.israeltv.plus.data.Channel
@@ -153,6 +165,12 @@ private fun buildPlayer(context: Context): ExoPlayer {
         .build()
         .apply { volume = 1.0f }
 }
+
+private val NetworkErrors = setOf(
+    PlaybackException.ERROR_CODE_IO_UNSPECIFIED,
+    PlaybackException.ERROR_CODE_IO_NETWORK_CONNECTION_FAILED,
+    PlaybackException.ERROR_CODE_IO_NETWORK_CONNECTION_TIMEOUT,
+)
 
 private fun describe(e: PlaybackException): String = when (e.errorCode) {
     PlaybackException.ERROR_CODE_IO_NETWORK_CONNECTION_FAILED,
@@ -195,18 +213,34 @@ fun PlayerScreen(
     var sheet by remember { mutableStateOf<String?>(null) }
     var landscape by remember { mutableStateOf(false) }
     var tracks by remember { mutableStateOf(Tracks.EMPTY) }
+    // a dropped connection (tunnel, Wi-Fi to mobile) is retried quietly twice before the error card shows
+    var autoRetries by remember { mutableIntStateOf(0) }
+    var retrying by remember { mutableStateOf(false) }
 
     DisposableEffect(player) {
         val listener = object : Player.Listener {
             override fun onPlaybackStateChanged(state: Int) {
                 player.volume = 1.0f
                 buffering = state == Player.STATE_BUFFERING || (state == Player.STATE_IDLE && error == null)
+                if (state == Player.STATE_READY) autoRetries = 0
             }
             override fun onIsPlayingChanged(isPlaying: Boolean) {
                 playing = isPlaying
                 onPlaying(isPlaying)
             }
             override fun onPlayerError(e: PlaybackException) {
+                // a live stream paused for long (or a slow network) falls behind the live window: back to the live edge
+                if (e.errorCode == PlaybackException.ERROR_CODE_BEHIND_LIVE_WINDOW) {
+                    player.seekToDefaultPosition()
+                    player.prepare()
+                    return
+                }
+                if (e.errorCode in NetworkErrors && autoRetries < 2) {
+                    autoRetries++
+                    retrying = true
+                    buffering = true
+                    return
+                }
                 error = describe(e)
                 buffering = false
             }
@@ -225,6 +259,30 @@ fun PlayerScreen(
         touchTick++
     }
 
+    // a media session: headset / Bluetooth buttons and the system's media controls (picture-in-picture too).
+    // "Next / previous" there change the channel; nothing outside can set the player's volume.
+    val nextChannel by rememberUpdatedState { switchTo(index + 1) }
+    val previousChannel by rememberUpdatedState { switchTo(index - 1) }
+    DisposableEffect(player) {
+        val channels = object : ForwardingPlayer(player) {
+            override fun getAvailableCommands(): Player.Commands = super.getAvailableCommands().buildUpon()
+                .addAll(Player.COMMAND_SEEK_TO_NEXT, Player.COMMAND_SEEK_TO_PREVIOUS)
+                .removeAll(Player.COMMAND_SET_VOLUME)
+                .build()
+            override fun isCommandAvailable(command: Int): Boolean = when (command) {
+                Player.COMMAND_SEEK_TO_NEXT, Player.COMMAND_SEEK_TO_PREVIOUS -> true
+                Player.COMMAND_SET_VOLUME -> false
+                else -> super.isCommandAvailable(command)
+            }
+            override fun seekToNext() = nextChannel()
+            override fun seekToPrevious() = previousChannel()
+            override fun seekToNextMediaItem() = nextChannel()
+            override fun seekToPreviousMediaItem() = previousChannel()
+        }
+        val session = runCatching { MediaSession.Builder(context, channels).build() }.getOrNull()
+        onDispose { session?.release() }
+    }
+
     // every channel switch (and "נסו שוב"): the stream, full volume, play
     var attempt by remember { mutableIntStateOf(0) }
     LaunchedEffect(current.id, attempt) {
@@ -236,7 +294,13 @@ fun PlayerScreen(
             buffering = false
             return@LaunchedEffect
         }
-        val item = MediaItem.Builder().setUri(url)
+        val item = MediaItem.Builder().setUri(url).setMediaMetadata(
+            MediaMetadata.Builder()
+                .setTitle(current.name)
+                .setArtist("ישראל TV+")
+                .apply { logo(current).takeIf { it.isNotEmpty() }?.let { setArtworkUri(Uri.parse(it)) } }
+                .build()
+        )
         // every TV channel is HLS, also the ones whose address has no .m3u8 (Samsung TV Plus redirects)
         if (current.url.contains(".m3u8", ignoreCase = true) || !current.isRadio) item.setMimeType(MimeTypes.APPLICATION_M3U8)
         player.setMediaItem(item.build())
@@ -245,15 +309,25 @@ fun PlayerScreen(
         player.playWhenReady = true
     }
 
-    // controls hide after 4 s of playback without a touch
+    LaunchedEffect(current.id) { autoRetries = 0 }
+    LaunchedEffect(retrying) {
+        if (!retrying) return@LaunchedEffect
+        delay(2500)
+        retrying = false
+        attempt++   // a fresh URL too (mako's ticket may have expired meanwhile)
+    }
+
+    // controls hide after 4 s of playback without a touch (longer when the phone's accessibility timeout asks for it)
+    val a11y = LocalAccessibilityManager.current
     LaunchedEffect(controls, touchTick, playing, buffering, error) {
         if (controls && playing && !buffering && error == null) {
-            delay(4000)
+            delay(a11y?.calculateRecommendedTimeoutMillis(4000, containsIcons = true, containsControls = true) ?: 4000)
             controls = false
         }
     }
 
-    // full screen while watching: bars hidden (swipe from the edge shows them), screen kept on
+    // full screen while watching: bars hidden (swipe from the edge shows them, light icons on the video), screen kept on
+    RequestDarkSystemBars()
     val view = LocalView.current
     DisposableEffect(Unit) {
         val window = (context as Activity).window
@@ -268,12 +342,25 @@ fun PlayerScreen(
         }
     }
 
-    // the app in the background: pause (except in picture-in-picture)
+    // the app in the background: pause. A picture-in-picture window is never stopped while it is on screen, so a stop
+    // there means the window was closed – that stays paused. Back in front, only what was playing plays on.
     val lifecycle = LocalLifecycleOwner.current.lifecycle
-    DisposableEffect(lifecycle, inPip) {
+    val pipNow by rememberUpdatedState(inPip)
+    DisposableEffect(lifecycle) {
+        var resume = false
         val obs = LifecycleEventObserver { _, e ->
-            if (e == Lifecycle.Event.ON_STOP && !inPip) player.pause()
-            if (e == Lifecycle.Event.ON_START) { player.volume = 1.0f; player.play() }
+            when (e) {
+                Lifecycle.Event.ON_STOP -> {
+                    resume = player.playWhenReady && !pipNow
+                    player.pause()
+                }
+                Lifecycle.Event.ON_START -> if (resume) {
+                    resume = false
+                    player.volume = 1.0f
+                    player.play()
+                }
+                else -> Unit
+            }
         }
         lifecycle.addObserver(obs)
         onDispose { lifecycle.removeObserver(obs) }
@@ -496,7 +583,8 @@ private fun TopBar(ch: Channel, logo: String, onBack: () -> Unit) {
         Modifier
             .fillMaxWidth()
             .background(Brush.verticalGradient(listOf(Color.Black.copy(alpha = 0.75f), Color.Transparent)))
-            .windowInsetsPadding(WindowInsets.statusBars)
+            // the bars are hidden while watching: keep clear of the camera cutout (top, or a side in landscape)
+            .windowInsetsPadding(WindowInsets.statusBars.union(WindowInsets.displayCutout))
             .padding(horizontal = 16.dp, vertical = 14.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
@@ -535,7 +623,7 @@ private fun Dock(landscape: Boolean, onItem: (String) -> Unit) {
     val glass = MaterialTheme.colorScheme.surfaceTint.copy(alpha = 0.18f).compositeOver(Color(0xFF14141C).copy(alpha = 0.62f))
     Row(
         Modifier
-            .navigationBarsPadding()
+            .windowInsetsPadding(WindowInsets.navigationBars.union(WindowInsets.displayCutout))
             .padding(horizontal = 20.dp, vertical = 22.dp)
             .widthIn(max = 400.dp)
             .fillMaxWidth()
@@ -556,11 +644,11 @@ private fun Dock(landscape: Boolean, onItem: (String) -> Unit) {
 @Composable
 private fun androidx.compose.foundation.layout.RowScope.DockItem(icon: ImageVector, label: String, onClick: () -> Unit) {
     Column(
-        Modifier.weight(1f).fillMaxHeight().clickable(onClick = onClick),
+        Modifier.weight(1f).fillMaxHeight().clickable(role = Role.Button, onClick = onClick).semantics(mergeDescendants = true) {},
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
     ) {
-        Icon(icon, label, Modifier.size(22.dp), tint = Color.White)
+        Icon(icon, null, Modifier.size(22.dp), tint = Color.White)
         Text(label, color = Color.White.copy(alpha = 0.85f), fontSize = 10.sp, fontWeight = FontWeight.Medium)
     }
 }
