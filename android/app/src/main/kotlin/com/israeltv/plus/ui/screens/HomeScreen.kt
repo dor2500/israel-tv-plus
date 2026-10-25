@@ -78,8 +78,11 @@ import androidx.media3.common.Player
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.ui.AspectRatioFrameLayout
 import androidx.media3.ui.PlayerView
+import androidx.media3.datasource.okhttp.OkHttpDataSource
+import androidx.media3.exoplayer.source.DefaultMediaSourceFactory
 import com.israeltv.plus.data.playableUrl
 import com.israeltv.plus.ui.components.tactileBounce
+import com.israeltv.plus.ui.player.playerHttpClient
 import kotlinx.coroutines.delay
 
 private val HeroShape = RoundedCornerShape(0.dp)
@@ -228,7 +231,9 @@ private fun HeroPage(
         delay(400)
         try {
             val url = playableUrl(ch)
-            val p = ExoPlayer.Builder(context).build().apply {
+            val p = ExoPlayer.Builder(context)
+                .setMediaSourceFactory(DefaultMediaSourceFactory(OkHttpDataSource.Factory(playerHttpClient)))
+                .build().apply {
                 volume = 0f
                 repeatMode = Player.REPEAT_MODE_OFF
                 playWhenReady = true

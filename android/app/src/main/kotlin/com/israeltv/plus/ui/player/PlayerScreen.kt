@@ -118,7 +118,7 @@ import androidx.media3.common.PlaybackParameters
 import androidx.media3.common.Player
 import androidx.media3.common.TrackSelectionOverride
 import androidx.media3.common.Tracks
-import androidx.media3.datasource.DefaultHttpDataSource
+import androidx.media3.datasource.okhttp.OkHttpDataSource
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.exoplayer.source.DefaultMediaSourceFactory
 import androidx.media3.session.MediaSession
@@ -136,16 +136,31 @@ import com.israeltv.plus.ui.components.specularBorder
 import com.israeltv.plus.ui.components.tactileBounce
 import com.israeltv.plus.ui.components.triggerScrubTick
 import kotlinx.coroutines.delay
+import okhttp3.OkHttpClient
 import java.util.Locale
+import java.util.concurrent.TimeUnit
+
+internal val playerHttpClient by lazy {
+    OkHttpClient.Builder()
+        .connectTimeout(12, TimeUnit.SECONDS)
+        .readTimeout(15, TimeUnit.SECONDS)
+        .followRedirects(true)
+        .followSslRedirects(true)
+        .addInterceptor { chain ->
+            val req = chain.request().newBuilder()
+                .header("User-Agent", USER_AGENT)
+                .header("Origin", "https://kondoplay.cfd")
+                .header("Referer", "https://kondoplay.cfd/")
+                .build()
+            chain.proceed(req)
+        }
+        .build()
+}
 
 private fun buildPlayer(context: Context): ExoPlayer {
-    val http = DefaultHttpDataSource.Factory()
-        .setUserAgent(USER_AGENT)
-        .setAllowCrossProtocolRedirects(true)
-        .setConnectTimeoutMs(12_000)
-        .setReadTimeoutMs(15_000)
+    val httpSourceFactory = OkHttpDataSource.Factory(playerHttpClient)
     return ExoPlayer.Builder(context)
-        .setMediaSourceFactory(DefaultMediaSourceFactory(http))
+        .setMediaSourceFactory(DefaultMediaSourceFactory(httpSourceFactory))
         .setAudioAttributes(
             AudioAttributes.Builder().setUsage(C.USAGE_MEDIA).setContentType(C.AUDIO_CONTENT_TYPE_MOVIE).build(),
             /* handleAudioFocus = */ true,
