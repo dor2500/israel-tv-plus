@@ -246,9 +246,21 @@
         applyScale();
         placeSearch();
         renderGridFresh();
-        if (PHONE && !was) { buildHome(); setTab(state.tab, true); }
+        if (PHONE && !was) {
+          // the browse screen's layer behind the shelves would cover the phone layout: the preview stops, a channel
+          // left on keeps playing in the background like on phones
+          if (state.overlay !== 'player' && state.playing) {
+            if (state.preview) stopPlayback();
+            el.player.classList.add('hidden');
+          }
+          buildHome(); setTab(state.tab, true);
+        }
         else if (PHONE) movePill(false);
-        if (TVUI && !state.overlay) { atv.dirty = true; atvRestore(); }
+        if (TVUI && !state.overlay) {
+          // from the phone layout: a channel playing in the background shows behind the shelves again
+          if (was && state.playing) { el.player.classList.remove('hidden'); if (!state.isRadio) document.body.classList.add('atv-live'); }
+          atv.dirty = true; atvRestore();
+        }
       }, 120);
     });
 
