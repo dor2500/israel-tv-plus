@@ -1,6 +1,7 @@
 package com.israeltv.plus.ui.components
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
@@ -129,21 +130,22 @@ fun LandscapeCard(
     val interaction = remember { MutableInteractionSource() }
     val haptic = LocalHapticFeedback.current
     val scheme = MaterialTheme.colorScheme
+    val cardShape = RoundedCornerShape(10.dp)
 
-    Column(modifier.width(240.dp)) {
+    Column(modifier.width(210.dp)) {
         Box(
             Modifier
-                .fillMaxWidth()
-                .height(135.dp)
+                .width(210.dp)
+                .aspectRatio(16f / 9f)
                 .tactileBounce(interaction) {
                     haptic.performHapticFeedback(HapticFeedbackType.LongPress)
                     origin.key = sharedKey
                     onClick()
                 }
-                .then(if (sharedKey != null) Modifier.sharedContainer(sharedKey, CardShape) else Modifier)
-                .clip(CardShape)
+                .then(if (sharedKey != null) Modifier.sharedContainer(sharedKey, cardShape) else Modifier)
+                .clip(cardShape)
                 .background(scheme.surfaceContainerHigh.copy(alpha = 0.75f))
-                .specularBorder(CardShape, alpha = 0.28f),
+                .border(0.5.dp, Color.White.copy(alpha = 0.10f), cardShape),
             contentAlignment = Alignment.Center,
         ) {
             // Subtle glowing radial gradient behind artwork
@@ -166,59 +168,44 @@ fun LandscapeCard(
                 contentScale = ContentScale.Fit,
             )
 
-            val badge = if (channel.isRadio) "רדיו" else channel.badge
-            if (badge.isNotEmpty()) {
-                Text(
-                    badge,
-                    Modifier
-                        .align(Alignment.TopStart)
-                        .padding(9.dp)
-                        .clip(RoundedCornerShape(50))
-                        .background(scheme.tertiaryContainer)
-                        .padding(horizontal = 8.dp, vertical = 2.dp)
-                        .graphicsLayer { scaleY = 1.15f },
-                    color = scheme.onTertiaryContainer,
-                    fontSize = 10.sp,
-                    fontWeight = FontWeight.ExtraBold,
-                    style = com.israeltv.plus.ui.theme.StretchedNumberStyle,
-                )
-            }
+            // At most ONE tiny translucent badge (HD) in the top-left corner
+            val badgeText = if (channel.isRadio) "רדיו" else if (channel.badge.isNotEmpty()) channel.badge else "HD"
             Box(
                 Modifier
-                    .align(Alignment.TopEnd)
-                    .padding(9.dp)
-                    .clip(RoundedCornerShape(50))
-                    .background(scheme.tertiaryContainer)
-                    .padding(horizontal = 7.dp, vertical = 2.dp),
+                    .align(Alignment.TopStart)
+                    .padding(6.dp)
+                    .clip(RoundedCornerShape(4.dp))
+                    .background(Color.Black.copy(alpha = 0.45f))
+                    .border(0.5.dp, Color.White.copy(alpha = 0.15f), RoundedCornerShape(4.dp))
+                    .padding(horizontal = 5.dp, vertical = 2.dp)
             ) {
                 Text(
-                    channel.number.toString(),
-                    color = scheme.onTertiaryContainer,
-                    fontSize = 11.sp,
-                    fontWeight = FontWeight.ExtraBold,
-                    style = com.israeltv.plus.ui.theme.StretchedNumberStyle,
-                    modifier = Modifier.graphicsLayer { scaleY = 1.15f },
+                    text = badgeText,
+                    color = Color.White.copy(alpha = 0.90f),
+                    fontSize = 10.sp,
+                    fontWeight = FontWeight.Bold,
+                    maxLines = 1,
                 )
             }
         }
-        Spacer(Modifier.height(8.dp))
+        Spacer(Modifier.height(6.dp))
         Text(
-            channel.name,
-            Modifier.fillMaxWidth().padding(horizontal = 4.dp),
+            text = channel.name,
+            modifier = Modifier.fillMaxWidth().padding(horizontal = 2.dp),
             style = Rtl,
-            fontSize = 15.sp,
+            fontSize = 13.sp,
             fontWeight = FontWeight.Bold,
             color = scheme.onSurface,
             maxLines = 1,
             overflow = TextOverflow.Ellipsis,
         )
         Text(
-            subtitle,
-            Modifier.fillMaxWidth().padding(horizontal = 4.dp),
+            text = subtitle,
+            modifier = Modifier.fillMaxWidth().padding(horizontal = 2.dp),
             style = Rtl,
-            fontSize = 12.sp,
-            fontWeight = FontWeight.Medium,
-            color = scheme.onSurfaceVariant,
+            fontSize = 11.sp,
+            fontWeight = FontWeight.Normal,
+            color = scheme.onSurfaceVariant.copy(alpha = 0.75f),
             maxLines = 1,
             overflow = TextOverflow.Ellipsis,
         )
@@ -226,7 +213,7 @@ fun LandscapeCard(
 }
 
 /**
- * Portrait Poster Card (2:3 tall poster card, width = 130.dp, height = 195.dp):
+ * Portrait Poster Card (2:3 tall poster card, width = 125.dp, aspectRatio = 2/3):
  * For all category rows (Live TV, Movies, Favorites, etc.).
  * Subtle radial gradient behind animated artwork tile.
  */
@@ -243,21 +230,22 @@ fun PortraitPosterCard(
     val interaction = remember { MutableInteractionSource() }
     val haptic = LocalHapticFeedback.current
     val scheme = MaterialTheme.colorScheme
+    val cardShape = RoundedCornerShape(10.dp)
 
-    Column(modifier.width(130.dp)) {
+    Column(modifier.width(125.dp)) {
         Box(
             Modifier
-                .fillMaxWidth()
-                .height(195.dp)
+                .width(125.dp)
+                .aspectRatio(2f / 3f)
                 .tactileBounce(interaction) {
                     haptic.performHapticFeedback(HapticFeedbackType.LongPress)
                     origin.key = sharedKey
                     onClick()
                 }
-                .then(if (sharedKey != null) Modifier.sharedContainer(sharedKey, CardShape) else Modifier)
-                .clip(CardShape)
+                .then(if (sharedKey != null) Modifier.sharedContainer(sharedKey, cardShape) else Modifier)
+                .clip(cardShape)
                 .background(scheme.surfaceContainerHigh.copy(alpha = 0.75f))
-                .specularBorder(CardShape, alpha = 0.28f),
+                .border(0.5.dp, Color.White.copy(alpha = 0.10f), cardShape),
             contentAlignment = Alignment.Center,
         ) {
             // Subtle glowing radial gradient behind artwork
@@ -280,59 +268,44 @@ fun PortraitPosterCard(
                 contentScale = ContentScale.Fit,
             )
 
-            val badge = if (channel.isRadio) "רדיו" else channel.badge
-            if (badge.isNotEmpty()) {
-                Text(
-                    badge,
-                    Modifier
-                        .align(Alignment.TopStart)
-                        .padding(8.dp)
-                        .clip(RoundedCornerShape(50))
-                        .background(scheme.tertiaryContainer)
-                        .padding(horizontal = 7.dp, vertical = 2.dp)
-                        .graphicsLayer { scaleY = 1.15f },
-                    color = scheme.onTertiaryContainer,
-                    fontSize = 10.sp,
-                    fontWeight = FontWeight.ExtraBold,
-                    style = com.israeltv.plus.ui.theme.StretchedNumberStyle,
-                )
-            }
+            // At most ONE tiny translucent badge (HD) in the top-left corner
+            val badgeText = if (channel.isRadio) "רדיו" else if (channel.badge.isNotEmpty()) channel.badge else "HD"
             Box(
                 Modifier
-                    .align(Alignment.TopEnd)
-                    .padding(8.dp)
-                    .clip(RoundedCornerShape(50))
-                    .background(scheme.tertiaryContainer)
-                    .padding(horizontal = 6.dp, vertical = 2.dp),
+                    .align(Alignment.TopStart)
+                    .padding(6.dp)
+                    .clip(RoundedCornerShape(4.dp))
+                    .background(Color.Black.copy(alpha = 0.45f))
+                    .border(0.5.dp, Color.White.copy(alpha = 0.15f), RoundedCornerShape(4.dp))
+                    .padding(horizontal = 5.dp, vertical = 2.dp)
             ) {
                 Text(
-                    channel.number.toString(),
-                    color = scheme.onTertiaryContainer,
-                    fontSize = 11.sp,
-                    fontWeight = FontWeight.ExtraBold,
-                    style = com.israeltv.plus.ui.theme.StretchedNumberStyle,
-                    modifier = Modifier.graphicsLayer { scaleY = 1.15f },
+                    text = badgeText,
+                    color = Color.White.copy(alpha = 0.90f),
+                    fontSize = 10.sp,
+                    fontWeight = FontWeight.Bold,
+                    maxLines = 1,
                 )
             }
         }
-        Spacer(Modifier.height(7.dp))
+        Spacer(Modifier.height(6.dp))
         Text(
-            channel.name,
-            Modifier.fillMaxWidth().padding(horizontal = 4.dp),
+            text = channel.name,
+            modifier = Modifier.fillMaxWidth().padding(horizontal = 2.dp),
             style = Rtl,
-            fontSize = 14.sp,
+            fontSize = 13.sp,
             fontWeight = FontWeight.Bold,
             color = scheme.onSurface,
             maxLines = 1,
             overflow = TextOverflow.Ellipsis,
         )
         Text(
-            subtitle,
-            Modifier.fillMaxWidth().padding(horizontal = 4.dp),
+            text = subtitle,
+            modifier = Modifier.fillMaxWidth().padding(horizontal = 2.dp),
             style = Rtl,
             fontSize = 11.sp,
-            fontWeight = FontWeight.Medium,
-            color = scheme.onSurfaceVariant,
+            fontWeight = FontWeight.Normal,
+            color = scheme.onSurfaceVariant.copy(alpha = 0.75f),
             maxLines = 1,
             overflow = TextOverflow.Ellipsis,
         )
@@ -455,20 +428,21 @@ fun ChannelShelf(
 /** Loading placeholders in the shape of a shelf, with glowing tonal shimmer (no solid black). */
 @Composable
 fun ShelfSkeleton(isWide: Boolean = false) {
+    val cardShape = RoundedCornerShape(10.dp)
     Column(Modifier.padding(bottom = 26.dp)) {
         Box(Modifier.padding(start = 20.dp, bottom = 14.dp).width(140.dp).height(22.dp).glassShimmer(RoundedCornerShape(11.dp)))
         Row(Modifier.padding(horizontal = 16.dp), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
             repeat(3) {
                 if (isWide) {
-                    Column(Modifier.width(240.dp)) {
-                        Box(Modifier.fillMaxWidth().height(135.dp).glassShimmer(CardShape))
-                        Spacer(Modifier.height(10.dp))
+                    Column(Modifier.width(210.dp)) {
+                        Box(Modifier.width(210.dp).aspectRatio(16f / 9f).glassShimmer(cardShape))
+                        Spacer(Modifier.height(6.dp))
                         Box(Modifier.width(130.dp).height(14.dp).glassShimmer(RoundedCornerShape(7.dp)))
                     }
                 } else {
-                    Column(Modifier.width(130.dp)) {
-                        Box(Modifier.fillMaxWidth().height(195.dp).glassShimmer(CardShape))
-                        Spacer(Modifier.height(10.dp))
+                    Column(Modifier.width(125.dp)) {
+                        Box(Modifier.width(125.dp).aspectRatio(2f / 3f).glassShimmer(cardShape))
+                        Spacer(Modifier.height(6.dp))
                         Box(Modifier.width(90.dp).height(14.dp).glassShimmer(RoundedCornerShape(7.dp)))
                     }
                 }
