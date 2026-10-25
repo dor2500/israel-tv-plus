@@ -2721,7 +2721,8 @@
     state.overlay = state.stack.pop() || null;
     if (state.overlay === 'player') { renderOsdHints(); showOsd(); }
     renderHints();
-    markFocus();
+    // TV: the size, the source line or kids mode may have changed – lay the shelves out again
+    if (TVUI && !state.overlay) atvRestore(); else markFocus();
     if (PHONE && state.tab === 'settings' && fromTab !== true) setTab(state.prevTab || 'home', true);
   }
   function rowsOf() { return (sections[state.setSection] || { rows: [] }).rows.filter(function (r) { return r.type !== 'sep'; }); }
