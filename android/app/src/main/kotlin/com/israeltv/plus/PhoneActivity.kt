@@ -39,6 +39,7 @@ import com.israeltv.plus.data.Updater
 import com.israeltv.plus.ui.ItvApp
 import com.israeltv.plus.ui.theme.ItvTheme
 import kotlinx.coroutines.launch
+import com.israeltv.plus.data.WatchInstaller
 import okhttp3.OkHttpClient
 import java.util.concurrent.TimeUnit
 
@@ -100,6 +101,7 @@ class PhoneActivity : ComponentActivity() {
 
         val store = ChannelStore(applicationContext, http)
         val updater = Updater(applicationContext, http, lifecycleScope).also { this.updater = it }
+        val watch = WatchInstaller(applicationContext, http, lifecycleScope)
         ContextCompat.registerReceiver(
             this, updater.statusReceiver, IntentFilter(Updater.ACTION_INSTALL_STATUS), ContextCompat.RECEIVER_NOT_EXPORTED,
         )
@@ -116,6 +118,7 @@ class PhoneActivity : ComponentActivity() {
                     store = store,
                     prefs = prefs,
                     updater = updater,
+                    watch = watch,
                     inPip = inPip.value,
                     coldStart = savedInstanceState == null,
                     onPlaying = { on -> playing = on; updatePip() },

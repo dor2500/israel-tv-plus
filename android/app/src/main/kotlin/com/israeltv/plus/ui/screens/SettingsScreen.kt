@@ -29,6 +29,7 @@ import androidx.compose.material.icons.rounded.MusicNote
 import androidx.compose.material.icons.rounded.Palette
 import androidx.compose.material.icons.rounded.SystemUpdate
 import androidx.compose.material.icons.rounded.Tv
+import androidx.compose.material.icons.rounded.Watch
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
@@ -62,7 +63,7 @@ import java.util.Date
 import java.util.Locale
 
 @Composable
-fun SettingsScreen(data: ChannelData?, prefs: AppPrefs, updater: Updater, onProfiles: () -> Unit, onStyle: () -> Unit) {
+fun SettingsScreen(data: ChannelData?, prefs: AppPrefs, updater: Updater, onProfiles: () -> Unit, onStyle: () -> Unit, onWatch: () -> Unit) {
     val ctx = LocalContext.current
     val haptic = LocalHapticFeedback.current
     LazyColumn(Modifier.fillMaxSize(), contentPadding = feedPadding(), flingBehavior = rememberBitChordFlingBehavior()) {
@@ -84,6 +85,13 @@ fun SettingsScreen(data: ChannelData?, prefs: AppPrefs, updater: Updater, onProf
                         prefs.setLaunchSoundOn(it)
                     })
                 }
+            }
+            Spacer(Modifier.height(28.dp))
+        }
+        item(key = "watch") {
+            SectionHeader("שעון חכם")
+            SettingsGroup {
+                SettingRow(Icons.Rounded.Watch, "התקנה בשעון", "ישראל TV+ לשעון Wear OS – מתקינים מכאן, בלי Google Play", onClick = onWatch)
             }
             Spacer(Modifier.height(28.dp))
         }
