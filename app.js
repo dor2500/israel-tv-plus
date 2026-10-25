@@ -731,6 +731,7 @@
       if (had !== state.cats.length && state.zone === 'rail') markFocus();
       updateHero(state.list[state.gridIdx]);
     }
+    if (TVUI && !state.overlay && atv.built) atvRestore();   // the "mine" shelf and the ★ tag update at once
   }
   function addRecent(ch) {
     state.recents = [ch.id].concat(state.recents.filter(function (id) { return id !== ch.id; })).slice(0, MAX_RECENTS);
@@ -1739,10 +1740,18 @@
     if (!atv.built || atv.dirty) atvBuild();
     state.zone = 'atv';
     if (atv.zone === 'search') atv.zone = 'rows';
-    if (atv.rows[atv.row]) { state.list = atv.rows[atv.row].list; state.gridIdx = atv.cols[atv.row] || 0; }
+    var row = atv.rows[atv.row];
+    // zapped in the player: the focus follows the channel that is on now (when it is on this shelf)
+    if (row && state.playing && !state.preview && row.list[atv.cols[atv.row] || 0] !== state.playing) {
+      for (var k = 0; k < row.list.length; k++) if (row.list[k].id === state.playing.id) { atv.cols[atv.row] = k; break; }
+      if (atv.cols[atv.row] > atv.rendered[atv.row] - 8) atvRender(atv.row, atv.cols[atv.row] + ATV_MORE);
+    }
+    if (row) { state.list = row.list; state.gridIdx = atv.cols[atv.row] || 0; }
     atvLayout();
     atvMark();
     atvMeta(atvCurrent());
+    // nothing on yet (start, after settings): the focused card starts its preview after the usual rest
+    if (!state.overlay && atv.zone === 'rows' && !state.playing) atvSettle(atvCurrent());
   }
 
   function atvAction(action) {
@@ -1807,6 +1816,7 @@
     if (appOnly(ch)) { showGetApp(ch); return; }
     state.playIdx = i;
     state.playing = ch;
+    state.preview = null;   // a channel that is watched is never the silent preview
     addRecent(ch);
     crumb('play');
     for (var k = 0; k < cards.length; k++) toggleClass(cards[k], 'is-playing', k === i);
@@ -2099,7 +2109,7 @@
   // ---- channel list inside the player
   function openDrawer() {
     var playingId = state.playing && state.playing.id;
-    el.drawerCat.textContent = (state.cats[state.railIdx] || {}).name || '';
+    el.drawerCat.textContent = TVUI ? (atv.rows[atv.row] || {}).title || '' : (state.cats[state.railIdx] || {}).name || '';
     el.drawerList.innerHTML = state.list.map(function (ch, i) {
       return '<div class="drawer-item' + (ch.id === playingId ? ' is-playing' : '') + '" data-i="' + i + '">' +
         '<span class="d-num">' + ch.number + '</span><span class="d-name">' + esc(ch.name) + '</span>' +
@@ -2480,7 +2490,9 @@
 
   function runAction(action) {
     var inPlayer = state.overlay === 'player';
-    if (TVUI && !inPlayer && !state.overlay && atvAction(action)) return;
+    if (TVUI && !state.overlay && atvAction(action)) return;
+    // TV, in the player: the shelf actions go back to the browse screen (the channel goes on behind it)
+    if (TVUI && inPlayer && /^(favorites|recent|search|all)$/.test(action)) { closePlayer(true); atvAction(action); return; }
     var ch = inPlayer ? state.playing : state.list[state.gridIdx];
     switch (action) {
       case 'menu': if (inPlayer) playerMenu(); else channelMenu(ch); break;
