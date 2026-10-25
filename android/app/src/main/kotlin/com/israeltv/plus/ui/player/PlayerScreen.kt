@@ -8,6 +8,7 @@ import android.widget.FrameLayout
 import androidx.activity.compose.BackHandler
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.EnterExitState
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.infiniteRepeatable
@@ -37,6 +38,16 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.material3.ripple
+import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.graphics.compositeOver
+import androidx.compose.ui.platform.LocalDensity
+import com.israeltv.plus.ui.components.LocalPageScope
+import com.israeltv.plus.ui.components.pressPhysics
+import com.israeltv.plus.ui.components.sharedContainer
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -85,6 +96,7 @@ import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
@@ -158,11 +170,18 @@ fun PlayerScreen(
     prefs: AppPrefs,
     logo: (Channel) -> String,
     inPip: Boolean,
+    sharedKey: String?,
     onPlaying: (Boolean) -> Unit,
     onEnterPip: () -> Unit,
     onClose: () -> Unit,
 ) {
     val context = LocalContext.current
+    val density = LocalDensity.current
+    // the video surface joins once the card has grown into the player, and leaves as soon as it shrinks back
+    // (a SurfaceView does not follow the container transform; until then the player is its black frame + logo)
+    val page = LocalPageScope.current
+    val settled = page == null ||
+        (page.transition.currentState == EnterExitState.Visible && page.transition.targetState == EnterExitState.Visible)
     val haptic = LocalHapticFeedback.current
     val player = remember { buildPlayer(context) }
     val list = remember(playlist, start) { playlist.ifEmpty { listOf(start) } }
@@ -218,7 +237,8 @@ fun PlayerScreen(
             return@LaunchedEffect
         }
         val item = MediaItem.Builder().setUri(url)
-        if (current.url.contains(".m3u8", ignoreCase = true)) item.setMimeType(MimeTypes.APPLICATION_M3U8)
+        // every TV channel is HLS, also the ones whose address has no .m3u8 (Samsung TV Plus redirects)
+        if (current.url.contains(".m3u8", ignoreCase = true) || !current.isRadio) item.setMimeType(MimeTypes.APPLICATION_M3U8)
         player.setMediaItem(item.build())
         player.volume = 1.0f
         player.prepare()
@@ -263,8 +283,13 @@ fun PlayerScreen(
         if (sheet != null) sheet = null else onClose()
     }
 
-    Box(Modifier.fillMaxSize().background(Color.Black)) {
-        AndroidView(
+    Box(
+        Modifier
+            .fillMaxSize()
+            .then(if (sharedKey != null) Modifier.sharedContainer(sharedKey, RectangleShape, scaleContent = true) else Modifier)
+            .background(Color.Black)
+    ) {
+        if (settled || inPip) AndroidView(
             factory = { ctx ->
                 PlayerView(ctx).apply {
                     layoutParams = FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
@@ -276,8 +301,14 @@ fun PlayerScreen(
                     this.player = player
                 }
             },
+            update = { view ->
+                // subtitles move up above the dock while the controls are on screen
+                val lift = if (controls && !inPip) with(density) { 92.dp.roundToPx() } else 0
+                view.subtitleView?.setPadding(0, 0, 0, lift)
+            },
             modifier = Modifier.fillMaxSize(),
         )
+
         // the touch layer over the video (the PlayerView itself would take the touches)
         Box(
             Modifier.fillMaxSize().pointerInputs(
@@ -316,17 +347,23 @@ fun PlayerScreen(
         ) { mode ->
             when (mode) {
                 "buffering" -> BufferingPill()
-                "controls" -> Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(28.dp)) {
-                    GlassIconButton(Icons.Rounded.SkipNext, "ערוץ הבא", { switchTo(index + 1) }, size = 52.dp, tint = GlassDark)
-                    GlassIconButton(
-                        if (playing) Icons.Rounded.Pause else Icons.Rounded.PlayArrow, "נגן / השהה",
-                        {
-                            touchTick++
-                            if (player.isPlaying) player.pause() else { player.volume = 1.0f; player.play() }
-                        },
-                        size = 72.dp, tint = GlassDark,
-                    )
-                    GlassIconButton(Icons.Rounded.SkipPrevious, "ערוץ קודם", { switchTo(index - 1) }, size = 52.dp, tint = GlassDark)
+                "controls" -> Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(26.dp)) {
+                    val scheme = MaterialTheme.colorScheme
+                    ExpressiveButton(
+                        Icons.Rounded.SkipNext, "ערוץ הבא", RoundedCornerShape(24.dp), 52.dp, 72.dp,
+                        scheme.secondaryContainer, scheme.onSecondaryContainer,
+                    ) { switchTo(index + 1) }
+                    ExpressiveButton(
+                        if (playing) Icons.Rounded.Pause else Icons.Rounded.PlayArrow, "נגן / השהה", CircleShape, 84.dp, 84.dp,
+                        scheme.primaryContainer, scheme.onPrimaryContainer,
+                    ) {
+                        touchTick++
+                        if (player.isPlaying) player.pause() else { player.volume = 1.0f; player.play() }
+                    }
+                    ExpressiveButton(
+                        Icons.Rounded.SkipPrevious, "ערוץ קודם", RoundedCornerShape(24.dp), 52.dp, 72.dp,
+                        scheme.secondaryContainer, scheme.onSecondaryContainer,
+                    ) { switchTo(index - 1) }
                 }
                 "error" -> ErrorCard(current, error.orEmpty(), onRetry = { attempt++ }, onNext = { switchTo(index + 1) })
                 else -> Spacer(Modifier.size(1.dp))
@@ -374,6 +411,36 @@ private fun Modifier.pointerInputs(onTap: () -> Unit, onSwipe: (Boolean) -> Unit
             onVerticalDrag = { _, dy -> total += dy },
         )
     }
+
+/** Material 3 Expressive oversized control: a tonal geometric shape with a press bounce and a haptic tick. */
+@Composable
+private fun ExpressiveButton(
+    icon: ImageVector,
+    label: String,
+    shape: Shape,
+    width: Dp,
+    height: Dp,
+    container: Color,
+    content: Color,
+    onClick: () -> Unit,
+) {
+    val interaction = remember { MutableInteractionSource() }
+    val haptic = LocalHapticFeedback.current
+    Box(
+        Modifier
+            .size(width, height)
+            .pressPhysics(interaction, tilt = false)
+            .clip(shape)
+            .background(container)
+            .clickable(interaction, ripple()) {
+                haptic.performHapticFeedback(HapticFeedbackType.VirtualKey)
+                onClick()
+            },
+        contentAlignment = Alignment.Center,
+    ) {
+        Icon(icon, label, Modifier.size(minOf(width, height) * 0.5f), tint = content)
+    }
+}
 
 @Composable
 private fun BufferingPill() {
@@ -458,19 +525,24 @@ private fun TopBar(ch: Channel, logo: String, onBack: () -> Unit) {
     }
 }
 
-/** Apple TV-style dock: one frosted capsule with evenly spaced icon + label items. */
+/**
+ * The compact player dock (max 400 dp wide, 58 dp): one capsule of the glass recipe (deep ink at 62% with the
+ * palette tint), the specular edge, evenly spaced icon + label items.
+ */
 @Composable
 private fun Dock(landscape: Boolean, onItem: (String) -> Unit) {
-    val shape = RoundedCornerShape(32.dp)
+    val shape = RoundedCornerShape(50)
+    val glass = MaterialTheme.colorScheme.surfaceTint.copy(alpha = 0.18f).compositeOver(Color(0xFF14141C).copy(alpha = 0.62f))
     Row(
         Modifier
             .navigationBarsPadding()
-            .padding(horizontal = 20.dp, vertical = 24.dp)
+            .padding(horizontal = 20.dp, vertical = 22.dp)
+            .widthIn(max = 400.dp)
             .fillMaxWidth()
-            .height(64.dp)
+            .height(58.dp)
             .clip(shape)
-            .background(GlassDark)
-            .specularBorder(shape),
+            .background(glass)
+            .specularBorder(shape, alpha = 0.32f),
         horizontalArrangement = Arrangement.SpaceEvenly,
     ) {
         DockItem(Icons.AutoMirrored.Rounded.List, "ערוצים") { onItem("list") }
@@ -488,8 +560,8 @@ private fun androidx.compose.foundation.layout.RowScope.DockItem(icon: ImageVect
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
     ) {
-        Icon(icon, label, Modifier.size(24.dp), tint = Color.White)
-        Text(label, color = Color.White.copy(alpha = 0.85f), fontSize = 11.sp, fontWeight = FontWeight.Medium)
+        Icon(icon, label, Modifier.size(22.dp), tint = Color.White)
+        Text(label, color = Color.White.copy(alpha = 0.85f), fontSize = 10.sp, fontWeight = FontWeight.Medium)
     }
 }
 

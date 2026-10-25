@@ -67,56 +67,6 @@ private fun Scrim(onDismiss: () -> Unit, content: @Composable () -> Unit) {
 
 private fun Modifier.swallowClicks(): Modifier = clickable(MutableInteractionSource(), null) {}
 
-/** The profile: choose a 3D Noto Emoji avatar; shows the app version and update state too. */
-@Composable
-fun AvatarDialog(prefs: AppPrefs, updater: Updater, onDismiss: () -> Unit) {
-    val scheme = MaterialTheme.colorScheme
-    val haptic = LocalHapticFeedback.current
-    Scrim(onDismiss) {
-        Column(
-            Modifier
-                .padding(24.dp)
-                .fillMaxWidth()
-                .frostedGlass(RoundedCornerShape(32.dp), scheme.surfaceContainerHigh.copy(alpha = 0.82f), blur = 30.dp)
-                .swallowClicks()
-                .padding(24.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,
-        ) {
-            AsyncImage(avatarUrl(prefs.avatar), null, Modifier.size(88.dp))
-            Spacer(Modifier.height(10.dp))
-            Text("הפרופיל שלי", fontSize = 24.sp, fontWeight = FontWeight.ExtraBold, color = scheme.onSurface)
-            val status = when (val s = updater.state) {
-                is UpdateState.Available -> "עדכון זמין: ${s.info.version}"
-                is UpdateState.Downloading -> "מוריד עדכון… ${(s.progress * 100).toInt()}%"
-                is UpdateState.UpToDate -> "גרסה ${updater.installedVersion} · מעודכנת"
-                else -> "גרסה ${updater.installedVersion}"
-            }
-            Text(status, fontSize = 13.sp, color = scheme.onSurfaceVariant)
-            Spacer(Modifier.height(18.dp))
-            AVATARS.chunked(4).forEach { row ->
-                Row(Modifier.padding(bottom = 10.dp), horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-                    row.forEach { id ->
-                        val on = id == prefs.avatar
-                        Box(
-                            Modifier
-                                .size(60.dp)
-                                .clip(CircleShape)
-                                .background(if (on) scheme.primaryContainer else scheme.surfaceContainerHighest.copy(alpha = 0.6f))
-                                .then(if (on) Modifier.border(2.dp, scheme.primary, CircleShape) else Modifier)
-                                .clickable {
-                                    haptic.performHapticFeedback(HapticFeedbackType.SegmentTick)
-                                    prefs.chooseAvatar(id)
-                                },
-                            contentAlignment = Alignment.Center,
-                        ) { AsyncImage(avatarUrl(id), null, Modifier.size(44.dp)) }
-                    }
-                }
-            }
-            TextButton(onDismiss) { Text("סגירה", fontWeight = FontWeight.Bold) }
-        }
-    }
-}
-
 /** A new GitHub release: frosted-glass modal with what is new and a Material You (wavy) download progress bar. */
 @Composable
 fun UpdateModal(updater: Updater, onDismiss: () -> Unit) {

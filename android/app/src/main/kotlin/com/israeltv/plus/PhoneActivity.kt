@@ -60,7 +60,7 @@ class PhoneActivity : ComponentActivity() {
     }
     private val inPip = mutableStateOf(false)
     private var playing = false
-    @Volatile private var ready = false
+    private val ready = mutableStateOf(false)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         if (isTv()) {
@@ -71,14 +71,13 @@ class PhoneActivity : ComponentActivity() {
         }
         val splash = installSplashScreen()
         super.onCreate(savedInstanceState)
-        val until = SystemClock.uptimeMillis() + 2500
-        splash.setKeepOnScreenCondition { !ready && SystemClock.uptimeMillis() < until }
+        // the system splash only covers the first frame; the cinematic intro (ui/Intro.kt) takes over on black
         splash.setOnExitAnimationListener { p ->
             val ease = PathInterpolator(0.05f, 0.7f, 0.1f, 1f)   // Material "emphasized decelerate"
-            runCatching { p.iconView }.getOrNull()?.animate()?.scaleX(1.6f)?.scaleY(1.6f)?.alpha(0f)
-                ?.setDuration(420)?.setInterpolator(ease)?.start()
+            runCatching { p.iconView }.getOrNull()?.animate()?.scaleX(0.6f)?.scaleY(0.6f)?.alpha(0f)
+                ?.setDuration(260)?.setInterpolator(ease)?.start()
             runCatching {
-                p.view.animate().alpha(0f).setStartDelay(80).setDuration(380).setInterpolator(ease).withEndAction { p.remove() }.start()
+                p.view.animate().alpha(0f).setDuration(240).setInterpolator(ease).withEndAction { p.remove() }.start()
             }.onFailure { p.remove() }
         }
 
@@ -105,18 +104,19 @@ class PhoneActivity : ComponentActivity() {
         )
         lifecycleScope.launch {
             store.load()
-            ready = true
+            ready.value = true
             store.refresh()
             updater.check()
         }
 
         setContent {
-            ItvTheme {
+            ItvTheme(prefs.theme) {
                 ItvApp(
                     store = store,
                     prefs = prefs,
                     updater = updater,
                     inPip = inPip.value,
+                    coldStart = savedInstanceState == null,
                     onPlaying = { on -> playing = on; updatePip() },
                     onEnterPip = ::enterPip,
                 )

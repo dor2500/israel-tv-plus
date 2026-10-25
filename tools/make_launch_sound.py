@@ -1,5 +1,6 @@
-"""The launch sound of the Android app: a soft two-note glass chime (~0.9 s), made here so it carries no third-party
-licence. Writes platforms/android/res/raw/launch.wav (44.1 kHz, mono, 16-bit). Standard library only.
+"""The launch sound of the Android app (~2 s), made here so it carries no third-party licence: a deep resonant swell
+under the intro's glow (A1/A2 with soft harmonics and a slow beat), then a soft two-note glass chime when the emblem
+fills in. Writes platforms/android/res/raw/launch.wav (44.1 kHz, mono, 16-bit). Standard library only.
 
     python -I tools/make_launch_sound.py
 """
@@ -9,17 +10,29 @@ import struct
 import wave
 
 RATE = 44100
-LENGTH = 0.95
+LENGTH = 2.1
 OUT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'platforms', 'android', 'res', 'raw', 'launch.wav')
 
-# (start s, frequency Hz, gain): a rising fifth + octave, like a glass being tapped twice
-NOTES = [(0.00, 1318.5, 0.55), (0.11, 1975.5, 0.45), (0.11, 2637.0, 0.12)]
+# the swell: (frequency Hz, gain); a 0.6 Hz detuned twin on each gives the slow "breathing" beat
+DRONE = [(55.0, 0.55), (110.0, 0.42), (164.8, 0.16), (220.0, 0.10), (329.6, 0.05)]
+# the chime, as the emblem fills (start s, frequency Hz, gain)
+NOTES = [(0.70, 1318.5, 0.16), (0.80, 1975.5, 0.13), (0.80, 2637.0, 0.04)]
 # bell partials (ratio, relative gain, decay rate 1/s)
-PARTIALS = [(1.0, 1.0, 6.5), (2.0, 0.28, 11.0), (2.76, 0.12, 16.0), (5.4, 0.04, 28.0)]
+PARTIALS = [(1.0, 1.0, 4.5), (2.0, 0.28, 8.0), (2.76, 0.12, 12.0), (5.4, 0.04, 22.0)]
+
+
+def drone_env(t):
+    """0.45 s swell in, a long resonant tail."""
+    rise = min(1.0, t / 0.45)
+    rise = rise * rise * (3 - 2 * rise)
+    return rise * math.exp(-max(0.0, t - 0.45) * 1.9)
 
 
 def sample(t):
     v = 0.0
+    env = drone_env(t)
+    for f, g in DRONE:
+        v += g * env * (math.sin(2 * math.pi * f * t) + 0.6 * math.sin(2 * math.pi * (f + 0.6) * t))
     for start, f, g in NOTES:
         u = t - start
         if u < 0:
@@ -35,12 +48,12 @@ def main():
     dry = [sample(i / RATE) for i in range(n)]
     # a little room: three quiet early reflections
     wet = list(dry)
-    for delay, g in ((0.031, 0.22), (0.047, 0.16), (0.073, 0.1)):
+    for delay, g in ((0.031, 0.22), (0.047, 0.16), (0.073, 0.1), (0.11, 0.08)):
         d = int(delay * RATE)
         for i in range(d, n):
             wet[i] += dry[i - d] * g
     peak = max(abs(x) for x in wet) or 1.0
-    fade = int(0.08 * RATE)
+    fade = int(0.3 * RATE)
     frames = bytearray()
     for i, x in enumerate(wet):
         if i > n - fade:

@@ -34,6 +34,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.graphics.compositeOver
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
@@ -42,6 +43,7 @@ import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.israeltv.plus.ui.theme.LocalDarkTheme
 import dev.chrisbanes.haze.HazeInput
 import dev.chrisbanes.haze.HazeState
 import dev.chrisbanes.haze.blur.HazeBlurStyle
@@ -50,6 +52,16 @@ import dev.chrisbanes.haze.blur.hazeBlur
 
 /** The screen content the glass bars blur (hazeSource on the feed). Null where nothing is behind (player). */
 val LocalHaze = staticCompositionLocalOf<HazeState?> { null }
+
+/**
+ * The glass of the bars and sheets: deep ink (#14141C) at 62% with the palette's surface tint at 18% over it
+ * (a light version in the light theme), on top of the real backdrop blur.
+ */
+@Composable
+fun glassTint(): Color {
+    val tint = MaterialTheme.colorScheme.surfaceTint.copy(alpha = 0.18f)
+    return tint.compositeOver(if (LocalDarkTheme.current) Color(0xFF14141C).copy(alpha = 0.62f) else Color(0xFFF7F7FA).copy(alpha = 0.66f))
+}
 
 /** Apple TV specular edge: a 1 dp stroke that is bright on top and fades out downwards. */
 fun Modifier.specularBorder(shape: Shape, width: Dp = 1.dp, alpha: Float = 0.28f): Modifier =
@@ -81,7 +93,7 @@ fun Modifier.frostedGlass(
             },
         )
     } else clipped.background(tint)
-    if (border) glass.specularBorder(shape) else glass
+    if (border) glass.specularBorder(shape, alpha = 0.32f) else glass
 }
 
 /**
@@ -128,6 +140,7 @@ fun GlassIconButton(
     size: Dp = 48.dp,
     tint: Color = Color.White.copy(alpha = 0.14f),
     iconSize: Dp = size * 0.46f,
+    iconTint: Color = Color.White,
 ) {
     val interaction = remember { MutableInteractionSource() }
     val haptic = LocalHapticFeedback.current
@@ -142,7 +155,7 @@ fun GlassIconButton(
             },
         contentAlignment = Alignment.Center,
     ) {
-        Icon(icon, contentDescription, Modifier.size(iconSize), tint = Color.White)
+        Icon(icon, contentDescription, Modifier.size(iconSize), tint = iconTint)
     }
 }
 

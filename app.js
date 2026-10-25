@@ -234,6 +234,7 @@
     setupInput();
     setupNativeBridge();
     setupPhone();
+    setupAtv();
     setupClock();
     readDeviceInfo();
     resetSaver();
@@ -247,6 +248,7 @@
         renderGridFresh();
         if (PHONE && !was) { buildHome(); setTab(state.tab, true); }
         else if (PHONE) movePill(false);
+        if (TVUI && !state.overlay) { atv.dirty = true; atvRestore(); }
       }, 120);
     });
 
@@ -365,6 +367,8 @@
     document.documentElement.style.fontSize = (base * (compact || PHONE ? 1 : S.uiScale)) + 'px';
     toggleClass(document.body, 'compact', compact);
     toggleClass(document.body, 'phone', PHONE);
+    TVUI = !PHONE;
+    toggleClass(document.body, 'tvui', TVUI);
     var cols = S.cols || (PHONE ? (w < 600 ? 2 : w < 900 ? 3 : 4) : compact ? (w < 600 ? 2 : 3) : clamp(Math.round(5 / S.uiScale), 3, 7));
     if (PHONE && S.cols) cols = Math.min(S.cols, w < 600 ? 3 : 5);
     state.cols = cols;
@@ -527,6 +531,7 @@
     Object.keys(counts).forEach(push);
     state.cats = list;
     renderRail();
+    if (atv.built) atv.dirty = true;
   }
 
   function renderRail() {
@@ -661,7 +666,8 @@
     else if (state.overlay === 'dialog') t = dialogButtons()[state.dialogIdx];
     else if (state.overlay === 'settings') {
       t = state.setZone === 'nav' ? el.settingsNav.children[state.setSection] : el.settingsRows.querySelectorAll('.set-row')[state.setIdx];
-    } else if (state.zone === 'grid') t = cards[state.gridIdx];
+    } else if (state.zone === 'atv') { atvMark(); return; }
+    else if (state.zone === 'grid') t = cards[state.gridIdx];
     else if (state.zone === 'rail') t = el.railList.children[state.railIdx];
     else if (state.zone === 'top') t = topItems()[state.topIdx];
     if (t) { t.classList.add('focused'); reveal(t); }
@@ -688,6 +694,7 @@
   }
 
   function focusGrid(i) {
+    if (TVUI) { atvRestore(); return; }
     state.zone = 'grid';
     if (!state.list.length) { markFocus(); return; }
     state.gridIdx = clamp(i, 0, state.list.length - 1);
@@ -695,7 +702,7 @@
     markFocus();
     updateHero(state.list[state.gridIdx]);
   }
-  function focusRail(i) { state.zone = 'rail'; state.railIdx = clamp(i, 0, state.cats.length - 1); markFocus(); }
+  function focusRail(i) { if (TVUI) { atvFocusPill(atv.tab); return; } state.zone = 'rail'; state.railIdx = clamp(i, 0, state.cats.length - 1); markFocus(); }
   function topItems() {
     return Array.prototype.filter.call(document.querySelectorAll('.nav-top'), function (n) { return !n.classList.contains('hidden'); });
   }
@@ -714,6 +721,7 @@
     else { state.favorites.splice(i, 1); toast('הוסר מהמועדפים'); }
     lsSet('israel_tv_favorites', state.favorites);
     homeDirty = true;
+    atv.dirty = true;
     var had = state.cats.length;
     buildCategories();
     if (state.cat === 'FAVORITES') filterList();
@@ -728,6 +736,7 @@
     state.recents = [ch.id].concat(state.recents.filter(function (id) { return id !== ch.id; })).slice(0, MAX_RECENTS);
     lsSet('israel_tv_recents', state.recents);
     homeDirty = true;
+    atv.dirty = true;
     S.lastId = ch.id;
     saveSettings();
     var has = state.cats.some(function (c) { return c.id === 'RECENT'; });
@@ -1339,6 +1348,457 @@
     toast('🙈 ' + ch.name + ' הוסתר (אפשר להחזיר בהגדרות ← ערוצים)');
   }
 
+  // ================================================================== TV: the Apple TV+ (tvOS) browse screen
+  // Big screens get a full-bleed stage instead of the guide: a floating glass pill on top, the focused channel's
+  // details on the right, and at the bottom a vertical feed of shelves, each one horizontal row of channel cards.
+  // Every move is a translate3d / opacity change on its own layer with tvOS's curve (cubic-bezier(.16, 1, .3, 1),
+  // 420 ms): nothing measures the layout, nothing animates width / height / top / left, no scrollIntoView.
+  // Resting on a card for 550 ms fades a live preview of the channel in behind everything (the same <video> the
+  // player uses), and OK just turns it into the full-screen player – no reload, no cut. The preview is the only
+  // silent playback in the app: the moment the channel is watched it plays with full sound, and from then on
+  // nothing in the app ever mutes it.
+  var TVUI = false;
+  var atv = { rows: [], row: 0, cols: [], zone: 'rows', tab: 0, tabs: [], rendered: [], tracks: [], items: [],
+    rowEls: [], built: false, dirty: false, search: false, query: '', flip: false, bdFlip: false,
+    restTimer: null, metaTimer: null, stopTimer: null, searchTimer: null, focusedEl: null };
+  var ATV_PITCH = 19;        // rem: a 17.5rem card + 1.5rem gap
+  var ATV_ROW = 16.25;       // rem: one shelf (title + card + name), 260 px on a 1080p screen
+  var ATV_FIRST = 14, ATV_MORE = 18;
+  var ATV_ROWS = [['broadcast', 'ערוצי ברודקאסט וחדשות'], ['sports', 'ספורט בשידור חי'], ['movies', 'סרטים וסדרות'],
+    ['kids', 'ילדים ונוער'], ['fun', 'בידור, טבע ומוזיקה'], ['world', 'ערוצים בינלאומיים'], ['radio', 'רדיו ישראלי'],
+    ['faith', 'דת ומסורת']];
+  var ATV_TABS = [['צפייה כעת', 'top'], ['ערוצי ישראל', 'broadcast'], ['ספורט', 'sports'], ['ילדים', 'kids'],
+    ['סרטים ודיבוב', 'movies'], ['רדיו', 'radio'], ['מועדפים', 'mine'], ['חיפוש', 'search'], ['הגדרות', 'settings']];
+
+  function atvRem(rem) { return rem * (parseFloat(document.documentElement.style.fontSize) || 16); }
+
+  /** Which shelf a channel belongs on. */
+  function atvBucket(c) {
+    var en = c.categoryEn || '', cat = c.category || '';
+    if (en === 'radio' || isRadioCh(c)) return 'radio';
+    if (/ערוצי ישראל/.test(cat) || en === 'news' || en === 'israel') return 'broadcast';
+    if (en === 'sports' || /ספורט/.test(cat)) return 'sports';
+    if (/ילדים/.test(cat) || en === 'kids') return 'kids';
+    if (en === 'movies' || en === 'world_movies' || en === 'comedy') return 'movies';
+    if (en === 'religion' || en === 'tradition' || en === 'community' || /מסורת|דת ואמונה/.test(cat)) return 'faith';
+    if (/^(life|docu|documentary|music|travel|food|science)$/.test(en)) return 'fun';
+    return 'world';
+  }
+
+  function atvRowsData() {
+    if (atv.search) {
+      var q = atv.query.trim().toLowerCase();
+      var res = !q ? [] : state.all.filter(function (c) {
+        return c.name.toLowerCase().indexOf(q) !== -1 || String(c.number) === q ||
+          (c.countryHe && c.countryHe.indexOf(q) !== -1) || (c.title && c.title.toLowerCase().indexOf(q) !== -1);
+      });
+      return [{ id: 'search', title: q ? 'תוצאות לחיפוש "' + atv.query.trim() + '" · ' + res.length : 'הקלידו שם ערוץ, מדינה או מספר', list: res }];
+    }
+    var buckets = {};
+    ATV_ROWS.forEach(function (r) { buckets[r[0]] = []; });
+    state.all.forEach(function (c) {
+      var b = atvBucket(c);
+      // Israeli sports radio (Radio Sport 5) also opens the sports shelf, next to Sport 5's live stream
+      if (b === 'radio' && !c.imported && /ספורט/.test(c.name)) buckets.sports.unshift(c);
+      buckets[b].push(c);
+    });
+    var rows = [], seen = {}, mine = [];
+    state.recents.concat(state.favorites).forEach(function (id) {
+      var i = indexInAll(id);
+      if (i !== -1 && !seen[id]) { seen[id] = 1; mine.push(state.all[i]); }
+    });
+    if (mine.length) rows.push({ id: 'mine', title: 'צפייה לאחרונה ומועדפים', list: mine });
+    ATV_ROWS.forEach(function (r) {
+      var list = buckets[r[0]];
+      if (IS_WEB) list = list.filter(function (x) { return !appOnly(x); }).concat(list.filter(appOnly));
+      if (list.length) rows.push({ id: r[0], title: r[1], list: list });
+    });
+    return rows;
+  }
+
+  function atvRowIndex(id) { for (var i = 0; i < atv.rows.length; i++) if (atv.rows[i].id === id) return i; return -1; }
+
+  function atvBuild() {
+    var keepId = atv.rows[atv.row] && atv.rows[atv.row].id;
+    var keepCh = atv.rows[atv.row] && atv.rows[atv.row].list[atv.cols[atv.row] || 0];
+    atv.rows = atvRowsData();
+    atv.built = true;
+    atv.dirty = false;
+    atv.cols = atv.rows.map(function () { return 0; });
+    atv.rendered = []; atv.tracks = []; atv.items = []; atv.rowEls = []; atv.focusedEl = null;
+    var box = $('atv-rows');
+    box.innerHTML = '';
+    var frag = document.createDocumentFragment();
+    atv.rows.forEach(function (row, r) {
+      var sec = document.createElement('section');
+      sec.className = 'atv-row';
+      sec.innerHTML = '<h3 class="atv-row-title">' + esc(row.title) + (row.list.length > 30 ? '<small>' + row.list.length + '</small>' : '') +
+        '</h3><div class="atv-track"></div>';
+      atv.rowEls.push(sec);
+      atv.tracks.push(sec.querySelector('.atv-track'));
+      atv.items.push([]);
+      atv.rendered.push(0);
+      frag.appendChild(sec);
+    });
+    box.appendChild(frag);
+    atv.rows.forEach(function (row, r) { atvRender(r, ATV_FIRST); });
+    // stay where we were (a rebuild after a favourite / a new recent)
+    var r0 = keepId ? atvRowIndex(keepId) : -1;
+    atv.row = r0 === -1 ? 0 : r0;
+    if (r0 !== -1 && keepCh) {
+      var list = atv.rows[r0].list;
+      for (var k = 0; k < list.length; k++) if (list[k].id === keepCh.id) atv.cols[r0] = k;
+    }
+    atvRenderPill();
+    if (!atv.rows.length) { $('atv-rows').innerHTML = '<div class="atv-empty">' + (atv.search ? '' : 'אין ערוצים להצגה') + '</div>'; }
+  }
+
+  function atvRender(r, upTo) {
+    var row = atv.rows[r], track = atv.tracks[r];
+    var want = Math.min(row.list.length, upTo);
+    if (want <= atv.rendered[r]) return;
+    var frag = document.createDocumentFragment();
+    for (var i = atv.rendered[r]; i < want; i++) {
+      var ch = row.list[i];
+      var it = document.createElement('div');
+      it.className = 'atv-item' + (appOnly(ch) ? ' is-locked' : '');
+      it.setAttribute('data-r', r);
+      it.setAttribute('data-c', i);
+      var q = isApp(ch) ? 'אפליקציה' : isRadioCh(ch) ? 'רדיו' : (ch.badge || '');
+      it.innerHTML = '<div class="atv-card"><div class="atv-logo"><img alt=""><div class="mono hidden"></div></div>' +
+        (q ? '<span class="atv-q">' + esc(q) + '</span>' : '') + '<span class="atv-num">' + ch.number + '</span>' +
+        '<i class="atv-sheen"></i></div><div class="atv-name">' + esc(ch.name) + '</div>';
+      lazyLogo(it.querySelector('img'), it.querySelector('.mono'), ch);
+      frag.appendChild(it);
+      atv.items[r].push(it);
+    }
+    track.appendChild(frag);
+    atv.rendered[r] = want;
+  }
+
+  function atvRenderPill() {
+    var tabs = ATV_TABS.filter(function (t) {
+      return t[1] === 'top' || t[1] === 'search' || t[1] === 'settings' || atvRowIndex(t[1]) !== -1 || (atv.search && t[1] !== 'mine');
+    });
+    if (S.kids) tabs = tabs.filter(function (t) { return t[1] !== 'settings'; }).concat([['יציאה ממצב ילדים', 'kids-exit']]);
+    atv.tabs = tabs;
+    $('atv-pill').innerHTML = tabs.map(function (t, i) {
+      return '<button class="atv-tab" data-i="' + i + '">' + esc(t[0]) + '</button>';
+    }).join('');
+    atvPillState();
+  }
+
+  /** The active tab is the white pill; while the remote is on the bar, the focused tab grows a little. */
+  function atvPillState() {
+    var row = atv.rows[atv.row], active = -1;
+    for (var i = 0; i < atv.tabs.length; i++) {
+      var t = atv.tabs[i][1];
+      if ((atv.search && t === 'search') || (!atv.search && row && t === row.id)) { active = i; break; }
+    }
+    if (active === -1 && !atv.search && atv.row === 0) active = 0;
+    var btns = $('atv-pill').children;
+    for (var k = 0; k < btns.length; k++) {
+      var onBar = atv.zone === 'pill' && state.zone === 'atv' && !state.overlay;
+      // on the bar the focused tab itself wears the white pill; elsewhere the active one does
+      toggleClass(btns[k], 'on', !onBar && k === active);
+      toggleClass(btns[k], 'focused', onBar && k === atv.tab);
+    }
+    if (atv.zone !== 'pill') atv.tab = active === -1 ? 0 : active;
+  }
+
+  /** Moves the camera: the shelves slide up / down, the row's track glides sideways, the rest is opacity. */
+  function atvLayout() {
+    var r = atv.row;
+    $('atv-rows').style.transform = 'translate3d(0,' + (-r * atvRem(ATV_ROW)) + 'px,0)';
+    for (var i = 0; i < atv.rowEls.length; i++) {
+      atv.rowEls[i].className = 'atv-row' + (i < r ? ' above' : i === r ? ' active' : ' below');
+    }
+    var c = atv.cols[r] || 0;
+    if (atv.tracks[r]) atv.tracks[r].style.transform = 'translate3d(' + (Math.max(0, c - 1) * atvRem(ATV_PITCH)) + 'px,0,0)';
+  }
+
+  function atvMark() {
+    if (atv.focusedEl) atv.focusedEl.classList.remove('focused');
+    atv.focusedEl = null;
+    if (atv.zone === 'rows' && atv.items[atv.row]) {
+      var it = atv.items[atv.row][atv.cols[atv.row] || 0];
+      if (it && state.zone === 'atv' && !state.overlay) { it.classList.add('focused'); atv.focusedEl = it; }
+    }
+    atvPillState();
+  }
+
+  function atvCurrent() {
+    var row = atv.rows[atv.row];
+    return row ? row.list[atv.cols[atv.row] || 0] : null;
+  }
+
+  /** Focus a card: camera, focus ring, the list the player zaps through, then (debounced) details and preview. */
+  function atvFocus(r, c, fromPointer) {
+    if (!atv.rows.length) return;
+    r = clamp(r, 0, atv.rows.length - 1);
+    var n = atv.rows[r].list.length;
+    c = clamp(c, 0, Math.max(0, n - 1));
+    atv.row = r;
+    atv.cols[r] = c;
+    atv.zone = 'rows';
+    state.zone = 'atv';
+    if (c > atv.rendered[r] - 8) atvRender(r, c + ATV_MORE);
+    state.list = atv.rows[r].list;
+    state.gridIdx = c;
+    if (!fromPointer) atvLayout();
+    atvMark();
+    atvSettle(atv.rows[r].list[c]);
+  }
+
+  function atvFocusPill(i) {
+    atv.zone = 'pill';
+    state.zone = 'atv';
+    atv.tab = clamp(i, 0, atv.tabs.length - 1);
+    var t = atv.tabs[atv.tab][1];
+    // a row tab jumps the shelves straight to its row
+    if (t === 'top' && atv.rows.length) { atv.row = 0; atvLayout(); }
+    else if (atvRowIndex(t) !== -1) { atv.row = atvRowIndex(t); atvLayout(); state.list = atv.rows[atv.row].list; }
+    atvMark();
+    atvPillState();
+    var btns = $('atv-pill').children;
+    for (var k = 0; k < btns.length; k++) toggleClass(btns[k], 'focused', k === atv.tab);
+    atvSettle(atvCurrent());
+  }
+
+  function atvSettle(ch) {
+    if (atv.metaTimer) clearTimeout(atv.metaTimer);
+    atv.metaTimer = setTimeout(function () { atvMeta(ch); }, fastMode() ? 160 : 70);
+    if (atv.restTimer) clearTimeout(atv.restTimer);
+    if (state.playing && state.playing !== ch && state.overlay !== 'player') atvStopPreview();
+    if (!ch) return;
+    atv.restTimer = setTimeout(function () { atvPreview(ch); }, 550);
+  }
+
+  /** The focused channel's details, sliding up into the second of two layers while the first fades. */
+  function atvMeta(ch) {
+    var a = $('atv-meta-a'), b = $('atv-meta-b');
+    var target = atv.flip ? b : a, other = atv.flip ? a : b;
+    atv.flip = !atv.flip;
+    if (!ch) { other.className = 'atv-meta'; target.className = 'atv-meta'; return; }
+    var q = isApp(ch) ? 'אפליקציה' : isRadioCh(ch) ? 'רדיו' : (ch.badge || 'HD');
+    var tags = '<span class="atv-live"><i></i>LIVE</span><span class="atv-pill-q">' + esc(q) + '</span>' +
+      '<span class="atv-tag">' + esc(splitCat(ch.category)) + '</span>' +
+      (ch.countryHe ? '<span class="atv-tag">' + esc(ch.countryHe) + '</span>' : '') +
+      (isFav(ch) ? '<span class="atv-tag">★ מועדף</span>' : '');
+    target.innerHTML = '<div class="atv-mlogo"><img alt=""><div class="mono hidden"></div></div>' +
+      '<h1 class="atv-title">' + esc(ch.name) + '</h1><div class="atv-tags">' + tags + '</div>' +
+      (ch.desc ? '<p class="atv-desc">' + esc(ch.desc) + '</p>' : '') +
+      (S.showSource ? '<p class="atv-src">' + esc(sourceLine(ch)) + '</p>' : '');
+    setLogo(target.querySelector('img'), target.querySelector('.mono'), ch);
+    target.className = 'atv-meta in';
+    other.className = 'atv-meta';
+    // the stage: a soft wash in the channel's colours, cross-faded
+    var bd = atv.bdFlip ? $('atv-bd-b') : $('atv-bd-a'), bo = atv.bdFlip ? $('atv-bd-a') : $('atv-bd-b');
+    atv.bdFlip = !atv.bdFlip;
+    var h = hueOf(ch.id);
+    bd.style.background = 'radial-gradient(ellipse at 78% 30%, hsla(' + h + ',70%,42%,.62), hsla(' + h + ',70%,42%,0) 58%),' +
+      'radial-gradient(ellipse at 18% 75%, hsla(' + ((h + 50) % 360) + ',70%,34%,.5), hsla(' + ((h + 50) % 360) + ',70%,34%,0) 60%),#07070b';
+    bd.className = 'atv-bd on';
+    bo.className = 'atv-bd';
+  }
+
+  // ---- live preview behind the shelves
+  function atvPreview(ch) {
+    if (!TVUI || state.overlay || state.zone !== 'atv' || ch !== atvCurrent()) return;
+    if (state.playing === ch) { document.body.classList.add('atv-live'); return; }
+    if (isRadioCh(ch) || isApp(ch) || appOnly(ch) || fastMode()) return;
+    if (atv.stopTimer) { clearTimeout(atv.stopTimer); atv.stopTimer = null; }
+    if (state.playing) stopPlayback();
+    state.preview = ch;
+    state.playing = ch;
+    el.player.classList.remove('hidden');
+    loadStream(ch);
+  }
+
+  /** The preview fades back into the stage, then stops (it keeps playing if a new one starts meanwhile). */
+  function atvStopPreview() {
+    document.body.classList.remove('atv-live');
+    if (atv.stopTimer) clearTimeout(atv.stopTimer);
+    var was = state.playing;
+    atv.stopTimer = setTimeout(function () {
+      atv.stopTimer = null;
+      if (state.overlay === 'player' || state.playing !== was) return;
+      stopPlayback();
+      el.player.classList.add('hidden');
+    }, 700);
+  }
+
+  /** OK on a card: the preview (already playing) becomes the player in place – sound on, shelves slide away. */
+  function atvWatch() {
+    var ch = atvCurrent();
+    if (!ch) return;
+    if (Dub) Dub.unlockAudio();
+    var c = atv.cols[atv.row] || 0;
+    state.list = atv.rows[atv.row].list;
+    if (atv.restTimer) clearTimeout(atv.restTimer);
+    if (atv.stopTimer) { clearTimeout(atv.stopTimer); atv.stopTimer = null; }
+    if (state.playing === ch && !isRadioCh(ch) && !isApp(ch)) {
+      var m = media();
+      state.preview = null;
+      m.muted = false;
+      m.volume = 1;
+      if (m.paused) { var p = m.play(); if (p && p.catch) p.catch(function () {}); }
+      state.playIdx = c;
+      addRecent(ch);
+      crumb('play');
+      openPlayer();
+      fillOsd(ch);
+      showOsd();
+      updatePlayIcon();
+      if (Dub && state.hls) Dub.attach({ video: el.video, hls: state.hls, channel: ch, url: state.streamUrl });
+      return;
+    }
+    playIndex(c);
+  }
+
+  function atvOk() {
+    if (atv.zone === 'pill') {
+      var t = atv.tabs[atv.tab] && atv.tabs[atv.tab][1];
+      if (t === 'search') atvOpenSearch();
+      else if (t === 'settings') openSettings();
+      else if (t === 'kids-exit') askPin(function () { setSetting('kids', false); toast('יצאתם ממצב ילדים'); });
+      else atvFocus(atv.row, atv.cols[atv.row] || 0);
+      return;
+    }
+    atvWatch();
+  }
+
+  function atvKey(code) {
+    if (isBack(code)) { atvBack(); return; }
+    if (atv.zone === 'pill') {
+      if (code === 37) atvFocusPill(atv.tab + 1);
+      else if (code === 39) atvFocusPill(atv.tab - 1);
+      else if (code === 40) { if (atv.search) atvFocusSearch(); else atvFocus(atv.row, atv.cols[atv.row] || 0); }
+      return;
+    }
+    var c = atv.cols[atv.row] || 0;
+    if (code === 37) atvFocus(atv.row, c + 1);
+    else if (code === 39) atvFocus(atv.row, c - 1);
+    else if (code === 38) {
+      if (atv.search) atvFocusSearch();
+      else if (atv.row > 0) atvFocus(atv.row - 1, atv.cols[atv.row - 1] || 0);
+      else atvFocusPill(atv.tab);
+    } else if (code === 40) {
+      if (atv.row < atv.rows.length - 1) atvFocus(atv.row + 1, atv.cols[atv.row + 1] || 0);
+    }
+  }
+
+  function atvBack() {
+    if (atv.search) { atvCloseSearch(); return; }
+    if (atv.zone === 'pill') { atvFocus(atv.row, atv.cols[atv.row] || 0); return; }
+    if (atv.row > 0 || (atv.cols[atv.row] || 0) > 0) { atv.cols[atv.row] = 0; atvFocus(0, atv.cols[0] || 0); return; }
+    if (state.playing && !state.preview) { stopPlayback(); document.body.classList.remove('atv-live'); el.player.classList.add('hidden'); return; }
+    var now = Date.now();
+    if (now - (state.lastBack || 0) < 2500) exitApp();
+    else { state.lastBack = now; toast('לחצו שוב BACK ליציאה'); }
+  }
+
+  // ---- search: the field takes the details' place, the results are one shelf
+  function atvOpenSearch() {
+    atv.search = true;
+    atv.query = '';
+    $('atv-q').value = '';
+    document.body.classList.add('atv-searching');
+    atvBuild();
+    atvLayout();
+    atvFocusSearch();
+  }
+  function atvFocusSearch() {
+    atv.zone = 'search';
+    state.zone = 'atv';
+    atvMark();
+    $('atv-search').classList.add('focused');
+    try { $('atv-q').focus(); } catch (e) {}
+  }
+  function atvCloseSearch() {
+    atv.search = false;
+    try { $('atv-q').blur(); } catch (e) {}
+    $('atv-search').classList.remove('focused');
+    document.body.classList.remove('atv-searching');
+    atvBuild();
+    atvFocus(0, 0);
+  }
+  function atvSearchKey(code, e) {
+    var q = $('atv-q');
+    if (code === 40 || code === 13) {
+      if (e.preventDefault) e.preventDefault();
+      q.blur();
+      $('atv-search').classList.remove('focused');
+      if (atv.rows[0] && atv.rows[0].list.length) atvFocus(0, 0); else atvFocusPill(atv.tab);
+    } else if (code === 38) { if (e.preventDefault) e.preventDefault(); q.blur(); $('atv-search').classList.remove('focused'); atvFocusPill(atv.tab); }
+    else if (isBack(code) && (code !== 8 || !q.value)) { if (e.preventDefault) e.preventDefault(); atvCloseSearch(); }
+  }
+
+  /** Back to the browse screen (after the player, settings, a dialog). */
+  function atvRestore() {
+    if (!atv.built || atv.dirty) atvBuild();
+    state.zone = 'atv';
+    if (atv.zone === 'search') atv.zone = 'rows';
+    if (atv.rows[atv.row]) { state.list = atv.rows[atv.row].list; state.gridIdx = atv.cols[atv.row] || 0; }
+    atvLayout();
+    atvMark();
+    atvMeta(atvCurrent());
+  }
+
+  function atvAction(action) {
+    switch (action) {
+      case 'favorites': case 'recent':
+        if (atvRowIndex('mine') === -1) { toast('אין עדיין מועדפים – הוסיפו ⭐ מתפריט האפשרויות'); return true; }
+        atvFocus(atvRowIndex('mine'), 0); return true;
+      case 'search': atvOpenSearch(); return true;
+      case 'all': atvFocus(0, 0); return true;
+      case 'drawer': atvFocusPill(atv.tab); return true;
+    }
+    return false;
+  }
+
+  function setupAtv() {
+    var pill = $('atv-pill'), rows = $('atv-rows');
+    pill.addEventListener('click', function (e) {
+      var b = e.target.closest('.atv-tab');
+      if (!b) return;
+      atvFocusPill(+b.getAttribute('data-i'));
+      atvOk();
+    });
+    rows.addEventListener('click', function (e) {
+      var it = e.target.closest('.atv-item');
+      if (!it) return;
+      atvFocus(+it.getAttribute('data-r'), +it.getAttribute('data-c'), true);
+      atvWatch();
+    });
+    // Magic Remote / mouse: the pointer focuses what it is over (the camera stays), the wheel moves it
+    rows.addEventListener('mouseover', function (e) {
+      var it = e.target.closest('.atv-item');
+      if (!it || state.overlay) return;
+      var r = +it.getAttribute('data-r'), c = +it.getAttribute('data-c');
+      if (r !== atv.row || c !== atv.cols[r] || atv.zone !== 'rows') atvFocus(r, c, r === atv.row);
+    });
+    var wheelAt = 0;
+    $('atv').addEventListener('wheel', function (e) {
+      if (state.overlay) return;
+      var now = Date.now();
+      if (now - wheelAt < 160) return;
+      wheelAt = now;
+      var dx = e.deltaX, dy = e.deltaY;
+      if (Math.abs(dx) > Math.abs(dy) || e.shiftKey) atvKey((dx || dy) > 0 ? 37 : 39);
+      else atvKey(dy > 0 ? 40 : 38);
+    }, { passive: true });
+    $('atv-q').addEventListener('input', function () {
+      atv.query = $('atv-q').value;
+      if (atv.searchTimer) clearTimeout(atv.searchTimer);
+      atv.searchTimer = setTimeout(function () { atvBuild(); atvLayout(); atvMark(); }, 220);
+    });
+    // the preview shows once the picture really moves
+    el.video.addEventListener('playing', function () {
+      if (TVUI && state.playing && state.overlay !== 'player') document.body.classList.add('atv-live');
+    });
+  }
+
   // ================================================================== playback
   function playIndex(i) {
     if (i < 0 || i >= state.list.length) return;
@@ -1385,8 +1845,9 @@
     hideError();
     spinner(false);
     closeDrawer(true);
+    var behind = TVUI && keepPlaying !== false && !!state.playing;   // TV: the channel goes on behind the shelves
     var finish = function () {
-      el.player.classList.add('hidden');
+      if (!behind) el.player.classList.add('hidden');
       document.body.classList.remove('player-open');
     };
     if (PHONE && el.player.animate && !fastMode()) {
@@ -1398,6 +1859,11 @@
     state.overlay = null;
     if (!keepPlaying) stopPlayback();
     native('setPlaying', false);   // picture-in-picture on "home" only while the player is on screen
+    if (TVUI) {
+      if (state.playing) document.body.classList.add('atv-live');
+      atvRestore();
+      return;
+    }
     var idx = state.playing ? indexInList(state.playing.id) : -1;
     focusGrid(idx !== -1 ? idx : state.gridIdx);
     if (PHONE && state.tab === 'home' && homeDirty) { var y = el.home.scrollTop; buildHome(); el.home.scrollTop = y; }
@@ -1410,6 +1876,8 @@
     el.video.pause(); el.video.removeAttribute('src'); try { el.video.load(); } catch (e) {}
     el.radioAudio.pause(); el.radioAudio.removeAttribute('src');
     state.playing = null;
+    state.preview = null;
+    document.body.classList.remove('atv-live');
     for (var k = 0; k < cards.length; k++) cards[k].classList.remove('is-playing');
   }
 
@@ -1502,7 +1970,7 @@
         }
         if (delayed) spinner(true, 'מכין דיבוב מסונכרן… התמונה מושהית ב-' + Dub.settings.delay + ' שניות');
         startPlay(v, ch);
-        if (Dub && state.playing === ch) Dub.attach({ video: v, hls: hls, channel: ch, url: url });
+        if (Dub && state.playing === ch && state.preview !== ch) Dub.attach({ video: v, hls: hls, channel: ch, url: url });
       });
       hls.on(Hls.Events.LEVEL_SWITCHED, function (e, data) {
         var l = hls.levels && hls.levels[data.level];
@@ -1529,10 +1997,12 @@
     }
   }
 
-  // The app never mutes a channel: every channel starts with full sound, and only the TV's own mute key silences it.
+  // The app never mutes a channel you watch: every channel starts with full sound, and only the TV's own mute key
+  // silences it. The one silent picture is the TV browse screen's background preview (state.preview), and
+  // atvWatch() turns its sound on the moment it becomes the player.
   function startPlay(m, ch) {
     var done = function () { spinner(false); updatePlayIcon(); };
-    m.muted = false;
+    m.muted = state.preview === ch;
     m.volume = 1;
     m.addEventListener('playing', function onp() { m.removeEventListener('playing', onp); done(); });
     var p = m.play();
@@ -1550,6 +2020,7 @@
 
   function onFatal(ch, reason) {
     if (state.playing !== ch) return;
+    if (state.preview === ch && state.overlay !== 'player') { stopPlayback(); el.player.classList.add('hidden'); return; }
     spinner(false);
     if (Dub) Dub.detach();
     if (state.hls) { try { state.hls.destroy(); } catch (e) {} state.hls = null; }
@@ -2009,6 +2480,7 @@
 
   function runAction(action) {
     var inPlayer = state.overlay === 'player';
+    if (TVUI && !inPlayer && !state.overlay && atvAction(action)) return;
     var ch = inPlayer ? state.playing : state.list[state.gridIdx];
     switch (action) {
       case 'menu': if (inPlayer) playerMenu(); else channelMenu(ch); break;
@@ -2777,7 +3249,7 @@
       if (idx === -1) { state.query = ''; el.searchInput.value = ''; selectCategory('ALL', true); idx = indexInList(target.id); }
       if (state.overlay && state.overlay !== 'player') return;
       state.gridIdx = idx;
-      if (!state.overlay) focusGrid(idx);
+      if (!state.overlay && !TVUI) focusGrid(idx);
       playIndex(idx);
     }, (S.numWait || 1.2) * 1000);
   }
@@ -2785,6 +3257,7 @@
   // ================================================================== search
   function focusSearch() {
     if (state.overlay) return;
+    if (TVUI) { atvOpenSearch(); return; }
     var items = topItems();
     focusTop(items.indexOf(el.topSearch));
     el.searchInput.focus();
@@ -2959,6 +3432,7 @@
 
   function onKeyUp(e) {
     var code = e.keyCode || e.which;
+    if (code === 23) code = 13;
     if (code !== 13) return;
     // Long-press OK needs key-up events; until one is seen, OK acts on key-down (some remotes send no key-up).
     if (!state.okUpSeen) { state.okUpSeen = true; return; }
@@ -2971,6 +3445,7 @@
 
   function onKeyDown(e) {
     var code = e.keyCode || e.which;
+    if (code === 23) code = 13;
     if (state.saverOn) { resetSaver(); if (e.preventDefault) e.preventDefault(); return; }
     resetSaver();
 
@@ -2978,6 +3453,7 @@
     var t = e.target;
     if (typing(t)) {
       if (state.overlay === 'settings') { settingsKey(code, e); return; }
+      if (t.id === 'atv-q') { atvSearchKey(code, e); return; }
       if (t === el.searchInput) {
         if (code === 40 || code === 13) { e.preventDefault(); t.blur(); focusGrid(0); }
         else if (isBack(code) && code !== 8) { e.preventDefault(); t.blur(); focusGrid(state.gridIdx); }
@@ -3043,12 +3519,13 @@
       case 'menu': menuKey(code); return;
       case 'drawer': drawerKey(code); return;
       case 'player': playerKey(code); return;
-      default: guideKey(code);
+      default: if (TVUI) atvKey(code); else guideKey(code);
     }
   }
 
   function zapOrPage(dir) {
     if (state.overlay === 'player') { zap(dir); return; }
+    if (!state.overlay && state.zone === 'atv') { atvKey(dir > 0 ? 38 : 40); return; }
     if (!state.overlay && state.zone === 'grid') focusGrid(state.gridIdx + (dir > 0 ? -1 : 1) * state.cols * 3);
   }
 
@@ -3063,6 +3540,7 @@
         if (el.osd.classList.contains('off')) showOsd(); else playerMenu();
         return;
     }
+    if (state.zone === 'atv') { atvOk(); return; }
     if (state.zone === 'grid') { if (Dub) Dub.unlockAudio(); playIndex(state.gridIdx); }
     else if (state.zone === 'rail') { selectCategory(state.cats[state.railIdx].id); focusGrid(0); }
     else if (state.zone === 'top') {
@@ -3075,6 +3553,7 @@
   function longOk() {
     if (state.overlay === 'player') { runAction(S.longOk === 'menu' ? 'menu' : S.longOk); return; }
     if (state.overlay) { shortOk(); return; }
+    if (state.zone === 'atv') { if (atv.zone === 'rows') runAction(S.longOk); else atvOk(); return; }
     if (state.zone === 'grid') runAction(S.longOk);
     else shortOk();
   }

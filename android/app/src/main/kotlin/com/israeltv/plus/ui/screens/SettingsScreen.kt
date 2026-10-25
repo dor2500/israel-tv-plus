@@ -26,6 +26,7 @@ import androidx.compose.material.icons.rounded.Code
 import androidx.compose.material.icons.rounded.Face
 import androidx.compose.material.icons.rounded.Language
 import androidx.compose.material.icons.rounded.MusicNote
+import androidx.compose.material.icons.rounded.Palette
 import androidx.compose.material.icons.rounded.SystemUpdate
 import androidx.compose.material.icons.rounded.Tv
 import androidx.compose.material3.Button
@@ -61,7 +62,7 @@ import java.util.Date
 import java.util.Locale
 
 @Composable
-fun SettingsScreen(data: ChannelData?, prefs: AppPrefs, updater: Updater, onAvatar: () -> Unit) {
+fun SettingsScreen(data: ChannelData?, prefs: AppPrefs, updater: Updater, onProfiles: () -> Unit, onStyle: () -> Unit) {
     val ctx = LocalContext.current
     val haptic = LocalHapticFeedback.current
     LazyColumn(Modifier.fillMaxSize(), contentPadding = feedPadding(), flingBehavior = rememberBitChordFlingBehavior()) {
@@ -69,7 +70,8 @@ fun SettingsScreen(data: ChannelData?, prefs: AppPrefs, updater: Updater, onAvat
         item(key = "look") {
             SectionHeader("תצוגה וצליל")
             SettingsGroup {
-                SettingRow(Icons.Rounded.Face, "אווטאר", "בחירת תמונת הפרופיל", onClick = onAvatar) {
+                SettingRow(Icons.Rounded.Palette, "צבעים וסגנון", "צבעי הטפט, פלטות נוספות ומצב כהה", onClick = onStyle)
+                SettingRow(Icons.Rounded.Face, "פרופילים", "${prefs.profile.name} · ${prefs.profiles.size} פרופילים", onClick = onProfiles) {
                     AsyncImage(avatarUrl(prefs.avatar), null, Modifier.size(34.dp))
                 }
                 SettingRow(Icons.Rounded.MusicNote, "צליל פתיחה", "צליל קצר כשהאפליקציה נפתחת (שקט כשהטלפון על שקט)",
