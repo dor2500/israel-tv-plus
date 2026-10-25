@@ -3568,6 +3568,8 @@
     // media / channel keys
     if (code === 427 || code === 33) { if (e.preventDefault) e.preventDefault(); zapOrPage(1); return; }
     if (code === 428 || code === 34) { if (e.preventDefault) e.preventDefault(); zapOrPage(-1); return; }
+    // (the Android TV app sends its ⏯ / ▶ keys as Space)
+    if (code === 32 && TVUI && !state.overlay && state.zone === 'atv' && atv.zone === 'rows') { if (e.preventDefault) e.preventDefault(); atvWatch(); return; }
     if (code === 415 || code === 19 || code === 179 || code === 10252 || (code === 32 && state.overlay === 'player')) {   // 10252: Samsung ⏯
       if (e.preventDefault) e.preventDefault();
       // TV browse screen: ▶ watches the focused card (the silent preview is not something to pause)
