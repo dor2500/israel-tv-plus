@@ -2109,7 +2109,8 @@
       next = (next + dir + list.length) % list.length;
       if (!isApp(list[next]) && !appOnly(list[next])) break;
     }
-    if (S.zap === 'all' && list !== state.list) {
+    if (S.zap === 'all' && list !== state.list && TVUI) state.list = state.all;   // TV: the shelf is a list of its own
+    else if (S.zap === 'all' && list !== state.list) {
       if (state.cat !== 'ALL' || state.query) { state.query = ''; el.searchInput.value = ''; selectCategory('ALL', true); }
       next = indexInList(list[next].id);
     }
