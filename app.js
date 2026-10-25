@@ -1638,23 +1638,26 @@
     state.list = atv.rows[atv.row].list;
     if (atv.restTimer) clearTimeout(atv.restTimer);
     if (atv.stopTimer) { clearTimeout(atv.stopTimer); atv.stopTimer = null; }
-    if (state.playing === ch && !isRadioCh(ch) && !isApp(ch)) {
-      var m = media();
-      state.preview = null;
-      m.muted = false;
-      m.volume = 1;
-      if (m.paused) { var p = m.play(); if (p && p.catch) p.catch(function () {}); }
-      state.playIdx = c;
-      addRecent(ch);
-      crumb('play');
-      openPlayer();
-      fillOsd(ch);
-      showOsd();
-      updatePlayIcon();
-      if (Dub && state.hls) Dub.attach({ video: el.video, hls: state.hls, channel: ch, url: state.streamUrl });
-      return;
-    }
     playIndex(c);
+  }
+
+  /** TV: the channel already runs behind the shelves (the preview, or one watched before Back) – it just becomes
+   *  the player, with full sound, no reload and no cut. */
+  function atvResume(ch, i) {
+    var m = media();
+    var wasPreview = state.preview === ch;
+    state.preview = null;
+    m.muted = false;
+    m.volume = 1;
+    if (m.paused) { var p = m.play(); if (p && p.catch) p.catch(function () {}); }
+    state.playIdx = i;
+    addRecent(ch);
+    crumb('play');
+    openPlayer();
+    fillOsd(ch);
+    showOsd();
+    updatePlayIcon();
+    if (wasPreview && Dub && state.hls) Dub.attach({ video: el.video, hls: state.hls, channel: ch, url: state.streamUrl });
   }
 
   function atvOk() {
@@ -1814,6 +1817,7 @@
     var ch = state.list[i];
     if (isApp(ch)) { openServiceApp(ch); addRecent(ch); return; }
     if (appOnly(ch)) { showGetApp(ch); return; }
+    if (TVUI && state.playing === ch && state.overlay !== 'player') { atvResume(ch, i); return; }
     state.playIdx = i;
     state.playing = ch;
     state.preview = null;   // a channel that is watched is never the silent preview
