@@ -465,6 +465,8 @@
     else if (k === 'kids' || k === 'hiddenCats' || k === 'hidden' || k === 'hideAppOnly') {
       if (state.all.length) {
         var cat = state.cat, idx = state.gridIdx;
+        // TV: into / out of kids mode the browse screen starts over on the first card (the pill's tabs change too)
+        if (TVUI && k === 'kids') { atv.zone = 'rows'; atv.row = 0; atv.rows = []; atv.dirty = true; }
         loadChannels();
         selectCategory(k !== 'kids' && state.cats.some(function (c) { return c.id === cat; }) ? cat : 'ALL', true);
         focusGrid(k === 'kids' ? 0 : idx);
@@ -1415,7 +1417,7 @@
     ATV_ROWS.forEach(function (r) {
       var list = buckets[r[0]];
       if (IS_WEB) list = list.filter(function (x) { return !appOnly(x); }).concat(list.filter(appOnly));
-      if (list.length) rows.push({ id: r[0], title: r[1], list: list });
+      if (list.length) rows.push({ id: r[0], title: S.kids && r[0] === 'broadcast' ? 'ערוצי ישראל' : r[1], list: list });
     });
     return rows;
   }
