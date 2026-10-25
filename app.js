@@ -3390,6 +3390,8 @@
       if (state.playing && !state.preview && (state.overlay === 'player' || (TVUI && !state.overlay)) && m && !m.paused) { resetSaver(); return; }
       // an idle silent preview does not stream on under the screensaver
       if (TVUI && state.preview && state.overlay !== 'player') { stopPlayback(); el.player.classList.add('hidden'); }
+      // LG: nobody is watching – an update downloaded while a channel was on is switched to now, not at the next start
+      if (applyLiveIfIdle()) return;
       state.saverOn = true;
       el.saver.classList.remove('hidden');
       var move = function () {
