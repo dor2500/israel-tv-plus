@@ -27,7 +27,9 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.ripple
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.Stable
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -46,6 +48,14 @@ import coil3.compose.AsyncImage
 import com.israeltv.plus.data.Channel
 
 val CardShape = RoundedCornerShape(26.dp)
+
+/** The shared-element key of the card that was tapped last: the player grows out of it and shrinks back into it. */
+@Stable
+class PlayOrigin {
+    var key: String? = null
+}
+
+val LocalPlayOrigin = staticCompositionLocalOf { PlayOrigin() }
 
 /** Labels are always right-aligned (Hebrew), also when the channel name is Latin. */
 private val Rtl = TextStyle(textDirection = TextDirection.Rtl, textAlign = TextAlign.Start)
@@ -72,7 +82,9 @@ fun ChannelCard(
     subtitle: String,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
+    sharedKey: String? = null,
 ) {
+    val origin = LocalPlayOrigin.current
     val interaction = remember { MutableInteractionSource() }
     val haptic = LocalHapticFeedback.current
     val scheme = MaterialTheme.colorScheme
@@ -82,11 +94,13 @@ fun ChannelCard(
                 .fillMaxWidth()
                 .aspectRatio(16f / 9.5f)
                 .pressPhysics(interaction)
+                .then(if (sharedKey != null) Modifier.sharedContainer(sharedKey, CardShape) else Modifier)
                 .clip(CardShape)
                 .background(scheme.surfaceContainerHigh.copy(alpha = 0.75f))
                 .specularBorder(CardShape)
                 .clickable(interaction, ripple()) {
                     haptic.performHapticFeedback(HapticFeedbackType.Confirm)
+                    origin.key = sharedKey
                     onClick()
                 },
             contentAlignment = Alignment.Center,
@@ -186,8 +200,9 @@ fun ChannelShelf(
     onPlay: (Channel) -> Unit,
     count: Int? = null,
     onSeeAll: (() -> Unit)? = null,
+    modifier: Modifier = Modifier,
 ) {
-    Column(Modifier.padding(bottom = 26.dp)) {
+    Column(modifier.padding(bottom = 26.dp)) {
         SectionHeader(title, count, onSeeAll)
         LazyRow(
             contentPadding = PaddingValues(horizontal = 16.dp),
@@ -195,7 +210,7 @@ fun ChannelShelf(
             flingBehavior = rememberBitChordFlingBehavior(),
         ) {
             items(channels, key = { it.id }) { ch ->
-                ChannelCard(ch, logo(ch), subtitle(ch), { onPlay(ch) }, Modifier.width(184.dp))
+                ChannelCard(ch, logo(ch), subtitle(ch), { onPlay(ch) }, Modifier.width(184.dp), sharedKey = "$title:${ch.id}")
             }
         }
     }

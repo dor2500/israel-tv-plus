@@ -1,6 +1,12 @@
 package com.israeltv.plus.ui.components
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.expandVertically
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.shrinkVertically
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.spring
 import androidx.compose.foundation.background
@@ -27,7 +33,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Favorite
@@ -55,13 +60,15 @@ import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.lerp
+import androidx.compose.ui.util.lerp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
 import coil3.compose.AsyncImage
 import com.israeltv.plus.data.avatarUrl
 
 enum class Tab(val label: String, val title: String, val icon: ImageVector) {
-    Home("בית", "ישראל TV+", Icons.Rounded.Home),
+    Home("בית", "ישראל TV+‎", Icons.Rounded.Home),
     Channels("ערוצים", "ערוצים", Icons.Rounded.LiveTv),
     Mine("שלי", "הרשימה שלי", Icons.Rounded.Favorite),
     Settings("הגדרות", "הגדרות", Icons.Rounded.Settings),
@@ -96,11 +103,12 @@ fun AmbientBackground(modifier: Modifier = Modifier) {
 }
 
 /**
- * Apple TV header: the screen title on the right, the 3D Noto Emoji avatar (42 dp) on the left, over a blurred
- * band that fades out downwards so the feed scrolls behind it.
+ * Apple TV header: the screen title on the right, the profile's 3D Noto Emoji avatar (42 dp) on the left, over a
+ * heavy frosted band (real backdrop blur, the glass recipe) that fades out downwards so the feed scrolls behind it.
+ * The avatar is a shared element: it flies here from the "who's watching" screen.
  */
 @Composable
-fun AppHeader(title: String, avatar: String, onAvatar: () -> Unit, modifier: Modifier = Modifier) {
+fun AppHeader(title: String, profileId: String, avatar: String, onAvatar: () -> Unit, modifier: Modifier = Modifier) {
     val scheme = MaterialTheme.colorScheme
     val haptic = LocalHapticFeedback.current
     Box(modifier.fillMaxWidth().zIndex(10f)) {
@@ -108,13 +116,8 @@ fun AppHeader(title: String, avatar: String, onAvatar: () -> Unit, modifier: Mod
             Modifier
                 .matchParentSize()
                 .frostedGlass(
-                    RectangleShape, scheme.surfaceContainerLowest.copy(alpha = 0.35f), blur = 22.dp, border = false,
-                    mask = Brush.verticalGradient(0f to Color.Black, 0.7f to Color.Black, 1f to Color.Transparent),
-                )
-                .background(
-                    Brush.verticalGradient(
-                        listOf(scheme.surfaceContainerLowest.copy(alpha = 0.85f), scheme.surfaceContainerLowest.copy(alpha = 0f))
-                    )
+                    RectangleShape, glassTint(), blur = 36.dp, border = false,
+                    mask = Brush.verticalGradient(0f to Color.Black, 0.65f to Color.Black, 1f to Color.Transparent),
                 )
         )
         Row(
@@ -124,8 +127,9 @@ fun AppHeader(title: String, avatar: String, onAvatar: () -> Unit, modifier: Mod
             Text(
                 title,
                 Modifier.weight(1f),
+                style = MaterialTheme.typography.headlineMedium,
                 fontSize = 30.sp,
-                fontWeight = FontWeight.ExtraBold,
+                fontWeight = FontWeight.Black,
                 color = scheme.onSurface,
                 maxLines = 1,
             )
@@ -134,7 +138,10 @@ fun AppHeader(title: String, avatar: String, onAvatar: () -> Unit, modifier: Mod
                 Modifier
                     .size(42.dp)
                     .pressPhysics(interaction, tilt = false)
-                    .frostedGlass(CircleShape, scheme.surfaceContainerHighest.copy(alpha = 0.6f))
+                    .sharedAvatar("avatar:$profileId")
+                    .clip(RoundedCornerShape(14.dp))
+                    .background(scheme.primaryContainer)
+                    .specularBorder(RoundedCornerShape(14.dp), alpha = 0.32f)
                     .clickable(interaction, null) {
                         haptic.performHapticFeedback(HapticFeedbackType.ContextClick)
                         onAvatar()
@@ -149,13 +156,15 @@ fun AppHeader(title: String, avatar: String, onAvatar: () -> Unit, modifier: Mod
 }
 
 /**
- * One floating frosted capsule (68 dp) with all five destinations; the active tab sits on a sliding
- * secondaryContainer pill. Search opens the search overlay.
+ * The floating frosted capsule with all five destinations (icon over label, the active one on a soft tonal pill).
+ * Scrolling down morphs it into a compact centred pod (92% -> 72% of the width, 70 -> 56 dp) and folds the labels
+ * away; scrolling up opens it again.
  */
 @Composable
 fun FloatingTabBar(
     selected: Tab,
     searchOpen: Boolean,
+    collapsed: Boolean,
     onSelect: (Tab) -> Unit,
     onSearch: () -> Unit,
     modifier: Modifier = Modifier,
@@ -163,14 +172,19 @@ fun FloatingTabBar(
     val scheme = MaterialTheme.colorScheme
     val haptic = LocalHapticFeedback.current
     val pill = RoundedCornerShape(50)
+    val p by animateFloatAsState(
+        if (collapsed) 1f else 0f,
+        spring(dampingRatio = 0.8f, stiffness = Spring.StiffnessMediumLow),
+        label = "collapse",
+    )
     BoxWithConstraints(
         modifier
             .zIndex(10f)
             .navigationBarsPadding()
-            .padding(horizontal = 24.dp, vertical = 20.dp)
-            .height(68.dp)
-            .fillMaxWidth()
-            .frostedGlass(pill, scheme.surfaceContainerHighest.copy(alpha = 0.85f), blur = 25.dp)
+            .padding(bottom = 18.dp)
+            .fillMaxWidth(lerp(0.92f, 0.72f, p))
+            .height(lerp(70.dp, 56.dp, p))
+            .frostedGlass(pill, glassTint(), blur = 36.dp)
     ) {
         val count = Tab.entries.size + 1
         val itemWidth: Dp = maxWidth / count
@@ -186,18 +200,18 @@ fun FloatingTabBar(
                 .offset(x = x)
                 .width(itemWidth)
                 .fillMaxHeight()
-                .padding(6.dp)
+                .padding(horizontal = 4.dp, vertical = 6.dp)
                 .clip(pill)
-                .background(scheme.secondaryContainer)
+                .background(scheme.primaryContainer.copy(alpha = 0.4f))
         )
         Row(Modifier.fillMaxSize(), horizontalArrangement = Arrangement.SpaceEvenly) {
             Tab.entries.forEach { tab ->
-                BarItem(tab.icon, tab.label, !searchOpen && tab == selected, Modifier.weight(1f)) {
+                BarItem(tab.icon, tab.label, !searchOpen && tab == selected, !collapsed, Modifier.weight(1f)) {
                     haptic.performHapticFeedback(HapticFeedbackType.SegmentTick)
                     onSelect(tab)
                 }
             }
-            BarItem(Icons.Rounded.Search, "חיפוש", searchOpen, Modifier.weight(1f)) {
+            BarItem(Icons.Rounded.Search, "חיפוש", searchOpen, !collapsed, Modifier.weight(1f)) {
                 haptic.performHapticFeedback(HapticFeedbackType.SegmentTick)
                 onSearch()
             }
@@ -206,9 +220,9 @@ fun FloatingTabBar(
 }
 
 @Composable
-private fun BarItem(icon: ImageVector, label: String, active: Boolean, modifier: Modifier, onClick: () -> Unit) {
+private fun BarItem(icon: ImageVector, label: String, active: Boolean, showLabel: Boolean, modifier: Modifier, onClick: () -> Unit) {
     val scheme = MaterialTheme.colorScheme
-    val color = if (active) scheme.onSecondaryContainer else scheme.onSurfaceVariant
+    val color = if (active) scheme.onPrimaryContainer else scheme.onSurfaceVariant
     Column(
         modifier
             .fillMaxHeight()
@@ -216,7 +230,9 @@ private fun BarItem(icon: ImageVector, label: String, active: Boolean, modifier:
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
     ) {
-        Icon(icon, label, Modifier.size(24.dp), tint = color)
-        Text(label, fontSize = 11.sp, fontWeight = if (active) FontWeight.ExtraBold else FontWeight.Medium, color = color)
+        Icon(icon, label, Modifier.size(26.dp), tint = if (active) scheme.onSurface else color)
+        AnimatedVisibility(showLabel, enter = expandVertically() + fadeIn(), exit = shrinkVertically() + fadeOut()) {
+            Text(label, fontSize = 11.sp, fontWeight = if (active) FontWeight.ExtraBold else FontWeight.Medium, color = if (active) scheme.onSurface else color)
+        }
     }
 }

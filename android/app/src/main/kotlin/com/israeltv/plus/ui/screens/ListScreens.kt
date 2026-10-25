@@ -18,6 +18,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -78,7 +79,7 @@ fun LazyListScope.channelGrid(
             Modifier.fillMaxWidth().padding(horizontal = 16.dp).padding(bottom = 18.dp),
             horizontalArrangement = Arrangement.spacedBy(12.dp),
         ) {
-            row.forEach { ch -> ChannelCard(ch, logo(ch), subtitle(ch), { onPlay(ch) }, Modifier.weight(1f)) }
+            row.forEach { ch -> ChannelCard(ch, logo(ch), subtitle(ch), { onPlay(ch) }, Modifier.weight(1f), sharedKey = keyPrefix + ch.id) }
             if (row.size == 1) Spacer(Modifier.weight(1f))
         }
     }
@@ -104,9 +105,16 @@ fun ChannelsScreen(
     logo: (Channel) -> String,
     subtitle: (Channel) -> String,
     onPlay: (Channel, List<Channel>) -> Unit,
+    listState: LazyListState = rememberLazyListState(),
 ) {
-    val listState = rememberLazyListState()
-    LaunchedEffect(category) { listState.scrollToItem(0) }
+    // a new category starts at the top; coming back from the player keeps the place
+    var shown by remember { mutableStateOf(category) }
+    LaunchedEffect(category) {
+        if (category != shown) {
+            shown = category
+            listState.scrollToItem(0)
+        }
+    }
     LazyColumn(Modifier.fillMaxSize(), listState, feedPadding(), flingBehavior = rememberBitChordFlingBehavior()) {
         if (data == null) {
             items(4) { ShelfSkeleton() }
