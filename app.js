@@ -3256,12 +3256,17 @@
       state.saverOn = false;
       el.saver.classList.add('hidden');
       clearInterval(saverMove);
+      // TV: the preview stopped with the screensaver – the focused card starts it again
+      if (TVUI && !state.overlay && state.zone === 'atv' && !state.playing && atv.zone === 'rows') atvSettle(atvCurrent());
     }
     if (state.saverTimer) clearTimeout(state.saverTimer);
     if (!S.saver) return;
     state.saverTimer = setTimeout(function () {
       var m = media();
-      if (state.overlay === 'player' && m && !m.paused) { resetSaver(); return; }
+      // a channel that is watched (also one left on behind the TV shelves) keeps the screen
+      if (state.playing && !state.preview && (state.overlay === 'player' || (TVUI && !state.overlay)) && m && !m.paused) { resetSaver(); return; }
+      // an idle silent preview does not stream on under the screensaver
+      if (TVUI && state.preview && state.overlay !== 'player') { stopPlayback(); el.player.classList.add('hidden'); }
       state.saverOn = true;
       el.saver.classList.remove('hidden');
       var move = function () {
