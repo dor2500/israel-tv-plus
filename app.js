@@ -1474,6 +1474,7 @@
     var keepCh = atv.rows[atv.row] && atv.rows[atv.row].list[atv.cols[atv.row] || 0];
     var keepCol = atv.cols[atv.row] || 0;
     atv.rows = atvRowsData();
+    if (!atv.search) atv.shelfIds = atv.rows.map(function (x) { return x.id; });
     atv.built = true;
     atv.dirty = false;
     atv.mineDirty = false;
@@ -1532,7 +1533,8 @@
 
   function atvRenderPill() {
     var tabs = ATV_TABS.filter(function (t) {
-      return t[1] === 'top' || t[1] === 'search' || t[1] === 'settings' || atvRowIndex(t[1]) !== -1 || (atv.search && t[1] !== 'mine');
+      return t[1] === 'top' || t[1] === 'search' || t[1] === 'settings' || atvRowIndex(t[1]) !== -1 ||
+        (atv.search && (atv.shelfIds || []).indexOf(t[1]) !== -1);   // searching: the tabs of the shelves it hides
     });
     if (S.kids) tabs = tabs.filter(function (t) { return t[1] !== 'settings'; }).concat([['יציאה ממצב ילדים', 'kids-exit']]);
     atv.tabs = tabs;
