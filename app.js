@@ -2564,12 +2564,12 @@
     if (p === 'touch') return '';
     if (p === 'keyboard') {
       return inPlayer
-        ? h('▲▼', 'ערוץ') + h('◄', 'רשימת ערוצים') + h('Enter', 'אפשרויות') + h('F', 'מסך מלא') + h('D', 'דיבוב') + h('Esc', 'למדריך')
+        ? h('▲▼', 'ערוץ') + h('◄', 'רשימת ערוצים') + h('Enter', 'אפשרויות') + h('F', 'מסך מלא') + h('D', 'דיבוב') + h('Esc', TVUI ? 'לערוצים' : 'למדריך')
         : h('Enter', 'צפייה') + h('קליק ימני / O', 'אפשרויות') + h('/', 'חיפוש') + h('S', 'הגדרות') + h('F', 'מסך מלא') + h('0-9', 'מספר ערוץ');
     }
     var nav = inPlayer ? h(S.upNext ? '▲ הבא ▼ קודם' : '▲▼', 'החלפת ערוץ') + h('◄', 'רשימת ערוצים') + h('OK', 'אפשרויות')
       : h('OK', 'צפייה') + longOk;
-    var base = nav + h('BACK', inPlayer ? 'למדריך' : 'חזרה') + (inPlayer ? '' : h('0-9', 'מספר ערוץ'));
+    var base = nav + h('BACK', inPlayer ? (TVUI ? 'לערוצים' : 'למדריך') : 'חזרה') + (inPlayer ? '' : h('0-9', 'מספר ערוץ'));
     if (p === 'colors') return base + colours;
     if (p === 'magic') return base + (inPlayer ? '' : '<span class="hint">כפתורי צבע: גם דרך ··· בשלט</span>') + colours;
     return base + h('☰', 'הגדרות'); // android remotes: no colour keys
