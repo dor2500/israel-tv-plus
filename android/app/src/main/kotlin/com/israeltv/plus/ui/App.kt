@@ -167,7 +167,11 @@ fun ItvApp(
                 if (updateOpen && page == Page.Feed) UpdateModal(updater) { updateOpen = false }
             }
         }
-        info?.let { ch -> ChannelInfoSheet(ch, logo(ch), prefs, onPlay = { onPlay(ch, listOf(ch)) }, onDismiss = { info = null }) }
+        info?.let { ch ->
+            // played from the sheet, next / previous go through its category (not a one-channel playlist)
+            val around = data?.categories?.firstOrNull { it.key == ch.category }?.channels ?: listOf(ch)
+            ChannelInfoSheet(ch, logo(ch), prefs, onPlay = { onPlay(ch, around) }, onDismiss = { info = null })
+        }
 
         if (intro) {
             Box(Modifier.fillMaxSize().zIndex(100f)) {
