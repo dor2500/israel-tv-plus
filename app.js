@@ -742,7 +742,7 @@
     state.recents = [ch.id].concat(state.recents.filter(function (id) { return id !== ch.id; })).slice(0, MAX_RECENTS);
     lsSet('israel_tv_recents', state.recents);
     homeDirty = true;
-    atv.dirty = true;
+    atv.mineDirty = true;
     S.lastId = ch.id;
     saveSettings();
     var has = state.cats.some(function (c) { return c.id === 'RECENT'; });
@@ -1413,11 +1413,7 @@
       if (b === 'radio' && !c.imported && /ספורט/.test(c.name)) buckets.sports.unshift(c);
       buckets[b].push(c);
     });
-    var rows = [], seen = {}, mine = [];
-    state.recents.concat(state.favorites).forEach(function (id) {
-      var i = indexInAll(id);
-      if (i !== -1 && !seen[id]) { seen[id] = 1; mine.push(state.all[i]); }
-    });
+    var rows = [], mine = atvMineList();
     if (mine.length) rows.push({ id: 'mine', title: 'צפייה לאחרונה ומועדפים', list: mine });
     ATV_ROWS.forEach(function (r) {
       var list = buckets[r[0]];
@@ -1425,6 +1421,38 @@
       if (list.length) rows.push({ id: r[0], title: S.kids && r[0] === 'broadcast' ? 'ערוצי ישראל' : r[1], list: list });
     });
     return rows;
+  }
+
+  function atvTitleHtml(row) {
+    return esc(row.title) + (row.list.length > 30 && row.id !== 'search' ? '<small>' + row.list.length + '</small>' : '');
+  }
+
+  /** The first shelf: recently watched, then favourites. */
+  function atvMineList() {
+    var seen = {}, mine = [];
+    state.recents.concat(state.favorites).forEach(function (id) {
+      var i = indexInAll(id);
+      if (i !== -1 && !seen[id]) { seen[id] = 1; mine.push(state.all[i]); }
+    });
+    return mine;
+  }
+
+  /** After watching (a new recent) only the first shelf changes: redraw just that one, not all the shelves. */
+  function atvRefreshMine() {
+    atv.mineDirty = false;
+    var r = atvRowIndex('mine'), list = atvMineList();
+    if (atv.search) return;
+    if (r === -1 || !list.length) { atvBuild(); return; }   // the shelf appears / goes: the rows shift
+    var keep = atv.rows[r].list[atv.cols[r] || 0], c = 0;
+    for (var k = 0; k < list.length && keep; k++) if (list[k].id === keep.id) { c = k; break; }
+    atv.rows[r].list = list;
+    atv.cols[r] = c;
+    atv.rowEls[r].querySelector('.atv-row-title').innerHTML = atvTitleHtml(atv.rows[r]);
+    if (atv.focusedEl && atv.items[r].indexOf(atv.focusedEl) !== -1) atv.focusedEl = null;
+    atv.tracks[r].innerHTML = '';
+    atv.items[r] = [];
+    atv.rendered[r] = 0;
+    atvRender(r, Math.max(ATV_FIRST, c + ATV_MORE));
   }
 
   function atvRowIndex(id) { for (var i = 0; i < atv.rows.length; i++) if (atv.rows[i].id === id) return i; return -1; }
@@ -1436,6 +1464,7 @@
     atv.rows = atvRowsData();
     atv.built = true;
     atv.dirty = false;
+    atv.mineDirty = false;
     atv.cols = atv.rows.map(function () { return 0; });
     atv.rendered = []; atv.tracks = []; atv.items = []; atv.rowEls = []; atv.focusedEl = null;
     var box = $('atv-rows');
@@ -1444,8 +1473,7 @@
     atv.rows.forEach(function (row, r) {
       var sec = document.createElement('section');
       sec.className = 'atv-row';
-      sec.innerHTML = '<h3 class="atv-row-title">' + esc(row.title) + (row.list.length > 30 && row.id !== 'search' ? '<small>' + row.list.length + '</small>' : '') +
-        '</h3><div class="atv-track"></div>';
+      sec.innerHTML = '<h3 class="atv-row-title">' + atvTitleHtml(row) + '</h3><div class="atv-track"></div>';
       atv.rowEls.push(sec);
       atv.tracks.push(sec.querySelector('.atv-track'));
       atv.items.push([]);
@@ -1776,6 +1804,7 @@
   /** Back to the browse screen (after the player, settings, a dialog). */
   function atvRestore() {
     if (!atv.built || atv.dirty) atvBuild();
+    else if (atv.mineDirty) atvRefreshMine();
     state.zone = 'atv';
     if (atv.zone === 'search') atv.zone = 'rows';
     var row = atv.rows[atv.row];
