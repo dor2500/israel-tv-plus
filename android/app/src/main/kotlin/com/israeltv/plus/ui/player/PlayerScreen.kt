@@ -109,6 +109,7 @@ import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.media3.common.AudioAttributes
 import androidx.media3.common.C
 import androidx.media3.common.MediaItem
+import androidx.media3.common.MediaMetadata
 import androidx.media3.common.MimeTypes
 import androidx.media3.common.PlaybackException
 import androidx.media3.common.Player
@@ -117,6 +118,7 @@ import androidx.media3.common.Tracks
 import androidx.media3.datasource.DefaultHttpDataSource
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.exoplayer.source.DefaultMediaSourceFactory
+import androidx.media3.session.MediaSession
 import androidx.media3.ui.AspectRatioFrameLayout
 import androidx.media3.ui.PlayerView
 import com.israeltv.plus.data.AppPrefs
@@ -226,6 +228,15 @@ fun PlayerScreen(
         }
     }
 
+    // a media session (no service, no notification): play / pause in the picture-in-picture window and from
+    // headset / Bluetooth buttons. Released before the player (effects are disposed in reverse order).
+    DisposableEffect(player) {
+        val session = runCatching {
+            MediaSession.Builder(context, player).setId("player-" + System.nanoTime()).build()
+        }.getOrNull()
+        onDispose { session?.release() }
+    }
+
     fun switchTo(i: Int) {
         index = (i + list.size) % list.size
         touchTick++
@@ -242,7 +253,8 @@ fun PlayerScreen(
             buffering = false
             return@LaunchedEffect
         }
-        val item = MediaItem.Builder().setUri(url)
+        val item = MediaItem.Builder().setUri(url).setMediaId(current.id)
+            .setMediaMetadata(MediaMetadata.Builder().setTitle(current.name).setStation(current.name).build())
         // every TV channel is HLS, also the ones whose address has no .m3u8 (Samsung TV Plus redirects)
         if (current.url.contains(".m3u8", ignoreCase = true) || !current.isRadio) item.setMimeType(MimeTypes.APPLICATION_M3U8)
         player.setMediaItem(item.build())
