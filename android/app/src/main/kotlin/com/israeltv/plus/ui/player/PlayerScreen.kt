@@ -109,6 +109,7 @@ import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.media3.common.AudioAttributes
 import androidx.media3.common.C
 import androidx.media3.common.MediaItem
+import androidx.media3.common.MediaMetadata
 import androidx.media3.common.MimeTypes
 import androidx.media3.common.PlaybackException
 import androidx.media3.common.Player
@@ -117,6 +118,7 @@ import androidx.media3.common.Tracks
 import androidx.media3.datasource.DefaultHttpDataSource
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.exoplayer.source.DefaultMediaSourceFactory
+import androidx.media3.session.MediaSession
 import androidx.media3.ui.AspectRatioFrameLayout
 import androidx.media3.ui.PlayerView
 import com.israeltv.plus.data.AppPrefs
@@ -207,6 +209,12 @@ fun PlayerScreen(
                 onPlaying(isPlaying)
             }
             override fun onPlayerError(e: PlaybackException) {
+                // a live stream paused for a while fell behind its window: back to the live edge, no error card
+                if (e.errorCode == PlaybackException.ERROR_CODE_BEHIND_LIVE_WINDOW) {
+                    player.seekToDefaultPosition()
+                    player.prepare()
+                    return
+                }
                 error = describe(e)
                 buffering = false
             }
@@ -218,6 +226,15 @@ fun PlayerScreen(
             player.release()
             onPlaying(false)
         }
+    }
+
+    // a media session (no service, no notification): play / pause in the picture-in-picture window and from
+    // headset / Bluetooth buttons. Released before the player (effects are disposed in reverse order).
+    DisposableEffect(player) {
+        val session = runCatching {
+            MediaSession.Builder(context, player).setId("player-" + System.nanoTime()).build()
+        }.getOrNull()
+        onDispose { session?.release() }
     }
 
     fun switchTo(i: Int) {
@@ -236,7 +253,8 @@ fun PlayerScreen(
             buffering = false
             return@LaunchedEffect
         }
-        val item = MediaItem.Builder().setUri(url)
+        val item = MediaItem.Builder().setUri(url).setMediaId(current.id)
+            .setMediaMetadata(MediaMetadata.Builder().setTitle(current.name).setStation(current.name).build())
         // every TV channel is HLS, also the ones whose address has no .m3u8 (Samsung TV Plus redirects)
         if (current.url.contains(".m3u8", ignoreCase = true) || !current.isRadio) item.setMimeType(MimeTypes.APPLICATION_M3U8)
         player.setMediaItem(item.build())
@@ -268,12 +286,15 @@ fun PlayerScreen(
         }
     }
 
-    // the app in the background: pause (except in picture-in-picture)
+    // the app in the background: pause. Picture-in-picture keeps the activity started (only paused), so ON_STOP
+    // there means the floating window was closed – then it pauses too. Back in front it plays again only if it
+    // was playing when it left (a channel the user paused stays paused).
     val lifecycle = LocalLifecycleOwner.current.lifecycle
-    DisposableEffect(lifecycle, inPip) {
+    DisposableEffect(lifecycle) {
+        var resume = false
         val obs = LifecycleEventObserver { _, e ->
-            if (e == Lifecycle.Event.ON_STOP && !inPip) player.pause()
-            if (e == Lifecycle.Event.ON_START) { player.volume = 1.0f; player.play() }
+            if (e == Lifecycle.Event.ON_STOP) { resume = player.playWhenReady; player.pause() }
+            if (e == Lifecycle.Event.ON_START && resume) { resume = false; player.volume = 1.0f; player.play() }
         }
         lifecycle.addObserver(obs)
         onDispose { lifecycle.removeObserver(obs) }
