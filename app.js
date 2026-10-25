@@ -2831,6 +2831,7 @@
     if (PLATFORM === 'android') return 'android';
     if (PLATFORM === 'windows') return 'windows';
     if (PLATFORM === 'tizen') return 'tizen';
+    if (PLATFORM === 'webos') return 'webos';
     if (PLATFORM === 'desktop') return /Mac/.test(UA) ? 'mac' : 'linux';
     return '';
   }
