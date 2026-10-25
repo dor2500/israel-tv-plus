@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="ynetBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7F1D1D" />
+      <stop offset="100%" stop-color="#B91C1C" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  <rect width="512" height="512" rx="96" fill="url(#ynetBg)"/>
+  <rect x="16" y="16" width="480" height="480" rx="84" fill="none" stroke="#F87171" stroke-width="6" opacity="0.4" />
+  
+  <!-- Central Emblem -->
+  <circle cx="256" cy="220" r="140" fill="#EF4444" opacity="0.3" filter="url(#glow)"/>
+  
+  <!-- ynet Text -->
+  <text x="256" y="270" font-family="system-ui, -apple-system, sans-serif" font-size="140" font-weight="900" fill="#FFFFFF" text-anchor="middle" letter-spacing="-3">ynet</text>
+  
+  <!-- Live Pill -->
+  <rect x="186" y="325" width="140" height="42" rx="21" fill="#DC2626" stroke="#FECACA" stroke-width="2" />
+  <circle cx="216" cy="346" r="7" fill="#FFFFFF" />
+  <text x="264" y="355" font-family="'Heebo', 'Rubik', sans-serif" font-size="22" font-weight="900" fill="#FFFFFF" text-anchor="middle">LIVE</text>
+  
+  <!-- Top brand pill -->
+  <rect x="176" y="60" width="160" height="30" rx="15" fill="#991B1B" opacity="0.6" />
+  <text x="256" y="81" font-family="'Heebo', 'Rubik', sans-serif" font-size="16" font-weight="800" fill="#FCA5A5" text-anchor="middle">ידיעות אחרונות</text>
+</svg>
