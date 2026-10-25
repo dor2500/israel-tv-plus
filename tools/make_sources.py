@@ -185,7 +185,7 @@ def main():
     L += table("📻 רדיו", radio)
     L += ["", "## 📲 מנויים ואפליקציות", "", "| # | שירות | אפליקציה בטלפון | אפליקציה ב-Android TV | אתר |", "|---|---|---|---|---|"]
     for c in apps:
-        L.append(f"| {c['number']} | {md(c['name'])} | `{c['android']}` | `{c['androidTv']}` | {c['site']} |")
+        L.append(f"| {c.get('number', '')} | {md(c.get('name', ''))} | `{c.get('android', '')}` | `{c.get('androidTv', '')}` | {c.get('site', '')} |")
     L += ["", "## רכיבים וספריות", "",
           "| רכיב | מקור | רישיון |", "|---|---|---|",
           "| hls.js (`assets/hls.min.js`) | [video-dev/hls.js](https://github.com/video-dev/hls.js) | Apache-2.0 |",

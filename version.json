@@ -1,60 +1,54 @@
 {
-  "version": "4.3.5",
-  "code": 202610252100,
-  "app": 505,
+  "version": "4.3.6",
+  "code": 202610252118,
+  "app": 506,
   "shell": 3,
   "date": "2026-10-25",
   "notes": [
-    "הסרת כל הערוצים הזרים – ישראל TV+ נטו 100% ישראלי:",
-    "הוסרו כל 2,628 הערוצים הזרים והבינלאומיים (talkSPORT, ACC, Pluto TV, אירופה, רוסיה וארה\"ב) – נשארו אך ורק ערוצים ישראליים אמיתיים.",
-    "קטלוג ישראלי עשיר וממוקד של 316 ערוצי טלוויזיה ורדיו ישראליים מקוריים בלבד.",
-    "שחזור והרחבת ערוצי YES ו-HOT, ספורט וילדים:",
-    "כל ערוצי הסרטים והסדרות: yes קולנוע קומדיה, yes דרמה, yes קלאסי, yes אקשן, yes ישראלי, yes TV דרמה, yes TV אקשן, yes TV קומדיה, yes דוקו.",
-    "כל ערוצי HOT: HOT סינמה 1-4, HOT אקשן ומתח, HOT קומדי, HOT דרמה, HOT zone, HOT ריאליטי, HOT ערוץ החופש, HOT 8.",
-    "כל ערוצי הספורט הישראליים: ספורט 1-4, ספורט 5 HD, ספורט 5 לייב, ספורט 5 כוכבים, ONE HD, ONE 2 HD.",
-    "כל ערוצי הילדים בעברית: כאן חינוכית 23, הופ! ילדים, זום ZOOM, לולי, ג'וניור, בייבי, ניק ג'וניור, טין ניק.",
-    "ערוצי האוכל, הלייף סטייל והמוזיקה: ערוץ האוכל והבישול (קשת/FreeTV), ערוץ החיים הטובים HD, ערוץ 24, ערוץ ויוה, הערוץ הים תיכוני, ערוץ הדרמות הטורקיות פלוס.",
-    "כל 105 תחנות הרדיו הישראליות (כאן ב, כאן גימל, גלגלצ, גל\"צ, 103FM, 99FM, רדיו תל אביב ועוד).",
-    "לוגואים מקוריים ורשמיים באיכות גבוהה לכל ערוץ:",
-    "החלפת כל הריבועים והטקסטים בלוגואים הרשמיים, החדים והאמיתיים של שידורי HOT, yes, ספורט 5, קשת, רשת, כאן ועוד.",
-    "תיקון ממשק הטלוויזיה ומניעת חפיפת לוח השידורים (Zero EPG Overlap):",
-    "פתרון מוחלט לחפיפה שנראתה במסך בין תיבת ה-EPG למדף הערוצים הראשון: תכנון מדויק וקומפקטי של אזור המידע עם מרווח נדיב וברור מעל המדפים.",
-    "הגדלת סמלי הערוצים בכרטיסים ב-25% לקריאות מושלמת ממרחק הסלון.",
-    "חלקות שיא (60FPS Silky Smooth):",
-    "ביטול אלפי הערוצים הזרים הפך את הממשק למהיר וקליל פי כמה.",
-    "אפס לאגים, תגובה מיידית לחיצים ולגלגלת השלט."
+    "הרחבה וריכוז מקיף של כל ערוצי הילדים והנוער בישראל (100% בעברית, מאומתים ופעילים):",
+    "סריקה מעמיקה של הרשת ואימות כל הזנה שהיא משדרת מקטעי וידאו אמיתיים ורציפים.",
+    "כל ערוצי הילדים המובילים בישראל: כאן חינוכית 23 HD, ערוץ הופ! ילדים HD, ערוץ לולי לפעוטות (בעברית), ניק ג'וניור ישראל (Nick Jr.), ערוץ זום ZOOM ילדים ונוער HD, ערוץ ג'וניור Junior HD, ערוץ בייבי Baby TV (בעברית), yes קולנוע ילדים HD & FHD (24/7 סרטי אנימציה מדובבים), ערוץ וויז WIZ לילדים ונוער, ערוץ טין ניק TeenNick (בעברית), ערוץ דיסני ישראל HD, ערוץ 16 ילדים ונוער, ו-HOT באזז ערוץ הצעירים.",
+    "שירי ילדים ודיסני ברדיו: רדיוס 100% ילדים, רדיוס 100% ערוץ הכוכבים ורדיוס 100% שירי דיסני בעברית.",
+    "לוגואים מקוריים, רשמיים ווקטוריים לכל ערוצי הילדים:",
+    "הטמעת לוגואים רשמיים (SVG/PNG) מתוך האפליקציה (ללא תלות בשרתים חיצוניים או חסימות רשת).",
+    "עיצוב ייעודי ורשמי לערוץ וויז yes WIZ, HOT באזז ו-yes קולנוע ילדים.",
+    "מספור ערוצים רציף לחלוטין 1..316 ללא דילוגים:",
+    "כל ערוצי השידור המרכזיים מקובעים למספרם המוכר (ערוץ 9, 11, 12, 13, 14, 15, 23, 24, 99).",
+    "כל שאר הערוצים מסודרים ברצף רציף ומושלם ללא חורים.",
+    "עדכון מיידי ואוטומטי מתוך האפליקציה בטלוויזיה:",
+    "הקוד והקטלוג מתעדכנים מיידית במכשירים ללא צורך בהתקנה מחדש של קובץ IPK."
   ],
   "native": {
     "android": {
-      "version": "4.3.5",
-      "app": 505,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.5/IsraelTVPlus-android.apk"
+      "version": "4.3.6",
+      "app": 506,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.6/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "4.3.5",
-      "app": 505,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.5/IsraelTVPlus-windows-setup.exe"
+      "version": "4.3.6",
+      "app": 506,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.6/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "4.3.5",
-      "app": 505,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.5/com.israeltv.plus_all.ipk",
+      "version": "4.3.6",
+      "app": 506,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.6/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "4.3.5",
-      "app": 505,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.5/IsraelTVPlus-tizen-project.zip"
+      "version": "4.3.6",
+      "app": 506,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.6/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "4.3.5",
-      "app": 505,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.5/IsraelTVPlus-macos-arm64.zip"
+      "version": "4.3.6",
+      "app": 506,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.6/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "4.3.5",
-      "app": 505,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.5/IsraelTVPlus-linux-x64.zip"
+      "version": "4.3.6",
+      "app": 506,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.6/IsraelTVPlus-linux-x64.zip"
     }
   }
 }
