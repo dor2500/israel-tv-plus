@@ -587,6 +587,7 @@
     el.grid.innerHTML = '';
     cards = [];
     rendered = 0;
+    if (TVUI) return;   // the TV browse screen has its own shelves: no hidden grid to build (start-up time on weak TVs)
     if (!state.list.length) {
       el.grid.innerHTML = '<div class="grid-empty">' + (state.query ? 'לא נמצאו ערוצים לחיפוש הזה' : 'אין כאן ערוצים עדיין') + '</div>';
       updateHero(null);
@@ -633,6 +634,7 @@
   // ================================================================== hero (debounced: holding an arrow stays smooth)
   function updateHero(ch) {
     if (state.heroTimer) clearTimeout(state.heroTimer);
+    if (TVUI) return;   // (the guide's hero strip is not on the TV browse screen)
     state.heroTimer = setTimeout(function () { drawHero(ch); }, fastMode() ? 140 : 60);
   }
   function drawHero(ch) {
