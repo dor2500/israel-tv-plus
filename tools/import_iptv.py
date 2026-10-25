@@ -9,6 +9,7 @@ usage:
   python -I tools/import_iptv.py probe  [work_dir]   # download db + test streams   (~20-40 min)
   python -I tools/import_iptv.py frames [work_dir]   # grab one frame per working stream
   python -I tools/import_iptv.py pick   [work_dir]   # balanced selection (~800), probed again -> picked.json
+  python -I tools/import_iptv.py pick-all [work_dir] # every working channel, no new Arabic ones -> picked.json
   python -I tools/import_iptv.py merge  [work_dir]   # write channels.json + channels.js (picked.json if present)
 Imported entries carry "imported": true; merge replaces them, curated entries are left alone.
 """
@@ -93,8 +94,10 @@ HOSTILE_RE = re.compile(r"jazeera|mayadeen|al-?manar|masirah|al[ -]?aqsa|al[ -]?
                         r"al[ -]?alam(?! al)|hispan ?tv|al[ -]?kawthar|sahar tv|\bifilm\b", re.I)
 
 
+# and nothing from Iran (owner's decision, 2026-10-25): no channel of the country, no Persian-language channel
 def hostile(c):
-    return (c.get("iptv") in HOSTILE_IPTV or c.get("country") == "PS" or c.get("id") == "aljazeera_en"
+    return (c.get("iptv") in HOSTILE_IPTV or c.get("country") in ("PS", "IR") or c.get("lang") == "fa"
+            or c.get("id") == "aljazeera_en"
             or bool(HOSTILE_RE.search(c.get("title") or "")) or bool(HOSTILE_RE.search(c["name"])))
 
 
@@ -318,6 +321,24 @@ COUNTRY_ORDER = ["IL", "US", "UK", "FR", "DE", "ES", "IT", "RU", "UA", "CA", "AU
                  "FI", "IE", "CZ", "RO", "HU", "CL", "CO", "PE", "PH", "ID", "TH", "VN", "PK", "IR", "MA", "ZA", "NG"]
 
 
+def cmd_pick_all(work):
+    """Every working channel with a picture (no quotas), except new Arabic-language ones (owner's decision,
+    2026-10-25: more channels from the world, not in Arabic; the Arabic channels the app already has stay)."""
+    with open(os.path.join(work, "frames.json"), encoding="utf-8") as f:
+        res = [c for c in json.load(f) if c.get("frame") and not c.get("dup_of")]
+    with open(os.path.join(ROOT, "channels.json"), encoding="utf-8") as f:
+        have = {c.get("iptv") for c in json.load(f) if c.get("iptv")}
+    pool = [c for c in res if (c["lang"] != "ar" or c["iptv"] in have) and not PAID_RE.match(c["name"])
+            and not pirate_host(c["url"]) and not hostile(c)]
+    print(len(pool), "candidates, re-probing...")
+    fresh = list(ThreadPoolExecutor(48).map(lambda c: probe(dict(c, ok=False, error=None)), pool))
+    alive = {c["iptv"] for c in fresh if c.get("ok")}
+    out = [c for c in pool if c["iptv"] in alive]
+    with open(os.path.join(work, "picked.json"), "w", encoding="utf-8") as f:
+        json.dump(out, f, ensure_ascii=False, indent=0)
+    print(len(out), "picked;", len({c['country'] for c in out}), "countries")
+
+
 def cmd_pick(work):
     with open(os.path.join(work, "frames.json"), encoding="utf-8") as f:
         res = [c for c in json.load(f) if c.get("frame") and not c.get("dup_of")]
@@ -441,7 +462,7 @@ def cmd_merge(work):
 
 
 def main():
-    cmds = {"probe": cmd_probe, "frames": cmd_frames, "pick": cmd_pick, "merge": cmd_merge}
+    cmds = {"probe": cmd_probe, "frames": cmd_frames, "pick": cmd_pick, "pick-all": cmd_pick_all, "merge": cmd_merge}
     if len(sys.argv) < 2 or sys.argv[1] not in cmds:
         print(__doc__)
         sys.exit(1)
