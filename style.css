@@ -962,7 +962,7 @@ body.atv-live .atv-bd { opacity: 0; }
 @supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
   .atv-pill, .atv-search { -webkit-backdrop-filter: blur(36px) saturate(180%); backdrop-filter: blur(36px) saturate(180%); }
 }
-.atv-tab { height: 2.9rem; padding: 0 1.35rem; margin: 0 .08rem; border-radius: 999px; font-size: 1.3rem; font-weight: 600;
+.atv-tab { height: 2.9rem; padding: 0 1.35rem; margin: 0 .08rem; border-radius: 999px; font-size: 1.45rem; font-weight: 600;
   color: rgba(255, 255, 255, .8); white-space: nowrap;
   transition: background-color .3s ease, color .3s ease, transform .42s cubic-bezier(.16, 1, .3, 1); }
 /* narrow windows (a small browser window, a tablet): the nine tabs still fit on one line */
@@ -985,7 +985,7 @@ body.atv-searching .atv-meta { opacity: 0; }
 .atv-mlogo .mono { position: relative; padding: .6rem 1.6rem; border-radius: 1rem; font-size: 2.6rem; font-weight: 800; }
 .atv-title { margin: 1rem 0 .6rem; font-size: 3.4rem; font-weight: 800; letter-spacing: -.02em; line-height: 1.1;
   text-shadow: 0 .2rem 1.2rem rgba(0, 0, 0, .5); }
-.atv-tags { display: flex; align-items: center; flex-wrap: wrap; font-size: 1.25rem; }
+.atv-tags { display: flex; align-items: center; flex-wrap: wrap; font-size: 1.35rem; }
 .atv-tags > span { margin-left: .8rem; }
 .atv-live { display: flex; align-items: center; padding: .15rem .75rem; border-radius: .45rem; background: #ff3b30;
   font-weight: 800; letter-spacing: .04em; }
@@ -994,9 +994,9 @@ body.atv-searching .atv-meta { opacity: 0; }
 .atv-pill-q { padding: .1rem .6rem; border: 1px solid rgba(255, 255, 255, .55); border-radius: .45rem; font-weight: 700; }
 .atv-tag { color: rgba(255, 255, 255, .75); font-weight: 500; }
 .atv-tag.atv-on { color: #fff; font-weight: 700; }
-.atv-desc { margin: 1rem 0 0; font-size: 1.45rem; line-height: 1.45; color: rgba(255, 255, 255, .82); overflow: hidden;
-  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; max-height: 4.3rem; }
-.atv-src { margin: .7rem 0 0; font-size: 1.05rem; color: rgba(255, 255, 255, .5); }
+.atv-desc { margin: 1rem 0 0; font-size: 1.6rem; line-height: 1.45; color: rgba(255, 255, 255, .86); overflow: hidden;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; max-height: 4.7rem; text-shadow: 0 .1rem .6rem rgba(0, 0, 0, .6); }
+.atv-src { margin: .7rem 0 0; font-size: 1.15rem; color: rgba(255, 255, 255, .55); }
 
 /* ---- search: a clean field where the details were */
 .atv-search { position: absolute; top: 10rem; right: 4.5rem; z-index: 3; display: none; align-items: center; width: 56rem;
@@ -1014,7 +1014,7 @@ body.atv-searching .atv-search { display: flex; }
 .atv-row { height: 16.25rem; opacity: .5; transition: opacity .42s cubic-bezier(.16, 1, .3, 1); will-change: opacity; }
 .atv-row.active { opacity: 1; }
 .atv-row.above { opacity: 0; pointer-events: none; }   /* invisible shelves above the camera never catch the pointer */
-.atv-row-title { height: 2.4rem; margin: 0 4.5rem .7rem; font-size: 1.6rem; font-weight: 700; line-height: 2.4rem; white-space: nowrap; }
+.atv-row-title { height: 2.4rem; margin: 0 4.5rem .7rem; font-size: 1.8rem; font-weight: 700; line-height: 2.4rem; white-space: nowrap; }
 .atv-row-title small { margin-right: .8rem; font-size: 1.1rem; font-weight: 500; color: rgba(255, 255, 255, .5); }
 .atv-track { display: flex; flex-direction: row; flex-wrap: nowrap; align-items: flex-start; padding: 0 4.5rem; white-space: nowrap;
   transition: transform .42s cubic-bezier(.16, 1, .3, 1); will-change: transform; -webkit-backface-visibility: hidden; backface-visibility: hidden; }
@@ -1033,12 +1033,12 @@ body.atv-searching .atv-search { display: flex; }
   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .atv-q { position: absolute; top: .7rem; left: .7rem; padding: .05rem .5rem; border-radius: .4rem; font-size: .85rem; font-weight: 700;
   background: rgba(0, 0, 0, .5); color: #fff; }
-.atv-num { position: absolute; top: .7rem; right: .85rem; font-size: .95rem; font-weight: 700; color: rgba(255, 255, 255, .5); }
+.atv-num { position: absolute; top: .7rem; right: .85rem; font-size: 1.05rem; font-weight: 700; color: rgba(255, 255, 255, .5); }
 .atv-sheen { position: absolute; top: 0; left: 0; right: 0; bottom: 0; border-radius: inherit; overflow: hidden; pointer-events: none; }
 .atv-sheen::after { content: ''; position: absolute; top: 0; bottom: 0; left: -60%; width: 60%;
   background: linear-gradient(115deg, rgba(255, 255, 255, 0) 20%, rgba(255, 255, 255, .22) 50%, rgba(255, 255, 255, 0) 80%);
   -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); }
-.atv-name { margin-top: .75rem; padding: 0 .3rem; font-size: 1.2rem; font-weight: 500; color: rgba(255, 255, 255, .6);
+.atv-name { margin-top: .75rem; padding: 0 .3rem; font-size: 1.4rem; font-weight: 500; color: rgba(255, 255, 255, .66);
   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; transition: color .3s ease, transform .42s cubic-bezier(.16, 1, .3, 1); }
 .atv-item.focused { z-index: 2; }
 .atv-item.focused .atv-card { -webkit-transform: translate3d(0, -.5rem, 0) scale3d(1.14, 1.14, 1); transform: translate3d(0, -.5rem, 0) scale3d(1.14, 1.14, 1); }
