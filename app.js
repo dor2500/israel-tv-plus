@@ -1827,6 +1827,10 @@
       if (Math.abs(dx) > Math.abs(dy) || e.shiftKey) atvKey((dx || dy) > 0 ? 37 : 39);
       else atvKey(dy > 0 ? 40 : 38);
     }, { passive: true });
+    // the pointer clicking into the field: the remote's focus goes there too
+    $('atv-q').addEventListener('focus', function () {
+      if (atv.zone !== 'search' && atv.search && !state.overlay) { atv.zone = 'search'; atvMark(); $('atv-search').classList.add('focused'); }
+    });
     $('atv-q').addEventListener('input', function () {
       atv.query = $('atv-q').value;
       if (atv.searchTimer) clearTimeout(atv.searchTimer);
