@@ -1802,6 +1802,8 @@
     atvBuild();
     var b = rowId == null ? atv.before || {} : { id: rowId };
     atv.before = null;
+    // a result was watched and goes on behind the shelves: the focus stays on it ("recently watched"), so it keeps playing
+    if (rowId == null && state.playing && !state.preview && b.ch !== state.playing.id && atvRowIndex('mine') !== -1) b = { id: 'mine', ch: state.playing.id };
     var r = b.id ? atvRowIndex(b.id) : -1, c = 0;
     if (r === -1) r = 0;
     else if (b.ch) { var list = atv.rows[r].list; for (var k = 0; k < list.length; k++) if (list[k].id === b.ch) { c = k; break; } }
