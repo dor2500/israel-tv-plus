@@ -27,6 +27,10 @@
     var forcedLocal = false;
     try { forcedLocal = sessionStorage.getItem('itv_local') === '1'; } catch (e) {}
     if (live && get('itv_pending') === String(live.code)) set('itv_bad', String(live.code)); // last start never finished
+    if (live && !(live.code > BUILD.code)) {
+      set('itv_live', null);
+      live = null;
+    }
     if (!live || !(live.code > BUILD.code) || settings.liveUpdates === false || forcedLocal ||
         (live.shell || 0) > (BUILD.shell || 0) || get('itv_bad') === String(live.code)) {
       live = null;
@@ -56,9 +60,16 @@
   var i = 0;
   (function next() {
     if (i >= files.length) return;
+    var name = files[i++];
     var s = document.createElement('script');
-    s.src = base + files[i++] + q;
-    s.onload = next;
+    s.src = base + name + q;
+    s.onload = function () {
+      if (name === 'channels.js') {
+        if (window.ITV_CHANNELS && !window.CHANNELS_DATA) window.CHANNELS_DATA = window.ITV_CHANNELS;
+        if (window.CHANNELS_DATA && !window.ITV_CHANNELS) window.ITV_CHANNELS = window.CHANNELS_DATA;
+      }
+      next();
+    };
     s.onerror = fallback;
     document.body.appendChild(s);
   })();
