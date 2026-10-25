@@ -39,6 +39,7 @@ import com.israeltv.plus.data.ChannelData
 import com.israeltv.plus.data.ChannelStore
 import com.israeltv.plus.data.UpdateState
 import com.israeltv.plus.data.Updater
+import com.israeltv.plus.data.WatchInstaller
 import com.israeltv.plus.data.subtitle
 import com.israeltv.plus.ui.components.AmbientBackground
 import com.israeltv.plus.ui.components.AppHeader
@@ -60,6 +61,7 @@ import com.israeltv.plus.ui.screens.ProfilesScreen
 import com.israeltv.plus.ui.screens.SearchOverlay
 import com.israeltv.plus.ui.screens.SettingsScreen
 import com.israeltv.plus.ui.screens.StyleScreen
+import com.israeltv.plus.ui.screens.WatchScreen
 import com.israeltv.plus.ui.screens.UpdateModal
 import androidx.compose.material3.MaterialTheme
 import dev.chrisbanes.haze.HazeState
@@ -86,6 +88,7 @@ fun ItvApp(
     store: ChannelStore,
     prefs: AppPrefs,
     updater: Updater,
+    watch: WatchInstaller,
     inPip: Boolean,
     coldStart: Boolean,
     onPlaying: (Boolean) -> Unit,
@@ -141,7 +144,7 @@ fun ItvApp(
                                 onClose = { page = Page.Feed },
                             )
                             Page.Feed -> Feed(
-                                data, prefs, updater, feed, haze, logo, onPlay,
+                                data, prefs, updater, watch, feed, haze, logo, onPlay,
                                 onInfo = { info = it },
                                 onProfiles = { profilesFromFeed = true; page = Page.Profiles },
                             )
@@ -188,6 +191,7 @@ private class FeedState {
     var category by mutableStateOf<String?>(null)
     var searchOpen by mutableStateOf(false)
     var styleOpen by mutableStateOf(false)
+    var watchOpen by mutableStateOf(false)
     var barCollapsed by mutableStateOf(false)
     val homeList = androidx.compose.foundation.lazy.LazyListState()
     val channelsList = androidx.compose.foundation.lazy.LazyListState()
@@ -196,6 +200,7 @@ private class FeedState {
         tab = Tab.Home
         searchOpen = false
         styleOpen = false
+        watchOpen = false
         barCollapsed = false
     }
 }
@@ -205,6 +210,7 @@ private fun Feed(
     data: ChannelData?,
     prefs: AppPrefs,
     updater: Updater,
+    watch: WatchInstaller,
     s: FeedState,
     haze: HazeState,
     logo: (Channel) -> String,
@@ -245,7 +251,7 @@ private fun Feed(
                         }
                         Tab.Channels -> ChannelsScreen(data, s.category, { s.category = it }, logo, subtitle, onPlay, s.channelsList)
                         Tab.Mine -> MineScreen(data, prefs, logo, subtitle, onPlay)
-                        Tab.Settings -> SettingsScreen(data, prefs, updater, onProfiles = onProfiles, onStyle = { s.styleOpen = true })
+                        Tab.Settings -> SettingsScreen(data, prefs, updater, onProfiles = onProfiles, onStyle = { s.styleOpen = true }, onWatch = { s.watchOpen = true })
                     }
                 }
             }
@@ -278,6 +284,15 @@ private fun Feed(
         ) {
             val sample = remember(data) { data?.featured.orEmpty().take(1) + data?.categories?.firstOrNull()?.channels.orEmpty().take(6) }
             StyleScreen(prefs, sample, logo, onClose = { s.styleOpen = false })
+        }
+
+        AnimatedVisibility(
+            s.watchOpen,
+            modifier = Modifier.zIndex(16f),
+            enter = fadeIn(tween(220)) + slideInHorizontally { -it / 5 },
+            exit = fadeOut(tween(180)) + slideOutHorizontally { -it / 5 },
+        ) {
+            WatchScreen(watch, onClose = { s.watchOpen = false })
         }
     }
 }
