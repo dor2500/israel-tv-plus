@@ -1,66 +1,53 @@
 {
-  "version": "4.3.0",
-  "code": 202610251747,
+  "version": "4.3.1",
+  "code": 202610251750,
   "app": 500,
   "shell": 3,
   "date": "2026-10-25",
   "notes": [
-    "עיצוב Material 3 Expressive מלא ודינמי לטלפון (Zero Hardcoded Colors): כל פקד, גלולה, כרטיס וסליידר שואבים צבעים דינמית מ-Material You של המכשיר",
-    "תוספת ענק של ערוצי YES ו-HOT ישראליים באיכות 1080p FHD:",
-    "סרטים וקולנוע: yes קולנוע אקשן HD, yes קולנוע קומדיה HD, yes קולנוע דרמה HD, yes קולנוע קלאסי HD, yes קולנוע ישראלי HD",
-    "סדרות ודוקו מבית yes: yes TV סדרות דרמה HD, yes TV אקשן HD, yes TV קומדיה HD, yes דוקו HD",
-    "ערוצי HOT מובילים: HOT דרמה HD, HOT זון HD, HOT קומדי HD, HOT ריאליטי HD, HOT ערוץ החופש HD",
-    "HOT סינמה 1, 2 ו-3 באיכות 1080p FHD, HOT אקשן ומתח, HOT פאן, HOT בידור ישראלי",
-    "ויוה ישראלי HD, ויוה פרימיום HD, ערוץ החיים הטובים HD, הערוץ הים תיכוני HD, ערוץ 24 מוזיקה HD",
-    "ילדים: ערוץ הופ! ילדים בעברית HD, ערוץ זום ZOOM ילדים ונוער HD",
-    "ספורט ישראלי: ספורט 1, ספורט 2, ספורט 3, ספורט 4, ספורט 5 HD",
-    "כניסות ישירות לשירותי הסטרימינג הרשמיים: yes+, STING+, HOT NEXT TV, Partner tv+, סלקום tv+",
-    "קטגוריית \"כל הערוצים (הכל)\" ייעודית: מדף וטאב מרוכז לצפייה בכל הערוצים במקום אחד",
-    "שער כניסה מחייב \"מי צופה?\" וצליל פתיחה קולנועי עמוק:",
-    "פתיחה ישירה למסך בחירת פרופיל (עם אפשרות לביטול בהגדרות: 'בקש בחירת פרופיל בפתיחה')",
-    "צורות פרופיל אורגניות אקספרסיביות (Squircle, Clover, Pill, Asymmetric) שמשנות צורה לעיגול מושלם בלחיצה",
-    "מנוע סינתוז שמע עצמאי ב-AudioTrack (דרופ סאב-באס 110Hz->55Hz ואקורד הרמוני 1.4 שניות) בלי קבצים חיצוניים, עם רטט LongPress עמוק",
-    "נגן Nuvio עם פקדי זכוכית וסליידרים עבים:",
-    "כפתור ניגון/השהיה מרכזי משנה צורה (Squircle <-> עיגול) ורוחב בפיזיקת קפיץ קשיחה",
-    "סליידרים שמנמנים מחוותיים לבהירות (שמאל) ועוצמת שמע (ימין) עם רטט נקישות מכני",
-    "פס התקדמות עם מרווח וקפסולות זמנים מתוחות; מעגן זכוכית תחתון 50dp עם גלולות בחירה מודגשות",
-    "פס ניווט מפוצל BitChord (3+1) וכפתור הגדרות עליון:",
-    "קפסולה חלבית מרכזית לשלושת היעדים (בית, ערוצים, שלי) + כפתור חיפוש עגול נפרד משמאל עם טשטוש Haze וגרדיאנט אופקי",
-    "כפתור הגדרות זכוכית צף בראש המסך לצד האווטאר",
-    "באנר ראשי Full-Bleed בשידור חי: ניגון שקט של השידור החי (HLS) מקצה לקצה מאחורי ה-Status Bar עם כפתור 'צפייה' בולט ותגיות איכות",
-    "פיזיקת רטט ולחיצות Pixel/Essentials: רטט שקוע ואנימציית קפיץ מורגשת (0.92x לחיצה, קפיצה ל-1.08x) בכל הכפתורים ופס הניווט"
+    "תוספת ענק של 142 ערוצי שידור חי ישראליים, YES ו-HOT:",
+    "סרטים וקולנוע: yes קולנוע אקשן FHD, yes קולנוע קומדיה, yes קולנוע דרמה, yes קולנוע קלאסי, yes קולנוע ישראלי",
+    "סדרות ודוקו: yes TV דרמה, yes TV אקשן, yes TV קומדיה, yes דוקו HD",
+    "ערוצי HOT: HOT 3 ערוץ הדגל, HOT HBO, HOT זון, HOT דרמה, HOT ריאל, HOT קולנוע ישראלי, HOT סינמה 1, 2, 3, 4, 5, HOT קולנוע רומנטי, HOT בידור, HOT 8, HOT מיינד, HOT באזז",
+    "ילדים ונוער בעברית: ערוץ הופ! HD, ערוץ לולי Luli, ערוץ בייבי Baby TV, ערוץ ג'וניור Junior HD, ערוץ וויז WIZ HD, ערוץ זום ZOOM HD, טין ניק TeenNick, ניק ג'וניור, yes קולנוע ילדים, ערוץ 16 ילדים",
+    "ספורט: ספורט 1, 2, 3, 4, 6, ספורט 5 פלוס, לייב, גולד, כוכבים, מקס, ONE, ONE 2, ONE דוקו, אדג' ספורט, אגו טוטאל",
+    "סדרות ובינלאומי: ויוה פרימיום, ויוה טלנובלות, דרמות טורקיות פלוס/2/3, סדרות ספרדיות 1/2, סדרות הודיות 1/2, בוליווד",
+    "לייף סטייל, תרבות ודוקו: האח הגדול 24/7, פודי Foody, החיים הטובים, סטייל, עיצוב, בית+, דיסקברי, נשיונל ג'יאוגרפיק, היסטוריה, E!",
+    "טעינה מהירה בזק מיידית (Instant Cold Start): עלייה נקייה ומהירה תוך מילישניות בודדות",
+    "קטגוריית \"כל הערוצים (הכל)\" ייעודית: צפייה מרוכזת ונוחה בכל הערוצים במקום אחד",
+    "תאימות שדרוג מושלמת (versionCode: 500): התקנה ושדרוג אוטומטי חלק מעל כל גרסה קודמת (כולל 4.6.0 ו-4.4.0)"
   ],
   "native": {
     "android": {
-      "version": "4.3.0",
+      "version": "4.3.1",
       "app": 500,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.0/IsraelTVPlus-android.apk"
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.1/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "4.3.0",
+      "version": "4.3.1",
       "app": 500,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.0/IsraelTVPlus-windows-setup.exe"
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.1/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "4.3.0",
+      "version": "4.3.1",
       "app": 500,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.0/com.israeltv.plus_all.ipk",
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.1/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "4.3.0",
+      "version": "4.3.1",
       "app": 500,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.0/IsraelTVPlus-tizen-project.zip"
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.1/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "4.3.0",
+      "version": "4.3.1",
       "app": 500,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.0/IsraelTVPlus-macos-arm64.zip"
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.1/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "4.3.0",
+      "version": "4.3.1",
       "app": 500,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.0/IsraelTVPlus-linux-x64.zip"
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.1/IsraelTVPlus-linux-x64.zip"
     }
   }
 }
