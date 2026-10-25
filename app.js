@@ -1605,7 +1605,8 @@
     atv.flip = !atv.flip;
     if (!ch) { other.className = 'atv-meta'; target.className = 'atv-meta'; return; }
     var q = isApp(ch) ? 'אפליקציה' : isRadioCh(ch) ? 'רדיו' : (ch.badge || 'HD');
-    var tags = '<span class="atv-live"><i></i>LIVE</span><span class="atv-pill-q">' + esc(q) + '</span>' +
+    var tags = (isApp(ch) ? '' : '<span class="atv-live"><i></i>LIVE</span>') + '<span class="atv-pill-q">' + esc(q) + '</span>' +
+      (appOnly(ch) ? '<span class="atv-tag atv-on">📲 פועל באפליקציה (לא בדפדפן)</span>' : isApp(ch) ? '<span class="atv-tag atv-on">↗ נפתח באפליקציה של הערוץ</span>' : '') +
       '<span class="atv-tag">' + esc(splitCat(ch.category)) + '</span>' +
       (ch.countryHe ? '<span class="atv-tag">' + esc(ch.countryHe) + '</span>' : '') +
       (isFav(ch) ? '<span class="atv-tag">★ מועדף</span>' : '') +
@@ -1818,8 +1819,13 @@
       atvFocus(+it.getAttribute('data-r'), +it.getAttribute('data-c'), true);
       atvWatch();
     });
-    // Magic Remote / mouse: the pointer focuses what it is over (the camera stays), the wheel moves it
-    rows.addEventListener('mouseover', function (e) {
+    // Magic Remote / mouse: the pointer focuses what it is over (the camera stays), the wheel moves it. Only a pointer
+    // that really moves counts: a still one that cards slide under (arrow keys) must not steal the remote's focus.
+    var px = -1, py = -1;
+    rows.addEventListener('mousemove', function (e) {
+      if (e.clientX === px && e.clientY === py) return;
+      px = e.clientX; py = e.clientY;
+      if (Date.now() - (state.keyAt || 0) < 700) return;   // the remote's keys were just used: they lead
       var it = e.target.closest('.atv-item');
       if (!it || state.overlay) return;
       var r = +it.getAttribute('data-r'), c = +it.getAttribute('data-c');
@@ -3538,6 +3544,7 @@
   function onKeyDown(e) {
     var code = e.keyCode || e.which;
     if (code === 23) code = 13;
+    state.keyAt = Date.now();
     if (state.saverOn) { resetSaver(); if (e.preventDefault) e.preventDefault(); return; }
     resetSaver();
 
