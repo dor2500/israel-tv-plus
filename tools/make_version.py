@@ -48,7 +48,10 @@ def notes(version):
 def main():
     version = read("VERSION").strip()
     major, minor, patch = (int(x) for x in version.split("."))
-    app = max(500, major * 100 + minor * 10 + patch)
+    if major == 4 and minor == 3:
+        app = 500 + patch
+    else:
+        app = max(500, major * 100 + minor * 10 + patch)
     now = datetime.datetime.now(datetime.timezone.utc)
     code = int(now.strftime("%Y%m%d%H%M"))
     date = now.strftime("%Y-%m-%d")

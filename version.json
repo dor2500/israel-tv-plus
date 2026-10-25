@@ -1,7 +1,7 @@
 {
   "version": "4.3.1",
-  "code": 202610251750,
-  "app": 500,
+  "code": 202610251801,
+  "app": 501,
   "shell": 3,
   "date": "2026-10-25",
   "notes": [
@@ -15,38 +15,38 @@
     "לייף סטייל, תרבות ודוקו: האח הגדול 24/7, פודי Foody, החיים הטובים, סטייל, עיצוב, בית+, דיסקברי, נשיונל ג'יאוגרפיק, היסטוריה, E!",
     "טעינה מהירה בזק מיידית (Instant Cold Start): עלייה נקייה ומהירה תוך מילישניות בודדות",
     "קטגוריית \"כל הערוצים (הכל)\" ייעודית: צפייה מרוכזת ונוחה בכל הערוצים במקום אחד",
-    "תאימות שדרוג מושלמת (versionCode: 500): התקנה ושדרוג אוטומטי חלק מעל כל גרסה קודמת (כולל 4.6.0 ו-4.4.0)"
+    "תאימות שדרוג מושלמת (versionCode: 501): התקנה ושדרוג אוטומטי חלק מעל כל גרסה קודמת (כולל 4.6.0, 4.4.0 ו-4.3.0)"
   ],
   "native": {
     "android": {
       "version": "4.3.1",
-      "app": 500,
+      "app": 501,
       "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.1/IsraelTVPlus-android.apk"
     },
     "windows": {
       "version": "4.3.1",
-      "app": 500,
+      "app": 501,
       "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.1/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
       "version": "4.3.1",
-      "app": 500,
+      "app": 501,
       "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.1/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
       "version": "4.3.1",
-      "app": 500,
+      "app": 501,
       "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.1/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
       "version": "4.3.1",
-      "app": 500,
+      "app": 501,
       "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.1/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
       "version": "4.3.1",
-      "app": 500,
+      "app": 501,
       "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.1/IsraelTVPlus-linux-x64.zip"
     }
   }
