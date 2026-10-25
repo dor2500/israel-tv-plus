@@ -205,7 +205,7 @@ fun IsraeliOnlyZomatoOverlay(
             transitionSpec = {
                 when {
                     IsraeliOverlayMode.Hidden isTransitioningTo IsraeliOverlayMode.Entering ->
-                        spring(dampingRatio = 0.52f, stiffness = Spring.StiffnessMediumLow)
+                        spring(dampingRatio = 0.5f, stiffness = Spring.StiffnessMediumLow)
                     targetState == IsraeliOverlayMode.Exiting ->
                         spring(dampingRatio = 0.75f, stiffness = Spring.StiffnessMedium)
                     else -> tween(300)
@@ -268,12 +268,12 @@ fun IsraeliOnlyZomatoOverlay(
             }
         }
 
-        // Auto-dismiss timers
+        // Auto-dismiss timers (750ms full-screen Zomato-style overlay)
         LaunchedEffect(mode) {
             when (mode) {
                 IsraeliOverlayMode.Entering -> {
-                    // Full showcase experience (1400ms), then auto dismiss
-                    delay(1400)
+                    // Full showcase experience (750ms), then auto dismiss
+                    delay(750)
                     onDismiss()
                 }
                 IsraeliOverlayMode.Exiting -> {

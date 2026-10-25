@@ -89,10 +89,15 @@ import kotlinx.coroutines.delay
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.BoxWithConstraints
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Switch
 import androidx.compose.material3.SwitchDefaults
+import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.layout.positionInRoot
@@ -110,6 +115,7 @@ private val HeroShape = RoundedCornerShape(0.dp)
  *    - Active: Solid white background with dark text.
  * 4. "Continue Watching" (המשך צפייה) 16:9 shelf clearly peeking up from the bottom of the screen.
  */
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
 fun HomeScreen(
     data: ChannelData?,
@@ -127,6 +133,7 @@ fun HomeScreen(
     val padding = feedPadding()
     val scheme = MaterialTheme.colorScheme
     var selectedCategory by remember { mutableStateOf<String?>("all") }
+    var moreSheetOpen by remember { mutableStateOf(false) }
 
     BoxWithConstraints(Modifier.fillMaxSize()) {
         val heroHeight = (maxHeight * 0.52f).coerceIn(360.dp, 430.dp)
@@ -173,24 +180,29 @@ fun HomeScreen(
                         verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.spacedBy(8.dp),
                     ) {
-                        AppleIsraelFlag(Modifier.size(width = 22.dp, height = 15.dp))
+                        AppleIsraelFlag(Modifier.size(18.dp))
                         Text(
                             text = "רק תוכן ישראלי",
+                            style = MaterialTheme.typography.labelLarge,
                             color = if (israeliOnly) scheme.primary else scheme.onSurface,
-                            fontSize = 15.sp,
-                            fontWeight = FontWeight.ExtraBold,
+                            fontWeight = FontWeight.Bold,
                         )
                     }
 
-                    // Real animated Switch component with spatial coordinates measuring
+                    // Real animated Switch component (scaled to 0.85f) with spatial coordinates measuring
                     Switch(
                         checked = israeliOnly,
                         onCheckedChange = { onToggleIsraeli() },
-                        modifier = Modifier.onGloballyPositioned { coordinates ->
-                            val pos = coordinates.positionInRoot()
-                            val size = coordinates.size
-                            onSwitchPositioned(Offset(pos.x + size.width / 2f, pos.y + size.height / 2f))
-                        },
+                        modifier = Modifier
+                            .graphicsLayer {
+                                scaleX = 0.85f
+                                scaleY = 0.85f
+                            }
+                            .onGloballyPositioned { coordinates ->
+                                val pos = coordinates.positionInRoot()
+                                val size = coordinates.size
+                                onSwitchPositioned(Offset(pos.x + size.width / 2f, pos.y + size.height / 2f))
+                            },
                         colors = SwitchDefaults.colors(
                             checkedThumbColor = Color.White,
                             checkedTrackColor = scheme.primary,
@@ -203,41 +215,65 @@ fun HomeScreen(
                 }
             }
 
-            // 3. KAN BOX CATEGORY PILLS (Directly below Hero section)
+            // 3. MACRO FILTER CHIPS ROW (Directly below toggle)
             item(key = "kan_box_categories") {
                 val haptic = LocalHapticFeedback.current
-                val categoriesList = remember(data) {
-                    listOf("all" to "הכל") + data.categories.map { it.key to it.name }
+
+                val moviesCat = data.categories.firstOrNull { it.key.contains("סרטים") || it.name.contains("סרטים") }
+                val kidsCat = data.categories.firstOrNull { it.key.contains("ילדים") || it.name.contains("ילדים") }
+                val sportsCat = data.categories.firstOrNull { it.key.contains("ספורט") || it.name.contains("ספורט") }
+
+                val macroChips = remember(moviesCat, kidsCat, sportsCat) {
+                    listOf(
+                        "all" to "הכל",
+                        (moviesCat?.key ?: "movies") to "סרטים וסדרות",
+                        (kidsCat?.key ?: "kids") to "ילדים ונוער",
+                        (sportsCat?.key ?: "sports") to "ספורט",
+                    )
                 }
+
+                val macroKeys = remember(moviesCat, kidsCat, sportsCat) {
+                    setOfNotNull("all", moviesCat?.key, kidsCat?.key, sportsCat?.key)
+                }
+
+                val isMoreSelected = selectedCategory != null && selectedCategory !in macroKeys
+                val moreLabel = if (isMoreSelected) {
+                    data.categories.firstOrNull { it.key == selectedCategory }?.name ?: "עוד..."
+                } else {
+                    "עוד..."
+                }
+
+                val chipShape = RoundedCornerShape(50)
 
                 LazyRow(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(bottom = 18.dp),
+                        .padding(bottom = 16.dp),
                     contentPadding = PaddingValues(horizontal = 20.dp),
-                    horizontalArrangement = Arrangement.spacedBy(10.dp),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
                     flingBehavior = rememberBitChordFlingBehavior(),
                 ) {
-                    items(categoriesList, key = { it.first }) { (key, label) ->
+                    items(macroChips, key = { it.first }) { (key, label) ->
                         val isActive = (selectedCategory == key)
                         Box(
                             modifier = Modifier
-                                .height(38.dp)
-                                .clip(RoundedCornerShape(50))
+                                .height(34.dp)
+                                .clip(chipShape)
                                 .then(
                                     if (isActive) {
                                         Modifier.background(Color.White)
                                     } else {
                                         Modifier
-                                            .border(1.dp, Color.White.copy(alpha = 0.35f), RoundedCornerShape(50))
+                                            .border(0.75.dp, Color.White.copy(alpha = 0.15f), chipShape)
                                             .background(Color.Transparent)
                                     }
                                 )
+                                .tactileBounce()
                                 .clickable {
                                     haptic.performHapticFeedback(HapticFeedbackType.SegmentTick)
                                     selectedCategory = key
                                 }
-                                .padding(horizontal = 18.dp),
+                                .padding(horizontal = 16.dp),
                             contentAlignment = Alignment.Center,
                         ) {
                             Text(
@@ -245,6 +281,38 @@ fun HomeScreen(
                                 color = if (isActive) Color(0xFF0A0B10) else Color.White,
                                 fontSize = 13.sp,
                                 fontWeight = if (isActive) FontWeight.ExtraBold else FontWeight.Bold,
+                            )
+                        }
+                    }
+
+                    // Trailing 'עוד...' chip opening ModalBottomSheet
+                    item(key = "more_chip") {
+                        Box(
+                            modifier = Modifier
+                                .height(34.dp)
+                                .clip(chipShape)
+                                .then(
+                                    if (isMoreSelected) {
+                                        Modifier.background(Color.White)
+                                    } else {
+                                        Modifier
+                                            .border(0.75.dp, Color.White.copy(alpha = 0.15f), chipShape)
+                                            .background(Color.Transparent)
+                                    }
+                                )
+                                .tactileBounce()
+                                .clickable {
+                                    haptic.performHapticFeedback(HapticFeedbackType.SegmentTick)
+                                    moreSheetOpen = true
+                                }
+                                .padding(horizontal = 16.dp),
+                            contentAlignment = Alignment.Center,
+                        ) {
+                            Text(
+                                text = moreLabel,
+                                color = if (isMoreSelected) Color(0xFF0A0B10) else Color.White,
+                                fontSize = 13.sp,
+                                fontWeight = if (isMoreSelected) FontWeight.ExtraBold else FontWeight.Bold,
                             )
                         }
                     }
@@ -323,6 +391,78 @@ fun HomeScreen(
                             onSeeAll = { onSeeAll(cat.key) },
                             modifier = Modifier.cascadeIn(i),
                         )
+                    }
+                }
+            }
+        }
+
+        // ModalBottomSheet for remaining categories
+        if (moreSheetOpen && data != null) {
+            val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
+            val haptic = LocalHapticFeedback.current
+
+            val moviesCat = data.categories.firstOrNull { it.key.contains("סרטים") || it.name.contains("סרטים") }
+            val kidsCat = data.categories.firstOrNull { it.key.contains("ילדים") || it.name.contains("ילדים") }
+            val sportsCat = data.categories.firstOrNull { it.key.contains("ספורט") || it.name.contains("ספורט") }
+            val macroKeys = setOfNotNull("all", moviesCat?.key, kidsCat?.key, sportsCat?.key)
+            val remainingCategories = data.categories.filter { it.key !in macroKeys }
+
+            ModalBottomSheet(
+                onDismissRequest = { moreSheetOpen = false },
+                sheetState = sheetState,
+                containerColor = scheme.surfaceContainerHigh,
+            ) {
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 20.dp)
+                        .padding(bottom = 36.dp),
+                ) {
+                    Text(
+                        text = "עוד קטגוריות",
+                        style = MaterialTheme.typography.titleLarge,
+                        fontWeight = FontWeight.Black,
+                        color = scheme.onSurface,
+                        modifier = Modifier.padding(bottom = 16.dp),
+                    )
+
+                    FlowRow(
+                        horizontalArrangement = Arrangement.spacedBy(8.dp),
+                        verticalArrangement = Arrangement.spacedBy(10.dp),
+                        modifier = Modifier.fillMaxWidth(),
+                    ) {
+                        remainingCategories.forEach { cat ->
+                            val isSelected = cat.key == selectedCategory
+                            Box(
+                                modifier = Modifier
+                                    .height(34.dp)
+                                    .clip(RoundedCornerShape(50))
+                                    .then(
+                                        if (isSelected) {
+                                            Modifier.background(Color.White)
+                                        } else {
+                                            Modifier
+                                                .border(0.75.dp, Color.White.copy(alpha = 0.15f), RoundedCornerShape(50))
+                                                .background(Color.Transparent)
+                                        }
+                                    )
+                                    .tactileBounce()
+                                    .clickable {
+                                        haptic.performHapticFeedback(HapticFeedbackType.SegmentTick)
+                                        selectedCategory = cat.key
+                                        moreSheetOpen = false
+                                    }
+                                    .padding(horizontal = 16.dp),
+                                contentAlignment = Alignment.Center,
+                            ) {
+                                Text(
+                                    text = cat.name,
+                                    color = if (isSelected) Color(0xFF0A0B10) else Color.White,
+                                    fontSize = 13.sp,
+                                    fontWeight = if (isSelected) FontWeight.ExtraBold else FontWeight.Bold,
+                                )
+                            }
+                        }
                     }
                 }
             }
