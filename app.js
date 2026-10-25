@@ -2624,7 +2624,12 @@
     return base + h('☰', 'הגדרות'); // android remotes: no colour keys
   }
   function renderHints() { if (el.hints) el.hints.innerHTML = hintHtml(false); renderOsdHints(); }
-  function renderOsdHints() { if (el.osdHints) el.osdHints.innerHTML = hintHtml(true); }
+  function renderOsdHints() {
+    if (el.osdHints) el.osdHints.innerHTML = hintHtml(true);
+    // the OSD's ← goes back to the TV browse screen, not to the guide
+    var b = el.osdButtons && el.osdButtons.querySelector('[data-act="back"]');
+    if (b) { b.title = TVUI ? 'חזרה לערוצים' : 'למדריך'; b.querySelector('span').textContent = TVUI ? 'חזרה' : 'מדריך'; }
+  }
 
   function runAction(action) {
     var inPlayer = state.overlay === 'player';
