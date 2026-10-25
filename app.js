@@ -2462,7 +2462,8 @@
     if (!on) { Dub.detach(); toast('🎙️ הדיבוב כובה'); return; }
     if (ch && !foreign(ch)) { toast('🎙️ הדיבוב פועל – יופעל אוטומטית בערוצים שאינם בעברית'); return; }
     toast('🎙️ דיבוב לעברית הופעל' + (Dub.settings.sync ? ' (מסונכרן)' : ''));
-    if (ch && state.overlay && state.hls && !state.preview) {   // (never on the silent TV preview)
+    // (never on the silent TV preview; a channel watched and left on behind the TV shelves is dubbed at once)
+    if (ch && (state.overlay || TVUI) && state.hls && !state.preview) {
       if (Dub.settings.sync) loadStream(ch);
       else Dub.attach({ video: el.video, hls: state.hls, channel: ch, url: state.streamUrl || streamUrl(ch) });
     }
