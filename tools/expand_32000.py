@@ -94,7 +94,7 @@ def main():
     print(f"Starting with {len(channels)} existing channels")
 
     new_channels = []
-    target_total = 32000
+    target_total = 60000
 
     # -------------------------------------------------------------
     # 1. Harvest TV streams from iptv-org API (streams.json + channels_api.json)
