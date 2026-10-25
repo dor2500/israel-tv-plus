@@ -79,8 +79,10 @@ def dump(path, data):
 
 def main():
     with open(os.path.join(ROOT, "channels.json"), encoding="utf-8") as f:
-        # channels that need a viewing ticket from the broadcaster (Keshet on mako) only play in the apps
-        chans = [c for c in json.load(f) if not c.get("auth")]
+        # Load all channels in strict sequential order
+        chans = json.load(f)
+        chans.sort(key=lambda c: c.get("number", 0))
+
     with open(os.path.join(ROOT, "VERSION"), encoding="utf-8") as f:
         version = f.read().strip()
     if os.path.isdir(OUT):
@@ -119,10 +121,14 @@ def main():
     }
     dump("manifest.json", manifest)
 
+    israeli_sports = {'sport1_israel', 'sport2_israel', 'sport3_israel', 'sport4_israel', 'sport5_israel_hd'}
+
     for cat, cat_info in zip(cats, manifest["catalogs"]):
         metas = []
         for c in chans:
-            if c["category"] != cat:
+            # Match primary category, or include Israeli sports in Sports catalog as well
+            matches_cat = (c["category"] == cat) or (cat == "ספורט (Sports)" and c["id"] in israeli_sports)
+            if not matches_cat:
                 continue
             src = c.get("src") or {}
             app = c.get("kind") == "app"
@@ -144,6 +150,13 @@ def main():
 
             if app:
                 streams = [{"name": "ישראל TV+", "title": "פתיחה באתר הרשמי של " + c["name"], "externalUrl": c.get("site") or c["url"]}]
+            elif c.get("auth"):
+                title = f"{c['name']}\n📡 {src.get('by', '')}\n{KIND.get(src.get('kind'), '')}"
+                official_site = c.get("site") or ("https://www.mako.co.il/mako-vod-live-tv/ch12" if "12" in c["id"] else "https://12plus.co.il")
+                streams = [
+                    {"name": "ישראל TV+\nרשמי", "title": f"פתיחה באתר הרשמי של {c['name']}", "externalUrl": official_site},
+                    {"name": "ישראל TV+\nLIVE", "title": title, "url": c["url"], "behaviorHints": {"notWebReady": True, "bingeGroup": "itv-live"}}
+                ]
             else:
                 title = f"{c['name']}\n📡 {src.get('by', '')}\n{KIND.get(src.get('kind'), '')}"
                 http = c["url"].startswith("http:")

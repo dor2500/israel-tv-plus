@@ -73,6 +73,10 @@ import androidx.compose.ui.zIndex
 import coil3.compose.AsyncImage
 import com.israeltv.plus.data.avatarUrl
 
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.ui.platform.LocalLayoutDirection
+import androidx.compose.ui.unit.LayoutDirection
+
 enum class Tab(
     val label: String,
     val title: String,
@@ -87,12 +91,12 @@ enum class Tab(
 
 val MainNavTabs = listOf(Tab.Home, Tab.Channels, Tab.Mine)
 
-/** The master LazyColumn's insets: under the header (88 dp) and clear of the floating bar (130 dp). */
+/** The master LazyColumn's insets: under the header (88 dp) and clear of the floating bar (140 dp). */
 @Composable
 fun feedPadding(): PaddingValues {
     val top = WindowInsets.statusBars.asPaddingValues().calculateTopPadding()
     val bottom = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
-    return PaddingValues(top = top + 88.dp, bottom = bottom + 130.dp)
+    return PaddingValues(top = top + 88.dp, bottom = bottom + 140.dp)
 }
 
 /** surfaceContainerLowest with a soft ambient glow of the wallpaper colour from the top. */
@@ -117,9 +121,9 @@ fun AmbientBackground(modifier: Modifier = Modifier) {
 
 /**
  * Apple TV header: the screen title on the right, and on the left:
- * - "רק ישראלי" frosted-glass toggle pill (surfaceContainer 0.6f + backdrop blur)
  * - Settings glass pill
  * - Profile avatar with tactile bounce and specular edge.
+ * ("רק ישראלי" toggle has been relocated inline directly above/below Category Pills as an animated Switch).
  */
 @Composable
 fun AppHeader(
@@ -162,38 +166,11 @@ fun AppHeader(
                 maxLines = 1,
             )
 
-            // Top-left actions: "רק ישראלי" toggle pill + Settings glass pill + Profile avatar
+            // Top-left actions: Settings glass pill + Profile avatar
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(10.dp),
             ) {
-                // Israeli Only frosted-glass pill
-                Box(
-                    Modifier
-                        .height(42.dp)
-                        .tactileBounce(onClick = onToggleIsraeli)
-                        .frostedGlass(
-                            pillShape,
-                            if (israeliOnly) scheme.primaryContainer.copy(alpha = 0.85f) else scheme.surfaceContainer.copy(alpha = 0.60f),
-                            blur = 24.dp,
-                        )
-                        .padding(horizontal = 13.dp),
-                    contentAlignment = Alignment.Center,
-                ) {
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.spacedBy(6.dp),
-                    ) {
-                        AppleIsraelFlag(Modifier.size(width = 18.dp, height = 12.dp))
-                        Text(
-                            "רק ישראלי",
-                            color = if (israeliOnly) scheme.onPrimaryContainer else scheme.onSurface,
-                            fontSize = 13.sp,
-                            fontWeight = FontWeight.ExtraBold,
-                        )
-                    }
-                }
-
                 // Settings top glass pill
                 Box(
                     Modifier
@@ -242,13 +219,14 @@ fun AppHeader(
 }
 
 /**
- * BitChord Split-Capsule Navbar with Nuvio Deep Glass:
- * 3+1 Split Layout in RTL:
- * - Safe bottom padding: navigationBarsPadding() + padding(bottom = 16.dp).
- * - Main floating capsule (weight(1f)) containing only 3 tabs (בית, ערוצים, שלי).
- * - Standalone circular button (size = 64.dp) on the far left for חיפוש.
- * - Nuvio Deep Glass: Hardware-accelerated blur tinted with Color(0xFF16161E).copy(alpha = 0.75f) and a 1.dp border (alpha = 0.15f).
- * - Active tab strictly uses a primaryContainer pill background with Icons.Rounded.* (Solid/Filled).
+ * STRICT NUVIO NAVBAR (Bottom Navigation):
+ * Built to the exact custom architectural specification:
+ * - Row with horizontalArrangement = Arrangement.spacedBy(16.dp)
+ * - modifier.align(Alignment.BottomCenter).navigationBarsPadding().padding(bottom = 24.dp, start = 24.dp, end = 24.dp)
+ * - 1. Standalone Search Circle (Left): size(64.dp), clip(CircleShape), Color(0xFF16161E).copy(alpha = 0.65f) + blur/haze.
+ *      Icon(Search) ONLY. NO TEXT.
+ * - 2. Main 3-Tab Capsule (Right): weight(1f), height(64.dp), clip(RoundedCornerShape(50)),
+ *      Color(0xFF16161E).copy(alpha = 0.65f) + blur/haze, containing 3 Tabs: Home, Channels, Profile.
  */
 @Composable
 fun FloatingTabBar(
@@ -260,95 +238,99 @@ fun FloatingTabBar(
     modifier: Modifier = Modifier,
 ) {
     val scheme = MaterialTheme.colorScheme
-    val pill = RoundedCornerShape(50)
-    val nuvioGlassTint = Color(0xFF16161E).copy(alpha = 0.75f)
-    val p by animateFloatAsState(
-        if (collapsed) 1f else 0f,
-        spring(dampingRatio = 0.8f, stiffness = Spring.StiffnessMediumLow),
-        label = "collapse",
-    )
+    val nuvioBlurColor = Color(0xFF16161E).copy(alpha = 0.65f)
+    val pillShape = RoundedCornerShape(50)
 
-    Row(
-        modifier = modifier
-            .zIndex(10f)
-            .navigationBarsPadding()
-            .padding(bottom = 16.dp, start = 16.dp, end = 16.dp)
-            .fillMaxWidth(),
-        horizontalArrangement = Arrangement.spacedBy(10.dp, Alignment.CenterHorizontally),
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-        // 1. In RTL, first child in Row is on the RIGHT: Main Floating Capsule (weight(1f))
-        BoxWithConstraints(
-            modifier = Modifier
-                .weight(1f)
-                .height(lerp(64.dp, 52.dp, p))
-                .clip(pill)
-                .frostedGlass(pill, nuvioGlassTint, blur = 30.dp, border = false)
-                .specularBorder(pill, alpha = 0.15f)
+    // Force LTR layout for the navbar Row so Search is strictly on the LEFT and 3-Tab Capsule is on the RIGHT
+    CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {
+        Row(
+            horizontalArrangement = Arrangement.spacedBy(16.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = modifier
+                .zIndex(10f)
+                .navigationBarsPadding()
+                .padding(bottom = 24.dp, start = 24.dp, end = 24.dp)
+                .fillMaxWidth(),
         ) {
-            val count = MainNavTabs.size
-            val itemWidth: Dp = maxWidth / count
-            val selectedIndex = MainNavTabs.indexOf(selected).coerceAtLeast(0)
-            val indicatorX by animateDpAsState(
-                targetValue = itemWidth * selectedIndex,
-                animationSpec = spring(
-                    dampingRatio = Spring.DampingRatioLowBouncy,
-                    stiffness = Spring.StiffnessMediumLow,
-                ),
-                label = "nav_indicator",
-            )
-
-            // Sliding active primaryContainer tonal pill with solid rounded icons
-            if (!searchOpen && selected in MainNavTabs) {
-                Box(
-                    Modifier
-                        .offset(x = indicatorX)
-                        .width(itemWidth)
-                        .fillMaxHeight()
-                        .padding(horizontal = 4.dp, vertical = 6.dp)
-                        .clip(pill)
-                        .background(scheme.primaryContainer)
-                        .specularBorder(pill, alpha = 0.28f)
+            // 1. Standalone Search Circle (Left)
+            Box(
+                modifier = Modifier
+                    .size(64.dp)
+                    .tactileBounce(onClick = onSearch)
+                    .clip(CircleShape)
+                    .frostedGlass(CircleShape, nuvioBlurColor, blur = 28.dp, border = false)
+                    .specularBorder(CircleShape, alpha = 0.18f)
+                    .background(
+                        if (searchOpen) scheme.primaryContainer
+                        else Color.Transparent
+                    ),
+                contentAlignment = Alignment.Center,
+            ) {
+                // Icon(Search) ONLY. NO TEXT.
+                Icon(
+                    imageVector = if (searchOpen) Icons.Rounded.Search else Icons.Outlined.Search,
+                    contentDescription = "חיפוש",
+                    modifier = Modifier.size(28.dp),
+                    tint = if (searchOpen) scheme.onPrimaryContainer else scheme.onSurface,
                 )
             }
 
-            // Tabs row (בית, ערוצים, שלי)
-            Row(Modifier.fillMaxSize(), horizontalArrangement = Arrangement.SpaceEvenly) {
-                MainNavTabs.forEach { tab ->
-                    val isActive = !searchOpen && tab == selected
-                    BitChordBarItem(
-                        tab = tab,
-                        active = isActive,
-                        showLabel = !collapsed,
-                        modifier = Modifier.weight(1f),
-                    ) {
-                        onSelect(tab)
+            // 2. Main 3-Tab Capsule (Right)
+            Row(
+                modifier = Modifier
+                    .weight(1f)
+                    .height(64.dp)
+                    .clip(pillShape)
+                    .frostedGlass(pillShape, nuvioBlurColor, blur = 28.dp, border = false)
+                    .specularBorder(pillShape, alpha = 0.18f),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                // 3 Tabs: Home, Channels, Profile (Mine) in natural RTL Hebrew order
+                CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Rtl) {
+                    BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
+                        val count = MainNavTabs.size
+                        val itemWidth: Dp = maxWidth / count
+                        val selectedIndex = MainNavTabs.indexOf(selected).coerceAtLeast(0)
+                        val indicatorX by animateDpAsState(
+                            targetValue = itemWidth * selectedIndex,
+                            animationSpec = spring(
+                                dampingRatio = Spring.DampingRatioLowBouncy,
+                                stiffness = Spring.StiffnessMediumLow,
+                            ),
+                            label = "nuvio_nav_indicator",
+                        )
+
+                        // Smooth sliding active pill indicator
+                        if (!searchOpen && selected in MainNavTabs) {
+                            Box(
+                                Modifier
+                                    .offset(x = indicatorX)
+                                    .width(itemWidth)
+                                    .fillMaxHeight()
+                                    .padding(horizontal = 4.dp, vertical = 6.dp)
+                                    .clip(pillShape)
+                                    .background(scheme.primaryContainer)
+                                    .specularBorder(pillShape, alpha = 0.28f)
+                            )
+                        }
+
+                        // 3 Tabs
+                        Row(Modifier.fillMaxSize(), horizontalArrangement = Arrangement.SpaceEvenly) {
+                            MainNavTabs.forEach { tab ->
+                                val isActive = !searchOpen && tab == selected
+                                BitChordBarItem(
+                                    tab = tab,
+                                    active = isActive,
+                                    showLabel = !collapsed,
+                                    modifier = Modifier.weight(1f),
+                                ) {
+                                    onSelect(tab)
+                                }
+                            }
+                        }
                     }
                 }
             }
-        }
-
-        // 2. In RTL, second child in Row is on the far LEFT: Standalone circular search button (size = 64.dp)
-        val searchActive = searchOpen
-        Box(
-            modifier = Modifier
-                .size(lerp(64.dp, 52.dp, p))
-                .tactileBounce(onClick = onSearch)
-                .clip(CircleShape)
-                .frostedGlass(CircleShape, nuvioGlassTint, blur = 30.dp, border = false)
-                .specularBorder(CircleShape, alpha = 0.15f)
-                .background(
-                    if (searchActive) scheme.primaryContainer
-                    else Color.Transparent
-                ),
-            contentAlignment = Alignment.Center,
-        ) {
-            Icon(
-                imageVector = if (searchActive) Icons.Rounded.Search else Icons.Outlined.Search,
-                contentDescription = "חיפוש",
-                modifier = Modifier.size(26.dp),
-                tint = if (searchActive) scheme.onPrimaryContainer else scheme.onSurface,
-            )
         }
     }
 }

@@ -368,6 +368,15 @@ fun SectionHeader(title: String, count: Int? = null, onSeeAll: (() -> Unit)? = n
         Modifier.fillMaxWidth().padding(start = 20.dp, end = 16.dp, bottom = 12.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
+        // Kan Box Vertical Accent Line
+        Box(
+            Modifier
+                .width(4.dp)
+                .height(18.dp)
+                .clip(RoundedCornerShape(2.dp))
+                .background(Color.White)
+        )
+        Spacer(Modifier.width(8.dp))
         Text(title, Modifier.weight(1f), fontSize = 20.sp, fontWeight = FontWeight.ExtraBold, color = scheme.onSurface)
         if (onSeeAll != null) {
             Row(

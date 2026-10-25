@@ -67,6 +67,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalHapticFeedback
 import com.israeltv.plus.ui.components.IsraeliOnlyZomatoOverlay
+import com.israeltv.plus.ui.components.IsraeliOverlayMode
 import dev.chrisbanes.haze.HazeState
 import dev.chrisbanes.haze.hazeSource
 import dev.chrisbanes.haze.rememberHazeState
@@ -175,10 +176,11 @@ fun ItvApp(
         }
         info?.let { ch -> ChannelInfoSheet(ch, logo(ch), prefs, onPlay = { onPlay(ch, listOf(ch)) }, onDismiss = { info = null }) }
 
-        // Full-screen Zomato-style overlay animation when "רק ישראלי" is switched ON
+        // Full-screen Zomato-style overlay animation with spatial revert into Switch coordinates
         IsraeliOnlyZomatoOverlay(
-            visible = feed.showIsraeliOverlay,
-            onDismiss = { feed.showIsraeliOverlay = false },
+            mode = feed.overlayMode,
+            switchCenter = feed.switchCenter,
+            onDismiss = { feed.overlayMode = IsraeliOverlayMode.Hidden },
         )
 
         if (intro) {
@@ -203,7 +205,8 @@ private class FeedState {
     var watchOpen by mutableStateOf(false)
     var barCollapsed by mutableStateOf(false)
     var israeliOnly by mutableStateOf(false)
-    var showIsraeliOverlay by mutableStateOf(false)
+    var overlayMode by mutableStateOf(IsraeliOverlayMode.Hidden)
+    var switchCenter by mutableStateOf<Offset?>(null)
     val homeList = androidx.compose.foundation.lazy.LazyListState()
     val channelsList = androidx.compose.foundation.lazy.LazyListState()
 
@@ -235,10 +238,11 @@ private fun Feed(
     val onToggleIsraeli: () -> Unit = {
         if (!s.israeliOnly) {
             haptic.performHapticFeedback(HapticFeedbackType.LongPress)
-            s.showIsraeliOverlay = true
+            s.overlayMode = IsraeliOverlayMode.Entering
             s.israeliOnly = true
         } else {
             haptic.performHapticFeedback(HapticFeedbackType.TextHandleMove)
+            s.overlayMode = IsraeliOverlayMode.Exiting
             s.israeliOnly = false
         }
     }
@@ -277,6 +281,8 @@ private fun Feed(
                             onPlay = onPlay,
                             onInfo = onInfo,
                             israeliOnly = s.israeliOnly,
+                            onToggleIsraeli = onToggleIsraeli,
+                            onSwitchPositioned = { s.switchCenter = it },
                         ) {
                             s.category = it
                             s.tab = Tab.Channels

@@ -86,9 +86,30 @@ import com.israeltv.plus.data.isIsraeli
 import com.israeltv.plus.ui.player.playerHttpClient
 import kotlinx.coroutines.delay
 
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.BoxWithConstraints
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.Switch
+import androidx.compose.material3.SwitchDefaults
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.layout.positionInRoot
+import androidx.compose.ui.unit.Dp
+import com.israeltv.plus.ui.components.AppleIsraelFlag
+
 private val HeroShape = RoundedCornerShape(0.dp)
 
-/** Home: one master LazyColumn – the full-bleed hero, "continue watching" (16:9 wide), favourites & categories (2:3 tall posters). */
+/**
+ * Home: one master LazyColumn with:
+ * 1. Hero restricted to ~52% screen height, allowing content peeking from the bottom.
+ * 2. Inline "רק ישראלי" animated Switch filter.
+ * 3. Kan Box category pills directly below Hero:
+ *    - Inactive: transparent with 1.dp thin white border
+ *    - Active: Solid white background with dark text.
+ * 4. "Continue Watching" (המשך צפייה) 16:9 shelf clearly peeking up from the bottom of the screen.
+ */
 @Composable
 fun HomeScreen(
     data: ChannelData?,
@@ -99,98 +120,210 @@ fun HomeScreen(
     onPlay: (Channel, List<Channel>) -> Unit,
     onInfo: (Channel) -> Unit,
     israeliOnly: Boolean = false,
+    onToggleIsraeli: () -> Unit = {},
+    onSwitchPositioned: (Offset) -> Unit = {},
     onSeeAll: (String) -> Unit,
 ) {
     val padding = feedPadding()
-    LazyColumn(
-        Modifier.fillMaxSize(),
-        state = listState,
-        contentPadding = padding,
-        flingBehavior = rememberBitChordFlingBehavior(),
-    ) {
-        if (data == null) {
-            item { Box(Modifier.bleedToTop(padding).padding(bottom = 28.dp).fillMaxWidth().height(580.dp).glassShimmer(HeroShape)) }
-            item { ShelfSkeleton(isWide = true) }
-            items(3) { ShelfSkeleton(isWide = false) }
-            return@LazyColumn
-        }
+    val scheme = MaterialTheme.colorScheme
+    var selectedCategory by remember { mutableStateOf<String?>("all") }
 
-        val allChannels = if (israeliOnly) data.channels.filter { it.isIsraeli() } else data.channels
-        val featured = if (israeliOnly) data.featured.filter { it.isIsraeli() }.ifEmpty { allChannels.take(5) } else data.featured
+    BoxWithConstraints(Modifier.fillMaxSize()) {
+        val heroHeight = (maxHeight * 0.52f).coerceIn(360.dp, 430.dp)
 
-        item(key = "hero") {
-            HeroPager(
-                featured, prefs, logo,
-                onPlay = { onPlay(it, featured) }, onInfo = onInfo,
-                modifier = Modifier.bleedToTop(padding).cascadeIn(0),
-            )
-        }
-        var row = 1
-        val rawRecent = prefs.recents.mapNotNull { data.byId[it] }
-        val recent = if (israeliOnly) rawRecent.filter { it.isIsraeli() } else rawRecent
-        if (recent.isNotEmpty()) {
-            val i = row++
-            // Wide 16:9 cards (width = 240.dp, height = 135.dp) for 'Continue Watching' row
-            item(key = "recent") {
-                ChannelShelf(
-                    title = "המשך צפייה",
-                    channels = recent,
+        LazyColumn(
+            Modifier.fillMaxSize(),
+            state = listState,
+            contentPadding = padding,
+            flingBehavior = rememberBitChordFlingBehavior(),
+        ) {
+            if (data == null) {
+                item { Box(Modifier.bleedToTop(padding).padding(bottom = 28.dp).fillMaxWidth().height(heroHeight).glassShimmer(HeroShape)) }
+                item { ShelfSkeleton(isWide = true) }
+                items(3) { ShelfSkeleton(isWide = false) }
+                return@LazyColumn
+            }
+
+            val allChannels = if (israeliOnly) data.channels.filter { it.isIsraeli() } else data.channels
+            val featured = if (israeliOnly) data.featured.filter { it.isIsraeli() }.ifEmpty { allChannels.take(5) } else data.featured
+
+            // 1. HERO PAGER (Restricted height allowing content peeking)
+            item(key = "hero") {
+                HeroPager(
+                    featured = featured,
+                    prefs = prefs,
                     logo = logo,
-                    subtitle = subtitle,
-                    onPlay = { onPlay(it, recent) },
-                    isWide = true,
-                    modifier = Modifier.cascadeIn(i),
+                    heroHeight = heroHeight,
+                    onPlay = { onPlay(it, featured) },
+                    onInfo = onInfo,
+                    modifier = Modifier.bleedToTop(padding).cascadeIn(0),
                 )
             }
-        }
-        val rawFavs = prefs.favorites.mapNotNull { data.byId[it] }
-        val favs = if (israeliOnly) rawFavs.filter { it.isIsraeli() } else rawFavs
-        if (favs.isNotEmpty()) {
-            val i = row++
-            // Tall 2:3 poster cards (width = 130.dp, height = 195.dp)
-            item(key = "favs") {
-                ChannelShelf(
-                    title = "המועדפים שלי",
-                    channels = favs,
-                    logo = logo,
-                    subtitle = subtitle,
-                    onPlay = { onPlay(it, favs) },
-                    isWide = false,
-                    modifier = Modifier.cascadeIn(i),
-                )
+
+            // 2. INLINE "רק ישראלי" ANIMATED SWITCH (Relocated out of top bar, filters content)
+            item(key = "israeli_filter_toggle") {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = 20.dp, end = 20.dp, top = 2.dp, bottom = 10.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                ) {
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    ) {
+                        AppleIsraelFlag(Modifier.size(width = 22.dp, height = 15.dp))
+                        Text(
+                            text = "רק תוכן ישראלי",
+                            color = if (israeliOnly) scheme.primary else scheme.onSurface,
+                            fontSize = 15.sp,
+                            fontWeight = FontWeight.ExtraBold,
+                        )
+                    }
+
+                    // Real animated Switch component with spatial coordinates measuring
+                    Switch(
+                        checked = israeliOnly,
+                        onCheckedChange = { onToggleIsraeli() },
+                        modifier = Modifier.onGloballyPositioned { coordinates ->
+                            val pos = coordinates.positionInRoot()
+                            val size = coordinates.size
+                            onSwitchPositioned(Offset(pos.x + size.width / 2f, pos.y + size.height / 2f))
+                        },
+                        colors = SwitchDefaults.colors(
+                            checkedThumbColor = Color.White,
+                            checkedTrackColor = scheme.primary,
+                            uncheckedThumbColor = Color.LightGray,
+                            uncheckedTrackColor = Color(0xFF1E202A),
+                            checkedBorderColor = Color.Transparent,
+                            uncheckedBorderColor = Color.White.copy(alpha = 0.25f),
+                        ),
+                    )
+                }
             }
-        }
-        val allRow = row++
-        item(key = "all_channels_shelf") {
-            val title = if (israeliOnly) "כל הערוצים (100% ישראלי)" else "כל הערוצים (הכל)"
-            ChannelShelf(
-                title = title,
-                channels = allChannels.take(30),
-                logo = logo,
-                subtitle = subtitle,
-                onPlay = { onPlay(it, allChannels) },
-                count = allChannels.size,
-                isWide = false,
-                onSeeAll = { onSeeAll("all") },
-                modifier = Modifier.cascadeIn(allRow),
-            )
-        }
-        data.categories.forEach { cat ->
-            val catChannels = if (israeliOnly) cat.channels.filter { it.isIsraeli() } else cat.channels
-            if (catChannels.isNotEmpty()) {
+
+            // 3. KAN BOX CATEGORY PILLS (Directly below Hero section)
+            item(key = "kan_box_categories") {
+                val haptic = LocalHapticFeedback.current
+                val categoriesList = remember(data) {
+                    listOf("all" to "הכל") + data.categories.map { it.key to it.name }
+                }
+
+                LazyRow(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(bottom = 18.dp),
+                    contentPadding = PaddingValues(horizontal = 20.dp),
+                    horizontalArrangement = Arrangement.spacedBy(10.dp),
+                    flingBehavior = rememberBitChordFlingBehavior(),
+                ) {
+                    items(categoriesList, key = { it.first }) { (key, label) ->
+                        val isActive = (selectedCategory == key)
+                        Box(
+                            modifier = Modifier
+                                .height(38.dp)
+                                .clip(RoundedCornerShape(50))
+                                .then(
+                                    if (isActive) {
+                                        Modifier.background(Color.White)
+                                    } else {
+                                        Modifier
+                                            .border(1.dp, Color.White.copy(alpha = 0.35f), RoundedCornerShape(50))
+                                            .background(Color.Transparent)
+                                    }
+                                )
+                                .clickable {
+                                    haptic.performHapticFeedback(HapticFeedbackType.SegmentTick)
+                                    selectedCategory = key
+                                }
+                                .padding(horizontal = 18.dp),
+                            contentAlignment = Alignment.Center,
+                        ) {
+                            Text(
+                                text = label,
+                                color = if (isActive) Color(0xFF0A0B10) else Color.White,
+                                fontSize = 13.sp,
+                                fontWeight = if (isActive) FontWeight.ExtraBold else FontWeight.Bold,
+                            )
+                        }
+                    }
+                }
+            }
+
+            // 4. SHELVES (Peeking up: Continue Watching, Favourites, Categories)
+            var row = 1
+            val rawRecent = prefs.recents.mapNotNull { data.byId[it] }
+            val recent = if (israeliOnly) rawRecent.filter { it.isIsraeli() } else rawRecent
+            if (recent.isNotEmpty()) {
                 val i = row++
-                item(key = "cat:" + cat.key) {
+                // Wide 16:9 cards (width = 240.dp, height = 135.dp) for 'Continue Watching' row
+                item(key = "recent") {
                     ChannelShelf(
-                        title = cat.name,
-                        channels = catChannels.take(24),
+                        title = "המשך צפייה",
+                        channels = recent,
                         logo = logo,
                         subtitle = subtitle,
-                        onPlay = { onPlay(it, catChannels) },
-                        count = catChannels.size,
-                        isWide = false,
-                        onSeeAll = { onSeeAll(cat.key) },
+                        onPlay = { onPlay(it, recent) },
+                        isWide = true,
                         modifier = Modifier.cascadeIn(i),
                     )
+                }
+            }
+            val rawFavs = prefs.favorites.mapNotNull { data.byId[it] }
+            val favs = if (israeliOnly) rawFavs.filter { it.isIsraeli() } else rawFavs
+            if (favs.isNotEmpty()) {
+                val i = row++
+                // Tall 2:3 poster cards (width = 130.dp, height = 195.dp)
+                item(key = "favs") {
+                    ChannelShelf(
+                        title = "המועדפים שלי",
+                        channels = favs,
+                        logo = logo,
+                        subtitle = subtitle,
+                        onPlay = { onPlay(it, favs) },
+                        isWide = false,
+                        modifier = Modifier.cascadeIn(i),
+                    )
+                }
+            }
+            val allRow = row++
+            item(key = "all_channels_shelf") {
+                val title = if (israeliOnly) "כל הערוצים (100% ישראלי)" else "כל הערוצים (הכל)"
+                ChannelShelf(
+                    title = title,
+                    channels = allChannels.take(30),
+                    logo = logo,
+                    subtitle = subtitle,
+                    onPlay = { onPlay(it, allChannels) },
+                    count = allChannels.size,
+                    isWide = false,
+                    onSeeAll = { onSeeAll("all") },
+                    modifier = Modifier.cascadeIn(allRow),
+                )
+            }
+            val filteredCategories = if (selectedCategory == null || selectedCategory == "all") {
+                data.categories
+            } else {
+                data.categories.filter { it.key == selectedCategory }
+            }
+            filteredCategories.forEach { cat ->
+                val catChannels = if (israeliOnly) cat.channels.filter { it.isIsraeli() } else cat.channels
+                if (catChannels.isNotEmpty()) {
+                    val i = row++
+                    item(key = "cat:" + cat.key) {
+                        ChannelShelf(
+                            title = cat.name,
+                            channels = catChannels.take(24),
+                            logo = logo,
+                            subtitle = subtitle,
+                            onPlay = { onPlay(it, catChannels) },
+                            count = catChannels.size,
+                            isWide = false,
+                            onSeeAll = { onSeeAll(cat.key) },
+                            modifier = Modifier.cascadeIn(i),
+                        )
+                    }
                 }
             }
         }
@@ -212,6 +345,7 @@ private fun HeroPager(
     featured: List<Channel>,
     prefs: AppPrefs,
     logo: (Channel) -> String,
+    heroHeight: Dp,
     onPlay: (Channel) -> Unit,
     onInfo: (Channel) -> Unit,
     modifier: Modifier = Modifier,
@@ -223,14 +357,14 @@ private fun HeroPager(
         delay(7000)
         pager.animateScrollToPage((pager.currentPage + 1) % featured.size)
     }
-    Box(modifier.padding(bottom = 22.dp)) {
-        HorizontalPager(pager, key = { featured[it].id }) { page ->
+    Box(modifier.fillMaxWidth().height(heroHeight).padding(bottom = 12.dp)) {
+        HorizontalPager(pager, key = { featured[it].id }, modifier = Modifier.fillMaxSize()) { page ->
             val ch = featured[page]
-            HeroPage(ch, logo(ch), prefs.isFavorite(ch.id), onPlay, onInfo) { prefs.toggleFavorite(ch.id) }
+            HeroPage(ch, logo(ch), prefs.isFavorite(ch.id), heroHeight, onPlay, onInfo) { prefs.toggleFavorite(ch.id) }
         }
         // capsule page indicator: the active dot stretches to 24 dp
         Row(
-            Modifier.align(Alignment.BottomCenter).padding(bottom = 6.dp),
+            Modifier.align(Alignment.BottomCenter).padding(bottom = 4.dp),
             horizontalArrangement = Arrangement.Center,
         ) {
             repeat(featured.size) { i ->
@@ -239,7 +373,7 @@ private fun HeroPager(
                 Box(
                     Modifier
                         .padding(horizontal = 3.dp)
-                        .height(6.dp)
+                        .height(5.dp)
                         .width(w)
                         .clip(RoundedCornerShape(50))
                         .background(MaterialTheme.colorScheme.onSurface.copy(alpha = if (on) 1f else 0.3f))
@@ -260,6 +394,7 @@ private fun HeroPage(
     ch: Channel,
     logo: String,
     favorite: Boolean,
+    heroHeight: Dp,
     onPlay: (Channel) -> Unit,
     onInfo: (Channel) -> Unit,
     onFavorite: () -> Unit,
@@ -307,7 +442,7 @@ private fun HeroPage(
     Box(
         Modifier
             .fillMaxWidth()
-            .height(580.dp)
+            .height(heroHeight)
             .sharedContainer(key, HeroShape)
             .clipToBounds()
             .background(scheme.background)
@@ -354,32 +489,34 @@ private fun HeroPage(
             Modifier
                 .align(Alignment.BottomCenter)
                 .fillMaxWidth()
-                .padding(horizontal = 24.dp)
-                .padding(bottom = 34.dp),
+                .padding(horizontal = 20.dp)
+                .padding(bottom = 16.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Box(contentAlignment = Alignment.Center) {
                 // soft ambient back-glow
                 Box(
                     Modifier
-                        .size(width = 300.dp, height = 190.dp)
+                        .size(width = 240.dp, height = 120.dp)
                         .background(Brush.radialGradient(listOf(scheme.primaryContainer.copy(alpha = if (dark) 0.35f else 0.55f), Color.Transparent)))
                 )
                 if (logo.isNotEmpty()) {
-                    AsyncImage(logo, ch.name, Modifier.fillMaxWidth(0.62f).height(140.dp), contentScale = ContentScale.Fit)
+                    AsyncImage(logo, ch.name, Modifier.fillMaxWidth(0.52f).height(85.dp), contentScale = ContentScale.Fit)
                 } else {
-                    Text(ch.name, style = MaterialTheme.typography.displaySmall, color = scheme.onSurface, maxLines = 2)
+                    Text(ch.name, style = MaterialTheme.typography.headlineSmall, color = scheme.onSurface, maxLines = 1)
                 }
             }
-            Spacer(Modifier.height(18.dp))
+            Spacer(Modifier.height(8.dp))
             Text(
                 ch.name,
-                style = MaterialTheme.typography.headlineSmall,
+                style = MaterialTheme.typography.titleMedium,
+                fontSize = 17.sp,
+                fontWeight = FontWeight.Bold,
                 color = scheme.onSurface,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
             )
-            Spacer(Modifier.height(8.dp))
+            Spacer(Modifier.height(6.dp))
 
             // TertiaryContainer badge pills with stretched variable numbers
             Row(
@@ -391,19 +528,19 @@ private fun HeroPage(
                     Modifier
                         .clip(RoundedCornerShape(50))
                         .background(scheme.tertiaryContainer)
-                        .padding(horizontal = 9.dp, vertical = 3.dp),
+                        .padding(horizontal = 8.dp, vertical = 2.dp),
                     contentAlignment = Alignment.Center,
                 ) {
                     Row(verticalAlignment = Alignment.CenterVertically) {
-                        Box(Modifier.size(6.dp).clip(CircleShape).background(scheme.error))
+                        Box(Modifier.size(5.dp).clip(CircleShape).background(scheme.error))
                         Spacer(Modifier.width(4.dp))
                         Text(
                             "LIVE",
                             color = scheme.onTertiaryContainer,
-                            fontSize = 11.sp,
+                            fontSize = 10.sp,
                             fontWeight = FontWeight.ExtraBold,
                             style = com.israeltv.plus.ui.theme.StretchedNumberStyle,
-                            modifier = Modifier.graphicsLayer { scaleY = 1.18f },
+                            modifier = Modifier.graphicsLayer { scaleY = 1.15f },
                         )
                     }
                 }
@@ -414,15 +551,15 @@ private fun HeroPage(
                         Modifier
                             .clip(RoundedCornerShape(50))
                             .background(scheme.tertiaryContainer)
-                            .padding(horizontal = 9.dp, vertical = 3.dp),
+                            .padding(horizontal = 8.dp, vertical = 2.dp),
                     ) {
                         Text(
                             ch.badge,
                             color = scheme.onTertiaryContainer,
-                            fontSize = 11.sp,
+                            fontSize = 10.sp,
                             fontWeight = FontWeight.Bold,
                             style = com.israeltv.plus.ui.theme.StretchedNumberStyle,
-                            modifier = Modifier.graphicsLayer { scaleY = 1.18f },
+                            modifier = Modifier.graphicsLayer { scaleY = 1.15f },
                         )
                     }
                 }
@@ -432,15 +569,15 @@ private fun HeroPage(
                     Modifier
                         .clip(RoundedCornerShape(50))
                         .background(scheme.tertiaryContainer)
-                        .padding(horizontal = 9.dp, vertical = 3.dp),
+                        .padding(horizontal = 8.dp, vertical = 2.dp),
                 ) {
                     Text(
                         "${ch.number}",
                         color = scheme.onTertiaryContainer,
-                        fontSize = 11.sp,
+                        fontSize = 10.sp,
                         fontWeight = FontWeight(800),
                         style = com.israeltv.plus.ui.theme.StretchedNumberStyle,
-                        modifier = Modifier.graphicsLayer { scaleY = 1.18f },
+                        modifier = Modifier.graphicsLayer { scaleY = 1.15f },
                     )
                 }
 
@@ -449,17 +586,17 @@ private fun HeroPage(
                     Text(
                         category,
                         color = scheme.onSurfaceVariant,
-                        fontSize = 13.sp,
+                        fontSize = 12.sp,
                         fontWeight = FontWeight.SemiBold,
                         modifier = Modifier.padding(start = 4.dp),
                     )
                 }
             }
 
-            Spacer(Modifier.height(18.dp))
-            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+            Spacer(Modifier.height(10.dp))
+            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(10.dp)) {
                 GlassIconButton(
-                    if (favorite) Icons.Rounded.Star else Icons.Rounded.StarBorder, "מועדף", onFavorite, size = 50.dp,
+                    if (favorite) Icons.Rounded.Star else Icons.Rounded.StarBorder, "מועדף", onFavorite, size = 44.dp,
                     tint = scheme.onSurface.copy(alpha = 0.14f), iconTint = scheme.onSurface,
                 )
                 // 'צפייה' CTA in colorScheme.primary with tactile bounce
@@ -474,15 +611,15 @@ private fun HeroPage(
                         containerColor = scheme.primary,
                         contentColor = scheme.onPrimary,
                     ),
-                    contentPadding = PaddingValues(horizontal = 34.dp),
-                    modifier = Modifier.height(50.dp).tactileBounce(),
+                    contentPadding = PaddingValues(horizontal = 28.dp),
+                    modifier = Modifier.height(44.dp).tactileBounce(),
                 ) {
-                    Icon(Icons.Rounded.PlayArrow, null, Modifier.size(26.dp), tint = scheme.onPrimary)
-                    Spacer(Modifier.width(6.dp))
-                    Text("צפייה", fontSize = 17.sp, fontWeight = FontWeight.Black, color = scheme.onPrimary)
+                    Icon(Icons.Rounded.PlayArrow, null, Modifier.size(24.dp), tint = scheme.onPrimary)
+                    Spacer(Modifier.width(5.dp))
+                    Text("צפייה", fontSize = 15.sp, fontWeight = FontWeight.Black, color = scheme.onPrimary)
                 }
                 GlassIconButton(
-                    Icons.Rounded.Info, "מידע", { onInfo(ch) }, size = 50.dp,
+                    Icons.Rounded.Info, "מידע", { onInfo(ch) }, size = 44.dp,
                     tint = scheme.onSurface.copy(alpha = 0.14f), iconTint = scheme.onSurface,
                 )
             }
