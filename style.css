@@ -148,7 +148,7 @@ body.no-hero .hero { display: none; }
 .card.is-fav .f-fav { display: block; color: #ffd45c; }
 .card.is-playing .f-live { display: block; background: var(--live); }
 .card.is-locked { opacity: .55; }
-body.no-numbers .card-num { display: none; }
+body.no-numbers .card-num, body.no-numbers .atv-num { display: none; }
 .grid-empty { width: 100%; padding: 6rem 2rem; text-align: center; font-size: 1.8rem; color: var(--muted); }
 
 .mono { display: flex; align-items: center; justify-content: center; text-align: center; color: #fff;

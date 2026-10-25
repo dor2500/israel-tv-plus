@@ -2614,13 +2614,13 @@
           } },
         { type: 'choice', tvOnly: true, label: 'גודל הממשק', help: 'הגדלה לצפייה מרחוק – משנה את כל הטקסטים והכרטיסים', get: function () { return label(SCALES, S.uiScale); },
           step: function (st) { setSetting('uiScale', cycle(SCALES, S.uiScale, st)); } },
-        { type: 'choice', label: 'כרטיסים בשורה', get: function () { return S.cols ? String(S.cols) : 'אוטומטי (' + state.cols + ')'; },
+        { type: 'choice', guideOnly: true, label: 'כרטיסים בשורה', get: function () { return S.cols ? String(S.cols) : 'אוטומטי (' + state.cols + ')'; },
           step: function (st) { setSetting('cols', cycle(COLS, S.cols, st)); } },
-        tvRow(toggle('hero', 'הצגת פרטי הערוץ הנבחר (למעלה)')),
+        guideRow(tvRow(toggle('hero', 'הצגת פרטי הערוץ הנבחר (למעלה)'))),
         toggle('numbers', 'מספרי ערוצים על הכרטיסים'),
         toggle('showSource', 'הצגת מקור השידור', 'שורת "מקור" בפרטי הערוץ ובנגן', function () { updateHero(state.list[state.gridIdx]); }),
-        tvRow(toggle('hints', 'שורת עזרה לשלט בתחתית')),
-        { type: 'choice', label: 'ביצועים', help: 'מהיר = בלי אנימציות, למכשירים חלשים. ' + (S.perf === 'auto' ? 'זוהה: ' + (state.lowEnd ? 'מכשיר חלש – מצב מהיר' : 'מצב מלא') : ''),
+        guideRow(tvRow(toggle('hints', 'שורת עזרה לשלט בתחתית'))),
+        { type: 'choice', label: 'ביצועים', help: 'מהיר = בלי אנימציות' + (TVUI ? ' ובלי תצוגה מקדימה חיה' : '') + ', למכשירים חלשים. ' + (S.perf === 'auto' ? 'זוהה: ' + (state.lowEnd ? 'מכשיר חלש – מצב מהיר' : 'מצב מלא') : ''),
           get: function () { return label(PERF, S.perf); }, step: function (st) { setSetting('perf', cycle(PERF, S.perf, st)); } }
       ].concat(NATIVE && NATIVE.launchSound ? [
         { type: 'toggle', label: 'צליל פתיחה', help: 'צליל קצר כשהאפליקציה נפתחת (שקט כשהמכשיר על שקט או רטט)',
@@ -2716,10 +2716,13 @@
       secs = secs.filter(function (s) { return !s.tvOnly; });
       secs.forEach(function (s) { s.rows = s.rows.filter(function (r) { return !r.tvOnly; }); });
     }
+    // the TV browse screen has no grid, no top details strip and no hints row: their settings would do nothing
+    if (TVUI) secs.forEach(function (s) { s.rows = s.rows.filter(function (r) { return !r.guideOnly; }); });
     return secs;
   }
 
   function tvRow(r) { r.tvOnly = true; return r; }
+  function guideRow(r) { r.guideOnly = true; return r; }
 
   var sections = [];
   function openSettings(sectionId) {
