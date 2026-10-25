@@ -793,7 +793,8 @@ body.phone.search-top .navbar.searching .top-search { position: fixed; top: calc
 
 /* -------- hero + shelves: bold display type, expressive pill actions on glass */
 body.phone .pager { border-radius: 0 0 3.6rem 3.6rem; box-shadow: var(--elev-2); }
-body.phone .slide-title { font-size: 3.4rem; letter-spacing: -.12rem; }
+body.phone .slide-title { font-size: 3.4rem; letter-spacing: -.12rem;
+  white-space: normal; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }   /* long names: two lines, not "...ts 2 HD" */
 body.phone .fab-play { height: 5.6rem; padding: 0 3rem 0 3.4rem; border-radius: 2.8rem; font-size: 1.7rem; font-weight: 800;
   box-shadow: var(--elev-2), inset 0 .1rem 0 rgba(255, 255, 255, .35); }
 body.phone .icon-tonal { width: 5.6rem; height: 5.6rem; box-shadow: var(--elev-1); }
