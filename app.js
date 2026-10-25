@@ -2853,7 +2853,7 @@
     var r = rows[state.setIdx];
     var input = r && r.type === 'text' ? el.settingsRows.querySelectorAll('.set-row')[state.setIdx].querySelector('input') : null;
     if (input && document.activeElement === input) {
-      if (code === 13 || isBack(code) || code === 38 || code === 40) {
+      if (code === 13 || (isBack(code) && code !== 8) || code === 38 || code === 40) {   // (Backspace edits the text)
         r.set(input.value);
         input.blur();
         toast('נשמר');
