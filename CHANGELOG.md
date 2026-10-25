@@ -20,11 +20,15 @@
 - **הסרת כל הערוצים הערביים (167 ערוצים)**:
   - ניקוי מלא ומוחלט של כל ערוצי המדינות הערביות (קטאר, סעודיה, מצרים, ירדן, סוריה, לבנון, עיראק, דובאי, תימן ועוד) מכל הקטגוריות ורשימות ה-M3U
   - אפס ערוצים בשפה הערבית בקטלוג
-- **הפצה ועדכון לכל הפלטפורמות**:
-  - **Android & Android TV**: קובצי APK חתומים ומעודכנים (`IsraelTVPlus-android.apk`, `IsraelTVPlus-androidtv.apk`)
-  - **LG webOS TV**: חבילת IPK מעודכנת (`com.israeltv.plus_4.3.2_all.ipk`)
-  - **Samsung Tizen TV**: פרויקט וחבילה מעודכנים (`IsraelTVPlus-tizen-project.zip`)
-  - **Windows Desktop**: גרסה ניידת והתקנה מעודכנות (`IsraelTVPlus-windows-portable.zip`, `IsraelTVPlus-windows-setup.exe`)
+- **הפצה ועדכון מלא לכל הפלטפורמות**:
+  - **Android & Android TV**: קובצי APK חתומים (`IsraelTVPlus-android.apk`, `IsraelTVPlus-androidtv.apk`)
+  - **Wear OS**: אפליקציה ייעודית לשעונים חכמים (`IsraelTVPlus-wearos.apk`)
+  - **LG webOS TV**: חבילת IPK מעודכנת לטלוויזיות LG (`com.israeltv.plus_4.3.2_all.ipk`, `com.israeltv.plus_all.ipk`)
+  - **Samsung Tizen TV**: פרויקט וחבילת התקנה לטלוויזיות סמסונג (`IsraelTVPlus-tizen-project.zip`)
+  - **Windows Desktop**: גרסה ניידת והתקנה רשמית (`IsraelTVPlus-windows-setup.exe`, `IsraelTVPlus-windows-portable.zip`)
+  - **macOS**: חבילות מק ייעודיות ל-Apple Silicon M1/M2/M3/M4 ול-Intel (`IsraelTVPlus-macos-arm64.zip`, `IsraelTVPlus-macos-x64.zip`)
+  - **Linux**: חבילות לינוקס x64 ו-ARM64 / Raspberry Pi (`IsraelTVPlus-linux-x64.zip`, `IsraelTVPlus-linux-arm64.zip`)
+  - **Apple TV, Stremio & נגני IPTV**: רשימות M3U מעודכנות ומסונכרנות
 - **תאימות שדרוג מושלמת (versionCode: 502)**: התקנה ושדרוג אוטומטי חלק בכל הפלטפורמות
 
 ## 4.3.1
