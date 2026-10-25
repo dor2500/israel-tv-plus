@@ -1513,12 +1513,19 @@
   /** Moves the camera: the shelves slide up / down, the row's track glides sideways, the rest is opacity. */
   function atvLayout() {
     var r = atv.row;
+    atv.cam = r;
     $('atv-rows').style.transform = 'translate3d(0,' + (-r * atvRem(ATV_ROW)) + 'px,0)';
-    for (var i = 0; i < atv.rowEls.length; i++) {
-      atv.rowEls[i].className = 'atv-row' + (i < r ? ' above' : i === r ? ' active' : ' below');
-    }
+    atvRowClasses();
     var c = atv.cols[r] || 0;
     if (atv.tracks[r]) atv.tracks[r].style.transform = 'translate3d(' + (Math.max(0, c - 1) * atvRem(ATV_PITCH)) + 'px,0,0)';
+  }
+
+  /** Rows above the camera fade out, the focused row is lit (with the pointer it may be one below the camera). */
+  function atvRowClasses() {
+    var cam = atv.cam || 0;
+    for (var i = 0; i < atv.rowEls.length; i++) {
+      atv.rowEls[i].className = 'atv-row' + (i === atv.row ? ' active' : i < cam ? ' above' : ' below');
+    }
   }
 
   function atvMark() {
@@ -1549,7 +1556,8 @@
     if (c > atv.rendered[r] - 8) atvRender(r, c + ATV_MORE);
     state.list = atv.rows[r].list;
     state.gridIdx = c;
-    if (!fromPointer) atvLayout();
+    // the pointer never moves the camera: a shelf sliding under a still pointer would focus the next card, and so on
+    if (!fromPointer) atvLayout(); else atvRowClasses();
     atvMark();
     atvSettle(atv.rows[r].list[c]);
   }
@@ -1799,7 +1807,7 @@
       var it = e.target.closest('.atv-item');
       if (!it || state.overlay) return;
       var r = +it.getAttribute('data-r'), c = +it.getAttribute('data-c');
-      if (r !== atv.row || c !== atv.cols[r] || atv.zone !== 'rows') atvFocus(r, c, r === atv.row);
+      if (r !== atv.row || c !== atv.cols[r] || atv.zone !== 'rows') atvFocus(r, c, true);
     });
     var wheelAt = 0;
     $('atv').addEventListener('wheel', function (e) {
