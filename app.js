@@ -3826,6 +3826,7 @@
   }
 
   function dialogKey(code) {
+    if (code === 8 && state.pinInput) { state.pinInput('del'); return; }   // a keyboard's Backspace deletes a digit of the PIN
     var n = dialogButtons().length;
     if (code === 37 || code === 40) state.dialogIdx = clamp(state.dialogIdx + 1, 0, n - 1);
     else if (code === 39 || code === 38) state.dialogIdx = clamp(state.dialogIdx - 1, 0, n - 1);
