@@ -1507,11 +1507,14 @@
       frag.appendChild(sec);
     });
     box.appendChild(frag);
-    atv.rows.forEach(function (row, r) { atvRender(r, ATV_FIRST); });
+    // Render initial visible rows (0 to 2), rest are lazy-rendered as camera moves
+    var maxInit = Math.min(atv.rows.length, 3);
+    for (var ri = 0; ri < maxInit; ri++) { atvRender(ri, ATV_FIRST); }
     // stay where we were (a rebuild after a favourite / a new recent)
     var r0 = keepId ? atvRowIndex(keepId) : -1;
     atv.row = r0 === -1 ? 0 : r0;
     if (r0 !== -1 && keepCh) {
+      if (atv.rendered[r0] === 0) atvRender(r0, ATV_FIRST);
       var list = atv.rows[r0].list;
       atv.cols[r0] = Math.min(keepCol, list.length - 1);   // the card itself is gone (hidden): its neighbour
       for (var k = 0; k < list.length; k++) if (list[k].id === keepCh.id) atv.cols[r0] = k;
@@ -1618,6 +1621,9 @@
     atv.cols[r] = c;
     atv.zone = 'rows';
     state.zone = 'atv';
+    if (atv.rendered[r] === 0) atvRender(r, ATV_FIRST);
+    if (r + 1 < atv.rows.length && atv.rendered[r + 1] === 0) atvRender(r + 1, ATV_FIRST);
+    if (r + 2 < atv.rows.length && atv.rendered[r + 2] === 0) atvRender(r + 2, ATV_FIRST);
     if (c > atv.rendered[r] - 8) atvRender(r, c + ATV_MORE);
     state.list = atv.rows[r].list;
     state.gridIdx = c;
@@ -1646,11 +1652,11 @@
 
   function atvSettle(ch) {
     if (atv.metaTimer) clearTimeout(atv.metaTimer);
-    atv.metaTimer = setTimeout(function () { atvMeta(ch); }, fastMode() ? 160 : 70);
+    atv.metaTimer = setTimeout(function () { atvMeta(ch); }, 180);
     if (atv.restTimer) clearTimeout(atv.restTimer);
     if (state.playing && state.playing !== ch && state.overlay !== 'player') atvStopPreview();
     if (!ch) return;
-    atv.restTimer = setTimeout(function () { atvPreview(ch); }, 550);
+    atv.restTimer = setTimeout(function () { atvPreview(ch); }, 800);
   }
 
   // ================================================================== EPG Program Guide Engine
