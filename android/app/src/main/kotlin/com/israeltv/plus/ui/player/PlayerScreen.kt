@@ -1,5 +1,8 @@
 package com.israeltv.plus.ui.player
 
+import androidx.compose.foundation.layout.navigationBars
+import androidx.compose.foundation.layout.displayCutout
+import androidx.compose.foundation.layout.union
 import com.israeltv.plus.ui.theme.RequestDarkSystemBars
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.Role
@@ -580,7 +583,8 @@ private fun TopBar(ch: Channel, logo: String, onBack: () -> Unit) {
         Modifier
             .fillMaxWidth()
             .background(Brush.verticalGradient(listOf(Color.Black.copy(alpha = 0.75f), Color.Transparent)))
-            .windowInsetsPadding(WindowInsets.statusBars)
+            // the bars are hidden while watching: keep clear of the camera cutout (top, or a side in landscape)
+            .windowInsetsPadding(WindowInsets.statusBars.union(WindowInsets.displayCutout))
             .padding(horizontal = 16.dp, vertical = 14.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
@@ -619,7 +623,7 @@ private fun Dock(landscape: Boolean, onItem: (String) -> Unit) {
     val glass = MaterialTheme.colorScheme.surfaceTint.copy(alpha = 0.18f).compositeOver(Color(0xFF14141C).copy(alpha = 0.62f))
     Row(
         Modifier
-            .navigationBarsPadding()
+            .windowInsetsPadding(WindowInsets.navigationBars.union(WindowInsets.displayCutout))
             .padding(horizontal = 20.dp, vertical = 22.dp)
             .widthIn(max = 400.dp)
             .fillMaxWidth()
