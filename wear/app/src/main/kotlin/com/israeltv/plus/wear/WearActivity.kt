@@ -38,8 +38,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.focus.FocusRequester
-import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.rotary.onRotaryScrollEvent
 import androidx.compose.ui.layout.ContentScale
@@ -60,6 +58,7 @@ import androidx.media3.ui.compose.SURFACE_TYPE_SURFACE_VIEW
 import androidx.media3.ui.compose.modifiers.resizeWithContentScale
 import androidx.media3.ui.compose.state.rememberPresentationState
 import androidx.wear.compose.foundation.lazy.ScalingLazyColumn
+import androidx.wear.compose.foundation.requestFocusOnHierarchyActive
 import androidx.wear.compose.foundation.lazy.items
 import androidx.wear.compose.foundation.lazy.rememberScalingLazyListState
 import androidx.wear.compose.material3.AppScaffold
@@ -312,9 +311,7 @@ private fun PlayerScreen(d: ChannelData, library: Library, key: String) {
     }
 
     val audio = remember { context.getSystemService(Context.AUDIO_SERVICE) as AudioManager }
-    val focus = remember { FocusRequester() }
     var crown by remember { mutableFloatStateOf(0f) }
-    LaunchedEffect(Unit) { runCatching { focus.requestFocus() } }
 
     Box(
         Modifier.fillMaxSize().background(Color.Black)
@@ -328,7 +325,8 @@ private fun PlayerScreen(d: ChannelData, library: Library, key: String) {
                 }
                 true
             }
-            .focusRequester(focus).focusable()
+            // takes the crown whenever this screen is the active one (also right after the open animation)
+            .requestFocusOnHierarchyActive().focusable()
             .clickable { touched++ },
         contentAlignment = Alignment.Center,
     ) {
