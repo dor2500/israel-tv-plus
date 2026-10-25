@@ -481,6 +481,9 @@
         // TV: into / out of kids mode the browse screen starts over on the first card (the pill's tabs change too)
         if (TVUI && k === 'kids') { atv.zone = 'rows'; atv.row = 0; atv.rows = []; atv.dirty = true; }
         loadChannels();
+        // the channel on (the player under the settings, or left on behind the shelves) is not in the list any more:
+        // kids mode does not go on playing a grown-ups' channel, a hidden channel stops
+        if (state.playing && indexInAll(state.playing.id) === -1) dropPlaying();
         selectCategory(k !== 'kids' && state.cats.some(function (c) { return c.id === cat; }) ? cat : 'ALL', true);
         focusGrid(k === 'kids' ? 0 : idx);
       }
@@ -519,6 +522,8 @@
       if (IS_WEB && S.hideAppOnly && appOnly(c)) return false;
       return true;
     }).map(function (c, i) {
+      // the channel on now keeps its object: the player, the preview and the shelves compare it by identity
+      if (state.playing && state.playing.id === c.id) return state.playing;
       var o = {};
       for (var k in c) o[k] = c[k];
       o.number = c.number || i + 1;
@@ -1988,6 +1993,20 @@
     state.preview = null;
     document.body.classList.remove('atv-live');
     for (var k = 0; k < cards.length; k++) cards[k].classList.remove('is-playing');
+  }
+
+  /** Stops the channel and takes the player away, also from under the settings / a dialog opened over it. */
+  function dropPlaying() {
+    stopPlayback();
+    hideError();
+    spinner(false);
+    state.stack = state.stack.filter(function (o) { return o !== 'player' && o !== 'drawer'; });
+    if (state.overlay === 'player' || state.overlay === 'drawer') state.overlay = null;
+    el.drawer.classList.add('hidden');
+    el.player.classList.add('hidden');
+    document.body.classList.remove('player-open');
+    native('setPlaying', false);
+    if (PHONE) native('setImmersive', false);
   }
 
   function isAudioUrl(url, ch) {
