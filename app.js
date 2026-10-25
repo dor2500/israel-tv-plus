@@ -1399,7 +1399,9 @@
         else if (q.length > 2 && c.category && c.category.indexOf(q) !== -1) genre.push(c);   // "ספורט", "ילדים": the genre, after the names
       });
       res = res.concat(genre);
-      return [{ id: 'search', title: q ? 'תוצאות לחיפוש "' + atv.query.trim() + '" · ' + res.length : 'הקלידו שם ערוץ, מדינה או מספר', list: res }];
+      var shown = atv.query.trim();
+      return [{ id: 'search', list: res, title: !q ? 'הקלידו שם ערוץ, מדינה, ז׳אנר או מספר'
+        : res.length ? 'תוצאות לחיפוש "' + shown + '" · ' + res.length : 'לא נמצאו ערוצים עבור "' + shown + '" – נסו מילה אחרת' }];
     }
     var buckets = {};
     ATV_ROWS.forEach(function (r) { buckets[r[0]] = []; });
@@ -1757,9 +1759,11 @@
     var q = $('atv-q');
     if (code === 40 || code === 13) {
       if (e.preventDefault) e.preventDefault();
+      if (atv.searchTimer) { clearTimeout(atv.searchTimer); atv.searchTimer = null; atv.query = q.value; atvBuild(); atvLayout(); }   // typed just now
+      if (!(atv.rows[0] && atv.rows[0].list.length)) return;   // no results: the field keeps the focus
       q.blur();
       $('atv-search').classList.remove('focused');
-      if (atv.rows[0] && atv.rows[0].list.length) atvFocus(0, 0); else atvFocusPill(atv.tab);
+      atvFocus(0, 0);
     } else if (code === 38) { if (e.preventDefault) e.preventDefault(); q.blur(); $('atv-search').classList.remove('focused'); atvFocusPill(atv.tab); }
     else if (isBack(code) && (code !== 8 || !q.value)) { if (e.preventDefault) e.preventDefault(); atvCloseSearch(); }
   }
@@ -1834,7 +1838,7 @@
     $('atv-q').addEventListener('input', function () {
       atv.query = $('atv-q').value;
       if (atv.searchTimer) clearTimeout(atv.searchTimer);
-      atv.searchTimer = setTimeout(function () { atvBuild(); atvLayout(); atvMark(); }, 220);
+      atv.searchTimer = setTimeout(function () { atv.searchTimer = null; atvBuild(); atvLayout(); atvMark(); }, 220);
     });
     // the preview shows once the picture really moves
     el.video.addEventListener('playing', function () {
