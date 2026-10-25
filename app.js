@@ -3208,7 +3208,7 @@
     var nativeInsets = native('insets');
     if (nativeInsets) { try { var ins = JSON.parse(nativeInsets); window.__itvInsets(ins.t, ins.r, ins.b, ins.l, ins.k); } catch (e) {} }
     if (PLATFORM === 'tizen' && window.tizen && window.tizen.tvinputdevice) {
-      ['ColorF0Red', 'ColorF1Green', 'ColorF2Yellow', 'ColorF3Blue', 'ChannelUp', 'ChannelDown', 'MediaPlayPause', 'MediaPlay', 'MediaPause',
+      ['ColorF0Red', 'ColorF1Green', 'ColorF2Yellow', 'ColorF3Blue', 'ChannelUp', 'ChannelDown', 'MediaPlayPause', 'MediaPlay', 'MediaPause', 'MediaStop',
         'Info', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'].forEach(function (k) {
         try { window.tizen.tvinputdevice.registerKey(k); } catch (e) {}
       });
@@ -3649,6 +3649,12 @@
       // TV browse screen: ▶ watches the focused card (the silent preview is not something to pause)
       if (code !== 19 && TVUI && !state.overlay && state.zone === 'atv' && atv.zone === 'rows') { atvWatch(); return; }
       togglePlay(); return;
+    }
+    if (code === 413) {   // ■ Stop (LG / Samsung remotes): the channel stops – in the player or left on behind the TV shelves
+      if (e.preventDefault) e.preventDefault();
+      if (state.overlay === 'player') closePlayer(false);
+      else if (TVUI && !state.overlay && state.playing) { stopPlayback(); el.player.classList.add('hidden'); atvMeta(atvCurrent()); }
+      return;
     }
     if (code === 457) { runAction('info'); return; } // Info key
     if (code === 10135 || code === 18) { runAction('menu'); return; } // Samsung Tools
