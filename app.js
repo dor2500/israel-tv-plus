@@ -1602,7 +1602,8 @@
     var tags = '<span class="atv-live"><i></i>LIVE</span><span class="atv-pill-q">' + esc(q) + '</span>' +
       '<span class="atv-tag">' + esc(splitCat(ch.category)) + '</span>' +
       (ch.countryHe ? '<span class="atv-tag">' + esc(ch.countryHe) + '</span>' : '') +
-      (isFav(ch) ? '<span class="atv-tag">★ מועדף</span>' : '');
+      (isFav(ch) ? '<span class="atv-tag">★ מועדף</span>' : '') +
+      (state.playing === ch && !state.preview ? '<span class="atv-tag atv-on">🔊 מתנגן עכשיו · OK למסך מלא</span>' : '');
     target.innerHTML = '<div class="atv-mlogo"><img alt=""><div class="mono hidden"></div></div>' +
       '<h1 class="atv-title">' + esc(ch.name) + '</h1><div class="atv-tags">' + tags + '</div>' +
       (ch.desc ? '<p class="atv-desc">' + esc(ch.desc) + '</p>' : '') +
@@ -1623,7 +1624,7 @@
   // ---- live preview behind the shelves
   function atvPreview(ch) {
     if (!TVUI || state.overlay || state.zone !== 'atv' || ch !== atvCurrent()) return;
-    if (state.playing === ch) { document.body.classList.add('atv-live'); return; }
+    if (state.playing === ch) { if (!state.isRadio) document.body.classList.add('atv-live'); return; }
     if (isRadioCh(ch) || isApp(ch) || appOnly(ch) || fastMode()) return;
     if (atv.stopTimer) { clearTimeout(atv.stopTimer); atv.stopTimer = null; }
     if (state.playing) stopPlayback();
@@ -1900,7 +1901,7 @@
     if (!keepPlaying) stopPlayback();
     native('setPlaying', false);   // picture-in-picture on "home" only while the player is on screen
     if (TVUI) {
-      if (state.playing) document.body.classList.add('atv-live');
+      if (state.playing && !state.isRadio) document.body.classList.add('atv-live');   // radio: the colour stage stays
       atvRestore();
       return;
     }
