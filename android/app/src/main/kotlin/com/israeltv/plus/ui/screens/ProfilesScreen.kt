@@ -1,5 +1,7 @@
 package com.israeltv.plus.ui.screens
 
+import com.israeltv.plus.ui.theme.RequestDarkSystemBars
+import androidx.compose.ui.semantics.Role
 import androidx.activity.compose.BackHandler
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.Animatable
@@ -47,12 +49,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
-import android.app.Activity
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.runtime.DisposableEffect
-import androidx.compose.ui.platform.LocalView
-import androidx.core.view.WindowCompat
 import com.israeltv.plus.ui.theme.LocalDarkTheme
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -100,13 +98,7 @@ private val TileShape = RoundedCornerShape(30.dp)
 fun ProfilesScreen(prefs: AppPrefs, canClose: Boolean, onPicked: () -> Unit, onClose: () -> Unit) {
     // always the cinematic dark version of the active palette, light status-bar icons included
     val context = LocalContext.current
-    val view = LocalView.current
-    DisposableEffect(Unit) {
-        val window = (view.context as? Activity)?.window
-        val ctl = window?.let { WindowCompat.getInsetsController(it, view) }
-        ctl?.isAppearanceLightStatusBars = false
-        onDispose { ctl?.isAppearanceLightStatusBars = !prefs.theme.dark }
-    }
+    RequestDarkSystemBars()
     val dark = remember(prefs.theme) { schemeFor(context, prefs.theme.copy(dark = true)) }
     MaterialTheme(colorScheme = dark, typography = MaterialTheme.typography) {
         CompositionLocalProvider(LocalDarkTheme provides true) {
@@ -131,8 +123,8 @@ private fun ProfilesContent(prefs: AppPrefs, canClose: Boolean, onPicked: () -> 
         }
     }
 
-    val glows = prefs.profiles.take(3).flatMap { p ->
-        schemeFor(context, p.theme.copy(dark = true)).let { listOf(it.primary, it.tertiary) }
+    val glows = remember(prefs.profiles) {
+        prefs.profiles.take(3).flatMap { p -> schemeFor(context, p.theme.copy(dark = true)).let { listOf(it.primary, it.tertiary) } }
     }
     Box(
         Modifier
@@ -224,7 +216,7 @@ private fun ProfileTile(p: Profile, editing: Boolean, onClick: () -> Unit) {
     val bounce = remember { Animatable(1f) }
     val tone = remember(p.theme) { schemeFor(context, p.theme.copy(dark = true)) }
     Column(
-        Modifier.width(100.dp).clickable(remember { MutableInteractionSource() }, null) {
+        Modifier.width(100.dp).clickable(remember { MutableInteractionSource() }, null, role = Role.Button) {
             haptic.performHapticFeedback(HapticFeedbackType.SegmentFrequentTick)
             scope.launch {
                 bounce.animateTo(0.88f, spring(stiffness = Spring.StiffnessHigh))
@@ -244,7 +236,7 @@ private fun ProfileTile(p: Profile, editing: Boolean, onClick: () -> Unit) {
                 .border(1.dp, Brush.verticalGradient(listOf(Color.White.copy(alpha = 0.35f), Color.Transparent)), TileShape),
             contentAlignment = Alignment.Center,
         ) {
-            AsyncImage(avatarUrl(p.avatar), p.name, Modifier.size(66.dp))
+            AsyncImage(avatarUrl(p.avatar), null, Modifier.size(66.dp))
             if (editing) {
                 Box(Modifier.fillMaxSize().background(Color.Black.copy(alpha = 0.45f)), contentAlignment = Alignment.Center) {
                     Icon(Icons.Rounded.Edit, "עריכה", Modifier.size(30.dp), tint = Color.White)
@@ -260,7 +252,7 @@ private fun ProfileTile(p: Profile, editing: Boolean, onClick: () -> Unit) {
 
 @Composable
 private fun AddTile(onClick: () -> Unit) {
-    Column(Modifier.width(100.dp).clickable(onClick = onClick), horizontalAlignment = Alignment.CenterHorizontally) {
+    Column(Modifier.width(100.dp).clickable(role = Role.Button, onClick = onClick), horizontalAlignment = Alignment.CenterHorizontally) {
         Box(
             Modifier
                 .size(100.dp)
@@ -268,7 +260,7 @@ private fun AddTile(onClick: () -> Unit) {
                 .background(Color.White.copy(alpha = 0.06f))
                 .border(1.5.dp, Color.White.copy(alpha = 0.3f), TileShape),
             contentAlignment = Alignment.Center,
-        ) { Icon(Icons.Rounded.Add, "הוספת פרופיל", Modifier.size(44.dp), tint = Color.White) }
+        ) { Icon(Icons.Rounded.Add, null, Modifier.size(44.dp), tint = Color.White) }
         Text("הוספה", Modifier.padding(top = 10.dp), color = Color.White.copy(alpha = 0.8f), fontSize = 16.sp, fontWeight = FontWeight.Bold)
     }
 }
@@ -286,6 +278,8 @@ private fun ProfileEditor(
     val context = LocalContext.current
     val scheme = MaterialTheme.colorScheme
     var p by remember(start.id) { mutableStateOf(start) }
+    // deleting takes favourites and history with it: the first tap asks, the second deletes
+    var confirmDelete by remember(start.id) { mutableStateOf(false) }
     val palettes = remember { (wallpaperPalettes(context).take(1) + CuratedPalettes) }
     Box(
         Modifier
@@ -303,6 +297,7 @@ private fun ProfileEditor(
                 .background(scheme.surfaceContainerHigh)
                 .border(1.dp, Brush.verticalGradient(listOf(Color.White.copy(alpha = 0.32f), Color.Transparent)), RoundedCornerShape(32.dp))
                 .clickable(remember { MutableInteractionSource() }, null) {}
+                .verticalScroll(rememberScrollState())   // small phones with the keyboard up: save stays reachable
                 .padding(22.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
@@ -339,7 +334,7 @@ private fun ProfileEditor(
             LazyRow(horizontalArrangement = Arrangement.spacedBy(10.dp), contentPadding = PaddingValues(vertical = 2.dp)) {
                 items(palettes, key = { it.key }) { option ->
                     val colors = remember(option) { schemeFor(context, option, true).let { Triple(it.primary, it.secondary, it.tertiary) } }
-                    TriToneSwatch(colors, selected = p.theme.key == option.key) {
+                    TriToneSwatch(colors, selected = p.theme.key == option.key, label = if (option.key == "system") "צבעי המערכת" else "פלטה") {
                         p = p.copy(theme = option.choice(p.theme.dark))
                     }
                 }
@@ -352,7 +347,9 @@ private fun ProfileEditor(
                 ) { Text("שמירה", fontWeight = FontWeight.ExtraBold) }
                 TextButton(onCancel) { Text("ביטול") }
                 Spacer(Modifier.weight(1f))
-                if (canDelete) TextButton(onDelete) { Text("מחיקה", color = scheme.error, fontWeight = FontWeight.Bold) }
+                if (canDelete) TextButton({ if (confirmDelete) onDelete() else confirmDelete = true }) {
+                    Text(if (confirmDelete) "למחוק לגמרי?" else "מחיקה", color = scheme.error, fontWeight = FontWeight.Bold)
+                }
             }
         }
     }

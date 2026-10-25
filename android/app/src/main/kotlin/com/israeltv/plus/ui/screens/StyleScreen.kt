@@ -1,5 +1,11 @@
 package com.israeltv.plus.ui.screens
 
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.Role
+import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.selection.toggleable
+import androidx.compose.foundation.selection.selectable
 import androidx.activity.compose.BackHandler
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateDpAsState
@@ -150,7 +156,7 @@ fun StyleScreen(prefs: AppPrefs, sample: List<Channel>, logo: (Channel) -> Strin
                         horizontalArrangement = Arrangement.spacedBy(14.dp),
                         flingBehavior = rememberBitChordFlingBehavior(),
                     ) {
-                        items(options, key = { it.key + it.wallpaper }) { option ->
+                        itemsIndexed(options, key = { _, it -> it.key + it.wallpaper }) { n, option ->
                             val colors = remember(option) {
                                 val s = schemeFor(context, option, dark = true)
                                 Triple(s.primary, s.secondary, s.tertiary)
@@ -158,6 +164,7 @@ fun StyleScreen(prefs: AppPrefs, sample: List<Channel>, logo: (Channel) -> Strin
                             TriToneSwatch(
                                 colors,
                                 selected = theme.key == option.key && theme.wallpaper == option.wallpaper,
+                                label = if (option.key == "system") "צבעי המערכת" else "פלטה ${n + 1}",
                             ) {
                                 haptic.performHapticFeedback(HapticFeedbackType.SegmentTick)
                                 prefs.setTheme(option.choice(theme.dark))
@@ -168,7 +175,10 @@ fun StyleScreen(prefs: AppPrefs, sample: List<Channel>, logo: (Channel) -> Strin
                         Modifier
                             .padding(top = 18.dp)
                             .fillMaxWidth()
-                            .clickable { prefs.setTheme(theme.copy(dark = !theme.dark)) }
+                            .toggleable(theme.dark, role = Role.Switch) {
+                                haptic.performHapticFeedback(if (it) HapticFeedbackType.ToggleOn else HapticFeedbackType.ToggleOff)
+                                prefs.setTheme(theme.copy(dark = it))
+                            }
                             .padding(horizontal = 20.dp, vertical = 10.dp),
                         verticalAlignment = Alignment.CenterVertically,
                     ) {
@@ -178,10 +188,7 @@ fun StyleScreen(prefs: AppPrefs, sample: List<Channel>, logo: (Channel) -> Strin
                         }
                         Switch(
                             theme.dark,
-                            {
-                                haptic.performHapticFeedback(if (it) HapticFeedbackType.ToggleOn else HapticFeedbackType.ToggleOff)
-                                prefs.setTheme(theme.copy(dark = it))
-                            },
+                            null,   // the row is the switch (one TalkBack item)
                             thumbContent = if (theme.dark) {
                                 { Icon(Icons.Rounded.Check, null, Modifier.size(SwitchDefaults.IconSize)) }
                             } else null,
@@ -206,7 +213,7 @@ fun StyleScreen(prefs: AppPrefs, sample: List<Channel>, logo: (Channel) -> Strin
  * tertiary. Selected, the circle morphs into an 18 dp squircle inside a crisp 2 dp ring with a 4 dp gap (bouncy).
  */
 @Composable
-internal fun TriToneSwatch(colors: Triple<Color, Color, Color>, selected: Boolean, onClick: () -> Unit) {
+internal fun TriToneSwatch(colors: Triple<Color, Color, Color>, selected: Boolean, label: String? = null, onClick: () -> Unit) {
     val ring = MaterialTheme.colorScheme.onSurface
     val bouncy = spring<Dp>(dampingRatio = Spring.DampingRatioMediumBouncy, stiffness = Spring.StiffnessMediumLow)
     val inset by animateDpAsState(if (selected) 6.dp else 0.dp, bouncy, label = "inset")
@@ -216,7 +223,8 @@ internal fun TriToneSwatch(colors: Triple<Color, Color, Color>, selected: Boolea
         Modifier
             .size(56.dp)
             .clip(RoundedCornerShape(if (selected) 22.dp else 28.dp))
-            .clickable(onClick = onClick)
+            .selectable(selected, role = Role.RadioButton, onClick = onClick)
+            .then(if (label != null) Modifier.semantics { contentDescription = label } else Modifier)
     ) {
         val i = inset.toPx()
         val r = (corner.toPx() - i * 0.4f).coerceAtLeast(0f)
@@ -259,7 +267,7 @@ private fun PillSwitcher(labels: List<String>, selected: Int, modifier: Modifier
         Row(Modifier.fillMaxSize()) {
             labels.forEachIndexed { i, label ->
                 Box(
-                    Modifier.weight(1f).fillMaxHeight().clip(pill).clickable { onSelect(i) },
+                    Modifier.weight(1f).fillMaxHeight().clip(pill).selectable(i == selected, role = Role.Tab) { onSelect(i) },
                     contentAlignment = Alignment.Center,
                 ) {
                     Text(
