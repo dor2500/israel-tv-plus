@@ -1874,6 +1874,14 @@
       atvFocus(+it.getAttribute('data-r'), +it.getAttribute('data-c'), true);
       atvWatch();
     });
+    // computers: right click = the channel's options (like the guide's grid and the remote's long OK)
+    rows.addEventListener('contextmenu', function (e) {
+      var it = e.target.closest('.atv-item');
+      if (!it || state.overlay) return;
+      e.preventDefault();
+      atvFocus(+it.getAttribute('data-r'), +it.getAttribute('data-c'), true);
+      channelMenu(atvCurrent());
+    });
     // Magic Remote / mouse: the pointer focuses what it is over (the camera stays), the wheel moves it. Only a pointer
     // that really moves counts: a still one that cards slide under (arrow keys) must not steal the remote's focus.
     var px = -1, py = -1;
