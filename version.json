@@ -1,71 +1,69 @@
 {
-  "version": "4.3.2",
-  "code": 202610252013,
-  "app": 502,
+  "version": "4.3.3",
+  "code": 202610252015,
+  "app": 503,
   "shell": 3,
   "date": "2026-10-25",
   "notes": [
-    "שילוב ערוצי קשת 12 & FreeTV וסידור שורת ערוצי ישראל:",
-    "ערוץ האוכל והבישול – קשת / FreeTV: ערוץ בישול ואוכל 24/7 (מאסטר שף, מתכונים ושפים מובילים)",
-    "ארץ נהדרת 24/7 – קשת / FreeTV: כל העונות והמערכונים מכל השנים ברצף",
-    "ערוץ הקומדיה – קשת / FreeTV: קומדיות ישראליות מבית קשת",
-    "ערוץ הדרמה – קשת / FreeTV: מיטב סדרות הדרמה הישראליות",
-    "ערוץ המוזיקה – קשת / FreeTV: מוזיקה ישראלית והופעות",
-    "כאן חינוכית 23 HD: כראמל, קופה ראשית לנוער, ילדי בית העץ ועוד",
-    "ערוץ החיים הטובים HD: ערוץ הלייף סטייל והאוכל מבית yes ו-HOT",
-    "ערוץ הידברות HD: שידורי יהדות ומסורת",
-    "ניקוי ערוצים לא פעילים וכפילויות ברשימת הערוצים",
-    "חוויית משתמש ועיצוב Material 3 Expressive:",
-    "מתג \"רק ישראלי\" ייעודי עם אנימציית Zomato רדאר ואייקון דגל ישראל וקטורי פרימיום",
-    "חלוקת מאקרו קטגוריות נקייה (הכל, סרטים וסדרות, ילדים ונוער, ספורט) + מגירת \"עוד...\" תחתונה (ModalBottomSheet)",
-    "גריד כרטיסים היברידי: כרטיסים רחבים 16:9 ב\"המשך צפייה\", וכרטיסי פוסטר 2:3 בשאר השורות עם רקעי גרדיאנט זוהרים (בלי מסכים שחורים)",
-    "נגן Nuvio מינימליסטי עם מורפינג פיזיקלי קפיצי בכפתור הניגון, פקדים נקיים וסליידרים עבים",
-    "רטט טקטילי עמוק (LongPress) וקפיץ מורגש (0.92x -> 1.08x) בכל הפקדים",
-    "הסרת כל הערוצים הערביים (167 ערוצים):",
-    "ניקוי מלא ומוחלט של כל ערוצי המדינות הערביות (קטאר, סעודיה, מצרים, ירדן, סוריה, לבנון, עיראק, דובאי, תימן ועוד) מכל הקטגוריות ורשימות ה-M3U",
-    "אפס ערוצים בשפה הערבית בקטלוג",
-    "הפצה ועדכון מלא לכל הפלטפורמות:",
-    "Android & Android TV: קובצי APK חתומים (IsraelTVPlus-android.apk, IsraelTVPlus-androidtv.apk)",
-    "Wear OS: אפליקציה ייעודית לשעונים חכמים (IsraelTVPlus-wearos.apk)",
-    "LG webOS TV: חבילת IPK מעודכנת לטלוויזיות LG (com.israeltv.plus_4.3.2_all.ipk, com.israeltv.plus_all.ipk)",
-    "Samsung Tizen TV: פרויקט וחבילת התקנה לטלוויזיות סמסונג (IsraelTVPlus-tizen-project.zip)",
-    "Windows Desktop: גרסה ניידת והתקנה רשמית (IsraelTVPlus-windows-setup.exe, IsraelTVPlus-windows-portable.zip)",
-    "macOS: חבילות מק ייעודיות ל-Apple Silicon M1/M2/M3/M4 ול-Intel (IsraelTVPlus-macos-arm64.zip, IsraelTVPlus-macos-x64.zip)",
-    "Linux: חבילות לינוקס x64 ו-ARM64 / Raspberry Pi (IsraelTVPlus-linux-x64.zip, IsraelTVPlus-linux-arm64.zip)",
-    "Apple TV, Stremio & נגני IPTV: רשימות M3U מעודכנות ומסונכרנות",
-    "תאימות שדרוג מושלמת (versionCode: 502): התקנה ושדרוג אוטומטי חלק בכל הפלטפורמות"
+    "לוח שידורים חי ומסודר (EPG) במסך הטלוויזיה:",
+    "שילוב לוח שידורים חי ישירות באזור העליון (atv-meta) מעל המדפים לצד פרטי הערוץ.",
+    "תצוגת \"משודר כעת\" (Now Playing) עם שעות שידור (HH:MM - HH:MM), שם התוכנית ופס התקדמות (Progress Bar) חי בזמן אמת.",
+    "תצוגת \"בהמשך היום\" (Upcoming) עם 2-3 התוכניות הבאות ושעות שידורן.",
+    "תמיכה בלוחות שידורים מותאמים עבור כל הערוצים המובילים בישראל (כאן 11, קשת 12, רשת 13, עכשיו 14, ערוץ 9, כאן חינוכית, ערוץ 24, ספורט 1-5 וערוצי הילדים והקולנוע).",
+    "תיקון ניווט בשלט LG Magic Remote וגלגלת:",
+    "תיקון כיוון הניווט: לחיצה על כפתור \"קדימה\" (למעלה / ימינה / גלגלת קדימה) מתקדמת לערוץ הבא ולכרטיס הבא, במקום ללכת אחורה.",
+    "ברירת מחדל upNext: true: לחיצה על חץ למעלה או מקשי FastForward / ChannelUp מעבירה לערוץ הבא (zap(1)).",
+    "גלגלת השלט (Wheel) בנגן: גלגול קדימה מעביר לערוץ הבא, גלגול אחורה מעביר לערוץ הקודם.",
+    "גלגלת השלט במדפים: גלגול קדימה מתקדם לאורך המדף.",
+    "מספור ערוצים מותאם למספרים האמיתיים בישראל:",
+    "ערוץ 9: ערוץ 9 ישראל HD",
+    "ערוץ 11: כאן 11 HD",
+    "ערוץ 12: קשת 12 HD",
+    "ערוץ 13: רשת 13 HD",
+    "ערוץ 14: עכשיו 14 HD",
+    "ערוץ 23: כאן חינוכית 23 HD",
+    "ערוץ 24: ערוץ 24 HD (מוזיקה ובידור ישראלי)",
+    "מספור רציף ועוקב של כל 2,944 הערוצים מ-1 עד 2944 ללא אף חור או דילוג.",
+    "עדכון וסנכרון אונליין מתוך ממשק הטלוויזיה (Live Sync):",
+    "כפתור חדש בתוך הגדרות הטלוויזיה: \"🔄 רענון ערוצים וקוד מהרשת עכשיו\" – מושך מיידית את רשימת הערוצים, הקוד והשינויים מ-GitHub ישירות לתוך הטלוויזיה, בלי צורך להתקין מחדש או לדחוף קובץ IPK ידנית!",
+    "מחיקת כל הערוצים הערביים:",
+    "הוסר ערוץ Arabi TV והובטח שאין אף ערוץ בשפה הערבית במאגר.",
+    "אייקונים וסמלים מדויקים לכל הערוצים הישראליים:",
+    "כל 52 הערוצים הישראליים הראשונים כוללים סמלים רשמיים, חדים ומדויקים בפורמט PNG ברזולוציה גבוהה.",
+    "סריקה תקופתית אוטומטית ברקע (/schedule):",
+    "מתוזמן סורק אוטומטי שרץ כל 15 דקות ברקע לסריקת ערוצים ישראליים, אימות זמינות וניקוי."
   ],
   "native": {
     "android": {
-      "version": "4.3.2",
-      "app": 502,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.2/IsraelTVPlus-android.apk"
+      "version": "4.3.3",
+      "app": 503,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.3/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "4.3.2",
-      "app": 502,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.2/IsraelTVPlus-windows-setup.exe"
+      "version": "4.3.3",
+      "app": 503,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.3/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "4.3.2",
-      "app": 502,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.2/com.israeltv.plus_all.ipk",
+      "version": "4.3.3",
+      "app": 503,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.3/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "4.3.2",
-      "app": 502,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.2/IsraelTVPlus-tizen-project.zip"
+      "version": "4.3.3",
+      "app": 503,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.3/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "4.3.2",
-      "app": 502,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.2/IsraelTVPlus-macos-arm64.zip"
+      "version": "4.3.3",
+      "app": 503,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.3/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "4.3.2",
-      "app": 502,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.2/IsraelTVPlus-linux-x64.zip"
+      "version": "4.3.3",
+      "app": 503,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.3/IsraelTVPlus-linux-x64.zip"
     }
   }
 }
