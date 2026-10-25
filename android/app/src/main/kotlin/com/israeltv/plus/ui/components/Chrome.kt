@@ -1,5 +1,6 @@
 package com.israeltv.plus.ui.components
 
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.ui.semantics.selected
 import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.onClick
@@ -189,6 +190,7 @@ fun FloatingTabBar(
             .zIndex(10f)
             .navigationBarsPadding()
             .padding(bottom = 18.dp)
+            .widthIn(max = 600.dp)   // landscape and tablets: a bar, not a 2000 px strip
             .fillMaxWidth(lerp(0.92f, 0.72f, p))
             .height(lerp(70.dp, 56.dp, p))
             .frostedGlass(pill, glassTint(), blur = 36.dp)
