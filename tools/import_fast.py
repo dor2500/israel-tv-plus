@@ -1,10 +1,11 @@
-"""Sports channels from the free ad-supported (FAST) services Pluto TV and Samsung TV Plus.
+"""Sports and kids channels from the free ad-supported (FAST) services Pluto TV and Samsung TV Plus.
 
 The channel lists come from i.mjh.nz (https://i.mjh.nz/PlutoTV/.channels.json.gz, .../SamsungTVPlus/...), the streams
 are the services' own, reached through jmp2.uk (the same redirect the app's other Pluto channels use). Every stream is
-probed (master -> variant -> segment); pay-TV brands (import_iptv.PAID_RE) and channels the app already has are left
-out. The result is written to channels.json as imported channels with "fast": true; import_iptv.py merge keeps them
-and numbers them with the rest.
+probed (master -> variant -> segment); sports pay-TV brands (import_iptv.PAID_RE), hostile channels
+(import_iptv.hostile) and channels the app already has are left out. Kids channels keep their brand names: on these
+services Nickelodeon, Pokémon, Peppa Pig etc. are the rights holders' own free channels. The result is written to
+channels.json as imported channels with "fast": true; import_iptv.py merge keeps them and numbers them with the rest.
 
 usage: python -I tools/import_fast.py <work dir>      (downloads the lists into <work dir>)
 """
@@ -26,6 +27,9 @@ SERVICES = {   # list -> (stream address on jmp2.uk, service name)
     "SamsungTVPlus": ("stvp-{id}", "Samsung TV Plus"),   # redirects to the service's Google DAI stream
 }
 SPORT_GROUPS = re.compile(r"sport|deport|esport|motor", re.I)
+KIDS_GROUPS = re.compile(r"kid|niñ|infantil|bambini|barn|enfant|kinder", re.I)
+# what is imported: kind -> (the services' group names, the app's category, the first word of the description)
+KINDS = {"sports": (SPORT_GROUPS, ii.CAT_SPORTS, "ספורט"), "kids": (KIDS_GROUPS, ii.CAT_KIDS_WORLD, "ערוץ ילדים")}
 BETTING = re.compile(r"(?i)(^|[^a-z])bet[0-9]|betting|casino|bookmaker")   # gambling companies' channels
 # region -> (Hebrew country, language); the order is the preference when one channel airs in several regions
 REGIONS = {
@@ -65,14 +69,18 @@ def candidates(work):
             if region not in REGIONS:
                 continue
             for cid, ch in rv.get("channels", {}).items():
-                if not SPORT_GROUPS.search(ch.get("group") or ""):
+                kind = next((k for k, (groups, _, _) in KINDS.items() if groups.search(ch.get("group") or "")), None)
+                if not kind:
                     continue
                 name = (ch.get("name") or "").strip()
-                if not name or ii.PAID_RE.match(name) or BETTING.search(name):
+                if not name or (kind == "sports" and ii.PAID_RE.match(name)) or BETTING.search(name):
+                    continue
+                if ii.hostile({"name": name}):
                     continue
                 key = ii.norm(name)
                 c = {"key": key, "name": name, "region": region, "service": label, "url": "https://jmp2.uk/" + slug.format(id=cid),
-                     "logo": ch.get("logo") or "", "desc": (ch.get("description") or "").strip(), "fid": slug.split("-")[0] + "_" + cid}
+                     "logo": ch.get("logo") or "", "desc": (ch.get("description") or "").strip(), "fid": slug.split("-")[0] + "_" + cid,
+                     "kind": kind}
                 old = out.get(key)
                 if old is None or order.index(region) < order.index(old["region"]):
                     out[key] = c
@@ -94,18 +102,19 @@ def main():
     ok = [c for c in res if c.get("ok")]
     print(len(ok), "playable")
     new = []
-    for c in sorted(ok, key=lambda c: (list(REGIONS).index(c["region"]), c["name"].lower())):
+    for c in sorted(ok, key=lambda c: (list(KINDS).index(c["kind"]), list(REGIONS).index(c["region"]), c["name"].lower())):
         country, lang = REGIONS[c["region"]]
+        _, category, what = KINDS[c["kind"]]
         new.append({
             "id": "fast_" + re.sub(r"[^a-z0-9]+", "_", c["fid"].lower()).strip("_"),
             "name": c["name"],
             "title": f"{c['name']} ({country})",
-            "category": ii.CAT_SPORTS,
-            "categoryEn": "sports",
+            "category": category,
+            "categoryEn": c["kind"],
             "url": c["url"],
             "logo": c["logo"],
             "badge": "HD",
-            "desc": " · ".join(x for x in ("ספורט", country, LANG_HE.get(lang, ""), c["service"]) if x),
+            "desc": " · ".join(x for x in (what, country, LANG_HE.get(lang, ""), c["service"]) if x),
             "lang": lang,
             "country": c["region"].upper(),
             "countryHe": country,
@@ -117,7 +126,8 @@ def main():
     allc = chans + new
     with open(os.path.join(ROOT, "channels.json"), "w", encoding="utf-8") as f:
         json.dump(allc, f, ensure_ascii=False, indent=2)
-    print(f"+{len(new)} sports channels ({len(allc)} in all); now run: python -I tools/import_iptv.py merge")
+    by = {k: sum(1 for c in new if c["categoryEn"] == k) for k in KINDS}
+    print(f"+{len(new)} channels {by} ({len(allc)} in all); now run: python -I tools/import_iptv.py merge")
 
 
 if __name__ == "__main__":
