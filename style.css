@@ -1056,3 +1056,36 @@ body.atv-searching .atv-search { display: flex; }
 .atv-item.focused .atv-name { color: #fff; font-weight: 700; -webkit-transform: translate3d(0, .35rem, 0); transform: translate3d(0, .35rem, 0); }   /* clear of the grown card and of the next shelf's title */
 .atv-item.is-locked .atv-card { opacity: .55; }
 .atv-empty { padding: 3rem 4.5rem; font-size: 1.6rem; color: rgba(255, 255, 255, .6); }
+
+/* ================================================================== programme guide (EPG): now / next, schedule */
+.atv-epg, .osd-epg-in { color: #fff; }
+.atv-epg { width: 44rem; margin-top: 1rem; font-size: 1.45rem; }
+.osd-epg-in { max-width: 62rem; margin-top: .7rem; font-size: 1.5rem; }
+.epg-now, .epg-next { display: flex; align-items: baseline; white-space: nowrap; }
+.epg-now b, .epg-next b { flex: none; margin-left: .7rem; padding: .05rem .55rem; border-radius: .4rem; font-size: .8em; font-weight: 800; }
+.epg-now b { background: #fff; color: #000; }
+.epg-next b { background: rgba(255, 255, 255, .2); color: #fff; }
+.epg-t { flex: 0 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; font-weight: 700; }
+.epg-next .epg-t { font-weight: 500; }
+.epg-time { flex: none; margin: 0 .7rem; color: rgba(255, 255, 255, .7); direction: ltr; unicode-bidi: isolate; }
+.epg-bar { width: 26rem; height: .32rem; margin: .5rem 0 .6rem; border-radius: 1rem; background: rgba(255, 255, 255, .22); overflow: hidden; }
+.epg-bar i { display: block; height: 100%; border-radius: 1rem; background: #fff; }
+.epg-next { color: rgba(255, 255, 255, .85); font-size: .92em; }
+/* with a guide the details are taller: the description keeps one line */
+.atv-epg-box:not(:empty) + .atv-desc { -webkit-line-clamp: 1; max-height: 2.4rem; margin-top: .6rem; }
+body.phone .osd-epg-in { font-size: 1.25rem; }
+body.phone .epg-bar { width: 60%; }
+
+.guide-row { display: flex; align-items: flex-start; padding: .9rem 0; border-bottom: 1px solid rgba(255, 255, 255, .08); text-align: right; }
+.guide-row:last-child { border-bottom: 0; }
+.guide-time { flex: none; width: 6rem; font-weight: 800; color: rgba(255, 255, 255, .75); direction: ltr; text-align: right; }
+.guide-row.on .guide-time { color: var(--accent); }
+.guide-text { flex: 1; min-width: 0; }
+.guide-text b { display: block; font-weight: 700; }
+.guide-text span { display: block; margin-top: .2rem; font-size: .9em; color: rgba(255, 255, 255, .65); }
+.guide-live { display: inline-block; margin-left: .5rem; padding: 0 .45rem; border-radius: .4rem; background: var(--live, #ff3b30);
+  color: #fff; font-size: .8em; font-weight: 800; }
+/* the details make room for the guide: a smaller logo, no source line (720p: they stay above the shelves) */
+.atv-meta.has-epg .atv-mlogo { height: 5.5rem; }
+.atv-meta.has-epg .atv-title { margin-top: .6rem; }
+.atv-meta.has-epg .atv-src { display: none; }

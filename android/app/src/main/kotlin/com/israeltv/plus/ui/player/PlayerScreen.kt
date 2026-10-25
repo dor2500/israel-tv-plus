@@ -915,6 +915,29 @@ private fun NuvioTopBar(ch: Channel, logo: String, onBack: () -> Unit) {
                     modifier = Modifier.graphicsLayer { scaleY = 1.18f },
                 )
             }
+            // the programme guide: what is on now and what comes next
+            val now = com.israeltv.plus.data.rememberNowMinute()
+            val guide = com.israeltv.plus.data.Epg.programmes(ch.id, now, 2)
+            guide.firstOrNull()?.let { p ->
+                Text(
+                    "עכשיו: ${p.title} · ${com.israeltv.plus.data.hhmm(p.start)}–${com.israeltv.plus.data.hhmm(p.end)}",
+                    color = scheme.onSurface, fontSize = 12.sp, fontWeight = FontWeight.Bold,
+                    maxLines = 1, overflow = TextOverflow.Ellipsis, modifier = Modifier.padding(top = 3.dp),
+                )
+                androidx.compose.material3.LinearProgressIndicator(
+                    progress = { p.progress(now) },
+                    modifier = Modifier.padding(top = 3.dp).width(140.dp).height(3.dp).clip(RoundedCornerShape(2.dp)),
+                    color = scheme.primary, trackColor = scheme.onSurface.copy(alpha = 0.2f),
+                    drawStopIndicator = {}, gapSize = 0.dp,
+                )
+                guide.getOrNull(1)?.let { n ->
+                    Text(
+                        "אחר כך: ${com.israeltv.plus.data.hhmm(n.start)} ${n.title}",
+                        color = scheme.onSurfaceVariant, fontSize = 11.sp, maxLines = 1, overflow = TextOverflow.Ellipsis,
+                        modifier = Modifier.padding(top = 2.dp),
+                    )
+                }
+            }
         }
     }
 }
