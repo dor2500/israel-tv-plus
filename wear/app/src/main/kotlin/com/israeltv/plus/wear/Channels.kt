@@ -77,9 +77,7 @@ data class Shelf(val key: String, val icon: String, val name: String, val channe
 
 @Immutable
 data class ChannelData(val all: List<Channel>, val byId: Map<String, Channel>, val shelves: List<Shelf>, val categories: List<Shelf>) {
-    fun shelf(key: String): Shelf? =
-        if (key == "all_channels") Shelf("all_channels", "📺", "כל הערוצים (הכל)", all)
-        else shelves.firstOrNull { it.key == key } ?: categories.firstOrNull { it.key == key }
+    fun shelf(key: String): Shelf? = shelves.firstOrNull { it.key == key } ?: categories.firstOrNull { it.key == key }
 }
 
 /**

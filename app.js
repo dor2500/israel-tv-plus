@@ -282,8 +282,6 @@
     // the Android app's splash screen (core-splashscreen) waits for this: the first screen is ready to draw
     setTimeout(function () { native('ready'); }, 30);
     if (S.autoUpdate) setTimeout(function () { checkUpdates(false); }, 4000);
-    setTimeout(loadEpg, 2500);
-    setInterval(loadEpg, 30 * 60000);   // the guide is rebuilt every two hours
     if (PLATFORM === 'webos') {
       // LG: TV apps stay open for days – check again every 6 hours, and apply a downloaded update on returning to the app
       setInterval(function () { if (S.autoUpdate) checkUpdates(false); }, 6 * 3600 * 1000);
@@ -543,7 +541,7 @@
     state.all.forEach(function (c) { counts[c.category] = (counts[c.category] || 0) + 1; });
     var favs = state.all.filter(isFav).length;
     var recents = state.recents.filter(function (id) { return indexInAll(id) !== -1; }).length;
-    var list = [{ id: 'ALL', name: S.kids ? 'כל ערוצי הילדים' : 'כל הערוצים (הכל)', icon: '📺', count: state.all.length }];
+    var list = [{ id: 'ALL', name: S.kids ? 'כל ערוצי הילדים' : 'כל הערוצים', icon: '📺', count: state.all.length }];
     if (favs) list.push({ id: 'FAVORITES', name: 'מועדפים', icon: '⭐', count: favs });
     if (recents) list.push({ id: 'RECENT', name: 'צפית לאחרונה', icon: '🕘', count: recents });
     var dub = state.all.filter(foreign).length;
@@ -1389,10 +1387,10 @@
   var ATV_PITCH = 19;        // rem: a 17.5rem card + 1.5rem gap
   var ATV_ROW = 16.25;       // rem: one shelf (title + card + name), 260 px on a 1080p screen
   var ATV_FIRST = 14, ATV_MORE = 18;
-  var ATV_ROWS = [['broadcast', 'ערוצי ברודקאסט וחדשות'], ['all', 'כל הערוצים (הכל)'], ['sports', 'ספורט בשידור חי'], ['movies', 'סרטים וסדרות'],
-    ['kids', 'ילדים ונוער'], ['fun', 'בידור, טבע ומוזיקה'], ['world', 'ערוצים בינלאומיים'], ['radio', 'רדיו ישראלי ועולמי'],
+  var ATV_ROWS = [['broadcast', 'ערוצי ברודקאסט וחדשות'], ['sports', 'ספורט בשידור חי'], ['movies', 'סרטים וסדרות'],
+    ['kids', 'ילדים ונוער'], ['fun', 'בידור, טבע ומוזיקה'], ['world', 'ערוצים בינלאומיים'], ['radio', 'רדיו ישראלי'],
     ['faith', 'דת ומסורת']];
-  var ATV_TABS = [['צפייה כעת', 'top'], ['ערוצי ישראל', 'broadcast'], ['כל הערוצים', 'all'], ['ספורט', 'sports'], ['ילדים', 'kids'],
+  var ATV_TABS = [['צפייה כעת', 'top'], ['ערוצי ישראל', 'broadcast'], ['ספורט', 'sports'], ['ילדים', 'kids'],
     ['סרטים ודיבוב', 'movies'], ['רדיו', 'radio'], ['מועדפים', 'mine'], ['חיפוש', 'search'], ['הגדרות', 'settings']];
 
   function atvRem(rem) { return rem * (parseFloat(document.documentElement.style.fontSize) || 16); }
@@ -1435,8 +1433,7 @@
     var rows = [], mine = atvMineList();
     if (mine.length) rows.push({ id: 'mine', title: 'צפייה לאחרונה ומועדפים', list: mine });
     ATV_ROWS.forEach(function (r) {
-      var list = r[0] === 'all' ? state.all : buckets[r[0]];
-      if (!list) return;
+      var list = buckets[r[0]];
       if (IS_WEB) list = list.filter(function (x) { return !appOnly(x); }).concat(list.filter(appOnly));
       if (list.length) rows.push({ id: r[0], title: S.kids && r[0] === 'broadcast' ? 'ערוצי ישראל' : r[1], list: list });
     });
@@ -1661,15 +1658,12 @@
       (ch.countryHe ? '<span class="atv-tag">' + esc(ch.countryHe) + '</span>' : '') +
       (isFav(ch) ? '<span class="atv-tag">★ מועדף</span>' : '') +
       (state.playing === ch && !state.preview ? '<span class="atv-tag atv-on">🔊 מתנגן עכשיו · OK למסך מלא</span>' : '');
-    var guide = epgList(ch, 1)[0];
     target.innerHTML = '<div class="atv-mlogo"><img alt=""><div class="mono hidden"></div></div>' +
       '<h1 class="atv-title">' + esc(ch.name) + '</h1><div class="atv-tags">' + tags + '</div>' +
-      '<div class="atv-epg-box">' + epgHtml(ch, 'atv-epg') + '</div>' +
-      // the programme's own description when the guide has one, else the channel's
-      (guide && guide.desc ? '<p class="atv-desc">' + esc(guide.desc) + '</p>' : ch.desc ? '<p class="atv-desc">' + esc(ch.desc) + '</p>' : '') +
+      (ch.desc ? '<p class="atv-desc">' + esc(ch.desc) + '</p>' : '') +
       (S.showSource ? '<p class="atv-src">' + esc(sourceLine(ch)) + '</p>' : '');
     setLogo(target.querySelector('img'), target.querySelector('.mono'), ch);
-    target.className = 'atv-meta in' + (guide ? ' has-epg' : '');
+    target.className = 'atv-meta in';
     other.className = 'atv-meta';
     // the stage: a soft wash in the channel's colours, cross-faded
     var bd = atv.bdFlip ? $('atv-bd-b') : $('atv-bd-a'), bo = atv.bdFlip ? $('atv-bd-a') : $('atv-bd-b');
@@ -1922,84 +1916,6 @@
     // the preview shows once the picture really moves
     el.video.addEventListener('playing', function () {
       if (TVUI && state.playing && state.overlay !== 'player') document.body.classList.add('atv-live');
-    });
-  }
-
-  // ================================================================== programme guide (EPG)
-  // epg.json is made by tools/make_epg.py and rebuilt every two hours on the repository's "epg" branch:
-  // { t, c: { channel id: [[start (unix minutes), minutes, title, description?], ...] } } – an hour back, ten ahead
-  var EPG_URL = new URLSearchParams(location.search).get('epg') ||   // (?epg=<url>: a guide to test with)
-    'https://raw.githubusercontent.com/dor2500/israel-tv-plus/epg/epg.json';
-  var epg = null;
-
-  function loadEpg() {
-    xhrJson(EPG_URL + '?t=' + Math.floor(Date.now() / 600000), 30000, function (d) {
-      if (d && d.c) { epg = d.c; epgTick(true); }
-    }, function () {});
-  }
-
-  /** The channel's programmes from the one on now: [{start, end, title, desc}], or [] without a guide. */
-  function epgList(ch, max) {
-    var rows = ch && epg && epg[ch.id];
-    if (!rows) return [];
-    var now = Date.now() / 60000, out = [];
-    for (var i = 0; i < rows.length && out.length < (max || 99); i++) {
-      var r = rows[i];
-      if (r[0] + r[1] <= now) continue;
-      out.push({ start: r[0], end: r[0] + r[1], title: r[2], desc: r[3] || '' });
-    }
-    return out.length && out[0].start <= now ? out : [];
-  }
-
-  function hhmm(min) {
-    var d = new Date(min * 60000);
-    return (d.getHours() < 10 ? '0' : '') + d.getHours() + ':' + (d.getMinutes() < 10 ? '0' : '') + d.getMinutes();
-  }
-
-  /** "עכשיו … / אחר כך …" with a progress bar (the browse screen's details, the player's channel line). */
-  function epgHtml(ch, cls) {
-    var l = epgList(ch, 2);
-    if (!l.length) return '';
-    var now = Date.now() / 60000, p = l[0];
-    var pct = Math.max(0, Math.min(100, Math.round((now - p.start) / Math.max(1, p.end - p.start) * 100)));
-    return '<div class="' + cls + '"><div class="epg-now"><b>עכשיו</b><span class="epg-t">' + esc(p.title) + '</span>' +
-      '<span class="epg-time">' + hhmm(p.start) + '–' + hhmm(p.end) + '</span></div>' +
-      '<div class="epg-bar"><i style="width:' + pct + '%"></i></div>' +
-      (l[1] ? '<div class="epg-next"><b>אחר כך</b><span class="epg-time">' + hhmm(l[1].start) + '</span><span class="epg-t">' +
-        esc(l[1].title) + '</span></div>' : '') + '</div>';
-  }
-
-  /** Every minute (and when the guide arrives): the lines on screen follow the clock. */
-  function epgTick(fresh) {
-    if (!epg) return;
-    if (state.overlay === 'player' && state.playing) fillOsdEpg(state.playing);
-    if (TVUI && atv.built) {
-      var box = document.querySelector('.atv-meta.in .atv-epg-box');
-      var ch = atvCurrent();
-      if (box && ch) {
-        box.innerHTML = epgHtml(ch, 'atv-epg');
-        toggleClass(box.parentNode, 'has-epg', !!box.innerHTML);
-      }
-      else if (fresh && ch && !state.overlay) atvMeta(ch);
-    }
-  }
-
-  function fillOsdEpg(ch) {
-    var box = $('osd-epg');
-    if (box) box.innerHTML = epgHtml(ch, 'osd-epg-in');
-  }
-
-  /** The schedule of one channel: the programmes from now on. */
-  function showGuide(ch) {
-    var l = epgList(ch);
-    openDialog({
-      ico: '📅', title: 'לוח שידורים · ' + ch.name, wide: true, cls: 'guide-dlg',
-      html: l.length ? l.map(function (p, i) {
-        return '<div class="guide-row' + (i === 0 ? ' on' : '') + '"><span class="guide-time">' + hhmm(p.start) + '</span>' +
-          '<div class="guide-text"><b>' + (i === 0 ? '<span class="guide-live">עכשיו</span>' : '') + esc(p.title) + '</b>' +
-          (p.desc ? '<span>' + esc(p.desc) + '</span>' : '') + '</div></div>';
-      }).join('') : '<p>אין לוח שידורים לערוץ הזה.</p>',
-      buttons: [{ label: 'סגירה', primary: true }]
     });
   }
 
@@ -2307,7 +2223,6 @@
   }
 
   function fillOsd(ch) {
-    fillOsdEpg(ch);
     el.osdNum.textContent = ch.number;
     el.osdName.textContent = ch.name;
     el.osdCat.textContent = splitCat(ch.category) + (S.showSource ? ' · ' + sourceLine(ch).replace(/^מקור: /, '') : '');
@@ -2405,7 +2320,6 @@
       act: function () { var i = indexInList(ch.id); if (i !== -1) playIndex(i); } }];
     if (foreign(ch) && !appOnly(ch)) items.push({ ico: '🎙️', label: 'צפייה עם דיבוב לעברית', dot: colourOf('dub'), act: function () { watchDubbed(ch); } });
     items.push({ ico: isFav(ch) ? '★' : '☆', label: isFav(ch) ? 'הסרה מהמועדפים' : 'הוספה למועדפים', dot: colourOf('fav'), act: function () { toggleFav(ch); } });
-    if (epgList(ch).length) items.push({ ico: '📅', label: 'לוח שידורים', act: function () { showGuide(ch); } });
     items.push({ ico: 'ℹ️', label: 'מידע ומקור השידור', dot: colourOf('info'), act: function () { showInfo(ch); } });
     if (!S.kids) items.push({ ico: '🙈', label: 'הסתרת הערוץ', act: function () { hideChannel(ch); } });
     if (appOnly(ch)) items.push({ ico: '📲', label: 'הורדת האפליקציה', act: function () { showGetApp(ch); } });
@@ -2431,7 +2345,6 @@
       act: function () { toggleDub(); } });
     items.push({ ico: isFav(ch) ? '★' : '☆', label: isFav(ch) ? 'הסרה מהמועדפים' : 'הוספה למועדפים', dot: colourOf('fav'), act: function () { toggleFav(ch); } });
     items.push({ ico: '☰', label: 'רשימת ערוצים', dot: colourOf('drawer'), act: openDrawer });
-    if (epgList(ch).length) items.push({ ico: '📅', label: 'לוח שידורים', act: function () { showGuide(ch); } });
     items.push({ ico: 'ℹ️', label: 'מידע ומקור השידור', dot: colourOf('info'), act: function () { showInfo(ch); } });
     items.push({ ico: '⟳', label: 'טעינה מחדש של השידור', act: function () { loadStream(ch); } });
     items.push({ ico: '⚙️', label: 'הגדרות', act: openSettings });
@@ -3464,7 +3377,6 @@
       if (el.clock.textContent !== t) {
         el.clock.textContent = t; el.osdClock.textContent = t; el.saverClock.textContent = t;
         if ($('atv-clock')) $('atv-clock').textContent = t;   // the TV browse screen, beside the pill
-        epgTick();
       }
     };
     tick();

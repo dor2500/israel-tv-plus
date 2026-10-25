@@ -66,7 +66,7 @@ import com.israeltv.plus.ui.components.feedPadding
 import com.israeltv.plus.ui.components.frostedGlass
 import com.israeltv.plus.ui.components.rememberBitChordFlingBehavior
 
-/** A two-column grid inside the master LazyColumn: index-based rendering for zero allocations on large lists. */
+/** A two-column grid inside the master LazyColumn: one row item per pair (items(list.chunked(2))). */
 fun LazyListScope.channelGrid(
     list: List<Channel>,
     keyPrefix: String,
@@ -74,24 +74,13 @@ fun LazyListScope.channelGrid(
     subtitle: (Channel) -> String,
     onPlay: (Channel) -> Unit,
 ) {
-    val rowCount = (list.size + 1) / 2
-    items(
-        count = rowCount,
-        key = { index -> keyPrefix + list[index * 2].id }
-    ) { rowIndex ->
-        val firstIdx = rowIndex * 2
-        val first = list[firstIdx]
-        val second = if (firstIdx + 1 < list.size) list[firstIdx + 1] else null
+    items(list.chunked(2), key = { keyPrefix + it.first().id }) { row ->
         Row(
             Modifier.fillMaxWidth().padding(horizontal = 16.dp).padding(bottom = 18.dp),
             horizontalArrangement = Arrangement.spacedBy(12.dp),
         ) {
-            ChannelCard(first, logo(first), subtitle(first), { onPlay(first) }, Modifier.weight(1f), sharedKey = keyPrefix + first.id)
-            if (second != null) {
-                ChannelCard(second, logo(second), subtitle(second), { onPlay(second) }, Modifier.weight(1f), sharedKey = keyPrefix + second.id)
-            } else {
-                Spacer(Modifier.weight(1f))
-            }
+            row.forEach { ch -> ChannelCard(ch, logo(ch), subtitle(ch), { onPlay(ch) }, Modifier.weight(1f), sharedKey = keyPrefix + ch.id) }
+            if (row.size == 1) Spacer(Modifier.weight(1f))
         }
     }
 }

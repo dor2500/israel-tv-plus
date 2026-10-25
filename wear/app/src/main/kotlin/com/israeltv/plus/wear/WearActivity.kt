@@ -191,7 +191,6 @@ private fun HomeScreen(d: ChannelData, library: Library, open: (String) -> Unit,
                     onClick = { play(ch, "recent") }, onLong = { ctx -> toggleFavorite(ctx, ch, library) })
             }
             item { ListHeader { Text("ערוצים") } }
-            item { ShelfButton("📺", "כל הערוצים (הכל)", d.all.size) { open("all_channels") } }
             items(d.shelves) { s -> ShelfButton(s.icon, s.name, s.channels.size) { open(s.key) } }
             if (favorites.isNotEmpty()) item { ShelfButton("⭐", "מועדפים", favorites.size) { open("favorites") } }
             item { ShelfButton("🌍", "כל הקטגוריות", d.categories.size) { open("all") } }

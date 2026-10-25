@@ -111,13 +111,6 @@ class PhoneActivity : ComponentActivity() {
             store.refresh()
             updater.check()
         }
-        // the programme guide: now / next in the player and the channel sheet, refreshed every half hour
-        lifecycleScope.launch {
-            while (true) {
-                com.israeltv.plus.data.Epg.load(http)
-                kotlinx.coroutines.delay(30 * 60_000L)
-            }
-        }
 
         setContent {
             ItvTheme(prefs.theme) {
