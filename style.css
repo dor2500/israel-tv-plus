@@ -338,7 +338,8 @@ body.touch .osd-hints, body.no-hints .osd-hints { display: none; }
 .swatch.on { border-color: var(--text); }
 
 .dialog-box { width: 78rem; max-width: 94%; max-height: 92%; overflow-y: auto; text-align: center; padding: 3rem 3.4rem 2.4rem;
-  border-radius: 2.8rem; background: var(--bg2); }
+  border-radius: 2.8rem; background: var(--bg2); scrollbar-width: none; }
+.dialog-box::-webkit-scrollbar { display: none; }   /* the remote scrolls it (the focused button stays in view) */
 .dialog-ico { font-size: 4.6rem; line-height: 1; }
 .dialog-box h2 { font-size: 2.6rem; margin: 1rem 0 1.2rem; }
 .dialog-body { font-size: 1.55rem; color: var(--text2); margin-bottom: 1.6rem; }
