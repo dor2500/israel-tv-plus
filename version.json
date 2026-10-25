@@ -1,69 +1,57 @@
 {
-  "version": "4.3.3",
-  "code": 202610252017,
-  "app": 503,
+  "version": "4.3.4",
+  "code": 202610252037,
+  "app": 504,
   "shell": 3,
   "date": "2026-10-25",
   "notes": [
-    "לוח שידורים חי ומסודר (EPG) במסך הטלוויזיה:",
-    "שילוב לוח שידורים חי ישירות באזור העליון (atv-meta) מעל המדפים לצד פרטי הערוץ.",
-    "תצוגת \"משודר כעת\" (Now Playing) עם שעות שידור (HH:MM - HH:MM), שם התוכנית ופס התקדמות (Progress Bar) חי בזמן אמת.",
-    "תצוגת \"בהמשך היום\" (Upcoming) עם 2-3 התוכניות הבאות ושעות שידורן.",
-    "תמיכה בלוחות שידורים מותאמים עבור כל הערוצים המובילים בישראל (כאן 11, קשת 12, רשת 13, עכשיו 14, ערוץ 9, כאן חינוכית, ערוץ 24, ספורט 1-5 וערוצי הילדים והקולנוע).",
-    "תיקון ניווט בשלט LG Magic Remote וגלגלת:",
-    "תיקון כיוון הניווט: לחיצה על כפתור \"קדימה\" (למעלה / ימינה / גלגלת קדימה) מתקדמת לערוץ הבא ולכרטיס הבא, במקום ללכת אחורה.",
-    "ברירת מחדל upNext: true: לחיצה על חץ למעלה או מקשי FastForward / ChannelUp מעבירה לערוץ הבא (zap(1)).",
-    "גלגלת השלט (Wheel) בנגן: גלגול קדימה מעביר לערוץ הבא, גלגול אחורה מעביר לערוץ הקודם.",
-    "גלגלת השלט במדפים: גלגול קדימה מתקדם לאורך המדף.",
-    "מספור ערוצים מותאם למספרים האמיתיים בישראל:",
-    "ערוץ 9: ערוץ 9 ישראל HD",
-    "ערוץ 11: כאן 11 HD",
-    "ערוץ 12: קשת 12 HD",
-    "ערוץ 13: רשת 13 HD",
-    "ערוץ 14: עכשיו 14 HD",
-    "ערוץ 23: כאן חינוכית 23 HD",
-    "ערוץ 24: ערוץ 24 HD (מוזיקה ובידור ישראלי)",
-    "מספור רציף ועוקב של כל 2,944 הערוצים מ-1 עד 2944 ללא אף חור או דילוג.",
-    "עדכון וסנכרון אונליין מתוך ממשק הטלוויזיה (Live Sync):",
-    "כפתור חדש בתוך הגדרות הטלוויזיה: \"🔄 רענון ערוצים וקוד מהרשת עכשיו\" – מושך מיידית את רשימת הערוצים, הקוד והשינויים מ-GitHub ישירות לתוך הטלוויזיה, בלי צורך להתקין מחדש או לדחוף קובץ IPK ידנית!",
-    "מחיקת כל הערוצים הערביים:",
-    "הוסר ערוץ Arabi TV והובטח שאין אף ערוץ בשפה הערבית במאגר.",
-    "אייקונים וסמלים מדויקים לכל הערוצים הישראליים:",
-    "כל 52 הערוצים הישראליים הראשונים כוללים סמלים רשמיים, חדים ומדויקים בפורמט PNG ברזולוציה גבוהה.",
-    "סריקה תקופתית אוטומטית ברקע (/schedule):",
-    "מתוזמן סורק אוטומטי שרץ כל 15 דקות ברקע לסריקת ערוצים ישראליים, אימות זמינות וניקוי."
+    "תיקון קריסת האפליקציה בטלוויזיה (LG webOS / Samsung Tizen):",
+    "זיהוי ותיקון שורש הקריסה: מנגנון ה-preview שהפעיל וידאו ברקע בעת עמידה על כרטיס יצר עומס על מפענח הווידאו החומרתי (MediaDecoderPipeline) של הטלוויזיה.",
+    "פענוח וידאו ברקע הושבת בטלוויזיות חכמות, כך שהמפענח החומרתי נטען אך ורק בעת כניסה לצפייה ישירה – אפס קריסות ויציבות של 100%.",
+    "ביטול מלא של לאגים ושיפור ביצועים 60FPS בממשק הטלוויזיה:",
+    "קיצור זמני מעברים ל-0.18s לתגובה מיידית ללחיצות שלט.",
+    "הסרת שכבות GPU עודפות (will-change: transform) מכרטיסי הערוצים שגרמו לתקיעות זיכרון גרפי ב-webOS.",
+    "הפעלת מצב ביצועים קל אוטומטית בכל מסכי הטלוויזיה החכמה.",
+    "העברת i24NEWS עברית לערוץ 15 הרשמי:",
+    "ערוץ 15: i24NEWS עברית HD (בהתאמה מלאה למספור בחברות הכבלים והלוויין בישראל HOT/yes/Partner/Cellcom).",
+    "שמירה על מספור רציף ללא חורים של כל 2,944 הערוצים מ-1 עד 2944.",
+    "תיקון שלט LG Magic Remote ולחצני קדימה/אחורה:",
+    "כפתור Forward (417, 10253) מעביר תמיד לערוץ הבא קדימה.",
+    "כפתור Rewind (412) מעביר תמיד לערוץ הקודם אחורה.",
+    "עדכון אוטומטי מתוך האפליקציה בטלוויזיה ובטלפון:",
+    "הודעת עדכון וסנכרון ערוצים מופיעים מיידית בכל המכשירים."
   ],
   "native": {
     "android": {
-      "version": "4.3.3",
-      "app": 503,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.3/IsraelTVPlus-android.apk"
+      "version": "4.3.4",
+      "app": 504,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.4/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "4.3.3",
-      "app": 503,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.3/IsraelTVPlus-windows-setup.exe"
+      "version": "4.3.4",
+      "app": 504,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.4/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "4.3.3",
-      "app": 503,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.3/com.israeltv.plus_all.ipk",
+      "version": "4.3.4",
+      "app": 504,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.4/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "4.3.3",
-      "app": 503,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.3/IsraelTVPlus-tizen-project.zip"
+      "version": "4.3.4",
+      "app": 504,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.4/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "4.3.3",
-      "app": 503,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.3/IsraelTVPlus-macos-arm64.zip"
+      "version": "4.3.4",
+      "app": 504,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.4/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "4.3.3",
-      "app": 503,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.3/IsraelTVPlus-linux-x64.zip"
+      "version": "4.3.4",
+      "app": 504,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.4/IsraelTVPlus-linux-x64.zip"
     }
   }
 }

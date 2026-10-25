@@ -31,23 +31,23 @@
 
 | # | | ערוץ | מדינה | שפה | איכות | איפה מתנגן |
 |---|---|---|---|---|---|---|
-| 1 | <img src="assets/logos/i24news_he.png" width="56" alt=""> | **i24NEWS עברית HD** | 🇮🇱 ישראל | עברית | FHD | 🌐 אתר + 📲 אפליקציות |
-| 2 | <img src="assets/logos/eretz_nehederet.png" width="56" alt=""> | **ארץ נהדרת 24/7 – קשת / FreeTV** | 🇮🇱 ישראל | עברית | HD | 🌐 אתר + 📲 אפליקציות |
-| 3 | <img src="assets/logos/keshet_food.svg" width="56" alt=""> | **ערוץ האוכל והבישול – קשת / FreeTV** | 🇮🇱 ישראל | עברית | HD | 🌐 אתר + 📲 אפליקציות |
-| 4 | <img src="assets/logos/keshet_comedy.png" width="56" alt=""> | **ערוץ הקומדיה – קשת / FreeTV** | 🇮🇱 ישראל | עברית | HD | 🌐 אתר + 📲 אפליקציות |
-| 5 | <img src="assets/logos/keshet_drama.png" width="56" alt=""> | **ערוץ הדרמה – קשת / FreeTV** | 🇮🇱 ישראל | עברית | HD | 🌐 אתר + 📲 אפליקציות |
-| 6 | <img src="assets/logos/keshet_music.png" width="56" alt=""> | **ערוץ המוזיקה – קשת / FreeTV** | 🇮🇱 ישראל | עברית | HD | 🌐 אתר + 📲 אפליקציות |
-| 7 | <img src="assets/logos/good_life_israel.png" width="56" alt=""> | **ערוץ החיים הטובים HD** | 🇮🇱 ישראל | עברית | HD | 📲 אפליקציות בלבד |
-| 8 | <img src="assets/logos/hot_reality.png" width="56" alt=""> | **HOT ריאליטי HD** | 🇮🇱 ישראל | עברית | HD | 🌐 אתר + 📲 אפליקציות |
+| 1 | <img src="assets/logos/eretz_nehederet.png" width="56" alt=""> | **ארץ נהדרת 24/7 – קשת / FreeTV** | 🇮🇱 ישראל | עברית | HD | 🌐 אתר + 📲 אפליקציות |
+| 2 | <img src="assets/logos/keshet_food.svg" width="56" alt=""> | **ערוץ האוכל והבישול – קשת / FreeTV** | 🇮🇱 ישראל | עברית | HD | 🌐 אתר + 📲 אפליקציות |
+| 3 | <img src="assets/logos/keshet_comedy.png" width="56" alt=""> | **ערוץ הקומדיה – קשת / FreeTV** | 🇮🇱 ישראל | עברית | HD | 🌐 אתר + 📲 אפליקציות |
+| 4 | <img src="assets/logos/keshet_drama.png" width="56" alt=""> | **ערוץ הדרמה – קשת / FreeTV** | 🇮🇱 ישראל | עברית | HD | 🌐 אתר + 📲 אפליקציות |
+| 5 | <img src="assets/logos/keshet_music.png" width="56" alt=""> | **ערוץ המוזיקה – קשת / FreeTV** | 🇮🇱 ישראל | עברית | HD | 🌐 אתר + 📲 אפליקציות |
+| 6 | <img src="assets/logos/good_life_israel.png" width="56" alt=""> | **ערוץ החיים הטובים HD** | 🇮🇱 ישראל | עברית | HD | 📲 אפליקציות בלבד |
+| 7 | <img src="assets/logos/hot_reality.png" width="56" alt=""> | **HOT ריאליטי HD** | 🇮🇱 ישראל | עברית | HD | 🌐 אתר + 📲 אפליקציות |
+| 8 | <img src="assets/logos/hot_vacation.png" width="56" alt=""> | **HOT ערוץ החופש HD** | 🇮🇱 ישראל | עברית | HD | 🌐 אתר + 📲 אפליקציות |
 | 9 | <img src="assets/logos/ch9.png" width="56" alt=""> | **ערוץ 9 ישראל HD** | 🇮🇱 ישראל | רוסית | FHD | 🌐 אתר + 📲 אפליקציות |
 | 10 | <img src="assets/logos/calcala10.png" width="56" alt=""> | **ערוץ כלכלה 10 HD** | 🇮🇱 ישראל | עברית | HD | 🌐 אתר + 📲 אפליקציות |
 | 11 | <img src="assets/logos/kan11.png" width="56" alt=""> | **כאן 11 HD** | 🇮🇱 ישראל | עברית | FHD | 🌐 אתר + 📲 אפליקציות |
 | 12 | <img src="assets/logos/keshet12.png" width="56" alt=""> | **קשת 12 HD** | 🇮🇱 ישראל | עברית | FHD | 📲 אפליקציות בלבד |
 | 13 | <img src="assets/logos/reshet13.png" width="56" alt=""> | **רשת 13 HD** | 🇮🇱 ישראל | עברית | FHD | 🌐 אתר + 📲 אפליקציות |
 | 14 | <img src="assets/logos/now14.png" width="56" alt=""> | **עכשיו 14 HD** | 🇮🇱 ישראל | עברית | FHD | 🌐 אתר + 📲 אפליקציות |
-| 15 | <img src="assets/logos/knesset.png" width="56" alt=""> | **ערוץ הכנסת 99** | 🇮🇱 ישראל | עברית | SD | 🌐 אתר + 📲 אפליקציות |
-| 16 | <img src="assets/logos/hot_comedy.png" width="56" alt=""> | **HOT קומדי HD** | 🇮🇱 ישראל | עברית | HD | 🌐 אתר + 📲 אפליקציות |
-| 17 | <img src="assets/logos/hot_vacation.png" width="56" alt=""> | **HOT ערוץ החופש HD** | 🇮🇱 ישראל | עברית | HD | 🌐 אתר + 📲 אפליקציות |
+| 15 | <img src="assets/logos/i24news_he.png" width="56" alt=""> | **i24NEWS עברית HD** | 🇮🇱 ישראל | עברית | FHD | 🌐 אתר + 📲 אפליקציות |
+| 16 | <img src="assets/logos/knesset.png" width="56" alt=""> | **ערוץ הכנסת 99** | 🇮🇱 ישראל | עברית | SD | 🌐 אתר + 📲 אפליקציות |
+| 17 | <img src="assets/logos/hot_comedy.png" width="56" alt=""> | **HOT קומדי HD** | 🇮🇱 ישראל | עברית | HD | 🌐 אתר + 📲 אפליקציות |
 | 18 | <img src="assets/logos/yam_tichoni_israel.png" width="56" alt=""> | **הערוץ הים תיכוני HD** | 🇮🇱 ישראל | עברית | FHD | 📲 אפליקציות בלבד |
 | 19 | <img src="assets/logos/yes_movies_comedy.png" width="56" alt=""> | **yes קולנוע קומדיה HD** | 🇮🇱 ישראל | עברית | FHD | 📲 אפליקציות בלבד |
 | 20 | <img src="assets/logos/yes_movies_drama.png" width="56" alt=""> | **yes קולנוע דרמה HD** | 🇮🇱 ישראל | עברית | FHD | 📲 אפליקציות בלבד |

@@ -977,8 +977,8 @@ body.no-osd-clock .atv-clock { display: none; }
 
 /* ---- the focused channel's details (two layers: the new one slides up, the old one fades) */
 .atv-meta { position: absolute; top: 9.5rem; right: 4.5rem; z-index: 2; width: 48rem; opacity: 0; pointer-events: none;
-  -webkit-transform: translate3d(0, .75rem, 0); transform: translate3d(0, .75rem, 0);
-  transition: opacity .42s cubic-bezier(.16, 1, .3, 1), transform .42s cubic-bezier(.16, 1, .3, 1); will-change: transform, opacity; }
+  -webkit-transform: translate3d(0, .5rem, 0); transform: translate3d(0, .5rem, 0);
+  transition: opacity .2s ease-out, transform .2s ease-out; }
 .atv-meta.in { opacity: 1; -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); }
 body.atv-searching .atv-meta { opacity: 0; }
 .atv-mlogo { position: relative; display: flex; align-items: center; justify-content: flex-start; width: 24rem; height: 8rem; }
@@ -1013,24 +1013,24 @@ body.atv-searching .atv-search { display: flex; }
 
 /* ---- the shelves: two rows on screen, the rest scroll up into view */
 .atv-shelves { position: absolute; left: 0; right: 0; bottom: 0; z-index: 2; height: 34rem; }
-.atv-rows { transition: transform .32s cubic-bezier(.16, 1, .3, 1); will-change: transform;
+.atv-rows { transition: transform .18s cubic-bezier(.16, 1, .3, 1);
   -webkit-backface-visibility: hidden; backface-visibility: hidden; }
-.atv-row { height: 16.25rem; opacity: .65; transition: opacity .32s ease-out; will-change: opacity; contain: layout style; }
+.atv-row { height: 16.25rem; opacity: .65; transition: opacity .18s ease-out; contain: layout style; }
 .atv-row.active { opacity: 1; }
 .atv-row.above { opacity: 0; pointer-events: none; }   /* invisible shelves above the camera never catch the pointer */
 .atv-row-title { height: 2.4rem; margin: 0 4.5rem .7rem; font-size: 1.8rem; font-weight: 700; line-height: 2.4rem; white-space: nowrap; }
 .atv-row-title small { margin-right: .8rem; font-size: 1.1rem; font-weight: 500; color: rgba(255, 255, 255, .5); }
 .atv-track { display: flex; flex-direction: row; flex-wrap: nowrap; align-items: flex-start; padding: 0 4.5rem; white-space: nowrap;
-  transition: transform .32s cubic-bezier(.16, 1, .3, 1); will-change: transform; -webkit-backface-visibility: hidden; backface-visibility: hidden; }
+  transition: transform .18s cubic-bezier(.16, 1, .3, 1); -webkit-backface-visibility: hidden; backface-visibility: hidden; }
 .atv-item { position: relative; flex: 0 0 17.5rem; width: 17.5rem; margin-left: 1.5rem; contain: layout style; }
 .atv-card { position: relative; width: 17.5rem; height: 9.875rem; border-radius: 1.25rem; background: rgba(255, 255, 255, .08);
   -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0);
-  transition: transform .18s ease-out, border-color .18s ease-out; will-change: transform; -webkit-backface-visibility: hidden; backface-visibility: hidden;
+  transition: transform .15s ease-out, border-color .15s ease-out; -webkit-backface-visibility: hidden; backface-visibility: hidden;
   border: .156rem solid transparent; }
 /* Clean hardware-accelerated focus ring without costly real-time box-shadow recalculations */
 .atv-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; border-radius: inherit; opacity: 0;
   border: .156rem solid rgba(255, 255, 255, .95); box-shadow: 0 .8rem 2rem rgba(0, 0, 0, .7);
-  transition: opacity .18s ease; }
+  transition: opacity .15s ease; }
 .atv-logo { position: absolute; top: 0; left: 0; right: 0; bottom: 0; display: flex; align-items: center; justify-content: center;
   border-radius: inherit; background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, .15), rgba(255, 255, 255, 0) 62%); }
 .atv-logo img { max-width: 62%; max-height: 56%; object-fit: contain; }

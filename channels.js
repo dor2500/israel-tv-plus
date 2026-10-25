@@ -1,26 +1,5 @@
 window.CHANNELS_DATA = window.ITV_CHANNELS = [
   {
-    "id": "i24news_he",
-    "name": "i24NEWS עברית HD",
-    "title": "i24NEWS עברית HD",
-    "category": "ערוצי ישראל - שידור חי",
-    "categoryEn": "israel",
-    "url": "https://i24newshebrew-cdn.encoders.immergo.tv/master.m3u8",
-    "logo": "assets/logos/i24news_he.png",
-    "badge": "FHD",
-    "desc": "ערוץ החדשות הבינלאומי של ישראל בעברית - דיווחי חדשות ומבזקים 24/7",
-    "number": 1,
-    "lang": "he",
-    "iptv": "i24NEWSHebrew.il",
-    "src": {
-      "by": "i24NEWS – שרת רשמי",
-      "kind": "official",
-      "host": "i24newshebrew-cdn.encoders.immergo.tv",
-      "found": "iptv-org (i24NEWSHebrew.il)",
-      "web": "✅"
-    }
-  },
-  {
     "id": "eretz_nehederet",
     "name": "ארץ נהדרת 24/7 – קשת / FreeTV",
     "title": "ארץ נהדרת 24/7 (FreeTV)",
@@ -32,7 +11,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
     "badge": "HD",
     "desc": "כל העונות והמערכונים של ארץ נהדרת ברצף 24/7 – ערוץ חינמי של קשת ו-FreeTV",
     "logo": "assets/logos/eretz_nehederet.png",
-    "number": 2,
+    "number": 1,
     "src": {
       "by": "קשת – ה-CDN של mako (עם הרשאת צפייה של mako)",
       "kind": "official",
@@ -53,7 +32,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
     "badge": "HD",
     "desc": "ערוץ האוכל והבישול של קשת ו-FreeTV 24/7 – מתכונים, שפים מובילים ומאסטר שף",
     "logo": "assets/logos/keshet_food.svg",
-    "number": 3,
+    "number": 2,
     "src": {
       "by": "קשת – ה-CDN של mako (עם הרשאת צפייה של mako)",
       "kind": "official",
@@ -74,7 +53,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
     "badge": "HD",
     "desc": "קומדיות ישראליות של קשת 24/7 – ערוץ חינמי של קשת ו-FreeTV",
     "logo": "assets/logos/keshet_comedy.png",
-    "number": 4,
+    "number": 3,
     "src": {
       "by": "קשת – ה-CDN של mako (עם הרשאת צפייה של mako)",
       "kind": "official",
@@ -95,7 +74,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
     "badge": "HD",
     "desc": "דרמות וסדרות ישראליות של קשת 24/7 – ערוץ חינמי של קשת ו-FreeTV",
     "logo": "assets/logos/keshet_drama.png",
-    "number": 5,
+    "number": 4,
     "src": {
       "by": "קשת – ה-CDN של mako (עם הרשאת צפייה של mako)",
       "kind": "official",
@@ -116,7 +95,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
     "badge": "HD",
     "desc": "מוזיקה ישראלית, הופעות ותוכניות מוזיקה של קשת – ערוץ חינמי של קשת ו-FreeTV",
     "logo": "assets/logos/keshet_music.png",
-    "number": 6,
+    "number": 5,
     "src": {
       "by": "קשת – ה-CDN של mako (עם הרשאת צפייה של mako)",
       "kind": "official",
@@ -136,7 +115,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
     "badge": "HD",
     "desc": "ערוץ הלייף סטייל, העיצוב והאוכל של yes ו-HOT",
     "logo": "assets/logos/good_life_israel.png",
-    "number": 7,
+    "number": 6,
     "src": {
       "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
       "kind": "restream",
@@ -164,6 +143,29 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
       "by": "ערוץ FAST ישראלי – AWS CloudFront",
       "kind": "fast",
       "host": "d2dffl3588mvfk.cloudfront.net",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "✅"
+    },
+    "number": 7
+  },
+  {
+    "id": "hot_vacation",
+    "name": "HOT ערוץ החופש HD",
+    "title": "HOT ערוץ החופש HD (HOT Vacation)",
+    "category": "ערוצי ישראל - שידור חי",
+    "categoryEn": "israel",
+    "url": "https://d1yd8hohnldm33.cloudfront.net/out/v1/19dee23c2cc24f689bd4e1288661ee0c/index_2.m3u8",
+    "logo": "assets/logos/hot_vacation.png",
+    "badge": "HD",
+    "desc": "ערוץ התיירות, החופשות והנופש של HOT",
+    "lang": "he",
+    "country": "IL",
+    "countryHe": "ישראל",
+    "webOk": true,
+    "src": {
+      "by": "ערוץ FAST ישראלי – AWS CloudFront",
+      "kind": "fast",
+      "host": "d1yd8hohnldm33.cloudfront.net",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
@@ -297,6 +299,27 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
     }
   },
   {
+    "id": "i24news_he",
+    "name": "i24NEWS עברית HD",
+    "title": "i24NEWS עברית HD",
+    "category": "ערוצי ישראל - שידור חי",
+    "categoryEn": "israel",
+    "url": "https://i24newshebrew-cdn.encoders.immergo.tv/master.m3u8",
+    "logo": "assets/logos/i24news_he.png",
+    "badge": "FHD",
+    "desc": "ערוץ החדשות הבינלאומי של ישראל בעברית - דיווחי חדשות ומבזקים 24/7",
+    "number": 15,
+    "lang": "he",
+    "iptv": "i24NEWSHebrew.il",
+    "src": {
+      "by": "i24NEWS – שרת רשמי",
+      "kind": "official",
+      "host": "i24newshebrew-cdn.encoders.immergo.tv",
+      "found": "iptv-org (i24NEWSHebrew.il)",
+      "web": "✅"
+    }
+  },
+  {
     "id": "knesset",
     "name": "ערוץ הכנסת 99",
     "title": "ערוץ הכנסת (Knesset Channel)",
@@ -306,7 +329,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
     "logo": "assets/logos/knesset.png",
     "badge": "SD",
     "desc": "שידורים ישירים ממליאת הכנסת, ועדות, תוכניות אקטואליה ופוליטיקה",
-    "number": 15,
+    "number": 16,
     "lang": "he",
     "iptv": "KnessetChannel.il",
     "src": {
@@ -335,29 +358,6 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
       "by": "ערוץ FAST ישראלי – AWS CloudFront",
       "kind": "fast",
       "host": "d15ds134q59udk.cloudfront.net",
-      "found": "רשימה ידנית (גרסה קודמת)",
-      "web": "✅"
-    },
-    "number": 16
-  },
-  {
-    "id": "hot_vacation",
-    "name": "HOT ערוץ החופש HD",
-    "title": "HOT ערוץ החופש HD (HOT Vacation)",
-    "category": "ערוצי ישראל - שידור חי",
-    "categoryEn": "israel",
-    "url": "https://d1yd8hohnldm33.cloudfront.net/out/v1/19dee23c2cc24f689bd4e1288661ee0c/index_2.m3u8",
-    "logo": "assets/logos/hot_vacation.png",
-    "badge": "HD",
-    "desc": "ערוץ התיירות, החופשות והנופש של HOT",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "webOk": true,
-    "src": {
-      "by": "ערוץ FAST ישראלי – AWS CloudFront",
-      "kind": "fast",
-      "host": "d1yd8hohnldm33.cloudfront.net",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },

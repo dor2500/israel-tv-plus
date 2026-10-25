@@ -1,10 +1,10 @@
 #EXTM3U x-tvg-url="https://epgshare01.online/epgshare01/epg_ripper_IL1.xml.gz"
-#EXTINF:-1 tvg-id="i24NEWSHebrew.il" tvg-name="i24NEWS עברית HD" tvg-chno="1" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/i24news_he.png" group-title="ערוצי ישראל",i24NEWS עברית HD
-https://i24newshebrew-cdn.encoders.immergo.tv/master.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ערוץ החיים הטובים HD" tvg-chno="7" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/good_life_israel.png" group-title="ערוצי ישראל",ערוץ החיים הטובים HD
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ החיים הטובים HD" tvg-chno="6" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/good_life_israel.png" group-title="ערוצי ישראל",ערוץ החיים הטובים HD
 http://stream.mcquack.net/47/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="HOT ריאליטי HD" tvg-chno="8" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hot_reality.png" group-title="ערוצי ישראל",HOT ריאליטי HD
+#EXTINF:-1 tvg-id="" tvg-name="HOT ריאליטי HD" tvg-chno="7" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hot_reality.png" group-title="ערוצי ישראל",HOT ריאליטי HD
 https://d2dffl3588mvfk.cloudfront.net/out/v1/d8e15050ca4148aab0ee387a5e2eb46b/index_1.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="HOT ערוץ החופש HD" tvg-chno="8" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hot_vacation.png" group-title="ערוצי ישראל",HOT ערוץ החופש HD
+https://d1yd8hohnldm33.cloudfront.net/out/v1/19dee23c2cc24f689bd4e1288661ee0c/index_2.m3u8
 #EXTINF:-1 tvg-id="Channel9.il" tvg-name="ערוץ 9 ישראל HD" tvg-chno="9" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/ch9.png" group-title="ערוצי ישראל",ערוץ 9 ישראל HD
 https://contact.gostreaming.tv/Con-11/index.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="ערוץ כלכלה 10 HD" tvg-chno="10" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/calcala10.png" group-title="ערוצי ישראל",ערוץ כלכלה 10 HD
@@ -15,12 +15,12 @@ https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan11/live.livx/playli
 https://d18b0e6mopany4.cloudfront.net/out/v1/2f2bc414a3db4698a8e94b89eaf2da2a/index.m3u8
 #EXTINF:-1 tvg-id="Now14.il" tvg-name="עכשיו 14 HD" tvg-chno="14" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/now14.png" group-title="ערוצי ישראל",עכשיו 14 HD
 https://r.il.cdn-redge.media/livehls/oil/ch14/live/ch14/live.livx/playlist.m3u8
-#EXTINF:-1 tvg-id="KnessetChannel.il" tvg-name="ערוץ הכנסת 99" tvg-chno="15" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/knesset.png" group-title="ערוצי ישראל",ערוץ הכנסת 99
+#EXTINF:-1 tvg-id="i24NEWSHebrew.il" tvg-name="i24NEWS עברית HD" tvg-chno="15" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/i24news_he.png" group-title="ערוצי ישראל",i24NEWS עברית HD
+https://i24newshebrew-cdn.encoders.immergo.tv/master.m3u8
+#EXTINF:-1 tvg-id="KnessetChannel.il" tvg-name="ערוץ הכנסת 99" tvg-chno="16" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/knesset.png" group-title="ערוצי ישראל",ערוץ הכנסת 99
 https://kneset.gostreaming.tv/p2-kneset/_definst_/myStream/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="HOT קומדי HD" tvg-chno="16" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hot_comedy.png" group-title="ערוצי ישראל",HOT קומדי HD
+#EXTINF:-1 tvg-id="" tvg-name="HOT קומדי HD" tvg-chno="17" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hot_comedy.png" group-title="ערוצי ישראל",HOT קומדי HD
 https://d15ds134q59udk.cloudfront.net/out/v1/fbba879221d045598540ee783b140fe2/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="HOT ערוץ החופש HD" tvg-chno="17" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hot_vacation.png" group-title="ערוצי ישראל",HOT ערוץ החופש HD
-https://d1yd8hohnldm33.cloudfront.net/out/v1/19dee23c2cc24f689bd4e1288661ee0c/index_2.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="הערוץ הים תיכוני HD" tvg-chno="18" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/yam_tichoni_israel.png" group-title="ערוצי ישראל",הערוץ הים תיכוני HD
 http://stream.mcquack.net/46/index.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="yes קולנוע קומדיה HD" tvg-chno="19" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/yes_movies_comedy.png" group-title="ערוצי ישראל",yes קולנוע קומדיה HD

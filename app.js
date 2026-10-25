@@ -355,9 +355,8 @@
     var cv = chrome ? parseInt(chrome[1], 10) : 99;
     var mem = navigator.deviceMemory || 0;
     var cores = navigator.hardwareConcurrency || 0;
-    if (PLATFORM === 'webos' || PLATFORM === 'tizen') {
-      // TVs report deviceMemory 2 even on strong models (LG C6): judge by the browser / webOS version instead
-      state.lowEnd = cv < 80 || /SMART-TV.*Tizen [2-4]\./.test(UA);
+    if (PLATFORM === 'webos' || PLATFORM === 'tizen' || IS_TV) {
+      state.lowEnd = true;
     } else {
       state.lowEnd = cv < 70 || (mem && mem <= 2) || (cores && cores <= 2);
     }
@@ -1652,11 +1651,11 @@
 
   function atvSettle(ch) {
     if (atv.metaTimer) clearTimeout(atv.metaTimer);
-    atv.metaTimer = setTimeout(function () { atvMeta(ch); }, 180);
+    atv.metaTimer = setTimeout(function () { atvMeta(ch); }, 120);
     if (atv.restTimer) clearTimeout(atv.restTimer);
     if (state.playing && state.playing !== ch && state.overlay !== 'player') atvStopPreview();
-    if (!ch) return;
-    atv.restTimer = setTimeout(function () { atvPreview(ch); }, 800);
+    if (!ch || PLATFORM === 'webos' || PLATFORM === 'tizen' || IS_TV || fastMode()) return;
+    atv.restTimer = setTimeout(function () { atvPreview(ch); }, 1000);
   }
 
   // ================================================================== EPG Program Guide Engine
@@ -1919,11 +1918,11 @@
     bo.className = 'atv-bd';
   }
 
-  // ---- live preview behind the shelves
+  // ---- live preview behind the shelves (desktop only, disabled on Smart TVs to protect video decoders)
   function atvPreview(ch) {
     if (!TVUI || state.overlay || state.zone !== 'atv' || ch !== atvCurrent()) return;
     if (state.playing === ch) { if (!state.isRadio) document.body.classList.add('atv-live'); return; }
-    if (isRadioCh(ch) || isApp(ch) || appOnly(ch) || fastMode()) return;
+    if (isRadioCh(ch) || isApp(ch) || appOnly(ch) || fastMode() || PLATFORM === 'webos' || PLATFORM === 'tizen' || IS_TV) return;
     if (atv.stopTimer) { clearTimeout(atv.stopTimer); atv.stopTimer = null; }
     if (state.playing) stopPlayback();
     state.preview = ch;
@@ -4109,10 +4108,14 @@
       return;
     }
     if (isBack(code)) { closePlayer(true); return; }
-    // 38 (Up), 427 (ChannelUp), 33 (PageUp), 417 (FastForward), 10253 -> zap forward (1)
-    if (code === 38 || code === 427 || code === 33 || code === 417 || code === 10253) zap(S.upNext ? 1 : -1);
-    // 40 (Down), 428 (ChannelDown), 34 (PageDown), 412 (Rewind) -> zap backward (-1)
-    else if (code === 40 || code === 428 || code === 34 || code === 412) zap(S.upNext ? -1 : 1);
+    // Dedicated FastForward (417, 10253) -> always zap forward
+    if (code === 417 || code === 10253) { zap(1); return; }
+    // Dedicated Rewind (412) -> always zap backward
+    if (code === 412) { zap(-1); return; }
+    // 38 (Up), 427 (ChannelUp), 33 (PageUp) -> zap based on user preference
+    if (code === 38 || code === 427 || code === 33) zap(S.upNext ? 1 : -1);
+    // 40 (Down), 428 (ChannelDown), 34 (PageDown)
+    else if (code === 40 || code === 428 || code === 34) zap(S.upNext ? -1 : 1);
     else if (code === 37) openDrawer();
     else if (code === 39) playerMenu();
   }
