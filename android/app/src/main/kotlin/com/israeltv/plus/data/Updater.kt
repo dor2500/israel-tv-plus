@@ -54,6 +54,11 @@ class Updater(private val context: Context, private val http: OkHttpClient, priv
 
     val installedVersion: String get() = BuildConfig.VERSION_NAME
 
+    init {
+        // the downloaded APK (about 20 MB) is only needed until it is installed: a start after that cleans it up
+        scope.launch(Dispatchers.IO) { runCatching { File(context.cacheDir, "update.apk").delete() } }
+    }
+
     fun check() {
         if (state is UpdateState.Checking || state is UpdateState.Downloading || state is UpdateState.Installing) return
         state = UpdateState.Checking
