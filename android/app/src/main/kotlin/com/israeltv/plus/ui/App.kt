@@ -64,6 +64,9 @@ import com.israeltv.plus.ui.screens.StyleScreen
 import com.israeltv.plus.ui.screens.WatchScreen
 import com.israeltv.plus.ui.screens.UpdateModal
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.ui.hapticfeedback.HapticFeedbackType
+import androidx.compose.ui.platform.LocalHapticFeedback
+import com.israeltv.plus.ui.components.IsraeliOnlyZomatoOverlay
 import dev.chrisbanes.haze.HazeState
 import dev.chrisbanes.haze.hazeSource
 import dev.chrisbanes.haze.rememberHazeState
@@ -172,6 +175,12 @@ fun ItvApp(
         }
         info?.let { ch -> ChannelInfoSheet(ch, logo(ch), prefs, onPlay = { onPlay(ch, listOf(ch)) }, onDismiss = { info = null }) }
 
+        // Full-screen Zomato-style overlay animation when "רק ישראלי" is switched ON
+        IsraeliOnlyZomatoOverlay(
+            visible = feed.showIsraeliOverlay,
+            onDismiss = { feed.showIsraeliOverlay = false },
+        )
+
         if (intro) {
             Box(Modifier.fillMaxSize().zIndex(100f)) {
                 CinematicIntro(
@@ -193,6 +202,8 @@ private class FeedState {
     var styleOpen by mutableStateOf(false)
     var watchOpen by mutableStateOf(false)
     var barCollapsed by mutableStateOf(false)
+    var israeliOnly by mutableStateOf(false)
+    var showIsraeliOverlay by mutableStateOf(false)
     val homeList = androidx.compose.foundation.lazy.LazyListState()
     val channelsList = androidx.compose.foundation.lazy.LazyListState()
 
@@ -219,6 +230,18 @@ private fun Feed(
     onProfiles: () -> Unit,
 ) {
     val subtitle: (Channel) -> String = remember { { it.subtitle() } }
+    val haptic = LocalHapticFeedback.current
+
+    val onToggleIsraeli: () -> Unit = {
+        if (!s.israeliOnly) {
+            haptic.performHapticFeedback(HapticFeedbackType.LongPress)
+            s.showIsraeliOverlay = true
+            s.israeliOnly = true
+        } else {
+            haptic.performHapticFeedback(HapticFeedbackType.TextHandleMove)
+            s.israeliOnly = false
+        }
+    }
 
     // the floating bar folds into a compact pod while the feed scrolls down and opens again on the way up
     val barScroll = remember(s) {
@@ -245,11 +268,30 @@ private fun Feed(
                     label = "tabs",
                 ) { t ->
                     when (t) {
-                        Tab.Home -> HomeScreen(data, prefs, s.homeList, logo, subtitle, onPlay, onInfo) {
+                        Tab.Home -> HomeScreen(
+                            data = data,
+                            prefs = prefs,
+                            listState = s.homeList,
+                            logo = logo,
+                            subtitle = subtitle,
+                            onPlay = onPlay,
+                            onInfo = onInfo,
+                            israeliOnly = s.israeliOnly,
+                        ) {
                             s.category = it
                             s.tab = Tab.Channels
                         }
-                        Tab.Channels -> ChannelsScreen(data, s.category, { s.category = it }, logo, subtitle, onPlay, s.channelsList)
+                        Tab.Channels -> ChannelsScreen(
+                            data = data,
+                            category = s.category,
+                            onCategory = { s.category = it },
+                            logo = logo,
+                            subtitle = subtitle,
+                            onPlay = onPlay,
+                            listState = s.channelsList,
+                            israeliOnly = s.israeliOnly,
+                            onToggleIsraeli = onToggleIsraeli,
+                        )
                         Tab.Mine -> MineScreen(data, prefs, logo, subtitle, onPlay)
                         Tab.Settings -> SettingsScreen(data, prefs, updater, onProfiles = onProfiles, onStyle = { s.styleOpen = true }, onWatch = { s.watchOpen = true })
                     }
@@ -262,6 +304,8 @@ private fun Feed(
                 title = s.tab.title,
                 profileId = prefs.profile.id,
                 avatar = prefs.avatar,
+                israeliOnly = s.israeliOnly,
+                onToggleIsraeli = onToggleIsraeli,
                 onAvatar = onProfiles,
                 onSettings = { s.tab = if (s.tab == Tab.Settings) Tab.Home else Tab.Settings },
                 modifier = Modifier.align(Alignment.TopCenter),

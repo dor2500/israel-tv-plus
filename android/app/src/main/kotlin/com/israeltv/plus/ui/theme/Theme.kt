@@ -49,15 +49,15 @@ val Rubik = FontFamily(
 private val Base = Typography()
 private val Tight = (-0.5).sp
 
-/** Stretched Expressive Numbers (Android 15/16 Material You clock aesthetic): wght 800, tnum, -0.5sp tracking. */
+/** Stretched Expressive Numbers (Material 3 Expressive): wght ExtraBold (800), tnum, -0.5sp tracking, scaleY = 1.15f. */
 val StretchedNumberStyle = TextStyle(
     fontFamily = Rubik,
-    fontWeight = FontWeight(800),
+    fontWeight = FontWeight.ExtraBold,
     fontFeatureSettings = "tnum",
     letterSpacing = (-0.5).sp,
 )
 
-fun Modifier.stretchedExpressive(scaleY: Float = 1.18f): Modifier = this.graphicsLayer {
+fun Modifier.stretchedExpressive(scaleY: Float = 1.15f): Modifier = this.graphicsLayer {
     this.scaleY = scaleY
 }
 

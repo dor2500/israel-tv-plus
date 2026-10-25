@@ -117,13 +117,17 @@ fun AmbientBackground(modifier: Modifier = Modifier) {
 
 /**
  * Apple TV header: the screen title on the right, and on the left:
- * Top-left glass pill for Settings + Profile avatar with tactile bounce and specular edge.
+ * - "רק ישראלי" frosted-glass toggle pill (surfaceContainer 0.6f + backdrop blur)
+ * - Settings glass pill
+ * - Profile avatar with tactile bounce and specular edge.
  */
 @Composable
 fun AppHeader(
     title: String,
     profileId: String,
     avatar: String,
+    israeliOnly: Boolean = false,
+    onToggleIsraeli: () -> Unit = {},
     onAvatar: () -> Unit,
     onSettings: () -> Unit,
     modifier: Modifier = Modifier,
@@ -152,23 +156,50 @@ fun AppHeader(
                 title,
                 Modifier.weight(1f),
                 style = MaterialTheme.typography.headlineMedium,
-                fontSize = 30.sp,
+                fontSize = 28.sp,
                 fontWeight = FontWeight.Black,
                 color = scheme.onSurface,
                 maxLines = 1,
             )
 
-            // Top-left actions: Settings glass pill + Profile avatar
+            // Top-left actions: "רק ישראלי" toggle pill + Settings glass pill + Profile avatar
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(10.dp),
             ) {
+                // Israeli Only frosted-glass pill
+                Box(
+                    Modifier
+                        .height(42.dp)
+                        .tactileBounce(onClick = onToggleIsraeli)
+                        .frostedGlass(
+                            pillShape,
+                            if (israeliOnly) scheme.primaryContainer.copy(alpha = 0.85f) else scheme.surfaceContainer.copy(alpha = 0.60f),
+                            blur = 24.dp,
+                        )
+                        .padding(horizontal = 13.dp),
+                    contentAlignment = Alignment.Center,
+                ) {
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(6.dp),
+                    ) {
+                        AppleIsraelFlag(Modifier.size(width = 18.dp, height = 12.dp))
+                        Text(
+                            "רק ישראלי",
+                            color = if (israeliOnly) scheme.onPrimaryContainer else scheme.onSurface,
+                            fontSize = 13.sp,
+                            fontWeight = FontWeight.ExtraBold,
+                        )
+                    }
+                }
+
                 // Settings top glass pill
                 Box(
                     Modifier
                         .height(42.dp)
                         .tactileBounce(onClick = onSettings)
-                        .frostedGlass(pillShape, glassTint(), blur = 24.dp)
+                        .frostedGlass(pillShape, scheme.surfaceContainer.copy(alpha = 0.60f), blur = 24.dp)
                         .padding(horizontal = 14.dp),
                     contentAlignment = Alignment.Center,
                 ) {
@@ -211,12 +242,13 @@ fun AppHeader(
 }
 
 /**
- * BitChord Split-Capsule Navbar (Image 3 Reference):
+ * BitChord Split-Capsule Navbar with Nuvio Deep Glass:
  * 3+1 Split Layout in RTL:
- * - Standalone search circle on the left side with real-time blur and tactile bounce.
- * - Main frosted capsule (בית, ערוצים, שלי) backed by real-time backdrop blur (Haze)
- *   and horizontal Material You gradient (surfaceContainerHighest to primaryContainer 0.3a).
- * - Selected tab wrapped in a spring-sliding primaryContainer pill with solid icon.
+ * - Safe bottom padding: navigationBarsPadding() + padding(bottom = 16.dp).
+ * - Main floating capsule (weight(1f)) containing only 3 tabs (בית, ערוצים, שלי).
+ * - Standalone circular button (size = 64.dp) on the far left for חיפוש.
+ * - Nuvio Deep Glass: Hardware-accelerated blur tinted with Color(0xFF16161E).copy(alpha = 0.75f) and a 1.dp border (alpha = 0.15f).
+ * - Active tab strictly uses a primaryContainer pill background with Icons.Rounded.* (Solid/Filled).
  */
 @Composable
 fun FloatingTabBar(
@@ -229,6 +261,7 @@ fun FloatingTabBar(
 ) {
     val scheme = MaterialTheme.colorScheme
     val pill = RoundedCornerShape(50)
+    val nuvioGlassTint = Color(0xFF16161E).copy(alpha = 0.75f)
     val p by animateFloatAsState(
         if (collapsed) 1f else 0f,
         spring(dampingRatio = 0.8f, stiffness = Spring.StiffnessMediumLow),
@@ -239,48 +272,19 @@ fun FloatingTabBar(
         modifier = modifier
             .zIndex(10f)
             .navigationBarsPadding()
-            .padding(bottom = 18.dp, start = 16.dp, end = 16.dp)
+            .padding(bottom = 16.dp, start = 16.dp, end = 16.dp)
             .fillMaxWidth(),
         horizontalArrangement = Arrangement.spacedBy(10.dp, Alignment.CenterHorizontally),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        // 1. Standalone Search Circle on left (in RTL: appears on the trailing side)
-        val searchActive = searchOpen
-        Box(
-            modifier = Modifier
-                .size(lerp(58.dp, 48.dp, p))
-                .tactileBounce(onClick = onSearch)
-                .clip(CircleShape)
-                .frostedGlass(CircleShape, glassTint(), blur = 36.dp)
-                .background(
-                    if (searchActive) scheme.primaryContainer.copy(alpha = 0.85f)
-                    else scheme.surfaceContainerHighest.copy(alpha = 0.45f)
-                ),
-            contentAlignment = Alignment.Center,
-        ) {
-            Icon(
-                imageVector = if (searchActive) Icons.Rounded.Search else Icons.Outlined.Search,
-                contentDescription = "חיפוש",
-                modifier = Modifier.size(24.dp),
-                tint = if (searchActive) scheme.onPrimaryContainer else scheme.onSurface,
-            )
-        }
-
-        // 2. Main Frosted Capsule (בית, ערוצים, שלי)
-        val gradientBrush = Brush.horizontalGradient(
-            listOf(
-                scheme.surfaceContainerHighest.copy(alpha = 0.85f),
-                scheme.primaryContainer.copy(alpha = 0.30f),
-            )
-        )
-
+        // 1. In RTL, first child in Row is on the RIGHT: Main Floating Capsule (weight(1f))
         BoxWithConstraints(
             modifier = Modifier
                 .weight(1f)
-                .height(lerp(66.dp, 54.dp, p))
+                .height(lerp(64.dp, 52.dp, p))
                 .clip(pill)
-                .frostedGlass(pill, glassTint(), blur = 36.dp)
-                .background(gradientBrush)
+                .frostedGlass(pill, nuvioGlassTint, blur = 30.dp, border = false)
+                .specularBorder(pill, alpha = 0.15f)
         ) {
             val count = MainNavTabs.size
             val itemWidth: Dp = maxWidth / count
@@ -294,7 +298,7 @@ fun FloatingTabBar(
                 label = "nav_indicator",
             )
 
-            // Sliding active primaryContainer tonal pill
+            // Sliding active primaryContainer tonal pill with solid rounded icons
             if (!searchOpen && selected in MainNavTabs) {
                 Box(
                     Modifier
@@ -303,12 +307,12 @@ fun FloatingTabBar(
                         .fillMaxHeight()
                         .padding(horizontal = 4.dp, vertical = 6.dp)
                         .clip(pill)
-                        .background(scheme.primaryContainer.copy(alpha = 0.75f))
+                        .background(scheme.primaryContainer)
                         .specularBorder(pill, alpha = 0.28f)
                 )
             }
 
-            // Tabs row
+            // Tabs row (בית, ערוצים, שלי)
             Row(Modifier.fillMaxSize(), horizontalArrangement = Arrangement.SpaceEvenly) {
                 MainNavTabs.forEach { tab ->
                     val isActive = !searchOpen && tab == selected
@@ -322,6 +326,29 @@ fun FloatingTabBar(
                     }
                 }
             }
+        }
+
+        // 2. In RTL, second child in Row is on the far LEFT: Standalone circular search button (size = 64.dp)
+        val searchActive = searchOpen
+        Box(
+            modifier = Modifier
+                .size(lerp(64.dp, 52.dp, p))
+                .tactileBounce(onClick = onSearch)
+                .clip(CircleShape)
+                .frostedGlass(CircleShape, nuvioGlassTint, blur = 30.dp, border = false)
+                .specularBorder(CircleShape, alpha = 0.15f)
+                .background(
+                    if (searchActive) scheme.primaryContainer
+                    else Color.Transparent
+                ),
+            contentAlignment = Alignment.Center,
+        ) {
+            Icon(
+                imageVector = if (searchActive) Icons.Rounded.Search else Icons.Outlined.Search,
+                contentDescription = "חיפוש",
+                modifier = Modifier.size(26.dp),
+                tint = if (searchActive) scheme.onPrimaryContainer else scheme.onSurface,
+            )
         }
     }
 }

@@ -48,7 +48,27 @@ import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
 import com.israeltv.plus.data.Channel
 
-val CardShape = RoundedCornerShape(26.dp)
+import androidx.compose.ui.graphics.Brush
+
+val CardShape = RoundedCornerShape(22.dp)
+
+val RickAndMortyArtwork = listOf(
+    "https://rickandmortyapi.com/api/character/avatar/1.jpeg",   // Rick Sanchez
+    "https://rickandmortyapi.com/api/character/avatar/2.jpeg",   // Morty Smith
+    "https://rickandmortyapi.com/api/character/avatar/3.jpeg",   // Summer Smith
+    "https://rickandmortyapi.com/api/character/avatar/4.jpeg",   // Beth Smith
+    "https://rickandmortyapi.com/api/character/avatar/5.jpeg",   // Jerry Smith
+    "https://rickandmortyapi.com/api/character/avatar/242.jpeg", // Mr. Poopybutthole
+    "https://rickandmortyapi.com/api/character/avatar/244.jpeg", // Mr. Meeseeks
+    "https://rickandmortyapi.com/api/character/avatar/118.jpeg", // Evil Morty
+    "https://rickandmortyapi.com/api/character/avatar/265.jpeg", // Pickle Rick
+    "https://rickandmortyapi.com/api/character/avatar/180.jpeg", // Birdperson
+)
+
+fun rickAndMortyPlaceholder(id: String): String {
+    val idx = (id.hashCode() and 0x7FFFFFFF) % RickAndMortyArtwork.size
+    return RickAndMortyArtwork[idx]
+}
 
 /** The shared-element key of the card that was tapped last: the player grows out of it and shrinks back into it. */
 @Stable
@@ -62,22 +82,42 @@ val LocalPlayOrigin = staticCompositionLocalOf { PlayOrigin() }
 private val Rtl = TextStyle(textDirection = TextDirection.Rtl, textAlign = TextAlign.Start)
 
 @Composable
-fun ChannelLogo(url: String, modifier: Modifier = Modifier, isRadio: Boolean = false) {
-    if (url.isEmpty()) {
+fun ChannelLogo(
+    url: String,
+    modifier: Modifier = Modifier,
+    isRadio: Boolean = false,
+    channelId: String = "",
+    contentScale: ContentScale = ContentScale.Fit,
+) {
+    if (isRadio) {
         Box(modifier, contentAlignment = Alignment.Center) {
-            if (isRadio) Icon(Icons.Rounded.Radio, null, Modifier.size(36.dp), tint = MaterialTheme.colorScheme.primary)
+            Icon(Icons.Rounded.Radio, null, Modifier.size(36.dp), tint = MaterialTheme.colorScheme.primary)
         }
+    } else if (url.isNotEmpty()) {
+        AsyncImage(
+            model = url,
+            contentDescription = null,
+            modifier = modifier,
+            contentScale = contentScale,
+        )
     } else {
-        AsyncImage(model = url, contentDescription = null, modifier = modifier, contentScale = ContentScale.Fit)
+        // Rick and Morty animated artwork placeholder (No human faces)
+        AsyncImage(
+            model = rickAndMortyPlaceholder(channelId),
+            contentDescription = null,
+            modifier = modifier,
+            contentScale = ContentScale.Crop,
+        )
     }
 }
 
 /**
- * A channel: 16:9.5 frosted tile (26 dp corners, surfaceContainerHigh at 75%, specular edge) with the logo, the
- * quality badge and the channel number; title (15 sp bold) and subtitle (12 sp medium) under it.
+ * Landscape Card (16:9 wide card, width = 240.dp, height = 135.dp):
+ * Exclusively for 'Continue Watching' (המשך צפייה) row.
+ * Glows with dynamic tonal radial gradient (primary 0.15f) behind artwork.
  */
 @Composable
-fun ChannelCard(
+fun LandscapeCard(
     channel: Channel,
     logo: String,
     subtitle: String,
@@ -89,45 +129,64 @@ fun ChannelCard(
     val interaction = remember { MutableInteractionSource() }
     val haptic = LocalHapticFeedback.current
     val scheme = MaterialTheme.colorScheme
-    Column(modifier) {
+
+    Column(modifier.width(240.dp)) {
         Box(
             Modifier
                 .fillMaxWidth()
-                .aspectRatio(16f / 9.5f)
-                .pressPhysics(interaction)
-                .then(if (sharedKey != null) Modifier.sharedContainer(sharedKey, CardShape) else Modifier)
-                .clip(CardShape)
-                .background(scheme.surfaceContainerHigh.copy(alpha = 0.75f))
-                .specularBorder(CardShape)
-                .clickable(interaction, ripple()) {
+                .height(135.dp)
+                .tactileBounce(interaction) {
                     haptic.performHapticFeedback(HapticFeedbackType.LongPress)
                     origin.key = sharedKey
                     onClick()
-                },
+                }
+                .then(if (sharedKey != null) Modifier.sharedContainer(sharedKey, CardShape) else Modifier)
+                .clip(CardShape)
+                .background(scheme.surfaceContainerHigh.copy(alpha = 0.75f))
+                .specularBorder(CardShape, alpha = 0.28f),
             contentAlignment = Alignment.Center,
         ) {
-            ChannelLogo(logo, Modifier.fillMaxSize(0.6f), channel.isRadio)
+            // Subtle glowing radial gradient behind artwork
+            Box(
+                Modifier
+                    .fillMaxSize()
+                    .background(
+                        Brush.radialGradient(
+                            listOf(scheme.primary.copy(alpha = 0.15f), Color.Transparent),
+                            radius = 240f,
+                        )
+                    )
+            )
+
+            ChannelLogo(
+                url = logo,
+                channelId = channel.id,
+                modifier = Modifier.fillMaxSize(0.68f),
+                isRadio = channel.isRadio,
+                contentScale = ContentScale.Fit,
+            )
+
             val badge = if (channel.isRadio) "רדיו" else channel.badge
             if (badge.isNotEmpty()) {
                 Text(
                     badge,
                     Modifier
                         .align(Alignment.TopStart)
-                        .padding(10.dp)
+                        .padding(9.dp)
                         .clip(RoundedCornerShape(50))
                         .background(scheme.tertiaryContainer)
                         .padding(horizontal = 8.dp, vertical = 2.dp)
-                        .graphicsLayer { scaleY = 1.18f },
+                        .graphicsLayer { scaleY = 1.15f },
                     color = scheme.onTertiaryContainer,
                     fontSize = 10.sp,
-                    fontWeight = FontWeight.Bold,
+                    fontWeight = FontWeight.ExtraBold,
                     style = com.israeltv.plus.ui.theme.StretchedNumberStyle,
                 )
             }
             Box(
                 Modifier
                     .align(Alignment.TopEnd)
-                    .padding(10.dp)
+                    .padding(9.dp)
                     .clip(RoundedCornerShape(50))
                     .background(scheme.tertiaryContainer)
                     .padding(horizontal = 7.dp, vertical = 2.dp),
@@ -136,9 +195,9 @@ fun ChannelCard(
                     channel.number.toString(),
                     color = scheme.onTertiaryContainer,
                     fontSize = 11.sp,
-                    fontWeight = FontWeight(800),
+                    fontWeight = FontWeight.ExtraBold,
                     style = com.israeltv.plus.ui.theme.StretchedNumberStyle,
-                    modifier = Modifier.graphicsLayer { scaleY = 1.18f },
+                    modifier = Modifier.graphicsLayer { scaleY = 1.15f },
                 )
             }
         }
@@ -164,6 +223,140 @@ fun ChannelCard(
             overflow = TextOverflow.Ellipsis,
         )
     }
+}
+
+/**
+ * Portrait Poster Card (2:3 tall poster card, width = 130.dp, height = 195.dp):
+ * For all category rows (Live TV, Movies, Favorites, etc.).
+ * Subtle radial gradient behind animated artwork tile.
+ */
+@Composable
+fun PortraitPosterCard(
+    channel: Channel,
+    logo: String,
+    subtitle: String,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    sharedKey: String? = null,
+) {
+    val origin = LocalPlayOrigin.current
+    val interaction = remember { MutableInteractionSource() }
+    val haptic = LocalHapticFeedback.current
+    val scheme = MaterialTheme.colorScheme
+
+    Column(modifier.width(130.dp)) {
+        Box(
+            Modifier
+                .fillMaxWidth()
+                .height(195.dp)
+                .tactileBounce(interaction) {
+                    haptic.performHapticFeedback(HapticFeedbackType.LongPress)
+                    origin.key = sharedKey
+                    onClick()
+                }
+                .then(if (sharedKey != null) Modifier.sharedContainer(sharedKey, CardShape) else Modifier)
+                .clip(CardShape)
+                .background(scheme.surfaceContainerHigh.copy(alpha = 0.75f))
+                .specularBorder(CardShape, alpha = 0.28f),
+            contentAlignment = Alignment.Center,
+        ) {
+            // Subtle glowing radial gradient behind artwork
+            Box(
+                Modifier
+                    .fillMaxSize()
+                    .background(
+                        Brush.radialGradient(
+                            listOf(scheme.primary.copy(alpha = 0.15f), Color.Transparent),
+                            radius = 200f,
+                        )
+                    )
+            )
+
+            ChannelLogo(
+                url = logo,
+                channelId = channel.id,
+                modifier = Modifier.fillMaxSize(0.72f),
+                isRadio = channel.isRadio,
+                contentScale = ContentScale.Fit,
+            )
+
+            val badge = if (channel.isRadio) "רדיו" else channel.badge
+            if (badge.isNotEmpty()) {
+                Text(
+                    badge,
+                    Modifier
+                        .align(Alignment.TopStart)
+                        .padding(8.dp)
+                        .clip(RoundedCornerShape(50))
+                        .background(scheme.tertiaryContainer)
+                        .padding(horizontal = 7.dp, vertical = 2.dp)
+                        .graphicsLayer { scaleY = 1.15f },
+                    color = scheme.onTertiaryContainer,
+                    fontSize = 10.sp,
+                    fontWeight = FontWeight.ExtraBold,
+                    style = com.israeltv.plus.ui.theme.StretchedNumberStyle,
+                )
+            }
+            Box(
+                Modifier
+                    .align(Alignment.TopEnd)
+                    .padding(8.dp)
+                    .clip(RoundedCornerShape(50))
+                    .background(scheme.tertiaryContainer)
+                    .padding(horizontal = 6.dp, vertical = 2.dp),
+            ) {
+                Text(
+                    channel.number.toString(),
+                    color = scheme.onTertiaryContainer,
+                    fontSize = 11.sp,
+                    fontWeight = FontWeight.ExtraBold,
+                    style = com.israeltv.plus.ui.theme.StretchedNumberStyle,
+                    modifier = Modifier.graphicsLayer { scaleY = 1.15f },
+                )
+            }
+        }
+        Spacer(Modifier.height(7.dp))
+        Text(
+            channel.name,
+            Modifier.fillMaxWidth().padding(horizontal = 4.dp),
+            style = Rtl,
+            fontSize = 14.sp,
+            fontWeight = FontWeight.Bold,
+            color = scheme.onSurface,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
+        )
+        Text(
+            subtitle,
+            Modifier.fillMaxWidth().padding(horizontal = 4.dp),
+            style = Rtl,
+            fontSize = 11.sp,
+            fontWeight = FontWeight.Medium,
+            color = scheme.onSurfaceVariant,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
+        )
+    }
+}
+
+/** Legacy/Grid ChannelCard: defaults to standard proportional tile with Rick & Morty placeholder. */
+@Composable
+fun ChannelCard(
+    channel: Channel,
+    logo: String,
+    subtitle: String,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    sharedKey: String? = null,
+) {
+    PortraitPosterCard(
+        channel = channel,
+        logo = logo,
+        subtitle = subtitle,
+        onClick = onClick,
+        modifier = modifier,
+        sharedKey = sharedKey,
+    )
 }
 
 /** Section title (20 sp extra bold, no emoji) with a tonal "הכל" pill. */
@@ -203,7 +396,11 @@ fun SectionHeader(title: String, count: Int? = null, onSeeAll: (() -> Unit)? = n
     }
 }
 
-/** A horizontal carousel of channel cards. */
+/**
+ * A horizontal carousel of channel cards.
+ * If [isWide] is true, renders wide 16:9 cards (Continue Watching: 240.dp x 135.dp).
+ * Otherwise renders tall 2:3 poster cards (130.dp x 195.dp).
+ */
 @Composable
 fun ChannelShelf(
     title: String,
@@ -212,6 +409,7 @@ fun ChannelShelf(
     subtitle: (Channel) -> String,
     onPlay: (Channel) -> Unit,
     count: Int? = null,
+    isWide: Boolean = false,
     onSeeAll: (() -> Unit)? = null,
     modifier: Modifier = Modifier,
 ) {
@@ -223,23 +421,47 @@ fun ChannelShelf(
             flingBehavior = rememberBitChordFlingBehavior(),
         ) {
             items(channels, key = { it.id }) { ch ->
-                ChannelCard(ch, logo(ch), subtitle(ch), { onPlay(ch) }, Modifier.width(184.dp), sharedKey = "$title:${ch.id}")
+                if (isWide) {
+                    LandscapeCard(
+                        channel = ch,
+                        logo = logo(ch),
+                        subtitle = subtitle(ch),
+                        onClick = { onPlay(ch) },
+                        sharedKey = "$title:${ch.id}",
+                    )
+                } else {
+                    PortraitPosterCard(
+                        channel = ch,
+                        logo = logo(ch),
+                        subtitle = subtitle(ch),
+                        onClick = { onPlay(ch) },
+                        sharedKey = "$title:${ch.id}",
+                    )
+                }
             }
         }
     }
 }
 
-/** Loading placeholders in the shape of a shelf. */
+/** Loading placeholders in the shape of a shelf, with glowing tonal shimmer (no solid black). */
 @Composable
-fun ShelfSkeleton() {
+fun ShelfSkeleton(isWide: Boolean = false) {
     Column(Modifier.padding(bottom = 26.dp)) {
         Box(Modifier.padding(start = 20.dp, bottom = 14.dp).width(140.dp).height(22.dp).glassShimmer(RoundedCornerShape(11.dp)))
         Row(Modifier.padding(horizontal = 16.dp), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
             repeat(3) {
-                Column(Modifier.width(184.dp)) {
-                    Box(Modifier.fillMaxWidth().aspectRatio(16f / 9.5f).glassShimmer(CardShape))
-                    Spacer(Modifier.height(10.dp))
-                    Box(Modifier.width(110.dp).height(14.dp).glassShimmer(RoundedCornerShape(7.dp)))
+                if (isWide) {
+                    Column(Modifier.width(240.dp)) {
+                        Box(Modifier.fillMaxWidth().height(135.dp).glassShimmer(CardShape))
+                        Spacer(Modifier.height(10.dp))
+                        Box(Modifier.width(130.dp).height(14.dp).glassShimmer(RoundedCornerShape(7.dp)))
+                    }
+                } else {
+                    Column(Modifier.width(130.dp)) {
+                        Box(Modifier.fillMaxWidth().height(195.dp).glassShimmer(CardShape))
+                        Spacer(Modifier.height(10.dp))
+                        Box(Modifier.width(90.dp).height(14.dp).glassShimmer(RoundedCornerShape(7.dp)))
+                    }
                 }
             }
         }

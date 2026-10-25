@@ -369,7 +369,7 @@ fun PlayerScreen(
                     layoutParams = FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
                     useController = false
                     artworkDisplayMode = PlayerView.ARTWORK_DISPLAY_MODE_OFF
-                    setShutterBackgroundColor(android.graphics.Color.BLACK)
+                    setShutterBackgroundColor(android.graphics.Color.TRANSPARENT)
                     setKeepContentOnPlayerReset(false)
                     resizeMode = AspectRatioFrameLayout.RESIZE_MODE_FIT
                     this.player = player
@@ -475,59 +475,74 @@ fun PlayerScreen(
         ) { mode ->
             when (mode) {
                 "buffering" -> BufferingPill()
-                "controls" -> Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(28.dp),
-                ) {
-                    // Rewind 10s button
-                    ExpressiveSkipPill(
-                        icon = Icons.Rounded.Replay10,
-                        contentDescription = "10 שניות אחורה",
-                    ) {
-                        touchTick++
-                        player.seekTo((player.currentPosition - 10000L).coerceAtLeast(0L))
-                    }
-
-                    // Morphing Center Play/Pause Squircle
+                "controls" -> {
                     val cornerRadius by animateDpAsState(
-                        targetValue = if (playing) 42.dp else 18.dp,
+                        targetValue = if (playing) 38.dp else 20.dp,
                         animationSpec = spring(dampingRatio = 0.4f, stiffness = 220f),
                         label = "center_corner",
                     )
-                    val pillWidth by animateDpAsState(
-                        targetValue = if (playing) 84.dp else 108.dp,
-                        animationSpec = spring(dampingRatio = 0.4f, stiffness = 220f),
-                        label = "center_width",
-                    )
-                    val morphShape = RoundedCornerShape(cornerRadius)
+                    val squircleShape = RoundedCornerShape(cornerRadius)
 
-                    Box(
-                        Modifier
-                            .size(width = pillWidth, height = 84.dp)
-                            .tactileBounce(onClick = {
-                                touchTick++
-                                if (player.isPlaying) player.pause() else { player.volume = volumeLevel; player.play() }
-                            })
-                            .clip(morphShape)
-                            .background(scheme.primaryContainer.copy(alpha = 0.85f))
-                            .specularBorder(morphShape, alpha = 0.35f),
-                        contentAlignment = Alignment.Center,
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(28.dp),
                     ) {
-                        Icon(
-                            imageVector = if (playing) Icons.Rounded.Pause else Icons.Rounded.PlayArrow,
-                            contentDescription = "נגן / השהה",
-                            modifier = Modifier.size(42.dp),
-                            tint = scheme.onPrimaryContainer,
-                        )
-                    }
+                        // Rewind 10s frameless button (36.dp icon)
+                        Box(
+                            modifier = Modifier
+                                .size(54.dp)
+                                .tactileBounce(onClick = {
+                                    touchTick++
+                                    player.seekTo((player.currentPosition - 10000L).coerceAtLeast(0L))
+                                }),
+                            contentAlignment = Alignment.Center,
+                        ) {
+                            Icon(
+                                imageVector = Icons.Rounded.Replay10,
+                                contentDescription = "10 שניות אחורה",
+                                modifier = Modifier.size(36.dp),
+                                tint = scheme.onSurface,
+                            )
+                        }
 
-                    // Forward 10s button
-                    ExpressiveSkipPill(
-                        icon = Icons.Rounded.Forward10,
-                        contentDescription = "10 שניות קדימה",
-                    ) {
-                        touchTick++
-                        player.seekTo(player.currentPosition + 10000L)
+                        // Morphing Translucent Material You Squircle (48.dp frameless icon)
+                        Box(
+                            Modifier
+                                .size(80.dp)
+                                .tactileBounce(onClick = {
+                                    touchTick++
+                                    if (player.isPlaying) player.pause() else { player.volume = volumeLevel; player.play() }
+                                })
+                                .clip(squircleShape)
+                                .background(scheme.primaryContainer.copy(alpha = 0.55f))
+                                .specularBorder(squircleShape, alpha = 0.30f),
+                            contentAlignment = Alignment.Center,
+                        ) {
+                            Icon(
+                                imageVector = if (playing) Icons.Rounded.Pause else Icons.Rounded.PlayArrow,
+                                contentDescription = "נגן / השהה",
+                                modifier = Modifier.size(48.dp),
+                                tint = scheme.onPrimaryContainer,
+                            )
+                        }
+
+                        // Forward 10s frameless button (36.dp icon)
+                        Box(
+                            modifier = Modifier
+                                .size(54.dp)
+                                .tactileBounce(onClick = {
+                                    touchTick++
+                                    player.seekTo(player.currentPosition + 10000L)
+                                }),
+                            contentAlignment = Alignment.Center,
+                        ) {
+                            Icon(
+                                imageVector = Icons.Rounded.Forward10,
+                                contentDescription = "10 שניות קדימה",
+                                modifier = Modifier.size(36.dp),
+                                tint = scheme.onSurface,
+                            )
+                        }
                     }
                 }
                 "error" -> ErrorCard(current, error.orEmpty(), onRetry = { attempt++ }, onNext = { switchTo(index + 1) })
@@ -805,13 +820,13 @@ private fun NuvioDock(
     Row(
         Modifier
             .padding(horizontal = 20.dp, vertical = 4.dp)
-            .widthIn(max = 520.dp)
+            .widthIn(max = 500.dp)
             .fillMaxWidth()
-            .height(50.dp)
+            .height(48.dp)
             .clip(pillShape)
-            .background(scheme.surfaceContainerHigh.copy(alpha = 0.75f))
-            .specularBorder(pillShape, alpha = 0.32f)
-            .padding(horizontal = 6.dp, vertical = 4.dp),
+            .background(scheme.surfaceContainerHigh.copy(alpha = 0.65f))
+            .specularBorder(pillShape, alpha = 0.25f)
+            .padding(horizontal = 4.dp, vertical = 2.dp),
         horizontalArrangement = Arrangement.SpaceEvenly,
         verticalAlignment = Alignment.CenterVertically,
     ) {

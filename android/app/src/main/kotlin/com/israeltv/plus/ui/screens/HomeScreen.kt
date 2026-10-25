@@ -82,12 +82,13 @@ import androidx.media3.datasource.okhttp.OkHttpDataSource
 import androidx.media3.exoplayer.source.DefaultMediaSourceFactory
 import com.israeltv.plus.data.playableUrl
 import com.israeltv.plus.ui.components.tactileBounce
+import com.israeltv.plus.data.isIsraeli
 import com.israeltv.plus.ui.player.playerHttpClient
 import kotlinx.coroutines.delay
 
 private val HeroShape = RoundedCornerShape(0.dp)
 
-/** Home: one master LazyColumn – the full-bleed hero, "continue watching", favourites, then a carousel per category. */
+/** Home: one master LazyColumn – the full-bleed hero, "continue watching" (16:9 wide), favourites & categories (2:3 tall posters). */
 @Composable
 fun HomeScreen(
     data: ChannelData?,
@@ -97,6 +98,7 @@ fun HomeScreen(
     subtitle: (Channel) -> String,
     onPlay: (Channel, List<Channel>) -> Unit,
     onInfo: (Channel) -> Unit,
+    israeliOnly: Boolean = false,
     onSeeAll: (String) -> Unit,
 ) {
     val padding = feedPadding()
@@ -108,41 +110,88 @@ fun HomeScreen(
     ) {
         if (data == null) {
             item { Box(Modifier.bleedToTop(padding).padding(bottom = 28.dp).fillMaxWidth().height(580.dp).glassShimmer(HeroShape)) }
-            items(4) { ShelfSkeleton() }
+            item { ShelfSkeleton(isWide = true) }
+            items(3) { ShelfSkeleton(isWide = false) }
             return@LazyColumn
         }
+
+        val allChannels = if (israeliOnly) data.channels.filter { it.isIsraeli() } else data.channels
+        val featured = if (israeliOnly) data.featured.filter { it.isIsraeli() }.ifEmpty { allChannels.take(5) } else data.featured
+
         item(key = "hero") {
             HeroPager(
-                data.featured, prefs, logo,
-                onPlay = { onPlay(it, data.featured) }, onInfo = onInfo,
+                featured, prefs, logo,
+                onPlay = { onPlay(it, featured) }, onInfo = onInfo,
                 modifier = Modifier.bleedToTop(padding).cascadeIn(0),
             )
         }
         var row = 1
-        val recent = prefs.recents.mapNotNull { data.byId[it] }
+        val rawRecent = prefs.recents.mapNotNull { data.byId[it] }
+        val recent = if (israeliOnly) rawRecent.filter { it.isIsraeli() } else rawRecent
         if (recent.isNotEmpty()) {
             val i = row++
-            item(key = "recent") { ChannelShelf("המשך צפייה", recent, logo, subtitle, { onPlay(it, recent) }, modifier = Modifier.cascadeIn(i)) }
+            // Wide 16:9 cards (width = 240.dp, height = 135.dp) for 'Continue Watching' row
+            item(key = "recent") {
+                ChannelShelf(
+                    title = "המשך צפייה",
+                    channels = recent,
+                    logo = logo,
+                    subtitle = subtitle,
+                    onPlay = { onPlay(it, recent) },
+                    isWide = true,
+                    modifier = Modifier.cascadeIn(i),
+                )
+            }
         }
-        val favs = prefs.favorites.mapNotNull { data.byId[it] }
+        val rawFavs = prefs.favorites.mapNotNull { data.byId[it] }
+        val favs = if (israeliOnly) rawFavs.filter { it.isIsraeli() } else rawFavs
         if (favs.isNotEmpty()) {
             val i = row++
-            item(key = "favs") { ChannelShelf("המועדפים שלי", favs, logo, subtitle, { onPlay(it, favs) }, modifier = Modifier.cascadeIn(i)) }
+            // Tall 2:3 poster cards (width = 130.dp, height = 195.dp)
+            item(key = "favs") {
+                ChannelShelf(
+                    title = "המועדפים שלי",
+                    channels = favs,
+                    logo = logo,
+                    subtitle = subtitle,
+                    onPlay = { onPlay(it, favs) },
+                    isWide = false,
+                    modifier = Modifier.cascadeIn(i),
+                )
+            }
         }
         val allRow = row++
         item(key = "all_channels_shelf") {
+            val title = if (israeliOnly) "כל הערוצים (100% ישראלי)" else "כל הערוצים (הכל)"
             ChannelShelf(
-                "כל הערוצים (הכל)", data.channels.take(30), logo, subtitle, { onPlay(it, data.channels) },
-                count = data.channels.size, onSeeAll = { onSeeAll("all") }, modifier = Modifier.cascadeIn(allRow),
+                title = title,
+                channels = allChannels.take(30),
+                logo = logo,
+                subtitle = subtitle,
+                onPlay = { onPlay(it, allChannels) },
+                count = allChannels.size,
+                isWide = false,
+                onSeeAll = { onSeeAll("all") },
+                modifier = Modifier.cascadeIn(allRow),
             )
         }
         data.categories.forEach { cat ->
-            val i = row++
-            item(key = "cat:" + cat.key) {
-                ChannelShelf(
-                    cat.name, cat.channels.take(24), logo, subtitle, { onPlay(it, cat.channels) },
-                    count = cat.channels.size, onSeeAll = { onSeeAll(cat.key) }, modifier = Modifier.cascadeIn(i),
-                )
+            val catChannels = if (israeliOnly) cat.channels.filter { it.isIsraeli() } else cat.channels
+            if (catChannels.isNotEmpty()) {
+                val i = row++
+                item(key = "cat:" + cat.key) {
+                    ChannelShelf(
+                        title = cat.name,
+                        channels = catChannels.take(24),
+                        logo = logo,
+                        subtitle = subtitle,
+                        onPlay = { onPlay(it, catChannels) },
+                        count = catChannels.size,
+                        isWide = false,
+                        onSeeAll = { onSeeAll(cat.key) },
+                        modifier = Modifier.cascadeIn(i),
+                    )
+                }
             }
         }
     }

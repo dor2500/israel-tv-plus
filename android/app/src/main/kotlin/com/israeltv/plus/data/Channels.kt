@@ -83,6 +83,14 @@ fun Channel.subtitle(): String = when {
     else -> shortCategory(category)
 }
 
+/** True when the channel represents local Israeli content (for the 'רק ישראלי' filter). */
+fun Channel.isIsraeli(): Boolean =
+    categoryEn.equals("israel", ignoreCase = true) ||
+    countryHe == "ישראל" ||
+    category.contains("ישראל") ||
+    lang.equals("he", ignoreCase = true) ||
+    name.any { it in '\u0590'..'\u05FF' }
+
 /**
  * The channel list: the copy bundled in the APK first (instant start, works offline), then the published list from
  * GitHub, which is kept in filesDir for the next start. Logos come from the APK when it has the file, else the site.

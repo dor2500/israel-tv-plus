@@ -4,11 +4,15 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.asPaddingValues
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -29,10 +33,18 @@ import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Close
+import androidx.compose.material.icons.rounded.MoreHoriz
 import androidx.compose.material.icons.rounded.Search
+import androidx.compose.material3.FilterChip
+import androidx.compose.material3.FilterChipDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Text
+import androidx.compose.material3.rememberModalBottomSheetState
+import com.israeltv.plus.data.isIsraeli
+import com.israeltv.plus.ui.components.AppleIsraelFlag
+import com.israeltv.plus.ui.components.tactileBounce
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -96,7 +108,8 @@ private fun EmptyState(text: String) {
     )
 }
 
-/** Channels: category pills, then every channel of the chosen category as a grid. */
+/** Channels: macro-category pills, "עוד..." sheet, "רק ישראלי" toggle, and channel grid. */
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun ChannelsScreen(
     data: ChannelData?,
@@ -106,27 +119,43 @@ fun ChannelsScreen(
     subtitle: (Channel) -> String,
     onPlay: (Channel, List<Channel>) -> Unit,
     listState: LazyListState = rememberLazyListState(),
+    israeliOnly: Boolean = false,
+    onToggleIsraeli: () -> Unit = {},
 ) {
     // a new category starts at the top; coming back from the player keeps the place
     var shown by remember { mutableStateOf(category) }
+    var moreSheetOpen by remember { mutableStateOf(false) }
+
     LaunchedEffect(category) {
         if (category != shown) {
             shown = category
             listState.scrollToItem(0)
         }
     }
+
     LazyColumn(Modifier.fillMaxSize(), listState, feedPadding(), flingBehavior = rememberBitChordFlingBehavior()) {
         if (data == null) {
             items(4) { ShelfSkeleton() }
             return@LazyColumn
         }
         val isAll = category == null || category == "all"
-        val list = if (isAll) data.channels else data.categories.firstOrNull { it.key == category }?.channels ?: data.channels
-        item(key = "chips") { CategoryPills(data, category, onCategory) }
-        item(key = "count") {
-            SectionHeader(
-                if (isAll) "כל הערוצים (הכל)" else data.categories.firstOrNull { it.key == category }?.name ?: "כל הערוצים",
+        val rawList = if (isAll) data.channels else data.categories.firstOrNull { it.key == category }?.channels ?: data.channels
+        val list = if (israeliOnly) rawList.filter { it.isIsraeli() } else rawList
+
+        item(key = "chips") {
+            CategoryMacroBar(
+                data = data,
+                selected = category,
+                israeliOnly = israeliOnly,
+                onSelect = onCategory,
+                onMore = { moreSheetOpen = true },
+                onToggleIsraeli = onToggleIsraeli,
             )
+        }
+        item(key = "count") {
+            val title = if (isAll) "כל הערוצים (הכל)" else data.categories.firstOrNull { it.key == category }?.name ?: "כל הערוצים"
+            val displayTitle = if (israeliOnly) "$title · 100% ישראלי" else title
+            SectionHeader(displayTitle)
             Text(
                 "${list.size} ערוצים ותחנות",
                 Modifier.padding(start = 20.dp, bottom = 14.dp).padding(top = 0.dp),
@@ -135,35 +164,180 @@ fun ChannelsScreen(
         }
         channelGrid(list, "c:", logo, subtitle) { onPlay(it, list) }
     }
+
+    if (moreSheetOpen && data != null) {
+        val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
+        val haptic = LocalHapticFeedback.current
+        val scheme = MaterialTheme.colorScheme
+
+        ModalBottomSheet(
+            onDismissRequest = { moreSheetOpen = false },
+            sheetState = sheetState,
+            containerColor = scheme.surfaceContainerHigh,
+        ) {
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 20.dp)
+                    .padding(bottom = 36.dp)
+            ) {
+                Text(
+                    text = "עוד קטגוריות",
+                    style = MaterialTheme.typography.titleLarge,
+                    fontWeight = FontWeight.Black,
+                    color = scheme.onSurface,
+                    modifier = Modifier.padding(bottom = 16.dp),
+                )
+
+                // Remaining niche categories in neat FlowRow
+                val macroKeys = setOf("all", "movies", "kids", "sports")
+                val nicheCategories = data.categories.filter { cat ->
+                    val k = cat.key.lowercase()
+                    !k.contains("movie") && !k.contains("kid") && !k.contains("sport") && cat.key != "all"
+                }
+
+                FlowRow(
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    verticalArrangement = Arrangement.spacedBy(10.dp),
+                    modifier = Modifier.fillMaxWidth(),
+                ) {
+                    nicheCategories.forEach { cat ->
+                        val isSelected = cat.key == category
+                        FilterChip(
+                            selected = isSelected,
+                            onClick = {
+                                haptic.performHapticFeedback(HapticFeedbackType.SegmentTick)
+                                onCategory(cat.key)
+                                moreSheetOpen = false
+                            },
+                            label = {
+                                Text(
+                                    cat.name,
+                                    fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Medium,
+                                )
+                            },
+                            colors = FilterChipDefaults.filterChipColors(
+                                selectedContainerColor = scheme.primaryContainer,
+                                selectedLabelColor = scheme.onPrimaryContainer,
+                            ),
+                        )
+                    }
+                }
+            }
+        }
+    }
 }
 
+/**
+ * Macro Categories Clean Row + "רק ישראלי" Toggle + "עוד..." BottomSheet Trigger:
+ * 1. "רק ישראלי" pinned filter chip
+ * 2. 4 Macro categories: הכל, סרטים וסדרות, ילדים ונוער, ספורט
+ * 3. Static "עוד..." tab at the end of the row
+ */
 @Composable
-private fun CategoryPills(data: ChannelData, selected: String?, onSelect: (String?) -> Unit) {
+private fun CategoryMacroBar(
+    data: ChannelData,
+    selected: String?,
+    israeliOnly: Boolean,
+    onSelect: (String?) -> Unit,
+    onMore: () -> Unit,
+    onToggleIsraeli: () -> Unit,
+) {
     val scheme = MaterialTheme.colorScheme
     val haptic = LocalHapticFeedback.current
-    val entries = listOf<Pair<String?, String>>(null to "📺 כל הערוצים (הכל)") + data.categories.filter { it.key != "all" }.map { it.key to it.name }
+
+    // Locate the 3 key macro categories from the dataset
+    val movieCat = data.categories.firstOrNull { it.key.contains("movie") || it.name.contains("סרטים") }
+    val kidsCat = data.categories.firstOrNull { it.key.contains("kid") || it.name.contains("ילדים") }
+    val sportCat = data.categories.firstOrNull { it.key.contains("sport") || it.name.contains("ספורט") }
+
+    val macroEntries = listOfNotNull(
+        null to "הכל",
+        movieCat?.let { it.key to "סרטים וסדרות" },
+        kidsCat?.let { it.key to "ילדים ונוער" },
+        sportCat?.let { it.key to "ספורט" },
+    )
+
     LazyRow(
         Modifier.padding(bottom = 16.dp),
         contentPadding = PaddingValues(horizontal = 16.dp),
         horizontalArrangement = Arrangement.spacedBy(8.dp),
+        verticalAlignment = Alignment.CenterVertically,
         flingBehavior = rememberBitChordFlingBehavior(),
     ) {
-        items(entries, key = { it.first ?: "*" }) { (key, name) ->
-            val on = key == selected
+        // 1. "רק ישראלי" Filter Toggle Chip
+        item(key = "israeli_toggle") {
+            Row(
+                modifier = Modifier
+                    .clip(RoundedCornerShape(50))
+                    .tactileBounce {
+                        haptic.performHapticFeedback(HapticFeedbackType.LongPress)
+                        onToggleIsraeli()
+                    }
+                    .background(
+                        if (israeliOnly) scheme.primaryContainer
+                        else scheme.surfaceContainerHigh.copy(alpha = 0.70f)
+                    )
+                    .padding(horizontal = 14.dp, vertical = 9.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(6.dp),
+            ) {
+                AppleIsraelFlag(Modifier.size(width = 17.dp, height = 12.dp))
+                Text(
+                    text = "רק ישראלי",
+                    color = if (israeliOnly) scheme.onPrimaryContainer else scheme.onSurface,
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight.ExtraBold,
+                )
+            }
+        }
+
+        // 2. 4 Clean Macro Categories: הכל, סרטים וסדרות, ילדים ונוער, ספורט
+        items(macroEntries, key = { it.first ?: "all" }) { (key, name) ->
+            val on = key == selected || (key == null && (selected == null || selected == "all"))
             Text(
                 name,
                 Modifier
                     .clip(RoundedCornerShape(50))
-                    .background(if (on) scheme.secondaryContainer else scheme.surfaceContainerHigh.copy(alpha = 0.7f))
-                    .clickable {
+                    .tactileBounce {
                         haptic.performHapticFeedback(HapticFeedbackType.SegmentTick)
                         onSelect(key)
                     }
+                    .background(if (on) scheme.secondaryContainer else scheme.surfaceContainerHigh.copy(alpha = 0.7f))
                     .padding(horizontal = 16.dp, vertical = 9.dp),
                 color = if (on) scheme.onSecondaryContainer else scheme.onSurfaceVariant,
                 fontSize = 14.sp,
                 fontWeight = if (on) FontWeight.ExtraBold else FontWeight.Medium,
             )
+        }
+
+        // 3. Static "עוד..." tab at the end of the row
+        item(key = "more_tab") {
+            Row(
+                Modifier
+                    .clip(RoundedCornerShape(50))
+                    .tactileBounce {
+                        haptic.performHapticFeedback(HapticFeedbackType.SegmentTick)
+                        onMore()
+                    }
+                    .background(scheme.surfaceContainerHigh.copy(alpha = 0.7f))
+                    .padding(horizontal = 14.dp, vertical = 9.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(4.dp),
+            ) {
+                Icon(
+                    Icons.Rounded.MoreHoriz,
+                    contentDescription = "עוד",
+                    tint = scheme.onSurfaceVariant,
+                    modifier = Modifier.size(18.dp),
+                )
+                Text(
+                    text = "עוד...",
+                    color = scheme.onSurfaceVariant,
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight.Bold,
+                )
+            }
         }
     }
 }

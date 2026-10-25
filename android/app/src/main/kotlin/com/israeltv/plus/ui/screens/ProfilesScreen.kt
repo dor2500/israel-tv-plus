@@ -148,9 +148,10 @@ private fun ProfilesContent(prefs: AppPrefs, canClose: Boolean, onPicked: () -> 
     val scheme = MaterialTheme.colorScheme
     val haptic = LocalHapticFeedback.current
 
-    // Heavy haptic thud right as profile screen animates in
+    // Deep sub-bass drop (110Hz sweeping down) accompanied by a heavy haptic thud
     LaunchedEffect(Unit) {
         haptic.performHapticFeedback(HapticFeedbackType.LongPress)
+        com.israeltv.plus.audio.CinematicBassSound.play()
     }
 
     var editing by remember { mutableStateOf(false) }
