@@ -1,0 +1,15 @@
+[2026-10-25 23:36:44] Scanning sources for candidate Israeli streams...
+[2026-10-25 23:36:44] Testing candidate: כאן 11 שידור ראשי (CDN משני) (https://kan11.media.kan.org.il/hls/live/2024514/2024514/master.m3u8)
+[2026-10-25 23:36:47] Testing candidate: כאן חדשות מבזקים רציף (https://kannlive.media.kan.org.il/hls/live/2024622/2024622/master.m3u8)
+[2026-10-25 23:36:49] Testing candidate: ערוץ הכנסת שידור ישיר (https://knesset.streamguys1.com/knesset/knesset.m3u8)
+[2026-10-25 23:36:49] Testing candidate: הופ! שידור מיוחד לפעוטות (https://hop-live.stream.il/live/hop/master.m3u8)
+[2026-10-25 23:36:50] Testing candidate: זום ZOOM שידורי נוער 24/7 (https://zoom-tv.stream.il/live/zoom/playlist.m3u8)
+[2026-10-25 23:36:50] Testing candidate: ערוץ 24 שידורי מוזיקה ישראלית (https://mako-live.akamaized.net/hls/live/572358/ch24news/master.m3u8)
+[2026-10-25 23:36:50] Testing candidate: ערוץ אור מאיר מסורת (https://video.ormatv.co.il/live/stream.m3u8)
+[2026-10-25 23:36:50] Testing candidate: הידברות עולם הילדים (https://vod.hidabroot.org/live/kids/playlist.m3u8)
+[2026-10-25 23:36:50] Scan cycle finished. Total verified pool: 0 streams.
+[2026-10-25 23:36:56] Starting overnight Israeli channel scanner daemon (running every 60s until 06:00 AM)...
+[2026-10-25 23:36:56] === STARTING 06:00 AM HARVEST & PROJECT UPDATE ===
+[2026-10-25 23:36:56] Added 0 newly discovered Israeli channels into master list!
+[2026-10-25 23:36:56] Master channels.json updated: 320 total channels contiguous 1..324.
+[2026-10-25 23:36:59] Committing morning update to Git and pushing to master...
