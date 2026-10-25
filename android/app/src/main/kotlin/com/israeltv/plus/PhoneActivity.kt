@@ -2,6 +2,7 @@ package com.israeltv.plus
 
 import android.app.PictureInPictureParams
 import android.app.UiModeManager
+import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
@@ -61,6 +62,7 @@ class PhoneActivity : ComponentActivity() {
     private val inPip = mutableStateOf(false)
     private var playing = false
     private val ready = mutableStateOf(false)
+    private var installReceiver: BroadcastReceiver? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         if (isTv()) {
@@ -102,6 +104,7 @@ class PhoneActivity : ComponentActivity() {
         ContextCompat.registerReceiver(
             this, updater.statusReceiver, IntentFilter(Updater.ACTION_INSTALL_STATUS), ContextCompat.RECEIVER_NOT_EXPORTED,
         )
+        installReceiver = updater.statusReceiver
         lifecycleScope.launch {
             store.load()
             ready.value = true
@@ -122,6 +125,13 @@ class PhoneActivity : ComponentActivity() {
                 )
             }
         }
+    }
+
+    override fun onDestroy() {
+        // a recreated activity (locale / font size change) registers a new one: never leak the old
+        installReceiver?.let { runCatching { unregisterReceiver(it) } }
+        installReceiver = null
+        super.onDestroy()
     }
 
     private fun isTv(): Boolean {
