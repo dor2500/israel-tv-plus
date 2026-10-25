@@ -543,7 +543,7 @@
     state.all.forEach(function (c) { counts[c.category] = (counts[c.category] || 0) + 1; });
     var favs = state.all.filter(isFav).length;
     var recents = state.recents.filter(function (id) { return indexInAll(id) !== -1; }).length;
-    var list = [{ id: 'ALL', name: S.kids ? 'כל ערוצי הילדים' : 'כל הערוצים', icon: '📺', count: state.all.length }];
+    var list = [{ id: 'ALL', name: S.kids ? 'כל ערוצי הילדים' : 'כל הערוצים (הכל)', icon: '📺', count: state.all.length }];
     if (favs) list.push({ id: 'FAVORITES', name: 'מועדפים', icon: '⭐', count: favs });
     if (recents) list.push({ id: 'RECENT', name: 'צפית לאחרונה', icon: '🕘', count: recents });
     var dub = state.all.filter(foreign).length;
@@ -1389,10 +1389,10 @@
   var ATV_PITCH = 19;        // rem: a 17.5rem card + 1.5rem gap
   var ATV_ROW = 16.25;       // rem: one shelf (title + card + name), 260 px on a 1080p screen
   var ATV_FIRST = 14, ATV_MORE = 18;
-  var ATV_ROWS = [['broadcast', 'ערוצי ברודקאסט וחדשות'], ['sports', 'ספורט בשידור חי'], ['movies', 'סרטים וסדרות'],
-    ['kids', 'ילדים ונוער'], ['fun', 'בידור, טבע ומוזיקה'], ['world', 'ערוצים בינלאומיים'], ['radio', 'רדיו ישראלי'],
+  var ATV_ROWS = [['broadcast', 'ערוצי ברודקאסט וחדשות'], ['all', 'כל הערוצים (הכל)'], ['sports', 'ספורט בשידור חי'], ['movies', 'סרטים וסדרות'],
+    ['kids', 'ילדים ונוער'], ['fun', 'בידור, טבע ומוזיקה'], ['world', 'ערוצים בינלאומיים'], ['radio', 'רדיו ישראלי ועולמי'],
     ['faith', 'דת ומסורת']];
-  var ATV_TABS = [['צפייה כעת', 'top'], ['ערוצי ישראל', 'broadcast'], ['ספורט', 'sports'], ['ילדים', 'kids'],
+  var ATV_TABS = [['צפייה כעת', 'top'], ['ערוצי ישראל', 'broadcast'], ['כל הערוצים', 'all'], ['ספורט', 'sports'], ['ילדים', 'kids'],
     ['סרטים ודיבוב', 'movies'], ['רדיו', 'radio'], ['מועדפים', 'mine'], ['חיפוש', 'search'], ['הגדרות', 'settings']];
 
   function atvRem(rem) { return rem * (parseFloat(document.documentElement.style.fontSize) || 16); }
@@ -1435,7 +1435,8 @@
     var rows = [], mine = atvMineList();
     if (mine.length) rows.push({ id: 'mine', title: 'צפייה לאחרונה ומועדפים', list: mine });
     ATV_ROWS.forEach(function (r) {
-      var list = buckets[r[0]];
+      var list = r[0] === 'all' ? state.all : buckets[r[0]];
+      if (!list) return;
       if (IS_WEB) list = list.filter(function (x) { return !appOnly(x); }).concat(list.filter(appOnly));
       if (list.length) rows.push({ id: r[0], title: S.kids && r[0] === 'broadcast' ? 'ערוצי ישראל' : r[1], list: list });
     });

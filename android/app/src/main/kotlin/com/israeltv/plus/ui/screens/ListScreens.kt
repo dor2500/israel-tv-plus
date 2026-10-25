@@ -66,7 +66,7 @@ import com.israeltv.plus.ui.components.feedPadding
 import com.israeltv.plus.ui.components.frostedGlass
 import com.israeltv.plus.ui.components.rememberBitChordFlingBehavior
 
-/** A two-column grid inside the master LazyColumn: one row item per pair (items(list.chunked(2))). */
+/** A two-column grid inside the master LazyColumn: index-based rendering for zero allocations on large lists. */
 fun LazyListScope.channelGrid(
     list: List<Channel>,
     keyPrefix: String,
@@ -74,13 +74,24 @@ fun LazyListScope.channelGrid(
     subtitle: (Channel) -> String,
     onPlay: (Channel) -> Unit,
 ) {
-    items(list.chunked(2), key = { keyPrefix + it.first().id }) { row ->
+    val rowCount = (list.size + 1) / 2
+    items(
+        count = rowCount,
+        key = { index -> keyPrefix + list[index * 2].id }
+    ) { rowIndex ->
+        val firstIdx = rowIndex * 2
+        val first = list[firstIdx]
+        val second = if (firstIdx + 1 < list.size) list[firstIdx + 1] else null
         Row(
             Modifier.fillMaxWidth().padding(horizontal = 16.dp).padding(bottom = 18.dp),
             horizontalArrangement = Arrangement.spacedBy(12.dp),
         ) {
-            row.forEach { ch -> ChannelCard(ch, logo(ch), subtitle(ch), { onPlay(ch) }, Modifier.weight(1f), sharedKey = keyPrefix + ch.id) }
-            if (row.size == 1) Spacer(Modifier.weight(1f))
+            ChannelCard(first, logo(first), subtitle(first), { onPlay(first) }, Modifier.weight(1f), sharedKey = keyPrefix + first.id)
+            if (second != null) {
+                ChannelCard(second, logo(second), subtitle(second), { onPlay(second) }, Modifier.weight(1f), sharedKey = keyPrefix + second.id)
+            } else {
+                Spacer(Modifier.weight(1f))
+            }
         }
     }
 }
@@ -120,14 +131,15 @@ fun ChannelsScreen(
             items(4) { ShelfSkeleton() }
             return@LazyColumn
         }
-        val list = data.categories.firstOrNull { it.key == category }?.channels ?: data.channels
+        val isAll = category == null || category == "all"
+        val list = if (isAll) data.channels else data.categories.firstOrNull { it.key == category }?.channels ?: data.channels
         item(key = "chips") { CategoryPills(data, category, onCategory) }
         item(key = "count") {
             SectionHeader(
-                data.categories.firstOrNull { it.key == category }?.name ?: "כל הערוצים",
+                if (isAll) "כל הערוצים (הכל)" else data.categories.firstOrNull { it.key == category }?.name ?: "כל הערוצים",
             )
             Text(
-                "${list.size} ערוצים",
+                "${list.size} ערוצים ותחנות",
                 Modifier.padding(start = 20.dp, bottom = 14.dp).padding(top = 0.dp),
                 color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 13.sp,
             )
@@ -140,7 +152,7 @@ fun ChannelsScreen(
 private fun CategoryPills(data: ChannelData, selected: String?, onSelect: (String?) -> Unit) {
     val scheme = MaterialTheme.colorScheme
     val haptic = LocalHapticFeedback.current
-    val entries = listOf<Pair<String?, String>>(null to "הכל") + data.categories.map { it.key to it.name }
+    val entries = listOf<Pair<String?, String>>(null to "📺 כל הערוצים (הכל)") + data.categories.filter { it.key != "all" }.map { it.key to it.name }
     LazyRow(
         Modifier.padding(bottom = 16.dp),
         contentPadding = PaddingValues(horizontal = 16.dp),

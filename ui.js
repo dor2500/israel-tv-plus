@@ -96,7 +96,7 @@ window.ITV_UI = (function (I) {
           '<p class="hero-src" id="hero-src"></p>' +
         '</div>' +
       '</section>' +
-      '<div class="grid-head"><h2 id="grid-title">כל הערוצים</h2><span id="grid-count"></span></div>' +
+      '<div class="grid-head"><h2 id="grid-title">כל הערוצים (הכל)</h2><span id="grid-count"></span></div>' +
       '<div class="grid" id="grid"></div>' +
     '</main>' +
   '</div>' +

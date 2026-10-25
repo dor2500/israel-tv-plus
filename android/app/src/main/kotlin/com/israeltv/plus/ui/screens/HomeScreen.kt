@@ -126,6 +126,13 @@ fun HomeScreen(
             val i = row++
             item(key = "favs") { ChannelShelf("המועדפים שלי", favs, logo, subtitle, { onPlay(it, favs) }, modifier = Modifier.cascadeIn(i)) }
         }
+        val allRow = row++
+        item(key = "all_channels_shelf") {
+            ChannelShelf(
+                "כל הערוצים (הכל)", data.channels.take(30), logo, subtitle, { onPlay(it, data.channels) },
+                count = data.channels.size, onSeeAll = { onSeeAll("all") }, modifier = Modifier.cascadeIn(allRow),
+            )
+        }
         data.categories.forEach { cat ->
             val i = row++
             item(key = "cat:" + cat.key) {
