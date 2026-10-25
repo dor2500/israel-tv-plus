@@ -144,6 +144,27 @@ fun ChannelInfoSheet(channel: Channel, logo: String, prefs: AppPrefs, onPlay: ()
                 Text(channel.desc, fontSize = 15.sp, color = scheme.onSurface, modifier = Modifier.padding(top = 16.dp))
             }
             Text("ערוץ ${channel.number}", fontSize = 13.sp, color = scheme.onSurfaceVariant, modifier = Modifier.padding(top = 8.dp))
+            // the programme guide: the rest of today from the programme on now
+            val now = com.israeltv.plus.data.rememberNowMinute()
+            val guide = com.israeltv.plus.data.Epg.programmes(channel.id, now, 8)
+            if (guide.isNotEmpty()) {
+                Text("לוח שידורים", fontSize = 16.sp, fontWeight = FontWeight.ExtraBold, color = scheme.onSurface, modifier = Modifier.padding(top = 18.dp, bottom = 6.dp))
+                guide.forEachIndexed { i, p ->
+                    Row(Modifier.padding(vertical = 5.dp), verticalAlignment = Alignment.Top) {
+                        Text(
+                            com.israeltv.plus.data.hhmm(p.start), fontSize = 14.sp, fontWeight = FontWeight.ExtraBold,
+                            color = if (i == 0) scheme.primary else scheme.onSurfaceVariant, modifier = Modifier.width(52.dp),
+                        )
+                        Column(Modifier.weight(1f)) {
+                            Text(
+                                (if (i == 0) "עכשיו · " else "") + p.title, fontSize = 14.sp,
+                                fontWeight = if (i == 0) FontWeight.Bold else FontWeight.Medium, color = scheme.onSurface,
+                            )
+                            if (p.desc.isNotEmpty() && i < 2) Text(p.desc, fontSize = 12.sp, color = scheme.onSurfaceVariant, maxLines = 2)
+                        }
+                    }
+                }
+            }
             Spacer(Modifier.height(18.dp))
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 Button(onPlay, shape = RoundedCornerShape(50), modifier = Modifier.height(50.dp)) { Text("צפייה", fontWeight = FontWeight.ExtraBold) }
