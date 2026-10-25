@@ -251,3 +251,17 @@ http://s3.yesstreaming.net:7049/stream
 http://176.9.7.145:8127/stream
 #EXTINF:-1 tvg-id="" tvg-name="רדיו CS קלאסי" tvg-chno="128" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/radio_cs.png" group-title="רדיו ישראלי" radio="true",רדיו CS קלאסי
 https://n0a.radiojar.com/0tpy1h0kxtzuv
+#EXTINF:-1 tvg-id="Hidabroot.il" tvg-name="ערוץ הידברות HD" tvg-chno="212" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hidabroot.png" group-title="מסורת וקהילה",ערוץ הידברות HD
+https://cdn.cybercdn.live/HidabrootIL/Live97/playlist.m3u8
+#EXTINF:-1 tvg-id="HalaTV.il" tvg-name="הלא TV HD (Hala TV)" tvg-chno="213" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hala_tv.png" group-title="מסורת וקהילה",הלא TV HD (Hala TV)
+https://stream.panet.com/edge/halaTV/playlist.m3u8
+#EXTINF:-1 tvg-id="KabbalahforthePeopleIsrael.il" tvg-name="ערוץ קבלה לעם" tvg-chno="214" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/kabbalah.png" group-title="מסורת וקהילה",ערוץ קבלה לעם
+https://edge3.uk.kab.tv/live/tv66-heb-high/playlist.m3u8
+#EXTINF:-1 tvg-id="ShelanuTV.il" tvg-name="שלנו TV HD (Shelanu TV)" tvg-chno="215" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/shelanu_tv.png" group-title="מסורת וקהילה",שלנו TV HD (Shelanu TV)
+https://1247634592.rsc.cdn77.org/1247634592/playlist.m3u8
+#EXTINF:-1 tvg-id="Channel16.il" tvg-name="ערוץ 16 ישראל" tvg-chno="216" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/channel16.png" group-title="מסורת וקהילה",ערוץ 16 ישראל
+https://ch16israel-cdn.encoders.immergo.tv/2/streamPlaylist.m3u8
+#EXTINF:-1 tvg-id="JewishLifeTelevision.us" tvg-name="JLTV טלוויזיה יהודית" tvg-chno="217" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/jltv.png" group-title="מסורת וקהילה",JLTV טלוויזיה יהודית
+https://jlt-jltv-xumo.otteravision.com/jlt/jltv/jltv.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="קבלה לעם – רוסית" tvg-chno="218" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/kabbalah_ru.png" group-title="מסורת וקהילה",קבלה לעם – רוסית
+https://edge2.il.kab.tv/live/tv66-rus-high/playlist.m3u8

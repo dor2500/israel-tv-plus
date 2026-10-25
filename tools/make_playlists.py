@@ -20,7 +20,7 @@ SITE = "https://dor2500.github.io/israel-tv-plus/"
 EPG = "https://epgshare01.online/epgshare01/epg_ripper_IL1.xml.gz"
 EDGE = [p for p in (r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe",
                     r"C:\Program Files\Microsoft\Edge\Application\msedge.exe") if os.path.isfile(p)]
-ISRAELI = ("ערוצי ישראל - שידור חי", "ילדים ונוער (בעברית)", "רדיו ישראלי (Israeli Radio)")
+ISRAELI = ("ערוצי ישראל - שידור חי", "ילדים ונוער (בעברית)", "רדיו ישראלי (Israeli Radio)", "מסורת וקהילה")
 
 
 def png_logo(svg_rel):
