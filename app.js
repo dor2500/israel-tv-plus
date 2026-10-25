@@ -1822,7 +1822,12 @@
     var row = atv.rows[atv.row];
     // zapped in the player: the focus follows the channel that is on now (when it is on this shelf)
     if (row && state.playing && !state.preview && row.list[atv.cols[atv.row] || 0] !== state.playing) {
-      for (var k = 0; k < row.list.length; k++) if (row.list[k].id === state.playing.id) { atv.cols[atv.row] = k; break; }
+      var at = -1;
+      for (var k = 0; k < row.list.length; k++) if (row.list[k].id === state.playing.id) { at = k; break; }
+      // not on this shelf (a number key, zapping through all channels): it is first on "recently watched"
+      var mine = atvRowIndex('mine');
+      if (at === -1 && mine !== -1 && atv.rows[mine].list[0] && atv.rows[mine].list[0].id === state.playing.id) { atv.row = mine; at = 0; row = atv.rows[mine]; }
+      if (at !== -1) atv.cols[atv.row] = at;
       if (atv.cols[atv.row] > atv.rendered[atv.row] - 8) atvRender(atv.row, atv.cols[atv.row] + ATV_MORE);
     }
     if (row) { state.list = row.list; state.gridIdx = atv.cols[atv.row] || 0; }
