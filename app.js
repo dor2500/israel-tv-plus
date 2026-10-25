@@ -4102,21 +4102,24 @@
       var b = errorButtons();
       if (code === 37) state.perrIdx = clamp((state.perrIdx || 0) + 1, 0, b.length - 1);
       else if (code === 39) state.perrIdx = clamp((state.perrIdx || 0) - 1, 0, b.length - 1);
-      else if (code === 38 || code === 40) { zap(code === 40 ? 1 : -1); return; }
+      else if (code === 38) { zap(1); return; }   // Upper button above wheel: next channel
+      else if (code === 40) { zap(-1); return; }  // Lower button below wheel: prev channel
       else if (isBack(code)) { closePlayer(false); return; }
       markFocus();
       return;
     }
     if (isBack(code)) { closePlayer(true); return; }
-    // Dedicated FastForward (417, 10253) -> always zap forward
-    if (code === 417 || code === 10253) { zap(1); return; }
-    // Dedicated Rewind (412) -> always zap backward
-    if (code === 412) { zap(-1); return; }
-    // 38 (Up), 427 (ChannelUp), 33 (PageUp) -> zap based on user preference
-    if (code === 38 || code === 427 || code === 33) zap(S.upNext ? 1 : -1);
-    // 40 (Down), 428 (ChannelDown), 34 (PageDown)
-    else if (code === 40 || code === 428 || code === 34) zap(S.upNext ? -1 : 1);
-    else if (code === 37) openDrawer();
+    // Upper button above wheel (38), ChannelUp (427), PageUp (33), FastForward (417, 10253) -> תמיד ערוץ הבא קדימה
+    if (code === 38 || code === 427 || code === 33 || code === 417 || code === 10253) {
+      zap(1);
+      return;
+    }
+    // Lower button below wheel (40), ChannelDown (428), PageDown (34), Rewind (412) -> תמיד ערוץ קודם אחורה
+    if (code === 40 || code === 428 || code === 34 || code === 412) {
+      zap(-1);
+      return;
+    }
+    if (code === 37) openDrawer();
     else if (code === 39) playerMenu();
   }
 
