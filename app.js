@@ -275,6 +275,7 @@
       setInterval(function () { if (S.autoUpdate) checkUpdates(false); }, 6 * 3600 * 1000);
       document.addEventListener('visibilitychange', function () { if (!document.hidden) applyLiveIfIdle(); });
     }
+    if (PLATFORM === 'webos' || PLATFORM === 'tizen') document.addEventListener('visibilitychange', onTvVisibility);
     if (Dub && Dub.settings.migratedFromLocal) setTimeout(explainTvDub, 1500);
     window.__itv = { state: state, S: S, playIndex: playIndex, openSettings: openSettings, checkUpdates: checkUpdates };
   }
@@ -3237,6 +3238,22 @@
     } catch (e) { window.close(); }
   }
 
+  /** TV apps sent to the background (another app, the TV's input switch): the silent preview stops, a watched channel
+   *  pauses (Samsung requires it); back in the app the channel loads again at the live edge, with its sound. */
+  function onTvVisibility() {
+    if (document.hidden) {
+      if (!state.playing) return;
+      if (state.preview && state.overlay !== 'player') { stopPlayback(); el.player.classList.add('hidden'); return; }
+      var m = media();
+      if (m && !m.paused) { state.bgPaused = state.playing; m.pause(); }
+      return;
+    }
+    var ch = state.bgPaused;
+    state.bgPaused = null;
+    if (ch && state.playing === ch) loadStream(ch);
+    else if (TVUI && !state.overlay && state.zone === 'atv' && !state.playing && atv.zone === 'rows') atvSettle(atvCurrent());
+  }
+
   // ================================================================== clock / toast / screensaver / number entry
   function setupClock() {
     var tick = function () {
@@ -3545,7 +3562,7 @@
     // media / channel keys
     if (code === 427 || code === 33) { if (e.preventDefault) e.preventDefault(); zapOrPage(1); return; }
     if (code === 428 || code === 34) { if (e.preventDefault) e.preventDefault(); zapOrPage(-1); return; }
-    if (code === 415 || code === 19 || code === 179 || (code === 32 && state.overlay === 'player')) {
+    if (code === 415 || code === 19 || code === 179 || code === 10252 || (code === 32 && state.overlay === 'player')) {   // 10252: Samsung ⏯
       if (e.preventDefault) e.preventDefault();
       // TV browse screen: ▶ watches the focused card (the silent preview is not something to pause)
       if (code !== 19 && TVUI && !state.overlay && state.zone === 'atv' && atv.zone === 'rows') { atvWatch(); return; }
