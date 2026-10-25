@@ -67,6 +67,19 @@ import com.israeltv.plus.ui.components.ShelfSkeleton
 import com.israeltv.plus.ui.components.feedPadding
 import com.israeltv.plus.ui.components.glassShimmer
 import com.israeltv.plus.ui.components.rememberBitChordFlingBehavior
+import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.viewinterop.AndroidView
+import androidx.media3.common.MediaItem
+import androidx.media3.common.Player
+import androidx.media3.exoplayer.ExoPlayer
+import androidx.media3.ui.AspectRatioFrameLayout
+import androidx.media3.ui.PlayerView
+import com.israeltv.plus.data.playableUrl
+import com.israeltv.plus.ui.components.tactileBounce
 import kotlinx.coroutines.delay
 
 private val HeroShape = RoundedCornerShape(0.dp)
@@ -178,9 +191,10 @@ private fun HeroPager(
 }
 
 /**
- * Apple TV+ hero, 580 dp, edge to edge: the channel's artwork as ambient light, a vignette into the background from
- * 35% down, and centred: the big logo on a soft light glow (dark logos like Kan 11 stay readable), "Live • category •
- * quality", the white "צפייה" pill between the favourite and info glass buttons.
+ * Apple TV+ / Essentials hero, 580 dp, edge to edge:
+ * Plays the muted live HLS stream (volume = 0f, 400ms debounce), fading into colorScheme.background.
+ * CTA 'צפייה' button in colorScheme.primary, and badges (LIVE, FHD, channel numbers) in tertiaryContainer
+ * with stretched variable typography.
  */
 @Composable
 private fun HeroPage(
@@ -191,20 +205,66 @@ private fun HeroPage(
     onInfo: (Channel) -> Unit,
     onFavorite: () -> Unit,
 ) {
+    val context = LocalContext.current
     val scheme = MaterialTheme.colorScheme
     val dark = LocalDarkTheme.current
     val haptic = LocalHapticFeedback.current
     val origin = LocalPlayOrigin.current
     val key = "hero:${ch.id}"
+
+    // Muted live stream preview (volume = 0f, 400ms debounce)
+    var livePlayer by remember(ch.id) { mutableStateOf<ExoPlayer?>(null) }
+    var liveReady by remember(ch.id) { mutableStateOf(false) }
+
+    LaunchedEffect(ch.id) {
+        liveReady = false
+        delay(400)
+        try {
+            val url = playableUrl(ch)
+            val p = ExoPlayer.Builder(context).build().apply {
+                volume = 0f
+                repeatMode = Player.REPEAT_MODE_OFF
+                playWhenReady = true
+            }
+            val item = MediaItem.Builder().setUri(url).build()
+            p.setMediaItem(item)
+            p.prepare()
+            livePlayer = p
+            liveReady = true
+        } catch (_: Throwable) {
+            liveReady = false
+        }
+    }
+
+    DisposableEffect(ch.id) {
+        onDispose {
+            livePlayer?.release()
+            livePlayer = null
+        }
+    }
+
     Box(
         Modifier
             .fillMaxWidth()
             .height(580.dp)
             .sharedContainer(key, HeroShape)
             .clipToBounds()
-            .background(Brush.verticalGradient(listOf(scheme.primaryContainer, scheme.tertiaryContainer.copy(alpha = 0.7f), scheme.surfaceContainerLowest)))
+            .background(scheme.background)
     ) {
-        if (logo.isNotEmpty()) {
+        // Edge-to-edge live muted HLS stream background
+        if (liveReady && livePlayer != null) {
+            AndroidView(
+                factory = { ctx ->
+                    PlayerView(ctx).apply {
+                        useController = false
+                        resizeMode = AspectRatioFrameLayout.RESIZE_MODE_ZOOM
+                        setShutterBackgroundColor(android.graphics.Color.TRANSPARENT)
+                        this.player = livePlayer
+                    }
+                },
+                modifier = Modifier.fillMaxSize(),
+            )
+        } else if (logo.isNotEmpty()) {
             AsyncImage(
                 logo, null,
                 Modifier
@@ -214,21 +274,35 @@ private fun HeroPage(
                 contentScale = ContentScale.Crop,
             )
         }
+
+        // Vignette fading into colorScheme.background
         Box(
             Modifier
                 .fillMaxSize()
-                .background(Brush.verticalGradient(0.35f to Color.Transparent, 1f to scheme.surfaceContainerLowest))
+                .background(
+                    Brush.verticalGradient(
+                        0f to scheme.background.copy(alpha = 0.45f),
+                        0.35f to Color.Transparent,
+                        0.75f to scheme.background.copy(alpha = 0.75f),
+                        1f to scheme.background,
+                    )
+                )
         )
+
         Column(
-            Modifier.align(Alignment.BottomCenter).fillMaxWidth().padding(horizontal = 24.dp).padding(bottom = 34.dp),
+            Modifier
+                .align(Alignment.BottomCenter)
+                .fillMaxWidth()
+                .padding(horizontal = 24.dp)
+                .padding(bottom = 34.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Box(contentAlignment = Alignment.Center) {
-                // light back-glow so dark logos pop
+                // soft ambient back-glow
                 Box(
                     Modifier
                         .size(width = 300.dp, height = 190.dp)
-                        .background(Brush.radialGradient(listOf(Color.White.copy(alpha = if (dark) 0.30f else 0.55f), Color.Transparent)))
+                        .background(Brush.radialGradient(listOf(scheme.primaryContainer.copy(alpha = if (dark) 0.35f else 0.55f), Color.Transparent)))
                 )
                 if (logo.isNotEmpty()) {
                     AsyncImage(logo, ch.name, Modifier.fillMaxWidth(0.62f).height(140.dp), contentScale = ContentScale.Fit)
@@ -238,39 +312,113 @@ private fun HeroPage(
             }
             Spacer(Modifier.height(18.dp))
             Text(
-                ch.name, style = MaterialTheme.typography.headlineSmall, color = scheme.onSurface,
-                maxLines = 1, overflow = TextOverflow.Ellipsis,
+                ch.name,
+                style = MaterialTheme.typography.headlineSmall,
+                color = scheme.onSurface,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
             )
-            Spacer(Modifier.height(6.dp))
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Box(Modifier.size(7.dp).clip(CircleShape).background(Color(0xFFFF3B30)))
-                val meta = listOf("Live", shortCategory(ch.category), ch.badge.ifEmpty { if (ch.isRadio) "רדיו" else "" })
-                    .filter { it.isNotEmpty() }.joinToString("  •  ")
-                Text("  $meta", color = scheme.onSurfaceVariant, fontSize = 14.sp, fontWeight = FontWeight.SemiBold)
+            Spacer(Modifier.height(8.dp))
+
+            // TertiaryContainer badge pills with stretched variable numbers
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+            ) {
+                // LIVE badge pill
+                Box(
+                    Modifier
+                        .clip(RoundedCornerShape(50))
+                        .background(scheme.tertiaryContainer)
+                        .padding(horizontal = 9.dp, vertical = 3.dp),
+                    contentAlignment = Alignment.Center,
+                ) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Box(Modifier.size(6.dp).clip(CircleShape).background(scheme.error))
+                        Spacer(Modifier.width(4.dp))
+                        Text(
+                            "LIVE",
+                            color = scheme.onTertiaryContainer,
+                            fontSize = 11.sp,
+                            fontWeight = FontWeight.ExtraBold,
+                            style = com.israeltv.plus.ui.theme.StretchedNumberStyle,
+                            modifier = Modifier.graphicsLayer { scaleY = 1.18f },
+                        )
+                    }
+                }
+
+                // FHD / Format badge pill
+                if (ch.badge.isNotEmpty()) {
+                    Box(
+                        Modifier
+                            .clip(RoundedCornerShape(50))
+                            .background(scheme.tertiaryContainer)
+                            .padding(horizontal = 9.dp, vertical = 3.dp),
+                    ) {
+                        Text(
+                            ch.badge,
+                            color = scheme.onTertiaryContainer,
+                            fontSize = 11.sp,
+                            fontWeight = FontWeight.Bold,
+                            style = com.israeltv.plus.ui.theme.StretchedNumberStyle,
+                            modifier = Modifier.graphicsLayer { scaleY = 1.18f },
+                        )
+                    }
+                }
+
+                // Channel number badge pill
+                Box(
+                    Modifier
+                        .clip(RoundedCornerShape(50))
+                        .background(scheme.tertiaryContainer)
+                        .padding(horizontal = 9.dp, vertical = 3.dp),
+                ) {
+                    Text(
+                        "${ch.number}",
+                        color = scheme.onTertiaryContainer,
+                        fontSize = 11.sp,
+                        fontWeight = FontWeight(800),
+                        style = com.israeltv.plus.ui.theme.StretchedNumberStyle,
+                        modifier = Modifier.graphicsLayer { scaleY = 1.18f },
+                    )
+                }
+
+                val category = shortCategory(ch.category)
+                if (category.isNotEmpty()) {
+                    Text(
+                        category,
+                        color = scheme.onSurfaceVariant,
+                        fontSize = 13.sp,
+                        fontWeight = FontWeight.SemiBold,
+                        modifier = Modifier.padding(start = 4.dp),
+                    )
+                }
             }
+
             Spacer(Modifier.height(18.dp))
             Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                 GlassIconButton(
                     if (favorite) Icons.Rounded.Star else Icons.Rounded.StarBorder, "מועדף", onFavorite, size = 50.dp,
                     tint = scheme.onSurface.copy(alpha = 0.14f), iconTint = scheme.onSurface,
                 )
+                // 'צפייה' CTA in colorScheme.primary with tactile bounce
                 Button(
                     onClick = {
-                        haptic.performHapticFeedback(HapticFeedbackType.Confirm)
+                        haptic.performHapticFeedback(HapticFeedbackType.LongPress)
                         origin.key = key
                         onPlay(ch)
                     },
                     shape = RoundedCornerShape(50),
                     colors = ButtonDefaults.buttonColors(
-                        containerColor = if (dark) Color.White else scheme.onSurface,
-                        contentColor = if (dark) Color.Black else scheme.surface,
+                        containerColor = scheme.primary,
+                        contentColor = scheme.onPrimary,
                     ),
                     contentPadding = PaddingValues(horizontal = 34.dp),
-                    modifier = Modifier.height(50.dp),
+                    modifier = Modifier.height(50.dp).tactileBounce(),
                 ) {
-                    Icon(Icons.Rounded.PlayArrow, null, Modifier.size(26.dp))
+                    Icon(Icons.Rounded.PlayArrow, null, Modifier.size(26.dp), tint = scheme.onPrimary)
                     Spacer(Modifier.width(6.dp))
-                    Text("צפייה", fontSize = 17.sp, fontWeight = FontWeight.Black)
+                    Text("צפייה", fontSize = 17.sp, fontWeight = FontWeight.Black, color = scheme.onPrimary)
                 }
                 GlassIconButton(
                     Icons.Rounded.Info, "מידע", { onInfo(ch) }, size = 50.dp,

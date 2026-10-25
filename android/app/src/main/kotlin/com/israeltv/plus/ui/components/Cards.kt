@@ -34,6 +34,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalHapticFeedback
@@ -99,7 +100,7 @@ fun ChannelCard(
                 .background(scheme.surfaceContainerHigh.copy(alpha = 0.75f))
                 .specularBorder(CardShape)
                 .clickable(interaction, ripple()) {
-                    haptic.performHapticFeedback(HapticFeedbackType.Confirm)
+                    haptic.performHapticFeedback(HapticFeedbackType.LongPress)
                     origin.key = sharedKey
                     onClick()
                 },
@@ -114,20 +115,32 @@ fun ChannelCard(
                         .align(Alignment.TopStart)
                         .padding(10.dp)
                         .clip(RoundedCornerShape(50))
-                        .background(Color.Black.copy(alpha = 0.45f))
-                        .padding(horizontal = 8.dp, vertical = 2.dp),
-                    color = Color.White,
+                        .background(scheme.tertiaryContainer)
+                        .padding(horizontal = 8.dp, vertical = 2.dp)
+                        .graphicsLayer { scaleY = 1.18f },
+                    color = scheme.onTertiaryContainer,
                     fontSize = 10.sp,
                     fontWeight = FontWeight.Bold,
+                    style = com.israeltv.plus.ui.theme.StretchedNumberStyle,
                 )
             }
-            Text(
-                channel.number.toString(),
-                Modifier.align(Alignment.TopEnd).padding(10.dp),
-                color = scheme.onSurfaceVariant.copy(alpha = 0.8f),
-                fontSize = 11.sp,
-                fontWeight = FontWeight.Bold,
-            )
+            Box(
+                Modifier
+                    .align(Alignment.TopEnd)
+                    .padding(10.dp)
+                    .clip(RoundedCornerShape(50))
+                    .background(scheme.tertiaryContainer)
+                    .padding(horizontal = 7.dp, vertical = 2.dp),
+            ) {
+                Text(
+                    channel.number.toString(),
+                    color = scheme.onTertiaryContainer,
+                    fontSize = 11.sp,
+                    fontWeight = FontWeight(800),
+                    style = com.israeltv.plus.ui.theme.StretchedNumberStyle,
+                    modifier = Modifier.graphicsLayer { scaleY = 1.18f },
+                )
+            }
         }
         Spacer(Modifier.height(8.dp))
         Text(

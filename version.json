@@ -1,47 +1,56 @@
 {
-  "version": "4.2.0",
-  "code": 202610250952,
-  "app": 420,
+  "version": "4.3.0",
+  "code": 202610251445,
+  "app": 430,
   "shell": 3,
   "date": "2026-10-25",
   "notes": [
-    "התקנה בשעון מהטלפון: באפליקציית הטלפון, הגדרות ← שעון חכם ← \"התקנה בשעון\". מצמדים את השעון פעם אחת עם קוד בן 6 ספרות (ניפוי באגים אלחוטי בשעון), והטלפון מוריד ומתקין את אפליקציית השעון דרך ה-Wi-Fi, בלי Google Play. עדכון בפעם הבאה = לחיצה אחת",
-    "אפליקציית השעון היא עכשיו אפליקציה נפרדת (com.israeltv.plus.wear)",
-    "ערוצים: הוסרו 23 ערוצים עוינים (רשת אל-ג'זירה, אל-מנאר, אל-מיאדין, ערוצי החות'ים, איראן והמיליציות, TRT Arabi ועוד), והם לא יחזרו בייבוא הבא",
-    "92 ערוצי ילדים חדשים מהערוצים החינמיים הרשמיים של Pluto TV ו-Samsung TV Plus: פוקימון, פפה פיג, בובספוג, Nick Jr., ברבי, לגו, טלטאביז, הדרדסים, מאשה והדוב ועוד – 281 ערוצים במדף הילדים",
-    "ערוץ האוכל של קשת (mako), ו\"ערוץ הריאליטי\" של רשת 13 בשמו הנכון"
+    "עיצוב Material 3 Expressive מלא ודינמי לטלפון (Zero Hardcoded Colors): כל פקד, גלולה, כרטיס וסליידר שואבים צבעים דינמית מ-Material You של המכשיר",
+    "שער כניסה מחייב \"מי צופה?\" וצליל פתיחה קולנועי עמוק:",
+    "פתיחה ישירה למסך בחירת פרופיל (עם אפשרות לביטול בהגדרות: 'בקש בחירת פרופיל בפתיחה')",
+    "צורות פרופיל אורגניות אקספרסיביות (Squircle, Clover, Pill, Asymmetric) שמשנות צורה לעיגול מושלם בלחיצה",
+    "מנוע סינתוז שמע עצמאי ב-AudioTrack (דרופ סאב-באס 110Hz->55Hz ואקורד הרמוני 1.4 שניות) בלי קבצים חיצוניים, עם רטט LongPress עמוק",
+    "נגן Nuvio עם פקדי זכוכית וסליידרים עבים:",
+    "כפתור ניגון/השהיה מרכזי משנה צורה (Squircle <-> עיגול) ורוחב בפיזיקת קפיץ קשיחה",
+    "סליידרים שמנמנים מחוותיים לבהירות (שמאל) ועוצמת שמע (ימין) עם רטט נקישות מכני",
+    "פס התקדמות עם מרווח וקפסולות זמנים מתוחות; מעגן זכוכית תחתון 50dp עם גלולות בחירה מודגשות",
+    "פס ניווט מפוצל BitChord (3+1) וכפתור הגדרות עליון:",
+    "קפסולה חלבית מרכזית לשלושת היעדים (בית, ערוצים, שלי) + כפתור חיפוש עגול נפרד משמאל עם טשטוש Haze וגרדיאנט אופקי",
+    "כפתור הגדרות זכוכית צף בראש המסך לצד האווטאר",
+    "באנר ראשי Full-Bleed בשידור חי: ניגון שקט של השידור החי (HLS) מקצה לקצה מאחורי ה-Status Bar עם כפתור 'צפייה' בולט ותגיות איכות",
+    "פיזיקת רטט ולחיצות Pixel/Essentials: רטט שקוע ואנימציית קפיץ מורגשת (0.92x לחיצה, קפיצה ל-1.08x) בכל הכפתורים ופס הניווט"
   ],
   "native": {
     "android": {
-      "version": "4.2.0",
-      "app": 420,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.2.0/IsraelTVPlus-android.apk"
+      "version": "4.3.0",
+      "app": 430,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.0/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "4.2.0",
-      "app": 420,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.2.0/IsraelTVPlus-windows-setup.exe"
+      "version": "4.3.0",
+      "app": 430,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.0/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "4.2.0",
-      "app": 420,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.2.0/com.israeltv.plus_all.ipk",
+      "version": "4.3.0",
+      "app": 430,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.0/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "4.2.0",
-      "app": 420,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.2.0/IsraelTVPlus-tizen-project.zip"
+      "version": "4.3.0",
+      "app": 430,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.0/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "4.2.0",
-      "app": 420,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.2.0/IsraelTVPlus-macos-arm64.zip"
+      "version": "4.3.0",
+      "app": 430,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.0/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "4.2.0",
-      "app": 420,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.2.0/IsraelTVPlus-linux-x64.zip"
+      "version": "4.3.0",
+      "app": 430,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.0/IsraelTVPlus-linux-x64.zip"
     }
   }
 }

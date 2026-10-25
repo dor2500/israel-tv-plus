@@ -51,6 +51,7 @@ import android.app.Activity
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 import com.israeltv.plus.ui.theme.LocalDarkTheme
@@ -115,12 +116,43 @@ fun ProfilesScreen(prefs: AppPrefs, canClose: Boolean, onPicked: () -> Unit, onC
     }
 }
 
+private fun expressiveShapeFor(index: Int, morphProgress: Float): RoundedCornerShape {
+    if (morphProgress >= 0.95f) return RoundedCornerShape(50)
+    return when (index % 4) {
+        0 -> RoundedCornerShape(androidx.compose.ui.unit.lerp(36.dp, 50.dp, morphProgress))
+        1 -> RoundedCornerShape(
+            topStart = androidx.compose.ui.unit.lerp(50.dp, 50.dp, morphProgress),
+            topEnd = androidx.compose.ui.unit.lerp(14.dp, 50.dp, morphProgress),
+            bottomEnd = androidx.compose.ui.unit.lerp(50.dp, 50.dp, morphProgress),
+            bottomStart = androidx.compose.ui.unit.lerp(14.dp, 50.dp, morphProgress),
+        )
+        2 -> RoundedCornerShape(
+            topStart = androidx.compose.ui.unit.lerp(16.dp, 50.dp, morphProgress),
+            topEnd = androidx.compose.ui.unit.lerp(48.dp, 50.dp, morphProgress),
+            bottomEnd = androidx.compose.ui.unit.lerp(16.dp, 50.dp, morphProgress),
+            bottomStart = androidx.compose.ui.unit.lerp(48.dp, 50.dp, morphProgress),
+        )
+        else -> RoundedCornerShape(
+            topStart = androidx.compose.ui.unit.lerp(46.dp, 50.dp, morphProgress),
+            topEnd = androidx.compose.ui.unit.lerp(46.dp, 50.dp, morphProgress),
+            bottomEnd = androidx.compose.ui.unit.lerp(18.dp, 50.dp, morphProgress),
+            bottomStart = androidx.compose.ui.unit.lerp(18.dp, 50.dp, morphProgress),
+        )
+    }
+}
+
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
 private fun ProfilesContent(prefs: AppPrefs, canClose: Boolean, onPicked: () -> Unit, onClose: () -> Unit) {
     val context = LocalContext.current
     val scheme = MaterialTheme.colorScheme
     val haptic = LocalHapticFeedback.current
+
+    // Heavy haptic thud right as profile screen animates in
+    LaunchedEffect(Unit) {
+        haptic.performHapticFeedback(HapticFeedbackType.LongPress)
+    }
+
     var editing by remember { mutableStateOf(false) }
     var editor by remember { mutableStateOf<Profile?>(null) }
     BackHandler(enabled = editor != null || editing || canClose) {
@@ -137,7 +169,7 @@ private fun ProfilesContent(prefs: AppPrefs, canClose: Boolean, onPicked: () -> 
     Box(
         Modifier
             .fillMaxSize()
-            .background(Color(0xFF07070B))
+            .background(scheme.background)
     ) {
         // the deep blurred canvas: the profiles' colours as large soft lights
         Box(
@@ -160,7 +192,7 @@ private fun ProfilesContent(prefs: AppPrefs, canClose: Boolean, onPicked: () -> 
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Spacer(Modifier.height(72.dp))
-            Text("מי צופה?", color = Color.White, fontSize = 28.sp, fontWeight = FontWeight.ExtraBold, letterSpacing = (-0.4).sp)
+            Text("מי צופה?", color = scheme.onBackground, fontSize = 28.sp, fontWeight = FontWeight.ExtraBold, letterSpacing = (-0.4).sp)
             Spacer(Modifier.height(36.dp))
             FlowRow(
                 Modifier.fillMaxWidth().padding(horizontal = 24.dp),
@@ -168,8 +200,8 @@ private fun ProfilesContent(prefs: AppPrefs, canClose: Boolean, onPicked: () -> 
                 verticalArrangement = Arrangement.spacedBy(26.dp),
                 maxItemsInEachRow = 3,
             ) {
-                prefs.profiles.forEach { p ->
-                    ProfileTile(p, editing) {
+                prefs.profiles.forEachIndexed { idx, p ->
+                    ProfileTile(p, idx, editing) {
                         if (editing) editor = p else {
                             prefs.switchTo(p.id)
                             onPicked()
@@ -186,13 +218,13 @@ private fun ProfilesContent(prefs: AppPrefs, canClose: Boolean, onPicked: () -> 
                 if (editing) "סיום" else "עריכת פרופילים",
                 Modifier
                     .clip(RoundedCornerShape(50))
-                    .border(1.dp, Color.White.copy(alpha = 0.35f), RoundedCornerShape(50))
+                    .border(1.dp, scheme.outline.copy(alpha = 0.6f), RoundedCornerShape(50))
                     .clickable {
                         haptic.performHapticFeedback(HapticFeedbackType.SegmentTick)
                         editing = !editing
                     }
                     .padding(horizontal = 22.dp, vertical = 10.dp),
-                color = Color.White, fontSize = 15.sp, fontWeight = FontWeight.Bold,
+                color = scheme.onSurface, fontSize = 15.sp, fontWeight = FontWeight.Bold,
             )
             Spacer(Modifier.height(40.dp))
         }
@@ -217,20 +249,26 @@ private fun ProfilesContent(prefs: AppPrefs, canClose: Boolean, onPicked: () -> 
 }
 
 @Composable
-private fun ProfileTile(p: Profile, editing: Boolean, onClick: () -> Unit) {
+private fun ProfileTile(p: Profile, index: Int, editing: Boolean, onClick: () -> Unit) {
     val context = LocalContext.current
     val haptic = LocalHapticFeedback.current
     val scope = rememberCoroutineScope()
     val bounce = remember { Animatable(1f) }
+    val morph = remember { Animatable(0f) }
     val tone = remember(p.theme) { schemeFor(context, p.theme.copy(dark = true)) }
+    val currentShape = expressiveShapeFor(index, morph.value)
+
     Column(
         Modifier.width(100.dp).clickable(remember { MutableInteractionSource() }, null) {
-            haptic.performHapticFeedback(HapticFeedbackType.SegmentFrequentTick)
+            haptic.performHapticFeedback(HapticFeedbackType.LongPress)
             scope.launch {
                 bounce.animateTo(0.88f, spring(stiffness = Spring.StiffnessHigh))
                 bounce.animateTo(1f, spring(Spring.DampingRatioHighBouncy, Spring.StiffnessMedium))
             }
-            scope.launch { delay(if (editing) 0 else 140); onClick() }
+            scope.launch {
+                morph.animateTo(1f, spring(dampingRatio = 0.4f, stiffness = Spring.StiffnessMediumLow))
+            }
+            scope.launch { delay(if (editing) 0 else 180); onClick() }
         },
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
@@ -239,20 +277,20 @@ private fun ProfileTile(p: Profile, editing: Boolean, onClick: () -> Unit) {
                 .size(100.dp)
                 .graphicsLayer { scaleX = bounce.value; scaleY = bounce.value }
                 .sharedAvatar("avatar:${p.id}")
-                .clip(TileShape)
-                .background(Brush.linearGradient(listOf(tone.primaryContainer, tone.tertiaryContainer)))
-                .border(1.dp, Brush.verticalGradient(listOf(Color.White.copy(alpha = 0.35f), Color.Transparent)), TileShape),
+                .clip(currentShape)
+                .background(Brush.linearGradient(listOf(tone.secondaryContainer, tone.primaryContainer.copy(alpha = 0.85f))))
+                .border(1.dp, Brush.verticalGradient(listOf(tone.onSecondaryContainer.copy(alpha = 0.35f), Color.Transparent)), currentShape),
             contentAlignment = Alignment.Center,
         ) {
             AsyncImage(avatarUrl(p.avatar), p.name, Modifier.size(66.dp))
             if (editing) {
-                Box(Modifier.fillMaxSize().background(Color.Black.copy(alpha = 0.45f)), contentAlignment = Alignment.Center) {
-                    Icon(Icons.Rounded.Edit, "עריכה", Modifier.size(30.dp), tint = Color.White)
+                Box(Modifier.fillMaxSize().background(tone.surface.copy(alpha = 0.55f)), contentAlignment = Alignment.Center) {
+                    Icon(Icons.Rounded.Edit, "עריכה", Modifier.size(30.dp), tint = tone.onSurface)
                 }
             }
         }
         Text(
-            p.name, Modifier.padding(top = 10.dp), color = Color.White, fontSize = 16.sp, fontWeight = FontWeight.Bold,
+            p.name, Modifier.padding(top = 10.dp), color = MaterialTheme.colorScheme.onBackground, fontSize = 16.sp, fontWeight = FontWeight.Bold,
             maxLines = 1, overflow = TextOverflow.Ellipsis, textAlign = TextAlign.Center,
         )
     }
@@ -260,16 +298,17 @@ private fun ProfileTile(p: Profile, editing: Boolean, onClick: () -> Unit) {
 
 @Composable
 private fun AddTile(onClick: () -> Unit) {
+    val scheme = MaterialTheme.colorScheme
     Column(Modifier.width(100.dp).clickable(onClick = onClick), horizontalAlignment = Alignment.CenterHorizontally) {
         Box(
             Modifier
                 .size(100.dp)
                 .clip(TileShape)
-                .background(Color.White.copy(alpha = 0.06f))
-                .border(1.5.dp, Color.White.copy(alpha = 0.3f), TileShape),
+                .background(scheme.surfaceContainerHighest.copy(alpha = 0.5f))
+                .border(1.5.dp, scheme.outline.copy(alpha = 0.4f), TileShape),
             contentAlignment = Alignment.Center,
-        ) { Icon(Icons.Rounded.Add, "הוספת פרופיל", Modifier.size(44.dp), tint = Color.White) }
-        Text("הוספה", Modifier.padding(top = 10.dp), color = Color.White.copy(alpha = 0.8f), fontSize = 16.sp, fontWeight = FontWeight.Bold)
+        ) { Icon(Icons.Rounded.Add, "הוספת פרופיל", Modifier.size(44.dp), tint = scheme.onSurfaceVariant) }
+        Text("הוספה", Modifier.padding(top = 10.dp), color = scheme.onSurfaceVariant, fontSize = 16.sp, fontWeight = FontWeight.Bold)
     }
 }
 

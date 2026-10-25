@@ -186,22 +186,10 @@ class PhoneActivity : ComponentActivity() {
         }
     }
 
-    /** res/raw/launch.wav (tools/make_launch_sound.py), only when the ringer is on. */
+    /** Pure synthesized cinematic deep bass startup sound, only when the ringer is on. */
     private fun playLaunchSound() {
         val am = getSystemService(Context.AUDIO_SERVICE) as? AudioManager ?: return
         if (am.ringerMode != AudioManager.RINGER_MODE_NORMAL) return
-        runCatching {
-            val pool = SoundPool.Builder().setMaxStreams(1).setAudioAttributes(
-                AudioAttributes.Builder()
-                    .setUsage(AudioAttributes.USAGE_ASSISTANCE_SONIFICATION)
-                    .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
-                    .build()
-            ).build()
-            pool.setOnLoadCompleteListener { sp, id, status ->
-                if (status == 0) sp.play(id, 0.55f, 0.55f, 1, 0, 1f)
-                Handler(Looper.getMainLooper()).postDelayed({ sp.release() }, 2500)
-            }
-            pool.load(this, R.raw.launch, 1)
-        }
+        com.israeltv.plus.audio.CinematicBassSound.play()
     }
 }

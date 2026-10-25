@@ -95,7 +95,7 @@ fun ItvApp(
     onEnterPip: () -> Unit,
 ) {
     val data by store.state.collectAsStateWithLifecycle()
-    var page by remember { mutableStateOf<Page>(if (coldStart && prefs.profiles.size > 1) Page.Profiles else Page.Feed) }
+    var page by remember { mutableStateOf<Page>(if (coldStart && prefs.promptProfileOnStart) Page.Profiles else Page.Feed) }
     var intro by rememberSaveable { mutableStateOf(coldStart) }
     val cascade = remember { Cascade(active = coldStart) }
     val origin = remember { PlayOrigin() }
@@ -258,7 +258,14 @@ private fun Feed(
         }
 
         CompositionLocalProvider(LocalHaze provides haze) {
-            AppHeader(s.tab.title, prefs.profile.id, prefs.avatar, onAvatar = onProfiles, modifier = Modifier.align(Alignment.TopCenter))
+            AppHeader(
+                title = s.tab.title,
+                profileId = prefs.profile.id,
+                avatar = prefs.avatar,
+                onAvatar = onProfiles,
+                onSettings = { s.tab = if (s.tab == Tab.Settings) Tab.Home else Tab.Settings },
+                modifier = Modifier.align(Alignment.TopCenter),
+            )
             FloatingTabBar(
                 s.tab, s.searchOpen, s.barCollapsed && !s.searchOpen,
                 onSelect = { s.searchOpen = false; s.barCollapsed = false; s.tab = it },

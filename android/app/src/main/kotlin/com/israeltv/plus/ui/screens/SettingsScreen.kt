@@ -75,6 +75,20 @@ fun SettingsScreen(data: ChannelData?, prefs: AppPrefs, updater: Updater, onProf
                 SettingRow(Icons.Rounded.Face, "פרופילים", "${prefs.profile.name} · ${prefs.profiles.size} פרופילים", onClick = onProfiles) {
                     AsyncImage(avatarUrl(prefs.avatar), null, Modifier.size(34.dp))
                 }
+                SettingRow(
+                    Icons.Rounded.Face,
+                    "בקש בחירת פרופיל בפתיחה",
+                    "מעבר ישיר למסך 'מי צופה?' בעת פתיחת האפליקציה",
+                    onClick = {
+                        haptic.performHapticFeedback(if (prefs.promptProfileOnStart) HapticFeedbackType.ToggleOff else HapticFeedbackType.ToggleOn)
+                        prefs.setPromptProfileOnStartEnabled(!prefs.promptProfileOnStart)
+                    },
+                ) {
+                    Switch(prefs.promptProfileOnStart, {
+                        haptic.performHapticFeedback(if (it) HapticFeedbackType.ToggleOn else HapticFeedbackType.ToggleOff)
+                        prefs.setPromptProfileOnStartEnabled(it)
+                    })
+                }
                 SettingRow(Icons.Rounded.MusicNote, "צליל פתיחה", "צליל קצר כשהאפליקציה נפתחת (שקט כשהטלפון על שקט)",
                     onClick = {
                         haptic.performHapticFeedback(if (prefs.launchSound) HapticFeedbackType.ToggleOff else HapticFeedbackType.ToggleOn)
