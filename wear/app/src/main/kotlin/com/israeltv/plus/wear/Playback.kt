@@ -113,7 +113,9 @@ class PlaybackService : MediaSessionService() {
 
     override fun onCreate() {
         super.onCreate()
-        val open = PendingIntent.getActivity(this, 0, Intent(this, WearActivity::class.java),
+        // a tap on the watch's media controls opens the player itself, not the home screen
+        val open = PendingIntent.getActivity(this, 0,
+            Intent(this, WearActivity::class.java).putExtra(WearActivity.EXTRA_PLAYER, true),
             PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT)
         session = MediaSession.Builder(this, Playback.player(this)).setSessionActivity(open).build()
     }

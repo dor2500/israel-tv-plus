@@ -121,6 +121,7 @@ dependencies {
     implementation("androidx.media3:media3-ui-compose:1.11.1")
 
     implementation("io.coil-kt.coil3:coil-compose:3.6.3")
+    implementation("io.coil-kt.coil3:coil-svg:3.6.3")             // some channel logos are SVG
     implementation("io.coil-kt.coil3:coil-network-okhttp:3.6.3")
     implementation("com.squareup.okhttp3:okhttp:5.5.1")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.12.0")

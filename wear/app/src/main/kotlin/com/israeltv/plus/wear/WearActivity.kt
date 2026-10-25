@@ -1,7 +1,9 @@
 package com.israeltv.plus.wear
 
 import android.content.Context
+import android.content.Intent
 import android.media.AudioManager
+import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
@@ -82,23 +84,43 @@ private val LiveRed = Color(0xFFFF3B30)
 class WearActivity : ComponentActivity() {
     private lateinit var store: ChannelStore
     private lateinit var library: Library
+    /** Opened from the watch's media controls: straight to the player. */
+    private val openPlayer = mutableStateOf(false)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         store = ChannelStore(applicationContext)
         library = Library(applicationContext)
+        openPlayer.value = savedInstanceState == null && intent.getBooleanExtra(EXTRA_PLAYER, false)
         lifecycleScope.launch {
             store.load()
             store.refresh()
         }
-        setContent { WearApp(store, library) }
+        setContent { WearApp(store, library, openPlayer.value) { openPlayer.value = false } }
+    }
+
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        if (intent.getBooleanExtra(EXTRA_PLAYER, false)) openPlayer.value = true
+    }
+
+    companion object {
+        const val EXTRA_PLAYER = "player"
     }
 }
 
 @Composable
-fun WearApp(store: ChannelStore, library: Library) {
+fun WearApp(store: ChannelStore, library: Library, openPlayer: Boolean, onPlayerOpened: () -> Unit) {
     val data by store.state.collectAsState()
     val nav = rememberSwipeDismissableNavController()
+    // a shelf key is a category name: encoded, so a "/" or "?" in a name never breaks the route
+    val route = { base: String, key: String -> base + Uri.encode(key) }
+    LaunchedEffect(openPlayer, data != null) {
+        if (openPlayer && data != null) {
+            if (Playback.current.value != null) nav.navigate("player/recent") { launchSingleTop = true }
+            onPlayerOpened()
+        }
+    }
     MaterialTheme(colorScheme = ColorScheme(primary = Accent)) {
         // the app is Hebrew: right-to-left on every watch, whatever its language
         CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Rtl) {
@@ -109,23 +131,21 @@ fun WearApp(store: ChannelStore, library: Library) {
                 } else {
                     SwipeDismissableNavHost(navController = nav, startDestination = "home") {
                         composable("home") {
-                            HomeScreen(d, library, open = { nav.navigate("shelf/" + it) }, play = { ch, key ->
-                                startChannel(nav.context, library, ch); nav.navigate("player/" + key)
-                            }, nowPlaying = { nav.navigate("player/recent") })
-                        }
-                        composable("categories") {
-                            CategoriesScreen(d) { nav.navigate("shelf/" + it) }
+                            HomeScreen(d, library, open = { nav.navigate(route("shelf/", it)) }, play = { ch, key ->
+                                startChannel(nav.context, library, ch); nav.navigate(route("player/", key))
+                            }, nowPlaying = { nav.navigate("player/recent") { launchSingleTop = true } })
                         }
                         composable("shelf/{key}") { entry ->
                             val key = entry.arguments?.getString("key").orEmpty()
-                            if (key == "all") CategoriesScreen(d) { nav.navigate("shelf/" + it) }
+                            if (key == "all") CategoriesScreen(d) { nav.navigate(route("shelf/", it)) }
                             else ChannelListScreen(d, library, key) { ch ->
-                                startChannel(nav.context, library, ch); nav.navigate("player/" + key)
+                                startChannel(nav.context, library, ch); nav.navigate(route("player/", key)) { launchSingleTop = true }
                             }
                         }
                         composable("player/{key}") { entry ->
                             val key = entry.arguments?.getString("key").orEmpty()
-                            PlayerScreen(d, library, key)
+                            // no clock over the picture: the player draws its own LIVE line at the top
+                            ScreenScaffold(timeText = {}) { _ -> PlayerScreen(d, library, key) }
                         }
                     }
                 }
