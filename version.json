@@ -1,62 +1,50 @@
 {
-  "version": "4.3.9",
-  "code": 202610260711,
-  "app": 509,
+  "version": "4.4.0",
+  "code": 202610260805,
+  "app": 500,
   "shell": 3,
   "date": "2026-10-26",
   "notes": [
-    "הרחבת ענק לכל ערוצי הילדים והנוער בישראל (36 ערוצי ילדים מאומתים, 100% פעילים):",
-    "סריקה מעמיקה של הרשת ואימות כל מקור שידור שהוא משדר מקטעי וידאו אמיתיים ורציפים ב-HD.",
-    "ערוצי ילדים ופעוטות חדשים בשידור חי:",
-    "כאן חינוכית 23 HD (מקור שידור 2 ישיר) – גיבוי מהיר ורציף לסדרות החינוכית.",
-    "Baby Shark TV (בייבי שארק לילדים) – ערוץ בייבי שארק הרשמי 24/7 לילדים ולפעוטות ב-FHD.",
-    "ערוץ בייבי BabyTV Global HD – שידורי ערוץ בייבי הבינלאומי המוביל בעולם ברצף.",
-    "ערוץ זו-מו לילדים (ZooMoo HD) – ערוץ הטבע, בעלי החיים והאנימציה החינוכית.",
-    "ניק ג'וניור קלאב (Nick Jr. Club HD) – מפרץ ההרפתקאות, דורה, בלייז ומכוניות הענק ברצף.",
-    "ניקלודיאון קלאסיקות (Nickelodeon Classics HD) – בובספוג, ראגרטס וסדרות האנימציה האהובות.",
-    "פלוטו טי-וי ג'וניור (Pluto TV Junior HD) – סדרות וסרטי אנימציה מהנים לגיל הרך.",
-    "ערוץ אני אנימציה HD (Ani Kids) – ערוץ סדרות אנימציה עולמיות צבעוניות וחינוכיות.",
-    "ערוץ האנימציה PLUSPLUS HD – הרפתקאות, מדע וסדרות מצוירות.",
-    "ערוץ ניקי ג'וניור HD (Niki Junior) – תוכניות וסדרות לגיל הרך ולילדים.",
-    "ערוץ סרטוני אנימציה קצרים (Cartoons Short HD) – מרתון סרטוני אנימציה קצרים ומצחיקים.",
-    "ערוץ סרטי אנימציה לילדים (Cartoons Cinema HD) – סרטי אנימציה מלאים לכל המשפחה 24/7.",
-    "פרש קידס (Fresh Kids TV HD) – מוזיקה, שירים ותוכניות קצביות לילדים ולנוער.",
-    "שיוך ערוצי רדיו ילדים ייעודיים:",
-    "רדיוס 100% ערוץ הכוכבים (יובל המבולבל, מיקי, דוד חיים, מני ממטרה ועוד) ורדיוס 100% ילדים שולבו ישירות בקטגוריית \"ילדים ונוער\".",
-    "רענון רשימות השמעה ו-Stremio:",
-    "עדכון של כל 341 הערוצים ב-playlist.m3u, playlist-israel.m3u, playlist-tv.m3u ובקטלוג Stremio."
+    "מנוע סריקה ובקרה עצמי אוטומטי (Auto-Healing & Health Check):",
+    "סריקת בריאות רציפה לכל 330 הערוצים בישראל (טלוויזיה, רדיו, ילדים וספורט).",
+    "ניקוי כפילויות מתקדם ומניעת שידורים תקולים או מנותקים בזמן אמת.",
+    "סריקה וניטור ערוצי עידן פלוס ושידורים ישראליים פתוחים ברשת.",
+    "מערכת משוב והצעות למשתמשים (Google Forms Feedback Integration):",
+    "שילוב סקריפט הקמה מהיר וייעודי למשוב משתמשים, בקשת ערוצים חדשים ודיווח על תקלות.",
+    "עדכון חבילות התקנה וביצועים לכל הפלטפורמות:",
+    "עדכון גרסאות רשמיות לאנדרואיד (APK), סטרימרים ו-Android TV, אפליקציית LG webOS (IPK) ו-Stremio Addon."
   ],
   "native": {
     "android": {
-      "version": "4.3.9",
-      "app": 509,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.9/IsraelTVPlus-android.apk"
+      "version": "4.4.0",
+      "app": 500,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.4.0/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "4.3.9",
-      "app": 509,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.9/IsraelTVPlus-windows-setup.exe"
+      "version": "4.4.0",
+      "app": 500,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.4.0/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "4.3.9",
-      "app": 509,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.9/com.israeltv.plus_all.ipk",
+      "version": "4.4.0",
+      "app": 500,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.4.0/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "4.3.9",
-      "app": 509,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.9/IsraelTVPlus-tizen-project.zip"
+      "version": "4.4.0",
+      "app": 500,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.4.0/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "4.3.9",
-      "app": 509,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.9/IsraelTVPlus-macos-arm64.zip"
+      "version": "4.4.0",
+      "app": 500,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.4.0/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "4.3.9",
-      "app": 509,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.9/IsraelTVPlus-linux-x64.zip"
+      "version": "4.4.0",
+      "app": 500,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.4.0/IsraelTVPlus-linux-x64.zip"
     }
   }
 }
