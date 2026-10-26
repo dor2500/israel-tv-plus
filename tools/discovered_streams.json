@@ -1,754 +1,754 @@
 {
   "kan11_alt_live": {
     "verified": false,
-    "last_tested": "2026-10-26T10:06:11.407572"
+    "last_tested": "2026-10-26T10:11:36.901268"
   },
   "kann_news_stream": {
     "verified": false,
-    "last_tested": "2026-10-26T10:06:13.447754"
+    "last_tested": "2026-10-26T10:11:38.945413"
   },
   "knesset_tv_direct": {
     "verified": false,
-    "last_tested": "2026-10-26T10:06:14.090298"
+    "last_tested": "2026-10-26T10:11:39.591877"
   },
   "hop_child_feed": {
     "verified": false,
-    "last_tested": "2026-10-26T10:06:14.099298"
+    "last_tested": "2026-10-26T10:11:39.603429"
   },
   "zoom_kids_mirror": {
     "verified": false,
-    "last_tested": "2026-10-26T10:06:14.107297"
+    "last_tested": "2026-10-26T10:11:39.611429"
   },
   "ch24_mako_mirror": {
     "verified": false,
-    "last_tested": "2026-10-26T10:06:14.341202"
+    "last_tested": "2026-10-26T10:11:39.992905"
   },
   "or_meir_tv": {
     "verified": false,
-    "last_tested": "2026-10-26T10:06:14.348700"
+    "last_tested": "2026-10-26T10:11:39.999909"
   },
   "hidabroot_kids": {
     "verified": false,
-    "last_tested": "2026-10-26T10:06:14.356712"
+    "last_tested": "2026-10-26T10:11:40.009054"
   },
   "makan33_backup": {
     "name": "מכאן 33 HD (גיבוי רציף)",
     "url": "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/makan/live.livx/playlist.m3u8",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "ch9_gostreaming": {
     "name": "ערוץ 9 ישראל HD",
     "url": "https://contact.gostreaming.tv/Con-11/index.m3u8",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "i24_english_world_hd": {
     "name": "i24NEWS English World HD",
     "url": "https://hlspackager.akamaized.net/live/DB/i24_ENGLISH/HLS/i24_ENGLISH.m3u8",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "cand_Channel_13__1080p_": {
     "name": "Channel 13 (1080p)",
     "url": "http://stream.mcquack.net/295/index.m3u8",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "cand_Hala_TV__1080p___Not_24_7_": {
     "name": "Hala TV (1080p) [Not 24/7]",
     "url": "https://stream.panet.com/edge/halaTV/playlist.m3u8",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "cand_Hidabroot__1080p_": {
     "name": "Hidabroot (1080p)",
     "url": "https://cdn.cybercdn.live/HidabrootIL/Live97/playlist.m3u8",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "cand_i24NEWS_Arabic__1080p_": {
     "name": "i24NEWS Arabic (1080p)",
     "url": "https://hlspackager.akamaized.net/live/DB/i24_ARABIC/HLS/i24_ARABIC.m3u8",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "cand_I24_News_French__720p_": {
     "name": "I24 News French (720p)",
     "url": "https://bcovlive-a.akamaihd.net/41814196d97e433fb401c5e632d985e9/eu-central-1/5377161796001/playlist.m3u8",
     "verified": false,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "cand_Keshet_12__1080p_": {
     "name": "Keshet 12 (1080p)",
     "url": "http://stream.mcquack.net/294/index.m3u8",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "cand_Knesset_Channel__576p_": {
     "name": "Knesset Channel (576p)",
     "url": "http://stream.mcquack.net/48/index.m3u8",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "cand_Knesset_Channel__480p___Not": {
     "name": "Knesset Channel (480p) [Not 24/7]",
     "url": "https://contact.gostreaming.tv/Knesset/myStream/playlist.m3u8",
     "verified": false,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "cand_Musayof__Israel___240p___No": {
     "name": "Musayof (Israel) (240p) [Not 24/7]",
     "url": "http://wowza.media-line.co.il/Musayof-Live/livestream.sdp/playlist.m3u8",
     "verified": false,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "cand_Health_Channel__1080p_": {
     "name": "Health Channel (1080p)",
     "url": "http://89.33.29.115:8080/Health/index.m3u8",
     "verified": false,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "cand_TeenNick__406p_": {
     "name": "TeenNick (406p)",
     "url": "http://89.33.29.115:8080/TeenNick/index.m3u8",
     "verified": false,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "cand_5Plus__1080p_": {
     "name": "5Plus (1080p)",
     "url": "http://89.33.29.115:8080/sportplus/index.m3u8",
     "verified": false,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "cand_5Stars__1080p_": {
     "name": "5Stars (1080p)",
     "url": "http://89.33.29.115:8080/IL_5Stars/index.m3u8",
     "verified": false,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "cand_Channel_16": {
     "name": "Channel 16",
     "url": "https://ch16israel-cdn.encoders.immergo.tv/2/streamPlaylist.m3u8",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "cand_RTG_int_": {
     "name": "RTG int.",
     "url": "http://213.91.179.28:8000/play/a0bw",
     "verified": false,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb________________prayer_radio": {
     "name": "????? ?????? | Prayer Radio",
     "url": "https://radio.sandrokob.com/stream",
     "verified": false,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb__assalam": {
     "name": ".assalam",
     "url": "https://backup.qurango.net/radio/ahmad_khader_altarabulsi",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_100fm___100__movies": {
     "name": "100fm - 100% Movies",
     "url": "http://gb25.streamgates.net/radios-audio/100Movies/icecast.audio",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_101_5fm_________________________": {
     "name": "101.5fm נותנים למוזיקה לדבר רדיו דרום",
     "url": "https://cdn.cybercdn.live/Darom_1015FM/Live/icecast.audio",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_101_5fm___________": {
     "name": "101.5fm רדיו התחנה",
     "url": "https://cdn.cybercdn.live/Hatahana_1015/Live_Audio/icecast.audio",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_88_fm": {
     "name": "88 FM",
     "url": "https://29073.live.streamtheworld.com/KAN_88.mp3",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_88fm": {
     "name": "88FM",
     "url": "https://kan88.media.kan.org.il/hls/live/2024812/2024812/kan88_mp3/chunklist.m3u8",
     "verified": false,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_91fm": {
     "name": "91FM",
     "url": "https://cdn.cybercdn.live/Lev_Hamedina/Audio/icecast.audio",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_94fm_______________": {
     "name": "94fm רדיו גלי ישראל",
     "url": "https://cdn.cybercdn.live/Galei_Israel/Live/icecast.audio",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_abdulbasit_abdulsamad": {
     "name": "Abdulbasit Abdulsamad",
     "url": "https://radio.mp3islam.com/listen/abdulbasit/radio.mp3",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_bonzobono_radio": {
     "name": "BonzoBono Radio",
     "url": "https://icy.cloudrad.io/7f3c8bce",
     "verified": false,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_eco_99fm": {
     "name": "Eco 99fm",
     "url": "https://eco01.livecdn.biz/ecolive/99fm_aac/icecast.audio?hash=1559501510715.m4a",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_eli_nisman": {
     "name": "ELI NISMAN",
     "url": "http://listen6.myradio24.com:9000/25715",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_euphonic_fm": {
     "name": "Euphonic FM",
     "url": "https://streaming.live365.com/a64617/playlist.m3u8",
     "verified": false,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_galei_zahal": {
     "name": "Galei Zahal",
     "url": "http://glzwizzlv.bynetcdn.com/glz_mp3",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_galgalatz_91_8_fm": {
     "name": "Galgalatz 91.8 FM",
     "url": "https://glzicylv01.bynetcdn.com/glglz_mp3",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_glglz": {
     "name": "Glglz",
     "url": "https://api.bynetcdn.com/Redirector/glz/glglz/ICE-LIVE",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_guitar___j__williams": {
     "name": "GUITAR - J. WILLIAMS",
     "url": "http://drive.uber.radio/uber/crjohnwilliamsguitarist/icecast.audio",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_imsostablee_radio": {
     "name": "Imsostablee Radio",
     "url": "https://c44.radioboss.fm:8178/stream",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_ivri_6": {
     "name": "Ivri 6",
     "url": "https://streaming.radio.co/sa06221901/listen",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_kan_88": {
     "name": "Kan 88",
     "url": "http://kanliveicy.media.kan.org.il/icy/kan88_mp3",
     "verified": false,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_kan_bet": {
     "name": "Kan Bet",
     "url": "https://28563.live.streamtheworld.com/KAN_BET.mp3",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_kan_bet_64k": {
     "name": "Kan Bet 64K",
     "url": "https://n-121-4.il.cdn-redge.media/livehls/oil/kancdn-live/live/radio/kan_reshet_bet/live.livx/playlist.m3u8?bitrate=64000&audioId=1&lang=pol&renditions",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_kan_gimel": {
     "name": "Kan Gimel",
     "url": "http://kanliveicy01.bynetcdn.com/icy/kangimmel_mp3",
     "verified": false,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_kan_gimel__real_": {
     "name": "KAN gimel (real)",
     "url": "http://kanliveicy.media.kan.org.il/icy/749625_mp3",
     "verified": false,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_kan_gimel_________": {
     "name": "KAN Gimel כאן גימל",
     "url": "https://27873.live.streamtheworld.com/KAN_GIMMEL.mp3",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_kan_israel_reshet_moreshet_92_5_": {
     "name": "Kan Israel Reshet Moreshet 92.5 FM",
     "url": "http://kanliveicy.media.kan.org.il/icy/kanmoreshet_mp3",
     "verified": false,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_kan_israel_tarbut": {
     "name": "Kan Israel Tarbut",
     "url": "http://kanliveicy.media.kan.org.il/icy/kantarbut_mp3",
     "verified": false,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_kan_kol_hamusica": {
     "name": "Kan Kol HaMusica",
     "url": "http://kanliveicy.media.kan.org.il/icy/kankolhamusica_mp3",
     "verified": false,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_kan_kol_hamusica________________": {
     "name": "KAN Kol HaMusica כאן קול המוזיקה",
     "url": "https://playerservices.streamtheworld.com/api/livestream-redirect/KAN_KOL_HAMUSICA.mp3",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_kan_reka": {
     "name": "Kan Reka",
     "url": "http://kanliveicy01.bynetcdn.com/icy/kanreka_mp3",
     "verified": false,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_kan_reshet_bet": {
     "name": "Kan Reshet Bet",
     "url": "http://kanliveicy.media.kan.org.il/icy/kanbet_mp3",
     "verified": false,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_kan_tarbut": {
     "name": "KAN TARBUT",
     "url": "https://playerservices.streamtheworld.com/api/livestream-redirect/KAN_TARBUT.mp3?dist=tunein",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_kol_hai": {
     "name": "kol hai",
     "url": "https://live.kcm.fm/livemusic",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_kol_rega_________91_5_96": {
     "name": "Kol Rega קול רגע 91.5/96",
     "url": "https://cdn.cybercdn.live/Kol_Rega/Live_Audio/icecast.audio",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_life_radio": {
     "name": "LIFE RADIO",
     "url": "https://443825e3eaa54f65-93-172-164-209.serveousercontent.com/stream",
     "verified": false,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_mizrahit_radio": {
     "name": "mizrahit radio",
     "url": "https://mzr.mediacast.co.il/mzradio",
     "verified": false,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_radio_100__latina": {
     "name": "Radio 100% Latina",
     "url": "https://gb25.streamgates.net/radios-audio/100Latin/icecast.audio",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_radio_103fm": {
     "name": "Radio 103FM",
     "url": "https://cdn.cybercdn.live/103FM/Live/icecast.audio",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_radio_90fm": {
     "name": "Radio 90FM",
     "url": "https://cdn.cybercdn.live/Emtza_Haderech/Live_Audio/icecast.audio",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_radio_breslev_carmiel": {
     "name": "Radio Breslev Carmiel",
     "url": "https://securestreams6.autopo.st:2294/mp3",
     "verified": false,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_radio_darom_95_8fm_97fm": {
     "name": "radio darom 95.8fm 97fm",
     "url": "https://cdn.cybercdn.live/Darom_97FM/Live/icecast.audio",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_radio_france_isra_l": {
     "name": "Radio France Israël",
     "url": "https://stream10.vestaradio.com/Radio-France-Israel",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_radio_lev_hamedina": {
     "name": "Radio Lev Hamedina",
     "url": "http://cdn.cybercdn.live/Lev_Hamedina/Audio/icecast.audio",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_radio_nas": {
     "name": "Radio Nas",
     "url": "https://cdna.streamgates.net/RadioNas/Live-Audio/icecast.audio",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_radio_qualita": {
     "name": "Radio Qualita",
     "url": "https://www.radioking.com/play/radio-qualita",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_radio_yasoo": {
     "name": "Radio Yasoo",
     "url": "http://radio-yasoo.ath.cx:7500/;",
     "verified": false,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_radioplus": {
     "name": "RadioPlus",
     "url": "http://s3.yesstreaming.net:7049/stream",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_radios_100fm": {
     "name": "Radios 100FM",
     "url": "http://gb25.streamgates.net/radios-audio/100Workout/icecast.audio",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_radios_100fm________": {
     "name": "Radios 100FM   רדיוס",
     "url": "https://cdn.cybercdn.live/Radios_100FM/Audio/icecast.audio",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_radios_100fm___100__80s": {
     "name": "Radios 100FM - 100% 80s",
     "url": "http://gb25.streamgates.net/radios-audio/10080s/icecast.audio",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_radios_100fm___100__blues": {
     "name": "Radios 100FM - 100% Blues",
     "url": "https://gb25.streamgates.net/radios-audio/100Blues/playlist.m3u8",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_radios_100fm___100__britpop": {
     "name": "Radios 100FM - 100% Britpop",
     "url": "https://gb25.streamgates.net/radios-audio/100Britpop/playlist.m3u8",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_radios_100fm___100__chillout": {
     "name": "Radios 100FM - 100% Chillout",
     "url": "https://gb25.streamgates.net/radios-audio/100Chillout/playlist.m3u8",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_radios_100fm___100__classic": {
     "name": "Radios 100FM - 100% Classic",
     "url": "https://gb25.streamgates.net/radios-audio/100Classic/playlist.m3u8",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_radios_100fm___100__classic_rock": {
     "name": "Radios 100FM - 100% Classic Rock",
     "url": "https://gb25.streamgates.net/radios-audio/100ClassicRock/playlist.m3u8",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_radios_100fm___100__club": {
     "name": "Radios 100FM - 100% Club",
     "url": "https://gb25.streamgates.net/radios-audio/100Club/icecast.audio",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_radios_100fm___100__country": {
     "name": "Radios 100FM - 100% Country",
     "url": "https://gb25.streamgates.net/radios-audio/100Country/playlist.m3u8",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_radios_100fm___100__covers": {
     "name": "Radios 100FM - 100% Covers",
     "url": "https://gb25.streamgates.net/radios-audio/100Covers/playlist.m3u8",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_radios_100fm___100__disney": {
     "name": "Radios 100FM - 100% Disney",
     "url": "https://gb25.streamgates.net/radios-audio/100Disney/icecast.audio",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_radios_100fm___100__eurovision": {
     "name": "Radios 100FM - 100% Eurovision",
     "url": "https://gb25.streamgates.net/radios-audio/100Special/playlist.m3u8",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_radios_100fm___100__gamer": {
     "name": "Radios 100FM - 100% Gamer",
     "url": "https://gb25.streamgates.net/radios-audio/100Gamer/icecast.audio",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_radios_100fm___100__hits": {
     "name": "Radios 100FM - 100% Hits",
     "url": "https://gb25.streamgates.net/radios-audio/100Hits/playlist.m3u8",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_radios_100fm___100__jazz": {
     "name": "Radios 100FM - 100% Jazz",
     "url": "https://gb25.streamgates.net/radios-audio/100Jazz/icecast.audio",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_radios_100fm___100__kids": {
     "name": "Radios 100FM - 100% Kids",
     "url": "https://gb25.streamgates.net/radios-audio/100Kids/icecast.audio",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_radios_100fm___100__latin": {
     "name": "Radios 100FM - 100% Latin",
     "url": "https://gb25.streamgates.net/radios-audio/100Latin/playlist.m3u8",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_radios_100fm___100__legends": {
     "name": "Radios 100FM - 100% Legends",
     "url": "https://gb25.streamgates.net/radios-audio/100Legends/playlist.m3u8",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_radios_100fm___100__love": {
     "name": "Radios 100FM - 100% Love",
     "url": "https://gb25.streamgates.net/radios-audio/100Love/playlist.m3u8",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_radios_100fm___100__mizrachit___": {
     "name": "Radios 100FM - 100% Mizrachit (מזרחי)",
     "url": "https://gb25.streamgates.net/radios-audio/100Mizrachit/icecast.audio",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_radios_100fm___100__movies": {
     "name": "Radios 100FM - 100% Movies",
     "url": "https://gb25.streamgates.net/radios-audio/100Movies/playlist.m3u8",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_radios_100fm___100__nostalgia": {
     "name": "Radios 100FM - 100% Nostalgia",
     "url": "https://gb25.streamgates.net/radios-audio/100Nostalgia/playlist.m3u8",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_radios_100fm___100__oldies": {
     "name": "Radios 100FM - 100% Oldies",
     "url": "http://gb25.streamgates.net/radios-audio/100Oldies/icecast.audio",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_radios_100fm___100__relax": {
     "name": "Radios 100FM - 100% Relax",
     "url": "https://gb25.streamgates.net/radios-audio/100Relax/icecast.audio",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_radios_100fm___100__retro": {
     "name": "Radios 100FM - 100% Retro",
     "url": "https://gb25.streamgates.net/radios-audio/100Retro/icecast.audio",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_radios_100fm___100__rock": {
     "name": "Radios 100FM - 100% Rock",
     "url": "https://gb25.streamgates.net/radios-audio/100Rock/playlist.m3u8",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_radios_100fm___100__selfie": {
     "name": "Radios 100FM - 100% Selfie",
     "url": "https://gb25.streamgates.net/radios-audio/100Selfie/playlist.m3u8",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_radios_100fm___100__standup": {
     "name": "Radios 100FM - 100% StandUp",
     "url": "https://gb25.streamgates.net/radios-audio/100StandUp/icecast.audio",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_radios_100fm___100__stars_______": {
     "name": "Radios 100FM - 100% Stars (ערוץ הכוכבים)",
     "url": "https://gb25.streamgates.net/radios-audio/100Stars/icecast.audio",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_radios_100fm___100__tiktok": {
     "name": "Radios 100FM - 100% Tiktok",
     "url": "https://gb25.streamgates.net/radios-audio/100Tiktok/icecast.audio",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_radios_100fm___100__top40": {
     "name": "Radios 100FM - 100% Top40",
     "url": "https://gb25.streamgates.net/radios-audio/100Top40/icecast.audio",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_radios_100fm___100__workout": {
     "name": "Radios 100FM - 100% Workout",
     "url": "https://gb25.streamgates.net/radios-audio/100Workout/playlist.m3u8",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_radios_100fm___100__world_music": {
     "name": "Radios 100FM - 100% World Music",
     "url": "https://gb25.streamgates.net/radios-audio/100World/playlist.m3u8",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_radios_nostalgia_96_3fm_________": {
     "name": "Radios Nostalgia 96.3FM (רדיוס נוסטלגי)",
     "url": "https://cdna.streamgates.net/radios-audio/Nostalgia_963fm/icecast.audio",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_reka": {
     "name": "reka",
     "url": "http://kanliveicy.media.kan.org.il/icy/kanreka_mp3",
     "verified": false,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_ze_rock_radio": {
     "name": "Ze Rock Radio",
     "url": "https://icecast.live/proxy/zerock/zerock",
     "verified": false,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_____________": {
     "name": "Лучшее Радио",
     "url": "http://live.cdnwz.net/thebest",
     "verified": false,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb___________________1": {
     "name": "Машиах Инфо Канал 1",
     "url": "http://s01.radio-tochka.com:6935/;",
     "verified": false,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb___________________2": {
     "name": "Машиах Инфо Канал 2",
     "url": "http://s01.radio-tochka.com:6045/;",
     "verified": false,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb______________89_1fm": {
     "name": "Первое радио 89.1FM",
     "url": "https://cdn.cybercdn.live/Pervoia/Audio/icecast.audio",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_____eco_99fm": {
     "name": "אקו eco 99fm",
     "url": "http://99.mediacast.co.il/99fm_aac?hash=1559501510715.m4a",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_________glglz": {
     "name": "גלגלצ - Glglz",
     "url": "http://glzwizzlv.bynetcdn.com/glglz_mp3",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb________hakatze": {
     "name": "הקצה - Hakatze",
     "url": "http://kzradio.mediacast.co.il/kzradio_live/kzradio/icecast.audio",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_____________kan_moreshet": {
     "name": "כאן מורשת - Kan Moreshet",
     "url": "https://kanliveicy.media.kan.org.il/icy/kanmoreshet_mp3",
     "verified": false,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_________kan_reka": {
     "name": "כאן רקע Kan Reka",
     "url": "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/radio/kan_reka/live.livx/playlist.m3u8?renditions",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb____________kol_barama": {
     "name": "קול ברמה - Kol Barama",
     "url": "http://kb.cdnwz.net/kol_barama",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_____________kol_hashfela": {
     "name": "קול השפלה - Kol Hashfela",
     "url": "http://1036kh.cdnwz.net/1036kh",
     "verified": false,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb____________kol_play": {
     "name": "קול פליי | kol-play",
     "url": "https://cdn.cybercdn.live/Kol_Barama/Music/icecast.audio",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_____________radio_hamesh": {
     "name": "רדיו חמאש - Radio Hamesh",
     "url": "http://995.livecdn.biz:8000/995fm",
     "verified": false,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb____________": {
     "name": "רשת ג בדיקה",
     "url": "http://kanliveicy.media.kan.org.il/icy/kangimmel_mp3",
     "verified": false,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_________tel_aviv_102fm": {
     "name": "תל אביב Tel Aviv 102FM",
     "url": "http://102.livecdn.biz/102fm_aac",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_______________a_shams": {
     "name": "اذاعة الشمس - A-Shams",
     "url": "https://cdna.streamgates.net/Ashams/Live/icecast.audio",
     "verified": true,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   },
   "rb_______________kan_israel_makan": {
     "name": "راديو مكان  - Kan Israel Makan",
     "url": "http://kanliveicy.media.kan.org.il/icy/makan_mp3",
     "verified": false,
-    "last_tested": "2026-10-26T10:01:09.278001"
+    "last_tested": "2026-10-26T10:10:10.194105"
   }
 }

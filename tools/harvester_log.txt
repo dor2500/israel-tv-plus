@@ -5513,3 +5513,91 @@
 [2026-10-26 10:06:14] Testing candidate: ערוץ אור מאיר מסורת (https://video.ormatv.co.il/live/stream.m3u8)
 [2026-10-26 10:06:14] Testing candidate: הידברות עולם הילדים (https://vod.hidabroot.org/live/kids/playlist.m3u8)
 [2026-10-26 10:06:14] Scan cycle finished. Total verified pool: 86 streams.
+[2026-10-26 10:07:14] Scanning sources for candidate Israeli streams...
+[2026-10-26 10:07:14] Testing candidate: כאן 11 שידור ראשי (CDN משני) (https://kan11.media.kan.org.il/hls/live/2024514/2024514/master.m3u8)
+[2026-10-26 10:07:16] Testing candidate: כאן חדשות מבזקים רציף (https://kannlive.media.kan.org.il/hls/live/2024622/2024622/master.m3u8)
+[2026-10-26 10:07:16] ▶ [Minutely Harvester & Auto-Healer] Starting cycle (Including Idan+, Deduplication & Health Checks)...
+[2026-10-26 10:07:16]   🔍 [Health & Improvement Check] Testing channels 246..250 of 330...
+[2026-10-26 10:07:17]     - #246 קבלה לעם רדיו – אנגלית: HEALTHY
+[2026-10-26 10:07:17]     - #247 קבלה לעם רדיו – ספרדית: HEALTHY
+[2026-10-26 10:07:18]     - #248 קבלה לעם רדיו – צרפתית: HEALTHY
+[2026-10-26 10:07:18] Testing candidate: ערוץ הכנסת שידור ישיר (https://knesset.streamguys1.com/knesset/knesset.m3u8)
+[2026-10-26 10:07:18]     - #249 קבלה לעם רדיו – רוסית: HEALTHY
+[2026-10-26 10:07:19]     - #250 קול ברמה: HEALTHY
+[2026-10-26 10:07:19] Testing candidate: הופ! שידור מיוחד לפעוטות (https://hop-live.stream.il/live/hop/master.m3u8)
+[2026-10-26 10:07:19] Testing candidate: זום ZOOM שידורי נוער 24/7 (https://zoom-tv.stream.il/live/zoom/playlist.m3u8)
+[2026-10-26 10:07:19] Testing candidate: ערוץ 24 שידורי מוזיקה ישראלית (https://mako-live.akamaized.net/hls/live/572358/ch24news/master.m3u8)
+[2026-10-26 10:07:19] Testing candidate: ערוץ אור מאיר מסורת (https://video.ormatv.co.il/live/stream.m3u8)
+[2026-10-26 10:07:19] Testing candidate: הידברות עולם הילדים (https://vod.hidabroot.org/live/kids/playlist.m3u8)
+[2026-10-26 10:07:19] Scan cycle finished. Total verified pool: 86 streams.
+[2026-10-26 10:07:22]   Probing 127 unique new candidate streams across the web...
+[2026-10-26 10:07:40] ✔ [Cycle Complete] Verified pool: 87 channels (+0 new this cycle). Local pool updated.
+[2026-10-26 10:08:03] ▶ [Minutely Harvester & Auto-Healer] Starting cycle (Including Idan+, Deduplication & Health Checks)...
+[2026-10-26 10:08:03]   🔍 [Health & Improvement Check] Testing channels 251..255 of 330...
+[2026-10-26 10:08:04]     - #251 קול ברמה מוזיקה (קול פליי): HEALTHY
+[2026-10-26 10:08:04]     - #252 קול הצפון: HEALTHY
+[2026-10-26 10:08:05]     - #253 קול חי 93FM: HEALTHY
+[2026-10-26 10:08:06]     - #254 קול חי מיוזיק: HEALTHY
+[2026-10-26 10:08:06]     - #255 קול רגע 96FM: HEALTHY
+[2026-10-26 10:08:09]   Probing 127 unique new candidate streams across the web...
+[2026-10-26 10:08:19] Scanning sources for candidate Israeli streams...
+[2026-10-26 10:08:19] Testing candidate: כאן 11 שידור ראשי (CDN משני) (https://kan11.media.kan.org.il/hls/live/2024514/2024514/master.m3u8)
+[2026-10-26 10:08:21] Testing candidate: כאן חדשות מבזקים רציף (https://kannlive.media.kan.org.il/hls/live/2024622/2024622/master.m3u8)
+[2026-10-26 10:08:23] Testing candidate: ערוץ הכנסת שידור ישיר (https://knesset.streamguys1.com/knesset/knesset.m3u8)
+[2026-10-26 10:08:24] Testing candidate: הופ! שידור מיוחד לפעוטות (https://hop-live.stream.il/live/hop/master.m3u8)
+[2026-10-26 10:08:24] Testing candidate: זום ZOOM שידורי נוער 24/7 (https://zoom-tv.stream.il/live/zoom/playlist.m3u8)
+[2026-10-26 10:08:24] Testing candidate: ערוץ 24 שידורי מוזיקה ישראלית (https://mako-live.akamaized.net/hls/live/572358/ch24news/master.m3u8)
+[2026-10-26 10:08:24] Testing candidate: ערוץ אור מאיר מסורת (https://video.ormatv.co.il/live/stream.m3u8)
+[2026-10-26 10:08:24] Testing candidate: הידברות עולם הילדים (https://vod.hidabroot.org/live/kids/playlist.m3u8)
+[2026-10-26 10:08:24] Scan cycle finished. Total verified pool: 86 streams.
+[2026-10-26 10:08:27] ✔ [Cycle Complete] Verified pool: 87 channels (+0 new this cycle). Local pool updated.
+[2026-10-26 10:09:03] ▶ [Minutely Harvester & Auto-Healer] Starting cycle (Including Idan+, Deduplication & Health Checks)...
+[2026-10-26 10:09:03]   🔍 [Health & Improvement Check] Testing channels 256..260 of 330...
+[2026-10-26 10:09:04]     - #256 רדיו 2000: HEALTHY
+[2026-10-26 10:09:05]     - #257 רדיו CS קלאסי: HEALTHY
+[2026-10-26 10:09:05]     - #258 רדיו אהבה – רומנטי: HEALTHY
+[2026-10-26 10:09:06]     - #259 רדיו אלי ניסמן: HEALTHY
+[2026-10-26 10:09:06]     - #260 רדיו ברסלב: HEALTHY
+[2026-10-26 10:09:09]   Probing 127 unique new candidate streams across the web...
+[2026-10-26 10:09:24] Scanning sources for candidate Israeli streams...
+[2026-10-26 10:09:24] Testing candidate: כאן 11 שידור ראשי (CDN משני) (https://kan11.media.kan.org.il/hls/live/2024514/2024514/master.m3u8)
+[2026-10-26 10:09:26] Testing candidate: כאן חדשות מבזקים רציף (https://kannlive.media.kan.org.il/hls/live/2024622/2024622/master.m3u8)
+[2026-10-26 10:09:27] ✔ [Cycle Complete] Verified pool: 87 channels (+0 new this cycle). Local pool updated.
+[2026-10-26 10:09:28] Testing candidate: ערוץ הכנסת שידור ישיר (https://knesset.streamguys1.com/knesset/knesset.m3u8)
+[2026-10-26 10:09:29] Testing candidate: הופ! שידור מיוחד לפעוטות (https://hop-live.stream.il/live/hop/master.m3u8)
+[2026-10-26 10:09:29] Testing candidate: זום ZOOM שידורי נוער 24/7 (https://zoom-tv.stream.il/live/zoom/playlist.m3u8)
+[2026-10-26 10:09:29] Testing candidate: ערוץ 24 שידורי מוזיקה ישראלית (https://mako-live.akamaized.net/hls/live/572358/ch24news/master.m3u8)
+[2026-10-26 10:09:29] Testing candidate: ערוץ אור מאיר מסורת (https://video.ormatv.co.il/live/stream.m3u8)
+[2026-10-26 10:09:29] Testing candidate: הידברות עולם הילדים (https://vod.hidabroot.org/live/kids/playlist.m3u8)
+[2026-10-26 10:09:29] Scan cycle finished. Total verified pool: 85 streams.
+[2026-10-26 10:10:04] ▶ [Minutely Harvester & Auto-Healer] Starting cycle (Including Idan+, Deduplication & Health Checks)...
+[2026-10-26 10:10:04]   🔍 [Health & Improvement Check] Testing channels 261..265 of 330...
+[2026-10-26 10:10:05]     - #261 רדיו דרום 101.5FM: HEALTHY
+[2026-10-26 10:10:06]     - #262 רדיו דרום 97FM: HEALTHY
+[2026-10-26 10:10:06]     - #263 רדיו הקצה KZ: HEALTHY
+[2026-10-26 10:10:06]     - #264 רדיו התחנה 101.5: HEALTHY
+[2026-10-26 10:10:07]     - #265 רדיו חיפה 107.5FM: HEALTHY
+[2026-10-26 10:10:10]   Probing 127 unique new candidate streams across the web...
+[2026-10-26 10:10:28] ✔ [Cycle Complete] Verified pool: 87 channels (+0 new this cycle). Local pool updated.
+[2026-10-26 10:10:29] Scanning sources for candidate Israeli streams...
+[2026-10-26 10:10:29] Testing candidate: כאן 11 שידור ראשי (CDN משני) (https://kan11.media.kan.org.il/hls/live/2024514/2024514/master.m3u8)
+[2026-10-26 10:10:31] Testing candidate: כאן חדשות מבזקים רציף (https://kannlive.media.kan.org.il/hls/live/2024622/2024622/master.m3u8)
+[2026-10-26 10:10:33] Testing candidate: ערוץ הכנסת שידור ישיר (https://knesset.streamguys1.com/knesset/knesset.m3u8)
+[2026-10-26 10:10:34] Testing candidate: הופ! שידור מיוחד לפעוטות (https://hop-live.stream.il/live/hop/master.m3u8)
+[2026-10-26 10:10:34] Testing candidate: זום ZOOM שידורי נוער 24/7 (https://zoom-tv.stream.il/live/zoom/playlist.m3u8)
+[2026-10-26 10:10:34] Testing candidate: ערוץ 24 שידורי מוזיקה ישראלית (https://mako-live.akamaized.net/hls/live/572358/ch24news/master.m3u8)
+[2026-10-26 10:10:34] Testing candidate: ערוץ אור מאיר מסורת (https://video.ormatv.co.il/live/stream.m3u8)
+[2026-10-26 10:10:34] Testing candidate: הידברות עולם הילדים (https://vod.hidabroot.org/live/kids/playlist.m3u8)
+[2026-10-26 10:10:34] Scan cycle finished. Total verified pool: 86 streams.
+[2026-10-26 10:11:34] Scanning sources for candidate Israeli streams...
+[2026-10-26 10:11:34] Testing candidate: כאן 11 שידור ראשי (CDN משני) (https://kan11.media.kan.org.il/hls/live/2024514/2024514/master.m3u8)
+[2026-10-26 10:11:36] Testing candidate: כאן חדשות מבזקים רציף (https://kannlive.media.kan.org.il/hls/live/2024622/2024622/master.m3u8)
+[2026-10-26 10:11:38] Testing candidate: ערוץ הכנסת שידור ישיר (https://knesset.streamguys1.com/knesset/knesset.m3u8)
+[2026-10-26 10:11:39] Testing candidate: הופ! שידור מיוחד לפעוטות (https://hop-live.stream.il/live/hop/master.m3u8)
+[2026-10-26 10:11:39] Testing candidate: זום ZOOM שידורי נוער 24/7 (https://zoom-tv.stream.il/live/zoom/playlist.m3u8)
+[2026-10-26 10:11:39] Testing candidate: ערוץ 24 שידורי מוזיקה ישראלית (https://mako-live.akamaized.net/hls/live/572358/ch24news/master.m3u8)
+[2026-10-26 10:11:39] Testing candidate: ערוץ אור מאיר מסורת (https://video.ormatv.co.il/live/stream.m3u8)
+[2026-10-26 10:11:39] Testing candidate: הידברות עולם הילדים (https://vod.hidabroot.org/live/kids/playlist.m3u8)
+[2026-10-26 10:11:40] Scan cycle finished. Total verified pool: 86 streams.
+[2026-10-26 10:12:40] Scanning sources for candidate Israeli streams...
+[2026-10-26 10:12:40] Testing candidate: כאן 11 שידור ראשי (CDN משני) (https://kan11.media.kan.org.il/hls/live/2024514/2024514/master.m3u8)

@@ -9,8 +9,10 @@ plugins {
 val repo: File = rootDir.parentFile                      // the israel-tv-plus repository
 val appVersion = repo.resolve("VERSION").readText().trim()
 val appCode = appVersion.split(".").let { p ->
-    val base = p[0].toInt() * 100 + p[1].toInt() * 10 + p[2].toInt()
-    if (p[0] == "4" && p[1] == "3") 500 + p[2].toInt() else maxOf(500, base)
+    val (maj, min, pat) = Triple(p[0].toInt(), p[1].toInt(), p[2].toInt())
+    if (maj == 4 && min == 3) 500 + pat
+    else if (maj == 4 && min == 4) 540 + pat
+    else maxOf(550, maj * 100 + min * 10 + pat)
 }
 
 // Release key: the same one tools/build_apk.ps1 always used, so the update installs over every earlier APK.
