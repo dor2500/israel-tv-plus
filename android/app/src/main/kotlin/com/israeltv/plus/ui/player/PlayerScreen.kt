@@ -10,11 +10,9 @@ import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.EnterExitState
 import androidx.compose.animation.core.RepeatMode
-import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.rememberInfiniteTransition
-import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -22,10 +20,8 @@ import androidx.compose.animation.scaleIn
 import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.gestures.detectHorizontalDragGestures
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.gestures.detectVerticalDragGestures
-import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -38,12 +34,20 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBarsPadding
-import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.material3.ripple
+import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.graphics.compositeOver
+import androidx.compose.ui.platform.LocalDensity
+import com.israeltv.plus.ui.components.LocalPageScope
+import com.israeltv.plus.ui.components.pressPhysics
+import com.israeltv.plus.ui.components.sharedContainer
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -54,17 +58,15 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowBack
 import androidx.compose.material.icons.automirrored.rounded.List
 import androidx.compose.material.icons.rounded.Audiotrack
-import androidx.compose.material.icons.rounded.BrightnessMedium
-import androidx.compose.material.icons.rounded.ClosedCaption
-import androidx.compose.material.icons.rounded.Forward10
 import androidx.compose.material.icons.rounded.Fullscreen
 import androidx.compose.material.icons.rounded.FullscreenExit
+import androidx.compose.material.icons.rounded.MoreHoriz
 import androidx.compose.material.icons.rounded.Pause
+import androidx.compose.material.icons.rounded.PictureInPictureAlt
 import androidx.compose.material.icons.rounded.PlayArrow
 import androidx.compose.material.icons.rounded.Refresh
-import androidx.compose.material.icons.rounded.Replay10
-import androidx.compose.material.icons.rounded.Speed
-import androidx.compose.material.icons.automirrored.rounded.VolumeUp
+import androidx.compose.material.icons.rounded.SkipNext
+import androidx.compose.material.icons.rounded.SkipPrevious
 import androidx.compose.material3.Button
 import androidx.compose.material3.CircularWavyProgressIndicator
 import androidx.compose.material3.FilledTonalButton
@@ -76,9 +78,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -88,17 +88,15 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.RectangleShape
-import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
-import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
@@ -111,17 +109,14 @@ import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.media3.common.AudioAttributes
 import androidx.media3.common.C
 import androidx.media3.common.MediaItem
-import androidx.media3.common.MediaMetadata
 import androidx.media3.common.MimeTypes
 import androidx.media3.common.PlaybackException
-import androidx.media3.common.PlaybackParameters
 import androidx.media3.common.Player
 import androidx.media3.common.TrackSelectionOverride
 import androidx.media3.common.Tracks
-import androidx.media3.datasource.okhttp.OkHttpDataSource
+import androidx.media3.datasource.DefaultHttpDataSource
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.exoplayer.source.DefaultMediaSourceFactory
-import androidx.media3.session.MediaSession
 import androidx.media3.ui.AspectRatioFrameLayout
 import androidx.media3.ui.PlayerView
 import com.israeltv.plus.data.AppPrefs
@@ -130,37 +125,26 @@ import com.israeltv.plus.data.USER_AGENT
 import com.israeltv.plus.data.playableUrl
 import com.israeltv.plus.ui.components.ChannelLogo
 import com.israeltv.plus.ui.components.GlassIconButton
-import com.israeltv.plus.ui.components.LocalPageScope
-import com.israeltv.plus.ui.components.sharedContainer
 import com.israeltv.plus.ui.components.specularBorder
-import com.israeltv.plus.ui.components.tactileBounce
-import com.israeltv.plus.ui.components.triggerScrubTick
 import kotlinx.coroutines.delay
-import okhttp3.OkHttpClient
 import java.util.Locale
-import java.util.concurrent.TimeUnit
+import kotlin.math.abs
 
-internal val playerHttpClient by lazy {
-    OkHttpClient.Builder()
-        .connectTimeout(12, TimeUnit.SECONDS)
-        .readTimeout(15, TimeUnit.SECONDS)
-        .followRedirects(true)
-        .followSslRedirects(true)
-        .addInterceptor { chain ->
-            val req = chain.request().newBuilder()
-                .header("User-Agent", USER_AGENT)
-                .header("Origin", "https://kondoplay.cfd")
-                .header("Referer", "https://kondoplay.cfd/")
-                .build()
-            chain.proceed(req)
-        }
-        .build()
-}
+private val GlassDark = Color.Black.copy(alpha = 0.42f)
 
+/**
+ * The player. Media3 ExoPlayer (HLS + Icecast radio) with proper media AudioAttributes and audio focus.
+ * Volume: there is no mute anywhere in the app – the volume is set to 1.0 when the player is built, on every
+ * playback state change and on every channel switch. Only the device's own volume / mute keys change loudness.
+ */
 private fun buildPlayer(context: Context): ExoPlayer {
-    val httpSourceFactory = OkHttpDataSource.Factory(playerHttpClient)
+    val http = DefaultHttpDataSource.Factory()
+        .setUserAgent(USER_AGENT)
+        .setAllowCrossProtocolRedirects(true)
+        .setConnectTimeoutMs(12_000)
+        .setReadTimeoutMs(15_000)
     return ExoPlayer.Builder(context)
-        .setMediaSourceFactory(DefaultMediaSourceFactory(httpSourceFactory))
+        .setMediaSourceFactory(DefaultMediaSourceFactory(http))
         .setAudioAttributes(
             AudioAttributes.Builder().setUsage(C.USAGE_MEDIA).setContentType(C.AUDIO_CONTENT_TYPE_MOVIE).build(),
             /* handleAudioFocus = */ true,
@@ -168,13 +152,6 @@ private fun buildPlayer(context: Context): ExoPlayer {
         .setHandleAudioBecomingNoisy(true)
         .build()
         .apply { volume = 1.0f }
-}
-
-private fun formatTime(ms: Long): String {
-    val totalSec = (ms / 1000).coerceAtLeast(0)
-    val min = totalSec / 60
-    val sec = totalSec % 60
-    return String.format(Locale.US, "%02d:%02d", min, sec)
 }
 
 private fun describe(e: PlaybackException): String = when (e.errorCode) {
@@ -200,7 +177,8 @@ fun PlayerScreen(
 ) {
     val context = LocalContext.current
     val density = LocalDensity.current
-    val scheme = MaterialTheme.colorScheme
+    // the video surface joins once the card has grown into the player, and leaves as soon as it shrinks back
+    // (a SurfaceView does not follow the container transform; until then the player is its black frame + logo)
     val page = LocalPageScope.current
     val settled = page == null ||
         (page.transition.currentState == EnterExitState.Visible && page.transition.targetState == EnterExitState.Visible)
@@ -218,22 +196,10 @@ fun PlayerScreen(
     var landscape by remember { mutableStateOf(false) }
     var tracks by remember { mutableStateOf(Tracks.EMPTY) }
 
-    // Time & scrubbing
-    var positionMs by remember { mutableLongStateOf(153000L) }
-    var durationMs by remember { mutableLongStateOf(2761000L) }
-
-    // Chunky M3 gesture sliders: Brightness (left) & Volume (right)
-    var showBrightness by remember { mutableStateOf(false) }
-    var brightnessLevel by remember { mutableFloatStateOf(0.75f) }
-    var showVolume by remember { mutableStateOf(false) }
-    var volumeLevel by remember { mutableFloatStateOf(0.85f) }
-
-    // Active dock action highlight
-    var activeDockItem by remember { mutableStateOf<String?>(null) }
-
     DisposableEffect(player) {
         val listener = object : Player.Listener {
             override fun onPlaybackStateChanged(state: Int) {
+                player.volume = 1.0f
                 buffering = state == Player.STATE_BUFFERING || (state == Player.STATE_IDLE && error == null)
             }
             override fun onIsPlayingChanged(isPlaying: Boolean) {
@@ -241,11 +207,6 @@ fun PlayerScreen(
                 onPlaying(isPlaying)
             }
             override fun onPlayerError(e: PlaybackException) {
-                if (e.errorCode == PlaybackException.ERROR_CODE_BEHIND_LIVE_WINDOW) {
-                    player.seekToDefaultPosition()
-                    player.prepare()
-                    return
-                }
                 error = describe(e)
                 buffering = false
             }
@@ -259,31 +220,24 @@ fun PlayerScreen(
         }
     }
 
-    // Media Session for PiP and Bluetooth
-    DisposableEffect(player) {
-        val session = runCatching {
-            MediaSession.Builder(context, player).setId("player-" + System.nanoTime()).build()
-        }.getOrNull()
-        onDispose { session?.release() }
-    }
-
     fun switchTo(i: Int) {
         index = (i + list.size) % list.size
         touchTick++
     }
 
+    // every channel switch (and "נסו שוב"): the stream, full volume, play
     var attempt by remember { mutableIntStateOf(0) }
     LaunchedEffect(current.id, attempt) {
         error = null
         buffering = true
         prefs.addRecent(current.id)
         val url = runCatching { playableUrl(current) }.getOrElse {
-            error = "לא התקבלה הרשאת צפייה"
+            error = "לא התקבלה הרשאת צפייה מ-mako"
             buffering = false
             return@LaunchedEffect
         }
-        val item = MediaItem.Builder().setUri(url).setMediaId(current.id)
-            .setMediaMetadata(MediaMetadata.Builder().setTitle(current.name).setStation(current.name).build())
+        val item = MediaItem.Builder().setUri(url)
+        // every TV channel is HLS, also the ones whose address has no .m3u8 (Samsung TV Plus redirects)
         if (current.url.contains(".m3u8", ignoreCase = true) || !current.isRadio) item.setMimeType(MimeTypes.APPLICATION_M3U8)
         player.setMediaItem(item.build())
         player.volume = 1.0f
@@ -291,43 +245,15 @@ fun PlayerScreen(
         player.playWhenReady = true
     }
 
-    // Track playback timestamps
-    LaunchedEffect(playing) {
-        while (playing) {
-            val pos = player.currentPosition
-            val dur = player.duration
-            if (dur > 0) {
-                positionMs = pos
-                durationMs = dur
-            } else {
-                positionMs += 1000L
-            }
-            delay(1000)
-        }
-    }
-
-    // Auto-hide controls
+    // controls hide after 4 s of playback without a touch
     LaunchedEffect(controls, touchTick, playing, buffering, error) {
         if (controls && playing && !buffering && error == null) {
-            delay(4500)
+            delay(4000)
             controls = false
         }
     }
 
-    // Auto-hide gesture sliders
-    LaunchedEffect(showBrightness) {
-        if (showBrightness) {
-            delay(1500)
-            showBrightness = false
-        }
-    }
-    LaunchedEffect(showVolume) {
-        if (showVolume) {
-            delay(1500)
-            showVolume = false
-        }
-    }
-
+    // full screen while watching: bars hidden (swipe from the edge shows them), screen kept on
     val view = LocalView.current
     DisposableEffect(Unit) {
         val window = (context as Activity).window
@@ -342,12 +268,12 @@ fun PlayerScreen(
         }
     }
 
+    // the app in the background: pause (except in picture-in-picture)
     val lifecycle = LocalLifecycleOwner.current.lifecycle
-    DisposableEffect(lifecycle) {
-        var resume = false
+    DisposableEffect(lifecycle, inPip) {
         val obs = LifecycleEventObserver { _, e ->
-            if (e == Lifecycle.Event.ON_STOP) { resume = player.playWhenReady; player.pause() }
-            if (e == Lifecycle.Event.ON_START && resume) { resume = false; player.volume = 1.0f; player.play() }
+            if (e == Lifecycle.Event.ON_STOP && !inPip) player.pause()
+            if (e == Lifecycle.Event.ON_START) { player.volume = 1.0f; player.play() }
         }
         lifecycle.addObserver(obs)
         onDispose { lifecycle.removeObserver(obs) }
@@ -361,7 +287,7 @@ fun PlayerScreen(
         Modifier
             .fillMaxSize()
             .then(if (sharedKey != null) Modifier.sharedContainer(sharedKey, RectangleShape, scaleContent = true) else Modifier)
-            .background(scheme.background)
+            .background(Color.Black)
     ) {
         if (settled || inPip) AndroidView(
             factory = { ctx ->
@@ -369,621 +295,186 @@ fun PlayerScreen(
                     layoutParams = FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
                     useController = false
                     artworkDisplayMode = PlayerView.ARTWORK_DISPLAY_MODE_OFF
-                    setShutterBackgroundColor(android.graphics.Color.TRANSPARENT)
+                    setShutterBackgroundColor(android.graphics.Color.BLACK)
                     setKeepContentOnPlayerReset(false)
                     resizeMode = AspectRatioFrameLayout.RESIZE_MODE_FIT
                     this.player = player
                 }
             },
-            update = { playerView ->
-                val lift = if (controls && !inPip) with(density) { 108.dp.roundToPx() } else 0
-                playerView.subtitleView?.setPadding(0, 0, 0, lift)
+            update = { view ->
+                // subtitles move up above the dock while the controls are on screen
+                val lift = if (controls && !inPip) with(density) { 92.dp.roundToPx() } else 0
+                view.subtitleView?.setPadding(0, 0, 0, lift)
             },
             modifier = Modifier.fillMaxSize(),
         )
 
-        // Gesture detection on the video surface
+        // the touch layer over the video (the PlayerView itself would take the touches)
         Box(
-            Modifier
-                .fillMaxSize()
-                .pointerInput(Unit) {
-                    detectTapGestures(onTap = { controls = !controls; touchTick++ })
-                }
-                .pointerInput(Unit) {
-                    detectVerticalDragGestures(
-                        onDragStart = {},
-                        onDragEnd = {},
-                        onVerticalDrag = { change, dragAmount ->
-                            val screenWidth = size.width
-                            val x = change.position.x
-                            val delta = -dragAmount / 300f // Up increases, down decreases
-                            if (x < screenWidth * 0.4f) {
-                                // Left side: Brightness
-                                showBrightness = true
-                                val prevStep = (brightnessLevel * 20).toInt()
-                                brightnessLevel = (brightnessLevel + delta).coerceIn(0.05f, 1f)
-                                val newStep = (brightnessLevel * 20).toInt()
-                                if (prevStep != newStep) triggerScrubTick(haptic)
-                            } else if (x > screenWidth * 0.6f) {
-                                // Right side: Volume
-                                showVolume = true
-                                val prevStep = (volumeLevel * 20).toInt()
-                                volumeLevel = (volumeLevel + delta).coerceIn(0f, 1f)
-                                player.volume = volumeLevel
-                                val newStep = (volumeLevel * 20).toInt()
-                                if (prevStep != newStep) triggerScrubTick(haptic)
-                            }
-                        }
-                    )
-                }
+            Modifier.fillMaxSize().pointerInputs(
+                onTap = { controls = !controls; touchTick++ },
+                onSwipe = { up ->
+                    haptic.performHapticFeedback(HapticFeedbackType.GestureThresholdActivate)
+                    switchTo(if (up) index + 1 else index - 1)
+                },
+            )
         )
 
-        // Radio logo display
         if (current.isRadio) {
             Column(Modifier.align(Alignment.Center), horizontalAlignment = Alignment.CenterHorizontally) {
                 Box(
-                    Modifier.size(180.dp).clip(RoundedCornerShape(40.dp)).background(scheme.surfaceContainerHighest.copy(alpha = 0.5f)).specularBorder(RoundedCornerShape(40.dp)),
+                    Modifier.size(180.dp).clip(RoundedCornerShape(40.dp)).background(Color.White.copy(alpha = 0.08f)).specularBorder(RoundedCornerShape(40.dp)),
                     contentAlignment = Alignment.Center,
                 ) { ChannelLogo(logo(current), Modifier.size(130.dp), true) }
-                Text(current.name, color = scheme.onSurface, fontSize = 22.sp, fontWeight = FontWeight.ExtraBold, modifier = Modifier.padding(top = 16.dp))
+                Text(current.name, color = Color.White, fontSize = 22.sp, fontWeight = FontWeight.ExtraBold, modifier = Modifier.padding(top = 16.dp))
             }
-        }
-
-        // Chunky M3 Gesture Slider: Brightness (Left side)
-        AnimatedVisibility(
-            visible = showBrightness && !inPip,
-            enter = fadeIn(tween(180)) + scaleIn(initialScale = 0.85f),
-            exit = fadeOut(tween(220)),
-            modifier = Modifier.align(Alignment.CenterStart).padding(start = 28.dp),
-        ) {
-            ChunkySlider(
-                value = brightnessLevel,
-                icon = Icons.Rounded.BrightnessMedium,
-                label = "בהירות",
-            )
-        }
-
-        // Chunky M3 Gesture Slider: Volume (Right side)
-        AnimatedVisibility(
-            visible = showVolume && !inPip,
-            enter = fadeIn(tween(180)) + scaleIn(initialScale = 0.85f),
-            exit = fadeOut(tween(220)),
-            modifier = Modifier.align(Alignment.CenterEnd).padding(end = 28.dp),
-        ) {
-            ChunkySlider(
-                value = volumeLevel,
-                icon = Icons.AutoMirrored.Rounded.VolumeUp,
-                label = "עוצמת שמע",
-            )
         }
 
         if (inPip) return@Box
 
-        // Center controls: Morphing Play/Pause Squircle + 10s skip buttons
+        // center: buffering pill OR play controls OR the error card – never two at once
         val center = when {
             error != null -> "error"
             buffering -> "buffering"
             controls -> "controls"
             else -> "none"
         }
-
         AnimatedContent(
             center,
             Modifier.align(Alignment.Center),
             transitionSpec = { (fadeIn(tween(220)) + scaleIn(initialScale = 0.92f)) togetherWith fadeOut(tween(150)) },
-            label = "center_controls",
+            label = "center",
         ) { mode ->
             when (mode) {
                 "buffering" -> BufferingPill()
-                "controls" -> {
-                    val cornerRadius by animateDpAsState(
-                        targetValue = if (playing) 38.dp else 20.dp,
-                        animationSpec = spring(dampingRatio = 0.4f, stiffness = 220f),
-                        label = "center_corner",
-                    )
-                    val squircleShape = RoundedCornerShape(cornerRadius)
-
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.spacedBy(28.dp),
+                "controls" -> Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(26.dp)) {
+                    val scheme = MaterialTheme.colorScheme
+                    ExpressiveButton(
+                        Icons.Rounded.SkipNext, "ערוץ הבא", RoundedCornerShape(24.dp), 52.dp, 72.dp,
+                        scheme.secondaryContainer, scheme.onSecondaryContainer,
+                    ) { switchTo(index + 1) }
+                    ExpressiveButton(
+                        if (playing) Icons.Rounded.Pause else Icons.Rounded.PlayArrow, "נגן / השהה", CircleShape, 84.dp, 84.dp,
+                        scheme.primaryContainer, scheme.onPrimaryContainer,
                     ) {
-                        // Rewind 10s frameless button (36.dp icon)
-                        Box(
-                            modifier = Modifier
-                                .size(54.dp)
-                                .tactileBounce(onClick = {
-                                    touchTick++
-                                    player.seekTo((player.currentPosition - 10000L).coerceAtLeast(0L))
-                                }),
-                            contentAlignment = Alignment.Center,
-                        ) {
-                            Icon(
-                                imageVector = Icons.Rounded.Replay10,
-                                contentDescription = "10 שניות אחורה",
-                                modifier = Modifier.size(36.dp),
-                                tint = scheme.onSurface,
-                            )
-                        }
-
-                        // Morphing Translucent Material You Squircle (48.dp frameless icon)
-                        Box(
-                            Modifier
-                                .size(80.dp)
-                                .tactileBounce(onClick = {
-                                    touchTick++
-                                    if (player.isPlaying) player.pause() else { player.volume = volumeLevel; player.play() }
-                                })
-                                .clip(squircleShape)
-                                .background(scheme.primaryContainer.copy(alpha = 0.55f))
-                                .specularBorder(squircleShape, alpha = 0.30f),
-                            contentAlignment = Alignment.Center,
-                        ) {
-                            Icon(
-                                imageVector = if (playing) Icons.Rounded.Pause else Icons.Rounded.PlayArrow,
-                                contentDescription = "נגן / השהה",
-                                modifier = Modifier.size(48.dp),
-                                tint = scheme.onPrimaryContainer,
-                            )
-                        }
-
-                        // Forward 10s frameless button (36.dp icon)
-                        Box(
-                            modifier = Modifier
-                                .size(54.dp)
-                                .tactileBounce(onClick = {
-                                    touchTick++
-                                    player.seekTo(player.currentPosition + 10000L)
-                                }),
-                            contentAlignment = Alignment.Center,
-                        ) {
-                            Icon(
-                                imageVector = Icons.Rounded.Forward10,
-                                contentDescription = "10 שניות קדימה",
-                                modifier = Modifier.size(36.dp),
-                                tint = scheme.onSurface,
-                            )
-                        }
+                        touchTick++
+                        if (player.isPlaying) player.pause() else { player.volume = 1.0f; player.play() }
                     }
+                    ExpressiveButton(
+                        Icons.Rounded.SkipPrevious, "ערוץ קודם", RoundedCornerShape(24.dp), 52.dp, 72.dp,
+                        scheme.secondaryContainer, scheme.onSecondaryContainer,
+                    ) { switchTo(index - 1) }
                 }
                 "error" -> ErrorCard(current, error.orEmpty(), onRetry = { attempt++ }, onNext = { switchTo(index + 1) })
                 else -> Spacer(Modifier.size(1.dp))
             }
         }
 
-        // Top Bar: Rating tags and channel info
-        AnimatedVisibility(
-            visible = controls || error != null,
-            enter = fadeIn(),
-            exit = fadeOut(),
-            modifier = Modifier.align(Alignment.TopCenter),
-        ) {
-            NuvioTopBar(current, logo(current), onBack = onClose)
+        AnimatedVisibility(controls || error != null, enter = fadeIn(), exit = fadeOut(), modifier = Modifier.align(Alignment.TopCenter)) {
+            TopBar(current, logo(current), onBack = onClose)
         }
-
-        // Bottom section: Gapped Scrub Bar + Time Capsules + Floating Dock
-        AnimatedVisibility(
-            visible = controls,
-            enter = fadeIn(),
-            exit = fadeOut(),
-            modifier = Modifier.align(Alignment.BottomCenter),
-        ) {
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .navigationBarsPadding()
-                    .padding(bottom = 12.dp),
-                horizontalAlignment = Alignment.CenterHorizontally,
-            ) {
-                // Gapped Scrub Bar & Time Capsules
-                NuvioScrubBar(
-                    positionMs = positionMs,
-                    durationMs = durationMs,
-                    onSeek = { targetMs -> player.seekTo(targetMs) },
-                )
-
-                Spacer(Modifier.height(8.dp))
-
-                // Bottom floating frosted dock (height = 50.dp, RoundedCornerShape(50))
-                NuvioDock(
-                    landscape = landscape,
-                    activeItem = activeDockItem,
-                    onItem = { key ->
-                        touchTick++
-                        activeDockItem = key
-                        when (key) {
-                            "speed" -> {
-                                val newSpeed = if (player.playbackParameters.speed >= 1.5f) 1.0f else player.playbackParameters.speed + 0.25f
-                                player.playbackParameters = PlaybackParameters(newSpeed)
-                            }
-                            "full" -> {
-                                landscape = !landscape
-                                (context as Activity).requestedOrientation =
-                                    if (landscape) ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE else ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
-                            }
-                            else -> sheet = key
+        AnimatedVisibility(controls, enter = fadeIn(), exit = fadeOut(), modifier = Modifier.align(Alignment.BottomCenter)) {
+            Dock(
+                landscape = landscape,
+                onItem = { key ->
+                    touchTick++
+                    haptic.performHapticFeedback(HapticFeedbackType.VirtualKey)
+                    when (key) {
+                        "pip" -> onEnterPip()
+                        "full" -> {
+                            landscape = !landscape
+                            (context as Activity).requestedOrientation =
+                                if (landscape) ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE else ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
                         }
-                    },
-                )
-            }
+                        else -> sheet = key
+                    }
+                },
+            )
         }
     }
 
     when (sheet) {
         "list" -> ChannelListSheet(list, index, logo, onPick = { switchTo(it); sheet = null }, onDismiss = { sheet = null })
         "audio" -> AudioSheet(player, tracks, onDismiss = { sheet = null })
-        "subs" -> SubtitlesSheet(player, tracks, onDismiss = { sheet = null })
+        "more" -> MoreSheet(current, prefs, onDismiss = { sheet = null })
     }
 }
 
-/** Chunky Material 3 gesture pill slider (44.dp x 180.dp, RoundedCornerShape(50)). */
-@Composable
-private fun ChunkySlider(
-    value: Float,
-    icon: ImageVector,
-    label: String,
-    modifier: Modifier = Modifier,
-) {
-    val scheme = MaterialTheme.colorScheme
-    val pillShape = RoundedCornerShape(50)
-    Box(
-        modifier = modifier
-            .width(44.dp)
-            .height(180.dp)
-            .clip(pillShape)
-            .background(scheme.surfaceContainerHighest.copy(alpha = 0.85f))
-            .specularBorder(pillShape, alpha = 0.32f),
-        contentAlignment = Alignment.BottomCenter,
-    ) {
-        // Filled primary track
-        Box(
-            Modifier
-                .fillMaxWidth()
-                .fillMaxHeight(value.coerceIn(0f, 1f))
-                .clip(pillShape)
-                .background(scheme.primary)
+/** Tap toggles the controls; a vertical swipe of 90 px changes the channel (up = next). Only on the video. */
+private fun Modifier.pointerInputs(onTap: () -> Unit, onSwipe: (Boolean) -> Unit): Modifier = this
+    .pointerInput(Unit) { detectTapGestures(onTap = { onTap() }) }
+    .pointerInput(Unit) {
+        var total = 0f
+        detectVerticalDragGestures(
+            onDragStart = { total = 0f },
+            onDragEnd = { if (abs(total) > 90f) onSwipe(total < 0) },
+            onVerticalDrag = { _, dy -> total += dy },
         )
-        // Icon
-        Box(
-            Modifier
-                .fillMaxWidth()
-                .padding(bottom = 12.dp),
-            contentAlignment = Alignment.Center,
-        ) {
-            Icon(
-                icon,
-                label,
-                Modifier.size(22.dp),
-                tint = if (value > 0.16f) scheme.onPrimary else scheme.onSurfaceVariant,
-            )
-        }
     }
-}
 
-/** 10s skip button with tactile bounce. */
+/** Material 3 Expressive oversized control: a tonal geometric shape with a press bounce and a haptic tick. */
 @Composable
-private fun ExpressiveSkipPill(
-    icon: ImageVector,
-    contentDescription: String,
-    onClick: () -> Unit,
-) {
-    val scheme = MaterialTheme.colorScheme
-    val pillShape = RoundedCornerShape(26.dp)
-    Box(
-        Modifier
-            .size(width = 54.dp, height = 74.dp)
-            .tactileBounce(onClick = onClick)
-            .clip(pillShape)
-            .background(scheme.secondaryContainer.copy(alpha = 0.85f))
-            .specularBorder(pillShape, alpha = 0.28f),
-        contentAlignment = Alignment.Center,
-    ) {
-        Icon(icon, contentDescription, Modifier.size(30.dp), tint = scheme.onSecondaryContainer)
-    }
-}
-
-/**
- * Nuvio-style gapped scrub bar and time pills:
- * Time capsules in secondaryContainer.copy(alpha = 0.7f) with stretched variable typography.
- */
-@Composable
-private fun NuvioScrubBar(
-    positionMs: Long,
-    durationMs: Long,
-    onSeek: (Long) -> Unit,
-) {
-    val scheme = MaterialTheme.colorScheme
-    val haptic = LocalHapticFeedback.current
-    val progress = (positionMs.toFloat() / durationMs.coerceAtLeast(1L)).coerceIn(0f, 1f)
-    var isDragging by remember { mutableStateOf(false) }
-    var scrubProgress by remember { mutableFloatStateOf(progress) }
-    val displayProgress = if (isDragging) scrubProgress else progress
-
-    Row(
-        Modifier
-            .fillMaxWidth()
-            .widthIn(max = 680.dp)
-            .padding(horizontal = 20.dp),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(12.dp),
-    ) {
-        // Left time capsule (02:33)
-        Box(
-            Modifier
-                .clip(RoundedCornerShape(50))
-                .background(scheme.secondaryContainer.copy(alpha = 0.70f))
-                .padding(horizontal = 10.dp, vertical = 4.dp),
-            contentAlignment = Alignment.Center,
-        ) {
-            Text(
-                text = formatTime(if (isDragging) (scrubProgress * durationMs).toLong() else positionMs),
-                color = scheme.onSecondaryContainer,
-                fontSize = 12.sp,
-                fontWeight = FontWeight(800),
-                style = com.israeltv.plus.ui.theme.StretchedNumberStyle,
-                modifier = Modifier.graphicsLayer { scaleY = 1.18f },
-            )
-        }
-
-        // Gapped track
-        Box(
-            Modifier
-                .weight(1f)
-                .height(30.dp)
-                .pointerInput(Unit) {
-                    detectHorizontalDragGestures(
-                        onDragStart = { offset ->
-                            isDragging = true
-                            scrubProgress = (offset.x / size.width).coerceIn(0f, 1f)
-                            triggerScrubTick(haptic)
-                        },
-                        onDragEnd = {
-                            isDragging = false
-                            onSeek((scrubProgress * durationMs).toLong())
-                        },
-                        onDragCancel = { isDragging = false },
-                        onHorizontalDrag = { change, _ ->
-                            val newP = (change.position.x / size.width).coerceIn(0f, 1f)
-                            val prevStep = (scrubProgress * 40).toInt()
-                            val newStep = (newP * 40).toInt()
-                            if (prevStep != newStep) triggerScrubTick(haptic)
-                            scrubProgress = newP
-                        }
-                    )
-                },
-            contentAlignment = Alignment.CenterStart,
-        ) {
-            // Inactive track
-            Box(
-                Modifier
-                    .fillMaxWidth()
-                    .height(4.dp)
-                    .clip(RoundedCornerShape(2.dp))
-                    .background(scheme.surfaceContainerHighest.copy(alpha = 0.55f))
-            )
-            // Active track in colorScheme.primary
-            Box(
-                Modifier
-                    .fillMaxWidth(displayProgress)
-                    .height(4.dp)
-                    .clip(RoundedCornerShape(2.dp))
-                    .background(scheme.primary)
-            )
-            // Vertical thumb separator with gap (matching Image 1)
-            Box(
-                Modifier
-                    .fillMaxWidth(displayProgress)
-                    .padding(end = 2.dp),
-                contentAlignment = Alignment.CenterEnd,
-            ) {
-                Box(
-                    Modifier
-                        .size(width = 4.dp, height = 14.dp)
-                        .clip(RoundedCornerShape(2.dp))
-                        .background(scheme.primary)
-                )
-            }
-        }
-
-        // Right time capsule (46:01)
-        Box(
-            Modifier
-                .clip(RoundedCornerShape(50))
-                .background(scheme.secondaryContainer.copy(alpha = 0.70f))
-                .padding(horizontal = 10.dp, vertical = 4.dp),
-            contentAlignment = Alignment.Center,
-        ) {
-            Text(
-                text = formatTime(durationMs),
-                color = scheme.onSecondaryContainer,
-                fontSize = 12.sp,
-                fontWeight = FontWeight(800),
-                style = com.israeltv.plus.ui.theme.StretchedNumberStyle,
-                modifier = Modifier.graphicsLayer { scaleY = 1.18f },
-            )
-        }
-    }
-}
-
-/**
- * Nuvio Player Bottom Floating Glass Dock (height = 50.dp, RoundedCornerShape(50)).
- * Tapping any action highlights it with an expanding primaryContainer tonal pill.
- */
-@Composable
-private fun NuvioDock(
-    landscape: Boolean,
-    activeItem: String?,
-    onItem: (String) -> Unit,
-) {
-    val scheme = MaterialTheme.colorScheme
-    val pillShape = RoundedCornerShape(50)
-
-    Row(
-        Modifier
-            .padding(horizontal = 20.dp, vertical = 4.dp)
-            .widthIn(max = 500.dp)
-            .fillMaxWidth()
-            .height(48.dp)
-            .clip(pillShape)
-            .background(scheme.surfaceContainerHigh.copy(alpha = 0.65f))
-            .specularBorder(pillShape, alpha = 0.25f)
-            .padding(horizontal = 4.dp, vertical = 2.dp),
-        horizontalArrangement = Arrangement.SpaceEvenly,
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-        NuvioDockChip(Icons.AutoMirrored.Rounded.List, "ערוצים", active = activeItem == "list") { onItem("list") }
-        NuvioDockChip(Icons.Rounded.Audiotrack, "שמע", active = activeItem == "audio") { onItem("audio") }
-        NuvioDockChip(Icons.Rounded.ClosedCaption, "כתוביות", active = activeItem == "subs") { onItem("subs") }
-        NuvioDockChip(Icons.Rounded.Speed, "מהירות", active = activeItem == "speed") { onItem("speed") }
-        NuvioDockChip(
-            if (landscape) Icons.Rounded.FullscreenExit else Icons.Rounded.Fullscreen,
-            "מסך מלא",
-            active = activeItem == "full",
-        ) { onItem("full") }
-    }
-}
-
-@Composable
-private fun androidx.compose.foundation.layout.RowScope.NuvioDockChip(
+private fun ExpressiveButton(
     icon: ImageVector,
     label: String,
-    active: Boolean,
+    shape: Shape,
+    width: Dp,
+    height: Dp,
+    container: Color,
+    content: Color,
     onClick: () -> Unit,
 ) {
-    val scheme = MaterialTheme.colorScheme
-    val pillShape = RoundedCornerShape(50)
-    val containerColor = if (active) scheme.primaryContainer else Color.Transparent
-    val contentColor = if (active) scheme.onPrimaryContainer else scheme.onSurface
-
+    val interaction = remember { MutableInteractionSource() }
+    val haptic = LocalHapticFeedback.current
     Box(
         Modifier
-            .weight(1f)
-            .fillMaxHeight()
-            .clip(pillShape)
-            .background(containerColor)
-            .tactileBounce(onClick = onClick),
+            .size(width, height)
+            .pressPhysics(interaction, tilt = false)
+            .clip(shape)
+            .background(container)
+            .clickable(interaction, ripple()) {
+                haptic.performHapticFeedback(HapticFeedbackType.VirtualKey)
+                onClick()
+            },
         contentAlignment = Alignment.Center,
     ) {
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(4.dp),
-        ) {
-            Icon(icon, label, Modifier.size(17.dp), tint = contentColor)
-            Text(label, color = contentColor, fontSize = 11.sp, fontWeight = FontWeight.Bold)
-        }
-    }
-}
-
-/** Top Bar with rating pills matching Image 1 layout. */
-@Composable
-private fun NuvioTopBar(ch: Channel, logo: String, onBack: () -> Unit) {
-    val scheme = MaterialTheme.colorScheme
-    val pulse by rememberInfiniteTransition(label = "live_pulse")
-        .animateFloat(1f, 0.25f, infiniteRepeatable(tween(900), RepeatMode.Reverse), label = "dot")
-
-    Row(
-        Modifier
-            .fillMaxWidth()
-            .background(
-                Brush.verticalGradient(
-                    listOf(scheme.background.copy(alpha = 0.82f), Color.Transparent)
-                )
-            )
-            .windowInsetsPadding(WindowInsets.statusBars)
-            .padding(horizontal = 16.dp, vertical = 12.dp),
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-        GlassIconButton(Icons.AutoMirrored.Rounded.ArrowBack, "חזרה", onBack, size = 42.dp, tint = scheme.surfaceContainerHighest.copy(alpha = 0.6f))
-        Spacer(Modifier.width(12.dp))
-
-        // Content rating metadata pills (Image 1 reference)
-        Column(Modifier.weight(1f)) {
-            Text(
-                ch.name,
-                color = scheme.onSurface,
-                fontSize = 17.sp,
-                fontWeight = FontWeight.ExtraBold,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis,
-            )
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(6.dp),
-                modifier = Modifier.padding(top = 2.dp),
-            ) {
-                Box(Modifier.size(7.dp).alpha(pulse).clip(CircleShape).background(scheme.error))
-                Text(
-                    "LIVE",
-                    color = scheme.onSurface,
-                    fontSize = 11.sp,
-                    fontWeight = FontWeight.ExtraBold,
-                    style = com.israeltv.plus.ui.theme.StretchedNumberStyle,
-                    modifier = Modifier.graphicsLayer { scaleY = 1.18f },
-                )
-                if (ch.badge.isNotEmpty()) {
-                    Box(
-                        Modifier
-                            .clip(RoundedCornerShape(4.dp))
-                            .background(scheme.tertiaryContainer)
-                            .padding(horizontal = 5.dp, vertical = 1.dp)
-                    ) {
-                        Text(
-                            ch.badge,
-                            color = scheme.onTertiaryContainer,
-                            fontSize = 10.sp,
-                            fontWeight = FontWeight.Bold,
-                            style = com.israeltv.plus.ui.theme.StretchedNumberStyle,
-                            modifier = Modifier.graphicsLayer { scaleY = 1.18f },
-                        )
-                    }
-                }
-                Text(
-                    "${ch.number}",
-                    color = scheme.onSurfaceVariant,
-                    fontSize = 11.sp,
-                    fontWeight = FontWeight(800),
-                    style = com.israeltv.plus.ui.theme.StretchedNumberStyle,
-                    modifier = Modifier.graphicsLayer { scaleY = 1.18f },
-                )
-            }
-        }
+        Icon(icon, label, Modifier.size(minOf(width, height) * 0.5f), tint = content)
     }
 }
 
 @Composable
 private fun BufferingPill() {
-    val scheme = MaterialTheme.colorScheme
     val shape = RoundedCornerShape(28.dp)
     Row(
         Modifier
             .clip(shape)
-            .background(scheme.surfaceContainerHighest.copy(alpha = 0.85f))
+            .background(GlassDark)
             .specularBorder(shape)
             .padding(horizontal = 22.dp, vertical = 14.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        CircularWavyProgressIndicator(Modifier.size(28.dp), color = scheme.primary)
+        CircularWavyProgressIndicator(Modifier.size(30.dp), color = MaterialTheme.colorScheme.primary)
         Spacer(Modifier.width(14.dp))
-        Text("מתחבר לשידור...", color = scheme.onSurface, fontSize = 14.sp, fontWeight = FontWeight.Medium)
+        Text("מתחבר לשידור...", color = Color.White, fontSize = 14.sp, fontWeight = FontWeight.Medium)
     }
 }
 
 @Composable
 private fun ErrorCard(ch: Channel, reason: String, onRetry: () -> Unit, onNext: () -> Unit) {
-    val scheme = MaterialTheme.colorScheme
     val shape = RoundedCornerShape(32.dp)
     Column(
         Modifier
             .padding(28.dp)
             .clip(shape)
-            .background(scheme.surfaceContainerHigh.copy(alpha = 0.9f))
+            .background(Color.Black.copy(alpha = 0.6f))
             .specularBorder(shape)
             .padding(24.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        Text("השידור לא זמין כרגע", color = scheme.onSurface, fontSize = 20.sp, fontWeight = FontWeight.ExtraBold)
+        Text("השידור לא זמין כרגע", color = Color.White, fontSize = 20.sp, fontWeight = FontWeight.ExtraBold)
         Text(
             "לא הצלחנו להתחבר ל\"${ch.name}\" ($reason). ייתכן שהשידור כבוי זמנית.",
-            color = scheme.onSurfaceVariant, fontSize = 14.sp, modifier = Modifier.padding(top = 8.dp, bottom = 18.dp),
+            color = Color.White.copy(alpha = 0.75f), fontSize = 14.sp, modifier = Modifier.padding(top = 8.dp, bottom = 18.dp),
         )
         Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
             Button(onRetry, shape = RoundedCornerShape(50)) {
@@ -993,6 +484,84 @@ private fun ErrorCard(ch: Channel, reason: String, onRetry: () -> Unit, onNext: 
             }
             FilledTonalButton(onNext, shape = RoundedCornerShape(50)) { Text("ערוץ הבא", fontWeight = FontWeight.Bold) }
         }
+    }
+}
+
+/** Back, the channel logo badge, the title, a pulsing red LIVE dot and the quality, over a top scrim. */
+@Composable
+private fun TopBar(ch: Channel, logo: String, onBack: () -> Unit) {
+    val pulse by rememberInfiniteTransition(label = "live")
+        .animateFloat(1f, 0.25f, infiniteRepeatable(tween(900), RepeatMode.Reverse), label = "dot")
+    Row(
+        Modifier
+            .fillMaxWidth()
+            .background(Brush.verticalGradient(listOf(Color.Black.copy(alpha = 0.75f), Color.Transparent)))
+            .windowInsetsPadding(WindowInsets.statusBars)
+            .padding(horizontal = 16.dp, vertical = 14.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        GlassIconButton(Icons.AutoMirrored.Rounded.ArrowBack, "חזרה", onBack, size = 44.dp, tint = GlassDark)
+        Spacer(Modifier.width(12.dp))
+        Box(
+            Modifier.size(width = 64.dp, height = 40.dp).clip(RoundedCornerShape(12.dp)).background(Color.White.copy(alpha = 0.12f)),
+            contentAlignment = Alignment.Center,
+        ) { ChannelLogo(logo, Modifier.size(width = 52.dp, height = 30.dp), ch.isRadio) }
+        Spacer(Modifier.width(12.dp))
+        Column(Modifier.weight(1f)) {
+            Text(ch.name, color = Color.White, fontSize = 18.sp, fontWeight = FontWeight.ExtraBold, maxLines = 1, overflow = TextOverflow.Ellipsis)
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Box(Modifier.size(8.dp).alpha(pulse).clip(CircleShape).background(Color(0xFFFF3B30)))
+                Text(" LIVE", color = Color.White, fontSize = 12.sp, fontWeight = FontWeight.ExtraBold)
+                if (ch.badge.isNotEmpty()) {
+                    Text(
+                        ch.badge,
+                        Modifier.padding(start = 8.dp).clip(RoundedCornerShape(6.dp)).background(Color.White.copy(alpha = 0.18f)).padding(horizontal = 6.dp),
+                        color = Color.White, fontSize = 11.sp, fontWeight = FontWeight.Bold,
+                    )
+                }
+                Text("  ${ch.number}", color = Color.White.copy(alpha = 0.7f), fontSize = 12.sp)
+            }
+        }
+    }
+}
+
+/**
+ * The compact player dock (max 400 dp wide, 58 dp): one capsule of the glass recipe (deep ink at 62% with the
+ * palette tint), the specular edge, evenly spaced icon + label items.
+ */
+@Composable
+private fun Dock(landscape: Boolean, onItem: (String) -> Unit) {
+    val shape = RoundedCornerShape(50)
+    val glass = MaterialTheme.colorScheme.surfaceTint.copy(alpha = 0.18f).compositeOver(Color(0xFF14141C).copy(alpha = 0.62f))
+    Row(
+        Modifier
+            .navigationBarsPadding()
+            .padding(horizontal = 20.dp, vertical = 22.dp)
+            .widthIn(max = 400.dp)
+            .fillMaxWidth()
+            .height(58.dp)
+            .clip(shape)
+            .background(glass)
+            .specularBorder(shape, alpha = 0.32f),
+        horizontalArrangement = Arrangement.SpaceEvenly,
+    ) {
+        DockItem(Icons.AutoMirrored.Rounded.List, "ערוצים") { onItem("list") }
+        DockItem(Icons.Rounded.Audiotrack, "שמע") { onItem("audio") }
+        DockItem(Icons.Rounded.PictureInPictureAlt, "חלון צף") { onItem("pip") }
+        DockItem(Icons.Rounded.MoreHoriz, "אפשרויות") { onItem("more") }
+        DockItem(if (landscape) Icons.Rounded.FullscreenExit else Icons.Rounded.Fullscreen, "מסך מלא") { onItem("full") }
+    }
+}
+
+@Composable
+private fun androidx.compose.foundation.layout.RowScope.DockItem(icon: ImageVector, label: String, onClick: () -> Unit) {
+    Column(
+        Modifier.weight(1f).fillMaxHeight().clickable(onClick = onClick),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center,
+    ) {
+        Icon(icon, label, Modifier.size(22.dp), tint = Color.White)
+        Text(label, color = Color.White.copy(alpha = 0.85f), fontSize = 10.sp, fontWeight = FontWeight.Medium)
     }
 }
 
@@ -1012,16 +581,7 @@ private fun ChannelListSheet(list: List<Channel>, current: Int, logo: (Channel) 
                         .padding(horizontal = 20.dp, vertical = 10.dp),
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
-                    Text(
-                        text = "${ch.number}",
-                        modifier = Modifier
-                            .width(44.dp)
-                            .graphicsLayer { scaleY = 1.18f },
-                        color = scheme.onSurfaceVariant,
-                        fontSize = 13.sp,
-                        fontWeight = FontWeight(800),
-                        style = com.israeltv.plus.ui.theme.StretchedNumberStyle,
-                    )
+                    Text("${ch.number}", Modifier.width(44.dp), color = scheme.onSurfaceVariant, fontSize = 13.sp)
                     Box(Modifier.size(width = 64.dp, height = 38.dp).clip(RoundedCornerShape(10.dp)).background(scheme.surfaceContainerHighest), contentAlignment = Alignment.Center) {
                         ChannelLogo(logo(ch), Modifier.size(width = 52.dp, height = 28.dp), ch.isRadio)
                     }
@@ -1033,6 +593,7 @@ private fun ChannelListSheet(list: List<Channel>, current: Int, logo: (Channel) 
     }
 }
 
+/** Audio tracks of the stream (language versions); choosing one never changes the volume. */
 @Composable
 private fun AudioSheet(player: ExoPlayer, tracks: Tracks, onDismiss: () -> Unit) {
     val scheme = MaterialTheme.colorScheme
@@ -1054,6 +615,7 @@ private fun AudioSheet(player: ExoPlayer, tracks: Tracks, onDismiss: () -> Unit)
                         .clickable {
                             player.trackSelectionParameters = player.trackSelectionParameters.buildUpon()
                                 .setOverrideForType(TrackSelectionOverride(g.mediaTrackGroup, 0)).build()
+                            player.volume = 1.0f
                             onDismiss()
                         }
                         .padding(16.dp)
@@ -1064,46 +626,17 @@ private fun AudioSheet(player: ExoPlayer, tracks: Tracks, onDismiss: () -> Unit)
 }
 
 @Composable
-private fun SubtitlesSheet(player: ExoPlayer, tracks: Tracks, onDismiss: () -> Unit) {
+private fun MoreSheet(ch: Channel, prefs: AppPrefs, onDismiss: () -> Unit) {
     val scheme = MaterialTheme.colorScheme
-    val groups = tracks.groups.filter { it.type == C.TRACK_TYPE_TEXT }
     ModalBottomSheet(onDismissRequest = onDismiss, containerColor = scheme.surfaceContainer) {
         Column(Modifier.padding(horizontal = 24.dp).padding(bottom = 32.dp)) {
-            Text("כתוביות", fontSize = 22.sp, fontWeight = FontWeight.ExtraBold, color = scheme.onSurface, modifier = Modifier.padding(bottom = 12.dp))
-            if (groups.isEmpty()) {
-                Text("אין כתוביות זמינות לשידור זה", color = scheme.onSurfaceVariant)
-            } else {
-                Row(
-                    Modifier
-                        .fillMaxWidth()
-                        .clip(RoundedCornerShape(16.dp))
-                        .background(if (groups.none { it.isSelected }) scheme.secondaryContainer else Color.Transparent)
-                        .clickable {
-                            player.trackSelectionParameters = player.trackSelectionParameters.buildUpon()
-                                .setTrackTypeDisabled(C.TRACK_TYPE_TEXT, true).build()
-                            onDismiss()
-                        }
-                        .padding(16.dp)
-                ) { Text("כבוי", color = scheme.onSurface, fontSize = 16.sp, fontWeight = FontWeight.Bold) }
-
-                groups.forEach { g ->
-                    val f = g.getTrackFormat(0)
-                    val name = f.label ?: f.language?.let { Locale.forLanguageTag(it).getDisplayLanguage(Locale.forLanguageTag("he")) } ?: "כתוביות"
-                    Row(
-                        Modifier
-                            .fillMaxWidth()
-                            .clip(RoundedCornerShape(16.dp))
-                            .background(if (g.isSelected) scheme.secondaryContainer else Color.Transparent)
-                            .clickable {
-                                player.trackSelectionParameters = player.trackSelectionParameters.buildUpon()
-                                    .setTrackTypeDisabled(C.TRACK_TYPE_TEXT, false)
-                                    .setOverrideForType(TrackSelectionOverride(g.mediaTrackGroup, 0)).build()
-                                onDismiss()
-                            }
-                            .padding(16.dp)
-                    ) { Text(name, color = scheme.onSurface, fontSize = 16.sp, fontWeight = FontWeight.Bold) }
-                }
+            Text(ch.name, fontSize = 22.sp, fontWeight = FontWeight.ExtraBold, color = scheme.onSurface)
+            if (ch.desc.isNotEmpty()) Text(ch.desc, color = scheme.onSurfaceVariant, modifier = Modifier.padding(top = 6.dp))
+            Spacer(Modifier.height(18.dp))
+            FilledTonalButton({ prefs.toggleFavorite(ch.id) }, shape = RoundedCornerShape(50)) {
+                Text(if (prefs.isFavorite(ch.id)) "★ הסרה מהמועדפים" else "☆ הוספה למועדפים", fontWeight = FontWeight.Bold)
             }
         }
     }
 }
+

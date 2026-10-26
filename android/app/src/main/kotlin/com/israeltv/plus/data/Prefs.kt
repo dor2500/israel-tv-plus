@@ -60,8 +60,6 @@ class AppPrefs(context: Context) {
         private set
     var launchSound by mutableStateOf(sp.getBoolean("launchSound", true))
         private set
-    var promptProfileOnStart by mutableStateOf(sp.getBoolean("promptProfileOnStart", true))
-        private set
     /** The update version whose modal was already shown on start (it opens once per version). */
     var updatePrompted by mutableStateOf(sp.getString("phoneUpdatePrompted", "") ?: "")
         private set
@@ -108,11 +106,6 @@ class AppPrefs(context: Context) {
         sp.edit { putBoolean("launchSound", on) }
     }
 
-    fun setPromptProfileOnStartEnabled(on: Boolean) {
-        promptProfileOnStart = on
-        sp.edit { putBoolean("promptProfileOnStart", on) }
-    }
-
     fun markUpdatePrompted(version: String) {
         updatePrompted = version
         sp.edit { putString("phoneUpdatePrompted", version) }
@@ -145,3 +138,4 @@ class AppPrefs(context: Context) {
     private fun android.content.SharedPreferences.list(key: String): List<String> =
         getString(key, "").orEmpty().split(',').filter { it.isNotEmpty() }
 }
+

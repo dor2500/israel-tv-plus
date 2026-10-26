@@ -15,7 +15,7 @@ import java.io.File
 
 /** The published site: channel list, logos, version.json (GitHub Pages). */
 const val REMOTE = "https://dor2500.github.io/israel-tv-plus/"
-const val USER_AGENT = "Mozilla/5.0 (Linux; Android 14) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Mobile Safari/537.36 IsraelTVPlus/4 AndroidPhone"
+const val USER_AGENT = "Mozilla/5.0 (Linux; Android 14) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Mobile Safari/537.36 IsraelTVPlus/3 AndroidPhone"
 
 /** One entry of channels.json (the same file the web app, the M3U playlists and Stremio are made from). */
 @Immutable
@@ -83,14 +83,6 @@ fun Channel.subtitle(): String = when {
     else -> shortCategory(category)
 }
 
-/** True when the channel represents local Israeli content (for the 'רק ישראלי' filter). */
-fun Channel.isIsraeli(): Boolean =
-    categoryEn.equals("israel", ignoreCase = true) ||
-    countryHe == "ישראל" ||
-    category.contains("ישראל") ||
-    lang.equals("he", ignoreCase = true) ||
-    name.any { it in '\u0590'..'\u05FF' }
-
 /**
  * The channel list: the copy bundled in the APK first (instant start, works offline), then the published list from
  * GitHub, which is kept in filesDir for the next start. Logos come from the APK when it has the file, else the site.
@@ -143,3 +135,4 @@ class ChannelStore(private val context: Context, private val http: OkHttpClient)
         ChannelData(all, cats, all.associateBy { it.id }, israel.filter { !it.isRadio }.take(8))
     }.getOrNull()
 }
+

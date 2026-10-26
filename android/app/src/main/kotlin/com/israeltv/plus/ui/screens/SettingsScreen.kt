@@ -29,7 +29,6 @@ import androidx.compose.material.icons.rounded.MusicNote
 import androidx.compose.material.icons.rounded.Palette
 import androidx.compose.material.icons.rounded.SystemUpdate
 import androidx.compose.material.icons.rounded.Tv
-import androidx.compose.material.icons.rounded.Watch
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
@@ -63,7 +62,7 @@ import java.util.Date
 import java.util.Locale
 
 @Composable
-fun SettingsScreen(data: ChannelData?, prefs: AppPrefs, updater: Updater, onProfiles: () -> Unit, onStyle: () -> Unit, onWatch: () -> Unit) {
+fun SettingsScreen(data: ChannelData?, prefs: AppPrefs, updater: Updater, onProfiles: () -> Unit, onStyle: () -> Unit) {
     val ctx = LocalContext.current
     val haptic = LocalHapticFeedback.current
     LazyColumn(Modifier.fillMaxSize(), contentPadding = feedPadding(), flingBehavior = rememberBitChordFlingBehavior()) {
@@ -75,20 +74,6 @@ fun SettingsScreen(data: ChannelData?, prefs: AppPrefs, updater: Updater, onProf
                 SettingRow(Icons.Rounded.Face, "פרופילים", "${prefs.profile.name} · ${prefs.profiles.size} פרופילים", onClick = onProfiles) {
                     AsyncImage(avatarUrl(prefs.avatar), null, Modifier.size(34.dp))
                 }
-                SettingRow(
-                    Icons.Rounded.Face,
-                    "בקש בחירת פרופיל בפתיחה",
-                    "מעבר ישיר למסך 'מי צופה?' בעת פתיחת האפליקציה",
-                    onClick = {
-                        haptic.performHapticFeedback(if (prefs.promptProfileOnStart) HapticFeedbackType.ToggleOff else HapticFeedbackType.ToggleOn)
-                        prefs.setPromptProfileOnStartEnabled(!prefs.promptProfileOnStart)
-                    },
-                ) {
-                    Switch(prefs.promptProfileOnStart, {
-                        haptic.performHapticFeedback(if (it) HapticFeedbackType.ToggleOn else HapticFeedbackType.ToggleOff)
-                        prefs.setPromptProfileOnStartEnabled(it)
-                    })
-                }
                 SettingRow(Icons.Rounded.MusicNote, "צליל פתיחה", "צליל קצר כשהאפליקציה נפתחת (שקט כשהטלפון על שקט)",
                     onClick = {
                         haptic.performHapticFeedback(if (prefs.launchSound) HapticFeedbackType.ToggleOff else HapticFeedbackType.ToggleOn)
@@ -99,13 +84,6 @@ fun SettingsScreen(data: ChannelData?, prefs: AppPrefs, updater: Updater, onProf
                         prefs.setLaunchSoundOn(it)
                     })
                 }
-            }
-            Spacer(Modifier.height(28.dp))
-        }
-        item(key = "watch") {
-            SectionHeader("שעון חכם")
-            SettingsGroup {
-                SettingRow(Icons.Rounded.Watch, "התקנה בשעון", "ישראל TV+ לשעון Wear OS – מתקינים מכאן, בלי Google Play", onClick = onWatch)
             }
             Spacer(Modifier.height(28.dp))
         }
@@ -242,3 +220,4 @@ private fun SettingRow(
         }
     }
 }
+

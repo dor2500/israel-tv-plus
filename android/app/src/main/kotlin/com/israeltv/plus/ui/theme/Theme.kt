@@ -15,9 +15,7 @@ import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.staticCompositionLocalOf
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.platform.LocalView
@@ -47,35 +45,22 @@ val Rubik = FontFamily(
 )
 
 private val Base = Typography()
-private val Tight = (-0.5).sp
-
-/** Stretched Expressive Numbers (Material 3 Expressive): wght ExtraBold (800), tnum, -0.5sp tracking, scaleY = 1.15f. */
-val StretchedNumberStyle = TextStyle(
-    fontFamily = Rubik,
-    fontWeight = FontWeight.ExtraBold,
-    fontFeatureSettings = "tnum",
-    letterSpacing = (-0.5).sp,
-)
-
-fun Modifier.stretchedExpressive(scaleY: Float = 1.15f): Modifier = this.graphicsLayer {
-    this.scaleY = scaleY
-}
+private val Tight = (-0.4).sp
 
 private fun TextStyle.rubik(weight: FontWeight? = null, tracking: Boolean = false) = copy(
     fontFamily = Rubik,
     fontWeight = weight ?: fontWeight,
     letterSpacing = if (tracking) Tight else 0.sp,
-    fontFeatureSettings = "tnum",
 )
 
 /** Heavy display weights with tight optical tracking; body text in Rubik without the Latin letter-spacing. */
 private val ItvTypography = Typography(
-    displayLarge = Base.displayLarge.rubik(FontWeight(800), true),
-    displayMedium = Base.displayMedium.rubik(FontWeight(800), true),
-    displaySmall = Base.displaySmall.rubik(FontWeight(800), true),
-    headlineLarge = Base.headlineLarge.rubik(FontWeight(800), true),
-    headlineMedium = Base.headlineMedium.rubik(FontWeight(800), true),
-    headlineSmall = Base.headlineSmall.rubik(FontWeight(800), true),
+    displayLarge = Base.displayLarge.rubik(FontWeight.Black, true),
+    displayMedium = Base.displayMedium.rubik(FontWeight.Black, true),
+    displaySmall = Base.displaySmall.rubik(FontWeight.ExtraBold, true),
+    headlineLarge = Base.headlineLarge.rubik(FontWeight.ExtraBold, true),
+    headlineMedium = Base.headlineMedium.rubik(FontWeight.ExtraBold, true),
+    headlineSmall = Base.headlineSmall.rubik(FontWeight.ExtraBold, true),
     titleLarge = Base.titleLarge.rubik(FontWeight.ExtraBold, true),
     titleMedium = Base.titleMedium.rubik(FontWeight.Bold),
     titleSmall = Base.titleSmall.rubik(FontWeight.Bold),
@@ -136,3 +121,4 @@ private fun animateScheme(t: ColorScheme): ColorScheme {
         surfaceContainerHighest = a(t.surfaceContainerHighest),
     )
 }
+

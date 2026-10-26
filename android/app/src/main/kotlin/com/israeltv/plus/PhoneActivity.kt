@@ -39,7 +39,6 @@ import com.israeltv.plus.data.Updater
 import com.israeltv.plus.ui.ItvApp
 import com.israeltv.plus.ui.theme.ItvTheme
 import kotlinx.coroutines.launch
-import com.israeltv.plus.data.WatchInstaller
 import okhttp3.OkHttpClient
 import java.util.concurrent.TimeUnit
 
@@ -62,7 +61,6 @@ class PhoneActivity : ComponentActivity() {
     private val inPip = mutableStateOf(false)
     private var playing = false
     private val ready = mutableStateOf(false)
-    private var updater: Updater? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         if (isTv()) {
@@ -100,8 +98,7 @@ class PhoneActivity : ComponentActivity() {
         }
 
         val store = ChannelStore(applicationContext, http)
-        val updater = Updater(applicationContext, http, lifecycleScope).also { this.updater = it }
-        val watch = WatchInstaller(applicationContext, http, lifecycleScope)
+        val updater = Updater(applicationContext, http, lifecycleScope)
         ContextCompat.registerReceiver(
             this, updater.statusReceiver, IntentFilter(Updater.ACTION_INSTALL_STATUS), ContextCompat.RECEIVER_NOT_EXPORTED,
         )
@@ -118,7 +115,6 @@ class PhoneActivity : ComponentActivity() {
                     store = store,
                     prefs = prefs,
                     updater = updater,
-                    watch = watch,
                     inPip = inPip.value,
                     coldStart = savedInstanceState == null,
                     onPlaying = { on -> playing = on; updatePip() },
@@ -126,12 +122,6 @@ class PhoneActivity : ComponentActivity() {
                 )
             }
         }
-    }
-
-    override fun onDestroy() {
-        updater?.let { u -> runCatching { unregisterReceiver(u.statusReceiver) } }
-        updater = null
-        super.onDestroy()
     }
 
     private fun isTv(): Boolean {
@@ -186,10 +176,23 @@ class PhoneActivity : ComponentActivity() {
         }
     }
 
-    /** Pure synthesized cinematic deep bass startup sound, only when the ringer is on. */
+    /** res/raw/launch.wav (tools/make_launch_sound.py), only when the ringer is on. */
     private fun playLaunchSound() {
         val am = getSystemService(Context.AUDIO_SERVICE) as? AudioManager ?: return
         if (am.ringerMode != AudioManager.RINGER_MODE_NORMAL) return
-        com.israeltv.plus.audio.CinematicBassSound.play()
+        runCatching {
+            val pool = SoundPool.Builder().setMaxStreams(1).setAudioAttributes(
+                AudioAttributes.Builder()
+                    .setUsage(AudioAttributes.USAGE_ASSISTANCE_SONIFICATION)
+                    .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                    .build()
+            ).build()
+            pool.setOnLoadCompleteListener { sp, id, status ->
+                if (status == 0) sp.play(id, 0.55f, 0.55f, 1, 0, 1f)
+                Handler(Looper.getMainLooper()).postDelayed({ sp.release() }, 2500)
+            }
+            pool.load(this, R.raw.launch, 1)
+        }
     }
 }
+

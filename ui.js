@@ -28,8 +28,7 @@ window.ITV_ICONS = {
   kids: 'M12 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm9 7h-5v12c0 .55-.45 1-1 1s-1-.45-1-1v-5h-2v5c0 .55-.45 1-1 1s-1-.45-1-1V9H3c-.55 0-1-.45-1-1s.45-1 1-1h18c.55 0 1 .45 1 1s-.45 1-1 1z',
   pip: 'M18 7h-6c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1h6c.55 0 1-.45 1-1V8c0-.55-.45-1-1-1zm3-4H3c-1.1 0-2 .9-2 2v14c0 1.1.9 1.98 2 1.98h18c1.1 0 2-.88 2-1.98V5c0-1.1-.9-2-2-2zm-1 16.01H4c-.55 0-1-.45-1-1V5.98c0-.55.45-1 1-1h16c.55 0 1 .45 1 1v12.03c0 .55-.45 1-1 1z',
   chevron: 'M14.71 6.71c-.39-.39-1.02-.39-1.41 0L8.71 11.3c-.39.39-.39 1.02 0 1.41l4.59 4.59c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41L10.83 12l3.88-3.88c.39-.39.38-1.03 0-1.41z',
-  radio: 'M3.24 6.15C2.51 6.43 2 7.17 2 8v12c0 1.1.9 2 2 2h16c1.11 0 2-.9 2-2V8c0-1.1-.9-2-2-2H8.3l7.43-3c.46-.19.68-.71.49-1.17-.19-.46-.71-.68-1.17-.49L3.24 6.15zM7 20c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm13-8h-2v-1c0-.55-.45-1-1-1s-1 .45-1 1v1H4V9c0-.55.45-1 1-1h14c.55 0 1 .45 1 1v3z',
-  youtube: 'M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z'
+  radio: 'M3.24 6.15C2.51 6.43 2 7.17 2 8v12c0 1.1.9 2 2 2h16c1.11 0 2-.9 2-2V8c0-1.1-.9-2-2-2H8.3l7.43-3c.46-.19.68-.71.49-1.17-.19-.46-.71-.68-1.17-.49L3.24 6.15zM7 20c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm13-8h-2v-1c0-.55-.45-1-1-1s-1 .45-1 1v1H4V9c0-.55.45-1 1-1h14c.55 0 1 .45 1 1v3z'
 };
 window.ITV_ICON = function (name, cls) {
   return '<svg class="ic' + (cls ? ' ' + cls : '') + '" viewBox="0 0 24 24" aria-hidden="true"><path d="' +
@@ -60,7 +59,6 @@ window.ITV_UI = (function (I) {
       '<span class="ico">' + I('search') + '</span><input id="search-input" type="search" autocomplete="off" spellcheck="false" ' +
       'enterkeyhint="search" placeholder="חיפוש ערוץ – שם, מדינה או מספר"></div>' +
     '<div class="top-actions">' +
-      '<button class="top-btn nav-top yttv-launch-btn" id="btn-yttv" data-nav="yttv" title="YouTube TV"><span class="ico yttv-ico-red">' + I('youtube') + '</span><span>יוטיוב TV</span></button>' +
       '<button class="top-btn nav-top hidden" id="btn-update" data-nav="update"><span class="ico">' + I('download') + '</span><span>עדכון זמין</span></button>' +
       '<button class="top-btn nav-top hidden" id="btn-getapp" data-nav="getapp"><span class="ico">' + I('phone') + '</span><span>הורדת האפליקציה</span></button>' +
       '<button class="top-btn nav-top hidden" id="btn-kids-exit" data-nav="kids"><span class="ico">' + I('kids') + '</span><span>מצב ילדים</span></button>' +
@@ -106,10 +104,10 @@ window.ITV_UI = (function (I) {
   // ---------------------------------------------------------------- TV: Apple TV+ browse screen (app.js "TV: the Apple TV+")
   '<div class="atv" id="atv">' +
     '<div class="atv-stage"><div class="atv-bd" id="atv-bd-a"></div><div class="atv-bd" id="atv-bd-b"></div><div class="atv-shade"></div></div>' +
-    '<nav class="atv-pill" id="atv-pill"></nav><div class="atv-clock" id="atv-clock"></div>' +
+    '<nav class="atv-pill" id="atv-pill"></nav>' +
     '<section class="atv-meta" id="atv-meta-a"></section><section class="atv-meta" id="atv-meta-b"></section>' +
     '<div class="atv-search" id="atv-search"><span class="ico">' + I('search') + '</span><input id="atv-q" type="search" ' +
-      'autocomplete="off" spellcheck="false" enterkeyhint="search" placeholder="חיפוש ערוץ – שם, מדינה, ז׳אנר או מספר"></div>' +
+      'autocomplete="off" spellcheck="false" enterkeyhint="search" placeholder="חיפוש ערוץ – שם, מדינה או מספר"></div>' +
     '<div class="atv-shelves" id="atv-shelves"><div class="atv-rows" id="atv-rows"></div></div>' +
   '</div>' +
 
@@ -207,3 +205,4 @@ window.ITV_UI = (function (I) {
     '<div class="saver-text">שומר מסך • לחצו על מקש כלשהו</div></div></div>' +
 '</div>';
 })(window.ITV_ICON);
+

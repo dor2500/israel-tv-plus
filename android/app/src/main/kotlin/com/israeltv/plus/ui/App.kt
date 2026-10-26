@@ -39,7 +39,6 @@ import com.israeltv.plus.data.ChannelData
 import com.israeltv.plus.data.ChannelStore
 import com.israeltv.plus.data.UpdateState
 import com.israeltv.plus.data.Updater
-import com.israeltv.plus.data.WatchInstaller
 import com.israeltv.plus.data.subtitle
 import com.israeltv.plus.ui.components.AmbientBackground
 import com.israeltv.plus.ui.components.AppHeader
@@ -61,13 +60,8 @@ import com.israeltv.plus.ui.screens.ProfilesScreen
 import com.israeltv.plus.ui.screens.SearchOverlay
 import com.israeltv.plus.ui.screens.SettingsScreen
 import com.israeltv.plus.ui.screens.StyleScreen
-import com.israeltv.plus.ui.screens.WatchScreen
 import com.israeltv.plus.ui.screens.UpdateModal
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.ui.hapticfeedback.HapticFeedbackType
-import androidx.compose.ui.platform.LocalHapticFeedback
-import com.israeltv.plus.ui.components.IsraeliOnlyZomatoOverlay
-import com.israeltv.plus.ui.components.IsraeliOverlayMode
 import dev.chrisbanes.haze.HazeState
 import dev.chrisbanes.haze.hazeSource
 import dev.chrisbanes.haze.rememberHazeState
@@ -92,14 +86,13 @@ fun ItvApp(
     store: ChannelStore,
     prefs: AppPrefs,
     updater: Updater,
-    watch: WatchInstaller,
     inPip: Boolean,
     coldStart: Boolean,
     onPlaying: (Boolean) -> Unit,
     onEnterPip: () -> Unit,
 ) {
     val data by store.state.collectAsStateWithLifecycle()
-    var page by remember { mutableStateOf<Page>(if (coldStart && prefs.promptProfileOnStart) Page.Profiles else Page.Feed) }
+    var page by remember { mutableStateOf<Page>(if (coldStart && prefs.profiles.size > 1) Page.Profiles else Page.Feed) }
     var intro by rememberSaveable { mutableStateOf(coldStart) }
     val cascade = remember { Cascade(active = coldStart) }
     val origin = remember { PlayOrigin() }
@@ -148,7 +141,7 @@ fun ItvApp(
                                 onClose = { page = Page.Feed },
                             )
                             Page.Feed -> Feed(
-                                data, prefs, updater, watch, feed, haze, logo, onPlay,
+                                data, prefs, updater, feed, haze, logo, onPlay,
                                 onInfo = { info = it },
                                 onProfiles = { profilesFromFeed = true; page = Page.Profiles },
                             )
@@ -176,13 +169,6 @@ fun ItvApp(
         }
         info?.let { ch -> ChannelInfoSheet(ch, logo(ch), prefs, onPlay = { onPlay(ch, listOf(ch)) }, onDismiss = { info = null }) }
 
-        // Full-screen Zomato-style overlay animation with spatial revert into Switch coordinates
-        IsraeliOnlyZomatoOverlay(
-            mode = feed.overlayMode,
-            switchCenter = feed.switchCenter,
-            onDismiss = { feed.overlayMode = IsraeliOverlayMode.Hidden },
-        )
-
         if (intro) {
             Box(Modifier.fillMaxSize().zIndex(100f)) {
                 CinematicIntro(
@@ -202,11 +188,7 @@ private class FeedState {
     var category by mutableStateOf<String?>(null)
     var searchOpen by mutableStateOf(false)
     var styleOpen by mutableStateOf(false)
-    var watchOpen by mutableStateOf(false)
     var barCollapsed by mutableStateOf(false)
-    var israeliOnly by mutableStateOf(false)
-    var overlayMode by mutableStateOf(IsraeliOverlayMode.Hidden)
-    var switchCenter by mutableStateOf<Offset?>(null)
     val homeList = androidx.compose.foundation.lazy.LazyListState()
     val channelsList = androidx.compose.foundation.lazy.LazyListState()
 
@@ -214,7 +196,6 @@ private class FeedState {
         tab = Tab.Home
         searchOpen = false
         styleOpen = false
-        watchOpen = false
         barCollapsed = false
     }
 }
@@ -224,7 +205,6 @@ private fun Feed(
     data: ChannelData?,
     prefs: AppPrefs,
     updater: Updater,
-    watch: WatchInstaller,
     s: FeedState,
     haze: HazeState,
     logo: (Channel) -> String,
@@ -233,19 +213,6 @@ private fun Feed(
     onProfiles: () -> Unit,
 ) {
     val subtitle: (Channel) -> String = remember { { it.subtitle() } }
-    val haptic = LocalHapticFeedback.current
-
-    val onToggleIsraeli: () -> Unit = {
-        if (!s.israeliOnly) {
-            haptic.performHapticFeedback(HapticFeedbackType.LongPress)
-            s.overlayMode = IsraeliOverlayMode.Entering
-            s.israeliOnly = true
-        } else {
-            haptic.performHapticFeedback(HapticFeedbackType.TextHandleMove)
-            s.overlayMode = IsraeliOverlayMode.Exiting
-            s.israeliOnly = false
-        }
-    }
 
     // the floating bar folds into a compact pod while the feed scrolls down and opens again on the way up
     val barScroll = remember(s) {
@@ -272,50 +239,20 @@ private fun Feed(
                     label = "tabs",
                 ) { t ->
                     when (t) {
-                        Tab.Home -> HomeScreen(
-                            data = data,
-                            prefs = prefs,
-                            listState = s.homeList,
-                            logo = logo,
-                            subtitle = subtitle,
-                            onPlay = onPlay,
-                            onInfo = onInfo,
-                            israeliOnly = s.israeliOnly,
-                            onToggleIsraeli = onToggleIsraeli,
-                            onSwitchPositioned = { s.switchCenter = it },
-                        ) {
+                        Tab.Home -> HomeScreen(data, prefs, s.homeList, logo, subtitle, onPlay, onInfo) {
                             s.category = it
                             s.tab = Tab.Channels
                         }
-                        Tab.Channels -> ChannelsScreen(
-                            data = data,
-                            category = s.category,
-                            onCategory = { s.category = it },
-                            logo = logo,
-                            subtitle = subtitle,
-                            onPlay = onPlay,
-                            listState = s.channelsList,
-                            israeliOnly = s.israeliOnly,
-                            onToggleIsraeli = onToggleIsraeli,
-                        )
+                        Tab.Channels -> ChannelsScreen(data, s.category, { s.category = it }, logo, subtitle, onPlay, s.channelsList)
                         Tab.Mine -> MineScreen(data, prefs, logo, subtitle, onPlay)
-                        Tab.Settings -> SettingsScreen(data, prefs, updater, onProfiles = onProfiles, onStyle = { s.styleOpen = true }, onWatch = { s.watchOpen = true })
+                        Tab.Settings -> SettingsScreen(data, prefs, updater, onProfiles = onProfiles, onStyle = { s.styleOpen = true })
                     }
                 }
             }
         }
 
         CompositionLocalProvider(LocalHaze provides haze) {
-            AppHeader(
-                title = s.tab.title,
-                profileId = prefs.profile.id,
-                avatar = prefs.avatar,
-                israeliOnly = s.israeliOnly,
-                onToggleIsraeli = onToggleIsraeli,
-                onAvatar = onProfiles,
-                onSettings = { s.tab = if (s.tab == Tab.Settings) Tab.Home else Tab.Settings },
-                modifier = Modifier.align(Alignment.TopCenter),
-            )
+            AppHeader(s.tab.title, prefs.profile.id, prefs.avatar, onAvatar = onProfiles, modifier = Modifier.align(Alignment.TopCenter))
             FloatingTabBar(
                 s.tab, s.searchOpen, s.barCollapsed && !s.searchOpen,
                 onSelect = { s.searchOpen = false; s.barCollapsed = false; s.tab = it },
@@ -342,14 +279,6 @@ private fun Feed(
             val sample = remember(data) { data?.featured.orEmpty().take(1) + data?.categories?.firstOrNull()?.channels.orEmpty().take(6) }
             StyleScreen(prefs, sample, logo, onClose = { s.styleOpen = false })
         }
-
-        AnimatedVisibility(
-            s.watchOpen,
-            modifier = Modifier.zIndex(16f),
-            enter = fadeIn(tween(220)) + slideInHorizontally { -it / 5 },
-            exit = fadeOut(tween(180)) + slideOutHorizontally { -it / 5 },
-        ) {
-            WatchScreen(watch, onClose = { s.watchOpen = false })
-        }
     }
 }
+

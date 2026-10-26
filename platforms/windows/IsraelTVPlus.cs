@@ -12,7 +12,7 @@ using Microsoft.Web.WebView2.WinForms;
 
 [assembly: System.Reflection.AssemblyTitle("Israel TV+")]
 [assembly: System.Reflection.AssemblyProduct("Israel TV+")]
-[assembly: System.Reflection.AssemblyVersion("4.4.3.0")]
+[assembly: System.Reflection.AssemblyVersion("4.4.5.0")]
 
 namespace IsraelTVPlus
 {
@@ -63,7 +63,7 @@ namespace IsraelTVPlus
             core.Settings.AreDevToolsEnabled = true;
             core.Settings.IsStatusBarEnabled = false;
             core.Settings.AreDefaultContextMenusEnabled = false;
-            core.Settings.UserAgent = core.Settings.UserAgent + " IsraelTVPlus/4 Windows";
+            core.Settings.UserAgent = core.Settings.UserAgent + " IsraelTVPlus/3 Windows";
             core.WebMessageReceived += OnMessage;
             core.NewWindowRequested += (s, e) => { e.Handled = true; Open(e.Uri); };
             core.NavigationStarting += (s, e) =>
@@ -168,3 +168,4 @@ namespace IsraelTVPlus
         }
     }
 }
+
