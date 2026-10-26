@@ -252,7 +252,7 @@ private fun Feed(
         }
 
         CompositionLocalProvider(LocalHaze provides haze) {
-            AppHeader(s.tab.title, prefs.profile.id, prefs.avatar, onAvatar = onProfiles, modifier = Modifier.align(Alignment.TopCenter))
+            AppHeader(s.tab.title, prefs.profile.id, prefs.avatar, onAvatar = onProfiles, onSettings = { s.searchOpen = false; s.tab = Tab.Settings }, modifier = Modifier.align(Alignment.TopCenter))
             FloatingTabBar(
                 s.tab, s.searchOpen, s.barCollapsed && !s.searchOpen,
                 onSelect = { s.searchOpen = false; s.barCollapsed = false; s.tab = it },
@@ -281,4 +281,3 @@ private fun Feed(
         }
     }
 }
-

@@ -26,6 +26,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -38,14 +39,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Path
-import androidx.compose.ui.graphics.StrokeCap
-import androidx.compose.ui.graphics.StrokeJoin
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.text.font.FontWeight
@@ -54,8 +50,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
 import kotlinx.coroutines.delay
-import kotlin.math.cos
-import kotlin.math.sin
 
 import androidx.compose.animation.core.updateTransition
 import androidx.compose.foundation.layout.BoxWithConstraints
@@ -68,6 +62,7 @@ import androidx.compose.ui.platform.LocalDensity
 enum class IsraeliOverlayMode {
     Hidden,
     Entering,
+    Active,
     Exiting,
 }
 
@@ -77,79 +72,11 @@ enum class IsraeliOverlayMode {
  */
 @Composable
 fun AppleIsraelFlag(modifier: Modifier = Modifier) {
-    Canvas(modifier = modifier) {
-        val w = size.width
-        val h = size.height
-        val blue = Color(0xFF0038B8)
-        val corner = 3.dp.toPx()
-
-        // 1. Crisp white flag base with subtle rounded corners
-        drawRoundRect(
-            color = Color.White,
-            size = Size(w, h),
-            cornerRadius = CornerRadius(corner, corner),
-        )
-
-        // 2. Specular border (subtle Apple glass edge)
-        drawRoundRect(
-            color = Color(0x33000000),
-            size = Size(w, h),
-            cornerRadius = CornerRadius(corner, corner),
-            style = Stroke(width = 1.dp.toPx()),
-        )
-
-        // 3. Top and bottom royal blue stripes
-        val stripeHeight = h * 0.14f
-        val topStripeY = h * 0.13f
-        val bottomStripeY = h * (1f - 0.13f - 0.14f)
-
-        drawRect(
-            color = blue,
-            topLeft = Offset(0f, topStripeY),
-            size = Size(w, stripeHeight),
-        )
-        drawRect(
-            color = blue,
-            topLeft = Offset(0f, bottomStripeY),
-            size = Size(w, stripeHeight),
-        )
-
-        // 4. Center Star of David (Magen David)
-        val cx = w / 2f
-        val cy = h / 2f
-        val r = h * 0.22f
-        val strokeW = (h * 0.045f).coerceAtLeast(1.5f)
-
-        fun trianglePath(pointUp: Boolean): Path {
-            val path = Path()
-            val startAngle = if (pointUp) -Math.PI / 2 else Math.PI / 2
-            val p1 = Offset(
-                (cx + r * cos(startAngle)).toFloat(),
-                (cy + r * sin(startAngle)).toFloat(),
-            )
-            val p2 = Offset(
-                (cx + r * cos(startAngle + 2 * Math.PI / 3)).toFloat(),
-                (cy + r * sin(startAngle + 2 * Math.PI / 3)).toFloat(),
-            )
-            val p3 = Offset(
-                (cx + r * cos(startAngle + 4 * Math.PI / 3)).toFloat(),
-                (cy + r * sin(startAngle + 4 * Math.PI / 3)).toFloat(),
-            )
-            path.moveTo(p1.x, p1.y)
-            path.lineTo(p2.x, p2.y)
-            path.lineTo(p3.x, p3.y)
-            path.close()
-            return path
-        }
-
-        val strokeStyle = Stroke(
-            width = strokeW,
-            cap = StrokeCap.Round,
-            join = StrokeJoin.Round,
-        )
-        drawPath(trianglePath(pointUp = true), blue, style = strokeStyle)
-        drawPath(trianglePath(pointUp = false), blue, style = strokeStyle)
-    }
+    androidx.compose.foundation.Image(
+        painter = androidx.compose.ui.res.painterResource(com.israeltv.plus.R.drawable.flag_israel_apple),
+        contentDescription = "דגל ישראל",
+        modifier = modifier.clip(RoundedCornerShape(3.dp)),
+    )
 }
 
 /**
@@ -173,16 +100,16 @@ fun IsraeliOnlyZomatoOverlay(
     val density = LocalDensity.current
 
     // Ripples pulse animation (infinite loop during active state)
-    val infiniteTransition = rememberInfiniteTransition(label = "israeli_fluid_ripples")
-    val rippleProgress by infiniteTransition.animateFloat(
-        initialValue = 0f,
-        targetValue = 1f,
-        animationSpec = infiniteRepeatable(
-            animation = tween(1400, easing = LinearEasing),
-            repeatMode = RepeatMode.Restart,
-        ),
-        label = "fluid_ripple_progress",
-    )
+    val rippleProgress = if (mode == IsraeliOverlayMode.Entering) {
+        val infiniteTransition = rememberInfiniteTransition(label = "israeli_fluid_ripples")
+        val progress by infiniteTransition.animateFloat(
+            initialValue = 0f,
+            targetValue = 1f,
+            animationSpec = infiniteRepeatable(animation = tween(1400, easing = LinearEasing), repeatMode = RepeatMode.Restart),
+            label = "fluid_ripple_progress",
+        )
+        progress
+    } else 0f
 
     BoxWithConstraints(
         modifier = Modifier
@@ -215,7 +142,7 @@ fun IsraeliOnlyZomatoOverlay(
         ) { state ->
             when (state) {
                 IsraeliOverlayMode.Hidden -> 0f
-                IsraeliOverlayMode.Entering -> 1f
+                IsraeliOverlayMode.Entering, IsraeliOverlayMode.Active -> 1f
                 IsraeliOverlayMode.Exiting -> 0.04f
             }
         }
@@ -251,9 +178,8 @@ fun IsraeliOnlyZomatoOverlay(
             label = "bg_alpha",
         ) { state ->
             when (state) {
-                IsraeliOverlayMode.Hidden -> 0f
+                IsraeliOverlayMode.Hidden, IsraeliOverlayMode.Active, IsraeliOverlayMode.Exiting -> 0f
                 IsraeliOverlayMode.Entering -> 0.96f
-                IsraeliOverlayMode.Exiting -> 0f
             }
         }
 
@@ -262,9 +188,8 @@ fun IsraeliOnlyZomatoOverlay(
             label = "content_alpha",
         ) { state ->
             when (state) {
-                IsraeliOverlayMode.Hidden -> 0f
-                IsraeliOverlayMode.Entering -> 1f
-                IsraeliOverlayMode.Exiting -> 0.15f
+                IsraeliOverlayMode.Hidden, IsraeliOverlayMode.Active -> 0f
+                IsraeliOverlayMode.Entering, IsraeliOverlayMode.Exiting -> 1f
             }
         }
 
@@ -273,32 +198,22 @@ fun IsraeliOnlyZomatoOverlay(
             when (mode) {
                 IsraeliOverlayMode.Entering -> {
                     // Full showcase experience (750ms), then auto dismiss
-                    delay(750)
-                    onDismiss()
+                    delay(900)
+                    onDismiss() // Entering settles into Active: the badge remains available for the spatial OFF animation.
                 }
                 IsraeliOverlayMode.Exiting -> {
                     // Wait for spatial fly-back animation to finish into switch bounds
-                    delay(360)
+                    delay(560)
                     onDismiss()
                 }
-                IsraeliOverlayMode.Hidden -> Unit
+                IsraeliOverlayMode.Hidden, IsraeliOverlayMode.Active -> Unit
             }
         }
 
-        // Fullscreen backdrop with fluid blue/white gradient ripples
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .graphicsLayer { alpha = bgAlpha }
-                .background(
-                    Brush.verticalGradient(
-                        listOf(
-                            scheme.background.copy(alpha = 0.98f),
-                            Color(0xFF07080E),
-                        )
-                    )
-                )
-                .clickable(remember { MutableInteractionSource() }, indication = null) {},
+        // Fullscreen backdrop/ripples exist only during the brief ON showcase; Active retains just the invisible badge anchor.
+        if (mode == IsraeliOverlayMode.Entering) Box(
+            modifier = Modifier.fillMaxSize().graphicsLayer { alpha = bgAlpha }
+                .background(Brush.verticalGradient(listOf(scheme.background.copy(alpha = 0.98f), Color(0xFF07080E)))),
         ) {
             // Fluid pulsing background ripples (Israeli flag motif: Royal Blue & Pure White)
             Canvas(Modifier.fillMaxSize()) {
@@ -336,75 +251,47 @@ fun IsraeliOnlyZomatoOverlay(
             }
         }
 
-        // Center Content & Badge: Bound to spatial translation and scale
+        // The 136 dp badge itself owns the animated transform, so its center lands on the switch center exactly.
         Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .graphicsLayer {
-                    this.scaleX = badgeScale
-                    this.scaleY = badgeScale
-                    this.translationX = translationX
-                    this.translationY = translationY
-                    this.alpha = contentAlpha
-                },
+            modifier = Modifier.fillMaxSize().graphicsLayer {
+                this.scaleX = badgeScale
+                this.scaleY = badgeScale
+                this.translationX = translationX
+                this.translationY = translationY
+                this.alpha = contentAlpha
+            },
             contentAlignment = Alignment.Center,
         ) {
-            Column(
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Center,
-                modifier = Modifier.padding(horizontal = 24.dp),
+            Box(
+                Modifier.size(136.dp).clip(CircleShape).background(scheme.primaryContainer)
+                    .border(2.5.dp, Color(0xFF0A84FF).copy(alpha = 0.6f), CircleShape),
+                contentAlignment = Alignment.Center,
             ) {
-                // Center Circular Badge: "100% ישראלי"
-                Box(
-                    modifier = Modifier
-                        .size(136.dp)
-                        .clip(CircleShape)
-                        .background(scheme.primaryContainer)
-                        .border(2.5.dp, Color(0xFF0A84FF).copy(alpha = 0.6f), CircleShape),
-                    contentAlignment = Alignment.Center,
-                ) {
-                    Column(
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                        verticalArrangement = Arrangement.Center,
-                    ) {
-                        AppleIsraelFlag(
-                            Modifier
-                                .size(width = 38.dp, height = 26.dp)
-                                .padding(bottom = 2.dp)
-                        )
-                        Spacer(Modifier.height(5.dp))
-                        Text(
-                            text = "100% ישראלי",
-                            color = scheme.onPrimaryContainer,
-                            fontSize = 17.sp,
-                            fontWeight = FontWeight.Black,
-                            textAlign = TextAlign.Center,
-                        )
-                    }
+                Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
+                    AppleIsraelFlag(Modifier.size(width = 38.dp, height = 26.dp))
+                    Spacer(Modifier.height(5.dp))
+                    Text("100% ישראלי", color = scheme.onPrimaryContainer, fontSize = 17.sp, fontWeight = FontWeight.Black, textAlign = TextAlign.Center)
                 }
+            }
+        }
 
-                Spacer(Modifier.height(26.dp))
-
-                // Subtext with inline iOS-style Apple Flag (NO emoji string)
-                Row(
-                    modifier = Modifier.padding(horizontal = 16.dp),
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.Center,
-                ) {
-                    Text(
-                        text = "עושים כבוד ליצירה המקומית... מציג רק תוכן ישראלי",
-                        color = Color.White,
-                        fontSize = 15.sp,
-                        fontWeight = FontWeight.Bold,
-                        textAlign = TextAlign.Center,
-                    )
-                    Spacer(Modifier.width(8.dp))
-                    AppleIsraelFlag(
-                        Modifier
-                            .size(width = 24.dp, height = 16.dp)
-                            .clip(RoundedCornerShape(3.dp))
-                    )
-                }
+        AnimatedVisibility(
+            visible = mode == IsraeliOverlayMode.Entering,
+            modifier = Modifier.align(Alignment.Center).offset(y = 120.dp),
+            enter = fadeIn(tween(420)),
+            exit = fadeOut(tween(180)),
+        ) {
+            Row(
+                modifier = Modifier.padding(horizontal = 16.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.Center,
+            ) {
+                Text(
+                    text = "עושים כבוד ליצירה המקומית... מציג רק תוכן ישראלי",
+                    color = Color.White, fontSize = 15.sp, fontWeight = FontWeight.Normal, textAlign = TextAlign.Center,
+                )
+                Spacer(Modifier.width(8.dp))
+                AppleIsraelFlag(Modifier.size(width = 24.dp, height = 16.dp).clip(RoundedCornerShape(3.dp)))
             }
         }
     }

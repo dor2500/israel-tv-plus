@@ -1,8 +1,10 @@
 package com.israeltv.plus.ui.screens
 
-import android.os.Build
+import android.view.ViewGroup
 import androidx.compose.foundation.background
+import androidx.compose.ui.viewinterop.AndroidView
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -21,9 +23,18 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.layout.layout
+import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.layout.boundsInRoot
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.text.style.TextOverflow
 import com.israeltv.plus.ui.components.LocalPlayOrigin
+import com.israeltv.plus.ui.components.IsraeliOnlyZomatoOverlay
+import com.israeltv.plus.ui.components.IsraeliOverlayMode
 import com.israeltv.plus.ui.components.cascadeIn
 import com.israeltv.plus.ui.components.sharedContainer
 import com.israeltv.plus.ui.theme.LocalDarkTheme
@@ -40,11 +51,12 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.Switch
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.graphics.Brush
@@ -53,6 +65,7 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalHapticFeedback
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -68,6 +81,11 @@ import com.israeltv.plus.ui.components.feedPadding
 import com.israeltv.plus.ui.components.glassShimmer
 import com.israeltv.plus.ui.components.rememberBitChordFlingBehavior
 import kotlinx.coroutines.delay
+import androidx.media3.common.MediaItem
+import androidx.media3.common.Player
+import androidx.media3.exoplayer.ExoPlayer
+import androidx.media3.ui.AspectRatioFrameLayout
+import androidx.media3.ui.PlayerView
 
 private val HeroShape = RoundedCornerShape(0.dp)
 
@@ -84,6 +102,10 @@ fun HomeScreen(
     onSeeAll: (String) -> Unit,
 ) {
     val padding = feedPadding()
+    var israeliOnly by remember { mutableStateOf(false) }
+    var overlayMode by remember { mutableStateOf(IsraeliOverlayMode.Hidden) }
+    var switchCenter by remember { mutableStateOf<Offset?>(null) }
+    Box(Modifier.fillMaxSize()) {
     LazyColumn(
         Modifier.fillMaxSize(),
         state = listState,
@@ -113,7 +135,25 @@ fun HomeScreen(
             val i = row++
             item(key = "favs") { ChannelShelf("המועדפים שלי", favs, logo, subtitle, { onPlay(it, favs) }, modifier = Modifier.cascadeIn(i)) }
         }
-        data.categories.forEach { cat ->
+        item(key = "israeli-only-filter") {
+            Row(
+                Modifier.fillMaxWidth().padding(horizontal = 24.dp, vertical = 8.dp),
+                horizontalArrangement = Arrangement.spacedBy(12.dp, Alignment.End),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                Text("רק ישראלי", color = MaterialTheme.colorScheme.onSurface, style = MaterialTheme.typography.titleMedium)
+                Switch(
+                    checked = israeliOnly,
+                    onCheckedChange = { checked ->
+                        israeliOnly = checked
+                        overlayMode = if (checked) IsraeliOverlayMode.Entering else IsraeliOverlayMode.Exiting
+                    },
+                    modifier = Modifier.onGloballyPositioned { switchCenter = it.boundsInRoot().center },
+                )
+            }
+        }
+        val visibleCategories = if (israeliOnly) data.categories.filter { category -> category.channels.any { it.categoryEn == "israel" } } else data.categories
+        visibleCategories.forEach { cat ->
             val i = row++
             item(key = "cat:" + cat.key) {
                 ChannelShelf(
@@ -122,6 +162,12 @@ fun HomeScreen(
                 )
             }
         }
+    }
+    IsraeliOnlyZomatoOverlay(
+        mode = overlayMode,
+        switchCenter = switchCenter,
+        onDismiss = { overlayMode = if (overlayMode == IsraeliOverlayMode.Entering) IsraeliOverlayMode.Active else IsraeliOverlayMode.Hidden },
+    )
     }
 }
 
@@ -154,7 +200,7 @@ private fun HeroPager(
     Box(modifier.padding(bottom = 22.dp)) {
         HorizontalPager(pager, key = { featured[it].id }) { page ->
             val ch = featured[page]
-            HeroPage(ch, logo(ch), prefs.isFavorite(ch.id), onPlay, onInfo) { prefs.toggleFavorite(ch.id) }
+            HeroPage(ch, logo(ch), prefs.isFavorite(ch.id), playBackground = page == pager.currentPage, onPlay, onInfo) { prefs.toggleFavorite(ch.id) }
         }
         // capsule page indicator: the active dot stretches to 24 dp
         Row(
@@ -177,6 +223,33 @@ private fun HeroPager(
     }
 }
 
+/** Muted foregroundless Media3 HLS background; only the settled pager page owns a player. */
+@Composable
+private fun MutedHeroHls(url: String, modifier: Modifier = Modifier) {
+    val context = LocalContext.current
+    val player = remember(url) {
+        ExoPlayer.Builder(context).build().apply {
+            setMediaItem(MediaItem.fromUri(url))
+            repeatMode = Player.REPEAT_MODE_ONE
+            volume = 0f
+            playWhenReady = true
+            prepare()
+        }
+    }
+    DisposableEffect(player) { onDispose { player.release() } }
+    AndroidView(
+        modifier = modifier,
+        factory = { ctx -> PlayerView(ctx).apply {
+            useController = false
+            resizeMode = AspectRatioFrameLayout.RESIZE_MODE_ZOOM
+            setShutterBackgroundColor(android.graphics.Color.TRANSPARENT)
+            this.player = player
+            layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
+        } },
+        update = { if (it.player !== player) it.player = player },
+    )
+}
+
 /**
  * Apple TV+ hero, 580 dp, edge to edge: the channel's artwork as ambient light, a vignette into the background from
  * 35% down, and centred: the big logo on a soft light glow (dark logos like Kan 11 stay readable), "Live • category •
@@ -187,6 +260,7 @@ private fun HeroPage(
     ch: Channel,
     logo: String,
     favorite: Boolean,
+    playBackground: Boolean,
     onPlay: (Channel) -> Unit,
     onInfo: (Channel) -> Unit,
     onFavorite: () -> Unit,
@@ -202,23 +276,20 @@ private fun HeroPage(
             .height(580.dp)
             .sharedContainer(key, HeroShape)
             .clipToBounds()
-            .background(Brush.verticalGradient(listOf(scheme.primaryContainer, scheme.tertiaryContainer.copy(alpha = 0.7f), scheme.surfaceContainerLowest)))
+            .background(Color.Black)
     ) {
-        if (logo.isNotEmpty()) {
-            AsyncImage(
-                logo, null,
-                Modifier
-                    .fillMaxSize()
-                    .graphicsLayer { scaleX = 2.2f; scaleY = 2.2f; alpha = if (Build.VERSION.SDK_INT >= 31) 0.6f else 0.2f }
-                    .blur(80.dp),
-                contentScale = ContentScale.Crop,
-            )
+        if (playBackground && ch.url.contains(".m3u8", ignoreCase = true)) {
+            Box(Modifier.fillMaxWidth().aspectRatio(16f / 9f).align(Alignment.TopCenter)) {
+                MutedHeroHls(ch.url, Modifier.fillMaxSize())
+            }
         }
-        Box(
-            Modifier
-                .fillMaxSize()
-                .background(Brush.verticalGradient(0.35f to Color.Transparent, 1f to scheme.surfaceContainerLowest))
-        )
+        // Cinematic dark scrim over the live picture, strongest below the clear logo/title area.
+        Box(Modifier.fillMaxSize().background(Brush.verticalGradient(
+            0f to Color.Black.copy(alpha = 0.26f),
+            0.38f to Color.Black.copy(alpha = 0.38f),
+            0.72f to scheme.surfaceContainerLowest.copy(alpha = 0.82f),
+            1f to scheme.surfaceContainerLowest,
+        )))
         Column(
             Modifier.align(Alignment.BottomCenter).fillMaxWidth().padding(horizontal = 24.dp).padding(bottom = 34.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
@@ -280,4 +351,3 @@ private fun HeroPage(
         }
     }
 }
-

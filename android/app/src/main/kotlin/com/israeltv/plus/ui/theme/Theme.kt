@@ -45,29 +45,29 @@ val Rubik = FontFamily(
 )
 
 private val Base = Typography()
-private val Tight = (-0.4).sp
+private val CinematicTracking = (-0.25).sp
 
 private fun TextStyle.rubik(weight: FontWeight? = null, tracking: Boolean = false) = copy(
     fontFamily = Rubik,
     fontWeight = weight ?: fontWeight,
-    letterSpacing = if (tracking) Tight else 0.sp,
+    letterSpacing = if (tracking) CinematicTracking else 0.sp,
 )
 
 /** Heavy display weights with tight optical tracking; body text in Rubik without the Latin letter-spacing. */
 private val ItvTypography = Typography(
-    displayLarge = Base.displayLarge.rubik(FontWeight.Black, true),
-    displayMedium = Base.displayMedium.rubik(FontWeight.Black, true),
-    displaySmall = Base.displaySmall.rubik(FontWeight.ExtraBold, true),
-    headlineLarge = Base.headlineLarge.rubik(FontWeight.ExtraBold, true),
-    headlineMedium = Base.headlineMedium.rubik(FontWeight.ExtraBold, true),
-    headlineSmall = Base.headlineSmall.rubik(FontWeight.ExtraBold, true),
-    titleLarge = Base.titleLarge.rubik(FontWeight.ExtraBold, true),
-    titleMedium = Base.titleMedium.rubik(FontWeight.Bold),
-    titleSmall = Base.titleSmall.rubik(FontWeight.Bold),
-    bodyLarge = Base.bodyLarge.rubik(),
-    bodyMedium = Base.bodyMedium.rubik(),
-    bodySmall = Base.bodySmall.rubik(),
-    labelLarge = Base.labelLarge.rubik(FontWeight.Bold),
+    displayLarge = Base.displayLarge.rubik(FontWeight.Light, true),
+    displayMedium = Base.displayMedium.rubik(FontWeight.Normal, true),
+    displaySmall = Base.displaySmall.rubik(FontWeight.Medium, true),
+    headlineLarge = Base.headlineLarge.rubik(FontWeight.SemiBold, true),
+    headlineMedium = Base.headlineMedium.rubik(FontWeight.SemiBold, true),
+    headlineSmall = Base.headlineSmall.rubik(FontWeight.Medium, true),
+    titleLarge = Base.titleLarge.rubik(FontWeight.SemiBold, true),
+    titleMedium = Base.titleMedium.rubik(FontWeight.Medium),
+    titleSmall = Base.titleSmall.rubik(FontWeight.Medium),
+    bodyLarge = Base.bodyLarge.rubik(FontWeight.Normal),
+    bodyMedium = Base.bodyMedium.rubik(FontWeight.Light),
+    bodySmall = Base.bodySmall.rubik(FontWeight.Light),
+    labelLarge = Base.labelLarge.rubik(FontWeight.Medium),
     labelMedium = Base.labelMedium.rubik(FontWeight.Medium),
     labelSmall = Base.labelSmall.rubik(FontWeight.Medium),
 )
@@ -121,4 +121,3 @@ private fun animateScheme(t: ColorScheme): ColorScheme {
         surfaceContainerHighest = a(t.surfaceContainerHighest),
     )
 }
-

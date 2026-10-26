@@ -10,10 +10,24 @@ import androidx.core.content.edit
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 
-/** The 3D Noto Emoji avatars in assets/avatars (Apache 2.0, see LICENSE.txt there). */
-val AVATARS = listOf("1f60e", "1f431", "1f436", "1f98a", "1f981", "1f43c", "1f984", "1f47d", "1f916", "1f9b8", "1f9d1-1f680")
+/** Series-character portrait choices bundled under assets/avatars. */
+val AVATARS = listOf("series-rick", "series-morty", "series-summer", "series-beth", "series-jerry", "series-ted-lasso")
 
-fun avatarUrl(id: String) = "file:///android_asset/www/assets/avatars/$id.webp"
+fun avatarUrl(id: String) = if (id.startsWith("series-")) {
+    "file:///android_asset/www/assets/avatars/$id.jpg"
+} else {
+    "file:///android_asset/www/assets/avatars/$id.webp"
+}
+
+fun avatarDescription(id: String) = when (id) {
+    "series-rick" -> "ריק סנצ׳ז — ריק ומורטי"
+    "series-morty" -> "מורטי סמית׳ — ריק ומורטי"
+    "series-summer" -> "סאמר סמית׳ — ריק ומורטי"
+    "series-beth" -> "בת׳ סמית׳ — ריק ומורטי"
+    "series-jerry" -> "ג׳רי סמית׳ — ריק ומורטי"
+    "series-ted-lasso" -> "טד לאסו — טד לאסו"
+    else -> "דמות מסדרה"
+}
 
 /**
  * A profile's colours, like Android's "Wallpaper & style": [key] "system" is the phone's own Material You palette,
@@ -122,13 +136,22 @@ class AppPrefs(context: Context) {
     /** The saved profiles; the first start after 3.4 turns the old single favourites / history / avatar into one. */
     private fun loadProfiles(): List<Profile> {
         sp.getString("phoneProfiles", null)?.let { s ->
-            runCatching { json.decodeFromString<List<Profile>>(s) }.getOrNull()?.takeIf { it.isNotEmpty() }?.let { return it }
+            runCatching { json.decodeFromString<List<Profile>>(s) }.getOrNull()?.takeIf { it.isNotEmpty() }?.let { saved ->
+                // Replace the old generic emoji avatars while preserving each profile's name and viewing data.
+                val migrated = saved.mapIndexed { index, profile ->
+                    if (profile.avatar.startsWith("series-")) profile
+                    else profile.copy(avatar = AVATARS[index % AVATARS.size])
+                }
+                if (migrated != saved) sp.edit { putString("phoneProfiles", json.encodeToString(migrated)) }
+                return migrated
+            }
         }
+        val oldAvatar = sp.getString("phoneAvatar", null)
         return listOf(
             Profile(
                 id = "p1",
                 name = "אני",
-                avatar = sp.getString("phoneAvatar", AVATARS.first()) ?: AVATARS.first(),
+                avatar = oldAvatar?.takeIf { it.startsWith("series-") } ?: AVATARS.first(),
                 favorites = sp.list("phoneFavorites"),
                 recents = sp.list("phoneRecents"),
             )
@@ -138,4 +161,3 @@ class AppPrefs(context: Context) {
     private fun android.content.SharedPreferences.list(key: String): List<String> =
         getString(key, "").orEmpty().split(',').filter { it.isNotEmpty() }
 }
-

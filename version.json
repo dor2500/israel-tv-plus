@@ -1,45 +1,46 @@
 {
-  "version": "4.4.6",
-  "code": 202610261657,
-  "app": 546,
+  "version": "4.4.7",
+  "code": 202610261741,
+  "app": 547,
   "shell": 3,
   "date": "2026-10-26",
   "notes": [
-    "הרחבת ערוצי ישראל ממקורות ציבוריים: נוסף i24NEWS בערבית עם זרם HLS ולוגו ייעודיים.",
-    "הרחבת הרדיו הישראלי: נוספו Radio Plus ו-Radio Qualita; קישורי השמע נבדקו מול נגן התחנה ושרתי השידור שלהם.",
-    "תיעוד ובדיקת מקורות: הזרמים החדשים מתועדים ב-SOURCES.md. מועמדים שלא ענו או שלא אומת מקורם לא נוספו."
+    "ממשק Android Compose פרימיום: עודכנה היררכיית Rubik בעברית למשקלים Light/Regular ולכותרות Medium/SemiBold.",
+    "ניווט נקי: ההגדרות עברו לסרגל העליון; החיפוש הופרד לכפתור זכוכית עגול וקפסולת הניווט כוללת בית, ערוצים ושלי.",
+    "בחירת פרופיל: נוספו אווטארים של ריק ומורטי וטד לאסו, עם הגדלה ומסגרת לבנה בפוקוס מגע או D-pad.",
+    "Hero ומסנן ישראלי: נוסף נגן HLS מושתק ביחס 16:9, מתג \"רק ישראלי\", דגל ישראל drawable ואנימציית חזרה מרחבית של התג אל המתג."
   ],
   "native": {
     "android": {
-      "version": "4.4.6",
-      "app": 546,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.4.6/IsraelTVPlus-android.apk"
+      "version": "4.4.7",
+      "app": 547,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.4.7/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "4.4.6",
-      "app": 546,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.4.6/IsraelTVPlus-windows-setup.exe"
+      "version": "4.4.7",
+      "app": 547,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.4.7/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "4.4.6",
-      "app": 546,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.4.6/com.israeltv.plus_all.ipk",
+      "version": "4.4.7",
+      "app": 547,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.4.7/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "4.4.6",
-      "app": 546,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.4.6/IsraelTVPlus-tizen-project.zip"
+      "version": "4.4.7",
+      "app": 547,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.4.7/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "4.4.6",
-      "app": 546,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.4.6/IsraelTVPlus-macos-arm64.zip"
+      "version": "4.4.7",
+      "app": 547,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.4.7/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "4.4.6",
-      "app": 546,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.4.6/IsraelTVPlus-linux-x64.zip"
+      "version": "4.4.7",
+      "app": 547,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.4.7/IsraelTVPlus-linux-x64.zip"
     }
   }
 }

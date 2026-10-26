@@ -3,6 +3,7 @@ package com.israeltv.plus.ui.screens
 import androidx.activity.compose.BackHandler
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.spring
 import androidx.compose.animation.fadeIn
@@ -15,6 +16,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -61,6 +63,8 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.onFocusChanged
+import androidx.compose.foundation.focusable
 import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawBehind
@@ -82,6 +86,7 @@ import com.israeltv.plus.data.AppPrefs
 import com.israeltv.plus.data.Profile
 import com.israeltv.plus.data.ThemeChoice
 import com.israeltv.plus.data.avatarUrl
+import com.israeltv.plus.data.avatarDescription
 import com.israeltv.plus.ui.components.sharedAvatar
 import com.israeltv.plus.ui.theme.CuratedPalettes
 import com.israeltv.plus.ui.theme.schemeFor
@@ -222,9 +227,15 @@ private fun ProfileTile(p: Profile, editing: Boolean, onClick: () -> Unit) {
     val haptic = LocalHapticFeedback.current
     val scope = rememberCoroutineScope()
     val bounce = remember { Animatable(1f) }
+    var focused by remember { mutableStateOf(false) }
+    val interaction = remember { MutableInteractionSource() }
+    val pressed by interaction.collectIsPressedAsState()
+    val highlighted = focused || pressed
+    val focusScale by animateFloatAsState(if (highlighted) 1.10f else 1f, spring(dampingRatio = 0.68f, stiffness = Spring.StiffnessMediumLow), label = "profileFocusScale")
     val tone = remember(p.theme) { schemeFor(context, p.theme.copy(dark = true)) }
     Column(
-        Modifier.width(100.dp).clickable(remember { MutableInteractionSource() }, null) {
+        Modifier.width(126.dp).onFocusChanged { focused = it.isFocused }.focusable()
+            .clickable(interaction, null) {
             haptic.performHapticFeedback(HapticFeedbackType.SegmentFrequentTick)
             scope.launch {
                 bounce.animateTo(0.88f, spring(stiffness = Spring.StiffnessHigh))
@@ -236,15 +247,15 @@ private fun ProfileTile(p: Profile, editing: Boolean, onClick: () -> Unit) {
     ) {
         Box(
             Modifier
-                .size(100.dp)
-                .graphicsLayer { scaleX = bounce.value; scaleY = bounce.value }
+                .size(116.dp)
+                .graphicsLayer { scaleX = maxOf(focusScale, bounce.value); scaleY = maxOf(focusScale, bounce.value) }
                 .sharedAvatar("avatar:${p.id}")
                 .clip(TileShape)
                 .background(Brush.linearGradient(listOf(tone.primaryContainer, tone.tertiaryContainer)))
-                .border(1.dp, Brush.verticalGradient(listOf(Color.White.copy(alpha = 0.35f), Color.Transparent)), TileShape),
+                .border(if (highlighted) 3.dp else 1.dp, if (highlighted) Color.White else Color.White.copy(alpha = 0.35f), TileShape),
             contentAlignment = Alignment.Center,
         ) {
-            AsyncImage(avatarUrl(p.avatar), p.name, Modifier.size(66.dp))
+            AsyncImage(avatarUrl(p.avatar), p.name, Modifier.size(82.dp))
             if (editing) {
                 Box(Modifier.fillMaxSize().background(Color.Black.copy(alpha = 0.45f)), contentAlignment = Alignment.Center) {
                     Icon(Icons.Rounded.Edit, "עריכה", Modifier.size(30.dp), tint = Color.White)
@@ -252,7 +263,7 @@ private fun ProfileTile(p: Profile, editing: Boolean, onClick: () -> Unit) {
             }
         }
         Text(
-            p.name, Modifier.padding(top = 10.dp), color = Color.White, fontSize = 16.sp, fontWeight = FontWeight.Bold,
+            p.name, Modifier.padding(top = 14.dp), color = Color.White, fontSize = 16.sp, fontWeight = FontWeight.Bold,
             maxLines = 1, overflow = TextOverflow.Ellipsis, textAlign = TextAlign.Center,
         )
     }
@@ -326,13 +337,13 @@ private fun ProfileEditor(
                     val on = id == p.avatar
                     Box(
                         Modifier
-                            .size(54.dp)
-                            .clip(CircleShape)
+                            .size(60.dp)
+                            .clip(RoundedCornerShape(15.dp))
                             .background(if (on) scheme.primaryContainer else scheme.surfaceContainerHighest.copy(alpha = 0.6f))
-                            .then(if (on) Modifier.border(2.dp, scheme.primary, CircleShape) else Modifier)
+                            .then(if (on) Modifier.border(2.dp, Color.White, RoundedCornerShape(15.dp)) else Modifier)
                             .clickable { p = p.copy(avatar = id) },
                         contentAlignment = Alignment.Center,
-                    ) { AsyncImage(avatarUrl(id), null, Modifier.size(38.dp)) }
+                    ) { AsyncImage(avatarUrl(id), avatarDescription(id), Modifier.size(50.dp).clip(RoundedCornerShape(12.dp))) }
                 }
             }
             Text("צבעים", Modifier.fillMaxWidth().padding(top = 16.dp, bottom = 8.dp), color = scheme.onSurfaceVariant, fontSize = 13.sp)
@@ -357,4 +368,3 @@ private fun ProfileEditor(
         }
     }
 }
-
