@@ -3,6 +3,7 @@
 .DS_Store
 Thumbs.db
 dist/
+release_notes_latest.md
 __pycache__/
 output/
 build/

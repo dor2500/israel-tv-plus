@@ -78,6 +78,10 @@ def main():
         "tizen": {"version": version, "app": app, "url": dl + "IsraelTVPlus-tizen-project.zip"},
         "mac": {"version": version, "app": app, "url": dl + "IsraelTVPlus-macos-arm64.zip"},
         "linux": {"version": version, "app": app, "url": dl + "IsraelTVPlus-linux-x64.zip"},
+        # the watch app is installed by the phone app (data/WatchInstaller.kt) from the same release;
+        # its versionCode is 1,000,000 + major*100+minor*10+patch (wear/app/build.gradle.kts)
+        "wear": {"version": version, "app": 1000000 + major * 100 + minor * 10 + patch,
+                 "url": dl + "IsraelTVPlus-wearos.apk"},
     }
     data = dict(build, notes=notes(version), native=native)
     write("version.json", json.dumps(data, ensure_ascii=False, indent=2) + "\n")

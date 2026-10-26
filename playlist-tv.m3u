@@ -15,7 +15,7 @@ http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12214/index.m3u8
 http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12219/index.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="HOT Comedy HD" tvg-chno="8" tvg-logo="https://af-play.com/storage/images/pack_logos/479ecd9c606cac2ebdfd10a7f5f1297d.png" group-title="ערוצי ישראל",HOT Comedy HD
 http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12217/index.m3u8
-#EXTINF:-1 tvg-id="Channel9.il" tvg-name="ערוץ 9 ישראל HD" tvg-chno="9" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/channel9.png" group-title="ערוצי ישראל",ערוץ 9 ישראל HD
+#EXTINF:-1 tvg-id="Channel9.il" tvg-name="ערוץ 9 ישראל HD" tvg-chno="9" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/ch9.png" group-title="ערוצי ישראל",ערוץ 9 ישראל HD
 https://contact.gostreaming.tv/Con-11/index.m3u8
 #EXTINF:-1 tvg-id="i24NEWSHebrew.il" tvg-name="i24NEWS עברית HD" tvg-chno="10" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/i24news_he.png" group-title="ערוצי ישראל",i24NEWS עברית HD
 https://i24newshebrew-cdn.encoders.immergo.tv/master.m3u8
@@ -379,7 +379,7 @@ http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2386/index.m3u8
 http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32128/index.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="ערוץ 24 מוזיקה ישראלית HD" tvg-chno="201" tvg-logo="https://af-play.com/storage/images/pack_logos/a0e0197581415e7215c218e760b0404a.png" group-title="מוזיקה",ערוץ 24 מוזיקה ישראלית HD
 http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12237/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="רדיוס 100FM – אולפן וידאו HD" tvg-chno="202" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/radios_video.svg" group-title="מוזיקה",רדיוס 100FM – אולפן וידאו HD
+#EXTINF:-1 tvg-id="" tvg-name="רדיוס 100FM – אולפן וידאו HD" tvg-chno="202" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/radios_video.png" group-title="מוזיקה",רדיוס 100FM – אולפן וידאו HD
 https://cdn.cybercdn.live/Radios_100FM/Video/playlist.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="Hala TV – ערוץ הלא HD" tvg-chno="307" tvg-logo="https://www.panet.co.il/images/logo.png" group-title="ערוצי ישראל",Hala TV – ערוץ הלא HD
 https://stream.panet.com/edge/halaTV/playlist.m3u8
@@ -407,19 +407,19 @@ https://listen7.myradio24.com/orenu
 http://stream.mcquack.net/378/index.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="Baby Shark TV (בייבי שארק לילדים)" tvg-chno="319" tvg-logo="https://i.imgur.com/qKLEGU7.png" group-title="ילדים ונוער (בעברית)",Baby Shark TV (בייבי שארק לילדים)
 https://newidco-babysharktv-1-us.roku.wurl.tv/playlist.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ערוץ בייבי BabyTV Global HD" tvg-chno="320" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/babytv.svg" group-title="ילדים ונוער (בעברית)",ערוץ בייבי BabyTV Global HD
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ בייבי BabyTV Global HD" tvg-chno="320" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/baby_tv_he.png" group-title="ילדים ונוער (בעברית)",ערוץ בייבי BabyTV Global HD
 https://cdn.fast.jwp.services/v1/channel/1_jB6940Ei_TvhvIHDL/manifest.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="ערוץ זו-מו לילדים (ZooMoo HD)" tvg-chno="321" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/zoom.png" group-title="ילדים ונוער (בעברית)",ערוץ זו-מו לילדים (ZooMoo HD)
 https://zoomoo-samsungau.amagi.tv/playlist.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="ניק ג'וניור קלאב (Nick Jr. Club HD)" tvg-chno="322" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/nick_jr.png" group-title="ילדים ונוער (בעברית)",ניק ג'וניור קלאב (Nick Jr. Club HD)
 https://jmp2.uk/plu-67f3eb1c443f0671bc03ece8.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ניקלודיאון קלאסיקות (Nickelodeon Classics HD)" tvg-chno="323" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/nickelodeon.svg" group-title="ילדים ונוער (בעברית)",ניקלודיאון קלאסיקות (Nickelodeon Classics HD)
+#EXTINF:-1 tvg-id="" tvg-name="ניקלודיאון קלאסיקות (Nickelodeon Classics HD)" tvg-chno="323" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/nickelodeon.png" group-title="ילדים ונוער (בעברית)",ניקלודיאון קלאסיקות (Nickelodeon Classics HD)
 https://jmp2.uk/plu-67f3eb800a1beb98767ca748.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="פלוטו טי-וי ג'וניור (Pluto TV Junior HD)" tvg-chno="324" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/junior.png" group-title="ילדים ונוער (בעברית)",פלוטו טי-וי ג'וניור (Pluto TV Junior HD)
 https://jmp2.uk/plu-5f12141b146d760007934ea7.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ערוץ אני אנימציה HD (Ani Kids)" tvg-chno="325" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/ani_kids.svg" group-title="ילדים ונוער (בעברית)",ערוץ אני אנימציה HD (Ani Kids)
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ אני אנימציה HD (Ani Kids)" tvg-chno="325" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/ani_kids.png" group-title="ילדים ונוער (בעברית)",ערוץ אני אנימציה HD (Ani Kids)
 http://stream.mcquack.net/306/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ערוץ האנימציה PLUSPLUS HD" tvg-chno="326" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/plusplus.svg" group-title="ילדים ונוער (בעברית)",ערוץ האנימציה PLUSPLUS HD
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ האנימציה PLUSPLUS HD" tvg-chno="326" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/plusplus.png" group-title="ילדים ונוער (בעברית)",ערוץ האנימציה PLUSPLUS HD
 http://stream.mcquack.net/339/index.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="ערוץ ניקי ג'וניור HD (Niki Junior)" tvg-chno="327" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/junior.png" group-title="ילדים ונוער (בעברית)",ערוץ ניקי ג'וניור HD (Niki Junior)
 http://stream.mcquack.net/262/index.m3u8

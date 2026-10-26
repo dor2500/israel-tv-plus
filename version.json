@@ -1,46 +1,54 @@
 {
-  "version": "4.4.7",
-  "code": 202610261741,
-  "app": 547,
+  "version": "4.5.0",
+  "code": 202610262245,
+  "app": 550,
   "shell": 3,
   "date": "2026-10-26",
   "notes": [
-    "ממשק Android Compose פרימיום: עודכנה היררכיית Rubik בעברית למשקלים Light/Regular ולכותרות Medium/SemiBold.",
-    "ניווט נקי: ההגדרות עברו לסרגל העליון; החיפוש הופרד לכפתור זכוכית עגול וקפסולת הניווט כוללת בית, ערוצים ושלי.",
-    "בחירת פרופיל: נוספו אווטארים של ריק ומורטי וטד לאסו, עם הגדלה ומסגרת לבנה בפוקוס מגע או D-pad.",
-    "Hero ומסנן ישראלי: נוסף נגן HLS מושתק ביחס 16:9, מתג \"רק ישראלי\", דגל ישראל drawable ואנימציית חזרה מרחבית של התג אל המתג."
+    "מהדורה משולבת ויציבה (Cross Release): כל הפלטפורמות בגרסה אחת – אנדרואיד / Android TV, שעון Wear OS, LG webOS, סמסונג Tizen, Windows, Linux ו-macOS – עם אותם 341 ערוצים מאומתים ואותו קוד.",
+    "תיקון שרשרת העדכונים (OTA): version.json הצביע לכתובת הורדה של גרסה שלא פורסמה (404) – כל כפתור \"עדכון\" באפליקציה ובאתר נכשל. כל הקישורים מצביעים כעת לריליס שפורסם, עם קובץ version.json לבדיקה.",
+    "APK לשעון זמין שוב: ההורדה \"התקנה בשעון\" מהטלפון חיפשה IsraelTVPlus-wearos.apk שלא היה באף ריליס; הוא נבנה ונכלל מעכשיו בכל מהדורה (וגם רשומת wear ב-version.json).",
+    "לוגואים חסרים: 11 ערוצים הצביעו לקבצי לוגו שלא קיימים בקובץ ההתקנה; 7 מהם תוקנו (שמות קבצים אחרים / סיומת אחרת) והיתר נופלים לאות הערוץ במקום לריבוע שבור.",
+    "תיעוד ההתקנה: המדריך לריליס (docs/RELEASE.md) מסביר איך בונים כל חבילה ואיך שומרים על מפתח החתימה, כדי שעדכון יתקין מעל הגרסה הקודמת.",
+    "בדיקות התקנה בפועל: כל גרסה שפורסמה (4.3.9, 4.4.0–4.4.7) נבנתה, הותקנה והופעלה על מכשיר אנדרואיד אמיתי (אמולטור) לפני האיחוד; התוצאות מתועדות ב-docs/release-audit-4.5.0.md.",
+    "CI לבנייה ולפרסום: GitHub Actions בונה את כל החבילות ומעלה אותן לריליס בכל דחיפת תגית, כדי שלא יחזרו גרסאות \"בלי קבצים\"."
   ],
   "native": {
     "android": {
-      "version": "4.4.7",
-      "app": 547,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.4.7/IsraelTVPlus-android.apk"
+      "version": "4.5.0",
+      "app": 550,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.0/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "4.4.7",
-      "app": 547,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.4.7/IsraelTVPlus-windows-setup.exe"
+      "version": "4.5.0",
+      "app": 550,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.0/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "4.4.7",
-      "app": 547,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.4.7/com.israeltv.plus_all.ipk",
+      "version": "4.5.0",
+      "app": 550,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.0/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "4.4.7",
-      "app": 547,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.4.7/IsraelTVPlus-tizen-project.zip"
+      "version": "4.5.0",
+      "app": 550,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.0/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "4.4.7",
-      "app": 547,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.4.7/IsraelTVPlus-macos-arm64.zip"
+      "version": "4.5.0",
+      "app": 550,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.0/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "4.4.7",
-      "app": 547,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.4.7/IsraelTVPlus-linux-x64.zip"
+      "version": "4.5.0",
+      "app": 550,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.0/IsraelTVPlus-linux-x64.zip"
+    },
+    "wear": {
+      "version": "4.5.0",
+      "app": 1000450,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.0/IsraelTVPlus-wearos.apk"
     }
   }
 }

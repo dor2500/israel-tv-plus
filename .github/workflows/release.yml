@@ -1,0 +1,157 @@
+name: release
+
+# Builds every package of the app and attaches them to the GitHub release of the pushed tag.
+# A release can no longer be published with a version.json that points at files nobody uploaded
+# (that is exactly what left 4.4.5 / 4.4.6 / 4.4.7 as tags without a release).
+#
+# Signing: the Android APKs use the release key from the repository secrets
+#   ANDROID_KEYSTORE_BASE64    base64 of ~/.android/israel-tv-plus.jks
+#   ANDROID_KEYSTORE_PASSWORD  the contents of ~/.android/israel-tv-plus.pass
+# Without them the APKs are signed with a throw-away key: they build, but cannot be installed over
+# an existing install – see docs/RELEASE.md.
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'existing tag to build and publish (e.g. v4.5.0)'
+        required: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release-${{ github.event.inputs.tag || github.ref_name }}
+  cancel-in-progress: false
+
+jobs:
+  packages:
+    runs-on: ubuntu-latest
+    env:
+      TAG: ${{ github.event.inputs.tag || github.ref_name }}
+      KEYSTORE_B64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+      KEYSTORE_PASS: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.tag || github.ref_name }}
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: write the signing key
+        if: env.KEYSTORE_B64 != ''
+        run: |
+          mkdir -p "$HOME/.android"
+          printf '%s' "$KEYSTORE_B64" | base64 -d > "$HOME/.android/israel-tv-plus.jks"
+          printf '%s' "$KEYSTORE_PASS" > "$HOME/.android/israel-tv-plus.pass"
+
+      - name: note missing signing key
+        if: env.KEYSTORE_B64 == ''
+        run: echo "::warning::ANDROID_KEYSTORE_BASE64 is not set – the APKs get a throw-away signature (testing only)"
+
+      - name: build phone / TV / Wear APKs
+        run: |
+          chmod +x android/gradlew wear/gradlew
+          (cd android && ./gradlew :app:assembleRelease --console=plain)
+          (cd wear && ./gradlew :app:assembleRelease --console=plain)
+
+      - name: build LG webOS IPK
+        run: |
+          python -I tools/build_ipk.py dist
+          mkdir -p dist
+          cp android/app/build/outputs/apk/release/app-release.apk dist/IsraelTVPlus-android.apk
+          cp dist/IsraelTVPlus-android.apk dist/IsraelTVPlus-androidtv.apk
+          cp wear/app/build/outputs/apk/release/app-release.apk dist/IsraelTVPlus-wearos.apk
+
+      - name: build Samsung Tizen project
+        run: python -I tools/build_tizen_zip.py dist
+
+      - name: build Linux + macOS desktop apps
+        continue-on-error: true
+        run: python -I tools/build_desktop.py
+
+      - name: checksums
+        run: cd dist && sha256sum * > SHA256SUMS.txt
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: packages
+          path: dist/
+          if-no-files-found: warn
+
+      - name: release notes (the CHANGELOG section of this version)
+        run: python -I tools/make_release_notes.py
+
+      # Only a build signed with the real key may touch a published release: an APK signed with a
+      # throw-away key would break the update path of every installed user. Without the secret the
+      # workflow still builds everything (Actions artifacts) but never overwrites release assets.
+      - name: publish the release
+        if: startsWith(github.ref, 'refs/tags/') && env.KEYSTORE_B64 != ''
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ env.TAG }}
+          name: Israel TV+ ${{ env.TAG }}
+          body_path: release_notes_latest.md
+          files: |
+            dist/IsraelTVPlus-android.apk
+            dist/IsraelTVPlus-androidtv.apk
+            dist/IsraelTVPlus-wearos.apk
+            dist/com.israeltv.plus_all.ipk
+            dist/com.israeltv.plus_*_all.ipk
+            dist/IsraelTVPlus-tizen-project.zip
+            dist/SHA256SUMS.txt
+            dist/IsraelTVPlus-linux-*.zip
+            dist/IsraelTVPlus-macos-*.zip
+            version.json
+            version.js
+            channels.json
+            playlist.m3u
+            playlist-israel.m3u
+            playlist-tv.m3u
+            radio.m3u
+          fail_on_unmatched_files: false
+
+  windows:
+    runs-on: windows-latest
+    env:
+      TAG: ${{ github.event.inputs.tag || github.ref_name }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.tag || github.ref_name }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Inno Setup 6
+        run: choco install innosetup -y --no-progress
+        continue-on-error: true
+
+      - name: build Windows portable + setup
+        shell: pwsh
+        run: ./tools/build_windows.ps1
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: windows
+          path: dist/IsraelTVPlus-windows-*.*
+          if-no-files-found: warn
+
+      - name: attach to the release
+        if: startsWith(github.ref, 'refs/tags/')
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          $files = Get-ChildItem dist -Filter 'IsraelTVPlus-windows-*'
+          if ($files) { gh release upload $env:TAG $files.FullName --clobber }
