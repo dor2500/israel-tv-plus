@@ -177,7 +177,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "logo": "assets/logos/channel9.png",
   "badge": "FHD",
   "desc": "ערוץ 9 - ערוץ ישראלי בשפה הרוסית: חדשות, אקטואליה ותוכניות",
-  "number": 10,
+  "number": 9,
   "lang": "ru",
   "iptv": "Channel9.il",
   "src": {
@@ -185,6 +185,27 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
    "kind": "official",
    "host": "contact.gostreaming.tv",
    "found": "iptv-org (Channel9.il)",
+   "web": "✅"
+  }
+ },
+ {
+  "id": "i24news_he",
+  "name": "i24NEWS עברית HD",
+  "title": "i24NEWS עברית HD",
+  "category": "ערוצי ישראל - שידור חי",
+  "categoryEn": "israel",
+  "url": "https://i24newshebrew-cdn.encoders.immergo.tv/master.m3u8",
+  "logo": "assets/logos/i24news_he.png",
+  "badge": "FHD",
+  "desc": "ערוץ החדשות הבינלאומי של ישראל בעברית - דיווחי חדשות ומבזקים 24/7",
+  "number": 10,
+  "lang": "he",
+  "iptv": "i24NEWSHebrew.il",
+  "src": {
+   "by": "i24NEWS – שרת רשמי",
+   "kind": "official",
+   "host": "i24newshebrew-cdn.encoders.immergo.tv",
+   "found": "iptv-org (i24NEWSHebrew.il)",
    "web": "✅"
   }
  },
@@ -253,23 +274,23 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   }
  },
  {
-  "id": "i24news_he",
-  "name": "i24NEWS עברית HD",
-  "title": "i24NEWS עברית HD",
+  "id": "now14",
+  "name": "עכשיו 14 HD",
+  "title": "עכשיו 14 HD (Now 14)",
   "category": "ערוצי ישראל - שידור חי",
   "categoryEn": "israel",
-  "url": "https://i24newshebrew-cdn.encoders.immergo.tv/master.m3u8",
-  "logo": "assets/logos/i24news_he.png",
+  "url": "https://r.il.cdn-redge.media/livehls/oil/ch14/live/ch14/live.livx/playlist.m3u8",
+  "logo": "assets/logos/now14.png",
   "badge": "FHD",
-  "desc": "ערוץ החדשות הבינלאומי של ישראל בעברית - דיווחי חדשות ומבזקים 24/7",
-  "number": 15,
+  "desc": "ערוץ החדשות והאקטואליה - מהדורות חדשות, הפטריוטים ופאנלים פוליטיים",
+  "number": 14,
   "lang": "he",
-  "iptv": "i24NEWSHebrew.il",
+  "iptv": "Now14.il",
   "src": {
-   "by": "i24NEWS – שרת רשמי",
+   "by": "Redge – ה-CDN הרשמי של כאן, ערוץ 14 וכלכלה 10",
    "kind": "official",
-   "host": "i24newshebrew-cdn.encoders.immergo.tv",
-   "found": "iptv-org (i24NEWSHebrew.il)",
+   "host": "r.il.cdn-redge.media",
+   "found": "iptv-org (Now14.il)",
    "web": "✅"
   }
  },
@@ -285,7 +306,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "HOT HBO סדרות פרימיום HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 16,
+  "number": 15,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -306,7 +327,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ 14 עכשיו HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 17,
+  "number": 16,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -314,25 +335,6 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
    "found": "רשימה ידנית (גרסה קודמת)",
    "web": "❌ רק באפליקציה (HTTP)"
   }
- },
- {
-  "id": "app_hot_next",
-  "name": "HOT NEXT TV",
-  "title": "HOT Next TV Direct OTT",
-  "category": "ערוצי ישראל - שידור חי",
-  "categoryEn": "israel",
-  "url": "https://www.hot.net.il/",
-  "site": "https://www.hot.net.il/",
-  "kind": "app",
-  "appPkg": "il.net.hot.nexttv",
-  "logo": "assets/logos/generic_tv.png",
-  "badge": "APP",
-  "desc": "כל ערוצי HOT, סדרות המקור והסרטים בסטרימינג",
-  "lang": "he",
-  "country": "IL",
-  "countryHe": "ישראל",
-  "webOk": true,
-  "number": 18
  },
  {
   "id": "hot_action",
@@ -346,7 +348,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "סרטי פעולה, מתח וקרבות מסביב לשעון מבית HOT",
   "lang": "he",
   "country": "IL",
-  "number": 19,
+  "number": 17,
   "src": {
    "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
    "kind": "restream",
@@ -367,7 +369,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "HOT בידור ישראלי HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 20,
+  "number": 18,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -388,7 +390,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ הבידור והתרבות הישראלית מבית HOT",
   "lang": "he",
   "country": "IL",
-  "number": 21,
+  "number": 19,
   "src": {
    "by": "קשת – ה-CDN של mako (עם הרשאת צפייה של mako)",
    "kind": "official",
@@ -409,7 +411,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ סדרות הדרמה המובילות וסרטי הקולנוע מבית HOT באיכות 1080p FHD",
   "lang": "he",
   "logo": "https://af-play.com/storage/images/channel_logos/55f23af148ad71a6a5c0e01ba432403f.png",
-  "number": 22,
+  "number": 20,
   "src": {
    "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
    "kind": "restream",
@@ -431,7 +433,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ האקשן, המתח והמסתורין מבית HOT באיכות 1080p FHD",
   "lang": "he",
   "logo": "https://af-play.com/storage/images/pack_logos/1bb5cc5b621a35934729462387ecf894.png",
-  "number": 25,
+  "number": 21,
   "src": {
    "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
    "kind": "restream",
@@ -440,27 +442,6 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
    "web": "❌ רק באפליקציה (HTTP)"
   },
   "country": "IL"
- },
- {
-  "id": "hot_cinema_1",
-  "name": "HOT סינמה 1 HD",
-  "title": "HOT סינמה 1 HD (Cinema 1)",
-  "category": "ערוצי ישראל - שידור חי",
-  "categoryEn": "israel",
-  "url": "http://stream.mcquack.net/200/index.m3u8",
-  "logo": "https://af-play.com/storage/images/pack_logos/f14b95e0e8b95995de6e7accdba34762.png",
-  "badge": "FHD",
-  "desc": "שוברי הקופות והסרטים החדשים ביותר של HOT באיכות 1080p FHD",
-  "lang": "he",
-  "country": "IL",
-  "number": 26,
-  "src": {
-   "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
-   "kind": "restream",
-   "host": "stream.mcquack.net",
-   "found": "רשימה ידנית (גרסה קודמת)",
-   "web": "❌ רק באפליקציה (HTTP)"
-  }
  },
  {
   "id": "kan_hinuchit",
@@ -472,7 +453,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "logo": "assets/logos/kan_hinuchit.png",
   "badge": "HD",
   "desc": "כראמל, קופה ראשית לנוער, ילדי בית העץ, להציל את חיות הבר ועוד",
-  "number": 27,
+  "number": 22,
   "lang": "he",
   "iptv": "KanEducational.il",
   "src": {
@@ -493,7 +474,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "logo": "assets/logos/channel24.png",
   "badge": "HD",
   "desc": "ערוץ המוזיקה, השמחה והבידור הישראלי - קליפים, הופעות ואירוח",
-  "number": 28,
+  "number": 23,
   "lang": "he",
   "iptv": "Channel24.il",
   "src": {
@@ -507,6 +488,27 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "webOk": false
  },
  {
+  "id": "hot_cinema_1",
+  "name": "HOT סינמה 1 HD",
+  "title": "HOT סינמה 1 HD (Cinema 1)",
+  "category": "ערוצי ישראל - שידור חי",
+  "categoryEn": "israel",
+  "url": "http://stream.mcquack.net/200/index.m3u8",
+  "logo": "https://af-play.com/storage/images/pack_logos/f14b95e0e8b95995de6e7accdba34762.png",
+  "badge": "FHD",
+  "desc": "שוברי הקופות והסרטים החדשים ביותר של HOT באיכות 1080p FHD",
+  "lang": "he",
+  "country": "IL",
+  "number": 24,
+  "src": {
+   "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+   "kind": "restream",
+   "host": "stream.mcquack.net",
+   "found": "רשימה ידנית (גרסה קודמת)",
+   "web": "❌ רק באפליקציה (HTTP)"
+  }
+ },
+ {
   "id": "hot_cinema_2",
   "name": "HOT סינמה 2 HD",
   "title": "HOT סינמה 2 HD (Cinema 2)",
@@ -518,7 +520,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "סרטי הרפתקאות, פעולה ומדע בדיוני מבית HOT",
   "lang": "he",
   "country": "IL",
-  "number": 29,
+  "number": 25,
   "src": {
    "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
    "kind": "restream",
@@ -539,7 +541,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "סרטי איכות עטורי פרסים וקולנוע פרימיום של HOT",
   "lang": "he",
   "country": "IL",
-  "number": 30,
+  "number": 26,
   "src": {
    "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
    "kind": "restream",
@@ -569,7 +571,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
    "found": "רשימה ידנית (גרסה קודמת)",
    "web": "✅"
   },
-  "number": 31
+  "number": 27
  },
  {
   "id": "hot_fun",
@@ -583,7 +585,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "סרטי קומדיה ובידור קליל לכל המשפחה של HOT",
   "lang": "he",
   "country": "IL",
-  "number": 32,
+  "number": 28,
   "src": {
    "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
    "kind": "restream",
@@ -613,7 +615,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
    "found": "רשימה ידנית (גרסה קודמת)",
    "web": "✅"
   },
-  "number": 33
+  "number": 29
  },
  {
   "id": "il_hot_real_hd_il",
@@ -627,7 +629,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "HOT ריאל HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 34,
+  "number": 30,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -657,7 +659,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
    "found": "רשימה ידנית (גרסה קודמת)",
    "web": "✅"
   },
-  "number": 35
+  "number": 31
  },
  {
   "id": "il_health_il",
@@ -671,7 +673,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "Health HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 36,
+  "number": 32,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -692,7 +694,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "iptv": "ILTV.fr",
   "desc": "ערוץ ישראלי בצרפתית - חדשות, אקטואליה, תרבות ואוכל מישראל",
   "logo": "assets/logos/iltv_fr.png",
-  "number": 37,
+  "number": 33,
   "src": {
    "by": "live.creacast.com",
    "kind": "restream",
@@ -712,7 +714,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "badge": "HD",
   "desc": "ערוץ החיים והתרבות היהודית – תוכניות מישראל, היסטוריה, אוכל ואקטואליה",
   "logo": "assets/logos/jltv.png",
-  "number": 38,
+  "number": 34,
   "src": {
    "by": "jlt-jltv-xumo.otteravision.com",
    "kind": "restream",
@@ -733,7 +735,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "Kan Educational HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 39,
+  "number": 35,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -754,7 +756,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "Makan 33 HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 40,
+  "number": 36,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -775,7 +777,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "RAIN HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 41,
+  "number": 37,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -783,25 +785,6 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
    "found": "רשימה ידנית (גרסה קודמת)",
    "web": "❌ רק באפליקציה (HTTP)"
   }
- },
- {
-  "id": "app_sting_tv",
-  "name": "STING+ מבית yes",
-  "title": "STING+ by yes",
-  "category": "ערוצי ישראל - שידור חי",
-  "categoryEn": "israel",
-  "url": "https://www.stingtv.co.il/",
-  "site": "https://www.stingtv.co.il/",
-  "kind": "app",
-  "appPkg": "il.co.stingtv.atv",
-  "logo": "assets/logos/generic_tv.png",
-  "badge": "APP",
-  "desc": "ערוצים, סדרות וסרטי yes בסטרימינג ישיר",
-  "lang": "he",
-  "country": "IL",
-  "countryHe": "ישראל",
-  "webOk": true,
-  "number": 42
  },
  {
   "id": "il_yam_tichoni_il",
@@ -815,7 +798,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "Yam Tichoni HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 43,
+  "number": 38,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -836,7 +819,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "Yam Tichoni HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 44,
+  "number": 39,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -857,7 +840,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ZEE TV HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 45,
+  "number": 40,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -877,7 +860,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "badge": "FHD",
   "desc": "ערוץ החדשות הבינלאומי של i24NEWS מישראל - באנגלית",
   "logo": "assets/logos/i24news_en.png",
-  "number": 46,
+  "number": 41,
   "src": {
    "by": "i24NEWS – שרת רשמי",
    "kind": "official",
@@ -896,7 +879,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "logo": "assets/logos/i24news_fr.png",
   "badge": "FHD",
   "desc": "שידורי i24NEWS בשפה הצרפתית",
-  "number": 47,
+  "number": 42,
   "lang": "fr",
   "iptv": "i24NEWSFrench.il",
   "src": {
@@ -919,7 +902,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "סדרות מתח, אקשן ומסתורין ללא הפסקה מבית yes",
   "lang": "he",
   "country": "IL",
-  "number": 48,
+  "number": 43,
   "src": {
    "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
    "kind": "restream",
@@ -940,7 +923,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "סדרות הדרמה המדוברות ביותר בארץ ובעולם מבית yes",
   "lang": "he",
   "country": "IL",
-  "number": 49,
+  "number": 44,
   "src": {
    "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
    "kind": "restream",
@@ -961,7 +944,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "סדרות קומדיה, סיטקומים ותוכניות בידור מבית yes",
   "lang": "he",
   "country": "IL",
-  "number": 50,
+  "number": 45,
   "src": {
    "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
    "kind": "restream",
@@ -982,7 +965,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ הסרטים והסדרות הדוקומנטריות עטורי הפרסים של yes",
   "lang": "he",
   "country": "IL",
-  "number": 51,
+  "number": 46,
   "src": {
    "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
    "kind": "restream",
@@ -1003,7 +986,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ סרטי האקשן, שוברי הקופות והמתח מבית yes באיכות 1080p FHD",
   "lang": "he",
   "logo": "https://af-play.com/storage/images/channel_logos/b2c527f27939125f9f7f8e996a8e7cdb.png",
-  "number": 52,
+  "number": 47,
   "src": {
    "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
    "kind": "restream",
@@ -1025,7 +1008,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "סרטי דרמה מרגשים, קולנוע עולמי ופסטיבלים מבית yes באיכות 1080p FHD",
   "lang": "he",
   "country": "IL",
-  "number": 53,
+  "number": 48,
   "src": {
    "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
    "kind": "restream",
@@ -1046,7 +1029,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "מיטב הקולנוע הישראלי, סרטים דוקומנטריים ועלילתיים מבית yes",
   "lang": "he",
   "country": "IL",
-  "number": 54,
+  "number": 49,
   "src": {
    "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
    "kind": "restream",
@@ -1067,7 +1050,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "מיטב סרטי הקומדיה, הצחוק והבידור מבית yes באיכות 1080p FHD",
   "lang": "he",
   "country": "IL",
-  "number": 55,
+  "number": 50,
   "src": {
    "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
    "kind": "restream",
@@ -1088,34 +1071,13 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "קלאסיקות קולנועיות אהובות וסרטי מופת מכל הזמנים",
   "lang": "he",
   "country": "IL",
-  "number": 56,
+  "number": 51,
   "src": {
    "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
    "kind": "restream",
    "host": "stream.mcquack.net",
    "found": "רשימה ידנית (גרסה קודמת)",
    "web": "❌ רק באפליקציה (HTTP)"
-  }
- },
- {
-  "id": "app_yes_plus",
-  "name": "yes+ ישיר",
-  "title": "yes+ ישיר (שירות הסטרימינג של yes)",
-  "category": "ערוצי ישראל - שידור חי",
-  "categoryEn": "israel",
-  "url": "https://www.yes.co.il/",
-  "logo": "assets/logos/app_yes_plus.svg",
-  "badge": "APP",
-  "desc": "שירות הטלוויזיה בסטרימינג של yes - כל הערוצים, הסדרות, הסרטים והספורט",
-  "lang": "he",
-  "country": "IL",
-  "number": 57,
-  "src": {
-   "by": "www.yes.co.il",
-   "kind": "official",
-   "host": "www.yes.co.il",
-   "found": "רשימה ידנית (גרסה קודמת)",
-   "web": "✅"
   }
  },
  {
@@ -1129,7 +1091,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "badge": "HD",
   "desc": "השידור החי של ynet – חדשות, אולפן ושידורים מיוחדים",
   "logo": "assets/logos/ynet_live.png",
-  "number": 58,
+  "number": 52,
   "src": {
    "by": "ynet – השרת של ידיעות אחרונות",
    "kind": "official",
@@ -1150,7 +1112,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "badge": "HD",
   "desc": "כל העונות והמערכונים של ארץ נהדרת ברצף 24/7 – ערוץ חינמי של קשת ו-FreeTV",
   "logo": "assets/logos/keshet12.png",
-  "number": 59,
+  "number": 53,
   "src": {
    "by": "קשת – ה-CDN של mako (עם הרשאת צפייה של mako)",
    "kind": "official",
@@ -1180,7 +1142,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
    "found": "רשימה ידנית (גרסה קודמת)",
    "web": "❌ רק באפליקציה (HTTP)"
   },
-  "number": 60
+  "number": 54
  },
  {
   "id": "il_yam_tichoni__hd_il",
@@ -1194,7 +1156,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "הערוץ הים תיכוני פלוס HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 61,
+  "number": 55,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -1215,7 +1177,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "כאן 11 HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 62,
+  "number": 56,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -1235,7 +1197,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "badge": "HD",
   "desc": "כאן 11 עם כתוביות פתוחות בעברית לכל השידורים",
   "logo": "assets/logos/kan11_subs.png",
-  "number": 63,
+  "number": 57,
   "src": {
    "by": "Redge – ה-CDN הרשמי של כאן, ערוץ 14 וכלכלה 10",
    "kind": "official",
@@ -1256,7 +1218,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "כאן חינוכית 23 HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 64,
+  "number": 58,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -1277,7 +1239,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "כאן חינוכית 23 HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 65,
+  "number": 59,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -1298,7 +1260,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "שידורים ישירים של משחקי כדורגל, כדורסל וספורט עולמי",
   "lang": "he",
   "country": "IL",
-  "number": 66,
+  "number": 60,
   "countryHe": "ישראל",
   "src": {
    "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
@@ -1320,7 +1282,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ספורט עולמי, ליגות אירופאיות ומשחקים בשידור חי",
   "lang": "he",
   "country": "IL",
-  "number": 67,
+  "number": 61,
   "countryHe": "ישראל",
   "src": {
    "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
@@ -1342,7 +1304,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "כדורגל, כדורסל וטורנירים בינלאומיים בשידור חי",
   "lang": "he",
   "country": "IL",
-  "number": 68,
+  "number": 62,
   "countryHe": "ישראל",
   "src": {
    "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
@@ -1364,7 +1326,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "שידורי ספורט ישירים מסביב לשעון",
   "lang": "he",
   "country": "IL",
-  "number": 69,
+  "number": 63,
   "countryHe": "ישראל",
   "src": {
    "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
@@ -1386,34 +1348,13 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ הספורט המוביל של ישראל בשידור חי",
   "lang": "he",
   "country": "IL",
-  "number": 70,
+  "number": 64,
   "countryHe": "ישראל",
   "src": {
    "by": "ספורט 5 – השידור הרשמי של RGE (Akamai)",
    "kind": "official",
    "host": "rgelive.akamaized.net",
    "found": "רשימה ידנית (גרסה קודמת)",
-   "web": "✅"
-  }
- },
- {
-  "id": "now14",
-  "name": "עכשיו 14 HD",
-  "title": "עכשיו 14 HD (Now 14)",
-  "category": "ערוצי ישראל - שידור חי",
-  "categoryEn": "israel",
-  "url": "https://r.il.cdn-redge.media/livehls/oil/ch14/live/ch14/live.livx/playlist.m3u8",
-  "logo": "assets/logos/now14.png",
-  "badge": "FHD",
-  "desc": "ערוץ החדשות והאקטואליה - מהדורות חדשות, הפטריוטים ופאנלים פוליטיים",
-  "number": 71,
-  "lang": "he",
-  "iptv": "Now14.il",
-  "src": {
-   "by": "Redge – ה-CDN הרשמי של כאן, ערוץ 14 וכלכלה 10",
-   "kind": "official",
-   "host": "r.il.cdn-redge.media",
-   "found": "iptv-org (Now14.il)",
    "web": "✅"
   }
  },
@@ -1429,7 +1370,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ 14 עכשיו FHD בשידור חי באיכות FHD",
   "lang": "he",
   "country": "IL",
-  "number": 72,
+  "number": 65,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -1450,7 +1391,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ 14 עכשיו FHD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 73,
+  "number": 66,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -1470,7 +1411,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "badge": "HD",
   "desc": "שידורי תרבות, מסורת ובידור ישראליים באיכות HD",
   "logo": "assets/logos/ch16.svg",
-  "number": 74,
+  "number": 67,
   "src": {
    "by": "ערוץ 16 – שרת רשמי",
    "kind": "official",
@@ -1491,7 +1432,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ המוזיקה הלאומי של ישראל בשידור חי מסביב לשעון",
   "lang": "he",
   "country": "IL",
-  "number": 75,
+  "number": 68,
   "src": {
    "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
    "kind": "restream",
@@ -1512,7 +1453,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ 9 הישראלי FHD בשידור חי באיכות FHD",
   "lang": "he",
   "country": "IL",
-  "number": 76,
+  "number": 69,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -1533,7 +1474,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ 9 הישראלי HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 77,
+  "number": 70,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -1554,7 +1495,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ 9 הישראלי HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 78,
+  "number": 71,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -1575,7 +1516,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ אגו טוטאל (Ego Total) בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 79,
+  "number": 72,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -1596,7 +1537,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ בוליווד Bollywood HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 80,
+  "number": 73,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -1617,7 +1558,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ בוליווד Bollywood HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 81,
+  "number": 74,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -1638,7 +1579,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ בולישואו Bollyshow HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 82,
+  "number": 75,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -1659,7 +1600,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ בית פלוס HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 83,
+  "number": 76,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -1680,7 +1621,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ האהבה והרומנטיקה HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 84,
+  "number": 77,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -1701,7 +1642,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "badge": "HD",
   "desc": "ערוץ האוכל והבישול של קשת ו-FreeTV 24/7 – מתכונים, שפים מובילים ומאסטר שף",
   "logo": "assets/logos/keshet_food.svg",
-  "number": 85,
+  "number": 78,
   "src": {
    "by": "קשת – ה-CDN של mako (עם הרשאת צפייה של mako)",
    "kind": "official",
@@ -1722,7 +1663,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ הבידור הבינלאומי E! HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 86,
+  "number": 79,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -1743,7 +1684,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ הביוטי והיופי BeautyZ HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 87,
+  "number": 80,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -1764,7 +1705,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ הבית פלוס Home+ HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 88,
+  "number": 81,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -1785,7 +1726,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "badge": "HD",
   "desc": "דרמות וסדרות ישראליות של קשת 24/7 – ערוץ חינמי של קשת ו-FreeTV",
   "logo": "assets/logos/keshet_drama.png",
-  "number": 89,
+  "number": 82,
   "src": {
    "by": "קשת – ה-CDN של mako (עם הרשאת צפייה של mako)",
    "kind": "official",
@@ -1806,7 +1747,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ ההומור והצחוק HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 90,
+  "number": 83,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -1827,7 +1768,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ ההומור והצחוק HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 91,
+  "number": 84,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -1848,7 +1789,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ החופש והנופש HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 92,
+  "number": 85,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -1868,7 +1809,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "badge": "HD",
   "desc": "ערוץ הלייף סטייל, העיצוב והאוכל של yes ו-HOT",
   "logo": "assets/logos/good_life_israel.png",
-  "number": 93,
+  "number": 86,
   "src": {
    "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
    "kind": "restream",
@@ -1890,7 +1831,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ החיים הטובים HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 94,
+  "number": 87,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -1911,7 +1852,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ הידברות 97 HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 95,
+  "number": 88,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -1930,7 +1871,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "logo": "assets/logos/hidabroot.png",
   "badge": "HD",
   "desc": "ערוץ הידברות - שידורי יהדות, הרצאות, תוכניות אירוח ושיעורים",
-  "number": 96,
+  "number": 89,
   "lang": "he",
   "iptv": "Hidabroot.il",
   "src": {
@@ -1952,7 +1893,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "badge": "SD",
   "desc": "ערוץ הכנסת בשידור נגיש לכבדי שמיעה",
   "logo": "assets/logos/knesset_access.png",
-  "number": 97,
+  "number": 90,
   "src": {
    "by": "ערוץ הכנסת – השידור של הכנסת (GoStreaming)",
    "kind": "official",
@@ -1973,33 +1914,12 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "badge": "HD",
   "desc": "מוזיקה ישראלית, הופעות ותוכניות מוזיקה של קשת – ערוץ חינמי של קשת ו-FreeTV",
   "logo": "assets/logos/keshet_music.png",
-  "number": 98,
+  "number": 91,
   "src": {
    "by": "קשת – ה-CDN של mako (עם הרשאת צפייה של mako)",
    "kind": "official",
    "host": "mako-streaming.akamaized.net",
    "found": "רשימה ידנית (גרסה קודמת)",
-   "web": "✅"
-  }
- },
- {
-  "id": "knesset",
-  "name": "ערוץ הכנסת 99",
-  "title": "ערוץ הכנסת (Knesset Channel)",
-  "category": "ערוצי ישראל - שידור חי",
-  "categoryEn": "israel",
-  "url": "https://kneset.gostreaming.tv/p2-kneset/_definst_/myStream/index.m3u8",
-  "logo": "assets/logos/knesset.png",
-  "badge": "SD",
-  "desc": "שידורים ישירים ממליאת הכנסת, ועדות, תוכניות אקטואליה ופוליטיקה",
-  "number": 99,
-  "lang": "he",
-  "iptv": "KnessetChannel.il",
-  "src": {
-   "by": "ערוץ הכנסת – השידור של הכנסת (GoStreaming)",
-   "kind": "official",
-   "host": "kneset.gostreaming.tv",
-   "found": "iptv-org (KnessetChannel.il)",
    "web": "✅"
   }
  },
@@ -2015,7 +1935,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ הסטייל והאופנה HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 100,
+  "number": 92,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -2036,7 +1956,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ העיצוב והבית HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 101,
+  "number": 93,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -2057,7 +1977,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "badge": "HD",
   "desc": "קומדיות ישראליות של קשת 24/7 – ערוץ חינמי של קשת ו-FreeTV",
   "logo": "assets/logos/keshet_comedy.png",
-  "number": 102,
+  "number": 94,
   "src": {
    "by": "קשת – ה-CDN של mako (עם הרשאת צפייה של mako)",
    "kind": "official",
@@ -2078,7 +1998,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ הכנסת 99 HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 103,
+  "number": 95,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -2099,7 +2019,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ הריאליטי HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 104,
+  "number": 96,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -2120,13 +2040,34 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ השעשועונים והמשחקים HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 105,
+  "number": 97,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
    "host": "b84203c4.ottrast.com",
    "found": "רשימה ידנית (גרסה קודמת)",
    "web": "❌ רק באפליקציה (HTTP)"
+  }
+ },
+ {
+  "id": "knesset",
+  "name": "ערוץ הכנסת 99",
+  "title": "ערוץ הכנסת (Knesset Channel)",
+  "category": "ערוצי ישראל - שידור חי",
+  "categoryEn": "israel",
+  "url": "https://kneset.gostreaming.tv/p2-kneset/_definst_/myStream/index.m3u8",
+  "logo": "assets/logos/knesset.png",
+  "badge": "SD",
+  "desc": "שידורים ישירים ממליאת הכנסת, ועדות, תוכניות אקטואליה ופוליטיקה",
+  "number": 98,
+  "lang": "he",
+  "iptv": "KnessetChannel.il",
+  "src": {
+   "by": "ערוץ הכנסת – השידור של הכנסת (GoStreaming)",
+   "kind": "official",
+   "host": "kneset.gostreaming.tv",
+   "found": "iptv-org (KnessetChannel.il)",
+   "web": "✅"
   }
  },
  {
@@ -2141,7 +2082,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ הטלנובלות והדרמות הרומנטיות המוביל בישראל ב-1080p FHD",
   "lang": "he",
   "country": "IL",
-  "number": 106,
+  "number": 99,
   "src": {
    "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
    "kind": "restream",
@@ -2162,7 +2103,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ הכלכלה הישראלי – שוק ההון, נדל\"ן, צרכנות ועסקים",
   "lang": "he",
   "country": "IL",
-  "number": 107,
+  "number": 100,
   "src": {
    "by": "Redge – ה-CDN הרשמי של כאן, ערוץ 14 וכלכלה 10",
    "kind": "official",
@@ -2183,7 +2124,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ פודי Foody בישול ואוכל HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 108,
+  "number": 101,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -2203,7 +2144,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "badge": "HD",
   "desc": "ערוץ 66 – שיעורים, הרצאות, תרבות ויהדות בעברית",
   "logo": "assets/logos/kabbalah.png",
-  "number": 109,
+  "number": 102,
   "src": {
    "by": "קבלה לעם – שרת רשמי",
    "kind": "official",
@@ -2224,7 +2165,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "קשת 12 FHD בשידור חי באיכות FHD",
   "lang": "he",
   "country": "IL",
-  "number": 110,
+  "number": 103,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -2245,7 +2186,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "קשת 12 HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 111,
+  "number": 104,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -2266,7 +2207,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "רשת 13 HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 112,
+  "number": 105,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -2287,7 +2228,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "רשת 13 שידור חי ישיר מהיר משרתי אמזון CloudFront",
   "lang": "he",
   "country": "IL",
-  "number": 113,
+  "number": 106,
   "src": {
    "by": "d2xg1g9o5vns8m.cloudfront.net",
    "kind": "restream",
@@ -2307,7 +2248,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "badge": "HD",
   "desc": "רשת 13 בשידור נגיש לכבדי שמיעה",
   "logo": "assets/logos/reshet13.png",
-  "number": 114,
+  "number": 107,
   "src": {
    "by": "רשת 13 – השרת הרשמי (G-Mana)",
    "kind": "official",
@@ -2328,7 +2269,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "HOT באזז ערוץ הצעירים HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 115,
+  "number": 108,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -2349,7 +2290,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "iptv": "Zoom.il",
   "desc": "ערוץ הילדים והנוער הישראלי - סדרות נוער, דרמות וקומדיות בעברית",
   "logo": "assets/logos/zoom_kids_israel.png",
-  "number": 116,
+  "number": 109,
   "src": {
    "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
    "kind": "restream",
@@ -2370,7 +2311,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "yes קולנוע ילדים FHD בשידור חי באיכות FHD",
   "lang": "he",
   "country": "IL",
-  "number": 117,
+  "number": 110,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -2391,7 +2332,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "yes קולנוע ילדים HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 118,
+  "number": 111,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -2412,7 +2353,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ניק ג'וניור ישראל (Nick Jr.) בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 119,
+  "number": 112,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -2433,7 +2374,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ 16 – תוכניות ילדים, נוער ומשפחה בישראל",
   "lang": "he",
   "country": "IL",
-  "number": 120,
+  "number": 113,
   "src": {
    "by": "ערוץ 16 – שרת רשמי",
    "kind": "official",
@@ -2454,7 +2395,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ בייבי Baby TV (בעברית) בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 121,
+  "number": 114,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -2475,7 +2416,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ ג'וניור Junior HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 122,
+  "number": 115,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -2496,7 +2437,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ ג'וניור Junior HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 123,
+  "number": 116,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -2517,7 +2458,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "Disney Channel HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 124,
+  "number": 117,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -2538,7 +2479,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ הופ! ילדים HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 125,
+  "number": 118,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -2559,7 +2500,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ הופ! ילדים HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 126,
+  "number": 119,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -2580,7 +2521,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ הופ לגיל הרך - תוכניות חינוכיות בדיבוב עברי מלא",
   "lang": "he",
   "country": "IL",
-  "number": 127,
+  "number": 120,
   "src": {
    "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
    "kind": "restream",
@@ -2599,7 +2540,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "logo": "assets/logos/hop.png",
   "badge": "FHD",
   "desc": "ערוץ הופ! לגיל הרך - מולי וצומי, תותית, יובל המבולבל והפעלות",
-  "number": 128,
+  "number": 121,
   "lang": "he",
   "iptv": "Hop.il",
   "src": {
@@ -2622,7 +2563,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ וויז לילדים ונוער WIZ HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 129,
+  "number": 122,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -2643,7 +2584,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ הילדים והנוער של HOT ו-yes - סדרות נוער וקומדיות בעברית",
   "lang": "he",
   "country": "IL",
-  "number": 130,
+  "number": 123,
   "src": {
    "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
    "kind": "restream",
@@ -2664,7 +2605,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ זום ZOOM ילדים ונוער HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 131,
+  "number": 124,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -2685,7 +2626,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ טין ניק TeenNick (בעברית) בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 132,
+  "number": 125,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -2706,7 +2647,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ לולי לפעוטות (בעברית) בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 133,
+  "number": 126,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -2727,7 +2668,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "שירים מסרטי דיסני",
   "lang": "music",
   "logo": "assets/logos/disney.svg",
-  "number": 134,
+  "number": 127,
   "src": {
    "by": "StreamGates – ערוצי רדיוס 100FM",
    "kind": "official",
@@ -2748,7 +2689,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "שידורים ישירים של משחקי כדורגל, כדורסל וספורט עולמי",
   "lang": "uk",
   "iptv": "Sport1.ua",
-  "number": 135,
+  "number": 128,
   "src": {
    "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
    "kind": "restream",
@@ -2767,7 +2708,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "logo": "https://i.imgur.com/vk0j1mY.png",
   "badge": "HD",
   "desc": "שידורי ספורט ישירים, ליגות אירופיות ומפעלים בינלאומיים",
-  "number": 136,
+  "number": 129,
   "lang": "uk",
   "iptv": "Sport2.ua",
   "src": {
@@ -2788,7 +2729,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "logo": "https://i.imgur.com/qkvavfH.png",
   "badge": "HD",
   "desc": "שידורי כדורגל מליגות בכירות וטורנירים חיים",
-  "number": 137,
+  "number": 130,
   "lang": "uk",
   "iptv": "Sport3.ua",
   "src": {
@@ -2809,7 +2750,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "logo": "https://i.imgur.com/xW6oGIx.png",
   "badge": "HD",
   "desc": "ערוץ משחקים חיים וסיקורי ספורט נוספים",
-  "number": 138,
+  "number": 131,
   "lang": "uk",
   "iptv": "Sport4.ua",
   "src": {
@@ -2830,7 +2771,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "logo": "https://upload.wikimedia.org/wikipedia/commons/c/c5/Sport5UA.jpg",
   "badge": "FHD",
   "desc": "ערוץ ספורט אוקראיני - כדורגל אירופי, כדורסל, פוקר וספורט מוטורי",
-  "number": 139,
+  "number": 132,
   "lang": "uk",
   "iptv": "Sport5.ua",
   "src": {
@@ -2853,7 +2794,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "אדג' ספורט אקסטרים HD (EDGE Sport) בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 140,
+  "number": 133,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -2874,7 +2815,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ספורט 1 HD (Sport 1) בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 141,
+  "number": 134,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -2895,7 +2836,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ספורט 2 HD (Sport 2) בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 142,
+  "number": 135,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -2916,7 +2857,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ספורט 2 HD (Sport 2) בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 143,
+  "number": 136,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -2937,7 +2878,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ספורט 3 HD (Sport 3) בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 144,
+  "number": 137,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -2958,7 +2899,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ספורט 4 FHD (Sport 4) בשידור חי באיכות FHD",
   "lang": "he",
   "country": "IL",
-  "number": 145,
+  "number": 138,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -2979,7 +2920,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ספורט 4 HD (Sport 4) בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 146,
+  "number": 139,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -3000,7 +2941,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ספורט 5 FHD בשידור חי באיכות FHD",
   "lang": "he",
   "country": "IL",
-  "number": 147,
+  "number": 140,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -3021,7 +2962,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ספורט 5 FHD בשידור חי באיכות FHD",
   "lang": "he",
   "country": "IL",
-  "number": 148,
+  "number": 141,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -3042,7 +2983,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ספורט 5 FHD בשידור חי באיכות FHD",
   "lang": "he",
   "country": "IL",
-  "number": 149,
+  "number": 142,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -3063,7 +3004,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ספורט 5 HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 150,
+  "number": 143,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -3084,7 +3025,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ספורט 5 HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 151,
+  "number": 144,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -3105,7 +3046,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ספורט 5 HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 152,
+  "number": 145,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -3126,7 +3067,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ספורט 5 HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 153,
+  "number": 146,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -3147,7 +3088,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ספורט 5 מקס HD (5Max) בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 154,
+  "number": 147,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -3168,7 +3109,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ספורט 5 פלוס HD (5Plus) בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 155,
+  "number": 148,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -3188,7 +3129,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "badge": "HD",
   "desc": "השידור החי החינמי מאתר ספורט 5 (sport5.co.il) – משדר בזמן משחקים ושידורים חיים באתר; בין השידורים המסך שחור",
   "logo": "https://af-play.com/storage/images/channel_logos/0b20fccd108daae5693cec474bb4a413.png",
-  "number": 156,
+  "number": 149,
   "src": {
    "by": "ספורט 5 – השידור הרשמי של RGE (Akamai)",
    "kind": "official",
@@ -3209,7 +3150,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ספורט 6 HD (Sport 6) בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 157,
+  "number": 150,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -3230,7 +3171,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ ONE HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 158,
+  "number": 151,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -3251,7 +3192,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ ONE HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 159,
+  "number": 152,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -3272,7 +3213,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ ONE HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 160,
+  "number": 153,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -3293,7 +3234,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ ONE HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 161,
+  "number": 154,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -3314,7 +3255,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ ONE HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 162,
+  "number": 155,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -3335,7 +3276,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "HOT דרמה HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 163,
+  "number": 156,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -3356,7 +3297,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "HOT סינמה 1 FHD בשידור חי באיכות FHD",
   "lang": "he",
   "country": "IL",
-  "number": 164,
+  "number": 157,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -3377,7 +3318,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "HOT סינמה 1 HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 165,
+  "number": 158,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -3398,7 +3339,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "HOT סינמה 2 HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 166,
+  "number": 159,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -3419,7 +3360,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "HOT סינמה 3 FHD בשידור חי באיכות FHD",
   "lang": "he",
   "country": "IL",
-  "number": 167,
+  "number": 160,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -3440,7 +3381,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "HOT סינמה 3 HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 168,
+  "number": 161,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -3461,7 +3402,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "HOT סינמה 4 HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 169,
+  "number": 162,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -3482,7 +3423,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "HOT סינמה 5 HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 170,
+  "number": 163,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -3503,7 +3444,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "HOT קולנוע ישראלי HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 171,
+  "number": 164,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -3524,7 +3465,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "HOT קולנוע רומנטי HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 172,
+  "number": 165,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -3545,7 +3486,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "Viva Istanbul HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 173,
+  "number": 166,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -3566,7 +3507,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "yes TV אקשן HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 174,
+  "number": 167,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -3587,7 +3528,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "yes TV דרמה HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 175,
+  "number": 168,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -3608,7 +3549,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "yes TV קומדיה HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 176,
+  "number": 169,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -3629,7 +3570,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "yes קולנוע אקשן FHD בשידור חי באיכות FHD",
   "lang": "he",
   "country": "IL",
-  "number": 177,
+  "number": 170,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -3650,7 +3591,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "yes קולנוע אקשן HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 178,
+  "number": 171,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -3671,7 +3612,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "yes קולנוע אקשן HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 179,
+  "number": 172,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -3692,7 +3633,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "yes קולנוע דרמה FHD בשידור חי באיכות FHD",
   "lang": "he",
   "country": "IL",
-  "number": 180,
+  "number": 173,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -3713,7 +3654,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "yes קולנוע דרמה HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 181,
+  "number": 174,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -3734,7 +3675,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "yes קולנוע דרמה HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 182,
+  "number": 175,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -3755,7 +3696,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "yes קולנוע ישראלי HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 183,
+  "number": 176,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -3776,7 +3717,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "yes קולנוע קומדיה FHD בשידור חי באיכות FHD",
   "lang": "he",
   "country": "IL",
-  "number": 184,
+  "number": 177,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -3797,7 +3738,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "yes קולנוע קומדיה HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 185,
+  "number": 178,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -3818,7 +3759,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "yes קולנוע קומדיה HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 186,
+  "number": 179,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -3839,7 +3780,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "badge": "HD",
   "desc": "כל העונות והפרקים של סברי מרנן ברצף 24/7 – ערוץ חינמי של קשת ו-FreeTV",
   "logo": "assets/logos/keshet12.png",
-  "number": 187,
+  "number": 180,
   "src": {
    "by": "קשת – ה-CDN של mako (עם הרשאת צפייה של mako)",
    "kind": "official",
@@ -3860,7 +3801,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ האקשן העולמי 1 HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 188,
+  "number": 181,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -3881,7 +3822,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ האקשן העולמי 1 HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 189,
+  "number": 182,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -3902,7 +3843,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ הדרמות הטורקיות 2 FHD בשידור חי באיכות FHD",
   "lang": "he",
   "country": "IL",
-  "number": 190,
+  "number": 183,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -3923,7 +3864,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ הדרמות הטורקיות 3 FHD בשידור חי באיכות FHD",
   "lang": "he",
   "country": "IL",
-  "number": 191,
+  "number": 184,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -3944,7 +3885,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ הדרמות הטורקיות פלוס FHD בשידור חי באיכות FHD",
   "lang": "he",
   "country": "IL",
-  "number": 192,
+  "number": 185,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -3965,7 +3906,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ הדרמות הטורקיות פלוס HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 193,
+  "number": 186,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -3986,7 +3927,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ הסרטים הים תיכוני 1 HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 194,
+  "number": 187,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -4007,7 +3948,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ הסרטים הים תיכוני 2 HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 195,
+  "number": 188,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -4028,7 +3969,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ הקומדיה הקלאסית HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 196,
+  "number": 189,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -4047,7 +3988,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "logo": "assets/logos/reshet13.png",
   "badge": "FHD",
   "desc": "תוכניות הריאליטי של רשת 13 24/7 – ערוץ חינמי של 13",
-  "number": 197,
+  "number": 190,
   "lang": "he",
   "iptv": "RealityChannel.il",
   "src": {
@@ -4070,7 +4011,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ ויוה טלנובלות HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 198,
+  "number": 191,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -4091,7 +4032,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ ויוה פרימיום HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 199,
+  "number": 192,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -4112,7 +4053,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ סדרות הודיות 1 HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 200,
+  "number": 193,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -4133,7 +4074,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ סדרות הודיות 2 HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 201,
+  "number": 194,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -4154,7 +4095,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ סדרות ספרדיות 1 HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 202,
+  "number": 195,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -4175,7 +4116,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ סדרות ספרדיות 1 HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 203,
+  "number": 196,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -4196,7 +4137,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ סינמה משפחה HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 204,
+  "number": 197,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -4217,7 +4158,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "HOT 8 HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 205,
+  "number": 198,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -4238,7 +4179,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "HOT 8 ערוץ המדע והדוקו HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 206,
+  "number": 199,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -4259,7 +4200,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "HOT מיינד ערוץ הדוקו HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 207,
+  "number": 200,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -4280,7 +4221,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "yes דוקו HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 208,
+  "number": 201,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -4301,7 +4242,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ דיסקברי Discovery FHD בשידור חי באיכות FHD",
   "lang": "he",
   "country": "IL",
-  "number": 209,
+  "number": 202,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -4322,7 +4263,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ דיסקברי Discovery HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 210,
+  "number": 203,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -4343,7 +4284,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ ההיסטוריה History Channel FHD בשידור חי באיכות FHD",
   "lang": "he",
   "country": "IL",
-  "number": 211,
+  "number": 204,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -4364,7 +4305,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ ההיסטוריה History Channel HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 212,
+  "number": 205,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -4385,7 +4326,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ נשיונל ג'יאוגרפיק Nat Geo FHD בשידור חי באיכות FHD",
   "lang": "he",
   "country": "IL",
-  "number": 213,
+  "number": 206,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -4406,7 +4347,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ נשיונל ג'יאוגרפיק Nat Geo HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 214,
+  "number": 207,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -4427,7 +4368,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ נשיונל ג'יאוגרפיק Nat Geo HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 215,
+  "number": 208,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -4448,7 +4389,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ נשיונל ג'יאוגרפיק Nat Geo HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 216,
+  "number": 209,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -4469,7 +4410,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "i24 News HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 217,
+  "number": 210,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -4490,7 +4431,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "האח הגדול שידור חי 24/7 HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 218,
+  "number": 211,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -4511,7 +4452,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ 24 מוזיקה ישראלית HD בשידור חי באיכות HD",
   "lang": "he",
   "country": "IL",
-  "number": 219,
+  "number": 212,
   "src": {
    "by": "b84203c4.ottrast.com",
    "kind": "restream",
@@ -4532,7 +4473,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "האולפן של רדיוס 100FM בשידור וידאו חי מהאולפן",
   "lang": "he",
   "country": "IL",
-  "number": 220,
+  "number": 213,
   "src": {
    "by": "CyberCDN – ה-CDN של תחנות הרדיו עצמן",
    "kind": "official",
@@ -4553,7 +4494,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "הרדיו האזורי של ירושלים",
   "lang": "music",
   "logo": "assets/logos/radio_101fm.png",
-  "number": 221,
+  "number": 214,
   "src": {
    "by": "StreamGates – ה-CDN של התחנה",
    "kind": "official",
@@ -4574,7 +4515,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "הרדיו של אילת והערבה",
   "lang": "music",
   "logo": "assets/logos/radio_eilat.png",
-  "number": 222,
+  "number": 215,
   "src": {
    "by": "CyberCDN – ה-CDN של תחנות הרדיו עצמן",
    "kind": "official",
@@ -4595,7 +4536,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "רדיו תל אביב - מוזיקה, שיח ואקטואליה",
   "lang": "music",
   "logo": "assets/logos/radio_102fm.png",
-  "number": 223,
+  "number": 216,
   "src": {
    "by": "102FM – LiveCDN (רשמי)",
    "kind": "official",
@@ -4614,7 +4555,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "logo": "assets/logos/radio_103fm.png",
   "badge": "LIVE",
   "desc": "שידורי רדיו חיים של 103FM",
-  "number": 224,
+  "number": 217,
   "lang": "music",
   "kind": "radio",
   "src": {
@@ -4637,7 +4578,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "הרדיו האזורי של הצפון",
   "lang": "music",
   "logo": "assets/logos/radio_1045fm.png",
-  "number": 225,
+  "number": 218,
   "src": {
    "by": "StreamGates – ה-CDN של התחנה",
    "kind": "official",
@@ -4658,7 +4599,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "רדיו אמצע הדרך - מוזיקה ישראלית",
   "lang": "music",
   "logo": "assets/logos/radio_90fm.png",
-  "number": 226,
+  "number": 219,
   "src": {
    "by": "CyberCDN – ה-CDN של תחנות הרדיו עצמן",
    "kind": "official",
@@ -4679,7 +4620,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "רדיו אזורי 99.5FM",
   "lang": "music",
   "logo": "assets/logos/radio_995.png",
-  "number": 227,
+  "number": 220,
   "src": {
    "by": "99.5FM – LiveCDN (רשמי)",
    "kind": "official",
@@ -4700,7 +4641,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "טראנס ואלקטרוני מתל אביב",
   "lang": "music",
   "logo": "assets/logos/aviv_media.png",
-  "number": 228,
+  "number": 221,
   "src": {
    "by": "176.9.7.145",
    "kind": "restream",
@@ -4721,7 +4662,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "מוזיקה ישראלית ברצף",
   "lang": "music",
   "logo": "assets/logos/israeli_voice.png",
-  "number": 229,
+  "number": 222,
   "src": {
    "by": "icecast.live",
    "kind": "restream",
@@ -4742,7 +4683,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "הרדיו של יוצאי צרפת בישראל",
   "lang": "music",
   "logo": "assets/logos/radio_france_israel.png",
-  "number": 230,
+  "number": 223,
   "src": {
    "by": "stream10.vestaradio.com",
    "kind": "restream",
@@ -4763,7 +4704,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "תחנה ישראלית – מוזיקה עכשווית",
   "lang": "music",
   "logo": "assets/logos/timbr_radio.png",
-  "number": 231,
+  "number": 224,
   "src": {
    "by": "radio.betteradio.live",
    "kind": "restream",
@@ -4784,7 +4725,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "דאנס ומוזיקה אלקטרונית – תחנה ישראלית",
   "lang": "music",
   "logo": "assets/logos/up2dance.png",
-  "number": 232,
+  "number": 225,
   "src": {
    "by": "icecast.live",
    "kind": "restream",
@@ -4805,7 +4746,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "התחנה המובילה בישראל - להיטים ותוכניות אישיות",
   "lang": "music",
   "logo": "assets/logos/eco99fm.png",
-  "number": 233,
+  "number": 226,
   "src": {
    "by": "eco99fm – Mediacast (רשמי)",
    "kind": "official",
@@ -4826,7 +4767,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "מוזיקה ישראלית ובינלאומית",
   "lang": "music",
   "logo": "assets/logos/ystream.png",
-  "number": 234,
+  "number": 227,
   "src": {
    "by": "ystream.live",
    "kind": "restream",
@@ -4847,7 +4788,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "רדיו א-שמס - הרדיו הערבי בישראל",
   "lang": "music",
   "logo": "assets/logos/a_shams.png",
-  "number": 235,
+  "number": 228,
   "src": {
    "by": "StreamGates – ה-CDN של התחנה",
    "kind": "official",
@@ -4868,7 +4809,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "הלכה יומית ודף יומי",
   "lang": "music",
   "logo": "assets/logos/breslev_halachot.png",
-  "number": 236,
+  "number": 229,
   "src": {
    "by": "רדיו ברסלב – שרת התחנה",
    "kind": "official",
@@ -4889,7 +4830,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "קריאה בספרי ברסלב",
   "lang": "music",
   "logo": "assets/logos/breslev_books.png",
-  "number": 237,
+  "number": 230,
   "src": {
    "by": "רדיו ברסלב – שרת התחנה",
    "kind": "official",
@@ -4910,7 +4851,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "שיעורים קצרים",
   "lang": "music",
   "logo": "assets/logos/breslev_shorts.png",
-  "number": 238,
+  "number": 231,
   "src": {
    "by": "רדיו ברסלב – שרת התחנה",
    "kind": "official",
@@ -4931,7 +4872,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "שיעורים ונגינה חסידית",
   "lang": "music",
   "logo": "assets/logos/breslev_torah.png",
-  "number": 239,
+  "number": 232,
   "src": {
    "by": "רדיו ברסלב – שרת התחנה",
    "kind": "official",
@@ -4952,7 +4893,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "בלוז ורוק קלאסי – תחנה ישראלית",
   "lang": "music",
   "logo": "assets/logos/joint_blues.png",
-  "number": 240,
+  "number": 233,
   "src": {
    "by": "jointil.com",
    "kind": "restream",
@@ -4973,7 +4914,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "טראנס ואלקטרוני – תחנה ישראלית",
   "lang": "music",
   "logo": "assets/logos/joint_beat.png",
-  "number": 241,
+  "number": 234,
   "src": {
    "by": "jointil.com",
    "kind": "restream",
@@ -4994,7 +4935,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "רגאיי ודאב – תחנה ישראלית",
   "lang": "music",
   "logo": "assets/logos/joint_reggae.png",
-  "number": 242,
+  "number": 235,
   "src": {
    "by": "jointil.com",
    "kind": "restream",
@@ -5013,7 +4954,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "logo": "assets/logos/galgalatz_live.png",
   "badge": "LIVE",
   "desc": "תחנת הרדיו והמוזיקה הפופולרית בישראל בשידור חי",
-  "number": 243,
+  "number": 236,
   "lang": "music",
   "kind": "radio",
   "src": {
@@ -5034,7 +4975,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "logo": "assets/logos/galgalatz_hits_live.png",
   "badge": "LIVE",
   "desc": "ערוץ הלהיטים של גלגלצ - הלהיטים הגדולים ביותר בישראל ובעולם ברצף",
-  "number": 244,
+  "number": 237,
   "lang": "music",
   "kind": "radio",
   "src": {
@@ -5057,7 +4998,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "להיטים מכל העשורים",
   "lang": "music",
   "logo": "assets/logos/glglz_decades.png",
-  "number": 245,
+  "number": 238,
   "src": {
    "by": "גלי צה\"ל / גלגלצ – CDN רשמי (Bynet)",
    "kind": "official",
@@ -5078,7 +5019,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "מוזיקה רגועה לסוף השבוע",
   "lang": "music",
   "logo": "assets/logos/glglz_weekend.png",
-  "number": 246,
+  "number": 239,
   "src": {
    "by": "גלי צה\"ל / גלגלצ – CDN רשמי (Bynet)",
    "kind": "official",
@@ -5099,7 +5040,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ערוץ הרוק של גלגלצ",
   "lang": "music",
   "logo": "assets/logos/glglz_rock.png",
-  "number": 247,
+  "number": 240,
   "src": {
    "by": "גלי צה\"ל / גלגלצ – CDN רשמי (Bynet)",
    "kind": "official",
@@ -5120,7 +5061,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "רדיו גלי ישראל - אקטואליה, שיח ומוזיקה",
   "lang": "music",
   "logo": "assets/logos/galei_israel.png",
-  "number": 248,
+  "number": 241,
   "src": {
    "by": "CyberCDN – ה-CDN של תחנות הרדיו עצמן",
    "kind": "official",
@@ -5139,7 +5080,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "logo": "assets/logos/glz_live.png",
   "badge": "LIVE",
   "desc": "חדשות, אקטואליה ושיח ציבורי 24/7",
-  "number": 249,
+  "number": 242,
   "lang": "music",
   "kind": "radio",
   "src": {
@@ -5162,7 +5103,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "Лучшее Радио – רדיו ברוסית מישראל",
   "lang": "music",
   "logo": "assets/logos/radio_best_1064.png",
-  "number": 250,
+  "number": 243,
   "src": {
    "by": "StreamGates – ה-CDN של התחנה",
    "kind": "official",
@@ -5183,7 +5124,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "Первое радио - רדיו ישראלי בשפה הרוסית",
   "lang": "music",
   "logo": "assets/logos/pervoe_radio.png",
-  "number": 251,
+  "number": 244,
   "src": {
    "by": "CyberCDN – ה-CDN של תחנות הרדיו עצמן",
    "kind": "official",
@@ -5204,7 +5145,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "רוק, אינדי, ג'אז ומוזיקה איכותית מהעולם",
   "lang": "music",
   "logo": "assets/logos/kan_88.png",
-  "number": 252,
+  "number": 245,
   "src": {
    "by": "Triton StreamTheWorld – מפיץ הרדיו של כאן",
    "kind": "official",
@@ -5225,7 +5166,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "רשת החדשות והאקטואליה של תאגיד השידור",
   "lang": "music",
   "logo": "assets/logos/kan_bet.png",
-  "number": 253,
+  "number": 246,
   "src": {
    "by": "Triton StreamTheWorld – מפיץ הרדיו של כאן",
    "kind": "official",
@@ -5246,7 +5187,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "רק מוזיקה ישראלית - מכל התקופות",
   "lang": "music",
   "logo": "assets/logos/kan_gimel.png",
-  "number": 254,
+  "number": 247,
   "src": {
    "by": "Triton StreamTheWorld – מפיץ הרדיו של כאן",
    "kind": "official",
@@ -5267,7 +5208,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "יהדות, מסורת, פיוט וחזנות",
   "lang": "music",
   "logo": "assets/logos/kan_moreshet.png",
-  "number": 255,
+  "number": 248,
   "src": {
    "by": "Triton StreamTheWorld – מפיץ הרדיו של כאן",
    "kind": "official",
@@ -5288,7 +5229,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "מוזיקה קלאסית, אופרה וג'אז",
   "lang": "music",
   "logo": "assets/logos/kan_kol_hamusica.png",
-  "number": 256,
+  "number": 249,
   "src": {
    "by": "Triton StreamTheWorld – מפיץ הרדיו של כאן",
    "kind": "official",
@@ -5309,7 +5250,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "רדיו העלייה - שידורים בשפות רבות",
   "lang": "music",
   "logo": "assets/logos/kan_reka.png",
-  "number": 257,
+  "number": 250,
   "src": {
    "by": "Triton StreamTheWorld – מפיץ הרדיו של כאן",
    "kind": "official",
@@ -5330,7 +5271,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "תרבות, ספרות, הגות ושיחות",
   "lang": "music",
   "logo": "assets/logos/kan_tarbut.png",
-  "number": 258,
+  "number": 251,
   "src": {
    "by": "Triton StreamTheWorld – מפיץ הרדיו של כאן",
    "kind": "official",
@@ -5351,7 +5292,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "רדיו לב המדינה - השרון והמרכז",
   "lang": "music",
   "logo": "assets/logos/lev_hamedina.png",
-  "number": 259,
+  "number": 252,
   "src": {
    "by": "CyberCDN – ה-CDN של תחנות הרדיו עצמן",
    "kind": "official",
@@ -5372,7 +5313,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "הלהיטים הגדולים של המוזיקה המזרחית",
   "lang": "music",
   "logo": "assets/logos/mizrahit_fm.png",
-  "number": 260,
+  "number": 253,
   "src": {
    "by": "rs.mizrahit.fm",
    "kind": "restream",
@@ -5393,7 +5334,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "מוזיקה מזרחית ים תיכונית 24/7",
   "lang": "music",
   "logo": "assets/logos/noshmim_mizrahit.png",
-  "number": 261,
+  "number": 254,
   "src": {
    "by": "www.rs.mizrahit.fm",
    "kind": "restream",
@@ -5414,7 +5355,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "תחנת רדיו ישראלית",
   "lang": "music",
   "logo": "assets/logos/star33.svg",
-  "number": 262,
+  "number": 255,
   "src": {
    "by": "online.star33radio.com",
    "kind": "restream",
@@ -5435,7 +5376,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "שיעורי קבלה בעברית",
   "lang": "music",
   "logo": "assets/logos/kabbalah_radio.png",
-  "number": 263,
+  "number": 256,
   "src": {
    "by": "icecast.kab.tv",
    "kind": "restream",
@@ -5456,7 +5397,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "שיעורי קבלה באנגלית",
   "lang": "music",
   "logo": "assets/logos/kabbalah_radio_en.png",
-  "number": 264,
+  "number": 257,
   "src": {
    "by": "icecast.kab.tv",
    "kind": "restream",
@@ -5477,7 +5418,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "שיעורי קבלה בספרדית",
   "lang": "music",
   "logo": "assets/logos/kabbalah_radio_es.png",
-  "number": 265,
+  "number": 258,
   "src": {
    "by": "icecast.kab.tv",
    "kind": "restream",
@@ -5498,7 +5439,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "שיעורי קבלה בצרפתית",
   "lang": "music",
   "logo": "assets/logos/kabbalah_radio_fr.png",
-  "number": 266,
+  "number": 259,
   "src": {
    "by": "icecast.kab.tv",
    "kind": "restream",
@@ -5519,7 +5460,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "שיעורי קבלה ברוסית",
   "lang": "music",
   "logo": "assets/logos/kabbalah_radio_ru.png",
-  "number": 267,
+  "number": 260,
   "src": {
    "by": "icecast.kab.tv",
    "kind": "restream",
@@ -5538,7 +5479,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "logo": "assets/logos/kol_barama_live.png",
   "badge": "LIVE",
   "desc": "שידורי רדיו קול ברמה",
-  "number": 268,
+  "number": 261,
   "lang": "music",
   "kind": "radio",
   "src": {
@@ -5559,7 +5500,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "logo": "assets/logos/kol_barama_music_live.png",
   "badge": "LIVE",
   "desc": "ערוץ המוזיקה של קול ברמה - 24 שעות של שירים חסידיים, מזרחיים ויהודיים",
-  "number": 269,
+  "number": 262,
   "lang": "music",
   "kind": "radio",
   "src": {
@@ -5582,7 +5523,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "רדיו קול הצפון",
   "lang": "music",
   "logo": "assets/logos/kol_hatzafon.svg",
-  "number": 270,
+  "number": 263,
   "src": {
    "by": "eCast – שרת התחנה",
    "kind": "official",
@@ -5603,7 +5544,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "רדיו קול חי - אקטואליה ותוכן יהודי",
   "lang": "music",
   "logo": "assets/logos/kol_chai.png",
-  "number": 271,
+  "number": 264,
   "src": {
    "by": "קול חי – שרת התחנה",
    "kind": "official",
@@ -5624,7 +5565,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "מוזיקה יהודית וחסידית ברצף",
   "lang": "music",
   "logo": "assets/logos/kol_chai_music.png",
-  "number": 272,
+  "number": 265,
   "src": {
    "by": "קול חי – שרת התחנה",
    "kind": "official",
@@ -5645,7 +5586,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "הרדיו של הצפון והעמקים",
   "lang": "music",
   "logo": "assets/logos/kol_rega.png",
-  "number": 273,
+  "number": 266,
   "src": {
    "by": "CyberCDN – ה-CDN של תחנות הרדיו עצמן",
    "kind": "official",
@@ -5664,7 +5605,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "logo": "assets/logos/radio_2000_live.png",
   "badge": "LIVE",
   "desc": "ערוץ רדיו ליהדות, מורשת ישראל, שיעורים ומוזיקה יהודית וחסידית",
-  "number": 274,
+  "number": 267,
   "lang": "music",
   "kind": "radio",
   "src": {
@@ -5687,7 +5628,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "מוזיקה קלאסית",
   "lang": "music",
   "logo": "assets/logos/radio_cs.svg",
-  "number": 275,
+  "number": 268,
   "src": {
    "by": "n0a.radiojar.com",
    "kind": "restream",
@@ -5708,7 +5649,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "שירי אהבה רומנטיים",
   "lang": "music",
   "logo": "assets/logos/radio_love_romantic.png",
-  "number": 276,
+  "number": 269,
   "src": {
    "by": "liveradio.co.il",
    "kind": "official",
@@ -5729,7 +5670,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "רדיו ברוסית מישראל",
   "lang": "music",
   "logo": "assets/logos/eli_nisman.svg",
-  "number": 277,
+  "number": 270,
   "src": {
    "by": "listen6.myradio24.com",
    "kind": "restream",
@@ -5750,7 +5691,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "שיעורים, ניגונים ומוזיקה חסידית",
   "lang": "music",
   "logo": "assets/logos/radio_breslev.png",
-  "number": 278,
+  "number": 271,
   "src": {
    "by": "רדיו ברסלב – שרת התחנה",
    "kind": "official",
@@ -5769,7 +5710,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "logo": "assets/logos/radio_darom_live.png",
   "badge": "LIVE",
   "desc": "התחנה המובילה בדרום - מוזיקה ישראלית, ים תיכונית, אקטואליה וחדשות",
-  "number": 279,
+  "number": 272,
   "lang": "music",
   "kind": "radio",
   "src": {
@@ -5792,7 +5733,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "רדיו דרום - הרדיו של הנגב",
   "lang": "music",
   "logo": "assets/logos/radio_darom_97.png",
-  "number": 280,
+  "number": 273,
   "src": {
    "by": "CyberCDN – ה-CDN של תחנות הרדיו עצמן",
    "kind": "official",
@@ -5811,7 +5752,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "logo": "assets/logos/kz_radio_live.png",
   "badge": "LIVE",
   "desc": "תחנת הרדיו העצמאית המובילה למוזיקה אלטרנטיבית, אינדי ויצירה ישראלית",
-  "number": 281,
+  "number": 274,
   "lang": "music",
   "kind": "radio",
   "src": {
@@ -5834,7 +5775,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "נותנים למוזיקה לדבר",
   "lang": "music",
   "logo": "assets/logos/radio_hatahana.png",
-  "number": 282,
+  "number": 275,
   "src": {
    "by": "CyberCDN – ה-CDN של תחנות הרדיו עצמן",
    "kind": "official",
@@ -5855,7 +5796,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "הרדיו האזורי של חיפה והקריות",
   "lang": "music",
   "logo": "assets/logos/radio_haifa.png",
-  "number": 283,
+  "number": 276,
   "src": {
    "by": "רדיו חיפה – LiveCDN (רשמי)",
    "kind": "official",
@@ -5876,7 +5817,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "רדיו נאס - מוזיקה ושיח בערבית",
   "lang": "music",
   "logo": "assets/logos/radio_nas.svg",
-  "number": 284,
+  "number": 277,
   "src": {
    "by": "StreamGates – ה-CDN של התחנה",
    "kind": "official",
@@ -5897,7 +5838,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "רדיו מקומי מנהריה",
   "lang": "music",
   "logo": "assets/logos/radio_nahariya.png",
-  "number": 285,
+  "number": 278,
   "src": {
    "by": "רדיו נהריה – שרת התחנה",
    "kind": "official",
@@ -5918,7 +5859,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "רוק, אינדי והיפ הופ ישראלי",
   "lang": "music",
   "logo": "assets/logos/radio_sahar.png",
-  "number": 286,
+  "number": 279,
   "src": {
    "by": "eCast – שרת התחנה",
    "kind": "official",
@@ -5939,7 +5880,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "הרדיו של ספורט 5 – שידורי משחקים, פרשנות ושיחות ספורט",
   "lang": "music",
   "logo": "assets/logos/radio_sport5.png",
-  "number": 287,
+  "number": 280,
   "src": {
    "by": "ספורט 5 – השידור הרשמי של RGE (Akamai)",
    "kind": "official",
@@ -5960,7 +5901,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "שירים מזרחיים עצובים ברצף",
   "lang": "music",
   "logo": "assets/logos/radio_diki.png",
-  "number": 288,
+  "number": 281,
   "src": {
    "by": "רדיו שירי דיכאון – השרת של התחנה",
    "kind": "official",
@@ -5981,7 +5922,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "קיי-פופ קוריאני",
   "lang": "music",
   "logo": "assets/logos/radios_kpop.png",
-  "number": 289,
+  "number": 282,
   "src": {
    "by": "StreamGates – ערוצי רדיוס 100FM",
    "kind": "official",
@@ -6002,7 +5943,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "האמנים הגדולים בכל הזמנים",
   "lang": "music",
   "logo": "assets/logos/radios_legends.png",
-  "number": 290,
+  "number": 283,
   "src": {
    "by": "StreamGates – ערוצי רדיוס 100FM",
    "kind": "official",
@@ -6023,7 +5964,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "שירי אהבה ברצף",
   "lang": "music",
   "logo": "assets/logos/radios_love.png",
-  "number": 291,
+  "number": 284,
   "src": {
    "by": "StreamGates – ערוצי רדיוס 100FM",
    "kind": "official",
@@ -6044,7 +5985,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "להיטי הזהב של שנות ה-50 וה-60",
   "lang": "music",
   "logo": "assets/logos/radios_oldies.png",
-  "number": 292,
+  "number": 285,
   "src": {
    "by": "StreamGates – ערוצי רדיוס 100FM",
    "kind": "official",
@@ -6065,7 +6006,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "מוזיקה קצבית לאימון ולספורט",
   "lang": "music",
   "logo": "assets/logos/radios_workout.png",
-  "number": 293,
+  "number": 286,
   "src": {
    "by": "StreamGates – ערוצי רדיוס 100FM",
    "kind": "official",
@@ -6086,7 +6027,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "שירי אירוויזיון",
   "lang": "music",
   "logo": "assets/logos/radios_eurovision.png",
-  "number": 294,
+  "number": 287,
   "src": {
    "by": "StreamGates – ערוצי רדיוס 100FM",
    "kind": "official",
@@ -6107,7 +6048,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "בלוז",
   "lang": "music",
   "logo": "assets/logos/radios_blues.png",
-  "number": 295,
+  "number": 288,
   "src": {
    "by": "StreamGates – ערוצי רדיוס 100FM",
    "kind": "official",
@@ -6128,7 +6069,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "בריטפופ",
   "lang": "music",
   "logo": "assets/logos/radios_britpop.png",
-  "number": 296,
+  "number": 289,
   "src": {
    "by": "StreamGates – ערוצי רדיוס 100FM",
    "kind": "official",
@@ -6149,7 +6090,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "ג'אז",
   "lang": "music",
   "logo": "assets/logos/radios_jazz.png",
-  "number": 297,
+  "number": 290,
   "src": {
    "by": "StreamGates – ערוצי רדיוס 100FM",
    "kind": "official",
@@ -6170,7 +6111,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "מוזיקה למשחקים",
   "lang": "music",
   "logo": "assets/logos/radios_gamer.png",
-  "number": 298,
+  "number": 291,
   "src": {
    "by": "StreamGates – ערוצי רדיוס 100FM",
    "kind": "official",
@@ -6191,7 +6132,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "40 הלהיטים הגדולים עכשיו",
   "lang": "music",
   "logo": "assets/logos/radios_top40.png",
-  "number": 299,
+  "number": 292,
   "src": {
    "by": "StreamGates – ערוצי רדיוס 100FM",
    "kind": "official",
@@ -6212,7 +6153,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "הלהיטים של טיקטוק",
   "lang": "music",
   "logo": "assets/logos/radios_tiktok.png",
-  "number": 300,
+  "number": 293,
   "src": {
    "by": "StreamGates – ערוצי רדיוס 100FM",
    "kind": "official",
@@ -6233,7 +6174,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "מוזיקה יהודית וחסידית",
   "lang": "music",
   "logo": "assets/logos/radios_yehudi.png",
-  "number": 301,
+  "number": 294,
   "src": {
    "by": "StreamGates – ערוצי רדיוס 100FM",
    "kind": "official",
@@ -6254,7 +6195,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "שירי ילדים ברצף",
   "lang": "music",
   "logo": "assets/logos/radios_kids.png",
-  "number": 302,
+  "number": 295,
   "src": {
    "by": "StreamGates – ערוצי רדיוס 100FM",
    "kind": "official",
@@ -6275,7 +6216,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "הלהיטים הגדולים ברצף",
   "lang": "music",
   "logo": "assets/logos/radios_hits.png",
-  "number": 303,
+  "number": 296,
   "src": {
    "by": "StreamGates – ערוצי רדיוס 100FM",
    "kind": "official",
@@ -6296,7 +6237,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "מוזיקה לטינית",
   "lang": "music",
   "logo": "assets/logos/radios_latin.png",
-  "number": 304,
+  "number": 297,
   "src": {
    "by": "StreamGates – ערוצי רדיוס 100FM",
    "kind": "official",
@@ -6317,7 +6258,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "מוזיקת עולם",
   "lang": "music",
   "logo": "assets/logos/radios_world.png",
-  "number": 305,
+  "number": 298,
   "src": {
    "by": "StreamGates – ערוצי רדיוס 100FM",
    "kind": "official",
@@ -6338,7 +6279,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "מוזיקה מזרחית ים תיכונית ברצף",
   "lang": "music",
   "logo": "assets/logos/radios_mizrahit.png",
-  "number": 306,
+  "number": 299,
   "src": {
    "by": "StreamGates – ערוצי רדיוס 100FM",
    "kind": "official",
@@ -6359,7 +6300,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "סטנדאפ וקומדיה ברצף",
   "lang": "music",
   "logo": "assets/logos/radios_standup.png",
-  "number": 307,
+  "number": 300,
   "src": {
    "by": "StreamGates – ערוצי רדיוס 100FM",
    "kind": "official",
@@ -6380,7 +6321,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "להיטי פופ צעירים",
   "lang": "music",
   "logo": "assets/logos/radios_selfie.png",
-  "number": 308,
+  "number": 301,
   "src": {
    "by": "StreamGates – ערוצי רדיוס 100FM",
    "kind": "official",
@@ -6401,7 +6342,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "פסקולים ומוזיקה מהסרטים",
   "lang": "music",
   "logo": "assets/logos/radios_movies.png",
-  "number": 309,
+  "number": 302,
   "src": {
    "by": "StreamGates – ערוצי רדיוס 100FM",
    "kind": "official",
@@ -6422,7 +6363,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "שירי ילדים וכוכבי ילדים",
   "lang": "music",
   "logo": "assets/logos/radios_stars.png",
-  "number": 310,
+  "number": 303,
   "src": {
    "by": "StreamGates – ערוצי רדיוס 100FM",
    "kind": "official",
@@ -6443,7 +6384,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "מוזיקה רגועה ואלקטרונית",
   "lang": "music",
   "logo": "assets/logos/radios_chillout.png",
-  "number": 311,
+  "number": 304,
   "src": {
    "by": "StreamGates – ערוצי רדיוס 100FM",
    "kind": "official",
@@ -6464,7 +6405,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "גרסאות כיסוי",
   "lang": "music",
   "logo": "assets/logos/radios_covers.png",
-  "number": 312,
+  "number": 305,
   "src": {
    "by": "StreamGates – ערוצי רדיוס 100FM",
    "kind": "official",
@@ -6485,7 +6426,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "קאנטרי אמריקאי",
   "lang": "music",
   "logo": "assets/logos/radios_country.png",
-  "number": 313,
+  "number": 306,
   "src": {
    "by": "StreamGates – ערוצי רדיוס 100FM",
    "kind": "official",
@@ -6506,7 +6447,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "מוזיקת מועדונים ודאנס",
   "lang": "music",
   "logo": "assets/logos/radios_club.png",
-  "number": 314,
+  "number": 307,
   "src": {
    "by": "StreamGates – ערוצי רדיוס 100FM",
    "kind": "official",
@@ -6527,7 +6468,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "מוזיקה קלאסית",
   "lang": "music",
   "logo": "assets/logos/radios_classic.png",
-  "number": 315,
+  "number": 308,
   "src": {
    "by": "StreamGates – ערוצי רדיוס 100FM",
    "kind": "official",
@@ -6548,7 +6489,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "מוזיקה רגועה",
   "lang": "music",
   "logo": "assets/logos/radios_relax.png",
-  "number": 316,
+  "number": 309,
   "src": {
    "by": "StreamGates – ערוצי רדיוס 100FM",
    "kind": "official",
@@ -6569,7 +6510,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "רוק",
   "lang": "music",
   "logo": "assets/logos/radios_rock.png",
-  "number": 317,
+  "number": 310,
   "src": {
    "by": "StreamGates – ערוצי רדיוס 100FM",
    "kind": "official",
@@ -6590,7 +6531,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "רוק קלאסי",
   "lang": "music",
   "logo": "assets/logos/radios_classic_rock.png",
-  "number": 318,
+  "number": 311,
   "src": {
    "by": "StreamGates – ערוצי רדיוס 100FM",
    "kind": "official",
@@ -6611,7 +6552,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "להיטי רטרו",
   "lang": "music",
   "logo": "assets/logos/radios_retro.png",
-  "number": 319,
+  "number": 312,
   "src": {
    "by": "StreamGates – ערוצי רדיוס 100FM",
    "kind": "official",
@@ -6632,7 +6573,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "להיטי שנות ה-80",
   "lang": "music",
   "logo": "assets/logos/radios_80s.png",
-  "number": 320,
+  "number": 313,
   "src": {
    "by": "StreamGates – ערוצי רדיוס 100FM",
    "kind": "official",
@@ -6653,7 +6594,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "להיטי שנות ה-90",
   "lang": "music",
   "logo": "assets/logos/radios_90s.png",
-  "number": 321,
+  "number": 314,
   "src": {
    "by": "StreamGates – ערוצי רדיוס 100FM",
    "kind": "official",
@@ -6672,7 +6613,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "logo": "assets/logos/radios_100fm.png",
   "badge": "LIVE",
   "desc": "תחנת הרדיו המובילה בישראל למוזיקה בינלאומית, להיטים עכשוויים ותוכניות מובילות",
-  "number": 322,
+  "number": 315,
   "lang": "music",
   "kind": "radio",
   "src": {
@@ -6695,7 +6636,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "להיטי נוסטלגיה ישראליים ולועזיים",
   "lang": "music",
   "logo": "assets/logos/radios_nostalgia.png",
-  "number": 323,
+  "number": 316,
   "src": {
    "by": "StreamGates – ה-CDN של התחנה",
    "kind": "official",
@@ -6716,7 +6657,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "desc": "רק מוזיקה, בלי דיבורים",
   "lang": "music",
   "logo": "assets/logos/rak_musica.svg",
-  "number": 324,
+  "number": 317,
   "src": {
    "by": "play.radioking.io",
    "kind": "restream",
@@ -6724,5 +6665,236 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
    "found": "רשימה ידנית (גרסה קודמת)",
    "web": "✅"
   }
+ },
+ {
+  "id": "hala_tv_live",
+  "name": "Hala TV – ערוץ הלא HD",
+  "title": "Hala TV (ערוץ הלא)",
+  "category": "ערוצי ישראל - שידור חי",
+  "categoryEn": "israel",
+  "url": "https://stream.panet.com/edge/halaTV/playlist.m3u8",
+  "logo": "https://www.panet.co.il/images/logo.png",
+  "badge": "HD",
+  "desc": "ערוץ הטלוויזיה הלא HD – ערוץ הטלוויזיה הייעודי הראשון בשפה הערבית בישראל המשדר חדשות ותרבות",
+  "lang": "ar",
+  "country": "IL",
+  "src": {
+   "by": "panet.com",
+   "kind": "official",
+   "host": "stream.panet.com",
+   "found": "סריקת ערוצים מאומתת",
+   "web": "✅"
+  },
+  "number": 318
+ },
+ {
+  "id": "shelanu_tv_live",
+  "name": "Shelanu.TV – ערוץ שלנו HD",
+  "title": "ערוץ שלנו (Shelanu.TV)",
+  "category": "ערוצי ישראל - שידור חי",
+  "categoryEn": "israel",
+  "url": "https://1247634592.rsc.cdn77.org/1247634592/playlist.m3u8",
+  "logo": "https://i.imgur.com/UVz2Ojq.png",
+  "badge": "HD",
+  "desc": "ערוץ הטלוויזיה שלנו בישראל – תכנים, ראיונות ושידורים חיים באיכות HD",
+  "lang": "he",
+  "country": "IL",
+  "src": {
+   "by": "shelanu.tv",
+   "kind": "official",
+   "host": "1247634592.rsc.cdn77.org",
+   "found": "סריקת ערוצים מאומתת",
+   "web": "✅"
+  },
+  "number": 319
+ },
+ {
+  "id": "i24_english_world_hd",
+  "name": "i24NEWS English World HD",
+  "title": "i24NEWS English World HD",
+  "category": "ערוצי ישראל - שידור חי",
+  "categoryEn": "israel",
+  "url": "https://hlspackager.akamaized.net/live/DB/i24_ENGLISH/HLS/i24_ENGLISH.m3u8",
+  "logo": "https://www.i24news.tv/images/favicon.png",
+  "badge": "FHD",
+  "desc": "שידורי מהדורת החדשות הבינלאומית של i24NEWS מנמל יפו באנגלית באיכות FHD",
+  "lang": "en",
+  "country": "IL",
+  "src": {
+   "by": "i24news.tv",
+   "kind": "official",
+   "host": "hlspackager.akamaized.net",
+   "found": "סריקת ערוצים מאומתת",
+   "web": "✅"
+  },
+  "number": 320
+ },
+ {
+  "id": "angel_tv_hebrew_hd",
+  "name": "Angel TV Hebrew HD",
+  "title": "Angel TV בעברית HD",
+  "category": "ערוצי ישראל - שידור חי",
+  "categoryEn": "israel",
+  "url": "https://janya-digimix.akamaized.net/vglive-sk-150533/hebrew/ngrp:angelhebrew_all/playlist.m3u8",
+  "logo": "https://i.imgur.com/qKLEGU7.png",
+  "badge": "HD",
+  "desc": "ערוץ אנג'ל טי-וי בעברית – שידורי מסורת ותוכן דתי בישראל באיכות HD",
+  "lang": "he",
+  "country": "IL",
+  "src": {
+   "by": "angeltv.org",
+   "kind": "official",
+   "host": "janya-digimix.akamaized.net",
+   "found": "סריקת ערוצים מאומתת",
+   "web": "✅"
+  },
+  "number": 321
+ },
+ {
+  "id": "audioversity_live",
+  "name": "AudioVersity רדיו אוניברסיטת רייכמן",
+  "title": "רדיו AudioVersity (106.2FM)",
+  "category": "רדיו ישראלי (Israeli Radio)",
+  "categoryEn": "radio",
+  "url": "https://1062onair.runi.ac.il/idc123.mp3",
+  "logo": "https://runi.ac.il/favicon.ico",
+  "badge": "חי",
+  "desc": "רדיו הסטודנטים והפודקאסטים של אוניברסיטת רייכמן הרצליה (106.2FM)",
+  "lang": "he",
+  "country": "IL",
+  "src": {
+   "by": "runi.ac.il",
+   "kind": "official",
+   "host": "1062onair.runi.ac.il",
+   "found": "סריקת ערוצים מאומתת",
+   "web": "✅"
+  },
+  "number": 322
+ },
+ {
+  "id": "radio_oranim_live",
+  "name": "רדיו מכללת אורנים (103.6FM)",
+  "title": "רדיו אורנים (103.6FM)",
+  "category": "רדיו ישראלי (Israeli Radio)",
+  "categoryEn": "radio",
+  "url": "https://radio.oranim.ac.il/live",
+  "logo": "https://www.oranim.ac.il/favicon.ico",
+  "badge": "חי",
+  "desc": "תחנת הרדיו החינוכית והקהילתית של מכללת אורנים בטבעון (103.6FM)",
+  "lang": "he",
+  "country": "IL",
+  "src": {
+   "by": "oranim.ac.il",
+   "kind": "official",
+   "host": "radio.oranim.ac.il",
+   "found": "סריקת ערוצים מאומתת",
+   "web": "✅"
+  },
+  "number": 323
+ },
+ {
+  "id": "radio_angelika_live",
+  "name": "Radio Angelika תל אביב",
+  "title": "רדיו אנג'ליקה תל אביב",
+  "category": "רדיו ישראלי (Israeli Radio)",
+  "categoryEn": "radio",
+  "url": "https://radioangelika.com/stream",
+  "logo": "https://radioangelika.com/wp-content/themes/angelika/assets/img/logo-300.png",
+  "badge": "חי",
+  "desc": "רדיו אנג'ליקה – תחנת מוזיקה ואינדי תל אביבית עצמאית בשידור חי",
+  "lang": "he",
+  "country": "IL",
+  "src": {
+   "by": "radioangelika.com",
+   "kind": "official",
+   "host": "radioangelika.com",
+   "found": "סריקת ערוצים מאומתת",
+   "web": "✅"
+  },
+  "number": 324
+ },
+ {
+  "id": "toker_fm_live",
+  "name": "Toker FM – רדיו מנחם טוקר",
+  "title": "טוקר FM",
+  "category": "רדיו ישראלי (Israeli Radio)",
+  "categoryEn": "radio",
+  "url": "https://live.toker.fm:6060/",
+  "logo": "https://live.toker.fm/favicon.ico",
+  "badge": "חי",
+  "desc": "רדיו מנחם טוקר 24 שעות ביממה – המוזיקה היהודית, החסידית והמזרחית המובילה",
+  "lang": "he",
+  "country": "IL",
+  "src": {
+   "by": "toker.fm",
+   "kind": "official",
+   "host": "live.toker.fm",
+   "found": "סריקת ערוצים מאומתת",
+   "web": "✅"
+  },
+  "number": 325
+ },
+ {
+  "id": "jewish_music_stream_live",
+  "name": "Jewish Music Stream",
+  "title": "Jewish Music Stream (מוזיקה יהודית)",
+  "category": "רדיו ישראלי (Israeli Radio)",
+  "categoryEn": "radio",
+  "url": "https://stream.jewishmusicstream.com:8000/",
+  "logo": "https://jewishmusicstream.com/favicon.ico",
+  "badge": "חי",
+  "desc": "שידורי מוזיקה יהודית וחסידית ברצף ללא הפסקה 24/6",
+  "lang": "he",
+  "country": "IL",
+  "src": {
+   "by": "jewishmusicstream.com",
+   "kind": "official",
+   "host": "stream.jewishmusicstream.com",
+   "found": "סריקת ערוצים מאומתת",
+   "web": "✅"
+  },
+  "number": 326
+ },
+ {
+  "id": "dusha_kavkaza_live",
+  "name": "Душа Кавказа – רדיו קהילת קווקז בישראל",
+  "title": "רדיו דושא קווקזה (Душа Кавказа)",
+  "category": "רדיו ישראלי (Israeli Radio)",
+  "categoryEn": "radio",
+  "url": "https://www.kavkazportal.com/live",
+  "logo": "https://www.kavkazportal.com/favicon.ico",
+  "badge": "חי",
+  "desc": "תחנת הרדיו של קהילת יוצאי קווקז בישראל – מוזיקה ותרבות מסורתית",
+  "lang": "ru",
+  "country": "IL",
+  "src": {
+   "by": "kavkazportal.com",
+   "kind": "official",
+   "host": "kavkazportal.com",
+   "found": "סריקת ערוצים מאומתת",
+   "web": "✅"
+  },
+  "number": 327
+ },
+ {
+  "id": "orenu_radio_live",
+  "name": "רדיו אורנו (Орэну)",
+  "title": "רדיו אורנו בישראל (Орэну)",
+  "category": "רדיו ישראלי (Israeli Radio)",
+  "categoryEn": "radio",
+  "url": "https://listen7.myradio24.com/orenu",
+  "logo": "https://orenu.co.il/wp-content/uploads/2020/07/logo-80x80.png",
+  "badge": "חי",
+  "desc": "שידורי רדיו אורנו אונליין הפועל בישראל",
+  "lang": "ru",
+  "country": "IL",
+  "src": {
+   "by": "orenu.co.il",
+   "kind": "official",
+   "host": "listen7.myradio24.com",
+   "found": "סריקת ערוצים מאומתת",
+   "web": "✅"
+  },
+  "number": 328
  }
 ];

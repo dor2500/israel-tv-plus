@@ -1,62 +1,60 @@
 {
-  "version": "4.3.7",
-  "code": 202610260549,
-  "app": 507,
+  "version": "4.3.8",
+  "code": 202610260640,
+  "app": 508,
   "shell": 3,
   "date": "2026-10-26",
   "notes": [
-    "ארכיטקטורת Nuvio Visual Shell מלאה ונקייה (מבוסס Nuvio CMP Rewrite):",
-    "סרגל ניווט תחתון זכוכיתי צר ויוקרתי בגובה 56dp strictly, מרווח תחתון 16dp עם navigationBarsPadding.",
-    "מבנה סרגל ניווט 3+1: קפסולה ראשית (בית, ערוצים, שלי) ולחצן חיפוש עגול 56dp משמאל עם מרווח 12dp.",
-    "משטח זכוכית Nuvio עמוק: מילוי #16161E בשקיפות 60%, טשטוש חומרתי 35dp ומסגרת דקיקה 0.75dp בשקיפות 14%.",
-    "מחוון טאב פעיל צר ומדויק בגובה 40dp עם RoundedCornerShape(50) ואייקוני Icons.Rounded.*.",
-    "אזור Hero עליון במסך מלא (Full-Bleed 460dp) עם מדרגות גרדיאנט Nuvio מדויקות:",
-    "רקע וידאו/מדיה עליון בגובה 460dp לרוחב מלא של המסך.",
-    "שכבת גרדיאנט אנכית רב-שלבית תקנית: שקוף ב-0.0f, #330A0B10 ב-0.35f, #B30A0B10 ב-0.65f, #E60A0B10 ב-0.85f, ו-#FF0A0B10 מלא ב-1.0f.",
-    "ביטול תיבות כתומות ועומס גרפי ב-Hero: לוגו/שם הערוץ, תגיות המידע וכפתור \"צפייה\" יושבים בצורה נקייה ומרווחת ב-35% התחתונים של ה-Hero ישירות על אזור הגרדיאנט הכהה.",
-    "שורת מתג \"רק תוכן ישראלי\" קומפקטית ומיושרת לימין ללא מרווחים ריקים:",
-    "צמוד לימין: דגל ישראל וקטורי בסגנון Apple iOS (מידה 18dp, ללא אימוג'י טקסט של אנדרואיד), כיתוב \"רק תוכן ישראלי\" (MaterialTheme.typography.labelLarge) ומתג Material 3 Switch מוקטן ל-0.85f במרווח 8dp.",
-    "שורת צ'יפים מהירה (Macro Filter Chips) בגובה 34dp:",
-    "4 קטגוריות עיקריות בלבד (הכל, סרטים וסדרות, ילדים ונוער, ספורט) וצ'יפ \"עוד...\" הפותח ModalBottomSheet לכל שאר הקטגוריות.",
-    "סגנון צ'יפ תקני: גובה 34dp, פינות RoundedCornerShape(50), מסגרת 0.75dp בצבע לבן 15%, וצ'יפ פעיל עם רקע לבן וטקסט שחור #0A0B10.",
-    "גאומטריית כרטיסי שידור Nuvio קפדנית (Strict Card Geometry):",
-    "שורה 1 – המשך צפייה (רוחב 210dp ביחס 16:9 עם פינות 10dp ומסגרת 0.5dp בשקיפות 10%).",
-    "כל שאר השורות (רוחב 125dp ביחס 2:3 עם פינות 10dp ומסגרת 0.5dp בשקיפות 10%).",
-    "הסרת ספאם תגיות: לכל היותר תגית HD שקופה וקטנה בפינה השמאלית-עליונה, ושם הערוץ והקטגוריה מוצגים בטקסט נקי וקריא מתחת לכרטיס.",
-    "שימור מלא של 100% ממנוע הפיזיקה BitChord, קפיצי התנועה וההפטיקה:",
-    "FlingBehavior, Overscroll גמיש, קפיצי לחיצה (dampingRatio = 0.4f), רטט LRA מדויק (SegmentTick / LongPress / TextHandleMove), ושכבת Zomato של 750ms בעת הפעלת סינון ישראלי."
+    "הוספת ערוצי שידור ישראליים מקוריים ומאומתים (ללא כפילויות וללא ערוצי עידן פלוס):",
+    "ערוצי טלוויזיה ישראליים חדשים:",
+    "Hala TV – ערוץ הלא HD (ערוץ השידור המוביל בישראל בערבית באיכות HD ישירות מ-Panet).",
+    "Shelanu.TV – ערוץ שלנו HD (ערוץ תוכן ישראלי שידור ישיר באיכות HD).",
+    "i24NEWS English World HD (מהדורת החדשות הבינלאומית מנמל יפו באנגלית באיכות FHD).",
+    "Angel TV Hebrew HD (שידורי ערוץ אנג'ל בעברית באיכות HD).",
+    "תחנות רדיו ומוזיקה ישראליות ייחודיות:",
+    "AudioVersity – רדיו אוניברסיטת רייכמן הרצליה (106.2FM – פודקאסטים ושידורי סטודנטים).",
+    "רדיו מכללת אורנים (103.6FM – שידור חי חינוכי וקהילתי מצפון הארץ).",
+    "Radio Angelika תל אביב (תחנת רדיו ומוזיקת אינדי תל אביבית עצמאית).",
+    "Toker FM – רדיו מנחם טוקר לייב (מוזיקה יהודית וחסידית ללא הפסקה 24/6).",
+    "Jewish Music Stream (תחנת המוזיקה היהודית והחסידית הבינלאומית הגדולה בעולם).",
+    "Душа Кавказа – רדיו קהילת יוצאי קווקז בישראל (שידורי רדיו מסורתיים לקהילה בישראל).",
+    "רדיו אורנו (Орэну) – שידורי רדיו אונליין הפועל בישראל.",
+    "שילוב ואימות ערוצי FreeTV וקשת FAST:",
+    "ערוץ האוכל והבישול, ערוץ הדרמה, ערוץ המוזיקה, ערוץ הקומדיה, סברי מרנן וארץ נהדרת – כולם מאומתים עם כרטיסי צפייה מקוריים (AKAMAI Dynamic Ticket).",
+    "עדכון רשימות השמעה ו-Stremio:",
+    "רענון מלא של playlist.m3u, playlist-israel.m3u, playlist-tv.m3u, ו-radio.m3u עם 328 ערוצים מסודרים וממוספרים ברצף ללא דילוגים."
   ],
   "native": {
     "android": {
-      "version": "4.3.7",
-      "app": 507,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.7/IsraelTVPlus-android.apk"
+      "version": "4.3.8",
+      "app": 508,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.8/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "4.3.7",
-      "app": 507,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.7/IsraelTVPlus-windows-setup.exe"
+      "version": "4.3.8",
+      "app": 508,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.8/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "4.3.7",
-      "app": 507,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.7/com.israeltv.plus_all.ipk",
+      "version": "4.3.8",
+      "app": 508,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.8/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "4.3.7",
-      "app": 507,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.7/IsraelTVPlus-tizen-project.zip"
+      "version": "4.3.8",
+      "app": 508,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.8/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "4.3.7",
-      "app": 507,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.7/IsraelTVPlus-macos-arm64.zip"
+      "version": "4.3.8",
+      "app": 508,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.8/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "4.3.7",
-      "app": 507,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.7/IsraelTVPlus-linux-x64.zip"
+      "version": "4.3.8",
+      "app": 508,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.8/IsraelTVPlus-linux-x64.zip"
     }
   }
 }
