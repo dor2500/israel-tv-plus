@@ -1,0 +1,789 @@
+package com.israeltv.plus.ui.screens
+
+import android.os.Build
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.core.spring
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListState
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.runtime.getValue
+import androidx.compose.ui.layout.layout
+import androidx.compose.ui.text.style.TextOverflow
+import com.israeltv.plus.ui.components.LocalPlayOrigin
+import com.israeltv.plus.ui.components.cascadeIn
+import com.israeltv.plus.ui.components.sharedContainer
+import com.israeltv.plus.ui.theme.LocalDarkTheme
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.rememberPagerState
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Info
+import androidx.compose.material.icons.rounded.PlayArrow
+import androidx.compose.material.icons.rounded.Star
+import androidx.compose.material.icons.rounded.StarBorder
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.blur
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.clipToBounds
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.hapticfeedback.HapticFeedbackType
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalHapticFeedback
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import coil3.compose.AsyncImage
+import com.israeltv.plus.data.AppPrefs
+import com.israeltv.plus.data.Channel
+import com.israeltv.plus.data.ChannelData
+import com.israeltv.plus.data.shortCategory
+import com.israeltv.plus.ui.components.ChannelShelf
+import com.israeltv.plus.ui.components.GlassIconButton
+import com.israeltv.plus.ui.components.ShelfSkeleton
+import com.israeltv.plus.ui.components.feedPadding
+import com.israeltv.plus.ui.components.glassShimmer
+import com.israeltv.plus.ui.components.rememberBitChordFlingBehavior
+import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.viewinterop.AndroidView
+import androidx.media3.common.MediaItem
+import androidx.media3.common.Player
+import androidx.media3.exoplayer.ExoPlayer
+import androidx.media3.ui.AspectRatioFrameLayout
+import androidx.media3.ui.PlayerView
+import androidx.media3.datasource.okhttp.OkHttpDataSource
+import androidx.media3.exoplayer.source.DefaultMediaSourceFactory
+import com.israeltv.plus.data.playableUrl
+import com.israeltv.plus.ui.components.tactileBounce
+import com.israeltv.plus.data.isIsraeli
+import com.israeltv.plus.ui.player.playerHttpClient
+import kotlinx.coroutines.delay
+
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.BoxWithConstraints
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ModalBottomSheet
+import androidx.compose.material3.Switch
+import androidx.compose.material3.SwitchDefaults
+import androidx.compose.material3.rememberModalBottomSheetState
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.layout.positionInRoot
+import androidx.compose.ui.unit.Dp
+import com.israeltv.plus.ui.components.AppleIsraelFlag
+
+private val HeroShape = RoundedCornerShape(0.dp)
+
+/**
+ * Home: one master LazyColumn with:
+ * 1. Hero restricted to ~52% screen height, allowing content peeking from the bottom.
+ * 2. Inline "רק ישראלי" animated Switch filter.
+ * 3. Kan Box category pills directly below Hero:
+ *    - Inactive: transparent with 1.dp thin white border
+ *    - Active: Solid white background with dark text.
+ * 4. "Continue Watching" (המשך צפייה) 16:9 shelf clearly peeking up from the bottom of the screen.
+ */
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
+@Composable
+fun HomeScreen(
+    data: ChannelData?,
+    prefs: AppPrefs,
+    listState: LazyListState,
+    logo: (Channel) -> String,
+    subtitle: (Channel) -> String,
+    onPlay: (Channel, List<Channel>) -> Unit,
+    onInfo: (Channel) -> Unit,
+    israeliOnly: Boolean = false,
+    onToggleIsraeli: () -> Unit = {},
+    onSwitchPositioned: (Offset) -> Unit = {},
+    onSeeAll: (String) -> Unit,
+) {
+    val scheme = MaterialTheme.colorScheme
+    var selectedCategory by remember { mutableStateOf<String?>("all") }
+    var moreSheetOpen by remember { mutableStateOf(false) }
+
+    BoxWithConstraints(Modifier.fillMaxSize()) {
+        val heroHeight = 460.dp
+
+        LazyColumn(
+            Modifier.fillMaxSize(),
+            state = listState,
+            contentPadding = PaddingValues(bottom = 110.dp),
+            flingBehavior = rememberBitChordFlingBehavior(),
+        ) {
+            if (data == null) {
+                item { Box(Modifier.fillMaxWidth().height(heroHeight).glassShimmer(HeroShape)) }
+                item { ShelfSkeleton(isWide = true) }
+                items(3) { ShelfSkeleton(isWide = false) }
+                return@LazyColumn
+            }
+
+            val allChannels = if (israeliOnly) data.channels.filter { it.isIsraeli() } else data.channels
+            val featured = if (israeliOnly) data.featured.filter { it.isIsraeli() }.ifEmpty { allChannels.take(5) } else data.featured
+
+            // 1. HERO PAGER (Strict 460.dp full-bleed backdrop)
+            item(key = "hero") {
+                HeroPager(
+                    featured = featured,
+                    prefs = prefs,
+                    logo = logo,
+                    heroHeight = heroHeight,
+                    onPlay = { onPlay(it, featured) },
+                    onInfo = onInfo,
+                    modifier = Modifier.cascadeIn(0),
+                )
+            }
+
+            // 2. COMPACT GROUPED "רק תוכן ישראלי" TOGGLE ROW (Eliminate empty gap, aligned to right)
+            item(key = "israeli_filter_toggle") {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 20.dp, vertical = 6.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.Start,
+                ) {
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    ) {
+                        // Custom iOS-style Flag Image/Icon (size = 18.dp, NO Android text emoji)
+                        AppleIsraelFlag(Modifier.size(18.dp))
+                        // Text: "רק תוכן ישראלי" (style = MaterialTheme.typography.labelLarge)
+                        Text(
+                            text = "רק תוכן ישראלי",
+                            style = MaterialTheme.typography.labelLarge,
+                            color = if (israeliOnly) scheme.primary else scheme.onSurface,
+                            fontWeight = FontWeight.Bold,
+                        )
+                        // Material 3 Switch (scaled to 0.85f)
+                        Switch(
+                            checked = israeliOnly,
+                            onCheckedChange = { onToggleIsraeli() },
+                            modifier = Modifier
+                                .graphicsLayer {
+                                    scaleX = 0.85f
+                                    scaleY = 0.85f
+                                }
+                                .onGloballyPositioned { coordinates ->
+                                    val pos = coordinates.positionInRoot()
+                                    val size = coordinates.size
+                                    onSwitchPositioned(Offset(pos.x + size.width / 2f, pos.y + size.height / 2f))
+                                },
+                            colors = SwitchDefaults.colors(
+                                checkedThumbColor = Color.White,
+                                checkedTrackColor = scheme.primary,
+                                uncheckedThumbColor = Color.LightGray,
+                                uncheckedTrackColor = Color(0xFF1E202A),
+                                checkedBorderColor = Color.Transparent,
+                                uncheckedBorderColor = Color.White.copy(alpha = 0.25f),
+                            ),
+                        )
+                    }
+                }
+            }
+
+            // 3. MACRO FILTER CHIPS ROW (Directly below toggle)
+            item(key = "kan_box_categories") {
+                val haptic = LocalHapticFeedback.current
+
+                val moviesCat = data.categories.firstOrNull { it.key.contains("סרטים") || it.name.contains("סרטים") }
+                val kidsCat = data.categories.firstOrNull { it.key.contains("ילדים") || it.name.contains("ילדים") }
+                val sportsCat = data.categories.firstOrNull { it.key.contains("ספורט") || it.name.contains("ספורט") }
+
+                val macroChips = remember(moviesCat, kidsCat, sportsCat) {
+                    listOf(
+                        "all" to "הכל",
+                        (moviesCat?.key ?: "movies") to "סרטים וסדרות",
+                        (kidsCat?.key ?: "kids") to "ילדים ונוער",
+                        (sportsCat?.key ?: "sports") to "ספורט",
+                    )
+                }
+
+                val macroKeys = remember(moviesCat, kidsCat, sportsCat) {
+                    setOfNotNull("all", moviesCat?.key, kidsCat?.key, sportsCat?.key)
+                }
+
+                val isMoreSelected = selectedCategory != null && selectedCategory !in macroKeys
+                val moreLabel = if (isMoreSelected) {
+                    data.categories.firstOrNull { it.key == selectedCategory }?.name ?: "עוד..."
+                } else {
+                    "עוד..."
+                }
+
+                val chipShape = RoundedCornerShape(50)
+
+                LazyRow(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(bottom = 16.dp),
+                    contentPadding = PaddingValues(horizontal = 20.dp),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    flingBehavior = rememberBitChordFlingBehavior(),
+                ) {
+                    items(macroChips, key = { it.first }) { (key, label) ->
+                        val isActive = (selectedCategory == key)
+                        Box(
+                            modifier = Modifier
+                                .height(34.dp)
+                                .clip(chipShape)
+                                .then(
+                                    if (isActive) {
+                                        Modifier.background(Color.White)
+                                    } else {
+                                        Modifier
+                                            .border(0.75.dp, Color.White.copy(alpha = 0.15f), chipShape)
+                                            .background(Color.Transparent)
+                                    }
+                                )
+                                .tactileBounce()
+                                .clickable {
+                                    haptic.performHapticFeedback(HapticFeedbackType.SegmentTick)
+                                    selectedCategory = key
+                                }
+                                .padding(horizontal = 16.dp),
+                            contentAlignment = Alignment.Center,
+                        ) {
+                            Text(
+                                text = label,
+                                color = if (isActive) Color(0xFF0A0B10) else Color.White,
+                                fontSize = 13.sp,
+                                fontWeight = if (isActive) FontWeight.ExtraBold else FontWeight.Bold,
+                            )
+                        }
+                    }
+
+                    // Trailing 'עוד...' chip opening ModalBottomSheet
+                    item(key = "more_chip") {
+                        Box(
+                            modifier = Modifier
+                                .height(34.dp)
+                                .clip(chipShape)
+                                .then(
+                                    if (isMoreSelected) {
+                                        Modifier.background(Color.White)
+                                    } else {
+                                        Modifier
+                                            .border(0.75.dp, Color.White.copy(alpha = 0.15f), chipShape)
+                                            .background(Color.Transparent)
+                                    }
+                                )
+                                .tactileBounce()
+                                .clickable {
+                                    haptic.performHapticFeedback(HapticFeedbackType.SegmentTick)
+                                    moreSheetOpen = true
+                                }
+                                .padding(horizontal = 16.dp),
+                            contentAlignment = Alignment.Center,
+                        ) {
+                            Text(
+                                text = moreLabel,
+                                color = if (isMoreSelected) Color(0xFF0A0B10) else Color.White,
+                                fontSize = 13.sp,
+                                fontWeight = if (isMoreSelected) FontWeight.ExtraBold else FontWeight.Bold,
+                            )
+                        }
+                    }
+                }
+            }
+
+            // 4. SHELVES (Peeking up: Continue Watching, Favourites, Categories)
+            var row = 1
+            val rawRecent = prefs.recents.mapNotNull { data.byId[it] }
+            val recent = if (israeliOnly) rawRecent.filter { it.isIsraeli() } else rawRecent
+            if (recent.isNotEmpty()) {
+                val i = row++
+                // Wide 16:9 cards (width = 240.dp, height = 135.dp) for 'Continue Watching' row
+                item(key = "recent") {
+                    ChannelShelf(
+                        title = "המשך צפייה",
+                        channels = recent,
+                        logo = logo,
+                        subtitle = subtitle,
+                        onPlay = { onPlay(it, recent) },
+                        isWide = true,
+                        modifier = Modifier.cascadeIn(i),
+                    )
+                }
+            }
+            val rawFavs = prefs.favorites.mapNotNull { data.byId[it] }
+            val favs = if (israeliOnly) rawFavs.filter { it.isIsraeli() } else rawFavs
+            if (favs.isNotEmpty()) {
+                val i = row++
+                // Tall 2:3 poster cards (width = 130.dp, height = 195.dp)
+                item(key = "favs") {
+                    ChannelShelf(
+                        title = "המועדפים שלי",
+                        channels = favs,
+                        logo = logo,
+                        subtitle = subtitle,
+                        onPlay = { onPlay(it, favs) },
+                        isWide = false,
+                        modifier = Modifier.cascadeIn(i),
+                    )
+                }
+            }
+            val allRow = row++
+            item(key = "all_channels_shelf") {
+                val title = if (israeliOnly) "כל הערוצים (100% ישראלי)" else "כל הערוצים (הכל)"
+                ChannelShelf(
+                    title = title,
+                    channels = allChannels.take(30),
+                    logo = logo,
+                    subtitle = subtitle,
+                    onPlay = { onPlay(it, allChannels) },
+                    count = allChannels.size,
+                    isWide = false,
+                    onSeeAll = { onSeeAll("all") },
+                    modifier = Modifier.cascadeIn(allRow),
+                )
+            }
+            val filteredCategories = if (selectedCategory == null || selectedCategory == "all") {
+                data.categories
+            } else {
+                data.categories.filter { it.key == selectedCategory }
+            }
+            filteredCategories.forEach { cat ->
+                val catChannels = if (israeliOnly) cat.channels.filter { it.isIsraeli() } else cat.channels
+                if (catChannels.isNotEmpty()) {
+                    val i = row++
+                    item(key = "cat:" + cat.key) {
+                        ChannelShelf(
+                            title = cat.name,
+                            channels = catChannels.take(24),
+                            logo = logo,
+                            subtitle = subtitle,
+                            onPlay = { onPlay(it, catChannels) },
+                            count = catChannels.size,
+                            isWide = false,
+                            onSeeAll = { onSeeAll(cat.key) },
+                            modifier = Modifier.cascadeIn(i),
+                        )
+                    }
+                }
+            }
+        }
+
+        // ModalBottomSheet for remaining categories
+        if (moreSheetOpen && data != null) {
+            val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
+            val haptic = LocalHapticFeedback.current
+
+            val moviesCat = data.categories.firstOrNull { it.key.contains("סרטים") || it.name.contains("סרטים") }
+            val kidsCat = data.categories.firstOrNull { it.key.contains("ילדים") || it.name.contains("ילדים") }
+            val sportsCat = data.categories.firstOrNull { it.key.contains("ספורט") || it.name.contains("ספורט") }
+            val macroKeys = setOfNotNull("all", moviesCat?.key, kidsCat?.key, sportsCat?.key)
+            val remainingCategories = data.categories.filter { it.key !in macroKeys }
+
+            ModalBottomSheet(
+                onDismissRequest = { moreSheetOpen = false },
+                sheetState = sheetState,
+                containerColor = scheme.surfaceContainerHigh,
+            ) {
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 20.dp)
+                        .padding(bottom = 36.dp),
+                ) {
+                    Text(
+                        text = "עוד קטגוריות",
+                        style = MaterialTheme.typography.titleLarge,
+                        fontWeight = FontWeight.Black,
+                        color = scheme.onSurface,
+                        modifier = Modifier.padding(bottom = 16.dp),
+                    )
+
+                    FlowRow(
+                        horizontalArrangement = Arrangement.spacedBy(8.dp),
+                        verticalArrangement = Arrangement.spacedBy(10.dp),
+                        modifier = Modifier.fillMaxWidth(),
+                    ) {
+                        remainingCategories.forEach { cat ->
+                            val isSelected = cat.key == selectedCategory
+                            Box(
+                                modifier = Modifier
+                                    .height(34.dp)
+                                    .clip(RoundedCornerShape(50))
+                                    .then(
+                                        if (isSelected) {
+                                            Modifier.background(Color.White)
+                                        } else {
+                                            Modifier
+                                                .border(0.75.dp, Color.White.copy(alpha = 0.15f), RoundedCornerShape(50))
+                                                .background(Color.Transparent)
+                                        }
+                                    )
+                                    .tactileBounce()
+                                    .clickable {
+                                        haptic.performHapticFeedback(HapticFeedbackType.SegmentTick)
+                                        selectedCategory = cat.key
+                                        moreSheetOpen = false
+                                    }
+                                    .padding(horizontal = 16.dp),
+                                contentAlignment = Alignment.Center,
+                            ) {
+                                Text(
+                                    text = cat.name,
+                                    color = if (isSelected) Color(0xFF0A0B10) else Color.White,
+                                    fontSize = 13.sp,
+                                    fontWeight = if (isSelected) FontWeight.ExtraBold else FontWeight.Bold,
+                                )
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+/**
+ * The hero starts at the very top of the screen, behind the status bar and the glass header: it is laid out
+ * [padding]'s top inset higher than the LazyColumn puts it (the list itself keeps its contentPadding).
+ */
+private fun Modifier.bleedToTop(padding: PaddingValues): Modifier = layout { measurable, constraints ->
+    val top = padding.calculateTopPadding().roundToPx()
+    val placeable = measurable.measure(constraints)
+    layout(placeable.width, (placeable.height - top).coerceAtLeast(0)) { placeable.place(0, -top) }
+}
+
+@Composable
+private fun HeroPager(
+    featured: List<Channel>,
+    prefs: AppPrefs,
+    logo: (Channel) -> String,
+    heroHeight: Dp,
+    onPlay: (Channel) -> Unit,
+    onInfo: (Channel) -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    if (featured.isEmpty()) return
+    val pager = rememberPagerState { featured.size }
+    LaunchedEffect(pager.settledPage, pager.isScrollInProgress) {
+        if (pager.isScrollInProgress) return@LaunchedEffect
+        delay(7000)
+        pager.animateScrollToPage((pager.currentPage + 1) % featured.size)
+    }
+    Box(modifier.fillMaxWidth().height(heroHeight).padding(bottom = 12.dp)) {
+        HorizontalPager(pager, key = { featured[it].id }, modifier = Modifier.fillMaxSize()) { page ->
+            val ch = featured[page]
+            HeroPage(ch, logo(ch), prefs.isFavorite(ch.id), heroHeight, onPlay, onInfo) { prefs.toggleFavorite(ch.id) }
+        }
+        // capsule page indicator: the active dot stretches to 24 dp
+        Row(
+            Modifier.align(Alignment.BottomCenter).padding(bottom = 4.dp),
+            horizontalArrangement = Arrangement.Center,
+        ) {
+            repeat(featured.size) { i ->
+                val on = i == pager.currentPage
+                val w by animateDpAsState(if (on) 24.dp else 6.dp, spring(Spring.DampingRatioMediumBouncy, Spring.StiffnessMediumLow), label = "dot")
+                Box(
+                    Modifier
+                        .padding(horizontal = 3.dp)
+                        .height(5.dp)
+                        .width(w)
+                        .clip(RoundedCornerShape(50))
+                        .background(MaterialTheme.colorScheme.onSurface.copy(alpha = if (on) 1f else 0.3f))
+                )
+            }
+        }
+    }
+}
+
+/**
+ * Apple TV+ / Essentials hero, 580 dp, edge to edge:
+ * Plays the muted live HLS stream (volume = 0f, 400ms debounce), fading into colorScheme.background.
+ * CTA 'צפייה' button in colorScheme.primary, and badges (LIVE, FHD, channel numbers) in tertiaryContainer
+ * with stretched variable typography.
+ */
+@Composable
+private fun HeroPage(
+    ch: Channel,
+    logo: String,
+    favorite: Boolean,
+    heroHeight: Dp,
+    onPlay: (Channel) -> Unit,
+    onInfo: (Channel) -> Unit,
+    onFavorite: () -> Unit,
+) {
+    val context = LocalContext.current
+    val scheme = MaterialTheme.colorScheme
+    val dark = LocalDarkTheme.current
+    val haptic = LocalHapticFeedback.current
+    val origin = LocalPlayOrigin.current
+    val key = "hero:${ch.id}"
+
+    // Muted live stream preview (volume = 0f, 400ms debounce)
+    var livePlayer by remember(ch.id) { mutableStateOf<ExoPlayer?>(null) }
+    var liveReady by remember(ch.id) { mutableStateOf(false) }
+
+    LaunchedEffect(ch.id) {
+        liveReady = false
+        delay(400)
+        try {
+            val url = playableUrl(ch)
+            val p = ExoPlayer.Builder(context)
+                .setMediaSourceFactory(DefaultMediaSourceFactory(OkHttpDataSource.Factory(playerHttpClient)))
+                .build().apply {
+                volume = 0f
+                repeatMode = Player.REPEAT_MODE_OFF
+                playWhenReady = true
+            }
+            val item = MediaItem.Builder().setUri(url).build()
+            p.setMediaItem(item)
+            p.prepare()
+            livePlayer = p
+            liveReady = true
+        } catch (_: Throwable) {
+            liveReady = false
+        }
+    }
+
+    DisposableEffect(ch.id) {
+        onDispose {
+            livePlayer?.release()
+            livePlayer = null
+        }
+    }
+
+    Box(
+        Modifier
+            .fillMaxWidth()
+            .height(heroHeight)
+            .sharedContainer(key, HeroShape)
+            .clipToBounds()
+            .background(Color(0xFF0A0B10))
+    ) {
+        // Full-Bleed Backdrop: edge-to-edge live muted HLS stream or artwork
+        if (liveReady && livePlayer != null) {
+            AndroidView(
+                factory = { ctx ->
+                    PlayerView(ctx).apply {
+                        useController = false
+                        resizeMode = AspectRatioFrameLayout.RESIZE_MODE_ZOOM
+                        setShutterBackgroundColor(android.graphics.Color.TRANSPARENT)
+                        this.player = livePlayer
+                    }
+                },
+                modifier = Modifier.fillMaxSize(),
+            )
+        } else if (logo.isNotEmpty()) {
+            AsyncImage(
+                logo, null,
+                Modifier
+                    .fillMaxSize()
+                    .graphicsLayer { scaleX = 2.2f; scaleY = 2.2f; alpha = if (Build.VERSION.SDK_INT >= 31) 0.6f else 0.2f }
+                    .blur(80.dp),
+                contentScale = ContentScale.Crop,
+            )
+        }
+
+        // Mandatory Nuvio Gradient Ramp: Overlay a Box(Modifier.matchParentSize()) with this exact Brush.verticalGradient:
+        // 0.0f to Color.Transparent, 0.35f to Color(0x330A0B10), 0.65f to Color(0xB30A0B10), 0.85f to Color(0xE60A0B10), 1.0f to Color(0xFF0A0B10)
+        Box(
+            Modifier
+                .matchParentSize()
+                .background(
+                    Brush.verticalGradient(
+                        0.0f to Color.Transparent,
+                        0.35f to Color(0x330A0B10),
+                        0.65f to Color(0xB30A0B10),
+                        0.85f to Color(0xE60A0B10),
+                        1.0f to Color(0xFF0A0B10),
+                    )
+                )
+        )
+
+        // Clean layout sitting inside bottom 35% of the hero container, directly on top of the dark gradient zone
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .fillMaxHeight(0.35f)
+                .align(Alignment.BottomCenter)
+                .padding(horizontal = 20.dp, vertical = 6.dp),
+            contentAlignment = Alignment.BottomCenter,
+        ) {
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.spacedBy(6.dp),
+                modifier = Modifier.fillMaxWidth(),
+            ) {
+                if (logo.isNotEmpty()) {
+                    AsyncImage(
+                        model = logo,
+                        contentDescription = ch.name,
+                        modifier = Modifier
+                            .fillMaxWidth(0.52f)
+                            .height(54.dp),
+                        contentScale = ContentScale.Fit,
+                    )
+                } else {
+                    Text(
+                        text = ch.name,
+                        style = MaterialTheme.typography.titleLarge,
+                        fontSize = 20.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = scheme.onSurface,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis,
+                    )
+                }
+
+                // Metadata pills row
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(6.dp),
+                ) {
+                    // LIVE badge pill
+                    Box(
+                        Modifier
+                            .clip(RoundedCornerShape(50))
+                            .background(scheme.tertiaryContainer)
+                            .padding(horizontal = 8.dp, vertical = 2.dp),
+                        contentAlignment = Alignment.Center,
+                    ) {
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Box(Modifier.size(5.dp).clip(CircleShape).background(scheme.error))
+                            Spacer(Modifier.width(4.dp))
+                            Text(
+                                "LIVE",
+                                color = scheme.onTertiaryContainer,
+                                fontSize = 10.sp,
+                                fontWeight = FontWeight.ExtraBold,
+                                style = com.israeltv.plus.ui.theme.StretchedNumberStyle,
+                                modifier = Modifier.graphicsLayer { scaleY = 1.15f },
+                            )
+                        }
+                    }
+
+                    // FHD / Format badge pill
+                    if (ch.badge.isNotEmpty()) {
+                        Box(
+                            Modifier
+                                .clip(RoundedCornerShape(50))
+                                .background(scheme.tertiaryContainer)
+                                .padding(horizontal = 8.dp, vertical = 2.dp),
+                        ) {
+                            Text(
+                                ch.badge,
+                                color = scheme.onTertiaryContainer,
+                                fontSize = 10.sp,
+                                fontWeight = FontWeight.Bold,
+                                style = com.israeltv.plus.ui.theme.StretchedNumberStyle,
+                                modifier = Modifier.graphicsLayer { scaleY = 1.15f },
+                            )
+                        }
+                    }
+
+                    // Channel number badge pill
+                    Box(
+                        Modifier
+                            .clip(RoundedCornerShape(50))
+                            .background(scheme.tertiaryContainer)
+                            .padding(horizontal = 8.dp, vertical = 2.dp),
+                    ) {
+                        Text(
+                            "${ch.number}",
+                            color = scheme.onTertiaryContainer,
+                            fontSize = 10.sp,
+                            fontWeight = FontWeight(800),
+                            style = com.israeltv.plus.ui.theme.StretchedNumberStyle,
+                            modifier = Modifier.graphicsLayer { scaleY = 1.15f },
+                        )
+                    }
+
+                    val category = shortCategory(ch.category)
+                    if (category.isNotEmpty()) {
+                        Text(
+                            category,
+                            color = scheme.onSurfaceVariant,
+                            fontSize = 11.sp,
+                            fontWeight = FontWeight.SemiBold,
+                            modifier = Modifier.padding(start = 2.dp),
+                        )
+                    }
+                }
+
+                // Action row: Favorite, Play CTA, Info
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(10.dp),
+                    modifier = Modifier.padding(top = 2.dp),
+                ) {
+                    GlassIconButton(
+                        if (favorite) Icons.Rounded.Star else Icons.Rounded.StarBorder,
+                        "מועדף",
+                        onFavorite,
+                        size = 42.dp,
+                        tint = scheme.onSurface.copy(alpha = 0.14f),
+                        iconTint = scheme.onSurface,
+                    )
+                    // 'צפייה' CTA in colorScheme.primary with tactile bounce
+                    Button(
+                        onClick = {
+                            haptic.performHapticFeedback(HapticFeedbackType.LongPress)
+                            origin.key = key
+                            onPlay(ch)
+                        },
+                        shape = RoundedCornerShape(50),
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = scheme.primary,
+                            contentColor = scheme.onPrimary,
+                        ),
+                        contentPadding = PaddingValues(horizontal = 26.dp),
+                        modifier = Modifier
+                            .height(42.dp)
+                            .tactileBounce(),
+                    ) {
+                        Icon(Icons.Rounded.PlayArrow, null, Modifier.size(22.dp), tint = scheme.onPrimary)
+                        Spacer(Modifier.width(5.dp))
+                        Text("צפייה", fontSize = 15.sp, fontWeight = FontWeight.Black, color = scheme.onPrimary)
+                    }
+                    GlassIconButton(
+                        Icons.Rounded.Info,
+                        "מידע",
+                        { onInfo(ch) },
+                        size = 42.dp,
+                        tint = scheme.onSurface.copy(alpha = 0.14f),
+                        iconTint = scheme.onSurface,
+                    )
+                }
+            }
+        }
+    }
+}
+

@@ -86,6 +86,14 @@ public class MainActivity extends Activity {
     @Override
     @SuppressWarnings("deprecation")
     protected void onCreate(Bundle state) {
+        // Phones run the native app (PhoneActivity) since 3.4.0; a shortcut or task from 3.3.0 that still points
+        // here opens it instead of the old web screen
+        if (!isTv()) {
+            super.onCreate(state);
+            startActivity(new Intent(this, PhoneActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+            finish();
+            return;
+        }
         SplashScreen splash = SplashScreen.installSplashScreen(this);   // before super.onCreate (sets the app theme back)
         super.onCreate(state);
         prefs = getSharedPreferences("itv", MODE_PRIVATE);
@@ -129,7 +137,7 @@ public class MainActivity extends Activity {
         // TVs: honour the page's fixed-width viewport (app.js sets width=1600 for "AndroidTV"), like the LG app
         s.setUseWideViewPort(true);
         s.setLoadWithOverviewMode(true);
-        s.setUserAgentString(s.getUserAgentString() + " IsraelTVPlus/3 " + (tv ? "AndroidTV" : "AndroidPhone"));
+        s.setUserAgentString(s.getUserAgentString() + " IsraelTVPlus/4 " + (tv ? "AndroidTV" : "AndroidPhone"));
 
         web.setWebViewClient(new WebViewClient() {
             @Override

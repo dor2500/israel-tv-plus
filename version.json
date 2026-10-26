@@ -1,46 +1,46 @@
 {
-  "version": "4.4.2",
-  "code": 202610260908,
-  "app": 542,
+  "version": "4.4.3",
+  "code": 202610260921,
+  "app": 543,
   "shell": 3,
   "date": "2026-10-26",
   "notes": [
-    "שחזור מלא ומדויק של ממשק גרסה 3.3 (UI & Experience Restore):",
-    "חזרה מלאה לממשק המקורי האהוב, המהיר והנקי של גרסה 3.3.0 (עיצוב Web + מעטפת אפליקציה מקורית).",
-    "שילוב מלא של כל 338 הערוצים החדשים (ערוצי ישראל, ערוצי הילדים, FreeTV, עידן פלוס, רשת Sky ורדיו).",
-    "הסרת כל שינויי הממשק המאוחרים וחזרה לתצוגה המדויקת של 3.3."
+    "גרסה 4.4.0 מלאה עם כל 338 הערוצים וערוצי רשת Sky:",
+    "ממשק גרסה 4.4.0 המלא (מערכת משוב Google Forms, מנוע בריאות וריפוי ערוצים).",
+    "שילוב כל ערוצי רשת Sky (בריטניה, ערבית, אוסטרליה, מרוצים ופולק).",
+    "חבילות מעודכנות ומוכנות לכל הפלטפורמות."
   ],
   "native": {
     "android": {
-      "version": "4.4.2",
-      "app": 542,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.4.2/IsraelTVPlus-android.apk"
+      "version": "4.4.3",
+      "app": 543,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.4.3/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "4.4.2",
-      "app": 542,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.4.2/IsraelTVPlus-windows-setup.exe"
+      "version": "4.4.3",
+      "app": 543,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.4.3/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "4.4.2",
-      "app": 542,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.4.2/com.israeltv.plus_all.ipk",
+      "version": "4.4.3",
+      "app": 543,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.4.3/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "4.4.2",
-      "app": 542,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.4.2/IsraelTVPlus-tizen-project.zip"
+      "version": "4.4.3",
+      "app": 543,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.4.3/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "4.4.2",
-      "app": 542,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.4.2/IsraelTVPlus-macos-arm64.zip"
+      "version": "4.4.3",
+      "app": 543,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.4.3/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "4.4.2",
-      "app": 542,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.4.2/IsraelTVPlus-linux-x64.zip"
+      "version": "4.4.3",
+      "app": 543,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.4.3/IsraelTVPlus-linux-x64.zip"
     }
   }
 }
