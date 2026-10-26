@@ -1,57 +1,62 @@
 {
-  "version": "4.3.6",
-  "code": 202610252124,
-  "app": 506,
+  "version": "4.3.7",
+  "code": 202610260549,
+  "app": 507,
   "shell": 3,
-  "date": "2026-10-25",
+  "date": "2026-10-26",
   "notes": [
-    "הרחבה וריכוז מקיף של כל ערוצי הילדים והנוער בישראל (100% בעברית, מאומתים ופעילים):",
-    "סריקה מעמיקה של הרשת ואימות כל הזנה שהיא משדרת מקטעי וידאו אמיתיים ורציפים.",
-    "כל ערוצי הילדים המובילים בישראל: כאן חינוכית 23 HD, ערוץ הופ! ילדים HD, ערוץ לולי לפעוטות (בעברית), ניק ג'וניור ישראל (Nick Jr.), ערוץ זום ZOOM ילדים ונוער HD, ערוץ ג'וניור Junior HD, ערוץ בייבי Baby TV (בעברית), yes קולנוע ילדים HD & FHD (24/7 סרטי אנימציה מדובבים), ערוץ וויז WIZ לילדים ונוער, ערוץ טין ניק TeenNick (בעברית), ערוץ דיסני ישראל HD, ערוץ 16 ילדים ונוער, ו-HOT באזז ערוץ הצעירים.",
-    "שירי ילדים ודיסני ברדיו: רדיוס 100% ילדים, רדיוס 100% ערוץ הכוכבים ורדיוס 100% שירי דיסני בעברית.",
-    "לוגואים מקוריים, רשמיים ווקטוריים לכל ערוצי הילדים:",
-    "הטמעת לוגואים רשמיים (SVG/PNG) מתוך האפליקציה (ללא תלות בשרתים חיצוניים או חסימות רשת).",
-    "עיצוב ייעודי ורשמי לערוץ וויז yes WIZ, HOT באזז ו-yes קולנוע ילדים.",
-    "מספור ערוצים רציף לחלוטין 1..320 ללא דילוגים:",
-    "כל ערוצי השידור המרכזיים מקובעים למספרם המוכר (ערוץ 9, 11, 12, 13, 14, 15, 23, 24, 99).",
-    "כל שאר הערוצים מסודרים ברצף רציף ומושלם ללא חורים (320 ערוצים ישראליים 100%).",
-    "הוספת ערוצי שידור ישראליים מקוריים ומאומתים:",
-    "סברי מרנן 24/7 (קשת / FreeTV), ערוץ הקומדיה של קשת, ערוץ הדרמה של קשת, ערוץ המוזיקה של קשת.",
-    "ערוץ כלכלה 10 HD, ynet Live ידיעות אחרונות HD, שידורים נגישים לכבדי שמיעה (כאן 11, רשת 13, ערוץ הכנסת), ספורט 5 שידור חי רשמי, ורדיוס 100FM אולפן וידאו.",
-    "עדכון מיידי ואוטומטי מתוך האפליקציה בטלוויזיה:",
-    "הקוד והקטלוג מתעדכנים מיידית במכשירים ללא צורך בהתקנה מחדש של קובץ IPK."
+    "ארכיטקטורת Nuvio Visual Shell מלאה ונקייה (מבוסס Nuvio CMP Rewrite):",
+    "סרגל ניווט תחתון זכוכיתי צר ויוקרתי בגובה 56dp strictly, מרווח תחתון 16dp עם navigationBarsPadding.",
+    "מבנה סרגל ניווט 3+1: קפסולה ראשית (בית, ערוצים, שלי) ולחצן חיפוש עגול 56dp משמאל עם מרווח 12dp.",
+    "משטח זכוכית Nuvio עמוק: מילוי #16161E בשקיפות 60%, טשטוש חומרתי 35dp ומסגרת דקיקה 0.75dp בשקיפות 14%.",
+    "מחוון טאב פעיל צר ומדויק בגובה 40dp עם RoundedCornerShape(50) ואייקוני Icons.Rounded.*.",
+    "אזור Hero עליון במסך מלא (Full-Bleed 460dp) עם מדרגות גרדיאנט Nuvio מדויקות:",
+    "רקע וידאו/מדיה עליון בגובה 460dp לרוחב מלא של המסך.",
+    "שכבת גרדיאנט אנכית רב-שלבית תקנית: שקוף ב-0.0f, #330A0B10 ב-0.35f, #B30A0B10 ב-0.65f, #E60A0B10 ב-0.85f, ו-#FF0A0B10 מלא ב-1.0f.",
+    "ביטול תיבות כתומות ועומס גרפי ב-Hero: לוגו/שם הערוץ, תגיות המידע וכפתור \"צפייה\" יושבים בצורה נקייה ומרווחת ב-35% התחתונים של ה-Hero ישירות על אזור הגרדיאנט הכהה.",
+    "שורת מתג \"רק תוכן ישראלי\" קומפקטית ומיושרת לימין ללא מרווחים ריקים:",
+    "צמוד לימין: דגל ישראל וקטורי בסגנון Apple iOS (מידה 18dp, ללא אימוג'י טקסט של אנדרואיד), כיתוב \"רק תוכן ישראלי\" (MaterialTheme.typography.labelLarge) ומתג Material 3 Switch מוקטן ל-0.85f במרווח 8dp.",
+    "שורת צ'יפים מהירה (Macro Filter Chips) בגובה 34dp:",
+    "4 קטגוריות עיקריות בלבד (הכל, סרטים וסדרות, ילדים ונוער, ספורט) וצ'יפ \"עוד...\" הפותח ModalBottomSheet לכל שאר הקטגוריות.",
+    "סגנון צ'יפ תקני: גובה 34dp, פינות RoundedCornerShape(50), מסגרת 0.75dp בצבע לבן 15%, וצ'יפ פעיל עם רקע לבן וטקסט שחור #0A0B10.",
+    "גאומטריית כרטיסי שידור Nuvio קפדנית (Strict Card Geometry):",
+    "שורה 1 – המשך צפייה (רוחב 210dp ביחס 16:9 עם פינות 10dp ומסגרת 0.5dp בשקיפות 10%).",
+    "כל שאר השורות (רוחב 125dp ביחס 2:3 עם פינות 10dp ומסגרת 0.5dp בשקיפות 10%).",
+    "הסרת ספאם תגיות: לכל היותר תגית HD שקופה וקטנה בפינה השמאלית-עליונה, ושם הערוץ והקטגוריה מוצגים בטקסט נקי וקריא מתחת לכרטיס.",
+    "שימור מלא של 100% ממנוע הפיזיקה BitChord, קפיצי התנועה וההפטיקה:",
+    "FlingBehavior, Overscroll גמיש, קפיצי לחיצה (dampingRatio = 0.4f), רטט LRA מדויק (SegmentTick / LongPress / TextHandleMove), ושכבת Zomato של 750ms בעת הפעלת סינון ישראלי."
   ],
   "native": {
     "android": {
-      "version": "4.3.6",
-      "app": 506,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.6/IsraelTVPlus-android.apk"
+      "version": "4.3.7",
+      "app": 507,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.7/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "4.3.6",
-      "app": 506,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.6/IsraelTVPlus-windows-setup.exe"
+      "version": "4.3.7",
+      "app": 507,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.7/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "4.3.6",
-      "app": 506,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.6/com.israeltv.plus_all.ipk",
+      "version": "4.3.7",
+      "app": 507,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.7/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "4.3.6",
-      "app": 506,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.6/IsraelTVPlus-tizen-project.zip"
+      "version": "4.3.7",
+      "app": 507,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.7/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "4.3.6",
-      "app": 506,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.6/IsraelTVPlus-macos-arm64.zip"
+      "version": "4.3.7",
+      "app": 507,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.7/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "4.3.6",
-      "app": 506,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.6/IsraelTVPlus-linux-x64.zip"
+      "version": "4.3.7",
+      "app": 507,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.7/IsraelTVPlus-linux-x64.zip"
     }
   }
 }

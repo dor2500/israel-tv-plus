@@ -1,34 +1,34 @@
 {
   "kan11_alt_live": {
     "verified": false,
-    "last_tested": "2026-10-26T07:24:12.782982"
+    "last_tested": "2026-10-26T07:51:20.811341"
   },
   "kann_news_stream": {
     "verified": false,
-    "last_tested": "2026-10-26T07:24:14.838524"
+    "last_tested": "2026-10-26T07:51:22.867388"
   },
   "knesset_tv_direct": {
     "verified": false,
-    "last_tested": "2026-10-26T07:24:15.650760"
+    "last_tested": "2026-10-26T07:51:23.869064"
   },
   "hop_child_feed": {
     "verified": false,
-    "last_tested": "2026-10-26T07:24:15.659272"
+    "last_tested": "2026-10-26T07:51:23.877573"
   },
   "zoom_kids_mirror": {
     "verified": false,
-    "last_tested": "2026-10-26T07:24:15.667272"
+    "last_tested": "2026-10-26T07:51:23.885077"
   },
   "ch24_mako_mirror": {
     "verified": false,
-    "last_tested": "2026-10-26T07:24:15.879094"
+    "last_tested": "2026-10-26T07:51:24.091591"
   },
   "or_meir_tv": {
     "verified": false,
-    "last_tested": "2026-10-26T07:24:15.889094"
+    "last_tested": "2026-10-26T07:51:24.101596"
   },
   "hidabroot_kids": {
     "verified": false,
-    "last_tested": "2026-10-26T07:24:15.899606"
+    "last_tested": "2026-10-26T07:51:24.109097"
   }
 }

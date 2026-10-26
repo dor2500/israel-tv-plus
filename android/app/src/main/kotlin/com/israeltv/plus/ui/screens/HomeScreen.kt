@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -130,22 +131,21 @@ fun HomeScreen(
     onSwitchPositioned: (Offset) -> Unit = {},
     onSeeAll: (String) -> Unit,
 ) {
-    val padding = feedPadding()
     val scheme = MaterialTheme.colorScheme
     var selectedCategory by remember { mutableStateOf<String?>("all") }
     var moreSheetOpen by remember { mutableStateOf(false) }
 
     BoxWithConstraints(Modifier.fillMaxSize()) {
-        val heroHeight = (maxHeight * 0.52f).coerceIn(360.dp, 430.dp)
+        val heroHeight = 460.dp
 
         LazyColumn(
             Modifier.fillMaxSize(),
             state = listState,
-            contentPadding = padding,
+            contentPadding = PaddingValues(bottom = 110.dp),
             flingBehavior = rememberBitChordFlingBehavior(),
         ) {
             if (data == null) {
-                item { Box(Modifier.bleedToTop(padding).padding(bottom = 28.dp).fillMaxWidth().height(heroHeight).glassShimmer(HeroShape)) }
+                item { Box(Modifier.fillMaxWidth().height(heroHeight).glassShimmer(HeroShape)) }
                 item { ShelfSkeleton(isWide = true) }
                 items(3) { ShelfSkeleton(isWide = false) }
                 return@LazyColumn
@@ -154,7 +154,7 @@ fun HomeScreen(
             val allChannels = if (israeliOnly) data.channels.filter { it.isIsraeli() } else data.channels
             val featured = if (israeliOnly) data.featured.filter { it.isIsraeli() }.ifEmpty { allChannels.take(5) } else data.featured
 
-            // 1. HERO PAGER (Restricted height allowing content peeking)
+            // 1. HERO PAGER (Strict 460.dp full-bleed backdrop)
             item(key = "hero") {
                 HeroPager(
                     featured = featured,
@@ -163,55 +163,56 @@ fun HomeScreen(
                     heroHeight = heroHeight,
                     onPlay = { onPlay(it, featured) },
                     onInfo = onInfo,
-                    modifier = Modifier.bleedToTop(padding).cascadeIn(0),
+                    modifier = Modifier.cascadeIn(0),
                 )
             }
 
-            // 2. INLINE "רק ישראלי" ANIMATED SWITCH (Relocated out of top bar, filters content)
+            // 2. COMPACT GROUPED "רק תוכן ישראלי" TOGGLE ROW (Eliminate empty gap, aligned to right)
             item(key = "israeli_filter_toggle") {
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(start = 20.dp, end = 20.dp, top = 2.dp, bottom = 10.dp),
+                        .padding(horizontal = 20.dp, vertical = 6.dp),
                     verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.SpaceBetween,
+                    horizontalArrangement = Arrangement.Start,
                 ) {
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.spacedBy(8.dp),
                     ) {
+                        // Custom iOS-style Flag Image/Icon (size = 18.dp, NO Android text emoji)
                         AppleIsraelFlag(Modifier.size(18.dp))
+                        // Text: "רק תוכן ישראלי" (style = MaterialTheme.typography.labelLarge)
                         Text(
                             text = "רק תוכן ישראלי",
                             style = MaterialTheme.typography.labelLarge,
                             color = if (israeliOnly) scheme.primary else scheme.onSurface,
                             fontWeight = FontWeight.Bold,
                         )
+                        // Material 3 Switch (scaled to 0.85f)
+                        Switch(
+                            checked = israeliOnly,
+                            onCheckedChange = { onToggleIsraeli() },
+                            modifier = Modifier
+                                .graphicsLayer {
+                                    scaleX = 0.85f
+                                    scaleY = 0.85f
+                                }
+                                .onGloballyPositioned { coordinates ->
+                                    val pos = coordinates.positionInRoot()
+                                    val size = coordinates.size
+                                    onSwitchPositioned(Offset(pos.x + size.width / 2f, pos.y + size.height / 2f))
+                                },
+                            colors = SwitchDefaults.colors(
+                                checkedThumbColor = Color.White,
+                                checkedTrackColor = scheme.primary,
+                                uncheckedThumbColor = Color.LightGray,
+                                uncheckedTrackColor = Color(0xFF1E202A),
+                                checkedBorderColor = Color.Transparent,
+                                uncheckedBorderColor = Color.White.copy(alpha = 0.25f),
+                            ),
+                        )
                     }
-
-                    // Real animated Switch component (scaled to 0.85f) with spatial coordinates measuring
-                    Switch(
-                        checked = israeliOnly,
-                        onCheckedChange = { onToggleIsraeli() },
-                        modifier = Modifier
-                            .graphicsLayer {
-                                scaleX = 0.85f
-                                scaleY = 0.85f
-                            }
-                            .onGloballyPositioned { coordinates ->
-                                val pos = coordinates.positionInRoot()
-                                val size = coordinates.size
-                                onSwitchPositioned(Offset(pos.x + size.width / 2f, pos.y + size.height / 2f))
-                            },
-                        colors = SwitchDefaults.colors(
-                            checkedThumbColor = Color.White,
-                            checkedTrackColor = scheme.primary,
-                            uncheckedThumbColor = Color.LightGray,
-                            uncheckedTrackColor = Color(0xFF1E202A),
-                            checkedBorderColor = Color.Transparent,
-                            uncheckedBorderColor = Color.White.copy(alpha = 0.25f),
-                        ),
-                    )
                 }
             }
 
@@ -585,9 +586,9 @@ private fun HeroPage(
             .height(heroHeight)
             .sharedContainer(key, HeroShape)
             .clipToBounds()
-            .background(scheme.background)
+            .background(Color(0xFF0A0B10))
     ) {
-        // Edge-to-edge live muted HLS stream background
+        // Full-Bleed Backdrop: edge-to-edge live muted HLS stream or artwork
         if (liveReady && livePlayer != null) {
             AndroidView(
                 factory = { ctx ->
@@ -611,82 +612,104 @@ private fun HeroPage(
             )
         }
 
-        // Vignette fading into colorScheme.background
+        // Mandatory Nuvio Gradient Ramp: Overlay a Box(Modifier.matchParentSize()) with this exact Brush.verticalGradient:
+        // 0.0f to Color.Transparent, 0.35f to Color(0x330A0B10), 0.65f to Color(0xB30A0B10), 0.85f to Color(0xE60A0B10), 1.0f to Color(0xFF0A0B10)
         Box(
             Modifier
-                .fillMaxSize()
+                .matchParentSize()
                 .background(
                     Brush.verticalGradient(
-                        0f to scheme.background.copy(alpha = 0.45f),
-                        0.35f to Color.Transparent,
-                        0.75f to scheme.background.copy(alpha = 0.75f),
-                        1f to scheme.background,
+                        0.0f to Color.Transparent,
+                        0.35f to Color(0x330A0B10),
+                        0.65f to Color(0xB30A0B10),
+                        0.85f to Color(0xE60A0B10),
+                        1.0f to Color(0xFF0A0B10),
                     )
                 )
         )
 
-        Column(
-            Modifier
-                .align(Alignment.BottomCenter)
+        // Clean layout sitting inside bottom 35% of the hero container, directly on top of the dark gradient zone
+        Box(
+            modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 20.dp)
-                .padding(bottom = 16.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,
+                .fillMaxHeight(0.35f)
+                .align(Alignment.BottomCenter)
+                .padding(horizontal = 20.dp, vertical = 6.dp),
+            contentAlignment = Alignment.BottomCenter,
         ) {
-            Box(contentAlignment = Alignment.Center) {
-                // soft ambient back-glow
-                Box(
-                    Modifier
-                        .size(width = 240.dp, height = 120.dp)
-                        .background(Brush.radialGradient(listOf(scheme.primaryContainer.copy(alpha = if (dark) 0.35f else 0.55f), Color.Transparent)))
-                )
-                if (logo.isNotEmpty()) {
-                    AsyncImage(logo, ch.name, Modifier.fillMaxWidth(0.52f).height(85.dp), contentScale = ContentScale.Fit)
-                } else {
-                    Text(ch.name, style = MaterialTheme.typography.headlineSmall, color = scheme.onSurface, maxLines = 1)
-                }
-            }
-            Spacer(Modifier.height(8.dp))
-            Text(
-                ch.name,
-                style = MaterialTheme.typography.titleMedium,
-                fontSize = 17.sp,
-                fontWeight = FontWeight.Bold,
-                color = scheme.onSurface,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis,
-            )
-            Spacer(Modifier.height(6.dp))
-
-            // TertiaryContainer badge pills with stretched variable numbers
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.spacedBy(6.dp),
+                modifier = Modifier.fillMaxWidth(),
             ) {
-                // LIVE badge pill
-                Box(
-                    Modifier
-                        .clip(RoundedCornerShape(50))
-                        .background(scheme.tertiaryContainer)
-                        .padding(horizontal = 8.dp, vertical = 2.dp),
-                    contentAlignment = Alignment.Center,
-                ) {
-                    Row(verticalAlignment = Alignment.CenterVertically) {
-                        Box(Modifier.size(5.dp).clip(CircleShape).background(scheme.error))
-                        Spacer(Modifier.width(4.dp))
-                        Text(
-                            "LIVE",
-                            color = scheme.onTertiaryContainer,
-                            fontSize = 10.sp,
-                            fontWeight = FontWeight.ExtraBold,
-                            style = com.israeltv.plus.ui.theme.StretchedNumberStyle,
-                            modifier = Modifier.graphicsLayer { scaleY = 1.15f },
-                        )
-                    }
+                if (logo.isNotEmpty()) {
+                    AsyncImage(
+                        model = logo,
+                        contentDescription = ch.name,
+                        modifier = Modifier
+                            .fillMaxWidth(0.52f)
+                            .height(54.dp),
+                        contentScale = ContentScale.Fit,
+                    )
+                } else {
+                    Text(
+                        text = ch.name,
+                        style = MaterialTheme.typography.titleLarge,
+                        fontSize = 20.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = scheme.onSurface,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis,
+                    )
                 }
 
-                // FHD / Format badge pill
-                if (ch.badge.isNotEmpty()) {
+                // Metadata pills row
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(6.dp),
+                ) {
+                    // LIVE badge pill
+                    Box(
+                        Modifier
+                            .clip(RoundedCornerShape(50))
+                            .background(scheme.tertiaryContainer)
+                            .padding(horizontal = 8.dp, vertical = 2.dp),
+                        contentAlignment = Alignment.Center,
+                    ) {
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Box(Modifier.size(5.dp).clip(CircleShape).background(scheme.error))
+                            Spacer(Modifier.width(4.dp))
+                            Text(
+                                "LIVE",
+                                color = scheme.onTertiaryContainer,
+                                fontSize = 10.sp,
+                                fontWeight = FontWeight.ExtraBold,
+                                style = com.israeltv.plus.ui.theme.StretchedNumberStyle,
+                                modifier = Modifier.graphicsLayer { scaleY = 1.15f },
+                            )
+                        }
+                    }
+
+                    // FHD / Format badge pill
+                    if (ch.badge.isNotEmpty()) {
+                        Box(
+                            Modifier
+                                .clip(RoundedCornerShape(50))
+                                .background(scheme.tertiaryContainer)
+                                .padding(horizontal = 8.dp, vertical = 2.dp),
+                        ) {
+                            Text(
+                                ch.badge,
+                                color = scheme.onTertiaryContainer,
+                                fontSize = 10.sp,
+                                fontWeight = FontWeight.Bold,
+                                style = com.israeltv.plus.ui.theme.StretchedNumberStyle,
+                                modifier = Modifier.graphicsLayer { scaleY = 1.15f },
+                            )
+                        }
+                    }
+
+                    // Channel number badge pill
                     Box(
                         Modifier
                             .clip(RoundedCornerShape(50))
@@ -694,75 +717,73 @@ private fun HeroPage(
                             .padding(horizontal = 8.dp, vertical = 2.dp),
                     ) {
                         Text(
-                            ch.badge,
+                            "${ch.number}",
                             color = scheme.onTertiaryContainer,
                             fontSize = 10.sp,
-                            fontWeight = FontWeight.Bold,
+                            fontWeight = FontWeight(800),
                             style = com.israeltv.plus.ui.theme.StretchedNumberStyle,
                             modifier = Modifier.graphicsLayer { scaleY = 1.15f },
                         )
                     }
+
+                    val category = shortCategory(ch.category)
+                    if (category.isNotEmpty()) {
+                        Text(
+                            category,
+                            color = scheme.onSurfaceVariant,
+                            fontSize = 11.sp,
+                            fontWeight = FontWeight.SemiBold,
+                            modifier = Modifier.padding(start = 2.dp),
+                        )
+                    }
                 }
 
-                // Channel number badge pill
-                Box(
-                    Modifier
-                        .clip(RoundedCornerShape(50))
-                        .background(scheme.tertiaryContainer)
-                        .padding(horizontal = 8.dp, vertical = 2.dp),
+                // Action row: Favorite, Play CTA, Info
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(10.dp),
+                    modifier = Modifier.padding(top = 2.dp),
                 ) {
-                    Text(
-                        "${ch.number}",
-                        color = scheme.onTertiaryContainer,
-                        fontSize = 10.sp,
-                        fontWeight = FontWeight(800),
-                        style = com.israeltv.plus.ui.theme.StretchedNumberStyle,
-                        modifier = Modifier.graphicsLayer { scaleY = 1.15f },
+                    GlassIconButton(
+                        if (favorite) Icons.Rounded.Star else Icons.Rounded.StarBorder,
+                        "מועדף",
+                        onFavorite,
+                        size = 42.dp,
+                        tint = scheme.onSurface.copy(alpha = 0.14f),
+                        iconTint = scheme.onSurface,
+                    )
+                    // 'צפייה' CTA in colorScheme.primary with tactile bounce
+                    Button(
+                        onClick = {
+                            haptic.performHapticFeedback(HapticFeedbackType.LongPress)
+                            origin.key = key
+                            onPlay(ch)
+                        },
+                        shape = RoundedCornerShape(50),
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = scheme.primary,
+                            contentColor = scheme.onPrimary,
+                        ),
+                        contentPadding = PaddingValues(horizontal = 26.dp),
+                        modifier = Modifier
+                            .height(42.dp)
+                            .tactileBounce(),
+                    ) {
+                        Icon(Icons.Rounded.PlayArrow, null, Modifier.size(22.dp), tint = scheme.onPrimary)
+                        Spacer(Modifier.width(5.dp))
+                        Text("צפייה", fontSize = 15.sp, fontWeight = FontWeight.Black, color = scheme.onPrimary)
+                    }
+                    GlassIconButton(
+                        Icons.Rounded.Info,
+                        "מידע",
+                        { onInfo(ch) },
+                        size = 42.dp,
+                        tint = scheme.onSurface.copy(alpha = 0.14f),
+                        iconTint = scheme.onSurface,
                     )
                 }
-
-                val category = shortCategory(ch.category)
-                if (category.isNotEmpty()) {
-                    Text(
-                        category,
-                        color = scheme.onSurfaceVariant,
-                        fontSize = 12.sp,
-                        fontWeight = FontWeight.SemiBold,
-                        modifier = Modifier.padding(start = 4.dp),
-                    )
-                }
-            }
-
-            Spacer(Modifier.height(10.dp))
-            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-                GlassIconButton(
-                    if (favorite) Icons.Rounded.Star else Icons.Rounded.StarBorder, "מועדף", onFavorite, size = 44.dp,
-                    tint = scheme.onSurface.copy(alpha = 0.14f), iconTint = scheme.onSurface,
-                )
-                // 'צפייה' CTA in colorScheme.primary with tactile bounce
-                Button(
-                    onClick = {
-                        haptic.performHapticFeedback(HapticFeedbackType.LongPress)
-                        origin.key = key
-                        onPlay(ch)
-                    },
-                    shape = RoundedCornerShape(50),
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = scheme.primary,
-                        contentColor = scheme.onPrimary,
-                    ),
-                    contentPadding = PaddingValues(horizontal = 28.dp),
-                    modifier = Modifier.height(44.dp).tactileBounce(),
-                ) {
-                    Icon(Icons.Rounded.PlayArrow, null, Modifier.size(24.dp), tint = scheme.onPrimary)
-                    Spacer(Modifier.width(5.dp))
-                    Text("צפייה", fontSize = 15.sp, fontWeight = FontWeight.Black, color = scheme.onPrimary)
-                }
-                GlassIconButton(
-                    Icons.Rounded.Info, "מידע", { onInfo(ch) }, size = 44.dp,
-                    tint = scheme.onSurface.copy(alpha = 0.14f), iconTint = scheme.onSurface,
-                )
             }
         }
     }
 }
+

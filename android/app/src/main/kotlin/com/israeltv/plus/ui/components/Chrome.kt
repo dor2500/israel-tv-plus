@@ -10,6 +10,7 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.shrinkVertically
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
@@ -219,14 +220,14 @@ fun AppHeader(
 }
 
 /**
- * STRICT NUVIO NAVBAR (Bottom Navigation):
- * Built to the exact custom architectural specification:
- * - Row with horizontalArrangement = Arrangement.spacedBy(16.dp)
- * - modifier.align(Alignment.BottomCenter).navigationBarsPadding().padding(bottom = 24.dp, start = 24.dp, end = 24.dp)
- * - 1. Standalone Search Circle (Left): size(64.dp), clip(CircleShape), Color(0xFF16161E).copy(alpha = 0.65f) + blur/haze.
- *      Icon(Search) ONLY. NO TEXT.
- * - 2. Main 3-Tab Capsule (Right): weight(1f), height(64.dp), clip(RoundedCornerShape(50)),
- *      Color(0xFF16161E).copy(alpha = 0.65f) + blur/haze, containing 3 Tabs: Home, Channels, Profile.
+ * NUVIO DEEP GLASS NAVIGATION BAR (SLIM 3+1):
+ * - Strict Height Limit: Lock the bottom navigation row to a sleek 56.dp height.
+ * - Bottom Clearance: Modifier.navigationBarsPadding().padding(bottom = 16.dp).
+ * - Standalone Search Circle (Left): size = 56.dp, CircleShape.
+ * - Gap: Arrangement.spacedBy(12.dp).
+ * - Main 3-Tab Capsule (Right): weight(1f), height = 56.dp, RoundedCornerShape(50), 3 items (בית, ערוצים, שלי).
+ * - Glass Surface: Color(0xFF16161E).copy(alpha = 0.60f), blur = 35.dp, border = 0.75.dp Color.White.copy(alpha = 0.14f).
+ * - Active Tab State: Compact inner pill (height = 40.dp, RoundedCornerShape(50)) with primaryContainer and Icons.Rounded.*.
  */
 @Composable
 fun FloatingTabBar(
@@ -238,28 +239,32 @@ fun FloatingTabBar(
     modifier: Modifier = Modifier,
 ) {
     val scheme = MaterialTheme.colorScheme
-    val nuvioBlurColor = Color(0xFF16161E).copy(alpha = 0.65f)
+    val nuvioBlurColor = Color(0xFF16161E).copy(alpha = 0.60f)
     val pillShape = RoundedCornerShape(50)
+    val haptic = LocalHapticFeedback.current
 
     // Force LTR layout for the navbar Row so Search is strictly on the LEFT and 3-Tab Capsule is on the RIGHT
     CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {
         Row(
-            horizontalArrangement = Arrangement.spacedBy(16.dp),
+            horizontalArrangement = Arrangement.spacedBy(12.dp),
             verticalAlignment = Alignment.CenterVertically,
             modifier = modifier
                 .zIndex(10f)
                 .navigationBarsPadding()
-                .padding(bottom = 24.dp, start = 24.dp, end = 24.dp)
+                .padding(bottom = 16.dp, start = 16.dp, end = 16.dp)
                 .fillMaxWidth(),
         ) {
-            // 1. Standalone Search Circle (Left)
+            // 1. Standalone Search Circle (Left): size = 56.dp, CircleShape
             Box(
                 modifier = Modifier
-                    .size(64.dp)
-                    .tactileBounce(onClick = onSearch)
+                    .size(56.dp)
+                    .tactileBounce {
+                        haptic.performHapticFeedback(HapticFeedbackType.SegmentTick)
+                        onSearch()
+                    }
                     .clip(CircleShape)
-                    .frostedGlass(CircleShape, nuvioBlurColor, blur = 28.dp, border = false)
-                    .specularBorder(CircleShape, alpha = 0.18f)
+                    .frostedGlass(CircleShape, nuvioBlurColor, blur = 35.dp, border = false)
+                    .border(0.75.dp, Color.White.copy(alpha = 0.14f), CircleShape)
                     .background(
                         if (searchOpen) scheme.primaryContainer
                         else Color.Transparent
@@ -270,22 +275,22 @@ fun FloatingTabBar(
                 Icon(
                     imageVector = if (searchOpen) Icons.Rounded.Search else Icons.Outlined.Search,
                     contentDescription = "חיפוש",
-                    modifier = Modifier.size(28.dp),
+                    modifier = Modifier.size(24.dp),
                     tint = if (searchOpen) scheme.onPrimaryContainer else scheme.onSurface,
                 )
             }
 
-            // 2. Main 3-Tab Capsule (Right)
+            // 2. Main 3-Tab Capsule (Right): weight(1f), height = 56.dp, RoundedCornerShape(50)
             Row(
                 modifier = Modifier
                     .weight(1f)
-                    .height(64.dp)
+                    .height(56.dp)
                     .clip(pillShape)
-                    .frostedGlass(pillShape, nuvioBlurColor, blur = 28.dp, border = false)
-                    .specularBorder(pillShape, alpha = 0.18f),
+                    .frostedGlass(pillShape, nuvioBlurColor, blur = 35.dp, border = false)
+                    .border(0.75.dp, Color.White.copy(alpha = 0.14f), pillShape),
                 verticalAlignment = Alignment.CenterVertically,
             ) {
-                // 3 Tabs: Home, Channels, Profile (Mine) in natural RTL Hebrew order
+                // 3 Tabs: Home, Channels, Mine in natural RTL Hebrew order
                 CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Rtl) {
                     BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
                         val count = MainNavTabs.size
@@ -300,18 +305,25 @@ fun FloatingTabBar(
                             label = "nuvio_nav_indicator",
                         )
 
-                        // Smooth sliding active pill indicator
+                        // Smooth sliding active pill indicator: height = 40.dp, RoundedCornerShape(50)
                         if (!searchOpen && selected in MainNavTabs) {
                             Box(
                                 Modifier
                                     .offset(x = indicatorX)
                                     .width(itemWidth)
-                                    .fillMaxHeight()
-                                    .padding(horizontal = 4.dp, vertical = 6.dp)
-                                    .clip(pillShape)
-                                    .background(scheme.primaryContainer)
-                                    .specularBorder(pillShape, alpha = 0.28f)
-                            )
+                                    .fillMaxHeight(),
+                                contentAlignment = Alignment.Center,
+                            ) {
+                                Box(
+                                    Modifier
+                                        .fillMaxWidth()
+                                        .padding(horizontal = 6.dp)
+                                        .height(40.dp)
+                                        .clip(pillShape)
+                                        .background(scheme.primaryContainer)
+                                        .border(0.75.dp, Color.White.copy(alpha = 0.14f), pillShape)
+                                )
+                            }
                         }
 
                         // 3 Tabs
@@ -324,6 +336,7 @@ fun FloatingTabBar(
                                     showLabel = !collapsed,
                                     modifier = Modifier.weight(1f),
                                 ) {
+                                    haptic.performHapticFeedback(HapticFeedbackType.SegmentTick)
                                     onSelect(tab)
                                 }
                             }
@@ -357,7 +370,7 @@ private fun BitChordBarItem(
         Icon(
             imageVector = icon,
             contentDescription = tab.label,
-            modifier = Modifier.size(24.dp),
+            modifier = Modifier.size(22.dp),
             tint = contentColor,
         )
         AnimatedVisibility(
@@ -370,7 +383,7 @@ private fun BitChordBarItem(
                 fontSize = 11.sp,
                 fontWeight = if (active) FontWeight.ExtraBold else FontWeight.Medium,
                 color = contentColor,
-                modifier = Modifier.padding(top = 2.dp),
+                modifier = Modifier.padding(top = 1.dp),
             )
         }
     }

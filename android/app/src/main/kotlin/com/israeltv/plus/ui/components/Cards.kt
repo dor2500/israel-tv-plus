@@ -48,6 +48,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
 import com.israeltv.plus.data.Channel
+import com.israeltv.plus.data.shortCategory
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.ui.platform.LocalLayoutDirection
+import androidx.compose.ui.unit.LayoutDirection
 
 import androidx.compose.ui.graphics.Brush
 
@@ -168,24 +172,26 @@ fun LandscapeCard(
                 contentScale = ContentScale.Fit,
             )
 
-            // At most ONE tiny translucent badge (HD) in the top-left corner
+            // At most ONE tiny translucent badge (HD) strictly in the top-left corner
             val badgeText = if (channel.isRadio) "רדיו" else if (channel.badge.isNotEmpty()) channel.badge else "HD"
-            Box(
-                Modifier
-                    .align(Alignment.TopStart)
-                    .padding(6.dp)
-                    .clip(RoundedCornerShape(4.dp))
-                    .background(Color.Black.copy(alpha = 0.45f))
-                    .border(0.5.dp, Color.White.copy(alpha = 0.15f), RoundedCornerShape(4.dp))
-                    .padding(horizontal = 5.dp, vertical = 2.dp)
-            ) {
-                Text(
-                    text = badgeText,
-                    color = Color.White.copy(alpha = 0.90f),
-                    fontSize = 10.sp,
-                    fontWeight = FontWeight.Bold,
-                    maxLines = 1,
-                )
+            CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {
+                Box(
+                    Modifier
+                        .align(Alignment.TopStart)
+                        .padding(6.dp)
+                        .clip(RoundedCornerShape(4.dp))
+                        .background(Color.Black.copy(alpha = 0.45f))
+                        .border(0.5.dp, Color.White.copy(alpha = 0.15f), RoundedCornerShape(4.dp))
+                        .padding(horizontal = 5.dp, vertical = 2.dp)
+                ) {
+                    Text(
+                        text = badgeText,
+                        color = Color.White.copy(alpha = 0.90f),
+                        fontSize = 10.sp,
+                        fontWeight = FontWeight.Bold,
+                        maxLines = 1,
+                    )
+                }
             }
         }
         Spacer(Modifier.height(6.dp))
@@ -199,16 +205,19 @@ fun LandscapeCard(
             maxLines = 1,
             overflow = TextOverflow.Ellipsis,
         )
-        Text(
-            text = subtitle,
-            modifier = Modifier.fillMaxWidth().padding(horizontal = 2.dp),
-            style = Rtl,
-            fontSize = 11.sp,
-            fontWeight = FontWeight.Normal,
-            color = scheme.onSurfaceVariant.copy(alpha = 0.75f),
-            maxLines = 1,
-            overflow = TextOverflow.Ellipsis,
-        )
+        val catLandscape = shortCategory(channel.category).ifEmpty { subtitle }
+        if (catLandscape.isNotEmpty()) {
+            Text(
+                text = catLandscape,
+                modifier = Modifier.fillMaxWidth().padding(horizontal = 2.dp),
+                style = Rtl,
+                fontSize = 11.sp,
+                fontWeight = FontWeight.Normal,
+                color = scheme.onSurfaceVariant.copy(alpha = 0.75f),
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
+            )
+        }
     }
 }
 
@@ -268,24 +277,26 @@ fun PortraitPosterCard(
                 contentScale = ContentScale.Fit,
             )
 
-            // At most ONE tiny translucent badge (HD) in the top-left corner
+            // At most ONE tiny translucent badge (HD) strictly in the top-left corner
             val badgeText = if (channel.isRadio) "רדיו" else if (channel.badge.isNotEmpty()) channel.badge else "HD"
-            Box(
-                Modifier
-                    .align(Alignment.TopStart)
-                    .padding(6.dp)
-                    .clip(RoundedCornerShape(4.dp))
-                    .background(Color.Black.copy(alpha = 0.45f))
-                    .border(0.5.dp, Color.White.copy(alpha = 0.15f), RoundedCornerShape(4.dp))
-                    .padding(horizontal = 5.dp, vertical = 2.dp)
-            ) {
-                Text(
-                    text = badgeText,
-                    color = Color.White.copy(alpha = 0.90f),
-                    fontSize = 10.sp,
-                    fontWeight = FontWeight.Bold,
-                    maxLines = 1,
-                )
+            CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {
+                Box(
+                    Modifier
+                        .align(Alignment.TopStart)
+                        .padding(6.dp)
+                        .clip(RoundedCornerShape(4.dp))
+                        .background(Color.Black.copy(alpha = 0.45f))
+                        .border(0.5.dp, Color.White.copy(alpha = 0.15f), RoundedCornerShape(4.dp))
+                        .padding(horizontal = 5.dp, vertical = 2.dp)
+                ) {
+                    Text(
+                        text = badgeText,
+                        color = Color.White.copy(alpha = 0.90f),
+                        fontSize = 10.sp,
+                        fontWeight = FontWeight.Bold,
+                        maxLines = 1,
+                    )
+                }
             }
         }
         Spacer(Modifier.height(6.dp))
@@ -299,16 +310,19 @@ fun PortraitPosterCard(
             maxLines = 1,
             overflow = TextOverflow.Ellipsis,
         )
-        Text(
-            text = subtitle,
-            modifier = Modifier.fillMaxWidth().padding(horizontal = 2.dp),
-            style = Rtl,
-            fontSize = 11.sp,
-            fontWeight = FontWeight.Normal,
-            color = scheme.onSurfaceVariant.copy(alpha = 0.75f),
-            maxLines = 1,
-            overflow = TextOverflow.Ellipsis,
-        )
+        val catPortrait = shortCategory(channel.category).ifEmpty { subtitle }
+        if (catPortrait.isNotEmpty()) {
+            Text(
+                text = catPortrait,
+                modifier = Modifier.fillMaxWidth().padding(horizontal = 2.dp),
+                style = Rtl,
+                fontSize = 11.sp,
+                fontWeight = FontWeight.Normal,
+                color = scheme.onSurfaceVariant.copy(alpha = 0.75f),
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
+            )
+        }
     }
 }
 
