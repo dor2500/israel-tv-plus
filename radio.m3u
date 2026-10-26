@@ -169,7 +169,7 @@ https://gb25.streamgates.net/radios-audio/100Top40/icecast.audio
 https://gb25.streamgates.net/radios-audio/100Tiktok/icecast.audio
 #EXTINF:-1 tvg-id="" tvg-name="רדיוס 100% יהודי" tvg-chno="294" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/radios_yehudi.png" group-title="רדיו ישראלי" radio="true",רדיוס 100% יהודי
 https://gb25.streamgates.net/radios-audio/100yehudi/playlist.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="רדיוס 100% ילדים" tvg-chno="295" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/radios_kids.png" group-title="רדיו ישראלי" radio="true",רדיוס 100% ילדים
+#EXTINF:-1 tvg-id="" tvg-name="רדיוס 100% ילדים" tvg-chno="295" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/radios_kids.png" group-title="ילדים ונוער (בעברית)" radio="true",רדיוס 100% ילדים
 https://gb25.streamgates.net/radios-audio/100Kids/icecast.audio
 #EXTINF:-1 tvg-id="" tvg-name="רדיוס 100% להיטים" tvg-chno="296" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/radios_hits.png" group-title="רדיו ישראלי" radio="true",רדיוס 100% להיטים
 https://gb25.streamgates.net/radios-audio/100Hits/playlist.m3u8
@@ -185,7 +185,7 @@ https://gb25.streamgates.net/radios-audio/100StandUp/icecast.audio
 https://gb25.streamgates.net/radios-audio/100Selfie/playlist.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="רדיוס 100% סרטים" tvg-chno="302" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/radios_movies.png" group-title="רדיו ישראלי" radio="true",רדיוס 100% סרטים
 https://gb25.streamgates.net/radios-audio/100Movies/icecast.audio
-#EXTINF:-1 tvg-id="" tvg-name="רדיוס 100% ערוץ הכוכבים" tvg-chno="303" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/radios_stars.png" group-title="רדיו ישראלי" radio="true",רדיוס 100% ערוץ הכוכבים
+#EXTINF:-1 tvg-id="" tvg-name="רדיוס 100% ערוץ הכוכבים" tvg-chno="303" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/radios_stars.png" group-title="ילדים ונוער (בעברית)" radio="true",רדיוס 100% ערוץ הכוכבים
 https://gb25.streamgates.net/radios-audio/100Stars/icecast.audio
 #EXTINF:-1 tvg-id="" tvg-name="רדיוס 100% צ'ילאאוט" tvg-chno="304" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/radios_chillout.png" group-title="רדיו ישראלי" radio="true",רדיוס 100% צ'ילאאוט
 https://gb25.streamgates.net/radios-audio/100Chillout/playlist.m3u8

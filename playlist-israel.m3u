@@ -401,7 +401,7 @@ https://gb25.streamgates.net/radios-audio/100Top40/icecast.audio
 https://gb25.streamgates.net/radios-audio/100Tiktok/icecast.audio
 #EXTINF:-1 tvg-id="" tvg-name="רדיוס 100% יהודי" tvg-chno="294" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/radios_yehudi.png" group-title="רדיו ישראלי" radio="true",רדיוס 100% יהודי
 https://gb25.streamgates.net/radios-audio/100yehudi/playlist.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="רדיוס 100% ילדים" tvg-chno="295" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/radios_kids.png" group-title="רדיו ישראלי" radio="true",רדיוס 100% ילדים
+#EXTINF:-1 tvg-id="" tvg-name="רדיוס 100% ילדים" tvg-chno="295" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/radios_kids.png" group-title="ילדים ונוער (בעברית)" radio="true",רדיוס 100% ילדים
 https://gb25.streamgates.net/radios-audio/100Kids/icecast.audio
 #EXTINF:-1 tvg-id="" tvg-name="רדיוס 100% להיטים" tvg-chno="296" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/radios_hits.png" group-title="רדיו ישראלי" radio="true",רדיוס 100% להיטים
 https://gb25.streamgates.net/radios-audio/100Hits/playlist.m3u8
@@ -417,7 +417,7 @@ https://gb25.streamgates.net/radios-audio/100StandUp/icecast.audio
 https://gb25.streamgates.net/radios-audio/100Selfie/playlist.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="רדיוס 100% סרטים" tvg-chno="302" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/radios_movies.png" group-title="רדיו ישראלי" radio="true",רדיוס 100% סרטים
 https://gb25.streamgates.net/radios-audio/100Movies/icecast.audio
-#EXTINF:-1 tvg-id="" tvg-name="רדיוס 100% ערוץ הכוכבים" tvg-chno="303" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/radios_stars.png" group-title="רדיו ישראלי" radio="true",רדיוס 100% ערוץ הכוכבים
+#EXTINF:-1 tvg-id="" tvg-name="רדיוס 100% ערוץ הכוכבים" tvg-chno="303" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/radios_stars.png" group-title="ילדים ונוער (בעברית)" radio="true",רדיוס 100% ערוץ הכוכבים
 https://gb25.streamgates.net/radios-audio/100Stars/icecast.audio
 #EXTINF:-1 tvg-id="" tvg-name="רדיוס 100% צ'ילאאוט" tvg-chno="304" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/radios_chillout.png" group-title="רדיו ישראלי" radio="true",רדיוס 100% צ'ילאאוט
 https://gb25.streamgates.net/radios-audio/100Chillout/playlist.m3u8
@@ -469,3 +469,29 @@ https://stream.jewishmusicstream.com:8000/
 https://www.kavkazportal.com/live
 #EXTINF:-1 tvg-id="" tvg-name="רדיו אורנו (Орэну)" tvg-chno="328" tvg-logo="https://orenu.co.il/wp-content/uploads/2020/07/logo-80x80.png" group-title="רדיו ישראלי",רדיו אורנו (Орэну)
 https://listen7.myradio24.com/orenu
+#EXTINF:-1 tvg-id="" tvg-name="כאן חינוכית 23 HD (שידור ישיר 2)" tvg-chno="329" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/kan23.svg" group-title="ילדים ונוער (בעברית)",כאן חינוכית 23 HD (שידור ישיר 2)
+http://stream.mcquack.net/378/index.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="Baby Shark TV (בייבי שארק לילדים)" tvg-chno="330" tvg-logo="https://i.imgur.com/qKLEGU7.png" group-title="ילדים ונוער (בעברית)",Baby Shark TV (בייבי שארק לילדים)
+https://newidco-babysharktv-1-us.roku.wurl.tv/playlist.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ בייבי BabyTV Global HD" tvg-chno="331" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/babytv.svg" group-title="ילדים ונוער (בעברית)",ערוץ בייבי BabyTV Global HD
+https://cdn.fast.jwp.services/v1/channel/1_jB6940Ei_TvhvIHDL/manifest.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ זו-מו לילדים (ZooMoo HD)" tvg-chno="332" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/zoom.png" group-title="ילדים ונוער (בעברית)",ערוץ זו-מו לילדים (ZooMoo HD)
+https://zoomoo-samsungau.amagi.tv/playlist.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ניק ג'וניור קלאב (Nick Jr. Club HD)" tvg-chno="333" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/nick_jr.png" group-title="ילדים ונוער (בעברית)",ניק ג'וניור קלאב (Nick Jr. Club HD)
+https://jmp2.uk/plu-67f3eb1c443f0671bc03ece8.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ניקלודיאון קלאסיקות (Nickelodeon Classics HD)" tvg-chno="334" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/nickelodeon.svg" group-title="ילדים ונוער (בעברית)",ניקלודיאון קלאסיקות (Nickelodeon Classics HD)
+https://jmp2.uk/plu-67f3eb800a1beb98767ca748.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="פלוטו טי-וי ג'וניור (Pluto TV Junior HD)" tvg-chno="335" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/junior.png" group-title="ילדים ונוער (בעברית)",פלוטו טי-וי ג'וניור (Pluto TV Junior HD)
+https://jmp2.uk/plu-5f12141b146d760007934ea7.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ אני אנימציה HD (Ani Kids)" tvg-chno="336" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/ani_kids.svg" group-title="ילדים ונוער (בעברית)",ערוץ אני אנימציה HD (Ani Kids)
+http://stream.mcquack.net/306/index.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ האנימציה PLUSPLUS HD" tvg-chno="337" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/plusplus.svg" group-title="ילדים ונוער (בעברית)",ערוץ האנימציה PLUSPLUS HD
+http://stream.mcquack.net/339/index.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ ניקי ג'וניור HD (Niki Junior)" tvg-chno="338" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/junior.png" group-title="ילדים ונוער (בעברית)",ערוץ ניקי ג'וניור HD (Niki Junior)
+http://stream.mcquack.net/262/index.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ סרטוני אנימציה קצרים (Cartoons Short)" tvg-chno="339" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/hop.png" group-title="ילדים ונוער (בעברית)",ערוץ סרטוני אנימציה קצרים (Cartoons Short)
+http://stream.mcquack.net/347/index.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ סרטי אנימציה לילדים (Cartoons Cinema)" tvg-chno="340" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/yes_kids.png" group-title="ילדים ונוער (בעברית)",ערוץ סרטי אנימציה לילדים (Cartoons Cinema)
+http://stream.mcquack.net/348/index.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="פרש קידס (Fresh Kids TV HD)" tvg-chno="341" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/zoom.png" group-title="ילדים ונוער (בעברית)",פרש קידס (Fresh Kids TV HD)
+http://stream.mcquack.net/425/index.m3u8

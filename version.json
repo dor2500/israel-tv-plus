@@ -1,60 +1,62 @@
 {
-  "version": "4.3.8",
-  "code": 202610260640,
-  "app": 508,
+  "version": "4.3.9",
+  "code": 202610260702,
+  "app": 509,
   "shell": 3,
   "date": "2026-10-26",
   "notes": [
-    "הוספת ערוצי שידור ישראליים מקוריים ומאומתים (ללא כפילויות וללא ערוצי עידן פלוס):",
-    "ערוצי טלוויזיה ישראליים חדשים:",
-    "Hala TV – ערוץ הלא HD (ערוץ השידור המוביל בישראל בערבית באיכות HD ישירות מ-Panet).",
-    "Shelanu.TV – ערוץ שלנו HD (ערוץ תוכן ישראלי שידור ישיר באיכות HD).",
-    "i24NEWS English World HD (מהדורת החדשות הבינלאומית מנמל יפו באנגלית באיכות FHD).",
-    "Angel TV Hebrew HD (שידורי ערוץ אנג'ל בעברית באיכות HD).",
-    "תחנות רדיו ומוזיקה ישראליות ייחודיות:",
-    "AudioVersity – רדיו אוניברסיטת רייכמן הרצליה (106.2FM – פודקאסטים ושידורי סטודנטים).",
-    "רדיו מכללת אורנים (103.6FM – שידור חי חינוכי וקהילתי מצפון הארץ).",
-    "Radio Angelika תל אביב (תחנת רדיו ומוזיקת אינדי תל אביבית עצמאית).",
-    "Toker FM – רדיו מנחם טוקר לייב (מוזיקה יהודית וחסידית ללא הפסקה 24/6).",
-    "Jewish Music Stream (תחנת המוזיקה היהודית והחסידית הבינלאומית הגדולה בעולם).",
-    "Душа Кавказа – רדיו קהילת יוצאי קווקז בישראל (שידורי רדיו מסורתיים לקהילה בישראל).",
-    "רדיו אורנו (Орэну) – שידורי רדיו אונליין הפועל בישראל.",
-    "שילוב ואימות ערוצי FreeTV וקשת FAST:",
-    "ערוץ האוכל והבישול, ערוץ הדרמה, ערוץ המוזיקה, ערוץ הקומדיה, סברי מרנן וארץ נהדרת – כולם מאומתים עם כרטיסי צפייה מקוריים (AKAMAI Dynamic Ticket).",
-    "עדכון רשימות השמעה ו-Stremio:",
-    "רענון מלא של playlist.m3u, playlist-israel.m3u, playlist-tv.m3u, ו-radio.m3u עם 328 ערוצים מסודרים וממוספרים ברצף ללא דילוגים."
+    "הרחבת ענק לכל ערוצי הילדים והנוער בישראל (36 ערוצי ילדים מאומתים, 100% פעילים):",
+    "סריקה מעמיקה של הרשת ואימות כל מקור שידור שהוא משדר מקטעי וידאו אמיתיים ורציפים ב-HD.",
+    "ערוצי ילדים ופעוטות חדשים בשידור חי:",
+    "כאן חינוכית 23 HD (מקור שידור 2 ישיר) – גיבוי מהיר ורציף לסדרות החינוכית.",
+    "Baby Shark TV (בייבי שארק לילדים) – ערוץ בייבי שארק הרשמי 24/7 לילדים ולפעוטות ב-FHD.",
+    "ערוץ בייבי BabyTV Global HD – שידורי ערוץ בייבי הבינלאומי המוביל בעולם ברצף.",
+    "ערוץ זו-מו לילדים (ZooMoo HD) – ערוץ הטבע, בעלי החיים והאנימציה החינוכית.",
+    "ניק ג'וניור קלאב (Nick Jr. Club HD) – מפרץ ההרפתקאות, דורה, בלייז ומכוניות הענק ברצף.",
+    "ניקלודיאון קלאסיקות (Nickelodeon Classics HD) – בובספוג, ראגרטס וסדרות האנימציה האהובות.",
+    "פלוטו טי-וי ג'וניור (Pluto TV Junior HD) – סדרות וסרטי אנימציה מהנים לגיל הרך.",
+    "ערוץ אני אנימציה HD (Ani Kids) – ערוץ סדרות אנימציה עולמיות צבעוניות וחינוכיות.",
+    "ערוץ האנימציה PLUSPLUS HD – הרפתקאות, מדע וסדרות מצוירות.",
+    "ערוץ ניקי ג'וניור HD (Niki Junior) – תוכניות וסדרות לגיל הרך ולילדים.",
+    "ערוץ סרטוני אנימציה קצרים (Cartoons Short HD) – מרתון סרטוני אנימציה קצרים ומצחיקים.",
+    "ערוץ סרטי אנימציה לילדים (Cartoons Cinema HD) – סרטי אנימציה מלאים לכל המשפחה 24/7.",
+    "פרש קידס (Fresh Kids TV HD) – מוזיקה, שירים ותוכניות קצביות לילדים ולנוער.",
+    "שיוך ערוצי רדיו ילדים ייעודיים:",
+    "רדיוס 100% ערוץ הכוכבים (יובל המבולבל, מיקי, דוד חיים, מני ממטרה ועוד) ורדיוס 100% ילדים שולבו ישירות בקטגוריית \"ילדים ונוער\".",
+    "רענון רשימות השמעה ו-Stremio:",
+    "עדכון של כל 341 הערוצים ב-playlist.m3u, playlist-israel.m3u, playlist-tv.m3u ובקטלוג Stremio."
   ],
   "native": {
     "android": {
-      "version": "4.3.8",
-      "app": 508,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.8/IsraelTVPlus-android.apk"
+      "version": "4.3.9",
+      "app": 509,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.9/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "4.3.8",
-      "app": 508,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.8/IsraelTVPlus-windows-setup.exe"
+      "version": "4.3.9",
+      "app": 509,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.9/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "4.3.8",
-      "app": 508,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.8/com.israeltv.plus_all.ipk",
+      "version": "4.3.9",
+      "app": 509,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.9/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "4.3.8",
-      "app": 508,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.8/IsraelTVPlus-tizen-project.zip"
+      "version": "4.3.9",
+      "app": 509,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.9/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "4.3.8",
-      "app": 508,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.8/IsraelTVPlus-macos-arm64.zip"
+      "version": "4.3.9",
+      "app": 509,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.9/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "4.3.8",
-      "app": 508,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.8/IsraelTVPlus-linux-x64.zip"
+      "version": "4.3.9",
+      "app": 509,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.3.9/IsraelTVPlus-linux-x64.zip"
     }
   }
 }
