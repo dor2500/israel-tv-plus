@@ -57,6 +57,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
+import androidx.compose.foundation.border
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalFocusManager
@@ -201,26 +203,38 @@ fun ChannelsScreen(
                     verticalArrangement = Arrangement.spacedBy(10.dp),
                     modifier = Modifier.fillMaxWidth(),
                 ) {
+                    val chipShape = RoundedCornerShape(50)
                     nicheCategories.forEach { cat ->
                         val isSelected = cat.key == category
-                        FilterChip(
-                            selected = isSelected,
-                            onClick = {
-                                haptic.performHapticFeedback(HapticFeedbackType.SegmentTick)
-                                onCategory(cat.key)
-                                moreSheetOpen = false
-                            },
-                            label = {
-                                Text(
-                                    cat.name,
-                                    fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Medium,
+                        Box(
+                            modifier = Modifier
+                                .height(34.dp)
+                                .clip(chipShape)
+                                .then(
+                                    if (isSelected) {
+                                        Modifier.background(Color.White)
+                                    } else {
+                                        Modifier
+                                            .border(0.75.dp, Color.White.copy(alpha = 0.15f), chipShape)
+                                            .background(Color.Transparent)
+                                    }
                                 )
-                            },
-                            colors = FilterChipDefaults.filterChipColors(
-                                selectedContainerColor = scheme.primaryContainer,
-                                selectedLabelColor = scheme.onPrimaryContainer,
-                            ),
-                        )
+                                .tactileBounce()
+                                .clickable {
+                                    haptic.performHapticFeedback(HapticFeedbackType.SegmentTick)
+                                    onCategory(cat.key)
+                                    moreSheetOpen = false
+                                }
+                                .padding(horizontal = 16.dp),
+                            contentAlignment = Alignment.Center,
+                        ) {
+                            Text(
+                                text = cat.name,
+                                color = if (isSelected) Color(0xFF0A0B10) else Color.White,
+                                fontSize = 13.sp,
+                                fontWeight = if (isSelected) FontWeight.ExtraBold else FontWeight.Bold,
+                            )
+                        }
                     }
                 }
             }
@@ -258,6 +272,8 @@ private fun CategoryMacroBar(
         sportCat?.let { it.key to "ספורט" },
     )
 
+    val chipShape = RoundedCornerShape(50)
+
     LazyRow(
         Modifier.padding(bottom = 16.dp),
         contentPadding = PaddingValues(horizontal = 16.dp),
@@ -267,76 +283,113 @@ private fun CategoryMacroBar(
     ) {
         // 1. "רק ישראלי" Filter Toggle Chip
         item(key = "israeli_toggle") {
-            Row(
+            Box(
                 modifier = Modifier
-                    .clip(RoundedCornerShape(50))
+                    .height(34.dp)
+                    .clip(chipShape)
+                    .then(
+                        if (israeliOnly) {
+                            Modifier.background(Color.White)
+                        } else {
+                            Modifier
+                                .border(0.75.dp, Color.White.copy(alpha = 0.15f), chipShape)
+                                .background(Color.Transparent)
+                        }
+                    )
                     .tactileBounce {
                         haptic.performHapticFeedback(HapticFeedbackType.LongPress)
                         onToggleIsraeli()
                     }
-                    .background(
-                        if (israeliOnly) scheme.primaryContainer
-                        else scheme.surfaceContainerHigh.copy(alpha = 0.70f)
-                    )
-                    .padding(horizontal = 14.dp, vertical = 9.dp),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(6.dp),
+                    .padding(horizontal = 14.dp),
+                contentAlignment = Alignment.Center,
             ) {
-                AppleIsraelFlag(Modifier.size(width = 17.dp, height = 12.dp))
-                Text(
-                    text = "רק ישראלי",
-                    color = if (israeliOnly) scheme.onPrimaryContainer else scheme.onSurface,
-                    fontSize = 14.sp,
-                    fontWeight = FontWeight.ExtraBold,
-                )
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(6.dp),
+                ) {
+                    AppleIsraelFlag(Modifier.size(18.dp))
+                    Text(
+                        text = "רק תוכן ישראלי",
+                        color = if (israeliOnly) Color(0xFF0A0B10) else Color.White,
+                        fontSize = 13.sp,
+                        fontWeight = if (israeliOnly) FontWeight.ExtraBold else FontWeight.Bold,
+                    )
+                }
             }
         }
 
         // 2. 4 Clean Macro Categories: הכל, סרטים וסדרות, ילדים ונוער, ספורט
         items(macroEntries, key = { it.first ?: "all" }) { (key, name) ->
             val on = key == selected || (key == null && (selected == null || selected == "all"))
-            Text(
-                name,
-                Modifier
-                    .clip(RoundedCornerShape(50))
+            Box(
+                modifier = Modifier
+                    .height(34.dp)
+                    .clip(chipShape)
+                    .then(
+                        if (on) {
+                            Modifier.background(Color.White)
+                        } else {
+                            Modifier
+                                .border(0.75.dp, Color.White.copy(alpha = 0.15f), chipShape)
+                                .background(Color.Transparent)
+                        }
+                    )
                     .tactileBounce {
                         haptic.performHapticFeedback(HapticFeedbackType.SegmentTick)
                         onSelect(key)
                     }
-                    .background(if (on) scheme.secondaryContainer else scheme.surfaceContainerHigh.copy(alpha = 0.7f))
-                    .padding(horizontal = 16.dp, vertical = 9.dp),
-                color = if (on) scheme.onSecondaryContainer else scheme.onSurfaceVariant,
-                fontSize = 14.sp,
-                fontWeight = if (on) FontWeight.ExtraBold else FontWeight.Medium,
-            )
+                    .padding(horizontal = 16.dp),
+                contentAlignment = Alignment.Center,
+            ) {
+                Text(
+                    text = name,
+                    color = if (on) Color(0xFF0A0B10) else Color.White,
+                    fontSize = 13.sp,
+                    fontWeight = if (on) FontWeight.ExtraBold else FontWeight.Bold,
+                )
+            }
         }
 
         // 3. Static "עוד..." tab at the end of the row
         item(key = "more_tab") {
-            Row(
-                Modifier
-                    .clip(RoundedCornerShape(50))
+            val isMoreSelected = selected != null && selected !in macroEntries.mapNotNull { it.first } && selected != "all"
+            Box(
+                modifier = Modifier
+                    .height(34.dp)
+                    .clip(chipShape)
+                    .then(
+                        if (isMoreSelected) {
+                            Modifier.background(Color.White)
+                        } else {
+                            Modifier
+                                .border(0.75.dp, Color.White.copy(alpha = 0.15f), chipShape)
+                                .background(Color.Transparent)
+                        }
+                    )
                     .tactileBounce {
                         haptic.performHapticFeedback(HapticFeedbackType.SegmentTick)
                         onMore()
                     }
-                    .background(scheme.surfaceContainerHigh.copy(alpha = 0.7f))
-                    .padding(horizontal = 14.dp, vertical = 9.dp),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(4.dp),
+                    .padding(horizontal = 14.dp),
+                contentAlignment = Alignment.Center,
             ) {
-                Icon(
-                    Icons.Rounded.MoreHoriz,
-                    contentDescription = "עוד",
-                    tint = scheme.onSurfaceVariant,
-                    modifier = Modifier.size(18.dp),
-                )
-                Text(
-                    text = "עוד...",
-                    color = scheme.onSurfaceVariant,
-                    fontSize = 14.sp,
-                    fontWeight = FontWeight.Bold,
-                )
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(4.dp),
+                ) {
+                    Icon(
+                        Icons.Rounded.MoreHoriz,
+                        contentDescription = "עוד",
+                        tint = if (isMoreSelected) Color(0xFF0A0B10) else Color.White,
+                        modifier = Modifier.size(18.dp),
+                    )
+                    Text(
+                        text = "עוד...",
+                        color = if (isMoreSelected) Color(0xFF0A0B10) else Color.White,
+                        fontSize = 13.sp,
+                        fontWeight = if (isMoreSelected) FontWeight.ExtraBold else FontWeight.Bold,
+                    )
+                }
             }
         }
     }
