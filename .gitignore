@@ -9,3 +9,8 @@ build/
 
 relay/.wrangler/
 relay/node_modules/
+
+# Local scraper cache and pools
+tools/*_pool.json
+tools/discovered_streams.json
+tools/harvester_log.txt
