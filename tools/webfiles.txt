@@ -5,9 +5,7 @@ boot.js
 ui.js
 fonts.css
 style.css
-yttv.css
 app.js
-yttv.js
 dub.js
 dub-local-worker.js
 channels.js

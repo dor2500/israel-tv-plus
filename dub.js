@@ -26,7 +26,6 @@
   const NO_LOCAL = IS_TV || (navigator.deviceMemory || 8) <= 3;
   const LITE = /IsraelTVPlus\/\d+ AndroidPhone/.test(navigator.userAgent) || (navigator.deviceMemory || 8) <= 4;
   const LITE_MODEL = 'onnx-community/whisper-tiny';
-  const MIN_ORIGINAL = 0.1;    // the channel's own sound never goes below this while dubbing (no silence)
 
   const DEFAULTS = {
     enabled: false,          // dubbing switched on (applies to foreign channels)
@@ -42,7 +41,7 @@
     tts: 'auto',             // 'auto' | 'browser' | 'google' | 'openai' | 'none'
     voiceName: '',           // preferred device voice ('' = automatic by speaker gender)
     rate: 1.1,
-    duck: 0.2,               // level of the original sound while the Hebrew voice speaks (MIN_ORIGINAL..1)
+    duck: 0.2,               // level of the original sound while the Hebrew voice speaks (0..1)
     subtitles: true,
     showOriginal: false,
     sync: !IS_TV,            // lip-sync mode (picture delayed); TVs usually have a single video decoder
@@ -179,19 +178,12 @@
   }
 
   // ---------------------------------------------------------------- audio graph
-  // Once the main <video> plays through Web Audio (mainTap), a suspended context would silence the channel, so the
-  // context is woken up whenever the system suspends it (app in the background, audio focus) and on every play.
-  function wake() {
-    if (ac && ac.state !== 'running' && ac.state !== 'closed') ac.resume().catch(() => {});
-  }
   function ensureCtx() {
     if (!ac) {
       const AC = window.AudioContext || window.webkitAudioContext;
       ac = new AC();
-      ac.onstatechange = wake;
-      document.addEventListener('visibilitychange', wake);
     }
-    wake();
+    if (ac.state === 'suspended') ac.resume().catch(() => {});
     return ac;
   }
 
@@ -242,7 +234,6 @@
 
   function setOriginalLevel(level) {
     if (!session) return;
-    level = Math.max(MIN_ORIGINAL, level);   // lowered under the Hebrew voice, never silent
     if (session.mode === 'instant' && mainTap) {
       mainTap.gain.gain.setTargetAtTime(level, ac.currentTime, 0.12);
     } else if (session.video) {
@@ -275,11 +266,10 @@
       // ScriptProcessor must output something; keep it silent.
       e.outputBuffer.getChannelData(0).fill(0);
     };
-    // it only runs while connected to the output: through a zero gain (its own silent output, not the channel's sound)
-    const sink = ac.createGain();
-    sink.gain.value = 0;
-    proc.connect(sink);
-    sink.connect(ac.destination);
+    const mute = ac.createGain();
+    mute.gain.value = 0;
+    proc.connect(mute);
+    mute.connect(ac.destination);
     return proc;
   }
 
@@ -935,7 +925,6 @@
           src.connect(gain);
           gain.connect(ac.destination);
           mainTap = { src, gain, video: opts.video };
-          opts.video.addEventListener('play', wake);
         }
         mainTap.src.connect(sess.capture);
       }

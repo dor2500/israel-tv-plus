@@ -1,52 +1,46 @@
 {
-  "version": "4.4.1",
-  "code": 202610260846,
-  "app": 541,
+  "version": "4.4.2",
+  "code": 202610260908,
+  "app": 542,
   "shell": 3,
   "date": "2026-10-26",
   "notes": [
-    "הוספת ערוצי רשת Sky הבינלאומית (Sky Network Channels):",
-    "Sky News UK FHD – ערוץ החדשות הבינלאומי המוביל של Sky מבריטניה בשידור חי 24/7.",
-    "Sky News Arabia HD – ערוץ סקיי ניוז בשפה הערבית ב-HD.",
-    "Sky News Arabia ישיר HD (מקור שידור 2) – גיבוי ישיר ב-HD.",
-    "Sky Racing 1 HD – ערוץ הספורט, מרוצי הסוסים והספורט המוטורי מבית Sky.",
-    "Sky News Australia Extra 1, 2, 3 HD – ערוצי השידורים החיים והאירועים המיוחדים של סקיי אוסטרליה.",
-    "Sky Folk TV HD – ערוץ המוזיקה והפולקלור הבינלאומי של סקיי.",
-    "עדכון חבילות התקנה ורשימות שידור:",
-    "עדכון ל-338 ערוצים בכל הפלייליסטים של M3U ובתוסף Stremio.",
-    "קוד גרסה מתוקן באפליקציית האנדרואיד לקבלת עדכון OTA מיידי בטלפון ובטלוויזיה."
+    "שחזור מלא ומדויק של ממשק גרסה 3.3 (UI & Experience Restore):",
+    "חזרה מלאה לממשק המקורי האהוב, המהיר והנקי של גרסה 3.3.0 (עיצוב Web + מעטפת אפליקציה מקורית).",
+    "שילוב מלא של כל 338 הערוצים החדשים (ערוצי ישראל, ערוצי הילדים, FreeTV, עידן פלוס, רשת Sky ורדיו).",
+    "הסרת כל שינויי הממשק המאוחרים וחזרה לתצוגה המדויקת של 3.3."
   ],
   "native": {
     "android": {
-      "version": "4.4.1",
-      "app": 541,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.4.1/IsraelTVPlus-android.apk"
+      "version": "4.4.2",
+      "app": 542,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.4.2/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "4.4.1",
-      "app": 541,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.4.1/IsraelTVPlus-windows-setup.exe"
+      "version": "4.4.2",
+      "app": 542,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.4.2/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "4.4.1",
-      "app": 541,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.4.1/com.israeltv.plus_all.ipk",
+      "version": "4.4.2",
+      "app": 542,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.4.2/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "4.4.1",
-      "app": 541,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.4.1/IsraelTVPlus-tizen-project.zip"
+      "version": "4.4.2",
+      "app": 542,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.4.2/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "4.4.1",
-      "app": 541,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.4.1/IsraelTVPlus-macos-arm64.zip"
+      "version": "4.4.2",
+      "app": 542,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.4.2/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "4.4.1",
-      "app": 541,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.4.1/IsraelTVPlus-linux-x64.zip"
+      "version": "4.4.2",
+      "app": 542,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.4.2/IsraelTVPlus-linux-x64.zip"
     }
   }
 }

@@ -9,9 +9,6 @@
 (function () {
   'use strict';
 
-  window.CHANNELS_DATA = window.CHANNELS_DATA || window.ITV_CHANNELS || [];
-  window.ITV_CHANNELS = window.CHANNELS_DATA;
-
   var REMOTE = 'https://dor2500.github.io/israel-tv-plus/';
   var RELEASES = 'https://github.com/dor2500/israel-tv-plus/releases/latest';
   var REPO = 'https://github.com/dor2500/israel-tv-plus';
@@ -44,7 +41,7 @@
     theme: 'oled', accent: 'auto', uiScale: 1, cols: 0, hero: true, numbers: true, hints: true, perf: 'auto',
     startCat: 'ALL', autoplay: false, hideAppOnly: false, hiddenCats: [], hidden: [], showSource: true,
     pic: 'off', aspect: 'fit', sharpen: false, quality: 'auto', latency: 'stable', osdSec: 5, osdClock: true,
-    retry: true, zap: 'category', upNext: true,
+    retry: true, zap: 'category', upNext: false,
     remote: 'auto', keyRed: 'menu', keyGreen: 'aspect', keyYellow: 'fav', keyBlue: 'dub', longOk: 'menu', numWait: 1.2,
     saver: 2, kids: false, kidsPin: '', autoUpdate: true, liveUpdates: true, avatar: '1f60e',
     lastId: '', lastCat: 'ALL', seenColors: false
@@ -234,7 +231,6 @@
     setupInput();
     setupNativeBridge();
     setupPhone();
-    setupAtv();
     setupClock();
     readDeviceInfo();
     resetSaver();
@@ -246,21 +242,8 @@
         applyScale();
         placeSearch();
         renderGridFresh();
-        if (PHONE && !was) {
-          // the browse screen's layer behind the shelves would cover the phone layout: the preview stops, a channel
-          // left on keeps playing in the background like on phones
-          if (state.overlay !== 'player' && state.playing) {
-            if (state.preview) stopPlayback();
-            el.player.classList.add('hidden');
-          }
-          buildHome(); setTab(state.tab, true);
-        }
+        if (PHONE && !was) { buildHome(); setTab(state.tab, true); }
         else if (PHONE) movePill(false);
-        if (TVUI && !state.overlay) {
-          // from the phone layout: a channel playing in the background shows behind the shelves again
-          if (was && state.playing) { el.player.classList.remove('hidden'); if (!state.isRadio) document.body.classList.add('atv-live'); }
-          atv.dirty = true; atvRestore();
-        }
       }, 120);
     });
 
@@ -282,18 +265,12 @@
     // the Android app's splash screen (core-splashscreen) waits for this: the first screen is ready to draw
     setTimeout(function () { native('ready'); }, 30);
     if (S.autoUpdate) setTimeout(function () { checkUpdates(false); }, 4000);
-    if (PLATFORM === 'webos') {
-      // LG: TV apps stay open for days – check again every 6 hours, and apply a downloaded update on returning to the app
-      setInterval(function () { if (S.autoUpdate) checkUpdates(false); }, 6 * 3600 * 1000);
-      document.addEventListener('visibilitychange', function () { if (!document.hidden) applyLiveIfIdle(); });
-    }
-    if (PLATFORM === 'webos' || PLATFORM === 'tizen') document.addEventListener('visibilitychange', onTvVisibility);
     if (Dub && Dub.settings.migratedFromLocal) setTimeout(explainTvDub, 1500);
     window.__itv = { state: state, S: S, playIndex: playIndex, openSettings: openSettings, checkUpdates: checkUpdates };
   }
 
   function cacheEls() {
-    ['app', 'search-input', 'top-search', 'btn-yttv', 'btn-update', 'btn-getapp', 'btn-kids-exit', 'btn-settings', 'clock', 'count-badge',
+    ['app', 'search-input', 'top-search', 'btn-update', 'btn-getapp', 'btn-kids-exit', 'btn-settings', 'clock', 'count-badge',
       'rail-list', 'hero', 'hero-logo', 'hero-mono', 'hero-num', 'hero-cat', 'hero-q', 'hero-lang', 'hero-fav', 'hero-title',
       'hero-desc', 'hero-src', 'grid-title', 'grid-count', 'grid', 'hints', 'numhud', 'numhud-digits', 'numhud-name',
       'radio-audio', 'player', 'video', 'radio-view', 'radio-logo', 'radio-mono', 'radio-name', 'spinner', 'spinner-text',
@@ -355,8 +332,9 @@
     var cv = chrome ? parseInt(chrome[1], 10) : 99;
     var mem = navigator.deviceMemory || 0;
     var cores = navigator.hardwareConcurrency || 0;
-    if (PLATFORM === 'webos' || PLATFORM === 'tizen' || IS_TV) {
-      state.lowEnd = true;
+    if (PLATFORM === 'webos' || PLATFORM === 'tizen') {
+      // TVs report deviceMemory 2 even on strong models (LG C6): judge by the browser / webOS version instead
+      state.lowEnd = cv < 80 || /SMART-TV.*Tizen [2-4]\./.test(UA);
     } else {
       state.lowEnd = cv < 70 || (mem && mem <= 2) || (cores && cores <= 2);
     }
@@ -379,8 +357,6 @@
     document.documentElement.style.fontSize = (base * (compact || PHONE ? 1 : S.uiScale)) + 'px';
     toggleClass(document.body, 'compact', compact);
     toggleClass(document.body, 'phone', PHONE);
-    TVUI = !PHONE;
-    toggleClass(document.body, 'tvui', TVUI);
     var cols = S.cols || (PHONE ? (w < 600 ? 2 : w < 900 ? 3 : 4) : compact ? (w < 600 ? 2 : 3) : clamp(Math.round(5 / S.uiScale), 3, 7));
     if (PHONE && S.cols) cols = Math.min(S.cols, w < 600 ? 3 : 5);
     state.cols = cols;
@@ -477,12 +453,7 @@
     else if (k === 'kids' || k === 'hiddenCats' || k === 'hidden' || k === 'hideAppOnly') {
       if (state.all.length) {
         var cat = state.cat, idx = state.gridIdx;
-        // TV: into / out of kids mode the browse screen starts over on the first card (the pill's tabs change too)
-        if (TVUI && k === 'kids') { atv.zone = 'rows'; atv.row = 0; atv.rows = []; atv.dirty = true; }
         loadChannels();
-        // the channel on (the player under the settings, or left on behind the shelves) is not in the list any more:
-        // kids mode does not go on playing a grown-ups' channel, a hidden channel stops
-        if (state.playing && indexInAll(state.playing.id) === -1) dropPlaying();
         selectCategory(k !== 'kids' && state.cats.some(function (c) { return c.id === cat; }) ? cat : 'ALL', true);
         focusGrid(k === 'kids' ? 0 : idx);
       }
@@ -521,8 +492,6 @@
       if (IS_WEB && S.hideAppOnly && appOnly(c)) return false;
       return true;
     }).map(function (c, i) {
-      // the channel on now keeps its object: the player, the preview and the shelves compare it by identity
-      if (state.playing && state.playing.id === c.id) return state.playing;
       var o = {};
       for (var k in c) o[k] = c[k];
       o.number = c.number || i + 1;
@@ -541,7 +510,6 @@
     var favs = state.all.filter(isFav).length;
     var recents = state.recents.filter(function (id) { return indexInAll(id) !== -1; }).length;
     var list = [{ id: 'ALL', name: S.kids ? 'כל ערוצי הילדים' : 'כל הערוצים', icon: '📺', count: state.all.length }];
-    list.push({ id: 'YTTV', name: 'יוטיוב TV', icon: '▶', count: 'YouTube' });
     if (favs) list.push({ id: 'FAVORITES', name: 'מועדפים', icon: '⭐', count: favs });
     if (recents) list.push({ id: 'RECENT', name: 'צפית לאחרונה', icon: '🕘', count: recents });
     var dub = state.all.filter(foreign).length;
@@ -551,7 +519,6 @@
     Object.keys(counts).forEach(push);
     state.cats = list;
     renderRail();
-    if (atv.built) atv.dirty = true;
   }
 
   function renderRail() {
@@ -567,13 +534,6 @@
   function indexInList(id) { for (var i = 0; i < state.list.length; i++) if (state.list[i].id === id) return i; return -1; }
 
   function selectCategory(id, quiet) {
-    if (id === 'YTTV') {
-      if (window.YTTV) {
-        state.overlay = 'yttv';
-        window.YTTV.open();
-      }
-      return;
-    }
     state.cat = id;
     for (var i = 0; i < state.cats.length; i++) if (state.cats[i].id === id) state.railIdx = i;
     if (!quiet && !S.kids) setSetting('lastCat', id);
@@ -611,7 +571,6 @@
     el.grid.innerHTML = '';
     cards = [];
     rendered = 0;
-    if (TVUI) return;   // the TV browse screen has its own shelves: no hidden grid to build (start-up time on weak TVs)
     if (!state.list.length) {
       el.grid.innerHTML = '<div class="grid-empty">' + (state.query ? 'לא נמצאו ערוצים לחיפוש הזה' : 'אין כאן ערוצים עדיין') + '</div>';
       updateHero(null);
@@ -658,7 +617,6 @@
   // ================================================================== hero (debounced: holding an arrow stays smooth)
   function updateHero(ch) {
     if (state.heroTimer) clearTimeout(state.heroTimer);
-    if (TVUI) return;   // (the guide's hero strip is not on the TV browse screen)
     state.heroTimer = setTimeout(function () { drawHero(ch); }, fastMode() ? 140 : 60);
   }
   function drawHero(ch) {
@@ -695,8 +653,7 @@
     else if (state.overlay === 'dialog') t = dialogButtons()[state.dialogIdx];
     else if (state.overlay === 'settings') {
       t = state.setZone === 'nav' ? el.settingsNav.children[state.setSection] : el.settingsRows.querySelectorAll('.set-row')[state.setIdx];
-    } else if (state.zone === 'atv') { atvMark(); return; }
-    else if (state.zone === 'grid') t = cards[state.gridIdx];
+    } else if (state.zone === 'grid') t = cards[state.gridIdx];
     else if (state.zone === 'rail') t = el.railList.children[state.railIdx];
     else if (state.zone === 'top') t = topItems()[state.topIdx];
     if (t) { t.classList.add('focused'); reveal(t); }
@@ -723,7 +680,6 @@
   }
 
   function focusGrid(i) {
-    if (TVUI) { atvRestore(); return; }
     state.zone = 'grid';
     if (!state.list.length) { markFocus(); return; }
     state.gridIdx = clamp(i, 0, state.list.length - 1);
@@ -731,7 +687,7 @@
     markFocus();
     updateHero(state.list[state.gridIdx]);
   }
-  function focusRail(i) { if (TVUI) { atvFocusPill(atv.tab); return; } state.zone = 'rail'; state.railIdx = clamp(i, 0, state.cats.length - 1); markFocus(); }
+  function focusRail(i) { state.zone = 'rail'; state.railIdx = clamp(i, 0, state.cats.length - 1); markFocus(); }
   function topItems() {
     return Array.prototype.filter.call(document.querySelectorAll('.nav-top'), function (n) { return !n.classList.contains('hidden'); });
   }
@@ -750,7 +706,6 @@
     else { state.favorites.splice(i, 1); toast('הוסר מהמועדפים'); }
     lsSet('israel_tv_favorites', state.favorites);
     homeDirty = true;
-    atv.dirty = true;
     var had = state.cats.length;
     buildCategories();
     if (state.cat === 'FAVORITES') filterList();
@@ -760,13 +715,11 @@
       if (had !== state.cats.length && state.zone === 'rail') markFocus();
       updateHero(state.list[state.gridIdx]);
     }
-    if (TVUI && !state.overlay && atv.built) atvRestore();   // the "mine" shelf and the ★ tag update at once
   }
   function addRecent(ch) {
     state.recents = [ch.id].concat(state.recents.filter(function (id) { return id !== ch.id; })).slice(0, MAX_RECENTS);
     lsSet('israel_tv_recents', state.recents);
     homeDirty = true;
-    atv.mineDirty = true;
     S.lastId = ch.id;
     saveSettings();
     var has = state.cats.some(function (c) { return c.id === 'RECENT'; });
@@ -1378,813 +1331,14 @@
     toast('🙈 ' + ch.name + ' הוסתר (אפשר להחזיר בהגדרות ← ערוצים)');
   }
 
-  // ================================================================== TV: the Apple TV+ (tvOS) browse screen
-  // Big screens get a full-bleed stage instead of the guide: a floating glass pill on top, the focused channel's
-  // details on the right, and at the bottom a vertical feed of shelves, each one horizontal row of channel cards.
-  // Every move is a translate3d / opacity change on its own layer with tvOS's curve (cubic-bezier(.16, 1, .3, 1),
-  // 420 ms): nothing measures the layout, nothing animates width / height / top / left, no scrollIntoView.
-  // Resting on a card for 550 ms fades a live preview of the channel in behind everything (the same <video> the
-  // player uses), and OK just turns it into the full-screen player – no reload, no cut. The preview is the only
-  // silent playback in the app: the moment the channel is watched it plays with full sound, and from then on
-  // nothing in the app ever mutes it.
-  var TVUI = false;
-  var atv = { rows: [], row: 0, cols: [], zone: 'rows', tab: 0, tabs: [], rendered: [], tracks: [], items: [],
-    rowEls: [], built: false, dirty: false, search: false, query: '', flip: false, bdFlip: false,
-    restTimer: null, metaTimer: null, stopTimer: null, searchTimer: null, focusedEl: null };
-  var ATV_PITCH = 19;        // rem: a 17.5rem card + 1.5rem gap
-  var ATV_ROW = 16.25;       // rem: one shelf (title + card + name), 260 px on a 1080p screen
-  var ATV_FIRST = 14, ATV_MORE = 18;
-  var ATV_ROWS = [['broadcast', 'ערוצי ברודקאסט וחדשות'], ['sports', 'ספורט בשידור חי'], ['movies', 'סרטים וסדרות'],
-    ['kids', 'ילדים ונוער'], ['fun', 'בידור, טבע ומוזיקה'], ['world', 'ערוצים בינלאומיים'], ['radio', 'רדיו ישראלי'],
-    ['faith', 'דת ומסורת']];
-  var ATV_TABS = [['צפייה כעת', 'top'], ['ערוצי ישראל', 'broadcast'], ['ספורט', 'sports'], ['ילדים', 'kids'],
-    ['סרטים ודיבוב', 'movies'], ['רדיו', 'radio'], ['מועדפים', 'mine'], ['חיפוש', 'search'], ['הגדרות', 'settings']];
-
-  function atvRem(rem) { return rem * (parseFloat(document.documentElement.style.fontSize) || 16); }
-
-  /** Which shelf a channel belongs on. */
-  function atvBucket(c) {
-    var en = c.categoryEn || '', cat = c.category || '';
-    if (en === 'radio' || isRadioCh(c)) return 'radio';
-    if (/ערוצי ישראל/.test(cat) || en === 'news' || en === 'israel') return 'broadcast';
-    if (en === 'sports' || /ספורט/.test(cat)) return 'sports';
-    if (/ילדים/.test(cat) || en === 'kids') return 'kids';
-    if (en === 'movies' || en === 'world_movies' || en === 'comedy') return 'movies';
-    if (en === 'religion' || en === 'tradition' || en === 'community' || /מסורת|דת ואמונה/.test(cat)) return 'faith';
-    if (/^(life|docu|documentary|music|travel|food|science)$/.test(en)) return 'fun';
-    return 'world';
-  }
-
-  function atvRowsData() {
-    if (atv.search) {
-      var q = atv.query.trim().toLowerCase();
-      var res = [], genre = [];
-      if (q) state.all.forEach(function (c) {
-        if (c.name.toLowerCase().indexOf(q) !== -1 || String(c.number) === q ||
-            (c.countryHe && c.countryHe.indexOf(q) !== -1) || (c.title && c.title.toLowerCase().indexOf(q) !== -1)) res.push(c);
-        else if (q.length > 2 && c.category && c.category.indexOf(q) !== -1) genre.push(c);   // "ספורט", "ילדים": the genre, after the names
-      });
-      res = res.concat(genre);
-      var shown = atv.query.trim();
-      return [{ id: 'search', list: res, title: !q ? 'הקלידו שם ערוץ, מדינה, ז׳אנר או מספר'
-        : res.length ? 'תוצאות לחיפוש "' + shown + '" · ' + res.length : 'לא נמצאו ערוצים עבור "' + shown + '" – נסו מילה אחרת' }];
-    }
-    var buckets = {};
-    ATV_ROWS.forEach(function (r) { buckets[r[0]] = []; });
-    state.all.forEach(function (c) {
-      var b = atvBucket(c);
-      // Israeli sports radio (Radio Sport 5) also opens the sports shelf, next to Sport 5's live stream
-      if (b === 'radio' && !c.imported && /ספורט/.test(c.name)) buckets.sports.unshift(c);
-      buckets[b].push(c);
-    });
-    var rows = [], mine = atvMineList();
-    if (mine.length) rows.push({ id: 'mine', title: 'צפייה לאחרונה ומועדפים', list: mine });
-    ATV_ROWS.forEach(function (r) {
-      var list = buckets[r[0]];
-      if (IS_WEB) list = list.filter(function (x) { return !appOnly(x); }).concat(list.filter(appOnly));
-      if (list.length) rows.push({ id: r[0], title: S.kids && r[0] === 'broadcast' ? 'ערוצי ישראל' : r[1], list: list });
-    });
-    return rows;
-  }
-
-  function atvTitleHtml(row) {
-    return esc(row.title) + (row.list.length > 30 && row.id !== 'search' ? '<small>' + row.list.length + '</small>' : '');
-  }
-
-  /** The first shelf: recently watched, then favourites. */
-  function atvMineList() {
-    var seen = {}, mine = [];
-    state.recents.concat(state.favorites).forEach(function (id) {
-      var i = indexInAll(id);
-      if (i !== -1 && !seen[id]) { seen[id] = 1; mine.push(state.all[i]); }
-    });
-    return mine;
-  }
-
-  /** After watching (a new recent) only the first shelf changes: redraw just that one, not all the shelves. */
-  function atvRefreshMine() {
-    atv.mineDirty = false;
-    var r = atvRowIndex('mine'), list = atvMineList();
-    if (atv.search) return;
-    if (r === -1 || !list.length) { atvBuild(); return; }   // the shelf appears / goes: the rows shift
-    var keep = atv.rows[r].list[atv.cols[r] || 0], c = 0;
-    for (var k = 0; k < list.length && keep; k++) if (list[k].id === keep.id) { c = k; break; }
-    atv.rows[r].list = list;
-    atv.cols[r] = c;
-    atv.rowEls[r].querySelector('.atv-row-title').innerHTML = atvTitleHtml(atv.rows[r]);
-    if (atv.focusedEl && atv.items[r].indexOf(atv.focusedEl) !== -1) atv.focusedEl = null;
-    atv.tracks[r].innerHTML = '';
-    atv.items[r] = [];
-    atv.rendered[r] = 0;
-    atvRender(r, Math.max(ATV_FIRST, c + ATV_MORE));
-  }
-
-  function atvRowIndex(id) { for (var i = 0; i < atv.rows.length; i++) if (atv.rows[i].id === id) return i; return -1; }
-
-  function atvBuild() {
-    var keepId = atv.rows[atv.row] && atv.rows[atv.row].id;
-    var keepCh = atv.rows[atv.row] && atv.rows[atv.row].list[atv.cols[atv.row] || 0];
-    var keepCol = atv.cols[atv.row] || 0;
-    atv.rows = atvRowsData();
-    if (!atv.search) atv.shelfIds = atv.rows.map(function (x) { return x.id; });
-    atv.built = true;
-    atv.dirty = false;
-    atv.mineDirty = false;
-    atv.cols = atv.rows.map(function () { return 0; });
-    atv.rendered = []; atv.tracks = []; atv.items = []; atv.rowEls = []; atv.focusedEl = null;
-    var box = $('atv-rows');
-    box.innerHTML = '';
-    var frag = document.createDocumentFragment();
-    atv.rows.forEach(function (row, r) {
-      var sec = document.createElement('section');
-      sec.className = 'atv-row';
-      sec.innerHTML = '<h3 class="atv-row-title">' + atvTitleHtml(row) + '</h3><div class="atv-track"></div>';
-      atv.rowEls.push(sec);
-      atv.tracks.push(sec.querySelector('.atv-track'));
-      atv.items.push([]);
-      atv.rendered.push(0);
-      frag.appendChild(sec);
-    });
-    box.appendChild(frag);
-    // Render initial visible rows (0 to 2), rest are lazy-rendered as camera moves
-    var maxInit = Math.min(atv.rows.length, 3);
-    for (var ri = 0; ri < maxInit; ri++) { atvRender(ri, ATV_FIRST); }
-    // stay where we were (a rebuild after a favourite / a new recent)
-    var r0 = keepId ? atvRowIndex(keepId) : -1;
-    atv.row = r0 === -1 ? 0 : r0;
-    if (r0 !== -1 && keepCh) {
-      if (atv.rendered[r0] === 0) atvRender(r0, ATV_FIRST);
-      var list = atv.rows[r0].list;
-      atv.cols[r0] = Math.min(keepCol, list.length - 1);   // the card itself is gone (hidden): its neighbour
-      for (var k = 0; k < list.length; k++) if (list[k].id === keepCh.id) atv.cols[r0] = k;
-      if (atv.cols[r0] > atv.rendered[r0] - 8) atvRender(r0, atv.cols[r0] + ATV_MORE);
-    }
-    atvRenderPill();
-    if (!atv.rows.length) { $('atv-rows').innerHTML = '<div class="atv-empty">' + (atv.search ? '' : 'אין ערוצים להצגה') + '</div>'; }
-  }
-
-  function atvRender(r, upTo) {
-    var row = atv.rows[r], track = atv.tracks[r];
-    var want = Math.min(row.list.length, upTo);
-    if (want <= atv.rendered[r]) return;
-    var frag = document.createDocumentFragment();
-    for (var i = atv.rendered[r]; i < want; i++) {
-      var ch = row.list[i];
-      var it = document.createElement('div');
-      it.className = 'atv-item' + (appOnly(ch) ? ' is-locked' : '');
-      it.setAttribute('data-r', r);
-      it.setAttribute('data-c', i);
-      var q = isApp(ch) ? 'אפליקציה' : isRadioCh(ch) ? 'רדיו' : (ch.badge || '');
-      it.innerHTML = '<div class="atv-card"><div class="atv-logo"><img alt=""><div class="mono hidden"></div></div>' +
-        (q ? '<span class="atv-q">' + esc(q) + '</span>' : '') + '<span class="atv-num">' + ch.number + '</span>' +
-        '<i class="atv-sheen"></i></div><div class="atv-name">' + esc(ch.name) + '</div>';
-      lazyLogo(it.querySelector('img'), it.querySelector('.mono'), ch);
-      frag.appendChild(it);
-      atv.items[r].push(it);
-    }
-    track.appendChild(frag);
-    atv.rendered[r] = want;
-  }
-
-  function atvRenderPill() {
-    var tabs = ATV_TABS.filter(function (t) {
-      return t[1] === 'top' || t[1] === 'search' || t[1] === 'settings' || atvRowIndex(t[1]) !== -1 ||
-        (atv.search && (atv.shelfIds || []).indexOf(t[1]) !== -1);   // searching: the tabs of the shelves it hides
-    });
-    if (S.kids) tabs = tabs.filter(function (t) { return t[1] !== 'settings'; }).concat([['יציאה ממצב ילדים', 'kids-exit']]);
-    atv.tabs = tabs;
-    $('atv-pill').innerHTML = tabs.map(function (t, i) {
-      return '<button class="atv-tab" data-i="' + i + '">' + esc(t[0]) + '</button>';
-    }).join('');
-    atvPillState();
-  }
-
-  /** The active tab is the white pill; while the remote is on the bar, the focused tab grows a little. */
-  function atvPillState() {
-    var row = atv.rows[atv.row], active = -1;
-    for (var i = 0; i < atv.tabs.length; i++) {
-      var t = atv.tabs[i][1];
-      if ((atv.search && t === 'search') || (!atv.search && row && t === row.id)) { active = i; break; }
-    }
-    if (active === -1 && !atv.search && atv.row === 0) active = 0;
-    var btns = $('atv-pill').children;
-    for (var k = 0; k < btns.length; k++) {
-      var onBar = atv.zone === 'pill' && state.zone === 'atv' && !state.overlay;
-      // on the bar the focused tab itself wears the white pill; elsewhere the active one does
-      toggleClass(btns[k], 'on', !onBar && k === active);
-      toggleClass(btns[k], 'focused', onBar && k === atv.tab);
-    }
-    if (atv.zone !== 'pill') atv.tab = active === -1 ? 0 : active;
-  }
-
-  /** Moves the camera: the shelves slide up / down, the row's track glides sideways, the rest is opacity. */
-  function atvLayout() {
-    var r = atv.row;
-    atv.cam = r;
-    $('atv-rows').style.transform = 'translate3d(0,' + (-r * atvRem(ATV_ROW)) + 'px,0)';
-    atvRowClasses();
-    var c = atv.cols[r] || 0;
-    if (atv.tracks[r]) atv.tracks[r].style.transform = 'translate3d(' + (Math.max(0, c - 1) * atvRem(ATV_PITCH)) + 'px,0,0)';
-  }
-
-  /** Rows above the camera fade out, the focused row is lit (with the pointer it may be one below the camera). */
-  function atvRowClasses() {
-    var cam = atv.cam || 0;
-    for (var i = 0; i < atv.rowEls.length; i++) {
-      atv.rowEls[i].className = 'atv-row' + (i === atv.row ? ' active' : i < cam ? ' above' : ' below');
-    }
-  }
-
-  function atvMark() {
-    if (atv.focusedEl) atv.focusedEl.classList.remove('focused');
-    atv.focusedEl = null;
-    if (atv.zone === 'rows' && atv.items[atv.row]) {
-      var it = atv.items[atv.row][atv.cols[atv.row] || 0];
-      if (it && state.zone === 'atv' && !state.overlay) { it.classList.add('focused'); atv.focusedEl = it; }
-    }
-    atvPillState();
-  }
-
-  function atvCurrent() {
-    var row = atv.rows[atv.row];
-    return row ? row.list[atv.cols[atv.row] || 0] : null;
-  }
-
-  /** Focus a card: camera, focus ring, the list the player zaps through, then (debounced) details and preview. */
-  function atvFocus(r, c, fromPointer) {
-    if (!atv.rows.length) return;
-    r = clamp(r, 0, atv.rows.length - 1);
-    var n = atv.rows[r].list.length;
-    c = clamp(c, 0, Math.max(0, n - 1));
-    atv.row = r;
-    atv.cols[r] = c;
-    atv.zone = 'rows';
-    state.zone = 'atv';
-    if (atv.rendered[r] === 0) atvRender(r, ATV_FIRST);
-    if (r + 1 < atv.rows.length && atv.rendered[r + 1] === 0) atvRender(r + 1, ATV_FIRST);
-    if (r + 2 < atv.rows.length && atv.rendered[r + 2] === 0) atvRender(r + 2, ATV_FIRST);
-    if (c > atv.rendered[r] - 8) atvRender(r, c + ATV_MORE);
-    state.list = atv.rows[r].list;
-    state.gridIdx = c;
-    // the pointer never moves the camera: a shelf sliding under a still pointer would focus the next card, and so on
-    if (!fromPointer) atvLayout(); else atvRowClasses();
-    atvMark();
-    atvSettle(atv.rows[r].list[c]);
-  }
-
-  function atvFocusPill(i) {
-    atv.zone = 'pill';
-    state.zone = 'atv';
-    atv.tab = clamp(i, 0, atv.tabs.length - 1);
-    var t = atv.tabs[atv.tab][1];
-    // a row tab jumps the shelves straight to its row
-    if (t === 'top' && atv.rows.length) { atv.row = 0; atvLayout(); }
-    else if (atvRowIndex(t) !== -1) { atv.row = atvRowIndex(t); atvLayout(); }
-    // number keys, Info and the colour keys act on that shelf's focused card
-    if (atv.rows[atv.row]) { state.list = atv.rows[atv.row].list; state.gridIdx = atv.cols[atv.row] || 0; }
-    atvMark();
-    atvPillState();
-    var btns = $('atv-pill').children;
-    for (var k = 0; k < btns.length; k++) toggleClass(btns[k], 'focused', k === atv.tab);
-    atvSettle(atvCurrent());
-  }
-
-  function atvSettle(ch) {
-    if (atv.metaTimer) clearTimeout(atv.metaTimer);
-    atv.metaTimer = setTimeout(function () { atvMeta(ch); }, 120);
-    if (atv.restTimer) clearTimeout(atv.restTimer);
-    if (state.playing && state.playing !== ch && state.overlay !== 'player') atvStopPreview();
-    if (!ch || PLATFORM === 'webos' || PLATFORM === 'tizen' || IS_TV || fastMode()) return;
-    atv.restTimer = setTimeout(function () { atvPreview(ch); }, 1000);
-  }
-
-  // ================================================================== EPG Program Guide Engine
-  var EPG_SCHEDULES = {
-    kan11: [
-      { t: '06:00', title: 'העולם הבוקר עם גאולה אבן' },
-      { t: '09:00', title: 'סדר עולמי – מהדורה ראשונה' },
-      { t: '11:00', title: 'כאן דוקו: סיפורים מהשטח' },
-      { t: '13:00', title: 'חדשות היום ברשת' },
-      { t: '15:00', title: 'משחקי הכיס – כלכלה' },
-      { t: '17:00', title: 'ערב ערב עם דב גילהר' },
-      { t: '19:00', title: 'שבע עם איילה חסון' },
-      { t: '20:00', title: 'חדשות הערב – המהדורה המרכזית' },
-      { t: '21:30', title: 'המפקדת / טהרן – עונה חדשה' },
-      { t: '22:30', title: 'בואו לאכול איתי – פרק יומי' },
-      { t: '23:30', title: 'חדשות הלילה עם רומי נוימרק' },
-      { t: '00:30', title: 'כאן שיר ישראלי' }
-    ],
-    keshet12: [
-      { t: '06:00', title: 'חדשות הבוקר עם ניב רסקין' },
-      { t: '09:30', title: 'פאולה וליאון' },
-      { t: '12:00', title: 'המהדורה הצעירה' },
-      { t: '14:00', title: 'החדשות אונליין' },
-      { t: '16:30', title: 'חמש עם רפי רשף' },
-      { t: '17:30', title: 'שש עם עודד בן עמי' },
-      { t: '18:30', title: 'התוכנית הכלכלית עם קרן מרציאנו' },
-      { t: '19:00', title: 'המהדורה המוקדמת עם דני קושמרו' },
-      { t: '20:00', title: 'המהדורה המרכזית של חדשות 12' },
-      { t: '21:30', title: 'ארץ נהדרת / מאסטר שף ישראל' },
-      { t: '23:00', title: 'ערב טוב עם גיא פינס' },
-      { t: '23:50', title: 'חי בלילה עם נדב בורנשטיין' }
-    ],
-    reshet13: [
-      { t: '06:00', title: 'העולם הבוקר' },
-      { t: '09:30', title: 'פותחים יום' },
-      { t: '12:00', title: 'מבזק חדשות 13' },
-      { t: '14:00', title: 'חדשות היום עם אלמוג בוקר' },
-      { t: '16:00', title: 'היום שהיה – מהדורת צהריים' },
-      { t: '17:00', title: 'שקוף שזה ערוץ 13' },
-      { t: '18:00', title: 'אזור בחירה עם רביב דרוקר' },
-      { t: '19:00', title: 'המהדורה המוקדמת' },
-      { t: '20:00', title: 'המהדורה המרכזית של חדשות 13' },
-      { t: '21:30', title: 'הישרדות / משחקי השף / המקור' },
-      { t: '23:00', title: 'הצינור עם גיא לרר' },
-      { t: '23:50', title: 'היום שהיה' }
-    ],
-    now14: [
-      { t: '06:00', title: 'ישראל הבוקר' },
-      { t: '09:00', title: 'סטטוס קוו' },
-      { t: '11:00', title: 'עכשיו כנסת' },
-      { t: '13:00', title: 'מהדורת 13' },
-      { t: '15:00', title: 'יומן צהריים' },
-      { t: '17:00', title: 'ריקלין וסגל' },
-      { t: '18:00', title: 'ארבע בערב' },
-      { t: '19:00', title: 'שבע עם יעקב ברדוגו' },
-      { t: '19:50', title: 'המהדורה המרכזית של עכשיו 14' },
-      { t: '21:15', title: 'הפטריוטים עם ינון מגל' },
-      { t: '22:45', title: 'הדו״ח של אראל סג״ל' },
-      { t: '23:45', title: 'חדשות הלילה' }
-    ],
-    channel9: [
-      { t: '06:00', title: 'בוקר טוב ישראל' },
-      { t: '09:00', title: 'מגזין תרבות וסגנון' },
-      { t: '12:00', title: 'מהדורת צהריים' },
-      { t: '15:00', title: 'סדרות ודרמות מובילות' },
-      { t: '18:00', title: 'שש בערב – אקטואליה' },
-      { t: '20:00', title: 'מהדורת החדשות המרכזית ברוסית' },
-      { t: '21:15', title: 'אולפן פתוח עם בכירי הפרשנים' },
-      { t: '22:30', title: 'קולנוע ישראלי ועולמי' }
-    ],
-    kan_hinuchit: [
-      { t: '06:00', title: 'פרפר נחמד – עונה חדשה' },
-      { t: '07:30', title: 'ילדי בית העץ' },
-      { t: '09:00', title: 'כראמל – סדרת ההרפתקאות' },
-      { t: '11:00', title: 'גלילאו – מדע וטבע לילדים' },
-      { t: '13:00', title: 'קופה ראשית – פרקים נבחרים' },
-      { t: '15:00', title: 'שקשוקה' },
-      { t: '17:00', title: 'ילדי בית העץ' },
-      { t: '18:30', title: 'כראמל – עונה 3' },
-      { t: '20:00', title: 'מיוחדים בחינוכית' },
-      { t: '21:30', title: 'סדרות נוער קלאסיות' }
-    ],
-    channel24: [
-      { t: '06:00', title: 'בוקר ישראלי – להיטים ברצף' },
-      { t: '10:00', title: 'מנטה עם ירון אילן' },
-      { t: '13:00', title: 'המצעד הים תיכוני' },
-      { t: '16:00', title: 'פופ ורוק ישראלי' },
-      { t: '19:00', title: 'שעתיים של חגיגה' },
-      { t: '21:00', title: 'הופעות חיות – מועדון 24' },
-      { t: '23:00', title: 'לילה ישראלי שקט' }
-    ],
-    hop_kids_israel: [
-      { t: '06:00', title: 'מולי וצומי בהרפתקה' },
-      { t: '08:00', title: 'סמי הכבאי' },
-      { t: '10:00', title: 'מטוסי על' },
-      { t: '12:00', title: 'רחוב סומסום' },
-      { t: '14:00', title: 'יובל המבולבל' },
-      { t: '16:00', title: 'כוח פיג\'יי' },
-      { t: '18:00', title: 'סיפורים לפני השינה' },
-      { t: '20:00', title: 'שירים וחלומות' }
-    ],
-    zoom_kids_israel: [
-      { t: '06:00', title: 'בוקר זום: סדרות אנימציה' },
-      { t: '09:00', title: 'סופר סטרייקה' },
-      { t: '12:00', title: 'האגדה של קורה' },
-      { t: '15:00', title: 'מועדון החנונים' },
-      { t: '17:00', title: 'סוואגרז' },
-      { t: '19:00', title: 'הרפתקאות ג\'ימי ניוטרון' },
-      { t: '21:00', title: 'סרטי אנימציה לכל המשפחה' }
-    ],
-    sport5_israel_hd: [
-      { t: '06:00', title: 'חדשות הספורט – מהדורת בוקר' },
-      { t: '09:00', title: 'משחק העבר – ליגת העל' },
-      { t: '12:00', title: 'אולפן הליגיונרים' },
-      { t: '15:00', title: 'מגרש פתוח' },
-      { t: '18:00', title: '5 באוויר עם רז זהבי' },
-      { t: '19:30', title: 'אולפן חי – לקראת המחזור' },
-      { t: '20:30', title: 'שידור חי: משחק הערב' },
-      { t: '23:00', title: 'חדשות הספורט – המהדורה המרכזית' },
-      { t: '23:45', title: 'בובה של לילה' }
-    ],
-    sport1_israel: [
-      { t: '06:00', title: 'תקצירי הליגה האנגלית' },
-      { t: '09:00', title: 'משחק השבוע – בונדסליגה' },
-      { t: '12:00', title: 'אולפן אירופה' },
-      { t: '16:00', title: 'מגזין ליגת האלופות' },
-      { t: '19:00', title: 'אולפן פתוח לקראת המשחק' },
-      { t: '20:45', title: 'שידור חי: משחק עולמי' },
-      { t: '23:00', title: 'סיכום המחזור' }
-    ]
-  };
-
-  function parseMins(tStr) {
-    var parts = tStr.split(':');
-    return (+parts[0]) * 60 + (+parts[1]);
-  }
-
-  function getChannelEpg(ch) {
-    if (!ch) return null;
-    var list = EPG_SCHEDULES[ch.id];
-    if (!list) {
-      // Dynamic fallback based on category
-      var cat = ch.category || '';
-      if (cat.indexOf('ספורט') !== -1) {
-        list = [
-          { t: '06:00', title: 'תקצירי ספורט הבוקר' }, { t: '10:00', title: 'משחקי העונה' },
-          { t: '14:00', title: 'מגזין ספורט עולמי' }, { t: '18:00', title: 'אולפן פתוח' },
-          { t: '20:30', title: 'שידור חי: אירוע הספורט המרכזי' }, { t: '23:00', title: 'סיכום אירועי היום' }
-        ];
-      } else if (cat.indexOf('ילדים') !== -1) {
-        list = [
-          { t: '06:00', title: 'בוקר של אנימציה וכיף' }, { t: '09:00', title: 'סדרות ילדים אהובות' },
-          { t: '13:00', title: 'סרטי הרפתקאות' }, { t: '16:00', title: 'שעשועוני ילדים' },
-          { t: '18:30', title: 'תוכניות לפני השינה' }, { t: '20:30', title: 'קלאסיקות משפחתיות' }
-        ];
-      } else if (cat.indexOf('סרטים') !== -1) {
-        list = [
-          { t: '06:00', title: 'קולנוע הבוקר' }, { t: '10:00', title: 'דרמה מרתקת' },
-          { t: '14:00', title: 'קומדיה לכל המשפחה' }, { t: '18:00', title: 'מותחן פעולה' },
-          { t: '20:30', title: 'סרט הפריים טיים המרכזי' }, { t: '22:45', title: 'קולנוע עולמי איכותי' }
-        ];
-      } else {
-        list = [
-          { t: '06:00', title: 'שידורי הבוקר' }, { t: '10:00', title: 'מגזין אקטואליה ותרבות' },
-          { t: '14:00', title: 'מהדורת צהריים' }, { t: '17:00', title: 'שידורי ערב' },
-          { t: '20:00', title: 'המשדר המרכזי' }, { t: '22:00', title: 'תוכנית פריים טיים' },
-          { t: '23:30', title: 'שידורי הלילה' }
-        ];
-      }
-    }
-    var d = new Date();
-    var curMins = d.getHours() * 60 + d.getMinutes();
-    var curIdx = list.length - 1;
-    for (var i = 0; i < list.length; i++) {
-      var m = parseMins(list[i].t);
-      if (curMins < m) {
-        curIdx = i - 1;
-        break;
-      }
-    }
-    if (curIdx < 0) curIdx = list.length - 1;
-    var curItem = list[curIdx];
-    var nextItem = list[(curIdx + 1) % list.length];
-    var startMins = parseMins(curItem.t);
-    var endMins = parseMins(nextItem.t);
-    if (endMins <= startMins) endMins += 24 * 60;
-    var adjustedCur = curMins;
-    if (adjustedCur < startMins) adjustedCur += 24 * 60;
-    var duration = Math.max(1, endMins - startMins);
-    var progress = clamp(Math.round(((adjustedCur - startMins) / duration) * 100), 5, 95);
-
-    var upcoming = [];
-    for (var u = 1; u <= 3; u++) {
-      upcoming.push(list[(curIdx + u) % list.length]);
-    }
-    return {
-      now: { title: curItem.title, start: curItem.t, end: nextItem.t, progress: progress },
-      upcoming: upcoming
-    };
-  }
-
-  function renderAtvEpg(ch) {
-    if (!ch || isRadioCh(ch) || isApp(ch) || appOnly(ch)) return '';
-    var epg = getChannelEpg(ch);
-    if (!epg || !epg.now) return '';
-    var now = epg.now;
-    var up = epg.upcoming || [];
-    var upHtml = '';
-    if (up.length) {
-      upHtml = '<div class="atv-epg-upcoming">' +
-        up.slice(0, 1).map(function (item) {
-          return '<div class="atv-epg-item">' +
-            '<span class="atv-epg-item-title"><small style="opacity:.6;margin-left:.5rem">בהמשך:</small>' + esc(item.title) + '</span>' +
-            '<span class="atv-epg-item-time">' + esc(item.t) + '</span>' +
-            '</div>';
-        }).join('') + '</div>';
-    }
-    return '<div class="atv-epg">' +
-      '<div class="atv-epg-now">' +
-        '<div class="atv-epg-header">' +
-          '<span class="atv-epg-badge">משודר כעת</span>' +
-          '<span class="atv-epg-time">' + esc(now.start) + ' - ' + esc(now.end) + '</span>' +
-        '</div>' +
-        '<div class="atv-epg-title">' + esc(now.title) + '</div>' +
-        '<div class="atv-epg-bar"><div class="atv-epg-progress" style="width:' + now.progress + '%"></div></div>' +
-      '</div>' +
-      upHtml +
-    '</div>';
-  }
-
-  /** The focused channel's details, sliding up into the second of two layers while the first fades. */
-  function atvMeta(ch) {
-    var a = $('atv-meta-a'), b = $('atv-meta-b');
-    var target = atv.flip ? b : a, other = atv.flip ? a : b;
-    atv.flip = !atv.flip;
-    if (!ch) { other.className = 'atv-meta'; target.className = 'atv-meta'; return; }
-    var q = isApp(ch) ? 'אפליקציה' : isRadioCh(ch) ? 'רדיו' : (ch.badge || 'HD');
-    var tags = (isApp(ch) ? '' : '<span class="atv-live"><i></i>LIVE</span>') + '<span class="atv-pill-q">' + esc(q) + '</span>' +
-      (appOnly(ch) ? '<span class="atv-tag atv-on">📲 פועל באפליקציה (לא בדפדפן)</span>' : isApp(ch) ? '<span class="atv-tag atv-on">↗ נפתח באפליקציה של הערוץ</span>' : '') +
-      '<span class="atv-tag">' + esc(splitCat(ch.category)) + '</span>' +
-      (ch.countryHe ? '<span class="atv-tag">' + esc(ch.countryHe) + '</span>' : '') +
-      (isFav(ch) ? '<span class="atv-tag">★ מועדף</span>' : '') +
-      (state.playing === ch && !state.preview ? '<span class="atv-tag atv-on">🔊 מתנגן עכשיו · OK למסך מלא</span>' : '');
-    var epgHtml = renderAtvEpg(ch);
-    target.innerHTML = '<div class="atv-mlogo"><img alt=""><div class="mono hidden"></div></div>' +
-      '<h1 class="atv-title">' + esc(ch.name) + '</h1><div class="atv-tags">' + tags + '</div>' +
-      epgHtml +
-      (ch.desc ? '<p class="atv-desc">' + esc(ch.desc) + '</p>' : '') +
-      (S.showSource ? '<p class="atv-src">' + esc(sourceLine(ch)) + '</p>' : '');
-    setLogo(target.querySelector('img'), target.querySelector('.mono'), ch);
-    target.className = 'atv-meta in';
-    other.className = 'atv-meta';
-    // the stage: a soft wash in the channel's colours, cross-faded
-    var bd = atv.bdFlip ? $('atv-bd-b') : $('atv-bd-a'), bo = atv.bdFlip ? $('atv-bd-a') : $('atv-bd-b');
-    atv.bdFlip = !atv.bdFlip;
-    var h = hueOf(ch.id);
-    bd.style.background = 'radial-gradient(ellipse at 78% 30%, hsla(' + h + ',70%,42%,.62), hsla(' + h + ',70%,42%,0) 58%),' +
-      'radial-gradient(ellipse at 18% 75%, hsla(' + ((h + 50) % 360) + ',70%,34%,.5), hsla(' + ((h + 50) % 360) + ',70%,34%,0) 60%),#07070b';
-    bd.className = 'atv-bd on';
-    bo.className = 'atv-bd';
-  }
-
-  // ---- live preview behind the shelves (desktop only, disabled on Smart TVs to protect video decoders)
-  function atvPreview(ch) {
-    if (!TVUI || state.overlay || state.zone !== 'atv' || ch !== atvCurrent()) return;
-    if (state.playing === ch) { if (!state.isRadio) document.body.classList.add('atv-live'); return; }
-    if (isRadioCh(ch) || isApp(ch) || appOnly(ch) || fastMode() || PLATFORM === 'webos' || PLATFORM === 'tizen' || IS_TV) return;
-    if (atv.stopTimer) { clearTimeout(atv.stopTimer); atv.stopTimer = null; }
-    if (state.playing) stopPlayback();
-    state.preview = ch;
-    state.playing = ch;
-    el.player.classList.remove('hidden');
-    loadStream(ch);
-  }
-
-  /** The preview fades back into the stage, then stops (it keeps playing if a new one starts meanwhile). */
-  function atvStopPreview() {
-    document.body.classList.remove('atv-live');
-    if (atv.stopTimer) clearTimeout(atv.stopTimer);
-    var was = state.playing;
-    atv.stopTimer = setTimeout(function () {
-      atv.stopTimer = null;
-      if (state.overlay === 'player' || state.playing !== was) return;
-      stopPlayback();
-      el.player.classList.add('hidden');
-    }, 700);
-  }
-
-  /** OK on a card: the preview (already playing) becomes the player in place – sound on, shelves slide away. */
-  function atvWatch() {
-    var ch = atvCurrent();
-    if (!ch) return;
-    if (Dub) Dub.unlockAudio();
-    var c = atv.cols[atv.row] || 0;
-    state.list = atv.rows[atv.row].list;
-    if (atv.restTimer) clearTimeout(atv.restTimer);
-    if (atv.stopTimer) { clearTimeout(atv.stopTimer); atv.stopTimer = null; }
-    playIndex(c);
-  }
-
-  /** TV: the channel already runs behind the shelves (the preview, or one watched before Back) – it just becomes
-   *  the player, with full sound, no reload and no cut. */
-  function atvResume(ch, i) {
-    var m = media();
-    var wasPreview = state.preview === ch;
-    state.preview = null;
-    m.muted = false;
-    m.volume = 1;
-    if (m.paused) { var p = m.play(); if (p && p.catch) p.catch(function () {}); }
-    state.playIdx = i;
-    addRecent(ch);
-    crumb('play');
-    openPlayer();
-    fillOsd(ch);
-    showOsd();
-    updatePlayIcon();
-    if (wasPreview && Dub && state.hls) Dub.attach({ video: el.video, hls: state.hls, channel: ch, url: state.streamUrl });
-  }
-
-  function atvOk() {
-    if (atv.zone === 'pill') {
-      var t = atv.tabs[atv.tab] && atv.tabs[atv.tab][1];
-      if (t === 'search') atvOpenSearch();
-      else if (t === 'settings') openSettings();
-      else if (t === 'kids-exit') askPin(function () { setSetting('kids', false); toast('יצאתם ממצב ילדים'); });
-      else if (atv.search && t !== 'search') { atvCloseSearch(t === 'top' ? '' : t); }   // a shelf tab leaves the search
-      else atvFocus(atv.row, atv.cols[atv.row] || 0);
-      return;
-    }
-    atvWatch();
-  }
-
-  function atvKey(code) {
-    if (isBack(code)) { atvBack(); return; }
-    if (atv.zone === 'pill') {
-      if (code === 37) atvFocusPill(atv.tab + 1);
-      else if (code === 39) atvFocusPill(atv.tab - 1);
-      else if (code === 40) { if (atv.search) atvFocusSearch(); else atvFocus(atv.row, atv.cols[atv.row] || 0); }
-      return;
-    }
-    var c = atv.cols[atv.row] || 0;
-    if (code === 37) atvFocus(atv.row, c + 1);
-    else if (code === 39) atvFocus(atv.row, c - 1);
-    else if (code === 38) {
-      if (atv.search) atvFocusSearch();
-      else if (atv.row > 0) atvFocus(atv.row - 1, atv.cols[atv.row - 1] || 0);
-      else atvFocusPill(atv.tab);
-    } else if (code === 40) {
-      if (atv.row < atv.rows.length - 1) atvFocus(atv.row + 1, atv.cols[atv.row + 1] || 0);
-    }
-  }
-
-  function atvBack() {
-    if (atv.search) { atvCloseSearch(); return; }
-    if (atv.zone === 'pill') { atvFocus(atv.row, atv.cols[atv.row] || 0); return; }
-    if (atv.row > 0 || (atv.cols[atv.row] || 0) > 0) { atv.cols[atv.row] = 0; atvFocus(0, atv.cols[0] || 0); return; }
-    if (state.playing && !state.preview) { stopPlayback(); document.body.classList.remove('atv-live'); el.player.classList.add('hidden'); return; }
-    var now = Date.now();
-    if (now - (state.lastBack || 0) < 2500) exitApp();
-    else { state.lastBack = now; toast('לחצו שוב BACK ליציאה'); }
-  }
-
-  // ---- search: the field takes the details' place, the results are one shelf
-  function atvOpenSearch() {
-    if (!atv.search) { var cur = atvCurrent(); atv.before = { id: atv.rows[atv.row] && atv.rows[atv.row].id, ch: cur && cur.id }; }
-    atv.search = true;
-    atv.query = '';
-    $('atv-q').value = '';
-    document.body.classList.add('atv-searching');
-    atvBuild();
-    atvLayout();
-    atvFocusSearch();
-  }
-  function atvFocusSearch() {
-    atv.zone = 'search';
-    state.zone = 'atv';
-    atvMark();
-    $('atv-search').classList.add('focused');
-    try { $('atv-q').focus(); } catch (e) {}
-  }
-  /** Leaves the search: back to where it was opened, or to the shelf of a tab chosen meanwhile ('' = the first one). */
-  function atvCloseSearch(rowId) {
-    atv.search = false;
-    try { $('atv-q').blur(); } catch (e) {}
-    $('atv-search').classList.remove('focused');
-    document.body.classList.remove('atv-searching');
-    atvBuild();
-    var b = rowId == null ? atv.before || {} : { id: rowId };
-    atv.before = null;
-    // a result was watched and goes on behind the shelves: the focus stays on it ("recently watched"), so it keeps playing
-    if (rowId == null && state.playing && !state.preview && b.ch !== state.playing.id && atvRowIndex('mine') !== -1) b = { id: 'mine', ch: state.playing.id };
-    var r = b.id ? atvRowIndex(b.id) : -1, c = 0;
-    if (r === -1) r = 0;
-    else if (b.ch) { var list = atv.rows[r].list; for (var k = 0; k < list.length; k++) if (list[k].id === b.ch) { c = k; break; } }
-    atvFocus(r, c);
-  }
-  function atvSearchKey(code, e) {
-    var q = $('atv-q');
-    if (code === 40 || code === 13) {
-      if (e.preventDefault) e.preventDefault();
-      if (atv.searchTimer) { clearTimeout(atv.searchTimer); atv.searchTimer = null; atv.query = q.value; atvBuild(); atvLayout(); }   // typed just now
-      if (!(atv.rows[0] && atv.rows[0].list.length)) return;   // no results: the field keeps the focus
-      q.blur();
-      $('atv-search').classList.remove('focused');
-      atvFocus(0, 0);
-    } else if (code === 38) { if (e.preventDefault) e.preventDefault(); q.blur(); $('atv-search').classList.remove('focused'); atvFocusPill(atv.tab); }
-    else if (isBack(code) && (code !== 8 || !q.value)) { if (e.preventDefault) e.preventDefault(); atvCloseSearch(); }
-  }
-
-  /** Back to the browse screen (after the player, settings, a dialog). */
-  function atvRestore() {
-    if (!atv.built || atv.dirty) atvBuild();
-    else if (atv.mineDirty) atvRefreshMine();
-    state.zone = 'atv';
-    if (atv.zone === 'search') atv.zone = 'rows';
-    var row = atv.rows[atv.row];
-    // zapped in the player: the focus follows the channel that is on now (when it is on this shelf)
-    if (row && state.playing && !state.preview && row.list[atv.cols[atv.row] || 0] !== state.playing) {
-      var at = -1;
-      for (var k = 0; k < row.list.length; k++) if (row.list[k].id === state.playing.id) { at = k; break; }
-      // not on this shelf (a number key, zapping through all channels): it is first on "recently watched"
-      var mine = atvRowIndex('mine');
-      if (at === -1 && mine !== -1 && atv.rows[mine].list[0] && atv.rows[mine].list[0].id === state.playing.id) { atv.row = mine; at = 0; row = atv.rows[mine]; }
-      if (at !== -1) atv.cols[atv.row] = at;
-      if (atv.cols[atv.row] > atv.rendered[atv.row] - 8) atvRender(atv.row, atv.cols[atv.row] + ATV_MORE);
-    }
-    if (row) { state.list = row.list; state.gridIdx = atv.cols[atv.row] || 0; }
-    atvLayout();
-    atvMark();
-    atvMeta(atvCurrent());
-    // nothing on yet (start, after settings): the focused card starts its preview after the usual rest
-    // (or the preview's card is gone – a hidden channel – and the new focused card takes over)
-    if (!state.overlay && atv.zone === 'rows' && (!state.playing || (state.preview && state.preview !== atvCurrent()))) atvSettle(atvCurrent());
-  }
-
-  function atvAction(action) {
-    switch (action) {
-      case 'favorites': case 'recent':
-        if (atvRowIndex('mine') === -1) { toast('אין עדיין מועדפים – הוסיפו ⭐ מתפריט האפשרויות'); return true; }
-        atvFocus(atvRowIndex('mine'), 0); return true;
-      case 'search': atvOpenSearch(); return true;
-      case 'all': atvFocus(0, 0); return true;
-      case 'drawer': atvFocusPill(atv.tab); return true;
-    }
-    return false;
-  }
-
-  function setupAtv() {
-    var pill = $('atv-pill'), rows = $('atv-rows');
-    pill.addEventListener('click', function (e) {
-      var b = e.target.closest('.atv-tab');
-      if (!b) return;
-      atvFocusPill(+b.getAttribute('data-i'));
-      atvOk();
-    });
-    rows.addEventListener('click', function (e) {
-      var it = e.target.closest('.atv-item');
-      if (!it) return;
-      atvFocus(+it.getAttribute('data-r'), +it.getAttribute('data-c'), true);
-      atvWatch();
-    });
-    // computers: right click = the channel's options (like the guide's grid and the remote's long OK)
-    rows.addEventListener('contextmenu', function (e) {
-      var it = e.target.closest('.atv-item');
-      if (!it || state.overlay) return;
-      e.preventDefault();
-      atvFocus(+it.getAttribute('data-r'), +it.getAttribute('data-c'), true);
-      channelMenu(atvCurrent());
-    });
-    // Magic Remote / mouse: the pointer focuses what it is over (the camera stays), the wheel moves it. Only a pointer
-    // that really moves counts: a still one that cards slide under (arrow keys) must not steal the remote's focus.
-    var px = -1, py = -1;
-    rows.addEventListener('mousemove', function (e) {
-      if (e.clientX === px && e.clientY === py) return;
-      px = e.clientX; py = e.clientY;
-      if (Date.now() - (state.keyAt || 0) < 700) return;   // the remote's keys were just used: they lead
-      var it = e.target.closest('.atv-item');
-      if (!it || state.overlay) return;
-      var r = +it.getAttribute('data-r'), c = +it.getAttribute('data-c');
-      if (r !== atv.row || c !== atv.cols[r] || atv.zone !== 'rows') atvFocus(r, c, true);
-    });
-    var wheelAt = 0;
-    $('atv').addEventListener('wheel', function (e) {
-      if (state.overlay) return;
-      var now = Date.now();
-      if (now - wheelAt < 160) return;
-      wheelAt = now;
-      var dx = e.deltaX, dy = e.deltaY;
-      if (Math.abs(dx) > Math.abs(dy) || e.shiftKey) {
-        atvKey((dx || dy) > 0 ? 37 : 39);
-      } else {
-        // Rolling forward (dy < 0) advances forward along the row (37); rolling backward moves back (39)
-        atvKey(dy < 0 ? 37 : 39);
-      }
-    }, { passive: true });
-    window.addEventListener('wheel', function (e) {
-      if (state.overlay === 'player') {
-        var now = Date.now();
-        if (now - wheelAt < 250) return;
-        wheelAt = now;
-        // In player: rolling forward (dy < 0) = next channel; rolling backward (dy > 0) = previous channel
-        zap(e.deltaY < 0 ? 1 : -1);
-      }
-    }, { passive: true });
-    // the pointer clicking into the field: the remote's focus goes there too
-    $('atv-q').addEventListener('focus', function () {
-      if (atv.zone !== 'search' && atv.search && !state.overlay) { atv.zone = 'search'; atvMark(); $('atv-search').classList.add('focused'); }
-    });
-    $('atv-q').addEventListener('input', function () {
-      atv.query = $('atv-q').value;
-      if (atv.searchTimer) clearTimeout(atv.searchTimer);
-      atv.searchTimer = setTimeout(function () { atv.searchTimer = null; atvBuild(); atvLayout(); atvMark(); }, 220);
-    });
-    // the preview shows once the picture really moves
-    el.video.addEventListener('playing', function () {
-      if (TVUI && state.playing && state.overlay !== 'player') document.body.classList.add('atv-live');
-    });
-  }
-
   // ================================================================== playback
   function playIndex(i) {
     if (i < 0 || i >= state.list.length) return;
     var ch = state.list[i];
     if (isApp(ch)) { openServiceApp(ch); addRecent(ch); return; }
     if (appOnly(ch)) { showGetApp(ch); return; }
-    if (TVUI && state.playing === ch && state.overlay !== 'player') { atvResume(ch, i); return; }
     state.playIdx = i;
     state.playing = ch;
-    state.preview = null;   // a channel that is watched is never the silent preview
     addRecent(ch);
     crumb('play');
     for (var k = 0; k < cards.length; k++) toggleClass(cards[k], 'is-playing', k === i);
@@ -2220,14 +1374,11 @@
   }
 
   function closePlayer(keepPlaying) {
-    // a channel that failed has nothing to keep playing behind the shelves (the OSD's ← with the error showing)
-    if (el.perror && !el.perror.classList.contains('hidden')) keepPlaying = false;
     hideError();
     spinner(false);
     closeDrawer(true);
-    var behind = TVUI && keepPlaying !== false && !!state.playing;   // TV: the channel goes on behind the shelves
     var finish = function () {
-      if (!behind) el.player.classList.add('hidden');
+      el.player.classList.add('hidden');
       document.body.classList.remove('player-open');
     };
     if (PHONE && el.player.animate && !fastMode()) {
@@ -2239,11 +1390,6 @@
     state.overlay = null;
     if (!keepPlaying) stopPlayback();
     native('setPlaying', false);   // picture-in-picture on "home" only while the player is on screen
-    if (TVUI) {
-      if (state.playing && !state.isRadio) document.body.classList.add('atv-live');   // radio: the colour stage stays
-      atvRestore();
-      return;
-    }
     var idx = state.playing ? indexInList(state.playing.id) : -1;
     focusGrid(idx !== -1 ? idx : state.gridIdx);
     if (PHONE && state.tab === 'home' && homeDirty) { var y = el.home.scrollTop; buildHome(); el.home.scrollTop = y; }
@@ -2256,23 +1402,7 @@
     el.video.pause(); el.video.removeAttribute('src'); try { el.video.load(); } catch (e) {}
     el.radioAudio.pause(); el.radioAudio.removeAttribute('src');
     state.playing = null;
-    state.preview = null;
-    document.body.classList.remove('atv-live');
     for (var k = 0; k < cards.length; k++) cards[k].classList.remove('is-playing');
-  }
-
-  /** Stops the channel and takes the player away, also from under the settings / a dialog opened over it. */
-  function dropPlaying() {
-    stopPlayback();
-    hideError();
-    spinner(false);
-    state.stack = state.stack.filter(function (o) { return o !== 'player' && o !== 'drawer'; });
-    if (state.overlay === 'player' || state.overlay === 'drawer') state.overlay = null;
-    el.drawer.classList.add('hidden');
-    el.player.classList.add('hidden');
-    document.body.classList.remove('player-open');
-    native('setPlaying', false);
-    if (PHONE) native('setImmersive', false);
   }
 
   function isAudioUrl(url, ch) {
@@ -2285,32 +1415,8 @@
     if (on) el.spinnerText.textContent = text || 'מתחבר לשידור...';
   }
 
-  // Keshet 12 / 24 play from mako's own CDN (the broadcaster, not a re-stream): the stream URL needs a short-lived
-  // ticket from mako's entitlement service, fetched right before playing (it then holds for the whole session)
-  var MAKO_ENTITLEMENT = 'https://mass.mako.co.il/ClicksStatistics/entitlementsServicesV2.jsp';
-  function makoUrl(url, ok, fail) {
-    var m = /^(https:\/\/[^/]+)(\/.*)$/.exec(url);
-    if (!m) { fail(new Error('url')); return; }
-    xhrJson(MAKO_ENTITLEMENT + '?et=ngt&rv=AKAMAI&lp=' + encodeURIComponent(m[2]), 10000, function (d) {
-      var t = d && d.tickets && d.tickets[0] && d.tickets[0].ticket;
-      if (!t) { fail(new Error('ticket')); return; }
-      ok(url + (url.indexOf('?') === -1 ? '?' : '&') + decodeURIComponent(t.replace(/\+/g, ' ')));
-    }, fail);
-  }
-
   function loadStream(ch) {
-    if (ch.auth === 'mako') {
-      hideError();
-      spinner(true);
-      makoUrl(streamUrl(ch), function (url) { if (state.playing === ch) loadResolved(ch, url); },
-        function () { if (state.playing === ch) onFatal(ch, 'לא התקבלה הרשאת צפייה מ-mako'); });
-      return;
-    }
-    loadResolved(ch, streamUrl(ch));
-  }
-
-  function loadResolved(ch, url) {
-    state.streamUrl = url;
+    var url = streamUrl(ch);
     hideError();
     state.retries = 0;
     if (Dub) Dub.detach();
@@ -2364,7 +1470,7 @@
         }
         if (delayed) spinner(true, 'מכין דיבוב מסונכרן… התמונה מושהית ב-' + Dub.settings.delay + ' שניות');
         startPlay(v, ch);
-        if (Dub && state.playing === ch && state.preview !== ch) Dub.attach({ video: v, hls: hls, channel: ch, url: url });
+        if (Dub && state.playing === ch) Dub.attach({ video: v, hls: hls, channel: ch, url: url });
       });
       hls.on(Hls.Events.LEVEL_SWITCHED, function (e, data) {
         var l = hls.levels && hls.levels[data.level];
@@ -2373,16 +1479,10 @@
       hls.on(Hls.Events.ERROR, function (e, data) {
         if (!data.fatal) return;
         if (data.type === Hls.ErrorTypes.MEDIA_ERROR && state.retries < 2) { state.retries++; hls.recoverMediaError(); return; }
-        // (the silent TV preview does not retry: it just goes away, OK on the card loads the channel afresh)
-        var previewing = state.preview === ch && state.overlay !== 'player';
-        if (data.type === Hls.ErrorTypes.NETWORK_ERROR && S.retry && state.retries < 3 && !previewing) {
+        if (data.type === Hls.ErrorTypes.NETWORK_ERROR && S.retry && state.retries < 3) {
           state.retries++;
           spinner(true, 'מתחבר מחדש... (' + state.retries + '/3)');
-          setTimeout(function () {
-            if (state.hls !== hls) return;
-            // no manifest yet (the server did not answer at all): startLoad() would wait forever – load it again
-            if (hls.levels && hls.levels.length) hls.startLoad(); else hls.loadSource(url);
-          }, 1500 * state.retries);
+          setTimeout(function () { if (state.hls === hls) hls.startLoad(); }, 1500 * state.retries);
           return;
         }
         onFatal(ch, data.type === Hls.ErrorTypes.NETWORK_ERROR ? 'השרת לא עונה' : 'פורמט לא נתמך');
@@ -2397,30 +1497,21 @@
     }
   }
 
-  // The app never mutes a channel you watch: every channel starts with full sound, and only the TV's own mute key
-  // silences it. The one silent picture is the TV browse screen's background preview (state.preview), and
-  // atvWatch() turns its sound on the moment it becomes the player.
   function startPlay(m, ch) {
     var done = function () { spinner(false); updatePlayIcon(); };
-    m.muted = state.preview === ch;
-    m.volume = 1;
     m.addEventListener('playing', function onp() { m.removeEventListener('playing', onp); done(); });
     var p = m.play();
     if (!p || !p.then) return;
-    p.then(done).catch(function (e) {
-      if (state.playing !== ch || (e && e.name === 'AbortError')) return;   // zapped on: the next channel's load took over
-      if (e && e.name === 'NotAllowedError') {   // a browser without a tap yet: wait for ▶ instead of playing silently
-        done();
-        toast('▶ לחצו על נגן כדי להתחיל');
-        return;
-      }
-      onFatal(ch, e && e.message);
+    p.then(done).catch(function () {
+      m.muted = true;
+      var p2 = m.play();
+      if (p2 && p2.then) p2.then(function () { done(); toast('🔇 הקישו על המסך כדי להפעיל שמע'); unmuteOnTouch(m); })
+        .catch(function (e) { if (state.playing === ch) onFatal(ch, e && e.message); });
     });
   }
 
   function onFatal(ch, reason) {
     if (state.playing !== ch) return;
-    if (state.preview === ch && state.overlay !== 'player') { stopPlayback(); el.player.classList.add('hidden'); return; }
     spinner(false);
     if (Dub) Dub.detach();
     if (state.hls) { try { state.hls.destroy(); } catch (e) {} state.hls = null; }
@@ -2450,6 +1541,15 @@
     var nodes = document.querySelectorAll('.ob-play');
     for (var i = 0; i < nodes.length; i++) nodes[i].innerHTML = icon;
   }
+  // the browser only allowed muted autoplay: sound comes back with the first tap / key (there is no mute button)
+  function unmuteOnTouch(m) {
+    var evs = ['pointerdown', 'keydown'];
+    var on = function () {
+      evs.forEach(function (t) { document.removeEventListener(t, on, true); });
+      m.muted = false;
+    };
+    evs.forEach(function (t) { document.addEventListener(t, on, true); });
+  }
 
   function enterPip() {
     if (native('canPip')) { native('enterPip'); return; }
@@ -2469,8 +1569,7 @@
       next = (next + dir + list.length) % list.length;
       if (!isApp(list[next]) && !appOnly(list[next])) break;
     }
-    if (S.zap === 'all' && list !== state.list && TVUI) state.list = state.all;   // TV: the shelf is a list of its own
-    else if (S.zap === 'all' && list !== state.list) {
+    if (S.zap === 'all' && list !== state.list) {
       if (state.cat !== 'ALL' || state.query) { state.query = ''; el.searchInput.value = ''; selectCategory('ALL', true); }
       next = indexInList(list[next].id);
     }
@@ -2500,7 +1599,7 @@
   // ---- channel list inside the player
   function openDrawer() {
     var playingId = state.playing && state.playing.id;
-    el.drawerCat.textContent = TVUI ? (atv.rows[atv.row] || {}).title || '' : (state.cats[state.railIdx] || {}).name || '';
+    el.drawerCat.textContent = (state.cats[state.railIdx] || {}).name || '';
     el.drawerList.innerHTML = state.list.map(function (ch, i) {
       return '<div class="drawer-item' + (ch.id === playingId ? ' is-playing' : '') + '" data-i="' + i + '">' +
         '<span class="d-num">' + ch.number + '</span><span class="d-name">' + esc(ch.name) + '</span>' +
@@ -2718,10 +1817,9 @@
     if (!on) { Dub.detach(); toast('🎙️ הדיבוב כובה'); return; }
     if (ch && !foreign(ch)) { toast('🎙️ הדיבוב פועל – יופעל אוטומטית בערוצים שאינם בעברית'); return; }
     toast('🎙️ דיבוב לעברית הופעל' + (Dub.settings.sync ? ' (מסונכרן)' : ''));
-    // (never on the silent TV preview; a channel watched and left on behind the TV shelves is dubbed at once)
-    if (ch && (state.overlay || TVUI) && state.hls && !state.preview) {
+    if (ch && state.overlay && state.hls) {
       if (Dub.settings.sync) loadStream(ch);
-      else Dub.attach({ video: el.video, hls: state.hls, channel: ch, url: state.streamUrl || streamUrl(ch) });
+      else Dub.attach({ video: el.video, hls: state.hls, channel: ch, url: streamUrl(ch) });
     }
   }
   function watchDubbed(ch) {
@@ -2729,8 +1827,6 @@
     Dub.unlockAudio();
     if (Dub.missingConfig()) { needKey(ch); return; }
     Dub.save({ enabled: true });
-    // the TV preview of this channel was loaded without the dubbing delay: synced dubbing needs a fresh load
-    if (state.playing === ch && Dub.wantsSync(ch)) stopPlayback();
     var i = indexInList(ch.id);
     if (i !== -1) playIndex(i);
   }
@@ -2831,7 +1927,7 @@
       toast('✅ המפתח התקבל – הדיבוב לעברית פועל');
       refreshSettingsIfOpen();
       if (ch) watchDubbed(ch);
-      else if (state.playing && !state.preview && foreign(state.playing) && state.hls) Dub.attach({ video: el.video, hls: state.hls, channel: state.playing, url: streamUrl(state.playing) });
+      else if (state.playing && foreign(state.playing) && state.hls) Dub.attach({ video: el.video, hls: state.hls, channel: state.playing, url: streamUrl(state.playing) });
     }).catch(function () {
       var st = $('pair-status');
       if (st) st.textContent = '⚠️ ההודעה לא פוענחה – נסו שוב';
@@ -2869,29 +1965,21 @@
     if (p === 'touch') return '';
     if (p === 'keyboard') {
       return inPlayer
-        ? h('▲▼', 'ערוץ') + h('◄', 'רשימת ערוצים') + h('Enter', 'אפשרויות') + h('F', 'מסך מלא') + h('D', 'דיבוב') + h('Esc', TVUI ? 'לערוצים' : 'למדריך')
+        ? h('▲▼', 'ערוץ') + h('◄', 'רשימת ערוצים') + h('Enter', 'אפשרויות') + h('F', 'מסך מלא') + h('D', 'דיבוב') + h('Esc', 'למדריך')
         : h('Enter', 'צפייה') + h('קליק ימני / O', 'אפשרויות') + h('/', 'חיפוש') + h('S', 'הגדרות') + h('F', 'מסך מלא') + h('0-9', 'מספר ערוץ');
     }
     var nav = inPlayer ? h(S.upNext ? '▲ הבא ▼ קודם' : '▲▼', 'החלפת ערוץ') + h('◄', 'רשימת ערוצים') + h('OK', 'אפשרויות')
       : h('OK', 'צפייה') + longOk;
-    var base = nav + h('BACK', inPlayer ? (TVUI ? 'לערוצים' : 'למדריך') : 'חזרה') + (inPlayer ? '' : h('0-9', 'מספר ערוץ'));
+    var base = nav + h('BACK', inPlayer ? 'למדריך' : 'חזרה') + (inPlayer ? '' : h('0-9', 'מספר ערוץ'));
     if (p === 'colors') return base + colours;
     if (p === 'magic') return base + (inPlayer ? '' : '<span class="hint">כפתורי צבע: גם דרך ··· בשלט</span>') + colours;
     return base + h('☰', 'הגדרות'); // android remotes: no colour keys
   }
   function renderHints() { if (el.hints) el.hints.innerHTML = hintHtml(false); renderOsdHints(); }
-  function renderOsdHints() {
-    if (el.osdHints) el.osdHints.innerHTML = hintHtml(true);
-    // the OSD's ← goes back to the TV browse screen, not to the guide
-    var b = el.osdButtons && el.osdButtons.querySelector('[data-act="back"]');
-    if (b) { b.title = TVUI ? 'חזרה לערוצים' : 'למדריך'; b.querySelector('span').textContent = TVUI ? 'חזרה' : 'מדריך'; }
-  }
+  function renderOsdHints() { if (el.osdHints) el.osdHints.innerHTML = hintHtml(true); }
 
   function runAction(action) {
     var inPlayer = state.overlay === 'player';
-    if (TVUI && !state.overlay && atvAction(action)) return;
-    // TV, in the player: the shelf actions go back to the browse screen (the channel goes on behind it)
-    if (TVUI && inPlayer && /^(favorites|recent|search|all)$/.test(action)) { closePlayer(true); atvAction(action); return; }
     var ch = inPlayer ? state.playing : state.list[state.gridIdx];
     switch (action) {
       case 'menu': if (inPlayer) playerMenu(); else channelMenu(ch); break;
@@ -2971,13 +2059,13 @@
           } },
         { type: 'choice', tvOnly: true, label: 'גודל הממשק', help: 'הגדלה לצפייה מרחוק – משנה את כל הטקסטים והכרטיסים', get: function () { return label(SCALES, S.uiScale); },
           step: function (st) { setSetting('uiScale', cycle(SCALES, S.uiScale, st)); } },
-        { type: 'choice', guideOnly: true, label: 'כרטיסים בשורה', get: function () { return S.cols ? String(S.cols) : 'אוטומטי (' + state.cols + ')'; },
+        { type: 'choice', label: 'כרטיסים בשורה', get: function () { return S.cols ? String(S.cols) : 'אוטומטי (' + state.cols + ')'; },
           step: function (st) { setSetting('cols', cycle(COLS, S.cols, st)); } },
-        guideRow(tvRow(toggle('hero', 'הצגת פרטי הערוץ הנבחר (למעלה)'))),
+        tvRow(toggle('hero', 'הצגת פרטי הערוץ הנבחר (למעלה)')),
         toggle('numbers', 'מספרי ערוצים על הכרטיסים'),
         toggle('showSource', 'הצגת מקור השידור', 'שורת "מקור" בפרטי הערוץ ובנגן', function () { updateHero(state.list[state.gridIdx]); }),
-        guideRow(tvRow(toggle('hints', 'שורת עזרה לשלט בתחתית'))),
-        { type: 'choice', label: 'ביצועים', help: 'מהיר = בלי אנימציות' + (TVUI ? ' ובלי תצוגה מקדימה חיה' : '') + ', למכשירים חלשים. ' + (S.perf === 'auto' ? 'זוהה: ' + (state.lowEnd ? 'מכשיר חלש – מצב מהיר' : 'מצב מלא') : ''),
+        tvRow(toggle('hints', 'שורת עזרה לשלט בתחתית')),
+        { type: 'choice', label: 'ביצועים', help: 'מהיר = בלי אנימציות, למכשירים חלשים. ' + (S.perf === 'auto' ? 'זוהה: ' + (state.lowEnd ? 'מכשיר חלש – מצב מהיר' : 'מצב מלא') : ''),
           get: function () { return label(PERF, S.perf); }, step: function (st) { setSetting('perf', cycle(PERF, S.perf, st)); } }
       ].concat(NATIVE && NATIVE.launchSound ? [
         { type: 'toggle', label: 'צליל פתיחה', help: 'צליל קצר כשהאפליקציה נפתחת (שקט כשהמכשיר על שקט או רטט)',
@@ -3027,7 +2115,7 @@
         { type: 'choice', label: 'מהירות דיבור', get: function () { return Number(Dub.settings.rate).toFixed(2); },
           step: function (st) { Dub.save({ rate: clamp(Math.round((Dub.settings.rate + 0.05 * st) * 100) / 100, 0.8, 1.6) }); } },
         { type: 'choice', label: 'עוצמת הסאונד המקורי בזמן דיבוב', get: function () { return Math.round(Dub.settings.duck * 100) + '%'; },
-          step: function (st) { Dub.save({ duck: clamp(Math.round((Dub.settings.duck + 0.05 * st) * 100) / 100, 0.1, 1) }); } },
+          step: function (st) { Dub.save({ duck: clamp(Math.round((Dub.settings.duck + 0.05 * st) * 100) / 100, 0, 1) }); } },
       ].concat(Dub.IS_TV ? [info('סנכרון לשפתיים', 'אוטומטי בטלוויזיה – כל משפט נאמר כשהתמונה מגיעה אליו')] : [
         dubToggle('sync', 'סנכרון לשפתיים', 'התמונה מושהית כדי שהדיבוב יגיע בזמן'),
         dubChoice('delay', 'השהיית תמונה', [[6, '6 שניות'], [8, '8 שניות'], [10, '10 שניות'], [12, '12 שניות'], [15, '15 שניות'], [20, '20 שניות']])
@@ -3047,7 +2135,6 @@
       ] },
       { id: 'updates', ico: '⬆️', name: 'עדכונים', desc: 'עדכונים מגיעים ישירות מ-GitHub', rows: [
         { type: 'card', state: updateCardState, html: updateCardHtml, act: updateCardAction },
-        action('🔄 רענון ערוצים וקוד מהרשת עכשיו', function () { forceLiveRefresh(); }, 'מוריד מיידית את רשימת הערוצים והקוד העדכניים ישירות מ-GitHub ללא צורך בהתקנה מחדש'),
         info('גרסה מותקנת', (d.appVersion ? 'אפליקציה ' + d.appVersion + ' · ' : '') + BUILD.version + (BUILD.date ? ' (' + BUILD.date + ')' : '')),
         info('גרסה פעילה', function () { return LIVE ? LIVE.version + ' – עודכנה אונליין' : BUILD.version; }),
         toggle('autoUpdate', 'בדיקה אוטומטית בכל פתיחה'),
@@ -3074,13 +2161,10 @@
       secs = secs.filter(function (s) { return !s.tvOnly; });
       secs.forEach(function (s) { s.rows = s.rows.filter(function (r) { return !r.tvOnly; }); });
     }
-    // the TV browse screen has no grid, no top details strip and no hints row: their settings would do nothing
-    if (TVUI) secs.forEach(function (s) { s.rows = s.rows.filter(function (r) { return !r.guideOnly; }); });
     return secs;
   }
 
   function tvRow(r) { r.tvOnly = true; return r; }
-  function guideRow(r) { r.guideOnly = true; return r; }
 
   var sections = [];
   function openSettings(sectionId) {
@@ -3109,8 +2193,7 @@
     state.overlay = state.stack.pop() || null;
     if (state.overlay === 'player') { renderOsdHints(); showOsd(); }
     renderHints();
-    // TV: the size, the source line or kids mode may have changed – lay the shelves out again
-    if (TVUI && !state.overlay) atvRestore(); else markFocus();
+    markFocus();
     if (PHONE && state.tab === 'settings' && fromTab !== true) setTab(state.prevTab || 'home', true);
   }
   function rowsOf() { return (sections[state.setSection] || { rows: [] }).rows.filter(function (r) { return r.type !== 'sep'; }); }
@@ -3152,7 +2235,7 @@
     var r = rows[state.setIdx];
     var input = r && r.type === 'text' ? el.settingsRows.querySelectorAll('.set-row')[state.setIdx].querySelector('input') : null;
     if (input && document.activeElement === input) {
-      if (code === 13 || (isBack(code) && code !== 8) || code === 38 || code === 40) {   // (Backspace edits the text)
+      if (code === 13 || isBack(code) || code === 38 || code === 40) {
         r.set(input.value);
         input.blur();
         toast('נשמר');
@@ -3241,13 +2324,11 @@
       x.send();
     });
   }
-  // LG: no "download the IPK" prompts – the IPK only holds the web app, and the live update below brings all of it
-  // (screen, code, channels) by itself; it is applied automatically (applyLiveIfIdle)
   function nativeKey() {
     if (PLATFORM === 'android') return 'android';
     if (PLATFORM === 'windows') return 'windows';
-    if (PLATFORM === 'tizen') return 'tizen';
     if (PLATFORM === 'webos') return 'webos';
+    if (PLATFORM === 'tizen') return 'tizen';
     if (PLATFORM === 'desktop') return /Mac/.test(UA) ? 'mac' : 'linux';
     return '';
   }
@@ -3261,35 +2342,6 @@
     if (state.liveReady) parts.push('עדכון ' + state.liveReady.version + ' הורד – יופעל בפתיחה הבאה');
     else if (u.liveDownloading) parts.push('מוריד עדכון ' + u.data.version + '...');
     return parts.length ? parts.join(' · ') : '✅ הגרסה עדכנית (' + u.data.version + ')';
-  }
-
-  function forceLiveRefresh() {
-    toast('מרענן ערוצים וקוד מהשרת...');
-    xhrJson(REMOTE + 'version.json?t=' + Date.now(), 10000, function (vData) {
-      xhrJson(REMOTE + 'channels.json?t=' + Date.now(), 15000, function (chData) {
-        if (Array.isArray(chData) && chData.length > 0) {
-          state.all = chData;
-          window.ITV_CHANNELS = window.CHANNELS_DATA = chData;
-          buildCategories();
-          filterList();
-          if (TVUI) { atv.dirty = true; atvBuild(); atvLayout(); atvMark(); }
-          var liveObj = { code: vData.code || Date.now(), version: vData.version || '4.3.3', shell: vData.shell || 0 };
-          try {
-            localStorage.setItem('itv_live', JSON.stringify(liveObj));
-            localStorage.removeItem('itv_bad');
-            sessionStorage.removeItem('itv_local');
-          } catch (e) {}
-          toast('✅ כל ' + chData.length + ' הערוצים סונכרנו בהצלחה מהשרת!');
-          refreshSettingsIfOpen();
-        } else {
-          toast('שגיאה בטעינת הערוצים מהשרת');
-        }
-      }, function () {
-        toast('שגיאת תקשורת בטעינת הערוצים');
-      });
-    }, function () {
-      toast('שגיאת תקשורת עם שרת העדכונים');
-    });
   }
 
   function checkUpdates(manual) {
@@ -3323,15 +2375,13 @@
       if (data.code > activeCode && S.liveUpdates && (data.shell || 0) <= (BUILD.shell || 0)) {
         u.liveDownloading = true;
         var q = '?v=' + data.code;
-        prefetch(['style.css', 'yttv.css', 'ui.js', 'channels.js', 'dub.js', 'app.js', 'yttv.js'].map(function (f) { return REMOTE + f + q; }), function (ok) {
+        prefetch(['style.css', 'ui.js', 'channels.js', 'dub.js', 'app.js'].map(function (f) { return REMOTE + f + q; }), function (ok) {
           u.liveDownloading = false;
           if (ok) {
             state.liveReady = { code: data.code, version: data.version, shell: data.shell || 0 };
             try { localStorage.setItem('itv_live', JSON.stringify(state.liveReady)); localStorage.removeItem('itv_bad'); } catch (e) {}
-            if (!applyLiveIfIdle()) {
-              showUpdateButton();
-              toast('⬆️ עדכון ' + data.version + ' מוכן – יופעל בפתיחה הבאה (או בהגדרות ← עדכונים)');
-            }
+            showUpdateButton();
+            toast('⬆️ עדכון ' + data.version + ' מוכן – יופעל בפתיחה הבאה (או בהגדרות ← עדכונים)');
           }
           refreshSettingsIfOpen();
         });
@@ -3345,20 +2395,12 @@
       refreshSettingsIfOpen();
     });
   }
-  /** LG: a downloaded live update is switched to at once when nothing is playing and no menu is open (else later). */
-  function applyLiveIfIdle() {
-    // the TV browse screen's silent preview is not watching: it must not hold the update back
-    if (PLATFORM !== 'webos' || !state.liveReady || (state.playing && !state.preview) || state.overlay) return false;
-    toast('⬆️ מתעדכן לגרסה ' + state.liveReady.version + '...');
-    setTimeout(function () { try { sessionStorage.removeItem('itv_local'); } catch (e) {} location.reload(); }, 1500);
-    return true;
-  }
   function refreshSettingsIfOpen() { if (state.overlay === 'settings') renderSettings(); }
   function showUpdateButton() { el.btnUpdate.classList.remove('hidden'); toggleClass(el.avatarDot, 'hidden', false); }
 
   // ---- GitHub Releases (api.github.com, no key: 60 checks an hour per address – one per start is plenty)
   var RELEASES_API = 'https://api.github.com/repos/dor2500/israel-tv-plus/releases/latest';
-  var RELEASE_ASSETS = { android: 'IsraelTVPlus-android.apk', windows: 'IsraelTVPlus-windows-setup.exe' };
+  var RELEASE_ASSETS = { android: 'IsraelTVPlus-android.apk', windows: 'IsraelTVPlus-windows-setup.exe', webos: 'com.israeltv.plus_all.ipk' };
   function verNum(v) { var p = String(v || '0').replace(/^v/i, '').split('.'); return (+p[0] || 0) * 1e6 + (+p[1] || 0) * 1e3 + (+p[2] || 0); }
   function installedAppVersion() { return state.device.appVersion || BUILD.version; }
   function releaseNotes(body) {
@@ -3381,7 +2423,7 @@
   }
   /** A new app version opens the update modal by itself once (per version), when nothing else is on screen. */
   function offerOnce(n) {
-    if (lsGet('itv_upd_offered', '') === n.version || state.overlay || (state.playing && !state.preview)) return;
+    if (lsGet('itv_upd_offered', '') === n.version || state.overlay || state.playing) return;
     lsSet('itv_upd_offered', n.version);
     showUpdateDialog();
   }
@@ -3530,7 +2572,7 @@
     var nativeInsets = native('insets');
     if (nativeInsets) { try { var ins = JSON.parse(nativeInsets); window.__itvInsets(ins.t, ins.r, ins.b, ins.l, ins.k); } catch (e) {} }
     if (PLATFORM === 'tizen' && window.tizen && window.tizen.tvinputdevice) {
-      ['ColorF0Red', 'ColorF1Green', 'ColorF2Yellow', 'ColorF3Blue', 'ChannelUp', 'ChannelDown', 'MediaPlayPause', 'MediaPlay', 'MediaPause', 'MediaStop',
+      ['ColorF0Red', 'ColorF1Green', 'ColorF2Yellow', 'ColorF3Blue', 'ChannelUp', 'ChannelDown', 'MediaPlayPause', 'MediaPlay', 'MediaPause',
         'Info', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'].forEach(function (k) {
         try { window.tizen.tvinputdevice.registerKey(k); } catch (e) {}
       });
@@ -3639,31 +2681,12 @@
     } catch (e) { window.close(); }
   }
 
-  /** TV apps sent to the background (another app, the TV's input switch): the silent preview stops, a watched channel
-   *  pauses (Samsung requires it); back in the app the channel loads again at the live edge, with its sound. */
-  function onTvVisibility() {
-    if (document.hidden) {
-      if (!state.playing) return;
-      if (state.preview && state.overlay !== 'player') { stopPlayback(); el.player.classList.add('hidden'); return; }
-      var m = media();
-      if (m && !m.paused) { state.bgPaused = state.playing; m.pause(); }
-      return;
-    }
-    var ch = state.bgPaused;
-    state.bgPaused = null;
-    if (ch && state.playing === ch) loadStream(ch);
-    else if (TVUI && !state.overlay && state.zone === 'atv' && !state.playing && atv.zone === 'rows') atvSettle(atvCurrent());
-  }
-
   // ================================================================== clock / toast / screensaver / number entry
   function setupClock() {
     var tick = function () {
       var d = new Date();
       var t = (d.getHours() < 10 ? '0' : '') + d.getHours() + ':' + (d.getMinutes() < 10 ? '0' : '') + d.getMinutes();
-      if (el.clock.textContent !== t) {
-        el.clock.textContent = t; el.osdClock.textContent = t; el.saverClock.textContent = t;
-        if ($('atv-clock')) $('atv-clock').textContent = t;   // the TV browse screen, beside the pill
-      }
+      if (el.clock.textContent !== t) { el.clock.textContent = t; el.osdClock.textContent = t; el.saverClock.textContent = t; }
     };
     tick();
     setInterval(tick, 5000);
@@ -3680,19 +2703,12 @@
       state.saverOn = false;
       el.saver.classList.add('hidden');
       clearInterval(saverMove);
-      // TV: the preview stopped with the screensaver – the focused card starts it again
-      if (TVUI && !state.overlay && state.zone === 'atv' && !state.playing && atv.zone === 'rows') atvSettle(atvCurrent());
     }
     if (state.saverTimer) clearTimeout(state.saverTimer);
     if (!S.saver) return;
     state.saverTimer = setTimeout(function () {
       var m = media();
-      // a channel that is watched (also one left on behind the TV shelves) keeps the screen
-      if (state.playing && !state.preview && (state.overlay === 'player' || (TVUI && !state.overlay)) && m && !m.paused) { resetSaver(); return; }
-      // an idle silent preview does not stream on under the screensaver
-      if (TVUI && state.preview && state.overlay !== 'player') { stopPlayback(); el.player.classList.add('hidden'); }
-      // LG: nobody is watching – an update downloaded while a channel was on is switched to now, not at the next start
-      if (applyLiveIfIdle()) return;
+      if (state.overlay === 'player' && m && !m.paused) { resetSaver(); return; }
       state.saverOn = true;
       el.saver.classList.remove('hidden');
       var move = function () {
@@ -3722,7 +2738,7 @@
       if (idx === -1) { state.query = ''; el.searchInput.value = ''; selectCategory('ALL', true); idx = indexInList(target.id); }
       if (state.overlay && state.overlay !== 'player') return;
       state.gridIdx = idx;
-      if (!state.overlay && !TVUI) focusGrid(idx);
+      if (!state.overlay) focusGrid(idx);
       playIndex(idx);
     }, (S.numWait || 1.2) * 1000);
   }
@@ -3730,7 +2746,6 @@
   // ================================================================== search
   function focusSearch() {
     if (state.overlay) return;
-    if (TVUI) { atvOpenSearch(); return; }
     var items = topItems();
     focusTop(items.indexOf(el.topSearch));
     el.searchInput.focus();
@@ -3795,14 +2810,6 @@
       if (el.grid.scrollHeight - el.grid.scrollTop - el.grid.clientHeight < 600) ensureRendered(rendered);
     }, { passive: true });
 
-    if (el.btnYttv) {
-      el.btnYttv.addEventListener('click', function () {
-        if (window.YTTV) {
-          state.overlay = 'yttv';
-          window.YTTV.open();
-        }
-      });
-    }
     el.btnSettings.addEventListener('click', function () { openSettings(); });
     el.btnUpdate.addEventListener('click', showUpdateDialog);
     el.btnGetapp.addEventListener('click', function () { showGetApp(); });
@@ -3913,7 +2920,6 @@
 
   function onKeyUp(e) {
     var code = e.keyCode || e.which;
-    if (code === 23) code = 13;
     if (code !== 13) return;
     // Long-press OK needs key-up events; until one is seen, OK acts on key-down (some remotes send no key-up).
     if (!state.okUpSeen) { state.okUpSeen = true; return; }
@@ -3926,25 +2932,13 @@
 
   function onKeyDown(e) {
     var code = e.keyCode || e.which;
-    if (code === 23) code = 13;
-    state.keyAt = Date.now();
     if (state.saverOn) { resetSaver(); if (e.preventDefault) e.preventDefault(); return; }
     resetSaver();
-
-    if (state.overlay === 'yttv' || (window.YTTV && window.YTTV.isOpen())) {
-      window.YTTV.handleKey(code, e);
-      if (!window.YTTV.isOpen()) {
-        state.overlay = null;
-        markFocus();
-      }
-      return;
-    }
 
     // text fields keep their keys (search box, API keys)
     var t = e.target;
     if (typing(t)) {
       if (state.overlay === 'settings') { settingsKey(code, e); return; }
-      if (t.id === 'atv-q') { atvSearchKey(code, e); return; }
       if (t === el.searchInput) {
         if (code === 40 || code === 13) { e.preventDefault(); t.blur(); focusGrid(0); }
         else if (isBack(code) && code !== 8) { e.preventDefault(); t.blur(); focusGrid(state.gridIdx); }
@@ -3984,21 +2978,10 @@
     if (dgt !== -1 && (!state.overlay || state.overlay === 'player' || state.pinInput)) { digit(dgt); return; }
 
     // media / channel keys
-    if (code === 427 || code === 33 || code === 417 || code === 10253) { if (e.preventDefault) e.preventDefault(); zapOrPage(1); return; }
-    if (code === 428 || code === 34 || code === 412) { if (e.preventDefault) e.preventDefault(); zapOrPage(-1); return; }
-    // (the Android TV app sends its ⏯ / ▶ keys as Space)
-    if (code === 32 && TVUI && !state.overlay && state.zone === 'atv' && atv.zone === 'rows') { if (e.preventDefault) e.preventDefault(); atvWatch(); return; }
-    if (code === 415 || code === 19 || code === 179 || code === 10252 || (code === 32 && state.overlay === 'player')) {   // 10252: Samsung ⏯
-      if (e.preventDefault) e.preventDefault();
-      // TV browse screen: ▶ watches the focused card (the silent preview is not something to pause)
-      if (code !== 19 && TVUI && !state.overlay && state.zone === 'atv' && atv.zone === 'rows') { atvWatch(); return; }
-      togglePlay(); return;
-    }
-    if (code === 413) {   // ■ Stop (LG / Samsung remotes): the channel stops – in the player or left on behind the TV shelves
-      if (e.preventDefault) e.preventDefault();
-      if (state.overlay === 'player') closePlayer(false);
-      else if (TVUI && !state.overlay && state.playing) { stopPlayback(); el.player.classList.add('hidden'); atvMeta(atvCurrent()); }
-      return;
+    if (code === 427 || code === 33) { if (e.preventDefault) e.preventDefault(); zapOrPage(1); return; }
+    if (code === 428 || code === 34) { if (e.preventDefault) e.preventDefault(); zapOrPage(-1); return; }
+    if (code === 415 || code === 19 || code === 179 || (code === 32 && state.overlay === 'player')) {
+      if (e.preventDefault) e.preventDefault(); togglePlay(); return;
     }
     if (code === 457) { runAction('info'); return; } // Info key
     if (code === 10135 || code === 18) { runAction('menu'); return; } // Samsung Tools
@@ -4021,13 +3004,12 @@
       case 'menu': menuKey(code); return;
       case 'drawer': drawerKey(code); return;
       case 'player': playerKey(code); return;
-      default: if (TVUI) atvKey(code); else guideKey(code);
+      default: guideKey(code);
     }
   }
 
   function zapOrPage(dir) {
     if (state.overlay === 'player') { zap(dir); return; }
-    if (!state.overlay && state.zone === 'atv') { atvKey(dir > 0 ? 38 : 40); return; }
     if (!state.overlay && state.zone === 'grid') focusGrid(state.gridIdx + (dir > 0 ? -1 : 1) * state.cols * 3);
   }
 
@@ -4042,7 +3024,6 @@
         if (el.osd.classList.contains('off')) showOsd(); else playerMenu();
         return;
     }
-    if (state.zone === 'atv') { atvOk(); return; }
     if (state.zone === 'grid') { if (Dub) Dub.unlockAudio(); playIndex(state.gridIdx); }
     else if (state.zone === 'rail') { selectCategory(state.cats[state.railIdx].id); focusGrid(0); }
     else if (state.zone === 'top') {
@@ -4055,7 +3036,6 @@
   function longOk() {
     if (state.overlay === 'player') { runAction(S.longOk === 'menu' ? 'menu' : S.longOk); return; }
     if (state.overlay) { shortOk(); return; }
-    if (state.zone === 'atv') { if (atv.zone === 'rows') runAction(S.longOk); else atvOk(); return; }
     if (state.zone === 'grid') runAction(S.longOk);
     else shortOk();
   }
@@ -4102,24 +3082,15 @@
       var b = errorButtons();
       if (code === 37) state.perrIdx = clamp((state.perrIdx || 0) + 1, 0, b.length - 1);
       else if (code === 39) state.perrIdx = clamp((state.perrIdx || 0) - 1, 0, b.length - 1);
-      else if (code === 38) { zap(1); return; }   // Upper button above wheel: next channel
-      else if (code === 40) { zap(-1); return; }  // Lower button below wheel: prev channel
+      else if (code === 38 || code === 40) { zap(code === 40 ? 1 : -1); return; }
       else if (isBack(code)) { closePlayer(false); return; }
       markFocus();
       return;
     }
     if (isBack(code)) { closePlayer(true); return; }
-    // Upper button above wheel (38), ChannelUp (427), PageUp (33), FastForward (417, 10253) -> תמיד ערוץ הבא קדימה
-    if (code === 38 || code === 427 || code === 33 || code === 417 || code === 10253) {
-      zap(1);
-      return;
-    }
-    // Lower button below wheel (40), ChannelDown (428), PageDown (34), Rewind (412) -> תמיד ערוץ קודם אחורה
-    if (code === 40 || code === 428 || code === 34 || code === 412) {
-      zap(-1);
-      return;
-    }
-    if (code === 37) openDrawer();
+    if (code === 38) zap(S.upNext ? 1 : -1);
+    else if (code === 40) zap(S.upNext ? -1 : 1);
+    else if (code === 37) openDrawer();
     else if (code === 39) playerMenu();
   }
 
@@ -4139,7 +3110,6 @@
   }
 
   function dialogKey(code) {
-    if (code === 8 && state.pinInput) { state.pinInput('del'); return; }   // a keyboard's Backspace deletes a digit of the PIN
     var n = dialogButtons().length;
     if (code === 37 || code === 40) state.dialogIdx = clamp(state.dialogIdx + 1, 0, n - 1);
     else if (code === 39 || code === 38) state.dialogIdx = clamp(state.dialogIdx - 1, 0, n - 1);
