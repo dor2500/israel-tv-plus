@@ -5601,3 +5601,324 @@
 [2026-10-26 10:11:40] Scan cycle finished. Total verified pool: 86 streams.
 [2026-10-26 10:12:40] Scanning sources for candidate Israeli streams...
 [2026-10-26 10:12:40] Testing candidate: כאן 11 שידור ראשי (CDN משני) (https://kan11.media.kan.org.il/hls/live/2024514/2024514/master.m3u8)
+[2026-10-26 10:12:42] Testing candidate: כאן חדשות מבזקים רציף (https://kannlive.media.kan.org.il/hls/live/2024622/2024622/master.m3u8)
+[2026-10-26 10:12:44] Testing candidate: ערוץ הכנסת שידור ישיר (https://knesset.streamguys1.com/knesset/knesset.m3u8)
+[2026-10-26 10:12:45] Testing candidate: הופ! שידור מיוחד לפעוטות (https://hop-live.stream.il/live/hop/master.m3u8)
+[2026-10-26 10:12:45] Testing candidate: זום ZOOM שידורי נוער 24/7 (https://zoom-tv.stream.il/live/zoom/playlist.m3u8)
+[2026-10-26 10:12:45] Testing candidate: ערוץ 24 שידורי מוזיקה ישראלית (https://mako-live.akamaized.net/hls/live/572358/ch24news/master.m3u8)
+[2026-10-26 10:12:45] Testing candidate: ערוץ אור מאיר מסורת (https://video.ormatv.co.il/live/stream.m3u8)
+[2026-10-26 10:12:45] Testing candidate: הידברות עולם הילדים (https://vod.hidabroot.org/live/kids/playlist.m3u8)
+[2026-10-26 10:12:45] Scan cycle finished. Total verified pool: 86 streams.
+[2026-10-26 10:13:45] Scanning sources for candidate Israeli streams...
+[2026-10-26 10:13:45] Testing candidate: כאן 11 שידור ראשי (CDN משני) (https://kan11.media.kan.org.il/hls/live/2024514/2024514/master.m3u8)
+[2026-10-26 10:13:47] Testing candidate: כאן חדשות מבזקים רציף (https://kannlive.media.kan.org.il/hls/live/2024622/2024622/master.m3u8)
+[2026-10-26 10:13:49] Testing candidate: ערוץ הכנסת שידור ישיר (https://knesset.streamguys1.com/knesset/knesset.m3u8)
+[2026-10-26 10:13:50] Testing candidate: הופ! שידור מיוחד לפעוטות (https://hop-live.stream.il/live/hop/master.m3u8)
+[2026-10-26 10:13:50] Testing candidate: זום ZOOM שידורי נוער 24/7 (https://zoom-tv.stream.il/live/zoom/playlist.m3u8)
+[2026-10-26 10:13:50] Testing candidate: ערוץ 24 שידורי מוזיקה ישראלית (https://mako-live.akamaized.net/hls/live/572358/ch24news/master.m3u8)
+[2026-10-26 10:13:50] Testing candidate: ערוץ אור מאיר מסורת (https://video.ormatv.co.il/live/stream.m3u8)
+[2026-10-26 10:13:50] Testing candidate: הידברות עולם הילדים (https://vod.hidabroot.org/live/kids/playlist.m3u8)
+[2026-10-26 10:13:50] Scan cycle finished. Total verified pool: 86 streams.
+[2026-10-26 10:14:50] Scanning sources for candidate Israeli streams...
+[2026-10-26 10:14:50] Testing candidate: כאן 11 שידור ראשי (CDN משני) (https://kan11.media.kan.org.il/hls/live/2024514/2024514/master.m3u8)
+[2026-10-26 10:14:52] Testing candidate: כאן חדשות מבזקים רציף (https://kannlive.media.kan.org.il/hls/live/2024622/2024622/master.m3u8)
+[2026-10-26 10:14:54] Testing candidate: ערוץ הכנסת שידור ישיר (https://knesset.streamguys1.com/knesset/knesset.m3u8)
+[2026-10-26 10:14:55] Testing candidate: הופ! שידור מיוחד לפעוטות (https://hop-live.stream.il/live/hop/master.m3u8)
+[2026-10-26 10:14:55] Testing candidate: זום ZOOM שידורי נוער 24/7 (https://zoom-tv.stream.il/live/zoom/playlist.m3u8)
+[2026-10-26 10:14:55] Testing candidate: ערוץ 24 שידורי מוזיקה ישראלית (https://mako-live.akamaized.net/hls/live/572358/ch24news/master.m3u8)
+[2026-10-26 10:14:55] Testing candidate: ערוץ אור מאיר מסורת (https://video.ormatv.co.il/live/stream.m3u8)
+[2026-10-26 10:14:55] Testing candidate: הידברות עולם הילדים (https://vod.hidabroot.org/live/kids/playlist.m3u8)
+[2026-10-26 10:14:55] Scan cycle finished. Total verified pool: 86 streams.
+[2026-10-26 10:15:55] Scanning sources for candidate Israeli streams...
+[2026-10-26 10:15:55] Testing candidate: כאן 11 שידור ראשי (CDN משני) (https://kan11.media.kan.org.il/hls/live/2024514/2024514/master.m3u8)
+[2026-10-26 10:15:57] Testing candidate: כאן חדשות מבזקים רציף (https://kannlive.media.kan.org.il/hls/live/2024622/2024622/master.m3u8)
+[2026-10-26 10:15:59] Testing candidate: ערוץ הכנסת שידור ישיר (https://knesset.streamguys1.com/knesset/knesset.m3u8)
+[2026-10-26 10:16:00] Testing candidate: הופ! שידור מיוחד לפעוטות (https://hop-live.stream.il/live/hop/master.m3u8)
+[2026-10-26 10:16:00] Testing candidate: זום ZOOM שידורי נוער 24/7 (https://zoom-tv.stream.il/live/zoom/playlist.m3u8)
+[2026-10-26 10:16:00] Testing candidate: ערוץ 24 שידורי מוזיקה ישראלית (https://mako-live.akamaized.net/hls/live/572358/ch24news/master.m3u8)
+[2026-10-26 10:16:00] Testing candidate: ערוץ אור מאיר מסורת (https://video.ormatv.co.il/live/stream.m3u8)
+[2026-10-26 10:16:00] Testing candidate: הידברות עולם הילדים (https://vod.hidabroot.org/live/kids/playlist.m3u8)
+[2026-10-26 10:16:00] Scan cycle finished. Total verified pool: 86 streams.
+[2026-10-26 10:17:00] Scanning sources for candidate Israeli streams...
+[2026-10-26 10:17:00] Testing candidate: כאן 11 שידור ראשי (CDN משני) (https://kan11.media.kan.org.il/hls/live/2024514/2024514/master.m3u8)
+[2026-10-26 10:17:02] Testing candidate: כאן חדשות מבזקים רציף (https://kannlive.media.kan.org.il/hls/live/2024622/2024622/master.m3u8)
+[2026-10-26 10:17:04] Testing candidate: ערוץ הכנסת שידור ישיר (https://knesset.streamguys1.com/knesset/knesset.m3u8)
+[2026-10-26 10:17:05] Testing candidate: הופ! שידור מיוחד לפעוטות (https://hop-live.stream.il/live/hop/master.m3u8)
+[2026-10-26 10:17:05] Testing candidate: זום ZOOM שידורי נוער 24/7 (https://zoom-tv.stream.il/live/zoom/playlist.m3u8)
+[2026-10-26 10:17:05] Testing candidate: ערוץ 24 שידורי מוזיקה ישראלית (https://mako-live.akamaized.net/hls/live/572358/ch24news/master.m3u8)
+[2026-10-26 10:17:05] Testing candidate: ערוץ אור מאיר מסורת (https://video.ormatv.co.il/live/stream.m3u8)
+[2026-10-26 10:17:05] Testing candidate: הידברות עולם הילדים (https://vod.hidabroot.org/live/kids/playlist.m3u8)
+[2026-10-26 10:17:05] Scan cycle finished. Total verified pool: 86 streams.
+[2026-10-26 10:18:05] Scanning sources for candidate Israeli streams...
+[2026-10-26 10:18:05] Testing candidate: כאן 11 שידור ראשי (CDN משני) (https://kan11.media.kan.org.il/hls/live/2024514/2024514/master.m3u8)
+[2026-10-26 10:18:07] Testing candidate: כאן חדשות מבזקים רציף (https://kannlive.media.kan.org.il/hls/live/2024622/2024622/master.m3u8)
+[2026-10-26 10:18:09] Testing candidate: ערוץ הכנסת שידור ישיר (https://knesset.streamguys1.com/knesset/knesset.m3u8)
+[2026-10-26 10:18:10] Testing candidate: הופ! שידור מיוחד לפעוטות (https://hop-live.stream.il/live/hop/master.m3u8)
+[2026-10-26 10:18:10] Testing candidate: זום ZOOM שידורי נוער 24/7 (https://zoom-tv.stream.il/live/zoom/playlist.m3u8)
+[2026-10-26 10:18:10] Testing candidate: ערוץ 24 שידורי מוזיקה ישראלית (https://mako-live.akamaized.net/hls/live/572358/ch24news/master.m3u8)
+[2026-10-26 10:18:10] Testing candidate: ערוץ אור מאיר מסורת (https://video.ormatv.co.il/live/stream.m3u8)
+[2026-10-26 10:18:10] Testing candidate: הידברות עולם הילדים (https://vod.hidabroot.org/live/kids/playlist.m3u8)
+[2026-10-26 10:18:10] Scan cycle finished. Total verified pool: 86 streams.
+[2026-10-26 10:19:10] Scanning sources for candidate Israeli streams...
+[2026-10-26 10:19:10] Testing candidate: כאן 11 שידור ראשי (CDN משני) (https://kan11.media.kan.org.il/hls/live/2024514/2024514/master.m3u8)
+[2026-10-26 10:19:12] Testing candidate: כאן חדשות מבזקים רציף (https://kannlive.media.kan.org.il/hls/live/2024622/2024622/master.m3u8)
+[2026-10-26 10:19:15] Testing candidate: ערוץ הכנסת שידור ישיר (https://knesset.streamguys1.com/knesset/knesset.m3u8)
+[2026-10-26 10:19:15] Testing candidate: הופ! שידור מיוחד לפעוטות (https://hop-live.stream.il/live/hop/master.m3u8)
+[2026-10-26 10:19:15] Testing candidate: זום ZOOM שידורי נוער 24/7 (https://zoom-tv.stream.il/live/zoom/playlist.m3u8)
+[2026-10-26 10:19:15] Testing candidate: ערוץ 24 שידורי מוזיקה ישראלית (https://mako-live.akamaized.net/hls/live/572358/ch24news/master.m3u8)
+[2026-10-26 10:19:15] Testing candidate: ערוץ אור מאיר מסורת (https://video.ormatv.co.il/live/stream.m3u8)
+[2026-10-26 10:19:15] Testing candidate: הידברות עולם הילדים (https://vod.hidabroot.org/live/kids/playlist.m3u8)
+[2026-10-26 10:19:15] Scan cycle finished. Total verified pool: 86 streams.
+[2026-10-26 10:20:15] Scanning sources for candidate Israeli streams...
+[2026-10-26 10:20:15] Testing candidate: כאן 11 שידור ראשי (CDN משני) (https://kan11.media.kan.org.il/hls/live/2024514/2024514/master.m3u8)
+[2026-10-26 10:20:18] Testing candidate: כאן חדשות מבזקים רציף (https://kannlive.media.kan.org.il/hls/live/2024622/2024622/master.m3u8)
+[2026-10-26 10:20:20] Testing candidate: ערוץ הכנסת שידור ישיר (https://knesset.streamguys1.com/knesset/knesset.m3u8)
+[2026-10-26 10:20:20] Testing candidate: הופ! שידור מיוחד לפעוטות (https://hop-live.stream.il/live/hop/master.m3u8)
+[2026-10-26 10:20:20] Testing candidate: זום ZOOM שידורי נוער 24/7 (https://zoom-tv.stream.il/live/zoom/playlist.m3u8)
+[2026-10-26 10:20:20] Testing candidate: ערוץ 24 שידורי מוזיקה ישראלית (https://mako-live.akamaized.net/hls/live/572358/ch24news/master.m3u8)
+[2026-10-26 10:20:21] Testing candidate: ערוץ אור מאיר מסורת (https://video.ormatv.co.il/live/stream.m3u8)
+[2026-10-26 10:20:21] Testing candidate: הידברות עולם הילדים (https://vod.hidabroot.org/live/kids/playlist.m3u8)
+[2026-10-26 10:20:21] Scan cycle finished. Total verified pool: 86 streams.
+[2026-10-26 10:21:21] Scanning sources for candidate Israeli streams...
+[2026-10-26 10:21:21] Testing candidate: כאן 11 שידור ראשי (CDN משני) (https://kan11.media.kan.org.il/hls/live/2024514/2024514/master.m3u8)
+[2026-10-26 10:21:23] Testing candidate: כאן חדשות מבזקים רציף (https://kannlive.media.kan.org.il/hls/live/2024622/2024622/master.m3u8)
+[2026-10-26 10:21:25] Testing candidate: ערוץ הכנסת שידור ישיר (https://knesset.streamguys1.com/knesset/knesset.m3u8)
+[2026-10-26 10:21:25] Testing candidate: הופ! שידור מיוחד לפעוטות (https://hop-live.stream.il/live/hop/master.m3u8)
+[2026-10-26 10:21:25] Testing candidate: זום ZOOM שידורי נוער 24/7 (https://zoom-tv.stream.il/live/zoom/playlist.m3u8)
+[2026-10-26 10:21:25] Testing candidate: ערוץ 24 שידורי מוזיקה ישראלית (https://mako-live.akamaized.net/hls/live/572358/ch24news/master.m3u8)
+[2026-10-26 10:21:26] Testing candidate: ערוץ אור מאיר מסורת (https://video.ormatv.co.il/live/stream.m3u8)
+[2026-10-26 10:21:26] Testing candidate: הידברות עולם הילדים (https://vod.hidabroot.org/live/kids/playlist.m3u8)
+[2026-10-26 10:21:26] Scan cycle finished. Total verified pool: 86 streams.
+[2026-10-26 10:22:26] Scanning sources for candidate Israeli streams...
+[2026-10-26 10:22:26] Testing candidate: כאן 11 שידור ראשי (CDN משני) (https://kan11.media.kan.org.il/hls/live/2024514/2024514/master.m3u8)
+[2026-10-26 10:22:28] Testing candidate: כאן חדשות מבזקים רציף (https://kannlive.media.kan.org.il/hls/live/2024622/2024622/master.m3u8)
+[2026-10-26 10:22:30] Testing candidate: ערוץ הכנסת שידור ישיר (https://knesset.streamguys1.com/knesset/knesset.m3u8)
+[2026-10-26 10:22:30] Testing candidate: הופ! שידור מיוחד לפעוטות (https://hop-live.stream.il/live/hop/master.m3u8)
+[2026-10-26 10:22:30] Testing candidate: זום ZOOM שידורי נוער 24/7 (https://zoom-tv.stream.il/live/zoom/playlist.m3u8)
+[2026-10-26 10:22:30] Testing candidate: ערוץ 24 שידורי מוזיקה ישראלית (https://mako-live.akamaized.net/hls/live/572358/ch24news/master.m3u8)
+[2026-10-26 10:22:31] Testing candidate: ערוץ אור מאיר מסורת (https://video.ormatv.co.il/live/stream.m3u8)
+[2026-10-26 10:22:31] Testing candidate: הידברות עולם הילדים (https://vod.hidabroot.org/live/kids/playlist.m3u8)
+[2026-10-26 10:22:31] Scan cycle finished. Total verified pool: 86 streams.
+[2026-10-26 10:23:31] Scanning sources for candidate Israeli streams...
+[2026-10-26 10:23:31] Testing candidate: כאן 11 שידור ראשי (CDN משני) (https://kan11.media.kan.org.il/hls/live/2024514/2024514/master.m3u8)
+[2026-10-26 10:23:33] Testing candidate: כאן חדשות מבזקים רציף (https://kannlive.media.kan.org.il/hls/live/2024622/2024622/master.m3u8)
+[2026-10-26 10:23:35] Testing candidate: ערוץ הכנסת שידור ישיר (https://knesset.streamguys1.com/knesset/knesset.m3u8)
+[2026-10-26 10:23:36] Testing candidate: הופ! שידור מיוחד לפעוטות (https://hop-live.stream.il/live/hop/master.m3u8)
+[2026-10-26 10:23:36] Testing candidate: זום ZOOM שידורי נוער 24/7 (https://zoom-tv.stream.il/live/zoom/playlist.m3u8)
+[2026-10-26 10:23:36] Testing candidate: ערוץ 24 שידורי מוזיקה ישראלית (https://mako-live.akamaized.net/hls/live/572358/ch24news/master.m3u8)
+[2026-10-26 10:23:36] Testing candidate: ערוץ אור מאיר מסורת (https://video.ormatv.co.il/live/stream.m3u8)
+[2026-10-26 10:23:36] Testing candidate: הידברות עולם הילדים (https://vod.hidabroot.org/live/kids/playlist.m3u8)
+[2026-10-26 10:23:36] Scan cycle finished. Total verified pool: 86 streams.
+[2026-10-26 10:24:36] Scanning sources for candidate Israeli streams...
+[2026-10-26 10:24:36] Testing candidate: כאן 11 שידור ראשי (CDN משני) (https://kan11.media.kan.org.il/hls/live/2024514/2024514/master.m3u8)
+[2026-10-26 10:24:38] Testing candidate: כאן חדשות מבזקים רציף (https://kannlive.media.kan.org.il/hls/live/2024622/2024622/master.m3u8)
+[2026-10-26 10:24:40] Testing candidate: ערוץ הכנסת שידור ישיר (https://knesset.streamguys1.com/knesset/knesset.m3u8)
+[2026-10-26 10:24:41] Testing candidate: הופ! שידור מיוחד לפעוטות (https://hop-live.stream.il/live/hop/master.m3u8)
+[2026-10-26 10:24:41] Testing candidate: זום ZOOM שידורי נוער 24/7 (https://zoom-tv.stream.il/live/zoom/playlist.m3u8)
+[2026-10-26 10:24:41] Testing candidate: ערוץ 24 שידורי מוזיקה ישראלית (https://mako-live.akamaized.net/hls/live/572358/ch24news/master.m3u8)
+[2026-10-26 10:24:41] Testing candidate: ערוץ אור מאיר מסורת (https://video.ormatv.co.il/live/stream.m3u8)
+[2026-10-26 10:24:41] Testing candidate: הידברות עולם הילדים (https://vod.hidabroot.org/live/kids/playlist.m3u8)
+[2026-10-26 10:24:41] Scan cycle finished. Total verified pool: 86 streams.
+[2026-10-26 10:25:41] Scanning sources for candidate Israeli streams...
+[2026-10-26 10:25:41] Testing candidate: כאן 11 שידור ראשי (CDN משני) (https://kan11.media.kan.org.il/hls/live/2024514/2024514/master.m3u8)
+[2026-10-26 10:25:43] Testing candidate: כאן חדשות מבזקים רציף (https://kannlive.media.kan.org.il/hls/live/2024622/2024622/master.m3u8)
+[2026-10-26 10:25:45] Testing candidate: ערוץ הכנסת שידור ישיר (https://knesset.streamguys1.com/knesset/knesset.m3u8)
+[2026-10-26 10:25:46] Testing candidate: הופ! שידור מיוחד לפעוטות (https://hop-live.stream.il/live/hop/master.m3u8)
+[2026-10-26 10:25:46] Testing candidate: זום ZOOM שידורי נוער 24/7 (https://zoom-tv.stream.il/live/zoom/playlist.m3u8)
+[2026-10-26 10:25:46] Testing candidate: ערוץ 24 שידורי מוזיקה ישראלית (https://mako-live.akamaized.net/hls/live/572358/ch24news/master.m3u8)
+[2026-10-26 10:25:46] Testing candidate: ערוץ אור מאיר מסורת (https://video.ormatv.co.il/live/stream.m3u8)
+[2026-10-26 10:25:46] Testing candidate: הידברות עולם הילדים (https://vod.hidabroot.org/live/kids/playlist.m3u8)
+[2026-10-26 10:25:46] Scan cycle finished. Total verified pool: 86 streams.
+[2026-10-26 10:26:46] Scanning sources for candidate Israeli streams...
+[2026-10-26 10:26:46] Testing candidate: כאן 11 שידור ראשי (CDN משני) (https://kan11.media.kan.org.il/hls/live/2024514/2024514/master.m3u8)
+[2026-10-26 10:26:48] Testing candidate: כאן חדשות מבזקים רציף (https://kannlive.media.kan.org.il/hls/live/2024622/2024622/master.m3u8)
+[2026-10-26 10:26:50] Testing candidate: ערוץ הכנסת שידור ישיר (https://knesset.streamguys1.com/knesset/knesset.m3u8)
+[2026-10-26 10:26:51] Testing candidate: הופ! שידור מיוחד לפעוטות (https://hop-live.stream.il/live/hop/master.m3u8)
+[2026-10-26 10:26:51] Testing candidate: זום ZOOM שידורי נוער 24/7 (https://zoom-tv.stream.il/live/zoom/playlist.m3u8)
+[2026-10-26 10:26:51] Testing candidate: ערוץ 24 שידורי מוזיקה ישראלית (https://mako-live.akamaized.net/hls/live/572358/ch24news/master.m3u8)
+[2026-10-26 10:26:51] Testing candidate: ערוץ אור מאיר מסורת (https://video.ormatv.co.il/live/stream.m3u8)
+[2026-10-26 10:26:51] Testing candidate: הידברות עולם הילדים (https://vod.hidabroot.org/live/kids/playlist.m3u8)
+[2026-10-26 10:26:51] Scan cycle finished. Total verified pool: 86 streams.
+[2026-10-26 10:27:51] Scanning sources for candidate Israeli streams...
+[2026-10-26 10:27:51] Testing candidate: כאן 11 שידור ראשי (CDN משני) (https://kan11.media.kan.org.il/hls/live/2024514/2024514/master.m3u8)
+[2026-10-26 10:27:53] Testing candidate: כאן חדשות מבזקים רציף (https://kannlive.media.kan.org.il/hls/live/2024622/2024622/master.m3u8)
+[2026-10-26 10:27:55] Testing candidate: ערוץ הכנסת שידור ישיר (https://knesset.streamguys1.com/knesset/knesset.m3u8)
+[2026-10-26 10:27:56] Testing candidate: הופ! שידור מיוחד לפעוטות (https://hop-live.stream.il/live/hop/master.m3u8)
+[2026-10-26 10:27:56] Testing candidate: זום ZOOM שידורי נוער 24/7 (https://zoom-tv.stream.il/live/zoom/playlist.m3u8)
+[2026-10-26 10:27:56] Testing candidate: ערוץ 24 שידורי מוזיקה ישראלית (https://mako-live.akamaized.net/hls/live/572358/ch24news/master.m3u8)
+[2026-10-26 10:27:56] Testing candidate: ערוץ אור מאיר מסורת (https://video.ormatv.co.il/live/stream.m3u8)
+[2026-10-26 10:27:56] Testing candidate: הידברות עולם הילדים (https://vod.hidabroot.org/live/kids/playlist.m3u8)
+[2026-10-26 10:27:56] Scan cycle finished. Total verified pool: 86 streams.
+[2026-10-26 10:28:56] Scanning sources for candidate Israeli streams...
+[2026-10-26 10:28:56] Testing candidate: כאן 11 שידור ראשי (CDN משני) (https://kan11.media.kan.org.il/hls/live/2024514/2024514/master.m3u8)
+[2026-10-26 10:28:58] Testing candidate: כאן חדשות מבזקים רציף (https://kannlive.media.kan.org.il/hls/live/2024622/2024622/master.m3u8)
+[2026-10-26 10:29:00] Testing candidate: ערוץ הכנסת שידור ישיר (https://knesset.streamguys1.com/knesset/knesset.m3u8)
+[2026-10-26 10:29:01] Testing candidate: הופ! שידור מיוחד לפעוטות (https://hop-live.stream.il/live/hop/master.m3u8)
+[2026-10-26 10:29:01] Testing candidate: זום ZOOM שידורי נוער 24/7 (https://zoom-tv.stream.il/live/zoom/playlist.m3u8)
+[2026-10-26 10:29:01] Testing candidate: ערוץ 24 שידורי מוזיקה ישראלית (https://mako-live.akamaized.net/hls/live/572358/ch24news/master.m3u8)
+[2026-10-26 10:29:02] Testing candidate: ערוץ אור מאיר מסורת (https://video.ormatv.co.il/live/stream.m3u8)
+[2026-10-26 10:29:02] Testing candidate: הידברות עולם הילדים (https://vod.hidabroot.org/live/kids/playlist.m3u8)
+[2026-10-26 10:29:02] Scan cycle finished. Total verified pool: 86 streams.
+[2026-10-26 10:30:02] Scanning sources for candidate Israeli streams...
+[2026-10-26 10:30:02] Testing candidate: כאן 11 שידור ראשי (CDN משני) (https://kan11.media.kan.org.il/hls/live/2024514/2024514/master.m3u8)
+[2026-10-26 10:30:04] Testing candidate: כאן חדשות מבזקים רציף (https://kannlive.media.kan.org.il/hls/live/2024622/2024622/master.m3u8)
+[2026-10-26 10:30:06] Testing candidate: ערוץ הכנסת שידור ישיר (https://knesset.streamguys1.com/knesset/knesset.m3u8)
+[2026-10-26 10:30:06] Testing candidate: הופ! שידור מיוחד לפעוטות (https://hop-live.stream.il/live/hop/master.m3u8)
+[2026-10-26 10:30:06] Testing candidate: זום ZOOM שידורי נוער 24/7 (https://zoom-tv.stream.il/live/zoom/playlist.m3u8)
+[2026-10-26 10:30:06] Testing candidate: ערוץ 24 שידורי מוזיקה ישראלית (https://mako-live.akamaized.net/hls/live/572358/ch24news/master.m3u8)
+[2026-10-26 10:30:07] Testing candidate: ערוץ אור מאיר מסורת (https://video.ormatv.co.il/live/stream.m3u8)
+[2026-10-26 10:30:07] Testing candidate: הידברות עולם הילדים (https://vod.hidabroot.org/live/kids/playlist.m3u8)
+[2026-10-26 10:30:07] Scan cycle finished. Total verified pool: 86 streams.
+[2026-10-26 10:31:07] Scanning sources for candidate Israeli streams...
+[2026-10-26 10:31:07] Testing candidate: כאן 11 שידור ראשי (CDN משני) (https://kan11.media.kan.org.il/hls/live/2024514/2024514/master.m3u8)
+[2026-10-26 10:31:09] Testing candidate: כאן חדשות מבזקים רציף (https://kannlive.media.kan.org.il/hls/live/2024622/2024622/master.m3u8)
+[2026-10-26 10:31:11] Testing candidate: ערוץ הכנסת שידור ישיר (https://knesset.streamguys1.com/knesset/knesset.m3u8)
+[2026-10-26 10:31:12] Testing candidate: הופ! שידור מיוחד לפעוטות (https://hop-live.stream.il/live/hop/master.m3u8)
+[2026-10-26 10:31:12] Testing candidate: זום ZOOM שידורי נוער 24/7 (https://zoom-tv.stream.il/live/zoom/playlist.m3u8)
+[2026-10-26 10:31:12] Testing candidate: ערוץ 24 שידורי מוזיקה ישראלית (https://mako-live.akamaized.net/hls/live/572358/ch24news/master.m3u8)
+[2026-10-26 10:31:12] Testing candidate: ערוץ אור מאיר מסורת (https://video.ormatv.co.il/live/stream.m3u8)
+[2026-10-26 10:31:12] Testing candidate: הידברות עולם הילדים (https://vod.hidabroot.org/live/kids/playlist.m3u8)
+[2026-10-26 10:31:12] Scan cycle finished. Total verified pool: 86 streams.
+[2026-10-26 10:32:12] Scanning sources for candidate Israeli streams...
+[2026-10-26 10:32:12] Testing candidate: כאן 11 שידור ראשי (CDN משני) (https://kan11.media.kan.org.il/hls/live/2024514/2024514/master.m3u8)
+[2026-10-26 10:32:14] Testing candidate: כאן חדשות מבזקים רציף (https://kannlive.media.kan.org.il/hls/live/2024622/2024622/master.m3u8)
+[2026-10-26 10:32:16] Testing candidate: ערוץ הכנסת שידור ישיר (https://knesset.streamguys1.com/knesset/knesset.m3u8)
+[2026-10-26 10:32:17] Testing candidate: הופ! שידור מיוחד לפעוטות (https://hop-live.stream.il/live/hop/master.m3u8)
+[2026-10-26 10:32:17] Testing candidate: זום ZOOM שידורי נוער 24/7 (https://zoom-tv.stream.il/live/zoom/playlist.m3u8)
+[2026-10-26 10:32:17] Testing candidate: ערוץ 24 שידורי מוזיקה ישראלית (https://mako-live.akamaized.net/hls/live/572358/ch24news/master.m3u8)
+[2026-10-26 10:32:17] Testing candidate: ערוץ אור מאיר מסורת (https://video.ormatv.co.il/live/stream.m3u8)
+[2026-10-26 10:32:17] Testing candidate: הידברות עולם הילדים (https://vod.hidabroot.org/live/kids/playlist.m3u8)
+[2026-10-26 10:32:17] Scan cycle finished. Total verified pool: 86 streams.
+[2026-10-26 10:33:17] Scanning sources for candidate Israeli streams...
+[2026-10-26 10:33:17] Testing candidate: כאן 11 שידור ראשי (CDN משני) (https://kan11.media.kan.org.il/hls/live/2024514/2024514/master.m3u8)
+[2026-10-26 10:33:19] Testing candidate: כאן חדשות מבזקים רציף (https://kannlive.media.kan.org.il/hls/live/2024622/2024622/master.m3u8)
+[2026-10-26 10:33:21] Testing candidate: ערוץ הכנסת שידור ישיר (https://knesset.streamguys1.com/knesset/knesset.m3u8)
+[2026-10-26 10:33:22] Testing candidate: הופ! שידור מיוחד לפעוטות (https://hop-live.stream.il/live/hop/master.m3u8)
+[2026-10-26 10:33:22] Testing candidate: זום ZOOM שידורי נוער 24/7 (https://zoom-tv.stream.il/live/zoom/playlist.m3u8)
+[2026-10-26 10:33:22] Testing candidate: ערוץ 24 שידורי מוזיקה ישראלית (https://mako-live.akamaized.net/hls/live/572358/ch24news/master.m3u8)
+[2026-10-26 10:33:22] Testing candidate: ערוץ אור מאיר מסורת (https://video.ormatv.co.il/live/stream.m3u8)
+[2026-10-26 10:33:22] Testing candidate: הידברות עולם הילדים (https://vod.hidabroot.org/live/kids/playlist.m3u8)
+[2026-10-26 10:33:22] Scan cycle finished. Total verified pool: 86 streams.
+[2026-10-26 10:34:22] Scanning sources for candidate Israeli streams...
+[2026-10-26 10:34:22] Testing candidate: כאן 11 שידור ראשי (CDN משני) (https://kan11.media.kan.org.il/hls/live/2024514/2024514/master.m3u8)
+[2026-10-26 10:34:24] Testing candidate: כאן חדשות מבזקים רציף (https://kannlive.media.kan.org.il/hls/live/2024622/2024622/master.m3u8)
+[2026-10-26 10:34:26] Testing candidate: ערוץ הכנסת שידור ישיר (https://knesset.streamguys1.com/knesset/knesset.m3u8)
+[2026-10-26 10:34:27] Testing candidate: הופ! שידור מיוחד לפעוטות (https://hop-live.stream.il/live/hop/master.m3u8)
+[2026-10-26 10:34:27] Testing candidate: זום ZOOM שידורי נוער 24/7 (https://zoom-tv.stream.il/live/zoom/playlist.m3u8)
+[2026-10-26 10:34:27] Testing candidate: ערוץ 24 שידורי מוזיקה ישראלית (https://mako-live.akamaized.net/hls/live/572358/ch24news/master.m3u8)
+[2026-10-26 10:34:27] Testing candidate: ערוץ אור מאיר מסורת (https://video.ormatv.co.il/live/stream.m3u8)
+[2026-10-26 10:34:27] Testing candidate: הידברות עולם הילדים (https://vod.hidabroot.org/live/kids/playlist.m3u8)
+[2026-10-26 10:34:27] Scan cycle finished. Total verified pool: 86 streams.
+[2026-10-26 10:35:27] Scanning sources for candidate Israeli streams...
+[2026-10-26 10:35:27] Testing candidate: כאן 11 שידור ראשי (CDN משני) (https://kan11.media.kan.org.il/hls/live/2024514/2024514/master.m3u8)
+[2026-10-26 10:35:29] Testing candidate: כאן חדשות מבזקים רציף (https://kannlive.media.kan.org.il/hls/live/2024622/2024622/master.m3u8)
+[2026-10-26 10:35:31] Testing candidate: ערוץ הכנסת שידור ישיר (https://knesset.streamguys1.com/knesset/knesset.m3u8)
+[2026-10-26 10:35:32] Testing candidate: הופ! שידור מיוחד לפעוטות (https://hop-live.stream.il/live/hop/master.m3u8)
+[2026-10-26 10:35:32] Testing candidate: זום ZOOM שידורי נוער 24/7 (https://zoom-tv.stream.il/live/zoom/playlist.m3u8)
+[2026-10-26 10:35:32] Testing candidate: ערוץ 24 שידורי מוזיקה ישראלית (https://mako-live.akamaized.net/hls/live/572358/ch24news/master.m3u8)
+[2026-10-26 10:35:32] Testing candidate: ערוץ אור מאיר מסורת (https://video.ormatv.co.il/live/stream.m3u8)
+[2026-10-26 10:35:32] Testing candidate: הידברות עולם הילדים (https://vod.hidabroot.org/live/kids/playlist.m3u8)
+[2026-10-26 10:35:32] Scan cycle finished. Total verified pool: 86 streams.
+[2026-10-26 10:36:32] Scanning sources for candidate Israeli streams...
+[2026-10-26 10:36:32] Testing candidate: כאן 11 שידור ראשי (CDN משני) (https://kan11.media.kan.org.il/hls/live/2024514/2024514/master.m3u8)
+[2026-10-26 10:36:34] Testing candidate: כאן חדשות מבזקים רציף (https://kannlive.media.kan.org.il/hls/live/2024622/2024622/master.m3u8)
+[2026-10-26 10:36:36] Testing candidate: ערוץ הכנסת שידור ישיר (https://knesset.streamguys1.com/knesset/knesset.m3u8)
+[2026-10-26 10:36:37] Testing candidate: הופ! שידור מיוחד לפעוטות (https://hop-live.stream.il/live/hop/master.m3u8)
+[2026-10-26 10:36:37] Testing candidate: זום ZOOM שידורי נוער 24/7 (https://zoom-tv.stream.il/live/zoom/playlist.m3u8)
+[2026-10-26 10:36:37] Testing candidate: ערוץ 24 שידורי מוזיקה ישראלית (https://mako-live.akamaized.net/hls/live/572358/ch24news/master.m3u8)
+[2026-10-26 10:36:37] Testing candidate: ערוץ אור מאיר מסורת (https://video.ormatv.co.il/live/stream.m3u8)
+[2026-10-26 10:36:37] Testing candidate: הידברות עולם הילדים (https://vod.hidabroot.org/live/kids/playlist.m3u8)
+[2026-10-26 10:36:37] Scan cycle finished. Total verified pool: 86 streams.
+[2026-10-26 10:37:37] Scanning sources for candidate Israeli streams...
+[2026-10-26 10:37:37] Testing candidate: כאן 11 שידור ראשי (CDN משני) (https://kan11.media.kan.org.il/hls/live/2024514/2024514/master.m3u8)
+[2026-10-26 10:37:39] Testing candidate: כאן חדשות מבזקים רציף (https://kannlive.media.kan.org.il/hls/live/2024622/2024622/master.m3u8)
+[2026-10-26 10:37:42] Testing candidate: ערוץ הכנסת שידור ישיר (https://knesset.streamguys1.com/knesset/knesset.m3u8)
+[2026-10-26 10:37:42] Testing candidate: הופ! שידור מיוחד לפעוטות (https://hop-live.stream.il/live/hop/master.m3u8)
+[2026-10-26 10:37:42] Testing candidate: זום ZOOM שידורי נוער 24/7 (https://zoom-tv.stream.il/live/zoom/playlist.m3u8)
+[2026-10-26 10:37:42] Testing candidate: ערוץ 24 שידורי מוזיקה ישראלית (https://mako-live.akamaized.net/hls/live/572358/ch24news/master.m3u8)
+[2026-10-26 10:37:42] Testing candidate: ערוץ אור מאיר מסורת (https://video.ormatv.co.il/live/stream.m3u8)
+[2026-10-26 10:37:42] Testing candidate: הידברות עולם הילדים (https://vod.hidabroot.org/live/kids/playlist.m3u8)
+[2026-10-26 10:37:42] Scan cycle finished. Total verified pool: 86 streams.
+[2026-10-26 10:38:42] Scanning sources for candidate Israeli streams...
+[2026-10-26 10:38:43] Testing candidate: כאן 11 שידור ראשי (CDN משני) (https://kan11.media.kan.org.il/hls/live/2024514/2024514/master.m3u8)
+[2026-10-26 10:38:45] Testing candidate: כאן חדשות מבזקים רציף (https://kannlive.media.kan.org.il/hls/live/2024622/2024622/master.m3u8)
+[2026-10-26 10:38:47] Testing candidate: ערוץ הכנסת שידור ישיר (https://knesset.streamguys1.com/knesset/knesset.m3u8)
+[2026-10-26 10:38:47] Testing candidate: הופ! שידור מיוחד לפעוטות (https://hop-live.stream.il/live/hop/master.m3u8)
+[2026-10-26 10:38:47] Testing candidate: זום ZOOM שידורי נוער 24/7 (https://zoom-tv.stream.il/live/zoom/playlist.m3u8)
+[2026-10-26 10:38:47] Testing candidate: ערוץ 24 שידורי מוזיקה ישראלית (https://mako-live.akamaized.net/hls/live/572358/ch24news/master.m3u8)
+[2026-10-26 10:38:48] Testing candidate: ערוץ אור מאיר מסורת (https://video.ormatv.co.il/live/stream.m3u8)
+[2026-10-26 10:38:48] Testing candidate: הידברות עולם הילדים (https://vod.hidabroot.org/live/kids/playlist.m3u8)
+[2026-10-26 10:38:48] Scan cycle finished. Total verified pool: 86 streams.
+[2026-10-26 10:39:48] Scanning sources for candidate Israeli streams...
+[2026-10-26 10:39:48] Testing candidate: כאן 11 שידור ראשי (CDN משני) (https://kan11.media.kan.org.il/hls/live/2024514/2024514/master.m3u8)
+[2026-10-26 10:39:50] Testing candidate: כאן חדשות מבזקים רציף (https://kannlive.media.kan.org.il/hls/live/2024622/2024622/master.m3u8)
+[2026-10-26 10:39:52] Testing candidate: ערוץ הכנסת שידור ישיר (https://knesset.streamguys1.com/knesset/knesset.m3u8)
+[2026-10-26 10:39:53] Testing candidate: הופ! שידור מיוחד לפעוטות (https://hop-live.stream.il/live/hop/master.m3u8)
+[2026-10-26 10:39:53] Testing candidate: זום ZOOM שידורי נוער 24/7 (https://zoom-tv.stream.il/live/zoom/playlist.m3u8)
+[2026-10-26 10:39:53] Testing candidate: ערוץ 24 שידורי מוזיקה ישראלית (https://mako-live.akamaized.net/hls/live/572358/ch24news/master.m3u8)
+[2026-10-26 10:39:53] Testing candidate: ערוץ אור מאיר מסורת (https://video.ormatv.co.il/live/stream.m3u8)
+[2026-10-26 10:39:53] Testing candidate: הידברות עולם הילדים (https://vod.hidabroot.org/live/kids/playlist.m3u8)
+[2026-10-26 10:39:53] Scan cycle finished. Total verified pool: 86 streams.
+[2026-10-26 10:40:53] Scanning sources for candidate Israeli streams...
+[2026-10-26 10:40:53] Testing candidate: כאן 11 שידור ראשי (CDN משני) (https://kan11.media.kan.org.il/hls/live/2024514/2024514/master.m3u8)
+[2026-10-26 10:40:55] Testing candidate: כאן חדשות מבזקים רציף (https://kannlive.media.kan.org.il/hls/live/2024622/2024622/master.m3u8)
+[2026-10-26 10:40:57] Testing candidate: ערוץ הכנסת שידור ישיר (https://knesset.streamguys1.com/knesset/knesset.m3u8)
+[2026-10-26 10:40:58] Testing candidate: הופ! שידור מיוחד לפעוטות (https://hop-live.stream.il/live/hop/master.m3u8)
+[2026-10-26 10:40:58] Testing candidate: זום ZOOM שידורי נוער 24/7 (https://zoom-tv.stream.il/live/zoom/playlist.m3u8)
+[2026-10-26 10:40:58] Testing candidate: ערוץ 24 שידורי מוזיקה ישראלית (https://mako-live.akamaized.net/hls/live/572358/ch24news/master.m3u8)
+[2026-10-26 10:40:58] Testing candidate: ערוץ אור מאיר מסורת (https://video.ormatv.co.il/live/stream.m3u8)
+[2026-10-26 10:40:58] Testing candidate: הידברות עולם הילדים (https://vod.hidabroot.org/live/kids/playlist.m3u8)
+[2026-10-26 10:40:58] Scan cycle finished. Total verified pool: 86 streams.
+[2026-10-26 10:41:58] Scanning sources for candidate Israeli streams...
+[2026-10-26 10:41:58] Testing candidate: כאן 11 שידור ראשי (CDN משני) (https://kan11.media.kan.org.il/hls/live/2024514/2024514/master.m3u8)
+[2026-10-26 10:42:00] Testing candidate: כאן חדשות מבזקים רציף (https://kannlive.media.kan.org.il/hls/live/2024622/2024622/master.m3u8)
+[2026-10-26 10:42:02] Testing candidate: ערוץ הכנסת שידור ישיר (https://knesset.streamguys1.com/knesset/knesset.m3u8)
+[2026-10-26 10:42:03] Testing candidate: הופ! שידור מיוחד לפעוטות (https://hop-live.stream.il/live/hop/master.m3u8)
+[2026-10-26 10:42:03] Testing candidate: זום ZOOM שידורי נוער 24/7 (https://zoom-tv.stream.il/live/zoom/playlist.m3u8)
+[2026-10-26 10:42:03] Testing candidate: ערוץ 24 שידורי מוזיקה ישראלית (https://mako-live.akamaized.net/hls/live/572358/ch24news/master.m3u8)
+[2026-10-26 10:42:03] Testing candidate: ערוץ אור מאיר מסורת (https://video.ormatv.co.il/live/stream.m3u8)
+[2026-10-26 10:42:03] Testing candidate: הידברות עולם הילדים (https://vod.hidabroot.org/live/kids/playlist.m3u8)
+[2026-10-26 10:42:03] Scan cycle finished. Total verified pool: 86 streams.
+[2026-10-26 10:43:03] Scanning sources for candidate Israeli streams...
+[2026-10-26 10:43:03] Testing candidate: כאן 11 שידור ראשי (CDN משני) (https://kan11.media.kan.org.il/hls/live/2024514/2024514/master.m3u8)
+[2026-10-26 10:43:05] Testing candidate: כאן חדשות מבזקים רציף (https://kannlive.media.kan.org.il/hls/live/2024622/2024622/master.m3u8)
+[2026-10-26 10:43:07] Testing candidate: ערוץ הכנסת שידור ישיר (https://knesset.streamguys1.com/knesset/knesset.m3u8)
+[2026-10-26 10:43:08] Testing candidate: הופ! שידור מיוחד לפעוטות (https://hop-live.stream.il/live/hop/master.m3u8)
+[2026-10-26 10:43:08] Testing candidate: זום ZOOM שידורי נוער 24/7 (https://zoom-tv.stream.il/live/zoom/playlist.m3u8)
+[2026-10-26 10:43:08] Testing candidate: ערוץ 24 שידורי מוזיקה ישראלית (https://mako-live.akamaized.net/hls/live/572358/ch24news/master.m3u8)
+[2026-10-26 10:43:08] Testing candidate: ערוץ אור מאיר מסורת (https://video.ormatv.co.il/live/stream.m3u8)
+[2026-10-26 10:43:08] Testing candidate: הידברות עולם הילדים (https://vod.hidabroot.org/live/kids/playlist.m3u8)
+[2026-10-26 10:43:08] Scan cycle finished. Total verified pool: 86 streams.
+[2026-10-26 10:44:08] Scanning sources for candidate Israeli streams...
+[2026-10-26 10:44:08] Testing candidate: כאן 11 שידור ראשי (CDN משני) (https://kan11.media.kan.org.il/hls/live/2024514/2024514/master.m3u8)
+[2026-10-26 10:44:10] Testing candidate: כאן חדשות מבזקים רציף (https://kannlive.media.kan.org.il/hls/live/2024622/2024622/master.m3u8)
+[2026-10-26 10:44:12] Testing candidate: ערוץ הכנסת שידור ישיר (https://knesset.streamguys1.com/knesset/knesset.m3u8)
+[2026-10-26 10:44:13] Testing candidate: הופ! שידור מיוחד לפעוטות (https://hop-live.stream.il/live/hop/master.m3u8)
+[2026-10-26 10:44:13] Testing candidate: זום ZOOM שידורי נוער 24/7 (https://zoom-tv.stream.il/live/zoom/playlist.m3u8)
+[2026-10-26 10:44:13] Testing candidate: ערוץ 24 שידורי מוזיקה ישראלית (https://mako-live.akamaized.net/hls/live/572358/ch24news/master.m3u8)
+[2026-10-26 10:44:13] Testing candidate: ערוץ אור מאיר מסורת (https://video.ormatv.co.il/live/stream.m3u8)
+[2026-10-26 10:44:13] Testing candidate: הידברות עולם הילדים (https://vod.hidabroot.org/live/kids/playlist.m3u8)
+[2026-10-26 10:44:13] Scan cycle finished. Total verified pool: 86 streams.
+[2026-10-26 10:45:13] Scanning sources for candidate Israeli streams...
+[2026-10-26 10:45:13] Testing candidate: כאן 11 שידור ראשי (CDN משני) (https://kan11.media.kan.org.il/hls/live/2024514/2024514/master.m3u8)
+[2026-10-26 10:45:15] Testing candidate: כאן חדשות מבזקים רציף (https://kannlive.media.kan.org.il/hls/live/2024622/2024622/master.m3u8)
+[2026-10-26 10:45:17] Testing candidate: ערוץ הכנסת שידור ישיר (https://knesset.streamguys1.com/knesset/knesset.m3u8)
+[2026-10-26 10:45:19] Testing candidate: הופ! שידור מיוחד לפעוטות (https://hop-live.stream.il/live/hop/master.m3u8)
+[2026-10-26 10:45:19] Testing candidate: זום ZOOM שידורי נוער 24/7 (https://zoom-tv.stream.il/live/zoom/playlist.m3u8)
+[2026-10-26 10:45:19] Testing candidate: ערוץ 24 שידורי מוזיקה ישראלית (https://mako-live.akamaized.net/hls/live/572358/ch24news/master.m3u8)
+[2026-10-26 10:45:19] Testing candidate: ערוץ אור מאיר מסורת (https://video.ormatv.co.il/live/stream.m3u8)
+[2026-10-26 10:45:19] Testing candidate: הידברות עולם הילדים (https://vod.hidabroot.org/live/kids/playlist.m3u8)
+[2026-10-26 10:45:19] Scan cycle finished. Total verified pool: 86 streams.
+[2026-10-26 10:46:19] Scanning sources for candidate Israeli streams...
+[2026-10-26 10:46:19] Testing candidate: כאן 11 שידור ראשי (CDN משני) (https://kan11.media.kan.org.il/hls/live/2024514/2024514/master.m3u8)
+[2026-10-26 10:46:21] Testing candidate: כאן חדשות מבזקים רציף (https://kannlive.media.kan.org.il/hls/live/2024622/2024622/master.m3u8)
+[2026-10-26 10:46:23] Testing candidate: ערוץ הכנסת שידור ישיר (https://knesset.streamguys1.com/knesset/knesset.m3u8)
+[2026-10-26 10:46:24] Testing candidate: הופ! שידור מיוחד לפעוטות (https://hop-live.stream.il/live/hop/master.m3u8)
+[2026-10-26 10:46:24] Testing candidate: זום ZOOM שידורי נוער 24/7 (https://zoom-tv.stream.il/live/zoom/playlist.m3u8)
+[2026-10-26 10:46:24] Testing candidate: ערוץ 24 שידורי מוזיקה ישראלית (https://mako-live.akamaized.net/hls/live/572358/ch24news/master.m3u8)
+[2026-10-26 10:46:24] Testing candidate: ערוץ אור מאיר מסורת (https://video.ormatv.co.il/live/stream.m3u8)
+[2026-10-26 10:46:24] Testing candidate: הידברות עולם הילדים (https://vod.hidabroot.org/live/kids/playlist.m3u8)
+[2026-10-26 10:46:24] Scan cycle finished. Total verified pool: 86 streams.
+[2026-10-26 10:47:24] Scanning sources for candidate Israeli streams...
+[2026-10-26 10:47:24] Testing candidate: כאן 11 שידור ראשי (CDN משני) (https://kan11.media.kan.org.il/hls/live/2024514/2024514/master.m3u8)
+[2026-10-26 10:47:26] Testing candidate: כאן חדשות מבזקים רציף (https://kannlive.media.kan.org.il/hls/live/2024622/2024622/master.m3u8)

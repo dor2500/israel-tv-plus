@@ -645,3 +645,19 @@ http://stream.mcquack.net/347/index.m3u8
 http://stream.mcquack.net/348/index.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="פרש קידס (Fresh Kids TV HD)" tvg-chno="330" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/zoom.png" group-title="ילדים ונוער (בעברית)",פרש קידס (Fresh Kids TV HD)
 http://stream.mcquack.net/425/index.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="Sky News UK FHD" tvg-chno="331" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/sky_news.png" group-title="חדשות מהעולם",Sky News UK FHD
+https://linear901-oo-hls0-prd-gtm.delivery.skycdp.com/17501/sde-fast-skynews/master.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="Sky News Arabia HD (סקיי ניוז ערבית)" tvg-chno="332" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/sky_news.png" group-title="חדשות מהעולם",Sky News Arabia HD (סקיי ניוז ערבית)
+https://live-stream.skynewsarabia.com/c-horizontal-channel/horizontal-stream/index.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="Sky News Arabia ישיר HD (מקור 2)" tvg-chno="333" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/sky_news.png" group-title="חדשות מהעולם",Sky News Arabia ישיר HD (מקור 2)
+https://stream.skynewsarabia.com/hls/sna.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="Sky Racing 1 HD (סקיי רייסינג ספורט)" tvg-chno="334" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/sky_sports_racing.png" group-title="ספורט",Sky Racing 1 HD (סקיי רייסינג ספורט)
+https://636ffd31f0e12.streamlock.net/RacingStream1/RacingStream1/chunklist_w127116790.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="Sky News Australia Extra 1 HD" tvg-chno="335" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/sky_news.png" group-title="חדשות מהעולם",Sky News Australia Extra 1 HD
+https://skynewsau-live.akamaized.net/hls/live/2002689/skynewsau-extra1/master.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="Sky News Australia Extra 2 HD" tvg-chno="336" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/sky_news.png" group-title="חדשות מהעולם",Sky News Australia Extra 2 HD
+https://skynewsau-live.akamaized.net/hls/live/2002690/skynewsau-extra2/master.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="Sky News Australia Extra 3 HD" tvg-chno="337" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/sky_news.png" group-title="חדשות מהעולם",Sky News Australia Extra 3 HD
+https://skynewsau-live.akamaized.net/hls/live/2002691/skynewsau-extra3/master.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="Sky Folk TV HD (סקיי פולק)" tvg-chno="338" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/sky_news.png" group-title="מוזיקה",Sky Folk TV HD (סקיי פולק)
+https://skyfolk.mk/live.m3u8
