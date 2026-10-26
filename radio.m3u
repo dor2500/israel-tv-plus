@@ -215,3 +215,7 @@ https://cdn.cybercdn.live/Radios_100FM/Audio/icecast.audio
 https://cdna.streamgates.net/radios-audio/Nostalgia_963fm/icecast.audio
 #EXTINF:-1 tvg-id="" tvg-name="רק מוזיקה (Rak Musica)" tvg-chno="306" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/rak_musica.png" group-title="רדיו ישראלי" radio="true",רק מוזיקה (Rak Musica)
 https://play.radioking.io/rak-musica/670240
+#EXTINF:-1 tvg-id="" tvg-name="רדיו קווליטה (Radio Qualita)" tvg-chno="341" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/radio_qualita.png" group-title="רדיו ישראלי" radio="true",רדיו קווליטה (Radio Qualita)
+https://listen.radioking.com/radio/345145/stream/393862
+#EXTINF:-1 tvg-id="" tvg-name="Radio Plus ישראל" tvg-chno="340" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/radio_plus_il.png" group-title="רדיו ישראלי" radio="true",Radio Plus ישראל
+https://s3.yesstreaming.net:17049/stream

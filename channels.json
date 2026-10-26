@@ -7113,5 +7113,70 @@
       "web": "✅ מתנגן בכל הפלטפורמות"
     },
     "number": 338
+  },
+  {
+    "id": "radio_qualita",
+    "name": "רדיו קווליטה (Radio Qualita)",
+    "title": "Radio Qualita – רדיו עולים דוברי צרפתית",
+    "category": "רדיו ישראלי (Israeli Radio)",
+    "categoryEn": "radio",
+    "kind": "radio",
+    "url": "https://listen.radioking.com/radio/345145/stream/393862",
+    "logo": "assets/logos/radio_qualita.png",
+    "badge": "LIVE",
+    "desc": "רדיו אינטרנט ישראלי בצרפתית מבית Qualita, עם חדשות ותוכניות לעולים",
+    "number": 341,
+    "lang": "fr",
+    "country": "IL",
+    "src": {
+      "by": "Studio Qualita – נגן RadioKing רשמי",
+      "kind": "official",
+      "host": "listen.radioking.com",
+      "found": "זרם Radio Qualita; זהות התחנה אומתה באתר qualita.org.il",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "i24news_ar",
+    "name": "i24NEWS العربية HD",
+    "title": "i24NEWS Arabic",
+    "category": "ערוצי ישראל - שידור חי",
+    "categoryEn": "israel",
+    "url": "https://hlspackager.akamaized.net/live/DB/i24_ARABIC/HLS/i24_ARABIC.m3u8",
+    "logo": "assets/logos/i24news_ar.png",
+    "badge": "HD",
+    "desc": "ערוץ החדשות הבינלאומי של i24NEWS בערבית, בשידור חי",
+    "number": 339,
+    "lang": "ar",
+    "country": "IL",
+    "src": {
+      "by": "i24NEWS – שידור רשמי דרך Akamai",
+      "kind": "official",
+      "host": "hlspackager.akamaized.net",
+      "found": "זרם i24NEWS Arabic ב-iptv-org; קיום הערוץ אושר באתר i24NEWS",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "radio_plus_il",
+    "name": "Radio Plus ישראל",
+    "title": "רדיו פלוס (Radio Plus)",
+    "category": "רדיו ישראלי (Israeli Radio)",
+    "categoryEn": "radio",
+    "kind": "radio",
+    "url": "https://s3.yesstreaming.net:17049/stream",
+    "logo": "assets/logos/radio_plus_il.png",
+    "badge": "LIVE",
+    "desc": "רדיו ישראלי המשדר מוזיקה ותוכניות ברצף",
+    "number": 340,
+    "lang": "he",
+    "country": "IL",
+    "src": {
+      "by": "Radio Plus – זרם הנגן הרשמי באתר התחנה",
+      "kind": "official",
+      "host": "s3.yesstreaming.net",
+      "found": "נגן Radio Plus באתר radioplus.co.il",
+      "web": "✅"
+    }
   }
 ]

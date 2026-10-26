@@ -487,3 +487,9 @@ http://stream.mcquack.net/347/index.m3u8
 http://stream.mcquack.net/348/index.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="פרש קידס (Fresh Kids TV HD)" tvg-chno="330" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/zoom.png" group-title="ילדים ונוער (בעברית)",פרש קידס (Fresh Kids TV HD)
 http://stream.mcquack.net/425/index.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="רדיו קווליטה (Radio Qualita)" tvg-chno="341" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/radio_qualita.png" group-title="רדיו ישראלי" radio="true",רדיו קווליטה (Radio Qualita)
+https://listen.radioking.com/radio/345145/stream/393862
+#EXTINF:-1 tvg-id="" tvg-name="i24NEWS العربية HD" tvg-chno="339" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/i24news_ar.png" group-title="ערוצי ישראל",i24NEWS العربية HD
+https://hlspackager.akamaized.net/live/DB/i24_ARABIC/HLS/i24_ARABIC.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="Radio Plus ישראל" tvg-chno="340" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/radio_plus_il.png" group-title="רדיו ישראלי" radio="true",Radio Plus ישראל
+https://s3.yesstreaming.net:17049/stream

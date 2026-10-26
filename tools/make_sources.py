@@ -61,6 +61,9 @@ HOSTS = {
     "live-hls-apps-aje-fa.getaj.net": ("אל-ג'זירה – שרת רשמי", "official"),
     "ncdn-live-bfm.pfd.sfr.net": ("BFM – SFR (רשמי)", "official"),
     "rbmn-live.akamaized.net": ("Red Bull TV – Akamai (רשמי)", "official"),
+    "hlspackager.akamaized.net": ("i24NEWS – CDN Akamai של השידור הרשמי", "official"),
+    "s3.yesstreaming.net": ("YesStreaming – זרם הנגן באתר Radio Plus", "official"),
+    "listen.radioking.com": ("RadioKing – נגן השידור של Studio Qualita", "official"),
     "svs.itworkscdn.net": ("Asharq Discovery – ItWorks (רשמי)", "official"),
     "stream.4fun.tv": ("4FUN TV – שרת רשמי", "official"),
     "585b674743bbb.streamlock.net": ("70-80 TV – Wowza Streamlock", "official"),
@@ -81,6 +84,8 @@ def host(url):
 
 def who(url, c=None):
     h = host(url)
+    if c is not None and c.get("src"):
+        return c["src"].get("by", h), c["src"].get("kind", "restream")
     if h not in HOSTS and c is not None and c.get("imported"):
         return h, "public"  # bulk import from iptv-org: public stream, owner not checked one by one
     return HOSTS.get(h, (h, "official" if h.endswith(".co.il") else "restream"))
@@ -106,6 +111,9 @@ def main():
                     rb_urls.add(s[k].split("://", 1)[-1].split("?")[0])
 
     def found(c):
+        existing = c.get("src", {}).get("found")
+        if existing:
+            return existing
         u = c["url"].split("://", 1)[-1]
         if c.get("kind") == "app":
             return "Google Play + האתר הרשמי"
@@ -206,7 +214,8 @@ def main():
             c.pop("src", None)
             continue
         name, k = who(c["url"], c)
-        c["src"] = {"by": name, "kind": k, "host": host(c["url"]), "found": plain(found(c)), "web": plain(web(c))}
+        if not c.get("src"):
+            c["src"] = {"by": name, "kind": k, "host": host(c["url"]), "found": plain(found(c)), "web": plain(web(c))}
     with open(os.path.join(ROOT, "channels.json"), "w", encoding="utf-8") as f:
         json.dump(chans, f, ensure_ascii=False, indent=2)
     with open(os.path.join(ROOT, "channels.js"), "w", encoding="utf-8") as f:

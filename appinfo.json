@@ -1,6 +1,6 @@
 {
   "id": "com.israeltv.plus",
-  "version": "4.4.5",
+  "version": "4.4.6",
   "vendor": "Dorp",
   "type": "web",
   "main": "index.html",
@@ -26,4 +26,3 @@
     "media"
   ]
 }
-
