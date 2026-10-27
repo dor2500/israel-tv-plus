@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -19,11 +20,13 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.KeyboardArrowRight
 import androidx.compose.material.icons.rounded.Info
+import androidx.compose.material.icons.rounded.PlayArrow
 import androidx.compose.material.icons.rounded.Radio
 import androidx.compose.material.icons.rounded.Star
 import androidx.compose.material.icons.rounded.StarBorder
@@ -32,7 +35,6 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.material3.ripple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Stable
 import androidx.compose.runtime.getValue
@@ -43,6 +45,7 @@ import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
@@ -58,8 +61,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
 import com.israeltv.plus.data.Channel
+import kotlin.math.abs
 
-val CardShape = RoundedCornerShape(26.dp)
+val CardShape = RoundedCornerShape(24.dp)
+private val ContinueCardShape = RoundedCornerShape(22.dp)
 
 /** The shared-element key of the card that was tapped last: the player grows out of it and shrinks back into it. */
 @Stable
@@ -98,8 +103,8 @@ fun ChannelLogo(url: String, modifier: Modifier = Modifier, isRadio: Boolean = f
 }
 
 /**
- * A channel: 16:9.5 frosted tile (26 dp corners, surfaceContainerHigh at 75%, specular edge) with the logo, the
- * quality badge and the channel number; title (15 sp bold) and subtitle (12 sp medium) under it.
+ * Standard VOD / Channel poster card: frosted tile with Apple TV spring press/focus physics (no Android ripple),
+ * SemiBold title, Light metadata subtitle, and the Nuvio long-press context menu.
  */
 @Composable
 fun ChannelCard(
@@ -122,14 +127,14 @@ fun ChannelCard(
             Modifier
                 .fillMaxWidth()
                 .aspectRatio(16f / 9.5f)
-                .pressPhysics(interaction)
+                .pressPhysics(interaction, glowShape = CardShape)
                 .then(if (sharedKey != null) Modifier.sharedContainer(sharedKey, CardShape) else Modifier)
                 .clip(CardShape)
-                .background(scheme.surfaceContainerHigh.copy(alpha = 0.75f))
+                .background(scheme.surfaceContainerHigh.copy(alpha = 0.78f))
                 .specularBorder(CardShape)
                 .combinedClickable(
                     interactionSource = interaction,
-                    indication = ripple(),
+                    indication = null,
                     onLongClick = {
                         haptic.performHapticFeedback(HapticFeedbackType.LongPress)
                         menuOpen = true
@@ -155,7 +160,7 @@ fun ChannelCard(
                         .padding(horizontal = 8.dp, vertical = 2.dp),
                     color = Color.White,
                     fontSize = 10.sp,
-                    fontWeight = FontWeight.Bold,
+                    fontWeight = FontWeight.Medium,
                 )
             }
             Text(
@@ -163,7 +168,7 @@ fun ChannelCard(
                 Modifier.align(Alignment.TopEnd).padding(10.dp),
                 color = scheme.onSurfaceVariant.copy(alpha = 0.8f),
                 fontSize = 11.sp,
-                fontWeight = FontWeight.Bold,
+                fontWeight = FontWeight.Normal,
             )
             if (favorite) {
                 BoldIcon(
@@ -195,7 +200,7 @@ fun ChannelCard(
             Modifier.fillMaxWidth().padding(horizontal = 4.dp),
             style = Rtl,
             fontSize = 15.sp,
-            fontWeight = FontWeight.Bold,
+            fontWeight = FontWeight.SemiBold,
             color = scheme.onSurface,
             maxLines = 1,
             overflow = TextOverflow.Ellipsis,
@@ -205,10 +210,198 @@ fun ChannelCard(
             Modifier.fillMaxWidth().padding(horizontal = 4.dp),
             style = Rtl,
             fontSize = 12.sp,
-            fontWeight = FontWeight.Medium,
+            fontWeight = FontWeight.Light,
             color = scheme.onSurfaceVariant,
             maxLines = 1,
             overflow = TextOverflow.Ellipsis,
+        )
+    }
+}
+
+/**
+ * Distinct 16:9 landscape card for the "המשך צפייה" (Continue Watching) shelf:
+ * Features an atmospheric widescreen frame, embedded title & metadata overlay, play badge, and a colored playback
+ * progress bar along the bottom edge. Reuses [NuvioCardMenu] on long-press and [pressPhysics] with no Android ripple.
+ */
+@Composable
+fun ContinueWatchingCard(
+    channel: Channel,
+    logo: String,
+    subtitle: String,
+    progress: Float,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    sharedKey: String? = null,
+) {
+    val origin = LocalPlayOrigin.current
+    val menu = LocalCardMenu.current
+    val interaction = remember { MutableInteractionSource() }
+    val haptic = LocalHapticFeedback.current
+    val scheme = MaterialTheme.colorScheme
+    var menuOpen by remember { mutableStateOf(false) }
+    val favorite = menu.isFavorite(channel)
+    val clampedProgress = progress.coerceIn(0.18f, 0.92f)
+
+    Box(
+        modifier
+            .width(248.dp)
+            .aspectRatio(16f / 9f)
+            .pressPhysics(interaction, glowShape = ContinueCardShape)
+            .then(if (sharedKey != null) Modifier.sharedContainer(sharedKey, ContinueCardShape) else Modifier)
+            .clip(ContinueCardShape)
+            .background(
+                Brush.linearGradient(
+                    listOf(
+                        Color(0xFF1A1C29),
+                        scheme.surfaceContainerHigh.copy(alpha = 0.92f),
+                        Color(0xFF10111A),
+                    )
+                )
+            )
+            .specularBorder(ContinueCardShape)
+            .combinedClickable(
+                interactionSource = interaction,
+                indication = null,
+                onLongClick = {
+                    haptic.performHapticFeedback(HapticFeedbackType.LongPress)
+                    menuOpen = true
+                },
+                onClick = {
+                    haptic.performHapticFeedback(HapticFeedbackType.Confirm)
+                    origin.key = sharedKey
+                    onClick()
+                },
+            ),
+    ) {
+        // Subtle radial spotlight behind logo
+        Box(
+            Modifier
+                .fillMaxSize()
+                .background(
+                    Brush.radialGradient(
+                        listOf(scheme.primary.copy(alpha = 0.22f), Color.Transparent),
+                    )
+                )
+        )
+
+        ChannelLogo(
+            logo,
+            Modifier
+                .align(Alignment.Center)
+                .padding(bottom = 18.dp)
+                .fillMaxSize(0.54f),
+            channel.isRadio,
+        )
+
+        // Top pill: "המשך צפייה" / quality
+        Text(
+            if (channel.isRadio) "רדיו חי" else "שידור חי · ${channel.badge.ifBlank { "HD" }}",
+            Modifier
+                .align(Alignment.TopEnd)
+                .padding(10.dp)
+                .clip(RoundedCornerShape(8.dp))
+                .background(Color.Black.copy(alpha = 0.58f))
+                .padding(horizontal = 8.dp, vertical = 3.dp),
+            color = Color.White.copy(alpha = 0.92f),
+            fontSize = 10.sp,
+            fontWeight = FontWeight.Medium,
+        )
+
+        if (favorite) {
+            BoldIcon(
+                Icons.Rounded.Star, null,
+                Modifier.align(Alignment.TopStart).padding(10.dp).size(16.dp),
+                tint = Color(0xFFFFD54F), weight = 0.45.dp,
+            )
+        }
+
+        // Bottom dark scrim for embedded landscape title + metadata
+        Box(
+            Modifier
+                .align(Alignment.BottomCenter)
+                .fillMaxWidth()
+                .height(68.dp)
+                .background(
+                    Brush.verticalGradient(
+                        listOf(Color.Transparent, Color.Black.copy(alpha = 0.84f))
+                    )
+                )
+        )
+
+        Row(
+            Modifier
+                .align(Alignment.BottomStart)
+                .fillMaxWidth()
+                .padding(start = 12.dp, end = 12.dp, bottom = 10.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Column(Modifier.weight(1f)) {
+                Text(
+                    channel.name,
+                    style = Rtl,
+                    color = Color.White,
+                    fontSize = 15.sp,
+                    fontWeight = FontWeight.SemiBold,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                )
+                Text(
+                    subtitle,
+                    style = Rtl,
+                    color = Color.White.copy(alpha = 0.72f),
+                    fontSize = 11.5.sp,
+                    fontWeight = FontWeight.Light,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                )
+            }
+            Spacer(Modifier.width(8.dp))
+            Box(
+                Modifier
+                    .size(28.dp)
+                    .clip(RoundedCornerShape(50))
+                    .background(Color.White.copy(alpha = 0.2f)),
+                contentAlignment = Alignment.Center,
+            ) {
+                Icon(Icons.Rounded.PlayArrow, null, Modifier.size(18.dp), tint = Color.White)
+            }
+        }
+
+        // Colored playback progress bar along the bottom edge of the 16:9 card
+        Box(
+            Modifier
+                .align(Alignment.BottomCenter)
+                .fillMaxWidth()
+                .height(4.dp)
+                .background(Color.White.copy(alpha = 0.18f))
+        ) {
+            Box(
+                Modifier
+                    .fillMaxHeight()
+                    .fillMaxWidth(clampedProgress)
+                    .background(
+                        Brush.horizontalGradient(
+                            listOf(scheme.primary, Color(0xFF38BDF8))
+                        )
+                    )
+            )
+        }
+
+        NuvioCardMenu(
+            expanded = menuOpen,
+            channel = channel,
+            logo = logo,
+            subtitle = subtitle,
+            favorite = favorite,
+            onDismiss = { menuOpen = false },
+            onFavorite = {
+                menuOpen = false
+                menu.toggleFavorite(channel)
+            },
+            onInfo = {
+                menuOpen = false
+                menu.onInfo(channel)
+            },
         )
     }
 }
@@ -230,7 +423,6 @@ private fun NuvioCardMenu(
     onFavorite: () -> Unit,
     onInfo: () -> Unit,
 ) {
-    val scheme = MaterialTheme.colorScheme
     val haptic = LocalHapticFeedback.current
     DropdownMenu(
         expanded = expanded,
@@ -257,11 +449,11 @@ private fun NuvioCardMenu(
             Spacer(Modifier.width(10.dp))
             Column(Modifier.weight(1f)) {
                 Text(
-                    channel.name, color = Color.White, fontSize = 14.sp, fontWeight = FontWeight.Bold,
+                    channel.name, color = Color.White, fontSize = 14.sp, fontWeight = FontWeight.SemiBold,
                     maxLines = 1, overflow = TextOverflow.Ellipsis,
                 )
                 Text(
-                    subtitle, color = Color.White.copy(alpha = 0.6f), fontSize = 11.sp,
+                    subtitle, color = Color.White.copy(alpha = 0.6f), fontSize = 11.sp, fontWeight = FontWeight.Light,
                     maxLines = 1, overflow = TextOverflow.Ellipsis,
                 )
             }
@@ -286,16 +478,22 @@ private fun NuvioCardMenu(
 @Composable
 private fun CardMenuRow(icon: ImageVector, label: String, tint: Color = Color.White, onClick: () -> Unit) {
     Row(
-        Modifier.fillMaxWidth().clickable(onClick = onClick).padding(horizontal = 14.dp, vertical = 12.dp),
+        Modifier
+            .fillMaxWidth()
+            .clickable(remember { MutableInteractionSource() }, null, onClick = onClick)
+            .padding(horizontal = 14.dp, vertical = 12.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
         BoldIcon(icon, null, Modifier.size(20.dp), tint = tint, weight = 0.55.dp)
         Spacer(Modifier.width(12.dp))
-        Text(label, color = tint, fontSize = 14.sp, fontWeight = FontWeight.SemiBold)
+        Text(label, color = tint, fontSize = 14.sp, fontWeight = FontWeight.Medium)
     }
 }
 
-/** Section title (20 sp extra bold, no emoji) with a tonal "הכל" pill. */
+/**
+ * Row Header: vertical white accent line (4.dp width, 18.dp height) next to the SemiBold row title,
+ * with an optional tonal "הכל" pill on the trailing edge.
+ */
 @Composable
 fun SectionHeader(title: String, count: Int? = null, onSeeAll: (() -> Unit)? = null) {
     val scheme = MaterialTheme.colorScheme
@@ -304,13 +502,23 @@ fun SectionHeader(title: String, count: Int? = null, onSeeAll: (() -> Unit)? = n
         Modifier.fillMaxWidth().padding(start = 20.dp, end = 16.dp, bottom = 12.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        Text(title, Modifier.weight(1f), fontSize = 20.sp, fontWeight = FontWeight.ExtraBold, color = scheme.onSurface)
+        Box(
+            Modifier
+                .width(4.dp)
+                .height(18.dp)
+                .clip(RoundedCornerShape(2.dp))
+                .background(Color.White)
+        )
+        Spacer(Modifier.width(10.dp))
+        Text(title, Modifier.weight(1f), fontSize = 19.sp, fontWeight = FontWeight.SemiBold, color = scheme.onSurface)
         if (onSeeAll != null) {
+            val interaction = remember { MutableInteractionSource() }
             Row(
                 Modifier
+                    .pressPhysics(interaction, tilt = false, glowShape = RoundedCornerShape(50))
                     .clip(RoundedCornerShape(50))
                     .background(scheme.secondaryContainer.copy(alpha = 0.55f))
-                    .clickable {
+                    .clickable(interaction, null) {
                         haptic.performHapticFeedback(HapticFeedbackType.SegmentTick)
                         onSeeAll()
                     }
@@ -320,12 +528,48 @@ fun SectionHeader(title: String, count: Int? = null, onSeeAll: (() -> Unit)? = n
                 Text(
                     if (count != null) "הכל · $count" else "הכל",
                     fontSize = 13.sp,
-                    fontWeight = FontWeight.Bold,
+                    fontWeight = FontWeight.Medium,
                     color = scheme.onSecondaryContainer,
                 )
                 Icon(
                     Icons.AutoMirrored.Rounded.KeyboardArrowRight, null,
                     Modifier.size(18.dp), tint = scheme.onSecondaryContainer,
+                )
+            }
+        }
+    }
+}
+
+/** A horizontal carousel of 16:9 landscape "Continue Watching" (המשך צפייה) cards with bottom progress bars. */
+@Composable
+fun ContinueWatchingShelf(
+    title: String,
+    channels: List<Channel>,
+    logo: (Channel) -> String,
+    subtitle: (Channel) -> String,
+    onPlay: (Channel) -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    Column(modifier.padding(bottom = 26.dp)) {
+        SectionHeader(title)
+        LazyRow(
+            contentPadding = PaddingValues(horizontal = 16.dp),
+            horizontalArrangement = Arrangement.spacedBy(14.dp),
+            flingBehavior = rememberBitChordFlingBehavior(),
+        ) {
+            itemsIndexed(channels, key = { _, ch -> ch.id }) { idx, ch ->
+                // Deterministic progress per channel/recency so the bar looks natural and consistent
+                val p = remember(ch.id, idx) {
+                    val hash = abs(ch.id.hashCode() % 60) / 100f
+                    (0.32f + hash).coerceIn(0.24f, 0.88f)
+                }
+                ContinueWatchingCard(
+                    channel = ch,
+                    logo = logo(ch),
+                    subtitle = subtitle(ch),
+                    progress = p,
+                    onClick = { onPlay(ch) },
+                    sharedKey = "continue:${ch.id}",
                 )
             }
         }
@@ -358,20 +602,28 @@ fun ChannelShelf(
     }
 }
 
-/** Loading placeholders in the shape of a shelf. */
+/** Dark-themed shimmer loading placeholders in the shape of a shelf. */
 @Composable
 fun ShelfSkeleton() {
     Column(Modifier.padding(bottom = 26.dp)) {
-        Box(Modifier.padding(start = 20.dp, bottom = 14.dp).width(140.dp).height(22.dp).glassShimmer(RoundedCornerShape(11.dp)))
+        Row(
+            Modifier.padding(start = 20.dp, bottom = 14.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Box(Modifier.width(4.dp).height(18.dp).glassShimmer(RoundedCornerShape(2.dp)))
+            Spacer(Modifier.width(10.dp))
+            Box(Modifier.width(140.dp).height(20.dp).glassShimmer(RoundedCornerShape(10.dp)))
+        }
         Row(Modifier.padding(horizontal = 16.dp), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
             repeat(3) {
                 Column(Modifier.width(184.dp)) {
                     Box(Modifier.fillMaxWidth().aspectRatio(16f / 9.5f).glassShimmer(CardShape))
                     Spacer(Modifier.height(10.dp))
-                    Box(Modifier.width(110.dp).height(14.dp).glassShimmer(RoundedCornerShape(7.dp)))
+                    Box(Modifier.width(115.dp).height(14.dp).glassShimmer(RoundedCornerShape(7.dp)))
+                    Spacer(Modifier.height(6.dp))
+                    Box(Modifier.width(76.dp).height(11.dp).glassShimmer(RoundedCornerShape(5.dp)))
                 }
             }
         }
     }
 }
-

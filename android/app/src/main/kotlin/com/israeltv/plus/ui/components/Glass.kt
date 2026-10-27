@@ -11,12 +11,12 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.collectIsFocusedAsState
 import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.ripple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -96,18 +96,32 @@ fun Modifier.frostedGlass(
 }
 
 /**
- * Press physics for cards: scale to 0.95 with a bouncy spring, a light tilt towards the finger (Apple TV parallax)
- * and a haptic tick. Pointer events are only observed (never consumed), so vertical drags still scroll the feed.
+ * Apple TV / tvOS touch & focus physics for interactive cards:
+ * - On press: shrinks slightly to 0.94f with a smooth spring and subtle 3D tilt towards the finger, no Android ripple.
+ * - On focus: scales up to 1.05f with a glowing ambient/spot shadow.
+ * Pointer events are only observed (never consumed), so vertical drags still scroll the feed untouched.
  */
-fun Modifier.pressPhysics(interaction: MutableInteractionSource, tilt: Boolean = true): Modifier = composed {
+fun Modifier.pressPhysics(
+    interaction: MutableInteractionSource,
+    tilt: Boolean = true,
+    glowShape: Shape? = null,
+): Modifier = composed {
     val pressed by interaction.collectIsPressedAsState()
+    val focused by interaction.collectIsFocusedAsState()
     val haptic = LocalHapticFeedback.current
     LaunchedEffect(pressed) { if (pressed) haptic.performHapticFeedback(HapticFeedbackType.LongPress) }
     var touch by remember { mutableStateOf(Offset(0.5f, 0.5f)) }
     val bouncy = spring<Float>(dampingRatio = Spring.DampingRatioMediumBouncy, stiffness = Spring.StiffnessMediumLow)
-    val scale by animateFloatAsState(if (pressed) 0.95f else 1f, bouncy, label = "press")
+    val targetScale = when {
+        pressed -> 0.94f
+        focused -> 1.05f
+        else -> 1f
+    }
+    val scale by animateFloatAsState(targetScale, bouncy, label = "pressScale")
+    val glowElevation by animateFloatAsState(if (focused) 22f else 0f, bouncy, label = "focusGlow")
     val rotX by animateFloatAsState(if (pressed && tilt) (0.5f - touch.y) * 9f else 0f, bouncy, label = "tiltX")
     val rotY by animateFloatAsState(if (pressed && tilt) (touch.x - 0.5f) * 11f else 0f, bouncy, label = "tiltY")
+    val glowColor = MaterialTheme.colorScheme.primary
     this
         .pointerInput(Unit) {
             awaitPointerEventScope {
@@ -126,10 +140,16 @@ fun Modifier.pressPhysics(interaction: MutableInteractionSource, tilt: Boolean =
             rotationX = rotX
             rotationY = rotY
             cameraDistance = 14f * density
+            if (glowElevation > 0.5f) {
+                shadowElevation = glowElevation * density
+                if (glowShape != null) shape = glowShape
+                ambientShadowColor = glowColor.copy(alpha = 0.55f)
+                spotShadowColor = Color.White.copy(alpha = 0.65f)
+            }
         }
 }
 
-/** A circular frosted-glass icon button (hero, player). */
+/** A circular frosted-glass icon button (hero, player) with Apple TV spring press feedback and no ripple. */
 @Composable
 fun GlassIconButton(
     icon: ImageVector,
@@ -146,9 +166,9 @@ fun GlassIconButton(
     Box(
         modifier
             .size(size)
-            .pressPhysics(interaction, tilt = false)
+            .pressPhysics(interaction, tilt = false, glowShape = CircleShape)
             .frostedGlass(CircleShape, tint)
-            .clickable(interaction, ripple()) {
+            .clickable(interaction, null) {
                 haptic.performHapticFeedback(HapticFeedbackType.VirtualKey)
                 onClick()
             },
@@ -158,21 +178,28 @@ fun GlassIconButton(
     }
 }
 
-/** VisionOS-style glass shimmer for loading placeholders: a soft light band sweeping across. */
+/** Dark-themed shimmer skeleton for loading content rows: deep obsidian surface with a soft specular sweep. */
 fun Modifier.glassShimmer(shape: Shape): Modifier = composed {
     val t by rememberInfiniteTransition(label = "shimmer")
-        .animateFloat(-1f, 2f, infiniteRepeatable(tween(1400)), label = "sweep")
-    val base = MaterialTheme.colorScheme.surfaceContainerHigh.copy(alpha = 0.55f)
+        .animateFloat(-1f, 2f, infiniteRepeatable(tween(1350)), label = "sweep")
+    val dark = LocalDarkTheme.current
+    val base = if (dark) Color(0xFF14141E).copy(alpha = 0.88f) else MaterialTheme.colorScheme.surfaceContainerHigh.copy(alpha = 0.65f)
     clip(shape)
         .background(base)
-        .specularBorder(shape, alpha = 0.18f)
+        .specularBorder(shape, alpha = 0.16f)
         .drawWithContent {
             drawContent()
             val w = size.width
             drawRect(
                 Brush.linearGradient(
-                    listOf(Color.Transparent, Color.White.copy(alpha = 0.10f), Color.Transparent),
-                    start = Offset(w * (t - 0.5f), 0f),
+                    listOf(
+                        Color.Transparent,
+                        Color.White.copy(alpha = if (dark) 0.09f else 0.18f),
+                        Color.White.copy(alpha = if (dark) 0.15f else 0.26f),
+                        Color.White.copy(alpha = if (dark) 0.09f else 0.18f),
+                        Color.Transparent,
+                    ),
+                    start = Offset(w * (t - 0.55f), 0f),
                     end = Offset(w * t, size.height),
                 )
             )

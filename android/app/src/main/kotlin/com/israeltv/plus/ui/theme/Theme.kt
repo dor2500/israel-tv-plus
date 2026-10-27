@@ -35,8 +35,8 @@ import com.israeltv.plus.ui.components.RubberBandOverscrollFactory
 val LocalDarkTheme = staticCompositionLocalOf { true }
 
 /**
- * Rubik Variable (res/font/rubik.ttf, SIL OFL 1.1): Hebrew, Latin and numbers in one variable font, each weight a
- * real instance of the wght axis (300-900) rather than a synthesized bold.
+ * Rubik Variable (res/font/rubik.ttf, SIL OFL 1.1): geometric sans-serif supporting Hebrew, Latin and numbers
+ * in one variable font, each weight a real instance of the wght axis (300-900) rather than a synthesized bold.
  */
 val Rubik = FontFamily(
     listOf(300, 400, 500, 600, 700, 800, 900).map { w ->
@@ -53,23 +53,28 @@ private fun TextStyle.rubik(weight: FontWeight? = null, tracking: Boolean = fals
     letterSpacing = if (tracking) CinematicTracking else 0.sp,
 )
 
-/** Heavy display weights with tight optical tracking; body text in Rubik without the Latin letter-spacing. */
+/**
+ * Geometric Hebrew/Latin typography hierarchy in Rubik:
+ * - Display styles: Bold / ExtraBold for hero statements & overlays
+ * - Headline / Title styles: Medium / SemiBold for content row & card titles
+ * - Body / Label styles: Light / Regular for metadata & subtitles
+ */
 private val ItvTypography = Typography(
-    displayLarge = Base.displayLarge.rubik(FontWeight.Light, true),
-    displayMedium = Base.displayMedium.rubik(FontWeight.Normal, true),
-    displaySmall = Base.displaySmall.rubik(FontWeight.Medium, true),
+    displayLarge = Base.displayLarge.rubik(FontWeight.ExtraBold, true),
+    displayMedium = Base.displayMedium.rubik(FontWeight.Bold, true),
+    displaySmall = Base.displaySmall.rubik(FontWeight.Bold, true),
     headlineLarge = Base.headlineLarge.rubik(FontWeight.SemiBold, true),
     headlineMedium = Base.headlineMedium.rubik(FontWeight.SemiBold, true),
     headlineSmall = Base.headlineSmall.rubik(FontWeight.Medium, true),
     titleLarge = Base.titleLarge.rubik(FontWeight.SemiBold, true),
-    titleMedium = Base.titleMedium.rubik(FontWeight.Medium),
+    titleMedium = Base.titleMedium.rubik(FontWeight.SemiBold),
     titleSmall = Base.titleSmall.rubik(FontWeight.Medium),
     bodyLarge = Base.bodyLarge.rubik(FontWeight.Normal),
     bodyMedium = Base.bodyMedium.rubik(FontWeight.Light),
     bodySmall = Base.bodySmall.rubik(FontWeight.Light),
     labelLarge = Base.labelLarge.rubik(FontWeight.Medium),
-    labelMedium = Base.labelMedium.rubik(FontWeight.Medium),
-    labelSmall = Base.labelSmall.rubik(FontWeight.Medium),
+    labelMedium = Base.labelMedium.rubik(FontWeight.Normal),
+    labelSmall = Base.labelSmall.rubik(FontWeight.Light),
 )
 
 /**

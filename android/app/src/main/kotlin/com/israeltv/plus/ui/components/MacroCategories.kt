@@ -4,6 +4,7 @@ import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -28,6 +29,7 @@ import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -49,12 +51,9 @@ val MacroCategories = listOf("סרטים וסדרות", "ילדים ונוער",
 private val PillShape = RoundedCornerShape(50)
 
 /**
- * The centred macro-category bar: exactly four main pills (הכל + the three [MacroCategories]) plus the static "עוד..."
- * pill that opens [MoreCategoriesSheet]. The group is centred with `Arrangement.Center`, exactly like Kan Box, and only
- * starts to scroll once the five pills no longer fit a narrow screen.
- *
- * Active: solid white. Inactive: transparent with a 1 dp border. Both colours cross-fade, and the haptic tick matches
- * the rest of the chrome.
+ * The centred macro-category bar in the top header area (Kan Box style):
+ * Exactly four main pills (הכל + the three [MacroCategories]) plus the static "עוד..." pill that opens [MoreCategoriesSheet].
+ * Active: solid white. Inactive: transparent with a 1 dp border.
  */
 @Composable
 fun MacroCategoryRow(
@@ -67,8 +66,8 @@ fun MacroCategoryRow(
     val entries = listOf<Pair<String?, String>>(null to "הכל") + MacroCategories.map { it to it }
     LazyRow(
         modifier.fillMaxWidth(),
-        contentPadding = PaddingValues(horizontal = 10.dp),
-        horizontalArrangement = Arrangement.spacedBy(6.dp, Alignment.CenterHorizontally),
+        contentPadding = PaddingValues(horizontal = 12.dp),
+        horizontalArrangement = Arrangement.spacedBy(7.dp, Alignment.CenterHorizontally),
         verticalAlignment = Alignment.CenterVertically,
         flingBehavior = rememberBitChordFlingBehavior(),
     ) {
@@ -99,31 +98,33 @@ private fun MacroPill(
     trailingIcon: ImageVector? = null,
 ) {
     val scheme = MaterialTheme.colorScheme
+    val interaction = remember { MutableInteractionSource() }
     val background by animateColorAsState(if (active) Color.White else Color.Transparent, label = "macroPillBg")
     val content by animateColorAsState(
-        if (active) Color(0xFF0B0B12) else scheme.onSurface.copy(alpha = 0.92f),
+        if (active) Color(0xFF0B0B12) else scheme.onSurface.copy(alpha = 0.94f),
         label = "macroPillFg",
     )
     val border by animateColorAsState(
-        if (active) Color.Transparent else scheme.onSurface.copy(alpha = 0.34f),
+        if (active) Color.Transparent else scheme.onSurface.copy(alpha = 0.38f),
         label = "macroPillBorder",
     )
     Row(
         Modifier
+            .pressPhysics(interaction, tilt = false, glowShape = PillShape)
             .clip(PillShape)
             .background(background)
             .border(1.dp, border, PillShape)
-            .clickable(onClick = onClick)
-            .height(35.dp)
-            .padding(horizontal = 11.dp),
+            .clickable(interaction, null, onClick = onClick)
+            .height(34.dp)
+            .padding(horizontal = 12.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Center,
     ) {
         Text(
             label,
             color = content,
-            fontSize = 12.sp,
-            fontWeight = if (active) FontWeight.ExtraBold else FontWeight.SemiBold,
+            fontSize = 12.5.sp,
+            fontWeight = if (active) FontWeight.SemiBold else FontWeight.Medium,
             maxLines = 1,
         )
         if (trailingIcon != null) {
@@ -134,8 +135,8 @@ private fun MacroPill(
 }
 
 /**
- * The "עוד..." sheet: every category that did not fit the four macro pills, with its channel count and a check on the
- * one currently filtering the feed. Picking one closes the sheet and filters the home shelves.
+ * The "עוד..." sheet: every category that did not fit the four macro pills, with its Neo 3D icon badge, channel count,
+ * and a check on the one currently filtering the feed.
  */
 @Composable
 fun MoreCategoriesSheet(
@@ -161,12 +162,12 @@ fun MoreCategoriesSheet(
             Text(
                 "עוד קטגוריות",
                 Modifier.padding(start = 22.dp, end = 22.dp, top = 4.dp),
-                fontSize = 22.sp, fontWeight = FontWeight.ExtraBold, color = scheme.onSurface,
+                fontSize = 22.sp, fontWeight = FontWeight.SemiBold, color = scheme.onSurface,
             )
             Text(
                 "בחרו איזו קטגוריה תוצג במסך הבית",
                 Modifier.padding(start = 22.dp, end = 22.dp, top = 2.dp, bottom = 12.dp),
-                fontSize = 13.sp, color = scheme.onSurfaceVariant,
+                fontSize = 13.sp, fontWeight = FontWeight.Light, color = scheme.onSurfaceVariant,
             )
             if (categories.isEmpty()) {
                 Text(
@@ -181,24 +182,27 @@ fun MoreCategoriesSheet(
                         Row(
                             Modifier
                                 .fillMaxWidth()
-                                .clickable {
+                                .clickable(remember { MutableInteractionSource() }, null) {
                                     haptic.performHapticFeedback(HapticFeedbackType.SegmentTick)
                                     onSelect(cat.name)
                                 }
-                                .padding(horizontal = 22.dp, vertical = 13.dp),
+                                .padding(horizontal = 22.dp, vertical = 12.dp),
                             verticalAlignment = Alignment.CenterVertically,
                         ) {
+                            CategoryNeo3DIcon(cat.name, size = 36.dp)
+                            Spacer(Modifier.width(14.dp))
                             Column(Modifier.weight(1f)) {
                                 Text(
                                     cat.name,
                                     color = if (active) scheme.primary else scheme.onSurface,
                                     fontSize = 16.sp,
-                                    fontWeight = if (active) FontWeight.ExtraBold else FontWeight.SemiBold,
+                                    fontWeight = if (active) FontWeight.SemiBold else FontWeight.Medium,
                                 )
                                 Text(
                                     "${cat.channels.size} ערוצים",
                                     color = scheme.onSurfaceVariant,
                                     fontSize = 12.sp,
+                                    fontWeight = FontWeight.Light,
                                 )
                             }
                             if (active) {

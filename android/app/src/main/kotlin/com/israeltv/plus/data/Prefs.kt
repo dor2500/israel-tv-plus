@@ -11,53 +11,69 @@ import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 
 /**
- * Profile portraits are emojis: the system's own high-quality colour emoji font draws them, so they stay crisp at any
- * size and need no bundled artwork. Ids are prefixed ("emoji:👨🏽") so profiles saved by older versions - which used the
- * bundled series portraits ("series-rick", ...) - are recognised and migrated in [AppPrefs.loadProfiles].
+ * Neo 3D Emoji profile portraits bundled under assets/avatars (high-resolution 3D Noto Emoji WebP assets).
+ * Zero flat standard Android font emojis are used; legacy emoji/series IDs migrate cleanly to these 3D assets.
  */
-val AVATARS = listOf("emoji:👨🏽", "emoji:👩🏻‍🦱", "emoji:👽", "emoji:🦊", "emoji:🐯", "emoji:🐼")
+val AVATARS = listOf(
+    "1f9d1-1f680",
+    "1f9b8",
+    "1f47d",
+    "1f98a",
+    "1f981",
+    "1f43c",
+    "1f916",
+    "1f984",
+    "1f60e",
+    "1f431",
+    "1f436",
+)
 
-private const val EMOJI_PREFIX = "emoji:"
+private val LEGACY_EMOJI_MAP = mapOf(
+    "emoji:👨🏽" to "1f9d1-1f680",
+    "emoji:👩🏻‍🦱" to "1f9b8",
+    "emoji:👽" to "1f47d",
+    "emoji:🦊" to "1f98a",
+    "emoji:🐯" to "1f981",
+    "emoji:🐼" to "1f43c",
+)
 
-fun isEmojiAvatar(id: String): Boolean = id.startsWith(EMOJI_PREFIX)
-
-/** The glyph of an emoji avatar ("emoji:👨🏽" -> "👨🏽"); anything else is returned unchanged. */
-fun avatarEmoji(id: String): String = id.removePrefix(EMOJI_PREFIX)
-
-/** The series portraits of versions before 4.5.1, kept so a saved profile can be migrated and still shown as a URL. */
 private val LEGACY_SERIES = listOf(
     "series-rick", "series-morty", "series-summer", "series-beth", "series-jerry", "series-ted-lasso",
 )
 
-fun avatarUrl(id: String) = if (id.startsWith("series-")) {
-    "file:///android_asset/www/assets/avatars/$id.jpg"
-} else {
-    "file:///android_asset/www/assets/avatars/$id.webp"
+fun isEmojiAvatar(id: String): Boolean = id.startsWith("emoji:")
+
+fun avatarEmoji(id: String): String = id.removePrefix("emoji:")
+
+/** Resolves any avatar ID (including legacy emoji:* or series-*) to its bundled Neo 3D WebP asset URL. */
+fun avatarUrl(id: String): String {
+    val resolved = migratedAvatar(id, 0)
+    return "file:///android_asset/www/assets/avatars/$resolved.webp"
 }
 
-/** Screen-reader labels for the emoji portraits (an emoji has no useful Hebrew name on its own). */
-private val AVATAR_LABELS = listOf(
-    "emoji:👨🏽" to "אביר",
-    "emoji:👩🏻‍🦱" to "יוצרת",
-    "emoji:👽" to "חוצן",
-    "emoji:🦊" to "שועל",
-    "emoji:🐯" to "טיגריס",
-    "emoji:🐼" to "פנדה",
-).toMap()
+private val AVATAR_LABELS = mapOf(
+    "1f9d1-1f680" to "אסטרונאוט תלת־ממד",
+    "1f9b8" to "גיבור־על תלת־ממד",
+    "1f47d" to "חוצן תלת־ממד",
+    "1f98a" to "שועל תלת־ממד",
+    "1f981" to "אריה תלת־ממד",
+    "1f43c" to "פנדה תלת־ממד",
+    "1f916" to "רובוט תלת־ממד",
+    "1f984" to "חד־קרן תלת־ממד",
+    "1f60e" to "משקפי שמש תלת־ממד",
+    "1f431" to "חתול תלת־ממד",
+    "1f436" to "כלב תלת־ממד",
+)
 
-fun avatarDescription(id: String) = AVATAR_LABELS[id] ?: when (id) {
-    "series-rick" -> "ריק סנצ׳ז — ריק ומורטי"
-    "series-morty" -> "מורטי סמית׳ — ריק ומורטי"
-    "series-summer" -> "סאמר סמית׳ — ריק ומורטי"
-    "series-beth" -> "בת׳ סמית׳ — ריק ומורטי"
-    "series-jerry" -> "ג׳רי סמית׳ — ריק ומורטי"
-    "series-ted-lasso" -> "טד לאסו — טד לאסו"
-    else -> "פרופיל"
+fun avatarDescription(id: String): String {
+    val resolved = migratedAvatar(id, 0)
+    return AVATAR_LABELS[resolved] ?: "פרופיל"
 }
 
-/** The profile's emoji after migration; series portraits map one-to-one onto the new set. */
+/** Maps any saved avatar ID (flat emoji:* or legacy series-*) onto the bundled Neo 3D WebP set. */
 internal fun migratedAvatar(id: String, index: Int): String = when {
-    isEmojiAvatar(id) -> id
+    id in AVATARS -> id
+    id in LEGACY_EMOJI_MAP -> LEGACY_EMOJI_MAP.getValue(id)
     else -> {
         val legacy = LEGACY_SERIES.indexOf(id).takeIf { it >= 0 } ?: index
         AVATARS[legacy % AVATARS.size]
@@ -168,11 +184,10 @@ class AppPrefs(context: Context) {
 
     private fun persist() = sp.edit { putString("phoneProfiles", json.encodeToString(profiles)) }
 
-    /** The saved profiles; the first start after 3.4 turns the old single favourites / history / avatar into one. */
+    /** The saved profiles; any flat emoji:* or legacy series-* avatar ID is migrated to the Neo 3D WebP set. */
     private fun loadProfiles(): List<Profile> {
         sp.getString("phoneProfiles", null)?.let { s ->
             runCatching { json.decodeFromString<List<Profile>>(s) }.getOrNull()?.takeIf { it.isNotEmpty() }?.let { saved ->
-                // 4.5.1: the old series portraits become the emoji set; names and viewing data stay untouched.
                 val migrated = saved.mapIndexed { index, profile ->
                     profile.copy(avatar = migratedAvatar(profile.avatar, index))
                 }
@@ -185,7 +200,7 @@ class AppPrefs(context: Context) {
             Profile(
                 id = "p1",
                 name = "אני",
-                avatar = oldAvatar?.takeIf { isEmojiAvatar(it) } ?: AVATARS.first(),
+                avatar = oldAvatar?.let { migratedAvatar(it, 0) } ?: AVATARS.first(),
                 favorites = sp.list("phoneFavorites"),
                 recents = sp.list("phoneRecents"),
             )

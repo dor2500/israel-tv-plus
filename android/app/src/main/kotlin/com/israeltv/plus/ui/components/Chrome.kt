@@ -1,8 +1,15 @@
 package com.israeltv.plus.ui.components
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.spring
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.expandVertically
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.shrinkVertically
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -48,6 +55,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalHapticFeedback
@@ -67,12 +75,13 @@ enum class Tab(val label: String, val title: String, val icon: ImageVector) {
     Settings("הגדרות", "הגדרות", Icons.Rounded.Settings),
 }
 
-/** The master LazyColumn's insets: under the header (88 dp) and 120 dp clear of the floating bar. */
+/** The master LazyColumn's insets: under the header + macro categories (118 dp on Home, 76 dp on inner tabs) and 120 dp clear of the floating bar. */
 @Composable
-fun feedPadding(): PaddingValues {
+fun feedPadding(withCategories: Boolean = true): PaddingValues {
     val top = WindowInsets.statusBars.asPaddingValues().calculateTopPadding()
     val bottom = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
-    return PaddingValues(top = top + 88.dp, bottom = bottom + 120.dp)
+    val headerHeight = if (withCategories) 118.dp else 76.dp
+    return PaddingValues(top = top + headerHeight, bottom = bottom + 120.dp)
 }
 
 /** surfaceContainerLowest with a soft ambient glow of the wallpaper colour from the top. */
@@ -97,7 +106,7 @@ fun AmbientBackground(modifier: Modifier = Modifier) {
 
 /**
  * The app wordmark, centred in the bar exactly like the Kan Box lockup: the Hebrew name in the app's black display
- * weight with the "TV+" in the profile's accent colour. It scales with the display font like the rest of the chrome.
+ * weight with the "TV+" in the profile's accent colour.
  */
 @Composable
 fun BrandWordmark(modifier: Modifier = Modifier) {
@@ -119,81 +128,135 @@ fun BrandWordmark(modifier: Modifier = Modifier) {
             letterSpacing = (-0.2).sp,
             color = scheme.primary,
             maxLines = 1,
-            // a Latin wordmark in a Hebrew layout would otherwise render as "+TV"
             style = TextStyle(textDirection = TextDirection.Ltr),
         )
     }
 }
 
 /**
- * Kan Box / Apple TV header: the app wordmark perfectly centred, the profile's emoji avatar on the leading side and a
- * minimal glass circle with only a bold gear on the trailing side. The frosted band fades out downwards so the feed
- * scrolls behind it. The avatar is a shared element: it flies here from the "who's watching" page.
+ * Kan Box Style Top Header & Categories (Moved UP):
+ * - Top Row: Profile Avatar on one side, Centered "ישראל TV+" logo, and a minimal glass Settings gear (no text) on the other.
+ * - Second Row (when [showCategories] is true): The centered Macro-Categories Row (הכל, סרטים וסדרות, ילדים ונוער, ספורט, עוד...).
+ * - Dynamic Scroll Glassmorphism: No static top gradient at rest; as the user scrolls down into the content ([scrollFraction] > 0f),
+ *   a heavy frosted glassmorphism blur smoothly fades in behind this entire top header + categories area.
  */
 @Composable
 fun AppHeader(
     profileId: String,
     avatar: String,
+    scrollFraction: Float,
+    showCategories: Boolean,
+    selectedCategory: String?,
+    onSelectCategory: (String?) -> Unit,
+    onMoreCategories: () -> Unit,
     onAvatar: () -> Unit,
     onSettings: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val scheme = MaterialTheme.colorScheme
     val haptic = LocalHapticFeedback.current
+    val blurAlpha by animateFloatAsState(
+        targetValue = scrollFraction.coerceIn(0f, 1f),
+        animationSpec = tween(180),
+        label = "headerScrollBlurAlpha",
+    )
+
     Box(modifier.fillMaxWidth().zIndex(10f)) {
-        Box(Modifier.matchParentSize().frostedGlass(
-            RectangleShape, glassTint(), blur = 36.dp, border = false,
-            mask = Brush.verticalGradient(0f to Color.Black, 0.65f to Color.Black, 1f to Color.Transparent),
-        ))
-        Box(Modifier.statusBarsPadding().height(64.dp).fillMaxWidth()) {
-            // profile portrait: leading edge (the physical right in Hebrew)
-            val avatarInteraction = remember { MutableInteractionSource() }
+        // Dynamic Glassmorphism Blur: fades in smoothly as the user scrolls down into the content (no static top gradient)
+        if (blurAlpha > 0.01f) {
             Box(
                 Modifier
-                    .align(Alignment.CenterStart)
-                    .padding(start = 20.dp)
-                    .size(42.dp)
-                    .pressPhysics(avatarInteraction, tilt = false)
-                    .sharedAvatar("avatar:$profileId")
-                    .clip(RoundedCornerShape(14.dp))
-                    .background(Brush.linearGradient(listOf(scheme.primaryContainer, scheme.tertiaryContainer)))
-                    .specularBorder(RoundedCornerShape(14.dp), alpha = 0.32f)
-                    .clickable(avatarInteraction, null) {
-                        haptic.performHapticFeedback(HapticFeedbackType.ContextClick)
-                        onAvatar()
-                    },
-                contentAlignment = Alignment.Center,
-            ) {
-                ProfileAvatar(avatar, glyphSize = 27.dp)
+                    .matchParentSize()
+                    .graphicsLayer { alpha = blurAlpha }
+                    .frostedGlass(
+                        shape = RectangleShape,
+                        tint = Color(0xFF12121A).copy(alpha = 0.74f),
+                        blur = 38.dp,
+                        border = false,
+                    )
+                    .drawBehind {
+                        // Subtle bottom specular hairline when blurred
+                        drawLine(
+                            color = Color.White.copy(alpha = 0.10f * blurAlpha),
+                            start = Offset(0f, size.height),
+                            end = Offset(size.width, size.height),
+                            strokeWidth = 1.dp.toPx(),
+                        )
+                    }
+            )
+        }
+
+        Column(
+            Modifier
+                .fillMaxWidth()
+                .statusBarsPadding()
+                .padding(bottom = if (showCategories) 10.dp else 6.dp)
+        ) {
+            Box(Modifier.height(60.dp).fillMaxWidth()) {
+                // Profile portrait: leading edge (physical right in Hebrew RTL)
+                val avatarInteraction = remember { MutableInteractionSource() }
+                Box(
+                    Modifier
+                        .align(Alignment.CenterStart)
+                        .padding(start = 20.dp)
+                        .size(42.dp)
+                        .pressPhysics(avatarInteraction, tilt = false, glowShape = RoundedCornerShape(14.dp))
+                        .sharedAvatar("avatar:$profileId")
+                        .clip(RoundedCornerShape(14.dp))
+                        .background(Brush.linearGradient(listOf(scheme.primaryContainer, scheme.tertiaryContainer)))
+                        .specularBorder(RoundedCornerShape(14.dp), alpha = 0.34f)
+                        .clickable(avatarInteraction, null) {
+                            haptic.performHapticFeedback(HapticFeedbackType.ContextClick)
+                            onAvatar()
+                        },
+                    contentAlignment = Alignment.Center,
+                ) {
+                    ProfileAvatar(avatar, glyphSize = 28.dp)
+                }
+
+                // Centered App Logo ("ישראל TV+")
+                BrandWordmark(Modifier.align(Alignment.Center))
+
+                // Settings: trailing edge, minimal glass circle containing ONLY a bold gear icon
+                val settingsInteraction = remember { MutableInteractionSource() }
+                Box(
+                    Modifier
+                        .align(Alignment.CenterEnd)
+                        .padding(end = 20.dp)
+                        .size(42.dp)
+                        .pressPhysics(settingsInteraction, tilt = false, glowShape = CircleShape)
+                        .frostedGlass(CircleShape, Color(0xFF16161E).copy(alpha = 0.65f), blur = 36.dp)
+                        .clickable(settingsInteraction, null) {
+                            haptic.performHapticFeedback(HapticFeedbackType.ContextClick)
+                            onSettings()
+                        },
+                    contentAlignment = Alignment.Center,
+                ) {
+                    BoldIcon(Icons.Rounded.Settings, "הגדרות", Modifier.size(21.dp), tint = scheme.onSurface, weight = 0.55.dp)
+                }
             }
 
-            BrandWordmark(Modifier.align(Alignment.Center))
-
-            // settings: trailing edge, one glass circle and nothing else inside it
-            val settingsInteraction = remember { MutableInteractionSource() }
-            Box(
-                Modifier
-                    .align(Alignment.CenterEnd)
-                    .padding(end = 20.dp)
-                    .size(44.dp)
-                    .frostedGlass(CircleShape, Color(0xFF16161E).copy(alpha = .65f), blur = 36.dp)
-                    .clickable(settingsInteraction, null) {
-                        haptic.performHapticFeedback(HapticFeedbackType.ContextClick)
-                        onSettings()
-                    },
-                contentAlignment = Alignment.Center,
+            // Macro-categories row moved UP into the header area (Kan Box style)
+            AnimatedVisibility(
+                visible = showCategories,
+                enter = fadeIn(tween(200)) + expandVertically(tween(220)),
+                exit = fadeOut(tween(150)) + shrinkVertically(tween(180)),
             ) {
-                BoldIcon(Icons.Rounded.Settings, "הגדרות", Modifier.size(21.dp), tint = scheme.onSurface, weight = 0.55.dp)
+                MacroCategoryRow(
+                    selected = selectedCategory,
+                    onSelect = onSelectCategory,
+                    onMore = onMoreCategories,
+                    modifier = Modifier.padding(top = 4.dp),
+                )
             }
         }
-        Spacer(Modifier.statusBarsPadding().height(84.dp))
     }
 }
 
 /**
  * The Nuvio navigation: a standalone glass circle holding only a bold search glyph on the physical left, and 16 dp
- * away a glass capsule whose tabs stack a bold icon directly above its label - the shape of the reference bar, with the
- * heavy glass tint (Color(0xFF16161E) at 65%) on both elements.
+ * away a glass capsule whose tabs stack a bold icon directly above its label - with heavy Essentials glass blur
+ * (Color(0xFF16161E) at 65%) behind both elements.
  */
 @Composable
 fun FloatingTabBar(
@@ -207,14 +270,13 @@ fun FloatingTabBar(
     val scheme = MaterialTheme.colorScheme
     val haptic = LocalHapticFeedback.current
     val tabs = listOf(Tab.Home, Tab.Channels, Tab.Mine)
-    val glass = Color(0xFF16161E).copy(alpha = .65f)
+    val glass = Color(0xFF16161E).copy(alpha = 0.65f)
     CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {
         BoxWithConstraints(modifier.fillMaxWidth().zIndex(10f).navigationBarsPadding().padding(bottom = 18.dp)) {
-            // 16 dp side margins + 64 dp search circle + 16 dp gap + the capsule; collapses slightly on scroll
             val capsuleTarget = (maxWidth - 112.dp - if (collapsed) 30.dp else 0.dp).coerceAtLeast(200.dp)
             val capsuleWidth by animateDpAsState(
                 capsuleTarget,
-                spring(dampingRatio = .82f, stiffness = Spring.StiffnessMediumLow),
+                spring(dampingRatio = 0.82f, stiffness = Spring.StiffnessMediumLow),
                 label = "capsuleWidth",
             )
             Row(
@@ -222,9 +284,13 @@ fun FloatingTabBar(
                 horizontalArrangement = Arrangement.spacedBy(16.dp, Alignment.CenterHorizontally),
                 verticalAlignment = Alignment.CenterVertically,
             ) {
+                val searchInteraction = remember { MutableInteractionSource() }
                 Box(
-                    Modifier.size(64.dp).frostedGlass(CircleShape, glass, blur = 36.dp)
-                        .clickable(remember { MutableInteractionSource() }, null) {
+                    Modifier
+                        .size(64.dp)
+                        .pressPhysics(searchInteraction, tilt = false, glowShape = CircleShape)
+                        .frostedGlass(CircleShape, glass, blur = 36.dp)
+                        .clickable(searchInteraction, null) {
                             haptic.performHapticFeedback(HapticFeedbackType.SegmentTick)
                             onSearch()
                         },
@@ -235,16 +301,25 @@ fun FloatingTabBar(
 
                 CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Rtl) {
                     Row(
-                        Modifier.width(capsuleWidth).height(68.dp).frostedGlass(RoundedCornerShape(50), glass, blur = 36.dp)
+                        Modifier
+                            .width(capsuleWidth)
+                            .height(68.dp)
+                            .frostedGlass(RoundedCornerShape(50), glass, blur = 36.dp)
                             .padding(horizontal = 6.dp, vertical = 6.dp),
-                        horizontalArrangement = Arrangement.spacedBy(2.dp), verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(2.dp),
+                        verticalAlignment = Alignment.CenterVertically,
                     ) {
                         tabs.forEach { tab ->
                             val active = !searchOpen && selected == tab
+                            val tabInteraction = remember { MutableInteractionSource() }
                             Column(
-                                Modifier.weight(1f).fillMaxHeight().clip(RoundedCornerShape(50))
-                                    .background(if (active) Color.White.copy(alpha = .16f) else Color.Transparent)
-                                    .clickable(remember { MutableInteractionSource() }, null) {
+                                Modifier
+                                    .weight(1f)
+                                    .fillMaxHeight()
+                                    .pressPhysics(tabInteraction, tilt = false, glowShape = RoundedCornerShape(50))
+                                    .clip(RoundedCornerShape(50))
+                                    .background(if (active) Color.White.copy(alpha = 0.16f) else Color.Transparent)
+                                    .clickable(tabInteraction, null) {
                                         haptic.performHapticFeedback(HapticFeedbackType.SegmentTick)
                                         onSelect(tab)
                                     },
@@ -261,7 +336,7 @@ fun FloatingTabBar(
                                     tab.label,
                                     color = if (active) scheme.onSurface else scheme.onSurfaceVariant,
                                     fontSize = 10.5.sp,
-                                    fontWeight = if (active) FontWeight.Bold else FontWeight.Medium,
+                                    fontWeight = if (active) FontWeight.SemiBold else FontWeight.Normal,
                                     maxLines = 1,
                                 )
                             }

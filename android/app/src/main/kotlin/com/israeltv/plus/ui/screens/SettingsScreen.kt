@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -36,6 +37,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -64,7 +66,7 @@ import java.util.Locale
 fun SettingsScreen(data: ChannelData?, prefs: AppPrefs, updater: Updater, onProfiles: () -> Unit, onStyle: () -> Unit) {
     val ctx = LocalContext.current
     val haptic = LocalHapticFeedback.current
-    LazyColumn(Modifier.fillMaxSize(), contentPadding = feedPadding(), flingBehavior = rememberBitChordFlingBehavior()) {
+    LazyColumn(Modifier.fillMaxSize(), contentPadding = feedPadding(withCategories = false), flingBehavior = rememberBitChordFlingBehavior()) {
         item(key = "update") { UpdateCard(updater, Modifier.padding(horizontal = 16.dp).padding(bottom = 28.dp)) }
         item(key = "look") {
             SectionHeader("תצוגה וצליל")
@@ -139,7 +141,7 @@ fun UpdateCard(updater: Updater, modifier: Modifier = Modifier) {
             UpdateState.Checking -> "בודק עדכונים…"
             else -> "האפליקציה מעודכנת"
         }
-        Text(title, fontSize = 24.sp, fontWeight = FontWeight.ExtraBold, color = onCard)
+        Text(title, fontSize = 24.sp, fontWeight = FontWeight.SemiBold, color = onCard)
         val sub = when (state) {
             is UpdateState.UpToDate -> "גרסה ${updater.installedVersion} · נבדק ב-" +
                 SimpleDateFormat("HH:mm", Locale.getDefault()).format(Date(state.checkedAt))
@@ -149,7 +151,7 @@ fun UpdateCard(updater: Updater, modifier: Modifier = Modifier) {
             is UpdateState.Failed -> state.message
             else -> "גרסה ${updater.installedVersion}"
         }
-        Text(sub, fontSize = 14.sp, color = onCard.copy(alpha = 0.8f), modifier = Modifier.padding(top = 4.dp))
+        Text(sub, fontSize = 14.sp, fontWeight = FontWeight.Light, color = onCard.copy(alpha = 0.8f), modifier = Modifier.padding(top = 4.dp))
         if (state is UpdateState.Downloading) {
             LinearWavyProgressIndicator(
                 progress = { state.progress },
@@ -170,7 +172,7 @@ fun UpdateCard(updater: Updater, modifier: Modifier = Modifier) {
                 colors = if (available) ButtonDefaults.buttonColors() else ButtonDefaults.filledTonalButtonColors(),
                 contentPadding = PaddingValues(horizontal = 24.dp),
                 modifier = Modifier.height(48.dp),
-            ) { Text(action.first, fontWeight = FontWeight.Bold) }
+            ) { Text(action.first, fontWeight = FontWeight.SemiBold) }
         }
     }
 }
@@ -201,7 +203,7 @@ private fun SettingRow(
     Row(
         Modifier
             .fillMaxWidth()
-            .then(if (onClick != null) Modifier.clickable(onClick = onClick) else Modifier)
+            .then(if (onClick != null) Modifier.clickable(remember { MutableInteractionSource() }, null, onClick = onClick) else Modifier)
             .padding(horizontal = 18.dp, vertical = 14.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
@@ -210,8 +212,8 @@ private fun SettingRow(
         }
         Spacer(Modifier.width(14.dp))
         Column(Modifier.weight(1f)) {
-            Text(title, fontSize = 16.sp, fontWeight = FontWeight.Bold, color = scheme.onSurface)
-            Text(subtitle, fontSize = 13.sp, color = scheme.onSurfaceVariant)
+            Text(title, fontSize = 16.sp, fontWeight = FontWeight.SemiBold, color = scheme.onSurface)
+            Text(subtitle, fontSize = 13.sp, fontWeight = FontWeight.Light, color = scheme.onSurfaceVariant)
         }
         when {
             trailing != null -> trailing()
@@ -222,4 +224,3 @@ private fun SettingRow(
         }
     }
 }
-

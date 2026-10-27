@@ -4,6 +4,7 @@ import androidx.activity.compose.BackHandler
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.SharedTransitionLayout
+import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -16,10 +17,11 @@ import androidx.compose.animation.slideOutVertically
 import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -45,12 +47,16 @@ import com.israeltv.plus.ui.components.AppHeader
 import com.israeltv.plus.ui.components.CardMenuActions
 import com.israeltv.plus.ui.components.Cascade
 import com.israeltv.plus.ui.components.FloatingTabBar
+import com.israeltv.plus.ui.components.IsraeliOnlyZomatoOverlay
+import com.israeltv.plus.ui.components.IsraeliOverlayMode
 import com.israeltv.plus.ui.components.LocalCardMenu
 import com.israeltv.plus.ui.components.LocalCascade
 import com.israeltv.plus.ui.components.LocalHaze
 import com.israeltv.plus.ui.components.LocalPageScope
 import com.israeltv.plus.ui.components.LocalPlayOrigin
 import com.israeltv.plus.ui.components.LocalSharedScope
+import com.israeltv.plus.ui.components.MacroCategories
+import com.israeltv.plus.ui.components.MoreCategoriesSheet
 import com.israeltv.plus.ui.components.PlayOrigin
 import com.israeltv.plus.ui.components.Tab
 import com.israeltv.plus.ui.player.PlayerScreen
@@ -63,7 +69,6 @@ import com.israeltv.plus.ui.screens.SearchOverlay
 import com.israeltv.plus.ui.screens.SettingsScreen
 import com.israeltv.plus.ui.screens.StyleScreen
 import com.israeltv.plus.ui.screens.UpdateModal
-import androidx.compose.material3.MaterialTheme
 import dev.chrisbanes.haze.HazeState
 import dev.chrisbanes.haze.hazeSource
 import dev.chrisbanes.haze.rememberHazeState
@@ -111,7 +116,7 @@ fun ItvApp(
         origin.key = null
     }
 
-    // every poster card (home shelves, channel grid, search, my list) shares this long-press menu
+    // Every poster card (home shelves, continue watching, channel grid, search, my list) shares this long-press menu
     val cardMenu = remember(prefs) {
         CardMenuActions(
             isFavorite = { prefs.isFavorite(it.id) },
@@ -120,7 +125,6 @@ fun ItvApp(
         )
     }
 
-    // a new release opens the update modal once per version
     val update = updater.state
     LaunchedEffect(update) {
         if (update is UpdateState.Available && prefs.updatePrompted != update.info.version) {
@@ -201,6 +205,11 @@ fun ItvApp(
 private class FeedState {
     var tab by mutableStateOf(Tab.Home)
     var category by mutableStateOf<String?>(null)
+    var macroCategory by mutableStateOf<String?>(null)
+    var moreCategoriesOpen by mutableStateOf(false)
+    var israeliOnly by mutableStateOf(false)
+    var overlayMode by mutableStateOf(IsraeliOverlayMode.Hidden)
+    var switchCenter by mutableStateOf<Offset?>(null)
     var searchOpen by mutableStateOf(false)
     var styleOpen by mutableStateOf(false)
     var barCollapsed by mutableStateOf(false)
@@ -229,7 +238,24 @@ private fun Feed(
 ) {
     val subtitle: (Channel) -> String = remember { { it.subtitle() } }
 
-    // the floating bar folds into a compact pod while the feed scrolls down and opens again on the way up
+    // Dynamic scroll fraction for the top header + categories glassmorphism blur
+    val headerScrollFraction by remember(s) {
+        derivedStateOf {
+            when (s.tab) {
+                Tab.Home -> {
+                    if (s.homeList.firstVisibleItemIndex > 0) 1f
+                    else (s.homeList.firstVisibleItemScrollOffset / 240f).coerceIn(0f, 1f)
+                }
+                Tab.Channels -> {
+                    if (s.channelsList.firstVisibleItemIndex > 0) 1f
+                    else (s.channelsList.firstVisibleItemScrollOffset / 120f).coerceIn(0f, 1f)
+                }
+                else -> 0.85f
+            }
+        }
+    }
+
+    // The floating bar folds into a compact pod while the feed scrolls down and opens again on the way up
     val barScroll = remember(s) {
         object : NestedScrollConnection {
             override fun onPostScroll(consumed: Offset, available: Offset, source: NestedScrollSource): Offset {
@@ -239,25 +265,61 @@ private fun Feed(
         }
     }
 
+    val categories = data?.categories.orEmpty()
+    val israeliCategories = remember(categories) {
+        categories.filter { category -> category.channels.any { it.categoryEn == "israel" } }
+    }
+    val pool = if (s.israeliOnly) israeliCategories else categories
+    val restCategories = remember(pool) { pool.filter { it.name !in MacroCategories } }
+
     BackHandler(enabled = s.searchOpen || s.tab != Tab.Home) {
         if (s.searchOpen) s.searchOpen = false else s.tab = Tab.Home
     }
 
     Box(Modifier.fillMaxSize()) {
-        // the feed: what the glass blurs. Glass inside it is a plain tint (LocalHaze = null), never blur in blur.
+        // The feed: what the glass blurs. Glass inside it is a plain tint (LocalHaze = null), never blur in blur.
         Box(Modifier.fillMaxSize().hazeSource(haze).nestedScroll(barScroll)) {
             AmbientBackground()
             CompositionLocalProvider(LocalHaze provides null) {
                 AnimatedContent(
                     s.tab,
-                    transitionSpec = { fadeIn(tween(240)) togetherWith fadeOut(tween(160)) },
+                    transitionSpec = {
+                        val forward = targetState.ordinal >= initialState.ordinal
+                        val enterSlide = { fullWidth: Int -> if (forward) -fullWidth / 14 else fullWidth / 14 }
+                        val exitSlide = { fullWidth: Int -> if (forward) fullWidth / 14 else -fullWidth / 14 }
+                        (fadeIn(tween(280, easing = FastOutSlowInEasing)) +
+                            slideInHorizontally(tween(320, easing = FastOutSlowInEasing), initialOffsetX = enterSlide) +
+                            scaleIn(tween(320, easing = FastOutSlowInEasing), initialScale = 0.96f))
+                            .togetherWith(
+                                fadeOut(tween(190, easing = FastOutSlowInEasing)) +
+                                    slideOutHorizontally(tween(240, easing = FastOutSlowInEasing), targetOffsetX = exitSlide) +
+                                    scaleOut(tween(240, easing = FastOutSlowInEasing), targetScale = 0.98f)
+                            )
+                    },
                     label = "tabs",
                 ) { t ->
                     when (t) {
-                        Tab.Home -> HomeScreen(data, prefs, s.homeList, logo, subtitle, onPlay, onInfo) {
-                            s.category = it
-                            s.tab = Tab.Channels
-                        }
+                        Tab.Home -> HomeScreen(
+                            data = data,
+                            prefs = prefs,
+                            listState = s.homeList,
+                            israeliOnly = s.israeliOnly,
+                            onIsraeliOnlyChange = { checked ->
+                                s.israeliOnly = checked
+                                s.macroCategory = null
+                                s.overlayMode = if (checked) IsraeliOverlayMode.Entering else IsraeliOverlayMode.Exiting
+                            },
+                            onSwitchPositioned = { s.switchCenter = it },
+                            macroCategory = s.macroCategory,
+                            logo = logo,
+                            subtitle = subtitle,
+                            onPlay = onPlay,
+                            onInfo = onInfo,
+                            onSeeAll = {
+                                s.category = it
+                                s.tab = Tab.Channels
+                            },
+                        )
                         Tab.Channels -> ChannelsScreen(data, s.category, { s.category = it }, logo, subtitle, onPlay, s.channelsList)
                         Tab.Mine -> MineScreen(data, prefs, logo, subtitle, onPlay)
                         Tab.Settings -> SettingsScreen(data, prefs, updater, onProfiles = onProfiles, onStyle = { s.styleOpen = true })
@@ -270,6 +332,11 @@ private fun Feed(
             AppHeader(
                 profileId = prefs.profile.id,
                 avatar = prefs.avatar,
+                scrollFraction = headerScrollFraction,
+                showCategories = s.tab == Tab.Home && !s.searchOpen,
+                selectedCategory = s.macroCategory,
+                onSelectCategory = { s.macroCategory = it },
+                onMoreCategories = { s.moreCategoriesOpen = true },
                 onAvatar = onProfiles,
                 onSettings = { s.searchOpen = false; s.tab = Tab.Settings },
                 modifier = Modifier.align(Alignment.TopCenter),
@@ -290,6 +357,24 @@ private fun Feed(
                 SearchOverlay(data, logo, subtitle, onPlay, onClose = { s.searchOpen = false })
             }
         }
+
+        if (s.moreCategoriesOpen) {
+            MoreCategoriesSheet(
+                categories = restCategories,
+                selected = s.macroCategory,
+                onSelect = { s.macroCategory = it; s.moreCategoriesOpen = false },
+                onDismiss = { s.moreCategoriesOpen = false },
+            )
+        }
+
+        // True full-screen Zomato overlay (zIndex 100f) covering the entire screen, including header & bottom navbar
+        IsraeliOnlyZomatoOverlay(
+            mode = s.overlayMode,
+            switchCenter = s.switchCenter,
+            onDismiss = {
+                s.overlayMode = if (s.overlayMode == IsraeliOverlayMode.Entering) IsraeliOverlayMode.Active else IsraeliOverlayMode.Hidden
+            },
+        )
 
         AnimatedVisibility(
             s.styleOpen,

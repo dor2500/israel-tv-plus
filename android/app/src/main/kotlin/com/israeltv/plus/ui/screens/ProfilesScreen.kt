@@ -1,21 +1,22 @@
 package com.israeltv.plus.ui.screens
 
+import android.app.Activity
 import androidx.activity.compose.BackHandler
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.animateFloatAsState
-import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.spring
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
-import androidx.compose.animation.scaleIn
-import androidx.compose.animation.scaleOut
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.focusable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.Arrangement
@@ -38,7 +39,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
@@ -50,13 +50,9 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
-import android.app.Activity
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.DisposableEffect
-import androidx.compose.ui.platform.LocalView
-import androidx.core.view.WindowCompat
-import com.israeltv.plus.ui.theme.LocalDarkTheme
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -64,11 +60,10 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.focus.onFocusChanged
-import androidx.compose.foundation.focusable
 import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
@@ -76,33 +71,33 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalHapticFeedback
+import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.view.WindowCompat
 import com.israeltv.plus.data.AVATARS
 import com.israeltv.plus.data.AppPrefs
 import com.israeltv.plus.data.Profile
-import com.israeltv.plus.data.ThemeChoice
 import com.israeltv.plus.ui.components.ProfileAvatar
 import com.israeltv.plus.ui.components.sharedAvatar
 import com.israeltv.plus.ui.theme.CuratedPalettes
+import com.israeltv.plus.ui.theme.LocalDarkTheme
 import com.israeltv.plus.ui.theme.schemeFor
 import com.israeltv.plus.ui.theme.wallpaperPalettes
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-private val TileShape = RoundedCornerShape(30.dp)
+private val TileShape = RoundedCornerShape(32.dp)
 
 /**
- * Netflix-style "מי צופה?": every profile as a 100 dp squircle in its own Material You colour with its 3D emoji,
- * "+" to add one, and an edit mode. Choosing a profile bounces it (haptic tick) and its avatar flies into the
- * header corner of the home screen (shared element).
+ * Apple iOS / tvOS "מי צופה?" Profile Picker: large square-rounded containers (124 dp squircles) with Neo 3D Emoji
+ * portraits, spring scale-up + glowing shadow + solid white border on focus/press, and shared-element flight into the header.
  */
 @Composable
 fun ProfilesScreen(prefs: AppPrefs, canClose: Boolean, onPicked: () -> Unit, onClose: () -> Unit) {
-    // always the cinematic dark version of the active palette, light status-bar icons included
     val context = LocalContext.current
     val view = LocalView.current
     DisposableEffect(Unit) {
@@ -123,7 +118,6 @@ fun ProfilesScreen(prefs: AppPrefs, canClose: Boolean, onPicked: () -> Unit, onC
 @Composable
 private fun ProfilesContent(prefs: AppPrefs, canClose: Boolean, onPicked: () -> Unit, onClose: () -> Unit) {
     val context = LocalContext.current
-    val scheme = MaterialTheme.colorScheme
     val haptic = LocalHapticFeedback.current
     var editing by remember { mutableStateOf(false) }
     var editor by remember { mutableStateOf<Profile?>(null) }
@@ -143,7 +137,7 @@ private fun ProfilesContent(prefs: AppPrefs, canClose: Boolean, onPicked: () -> 
             .fillMaxSize()
             .background(Color(0xFF07070B))
     ) {
-        // the deep blurred canvas: the profiles' colours as large soft lights
+        // Deep blurred canvas: the profiles' colours as large soft lights
         Box(
             Modifier
                 .fillMaxSize()
@@ -162,18 +156,32 @@ private fun ProfilesContent(prefs: AppPrefs, canClose: Boolean, onPicked: () -> 
         Column(
             Modifier.fillMaxSize().statusBarsPadding().navigationBarsPadding().verticalScroll(rememberScrollState()),
             horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center,
         ) {
-            Spacer(Modifier.height(72.dp))
-            Text("מי צופה?", color = Color.White, fontSize = 28.sp, fontWeight = FontWeight.ExtraBold, letterSpacing = (-0.4).sp)
-            Spacer(Modifier.height(36.dp))
+            Spacer(Modifier.height(48.dp))
+            Text(
+                "מי צופה?",
+                color = Color.White,
+                fontSize = 32.sp,
+                fontWeight = FontWeight.ExtraBold,
+                letterSpacing = (-0.5).sp,
+            )
+            Spacer(Modifier.height(8.dp))
+            Text(
+                "בחרו פרופיל לצפייה מותאמת אישית",
+                color = Color.White.copy(alpha = 0.62f),
+                fontSize = 14.sp,
+                fontWeight = FontWeight.Normal,
+            )
+            Spacer(Modifier.height(40.dp))
             FlowRow(
                 Modifier.fillMaxWidth().padding(horizontal = 24.dp),
-                horizontalArrangement = Arrangement.spacedBy(22.dp, Alignment.CenterHorizontally),
-                verticalArrangement = Arrangement.spacedBy(26.dp),
-                maxItemsInEachRow = 3,
+                horizontalArrangement = Arrangement.spacedBy(24.dp, Alignment.CenterHorizontally),
+                verticalArrangement = Arrangement.spacedBy(28.dp),
+                maxItemsInEachRow = 2,
             ) {
                 prefs.profiles.forEach { p ->
-                    ProfileTile(p, editing) {
+                    ProfileTile(p, active = p.id == prefs.activeId, editing = editing) {
                         if (editing) editor = p else {
                             prefs.switchTo(p.id)
                             onPicked()
@@ -182,23 +190,29 @@ private fun ProfilesContent(prefs: AppPrefs, canClose: Boolean, onPicked: () -> 
                 }
                 if (prefs.profiles.size < 6) AddTile {
                     haptic.performHapticFeedback(HapticFeedbackType.ContextClick)
-                    editor = Profile(prefs.newProfileId(), "", AVATARS[prefs.profiles.size % AVATARS.size], CuratedPalettes[prefs.profiles.size * 5 % CuratedPalettes.size].choice(dark = true))
+                    editor = Profile(
+                        prefs.newProfileId(),
+                        "",
+                        AVATARS[prefs.profiles.size % AVATARS.size],
+                        CuratedPalettes[prefs.profiles.size * 5 % CuratedPalettes.size].choice(dark = true),
+                    )
                 }
             }
-            Spacer(Modifier.height(40.dp))
+            Spacer(Modifier.height(44.dp))
             Text(
                 if (editing) "סיום" else "עריכת פרופילים",
                 Modifier
                     .clip(RoundedCornerShape(50))
+                    .background(Color.White.copy(alpha = if (editing) 0.18f else 0.06f))
                     .border(1.dp, Color.White.copy(alpha = 0.35f), RoundedCornerShape(50))
-                    .clickable {
+                    .clickable(remember { MutableInteractionSource() }, null) {
                         haptic.performHapticFeedback(HapticFeedbackType.SegmentTick)
                         editing = !editing
                     }
-                    .padding(horizontal = 22.dp, vertical = 10.dp),
-                color = Color.White, fontSize = 15.sp, fontWeight = FontWeight.Bold,
+                    .padding(horizontal = 26.dp, vertical = 11.dp),
+                color = Color.White, fontSize = 15.sp, fontWeight = FontWeight.SemiBold,
             )
-            Spacer(Modifier.height(40.dp))
+            Spacer(Modifier.height(48.dp))
         }
 
         AnimatedVisibility(
@@ -221,7 +235,7 @@ private fun ProfilesContent(prefs: AppPrefs, canClose: Boolean, onPicked: () -> 
 }
 
 @Composable
-private fun ProfileTile(p: Profile, editing: Boolean, onClick: () -> Unit) {
+private fun ProfileTile(p: Profile, active: Boolean, editing: Boolean, onClick: () -> Unit) {
     val context = LocalContext.current
     val haptic = LocalHapticFeedback.current
     val scope = rememberCoroutineScope()
@@ -229,33 +243,66 @@ private fun ProfileTile(p: Profile, editing: Boolean, onClick: () -> Unit) {
     var focused by remember { mutableStateOf(false) }
     val interaction = remember { MutableInteractionSource() }
     val pressed by interaction.collectIsPressedAsState()
-    val highlighted = focused || pressed
-    val focusScale by animateFloatAsState(if (highlighted) 1.10f else 1f, spring(dampingRatio = 0.68f, stiffness = Spring.StiffnessMediumLow), label = "profileFocusScale")
-    // the emoji grows a touch more than its container, so the portrait feels alive under focus
-    val glyphScale by animateFloatAsState(if (highlighted) 1.08f else 1f, spring(dampingRatio = 0.6f, stiffness = Spring.StiffnessMediumLow), label = "profileGlyphScale")
-    val borderWidth by animateDpAsState(if (highlighted) 3.dp else 1.dp, spring(stiffness = Spring.StiffnessMediumLow), label = "profileBorderWidth")
-    val borderColor by androidx.compose.animation.animateColorAsState(
-        if (highlighted) Color.White else Color.White.copy(alpha = 0.35f),
-        spring(stiffness = Spring.StiffnessMediumLow),
+    val highlighted = focused || pressed || active
+    val focusScale by animateFloatAsState(
+        targetValue = when {
+            pressed -> 0.94f
+            focused -> 1.10f
+            else -> 1f
+        },
+        animationSpec = spring(dampingRatio = 0.65f, stiffness = Spring.StiffnessMediumLow),
+        label = "profileFocusScale",
+    )
+    val glyphScale by animateFloatAsState(
+        targetValue = if (focused || pressed) 1.10f else 1f,
+        animationSpec = spring(dampingRatio = 0.58f, stiffness = Spring.StiffnessMediumLow),
+        label = "profileGlyphScale",
+    )
+    val borderWidth by animateDpAsState(
+        targetValue = if (highlighted) 3.dp else 1.5.dp,
+        animationSpec = spring(stiffness = Spring.StiffnessMediumLow),
+        label = "profileBorderWidth",
+    )
+    val borderColor by animateColorAsState(
+        targetValue = if (highlighted) Color.White else Color.White.copy(alpha = 0.28f),
+        animationSpec = spring(stiffness = Spring.StiffnessMediumLow),
         label = "profileBorderColor",
+    )
+    val glowElevation by animateFloatAsState(
+        targetValue = if (highlighted) 24f else 0f,
+        animationSpec = spring(stiffness = Spring.StiffnessMediumLow),
+        label = "profileGlow",
     )
     val tone = remember(p.theme) { schemeFor(context, p.theme.copy(dark = true)) }
     Column(
-        Modifier.width(126.dp).onFocusChanged { focused = it.isFocused }.focusable()
+        Modifier
+            .width(136.dp)
+            .onFocusChanged { focused = it.isFocused }
+            .focusable()
             .clickable(interaction, null) {
-            haptic.performHapticFeedback(HapticFeedbackType.SegmentFrequentTick)
-            scope.launch {
-                bounce.animateTo(0.88f, spring(stiffness = Spring.StiffnessHigh))
-                bounce.animateTo(1f, spring(Spring.DampingRatioHighBouncy, Spring.StiffnessMedium))
-            }
-            scope.launch { delay(if (editing) 0 else 140); onClick() }
-        },
+                haptic.performHapticFeedback(HapticFeedbackType.SegmentFrequentTick)
+                scope.launch {
+                    bounce.animateTo(0.90f, spring(stiffness = Spring.StiffnessHigh))
+                    bounce.animateTo(1f, spring(Spring.DampingRatioHighBouncy, Spring.StiffnessMedium))
+                }
+                scope.launch { delay(if (editing) 0 else 130); onClick() }
+            },
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Box(
             Modifier
-                .size(116.dp)
-                .graphicsLayer { scaleX = maxOf(focusScale, bounce.value); scaleY = maxOf(focusScale, bounce.value) }
+                .size(124.dp)
+                .graphicsLayer {
+                    val s = focusScale * bounce.value
+                    scaleX = s
+                    scaleY = s
+                    if (glowElevation > 0.5f) {
+                        shadowElevation = glowElevation * density
+                        shape = TileShape
+                        ambientShadowColor = tone.primary.copy(alpha = 0.65f)
+                        spotShadowColor = Color.White.copy(alpha = 0.7f)
+                    }
+                }
                 .sharedAvatar("avatar:${p.id}")
                 .clip(TileShape)
                 .background(Brush.linearGradient(listOf(tone.primaryContainer, tone.tertiaryContainer)))
@@ -264,38 +311,55 @@ private fun ProfileTile(p: Profile, editing: Boolean, onClick: () -> Unit) {
         ) {
             ProfileAvatar(
                 p.avatar,
-                glyphSize = 60.dp,
+                glyphSize = 72.dp,
                 modifier = Modifier.graphicsLayer { scaleX = glyphScale; scaleY = glyphScale },
             )
             if (editing) {
                 Box(Modifier.fillMaxSize().background(Color.Black.copy(alpha = 0.45f)), contentAlignment = Alignment.Center) {
-                    Icon(Icons.Rounded.Edit, "עריכה", Modifier.size(30.dp), tint = Color.White)
+                    Icon(Icons.Rounded.Edit, "עריכה", Modifier.size(32.dp), tint = Color.White)
                 }
             }
         }
         Text(
-            p.name, Modifier.padding(top = 14.dp), color = Color.White, fontSize = 16.sp, fontWeight = FontWeight.Bold,
-            maxLines = 1, overflow = TextOverflow.Ellipsis, textAlign = TextAlign.Center,
+            p.name,
+            Modifier.padding(top = 14.dp),
+            color = if (highlighted) Color.White else Color.White.copy(alpha = 0.88f),
+            fontSize = 16.sp,
+            fontWeight = FontWeight.SemiBold,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
+            textAlign = TextAlign.Center,
         )
     }
 }
 
 @Composable
 private fun AddTile(onClick: () -> Unit) {
-    Column(Modifier.width(126.dp).clickable(onClick = onClick), horizontalAlignment = Alignment.CenterHorizontally) {
+    val interaction = remember { MutableInteractionSource() }
+    val pressed by interaction.collectIsPressedAsState()
+    val scale by animateFloatAsState(
+        if (pressed) 0.94f else 1f,
+        spring(dampingRatio = 0.65f, stiffness = Spring.StiffnessMediumLow),
+        label = "addScale",
+    )
+    Column(
+        Modifier.width(136.dp).clickable(interaction, null, onClick = onClick),
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
         Box(
             Modifier
-                .size(116.dp)
+                .size(124.dp)
+                .graphicsLayer { scaleX = scale; scaleY = scale }
                 .clip(TileShape)
                 .background(Color.White.copy(alpha = 0.06f))
                 .border(1.5.dp, Color.White.copy(alpha = 0.3f), TileShape),
             contentAlignment = Alignment.Center,
         ) { Icon(Icons.Rounded.Add, "הוספת פרופיל", Modifier.size(44.dp), tint = Color.White) }
-        Text("הוספה", Modifier.padding(top = 14.dp), color = Color.White.copy(alpha = 0.8f), fontSize = 16.sp, fontWeight = FontWeight.Bold)
+        Text("הוספה", Modifier.padding(top = 14.dp), color = Color.White.copy(alpha = 0.8f), fontSize = 16.sp, fontWeight = FontWeight.SemiBold)
     }
 }
 
-/** New / edit profile: name, 3D emoji and the profile's own tri-tone palette. */
+/** New / edit profile: name, Neo 3D emoji asset picker and the profile's own tri-tone palette. */
 @Composable
 private fun ProfileEditor(
     start: Profile,
@@ -312,7 +376,7 @@ private fun ProfileEditor(
     Box(
         Modifier
             .fillMaxSize()
-            .background(Color.Black.copy(alpha = 0.55f))
+            .background(Color.Black.copy(alpha = 0.6f))
             .clickable(remember { MutableInteractionSource() }, null, onClick = onCancel),
         contentAlignment = Alignment.Center,
     ) {
@@ -330,31 +394,37 @@ private fun ProfileEditor(
         ) {
             val tone = remember(p.theme) { schemeFor(context, p.theme.copy(dark = true)) }
             Box(
-                Modifier.size(84.dp).clip(TileShape).background(Brush.linearGradient(listOf(tone.primaryContainer, tone.tertiaryContainer))),
+                Modifier
+                    .size(92.dp)
+                    .clip(RoundedCornerShape(26.dp))
+                    .background(Brush.linearGradient(listOf(tone.primaryContainer, tone.tertiaryContainer)))
+                    .border(2.dp, Color.White.copy(alpha = 0.6f), RoundedCornerShape(26.dp)),
                 contentAlignment = Alignment.Center,
-            ) { ProfileAvatar(p.avatar, glyphSize = 46.dp) }
+            ) { ProfileAvatar(p.avatar, glyphSize = 54.dp) }
             Text(
                 if (isNew) "פרופיל חדש" else "עריכת פרופיל",
                 Modifier.padding(top = 12.dp, bottom = 12.dp),
-                color = scheme.onSurface, fontSize = 22.sp, fontWeight = FontWeight.ExtraBold,
+                color = scheme.onSurface, fontSize = 22.sp, fontWeight = FontWeight.SemiBold,
             )
             OutlinedTextField(
                 p.name, { p = p.copy(name = it.take(16)) },
                 Modifier.fillMaxWidth(), singleLine = true, label = { Text("שם") }, shape = RoundedCornerShape(18.dp),
             )
-            Text("אווטאר", Modifier.fillMaxWidth().padding(top = 16.dp, bottom = 8.dp), color = scheme.onSurfaceVariant, fontSize = 13.sp)
-            LazyRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                items(AVATARS) { id ->
+            Text("אווטאר תלת־ממד (Neo 3D)", Modifier.fillMaxWidth().padding(top = 16.dp, bottom = 8.dp), color = scheme.onSurfaceVariant, fontSize = 13.sp)
+            LazyRow(horizontalArrangement = Arrangement.spacedBy(10.dp), contentPadding = PaddingValues(vertical = 4.dp)) {
+                items(AVATARS, key = { it }) { id ->
                     val on = id == p.avatar
+                    val itemScale by animateFloatAsState(if (on) 1.08f else 1f, spring(dampingRatio = 0.6f), label = "avatarPickScale")
                     Box(
                         Modifier
-                            .size(60.dp)
-                            .clip(RoundedCornerShape(15.dp))
+                            .size(64.dp)
+                            .graphicsLayer { scaleX = itemScale; scaleY = itemScale }
+                            .clip(RoundedCornerShape(18.dp))
                             .background(if (on) scheme.primaryContainer else scheme.surfaceContainerHighest.copy(alpha = 0.6f))
-                            .then(if (on) Modifier.border(2.dp, Color.White, RoundedCornerShape(15.dp)) else Modifier)
-                            .clickable { p = p.copy(avatar = id) },
+                            .border(if (on) 2.5.dp else 1.dp, if (on) Color.White else Color.White.copy(alpha = 0.18f), RoundedCornerShape(18.dp))
+                            .clickable(remember { MutableInteractionSource() }, null) { p = p.copy(avatar = id) },
                         contentAlignment = Alignment.Center,
-                    ) { ProfileAvatar(id, glyphSize = 34.dp) }
+                    ) { ProfileAvatar(id, glyphSize = 40.dp) }
                 }
             }
             Text("צבעים", Modifier.fillMaxWidth().padding(top = 16.dp, bottom = 8.dp), color = scheme.onSurfaceVariant, fontSize = 13.sp)
@@ -371,10 +441,10 @@ private fun ProfileEditor(
                 Button(
                     { onSave(p.copy(name = p.name.trim().ifEmpty { "צופה" })) },
                     shape = RoundedCornerShape(50), modifier = Modifier.height(50.dp),
-                ) { Text("שמירה", fontWeight = FontWeight.ExtraBold) }
+                ) { Text("שמירה", fontWeight = FontWeight.SemiBold) }
                 TextButton(onCancel) { Text("ביטול") }
                 Spacer(Modifier.weight(1f))
-                if (canDelete) TextButton(onDelete) { Text("מחיקה", color = scheme.error, fontWeight = FontWeight.Bold) }
+                if (canDelete) TextButton(onDelete) { Text("מחיקה", color = scheme.error, fontWeight = FontWeight.SemiBold) }
             }
         }
     }

@@ -2,6 +2,7 @@ package com.israeltv.plus.ui.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
@@ -17,9 +18,10 @@ import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBars
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.LazyListScope
+import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
@@ -59,11 +61,13 @@ import com.israeltv.plus.data.AppPrefs
 import com.israeltv.plus.data.Channel
 import com.israeltv.plus.data.ChannelData
 import com.israeltv.plus.ui.components.BoldIcon
+import com.israeltv.plus.ui.components.CategoryNeo3DIcon
 import com.israeltv.plus.ui.components.ChannelCard
 import com.israeltv.plus.ui.components.SectionHeader
 import com.israeltv.plus.ui.components.ShelfSkeleton
 import com.israeltv.plus.ui.components.feedPadding
 import com.israeltv.plus.ui.components.frostedGlass
+import com.israeltv.plus.ui.components.pressPhysics
 import com.israeltv.plus.ui.components.rememberBitChordFlingBehavior
 
 /** A two-column grid inside the master LazyColumn: one row item per pair (items(list.chunked(2))). */
@@ -93,10 +97,11 @@ private fun EmptyState(text: String) {
         textAlign = TextAlign.Center,
         color = MaterialTheme.colorScheme.onSurfaceVariant,
         fontSize = 15.sp,
+        fontWeight = FontWeight.Light,
     )
 }
 
-/** Channels: category pills, then every channel of the chosen category as a grid. */
+/** Channels: category pills with Neo 3D icons, then every channel of the chosen category as a grid. */
 @Composable
 fun ChannelsScreen(
     data: ChannelData?,
@@ -107,7 +112,6 @@ fun ChannelsScreen(
     onPlay: (Channel, List<Channel>) -> Unit,
     listState: LazyListState = rememberLazyListState(),
 ) {
-    // a new category starts at the top; coming back from the player keeps the place
     var shown by remember { mutableStateOf(category) }
     LaunchedEffect(category) {
         if (category != shown) {
@@ -115,7 +119,7 @@ fun ChannelsScreen(
             listState.scrollToItem(0)
         }
     }
-    LazyColumn(Modifier.fillMaxSize(), listState, feedPadding(), flingBehavior = rememberBitChordFlingBehavior()) {
+    LazyColumn(Modifier.fillMaxSize(), listState, feedPadding(withCategories = false), flingBehavior = rememberBitChordFlingBehavior()) {
         if (data == null) {
             items(4) { ShelfSkeleton() }
             return@LazyColumn
@@ -129,7 +133,9 @@ fun ChannelsScreen(
             Text(
                 "${list.size} ערוצים",
                 Modifier.padding(start = 20.dp, bottom = 14.dp).padding(top = 0.dp),
-                color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 13.sp,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                fontSize = 13.sp,
+                fontWeight = FontWeight.Light,
             )
         }
         channelGrid(list, "c:", logo, subtitle) { onPlay(it, list) }
@@ -149,20 +155,30 @@ private fun CategoryPills(data: ChannelData, selected: String?, onSelect: (Strin
     ) {
         items(entries, key = { it.first ?: "*" }) { (key, name) ->
             val on = key == selected
-            Text(
-                name,
+            val interaction = remember { MutableInteractionSource() }
+            Row(
                 Modifier
+                    .pressPhysics(interaction, tilt = false, glowShape = RoundedCornerShape(50))
                     .clip(RoundedCornerShape(50))
                     .background(if (on) scheme.secondaryContainer else scheme.surfaceContainerHigh.copy(alpha = 0.7f))
-                    .clickable {
+                    .clickable(interaction, null) {
                         haptic.performHapticFeedback(HapticFeedbackType.SegmentTick)
                         onSelect(key)
                     }
-                    .padding(horizontal = 16.dp, vertical = 9.dp),
-                color = if (on) scheme.onSecondaryContainer else scheme.onSurfaceVariant,
-                fontSize = 14.sp,
-                fontWeight = if (on) FontWeight.ExtraBold else FontWeight.Medium,
-            )
+                    .padding(start = if (key != null) 10.dp else 16.dp, end = 16.dp, top = 8.dp, bottom = 8.dp),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                if (key != null) {
+                    CategoryNeo3DIcon(name, size = 22.dp)
+                    Spacer(Modifier.width(8.dp))
+                }
+                Text(
+                    name,
+                    color = if (on) scheme.onSecondaryContainer else scheme.onSurfaceVariant,
+                    fontSize = 14.sp,
+                    fontWeight = if (on) FontWeight.SemiBold else FontWeight.Medium,
+                )
+            }
         }
     }
 }
@@ -176,12 +192,12 @@ fun MineScreen(
     subtitle: (Channel) -> String,
     onPlay: (Channel, List<Channel>) -> Unit,
 ) {
-    LazyColumn(Modifier.fillMaxSize(), contentPadding = feedPadding(), flingBehavior = rememberBitChordFlingBehavior()) {
+    LazyColumn(Modifier.fillMaxSize(), contentPadding = feedPadding(withCategories = false), flingBehavior = rememberBitChordFlingBehavior()) {
         if (data == null) return@LazyColumn
         val favs = prefs.favorites.mapNotNull { data.byId[it] }
         val recent = prefs.recents.mapNotNull { data.byId[it] }
         item(key = "fh") { SectionHeader("מועדפים") }
-        if (favs.isEmpty()) item(key = "fe") { EmptyState("עוד אין מועדפים. לחצו על ☆ בערוץ כדי להוסיף אותו לכאן.") }
+        if (favs.isEmpty()) item(key = "fe") { EmptyState("עוד אין מועדפים. לחצו לחיצה ארוכה על ערוץ כדי להוסיף אותו לכאן.") }
         else channelGrid(favs, "f:", logo, subtitle) { onPlay(it, favs) }
         item(key = "rh") { SectionHeader("צפיתם לאחרונה") }
         if (recent.isEmpty()) item(key = "re") { EmptyState("הערוצים שתצפו בהם יופיעו כאן.") }
@@ -223,7 +239,7 @@ fun SearchOverlay(
                 Text(
                     if (q.isEmpty()) "חיפוש" else "${results.size} תוצאות",
                     Modifier.padding(horizontal = 20.dp).padding(bottom = 16.dp),
-                    fontSize = 30.sp, fontWeight = FontWeight.ExtraBold, color = scheme.onSurface,
+                    fontSize = 30.sp, fontWeight = FontWeight.SemiBold, color = scheme.onSurface,
                 )
             }
             if (q.isNotEmpty() && results.isEmpty()) item(key = "e") { EmptyState("לא נמצא ערוץ בשם \"$q\"") }
@@ -243,7 +259,7 @@ fun SearchOverlay(
         ) {
             BoldIcon(Icons.Rounded.Search, null, Modifier.size(24.dp), tint = scheme.onSurfaceVariant, weight = 0.65.dp)
             Box(Modifier.weight(1f).padding(horizontal = 12.dp)) {
-                if (query.isEmpty()) Text("שם ערוץ, מדינה, קטגוריה או מספר", color = scheme.onSurfaceVariant, fontSize = 16.sp)
+                if (query.isEmpty()) Text("שם ערוץ, מדינה, קטגוריה או מספר", color = scheme.onSurfaceVariant, fontSize = 16.sp, fontWeight = FontWeight.Light)
                 BasicTextField(
                     query, { query = it },
                     Modifier.fillMaxWidth().focusRequester(focus),
@@ -256,10 +272,9 @@ fun SearchOverlay(
             }
             BoldIcon(
                 Icons.Rounded.Close, "סגירה",
-                Modifier.size(26.dp).clip(RoundedCornerShape(50)).clickable { if (query.isNotEmpty()) query = "" else onClose() },
+                Modifier.size(26.dp).clip(RoundedCornerShape(50)).clickable(remember { MutableInteractionSource() }, null) { if (query.isNotEmpty()) query = "" else onClose() },
                 tint = scheme.onSurfaceVariant, weight = 0.6.dp,
             )
         }
     }
 }
-

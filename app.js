@@ -2215,7 +2215,11 @@
   function channelMenu(ch) {
     if (!ch) return;
     var items = [{ ico: isApp(ch) ? '↗' : isRadioCh(ch) ? '🎧' : '▶', label: isApp(ch) ? 'פתיחת האפליקציה' : isRadioCh(ch) ? 'האזנה' : 'צפייה',
-      act: function () { var i = indexInList(ch.id); if (i !== -1) playIndex(i); } }];
+      act: function () {
+        var i = indexInList(ch.id);
+        if (i === -1) { selectCategory('ALL', true); i = indexInList(ch.id); }
+        if (i !== -1) playIndex(i);
+      } }];
     if (foreign(ch) && !appOnly(ch)) items.push({ ico: '🎙️', label: 'צפייה עם דיבוב לעברית', dot: colourOf('dub'), act: function () { watchDubbed(ch); } });
     items.push({ ico: isFav(ch) ? '★' : '☆', label: isFav(ch) ? 'הסרה מהמועדפים' : 'הוספה למועדפים', dot: colourOf('fav'), act: function () { toggleFav(ch); } });
     items.push({ ico: 'ℹ️', label: 'מידע ומקור השידור', dot: colourOf('info'), act: function () { showInfo(ch); } });
@@ -2371,6 +2375,7 @@
     if (Dub.missingConfig()) { needKey(ch); return; }
     Dub.save({ enabled: true });
     var i = indexInList(ch.id);
+    if (i === -1) { selectCategory('ALL', true); i = indexInList(ch.id); }
     if (i !== -1) playIndex(i);
   }
 
@@ -2524,7 +2529,7 @@
   function runAction(action) {
     var inPlayer = state.overlay === 'player';
     if (TVUI && !inPlayer && !state.overlay && atvAction(action)) return;
-    var ch = inPlayer ? state.playing : state.list[state.gridIdx];
+    var ch = inPlayer ? state.playing : (TVUI ? atvCurrent() : state.list[state.gridIdx]);
     switch (action) {
       case 'menu': if (inPlayer) playerMenu(); else channelMenu(ch); break;
       case 'fav': if (ch) toggleFav(ch); break;
