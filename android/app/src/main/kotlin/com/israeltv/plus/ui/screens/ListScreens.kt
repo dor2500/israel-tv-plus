@@ -49,6 +49,7 @@ import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalFocusManager
@@ -179,19 +180,26 @@ fun ChannelsScreen(
             }
         }
 
-        // Pinned "רק ישראלי" switch right below the pinned macro-categories header
+        // Pinned "רק ישראלי" switch right below the pinned macro-categories header with ultra-clear glass blur
+        val switchGradientMask = remember {
+            Brush.verticalGradient(
+                0f to Color.Black,
+                0.76f to Color.Black.copy(alpha = 0.72f),
+                1f to Color.Transparent,
+            )
+        }
         Box(
             Modifier
                 .align(Alignment.TopCenter)
                 .fillMaxWidth()
                 .padding(top = topInset - 6.dp)
                 .zIndex(5f)
-                .background(
-                    Brush.verticalGradient(
-                        0f to scheme.surfaceContainerLowest.copy(alpha = 0.94f),
-                        0.72f to scheme.surfaceContainerLowest.copy(alpha = 0.82f),
-                        1f to Color.Transparent,
-                    )
+                .frostedGlass(
+                    shape = RectangleShape,
+                    tint = Color.Black.copy(alpha = 0.10f),
+                    blur = 38.dp,
+                    border = false,
+                    mask = switchGradientMask,
                 )
                 .padding(top = 4.dp, bottom = 10.dp),
             contentAlignment = Alignment.Center,

@@ -45,6 +45,7 @@ import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -354,13 +355,20 @@ private fun MutedHeroHls(
             }
     }
 
-    DisposableEffect(player, lifecycle) {
+    val candidates = remember(channel.id, channel.url, channel.fallbackUrls) { channel.allCandidateUrls() }
+    var sourceIndex by remember(channel.id) { mutableIntStateOf(0) }
+
+    DisposableEffect(player, lifecycle, candidates) {
         val listener = object : Player.Listener {
             override fun onRenderedFirstFrame() {
                 onFirstFrame()
             }
             override fun onPlayerError(error: PlaybackException) {
-                onError()
+                if (sourceIndex + 1 < candidates.size) {
+                    sourceIndex += 1
+                } else {
+                    onError()
+                }
             }
         }
         val lifecycleObserver = LifecycleEventObserver { _, event ->
@@ -378,14 +386,24 @@ private fun MutedHeroHls(
         onDispose {
             lifecycle.removeObserver(lifecycleObserver)
             player.removeListener(listener)
+        }
+    }
+
+    DisposableEffect(player) {
+        onDispose {
             player.release()
         }
     }
 
-    LaunchedEffect(channel.id, player) {
-        val resolvedUrl = runCatching { playableUrl(channel) }.getOrNull()
+    LaunchedEffect(channel.id, sourceIndex, player) {
+        val rawCandidate = candidates.getOrElse(sourceIndex) { channel.url }
+        val resolvedUrl = runCatching { playableUrl(rawCandidate, channel.auth) }.getOrNull()
         if (resolvedUrl.isNullOrBlank()) {
-            onError()
+            if (sourceIndex + 1 < candidates.size) {
+                sourceIndex += 1
+            } else {
+                onError()
+            }
             return@LaunchedEffect
         }
         val item = MediaItem.Builder()
@@ -537,45 +555,34 @@ private fun HeroPage(
                         onError = { videoFailed = true },
                         modifier = Modifier.fillMaxSize(),
                     )
-                    // Seamless Transition: dark gradient combined with a slight blur effect at the bottom edge of the video
+                    // Seamless Transition: gentle blur + soft bottom edge fade so the Hero video stays bright and clear
                     Box(
                         Modifier
                             .align(Alignment.BottomCenter)
                             .fillMaxWidth()
-                            .height(168.dp)
-                            .blur(12.dp)
+                            .height(136.dp)
+                            .blur(14.dp)
                             .background(
                                 Brush.verticalGradient(
                                     0f to Color.Transparent,
-                                    0.42f to Color(0xFF07080E).copy(alpha = 0.58f),
-                                    0.78f to scheme.surfaceContainerLowest.copy(alpha = 0.90f),
-                                    1f to scheme.surfaceContainerLowest,
+                                    0.48f to Color.Black.copy(alpha = 0.16f),
+                                    0.82f to scheme.surfaceContainerLowest.copy(alpha = 0.68f),
+                                    1f to scheme.surfaceContainerLowest.copy(alpha = 0.92f),
                                 )
                             )
-                    )
-                    Box(
-                        Modifier.fillMaxSize().background(
-                            Brush.verticalGradient(
-                                0f to Color.Black.copy(alpha = 0.24f),
-                                0.34f to Color.Transparent,
-                                0.68f to Color.Black.copy(alpha = 0.62f),
-                                0.88f to scheme.surfaceContainerLowest.copy(alpha = 0.94f),
-                                1f to scheme.surfaceContainerLowest,
-                            )
-                        )
                     )
                 }
             }
         }
 
-        // Smooth Brush.verticalGradient blending the hero into the dark feed background
+        // Light bottom-only gradient blending the hero edge into the feed background without darkening the video
         Box(
             Modifier.fillMaxSize().background(
                 Brush.verticalGradient(
-                    0f to Color.Black.copy(alpha = 0.10f),
-                    0.34f to Color.Black.copy(alpha = 0.26f),
-                    0.62f to Color.Black.copy(alpha = 0.62f),
-                    0.82f to scheme.surfaceContainerLowest.copy(alpha = 0.92f),
+                    0f to Color.Transparent,
+                    0.56f to Color.Transparent,
+                    0.78f to Color.Black.copy(alpha = 0.24f),
+                    0.92f to scheme.surfaceContainerLowest.copy(alpha = 0.76f),
                     1f to scheme.surfaceContainerLowest,
                 )
             )

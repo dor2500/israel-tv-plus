@@ -195,8 +195,11 @@ fun PlayerScreen(
     var sheet by remember { mutableStateOf<String?>(null) }
     var landscape by remember { mutableStateOf(false) }
     var tracks by remember { mutableStateOf(Tracks.EMPTY) }
+    var attempt by remember { mutableIntStateOf(0) }
+    val candidates = remember(current.id, current.url, current.fallbackUrls) { current.allCandidateUrls() }
+    var sourceIndex by remember(current.id, attempt) { mutableIntStateOf(0) }
 
-    DisposableEffect(player) {
+    DisposableEffect(player, candidates) {
         val listener = object : Player.Listener {
             override fun onPlaybackStateChanged(state: Int) {
                 player.volume = 1.0f
@@ -207,14 +210,25 @@ fun PlayerScreen(
                 onPlaying(isPlaying)
             }
             override fun onPlayerError(e: PlaybackException) {
-                error = describe(e)
-                buffering = false
+                if (sourceIndex + 1 < candidates.size) {
+                    buffering = true
+                    error = null
+                    sourceIndex += 1
+                } else {
+                    error = describe(e)
+                    buffering = false
+                }
             }
             override fun onTracksChanged(t: Tracks) { tracks = t }
         }
         player.addListener(listener)
         onDispose {
             player.removeListener(listener)
+        }
+    }
+
+    DisposableEffect(player) {
+        onDispose {
             player.release()
             onPlaying(false)
         }
@@ -225,20 +239,24 @@ fun PlayerScreen(
         touchTick++
     }
 
-    // every channel switch (and "נסו שוב"): the stream, full volume, play
-    var attempt by remember { mutableIntStateOf(0) }
-    LaunchedEffect(current.id, attempt) {
+    // every channel switch, automatic fallback step, or manual "נסו שוב": resolve stream, full volume, play
+    LaunchedEffect(current.id, attempt, sourceIndex) {
         error = null
         buffering = true
-        prefs.addRecent(current.id)
-        val url = runCatching { playableUrl(current) }.getOrElse {
+        if (sourceIndex == 0) prefs.addRecent(current.id)
+        val rawCandidate = candidates.getOrElse(sourceIndex) { current.url }
+        val url = runCatching { playableUrl(rawCandidate, current.auth) }.getOrElse {
+            if (sourceIndex + 1 < candidates.size) {
+                sourceIndex += 1
+                return@LaunchedEffect
+            }
             error = "לא התקבלה הרשאת צפייה מ-mako"
             buffering = false
             return@LaunchedEffect
         }
         val item = MediaItem.Builder().setUri(url)
         // every TV channel is HLS, also the ones whose address has no .m3u8 (Samsung TV Plus redirects)
-        if (current.url.contains(".m3u8", ignoreCase = true) || !current.isRadio) item.setMimeType(MimeTypes.APPLICATION_M3U8)
+        if (rawCandidate.contains(".m3u8", ignoreCase = true) || !current.isRadio) item.setMimeType(MimeTypes.APPLICATION_M3U8)
         player.setMediaItem(item.build())
         player.volume = 1.0f
         player.prepare()

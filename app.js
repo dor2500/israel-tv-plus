@@ -48,7 +48,7 @@
     retry: true, zap: 'category', upNext: false,
     remote: 'auto', keyRed: 'menu', keyGreen: 'aspect', keyYellow: 'fav', keyBlue: 'dub', longOk: 'menu', numWait: 1.2,
     saver: 2, kids: false, kidsPin: '', autoUpdate: true, liveUpdates: true, avatar: '1f60e',
-    lastId: '', lastCat: 'ALL', seenColors: false
+    lastId: '', lastCat: 'ALL', seenColors: false, googleEmail: ''
   };
   var S = loadSettings();
 
@@ -239,6 +239,7 @@
     setupClock();
     readDeviceInfo();
     resetSaver();
+    if (S.googleEmail) setTimeout(function () { cloudPull(false); }, 600);
     var resizeTimer = null;
     window.addEventListener('resize', function () {
       clearTimeout(resizeTimer);
@@ -511,6 +512,7 @@
       o.category = c.category || 'ערוצים';
       o.desc = c.desc || '';
       o.lang = c.lang || 'he';
+      o.backups = (c.backups && c.backups.length) ? c.backups : (c.fallbackUrls || []);
       return o;
     });
     if (el.countBadge) el.countBadge.textContent = state.all.length + ' ערוצים ותחנות' + (S.kids ? ' · מצב ילדים' : '');
@@ -737,6 +739,7 @@
       if (had !== state.cats.length && state.zone === 'rail') markFocus();
       updateHero(state.list[state.gridIdx]);
     }
+    cloudPush();
   }
   function addRecent(ch) {
     state.recents = [ch.id].concat(state.recents.filter(function (id) { return id !== ch.id; })).slice(0, MAX_RECENTS);
@@ -747,6 +750,106 @@
     saveSettings();
     var has = state.cats.some(function (c) { return c.id === 'RECENT'; });
     if (!has) buildCategories();
+    cloudPush();
+  }
+
+  // ================================================================== Google Account Cloud Sync (TV & Web)
+  var SYNC_BUCKET = 'https://kvdb.io/A6p8K9m2X4v7Q1w3Z5n8R2/itv_sync_';
+  function syncKeyFor(email) {
+    var clean = String(email || '').trim().toLowerCase();
+    if (!clean) return '';
+    // Deterministic key matching simple hex or SHA-256 prefix
+    var h1 = 0x811c9dc5, h2 = 0x01000193;
+    for (var i = 0; i < clean.length; i++) {
+      var c = clean.charCodeAt(i);
+      h1 ^= c; h1 = Math.imul(h1, 0x01000193) >>> 0;
+      h2 ^= (c * 31); h2 = Math.imul(h2, 0x85ebca6b) >>> 0;
+    }
+    if (window.crypto && window.crypto.subtle && window.TextEncoder) {
+      return state.syncHex || ('g_' + h1.toString(16) + h2.toString(16));
+    }
+    return 'g_' + h1.toString(16) + h2.toString(16);
+  }
+  function computeShaKey(email, cb) {
+    var clean = String(email || '').trim().toLowerCase();
+    if (!clean) { cb(''); return; }
+    if (window.crypto && window.crypto.subtle && window.TextEncoder) {
+      try {
+        window.crypto.subtle.digest('SHA-256', new TextEncoder().encode('israeltv-plus-sync-v1:' + clean)).then(function (buf) {
+          var arr = new Uint8Array(buf), hex = '';
+          for (var i = 0; i < 10; i++) hex += (arr[i] < 16 ? '0' : '') + arr[i].toString(16);
+          state.syncHex = hex;
+          cb(hex);
+        }, function () { cb(syncKeyFor(clean)); });
+        return;
+      } catch (e) {}
+    }
+    cb(syncKeyFor(clean));
+  }
+  function cloudPush(done) {
+    if (!S.googleEmail) { if (done) done(false); return; }
+    computeShaKey(S.googleEmail, function (key) {
+      if (!key) { if (done) done(false); return; }
+      var payload = {
+        updatedAt: Date.now(),
+        email: S.googleEmail,
+        displayName: S.googleEmail.split('@')[0],
+        activeProfileId: 'p1',
+        launchSound: true,
+        profiles: [{
+          id: 'p1',
+          name: S.googleEmail.split('@')[0],
+          avatar: S.avatar || '1f9d1-1f680',
+          theme: { key: 'system', seed: 4282549748, style: 'TonalSpot', wallpaper: true, dark: S.theme !== 'light' },
+          favorites: state.favorites || [],
+          recents: state.recents || []
+        }]
+      };
+      try {
+        var x = new XMLHttpRequest();
+        x.open('PUT', SYNC_BUCKET + key, true);
+        x.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
+        x.onload = function () { if (done) done(x.status >= 200 && x.status < 300); };
+        x.onerror = function () { if (done) done(false); };
+        x.send(JSON.stringify(payload));
+      } catch (e) { if (done) done(false); }
+    });
+  }
+  function cloudPull(manual) {
+    if (!S.googleEmail) { if (manual) toast('הזינו כתובת Gmail תחילה'); return; }
+    if (manual) toast('☁️ מסנכרן מול חשבון Google...');
+    computeShaKey(S.googleEmail, function (key) {
+      if (!key) return;
+      xhrJson(SYNC_BUCKET + key + '?t=' + Date.now(), 10000, function (data) {
+        if (data && data.profiles && data.profiles.length) {
+          var p0 = data.profiles[0];
+          if (p0.favorites && p0.favorites.length) {
+            p0.favorites.forEach(function (fid) { if (state.favorites.indexOf(fid) === -1) state.favorites.push(fid); });
+            lsSet('israel_tv_favorites', state.favorites);
+          }
+          if (p0.recents && p0.recents.length) {
+            p0.recents.forEach(function (rid) { if (state.recents.indexOf(rid) === -1) state.recents.push(rid); });
+            state.recents = state.recents.slice(0, MAX_RECENTS);
+            lsSet('israel_tv_recents', state.recents);
+          }
+          homeDirty = true;
+          if (atv.built) atv.dirty = true;
+          buildCategories();
+          filterList();
+        }
+        cloudPush(function () {
+          state.lastSync = Date.now();
+          if (manual) toast('✅ סונכרן בהצלחה עם חשבון Google (' + S.googleEmail + ')');
+          refreshSettingsIfOpen();
+        });
+      }, function () {
+        cloudPush(function (ok) {
+          state.lastSync = Date.now();
+          if (manual) toast(ok ? '✅ גובה לענן Google (' + S.googleEmail + ')' : '⚠️ נשמר מקומית – יסונכרן בחיבור הבא');
+          refreshSettingsIfOpen();
+        });
+      });
+    });
   }
   // ================================================================== phone: tabs, home (hero pager + shelves), navigation bar
   var TABS = ['home', 'explore', 'library', 'settings'];
@@ -2681,6 +2784,14 @@
       ] },
       { id: 'saver', tvOnly: true, ico: '🌙', name: 'שומר מסך', desc: 'הגנה על מסכי OLED כשאין צפייה', rows: [
         choice('saver', 'הפעלה אחרי', SAVERS, 'רק במדריך או כשהשידור מושהה – לא בזמן צפייה')
+      ] },
+      { id: 'sync', ico: '☁️', name: 'סנכרון ו-Google', desc: 'גיבוי וסנכרון מועדפים והיסטוריית צפייה עם חשבון Google בין הטלפון, הטלוויזיה והדפדפן', rows: [
+        info('מצב חיבור', function () { return S.googleEmail ? '✅ מחובר: ' + S.googleEmail : 'לא מחובר'; }),
+        { type: 'text', label: 'חשבון Google (Gmail)', help: 'הזינו את אותה כתובת Gmail כמו באפליקציית האנדרואיד כדי לסנכרן מועדפים וערוצים אחרונים',
+          placeholder: 'user@gmail.com', get: function () { return S.googleEmail || ''; },
+          set: function (v) { var clean = String(v || '').trim().toLowerCase(); if (clean && clean.indexOf('@') === -1) clean += '@gmail.com'; setSetting('googleEmail', clean); if (clean) cloudPull(true); } },
+        action('🔄 סנכרן עכשיו מול הענן', function () { cloudPull(true); }),
+        action('🚪 התנתקות מחשבון Google', function () { setSetting('googleEmail', ''); state.syncHex = ''; toast('חשבון Google נותק'); renderSettings(); })
       ] },
       { id: 'updates', ico: '⬆️', name: 'עדכונים', desc: 'עדכונים מגיעים ישירות מ-GitHub', rows: [
         { type: 'card', state: updateCardState, html: updateCardHtml, act: updateCardAction },

@@ -170,23 +170,23 @@ fun AppHeader(
     }
 
     Box(modifier.fillMaxWidth().zIndex(10f)) {
-        // Top Gradient-Blur: smoothly fades out into the content below without harsh horizontal lines
+        // Top Gradient-Blur: ultra-transparent clear glass that keeps scrolling content visible even at the very top edge
         Box(
             Modifier
                 .matchParentSize()
-                .graphicsLayer { alpha = (0.32f + 0.68f * blurAlpha).coerceIn(0f, 1f) }
+                .graphicsLayer { alpha = (0.55f + 0.45f * blurAlpha).coerceIn(0f, 1f) }
                 .frostedGlass(
                     shape = RectangleShape,
-                    tint = Color(0xFF0B0C14).copy(alpha = 0.78f * blurAlpha),
-                    blur = 40.dp,
+                    tint = Color.Black.copy(alpha = 0.08f + 0.06f * blurAlpha),
+                    blur = 42.dp,
                     border = false,
                     mask = topGradientMask,
                 )
                 .background(
                     Brush.verticalGradient(
-                        0f to Color(0xFF07080E).copy(alpha = 0.68f + 0.24f * blurAlpha),
-                        0.62f to Color(0xFF07080E).copy(alpha = 0.22f + 0.44f * blurAlpha),
-                        0.86f to Color(0xFF07080E).copy(alpha = 0.18f * blurAlpha),
+                        0f to Color.Black.copy(alpha = 0.14f + 0.08f * blurAlpha),
+                        0.60f to Color.Black.copy(alpha = 0.06f + 0.05f * blurAlpha),
+                        0.86f to Color.Black.copy(alpha = 0.03f * blurAlpha),
                         1f to Color.Transparent,
                     )
                 )
@@ -223,7 +223,7 @@ fun AppHeader(
                 // Centered App Logo ("ישראל TV+")
                 BrandWordmark(Modifier.align(Alignment.Center))
 
-                // Settings: trailing edge, minimal glass circle containing ONLY a bold gear icon
+                // Settings: trailing edge, minimal ultra-clear glass circle containing ONLY a bold gear icon
                 val settingsInteraction = remember { MutableInteractionSource() }
                 Box(
                     Modifier
@@ -231,7 +231,7 @@ fun AppHeader(
                         .padding(end = 20.dp)
                         .size(42.dp)
                         .pressPhysics(settingsInteraction, tilt = false, glowShape = CircleShape)
-                        .frostedGlass(CircleShape, Color(0xFF16161E).copy(alpha = 0.65f), blur = 36.dp)
+                        .frostedGlass(CircleShape, Color.Black.copy(alpha = 0.16f), blur = 40.dp)
                         .clickable(settingsInteraction, null) {
                             haptic.performHapticFeedback(HapticFeedbackType.ContextClick)
                             onSettings()
@@ -278,7 +278,7 @@ fun FloatingTabBar(
     val scheme = MaterialTheme.colorScheme
     val haptic = LocalHapticFeedback.current
     val tabs = listOf(Tab.Home, Tab.Channels, Tab.Mine)
-    val glass = Color(0xFF14141E).copy(alpha = 0.72f)
+    val glass = Color.Black.copy(alpha = 0.16f)
     val bottomGradientMask = remember {
         Brush.verticalGradient(
             0f to Color.Transparent,
@@ -289,7 +289,7 @@ fun FloatingTabBar(
     }
 
     Box(modifier.fillMaxWidth().zIndex(10f)) {
-        // Bottom Gradient-Blur: smoothly fades the blur and dark overlay up from the navigation bar into the content
+        // Bottom Gradient-Blur: ultra-transparent clear glass that keeps scrolling content visible right to the bottom edge
         Box(
             Modifier
                 .align(Alignment.BottomCenter)
@@ -297,17 +297,17 @@ fun FloatingTabBar(
                 .height(136.dp)
                 .frostedGlass(
                     shape = RectangleShape,
-                    tint = Color(0xFF090A12).copy(alpha = 0.68f),
-                    blur = 36.dp,
+                    tint = Color.Black.copy(alpha = 0.10f),
+                    blur = 42.dp,
                     border = false,
                     mask = bottomGradientMask,
                 )
                 .background(
                     Brush.verticalGradient(
                         0f to Color.Transparent,
-                        0.42f to Color(0xFF07080E).copy(alpha = 0.46f),
-                        0.76f to Color(0xFF07080E).copy(alpha = 0.78f),
-                        1f to Color(0xFF07080E).copy(alpha = 0.94f),
+                        0.45f to Color.Black.copy(alpha = 0.06f),
+                        0.78f to Color.Black.copy(alpha = 0.12f),
+                        1f to Color.Black.copy(alpha = 0.18f),
                     )
                 )
         )

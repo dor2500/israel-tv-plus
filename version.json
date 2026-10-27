@@ -1,51 +1,51 @@
 {
-  "version": "4.5.5",
-  "code": 202610271427,
-  "app": 555,
+  "version": "4.5.6",
+  "code": 202610271511,
+  "app": 556,
   "shell": 3,
   "date": "2026-10-27",
   "notes": [
-    "החזרת ערוצי צ'רלטון ספורט 1, 2, 3, 4 ו-6 הישראליים והסרת ערוצי הספורט המזויפים: הוחזרו השידורים הישראליים המקוריים של ספורט 1 HD, ספורט 2 HD, ספורט 3 HD, ספורט 4 FHD ו-ספורט 6 HD (כולל מקורות גיבוי כפולים לכל ערוץ), ונמחקו הזרמים האוקראיניים שהיו משובצים תחת ספורט 1–5.",
-    "הרחבת חבילת ערוצי הילדים והנוער הישראליים ל-26 ערוצי טלוויזיה בעברית: נוספו ואומתו ערוץ הופ! ילדים HD, ערוץ הופ! ילדות ישראלית HD, ערוץ הופ! פלא HD, ערוץ לולי לפעוטות בעברית HD, ערוץ דיסני ישראל HD, ערוץ דיסני ג'וניור ישראל HD, ערוץ ניקלודיאון ישראל HD, ערוץ ניק ג'וניור ישראל HD, ערוץ טין ניק ישראל HD, ערוץ זום ZOOM HD, ערוץ ג'וניור HD, ערוץ הילדים HD, ערוץ לוגי HD, ערוץ יויו HD, כאן חינוכית 23 FHD, ערוץ בייבי ישראל HD, yes קולנוע ילדים FHD, HOT סינמה פמילי HD, ערוץ WIZ! HD, ערוץ HOT באזז HD, ערוץ FOMO HD, ערוץ ילדותי HD, ערוץ שירי ילדותי HD, ערוץ A+ ילדים HD, ערוץ הכוכבים HD ו-ערוץ 16 ילדים ונוער HD.",
-    "אימות 1:1 של כל 339 הערוצים מול תמונת השידור החיה והוספת ערוצי HOT, yes, ויוה ודוקו ישראליים: הוחלפו כל הערוצים הרוסיים השגויים בערוצים הישראליים האמיתיים עם כתוביות ודיבוב בעברית – HOT 3 FHD, HOT HBO HD, HOT סינמה 1–5, HOT קולנוע ישראלי, HOT קולנוע רומנטי, HOT דרמה, HOT זון, HOT קומדי, HOT בידור, HOT ריאל, HOT 8, HOT מיינד, yes קולנוע ישראלי, yes קולנוע אקשן/דרמה/קומדיה FHD, yes TV אקשן/דרמה/קומדיה HD, yes דוקו HD, ויוה טלנובלות, ויוה איסטנבול, ויוה פרימיום, הערוץ הים תיכוני וים תיכוני+, ערוצי הדרמות הטורקיות+/2/3 FHD, הדרמות הספרדיות 1/2, הדרמות ההודיות 1/2, בוליווד HD/קלאסי/בולישואו, נשיונל ג'יאוגרפיק ו-Nat Geo Wild FHD, דיסקברי FHD, ההיסטוריה FHD, בית+, החיים הטובים, הבריאות, הטיולים, ערוץ האוכל, E! ישראל ו-ערוץ אגו.",
-    "תיקון ושדרוג מקיף לכל 339 אייקוני הערוצים (שקופים לחלוטין וללא היפוך אותיות): שולבו הלוגואים הרשמיים והשקופים של הערוצים הישראליים לצד רינדור מחדש של כל האייקונים העבריים עם תמיכת RTL מלאה ורקע שקוף לחלוטין על גבי כרטיסי הזכוכית הכהים."
+    "שקיפות זכוכית אולטרה-בהירה (Ultra-Transparent Glassmorphism): הוסר הרקע הכהה האטום (backgroundColor) מרכיב הטשטוש (HazeBlurStyle) ב-Header העליון, בסרגל הניווט התחתון ובמתג רק ישראלי, והופחתה אטימות הצבע השחור סביב alpha = 0.10f תוך שמירה על רדיוס טשטוש גבוה (40.dp–44.dp), כך שהתוכן הנגלל מתחת נשאר גלוי וזוהר גם בקצוות המסך; בנוסף הוסרו שכבות ההחשכה הכפולות מעל וידאו ה-Hero במסך הבית.",
+    "תיקון כל הערוצים שלא עבדו ומעבר אוטומטי בין שרתי גיבוי בנגן (ללא מחיקת אף ערוץ): תוקנו מקורות השידור הראשיים של קשת 12 FHD, i24NEWS עברית / אנגלית / צרפתית / ערבית, ערוץ 24 HD, ערוץ הכנסת 99 HD, ערוץ הילדים HD, ערוץ 16, ספורט 5 סטארס FHD, ספורט 5 מקס FHD, ONE 1 FHD, ONE 2 FHD, ויוה טלנובלות, ויוה איסטנבול, ערוץ הדרמה / הקומדיה / האוכל / המוזיקה של קשת ו-כאן רשת ב', ונוסף מנגנון Failover אוטומטי מלא ב-ExoPlayer באנדרואיד ובנגן הטלוויזיה/דפדפן העובר אוטומטית בין כל כתובות הגיבוי (fallbackUrls) ושולף כרטיס הרשאה מ-mako לכל שידור של קשת.",
+    "הוספת 11 ערוצים ישראליים חדשים בשידור חי (350 ערוצים ותחנות בסך הכל): נוספו ואומתו האח הגדול LIVE 24/7 HD (אפיק 26), רשת 13 קומדיה ובידור HD, וואלה!+ yes תרבות ובידור HD, ערוץ הלא TV HD (Hala TV 30), כאן 11 – כתוביות ונגישות HD, רשת 13 – כתוביות ונגישות HD, ערוץ ZEE TV ישראל HD, ערוץ GTV דרמות וקולנוע HD, ערוץ דוז'ד ישראל HD (TV Rain), קבלה לעם International HD ו-קבלה לעם Español HD עם אייקונים שקופים ומותאמים.",
+    "התחברות עם חשבון Google לסנכרון וגיבוי בענן: נוספה מערכת התחברות עם חשבון Google במסך ההגדרות ובמסך הפרופילים (\"מי צופה?\") באנדרואיד, בטלוויזיות חכמות ובדפדפן, המסנכרנת אוטומטית את הפרופילים, הערוצים המועדפים, היסטוריית הצפייה וערכות הצבעים בין כל המכשירים."
   ],
   "native": {
     "android": {
-      "version": "4.5.5",
-      "app": 555,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.5/IsraelTVPlus-android.apk"
+      "version": "4.5.6",
+      "app": 556,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.6/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "4.5.5",
-      "app": 555,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.5/IsraelTVPlus-windows-setup.exe"
+      "version": "4.5.6",
+      "app": 556,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.6/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "4.5.5",
-      "app": 555,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.5/com.israeltv.plus_all.ipk",
+      "version": "4.5.6",
+      "app": 556,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.6/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "4.5.5",
-      "app": 555,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.5/IsraelTVPlus-tizen-project.zip"
+      "version": "4.5.6",
+      "app": 556,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.6/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "4.5.5",
-      "app": 555,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.5/IsraelTVPlus-macos-arm64.zip"
+      "version": "4.5.6",
+      "app": 556,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.6/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "4.5.5",
-      "app": 555,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.5/IsraelTVPlus-linux-x64.zip"
+      "version": "4.5.6",
+      "app": 556,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.6/IsraelTVPlus-linux-x64.zip"
     },
     "wear": {
-      "version": "4.5.5",
-      "app": 1000455,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.5/IsraelTVPlus-wearos.apk"
+      "version": "4.5.6",
+      "app": 1000456,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.6/IsraelTVPlus-wearos.apk"
     }
   }
 }

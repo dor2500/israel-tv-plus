@@ -27,6 +27,7 @@ data class Channel(
     val category: String = "",
     val categoryEn: String = "",
     val url: String,
+    val fallbackUrls: List<String> = emptyList(),
     val logo: String = "",
     val badge: String = "",
     val desc: String = "",
@@ -38,17 +39,23 @@ data class Channel(
     val auth: String = "",
 ) {
     val isRadio: Boolean get() = kind == "radio"
+
+    /** Ordered list of all stream URLs (primary + fallbacks) to try automatically on playback error. */
+    fun allCandidateUrls(): List<String> =
+        (listOf(url) + fallbackUrls).map { it.trim() }.filter { it.isNotEmpty() }.distinct()
 }
 
 private const val MAKO_ENTITLEMENT = "https://mass.mako.co.il/ClicksStatistics/entitlementsServicesV2.jsp"
 
 /**
- * The URL to hand to the player. Keshet 12 / 24 stream from mako's CDN (the broadcaster, not a re-stream) and need a
- * short-lived ticket from mako's entitlement service, fetched right before playing; every other channel plays as is.
+ * Resolves a single candidate stream URL. Automatically fetches a Mako entitlement ticket whenever the URL is hosted
+ * on mako-streaming.akamaized.net (or when auth == "mako" and the URL is a Mako stream); every other stream plays as is.
  */
-suspend fun playableUrl(ch: Channel): String = withContext(Dispatchers.IO) {
-    if (ch.auth != "mako") return@withContext ch.url
-    val path = java.net.URI(ch.url).let { it.rawPath + (it.rawQuery?.let { q -> "?$q" } ?: "") }
+suspend fun playableUrl(rawUrl: String, auth: String = ""): String = withContext(Dispatchers.IO) {
+    val needsMakoTicket = rawUrl.contains("mako-streaming.akamaized.net", ignoreCase = true) ||
+        (auth == "mako" && rawUrl.contains("mako", ignoreCase = true))
+    if (!needsMakoTicket) return@withContext rawUrl
+    val path = java.net.URI(rawUrl).let { it.rawPath + (it.rawQuery?.let { q -> "?$q" } ?: "") }
     val req = java.net.URL(MAKO_ENTITLEMENT + "?et=ngt&rv=AKAMAI&lp=" + java.net.URLEncoder.encode(path, "UTF-8"))
     val text = (req.openConnection() as java.net.HttpURLConnection).run {
         connectTimeout = 10_000
@@ -58,8 +65,10 @@ suspend fun playableUrl(ch: Channel): String = withContext(Dispatchers.IO) {
     }
     val ticket = Regex("\"ticket\"\\s*:\\s*\"([^\"]+)\"").find(text)?.groupValues?.get(1)
         ?: error("no mako ticket")
-    ch.url + (if ('?' in ch.url) "&" else "?") + java.net.URLDecoder.decode(ticket, "UTF-8")
+    rawUrl + (if ('?' in rawUrl) "&" else "?") + java.net.URLDecoder.decode(ticket, "UTF-8")
 }
+
+suspend fun playableUrl(ch: Channel): String = playableUrl(ch.url, ch.auth)
 
 @Immutable
 data class Category(val key: String, val name: String, val channels: List<Channel>)

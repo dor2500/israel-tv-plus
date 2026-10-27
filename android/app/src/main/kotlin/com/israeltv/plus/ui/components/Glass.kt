@@ -53,13 +53,13 @@ import dev.chrisbanes.haze.blur.hazeBlur
 val LocalHaze = staticCompositionLocalOf<HazeState?> { null }
 
 /**
- * The glass of the bars and sheets: deep ink (#14141C) at 62% with the palette's surface tint at 18% over it
- * (a light version in the light theme), on top of the real backdrop blur.
+ * The glass of the bars and sheets: ultra-transparent clear glass (`alpha = 0.12f`) with subtle surface tint
+ * on top of the real high-radius backdrop blur so scrolling content remains visibly glowing underneath.
  */
 @Composable
 fun glassTint(): Color {
-    val tint = MaterialTheme.colorScheme.surfaceTint.copy(alpha = 0.18f)
-    return tint.compositeOver(if (LocalDarkTheme.current) Color(0xFF14141C).copy(alpha = 0.62f) else Color(0xFFF7F7FA).copy(alpha = 0.66f))
+    val tint = MaterialTheme.colorScheme.surfaceTint.copy(alpha = 0.08f)
+    return tint.compositeOver(if (LocalDarkTheme.current) Color.Black.copy(alpha = 0.14f) else Color.White.copy(alpha = 0.24f))
 }
 
 /** Apple TV specular edge: a 1 dp stroke that is bright on top and fades out downwards. */
@@ -73,21 +73,20 @@ fun Modifier.specularBorder(shape: Shape, width: Dp = 1.dp, alpha: Float = 0.28f
 fun Modifier.frostedGlass(
     shape: Shape,
     tint: Color,
-    blur: Dp = 25.dp,
+    blur: Dp = 36.dp,
     border: Boolean = true,
     mask: Brush? = null,
 ): Modifier = composed {
     val haze = LocalHaze.current
-    val base = MaterialTheme.colorScheme.surfaceContainerLowest
     val clipped = clip(shape)
     val glass = if (haze != null) {
         clipped.hazeBlur(
             HazeInput.Sources(haze),
             HazeBlurStyle {
                 blurRadius(blur)
-                backgroundColor(base)
+                backgroundColor(Color.Transparent)
                 colorEffects(listOf(HazeColorEffect.tint(tint)))
-                noiseFactor(0.05f)
+                noiseFactor(0.03f)
                 if (mask != null) mask(mask)
             },
         )
