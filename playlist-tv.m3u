@@ -57,209 +57,287 @@ https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/i24_fr/live.livx/p
 https://hlspackager.akamaized.net/live/DB/i24_ARABIC/HLS/i24_ARABIC.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="i24NEWS English World HD" tvg-chno="32" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/i24news_en.png" group-title="ערוצי ישראל",i24NEWS English World HD
 https://hlspackager.akamaized.net/live/DB/i24_ENGLISH/HLS/i24_ENGLISH.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ערוץ הילדים HD (המקום האמיתי)" tvg-chno="33" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/arutz_hayeladim.png" group-title="ילדים ונוער (בעברית)",ערוץ הילדים HD (המקום האמיתי)
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ רוקדים עם כוכבים 24/7 HD" tvg-chno="33" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/dancing_stars_il.png" group-title="ערוצי ישראל",ערוץ רוקדים עם כוכבים 24/7 HD
+https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/dancing_popup/live.livx/playlist.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="FreeTV לייף סטייל HD" tvg-chno="34" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/freetv_lifestyle_il.png" group-title="ערוצי ישראל",FreeTV לייף סטייל HD
+https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/imagin_lifestyle/live.livx/playlist.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="FreeTV דוקו ישראלי HD" tvg-chno="35" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/freetv_doco_il.png" group-title="ערוצי ישראל",FreeTV דוקו ישראלי HD
+https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/imagin_doco/live.livx/playlist.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="FreeTV אוכל ובישול HD" tvg-chno="36" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/freetv_cooking_il.png" group-title="ערוצי ישראל",FreeTV אוכל ובישול HD
+https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/imagin_cooking/live.livx/playlist.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ Beautyz (אופנה ויופי) HD" tvg-chno="37" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/beautyz_il.png" group-title="ערוצי ישראל",ערוץ Beautyz (אופנה ויופי) HD
+https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/beautyz/live.livx/playlist.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ הקריוקי הישראלי HD" tvg-chno="38" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/karaoke_il.png" group-title="ערוצי ישראל",ערוץ הקריוקי הישראלי HD
+https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/karaoke/live.livx/playlist.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ המוזיקה הישראלי 24/7 HD" tvg-chno="39" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/music_channel_il.png" group-title="ערוצי ישראל",ערוץ המוזיקה הישראלי 24/7 HD
+https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/music_channel/live.livx/playlist.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="וואלה!+ חדשות – שידור חי HD" tvg-chno="40" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/walla_news_il.png" group-title="ערוצי ישראל",וואלה!+ חדשות – שידור חי HD
+https://live.wcdn.co.il/news/prog_index.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="כאן רשת ב – אולפן וידאו חי HD" tvg-chno="41" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/kan_bet.png" group-title="ערוצי ישראל",כאן רשת ב – אולפן וידאו חי HD
+https://reshetbetvideo.media.kan.org.il/hls/live/2044082/2044082/playlist.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="הכותל המערבי – שידור חי 24/7" tvg-chno="42" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/kotel_live_il.png" group-title="ערוצי ישראל",הכותל המערבי – שידור חי 24/7
+https://cdn1.cast-tv.com/23595/Live_Kotel3_ABR/playlist.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="קשת 12 – כתוביות ונגישות HD" tvg-chno="43" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/keshet12.png" group-title="ערוצי ישראל",קשת 12 – כתוביות ונגישות HD
+https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/keshet_12_subs/live.livx/playlist.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="עכשיו 14 – כתוביות ונגישות HD" tvg-chno="44" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/now14.png" group-title="ערוצי ישראל",עכשיו 14 – כתוביות ונגישות HD
+https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/ch14_subs/live.livx/playlist.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ הילדים HD (המקום האמיתי)" tvg-chno="45" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/arutz_hayeladim.png" group-title="ילדים ונוער (בעברית)",ערוץ הילדים HD (המקום האמיתי)
 https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kids_channel/live.livx/playlist.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ערוץ לוגי HD (Logi)" tvg-chno="34" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/logi_tv.png" group-title="ילדים ונוער (בעברית)",ערוץ לוגי HD (Logi)
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ לוגי HD (Logi)" tvg-chno="46" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/logi_tv.png" group-title="ילדים ונוער (בעברית)",ערוץ לוגי HD (Logi)
 https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/logi/live.livx/playlist.m3u8
-#EXTINF:-1 tvg-id="KanEducational.il" tvg-name="כאן חינוכית 23 HD" tvg-chno="35" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/kan_hinuchit.png" group-title="ילדים ונוער (בעברית)",כאן חינוכית 23 HD
+#EXTINF:-1 tvg-id="KanEducational.il" tvg-name="כאן חינוכית 23 HD" tvg-chno="47" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/kan_hinuchit.png" group-title="ילדים ונוער (בעברית)",כאן חינוכית 23 HD
 https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan_edu/live.livx/playlist.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ערוץ הופ! ילדים בעברית HD" tvg-chno="36" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hop.png" group-title="ילדים ונוער (בעברית)",ערוץ הופ! ילדים בעברית HD
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ הופ! ילדים בעברית HD" tvg-chno="48" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hop.png" group-title="ילדים ונוער (בעברית)",ערוץ הופ! ילדים בעברית HD
 http://stream.mcquack.net/44/index.m3u8
-#EXTINF:-1 tvg-id="Zoom.il" tvg-name="ZOOM ילדים ונוער" tvg-chno="37" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/zoom_kids_israel.png" group-title="ילדים ונוער (בעברית)",ZOOM ילדים ונוער
+#EXTINF:-1 tvg-id="Zoom.il" tvg-name="ZOOM ילדים ונוער" tvg-chno="49" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/zoom_kids_israel.png" group-title="ילדים ונוער (בעברית)",ZOOM ילדים ונוער
 http://stream.mcquack.net/377/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ערוץ יויו HD (YoYo)" tvg-chno="38" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/yoyo_tv.png" group-title="ילדים ונוער (בעברית)",ערוץ יויו HD (YoYo)
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ יויו HD (YoYo)" tvg-chno="50" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/yoyo_tv.png" group-title="ילדים ונוער (בעברית)",ערוץ יויו HD (YoYo)
 https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/yoyo/live.livx/playlist.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ערוץ ג'וניור HD (Junior)" tvg-chno="39" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/junior.png" group-title="ילדים ונוער (בעברית)",ערוץ ג'וניור HD (Junior)
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ ג'וניור HD (Junior)" tvg-chno="51" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/junior.png" group-title="ילדים ונוער (בעברית)",ערוץ ג'וניור HD (Junior)
 https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/junior/live.livx/playlist.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ערוץ FOMO HD (נוער ורשת)" tvg-chno="40" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/fomo_tv.png" group-title="ילדים ונוער (בעברית)",ערוץ FOMO HD (נוער ורשת)
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ FOMO HD (נוער ורשת)" tvg-chno="52" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/fomo_tv.png" group-title="ילדים ונוער (בעברית)",ערוץ FOMO HD (נוער ורשת)
 https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/fomo/live.livx/playlist.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ערוץ ניקלודיאון (Nickelodeon)" tvg-chno="41" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/nickelodeon_he.png" group-title="ילדים ונוער (בעברית)",ערוץ ניקלודיאון (Nickelodeon)
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ ניקלודיאון (Nickelodeon)" tvg-chno="53" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/nickelodeon_he.png" group-title="ילדים ונוער (בעברית)",ערוץ ניקלודיאון (Nickelodeon)
 http://stream.mcquack.net/443/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ערוץ 16 ילדים ונוער HD" tvg-chno="42" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/channel16.png" group-title="ילדים ונוער (בעברית)",ערוץ 16 ילדים ונוער HD
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ 16 ילדים ונוער HD" tvg-chno="54" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/channel16.png" group-title="ילדים ונוער (בעברית)",ערוץ 16 ילדים ונוער HD
 https://ch16israel-cdn.encoders.immergo.tv/1/streamPlaylist.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="כאן חינוכית 23 HD (שידור ישיר 2)" tvg-chno="43" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/kan23_mcquack.png" group-title="ילדים ונוער (בעברית)",כאן חינוכית 23 HD (שידור ישיר 2)
+#EXTINF:-1 tvg-id="" tvg-name="כאן חינוכית 23 HD (שידור ישיר 2)" tvg-chno="55" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/kan23_mcquack.png" group-title="ילדים ונוער (בעברית)",כאן חינוכית 23 HD (שידור ישיר 2)
 http://stream.mcquack.net/378/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ערוץ ויוה HD (Viva טלנובלות)" tvg-chno="47" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/viva_israel.png" group-title="סרטים וסדרות",ערוץ ויוה HD (Viva טלנובלות)
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ בייבי ישראל HD (BabyTV)" tvg-chno="59" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/baby_tv_he.png" group-title="ילדים ונוער (בעברית)",ערוץ בייבי ישראל HD (BabyTV)
+https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/baby_new/live.livx/playlist.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ ילדותי HD (Yalduti)" tvg-chno="60" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/yalduti_tv.png" group-title="ילדים ונוער (בעברית)",ערוץ ילדותי HD (Yalduti)
+https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/yalduti/live.livx/playlist.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ שירי ילדותי HD" tvg-chno="61" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/yalduti_songs_tv.png" group-title="ילדים ונוער (בעברית)",ערוץ שירי ילדותי HD
+https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/yalduti_songs/live.livx/playlist.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ הופ! פלא HD (Hop Pele)" tvg-chno="62" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hop_pele_tv.png" group-title="ילדים ונוער (בעברית)",ערוץ הופ! פלא HD (Hop Pele)
+https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/hop_pele/live.livx/playlist.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ A+ ילדים HD (A Plus)" tvg-chno="63" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/a_plus_kids_il.png" group-title="ילדים ונוער (בעברית)",ערוץ A+ ילדים HD (A Plus)
+https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/a_plus/live.livx/playlist.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ הכוכבים לילדים ונוער HD" tvg-chno="64" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/stars_kids_il.png" group-title="ילדים ונוער (בעברית)",ערוץ הכוכבים לילדים ונוער HD
+https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/starz/live.livx/playlist.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ ויוה HD (Viva טלנובלות)" tvg-chno="65" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/viva_israel.png" group-title="סרטים וסדרות",ערוץ ויוה HD (Viva טלנובלות)
 https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/viva/live.livx/playlist.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ערוץ ויוה פלוס HD (Viva Plus)" tvg-chno="48" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/viva_plus_il.png" group-title="סרטים וסדרות",ערוץ ויוה פלוס HD (Viva Plus)
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ ויוה פלוס HD (Viva Plus)" tvg-chno="66" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/viva_plus_il.png" group-title="סרטים וסדרות",ערוץ ויוה פלוס HD (Viva Plus)
 https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/viva_plus/live.livx/playlist.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ערוץ ויוה פרימיום HD (Viva Premium)" tvg-chno="49" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/viva_israel.png" group-title="סרטים וסדרות",ערוץ ויוה פרימיום HD (Viva Premium)
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ ויוה פרימיום HD (Viva Premium)" tvg-chno="67" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/viva_israel.png" group-title="סרטים וסדרות",ערוץ ויוה פרימיום HD (Viva Premium)
 http://stream.mcquack.net/43/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="סברי מרנן 24/7 – קשת / FreeTV" tvg-chno="51" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/keshet12.png" group-title="סרטים וסדרות",סברי מרנן 24/7 – קשת / FreeTV
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ ארץ נהדרת 24/7" tvg-chno="68" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/eretz_nehederet.png" group-title="סרטים וסדרות",ערוץ ארץ נהדרת 24/7
+https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/erez_nehederet/live.livx/playlist.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="סברי מרנן 24/7 – קשת / FreeTV" tvg-chno="69" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/keshet12.png" group-title="סרטים וסדרות",סברי מרנן 24/7 – קשת / FreeTV
 https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/savri/live.livx/playlist.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="yes קולנוע ישראלי HD" tvg-chno="54" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/yes_israeli.png" group-title="סרטים וסדרות",yes קולנוע ישראלי HD
+#EXTINF:-1 tvg-id="" tvg-name="yes קולנוע ישראלי HD" tvg-chno="72" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/yes_israeli.png" group-title="סרטים וסדרות",yes קולנוע ישראלי HD
 http://stream.mcquack.net/46/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="HOT סינמה 1 HD" tvg-chno="55" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hot_cinema_1.png" group-title="סרטים וסדרות",HOT סינמה 1 HD
+#EXTINF:-1 tvg-id="" tvg-name="HOT סינמה 1 HD" tvg-chno="73" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hot_cinema_1.png" group-title="סרטים וסדרות",HOT סינמה 1 HD
 http://stream.mcquack.net/200/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="HOT סינמה 2 HD" tvg-chno="56" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hot_cinema_2.png" group-title="סרטים וסדרות",HOT סינמה 2 HD
+#EXTINF:-1 tvg-id="" tvg-name="HOT סינמה 2 HD" tvg-chno="74" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hot_cinema_2.png" group-title="סרטים וסדרות",HOT סינמה 2 HD
 http://stream.mcquack.net/202/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="HOT סינמה 3 HD" tvg-chno="57" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hot_cinema_3.png" group-title="סרטים וסדרות",HOT סינמה 3 HD
+#EXTINF:-1 tvg-id="" tvg-name="HOT סינמה 3 HD" tvg-chno="75" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hot_cinema_3.png" group-title="סרטים וסדרות",HOT סינמה 3 HD
 http://stream.mcquack.net/421/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="HOT דרמה HD" tvg-chno="58" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hot_drama.png" group-title="סרטים וסדרות",HOT דרמה HD
+#EXTINF:-1 tvg-id="" tvg-name="HOT דרמה HD" tvg-chno="76" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hot_drama.png" group-title="סרטים וסדרות",HOT דרמה HD
 http://stream.mcquack.net/381/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="HOT זון HD" tvg-chno="59" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hot_zone.png" group-title="סרטים וסדרות",HOT זון HD
+#EXTINF:-1 tvg-id="" tvg-name="HOT זון HD" tvg-chno="77" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hot_zone.png" group-title="סרטים וסדרות",HOT זון HD
 http://stream.mcquack.net/379/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="HOT אקשן ומתח HD" tvg-chno="60" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hot_action.png" group-title="סרטים וסדרות",HOT אקשן ומתח HD
+#EXTINF:-1 tvg-id="" tvg-name="HOT אקשן ומתח HD" tvg-chno="78" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hot_action.png" group-title="סרטים וסדרות",HOT אקשן ומתח HD
 http://stream.mcquack.net/100/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="HOT קומדי HD" tvg-chno="61" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hot_comedy.png" group-title="סרטים וסדרות",HOT קומדי HD
+#EXTINF:-1 tvg-id="" tvg-name="HOT קומדי HD" tvg-chno="79" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hot_comedy.png" group-title="סרטים וסדרות",HOT קומדי HD
 https://d15ds134q59udk.cloudfront.net/out/v1/fbba879221d045598540ee783b140fe2/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="HOT פאן HD" tvg-chno="62" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/hot_fun.png" group-title="סרטים וסדרות",HOT פאן HD
+#EXTINF:-1 tvg-id="" tvg-name="HOT פאן HD" tvg-chno="80" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/hot_fun.png" group-title="סרטים וסדרות",HOT פאן HD
 http://stream.mcquack.net/356/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="yes קולנוע אקשן HD" tvg-chno="63" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/yes_movies_action.png" group-title="סרטים וסדרות",yes קולנוע אקשן HD
+#EXTINF:-1 tvg-id="" tvg-name="yes קולנוע אקשן HD" tvg-chno="81" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/yes_movies_action.png" group-title="סרטים וסדרות",yes קולנוע אקשן HD
 http://stream.mcquack.net/380/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="yes קולנוע דרמה HD" tvg-chno="64" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/yes_movies_drama.png" group-title="סרטים וסדרות",yes קולנוע דרמה HD
+#EXTINF:-1 tvg-id="" tvg-name="yes קולנוע דרמה HD" tvg-chno="82" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/yes_movies_drama.png" group-title="סרטים וסדרות",yes קולנוע דרמה HD
 http://stream.mcquack.net/170/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="yes קולנוע קומדיה HD" tvg-chno="65" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/yes_movies_comedy.png" group-title="סרטים וסדרות",yes קולנוע קומדיה HD
+#EXTINF:-1 tvg-id="" tvg-name="yes קולנוע קומדיה HD" tvg-chno="83" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/yes_movies_comedy.png" group-title="סרטים וסדרות",yes קולנוע קומדיה HD
 http://stream.mcquack.net/201/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="yes קולנוע קלאסי HD" tvg-chno="66" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/yes_movies_classic.png" group-title="סרטים וסדרות",yes קולנוע קלאסי HD
+#EXTINF:-1 tvg-id="" tvg-name="yes קולנוע קלאסי HD" tvg-chno="84" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/yes_movies_classic.png" group-title="סרטים וסדרות",yes קולנוע קלאסי HD
 http://stream.mcquack.net/110/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="yes TV אקשן HD" tvg-chno="67" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/yes_tv_action.png" group-title="סרטים וסדרות",yes TV אקשן HD
+#EXTINF:-1 tvg-id="" tvg-name="yes TV אקשן HD" tvg-chno="85" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/yes_tv_action.png" group-title="סרטים וסדרות",yes TV אקשן HD
 http://stream.mcquack.net/214/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="yes TV סדרות דרמה HD" tvg-chno="68" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/yes_tv_drama.png" group-title="סרטים וסדרות",yes TV סדרות דרמה HD
+#EXTINF:-1 tvg-id="" tvg-name="yes TV סדרות דרמה HD" tvg-chno="86" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/yes_tv_drama.png" group-title="סרטים וסדרות",yes TV סדרות דרמה HD
 http://stream.mcquack.net/311/index.m3u8
-#EXTINF:-1 tvg-id="Kinouzhas.ru" tvg-name="ערוץ סרטי אימה HD" tvg-chno="69" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/kinouzhas.png" group-title="סרטים וסדרות",ערוץ סרטי אימה HD
+#EXTINF:-1 tvg-id="" tvg-name="FreeTV סרטים ישראלי HD" tvg-chno="87" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/freetv_israeli_movies.png" group-title="סרטים וסדרות",FreeTV סרטים ישראלי HD
+https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/free_israeli_movies/live.livx/playlist.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="FreeTV סרטים פעולה HD" tvg-chno="88" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/freetv_movies_action.png" group-title="סרטים וסדרות",FreeTV סרטים פעולה HD
+https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/free_movies_action/live.livx/playlist.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="FreeTV סרטים קומדיה HD" tvg-chno="89" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/freetv_movies_comedy.png" group-title="סרטים וסדרות",FreeTV סרטים קומדיה HD
+https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/free_movies_comedy/live.livx/playlist.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="FreeTV סרטים דרמה HD" tvg-chno="90" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/freetv_movies_drama.png" group-title="סרטים וסדרות",FreeTV סרטים דרמה HD
+https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/free_movies_drama/live.livx/playlist.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="FreeTV סרטים מתח HD" tvg-chno="91" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/freetv_movies_thriller.png" group-title="סרטים וסדרות",FreeTV סרטים מתח HD
+https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/free_movies_thriller/live.livx/playlist.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="FreeTV סרטים אימה HD" tvg-chno="92" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/freetv_movies_horror.png" group-title="סרטים וסדרות",FreeTV סרטים אימה HD
+https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/free_movies_horror/live.livx/playlist.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="FreeTV סרטים רומנטי HD" tvg-chno="93" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/freetv_movies_romance.png" group-title="סרטים וסדרות",FreeTV סרטים רומנטי HD
+https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/free_movies_romance/live.livx/playlist.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="FreeTV סרטים פיל גוד HD" tvg-chno="94" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/freetv_movies_feelgood.png" group-title="סרטים וסדרות",FreeTV סרטים פיל גוד HD
+https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/feel_good/live.livx/playlist.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="FreeTV סרטים משפחה HD" tvg-chno="95" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/freetv_movies_family.png" group-title="סרטים וסדרות",FreeTV סרטים משפחה HD
+https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/free_movies_family/live.livx/playlist.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="FreeTV 10 Stars סרטים HD" tvg-chno="96" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/freetv_movies_10stars.png" group-title="סרטים וסדרות",FreeTV 10 Stars סרטים HD
+https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/free_movies_10_hevc/live.livx/playlist.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="FreeTV סדרות דרמה HD" tvg-chno="97" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/freetv_series_drama.png" group-title="סרטים וסדרות",FreeTV סדרות דרמה HD
+https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/imagin_drama/live.livx/playlist.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="FreeTV סדרות קומדיה HD" tvg-chno="98" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/freetv_series_comedy.png" group-title="סרטים וסדרות",FreeTV סדרות קומדיה HD
+https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/imagin_comedy/live.livx/playlist.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="FreeTV סדרות קומדיה 2 HD" tvg-chno="99" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/freetv_series_comedy2.png" group-title="סרטים וסדרות",FreeTV סדרות קומדיה 2 HD
+https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/comedy_2_channel/live.livx/playlist.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ הדרמות היומיות HD" tvg-chno="100" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/daily_drama_il.png" group-title="סרטים וסדרות",ערוץ הדרמות היומיות HD
+https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/daily_drama/live.livx/playlist.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ וואמוס HD (Vamos)" tvg-chno="101" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/vamos_telenovela_il.png" group-title="סרטים וסדרות",ערוץ וואמוס HD (Vamos)
+https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/vamos/live.livx/playlist.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="FreeTV גלובל סדרות HD" tvg-chno="102" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/freetv_global_il.png" group-title="סרטים וסדרות",FreeTV גלובל סדרות HD
+https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/free_global/live.livx/playlist.m3u8
+#EXTINF:-1 tvg-id="Kinouzhas.ru" tvg-name="ערוץ סרטי אימה HD" tvg-chno="103" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/kinouzhas.png" group-title="סרטים וסדרות",ערוץ סרטי אימה HD
 http://stream.mcquack.net/278/index.m3u8
-#EXTINF:-1 tvg-id="KinoHit.ru" tvg-name="קולנוע להיטים KinoHit HD" tvg-chno="70" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/kinohit.png" group-title="סרטים וסדרות",קולנוע להיטים KinoHit HD
+#EXTINF:-1 tvg-id="KinoHit.ru" tvg-name="קולנוע להיטים KinoHit HD" tvg-chno="104" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/kinohit.png" group-title="סרטים וסדרות",קולנוע להיטים KinoHit HD
 http://stream.mcquack.net/126/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="משפחת סימפסון 24/7 HD" tvg-chno="71" tvg-logo="" group-title="סרטים וסדרות",משפחת סימפסון 24/7 HD
+#EXTINF:-1 tvg-id="" tvg-name="משפחת סימפסון 24/7 HD" tvg-chno="105" tvg-logo="" group-title="סרטים וסדרות",משפחת סימפסון 24/7 HD
 http://stream.mcquack.net/476/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="קולנוע רטרו VHS Cinema HD" tvg-chno="72" tvg-logo="" group-title="סרטים וסדרות",קולנוע רטרו VHS Cinema HD
+#EXTINF:-1 tvg-id="" tvg-name="קולנוע רטרו VHS Cinema HD" tvg-chno="106" tvg-logo="" group-title="סרטים וסדרות",קולנוע רטרו VHS Cinema HD
 http://stream.mcquack.net/474/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ספורט 5 HD" tvg-chno="73" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/sport5_israel_hd.png" group-title="ספורט",ספורט 5 HD
+#EXTINF:-1 tvg-id="" tvg-name="ספורט 5 HD" tvg-chno="107" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/sport5_israel_hd.png" group-title="ספורט",ספורט 5 HD
 https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5/live.livx/playlist.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ספורט 5 פלוס FHD (5Plus)" tvg-chno="74" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/sport5_plus.png" group-title="ספורט",ספורט 5 פלוס FHD (5Plus)
+#EXTINF:-1 tvg-id="" tvg-name="ספורט 5 פלוס FHD (5Plus)" tvg-chno="108" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/sport5_plus.png" group-title="ספורט",ספורט 5 פלוס FHD (5Plus)
 https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5_plus/live.livx/playlist.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ספורט 5 לייב FHD (5Live)" tvg-chno="75" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/sport5_live.png" group-title="ספורט",ספורט 5 לייב FHD (5Live)
+#EXTINF:-1 tvg-id="" tvg-name="ספורט 5 לייב FHD (5Live)" tvg-chno="109" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/sport5_live.png" group-title="ספורט",ספורט 5 לייב FHD (5Live)
 https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5_live/live.livx/playlist.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ספורט 5 גולד HD (5Gold)" tvg-chno="76" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/sport5_gold_hd.png" group-title="ספורט",ספורט 5 גולד HD (5Gold)
+#EXTINF:-1 tvg-id="" tvg-name="ספורט 5 גולד HD (5Gold)" tvg-chno="110" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/sport5_gold_hd.png" group-title="ספורט",ספורט 5 גולד HD (5Gold)
 https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5_gold/live.livx/playlist.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ספורט 5 4K UHD" tvg-chno="77" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/sport5.png" group-title="ספורט",ספורט 5 4K UHD
+#EXTINF:-1 tvg-id="" tvg-name="ספורט 5 4K UHD" tvg-chno="111" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/sport5.png" group-title="ספורט",ספורט 5 4K UHD
 https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5_4k/live.livx/playlist.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ערוץ ONE 1 FHD (ספורט)" tvg-chno="78" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/one_hd.png" group-title="ספורט",ערוץ ONE 1 FHD (ספורט)
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ ONE 1 FHD (ספורט)" tvg-chno="112" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/one_hd.png" group-title="ספורט",ערוץ ONE 1 FHD (ספורט)
 https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/one_1/live.livx/playlist.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ערוץ ONE 2 FHD (ספורט)" tvg-chno="79" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/one_2_hd.png" group-title="ספורט",ערוץ ONE 2 FHD (ספורט)
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ ONE 2 FHD (ספורט)" tvg-chno="113" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/one_2_hd.png" group-title="ספורט",ערוץ ONE 2 FHD (ספורט)
 https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/one_2/live.livx/playlist.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ערוץ ONE דוקו HD (דוקו ספורט)" tvg-chno="80" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/one_doco_hd.png" group-title="ספורט",ערוץ ONE דוקו HD (דוקו ספורט)
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ ONE דוקו HD (דוקו ספורט)" tvg-chno="114" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/one_doco_hd.png" group-title="ספורט",ערוץ ONE דוקו HD (דוקו ספורט)
 https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/one_doco/live.livx/playlist.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ספורט 1 HD (Sport 1)" tvg-chno="81" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/sport1_israel.png" group-title="ספורט",ספורט 1 HD (Sport 1)
+#EXTINF:-1 tvg-id="" tvg-name="ספורט 1 HD (Sport 1)" tvg-chno="115" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/sport1_israel.png" group-title="ספורט",ספורט 1 HD (Sport 1)
 http://stream.mcquack.net/391/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ספורט 2 HD (Sport 2)" tvg-chno="82" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/sport2_israel.png" group-title="ספורט",ספורט 2 HD (Sport 2)
+#EXTINF:-1 tvg-id="" tvg-name="ספורט 2 HD (Sport 2)" tvg-chno="116" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/sport2_israel.png" group-title="ספורט",ספורט 2 HD (Sport 2)
 http://stream.mcquack.net/392/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ספורט 3 HD (Sport 3)" tvg-chno="83" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/sport3_israel.png" group-title="ספורט",ספורט 3 HD (Sport 3)
+#EXTINF:-1 tvg-id="" tvg-name="ספורט 3 HD (Sport 3)" tvg-chno="117" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/sport3_israel.png" group-title="ספורט",ספורט 3 HD (Sport 3)
 http://stream.mcquack.net/393/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ספורט 4 HD (Sport 4)" tvg-chno="84" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/sport4_israel.png" group-title="ספורט",ספורט 4 HD (Sport 4)
+#EXTINF:-1 tvg-id="" tvg-name="ספורט 4 HD (Sport 4)" tvg-chno="118" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/sport4_israel.png" group-title="ספורט",ספורט 4 HD (Sport 4)
 http://stream.mcquack.net/394/index.m3u8
-#EXTINF:-1 tvg-id="Sport5.ua" tvg-name="Sport 5 אוקראינה" tvg-chno="85" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/sport5.png" group-title="ספורט",Sport 5 אוקראינה
+#EXTINF:-1 tvg-id="Sport5.ua" tvg-name="Sport 5 אוקראינה" tvg-chno="119" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/sport5.png" group-title="ספורט",Sport 5 אוקראינה
 http://stream.mcquack.net/212/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="Sky Racing 1 HD (סקיי רייסינג ספורט)" tvg-chno="86" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/sky_sports_racing.png" group-title="ספורט",Sky Racing 1 HD (סקיי רייסינג ספורט)
+#EXTINF:-1 tvg-id="" tvg-name="ספורט 5 סטארס HD (5Stars)" tvg-chno="120" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/sport5_stars_hd.png" group-title="ספורט",ספורט 5 סטארס HD (5Stars)
+https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5_starz/live.livx/playlist.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ספורט 5 מקס FHD (5Max)" tvg-chno="121" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/sport5_max_hd.png" group-title="ספורט",ספורט 5 מקס FHD (5Max)
+https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5_max_hevc/live.livx/playlist.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ ONE Edge HD (ספורט)" tvg-chno="122" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/one_edge_hd.png" group-title="ספורט",ערוץ ONE Edge HD (ספורט)
+https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/one_edge/live.livx/playlist.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="Sky Racing 1 HD (סקיי רייסינג ספורט)" tvg-chno="123" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/sky_sports_racing.png" group-title="ספורט",Sky Racing 1 HD (סקיי רייסינג ספורט)
 https://636ffd31f0e12.streamlock.net/RacingStream1/RacingStream1/chunklist_w127116790.m3u8
-#EXTINF:-1 tvg-id="vijuPlusSport.ru" tvg-name="ספורט פלוס HD (viju+ Sport)" tvg-chno="87" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/viju_sport.png" group-title="ספורט",ספורט פלוס HD (viju+ Sport)
+#EXTINF:-1 tvg-id="vijuPlusSport.ru" tvg-name="ספורט פלוס HD (viju+ Sport)" tvg-chno="124" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/viju_sport.png" group-title="ספורט",ספורט פלוס HD (viju+ Sport)
 http://stream.mcquack.net/333/index.m3u8
-#EXTINF:-1 tvg-id="SetantaSports2Eurasia.ie" tvg-name="ספורט סטאנטה Setanta Sports 2 HD" tvg-chno="88" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Setanta_Sports_logo.svg/512px-Setanta_Sports_logo.svg.png" group-title="ספורט",ספורט סטאנטה Setanta Sports 2 HD
+#EXTINF:-1 tvg-id="SetantaSports2Eurasia.ie" tvg-name="ספורט סטאנטה Setanta Sports 2 HD" tvg-chno="125" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Setanta_Sports_logo.svg/512px-Setanta_Sports_logo.svg.png" group-title="ספורט",ספורט סטאנטה Setanta Sports 2 HD
 http://stream.mcquack.net/235/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ערוץ אקסטרים Extreme Sports HD" tvg-chno="89" tvg-logo="" group-title="ספורט",ערוץ אקסטרים Extreme Sports HD
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ אקסטרים Extreme Sports HD" tvg-chno="126" tvg-logo="" group-title="ספורט",ערוץ אקסטרים Extreme Sports HD
 http://stream.mcquack.net/148/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ספורט 5 – שידור חי" tvg-chno="90" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/sport5_live.png" group-title="ספורט",ספורט 5 – שידור חי
+#EXTINF:-1 tvg-id="" tvg-name="ספורט 5 – שידור חי" tvg-chno="127" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/sport5_live.png" group-title="ספורט",ספורט 5 – שידור חי
 https://rgelive.akamaized.net/hls/live/2043095/live3/playlist.m3u8
-#EXTINF:-1 tvg-id="Hidabroot.il" tvg-name="ערוץ הידברות HD" tvg-chno="197" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hidabroot.png" group-title="מסורת וקהילה",ערוץ הידברות HD
+#EXTINF:-1 tvg-id="Hidabroot.il" tvg-name="ערוץ הידברות HD" tvg-chno="234" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hidabroot.png" group-title="מסורת וקהילה",ערוץ הידברות HD
 https://cdn.cybercdn.live/HidabrootIL/Live97/playlist.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ערוץ קבלה לעם HD" tvg-chno="198" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/kabbalah.png" group-title="מסורת וקהילה",ערוץ קבלה לעם HD
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ קבלה לעם HD" tvg-chno="235" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/kabbalah.png" group-title="מסורת וקהילה",ערוץ קבלה לעם HD
 https://edge3.uk.kab.tv/live/tv66-heb-high/playlist.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="קבלה לעם – רוסית (ערוץ 66)" tvg-chno="203" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/kabbalah_ru.png" group-title="מסורת וקהילה",קבלה לעם – רוסית (ערוץ 66)
+#EXTINF:-1 tvg-id="" tvg-name="קבלה לעם – רוסית (ערוץ 66)" tvg-chno="240" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/kabbalah_ru.png" group-title="מסורת וקהילה",קבלה לעם – רוסית (ערוץ 66)
 https://edge2.il.kab.tv/live/tv66-rus-high/playlist.m3u8
-#EXTINF:-1 tvg-id="Channel16.il" tvg-name="ערוץ 16 ישראל" tvg-chno="204" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/channel16.png" group-title="מסורת וקהילה",ערוץ 16 ישראל
+#EXTINF:-1 tvg-id="Channel16.il" tvg-name="ערוץ 16 ישראל" tvg-chno="241" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/channel16.png" group-title="מסורת וקהילה",ערוץ 16 ישראל
 https://ch16israel-cdn.encoders.immergo.tv/2/streamPlaylist.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="Sky News UK FHD" tvg-chno="205" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/sky_news.png" group-title="חדשות מהעולם",Sky News UK FHD
+#EXTINF:-1 tvg-id="" tvg-name="Sky News UK FHD" tvg-chno="242" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/sky_news.png" group-title="חדשות מהעולם",Sky News UK FHD
 https://linear901-oo-hls0-prd-gtm.delivery.skycdp.com/17501/sde-fast-skynews/master.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="Sky News Arabia HD (סקיי ניוז ערבית)" tvg-chno="206" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/sky_news.png" group-title="חדשות מהעולם",Sky News Arabia HD (סקיי ניוז ערבית)
+#EXTINF:-1 tvg-id="" tvg-name="Sky News Arabia HD (סקיי ניוז ערבית)" tvg-chno="243" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/sky_news.png" group-title="חדשות מהעולם",Sky News Arabia HD (סקיי ניוז ערבית)
 https://live-stream.skynewsarabia.com/c-horizontal-channel/horizontal-stream/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="Sky News Arabia ישיר HD (מקור 2)" tvg-chno="207" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/sky_news.png" group-title="חדשות מהעולם",Sky News Arabia ישיר HD (מקור 2)
+#EXTINF:-1 tvg-id="" tvg-name="Sky News Arabia ישיר HD (מקור 2)" tvg-chno="244" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/sky_news.png" group-title="חדשות מהעולם",Sky News Arabia ישיר HD (מקור 2)
 https://stream.skynewsarabia.com/hls/sna.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="Sky News Australia Extra 1 HD" tvg-chno="208" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/sky_news.png" group-title="חדשות מהעולם",Sky News Australia Extra 1 HD
+#EXTINF:-1 tvg-id="" tvg-name="Sky News Australia Extra 1 HD" tvg-chno="245" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/sky_news.png" group-title="חדשות מהעולם",Sky News Australia Extra 1 HD
 https://skynewsau-live.akamaized.net/hls/live/2002689/skynewsau-extra1/master.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="Sky News Australia Extra 2 HD" tvg-chno="209" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/sky_news.png" group-title="חדשות מהעולם",Sky News Australia Extra 2 HD
+#EXTINF:-1 tvg-id="" tvg-name="Sky News Australia Extra 2 HD" tvg-chno="246" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/sky_news.png" group-title="חדשות מהעולם",Sky News Australia Extra 2 HD
 https://skynewsau-live.akamaized.net/hls/live/2002690/skynewsau-extra2/master.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="Sky News Australia Extra 3 HD" tvg-chno="210" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/sky_news.png" group-title="חדשות מהעולם",Sky News Australia Extra 3 HD
+#EXTINF:-1 tvg-id="" tvg-name="Sky News Australia Extra 3 HD" tvg-chno="247" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/sky_news.png" group-title="חדשות מהעולם",Sky News Australia Extra 3 HD
 https://skynewsau-live.akamaized.net/hls/live/2002691/skynewsau-extra3/master.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="Baby Shark TV (בייבי שארק לילדים)" tvg-chno="211" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/babyshark_tv_hd.png" group-title="ילדים מהעולם",Baby Shark TV (בייבי שארק לילדים)
+#EXTINF:-1 tvg-id="" tvg-name="Baby Shark TV (בייבי שארק לילדים)" tvg-chno="248" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/babyshark_tv_hd.png" group-title="ילדים מהעולם",Baby Shark TV (בייבי שארק לילדים)
 https://newidco-babysharktv-1-us.roku.wurl.tv/playlist.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ערוץ בייבי BabyTV Global HD" tvg-chno="212" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/baby_tv_he.png" group-title="ילדים מהעולם",ערוץ בייבי BabyTV Global HD
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ בייבי BabyTV Global HD" tvg-chno="249" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/baby_tv_he.png" group-title="ילדים מהעולם",ערוץ בייבי BabyTV Global HD
 https://cdn.fast.jwp.services/v1/channel/1_jB6940Ei_TvhvIHDL/manifest.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ערוץ זו-מו לילדים (ZooMoo HD)" tvg-chno="213" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/zoom.png" group-title="ילדים מהעולם",ערוץ זו-מו לילדים (ZooMoo HD)
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ זו-מו לילדים (ZooMoo HD)" tvg-chno="250" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/zoom.png" group-title="ילדים מהעולם",ערוץ זו-מו לילדים (ZooMoo HD)
 https://zoomoo-samsungau.amagi.tv/playlist.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ערוץ אני אנימציה HD (Ani Kids)" tvg-chno="214" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/ani_kids.png" group-title="ילדים מהעולם",ערוץ אני אנימציה HD (Ani Kids)
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ אני אנימציה HD (Ani Kids)" tvg-chno="251" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/ani_kids.png" group-title="ילדים מהעולם",ערוץ אני אנימציה HD (Ani Kids)
 http://stream.mcquack.net/306/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ערוץ האנימציה PLUSPLUS HD" tvg-chno="215" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/plusplus.png" group-title="ילדים מהעולם",ערוץ האנימציה PLUSPLUS HD
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ האנימציה PLUSPLUS HD" tvg-chno="252" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/plusplus.png" group-title="ילדים מהעולם",ערוץ האנימציה PLUSPLUS HD
 http://stream.mcquack.net/339/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ערוץ ניקי ג'וניור HD (Niki Junior)" tvg-chno="216" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/junior.png" group-title="ילדים מהעולם",ערוץ ניקי ג'וניור HD (Niki Junior)
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ ניקי ג'וניור HD (Niki Junior)" tvg-chno="253" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/junior.png" group-title="ילדים מהעולם",ערוץ ניקי ג'וניור HD (Niki Junior)
 http://stream.mcquack.net/262/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ערוץ סרטוני אנימציה קצרים (Cartoons Short)" tvg-chno="217" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/hop.png" group-title="ילדים מהעולם",ערוץ סרטוני אנימציה קצרים (Cartoons Short)
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ סרטוני אנימציה קצרים (Cartoons Short)" tvg-chno="254" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/hop.png" group-title="ילדים מהעולם",ערוץ סרטוני אנימציה קצרים (Cartoons Short)
 http://stream.mcquack.net/347/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ערוץ סרטי אנימציה לילדים (Cartoons Cinema)" tvg-chno="218" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/cartoons_big_hd.png" group-title="ילדים מהעולם",ערוץ סרטי אנימציה לילדים (Cartoons Cinema)
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ סרטי אנימציה לילדים (Cartoons Cinema)" tvg-chno="255" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/cartoons_big_hd.png" group-title="ילדים מהעולם",ערוץ סרטי אנימציה לילדים (Cartoons Cinema)
 http://stream.mcquack.net/348/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="פרש קידס (Fresh Kids TV HD)" tvg-chno="219" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/zoom.png" group-title="ילדים מהעולם",פרש קידס (Fresh Kids TV HD)
+#EXTINF:-1 tvg-id="" tvg-name="פרש קידס (Fresh Kids TV HD)" tvg-chno="256" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/zoom.png" group-title="ילדים מהעולם",פרש קידס (Fresh Kids TV HD)
 http://stream.mcquack.net/425/index.m3u8
-#EXTINF:-1 tvg-id="NickJr.ru" tvg-name="ניק ג'וניור (ברוסית)" tvg-chno="220" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/nick_jr_he.png" group-title="ילדים מהעולם",ניק ג'וניור (ברוסית)
+#EXTINF:-1 tvg-id="NickJr.ru" tvg-name="ניק ג'וניור (ברוסית)" tvg-chno="257" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/nick_jr_he.png" group-title="ילדים מהעולם",ניק ג'וניור (ברוסית)
 http://stream.mcquack.net/220/index.m3u8
-#EXTINF:-1 tvg-id="GulliGirl.ru" tvg-name="גולי גירל Gulli Girl (ברוסית)" tvg-chno="221" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/gulli_kids_hd.png" group-title="ילדים מהעולם",גולי גירל Gulli Girl (ברוסית)
+#EXTINF:-1 tvg-id="GulliGirl.ru" tvg-name="גולי גירל Gulli Girl (ברוסית)" tvg-chno="258" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/gulli_kids_hd.png" group-title="ילדים מהעולם",גולי גירל Gulli Girl (ברוסית)
 http://stream.mcquack.net/305/index.m3u8
-#EXTINF:-1 tvg-id="ducktvPLUS.sk" tvg-name="דאק טי וי פלוס ducktv PLUS HD" tvg-chno="222" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/ducktv_plus_hd.png" group-title="ילדים מהעולם",דאק טי וי פלוס ducktv PLUS HD
+#EXTINF:-1 tvg-id="ducktvPLUS.sk" tvg-name="דאק טי וי פלוס ducktv PLUS HD" tvg-chno="259" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/ducktv_plus_hd.png" group-title="ילדים מהעולם",דאק טי וי פלוס ducktv PLUS HD
 https://dash3.antik.sk/live/test_duck_plus/playlist.m3u8
-#EXTINF:-1 tvg-id="LegoChannel.us" tvg-name="ערוץ לגו Lego Channel HD" tvg-chno="223" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/lego_channel_hd.png" group-title="ילדים מהעולם",ערוץ לגו Lego Channel HD
+#EXTINF:-1 tvg-id="LegoChannel.us" tvg-name="ערוץ לגו Lego Channel HD" tvg-chno="260" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/lego_channel_hd.png" group-title="ילדים מהעולם",ערוץ לגו Lego Channel HD
 https://dltiqboxjw21d.cloudfront.net/index.m3u8
-#EXTINF:-1 tvg-id="TiJi.ru" tvg-name="ערוץ טיז'י TiJi לילדים HD" tvg-chno="224" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/tiji_kids_hd.png" group-title="ילדים מהעולם",ערוץ טיז'י TiJi לילדים HD
+#EXTINF:-1 tvg-id="TiJi.ru" tvg-name="ערוץ טיז'י TiJi לילדים HD" tvg-chno="261" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/tiji_kids_hd.png" group-title="ילדים מהעולם",ערוץ טיז'י TiJi לילדים HD
 http://stream.mcquack.net/111/index.m3u8
-#EXTINF:-1 tvg-id="JimJamEurope.uk" tvg-name="ג'ים ג'אם JimJam לילדים HD" tvg-chno="225" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/jimjam_kids_hd.png" group-title="ילדים מהעולם",ג'ים ג'אם JimJam לילדים HD
+#EXTINF:-1 tvg-id="JimJamEurope.uk" tvg-name="ג'ים ג'אם JimJam לילדים HD" tvg-chno="262" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/jimjam_kids_hd.png" group-title="ילדים מהעולם",ג'ים ג'אם JimJam לילדים HD
 http://stream.mcquack.net/150/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="קלאסיקות מצוירות 90s HD" tvg-chno="226" tvg-logo="" group-title="ילדים מהעולם",קלאסיקות מצוירות 90s HD
+#EXTINF:-1 tvg-id="" tvg-name="קלאסיקות מצוירות 90s HD" tvg-chno="263" tvg-logo="" group-title="ילדים מהעולם",קלאסיקות מצוירות 90s HD
 http://stream.mcquack.net/484/index.m3u8
-#EXTINF:-1 tvg-id="KinoKazka.es" tvg-name="קולנוע אגדות וילדים HD" tvg-chno="227" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/kinokazka.png" group-title="ילדים מהעולם",קולנוע אגדות וילדים HD
+#EXTINF:-1 tvg-id="KinoKazka.es" tvg-name="קולנוע אגדות וילדים HD" tvg-chno="264" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/kinokazka.png" group-title="ילדים מהעולם",קולנוע אגדות וילדים HD
 http://stream.mcquack.net/167/index.m3u8
-#EXTINF:-1 tvg-id="PixelTV.ua" tvg-name="פיקסל TV ילדים HD" tvg-chno="228" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/pixel_tv.png" group-title="ילדים מהעולם",פיקסל TV ילדים HD
+#EXTINF:-1 tvg-id="PixelTV.ua" tvg-name="פיקסל TV ילדים HD" tvg-chno="265" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/pixel_tv.png" group-title="ילדים מהעולם",פיקסל TV ילדים HD
 http://stream.mcquack.net/323/index.m3u8
-#EXTINF:-1 tvg-id="NikiKids.ua" tvg-name="ניקי קידס Niki Kids HD" tvg-chno="229" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/niki_kids.png" group-title="ילדים מהעולם",ניקי קידס Niki Kids HD
+#EXTINF:-1 tvg-id="NikiKids.ua" tvg-name="ניקי קידס Niki Kids HD" tvg-chno="266" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/niki_kids.png" group-title="ילדים מהעולם",ניקי קידס Niki Kids HD
 http://stream.mcquack.net/271/index.m3u8
-#EXTINF:-1 tvg-id="KapitanFantastika.ru" tvg-name="קפטן פנטסטיקה HD" tvg-chno="230" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/kapitan_fantastika.png" group-title="ילדים מהעולם",קפטן פנטסטיקה HD
+#EXTINF:-1 tvg-id="KapitanFantastika.ru" tvg-name="קפטן פנטסטיקה HD" tvg-chno="267" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/kapitan_fantastika.png" group-title="ילדים מהעולם",קפטן פנטסטיקה HD
 http://stream.mcquack.net/144/index.m3u8
-#EXTINF:-1 tvg-id="O.ru" tvg-name="ערוץ O! ילדים וטבע" tvg-chno="231" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/okids.png" group-title="ילדים מהעולם",ערוץ O! ילדים וטבע
+#EXTINF:-1 tvg-id="O.ru" tvg-name="ערוץ O! ילדים וטבע" tvg-chno="268" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/okids.png" group-title="ילדים מהעולם",ערוץ O! ילדים וטבע
 http://stream.mcquack.net/60/index.m3u8
-#EXTINF:-1 tvg-id="ducktv.sk" tvg-name="דאק טי וי ducktv HD" tvg-chno="232" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/ducktv_hd.png" group-title="ילדים מהעולם",דאק טי וי ducktv HD
+#EXTINF:-1 tvg-id="ducktv.sk" tvg-name="דאק טי וי ducktv HD" tvg-chno="269" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/ducktv_hd.png" group-title="ילדים מהעולם",דאק טי וי ducktv HD
 https://dash3.antik.sk/live/duck_tv/index.m3u8
-#EXTINF:-1 tvg-id="Solnce.ru" tvg-name="ערוץ השמש לילדים HD (Solntse Kids)" tvg-chno="233" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/solntse_kids.png" group-title="ילדים מהעולם",ערוץ השמש לילדים HD (Solntse Kids)
+#EXTINF:-1 tvg-id="Solnce.ru" tvg-name="ערוץ השמש לילדים HD (Solntse Kids)" tvg-chno="270" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/solntse_kids.png" group-title="ילדים מהעולם",ערוץ השמש לילדים HD (Solntse Kids)
 http://stream.mcquack.net/118/index.m3u8
-#EXTINF:-1 tvg-id="Mult.ru" tvg-name="ערוץ מולט ילדים HD (Mult Kids)" tvg-chno="234" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/mult_kids.png" group-title="ילדים מהעולם",ערוץ מולט ילדים HD (Mult Kids)
+#EXTINF:-1 tvg-id="Mult.ru" tvg-name="ערוץ מולט ילדים HD (Mult Kids)" tvg-chno="271" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/mult_kids.png" group-title="ילדים מהעולם",ערוץ מולט ילדים HD (Mult Kids)
 http://stream.mcquack.net/232/index.m3u8
-#EXTINF:-1 tvg-id="Multimuzyka.ru" tvg-name="מולט ומוזיקה לילדים HD (Mult & Music)" tvg-chno="235" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/mult_music_kids.png" group-title="ילדים מהעולם",מולט ומוזיקה לילדים HD (Mult & Music)
+#EXTINF:-1 tvg-id="Multimuzyka.ru" tvg-name="מולט ומוזיקה לילדים HD (Mult & Music)" tvg-chno="272" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/mult_music_kids.png" group-title="ילדים מהעולם",מולט ומוזיקה לילדים HD (Mult & Music)
 http://stream.mcquack.net/82/index.m3u8
-#EXTINF:-1 tvg-id="Carousel.ru" tvg-name="קרוסלה ערוץ הילדים HD (Carousel Kids)" tvg-chno="236" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/carousel_kids.png" group-title="ילדים מהעולם",קרוסלה ערוץ הילדים HD (Carousel Kids)
+#EXTINF:-1 tvg-id="Carousel.ru" tvg-name="קרוסלה ערוץ הילדים HD (Carousel Kids)" tvg-chno="273" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/carousel_kids.png" group-title="ילדים מהעולם",קרוסלה ערוץ הילדים HD (Carousel Kids)
 http://stream.mcquack.net/120/index.m3u8
-#EXTINF:-1 tvg-id="STSkids.ru" tvg-name="סי טי סי קידס HD (CTC Kids)" tvg-chno="237" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/ctc_kids.png" group-title="ילדים מהעולם",סי טי סי קידס HD (CTC Kids)
+#EXTINF:-1 tvg-id="STSkids.ru" tvg-name="סי טי סי קידס HD (CTC Kids)" tvg-chno="274" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/ctc_kids.png" group-title="ילדים מהעולם",סי טי סי קידס HD (CTC Kids)
 http://stream.mcquack.net/197/index.m3u8
-#EXTINF:-1 tvg-id="Vgostyakhuskazki.ru" tvg-name="ערוץ אגדות וסיפורים HD (Fairy Tales Kids)" tvg-chno="238" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/fairy_tales_kids.png" group-title="ילדים מהעולם",ערוץ אגדות וסיפורים HD (Fairy Tales Kids)
+#EXTINF:-1 tvg-id="Vgostyakhuskazki.ru" tvg-name="ערוץ אגדות וסיפורים HD (Fairy Tales Kids)" tvg-chno="275" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/fairy_tales_kids.png" group-title="ילדים מהעולם",ערוץ אגדות וסיפורים HD (Fairy Tales Kids)
 http://stream.mcquack.net/93/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="רדיוס 100FM – אולפן וידאו HD" tvg-chno="239" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/radios_video.png" group-title="מוזיקה",רדיוס 100FM – אולפן וידאו HD
-https://cdn.cybercdn.live/Radios_100FM/Video/playlist.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="Sky Folk TV HD (סקיי פולק)" tvg-chno="240" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/sky_news.png" group-title="מוזיקה",Sky Folk TV HD (סקיי פולק)
-https://skyfolk.mk/live.m3u8
-#EXTINF:-1 tvg-id="4everMusic.ua" tvg-name="4ever Music Hits HD" tvg-chno="241" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/music_4ever.png" group-title="מוזיקה",4ever Music Hits HD
-http://stream.mcquack.net/257/index.m3u8
-#EXTINF:-1 tvg-id="4FunTV.pl" tvg-name="4Fun TV Pop Hits HD" tvg-chno="242" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/music_4fun.png" group-title="מוזיקה",4Fun TV Pop Hits HD
-https://stream.4fun.tv:8888/sd/4fun_sd_high.m3u8
-#EXTINF:-1 tvg-id="VivaLatino.ua" tvg-name="¡Viva Latino! Dance HD" tvg-chno="243" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/music_vivalatino.png" group-title="מוזיקה",¡Viva Latino! Dance HD
-http://stream.mcquack.net/285/index.m3u8
-#EXTINF:-1 tvg-id="1HDMusicTelevision.ru" tvg-name="1HD Music Television" tvg-chno="244" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/music_1hd.png" group-title="מוזיקה",1HD Music Television
-http://176.118.197.101/1HD/index.m3u8
-#EXTINF:-1 tvg-id="AnimalPlanet.ru" tvg-name="Animal Planet World HD" tvg-chno="245" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/2018_Animal_Planet_logo.svg/512px-2018_Animal_Planet_logo.svg.png" group-title="טבע ודוקו",Animal Planet World HD
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ הטבע הישראלי HD (Teva)" tvg-chno="276" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/teva_israel_hd.png" group-title="טבע ודוקו",ערוץ הטבע הישראלי HD (Teva)
+https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/teva_channel/live.livx/playlist.m3u8
+#EXTINF:-1 tvg-id="AnimalPlanet.ru" tvg-name="Animal Planet World HD" tvg-chno="277" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/2018_Animal_Planet_logo.svg/512px-2018_Animal_Planet_logo.svg.png" group-title="טבע ודוקו",Animal Planet World HD
 http://stream.mcquack.net/114/index.m3u8
-#EXTINF:-1 tvg-id="InvestigationDiscovery.ru" tvg-name="Discovery חקירות (ID)" tvg-chno="246" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Investigation_Discovery_logo.svg/512px-Investigation_Discovery_logo.svg.png" group-title="טבע ודוקו",Discovery חקירות (ID)
+#EXTINF:-1 tvg-id="InvestigationDiscovery.ru" tvg-name="Discovery חקירות (ID)" tvg-chno="278" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Investigation_Discovery_logo.svg/512px-Investigation_Discovery_logo.svg.png" group-title="טבע ודוקו",Discovery חקירות (ID)
 http://stream.mcquack.net/205/index.m3u8
-#EXTINF:-1 tvg-id="vijuPlusPlanet.ru" tvg-name="עולם וטבע HD (viju+ Planet)" tvg-chno="247" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/viju_planet.png" group-title="טבע ודוקו",עולם וטבע HD (viju+ Planet)
+#EXTINF:-1 tvg-id="vijuPlusPlanet.ru" tvg-name="עולם וטבע HD (viju+ Planet)" tvg-chno="279" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/viju_planet.png" group-title="טבע ודוקו",עולם וטבע HD (viju+ Planet)
 http://stream.mcquack.net/240/index.m3u8
-#EXTINF:-1 tvg-id="AsharqDiscovery.sa" tvg-name="Asharq Discovery HD" tvg-chno="248" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/asharq_discovery.png" group-title="טבע ודוקו",Asharq Discovery HD
+#EXTINF:-1 tvg-id="AsharqDiscovery.sa" tvg-name="Asharq Discovery HD" tvg-chno="280" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/asharq_discovery.png" group-title="טבע ודוקו",Asharq Discovery HD
 https://svs.itworkscdn.net/asharqdiscoverylive/asharqd.smil/playlist_dvr.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="DW News English HD" tvg-chno="249" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Deutsche_Welle_symbol_2012.svg/512px-Deutsche_Welle_symbol_2012.svg.png" group-title="ערוצים בינלאומיים",DW News English HD
+#EXTINF:-1 tvg-id="" tvg-name="רדיוס 100FM – אולפן וידאו HD" tvg-chno="281" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/radios_video.png" group-title="מוזיקה",רדיוס 100FM – אולפן וידאו HD
+https://cdn.cybercdn.live/Radios_100FM/Video/playlist.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="Sky Folk TV HD (סקיי פולק)" tvg-chno="282" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/sky_news.png" group-title="מוזיקה",Sky Folk TV HD (סקיי פולק)
+https://skyfolk.mk/live.m3u8
+#EXTINF:-1 tvg-id="4everMusic.ua" tvg-name="4ever Music Hits HD" tvg-chno="283" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/music_4ever.png" group-title="מוזיקה",4ever Music Hits HD
+http://stream.mcquack.net/257/index.m3u8
+#EXTINF:-1 tvg-id="4FunTV.pl" tvg-name="4Fun TV Pop Hits HD" tvg-chno="284" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/music_4fun.png" group-title="מוזיקה",4Fun TV Pop Hits HD
+https://stream.4fun.tv:8888/sd/4fun_sd_high.m3u8
+#EXTINF:-1 tvg-id="VivaLatino.ua" tvg-name="¡Viva Latino! Dance HD" tvg-chno="285" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/music_vivalatino.png" group-title="מוזיקה",¡Viva Latino! Dance HD
+http://stream.mcquack.net/285/index.m3u8
+#EXTINF:-1 tvg-id="1HDMusicTelevision.ru" tvg-name="1HD Music Television" tvg-chno="286" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/music_1hd.png" group-title="מוזיקה",1HD Music Television
+http://176.118.197.101/1HD/index.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="DW News English HD" tvg-chno="287" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Deutsche_Welle_symbol_2012.svg/512px-Deutsche_Welle_symbol_2012.svg.png" group-title="ערוצים בינלאומיים",DW News English HD
 https://dwamdstream102.akamaized.net/hls/live/2015525/dwstream102/index.m3u8
-#EXTINF:-1 tvg-id="BFMTV.fr" tvg-name="BFM TV HD (France)" tvg-chno="250" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/BFMTV_logo_2017.svg/512px-BFMTV_logo_2017.svg.png" group-title="ערוצים בינלאומיים",BFM TV HD (France)
+#EXTINF:-1 tvg-id="BFMTV.fr" tvg-name="BFM TV HD (France)" tvg-chno="288" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/BFMTV_logo_2017.svg/512px-BFMTV_logo_2017.svg.png" group-title="ערוצים בינלאומיים",BFM TV HD (France)
 https://ncdn-live-bfm.pfd.sfr.net/shls/LIVE$BFM_TV/index.m3u8?end=END&start=LIVE
-#EXTINF:-1 tvg-id="BFMTechCo.fr" tvg-name="BFM Tech & Co HD" tvg-chno="251" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/BFMTV_logo_2017.svg/512px-BFMTV_logo_2017.svg.png" group-title="ערוצים בינלאומיים",BFM Tech & Co HD
+#EXTINF:-1 tvg-id="BFMTechCo.fr" tvg-name="BFM Tech & Co HD" tvg-chno="289" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/BFMTV_logo_2017.svg/512px-BFMTV_logo_2017.svg.png" group-title="ערוצים בינלאומיים",BFM Tech & Co HD
 https://ncdn-live-bfm.pfd.sfr.net/shls/LIVE$BFM_TECHANDCO/index.m3u8?end=END&start=LIVE

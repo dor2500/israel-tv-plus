@@ -359,7 +359,8 @@ private fun AddTile(onClick: () -> Unit) {
     }
 }
 
-/** New / edit profile: name, Neo 3D emoji asset picker and the profile's own tri-tone palette. */
+/** New / edit profile: name, Apple iOS style Neo 3D emoji grid picker, and the profile's own tri-tone palette. */
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 private fun ProfileEditor(
     start: Profile,
@@ -389,7 +390,8 @@ private fun ProfileEditor(
                 .background(scheme.surfaceContainerHigh)
                 .border(1.dp, Brush.verticalGradient(listOf(Color.White.copy(alpha = 0.32f), Color.Transparent)), RoundedCornerShape(32.dp))
                 .clickable(remember { MutableInteractionSource() }, null) {}
-                .padding(22.dp),
+                .padding(22.dp)
+                .verticalScroll(rememberScrollState()),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             val tone = remember(p.theme) { schemeFor(context, p.theme.copy(dark = true)) }
@@ -410,9 +412,14 @@ private fun ProfileEditor(
                 p.name, { p = p.copy(name = it.take(16)) },
                 Modifier.fillMaxWidth(), singleLine = true, label = { Text("שם") }, shape = RoundedCornerShape(18.dp),
             )
-            Text("אווטאר תלת־ממד (Neo 3D)", Modifier.fillMaxWidth().padding(top = 16.dp, bottom = 8.dp), color = scheme.onSurfaceVariant, fontSize = 13.sp)
-            LazyRow(horizontalArrangement = Arrangement.spacedBy(10.dp), contentPadding = PaddingValues(vertical = 4.dp)) {
-                items(AVATARS, key = { it }) { id ->
+            Text("אווטאר תלת־ממד (Neo 3D)", Modifier.fillMaxWidth().padding(top = 16.dp, bottom = 10.dp), color = scheme.onSurfaceVariant, fontSize = 13.sp)
+            FlowRow(
+                Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(10.dp, Alignment.CenterHorizontally),
+                verticalArrangement = Arrangement.spacedBy(10.dp),
+                maxItemsInEachRow = 4,
+            ) {
+                AVATARS.forEach { id ->
                     val on = id == p.avatar
                     val itemScale by animateFloatAsState(if (on) 1.08f else 1f, spring(dampingRatio = 0.6f), label = "avatarPickScale")
                     Box(
@@ -420,7 +427,7 @@ private fun ProfileEditor(
                             .size(64.dp)
                             .graphicsLayer { scaleX = itemScale; scaleY = itemScale }
                             .clip(RoundedCornerShape(18.dp))
-                            .background(if (on) scheme.primaryContainer else scheme.surfaceContainerHighest.copy(alpha = 0.6f))
+                            .background(if (on) scheme.primaryContainer else Color.White.copy(alpha = 0.05f))
                             .border(if (on) 2.5.dp else 1.dp, if (on) Color.White else Color.White.copy(alpha = 0.18f), RoundedCornerShape(18.dp))
                             .clickable(remember { MutableInteractionSource() }, null) { p = p.copy(avatar = id) },
                         contentAlignment = Alignment.Center,

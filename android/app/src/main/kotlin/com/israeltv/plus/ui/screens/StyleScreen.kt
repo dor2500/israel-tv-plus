@@ -322,7 +322,7 @@ private fun DevicePreview(sample: List<Channel>, logo: (Channel) -> String) {
                     row.forEach { ch ->
                         Box(
                             Modifier.weight(1f).aspectRatio(16f / 9.5f).clip(RoundedCornerShape(8.dp))
-                                .background(scheme.surfaceContainerHigh),
+                                .background(Color.White.copy(alpha = 0.05f)),
                             contentAlignment = Alignment.Center,
                         ) { ChannelLogo(logo(ch), Modifier.fillMaxSize(0.6f), ch.isRadio) }
                     }

@@ -103,7 +103,8 @@ fun ChannelLogo(url: String, modifier: Modifier = Modifier, isRadio: Boolean = f
 }
 
 /**
- * Standard VOD / Channel poster card: frosted tile with Apple TV spring press/focus physics (no Android ripple),
+ * Standard VOD / Channel poster card: dark translucent glass (Color.White.copy(alpha = 0.05f)) with Apple TV spring
+ * press/focus physics (no Android ripple), ContentScale.Fit logo floating with no solid background behind it,
  * SemiBold title, Light metadata subtitle, and the Nuvio long-press context menu.
  */
 @Composable
@@ -129,9 +130,7 @@ fun ChannelCard(
                 .aspectRatio(16f / 9.5f)
                 .pressPhysics(interaction, glowShape = CardShape)
                 .then(if (sharedKey != null) Modifier.sharedContainer(sharedKey, CardShape) else Modifier)
-                .clip(CardShape)
-                .background(scheme.surfaceContainerHigh.copy(alpha = 0.78f))
-                .specularBorder(CardShape)
+                .frostedGlass(CardShape, Color.White.copy(alpha = 0.05f), blur = 24.dp)
                 .combinedClickable(
                     interactionSource = interaction,
                     indication = null,
@@ -147,7 +146,7 @@ fun ChannelCard(
                 ),
             contentAlignment = Alignment.Center,
         ) {
-            ChannelLogo(logo, Modifier.fillMaxSize(0.6f), channel.isRadio)
+            ChannelLogo(logo, Modifier.fillMaxSize(0.62f), channel.isRadio)
             val badge = if (channel.isRadio) "רדיו" else channel.badge
             if (badge.isNotEmpty()) {
                 Text(
@@ -248,17 +247,7 @@ fun ContinueWatchingCard(
             .aspectRatio(16f / 9f)
             .pressPhysics(interaction, glowShape = ContinueCardShape)
             .then(if (sharedKey != null) Modifier.sharedContainer(sharedKey, ContinueCardShape) else Modifier)
-            .clip(ContinueCardShape)
-            .background(
-                Brush.linearGradient(
-                    listOf(
-                        Color(0xFF1A1C29),
-                        scheme.surfaceContainerHigh.copy(alpha = 0.92f),
-                        Color(0xFF10111A),
-                    )
-                )
-            )
-            .specularBorder(ContinueCardShape)
+            .frostedGlass(ContinueCardShape, Color.White.copy(alpha = 0.05f), blur = 26.dp)
             .combinedClickable(
                 interactionSource = interaction,
                 indication = null,

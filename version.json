@@ -1,52 +1,53 @@
 {
-  "version": "4.5.3",
-  "code": 202610271046,
-  "app": 553,
+  "version": "4.5.4",
+  "code": 202610271319,
+  "app": 554,
   "shell": 3,
   "date": "2026-10-27",
   "notes": [
-    "עיצוב Kan Box בעליון ושורת קטגוריות מובנית ב-Header: העלאת שורת הקטגוריות הראשית (הכל, סרטים וסדרות, ילדים ונוער, ספורט, עוד...) לתוך אזור ה-Header העליון מתחת ללוגו הממורכז (\"ישראל TV+\"), עם טשטוש Glassmorphism דינמי המתעמעם פנימה בזמן גלילה וללא גרדיאנט קבוע.",
-    "שדרוג ה-Hero Section עם Parallax, TextureView ו-Fallback חכם: מעבר ל-PlayerView מבוסס TextureView עם RESIZE_MODE_ZOOM וניהול Lifecycle מלא, אפקט Parallax בגלילה, תמונת רקע מטושטשת כ-Fallback בזמן חציצה/שגיאה, ושורת מידע נקייה (HD • ערוצי ישראל • Live) ללא נקודה אדומה.",
-    "שכבת Zomato במסך מלא אמיתי (\"100% ישראלי\"): העלאת שכבת המסנן לרמת השורש (zIndex(100f)) מעל כל רכיבי הממשק, שדרוג כותרת המשנה לטיפוגרפיית Display מודגשת לצד דגל ישראל וקטורי בסגנון iOS, ואנימציית חזרה מרחבית אל המתג.",
-    "שורת \"המשך צפייה\" בכרטיסי 16:9 רוחביים וקו הדגשה בכותרות: עיצוב ייעודי ביחס 16:9 לשורת \"המשך צפייה\" עם פס התקדמות צבעוני בתחתית הכרטיס, הוספת קו הדגשה אנכי לבן (4.dp × 18.dp) לצד כותרות השורות, ותפריט Nuvio בלחיצה ארוכה.",
-    "משוב מגע בסגנון Apple TV, מעברי לשוניות ואווטארים בתלת־ממד (Neo 3D): החלפת אפקטי ה-Ripple הסטנדרטיים באנימציית קפיץ והילה זוהרת בפוקוס, מעברי לשוניות חלקים (Crossfade + Slide + Scale), ושימוש בלעדי באווטארים ואייקוני קטגוריות בסגנון Neo 3D במסך בחירת הפרופילים ובחלוניות."
+    "אפקט Gradient-Blur מלא (עליון ותחתון) ו-Edge-to-Edge אמיתי: מיזוג הדרגתי וחלק של הטשטוש והשכבה הכהה מאחורי ה-Header העליון וסרגל הניווט התחתון לתוך התוכן ללא קווים חדים.",
+    "תיקון וידאו ה-Hero למסך מלא עם מעבר מטושטש: תצוגת הווידאו החי ב-Hero ממלאת את כל אזור ה-Header (Modifier.fillMaxSize() + RESIZE_MODE_ZOOM) עם מעבר גרדיאנט כהה וטשטוש עדין בקצה התחתון.",
+    "סרגל ניווט תחתון Nuvio מגיב לגלילה (Scroll-Reactive): בגלילה למטה כיתובי הטקסט מתחת לאייקונים מתקפלים ונעלמים באנימציה חלקה כך שנותרים רק האייקונים המודגשים בתוך קפסולת זכוכית קומפקטית.",
+    "פלטת צבעי סטרימינג יוקרתית (Premium Streaming Palette): הוספת 4 גווני סטרימינג רוויים לבורר הצבעים לצד ברירות המחדל של המערכת – Cinematic Crimson (#E31837), Premium Azure Blue (#0A7AF5), Neon Mint Green (#10B981) ו-Vibrant Amber Orange (#F59E0B).",
+    "מבנה עמוד הערוצים ולוגואים שקופים על כרטיסי זכוכית: הצמדת 4 קטגוריות-העל + כפתור עוד... ומתג רק ישראלי לראש עמוד הערוצים, מעבר לרקע זכוכית כהה שקוף (Color.White.copy(alpha = 0.05f)) בכרטיסי הערוצים עם הסרת רקעים אטומים מ-80 לוגואים (כולל ערוץ 14 ולוגי), וגריד אימוג'ים תלת־ממדיים (Neo 3D) בסגנון iOS.",
+    "הוספת 38 ערוצים ישראליים חדשים וחינמיים ב-Full HD (289 ערוצים בסך הכל): הוספת ערוצי ילדים ישראליים (ערוץ בייבי, ילדותי, שירי ילדותי, הופ! פלא, A+ ילדים, ערוץ הכוכבים), ערוצי סרטים וסדרות (FreeTV סרטים ישראלי, פעולה, קומדיה, דרמה, מתח, אימה, רומנטי, פיל גוד, משפחה, 10 Stars, סדרות דרמה וקומדיה, הדרמות היומיות, וואמוס, גלובל), ספורט וטבע (ספורט 5 סטארס, ספורט 5 מקס, ONE Edge, ערוץ הטבע) ושידורים חיים (רוקדים עם כוכבים 24/7, הקריוקי, לייף סטייל, דוקו, אוכל, Beautyz, וואלה!+ חדשות, כאן רשת ב וידאו, והכותל המערבי)."
   ],
   "native": {
     "android": {
-      "version": "4.5.3",
-      "app": 553,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.3/IsraelTVPlus-android.apk"
+      "version": "4.5.4",
+      "app": 554,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.4/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "4.5.3",
-      "app": 553,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.3/IsraelTVPlus-windows-setup.exe"
+      "version": "4.5.4",
+      "app": 554,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.4/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "4.5.3",
-      "app": 553,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.3/com.israeltv.plus_all.ipk",
+      "version": "4.5.4",
+      "app": 554,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.4/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "4.5.3",
-      "app": 553,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.3/IsraelTVPlus-tizen-project.zip"
+      "version": "4.5.4",
+      "app": 554,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.4/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "4.5.3",
-      "app": 553,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.3/IsraelTVPlus-macos-arm64.zip"
+      "version": "4.5.4",
+      "app": 554,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.4/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "4.5.3",
-      "app": 553,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.3/IsraelTVPlus-linux-x64.zip"
+      "version": "4.5.4",
+      "app": 554,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.4/IsraelTVPlus-linux-x64.zip"
     },
     "wear": {
-      "version": "4.5.3",
-      "app": 1000453,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.3/IsraelTVPlus-wearos.apk"
+      "version": "4.5.4",
+      "app": 1000454,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.4/IsraelTVPlus-wearos.apk"
     }
   }
 }

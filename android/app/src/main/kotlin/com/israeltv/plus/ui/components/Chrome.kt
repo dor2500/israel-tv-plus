@@ -137,8 +137,8 @@ fun BrandWordmark(modifier: Modifier = Modifier) {
  * Kan Box Style Top Header & Categories (Moved UP):
  * - Top Row: Profile Avatar on one side, Centered "ישראל TV+" logo, and a minimal glass Settings gear (no text) on the other.
  * - Second Row (when [showCategories] is true): The centered Macro-Categories Row (הכל, סרטים וסדרות, ילדים ונוער, ספורט, עוד...).
- * - Dynamic Scroll Glassmorphism: No static top gradient at rest; as the user scrolls down into the content ([scrollFraction] > 0f),
- *   a heavy frosted glassmorphism blur smoothly fades in behind this entire top header + categories area.
+ * - Top Gradient-Blur: Smoothly fades the blur and dark overlay into the main content using a vertical gradient mask
+ *   rather than a harsh bottom line.
  */
 @Composable
 fun AppHeader(
@@ -160,37 +160,43 @@ fun AppHeader(
         animationSpec = tween(180),
         label = "headerScrollBlurAlpha",
     )
+    val topGradientMask = remember {
+        Brush.verticalGradient(
+            0f to Color.Black,
+            0.68f to Color.Black.copy(alpha = 0.86f),
+            0.88f to Color.Black.copy(alpha = 0.38f),
+            1f to Color.Transparent,
+        )
+    }
 
     Box(modifier.fillMaxWidth().zIndex(10f)) {
-        // Dynamic Glassmorphism Blur: fades in smoothly as the user scrolls down into the content (no static top gradient)
-        if (blurAlpha > 0.01f) {
-            Box(
-                Modifier
-                    .matchParentSize()
-                    .graphicsLayer { alpha = blurAlpha }
-                    .frostedGlass(
-                        shape = RectangleShape,
-                        tint = Color(0xFF12121A).copy(alpha = 0.74f),
-                        blur = 38.dp,
-                        border = false,
+        // Top Gradient-Blur: smoothly fades out into the content below without harsh horizontal lines
+        Box(
+            Modifier
+                .matchParentSize()
+                .graphicsLayer { alpha = (0.32f + 0.68f * blurAlpha).coerceIn(0f, 1f) }
+                .frostedGlass(
+                    shape = RectangleShape,
+                    tint = Color(0xFF0B0C14).copy(alpha = 0.78f * blurAlpha),
+                    blur = 40.dp,
+                    border = false,
+                    mask = topGradientMask,
+                )
+                .background(
+                    Brush.verticalGradient(
+                        0f to Color(0xFF07080E).copy(alpha = 0.68f + 0.24f * blurAlpha),
+                        0.62f to Color(0xFF07080E).copy(alpha = 0.22f + 0.44f * blurAlpha),
+                        0.86f to Color(0xFF07080E).copy(alpha = 0.18f * blurAlpha),
+                        1f to Color.Transparent,
                     )
-                    .drawBehind {
-                        // Subtle bottom specular hairline when blurred
-                        drawLine(
-                            color = Color.White.copy(alpha = 0.10f * blurAlpha),
-                            start = Offset(0f, size.height),
-                            end = Offset(size.width, size.height),
-                            strokeWidth = 1.dp.toPx(),
-                        )
-                    }
-            )
-        }
+                )
+        )
 
         Column(
             Modifier
                 .fillMaxWidth()
                 .statusBarsPadding()
-                .padding(bottom = if (showCategories) 10.dp else 6.dp)
+                .padding(bottom = if (showCategories) 18.dp else 14.dp)
         ) {
             Box(Modifier.height(60.dp).fillMaxWidth()) {
                 // Profile portrait: leading edge (physical right in Hebrew RTL)
@@ -232,7 +238,7 @@ fun AppHeader(
                         },
                     contentAlignment = Alignment.Center,
                 ) {
-                    BoldIcon(Icons.Rounded.Settings, "הגדרות", Modifier.size(21.dp), tint = scheme.onSurface, weight = 0.55.dp)
+                    BoldIcon(Icons.Rounded.Settings, "הגדרות", Modifier.size(21.dp), tint = scheme.onSurface, weight = 0.6.dp)
                 }
             }
 
@@ -254,9 +260,11 @@ fun AppHeader(
 }
 
 /**
- * The Nuvio navigation: a standalone glass circle holding only a bold search glyph on the physical left, and 16 dp
- * away a glass capsule whose tabs stack a bold icon directly above its label - with heavy Essentials glass blur
- * (Color(0xFF16161E) at 65%) behind both elements.
+ * Scroll-Reactive Nuvio Bottom Navbar:
+ * - Bottom Gradient-Blur: Organic blur + dark gradient behind the navbar fading smoothly upward into the content.
+ * - Separated Row: Left circular Box for a Bold Search icon; Right capsule Row for main tabs (Bold Icon directly ABOVE text).
+ * - Scroll-Reactive Behavior: When scrolling down ([collapsed] == true), text labels below the icons animate out completely,
+ *   leaving ONLY the bold icons visible to compact the navbar, with heavy glass blur on both navbar elements.
  */
 @Composable
 fun FloatingTabBar(
@@ -270,75 +278,134 @@ fun FloatingTabBar(
     val scheme = MaterialTheme.colorScheme
     val haptic = LocalHapticFeedback.current
     val tabs = listOf(Tab.Home, Tab.Channels, Tab.Mine)
-    val glass = Color(0xFF16161E).copy(alpha = 0.65f)
-    CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {
-        BoxWithConstraints(modifier.fillMaxWidth().zIndex(10f).navigationBarsPadding().padding(bottom = 18.dp)) {
-            val capsuleTarget = (maxWidth - 112.dp - if (collapsed) 30.dp else 0.dp).coerceAtLeast(200.dp)
-            val capsuleWidth by animateDpAsState(
-                capsuleTarget,
-                spring(dampingRatio = 0.82f, stiffness = Spring.StiffnessMediumLow),
-                label = "capsuleWidth",
-            )
-            Row(
-                Modifier.fillMaxWidth().padding(horizontal = 16.dp),
-                horizontalArrangement = Arrangement.spacedBy(16.dp, Alignment.CenterHorizontally),
-                verticalAlignment = Alignment.CenterVertically,
-            ) {
-                val searchInteraction = remember { MutableInteractionSource() }
-                Box(
-                    Modifier
-                        .size(64.dp)
-                        .pressPhysics(searchInteraction, tilt = false, glowShape = CircleShape)
-                        .frostedGlass(CircleShape, glass, blur = 36.dp)
-                        .clickable(searchInteraction, null) {
-                            haptic.performHapticFeedback(HapticFeedbackType.SegmentTick)
-                            onSearch()
-                        },
-                    contentAlignment = Alignment.Center,
-                ) {
-                    BoldIcon(Icons.Rounded.Search, "חיפוש", Modifier.size(26.dp), tint = scheme.onSurface, weight = 0.6.dp)
-                }
+    val glass = Color(0xFF14141E).copy(alpha = 0.72f)
+    val bottomGradientMask = remember {
+        Brush.verticalGradient(
+            0f to Color.Transparent,
+            0.38f to Color.Black.copy(alpha = 0.45f),
+            0.72f to Color.Black.copy(alpha = 0.85f),
+            1f to Color.Black,
+        )
+    }
 
-                CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Rtl) {
-                    Row(
+    Box(modifier.fillMaxWidth().zIndex(10f)) {
+        // Bottom Gradient-Blur: smoothly fades the blur and dark overlay up from the navigation bar into the content
+        Box(
+            Modifier
+                .align(Alignment.BottomCenter)
+                .fillMaxWidth()
+                .height(136.dp)
+                .frostedGlass(
+                    shape = RectangleShape,
+                    tint = Color(0xFF090A12).copy(alpha = 0.68f),
+                    blur = 36.dp,
+                    border = false,
+                    mask = bottomGradientMask,
+                )
+                .background(
+                    Brush.verticalGradient(
+                        0f to Color.Transparent,
+                        0.42f to Color(0xFF07080E).copy(alpha = 0.46f),
+                        0.76f to Color(0xFF07080E).copy(alpha = 0.78f),
+                        1f to Color(0xFF07080E).copy(alpha = 0.94f),
+                    )
+                )
+        )
+
+        CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {
+            BoxWithConstraints(
+                Modifier
+                    .align(Alignment.BottomCenter)
+                    .fillMaxWidth()
+                    .navigationBarsPadding()
+                    .padding(bottom = 18.dp)
+            ) {
+                val bouncy = spring<androidx.compose.ui.unit.Dp>(
+                    dampingRatio = 0.82f,
+                    stiffness = Spring.StiffnessMediumLow,
+                )
+                val capsuleTarget = (maxWidth - 112.dp - if (collapsed) 36.dp else 0.dp).coerceAtLeast(190.dp)
+                val capsuleWidth by animateDpAsState(capsuleTarget, bouncy, label = "capsuleWidth")
+                val barHeight by animateDpAsState(if (collapsed) 54.dp else 68.dp, bouncy, label = "barHeight")
+                val searchSize by animateDpAsState(if (collapsed) 54.dp else 64.dp, bouncy, label = "searchSize")
+
+                Row(
+                    Modifier.fillMaxWidth().padding(horizontal = 16.dp),
+                    horizontalArrangement = Arrangement.spacedBy(16.dp, Alignment.CenterHorizontally),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    val searchInteraction = remember { MutableInteractionSource() }
+                    Box(
                         Modifier
-                            .width(capsuleWidth)
-                            .height(68.dp)
-                            .frostedGlass(RoundedCornerShape(50), glass, blur = 36.dp)
-                            .padding(horizontal = 6.dp, vertical = 6.dp),
-                        horizontalArrangement = Arrangement.spacedBy(2.dp),
-                        verticalAlignment = Alignment.CenterVertically,
+                            .size(searchSize)
+                            .pressPhysics(searchInteraction, tilt = false, glowShape = CircleShape)
+                            .frostedGlass(CircleShape, glass, blur = 44.dp)
+                            .clickable(searchInteraction, null) {
+                                haptic.performHapticFeedback(HapticFeedbackType.SegmentTick)
+                                onSearch()
+                            },
+                        contentAlignment = Alignment.Center,
                     ) {
-                        tabs.forEach { tab ->
-                            val active = !searchOpen && selected == tab
-                            val tabInteraction = remember { MutableInteractionSource() }
-                            Column(
-                                Modifier
-                                    .weight(1f)
-                                    .fillMaxHeight()
-                                    .pressPhysics(tabInteraction, tilt = false, glowShape = RoundedCornerShape(50))
-                                    .clip(RoundedCornerShape(50))
-                                    .background(if (active) Color.White.copy(alpha = 0.16f) else Color.Transparent)
-                                    .clickable(tabInteraction, null) {
-                                        haptic.performHapticFeedback(HapticFeedbackType.SegmentTick)
-                                        onSelect(tab)
-                                    },
-                                horizontalAlignment = Alignment.CenterHorizontally,
-                                verticalArrangement = Arrangement.Center,
-                            ) {
-                                BoldIcon(
-                                    tab.icon, tab.label, Modifier.size(22.dp),
-                                    tint = if (active) scheme.onSurface else scheme.onSurfaceVariant,
-                                    weight = if (active) 0.6.dp else 0.45.dp,
-                                )
-                                Spacer(Modifier.height(3.dp))
-                                Text(
-                                    tab.label,
-                                    color = if (active) scheme.onSurface else scheme.onSurfaceVariant,
-                                    fontSize = 10.5.sp,
-                                    fontWeight = if (active) FontWeight.SemiBold else FontWeight.Normal,
-                                    maxLines = 1,
-                                )
+                        BoldIcon(
+                            Icons.Rounded.Search,
+                            "חיפוש",
+                            Modifier.size(if (collapsed) 24.dp else 26.dp),
+                            tint = scheme.onSurface,
+                            weight = 0.75.dp,
+                        )
+                    }
+
+                    CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Rtl) {
+                        Row(
+                            Modifier
+                                .width(capsuleWidth)
+                                .height(barHeight)
+                                .frostedGlass(RoundedCornerShape(50), glass, blur = 44.dp)
+                                .padding(horizontal = 6.dp, vertical = 6.dp),
+                            horizontalArrangement = Arrangement.spacedBy(2.dp),
+                            verticalAlignment = Alignment.CenterVertically,
+                        ) {
+                            tabs.forEach { tab ->
+                                val active = !searchOpen && selected == tab
+                                val tabInteraction = remember { MutableInteractionSource() }
+                                Column(
+                                    Modifier
+                                        .weight(1f)
+                                        .fillMaxHeight()
+                                        .pressPhysics(tabInteraction, tilt = false, glowShape = RoundedCornerShape(50))
+                                        .clip(RoundedCornerShape(50))
+                                        .background(if (active) Color.White.copy(alpha = 0.16f) else Color.Transparent)
+                                        .clickable(tabInteraction, null) {
+                                            haptic.performHapticFeedback(HapticFeedbackType.SegmentTick)
+                                            onSelect(tab)
+                                        },
+                                    horizontalAlignment = Alignment.CenterHorizontally,
+                                    verticalArrangement = Arrangement.Center,
+                                ) {
+                                    BoldIcon(
+                                        tab.icon,
+                                        tab.label,
+                                        Modifier.size(23.dp),
+                                        tint = if (active) scheme.onSurface else scheme.onSurfaceVariant,
+                                        weight = if (active) 0.75.dp else 0.58.dp,
+                                    )
+                                    AnimatedVisibility(
+                                        visible = !collapsed,
+                                        enter = fadeIn(tween(180)) + expandVertically(tween(200)),
+                                        exit = fadeOut(tween(130)) + shrinkVertically(tween(170)),
+                                    ) {
+                                        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                                            Spacer(Modifier.height(3.dp))
+                                            Text(
+                                                tab.label,
+                                                color = if (active) scheme.onSurface else scheme.onSurfaceVariant,
+                                                fontSize = 10.5.sp,
+                                                fontWeight = if (active) FontWeight.SemiBold else FontWeight.Medium,
+                                                maxLines = 1,
+                                            )
+                                        }
+                                    }
+                                }
                             }
                         }
                     }

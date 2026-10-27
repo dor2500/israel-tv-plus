@@ -21,8 +21,23 @@ data class PaletteOption(val key: String, val seed: Color, val style: PaletteSty
 
 private val GoogleBlue = Color(0xFF4285F4)
 
-/** "צבעים נוספים": Pixel-like curated seeds. */
-val CuratedPalettes: List<PaletteOption> = listOf(
+/** Curated "Premium Streaming" highly saturated shades (Netflix Crimson, Apple Azure, Hulu Mint, Vibrant Amber). */
+val StreamingPalettes: List<PaletteOption> = listOf(
+    PaletteOption("crimson", Color(0xFFE31837), PaletteStyle.Vibrant, wallpaper = false),
+    PaletteOption("azure",   Color(0xFF0A7AF5), PaletteStyle.Vibrant, wallpaper = false),
+    PaletteOption("mint",    Color(0xFF10B981), PaletteStyle.Vibrant, wallpaper = false),
+    PaletteOption("amber",   Color(0xFFF59E0B), PaletteStyle.Vibrant, wallpaper = false),
+)
+
+private val StreamingSeeds = mapOf(
+    "crimson" to Color(0xFFE31837),
+    "azure"   to Color(0xFF0A7AF5),
+    "mint"    to Color(0xFF10B981),
+    "amber"   to Color(0xFFF59E0B),
+)
+
+/** "צבעים נוספים": Premium Streaming shades first, followed by Pixel-like curated seeds. */
+val CuratedPalettes: List<PaletteOption> = StreamingPalettes + listOf(
     0xFF4285F4, 0xFF1B6EF3, 0xFF00A3BF, 0xFF00897B, 0xFF34A853, 0xFF9E9D24,
     0xFFF9AB00, 0xFFFF7043, 0xFFEA4335, 0xFFE91E63, 0xFFAB47BC, 0xFF7E57C2,
 ).mapIndexed { i, argb -> PaletteOption("c$i", Color(argb), PaletteStyle.TonalSpot, wallpaper = false) }
@@ -61,9 +76,20 @@ private fun schemeFor(context: Context, key: String, seed: Color, style: Palette
     if (key == "system" && Build.VERSION.SDK_INT >= 31) {
         return if (dark) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
     }
-    val id = "${seed.toArgb()}:$style:$dark"
+    val id = "$key:${seed.toArgb()}:$style:$dark"
     return synchronized(cache) {
-        cache.getOrPut(id) { dynamicColorScheme(seedColor = seed, isDark = dark, style = style) }
+        cache.getOrPut(id) {
+            val base = dynamicColorScheme(seedColor = seed, isDark = dark, style = style)
+            val streamingSeed = StreamingSeeds[key]
+            if (streamingSeed != null && dark) {
+                base.copy(
+                    primary = streamingSeed,
+                    onPrimary = Color.White,
+                    surfaceTint = streamingSeed,
+                )
+            } else {
+                base
+            }
+        }
     }
 }
-

@@ -46,6 +46,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalFocusManager
@@ -57,17 +60,16 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.zIndex
 import com.israeltv.plus.data.AppPrefs
 import com.israeltv.plus.data.Channel
 import com.israeltv.plus.data.ChannelData
 import com.israeltv.plus.ui.components.BoldIcon
-import com.israeltv.plus.ui.components.CategoryNeo3DIcon
 import com.israeltv.plus.ui.components.ChannelCard
 import com.israeltv.plus.ui.components.SectionHeader
 import com.israeltv.plus.ui.components.ShelfSkeleton
 import com.israeltv.plus.ui.components.feedPadding
 import com.israeltv.plus.ui.components.frostedGlass
-import com.israeltv.plus.ui.components.pressPhysics
 import com.israeltv.plus.ui.components.rememberBitChordFlingBehavior
 
 /** A two-column grid inside the master LazyColumn: one row item per pair (items(list.chunked(2))). */
@@ -101,84 +103,104 @@ private fun EmptyState(text: String) {
     )
 }
 
-/** Channels: category pills with Neo 3D icons, then every channel of the chosen category as a grid. */
+/**
+ * Channels page: mirrors the Top Header architecture from the Home page.
+ * - The 4 macro-categories (הכל, סרטים וסדרות, ילדים ונוער, ספורט) + "עוד..." pill are pinned at the TOP via AppHeader.
+ * - The "רק ישראלי" (Israeli Only) switch is pinned right below these categories.
+ * - The 2-column grid of channels is displayed below these pinned headers.
+ */
 @Composable
 fun ChannelsScreen(
     data: ChannelData?,
-    category: String?,
-    onCategory: (String?) -> Unit,
+    macroCategory: String?,
+    israeliOnly: Boolean,
+    onIsraeliOnlyChange: (Boolean) -> Unit,
+    onSwitchPositioned: (Offset) -> Unit,
     logo: (Channel) -> String,
     subtitle: (Channel) -> String,
     onPlay: (Channel, List<Channel>) -> Unit,
     listState: LazyListState = rememberLazyListState(),
 ) {
-    var shown by remember { mutableStateOf(category) }
-    LaunchedEffect(category) {
-        if (category != shown) {
-            shown = category
+    val scheme = MaterialTheme.colorScheme
+    val basePadding = feedPadding(withCategories = true)
+    val topInset = basePadding.calculateTopPadding()
+    val bottomInset = basePadding.calculateBottomPadding()
+    val pinnedSwitchHeight = 52.dp
+
+    var shownCategory by remember { mutableStateOf(macroCategory) }
+    var shownIsraeli by remember { mutableStateOf(israeliOnly) }
+    LaunchedEffect(macroCategory, israeliOnly) {
+        if (macroCategory != shownCategory || israeliOnly != shownIsraeli) {
+            shownCategory = macroCategory
+            shownIsraeli = israeliOnly
             listState.scrollToItem(0)
         }
     }
-    LazyColumn(Modifier.fillMaxSize(), listState, feedPadding(withCategories = false), flingBehavior = rememberBitChordFlingBehavior()) {
-        if (data == null) {
-            items(4) { ShelfSkeleton() }
-            return@LazyColumn
-        }
-        val list = data.categories.firstOrNull { it.key == category }?.channels ?: data.channels
-        item(key = "chips") { CategoryPills(data, category, onCategory) }
-        item(key = "count") {
-            SectionHeader(
-                data.categories.firstOrNull { it.key == category }?.name ?: "כל הערוצים",
-            )
-            Text(
-                "${list.size} ערוצים",
-                Modifier.padding(start = 20.dp, bottom = 14.dp).padding(top = 0.dp),
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                fontSize = 13.sp,
-                fontWeight = FontWeight.Light,
-            )
-        }
-        channelGrid(list, "c:", logo, subtitle) { onPlay(it, list) }
-    }
-}
 
-@Composable
-private fun CategoryPills(data: ChannelData, selected: String?, onSelect: (String?) -> Unit) {
-    val scheme = MaterialTheme.colorScheme
-    val haptic = LocalHapticFeedback.current
-    val entries = listOf<Pair<String?, String>>(null to "הכל") + data.categories.map { it.key to it.name }
-    LazyRow(
-        Modifier.padding(bottom = 16.dp),
-        contentPadding = PaddingValues(horizontal = 16.dp),
-        horizontalArrangement = Arrangement.spacedBy(8.dp),
-        flingBehavior = rememberBitChordFlingBehavior(),
-    ) {
-        items(entries, key = { it.first ?: "*" }) { (key, name) ->
-            val on = key == selected
-            val interaction = remember { MutableInteractionSource() }
-            Row(
-                Modifier
-                    .pressPhysics(interaction, tilt = false, glowShape = RoundedCornerShape(50))
-                    .clip(RoundedCornerShape(50))
-                    .background(if (on) scheme.secondaryContainer else scheme.surfaceContainerHigh.copy(alpha = 0.7f))
-                    .clickable(interaction, null) {
-                        haptic.performHapticFeedback(HapticFeedbackType.SegmentTick)
-                        onSelect(key)
-                    }
-                    .padding(start = if (key != null) 10.dp else 16.dp, end = 16.dp, top = 8.dp, bottom = 8.dp),
-                verticalAlignment = Alignment.CenterVertically,
-            ) {
-                if (key != null) {
-                    CategoryNeo3DIcon(name, size = 22.dp)
-                    Spacer(Modifier.width(8.dp))
-                }
+    Box(Modifier.fillMaxSize()) {
+        LazyColumn(
+            Modifier.fillMaxSize(),
+            state = listState,
+            contentPadding = PaddingValues(top = topInset + pinnedSwitchHeight, bottom = bottomInset),
+            flingBehavior = rememberBitChordFlingBehavior(),
+        ) {
+            if (data == null) {
+                items(4) { ShelfSkeleton() }
+                return@LazyColumn
+            }
+            val categoryChannels = if (macroCategory == null) {
+                data.channels
+            } else {
+                data.categories.firstOrNull { it.name == macroCategory || it.key == macroCategory }?.channels.orEmpty()
+            }
+            val list = if (israeliOnly) {
+                categoryChannels.filter { it.categoryEn == "israel" || it.countryHe == "ישראל" }
+            } else {
+                categoryChannels
+            }
+            item(key = "count") {
+                SectionHeader(
+                    macroCategory ?: if (israeliOnly) "ערוצי ישראל" else "כל הערוצים",
+                )
                 Text(
-                    name,
-                    color = if (on) scheme.onSecondaryContainer else scheme.onSurfaceVariant,
-                    fontSize = 14.sp,
-                    fontWeight = if (on) FontWeight.SemiBold else FontWeight.Medium,
+                    "${list.size} ערוצים",
+                    Modifier.padding(start = 20.dp, bottom = 14.dp),
+                    color = scheme.onSurfaceVariant,
+                    fontSize = 13.sp,
+                    fontWeight = FontWeight.Light,
                 )
             }
+            if (list.isEmpty()) {
+                item(key = "empty") {
+                    EmptyState(if (israeliOnly) "אין ערוצים ישראליים בקטגוריה זו" else "אין ערוצים בקטגוריה זו")
+                }
+            } else {
+                channelGrid(list, "c:", logo, subtitle) { onPlay(it, list) }
+            }
+        }
+
+        // Pinned "רק ישראלי" switch right below the pinned macro-categories header
+        Box(
+            Modifier
+                .align(Alignment.TopCenter)
+                .fillMaxWidth()
+                .padding(top = topInset - 6.dp)
+                .zIndex(5f)
+                .background(
+                    Brush.verticalGradient(
+                        0f to scheme.surfaceContainerLowest.copy(alpha = 0.94f),
+                        0.72f to scheme.surfaceContainerLowest.copy(alpha = 0.82f),
+                        1f to Color.Transparent,
+                    )
+                )
+                .padding(top = 4.dp, bottom = 10.dp),
+            contentAlignment = Alignment.Center,
+        ) {
+            IsraeliOnlySwitch(
+                checked = israeliOnly,
+                onCheckedChange = onIsraeliOnlyChange,
+                onPositioned = onSwitchPositioned,
+            )
         }
     }
 }

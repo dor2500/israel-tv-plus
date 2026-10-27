@@ -41,6 +41,7 @@ import com.israeltv.plus.data.ChannelData
 import com.israeltv.plus.data.ChannelStore
 import com.israeltv.plus.data.UpdateState
 import com.israeltv.plus.data.Updater
+import com.israeltv.plus.data.shortCategory
 import com.israeltv.plus.data.subtitle
 import com.israeltv.plus.ui.components.AmbientBackground
 import com.israeltv.plus.ui.components.AppHeader
@@ -315,12 +316,26 @@ private fun Feed(
                             subtitle = subtitle,
                             onPlay = onPlay,
                             onInfo = onInfo,
-                            onSeeAll = {
-                                s.category = it
+                            onSeeAll = { catKey ->
+                                s.category = catKey
+                                s.macroCategory = shortCategory(catKey)
                                 s.tab = Tab.Channels
                             },
                         )
-                        Tab.Channels -> ChannelsScreen(data, s.category, { s.category = it }, logo, subtitle, onPlay, s.channelsList)
+                        Tab.Channels -> ChannelsScreen(
+                            data = data,
+                            macroCategory = s.macroCategory,
+                            israeliOnly = s.israeliOnly,
+                            onIsraeliOnlyChange = { checked ->
+                                s.israeliOnly = checked
+                                s.overlayMode = if (checked) IsraeliOverlayMode.Entering else IsraeliOverlayMode.Exiting
+                            },
+                            onSwitchPositioned = { s.switchCenter = it },
+                            logo = logo,
+                            subtitle = subtitle,
+                            onPlay = onPlay,
+                            listState = s.channelsList,
+                        )
                         Tab.Mine -> MineScreen(data, prefs, logo, subtitle, onPlay)
                         Tab.Settings -> SettingsScreen(data, prefs, updater, onProfiles = onProfiles, onStyle = { s.styleOpen = true })
                     }
@@ -333,7 +348,7 @@ private fun Feed(
                 profileId = prefs.profile.id,
                 avatar = prefs.avatar,
                 scrollFraction = headerScrollFraction,
-                showCategories = s.tab == Tab.Home && !s.searchOpen,
+                showCategories = (s.tab == Tab.Home || s.tab == Tab.Channels) && !s.searchOpen,
                 selectedCategory = s.macroCategory,
                 onSelectCategory = { s.macroCategory = it },
                 onMoreCategories = { s.moreCategoriesOpen = true },

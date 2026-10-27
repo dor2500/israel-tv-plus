@@ -56,6 +56,7 @@ import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.layout.ContentScale
@@ -101,6 +102,7 @@ import com.israeltv.plus.ui.components.LocalPlayOrigin
 import com.israeltv.plus.ui.components.ShelfSkeleton
 import com.israeltv.plus.ui.components.cascadeIn
 import com.israeltv.plus.ui.components.feedPadding
+import com.israeltv.plus.ui.components.frostedGlass
 import com.israeltv.plus.ui.components.glassShimmer
 import com.israeltv.plus.ui.components.rememberBitChordFlingBehavior
 import com.israeltv.plus.ui.components.sharedContainer
@@ -237,11 +239,11 @@ private fun Modifier.bleedToTop(padding: PaddingValues): Modifier = layout { mea
 }
 
 /**
- * "רק ישראלי" directly under the hero: a compact centred label and the Material 3 switch. Its measured centre is kept
+ * "רק ישראלי" switch: a compact centred label and the Material 3 switch. Its measured centre is kept
  * so the Zomato overlay can fly its badge back into the switch when the filter is turned off.
  */
 @Composable
-private fun IsraeliOnlySwitch(
+internal fun IsraeliOnlySwitch(
     checked: Boolean,
     onCheckedChange: (Boolean) -> Unit,
     onPositioned: (Offset) -> Unit,
@@ -397,7 +399,7 @@ private fun MutedHeroHls(
     }
 
     AndroidView(
-        modifier = modifier,
+        modifier = modifier.fillMaxSize(),
         factory = { ctx ->
             (LayoutInflater.from(ctx).inflate(R.layout.hero_player_view, null, false) as PlayerView).apply {
                 useController = false
@@ -526,9 +528,7 @@ private fun HeroPage(
             if (playBackground && !videoFailed && !ch.isRadio && (ch.url.contains(".m3u8", ignoreCase = true) || ch.auth == "mako")) {
                 Box(
                     Modifier
-                        .fillMaxWidth()
-                        .aspectRatio(16f / 9f)
-                        .align(Alignment.TopCenter)
+                        .fillMaxSize()
                         .graphicsLayer { alpha = videoAlpha }
                 ) {
                     MutedHeroHls(
@@ -537,14 +537,30 @@ private fun HeroPage(
                         onError = { videoFailed = true },
                         modifier = Modifier.fillMaxSize(),
                     )
-                    // Soft vertical gradient over the 16:9 video frame so its bottom edge melts into the dark hero canvas
+                    // Seamless Transition: dark gradient combined with a slight blur effect at the bottom edge of the video
+                    Box(
+                        Modifier
+                            .align(Alignment.BottomCenter)
+                            .fillMaxWidth()
+                            .height(168.dp)
+                            .blur(12.dp)
+                            .background(
+                                Brush.verticalGradient(
+                                    0f to Color.Transparent,
+                                    0.42f to Color(0xFF07080E).copy(alpha = 0.58f),
+                                    0.78f to scheme.surfaceContainerLowest.copy(alpha = 0.90f),
+                                    1f to scheme.surfaceContainerLowest,
+                                )
+                            )
+                    )
                     Box(
                         Modifier.fillMaxSize().background(
                             Brush.verticalGradient(
-                                0f to Color.Black.copy(alpha = 0.16f),
-                                0.45f to Color.Transparent,
-                                0.78f to Color.Black.copy(alpha = 0.68f),
-                                1f to Color.Black,
+                                0f to Color.Black.copy(alpha = 0.24f),
+                                0.34f to Color.Transparent,
+                                0.68f to Color.Black.copy(alpha = 0.62f),
+                                0.88f to scheme.surfaceContainerLowest.copy(alpha = 0.94f),
+                                1f to scheme.surfaceContainerLowest,
                             )
                         )
                     )
