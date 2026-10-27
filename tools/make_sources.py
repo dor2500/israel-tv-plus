@@ -28,6 +28,15 @@ HOSTS = {
     "edge2.il.kab.tv": ("קבלה לעם – השרת של הערוץ", "official"),
     "995.livecdn.biz": ("99.5FM – LiveCDN (רשמי)", "official"),
     "radio.diki-mizrahit.co.il": ("רדיו שירי דיכאון – השרת של התחנה", "official"),
+    "d1zqtf09wb8nt5.cloudfront.net": ("FreeTV – השידור הרשמי (AWS CloudFront)", "official"),
+    "d2249b6f08tjt0.cloudfront.net": ("קשת 12 (כתוביות) – AWS CloudFront", "official"),
+    "d2xg1g9o5vns8m.cloudfront.net": ("רשת 13 – AWS CloudFront", "official"),
+    "kan11w.media.kan.org.il": ("כאן 11 – שרת רשמי (Akamai)", "official"),
+    "channel14-live-consume.immergo.tv": ("עכשיו 14 – שרת רשמי (Immergo)", "official"),
+    "shoppingil-rewriter.vidnt.com": ("ערוץ הקניות – שרת רשמי (Vidnt)", "official"),
+    "janya-digimix.akamaized.net": ("Angel TV Hebrew – Akamai (רשמי)", "official"),
+    "live.creacast.com": ("ILTV – CreaCast (רשמי)", "official"),
+    "jlt-jltv-xumo.otteravision.com": ("JLTV – Ottera / Xumo FAST", "fast"),
     "d18b0e6mopany4.cloudfront.net": ("רשת 13 – AWS CloudFront", "official"),
     "d2dffl3588mvfk.cloudfront.net": ("ערוץ FAST ישראלי – AWS CloudFront", "fast"),
     "d15ds134q59udk.cloudfront.net": ("ערוץ FAST ישראלי – AWS CloudFront", "fast"),
@@ -84,7 +93,9 @@ def host(url):
 
 def who(url, c=None):
     h = host(url)
-    if c is not None and c.get("src"):
+    if h in HOSTS:
+        return HOSTS[h]
+    if c is not None and c.get("src") and c["src"].get("host") == h:
         return c["src"].get("by", h), c["src"].get("kind", "restream")
     if h not in HOSTS and c is not None and c.get("imported"):
         return h, "public"  # bulk import from iptv-org: public stream, owner not checked one by one
@@ -214,7 +225,7 @@ def main():
             c.pop("src", None)
             continue
         name, k = who(c["url"], c)
-        if not c.get("src"):
+        if not c.get("src") or c["src"].get("host") != host(c["url"]) or host(c["url"]) in HOSTS:
             c["src"] = {"by": name, "kind": k, "host": host(c["url"]), "found": plain(found(c)), "web": plain(web(c))}
     with open(os.path.join(ROOT, "channels.json"), "w", encoding="utf-8") as f:
         json.dump(chans, f, ensure_ascii=False, indent=2)

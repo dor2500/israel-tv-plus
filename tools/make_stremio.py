@@ -121,7 +121,7 @@ def main():
     }
     dump("manifest.json", manifest)
 
-    israeli_sports = {'sport1_israel', 'sport2_israel', 'sport3_israel', 'sport4_israel', 'sport5_israel_hd'}
+    israeli_sports = {'sport1_israel', 'sport2_israel', 'sport3_israel', 'sport4_israel', 'sport5_israel_hd', 'sport5_plus_hd', 'sport5_live_hd', 'sport5_gold_hd', 'sport5_4k_uhd', 'one_1_hd', 'one_2_hd', 'one_doco_hd'}
 
     for cat, cat_info in zip(cats, manifest["catalogs"]):
         metas = []

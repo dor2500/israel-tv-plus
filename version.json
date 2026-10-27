@@ -1,54 +1,51 @@
 {
-  "version": "4.5.1",
-  "code": 202610270706,
-  "app": 551,
+  "version": "4.5.2",
+  "code": 202610270842,
+  "app": 552,
   "shell": 3,
   "date": "2026-10-27",
   "notes": [
-    "סרגל עליון סימטרי בסגנון Kan Box: הלוגו המרכזי (\"ישראל TV+\") מיושר בדיוק למרכז הסרגל העליון, עם אווטאר הפרופיל בצד אחד וכפתור הגדרות מינימליסטי מעוגל מזכוכית בצד השני.",
-    "אייקונים מודגשים ונקיים (Nuvio Bold Icons): שדרוג כל האייקונים בממשק (הגדרות, חיפוש, בית, ערוצים, מועדפים) לקווים עבים, מעוגלים ומודגשים בסגנון פרימיום.",
-    "אזור Hero משודרג ומתג \"רק ישראלי\": מיזוג חלק של וידאו הרקע החי (ExoPlayer) לתוך הרקע הכהה באמצעות מעבר צבעים אנכי רך, שורת מידע נקייה (HD • ערוצי ישראל • Live 🔴) מתחת ללוגו הערוץ, והצבת מתג \"רק ישראלי\" מתחת ל-Hero.",
-    "שורת קטגוריות-על ממורכזת (Macro-Categories): שורת קטגוריות ממורכזת מתחת ל-Hero ולמתג עם 4 קטגוריות ראשיות (הכל, סרטים וסדרות, ילדים ונוער, ספורט) וכפתור חמישי קבוע (עוד...) הפותח חלונית תחתונה (ModalBottomSheet) לשאר הקטגוריות.",
-    "תפריט לחיצה ארוכה בכרטיסי ערוצים (Nuvio Context Menu): לחיצה ארוכה על כרטיס ערוץ פותחת תפריט הקשר מהיר להוספה או הסרה ממועדפים ולצפייה בפרטי הערוץ עם משוב רטט (Haptic Feedback).",
-    "אנימציית שכבת-על בסגנון Zomato למסנן \"רק ישראלי\": הפעלת המתג מציגה שכבת-על במסך מלא עם תג \"100% ישראלי\", טבעות פועמות בכחול-לבן ודגל ישראל וקטורי בסגנון iOS; כיבוי המתג מכווץ ומטיס את התג חזרה ישירות למיקום המרחבי של המתג (updateTransition).",
-    "סרגל ניווט תחתון מפוצל ומסך פרופילים עם אימוג'י: כפתור חיפוש עגול ונפרד משמאל לצד קפסולת ניווט שקופה (Color(0xFF16161E) ב-65% אטימות) עם מרווח תחתון של 120.dp ברשימות, ואווטארים מבוססי אימוג'י גדולים ואיכותיים (👨🏽, 👩🏻‍🦱, 👽 ועוד) עם אנימציית קפיץ ומסגרת לבנה בפוקוס."
+    "הוספת ערוץ הילדים, לוגי, יויו, ג'וניור, FOMO ועוד עשרות ערוצים ישראליים ב-Full HD: שילוב שידורי ה-CDN הרשמיים ב-1080p HTTPS של ערוצי הילדים והנוער (ערוץ הילדים, לוגי, יויו, ג'וניור, FOMO, כאן חינוכית 23, ניקלודיאון), ערוצי הספורט הישראליים (ספורט 5 FHD, ספורט 5 פלוס, ספורט 5 לייב, ספורט 5 גולד, ספורט 5 4K, ערוץ ONE 1, ערוץ ONE 2, ONE דוקו), וערוצי הדרמה והבידור (ויוה, ויוה פלוס, ארץ נהדרת 24/7, סברי מרנן 24/7, מוזיקה IL, פודי Foody).",
+    "ניקוי מלא של שידורים לא פעילים ואימות חי לכל 251 הערוצים: הסרת כל 142 קישורי הסרק (ottrast) ותחנות הרדיו השבורות, ואימות אוטומטי שכל ערוץ ותחנה בקטלוג משדרים בפועל וידאו או שמע תקין.",
+    "מנגנון גיבוי שרתים אוטומטי (Multi-CDN Failover): לערוצי הברודקאסט והילדים הישראליים (כאן 11, קשת 12, רשת 13, עכשיו 14, ערוץ 24, ערוץ 9, ערוץ הכנסת, i24NEWS, ספורט 5, כאן חינוכית ועוד) הוגדרו עד 5 שרתי גיבוי עצמאיים למעבר אוטומטי ושקוף במקרה של תקלה בשרת הראשי.",
+    "שדרוג ממשק הטלוויזיה ב-LG webOS, סמסונג Tizen, המחשב והאתר: תיקון ניגון תחנות רדיו מבוססות HLS (.m3u8) באמצעות חיבור אוטומטי של Hls.js לנגן השמע, סידור מחדש של מדפי ה-Apple TV+ במסכי LG TV (ברודקאסט, ספורט חי, סרטים וסדרות, ילדים ונוער, רדיו ומסורת), והתאמה מלאה של קטגוריות העל ומסנן \"רק ישראלי\" ללא שינוי בעיצוב האנדרואיד."
   ],
   "native": {
     "android": {
-      "version": "4.5.1",
-      "app": 551,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.1/IsraelTVPlus-android.apk"
+      "version": "4.5.2",
+      "app": 552,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.2/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "4.5.1",
-      "app": 551,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.1/IsraelTVPlus-windows-setup.exe"
+      "version": "4.5.2",
+      "app": 552,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.2/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "4.5.1",
-      "app": 551,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.1/com.israeltv.plus_all.ipk",
+      "version": "4.5.2",
+      "app": 552,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.2/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "4.5.1",
-      "app": 551,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.1/IsraelTVPlus-tizen-project.zip"
+      "version": "4.5.2",
+      "app": 552,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.2/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "4.5.1",
-      "app": 551,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.1/IsraelTVPlus-macos-arm64.zip"
+      "version": "4.5.2",
+      "app": 552,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.2/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "4.5.1",
-      "app": 551,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.1/IsraelTVPlus-linux-x64.zip"
+      "version": "4.5.2",
+      "app": 552,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.2/IsraelTVPlus-linux-x64.zip"
     },
     "wear": {
-      "version": "4.5.1",
-      "app": 1000451,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.1/IsraelTVPlus-wearos.apk"
+      "version": "4.5.2",
+      "app": 1000452,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.2/IsraelTVPlus-wearos.apk"
     }
   }
 }

@@ -200,7 +200,7 @@
   var CAT_ORDER = ['ערוצי ישראל - שידור חי', 'ילדים ונוער (בעברית)', 'רדיו ישראלי (Israeli Radio)', 'מנויים ואפליקציות (TV Apps)',
     'ספורט (Sports)', 'חדשות מהעולם (News)', 'כלכלה ועסקים (Business)', 'סרטים וסדרות (Movies & Series)', 'קומדיה (Comedy)',
     'אוכל ובישול (Food)', 'ילדים מהעולם (Kids World)', 'מוזיקה (Music TV)', 'טבע ודוקו (Documentary & Nature)',
-    'טיולים והרפתקאות (Travel)', 'מדע ולמידה (Science)', 'לייף סטייל ובידור', 'מסורת וקהילה', 'דת ואמונה (Religion)',
+    'טיולים והרפתקאות (Travel)', 'מדע ולמידה (Science)', 'לייף סטייל ובידור', 'מסורת וקהילה', 'דת ומסורת', 'דת ואמונה (Religion)',
     'ערוצים בינלאומיים (World)'];
 
   var KIND_LABEL = { official: '✅ שידור רשמי', fast: '✅ ערוץ FAST חינמי (רשמי, עם פרסומות)', restream: '⚠️ ממסר של צד שלישי (לא השרת של הערוץ)' };
@@ -562,7 +562,12 @@
     else if (state.cat === 'RECENT') {
       r = state.recents.map(function (id) { var i = indexInAll(id); return i === -1 ? null : state.all[i]; }).filter(Boolean);
     } else if (state.cat === 'DUB') r = r.filter(foreign);
-    else if (state.cat !== 'ALL') r = r.filter(function (c) { return c.category === state.cat; });
+    else if (state.cat !== 'ALL') r = r.filter(function (c) {
+      if (c.category === state.cat) return true;
+      if (state.cat === 'ספורט (Sports)' && /^(sport|one_)/i.test(c.id)) return true;
+      if (state.cat === 'סרטים וסדרות (Movies & Series)' && /^(viva|eretz|keshet_drama|keshet_comedy|hot_|yes_movies)/i.test(c.id)) return true;
+      return false;
+    });
     if (q) {
       r = r.filter(function (c) {
         return c.name.toLowerCase().indexOf(q) !== -1 || (c.title && c.title.toLowerCase().indexOf(q) !== -1) ||
@@ -1376,13 +1381,15 @@
   /** Which shelf a channel belongs on. */
   function atvBucket(c) {
     var en = c.categoryEn || '', cat = c.category || '';
-    if (en === 'radio' || isRadioCh(c)) return 'radio';
-    if (/ערוצי ישראל/.test(cat) || en === 'news' || en === 'israel') return 'broadcast';
-    if (en === 'sports' || /ספורט/.test(cat)) return 'sports';
+    if (/ילדים/.test(cat) && !isRadioCh(c)) return 'kids';
+    if (isRadioCh(c)) return 'radio';
+    if (/ספורט/.test(cat) || en === 'sports') return 'sports';
     if (/ילדים/.test(cat) || en === 'kids') return 'kids';
-    if (en === 'movies' || en === 'world_movies' || en === 'comedy') return 'movies';
-    if (en === 'religion' || en === 'tradition' || en === 'community' || /מסורת|דת ואמונה/.test(cat)) return 'faith';
-    if (/^(life|docu|documentary|music|travel|food|science)$/.test(en)) return 'fun';
+    if (/סרטים|סדרות|קומדיה/.test(cat) || en === 'movies' || en === 'world_movies' || en === 'comedy' || en === 'series' || en === 'classic') return 'movies';
+    if (/מסורת|דת/.test(cat) || en === 'religion' || en === 'tradition' || en === 'community') return 'faith';
+    if (/אוכל|טיולים|מדע|מוזיקה|דוקו|לייף/.test(cat) || /^(life|lifestyle|entertainment|cooking|culture|education|docu|documentary|music|travel|food|science)$/.test(en)) return 'fun';
+    if (/בינלאומי|חדשות מהעולם/.test(cat) || en === 'world') return 'world';
+    if (/ערוצי ישראל|כלכלה/.test(cat) || en === 'israel' || en === 'business') return 'broadcast';
     return 'world';
   }
 
@@ -1397,12 +1404,18 @@
     }
     var buckets = {};
     ATV_ROWS.forEach(function (r) { buckets[r[0]] = []; });
+    var kidsRadio = [];
     state.all.forEach(function (c) {
       var b = atvBucket(c);
+      if (b === 'broadcast') {
+        if (/^(music_il|keshet_music|foody|keshet_food|good_life|hot_bidur|hot_reality|hot_vacation|yes_docu|radios_video)/i.test(c.id)) buckets.fun.push(c);
+      }
       // Israeli sports radio (Radio Sport 5) also opens the sports shelf, next to Sport 5's live stream
-      if (b === 'radio' && !c.imported && /ספורט/.test(c.name)) buckets.sports.unshift(c);
+      if (b === 'radio' && !c.imported && /ספורט/.test(c.name)) buckets.sports.push(c);
+      if (b === 'radio' && /ילדים/.test(c.category || '')) { buckets.kids.push(c); kidsRadio.push(c); return; }
       buckets[b].push(c);
     });
+    kidsRadio.forEach(function (c) { buckets.radio.push(c); });
     var rows = [], seen = {}, mine = [];
     state.recents.concat(state.favorites).forEach(function (id) {
       var i = indexInAll(id);
@@ -1906,14 +1919,19 @@
   }
 
   function loadStream(ch) {
-    if (ch.auth === 'mako') {
+    state.backupIdx = 0;
+    loadCandidate(ch, streamUrl(ch));
+  }
+
+  function loadCandidate(ch, rawUrl) {
+    if ((rawUrl === streamUrl(ch) && ch.auth === 'mako') || /mako-streaming\.akamaized\.net/i.test(rawUrl)) {
       hideError();
       spinner(true);
-      makoUrl(streamUrl(ch), function (url) { if (state.playing === ch) loadResolved(ch, url); },
+      makoUrl(rawUrl, function (url) { if (state.playing === ch) loadResolved(ch, url); },
         function () { if (state.playing === ch) onFatal(ch, 'לא התקבלה הרשאת צפייה מ-mako'); });
       return;
     }
-    loadResolved(ch, streamUrl(ch));
+    loadResolved(ch, rawUrl);
   }
 
   function loadResolved(ch, url) {
@@ -1931,6 +1949,19 @@
       el.radioName.textContent = ch.name;
       setLogo(el.radioLogo, el.radioMono, ch);
       el.osdQuality.textContent = '📻 רדיו';
+      if (/\.m3u8(\?|$)/i.test(url) && window.Hls && Hls.isSupported()) {
+        var rhls = new Hls({ enableWorker: true, manifestLoadingMaxRetry: 2, levelLoadingMaxRetry: 2, fragLoadingMaxRetry: 3 });
+        state.hls = rhls;
+        rhls.loadSource(url);
+        rhls.attachMedia(el.radioAudio);
+        rhls.on(Hls.Events.MANIFEST_PARSED, function () { startPlay(el.radioAudio, ch); });
+        rhls.on(Hls.Events.ERROR, function (e, data) {
+          if (!data.fatal) return;
+          if (data.type === Hls.ErrorTypes.MEDIA_ERROR && state.retries < 2) { state.retries++; rhls.recoverMediaError(); return; }
+          onFatal(ch, 'שגיאה בניגון השמע');
+        });
+        return;
+      }
       el.radioAudio.src = url;
       el.radioAudio.onerror = function () { onFatal(ch, 'שגיאה בניגון השמע'); };
       startPlay(el.radioAudio, ch);
@@ -2021,6 +2052,17 @@
 
   function onFatal(ch, reason) {
     if (state.playing !== ch) return;
+    if (ch.backups && ch.backups.length) {
+      while ((state.backupIdx || 0) < ch.backups.length) {
+        var bUrl = ch.backups[state.backupIdx++];
+        if (!bUrl || bUrl === state.streamUrl) continue;
+        if (IS_WEB && !RELAY && (/^http:/i.test(bUrl) || /mako-streaming\.akamaized\.net/i.test(bUrl))) continue;
+        if (RELAY && IS_WEB && /^http:/i.test(bUrl)) bUrl = RELAY + '/?u=' + encodeURIComponent(bUrl);
+        spinner(true, 'עובר לשרת גיבוי (' + state.backupIdx + '/' + ch.backups.length + ')...');
+        loadCandidate(ch, bUrl);
+        return;
+      }
+    }
     if (state.preview === ch && state.overlay !== 'player') { stopPlayback(); el.player.classList.add('hidden'); return; }
     spinner(false);
     if (Dub) Dub.detach();

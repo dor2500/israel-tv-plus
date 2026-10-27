@@ -35,9 +35,14 @@ def png_logo(svg_rel):
     if not EDGE:
         return ""
     os.makedirs(os.path.dirname(png), exist_ok=True)
-    subprocess.run([EDGE[0], "--headless", "--disable-gpu", "--hide-scrollbars", "--default-background-color=00000000",
-                    "--force-device-scale-factor=2", "--window-size=300,120", "--screenshot=" + png,
-                    "file:///" + svg.replace("\\", "/")], capture_output=True, timeout=60)
+    import tempfile
+    with tempfile.TemporaryDirectory() as tmpd:
+        try:
+            subprocess.run([EDGE[0], "--headless=new", "--user-data-dir=" + tmpd, "--disable-gpu", "--hide-scrollbars",
+                            "--default-background-color=00000000", "--force-device-scale-factor=2", "--window-size=300,120",
+                            "--screenshot=" + png, "file:///" + svg.replace("\\", "/")], capture_output=True, timeout=12)
+        except Exception:
+            pass
     return rel if os.path.isfile(png) else ""
 
 
@@ -81,7 +86,7 @@ def main():
         # channels that need a viewing ticket from the broadcaster (Keshet on mako) only play in the apps
         chans = [c for c in json.load(f) if c.get("kind") != "app" and not c.get("auth")]
     write("playlist.m3u", chans)
-    write("playlist-israel.m3u", [c for c in chans if c["category"] in ISRAELI])
+    write("playlist-israel.m3u", [c for c in chans if c["category"] in ISRAELI or c.get("categoryEn") == "israel"])
     write("playlist-tv.m3u", [c for c in chans if c.get("kind") != "radio"])
     write("radio.m3u", [c for c in chans if c.get("kind") == "radio"])
 

@@ -1,1 +1,1 @@
-{"streams":[{"name":"ישראל TV+\nLIVE","title":"ערוץ ויוה HD\n📡 mcquack.net – אתר ממסר (restream) של צד שלישי\n⚠️ ממסר צד שלישי","url":"http://stream.mcquack.net/43/index.m3u8","behaviorHints":{"notWebReady":true,"bingeGroup":"itv-live"}}]}
+{"streams":[{"name":"ישראל TV+\nLIVE","title":"ערוץ ויוה HD (Viva טלנובלות)\n📡 FreeTV – השידור הרשמי (AWS CloudFront)\n✅ שידור רשמי","url":"https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/viva/live.livx/playlist.m3u8","behaviorHints":{"bingeGroup":"itv-live"}}]}
