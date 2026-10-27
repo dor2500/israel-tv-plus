@@ -1,53 +1,51 @@
 {
-  "version": "4.5.4",
-  "code": 202610271319,
-  "app": 554,
+  "version": "4.5.5",
+  "code": 202610271427,
+  "app": 555,
   "shell": 3,
   "date": "2026-10-27",
   "notes": [
-    "אפקט Gradient-Blur מלא (עליון ותחתון) ו-Edge-to-Edge אמיתי: מיזוג הדרגתי וחלק של הטשטוש והשכבה הכהה מאחורי ה-Header העליון וסרגל הניווט התחתון לתוך התוכן ללא קווים חדים.",
-    "תיקון וידאו ה-Hero למסך מלא עם מעבר מטושטש: תצוגת הווידאו החי ב-Hero ממלאת את כל אזור ה-Header (Modifier.fillMaxSize() + RESIZE_MODE_ZOOM) עם מעבר גרדיאנט כהה וטשטוש עדין בקצה התחתון.",
-    "סרגל ניווט תחתון Nuvio מגיב לגלילה (Scroll-Reactive): בגלילה למטה כיתובי הטקסט מתחת לאייקונים מתקפלים ונעלמים באנימציה חלקה כך שנותרים רק האייקונים המודגשים בתוך קפסולת זכוכית קומפקטית.",
-    "פלטת צבעי סטרימינג יוקרתית (Premium Streaming Palette): הוספת 4 גווני סטרימינג רוויים לבורר הצבעים לצד ברירות המחדל של המערכת – Cinematic Crimson (#E31837), Premium Azure Blue (#0A7AF5), Neon Mint Green (#10B981) ו-Vibrant Amber Orange (#F59E0B).",
-    "מבנה עמוד הערוצים ולוגואים שקופים על כרטיסי זכוכית: הצמדת 4 קטגוריות-העל + כפתור עוד... ומתג רק ישראלי לראש עמוד הערוצים, מעבר לרקע זכוכית כהה שקוף (Color.White.copy(alpha = 0.05f)) בכרטיסי הערוצים עם הסרת רקעים אטומים מ-80 לוגואים (כולל ערוץ 14 ולוגי), וגריד אימוג'ים תלת־ממדיים (Neo 3D) בסגנון iOS.",
-    "הוספת 38 ערוצים ישראליים חדשים וחינמיים ב-Full HD (289 ערוצים בסך הכל): הוספת ערוצי ילדים ישראליים (ערוץ בייבי, ילדותי, שירי ילדותי, הופ! פלא, A+ ילדים, ערוץ הכוכבים), ערוצי סרטים וסדרות (FreeTV סרטים ישראלי, פעולה, קומדיה, דרמה, מתח, אימה, רומנטי, פיל גוד, משפחה, 10 Stars, סדרות דרמה וקומדיה, הדרמות היומיות, וואמוס, גלובל), ספורט וטבע (ספורט 5 סטארס, ספורט 5 מקס, ONE Edge, ערוץ הטבע) ושידורים חיים (רוקדים עם כוכבים 24/7, הקריוקי, לייף סטייל, דוקו, אוכל, Beautyz, וואלה!+ חדשות, כאן רשת ב וידאו, והכותל המערבי)."
+    "החזרת ערוצי צ'רלטון ספורט 1, 2, 3, 4 ו-6 הישראליים והסרת ערוצי הספורט המזויפים: הוחזרו השידורים הישראליים המקוריים של ספורט 1 HD, ספורט 2 HD, ספורט 3 HD, ספורט 4 FHD ו-ספורט 6 HD (כולל מקורות גיבוי כפולים לכל ערוץ), ונמחקו הזרמים האוקראיניים שהיו משובצים תחת ספורט 1–5.",
+    "הרחבת חבילת ערוצי הילדים והנוער הישראליים ל-26 ערוצי טלוויזיה בעברית: נוספו ואומתו ערוץ הופ! ילדים HD, ערוץ הופ! ילדות ישראלית HD, ערוץ הופ! פלא HD, ערוץ לולי לפעוטות בעברית HD, ערוץ דיסני ישראל HD, ערוץ דיסני ג'וניור ישראל HD, ערוץ ניקלודיאון ישראל HD, ערוץ ניק ג'וניור ישראל HD, ערוץ טין ניק ישראל HD, ערוץ זום ZOOM HD, ערוץ ג'וניור HD, ערוץ הילדים HD, ערוץ לוגי HD, ערוץ יויו HD, כאן חינוכית 23 FHD, ערוץ בייבי ישראל HD, yes קולנוע ילדים FHD, HOT סינמה פמילי HD, ערוץ WIZ! HD, ערוץ HOT באזז HD, ערוץ FOMO HD, ערוץ ילדותי HD, ערוץ שירי ילדותי HD, ערוץ A+ ילדים HD, ערוץ הכוכבים HD ו-ערוץ 16 ילדים ונוער HD.",
+    "אימות 1:1 של כל 339 הערוצים מול תמונת השידור החיה והוספת ערוצי HOT, yes, ויוה ודוקו ישראליים: הוחלפו כל הערוצים הרוסיים השגויים בערוצים הישראליים האמיתיים עם כתוביות ודיבוב בעברית – HOT 3 FHD, HOT HBO HD, HOT סינמה 1–5, HOT קולנוע ישראלי, HOT קולנוע רומנטי, HOT דרמה, HOT זון, HOT קומדי, HOT בידור, HOT ריאל, HOT 8, HOT מיינד, yes קולנוע ישראלי, yes קולנוע אקשן/דרמה/קומדיה FHD, yes TV אקשן/דרמה/קומדיה HD, yes דוקו HD, ויוה טלנובלות, ויוה איסטנבול, ויוה פרימיום, הערוץ הים תיכוני וים תיכוני+, ערוצי הדרמות הטורקיות+/2/3 FHD, הדרמות הספרדיות 1/2, הדרמות ההודיות 1/2, בוליווד HD/קלאסי/בולישואו, נשיונל ג'יאוגרפיק ו-Nat Geo Wild FHD, דיסקברי FHD, ההיסטוריה FHD, בית+, החיים הטובים, הבריאות, הטיולים, ערוץ האוכל, E! ישראל ו-ערוץ אגו.",
+    "תיקון ושדרוג מקיף לכל 339 אייקוני הערוצים (שקופים לחלוטין וללא היפוך אותיות): שולבו הלוגואים הרשמיים והשקופים של הערוצים הישראליים לצד רינדור מחדש של כל האייקונים העבריים עם תמיכת RTL מלאה ורקע שקוף לחלוטין על גבי כרטיסי הזכוכית הכהים."
   ],
   "native": {
     "android": {
-      "version": "4.5.4",
-      "app": 554,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.4/IsraelTVPlus-android.apk"
+      "version": "4.5.5",
+      "app": 555,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.5/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "4.5.4",
-      "app": 554,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.4/IsraelTVPlus-windows-setup.exe"
+      "version": "4.5.5",
+      "app": 555,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.5/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "4.5.4",
-      "app": 554,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.4/com.israeltv.plus_all.ipk",
+      "version": "4.5.5",
+      "app": 555,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.5/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "4.5.4",
-      "app": 554,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.4/IsraelTVPlus-tizen-project.zip"
+      "version": "4.5.5",
+      "app": 555,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.5/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "4.5.4",
-      "app": 554,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.4/IsraelTVPlus-macos-arm64.zip"
+      "version": "4.5.5",
+      "app": 555,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.5/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "4.5.4",
-      "app": 554,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.4/IsraelTVPlus-linux-x64.zip"
+      "version": "4.5.5",
+      "app": 555,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.5/IsraelTVPlus-linux-x64.zip"
     },
     "wear": {
-      "version": "4.5.4",
-      "app": 1000454,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.4/IsraelTVPlus-wearos.apk"
+      "version": "4.5.5",
+      "app": 1000455,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.5/IsraelTVPlus-wearos.apk"
     }
   }
 }

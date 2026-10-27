@@ -25,7 +25,7 @@ def main():
     removed_fake = 0
     for ch in channels:
         url = ch.get("url", "")
-        if "ottrast.com" in url or any(w in url for w in ["yes.co.il", "hot.net.il", "stingtv.co.il", "partner.co.il", "cellcom.co.il"]):
+        if any(w in url for w in ["yes.co.il", "hot.net.il", "stingtv.co.il", "partner.co.il", "cellcom.co.il"]):
             removed_fake += 1
             continue
         filtered.append(ch)
