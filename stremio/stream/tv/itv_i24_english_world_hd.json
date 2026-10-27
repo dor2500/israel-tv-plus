@@ -1,1 +1,1 @@
-{"streams":[{"name":"ישראל TV+\nLIVE","title":"i24NEWS English World HD\n📡 FreeTV – השידור הרשמי (AWS CloudFront)\n✅ שידור רשמי","url":"https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/i24_en/live.livx/playlist.m3u8","behaviorHints":{"bingeGroup":"itv-live"}}]}
+{"streams":[{"name":"ישראל TV+\nLIVE","title":"i24NEWS English World HD\n📡 FreeTV – השידור הרשמי (AWS CloudFront)\n✅ שידור רשמי","url":"https://hlspackager.akamaized.net/live/DB/i24_ENGLISH/HLS/i24_ENGLISH.m3u8","behaviorHints":{"bingeGroup":"itv-live"}}]}

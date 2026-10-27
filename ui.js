@@ -156,17 +156,17 @@ window.ITV_UI = (function (I) {
         '<div class="osd-clock" id="osd-clock">00:00</div>' +
       '</div>' +
       '<div class="osd-center ph" id="osd-center">' +
-        '<button class="obtn round" data-act="prev" aria-label="ערוץ קודם">' + I('prev') + '</button>' +
-        '<button class="obtn round big" data-act="playpause" aria-label="השהה / נגן"><b class="ob-play">' + I('pause') + '</b></button>' +
         '<button class="obtn round" data-act="next" aria-label="ערוץ הבא">' + I('next') + '</button>' +
+        '<button class="obtn round big" data-act="playpause" aria-label="השהה / נגן"><b class="ob-play">' + I('pause') + '</b></button>' +
+        '<button class="obtn round" data-act="prev" aria-label="ערוץ קודם">' + I('prev') + '</button>' +
       '</div>' +
       '<div class="osd-dub hidden" id="osd-dub"><span class="dub-dot"></span><span id="osd-dub-text"></span></div>' +
       '<div class="osd-bottom">' +
         '<div class="osd-buttons" id="osd-buttons">' +
           '<button class="obtn tv" data-act="back" title="למדריך">' + I('back') + '<span>מדריך</span></button>' +
-          '<button class="obtn tv" data-act="prev" title="ערוץ קודם">' + I('prev') + '</button>' +
-          '<button class="obtn tv" data-act="playpause" title="השהה / נגן"><b class="ob-play" id="ob-play">' + I('pause') + '</b></button>' +
           '<button class="obtn tv" data-act="next" title="ערוץ הבא">' + I('next') + '</button>' +
+          '<button class="obtn tv" data-act="playpause" title="השהה / נגן"><b class="ob-play" id="ob-play">' + I('pause') + '</b></button>' +
+          '<button class="obtn tv" data-act="prev" title="ערוץ קודם">' + I('prev') + '</button>' +
           '<button class="obtn" data-act="list" title="רשימת ערוצים">' + I('list') + '<span>ערוצים</span></button>' +
           '<button class="obtn ph" data-act="cast" id="ob-cast" title="שידור לטלוויזיה (Cast / AirPlay / LG)">' + I('cast') + '<span>שידור ל-TV</span></button>' +
           '<button class="obtn ph" data-act="dub" title="דיבוב לעברית">' + I('mic') + '<span>דיבוב</span></button>' +

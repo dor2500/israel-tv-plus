@@ -1,49 +1,50 @@
 {
-  "version": "4.5.7",
-  "code": 202610271528,
-  "app": 557,
+  "version": "4.5.8",
+  "code": 202610271617,
+  "app": 558,
   "shell": 3,
   "date": "2026-10-27",
   "notes": [
-    "שידור ישיר מהטלפון לטלוויזיה (Google Cast / Chromecast / Android TV) [Issue #26]: נוספה מערכת גילוי ושידור מובנית בנגן האנדרואיד ובדפדפן המאפשרת לגלות מכשירי Chromecast, Google TV ו-Android TV ברשת ה-Wi-Fi המקומית, לשדר אליהם ישירות את הערוץ או תחנת הרדיו המתנגנים עם לוגו ושם הערוץ, ולהמשיך לשלוט מהטלפון (השהיה/ניגון, מעבר בין ערוצים קדימה/אחורה וניתוק בלחיצה להחזרת הניגון לטלפון) כולל מעבר אוטומטי בין שרתי גיבוי תואמי HTTPS.",
-    "תמיכה בטלוויזיות חכמות של LG webOS, Samsung ו-Miracast (DLNA + Screen Share): נוסף מנוע סריקת DLNA / UPnP AV (SSDP) המזהה טלוויזיות LG webOS ו-Samsung Tizen ברשת הביתית לשידור ישיר ללא צורך ב-Chromecast, לצד הפרדה ברורה בתפריט השידור בין שידור ישיר (Google Cast / DLNA / AirPlay) לבין שיקוף מסך אלחוטי (Miracast / LG Screen Share / Smart View) ופתיחה באפליקציות שידור חיצוניות."
+    "מעבר למקורות שידור רשמיים ורבי-חיבורים (Multi-CDN HTTPS) כברירת מחדל: קודמו השידורים הרשמיים ב-H.264 FHD (CloudFront / Akamai Mako / MedOne Kan / Redge / GoStreaming) למקור השידור הראשי (url) בערוצים הישראליים המרכזיים – כולל קשת 12 FHD, כאן 11 FHD, רשת 13 FHD, עכשיו 14 FHD, i24NEWS עברית / אנגלית / צרפתית / ערבית, ערוץ 9, מכאן 33, ערוץ 24, ערוץ הכנסת 99, ספורט 5 / 5 פלוס / 5 לייב / 5 גולד / 5 סטארס / 5 מקס, ONE 1 / ONE 2, ויוה טלנובלות / ויוה איסטנבול, ערוץ בייבי, ערוץ הילדים, לוגי, כאן חינוכית 23 ו-ג'וניור – כך שווידאו ה-Hero במסך הבית והנגן הראשי פועלים במקביל ללא חסימת חיבורים בודדים, לצד מנגנון זיהוי אוטומטי של שרת איטי או רשימת השמעה ריקה למעבר מיידי לשרת גיבוי.",
+    "תיקון מלא של התאמת הערוצים ומניעת הצגת ערוץ שגוי: נסרקו ותוקנו כל מזהי השידור וכתובות הגיבוי בכל 350 הערוצים – תוקנו המקורות של i24NEWS עברית (שהצביע לערוץ Beautyz), ערוץ 24 HD (שהצביע לעכשיו 14), ספורט 5 פלוס (שהגיבוי שלו הצביע ל-i24NEWS), i24NEWS בערבית (שהצביע לשידור באנגלית), כאן רשת ב', הידברות 97, פודי, Beautyz ו-HOT HBO, והוסרו כל כתובות הגיבוי הצולבות בין ערוצים שונים (כגון האח הגדול, הלא TV, ערוץ הילדים, ONE 1/2, ספורט 5 מקס/סטארס, ויוה איסטנבול/טלנובלות וקבלה לעם).",
+    "תיקון כיוון כפתורי החצים קדימה/אחורה בנגן הטלוויזיה (TV OSD & Remote): סודרו מחדש כפתורי ערוץ הבא (▶|) ו-ערוץ קודם (|◀) בשורת הכפתורים של נגן הטלוויזיה (#osd-buttons) ובמרכז המסך כך שלחיצה על החץ קדימה (מימין לכפתור ההשהיה, בדומה לאפליקציית הטלפון) או לחיצה על החץ למעלה/קדימה בשלט הטלוויזיה (▲) מעבירה תמיד לערוץ הבא (+1) במקום אחורה."
   ],
   "native": {
     "android": {
-      "version": "4.5.7",
-      "app": 557,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.7/IsraelTVPlus-android.apk"
+      "version": "4.5.8",
+      "app": 558,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.8/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "4.5.7",
-      "app": 557,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.7/IsraelTVPlus-windows-setup.exe"
+      "version": "4.5.8",
+      "app": 558,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.8/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "4.5.7",
-      "app": 557,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.7/com.israeltv.plus_all.ipk",
+      "version": "4.5.8",
+      "app": 558,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.8/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "4.5.7",
-      "app": 557,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.7/IsraelTVPlus-tizen-project.zip"
+      "version": "4.5.8",
+      "app": 558,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.8/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "4.5.7",
-      "app": 557,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.7/IsraelTVPlus-macos-arm64.zip"
+      "version": "4.5.8",
+      "app": 558,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.8/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "4.5.7",
-      "app": 557,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.7/IsraelTVPlus-linux-x64.zip"
+      "version": "4.5.8",
+      "app": 558,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.8/IsraelTVPlus-linux-x64.zip"
     },
     "wear": {
-      "version": "4.5.7",
-      "app": 1000457,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.7/IsraelTVPlus-wearos.apk"
+      "version": "4.5.8",
+      "app": 1000458,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.8/IsraelTVPlus-wearos.apk"
     }
   }
 }

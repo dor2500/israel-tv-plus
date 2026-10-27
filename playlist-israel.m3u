@@ -2,23 +2,23 @@
 #EXTINF:-1 tvg-id="Kan11.il" tvg-name="כאן 11 FHD" tvg-chno="1" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/kan11.png" group-title="ערוצי ישראל",כאן 11 FHD
 https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan11/live.livx/playlist.m3u8
 #EXTINF:-1 tvg-id="Keshet12.il" tvg-name="קשת 12 FHD" tvg-chno="2" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/keshet12.png" group-title="ערוצי ישראל",קשת 12 FHD
-http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2349/index.m3u8
+https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/keshet_12/live.livx/playlist.m3u8
 #EXTINF:-1 tvg-id="Reshet13.il" tvg-name="רשת 13 FHD" tvg-chno="3" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/reshet13.png" group-title="ערוצי ישראל",רשת 13 FHD
 https://d18b0e6mopany4.cloudfront.net/out/v1/2f2bc414a3db4698a8e94b89eaf2da2a/index.m3u8
 #EXTINF:-1 tvg-id="Channel14.il" tvg-name="עכשיו 14 FHD" tvg-chno="4" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/now14.png" group-title="ערוצי ישראל",עכשיו 14 FHD
 https://r.il.cdn-redge.media/livehls/oil/ch14/live/ch14/live.livx/playlist.m3u8
 #EXTINF:-1 tvg-id="i24NEWS.il" tvg-name="i24NEWS עברית HD" tvg-chno="5" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/i24news_he.png" group-title="ערוצי ישראל",i24NEWS עברית HD
-http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32164/index.m3u8
+https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/i24_he/live.livx/playlist.m3u8
 #EXTINF:-1 tvg-id="Channel9.il" tvg-name="ערוץ 9 הישראלי FHD" tvg-chno="6" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/ch9.png" group-title="ערוצי ישראל",ערוץ 9 הישראלי FHD
 https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/ch9/live.livx/playlist.m3u8
 #EXTINF:-1 tvg-id="Makan33.il" tvg-name="מכאן 33 HD" tvg-chno="7" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/makan33.png" group-title="ערוצי ישראל",מכאן 33 HD
 https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/makan/live.livx/playlist.m3u8
 #EXTINF:-1 tvg-id="Channel24.il" tvg-name="ערוץ 24 HD" tvg-chno="8" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/ch24.png" group-title="ערוצי ישראל",ערוץ 24 HD
-http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12242/index.m3u8
+https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/music24/live.livx/playlist.m3u8
 #EXTINF:-1 tvg-id="BigBrother26.il" tvg-name="האח הגדול LIVE 24/7 HD" tvg-chno="9" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/big_brother_il.png" group-title="ערוצי ישראל",האח הגדול LIVE 24/7 HD
 http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32128/index.m3u8
 #EXTINF:-1 tvg-id="KnessetChannel.il" tvg-name="ערוץ הכנסת 99 HD" tvg-chno="10" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/knesset.png" group-title="ערוצי ישראל",ערוץ הכנסת 99 HD
-http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12238/index.m3u8
+https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kneset/live.livx/playlist.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="ערוץ כלכלה 10 HD" tvg-chno="11" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/calcala10.png" group-title="ערוצי ישראל",ערוץ כלכלה 10 HD
 https://r.il.cdn-redge.media/livehls/oil/calcala-live/live/channel10/live.livx/playlist.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="ynet Live" tvg-chno="12" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/ynet_live.png" group-title="ערוצי ישראל",ynet Live
@@ -102,15 +102,15 @@ https://r.il.cdn-redge.media/livehls/oil/kancdn-live/live/kan11_subs/live.livx/p
 #EXTINF:-1 tvg-id="" tvg-name="רשת 13 – נגיש" tvg-chno="52" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/reshet13.png" group-title="ערוצי ישראל",רשת 13 – נגיש
 https://reshet.g-mana.live/media/4607e158-e4d4-4e18-9160-3dc3ea9bc677/mainManifest.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="ערוץ הכנסת – נגיש" tvg-chno="53" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/knesset_access.png" group-title="ערוצי ישראל",ערוץ הכנסת – נגיש
-https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kneset/live.livx/playlist.m3u8
+https://kneset.gostreaming.tv/p2-Accessibility/_definst_/myStream/index.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="i24NEWS English" tvg-chno="54" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/i24news_en.png" group-title="ערוצי ישראל",i24NEWS English
 https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/i24_en/live.livx/playlist.m3u8
 #EXTINF:-1 tvg-id="i24NEWSFrench.il" tvg-name="i24NEWS צרפתית HD" tvg-chno="55" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/i24news_fr.png" group-title="ערוצי ישראל",i24NEWS צרפתית HD
 https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/i24_fr/live.livx/playlist.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="i24NEWS العربية HD" tvg-chno="56" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/i24news_ar.png" group-title="ערוצי ישראל",i24NEWS العربية HD
-https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/i24_en/live.livx/playlist.m3u8
+https://hlspackager.akamaized.net/live/DB/i24_ARABIC/HLS/i24_ARABIC.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="i24NEWS English World HD" tvg-chno="57" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/i24news_en.png" group-title="ערוצי ישראל",i24NEWS English World HD
-https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/i24_en/live.livx/playlist.m3u8
+https://hlspackager.akamaized.net/live/DB/i24_ENGLISH/HLS/i24_ENGLISH.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="FreeTV לייף סטייל HD" tvg-chno="58" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/freetv_lifestyle_il.png" group-title="ערוצי ישראל",FreeTV לייף סטייל HD
 https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/imagin_lifestyle/live.livx/playlist.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="FreeTV דוקו ישראלי HD" tvg-chno="59" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/freetv_doco_il.png" group-title="ערוצי ישראל",FreeTV דוקו ישראלי HD
@@ -122,7 +122,7 @@ https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/karaoke/live.livx/
 #EXTINF:-1 tvg-id="" tvg-name="ערוץ המוזיקה הישראלי 24/7 HD" tvg-chno="62" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/music_channel_il.png" group-title="ערוצי ישראל",ערוץ המוזיקה הישראלי 24/7 HD
 https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/music_channel/live.livx/playlist.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="כאן רשת ב – אולפן וידאו חי HD" tvg-chno="63" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/kan_bet.png" group-title="ערוצי ישראל",כאן רשת ב – אולפן וידאו חי HD
-https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11_hevc/live.livx/playlist.m3u8
+https://r.il.cdn-redge.media/livehls/oil/kancdn-live/live/radio/kan_reshet_bet/live.livx/playlist.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="הכותל המערבי – שידור חי 24/7" tvg-chno="64" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/kotel_live_il.png" group-title="ערוצי ישראל",הכותל המערבי – שידור חי 24/7
 https://cdn1.cast-tv.com/23595/Live_Kotel3_ABR/playlist.m3u8
 #EXTINF:-1 tvg-id="TVRain.il" tvg-name="ערוץ דוז'ד ישראל HD (TV Rain)" tvg-chno="65" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/rain_tv_il.png" group-title="ערוצי ישראל",ערוץ דוז'ד ישראל HD (TV Rain)
@@ -158,7 +158,7 @@ https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/junior/live.livx/p
 #EXTINF:-1 tvg-id="" tvg-name="ערוץ יויו HD (YoYo)" tvg-chno="80" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/yoyo_tv.png" group-title="ילדים ונוער (בעברית)",ערוץ יויו HD (YoYo)
 https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/yoyo/live.livx/playlist.m3u8
 #EXTINF:-1 tvg-id="BabyTV.il" tvg-name="ערוץ בייבי ישראל HD (BabyTV)" tvg-chno="81" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/baby_tv_he.png" group-title="ילדים ונוער (בעברית)",ערוץ בייבי ישראל HD (BabyTV)
-http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2370/index.m3u8
+https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/baby_new/live.livx/playlist.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="yes קולנוע ילדים FHD (yes Movies Kids)" tvg-chno="82" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/yes_cinema_kids.png" group-title="ילדים ונוער (בעברית)",yes קולנוע ילדים FHD (yes Movies Kids)
 http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12273/index.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="HOT סינמה פמילי HD (סרטי ילדים ומשפחה)" tvg-chno="83" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hot_cinema_family_il.png" group-title="ילדים ונוער (בעברית)",HOT סינמה פמילי HD (סרטי ילדים ומשפחה)
@@ -228,9 +228,9 @@ https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/free_global/live.l
 #EXTINF:-1 tvg-id="" tvg-name="ערוץ הטבע הישראלי HD (Teva)" tvg-chno="187" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/teva_israel_hd.png" group-title="טבע ודוקו",ערוץ הטבע הישראלי HD (Teva)
 https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/teva_channel/live.livx/playlist.m3u8
 #EXTINF:-1 tvg-id="Hidabroot.il" tvg-name="ערוץ הידברות 97 HD" tvg-chno="192" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hidabroot.png" group-title="מסורת וקהילה",ערוץ הידברות 97 HD
-https://cdn.cybercdn.live/HidabrootIL/Live97/playlist.m3u8
+https://cdn.cybercdn.live/HidabrootIL/Live/playlist.m3u8
 #EXTINF:-1 tvg-id="KabbalahTV.il" tvg-name="ערוץ קבלה לעם 66 HD" tvg-chno="193" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/kabbalah.png" group-title="מסורת וקהילה",ערוץ קבלה לעם 66 HD
-https://edge3.uk.kab.tv/live/tv66-heb-high/playlist.m3u8
+https://edge1.il.kab.tv/live/tv66-heb-high/playlist.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="ברסלב: הלכות ודף יומי" tvg-chno="194" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/breslev_halachot.png" group-title="מסורת וקהילה" radio="true",ברסלב: הלכות ודף יומי
 https://cast.breslevforyou.co.il/listen/halachot/radio.mp3
 #EXTINF:-1 tvg-id="" tvg-name="ברסלב: ספרי ברסלב" tvg-chno="195" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/breslev_books.png" group-title="מסורת וקהילה" radio="true",ברסלב: ספרי ברסלב
@@ -240,13 +240,13 @@ https://cast.breslevforyou.co.il/listen/shorts/radio.mp3
 #EXTINF:-1 tvg-id="" tvg-name="ברסלב: תורה וזימרה" tvg-chno="197" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/breslev_torah.png" group-title="מסורת וקהילה" radio="true",ברסלב: תורה וזימרה
 https://cast.breslevforyou.co.il/listen/music-toravezimra/radio.mp3
 #EXTINF:-1 tvg-id="" tvg-name="קבלה לעם – רוסית (ערוץ 66)" tvg-chno="198" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/kabbalah_ru.png" group-title="מסורת וקהילה",קבלה לעם – רוסית (ערוץ 66)
-https://edge2.il.kab.tv/live/tv66-rus-high/playlist.m3u8
+https://edge1.il.kab.tv/live/tv66-rus-high/playlist.m3u8
 #EXTINF:-1 tvg-id="Channel16.il" tvg-name="ערוץ 16 ישראל" tvg-chno="199" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/channel16.png" group-title="מסורת וקהילה",ערוץ 16 ישראל
 https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/channel16/live.livx/playlist.m3u8
 #EXTINF:-1 tvg-id="KabbalahEn.il" tvg-name="קבלה לעם International HD" tvg-chno="200" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/kabbalah.png" group-title="מסורת וקהילה",קבלה לעם International HD
-https://edge1.il.kab.tv/live/eng-high/playlist.m3u8
+https://edge1.il.kab.tv/live/tv66-eng-high/playlist.m3u8
 #EXTINF:-1 tvg-id="KabbalahEs.il" tvg-name="קבלה לעם Español HD" tvg-chno="201" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/kabbalah.png" group-title="מסורת וקהילה",קבלה לעם Español HD
-https://edge1.il.kab.tv/live/spa-high/playlist.m3u8
+https://edge1.il.kab.tv/live/tv66-spa-high/playlist.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="כאן ב - רשת ב" tvg-chno="202" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/kan_bet.png" group-title="רדיו ישראלי" radio="true",כאן ב - רשת ב
 https://playerservices.streamtheworld.com/api/livestream-redirect/KAN_BET.mp3
 #EXTINF:-1 tvg-id="" tvg-name="כאן גימל" tvg-chno="203" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/kan_gimel.png" group-title="רדיו ישראלי" radio="true",כאן גימל

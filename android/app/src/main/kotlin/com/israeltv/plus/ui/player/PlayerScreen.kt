@@ -295,6 +295,10 @@ fun PlayerScreen(
         player.volume = 1.0f
         player.prepare()
         player.playWhenReady = !castController.isCasting
+        delay(9000)
+        if (buffering && !playing && error == null && !castController.isCasting && sourceIndex + 1 < candidates.size) {
+            sourceIndex += 1
+        }
     }
 
     // controls hide after 4 s of playback without a touch (stay visible while casting)

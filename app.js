@@ -45,7 +45,7 @@
     theme: 'oled', accent: 'auto', uiScale: 1, cols: 0, hero: true, numbers: true, hints: true, perf: 'auto',
     startCat: 'ALL', autoplay: false, hideAppOnly: false, hiddenCats: [], hidden: [], showSource: true,
     pic: 'off', aspect: 'fit', sharpen: false, quality: 'auto', latency: 'stable', osdSec: 5, osdClock: true,
-    retry: true, zap: 'category', upNext: false,
+    retry: true, zap: 'category', upNext: true, upNextV2: true,
     remote: 'auto', keyRed: 'menu', keyGreen: 'aspect', keyYellow: 'fav', keyBlue: 'dub', longOk: 'menu', numWait: 1.2,
     saver: 2, kids: false, kidsPin: '', autoUpdate: true, liveUpdates: true, avatar: '1f60e',
     lastId: '', lastCat: 'ALL', seenColors: false, googleEmail: ''
@@ -57,6 +57,7 @@
     try { s = JSON.parse(localStorage.getItem('itv_settings') || '{}') || {}; } catch (e) { s = {}; }
     var out = {};
     Object.keys(DEFAULTS).forEach(function (k) { out[k] = s[k] !== undefined ? s[k] : DEFAULTS[k]; });
+    if (!s.upNextV2) { out.upNext = true; out.upNextV2 = true; }
     // settings of the previous version
     try {
       if (s.theme === undefined && localStorage.getItem('israel_tv_theme') === 'light') out.theme = 'light';
@@ -1988,6 +1989,7 @@
   }
 
   function stopPlayback() {
+    if (state.stallTimer) { clearTimeout(state.stallTimer); state.stallTimer = null; }
     if (Dub) Dub.detach();
     if (state.hls) { try { state.hls.destroy(); } catch (e) {} state.hls = null; }
     el.video.pause(); el.video.removeAttribute('src'); try { el.video.load(); } catch (e) {}
@@ -2041,9 +2043,15 @@
     state.streamUrl = url;
     hideError();
     state.retries = 0;
+    if (state.stallTimer) { clearTimeout(state.stallTimer); state.stallTimer = null; }
     if (Dub) Dub.detach();
     if (state.hls) { try { state.hls.destroy(); } catch (e) {} state.hls = null; }
     spinner(true);
+    if (ch.backups && (state.backupIdx || 0) < ch.backups.length) {
+      state.stallTimer = setTimeout(function () {
+        if (state.playing === ch && state.streamUrl === url) onFatal(ch, 'מעבר לשרת גיבוי');
+      }, 9500);
+    }
 
     if (isAudioUrl(url, ch)) {
       el.video.pause(); el.video.removeAttribute('src'); try { el.video.load(); } catch (e) {}
@@ -2091,6 +2099,10 @@
       hls.attachMedia(v);
       var adjusted = false;
       hls.on(Hls.Events.LEVEL_LOADED, function (e, data) {
+        if (data && data.details && (!data.details.fragments || !data.details.fragments.length)) {
+          onFatal(ch, 'השידור אינו פעיל בשרת זה');
+          return;
+        }
         if (!adjusted && Dub) { adjusted = true; Dub.adjustMainHls(hls, data.details, ch); }
       });
       hls.on(Hls.Events.MANIFEST_PARSED, function (e, data) {
@@ -2136,7 +2148,11 @@
   // silences it. The one silent picture is the TV browse screen's background preview (state.preview), and
   // atvWatch() turns its sound on the moment it becomes the player.
   function startPlay(m, ch) {
-    var done = function () { spinner(false); updatePlayIcon(); };
+    var done = function () {
+      if (state.stallTimer) { clearTimeout(state.stallTimer); state.stallTimer = null; }
+      spinner(false);
+      updatePlayIcon();
+    };
     m.muted = state.preview === ch;
     m.volume = 1;
     m.addEventListener('playing', function onp() { m.removeEventListener('playing', onp); done(); });
@@ -2154,6 +2170,7 @@
   }
 
   function onFatal(ch, reason) {
+    if (state.stallTimer) { clearTimeout(state.stallTimer); state.stallTimer = null; }
     if (state.playing !== ch) return;
     if (ch.backups && ch.backups.length) {
       while ((state.backupIdx || 0) < ch.backups.length) {
