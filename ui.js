@@ -10,7 +10,7 @@ window.ITV_ICONS = {
   tv: 'M21 6h-7.59l2.94-2.94c.2-.2.2-.51 0-.71s-.51-.2-.71 0L12 5.99 8.36 2.35c-.2-.2-.51-.2-.71 0s-.2.51 0 .71L10.59 6H3c-1.1 0-2 .89-2 2v12c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.11-.9-2-2-2zm-1 14H4c-.55 0-1-.45-1-1V9c0-.55.45-1 1-1h16c.55 0 1 .45 1 1v10c0 .55-.45 1-1 1zM9.5 16.8l5.6-3.36c.3-.18.3-.61 0-.79L9.5 9.2c-.31-.19-.7.04-.7.39v6.82c0 .35.39.58.7.39z',
   star: 'M12 17.27l4.15 2.51c.76.46 1.69-.22 1.49-1.08l-1.1-4.72 3.67-3.18c.67-.58.31-1.68-.57-1.75l-4.83-.41-1.89-4.46c-.34-.81-1.5-.81-1.84 0L9.19 8.63l-4.83.41c-.88.07-1.24 1.17-.57 1.75l3.67 3.18-1.1 4.72c-.2.86.73 1.54 1.49 1.08l4.15-2.5z',
   starOutline: 'M19.65 9.04l-4.84-.42-1.89-4.45c-.34-.81-1.5-.81-1.84 0L9.19 8.63l-4.83.41c-.88.07-1.24 1.17-.57 1.75l3.67 3.18-1.1 4.72c-.2.86.73 1.54 1.49 1.08l4.15-2.5 4.15 2.51c.76.46 1.69-.22 1.49-1.08l-1.1-4.73 3.67-3.18c.67-.58.32-1.68-.56-1.75zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z',
-  settings: 'M19.5 12c0-.23-.01-.45-.03-.68l1.86-1.41c.4-.3.51-.86.26-1.3l-1.87-3.23c-.25-.44-.79-.62-1.25-.42l-2.15.91c-.37-.26-.76-.49-1.17-.68l-.29-2.31c-.06-.5-.49-.88-.99-.88h-3.73c-.51 0-.94.38-1 .88l-.29 2.31c-.41.19-.8.42-1.17.68l-2.15-.91c-.46-.2-1-.02-1.25.42L2.41 8.62c-.25.44-.14.99.26 1.3l1.86 1.41c-.02.22-.03.44-.03.67s.01.45.03.68l-1.86 1.41c-.4.3-.51.86-.26 1.3l1.87 3.23c.25.44.79.62 1.25.42l2.15-.91c.37.26.76.49 1.17.68l.29 2.31c.06.5.49.88.99-.88h3.73c.5 0 .93-.38.99-.88l.29-2.31c.41-.19.8-.42 1.17-.68l2.15.91c.46.2 1 .02 1.25-.42l1.87-3.23c.25-.44.14-.99-.26-1.3l-1.86-1.41c.03-.23.04-.45.04-.68zm-7.46 3.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z',
+  settings: 'M19.5 12c0-.23-.01-.45-.03-.68l1.86-1.41c.4-.3.51-.86.26-1.3l-1.87-3.23c-.25.44-.79-.62-1.25-.42l-2.15.91c-.37-.26-.76-.49-1.17-.68l-.29-2.31c-.06-.5-.49-.88-.99-.88h-3.73c-.51 0-.94.38-1 .88l-.29 2.31c-.41.19-.8.42-1.17.68l-2.15-.91c-.46-.2-1-.02-1.25.42L2.41 8.62c-.25.44-.14.99.26 1.3l1.86 1.41c-.02.22-.03.44-.03.67s.01.45.03.68l-1.86 1.41c-.4.3-.51.86-.26 1.3l1.87 3.23c.25.44.79.62 1.25.42l2.15-.91c.37.26.76.49 1.17.68l.29 2.31c.06.5.49.88.99.88h3.73c.5 0 .93-.38.99-.88l.29-2.31c.41-.19.8-.42 1.17-.68l2.15.91c.46.2 1 .02 1.25-.42l1.87-3.23c.25-.44.14-.99-.26-1.3l-1.86-1.41c.03-.23.04-.45.04-.68zm-7.46 3.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z',
   search: 'M15.5 14h-.79l-.28-.27c1.2-1.4 1.82-3.31 1.48-5.34-.47-2.78-2.79-5-5.59-5.34-4.23-.52-7.79 3.04-7.27 7.27.34 2.8 2.56 5.12 5.34 5.59 2.03.34 3.94-.28 5.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z',
   play: 'M8 6.82v10.36c0 .79.87 1.27 1.54.84l8.14-5.18c.62-.39.62-1.29 0-1.69L9.54 5.98C8.87 5.55 8 6.03 8 6.82z',
   pause: 'M8 19c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2s-2 .9-2 2v10c0 1.1.9 2 2 2zm6-12v10c0 1.1.9 2 2 2s2-.9 2-2V7c0-1.1-.9-2-2-2s-2 .9-2 2z',
@@ -29,9 +29,8 @@ window.ITV_ICONS = {
   pip: 'M18 7h-6c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1h6c.55 0 1-.45 1-1V8c0-.55-.45-1-1-1zm3-4H3c-1.1 0-2 .9-2 2v14c0 1.1.9 1.98 2 1.98h18c1.1 0 2-.88 2-1.98V5c0-1.1-.9-2-2-2zm-1 16.01H4c-.55 0-1-.45-1-1V5.98c0-.55.45-1 1-1h16c.55 0 1 .45 1 1v12.03c0 .55-.45 1-1 1z',
   chevron: 'M14.71 6.71c-.39-.39-1.02-.39-1.41 0L8.71 11.3c-.39.39-.39 1.02 0 1.41l4.59 4.59c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41L10.83 12l3.88-3.88c.39-.39.38-1.03 0-1.41z',
   cast: 'M21 3H3c-1.1 0-2 .9-2 2v3h2V5h18v14h-7v2h7c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM1 18v3h3c0-1.66-1.34-3-3-3zm0-4v2c2.76 0 5 2.24 5 5h2c0-3.87-3.13-7-7-7zm0-4v2c4.97 0 9 4.03 9 9h2c0-6.08-4.93-11-11-11z',
-  epg: 'M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2zm-7 5h5v5h-5v-5z',
-  multiview: 'M3 3h8v8H3V3zm10 0h8v8h-8V3zM3 13h8v8H3v-8zm10 0h8v8h-8v-8z',
-  server: 'M4 6h16v4H4V6zm0 8h16v4H4v-4z',
+  multiview: 'M4 4h7c.55 0 1 .45 1 1v5c0 .55-.45 1-1 1H4c-.55 0-1-.45-1-1V5c0-.55.45-1 1-1zm9 0h7c.55 0 1 .45 1 1v5c0 .55-.45 1-1 1h-7c-.55 0-1-.45-1-1V5c0-.55.45-1 1-1zM4 13h7c.55 0 1 .45 1 1v5c0 .55-.45 1-1 1H4c-.55 0-1-.45-1-1v-5c0-.55.45-1 1-1zm9 0h7c.55 0 1 .45 1 1v5c0 .55-.45 1-1 1h-7c-.55 0-1-.45-1-1v-5c0-.55.45-1 1-1z',
+  server: 'M4 6h16c1.1 0 2-.9 2-2s-.9-2-2-2H4c-1.1 0-2 .9-2 2s.9 2 2 2zm0 8h16c1.1 0 2-.9 2-2s-.9-2-2-2H4c-1.1 0-2 .9-2 2s.9 2 2 2zm0 8h16c1.1 0 2-.9 2-2s-.9-2-2-2H4c-1.1 0-2 .9-2 2s.9 2 2 2z',
   radio: 'M3.24 6.15C2.51 6.43 2 7.17 2 8v12c0 1.1.9 2 2 2h16c1.11 0 2-.9 2-2V8c0-1.1-.9-2-2-2H8.3l7.43-3c.46-.19.68-.71.49-1.17-.19-.46-.71-.68-1.17-.49L3.24 6.15zM7 20c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm13-8h-2v-1c0-.55-.45-1-1-1s-1 .45-1 1v1H4V9c0-.55.45-1 1-1h14c.55 0 1 .45 1 1v3z'
 };
 window.ITV_ICON = function (name, cls) {
@@ -40,7 +39,6 @@ window.ITV_ICON = function (name, cls) {
 };
 
 window.ITV_UI = (function (I) {
-  // VisionOS-style glass skeletons: what the phone home shows until app.js has built the real one
   var rep = function (s, n) { var o = ''; for (var i = 0; i < n; i++) o += s; return o; };
   var skelCard = '<div class="pcard"><div class="pc-media skel"></div><div class="skel skel-t"></div><div class="skel skel-s"></div></div>';
   var skelHome = '<div class="slide skel-slide"><div class="slide-body"><div class="skel skel-logo"></div><div class="skel skel-line"></div>' +
@@ -66,11 +64,11 @@ window.ITV_UI = (function (I) {
       '<button class="top-btn nav-top hidden" id="btn-update" data-nav="update"><span class="ico">' + I('download') + '</span><span>עדכון זמין</span></button>' +
       '<button class="top-btn nav-top hidden" id="btn-getapp" data-nav="getapp"><span class="ico">' + I('phone') + '</span><span>הורדת האפליקציה</span></button>' +
       '<button class="top-btn nav-top hidden" id="btn-kids-exit" data-nav="kids"><span class="ico">' + I('kids') + '</span><span>מצב ילדים</span></button>' +
-      '<button class="top-btn nav-top" id="btn-multiview" data-nav="multiview" title="פיצול מסך – צפייה במספר ערוצים במקביל"><span class="ico">' + I('multiview') + '</span><span>פיצול מסך</span></button>' +
+      '<button class="top-btn nav-top" id="btn-multiview" data-nav="multiview" title="פיצול מסך (צפייה בכמה ערוצים במקביל)"><span class="ico">' + I('multiview') + '</span><span>פיצול מסך</span></button>' +
+      '<button class="top-btn ph" id="btn-cast-top" aria-label="שידור לטלוויזיה" title="שידור לטלוויזיה"><span class="ico">' + I('cast') + '</span></button>' +
       '<button class="top-btn ph" id="btn-search" aria-label="חיפוש"><span class="ico">' + I('search') + '</span></button>' +
       '<button class="top-btn nav-top tv" id="btn-settings" data-nav="settings"><span class="ico">' + I('settings') + '</span><span>הגדרות</span></button>' +
       '<div class="clock" id="clock">00:00</div>' +
-      // phone: the profile avatar (3D Noto Emoji) at the trailing end of the Apple TV-style header; a dot = update
       '<button class="avatar ph" id="btn-avatar" aria-label="פרופיל ועדכונים"><img id="avatar-img" alt="">' +
         '<i class="avatar-dot hidden" id="avatar-dot"></i></button>' +
     '</div>' +
@@ -106,14 +104,14 @@ window.ITV_UI = (function (I) {
     '</main>' +
   '</div>' +
 
-  // ---------------------------------------------------------------- TV: Apple TV+ browse screen (app.js "TV: the Apple TV+")
+  // ---------------------------------------------------------------- TV: Apple TV+ browse screen
   '<div class="atv" id="atv">' +
     '<div class="atv-stage"><div class="atv-bd" id="atv-bd-a"></div><div class="atv-bd" id="atv-bd-b"></div><div class="atv-shade"></div></div>' +
     '<nav class="atv-pill" id="atv-pill"></nav>' +
     '<section class="atv-meta" id="atv-meta-a"></section><section class="atv-meta" id="atv-meta-b"></section>' +
     '<div class="atv-search" id="atv-search"><span class="ico">' + I('search') + '</span><input id="atv-q" type="search" ' +
       'autocomplete="off" spellcheck="false" enterkeyhint="search" placeholder="חיפוש ערוץ – שם, מדינה או מספר"></div>' +
-    '<div class="atv-kb" id="atv-kb"></div>' +
+    '<div class="atv-kb hidden" id="atv-kb" role="group" aria-label="מקלדת חיפוש"></div>' +
     '<div class="atv-shelves" id="atv-shelves"><div class="atv-rows" id="atv-rows"></div></div>' +
     '<div class="atv-colors" id="atv-colors"></div>' +
   '</div>' +
@@ -128,7 +126,6 @@ window.ITV_UI = (function (I) {
     '<button class="nb-item" data-tab="library" role="tab">' + I('star') + '<span>שלי</span></button>' +
     '<button class="nb-item" data-tab="settings" role="tab">' + I('settings') + '<span>הגדרות</span></button>' +
     '</div>' +
-    // the search action of the glass bar: a round glass button that opens into the search field (app.js moves #top-search here)
     '<button class="nb-search" id="nb-search" aria-label="חיפוש">' + I('search', 'nbs-find') + I('close', 'nbs-close') + '</button>' +
   '</nav>' +
 
@@ -157,9 +154,8 @@ window.ITV_UI = (function (I) {
         '<button class="obtn osd-back ph" data-act="back" aria-label="חזרה">' + I('back') + '</button>' +
         '<div class="osd-ch"><div class="osd-logo"><img id="osd-logo" alt=""><div class="mono hidden" id="osd-mono"></div></div>' +
           '<div class="osd-titles"><div class="osd-name"><span class="osd-num" id="osd-num">1</span><span id="osd-name"></span></div>' +
-          '<div class="osd-tags"><span class="live-pill" id="osd-live-pill"><span class="live-dot"></span><span id="osd-live-txt">LIVE</span></span>' +
-          '<span id="osd-cat"></span><span id="osd-quality"></span><span id="osd-pic"></span></div>' +
-          '<div class="osd-epg" id="osd-epg" style="font-size:1.15rem;color:rgba(255,255,255,.86);margin-top:.3rem;font-weight:600"></div></div></div>' +
+          '<div class="osd-tags"><span class="live-pill"><span class="live-dot"></span>LIVE</span>' +
+          '<span id="osd-cat"></span><span id="osd-quality"></span><span id="osd-pic"></span></div></div></div>' +
         '<div class="osd-clock" id="osd-clock">00:00</div>' +
       '</div>' +
       '<div class="osd-center ph" id="osd-center">' +
@@ -175,17 +171,12 @@ window.ITV_UI = (function (I) {
           '<button class="obtn tv" data-act="playpause" title="השהה / נגן"><b class="ob-play" id="ob-play">' + I('pause') + '</b></button>' +
           '<button class="obtn tv" data-act="prev" title="ערוץ קודם">' + I('prev') + '</button>' +
           '<button class="obtn" data-act="list" title="רשימת ערוצים">' + I('list') + '<span>ערוצים</span></button>' +
-          '<button class="obtn" data-act="epg" title="לוח שידורים ו-Catch-Up">' + I('epg') + '<span>לוח שידורים</span></button>' +
-          '<button class="obtn" id="ob-server" data-act="server" title="החלפת שרת גיבוי">' + I('server') + '<span id="ob-server-txt">שרת 1</span></button>' +
-          '<button class="obtn" data-act="multiview" title="פיצול מסך – צפייה בכמה ערוצים במקביל">' + I('multiview') + '<span>פיצול מסך</span></button>' +
-          '<button class="obtn" data-act="startover" title="התחל תוכנית מחדש"><span>⏮ התחל מחדש</span></button>' +
-          '<button class="obtn" data-act="rewind5m" title="החזר 5 דקות אחורה"><span>⏪ -5 דק׳</span></button>' +
-          '<button class="obtn" data-act="rewind30s" title="החזר 30 שניות אחורה"><span>⏪ -30 שנ׳</span></button>' +
-          '<button class="obtn hidden" id="ob-live" data-act="golive" title="חזור לשידור חי"><span>🔴 חזור ל-LIVE</span></button>' +
-          '<button class="obtn ph" data-act="cast" id="ob-cast" title="שידור לטלוויזיה (Cast / AirPlay / LG)">' + I('cast') + '<span>שידור ל-TV</span></button>' +
+          '<button class="obtn" data-act="server" id="ob-server" title="החלף שרת שידור / שרת גיבוי">' + I('server') + '<span id="ob-server-label">שרת 1/1</span></button>' +
+          '<button class="obtn" data-act="multiview" title="פיצול מסך (צפייה בכמה ערוצים במקביל)">' + I('multiview') + '<span>פיצול</span></button>' +
+          '<button class="obtn ph" data-act="cast" id="ob-cast" title="שידור לטלוויזיה (Cast / AirPlay / LG)">' + I('cast') + '<span>שידור</span></button>' +
           '<button class="obtn ph" data-act="dub" title="דיבוב לעברית">' + I('mic') + '<span>דיבוב</span></button>' +
           '<button class="obtn ph hidden" data-act="pip" id="ob-pip" title="תמונה בתוך תמונה">' + I('pip') + '</button>' +
-          '<button class="obtn" data-act="menu" title="אפשרויות">' + I('more') + '<span>אפשרויות</span></button>' +
+          '<button class="obtn" data-act="menu" title="אפשרויות">' + I('more') + '<span>עוד</span></button>' +
           '<button class="obtn" data-act="fullscreen" title="מסך מלא">' + I('fullscreen') + '</button>' +
         '</div>' +
         '<div class="osd-hints" id="osd-hints"></div>' +
@@ -197,21 +188,33 @@ window.ITV_UI = (function (I) {
       '<div class="drawer-list" id="drawer-list"></div></div>' +
   '</div>' +
 
-  // ---------------------------------------------------------------- multi-view (Split-TV: 2 / 3 / 4 simultaneous live channels)
+  // ---------------------------------------------------------------- Multi-View / Split-Screen (https://split-tv.org/ style)
   '<div class="multiview hidden" id="multiview">' +
-    '<div class="mv-top">' +
-      '<div class="mv-brand">' + I('multiview') + '<b>פיצול מסך · Multi-View</b><span id="mv-sub">לחצו על מסך לבחירת השמע הפעיל (🔊)</span></div>' +
-      '<div class="mv-controls">' +
-        '<button class="btn mv-btn" data-mv-layout="2">2 ערוצים</button>' +
-        '<button class="btn mv-btn" data-mv-layout="3">3 ערוצים</button>' +
-        '<button class="btn mv-btn primary" data-mv-layout="4">4 ערוצים (2×2)</button>' +
-        '<button class="btn mv-btn" data-mv-act="close">' + I('close') + '<span>יציאה מפיצול מסך</span></button>' +
+    '<header class="mv-top">' +
+      '<div class="mv-brand"><span class="ico">' + I('multiview') + '</span><b>פיצול מסך · Split-TV</b>' +
+        '<span class="mv-sub">לחצו על מסך לבחירת שמע פעיל · 🔄 להחלפת כל ערוץ</span></div>' +
+      '<div class="mv-actions">' +
+        '<button class="mv-btn" data-mv-layout="2">2 מסכים</button>' +
+        '<button class="mv-btn" data-mv-layout="3">3 מסכים</button>' +
+        '<button class="mv-btn active" data-mv-layout="4">4 מסכים</button>' +
+        '<button class="mv-btn mv-close" id="mv-close">' + I('close') + '<span>סגור פיצול</span></button>' +
+      '</div>' +
+    '</header>' +
+    '<div class="mv-grid mv-g4" id="mv-grid"></div>' +
+    '<div class="mv-picker hidden" id="mv-picker">' +
+      '<div class="mv-picker-box">' +
+        '<div class="mv-picker-head"><h3 id="mv-picker-title">בחירת ערוץ למשבצת</h3>' +
+          '<button class="mv-btn" id="mv-picker-close">' + I('close') + '</button></div>' +
+        '<div class="mv-picker-tools">' +
+          '<input id="mv-picker-search" type="search" autocomplete="off" spellcheck="false" placeholder="חיפוש ערוץ לפי שם, קטגוריה או מספר...">' +
+          '<div class="mv-picker-cats" id="mv-picker-cats"></div>' +
+        '</div>' +
+        '<div class="mv-picker-list" id="mv-picker-list"></div>' +
       '</div>' +
     '</div>' +
-    '<div class="mv-grid mv-4" id="mv-grid"></div>' +
   '</div>' +
 
-  // ---------------------------------------------------------------- options menu (long OK / menu / colour key; phone: bottom sheet)
+  // ---------------------------------------------------------------- options menu
   '<div class="overlay hidden" id="menu"><div class="menu-box sheet"><div class="sheet-handle ph"></div><div class="menu-head">' +
     '<div class="menu-logo"><img id="menu-logo" alt=""><div class="mono hidden" id="menu-mono"></div></div>' +
     '<div><div class="menu-title" id="menu-title"></div><div class="menu-sub" id="menu-sub"></div></div></div>' +
@@ -224,7 +227,7 @@ window.ITV_UI = (function (I) {
     '<div class="settings-rows" id="settings-rows"></div></div>' +
   '</div></div>' +
 
-  // ---------------------------------------------------------------- dialog (info / update / exit / PIN / get the app)
+  // ---------------------------------------------------------------- dialog
   '<div class="overlay hidden" id="dialog"><div class="dialog-box" id="dialog-box">' +
     '<div class="dialog-ico" id="dialog-ico"></div><h2 id="dialog-title"></h2><div class="dialog-body" id="dialog-body"></div>' +
     '<div class="dialog-actions" id="dialog-actions"></div></div></div>' +

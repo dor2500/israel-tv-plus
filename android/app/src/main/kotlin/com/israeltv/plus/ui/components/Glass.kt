@@ -1,6 +1,7 @@
 package com.israeltv.plus.ui.components
 
 import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.infiniteRepeatable
@@ -16,6 +17,7 @@ import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -113,14 +115,15 @@ fun Modifier.pressPhysics(
     val bouncy = spring<Float>(dampingRatio = Spring.DampingRatioMediumBouncy, stiffness = Spring.StiffnessMediumLow)
     val targetScale = when {
         pressed -> 0.94f
-        focused -> 1.05f
+        focused -> 1.10f
         else -> 1f
     }
     val scale by animateFloatAsState(targetScale, bouncy, label = "pressScale")
-    val glowElevation by animateFloatAsState(if (focused) 22f else 0f, bouncy, label = "focusGlow")
+    val glowElevation by animateFloatAsState(if (focused) 28f else 0f, bouncy, label = "focusGlow")
     val rotX by animateFloatAsState(if (pressed && tilt) (0.5f - touch.y) * 9f else 0f, bouncy, label = "tiltX")
     val rotY by animateFloatAsState(if (pressed && tilt) (touch.x - 0.5f) * 11f else 0f, bouncy, label = "tiltY")
     val glowColor = MaterialTheme.colorScheme.primary
+    val focusShape = glowShape ?: RoundedCornerShape(22.dp)
     this
         .pointerInput(Unit) {
             awaitPointerEventScope {
@@ -141,14 +144,15 @@ fun Modifier.pressPhysics(
             cameraDistance = 14f * density
             if (glowElevation > 0.5f) {
                 shadowElevation = glowElevation * density
-                if (glowShape != null) shape = glowShape
-                ambientShadowColor = glowColor.copy(alpha = 0.55f)
-                spotShadowColor = Color.White.copy(alpha = 0.65f)
+                shape = focusShape
+                ambientShadowColor = glowColor.copy(alpha = 0.72f)
+                spotShadowColor = Color.White.copy(alpha = 0.85f)
             }
         }
+        .then(if (focused) Modifier.border(2.dp, Color.White, focusShape) else Modifier)
 }
 
-/** A circular frosted-glass icon button (hero, player) with Apple TV spring press feedback and no ripple. */
+/** A frosted-glass icon button (hero, header, player) with Material 3 Expressive shape-morphing on press and spring bounce. */
 @Composable
 fun GlassIconButton(
     icon: ImageVector,
@@ -161,19 +165,26 @@ fun GlassIconButton(
     iconTint: Color = Color.White,
 ) {
     val interaction = remember { MutableInteractionSource() }
+    val pressed by interaction.collectIsPressedAsState()
+    val cornerRadius by animateDpAsState(
+        targetValue = if (pressed) (size * 0.28f) else (size / 2f),
+        animationSpec = spring(dampingRatio = 0.58f, stiffness = Spring.StiffnessMedium),
+        label = "glassBtnMorph",
+    )
+    val morphShape = RoundedCornerShape(cornerRadius)
     val haptic = LocalHapticFeedback.current
     Box(
         modifier
             .size(size)
-            .pressPhysics(interaction, tilt = false, glowShape = CircleShape)
-            .frostedGlass(CircleShape, tint)
+            .pressPhysics(interaction, tilt = false, glowShape = morphShape)
+            .frostedGlass(morphShape, tint)
             .clickable(interaction, null) {
                 haptic.performHapticFeedback(HapticFeedbackType.VirtualKey)
                 onClick()
             },
         contentAlignment = Alignment.Center,
     ) {
-        BoldIcon(icon, contentDescription, Modifier.size(iconSize), tint = iconTint, weight = 0.4.dp)
+        BoldIcon(icon, contentDescription, Modifier.size(iconSize), tint = iconTint, weight = 0.55.dp)
     }
 }
 

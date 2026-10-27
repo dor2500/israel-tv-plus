@@ -13,6 +13,7 @@ import androidx.compose.animation.shrinkVertically
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
@@ -36,7 +37,9 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Cast
 import androidx.compose.material.icons.rounded.Favorite
+import androidx.compose.material.icons.rounded.GridView
 import androidx.compose.material.icons.rounded.Home
 import androidx.compose.material.icons.rounded.LiveTv
 import androidx.compose.material.icons.rounded.Search
@@ -151,6 +154,8 @@ fun AppHeader(
     onMoreCategories: () -> Unit,
     onAvatar: () -> Unit,
     onSettings: () -> Unit,
+    onCast: (() -> Unit)? = null,
+    onMultiView: (() -> Unit)? = null,
     modifier: Modifier = Modifier,
 ) {
     val scheme = MaterialTheme.colorScheme
@@ -223,22 +228,21 @@ fun AppHeader(
                 // Centered App Logo ("ישראל TV+")
                 BrandWordmark(Modifier.align(Alignment.Center))
 
-                // Settings: trailing edge, minimal ultra-clear glass circle containing ONLY a bold gear icon
-                val settingsInteraction = remember { MutableInteractionSource() }
-                Box(
+                // Trailing actions: Cast, Multi-View (Split-TV) & Settings (bold icons with shape-morphing glass circles)
+                Row(
                     Modifier
                         .align(Alignment.CenterEnd)
-                        .padding(end = 20.dp)
-                        .size(42.dp)
-                        .pressPhysics(settingsInteraction, tilt = false, glowShape = CircleShape)
-                        .frostedGlass(CircleShape, Color.Black.copy(alpha = 0.16f), blur = 40.dp)
-                        .clickable(settingsInteraction, null) {
-                            haptic.performHapticFeedback(HapticFeedbackType.ContextClick)
-                            onSettings()
-                        },
-                    contentAlignment = Alignment.Center,
+                        .padding(end = 16.dp),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    verticalAlignment = Alignment.CenterVertically,
                 ) {
-                    BoldIcon(Icons.Rounded.Settings, "הגדרות", Modifier.size(21.dp), tint = scheme.onSurface, weight = 0.6.dp)
+                    if (onMultiView != null) {
+                        HeaderIconOrb(Icons.Rounded.GridView, "פיצול מסך", onMultiView)
+                    }
+                    if (onCast != null) {
+                        HeaderIconOrb(Icons.Rounded.Cast, "שידור לטלוויזיה", onCast)
+                    }
+                    HeaderIconOrb(Icons.Rounded.Settings, "הגדרות", onSettings)
                 }
             }
 
@@ -256,6 +260,37 @@ fun AppHeader(
                 )
             }
         }
+    }
+}
+
+@Composable
+private fun HeaderIconOrb(
+    icon: ImageVector,
+    label: String,
+    onClick: () -> Unit,
+) {
+    val scheme = MaterialTheme.colorScheme
+    val haptic = LocalHapticFeedback.current
+    val interaction = remember { MutableInteractionSource() }
+    val pressed by interaction.collectIsPressedAsState()
+    val corner by animateDpAsState(
+        targetValue = if (pressed) 12.dp else 20.dp,
+        animationSpec = spring(dampingRatio = 0.58f, stiffness = Spring.StiffnessMedium),
+        label = "headerOrbMorph",
+    )
+    val shape = RoundedCornerShape(corner)
+    Box(
+        Modifier
+            .size(40.dp)
+            .pressPhysics(interaction, tilt = false, glowShape = shape)
+            .frostedGlass(shape, Color.Black.copy(alpha = 0.14f), blur = 40.dp)
+            .clickable(interaction, null) {
+                haptic.performHapticFeedback(HapticFeedbackType.ContextClick)
+                onClick()
+            },
+        contentAlignment = Alignment.Center,
+    ) {
+        BoldIcon(icon, label, Modifier.size(20.dp), tint = scheme.onSurface, weight = 0.65.dp)
     }
 }
 
@@ -335,11 +370,18 @@ fun FloatingTabBar(
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
                     val searchInteraction = remember { MutableInteractionSource() }
+                    val searchPressed by searchInteraction.collectIsPressedAsState()
+                    val searchCorner by animateDpAsState(
+                        targetValue = if (searchPressed) 16.dp else (searchSize / 2),
+                        animationSpec = spring(dampingRatio = 0.58f, stiffness = Spring.StiffnessMedium),
+                        label = "searchOrbMorph",
+                    )
+                    val searchShape = RoundedCornerShape(searchCorner)
                     Box(
                         Modifier
                             .size(searchSize)
-                            .pressPhysics(searchInteraction, tilt = false, glowShape = CircleShape)
-                            .frostedGlass(CircleShape, glass, blur = 44.dp)
+                            .pressPhysics(searchInteraction, tilt = false, glowShape = searchShape)
+                            .frostedGlass(searchShape, glass, blur = 44.dp)
                             .clickable(searchInteraction, null) {
                                 haptic.performHapticFeedback(HapticFeedbackType.SegmentTick)
                                 onSearch()
@@ -368,12 +410,19 @@ fun FloatingTabBar(
                             tabs.forEach { tab ->
                                 val active = !searchOpen && selected == tab
                                 val tabInteraction = remember { MutableInteractionSource() }
+                                val tabPressed by tabInteraction.collectIsPressedAsState()
+                                val tabCorner by animateDpAsState(
+                                    targetValue = if (tabPressed) 14.dp else 28.dp,
+                                    animationSpec = spring(dampingRatio = 0.58f, stiffness = Spring.StiffnessMedium),
+                                    label = "tabPillMorph",
+                                )
+                                val tabShape = RoundedCornerShape(tabCorner)
                                 Column(
                                     Modifier
                                         .weight(1f)
                                         .fillMaxHeight()
-                                        .pressPhysics(tabInteraction, tilt = false, glowShape = RoundedCornerShape(50))
-                                        .clip(RoundedCornerShape(50))
+                                        .pressPhysics(tabInteraction, tilt = false, glowShape = tabShape)
+                                        .clip(tabShape)
                                         .background(if (active) Color.White.copy(alpha = 0.16f) else Color.Transparent)
                                         .clickable(tabInteraction, null) {
                                             haptic.performHapticFeedback(HapticFeedbackType.SegmentTick)

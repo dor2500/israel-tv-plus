@@ -1,10 +1,14 @@
 package com.israeltv.plus.ui.components
 
 import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.core.spring
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -66,8 +70,8 @@ fun MacroCategoryRow(
     val entries = listOf<Pair<String?, String>>(null to "הכל") + MacroCategories.map { it to it }
     LazyRow(
         modifier.fillMaxWidth(),
-        contentPadding = PaddingValues(horizontal = 12.dp),
-        horizontalArrangement = Arrangement.spacedBy(7.dp, Alignment.CenterHorizontally),
+        contentPadding = PaddingValues(horizontal = 16.dp),
+        horizontalArrangement = Arrangement.spacedBy(12.dp, Alignment.CenterHorizontally),
         verticalAlignment = Alignment.CenterVertically,
         flingBehavior = rememberBitChordFlingBehavior(),
     ) {
@@ -79,7 +83,7 @@ fun MacroCategoryRow(
         }
         item(key = "more") {
             MacroPill(
-                "עוד...",
+                "עוד",
                 active = selected != null && selected !in MacroCategories,
                 onClick = {
                     haptic.performHapticFeedback(HapticFeedbackType.SegmentTick)
@@ -99,6 +103,13 @@ private fun MacroPill(
 ) {
     val scheme = MaterialTheme.colorScheme
     val interaction = remember { MutableInteractionSource() }
+    val pressed by interaction.collectIsPressedAsState()
+    val cornerRadius by animateDpAsState(
+        targetValue = if (pressed) 10.dp else 22.dp,
+        animationSpec = spring(dampingRatio = 0.58f, stiffness = Spring.StiffnessMedium),
+        label = "macroPillMorph",
+    )
+    val morphShape = RoundedCornerShape(cornerRadius)
     val background by animateColorAsState(if (active) Color.White else Color.Transparent, label = "macroPillBg")
     val content by animateColorAsState(
         if (active) Color(0xFF0B0B12) else scheme.onSurface.copy(alpha = 0.94f),
@@ -110,13 +121,13 @@ private fun MacroPill(
     )
     Row(
         Modifier
-            .pressPhysics(interaction, tilt = false, glowShape = PillShape)
-            .clip(PillShape)
+            .pressPhysics(interaction, tilt = false, glowShape = morphShape)
+            .clip(morphShape)
             .background(background)
-            .border(1.dp, border, PillShape)
+            .border(1.dp, border, morphShape)
             .clickable(interaction, null, onClick = onClick)
             .height(34.dp)
-            .padding(horizontal = 12.dp),
+            .padding(horizontal = 13.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Center,
     ) {

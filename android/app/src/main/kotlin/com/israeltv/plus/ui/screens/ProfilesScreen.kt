@@ -2,11 +2,6 @@ package com.israeltv.plus.ui.screens
 
 import android.app.Activity
 import androidx.activity.compose.BackHandler
-import androidx.activity.compose.rememberLauncherForActivityResult
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.compose.material.icons.rounded.CloudDone
-import androidx.compose.material.icons.rounded.CloudSync
-import com.israeltv.plus.data.GoogleSync
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.Animatable
@@ -98,7 +93,7 @@ import kotlinx.coroutines.launch
 private val TileShape = RoundedCornerShape(32.dp)
 
 /**
- * Apple iOS / tvOS "מי צופה?" Profile Picker: large square-rounded containers (124 dp squircles) with Neo 3D Emoji
+ * Apple iOS / tvOS "תבחר את הוויב שלך" Profile Picker: large square-rounded containers (124 dp squircles) with Neo 3D Emoji
  * portraits, spring scale-up + glowing shadow + solid white border on focus/press, and shared-element flight into the header.
  */
 @Composable
@@ -165,7 +160,7 @@ private fun ProfilesContent(prefs: AppPrefs, canClose: Boolean, onPicked: () -> 
         ) {
             Spacer(Modifier.height(48.dp))
             Text(
-                "מי צופה?",
+                "תבחר את הוויב שלך",
                 color = Color.White,
                 fontSize = 32.sp,
                 fontWeight = FontWeight.ExtraBold,
@@ -173,7 +168,7 @@ private fun ProfilesContent(prefs: AppPrefs, canClose: Boolean, onPicked: () -> 
             )
             Spacer(Modifier.height(8.dp))
             Text(
-                "בחרו פרופיל לצפייה מותאמת אישית",
+                "הפרופיל שלך, הצבעים שלך",
                 color = Color.White.copy(alpha = 0.62f),
                 fontSize = 14.sp,
                 fontWeight = FontWeight.Normal,
@@ -203,89 +198,21 @@ private fun ProfilesContent(prefs: AppPrefs, canClose: Boolean, onPicked: () -> 
                     )
                 }
             }
-            var manualGoogleDialog by remember { mutableStateOf(false) }
-            val pickerLauncher = rememberLauncherForActivityResult(
-                contract = ActivityResultContracts.StartActivityForResult()
-            ) { res ->
-                val u = GoogleSync.parseSignInResult(res.data)
-                if (u != null) prefs.setGoogleAccount(u) else manualGoogleDialog = true
-            }
-            val googleLauncher = rememberLauncherForActivityResult(
-                contract = ActivityResultContracts.StartActivityForResult()
-            ) { res ->
-                val u = GoogleSync.parseSignInResult(res.data)
-                if (u != null) prefs.setGoogleAccount(u) else {
-                    runCatching { pickerLauncher.launch(GoogleSync.buildAccountPickerIntent()) }
-                        .onFailure { manualGoogleDialog = true }
-                }
-            }
-
             Spacer(Modifier.height(44.dp))
-            Row(
-                horizontalArrangement = Arrangement.spacedBy(12.dp, Alignment.CenterHorizontally),
-                verticalAlignment = Alignment.CenterVertically,
-            ) {
-                Text(
-                    if (editing) "סיום" else "עריכת פרופילים",
-                    Modifier
-                        .clip(RoundedCornerShape(50))
-                        .background(Color.White.copy(alpha = if (editing) 0.18f else 0.06f))
-                        .border(1.dp, Color.White.copy(alpha = 0.35f), RoundedCornerShape(50))
-                        .clickable(remember { MutableInteractionSource() }, null) {
-                            haptic.performHapticFeedback(HapticFeedbackType.SegmentTick)
-                            editing = !editing
-                        }
-                        .padding(horizontal = 24.dp, vertical = 11.dp),
-                    color = Color.White, fontSize = 15.sp, fontWeight = FontWeight.SemiBold,
-                )
-
-                val gUser = prefs.googleUser
-                Row(
-                    Modifier
-                        .clip(RoundedCornerShape(50))
-                        .background(Color.White.copy(alpha = if (gUser != null) 0.14f else 0.08f))
-                        .border(1.dp, Color.White.copy(alpha = 0.35f), RoundedCornerShape(50))
-                        .clickable(remember { MutableInteractionSource() }, null) {
-                            haptic.performHapticFeedback(HapticFeedbackType.Confirm)
-                            if (gUser != null) {
-                                prefs.syncNow(silent = false)
-                            } else {
-                                runCatching { googleLauncher.launch(GoogleSync.buildSignInIntent(context)) }
-                                    .onFailure { manualGoogleDialog = true }
-                            }
-                        }
-                        .padding(horizontal = 20.dp, vertical = 11.dp),
-                    verticalAlignment = Alignment.CenterVertically,
-                ) {
-                    Icon(
-                        if (gUser != null) Icons.Rounded.CloudDone else Icons.Rounded.CloudSync,
-                        contentDescription = null,
-                        tint = Color.White,
-                        modifier = Modifier.size(18.dp),
-                    )
-                    Spacer(Modifier.width(8.dp))
-                    Text(
-                        if (gUser != null) "מסונכרן · ${gUser.displayName}" else "התחברות עם Google",
-                        color = Color.White, fontSize = 14.5.sp, fontWeight = FontWeight.SemiBold,
-                    )
-                }
-            }
+            Text(
+                if (editing) "סיום" else "עריכה",
+                Modifier
+                    .clip(RoundedCornerShape(50))
+                    .background(Color.White.copy(alpha = if (editing) 0.18f else 0.06f))
+                    .border(1.dp, Color.White.copy(alpha = 0.35f), RoundedCornerShape(50))
+                    .clickable(remember { MutableInteractionSource() }, null) {
+                        haptic.performHapticFeedback(HapticFeedbackType.SegmentTick)
+                        editing = !editing
+                    }
+                    .padding(horizontal = 26.dp, vertical = 11.dp),
+                color = Color.White, fontSize = 15.sp, fontWeight = FontWeight.SemiBold,
+            )
             Spacer(Modifier.height(48.dp))
-
-            if (manualGoogleDialog) {
-                GoogleAccountDialog(
-                    initialShowQr = true,
-                    onDismiss = { manualGoogleDialog = false },
-                    onPairedUser = { paired ->
-                        prefs.setGoogleAccount(paired)
-                        manualGoogleDialog = false
-                    },
-                    onConfirm = { email, name ->
-                        GoogleSync.createManualGoogleUser(email, name)?.let { prefs.setGoogleAccount(it) }
-                        manualGoogleDialog = false
-                    },
-                )
-            }
         }
 
         AnimatedVisibility(
@@ -521,7 +448,7 @@ private fun ProfileEditor(
                 Button(
                     { onSave(p.copy(name = p.name.trim().ifEmpty { "צופה" })) },
                     shape = RoundedCornerShape(50), modifier = Modifier.height(50.dp),
-                ) { Text("שמירה", fontWeight = FontWeight.SemiBold) }
+                ) { Text("שמור", fontWeight = FontWeight.SemiBold) }
                 TextButton(onCancel) { Text("ביטול") }
                 Spacer(Modifier.weight(1f))
                 if (canDelete) TextButton(onDelete) { Text("מחיקה", color = scheme.error, fontWeight = FontWeight.SemiBold) }

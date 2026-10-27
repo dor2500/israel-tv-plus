@@ -74,7 +74,13 @@ import dev.chrisbanes.haze.HazeState
 import dev.chrisbanes.haze.hazeSource
 import dev.chrisbanes.haze.rememberHazeState
 
-private data class PlayRequest(val channel: Channel, val playlist: List<Channel>, val origin: String?)
+private data class PlayRequest(
+    val channel: Channel,
+    val playlist: List<Channel>,
+    val origin: String?,
+    val startInMultiView: Boolean = false,
+    val startInCast: Boolean = false,
+)
 
 /** The app's pages: they cross over in one AnimatedContent, so elements can be shared between them. */
 private sealed interface Page {
@@ -162,6 +168,24 @@ fun ItvApp(
                             )
                             Page.Feed -> Feed(
                                 data, prefs, updater, feed, haze, logo, onPlay,
+                                onOpenMultiView = {
+                                    val all = data?.channels.orEmpty()
+                                    val first = prefs.recents.firstNotNullOfOrNull { data?.byId?.get(it) }
+                                        ?: data?.featured?.firstOrNull()
+                                        ?: all.firstOrNull()
+                                    if (first != null) {
+                                        page = Page.Player(PlayRequest(first, all, null, startInMultiView = true))
+                                    }
+                                },
+                                onOpenCast = {
+                                    val all = data?.channels.orEmpty()
+                                    val first = prefs.recents.firstNotNullOfOrNull { data?.byId?.get(it) }
+                                        ?: data?.featured?.firstOrNull()
+                                        ?: all.firstOrNull()
+                                    if (first != null) {
+                                        page = Page.Player(PlayRequest(first, all, null, startInCast = true))
+                                    }
+                                },
                                 onInfo = { info = it },
                                 onProfiles = { profilesFromFeed = true; page = Page.Profiles },
                             )
@@ -172,6 +196,8 @@ fun ItvApp(
                                 logo = logo,
                                 inPip = inPip,
                                 sharedKey = p.request.origin,
+                                startInMultiView = p.request.startInMultiView,
+                                startInCast = p.request.startInCast,
                                 onPlaying = onPlaying,
                                 onEnterPip = onEnterPip,
                                 onClose = { page = Page.Feed },
@@ -234,6 +260,8 @@ private fun Feed(
     haze: HazeState,
     logo: (Channel) -> String,
     onPlay: (Channel, List<Channel>) -> Unit,
+    onOpenMultiView: () -> Unit,
+    onOpenCast: () -> Unit,
     onInfo: (Channel) -> Unit,
     onProfiles: () -> Unit,
 ) {
@@ -354,6 +382,8 @@ private fun Feed(
                 onMoreCategories = { s.moreCategoriesOpen = true },
                 onAvatar = onProfiles,
                 onSettings = { s.searchOpen = false; s.tab = Tab.Settings },
+                onCast = onOpenCast,
+                onMultiView = onOpenMultiView,
                 modifier = Modifier.align(Alignment.TopCenter),
             )
             FloatingTabBar(

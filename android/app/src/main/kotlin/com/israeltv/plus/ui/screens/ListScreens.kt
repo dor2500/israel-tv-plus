@@ -226,11 +226,11 @@ fun MineScreen(
         if (data == null) return@LazyColumn
         val favs = prefs.favorites.mapNotNull { data.byId[it] }
         val recent = prefs.recents.mapNotNull { data.byId[it] }
-        item(key = "fh") { SectionHeader("מועדפים") }
-        if (favs.isEmpty()) item(key = "fe") { EmptyState("עוד אין מועדפים. לחצו לחיצה ארוכה על ערוץ כדי להוסיף אותו לכאן.") }
+        item(key = "fh") { SectionHeader("הרשימה שלי") }
+        if (favs.isEmpty()) item(key = "fe") { EmptyState("עוד אין פה כלום...") }
         else channelGrid(favs, "f:", logo, subtitle) { onPlay(it, favs) }
         item(key = "rh") { SectionHeader("צפיתם לאחרונה") }
-        if (recent.isEmpty()) item(key = "re") { EmptyState("הערוצים שתצפו בהם יופיעו כאן.") }
+        if (recent.isEmpty()) item(key = "re") { EmptyState("עוד אין פה כלום...") }
         else channelGrid(recent, "r:", logo, subtitle) { onPlay(it, recent) }
     }
 }

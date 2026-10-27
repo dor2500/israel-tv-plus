@@ -7,12 +7,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.core.content.edit
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.SupervisorJob
-import kotlinx.coroutines.launch
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
 /**
@@ -123,7 +118,6 @@ private val json = Json { ignoreUnknownKeys = true; encodeDefaults = true }
 @Stable
 class AppPrefs(context: Context) {
     private val sp = context.getSharedPreferences("itv", Context.MODE_PRIVATE)
-    private val syncScope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
 
     var profiles by mutableStateOf(loadProfiles())
         private set
@@ -134,18 +128,6 @@ class AppPrefs(context: Context) {
     /** The update version whose modal was already shown on start (it opens once per version). */
     var updatePrompted by mutableStateOf(sp.getString("phoneUpdatePrompted", "") ?: "")
         private set
-    var googleUser by mutableStateOf(loadGoogleUser())
-        private set
-    var syncBusy by mutableStateOf(false)
-        private set
-    var syncStatus by mutableStateOf<String?>(null)
-        private set
-
-    init {
-        if (googleUser != null) {
-            syncNow(silent = true)
-        }
-    }
 
     val profile: Profile get() = profiles.firstOrNull { it.id == activeId } ?: profiles.first()
     val favorites: List<String> get() = profile.favorites
@@ -167,7 +149,6 @@ class AppPrefs(context: Context) {
         if (profiles.none { it.id == id }) return
         activeId = id
         sp.edit { putString("phoneActiveProfile", id) }
-        triggerBackgroundPush()
     }
 
     /** Adds or replaces a profile (matched by id). */
@@ -188,7 +169,6 @@ class AppPrefs(context: Context) {
     fun setLaunchSoundOn(on: Boolean) {
         launchSound = on
         sp.edit { putBoolean("launchSound", on) }
-        triggerBackgroundPush()
     }
 
     fun markUpdatePrompted(version: String) {
@@ -196,108 +176,13 @@ class AppPrefs(context: Context) {
         sp.edit { putString("phoneUpdatePrompted", version) }
     }
 
-    /** Connects a Google Account, updates the default profile name if still "אני", and performs bidirectional cloud sync. */
-    fun setGoogleAccount(user: GoogleUser) {
-        val normalized = user.copy(
-            syncKey = user.syncKey.ifEmpty { GoogleSync.deriveSyncKey(user.email) },
-            lastSyncedAt = System.currentTimeMillis(),
-        )
-        googleUser = normalized
-        sp.edit { putString("googleUser", json.encodeToString(normalized)) }
-        if (profiles.size == 1 && profiles.first().name == "אני" && normalized.displayName.isNotBlank()) {
-            profiles = listOf(profiles.first().copy(name = normalized.displayName))
-            sp.edit { putString("phoneProfiles", json.encodeToString(profiles)) }
-        }
-        syncNow(silent = false)
-    }
-
-    fun signOutGoogle(context: Context) {
-        GoogleSync.signOutClient(context)
-        googleUser = null
-        syncStatus = "החשבון נותק מהמכשיר"
-        sp.edit { remove("googleUser") }
-    }
-
-    fun syncNow(silent: Boolean = false) {
-        val current = googleUser ?: return
-        if (syncBusy) return
-        syncBusy = true
-        if (!silent) syncStatus = "מסנכרן מול חשבון Google…"
-        syncScope.launch {
-            val remote = GoogleSync.pullFromCloud(this@AppPrefs)
-            if (remote != null && remote.profiles.isNotEmpty()) {
-                mergeCloudPayload(remote)
-            }
-            val pushed = GoogleSync.pushToCloud(this@AppPrefs)
-            val now = System.currentTimeMillis()
-            val updatedUser = current.copy(lastSyncedAt = now)
-            googleUser = updatedUser
-            sp.edit { putString("googleUser", json.encodeToString(updatedUser)) }
-            syncBusy = false
-            syncStatus = if (pushed || remote != null) "סונכרן בהצלחה לענן Google" else "נשמר מקומית · יסונכרן בחיבור הבא"
-        }
-    }
-
-    private fun mergeCloudPayload(remote: CloudSyncPayload) {
-        val localById = profiles.associateBy { it.id }.toMutableMap()
-        val mergedList = mutableListOf<Profile>()
-        for (rp in remote.profiles) {
-            val lp = localById.remove(rp.id)
-            if (lp != null) {
-                val mergedFavs = (lp.favorites + rp.favorites).distinct()
-                val mergedRecents = (lp.recents + rp.recents).distinct().take(20)
-                val chosenName = if (lp.name == "אני" && rp.name.isNotBlank() && rp.name != "אני") rp.name else lp.name
-                mergedList.add(
-                    lp.copy(
-                        name = chosenName,
-                        avatar = migratedAvatar(rp.avatar.ifBlank { lp.avatar }, mergedList.size),
-                        theme = rp.theme,
-                        favorites = mergedFavs,
-                        recents = mergedRecents,
-                    )
-                )
-            } else {
-                mergedList.add(rp.copy(avatar = migratedAvatar(rp.avatar, mergedList.size)))
-            }
-        }
-        mergedList.addAll(localById.values)
-        if (mergedList.isNotEmpty()) {
-            profiles = mergedList.take(6)
-            if (profiles.any { it.id == remote.activeProfileId }) {
-                activeId = remote.activeProfileId
-                sp.edit { putString("phoneActiveProfile", activeId) }
-            }
-            sp.edit { putString("phoneProfiles", json.encodeToString(profiles)) }
-        }
-    }
-
-    private fun triggerBackgroundPush() {
-        if (googleUser == null) return
-        syncScope.launch {
-            val ok = GoogleSync.pushToCloud(this@AppPrefs)
-            if (ok) {
-                googleUser?.let { u ->
-                    val updated = u.copy(lastSyncedAt = System.currentTimeMillis())
-                    googleUser = updated
-                    sp.edit { putString("googleUser", json.encodeToString(updated)) }
-                }
-            }
-        }
-    }
-
-    private fun loadGoogleUser(): GoogleUser? =
-        sp.getString("googleUser", null)?.let { runCatching { json.decodeFromString<GoogleUser>(it) }.getOrNull() }
-
     private fun updateActive(change: (Profile) -> Profile) {
         val id = profile.id
         profiles = profiles.map { if (it.id == id) change(it) else it }
         persist()
     }
 
-    private fun persist() {
-        sp.edit { putString("phoneProfiles", json.encodeToString(profiles)) }
-        triggerBackgroundPush()
-    }
+    private fun persist() = sp.edit { putString("phoneProfiles", json.encodeToString(profiles)) }
 
     /** The saved profiles; any flat emoji:* or legacy series-* avatar ID is migrated to the Neo 3D WebP set. */
     private fun loadProfiles(): List<Profile> {
