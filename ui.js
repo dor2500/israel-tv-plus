@@ -29,6 +29,7 @@ window.ITV_ICONS = {
   pip: 'M18 7h-6c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1h6c.55 0 1-.45 1-1V8c0-.55-.45-1-1-1zm3-4H3c-1.1 0-2 .9-2 2v14c0 1.1.9 1.98 2 1.98h18c1.1 0 2-.88 2-1.98V5c0-1.1-.9-2-2-2zm-1 16.01H4c-.55 0-1-.45-1-1V5.98c0-.55.45-1 1-1h16c.55 0 1 .45 1 1v12.03c0 .55-.45 1-1 1z',
   chevron: 'M14.71 6.71c-.39-.39-1.02-.39-1.41 0L8.71 11.3c-.39.39-.39 1.02 0 1.41l4.59 4.59c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41L10.83 12l3.88-3.88c.39-.39.38-1.03 0-1.41z',
   cast: 'M21 3H3c-1.1 0-2 .9-2 2v3h2V5h18v14h-7v2h7c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM1 18v3h3c0-1.66-1.34-3-3-3zm0-4v2c2.76 0 5 2.24 5 5h2c0-3.87-3.13-7-7-7zm0-4v2c4.97 0 9 4.03 9 9h2c0-6.08-4.93-11-11-11z',
+  epg: 'M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2zm-7 5h5v5h-5v-5z',
   radio: 'M3.24 6.15C2.51 6.43 2 7.17 2 8v12c0 1.1.9 2 2 2h16c1.11 0 2-.9 2-2V8c0-1.1-.9-2-2-2H8.3l7.43-3c.46-.19.68-.71.49-1.17-.19-.46-.71-.68-1.17-.49L3.24 6.15zM7 20c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm13-8h-2v-1c0-.55-.45-1-1-1s-1 .45-1 1v1H4V9c0-.55.45-1 1-1h14c.55 0 1 .45 1 1v3z'
 };
 window.ITV_ICON = function (name, cls) {
@@ -151,8 +152,9 @@ window.ITV_UI = (function (I) {
         '<button class="obtn osd-back ph" data-act="back" aria-label="חזרה">' + I('back') + '</button>' +
         '<div class="osd-ch"><div class="osd-logo"><img id="osd-logo" alt=""><div class="mono hidden" id="osd-mono"></div></div>' +
           '<div class="osd-titles"><div class="osd-name"><span class="osd-num" id="osd-num">1</span><span id="osd-name"></span></div>' +
-          '<div class="osd-tags"><span class="live-pill"><span class="live-dot"></span>LIVE</span>' +
-          '<span id="osd-cat"></span><span id="osd-quality"></span><span id="osd-pic"></span></div></div></div>' +
+          '<div class="osd-tags"><span class="live-pill" id="osd-live-pill"><span class="live-dot"></span><span id="osd-live-txt">LIVE</span></span>' +
+          '<span id="osd-cat"></span><span id="osd-quality"></span><span id="osd-pic"></span></div>' +
+          '<div class="osd-epg" id="osd-epg" style="font-size:1.15rem;color:rgba(255,255,255,.86);margin-top:.3rem;font-weight:600"></div></div></div>' +
         '<div class="osd-clock" id="osd-clock">00:00</div>' +
       '</div>' +
       '<div class="osd-center ph" id="osd-center">' +
@@ -168,6 +170,11 @@ window.ITV_UI = (function (I) {
           '<button class="obtn tv" data-act="playpause" title="השהה / נגן"><b class="ob-play" id="ob-play">' + I('pause') + '</b></button>' +
           '<button class="obtn tv" data-act="prev" title="ערוץ קודם">' + I('prev') + '</button>' +
           '<button class="obtn" data-act="list" title="רשימת ערוצים">' + I('list') + '<span>ערוצים</span></button>' +
+          '<button class="obtn" data-act="epg" title="לוח שידורים ו-Catch-Up">' + I('epg') + '<span>לוח שידורים</span></button>' +
+          '<button class="obtn" data-act="startover" title="התחל תוכנית מחדש"><span>⏮ התחל מחדש</span></button>' +
+          '<button class="obtn" data-act="rewind5m" title="החזר 5 דקות אחורה"><span>⏪ -5 דק׳</span></button>' +
+          '<button class="obtn" data-act="rewind30s" title="החזר 30 שניות אחורה"><span>⏪ -30 שנ׳</span></button>' +
+          '<button class="obtn hidden" id="ob-live" data-act="golive" title="חזור לשידור חי"><span>🔴 חזור ל-LIVE</span></button>' +
           '<button class="obtn ph" data-act="cast" id="ob-cast" title="שידור לטלוויזיה (Cast / AirPlay / LG)">' + I('cast') + '<span>שידור ל-TV</span></button>' +
           '<button class="obtn ph" data-act="dub" title="דיבוב לעברית">' + I('mic') + '<span>דיבוב</span></button>' +
           '<button class="obtn ph hidden" data-act="pip" id="ob-pip" title="תמונה בתוך תמונה">' + I('pip') + '</button>' +

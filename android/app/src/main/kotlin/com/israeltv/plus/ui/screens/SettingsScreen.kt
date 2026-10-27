@@ -1,6 +1,5 @@
 package com.israeltv.plus.ui.screens
 
-import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import androidx.activity.compose.rememberLauncherForActivityResult
@@ -9,6 +8,7 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -23,8 +23,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.KeyboardArrowLeft
 import androidx.compose.material.icons.automirrored.rounded.Logout
@@ -37,6 +39,7 @@ import androidx.compose.material.icons.rounded.Face
 import androidx.compose.material.icons.rounded.Language
 import androidx.compose.material.icons.rounded.MusicNote
 import androidx.compose.material.icons.rounded.Palette
+import androidx.compose.material.icons.rounded.QrCode2
 import androidx.compose.material.icons.rounded.Sync
 import androidx.compose.material.icons.rounded.SystemUpdate
 import androidx.compose.material.icons.rounded.Tv
@@ -51,6 +54,7 @@ import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -66,12 +70,14 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
 import com.israeltv.plus.data.AppPrefs
 import com.israeltv.plus.data.ChannelData
 import com.israeltv.plus.data.GoogleSync
+import com.israeltv.plus.data.GoogleUser
 import com.israeltv.plus.data.UpdateState
 import com.israeltv.plus.data.Updater
 import com.israeltv.plus.ui.components.BoldIcon
@@ -80,6 +86,7 @@ import com.israeltv.plus.ui.components.SectionHeader
 import com.israeltv.plus.ui.components.feedPadding
 import com.israeltv.plus.ui.components.rememberBitChordFlingBehavior
 import com.israeltv.plus.ui.components.specularBorder
+import kotlinx.coroutines.delay
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -131,8 +138,7 @@ fun SettingsScreen(data: ChannelData?, prefs: AppPrefs, updater: Updater, onProf
 
 /**
  * Google Sign-In & Cloud Sync surface:
- * - Launches Google Sign-In (`GoogleSignInClient`) or Android's native Google Account picker (`AccountManager`),
- *   with a fallback dialog so it works on 100% of phones, tablets, and custom ROMs.
+ * - Supports 1-tap Android Account Picker, QR Code Pairing (`pair.html#mode=google`), and direct Gmail input.
  * - Automatically backs up and syncs profiles, favorite channels, watch history, and theme colors across devices.
  */
 @Composable
@@ -142,6 +148,7 @@ fun GoogleSyncCard(prefs: AppPrefs, modifier: Modifier = Modifier) {
     val haptic = LocalHapticFeedback.current
     val user = prefs.googleUser
     var manualDialog by remember { mutableStateOf(false) }
+    var startWithQr by remember { mutableStateOf(false) }
 
     val accountPickerLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.StartActivityForResult()
@@ -150,22 +157,8 @@ fun GoogleSyncCard(prefs: AppPrefs, modifier: Modifier = Modifier) {
         if (parsed != null) {
             prefs.setGoogleAccount(parsed)
         } else {
+            startWithQr = false
             manualDialog = true
-        }
-    }
-
-    val googleSignInLauncher = rememberLauncherForActivityResult(
-        contract = ActivityResultContracts.StartActivityForResult()
-    ) { result ->
-        val parsed = GoogleSync.parseSignInResult(result.data)
-        if (parsed != null) {
-            prefs.setGoogleAccount(parsed)
-        } else {
-            runCatching {
-                accountPickerLauncher.launch(GoogleSync.buildAccountPickerIntent())
-            }.onFailure {
-                manualDialog = true
-            }
         }
     }
 
@@ -226,7 +219,7 @@ fun GoogleSyncCard(prefs: AppPrefs, modifier: Modifier = Modifier) {
                         } else "מחובר לענן"
                         "${user.email} · $timeStr"
                     }
-                    else -> "גיבוי וסנכרון אוטומטי של פרופילים, מועדפים והיסטוריית צפייה בין כל המכשירים שלך"
+                    else -> "גיבוי וסנכרון אוטומטי של פרופילים, מועדפים והיסטוריית צפייה עם QR או חשבון Google"
                 }
                 Text(
                     subtitle,
@@ -253,7 +246,7 @@ fun GoogleSyncCard(prefs: AppPrefs, modifier: Modifier = Modifier) {
         if (user != null) {
             val pairCode = remember(user.email) { GoogleSync.shortPairingCode(user.email) }
             Text(
-                "קוד סנכרון לטלוויזיה חכמה / דפדפן: $pairCode",
+                "קוד סנכרון לטלוויזיה חכמה / דפדפן: $pairCode (${user.email})",
                 fontSize = 12.sp,
                 fontWeight = FontWeight.SemiBold,
                 color = scheme.onSurfaceVariant.copy(alpha = 0.85f),
@@ -264,39 +257,51 @@ fun GoogleSyncCard(prefs: AppPrefs, modifier: Modifier = Modifier) {
         Spacer(Modifier.height(16.dp))
 
         if (user == null) {
-            Row(horizontalArrangement = Arrangement.spacedBy(10.dp), verticalAlignment = Alignment.CenterVertically) {
+            Row(
+                Modifier.horizontalScroll(rememberScrollState()),
+                horizontalArrangement = Arrangement.spacedBy(10.dp),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
                 Button(
                     onClick = {
                         haptic.performHapticFeedback(HapticFeedbackType.Confirm)
                         runCatching {
-                            googleSignInLauncher.launch(GoogleSync.buildSignInIntent(ctx))
+                            accountPickerLauncher.launch(GoogleSync.buildAccountPickerIntent())
                         }.onFailure {
+                            startWithQr = false
                             manualDialog = true
                         }
                     },
                     shape = RoundedCornerShape(50),
-                    contentPadding = PaddingValues(horizontal = 22.dp),
+                    contentPadding = PaddingValues(horizontal = 20.dp),
                     modifier = Modifier.height(46.dp),
                 ) {
                     BoldIcon(Icons.Rounded.AccountCircle, null, Modifier.size(20.dp), tint = scheme.onPrimary, weight = 0.6.dp)
                     Spacer(Modifier.width(8.dp))
-                    Text("התחברות עם Google", fontWeight = FontWeight.Bold, fontSize = 15.sp)
+                    Text("התחברות עם Google", fontWeight = FontWeight.Bold, fontSize = 14.5.sp)
                 }
 
                 FilledTonalButton(
                     onClick = {
                         haptic.performHapticFeedback(HapticFeedbackType.ContextClick)
+                        startWithQr = true
                         manualDialog = true
                     },
                     shape = RoundedCornerShape(50),
                     contentPadding = PaddingValues(horizontal = 16.dp),
                     modifier = Modifier.height(46.dp),
                 ) {
-                    Text("הזנת אימייל / קוד", fontWeight = FontWeight.SemiBold, fontSize = 13.5.sp)
+                    BoldIcon(Icons.Rounded.QrCode2, null, Modifier.size(19.dp), tint = scheme.onSecondaryContainer, weight = 0.55.dp)
+                    Spacer(Modifier.width(6.dp))
+                    Text("סריקת QR / אימייל", fontWeight = FontWeight.SemiBold, fontSize = 13.5.sp)
                 }
             }
         } else {
-            Row(horizontalArrangement = Arrangement.spacedBy(10.dp), verticalAlignment = Alignment.CenterVertically) {
+            Row(
+                Modifier.horizontalScroll(rememberScrollState()),
+                horizontalArrangement = Arrangement.spacedBy(10.dp),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
                 Button(
                     onClick = {
                         haptic.performHapticFeedback(HapticFeedbackType.Confirm)
@@ -310,6 +315,21 @@ fun GoogleSyncCard(prefs: AppPrefs, modifier: Modifier = Modifier) {
                     BoldIcon(Icons.Rounded.Sync, null, Modifier.size(19.dp), tint = scheme.onPrimary, weight = 0.6.dp)
                     Spacer(Modifier.width(8.dp))
                     Text(if (prefs.syncBusy) "מסנכרן…" else "סנכרן עכשיו", fontWeight = FontWeight.Bold)
+                }
+
+                FilledTonalButton(
+                    onClick = {
+                        haptic.performHapticFeedback(HapticFeedbackType.ContextClick)
+                        startWithQr = true
+                        manualDialog = true
+                    },
+                    shape = RoundedCornerShape(50),
+                    contentPadding = PaddingValues(horizontal = 16.dp),
+                    modifier = Modifier.height(44.dp),
+                ) {
+                    BoldIcon(Icons.Rounded.QrCode2, null, Modifier.size(18.dp), tint = scheme.onSecondaryContainer, weight = 0.55.dp)
+                    Spacer(Modifier.width(6.dp))
+                    Text("חיבור מכשיר ב-QR", fontWeight = FontWeight.SemiBold)
                 }
 
                 FilledTonalButton(
@@ -331,7 +351,12 @@ fun GoogleSyncCard(prefs: AppPrefs, modifier: Modifier = Modifier) {
 
     if (manualDialog) {
         GoogleAccountDialog(
+            initialShowQr = startWithQr,
             onDismiss = { manualDialog = false },
+            onPairedUser = { paired ->
+                prefs.setGoogleAccount(paired)
+                manualDialog = false
+            },
             onConfirm = { email, name ->
                 GoogleSync.createManualGoogleUser(email, name)?.let {
                     prefs.setGoogleAccount(it)
@@ -344,52 +369,132 @@ fun GoogleSyncCard(prefs: AppPrefs, modifier: Modifier = Modifier) {
 
 @Composable
 fun GoogleAccountDialog(
+    initialShowQr: Boolean = false,
     onDismiss: () -> Unit,
+    onPairedUser: (GoogleUser) -> Unit,
     onConfirm: (email: String, name: String) -> Unit,
 ) {
+    val scheme = MaterialTheme.colorScheme
     var email by remember { mutableStateOf("") }
     var name by remember { mutableStateOf("") }
+    var showQr by remember { mutableStateOf(initialShowQr) }
+    val qrTopic = remember { GoogleSync.generateQrTopic() }
+    val pairingUrl = remember(qrTopic) { GoogleSync.buildQrPairingUrl(qrTopic) }
+    val qrImageUrl = remember(pairingUrl) { GoogleSync.buildQrImageUrl(pairingUrl) }
+
+    // Poll ntfy.sh while the dialog is open so scanning the QR code on another phone/browser signs in automatically
+    LaunchedEffect(qrTopic) {
+        while (true) {
+            delay(2200)
+            val user = GoogleSync.pollQrPairingTopic(qrTopic)
+            if (user != null) {
+                onPairedUser(user)
+                break
+            }
+        }
+    }
+
     AlertDialog(
         onDismissRequest = onDismiss,
         title = {
-            Text("חיבור חשבון Google לסנכרון", fontWeight = FontWeight.Bold, fontSize = 20.sp)
+            Text("חיבור חשבון Google (QR או אימייל)", fontWeight = FontWeight.Bold, fontSize = 20.sp)
         },
         text = {
-            Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                Text(
-                    "הזינו את כתובת ה-Gmail שלכם כדי לסנכרן אוטומטית את הפרופילים, המועדפים והיסטוריית הצפייה בין הטלפון, הטאבלט והטלוויזיה:",
-                    fontSize = 14.sp,
-                )
-                OutlinedTextField(
-                    value = email,
-                    onValueChange = { email = it },
-                    label = { Text("כתובת Gmail (למשל user@gmail.com)") },
-                    singleLine = true,
-                    shape = RoundedCornerShape(16.dp),
-                    modifier = Modifier.fillMaxWidth(),
-                )
-                OutlinedTextField(
-                    value = name,
-                    onValueChange = { name = it },
-                    label = { Text("שם תצוגה (אופציונלי)") },
-                    singleLine = true,
-                    shape = RoundedCornerShape(16.dp),
-                    modifier = Modifier.fillMaxWidth(),
-                )
+            Column(
+                Modifier.verticalScroll(rememberScrollState()),
+                verticalArrangement = Arrangement.spacedBy(12.dp),
+                horizontalAlignment = Alignment.CenterHorizontally,
+            ) {
+                Row(
+                    Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                ) {
+                    FilledTonalButton(
+                        onClick = { showQr = true },
+                        modifier = Modifier.weight(1f),
+                        shape = RoundedCornerShape(50),
+                        colors = if (showQr) ButtonDefaults.buttonColors() else ButtonDefaults.filledTonalButtonColors(),
+                    ) {
+                        Text("📱 סריקת QR", fontWeight = FontWeight.Bold, fontSize = 13.sp)
+                    }
+                    FilledTonalButton(
+                        onClick = { showQr = false },
+                        modifier = Modifier.weight(1f),
+                        shape = RoundedCornerShape(50),
+                        colors = if (!showQr) ButtonDefaults.buttonColors() else ButtonDefaults.filledTonalButtonColors(),
+                    ) {
+                        Text("✉️ הזנת Gmail", fontWeight = FontWeight.Bold, fontSize = 13.sp)
+                    }
+                }
+
+                if (showQr) {
+                    Text(
+                        "סרקו את קוד ה-QR עם מצלמת הטלפון שלכם כדי להתחבר לחשבון Google בלחיצה אחת:",
+                        fontSize = 13.5.sp,
+                        textAlign = TextAlign.Center,
+                        color = scheme.onSurfaceVariant,
+                    )
+                    Box(
+                        Modifier
+                            .size(210.dp)
+                            .clip(RoundedCornerShape(20.dp))
+                            .background(Color.White)
+                            .padding(10.dp),
+                        contentAlignment = Alignment.Center,
+                    ) {
+                        AsyncImage(
+                            model = qrImageUrl,
+                            contentDescription = "QR Code",
+                            modifier = Modifier.fillMaxSize(),
+                            contentScale = ContentScale.Fit,
+                        )
+                    }
+                    Text(
+                        "ממתין לסריקת ה-QR… ברגע שתאשרו בטלפון, המכשיר יתחבר ויסנכרן אוטומטית.",
+                        fontSize = 12.sp,
+                        textAlign = TextAlign.Center,
+                        color = scheme.primary,
+                        fontWeight = FontWeight.SemiBold,
+                    )
+                } else {
+                    Text(
+                        "הזינו את כתובת ה-Gmail שלכם כדי לסנכרן אוטומטית את הפרופילים, המועדפים והיסטוריית הצפייה בין הטלפון, הטאבלט והטלוויזיה:",
+                        fontSize = 13.5.sp,
+                        color = scheme.onSurfaceVariant,
+                    )
+                    OutlinedTextField(
+                        value = email,
+                        onValueChange = { email = it },
+                        label = { Text("כתובת Gmail (למשל user@gmail.com)") },
+                        singleLine = true,
+                        shape = RoundedCornerShape(16.dp),
+                        modifier = Modifier.fillMaxWidth(),
+                    )
+                    OutlinedTextField(
+                        value = name,
+                        onValueChange = { name = it },
+                        label = { Text("שם תצוגה (אופציונלי)") },
+                        singleLine = true,
+                        shape = RoundedCornerShape(16.dp),
+                        modifier = Modifier.fillMaxWidth(),
+                    )
+                }
             }
         },
         confirmButton = {
-            Button(
-                onClick = { if (email.isNotBlank()) onConfirm(email, name) },
-                enabled = email.isNotBlank(),
-                shape = RoundedCornerShape(50),
-            ) {
-                Text("התחברות וסנכרון", fontWeight = FontWeight.Bold)
+            if (!showQr) {
+                Button(
+                    onClick = { if (email.isNotBlank()) onConfirm(email, name) },
+                    enabled = email.isNotBlank(),
+                    shape = RoundedCornerShape(50),
+                ) {
+                    Text("התחברות וסנכרון", fontWeight = FontWeight.Bold)
+                }
             }
         },
         dismissButton = {
             TextButton(onClick = onDismiss) {
-                Text("ביטול")
+                Text("סגור")
             }
         },
     )

@@ -288,7 +288,7 @@ public class MainActivity extends Activity {
                 if (status == 0) sp.play(id, 0.55f, 0.55f, 1, 0, 1f);
                 new Handler(Looper.getMainLooper()).postDelayed(sp::release, 2500);
             });
-            pool.load(this, R.raw.launch, 1);
+            pool.load(this, R.raw.launch, 1) ;
         } catch (Exception ignored) {
         }
     }
@@ -411,7 +411,12 @@ public class MainActivity extends Activity {
     /** Called from JavaScript as window.AndroidApp.* */
     public class Bridge {
         @JavascriptInterface
-        public void exit() { runOnUiThread(MainActivity.this::finish); }
+        public void exit() {
+            runOnUiThread(() -> {
+                if (Build.VERSION.SDK_INT >= 21) finishAndRemoveTask();
+                else finish();
+            });
+        }
 
         @JavascriptInterface
         public boolean isTv() { return tv; }
@@ -560,6 +565,14 @@ public class MainActivity extends Activity {
     @SuppressWarnings("deprecation")
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
+        setIntent(intent);
+        pageReady = true;
+        if (web != null) {
+            web.onResume();
+            web.resumeTimers();
+            web.requestFocus();
+            js("window.__itvResume && window.__itvResume()");
+        }
         if (intent == null || !ACTION_INSTALL_STATUS.equals(intent.getAction())) return;
         int status = intent.getIntExtra(PackageInstaller.EXTRA_STATUS, PackageInstaller.STATUS_FAILURE);
         if (status == PackageInstaller.STATUS_PENDING_USER_ACTION) {
@@ -660,13 +673,22 @@ public class MainActivity extends Activity {
         super.onPause();
         // keep playing in picture-in-picture; otherwise pause the page (saves battery)
         if (Build.VERSION.SDK_INT >= 24 && isInPictureInPictureMode()) return;
-        if (web != null) web.onPause();
+        if (web != null) {
+            js("window.__itvPause && window.__itvPause()");
+            web.onPause();
+        }
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        if (web != null) web.onResume();
+        pageReady = true;
+        if (web != null) {
+            web.onResume();
+            web.resumeTimers();
+            web.requestFocus();
+            js("window.__itvResume && window.__itvResume()");
+        }
     }
 
     @Override
@@ -675,4 +697,3 @@ public class MainActivity extends Activity {
         super.onDestroy();
     }
 }
-

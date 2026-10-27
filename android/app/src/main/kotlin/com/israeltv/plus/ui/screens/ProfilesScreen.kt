@@ -274,10 +274,15 @@ private fun ProfilesContent(prefs: AppPrefs, canClose: Boolean, onPicked: () -> 
 
             if (manualGoogleDialog) {
                 GoogleAccountDialog(
+                    initialShowQr = true,
                     onDismiss = { manualGoogleDialog = false },
+                    onPairedUser = { paired ->
+                        prefs.setGoogleAccount(paired)
+                        manualGoogleDialog = false
+                    },
                     onConfirm = { email, name ->
                         GoogleSync.createManualGoogleUser(email, name)?.let { prefs.setGoogleAccount(it) }
-                        manualGoogleDialog = true.let { false }
+                        manualGoogleDialog = false
                     },
                 )
             }

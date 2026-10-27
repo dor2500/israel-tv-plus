@@ -22,6 +22,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.gestures.detectVerticalDragGestures
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -54,13 +55,18 @@ import androidx.compose.material.icons.automirrored.rounded.OpenInNew
 import androidx.compose.material.icons.rounded.Audiotrack
 import androidx.compose.material.icons.rounded.Cast
 import androidx.compose.material.icons.rounded.CastConnected
+import androidx.compose.material.icons.rounded.FastForward
+import androidx.compose.material.icons.rounded.FastRewind
 import androidx.compose.material.icons.rounded.Fullscreen
 import androidx.compose.material.icons.rounded.FullscreenExit
+import androidx.compose.material.icons.rounded.History
 import androidx.compose.material.icons.rounded.MoreHoriz
 import androidx.compose.material.icons.rounded.Pause
 import androidx.compose.material.icons.rounded.PictureInPictureAlt
 import androidx.compose.material.icons.rounded.PlayArrow
 import androidx.compose.material.icons.rounded.Refresh
+import androidx.compose.material.icons.rounded.Replay
+import androidx.compose.material.icons.rounded.Schedule
 import androidx.compose.material.icons.rounded.ScreenShare
 import androidx.compose.material.icons.rounded.SkipNext
 import androidx.compose.material.icons.rounded.SkipPrevious
@@ -71,6 +77,7 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.CircularWavyProgressIndicator
 import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.Icon
+import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.OutlinedButton
@@ -81,6 +88,7 @@ import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -132,6 +140,9 @@ import com.israeltv.plus.data.CastController
 import com.israeltv.plus.data.CastDeviceItem
 import com.israeltv.plus.data.CastProtocol
 import com.israeltv.plus.data.Channel
+import com.israeltv.plus.data.ChannelEpg
+import com.israeltv.plus.data.EpgProgram
+import com.israeltv.plus.data.EpgRepository
 import com.israeltv.plus.data.USER_AGENT
 import com.israeltv.plus.data.playableUrl
 import com.israeltv.plus.ui.components.ChannelLogo
@@ -155,8 +166,8 @@ private fun buildPlayer(context: Context): ExoPlayer {
     val http = DefaultHttpDataSource.Factory()
         .setUserAgent(USER_AGENT)
         .setAllowCrossProtocolRedirects(true)
-        .setConnectTimeoutMs(12_000)
-        .setReadTimeoutMs(15_000)
+        .setConnectTimeoutMs(14_000)
+        .setReadTimeoutMs(18_000)
     return ExoPlayer.Builder(context)
         .setMediaSourceFactory(DefaultMediaSourceFactory(http))
         .setAudioAttributes(
@@ -192,8 +203,6 @@ fun PlayerScreen(
     val context = LocalContext.current
     val density = LocalDensity.current
     val scope = rememberCoroutineScope()
-    // the video surface joins once the card has grown into the player, and leaves as soon as it shrinks back
-    // (a SurfaceView does not follow the container transform; until then the player is its black frame + logo)
     val page = LocalPageScope.current
     val settled = page == null ||
         (page.transition.currentState == EnterExitState.Visible && page.transition.targetState == EnterExitState.Visible)
@@ -215,14 +224,76 @@ fun PlayerScreen(
     val candidates = remember(current.id, current.url, current.fallbackUrls) { current.allCandidateUrls() }
     var sourceIndex by remember(current.id, attempt) { mutableIntStateOf(0) }
 
+    // EPG & Catch-Up state
+    var nowTickMs by remember { mutableLongStateOf(System.currentTimeMillis()) }
+    LaunchedEffect(Unit) {
+        while (true) {
+            delay(30_000)
+            nowTickMs = System.currentTimeMillis()
+        }
+    }
+    val epg = remember(current.id, nowTickMs / 60_000L) { EpgRepository.getSchedule(current, nowTickMs) }
+    var catchUpOffsetSec by remember(current.id) { mutableLongStateOf(0L) }
+    var dvrReloadTrigger by remember(current.id) { mutableIntStateOf(0) }
+    var statusToast by remember(current.id) { mutableStateOf<String?>(null) }
+
+    LaunchedEffect(statusToast) {
+        if (statusToast != null) {
+            delay(2800)
+            statusToast = null
+        }
+    }
+
+    fun applyTimeShift(deltaSec: Long, label: String? = null) {
+        touchTick++
+        val targetOffset = (catchUpOffsetSec - deltaSec).coerceIn(0L, 6 * 3600L)
+        catchUpOffsetSec = targetOffset
+        val dur = player.duration
+        val pos = player.currentPosition
+        if (dur > 0 && pos >= 0) {
+            val newPos = (pos + deltaSec * 1000L).coerceIn(0L, dur)
+            player.seekTo(newPos)
+            player.play()
+            statusToast = label ?: if (targetOffset <= 5L) "🔴 שידור חי (LIVE)" else "⏪ Catch-Up: לפני ${targetOffset / 60} דק׳ ו-${targetOffset % 60} שנ׳"
+        } else {
+            dvrReloadTrigger++
+            statusToast = label ?: "⏪ טוען שידור Catch-Up..."
+        }
+    }
+
+    fun startOverCurrentProgram() {
+        val elapsedSec = epg.current.offsetSecondsFromNow(System.currentTimeMillis()).coerceAtLeast(10L)
+        val delta = catchUpOffsetSec - elapsedSec
+        applyTimeShift(delta, "⏮ מתחיל מחדש: ${epg.current.title}")
+    }
+
+    fun playPastProgram(prog: EpgProgram) {
+        val agoSec = prog.offsetSecondsFromNow(System.currentTimeMillis()).coerceAtLeast(30L)
+        val delta = catchUpOffsetSec - agoSec
+        applyTimeShift(delta, "⏪ Catch-Up: ${prog.title} (${prog.startLabel})")
+    }
+
+    fun returnToLive() {
+        touchTick++
+        catchUpOffsetSec = 0L
+        if (player.duration > 0) {
+            player.seekToDefaultPosition()
+            player.play()
+        } else {
+            dvrReloadTrigger++
+        }
+        statusToast = "🔴 חזרה לשידור חי (LIVE)"
+    }
+
     DisposableEffect(castController) {
         onDispose { castController.dispose() }
     }
 
-    // Pause local ExoPlayer while casting to a TV so audio doesn't play on both devices simultaneously
-    LaunchedEffect(castController.isCasting, playing) {
-        if (castController.isCasting && player.isPlaying) {
-            player.pause()
+    // Stop local ExoPlayer while casting to a TV so audio doesn't echo and single-connection streams (ottrast / mako) aren't blocked
+    LaunchedEffect(castController.isCasting, castController.isConnecting) {
+        if (castController.isCasting || castController.isConnecting) {
+            player.stop()
+            player.clearMediaItems()
         }
     }
 
@@ -238,6 +309,12 @@ fun PlayerScreen(
             override fun onPlaybackStateChanged(state: Int) {
                 player.volume = 1.0f
                 buffering = state == Player.STATE_BUFFERING || (state == Player.STATE_IDLE && error == null)
+                if (state == Player.STATE_READY && catchUpOffsetSec > 0L && player.duration > catchUpOffsetSec * 1000L) {
+                    val targetPos = (player.duration - catchUpOffsetSec * 1000L).coerceAtLeast(0L)
+                    if (abs(player.currentPosition - targetPos) > 15_000L) {
+                        player.seekTo(targetPos)
+                    }
+                }
             }
             override fun onIsPlayingChanged(isPlaying: Boolean) {
                 playing = isPlaying
@@ -273,13 +350,26 @@ fun PlayerScreen(
         touchTick++
     }
 
-    // every channel switch, automatic fallback step, or manual "נסו שוב": resolve stream, full volume, play
-    LaunchedEffect(current.id, attempt, sourceIndex) {
+    // every channel switch, automatic fallback step, DVR reload, or manual "נסו שוב": resolve stream, full volume, play
+    LaunchedEffect(current.id, attempt, sourceIndex, dvrReloadTrigger) {
         error = null
         buffering = true
-        if (sourceIndex == 0) prefs.addRecent(current.id)
+        if (sourceIndex == 0 && dvrReloadTrigger == 0) prefs.addRecent(current.id)
+        if (castController.isCasting || castController.isConnecting) {
+            buffering = false
+            return@LaunchedEffect
+        }
         val rawCandidate = candidates.getOrElse(sourceIndex) { current.url }
-        val url = runCatching { playableUrl(rawCandidate, current.auth) }.getOrElse {
+
+        // Stop previous stream cleanly before opening a new connection (critical for ottrast.com 1-conn limit)
+        player.stop()
+        player.clearMediaItems()
+        if (rawCandidate.contains("ottrast.com", ignoreCase = true)) {
+            delay(320)
+        }
+
+        val candidateWithDvr = EpgRepository.buildCatchUpUrl(rawCandidate, catchUpOffsetSec)
+        val url = runCatching { playableUrl(candidateWithDvr, current.auth) }.getOrElse {
             if (sourceIndex + 1 < candidates.size) {
                 sourceIndex += 1
                 return@LaunchedEffect
@@ -289,22 +379,21 @@ fun PlayerScreen(
             return@LaunchedEffect
         }
         val item = MediaItem.Builder().setUri(url)
-        // every TV channel is HLS, also the ones whose address has no .m3u8 (Samsung TV Plus redirects)
         if (rawCandidate.contains(".m3u8", ignoreCase = true) || !current.isRadio) item.setMimeType(MimeTypes.APPLICATION_M3U8)
         player.setMediaItem(item.build())
         player.volume = 1.0f
         player.prepare()
         player.playWhenReady = !castController.isCasting
-        delay(9000)
+        delay(9500)
         if (buffering && !playing && error == null && !castController.isCasting && sourceIndex + 1 < candidates.size) {
             sourceIndex += 1
         }
     }
 
-    // controls hide after 4 s of playback without a touch (stay visible while casting)
+    // controls hide after 4.5 s of playback without a touch (stay visible while casting)
     LaunchedEffect(controls, touchTick, playing, buffering, error, castController.isCasting) {
         if (controls && playing && !buffering && error == null && !castController.isCasting) {
-            delay(4000)
+            delay(4500)
             controls = false
         }
     }
@@ -361,14 +450,13 @@ fun PlayerScreen(
                 }
             },
             update = { view ->
-                // subtitles move up above the dock while the controls are on screen
                 val lift = if (controls && !inPip) with(density) { 92.dp.roundToPx() } else 0
                 view.subtitleView?.setPadding(0, 0, 0, lift)
             },
             modifier = Modifier.fillMaxSize(),
         )
 
-        // the touch layer over the video (the PlayerView itself would take the touches)
+        // the touch layer over the video
         Box(
             Modifier.fillMaxSize().pointerInputs(
                 onTap = { controls = !controls; touchTick++ },
@@ -386,10 +474,29 @@ fun PlayerScreen(
                     contentAlignment = Alignment.Center,
                 ) { ChannelLogo(logo(current), Modifier.size(130.dp), true) }
                 Text(current.name, color = Color.White, fontSize = 22.sp, fontWeight = FontWeight.ExtraBold, modifier = Modifier.padding(top = 16.dp))
+                Text(epg.current.title, color = Color.White.copy(alpha = 0.78f), fontSize = 14.sp, modifier = Modifier.padding(top = 4.dp))
             }
         }
 
         if (inPip) return@Box
+
+        // Status toast for Catch-Up / Rewind feedback
+        AnimatedVisibility(
+            visible = statusToast != null,
+            enter = fadeIn(),
+            exit = fadeOut(),
+            modifier = Modifier.align(Alignment.TopCenter).padding(top = 96.dp),
+        ) {
+            Box(
+                Modifier
+                    .clip(RoundedCornerShape(50))
+                    .background(Color.Black.copy(alpha = 0.78f))
+                    .specularBorder(RoundedCornerShape(50), alpha = 0.35f)
+                    .padding(horizontal = 18.dp, vertical = 8.dp)
+            ) {
+                Text(statusToast.orEmpty(), color = Color.White, fontSize = 13.sp, fontWeight = FontWeight.Bold)
+            }
+        }
 
         // center: active TV cast card OR error card OR buffering pill OR play controls – never two at once
         val center = when {
@@ -418,28 +525,41 @@ fun PlayerScreen(
                     },
                     onDisconnect = {
                         castController.disconnect()
-                        player.volume = 1.0f
-                        player.play()
+                        attempt++
                     },
                 )
                 "buffering" -> BufferingPill()
-                "controls" -> Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(26.dp)) {
-                    val scheme = MaterialTheme.colorScheme
-                    ExpressiveButton(
-                        Icons.Rounded.SkipNext, "ערוץ הבא", RoundedCornerShape(24.dp), 52.dp, 72.dp,
-                        scheme.secondaryContainer, scheme.onSecondaryContainer,
-                    ) { switchTo(index + 1) }
-                    ExpressiveButton(
-                        if (playing) Icons.Rounded.Pause else Icons.Rounded.PlayArrow, "נגן / השהה", CircleShape, 84.dp, 84.dp,
-                        scheme.primaryContainer, scheme.onPrimaryContainer,
-                    ) {
-                        touchTick++
-                        if (player.isPlaying) player.pause() else { player.volume = 1.0f; player.play() }
+                "controls" -> Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                    Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(26.dp)) {
+                        val scheme = MaterialTheme.colorScheme
+                        ExpressiveButton(
+                            Icons.Rounded.SkipNext, "ערוץ הבא", RoundedCornerShape(24.dp), 52.dp, 72.dp,
+                            scheme.secondaryContainer, scheme.onSecondaryContainer,
+                        ) { switchTo(index + 1) }
+                        ExpressiveButton(
+                            if (playing) Icons.Rounded.Pause else Icons.Rounded.PlayArrow, "נגן / השהה", CircleShape, 84.dp, 84.dp,
+                            scheme.primaryContainer, scheme.onPrimaryContainer,
+                        ) {
+                            touchTick++
+                            if (player.isPlaying) player.pause() else { player.volume = 1.0f; player.play() }
+                        }
+                        ExpressiveButton(
+                            Icons.Rounded.SkipPrevious, "ערוץ קודם", RoundedCornerShape(24.dp), 52.dp, 72.dp,
+                            scheme.secondaryContainer, scheme.onSecondaryContainer,
+                        ) { switchTo(index - 1) }
                     }
-                    ExpressiveButton(
-                        Icons.Rounded.SkipPrevious, "ערוץ קודם", RoundedCornerShape(24.dp), 52.dp, 72.dp,
-                        scheme.secondaryContainer, scheme.onSecondaryContainer,
-                    ) { switchTo(index - 1) }
+                    if (!current.isRadio) {
+                        Spacer(Modifier.height(18.dp))
+                        CatchUpQuickBar(
+                            catchUpOffsetSec = catchUpOffsetSec,
+                            onRewind5m = { applyTimeShift(-300L) },
+                            onRewind30s = { applyTimeShift(-30L) },
+                            onStartOver = { startOverCurrentProgram() },
+                            onForward30s = { applyTimeShift(30L) },
+                            onLive = { returnToLive() },
+                            onOpenEpg = { sheet = "epg" },
+                        )
+                    }
                 }
                 "error" -> ErrorCard(current, error.orEmpty(), onRetry = { attempt++ }, onNext = { switchTo(index + 1) })
                 else -> Spacer(Modifier.size(1.dp))
@@ -454,8 +574,12 @@ fun PlayerScreen(
         ) {
             TopBar(
                 ch = current,
+                epg = epg,
+                catchUpOffsetSec = catchUpOffsetSec,
                 logo = logo(current),
                 isCasting = castController.isCasting || castController.isConnecting,
+                onReturnLive = { returnToLive() },
+                onOpenEpg = { touchTick++; sheet = "epg" },
                 onCast = {
                     touchTick++
                     castController.startDiscovery(current)
@@ -496,14 +620,23 @@ fun PlayerScreen(
 
     when (sheet) {
         "list" -> ChannelListSheet(list, index, logo, onPick = { switchTo(it); sheet = null }, onDismiss = { sheet = null })
+        "epg" -> EpgCatchUpSheet(
+            channel = current,
+            epg = epg,
+            catchUpOffsetSec = catchUpOffsetSec,
+            onRewind = { sec -> applyTimeShift(sec) },
+            onStartOver = { startOverCurrentProgram(); sheet = null },
+            onPlayPastProgram = { prog -> playPastProgram(prog); sheet = null },
+            onReturnLive = { returnToLive(); sheet = null },
+            onDismiss = { sheet = null },
+        )
         "audio" -> AudioSheet(player, tracks, onDismiss = { sheet = null })
         "cast" -> CastSheet(
             channel = current,
             castController = castController,
             onDisconnectAndResumePhone = {
                 castController.disconnect()
-                player.volume = 1.0f
-                player.play()
+                attempt++
                 sheet = null
             },
             onDismiss = { sheet = null },
@@ -511,12 +644,61 @@ fun PlayerScreen(
         "more" -> MoreSheet(
             ch = current,
             prefs = prefs,
+            onOpenEpg = { sheet = "epg" },
             onOpenCast = {
                 castController.startDiscovery(current)
                 sheet = "cast"
             },
             onDismiss = { sheet = null },
         )
+    }
+}
+
+@Composable
+private fun CatchUpQuickBar(
+    catchUpOffsetSec: Long,
+    onRewind5m: () -> Unit,
+    onRewind30s: () -> Unit,
+    onStartOver: () -> Unit,
+    onForward30s: () -> Unit,
+    onLive: () -> Unit,
+    onOpenEpg: () -> Unit,
+) {
+    val shape = RoundedCornerShape(50)
+    Row(
+        Modifier
+            .horizontalScroll(rememberScrollState())
+            .padding(horizontal = 16.dp)
+            .clip(shape)
+            .background(Color.Black.copy(alpha = 0.56f))
+            .specularBorder(shape, alpha = 0.3f)
+            .padding(horizontal = 10.dp, vertical = 6.dp),
+        horizontalArrangement = Arrangement.spacedBy(6.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        QuickChip("⏮ התחל מחדש", onStartOver)
+        QuickChip("⏪ -5 דק׳", onRewind5m)
+        QuickChip("⏪ -30 שנ׳", onRewind30s)
+        if (catchUpOffsetSec > 0L) {
+            QuickChip("⏩ +30 שנ׳", onForward30s)
+            QuickChip("🔴 חזור ל-LIVE", onLive, highlight = true)
+        }
+        QuickChip("📅 לוח שידורים", onOpenEpg)
+    }
+}
+
+@Composable
+private fun QuickChip(label: String, onClick: () -> Unit, highlight: Boolean = false) {
+    val bg = if (highlight) Color(0xFFFF3B30).copy(alpha = 0.85f) else Color.White.copy(alpha = 0.14f)
+    Box(
+        Modifier
+            .clip(RoundedCornerShape(50))
+            .background(bg)
+            .clickable(onClick = onClick)
+            .padding(horizontal = 12.dp, vertical = 6.dp),
+        contentAlignment = Alignment.Center,
+    ) {
+        Text(label, color = Color.White, fontSize = 12.sp, fontWeight = FontWeight.Bold)
     }
 }
 
@@ -715,12 +897,16 @@ private fun CastActiveCard(
     }
 }
 
-/** Back, the channel logo badge, the title, a pulsing red LIVE dot, and the Cast to TV button over a top scrim. */
+/** Back, the channel logo badge, the title, EPG current program, pulsing red LIVE dot, and the Cast to TV button. */
 @Composable
 private fun TopBar(
     ch: Channel,
+    epg: ChannelEpg,
+    catchUpOffsetSec: Long,
     logo: String,
     isCasting: Boolean,
+    onReturnLive: () -> Unit,
+    onOpenEpg: () -> Unit,
     onCast: () -> Unit,
     onBack: () -> Unit,
 ) {
@@ -729,7 +915,7 @@ private fun TopBar(
     Row(
         Modifier
             .fillMaxWidth()
-            .background(Brush.verticalGradient(listOf(Color.Black.copy(alpha = 0.75f), Color.Transparent)))
+            .background(Brush.verticalGradient(listOf(Color.Black.copy(alpha = 0.8f), Color.Transparent)))
             .windowInsetsPadding(WindowInsets.statusBars)
             .padding(horizontal = 16.dp, vertical = 14.dp),
         verticalAlignment = Alignment.CenterVertically,
@@ -741,11 +927,25 @@ private fun TopBar(
             contentAlignment = Alignment.Center,
         ) { ChannelLogo(logo, Modifier.size(width = 52.dp, height = 30.dp), ch.isRadio) }
         Spacer(Modifier.width(12.dp))
-        Column(Modifier.weight(1f)) {
+        Column(Modifier.weight(1f).clickable { onOpenEpg() }) {
             Text(ch.name, color = Color.White, fontSize = 18.sp, fontWeight = FontWeight.ExtraBold, maxLines = 1, overflow = TextOverflow.Ellipsis)
             Row(verticalAlignment = Alignment.CenterVertically) {
-                Box(Modifier.size(8.dp).alpha(pulse).clip(CircleShape).background(Color(0xFFFF3B30)))
-                Text(" LIVE", color = Color.White, fontSize = 12.sp, fontWeight = FontWeight.ExtraBold)
+                if (catchUpOffsetSec > 5L) {
+                    Text(
+                        "⏪ Catch-Up (-${catchUpOffsetSec / 60} דק׳) · חזור ל-LIVE",
+                        Modifier
+                            .clip(RoundedCornerShape(6.dp))
+                            .background(Color(0xFFFF9500).copy(alpha = 0.85f))
+                            .clickable { onReturnLive() }
+                            .padding(horizontal = 6.dp, vertical = 2.dp),
+                        color = Color.White,
+                        fontSize = 11.sp,
+                        fontWeight = FontWeight.ExtraBold,
+                    )
+                } else {
+                    Box(Modifier.size(8.dp).alpha(pulse).clip(CircleShape).background(Color(0xFFFF3B30)))
+                    Text(" LIVE", color = Color.White, fontSize = 12.sp, fontWeight = FontWeight.ExtraBold)
+                }
                 if (ch.badge.isNotEmpty()) {
                     Text(
                         ch.badge,
@@ -755,8 +955,25 @@ private fun TopBar(
                 }
                 Text("  ${ch.number}", color = Color.White.copy(alpha = 0.7f), fontSize = 12.sp)
             }
+            Text(
+                "${epg.current.startLabel}–${epg.current.endLabel} · ${epg.current.title}",
+                color = Color.White.copy(alpha = 0.82f),
+                fontSize = 12.sp,
+                fontWeight = FontWeight.Medium,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
+                modifier = Modifier.padding(top = 2.dp),
+            )
         }
-        Spacer(Modifier.width(10.dp))
+        Spacer(Modifier.width(8.dp))
+        GlassIconButton(
+            icon = Icons.Rounded.Schedule,
+            contentDescription = "לוח שידורים ו-Catch-Up",
+            onClick = onOpenEpg,
+            size = 44.dp,
+            tint = GlassDark,
+        )
+        Spacer(Modifier.width(8.dp))
         GlassIconButton(
             icon = if (isCasting) Icons.Rounded.CastConnected else Icons.Rounded.Cast,
             contentDescription = "שידור לטלוויזיה (Cast)",
@@ -768,8 +985,8 @@ private fun TopBar(
 }
 
 /**
- * The compact player dock (max 440 dp wide, 58 dp): one capsule of the glass recipe (deep ink at 62% with the
- * palette tint), the specular edge, evenly spaced icon + label items.
+ * The compact player dock (max 460 dp wide, 58 dp): one capsule of the glass recipe (deep ink at 62% with the
+ * palette tint), the specular edge, evenly spaced icon + label items including EPG / Catch-Up.
  */
 @Composable
 private fun Dock(landscape: Boolean, isCasting: Boolean, onItem: (String) -> Unit) {
@@ -778,8 +995,8 @@ private fun Dock(landscape: Boolean, isCasting: Boolean, onItem: (String) -> Uni
     Row(
         Modifier
             .navigationBarsPadding()
-            .padding(horizontal = 16.dp, vertical = 22.dp)
-            .widthIn(max = 440.dp)
+            .padding(horizontal = 12.dp, vertical = 22.dp)
+            .widthIn(max = 460.dp)
             .fillMaxWidth()
             .height(58.dp)
             .clip(shape)
@@ -788,6 +1005,7 @@ private fun Dock(landscape: Boolean, isCasting: Boolean, onItem: (String) -> Uni
         horizontalArrangement = Arrangement.SpaceEvenly,
     ) {
         DockItem(Icons.AutoMirrored.Rounded.List, "ערוצים") { onItem("list") }
+        DockItem(Icons.Rounded.Schedule, "לוח שידורים") { onItem("epg") }
         DockItem(
             icon = if (isCasting) Icons.Rounded.CastConnected else Icons.Rounded.Cast,
             label = "שידור ל-TV",
@@ -813,11 +1031,11 @@ private fun androidx.compose.foundation.layout.RowScope.DockItem(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
     ) {
-        Icon(icon, label, Modifier.size(22.dp), tint = tint)
+        Icon(icon, label, Modifier.size(21.dp), tint = tint)
         Text(
             label,
             color = if (highlight) tint else Color.White.copy(alpha = 0.85f),
-            fontSize = 10.sp,
+            fontSize = 9.5.sp,
             fontWeight = if (highlight) FontWeight.Bold else FontWeight.Medium,
             maxLines = 1,
         )
@@ -825,11 +1043,220 @@ private fun androidx.compose.foundation.layout.RowScope.DockItem(
 }
 
 /**
+ * Full EPG Schedule (Past / Live / Upcoming) + Catch-Up / Live Rewind Bottom Sheet.
+ */
+@Composable
+private fun EpgCatchUpSheet(
+    channel: Channel,
+    epg: ChannelEpg,
+    catchUpOffsetSec: Long,
+    onRewind: (Long) -> Unit,
+    onStartOver: () -> Unit,
+    onPlayPastProgram: (EpgProgram) -> Unit,
+    onReturnLive: () -> Unit,
+    onDismiss: () -> Unit,
+) {
+    val scheme = MaterialTheme.colorScheme
+    val nowMs = System.currentTimeMillis()
+    ModalBottomSheet(onDismissRequest = onDismiss, containerColor = scheme.surfaceContainer) {
+        Column(
+            Modifier
+                .fillMaxWidth()
+                .verticalScroll(rememberScrollState())
+                .padding(horizontal = 22.dp)
+                .padding(bottom = 32.dp),
+        ) {
+            Text(
+                "לוח שידורים ו-Catch-Up · ${channel.name}",
+                fontSize = 20.sp,
+                fontWeight = FontWeight.ExtraBold,
+                color = scheme.onSurface,
+            )
+            Text(
+                "צפייה בלוח השידורים המלא, חזרה אחורה בשידור החי והפעלת תוכניות ששודרו קודם.",
+                fontSize = 13.sp,
+                color = scheme.onSurfaceVariant,
+                modifier = Modifier.padding(top = 2.dp, bottom = 14.dp),
+            )
+
+            // Catch-Up / Live Rewind Controls Card
+            if (!channel.isRadio) {
+                Column(
+                    Modifier
+                        .fillMaxWidth()
+                        .clip(RoundedCornerShape(20.dp))
+                        .background(scheme.surfaceContainerHigh)
+                        .padding(14.dp),
+                ) {
+                    Row(
+                        Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically,
+                    ) {
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Icon(Icons.Rounded.History, null, tint = scheme.primary, modifier = Modifier.size(18.dp))
+                            Spacer(Modifier.width(6.dp))
+                            Text("שליטת Catch-Up והחזרה אחורה", fontSize = 14.sp, fontWeight = FontWeight.ExtraBold, color = scheme.onSurface)
+                        }
+                        if (catchUpOffsetSec > 5L) {
+                            Text(
+                                "לפני ${catchUpOffsetSec / 60} דק׳",
+                                fontSize = 12.sp,
+                                fontWeight = FontWeight.Bold,
+                                color = scheme.primary,
+                            )
+                        } else {
+                            Text("🔴 שידור חי", fontSize = 12.sp, fontWeight = FontWeight.Bold, color = Color(0xFFFF3B30))
+                        }
+                    }
+                    Spacer(Modifier.height(10.dp))
+                    Row(
+                        Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()),
+                        horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    ) {
+                        FilledTonalButton(onClick = onStartOver, shape = RoundedCornerShape(50), contentPadding = PaddingValues(horizontal = 14.dp, vertical = 8.dp)) {
+                            Icon(Icons.Rounded.Replay, null, modifier = Modifier.size(16.dp))
+                            Spacer(Modifier.width(6.dp))
+                            Text("התחל תוכנית מחדש", fontSize = 12.sp, fontWeight = FontWeight.Bold)
+                        }
+                        FilledTonalButton(onClick = { onRewind(-300L) }, shape = RoundedCornerShape(50), contentPadding = PaddingValues(horizontal = 12.dp, vertical = 8.dp)) {
+                            Icon(Icons.Rounded.FastRewind, null, modifier = Modifier.size(16.dp))
+                            Spacer(Modifier.width(4.dp))
+                            Text("-5 דק׳", fontSize = 12.sp, fontWeight = FontWeight.Bold)
+                        }
+                        FilledTonalButton(onClick = { onRewind(-60L) }, shape = RoundedCornerShape(50), contentPadding = PaddingValues(horizontal = 12.dp, vertical = 8.dp)) {
+                            Text("-1 דק׳", fontSize = 12.sp, fontWeight = FontWeight.Bold)
+                        }
+                        FilledTonalButton(onClick = { onRewind(-30L) }, shape = RoundedCornerShape(50), contentPadding = PaddingValues(horizontal = 12.dp, vertical = 8.dp)) {
+                            Text("-30 שנ׳", fontSize = 12.sp, fontWeight = FontWeight.Bold)
+                        }
+                        if (catchUpOffsetSec > 0L) {
+                            FilledTonalButton(onClick = { onRewind(30L) }, shape = RoundedCornerShape(50), contentPadding = PaddingValues(horizontal = 12.dp, vertical = 8.dp)) {
+                                Icon(Icons.Rounded.FastForward, null, modifier = Modifier.size(16.dp))
+                                Spacer(Modifier.width(4.dp))
+                                Text("+30 שנ׳", fontSize = 12.sp, fontWeight = FontWeight.Bold)
+                            }
+                            Button(onClick = onReturnLive, shape = RoundedCornerShape(50), contentPadding = PaddingValues(horizontal = 14.dp, vertical = 8.dp)) {
+                                Text("🔴 חזור ל-LIVE", fontSize = 12.sp, fontWeight = FontWeight.ExtraBold)
+                            }
+                        }
+                    }
+                }
+                Spacer(Modifier.height(16.dp))
+            }
+
+            // 1. Current Live Program
+            Text("🔴 משודר כעת", fontSize = 13.sp, fontWeight = FontWeight.ExtraBold, color = scheme.primary)
+            Spacer(Modifier.height(6.dp))
+            Column(
+                Modifier
+                    .fillMaxWidth()
+                    .clip(RoundedCornerShape(18.dp))
+                    .background(scheme.primaryContainer.copy(alpha = 0.42f))
+                    .padding(16.dp),
+            ) {
+                Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
+                    Text("${epg.current.startLabel} – ${epg.current.endLabel}", fontSize = 13.sp, fontWeight = FontWeight.ExtraBold, color = scheme.primary)
+                    if (epg.current.badge.isNotEmpty()) {
+                        Text(
+                            epg.current.badge,
+                            Modifier.clip(RoundedCornerShape(6.dp)).background(scheme.primary.copy(alpha = 0.16f)).padding(horizontal = 8.dp, vertical = 2.dp),
+                            fontSize = 11.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = scheme.primary,
+                        )
+                    }
+                }
+                Spacer(Modifier.height(4.dp))
+                Text(epg.current.title, fontSize = 17.sp, fontWeight = FontWeight.ExtraBold, color = scheme.onSurface)
+                Text(epg.current.desc, fontSize = 13.sp, color = scheme.onSurfaceVariant, modifier = Modifier.padding(top = 4.dp))
+                Spacer(Modifier.height(10.dp))
+                LinearProgressIndicator(
+                    progress = { epg.current.progress(nowMs) },
+                    modifier = Modifier.fillMaxWidth().height(6.dp).clip(RoundedCornerShape(50)),
+                    color = scheme.primary,
+                    trackColor = scheme.surfaceContainerHighest,
+                )
+            }
+
+            // 2. Past Programs (Catch-Up)
+            if (epg.past.isNotEmpty()) {
+                Spacer(Modifier.height(18.dp))
+                Text("⏪ שודר קודם (לחץ לצפייה ב-Catch-Up)", fontSize = 13.sp, fontWeight = FontWeight.ExtraBold, color = scheme.primary)
+                Spacer(Modifier.height(8.dp))
+                Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                    epg.past.reversed().forEach { prog ->
+                        Row(
+                            Modifier
+                                .fillMaxWidth()
+                                .clip(RoundedCornerShape(16.dp))
+                                .background(scheme.surfaceContainerHigh)
+                                .clickable { onPlayPastProgram(prog) }
+                                .padding(horizontal = 14.dp, vertical = 12.dp),
+                            verticalAlignment = Alignment.CenterVertically,
+                        ) {
+                            Column(Modifier.weight(1f)) {
+                                Text("${prog.startLabel} – ${prog.endLabel}", fontSize = 12.sp, fontWeight = FontWeight.Bold, color = scheme.primary)
+                                Text(prog.title, fontSize = 15.sp, fontWeight = FontWeight.Bold, color = scheme.onSurface)
+                                Text(prog.desc, fontSize = 12.sp, color = scheme.onSurfaceVariant, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                            }
+                            Spacer(Modifier.width(10.dp))
+                            Text(
+                                "⏪ נגן",
+                                Modifier
+                                    .clip(RoundedCornerShape(50))
+                                    .background(scheme.secondaryContainer)
+                                    .padding(horizontal = 12.dp, vertical = 6.dp),
+                                fontSize = 12.sp,
+                                fontWeight = FontWeight.Bold,
+                                color = scheme.onSecondaryContainer,
+                            )
+                        }
+                    }
+                }
+            }
+
+            // 3. Upcoming Programs
+            if (epg.upcoming.isNotEmpty()) {
+                Spacer(Modifier.height(18.dp))
+                Text("📅 בהמשך היום", fontSize = 13.sp, fontWeight = FontWeight.ExtraBold, color = scheme.primary)
+                Spacer(Modifier.height(8.dp))
+                Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                    epg.upcoming.forEach { prog ->
+                        Row(
+                            Modifier
+                                .fillMaxWidth()
+                                .clip(RoundedCornerShape(16.dp))
+                                .background(scheme.surfaceContainerHigh)
+                                .padding(horizontal = 14.dp, vertical = 12.dp),
+                            verticalAlignment = Alignment.CenterVertically,
+                        ) {
+                            Text(
+                                "${prog.startLabel} – ${prog.endLabel}",
+                                fontSize = 12.sp,
+                                fontWeight = FontWeight.Bold,
+                                color = scheme.onSurfaceVariant,
+                                modifier = Modifier.width(92.dp),
+                            )
+                            Column(Modifier.weight(1f)) {
+                                Text(prog.title, fontSize = 14.sp, fontWeight = FontWeight.Bold, color = scheme.onSurface)
+                                Text(prog.desc, fontSize = 12.sp, color = scheme.onSurfaceVariant, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+/**
  * Multi-protocol Cast & Share bottom sheet supporting:
  *  1. Native media casting to Google Cast / Chromecast / Google TV / Android TV
  *  2. Native LAN media casting to LG webOS / Samsung / Smart TVs via DLNA / UPnP AV
- *  3. System-level wireless screen mirroring (Miracast / LG Screen Share / Smart View)
- *  4. External caster app handoff (Web Video Caster / VLC)
+ *  3. Direct Cloud Cast to any Smart TV running the Israel TV+ app
+ *  4. System-level wireless screen mirroring (Miracast / LG Screen Share / Smart View)
+ *  5. External caster app handoff (Web Video Caster / VLC)
  */
 @Composable
 private fun CastSheet(
@@ -1158,10 +1585,12 @@ private fun CastDeviceRow(
 private fun ChannelListSheet(list: List<Channel>, current: Int, logo: (Channel) -> String, onPick: (Int) -> Unit, onDismiss: () -> Unit) {
     val scheme = MaterialTheme.colorScheme
     val state = rememberLazyListState(initialFirstVisibleItemIndex = (current - 2).coerceAtLeast(0))
+    val nowMs = System.currentTimeMillis()
     ModalBottomSheet(onDismissRequest = onDismiss, containerColor = scheme.surfaceContainer) {
         LazyColumn(state = state, contentPadding = PaddingValues(bottom = 32.dp)) {
             items(list.size, key = { list[it].id }) { i ->
                 val ch = list[i]
+                val curProg = remember(ch.id) { EpgRepository.getCurrentProgram(ch, nowMs) }
                 Row(
                     Modifier
                         .fillMaxWidth()
@@ -1175,7 +1604,10 @@ private fun ChannelListSheet(list: List<Channel>, current: Int, logo: (Channel) 
                         ChannelLogo(logo(ch), Modifier.size(width = 52.dp, height = 28.dp), ch.isRadio)
                     }
                     Spacer(Modifier.width(14.dp))
-                    Text(ch.name, color = scheme.onSurface, fontSize = 15.sp, fontWeight = FontWeight.Bold, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                    Column(Modifier.weight(1f)) {
+                        Text(ch.name, color = scheme.onSurface, fontSize = 15.sp, fontWeight = FontWeight.Bold, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                        Text("${curProg.startLabel} · ${curProg.title}", color = scheme.onSurfaceVariant, fontSize = 12.sp, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                    }
                 }
             }
         }
@@ -1218,6 +1650,7 @@ private fun AudioSheet(player: ExoPlayer, tracks: Tracks, onDismiss: () -> Unit)
 private fun MoreSheet(
     ch: Channel,
     prefs: AppPrefs,
+    onOpenEpg: () -> Unit,
     onOpenCast: () -> Unit,
     onDismiss: () -> Unit,
 ) {
@@ -1227,9 +1660,14 @@ private fun MoreSheet(
             Text(ch.name, fontSize = 22.sp, fontWeight = FontWeight.ExtraBold, color = scheme.onSurface)
             if (ch.desc.isNotEmpty()) Text(ch.desc, color = scheme.onSurfaceVariant, modifier = Modifier.padding(top = 6.dp))
             Spacer(Modifier.height(18.dp))
-            Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+            Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(10.dp)) {
                 FilledTonalButton({ prefs.toggleFavorite(ch.id) }, shape = RoundedCornerShape(50)) {
                     Text(if (prefs.isFavorite(ch.id)) "★ הסרה מהמועדפים" else "☆ הוספה למועדפים", fontWeight = FontWeight.Bold)
+                }
+                FilledTonalButton(onClick = onOpenEpg, shape = RoundedCornerShape(50)) {
+                    Icon(Icons.Rounded.Schedule, null, modifier = Modifier.size(18.dp))
+                    Spacer(Modifier.width(6.dp))
+                    Text("לוח שידורים ו-Catch-Up", fontWeight = FontWeight.Bold)
                 }
                 FilledTonalButton(onClick = onOpenCast, shape = RoundedCornerShape(50)) {
                     Icon(Icons.Rounded.Cast, null, modifier = Modifier.size(18.dp))

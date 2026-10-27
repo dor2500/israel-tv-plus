@@ -5,6 +5,7 @@ import android.content.Intent
 import android.net.Uri
 import android.net.wifi.WifiManager
 import android.provider.Settings
+import android.util.Base64
 import androidx.compose.runtime.Stable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -13,6 +14,8 @@ import androidx.mediarouter.media.MediaControlIntent
 import androidx.mediarouter.media.MediaRouteSelector
 import androidx.mediarouter.media.MediaRouter
 import com.google.android.gms.cast.CastMediaControlIntent
+import com.google.android.gms.cast.HlsSegmentFormat
+import com.google.android.gms.cast.HlsVideoSegmentFormat
 import com.google.android.gms.cast.MediaError
 import com.google.android.gms.cast.MediaInfo
 import com.google.android.gms.cast.MediaLoadRequestData
@@ -30,14 +33,25 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
+import org.json.JSONObject
+import java.io.BufferedReader
+import java.io.InputStreamReader
+import java.io.OutputStream
 import java.net.DatagramPacket
 import java.net.DatagramSocket
 import java.net.HttpURLConnection
+import java.net.Inet4Address
 import java.net.InetAddress
+import java.net.NetworkInterface
+import java.net.ServerSocket
+import java.net.Socket
 import java.net.SocketTimeoutException
 import java.net.URI
 import java.net.URL
+import java.security.MessageDigest
+import kotlin.concurrent.thread
 
 /**
  * Registered in AndroidManifest.xml so Google Cast SDK initializes with the standard
@@ -55,8 +69,10 @@ class CastOptionsProvider : OptionsProvider {
 }
 
 enum class CastProtocol(val labelHe: String, val badgeHe: String) {
+    SMART_TV_APP("שידור ישיר לאפליקציית ישראל TV+ בטלוויזיה", "אפליקציית TV+"),
     GOOGLE_CAST("שידור ישיר (Google Cast / Chromecast / Android TV)", "Google Cast"),
     DLNA("שידור ישיר ברשת (LG webOS / Samsung / DLNA)", "DLNA / Smart TV"),
+    MIRACAST_ROUTE("שיקוף אלחוטי ישיר לטלוויזיה (Wireless Display)", "שיקוף ישיר"),
 }
 
 data class CastDeviceItem(
@@ -66,6 +82,7 @@ data class CastDeviceItem(
     val protocol: CastProtocol,
     val routeId: String? = null,
     val dlnaControlUrl: String? = null,
+    val castTopic: String? = null,
 )
 
 fun Channel.remoteLogoUrl(): String = when {
@@ -75,16 +92,259 @@ fun Channel.remoteLogoUrl(): String = when {
 }
 
 /**
+ * Lightweight local LAN HTTP proxy server that runs on the phone while casting to a Chromecast or DLNA TV.
+ * Solves all major Smart TV / Chromecast failure causes:
+ *  - Follows HTTP 301/302 redirects (e.g. ottrast.com single-IP tokens) on the phone
+ *  - Injects the required User-Agent and Mako entitlement tickets
+ *  - Injects `Access-Control-Allow-Origin: *` CORS headers required by Chromecast CAF player
+ *  - Rewrites relative/sub-playlist/segment URLs in `.m3u8` manifests so the TV fetches everything via the phone
+ */
+object LocalCastProxyServer {
+    @Volatile
+    private var serverSocket: ServerSocket? = null
+    @Volatile
+    private var running = false
+
+    val port: Int
+        get() = serverSocket?.localPort ?: 0
+
+    @Synchronized
+    fun ensureStarted(): Int {
+        if (running && serverSocket != null && !serverSocket!!.isClosed) {
+            return serverSocket!!.localPort
+        }
+        return runCatching {
+            val ss = ServerSocket(0)
+            serverSocket = ss
+            running = true
+            thread(start = true, isDaemon = true, name = "ItvLocalCastProxy") {
+                while (running && !ss.isClosed) {
+                    val client = runCatching { ss.accept() }.getOrNull() ?: break
+                    thread(start = true, isDaemon = true) {
+                        handleClient(client)
+                    }
+                }
+            }
+            ss.localPort
+        }.getOrDefault(0)
+    }
+
+    fun getLanIp(context: Context): String? {
+        runCatching {
+            val wm = context.applicationContext.getSystemService(Context.WIFI_SERVICE) as? WifiManager
+            val ipInt = wm?.connectionInfo?.ipAddress ?: 0
+            if (ipInt != 0) {
+                val b1 = ipInt and 0xff
+                val b2 = (ipInt shr 8) and 0xff
+                val b3 = (ipInt shr 16) and 0xff
+                val b4 = (ipInt shr 24) and 0xff
+                val candidate = "$b1.$b2.$b3.$b4"
+                if (candidate != "0.0.0.0" && !candidate.startsWith("127.")) return candidate
+            }
+        }
+        runCatching {
+            val interfaces = NetworkInterface.getNetworkInterfaces()
+            while (interfaces.hasMoreElements()) {
+                val nif = interfaces.nextElement()
+                if (!nif.isUp || nif.isLoopback) continue
+                val addrs = nif.inetAddresses
+                while (addrs.hasMoreElements()) {
+                    val addr = addrs.nextElement()
+                    if (addr is Inet4Address && !addr.isLoopbackAddress) {
+                        val ip = addr.hostAddress ?: continue
+                        if (ip.startsWith("192.168.") || ip.startsWith("10.") || ip.startsWith("172.")) {
+                            return ip
+                        }
+                    }
+                }
+            }
+        }
+        return null
+    }
+
+    fun buildProxyUrl(context: Context, targetUrl: String, auth: String = "", isRadio: Boolean = false): String? {
+        val ip = getLanIp(context) ?: return null
+        val p = ensureStarted()
+        if (p <= 0) return null
+        val enc = Base64.encodeToString(targetUrl.toByteArray(Charsets.UTF_8), Base64.URL_SAFE or Base64.NO_WRAP)
+        val ext = if (isRadio) "stream.mp3" else "live.m3u8"
+        return "http://$ip:$p/$ext?u=$enc&auth=${Uri.encode(auth)}"
+    }
+
+    private fun handleClient(socket: Socket) {
+        socket.use { s ->
+            s.soTimeout = 15_000
+            val reader = BufferedReader(InputStreamReader(s.getInputStream(), Charsets.UTF_8))
+            val requestLine = reader.readLine() ?: return
+            val parts = requestLine.split(" ")
+            if (parts.size < 2) return
+            val method = parts[0].uppercase()
+            val fullPath = parts[1]
+
+            // Drain headers
+            while (true) {
+                val line = reader.readLine()
+                if (line.isNullOrEmpty()) break
+            }
+
+            val out = s.getOutputStream()
+            if (method == "OPTIONS") {
+                writeHeaders(out, "200 OK", "text/plain", 0)
+                return
+            }
+
+            val uri = Uri.parse("http://localhost$fullPath")
+            val encodedUrl = uri.getQueryParameter("u") ?: run {
+                writeHeaders(out, "400 Bad Request", "text/plain", 0)
+                return
+            }
+            val auth = uri.getQueryParameter("auth").orEmpty()
+            val rawTarget = String(Base64.decode(encodedUrl, Base64.URL_SAFE), Charsets.UTF_8)
+            val resolvedTarget = runCatching {
+                runBlocking { playableUrl(rawTarget, auth) }
+            }.getOrDefault(rawTarget)
+
+            val isPlaylistRequest = uri.path?.endsWith(".m3u8", ignoreCase = true) == true ||
+                resolvedTarget.contains(".m3u8", ignoreCase = true)
+
+            val conn = openFollowingRedirects(resolvedTarget) ?: run {
+                writeHeaders(out, "502 Bad Gateway", "text/plain", 0)
+                return
+            }
+
+            val finalUrl = conn.url.toString()
+            val contentTypeHeader = conn.contentType.orEmpty()
+
+            if (isPlaylistRequest && ! uri.path.orEmpty().startsWith("/seg")) {
+                val bodyText = runCatching { conn.inputStream.bufferedReader().use { it.readText() } }.getOrNull()
+                if (bodyText != null && bodyText.trimStart().startsWith("#EXTM3U")) {
+                    val hostPort = s.localAddress.hostAddress + ":" + s.localPort
+                    val rewritten = rewriteM3u8(bodyText, finalUrl, hostPort)
+                    val bytes = rewritten.toByteArray(Charsets.UTF_8)
+                    writeHeaders(out, "200 OK", "application/vnd.apple.mpegurl", bytes.size.toLong())
+                    if (method != "HEAD") {
+                        out.write(bytes)
+                        out.flush()
+                    }
+                    return
+                }
+            }
+
+            // Binary segment / audio stream pass-through
+            val mime = when {
+                contentTypeHeader.isNotBlank() -> contentTypeHeader
+                finalUrl.endsWith(".ts", true) -> "video/mp2t"
+                finalUrl.endsWith(".mp3", true) -> "audio/mpeg"
+                else -> "application/octet-stream"
+            }
+            writeHeaders(out, "200 OK", mime, -1)
+            if (method != "HEAD") {
+                conn.inputStream.use { input ->
+                    val buf = ByteArray(32 * 1024)
+                    while (true) {
+                        val n = input.read(buf)
+                        if (n <= 0) break
+                        out.write(buf, 0, n)
+                    }
+                    out.flush()
+                }
+            }
+        }
+    }
+
+    private fun openFollowingRedirects(startUrl: String): HttpURLConnection? {
+        var current = startUrl
+        repeat(6) {
+            val conn = (URL(current).openConnection() as HttpURLConnection).apply {
+                instanceFollowRedirects = false
+                connectTimeout = 10_000
+                readTimeout = 14_000
+                setRequestProperty("User-Agent", USER_AGENT)
+                setRequestProperty("Accept", "*/*")
+            }
+            val code = runCatching { conn.responseCode }.getOrDefault(-1)
+            if (code in 300..399) {
+                val loc = conn.getHeaderField("Location") ?: return null
+                current = runCatching { URI(current).resolve(loc).toString() }.getOrDefault(loc)
+                conn.disconnect()
+            } else if (code in 200..299) {
+                return conn
+            } else {
+                conn.disconnect()
+                return null
+            }
+        }
+        return null
+    }
+
+    private fun rewriteM3u8(playlist: String, baseUrl: String, hostPort: String): String {
+        val baseUri = runCatching { URI(baseUrl) }.getOrNull()
+        val lines = playlist.lines()
+        val sb = StringBuilder(playlist.length + 1024)
+        for (rawLine in lines) {
+            val line = rawLine.trim()
+            if (line.isEmpty()) {
+                sb.append("\n")
+                continue
+            }
+            if (line.startsWith("#")) {
+                // Rewrite URI="..." inside #EXT-X-KEY, #EXT-X-MAP, #EXT-X-MEDIA
+                val rewrittenTag = Regex("""URI="([^"]+)"""").replace(line) { m ->
+                    val rawRef = m.groupValues[1]
+                    val abs = resolveUri(baseUri, rawRef)
+                    val isSubM3u8 = abs.contains(".m3u8", ignoreCase = true)
+                    val proxyEndpoint = if (isSubM3u8) "live.m3u8" else "seg"
+                    val enc = Base64.encodeToString(abs.toByteArray(Charsets.UTF_8), Base64.URL_SAFE or Base64.NO_WRAP)
+                    """URI="http://$hostPort/$proxyEndpoint?u=$enc""""
+                }
+                sb.append(rewrittenTag).append("\n")
+            } else {
+                val abs = resolveUri(baseUri, line)
+                val isSubM3u8 = abs.contains(".m3u8", ignoreCase = true)
+                val proxyEndpoint = if (isSubM3u8) "live.m3u8" else "seg"
+                val enc = Base64.encodeToString(abs.toByteArray(Charsets.UTF_8), Base64.URL_SAFE or Base64.NO_WRAP)
+                sb.append("http://$hostPort/$proxyEndpoint?u=$enc\n")
+            }
+        }
+        return sb.toString()
+    }
+
+    private fun resolveUri(baseUri: URI?, ref: String): String {
+        if (ref.startsWith("http://", true) || ref.startsWith("https://", true)) return ref
+        if (baseUri == null) return ref
+        return runCatching { baseUri.resolve(ref).toString() }.getOrDefault(ref)
+    }
+
+    private fun writeHeaders(out: OutputStream, status: String, contentType: String, contentLength: Long) {
+        val headers = buildString {
+            append("HTTP/1.1 $status\r\n")
+            append("Content-Type: $contentType\r\n")
+            if (contentLength >= 0) append("Content-Length: $contentLength\r\n")
+            append("Access-Control-Allow-Origin: *\r\n")
+            append("Access-Control-Allow-Methods: GET, HEAD, OPTIONS\r\n")
+            append("Access-Control-Allow-Headers: *\r\n")
+            append("Cache-Control: no-cache, no-store\r\n")
+            append("Connection: close\r\n\r\n")
+        }
+        out.write(headers.toByteArray(Charsets.UTF_8))
+        out.flush()
+    }
+}
+
+/**
  * Manages discovery and playback handoff for:
- *  1. Google Cast / Chromecast / Google TV / Android TV (via MediaRouter + CastContext)
- *  2. LG webOS / Samsung / Smart TV DLNA / UPnP AV MediaRenderers on the local Wi-Fi (via SSDP + SOAP AVTransport)
- *  3. Android System Screen Mirroring (Miracast / LG Screen Share / Smart View) & external caster apps
+ *  1. Direct Cast to the Israel TV+ Smart TV app (Android TV / LG webOS / Samsung Tizen / PC) on the same LAN or Google account
+ *  2. Google Cast / Chromecast / Google TV / Android TV (via MediaRouter + CastContext + LocalCastProxyServer fallback)
+ *  3. LG webOS / Samsung / Smart TV DLNA / UPnP AV MediaRenderers on the local Wi-Fi (via SSDP + SOAP AVTransport + LocalCastProxyServer)
+ *  4. Android System Screen Mirroring (Miracast / LG Screen Share / Smart View) & external caster apps
  */
 @Stable
 class CastController(
     private val context: Context,
     private val scope: CoroutineScope,
 ) {
+    private val appContext = context.applicationContext
+
     var devices by mutableStateOf<List<CastDeviceItem>>(emptyList())
         private set
     var isScanning by mutableStateOf(false)
@@ -106,19 +366,30 @@ class CastController(
 
     private var castRoutes = emptyList<CastDeviceItem>()
     private var dlnaDevices = emptyList<CastDeviceItem>()
+    private var smartTvAppDevices = emptyList<CastDeviceItem>()
 
     private var pendingChannel: Channel? = null
     private var currentCandidates = emptyList<String>()
     private var currentCandidateIndex = 0
     private var dlnaScanJob: Job? = null
+    @Volatile
+    private var cachedLanTopic: String? = null
 
-    private val mediaRouter: MediaRouter? = runCatching { MediaRouter.getInstance(context) }.getOrNull()
-    private val castContext: CastContext? = runCatching { CastContext.getSharedInstance(context) }.getOrNull()
+    private val mediaRouter: MediaRouter? = runCatching { MediaRouter.getInstance(appContext) }.getOrNull()
+    private val castContext: CastContext? = runCatching { CastContext.getSharedInstance(appContext) }.getOrNull()
 
-    private val routeSelector: MediaRouteSelector? = runCatching {
+    private val castSelector: MediaRouteSelector? = runCatching {
         MediaRouteSelector.Builder()
             .addControlCategory(CastMediaControlIntent.categoryForCast(CastMediaControlIntent.DEFAULT_MEDIA_RECEIVER_APPLICATION_ID))
             .addControlCategory(MediaControlIntent.CATEGORY_REMOTE_PLAYBACK)
+            .build()
+    }.getOrNull()
+
+    private val allRouteSelector: MediaRouteSelector? = runCatching {
+        MediaRouteSelector.Builder()
+            .addControlCategory(CastMediaControlIntent.categoryForCast(CastMediaControlIntent.DEFAULT_MEDIA_RECEIVER_APPLICATION_ID))
+            .addControlCategory(MediaControlIntent.CATEGORY_REMOTE_PLAYBACK)
+            .addControlCategory(MediaControlIntent.CATEGORY_LIVE_VIDEO)
             .build()
     }.getOrNull()
 
@@ -185,7 +456,7 @@ class CastController(
             isCasting = false
             remotePlaying = false
             statusMessage = null
-            errorMessage = "ההתחברות אל הטלוויזיה נכשלה (קוד $error). ודא שהטלפון והטלוויזיה באותה רשת Wi-Fi."
+            errorMessage = "ההתחברות אל הטלוויזיה נכשלה (קוד $error). ניתן לבחור בשידור ישיר לאפליקציית ישראל TV+ בטלוויזיה או בשיקוף מסך."
         }
 
         override fun onSessionEnding(session: CastSession) {}
@@ -219,8 +490,10 @@ class CastController(
     }
 
     init {
+        LocalCastProxyServer.ensureStarted()
+        buildSmartTvAppEntries()
         runCatching {
-            val selector = routeSelector
+            val selector = allRouteSelector
             if (mediaRouter != null && selector != null) {
                 mediaRouter.addCallback(selector, routerCallback, MediaRouter.CALLBACK_FLAG_REQUEST_DISCOVERY)
                 refreshCastRoutes()
@@ -230,6 +503,30 @@ class CastController(
                 if (existing.isConnected) onCastSessionReady(existing)
             }
         }
+    }
+
+    private fun buildSmartTvAppEntries(lanTopic: String? = cachedLanTopic) {
+        val account = runCatching { AppPrefs(appContext).googleUser }.getOrNull()
+        val pairCode = account?.let { GoogleSync.shortPairingCode(it.email) }.orEmpty()
+        val list = mutableListOf<CastDeviceItem>()
+        if (account != null && pairCode.isNotBlank()) {
+            list += CastDeviceItem(
+                id = "smart_tv_sync:$pairCode",
+                name = "טלוויזיה מחוברת לחשבון (${account.displayName})",
+                description = "שידור ישיר לאפליקציית ישראל TV+ הפתוחה בטלוויזיה • 100% תאימות ערוצים",
+                protocol = CastProtocol.SMART_TV_APP,
+                castTopic = "itv_cast_$pairCode",
+            )
+        }
+        list += CastDeviceItem(
+            id = "smart_tv_lan",
+            name = "אפליקציית ישראל TV+ בטלוויזיה (ברשת הביתית)",
+            description = "מעביר מיד את הערוץ לטלוויזיה שבה פתוחה אפליקציית ישראל TV+ באותו Wi-Fi",
+            protocol = CastProtocol.SMART_TV_APP,
+            castTopic = lanTopic,
+        )
+        smartTvAppDevices = list
+        mergeDevices()
     }
 
     private fun onCastSessionReady(session: CastSession) {
@@ -251,12 +548,14 @@ class CastController(
         }
     }
 
-    /** Starts an active scan for both Google Cast / Android TV routes and LG / Samsung / DLNA TVs on LAN. */
+    /** Starts an active scan for Google Cast / Android TV routes, Smart TV app receivers, and LG / Samsung DLNA TVs. */
     fun startDiscovery(currentChannel: Channel? = null) {
         if (currentChannel != null) pendingChannel = currentChannel
         errorMessage = null
+        LocalCastProxyServer.ensureStarted()
+        buildSmartTvAppEntries()
         runCatching {
-            val selector = routeSelector
+            val selector = allRouteSelector
             if (mediaRouter != null && selector != null) {
                 mediaRouter.removeCallback(routerCallback)
                 mediaRouter.addCallback(
@@ -270,6 +569,11 @@ class CastController(
         dlnaScanJob?.cancel()
         dlnaScanJob = scope.launch {
             isScanning = true
+            val topic = resolveHomeLanCastTopic()
+            if (topic != null) {
+                cachedLanTopic = topic
+                buildSmartTvAppEntries(topic)
+            }
             val foundDlna = discoverDlnaDevices()
             dlnaDevices = foundDlna
             mergeDevices()
@@ -288,28 +592,30 @@ class CastController(
 
     private fun refreshCastRoutes() {
         val router = mediaRouter ?: return
-        val selector = routeSelector ?: return
+        val cSelector = castSelector
+        val aSelector = allRouteSelector ?: return
         val list = router.routes.mapNotNull { route ->
             if (route.isDefault || !route.isEnabled || route.isBluetooth) return@mapNotNull null
-            if (!route.matchesSelector(selector)) return@mapNotNull null
+            if (!route.matchesSelector(aSelector)) return@mapNotNull null
             val name = route.name.toString().trim()
-            if (name.isEmpty()) return@mapNotNull null
+            if (name.isEmpty() || name.contains("Phone", ignoreCase = true) || name.contains("טלפון")) return@mapNotNull null
+            val isGoogleCast = cSelector != null && route.matchesSelector(cSelector)
             CastDeviceItem(
-                id = "cast:${route.id}",
+                id = "route:${route.id}",
                 name = name,
-                description = route.description?.toString()?.takeIf { it.isNotBlank() } ?: "Google Cast / Chromecast",
-                protocol = CastProtocol.GOOGLE_CAST,
+                description = route.description?.toString()?.takeIf { it.isNotBlank() }
+                    ?: if (isGoogleCast) "Google Cast / Chromecast / Android TV" else "שיקוף אלחוטי ישיר (Wireless Display)",
+                protocol = if (isGoogleCast) CastProtocol.GOOGLE_CAST else CastProtocol.MIRACAST_ROUTE,
                 routeId = route.id,
             )
-        }.distinctBy { it.name.lowercase() }
+        }.distinctBy { "${it.protocol}:${it.name.lowercase()}" }
         castRoutes = list
         mergeDevices()
     }
 
     private fun mergeDevices() {
-        val castNames = castRoutes.map { it.name.lowercase() }.toSet()
-        // Keep DLNA devices as well; if a TV supports both Google Cast and DLNA, show both with clear protocol badges
-        devices = castRoutes + dlnaDevices.filter { dlna ->
+        val castNames = castRoutes.filter { it.protocol == CastProtocol.GOOGLE_CAST }.map { it.name.lowercase() }.toSet()
+        devices = smartTvAppDevices + castRoutes + dlnaDevices.filter { dlna ->
             dlna.name.lowercase() !in castNames || dlna.protocol == CastProtocol.DLNA
         }
     }
@@ -319,6 +625,12 @@ class CastController(
         pendingChannel = channel
         errorMessage = null
         when (device.protocol) {
+            CastProtocol.SMART_TV_APP -> {
+                connectedDevice = device
+                isConnecting = true
+                statusMessage = "שולח את ${channel.name} אל ${device.name}…"
+                loadChannel(channel)
+            }
             CastProtocol.GOOGLE_CAST -> {
                 val router = mediaRouter
                 val route = router?.routes?.firstOrNull { it.id == device.routeId }
@@ -334,6 +646,16 @@ class CastController(
                     errorMessage = "המכשיר ${device.name} אינו זמין כעת ברשת."
                 }
             }
+            CastProtocol.MIRACAST_ROUTE -> {
+                val router = mediaRouter
+                val route = router?.routes?.firstOrNull { it.id == device.routeId }
+                if (router != null && route != null) {
+                    router.selectRoute(route)
+                    statusMessage = "מפעיל שיקוף אלחוטי אל ${device.name}…"
+                } else {
+                    openSystemMirroring()
+                }
+            }
             CastProtocol.DLNA -> {
                 connectedDevice = device
                 isConnecting = true
@@ -343,7 +665,7 @@ class CastController(
         }
     }
 
-    /** Sends [channel] to the currently connected TV receiver (Google Cast or DLNA). */
+    /** Sends [channel] to the currently connected TV receiver (Smart TV App, Google Cast, or DLNA). */
     fun loadChannel(channel: Channel) {
         pendingChannel = channel
         activeChannelId = channel.id
@@ -351,27 +673,96 @@ class CastController(
         val dev = connectedDevice ?: return
 
         when (dev.protocol) {
+            CastProtocol.SMART_TV_APP -> {
+                scope.launch {
+                    isConnecting = true
+                    statusMessage = "מעביר לערוץ ${channel.name} בטלוויזיה…"
+                    val ok = sendSmartTvAppCommand(
+                        device = dev,
+                        action = "cast_channel",
+                        channel = channel,
+                    )
+                    if (ok) {
+                        isConnecting = false
+                        isCasting = true
+                        remotePlaying = true
+                        errorMessage = null
+                        statusMessage = "משדר כעת את ${channel.name} באפליקציית ישראל TV+ בטלוויזיה"
+                    } else {
+                        isConnecting = false
+                        errorMessage = "לא הצלחנו לשלוח פקודה לטלוויזיה. ודא שיש חיבור אינטרנט פעיל ושאפליקציית ישראל TV+ פתוחה בטלוויזיה."
+                    }
+                }
+            }
             CastProtocol.GOOGLE_CAST -> {
-                // Chromecast Default Media Receiver requires HTTPS URLs first; keep HTTP fallbacks after HTTPS ones
-                val all = channel.allCandidateUrls()
-                val httpsFirst = all.filter { it.startsWith("https://", ignoreCase = true) } +
-                    all.filterNot { it.startsWith("https://", ignoreCase = true) }
-                currentCandidates = httpsFirst.distinct()
+                currentCandidates = buildGoogleCastCandidates(channel)
                 currentCandidateIndex = 0
                 loadCurrentGoogleCastCandidate(channel)
             }
             CastProtocol.DLNA -> {
-                currentCandidates = channel.allCandidateUrls()
+                currentCandidates = buildDlnaCandidates(channel)
                 currentCandidateIndex = 0
                 loadCurrentDlnaCandidate(dev, channel)
             }
+            CastProtocol.MIRACAST_ROUTE -> {}
         }
+    }
+
+    /**
+     * Builds an ordered list of stream URLs optimized for Chromecast Default Media Receiver:
+     *  1. Clean MPEG-TS HTTPS URLs (stripping FreeTV `?fmp4&renditions` first so Chromecast's HLS parser succeeds)
+     *  2. Original HTTPS URLs
+     *  3. Local LAN Proxy URLs (`http://<phone-ip>:<port>/live.m3u8?...`) which add CORS headers and handle HTTP/302 streams (`ottrast.com`, `mcquack.net`)
+     */
+    private fun buildGoogleCastCandidates(channel: Channel): List<String> {
+        val rawList = channel.allCandidateUrls()
+        val result = mutableListOf<String>()
+        for (u in rawList) {
+            if (u.startsWith("https://", ignoreCase = true)) {
+                if (u.contains("?fmp4&renditions", ignoreCase = true)) {
+                    result += u.replace("?fmp4&renditions", "", ignoreCase = true)
+                }
+                result += u
+            }
+        }
+        // Add LocalCastProxyServer URLs for every candidate (solves CORS & HTTP mixed-content/redirect issues)
+        for (u in rawList) {
+            val clean = u.replace("?fmp4&renditions", "", ignoreCase = true)
+            LocalCastProxyServer.buildProxyUrl(appContext, clean, channel.auth, channel.isRadio)?.let { result += it }
+        }
+        for (u in rawList) {
+            if (!u.startsWith("https://", ignoreCase = true)) {
+                result += u
+            }
+        }
+        return result.distinct()
+    }
+
+    /**
+     * Builds an ordered list of stream URLs optimized for LG webOS / Samsung DLNA MediaRenderers:
+     *  1. Local LAN Proxy URLs (`http://<phone-ip>:<port>/live.m3u8?...`) first because DLNA renderers fail on 302 redirects and custom User-Agents
+     *  2. Clean MPEG-TS direct URLs (without `?fmp4&renditions`)
+     */
+    private fun buildDlnaCandidates(channel: Channel): List<String> {
+        val rawList = channel.allCandidateUrls()
+        val result = mutableListOf<String>()
+        for (u in rawList) {
+            val clean = u.replace("?fmp4&renditions", "", ignoreCase = true)
+            LocalCastProxyServer.buildProxyUrl(appContext, clean, channel.auth, channel.isRadio)?.let { result += it }
+        }
+        for (u in rawList) {
+            if (u.contains("?fmp4&renditions", ignoreCase = true)) {
+                result += u.replace("?fmp4&renditions", "", ignoreCase = true)
+            }
+            result += u
+        }
+        return result.distinct()
     }
 
     private fun loadCurrentGoogleCastCandidate(channel: Channel) {
         val candidateRaw = currentCandidates.getOrNull(currentCandidateIndex) ?: run {
             isConnecting = false
-            errorMessage = "לא נמצא מקור שידור תואם ל-Chromecast עבור ${channel.name}. מומלץ להשתמש בשיקוף מסך (Miracast / LG Screen Share)."
+            errorMessage = "מקלט ה-Chromecast דחה את הפורמט של ${channel.name}. בחר ב-״אפליקציית ישראל TV+ בטלוויזיה״ או ב-״שיקוף מסך״."
             return
         }
         val session = castContext?.sessionManager?.currentCastSession ?: return
@@ -380,7 +771,14 @@ class CastController(
         scope.launch {
             isConnecting = true
             statusMessage = "טוען את ${channel.name} בטלוויזיה…"
-            val resolvedUrl = runCatching { playableUrl(candidateRaw, channel.auth) }.getOrDefault(candidateRaw)
+            val isLocalProxy = candidateRaw.startsWith("http://192.168.") ||
+                candidateRaw.startsWith("http://10.") ||
+                candidateRaw.startsWith("http://172.")
+            val resolvedUrl = if (isLocalProxy) {
+                candidateRaw
+            } else {
+                runCatching { playableUrl(candidateRaw, channel.auth) }.getOrDefault(candidateRaw)
+            }
             val contentType = when {
                 channel.isRadio && (resolvedUrl.endsWith(".mp3", true) || !resolvedUrl.contains(".m3u8", true)) -> "audio/mpeg"
                 else -> "application/x-mpegurl"
@@ -392,19 +790,23 @@ class CastController(
                 putString(MediaMetadata.KEY_SUBTITLE, channel.subtitle().ifEmpty { "ישראל TV+ • שידור חי" })
                 addImage(WebImage(Uri.parse(channel.remoteLogoUrl())))
             }
-            val mediaInfo = MediaInfo.Builder(resolvedUrl)
+            val mediaInfoBuilder = MediaInfo.Builder(resolvedUrl)
                 .setStreamType(MediaInfo.STREAM_TYPE_LIVE)
                 .setContentType(contentType)
                 .setMetadata(metadata)
-                .build()
+            if (resolvedUrl.contains("fmp4", ignoreCase = true)) {
+                mediaInfoBuilder
+                    .setHlsSegmentFormat(HlsSegmentFormat.FMP4)
+                    .setHlsVideoSegmentFormat(HlsVideoSegmentFormat.FMP4)
+            }
             val req = MediaLoadRequestData.Builder()
-                .setMediaInfo(mediaInfo)
+                .setMediaInfo(mediaInfoBuilder.build())
                 .setAutoplay(true)
                 .build()
 
             client.load(req).setResultCallback { result ->
                 if (!result.status.isSuccess) {
-                    tryNextCastCandidateOrFail("הערוץ דורש חיבור ישיר או שיקוף מסך")
+                    tryNextCastCandidateOrFail("הערוץ דורש חיבור ישיר לאפליקציית TV+ או שיקוף מסך")
                 } else {
                     isConnecting = false
                     isCasting = true
@@ -424,7 +826,7 @@ class CastController(
             loadCurrentGoogleCastCandidate(ch)
         } else {
             isConnecting = false
-            errorMessage = "$reasonHe (${ch.name}). ניתן לעבור לשיקוף מסך אלחוטי עבור ערוץ זה."
+            errorMessage = "$reasonHe (${ch.name}). מומלץ לבחור ב-״אפליקציית ישראל TV+ בטלוויזיה״ או ב-״שיקוף מסך״."
         }
     }
 
@@ -436,13 +838,20 @@ class CastController(
         }
         val candidateRaw = currentCandidates.getOrNull(currentCandidateIndex) ?: run {
             isConnecting = false
-            errorMessage = "הטלוויזיה ${device.name} לא הצליחה לנגן את הערוץ ישירות. נסה שיקוף מסך (LG Screen Share / Miracast)."
+            errorMessage = "הטלוויזיה ${device.name} לא הצליחה לנגן את הערוץ ישירות ב-DLNA. בחר ב-״אפליקציית ישראל TV+ בטלוויזיה״ או ב-״שיקוף מסך״."
             return
         }
         scope.launch {
             isConnecting = true
             statusMessage = "שולח את ${channel.name} אל ${device.name}…"
-            val resolvedUrl = runCatching { playableUrl(candidateRaw, channel.auth) }.getOrDefault(candidateRaw)
+            val isLocalProxy = candidateRaw.startsWith("http://192.168.") ||
+                candidateRaw.startsWith("http://10.") ||
+                candidateRaw.startsWith("http://172.")
+            val resolvedUrl = if (isLocalProxy) {
+                candidateRaw
+            } else {
+                runCatching { playableUrl(candidateRaw, channel.auth) }.getOrDefault(candidateRaw)
+            }
             val ok = sendDlnaSetAvTransportAndPlay(
                 controlUrl = controlUrl,
                 streamUrl = resolvedUrl,
@@ -462,7 +871,7 @@ class CastController(
                 isConnecting = false
                 isCasting = false
                 remotePlaying = false
-                errorMessage = "הטלוויזיה ${device.name} דחתה את השידור הישיר. מומלץ להשתמש ב״שיקוף מסך (LG Screen Share / Miracast)״ למטה."
+                errorMessage = "הטלוויזיה ${device.name} דחתה את השידור הישיר ב-DLNA. מומלץ לבחור ב-״אפליקציית ישראל TV+ בטלוויזיה״ או ב-״שיקוף מסך״."
             }
         }
     }
@@ -471,6 +880,15 @@ class CastController(
     fun togglePlayPause() {
         val dev = connectedDevice ?: return
         when (dev.protocol) {
+            CastProtocol.SMART_TV_APP -> {
+                val nextPlay = !remotePlaying
+                scope.launch {
+                    if (sendSmartTvAppCommand(dev, if (nextPlay) "cast_play" else "cast_pause", pendingChannel)) {
+                        remotePlaying = nextPlay
+                        statusMessage = if (nextPlay) "משדר כעת בטלוויזיה" else "מושהה בטלוויזיה"
+                    }
+                }
+            }
             CastProtocol.GOOGLE_CAST -> {
                 val client = castContext?.sessionManager?.currentCastSession?.remoteMediaClient ?: return
                 if (remotePlaying) {
@@ -497,6 +915,7 @@ class CastController(
                     }
                 }
             }
+            CastProtocol.MIRACAST_ROUTE -> {}
         }
     }
 
@@ -504,6 +923,11 @@ class CastController(
     fun disconnect() {
         val dev = connectedDevice
         when (dev?.protocol) {
+            CastProtocol.SMART_TV_APP -> {
+                scope.launch {
+                    sendSmartTvAppCommand(dev, "cast_stop", pendingChannel)
+                }
+            }
             CastProtocol.GOOGLE_CAST -> {
                 runCatching {
                     castContext?.sessionManager?.endCurrentSession(true)
@@ -522,7 +946,7 @@ class CastController(
                     }
                 }
             }
-            null -> {}
+            CastProtocol.MIRACAST_ROUTE, null -> {}
         }
         connectedDevice = null
         isConnecting = false
@@ -535,9 +959,11 @@ class CastController(
     /** Opens Android's system Cast / Miracast / LG Screen Share / Smart View picker. */
     fun openSystemMirroring(): Boolean {
         val intents = listOf(
+            Intent("android.settings.CAST_SETTINGS"),
             Intent(Settings.ACTION_CAST_SETTINGS),
             Intent("android.settings.WIFI_DISPLAY_SETTINGS"),
             Intent("com.samsung.wfd.LAUNCH_WFD_PICKER_DLG"),
+            Intent("miui.intent.action.MIPLAY"),
             Intent(Settings.ACTION_WIFI_SETTINGS),
         )
         for (intent in intents) {
@@ -569,13 +995,83 @@ class CastController(
     }
 
     // =========================================================================
+    // Smart TV App Direct Cast (via shared Home LAN topic + Google Sync topic)
+    // =========================================================================
+
+    private suspend fun resolveHomeLanCastTopic(): String? = withContext(Dispatchers.IO) {
+        cachedLanTopic?.let { return@withContext it }
+        val endpoints = listOf("https://api.ipify.org", "https://icanhazip.com")
+        for (ep in endpoints) {
+            val ip = runCatching {
+                val conn = (URL(ep).openConnection() as HttpURLConnection).apply {
+                    connectTimeout = 3500
+                    readTimeout = 3500
+                }
+                conn.inputStream.bufferedReader().use { it.readText().trim() }
+            }.getOrNull()
+            if (!ip.isNullOrEmpty() && ip.length <= 64) {
+                val digest = MessageDigest.getInstance("SHA-256").digest("itv_lan_$ip".toByteArray(Charsets.UTF_8))
+                val hex = digest.joinToString("") { "%02x".format(it) }.take(14)
+                val topic = "itv_lan_$hex"
+                cachedLanTopic = topic
+                return@withContext topic
+            }
+        }
+        null
+    }
+
+    private suspend fun sendSmartTvAppCommand(
+        device: CastDeviceItem,
+        action: String,
+        channel: Channel?,
+    ): Boolean = withContext(Dispatchers.IO) {
+        val topics = linkedSetOf<String>()
+        device.castTopic?.takeIf { it.isNotBlank() }?.let { topics += it }
+        resolveHomeLanCastTopic()?.let { topics += it }
+        runCatching { AppPrefs(appContext).googleUser }
+            .getOrNull()
+            ?.let { GoogleSync.shortPairingCode(it.email) }
+            ?.takeIf { it.isNotBlank() }
+            ?.let { topics += "itv_cast_$it" }
+        if (topics.isEmpty()) return@withContext false
+
+        val payload = JSONObject().apply {
+            put("type", action)
+            if (channel != null) {
+                put("channelId", channel.id)
+                put("channelNumber", channel.number)
+                put("channelName", channel.name)
+            }
+            put("ts", System.currentTimeMillis())
+        }.toString()
+        val bytes = payload.toByteArray(Charsets.UTF_8)
+
+        var anySuccess = false
+        for (topic in topics) {
+            val ok = runCatching {
+                val conn = (URL("https://ntfy.sh/$topic").openConnection() as HttpURLConnection).apply {
+                    requestMethod = "POST"
+                    connectTimeout = 5000
+                    readTimeout = 5000
+                    doOutput = true
+                    setRequestProperty("Content-Type", "application/json; charset=utf-8")
+                }
+                conn.outputStream.use { it.write(bytes) }
+                conn.responseCode in 200..299
+            }.getOrDefault(false)
+            if (ok) anySuccess = true
+        }
+        anySuccess
+    }
+
+    // =========================================================================
     // DLNA / UPnP AV Discovery (SSDP) & SOAP Control for LG webOS / Smart TVs
     // =========================================================================
 
     private suspend fun discoverDlnaDevices(): List<CastDeviceItem> = withContext(Dispatchers.IO) {
         val locations = linkedSetOf<String>()
         val wifi = runCatching {
-            context.applicationContext.getSystemService(Context.WIFI_SERVICE) as? WifiManager
+            appContext.getSystemService(Context.WIFI_SERVICE) as? WifiManager
         }.getOrNull()
         val lock = runCatching {
             wifi?.createMulticastLock("israeltv_dlna_ssdp")?.apply {
@@ -587,11 +1083,12 @@ class CastController(
         try {
             DatagramSocket().use { socket ->
                 socket.broadcast = true
-                socket.soTimeout = 750
+                socket.soTimeout = 700
                 val multicastAddr = InetAddress.getByName("239.255.255.250")
                 val searchTargets = listOf(
                     "urn:schemas-upnp-org:service:AVTransport:1",
                     "urn:schemas-upnp-org:device:MediaRenderer:1",
+                    "ssdp:all",
                 )
                 for (st in searchTargets) {
                     val query = buildString {
@@ -688,10 +1185,24 @@ class CastController(
         title: String,
         isRadio: Boolean,
     ): Boolean = withContext(Dispatchers.IO) {
+        // Send Stop first so the TV renderer clears any prior state
+        runCatching {
+            sendDlnaSoap(
+                controlUrl,
+                "Stop",
+                "<u:Stop xmlns:u=\"urn:schemas-upnp-org:service:AVTransport:1\"><InstanceID>0</InstanceID></u:Stop>",
+            )
+        }
+        delay(150)
+
         val escapedUrl = xmlEscape(streamUrl)
         val escapedTitle = xmlEscape(title)
         val upnpClass = if (isRadio) "object.item.audioItem.audioBroadcast" else "object.item.videoItem.videoBroadcast"
-        val protoInfo = if (isRadio) "http-get:*:audio/mpeg:*" else "http-get:*:application/vnd.apple.mpegurl:*"
+        val protoInfo = if (isRadio) {
+            "http-get:*:audio/mpeg:DLNA.ORG_OP=01;DLNA.ORG_CI=0;DLNA.ORG_FLAGS=01700000000000000000000000000000"
+        } else {
+            "http-get:*:application/vnd.apple.mpegurl:*"
+        }
         val didl = """<DIDL-Lite xmlns="urn:schemas-upnp-org:metadata-1-0/DIDL-Lite/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:upnp="urn:schemas-upnp-org:metadata-1-0/upnp/"><item id="0" parentID="-1" restricted="1"><dc:title>$escapedTitle</dc:title><upnp:class>$upnpClass</upnp:class><res protocolInfo="$protoInfo">$escapedUrl</res></item></DIDL-Lite>"""
         val escapedDidl = xmlEscape(didl)
 
@@ -748,4 +1259,3 @@ class CastController(
         .replace("\"", "&quot;")
         .replace("'", "&apos;")
 }
-

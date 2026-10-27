@@ -12,11 +12,15 @@ import kotlinx.coroutines.withContext
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.jsonObject
+import kotlinx.serialization.json.jsonPrimitive
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.RequestBody.Companion.toRequestBody
+import java.net.URLEncoder
 import java.security.MessageDigest
+import java.util.UUID
 import java.util.concurrent.TimeUnit
 
 /**
@@ -62,19 +66,59 @@ object GoogleSync {
         return hex.take(6).uppercase()
     }
 
+    /** Generates a unique ntfy topic for QR Code sign-in pairing. */
+    fun generateQrTopic(): String =
+        "itv_gqr_" + UUID.randomUUID().toString().replace("-", "").take(12)
+
+    fun buildQrPairingUrl(topic: String): String =
+        "https://dor2500.github.io/israel-tv-plus/pair.html#mode=google&t=$topic"
+
+    fun buildQrImageUrl(pairingUrl: String): String =
+        "https://api.qrserver.com/v1/create-qr-code/?size=360x360&margin=10&data=" +
+            URLEncoder.encode(pairingUrl, "UTF-8")
+
     /**
-     * Builds the native Google Sign-In Intent (`GoogleSignIn.getClient`), requesting email and profile.
-     * Falls back to Android's native `AccountManager.newChooseAccountIntent` if Play Services is unavailable.
+     * Polls the ntfy.sh pairing channel for a `google_auth` payload sent from `pair.html` after scanning the QR code.
+     */
+    suspend fun pollQrPairingTopic(topic: String): GoogleUser? = withContext(Dispatchers.IO) {
+        runCatching {
+            val req = Request.Builder()
+                .url("https://ntfy.sh/$topic/json?poll=1&since=60s")
+                .get()
+                .header("User-Agent", USER_AGENT)
+                .build()
+            http.newCall(req).execute().use { resp ->
+                if (!resp.isSuccessful) return@use null
+                val lines = resp.body.string().lines().filter { it.isNotBlank() }
+                for (line in lines.asReversed()) {
+                    val outer = runCatching { json.parseToJsonElement(line).jsonObject }.getOrNull() ?: continue
+                    val msgStr = outer["message"]?.jsonPrimitive?.content ?: continue
+                    val inner = runCatching { json.parseToJsonElement(msgStr).jsonObject }.getOrNull() ?: continue
+                    if (inner["type"]?.jsonPrimitive?.content == "google_auth") {
+                        val email = inner["email"]?.jsonPrimitive?.content.orEmpty()
+                        val name = inner["name"]?.jsonPrimitive?.content.orEmpty()
+                        val user = createManualGoogleUser(email, name)
+                        if (user != null) return@use user
+                    }
+                }
+                null
+            }
+        }.getOrNull()
+    }
+
+    /**
+     * Builds the native Google Sign-In Intent (`AccountManager.newChooseAccountIntent` first for instant 1-tap
+     * system account selection without OAuth SHA-1 mismatch errors, with `GoogleSignIn` fallback).
      */
     fun buildSignInIntent(context: Context): Intent {
         return runCatching {
+            buildAccountPickerIntent()
+        }.getOrElse {
             val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .requestProfile()
                 .build()
             GoogleSignIn.getClient(context, gso).signInIntent
-        }.getOrElse {
-            buildAccountPickerIntent()
         }
     }
 
@@ -91,11 +135,23 @@ object GoogleSync {
         )
 
     /**
-     * Extracts [GoogleUser] from either `GoogleSignIn.getSignedInAccountFromIntent` or `AccountManager` picker result.
+     * Extracts [GoogleUser] from either `AccountManager` picker result or `GoogleSignIn.getSignedInAccountFromIntent`.
      */
     fun parseSignInResult(data: Intent?): GoogleUser? {
         if (data == null) return null
-        // 1. Try GoogleSignInAccount from Play Services
+        // 1. Android AccountManager result (KEY_ACCOUNT_NAME)
+        val acctName = data.getStringExtra(AccountManager.KEY_ACCOUNT_NAME)?.trim().orEmpty()
+        if (acctName.isNotEmpty() && '@' in acctName) {
+            val display = acctName.substringBefore('@').replaceFirstChar { it.uppercase() }
+            return GoogleUser(
+                email = acctName,
+                displayName = display,
+                photoUrl = "",
+                syncKey = deriveSyncKey(acctName),
+                lastSyncedAt = System.currentTimeMillis(),
+            )
+        }
+        // 2. Try GoogleSignInAccount from Play Services
         runCatching {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             val account = task.getResult(ApiException::class.java)
@@ -111,18 +167,6 @@ object GoogleSync {
                     lastSyncedAt = System.currentTimeMillis(),
                 )
             }
-        }
-        // 2. Fallback: Android AccountManager result (KEY_ACCOUNT_NAME)
-        val acctName = data.getStringExtra(AccountManager.KEY_ACCOUNT_NAME)?.trim().orEmpty()
-        if (acctName.isNotEmpty() && '@' in acctName) {
-            val display = acctName.substringBefore('@').replaceFirstChar { it.uppercase() }
-            return GoogleUser(
-                email = acctName,
-                displayName = display,
-                photoUrl = "",
-                syncKey = deriveSyncKey(acctName),
-                lastSyncedAt = System.currentTimeMillis(),
-            )
         }
         return null
     }
@@ -199,4 +243,3 @@ object GoogleSync {
         }.getOrNull()
     }
 }
-

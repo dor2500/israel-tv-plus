@@ -15,7 +15,6 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.os.SystemClock
 import android.util.Rational
 import android.view.View
 import android.view.animation.PathInterpolator
@@ -32,6 +31,7 @@ import coil3.SingletonImageLoader
 import coil3.network.okhttp.OkHttpNetworkFetcherFactory
 import coil3.request.crossfade
 import coil3.svg.SvgDecoder
+import com.google.android.gms.cast.framework.CastContext
 import com.israeltv.plus.data.AppPrefs
 import com.israeltv.plus.data.ChannelStore
 import com.israeltv.plus.data.USER_AGENT
@@ -65,12 +65,14 @@ class PhoneActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         if (isTv()) {
             super.onCreate(savedInstanceState)
-            startActivity(Intent(this, MainActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION))
-            finish()
+            launchTvMainActivity()
             return
         }
         val splash = installSplashScreen()
         super.onCreate(savedInstanceState)
+        // Pre-initialize Google Cast SDK on the main thread so Chromecast / Google TV discovery works immediately
+        runCatching { CastContext.getSharedInstance(applicationContext) }
+
         // the system splash only covers the first frame; the cinematic intro (ui/Intro.kt) takes over on black
         splash.setOnExitAnimationListener { p ->
             val ease = PathInterpolator(0.05f, 0.7f, 0.1f, 1f)   // Material "emphasized decelerate"
@@ -122,6 +124,26 @@ class PhoneActivity : ComponentActivity() {
                 )
             }
         }
+    }
+
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        if (isTv()) {
+            launchTvMainActivity()
+        }
+    }
+
+    @Suppress("DEPRECATION")
+    private fun launchTvMainActivity() {
+        startActivity(
+            Intent(this, MainActivity::class.java).addFlags(
+                Intent.FLAG_ACTIVITY_REORDER_TO_FRONT or
+                    Intent.FLAG_ACTIVITY_SINGLE_TOP or
+                    Intent.FLAG_ACTIVITY_NO_ANIMATION
+            )
+        )
+        overridePendingTransition(0, 0)
+        finish()
     }
 
     private fun isTv(): Boolean {
@@ -195,4 +217,3 @@ class PhoneActivity : ComponentActivity() {
         }
     }
 }
-

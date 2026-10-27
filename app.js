@@ -217,6 +217,151 @@
     return 'מקור: ' + s.by + (k ? ' · ' + k : '');
   }
 
+  // ================================================================== EPG Schedule & Catch-Up / Live Rewind
+  function pad2(n) { return (n < 10 ? '0' : '') + n; }
+  function fmtTimeHe(ms) {
+    var d = new Date(ms);
+    return pad2(d.getHours()) + ':' + pad2(d.getMinutes());
+  }
+  function epgSlotProgram(ch, slotStartMs, slotEndMs, slotIdx) {
+    var id = String(ch.id || '').toLowerCase();
+    var cat = String(ch.category || '');
+    var name = ch.name || '';
+    var h = new Date(slotStartMs).getHours();
+    var s = Math.abs((hueOf(id) + slotIdx * 17) | 0);
+    var pick = function (arr) { return arr[s % arr.length]; };
+
+    if (id.indexOf('kan11') === 0 || id === 'kan_educational') {
+      if (h >= 6 && h <= 8) return ['קלמן וליברמן – מהדורת הבוקר', 'אקטואליה, ראיונות ופרשנויות לפתיחת היום בכאן 11', 'אקטואליה'];
+      if (h >= 9 && h <= 11) return ['כאן בוקר – אולפן פתוח', 'דיווחים חיים, תרבות וצרכנות מרחבי הארץ', 'חדשות'];
+      if (h >= 12 && h <= 15) return [pick(['המרדף – שעשועון הטריוויה', 'סליחה על השאלה', 'בואו לאכול איתי – ישראל']), 'תוכניות הדגל של תאגיד השידור הישראלי', 'בידור ודוקו'];
+      if (h >= 16 && h <= 18) return ['ערב ערב ומהדורת חמש – כאן חדשות', 'סיכום אירועי היום וכתבות שטח', 'חדשות'];
+      if (h >= 19 && h <= 20) return ['חדשות הערב – המהדורה המרכזית', 'המהדורה המרכזית של כאן 11 עם כל הכותרות והתחקירים', 'מהדורה מרכזית'];
+      if (h >= 21 && h <= 22) return [pick(['טהרן – פרק מיוחד', 'קופה ראשית', 'זמן אמת – תחקירים', 'המפקדת']), 'שידורי הפריים-טיים של כאן 11 ב-Full HD', 'פריים טיים'];
+      return ['שידורי הלילה של כאן 11', 'לקט תוכניות דוקו ודרמות ישראליות', 'שידור חוזר'];
+    }
+    if (id.indexOf('keshet') === 0 || id === 'mako_tv') {
+      if (h >= 6 && h <= 9) return ['חדשות הבוקר עם ניב רסקין', 'כל כותרות הבוקר, פאנל פרשנים ודיווחים חיים', 'אקטואליה'];
+      if (h >= 10 && h <= 14) return [pick(['פאולה וליאון', 'גלית ואילנית', 'סדר יום עם כרמלה']), 'מגזין הבוקר והצהריים של קשת 12', 'לייף סטייל'];
+      if (h >= 15 && h <= 18) return [pick(['מהדורת היום – חדשות 12', 'חמש עם רפי רשף', 'שש עם עודד בן עמי']), 'אולפן חדשות 12 בדיווחים חיים', 'חדשות 12'];
+      if (h === 19) return ['תוכנית חיסכון – המגזין הכלכלי', 'צרכנות, כלכלה והשוואות מחירים', 'כלכלה'];
+      if (h === 20) return ['המהדורה המרכזית – חדשות 12', 'מהדורת החדשות המובילה בישראל', 'מהדורה מרכזית'];
+      if (h >= 21 && h <= 22) return [pick(['ארץ נהדרת', 'מאסטר שף ישראל', 'הכוכב הבא', 'עובדה – אילנה דיין', 'חתונה ממבט ראשון']), 'רצועת הפריים-טיים של קשת 12', 'פריים טיים'];
+      return ['לילה טוב ישראל וחי בלילה', 'סיכום אירועי היום והרשת בקשת 12', 'לילה'];
+    }
+    if (id.indexOf('reshet') === 0) {
+      if (h >= 6 && h <= 9) return ['העולם הבוקר – רשת 13', 'מגזין הבוקר של רשת 13', 'אקטואליה'];
+      if (h >= 10 && h <= 15) return [pick(['פותחים יום', 'הדו"ח היומי', 'אלמוג ורותם']), 'תרבות, בידור וראיונות באולפן', 'מגזין'];
+      if (h >= 16 && h <= 19) return [pick(['הכל כלול', 'חמש בערב – חדשות 13', 'אזור מלחמה עם רביב דרוקר']), 'משדרי האקטואליה של חדשות 13', 'חדשות 13'];
+      if (h === 20) return ['המהדורה המרכזית – חדשות 13', 'סיכום חדשות היום ופרשנויות', 'מהדורה מרכזית'];
+      if (h >= 21 && h <= 22) return [pick(['המירוץ למיליון', 'משחקי השף', 'המקור – תחקירים', 'אהבה חדשה']), 'רצועת הפריים-טיים של רשת 13', 'פריים טיים'];
+      return ['הצינור ולילה ברשת 13', 'תרבות רשת וסיכום לילי', 'לילה'];
+    }
+    if (id.indexOf('c14') === 0) {
+      if (h >= 6 && h <= 9) return ['ישראל הבוקר – עכשיו 14', 'משדר הבוקר עם כותרות היום', 'אקטואליה'];
+      if (h >= 10 && h <= 18) return [pick(['יומן צהריים – עכשיו 14', 'ארבע – משדר מיוחד', 'ריקלין ושות׳']), 'שידורי אולפן פתוח ופרשנויות', 'חדשות'];
+      if (h === 19 || h === 20) return ['מהדורת החדשות המרכזית – עכשיו 14', 'כל כותרות היום, כתבות שטח ופרשנויות', 'מהדורה מרכזית'];
+      if (h >= 21 && h <= 22) return ['הפטריוטים עם ינון מגל', 'פאנל האקטואליה המרכזי של עכשיו 14', 'פריים טיים'];
+      return ['פתחי ושי וסיכום הלילה', 'שיחות ליליות וסיכום אירועי היום', 'לילה'];
+    }
+    if (id.indexOf('i24') === 0) {
+      return [pick(['מהדורת החדשות – i24NEWS', 'הישראלים – פאנל אקטואליה', 'מגזין המזרח התיכון והעולם', 'קבינט הערב – משדר מיוחד']),
+        'סיקור חדשותי בינלאומי וישראלי מסביב לשעון מאולפני נמל יפו', 'חדשות 24/7'];
+    }
+    if (cat.indexOf('ספורט') !== -1 || /^(sport|one_|realmadrid|mutv|lfc|dazn|redbull|wwe|ufc|tennis|nba|nfl|fifa|auto_plus)/i.test(id)) {
+      return [pick([
+        'שידור חי: ליגת העל הישראלית בכדורגל',
+        'ליגת האלופות של אופ"א – משחק מרכזי ומגזין תקצירים',
+        'הליגה האנגלית (Premier League) – שידור ישיר',
+        'הליגה הספרדית (LaLiga) – משחק המחזור',
+        'יורוליג בכדורסל – מכבי תל אביב באירופה',
+        'אולפן ספורט מרכזי – חדשות, תקצירים ופרשנויות',
+        'NBA – משחקי הלילה וסיכום המחזור'
+      ]), 'שידורי ספורט חיים, תקצירים בלעדיים ופרשנויות ב-' + name, 'ספורט'];
+    }
+    if (cat.indexOf('ילדים') !== -1) {
+      return [pick([
+        'בובספוג מכנסמרובע – הרפתקאות בביקיני בוטום',
+        'מפרץ ההרפתקאות (PAW Patrol) – יחידת החילוץ',
+        'כראמל – הסדרה הישראלית האהובה',
+        'שקשוקה – פרקים נבחרים',
+        'הדרדסים – הרפתקאות בכפר הדרדסים',
+        'סמי הכבאי – חילוץ והצלה',
+        'מועדון החנונים והאי – סדרות נוער ישראליות',
+        'צבי הנינג׳ה – משימה בניו יורק'
+      ]), 'תוכניות ילדים ונוער מדובבות לעברית ב-' + name, 'ילדים ונוער'];
+    }
+    if (cat.indexOf('אוכל') !== -1) {
+      return [pick([
+        'מאסטר שף – המטבח הישראלי והעולמי',
+        'המטבח המנצח עם חיים כהן',
+        'מסעדות רחוב בעולם – סיור קולינרי',
+        'אפייה מושלמת – קינוחים ולחמים ביתיים',
+        'המטבח של גורדון רמזי – מתכוני שף',
+        'טעמים של בית – בישול ים תיכוני'
+      ]), 'תוכניות בישול, אפייה וקולינריה ב-' + name, 'אוכל ובישול'];
+    }
+    if (cat.indexOf('סרטים') !== -1 || cat.indexOf('קומדיה') !== -1) {
+      return [pick([
+        'קולנוע פריים-טיים: שובר קופות בהקרנה מיוחדת',
+        'דרמה ישראלית מקורית – פרק מלא ב-HD',
+        'קומדיה ישראלית – מרתון פרקים קורעים מצחוק',
+        'סרט אקשן ומתח הוליוודי – שידור מיוחד',
+        'קומדיה רומנטית – הקרנת ערב'
+      ]), 'סרטים וסדרות נבחרים עם תרגום ב-' + name, 'סרטים וסדרות'];
+    }
+    if (isRadioCh(ch)) {
+      return [pick([
+        'יומן החדשות ומוזיקה ישראלית בשידור חי',
+        'מצעד הלהיטים הישראלי והבינלאומי',
+        'שירים שאוהבים – להיטי כל הזמנים',
+        'אולפן פתוח עם מאזינים ודיווחי תנועה'
+      ]), 'שידור רדיו חי ב-' + name, 'רדיו חי'];
+    }
+    return [pick([
+      name + ' – המשדר המרכזי בשידור חי',
+      name + ' – מגזין מיוחד וכתבות נבחרות',
+      name + ' – תוכנית הדגל היומית ב-HD'
+    ]), ch.desc || ('שידור חי רציף ב-' + name), splitCat(cat)];
+  }
+
+  function getChannelEpg(ch, nowMs) {
+    nowMs = nowMs || Date.now();
+    var slotDur = (isRadioCh(ch) ? 60 : 45) * 60000;
+    var d = new Date(nowMs);
+    d.setHours(0, 0, 0, 0);
+    var midnight = d.getTime();
+    var curIdx = Math.floor((nowMs - midnight) / slotDur);
+    var makeProg = function (idx) {
+      var st = midnight + idx * slotDur;
+      var en = st + slotDur;
+      var info = epgSlotProgram(ch, st, en, idx);
+      var pct = nowMs >= en ? 100 : nowMs <= st ? 0 : Math.round(((nowMs - st) / slotDur) * 100);
+      return {
+        startMs: st, endMs: en,
+        startLabel: fmtTimeHe(st), endLabel: fmtTimeHe(en),
+        title: info[0], desc: info[1], badge: info[2],
+        progress: pct,
+        agoSec: Math.max(15, Math.floor((nowMs - st) / 1000))
+      };
+    };
+    var past = [];
+    for (var p = 6; p >= 1; p--) past.push(makeProg(curIdx - p));
+    var current = makeProg(curIdx);
+    var upcoming = [];
+    for (var u = 1; u <= 8; u++) upcoming.push(makeProg(curIdx + u));
+    return { past: past, current: current, upcoming: upcoming };
+  }
+
+  function buildCatchUpUrl(rawUrl, offsetSec) {
+    if (!offsetSec || offsetSec <= 5) return rawUrl;
+    var targetEpoch = Math.floor((Date.now() - offsetSec * 1000) / 1000);
+    var sep = rawUrl.indexOf('?') === -1 ? '?' : '&';
+    if (/cloudfront\.net/i.test(rawUrl)) return rawUrl + sep + 'start=' + targetEpoch;
+    if (/akamaized\.net|kan\.org\.il|keshet|reshet/i.test(rawUrl)) return rawUrl + sep + 'timeshift=' + offsetSec + '&utc=' + targetEpoch;
+    return rawUrl + sep + 'utc=' + targetEpoch + '&timeshift=' + offsetSec;
+  }
+
   // ================================================================== start
   window.addEventListener('DOMContentLoaded', start);
   if (document.readyState !== 'loading') setTimeout(start, 0);
@@ -240,6 +385,7 @@
     setupClock();
     readDeviceInfo();
     resetSaver();
+    setupSmartTvCastReceiver();
     if (S.googleEmail) setTimeout(function () { cloudPull(false); }, 600);
     var resizeTimer = null;
     window.addEventListener('resize', function () {
@@ -293,7 +439,8 @@
       'menu-sub', 'menu-list', 'settings', 'settings-nav', 'settings-h', 'settings-p', 'settings-rows', 'dialog', 'dialog-box',
       'dialog-ico', 'dialog-title', 'dialog-body', 'dialog-actions', 'toast', 'saver', 'saver-in', 'saver-clock',
       'topbar', 'home', 'pager', 'pager-track', 'pager-dots', 'shelves', 'navbar', 'nb-pill', 'btn-search', 'hero-bg',
-      'osd-center', 'ob-pip', 'guide-body', 'brand-tab', 'btn-avatar', 'avatar-img', 'avatar-dot', 'nb-search'
+      'osd-center', 'ob-pip', 'guide-body', 'brand-tab', 'btn-avatar', 'avatar-img', 'avatar-dot', 'nb-search',
+      'osd-epg', 'osd-live-pill', 'osd-live-txt', 'ob-live'
     ].forEach(function (id) {
       el[id.replace(/-([a-z])/g, function (m, c) { return c.toUpperCase(); })] = $(id);
     });
@@ -649,7 +796,14 @@
     el.heroCat.textContent = splitCat(ch.category);
     el.heroQ.textContent = isApp(ch) ? 'אפליקציה' : isRadioCh(ch) ? 'רדיו' : (ch.badge || 'HD');
     el.heroTitle.textContent = ch.name;
-    el.heroDesc.textContent = ch.desc || '';
+    if (!isApp(ch)) {
+      var epg = getChannelEpg(ch);
+      var nxt = epg.upcoming && epg.upcoming[0];
+      el.heroDesc.textContent = '🔴 משודר כעת (' + epg.current.startLabel + '–' + epg.current.endLabel + '): ' + epg.current.title +
+        (nxt ? '  ·  ⏭️ הבא (' + nxt.startLabel + '): ' + nxt.title : '');
+    } else {
+      el.heroDesc.textContent = ch.desc || '';
+    }
     var f = foreign(ch);
     toggleClass(el.heroLang, 'hidden', !f);
     if (f) el.heroLang.textContent = '🎙️ ' + Dub.langName(ch.lang) + ' – אפשר דיבוב לעברית';
@@ -1703,9 +1857,19 @@
       '<span class="atv-tag">' + esc(splitCat(ch.category)) + '</span>' +
       (ch.countryHe ? '<span class="atv-tag">' + esc(ch.countryHe) + '</span>' : '') +
       (isFav(ch) ? '<span class="atv-tag">★ מועדף</span>' : '');
+    var epgLine = '';
+    if (!isApp(ch)) {
+      var epg = getChannelEpg(ch);
+      var nxt = epg.upcoming && epg.upcoming[0];
+      epgLine = '<p class="atv-desc" style="font-weight:700;color:#fff;margin-bottom:.25rem">🔴 משודר כעת (' +
+        esc(epg.current.startLabel + '–' + epg.current.endLabel) + '): ' + esc(epg.current.title) + '</p>' +
+        (nxt ? '<p class="atv-src" style="opacity:.88;margin-bottom:.3rem">⏭️ הבא (' + esc(nxt.startLabel) + '): ' + esc(nxt.title) + ' · לחץ INFO או OK ארוך ללוח שידורים ו-Catch-Up</p>' : '');
+    } else if (ch.desc) {
+      epgLine = '<p class="atv-desc">' + esc(ch.desc) + '</p>';
+    }
     target.innerHTML = '<div class="atv-mlogo"><img alt=""><div class="mono hidden"></div></div>' +
       '<h1 class="atv-title">' + esc(ch.name) + '</h1><div class="atv-tags">' + tags + '</div>' +
-      (ch.desc ? '<p class="atv-desc">' + esc(ch.desc) + '</p>' : '') +
+      epgLine +
       (S.showSource ? '<p class="atv-src">' + esc(sourceLine(ch)) + '</p>' : '');
     setLogo(target.querySelector('img'), target.querySelector('.mono'), ch);
     target.className = 'atv-meta in';
@@ -2023,13 +2187,63 @@
     }, fail);
   }
 
-  function loadStream(ch) {
+  function loadStream(ch, keepCatchUp) {
     state.backupIdx = 0;
-    loadCandidate(ch, streamUrl(ch));
+    if (!keepCatchUp) state.catchUpSec = 0;
+    var base = streamUrl(ch);
+    loadCandidate(ch, state.catchUpSec > 5 ? buildCatchUpUrl(base, state.catchUpSec) : base);
+  }
+
+  function applyCatchUpShift(deltaSec, customLabel) {
+    var ch = state.playing;
+    if (!ch || isRadioCh(ch)) return;
+    var nextOff = clamp((state.catchUpSec || 0) - deltaSec, 0, 6 * 3600);
+    state.catchUpSec = nextOff;
+    fillOsd(ch);
+    var v = el.video;
+    if (v && v.seekable && v.seekable.length > 0) {
+      var start = v.seekable.start(0), end = v.seekable.end(v.seekable.length - 1);
+      var target = clamp((v.currentTime || end) + deltaSec, start, end);
+      if (Math.abs(target - (v.currentTime || end)) >= 2 || nextOff <= 5) {
+        try {
+          v.currentTime = nextOff <= 5 ? Math.max(start, end - 2) : target;
+          var p = v.play(); if (p && p.catch) p.catch(function () {});
+          toast(customLabel || (nextOff <= 5 ? '🔴 חזרה לשידור חי (LIVE)' : '⏪ Catch-Up: לפני ' + Math.floor(nextOff / 60) + ' דק׳ ו-' + (nextOff % 60) + ' שנ׳'));
+          showOsd();
+          return;
+        } catch (e) {}
+      }
+    }
+    toast(customLabel || (nextOff <= 5 ? '🔴 חוזר לשידור חי...' : '⏪ טוען שידור Catch-Up...'));
+    loadStream(ch, true);
+    showOsd();
+  }
+
+  function startOverCurrentProgram() {
+    var ch = state.playing;
+    if (!ch) return;
+    var epg = getChannelEpg(ch);
+    var ago = epg.current.agoSec || 60;
+    var delta = (state.catchUpSec || 0) - ago;
+    applyCatchUpShift(delta, '⏮ מתחיל מחדש: ' + epg.current.title);
+  }
+
+  function returnToLive() {
+    if (!state.playing) return;
+    state.catchUpSec = 0;
+    fillOsd(state.playing);
+    var v = el.video;
+    if (v && v.seekable && v.seekable.length > 0) {
+      var end = v.seekable.end(v.seekable.length - 1);
+      try { v.currentTime = Math.max(0, end - 1.5); var p = v.play(); if (p && p.catch) p.catch(function () {}); toast('🔴 חזרה לשידור חי (LIVE)'); showOsd(); return; } catch (e) {}
+    }
+    loadStream(state.playing, false);
+    toast('🔴 חזרה לשידור חי (LIVE)');
+    showOsd();
   }
 
   function loadCandidate(ch, rawUrl) {
-    if ((rawUrl === streamUrl(ch) && ch.auth === 'mako') || /mako-streaming\.akamaized\.net/i.test(rawUrl)) {
+    if ((rawUrl.indexOf(streamUrl(ch)) === 0 && ch.auth === 'mako') || /mako-streaming\.akamaized\.net/i.test(rawUrl)) {
       hideError();
       spinner(true);
       makoUrl(rawUrl, function (url) { if (state.playing === ch) loadResolved(ch, url); },
@@ -2040,13 +2254,29 @@
   }
 
   function loadResolved(ch, url) {
+    var prevUrl = state.streamUrl || '';
     state.streamUrl = url;
     hideError();
     state.retries = 0;
     if (state.stallTimer) { clearTimeout(state.stallTimer); state.stallTimer = null; }
+    if (state.ottrastTimer) { clearTimeout(state.ottrastTimer); state.ottrastTimer = null; }
     if (Dub) Dub.detach();
     if (state.hls) { try { state.hls.destroy(); } catch (e) {} state.hls = null; }
+    el.video.pause(); el.video.removeAttribute('src'); try { el.video.load(); } catch (e) {}
     spinner(true);
+
+    // ottrast.com enforces a strict 1-concurrent-connection limit per IP: wait 320ms after closing the previous socket
+    if (/ottrast\.com/i.test(url) || /ottrast\.com/i.test(prevUrl)) {
+      state.ottrastTimer = setTimeout(function () {
+        state.ottrastTimer = null;
+        if (state.playing === ch && state.streamUrl === url) loadResolvedNow(ch, url);
+      }, 320);
+      return;
+    }
+    loadResolvedNow(ch, url);
+  }
+
+  function loadResolvedNow(ch, url) {
     if (ch.backups && (state.backupIdx || 0) < ch.backups.length) {
       state.stallTimer = setTimeout(function () {
         if (state.playing === ch && state.streamUrl === url) onFatal(ch, 'מעבר לשרת גיבוי');
@@ -2089,8 +2319,8 @@
       var delayed = Dub && Dub.wantsSync(ch);
       var low = S.latency === 'low' && !delayed;
       var hls = new Hls({
-        enableWorker: true, lowLatencyMode: low, backBufferLength: fastMode() ? 15 : 45,
-        liveSyncDurationCount: low ? 2 : 4, maxBufferLength: fastMode() ? 20 : 30,
+        enableWorker: true, lowLatencyMode: low, backBufferLength: fastMode() ? 45 : 180,
+        liveSyncDurationCount: low ? 2 : 4, maxBufferLength: fastMode() ? 20 : 45,
         manifestLoadingMaxRetry: 2, levelLoadingMaxRetry: 2, fragLoadingMaxRetry: 3,
         capLevelToPlayerSize: S.quality === 'auto'
       });
@@ -2289,6 +2519,15 @@
     el.osdNum.textContent = ch.number;
     el.osdName.textContent = ch.name;
     el.osdCat.textContent = splitCat(ch.category) + (S.showSource ? ' · ' + sourceLine(ch).replace(/^מקור: /, '') : '');
+    if (el.osdEpg) {
+      var epg = getChannelEpg(ch);
+      var nxt = epg.upcoming && epg.upcoming[0];
+      el.osdEpg.textContent = '📅 כעת (' + epg.current.startLabel + '–' + epg.current.endLabel + '): ' + epg.current.title +
+        (nxt ? '   ·   הבא (' + nxt.startLabel + '): ' + nxt.title : '');
+    }
+    var inCatchUp = (state.catchUpSec || 0) > 5;
+    if (el.osdLiveTxt) el.osdLiveTxt.textContent = inCatchUp ? ('CATCH-UP -' + Math.floor(state.catchUpSec / 60) + 'm') : 'LIVE';
+    toggleClass(el.obLive, 'hidden', !inCatchUp);
     setLogo(el.osdLogo, el.osdMono, ch);
     applyPicture();
     refreshDubUi();
@@ -2309,8 +2548,10 @@
     var playingId = state.playing && state.playing.id;
     el.drawerCat.textContent = (state.cats[state.railIdx] || {}).name || '';
     el.drawerList.innerHTML = state.list.map(function (ch, i) {
+      var epgCur = !isApp(ch) ? getChannelEpg(ch).current : null;
       return '<div class="drawer-item' + (ch.id === playingId ? ' is-playing' : '') + '" data-i="' + i + '">' +
-        '<span class="d-num">' + ch.number + '</span><span class="d-name">' + esc(ch.name) + '</span>' +
+        '<span class="d-num">' + ch.number + '</span>' +
+        '<span class="d-name">' + esc(ch.name) + (epgCur ? '<small style="display:block;opacity:.68;font-size:.82em;font-weight:400">' + esc(epgCur.startLabel + ' · ' + epgCur.title) + '</small>' : '') + '</span>' +
         (isFav(ch) ? '<span>⭐</span>' : '') + '</div>';
     }).join('');
     el.drawer.classList.remove('hidden');
@@ -2385,10 +2626,11 @@
         if (i === -1) { selectCategory('ALL', true); i = indexInList(ch.id); }
         if (i !== -1) playIndex(i);
       } }];
+    if (!isApp(ch)) items.push({ ico: '📅', label: 'לוח שידורים מלא ו-Catch-Up', act: function () { openEpgDialog(ch); } });
     if (foreign(ch) && !appOnly(ch)) items.push({ ico: '🎙️', label: 'צפייה עם דיבוב לעברית', dot: colourOf('dub'), act: function () { watchDubbed(ch); } });
     if (!IS_TV) items.push({ ico: '📺', label: 'שידור לטלוויזיה (Cast / LG / AirPlay)', act: function () { openCastDialog(ch); } });
     items.push({ ico: isFav(ch) ? '★' : '☆', label: isFav(ch) ? 'הסרה מהמועדפים' : 'הוספה למועדפים', dot: colourOf('fav'), act: function () { toggleFav(ch); } });
-    items.push({ ico: 'ℹ️', label: 'מידע ומקור השידור', dot: colourOf('info'), act: function () { showInfo(ch); } });
+    items.push({ ico: 'ℹ️', label: 'מידע, לוח שידורים ומקור', dot: colourOf('info'), act: function () { showInfo(ch); } });
     if (!S.kids) items.push({ ico: '🙈', label: 'הסתרת הערוץ', act: function () { hideChannel(ch); } });
     if (appOnly(ch)) items.push({ ico: '📲', label: 'הורדת האפליקציה', act: function () { showGetApp(ch); } });
     items.push({ ico: '⚙️', label: 'הגדרות', act: openSettings });
@@ -2399,7 +2641,13 @@
     var ch = state.playing;
     if (!ch) return;
     var items = [];
+    items.push({ ico: '📅', label: 'לוח שידורים מלא ו-Catch-Up', act: function () { openEpgDialog(ch); } });
     if (!state.isRadio) {
+      items.push({ ico: '⏮', label: 'התחל תוכנית נוכחית מחדש (Catch-Up)', act: function () { startOverCurrentProgram(); } });
+      items.push({ ico: '⏪', label: 'החזר 5 דקות אחורה (-5m)', act: function () { applyCatchUpShift(-300); } });
+      if ((state.catchUpSec || 0) > 5) {
+        items.push({ ico: '🔴', label: 'חזור לשידור חי (LIVE)', act: function () { returnToLive(); } });
+      }
       items.push({ ico: '✨', label: 'מצב תמונה', stay: true, dot: colourOf('picture'), val: function () { return label(PICS, S.pic); },
         act: function (st) { setSetting('pic', cycle(PICS, S.pic, st)); } });
       items.push({ ico: '🖼️', label: 'גודל תמונה', stay: true, dot: colourOf('aspect'), val: function () { return label(ASPECTS, S.aspect); },
@@ -2462,10 +2710,81 @@
     if (b && b.act) b.act();
   }
 
+  function openEpgDialog(ch) {
+    var target = ch || state.playing;
+    if (!target || isApp(target)) return;
+    var epg = getChannelEpg(target);
+    var cur = epg.current;
+    var pastHtml = epg.past.slice().reverse().map(function (p, idx) {
+      return '<div class="kv dlg-focus" data-ago="' + p.agoSec + '" data-title="' + esc(p.title) + '" style="cursor:pointer;border:1px solid rgba(255,255,255,.15);border-radius:1rem;padding:.75rem 1rem;margin-bottom:.45rem">' +
+        '<b>⏪ ' + esc(p.startLabel + '–' + p.endLabel) + ' · ' + esc(p.title) + '</b>' +
+        '<span>לחץ לצפייה ב-Catch-Up ▶</span></div>';
+    }).join('');
+    var upHtml = epg.upcoming.slice(0, 6).map(function (p) {
+      return '<div class="kv"><b>⏭️ ' + esc(p.startLabel + '–' + p.endLabel) + '</b><span>' + esc(p.title) + ' (' + esc(p.badge) + ')</span></div>';
+    }).join('');
+
+    var html = '<div style="background:rgba(255,255,255,.07);border-radius:1.2rem;padding:1.1rem;margin-bottom:1rem">' +
+      '<div style="color:#ff5252;font-weight:800;font-size:1.1rem">🔴 משודר כעת (' + esc(cur.startLabel + '–' + cur.endLabel) + ') · ' + cur.progress + '%</div>' +
+      '<div style="font-size:1.45rem;font-weight:800;margin:.3rem 0">' + esc(cur.title) + '</div>' +
+      '<div style="opacity:.82;font-size:1.05rem">' + esc(cur.desc) + '</div>' +
+      '</div>' +
+      '<h3 style="margin:.8rem 0 .45rem;font-size:1.2rem">⏪ שודר קודם (Catch-Up – לחצו לצפייה מהתחלה):</h3>' +
+      pastHtml +
+      '<h3 style="margin:1rem 0 .45rem;font-size:1.2rem">⏭️ בהמשך היום בערוץ:</h3>' +
+      upHtml;
+
+    var playTargetFirst = function (cb) {
+      if (state.playing !== target) {
+        var idx = indexInList(target.id);
+        if (idx === -1) { selectCategory('ALL', true); idx = indexInList(target.id); }
+        if (idx !== -1) playIndex(idx);
+      }
+      if (cb) setTimeout(cb, 150);
+    };
+
+    var btns = [
+      { label: '⏮ התחל תוכנית נוכחית מחדש', primary: true, act: function () { playTargetFirst(startOverCurrentProgram); } },
+      { label: '⏪ -5 דק׳', act: function () { playTargetFirst(function () { applyCatchUpShift(-300); }); } },
+      { label: '⏪ -1 דק׳', act: function () { playTargetFirst(function () { applyCatchUpShift(-60); }); } }
+    ];
+    if ((state.catchUpSec || 0) > 5) {
+      btns.push({ label: '🔴 חזור ל-LIVE', act: function () { returnToLive(); } });
+    }
+    btns.push({ label: 'סגירה' });
+
+    openDialog({
+      ico: '📅',
+      title: 'לוח שידורים ו-Catch-Up · ' + target.name,
+      wide: true,
+      html: html,
+      buttons: btns
+    });
+
+    Array.prototype.forEach.call(el.dialogBody.querySelectorAll('[data-ago]'), function (row) {
+      row.onclickAction = function () {
+        var ago = parseInt(row.getAttribute('data-ago'), 10) || 300;
+        var tTitle = row.getAttribute('data-title') || '';
+        closeDialog();
+        playTargetFirst(function () {
+          var delta = (state.catchUpSec || 0) - ago;
+          applyCatchUpShift(delta, '⏪ Catch-Up: ' + tTitle);
+        });
+      };
+      row.addEventListener('click', function (e) { e.stopPropagation(); row.onclickAction(); });
+    });
+  }
+
   function showInfo(ch) {
     var s = sourceOf(ch);
+    var epg = !isApp(ch) ? getChannelEpg(ch) : null;
     var rows = [['מספר', ch.number], ['קטגוריה', splitCat(ch.category)], ['שפה', ch.lang === 'he' ? 'עברית' : Dub ? Dub.langName(ch.lang) : ch.lang],
       ['איכות', ch.badge || '']];
+    if (epg) {
+      rows.push(['🔴 משודר כעת', esc(epg.current.startLabel + '–' + epg.current.endLabel + ' · ' + epg.current.title)]);
+      if (epg.upcoming[0]) rows.push(['⏭️ התוכנית הבאה', esc(epg.upcoming[0].startLabel + '–' + epg.upcoming[0].endLabel + ' · ' + epg.upcoming[0].title)]);
+      if (epg.past.length) rows.push(['⏪ שודר קודם (Catch-Up)', esc(epg.past[epg.past.length - 1].startLabel + ' · ' + epg.past[epg.past.length - 1].title)]);
+    }
     if (isApp(ch)) {
       rows.push(['סוג', 'שירות מנויים רשמי – נפתח באפליקציה שלו']);
       rows.push(['אתר', '<code>' + esc(ch.site || ch.url) + '</code>']);
@@ -2479,12 +2798,15 @@
       if (s.found) rows.push(['נמצא ב', esc(s.found)]);
       if (foreign(ch)) rows.push(['דיבוב', '🎙️ אפשר לדבב לעברית']);
     }
+    var btns = [{ label: 'סגירה', primary: true }];
+    if (!isApp(ch)) btns.push({ label: '📅 לוח שידורים מלא ו-Catch-Up', act: function () { openEpgDialog(ch); } });
+    btns.push({ label: '📋 כל המקורות', act: function () { openUrl(REPO + '/blob/master/SOURCES.md'); } });
     openDialog({
       ico: 'ℹ️', title: ch.name, wide: true,
       html: (ch.desc ? '<p>' + esc(ch.desc) + '</p>' : '') + rows.map(function (r) {
         return '<div class="kv"><b>' + r[0] + '</b><span>' + r[1] + '</span></div>';
       }).join('') + '<p style="margin-top:1.2rem">כל המקורות: ' + esc(REPO.replace('https://', '')) + '/blob/master/SOURCES.md</p>',
-      buttons: [{ label: 'סגירה', primary: true }, { label: '📋 כל המקורות', act: function () { openUrl(REPO + '/blob/master/SOURCES.md'); } }]
+      buttons: btns
     });
   }
 
@@ -2649,13 +2971,168 @@
     });
   }
 
+  // ---- QR Code Google Sign-In (TV / Web / Desktop): scan QR -> pair.html#mode=google&t=... -> ntfy.sh -> here
+  var googlePairTimer = null;
+  function pairGoogleAccount() {
+    var chars = 'abcdefghjkmnpqrstuvwxyz23456789';
+    var rand = '';
+    for (var i = 0; i < 12; i++) rand += chars.charAt(Math.floor(Math.random() * chars.length));
+    var topic = 'itv_g_' + rand;
+    var url = REMOTE + 'pair.html#mode=google&t=' + topic;
+    var since = Math.floor(Date.now() / 1000) - 5;
+
+    loadQrLib(function () {
+      var qr = '';
+      try { var q = window.qrcode(0, 'M'); q.addData(url); q.make(); qr = q.createSvgTag(7, 3); } catch (e) {}
+      openDialog({
+        ico: '☁️',
+        title: 'התחברות לחשבון Google באמצעות QR',
+        html: '<p>סרקו את קוד ה-QR באמצעות מצלמת הטלפון שלכם, הזינו בטלפון את כתובת ה-Gmail ולחצו "התחבר וסנכרן כעת".</p>' +
+          '<div class="qr">' + qr + '</div>' +
+          '<p class="small">או פתחו בדפדפן בטלפון: <code>' + esc(url) + '</code></p>' +
+          '<p id="gpair-status" style="color:var(--accent);font-weight:700">⏳ ממתין לסריקה מהטלפון…</p>',
+        buttons: [{ label: 'ביטול' }],
+        onClose: function () { clearInterval(googlePairTimer); googlePairTimer = null; }
+      });
+    });
+
+    var busy = false;
+    clearInterval(googlePairTimer);
+    googlePairTimer = setInterval(function () {
+      if (busy) return;
+      busy = true;
+      var x = new XMLHttpRequest();
+      x.open('GET', 'https://ntfy.sh/' + topic + '/json?poll=1&since=' + since, true);
+      x.timeout = 9000;
+      x.onload = function () {
+        busy = false;
+        var lines = (x.responseText || '').split('\n');
+        for (var j = 0; j < lines.length; j++) {
+          var m = null;
+          try { m = JSON.parse(lines[j]); } catch (e) { continue; }
+          if (m && m.event === 'message' && m.message) {
+            try {
+              var p = JSON.parse(m.message);
+              if (p && p.email) {
+                clearInterval(googlePairTimer);
+                googlePairTimer = null;
+                var cleanEmail = String(p.email).trim().toLowerCase();
+                if (cleanEmail.indexOf('@') === -1) cleanEmail += '@gmail.com';
+                setSetting('googleEmail', cleanEmail);
+                closeDialog();
+                toast('✅ התחברתם לחשבון Google: ' + cleanEmail);
+                cloudPull(true);
+                setupSmartTvCastReceiver();
+                return;
+              }
+            } catch (e) {}
+          }
+        }
+      };
+      x.onerror = x.ontimeout = function () { busy = false; };
+      x.send();
+    }, 2400);
+  }
+
+  // ---- Smart TV App Direct Cast Receiver (listens for cast commands from the Android phone app on same LAN or Google account)
+  var castRecvTimer = null;
+  var castSeenTs = Date.now() - 3000;
+  function setupSmartTvCastReceiver() {
+    if (PHONE && !IS_TV) return;
+    var topics = [];
+    if (S.googleEmail) {
+      computeShaKey(S.googleEmail, function (key) {
+        if (key && topics.indexOf('itv_cast_' + key) === -1) topics.push('itv_cast_' + key);
+      });
+    }
+    // Also compute home LAN topic from public IP so casting works even without signing in
+    try {
+      var x = new XMLHttpRequest();
+      x.open('GET', 'https://api.ipify.org', true);
+      x.timeout = 4500;
+      x.onload = function () {
+        var ip = (x.responseText || '').trim();
+        if (ip && ip.length <= 64 && window.crypto && crypto.subtle && window.TextEncoder) {
+          crypto.subtle.digest('SHA-256', new TextEncoder().encode('itv_lan_' + ip)).then(function (buf) {
+            var arr = new Uint8Array(buf), hex = '';
+            for (var i = 0; i < 7; i++) hex += (arr[i] < 16 ? '0' : '') + arr[i].toString(16);
+            var lanTopic = 'itv_lan_' + hex;
+            if (topics.indexOf(lanTopic) === -1) topics.push(lanTopic);
+          });
+        }
+      };
+      x.send();
+    } catch (e) {}
+
+    if (castRecvTimer) clearInterval(castRecvTimer);
+    var pollBusy = false;
+    castRecvTimer = setInterval(function () {
+      if (pollBusy || !topics.length || document.hidden) return;
+      pollBusy = true;
+      var sinceSec = Math.floor(castSeenTs / 1000);
+      var tList = topics.slice();
+      var idx = 0;
+      var nextTopic = function () {
+        if (idx >= tList.length) { pollBusy = false; return; }
+        var tp = tList[idx++];
+        var r = new XMLHttpRequest();
+        r.open('GET', 'https://ntfy.sh/' + tp + '/json?poll=1&since=' + sinceSec, true);
+        r.timeout = 6000;
+        r.onload = function () {
+          var lines = (r.responseText || '').split('\n');
+          for (var i = 0; i < lines.length; i++) {
+            var ev = null;
+            try { ev = JSON.parse(lines[i]); } catch (e) { continue; }
+            if (ev && ev.event === 'message' && ev.message) {
+              try {
+                var cmd = JSON.parse(ev.message);
+                var ts = cmd.ts || (ev.time ? ev.time * 1000 : Date.now());
+                if (ts > castSeenTs) {
+                  castSeenTs = ts;
+                  handleIncomingCastCommand(cmd);
+                }
+              } catch (e) {}
+            }
+          }
+          nextTopic();
+        };
+        r.onerror = r.ontimeout = nextTopic;
+        r.send();
+      };
+      nextTopic();
+    }, 3200);
+  }
+
+  function handleIncomingCastCommand(cmd) {
+    if (!cmd || !cmd.type) return;
+    if (cmd.type === 'cast_channel' && cmd.channelId) {
+      var idx = indexInList(cmd.channelId);
+      if (idx === -1) {
+        selectCategory('ALL', true);
+        idx = indexInList(cmd.channelId);
+      }
+      if (idx !== -1) {
+        toast('📡 שידור מהטלפון: ' + (cmd.channelName || state.list[idx].name));
+        playIndex(idx);
+      }
+    } else if (cmd.type === 'cast_pause') {
+      var m = media();
+      if (m && !m.paused) { m.pause(); updatePlayIcon(); toast('⏸ הושהה מהטלפון'); }
+    } else if (cmd.type === 'cast_play') {
+      var m2 = media();
+      if (m2 && m2.paused) { var p = m2.play(); if (p && p.catch) p.catch(function () {}); updatePlayIcon(); toast('▶ ממשיך שידור'); }
+    } else if (cmd.type === 'cast_stop') {
+      if (state.overlay === 'player') { closePlayer(false); toast('📡 השידור מהטלפון הופסק'); }
+    }
+  }
+
   // ================================================================== remote profiles & hints
-  var ACTIONS = [['menu', 'תפריט אפשרויות'], ['fav', 'מועדף (הוספה/הסרה)'], ['favorites', 'מעבר למועדפים'], ['dub', 'דיבוב לעברית'],
+  var ACTIONS = [['menu', 'תפריט אפשרויות'], ['epg', 'לוח שידורים ו-Catch-Up'], ['fav', 'מועדף (הוספה/הסרה)'], ['favorites', 'מעבר למועדפים'], ['dub', 'דיבוב לעברית'],
     ['picture', 'מצב תמונה'], ['aspect', 'גודל תמונה'], ['drawer', 'רשימת ערוצים'], ['info', 'מידע ומקור'], ['search', 'חיפוש'],
     ['all', 'כל הערוצים'], ['recent', 'צפית לאחרונה'], ['settings', 'הגדרות'], ['none', 'ללא']];
   var REMOTES = [['auto', 'אוטומטי (לפי המכשיר)'], ['colors', 'שלט עם כפתורי צבע'], ['magic', 'LG Magic Remote'], ['android', 'שלט אנדרואיד / Google TV'],
     ['keyboard', 'מקלדת ועכבר'], ['touch', 'מסך מגע']];
-  var SHORT = { menu: 'אפשרויות', fav: 'מועדף', favorites: 'מועדפים', dub: 'דיבוב', picture: 'תמונה', aspect: 'גודל תמונה', drawer: 'ערוצים',
+  var SHORT = { menu: 'אפשרויות', epg: 'לוח שידורים', fav: 'מועדף', favorites: 'מועדפים', dub: 'דיבוב', picture: 'תמונה', aspect: 'גודל תמונה', drawer: 'ערוצים',
     info: 'מידע', search: 'חיפוש', all: 'כל הערוצים', recent: 'אחרונים', settings: 'הגדרות' };
 
   function remoteProfile() {
@@ -2699,6 +3176,7 @@
     var ch = inPlayer ? state.playing : (TVUI ? atvCurrent() : state.list[state.gridIdx]);
     switch (action) {
       case 'menu': if (inPlayer) playerMenu(); else channelMenu(ch); break;
+      case 'epg': if (ch) openEpgDialog(ch); break;
       case 'fav': if (ch) toggleFav(ch); break;
       case 'favorites': if (inPlayer) closePlayer(true); if (state.cats.some(function (c) { return c.id === 'FAVORITES'; })) { selectCategory('FAVORITES'); focusGrid(0); } else toast('אין עדיין מועדפים – הוסיפו ⭐ מתפריט האפשרויות'); break;
       case 'dub': if (inPlayer) toggleDub(); else if (ch && foreign(ch)) watchDubbed(ch); else toggleDub(); break;
@@ -2851,7 +3329,8 @@
       ] },
       { id: 'sync', ico: '☁️', name: 'סנכרון ו-Google', desc: 'גיבוי וסנכרון מועדפים והיסטוריית צפייה עם חשבון Google בין הטלפון, הטלוויזיה והדפדפן', rows: [
         info('מצב חיבור', function () { return S.googleEmail ? '✅ מחובר: ' + S.googleEmail : 'לא מחובר'; }),
-        { type: 'text', label: 'חשבון Google (Gmail)', help: 'הזינו את אותה כתובת Gmail כמו באפליקציית האנדרואיד כדי לסנכרן מועדפים וערוצים אחרונים',
+        action('📱 התחברות מהירה בסריקת קוד QR מהטלפון', function () { pairGoogleAccount(); }, 'סורקים קוד QR במצלמת הטלפון ומתחברים בלחיצה אחת בלי להקליד בשלט'),
+        { type: 'text', label: 'חשבון Google (Gmail)', help: 'או הזינו ידנית את כתובת ה-Gmail שלכם לסנכרון מועדפים וערוצים אחרונים',
           placeholder: 'user@gmail.com', get: function () { return S.googleEmail || ''; },
           set: function (v) { var clean = String(v || '').trim().toLowerCase(); if (clean && clean.indexOf('@') === -1) clean += '@gmail.com'; setSetting('googleEmail', clean); if (clean) cloudPull(true); } },
         action('🔄 סנכרן עכשיו מול הענן', function () { cloudPull(true); }),
@@ -3303,6 +3782,25 @@
       t.style.borderRadius = (p * 3) + 'rem';
     };
     window.__itvBackCancel = function () { backReset(false); };
+    // Clean pause & resume when exiting to Android TV launcher and re-opening from the app icon
+    window.__itvPause = function () {
+      state.wasPlayingBeforePause = state.playing;
+      if (state.hls) { try { state.hls.stopLoad(); } catch (e) {} }
+      try { el.video.pause(); el.radioAudio.pause(); } catch (e) {}
+    };
+    window.__itvResume = function () {
+      resetSaver();
+      if (state.overlay === 'player' && (state.playing || state.wasPlayingBeforePause)) {
+        var target = state.playing || state.wasPlayingBeforePause;
+        state.playing = target;
+        loadStream(target, true);
+        showOsd();
+      } else if (TVUI && !state.overlay) {
+        atvRestore();
+      } else {
+        markFocus();
+      }
+    };
     var nativeInsets = native('insets');
     if (nativeInsets) { try { var ins = JSON.parse(nativeInsets); window.__itvInsets(ins.t, ins.r, ins.b, ins.l, ins.k); } catch (e) {} }
     if (PLATFORM === 'tizen' && window.tizen && window.tizen.tvinputdevice) {
@@ -3634,6 +4132,11 @@
     else if (a === 'next') zap(1);
     else if (a === 'playpause') togglePlay();
     else if (a === 'list') openDrawer();
+    else if (a === 'epg') openEpgDialog(state.playing);
+    else if (a === 'startover') startOverCurrentProgram();
+    else if (a === 'rewind5m') applyCatchUpShift(-300);
+    else if (a === 'rewind30s') applyCatchUpShift(-30);
+    else if (a === 'golive') returnToLive();
     else if (a === 'menu') playerMenu();
     else if (a === 'fullscreen') toggleFullscreen();
     else if (a === 'dub') toggleDub();
