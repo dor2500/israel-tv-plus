@@ -9,3 +9,5 @@
     kotlinx.serialization.KSerializer serializer(...);
 }
 -dontwarn org.slf4j.**
+# Google Cast OptionsProvider loaded via reflection from AndroidManifest
+-keep class com.israeltv.plus.data.CastOptionsProvider { *; }

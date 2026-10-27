@@ -2205,6 +2205,51 @@
     }
   }
 
+  function openCastDialog(ch) {
+    var target = ch || state.playing;
+    var m = media();
+    var canRemote = !!(m && m.remote && typeof m.remote.prompt === 'function');
+    var canAirPlay = !!(m && typeof m.webkitShowPlaybackTargetPicker === 'function');
+    var btns = [];
+    if (canRemote) {
+      btns.push({
+        label: '📡 שידור ישיר (Chromecast / Google TV)',
+        primary: true,
+        act: function () {
+          m.remote.prompt().then(function () {
+            toast('📡 מחובר לטלוויזיה');
+          }).catch(function () {
+            toast('לא נבחר מכשיר Cast או שלא נמצאו טלוויזיות תואמות ברשת');
+          });
+        }
+      });
+    }
+    if (canAirPlay) {
+      btns.push({
+        label: '🍏 AirPlay (לטלוויזיות LG / Samsung / Apple TV)',
+        primary: !canRemote,
+        act: function () {
+          try { m.webkitShowPlaybackTargetPicker(); } catch (e) { toast('AirPlay אינו זמין כרגע'); }
+        }
+      });
+    }
+    btns.push({ label: '📲 אפליקציות לטלוויזיה (LG / Android TV)', act: function () { showGetApp(); } });
+    btns.push({ label: 'סגירה', primary: !canRemote && !canAirPlay });
+
+    var html = '<p>צפייה ב' + (target ? '<b>"' + esc(target.name) + '"</b>' : 'שידור חי') + ' על מסך הטלוויזיה:</p>' +
+      '<div class="kv"><b>1. Google Cast / Chromecast</b><span>מכשירי Android TV, Google TV ו-Chromecast באותה רשת Wi-Fi (שידור ישיר באפליקציית האנדרואיד או בדפדפן כרום).</span></div>' +
+      '<div class="kv"><b>2. טלוויזיות LG webOS</b><span>תמיכה ב-DLNA וב-LG Screen Share (שיקוף מסך) מאפליקציית האנדרואיד, ב-AirPlay 2 מאייפון/מק, או התקנת אפליקציית ישראל TV+ ישירות על הטלוויזיה.</span></div>' +
+      '<div class="kv"><b>3. שיקוף מסך (Miracast / Smart View)</b><span>שיתוף מסך מלא מווילון ההתראות בטלפון ("שדר מסך" / "Screen Share" / "Smart View") – פועל עם כל הערוצים והכתוביות.</span></div>';
+
+    openDialog({
+      ico: '📺',
+      title: 'שידור לטלוויזיה (Cast & Share)',
+      wide: true,
+      html: html,
+      buttons: btns
+    });
+  }
+
   function zap(dir) {
     var list = S.zap === 'all' ? state.all : state.list;
     if (!list.length) return;
@@ -2324,6 +2369,7 @@
         if (i !== -1) playIndex(i);
       } }];
     if (foreign(ch) && !appOnly(ch)) items.push({ ico: '🎙️', label: 'צפייה עם דיבוב לעברית', dot: colourOf('dub'), act: function () { watchDubbed(ch); } });
+    if (!IS_TV) items.push({ ico: '📺', label: 'שידור לטלוויזיה (Cast / LG / AirPlay)', act: function () { openCastDialog(ch); } });
     items.push({ ico: isFav(ch) ? '★' : '☆', label: isFav(ch) ? 'הסרה מהמועדפים' : 'הוספה למועדפים', dot: colourOf('fav'), act: function () { toggleFav(ch); } });
     items.push({ ico: 'ℹ️', label: 'מידע ומקור השידור', dot: colourOf('info'), act: function () { showInfo(ch); } });
     if (!S.kids) items.push({ ico: '🙈', label: 'הסתרת הערוץ', act: function () { hideChannel(ch); } });
@@ -2348,6 +2394,7 @@
     }
     if (foreign(ch)) items.push({ ico: '🎙️', label: 'דיבוב לעברית', stay: true, dot: colourOf('dub'), val: function () { return Dub.settings.enabled ? 'פועל' : 'כבוי'; },
       act: function () { toggleDub(); } });
+    if (!IS_TV) items.push({ ico: '📺', label: 'שידור לטלוויזיה (Cast / LG / AirPlay)', act: function () { openCastDialog(ch); } });
     items.push({ ico: isFav(ch) ? '★' : '☆', label: isFav(ch) ? 'הסרה מהמועדפים' : 'הוספה למועדפים', dot: colourOf('fav'), act: function () { toggleFav(ch); } });
     items.push({ ico: '☰', label: 'רשימת ערוצים', dot: colourOf('drawer'), act: openDrawer });
     items.push({ ico: 'ℹ️', label: 'מידע ומקור השידור', dot: colourOf('info'), act: function () { showInfo(ch); } });
@@ -3574,6 +3621,7 @@
     else if (a === 'fullscreen') toggleFullscreen();
     else if (a === 'dub') toggleDub();
     else if (a === 'pip') enterPip();
+    else if (a === 'cast') openCastDialog(state.playing);
     if (PHONE) haptic('tick');
     showOsd();
   }
