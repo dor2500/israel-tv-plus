@@ -178,7 +178,8 @@
     "country": "IL",
     "countryHe": "ישראל",
     "fallbackUrls": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2386/index.m3u8"
+      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2386/index.m3u8",
+      "https://i24newshebrew-cdn.encoders.immergo.tv/master.m3u8"
     ]
   },
   {
@@ -1360,7 +1361,9 @@
     ],
     "country": "IL",
     "countryHe": "ישראל",
-    "fallbackUrls": []
+    "fallbackUrls": [
+      "https://i24newsfrench-cdn.encoders.immergo.tv/master.m3u8"
+    ]
   },
   {
     "id": "i24news_ar",
@@ -1383,7 +1386,9 @@
       "web": "✅"
     },
     "countryHe": "ישראל",
-    "fallbackUrls": []
+    "fallbackUrls": [
+      "https://i24newsarabic-cdn.encoders.immergo.tv/master.m3u8"
+    ]
   },
   {
     "id": "i24_english_world_hd",
@@ -2191,75 +2196,6 @@
     ]
   },
   {
-    "id": "radios_disney",
-    "name": "רדיוס 100% שירי דיסני",
-    "title": "רדיוס 100% שירי דיסני",
-    "category": "ילדים ונוער (בעברית)",
-    "categoryEn": "israel",
-    "kind": "radio",
-    "url": "https://gb25.streamgates.net/radios-audio/100Disney/icecast.audio",
-    "badge": "LIVE",
-    "desc": "שירים מסרטי דיסני",
-    "lang": "music",
-    "logo": "assets/logos/radios_disney.png",
-    "number": 92,
-    "src": {
-      "by": "StreamGates – ערוצי רדיוס 100FM",
-      "kind": "official",
-      "host": "gb25.streamgates.net",
-      "found": "רשימה ידנית (גרסה קודמת)",
-      "web": "✅"
-    },
-    "country": "IL",
-    "countryHe": "ישראל"
-  },
-  {
-    "id": "radios_kids",
-    "name": "רדיוס 100% ילדים",
-    "title": "רדיוס 100% ילדים",
-    "category": "ילדים ונוער (בעברית)",
-    "categoryEn": "israel",
-    "kind": "radio",
-    "url": "https://gb25.streamgates.net/radios-audio/100Kids/icecast.audio",
-    "badge": "LIVE",
-    "desc": "שירי ילדים ברצף",
-    "lang": "music",
-    "logo": "assets/logos/radios_kids.png",
-    "number": 93,
-    "src": {
-      "by": "StreamGates – ערוצי רדיוס 100FM",
-      "kind": "official",
-      "host": "gb25.streamgates.net",
-      "found": "רשימה ידנית (גרסה קודמת)",
-      "web": "✅"
-    },
-    "country": "IL",
-    "countryHe": "ישראל"
-  },
-  {
-    "id": "radios_stars",
-    "name": "רדיוס 100% ערוץ הכוכבים",
-    "title": "רדיוס 100% ערוץ הכוכבים",
-    "category": "ילדים ונוער (בעברית)",
-    "categoryEn": "israel",
-    "kind": "radio",
-    "url": "https://gb25.streamgates.net/radios-audio/100Stars/icecast.audio",
-    "badge": "LIVE",
-    "desc": "שירי ילדים וכוכבי ילדים",
-    "lang": "music",
-    "logo": "assets/logos/radios_stars.png",
-    "number": 94,
-    "src": {
-      "by": "StreamGates – ערוצי רדיוס 100FM",
-      "kind": "official",
-      "host": "gb25.streamgates.net",
-      "found": "רשימה ידנית (גרסה קודמת)",
-      "web": "✅"
-    },
-    "country": "IL",
-    "countryHe": "ישראל"
-  },
-  {
     "id": "sport1_israel",
     "name": "ספורט 1 HD (Sport 1)",
     "title": "ערוץ ספורט 1 צ'רלטון שידור חי (Charlton Sport 1 HD)",
@@ -2271,7 +2207,7 @@
     "desc": "ספורט 1 (צ'רלטון) – ליגת העל הישראלית, הפרמייר ליג האנגלית, גביע המדינה ומשחקים מרכזיים בשידור חי",
     "lang": "he",
     "country": "IL",
-    "number": 95,
+    "number": 92,
     "countryHe": "ישראל",
     "src": {
       "by": "b84203c4.ottrast.com",
@@ -2295,7 +2231,7 @@
     "desc": "ספורט 2 (צ'רלטון) – שידורים ישירים מהליגה האנגלית, הליגה האיטלקית, בונדסליגה, ליגה אירופית וטניס",
     "lang": "he",
     "country": "IL",
-    "number": 96,
+    "number": 93,
     "countryHe": "ישראל",
     "src": {
       "by": "b84203c4.ottrast.com",
@@ -2319,7 +2255,7 @@
     "desc": "ספורט 3 (צ'רלטון) – כדורגל ישראלי ואירופי, כדורסל, אולפנים חיים ואירועי ספורט בינלאומיים",
     "lang": "he",
     "country": "IL",
-    "number": 97,
+    "number": 94,
     "countryHe": "ישראל",
     "src": {
       "by": "b84203c4.ottrast.com",
@@ -2343,7 +2279,7 @@
     "desc": "ספורט 4 FHD (צ'רלטון) – שידורים חיים באיכות FHD מליגת העל, הפרמייר ליג ומפעלי אופ\"א",
     "lang": "he",
     "country": "IL",
-    "number": 98,
+    "number": 95,
     "countryHe": "ישראל",
     "src": {
       "by": "b84203c4.ottrast.com",
@@ -2368,7 +2304,7 @@
     "badge": "HD",
     "lang": "he",
     "desc": "ספורט 6 HD – שידורי ספורט ישירים, ליגות אירופיות ואירועי ספורט מרחבי העולם",
-    "number": 99,
+    "number": 96,
     "src": {
       "by": "b84203c4.ottrast.com",
       "kind": "restream",
@@ -2389,7 +2325,7 @@
     "desc": "ערוץ הספורט (ספורט 5) – ליגת האלופות, יורוליג, ליגת העל בכדורסל, חדשות הספורט ויציע העיתונות",
     "lang": "he",
     "country": "IL",
-    "number": 100,
+    "number": 97,
     "countryHe": "ישראל",
     "src": {
       "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
@@ -2424,7 +2360,7 @@
     "lang": "he",
     "country": "IL",
     "countryHe": "ישראל",
-    "number": 101,
+    "number": 98,
     "backups": [
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5_plus_hevc/live.livx/playlist.m3u8"
     ],
@@ -2454,7 +2390,7 @@
     "lang": "he",
     "country": "IL",
     "countryHe": "ישראל",
-    "number": 102,
+    "number": 99,
     "backups": [
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5_live_hevc/live.livx/playlist.m3u8"
     ],
@@ -2485,7 +2421,7 @@
     "country": "IL",
     "countryHe": "ישראל",
     "logo": "assets/logos/sport5_gold_hd.png",
-    "number": 103,
+    "number": 100,
     "src": {
       "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
       "kind": "official",
@@ -2511,7 +2447,7 @@
     "lang": "he",
     "country": "IL",
     "countryHe": "ישראל",
-    "number": 104,
+    "number": 101,
     "src": {
       "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
       "kind": "official",
@@ -2538,7 +2474,7 @@
     "lang": "he",
     "country": "IL",
     "countryHe": "ישראל",
-    "number": 105,
+    "number": 102,
     "src": {
       "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
       "kind": "official",
@@ -2564,7 +2500,7 @@
     "lang": "he",
     "country": "IL",
     "countryHe": "ישראל",
-    "number": 106,
+    "number": 103,
     "backups": [
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5_4k_hevc/live.livx/playlist.m3u8"
     ],
@@ -2591,7 +2527,7 @@
     "lang": "he",
     "country": "IL",
     "countryHe": "ישראל",
-    "number": 107,
+    "number": 104,
     "backups": [
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/one_1_hevc/live.livx/playlist.m3u8"
     ],
@@ -2621,7 +2557,7 @@
     "country": "IL",
     "countryHe": "ישראל",
     "logo": "assets/logos/one_2_hd.png",
-    "number": 108,
+    "number": 105,
     "backups": [
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/one_2_hevc/live.livx/playlist.m3u8"
     ],
@@ -2652,7 +2588,7 @@
     "country": "IL",
     "countryHe": "ישראל",
     "logo": "assets/logos/one_doco_hd.png",
-    "number": 109,
+    "number": 106,
     "src": {
       "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
       "kind": "official",
@@ -2677,7 +2613,7 @@
     "lang": "he",
     "country": "IL",
     "countryHe": "ישראל",
-    "number": 110,
+    "number": 107,
     "src": {
       "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
       "kind": "official",
@@ -2700,7 +2636,7 @@
     "badge": "HD",
     "lang": "he",
     "desc": "יורוספורט 2 HD – טניס גראנד סלאם, מרוצי אופניים, ספורט חורף וספורט אולימפי בשידור חי",
-    "number": 111,
+    "number": 108,
     "src": {
       "by": "b84203c4.ottrast.com",
       "kind": "restream",
@@ -2729,7 +2665,7 @@
       "found": "שידור רשמי Sky",
       "web": "✅"
     },
-    "number": 112
+    "number": 109
   },
   {
     "id": "viju_sport",
@@ -2741,7 +2677,7 @@
     "logo": "assets/logos/viju_sport.png",
     "badge": "HD",
     "desc": "אירועי ספורט, כדורסל, מרוצים ואירועי אליפות בינלאומיים",
-    "number": 113,
+    "number": 110,
     "lang": "ru",
     "iptv": "vijuPlusSport.ru",
     "webUrl": "https://stream8.cinerama.uz/1229/tracks-v1a1/mono.m3u8",
@@ -2763,7 +2699,7 @@
     "logo": "assets/logos/setanta_sports_2_hd.png",
     "badge": "FHD",
     "desc": "שידורי כדורגל מליגות אירופה הבכירות, טניס וכדורסל",
-    "number": 114,
+    "number": 111,
     "lang": "ru",
     "iptv": "SetantaSports2Eurasia.ie",
     "src": {
@@ -2784,7 +2720,7 @@
     "logo": "assets/logos/extreme_sports_hd.png",
     "badge": "4K HDR",
     "desc": "ערוץ ספורט האקסטרים העולמי",
-    "number": 115,
+    "number": 112,
     "lang": "ru",
     "src": {
       "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
@@ -2805,7 +2741,7 @@
     "badge": "HD",
     "desc": "השידור החי החינמי מאתר ספורט 5 (sport5.co.il) – משדר בזמן משחקים ושידורים חיים באתר; בין השידורים המסך שחור",
     "logo": "assets/logos/sport5_live.png",
-    "number": 116,
+    "number": 113,
     "src": {
       "by": "ספורט 5 – השידור הרשמי של RGE (Akamai)",
       "kind": "official",
@@ -2829,7 +2765,7 @@
     "lang": "he",
     "iptv": "Hot3.il",
     "desc": "ערוץ HOT 3 – סדרות המקור הגדולות של הוט, דרמות ישראליות ולהיטים מהעולם ב-FHD",
-    "number": 117,
+    "number": 114,
     "src": {
       "by": "b84203c4.ottrast.com",
       "kind": "restream",
@@ -2850,7 +2786,7 @@
     "lang": "he",
     "iptv": "HotHBO.il",
     "desc": "ערוץ HOT HBO – מיטב סדרות המופת של HBO וסדרות בינלאומיות מובילות בתרגום לעברית",
-    "number": 118,
+    "number": 115,
     "src": {
       "by": "b84203c4.ottrast.com",
       "kind": "restream",
@@ -2874,7 +2810,7 @@
     "desc": "HOT סינמה 1 FHD – בכורות הוליוודיות ושוברי קופות מובילים עם כתוביות בעברית",
     "lang": "he",
     "country": "IL",
-    "number": 119,
+    "number": 116,
     "src": {
       "by": "b84203c4.ottrast.com",
       "kind": "restream",
@@ -2900,7 +2836,7 @@
     "desc": "HOT סינמה 2 – סרטי אקשן, מתח, מדע בדיוני והרפתקאות עם כתוביות בעברית",
     "lang": "he",
     "country": "IL",
-    "number": 120,
+    "number": 117,
     "src": {
       "by": "b84203c4.ottrast.com",
       "kind": "restream",
@@ -2923,7 +2859,7 @@
     "desc": "HOT סינמה 3 FHD – קומדיות, סרטי דרמה ורומנטיקה עם כתוביות בעברית",
     "lang": "he",
     "country": "IL",
-    "number": 121,
+    "number": 118,
     "src": {
       "by": "b84203c4.ottrast.com",
       "kind": "restream",
@@ -2949,7 +2885,7 @@
     "lang": "he",
     "iptv": "HotCinema4.il",
     "desc": "HOT סינמה 4 – קולנוע עולמי, להיטים אהובים וקלאסיקות מודרניות עם תרגום לעברית",
-    "number": 122,
+    "number": 119,
     "src": {
       "by": "b84203c4.ottrast.com",
       "kind": "restream",
@@ -2969,7 +2905,7 @@
     "badge": "HD",
     "lang": "he",
     "desc": "HOT סינמה 5 – סרטים מגוונים מכל הז'אנרים 24/7 עם תרגום לעברית",
-    "number": 123,
+    "number": 120,
     "src": {
       "by": "b84203c4.ottrast.com",
       "kind": "restream",
@@ -2989,7 +2925,7 @@
     "badge": "HD",
     "lang": "he",
     "desc": "HOT קולנוע ישראלי – מיטב הסרטים הישראליים מכל הזמנים, קלאסיקות בורקס וקולנוע עכשווי",
-    "number": 124,
+    "number": 121,
     "src": {
       "by": "b84203c4.ottrast.com",
       "kind": "restream",
@@ -3009,7 +2945,7 @@
     "badge": "HD",
     "lang": "he",
     "desc": "HOT קולנוע רומנטי – קומדיות רומנטיות ודרמות אהבה מרגשות עם תרגום לעברית",
-    "number": 125,
+    "number": 122,
     "src": {
       "by": "b84203c4.ottrast.com",
       "kind": "restream",
@@ -3029,7 +2965,7 @@
     "desc": "HOT דרמה – סדרות דרמה ישראליות ובינלאומיות מובילות עם כתוביות בעברית",
     "lang": "he",
     "logo": "assets/logos/hot_drama.png",
-    "number": 126,
+    "number": 123,
     "src": {
       "by": "b84203c4.ottrast.com",
       "kind": "restream",
@@ -3052,7 +2988,7 @@
     "desc": "HOT זון – סדרות אקשן, פשע, מתח וחקירות מארה\"ב ומהעולם בתרגום לעברית",
     "lang": "he",
     "logo": "assets/logos/hot_zone.png",
-    "number": 127,
+    "number": 124,
     "src": {
       "by": "b84203c4.ottrast.com",
       "kind": "restream",
@@ -3088,7 +3024,7 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "number": 128,
+    "number": 125,
     "fallbackUrls": [],
     "iptv": "HotComedyCentral.il"
   },
@@ -3104,7 +3040,7 @@
     "desc": "yes קולנוע ישראלי – סרטים ישראליים חדשים, קלאסיקות אהובות ויצירה מקורית",
     "lang": "he",
     "country": "IL",
-    "number": 129,
+    "number": 126,
     "src": {
       "by": "b84203c4.ottrast.com",
       "kind": "restream",
@@ -3126,7 +3062,7 @@
     "desc": "yes קולנוע אקשן FHD – סרטי פעולה, מתח, גיבורי-על ומדע בדיוני עם כתוביות בעברית",
     "lang": "he",
     "logo": "assets/logos/yes_movies_action.png",
-    "number": 130,
+    "number": 127,
     "src": {
       "by": "b84203c4.ottrast.com",
       "kind": "restream",
@@ -3155,7 +3091,7 @@
     "desc": "yes קולנוע דרמה FHD – סרטי דרמה מרגשים, ביוגרפיות וזוכי אוסקר עם תרגום לעברית",
     "lang": "he",
     "country": "IL",
-    "number": 131,
+    "number": 128,
     "src": {
       "by": "b84203c4.ottrast.com",
       "kind": "restream",
@@ -3182,7 +3118,7 @@
     "desc": "yes קולנוע קומדיה FHD – קומדיות הוליוודיות, סרטי פיל-גוד ורומנטיקה עם תרגום לעברית",
     "lang": "he",
     "country": "IL",
-    "number": 132,
+    "number": 129,
     "src": {
       "by": "b84203c4.ottrast.com",
       "kind": "restream",
@@ -3209,7 +3145,7 @@
     "desc": "yes TV Action – סדרות מתח, אקשן, פשע ומדע בדיוני מובילות עם כתוביות בעברית",
     "lang": "he",
     "country": "IL",
-    "number": 133,
+    "number": 130,
     "src": {
       "by": "b84203c4.ottrast.com",
       "kind": "restream",
@@ -3232,7 +3168,7 @@
     "desc": "yes TV Drama – סדרות המקור של yes וסדרות הדרמה הטובות בעולם בתרגום לעברית",
     "lang": "he",
     "country": "IL",
-    "number": 134,
+    "number": 131,
     "src": {
       "by": "b84203c4.ottrast.com",
       "kind": "restream",
@@ -3255,7 +3191,7 @@
     "lang": "he",
     "iptv": "YesTvComedy.il",
     "desc": "yes TV Comedy – הקומדיות והסיטקומים המצחיקים ביותר מארה\"ב ומישראל בתרגום לעברית",
-    "number": 135,
+    "number": 132,
     "src": {
       "by": "b84203c4.ottrast.com",
       "kind": "restream",
@@ -3276,7 +3212,7 @@
     "desc": "ערוץ ויוה טלנובלות – מיטב הטלנובלות הלטיניות והבינלאומיות עם כתוביות בעברית",
     "lang": "he",
     "country": "IL",
-    "number": 136,
+    "number": 133,
     "src": {
       "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
       "kind": "official",
@@ -3306,7 +3242,7 @@
     "country": "IL",
     "countryHe": "ישראל",
     "logo": "assets/logos/viva_istanbul.png",
-    "number": 137,
+    "number": 134,
     "src": {
       "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
       "kind": "official",
@@ -3335,7 +3271,7 @@
     "lang": "he",
     "country": "IL",
     "countryHe": "ישראל",
-    "number": 138,
+    "number": 135,
     "src": {
       "by": "b84203c4.ottrast.com",
       "kind": "restream",
@@ -3362,7 +3298,7 @@
     "badge": "HD",
     "lang": "he",
     "desc": "הערוץ הים תיכוני – סדרות דרמה, סרטים, הופעות ומוזיקה ים תיכונית וישראלית",
-    "number": 139,
+    "number": 136,
     "src": {
       "by": "b84203c4.ottrast.com",
       "kind": "restream",
@@ -3382,7 +3318,7 @@
     "badge": "HD",
     "lang": "he",
     "desc": "הערוץ הים תיכוני+ – דרמות, קולנוע, מוזיקה ותוכניות בידור ים תיכוניות",
-    "number": 140,
+    "number": 137,
     "src": {
       "by": "b84203c4.ottrast.com",
       "kind": "restream",
@@ -3405,7 +3341,7 @@
     "badge": "FHD",
     "lang": "he",
     "desc": "ערוץ הדרמות הטורקיות+ – הסדרות הטורקיות המצליחות ביותר באיכות FHD עם תרגום לעברית",
-    "number": 141,
+    "number": 138,
     "src": {
       "by": "b84203c4.ottrast.com",
       "kind": "restream",
@@ -3425,7 +3361,7 @@
     "badge": "FHD",
     "lang": "he",
     "desc": "ערוץ הדרמות הטורקיות 2 – סדרות רומנטיקה, משפחה ומתח מטורקיה בתרגום לעברית",
-    "number": 142,
+    "number": 139,
     "src": {
       "by": "b84203c4.ottrast.com",
       "kind": "restream",
@@ -3445,7 +3381,7 @@
     "badge": "FHD",
     "lang": "he",
     "desc": "ערוץ הדרמות הטורקיות 3 – מרתונים ופרקים חדשים של להיטים טורקיים בתרגום לעברית",
-    "number": 143,
+    "number": 140,
     "src": {
       "by": "b84203c4.ottrast.com",
       "kind": "restream",
@@ -3465,7 +3401,7 @@
     "badge": "HD",
     "lang": "he",
     "desc": "ערוץ הסרטים הים תיכוני 1 – קולנוע טורקי, יווני וים תיכוני מרגש בתרגום לעברית",
-    "number": 144,
+    "number": 141,
     "src": {
       "by": "b84203c4.ottrast.com",
       "kind": "restream",
@@ -3485,7 +3421,7 @@
     "badge": "HD",
     "lang": "he",
     "desc": "ערוץ הסרטים הים תיכוני 2 – סרטי דרמה, קומדיה ורומנטיקה מאגן הים התיכון בתרגום לעברית",
-    "number": 145,
+    "number": 142,
     "src": {
       "by": "b84203c4.ottrast.com",
       "kind": "restream",
@@ -3505,7 +3441,7 @@
     "badge": "HD",
     "lang": "he",
     "desc": "ערוץ האקשן העולמי 1 – סדרות וסרטי אקשן, פשע ומתח בינלאומיים עם כתוביות בעברית",
-    "number": 146,
+    "number": 143,
     "src": {
       "by": "b84203c4.ottrast.com",
       "kind": "restream",
@@ -3525,7 +3461,7 @@
     "badge": "HD",
     "lang": "he",
     "desc": "ערוץ האקשן העולמי 2 – אקשן חוצה גבולות, מתח ופעולה 24/7 עם כתוביות בעברית",
-    "number": 147,
+    "number": 144,
     "src": {
       "by": "b84203c4.ottrast.com",
       "kind": "restream",
@@ -3545,7 +3481,7 @@
     "badge": "HD",
     "lang": "he",
     "desc": "ערוץ הדרמות הספרדיות 1 – מיטב הסדרות והטלנובלות מספרד ואמריקה הלטינית בתרגום לעברית",
-    "number": 148,
+    "number": 145,
     "src": {
       "by": "b84203c4.ottrast.com",
       "kind": "restream",
@@ -3565,7 +3501,7 @@
     "badge": "HD",
     "lang": "he",
     "desc": "ערוץ הדרמות הספרדיות 2 – דרמות תקופתיות, מתח ורומנטיקה בספרדית עם כתוביות בעברית",
-    "number": 149,
+    "number": 146,
     "src": {
       "by": "b84203c4.ottrast.com",
       "kind": "restream",
@@ -3585,7 +3521,7 @@
     "badge": "HD",
     "lang": "he",
     "desc": "ערוץ הדרמות ההודיות 1 – סדרות רומנטיקה ומשפחה צבעוניות מהודו עם כתוביות בעברית",
-    "number": 150,
+    "number": 147,
     "src": {
       "by": "b84203c4.ottrast.com",
       "kind": "restream",
@@ -3605,7 +3541,7 @@
     "badge": "HD",
     "lang": "he",
     "desc": "ערוץ הדרמות ההודיות 2 – דרמות וסיפורי אהבה מהודו עם תרגום מלא לעברית",
-    "number": 151,
+    "number": 148,
     "src": {
       "by": "b84203c4.ottrast.com",
       "kind": "restream",
@@ -3625,7 +3561,7 @@
     "badge": "HD",
     "lang": "he",
     "desc": "ערוץ בוליווד HD – שוברי קופות וסרטים הודיים חדשים עם כתוביות בעברית",
-    "number": 152,
+    "number": 149,
     "src": {
       "by": "b84203c4.ottrast.com",
       "kind": "restream",
@@ -3645,7 +3581,7 @@
     "badge": "HD",
     "lang": "he",
     "desc": "ערוץ בוליווד קלאסי – הקלאסיקות האהובות של הקולנוע ההודי בתרגום לעברית",
-    "number": 153,
+    "number": 150,
     "src": {
       "by": "b84203c4.ottrast.com",
       "kind": "restream",
@@ -3665,7 +3601,7 @@
     "badge": "HD",
     "lang": "he",
     "desc": "ערוץ Bollyshow – סדרות, מוזיקה ובידור מבוליווד עם תרגום לעברית",
-    "number": 154,
+    "number": 151,
     "src": {
       "by": "b84203c4.ottrast.com",
       "kind": "restream",
@@ -3687,7 +3623,7 @@
     "lang": "he",
     "iptv": "ZeeTV.il",
     "desc": "ערוץ ZEE TV בישראל – מיטב הדרמות, הסרטים והסדרות מבית ZEE עם תרגום",
-    "number": 155,
+    "number": 152,
     "src": {
       "by": "b84203c4.ottrast.com",
       "kind": "restream",
@@ -3709,7 +3645,7 @@
     "lang": "he",
     "iptv": "GTV.il",
     "desc": "ערוץ GTV – סדרות דרמה, קולנוע ובידור בשידור חי",
-    "number": 156,
+    "number": 153,
     "src": {
       "by": "b84203c4.ottrast.com",
       "kind": "restream",
@@ -3729,7 +3665,7 @@
     "badge": "HD",
     "lang": "he",
     "desc": "ערוץ הקומדיות הקלאסיות – הסיטקומים והקומדיות האהובות מכל הזמנים עם כתוביות בעברית",
-    "number": 157,
+    "number": 154,
     "src": {
       "by": "b84203c4.ottrast.com",
       "kind": "restream",
@@ -3749,7 +3685,7 @@
     "badge": "HD",
     "lang": "he",
     "desc": "ערוץ האהבה – סדרות וסרטים רומנטיים מרגשים עם כתוביות בעברית",
-    "number": 158,
+    "number": 155,
     "src": {
       "by": "b84203c4.ottrast.com",
       "kind": "restream",
@@ -3771,7 +3707,7 @@
     "lang": "he",
     "country": "IL",
     "countryHe": "ישראל",
-    "number": 159,
+    "number": 156,
     "src": {
       "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
       "kind": "official",
@@ -3798,7 +3734,7 @@
     "badge": "FHD",
     "desc": "כל העונות והפרקים של סברי מרנן ברצף 24/7 – ערוץ חינמי של קשת ו-FreeTV",
     "logo": "assets/logos/keshet12.png",
-    "number": 160,
+    "number": 157,
     "src": {
       "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
       "kind": "official",
@@ -3824,7 +3760,7 @@
     "badge": "HD",
     "desc": "דרמות וסדרות ישראליות של קשת 24/7 – ערוץ חינמי של קשת ו-FreeTV",
     "logo": "assets/logos/keshet_drama.png",
-    "number": 161,
+    "number": 158,
     "src": {
       "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
       "kind": "official",
@@ -3851,7 +3787,7 @@
     "badge": "HD",
     "desc": "קומדיות ישראליות של קשת 24/7 – ערוץ חינמי של קשת ו-FreeTV",
     "logo": "assets/logos/keshet_comedy.png",
-    "number": 162,
+    "number": 159,
     "src": {
       "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
       "kind": "official",
@@ -3879,7 +3815,7 @@
     "lang": "he",
     "country": "IL",
     "countryHe": "ישראל",
-    "number": 163,
+    "number": 160,
     "src": {
       "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
       "kind": "official",
@@ -3901,7 +3837,7 @@
     "lang": "he",
     "country": "IL",
     "countryHe": "ישראל",
-    "number": 164,
+    "number": 161,
     "src": {
       "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
       "kind": "official",
@@ -3923,7 +3859,7 @@
     "lang": "he",
     "country": "IL",
     "countryHe": "ישראל",
-    "number": 165,
+    "number": 162,
     "src": {
       "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
       "kind": "official",
@@ -3945,7 +3881,7 @@
     "lang": "he",
     "country": "IL",
     "countryHe": "ישראל",
-    "number": 166,
+    "number": 163,
     "src": {
       "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
       "kind": "official",
@@ -3967,7 +3903,7 @@
     "lang": "he",
     "country": "IL",
     "countryHe": "ישראל",
-    "number": 167,
+    "number": 164,
     "src": {
       "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
       "kind": "official",
@@ -3989,7 +3925,7 @@
     "lang": "he",
     "country": "IL",
     "countryHe": "ישראל",
-    "number": 168,
+    "number": 165,
     "src": {
       "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
       "kind": "official",
@@ -4011,7 +3947,7 @@
     "lang": "he",
     "country": "IL",
     "countryHe": "ישראל",
-    "number": 169,
+    "number": 166,
     "src": {
       "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
       "kind": "official",
@@ -4033,7 +3969,7 @@
     "lang": "he",
     "country": "IL",
     "countryHe": "ישראל",
-    "number": 170,
+    "number": 167,
     "src": {
       "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
       "kind": "official",
@@ -4055,7 +3991,7 @@
     "lang": "he",
     "country": "IL",
     "countryHe": "ישראל",
-    "number": 171,
+    "number": 168,
     "src": {
       "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
       "kind": "official",
@@ -4077,7 +4013,7 @@
     "lang": "he",
     "country": "IL",
     "countryHe": "ישראל",
-    "number": 172,
+    "number": 169,
     "src": {
       "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
       "kind": "official",
@@ -4099,7 +4035,7 @@
     "lang": "he",
     "country": "IL",
     "countryHe": "ישראל",
-    "number": 173,
+    "number": 170,
     "src": {
       "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
       "kind": "official",
@@ -4121,7 +4057,7 @@
     "lang": "he",
     "country": "IL",
     "countryHe": "ישראל",
-    "number": 174,
+    "number": 171,
     "src": {
       "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
       "kind": "official",
@@ -4143,7 +4079,7 @@
     "lang": "he",
     "country": "IL",
     "countryHe": "ישראל",
-    "number": 175,
+    "number": 172,
     "src": {
       "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
       "kind": "official",
@@ -4165,7 +4101,7 @@
     "lang": "he",
     "country": "IL",
     "countryHe": "ישראל",
-    "number": 176,
+    "number": 173,
     "src": {
       "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
       "kind": "official",
@@ -4187,7 +4123,7 @@
     "lang": "he",
     "country": "IL",
     "countryHe": "ישראל",
-    "number": 177,
+    "number": 174,
     "src": {
       "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
       "kind": "official",
@@ -4209,7 +4145,7 @@
     "lang": "he",
     "country": "IL",
     "countryHe": "ישראל",
-    "number": 178,
+    "number": 175,
     "src": {
       "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
       "kind": "official",
@@ -4228,7 +4164,7 @@
     "logo": "assets/logos/kinouzhas.png",
     "badge": "FHD",
     "desc": "סרטי אימה מצמררים, מתח אפל, פרא-נורמלי וסרטי אימה קלאסיים",
-    "number": 179,
+    "number": 176,
     "lang": "ru",
     "iptv": "Kinouzhas.ru",
     "src": {
@@ -4249,7 +4185,7 @@
     "logo": "assets/logos/kinohit.png",
     "badge": "HD",
     "desc": "שוברי הקופות והסרטים האהובים מכל הזמנים",
-    "number": 180,
+    "number": 177,
     "lang": "ru",
     "iptv": "KinoHit.ru",
     "webUrl": "https://stream8.cinerama.uz/1055/tracks-v1a1/mono.m3u8",
@@ -4271,7 +4207,7 @@
     "logo": "assets/logos/simpsons_247.png",
     "badge": "FHD",
     "desc": "ערוץ שידורים רציף של כל עונות משפחת סימפסון 24 שעות ביממה",
-    "number": 181,
+    "number": 178,
     "lang": "ru",
     "src": {
       "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
@@ -4291,7 +4227,7 @@
     "logo": "assets/logos/cineman_vhs_retro.png",
     "badge": "HD",
     "desc": "ערוץ קלאסיקות הקולנוע הנוסטלגיות של שנות ה-80 וה-90",
-    "number": 182,
+    "number": 179,
     "lang": "ru",
     "src": {
       "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
@@ -4316,7 +4252,7 @@
     "lang": "he",
     "iptv": "NationalGeographic.il",
     "desc": "נשיונל ג'יאוגרפיק ישראל – מדע, טבע, תעופה, חלל וחקר העולם עם כתוביות בעברית",
-    "number": 183,
+    "number": 180,
     "src": {
       "by": "b84203c4.ottrast.com",
       "kind": "restream",
@@ -4340,7 +4276,7 @@
     "lang": "he",
     "iptv": "NationalGeographicWild.il",
     "desc": "נשיונל ג'יאוגרפיק וויילד FHD – עולם החי, תיעוד טבע פראי ומשלחות מחקר עם כתוביות בעברית",
-    "number": 184,
+    "number": 181,
     "src": {
       "by": "b84203c4.ottrast.com",
       "kind": "restream",
@@ -4364,7 +4300,7 @@
     "lang": "he",
     "iptv": "DiscoveryChannel.il",
     "desc": "ערוץ דיסקברי ישראל FHD – הישרדות, הנדסה, רכב, מדע והרפתקאות עם כתוביות בעברית",
-    "number": 185,
+    "number": 182,
     "src": {
       "by": "b84203c4.ottrast.com",
       "kind": "restream",
@@ -4388,7 +4324,7 @@
     "lang": "he",
     "iptv": "History.il",
     "desc": "ערוץ ההיסטוריה ישראל FHD – היסטוריה עולמית, תעלומות, תרבויות עתיקות ודוקו בתרגום לעברית",
-    "number": 186,
+    "number": 183,
     "src": {
       "by": "b84203c4.ottrast.com",
       "kind": "restream",
@@ -4410,7 +4346,7 @@
     "lang": "he",
     "country": "IL",
     "countryHe": "ישראל",
-    "number": 187,
+    "number": 184,
     "src": {
       "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
       "kind": "official",
@@ -4429,7 +4365,7 @@
     "logo": "assets/logos/animal_planet.png",
     "badge": "FHD",
     "desc": "עולם החיות, ספארי באפריקה, חיות מחמד והגנה על חיות הבר",
-    "number": 188,
+    "number": 185,
     "lang": "ru",
     "iptv": "AnimalPlanet.ru",
     "src": {
@@ -4450,7 +4386,7 @@
     "logo": "assets/logos/investigation_discovery.png",
     "badge": "HD",
     "desc": "תעלומות פשע אמיתי, חקירות בלשיות ופיענוח פרשיות מסתוריות",
-    "number": 189,
+    "number": 186,
     "lang": "ru",
     "iptv": "InvestigationDiscovery.ru",
     "src": {
@@ -4471,7 +4407,7 @@
     "logo": "assets/logos/viju_planet.png",
     "badge": "FHD",
     "desc": "נופי טבע מרהיבים, בעלי חיים וסביבה באיכות FHD",
-    "number": 190,
+    "number": 187,
     "lang": "ru",
     "iptv": "vijuPlusPlanet.ru",
     "src": {
@@ -4492,7 +4428,7 @@
     "logo": "assets/logos/asharq_discovery.png",
     "badge": "FHD",
     "desc": "תוכניות דיסקברי מקוריות, חלל, מכונאות ומדע",
-    "number": 191,
+    "number": 188,
     "lang": "ar",
     "iptv": "AsharqDiscovery.sa",
     "src": {
@@ -4513,7 +4449,7 @@
     "logo": "assets/logos/hidabroot.png",
     "badge": "HD",
     "desc": "ערוץ הידברות (אפיק 97) – הרצאות, שיעורי תורה, תוכניות משפחה, מדע ויהדות",
-    "number": 192,
+    "number": 189,
     "lang": "he",
     "iptv": "Hidabroot.il",
     "src": {
@@ -4541,7 +4477,7 @@
     "badge": "HD",
     "desc": "ערוץ קבלה לעם (אפיק 66) – שיעורים יומיים, תוכניות העשרה, חברה ורוחניות בעברית",
     "logo": "assets/logos/kabbalah.png",
-    "number": 193,
+    "number": 190,
     "src": {
       "by": "edge1.il.kab.tv",
       "kind": "restream",
@@ -4557,98 +4493,6 @@
     "iptv": "KabbalahTV.il"
   },
   {
-    "id": "breslev_halachot",
-    "name": "ברסלב: הלכות ודף יומי",
-    "title": "ברסלב: הלכות ודף יומי",
-    "category": "מסורת וקהילה",
-    "categoryEn": "israel",
-    "kind": "radio",
-    "url": "https://cast.breslevforyou.co.il/listen/halachot/radio.mp3",
-    "badge": "LIVE",
-    "desc": "הלכה יומית ודף יומי",
-    "lang": "music",
-    "logo": "assets/logos/breslev_halachot.png",
-    "number": 194,
-    "src": {
-      "by": "רדיו ברסלב – שרת התחנה",
-      "kind": "official",
-      "host": "cast.breslevforyou.co.il",
-      "found": "רשימה ידנית (גרסה קודמת)",
-      "web": "✅"
-    },
-    "country": "IL",
-    "countryHe": "ישראל"
-  },
-  {
-    "id": "breslev_books",
-    "name": "ברסלב: ספרי ברסלב",
-    "title": "ברסלב: ספרי ברסלב",
-    "category": "מסורת וקהילה",
-    "categoryEn": "israel",
-    "kind": "radio",
-    "url": "https://cast.breslevforyou.co.il/listen/books/radio.mp3",
-    "badge": "LIVE",
-    "desc": "קריאה בספרי ברסלב",
-    "lang": "music",
-    "logo": "assets/logos/breslev_books.png",
-    "number": 195,
-    "src": {
-      "by": "רדיו ברסלב – שרת התחנה",
-      "kind": "official",
-      "host": "cast.breslevforyou.co.il",
-      "found": "רשימה ידנית (גרסה קודמת)",
-      "web": "✅"
-    },
-    "country": "IL",
-    "countryHe": "ישראל"
-  },
-  {
-    "id": "breslev_shorts",
-    "name": "ברסלב: קצר וקולע",
-    "title": "ברסלב: קצר וקולע",
-    "category": "מסורת וקהילה",
-    "categoryEn": "israel",
-    "kind": "radio",
-    "url": "https://cast.breslevforyou.co.il/listen/shorts/radio.mp3",
-    "badge": "LIVE",
-    "desc": "שיעורים קצרים",
-    "lang": "music",
-    "logo": "assets/logos/breslev_shorts.png",
-    "number": 196,
-    "src": {
-      "by": "רדיו ברסלב – שרת התחנה",
-      "kind": "official",
-      "host": "cast.breslevforyou.co.il",
-      "found": "רשימה ידנית (גרסה קודמת)",
-      "web": "✅"
-    },
-    "country": "IL",
-    "countryHe": "ישראל"
-  },
-  {
-    "id": "breslev_torah",
-    "name": "ברסלב: תורה וזימרה",
-    "title": "ברסלב: תורה וזימרה",
-    "category": "מסורת וקהילה",
-    "categoryEn": "israel",
-    "kind": "radio",
-    "url": "https://cast.breslevforyou.co.il/listen/music-toravezimra/radio.mp3",
-    "badge": "LIVE",
-    "desc": "שיעורים ונגינה חסידית",
-    "lang": "music",
-    "logo": "assets/logos/breslev_torah.png",
-    "number": 197,
-    "src": {
-      "by": "רדיו ברסלב – שרת התחנה",
-      "kind": "official",
-      "host": "cast.breslevforyou.co.il",
-      "found": "רשימה ידנית (גרסה קודמת)",
-      "web": "✅"
-    },
-    "country": "IL",
-    "countryHe": "ישראל"
-  },
-  {
     "id": "kabbalah_ru",
     "name": "קבלה לעם – רוסית (ערוץ 66)",
     "title": "קבלה לעם ברוסית (Kabbalah TV RU)",
@@ -4661,7 +4505,7 @@
     "lang": "ru",
     "country": "IL",
     "countryHe": "ישראל",
-    "number": 198,
+    "number": 191,
     "src": {
       "by": "edge1.il.kab.tv",
       "kind": "restream",
@@ -4683,7 +4527,7 @@
     "logo": "assets/logos/channel16.png",
     "badge": "HD",
     "desc": "ערוץ קהילתי ישראלי בשידור ישיר",
-    "number": 199,
+    "number": 192,
     "lang": "auto",
     "iptv": "Channel16.il",
     "src": {
@@ -4717,7 +4561,7 @@
     "lang": "en",
     "iptv": "KabbalahEn.il",
     "desc": "שידור חי מערוץ קבלה לעם (אפיק 96) באנגלית – שיעורים, הרצאות ותוכניות העשרה מפתח תקווה",
-    "number": 200,
+    "number": 193,
     "src": {
       "by": "edge1.il.kab.tv",
       "kind": "restream",
@@ -4741,7 +4585,7 @@
     "lang": "es",
     "iptv": "KabbalahEs.il",
     "desc": "שידור חי מערוץ קבלה לעם (אפיק 96) בספרדית – שיעורים ותוכניות העשרה מישראל",
-    "number": 201,
+    "number": 194,
     "src": {
       "by": "edge1.il.kab.tv",
       "kind": "restream",
@@ -4749,6 +4593,1388 @@
       "found": "iptv-org (KabbalahEs.il)",
       "web": "✅"
     }
+  },
+  {
+    "id": "sky_news_uk",
+    "name": "Sky News UK FHD",
+    "title": "Sky News UK FHD",
+    "category": "חדשות מהעולם (News)",
+    "categoryEn": "news",
+    "url": "https://linear901-oo-hls0-prd-gtm.delivery.skycdp.com/17501/sde-fast-skynews/master.m3u8",
+    "logo": "assets/logos/sky_news.png",
+    "badge": "FHD",
+    "desc": "ערוץ החדשות הבינלאומי המוביל של רשת Sky מבריטניה בשידור חי 24/7 באיכות FHD",
+    "lang": "en",
+    "country": "GB",
+    "countryHe": "בריטניה",
+    "src": {
+      "by": "linear901-oo-hls0-prd-gtm.delivery.skycdp.com",
+      "kind": "restream",
+      "host": "linear901-oo-hls0-prd-gtm.delivery.skycdp.com",
+      "found": "שידור רשמי Sky",
+      "web": "✅"
+    },
+    "number": 195
+  },
+  {
+    "id": "sky_news_arabia",
+    "name": "Sky News Arabia HD (סקיי ניוז ערבית)",
+    "title": "Sky News Arabia HD",
+    "category": "חדשות מהעולם (News)",
+    "categoryEn": "news",
+    "url": "https://live-stream.skynewsarabia.com/c-horizontal-channel/horizontal-stream/index.m3u8",
+    "logo": "assets/logos/sky_news.png",
+    "badge": "HD",
+    "desc": "ערוץ החדשות סקיי ניוז בשפה הערבית של רשת Sky באיכות HD",
+    "lang": "ar",
+    "country": "AE",
+    "countryHe": "איחוד האמירויות",
+    "src": {
+      "by": "live-stream.skynewsarabia.com",
+      "kind": "restream",
+      "host": "live-stream.skynewsarabia.com",
+      "found": "שידור רשמי Sky",
+      "web": "✅"
+    },
+    "number": 196
+  },
+  {
+    "id": "sky_news_arabia_live",
+    "name": "Sky News Arabia ישיר HD (מקור 2)",
+    "title": "Sky News Arabia Live HD",
+    "category": "חדשות מהעולם (News)",
+    "categoryEn": "news",
+    "url": "https://stream.skynewsarabia.com/hls/sna.m3u8",
+    "logo": "assets/logos/sky_news.png",
+    "badge": "HD",
+    "desc": "מקור שידור ישיר נוסף של ערוץ Sky News ערבית באיכות HD",
+    "lang": "ar",
+    "country": "AE",
+    "countryHe": "איחוד האמירויות",
+    "src": {
+      "by": "stream.skynewsarabia.com",
+      "kind": "restream",
+      "host": "stream.skynewsarabia.com",
+      "found": "שידור רשמי Sky",
+      "web": "✅"
+    },
+    "number": 197
+  },
+  {
+    "id": "sky_news_au_extra1",
+    "name": "Sky News Australia Extra 1 HD",
+    "title": "Sky News Australia Extra 1 HD",
+    "category": "חדשות מהעולם (News)",
+    "categoryEn": "news",
+    "url": "https://skynewsau-live.akamaized.net/hls/live/2002689/skynewsau-extra1/master.m3u8",
+    "logo": "assets/logos/sky_news.png",
+    "badge": "HD",
+    "desc": "ערוץ שידורי החדשות והאירועים החיים Sky News Australia Extra 1 מבית סקיי",
+    "lang": "en",
+    "country": "AU",
+    "countryHe": "אוסטרליה",
+    "src": {
+      "by": "skynewsau-live.akamaized.net",
+      "kind": "restream",
+      "host": "skynewsau-live.akamaized.net",
+      "found": "שידור רשמי Sky",
+      "web": "✅"
+    },
+    "number": 198
+  },
+  {
+    "id": "sky_news_au_extra2",
+    "name": "Sky News Australia Extra 2 HD",
+    "title": "Sky News Australia Extra 2 HD",
+    "category": "חדשות מהעולם (News)",
+    "categoryEn": "news",
+    "url": "https://skynewsau-live.akamaized.net/hls/live/2002690/skynewsau-extra2/master.m3u8",
+    "logo": "assets/logos/sky_news.png",
+    "badge": "HD",
+    "desc": "ערוץ שידורי החדשות והאירועים החיים Sky News Australia Extra 2 מבית סקיי",
+    "lang": "en",
+    "country": "AU",
+    "countryHe": "אוסטרליה",
+    "src": {
+      "by": "skynewsau-live.akamaized.net",
+      "kind": "restream",
+      "host": "skynewsau-live.akamaized.net",
+      "found": "שידור רשמי Sky",
+      "web": "✅"
+    },
+    "number": 199
+  },
+  {
+    "id": "sky_news_au_extra3",
+    "name": "Sky News Australia Extra 3 HD",
+    "title": "Sky News Australia Extra 3 HD",
+    "category": "חדשות מהעולם (News)",
+    "categoryEn": "news",
+    "url": "https://skynewsau-live.akamaized.net/hls/live/2002691/skynewsau-extra3/master.m3u8",
+    "logo": "assets/logos/sky_news.png",
+    "badge": "HD",
+    "desc": "ערוץ שידורי החדשות והאירועים החיים Sky News Australia Extra 3 מבית סקיי",
+    "lang": "en",
+    "country": "AU",
+    "countryHe": "אוסטרליה",
+    "src": {
+      "by": "skynewsau-live.akamaized.net",
+      "kind": "restream",
+      "host": "skynewsau-live.akamaized.net",
+      "found": "שידור רשמי Sky",
+      "web": "✅"
+    },
+    "number": 200
+  },
+  {
+    "id": "babyshark_tv",
+    "name": "Baby Shark TV (בייבי שארק לילדים)",
+    "title": "Baby Shark TV",
+    "category": "ילדים מהעולם (Kids World)",
+    "categoryEn": "kids",
+    "url": "https://newidco-babysharktv-1-us.roku.wurl.tv/playlist.m3u8",
+    "logo": "assets/logos/babyshark_tv_hd.png",
+    "badge": "FHD",
+    "desc": "ערוץ שידורי בייבי שארק הרשמי 24/7 – שירים, ריקודים והרפתקאות לפעוטות וילדים",
+    "lang": "kids",
+    "country": "IL",
+    "src": {
+      "by": "Baby Shark TV – Wurl (Roku FAST)",
+      "kind": "fast",
+      "host": "newidco-babysharktv-1-us.roku.wurl.tv",
+      "found": "סריקת ערוצי ילדים",
+      "web": "✅"
+    },
+    "number": 201
+  },
+  {
+    "id": "babytv_global_hd",
+    "name": "ערוץ בייבי BabyTV Global HD",
+    "title": "ערוץ בייבי BabyTV Global HD",
+    "category": "ילדים מהעולם (Kids World)",
+    "categoryEn": "kids",
+    "url": "https://cdn.fast.jwp.services/v1/channel/1_jB6940Ei_TvhvIHDL/manifest.m3u8",
+    "logo": "assets/logos/babytv_global_hd.png",
+    "badge": "HD",
+    "desc": "ערוץ בייבי הבינלאומי המוביל בעולם לפעוטות ולגיל הרך בשידור חי רצוף",
+    "lang": "kids",
+    "country": "IL",
+    "src": {
+      "by": "BabyFirst – JW Player FAST",
+      "kind": "fast",
+      "host": "cdn.fast.jwp.services",
+      "found": "סריקת ערוצי ילדים",
+      "web": "✅"
+    },
+    "number": 202
+  },
+  {
+    "id": "zoomoo_kids_hd",
+    "name": "ערוץ זו-מו לילדים (ZooMoo HD)",
+    "title": "ערוץ זו-מו לילדים (ZooMoo HD)",
+    "category": "ילדים מהעולם (Kids World)",
+    "categoryEn": "kids",
+    "url": "https://zoomoo-samsungau.amagi.tv/playlist.m3u8",
+    "logo": "assets/logos/zoomoo_kids_hd.png",
+    "badge": "HD",
+    "desc": "ערוץ הטבע, בעלי החיים והאנימציה החינוכית המוביל לילדים",
+    "lang": "kids",
+    "country": "IL",
+    "src": {
+      "by": "amagi.tv",
+      "kind": "fast",
+      "host": "zoomoo-samsungau.amagi.tv",
+      "found": "סריקת ערוצי ילדים",
+      "web": "✅"
+    },
+    "number": 203
+  },
+  {
+    "id": "ani_kids_hd",
+    "name": "ערוץ אני אנימציה HD (Ani Kids)",
+    "title": "ערוץ אני אנימציה HD",
+    "category": "ילדים מהעולם (Kids World)",
+    "categoryEn": "kids",
+    "url": "http://stream.mcquack.net/306/index.m3u8",
+    "logo": "assets/logos/ani_kids.png",
+    "badge": "HD",
+    "desc": "ערוץ סדרות אנימציה עולמיות, צבעוניות וחינוכיות לילדים באיכות HD",
+    "lang": "kids",
+    "country": "IL",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "סריקת ערוצי ילדים",
+      "web": "❌ רק באפליקציה (HTTP)"
+    },
+    "number": 204
+  },
+  {
+    "id": "plusplus_kids_hd",
+    "name": "ערוץ האנימציה PLUSPLUS HD",
+    "title": "ערוץ האנימציה PLUSPLUS HD",
+    "category": "ילדים מהעולם (Kids World)",
+    "categoryEn": "kids",
+    "url": "http://stream.mcquack.net/339/index.m3u8",
+    "logo": "assets/logos/plusplus.png",
+    "badge": "HD",
+    "desc": "ערוץ הילדים והאנימציה PLUSPLUS – הרפתקאות, מדע וסדרות לילדים",
+    "lang": "kids",
+    "country": "IL",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "סריקת ערוצי ילדים",
+      "web": "❌ רק באפליקציה (HTTP)"
+    },
+    "number": 205
+  },
+  {
+    "id": "niki_junior_kids_hd",
+    "name": "ערוץ ניקי ג'וניור HD (Niki Junior)",
+    "title": "ערוץ ניקי ג'וניור HD",
+    "category": "ילדים מהעולם (Kids World)",
+    "categoryEn": "kids",
+    "url": "http://stream.mcquack.net/262/index.m3u8",
+    "logo": "assets/logos/niki_junior_kids_hd.png",
+    "badge": "HD",
+    "desc": "ערוץ תוכניות וסדרות לגיל הרך ולילדים",
+    "lang": "kids",
+    "country": "IL",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "סריקת ערוצי ילדים",
+      "web": "❌ רק באפליקציה (HTTP)"
+    },
+    "number": 206
+  },
+  {
+    "id": "cartoons_short_hd",
+    "name": "ערוץ סרטוני אנימציה קצרים (Cartoons Short)",
+    "title": "ערוץ סרטוני אנימציה קצרים",
+    "category": "ילדים מהעולם (Kids World)",
+    "categoryEn": "kids",
+    "url": "http://stream.mcquack.net/347/index.m3u8",
+    "logo": "assets/logos/cartoons_short_hd.png",
+    "badge": "HD",
+    "desc": "מרתון סרטוני אנימציה קצרים ומצחיקים ברצף ללא הפסקה",
+    "lang": "kids",
+    "country": "IL",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "סריקת ערוצי ילדים",
+      "web": "❌ רק באפליקציה (HTTP)"
+    },
+    "number": 207
+  },
+  {
+    "id": "cartoons_big_hd",
+    "name": "ערוץ סרטי אנימציה לילדים (Cartoons Cinema)",
+    "title": "ערוץ סרטי אנימציה לילדים",
+    "category": "ילדים מהעולם (Kids World)",
+    "categoryEn": "kids",
+    "url": "http://stream.mcquack.net/348/index.m3u8",
+    "logo": "assets/logos/cartoons_big_hd.png",
+    "badge": "HD",
+    "desc": "סרטי אנימציה מלאים והרפתקאות מצוירות לכל המשפחה ברצף 24/7",
+    "lang": "kids",
+    "country": "IL",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "סריקת ערוצי ילדים",
+      "web": "❌ רק באפליקציה (HTTP)"
+    },
+    "number": 208
+  },
+  {
+    "id": "fresh_kids_tv_hd",
+    "name": "פרש קידס (Fresh Kids TV HD)",
+    "title": "פרש קידס (Fresh Kids TV HD)",
+    "category": "ילדים מהעולם (Kids World)",
+    "categoryEn": "kids",
+    "url": "http://stream.mcquack.net/425/index.m3u8",
+    "logo": "assets/logos/fresh_kids_tv_hd.png",
+    "badge": "HD",
+    "desc": "ערוץ מוזיקה, שירים וקצב לילדים ולנוער",
+    "lang": "kids",
+    "country": "IL",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "סריקת ערוצי ילדים",
+      "web": "❌ רק באפליקציה (HTTP)"
+    },
+    "number": 209
+  },
+  {
+    "id": "nick_jr_he",
+    "name": "ניק ג'וניור (ברוסית)",
+    "title": "ניק ג'וניור (Nick Jr. Russia)",
+    "category": "ילדים מהעולם (Kids World)",
+    "categoryEn": "kids",
+    "url": "http://stream.mcquack.net/220/index.m3u8",
+    "logo": "assets/logos/nick_jr_he.png",
+    "badge": "FHD",
+    "desc": "ערוץ ניק ג'וניור בשפה הרוסית - סדרות לגיל הרך",
+    "number": 210,
+    "lang": "ru",
+    "iptv": "NickJr.ru",
+    "webUrl": "https://stream8.cinerama.uz/1501/playlist.m3u8",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "iptv-org (NickJr.ru)",
+      "web": "✅ דרך מקור חלופי: Cinerama.uz – ספק IPTV באוזבקיסטן"
+    }
+  },
+  {
+    "id": "gulli_kids_hd",
+    "name": "גולי גירל Gulli Girl (ברוסית)",
+    "title": "Gulli Girl",
+    "category": "ילדים מהעולם (Kids World)",
+    "categoryEn": "kids",
+    "url": "http://stream.mcquack.net/305/index.m3u8",
+    "logo": "assets/logos/gulli_kids_hd.png",
+    "badge": "HD",
+    "desc": "ערוץ הרפתקאות, אנימציה וסדרות נוער מהנות לכל המשפחה",
+    "number": 211,
+    "lang": "ru",
+    "iptv": "GulliGirl.ru",
+    "webUrl": "https://stream8.cinerama.uz/1445/tracks-v1a1/mono.m3u8",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "iptv-org (GulliGirl.ru)",
+      "web": "✅ דרך מקור חלופי: Cinerama.uz – ספק IPTV באוזבקיסטן"
+    }
+  },
+  {
+    "id": "ducktv_plus_hd",
+    "name": "דאק טי וי פלוס ducktv PLUS HD",
+    "title": "דאק טי וי פלוס (ducktv PLUS)",
+    "category": "ילדים מהעולם (Kids World)",
+    "categoryEn": "kids",
+    "url": "https://dash3.antik.sk/live/test_duck_plus/playlist.m3u8",
+    "logo": "assets/logos/ducktv_plus_hd.png",
+    "badge": "FHD",
+    "desc": "ערוץ תוכניות העשרה והפעלות נוספות לגיל הרך מבית ducktv",
+    "number": 212,
+    "lang": "auto",
+    "iptv": "ducktvPLUS.sk",
+    "src": {
+      "by": "Antik Telecom (סלובקיה), נתיבי test",
+      "kind": "restream",
+      "host": "dash3.antik.sk",
+      "found": "iptv-org (ducktvPLUS.sk)",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "lego_channel_hd",
+    "name": "ערוץ לגו Lego Channel HD",
+    "title": "ערוץ לגו (Lego Channel)",
+    "category": "ילדים מהעולם (Kids World)",
+    "categoryEn": "kids",
+    "url": "https://dltiqboxjw21d.cloudfront.net/index.m3u8",
+    "logo": "assets/logos/lego_channel_hd.png",
+    "badge": "FHD",
+    "desc": "ערוץ סדרות וסרטי לגו נינג'גו, לגו חברים, הרפתקאות ובנייה",
+    "number": 213,
+    "lang": "en",
+    "iptv": "LegoChannel.us",
+    "src": {
+      "by": "LEGO Channel – AWS CloudFront FAST",
+      "kind": "fast",
+      "host": "dltiqboxjw21d.cloudfront.net",
+      "found": "iptv-org (LegoChannel.us)",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "tiji_kids_hd",
+    "name": "ערוץ טיז'י TiJi לילדים HD",
+    "title": "טיז'י (TiJi)",
+    "category": "ילדים מהעולם (Kids World)",
+    "categoryEn": "kids",
+    "url": "http://stream.mcquack.net/111/index.m3u8",
+    "logo": "assets/logos/tiji_kids_hd.png",
+    "badge": "FHD",
+    "desc": "ערוץ הילדים והפעוטות הבינלאומי המוביל לתכנים חינוכיים וצבעוניים",
+    "number": 214,
+    "lang": "ru",
+    "iptv": "TiJi.ru",
+    "webUrl": "https://stream8.cinerama.uz/1441/tracks-v1a1/mono.m3u8",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "iptv-org (TiJi.ru)",
+      "web": "✅ דרך מקור חלופי: Cinerama.uz – ספק IPTV באוזבקיסטן"
+    }
+  },
+  {
+    "id": "jimjam_kids_hd",
+    "name": "ג'ים ג'אם JimJam לילדים HD",
+    "title": "ג'ים ג'אם (JimJam)",
+    "category": "ילדים מהעולם (Kids World)",
+    "categoryEn": "kids",
+    "url": "http://stream.mcquack.net/150/index.m3u8",
+    "logo": "assets/logos/jimjam_kids_hd.png",
+    "badge": "HD",
+    "desc": "ערוץ הילדים והפעוטות האהוב - סדרות חינוכיות, דמיון ומשחק",
+    "number": 215,
+    "lang": "ru",
+    "iptv": "JimJamEurope.uk",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "iptv-org (JimJamEurope.uk)",
+      "web": "❌ רק באפליקציה (HTTP)"
+    }
+  },
+  {
+    "id": "cartoons_90s",
+    "name": "קלאסיקות מצוירות 90s HD",
+    "title": "קלאסיקות מצוירות (Cartoons 90s)",
+    "category": "ילדים מהעולם (Kids World)",
+    "categoryEn": "kids",
+    "url": "http://stream.mcquack.net/484/index.m3u8",
+    "logo": "assets/logos/cartoons_90s.png",
+    "badge": "FHD",
+    "desc": "ערוץ סדרות האנימציה הנוסטלגיות של שנות ה-90 באיכות גבוהה",
+    "number": 216,
+    "lang": "ru",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "❌ רק באפליקציה (HTTP)"
+    }
+  },
+  {
+    "id": "kinokazka",
+    "name": "קולנוע אגדות וילדים HD",
+    "title": "סרטי ילדים ואגדות (KinoKazka)",
+    "category": "ילדים מהעולם (Kids World)",
+    "categoryEn": "kids",
+    "url": "http://stream.mcquack.net/167/index.m3u8",
+    "logo": "assets/logos/kinokazka.png",
+    "badge": "FHD",
+    "desc": "סרטי אגדות, קולנוע לילדים ונוער, פנטזיה וסיפורים קלאסיים",
+    "number": 217,
+    "lang": "ru",
+    "iptv": "KinoKazka.es",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "iptv-org (KinoKazka.es)",
+      "web": "❌ רק באפליקציה (HTTP)"
+    }
+  },
+  {
+    "id": "pixel_tv",
+    "name": "פיקסל TV ילדים HD",
+    "title": "פיקסל TV (Pixel TV)",
+    "category": "ילדים מהעולם (Kids World)",
+    "categoryEn": "kids",
+    "url": "http://stream.mcquack.net/323/index.m3u8",
+    "logo": "assets/logos/pixel_tv.png",
+    "badge": "FHD",
+    "desc": "ערוץ הגיימינג, האנימציה והסדרות המובילות לילדים",
+    "number": 218,
+    "lang": "ru",
+    "iptv": "PixelTV.ua",
+    "webUrl": "https://cdn15.live-tv.cloud/ua_infinitas_tv/pixel-abr/playlist.m3u8",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "iptv-org (PixelTV.ua)",
+      "web": "✅ דרך מקור חלופי: live-tv.cloud – ספק IPTV אוקראיני"
+    }
+  },
+  {
+    "id": "niki_kids",
+    "name": "ניקי קידס Niki Kids HD",
+    "title": "ניקי קידס HD (Niki Kids)",
+    "category": "ילדים מהעולם (Kids World)",
+    "categoryEn": "kids",
+    "url": "http://stream.mcquack.net/271/index.m3u8",
+    "logo": "assets/logos/niki_kids.png",
+    "badge": "FHD",
+    "desc": "ערוץ בינלאומי לילדים עם דיבוב איכותי וסדרות חינוכיות",
+    "number": 219,
+    "lang": "ru",
+    "iptv": "NikiKids.ua",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "iptv-org (NikiKids.ua)",
+      "web": "❌ רק באפליקציה (HTTP)"
+    }
+  },
+  {
+    "id": "kapitan_fantastika",
+    "name": "קפטן פנטסטיקה HD",
+    "title": "קפטן פנטסטיקה (Kapitan Fantastika)",
+    "category": "ילדים מהעולם (Kids World)",
+    "categoryEn": "kids",
+    "url": "http://stream.mcquack.net/144/index.m3u8",
+    "logo": "assets/logos/kapitan_fantastika.png",
+    "badge": "FHD",
+    "desc": "הרפתקאות גיבורי על ומדע בדיוני לילדים ונוער",
+    "number": 220,
+    "lang": "ru",
+    "iptv": "KapitanFantastika.ru",
+    "webUrl": "https://stream8.cinerama.uz/1406/tracks-v1a1/mono.m3u8",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "iptv-org (KapitanFantastika.ru)",
+      "web": "✅ דרך מקור חלופי: Cinerama.uz – ספק IPTV באוזבקיסטן"
+    }
+  },
+  {
+    "id": "okids",
+    "name": "ערוץ O! ילדים וטבע",
+    "title": "ערוץ O! ילדים",
+    "category": "ילדים מהעולם (Kids World)",
+    "categoryEn": "kids",
+    "url": "http://stream.mcquack.net/60/index.m3u8",
+    "logo": "assets/logos/okids.png",
+    "badge": "SD",
+    "desc": "תגליות, חיות ועולם הטבע בשפה פשוטה ומהנה לילדים",
+    "number": 221,
+    "lang": "ru",
+    "iptv": "O.ru",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "iptv-org (O.ru)",
+      "web": "❌ רק באפליקציה (HTTP)"
+    }
+  },
+  {
+    "id": "ducktv_hd",
+    "name": "דאק טי וי ducktv HD",
+    "title": "ערוץ דאק טי וי ducktv HD",
+    "category": "ילדים מהעולם (Kids World)",
+    "categoryEn": "kids",
+    "url": "https://dash3.antik.sk/live/duck_tv/index.m3u8",
+    "logo": "assets/logos/ducktv_hd.png",
+    "badge": "FHD",
+    "desc": "ערוץ הפעוטות וההתפתחות המוביל מבית yes ו-HOT - אנימציה עדינה וצבעים",
+    "number": 222,
+    "lang": "auto",
+    "iptv": "ducktv.sk",
+    "src": {
+      "by": "Antik Telecom (סלובקיה), נתיבי test",
+      "kind": "restream",
+      "host": "dash3.antik.sk",
+      "found": "iptv-org (ducktv.sk)",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "solntse_kids",
+    "name": "ערוץ השמש לילדים HD (Solntse Kids)",
+    "title": "ערוץ השמש לילדים HD",
+    "category": "ילדים מהעולם (Kids World)",
+    "categoryEn": "kids",
+    "url": "http://stream.mcquack.net/118/index.m3u8",
+    "logo": "assets/logos/solntse_kids.png",
+    "badge": "HD",
+    "desc": "ערוץ ילדים ומשפחה עשיר בסדרות אנימציה, קומדיה ובידור לכל הגילאים",
+    "number": 223,
+    "lang": "ru",
+    "iptv": "Solnce.ru",
+    "webUrl": "https://tv.mediacdn.ru/live/solntse/playlist.m3u8",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "iptv-org (Solnce.ru)",
+      "web": "✅ דרך מקור חלופי: ערוץ השמש (Солнце) – CDN"
+    }
+  },
+  {
+    "id": "mult_kids",
+    "name": "ערוץ מולט ילדים HD (Mult Kids)",
+    "title": "ערוץ מולט ילדים HD",
+    "category": "ילדים מהעולם (Kids World)",
+    "categoryEn": "kids",
+    "url": "http://stream.mcquack.net/232/index.m3u8",
+    "logo": "assets/logos/mult_kids.png",
+    "badge": "HD",
+    "desc": "ערוץ אנימציה מוביל לילדים ופעוטות - סדרות מצוירות מודרניות וקלאסיות",
+    "number": 224,
+    "lang": "ru",
+    "iptv": "Mult.ru",
+    "webUrl": "https://stream8.cinerama.uz/1246/tracks-v1a1/mono.m3u8",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "iptv-org (Mult.ru)",
+      "web": "✅ דרך מקור חלופי: Cinerama.uz – ספק IPTV באוזבקיסטן"
+    }
+  },
+  {
+    "id": "mult_music_kids",
+    "name": "מולט ומוזיקה לילדים HD (Mult & Music)",
+    "title": "מולט ומוזיקה לילדים HD",
+    "category": "ילדים מהעולם (Kids World)",
+    "categoryEn": "kids",
+    "url": "http://stream.mcquack.net/82/index.m3u8",
+    "logo": "assets/logos/mult_music_kids.png",
+    "badge": "HD",
+    "desc": "שירי ילדים, קליפים מוזיקליים מונפשים וסדרות לקטנטנים 24/7",
+    "number": 225,
+    "lang": "ru",
+    "iptv": "Multimuzyka.ru",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "iptv-org (Multimuzyka.ru)",
+      "web": "❌ רק באפליקציה (HTTP)"
+    }
+  },
+  {
+    "id": "carousel_kids",
+    "name": "קרוסלה ערוץ הילדים HD (Carousel Kids)",
+    "title": "קרוסלה ערוץ הילדים HD",
+    "category": "ילדים מהעולם (Kids World)",
+    "categoryEn": "kids",
+    "url": "http://stream.mcquack.net/120/index.m3u8",
+    "logo": "assets/logos/carousel_kids.png",
+    "badge": "HD",
+    "desc": "ערוץ הילדים והנוער המוביל - תוכניות לימודיות, חידונים וסדרות הרפתקאות",
+    "number": 226,
+    "lang": "ru",
+    "iptv": "Carousel.ru",
+    "webUrl": "https://stream.smotrim.ru/hls2/karusel/playlist_3.m3u8",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "iptv-org (Carousel.ru)",
+      "web": "✅ דרך מקור חלופי: Smotrim (VGTRK) – הבעלים של קרוסלה"
+    }
+  },
+  {
+    "id": "ctc_kids",
+    "name": "סי טי סי קידס HD (CTC Kids)",
+    "title": "סי טי סי קידס HD",
+    "category": "ילדים מהעולם (Kids World)",
+    "categoryEn": "kids",
+    "url": "http://stream.mcquack.net/197/index.m3u8",
+    "logo": "assets/logos/ctc_kids.png",
+    "badge": "HD",
+    "desc": "סדרות אנימציה עולמיות, סרטים מצוירים ותוכניות בידור לילדים",
+    "number": 227,
+    "lang": "ru",
+    "iptv": "STSkids.ru",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "iptv-org (STSkids.ru)",
+      "web": "❌ רק באפליקציה (HTTP)"
+    }
+  },
+  {
+    "id": "fairy_tales_kids",
+    "name": "ערוץ אגדות וסיפורים HD (Fairy Tales Kids)",
+    "title": "ערוץ אגדות וסיפורים HD",
+    "category": "ילדים מהעולם (Kids World)",
+    "categoryEn": "kids",
+    "url": "http://stream.mcquack.net/93/index.m3u8",
+    "logo": "assets/logos/fairy_tales_kids.png",
+    "badge": "HD",
+    "desc": "ערוץ עולם האגדות - סיפורי עם קלאסיים, סרטי פנטזיה והרפתקאות מונפשות",
+    "number": 228,
+    "lang": "ru",
+    "iptv": "Vgostyakhuskazki.ru",
+    "webUrl": "https://stream8.cinerama.uz/1270/tracks-v1a1/mono.m3u8",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "iptv-org (Vgostyakhuskazki.ru)",
+      "web": "✅ דרך מקור חלופי: Cinerama.uz – ספק IPTV באוזבקיסטן"
+    }
+  },
+  {
+    "id": "radios_video",
+    "name": "רדיוס 100FM – אולפן וידאו HD",
+    "title": "רדיוס 100FM אולפן וידאו (Radios Video)",
+    "category": "מוזיקה (Music TV)",
+    "categoryEn": "music",
+    "url": "https://cdn.cybercdn.live/Radios_100FM/Video/playlist.m3u8",
+    "logo": "assets/logos/radios_video.png",
+    "badge": "HD",
+    "desc": "האולפן של רדיוס 100FM בשידור וידאו חי מהאולפן",
+    "lang": "he",
+    "country": "IL",
+    "number": 229,
+    "src": {
+      "by": "CyberCDN – ה-CDN של תחנות הרדיו עצמן",
+      "kind": "official",
+      "host": "cdn.cybercdn.live",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "sky_folk_tv",
+    "name": "Sky Folk TV HD (סקיי פולק)",
+    "title": "Sky Folk TV HD",
+    "category": "מוזיקה (Music TV)",
+    "categoryEn": "music",
+    "url": "https://skyfolk.mk/live.m3u8",
+    "logo": "assets/logos/sky_news.png",
+    "badge": "HD",
+    "desc": "ערוץ שידורי המוזיקה והתרבות הבינלאומי של סקיי ב-HD",
+    "lang": "en",
+    "country": "MK",
+    "countryHe": "מקדוניה",
+    "src": {
+      "by": "Sky Folk Live",
+      "kind": "official",
+      "host": "skyfolk.mk",
+      "found": "שידור רשמי Sky",
+      "web": "✅ מתנגן בכל הפלטפורמות"
+    },
+    "number": 230
+  },
+  {
+    "id": "music_4ever",
+    "name": "4ever Music Hits HD",
+    "title": "4ever Music Hits HD",
+    "category": "מוזיקה (Music TV)",
+    "categoryEn": "music",
+    "url": "http://stream.mcquack.net/257/index.m3u8",
+    "logo": "assets/logos/music_4ever.png",
+    "badge": "FHD",
+    "desc": "הלהיטים הגדולים מכל הזמנים ברצף קליפים מרהיב",
+    "number": 231,
+    "lang": "music",
+    "iptv": "4everMusic.ua",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "iptv-org (4everMusic.ua)",
+      "web": "❌ רק באפליקציה (HTTP)"
+    }
+  },
+  {
+    "id": "music_4fun",
+    "name": "4Fun TV Pop Hits HD",
+    "title": "4Fun TV European Pop Hits",
+    "category": "מוזיקה (Music TV)",
+    "categoryEn": "music",
+    "url": "https://stream.4fun.tv:8888/sd/4fun_sd_high.m3u8",
+    "logo": "assets/logos/music_4fun.png",
+    "badge": "HD",
+    "desc": "להיטי הפופ האירופיים והמצעדים החמים ביותר",
+    "number": 232,
+    "lang": "music",
+    "iptv": "4FunTV.pl",
+    "src": {
+      "by": "4FUN TV – שרת רשמי",
+      "kind": "official",
+      "host": "stream.4fun.tv",
+      "found": "iptv-org (4FunTV.pl)",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "music_vivalatino",
+    "name": "¡Viva Latino! Dance HD",
+    "title": "¡Viva Latino! Dance & Reggaeton HD",
+    "category": "מוזיקה (Music TV)",
+    "categoryEn": "music",
+    "url": "http://stream.mcquack.net/285/index.m3u8",
+    "logo": "assets/logos/music_vivalatino.png",
+    "badge": "FHD",
+    "desc": "רגאטון, מוזיקה לטינית סוחפת, סלסה ודאנס קצבי",
+    "number": 233,
+    "lang": "music",
+    "iptv": "VivaLatino.ua",
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "iptv-org (VivaLatino.ua)",
+      "web": "❌ רק באפליקציה (HTTP)"
+    }
+  },
+  {
+    "id": "music_1hd",
+    "name": "1HD Music Television",
+    "title": "1HD Music Television HD",
+    "category": "מוזיקה (Music TV)",
+    "categoryEn": "music",
+    "url": "http://176.118.197.101/1HD/index.m3u8",
+    "logo": "assets/logos/music_1hd.png",
+    "badge": "FHD",
+    "desc": "ערוץ מוזיקה בינלאומי באיכות תמונה וסאונד מדהימים",
+    "number": 234,
+    "lang": "music",
+    "iptv": "1HDMusicTelevision.ru",
+    "src": {
+      "by": "שרת IP ללא שם (1HD)",
+      "kind": "restream",
+      "host": "176.118.197.101",
+      "found": "iptv-org (1HDMusicTelevision.ru)",
+      "web": "❌ רק באפליקציה (HTTP)"
+    }
+  },
+  {
+    "id": "dw_english",
+    "name": "DW News English HD",
+    "title": "DW News (Deutsche Welle)",
+    "category": "ערוצים בינלאומיים (World)",
+    "categoryEn": "news",
+    "url": "https://dwamdstream102.akamaized.net/hls/live/2015525/dwstream102/index.m3u8",
+    "logo": "assets/logos/dw_english.png",
+    "badge": "FHD",
+    "desc": "רשת השידור הגרמנית הבינלאומית באנגלית - סיקור עולמי אובייקטיבי",
+    "number": 235,
+    "lang": "en",
+    "src": {
+      "by": "DW – Akamai (רשמי)",
+      "kind": "official",
+      "host": "dwamdstream102.akamaized.net",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "bfmtv",
+    "name": "BFM TV HD (France)",
+    "title": "BFM TV (France)",
+    "category": "ערוצים בינלאומיים (World)",
+    "categoryEn": "news",
+    "url": "https://ncdn-live-bfm.pfd.sfr.net/shls/LIVE$BFM_TV/index.m3u8?end=END&start=LIVE",
+    "logo": "assets/logos/bfmtv.png",
+    "badge": "FHD",
+    "desc": "רשת החדשות המובילה בצרפת",
+    "number": 236,
+    "lang": "fr",
+    "iptv": "BFMTV.fr",
+    "src": {
+      "by": "BFM – SFR (רשמי)",
+      "kind": "official",
+      "host": "ncdn-live-bfm.pfd.sfr.net",
+      "found": "iptv-org (BFMTV.fr)",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "bfm_tech",
+    "name": "BFM Tech & Co HD",
+    "title": "BFM Tech & Co (France)",
+    "category": "ערוצים בינלאומיים (World)",
+    "categoryEn": "news",
+    "url": "https://ncdn-live-bfm.pfd.sfr.net/shls/LIVE$BFM_TECHANDCO/index.m3u8?end=END&start=LIVE",
+    "logo": "assets/logos/bfm_tech.png",
+    "badge": "FHD",
+    "desc": "ערוץ טכנולוגיה, גאדג'טים, AI והיי-טק",
+    "number": 237,
+    "lang": "fr",
+    "iptv": "BFMTechCo.fr",
+    "src": {
+      "by": "BFM – SFR (רשמי)",
+      "kind": "official",
+      "host": "ncdn-live-bfm.pfd.sfr.net",
+      "found": "iptv-org (BFMTechCo.fr)",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "il_the_style_channel_hd_il",
+    "name": "ערוץ הסטייל והאופנה HD",
+    "category": "ערוצי ישראל - שידור חי",
+    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32155/index.m3u8",
+    "fallbackUrls": [],
+    "logo": "assets/logos/il_the_style_channel_hd_il.png",
+    "badge": "HD",
+    "color": "#f472b6",
+    "desc": "ערוץ הסטייל, האופנה והלייף סטייל הישראלי בשידור חי",
+    "isIsraeli": true,
+    "kind": "tv",
+    "number": 238,
+    "src": {
+      "by": "b84203c4.ottrast.com",
+      "kind": "restream",
+      "host": "b84203c4.ottrast.com",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "❌ רק באפליקציה (HTTP)"
+    }
+  },
+  {
+    "id": "reshet13_nofesh_il",
+    "name": "רשת 13 ערוץ הנופש HD",
+    "category": "ערוצי ישראל - שידור חי",
+    "url": "https://d1yd8hohnldm33.cloudfront.net/out/v1/19dee23c2cc24f689bd4e1288661ee0c/index.m3u8",
+    "fallbackUrls": [],
+    "logo": "assets/logos/reshet13_nofesh_il.png",
+    "badge": "HD",
+    "color": "#38bdf8",
+    "desc": "ערוץ הנופש, הטיולים והחופשות של רשת 13 בשידור רציף 24/7",
+    "isIsraeli": true,
+    "kind": "tv",
+    "number": 239,
+    "src": {
+      "by": "ערוץ FAST ישראלי – AWS CloudFront",
+      "kind": "fast",
+      "host": "d1yd8hohnldm33.cloudfront.net",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "reshet13_reality_il",
+    "name": "רשת 13 ערוץ הריאליטי HD",
+    "category": "ערוצי ישראל - שידור חי",
+    "url": "https://d2dffl3588mvfk.cloudfront.net/out/v1/d8e15050ca4148aab0ee387a5e2eb46b/index.m3u8",
+    "fallbackUrls": [
+      "https://d2dffl3588mvfk.cloudfront.net/out/v1/d8e15050ca4148aab0ee387a5e2eb46b/index_1.m3u8"
+    ],
+    "logo": "assets/logos/reshet13_reality_il.png",
+    "badge": "HD",
+    "color": "#f43f5e",
+    "desc": "ערוץ הריאליטי של רשת 13 – הישרדות, המירוץ למיליון, האח הגדול ומשחקי השף 24/7",
+    "isIsraeli": true,
+    "kind": "tv",
+    "number": 240,
+    "src": {
+      "by": "ערוץ FAST ישראלי – AWS CloudFront",
+      "kind": "fast",
+      "host": "d2dffl3588mvfk.cloudfront.net",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "knesset_subs_il",
+    "name": "ערוץ הכנסת – שפת הסימנים ונגישות",
+    "category": "ערוצי ישראל - שידור חי",
+    "url": "https://kneset.gostreaming.tv/p2-Accessibility/_definst_/myStream/playlist.m3u8",
+    "fallbackUrls": [
+      "https://kneset.gostreaming.tv/p2-Accessibility/_definst_/myStream/index.m3u8"
+    ],
+    "logo": "assets/logos/knesset_subs_il.png",
+    "badge": "HD",
+    "color": "#38bdf8",
+    "desc": "שידור ערוץ הכנסת 99 מונגש עם תרגום לשפת הסימנים וכתוביות",
+    "isIsraeli": true,
+    "kind": "tv",
+    "number": 241,
+    "src": {
+      "by": "ערוץ הכנסת – השידור של הכנסת (GoStreaming)",
+      "kind": "official",
+      "host": "kneset.gostreaming.tv",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "ynet_live_2_il",
+    "name": "Ynet Live 2 – שידורי חדשות",
+    "category": "ערוצי ישראל - שידור חי",
+    "url": "https://ynet-live-02.ynet-pic1.yit.co.il/ynet/live.m3u8",
+    "fallbackUrls": [
+      "https://ynet-live-03.ynet-pic1.yit.co.il/ynet/live.m3u8",
+      "https://ynet-live-04.ynet-pic1.yit.co.il/ynet/live.m3u8"
+    ],
+    "logo": "assets/logos/ynet_live_2_il.png",
+    "badge": "HD",
+    "color": "#ef4444",
+    "desc": "ערוץ השידורים החיים הנוסף של אולפן Ynet",
+    "isIsraeli": true,
+    "kind": "tv",
+    "number": 242,
+    "src": {
+      "by": "ynet-live-02.ynet-pic1.yit.co.il",
+      "kind": "official",
+      "host": "ynet-live-02.ynet-pic1.yit.co.il",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "radio_891_video_il",
+    "name": "הרדיו הראשון 89.1FM – וידאו חי",
+    "category": "ערוצי ישראל - שידור חי",
+    "url": "https://cdn.cybercdn.live/Pervoia/Video/playlist.m3u8",
+    "fallbackUrls": [],
+    "logo": "assets/logos/radio_891_video_il.png",
+    "badge": "HD",
+    "color": "#f59e0b",
+    "desc": "שידור וידאו חי מאולפן הרדיו הראשון 89.1FM (Первое Радио)",
+    "isIsraeli": true,
+    "kind": "tv",
+    "number": 243,
+    "src": {
+      "by": "CyberCDN – ה-CDN של תחנות הרדיו עצמן",
+      "kind": "official",
+      "host": "cdn.cybercdn.live",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "radio_91fm_video_il",
+    "name": "רדיו לב המדינה 91FM – וידאו חי",
+    "category": "ערוצי ישראל - שידור חי",
+    "url": "https://cdn.cybercdn.live/Lev_Hamedina/Video/playlist.m3u8",
+    "fallbackUrls": [],
+    "logo": "assets/logos/radio_91fm_video_il.png",
+    "badge": "HD",
+    "color": "#ec4899",
+    "desc": "שידור וידאו חי מאולפן רדיו לב המדינה 91FM",
+    "isIsraeli": true,
+    "kind": "tv",
+    "number": 244,
+    "src": {
+      "by": "CyberCDN – ה-CDN של תחנות הרדיו עצמן",
+      "kind": "official",
+      "host": "cdn.cybercdn.live",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "kabbalah_tv_ru_il",
+    "name": "קבלה לעם – רוסית HD",
+    "category": "מסורת וקהילה",
+    "url": "https://edge1.il.kab.tv/live/rus-high/playlist.m3u8",
+    "fallbackUrls": [
+      "https://edge2.il.kab.tv/live/tv66-rus-high/playlist.m3u8",
+      "http://edge3.uk.kab.tv/live/tvrus-rus-high/playlist.m3u8"
+    ],
+    "logo": "assets/logos/kabbalah_tv_ru_il.png",
+    "badge": "HD",
+    "color": "#38bdf8",
+    "desc": "ערוץ קבלה לעם (ערוץ 66) בשפה הרוסית בשידור חי מישראל",
+    "isIsraeli": true,
+    "kind": "tv",
+    "number": 245,
+    "src": {
+      "by": "edge1.il.kab.tv",
+      "kind": "restream",
+      "host": "edge1.il.kab.tv",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "kabbalah_tv_fr_il",
+    "name": "קבלה לעם – צרפתית HD",
+    "category": "מסורת וקהילה",
+    "url": "https://edge1.il.kab.tv/live/fre-high/playlist.m3u8",
+    "fallbackUrls": [],
+    "logo": "assets/logos/kabbalah_tv_fr_il.png",
+    "badge": "HD",
+    "color": "#818cf8",
+    "desc": "ערוץ קבלה לעם (ערוץ 66) בצרפתית בשידור חי מישראל",
+    "isIsraeli": true,
+    "kind": "tv",
+    "number": 246,
+    "src": {
+      "by": "edge1.il.kab.tv",
+      "kind": "restream",
+      "host": "edge1.il.kab.tv",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "kabbalah_tv_de_il",
+    "name": "קבלה לעם – גרמנית HD",
+    "category": "מסורת וקהילה",
+    "url": "https://edge1.il.kab.tv/live/ger-high/playlist.m3u8",
+    "fallbackUrls": [],
+    "logo": "assets/logos/kabbalah_tv_de_il.png",
+    "badge": "HD",
+    "color": "#34d399",
+    "desc": "ערוץ קבלה לעם (ערוץ 66) בגרמנית בשידור חי מישראל",
+    "isIsraeli": true,
+    "kind": "tv",
+    "number": 247,
+    "src": {
+      "by": "edge1.il.kab.tv",
+      "kind": "restream",
+      "host": "edge1.il.kab.tv",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "kabbalah_tv_it_il",
+    "name": "קבלה לעם – איטלקית HD",
+    "category": "מסורת וקהילה",
+    "url": "https://edge1.il.kab.tv/live/ita-high/playlist.m3u8",
+    "fallbackUrls": [],
+    "logo": "assets/logos/kabbalah_tv_it_il.png",
+    "badge": "HD",
+    "color": "#4ade80",
+    "desc": "ערוץ קבלה לעם (ערוץ 66) באיטלקית בשידור חי מישראל",
+    "isIsraeli": true,
+    "kind": "tv",
+    "number": 248,
+    "src": {
+      "by": "edge1.il.kab.tv",
+      "kind": "restream",
+      "host": "edge1.il.kab.tv",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "france24_freetv_il",
+    "name": "France 24 (FreeTV ישראל)",
+    "category": "ערוצי ישראל - שידור חי",
+    "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/france_24_eng/live.livx/playlist.m3u8",
+    "fallbackUrls": [],
+    "logo": "assets/logos/france24_freetv_il.png",
+    "badge": "FHD",
+    "color": "#38bdf8",
+    "desc": "ערוץ החדשות הבינלאומי France 24 בהפצת FreeTV ישראל",
+    "isIsraeli": true,
+    "kind": "tv",
+    "number": 249,
+    "src": {
+      "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
+      "kind": "official",
+      "host": "d1zqtf09wb8nt5.cloudfront.net",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "daystar_freetv_il",
+    "name": "Daystar TV (FreeTV ישראל)",
+    "category": "ערוצי ישראל - שידור חי",
+    "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/daystar/live.livx/playlist.m3u8",
+    "fallbackUrls": [],
+    "logo": "assets/logos/daystar_freetv_il.png",
+    "badge": "FHD",
+    "color": "#fbbf24",
+    "desc": "ערוץ Daystar בשידור חי מישראל בהפצת FreeTV",
+    "isIsraeli": true,
+    "kind": "tv",
+    "number": 250,
+    "src": {
+      "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
+      "kind": "official",
+      "host": "d1zqtf09wb8nt5.cloudfront.net",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "jaitv_il",
+    "name": "Jai TV – טלוויזיה יהודית וישראלית",
+    "category": "מסורת וקהילה",
+    "url": "https://vivo.solumedia.com:19360/jaitv/jaitv.m3u8",
+    "fallbackUrls": [],
+    "logo": "assets/logos/jaitv_il.png",
+    "badge": "HD",
+    "color": "#60a5fa",
+    "desc": "ערוץ הטלוויזיה והרדיו היהודי-ישראלי Radio Jai TV בשידור חי",
+    "isIsraeli": true,
+    "kind": "tv",
+    "number": 251,
+    "src": {
+      "by": "vivo.solumedia.com",
+      "kind": "restream",
+      "host": "vivo.solumedia.com",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "radios_disney",
+    "name": "רדיוס 100% שירי דיסני",
+    "title": "רדיוס 100% שירי דיסני",
+    "category": "ילדים ונוער (בעברית)",
+    "categoryEn": "israel",
+    "kind": "radio",
+    "url": "https://gb25.streamgates.net/radios-audio/100Disney/icecast.audio",
+    "badge": "LIVE",
+    "desc": "שירים מסרטי דיסני",
+    "lang": "music",
+    "logo": "assets/logos/radios_disney.png",
+    "number": 252,
+    "src": {
+      "by": "StreamGates – ערוצי רדיוס 100FM",
+      "kind": "official",
+      "host": "gb25.streamgates.net",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "✅"
+    },
+    "country": "IL",
+    "countryHe": "ישראל"
+  },
+  {
+    "id": "radios_kids",
+    "name": "רדיוס 100% ילדים",
+    "title": "רדיוס 100% ילדים",
+    "category": "ילדים ונוער (בעברית)",
+    "categoryEn": "israel",
+    "kind": "radio",
+    "url": "https://gb25.streamgates.net/radios-audio/100Kids/icecast.audio",
+    "badge": "LIVE",
+    "desc": "שירי ילדים ברצף",
+    "lang": "music",
+    "logo": "assets/logos/radios_kids.png",
+    "number": 253,
+    "src": {
+      "by": "StreamGates – ערוצי רדיוס 100FM",
+      "kind": "official",
+      "host": "gb25.streamgates.net",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "✅"
+    },
+    "country": "IL",
+    "countryHe": "ישראל"
+  },
+  {
+    "id": "radios_stars",
+    "name": "רדיוס 100% ערוץ הכוכבים",
+    "title": "רדיוס 100% ערוץ הכוכבים",
+    "category": "ילדים ונוער (בעברית)",
+    "categoryEn": "israel",
+    "kind": "radio",
+    "url": "https://gb25.streamgates.net/radios-audio/100Stars/icecast.audio",
+    "badge": "LIVE",
+    "desc": "שירי ילדים וכוכבי ילדים",
+    "lang": "music",
+    "logo": "assets/logos/radios_stars.png",
+    "number": 254,
+    "src": {
+      "by": "StreamGates – ערוצי רדיוס 100FM",
+      "kind": "official",
+      "host": "gb25.streamgates.net",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "✅"
+    },
+    "country": "IL",
+    "countryHe": "ישראל"
+  },
+  {
+    "id": "breslev_halachot",
+    "name": "ברסלב: הלכות ודף יומי",
+    "title": "ברסלב: הלכות ודף יומי",
+    "category": "מסורת וקהילה",
+    "categoryEn": "israel",
+    "kind": "radio",
+    "url": "https://cast.breslevforyou.co.il/listen/halachot/radio.mp3",
+    "badge": "LIVE",
+    "desc": "הלכה יומית ודף יומי",
+    "lang": "music",
+    "logo": "assets/logos/breslev_halachot.png",
+    "number": 255,
+    "src": {
+      "by": "רדיו ברסלב – שרת התחנה",
+      "kind": "official",
+      "host": "cast.breslevforyou.co.il",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "✅"
+    },
+    "country": "IL",
+    "countryHe": "ישראל"
+  },
+  {
+    "id": "breslev_books",
+    "name": "ברסלב: ספרי ברסלב",
+    "title": "ברסלב: ספרי ברסלב",
+    "category": "מסורת וקהילה",
+    "categoryEn": "israel",
+    "kind": "radio",
+    "url": "https://cast.breslevforyou.co.il/listen/books/radio.mp3",
+    "badge": "LIVE",
+    "desc": "קריאה בספרי ברסלב",
+    "lang": "music",
+    "logo": "assets/logos/breslev_books.png",
+    "number": 256,
+    "src": {
+      "by": "רדיו ברסלב – שרת התחנה",
+      "kind": "official",
+      "host": "cast.breslevforyou.co.il",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "✅"
+    },
+    "country": "IL",
+    "countryHe": "ישראל"
+  },
+  {
+    "id": "breslev_shorts",
+    "name": "ברסלב: קצר וקולע",
+    "title": "ברסלב: קצר וקולע",
+    "category": "מסורת וקהילה",
+    "categoryEn": "israel",
+    "kind": "radio",
+    "url": "https://cast.breslevforyou.co.il/listen/shorts/radio.mp3",
+    "badge": "LIVE",
+    "desc": "שיעורים קצרים",
+    "lang": "music",
+    "logo": "assets/logos/breslev_shorts.png",
+    "number": 257,
+    "src": {
+      "by": "רדיו ברסלב – שרת התחנה",
+      "kind": "official",
+      "host": "cast.breslevforyou.co.il",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "✅"
+    },
+    "country": "IL",
+    "countryHe": "ישראל"
+  },
+  {
+    "id": "breslev_torah",
+    "name": "ברסלב: תורה וזימרה",
+    "title": "ברסלב: תורה וזימרה",
+    "category": "מסורת וקהילה",
+    "categoryEn": "israel",
+    "kind": "radio",
+    "url": "https://cast.breslevforyou.co.il/listen/music-toravezimra/radio.mp3",
+    "badge": "LIVE",
+    "desc": "שיעורים ונגינה חסידית",
+    "lang": "music",
+    "logo": "assets/logos/breslev_torah.png",
+    "number": 258,
+    "src": {
+      "by": "רדיו ברסלב – שרת התחנה",
+      "kind": "official",
+      "host": "cast.breslevforyou.co.il",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "✅"
+    },
+    "country": "IL",
+    "countryHe": "ישראל"
   },
   {
     "id": "kan_bet",
@@ -4762,7 +5988,7 @@
     "desc": "רשת החדשות והאקטואליה של תאגיד השידור",
     "lang": "music",
     "logo": "assets/logos/kan_bet.png",
-    "number": 202,
+    "number": 259,
     "src": {
       "by": "Triton StreamTheWorld – מפיץ הרדיו של כאן",
       "kind": "official",
@@ -4771,7 +5997,10 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "fallbackUrls": [
+      "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/radio/kan_reshet_bet/live.livx/playlist.m3u8?renditions"
+    ]
   },
   {
     "id": "kan_gimel",
@@ -4785,7 +6014,7 @@
     "desc": "רק מוזיקה ישראלית - מכל התקופות",
     "lang": "music",
     "logo": "assets/logos/kan_gimel.png",
-    "number": 203,
+    "number": 260,
     "src": {
       "by": "Triton StreamTheWorld – מפיץ הרדיו של כאן",
       "kind": "official",
@@ -4794,7 +6023,10 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "fallbackUrls": [
+      "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/radio/kan_gimel/live.livx/playlist.m3u8?renditions"
+    ]
   },
   {
     "id": "kan_88",
@@ -4808,7 +6040,7 @@
     "desc": "רוק, אינדי, ג'אז ומוזיקה איכותית מהעולם",
     "lang": "music",
     "logo": "assets/logos/kan_88.png",
-    "number": 204,
+    "number": 261,
     "src": {
       "by": "Triton StreamTheWorld – מפיץ הרדיו של כאן",
       "kind": "official",
@@ -4817,7 +6049,10 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "fallbackUrls": [
+      "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/radio/kan_88/live.livx/playlist.m3u8?renditions"
+    ]
   },
   {
     "id": "kan_tarbut",
@@ -4831,7 +6066,7 @@
     "desc": "תרבות, ספרות, הגות ושיחות",
     "lang": "music",
     "logo": "assets/logos/kan_tarbut.png",
-    "number": 205,
+    "number": 262,
     "src": {
       "by": "Triton StreamTheWorld – מפיץ הרדיו של כאן",
       "kind": "official",
@@ -4840,7 +6075,10 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "fallbackUrls": [
+      "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/radio/kan_tarbut/live.livx/playlist.m3u8?renditions"
+    ]
   },
   {
     "id": "kan_moreshet",
@@ -4854,7 +6092,7 @@
     "desc": "יהדות, מסורת, פיוט וחזנות",
     "lang": "music",
     "logo": "assets/logos/kan_moreshet.png",
-    "number": 206,
+    "number": 263,
     "src": {
       "by": "Triton StreamTheWorld – מפיץ הרדיו של כאן",
       "kind": "official",
@@ -4863,7 +6101,10 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "fallbackUrls": [
+      "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/radio/kan_moreshet/live.livx/playlist.m3u8?renditions"
+    ]
   },
   {
     "id": "kan_reka",
@@ -4877,7 +6118,7 @@
     "desc": "רדיו העלייה - שידורים בשפות רבות",
     "lang": "music",
     "logo": "assets/logos/kan_reka.png",
-    "number": 207,
+    "number": 264,
     "src": {
       "by": "Triton StreamTheWorld – מפיץ הרדיו של כאן",
       "kind": "official",
@@ -4886,7 +6127,10 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "fallbackUrls": [
+      "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/radio/kan_reka/live.livx/playlist.m3u8?renditions"
+    ]
   },
   {
     "id": "kan_kol_hamusica",
@@ -4900,7 +6144,7 @@
     "desc": "מוזיקה קלאסית, אופרה וג'אז",
     "lang": "music",
     "logo": "assets/logos/kan_kol_hamusica.png",
-    "number": 208,
+    "number": 265,
     "src": {
       "by": "Triton StreamTheWorld – מפיץ הרדיו של כאן",
       "kind": "official",
@@ -4909,7 +6153,10 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "fallbackUrls": [
+      "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/radio/kan_kol_hamuzika/live.livx/playlist.m3u8?renditions"
+    ]
   },
   {
     "id": "galgalatz_live",
@@ -4921,7 +6168,7 @@
     "logo": "assets/logos/galgalatz_live.png",
     "badge": "LIVE",
     "desc": "תחנת הרדיו והמוזיקה הפופולרית בישראל בשידור חי",
-    "number": 209,
+    "number": 266,
     "lang": "music",
     "kind": "radio",
     "src": {
@@ -4944,7 +6191,7 @@
     "logo": "assets/logos/glz_live.png",
     "badge": "LIVE",
     "desc": "חדשות, אקטואליה ושיח ציבורי 24/7",
-    "number": 210,
+    "number": 267,
     "lang": "music",
     "kind": "radio",
     "src": {
@@ -4967,7 +6214,7 @@
     "logo": "assets/logos/galgalatz_hits_live.png",
     "badge": "LIVE",
     "desc": "ערוץ הלהיטים של גלגלצ - הלהיטים הגדולים ביותר בישראל ובעולם ברצף",
-    "number": 211,
+    "number": 268,
     "lang": "music",
     "kind": "radio",
     "src": {
@@ -4992,7 +6239,7 @@
     "desc": "התחנה המובילה בישראל - להיטים ותוכניות אישיות",
     "lang": "music",
     "logo": "assets/logos/eco99fm.png",
-    "number": 212,
+    "number": 269,
     "src": {
       "by": "eco99fm – Mediacast (רשמי)",
       "kind": "official",
@@ -5013,7 +6260,7 @@
     "logo": "assets/logos/radio_103fm.png",
     "badge": "LIVE",
     "desc": "שידורי רדיו חיים של 103FM",
-    "number": 213,
+    "number": 270,
     "lang": "music",
     "kind": "radio",
     "src": {
@@ -5036,7 +6283,7 @@
     "logo": "assets/logos/radios_100fm.png",
     "badge": "LIVE",
     "desc": "תחנת הרדיו המובילה בישראל למוזיקה בינלאומית, להיטים עכשוויים ותוכניות מובילות",
-    "number": 214,
+    "number": 271,
     "lang": "music",
     "kind": "radio",
     "src": {
@@ -5061,7 +6308,7 @@
     "desc": "רדיו לב המדינה - השרון והמרכז",
     "lang": "music",
     "logo": "assets/logos/lev_hamedina.png",
-    "number": 215,
+    "number": 272,
     "src": {
       "by": "CyberCDN – ה-CDN של תחנות הרדיו עצמן",
       "kind": "official",
@@ -5084,7 +6331,7 @@
     "desc": "רדיו תל אביב - מוזיקה, שיח ואקטואליה",
     "lang": "music",
     "logo": "assets/logos/radio_102fm.png",
-    "number": 216,
+    "number": 273,
     "src": {
       "by": "102FM – LiveCDN (רשמי)",
       "kind": "official",
@@ -5107,7 +6354,7 @@
     "desc": "הרדיו האזורי של חיפה והקריות",
     "lang": "music",
     "logo": "assets/logos/radio_haifa.png",
-    "number": 217,
+    "number": 274,
     "src": {
       "by": "רדיו חיפה – LiveCDN (רשמי)",
       "kind": "official",
@@ -5130,7 +6377,7 @@
     "desc": "הרדיו האזורי של ירושלים",
     "lang": "music",
     "logo": "assets/logos/radio_101fm.png",
-    "number": 218,
+    "number": 275,
     "src": {
       "by": "StreamGates – ה-CDN של התחנה",
       "kind": "official",
@@ -5153,7 +6400,7 @@
     "desc": "רדיו אמצע הדרך - מוזיקה ישראלית",
     "lang": "music",
     "logo": "assets/logos/radio_90fm.png",
-    "number": 219,
+    "number": 276,
     "src": {
       "by": "CyberCDN – ה-CDN של תחנות הרדיו עצמן",
       "kind": "official",
@@ -5174,7 +6421,7 @@
     "logo": "assets/logos/radio_darom_live.png",
     "badge": "LIVE",
     "desc": "התחנה המובילה בדרום - מוזיקה ישראלית, ים תיכונית, אקטואליה וחדשות",
-    "number": 220,
+    "number": 277,
     "lang": "music",
     "kind": "radio",
     "src": {
@@ -5199,7 +6446,7 @@
     "desc": "רדיו דרום - הרדיו של הנגב",
     "lang": "music",
     "logo": "assets/logos/radio_darom_97.png",
-    "number": 221,
+    "number": 278,
     "src": {
       "by": "CyberCDN – ה-CDN של תחנות הרדיו עצמן",
       "kind": "official",
@@ -5222,7 +6469,7 @@
     "desc": "הרדיו האזורי של הצפון",
     "lang": "music",
     "logo": "assets/logos/radio_1045fm.png",
-    "number": 222,
+    "number": 279,
     "src": {
       "by": "StreamGates – ה-CDN של התחנה",
       "kind": "official",
@@ -5231,7 +6478,10 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "fallbackUrls": [
+      "https://cdn.cybercdn.live/Tzafon_NonStop/Live_Audio/icecast.audio"
+    ]
   },
   {
     "id": "kol_rega",
@@ -5245,7 +6495,7 @@
     "desc": "הרדיו של הצפון והעמקים",
     "lang": "music",
     "logo": "assets/logos/kol_rega.png",
-    "number": 223,
+    "number": 280,
     "src": {
       "by": "CyberCDN – ה-CDN של תחנות הרדיו עצמן",
       "kind": "official",
@@ -5268,7 +6518,7 @@
     "desc": "הרדיו של אילת והערבה",
     "lang": "music",
     "logo": "assets/logos/radio_eilat.png",
-    "number": 224,
+    "number": 281,
     "src": {
       "by": "CyberCDN – ה-CDN של תחנות הרדיו עצמן",
       "kind": "official",
@@ -5291,7 +6541,7 @@
     "desc": "רדיו גלי ישראל - אקטואליה, שיח ומוזיקה",
     "lang": "music",
     "logo": "assets/logos/galei_israel.png",
-    "number": 225,
+    "number": 282,
     "src": {
       "by": "CyberCDN – ה-CDN של תחנות הרדיו עצמן",
       "kind": "official",
@@ -5314,7 +6564,7 @@
     "desc": "רדיו קול חי - אקטואליה ותוכן יהודי",
     "lang": "music",
     "logo": "assets/logos/kol_chai.png",
-    "number": 226,
+    "number": 283,
     "src": {
       "by": "קול חי – שרת התחנה",
       "kind": "official",
@@ -5337,7 +6587,7 @@
     "desc": "מוזיקה יהודית וחסידית ברצף",
     "lang": "music",
     "logo": "assets/logos/kol_chai_music.png",
-    "number": 227,
+    "number": 284,
     "src": {
       "by": "קול חי – שרת התחנה",
       "kind": "official",
@@ -5346,7 +6596,10 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "fallbackUrls": [
+      "https://live.kcm.fm/livemusic"
+    ]
   },
   {
     "id": "kol_barama_live",
@@ -5358,7 +6611,7 @@
     "logo": "assets/logos/kol_barama_live.png",
     "badge": "LIVE",
     "desc": "שידורי רדיו קול ברמה",
-    "number": 228,
+    "number": 285,
     "lang": "music",
     "kind": "radio",
     "src": {
@@ -5369,7 +6622,10 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "fallbackUrls": [
+      "http://kb.cdnwz.net/kol_barama"
+    ]
   },
   {
     "id": "kol_barama_music_live",
@@ -5381,7 +6637,7 @@
     "logo": "assets/logos/kol_barama_music_live.png",
     "badge": "LIVE",
     "desc": "ערוץ המוזיקה של קול ברמה - 24 שעות של שירים חסידיים, מזרחיים ויהודיים",
-    "number": 229,
+    "number": 286,
     "lang": "music",
     "kind": "radio",
     "src": {
@@ -5404,7 +6660,7 @@
     "logo": "assets/logos/radio_2000_live.png",
     "badge": "LIVE",
     "desc": "ערוץ רדיו ליהדות, מורשת ישראל, שיעורים ומוזיקה יהודית וחסידית",
-    "number": 230,
+    "number": 287,
     "lang": "music",
     "kind": "radio",
     "src": {
@@ -5429,7 +6685,7 @@
     "desc": "שיעורים, ניגונים ומוזיקה חסידית",
     "lang": "music",
     "logo": "assets/logos/radio_breslev.png",
-    "number": 231,
+    "number": 288,
     "src": {
       "by": "רדיו ברסלב – שרת התחנה",
       "kind": "official",
@@ -5452,7 +6708,7 @@
     "desc": "הלהיטים הגדולים של המוזיקה המזרחית",
     "lang": "music",
     "logo": "assets/logos/mizrahit_fm.png",
-    "number": 232,
+    "number": 289,
     "src": {
       "by": "rs.mizrahit.fm",
       "kind": "restream",
@@ -5475,7 +6731,7 @@
     "desc": "מוזיקה מזרחית ים תיכונית 24/7",
     "lang": "music",
     "logo": "assets/logos/noshmim_mizrahit.png",
-    "number": 233,
+    "number": 290,
     "src": {
       "by": "www.rs.mizrahit.fm",
       "kind": "restream",
@@ -5500,7 +6756,7 @@
     "lang": "music",
     "country": "IL",
     "countryHe": "ישראל",
-    "number": 234,
+    "number": 291,
     "src": {
       "by": "streaming.radio.co",
       "kind": "restream",
@@ -5519,7 +6775,7 @@
     "logo": "assets/logos/kz_radio_live.png",
     "badge": "LIVE",
     "desc": "תחנת הרדיו העצמאית המובילה למוזיקה אלטרנטיבית, אינדי ויצירה ישראלית",
-    "number": 235,
+    "number": 292,
     "lang": "music",
     "kind": "radio",
     "src": {
@@ -5544,7 +6800,7 @@
     "desc": "הרדיו של ספורט 5 – שידורי משחקים, פרשנות ושיחות ספורט",
     "lang": "music",
     "logo": "assets/logos/radio_sport5.png",
-    "number": 236,
+    "number": 293,
     "src": {
       "by": "ספורט 5 – השידור הרשמי של RGE (Akamai)",
       "kind": "official",
@@ -5567,7 +6823,7 @@
     "desc": "רדיו אזורי 99.5FM",
     "lang": "music",
     "logo": "assets/logos/radio_995.png",
-    "number": 237,
+    "number": 294,
     "src": {
       "by": "99.5FM – LiveCDN (רשמי)",
       "kind": "official",
@@ -5590,7 +6846,7 @@
     "desc": "טראנס ואלקטרוני מתל אביב",
     "lang": "music",
     "logo": "assets/logos/aviv_media.png",
-    "number": 238,
+    "number": 295,
     "src": {
       "by": "176.9.7.145",
       "kind": "restream",
@@ -5613,7 +6869,7 @@
     "desc": "מוזיקה ישראלית ברצף",
     "lang": "music",
     "logo": "assets/logos/israeli_voice.png",
-    "number": 239,
+    "number": 296,
     "src": {
       "by": "icecast.live",
       "kind": "restream",
@@ -5636,7 +6892,7 @@
     "desc": "הרדיו של יוצאי צרפת בישראל",
     "lang": "music",
     "logo": "assets/logos/radio_france_israel.png",
-    "number": 240,
+    "number": 297,
     "src": {
       "by": "stream10.vestaradio.com",
       "kind": "restream",
@@ -5659,7 +6915,7 @@
     "desc": "תחנה ישראלית – מוזיקה עכשווית",
     "lang": "music",
     "logo": "assets/logos/timbr_radio.png",
-    "number": 241,
+    "number": 298,
     "src": {
       "by": "radio.betteradio.live",
       "kind": "restream",
@@ -5682,7 +6938,7 @@
     "desc": "דאנס ומוזיקה אלקטרונית – תחנה ישראלית",
     "lang": "music",
     "logo": "assets/logos/up2dance.png",
-    "number": 242,
+    "number": 299,
     "src": {
       "by": "icecast.live",
       "kind": "restream",
@@ -5705,7 +6961,7 @@
     "desc": "מוזיקה ישראלית ובינלאומית",
     "lang": "music",
     "logo": "assets/logos/ystream.png",
-    "number": 243,
+    "number": 300,
     "src": {
       "by": "ystream.live",
       "kind": "restream",
@@ -5728,7 +6984,7 @@
     "desc": "רדיו א-שמס - הרדיו הערבי בישראל",
     "lang": "music",
     "logo": "assets/logos/a_shams.png",
-    "number": 244,
+    "number": 301,
     "src": {
       "by": "StreamGates – ה-CDN של התחנה",
       "kind": "official",
@@ -5751,7 +7007,7 @@
     "desc": "בלוז ורוק קלאסי – תחנה ישראלית",
     "lang": "music",
     "logo": "assets/logos/joint_blues.png",
-    "number": 245,
+    "number": 302,
     "src": {
       "by": "jointil.com",
       "kind": "restream",
@@ -5774,7 +7030,7 @@
     "desc": "טראנס ואלקטרוני – תחנה ישראלית",
     "lang": "music",
     "logo": "assets/logos/joint_beat.png",
-    "number": 246,
+    "number": 303,
     "src": {
       "by": "jointil.com",
       "kind": "restream",
@@ -5797,7 +7053,7 @@
     "desc": "רגאיי ודאב – תחנה ישראלית",
     "lang": "music",
     "logo": "assets/logos/joint_reggae.png",
-    "number": 247,
+    "number": 304,
     "src": {
       "by": "jointil.com",
       "kind": "restream",
@@ -5820,7 +7076,7 @@
     "desc": "להיטים מכל העשורים",
     "lang": "music",
     "logo": "assets/logos/glglz_decades.png",
-    "number": 248,
+    "number": 305,
     "src": {
       "by": "גלי צה\"ל / גלגלצ – CDN רשמי (Bynet)",
       "kind": "official",
@@ -5843,7 +7099,7 @@
     "desc": "מוזיקה רגועה לסוף השבוע",
     "lang": "music",
     "logo": "assets/logos/glglz_weekend.png",
-    "number": 249,
+    "number": 306,
     "src": {
       "by": "גלי צה\"ל / גלגלצ – CDN רשמי (Bynet)",
       "kind": "official",
@@ -5866,7 +7122,7 @@
     "desc": "ערוץ הרוק של גלגלצ",
     "lang": "music",
     "logo": "assets/logos/glglz_rock.png",
-    "number": 250,
+    "number": 307,
     "src": {
       "by": "גלי צה\"ל / גלגלצ – CDN רשמי (Bynet)",
       "kind": "official",
@@ -5889,7 +7145,7 @@
     "desc": "Лучшее Радио – רדיו ברוסית מישראל",
     "lang": "music",
     "logo": "assets/logos/radio_best_1064.png",
-    "number": 251,
+    "number": 308,
     "src": {
       "by": "StreamGates – ה-CDN של התחנה",
       "kind": "official",
@@ -5912,7 +7168,7 @@
     "desc": "Первое радио - רדיו ישראלי בשפה הרוסית",
     "lang": "music",
     "logo": "assets/logos/pervoe_radio.png",
-    "number": 252,
+    "number": 309,
     "src": {
       "by": "CyberCDN – ה-CDN של תחנות הרדיו עצמן",
       "kind": "official",
@@ -5935,7 +7191,7 @@
     "desc": "תחנת רדיו ישראלית",
     "lang": "music",
     "logo": "assets/logos/star33.png",
-    "number": 253,
+    "number": 310,
     "src": {
       "by": "online.star33radio.com",
       "kind": "restream",
@@ -5958,7 +7214,7 @@
     "desc": "שיעורי קבלה בעברית",
     "lang": "music",
     "logo": "assets/logos/kabbalah_radio.png",
-    "number": 254,
+    "number": 311,
     "src": {
       "by": "icecast.kab.tv",
       "kind": "restream",
@@ -5981,7 +7237,7 @@
     "desc": "שיעורי קבלה באנגלית",
     "lang": "music",
     "logo": "assets/logos/kabbalah_radio_en.png",
-    "number": 255,
+    "number": 312,
     "src": {
       "by": "icecast.kab.tv",
       "kind": "restream",
@@ -6004,7 +7260,7 @@
     "desc": "שיעורי קבלה בספרדית",
     "lang": "music",
     "logo": "assets/logos/kabbalah_radio_es.png",
-    "number": 256,
+    "number": 313,
     "src": {
       "by": "icecast.kab.tv",
       "kind": "restream",
@@ -6027,7 +7283,7 @@
     "desc": "שיעורי קבלה בצרפתית",
     "lang": "music",
     "logo": "assets/logos/kabbalah_radio_fr.png",
-    "number": 257,
+    "number": 314,
     "src": {
       "by": "icecast.kab.tv",
       "kind": "restream",
@@ -6050,7 +7306,7 @@
     "desc": "שיעורי קבלה ברוסית",
     "lang": "music",
     "logo": "assets/logos/kabbalah_radio_ru.png",
-    "number": 258,
+    "number": 315,
     "src": {
       "by": "icecast.kab.tv",
       "kind": "restream",
@@ -6073,7 +7329,7 @@
     "desc": "רדיו קול הצפון",
     "lang": "music",
     "logo": "assets/logos/kol_hatzafon.png",
-    "number": 259,
+    "number": 316,
     "src": {
       "by": "eCast – שרת התחנה",
       "kind": "official",
@@ -6096,7 +7352,7 @@
     "desc": "מוזיקה קלאסית",
     "lang": "music",
     "logo": "assets/logos/radio_cs.png",
-    "number": 260,
+    "number": 317,
     "src": {
       "by": "n0a.radiojar.com",
       "kind": "restream",
@@ -6119,7 +7375,7 @@
     "desc": "שירי אהבה רומנטיים",
     "lang": "music",
     "logo": "assets/logos/radio_love_romantic.png",
-    "number": 261,
+    "number": 318,
     "src": {
       "by": "liveradio.co.il",
       "kind": "official",
@@ -6142,7 +7398,7 @@
     "desc": "רדיו ברוסית מישראל",
     "lang": "music",
     "logo": "assets/logos/eli_nisman.png",
-    "number": 262,
+    "number": 319,
     "src": {
       "by": "listen6.myradio24.com",
       "kind": "restream",
@@ -6165,7 +7421,7 @@
     "desc": "נותנים למוזיקה לדבר",
     "lang": "music",
     "logo": "assets/logos/radio_hatahana.png",
-    "number": 263,
+    "number": 320,
     "src": {
       "by": "CyberCDN – ה-CDN של תחנות הרדיו עצמן",
       "kind": "official",
@@ -6188,7 +7444,7 @@
     "desc": "רדיו נאס - מוזיקה ושיח בערבית",
     "lang": "music",
     "logo": "assets/logos/radio_nas.png",
-    "number": 264,
+    "number": 321,
     "src": {
       "by": "StreamGates – ה-CDN של התחנה",
       "kind": "official",
@@ -6211,7 +7467,7 @@
     "desc": "רדיו מקומי מנהריה",
     "lang": "music",
     "logo": "assets/logos/radio_nahariya.png",
-    "number": 265,
+    "number": 322,
     "src": {
       "by": "רדיו נהריה – שרת התחנה",
       "kind": "official",
@@ -6234,7 +7490,7 @@
     "desc": "רוק, אינדי והיפ הופ ישראלי",
     "lang": "music",
     "logo": "assets/logos/radio_sahar.png",
-    "number": 266,
+    "number": 323,
     "src": {
       "by": "eCast – שרת התחנה",
       "kind": "official",
@@ -6257,7 +7513,7 @@
     "desc": "שירים מזרחיים עצובים ברצף",
     "lang": "music",
     "logo": "assets/logos/radio_diki.png",
-    "number": 267,
+    "number": 324,
     "src": {
       "by": "רדיו שירי דיכאון – השרת של התחנה",
       "kind": "official",
@@ -6280,7 +7536,7 @@
     "desc": "קיי-פופ קוריאני",
     "lang": "music",
     "logo": "assets/logos/radios_kpop.png",
-    "number": 268,
+    "number": 325,
     "src": {
       "by": "StreamGates – ערוצי רדיוס 100FM",
       "kind": "official",
@@ -6303,7 +7559,7 @@
     "desc": "האמנים הגדולים בכל הזמנים",
     "lang": "music",
     "logo": "assets/logos/radios_legends.png",
-    "number": 269,
+    "number": 326,
     "src": {
       "by": "StreamGates – ערוצי רדיוס 100FM",
       "kind": "official",
@@ -6329,7 +7585,7 @@
     "desc": "שירי אהבה ברצף",
     "lang": "music",
     "logo": "assets/logos/radios_love.png",
-    "number": 270,
+    "number": 327,
     "src": {
       "by": "StreamGates – ערוצי רדיוס 100FM",
       "kind": "official",
@@ -6355,7 +7611,7 @@
     "desc": "להיטי הזהב של שנות ה-50 וה-60",
     "lang": "music",
     "logo": "assets/logos/radios_oldies.png",
-    "number": 271,
+    "number": 328,
     "src": {
       "by": "StreamGates – ערוצי רדיוס 100FM",
       "kind": "official",
@@ -6378,7 +7634,7 @@
     "desc": "מוזיקה קצבית לאימון ולספורט",
     "lang": "music",
     "logo": "assets/logos/radios_workout.png",
-    "number": 272,
+    "number": 329,
     "src": {
       "by": "StreamGates – ערוצי רדיוס 100FM",
       "kind": "official",
@@ -6401,7 +7657,7 @@
     "desc": "שירי אירוויזיון",
     "lang": "music",
     "logo": "assets/logos/radios_eurovision.png",
-    "number": 273,
+    "number": 330,
     "src": {
       "by": "StreamGates – ערוצי רדיוס 100FM",
       "kind": "official",
@@ -6427,7 +7683,7 @@
     "desc": "בלוז",
     "lang": "music",
     "logo": "assets/logos/radios_blues.png",
-    "number": 274,
+    "number": 331,
     "src": {
       "by": "StreamGates – ערוצי רדיוס 100FM",
       "kind": "official",
@@ -6453,7 +7709,7 @@
     "desc": "בריטפופ",
     "lang": "music",
     "logo": "assets/logos/radios_britpop.png",
-    "number": 275,
+    "number": 332,
     "src": {
       "by": "StreamGates – ערוצי רדיוס 100FM",
       "kind": "official",
@@ -6479,7 +7735,7 @@
     "desc": "ג'אז",
     "lang": "music",
     "logo": "assets/logos/radios_jazz.png",
-    "number": 276,
+    "number": 333,
     "src": {
       "by": "StreamGates – ערוצי רדיוס 100FM",
       "kind": "official",
@@ -6502,7 +7758,7 @@
     "desc": "מוזיקה למשחקים",
     "lang": "music",
     "logo": "assets/logos/radios_gamer.png",
-    "number": 277,
+    "number": 334,
     "src": {
       "by": "StreamGates – ערוצי רדיוס 100FM",
       "kind": "official",
@@ -6525,7 +7781,7 @@
     "desc": "40 הלהיטים הגדולים עכשיו",
     "lang": "music",
     "logo": "assets/logos/radios_top40.png",
-    "number": 278,
+    "number": 335,
     "src": {
       "by": "StreamGates – ערוצי רדיוס 100FM",
       "kind": "official",
@@ -6548,7 +7804,7 @@
     "desc": "הלהיטים של טיקטוק",
     "lang": "music",
     "logo": "assets/logos/radios_tiktok.png",
-    "number": 279,
+    "number": 336,
     "src": {
       "by": "StreamGates – ערוצי רדיוס 100FM",
       "kind": "official",
@@ -6571,7 +7827,7 @@
     "desc": "מוזיקה יהודית וחסידית",
     "lang": "music",
     "logo": "assets/logos/radios_yehudi.png",
-    "number": 280,
+    "number": 337,
     "src": {
       "by": "StreamGates – ערוצי רדיוס 100FM",
       "kind": "official",
@@ -6597,7 +7853,7 @@
     "desc": "הלהיטים הגדולים ברצף",
     "lang": "music",
     "logo": "assets/logos/radios_hits.png",
-    "number": 281,
+    "number": 338,
     "src": {
       "by": "StreamGates – ערוצי רדיוס 100FM",
       "kind": "official",
@@ -6623,7 +7879,7 @@
     "desc": "מוזיקה לטינית",
     "lang": "music",
     "logo": "assets/logos/radios_latin.png",
-    "number": 282,
+    "number": 339,
     "src": {
       "by": "StreamGates – ערוצי רדיוס 100FM",
       "kind": "official",
@@ -6649,7 +7905,7 @@
     "desc": "מוזיקת עולם",
     "lang": "music",
     "logo": "assets/logos/radios_world.png",
-    "number": 283,
+    "number": 340,
     "src": {
       "by": "StreamGates – ערוצי רדיוס 100FM",
       "kind": "official",
@@ -6675,7 +7931,7 @@
     "desc": "מוזיקה מזרחית ים תיכונית ברצף",
     "lang": "music",
     "logo": "assets/logos/radios_mizrahit.png",
-    "number": 284,
+    "number": 341,
     "src": {
       "by": "StreamGates – ערוצי רדיוס 100FM",
       "kind": "official",
@@ -6698,7 +7954,7 @@
     "desc": "סטנדאפ וקומדיה ברצף",
     "lang": "music",
     "logo": "assets/logos/radios_standup.png",
-    "number": 285,
+    "number": 342,
     "src": {
       "by": "StreamGates – ערוצי רדיוס 100FM",
       "kind": "official",
@@ -6721,7 +7977,7 @@
     "desc": "להיטי פופ צעירים",
     "lang": "music",
     "logo": "assets/logos/radios_selfie.png",
-    "number": 286,
+    "number": 343,
     "src": {
       "by": "StreamGates – ערוצי רדיוס 100FM",
       "kind": "official",
@@ -6747,7 +8003,7 @@
     "desc": "פסקולים ומוזיקה מהסרטים",
     "lang": "music",
     "logo": "assets/logos/radios_movies.png",
-    "number": 287,
+    "number": 344,
     "src": {
       "by": "StreamGates – ערוצי רדיוס 100FM",
       "kind": "official",
@@ -6770,7 +8026,7 @@
     "desc": "מוזיקה רגועה ואלקטרונית",
     "lang": "music",
     "logo": "assets/logos/radios_chillout.png",
-    "number": 288,
+    "number": 345,
     "src": {
       "by": "StreamGates – ערוצי רדיוס 100FM",
       "kind": "official",
@@ -6796,7 +8052,7 @@
     "desc": "גרסאות כיסוי",
     "lang": "music",
     "logo": "assets/logos/radios_covers.png",
-    "number": 289,
+    "number": 346,
     "src": {
       "by": "StreamGates – ערוצי רדיוס 100FM",
       "kind": "official",
@@ -6822,7 +8078,7 @@
     "desc": "קאנטרי אמריקאי",
     "lang": "music",
     "logo": "assets/logos/radios_country.png",
-    "number": 290,
+    "number": 347,
     "src": {
       "by": "StreamGates – ערוצי רדיוס 100FM",
       "kind": "official",
@@ -6848,7 +8104,7 @@
     "desc": "מוזיקת מועדונים ודאנס",
     "lang": "music",
     "logo": "assets/logos/radios_club.png",
-    "number": 291,
+    "number": 348,
     "src": {
       "by": "StreamGates – ערוצי רדיוס 100FM",
       "kind": "official",
@@ -6871,7 +8127,7 @@
     "desc": "מוזיקה קלאסית",
     "lang": "music",
     "logo": "assets/logos/radios_classic.png",
-    "number": 292,
+    "number": 349,
     "src": {
       "by": "StreamGates – ערוצי רדיוס 100FM",
       "kind": "official",
@@ -6897,7 +8153,7 @@
     "desc": "מוזיקה רגועה",
     "lang": "music",
     "logo": "assets/logos/radios_relax.png",
-    "number": 293,
+    "number": 350,
     "src": {
       "by": "StreamGates – ערוצי רדיוס 100FM",
       "kind": "official",
@@ -6920,7 +8176,7 @@
     "desc": "רוק",
     "lang": "music",
     "logo": "assets/logos/radios_rock.png",
-    "number": 294,
+    "number": 351,
     "src": {
       "by": "StreamGates – ערוצי רדיוס 100FM",
       "kind": "official",
@@ -6946,7 +8202,7 @@
     "desc": "רוק קלאסי",
     "lang": "music",
     "logo": "assets/logos/radios_classic_rock.png",
-    "number": 295,
+    "number": 352,
     "src": {
       "by": "StreamGates – ערוצי רדיוס 100FM",
       "kind": "official",
@@ -6972,7 +8228,7 @@
     "desc": "להיטי רטרו",
     "lang": "music",
     "logo": "assets/logos/radios_retro.png",
-    "number": 296,
+    "number": 353,
     "src": {
       "by": "StreamGates – ערוצי רדיוס 100FM",
       "kind": "official",
@@ -6995,7 +8251,7 @@
     "desc": "להיטי שנות ה-80",
     "lang": "music",
     "logo": "assets/logos/radios_80s.png",
-    "number": 297,
+    "number": 354,
     "src": {
       "by": "StreamGates – ערוצי רדיוס 100FM",
       "kind": "official",
@@ -7018,7 +8274,7 @@
     "desc": "להיטי שנות ה-90",
     "lang": "music",
     "logo": "assets/logos/radios_90s.png",
-    "number": 298,
+    "number": 355,
     "src": {
       "by": "StreamGates – ערוצי רדיוס 100FM",
       "kind": "official",
@@ -7041,7 +8297,7 @@
     "desc": "להיטי נוסטלגיה ישראליים ולועזיים",
     "lang": "music",
     "logo": "assets/logos/radios_nostalgia.png",
-    "number": 299,
+    "number": 356,
     "src": {
       "by": "StreamGates – ה-CDN של התחנה",
       "kind": "official",
@@ -7064,7 +8320,7 @@
     "desc": "רק מוזיקה, בלי דיבורים",
     "lang": "music",
     "logo": "assets/logos/rak_musica.png",
-    "number": 300,
+    "number": 357,
     "src": {
       "by": "play.radioking.io",
       "kind": "restream",
@@ -7094,7 +8350,7 @@
       "found": "סריקת ערוצים מאומתת",
       "web": "✅"
     },
-    "number": 301,
+    "number": 358,
     "kind": "radio",
     "countryHe": "ישראל"
   },
@@ -7117,7 +8373,7 @@
       "found": "סריקת ערוצים מאומתת",
       "web": "✅"
     },
-    "number": 302,
+    "number": 359,
     "kind": "radio",
     "countryHe": "ישראל"
   },
@@ -7140,7 +8396,7 @@
       "found": "סריקת ערוצים מאומתת",
       "web": "✅"
     },
-    "number": 303,
+    "number": 360,
     "kind": "radio",
     "countryHe": "ישראל"
   },
@@ -7163,7 +8419,7 @@
       "found": "סריקת ערוצים מאומתת",
       "web": "✅"
     },
-    "number": 304,
+    "number": 361,
     "kind": "radio",
     "countryHe": "ישראל"
   },
@@ -7178,7 +8434,7 @@
     "logo": "assets/logos/radio_qualita.png",
     "badge": "LIVE",
     "desc": "רדיו אינטרנט ישראלי בצרפתית מבית Qualita, עם חדשות ותוכניות לעולים",
-    "number": 305,
+    "number": 362,
     "lang": "fr",
     "country": "IL",
     "src": {
@@ -7201,7 +8457,7 @@
     "logo": "assets/logos/radio_plus_il.png",
     "badge": "LIVE",
     "desc": "רדיו ישראלי המשדר מוזיקה ותוכניות ברצף",
-    "number": 306,
+    "number": 363,
     "lang": "he",
     "country": "IL",
     "src": {
@@ -7227,7 +8483,7 @@
     "country": "IL",
     "countryHe": "ישראל",
     "logo": "assets/logos/jewish_music_stream_live.png",
-    "number": 307,
+    "number": 364,
     "src": {
       "by": "stream.jewishmusicstream.com",
       "kind": "restream",
@@ -7237,919 +8493,770 @@
     }
   },
   {
-    "id": "sky_news_uk",
-    "name": "Sky News UK FHD",
-    "title": "Sky News UK FHD",
-    "category": "חדשות מהעולם (News)",
-    "categoryEn": "news",
-    "url": "https://linear901-oo-hls0-prd-gtm.delivery.skycdp.com/17501/sde-fast-skynews/master.m3u8",
-    "logo": "assets/logos/sky_news.png",
-    "badge": "FHD",
-    "desc": "ערוץ החדשות הבינלאומי המוביל של רשת Sky מבריטניה בשידור חי 24/7 באיכות FHD",
-    "lang": "en",
-    "country": "GB",
-    "countryHe": "בריטניה",
+    "id": "radios_shlomo_artzi",
+    "name": "רדיוס 100% שלמה ארצי",
+    "category": "רדיו ישראלי (Israeli Radio)",
+    "url": "https://gb25.streamgates.net/radios-audio/100Shlomo/playlist.m3u8",
+    "fallbackUrls": [
+      "https://gb25.streamgates.net/radios-audio/100Shlomo/icecast.audio"
+    ],
+    "logo": "assets/logos/radios_shlomo_artzi.png",
+    "badge": "LIVE",
+    "color": "#f59e0b",
+    "desc": "מוזיקה ישראלית – שירי שלמה ארצי 24/7",
+    "isIsraeli": true,
+    "kind": "radio",
+    "number": 365,
     "src": {
-      "by": "linear901-oo-hls0-prd-gtm.delivery.skycdp.com",
-      "kind": "restream",
-      "host": "linear901-oo-hls0-prd-gtm.delivery.skycdp.com",
-      "found": "שידור רשמי Sky",
-      "web": "✅"
-    },
-    "number": 308
-  },
-  {
-    "id": "sky_news_arabia",
-    "name": "Sky News Arabia HD (סקיי ניוז ערבית)",
-    "title": "Sky News Arabia HD",
-    "category": "חדשות מהעולם (News)",
-    "categoryEn": "news",
-    "url": "https://live-stream.skynewsarabia.com/c-horizontal-channel/horizontal-stream/index.m3u8",
-    "logo": "assets/logos/sky_news.png",
-    "badge": "HD",
-    "desc": "ערוץ החדשות סקיי ניוז בשפה הערבית של רשת Sky באיכות HD",
-    "lang": "ar",
-    "country": "AE",
-    "countryHe": "איחוד האמירויות",
-    "src": {
-      "by": "live-stream.skynewsarabia.com",
-      "kind": "restream",
-      "host": "live-stream.skynewsarabia.com",
-      "found": "שידור רשמי Sky",
-      "web": "✅"
-    },
-    "number": 309
-  },
-  {
-    "id": "sky_news_arabia_live",
-    "name": "Sky News Arabia ישיר HD (מקור 2)",
-    "title": "Sky News Arabia Live HD",
-    "category": "חדשות מהעולם (News)",
-    "categoryEn": "news",
-    "url": "https://stream.skynewsarabia.com/hls/sna.m3u8",
-    "logo": "assets/logos/sky_news.png",
-    "badge": "HD",
-    "desc": "מקור שידור ישיר נוסף של ערוץ Sky News ערבית באיכות HD",
-    "lang": "ar",
-    "country": "AE",
-    "countryHe": "איחוד האמירויות",
-    "src": {
-      "by": "stream.skynewsarabia.com",
-      "kind": "restream",
-      "host": "stream.skynewsarabia.com",
-      "found": "שידור רשמי Sky",
-      "web": "✅"
-    },
-    "number": 310
-  },
-  {
-    "id": "sky_news_au_extra1",
-    "name": "Sky News Australia Extra 1 HD",
-    "title": "Sky News Australia Extra 1 HD",
-    "category": "חדשות מהעולם (News)",
-    "categoryEn": "news",
-    "url": "https://skynewsau-live.akamaized.net/hls/live/2002689/skynewsau-extra1/master.m3u8",
-    "logo": "assets/logos/sky_news.png",
-    "badge": "HD",
-    "desc": "ערוץ שידורי החדשות והאירועים החיים Sky News Australia Extra 1 מבית סקיי",
-    "lang": "en",
-    "country": "AU",
-    "countryHe": "אוסטרליה",
-    "src": {
-      "by": "skynewsau-live.akamaized.net",
-      "kind": "restream",
-      "host": "skynewsau-live.akamaized.net",
-      "found": "שידור רשמי Sky",
-      "web": "✅"
-    },
-    "number": 311
-  },
-  {
-    "id": "sky_news_au_extra2",
-    "name": "Sky News Australia Extra 2 HD",
-    "title": "Sky News Australia Extra 2 HD",
-    "category": "חדשות מהעולם (News)",
-    "categoryEn": "news",
-    "url": "https://skynewsau-live.akamaized.net/hls/live/2002690/skynewsau-extra2/master.m3u8",
-    "logo": "assets/logos/sky_news.png",
-    "badge": "HD",
-    "desc": "ערוץ שידורי החדשות והאירועים החיים Sky News Australia Extra 2 מבית סקיי",
-    "lang": "en",
-    "country": "AU",
-    "countryHe": "אוסטרליה",
-    "src": {
-      "by": "skynewsau-live.akamaized.net",
-      "kind": "restream",
-      "host": "skynewsau-live.akamaized.net",
-      "found": "שידור רשמי Sky",
-      "web": "✅"
-    },
-    "number": 312
-  },
-  {
-    "id": "sky_news_au_extra3",
-    "name": "Sky News Australia Extra 3 HD",
-    "title": "Sky News Australia Extra 3 HD",
-    "category": "חדשות מהעולם (News)",
-    "categoryEn": "news",
-    "url": "https://skynewsau-live.akamaized.net/hls/live/2002691/skynewsau-extra3/master.m3u8",
-    "logo": "assets/logos/sky_news.png",
-    "badge": "HD",
-    "desc": "ערוץ שידורי החדשות והאירועים החיים Sky News Australia Extra 3 מבית סקיי",
-    "lang": "en",
-    "country": "AU",
-    "countryHe": "אוסטרליה",
-    "src": {
-      "by": "skynewsau-live.akamaized.net",
-      "kind": "restream",
-      "host": "skynewsau-live.akamaized.net",
-      "found": "שידור רשמי Sky",
-      "web": "✅"
-    },
-    "number": 313
-  },
-  {
-    "id": "babyshark_tv",
-    "name": "Baby Shark TV (בייבי שארק לילדים)",
-    "title": "Baby Shark TV",
-    "category": "ילדים מהעולם (Kids World)",
-    "categoryEn": "kids",
-    "url": "https://newidco-babysharktv-1-us.roku.wurl.tv/playlist.m3u8",
-    "logo": "assets/logos/babyshark_tv_hd.png",
-    "badge": "FHD",
-    "desc": "ערוץ שידורי בייבי שארק הרשמי 24/7 – שירים, ריקודים והרפתקאות לפעוטות וילדים",
-    "lang": "kids",
-    "country": "IL",
-    "src": {
-      "by": "Baby Shark TV – Wurl (Roku FAST)",
-      "kind": "fast",
-      "host": "newidco-babysharktv-1-us.roku.wurl.tv",
-      "found": "סריקת ערוצי ילדים",
-      "web": "✅"
-    },
-    "number": 314
-  },
-  {
-    "id": "babytv_global_hd",
-    "name": "ערוץ בייבי BabyTV Global HD",
-    "title": "ערוץ בייבי BabyTV Global HD",
-    "category": "ילדים מהעולם (Kids World)",
-    "categoryEn": "kids",
-    "url": "https://cdn.fast.jwp.services/v1/channel/1_jB6940Ei_TvhvIHDL/manifest.m3u8",
-    "logo": "assets/logos/babytv_global_hd.png",
-    "badge": "HD",
-    "desc": "ערוץ בייבי הבינלאומי המוביל בעולם לפעוטות ולגיל הרך בשידור חי רצוף",
-    "lang": "kids",
-    "country": "IL",
-    "src": {
-      "by": "BabyFirst – JW Player FAST",
-      "kind": "fast",
-      "host": "cdn.fast.jwp.services",
-      "found": "סריקת ערוצי ילדים",
-      "web": "✅"
-    },
-    "number": 315
-  },
-  {
-    "id": "zoomoo_kids_hd",
-    "name": "ערוץ זו-מו לילדים (ZooMoo HD)",
-    "title": "ערוץ זו-מו לילדים (ZooMoo HD)",
-    "category": "ילדים מהעולם (Kids World)",
-    "categoryEn": "kids",
-    "url": "https://zoomoo-samsungau.amagi.tv/playlist.m3u8",
-    "logo": "assets/logos/zoomoo_kids_hd.png",
-    "badge": "HD",
-    "desc": "ערוץ הטבע, בעלי החיים והאנימציה החינוכית המוביל לילדים",
-    "lang": "kids",
-    "country": "IL",
-    "src": {
-      "by": "amagi.tv",
-      "kind": "fast",
-      "host": "zoomoo-samsungau.amagi.tv",
-      "found": "סריקת ערוצי ילדים",
-      "web": "✅"
-    },
-    "number": 316
-  },
-  {
-    "id": "ani_kids_hd",
-    "name": "ערוץ אני אנימציה HD (Ani Kids)",
-    "title": "ערוץ אני אנימציה HD",
-    "category": "ילדים מהעולם (Kids World)",
-    "categoryEn": "kids",
-    "url": "http://stream.mcquack.net/306/index.m3u8",
-    "logo": "assets/logos/ani_kids.png",
-    "badge": "HD",
-    "desc": "ערוץ סדרות אנימציה עולמיות, צבעוניות וחינוכיות לילדים באיכות HD",
-    "lang": "kids",
-    "country": "IL",
-    "src": {
-      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
-      "kind": "restream",
-      "host": "stream.mcquack.net",
-      "found": "סריקת ערוצי ילדים",
-      "web": "❌ רק באפליקציה (HTTP)"
-    },
-    "number": 317
-  },
-  {
-    "id": "plusplus_kids_hd",
-    "name": "ערוץ האנימציה PLUSPLUS HD",
-    "title": "ערוץ האנימציה PLUSPLUS HD",
-    "category": "ילדים מהעולם (Kids World)",
-    "categoryEn": "kids",
-    "url": "http://stream.mcquack.net/339/index.m3u8",
-    "logo": "assets/logos/plusplus.png",
-    "badge": "HD",
-    "desc": "ערוץ הילדים והאנימציה PLUSPLUS – הרפתקאות, מדע וסדרות לילדים",
-    "lang": "kids",
-    "country": "IL",
-    "src": {
-      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
-      "kind": "restream",
-      "host": "stream.mcquack.net",
-      "found": "סריקת ערוצי ילדים",
-      "web": "❌ רק באפליקציה (HTTP)"
-    },
-    "number": 318
-  },
-  {
-    "id": "niki_junior_kids_hd",
-    "name": "ערוץ ניקי ג'וניור HD (Niki Junior)",
-    "title": "ערוץ ניקי ג'וניור HD",
-    "category": "ילדים מהעולם (Kids World)",
-    "categoryEn": "kids",
-    "url": "http://stream.mcquack.net/262/index.m3u8",
-    "logo": "assets/logos/niki_junior_kids_hd.png",
-    "badge": "HD",
-    "desc": "ערוץ תוכניות וסדרות לגיל הרך ולילדים",
-    "lang": "kids",
-    "country": "IL",
-    "src": {
-      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
-      "kind": "restream",
-      "host": "stream.mcquack.net",
-      "found": "סריקת ערוצי ילדים",
-      "web": "❌ רק באפליקציה (HTTP)"
-    },
-    "number": 319
-  },
-  {
-    "id": "cartoons_short_hd",
-    "name": "ערוץ סרטוני אנימציה קצרים (Cartoons Short)",
-    "title": "ערוץ סרטוני אנימציה קצרים",
-    "category": "ילדים מהעולם (Kids World)",
-    "categoryEn": "kids",
-    "url": "http://stream.mcquack.net/347/index.m3u8",
-    "logo": "assets/logos/cartoons_short_hd.png",
-    "badge": "HD",
-    "desc": "מרתון סרטוני אנימציה קצרים ומצחיקים ברצף ללא הפסקה",
-    "lang": "kids",
-    "country": "IL",
-    "src": {
-      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
-      "kind": "restream",
-      "host": "stream.mcquack.net",
-      "found": "סריקת ערוצי ילדים",
-      "web": "❌ רק באפליקציה (HTTP)"
-    },
-    "number": 320
-  },
-  {
-    "id": "cartoons_big_hd",
-    "name": "ערוץ סרטי אנימציה לילדים (Cartoons Cinema)",
-    "title": "ערוץ סרטי אנימציה לילדים",
-    "category": "ילדים מהעולם (Kids World)",
-    "categoryEn": "kids",
-    "url": "http://stream.mcquack.net/348/index.m3u8",
-    "logo": "assets/logos/cartoons_big_hd.png",
-    "badge": "HD",
-    "desc": "סרטי אנימציה מלאים והרפתקאות מצוירות לכל המשפחה ברצף 24/7",
-    "lang": "kids",
-    "country": "IL",
-    "src": {
-      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
-      "kind": "restream",
-      "host": "stream.mcquack.net",
-      "found": "סריקת ערוצי ילדים",
-      "web": "❌ רק באפליקציה (HTTP)"
-    },
-    "number": 321
-  },
-  {
-    "id": "fresh_kids_tv_hd",
-    "name": "פרש קידס (Fresh Kids TV HD)",
-    "title": "פרש קידס (Fresh Kids TV HD)",
-    "category": "ילדים מהעולם (Kids World)",
-    "categoryEn": "kids",
-    "url": "http://stream.mcquack.net/425/index.m3u8",
-    "logo": "assets/logos/fresh_kids_tv_hd.png",
-    "badge": "HD",
-    "desc": "ערוץ מוזיקה, שירים וקצב לילדים ולנוער",
-    "lang": "kids",
-    "country": "IL",
-    "src": {
-      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
-      "kind": "restream",
-      "host": "stream.mcquack.net",
-      "found": "סריקת ערוצי ילדים",
-      "web": "❌ רק באפליקציה (HTTP)"
-    },
-    "number": 322
-  },
-  {
-    "id": "nick_jr_he",
-    "name": "ניק ג'וניור (ברוסית)",
-    "title": "ניק ג'וניור (Nick Jr. Russia)",
-    "category": "ילדים מהעולם (Kids World)",
-    "categoryEn": "kids",
-    "url": "http://stream.mcquack.net/220/index.m3u8",
-    "logo": "assets/logos/nick_jr_he.png",
-    "badge": "FHD",
-    "desc": "ערוץ ניק ג'וניור בשפה הרוסית - סדרות לגיל הרך",
-    "number": 323,
-    "lang": "ru",
-    "iptv": "NickJr.ru",
-    "webUrl": "https://stream8.cinerama.uz/1501/playlist.m3u8",
-    "src": {
-      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
-      "kind": "restream",
-      "host": "stream.mcquack.net",
-      "found": "iptv-org (NickJr.ru)",
-      "web": "✅ דרך מקור חלופי: Cinerama.uz – ספק IPTV באוזבקיסטן"
-    }
-  },
-  {
-    "id": "gulli_kids_hd",
-    "name": "גולי גירל Gulli Girl (ברוסית)",
-    "title": "Gulli Girl",
-    "category": "ילדים מהעולם (Kids World)",
-    "categoryEn": "kids",
-    "url": "http://stream.mcquack.net/305/index.m3u8",
-    "logo": "assets/logos/gulli_kids_hd.png",
-    "badge": "HD",
-    "desc": "ערוץ הרפתקאות, אנימציה וסדרות נוער מהנות לכל המשפחה",
-    "number": 324,
-    "lang": "ru",
-    "iptv": "GulliGirl.ru",
-    "webUrl": "https://stream8.cinerama.uz/1445/tracks-v1a1/mono.m3u8",
-    "src": {
-      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
-      "kind": "restream",
-      "host": "stream.mcquack.net",
-      "found": "iptv-org (GulliGirl.ru)",
-      "web": "✅ דרך מקור חלופי: Cinerama.uz – ספק IPTV באוזבקיסטן"
-    }
-  },
-  {
-    "id": "ducktv_plus_hd",
-    "name": "דאק טי וי פלוס ducktv PLUS HD",
-    "title": "דאק טי וי פלוס (ducktv PLUS)",
-    "category": "ילדים מהעולם (Kids World)",
-    "categoryEn": "kids",
-    "url": "https://dash3.antik.sk/live/test_duck_plus/playlist.m3u8",
-    "logo": "assets/logos/ducktv_plus_hd.png",
-    "badge": "FHD",
-    "desc": "ערוץ תוכניות העשרה והפעלות נוספות לגיל הרך מבית ducktv",
-    "number": 325,
-    "lang": "auto",
-    "iptv": "ducktvPLUS.sk",
-    "src": {
-      "by": "Antik Telecom (סלובקיה), נתיבי test",
-      "kind": "restream",
-      "host": "dash3.antik.sk",
-      "found": "iptv-org (ducktvPLUS.sk)",
-      "web": "✅"
-    }
-  },
-  {
-    "id": "lego_channel_hd",
-    "name": "ערוץ לגו Lego Channel HD",
-    "title": "ערוץ לגו (Lego Channel)",
-    "category": "ילדים מהעולם (Kids World)",
-    "categoryEn": "kids",
-    "url": "https://dltiqboxjw21d.cloudfront.net/index.m3u8",
-    "logo": "assets/logos/lego_channel_hd.png",
-    "badge": "FHD",
-    "desc": "ערוץ סדרות וסרטי לגו נינג'גו, לגו חברים, הרפתקאות ובנייה",
-    "number": 326,
-    "lang": "en",
-    "iptv": "LegoChannel.us",
-    "src": {
-      "by": "LEGO Channel – AWS CloudFront FAST",
-      "kind": "fast",
-      "host": "dltiqboxjw21d.cloudfront.net",
-      "found": "iptv-org (LegoChannel.us)",
-      "web": "✅"
-    }
-  },
-  {
-    "id": "tiji_kids_hd",
-    "name": "ערוץ טיז'י TiJi לילדים HD",
-    "title": "טיז'י (TiJi)",
-    "category": "ילדים מהעולם (Kids World)",
-    "categoryEn": "kids",
-    "url": "http://stream.mcquack.net/111/index.m3u8",
-    "logo": "assets/logos/tiji_kids_hd.png",
-    "badge": "FHD",
-    "desc": "ערוץ הילדים והפעוטות הבינלאומי המוביל לתכנים חינוכיים וצבעוניים",
-    "number": 327,
-    "lang": "ru",
-    "iptv": "TiJi.ru",
-    "webUrl": "https://stream8.cinerama.uz/1441/tracks-v1a1/mono.m3u8",
-    "src": {
-      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
-      "kind": "restream",
-      "host": "stream.mcquack.net",
-      "found": "iptv-org (TiJi.ru)",
-      "web": "✅ דרך מקור חלופי: Cinerama.uz – ספק IPTV באוזבקיסטן"
-    }
-  },
-  {
-    "id": "jimjam_kids_hd",
-    "name": "ג'ים ג'אם JimJam לילדים HD",
-    "title": "ג'ים ג'אם (JimJam)",
-    "category": "ילדים מהעולם (Kids World)",
-    "categoryEn": "kids",
-    "url": "http://stream.mcquack.net/150/index.m3u8",
-    "logo": "assets/logos/jimjam_kids_hd.png",
-    "badge": "HD",
-    "desc": "ערוץ הילדים והפעוטות האהוב - סדרות חינוכיות, דמיון ומשחק",
-    "number": 328,
-    "lang": "ru",
-    "iptv": "JimJamEurope.uk",
-    "src": {
-      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
-      "kind": "restream",
-      "host": "stream.mcquack.net",
-      "found": "iptv-org (JimJamEurope.uk)",
-      "web": "❌ רק באפליקציה (HTTP)"
-    }
-  },
-  {
-    "id": "cartoons_90s",
-    "name": "קלאסיקות מצוירות 90s HD",
-    "title": "קלאסיקות מצוירות (Cartoons 90s)",
-    "category": "ילדים מהעולם (Kids World)",
-    "categoryEn": "kids",
-    "url": "http://stream.mcquack.net/484/index.m3u8",
-    "logo": "assets/logos/cartoons_90s.png",
-    "badge": "FHD",
-    "desc": "ערוץ סדרות האנימציה הנוסטלגיות של שנות ה-90 באיכות גבוהה",
-    "number": 329,
-    "lang": "ru",
-    "src": {
-      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
-      "kind": "restream",
-      "host": "stream.mcquack.net",
-      "found": "רשימה ידנית (גרסה קודמת)",
-      "web": "❌ רק באפליקציה (HTTP)"
-    }
-  },
-  {
-    "id": "kinokazka",
-    "name": "קולנוע אגדות וילדים HD",
-    "title": "סרטי ילדים ואגדות (KinoKazka)",
-    "category": "ילדים מהעולם (Kids World)",
-    "categoryEn": "kids",
-    "url": "http://stream.mcquack.net/167/index.m3u8",
-    "logo": "assets/logos/kinokazka.png",
-    "badge": "FHD",
-    "desc": "סרטי אגדות, קולנוע לילדים ונוער, פנטזיה וסיפורים קלאסיים",
-    "number": 330,
-    "lang": "ru",
-    "iptv": "KinoKazka.es",
-    "src": {
-      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
-      "kind": "restream",
-      "host": "stream.mcquack.net",
-      "found": "iptv-org (KinoKazka.es)",
-      "web": "❌ רק באפליקציה (HTTP)"
-    }
-  },
-  {
-    "id": "pixel_tv",
-    "name": "פיקסל TV ילדים HD",
-    "title": "פיקסל TV (Pixel TV)",
-    "category": "ילדים מהעולם (Kids World)",
-    "categoryEn": "kids",
-    "url": "http://stream.mcquack.net/323/index.m3u8",
-    "logo": "assets/logos/pixel_tv.png",
-    "badge": "FHD",
-    "desc": "ערוץ הגיימינג, האנימציה והסדרות המובילות לילדים",
-    "number": 331,
-    "lang": "ru",
-    "iptv": "PixelTV.ua",
-    "webUrl": "https://cdn15.live-tv.cloud/ua_infinitas_tv/pixel-abr/playlist.m3u8",
-    "src": {
-      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
-      "kind": "restream",
-      "host": "stream.mcquack.net",
-      "found": "iptv-org (PixelTV.ua)",
-      "web": "✅ דרך מקור חלופי: live-tv.cloud – ספק IPTV אוקראיני"
-    }
-  },
-  {
-    "id": "niki_kids",
-    "name": "ניקי קידס Niki Kids HD",
-    "title": "ניקי קידס HD (Niki Kids)",
-    "category": "ילדים מהעולם (Kids World)",
-    "categoryEn": "kids",
-    "url": "http://stream.mcquack.net/271/index.m3u8",
-    "logo": "assets/logos/niki_kids.png",
-    "badge": "FHD",
-    "desc": "ערוץ בינלאומי לילדים עם דיבוב איכותי וסדרות חינוכיות",
-    "number": 332,
-    "lang": "ru",
-    "iptv": "NikiKids.ua",
-    "src": {
-      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
-      "kind": "restream",
-      "host": "stream.mcquack.net",
-      "found": "iptv-org (NikiKids.ua)",
-      "web": "❌ רק באפליקציה (HTTP)"
-    }
-  },
-  {
-    "id": "kapitan_fantastika",
-    "name": "קפטן פנטסטיקה HD",
-    "title": "קפטן פנטסטיקה (Kapitan Fantastika)",
-    "category": "ילדים מהעולם (Kids World)",
-    "categoryEn": "kids",
-    "url": "http://stream.mcquack.net/144/index.m3u8",
-    "logo": "assets/logos/kapitan_fantastika.png",
-    "badge": "FHD",
-    "desc": "הרפתקאות גיבורי על ומדע בדיוני לילדים ונוער",
-    "number": 333,
-    "lang": "ru",
-    "iptv": "KapitanFantastika.ru",
-    "webUrl": "https://stream8.cinerama.uz/1406/tracks-v1a1/mono.m3u8",
-    "src": {
-      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
-      "kind": "restream",
-      "host": "stream.mcquack.net",
-      "found": "iptv-org (KapitanFantastika.ru)",
-      "web": "✅ דרך מקור חלופי: Cinerama.uz – ספק IPTV באוזבקיסטן"
-    }
-  },
-  {
-    "id": "okids",
-    "name": "ערוץ O! ילדים וטבע",
-    "title": "ערוץ O! ילדים",
-    "category": "ילדים מהעולם (Kids World)",
-    "categoryEn": "kids",
-    "url": "http://stream.mcquack.net/60/index.m3u8",
-    "logo": "assets/logos/okids.png",
-    "badge": "SD",
-    "desc": "תגליות, חיות ועולם הטבע בשפה פשוטה ומהנה לילדים",
-    "number": 334,
-    "lang": "ru",
-    "iptv": "O.ru",
-    "src": {
-      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
-      "kind": "restream",
-      "host": "stream.mcquack.net",
-      "found": "iptv-org (O.ru)",
-      "web": "❌ רק באפליקציה (HTTP)"
-    }
-  },
-  {
-    "id": "ducktv_hd",
-    "name": "דאק טי וי ducktv HD",
-    "title": "ערוץ דאק טי וי ducktv HD",
-    "category": "ילדים מהעולם (Kids World)",
-    "categoryEn": "kids",
-    "url": "https://dash3.antik.sk/live/duck_tv/index.m3u8",
-    "logo": "assets/logos/ducktv_hd.png",
-    "badge": "FHD",
-    "desc": "ערוץ הפעוטות וההתפתחות המוביל מבית yes ו-HOT - אנימציה עדינה וצבעים",
-    "number": 335,
-    "lang": "auto",
-    "iptv": "ducktv.sk",
-    "src": {
-      "by": "Antik Telecom (סלובקיה), נתיבי test",
-      "kind": "restream",
-      "host": "dash3.antik.sk",
-      "found": "iptv-org (ducktv.sk)",
-      "web": "✅"
-    }
-  },
-  {
-    "id": "solntse_kids",
-    "name": "ערוץ השמש לילדים HD (Solntse Kids)",
-    "title": "ערוץ השמש לילדים HD",
-    "category": "ילדים מהעולם (Kids World)",
-    "categoryEn": "kids",
-    "url": "http://stream.mcquack.net/118/index.m3u8",
-    "logo": "assets/logos/solntse_kids.png",
-    "badge": "HD",
-    "desc": "ערוץ ילדים ומשפחה עשיר בסדרות אנימציה, קומדיה ובידור לכל הגילאים",
-    "number": 336,
-    "lang": "ru",
-    "iptv": "Solnce.ru",
-    "webUrl": "https://tv.mediacdn.ru/live/solntse/playlist.m3u8",
-    "src": {
-      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
-      "kind": "restream",
-      "host": "stream.mcquack.net",
-      "found": "iptv-org (Solnce.ru)",
-      "web": "✅ דרך מקור חלופי: ערוץ השמש (Солнце) – CDN"
-    }
-  },
-  {
-    "id": "mult_kids",
-    "name": "ערוץ מולט ילדים HD (Mult Kids)",
-    "title": "ערוץ מולט ילדים HD",
-    "category": "ילדים מהעולם (Kids World)",
-    "categoryEn": "kids",
-    "url": "http://stream.mcquack.net/232/index.m3u8",
-    "logo": "assets/logos/mult_kids.png",
-    "badge": "HD",
-    "desc": "ערוץ אנימציה מוביל לילדים ופעוטות - סדרות מצוירות מודרניות וקלאסיות",
-    "number": 337,
-    "lang": "ru",
-    "iptv": "Mult.ru",
-    "webUrl": "https://stream8.cinerama.uz/1246/tracks-v1a1/mono.m3u8",
-    "src": {
-      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
-      "kind": "restream",
-      "host": "stream.mcquack.net",
-      "found": "iptv-org (Mult.ru)",
-      "web": "✅ דרך מקור חלופי: Cinerama.uz – ספק IPTV באוזבקיסטן"
-    }
-  },
-  {
-    "id": "mult_music_kids",
-    "name": "מולט ומוזיקה לילדים HD (Mult & Music)",
-    "title": "מולט ומוזיקה לילדים HD",
-    "category": "ילדים מהעולם (Kids World)",
-    "categoryEn": "kids",
-    "url": "http://stream.mcquack.net/82/index.m3u8",
-    "logo": "assets/logos/mult_music_kids.png",
-    "badge": "HD",
-    "desc": "שירי ילדים, קליפים מוזיקליים מונפשים וסדרות לקטנטנים 24/7",
-    "number": 338,
-    "lang": "ru",
-    "iptv": "Multimuzyka.ru",
-    "src": {
-      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
-      "kind": "restream",
-      "host": "stream.mcquack.net",
-      "found": "iptv-org (Multimuzyka.ru)",
-      "web": "❌ רק באפליקציה (HTTP)"
-    }
-  },
-  {
-    "id": "carousel_kids",
-    "name": "קרוסלה ערוץ הילדים HD (Carousel Kids)",
-    "title": "קרוסלה ערוץ הילדים HD",
-    "category": "ילדים מהעולם (Kids World)",
-    "categoryEn": "kids",
-    "url": "http://stream.mcquack.net/120/index.m3u8",
-    "logo": "assets/logos/carousel_kids.png",
-    "badge": "HD",
-    "desc": "ערוץ הילדים והנוער המוביל - תוכניות לימודיות, חידונים וסדרות הרפתקאות",
-    "number": 339,
-    "lang": "ru",
-    "iptv": "Carousel.ru",
-    "webUrl": "https://stream.smotrim.ru/hls2/karusel/playlist_3.m3u8",
-    "src": {
-      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
-      "kind": "restream",
-      "host": "stream.mcquack.net",
-      "found": "iptv-org (Carousel.ru)",
-      "web": "✅ דרך מקור חלופי: Smotrim (VGTRK) – הבעלים של קרוסלה"
-    }
-  },
-  {
-    "id": "ctc_kids",
-    "name": "סי טי סי קידס HD (CTC Kids)",
-    "title": "סי טי סי קידס HD",
-    "category": "ילדים מהעולם (Kids World)",
-    "categoryEn": "kids",
-    "url": "http://stream.mcquack.net/197/index.m3u8",
-    "logo": "assets/logos/ctc_kids.png",
-    "badge": "HD",
-    "desc": "סדרות אנימציה עולמיות, סרטים מצוירים ותוכניות בידור לילדים",
-    "number": 340,
-    "lang": "ru",
-    "iptv": "STSkids.ru",
-    "src": {
-      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
-      "kind": "restream",
-      "host": "stream.mcquack.net",
-      "found": "iptv-org (STSkids.ru)",
-      "web": "❌ רק באפליקציה (HTTP)"
-    }
-  },
-  {
-    "id": "fairy_tales_kids",
-    "name": "ערוץ אגדות וסיפורים HD (Fairy Tales Kids)",
-    "title": "ערוץ אגדות וסיפורים HD",
-    "category": "ילדים מהעולם (Kids World)",
-    "categoryEn": "kids",
-    "url": "http://stream.mcquack.net/93/index.m3u8",
-    "logo": "assets/logos/fairy_tales_kids.png",
-    "badge": "HD",
-    "desc": "ערוץ עולם האגדות - סיפורי עם קלאסיים, סרטי פנטזיה והרפתקאות מונפשות",
-    "number": 341,
-    "lang": "ru",
-    "iptv": "Vgostyakhuskazki.ru",
-    "webUrl": "https://stream8.cinerama.uz/1270/tracks-v1a1/mono.m3u8",
-    "src": {
-      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
-      "kind": "restream",
-      "host": "stream.mcquack.net",
-      "found": "iptv-org (Vgostyakhuskazki.ru)",
-      "web": "✅ דרך מקור חלופי: Cinerama.uz – ספק IPTV באוזבקיסטן"
-    }
-  },
-  {
-    "id": "radios_video",
-    "name": "רדיוס 100FM – אולפן וידאו HD",
-    "title": "רדיוס 100FM אולפן וידאו (Radios Video)",
-    "category": "מוזיקה (Music TV)",
-    "categoryEn": "music",
-    "url": "https://cdn.cybercdn.live/Radios_100FM/Video/playlist.m3u8",
-    "logo": "assets/logos/radios_video.png",
-    "badge": "HD",
-    "desc": "האולפן של רדיוס 100FM בשידור וידאו חי מהאולפן",
-    "lang": "he",
-    "country": "IL",
-    "number": 342,
-    "src": {
-      "by": "CyberCDN – ה-CDN של תחנות הרדיו עצמן",
+      "by": "StreamGates – ערוצי רדיוס 100FM",
       "kind": "official",
-      "host": "cdn.cybercdn.live",
+      "host": "gb25.streamgates.net",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     }
   },
   {
-    "id": "sky_folk_tv",
-    "name": "Sky Folk TV HD (סקיי פולק)",
-    "title": "Sky Folk TV HD",
-    "category": "מוזיקה (Music TV)",
-    "categoryEn": "music",
-    "url": "https://skyfolk.mk/live.m3u8",
-    "logo": "assets/logos/sky_news.png",
-    "badge": "HD",
-    "desc": "ערוץ שידורי המוזיקה והתרבות הבינלאומי של סקיי ב-HD",
-    "lang": "en",
-    "country": "MK",
-    "countryHe": "מקדוניה",
+    "id": "radios_israeli",
+    "name": "רדיוס 100% ישראלי",
+    "category": "רדיו ישראלי (Israeli Radio)",
+    "url": "https://gb25.streamgates.net/radios-audio/100Israeli/playlist.m3u8",
+    "fallbackUrls": [
+      "https://gb25.streamgates.net/radios-audio/100Israeli/icecast.audio"
+    ],
+    "logo": "assets/logos/radios_israeli.png",
+    "badge": "LIVE",
+    "color": "#f59e0b",
+    "desc": "מיטב המוזיקה הישראלית מכל הזמנים",
+    "isIsraeli": true,
+    "kind": "radio",
+    "number": 366,
     "src": {
-      "by": "Sky Folk Live",
+      "by": "StreamGates – ערוצי רדיוס 100FM",
       "kind": "official",
-      "host": "skyfolk.mk",
-      "found": "שידור רשמי Sky",
-      "web": "✅ מתנגן בכל הפלטפורמות"
-    },
-    "number": 343
-  },
-  {
-    "id": "music_4ever",
-    "name": "4ever Music Hits HD",
-    "title": "4ever Music Hits HD",
-    "category": "מוזיקה (Music TV)",
-    "categoryEn": "music",
-    "url": "http://stream.mcquack.net/257/index.m3u8",
-    "logo": "assets/logos/music_4ever.png",
-    "badge": "FHD",
-    "desc": "הלהיטים הגדולים מכל הזמנים ברצף קליפים מרהיב",
-    "number": 344,
-    "lang": "music",
-    "iptv": "4everMusic.ua",
-    "src": {
-      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
-      "kind": "restream",
-      "host": "stream.mcquack.net",
-      "found": "iptv-org (4everMusic.ua)",
-      "web": "❌ רק באפליקציה (HTTP)"
-    }
-  },
-  {
-    "id": "music_4fun",
-    "name": "4Fun TV Pop Hits HD",
-    "title": "4Fun TV European Pop Hits",
-    "category": "מוזיקה (Music TV)",
-    "categoryEn": "music",
-    "url": "https://stream.4fun.tv:8888/sd/4fun_sd_high.m3u8",
-    "logo": "assets/logos/music_4fun.png",
-    "badge": "HD",
-    "desc": "להיטי הפופ האירופיים והמצעדים החמים ביותר",
-    "number": 345,
-    "lang": "music",
-    "iptv": "4FunTV.pl",
-    "src": {
-      "by": "4FUN TV – שרת רשמי",
-      "kind": "official",
-      "host": "stream.4fun.tv",
-      "found": "iptv-org (4FunTV.pl)",
-      "web": "✅"
-    }
-  },
-  {
-    "id": "music_vivalatino",
-    "name": "¡Viva Latino! Dance HD",
-    "title": "¡Viva Latino! Dance & Reggaeton HD",
-    "category": "מוזיקה (Music TV)",
-    "categoryEn": "music",
-    "url": "http://stream.mcquack.net/285/index.m3u8",
-    "logo": "assets/logos/music_vivalatino.png",
-    "badge": "FHD",
-    "desc": "רגאטון, מוזיקה לטינית סוחפת, סלסה ודאנס קצבי",
-    "number": 346,
-    "lang": "music",
-    "iptv": "VivaLatino.ua",
-    "src": {
-      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
-      "kind": "restream",
-      "host": "stream.mcquack.net",
-      "found": "iptv-org (VivaLatino.ua)",
-      "web": "❌ רק באפליקציה (HTTP)"
-    }
-  },
-  {
-    "id": "music_1hd",
-    "name": "1HD Music Television",
-    "title": "1HD Music Television HD",
-    "category": "מוזיקה (Music TV)",
-    "categoryEn": "music",
-    "url": "http://176.118.197.101/1HD/index.m3u8",
-    "logo": "assets/logos/music_1hd.png",
-    "badge": "FHD",
-    "desc": "ערוץ מוזיקה בינלאומי באיכות תמונה וסאונד מדהימים",
-    "number": 347,
-    "lang": "music",
-    "iptv": "1HDMusicTelevision.ru",
-    "src": {
-      "by": "שרת IP ללא שם (1HD)",
-      "kind": "restream",
-      "host": "176.118.197.101",
-      "found": "iptv-org (1HDMusicTelevision.ru)",
-      "web": "❌ רק באפליקציה (HTTP)"
-    }
-  },
-  {
-    "id": "dw_english",
-    "name": "DW News English HD",
-    "title": "DW News (Deutsche Welle)",
-    "category": "ערוצים בינלאומיים (World)",
-    "categoryEn": "news",
-    "url": "https://dwamdstream102.akamaized.net/hls/live/2015525/dwstream102/index.m3u8",
-    "logo": "assets/logos/dw_english.png",
-    "badge": "FHD",
-    "desc": "רשת השידור הגרמנית הבינלאומית באנגלית - סיקור עולמי אובייקטיבי",
-    "number": 348,
-    "lang": "en",
-    "src": {
-      "by": "DW – Akamai (רשמי)",
-      "kind": "official",
-      "host": "dwamdstream102.akamaized.net",
+      "host": "gb25.streamgates.net",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     }
   },
   {
-    "id": "bfmtv",
-    "name": "BFM TV HD (France)",
-    "title": "BFM TV (France)",
-    "category": "ערוצים בינלאומיים (World)",
-    "categoryEn": "news",
-    "url": "https://ncdn-live-bfm.pfd.sfr.net/shls/LIVE$BFM_TV/index.m3u8?end=END&start=LIVE",
-    "logo": "assets/logos/bfmtv.png",
-    "badge": "FHD",
-    "desc": "רשת החדשות המובילה בצרפת",
-    "number": 349,
-    "lang": "fr",
-    "iptv": "BFMTV.fr",
+    "id": "radios_hafla",
+    "name": "רדיוס 100% חפלה",
+    "category": "רדיו ישראלי (Israeli Radio)",
+    "url": "https://gb25.streamgates.net/radios-audio/91fm_digital_Hafla/playlist.m3u8",
+    "fallbackUrls": [
+      "https://gb25.streamgates.net/radios-audio/91fm_digital_Hafla/icecast.audio"
+    ],
+    "logo": "assets/logos/radios_hafla.png",
+    "badge": "LIVE",
+    "color": "#f59e0b",
+    "desc": "שירים שמחים וחפלה ים תיכונית ללא הפסקה",
+    "isIsraeli": true,
+    "kind": "radio",
+    "number": 367,
     "src": {
-      "by": "BFM – SFR (רשמי)",
+      "by": "StreamGates – ערוצי רדיוס 100FM",
       "kind": "official",
-      "host": "ncdn-live-bfm.pfd.sfr.net",
-      "found": "iptv-org (BFMTV.fr)",
+      "host": "gb25.streamgates.net",
+      "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     }
   },
   {
-    "id": "bfm_tech",
-    "name": "BFM Tech & Co HD",
-    "title": "BFM Tech & Co (France)",
-    "category": "ערוצים בינלאומיים (World)",
-    "categoryEn": "news",
-    "url": "https://ncdn-live-bfm.pfd.sfr.net/shls/LIVE$BFM_TECHANDCO/index.m3u8?end=END&start=LIVE",
-    "logo": "assets/logos/bfm_tech.png",
-    "badge": "FHD",
-    "desc": "ערוץ טכנולוגיה, גאדג'טים, AI והיי-טק",
-    "number": 350,
-    "lang": "fr",
-    "iptv": "BFMTechCo.fr",
+    "id": "radios_91_hot",
+    "name": "רדיוס 100% ים תיכוני לוהט",
+    "category": "רדיו ישראלי (Israeli Radio)",
+    "url": "https://gb25.streamgates.net/radios-audio/91Hot/playlist.m3u8",
+    "fallbackUrls": [
+      "https://gb25.streamgates.net/radios-audio/91Hot/icecast.audio"
+    ],
+    "logo": "assets/logos/radios_91_hot.png",
+    "badge": "LIVE",
+    "color": "#f59e0b",
+    "desc": "להיטים ים תיכוניים חמים מבית 91FM ו-100FM",
+    "isIsraeli": true,
+    "kind": "radio",
+    "number": 368,
     "src": {
-      "by": "BFM – SFR (רשמי)",
+      "by": "StreamGates – ערוצי רדיוס 100FM",
       "kind": "official",
-      "host": "ncdn-live-bfm.pfd.sfr.net",
-      "found": "iptv-org (BFMTechCo.fr)",
+      "host": "gb25.streamgates.net",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "radios_100_nostalgia",
+    "name": "רדיוס 100% נוסטלגיה",
+    "category": "רדיו ישראלי (Israeli Radio)",
+    "url": "https://gb25.streamgates.net/radios-audio/100Nostalgia/playlist.m3u8",
+    "fallbackUrls": [
+      "https://gb25.streamgates.net/radios-audio/100Nostalgia/icecast.audio"
+    ],
+    "logo": "assets/logos/radios_100_nostalgia.png",
+    "badge": "LIVE",
+    "color": "#f59e0b",
+    "desc": "קלאסיקות נוסטלגיות אהובות",
+    "isIsraeli": true,
+    "kind": "radio",
+    "number": 369,
+    "src": {
+      "by": "StreamGates – ערוצי רדיוס 100FM",
+      "kind": "official",
+      "host": "gb25.streamgates.net",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "radios_history",
+    "name": "רדיוס 100FM – עושים היסטוריה",
+    "category": "רדיו ישראלי (Israeli Radio)",
+    "url": "https://gb25.streamgates.net/radios-audio/100History/playlist.m3u8",
+    "fallbackUrls": [
+      "https://gb25.streamgates.net/radios-audio/100History/icecast.audio"
+    ],
+    "logo": "assets/logos/radios_history.png",
+    "badge": "LIVE",
+    "color": "#f59e0b",
+    "desc": "ערוץ הפודקאסטים והתוכן עושים היסטוריה עם רן לוי",
+    "isIsraeli": true,
+    "kind": "radio",
+    "number": 370,
+    "src": {
+      "by": "StreamGates – ערוצי רדיוס 100FM",
+      "kind": "official",
+      "host": "gb25.streamgates.net",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "radios_70s",
+    "name": "רדיוס 100% שנות ה-70",
+    "category": "רדיו ישראלי (Israeli Radio)",
+    "url": "https://gb25.streamgates.net/radios-audio/10070s/playlist.m3u8",
+    "fallbackUrls": [
+      "https://gb25.streamgates.net/radios-audio/10070s/icecast.audio"
+    ],
+    "logo": "assets/logos/radios_70s.png",
+    "badge": "LIVE",
+    "color": "#f59e0b",
+    "desc": "להיטי שנות ה-70 הגדולים",
+    "isIsraeli": true,
+    "kind": "radio",
+    "number": 371,
+    "src": {
+      "by": "StreamGates – ערוצי רדיוס 100FM",
+      "kind": "official",
+      "host": "gb25.streamgates.net",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "radios_2000s",
+    "name": "רדיוס 100% שנות ה-2000",
+    "category": "רדיו ישראלי (Israeli Radio)",
+    "url": "https://gb25.streamgates.net/radios-audio/1002000s/playlist.m3u8",
+    "fallbackUrls": [
+      "https://gb25.streamgates.net/radios-audio/1002000s/icecast.audio"
+    ],
+    "logo": "assets/logos/radios_2000s.png",
+    "badge": "LIVE",
+    "color": "#f59e0b",
+    "desc": "להיטי שנות ה-2000 ללא הפסקה",
+    "isIsraeli": true,
+    "kind": "radio",
+    "number": 372,
+    "src": {
+      "by": "StreamGates – ערוצי רדיוס 100FM",
+      "kind": "official",
+      "host": "gb25.streamgates.net",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "radios_trance",
+    "name": "רדיוס 100% טראנס",
+    "category": "רדיו ישראלי (Israeli Radio)",
+    "url": "https://gb25.streamgates.net/radios-audio/100Trance/playlist.m3u8",
+    "fallbackUrls": [
+      "https://gb25.streamgates.net/radios-audio/100Trance/icecast.audio"
+    ],
+    "logo": "assets/logos/radios_trance.png",
+    "badge": "LIVE",
+    "color": "#f59e0b",
+    "desc": "מוזיקת טראנס ואלקטרוני 24/7",
+    "isIsraeli": true,
+    "kind": "radio",
+    "number": 373,
+    "src": {
+      "by": "StreamGates – ערוצי רדיוס 100FM",
+      "kind": "official",
+      "host": "gb25.streamgates.net",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "radios_dance",
+    "name": "רדיוס 100% דאנס",
+    "category": "רדיו ישראלי (Israeli Radio)",
+    "url": "https://gb25.streamgates.net/radios-audio/100Dance/playlist.m3u8",
+    "fallbackUrls": [
+      "https://gb25.streamgates.net/radios-audio/100Dance/icecast.audio"
+    ],
+    "logo": "assets/logos/radios_dance.png",
+    "badge": "LIVE",
+    "color": "#f59e0b",
+    "desc": "להיטי דאנס ומסיבות",
+    "isIsraeli": true,
+    "kind": "radio",
+    "number": 374,
+    "src": {
+      "by": "StreamGates – ערוצי רדיוס 100FM",
+      "kind": "official",
+      "host": "gb25.streamgates.net",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "radios_hiphop",
+    "name": "רדיוס 100% היפ הופ",
+    "category": "רדיו ישראלי (Israeli Radio)",
+    "url": "https://gb25.streamgates.net/radios-audio/100Hiphop/playlist.m3u8",
+    "fallbackUrls": [
+      "https://gb25.streamgates.net/radios-audio/100Hiphop/icecast.audio"
+    ],
+    "logo": "assets/logos/radios_hiphop.png",
+    "badge": "LIVE",
+    "color": "#f59e0b",
+    "desc": "היפ הופ, ראפ ו-R&B",
+    "isIsraeli": true,
+    "kind": "radio",
+    "number": 375,
+    "src": {
+      "by": "StreamGates – ערוצי רדיוס 100FM",
+      "kind": "official",
+      "host": "gb25.streamgates.net",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "radios_deep",
+    "name": "רדיוס 100% דיפ (Deep)",
+    "category": "רדיו ישראלי (Israeli Radio)",
+    "url": "https://gb25.streamgates.net/radios-audio/100Deep/playlist.m3u8",
+    "fallbackUrls": [
+      "https://gb25.streamgates.net/radios-audio/100Deep/icecast.audio"
+    ],
+    "logo": "assets/logos/radios_deep.png",
+    "badge": "LIVE",
+    "color": "#f59e0b",
+    "desc": "דיפ האוס ואלקטרוני רגוע",
+    "isIsraeli": true,
+    "kind": "radio",
+    "number": 376,
+    "src": {
+      "by": "StreamGates – ערוצי רדיוס 100FM",
+      "kind": "official",
+      "host": "gb25.streamgates.net",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "radios_djset",
+    "name": "רדיוס 100% סט די-ג'יי",
+    "category": "רדיו ישראלי (Israeli Radio)",
+    "url": "https://gb25.streamgates.net/radios-audio/100Djset/playlist.m3u8",
+    "fallbackUrls": [
+      "https://gb25.streamgates.net/radios-audio/100Djset/icecast.audio"
+    ],
+    "logo": "assets/logos/radios_djset.png",
+    "badge": "LIVE",
+    "color": "#f59e0b",
+    "desc": "סטים חיים של מיטב התקליטנים",
+    "isIsraeli": true,
+    "kind": "radio",
+    "number": 377,
+    "src": {
+      "by": "StreamGates – ערוצי רדיוס 100FM",
+      "kind": "official",
+      "host": "gb25.streamgates.net",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "radios_karaoke",
+    "name": "רדיוס 100% קריוקי",
+    "category": "רדיו ישראלי (Israeli Radio)",
+    "url": "https://gb25.streamgates.net/radios-audio/100karaoke/playlist.m3u8",
+    "fallbackUrls": [
+      "https://gb25.streamgates.net/radios-audio/100karaoke/icecast.audio"
+    ],
+    "logo": "assets/logos/radios_karaoke.png",
+    "badge": "LIVE",
+    "color": "#f59e0b",
+    "desc": "להיטי קריוקי לשירה משותפת",
+    "isIsraeli": true,
+    "kind": "radio",
+    "number": 378,
+    "src": {
+      "by": "StreamGates – ערוצי רדיוס 100FM",
+      "kind": "official",
+      "host": "gb25.streamgates.net",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "radios_cafe",
+    "name": "רדיוס 100% קפה (Café)",
+    "category": "רדיו ישראלי (Israeli Radio)",
+    "url": "https://gb25.streamgates.net/radios-audio/100Cafe/playlist.m3u8",
+    "fallbackUrls": [
+      "https://gb25.streamgates.net/radios-audio/100Cafe/icecast.audio"
+    ],
+    "logo": "assets/logos/radios_cafe.png",
+    "badge": "LIVE",
+    "color": "#f59e0b",
+    "desc": "מוזיקת בית קפה נעימה ורגועה",
+    "isIsraeli": true,
+    "kind": "radio",
+    "number": 379,
+    "src": {
+      "by": "StreamGates – ערוצי רדיוס 100FM",
+      "kind": "official",
+      "host": "gb25.streamgates.net",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "radios_drivetime",
+    "name": "רדיוס 100% דרייב טיים",
+    "category": "רדיו ישראלי (Israeli Radio)",
+    "url": "https://gb25.streamgates.net/radios-audio/100Drivetime/playlist.m3u8",
+    "fallbackUrls": [
+      "https://gb25.streamgates.net/radios-audio/100Drivetime/icecast.audio"
+    ],
+    "logo": "assets/logos/radios_drivetime.png",
+    "badge": "LIVE",
+    "color": "#f59e0b",
+    "desc": "מוזיקה מעולה לנסיעה בדרכים",
+    "isIsraeli": true,
+    "kind": "radio",
+    "number": 380,
+    "src": {
+      "by": "StreamGates – ערוצי רדיוס 100FM",
+      "kind": "official",
+      "host": "gb25.streamgates.net",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "radios_number1",
+    "name": "רדיוס 100% מקום ראשון (No.1)",
+    "category": "רדיו ישראלי (Israeli Radio)",
+    "url": "https://gb25.streamgates.net/radios-audio/100Number1/playlist.m3u8",
+    "fallbackUrls": [
+      "https://gb25.streamgates.net/radios-audio/100Number1/icecast.audio"
+    ],
+    "logo": "assets/logos/radios_number1.png",
+    "badge": "LIVE",
+    "color": "#f59e0b",
+    "desc": "רק שירים שהגיעו למקום הראשון במצעדים",
+    "isIsraeli": true,
+    "kind": "radio",
+    "number": 381,
+    "src": {
+      "by": "StreamGates – ערוצי רדיוס 100FM",
+      "kind": "official",
+      "host": "gb25.streamgates.net",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "radios_live_perf",
+    "name": "רדיוס 100% הופעות חיות",
+    "category": "רדיו ישראלי (Israeli Radio)",
+    "url": "https://gb25.streamgates.net/radios-audio/100Live/playlist.m3u8",
+    "fallbackUrls": [
+      "https://gb25.streamgates.net/radios-audio/100Live/icecast.audio"
+    ],
+    "logo": "assets/logos/radios_live_perf.png",
+    "badge": "LIVE",
+    "color": "#f59e0b",
+    "desc": "ביצועים חיים והופעות בלתי נשכחות",
+    "isIsraeli": true,
+    "kind": "radio",
+    "number": 382,
+    "src": {
+      "by": "StreamGates – ערוצי רדיוס 100FM",
+      "kind": "official",
+      "host": "gb25.streamgates.net",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "radios_greek",
+    "name": "רדיוס 100% יוונית",
+    "category": "רדיו ישראלי (Israeli Radio)",
+    "url": "https://gb25.streamgates.net/radios-audio/100Greek/playlist.m3u8",
+    "fallbackUrls": [
+      "https://gb25.streamgates.net/radios-audio/100Greek/icecast.audio"
+    ],
+    "logo": "assets/logos/radios_greek.png",
+    "badge": "LIVE",
+    "color": "#f59e0b",
+    "desc": "מוזיקה יוונית אותנטית ולהיטים מיוון",
+    "isIsraeli": true,
+    "kind": "radio",
+    "number": 383,
+    "src": {
+      "by": "StreamGates – ערוצי רדיוס 100FM",
+      "kind": "official",
+      "host": "gb25.streamgates.net",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "radios_italian",
+    "name": "רדיוס 100% איטלקית",
+    "category": "רדיו ישראלי (Israeli Radio)",
+    "url": "https://gb25.streamgates.net/radios-audio/100Italian/playlist.m3u8",
+    "fallbackUrls": [
+      "https://gb25.streamgates.net/radios-audio/100Italian/icecast.audio"
+    ],
+    "logo": "assets/logos/radios_italian.png",
+    "badge": "LIVE",
+    "color": "#f59e0b",
+    "desc": "קלאסיקות ולהיטים מאיטליה",
+    "isIsraeli": true,
+    "kind": "radio",
+    "number": 384,
+    "src": {
+      "by": "StreamGates – ערוצי רדיוס 100FM",
+      "kind": "official",
+      "host": "gb25.streamgates.net",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "radios_french",
+    "name": "רדיוס 100% צרפתית",
+    "category": "רדיו ישראלי (Israeli Radio)",
+    "url": "https://gb25.streamgates.net/radios-audio/100France/playlist.m3u8",
+    "fallbackUrls": [
+      "https://gb25.streamgates.net/radios-audio/100France/icecast.audio"
+    ],
+    "logo": "assets/logos/radios_french.png",
+    "badge": "LIVE",
+    "color": "#f59e0b",
+    "desc": "שאנסונים ולהיטים בצרפתית",
+    "isIsraeli": true,
+    "kind": "radio",
+    "number": 385,
+    "src": {
+      "by": "StreamGates – ערוצי רדיוס 100FM",
+      "kind": "official",
+      "host": "gb25.streamgates.net",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "radios_russian_891",
+    "name": "רדיוס 100% רוסית (89.1)",
+    "category": "רדיו ישראלי (Israeli Radio)",
+    "url": "https://gb25.streamgates.net/radios-audio/891Digital/playlist.m3u8",
+    "fallbackUrls": [
+      "https://gb25.streamgates.net/radios-audio/891Digital/icecast.audio"
+    ],
+    "logo": "assets/logos/radios_russian_891.png",
+    "badge": "LIVE",
+    "color": "#f59e0b",
+    "desc": "להיטים ברוסית מבית 89.1FM ו-100FM",
+    "isIsraeli": true,
+    "kind": "radio",
+    "number": 386,
+    "src": {
+      "by": "StreamGates – ערוצי רדיוס 100FM",
+      "kind": "official",
+      "host": "gb25.streamgates.net",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "radios_tomer_maizner",
+    "name": "רדיוס 100FM – תומר מייזנר",
+    "category": "רדיו ישראלי (Israeli Radio)",
+    "url": "https://gb25.streamgates.net/radios-audio/100Tomer/playlist.m3u8",
+    "fallbackUrls": [
+      "https://gb25.streamgates.net/radios-audio/100Tomer/icecast.audio"
+    ],
+    "logo": "assets/logos/radios_tomer_maizner.png",
+    "badge": "LIVE",
+    "color": "#f59e0b",
+    "desc": "סטים ומיקסים של DJ תומר מייזנר",
+    "isIsraeli": true,
+    "kind": "radio",
+    "number": 387,
+    "src": {
+      "by": "StreamGates – ערוצי רדיוס 100FM",
+      "kind": "official",
+      "host": "gb25.streamgates.net",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "radios_vip_digital",
+    "name": "רדיוס 100FM – VIP Digital",
+    "category": "רדיו ישראלי (Israeli Radio)",
+    "url": "https://gb25.streamgates.net/radios-audio/100Vip/playlist.m3u8",
+    "fallbackUrls": [
+      "https://gb25.streamgates.net/radios-audio/100Vip/icecast.audio"
+    ],
+    "logo": "assets/logos/radios_vip_digital.png",
+    "badge": "LIVE",
+    "color": "#f59e0b",
+    "desc": "ערוץ ה-VIP הדיגיטלי של רדיוס 100FM",
+    "isIsraeli": true,
+    "kind": "radio",
+    "number": 388,
+    "src": {
+      "by": "StreamGates – ערוצי רדיוס 100FM",
+      "kind": "official",
+      "host": "gb25.streamgates.net",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "radios_loewenstein",
+    "name": "רדיוס 100FM – בית לוינשטיין",
+    "category": "רדיו ישראלי (Israeli Radio)",
+    "url": "https://gb25.streamgates.net/radios-audio/100Hospital/playlist.m3u8",
+    "fallbackUrls": [
+      "https://gb25.streamgates.net/radios-audio/100Hospital/icecast.audio"
+    ],
+    "logo": "assets/logos/radios_loewenstein.png",
+    "badge": "LIVE",
+    "color": "#f59e0b",
+    "desc": "רדיו קהילתי מיוחד בשיתוף המרכז הרפואי בית לוינשטיין",
+    "isIsraeli": true,
+    "kind": "radio",
+    "number": 389,
+    "src": {
+      "by": "StreamGates – ערוצי רדיוס 100FM",
+      "kind": "official",
+      "host": "gb25.streamgates.net",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "radios_taklitia",
+    "name": "רדיוס 100FM – התקליטייה",
+    "category": "רדיו ישראלי (Israeli Radio)",
+    "url": "https://gb25.streamgates.net/radios-audio/100Taklitia/playlist.m3u8",
+    "fallbackUrls": [
+      "https://gb25.streamgates.net/radios-audio/100Taklitia/icecast.audio"
+    ],
+    "logo": "assets/logos/radios_taklitia.png",
+    "badge": "LIVE",
+    "color": "#f59e0b",
+    "desc": "ספיישלים ופלייליסטים נבחרים מהתקליטייה של 100FM",
+    "isIsraeli": true,
+    "kind": "radio",
+    "number": 390,
+    "src": {
+      "by": "StreamGates – ערוצי רדיוס 100FM",
+      "kind": "official",
+      "host": "gb25.streamgates.net",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "radios_news12_flash",
+    "name": "רדיוס 100FM – מבזק חדשות 12",
+    "category": "רדיו ישראלי (Israeli Radio)",
+    "url": "http://ff_engine.streamgates.net/Ch10News.mp3",
+    "fallbackUrls": [],
+    "logo": "assets/logos/radios_news12_flash.png",
+    "badge": "LIVE",
+    "color": "#ef4444",
+    "desc": "מבזק השעה של חדשות 12 ברדיוס 100FM",
+    "isIsraeli": true,
+    "kind": "radio",
+    "number": 391,
+    "src": {
+      "by": "ff_engine.streamgates.net",
+      "kind": "restream",
+      "host": "ff_engine.streamgates.net",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "❌ רק באפליקציה (HTTP)"
+    }
+  },
+  {
+    "id": "kan_kids_radio",
+    "name": "כאן חינוכית – רדיו ילדים",
+    "category": "רדיו ישראלי (Israeli Radio)",
+    "url": "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/radio/radio_kan_hinuchit/live.livx/playlist.m3u8?renditions",
+    "fallbackUrls": [],
+    "logo": "assets/logos/kan_kids_radio.png",
+    "badge": "LIVE",
+    "color": "#38bdf8",
+    "desc": "רדיו הילדים של כאן חינוכית – שירים, סיפורים והסכתים לילדים",
+    "isIsraeli": true,
+    "kind": "radio",
+    "number": 392,
+    "src": {
+      "by": "כאן – תאגיד השידור (CDN רשמי)",
+      "kind": "official",
+      "host": "kancdn.medonecdn.net",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "radio_makan_live",
+    "name": "רדיו מכאן (Makan Radio)",
+    "category": "רדיו ישראלי (Israeli Radio)",
+    "url": "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/radio/radio_makan/live.livx/playlist.m3u8?renditions",
+    "fallbackUrls": [],
+    "logo": "assets/logos/radio_makan_live.png",
+    "badge": "LIVE",
+    "color": "#34d399",
+    "desc": "תחנת הרדיו מכאן מבית תאגיד השידור הישראלי",
+    "isIsraeli": true,
+    "kind": "radio",
+    "number": 393,
+    "src": {
+      "by": "כאן – תאגיד השידור (CDN רשמי)",
+      "kind": "official",
+      "host": "kancdn.medonecdn.net",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "toker_fm_live",
+    "name": "Toker FM – רדיו מנחם טוקר",
+    "category": "רדיו ישראלי (Israeli Radio)",
+    "url": "https://live.toker.fm:6060/;",
+    "fallbackUrls": [],
+    "logo": "assets/logos/toker_fm_live.png",
+    "badge": "LIVE",
+    "color": "#fbbf24",
+    "desc": "רדיו המוזיקה היהודית והחסידית של מנחם טוקר 24/6",
+    "isIsraeli": true,
+    "kind": "radio",
+    "number": 394,
+    "src": {
+      "by": "live.toker.fm",
+      "kind": "restream",
+      "host": "live.toker.fm",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "chabad_music_radio",
+    "name": "רדיו חב\"ד – מוזיקה יהודית",
+    "category": "רדיו ישראלי (Israeli Radio)",
+    "url": "https://stream.radio.co/sdfd68a101/listen",
+    "fallbackUrls": [],
+    "logo": "assets/logos/chabad_music_radio.png",
+    "badge": "LIVE",
+    "color": "#f59e0b",
+    "desc": "ניגוני חב\"ד ומוזיקה יהודית שמחה 24 שעות ביממה",
+    "isIsraeli": true,
+    "kind": "radio",
+    "number": 395,
+    "src": {
+      "by": "stream.radio.co",
+      "kind": "restream",
+      "host": "stream.radio.co",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "chabad_torah_radio",
+    "name": "רדיו חב\"ד – שיעורי תורה",
+    "category": "רדיו ישראלי (Israeli Radio)",
+    "url": "https://streams.radio.co/s9f35c3afc/listen",
+    "fallbackUrls": [],
+    "logo": "assets/logos/chabad_torah_radio.png",
+    "badge": "LIVE",
+    "color": "#60a5fa",
+    "desc": "שיעורי תורה, חסידות ותניא בשידור חי 24/6",
+    "isIsraeli": true,
+    "kind": "radio",
+    "number": 396,
+    "src": {
+      "by": "streams.radio.co",
+      "kind": "restream",
+      "host": "streams.radio.co",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "kol_radio_il",
+    "name": "קול רדיו (Kol Radio)",
+    "category": "רדיו ישראלי (Israeli Radio)",
+    "url": "http://uksoutha.streaming.broadcast.radio:20691/kolradio",
+    "fallbackUrls": [],
+    "logo": "assets/logos/kol_radio_il.png",
+    "badge": "LIVE",
+    "color": "#a78bfa",
+    "desc": "קול רדיו – מוזיקה יהודית וישראלית מהארץ ומהעולם",
+    "isIsraeli": true,
+    "kind": "radio",
+    "number": 397,
+    "src": {
+      "by": "uksoutha.streaming.broadcast.radio",
+      "kind": "restream",
+      "host": "uksoutha.streaming.broadcast.radio",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "❌ רק באפליקציה (HTTP)"
+    }
+  },
+  {
+    "id": "imsostablee_radio_il",
+    "name": "Imsostablee Radio ישראל",
+    "category": "רדיו ישראלי (Israeli Radio)",
+    "url": "https://c44.radioboss.fm:8178/stream",
+    "fallbackUrls": [
+      "https://c44.radioboss.fm:8178/stream-mp3"
+    ],
+    "logo": "assets/logos/imsostablee_radio_il.png",
+    "badge": "LIVE",
+    "color": "#ec4899",
+    "desc": "תחנת מוזיקה אלקטרונית וישראלית עצמאית בשידור חי",
+    "isIsraeli": true,
+    "kind": "radio",
+    "number": 398,
+    "src": {
+      "by": "c44.radioboss.fm",
+      "kind": "restream",
+      "host": "c44.radioboss.fm",
+      "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     }
   }
