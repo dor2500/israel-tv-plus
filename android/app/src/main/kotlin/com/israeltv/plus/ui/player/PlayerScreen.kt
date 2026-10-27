@@ -19,6 +19,7 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.animation.scaleIn
 import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.gestures.detectVerticalDragGestures
@@ -71,7 +72,11 @@ import androidx.compose.material.icons.rounded.ScreenShare
 import androidx.compose.material.icons.rounded.SkipNext
 import androidx.compose.material.icons.rounded.SkipPrevious
 import androidx.compose.material.icons.rounded.StopCircle
+import androidx.compose.material.icons.rounded.SwapHoriz
 import androidx.compose.material.icons.rounded.Tv
+import androidx.compose.material.icons.rounded.VolumeOff
+import androidx.compose.material.icons.rounded.VolumeUp
+import androidx.compose.material.icons.rounded.GridView
 import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.CircularWavyProgressIndicator
@@ -131,8 +136,10 @@ import androidx.media3.common.Player
 import androidx.media3.common.TrackSelectionOverride
 import androidx.media3.common.Tracks
 import androidx.media3.datasource.DefaultHttpDataSource
+import androidx.media3.exoplayer.DefaultLoadControl
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.exoplayer.source.DefaultMediaSourceFactory
+import androidx.media3.exoplayer.trackselection.DefaultTrackSelector
 import androidx.media3.ui.AspectRatioFrameLayout
 import androidx.media3.ui.PlayerView
 import com.israeltv.plus.data.AppPrefs
@@ -162,17 +169,32 @@ private val GlassDark = Color.Black.copy(alpha = 0.42f)
  * Volume: there is no mute anywhere in the app – the volume is set to 1.0 when the player is built, on every
  * playback state change and on every channel switch. Only the device's own volume / mute keys change loudness.
  */
-private fun buildPlayer(context: Context): ExoPlayer {
+private fun buildPlayer(context: Context, handleAudioFocus: Boolean = true): ExoPlayer {
     val http = DefaultHttpDataSource.Factory()
         .setUserAgent(USER_AGENT)
         .setAllowCrossProtocolRedirects(true)
-        .setConnectTimeoutMs(14_000)
-        .setReadTimeoutMs(18_000)
+        .setConnectTimeoutMs(7_000)
+        .setReadTimeoutMs(9_000)
+    val loadControl = DefaultLoadControl.Builder()
+        .setBufferDurationsMs(
+            /* minBufferMs = */ 12_000,
+            /* maxBufferMs = */ 45_000,
+            /* bufferForPlaybackMs = */ 800,
+            /* bufferForPlaybackAfterRebufferMs = */ 1_600,
+        )
+        .build()
+    val trackSelector = DefaultTrackSelector(context).apply {
+        parameters = buildUponParameters()
+            .setForceHighestSupportedBitrate(true)
+            .build()
+    }
     return ExoPlayer.Builder(context)
+        .setTrackSelector(trackSelector)
+        .setLoadControl(loadControl)
         .setMediaSourceFactory(DefaultMediaSourceFactory(http))
         .setAudioAttributes(
             AudioAttributes.Builder().setUsage(C.USAGE_MEDIA).setContentType(C.AUDIO_CONTENT_TYPE_MOVIE).build(),
-            /* handleAudioFocus = */ true,
+            /* handleAudioFocus = */ handleAudioFocus,
         )
         .setHandleAudioBecomingNoisy(true)
         .build()
@@ -221,8 +243,10 @@ fun PlayerScreen(
     var landscape by remember { mutableStateOf(false) }
     var tracks by remember { mutableStateOf(Tracks.EMPTY) }
     var attempt by remember { mutableIntStateOf(0) }
-    val candidates = remember(current.id, current.url, current.fallbackUrls) { current.allCandidateUrls() }
+    val candidates = remember(current.id, current.url, current.fallbackUrls, current.backups) { current.allCandidateUrls() }
     var sourceIndex by remember(current.id, attempt) { mutableIntStateOf(0) }
+    var lastPlayedRawUrl by remember { mutableStateOf("") }
+    var multiViewActive by remember { mutableStateOf(false) }
 
     // EPG & Catch-Up state
     var nowTickMs by remember { mutableLongStateOf(System.currentTimeMillis()) }
@@ -324,7 +348,9 @@ fun PlayerScreen(
                 if (sourceIndex + 1 < candidates.size) {
                     buffering = true
                     error = null
-                    sourceIndex += 1
+                    val nextIdx = sourceIndex + 1
+                    statusToast = "🔀 עובר לשרת גיבוי (${nextIdx + 1}/${candidates.size})..."
+                    sourceIndex = nextIdx
                 } else {
                     error = describe(e)
                     buffering = false
@@ -351,7 +377,13 @@ fun PlayerScreen(
     }
 
     // every channel switch, automatic fallback step, DVR reload, or manual "נסו שוב": resolve stream, full volume, play
-    LaunchedEffect(current.id, attempt, sourceIndex, dvrReloadTrigger) {
+    LaunchedEffect(current.id, attempt, sourceIndex, dvrReloadTrigger, multiViewActive) {
+        if (multiViewActive) {
+            player.stop()
+            player.clearMediaItems()
+            buffering = false
+            return@LaunchedEffect
+        }
         error = null
         buffering = true
         if (sourceIndex == 0 && dvrReloadTrigger == 0) prefs.addRecent(current.id)
@@ -361,11 +393,13 @@ fun PlayerScreen(
         }
         val rawCandidate = candidates.getOrElse(sourceIndex) { current.url }
 
-        // Stop previous stream cleanly before opening a new connection (critical for ottrast.com 1-conn limit)
+        // Stop previous stream cleanly before opening a new connection (only delay when switching FROM an ottrast stream TO an ottrast stream)
+        val prevWasOttrast = lastPlayedRawUrl.contains("ottrast.com", ignoreCase = true)
+        lastPlayedRawUrl = rawCandidate
         player.stop()
         player.clearMediaItems()
-        if (rawCandidate.contains("ottrast.com", ignoreCase = true)) {
-            delay(320)
+        if (prevWasOttrast && rawCandidate.contains("ottrast.com", ignoreCase = true)) {
+            delay(260)
         }
 
         val candidateWithDvr = EpgRepository.buildCatchUpUrl(rawCandidate, catchUpOffsetSec)
@@ -384,9 +418,11 @@ fun PlayerScreen(
         player.volume = 1.0f
         player.prepare()
         player.playWhenReady = !castController.isCasting
-        delay(9500)
+        delay(6200)
         if (buffering && !playing && error == null && !castController.isCasting && sourceIndex + 1 < candidates.size) {
-            sourceIndex += 1
+            val nextIdx = sourceIndex + 1
+            statusToast = "🔀 עובר לשרת גיבוי (${nextIdx + 1}/${candidates.size})..."
+            sourceIndex = nextIdx
         }
     }
 
@@ -428,7 +464,11 @@ fun PlayerScreen(
     }
 
     BackHandler {
-        if (sheet != null) sheet = null else onClose()
+        when {
+            sheet != null -> sheet = null
+            multiViewActive -> multiViewActive = false
+            else -> onClose()
+        }
     }
 
     Box(
@@ -552,6 +592,16 @@ fun PlayerScreen(
                         Spacer(Modifier.height(18.dp))
                         CatchUpQuickBar(
                             catchUpOffsetSec = catchUpOffsetSec,
+                            serverIndex = sourceIndex,
+                            serverCount = candidates.size,
+                            onCycleServer = {
+                                if (candidates.size > 1) {
+                                    val nextIdx = (sourceIndex + 1) % candidates.size
+                                    sourceIndex = nextIdx
+                                    statusToast = "🔀 שרת גיבוי (${nextIdx + 1}/${candidates.size})"
+                                }
+                            },
+                            onOpenMultiView = { multiViewActive = true },
                             onRewind5m = { applyTimeShift(-300L) },
                             onRewind30s = { applyTimeShift(-30L) },
                             onStartOver = { startOverCurrentProgram() },
@@ -611,9 +661,35 @@ fun PlayerScreen(
                             castController.startDiscovery(current)
                             sheet = "cast"
                         }
+                        "multiview" -> {
+                            multiViewActive = true
+                        }
+                        "server" -> {
+                            if (candidates.size > 1) {
+                                val nextIdx = (sourceIndex + 1) % candidates.size
+                                sourceIndex = nextIdx
+                                statusToast = "🔀 שרת גיבוי (${nextIdx + 1}/${candidates.size})"
+                            } else {
+                                statusToast = "לערוץ זה שרת שידור יחיד"
+                            }
+                        }
                         else -> sheet = key
                     }
                 },
+            )
+        }
+
+        if (multiViewActive) {
+            MultiViewOverlay(
+                initialChannel = current,
+                allChannels = list.filter { !it.isRadio },
+                logo = logo,
+                onExpandChannel = { ch ->
+                    val targetIdx = list.indexOfFirst { it.id == ch.id }
+                    if (targetIdx >= 0) index = targetIdx
+                    multiViewActive = false
+                },
+                onClose = { multiViewActive = false },
             )
         }
     }
@@ -644,6 +720,17 @@ fun PlayerScreen(
         "more" -> MoreSheet(
             ch = current,
             prefs = prefs,
+            serverIndex = sourceIndex,
+            serverCount = candidates.size,
+            onSelectServer = { idx ->
+                sourceIndex = idx
+                statusToast = "🔀 שרת (${idx + 1}/${candidates.size})"
+                sheet = null
+            },
+            onOpenMultiView = {
+                sheet = null
+                multiViewActive = true
+            },
             onOpenEpg = { sheet = "epg" },
             onOpenCast = {
                 castController.startDiscovery(current)
@@ -657,6 +744,10 @@ fun PlayerScreen(
 @Composable
 private fun CatchUpQuickBar(
     catchUpOffsetSec: Long,
+    serverIndex: Int,
+    serverCount: Int,
+    onCycleServer: () -> Unit,
+    onOpenMultiView: () -> Unit,
     onRewind5m: () -> Unit,
     onRewind30s: () -> Unit,
     onStartOver: () -> Unit,
@@ -676,6 +767,10 @@ private fun CatchUpQuickBar(
         horizontalArrangement = Arrangement.spacedBy(6.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
+        if (serverCount > 1) {
+            QuickChip("🔀 שרת (${serverIndex + 1}/$serverCount)", onCycleServer)
+        }
+        QuickChip("📺 פיצול מסך", onOpenMultiView)
         QuickChip("⏮ התחל מחדש", onStartOver)
         QuickChip("⏪ -5 דק׳", onRewind5m)
         QuickChip("⏪ -30 שנ׳", onRewind30s)
@@ -1006,13 +1101,14 @@ private fun Dock(landscape: Boolean, isCasting: Boolean, onItem: (String) -> Uni
     ) {
         DockItem(Icons.AutoMirrored.Rounded.List, "ערוצים") { onItem("list") }
         DockItem(Icons.Rounded.Schedule, "לוח שידורים") { onItem("epg") }
+        DockItem(Icons.Rounded.GridView, "פיצול") { onItem("multiview") }
+        DockItem(Icons.Rounded.SwapHoriz, "שרת גיבוי") { onItem("server") }
         DockItem(
             icon = if (isCasting) Icons.Rounded.CastConnected else Icons.Rounded.Cast,
             label = "שידור ל-TV",
             highlight = isCasting,
         ) { onItem("cast") }
         DockItem(Icons.Rounded.Audiotrack, "שמע") { onItem("audio") }
-        DockItem(Icons.Rounded.PictureInPictureAlt, "חלון צף") { onItem("pip") }
         DockItem(Icons.Rounded.MoreHoriz, "אפשרויות") { onItem("more") }
         DockItem(if (landscape) Icons.Rounded.FullscreenExit else Icons.Rounded.Fullscreen, "מסך מלא") { onItem("full") }
     }
@@ -1650,19 +1746,34 @@ private fun AudioSheet(player: ExoPlayer, tracks: Tracks, onDismiss: () -> Unit)
 private fun MoreSheet(
     ch: Channel,
     prefs: AppPrefs,
+    serverIndex: Int,
+    serverCount: Int,
+    onSelectServer: (Int) -> Unit,
+    onOpenMultiView: () -> Unit,
     onOpenEpg: () -> Unit,
     onOpenCast: () -> Unit,
     onDismiss: () -> Unit,
 ) {
     val scheme = MaterialTheme.colorScheme
     ModalBottomSheet(onDismissRequest = onDismiss, containerColor = scheme.surfaceContainer) {
-        Column(Modifier.padding(horizontal = 24.dp).padding(bottom = 32.dp)) {
+        Column(
+            Modifier
+                .fillMaxWidth()
+                .verticalScroll(rememberScrollState())
+                .padding(horizontal = 24.dp)
+                .padding(bottom = 32.dp)
+        ) {
             Text(ch.name, fontSize = 22.sp, fontWeight = FontWeight.ExtraBold, color = scheme.onSurface)
             if (ch.desc.isNotEmpty()) Text(ch.desc, color = scheme.onSurfaceVariant, modifier = Modifier.padding(top = 6.dp))
             Spacer(Modifier.height(18.dp))
             Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(10.dp)) {
                 FilledTonalButton({ prefs.toggleFavorite(ch.id) }, shape = RoundedCornerShape(50)) {
                     Text(if (prefs.isFavorite(ch.id)) "★ הסרה מהמועדפים" else "☆ הוספה למועדפים", fontWeight = FontWeight.Bold)
+                }
+                FilledTonalButton(onClick = onOpenMultiView, shape = RoundedCornerShape(50)) {
+                    Icon(Icons.Rounded.GridView, null, modifier = Modifier.size(18.dp))
+                    Spacer(Modifier.width(6.dp))
+                    Text("פיצול מסך (Multi-View)", fontWeight = FontWeight.Bold)
                 }
                 FilledTonalButton(onClick = onOpenEpg, shape = RoundedCornerShape(50)) {
                     Icon(Icons.Rounded.Schedule, null, modifier = Modifier.size(18.dp))
@@ -1674,6 +1785,333 @@ private fun MoreSheet(
                     Spacer(Modifier.width(6.dp))
                     Text("שידור לטלוויזיה", fontWeight = FontWeight.Bold)
                 }
+            }
+            if (serverCount > 1) {
+                Spacer(Modifier.height(18.dp))
+                Text(
+                    "🔀 שרתי גיבוי (${serverIndex + 1}/$serverCount) — מעבר אוטומטי או ידני במקרה תקלה",
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight.ExtraBold,
+                    color = scheme.primary,
+                )
+                Spacer(Modifier.height(8.dp))
+                Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    for (i in 0 until serverCount) {
+                        val active = i == serverIndex
+                        val label = if (i == 0) "שרת ראשי #1" else "שרת גיבוי #${i + 1}"
+                        if (active) {
+                            Button(onClick = { onSelectServer(i) }, shape = RoundedCornerShape(50)) {
+                                Text("✓ $label", fontWeight = FontWeight.Bold, fontSize = 12.sp)
+                            }
+                        } else {
+                            FilledTonalButton(onClick = { onSelectServer(i) }, shape = RoundedCornerShape(50)) {
+                                Text(label, fontWeight = FontWeight.Bold, fontSize = 12.sp)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+/**
+ * Split-TV / Multi-View live screen (2 or 4 simultaneous channels) with per-cell audio selection,
+ * per-cell channel switcher, per-cell backup server failover/switcher, and fullscreen expand.
+ */
+@Composable
+private fun MultiViewOverlay(
+    initialChannel: Channel,
+    allChannels: List<Channel>,
+    logo: (Channel) -> String,
+    onExpandChannel: (Channel) -> Unit,
+    onClose: () -> Unit,
+) {
+    val channels = remember(allChannels, initialChannel) {
+        if (allChannels.isNotEmpty()) allChannels else listOf(initialChannel)
+    }
+    var cellCount by remember { mutableIntStateOf(4) }
+    var activeAudioCell by remember { mutableIntStateOf(0) }
+    var pickingCellIndex by remember { mutableIntStateOf(-1) }
+
+    // Default initial 4 channels: current channel + top Israeli / Sports channels
+    val defaultIds = listOf("kan11", "keshet12", "reshet13", "now14", "i24news_he", "channel16", "sport5")
+    var cellChannels by remember(initialChannel.id) {
+        val picked = mutableListOf(initialChannel)
+        for (cid in defaultIds) {
+            if (picked.size >= 4) break
+            val found = channels.firstOrNull { it.id == cid && picked.none { p -> p.id == it.id } }
+            if (found != null) picked.add(found)
+        }
+        for (ch in channels) {
+            if (picked.size >= 4) break
+            if (picked.none { it.id == ch.id }) picked.add(ch)
+        }
+        while (picked.size < 4) picked.add(initialChannel)
+        mutableStateOf(picked.toList())
+    }
+
+    Box(
+        Modifier
+            .fillMaxSize()
+            .background(Color(0xFF07090E))
+            .windowInsetsPadding(WindowInsets.statusBars)
+            .navigationBarsPadding()
+    ) {
+        Column(Modifier.fillMaxSize()) {
+            // Top Header
+            Row(
+                Modifier
+                    .fillMaxWidth()
+                    .background(Color(0xFF0F131D))
+                    .padding(horizontal = 14.dp, vertical = 10.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween,
+            ) {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Icon(Icons.Rounded.GridView, null, tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(22.dp))
+                    Spacer(Modifier.width(8.dp))
+                    Column {
+                        Text("פיצול מסך · Split-TV", color = Color.White, fontSize = 16.sp, fontWeight = FontWeight.ExtraBold)
+                        Text("הקש על מסך להפעלת השמע שלו", color = Color.White.copy(alpha = 0.68f), fontSize = 11.sp)
+                    }
+                }
+                Row(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
+                    listOf(2 to "2 מסכים", 4 to "4 מסכים").forEach { (cnt, label) ->
+                        val selected = cellCount == cnt
+                        Box(
+                            Modifier
+                                .clip(RoundedCornerShape(50))
+                                .background(if (selected) MaterialTheme.colorScheme.primary else Color.White.copy(alpha = 0.12f))
+                                .clickable {
+                                    cellCount = cnt
+                                    if (activeAudioCell >= cnt) activeAudioCell = 0
+                                }
+                                .padding(horizontal = 12.dp, vertical = 6.dp),
+                        ) {
+                            Text(
+                                label,
+                                color = if (selected) MaterialTheme.colorScheme.onPrimary else Color.White,
+                                fontSize = 12.sp,
+                                fontWeight = FontWeight.Bold,
+                            )
+                        }
+                    }
+                    Box(
+                        Modifier
+                            .clip(RoundedCornerShape(50))
+                            .background(Color(0xFFFF3B30).copy(alpha = 0.85f))
+                            .clickable(onClick = onClose)
+                            .padding(horizontal = 12.dp, vertical = 6.dp),
+                    ) {
+                        Text("✕ סגור", color = Color.White, fontSize = 12.sp, fontWeight = FontWeight.ExtraBold)
+                    }
+                }
+            }
+
+            // Grid of live cells
+            if (cellCount == 2) {
+                Column(Modifier.weight(1f).fillMaxWidth().padding(6.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+                    for (slot in 0 until 2) {
+                        MultiViewCell(
+                            channel = cellChannels[slot],
+                            isAudioActive = activeAudioCell == slot,
+                            onSelectAudio = { activeAudioCell = slot },
+                            onPickChannel = { pickingCellIndex = slot },
+                            onExpand = { onExpandChannel(cellChannels[slot]) },
+                            modifier = Modifier.weight(1f).fillMaxWidth(),
+                        )
+                    }
+                }
+            } else {
+                Column(Modifier.weight(1f).fillMaxWidth().padding(6.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+                    for (row in 0 until 2) {
+                        Row(Modifier.weight(1f).fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                            for (col in 0 until 2) {
+                                val slot = row * 2 + col
+                                MultiViewCell(
+                                    channel = cellChannels[slot],
+                                    isAudioActive = activeAudioCell == slot,
+                                    onSelectAudio = { activeAudioCell = slot },
+                                    onPickChannel = { pickingCellIndex = slot },
+                                    onExpand = { onExpandChannel(cellChannels[slot]) },
+                                    modifier = Modifier.weight(1f).fillMaxHeight(),
+                                )
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        if (pickingCellIndex in 0..3) {
+            val slot = pickingCellIndex
+            val curIdx = channels.indexOfFirst { it.id == cellChannels[slot].id }.coerceAtLeast(0)
+            ChannelListSheet(
+                list = channels,
+                current = curIdx,
+                logo = logo,
+                onPick = { pickedIdx ->
+                    val updated = cellChannels.toMutableList()
+                    updated[slot] = channels[pickedIdx]
+                    cellChannels = updated
+                    pickingCellIndex = -1
+                },
+                onDismiss = { pickingCellIndex = -1 },
+            )
+        }
+    }
+}
+
+@Composable
+private fun MultiViewCell(
+    channel: Channel,
+    isAudioActive: Boolean,
+    onSelectAudio: () -> Unit,
+    onPickChannel: () -> Unit,
+    onExpand: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    val context = LocalContext.current
+    val candidates = remember(channel.id, channel.url, channel.fallbackUrls, channel.backups) { channel.allCandidateUrls() }
+    var srvIdx by remember(channel.id) { mutableIntStateOf(0) }
+    val cellPlayer = remember { buildPlayer(context, handleAudioFocus = false) }
+
+    DisposableEffect(cellPlayer) {
+        onDispose { cellPlayer.release() }
+    }
+
+    LaunchedEffect(isAudioActive) {
+        cellPlayer.volume = if (isAudioActive) 1.0f else 0f
+    }
+
+    DisposableEffect(cellPlayer, candidates) {
+        val listener = object : Player.Listener {
+            override fun onPlayerError(error: PlaybackException) {
+                if (srvIdx + 1 < candidates.size) {
+                    srvIdx += 1
+                }
+            }
+        }
+        cellPlayer.addListener(listener)
+        onDispose { cellPlayer.removeListener(listener) }
+    }
+
+    LaunchedEffect(channel.id, srvIdx) {
+        val raw = candidates.getOrElse(srvIdx) { channel.url }
+        cellPlayer.stop()
+        cellPlayer.clearMediaItems()
+        val resolved = runCatching { playableUrl(raw, channel.auth) }.getOrDefault(raw)
+        val item = MediaItem.Builder().setUri(resolved).setMimeType(MimeTypes.APPLICATION_M3U8).build()
+        cellPlayer.setMediaItem(item)
+        cellPlayer.volume = if (isAudioActive) 1.0f else 0f
+        cellPlayer.prepare()
+        cellPlayer.playWhenReady = true
+    }
+
+    val borderColor = if (isAudioActive) MaterialTheme.colorScheme.primary else Color.White.copy(alpha = 0.16f)
+    val borderWidth = if (isAudioActive) 2.5.dp else 1.dp
+    val shape = RoundedCornerShape(14.dp)
+
+    Box(
+        modifier
+            .clip(shape)
+            .background(Color.Black)
+            .border(borderWidth, borderColor, shape)
+            .clickable { onSelectAudio() }
+    ) {
+        AndroidView(
+            factory = { ctx ->
+                PlayerView(ctx).apply {
+                    layoutParams = FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
+                    useController = false
+                    artworkDisplayMode = PlayerView.ARTWORK_DISPLAY_MODE_OFF
+                    setShutterBackgroundColor(android.graphics.Color.BLACK)
+                    resizeMode = AspectRatioFrameLayout.RESIZE_MODE_FIT
+                    this.player = cellPlayer
+                }
+            },
+            modifier = Modifier.fillMaxSize(),
+        )
+
+        // Top badge: channel name + audio state
+        Row(
+            Modifier
+                .align(Alignment.TopStart)
+                .fillMaxWidth()
+                .background(Brush.verticalGradient(listOf(Color.Black.copy(alpha = 0.78f), Color.Transparent)))
+                .padding(horizontal = 10.dp, vertical = 6.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween,
+        ) {
+            Text(
+                "${channel.number} · ${channel.name}",
+                color = Color.White,
+                fontSize = 12.sp,
+                fontWeight = FontWeight.ExtraBold,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
+                modifier = Modifier.weight(1f),
+            )
+            Spacer(Modifier.width(6.dp))
+            Row(
+                Modifier
+                    .clip(RoundedCornerShape(50))
+                    .background(if (isAudioActive) MaterialTheme.colorScheme.primary else Color.Black.copy(alpha = 0.65f))
+                    .padding(horizontal = 8.dp, vertical = 3.dp),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                Icon(
+                    if (isAudioActive) Icons.Rounded.VolumeUp else Icons.Rounded.VolumeOff,
+                    contentDescription = null,
+                    tint = if (isAudioActive) MaterialTheme.colorScheme.onPrimary else Color.White.copy(alpha = 0.75f),
+                    modifier = Modifier.size(13.dp),
+                )
+                Spacer(Modifier.width(4.dp))
+                Text(
+                    if (isAudioActive) "שמע פעיל" else "מושתק",
+                    color = if (isAudioActive) MaterialTheme.colorScheme.onPrimary else Color.White.copy(alpha = 0.8f),
+                    fontSize = 10.sp,
+                    fontWeight = FontWeight.Bold,
+                )
+            }
+        }
+
+        // Bottom actions: Switch Channel, Backup Server, Expand Fullscreen
+        Row(
+            Modifier
+                .align(Alignment.BottomEnd)
+                .padding(6.dp),
+            horizontalArrangement = Arrangement.spacedBy(5.dp),
+        ) {
+            if (candidates.size > 1) {
+                Box(
+                    Modifier
+                        .clip(RoundedCornerShape(50))
+                        .background(Color.Black.copy(alpha = 0.72f))
+                        .clickable { srvIdx = (srvIdx + 1) % candidates.size }
+                        .padding(horizontal = 8.dp, vertical = 4.dp),
+                ) {
+                    Text("🔀 ${srvIdx + 1}/${candidates.size}", color = Color.White, fontSize = 10.sp, fontWeight = FontWeight.Bold)
+                }
+            }
+            Box(
+                Modifier
+                    .clip(RoundedCornerShape(50))
+                    .background(Color.Black.copy(alpha = 0.72f))
+                    .clickable(onClick = onPickChannel)
+                    .padding(horizontal = 8.dp, vertical = 4.dp),
+            ) {
+                Text("🔄 ערוץ", color = Color.White, fontSize = 10.sp, fontWeight = FontWeight.Bold)
+            }
+            Box(
+                Modifier
+                    .clip(RoundedCornerShape(50))
+                    .background(Color.Black.copy(alpha = 0.72f))
+                    .clickable(onClick = onExpand)
+                    .padding(horizontal = 8.dp, vertical = 4.dp),
+            ) {
+                Text("⛶ הרחב", color = Color.White, fontSize = 10.sp, fontWeight = FontWeight.Bold)
             }
         }
     }

@@ -1,51 +1,51 @@
 {
-  "version": "4.5.9",
-  "code": 202610271831,
-  "app": 559,
+  "version": "4.6.0",
+  "code": 202610271859,
+  "app": 560,
   "shell": 3,
   "date": "2026-10-27",
   "notes": [
-    "לוח שידורים מלא (EPG) ו-Catch-Up / החזרה אחורה בשידור החי: נוספה מערכת לוח שידורים ישראלית מלאה (EpgRepository באנדרואיד ומנוע EPG מובנה בטלוויזיות ובמחשב) המציגה בזמן אמת מה משודר כעת, מה שודר קודם ו-מה ישודר בהמשך היום עם אחוז התקדמות וזמני שידור מדויקים; נוספו כפתורי Catch-Up ו-Live Rewind בנגן (⏮ התחל מחדש, ⏪ -5 דק׳, ⏪ -1 דק׳, ⏪ -30 שנ׳, ⏩ +30 שנ׳ ו-🔴 חזור ל-LIVE) ואפשרות ללחוץ על תוכניות ששודרו קודם כדי לצפות בהן מהתחלה.",
-    "הרחבת הקטלוג ל-431 ערוצים ותחנות עם ערוצי סלקום TV, פרטנר TV, FreeTV, כל ערוצי הילדים בישראל, אוכל וחדשות מהעולם: נוספו ואומתו 45 ערוצים חדשים ב-HD/FHD – כולל ערוצי סלקום TV (סלקום TV סרטים, סדרות, ישראלי, דוקו וילדים), פרטנר TV (פרטנר TV סרטים, סדרות, ילדים וצחוק), FreeTV (דוקו, לייף סטייל, 10 Stars, קולנוע ישראלי ועוד), כל ערוצי הילדים הקיימים בישראל (37 ערוצי ילדים ונוער בעברית כולל דיסני, דיסני ג'וניור, ניקלודיאון, ניק ג'וניור, טין ניק, הופ!, לולי, בייבי, כראמל, קופיקו, ג'וניור, זום, ערוץ הילדים, לוגי, יויו, כאן חינוכית, שירי ילדותי, בובספוג 24/7, מפרץ ההרפתקאות 24/7, הדרדסים 24/7, סמי הכבאי 24/7, פוקימון 24/7, סוניק 24/7 ועוד), 18 ערוצי אוכל ובישול מהארץ ומהעולם (Foody, קשת אוכל, ערוץ האוכל, גורדון רמזי, יאמי!, Bon Appétit, Gusto TV, Tastemade, Jamie Oliver, America's Test Kitchen, Great British Menu ועוד), ו-ערוצי חדשות מהעולם (BBC News FHD, CNN, Fox News, CBS News, NBC News, ABC News, Bloomberg, CNBC, DW, France 24, Euronews); כמו כן הוסרו ערוץ האח הגדול וכל הערוצים הערביים, והוסרה כפילות ערוץ 16 מקטגוריית הילדים.",
-    "תיקון מלא של ספורט 6 וחיבור חשבון Google באמצעות סריקת קוד QR: תוקן ספורט 6 HD (32003) באמצעות סגירת חיבור מבוקרת והמתנת 320ms לשחרור החיבור בשרתי ottrast.com יחד עם 4 מקורות גיבוי; נוספה התחברות מהירה לחשבון Google באמצעות סריקת קוד QR מהטלפון (pair.html#mode=google) באנדרואיד, ב-Android TV, ב-LG webOS ובמחשב ללא צורך בהקלדה בשלט.",
-    "שדרוג מערכת ה-Cast מתוך האפליקציה ותיקון באג היציאה והחזרה ב-Android TV: נוסף שרת פרוקסי מקומי (LocalCastProxyServer) המאפשר ל-Chromecast ולטלוויזיות LG / Samsung (DLNA) לנגן גם ערוצים עם הפניות 302, כרטיסי Mako או חסימות CORS, לצד מצב שידור ישיר לאפליקציית ישראל TV+ בטלוויזיה ועצירת הנגן המקומי בטלפון בזמן שידור; בנוסף תוקן באג ה-LaunchMode וה-Resume ב-Android TV כך שניתן לצאת מהאפליקציה ולחזור אליה מיידית מהמסך הראשי."
+    "שרתי גיבוי אוטומטיים וידניים בתוך הערוץ (שרתי גיבוי במקום ערוצי גיבוי כפולים): אוחדו כל מקורות הגיבוי (backups ו-fallbackUrls) ישירות לתוך אובייקט הערוץ הראשי (למשל קשת 12 FHD עם 16 שרתי גיבוי, רשת 13 FHD עם 16 שרתי גיבוי, עכשיו 14 FHD עם 11 שרתי גיבוי, כאן 11 FHD עם 9 שרתי גיבוי ו-i24NEWS עברית עם 8 שרתי גיבוי) והוסרו כל הערוצים הכפולים; נוסף מעבר אוטומטי מהיר לשרת גיבוי במקרה תקלה וכפתור 🔀 שרת גיבוי (1/N) בנגן למעבר ידני בלחיצה.",
+    "פיצול מסך לצפייה במספר ערוצים במקביל (Split-TV / Multi-View): נוספה מערכת פיצול מסך מלאה (בדומה ל-split-tv.org) באנדרואיד, בטלוויזיות חכמות, בדפדפן ובמחשב המאפשרת צפייה ב-2, 3 או 4 ערוצים חיים במקביל, עם בחירת שמע לכל משבצת (🔊 שמע פעיל), החלפת ערוץ בכל משבצת (🔄 ערוץ), מעבר שרת גיבוי לכל משבצת (🔀 שרת) והרחבה למסך מלא (⛶ הרחב).",
+    "העברת ערוץ חדשות 16 לאפיק 6, ערוץ 9 לאפיק 7 והרחבת הקטלוג ל-440 ערוצים ייחודיים ב-FHD: ערוץ חדשות 16 HD הועבר למספר 6 (עם מקור שידור ראשי מתוקן ו-3 שרתי גיבוי), ערוץ 9 הישראלי FHD הועבר למספר 7, ונוספו 33 ערוצי FHD חדשים ומאומתים (ספורט, סרטים וסדרות, ילדים, דוקו וחדשות) ללא אף כפילות.",
+    "שיפורי LG webOS (כפתורי צבע לחיצים עם עכבר, מקלדת חיפוש על המסך והאצת ביצועי GPU) + עקיפת חסימות HTTP בדפדפן: כפתורי הצבע בשלט (🔴 דיבוב, 🟢 מועדף, 🟡 אפשרויות, 🔵 גודל תמונה) הפכו ללחיצים עם סמן ה-Magic Remote ב-LG ובדפדפן; תוקנה פתיחת המקלדת בחיפוש ב-LG ונוספה מקלדת וירטואלית מלאה בעברית/אנגלית על המסך (#atv-kb); שופרו ביצועי הממשק ב-LG webOS ללא שינוי ב-GUI; ונוסף מנגנון HTTPS / CORS Stream Proxy Relay לעקיפת חסימות HTTP/Mixed-Content בדפדפנים וטעינה מהירה באיכות המקסימלית (1080p FHD)."
   ],
   "native": {
     "android": {
-      "version": "4.5.9",
-      "app": 559,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.9/IsraelTVPlus-android.apk"
+      "version": "4.6.0",
+      "app": 560,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.0/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "4.5.9",
-      "app": 559,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.9/IsraelTVPlus-windows-setup.exe"
+      "version": "4.6.0",
+      "app": 560,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.0/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "4.5.9",
-      "app": 559,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.9/com.israeltv.plus_all.ipk",
+      "version": "4.6.0",
+      "app": 560,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.0/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "4.5.9",
-      "app": 559,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.9/IsraelTVPlus-tizen-project.zip"
+      "version": "4.6.0",
+      "app": 560,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.0/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "4.5.9",
-      "app": 559,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.9/IsraelTVPlus-macos-arm64.zip"
+      "version": "4.6.0",
+      "app": 560,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.0/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "4.5.9",
-      "app": 559,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.9/IsraelTVPlus-linux-x64.zip"
+      "version": "4.6.0",
+      "app": 560,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.0/IsraelTVPlus-linux-x64.zip"
     },
     "wear": {
-      "version": "4.5.9",
-      "app": 1000459,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.5.9/IsraelTVPlus-wearos.apk"
+      "version": "4.6.0",
+      "app": 1000460,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.0/IsraelTVPlus-wearos.apk"
     }
   }
 }

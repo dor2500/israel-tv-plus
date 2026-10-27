@@ -28,6 +28,7 @@ data class Channel(
     val categoryEn: String = "",
     val url: String,
     val fallbackUrls: List<String> = emptyList(),
+    val backups: List<String> = emptyList(),
     val logo: String = "",
     val badge: String = "",
     val desc: String = "",
@@ -40,9 +41,9 @@ data class Channel(
 ) {
     val isRadio: Boolean get() = kind == "radio"
 
-    /** Ordered list of all stream URLs (primary + fallbacks) to try automatically on playback error. */
+    /** Ordered list of all stream URLs (primary + fallbacks + backups) to try automatically on playback error. */
     fun allCandidateUrls(): List<String> =
-        (listOf(url) + fallbackUrls).map { it.trim() }.filter { it.isNotEmpty() }.distinct()
+        (listOf(url) + fallbackUrls + backups).map { it.trim() }.filter { it.isNotEmpty() }.distinct()
 }
 
 private const val MAKO_ENTITLEMENT = "https://mass.mako.co.il/ClicksStatistics/entitlementsServicesV2.jsp"
