@@ -1,10 +1,15 @@
 package com.israeltv.plus.ui.components
 
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.core.spring
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -63,8 +68,8 @@ import coil3.compose.AsyncImage
 import com.israeltv.plus.data.Channel
 import kotlin.math.abs
 
-val CardShape = RoundedCornerShape(24.dp)
-private val ContinueCardShape = RoundedCornerShape(22.dp)
+val CardShape = RoundedCornerShape(20.dp)
+private val ContinueCardShape = RoundedCornerShape(18.dp)
 
 /** The shared-element key of the card that was tapped last: the player grows out of it and shrinks back into it. */
 @Stable
@@ -146,33 +151,35 @@ fun ChannelCard(
                 ),
             contentAlignment = Alignment.Center,
         ) {
-            ChannelLogo(logo, Modifier.fillMaxSize(0.62f), channel.isRadio)
+            ChannelLogo(logo, Modifier.fillMaxSize(0.60f), channel.isRadio)
             val badge = if (channel.isRadio) "רדיו" else channel.badge
             if (badge.isNotEmpty()) {
+                val badgeShape = RoundedCornerShape(6.dp)
                 Text(
                     badge,
                     Modifier
                         .align(Alignment.TopStart)
-                        .padding(10.dp)
-                        .clip(RoundedCornerShape(50))
-                        .background(Color.Black.copy(alpha = 0.45f))
-                        .padding(horizontal = 8.dp, vertical = 2.dp),
-                    color = Color.White,
-                    fontSize = 10.sp,
+                        .padding(8.dp)
+                        .clip(badgeShape)
+                        .background(Color.White.copy(alpha = 0.07f))
+                        .border(0.75.dp, Color.White.copy(alpha = 0.28f), badgeShape)
+                        .padding(horizontal = 6.dp, vertical = 1.5.dp),
+                    color = Color.White.copy(alpha = 0.92f),
+                    fontSize = 9.sp,
                     fontWeight = FontWeight.Medium,
                 )
             }
             Text(
                 channel.number.toString(),
-                Modifier.align(Alignment.TopEnd).padding(10.dp),
-                color = scheme.onSurfaceVariant.copy(alpha = 0.8f),
-                fontSize = 11.sp,
+                Modifier.align(Alignment.TopEnd).padding(8.dp),
+                color = scheme.onSurfaceVariant.copy(alpha = 0.78f),
+                fontSize = 10.sp,
                 fontWeight = FontWeight.Normal,
             )
             if (favorite) {
                 BoldIcon(
                     Icons.Rounded.Star, null,
-                    Modifier.align(Alignment.BottomEnd).padding(10.dp).size(16.dp),
+                    Modifier.align(Alignment.BottomEnd).padding(8.dp).size(14.dp),
                     tint = Color(0xFFFFD54F), weight = 0.45.dp,
                 )
             }
@@ -193,12 +200,12 @@ fun ChannelCard(
                 },
             )
         }
-        Spacer(Modifier.height(8.dp))
+        Spacer(Modifier.height(6.dp))
         Text(
             channel.name,
             Modifier.fillMaxWidth().padding(horizontal = 4.dp),
             style = Rtl,
-            fontSize = 15.sp,
+            fontSize = 13.sp,
             fontWeight = FontWeight.SemiBold,
             color = scheme.onSurface,
             maxLines = 1,
@@ -208,7 +215,7 @@ fun ChannelCard(
             subtitle,
             Modifier.fillMaxWidth().padding(horizontal = 4.dp),
             style = Rtl,
-            fontSize = 12.sp,
+            fontSize = 10.5.sp,
             fontWeight = FontWeight.Light,
             color = scheme.onSurfaceVariant,
             maxLines = 1,
@@ -218,9 +225,9 @@ fun ChannelCard(
 }
 
 /**
- * Distinct 16:9 landscape card for the "המשך צפייה" (Continue Watching) shelf:
- * Features an atmospheric widescreen frame, embedded title & metadata overlay, play badge, and a colored playback
- * progress bar along the bottom edge. Reuses [NuvioCardMenu] on long-press and [pressPhysics] with no Android ripple.
+ * Strictly 16:9 landscape card for the "המשך צפייה" (Continue Watching) shelf:
+ * Features an atmospheric widescreen frame, embedded title & metadata overlay, ultra-thin bordered glass badge,
+ * and a colored playback progress bar along the bottom edge.
  */
 @Composable
 fun ContinueWatchingCard(
@@ -243,7 +250,7 @@ fun ContinueWatchingCard(
 
     Box(
         modifier
-            .width(248.dp)
+            .width(220.dp)
             .aspectRatio(16f / 9f)
             .pressPhysics(interaction, glowShape = ContinueCardShape)
             .then(if (sharedKey != null) Modifier.sharedContainer(sharedKey, ContinueCardShape) else Modifier)
@@ -277,29 +284,31 @@ fun ContinueWatchingCard(
             logo,
             Modifier
                 .align(Alignment.Center)
-                .padding(bottom = 18.dp)
-                .fillMaxSize(0.54f),
+                .padding(bottom = 16.dp)
+                .fillMaxSize(0.52f),
             channel.isRadio,
         )
 
-        // Top pill: "המשך צפייה" / quality
+        // Top ultra-thin bordered glass badge
+        val topBadgeShape = RoundedCornerShape(6.dp)
         Text(
-            if (channel.isRadio) "רדיו חי" else "שידור חי · ${channel.badge.ifBlank { "HD" }}",
+            if (channel.isRadio) "רדיו חי" else "Live · ${channel.badge.ifBlank { "FHD" }}",
             Modifier
                 .align(Alignment.TopEnd)
-                .padding(10.dp)
-                .clip(RoundedCornerShape(8.dp))
-                .background(Color.Black.copy(alpha = 0.58f))
-                .padding(horizontal = 8.dp, vertical = 3.dp),
+                .padding(8.dp)
+                .clip(topBadgeShape)
+                .background(Color.White.copy(alpha = 0.07f))
+                .border(0.75.dp, Color.White.copy(alpha = 0.28f), topBadgeShape)
+                .padding(horizontal = 7.dp, vertical = 2.dp),
             color = Color.White.copy(alpha = 0.92f),
-            fontSize = 10.sp,
+            fontSize = 9.sp,
             fontWeight = FontWeight.Medium,
         )
 
         if (favorite) {
             BoldIcon(
                 Icons.Rounded.Star, null,
-                Modifier.align(Alignment.TopStart).padding(10.dp).size(16.dp),
+                Modifier.align(Alignment.TopStart).padding(8.dp).size(14.dp),
                 tint = Color(0xFFFFD54F), weight = 0.45.dp,
             )
         }
@@ -309,7 +318,7 @@ fun ContinueWatchingCard(
             Modifier
                 .align(Alignment.BottomCenter)
                 .fillMaxWidth()
-                .height(68.dp)
+                .height(60.dp)
                 .background(
                     Brush.verticalGradient(
                         listOf(Color.Transparent, Color.Black.copy(alpha = 0.84f))
@@ -321,7 +330,7 @@ fun ContinueWatchingCard(
             Modifier
                 .align(Alignment.BottomStart)
                 .fillMaxWidth()
-                .padding(start = 12.dp, end = 12.dp, bottom = 10.dp),
+                .padding(start = 10.dp, end = 10.dp, bottom = 9.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
             Column(Modifier.weight(1f)) {
@@ -329,7 +338,7 @@ fun ContinueWatchingCard(
                     channel.name,
                     style = Rtl,
                     color = Color.White,
-                    fontSize = 15.sp,
+                    fontSize = 13.sp,
                     fontWeight = FontWeight.SemiBold,
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis,
@@ -338,21 +347,21 @@ fun ContinueWatchingCard(
                     subtitle,
                     style = Rtl,
                     color = Color.White.copy(alpha = 0.72f),
-                    fontSize = 11.5.sp,
+                    fontSize = 10.5.sp,
                     fontWeight = FontWeight.Light,
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis,
                 )
             }
-            Spacer(Modifier.width(8.dp))
+            Spacer(Modifier.width(6.dp))
             Box(
                 Modifier
-                    .size(28.dp)
+                    .size(24.dp)
                     .clip(RoundedCornerShape(50))
-                    .background(Color.White.copy(alpha = 0.2f)),
+                    .background(Color.White.copy(alpha = 0.20f)),
                 contentAlignment = Alignment.Center,
             ) {
-                Icon(Icons.Rounded.PlayArrow, null, Modifier.size(18.dp), tint = Color.White)
+                Icon(Icons.Rounded.PlayArrow, null, Modifier.size(15.dp), tint = Color.White)
             }
         }
 
@@ -361,7 +370,7 @@ fun ContinueWatchingCard(
             Modifier
                 .align(Alignment.BottomCenter)
                 .fillMaxWidth()
-                .height(4.dp)
+                .height(3.5.dp)
                 .background(Color.White.copy(alpha = 0.18f))
         ) {
             Box(
@@ -397,9 +406,7 @@ fun ContinueWatchingCard(
 
 /**
  * The Nuvio long-press card menu: a heavy-glass popup anchored on the poster with the channel's identity on top and the
- * two actions the feed supports - favourite (star, filled once saved) and the channel's details. It is the same menu on
- * every card in the app because [LocalCardMenu] carries the actions. Opening is tactile (the card's press physics ticks);
- * choosing an action confirms with a haptic.
+ * two actions the feed supports - favourite (star, filled once saved) and the channel's details.
  */
 @Composable
 private fun NuvioCardMenu(
@@ -416,33 +423,33 @@ private fun NuvioCardMenu(
     DropdownMenu(
         expanded = expanded,
         onDismissRequest = onDismiss,
-        modifier = Modifier.width(252.dp),
+        modifier = Modifier.width(232.dp),
         offset = DpOffset(0.dp, 4.dp),
-        shape = RoundedCornerShape(24.dp),
+        shape = RoundedCornerShape(22.dp),
         containerColor = Color(0xFF16161E).copy(alpha = 0.96f),
         tonalElevation = 0.dp,
         shadowElevation = 24.dp,
         border = BorderStroke(1.dp, Color.White.copy(alpha = 0.12f)),
     ) {
         Row(
-            Modifier.fillMaxWidth().padding(horizontal = 14.dp, vertical = 12.dp),
+            Modifier.fillMaxWidth().padding(horizontal = 13.dp, vertical = 10.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
             Box(
-                Modifier.size(width = 46.dp, height = 28.dp).clip(RoundedCornerShape(8.dp))
+                Modifier.size(width = 42.dp, height = 26.dp).clip(RoundedCornerShape(7.dp))
                     .background(Color.White.copy(alpha = 0.06f)),
                 contentAlignment = Alignment.Center,
             ) {
-                ChannelLogo(logo, Modifier.size(width = 38.dp, height = 22.dp), channel.isRadio)
+                ChannelLogo(logo, Modifier.size(width = 34.dp, height = 20.dp), channel.isRadio)
             }
-            Spacer(Modifier.width(10.dp))
+            Spacer(Modifier.width(9.dp))
             Column(Modifier.weight(1f)) {
                 Text(
-                    channel.name, color = Color.White, fontSize = 14.sp, fontWeight = FontWeight.SemiBold,
+                    channel.name, color = Color.White, fontSize = 13.sp, fontWeight = FontWeight.SemiBold,
                     maxLines = 1, overflow = TextOverflow.Ellipsis,
                 )
                 Text(
-                    subtitle, color = Color.White.copy(alpha = 0.6f), fontSize = 11.sp, fontWeight = FontWeight.Light,
+                    subtitle, color = Color.White.copy(alpha = 0.6f), fontSize = 10.5.sp, fontWeight = FontWeight.Light,
                     maxLines = 1, overflow = TextOverflow.Ellipsis,
                 )
             }
@@ -450,7 +457,7 @@ private fun NuvioCardMenu(
         HorizontalDivider(color = Color.White.copy(alpha = 0.08f))
         CardMenuRow(
             if (favorite) Icons.Rounded.Star else Icons.Rounded.StarBorder,
-            if (favorite) "הסר מהמועדפים" else "הוסף למועדפים",
+            if (favorite) "הסר מהרשימה שלי" else "שמור ברשימה שלי",
             tint = if (favorite) Color(0xFFFFD54F) else Color.White,
         ) {
             haptic.performHapticFeedback(HapticFeedbackType.Confirm)
@@ -470,59 +477,66 @@ private fun CardMenuRow(icon: ImageVector, label: String, tint: Color = Color.Wh
         Modifier
             .fillMaxWidth()
             .clickable(remember { MutableInteractionSource() }, null, onClick = onClick)
-            .padding(horizontal = 14.dp, vertical = 12.dp),
+            .padding(horizontal = 13.dp, vertical = 10.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        BoldIcon(icon, null, Modifier.size(20.dp), tint = tint, weight = 0.55.dp)
-        Spacer(Modifier.width(12.dp))
-        Text(label, color = tint, fontSize = 14.sp, fontWeight = FontWeight.Medium)
+        BoldIcon(icon, null, Modifier.size(18.dp), tint = tint, weight = 0.55.dp)
+        Spacer(Modifier.width(10.dp))
+        Text(label, color = tint, fontSize = 13.sp, fontWeight = FontWeight.Medium)
     }
 }
 
 /**
- * Row Header: vertical white accent line (4.dp width, 18.dp height) next to the SemiBold row title,
- * with an optional tonal "הכל" pill on the trailing edge.
+ * Row Header: vertical white accent line (3.5.dp width, 16.dp height) next to the SemiBold row title,
+ * with an optional shape-morphing tonal "הכל" pill on the trailing edge.
  */
 @Composable
 fun SectionHeader(title: String, count: Int? = null, onSeeAll: (() -> Unit)? = null) {
     val scheme = MaterialTheme.colorScheme
     val haptic = LocalHapticFeedback.current
     Row(
-        Modifier.fillMaxWidth().padding(start = 20.dp, end = 16.dp, bottom = 12.dp),
+        Modifier.fillMaxWidth().padding(start = 18.dp, end = 14.dp, bottom = 10.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Box(
             Modifier
-                .width(4.dp)
-                .height(18.dp)
+                .width(3.5.dp)
+                .height(16.dp)
                 .clip(RoundedCornerShape(2.dp))
                 .background(Color.White)
         )
-        Spacer(Modifier.width(10.dp))
-        Text(title, Modifier.weight(1f), fontSize = 19.sp, fontWeight = FontWeight.SemiBold, color = scheme.onSurface)
+        Spacer(Modifier.width(9.dp))
+        Text(title, Modifier.weight(1f), fontSize = 16.5.sp, fontWeight = FontWeight.SemiBold, color = scheme.onSurface)
         if (onSeeAll != null) {
             val interaction = remember { MutableInteractionSource() }
+            val pressed by interaction.collectIsPressedAsState()
+            val corner by animateDpAsState(
+                targetValue = if (pressed) 8.dp else 18.dp,
+                animationSpec = spring(dampingRatio = 0.58f, stiffness = Spring.StiffnessMedium),
+                label = "seeAllMorph",
+            )
+            val pillShape = RoundedCornerShape(corner)
             Row(
                 Modifier
-                    .pressPhysics(interaction, tilt = false, glowShape = RoundedCornerShape(50))
-                    .clip(RoundedCornerShape(50))
+                    .pressPhysics(interaction, tilt = false, glowShape = pillShape)
+                    .clip(pillShape)
                     .background(scheme.secondaryContainer.copy(alpha = 0.55f))
                     .clickable(interaction, null) {
                         haptic.performHapticFeedback(HapticFeedbackType.SegmentTick)
                         onSeeAll()
                     }
-                    .padding(start = 14.dp, end = 8.dp, top = 6.dp, bottom = 6.dp),
+                    .padding(start = 12.dp, end = 6.dp, top = 4.5.dp, bottom = 4.5.dp),
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 Text(
                     if (count != null) "הכל · $count" else "הכל",
-                    fontSize = 13.sp,
+                    fontSize = 11.5.sp,
                     fontWeight = FontWeight.Medium,
                     color = scheme.onSecondaryContainer,
                 )
                 Icon(
                     Icons.AutoMirrored.Rounded.KeyboardArrowRight, null,
-                    Modifier.size(18.dp), tint = scheme.onSecondaryContainer,
+                    Modifier.size(16.dp), tint = scheme.onSecondaryContainer,
                 )
             }
         }
@@ -539,11 +553,11 @@ fun ContinueWatchingShelf(
     onPlay: (Channel) -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    Column(modifier.padding(bottom = 26.dp)) {
+    Column(modifier.padding(bottom = 22.dp)) {
         SectionHeader(title)
         LazyRow(
             contentPadding = PaddingValues(horizontal = 16.dp),
-            horizontalArrangement = Arrangement.spacedBy(14.dp),
+            horizontalArrangement = Arrangement.spacedBy(12.dp),
             flingBehavior = rememberBitChordFlingBehavior(),
         ) {
             itemsIndexed(channels, key = { _, ch -> ch.id }) { idx, ch ->
@@ -577,15 +591,15 @@ fun ChannelShelf(
     onSeeAll: (() -> Unit)? = null,
     modifier: Modifier = Modifier,
 ) {
-    Column(modifier.padding(bottom = 26.dp)) {
+    Column(modifier.padding(bottom = 22.dp)) {
         SectionHeader(title, count, onSeeAll)
         LazyRow(
             contentPadding = PaddingValues(horizontal = 16.dp),
-            horizontalArrangement = Arrangement.spacedBy(12.dp),
+            horizontalArrangement = Arrangement.spacedBy(10.dp),
             flingBehavior = rememberBitChordFlingBehavior(),
         ) {
             items(channels, key = { it.id }) { ch ->
-                ChannelCard(ch, logo(ch), subtitle(ch), { onPlay(ch) }, Modifier.width(184.dp), sharedKey = "$title:${ch.id}")
+                ChannelCard(ch, logo(ch), subtitle(ch), { onPlay(ch) }, Modifier.width(164.dp), sharedKey = "$title:${ch.id}")
             }
         }
     }
@@ -594,23 +608,23 @@ fun ChannelShelf(
 /** Dark-themed shimmer loading placeholders in the shape of a shelf. */
 @Composable
 fun ShelfSkeleton() {
-    Column(Modifier.padding(bottom = 26.dp)) {
+    Column(Modifier.padding(bottom = 22.dp)) {
         Row(
-            Modifier.padding(start = 20.dp, bottom = 14.dp),
+            Modifier.padding(start = 18.dp, bottom = 12.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            Box(Modifier.width(4.dp).height(18.dp).glassShimmer(RoundedCornerShape(2.dp)))
-            Spacer(Modifier.width(10.dp))
-            Box(Modifier.width(140.dp).height(20.dp).glassShimmer(RoundedCornerShape(10.dp)))
+            Box(Modifier.width(3.5.dp).height(16.dp).glassShimmer(RoundedCornerShape(2.dp)))
+            Spacer(Modifier.width(9.dp))
+            Box(Modifier.width(124.dp).height(18.dp).glassShimmer(RoundedCornerShape(9.dp)))
         }
-        Row(Modifier.padding(horizontal = 16.dp), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+        Row(Modifier.padding(horizontal = 16.dp), horizontalArrangement = Arrangement.spacedBy(10.dp)) {
             repeat(3) {
-                Column(Modifier.width(184.dp)) {
+                Column(Modifier.width(164.dp)) {
                     Box(Modifier.fillMaxWidth().aspectRatio(16f / 9.5f).glassShimmer(CardShape))
-                    Spacer(Modifier.height(10.dp))
-                    Box(Modifier.width(115.dp).height(14.dp).glassShimmer(RoundedCornerShape(7.dp)))
-                    Spacer(Modifier.height(6.dp))
-                    Box(Modifier.width(76.dp).height(11.dp).glassShimmer(RoundedCornerShape(5.dp)))
+                    Spacer(Modifier.height(8.dp))
+                    Box(Modifier.width(104.dp).height(12.dp).glassShimmer(RoundedCornerShape(6.dp)))
+                    Spacer(Modifier.height(5.dp))
+                    Box(Modifier.width(68.dp).height(10.dp).glassShimmer(RoundedCornerShape(5.dp)))
                 }
             }
         }

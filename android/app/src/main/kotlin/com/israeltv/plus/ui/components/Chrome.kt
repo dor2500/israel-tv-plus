@@ -37,6 +37,10 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.FavoriteBorder
+import androidx.compose.material.icons.outlined.Home
+import androidx.compose.material.icons.outlined.LiveTv
+import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material.icons.rounded.Cast
 import androidx.compose.material.icons.rounded.Favorite
 import androidx.compose.material.icons.rounded.GridView
@@ -44,6 +48,7 @@ import androidx.compose.material.icons.rounded.Home
 import androidx.compose.material.icons.rounded.LiveTv
 import androidx.compose.material.icons.rounded.Search
 import androidx.compose.material.icons.rounded.Settings
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -71,20 +76,25 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
 
-enum class Tab(val label: String, val title: String, val icon: ImageVector) {
-    Home("בית", "ישראל TV+‎", Icons.Rounded.Home),
-    Channels("ערוצים", "ערוצים", Icons.Rounded.LiveTv),
-    Mine("שלי", "הרשימה שלי", Icons.Rounded.Favorite),
-    Settings("הגדרות", "הגדרות", Icons.Rounded.Settings),
+enum class Tab(
+    val label: String,
+    val title: String,
+    val icon: ImageVector,
+    val inactiveIcon: ImageVector,
+) {
+    Home("בית", "ישראל TV+‎", Icons.Rounded.Home, Icons.Outlined.Home),
+    Channels("ערוצים", "ערוצים", Icons.Rounded.LiveTv, Icons.Outlined.LiveTv),
+    Mine("שלי", "הרשימה שלי", Icons.Rounded.Favorite, Icons.Outlined.FavoriteBorder),
+    Settings("הגדרות", "הגדרות", Icons.Rounded.Settings, Icons.Outlined.Settings),
 }
 
-/** The master LazyColumn's insets: under the header + macro categories (118 dp on Home, 76 dp on inner tabs) and 120 dp clear of the floating bar. */
+/** The master LazyColumn's insets: under the header + macro categories (104 dp on Home, 66 dp on inner tabs) and 104 dp clear of the floating bar. */
 @Composable
 fun feedPadding(withCategories: Boolean = true): PaddingValues {
     val top = WindowInsets.statusBars.asPaddingValues().calculateTopPadding()
     val bottom = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
-    val headerHeight = if (withCategories) 118.dp else 76.dp
-    return PaddingValues(top = top + headerHeight, bottom = bottom + 120.dp)
+    val headerHeight = if (withCategories) 104.dp else 66.dp
+    return PaddingValues(top = top + headerHeight, bottom = bottom + 104.dp)
 }
 
 /** surfaceContainerLowest with a soft ambient glow of the wallpaper colour from the top. */
@@ -109,7 +119,7 @@ fun AmbientBackground(modifier: Modifier = Modifier) {
 
 /**
  * The app wordmark, centred in the bar exactly like the Kan Box lockup: the Hebrew name in the app's black display
- * weight with the "TV+" in the profile's accent colour.
+ * weight with the "TV+" in the profile's accent colour. Scaled down for Apple TV minimalist negative space.
  */
 @Composable
 fun BrandWordmark(modifier: Modifier = Modifier) {
@@ -117,16 +127,16 @@ fun BrandWordmark(modifier: Modifier = Modifier) {
     Row(modifier, verticalAlignment = Alignment.CenterVertically) {
         Text(
             "ישראל",
-            fontSize = 21.sp,
+            fontSize = 18.sp,
             fontWeight = FontWeight.Black,
-            letterSpacing = (-0.6).sp,
+            letterSpacing = (-0.5).sp,
             color = scheme.onSurface,
             maxLines = 1,
         )
-        Spacer(Modifier.width(4.dp))
+        Spacer(Modifier.width(3.5.dp))
         Text(
             "TV+",
-            fontSize = 21.sp,
+            fontSize = 18.sp,
             fontWeight = FontWeight.Black,
             letterSpacing = (-0.2).sp,
             color = scheme.primary,
@@ -138,10 +148,9 @@ fun BrandWordmark(modifier: Modifier = Modifier) {
 
 /**
  * Kan Box Style Top Header & Categories (Moved UP):
- * - Top Row: Profile Avatar on one side, Centered "ישראל TV+" logo, and a minimal glass Settings gear (no text) on the other.
+ * - Top Row: Profile Avatar on one side, Centered "ישראל TV+" logo, and minimal glass action orbs on the other.
  * - Second Row (when [showCategories] is true): The centered Macro-Categories Row (הכל, סרטים וסדרות, ילדים ונוער, ספורט, עוד...).
- * - Top Gradient-Blur: Smoothly fades the blur and dark overlay into the main content using a vertical gradient mask
- *   rather than a harsh bottom line.
+ * - Top Gradient-Blur: Heavy Glassmorphism (Gradient+Blur) that is ALWAYS visible at scroll position 0.
  */
 @Composable
 fun AppHeader(
@@ -160,6 +169,7 @@ fun AppHeader(
 ) {
     val scheme = MaterialTheme.colorScheme
     val haptic = LocalHapticFeedback.current
+    val statusBarTop = WindowInsets.statusBars.asPaddingValues().calculateTopPadding()
     val blurAlpha by animateFloatAsState(
         targetValue = scrollFraction.coerceIn(0f, 1f),
         animationSpec = tween(180),
@@ -168,30 +178,29 @@ fun AppHeader(
     val topGradientMask = remember {
         Brush.verticalGradient(
             0f to Color.Black,
-            0.68f to Color.Black.copy(alpha = 0.86f),
-            0.88f to Color.Black.copy(alpha = 0.38f),
+            0.72f to Color.Black.copy(alpha = 0.90f),
+            0.90f to Color.Black.copy(alpha = 0.45f),
             1f to Color.Transparent,
         )
     }
 
     Box(modifier.fillMaxWidth().zIndex(10f)) {
-        // Top Gradient-Blur: ultra-transparent clear glass that keeps scrolling content visible even at the very top edge
+        // Heavy Glassmorphism (Gradient + Blur) visible even at scroll position 0
         Box(
             Modifier
                 .matchParentSize()
-                .graphicsLayer { alpha = (0.55f + 0.45f * blurAlpha).coerceIn(0f, 1f) }
                 .frostedGlass(
                     shape = RectangleShape,
-                    tint = Color.Black.copy(alpha = 0.08f + 0.06f * blurAlpha),
-                    blur = 42.dp,
+                    tint = Color.Black.copy(alpha = 0.22f + 0.14f * blurAlpha),
+                    blur = 44.dp,
                     border = false,
                     mask = topGradientMask,
                 )
                 .background(
                     Brush.verticalGradient(
-                        0f to Color.Black.copy(alpha = 0.14f + 0.08f * blurAlpha),
-                        0.60f to Color.Black.copy(alpha = 0.06f + 0.05f * blurAlpha),
-                        0.86f to Color.Black.copy(alpha = 0.03f * blurAlpha),
+                        0f to Color.Black.copy(alpha = 0.56f + 0.18f * blurAlpha),
+                        0.62f to Color.Black.copy(alpha = 0.28f + 0.16f * blurAlpha),
+                        0.88f to Color.Black.copy(alpha = 0.10f + 0.08f * blurAlpha),
                         1f to Color.Transparent,
                     )
                 )
@@ -200,29 +209,35 @@ fun AppHeader(
         Column(
             Modifier
                 .fillMaxWidth()
-                .statusBarsPadding()
-                .padding(bottom = if (showCategories) 18.dp else 14.dp)
+                .padding(top = statusBarTop, bottom = if (showCategories) 14.dp else 10.dp)
         ) {
-            Box(Modifier.height(60.dp).fillMaxWidth()) {
-                // Profile portrait: leading edge (physical right in Hebrew RTL)
+            Box(Modifier.height(52.dp).fillMaxWidth()) {
+                // Profile portrait: leading edge (physical right in Hebrew RTL), scaled down ~14%
                 val avatarInteraction = remember { MutableInteractionSource() }
+                val avatarPressed by avatarInteraction.collectIsPressedAsState()
+                val avatarCorner by animateDpAsState(
+                    targetValue = if (avatarPressed) 9.dp else 12.dp,
+                    animationSpec = spring(dampingRatio = 0.58f, stiffness = Spring.StiffnessMedium),
+                    label = "avatarMorph",
+                )
+                val avatarShape = RoundedCornerShape(avatarCorner)
                 Box(
                     Modifier
                         .align(Alignment.CenterStart)
-                        .padding(start = 20.dp)
-                        .size(42.dp)
-                        .pressPhysics(avatarInteraction, tilt = false, glowShape = RoundedCornerShape(14.dp))
+                        .padding(start = 16.dp)
+                        .size(36.dp)
+                        .pressPhysics(avatarInteraction, tilt = false, glowShape = avatarShape)
                         .sharedAvatar("avatar:$profileId")
-                        .clip(RoundedCornerShape(14.dp))
+                        .clip(avatarShape)
                         .background(Brush.linearGradient(listOf(scheme.primaryContainer, scheme.tertiaryContainer)))
-                        .specularBorder(RoundedCornerShape(14.dp), alpha = 0.34f)
+                        .specularBorder(avatarShape, alpha = 0.34f)
                         .clickable(avatarInteraction, null) {
                             haptic.performHapticFeedback(HapticFeedbackType.ContextClick)
                             onAvatar()
                         },
                     contentAlignment = Alignment.Center,
                 ) {
-                    ProfileAvatar(avatar, glyphSize = 28.dp)
+                    ProfileAvatar(avatar, glyphSize = 24.dp)
                 }
 
                 // Centered App Logo ("ישראל TV+")
@@ -232,8 +247,8 @@ fun AppHeader(
                 Row(
                     Modifier
                         .align(Alignment.CenterEnd)
-                        .padding(end = 16.dp),
-                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                        .padding(end = 14.dp),
+                    horizontalArrangement = Arrangement.spacedBy(6.dp),
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
                     if (onMultiView != null) {
@@ -256,7 +271,7 @@ fun AppHeader(
                     selected = selectedCategory,
                     onSelect = onSelectCategory,
                     onMore = onMoreCategories,
-                    modifier = Modifier.padding(top = 4.dp),
+                    modifier = Modifier.padding(top = 2.dp),
                 )
             }
         }
@@ -274,32 +289,32 @@ private fun HeaderIconOrb(
     val interaction = remember { MutableInteractionSource() }
     val pressed by interaction.collectIsPressedAsState()
     val corner by animateDpAsState(
-        targetValue = if (pressed) 12.dp else 20.dp,
+        targetValue = if (pressed) 10.dp else 17.dp,
         animationSpec = spring(dampingRatio = 0.58f, stiffness = Spring.StiffnessMedium),
         label = "headerOrbMorph",
     )
     val shape = RoundedCornerShape(corner)
     Box(
         Modifier
-            .size(40.dp)
+            .size(34.dp)
             .pressPhysics(interaction, tilt = false, glowShape = shape)
-            .frostedGlass(shape, Color.Black.copy(alpha = 0.14f), blur = 40.dp)
+            .frostedGlass(shape, Color.Black.copy(alpha = 0.18f), blur = 40.dp)
             .clickable(interaction, null) {
                 haptic.performHapticFeedback(HapticFeedbackType.ContextClick)
                 onClick()
             },
         contentAlignment = Alignment.Center,
     ) {
-        BoldIcon(icon, label, Modifier.size(20.dp), tint = scheme.onSurface, weight = 0.65.dp)
+        BoldIcon(icon, label, Modifier.size(17.5.dp), tint = scheme.onSurface, weight = 0.65.dp)
     }
 }
 
 /**
- * Scroll-Reactive Nuvio Bottom Navbar:
- * - Bottom Gradient-Blur: Organic blur + dark gradient behind the navbar fading smoothly upward into the content.
- * - Separated Row: Left circular Box for a Bold Search icon; Right capsule Row for main tabs (Bold Icon directly ABOVE text).
- * - Scroll-Reactive Behavior: When scrolling down ([collapsed] == true), text labels below the icons animate out completely,
- *   leaving ONLY the bold icons visible to compact the navbar, with heavy glass blur on both navbar elements.
+ * Scroll-Reactive Floating Bottom Navbar:
+ * - Bottom Gradient-Blur: Heavy Glassmorphism behind the navbar fading smoothly upward into the content.
+ * - Separated Row: Left circular Box for a Bold Search icon; Right capsule Row for main tabs.
+ * - Inactive = Thin outlined icons; Active = Solid BOLD icons.
+ * - Scroll-Reactive Behavior: When scrolling down ([collapsed] == true), text labels below the icons animate out completely.
  */
 @Composable
 fun FloatingTabBar(
@@ -313,36 +328,36 @@ fun FloatingTabBar(
     val scheme = MaterialTheme.colorScheme
     val haptic = LocalHapticFeedback.current
     val tabs = listOf(Tab.Home, Tab.Channels, Tab.Mine)
-    val glass = Color.Black.copy(alpha = 0.16f)
+    val glass = Color.Black.copy(alpha = 0.22f)
     val bottomGradientMask = remember {
         Brush.verticalGradient(
             0f to Color.Transparent,
-            0.38f to Color.Black.copy(alpha = 0.45f),
-            0.72f to Color.Black.copy(alpha = 0.85f),
+            0.38f to Color.Black.copy(alpha = 0.48f),
+            0.72f to Color.Black.copy(alpha = 0.88f),
             1f to Color.Black,
         )
     }
 
     Box(modifier.fillMaxWidth().zIndex(10f)) {
-        // Bottom Gradient-Blur: ultra-transparent clear glass that keeps scrolling content visible right to the bottom edge
+        // Bottom Gradient-Blur: heavy Glassmorphism fading smoothly upward
         Box(
             Modifier
                 .align(Alignment.BottomCenter)
                 .fillMaxWidth()
-                .height(136.dp)
+                .height(118.dp)
                 .frostedGlass(
                     shape = RectangleShape,
-                    tint = Color.Black.copy(alpha = 0.10f),
-                    blur = 42.dp,
+                    tint = Color.Black.copy(alpha = 0.16f),
+                    blur = 44.dp,
                     border = false,
                     mask = bottomGradientMask,
                 )
                 .background(
                     Brush.verticalGradient(
                         0f to Color.Transparent,
-                        0.45f to Color.Black.copy(alpha = 0.06f),
-                        0.78f to Color.Black.copy(alpha = 0.12f),
-                        1f to Color.Black.copy(alpha = 0.18f),
+                        0.45f to Color.Black.copy(alpha = 0.10f),
+                        0.78f to Color.Black.copy(alpha = 0.22f),
+                        1f to Color.Black.copy(alpha = 0.34f),
                     )
                 )
         )
@@ -353,26 +368,26 @@ fun FloatingTabBar(
                     .align(Alignment.BottomCenter)
                     .fillMaxWidth()
                     .navigationBarsPadding()
-                    .padding(bottom = 18.dp)
+                    .padding(bottom = 14.dp)
             ) {
                 val bouncy = spring<androidx.compose.ui.unit.Dp>(
                     dampingRatio = 0.82f,
                     stiffness = Spring.StiffnessMediumLow,
                 )
-                val capsuleTarget = (maxWidth - 112.dp - if (collapsed) 36.dp else 0.dp).coerceAtLeast(190.dp)
+                val capsuleTarget = (maxWidth - 102.dp - if (collapsed) 32.dp else 0.dp).coerceAtLeast(168.dp)
                 val capsuleWidth by animateDpAsState(capsuleTarget, bouncy, label = "capsuleWidth")
-                val barHeight by animateDpAsState(if (collapsed) 54.dp else 68.dp, bouncy, label = "barHeight")
-                val searchSize by animateDpAsState(if (collapsed) 54.dp else 64.dp, bouncy, label = "searchSize")
+                val barHeight by animateDpAsState(if (collapsed) 46.dp else 58.dp, bouncy, label = "barHeight")
+                val searchSize by animateDpAsState(if (collapsed) 46.dp else 54.dp, bouncy, label = "searchSize")
 
                 Row(
                     Modifier.fillMaxWidth().padding(horizontal = 16.dp),
-                    horizontalArrangement = Arrangement.spacedBy(16.dp, Alignment.CenterHorizontally),
+                    horizontalArrangement = Arrangement.spacedBy(12.dp, Alignment.CenterHorizontally),
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
                     val searchInteraction = remember { MutableInteractionSource() }
                     val searchPressed by searchInteraction.collectIsPressedAsState()
                     val searchCorner by animateDpAsState(
-                        targetValue = if (searchPressed) 16.dp else (searchSize / 2),
+                        targetValue = if (searchPressed) 14.dp else (searchSize / 2),
                         animationSpec = spring(dampingRatio = 0.58f, stiffness = Spring.StiffnessMedium),
                         label = "searchOrbMorph",
                     )
@@ -391,9 +406,9 @@ fun FloatingTabBar(
                         BoldIcon(
                             Icons.Rounded.Search,
                             "חיפוש",
-                            Modifier.size(if (collapsed) 24.dp else 26.dp),
+                            Modifier.size(if (collapsed) 20.dp else 22.dp),
                             tint = scheme.onSurface,
-                            weight = 0.75.dp,
+                            weight = 0.72.dp,
                         )
                     }
 
@@ -403,7 +418,7 @@ fun FloatingTabBar(
                                 .width(capsuleWidth)
                                 .height(barHeight)
                                 .frostedGlass(RoundedCornerShape(50), glass, blur = 44.dp)
-                                .padding(horizontal = 6.dp, vertical = 6.dp),
+                                .padding(horizontal = 5.dp, vertical = 5.dp),
                             horizontalArrangement = Arrangement.spacedBy(2.dp),
                             verticalAlignment = Alignment.CenterVertically,
                         ) {
@@ -412,7 +427,7 @@ fun FloatingTabBar(
                                 val tabInteraction = remember { MutableInteractionSource() }
                                 val tabPressed by tabInteraction.collectIsPressedAsState()
                                 val tabCorner by animateDpAsState(
-                                    targetValue = if (tabPressed) 14.dp else 28.dp,
+                                    targetValue = if (tabPressed) 12.dp else 24.dp,
                                     animationSpec = spring(dampingRatio = 0.58f, stiffness = Spring.StiffnessMedium),
                                     label = "tabPillMorph",
                                 )
@@ -431,25 +446,34 @@ fun FloatingTabBar(
                                     horizontalAlignment = Alignment.CenterHorizontally,
                                     verticalArrangement = Arrangement.Center,
                                 ) {
-                                    BoldIcon(
-                                        tab.icon,
-                                        tab.label,
-                                        Modifier.size(23.dp),
-                                        tint = if (active) scheme.onSurface else scheme.onSurfaceVariant,
-                                        weight = if (active) 0.75.dp else 0.58.dp,
-                                    )
+                                    if (active) {
+                                        BoldIcon(
+                                            tab.icon,
+                                            tab.label,
+                                            Modifier.size(20.dp),
+                                            tint = scheme.onSurface,
+                                            weight = 0.75.dp,
+                                        )
+                                    } else {
+                                        Icon(
+                                            tab.inactiveIcon,
+                                            tab.label,
+                                            Modifier.size(20.dp),
+                                            tint = scheme.onSurfaceVariant.copy(alpha = 0.85f),
+                                        )
+                                    }
                                     AnimatedVisibility(
                                         visible = !collapsed,
                                         enter = fadeIn(tween(180)) + expandVertically(tween(200)),
                                         exit = fadeOut(tween(130)) + shrinkVertically(tween(170)),
                                     ) {
                                         Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                                            Spacer(Modifier.height(3.dp))
+                                            Spacer(Modifier.height(2.dp))
                                             Text(
                                                 tab.label,
-                                                color = if (active) scheme.onSurface else scheme.onSurfaceVariant,
-                                                fontSize = 10.5.sp,
-                                                fontWeight = if (active) FontWeight.SemiBold else FontWeight.Medium,
+                                                color = if (active) scheme.onSurface else scheme.onSurfaceVariant.copy(alpha = 0.85f),
+                                                fontSize = 9.5.sp,
+                                                fontWeight = if (active) FontWeight.SemiBold else FontWeight.Normal,
                                                 maxLines = 1,
                                             )
                                         }

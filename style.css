@@ -1543,3 +1543,100 @@ body.phone .mv-pick-card {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+/* ==========================================================================
+   FINAL Master UI/UX Polish (Mobile & Smart TV)
+   ========================================================================== */
+
+/* 1. Portrait Notch Fix & Safe Areas: push player top header down so it is NEVER cut off */
+body.phone .osd-top {
+  padding-top: calc(max(var(--sat, 0px), 2.5rem) + 1rem) !important;
+  padding-bottom: .85rem !important;
+  background: linear-gradient(180deg, rgba(6, 8, 13, 0.72) 0%, rgba(6, 8, 13, 0.30) 62%, rgba(6, 8, 13, 0) 100%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(165%);
+  backdrop-filter: blur(28px) saturate(165%);
+}
+
+/* 2. Mobile Top Header: heavy Glassmorphism visible at scroll position 0 */
+body.phone .topbar {
+  padding-top: calc(max(var(--sat, 0px), 1.4rem) + .45rem) !important;
+  background: linear-gradient(180deg, rgba(10, 13, 20, 0.76) 0%, rgba(10, 13, 20, 0.38) 70%, rgba(10, 13, 20, 0) 100%) !important;
+  -webkit-backdrop-filter: blur(34px) saturate(175%) !important;
+  backdrop-filter: blur(34px) saturate(175%) !important;
+}
+
+/* 3. Smart TV Video Player: strictly NO BlurEffect overlays inside TV player (smooth deep dark linear gradients only) */
+body.tvui #player .osd-top {
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0.48) 58%, rgba(0, 0, 0, 0) 100%) !important;
+}
+body.tvui #player .osd-bottom {
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.90) 0%, rgba(0, 0, 0, 0.52) 60%, rgba(0, 0, 0, 0) 100%) !important;
+}
+body.tvui #player .obtn {
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  background: rgba(14, 18, 26, 0.78) !important;
+}
+
+/* 4. Sleek, transparent Apple TV-style side-panel for secondary settings ("שרת", "פיצול") */
+#menu {
+  justify-content: flex-start !important;
+  align-items: center !important;
+  padding: 1.5rem !important;
+  background: rgba(0, 0, 0, 0.32) !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+}
+#menu .menu-box {
+  width: min(21rem, 88vw) !important;
+  max-height: 84vh !important;
+  border-radius: 1.5rem !important;
+  background: linear-gradient(165deg, rgba(14, 18, 28, 0.86) 0%, rgba(7, 9, 15, 0.92) 100%) !important;
+  border: 0.75px solid rgba(255, 255, 255, 0.24) !important;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.78) !important;
+  padding: 1rem !important;
+}
+body.phone #menu .menu-box {
+  background: rgba(12, 16, 24, 0.56) !important;
+  -webkit-backdrop-filter: blur(36px) saturate(175%) !important;
+  backdrop-filter: blur(36px) saturate(175%) !important;
+}
+#menu .menu-item {
+  border-radius: .9rem !important;
+  padding: .62rem .85rem !important;
+  margin-bottom: .38rem !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 0.75px solid rgba(255, 255, 255, 0.12) !important;
+  font-size: .86rem !important;
+  transition: transform .2s cubic-bezier(.22, 1, .36, 1), border-color .18s ease, box-shadow .2s ease !important;
+}
+
+/* 5. D-Pad Focus Physics: Scale 1.1f, 2px pure white border, heavy glowing drop shadow */
+body.tvui .atv-item.focused,
+body.tvui .atv-tab.focused,
+body.tvui .obtn.focused,
+body.tvui #menu .menu-item.focused {
+  transform: scale(1.1) !important;
+  border: 2px solid #ffffff !important;
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.88), 0 0 24px rgba(255, 255, 255, 0.34) !important;
+  z-index: 6;
+}
+
+/* 6. Ultra-thin bordered glass badges for Live / FHD */
+.live-pill, .atv-live, .atv-pill-q, #osd-quality {
+  background: rgba(255, 255, 255, 0.07) !important;
+  border: 0.75px solid rgba(255, 255, 255, 0.34) !important;
+  border-radius: .38rem !important;
+  padding: .1rem .45rem !important;
+  font-size: .68rem !important;
+  font-weight: 600 !important;
+  color: rgba(255, 255, 255, 0.94) !important;
+}
+.live-pill .live-dot, .atv-live i {
+  display: none !important;
+}
+

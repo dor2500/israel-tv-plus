@@ -126,7 +126,7 @@ fun ChannelsScreen(
     val basePadding = feedPadding(withCategories = true)
     val topInset = basePadding.calculateTopPadding()
     val bottomInset = basePadding.calculateBottomPadding()
-    val pinnedSwitchHeight = 52.dp
+    val pinnedSwitchHeight = 42.dp
 
     var shownCategory by remember { mutableStateOf(macroCategory) }
     var shownIsraeli by remember { mutableStateOf(israeliOnly) }
@@ -165,22 +165,22 @@ fun ChannelsScreen(
                 )
                 Text(
                     "${list.size} ערוצים",
-                    Modifier.padding(start = 20.dp, bottom = 14.dp),
+                    Modifier.padding(start = 18.dp, bottom = 12.dp),
                     color = scheme.onSurfaceVariant,
-                    fontSize = 13.sp,
+                    fontSize = 11.5.sp,
                     fontWeight = FontWeight.Light,
                 )
             }
             if (list.isEmpty()) {
                 item(key = "empty") {
-                    EmptyState(if (israeliOnly) "אין ערוצים ישראליים בקטגוריה זו" else "אין ערוצים בקטגוריה זו")
+                    EmptyState("עוד אין פה כלום...")
                 }
             } else {
                 channelGrid(list, "c:", logo, subtitle) { onPlay(it, list) }
             }
         }
 
-        // Pinned "רק ישראלי" switch right below the pinned macro-categories header with ultra-clear glass blur
+        // Pinned "רק ישראלי" FilterChip right below the pinned macro-categories header with glass blur
         val switchGradientMask = remember {
             Brush.verticalGradient(
                 0f to Color.Black,
@@ -192,16 +192,16 @@ fun ChannelsScreen(
             Modifier
                 .align(Alignment.TopCenter)
                 .fillMaxWidth()
-                .padding(top = topInset - 6.dp)
+                .padding(top = topInset - 4.dp)
                 .zIndex(5f)
                 .frostedGlass(
                     shape = RectangleShape,
-                    tint = Color.Black.copy(alpha = 0.10f),
+                    tint = Color.Black.copy(alpha = 0.14f),
                     blur = 38.dp,
                     border = false,
                     mask = switchGradientMask,
                 )
-                .padding(top = 4.dp, bottom = 10.dp),
+                .padding(top = 2.dp, bottom = 8.dp),
             contentAlignment = Alignment.Center,
         ) {
             IsraeliOnlySwitch(
@@ -229,7 +229,7 @@ fun MineScreen(
         item(key = "fh") { SectionHeader("הרשימה שלי") }
         if (favs.isEmpty()) item(key = "fe") { EmptyState("עוד אין פה כלום...") }
         else channelGrid(favs, "f:", logo, subtitle) { onPlay(it, favs) }
-        item(key = "rh") { SectionHeader("צפיתם לאחרונה") }
+        item(key = "rh") { SectionHeader("המשך צפייה") }
         if (recent.isEmpty()) item(key = "re") { EmptyState("עוד אין פה כלום...") }
         else channelGrid(recent, "r:", logo, subtitle) { onPlay(it, recent) }
     }
@@ -262,17 +262,17 @@ fun SearchOverlay(
         val top = WindowInsets.statusBars.asPaddingValues().calculateTopPadding()
         LazyColumn(
             Modifier.fillMaxSize(),
-            contentPadding = PaddingValues(top = top + 20.dp, bottom = 120.dp),
+            contentPadding = PaddingValues(top = top + 18.dp, bottom = 104.dp),
             flingBehavior = rememberBitChordFlingBehavior(),
         ) {
             item(key = "h") {
                 Text(
                     if (q.isEmpty()) "חיפוש" else "${results.size} תוצאות",
-                    Modifier.padding(horizontal = 20.dp).padding(bottom = 16.dp),
-                    fontSize = 30.sp, fontWeight = FontWeight.SemiBold, color = scheme.onSurface,
+                    Modifier.padding(horizontal = 18.dp).padding(bottom = 14.dp),
+                    fontSize = 25.sp, fontWeight = FontWeight.SemiBold, color = scheme.onSurface,
                 )
             }
-            if (q.isNotEmpty() && results.isEmpty()) item(key = "e") { EmptyState("לא נמצא ערוץ בשם \"$q\"") }
+            if (q.isNotEmpty() && results.isEmpty()) item(key = "e") { EmptyState("עוד אין פה כלום...") }
             channelGrid(results, "s:", logo, subtitle) { focusManager.clearFocus(); onPlay(it, results) }
         }
         Row(
@@ -280,21 +280,21 @@ fun SearchOverlay(
                 .align(Alignment.BottomCenter)
                 .navigationBarsPadding()
                 .imePadding()
-                .padding(horizontal = 24.dp, vertical = 16.dp)
+                .padding(horizontal = 20.dp, vertical = 14.dp)
                 .fillMaxWidth()
-                .height(60.dp)
+                .height(52.dp)
                 .frostedGlass(RoundedCornerShape(50), scheme.surfaceContainerHighest.copy(alpha = 0.9f))
-                .padding(horizontal = 18.dp),
+                .padding(horizontal = 16.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            BoldIcon(Icons.Rounded.Search, null, Modifier.size(24.dp), tint = scheme.onSurfaceVariant, weight = 0.65.dp)
-            Box(Modifier.weight(1f).padding(horizontal = 12.dp)) {
-                if (query.isEmpty()) Text("שם ערוץ, מדינה, קטגוריה או מספר", color = scheme.onSurfaceVariant, fontSize = 16.sp, fontWeight = FontWeight.Light)
+            BoldIcon(Icons.Rounded.Search, null, Modifier.size(20.dp), tint = scheme.onSurfaceVariant, weight = 0.65.dp)
+            Box(Modifier.weight(1f).padding(horizontal = 10.dp)) {
+                if (query.isEmpty()) Text("חפשו ערוץ, קטגוריה או מספר...", color = scheme.onSurfaceVariant, fontSize = 14.sp, fontWeight = FontWeight.Light)
                 BasicTextField(
                     query, { query = it },
                     Modifier.fillMaxWidth().focusRequester(focus),
                     singleLine = true,
-                    textStyle = TextStyle(color = scheme.onSurface, fontSize = 17.sp, fontWeight = FontWeight.Medium),
+                    textStyle = TextStyle(color = scheme.onSurface, fontSize = 15.sp, fontWeight = FontWeight.Medium),
                     cursorBrush = SolidColor(scheme.primary),
                     keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
                     keyboardActions = KeyboardActions(onSearch = { focusManager.clearFocus() }),
@@ -302,7 +302,7 @@ fun SearchOverlay(
             }
             BoldIcon(
                 Icons.Rounded.Close, "סגירה",
-                Modifier.size(26.dp).clip(RoundedCornerShape(50)).clickable(remember { MutableInteractionSource() }, null) { if (query.isNotEmpty()) query = "" else onClose() },
+                Modifier.size(22.dp).clip(RoundedCornerShape(50)).clickable(remember { MutableInteractionSource() }, null) { if (query.isNotEmpty()) query = "" else onClose() },
                 tint = scheme.onSurfaceVariant, weight = 0.6.dp,
             )
         }

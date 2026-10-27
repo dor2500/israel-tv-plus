@@ -146,9 +146,9 @@ fun ChannelInfoSheet(channel: Channel, logo: String, prefs: AppPrefs, onPlay: ()
             Text("ערוץ ${channel.number}", fontSize = 13.sp, color = scheme.onSurfaceVariant, modifier = Modifier.padding(top = 8.dp))
             Spacer(Modifier.height(18.dp))
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                Button(onPlay, shape = RoundedCornerShape(50), modifier = Modifier.height(50.dp)) { Text("צפייה", fontWeight = FontWeight.ExtraBold) }
+                Button(onPlay, shape = RoundedCornerShape(50), modifier = Modifier.height(44.dp)) { Text("צפייה", fontSize = 14.5.sp, fontWeight = FontWeight.ExtraBold) }
                 TextButton({ prefs.toggleFavorite(channel.id) }) {
-                    Text(if (prefs.isFavorite(channel.id)) "★ הסרה מהמועדפים" else "☆ הוספה למועדפים")
+                    Text(if (prefs.isFavorite(channel.id)) "★ הסר מהרשימה שלי" else "☆ שמור ברשימה שלי")
                 }
             }
         }

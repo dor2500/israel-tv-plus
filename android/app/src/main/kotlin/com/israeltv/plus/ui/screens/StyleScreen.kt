@@ -17,6 +17,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
@@ -25,7 +27,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
@@ -110,16 +112,17 @@ fun StyleScreen(prefs: AppPrefs, sample: List<Channel>, logo: (Channel) -> Strin
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             item(key = "bar") {
+                val statusTop = WindowInsets.statusBars.asPaddingValues().calculateTopPadding()
                 Row(
-                    Modifier.statusBarsPadding().fillMaxWidth().height(64.dp).padding(horizontal = 16.dp),
+                    Modifier.padding(top = statusTop).fillMaxWidth().height(56.dp).padding(horizontal = 16.dp),
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
                     GlassIconButton(
-                        Icons.AutoMirrored.Rounded.ArrowBack, "חזרה", onClose, size = 44.dp,
+                        Icons.AutoMirrored.Rounded.ArrowBack, "חזרה", onClose, size = 38.dp,
                         tint = scheme.surfaceContainerHigh, iconTint = scheme.onSurface,
                     )
-                    Spacer(Modifier.width(14.dp))
-                    Text("צבעים וסגנון", style = MaterialTheme.typography.headlineMedium, color = scheme.onSurface)
+                    Spacer(Modifier.width(12.dp))
+                    Text("צבעים וסגנון", fontSize = 21.sp, fontWeight = FontWeight.SemiBold, color = scheme.onSurface)
                 }
             }
             item(key = "preview") {

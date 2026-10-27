@@ -171,12 +171,11 @@ window.ITV_UI = (function (I) {
           '<button class="obtn tv" data-act="playpause" title="השהה / נגן"><b class="ob-play" id="ob-play">' + I('pause') + '</b></button>' +
           '<button class="obtn tv" data-act="prev" title="ערוץ קודם">' + I('prev') + '</button>' +
           '<button class="obtn" data-act="list" title="רשימת ערוצים">' + I('list') + '<span>ערוצים</span></button>' +
-          '<button class="obtn" data-act="server" id="ob-server" title="החלף שרת שידור / שרת גיבוי">' + I('server') + '<span id="ob-server-label">שרת 1/1</span></button>' +
-          '<button class="obtn" data-act="multiview" title="פיצול מסך (צפייה בכמה ערוצים במקביל)">' + I('multiview') + '<span>פיצול</span></button>' +
-          '<button class="obtn ph" data-act="cast" id="ob-cast" title="שידור לטלוויזיה (Cast / AirPlay / LG)">' + I('cast') + '<span>שידור</span></button>' +
+          '<button class="obtn hidden" data-act="server" id="ob-server" title="החלף שרת שידור">' + I('server') + '<span id="ob-server-label">שרת 1/1</span></button>' +
+          '<button class="obtn ph" data-act="cast" id="ob-cast" title="שידור לטלוויזיה">' + I('cast') + '<span>שידור</span></button>' +
           '<button class="obtn ph" data-act="dub" title="דיבוב לעברית">' + I('mic') + '<span>דיבוב</span></button>' +
-          '<button class="obtn ph hidden" data-act="pip" id="ob-pip" title="תמונה בתוך תמונה">' + I('pip') + '</button>' +
-          '<button class="obtn" data-act="menu" title="אפשרויות">' + I('more') + '<span>עוד</span></button>' +
+          '<button class="obtn ph hidden" data-act="pip" id="ob-pip" title="חלון צף">' + I('pip') + '</button>' +
+          '<button class="obtn" data-act="menu" title="הגדרות (שרת / פיצול)">' + I('more') + '<span>הגדרות</span></button>' +
           '<button class="obtn" data-act="fullscreen" title="מסך מלא">' + I('fullscreen') + '</button>' +
         '</div>' +
         '<div class="osd-hints" id="osd-hints"></div>' +

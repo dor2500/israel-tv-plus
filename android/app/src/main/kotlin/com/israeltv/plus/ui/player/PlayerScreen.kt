@@ -3,6 +3,8 @@ package com.israeltv.plus.ui.player
 import android.app.Activity
 import android.content.Context
 import android.content.pm.ActivityInfo
+import android.content.pm.PackageManager
+import android.content.res.Configuration
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import androidx.activity.compose.BackHandler
@@ -20,6 +22,8 @@ import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.scaleIn
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -36,6 +40,8 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
+import androidx.compose.foundation.layout.displayCutout
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -58,8 +64,11 @@ import androidx.compose.material.icons.automirrored.rounded.ArrowBack
 import androidx.compose.material.icons.automirrored.rounded.List
 import androidx.compose.material.icons.automirrored.rounded.OpenInNew
 import androidx.compose.material.icons.rounded.Audiotrack
+import androidx.compose.material.icons.rounded.Bookmark
+import androidx.compose.material.icons.rounded.BookmarkBorder
 import androidx.compose.material.icons.rounded.Cast
 import androidx.compose.material.icons.rounded.CastConnected
+import androidx.compose.material.icons.rounded.Close
 import androidx.compose.material.icons.rounded.Fullscreen
 import androidx.compose.material.icons.rounded.FullscreenExit
 import androidx.compose.material.icons.rounded.GridView
@@ -74,6 +83,7 @@ import androidx.compose.material.icons.rounded.SkipNext
 import androidx.compose.material.icons.rounded.SkipPrevious
 import androidx.compose.material.icons.rounded.StopCircle
 import androidx.compose.material.icons.rounded.SwapHoriz
+import androidx.compose.material.icons.rounded.Tune
 import androidx.compose.material.icons.rounded.Tv
 import androidx.compose.material.icons.rounded.VolumeOff
 import androidx.compose.material.icons.rounded.VolumeUp
@@ -89,6 +99,7 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.ripple
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -109,7 +120,11 @@ import androidx.compose.ui.graphics.compositeOver
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
+import androidx.compose.ui.input.key.KeyEventType
+import androidx.compose.ui.input.key.onPreviewKeyEvent
+import androidx.compose.ui.input.key.type
 import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalHapticFeedback
@@ -152,10 +167,14 @@ import com.israeltv.plus.data.playableUrl
 import com.israeltv.plus.ui.components.BoldIcon
 import com.israeltv.plus.ui.components.ChannelLogo
 import com.israeltv.plus.ui.components.GlassIconButton
+import com.israeltv.plus.ui.components.LocalHaze
 import com.israeltv.plus.ui.components.LocalPageScope
+import com.israeltv.plus.ui.components.frostedGlass
 import com.israeltv.plus.ui.components.pressPhysics
 import com.israeltv.plus.ui.components.sharedContainer
 import com.israeltv.plus.ui.components.specularBorder
+import dev.chrisbanes.haze.hazeSource
+import dev.chrisbanes.haze.rememberHazeState
 import kotlinx.coroutines.delay
 import java.util.Locale
 import kotlin.math.abs
@@ -408,35 +427,66 @@ fun PlayerScreen(
         }
     }
 
+    val configuration = LocalConfiguration.current
+    val isTv = remember(context, configuration) {
+        context.packageManager.hasSystemFeature(PackageManager.FEATURE_LEANBACK) ||
+            (configuration.uiMode and Configuration.UI_MODE_TYPE_MASK) == Configuration.UI_MODE_TYPE_TELEVISION
+    }
+    val playerHaze = rememberHazeState()
+
+    CompositionLocalProvider(LocalHaze provides if (isTv) null else playerHaze) {
     Box(
         Modifier
             .fillMaxSize()
             .then(if (sharedKey != null) Modifier.sharedContainer(sharedKey, RectangleShape, scaleContent = true) else Modifier)
             .background(Color.Black)
-    ) {
-        if ((settled || inPip) && !multiViewActive) AndroidView(
-            factory = { ctx ->
-                PlayerView(ctx).apply {
-                    layoutParams = FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
-                    useController = false
-                    artworkDisplayMode = PlayerView.ARTWORK_DISPLAY_MODE_OFF
-                    setShutterBackgroundColor(android.graphics.Color.BLACK)
-                    setKeepContentOnPlayerReset(false)
-                    resizeMode = AspectRatioFrameLayout.RESIZE_MODE_FIT
-                    this.player = player
+            .onPreviewKeyEvent { keyEvent ->
+                if (keyEvent.type == KeyEventType.KeyDown) {
+                    touchTick++
+                    if (!controls) {
+                        controls = true
+                        return@onPreviewKeyEvent true
+                    }
                 }
-            },
-            update = { v ->
-                val lift = if (controls && !inPip) with(density) { 92.dp.roundToPx() } else 0
-                v.subtitleView?.setPadding(0, 0, 0, lift)
-            },
-            modifier = Modifier.fillMaxSize(),
-        )
+                false
+            }
+    ) {
+        Box(
+            Modifier
+                .fillMaxSize()
+                .then(if (!isTv) Modifier.hazeSource(playerHaze) else Modifier)
+        ) {
+            if ((settled || inPip) && !multiViewActive) AndroidView(
+                factory = { ctx ->
+                    PlayerView(ctx).apply {
+                        layoutParams = FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
+                        useController = false
+                        artworkDisplayMode = PlayerView.ARTWORK_DISPLAY_MODE_OFF
+                        setShutterBackgroundColor(android.graphics.Color.BLACK)
+                        setKeepContentOnPlayerReset(false)
+                        resizeMode = AspectRatioFrameLayout.RESIZE_MODE_FIT
+                        this.player = player
+                    }
+                },
+                update = { v ->
+                    val lift = if (controls && !inPip) with(density) { 82.dp.roundToPx() } else 0
+                    v.subtitleView?.setPadding(0, 0, 0, lift)
+                },
+                modifier = Modifier.fillMaxSize(),
+            )
+        }
 
         // the touch layer over the video
         Box(
             Modifier.fillMaxSize().pointerInputs(
-                onTap = { controls = !controls; touchTick++ },
+                onTap = {
+                    if (sheet == "more") {
+                        sheet = null
+                    } else {
+                        controls = !controls
+                    }
+                    touchTick++
+                },
                 onSwipe = { up ->
                     haptic.performHapticFeedback(HapticFeedbackType.GestureThresholdActivate)
                     switchTo(if (up) index + 1 else index - 1)
@@ -447,10 +497,10 @@ fun PlayerScreen(
         if (current.isRadio && !castController.isCasting && !castController.isConnecting && !multiViewActive) {
             Column(Modifier.align(Alignment.Center), horizontalAlignment = Alignment.CenterHorizontally) {
                 Box(
-                    Modifier.size(180.dp).clip(RoundedCornerShape(40.dp)).background(Color.White.copy(alpha = 0.08f)).specularBorder(RoundedCornerShape(40.dp)),
+                    Modifier.size(160.dp).clip(RoundedCornerShape(36.dp)).background(Color.White.copy(alpha = 0.08f)).specularBorder(RoundedCornerShape(36.dp)),
                     contentAlignment = Alignment.Center,
-                ) { ChannelLogo(logo(current), Modifier.size(130.dp), true) }
-                Text(current.name, color = Color.White, fontSize = 22.sp, fontWeight = FontWeight.ExtraBold, modifier = Modifier.padding(top = 16.dp))
+                ) { ChannelLogo(logo(current), Modifier.size(116.dp), true) }
+                Text(current.name, color = Color.White, fontSize = 19.sp, fontWeight = FontWeight.ExtraBold, modifier = Modifier.padding(top = 14.dp))
             }
         }
 
@@ -461,16 +511,16 @@ fun PlayerScreen(
             visible = statusToast != null,
             enter = fadeIn(),
             exit = fadeOut(),
-            modifier = Modifier.align(Alignment.TopCenter).padding(top = 96.dp),
+            modifier = Modifier.align(Alignment.TopCenter).padding(top = 104.dp),
         ) {
             Box(
                 Modifier
                     .clip(RoundedCornerShape(50))
                     .background(Color.Black.copy(alpha = 0.65f))
                     .specularBorder(RoundedCornerShape(50), alpha = 0.35f)
-                    .padding(horizontal = 18.dp, vertical = 8.dp)
+                    .padding(horizontal = 16.dp, vertical = 7.dp)
             ) {
-                Text(statusToast.orEmpty(), color = Color.White, fontSize = 13.sp, fontWeight = FontWeight.Bold)
+                Text(statusToast.orEmpty(), color = Color.White, fontSize = 12.sp, fontWeight = FontWeight.Bold)
             }
         }
 
@@ -507,18 +557,18 @@ fun PlayerScreen(
                     },
                 )
                 "buffering" -> BufferingPill()
-                "controls" -> Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(28.dp)) {
+                "controls" -> Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(24.dp)) {
                     ExpressiveGlassButton(
-                        Icons.Rounded.SkipNext, "ערוץ הבא", 56.dp, 64.dp,
+                        Icons.Rounded.SkipNext, "ערוץ הבא", 48.dp, 56.dp,
                     ) { switchTo(index + 1) }
                     ExpressiveGlassButton(
-                        if (playing) Icons.Rounded.Pause else Icons.Rounded.PlayArrow, "נגן / השהה", 80.dp, 80.dp, primary = true,
+                        if (playing) Icons.Rounded.Pause else Icons.Rounded.PlayArrow, "נגן / השהה", 68.dp, 68.dp, primary = true,
                     ) {
                         touchTick++
                         if (player.isPlaying) player.pause() else { player.volume = 1.0f; player.play() }
                     }
                     ExpressiveGlassButton(
-                        Icons.Rounded.SkipPrevious, "ערוץ קודם", 56.dp, 64.dp,
+                        Icons.Rounded.SkipPrevious, "ערוץ קודם", 48.dp, 56.dp,
                     ) { switchTo(index - 1) }
                 }
                 "error" -> ErrorCard(
@@ -539,27 +589,19 @@ fun PlayerScreen(
 
         AnimatedVisibility(
             !multiViewActive && (controls || error != null || castController.isCasting || castController.isConnecting),
-            enter = fadeIn(),
-            exit = fadeOut(),
+            enter = fadeIn(tween(220)),
+            exit = fadeOut(tween(320)),
             modifier = Modifier.align(Alignment.TopCenter),
         ) {
             TopBar(
                 ch = current,
                 logo = logo(current),
-                serverIndex = sourceIndex,
-                serverCount = candidates.size,
+                landscape = landscape,
+                isTv = isTv,
                 isCasting = castController.isCasting || castController.isConnecting,
-                onCycleServer = {
+                onOpenSettings = {
                     touchTick++
-                    if (candidates.size > 1) {
-                        val nextIdx = (sourceIndex + 1) % candidates.size
-                        sourceIndex = nextIdx
-                        statusToast = "🔀 שרת (${nextIdx + 1}/${candidates.size})"
-                    }
-                },
-                onMultiView = {
-                    touchTick++
-                    multiViewActive = true
+                    sheet = if (sheet == "more") null else "more"
                 },
                 onCast = {
                     touchTick++
@@ -571,30 +613,21 @@ fun PlayerScreen(
         }
         AnimatedVisibility(
             !multiViewActive && (controls || castController.isCasting),
-            enter = fadeIn(),
-            exit = fadeOut(),
+            enter = fadeIn(tween(220)),
+            exit = fadeOut(tween(320)),
             modifier = Modifier.align(Alignment.BottomCenter),
         ) {
             Dock(
                 landscape = landscape,
+                isTv = isTv,
                 isCasting = castController.isCasting || castController.isConnecting,
-                serverIndex = sourceIndex,
-                serverCount = candidates.size,
+                settingsOpen = sheet == "more",
                 onItem = { key ->
                     touchTick++
                     haptic.performHapticFeedback(HapticFeedbackType.VirtualKey)
                     when (key) {
                         "pip" -> onEnterPip()
                         "multiview" -> multiViewActive = true
-                        "server" -> {
-                            if (candidates.size > 1) {
-                                val nextIdx = (sourceIndex + 1) % candidates.size
-                                sourceIndex = nextIdx
-                                statusToast = "🔀 שרת (${nextIdx + 1}/${candidates.size})"
-                            } else {
-                                statusToast = "לערוץ זה שרת שידור יחיד"
-                            }
-                        }
                         "full" -> {
                             landscape = !landscape
                             (context as Activity).requestedOrientation =
@@ -604,9 +637,50 @@ fun PlayerScreen(
                             castController.startDiscovery(current)
                             sheet = "cast"
                         }
+                        "more" -> {
+                            sheet = if (sheet == "more") null else "more"
+                        }
                         else -> sheet = key
                     }
                 },
+            )
+        }
+
+        // Sleek, transparent Apple TV style side-panel for secondary settings ("שרת", "פיצול", etc.)
+        AnimatedVisibility(
+            visible = sheet == "more" && !multiViewActive,
+            enter = slideInHorizontally(tween(260)) { -it } + fadeIn(tween(200)),
+            exit = slideOutHorizontally(tween(220)) { -it } + fadeOut(tween(180)),
+            modifier = Modifier.align(Alignment.CenterEnd),
+        ) {
+            PlayerSettingsSidePanel(
+                ch = current,
+                prefs = prefs,
+                isTv = isTv,
+                serverIndex = sourceIndex,
+                serverCount = candidates.size,
+                onSelectServer = { idx ->
+                    touchTick++
+                    sourceIndex = idx
+                    statusToast = "🔀 שרת (${idx + 1}/${candidates.size})"
+                    sheet = null
+                },
+                onOpenMultiView = {
+                    sheet = null
+                    multiViewActive = true
+                },
+                onOpenAudio = {
+                    sheet = "audio"
+                },
+                onOpenPip = {
+                    sheet = null
+                    onEnterPip()
+                },
+                onOpenCast = {
+                    castController.startDiscovery(current)
+                    sheet = "cast"
+                },
+                onDismiss = { sheet = null },
             )
         }
 
@@ -626,6 +700,7 @@ fun PlayerScreen(
             )
         }
     }
+    }
 
     when (sheet) {
         "list" -> ChannelListSheet(list, index, logo, onPick = { switchTo(it); sheet = null }, onDismiss = { sheet = null })
@@ -638,30 +713,6 @@ fun PlayerScreen(
                 player.volume = 1.0f
                 player.play()
                 sheet = null
-            },
-            onDismiss = { sheet = null },
-        )
-        "more" -> MoreSheet(
-            ch = current,
-            prefs = prefs,
-            serverIndex = sourceIndex,
-            serverCount = candidates.size,
-            onSelectServer = { idx ->
-                sourceIndex = idx
-                statusToast = "🔀 שרת (${idx + 1}/${candidates.size})"
-                sheet = null
-            },
-            onOpenMultiView = {
-                sheet = null
-                multiViewActive = true
-            },
-            onOpenPip = {
-                sheet = null
-                onEnterPip()
-            },
-            onOpenCast = {
-                castController.startDiscovery(current)
-                sheet = "cast"
             },
             onDismiss = { sheet = null },
         )
@@ -683,6 +734,7 @@ private fun Modifier.pointerInputs(onTap: () -> Unit, onSwipe: (Boolean) -> Unit
 /**
  * Floating BOLD Material Symbol control with subtle transparent glass pill & soft drop shadow
  * that dynamically morphs its shape on press (pill/circle -> squircle).
+ * Uses heavy Glassmorphism (`frostedGlass`) on Mobile and smooth dark gradient on TV.
  */
 @Composable
 private fun ExpressiveGlassButton(
@@ -696,25 +748,25 @@ private fun ExpressiveGlassButton(
     val interaction = remember { MutableInteractionSource() }
     val pressed by interaction.collectIsPressedAsState()
     val corner by animateDpAsState(
-        targetValue = if (pressed) 16.dp else (minOf(width, height) / 2f),
+        targetValue = if (pressed) 13.dp else (minOf(width, height) / 2f),
         animationSpec = spring(dampingRatio = 0.56f, stiffness = Spring.StiffnessMedium),
         label = "playerCenterMorph",
     )
     val shape = RoundedCornerShape(corner)
     val haptic = LocalHapticFeedback.current
-    val glassBg = if (primary) Color.White.copy(alpha = 0.20f) else Color.Black.copy(alpha = 0.28f)
+    val glassBg = if (primary) Color.White.copy(alpha = 0.22f) else Color.Black.copy(alpha = 0.34f)
     Box(
         Modifier
             .size(width, height)
             .pressPhysics(interaction, tilt = false, glowShape = shape)
             .graphicsLayer {
-                shadowElevation = 18.dp.toPx()
+                shadowElevation = 16.dp.toPx()
                 this.shape = shape
                 ambientShadowColor = Color.Black.copy(alpha = 0.65f)
                 spotShadowColor = Color.Black.copy(alpha = 0.75f)
             }
             .clip(shape)
-            .background(glassBg)
+            .frostedGlass(shape, glassBg, blur = 34.dp)
             .specularBorder(shape, alpha = if (primary) 0.48f else 0.32f)
             .clickable(interaction, ripple()) {
                 haptic.performHapticFeedback(HapticFeedbackType.VirtualKey)
@@ -725,7 +777,7 @@ private fun ExpressiveGlassButton(
         BoldIcon(
             icon = icon,
             contentDescription = label,
-            modifier = Modifier.size(minOf(width, height) * 0.52f),
+            modifier = Modifier.size(minOf(width, height) * 0.50f),
             tint = Color.White,
             weight = if (primary) 0.85.dp else 0.7.dp,
         )
@@ -891,129 +943,185 @@ private fun CastActiveCard(
     }
 }
 
-/** Back, channel logo badge, title, pulsing red LIVE dot, Backup Server pill, Multi-View and Cast buttons over a transparent gradient-blur. */
+/**
+ * Top Player Header:
+ * - Portrait Notch Fix: Pushes top title/metadata down past statusBars & displayCutout so it is NEVER cut off by the phone's notch or camera hole.
+ * - Performance Split: Heavy Glassmorphism (Gradient + Blur) on Mobile; smooth, deep dark linear gradient (NO BlurEffect) on Smart TV.
+ * - Ultra-thin bordered glass badges for Live and FHD/HD.
+ */
 @Composable
 private fun TopBar(
     ch: Channel,
     logo: String,
-    serverIndex: Int,
-    serverCount: Int,
+    landscape: Boolean,
+    isTv: Boolean,
     isCasting: Boolean,
-    onCycleServer: () -> Unit,
-    onMultiView: () -> Unit,
+    onOpenSettings: () -> Unit,
     onCast: () -> Unit,
     onBack: () -> Unit,
 ) {
-    val pulse by rememberInfiniteTransition(label = "live")
-        .animateFloat(1f, 0.25f, infiniteRepeatable(tween(900), RepeatMode.Reverse), label = "dot")
+    val statusTop = WindowInsets.statusBars.asPaddingValues().calculateTopPadding()
+    val cutoutTop = WindowInsets.displayCutout.asPaddingValues().calculateTopPadding()
+    val safeTop = maxOf(statusTop, cutoutTop, if (landscape) 14.dp else 36.dp) + if (landscape) 6.dp else 14.dp
+    val headerGradient = Brush.verticalGradient(
+        if (isTv) {
+            listOf(
+                Color.Black.copy(alpha = 0.88f),
+                Color.Black.copy(alpha = 0.48f),
+                Color.Transparent,
+            )
+        } else {
+            listOf(
+                Color.Black.copy(alpha = 0.62f),
+                Color.Black.copy(alpha = 0.24f),
+                Color.Transparent,
+            )
+        }
+    )
+    val badgeShape = RoundedCornerShape(6.dp)
     Row(
         Modifier
             .fillMaxWidth()
-            .background(
-                Brush.verticalGradient(
-                    listOf(
-                        Color.Black.copy(alpha = 0.42f),
-                        Color.Black.copy(alpha = 0.14f),
-                        Color.Transparent,
-                    )
-                )
+            .then(
+                if (isTv) {
+                    Modifier.background(headerGradient)
+                } else {
+                    Modifier
+                        .frostedGlass(RectangleShape, Color.Black.copy(alpha = 0.22f), blur = 38.dp)
+                        .background(headerGradient)
+                }
             )
-            .windowInsetsPadding(WindowInsets.statusBars)
-            .padding(horizontal = 16.dp, vertical = 14.dp),
+            .padding(top = safeTop, bottom = 12.dp, start = 16.dp, end = 16.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        GlassIconButton(Icons.AutoMirrored.Rounded.ArrowBack, "חזרה", onBack, size = 44.dp, tint = GlassDark)
-        Spacer(Modifier.width(12.dp))
+        GlassIconButton(Icons.AutoMirrored.Rounded.ArrowBack, "חזרה", onBack, size = 38.dp, tint = GlassDark)
+        Spacer(Modifier.width(10.dp))
         Box(
-            Modifier.size(width = 64.dp, height = 40.dp).clip(RoundedCornerShape(12.dp)).background(Color.White.copy(alpha = 0.12f)),
+            Modifier
+                .size(width = 54.dp, height = 34.dp)
+                .clip(RoundedCornerShape(10.dp))
+                .background(Color.White.copy(alpha = 0.10f))
+                .border(0.75.dp, Color.White.copy(alpha = 0.22f), RoundedCornerShape(10.dp)),
             contentAlignment = Alignment.Center,
-        ) { ChannelLogo(logo, Modifier.size(width = 52.dp, height = 30.dp), ch.isRadio) }
-        Spacer(Modifier.width(12.dp))
+        ) { ChannelLogo(logo, Modifier.size(width = 44.dp, height = 25.dp), ch.isRadio) }
+        Spacer(Modifier.width(10.dp))
         Column(Modifier.weight(1f)) {
-            Text(ch.name, color = Color.White, fontSize = 18.sp, fontWeight = FontWeight.ExtraBold, maxLines = 1, overflow = TextOverflow.Ellipsis)
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Box(Modifier.size(8.dp).alpha(pulse).clip(CircleShape).background(Color(0xFFFF3B30)))
-                Text(" LIVE", color = Color.White, fontSize = 12.sp, fontWeight = FontWeight.ExtraBold)
-                if (ch.badge.isNotEmpty()) {
+            Text(
+                ch.name,
+                color = Color.White,
+                fontSize = 15.5.sp,
+                fontWeight = FontWeight.ExtraBold,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
+            )
+            Spacer(Modifier.height(3.dp))
+            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                Box(
+                    Modifier
+                        .clip(badgeShape)
+                        .background(Color.White.copy(alpha = 0.07f))
+                        .border(0.75.dp, Color.White.copy(alpha = 0.34f), badgeShape)
+                        .padding(horizontal = 6.dp, vertical = 1.5.dp)
+                ) {
                     Text(
-                        ch.badge,
-                        Modifier.padding(start = 8.dp).clip(RoundedCornerShape(6.dp)).background(Color.White.copy(alpha = 0.18f)).padding(horizontal = 6.dp),
-                        color = Color.White, fontSize = 11.sp, fontWeight = FontWeight.Bold,
+                        "Live",
+                        color = Color.White.copy(alpha = 0.94f),
+                        fontSize = 9.5.sp,
+                        fontWeight = FontWeight.SemiBold,
                     )
                 }
-                if (serverCount > 1) {
+                val qualityLabel = ch.badge.ifEmpty { if (ch.isRadio) "HQ" else "FHD" }
+                Box(
+                    Modifier
+                        .clip(badgeShape)
+                        .background(Color.White.copy(alpha = 0.06f))
+                        .border(0.75.dp, Color.White.copy(alpha = 0.28f), badgeShape)
+                        .padding(horizontal = 6.dp, vertical = 1.5.dp)
+                ) {
                     Text(
-                        "שרת ${serverIndex + 1}/$serverCount",
-                        Modifier
-                            .padding(start = 8.dp)
-                            .clip(RoundedCornerShape(6.dp))
-                            .background(Color.White.copy(alpha = 0.16f))
-                            .clickable(onClick = onCycleServer)
-                            .padding(horizontal = 6.dp, vertical = 1.dp),
-                        color = Color.White,
-                        fontSize = 11.sp,
-                        fontWeight = FontWeight.Bold,
+                        qualityLabel,
+                        color = Color.White.copy(alpha = 0.90f),
+                        fontSize = 9.5.sp,
+                        fontWeight = FontWeight.SemiBold,
                     )
                 }
-                Text("  ${ch.number}", color = Color.White.copy(alpha = 0.7f), fontSize = 12.sp)
+                Text(
+                    "ערוץ ${ch.number}",
+                    color = Color.White.copy(alpha = 0.68f),
+                    fontSize = 11.sp,
+                    fontWeight = FontWeight.Medium,
+                )
             }
         }
-        Spacer(Modifier.width(8.dp))
-        GlassIconButton(
-            icon = Icons.Rounded.GridView,
-            contentDescription = "פיצול מסך (Multi-View)",
-            onClick = onMultiView,
-            size = 44.dp,
-            tint = GlassDark,
-        )
         Spacer(Modifier.width(8.dp))
         GlassIconButton(
             icon = if (isCasting) Icons.Rounded.CastConnected else Icons.Rounded.Cast,
             contentDescription = "שידור לטלוויזיה (Cast)",
             onClick = onCast,
-            size = 44.dp,
+            size = 38.dp,
             tint = if (isCasting) MaterialTheme.colorScheme.primary.copy(alpha = 0.85f) else GlassDark,
+        )
+        Spacer(Modifier.width(8.dp))
+        GlassIconButton(
+            icon = Icons.Rounded.Tune,
+            contentDescription = "הגדרות נגן (שרת / פיצול)",
+            onClick = onOpenSettings,
+            size = 38.dp,
+            tint = GlassDark,
         )
     }
 }
 
 /**
- * The compact player dock with ultra-transparent glass (`alpha = 0.22f`), specular border, bold icons and condensed labels.
+ * The compact player dock with heavy Glassmorphism on Mobile and smooth dark gradient on Smart TV.
+ * Scaled down by 10-15% for negative space. Secondary settings ("שרת", "פיצול") live inside the sleek side-panel.
  */
 @Composable
 private fun Dock(
     landscape: Boolean,
+    isTv: Boolean,
     isCasting: Boolean,
-    serverIndex: Int,
-    serverCount: Int,
+    settingsOpen: Boolean,
     onItem: (String) -> Unit,
 ) {
     val shape = RoundedCornerShape(50)
-    val glass = MaterialTheme.colorScheme.surfaceTint.copy(alpha = 0.12f).compositeOver(Color(0xFF0E1017).copy(alpha = 0.28f))
+    val glass = MaterialTheme.colorScheme.surfaceTint.copy(alpha = 0.12f).compositeOver(Color(0xFF0E1017).copy(alpha = 0.34f))
+    val tvGradient = Brush.verticalGradient(
+        listOf(
+            Color(0xFF0A0C12).copy(alpha = 0.78f),
+            Color(0xFF05070B).copy(alpha = 0.92f),
+        )
+    )
     Row(
         Modifier
             .navigationBarsPadding()
-            .padding(horizontal = 14.dp, vertical = 20.dp)
-            .widthIn(max = 460.dp)
+            .padding(horizontal = 14.dp, vertical = 16.dp)
+            .widthIn(max = 390.dp)
             .fillMaxWidth()
-            .height(58.dp)
+            .height(50.dp)
             .clip(shape)
-            .background(glass)
+            .then(
+                if (isTv) {
+                    Modifier.background(tvGradient)
+                } else {
+                    Modifier.frostedGlass(shape, glass, blur = 38.dp)
+                }
+            )
             .specularBorder(shape, alpha = 0.32f),
         horizontalArrangement = Arrangement.SpaceEvenly,
     ) {
         DockItem(Icons.AutoMirrored.Rounded.List, "ערוצים") { onItem("list") }
-        DockItem(Icons.Rounded.GridView, "פיצול") { onItem("multiview") }
-        if (serverCount > 1) {
-            DockItem(Icons.Rounded.SwapHoriz, "שרת ${serverIndex + 1}/$serverCount") { onItem("server") }
-        }
         DockItem(
             icon = if (isCasting) Icons.Rounded.CastConnected else Icons.Rounded.Cast,
             label = "שידור",
             highlight = isCasting,
         ) { onItem("cast") }
         DockItem(Icons.Rounded.Audiotrack, "שמע") { onItem("audio") }
-        DockItem(Icons.Rounded.MoreHoriz, "עוד") { onItem("more") }
+        DockItem(
+            icon = Icons.Rounded.Tune,
+            label = "הגדרות",
+            highlight = settingsOpen,
+        ) { onItem("more") }
         DockItem(if (landscape) Icons.Rounded.FullscreenExit else Icons.Rounded.Fullscreen, "מסך") { onItem("full") }
     }
 }
@@ -1029,7 +1137,7 @@ private fun androidx.compose.foundation.layout.RowScope.DockItem(
     val interaction = remember { MutableInteractionSource() }
     val pressed by interaction.collectIsPressedAsState()
     val corner by animateDpAsState(
-        targetValue = if (pressed) 12.dp else 24.dp,
+        targetValue = if (pressed) 10.dp else 22.dp,
         animationSpec = spring(dampingRatio = 0.58f, stiffness = Spring.StiffnessMedium),
         label = "dockItemMorph",
     )
@@ -1038,18 +1146,18 @@ private fun androidx.compose.foundation.layout.RowScope.DockItem(
         Modifier
             .weight(1f)
             .fillMaxHeight()
-            .padding(3.dp)
+            .padding(2.5.dp)
             .pressPhysics(interaction, tilt = false, glowShape = itemShape)
             .clip(itemShape)
             .clickable(interaction, null, onClick = onClick),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
     ) {
-        BoldIcon(icon, label, Modifier.size(21.dp), tint = tint, weight = 0.65.dp)
+        BoldIcon(icon, label, Modifier.size(18.5.dp), tint = tint, weight = 0.65.dp)
         Text(
             label,
             color = if (highlight) tint else Color.White.copy(alpha = 0.85f),
-            fontSize = 9.5.sp,
+            fontSize = 8.8.sp,
             fontWeight = if (highlight) FontWeight.Bold else FontWeight.Medium,
             maxLines = 1,
         )
@@ -1468,75 +1576,249 @@ private fun AudioSheet(player: ExoPlayer, tracks: Tracks, onDismiss: () -> Unit)
     }
 }
 
+/**
+ * Sleek, transparent Apple TV style side-panel for secondary player settings ("שרת", "פיצול", "רצועת שמע", etc.).
+ * Completely replaces the old chunky solid blocks.
+ * - Mobile: Heavy Glassmorphism (`frostedGlass`)
+ * - Smart TV: Smooth, deep dark linear gradient (NO BlurEffect inside the TV Video Player)
+ */
 @Composable
-private fun MoreSheet(
+private fun PlayerSettingsSidePanel(
     ch: Channel,
     prefs: AppPrefs,
+    isTv: Boolean,
     serverIndex: Int,
     serverCount: Int,
     onSelectServer: (Int) -> Unit,
     onOpenMultiView: () -> Unit,
+    onOpenAudio: () -> Unit,
     onOpenPip: () -> Unit,
     onOpenCast: () -> Unit,
     onDismiss: () -> Unit,
 ) {
     val scheme = MaterialTheme.colorScheme
-    ModalBottomSheet(onDismissRequest = onDismiss, containerColor = scheme.surfaceContainer) {
+    val panelShape = RoundedCornerShape(24.dp)
+    val tvGradient = Brush.linearGradient(
+        listOf(
+            Color(0xFF0A0D14).copy(alpha = 0.88f),
+            Color(0xFF05070B).copy(alpha = 0.94f),
+        )
+    )
+    val mobileTint = Color(0xFF0A0D14).copy(alpha = 0.44f)
+    val isFav = prefs.isFavorite(ch.id)
+
+    Column(
+        Modifier
+            .padding(horizontal = 16.dp, vertical = 24.dp)
+            .width(276.dp)
+            .clip(panelShape)
+            .then(
+                if (isTv) {
+                    Modifier.background(tvGradient)
+                } else {
+                    Modifier.frostedGlass(panelShape, mobileTint, blur = 42.dp)
+                }
+            )
+            .specularBorder(panelShape, alpha = 0.34f)
+            .verticalScroll(rememberScrollState())
+            .padding(16.dp),
+        verticalArrangement = Arrangement.spacedBy(10.dp),
+    ) {
+        Row(
+            Modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween,
+        ) {
+            Column(Modifier.weight(1f)) {
+                Text(
+                    ch.name,
+                    color = Color.White,
+                    fontSize = 15.sp,
+                    fontWeight = FontWeight.ExtraBold,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                )
+                Text(
+                    "הגדרות צפייה",
+                    color = Color.White.copy(alpha = 0.62f),
+                    fontSize = 11.sp,
+                    fontWeight = FontWeight.Medium,
+                )
+            }
+            GlassIconButton(
+                icon = Icons.Rounded.Close,
+                contentDescription = "סגור",
+                onClick = onDismiss,
+                size = 32.dp,
+                tint = Color.White.copy(alpha = 0.10f),
+            )
+        }
+
+        // Inline Server Selector ("שרת")
         Column(
             Modifier
                 .fillMaxWidth()
-                .verticalScroll(rememberScrollState())
-                .padding(horizontal = 24.dp)
-                .padding(bottom = 32.dp)
+                .clip(RoundedCornerShape(16.dp))
+                .background(Color.White.copy(alpha = 0.05f))
+                .border(0.75.dp, Color.White.copy(alpha = 0.14f), RoundedCornerShape(16.dp))
+                .padding(12.dp),
+            verticalArrangement = Arrangement.spacedBy(8.dp),
         ) {
-            Text(ch.name, fontSize = 22.sp, fontWeight = FontWeight.ExtraBold, color = scheme.onSurface)
-            if (ch.desc.isNotEmpty()) Text(ch.desc, color = scheme.onSurfaceVariant, modifier = Modifier.padding(top = 6.dp))
-            Spacer(Modifier.height(18.dp))
-            Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-                FilledTonalButton({ prefs.toggleFavorite(ch.id) }, shape = RoundedCornerShape(50)) {
-                    Text(if (prefs.isFavorite(ch.id)) "★ הסר מהרשימה שלי" else "☆ הוסף לרשימה שלי", fontWeight = FontWeight.Bold)
+            Row(
+                Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween,
+            ) {
+                Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                    BoldIcon(Icons.Rounded.SwapHoriz, null, Modifier.size(16.dp), tint = scheme.primary)
+                    Text(
+                        "שרת שידור",
+                        color = Color.White,
+                        fontSize = 12.5.sp,
+                        fontWeight = FontWeight.Bold,
+                    )
                 }
-                FilledTonalButton(onClick = onOpenMultiView, shape = RoundedCornerShape(50)) {
-                    Icon(Icons.Rounded.GridView, null, modifier = Modifier.size(18.dp))
-                    Spacer(Modifier.width(6.dp))
-                    Text("פיצול מסך", fontWeight = FontWeight.Bold)
-                }
-                FilledTonalButton(onClick = onOpenPip, shape = RoundedCornerShape(50)) {
-                    Icon(Icons.Rounded.PictureInPictureAlt, null, modifier = Modifier.size(18.dp))
-                    Spacer(Modifier.width(6.dp))
-                    Text("חלון צף", fontWeight = FontWeight.Bold)
-                }
-                FilledTonalButton(onClick = onOpenCast, shape = RoundedCornerShape(50)) {
-                    Icon(Icons.Rounded.Cast, null, modifier = Modifier.size(18.dp))
-                    Spacer(Modifier.width(6.dp))
-                    Text("שידור ל-TV", fontWeight = FontWeight.Bold)
-                }
-            }
-            if (serverCount > 1) {
-                Spacer(Modifier.height(18.dp))
                 Text(
-                    "🔀 שרתי גיבוי (${serverIndex + 1}/$serverCount)",
-                    fontSize = 14.sp,
-                    fontWeight = FontWeight.ExtraBold,
-                    color = scheme.primary,
+                    "${serverIndex + 1}/$serverCount",
+                    color = Color.White.copy(alpha = 0.62f),
+                    fontSize = 11.sp,
+                    fontWeight = FontWeight.SemiBold,
                 )
-                Spacer(Modifier.height(8.dp))
-                Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                    for (i in 0 until serverCount) {
-                        val active = i == serverIndex
-                        val label = if (i == 0) "שרת ראשי #1" else "שרת גיבוי #${i + 1}"
-                        if (active) {
-                            Button(onClick = { onSelectServer(i) }, shape = RoundedCornerShape(50)) {
-                                Text("✓ $label", fontWeight = FontWeight.Bold, fontSize = 12.sp)
-                            }
-                        } else {
-                            FilledTonalButton(onClick = { onSelectServer(i) }, shape = RoundedCornerShape(50)) {
-                                Text(label, fontWeight = FontWeight.Bold, fontSize = 12.sp)
-                            }
-                        }
+            }
+            Row(
+                Modifier.horizontalScroll(rememberScrollState()),
+                horizontalArrangement = Arrangement.spacedBy(6.dp),
+            ) {
+                for (i in 0 until serverCount.coerceAtLeast(1)) {
+                    val active = i == serverIndex
+                    val srvInteraction = remember(i) { MutableInteractionSource() }
+                    val srvPressed by srvInteraction.collectIsPressedAsState()
+                    val srvCorner by animateDpAsState(
+                        targetValue = if (srvPressed) 8.dp else 14.dp,
+                        animationSpec = spring(dampingRatio = 0.58f, stiffness = Spring.StiffnessMedium),
+                        label = "srvPillMorph",
+                    )
+                    val srvShape = RoundedCornerShape(srvCorner)
+                    Box(
+                        Modifier
+                            .pressPhysics(srvInteraction, tilt = false, glowShape = srvShape)
+                            .clip(srvShape)
+                            .background(
+                                if (active) scheme.primary else Color.White.copy(alpha = 0.08f)
+                            )
+                            .border(
+                                width = 0.75.dp,
+                                color = if (active) Color.White.copy(alpha = 0.55f) else Color.White.copy(alpha = 0.18f),
+                                shape = srvShape,
+                            )
+                            .clickable(srvInteraction, ripple()) { onSelectServer(i) }
+                            .padding(horizontal = 11.dp, vertical = 6.dp),
+                        contentAlignment = Alignment.Center,
+                    ) {
+                        Text(
+                            if (i == 0) "ראשי #1" else "גיבוי #${i + 1}",
+                            color = if (active) scheme.onPrimary else Color.White.copy(alpha = 0.90f),
+                            fontSize = 11.sp,
+                            fontWeight = FontWeight.Bold,
+                        )
                     }
                 }
             }
+        }
+
+        // Sleek Action Rows ("פיצול", "שמע", "שידור", "חלון צף", "שמור")
+        SidePanelActionRow(
+            icon = Icons.Rounded.GridView,
+            title = "פיצול מסך",
+            subtitle = "צפייה ב-2 עד 4 ערוצים במקביל",
+            onClick = onOpenMultiView,
+        )
+        SidePanelActionRow(
+            icon = Icons.Rounded.Audiotrack,
+            title = "רצועת שמע",
+            subtitle = "בחירת שפת פסקול",
+            onClick = onOpenAudio,
+        )
+        SidePanelActionRow(
+            icon = Icons.Rounded.Cast,
+            title = "שידור לטלוויזיה",
+            subtitle = "Chromecast / DLNA / שיקוף",
+            onClick = onOpenCast,
+        )
+        if (!isTv) {
+            SidePanelActionRow(
+                icon = Icons.Rounded.PictureInPictureAlt,
+                title = "חלון צף",
+                subtitle = "המשך צפייה מחוץ לאפליקציה",
+                onClick = onOpenPip,
+            )
+        }
+        SidePanelActionRow(
+            icon = if (isFav) Icons.Rounded.Bookmark else Icons.Rounded.BookmarkBorder,
+            title = if (isFav) "הסר מהרשימה שלי" else "שמור ברשימה שלי",
+            subtitle = if (isFav) "שמור במועדפים" else "גישה מהירה מהמסך הראשי",
+            highlight = isFav,
+            onClick = { prefs.toggleFavorite(ch.id) },
+        )
+    }
+}
+
+@Composable
+private fun SidePanelActionRow(
+    icon: ImageVector,
+    title: String,
+    subtitle: String,
+    highlight: Boolean = false,
+    onClick: () -> Unit,
+) {
+    val scheme = MaterialTheme.colorScheme
+    val interaction = remember { MutableInteractionSource() }
+    val pressed by interaction.collectIsPressedAsState()
+    val corner by animateDpAsState(
+        targetValue = if (pressed) 10.dp else 15.dp,
+        animationSpec = spring(dampingRatio = 0.58f, stiffness = Spring.StiffnessMedium),
+        label = "sidePanelRowMorph",
+    )
+    val rowShape = RoundedCornerShape(corner)
+    Row(
+        Modifier
+            .fillMaxWidth()
+            .pressPhysics(interaction, tilt = false, glowShape = rowShape)
+            .clip(rowShape)
+            .background(
+                if (highlight) scheme.primary.copy(alpha = 0.18f) else Color.White.copy(alpha = 0.06f)
+            )
+            .border(
+                0.75.dp,
+                if (highlight) scheme.primary.copy(alpha = 0.50f) else Color.White.copy(alpha = 0.14f),
+                rowShape,
+            )
+            .clickable(interaction, ripple(), onClick = onClick)
+            .padding(horizontal = 12.dp, vertical = 10.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        BoldIcon(
+            icon = icon,
+            contentDescription = title,
+            modifier = Modifier.size(18.dp),
+            tint = if (highlight) scheme.primary else Color.White.copy(alpha = 0.92f),
+        )
+        Spacer(Modifier.width(10.dp))
+        Column(Modifier.weight(1f)) {
+            Text(
+                title,
+                color = Color.White,
+                fontSize = 12.5.sp,
+                fontWeight = FontWeight.Bold,
+                maxLines = 1,
+            )
+            Text(
+                subtitle,
+                color = Color.White.copy(alpha = 0.58f),
+                fontSize = 10.5.sp,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
+            )
         }
     }
 }
@@ -1590,11 +1872,15 @@ private fun MultiViewOverlay(
         mutableStateOf(picked.toList())
     }
 
+    val statusTop = WindowInsets.statusBars.asPaddingValues().calculateTopPadding()
+    val cutoutTop = WindowInsets.displayCutout.asPaddingValues().calculateTopPadding()
+    val safeTop = maxOf(statusTop, cutoutTop, 28.dp)
+
     Box(
         Modifier
             .fillMaxSize()
             .background(Color(0xFF07090E))
-            .windowInsetsPadding(WindowInsets.statusBars)
+            .padding(top = safeTop)
             .navigationBarsPadding()
     ) {
         Column(Modifier.fillMaxSize()) {

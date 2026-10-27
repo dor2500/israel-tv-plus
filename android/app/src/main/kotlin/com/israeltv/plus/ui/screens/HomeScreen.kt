@@ -8,6 +8,9 @@ import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -35,9 +38,10 @@ import androidx.compose.material.icons.rounded.Star
 import androidx.compose.material.icons.rounded.StarBorder
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.FilterChip
+import androidx.compose.material3.FilterChipDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
@@ -105,10 +109,12 @@ import com.israeltv.plus.ui.components.cascadeIn
 import com.israeltv.plus.ui.components.feedPadding
 import com.israeltv.plus.ui.components.frostedGlass
 import com.israeltv.plus.ui.components.glassShimmer
+import com.israeltv.plus.ui.components.pressPhysics
 import com.israeltv.plus.ui.components.rememberBitChordFlingBehavior
 import com.israeltv.plus.ui.components.sharedContainer
 import com.israeltv.plus.ui.theme.LocalDarkTheme
 import kotlinx.coroutines.delay
+import kotlin.math.abs
 
 private val HeroShape = RoundedCornerShape(0.dp)
 
@@ -172,7 +178,7 @@ fun HomeScreen(
         item(key = "israeli-only-filter") {
             IsraeliOnlySwitch(
                 checked = israeliOnly,
-                modifier = Modifier.padding(top = 4.dp, bottom = 14.dp).cascadeIn(1),
+                modifier = Modifier.padding(top = 2.dp, bottom = 10.dp).cascadeIn(1),
                 onPositioned = onSwitchPositioned,
                 onCheckedChange = onIsraeliOnlyChange,
             )
@@ -197,7 +203,7 @@ fun HomeScreen(
             val i = row++
             item(key = "favs") {
                 ChannelShelf(
-                    title = "המועדפים שלי",
+                    title = "הרשימה שלי",
                     channels = favs,
                     logo = logo,
                     subtitle = subtitle,
@@ -240,8 +246,8 @@ private fun Modifier.bleedToTop(padding: PaddingValues): Modifier = layout { mea
 }
 
 /**
- * "רק ישראלי" switch: a compact centred label and the Material 3 switch. Its measured centre is kept
- * so the Zomato overlay can fly its badge back into the switch when the filter is turned off.
+ * "רק ישראלי" inline Material 3 Filter Chip (replaces isolated bulky Switch).
+ * Features shape-morphing press physics and records its measured center for the Zomato overlay transition.
  */
 @Composable
 internal fun IsraeliOnlySwitch(
@@ -252,23 +258,65 @@ internal fun IsraeliOnlySwitch(
 ) {
     val scheme = MaterialTheme.colorScheme
     val haptic = LocalHapticFeedback.current
+    val interaction = remember { MutableInteractionSource() }
+    val pressed by interaction.collectIsPressedAsState()
+    val corner by animateDpAsState(
+        targetValue = if (pressed) 10.dp else 18.dp,
+        animationSpec = spring(dampingRatio = 0.58f, stiffness = Spring.StiffnessMedium),
+        label = "israeliFilterChipMorph",
+    )
+    val chipShape = RoundedCornerShape(corner)
     Row(
-        modifier.fillMaxWidth().padding(horizontal = 24.dp, vertical = 2.dp),
+        modifier.fillMaxWidth().padding(horizontal = 18.dp, vertical = 2.dp),
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        Text("רק ישראלי", color = scheme.onSurface.copy(alpha = 0.92f), fontSize = 15.sp, fontWeight = FontWeight.Medium)
-        Spacer(Modifier.width(10.dp))
-        Switch(
-            checked = checked,
-            onCheckedChange = {
-                haptic.performHapticFeedback(if (it) HapticFeedbackType.ToggleOn else HapticFeedbackType.ToggleOff)
-                onCheckedChange(it)
+        FilterChip(
+            selected = checked,
+            onClick = {
+                val next = !checked
+                haptic.performHapticFeedback(if (next) HapticFeedbackType.ToggleOn else HapticFeedbackType.ToggleOff)
+                onCheckedChange(next)
             },
-            thumbContent = if (checked) {
-                { BoldIcon(Icons.Rounded.Check, null, Modifier.size(14.dp), tint = scheme.onPrimary, weight = 0.5.dp) }
+            label = {
+                Text(
+                    "רק ישראלי",
+                    fontSize = 12.sp,
+                    fontWeight = if (checked) FontWeight.SemiBold else FontWeight.Medium,
+                )
+            },
+            leadingIcon = if (checked) {
+                {
+                    BoldIcon(
+                        Icons.Rounded.Check,
+                        null,
+                        Modifier.size(14.dp),
+                        tint = scheme.onPrimary,
+                        weight = 0.6.dp,
+                    )
+                }
             } else null,
-            modifier = Modifier.onGloballyPositioned { onPositioned(it.boundsInRoot().center) },
+            interactionSource = interaction,
+            shape = chipShape,
+            colors = FilterChipDefaults.filterChipColors(
+                containerColor = Color.White.copy(alpha = 0.06f),
+                labelColor = scheme.onSurface.copy(alpha = 0.90f),
+                selectedContainerColor = scheme.primary,
+                selectedLabelColor = scheme.onPrimary,
+                selectedLeadingIconColor = scheme.onPrimary,
+            ),
+            border = FilterChipDefaults.filterChipBorder(
+                enabled = true,
+                selected = checked,
+                borderColor = Color.White.copy(alpha = 0.28f),
+                selectedBorderColor = Color.Transparent,
+                borderWidth = 0.85.dp,
+                selectedBorderWidth = 0.dp,
+            ),
+            modifier = Modifier
+                .height(31.dp)
+                .pressPhysics(interaction, tilt = false, glowShape = chipShape)
+                .onGloballyPositioned { onPositioned(it.boundsInRoot().center) },
         )
     }
 }
@@ -441,20 +489,45 @@ private fun MutedHeroHls(
 }
 
 /**
- * High-quality static hero fallback backdrop with a slight blur (graceful degradation while buffering or if video fails).
+ * Computes dominant saturated ambient glow colors for a channel poster/stream.
+ */
+private fun dominantHeroGlowColors(ch: Channel): Pair<Color, Color> {
+    val id = ch.id.lowercase()
+    return when {
+        "kan" in id || "11" in id -> Color(0xFF0EA5E9) to Color(0xFF2563EB)
+        "keshet" in id || "12" in id -> Color(0xFFF59E0B) to Color(0xFFE11D48)
+        "reshet" in id || "13" in id -> Color(0xFF3B82F6) to Color(0xFF7C3AED)
+        "14" in id || "now14" in id -> Color(0xFFE11D48) to Color(0xFF9F1239)
+        "i24" in id || "news" in id -> Color(0xFF0284C7) to Color(0xFF1D4ED8)
+        "sport" in id || ch.categoryEn == "sports" -> Color(0xFF10B981) to Color(0xFF0284C7)
+        else -> {
+            val palette = listOf(
+                Color(0xFF0EA5E9) to Color(0xFF6366F1),
+                Color(0xFFE11D48) to Color(0xFFF59E0B),
+                Color(0xFF10B981) to Color(0xFF0EA5E9),
+                Color(0xFF8B5CF6) to Color(0xFFEC4899),
+            )
+            palette[abs(ch.id.hashCode()) % palette.size]
+        }
+    }
+}
+
+/**
+ * High-quality static hero fallback backdrop with a dynamic ambient color glow and slight blur.
  */
 @Composable
-private fun HeroStaticFallbackPoster(logo: String, modifier: Modifier = Modifier) {
-    val scheme = MaterialTheme.colorScheme
+private fun HeroStaticFallbackPoster(ch: Channel, logo: String, modifier: Modifier = Modifier) {
+    val (glowA, glowB) = remember(ch.id) { dominantHeroGlowColors(ch) }
     Box(
         modifier
             .fillMaxSize()
             .background(
                 Brush.linearGradient(
                     listOf(
-                        Color(0xFF0B132B),
-                        scheme.primaryContainer.copy(alpha = 0.55f),
-                        Color(0xFF090A10),
+                        Color(0xFF070913),
+                        glowA.copy(alpha = 0.42f),
+                        glowB.copy(alpha = 0.28f),
+                        Color(0xFF07080D),
                     )
                 )
             )
@@ -466,9 +539,9 @@ private fun HeroStaticFallbackPoster(logo: String, modifier: Modifier = Modifier
                 modifier = Modifier
                     .align(Alignment.Center)
                     .fillMaxWidth(0.85f)
-                    .height(260.dp)
-                    .blur(20.dp)
-                    .graphicsLayer { alpha = 0.38f },
+                    .height(250.dp)
+                    .blur(26.dp)
+                    .graphicsLayer { alpha = 0.42f },
                 contentScale = ContentScale.Fit,
             )
         }
@@ -478,7 +551,7 @@ private fun HeroStaticFallbackPoster(logo: String, modifier: Modifier = Modifier
                 .background(
                     Brush.radialGradient(
                         listOf(
-                            scheme.primary.copy(alpha = 0.24f),
+                            glowA.copy(alpha = 0.32f),
                             Color.Transparent,
                         )
                     )
@@ -489,10 +562,11 @@ private fun HeroStaticFallbackPoster(logo: String, modifier: Modifier = Modifier
 
 /**
  * The Kan Box / Apple TV+ hero:
+ * - Heavily blurred dynamic Hero Ambient Glow matching dominant poster/channel colors behind the Hero preview video.
  * - Parallax scroll effect on the backdrop.
  * - Seamless TextureView-backed ExoPlayer (RESIZE_MODE_ZOOM) with graceful fallback to a blurred static poster.
- * - Soft vertical gradient blending into the dark background.
- * - Clean metadata line ("HD • ערוצי ישראל • Live") centered below the channel logo with no colored pill backgrounds and no red dot.
+ * - Ultra-thin bordered glass badges for FHD/Live (no solid chunky pills, no red dot emoji).
+ * - Scaled-down interactive buttons with shape-morphing press physics.
  */
 @Composable
 private fun HeroPage(
@@ -510,8 +584,9 @@ private fun HeroPage(
     val haptic = LocalHapticFeedback.current
     val origin = LocalPlayOrigin.current
     val key = "hero:${ch.id}"
-    val quality = ch.badge.ifBlank { if (ch.isRadio) "רדיו" else "HD" }
+    val quality = ch.badge.ifBlank { if (ch.isRadio) "רדיו" else "FHD" }
     val where = if (ch.categoryEn == "israel") "ערוצי ישראל" else shortCategory(ch.category)
+    val (glowPrimary, glowSecondary) = remember(ch.id) { dominantHeroGlowColors(ch) }
 
     var videoReady by remember(ch.id, playBackground) { mutableStateOf(false) }
     var videoFailed by remember(ch.id, playBackground) { mutableStateOf(false) }
@@ -524,11 +599,28 @@ private fun HeroPage(
     Box(
         Modifier
             .fillMaxWidth()
-            .height(580.dp)
+            .height(548.dp)
             .sharedContainer(key, HeroShape)
             .clipToBounds()
             .background(Color.Black)
     ) {
+        // Heavily blurred dynamic color Ambient Glow behind the Hero preview video
+        Box(
+            Modifier
+                .fillMaxSize()
+                .blur(76.dp)
+                .background(
+                    Brush.radialGradient(
+                        colors = listOf(
+                            glowPrimary.copy(alpha = 0.56f),
+                            glowSecondary.copy(alpha = 0.34f),
+                            Color.Transparent,
+                        ),
+                        radius = 950f,
+                    )
+                )
+        )
+
         // Parallax backdrop container (both fallback poster and live video move with parallax)
         Box(
             Modifier
@@ -541,7 +633,7 @@ private fun HeroPage(
                 }
         ) {
             // Graceful degradation: static blurred hero poster shown while buffering or if video fails
-            HeroStaticFallbackPoster(logo = logo)
+            HeroStaticFallbackPoster(ch = ch, logo = logo)
 
             if (playBackground && !videoFailed && !ch.isRadio && (ch.url.contains(".m3u8", ignoreCase = true) || ch.auth == "mako")) {
                 Box(
@@ -555,19 +647,19 @@ private fun HeroPage(
                         onError = { videoFailed = true },
                         modifier = Modifier.fillMaxSize(),
                     )
-                    // Seamless Transition: gentle blur + soft bottom edge fade so the Hero video stays bright and clear
+                    // Seamless Transition: gentle blur + ambient color glow + soft bottom edge fade
                     Box(
                         Modifier
                             .align(Alignment.BottomCenter)
                             .fillMaxWidth()
-                            .height(136.dp)
-                            .blur(14.dp)
+                            .height(144.dp)
+                            .blur(18.dp)
                             .background(
                                 Brush.verticalGradient(
                                     0f to Color.Transparent,
-                                    0.48f to Color.Black.copy(alpha = 0.16f),
-                                    0.82f to scheme.surfaceContainerLowest.copy(alpha = 0.68f),
-                                    1f to scheme.surfaceContainerLowest.copy(alpha = 0.92f),
+                                    0.45f to glowPrimary.copy(alpha = 0.22f),
+                                    0.82f to scheme.surfaceContainerLowest.copy(alpha = 0.72f),
+                                    1f to scheme.surfaceContainerLowest.copy(alpha = 0.94f),
                                 )
                             )
                     )
@@ -575,67 +667,87 @@ private fun HeroPage(
             }
         }
 
-        // Light bottom-only gradient blending the hero edge into the feed background without darkening the video
+        // Ambient glow halo + bottom gradient blending the hero edge into the feed background
         Box(
             Modifier.fillMaxSize().background(
                 Brush.verticalGradient(
                     0f to Color.Transparent,
-                    0.56f to Color.Transparent,
-                    0.78f to Color.Black.copy(alpha = 0.24f),
-                    0.92f to scheme.surfaceContainerLowest.copy(alpha = 0.76f),
+                    0.54f to Color.Transparent,
+                    0.76f to glowPrimary.copy(alpha = 0.18f),
+                    0.91f to scheme.surfaceContainerLowest.copy(alpha = 0.80f),
                     1f to scheme.surfaceContainerLowest,
                 )
             )
         )
 
         Column(
-            Modifier.align(Alignment.BottomCenter).fillMaxWidth().padding(horizontal = 24.dp).padding(bottom = 26.dp),
+            Modifier.align(Alignment.BottomCenter).fillMaxWidth().padding(horizontal = 20.dp).padding(bottom = 22.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Box(contentAlignment = Alignment.Center) {
                 Box(
                     Modifier
-                        .size(width = 300.dp, height = 190.dp)
-                        .background(Brush.radialGradient(listOf(Color.White.copy(alpha = if (dark) 0.30f else 0.55f), Color.Transparent)))
+                        .size(width = 260.dp, height = 160.dp)
+                        .blur(32.dp)
+                        .background(
+                            Brush.radialGradient(
+                                listOf(
+                                    glowPrimary.copy(alpha = 0.38f),
+                                    Color.White.copy(alpha = if (dark) 0.22f else 0.45f),
+                                    Color.Transparent,
+                                )
+                            )
+                        )
                 )
                 if (logo.isNotEmpty()) {
-                    AsyncImage(logo, ch.name, Modifier.fillMaxWidth(0.62f).height(140.dp), contentScale = ContentScale.Fit)
+                    AsyncImage(logo, ch.name, Modifier.fillMaxWidth(0.56f).height(118.dp), contentScale = ContentScale.Fit)
                 } else {
-                    Text(ch.name, style = MaterialTheme.typography.displaySmall, color = scheme.onSurface, maxLines = 2)
+                    Text(ch.name, style = MaterialTheme.typography.headlineMedium, color = scheme.onSurface, maxLines = 2)
                 }
             }
-            Spacer(Modifier.height(16.dp))
+            Spacer(Modifier.height(12.dp))
             HeroMetadata(quality, where)
             if (logo.isEmpty()) {
                 Spacer(Modifier.height(4.dp))
-                Text(ch.name, style = MaterialTheme.typography.headlineSmall, color = scheme.onSurface, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                Text(ch.name, style = MaterialTheme.typography.titleLarge, color = scheme.onSurface, maxLines = 1, overflow = TextOverflow.Ellipsis)
             }
-            Spacer(Modifier.height(16.dp))
-            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+            Spacer(Modifier.height(14.dp))
+            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(10.dp)) {
                 GlassIconButton(
-                    if (favorite) Icons.Rounded.Star else Icons.Rounded.StarBorder, "מועדף", onFavorite, size = 50.dp,
-                    tint = scheme.onSurface.copy(alpha = 0.14f), iconTint = scheme.onSurface,
+                    if (favorite) Icons.Rounded.Star else Icons.Rounded.StarBorder, "שמור", onFavorite, size = 43.dp,
+                    tint = scheme.onSurface.copy(alpha = 0.14f), iconTint = if (favorite) Color(0xFFFFD54F) else scheme.onSurface,
                 )
+                val playInteraction = remember { MutableInteractionSource() }
+                val playPressed by playInteraction.collectIsPressedAsState()
+                val playCorner by animateDpAsState(
+                    targetValue = if (playPressed) 12.dp else 22.dp,
+                    animationSpec = spring(dampingRatio = 0.56f, stiffness = Spring.StiffnessMedium),
+                    label = "heroPlayMorph",
+                )
+                val playShape = RoundedCornerShape(playCorner)
                 Button(
                     onClick = {
                         haptic.performHapticFeedback(HapticFeedbackType.Confirm)
                         origin.key = key
                         onPlay(ch)
                     },
-                    shape = RoundedCornerShape(50),
+                    interactionSource = playInteraction,
+                    shape = playShape,
                     colors = ButtonDefaults.buttonColors(
                         containerColor = if (dark) Color.White else scheme.onSurface,
                         contentColor = if (dark) Color.Black else scheme.surface,
                     ),
-                    contentPadding = PaddingValues(horizontal = 34.dp),
-                    modifier = Modifier.height(50.dp),
+                    contentPadding = PaddingValues(horizontal = 28.dp),
+                    modifier = Modifier
+                        .height(43.dp)
+                        .pressPhysics(playInteraction, tilt = false, glowShape = playShape),
                 ) {
-                    Icon(Icons.Rounded.PlayArrow, null, Modifier.size(26.dp))
-                    Spacer(Modifier.width(6.dp))
-                    Text("צפייה", fontSize = 17.sp, fontWeight = FontWeight.SemiBold)
+                    Icon(Icons.Rounded.PlayArrow, null, Modifier.size(21.dp))
+                    Spacer(Modifier.width(5.dp))
+                    Text("צפייה", fontSize = 14.5.sp, fontWeight = FontWeight.SemiBold)
                 }
                 GlassIconButton(
-                    Icons.Rounded.Info, "מידע", { onInfo(ch) }, size = 50.dp,
+                    Icons.Rounded.Info, "מידע", { onInfo(ch) }, size = 43.dp,
                     tint = scheme.onSurface.copy(alpha = 0.14f), iconTint = scheme.onSurface,
                 )
             }
@@ -644,39 +756,46 @@ private fun HeroPage(
 }
 
 /**
- * Clean minimalist Hero Metadata: "HD • ערוצי ישראל • Live" centered below the channel logo.
- * No colored pill backgrounds around text, and no red circle/dot emoji next to "Live".
+ * Ultra-thin bordered glass badges for FHD/Live and category.
+ * Strictly no solid chunky pills and no red dot emoji.
  */
 @Composable
 private fun HeroMetadata(quality: String, where: String) {
     CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {
-        Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.Center) {
-            HeroMetaText(quality)
-            HeroMetaSeparator()
-            HeroMetaText(where)
-            HeroMetaSeparator()
-            HeroMetaText("Live", dim = false)
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(7.dp, Alignment.CenterHorizontally),
+        ) {
+            HeroGlassBadge(quality)
+            HeroGlassBadge(where)
+            HeroGlassBadge("Live", highlight = true)
         }
     }
 }
 
 @Composable
-private fun HeroMetaText(text: String, dim: Boolean = true) {
-    Text(
-        text,
-        color = MaterialTheme.colorScheme.onSurface.copy(alpha = if (dim) 0.76f else 0.98f),
-        fontSize = 14.sp,
-        fontWeight = if (dim) FontWeight.Normal else FontWeight.Medium,
-        letterSpacing = 0.2.sp,
-        maxLines = 1,
-        style = TextStyle(textDirection = TextDirection.Ltr),
-    )
-}
-
-@Composable
-private fun HeroMetaSeparator() {
+private fun HeroGlassBadge(text: String, highlight: Boolean = false) {
+    val badgeShape = RoundedCornerShape(6.dp)
     Box(
-        Modifier.padding(horizontal = 9.dp).size(3.dp).clip(CircleShape)
-            .background(MaterialTheme.colorScheme.onSurface.copy(alpha = 0.35f))
-    )
+        Modifier
+            .clip(badgeShape)
+            .background(Color.White.copy(alpha = if (highlight) 0.10f else 0.06f))
+            .border(
+                width = 0.75.dp,
+                color = Color.White.copy(alpha = if (highlight) 0.42f else 0.26f),
+                shape = badgeShape,
+            )
+            .padding(horizontal = 8.dp, vertical = 2.5.dp),
+        contentAlignment = Alignment.Center,
+    ) {
+        Text(
+            text,
+            color = MaterialTheme.colorScheme.onSurface.copy(alpha = if (highlight) 0.98f else 0.86f),
+            fontSize = 11.sp,
+            fontWeight = if (highlight) FontWeight.SemiBold else FontWeight.Medium,
+            letterSpacing = 0.2.sp,
+            maxLines = 1,
+            style = TextStyle(textDirection = TextDirection.Ltr),
+        )
+    }
 }

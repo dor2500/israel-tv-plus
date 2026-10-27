@@ -2406,10 +2406,14 @@
     el.player.classList.remove('cursor-hidden');
     if (state.osdTimer) clearTimeout(state.osdTimer);
     state.osdTimer = setTimeout(function () {
-      if (state.overlay !== 'player' || state.zone === 'osd' || state.zone === 'perror') return;
+      if (state.overlay !== 'player' || state.zone === 'perror') return;
+      if (state.zone === 'osd') {
+        state.zone = 'video';
+        markFocus();
+      }
       el.osd.classList.add('off');
       el.player.classList.add('cursor-hidden');
-    }, (S.osdSec || 5) * 1000);
+    }, 5000);
   }
 
   // ---- channel list inside the player
@@ -2495,13 +2499,13 @@
       } }];
     if (foreign(ch) && !appOnly(ch)) items.push({ ico: '🎙️', label: 'צפייה עם דיבוב לעברית', dot: colourOf('dub'), act: function () { watchDubbed(ch); } });
     if (state.candidates && state.candidates.length > 1) {
-      items.push({ ico: '🔀', label: 'החלף שרת שידור', stay: true, val: function () { return 'שרת ' + ((state.candIdx || 0) + 1) + '/' + state.candidates.length; },
+      items.push({ ico: '🔀', label: 'שרת שידור', stay: true, val: function () { return 'שרת ' + ((state.candIdx || 0) + 1) + '/' + state.candidates.length; },
         act: function () { switchBackupServer(); } });
     }
-    items.push({ ico: '⊞', label: 'פיצול מסך (Multi-View)', act: function () { openMultiView(ch); } });
-    if (!IS_TV) items.push({ ico: '📺', label: 'שידור לטלוויזיה (Cast / LG / AirPlay)', act: function () { openCastDialog(ch); } });
-    items.push({ ico: isFav(ch) ? '★' : '☆', label: isFav(ch) ? 'הסרה מהמועדפים' : 'הוספה למועדפים', dot: colourOf('fav'), act: function () { toggleFav(ch); } });
-    items.push({ ico: 'ℹ️', label: 'מידע ומקור השידור', dot: colourOf('info'), act: function () { showInfo(ch); } });
+    items.push({ ico: '⊞', label: 'פיצול מסך', act: function () { openMultiView(ch); } });
+    if (!IS_TV) items.push({ ico: '📺', label: 'שידור לטלוויזיה', act: function () { openCastDialog(ch); } });
+    items.push({ ico: isFav(ch) ? '★' : '☆', label: isFav(ch) ? 'הסר מהרשימה שלי' : 'שמור ברשימה שלי', dot: colourOf('fav'), act: function () { toggleFav(ch); } });
+    items.push({ ico: 'ℹ️', label: 'פרטי הערוץ', dot: colourOf('info'), act: function () { showInfo(ch); } });
     if (!S.kids) items.push({ ico: '🙈', label: 'הסתרת הערוץ', act: function () { hideChannel(ch); } });
     if (appOnly(ch)) items.push({ ico: '📲', label: 'הורדת האפליקציה', act: function () { showGetApp(ch); } });
     items.push({ ico: '⚙️', label: 'הגדרות', act: openSettings });
@@ -2512,23 +2516,26 @@
     var ch = state.playing;
     if (!ch) return;
     var items = [];
+    if (state.candidates && state.candidates.length > 1) {
+      items.push({ ico: '🔀', label: 'שרת שידור', stay: true, val: function () { return 'שרת ' + ((state.candIdx || 0) + 1) + '/' + state.candidates.length; },
+        act: function () { switchBackupServer(); } });
+    }
+    items.push({ ico: '⊞', label: 'פיצול מסך', act: function () { openMultiView(ch); } });
     if (!state.isRadio) {
       items.push({ ico: '✨', label: 'מצב תמונה', stay: true, dot: colourOf('picture'), val: function () { return label(PICS, S.pic); },
         act: function (st) { setSetting('pic', cycle(PICS, S.pic, st)); } });
       items.push({ ico: '🖼️', label: 'גודל תמונה', stay: true, dot: colourOf('aspect'), val: function () { return label(ASPECTS, S.aspect); },
         act: function (st) { setSetting('aspect', cycle(ASPECTS, S.aspect, st)); } });
-      items.push({ ico: '🔍', label: 'חידוד לשידורי SD ישנים', stay: true, val: function () { return S.sharpen ? 'פועל' : 'כבוי'; },
-        act: function () { setSetting('sharpen', !S.sharpen); } });
       items.push({ ico: '📶', label: 'איכות', stay: true, val: function () { return label(QUALITIES, S.quality); },
         act: function (st) { setSetting('quality', cycle(QUALITIES, S.quality, st)); if (state.playing) loadStream(state.playing); } });
     }
     if (foreign(ch)) items.push({ ico: '🎙️', label: 'דיבוב לעברית', stay: true, dot: colourOf('dub'), val: function () { return Dub.settings.enabled ? 'פועל' : 'כבוי'; },
       act: function () { toggleDub(); } });
-    if (!IS_TV) items.push({ ico: '📺', label: 'שידור לטלוויזיה (Cast / LG / AirPlay)', act: function () { openCastDialog(ch); } });
-    items.push({ ico: isFav(ch) ? '★' : '☆', label: isFav(ch) ? 'הסרה מהמועדפים' : 'הוספה למועדפים', dot: colourOf('fav'), act: function () { toggleFav(ch); } });
+    if (!IS_TV) items.push({ ico: '📺', label: 'שידור לטלוויזיה', act: function () { openCastDialog(ch); } });
+    items.push({ ico: isFav(ch) ? '★' : '☆', label: isFav(ch) ? 'הסר מהרשימה שלי' : 'שמור ברשימה שלי', dot: colourOf('fav'), act: function () { toggleFav(ch); } });
     items.push({ ico: '☰', label: 'רשימת ערוצים', dot: colourOf('drawer'), act: openDrawer });
-    items.push({ ico: 'ℹ️', label: 'מידע ומקור השידור', dot: colourOf('info'), act: function () { showInfo(ch); } });
-    items.push({ ico: '⟳', label: 'טעינה מחדש של השידור', act: function () { loadStream(ch); } });
+    items.push({ ico: 'ℹ️', label: 'פרטי הערוץ', dot: colourOf('info'), act: function () { showInfo(ch); } });
+    items.push({ ico: '⟳', label: 'רענן שידור', act: function () { loadStream(ch); } });
     items.push({ ico: '⚙️', label: 'הגדרות', act: openSettings });
     openMenu(ch.name, '#' + ch.number + ' · ' + el.osdQuality.textContent, ch, items);
   }

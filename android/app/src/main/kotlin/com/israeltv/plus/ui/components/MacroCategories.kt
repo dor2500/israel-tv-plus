@@ -70,8 +70,8 @@ fun MacroCategoryRow(
     val entries = listOf<Pair<String?, String>>(null to "הכל") + MacroCategories.map { it to it }
     LazyRow(
         modifier.fillMaxWidth(),
-        contentPadding = PaddingValues(horizontal = 16.dp),
-        horizontalArrangement = Arrangement.spacedBy(12.dp, Alignment.CenterHorizontally),
+        contentPadding = PaddingValues(horizontal = 14.dp),
+        horizontalArrangement = Arrangement.spacedBy(9.dp, Alignment.CenterHorizontally),
         verticalAlignment = Alignment.CenterVertically,
         flingBehavior = rememberBitChordFlingBehavior(),
     ) {
@@ -105,7 +105,7 @@ private fun MacroPill(
     val interaction = remember { MutableInteractionSource() }
     val pressed by interaction.collectIsPressedAsState()
     val cornerRadius by animateDpAsState(
-        targetValue = if (pressed) 10.dp else 22.dp,
+        targetValue = if (pressed) 9.dp else 18.dp,
         animationSpec = spring(dampingRatio = 0.58f, stiffness = Spring.StiffnessMedium),
         label = "macroPillMorph",
     )
@@ -116,7 +116,7 @@ private fun MacroPill(
         label = "macroPillFg",
     )
     val border by animateColorAsState(
-        if (active) Color.Transparent else scheme.onSurface.copy(alpha = 0.38f),
+        if (active) Color.Transparent else scheme.onSurface.copy(alpha = 0.34f),
         label = "macroPillBorder",
     )
     Row(
@@ -124,23 +124,23 @@ private fun MacroPill(
             .pressPhysics(interaction, tilt = false, glowShape = morphShape)
             .clip(morphShape)
             .background(background)
-            .border(1.dp, border, morphShape)
+            .border(0.85.dp, border, morphShape)
             .clickable(interaction, null, onClick = onClick)
-            .height(34.dp)
-            .padding(horizontal = 13.dp),
+            .height(29.dp)
+            .padding(horizontal = 11.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Center,
     ) {
         Text(
             label,
             color = content,
-            fontSize = 12.5.sp,
+            fontSize = 11.sp,
             fontWeight = if (active) FontWeight.SemiBold else FontWeight.Medium,
             maxLines = 1,
         )
         if (trailingIcon != null) {
             Spacer(Modifier.width(4.dp))
-            BoldIcon(trailingIcon, null, Modifier.size(15.dp), tint = content, weight = 0.45.dp)
+            BoldIcon(trailingIcon, null, Modifier.size(13.dp), tint = content, weight = 0.45.dp)
         }
     }
 }

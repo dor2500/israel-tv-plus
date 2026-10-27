@@ -27,6 +27,8 @@ import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -34,7 +36,7 @@ import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -53,6 +55,7 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -63,6 +66,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
@@ -153,31 +158,36 @@ private fun ProfilesContent(prefs: AppPrefs, canClose: Boolean, onPicked: () -> 
                     }
                 }
         )
+        val statusBarTop = WindowInsets.statusBars.asPaddingValues().calculateTopPadding()
         Column(
-            Modifier.fillMaxSize().statusBarsPadding().navigationBarsPadding().verticalScroll(rememberScrollState()),
+            Modifier
+                .fillMaxSize()
+                .padding(top = statusBarTop)
+                .navigationBarsPadding()
+                .verticalScroll(rememberScrollState()),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center,
         ) {
-            Spacer(Modifier.height(48.dp))
+            Spacer(Modifier.height(42.dp))
             Text(
-                "תבחר את הוויב שלך",
+                "מי צופה?",
                 color = Color.White,
-                fontSize = 32.sp,
+                fontSize = 28.sp,
                 fontWeight = FontWeight.ExtraBold,
                 letterSpacing = (-0.5).sp,
             )
-            Spacer(Modifier.height(8.dp))
+            Spacer(Modifier.height(6.dp))
             Text(
                 "הפרופיל שלך, הצבעים שלך",
                 color = Color.White.copy(alpha = 0.62f),
-                fontSize = 14.sp,
+                fontSize = 13.sp,
                 fontWeight = FontWeight.Normal,
             )
-            Spacer(Modifier.height(40.dp))
+            Spacer(Modifier.height(34.dp))
             FlowRow(
                 Modifier.fillMaxWidth().padding(horizontal = 24.dp),
-                horizontalArrangement = Arrangement.spacedBy(24.dp, Alignment.CenterHorizontally),
-                verticalArrangement = Arrangement.spacedBy(28.dp),
+                horizontalArrangement = Arrangement.spacedBy(22.dp, Alignment.CenterHorizontally),
+                verticalArrangement = Arrangement.spacedBy(24.dp),
                 maxItemsInEachRow = 2,
             ) {
                 prefs.profiles.forEach { p ->
@@ -198,7 +208,7 @@ private fun ProfilesContent(prefs: AppPrefs, canClose: Boolean, onPicked: () -> 
                     )
                 }
             }
-            Spacer(Modifier.height(44.dp))
+            Spacer(Modifier.height(38.dp))
             Text(
                 if (editing) "סיום" else "עריכה",
                 Modifier
@@ -209,10 +219,10 @@ private fun ProfilesContent(prefs: AppPrefs, canClose: Boolean, onPicked: () -> 
                         haptic.performHapticFeedback(HapticFeedbackType.SegmentTick)
                         editing = !editing
                     }
-                    .padding(horizontal = 26.dp, vertical = 11.dp),
-                color = Color.White, fontSize = 15.sp, fontWeight = FontWeight.SemiBold,
+                    .padding(horizontal = 22.dp, vertical = 9.dp),
+                color = Color.White, fontSize = 13.5.sp, fontWeight = FontWeight.SemiBold,
             )
-            Spacer(Modifier.height(48.dp))
+            Spacer(Modifier.height(42.dp))
         }
 
         AnimatedVisibility(
@@ -240,10 +250,14 @@ private fun ProfileTile(p: Profile, active: Boolean, editing: Boolean, onClick: 
     val haptic = LocalHapticFeedback.current
     val scope = rememberCoroutineScope()
     val bounce = remember { Animatable(1f) }
+    val focusRequester = remember { FocusRequester() }
     var focused by remember { mutableStateOf(false) }
     val interaction = remember { MutableInteractionSource() }
     val pressed by interaction.collectIsPressedAsState()
     val highlighted = focused || pressed || active
+    LaunchedEffect(active) {
+        if (active) runCatching { focusRequester.requestFocus() }
+    }
     val focusScale by animateFloatAsState(
         targetValue = when {
             pressed -> 0.94f
@@ -259,7 +273,7 @@ private fun ProfileTile(p: Profile, active: Boolean, editing: Boolean, onClick: 
         label = "profileGlyphScale",
     )
     val borderWidth by animateDpAsState(
-        targetValue = if (highlighted) 3.dp else 1.5.dp,
+        targetValue = if (highlighted) 2.dp else 1.dp,
         animationSpec = spring(stiffness = Spring.StiffnessMediumLow),
         label = "profileBorderWidth",
     )
@@ -269,14 +283,15 @@ private fun ProfileTile(p: Profile, active: Boolean, editing: Boolean, onClick: 
         label = "profileBorderColor",
     )
     val glowElevation by animateFloatAsState(
-        targetValue = if (highlighted) 24f else 0f,
+        targetValue = if (highlighted) 28f else 0f,
         animationSpec = spring(stiffness = Spring.StiffnessMediumLow),
         label = "profileGlow",
     )
     val tone = remember(p.theme) { schemeFor(context, p.theme.copy(dark = true)) }
     Column(
         Modifier
-            .width(136.dp)
+            .width(124.dp)
+            .focusRequester(focusRequester)
             .onFocusChanged { focused = it.isFocused }
             .focusable()
             .clickable(interaction, null) {
@@ -291,7 +306,7 @@ private fun ProfileTile(p: Profile, active: Boolean, editing: Boolean, onClick: 
     ) {
         Box(
             Modifier
-                .size(124.dp)
+                .size(112.dp)
                 .graphicsLayer {
                     val s = focusScale * bounce.value
                     scaleX = s
@@ -299,8 +314,8 @@ private fun ProfileTile(p: Profile, active: Boolean, editing: Boolean, onClick: 
                     if (glowElevation > 0.5f) {
                         shadowElevation = glowElevation * density
                         shape = TileShape
-                        ambientShadowColor = tone.primary.copy(alpha = 0.65f)
-                        spotShadowColor = Color.White.copy(alpha = 0.7f)
+                        ambientShadowColor = tone.primary.copy(alpha = 0.72f)
+                        spotShadowColor = Color.White.copy(alpha = 0.82f)
                     }
                 }
                 .sharedAvatar("avatar:${p.id}")
@@ -311,20 +326,20 @@ private fun ProfileTile(p: Profile, active: Boolean, editing: Boolean, onClick: 
         ) {
             ProfileAvatar(
                 p.avatar,
-                glyphSize = 72.dp,
+                glyphSize = 64.dp,
                 modifier = Modifier.graphicsLayer { scaleX = glyphScale; scaleY = glyphScale },
             )
             if (editing) {
                 Box(Modifier.fillMaxSize().background(Color.Black.copy(alpha = 0.45f)), contentAlignment = Alignment.Center) {
-                    Icon(Icons.Rounded.Edit, "עריכה", Modifier.size(32.dp), tint = Color.White)
+                    Icon(Icons.Rounded.Edit, "עריכה", Modifier.size(28.dp), tint = Color.White)
                 }
             }
         }
         Text(
             p.name,
-            Modifier.padding(top = 14.dp),
+            Modifier.padding(top = 12.dp),
             color = if (highlighted) Color.White else Color.White.copy(alpha = 0.88f),
-            fontSize = 16.sp,
+            fontSize = 14.5.sp,
             fontWeight = FontWeight.SemiBold,
             maxLines = 1,
             overflow = TextOverflow.Ellipsis,
@@ -343,19 +358,19 @@ private fun AddTile(onClick: () -> Unit) {
         label = "addScale",
     )
     Column(
-        Modifier.width(136.dp).clickable(interaction, null, onClick = onClick),
+        Modifier.width(124.dp).clickable(interaction, null, onClick = onClick),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Box(
             Modifier
-                .size(124.dp)
+                .size(112.dp)
                 .graphicsLayer { scaleX = scale; scaleY = scale }
                 .clip(TileShape)
                 .background(Color.White.copy(alpha = 0.06f))
-                .border(1.5.dp, Color.White.copy(alpha = 0.3f), TileShape),
+                .border(1.dp, Color.White.copy(alpha = 0.3f), TileShape),
             contentAlignment = Alignment.Center,
-        ) { Icon(Icons.Rounded.Add, "הוספת פרופיל", Modifier.size(44.dp), tint = Color.White) }
-        Text("הוספה", Modifier.padding(top = 14.dp), color = Color.White.copy(alpha = 0.8f), fontSize = 16.sp, fontWeight = FontWeight.SemiBold)
+        ) { Icon(Icons.Rounded.Add, "הוספת פרופיל", Modifier.size(38.dp), tint = Color.White) }
+        Text("הוספה", Modifier.padding(top = 12.dp), color = Color.White.copy(alpha = 0.8f), fontSize = 14.5.sp, fontWeight = FontWeight.SemiBold)
     }
 }
 
