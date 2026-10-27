@@ -10,24 +10,24 @@ import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
+import androidx.compose.animation.core.updateTransition
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
-import androidx.compose.animation.scaleIn
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.offset
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
@@ -44,6 +44,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -51,13 +52,11 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
 import kotlinx.coroutines.delay
 
-import androidx.compose.animation.core.updateTransition
-import androidx.compose.foundation.layout.BoxWithConstraints
-import androidx.compose.foundation.layout.width
-import androidx.compose.ui.platform.LocalDensity
-
 /**
  * Overlay state machine for the Zomato "רק ישראלי" experience.
+ *
+ * Hidden -> Entering (the full-screen showcase, ~1 s) -> Active (the invisible anchor while the filter is on).
+ * Turning the filter off goes to Exiting, which flies the badge from the screen centre into the switch.
  */
 enum class IsraeliOverlayMode {
     Hidden,
@@ -67,8 +66,8 @@ enum class IsraeliOverlayMode {
 }
 
 /**
- * Premium Apple TV / iOS style Israeli flag asset drawn with pure vector geometry.
- * Clean rounded white capsule with two horizontal blue stripes and the central Magen David.
+ * The Apple-iOS-style flag of the reference: a clean rounded white capsule, two horizontal blue stripes and a vector
+ * Magen David (res/drawable/flag_israel_apple.xml - never the Unicode flag emoji, whose look changes per device).
  */
 @Composable
 fun AppleIsraelFlag(modifier: Modifier = Modifier) {
@@ -80,13 +79,12 @@ fun AppleIsraelFlag(modifier: Modifier = Modifier) {
 }
 
 /**
- * Upgraded Zomato-Style Overlay for "רק ישראלי":
- * 1. Fluid pulsing background ripples with a subtle blue/white gradient (Israeli flag motif).
- * 2. Center Badge: "100% ישראלי" with Apple flag.
- * 3. Inline Apple iOS style vector flag Image composable inside subtext (Zero "🇮🇱" emoji string).
- * 4. SPATIAL REVERT ANIMATION (Toggle OFF): When turned OFF, the full-screen overlay does NOT just fade out.
- *    The center badge and overlay visually scale down and translate (fly back) directly INTO the exact
- *    spatial coordinates of the Switch using updateTransition and spatial bounds.
+ * Zomato-style overlay for "רק ישראלי":
+ * 1. Fluid pulsing ripples in the flag's blue and white expand from the centre during the showcase.
+ * 2. The centre badge says "100% ישראלי" around the vector flag.
+ * 3. The subtext carries the flag as an inline [Image], with no emoji string anywhere.
+ * 4. Turning the filter off uses an updateTransition: the badge keeps its full scale/alpha for the first frame and
+ *    then scales down and flies to the switch's measured centre, fading as it lands in it.
  */
 @Composable
 fun IsraeliOnlyZomatoOverlay(
@@ -99,178 +97,94 @@ fun IsraeliOnlyZomatoOverlay(
     val scheme = MaterialTheme.colorScheme
     val density = LocalDensity.current
 
-    // Ripples pulse animation (infinite loop during active state)
-    val rippleProgress = if (mode == IsraeliOverlayMode.Entering) {
-        val infiniteTransition = rememberInfiniteTransition(label = "israeli_fluid_ripples")
-        val progress by infiniteTransition.animateFloat(
-            initialValue = 0f,
-            targetValue = 1f,
-            animationSpec = infiniteRepeatable(animation = tween(1400, easing = LinearEasing), repeatMode = RepeatMode.Restart),
-            label = "fluid_ripple_progress",
-        )
-        progress
-    } else 0f
+    // The spatial revert: updateTransition owns the scale/alpha/translation so the badge starts from the exact frame it
+    // disappeared on and lands on the switch's coordinates.
+    val transition = updateTransition(targetState = mode, label = "spatial_zomato_transition")
+    val flightSpec = spring<Float>(dampingRatio = 0.8f, stiffness = Spring.StiffnessMediumLow)
+    val exitScale by transition.animateFloat(
+        transitionSpec = { if (targetState == IsraeliOverlayMode.Exiting) flightSpec else tween(0) },
+        label = "badge_flight_scale",
+    ) { state -> if (state == IsraeliOverlayMode.Exiting) 0.05f else 1f }
+    val exitAlpha by transition.animateFloat(
+        transitionSpec = { tween(420) },
+        label = "badge_flight_alpha",
+    ) { state -> if (state == IsraeliOverlayMode.Exiting) 0f else 1f }
 
-    BoxWithConstraints(
-        modifier = Modifier
-            .fillMaxSize()
-            .zIndex(100f)
-    ) {
+    // The spring entrance (the badge pops in) lives apart from the flight, so turning the filter off never re-runs it.
+    val entrance = remember { Animatable(0f) }
+    LaunchedEffect(mode) {
+        when (mode) {
+            IsraeliOverlayMode.Entering -> {
+                entrance.snapTo(0f)
+                entrance.animateTo(1f, spring(dampingRatio = 0.55f, stiffness = Spring.StiffnessMediumLow))
+                delay(950)
+                onDismiss()
+            }
+            IsraeliOverlayMode.Active -> entrance.snapTo(1f)
+            IsraeliOverlayMode.Exiting -> {
+                // start the flight from the badge's real size even if the user flips the switch mid-showcase
+                entrance.snapTo(1f)
+                // the flight is 520-620 ms; then the overlay can leave the composition
+                delay(640)
+                onDismiss()
+            }
+            IsraeliOverlayMode.Hidden -> Unit
+        }
+    }
+
+    BoxWithConstraints(Modifier.fillMaxSize().zIndex(100f)) {
         val screenW = with(density) { maxWidth.toPx() }
         val screenH = with(density) { maxHeight.toPx() }
-        val screenCenterX = screenW / 2f
-        val screenCenterY = screenH / 2f
+        // where the switch is, relative to the badge's resting centre
+        val targetX = (switchCenter?.x ?: (screenW * 0.5f)) - screenW / 2f
+        val targetY = (switchCenter?.y ?: (screenH * 0.82f)) - screenH / 2f
+        val exitX by transition.animateFloat(
+            transitionSpec = { if (targetState == IsraeliOverlayMode.Exiting) flightSpec else tween(0) },
+            label = "badge_flight_x",
+        ) { state -> if (state == IsraeliOverlayMode.Exiting) targetX else 0f }
+        val exitY by transition.animateFloat(
+            transitionSpec = { if (targetState == IsraeliOverlayMode.Exiting) flightSpec else tween(0) },
+            label = "badge_flight_y",
+        ) { state -> if (state == IsraeliOverlayMode.Exiting) targetY else 0f }
 
-        // Calculate spatial vector to the Switch toggle coordinates
-        val targetTx = if (switchCenter != null) switchCenter.x - screenCenterX else (screenW * 0.35f)
-        val targetTy = if (switchCenter != null) switchCenter.y - screenCenterY else (-screenH * 0.35f)
-
-        // updateTransition manages spatial state transition
-        val transition = updateTransition(targetState = mode, label = "spatial_zomato_transition")
-
-        val badgeScale by transition.animateFloat(
-            transitionSpec = {
-                when {
-                    IsraeliOverlayMode.Hidden isTransitioningTo IsraeliOverlayMode.Entering ->
-                        spring(dampingRatio = 0.5f, stiffness = Spring.StiffnessMediumLow)
-                    targetState == IsraeliOverlayMode.Exiting ->
-                        spring(dampingRatio = 0.75f, stiffness = Spring.StiffnessMedium)
-                    else -> tween(300)
-                }
-            },
-            label = "badge_scale",
-        ) { state ->
-            when (state) {
-                IsraeliOverlayMode.Hidden -> 0f
-                IsraeliOverlayMode.Entering, IsraeliOverlayMode.Active -> 1f
-                IsraeliOverlayMode.Exiting -> 0.04f
-            }
-        }
-
-        val translationX by transition.animateFloat(
-            transitionSpec = {
-                if (targetState == IsraeliOverlayMode.Exiting) {
-                    spring(dampingRatio = 0.75f, stiffness = Spring.StiffnessMedium)
-                } else {
-                    tween(300)
-                }
-            },
-            label = "spatial_translation_x",
-        ) { state ->
-            if (state == IsraeliOverlayMode.Exiting) targetTx else 0f
-        }
-
-        val translationY by transition.animateFloat(
-            transitionSpec = {
-                if (targetState == IsraeliOverlayMode.Exiting) {
-                    spring(dampingRatio = 0.75f, stiffness = Spring.StiffnessMedium)
-                } else {
-                    tween(300)
-                }
-            },
-            label = "spatial_translation_y",
-        ) { state ->
-            if (state == IsraeliOverlayMode.Exiting) targetTy else 0f
-        }
-
-        val bgAlpha by transition.animateFloat(
-            transitionSpec = { tween(320) },
-            label = "bg_alpha",
-        ) { state ->
-            when (state) {
-                IsraeliOverlayMode.Hidden, IsraeliOverlayMode.Active, IsraeliOverlayMode.Exiting -> 0f
-                IsraeliOverlayMode.Entering -> 0.96f
-            }
-        }
-
-        val contentAlpha by transition.animateFloat(
-            transitionSpec = { tween(280) },
-            label = "content_alpha",
-        ) { state ->
-            when (state) {
-                IsraeliOverlayMode.Hidden, IsraeliOverlayMode.Active -> 0f
-                IsraeliOverlayMode.Entering, IsraeliOverlayMode.Exiting -> 1f
-            }
-        }
-
-        // Auto-dismiss timers (750ms full-screen Zomato-style overlay)
-        LaunchedEffect(mode) {
-            when (mode) {
-                IsraeliOverlayMode.Entering -> {
-                    // Full showcase experience (750ms), then auto dismiss
-                    delay(900)
-                    onDismiss() // Entering settles into Active: the badge remains available for the spatial OFF animation.
-                }
-                IsraeliOverlayMode.Exiting -> {
-                    // Wait for spatial fly-back animation to finish into switch bounds
-                    delay(560)
-                    onDismiss()
-                }
-                IsraeliOverlayMode.Hidden, IsraeliOverlayMode.Active -> Unit
-            }
-        }
-
-        // Fullscreen backdrop/ripples exist only during the brief ON showcase; Active retains just the invisible badge anchor.
-        if (mode == IsraeliOverlayMode.Entering) Box(
-            modifier = Modifier.fillMaxSize().graphicsLayer { alpha = bgAlpha }
-                .background(Brush.verticalGradient(listOf(scheme.background.copy(alpha = 0.98f), Color(0xFF07080E)))),
+        // full-screen showcase: only while entering
+        AnimatedVisibility(
+            visible = mode == IsraeliOverlayMode.Entering,
+            enter = fadeIn(tween(320)),
+            exit = fadeOut(tween(220)),
         ) {
-            // Fluid pulsing background ripples (Israeli flag motif: Royal Blue & Pure White)
-            Canvas(Modifier.fillMaxSize()) {
-                val center = Offset(size.width / 2f, size.height / 2f)
-                val maxRadius = size.width.coerceAtLeast(size.height) * 0.7f
-                val baseRadius = 60.dp.toPx()
-
-                for (i in 0..2) {
-                    val phase = (rippleProgress + i * 0.33f) % 1f
-                    val r = baseRadius + phase * (maxRadius - baseRadius)
-                    val alpha = (1f - phase).coerceIn(0f, 1f) * 0.5f
-
-                    // 1. Fluid radial gradient pool (Royal Blue & Pure White flag motif)
-                    drawCircle(
-                        brush = Brush.radialGradient(
-                            0.0f to Color(0xFF0038B8).copy(alpha = alpha * 0.32f),
-                            0.45f to Color.White.copy(alpha = alpha * 0.16f),
-                            0.80f to Color(0xFF0A84FF).copy(alpha = alpha * 0.08f),
-                            1.0f to Color.Transparent,
-                            center = center,
-                            radius = r,
-                        ),
-                        radius = r,
-                        center = center,
-                    )
-
-                    // 2. Soft fluid glow ring
-                    drawCircle(
-                        color = Color(0xFF0A84FF).copy(alpha = alpha * 0.6f),
-                        radius = r,
-                        center = center,
-                        style = Stroke(width = 2.5.dp.toPx()),
-                    )
-                }
-            }
+            IsraeliShowcaseBackdrop()
         }
 
-        // The 136 dp badge itself owns the animated transform, so its center lands on the switch center exactly.
+        // the badge: hidden anchor while Active, full-size flight when Exiting
+        val hiddenAnchor = mode == IsraeliOverlayMode.Active
         Box(
             modifier = Modifier.fillMaxSize().graphicsLayer {
-                this.scaleX = badgeScale
-                this.scaleY = badgeScale
-                this.translationX = translationX
-                this.translationY = translationY
-                this.alpha = contentAlpha
+                val scale = entrance.value * exitScale
+                scaleX = scale
+                scaleY = scale
+                translationX = exitX
+                translationY = exitY
+                alpha = if (hiddenAnchor) 0f else entrance.value * exitAlpha
             },
             contentAlignment = Alignment.Center,
         ) {
             Box(
-                Modifier.size(136.dp).clip(CircleShape).background(scheme.primaryContainer)
+                Modifier.size(136.dp).clip(CircleShape)
+                    .background(scheme.primaryContainer)
                     .border(2.5.dp, Color(0xFF0A84FF).copy(alpha = 0.6f), CircleShape),
                 contentAlignment = Alignment.Center,
             ) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
                     AppleIsraelFlag(Modifier.size(width = 38.dp, height = 26.dp))
                     Spacer(Modifier.height(5.dp))
-                    Text("100% ישראלי", color = scheme.onPrimaryContainer, fontSize = 17.sp, fontWeight = FontWeight.Black, textAlign = TextAlign.Center)
+                    Text(
+                        "100% ישראלי",
+                        color = scheme.onPrimaryContainer,
+                        fontSize = 17.sp,
+                        fontWeight = FontWeight.Black,
+                        textAlign = TextAlign.Center,
+                    )
                 }
             }
         }
@@ -288,16 +202,64 @@ fun IsraeliOnlyZomatoOverlay(
             ) {
                 Text(
                     text = "עושים כבוד ליצירה המקומית... מציג רק תוכן ישראלי",
-                    color = Color.White, fontSize = 15.sp, fontWeight = FontWeight.Normal, textAlign = TextAlign.Center,
+                    color = Color.White,
+                    fontSize = 15.sp,
+                    fontWeight = FontWeight.Normal,
+                    textAlign = TextAlign.Center,
                 )
                 Spacer(Modifier.width(8.dp))
-                AppleIsraelFlag(Modifier.size(width = 24.dp, height = 16.dp).clip(RoundedCornerShape(3.dp)))
+                AppleIsraelFlag(Modifier.size(width = 24.dp, height = 16.dp))
             }
         }
     }
 }
 
-/** Backwards-compatible overload */
+/** The deep, flag-coloured canvas with three fluid ripple rings that bloom out of the centre. */
+@Composable
+private fun IsraeliShowcaseBackdrop() {
+    val scheme = MaterialTheme.colorScheme
+    val ripple by rememberInfiniteTransition(label = "israeli_fluid_ripples").animateFloat(
+        initialValue = 0f,
+        targetValue = 1f,
+        animationSpec = infiniteRepeatable(animation = tween(1400, easing = LinearEasing), repeatMode = RepeatMode.Restart),
+        label = "fluid_ripple_progress",
+    )
+    Box(
+        Modifier.fillMaxSize()
+            .background(Brush.verticalGradient(listOf(scheme.background.copy(alpha = 0.98f), Color(0xFF07080E))))
+    ) {
+        Canvas(Modifier.fillMaxSize()) {
+            val center = Offset(size.width / 2f, size.height / 2f)
+            val maxRadius = size.width.coerceAtLeast(size.height) * 0.7f
+            val baseRadius = 60.dp.toPx()
+            for (i in 0..2) {
+                val phase = (ripple + i * 0.33f) % 1f
+                val r = baseRadius + phase * (maxRadius - baseRadius)
+                val alpha = (1f - phase).coerceIn(0f, 1f) * 0.5f
+                drawCircle(
+                    brush = Brush.radialGradient(
+                        0.0f to Color(0xFF0038B8).copy(alpha = alpha * 0.32f),
+                        0.45f to Color.White.copy(alpha = alpha * 0.16f),
+                        0.80f to Color(0xFF0A84FF).copy(alpha = alpha * 0.08f),
+                        1.0f to Color.Transparent,
+                        center = center,
+                        radius = r,
+                    ),
+                    radius = r,
+                    center = center,
+                )
+                drawCircle(
+                    color = Color(0xFF0A84FF).copy(alpha = alpha * 0.6f),
+                    radius = r,
+                    center = center,
+                    style = Stroke(width = 2.5.dp.toPx()),
+                )
+            }
+        }
+    }
+}
+
+/** Backwards-compatible overload. */
 @Composable
 fun IsraeliOnlyZomatoOverlay(
     visible: Boolean,

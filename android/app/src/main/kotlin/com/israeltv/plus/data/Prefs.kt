@@ -10,8 +10,24 @@ import androidx.core.content.edit
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 
-/** Series-character portrait choices bundled under assets/avatars. */
-val AVATARS = listOf("series-rick", "series-morty", "series-summer", "series-beth", "series-jerry", "series-ted-lasso")
+/**
+ * Profile portraits are emojis: the system's own high-quality colour emoji font draws them, so they stay crisp at any
+ * size and need no bundled artwork. Ids are prefixed ("emoji:👨🏽") so profiles saved by older versions - which used the
+ * bundled series portraits ("series-rick", ...) - are recognised and migrated in [AppPrefs.loadProfiles].
+ */
+val AVATARS = listOf("emoji:👨🏽", "emoji:👩🏻‍🦱", "emoji:👽", "emoji:🦊", "emoji:🐯", "emoji:🐼")
+
+private const val EMOJI_PREFIX = "emoji:"
+
+fun isEmojiAvatar(id: String): Boolean = id.startsWith(EMOJI_PREFIX)
+
+/** The glyph of an emoji avatar ("emoji:👨🏽" -> "👨🏽"); anything else is returned unchanged. */
+fun avatarEmoji(id: String): String = id.removePrefix(EMOJI_PREFIX)
+
+/** The series portraits of versions before 4.5.1, kept so a saved profile can be migrated and still shown as a URL. */
+private val LEGACY_SERIES = listOf(
+    "series-rick", "series-morty", "series-summer", "series-beth", "series-jerry", "series-ted-lasso",
+)
 
 fun avatarUrl(id: String) = if (id.startsWith("series-")) {
     "file:///android_asset/www/assets/avatars/$id.jpg"
@@ -19,14 +35,33 @@ fun avatarUrl(id: String) = if (id.startsWith("series-")) {
     "file:///android_asset/www/assets/avatars/$id.webp"
 }
 
-fun avatarDescription(id: String) = when (id) {
+/** Screen-reader labels for the emoji portraits (an emoji has no useful Hebrew name on its own). */
+private val AVATAR_LABELS = listOf(
+    "emoji:👨🏽" to "אביר",
+    "emoji:👩🏻‍🦱" to "יוצרת",
+    "emoji:👽" to "חוצן",
+    "emoji:🦊" to "שועל",
+    "emoji:🐯" to "טיגריס",
+    "emoji:🐼" to "פנדה",
+).toMap()
+
+fun avatarDescription(id: String) = AVATAR_LABELS[id] ?: when (id) {
     "series-rick" -> "ריק סנצ׳ז — ריק ומורטי"
     "series-morty" -> "מורטי סמית׳ — ריק ומורטי"
     "series-summer" -> "סאמר סמית׳ — ריק ומורטי"
     "series-beth" -> "בת׳ סמית׳ — ריק ומורטי"
     "series-jerry" -> "ג׳רי סמית׳ — ריק ומורטי"
     "series-ted-lasso" -> "טד לאסו — טד לאסו"
-    else -> "דמות מסדרה"
+    else -> "פרופיל"
+}
+
+/** The profile's emoji after migration; series portraits map one-to-one onto the new set. */
+internal fun migratedAvatar(id: String, index: Int): String = when {
+    isEmojiAvatar(id) -> id
+    else -> {
+        val legacy = LEGACY_SERIES.indexOf(id).takeIf { it >= 0 } ?: index
+        AVATARS[legacy % AVATARS.size]
+    }
 }
 
 /**
@@ -137,10 +172,9 @@ class AppPrefs(context: Context) {
     private fun loadProfiles(): List<Profile> {
         sp.getString("phoneProfiles", null)?.let { s ->
             runCatching { json.decodeFromString<List<Profile>>(s) }.getOrNull()?.takeIf { it.isNotEmpty() }?.let { saved ->
-                // Replace the old generic emoji avatars while preserving each profile's name and viewing data.
+                // 4.5.1: the old series portraits become the emoji set; names and viewing data stay untouched.
                 val migrated = saved.mapIndexed { index, profile ->
-                    if (profile.avatar.startsWith("series-")) profile
-                    else profile.copy(avatar = AVATARS[index % AVATARS.size])
+                    profile.copy(avatar = migratedAvatar(profile.avatar, index))
                 }
                 if (migrated != saved) sp.edit { putString("phoneProfiles", json.encodeToString(migrated)) }
                 return migrated
@@ -151,7 +185,7 @@ class AppPrefs(context: Context) {
             Profile(
                 id = "p1",
                 name = "אני",
-                avatar = oldAvatar?.takeIf { it.startsWith("series-") } ?: AVATARS.first(),
+                avatar = oldAvatar?.takeIf { isEmojiAvatar(it) } ?: AVATARS.first(),
                 favorites = sp.list("phoneFavorites"),
                 recents = sp.list("phoneRecents"),
             )

@@ -31,7 +31,6 @@ import androidx.compose.material.icons.rounded.SystemUpdate
 import androidx.compose.material.icons.rounded.Tv
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Icon
 import androidx.compose.material3.LinearWavyProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Switch
@@ -47,12 +46,12 @@ import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import coil3.compose.AsyncImage
 import com.israeltv.plus.data.AppPrefs
 import com.israeltv.plus.data.ChannelData
 import com.israeltv.plus.data.UpdateState
 import com.israeltv.plus.data.Updater
-import com.israeltv.plus.data.avatarUrl
+import com.israeltv.plus.ui.components.BoldIcon
+import com.israeltv.plus.ui.components.ProfileAvatar
 import com.israeltv.plus.ui.components.SectionHeader
 import com.israeltv.plus.ui.components.feedPadding
 import com.israeltv.plus.ui.components.rememberBitChordFlingBehavior
@@ -72,7 +71,7 @@ fun SettingsScreen(data: ChannelData?, prefs: AppPrefs, updater: Updater, onProf
             SettingsGroup {
                 SettingRow(Icons.Rounded.Palette, "צבעים וסגנון", "צבעי הטפט, פלטות נוספות ומצב כהה", onClick = onStyle)
                 SettingRow(Icons.Rounded.Face, "פרופילים", "${prefs.profile.name} · ${prefs.profiles.size} פרופילים", onClick = onProfiles) {
-                    AsyncImage(avatarUrl(prefs.avatar), null, Modifier.size(34.dp))
+                    ProfileAvatar(prefs.avatar, glyphSize = 30.dp)
                 }
                 SettingRow(Icons.Rounded.MusicNote, "צליל פתיחה", "צליל קצר כשהאפליקציה נפתחת (שקט כשהטלפון על שקט)",
                     onClick = {
@@ -125,9 +124,9 @@ fun UpdateCard(updater: Updater, modifier: Modifier = Modifier) {
                 .background(if (available) scheme.primary else scheme.secondaryContainer),
             contentAlignment = Alignment.Center,
         ) {
-            Icon(
+            BoldIcon(
                 if (available) Icons.Rounded.SystemUpdate else Icons.Rounded.CheckCircle, null, Modifier.size(30.dp),
-                tint = if (available) scheme.onPrimary else scheme.onSecondaryContainer,
+                tint = if (available) scheme.onPrimary else scheme.onSecondaryContainer, weight = 0.8.dp,
             )
         }
         Spacer(Modifier.height(18.dp))
@@ -207,7 +206,7 @@ private fun SettingRow(
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Box(Modifier.size(40.dp).clip(CircleShape).background(scheme.secondaryContainer), contentAlignment = Alignment.Center) {
-            Icon(icon, null, Modifier.size(22.dp), tint = scheme.onSecondaryContainer)
+            BoldIcon(icon, null, Modifier.size(22.dp), tint = scheme.onSecondaryContainer, weight = 0.55.dp)
         }
         Spacer(Modifier.width(14.dp))
         Column(Modifier.weight(1f)) {
@@ -216,7 +215,10 @@ private fun SettingRow(
         }
         when {
             trailing != null -> trailing()
-            onClick != null -> Icon(Icons.AutoMirrored.Rounded.KeyboardArrowLeft, null, tint = scheme.onSurfaceVariant)
+            onClick != null -> BoldIcon(
+                Icons.AutoMirrored.Rounded.KeyboardArrowLeft, null, Modifier.size(24.dp),
+                tint = scheme.onSurfaceVariant, weight = 0.5.dp,
+            )
         }
     }
 }

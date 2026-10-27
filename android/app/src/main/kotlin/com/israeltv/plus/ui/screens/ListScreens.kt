@@ -30,7 +30,6 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Close
 import androidx.compose.material.icons.rounded.Search
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -59,6 +58,7 @@ import androidx.compose.ui.unit.sp
 import com.israeltv.plus.data.AppPrefs
 import com.israeltv.plus.data.Channel
 import com.israeltv.plus.data.ChannelData
+import com.israeltv.plus.ui.components.BoldIcon
 import com.israeltv.plus.ui.components.ChannelCard
 import com.israeltv.plus.ui.components.SectionHeader
 import com.israeltv.plus.ui.components.ShelfSkeleton
@@ -241,7 +241,7 @@ fun SearchOverlay(
                 .padding(horizontal = 18.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            Icon(Icons.Rounded.Search, null, tint = scheme.onSurfaceVariant)
+            BoldIcon(Icons.Rounded.Search, null, Modifier.size(24.dp), tint = scheme.onSurfaceVariant, weight = 0.65.dp)
             Box(Modifier.weight(1f).padding(horizontal = 12.dp)) {
                 if (query.isEmpty()) Text("שם ערוץ, מדינה, קטגוריה או מספר", color = scheme.onSurfaceVariant, fontSize = 16.sp)
                 BasicTextField(
@@ -254,10 +254,10 @@ fun SearchOverlay(
                     keyboardActions = KeyboardActions(onSearch = { focusManager.clearFocus() }),
                 )
             }
-            Icon(
+            BoldIcon(
                 Icons.Rounded.Close, "סגירה",
                 Modifier.size(26.dp).clip(RoundedCornerShape(50)).clickable { if (query.isNotEmpty()) query = "" else onClose() },
-                tint = scheme.onSurfaceVariant,
+                tint = scheme.onSurfaceVariant, weight = 0.6.dp,
             )
         }
     }

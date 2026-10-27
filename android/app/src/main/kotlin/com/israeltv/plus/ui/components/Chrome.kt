@@ -1,12 +1,6 @@
 package com.israeltv.plus.ui.components
 
-import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.Spring
-import androidx.compose.animation.core.animateFloatAsState
-import androidx.compose.animation.expandVertically
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.fadeOut
-import androidx.compose.animation.shrinkVertically
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.spring
 import androidx.compose.foundation.background
@@ -27,7 +21,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.navigationBarsPadding
-import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBars
@@ -41,13 +34,10 @@ import androidx.compose.material.icons.rounded.Home
 import androidx.compose.material.icons.rounded.LiveTv
 import androidx.compose.material.icons.rounded.Search
 import androidx.compose.material.icons.rounded.Settings
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.ui.platform.LocalLayoutDirection
-import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -61,15 +51,14 @@ import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalHapticFeedback
+import androidx.compose.ui.platform.LocalLayoutDirection
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.text.style.TextDirection
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.lerp
-import androidx.compose.ui.util.lerp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
-import coil3.compose.AsyncImage
-import com.israeltv.plus.data.avatarUrl
 
 enum class Tab(val label: String, val title: String, val icon: ImageVector) {
     Home("בית", "ישראל TV+‎", Icons.Rounded.Home),
@@ -78,12 +67,12 @@ enum class Tab(val label: String, val title: String, val icon: ImageVector) {
     Settings("הגדרות", "הגדרות", Icons.Rounded.Settings),
 }
 
-/** The master LazyColumn's insets: under the header (88 dp) and clear of the floating bar (130 dp). */
+/** The master LazyColumn's insets: under the header (88 dp) and 120 dp clear of the floating bar. */
 @Composable
 fun feedPadding(): PaddingValues {
     val top = WindowInsets.statusBars.asPaddingValues().calculateTopPadding()
     val bottom = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
-    return PaddingValues(top = top + 88.dp, bottom = bottom + 130.dp)
+    return PaddingValues(top = top + 88.dp, bottom = bottom + 120.dp)
 }
 
 /** surfaceContainerLowest with a soft ambient glow of the wallpaper colour from the top. */
@@ -107,12 +96,48 @@ fun AmbientBackground(modifier: Modifier = Modifier) {
 }
 
 /**
- * Apple TV header: the screen title on the right, the profile's 3D Noto Emoji avatar (42 dp) on the left, over a
- * heavy frosted band (real backdrop blur, the glass recipe) that fades out downwards so the feed scrolls behind it.
- * The avatar is a shared element: it flies here from the "who's watching" screen.
+ * The app wordmark, centred in the bar exactly like the Kan Box lockup: the Hebrew name in the app's black display
+ * weight with the "TV+" in the profile's accent colour. It scales with the display font like the rest of the chrome.
  */
 @Composable
-fun AppHeader(title: String, profileId: String, avatar: String, onAvatar: () -> Unit, onSettings: () -> Unit, modifier: Modifier = Modifier) {
+fun BrandWordmark(modifier: Modifier = Modifier) {
+    val scheme = MaterialTheme.colorScheme
+    Row(modifier, verticalAlignment = Alignment.CenterVertically) {
+        Text(
+            "ישראל",
+            fontSize = 21.sp,
+            fontWeight = FontWeight.Black,
+            letterSpacing = (-0.6).sp,
+            color = scheme.onSurface,
+            maxLines = 1,
+        )
+        Spacer(Modifier.width(4.dp))
+        Text(
+            "TV+",
+            fontSize = 21.sp,
+            fontWeight = FontWeight.Black,
+            letterSpacing = (-0.2).sp,
+            color = scheme.primary,
+            maxLines = 1,
+            // a Latin wordmark in a Hebrew layout would otherwise render as "+TV"
+            style = TextStyle(textDirection = TextDirection.Ltr),
+        )
+    }
+}
+
+/**
+ * Kan Box / Apple TV header: the app wordmark perfectly centred, the profile's emoji avatar on the leading side and a
+ * minimal glass circle with only a bold gear on the trailing side. The frosted band fades out downwards so the feed
+ * scrolls behind it. The avatar is a shared element: it flies here from the "who's watching" page.
+ */
+@Composable
+fun AppHeader(
+    profileId: String,
+    avatar: String,
+    onAvatar: () -> Unit,
+    onSettings: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
     val scheme = MaterialTheme.colorScheme
     val haptic = LocalHapticFeedback.current
     Box(modifier.fillMaxWidth().zIndex(10f)) {
@@ -120,19 +145,45 @@ fun AppHeader(title: String, profileId: String, avatar: String, onAvatar: () -> 
             RectangleShape, glassTint(), blur = 36.dp, border = false,
             mask = Brush.verticalGradient(0f to Color.Black, 0.65f to Color.Black, 1f to Color.Transparent),
         ))
-        Row(Modifier.statusBarsPadding().height(64.dp).fillMaxWidth().padding(horizontal = 20.dp), verticalAlignment = Alignment.CenterVertically) {
-            Text(title, Modifier.weight(1f), style = MaterialTheme.typography.headlineMedium, color = scheme.onSurface, maxLines = 1)
-            val settingsInteraction = remember { MutableInteractionSource() }
-            Box(Modifier.size(44.dp).frostedGlass(CircleShape, Color(0xFF16161E).copy(alpha = .65f), blur = 36.dp)
-                .clickable(settingsInteraction, null) { haptic.performHapticFeedback(HapticFeedbackType.ContextClick); onSettings() }, contentAlignment = Alignment.Center) {
-                Icon(Icons.Rounded.Settings, "הגדרות", tint = scheme.onSurface, modifier = Modifier.size(21.dp))
+        Box(Modifier.statusBarsPadding().height(64.dp).fillMaxWidth()) {
+            // profile portrait: leading edge (the physical right in Hebrew)
+            val avatarInteraction = remember { MutableInteractionSource() }
+            Box(
+                Modifier
+                    .align(Alignment.CenterStart)
+                    .padding(start = 20.dp)
+                    .size(42.dp)
+                    .pressPhysics(avatarInteraction, tilt = false)
+                    .sharedAvatar("avatar:$profileId")
+                    .clip(RoundedCornerShape(14.dp))
+                    .background(Brush.linearGradient(listOf(scheme.primaryContainer, scheme.tertiaryContainer)))
+                    .specularBorder(RoundedCornerShape(14.dp), alpha = 0.32f)
+                    .clickable(avatarInteraction, null) {
+                        haptic.performHapticFeedback(HapticFeedbackType.ContextClick)
+                        onAvatar()
+                    },
+                contentAlignment = Alignment.Center,
+            ) {
+                ProfileAvatar(avatar, glyphSize = 27.dp)
             }
-            Spacer(Modifier.width(12.dp))
-            val interaction = remember { MutableInteractionSource() }
-            Box(Modifier.size(42.dp).pressPhysics(interaction, tilt = false).sharedAvatar("avatar:$profileId")
-                .clip(RoundedCornerShape(14.dp)).background(scheme.primaryContainer).specularBorder(RoundedCornerShape(14.dp), alpha = 0.32f)
-                .clickable(interaction, null) { haptic.performHapticFeedback(HapticFeedbackType.ContextClick); onAvatar() }, contentAlignment = Alignment.Center) {
-                AsyncImage(avatarUrl(avatar), "פרופיל", Modifier.size(32.dp))
+
+            BrandWordmark(Modifier.align(Alignment.Center))
+
+            // settings: trailing edge, one glass circle and nothing else inside it
+            val settingsInteraction = remember { MutableInteractionSource() }
+            Box(
+                Modifier
+                    .align(Alignment.CenterEnd)
+                    .padding(end = 20.dp)
+                    .size(44.dp)
+                    .frostedGlass(CircleShape, Color(0xFF16161E).copy(alpha = .65f), blur = 36.dp)
+                    .clickable(settingsInteraction, null) {
+                        haptic.performHapticFeedback(HapticFeedbackType.ContextClick)
+                        onSettings()
+                    },
+                contentAlignment = Alignment.Center,
+            ) {
+                BoldIcon(Icons.Rounded.Settings, "הגדרות", Modifier.size(21.dp), tint = scheme.onSurface, weight = 0.55.dp)
             }
         }
         Spacer(Modifier.statusBarsPadding().height(84.dp))
@@ -140,8 +191,9 @@ fun AppHeader(title: String, profileId: String, avatar: String, onAvatar: () -> 
 }
 
 /**
- * Search is its own 64 dp glass circle on the physical left; Home, Channels and My List live in a separate glass capsule.
- * Settings is deliberately absent here and lives in the top app bar.
+ * The Nuvio navigation: a standalone glass circle holding only a bold search glyph on the physical left, and 16 dp
+ * away a glass capsule whose tabs stack a bold icon directly above its label - the shape of the reference bar, with the
+ * heavy glass tint (Color(0xFF16161E) at 65%) on both elements.
  */
 @Composable
 fun FloatingTabBar(
@@ -155,63 +207,68 @@ fun FloatingTabBar(
     val scheme = MaterialTheme.colorScheme
     val haptic = LocalHapticFeedback.current
     val tabs = listOf(Tab.Home, Tab.Channels, Tab.Mine)
+    val glass = Color(0xFF16161E).copy(alpha = .65f)
     CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {
         BoxWithConstraints(modifier.fillMaxWidth().zIndex(10f).navigationBarsPadding().padding(bottom = 18.dp)) {
-            val capsuleTarget = (maxWidth - 80.dp - if (collapsed) 34.dp else 0.dp).coerceAtLeast(200.dp)
-            val capsuleWidth by animateDpAsState(capsuleTarget, spring(dampingRatio = .82f, stiffness = Spring.StiffnessMediumLow), label = "capsuleWidth")
+            // 16 dp side margins + 64 dp search circle + 16 dp gap + the capsule; collapses slightly on scroll
+            val capsuleTarget = (maxWidth - 112.dp - if (collapsed) 30.dp else 0.dp).coerceAtLeast(200.dp)
+            val capsuleWidth by animateDpAsState(
+                capsuleTarget,
+                spring(dampingRatio = .82f, stiffness = Spring.StiffnessMediumLow),
+                label = "capsuleWidth",
+            )
             Row(
-                Modifier.fillMaxWidth(),
+                Modifier.fillMaxWidth().padding(horizontal = 16.dp),
                 horizontalArrangement = Arrangement.spacedBy(16.dp, Alignment.CenterHorizontally),
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 Box(
-                    Modifier.size(64.dp).frostedGlass(CircleShape, Color(0xFF16161E).copy(alpha = .65f), blur = 36.dp)
-                        .clickable(remember { MutableInteractionSource() }, null) { haptic.performHapticFeedback(HapticFeedbackType.SegmentTick); onSearch() },
+                    Modifier.size(64.dp).frostedGlass(CircleShape, glass, blur = 36.dp)
+                        .clickable(remember { MutableInteractionSource() }, null) {
+                            haptic.performHapticFeedback(HapticFeedbackType.SegmentTick)
+                            onSearch()
+                        },
                     contentAlignment = Alignment.Center,
-                ) { Icon(Icons.Rounded.Search, "חיפוש", Modifier.size(25.dp), tint = scheme.onSurface) }
+                ) {
+                    BoldIcon(Icons.Rounded.Search, "חיפוש", Modifier.size(26.dp), tint = scheme.onSurface, weight = 0.6.dp)
+                }
 
                 CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Rtl) {
                     Row(
-                        Modifier.width(capsuleWidth).height(64.dp).frostedGlass(RoundedCornerShape(50), Color(0xFF16161E).copy(alpha = .65f), blur = 36.dp)
-                            .padding(horizontal = 7.dp, vertical = 7.dp),
+                        Modifier.width(capsuleWidth).height(68.dp).frostedGlass(RoundedCornerShape(50), glass, blur = 36.dp)
+                            .padding(horizontal = 6.dp, vertical = 6.dp),
                         horizontalArrangement = Arrangement.spacedBy(2.dp), verticalAlignment = Alignment.CenterVertically,
                     ) {
                         tabs.forEach { tab ->
                             val active = !searchOpen && selected == tab
-                            Row(
+                            Column(
                                 Modifier.weight(1f).fillMaxHeight().clip(RoundedCornerShape(50))
                                     .background(if (active) Color.White.copy(alpha = .16f) else Color.Transparent)
                                     .clickable(remember { MutableInteractionSource() }, null) {
-                                        haptic.performHapticFeedback(HapticFeedbackType.SegmentTick); onSelect(tab)
-                                    }.padding(horizontal = 5.dp),
-                                horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically,
+                                        haptic.performHapticFeedback(HapticFeedbackType.SegmentTick)
+                                        onSelect(tab)
+                                    },
+                                horizontalAlignment = Alignment.CenterHorizontally,
+                                verticalArrangement = Arrangement.Center,
                             ) {
-                                Icon(tab.icon, null, Modifier.size(19.dp), tint = if (active) scheme.onSurface else scheme.onSurfaceVariant)
-                                Spacer(Modifier.width(5.dp))
-                                Text(tab.label, color = if (active) scheme.onSurface else scheme.onSurfaceVariant, style = MaterialTheme.typography.labelLarge, maxLines = 1)
+                                BoldIcon(
+                                    tab.icon, tab.label, Modifier.size(22.dp),
+                                    tint = if (active) scheme.onSurface else scheme.onSurfaceVariant,
+                                    weight = if (active) 0.6.dp else 0.45.dp,
+                                )
+                                Spacer(Modifier.height(3.dp))
+                                Text(
+                                    tab.label,
+                                    color = if (active) scheme.onSurface else scheme.onSurfaceVariant,
+                                    fontSize = 10.5.sp,
+                                    fontWeight = if (active) FontWeight.Bold else FontWeight.Medium,
+                                    maxLines = 1,
+                                )
                             }
                         }
                     }
                 }
             }
-        }
-    }
-}
-
-@Composable
-private fun BarItem(icon: ImageVector, label: String, active: Boolean, showLabel: Boolean, modifier: Modifier, onClick: () -> Unit) {
-    val scheme = MaterialTheme.colorScheme
-    val color = if (active) scheme.onPrimaryContainer else scheme.onSurfaceVariant
-    Column(
-        modifier
-            .fillMaxHeight()
-            .clickable(remember { MutableInteractionSource() }, null, onClick = onClick),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center,
-    ) {
-        Icon(icon, label, Modifier.size(26.dp), tint = if (active) scheme.onSurface else color)
-        AnimatedVisibility(showLabel, enter = expandVertically() + fadeIn(), exit = shrinkVertically() + fadeOut()) {
-            Text(label, fontSize = 11.sp, fontWeight = if (active) FontWeight.ExtraBold else FontWeight.Medium, color = if (active) scheme.onSurface else color)
         }
     }
 }

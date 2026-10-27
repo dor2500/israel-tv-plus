@@ -52,8 +52,10 @@ def main():
         app = 500 + patch
     elif major == 4 and minor == 4:
         app = 540 + patch
+    elif major == 4 and minor == 5:
+        app = 550 + patch
     else:
-        app = max(550, major * 100 + minor * 10 + patch)
+        app = max(560, major * 100 + minor * 10 + patch)
     now = datetime.datetime.now(datetime.timezone.utc)
     code = int(now.strftime("%Y%m%d%H%M"))
     date = now.strftime("%Y-%m-%d")

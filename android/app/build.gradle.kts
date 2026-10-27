@@ -12,7 +12,8 @@ val appCode = appVersion.split(".").let { p ->
     val (maj, min, pat) = Triple(p[0].toInt(), p[1].toInt(), p[2].toInt())
     if (maj == 4 && min == 3) 500 + pat
     else if (maj == 4 && min == 4) 540 + pat
-    else maxOf(550, maj * 100 + min * 10 + pat)
+    else if (maj == 4 && min == 5) 550 + pat
+    else maxOf(560, maj * 100 + min * 10 + pat)
 }
 
 // Release key: the same one tools/build_apk.ps1 always used, so the update installs over every earlier APK.

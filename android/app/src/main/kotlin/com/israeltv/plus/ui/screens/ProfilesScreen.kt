@@ -3,6 +3,7 @@ package com.israeltv.plus.ui.screens
 import androidx.activity.compose.BackHandler
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.spring
@@ -80,13 +81,11 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import coil3.compose.AsyncImage
 import com.israeltv.plus.data.AVATARS
 import com.israeltv.plus.data.AppPrefs
 import com.israeltv.plus.data.Profile
 import com.israeltv.plus.data.ThemeChoice
-import com.israeltv.plus.data.avatarUrl
-import com.israeltv.plus.data.avatarDescription
+import com.israeltv.plus.ui.components.ProfileAvatar
 import com.israeltv.plus.ui.components.sharedAvatar
 import com.israeltv.plus.ui.theme.CuratedPalettes
 import com.israeltv.plus.ui.theme.schemeFor
@@ -232,6 +231,14 @@ private fun ProfileTile(p: Profile, editing: Boolean, onClick: () -> Unit) {
     val pressed by interaction.collectIsPressedAsState()
     val highlighted = focused || pressed
     val focusScale by animateFloatAsState(if (highlighted) 1.10f else 1f, spring(dampingRatio = 0.68f, stiffness = Spring.StiffnessMediumLow), label = "profileFocusScale")
+    // the emoji grows a touch more than its container, so the portrait feels alive under focus
+    val glyphScale by animateFloatAsState(if (highlighted) 1.08f else 1f, spring(dampingRatio = 0.6f, stiffness = Spring.StiffnessMediumLow), label = "profileGlyphScale")
+    val borderWidth by animateDpAsState(if (highlighted) 3.dp else 1.dp, spring(stiffness = Spring.StiffnessMediumLow), label = "profileBorderWidth")
+    val borderColor by androidx.compose.animation.animateColorAsState(
+        if (highlighted) Color.White else Color.White.copy(alpha = 0.35f),
+        spring(stiffness = Spring.StiffnessMediumLow),
+        label = "profileBorderColor",
+    )
     val tone = remember(p.theme) { schemeFor(context, p.theme.copy(dark = true)) }
     Column(
         Modifier.width(126.dp).onFocusChanged { focused = it.isFocused }.focusable()
@@ -252,10 +259,14 @@ private fun ProfileTile(p: Profile, editing: Boolean, onClick: () -> Unit) {
                 .sharedAvatar("avatar:${p.id}")
                 .clip(TileShape)
                 .background(Brush.linearGradient(listOf(tone.primaryContainer, tone.tertiaryContainer)))
-                .border(if (highlighted) 3.dp else 1.dp, if (highlighted) Color.White else Color.White.copy(alpha = 0.35f), TileShape),
+                .border(borderWidth, borderColor, TileShape),
             contentAlignment = Alignment.Center,
         ) {
-            AsyncImage(avatarUrl(p.avatar), p.name, Modifier.size(82.dp))
+            ProfileAvatar(
+                p.avatar,
+                glyphSize = 60.dp,
+                modifier = Modifier.graphicsLayer { scaleX = glyphScale; scaleY = glyphScale },
+            )
             if (editing) {
                 Box(Modifier.fillMaxSize().background(Color.Black.copy(alpha = 0.45f)), contentAlignment = Alignment.Center) {
                     Icon(Icons.Rounded.Edit, "עריכה", Modifier.size(30.dp), tint = Color.White)
@@ -271,16 +282,16 @@ private fun ProfileTile(p: Profile, editing: Boolean, onClick: () -> Unit) {
 
 @Composable
 private fun AddTile(onClick: () -> Unit) {
-    Column(Modifier.width(100.dp).clickable(onClick = onClick), horizontalAlignment = Alignment.CenterHorizontally) {
+    Column(Modifier.width(126.dp).clickable(onClick = onClick), horizontalAlignment = Alignment.CenterHorizontally) {
         Box(
             Modifier
-                .size(100.dp)
+                .size(116.dp)
                 .clip(TileShape)
                 .background(Color.White.copy(alpha = 0.06f))
                 .border(1.5.dp, Color.White.copy(alpha = 0.3f), TileShape),
             contentAlignment = Alignment.Center,
         ) { Icon(Icons.Rounded.Add, "הוספת פרופיל", Modifier.size(44.dp), tint = Color.White) }
-        Text("הוספה", Modifier.padding(top = 10.dp), color = Color.White.copy(alpha = 0.8f), fontSize = 16.sp, fontWeight = FontWeight.Bold)
+        Text("הוספה", Modifier.padding(top = 14.dp), color = Color.White.copy(alpha = 0.8f), fontSize = 16.sp, fontWeight = FontWeight.Bold)
     }
 }
 
@@ -321,7 +332,7 @@ private fun ProfileEditor(
             Box(
                 Modifier.size(84.dp).clip(TileShape).background(Brush.linearGradient(listOf(tone.primaryContainer, tone.tertiaryContainer))),
                 contentAlignment = Alignment.Center,
-            ) { AsyncImage(avatarUrl(p.avatar), null, Modifier.size(56.dp)) }
+            ) { ProfileAvatar(p.avatar, glyphSize = 46.dp) }
             Text(
                 if (isNew) "פרופיל חדש" else "עריכת פרופיל",
                 Modifier.padding(top = 12.dp, bottom = 12.dp),
@@ -343,7 +354,7 @@ private fun ProfileEditor(
                             .then(if (on) Modifier.border(2.dp, Color.White, RoundedCornerShape(15.dp)) else Modifier)
                             .clickable { p = p.copy(avatar = id) },
                         contentAlignment = Alignment.Center,
-                    ) { AsyncImage(avatarUrl(id), avatarDescription(id), Modifier.size(50.dp).clip(RoundedCornerShape(12.dp))) }
+                    ) { ProfileAvatar(id, glyphSize = 34.dp) }
                 }
             }
             Text("צבעים", Modifier.fillMaxWidth().padding(top = 16.dp, bottom = 8.dp), color = scheme.onSurfaceVariant, fontSize = 13.sp)

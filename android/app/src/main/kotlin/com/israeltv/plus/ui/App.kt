@@ -42,8 +42,10 @@ import com.israeltv.plus.data.Updater
 import com.israeltv.plus.data.subtitle
 import com.israeltv.plus.ui.components.AmbientBackground
 import com.israeltv.plus.ui.components.AppHeader
+import com.israeltv.plus.ui.components.CardMenuActions
 import com.israeltv.plus.ui.components.Cascade
 import com.israeltv.plus.ui.components.FloatingTabBar
+import com.israeltv.plus.ui.components.LocalCardMenu
 import com.israeltv.plus.ui.components.LocalCascade
 import com.israeltv.plus.ui.components.LocalHaze
 import com.israeltv.plus.ui.components.LocalPageScope
@@ -109,6 +111,15 @@ fun ItvApp(
         origin.key = null
     }
 
+    // every poster card (home shelves, channel grid, search, my list) shares this long-press menu
+    val cardMenu = remember(prefs) {
+        CardMenuActions(
+            isFavorite = { prefs.isFavorite(it.id) },
+            toggleFavorite = { prefs.toggleFavorite(it.id) },
+            onInfo = { info = it },
+        )
+    }
+
     // a new release opens the update modal once per version
     val update = updater.state
     LaunchedEffect(update) {
@@ -119,7 +130,11 @@ fun ItvApp(
     }
 
     Box(Modifier.fillMaxSize()) {
-        CompositionLocalProvider(LocalCascade provides cascade, LocalPlayOrigin provides origin) {
+        CompositionLocalProvider(
+            LocalCascade provides cascade,
+            LocalPlayOrigin provides origin,
+            LocalCardMenu provides cardMenu,
+        ) {
             SharedTransitionLayout(Modifier.fillMaxSize()) {
                 AnimatedContent(
                     page,
@@ -252,7 +267,13 @@ private fun Feed(
         }
 
         CompositionLocalProvider(LocalHaze provides haze) {
-            AppHeader(s.tab.title, prefs.profile.id, prefs.avatar, onAvatar = onProfiles, onSettings = { s.searchOpen = false; s.tab = Tab.Settings }, modifier = Modifier.align(Alignment.TopCenter))
+            AppHeader(
+                profileId = prefs.profile.id,
+                avatar = prefs.avatar,
+                onAvatar = onProfiles,
+                onSettings = { s.searchOpen = false; s.tab = Tab.Settings },
+                modifier = Modifier.align(Alignment.TopCenter),
+            )
             FloatingTabBar(
                 s.tab, s.searchOpen, s.barCollapsed && !s.searchOpen,
                 onSelect = { s.searchOpen = false; s.barCollapsed = false; s.tab = it },
