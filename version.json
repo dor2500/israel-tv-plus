@@ -1,6 +1,6 @@
 {
-  "version": "4.6.0",
-  "code": 202610271935,
+  "version": "4.6.1",
+  "code": 202610271943,
   "app": 560,
   "shell": 3,
   "date": "2026-10-27",
@@ -13,40 +13,40 @@
   ],
   "native": {
     "android": {
-      "version": "4.6.0",
+      "version": "4.6.1",
       "app": 560,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.0/IsraelTVPlus-android.apk"
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.1/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "4.6.0",
+      "version": "4.6.1",
       "app": 560,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.0/IsraelTVPlus-windows-setup.exe"
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.1/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "4.6.0",
+      "version": "4.6.1",
       "app": 560,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.0/com.israeltv.plus_all.ipk",
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.1/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "4.6.0",
+      "version": "4.6.1",
       "app": 560,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.0/IsraelTVPlus-tizen-project.zip"
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.1/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "4.6.0",
+      "version": "4.6.1",
       "app": 560,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.0/IsraelTVPlus-macos-arm64.zip"
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.1/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "4.6.0",
+      "version": "4.6.1",
       "app": 560,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.0/IsraelTVPlus-linux-x64.zip"
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.1/IsraelTVPlus-linux-x64.zip"
     },
     "wear": {
-      "version": "4.6.0",
-      "app": 1000460,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.0/IsraelTVPlus-wearos.apk"
+      "version": "4.6.1",
+      "app": 1000461,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.1/IsraelTVPlus-wearos.apk"
     }
   }
 }

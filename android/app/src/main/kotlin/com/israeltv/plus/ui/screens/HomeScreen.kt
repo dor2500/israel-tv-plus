@@ -355,7 +355,7 @@ private fun MutedHeroHls(
             }
     }
 
-    val candidates = remember(channel.id, channel.url, channel.fallbackUrls) { channel.allCandidateUrls() }
+    val candidates = remember(channel.id, channel.url, channel.fallbackUrls, channel.backups) { channel.allCandidateUrls() }
     var sourceIndex by remember(channel.id) { mutableIntStateOf(0) }
 
     DisposableEffect(player, lifecycle, candidates) {
