@@ -284,8 +284,9 @@ fun ContinueWatchingCard(
             logo,
             Modifier
                 .align(Alignment.Center)
-                .padding(bottom = 16.dp)
-                .fillMaxSize(0.52f),
+                .padding(bottom = 14.dp)
+                .fillMaxWidth(0.56f)
+                .aspectRatio(16f / 9f),
             channel.isRadio,
         )
 

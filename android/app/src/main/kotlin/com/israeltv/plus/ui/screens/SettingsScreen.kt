@@ -72,6 +72,24 @@ fun SettingsScreen(data: ChannelData?, prefs: AppPrefs, updater: Updater, onProf
             SectionHeader("תצוגה וצליל")
             SettingsGroup {
                 SettingRow(Icons.Rounded.Palette, "צבעים וסגנון", "צבעי הטפט, פלטות נוספות ומצב כהה", onClick = onStyle)
+                SettingRow(
+                    Icons.Rounded.Palette,
+                    "רקע שחור OLED (OLED Black)",
+                    "רקע שחור מוחלט (#000000) למסכי OLED",
+                    onClick = {
+                        val next = !prefs.theme.oledBlack
+                        haptic.performHapticFeedback(if (next) HapticFeedbackType.ToggleOn else HapticFeedbackType.ToggleOff)
+                        prefs.setTheme(prefs.theme.copy(oledBlack = next))
+                    },
+                ) {
+                    Switch(
+                        checked = prefs.theme.oledBlack,
+                        onCheckedChange = {
+                            haptic.performHapticFeedback(if (it) HapticFeedbackType.ToggleOn else HapticFeedbackType.ToggleOff)
+                            prefs.setTheme(prefs.theme.copy(oledBlack = it))
+                        },
+                    )
+                }
                 SettingRow(Icons.Rounded.Face, "פרופילים", "${prefs.profile.name} · ${prefs.profiles.size} פרופילים", onClick = onProfiles) {
                     ProfileAvatar(prefs.avatar, glyphSize = 30.dp)
                 }

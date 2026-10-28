@@ -34,6 +34,9 @@ import com.israeltv.plus.ui.components.RubberBandOverscrollFactory
 /** True when the app is in its dark theme (the glass recipe and a few hero colours depend on it). */
 val LocalDarkTheme = staticCompositionLocalOf { true }
 
+/** True when OLED Black background (#000000) is enabled (enabled by default). */
+val LocalOledBlack = staticCompositionLocalOf { true }
+
 /**
  * Rubik Variable (res/font/rubik.ttf, SIL OFL 1.1): geometric sans-serif supporting Hebrew, Latin and numbers
  * in one variable font, each weight a real instance of the wght axis (300-900) rather than a synthesized bold.
@@ -98,6 +101,7 @@ fun ItvTheme(choice: ThemeChoice, content: @Composable () -> Unit) {
     MaterialExpressiveTheme(colorScheme = scheme, motionScheme = MotionScheme.expressive(), typography = ItvTypography) {
         CompositionLocalProvider(
             LocalDarkTheme provides choice.dark,
+            LocalOledBlack provides (choice.dark && choice.oledBlack),
             LocalLayoutDirection provides LayoutDirection.Rtl,
             LocalOverscrollFactory provides RubberBandOverscrollFactory,
             content = content,

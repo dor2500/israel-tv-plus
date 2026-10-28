@@ -37,18 +37,11 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.FavoriteBorder
-import androidx.compose.material.icons.outlined.Home
-import androidx.compose.material.icons.outlined.LiveTv
-import androidx.compose.material.icons.outlined.Settings
-import androidx.compose.material.icons.rounded.Cast
 import androidx.compose.material.icons.rounded.Favorite
-import androidx.compose.material.icons.rounded.GridView
 import androidx.compose.material.icons.rounded.Home
 import androidx.compose.material.icons.rounded.LiveTv
 import androidx.compose.material.icons.rounded.Search
 import androidx.compose.material.icons.rounded.Settings
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -63,7 +56,6 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
-import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalHapticFeedback
@@ -75,31 +67,38 @@ import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
+import com.israeltv.plus.ui.theme.LocalOledBlack
 
 enum class Tab(
     val label: String,
     val title: String,
     val icon: ImageVector,
-    val inactiveIcon: ImageVector,
 ) {
-    Home("בית", "ישראל TV+‎", Icons.Rounded.Home, Icons.Outlined.Home),
-    Channels("ערוצים", "ערוצים", Icons.Rounded.LiveTv, Icons.Outlined.LiveTv),
-    Mine("שלי", "הרשימה שלי", Icons.Rounded.Favorite, Icons.Outlined.FavoriteBorder),
-    Settings("הגדרות", "הגדרות", Icons.Rounded.Settings, Icons.Outlined.Settings),
+    Home("בית", "ישראל TV+‎", Icons.Rounded.Home),
+    Channels("ערוצים", "ערוצים", Icons.Rounded.LiveTv),
+    Mine("שלי", "הרשימה שלי", Icons.Rounded.Favorite),
+    Settings("הגדרות", "הגדרות", Icons.Rounded.Settings),
 }
 
-/** The master LazyColumn's insets: under the header + macro categories (104 dp on Home, 66 dp on inner tabs) and 104 dp clear of the floating bar. */
+/** The master LazyColumn's insets: under the header + macro categories (114 dp on Home, 72 dp on inner tabs) and 118 dp clear of the floating bar. */
 @Composable
 fun feedPadding(withCategories: Boolean = true): PaddingValues {
     val top = WindowInsets.statusBars.asPaddingValues().calculateTopPadding()
     val bottom = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
-    val headerHeight = if (withCategories) 104.dp else 66.dp
-    return PaddingValues(top = top + headerHeight, bottom = bottom + 104.dp)
+    val headerHeight = if (withCategories) 114.dp else 72.dp
+    return PaddingValues(top = top + headerHeight, bottom = bottom + 118.dp)
 }
 
-/** surfaceContainerLowest with a soft ambient glow of the wallpaper colour from the top. */
+/**
+ * Main app background. When OLED Black is enabled (default), forces pure #000000.
+ */
 @Composable
 fun AmbientBackground(modifier: Modifier = Modifier) {
+    val oledBlack = LocalOledBlack.current
+    if (oledBlack) {
+        Box(modifier.fillMaxSize().background(Color.Black))
+        return
+    }
     val scheme = MaterialTheme.colorScheme
     Box(
         modifier
@@ -119,7 +118,7 @@ fun AmbientBackground(modifier: Modifier = Modifier) {
 
 /**
  * The app wordmark, centred in the bar exactly like the Kan Box lockup: the Hebrew name in the app's black display
- * weight with the "TV+" in the profile's accent colour. Scaled down for Apple TV minimalist negative space.
+ * weight with the "TV+" in the profile's accent colour.
  */
 @Composable
 fun BrandWordmark(modifier: Modifier = Modifier) {
@@ -147,8 +146,9 @@ fun BrandWordmark(modifier: Modifier = Modifier) {
 }
 
 /**
- * Kan Box Style Top Header & Categories (Moved UP):
- * - Top Row: Profile Avatar on one side, Centered "ישראל TV+" logo, and minimal glass action orbs on the other.
+ * Kan Box Style Top Header & Categories:
+ * - Top Row: Profile Avatar on one side, Centered "ישראל TV+" logo, and Settings action orb on the other.
+ * - Cast and Split-Screen icons are REMOVED from the global header (they belong ONLY inside the player).
  * - Second Row (when [showCategories] is true): The centered Macro-Categories Row (הכל, סרטים וסדרות, ילדים ונוער, ספורט, עוד...).
  * - Top Gradient-Blur: Heavy Glassmorphism (Gradient+Blur) that is ALWAYS visible at scroll position 0.
  */
@@ -163,8 +163,6 @@ fun AppHeader(
     onMoreCategories: () -> Unit,
     onAvatar: () -> Unit,
     onSettings: () -> Unit,
-    onCast: (() -> Unit)? = null,
-    onMultiView: (() -> Unit)? = null,
     modifier: Modifier = Modifier,
 ) {
     val scheme = MaterialTheme.colorScheme
@@ -212,7 +210,7 @@ fun AppHeader(
                 .padding(top = statusBarTop, bottom = if (showCategories) 14.dp else 10.dp)
         ) {
             Box(Modifier.height(52.dp).fillMaxWidth()) {
-                // Profile portrait: leading edge (physical right in Hebrew RTL), scaled down ~14%
+                // Profile portrait: leading edge (physical right in Hebrew RTL)
                 val avatarInteraction = remember { MutableInteractionSource() }
                 val avatarPressed by avatarInteraction.collectIsPressedAsState()
                 val avatarCorner by animateDpAsState(
@@ -243,7 +241,7 @@ fun AppHeader(
                 // Centered App Logo ("ישראל TV+")
                 BrandWordmark(Modifier.align(Alignment.Center))
 
-                // Trailing actions: Cast, Multi-View (Split-TV) & Settings (bold icons with shape-morphing glass circles)
+                // Trailing action: Settings ONLY (Cast and Split-Screen removed from global header)
                 Row(
                     Modifier
                         .align(Alignment.CenterEnd)
@@ -251,12 +249,6 @@ fun AppHeader(
                     horizontalArrangement = Arrangement.spacedBy(6.dp),
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
-                    if (onMultiView != null) {
-                        HeaderIconOrb(Icons.Rounded.GridView, "פיצול מסך", onMultiView)
-                    }
-                    if (onCast != null) {
-                        HeaderIconOrb(Icons.Rounded.Cast, "שידור לטלוויזיה", onCast)
-                    }
                     HeaderIconOrb(Icons.Rounded.Settings, "הגדרות", onSettings)
                 }
             }
@@ -310,11 +302,10 @@ private fun HeaderIconOrb(
 }
 
 /**
- * Scroll-Reactive Floating Bottom Navbar:
- * - Bottom Gradient-Blur: Heavy Glassmorphism behind the navbar fading smoothly upward into the content.
- * - Separated Row: Left circular Box for a Bold Search icon; Right capsule Row for main tabs.
- * - Inactive = Thin outlined icons; Active = Solid BOLD icons.
- * - Scroll-Reactive Behavior: When scrolling down ([collapsed] == true), text labels below the icons animate out completely.
+ * Exact Nuvio Floating Bottom Navbar Port:
+ * - Reuses the exact Nuvio bottom navbar code, spacing, and icon set.
+ * - Float Position: Elevated by adding bottom padding (Modifier.navigationBarsPadding().padding(bottom = 24.dp)) so it floats above the screen edge.
+ * - Style: Completely removes solid backgrounds behind the icons inside the capsule.
  */
 @Composable
 fun FloatingTabBar(
@@ -344,7 +335,7 @@ fun FloatingTabBar(
             Modifier
                 .align(Alignment.BottomCenter)
                 .fillMaxWidth()
-                .height(118.dp)
+                .height(126.dp)
                 .frostedGlass(
                     shape = RectangleShape,
                     tint = Color.Black.copy(alpha = 0.16f),
@@ -368,35 +359,28 @@ fun FloatingTabBar(
                     .align(Alignment.BottomCenter)
                     .fillMaxWidth()
                     .navigationBarsPadding()
-                    .padding(bottom = 14.dp)
+                    .padding(bottom = 24.dp)
             ) {
                 val bouncy = spring<androidx.compose.ui.unit.Dp>(
                     dampingRatio = 0.82f,
                     stiffness = Spring.StiffnessMediumLow,
                 )
-                val capsuleTarget = (maxWidth - 102.dp - if (collapsed) 32.dp else 0.dp).coerceAtLeast(168.dp)
+                val capsuleTarget = (maxWidth - 112.dp - if (collapsed) 36.dp else 0.dp).coerceAtLeast(184.dp)
                 val capsuleWidth by animateDpAsState(capsuleTarget, bouncy, label = "capsuleWidth")
-                val barHeight by animateDpAsState(if (collapsed) 46.dp else 58.dp, bouncy, label = "barHeight")
-                val searchSize by animateDpAsState(if (collapsed) 46.dp else 54.dp, bouncy, label = "searchSize")
+                val barHeight by animateDpAsState(if (collapsed) 54.dp else 64.dp, bouncy, label = "barHeight")
+                val searchSize by animateDpAsState(if (collapsed) 54.dp else 64.dp, bouncy, label = "searchSize")
 
                 Row(
                     Modifier.fillMaxWidth().padding(horizontal = 16.dp),
-                    horizontalArrangement = Arrangement.spacedBy(12.dp, Alignment.CenterHorizontally),
+                    horizontalArrangement = Arrangement.spacedBy(16.dp, Alignment.CenterHorizontally),
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
                     val searchInteraction = remember { MutableInteractionSource() }
-                    val searchPressed by searchInteraction.collectIsPressedAsState()
-                    val searchCorner by animateDpAsState(
-                        targetValue = if (searchPressed) 14.dp else (searchSize / 2),
-                        animationSpec = spring(dampingRatio = 0.58f, stiffness = Spring.StiffnessMedium),
-                        label = "searchOrbMorph",
-                    )
-                    val searchShape = RoundedCornerShape(searchCorner)
                     Box(
                         Modifier
                             .size(searchSize)
-                            .pressPhysics(searchInteraction, tilt = false, glowShape = searchShape)
-                            .frostedGlass(searchShape, glass, blur = 44.dp)
+                            .pressPhysics(searchInteraction, tilt = false, glowShape = CircleShape)
+                            .frostedGlass(CircleShape, glass, blur = 44.dp)
                             .clickable(searchInteraction, null) {
                                 haptic.performHapticFeedback(HapticFeedbackType.SegmentTick)
                                 onSearch()
@@ -406,9 +390,9 @@ fun FloatingTabBar(
                         BoldIcon(
                             Icons.Rounded.Search,
                             "חיפוש",
-                            Modifier.size(if (collapsed) 20.dp else 22.dp),
+                            Modifier.size(if (collapsed) 24.dp else 26.dp),
                             tint = scheme.onSurface,
-                            weight = 0.72.dp,
+                            weight = 0.75.dp,
                         )
                     }
 
@@ -418,27 +402,19 @@ fun FloatingTabBar(
                                 .width(capsuleWidth)
                                 .height(barHeight)
                                 .frostedGlass(RoundedCornerShape(50), glass, blur = 44.dp)
-                                .padding(horizontal = 5.dp, vertical = 5.dp),
+                                .padding(horizontal = 6.dp, vertical = 6.dp),
                             horizontalArrangement = Arrangement.spacedBy(2.dp),
                             verticalAlignment = Alignment.CenterVertically,
                         ) {
                             tabs.forEach { tab ->
                                 val active = !searchOpen && selected == tab
                                 val tabInteraction = remember { MutableInteractionSource() }
-                                val tabPressed by tabInteraction.collectIsPressedAsState()
-                                val tabCorner by animateDpAsState(
-                                    targetValue = if (tabPressed) 12.dp else 24.dp,
-                                    animationSpec = spring(dampingRatio = 0.58f, stiffness = Spring.StiffnessMedium),
-                                    label = "tabPillMorph",
-                                )
-                                val tabShape = RoundedCornerShape(tabCorner)
                                 Column(
                                     Modifier
                                         .weight(1f)
                                         .fillMaxHeight()
-                                        .pressPhysics(tabInteraction, tilt = false, glowShape = tabShape)
-                                        .clip(tabShape)
-                                        .background(if (active) Color.White.copy(alpha = 0.16f) else Color.Transparent)
+                                        .pressPhysics(tabInteraction, tilt = false, glowShape = RoundedCornerShape(50))
+                                        .clip(RoundedCornerShape(50))
                                         .clickable(tabInteraction, null) {
                                             haptic.performHapticFeedback(HapticFeedbackType.SegmentTick)
                                             onSelect(tab)
@@ -446,34 +422,25 @@ fun FloatingTabBar(
                                     horizontalAlignment = Alignment.CenterHorizontally,
                                     verticalArrangement = Arrangement.Center,
                                 ) {
-                                    if (active) {
-                                        BoldIcon(
-                                            tab.icon,
-                                            tab.label,
-                                            Modifier.size(20.dp),
-                                            tint = scheme.onSurface,
-                                            weight = 0.75.dp,
-                                        )
-                                    } else {
-                                        Icon(
-                                            tab.inactiveIcon,
-                                            tab.label,
-                                            Modifier.size(20.dp),
-                                            tint = scheme.onSurfaceVariant.copy(alpha = 0.85f),
-                                        )
-                                    }
+                                    BoldIcon(
+                                        tab.icon,
+                                        tab.label,
+                                        Modifier.size(23.dp),
+                                        tint = if (active) scheme.onSurface else scheme.onSurfaceVariant.copy(alpha = 0.62f),
+                                        weight = if (active) 0.75.dp else 0.52.dp,
+                                    )
                                     AnimatedVisibility(
                                         visible = !collapsed,
                                         enter = fadeIn(tween(180)) + expandVertically(tween(200)),
                                         exit = fadeOut(tween(130)) + shrinkVertically(tween(170)),
                                     ) {
                                         Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                                            Spacer(Modifier.height(2.dp))
+                                            Spacer(Modifier.height(3.dp))
                                             Text(
                                                 tab.label,
-                                                color = if (active) scheme.onSurface else scheme.onSurfaceVariant.copy(alpha = 0.85f),
-                                                fontSize = 9.5.sp,
-                                                fontWeight = if (active) FontWeight.SemiBold else FontWeight.Normal,
+                                                color = if (active) scheme.onSurface else scheme.onSurfaceVariant.copy(alpha = 0.62f),
+                                                fontSize = 10.5.sp,
+                                                fontWeight = if (active) FontWeight.SemiBold else FontWeight.Medium,
                                                 maxLines = 1,
                                             )
                                         }

@@ -16,7 +16,8 @@ import com.materialkolor.dynamicColorScheme
 /** One swatch of the colour picker: the phone's own palette (key "system") or a seed colour in a palette style. */
 @Immutable
 data class PaletteOption(val key: String, val seed: Color, val style: PaletteStyle, val wallpaper: Boolean) {
-    fun choice(dark: Boolean) = ThemeChoice(key, seed.toArgb().toLong() and 0xFFFFFFFF, style.name, wallpaper, dark)
+    fun choice(dark: Boolean, oledBlack: Boolean = true) =
+        ThemeChoice(key, seed.toArgb().toLong() and 0xFFFFFFFF, style.name, wallpaper, dark, oledBlack)
 }
 
 private val GoogleBlue = Color(0xFF4285F4)
@@ -66,8 +67,24 @@ fun wallpaperPalettes(context: Context): List<PaletteOption> {
 private val cache = HashMap<String, ColorScheme>()
 
 /** The colour scheme of a choice (cached: the picker draws many swatches). */
-fun schemeFor(context: Context, choice: ThemeChoice): ColorScheme =
-    schemeFor(context, choice.key, Color(choice.seed.toInt()), runCatching { PaletteStyle.valueOf(choice.style) }.getOrDefault(PaletteStyle.TonalSpot), choice.dark)
+fun schemeFor(context: Context, choice: ThemeChoice): ColorScheme {
+    val base = schemeFor(
+        context,
+        choice.key,
+        Color(choice.seed.toInt()),
+        runCatching { PaletteStyle.valueOf(choice.style) }.getOrDefault(PaletteStyle.TonalSpot),
+        choice.dark,
+    )
+    return if (choice.dark && choice.oledBlack) {
+        base.copy(
+            background = Color.Black,
+            surface = Color.Black,
+            surfaceContainerLowest = Color.Black,
+        )
+    } else {
+        base
+    }
+}
 
 fun schemeFor(context: Context, option: PaletteOption, dark: Boolean): ColorScheme =
     schemeFor(context, option.key, option.seed, option.style, dark)

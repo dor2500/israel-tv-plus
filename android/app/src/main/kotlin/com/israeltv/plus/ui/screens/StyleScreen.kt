@@ -163,7 +163,7 @@ fun StyleScreen(prefs: AppPrefs, sample: List<Channel>, logo: (Channel) -> Strin
                                 selected = theme.key == option.key && theme.wallpaper == option.wallpaper,
                             ) {
                                 haptic.performHapticFeedback(HapticFeedbackType.SegmentTick)
-                                prefs.setTheme(option.choice(theme.dark))
+                                prefs.setTheme(option.choice(theme.dark, theme.oledBlack))
                             }
                         }
                     }
@@ -186,6 +186,28 @@ fun StyleScreen(prefs: AppPrefs, sample: List<Channel>, logo: (Channel) -> Strin
                                 prefs.setTheme(theme.copy(dark = it))
                             },
                             thumbContent = if (theme.dark) {
+                                { Icon(Icons.Rounded.Check, null, Modifier.size(SwitchDefaults.IconSize)) }
+                            } else null,
+                        )
+                    }
+                    Row(
+                        Modifier
+                            .fillMaxWidth()
+                            .clickable { prefs.setTheme(theme.copy(oledBlack = !theme.oledBlack)) }
+                            .padding(horizontal = 20.dp, vertical = 10.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                    ) {
+                        Column(Modifier.weight(1f)) {
+                            Text("OLED Black", color = scheme.onSurface, fontSize = 17.sp, fontWeight = FontWeight.Bold)
+                            Text("רקע שחור מוחלט (#000000)", color = scheme.onSurfaceVariant, fontSize = 13.sp)
+                        }
+                        Switch(
+                            theme.oledBlack,
+                            {
+                                haptic.performHapticFeedback(if (it) HapticFeedbackType.ToggleOn else HapticFeedbackType.ToggleOff)
+                                prefs.setTheme(theme.copy(oledBlack = it))
+                            },
+                            thumbContent = if (theme.oledBlack) {
                                 { Icon(Icons.Rounded.Check, null, Modifier.size(SwitchDefaults.IconSize)) }
                             } else null,
                         )

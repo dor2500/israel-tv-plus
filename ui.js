@@ -64,8 +64,6 @@ window.ITV_UI = (function (I) {
       '<button class="top-btn nav-top hidden" id="btn-update" data-nav="update"><span class="ico">' + I('download') + '</span><span>עדכון זמין</span></button>' +
       '<button class="top-btn nav-top hidden" id="btn-getapp" data-nav="getapp"><span class="ico">' + I('phone') + '</span><span>הורדת האפליקציה</span></button>' +
       '<button class="top-btn nav-top hidden" id="btn-kids-exit" data-nav="kids"><span class="ico">' + I('kids') + '</span><span>מצב ילדים</span></button>' +
-      '<button class="top-btn nav-top" id="btn-multiview" data-nav="multiview" title="פיצול מסך (צפייה בכמה ערוצים במקביל)"><span class="ico">' + I('multiview') + '</span><span>פיצול מסך</span></button>' +
-      '<button class="top-btn ph" id="btn-cast-top" aria-label="שידור לטלוויזיה" title="שידור לטלוויזיה"><span class="ico">' + I('cast') + '</span></button>' +
       '<button class="top-btn ph" id="btn-search" aria-label="חיפוש"><span class="ico">' + I('search') + '</span></button>' +
       '<button class="top-btn nav-top tv" id="btn-settings" data-nav="settings"><span class="ico">' + I('settings') + '</span><span>הגדרות</span></button>' +
       '<div class="clock" id="clock">00:00</div>' +
@@ -175,7 +173,7 @@ window.ITV_UI = (function (I) {
           '<button class="obtn ph" data-act="cast" id="ob-cast" title="שידור לטלוויזיה">' + I('cast') + '<span>שידור</span></button>' +
           '<button class="obtn ph" data-act="dub" title="דיבוב לעברית">' + I('mic') + '<span>דיבוב</span></button>' +
           '<button class="obtn ph hidden" data-act="pip" id="ob-pip" title="חלון צף">' + I('pip') + '</button>' +
-          '<button class="obtn" data-act="menu" title="הגדרות (שרת / פיצול)">' + I('more') + '<span>הגדרות</span></button>' +
+          '<button class="obtn" data-act="menu" title="אפשרויות (שרת / פיצול)">' + I('more') + '<span>אפשרויות</span></button>' +
           '<button class="obtn" data-act="fullscreen" title="מסך מלא">' + I('fullscreen') + '</button>' +
         '</div>' +
         '<div class="osd-hints" id="osd-hints"></div>' +

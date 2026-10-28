@@ -732,9 +732,7 @@ private fun Modifier.pointerInputs(onTap: () -> Unit, onSwipe: (Boolean) -> Unit
     }
 
 /**
- * Floating BOLD Material Symbol control with subtle transparent glass pill & soft drop shadow
- * that dynamically morphs its shape on press (pill/circle -> squircle).
- * Uses heavy Glassmorphism (`frostedGlass`) on Mobile and smooth dark gradient on TV.
+ * Nuvio player control icon button — removes all pill/capsule background shapes behind the icon.
  */
 @Composable
 private fun ExpressiveGlassButton(
@@ -746,29 +744,12 @@ private fun ExpressiveGlassButton(
     onClick: () -> Unit,
 ) {
     val interaction = remember { MutableInteractionSource() }
-    val pressed by interaction.collectIsPressedAsState()
-    val corner by animateDpAsState(
-        targetValue = if (pressed) 13.dp else (minOf(width, height) / 2f),
-        animationSpec = spring(dampingRatio = 0.56f, stiffness = Spring.StiffnessMedium),
-        label = "playerCenterMorph",
-    )
-    val shape = RoundedCornerShape(corner)
     val haptic = LocalHapticFeedback.current
-    val glassBg = if (primary) Color.White.copy(alpha = 0.22f) else Color.Black.copy(alpha = 0.34f)
     Box(
         Modifier
             .size(width, height)
-            .pressPhysics(interaction, tilt = false, glowShape = shape)
-            .graphicsLayer {
-                shadowElevation = 16.dp.toPx()
-                this.shape = shape
-                ambientShadowColor = Color.Black.copy(alpha = 0.65f)
-                spotShadowColor = Color.Black.copy(alpha = 0.75f)
-            }
-            .clip(shape)
-            .frostedGlass(shape, glassBg, blur = 34.dp)
-            .specularBorder(shape, alpha = if (primary) 0.48f else 0.32f)
-            .clickable(interaction, ripple()) {
+            .pressPhysics(interaction, tilt = false, glowShape = CircleShape)
+            .clickable(interaction, null) {
                 haptic.performHapticFeedback(HapticFeedbackType.VirtualKey)
                 onClick()
             },
@@ -777,9 +758,38 @@ private fun ExpressiveGlassButton(
         BoldIcon(
             icon = icon,
             contentDescription = label,
-            modifier = Modifier.size(minOf(width, height) * 0.50f),
+            modifier = Modifier.size(if (primary) 46.dp else 34.dp),
             tint = Color.White,
-            weight = if (primary) 0.85.dp else 0.7.dp,
+            weight = if (primary) 0.90.dp else 0.75.dp,
+        )
+    }
+}
+
+@Composable
+private fun TopBarIconAction(
+    icon: ImageVector,
+    contentDescription: String,
+    tint: Color = Color.White,
+    onClick: () -> Unit,
+) {
+    val interaction = remember { MutableInteractionSource() }
+    val haptic = LocalHapticFeedback.current
+    Box(
+        Modifier
+            .size(40.dp)
+            .pressPhysics(interaction, tilt = false, glowShape = CircleShape)
+            .clickable(interaction, null) {
+                haptic.performHapticFeedback(HapticFeedbackType.VirtualKey)
+                onClick()
+            },
+        contentAlignment = Alignment.Center,
+    ) {
+        BoldIcon(
+            icon = icon,
+            contentDescription = contentDescription,
+            modifier = Modifier.size(24.dp),
+            tint = tint,
+            weight = 0.72.dp,
         )
     }
 }
@@ -994,7 +1004,11 @@ private fun TopBar(
             .padding(top = safeTop, bottom = 12.dp, start = 16.dp, end = 16.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        GlassIconButton(Icons.AutoMirrored.Rounded.ArrowBack, "חזרה", onBack, size = 38.dp, tint = GlassDark)
+        TopBarIconAction(
+            icon = Icons.AutoMirrored.Rounded.ArrowBack,
+            contentDescription = "חזרה",
+            onClick = onBack,
+        )
         Spacer(Modifier.width(10.dp))
         Box(
             Modifier
@@ -1054,27 +1068,27 @@ private fun TopBar(
             }
         }
         Spacer(Modifier.width(8.dp))
-        GlassIconButton(
+        TopBarIconAction(
             icon = if (isCasting) Icons.Rounded.CastConnected else Icons.Rounded.Cast,
             contentDescription = "שידור לטלוויזיה (Cast)",
+            tint = if (isCasting) MaterialTheme.colorScheme.primary else Color.White,
             onClick = onCast,
-            size = 38.dp,
-            tint = if (isCasting) MaterialTheme.colorScheme.primary.copy(alpha = 0.85f) else GlassDark,
         )
-        Spacer(Modifier.width(8.dp))
-        GlassIconButton(
-            icon = Icons.Rounded.Tune,
-            contentDescription = "הגדרות נגן (שרת / פיצול)",
+        Spacer(Modifier.width(4.dp))
+        TopBarIconAction(
+            icon = Icons.Rounded.MoreHoriz,
+            contentDescription = "אפשרויות",
             onClick = onOpenSettings,
-            size = 38.dp,
-            tint = GlassDark,
         )
     }
 }
 
 /**
- * The compact player dock with heavy Glassmorphism on Mobile and smooth dark gradient on Smart TV.
- * Scaled down by 10-15% for negative space. Secondary settings ("שרת", "פיצול") live inside the sleek side-panel.
+ * Nuvio Player Bottom Controls (Spread Layout & Zero Pill/Capsule Backgrounds):
+ * - Inherits exact Nuvio icons (List, Cast, Audiotrack, PictureInPictureAlt, MoreHoriz, Fullscreen).
+ * - Removes all pill/capsule background shapes behind the icons and dock.
+ * - Uses Arrangement.SpaceBetween on the full-width Row to push elements to the far left and far right sides.
+ * - Uses "אפשרויות" for the settings button label.
  */
 @Composable
 private fun Dock(
@@ -1084,31 +1098,21 @@ private fun Dock(
     settingsOpen: Boolean,
     onItem: (String) -> Unit,
 ) {
-    val shape = RoundedCornerShape(50)
-    val glass = MaterialTheme.colorScheme.surfaceTint.copy(alpha = 0.12f).compositeOver(Color(0xFF0E1017).copy(alpha = 0.34f))
-    val tvGradient = Brush.verticalGradient(
+    val bottomScrim = Brush.verticalGradient(
         listOf(
-            Color(0xFF0A0C12).copy(alpha = 0.78f),
-            Color(0xFF05070B).copy(alpha = 0.92f),
+            Color.Transparent,
+            Color.Black.copy(alpha = 0.52f),
+            Color.Black.copy(alpha = 0.86f),
         )
     )
     Row(
         Modifier
-            .navigationBarsPadding()
-            .padding(horizontal = 14.dp, vertical = 16.dp)
-            .widthIn(max = 390.dp)
             .fillMaxWidth()
-            .height(50.dp)
-            .clip(shape)
-            .then(
-                if (isTv) {
-                    Modifier.background(tvGradient)
-                } else {
-                    Modifier.frostedGlass(shape, glass, blur = 38.dp)
-                }
-            )
-            .specularBorder(shape, alpha = 0.32f),
-        horizontalArrangement = Arrangement.SpaceEvenly,
+            .background(bottomScrim)
+            .navigationBarsPadding()
+            .padding(horizontal = 24.dp, vertical = 20.dp),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically,
     ) {
         DockItem(Icons.AutoMirrored.Rounded.List, "ערוצים") { onItem("list") }
         DockItem(
@@ -1117,9 +1121,12 @@ private fun Dock(
             highlight = isCasting,
         ) { onItem("cast") }
         DockItem(Icons.Rounded.Audiotrack, "שמע") { onItem("audio") }
+        if (!isTv) {
+            DockItem(Icons.Rounded.PictureInPictureAlt, "חלון צף") { onItem("pip") }
+        }
         DockItem(
-            icon = Icons.Rounded.Tune,
-            label = "הגדרות",
+            icon = Icons.Rounded.MoreHoriz,
+            label = "אפשרויות",
             highlight = settingsOpen,
         ) { onItem("more") }
         DockItem(if (landscape) Icons.Rounded.FullscreenExit else Icons.Rounded.Fullscreen, "מסך") { onItem("full") }
@@ -1127,7 +1134,7 @@ private fun Dock(
 }
 
 @Composable
-private fun androidx.compose.foundation.layout.RowScope.DockItem(
+private fun DockItem(
     icon: ImageVector,
     label: String,
     highlight: Boolean = false,
@@ -1135,29 +1142,20 @@ private fun androidx.compose.foundation.layout.RowScope.DockItem(
 ) {
     val tint = if (highlight) MaterialTheme.colorScheme.primary else Color.White
     val interaction = remember { MutableInteractionSource() }
-    val pressed by interaction.collectIsPressedAsState()
-    val corner by animateDpAsState(
-        targetValue = if (pressed) 10.dp else 22.dp,
-        animationSpec = spring(dampingRatio = 0.58f, stiffness = Spring.StiffnessMedium),
-        label = "dockItemMorph",
-    )
-    val itemShape = RoundedCornerShape(corner)
     Column(
         Modifier
-            .weight(1f)
-            .fillMaxHeight()
-            .padding(2.5.dp)
-            .pressPhysics(interaction, tilt = false, glowShape = itemShape)
-            .clip(itemShape)
-            .clickable(interaction, null, onClick = onClick),
+            .pressPhysics(interaction, tilt = false, glowShape = CircleShape)
+            .clickable(interaction, null, onClick = onClick)
+            .padding(horizontal = 6.dp, vertical = 4.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
     ) {
-        BoldIcon(icon, label, Modifier.size(18.5.dp), tint = tint, weight = 0.65.dp)
+        BoldIcon(icon, label, Modifier.size(22.dp), tint = tint, weight = 0.68.dp)
+        Spacer(Modifier.height(3.dp))
         Text(
             label,
-            color = if (highlight) tint else Color.White.copy(alpha = 0.85f),
-            fontSize = 8.8.sp,
+            color = if (highlight) tint else Color.White.copy(alpha = 0.88f),
+            fontSize = 10.sp,
             fontWeight = if (highlight) FontWeight.Bold else FontWeight.Medium,
             maxLines = 1,
         )
@@ -1639,7 +1637,7 @@ private fun PlayerSettingsSidePanel(
                     overflow = TextOverflow.Ellipsis,
                 )
                 Text(
-                    "הגדרות צפייה",
+                    "אפשרויות",
                     color = Color.White.copy(alpha = 0.62f),
                     fontSize = 11.sp,
                     fontWeight = FontWeight.Medium,

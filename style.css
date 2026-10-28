@@ -1640,3 +1640,37 @@ body.tvui #menu .menu-item.focused {
   display: none !important;
 }
 
+/* 7. Final Nuvio Port, OLED Black Default, Spread Player Controls & Hero Logo Constraint */
+:root:not(.light) {
+  --bg: #000000;
+}
+body:not(.light) {
+  background: #000000 !important;
+}
+body.phone .navbar {
+  bottom: calc(max(var(--sab, 0px), var(--kb, 0px)) + 2.4rem) !important;
+}
+body.phone .nb-pill, .nb-pill {
+  display: none !important;
+}
+body.phone .osd-buttons {
+  justify-content: space-between !important;
+  width: 100% !important;
+  padding: 0 1.6rem !important;
+}
+body.phone .osd-back,
+body.phone .osd-center .obtn,
+body.phone .osd-center .obtn.round,
+body.phone .osd-center .obtn.round.big,
+body.phone .osd-buttons .obtn {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+}
+.pg-logo, .pg-logo img, .hero-logo img {
+  max-height: 80px !important;
+}
+
+

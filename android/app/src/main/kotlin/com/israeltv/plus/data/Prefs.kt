@@ -93,6 +93,7 @@ data class ThemeChoice(
     val style: String = "TonalSpot",
     val wallpaper: Boolean = true,
     val dark: Boolean = true,
+    val oledBlack: Boolean = true,
 )
 
 /** A "who's watching" profile: name, avatar, colours, and its own favourites and history. */

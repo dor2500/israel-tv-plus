@@ -382,8 +382,6 @@ private fun Feed(
                 onMoreCategories = { s.moreCategoriesOpen = true },
                 onAvatar = onProfiles,
                 onSettings = { s.searchOpen = false; s.tab = Tab.Settings },
-                onCast = onOpenCast,
-                onMultiView = onOpenMultiView,
                 modifier = Modifier.align(Alignment.TopCenter),
             )
             FloatingTabBar(

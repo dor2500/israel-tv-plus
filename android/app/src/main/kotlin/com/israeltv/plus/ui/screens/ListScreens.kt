@@ -126,7 +126,7 @@ fun ChannelsScreen(
     val basePadding = feedPadding(withCategories = true)
     val topInset = basePadding.calculateTopPadding()
     val bottomInset = basePadding.calculateBottomPadding()
-    val pinnedSwitchHeight = 42.dp
+    val pinnedSwitchHeight = 52.dp
 
     var shownCategory by remember { mutableStateOf(macroCategory) }
     var shownIsraeli by remember { mutableStateOf(israeliOnly) }

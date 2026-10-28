@@ -21,6 +21,7 @@ import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -38,10 +39,9 @@ import androidx.compose.material.icons.rounded.Star
 import androidx.compose.material.icons.rounded.StarBorder
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.FilterChip
-import androidx.compose.material3.FilterChipDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
@@ -170,6 +170,7 @@ fun HomeScreen(
                 prefs = prefs,
                 logo = logo,
                 scrollOffsetPx = heroScrollPx,
+                topInset = padding.calculateTopPadding(),
                 onPlay = { onPlay(it, data.featured) },
                 onInfo = onInfo,
                 modifier = Modifier.bleedToTop(padding).cascadeIn(0),
@@ -178,7 +179,7 @@ fun HomeScreen(
         item(key = "israeli-only-filter") {
             IsraeliOnlySwitch(
                 checked = israeliOnly,
-                modifier = Modifier.padding(top = 2.dp, bottom = 10.dp).cascadeIn(1),
+                modifier = Modifier.padding(top = 12.dp, bottom = 16.dp).cascadeIn(1),
                 onPositioned = onSwitchPositioned,
                 onCheckedChange = onIsraeliOnlyChange,
             )
@@ -246,8 +247,8 @@ private fun Modifier.bleedToTop(padding: PaddingValues): Modifier = layout { mea
 }
 
 /**
- * "רק ישראלי" inline Material 3 Filter Chip (replaces isolated bulky Switch).
- * Features shape-morphing press physics and records its measured center for the Zomato overlay transition.
+ * "רק ישראלי" native out-of-the-box Material You (Material 3) Switch component.
+ * Uses the standard native M3 Switch behavior without altering or overriding its internal animations or physics.
  */
 @Composable
 internal fun IsraeliOnlySwitch(
@@ -257,66 +258,23 @@ internal fun IsraeliOnlySwitch(
     modifier: Modifier = Modifier,
 ) {
     val scheme = MaterialTheme.colorScheme
-    val haptic = LocalHapticFeedback.current
-    val interaction = remember { MutableInteractionSource() }
-    val pressed by interaction.collectIsPressedAsState()
-    val corner by animateDpAsState(
-        targetValue = if (pressed) 10.dp else 18.dp,
-        animationSpec = spring(dampingRatio = 0.58f, stiffness = Spring.StiffnessMedium),
-        label = "israeliFilterChipMorph",
-    )
-    val chipShape = RoundedCornerShape(corner)
     Row(
-        modifier.fillMaxWidth().padding(horizontal = 18.dp, vertical = 2.dp),
-        horizontalArrangement = Arrangement.Center,
+        modifier
+            .fillMaxWidth()
+            .padding(horizontal = 20.dp, vertical = 4.dp),
+        horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        FilterChip(
-            selected = checked,
-            onClick = {
-                val next = !checked
-                haptic.performHapticFeedback(if (next) HapticFeedbackType.ToggleOn else HapticFeedbackType.ToggleOff)
-                onCheckedChange(next)
-            },
-            label = {
-                Text(
-                    "רק ישראלי",
-                    fontSize = 12.sp,
-                    fontWeight = if (checked) FontWeight.SemiBold else FontWeight.Medium,
-                )
-            },
-            leadingIcon = if (checked) {
-                {
-                    BoldIcon(
-                        Icons.Rounded.Check,
-                        null,
-                        Modifier.size(14.dp),
-                        tint = scheme.onPrimary,
-                        weight = 0.6.dp,
-                    )
-                }
-            } else null,
-            interactionSource = interaction,
-            shape = chipShape,
-            colors = FilterChipDefaults.filterChipColors(
-                containerColor = Color.White.copy(alpha = 0.06f),
-                labelColor = scheme.onSurface.copy(alpha = 0.90f),
-                selectedContainerColor = scheme.primary,
-                selectedLabelColor = scheme.onPrimary,
-                selectedLeadingIconColor = scheme.onPrimary,
-            ),
-            border = FilterChipDefaults.filterChipBorder(
-                enabled = true,
-                selected = checked,
-                borderColor = Color.White.copy(alpha = 0.28f),
-                selectedBorderColor = Color.Transparent,
-                borderWidth = 0.85.dp,
-                selectedBorderWidth = 0.dp,
-            ),
-            modifier = Modifier
-                .height(31.dp)
-                .pressPhysics(interaction, tilt = false, glowShape = chipShape)
-                .onGloballyPositioned { onPositioned(it.boundsInRoot().center) },
+        Text(
+            "רק ישראלי",
+            fontSize = 14.sp,
+            fontWeight = FontWeight.SemiBold,
+            color = scheme.onSurface,
+        )
+        Switch(
+            checked = checked,
+            onCheckedChange = onCheckedChange,
+            modifier = Modifier.onGloballyPositioned { onPositioned(it.boundsInRoot().center) },
         )
     }
 }
@@ -327,6 +285,7 @@ private fun HeroPager(
     prefs: AppPrefs,
     logo: (Channel) -> String,
     scrollOffsetPx: Float,
+    topInset: androidx.compose.ui.unit.Dp,
     onPlay: (Channel) -> Unit,
     onInfo: (Channel) -> Unit,
     modifier: Modifier = Modifier,
@@ -338,7 +297,7 @@ private fun HeroPager(
         delay(8000)
         pager.animateScrollToPage((pager.currentPage + 1) % featured.size)
     }
-    Box(modifier.padding(bottom = 10.dp)) {
+    Box(modifier.padding(bottom = 14.dp)) {
         HorizontalPager(pager, key = { featured[it].id }) { page ->
             val ch = featured[page]
             HeroPage(
@@ -347,6 +306,7 @@ private fun HeroPager(
                 favorite = prefs.isFavorite(ch.id),
                 playBackground = page == pager.settledPage,
                 scrollOffsetPx = scrollOffsetPx,
+                topInset = topInset,
                 onPlay = onPlay,
                 onInfo = onInfo,
                 onFavorite = { prefs.toggleFavorite(ch.id) },
@@ -575,6 +535,7 @@ private fun HeroPage(
     favorite: Boolean,
     playBackground: Boolean,
     scrollOffsetPx: Float,
+    topInset: androidx.compose.ui.unit.Dp,
     onPlay: (Channel) -> Unit,
     onInfo: (Channel) -> Unit,
     onFavorite: () -> Unit,
@@ -599,12 +560,12 @@ private fun HeroPage(
     Box(
         Modifier
             .fillMaxWidth()
-            .height(548.dp)
+            .height(588.dp)
             .sharedContainer(key, HeroShape)
             .clipToBounds()
             .background(Color.Black)
     ) {
-        // Heavily blurred dynamic color Ambient Glow behind the Hero preview video
+        // Heavily blurred dynamic color Ambient Glow behind the Hero preview video (preserved untouched)
         Box(
             Modifier
                 .fillMaxSize()
@@ -681,13 +642,16 @@ private fun HeroPage(
         )
 
         Column(
-            Modifier.align(Alignment.BottomCenter).fillMaxWidth().padding(horizontal = 20.dp).padding(bottom = 22.dp),
+            Modifier
+                .align(Alignment.BottomCenter)
+                .fillMaxWidth()
+                .padding(top = topInset + 36.dp, start = 20.dp, end = 20.dp, bottom = 26.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Box(contentAlignment = Alignment.Center) {
                 Box(
                     Modifier
-                        .size(width = 260.dp, height = 160.dp)
+                        .size(width = 200.dp, height = 96.dp)
                         .blur(32.dp)
                         .background(
                             Brush.radialGradient(
@@ -700,18 +664,25 @@ private fun HeroPage(
                         )
                 )
                 if (logo.isNotEmpty()) {
-                    AsyncImage(logo, ch.name, Modifier.fillMaxWidth(0.56f).height(118.dp), contentScale = ContentScale.Fit)
+                    AsyncImage(
+                        model = logo,
+                        contentDescription = ch.name,
+                        modifier = Modifier
+                            .fillMaxWidth(0.46f)
+                            .heightIn(max = 80.dp),
+                        contentScale = ContentScale.Fit,
+                    )
                 } else {
                     Text(ch.name, style = MaterialTheme.typography.headlineMedium, color = scheme.onSurface, maxLines = 2)
                 }
             }
-            Spacer(Modifier.height(12.dp))
+            Spacer(Modifier.height(14.dp))
             HeroMetadata(quality, where)
             if (logo.isEmpty()) {
                 Spacer(Modifier.height(4.dp))
                 Text(ch.name, style = MaterialTheme.typography.titleLarge, color = scheme.onSurface, maxLines = 1, overflow = TextOverflow.Ellipsis)
             }
-            Spacer(Modifier.height(14.dp))
+            Spacer(Modifier.height(18.dp))
             Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(10.dp)) {
                 GlassIconButton(
                     if (favorite) Icons.Rounded.Star else Icons.Rounded.StarBorder, "שמור", onFavorite, size = 43.dp,
