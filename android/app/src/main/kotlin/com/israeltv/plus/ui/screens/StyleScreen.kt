@@ -180,14 +180,11 @@ fun StyleScreen(prefs: AppPrefs, sample: List<Channel>, logo: (Channel) -> Strin
                             Text("רקע כהה, כמו באולם קולנוע", color = scheme.onSurfaceVariant, fontSize = 13.sp)
                         }
                         Switch(
-                            theme.dark,
-                            {
+                            checked = theme.dark,
+                            onCheckedChange = {
                                 haptic.performHapticFeedback(if (it) HapticFeedbackType.ToggleOn else HapticFeedbackType.ToggleOff)
                                 prefs.setTheme(theme.copy(dark = it))
                             },
-                            thumbContent = if (theme.dark) {
-                                { Icon(Icons.Rounded.Check, null, Modifier.size(SwitchDefaults.IconSize)) }
-                            } else null,
                         )
                     }
                     Row(
@@ -202,14 +199,11 @@ fun StyleScreen(prefs: AppPrefs, sample: List<Channel>, logo: (Channel) -> Strin
                             Text("רקע שחור מוחלט (#000000)", color = scheme.onSurfaceVariant, fontSize = 13.sp)
                         }
                         Switch(
-                            theme.oledBlack,
-                            {
+                            checked = theme.oledBlack,
+                            onCheckedChange = {
                                 haptic.performHapticFeedback(if (it) HapticFeedbackType.ToggleOn else HapticFeedbackType.ToggleOff)
                                 prefs.setTheme(theme.copy(oledBlack = it))
                             },
-                            thumbContent = if (theme.oledBlack) {
-                                { Icon(Icons.Rounded.Check, null, Modifier.size(SwitchDefaults.IconSize)) }
-                            } else null,
                         )
                     }
                     PillSwitcher(
@@ -377,12 +371,10 @@ private fun DevicePreview(sample: List<Channel>, logo: (Channel) -> String) {
                     Box(
                         Modifier
                             .weight(1f)
-                            .fillMaxHeight()
-                            .clip(CircleShape)
-                            .background(if (i == 0) scheme.primaryContainer else Color.Transparent),
+                            .fillMaxHeight(),
                         contentAlignment = Alignment.Center,
                     ) {
-                        Icon(icon, null, Modifier.size(11.dp), tint = if (i == 0) scheme.onPrimaryContainer else scheme.onSurfaceVariant)
+                        Icon(icon, null, Modifier.size(11.dp), tint = if (i == 0) scheme.onSurface else scheme.onSurfaceVariant.copy(alpha = 0.65f))
                     }
                 }
         }

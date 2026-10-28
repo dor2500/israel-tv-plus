@@ -1,6 +1,7 @@
 package com.israeltv.plus.ui.player
 
 import android.app.Activity
+import com.israeltv.plus.R
 import android.content.Context
 import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
@@ -562,7 +563,12 @@ fun PlayerScreen(
                         Icons.Rounded.SkipNext, "ערוץ הבא", 48.dp, 56.dp,
                     ) { switchTo(index + 1) }
                     ExpressiveGlassButton(
-                        if (playing) Icons.Rounded.Pause else Icons.Rounded.PlayArrow, "נגן / השהה", 68.dp, 68.dp, primary = true,
+                        icon = if (playing) Icons.Rounded.Pause else Icons.Rounded.PlayArrow,
+                        label = "נגן / השהה",
+                        width = 68.dp,
+                        height = 68.dp,
+                        primary = true,
+                        drawableRes = if (playing) R.drawable.ic_player_pause else R.drawable.ic_player_play,
                     ) {
                         touchTick++
                         if (player.isPlaying) player.pause() else { player.volume = 1.0f; player.play() }
@@ -741,6 +747,7 @@ private fun ExpressiveGlassButton(
     width: Dp,
     height: Dp,
     primary: Boolean = false,
+    drawableRes: Int? = null,
     onClick: () -> Unit,
 ) {
     val interaction = remember { MutableInteractionSource() }
@@ -755,13 +762,22 @@ private fun ExpressiveGlassButton(
             },
         contentAlignment = Alignment.Center,
     ) {
-        BoldIcon(
-            icon = icon,
-            contentDescription = label,
-            modifier = Modifier.size(if (primary) 46.dp else 34.dp),
-            tint = Color.White,
-            weight = if (primary) 0.90.dp else 0.75.dp,
-        )
+        if (drawableRes != null) {
+            Icon(
+                painter = androidx.compose.ui.res.painterResource(drawableRes),
+                contentDescription = label,
+                modifier = Modifier.size(if (primary) 42.dp else 32.dp),
+                tint = Color.White,
+            )
+        } else {
+            BoldIcon(
+                icon = icon,
+                contentDescription = label,
+                modifier = Modifier.size(if (primary) 46.dp else 34.dp),
+                tint = Color.White,
+                weight = if (primary) 0.90.dp else 0.75.dp,
+            )
+        }
     }
 }
 
@@ -928,11 +944,12 @@ private fun CastActiveCard(
         ) {
             ExpressiveGlassButton(Icons.Rounded.SkipNext, "ערוץ הבא", 48.dp, 58.dp, onClick = onNext)
             ExpressiveGlassButton(
-                if (castController.remotePlaying) Icons.Rounded.Pause else Icons.Rounded.PlayArrow,
-                "נגן / השהה בטלוויזיה",
-                68.dp,
-                68.dp,
+                icon = if (castController.remotePlaying) Icons.Rounded.Pause else Icons.Rounded.PlayArrow,
+                label = "נגן / השהה בטלוויזיה",
+                width = 68.dp,
+                height = 68.dp,
                 primary = true,
+                drawableRes = if (castController.remotePlaying) R.drawable.ic_player_pause else R.drawable.ic_player_play,
                 onClick = { castController.togglePlayPause() },
             )
             ExpressiveGlassButton(Icons.Rounded.SkipPrevious, "ערוץ קודם", 48.dp, 58.dp, onClick = onPrev)
@@ -974,33 +991,17 @@ private fun TopBar(
     val cutoutTop = WindowInsets.displayCutout.asPaddingValues().calculateTopPadding()
     val safeTop = maxOf(statusTop, cutoutTop, if (landscape) 14.dp else 36.dp) + if (landscape) 6.dp else 14.dp
     val headerGradient = Brush.verticalGradient(
-        if (isTv) {
-            listOf(
-                Color.Black.copy(alpha = 0.88f),
-                Color.Black.copy(alpha = 0.48f),
-                Color.Transparent,
-            )
-        } else {
-            listOf(
-                Color.Black.copy(alpha = 0.62f),
-                Color.Black.copy(alpha = 0.24f),
-                Color.Transparent,
-            )
-        }
+        listOf(
+            Color.Black.copy(alpha = 0.75f),
+            Color.Black.copy(alpha = 0.32f),
+            Color.Transparent,
+        )
     )
     val badgeShape = RoundedCornerShape(6.dp)
     Row(
         Modifier
             .fillMaxWidth()
-            .then(
-                if (isTv) {
-                    Modifier.background(headerGradient)
-                } else {
-                    Modifier
-                        .frostedGlass(RectangleShape, Color.Black.copy(alpha = 0.22f), blur = 38.dp)
-                        .background(headerGradient)
-                }
-            )
+            .background(headerGradient)
             .padding(top = safeTop, bottom = 12.dp, start = 16.dp, end = 16.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
@@ -1114,13 +1115,21 @@ private fun Dock(
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        DockItem(Icons.AutoMirrored.Rounded.List, "ערוצים") { onItem("list") }
+        DockItem(
+            icon = Icons.AutoMirrored.Rounded.List,
+            label = "ערוצים",
+            drawableRes = R.drawable.ic_player_episodes,
+        ) { onItem("list") }
         DockItem(
             icon = if (isCasting) Icons.Rounded.CastConnected else Icons.Rounded.Cast,
             label = "שידור",
             highlight = isCasting,
         ) { onItem("cast") }
-        DockItem(Icons.Rounded.Audiotrack, "שמע") { onItem("audio") }
+        DockItem(
+            icon = Icons.Rounded.Audiotrack,
+            label = "שמע",
+            drawableRes = R.drawable.ic_player_audio_filled,
+        ) { onItem("audio") }
         if (!isTv) {
             DockItem(Icons.Rounded.PictureInPictureAlt, "חלון צף") { onItem("pip") }
         }
@@ -1128,8 +1137,13 @@ private fun Dock(
             icon = Icons.Rounded.MoreHoriz,
             label = "אפשרויות",
             highlight = settingsOpen,
+            drawableRes = R.drawable.ic_player_source,
         ) { onItem("more") }
-        DockItem(if (landscape) Icons.Rounded.FullscreenExit else Icons.Rounded.Fullscreen, "מסך") { onItem("full") }
+        DockItem(
+            icon = if (landscape) Icons.Rounded.FullscreenExit else Icons.Rounded.Fullscreen,
+            label = "מסך",
+            drawableRes = R.drawable.ic_player_aspect_ratio,
+        ) { onItem("full") }
     }
 }
 
@@ -1138,6 +1152,7 @@ private fun DockItem(
     icon: ImageVector,
     label: String,
     highlight: Boolean = false,
+    drawableRes: Int? = null,
     onClick: () -> Unit,
 ) {
     val tint = if (highlight) MaterialTheme.colorScheme.primary else Color.White
@@ -1150,7 +1165,16 @@ private fun DockItem(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
     ) {
-        BoldIcon(icon, label, Modifier.size(22.dp), tint = tint, weight = 0.68.dp)
+        if (drawableRes != null) {
+            Icon(
+                painter = androidx.compose.ui.res.painterResource(drawableRes),
+                contentDescription = label,
+                modifier = Modifier.size(22.dp),
+                tint = tint,
+            )
+        } else {
+            BoldIcon(icon, label, Modifier.size(22.dp), tint = tint, weight = 0.68.dp)
+        }
         Spacer(Modifier.height(3.dp))
         Text(
             label,

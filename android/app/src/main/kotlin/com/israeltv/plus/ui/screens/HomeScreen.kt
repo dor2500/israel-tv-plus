@@ -449,26 +449,19 @@ private fun MutedHeroHls(
 }
 
 /**
- * Computes dominant saturated ambient glow colors for a channel poster/stream.
+ * Computes dominant saturated ambient glow colors for a channel poster/stream,
+ * preserving the signature crimson/red Hero tint overlay alongside dynamic accents.
  */
-private fun dominantHeroGlowColors(ch: Channel): Pair<Color, Color> {
+private fun dominantHeroGlowColors(ch: Channel, schemePrimary: Color): Pair<Color, Color> {
     val id = ch.id.lowercase()
     return when {
-        "kan" in id || "11" in id -> Color(0xFF0EA5E9) to Color(0xFF2563EB)
-        "keshet" in id || "12" in id -> Color(0xFFF59E0B) to Color(0xFFE11D48)
-        "reshet" in id || "13" in id -> Color(0xFF3B82F6) to Color(0xFF7C3AED)
+        "kan" in id || "11" in id -> Color(0xFFE11D48) to Color(0xFF0EA5E9)
+        "keshet" in id || "12" in id -> Color(0xFFE11D48) to Color(0xFFF59E0B)
+        "reshet" in id || "13" in id -> Color(0xFFE11D48) to Color(0xFF3B82F6)
         "14" in id || "now14" in id -> Color(0xFFE11D48) to Color(0xFF9F1239)
-        "i24" in id || "news" in id -> Color(0xFF0284C7) to Color(0xFF1D4ED8)
-        "sport" in id || ch.categoryEn == "sports" -> Color(0xFF10B981) to Color(0xFF0284C7)
-        else -> {
-            val palette = listOf(
-                Color(0xFF0EA5E9) to Color(0xFF6366F1),
-                Color(0xFFE11D48) to Color(0xFFF59E0B),
-                Color(0xFF10B981) to Color(0xFF0EA5E9),
-                Color(0xFF8B5CF6) to Color(0xFFEC4899),
-            )
-            palette[abs(ch.id.hashCode()) % palette.size]
-        }
+        "i24" in id || "news" in id -> Color(0xFFE11D48) to Color(0xFF0284C7)
+        "sport" in id || ch.categoryEn == "sports" -> Color(0xFFE11D48) to Color(0xFF10B981)
+        else -> Color(0xFFE11D48) to schemePrimary
     }
 }
 
@@ -476,8 +469,14 @@ private fun dominantHeroGlowColors(ch: Channel): Pair<Color, Color> {
  * High-quality static hero fallback backdrop with a dynamic ambient color glow and slight blur.
  */
 @Composable
-private fun HeroStaticFallbackPoster(ch: Channel, logo: String, modifier: Modifier = Modifier) {
-    val (glowA, glowB) = remember(ch.id) { dominantHeroGlowColors(ch) }
+private fun HeroStaticFallbackPoster(
+    ch: Channel,
+    logo: String,
+    topInset: androidx.compose.ui.unit.Dp,
+    modifier: Modifier = Modifier,
+) {
+    val scheme = MaterialTheme.colorScheme
+    val (glowA, glowB) = remember(ch.id, scheme.primary) { dominantHeroGlowColors(ch, scheme.primary) }
     Box(
         modifier
             .fillMaxSize()
@@ -498,8 +497,9 @@ private fun HeroStaticFallbackPoster(ch: Channel, logo: String, modifier: Modifi
                 contentDescription = null,
                 modifier = Modifier
                     .align(Alignment.Center)
+                    .padding(top = topInset * 0.45f)
                     .fillMaxWidth(0.85f)
-                    .height(250.dp)
+                    .height(220.dp)
                     .blur(26.dp)
                     .graphicsLayer { alpha = 0.42f },
                 contentScale = ContentScale.Fit,
@@ -511,7 +511,7 @@ private fun HeroStaticFallbackPoster(ch: Channel, logo: String, modifier: Modifi
                 .background(
                     Brush.radialGradient(
                         listOf(
-                            glowA.copy(alpha = 0.32f),
+                            glowA.copy(alpha = 0.34f),
                             Color.Transparent,
                         )
                     )
@@ -547,7 +547,9 @@ private fun HeroPage(
     val key = "hero:${ch.id}"
     val quality = ch.badge.ifBlank { if (ch.isRadio) "רדיו" else "FHD" }
     val where = if (ch.categoryEn == "israel") "ערוצי ישראל" else shortCategory(ch.category)
-    val (glowPrimary, glowSecondary) = remember(ch.id) { dominantHeroGlowColors(ch) }
+    val (glowPrimary, glowSecondary) = remember(ch.id, scheme.primary) { dominantHeroGlowColors(ch, scheme.primary) }
+    val heroHeight = (topInset + 480.dp).coerceAtLeast(640.dp)
+    val foregroundAlpha = (1f - (scrollOffsetPx / 260f)).coerceIn(0f, 1f)
 
     var videoReady by remember(ch.id, playBackground) { mutableStateOf(false) }
     var videoFailed by remember(ch.id, playBackground) { mutableStateOf(false) }
@@ -560,7 +562,7 @@ private fun HeroPage(
     Box(
         Modifier
             .fillMaxWidth()
-            .height(588.dp)
+            .height(heroHeight)
             .sharedContainer(key, HeroShape)
             .clipToBounds()
             .background(Color.Black)
@@ -594,7 +596,7 @@ private fun HeroPage(
                 }
         ) {
             // Graceful degradation: static blurred hero poster shown while buffering or if video fails
-            HeroStaticFallbackPoster(ch = ch, logo = logo)
+            HeroStaticFallbackPoster(ch = ch, logo = logo, topInset = topInset)
 
             if (playBackground && !videoFailed && !ch.isRadio && (ch.url.contains(".m3u8", ignoreCase = true) || ch.auth == "mako")) {
                 Box(
@@ -645,13 +647,17 @@ private fun HeroPage(
             Modifier
                 .align(Alignment.BottomCenter)
                 .fillMaxWidth()
-                .padding(top = topInset + 36.dp, start = 20.dp, end = 20.dp, bottom = 26.dp),
+                .padding(top = topInset + 56.dp, start = 20.dp, end = 20.dp, bottom = 26.dp)
+                .graphicsLayer { alpha = foregroundAlpha },
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
-            Box(contentAlignment = Alignment.Center) {
+            Box(
+                Modifier.heightIn(max = 80.dp),
+                contentAlignment = Alignment.Center,
+            ) {
                 Box(
                     Modifier
-                        .size(width = 200.dp, height = 96.dp)
+                        .size(width = 180.dp, height = 80.dp)
                         .blur(32.dp)
                         .background(
                             Brush.radialGradient(

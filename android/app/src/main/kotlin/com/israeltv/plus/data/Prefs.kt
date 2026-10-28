@@ -189,13 +189,19 @@ class AppPrefs(context: Context) {
     private fun loadProfiles(): List<Profile> {
         sp.getString("phoneProfiles", null)?.let { s ->
             runCatching { json.decodeFromString<List<Profile>>(s) }.getOrNull()?.takeIf { it.isNotEmpty() }?.let { saved ->
+                val oledDefaultMigrated = sp.getBoolean("oledDefaultMigrated_v464", false)
                 val migrated = saved.mapIndexed { index, profile ->
-                    profile.copy(avatar = migratedAvatar(profile.avatar, index))
+                    profile.copy(
+                        avatar = migratedAvatar(profile.avatar, index),
+                        theme = if (!oledDefaultMigrated) profile.theme.copy(oledBlack = true) else profile.theme,
+                    )
                 }
+                if (!oledDefaultMigrated) sp.edit { putBoolean("oledDefaultMigrated_v464", true) }
                 if (migrated != saved) sp.edit { putString("phoneProfiles", json.encodeToString(migrated)) }
                 return migrated
             }
         }
+        sp.edit { putBoolean("oledDefaultMigrated_v464", true) }
         val oldAvatar = sp.getString("phoneAvatar", null)
         return listOf(
             Profile(

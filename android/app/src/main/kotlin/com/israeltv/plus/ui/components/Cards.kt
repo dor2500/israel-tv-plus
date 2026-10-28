@@ -132,7 +132,7 @@ fun ChannelCard(
         Box(
             Modifier
                 .fillMaxWidth()
-                .aspectRatio(16f / 9.5f)
+                .aspectRatio(16f / 9f)
                 .pressPhysics(interaction, glowShape = CardShape)
                 .then(if (sharedKey != null) Modifier.sharedContainer(sharedKey, CardShape) else Modifier)
                 .frostedGlass(CardShape, Color.White.copy(alpha = 0.05f), blur = 24.dp)
@@ -151,7 +151,7 @@ fun ChannelCard(
                 ),
             contentAlignment = Alignment.Center,
         ) {
-            ChannelLogo(logo, Modifier.fillMaxSize(0.60f), channel.isRadio)
+            ChannelLogo(logo, Modifier.fillMaxWidth(0.60f).aspectRatio(16f / 9f), channel.isRadio)
             val badge = if (channel.isRadio) "רדיו" else channel.badge
             if (badge.isNotEmpty()) {
                 val badgeShape = RoundedCornerShape(6.dp)
@@ -621,7 +621,7 @@ fun ShelfSkeleton() {
         Row(Modifier.padding(horizontal = 16.dp), horizontalArrangement = Arrangement.spacedBy(10.dp)) {
             repeat(3) {
                 Column(Modifier.width(164.dp)) {
-                    Box(Modifier.fillMaxWidth().aspectRatio(16f / 9.5f).glassShimmer(CardShape))
+                    Box(Modifier.fillMaxWidth().aspectRatio(16f / 9f).glassShimmer(CardShape))
                     Spacer(Modifier.height(8.dp))
                     Box(Modifier.width(104.dp).height(12.dp).glassShimmer(RoundedCornerShape(6.dp)))
                     Spacer(Modifier.height(5.dp))

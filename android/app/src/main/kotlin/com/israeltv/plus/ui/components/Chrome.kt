@@ -319,131 +319,98 @@ fun FloatingTabBar(
     val scheme = MaterialTheme.colorScheme
     val haptic = LocalHapticFeedback.current
     val tabs = listOf(Tab.Home, Tab.Channels, Tab.Mine)
-    val glass = Color.Black.copy(alpha = 0.22f)
-    val bottomGradientMask = remember {
-        Brush.verticalGradient(
-            0f to Color.Transparent,
-            0.38f to Color.Black.copy(alpha = 0.48f),
-            0.72f to Color.Black.copy(alpha = 0.88f),
-            1f to Color.Black,
-        )
-    }
+    val glass = Color.Black.copy(alpha = 0.25f)
 
-    Box(modifier.fillMaxWidth().zIndex(10f)) {
-        // Bottom Gradient-Blur: heavy Glassmorphism fading smoothly upward
-        Box(
-            Modifier
-                .align(Alignment.BottomCenter)
+    CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {
+        BoxWithConstraints(
+            modifier
                 .fillMaxWidth()
-                .height(126.dp)
-                .frostedGlass(
-                    shape = RectangleShape,
-                    tint = Color.Black.copy(alpha = 0.16f),
-                    blur = 44.dp,
-                    border = false,
-                    mask = bottomGradientMask,
-                )
-                .background(
-                    Brush.verticalGradient(
-                        0f to Color.Transparent,
-                        0.45f to Color.Black.copy(alpha = 0.10f),
-                        0.78f to Color.Black.copy(alpha = 0.22f),
-                        1f to Color.Black.copy(alpha = 0.34f),
-                    )
-                )
-        )
+                .zIndex(10f)
+                .navigationBarsPadding()
+                .padding(bottom = 24.dp)
+        ) {
+            val bouncy = spring<androidx.compose.ui.unit.Dp>(
+                dampingRatio = 0.82f,
+                stiffness = Spring.StiffnessMediumLow,
+            )
+            val capsuleTarget = (maxWidth - 112.dp - if (collapsed) 40.dp else 0.dp).coerceAtLeast(180.dp)
+            val capsuleWidth by animateDpAsState(capsuleTarget, bouncy, label = "capsuleWidth")
+            val barHeight by animateDpAsState(if (collapsed) 52.dp else 68.dp, bouncy, label = "barHeight")
+            val searchSize by animateDpAsState(if (collapsed) 52.dp else 64.dp, bouncy, label = "searchSize")
 
-        CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {
-            BoxWithConstraints(
-                Modifier
-                    .align(Alignment.BottomCenter)
-                    .fillMaxWidth()
-                    .navigationBarsPadding()
-                    .padding(bottom = 24.dp)
+            Row(
+                Modifier.fillMaxWidth().padding(horizontal = 16.dp),
+                horizontalArrangement = Arrangement.spacedBy(16.dp, Alignment.CenterHorizontally),
+                verticalAlignment = Alignment.CenterVertically,
             ) {
-                val bouncy = spring<androidx.compose.ui.unit.Dp>(
-                    dampingRatio = 0.82f,
-                    stiffness = Spring.StiffnessMediumLow,
-                )
-                val capsuleTarget = (maxWidth - 112.dp - if (collapsed) 36.dp else 0.dp).coerceAtLeast(184.dp)
-                val capsuleWidth by animateDpAsState(capsuleTarget, bouncy, label = "capsuleWidth")
-                val barHeight by animateDpAsState(if (collapsed) 54.dp else 64.dp, bouncy, label = "barHeight")
-                val searchSize by animateDpAsState(if (collapsed) 54.dp else 64.dp, bouncy, label = "searchSize")
-
-                Row(
-                    Modifier.fillMaxWidth().padding(horizontal = 16.dp),
-                    horizontalArrangement = Arrangement.spacedBy(16.dp, Alignment.CenterHorizontally),
-                    verticalAlignment = Alignment.CenterVertically,
+                val searchInteraction = remember { MutableInteractionSource() }
+                Box(
+                    Modifier
+                        .size(searchSize)
+                        .pressPhysics(searchInteraction, tilt = false, glowShape = CircleShape)
+                        .frostedGlass(CircleShape, glass, blur = 44.dp)
+                        .clickable(searchInteraction, null) {
+                            haptic.performHapticFeedback(HapticFeedbackType.SegmentTick)
+                            onSearch()
+                        },
+                    contentAlignment = Alignment.Center,
                 ) {
-                    val searchInteraction = remember { MutableInteractionSource() }
-                    Box(
-                        Modifier
-                            .size(searchSize)
-                            .pressPhysics(searchInteraction, tilt = false, glowShape = CircleShape)
-                            .frostedGlass(CircleShape, glass, blur = 44.dp)
-                            .clickable(searchInteraction, null) {
-                                haptic.performHapticFeedback(HapticFeedbackType.SegmentTick)
-                                onSearch()
-                            },
-                        contentAlignment = Alignment.Center,
-                    ) {
-                        BoldIcon(
-                            Icons.Rounded.Search,
-                            "חיפוש",
-                            Modifier.size(if (collapsed) 24.dp else 26.dp),
-                            tint = scheme.onSurface,
-                            weight = 0.75.dp,
-                        )
-                    }
+                    BoldIcon(
+                        Icons.Rounded.Search,
+                        "חיפוש",
+                        Modifier.size(if (collapsed) 24.dp else 26.dp),
+                        tint = scheme.onSurface,
+                        weight = 0.75.dp,
+                    )
+                }
 
-                    CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Rtl) {
-                        Row(
-                            Modifier
-                                .width(capsuleWidth)
-                                .height(barHeight)
-                                .frostedGlass(RoundedCornerShape(50), glass, blur = 44.dp)
-                                .padding(horizontal = 6.dp, vertical = 6.dp),
-                            horizontalArrangement = Arrangement.spacedBy(2.dp),
-                            verticalAlignment = Alignment.CenterVertically,
-                        ) {
-                            tabs.forEach { tab ->
-                                val active = !searchOpen && selected == tab
-                                val tabInteraction = remember { MutableInteractionSource() }
-                                Column(
-                                    Modifier
-                                        .weight(1f)
-                                        .fillMaxHeight()
-                                        .pressPhysics(tabInteraction, tilt = false, glowShape = RoundedCornerShape(50))
-                                        .clip(RoundedCornerShape(50))
-                                        .clickable(tabInteraction, null) {
-                                            haptic.performHapticFeedback(HapticFeedbackType.SegmentTick)
-                                            onSelect(tab)
-                                        },
-                                    horizontalAlignment = Alignment.CenterHorizontally,
-                                    verticalArrangement = Arrangement.Center,
+                CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Rtl) {
+                    Row(
+                        Modifier
+                            .width(capsuleWidth)
+                            .height(barHeight)
+                            .frostedGlass(RoundedCornerShape(50), glass, blur = 44.dp)
+                            .padding(horizontal = 6.dp, vertical = 6.dp),
+                        horizontalArrangement = Arrangement.spacedBy(2.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                    ) {
+                        tabs.forEach { tab ->
+                            val active = !searchOpen && selected == tab
+                            val tabInteraction = remember { MutableInteractionSource() }
+                            Column(
+                                Modifier
+                                    .weight(1f)
+                                    .fillMaxHeight()
+                                    .pressPhysics(tabInteraction, tilt = false, glowShape = RoundedCornerShape(50))
+                                    .clip(RoundedCornerShape(50))
+                                    .clickable(tabInteraction, null) {
+                                        haptic.performHapticFeedback(HapticFeedbackType.SegmentTick)
+                                        onSelect(tab)
+                                    },
+                                horizontalAlignment = Alignment.CenterHorizontally,
+                                verticalArrangement = Arrangement.Center,
+                            ) {
+                                BoldIcon(
+                                    tab.icon,
+                                    tab.label,
+                                    Modifier.size(22.dp),
+                                    tint = if (active) scheme.onSurface else scheme.onSurfaceVariant.copy(alpha = 0.65f),
+                                    weight = if (active) 0.75.dp else 0.55.dp,
+                                )
+                                AnimatedVisibility(
+                                    visible = !collapsed,
+                                    enter = fadeIn(tween(180)) + expandVertically(tween(200)),
+                                    exit = fadeOut(tween(130)) + shrinkVertically(tween(170)),
                                 ) {
-                                    BoldIcon(
-                                        tab.icon,
-                                        tab.label,
-                                        Modifier.size(23.dp),
-                                        tint = if (active) scheme.onSurface else scheme.onSurfaceVariant.copy(alpha = 0.62f),
-                                        weight = if (active) 0.75.dp else 0.52.dp,
-                                    )
-                                    AnimatedVisibility(
-                                        visible = !collapsed,
-                                        enter = fadeIn(tween(180)) + expandVertically(tween(200)),
-                                        exit = fadeOut(tween(130)) + shrinkVertically(tween(170)),
-                                    ) {
-                                        Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                                            Spacer(Modifier.height(3.dp))
-                                            Text(
-                                                tab.label,
-                                                color = if (active) scheme.onSurface else scheme.onSurfaceVariant.copy(alpha = 0.62f),
-                                                fontSize = 10.5.sp,
-                                                fontWeight = if (active) FontWeight.SemiBold else FontWeight.Medium,
-                                                maxLines = 1,
-                                            )
-                                        }
+                                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                                        Spacer(Modifier.height(3.dp))
+                                        Text(
+                                            tab.label,
+                                            color = if (active) scheme.onSurface else scheme.onSurfaceVariant.copy(alpha = 0.65f),
+                                            fontSize = 10.5.sp,
+                                            fontWeight = if (active) FontWeight.SemiBold else FontWeight.Medium,
+                                            maxLines = 1,
+                                        )
                                     }
                                 }
                             }

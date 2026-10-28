@@ -1062,10 +1062,11 @@ body.phone .topbar.solid {
   backdrop-filter: blur(28px) saturate(180%);
 }
 body.phone .navbar {
-  background: rgba(10, 10, 16, 0.14) !important;
-  -webkit-backdrop-filter: blur(32px) saturate(190%);
-  backdrop-filter: blur(32px) saturate(190%);
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: transparent !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 .osd-top {
   background: linear-gradient(180deg, rgba(0,0,0,.64) 0%, rgba(0,0,0,.18) 68%, rgba(0,0,0,0) 100%) !important;
@@ -1669,8 +1670,14 @@ body.phone .osd-buttons .obtn {
   -webkit-backdrop-filter: none !important;
   backdrop-filter: none !important;
 }
-.pg-logo, .pg-logo img, .hero-logo img {
+.pg-logo, .pg-logo img, .hero-logo img, .slide-logo, .slide-logo img, .atv-mlogo, .atv-mlogo img {
   max-height: 80px !important;
+}
+body.phone .pager {
+  min-height: 36rem !important;
+}
+body.phone .slide-body {
+  padding-top: calc(var(--hdr, 4rem) + 5rem) !important;
 }
 
 
