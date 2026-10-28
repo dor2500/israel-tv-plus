@@ -1,51 +1,51 @@
 {
-  "version": "4.6.2",
-  "code": 202610280957,
-  "app": 562,
+  "version": "4.6.3",
+  "code": 202610281022,
+  "app": 563,
   "shell": 3,
   "date": "2026-10-28",
   "notes": [
-    "תיקון גזירת הכותרת העליונה בנגן מתחת למגרעת המצלמה (Portrait Notch Fix & Global Safe Areas): הכותרת העליונה בנגן (TopBar) וכל כותרות המסכים באפליקציה משתמשות כעת ב-WindowInsets.statusBars.asPaddingValues() בשילוב WindowInsets.displayCutout.asPaddingValues() ומרווח ביטחון אנכי, כך ששם הערוץ והתגיות לעולם אינם נחתכים על ידי חור המצלמה או ה-Notch במצב אנכי.",
-    "הפרדת ביצועים בין מובייל (Blur) לטלוויזיה חכמה (Gradient): במובייל הופעל אפקט Glassmorphism כבד (Gradient + frostedGlass) ב-Header העליון (גלוי במלואו גם בגלילה 0), בסרגל הניווט הצף ובנגן; בטלוויזיות חכמות (Android TV, LG webOS, Samsung Tizen) הוסרו לחלוטין כל שכבות ה-BlurEffect מתוך נגן הווידאו והוחלפו בגרדיאנטים ליניאריים כהים וחלקים למניעת נפילות פריימים (Frame Drops).",
-    "פאנל צד שקוף בסגנון Apple TV להגדרות הנגן (שרת ו-פיצול) + חוויית Smart TV מלאה: ההגדרות המשניות בנגן (שרת שידור, פיצול מסך, רצועת שמע, שידור לטלוויזיה, חלון צף ו-שמור ברשימה שלי) הועברו לפאנל צד שקוף ויוקרתי הנפתח מהצד; מסך הפרופילים \"מי צופה?\" נטען אוטומטית מיד לאחר מסך הפתיחה הקולנועי (CinematicIntro); נוספה פיזיקת שלט D-Pad (Scale 1.1f, מסגרת לבנה 2.dp והצללה זוהרת) והחשכת ממשק אוטומטית אחרי 5 שניות של חוסר פעילות עם שחזור מיידי בלחיצה על השלט.",
-    "עידון פרופורציות במובייל (Scale Down 10–15%), הילת Hero דינמית, תגיות זכוכית דקיקות וצ'יפ סינון \"רק ישראלי\": הוקטנו הפרופורציות של הכפתורים, הכרטיסים והטקסט ב-10–15% ליצירת מרווח מינימליסטי בסגנון Apple TV; סרגל הניווט הצף מציג אייקוני קו דקים במצב לא פעיל ואייקונים מלאים ומודגשים במצב פעיל; נוספה הילת צבע דינמית מטושטשת (Hero Ambient Glow) מאחורי ה-Hero, תגיות זכוכית דקיקות (FHD / Live), כרטיסי \"המשך צפייה\" ביחס 16:9 עם פס התקדמות בתחתית, וצ'יפ סינון מובנה של Material 3 (FilterChip) עבור \"רק ישראלי\"."
+    "סרגל ניווט צף מקורי של Nuvio (FloatingTabBar): שוחזר במדויק קוד סרגל הניווט הצף של Nuvio כולל הריווחים וסט האייקונים המקורי (Icons.Rounded.Home, Icons.Rounded.LiveTv, Icons.Rounded.Favorite וכפתור החיפוש המעגלי הנפרד עם Icons.Rounded.Search), הורם מעל קצה המסך באמצעות Modifier.navigationBarsPadding().padding(bottom = 24.dp), והוסרו לחלוטין כל הרקעים האטומים מאחורי האייקונים בתוך הקפסולה.",
+    "פקדי נגן הווידאו של Nuvio בפריסה רחבה (Arrangement.SpaceBetween) ותווית \"אפשרויות\": שוחזרו אייקוני נגן הווידאו של Nuvio ללא קפסולות רקע מאחוריהם, פקדי התחתית בנגן (Dock) נפרסו מקצה שמאל לקצה ימין באמצעות Arrangement.SpaceBetween, ותווית כפתור ההגדרות בנגן עודכנה מ-\"הגדרות\" ל-\"אפשרויות\".",
+    "רקע שחור OLED כברירת מחדל (#000000), ניקיון ה-Header הגלובלי ותיקוני אזור ה-Hero: נוספה הגדרת רקע OLED Black המופעלת כברירת מחדל (#000000 טהור) ללא פגיעה בהילת הצבע באזור ה-Hero; הוסרו אייקוני ה-Cast ופיצול המסך מהסרגל העליון הראשי כך שיופיעו אך ורק בתוך הנגן; תוקנה חפיפת כפתור \"צפייה\" מול הקטגוריות העליונות באמצעות הוספת מרווח אנכי; ולוגו הערוץ הראשי ב-Hero הוגבל עם Modifier.heightIn(max = 80.dp).",
+    "כרטיסי \"המשך צפייה\" בפורמט קולנועי 16:9 ומתג \"רק ישראלי\" טבעי של Material 3: הוחל Modifier.aspectRatio(16f / 9f) ישירות על כרטיסי ותמונות \"המשך צפייה\" ליצירת תצוגת מסך רחב אמיתית, והוטמע רכיב Switch מקורי של Material You (Material 3) עבור \"רק ישראלי\" עם האנימציות והפיזיקה הטבעיות של המערכת."
   ],
   "native": {
     "android": {
-      "version": "4.6.2",
-      "app": 562,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.2/IsraelTVPlus-android.apk"
+      "version": "4.6.3",
+      "app": 563,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.3/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "4.6.2",
-      "app": 562,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.2/IsraelTVPlus-windows-setup.exe"
+      "version": "4.6.3",
+      "app": 563,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.3/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "4.6.2",
-      "app": 562,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.2/com.israeltv.plus_all.ipk",
+      "version": "4.6.3",
+      "app": 563,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.3/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "4.6.2",
-      "app": 562,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.2/IsraelTVPlus-tizen-project.zip"
+      "version": "4.6.3",
+      "app": 563,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.3/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "4.6.2",
-      "app": 562,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.2/IsraelTVPlus-macos-arm64.zip"
+      "version": "4.6.3",
+      "app": 563,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.3/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "4.6.2",
-      "app": 562,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.2/IsraelTVPlus-linux-x64.zip"
+      "version": "4.6.3",
+      "app": 563,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.3/IsraelTVPlus-linux-x64.zip"
     },
     "wear": {
-      "version": "4.6.2",
-      "app": 1000462,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.2/IsraelTVPlus-wearos.apk"
+      "version": "4.6.3",
+      "app": 1000463,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.3/IsraelTVPlus-wearos.apk"
     }
   }
 }
