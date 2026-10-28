@@ -16,3 +16,7 @@ tools/*_pool.json
 tools/discovered_streams.json
 tools/harvester_log.txt
 tools/.*state.json
+
+# iOS wrapper dependencies and Xcode outputs
+node_modules/
+ios/App/Pods/

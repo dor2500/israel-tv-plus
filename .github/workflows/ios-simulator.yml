@@ -1,0 +1,41 @@
+name: iOS Simulator App
+
+on:
+  push:
+    branches: [codex/ios-cloud-simulator]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-simulator-app:
+    runs-on: macos-26
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install and sync Capacitor iOS project
+        run: |
+          npm ci
+          npx cap sync ios
+      - name: Build iOS Simulator app (no signing, no IPA)
+        run: |
+          xcodebuild \
+            -project ios/App/App.xcodeproj \
+            -scheme App \
+            -configuration Release \
+            -sdk iphonesimulator \
+            -destination 'generic/platform=iOS Simulator' \
+            -derivedDataPath build \
+            CODE_SIGNING_ALLOWED=NO \
+            build
+          test -d build/Build/Products/Release-iphonesimulator/App.app
+      - uses: actions/upload-artifact@v4
+        with:
+          name: IsraelTVPlus-iOS-Simulator-App
+          path: build/Build/Products/Release-iphonesimulator/App.app
+          if-no-files-found: error
+          retention-days: 14
