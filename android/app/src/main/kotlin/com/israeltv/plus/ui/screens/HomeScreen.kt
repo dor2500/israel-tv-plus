@@ -18,6 +18,7 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -121,6 +122,7 @@ import kotlinx.coroutines.delay
 import kotlin.math.abs
 
 private val HeroShape = RoundedCornerShape(bottomStart = 28.dp, bottomEnd = 28.dp)
+private val HeroHeight = 480.dp
 
 /**
  * Home: one master LazyColumn - the full-bleed hero with parallax & graceful fallback, the "רק ישראלי" switch
@@ -165,7 +167,7 @@ fun HomeScreen(
         flingBehavior = rememberBitChordFlingBehavior(),
     ) {
         if (data == null) {
-            item { Box(Modifier.bleedToTop(padding).padding(bottom = 28.dp).fillMaxWidth().height((LocalConfiguration.current.screenHeightDp * 0.55f).dp.coerceIn(360.dp, 520.dp)).glassShimmer(HeroShape)) }
+            item { Box(Modifier.bleedToTop(padding).padding(bottom = 28.dp).fillMaxWidth().height(HeroHeight).glassShimmer(HeroShape)) }
             items(4) { ShelfSkeleton() }
             return@LazyColumn
         }
@@ -184,7 +186,7 @@ fun HomeScreen(
         item(key = "israeli-only-filter") {
             IsraeliOnlySwitch(
                 checked = israeliOnly,
-                modifier = Modifier.padding(top = 16.dp, bottom = 24.dp).cascadeIn(1),
+                modifier = Modifier.padding(top = 16.dp, bottom = 16.dp).cascadeIn(1),
                 onPositioned = onSwitchPositioned,
                 onCheckedChange = onIsraeliOnlyChange,
             )
@@ -266,7 +268,7 @@ internal fun IsraeliOnlySwitch(
     Row(
         modifier
             .fillMaxWidth()
-            .padding(horizontal = LocalDimens.current.gutter, vertical = 4.dp),
+            .padding(horizontal = 16.dp, vertical = 8.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically,
     ) {
@@ -554,7 +556,7 @@ private fun HeroPage(
     val (glowPrimary, glowSecondary) = remember(ch.id, scheme.primary) { dominantHeroGlowColors(ch, scheme.primary) }
     val d = LocalDimens.current
     // 82% of the viewport, within 360-760 dp
-    val heroHeight = (LocalConfiguration.current.screenHeightDp * 0.55f).dp.coerceIn(360.dp, 520.dp)
+    val heroHeight = HeroHeight
     val foregroundAlpha = (1f - (scrollOffsetPx / 260f)).coerceIn(0f, 1f)
 
     var videoReady by remember(ch.id, playBackground) { mutableStateOf(false) }
@@ -655,6 +657,14 @@ private fun HeroPage(
                 .fillMaxWidth()
                 .height(d.heroBottomFade)
                 .background(Brush.verticalGradient(listOf(scheme.background.copy(alpha = 0f), scheme.background)))
+        )
+        // Strong scrim over the bottom 40% so logo and buttons never clash with the video
+        Box(
+            Modifier
+                .align(Alignment.BottomCenter)
+                .fillMaxWidth()
+                .fillMaxHeight(0.4f)
+                .background(Brush.verticalGradient(listOf(Color.Transparent, Color.Black.copy(alpha = 0.4f), Color.Black)))
         )
 
         Column(

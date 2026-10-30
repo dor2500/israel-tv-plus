@@ -4,6 +4,7 @@ import android.os.Build
 import android.view.WindowManager
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.spring
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -59,6 +60,8 @@ import androidx.compose.material.icons.rounded.Refresh
 import androidx.compose.material.icons.rounded.ScreenRotation
 import androidx.compose.material.icons.rounded.ScreenShare
 import androidx.compose.material.icons.rounded.SkipNext
+import androidx.compose.material.icons.rounded.Star
+import androidx.compose.material.icons.rounded.StarBorder
 import androidx.compose.material.icons.rounded.SwapHoriz
 import androidx.compose.material.icons.rounded.Tv
 import androidx.compose.material3.BasicAlertDialog
@@ -76,6 +79,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -101,9 +105,10 @@ import com.israeltv.plus.ui.components.pressPhysics
 import com.israeltv.plus.ui.theme.LocalDimens
 
 internal enum class VideoFit(val label: String, val icon: ImageVector, val resizeMode: Int) {
-    Fit("16:9", Icons.Rounded.FitScreen, AspectRatioFrameLayout.RESIZE_MODE_FIT),
-    Crop("חיתוך", Icons.Rounded.Crop, AspectRatioFrameLayout.RESIZE_MODE_ZOOM),
-    Full("מלא", Icons.Rounded.Fullscreen, AspectRatioFrameLayout.RESIZE_MODE_FILL);
+    /** Letterboxed original 16:9 stream. */
+    Fit("מקורי", Icons.Rounded.FitScreen, AspectRatioFrameLayout.RESIZE_MODE_FIT),
+    /** Crop/zoom to fill the whole display without black bars. */
+    Crop("מלא", Icons.Rounded.Crop, AspectRatioFrameLayout.RESIZE_MODE_ZOOM);
 
     fun next(): VideoFit = entries[(ordinal + 1) % entries.size]
 }
@@ -139,10 +144,16 @@ private fun MorphAction(icon: ImageVector, label: String, tint: Color = Color.Wh
         animationSpec = spring(dampingRatio = 0.58f, stiffness = Spring.StiffnessMedium),
         label = "playerActionMorph",
     )
+    val pressScale by animateFloatAsState(
+        targetValue = if (pressed) 0.92f else 1f,
+        animationSpec = spring(dampingRatio = 0.58f, stiffness = Spring.StiffnessMedium),
+        label = "playerActionScale",
+    )
     val shape = RoundedCornerShape(corner)
     Row(
         Modifier
             .heightIn(min = d.playerActionHeight)
+            .scale(pressScale)
             .pressPhysics(interaction, tilt = false, glowShape = shape)
             .clip(shape)
             .background(Color.White.copy(alpha = 0.12f))
@@ -188,7 +199,14 @@ internal fun PlayerTopBar(isCasting: Boolean, onCast: () -> Unit, onBack: () -> 
 
 /** In RTL the first child sits on the physical right: Live + channel name there, fit + options on the far left. */
 @Composable
-internal fun PlayerBottomBar(ch: Channel, fit: VideoFit, onCycleFit: () -> Unit, onOptions: () -> Unit) {
+internal fun PlayerBottomBar(
+    ch: Channel,
+    fit: VideoFit,
+    favorite: Boolean,
+    onCycleFit: () -> Unit,
+    onFavorite: () -> Unit,
+    onOptions: () -> Unit,
+) {
     val d = LocalDimens.current
     val badgeShape = RoundedCornerShape(6.dp)
     Row(
@@ -216,6 +234,13 @@ internal fun PlayerBottomBar(ch: Channel, fit: VideoFit, onCycleFit: () -> Unit,
         }
         Spacer(Modifier.width(16.dp))
         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            MorphAction(
+                if (favorite) Icons.Rounded.Star else Icons.Rounded.StarBorder,
+                if (favorite) "הסר ממועדפים" else "הוסף למועדפים",
+                tint = if (favorite) Color(0xFFFFD54F) else Color.White,
+                showLabel = false,
+                onClick = onFavorite,
+            )
             MorphAction(fit.icon, fit.label, onClick = onCycleFit)
             MorphAction(Icons.Rounded.MoreHoriz, "אפשרויות", onClick = onOptions)
         }

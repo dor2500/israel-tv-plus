@@ -400,7 +400,7 @@ private fun Feed(
                 modifier = Modifier.align(Alignment.TopCenter),
             )
             FloatingTabBar(
-                s.tab, s.searchOpen, s.barCollapsed && !s.searchOpen,
+                s.tab, s.searchOpen,
                 onSelect = { s.searchOpen = false; s.barCollapsed = false; s.tab = it },
                 onSearch = { s.searchOpen = true },
                 modifier = Modifier.align(Alignment.BottomCenter),

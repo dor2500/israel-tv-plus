@@ -7,9 +7,11 @@ import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
+import androidx.compose.animation.expandHorizontally
 import androidx.compose.animation.expandVertically
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
+import androidx.compose.animation.shrinkHorizontally
 import androidx.compose.animation.shrinkVertically
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
@@ -39,11 +41,20 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.Tv
+import androidx.compose.material.icons.outlined.FavoriteBorder
+import androidx.compose.material.icons.outlined.Home
+import androidx.compose.material.icons.outlined.Search
+import androidx.compose.material.icons.outlined.Tv
 import androidx.compose.material.icons.rounded.Favorite
 import androidx.compose.material.icons.rounded.Home
 import androidx.compose.material.icons.rounded.LiveTv
 import androidx.compose.material.icons.rounded.Search
 import androidx.compose.material.icons.rounded.Settings
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -305,81 +316,140 @@ private fun HeaderIconOrb(
     }
 }
 
+private data class NavItem(
+    val route: String,
+    val label: String,
+    val unselectedIcon: ImageVector,
+    val selectedIcon: ImageVector,
+)
+
 /**
- * The Nuvio navigation: ONE floating pill holding all four destinations (בית, ערוצים, שלי, חיפוש). Every item shares the
- * same touch target; the active one gets a secondaryContainer indicator. Colours come straight from the Material You
- * scheme, so the bar follows the user's wallpaper palette. [collapsed] tightens the item width while the feed scrolls.
+ * The Nuvio navigation: ONE compact floating pill (56 dp tall). Inactive tabs are icon-only; only the active tab
+ * expands inline with its label on a secondaryContainer indicator. Colours come from the Material You scheme.
  */
 @Composable
-fun FloatingTabBar(
-    selected: Tab,
-    searchOpen: Boolean,
-    collapsed: Boolean,
-    onSelect: (Tab) -> Unit,
-    onSearch: () -> Unit,
+fun NuvioFloatingNavbar(
+    currentRoute: String,
+    onNavigate: (String) -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    val scheme = MaterialTheme.colorScheme
-    val haptic = LocalHapticFeedback.current
-    val itemWidth by animateDpAsState(
-        if (collapsed) 60.dp else 68.dp,
-        spring(dampingRatio = 0.82f, stiffness = Spring.StiffnessMediumLow),
-        label = "tabItemWidth",
-    )
-    // Home, Channels, Mine, Search: the first entry sits on the right edge in Hebrew RTL
     val items = listOf(
-        Triple(Tab.Home.label, Tab.Home.icon, !searchOpen && selected == Tab.Home) to { onSelect(Tab.Home) },
-        Triple(Tab.Channels.label, Tab.Channels.icon, !searchOpen && selected == Tab.Channels) to { onSelect(Tab.Channels) },
-        Triple(Tab.Mine.label, Tab.Mine.icon, !searchOpen && selected == Tab.Mine) to { onSelect(Tab.Mine) },
-        Triple("חיפוש", Icons.Rounded.Search, searchOpen) to onSearch,
+        NavItem("home", "בית", Icons.Outlined.Home, Icons.Filled.Home),
+        NavItem("channels", "ערוצים", Icons.Outlined.Tv, Icons.Filled.Tv),
+        NavItem("favorites", "שלי", Icons.Outlined.FavoriteBorder, Icons.Filled.Favorite),
+        NavItem("search", "חיפוש", Icons.Outlined.Search, Icons.Filled.Search),
     )
+    val haptic = LocalHapticFeedback.current
+
     Box(
-        modifier.fillMaxWidth().zIndex(10f).navigationBarsPadding().padding(bottom = 24.dp),
-        contentAlignment = Alignment.BottomCenter,
+        modifier = modifier
+            .fillMaxWidth()
+            .navigationBarsPadding()
+            .padding(bottom = 16.dp),
+        contentAlignment = Alignment.Center
     ) {
         Surface(
             shape = CircleShape,
-            color = scheme.surfaceContainerHigh.copy(alpha = 0.94f),
-            contentColor = scheme.onSurface,
-            tonalElevation = 3.dp,
-            shadowElevation = 10.dp,
-            border = BorderStroke(1.dp, scheme.outlineVariant.copy(alpha = 0.4f)),
+            color = MaterialTheme.colorScheme.surfaceContainerHigh.copy(alpha = 0.88f),
+            border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.2f)),
+            shadowElevation = 12.dp
         ) {
             Row(
-                Modifier.padding(6.dp),
-                horizontalArrangement = Arrangement.spacedBy(2.dp),
-                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier
+                    .padding(horizontal = 8.dp, vertical = 6.dp)
+                    .height(44.dp),
+                horizontalArrangement = Arrangement.spacedBy(4.dp),
+                verticalAlignment = Alignment.CenterVertically
             ) {
-                items.forEach { (item, action) ->
-                    val (label, icon, active) = item
-                    val interaction = remember { MutableInteractionSource() }
-                    val tint = if (active) scheme.onSecondaryContainer else scheme.onSurfaceVariant
-                    Column(
-                        Modifier
-                            .width(itemWidth)
-                            .height(56.dp)
-                            .pressPhysics(interaction, tilt = false, glowShape = CircleShape)
+                items.forEach { item ->
+                    val isSelected = currentRoute == item.route
+                    val containerColor by animateColorAsState(
+                        targetValue = if (isSelected) MaterialTheme.colorScheme.secondaryContainer else Color.Transparent,
+                        label = "pill_container"
+                    )
+                    val contentColor by animateColorAsState(
+                        targetValue = if (isSelected) MaterialTheme.colorScheme.onSecondaryContainer else MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.6f),
+                        label = "pill_content"
+                    )
+
+                    Box(
+                        modifier = Modifier
                             .clip(CircleShape)
-                            .background(if (active) scheme.secondaryContainer else Color.Transparent)
-                            .clickable(interaction, null) {
+                            .background(containerColor)
+                            .clickable {
                                 haptic.performHapticFeedback(HapticFeedbackType.SegmentTick)
-                                action()
-                            },
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                        verticalArrangement = Arrangement.Center,
+                                onNavigate(item.route)
+                            }
+                            .padding(horizontal = if (isSelected) 16.dp else 8.dp, vertical = 8.dp),
+                        contentAlignment = Alignment.Center
                     ) {
-                        BoldIcon(icon, label, Modifier.size(22.dp), tint = tint, weight = if (active) 0.6.dp else 0.45.dp)
-                        Spacer(Modifier.height(3.dp))
-                        Text(
-                            label,
-                            color = tint,
-                            fontSize = 10.5.sp,
-                            fontWeight = if (active) FontWeight.SemiBold else FontWeight.Normal,
-                            maxLines = 1,
-                        )
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.spacedBy(8.dp)
+                        ) {
+                            Icon(
+                                imageVector = if (isSelected) item.selectedIcon else item.unselectedIcon,
+                                contentDescription = item.label,
+                                tint = contentColor,
+                                modifier = Modifier.size(24.dp)
+                            )
+                            AnimatedVisibility(
+                                visible = isSelected,
+                                enter = fadeIn() + expandHorizontally(),
+                                exit = fadeOut() + shrinkHorizontally()
+                            ) {
+                                Text(
+                                    text = item.label,
+                                    style = MaterialTheme.typography.labelMedium.copy(
+                                        fontWeight = FontWeight.Bold,
+                                        color = contentColor
+                                    ),
+                                    maxLines = 1
+                                )
+                            }
+                        }
                     }
                 }
             }
         }
+    }
+}
+
+/** App-level wrapper: maps [Tab]/search state to Nuvio routes and fades the feed to OLED black behind the pill. */
+@Composable
+fun FloatingTabBar(
+    selected: Tab,
+    searchOpen: Boolean,
+    onSelect: (Tab) -> Unit,
+    onSearch: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    val route = when {
+        searchOpen -> "search"
+        selected == Tab.Home -> "home"
+        selected == Tab.Channels -> "channels"
+        selected == Tab.Mine -> "favorites"
+        else -> ""
+    }
+    Box(modifier.fillMaxWidth().zIndex(10f)) {
+        Box(
+            Modifier
+                .align(Alignment.BottomCenter)
+                .fillMaxWidth()
+                .height(140.dp)
+                .background(Brush.verticalGradient(listOf(Color.Transparent, Color.Black)))
+        )
+        NuvioFloatingNavbar(
+            currentRoute = route,
+            onNavigate = {
+                when (it) {
+                    "home" -> onSelect(Tab.Home)
+                    "channels" -> onSelect(Tab.Channels)
+                    "favorites" -> onSelect(Tab.Mine)
+                    "search" -> onSearch()
+                }
+            },
+            modifier = Modifier.align(Alignment.BottomCenter),
+        )
     }
 }
