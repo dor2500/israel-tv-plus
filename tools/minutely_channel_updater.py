@@ -13,6 +13,9 @@ Minutely Israeli Channel Harvester & Auto-Healing Deduplicator
 
 import os
 import sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))   # python -I leaves the script folder out
+from channel_numbers import assign
+import sys
 import json
 import time
 import datetime
@@ -120,8 +123,7 @@ def audit_and_deduplicate_project():
             unique.append(c)
             
         if duplicates_removed > 0:
-            for i, ch in enumerate(unique, 1):
-                ch["number"] = i
+            unique = assign(unique)
             save_json(CHANNELS_PATH, unique)
             with open(CHANNELS_JS_PATH, "w", encoding="utf-8", newline="\n") as f:
                 f.write("window.CHANNELS_DATA = window.ITV_CHANNELS = ")

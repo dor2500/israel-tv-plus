@@ -9,6 +9,9 @@ usage: python -I tools/add_israeli.py [--dry]
 import json
 import os
 import sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))   # python -I leaves the script folder out
+from channel_numbers import assign
+import sys
 import urllib.parse
 from concurrent.futures import ThreadPoolExecutor
 
@@ -515,8 +518,7 @@ def main():
     first = {cid: i for i, cid in enumerate(RADIO_FIRST)}
     allc.sort(key=lambda c: (cats.index(c["category"]) if c["category"] in cats else len(cats),
                              first.get(c["id"], len(first)), pos[c["id"]]))
-    for i, c in enumerate(allc):
-        c["number"] = i + 1
+    allc = assign(allc)
     print(f"{len(chans)} -> kept {len(out)}, added {len(added)} = {len(allc)}")
     for cid, err in failed:
         print("  FAILED", cid, err)

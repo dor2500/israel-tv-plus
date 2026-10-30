@@ -1,5 +1,7 @@
 package com.israeltv.plus.ui.screens
 
+import com.israeltv.plus.ui.components.BrandWordmark
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -66,6 +68,35 @@ private fun Scrim(onDismiss: () -> Unit, content: @Composable () -> Unit) {
 }
 
 private fun Modifier.swallowClicks(): Modifier = clickable(MutableInteractionSource(), null) {}
+
+/** Opening the app with a new version waiting: it updates by itself; when it fails the app simply carries on. */
+@Composable
+fun UpdatingScreen(state: UpdateState) {
+    val scheme = MaterialTheme.colorScheme
+    Column(
+        Modifier
+            .fillMaxSize()
+            .background(Color.Black)
+            .pointerInput(Unit) { awaitPointerEventScope { while (true) awaitPointerEvent() } }
+            .padding(32.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center,
+    ) {
+        BrandWordmark()
+        Spacer(Modifier.height(24.dp))
+        Text(
+            if (state is UpdateState.Installing) "מתקין. האפליקציה תיסגר, פתחו אותה שוב" else "מעדכן לגרסה החדשה",
+            color = scheme.onSurface,
+            style = MaterialTheme.typography.titleMedium,
+        )
+        Spacer(Modifier.height(16.dp))
+        if (state is UpdateState.Downloading) {
+            LinearWavyProgressIndicator(progress = { state.progress }, modifier = Modifier.fillMaxWidth(0.6f))
+        } else {
+            LinearWavyProgressIndicator(modifier = Modifier.fillMaxWidth(0.6f))
+        }
+    }
+}
 
 /** A new GitHub release: frosted-glass modal with what is new and a Material You (wavy) download progress bar. */
 @Composable

@@ -13,6 +13,9 @@ Runs continuously every 60 seconds until 06:00 AM (or until stopped).
 
 import os
 import sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))   # python -I leaves the script folder out
+from channel_numbers import assign
+import sys
 import json
 import time
 import datetime
@@ -162,32 +165,7 @@ def perform_morning_update():
 
     log(f"Added {added} newly discovered Israeli channels into master list!")
 
-    # Sort channels with anchored core channels
-    ANCHORS = {
-        "ch9_israel": 9,
-        "kan11": 11,
-        "keshet12": 12,
-        "reshet13": 13,
-        "ch14_now": 14,
-        "i24news_he": 15,
-        "educational23": 23,
-        "ch24": 24,
-        "knesset": 99,
-    }
-    
-    used_numbers = set(ANCHORS.values())
-    cur_num = 1
-    for c in channels:
-        if c["id"] in ANCHORS:
-            c["number"] = ANCHORS[c["id"]]
-        else:
-            while cur_num in used_numbers:
-                cur_num += 1
-            c["number"] = cur_num
-            used_numbers.add(cur_num)
-            cur_num += 1
-
-    channels.sort(key=lambda x: x["number"])
+    channels = assign(channels)
 
     with open(CHANNELS_PATH, "w", encoding="utf-8") as f:
         json.dump(channels, f, ensure_ascii=False, indent=2)

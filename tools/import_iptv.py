@@ -14,6 +14,9 @@ Imported entries carry "imported": true; merge replaces them, curated entries ar
 """
 import json
 import os
+import sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))   # python -I leaves the script folder out
+from channel_numbers import assign
 import re
 import subprocess
 import sys
@@ -27,7 +30,6 @@ WORK = os.path.join(ROOT, "..", "israel-tv-plus-work", "iptv")
 API = "https://iptv-org.github.io/api/"
 UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36"
 HEADERS = {"User-Agent": UA, "Origin": "https://dor2500.github.io", "Referer": "https://dor2500.github.io/"}
-FIRST_NUMBER = 201
 
 # iptv-org ISO 639-3 -> app language code (dub.js LANG_NAMES)
 LANG3 = {"heb": "he", "eng": "en", "rus": "ru", "fra": "fr", "ara": "ar", "ukr": "uk", "spa": "es", "deu": "de",
@@ -422,12 +424,8 @@ def cmd_merge(work):
             taken_ids.add(c["id"])
             new.append(c)
     new.sort(key=lambda c: order.index(c["category"]))
-    for i, c in enumerate(new):
-        c["number"] = FIRST_NUMBER + i
-    ours.sort(key=lambda c: c.get("number", 0))   # curated: 1.. in their own order, below FIRST_NUMBER
-    for i, c in enumerate(ours):
-        c["number"] = i + 1
-    allc = ours + new
+    ours.sort(key=lambda c: c.get("number", 0))   # curated first, in their own order
+    allc = assign(ours + new)
     with open(os.path.join(ROOT, "channels.json"), "w", encoding="utf-8") as f:
         json.dump(allc, f, ensure_ascii=False, indent=2)
     with open(os.path.join(ROOT, "channels.js"), "w", encoding="utf-8") as f:

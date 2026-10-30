@@ -1,5 +1,8 @@
 import json
 import os
+import sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))   # python -I leaves the script folder out
+from channel_numbers import assign
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CHANNELS_FILE = os.path.join(ROOT, "channels.json")
@@ -189,8 +192,7 @@ def main():
             print(f"Added {ch['name']}")
 
     # Sort channels by category or keep order and re-number sequentially
-    for idx, ch in enumerate(channels, 1):
-        ch["number"] = idx
+    channels = assign(channels)
 
     with open(CHANNELS_FILE, "w", encoding="utf-8") as f:
         json.dump(channels, f, ensure_ascii=False, indent=2)

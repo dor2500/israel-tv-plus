@@ -70,6 +70,7 @@ import com.israeltv.plus.ui.screens.SearchOverlay
 import com.israeltv.plus.ui.screens.SettingsScreen
 import com.israeltv.plus.ui.screens.StyleScreen
 import com.israeltv.plus.ui.screens.UpdateModal
+import com.israeltv.plus.ui.screens.UpdatingScreen
 import dev.chrisbanes.haze.HazeState
 import dev.chrisbanes.haze.hazeSource
 import dev.chrisbanes.haze.rememberHazeState
@@ -134,9 +135,14 @@ fun ItvApp(
 
     val update = updater.state
     LaunchedEffect(update) {
-        if (update is UpdateState.Available && prefs.updatePrompted != update.info.version) {
-            prefs.markUpdatePrompted(update.info.version)
-            updateOpen = true
+        if (update is UpdateState.Available) {
+            if (updater.canInstall) {
+                updater.download(update.info)
+            } else if (prefs.updatePrompted != update.info.version) {
+                // the one thing only the user can do: allow this app to install updates
+                prefs.markUpdatePrompted(update.info.version)
+                updateOpen = true
+            }
         }
     }
 
@@ -214,6 +220,10 @@ fun ItvApp(
             }
         }
         info?.let { ch -> ChannelInfoSheet(ch, logo(ch), prefs, onPlay = { onPlay(ch, listOf(ch)) }, onDismiss = { info = null }) }
+
+        if (!updateOpen && (update is UpdateState.Downloading || update is UpdateState.Installing)) {
+            Box(Modifier.fillMaxSize().zIndex(110f)) { UpdatingScreen(update) }
+        }
 
         if (intro) {
             Box(Modifier.fillMaxSize().zIndex(100f)) {

@@ -43,14 +43,20 @@ sealed interface UpdateState {
 }
 
 /**
- * New versions of the app: version.json on the site names the newest Android APK (the GitHub release). It is
- * downloaded here with progress and handed to the system installer (PackageInstaller session), like MainActivity did.
+ * New versions of the app: version.json on the site names the newest Android APK (the GitHub release). The app
+ * fetches and installs it by itself on opening. Android still asks once for the install permission, and shows its own
+ * confirmation unless this app is the installer of record on Android 12+: those two cannot be skipped from here.
+ * Installing closes the app, and Android does not let it reopen itself from the background.
  */
 @Stable
 class Updater(private val context: Context, private val http: OkHttpClient, private val scope: CoroutineScope) {
     var state by mutableStateOf<UpdateState>(UpdateState.Idle)
         private set
     private var job: Job? = null
+    private var awaitingPermission: UpdateInfo? = null
+
+    val canInstall: Boolean
+        get() = Build.VERSION.SDK_INT < 26 || context.packageManager.canRequestPackageInstalls()
 
     val installedVersion: String get() = BuildConfig.VERSION_NAME
 
@@ -78,8 +84,9 @@ class Updater(private val context: Context, private val http: OkHttpClient, priv
     }
 
     fun download(info: UpdateInfo) {
-        if (Build.VERSION.SDK_INT >= 26 && !context.packageManager.canRequestPackageInstalls()) {
+        if (!canInstall) {
             // Android 8+: the user allows this app to install updates once
+            awaitingPermission = info
             context.startActivity(
                 Intent(Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES, Uri.parse("package:" + context.packageName))
                     .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
@@ -117,6 +124,14 @@ class Updater(private val context: Context, private val http: OkHttpClient, priv
             }
             state = if (ok) UpdateState.Installing(info) else UpdateState.Failed("ההורדה נכשלה – נסו שוב", info)
         }
+    }
+
+    /** Back from the system's "install unknown apps" page with the permission granted: carry on by ourselves. */
+    fun resumeAfterPermission() {
+        val info = awaitingPermission ?: return
+        if (!canInstall) return
+        awaitingPermission = null
+        download(info)
     }
 
     private fun install(apk: File) {

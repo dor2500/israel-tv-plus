@@ -1,6 +1,9 @@
 import json
 import os
 import sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))   # python -I leaves the script folder out
+from channel_numbers import assign
+import sys
 from concurrent.futures import ThreadPoolExecutor
 from verify_all_streams import verify_stream
 
@@ -72,8 +75,7 @@ def main():
     print(f"Total final channels: {len(final_channels)}", flush=True)
     
     # Renumber sequentially
-    for i, ch in enumerate(final_channels, 1):
-        ch["number"] = i
+    final_channels = assign(final_channels)
         
     with open(CHANNELS_PATH, "w", encoding="utf-8", newline="\n") as f:
         json.dump(final_channels, f, ensure_ascii=False, indent=2)

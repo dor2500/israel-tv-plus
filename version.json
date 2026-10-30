@@ -1,56 +1,50 @@
 {
-  "version": "4.6.5",
-  "code": 202610301410,
-  "app": 565,
+  "version": "4.6.6",
+  "code": 202610301548,
+  "app": 566,
   "shell": 3,
   "date": "2026-10-30",
   "notes": [
-    "נגן נקי בסגנון YouTube בטלפון: הפקדים נדחפו לקצוות המסך; שידור חי ושם הערוץ בצד אחד, גודל תמונה (16:9, חיתוך, מלא) ו\"אפשרויות\" בצד השני, עם כפתורים שמשנים צורה בלחיצה.",
-    "חלון \"אפשרויות\" חדש: שמע, חלון צף, שרתים, פיצול מסך ועוד עברו לחלון תחתון עם טשטוש מאחוריו (מ-Android 12).",
-    "בחירת איכות וידאו: חלון חדש עם הרזולוציות שהשידור מציע, או בחירה אוטומטית.",
-    "כרטיסי פוסטר אנכיים: כל כרטיסי הערוצים ביחס 2:3, ו\"המשך צפייה\" נשאר 16:9.",
-    "עמוד ערוצים חדש: שורות לפי קטגוריה עם כפתור \"הכל\" במקום רשת שטוחה.",
-    "Hero וסרגל ניווט: מידות חדשות בהשראת Nuvio.",
-    "מסך שגיאה וחלון שידור למסך: עיצוב נקי ומינימליסטי יותר, ובלי אימוג'י בנגן.",
-    "טלוויזיה: רקע שחור מלא, בלי טשטוש, הגדלה של 1.1 עם מסגרת לבנה בפוקוס, ובנגן נשארים רק הפעלה/השהיה ו\"אפשרויות\", שנפתחות כפאנל צד.",
-    "עדכון רשימת הערוצים ומקורות השידור."
+    "עדכון אוטומטי באנדרואיד: כשפותחים את האפליקציה ויש גרסה חדשה, היא מורידה ומתקינה אותה לבד. Android עדיין עשוי לבקש אישור בפעם הראשונה, ואחרי ההתקנה צריך לפתוח את האפליקציה שוב.",
+    "תיקון חזרה לאפליקציה בטלוויזיות LG: פתיחה חוזרת מחזירה את האפליקציה למסך בלי לסגור אותה קודם.",
+    "מספרי ערוצים אמיתיים: כאן 11, קשת 12, רשת 13, עכשיו 14 ועוד נמצאים במספרים המוכרים, ושאר הערוצים מתחילים מ-100."
   ],
   "native": {
     "android": {
-      "version": "4.6.5",
-      "app": 565,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.5/IsraelTVPlus-android.apk"
+      "version": "4.6.6",
+      "app": 566,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.6/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "4.6.5",
-      "app": 565,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.5/IsraelTVPlus-windows-setup.exe"
+      "version": "4.6.6",
+      "app": 566,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.6/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "4.6.5",
-      "app": 565,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.5/com.israeltv.plus_all.ipk",
+      "version": "4.6.6",
+      "app": 566,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.6/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "4.6.5",
-      "app": 565,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.5/IsraelTVPlus-tizen-project.zip"
+      "version": "4.6.6",
+      "app": 566,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.6/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "4.6.5",
-      "app": 565,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.5/IsraelTVPlus-macos-arm64.zip"
+      "version": "4.6.6",
+      "app": 566,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.6/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "4.6.5",
-      "app": 565,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.5/IsraelTVPlus-linux-x64.zip"
+      "version": "4.6.6",
+      "app": 566,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.6/IsraelTVPlus-linux-x64.zip"
     },
     "wear": {
-      "version": "4.6.5",
-      "app": 1000465,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.5/IsraelTVPlus-wearos.apk"
+      "version": "4.6.6",
+      "app": 1000466,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.6/IsraelTVPlus-wearos.apk"
     }
   }
 }

@@ -313,6 +313,15 @@
       // LG: TV apps stay open for days – check again every 6 hours, and apply a downloaded update on returning to the app
       setInterval(function () { if (S.autoUpdate) checkUpdates(false); }, 6 * 3600 * 1000);
       document.addEventListener('visibilitychange', function () { if (!document.hidden) applyLiveIfIdle(); });
+      // appinfo's handlesRelaunch leaves it to the app to come back: without activate() a second launch shows nothing
+      document.addEventListener('webOSRelaunch', function () {
+        try {
+          var sys = window.webOSSystem || window.PalmSystem;
+          if (sys && sys.activate) sys.activate();
+          var v = document.querySelector('.video-box video');
+          if (v && v.paused && state.overlay === 'player') { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+        } catch (e) {}
+      });
     }
     if (Dub && Dub.settings.migratedFromLocal) setTimeout(explainTvDub, 1500);
     window.__itv = { state: state, S: S, playIndex: playIndex, openSettings: openSettings, checkUpdates: checkUpdates };

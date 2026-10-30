@@ -61,6 +61,7 @@ class PhoneActivity : ComponentActivity() {
     private val inPip = mutableStateOf(false)
     private var playing = false
     private val ready = mutableStateOf(false)
+    private var updater: Updater? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         if (isTv()) {
@@ -99,6 +100,7 @@ class PhoneActivity : ComponentActivity() {
 
         val store = ChannelStore(applicationContext, http)
         val updater = Updater(applicationContext, http, lifecycleScope)
+        this.updater = updater
         ContextCompat.registerReceiver(
             this, updater.statusReceiver, IntentFilter(Updater.ACTION_INSTALL_STATUS), ContextCompat.RECEIVER_NOT_EXPORTED,
         )
@@ -122,6 +124,11 @@ class PhoneActivity : ComponentActivity() {
                 )
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        updater?.resumeAfterPermission()
     }
 
     private fun isTv(): Boolean {
