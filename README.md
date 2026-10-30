@@ -73,6 +73,10 @@ irm https://dor2500.github.io/israel-tv-plus/install.ps1 | iex
 | ![המסך הראשי](docs/screenshots/tv_home.jpg) | ![פוקוס על ערוץ](docs/screenshots/tv_focus.jpg) |
 | ![הנגן](docs/screenshots/tv_player.jpg) | ![פאנל אפשרויות](docs/screenshots/tv_panel.jpg) |
 
+### ⌚ בשעון (Wear OS)
+
+<img src="docs/screenshots/watch_channels.png" width="240" alt="רשימת הערוצים בשעון"> <img src="docs/screenshots/watch_player.png" width="240" alt="הנגן בשעון">
+
 ## 🎮 שלט רחוק
 
 | מקש | במדריך | בצפייה |
