@@ -1,52 +1,50 @@
 {
-  "version": "4.6.7",
-  "code": 202610302012,
-  "app": 567,
+  "version": "4.6.8",
+  "code": 202610302058,
+  "app": 568,
   "shell": 3,
   "date": "2026-10-30",
   "notes": [
-    "תיקון חזרה לאפליקציה בטלוויזיות LG: אחרי יציאה מהאפליקציה (Home) אפשר לפתוח אותה שוב מהמסך הראשי או מהיסטוריית האפליקציות, בלי לסגור אותה קודם. כשהאפליקציה ברקע הנגן משתחרר, וכשחוזרים אליה הערוץ מתנגן שוב.",
-    "אבטחה: פרטי הערוץ והגדרות מוגנים מהזרקת קוד, מספרי הערוצים נבדקים, קישורים נפתחים רק אם הם web, ועדכוני התקנה מתקבלים רק מהריליסים של הפרויקט (באפליקציה, באנדרואיד ובווינדוס).",
-    "אנדרואיד: המסך הראשי של האפליקציה כבר לא חשוף לאפליקציות אחרות, כלי הדיבאג של ה-WebView פעיל רק בגרסאות פיתוח, וגיבוי אוטומטי כבוי.",
-    "שרת ה-relay וצימוד מפתח הדיבוב: חתימת הקישורים בשרת דורשת מפתח סודי משלך, ומפתח Gemini נשלח בכותרת ולא בכתובת.",
-    "נוספו לגיט-איגנור קבצי מפתחות וסיסמאות."
+    "סרגל ניווט צף אחד באנדרואיד: כל ארבעת היעדים (בית, ערוצים, שלי, חיפוש) בתוך קפסולה אחת, עם כפתורים בגודל אחיד וצבעי Material You של המערכת. כפתור החיפוש הנפרד הוסר.",
+    "מסך הבית באנדרואיד: גובה ה-Hero מוגבל ותוכנו (לוגו, פרטי הערוץ וכפתור \"צפייה\") ממורכז בו, בלי רווח עודף.",
+    "גלילה: סוף הפיד ומתג \"רק ישראלי\" כבר לא מוסתרים מאחורי הסרגל הצף."
   ],
   "native": {
     "android": {
-      "version": "4.6.7",
-      "app": 567,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.7/IsraelTVPlus-android.apk"
+      "version": "4.6.8",
+      "app": 568,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.8/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "4.6.7",
-      "app": 567,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.7/IsraelTVPlus-windows-setup.exe"
+      "version": "4.6.8",
+      "app": 568,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.8/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "4.6.7",
-      "app": 567,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.7/com.israeltv.plus_all.ipk",
+      "version": "4.6.8",
+      "app": 568,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.8/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "4.6.7",
-      "app": 567,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.7/IsraelTVPlus-tizen-project.zip"
+      "version": "4.6.8",
+      "app": 568,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.8/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "4.6.7",
-      "app": 567,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.7/IsraelTVPlus-macos-arm64.zip"
+      "version": "4.6.8",
+      "app": 568,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.8/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "4.6.7",
-      "app": 567,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.7/IsraelTVPlus-linux-x64.zip"
+      "version": "4.6.8",
+      "app": 568,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.8/IsraelTVPlus-linux-x64.zip"
     },
     "wear": {
-      "version": "4.6.7",
-      "app": 1000467,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.7/IsraelTVPlus-wearos.apk"
+      "version": "4.6.8",
+      "app": 1000468,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.8/IsraelTVPlus-wearos.apk"
     }
   }
 }

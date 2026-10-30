@@ -77,6 +77,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDirection
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -159,11 +160,12 @@ fun HomeScreen(
     LazyColumn(
         Modifier.fillMaxSize(),
         state = listState,
+        // Top clears the glass header; bottom keeps the last row and the "רק ישראלי" switch clear of the floating navbar
         contentPadding = padding,
         flingBehavior = rememberBitChordFlingBehavior(),
     ) {
         if (data == null) {
-            item { Box(Modifier.bleedToTop(padding).padding(bottom = 28.dp).fillMaxWidth().height((LocalConfiguration.current.screenHeightDp * 0.82f).dp.coerceIn(360.dp, 760.dp)).glassShimmer(HeroShape)) }
+            item { Box(Modifier.bleedToTop(padding).padding(bottom = 28.dp).fillMaxWidth().height((LocalConfiguration.current.screenHeightDp * 0.55f).dp.coerceIn(360.dp, 520.dp)).glassShimmer(HeroShape)) }
             items(4) { ShelfSkeleton() }
             return@LazyColumn
         }
@@ -552,7 +554,7 @@ private fun HeroPage(
     val (glowPrimary, glowSecondary) = remember(ch.id, scheme.primary) { dominantHeroGlowColors(ch, scheme.primary) }
     val d = LocalDimens.current
     // 82% of the viewport, within 360-760 dp
-    val heroHeight = (LocalConfiguration.current.screenHeightDp * 0.82f).dp.coerceIn(360.dp, 760.dp)
+    val heroHeight = (LocalConfiguration.current.screenHeightDp * 0.55f).dp.coerceIn(360.dp, 520.dp)
     val foregroundAlpha = (1f - (scrollOffsetPx / 260f)).coerceIn(0f, 1f)
 
     var videoReady by remember(ch.id, playBackground) { mutableStateOf(false) }
@@ -656,13 +658,15 @@ private fun HeroPage(
         )
 
         Column(
+            // Centred in the space below the glass header, with room for the page dots underneath
             Modifier
-                .align(Alignment.BottomCenter)
+                .align(Alignment.Center)
                 .widthIn(max = d.heroContentMaxWidth)
                 .fillMaxWidth()
-                .padding(top = topInset + 56.dp, start = d.heroContentPadding, end = d.heroContentPadding, bottom = 40.dp)
+                .padding(top = topInset + 8.dp, start = d.heroContentPadding, end = d.heroContentPadding, bottom = 28.dp)
                 .graphicsLayer { alpha = foregroundAlpha },
             horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center,
         ) {
             Box(
                 Modifier.fillMaxWidth(0.72f).aspectRatio(2.6f),
