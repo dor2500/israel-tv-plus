@@ -1,11 +1,26 @@
 # ישראל TV+ | Israel TV Plus 🇮🇱 📺
 
 ערוצי טלוויזיה ותחנות רדיו ישראליות בשידור חי – **לטלוויזיה (LG, סמסונג, Android TV), לאנדרואיד, למחשב, לדפדפן ול-Stremio**.
-**3049 ערוצים ותחנות מ-160 מדינות**: ערוצי ישראל, ילדים בעברית, 108 תחנות רדיו, חדשות, סרטים, ספורט, אוכל ובישול, טיולים, מדע, כלכלה, קומדיה, דוקו, מוזיקה וערוצים מכל העולם עם **דיבוב חי לעברית**. באנדרואיד (טלפון וטאבלט): אפליקציה מקורית ב-Jetpack Compose – עיצוב "זכוכית" של Material 3 Expressive + Apple TV בצבעי הטפט או בפלטה לבחירה, פרופילים כמו בנטפליקס ומצב בהיר / כהה, עם גלילה וקפיצה כמו באייפון (אנדרואיד 7 ומעלה); בטלוויזיה (LG, סמסונג, Android TV): מסך בסגנון Apple TV+ עם תצוגה מקדימה חיה של הערוץ ברקע.
+**440 ערוצים ותחנות**: ערוצי ישראל, ילדים בעברית, 143 תחנות רדיו, חדשות, סרטים, ספורט, אוכל ובישול, טיולים, מדע, כלכלה, קומדיה, דוקו, מוזיקה וערוצים מכל העולם עם **דיבוב חי לעברית**. באנדרואיד (טלפון וטאבלט): אפליקציה מקורית ב-Jetpack Compose – כרטיסי פוסטר, נגן נקי וטשטוש זכוכית של Material 3 Expressive, בצבעי הטפט או בפלטה לבחירה, פרופילים כמו בנטפליקס ומצב בהיר / כהה, עם גלילה וקפיצה כמו באייפון (אנדרואיד 7 ומעלה); בטלוויזיה (LG, סמסונג, Android TV): מסך בסגנון Apple TV+ עם תצוגה מקדימה חיה של הערוץ ברקע.
 
 **▶ צפייה בדפדפן:** https://dor2500.github.io/israel-tv-plus/ · **📺 כל הערוצים:** [CHANNELS.md](CHANNELS.md) · **📋 מאיפה מגיע כל ערוץ:** [SOURCES.md](SOURCES.md) · **🆕 מה חדש:** [CHANGELOG.md](CHANGELOG.md)
 
-![המסך הראשי](docs/screenshots/01_home.jpg)
+## 🎬 הממשק בפעולה
+
+| 📱 טלפון | 📺 טלוויזיה |
+|:--:|:--:|
+| <img src="docs/media/demo-phone.gif" width="240" alt="הדגמת הממשק בטלפון"> | <img src="docs/media/demo-tv.gif" width="560" alt="הדגמת הממשק בטלוויזיה"> |
+| [▶ סרטון מלא](https://dor2500.github.io/israel-tv-plus/docs/media/demo-phone.mp4) | [▶ סרטון מלא](https://dor2500.github.io/israel-tv-plus/docs/media/demo-tv.mp4) |
+
+## ⚡ התקנה מהירה ב-Windows
+
+פותחים PowerShell ומדביקים:
+
+```powershell
+irm https://dor2500.github.io/israel-tv-plus/install.ps1 | iex
+```
+
+הפקודה מורידה את הגרסה האחרונה מ-[Releases](https://github.com/dor2500/israel-tv-plus/releases/latest), בודקת את חתימת ה-SHA-256 שלה ומתקינה בשקט. אפשר [לקרוא את הסקריפט](install.ps1) לפני ההרצה.
 
 ## 📲 הורדה
 
@@ -14,7 +29,7 @@
 | 📺 **LG webOS** | [com.israeltv.plus_all.ipk](https://github.com/dor2500/israel-tv-plus/releases/latest/download/com.israeltv.plus_all.ipk) | התקנה ב-Developer Mode (ראו למטה) |
 | 📺 **Android TV / Google TV / Fire TV** | [IsraelTVPlus-androidtv.apk](https://github.com/dor2500/israel-tv-plus/releases/latest/download/IsraelTVPlus-androidtv.apk) | דרך "Downloader" (להקליד את הקישור) / USB; מופיע במסך הבית עם באנר |
 | 🤖 **אנדרואיד** (טלפון / טאבלט) | [IsraelTVPlus-android.apk](https://github.com/dor2500/israel-tv-plus/releases/latest/download/IsraelTVPlus-android.apk) | |
-| 🪟 **Windows** | [התקנה](https://github.com/dor2500/israel-tv-plus/releases/latest/download/IsraelTVPlus-windows-setup.exe) · [ZIP נייד](https://github.com/dor2500/israel-tv-plus/releases/latest/download/IsraelTVPlus-windows-portable.zip) | |
+| 🪟 **Windows** | [פקודת PowerShell](#-התקנה-מהירה-ב-windows) · [התקנה](https://github.com/dor2500/israel-tv-plus/releases/latest/download/IsraelTVPlus-windows-setup.exe) · [ZIP נייד](https://github.com/dor2500/israel-tv-plus/releases/latest/download/IsraelTVPlus-windows-portable.zip) | |
 | 🍏 **Mac** | [Apple Silicon](https://github.com/dor2500/israel-tv-plus/releases/latest/download/IsraelTVPlus-macos-arm64.zip) · [Intel](https://github.com/dor2500/israel-tv-plus/releases/latest/download/IsraelTVPlus-macos-x64.zip) | בפעם הראשונה: `xattr -cr "/Applications/Israel TV Plus.app"` |
 | 🐧 **Linux** | [x64](https://github.com/dor2500/israel-tv-plus/releases/latest/download/IsraelTVPlus-linux-x64.zip) · [ARM64 / Raspberry Pi](https://github.com/dor2500/israel-tv-plus/releases/latest/download/IsraelTVPlus-linux-arm64.zip) | |
 | 🔷 **Samsung Tizen** | [פרויקט](https://github.com/dor2500/israel-tv-plus/releases/latest/download/IsraelTVPlus-tizen-project.zip) | נדרשת חתימה ב-Tizen Studio (תעודת סמסונג) |
@@ -44,11 +59,19 @@
 | 🧸 **מצב ילדים** | רק ערוצי ילדים, יציאה עם קוד של 4 ספרות |
 | ⭐ **ועוד** | מועדפים, "צפית לאחרונה", הקלדת מספר ערוץ, רשימת ערוצים בתוך הנגן, חיפוש, מצב OLED / כהה / בהיר, שומר מסך |
 
+### 📱 בטלפון
+
+| | | |
+|---|---|---|
+| ![המסך הראשי](docs/screenshots/phone_home.jpg) | ![מדפים וכרטיסי פוסטר](docs/screenshots/phone_shelves.jpg) | ![עמוד הערוצים](docs/screenshots/phone_channels.jpg) |
+| ![הנגן](docs/screenshots/phone_player.jpg) | ![חלון אפשרויות](docs/screenshots/phone_options.jpg) | ![איכות וידאו](docs/screenshots/phone_quality.jpg) |
+
+### 📺 בטלוויזיה
+
 | | |
 |---|---|
-| ![ילדים בעברית](docs/screenshots/02_kids_he.jpg) | ![תפריט אפשרויות](docs/screenshots/03_menu.jpg) |
-| ![מידע ומקור השידור](docs/screenshots/04_info_source.jpg) | ![הגדרות](docs/screenshots/05_settings.jpg) |
-| ![הגדרות שלט](docs/screenshots/06_settings_remote.jpg) | ![מצב בהיר](docs/screenshots/07_light.jpg) |
+| ![המסך הראשי](docs/screenshots/tv_home.jpg) | ![פוקוס על ערוץ](docs/screenshots/tv_focus.jpg) |
+| ![הנגן](docs/screenshots/tv_player.jpg) | ![פאנל אפשרויות](docs/screenshots/tv_panel.jpg) |
 
 ## 🎮 שלט רחוק
 
@@ -87,7 +110,7 @@ app.js                המדריך, הנגן, ההגדרות, השלט, העדכ
 dub.js                מנוע הדיבוב לעברית
 channels.json / .js   רשימת הערוצים (כולל מקור כל שידור)
 version.js / .json    הגרסה (tools/make_version.py מ-VERSION ו-CHANGELOG.md)
-platforms/            אנדרואיד (Java), Windows (C#), Linux/Mac (Electron), סמסונג (Tizen)
+platforms/            אנדרואיד (Java), Windows (C#), Linux/Mac (Electron), סמסונג (Tizen), Kodi (Python)
 stremio/              ההרחבה ל-Stremio (קבצי JSON סטטיים)
 tools/                בנייה ובדיקות
 ```
