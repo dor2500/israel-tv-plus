@@ -107,7 +107,8 @@ namespace IsraelTVPlus
         // app, installs over it and starts the new version). The portable ZIP has no installer: open the page.
         void Update(string url)
         {
-            if (url == null || !url.StartsWith("https://")) return;
+            // the installer runs silently: only this project's own GitHub releases are accepted
+            if (url == null || !url.StartsWith("https://github.com/dor2500/israel-tv-plus/releases/download/")) return;
             string dir = Path.GetDirectoryName(Application.ExecutablePath);
             if (!File.Exists(Path.Combine(dir, "unins000.exe")))
             {

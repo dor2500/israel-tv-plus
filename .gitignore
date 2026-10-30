@@ -16,3 +16,15 @@ tools/*_pool.json
 tools/discovered_streams.json
 tools/harvester_log.txt
 tools/.*state.json
+
+# keys and credentials must never be committed
+*.jks
+*.keystore
+*.pass
+*.pem
+*.p12
+.env
+.env.*
+keystore.properties
+google-services.json
+.claude/worktrees/

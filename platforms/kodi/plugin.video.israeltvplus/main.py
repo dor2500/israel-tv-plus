@@ -76,7 +76,7 @@ def candidates(ch):
     seen = []
     for u in urls:
         u = u.strip()
-        if u and u not in seen:
+        if u and u.lower().startswith(("http://", "https://")) and u not in seen:
             seen.append(u)
     return seen
 

@@ -16,6 +16,8 @@
   var REMOTE = 'https://dor2500.github.io/israel-tv-plus/';
   var RELEASES = 'https://github.com/dor2500/israel-tv-plus/releases/latest';
   var REPO = 'https://github.com/dor2500/israel-tv-plus';
+  // installers are only ever taken from this project's own GitHub releases (version.json and the API reply are remote data)
+  function trustedReleaseUrl(u) { return typeof u === 'string' && u.indexOf(REPO + '/releases/download/') === 0; }
   var BUILD = window.ITV_BUILD || { version: '0', code: 0, app: 0, shell: 0 };
   var LIVE = window.ITV_LIVE || null;
   var Dub = window.HebrewDub;
@@ -554,7 +556,7 @@
     }).map(function (c, i) {
       var o = {};
       for (var k in c) o[k] = c[k];
-      o.number = c.number || i + 1;
+      o.number = parseInt(c.number, 10) || i + 1; // channel data is remote: numbers only, never markup
       o.category = c.category || 'ערוצים';
       o.desc = c.desc || '';
       o.lang = c.lang || 'he';
@@ -2593,14 +2595,14 @@
 
   function showInfo(ch) {
     var s = sourceOf(ch);
-    var rows = [['מספר', ch.number], ['קטגוריה', splitCat(ch.category)], ['שפה', ch.lang === 'he' ? 'עברית' : Dub ? Dub.langName(ch.lang) : ch.lang],
-      ['איכות', ch.badge || '']];
+    var rows = [['מספר', esc(ch.number)], ['קטגוריה', esc(splitCat(ch.category))], ['שפה', esc(ch.lang === 'he' ? 'עברית' : Dub ? Dub.langName(ch.lang) : ch.lang)],
+      ['איכות', esc(ch.badge || '')]];
     if (isApp(ch)) {
       rows.push(['סוג', 'שירות מנויים רשמי – נפתח באפליקציה שלו']);
       rows.push(['אתר', '<code>' + esc(ch.site || ch.url) + '</code>']);
     } else {
       rows.push(['מקור השידור', esc(s.by)]);
-      if (s.kind) rows.push(['סוג המקור', KIND_LABEL[s.kind] || s.kind]);
+      if (s.kind) rows.push(['סוג המקור', esc(KIND_LABEL[s.kind] || s.kind)]);
       rows.push(['שרת', '<code>' + esc(s.host) + '</code>']);
       rows.push(['כתובת', '<code>' + esc(ch.url) + '</code>']);
       if (ch.webUrl) rows.push(['באתר (https)', '<code>' + esc(ch.webUrl) + '</code>']);
@@ -2802,7 +2804,7 @@
 
   function colorDotBtn(c, act) {
     return S[act] && S[act] !== 'none'
-      ? '<button type="button" class="hint hint-btn" data-color-act="' + S[act] + '"><span class="cdot ' + c + '"></span>' + SHORT[S[act]] + '</button>'
+      ? '<button type="button" class="hint hint-btn" data-color-act="' + esc(S[act]) + '"><span class="cdot ' + c + '"></span>' + esc(SHORT[S[act]]) + '</button>'
       : '';
   }
   function hintHtml(inPlayer) {
@@ -3216,7 +3218,7 @@
       }
       var nk = nativeKey();
       var n = data.native && data.native[nk];
-      if (n && n.app > (BUILD.app || 0)) { u.native = n; showUpdateButton(); }
+      if (n && n.app > (BUILD.app || 0) && trustedReleaseUrl(n.url)) { u.native = n; showUpdateButton(); }
       // the newest GitHub release too (it can be out before version.json): a new app version opens the update modal
       checkRelease(u, function () {
         state.lastCheck = Date.now();
@@ -3278,7 +3280,7 @@
     xhrJson(RELEASES_API, 10000, function (r) {
       var v = String(r && r.tag_name || '').replace(/^v/i, '');
       var asset = ((r && r.assets) || []).filter(function (a) { return a.name === file; })[0];
-      if (asset && !r.draft && !r.prerelease && verNum(v) > verNum(installedAppVersion()) && (!u.native || verNum(v) > verNum(u.native.version))) {
+      if (asset && trustedReleaseUrl(asset.browser_download_url) && !r.draft && !r.prerelease && verNum(v) > verNum(installedAppVersion()) && (!u.native || verNum(v) > verNum(u.native.version))) {
         u.native = { version: v, url: asset.browser_download_url, size: asset.size, notes: releaseNotes(r.body),
           date: String(r.published_at || '').slice(0, 10), release: true };
       }
@@ -3516,6 +3518,8 @@
   }
 
   function openUrl(url) {
+    // only web links leave the app: a tampered channel/update entry must not reach intent:, file:, tel: or javascript: targets
+    if (url && !/^https?:\/\//i.test(String(url))) return;
     if (!url) return;
     if (PLATFORM === 'android' && window.AndroidApp && window.AndroidApp.openUrl) window.AndroidApp.openUrl(url);
     else if (PLATFORM === 'windows') window.chrome.webview.postMessage(JSON.stringify({ open: url }));

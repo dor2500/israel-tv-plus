@@ -84,6 +84,11 @@ class Updater(private val context: Context, private val http: OkHttpClient, priv
     }
 
     fun download(info: UpdateInfo) {
+        // the update URL comes from version.json: only this project's own GitHub releases are accepted
+        if (!info.url.startsWith("https://github.com/dor2500/israel-tv-plus/releases/download/")) {
+            state = UpdateState.Failed("כתובת העדכון לא מורשית", info)
+            return
+        }
         if (!canInstall) {
             // Android 8+: the user allows this app to install updates once
             awaitingPermission = info

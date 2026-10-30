@@ -122,7 +122,7 @@ public class MainActivity extends Activity {
         } else if (Build.VERSION.SDK_INT >= 28) {
             w.getAttributes().layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES;
         }
-        WebView.setWebContentsDebuggingEnabled(true);
+        WebView.setWebContentsDebuggingEnabled((getApplicationInfo().flags & android.content.pm.ApplicationInfo.FLAG_DEBUGGABLE) != 0); // devtools only in debug builds
         web = new WebView(this);
         web.setBackgroundColor(0xff000000);
         WebSettings s = web.getSettings();
@@ -508,6 +508,8 @@ public class MainActivity extends Activity {
         /** Downloads a new APK (GitHub release) and hands it to the system installer. Progress: window.__itvUpdate. */
         @JavascriptInterface
         public void installUpdate(final String url) {
+            // updates come from this project's GitHub releases only
+            if (url == null || !url.startsWith("https://github.com/dor2500/israel-tv-plus/releases/download/")) { report("error", "כתובת העדכון לא מורשית"); return; }
             new Thread(() -> download(url)).start();
         }
     }
@@ -600,7 +602,8 @@ public class MainActivity extends Activity {
     }
 
     void openUrl(String url) {
-        if (url != null && !url.isEmpty()) start(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
+        // web links only: the page (or a tampered channel entry) must not reach intent:, file:, content: or tel: targets
+        if (url != null && url.matches("(?i)^https?://.*")) start(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
     }
 
     /** Remote / keyboard key -> the web app's key code (webOS numbering), or 0 to let the WebView handle it. */
