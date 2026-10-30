@@ -488,22 +488,26 @@ private fun CardMenuRow(icon: ImageVector, label: String, tint: Color = Color.Wh
  * with an optional shape-morphing tonal "הכל" pill on the trailing edge.
  */
 @Composable
-fun SectionHeader(title: String, count: Int? = null, onSeeAll: (() -> Unit)? = null) {
+fun SectionHeader(title: String, count: Int? = null, onSeeAll: (() -> Unit)? = null, trailing: (@Composable () -> Unit)? = null) {
     val scheme = MaterialTheme.colorScheme
     val haptic = LocalHapticFeedback.current
     Row(
-        Modifier.fillMaxWidth().padding(start = LocalDimens.current.gutter, end = LocalDimens.current.gutter, bottom = 12.dp),
+        Modifier.fillMaxWidth().padding(start = LocalDimens.current.gutter, end = LocalDimens.current.gutter, bottom = 16.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Box(
             Modifier
-                .width(3.5.dp)
+                .width(4.dp)
                 .height(16.dp)
                 .clip(RoundedCornerShape(2.dp))
                 .background(Color.White)
         )
-        Spacer(Modifier.width(9.dp))
+        Spacer(Modifier.width(8.dp))
         Text(title, Modifier.weight(1f), style = MaterialTheme.typography.titleMedium, color = scheme.onSurface)
+        if (trailing != null) {
+            trailing()
+            if (onSeeAll != null) Spacer(Modifier.width(8.dp))
+        }
         if (onSeeAll != null) {
             val interaction = remember { MutableInteractionSource() }
             val pressed by interaction.collectIsPressedAsState()
@@ -549,10 +553,11 @@ fun ContinueWatchingShelf(
     subtitle: (Channel) -> String,
     onPlay: (Channel) -> Unit,
     modifier: Modifier = Modifier,
+    headerTrailing: (@Composable () -> Unit)? = null,
 ) {
     val d = LocalDimens.current
     Column(modifier.padding(bottom = d.shelfGap)) {
-        SectionHeader(title)
+        SectionHeader(title, trailing = headerTrailing)
         LazyRow(
             contentPadding = PaddingValues(horizontal = d.gutter),
             horizontalArrangement = Arrangement.spacedBy(d.cardGap),
@@ -588,10 +593,11 @@ fun ChannelShelf(
     count: Int? = null,
     onSeeAll: (() -> Unit)? = null,
     modifier: Modifier = Modifier,
+    headerTrailing: (@Composable () -> Unit)? = null,
 ) {
     val d = LocalDimens.current
     Column(modifier.padding(bottom = d.shelfGap)) {
-        SectionHeader(title, count, onSeeAll)
+        SectionHeader(title, count, onSeeAll, headerTrailing)
         LazyRow(
             contentPadding = PaddingValues(horizontal = d.gutter),
             horizontalArrangement = Arrangement.spacedBy(d.cardGap),

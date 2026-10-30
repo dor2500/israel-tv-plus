@@ -24,6 +24,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
@@ -59,6 +60,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
@@ -183,15 +185,13 @@ fun HomeScreen(
                 modifier = Modifier.bleedToTop(padding).cascadeIn(0),
             )
         }
-        item(key = "israeli-only-filter") {
-            IsraeliOnlySwitch(
-                checked = israeliOnly,
-                modifier = Modifier.padding(top = 16.dp, bottom = 16.dp).cascadeIn(1),
-                onPositioned = onSwitchPositioned,
-                onCheckedChange = onIsraeliOnlyChange,
-            )
+        // The "רק ישראלי" chip docks into the trailing edge of the Israeli shelf header (else the first shelf)
+        val israeliKey = visibleCategories.firstOrNull { "ישראל" in it.name }?.key
+        val chipOnCategory = israeliKey != null
+        val filterChip: @Composable () -> Unit = {
+            IsraeliOnlyChip(israeliOnly, onIsraeliOnlyChange, onSwitchPositioned)
         }
-        var row = 2
+        var row = 1
         val recent = prefs.recents.mapNotNull { data.byId[it] }
         if (recent.isNotEmpty()) {
             val i = row++
@@ -202,6 +202,7 @@ fun HomeScreen(
                     logo = logo,
                     subtitle = subtitle,
                     onPlay = { onPlay(it, recent) },
+                    headerTrailing = if (!chipOnCategory) filterChip else null,
                     modifier = Modifier.cascadeIn(i),
                 )
             }
@@ -216,15 +217,17 @@ fun HomeScreen(
                     logo = logo,
                     subtitle = subtitle,
                     onPlay = { onPlay(it, favs) },
+                    headerTrailing = if (!chipOnCategory && recent.isEmpty()) filterChip else null,
                     modifier = Modifier.cascadeIn(i),
                 )
             }
         }
         if (visibleCategories.isEmpty()) {
             item(key = "empty") {
+                Box(Modifier.padding(horizontal = 16.dp)) { filterChip() }
                 Text(
                     if (israeliOnly) "אין קטגוריה כזו בתוכן הישראלי" else "אין קטגוריה כזו",
-                    Modifier.fillMaxWidth().padding(horizontal = 24.dp, vertical = 28.dp),
+                    Modifier.fillMaxWidth().padding(horizontal = 24.dp, vertical = 24.dp),
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Light,
@@ -237,6 +240,11 @@ fun HomeScreen(
                 ChannelShelf(
                     cat.name, cat.channels.take(24), logo, subtitle, { onPlay(it, cat.channels) },
                     count = cat.channels.size, onSeeAll = { onSeeAll(cat.key) }, modifier = Modifier.cascadeIn(i),
+                    headerTrailing = when {
+                        cat.key == israeliKey -> filterChip
+                        !chipOnCategory && recent.isEmpty() && favs.isEmpty() && cat === visibleCategories.first() -> filterChip
+                        else -> null
+                    },
                 )
             }
         }
@@ -286,6 +294,34 @@ internal fun IsraeliOnlySwitch(
     }
 }
 
+/** Compact end-action chip: label and the native M3 Switch in one tonal pill (keeps the overlay anchor callback). */
+@Composable
+internal fun IsraeliOnlyChip(
+    checked: Boolean,
+    onCheckedChange: (Boolean) -> Unit,
+    onPositioned: (Offset) -> Unit,
+) {
+    val scheme = MaterialTheme.colorScheme
+    Row(
+        Modifier
+            .height(32.dp)
+            .clip(RoundedCornerShape(16.dp))
+            .background(scheme.secondaryContainer.copy(alpha = 0.55f))
+            .padding(start = 12.dp, end = 4.dp),
+        horizontalArrangement = Arrangement.spacedBy(4.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Text("רק ישראלי", fontSize = 12.sp, fontWeight = FontWeight.Medium, color = scheme.onSecondaryContainer)
+        Box(Modifier.size(width = 40.dp, height = 24.dp), contentAlignment = Alignment.Center) {
+            Switch(
+                checked = checked,
+                onCheckedChange = onCheckedChange,
+                modifier = Modifier.requiredSize(52.dp, 32.dp).scale(0.72f).onGloballyPositioned { onPositioned(it.boundsInRoot().center) },
+            )
+        }
+    }
+}
+
 @Composable
 private fun HeroPager(
     featured: List<Channel>,
@@ -304,7 +340,7 @@ private fun HeroPager(
         delay(8000)
         pager.animateScrollToPage((pager.currentPage + 1) % featured.size)
     }
-    Box(modifier.padding(bottom = 16.dp)) {
+    Box(modifier.padding(bottom = 8.dp)) {
         HorizontalPager(pager, key = { featured[it].id }) { page ->
             val ch = featured[page]
             HeroPage(
@@ -573,7 +609,7 @@ private fun HeroPage(
             .height(heroHeight)
             .sharedContainer(key, HeroShape)
             .clip(HeroShape)
-            .background(Color.Black)
+            .background(scheme.background)
     ) {
         // Heavily blurred dynamic color Ambient Glow behind the Hero preview video (preserved untouched)
         Box(
@@ -642,11 +678,11 @@ private fun HeroPage(
         Box(
             Modifier.fillMaxSize().background(
                 Brush.verticalGradient(
-                    listOf(
-                        scheme.background.copy(alpha = 0.02f),
-                        scheme.background.copy(alpha = 0.12f),
-                        scheme.background.copy(alpha = 0.34f),
-                        scheme.background.copy(alpha = 0.78f),
+                    colorStops = arrayOf(
+                        0.00f to Color.Transparent,
+                        0.40f to scheme.background.copy(alpha = 0.35f),
+                        0.75f to scheme.background.copy(alpha = 0.85f),
+                        1.00f to scheme.background,
                     )
                 )
             )
@@ -664,7 +700,7 @@ private fun HeroPage(
                 .align(Alignment.BottomCenter)
                 .fillMaxWidth()
                 .fillMaxHeight(0.4f)
-                .background(Brush.verticalGradient(listOf(Color.Transparent, Color.Black.copy(alpha = 0.4f), Color.Black)))
+                .background(Brush.verticalGradient(listOf(Color.Transparent, scheme.background.copy(alpha = 0.4f), scheme.background.copy(alpha = 0.9f))))
         )
 
         Column(

@@ -45,7 +45,7 @@ data class Dimens(
 val PhoneDimens = Dimens(
     deviceClass = DeviceClass.Phone,
     gutter = 16.dp,
-    cardGap = 12.dp,
+    cardGap = 16.dp,
     shelfGap = 32.dp,
     posterWidth = 112.dp,
     continueWidth = 200.dp,

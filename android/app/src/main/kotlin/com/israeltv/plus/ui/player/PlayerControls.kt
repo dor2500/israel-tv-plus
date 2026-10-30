@@ -1,7 +1,12 @@
 package com.israeltv.plus.ui.player
 
-import android.os.Build
-import android.view.WindowManager
+import androidx.activity.compose.BackHandler
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutHorizontally
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.animateFloatAsState
@@ -23,6 +28,8 @@ import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.displayCutout
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
@@ -43,8 +50,6 @@ import androidx.compose.material.icons.automirrored.rounded.ArrowBack
 import androidx.compose.material.icons.automirrored.rounded.List
 import androidx.compose.material.icons.automirrored.rounded.OpenInNew
 import androidx.compose.material.icons.rounded.Audiotrack
-import androidx.compose.material.icons.rounded.Bookmark
-import androidx.compose.material.icons.rounded.BookmarkBorder
 import androidx.compose.material.icons.rounded.Cast
 import androidx.compose.material.icons.rounded.CastConnected
 import androidx.compose.material.icons.rounded.Check
@@ -67,13 +72,16 @@ import androidx.compose.material.icons.rounded.Tv
 import androidx.compose.material3.BasicAlertDialog
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.FilledTonalButton
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.ListItem
+import androidx.compose.material3.ListItemDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -85,13 +93,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalHapticFeedback
-import androidx.compose.ui.platform.LocalView
+import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.window.DialogWindowProvider
 import androidx.media3.common.C
 import androidx.media3.common.TrackSelectionOverride
 import androidx.media3.common.Tracks
@@ -111,25 +119,6 @@ internal enum class VideoFit(val label: String, val icon: ImageVector, val resiz
     Crop("מלא", Icons.Rounded.Crop, AspectRatioFrameLayout.RESIZE_MODE_ZOOM);
 
     fun next(): VideoFit = entries[(ordinal + 1) % entries.size]
-}
-
-private val SheetGlass = Color(0xFF0B0B0E).copy(alpha = 0.62f)
-
-/**
- * The video is a SurfaceView, which an in-app BlurEffect or Haze cannot sample: only the compositor can blur it.
- * Below Android 12, or with cross-window blur off, the sheet's scrim stands in.
- */
-@Composable
-private fun WindowBlurBehind(radius: Int = 120) {
-    val view = LocalView.current
-    DisposableEffect(view) {
-        val window = (view.parent as? DialogWindowProvider)?.window
-        if (window != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            window.addFlags(WindowManager.LayoutParams.FLAG_BLUR_BEHIND)
-            window.attributes = window.attributes.apply { blurBehindRadius = radius }
-        }
-        onDispose { }
-    }
 }
 
 /** Corners tighten on press with spring physics; the same morph on every player control. */
@@ -172,9 +161,15 @@ private fun MorphAction(icon: ImageVector, label: String, tint: Color = Color.Wh
     }
 }
 
-/** Back and Cast only: the channel identity lives in the bottom bar, YouTube style. */
+/** Back on one edge; favourite and Cast side by side on the other. The channel identity lives in the bottom bar. */
 @Composable
-internal fun PlayerTopBar(isCasting: Boolean, onCast: () -> Unit, onBack: () -> Unit) {
+internal fun PlayerTopBar(
+    isCasting: Boolean,
+    favorite: Boolean,
+    onFavorite: () -> Unit,
+    onCast: () -> Unit,
+    onBack: () -> Unit,
+) {
     val d = LocalDimens.current
     val statusTop = WindowInsets.statusBars.asPaddingValues().calculateTopPadding()
     Row(
@@ -187,13 +182,22 @@ internal fun PlayerTopBar(isCasting: Boolean, onCast: () -> Unit, onBack: () -> 
         verticalAlignment = Alignment.CenterVertically,
     ) {
         MorphAction(Icons.AutoMirrored.Rounded.ArrowBack, "חזרה", showLabel = false, onClick = onBack)
-        MorphAction(
-            if (isCasting) Icons.Rounded.CastConnected else Icons.Rounded.Cast,
-            "שידור למסך",
-            tint = if (isCasting) MaterialTheme.colorScheme.primary else Color.White,
-            showLabel = false,
-            onClick = onCast,
-        )
+        Row(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
+            MorphAction(
+                if (favorite) Icons.Rounded.Star else Icons.Rounded.StarBorder,
+                if (favorite) "הסר ממועדפים" else "מועדפים",
+                tint = if (favorite) Color(0xFFFFD54F) else Color.White,
+                showLabel = false,
+                onClick = onFavorite,
+            )
+            MorphAction(
+                if (isCasting) Icons.Rounded.CastConnected else Icons.Rounded.Cast,
+                "שידור למסך",
+                tint = if (isCasting) MaterialTheme.colorScheme.primary else Color.White,
+                showLabel = false,
+                onClick = onCast,
+            )
+        }
     }
 }
 
@@ -202,9 +206,7 @@ internal fun PlayerTopBar(isCasting: Boolean, onCast: () -> Unit, onBack: () -> 
 internal fun PlayerBottomBar(
     ch: Channel,
     fit: VideoFit,
-    favorite: Boolean,
     onCycleFit: () -> Unit,
-    onFavorite: () -> Unit,
     onOptions: () -> Unit,
 ) {
     val d = LocalDimens.current
@@ -234,13 +236,6 @@ internal fun PlayerBottomBar(
         }
         Spacer(Modifier.width(16.dp))
         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            MorphAction(
-                if (favorite) Icons.Rounded.Star else Icons.Rounded.StarBorder,
-                if (favorite) "הסר ממועדפים" else "הוסף למועדפים",
-                tint = if (favorite) Color(0xFFFFD54F) else Color.White,
-                showLabel = false,
-                onClick = onFavorite,
-            )
             MorphAction(fit.icon, fit.label, onClick = onCycleFit)
             MorphAction(Icons.Rounded.MoreHoriz, "אפשרויות", onClick = onOptions)
         }
@@ -248,27 +243,29 @@ internal fun PlayerBottomBar(
 }
 
 @Composable
-private fun OptionRow(icon: ImageVector, title: String, value: String? = null, onClick: () -> Unit) {
-    Row(
-        Modifier
-            .fillMaxWidth()
-            .heightIn(min = 56.dp)
-            .clip(RoundedCornerShape(16.dp))
-            .clickable(role = Role.Button, onClick = onClick)
-            .padding(horizontal = 16.dp),
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-        Icon(icon, null, Modifier.size(22.dp), tint = Color.White.copy(alpha = 0.86f))
-        Spacer(Modifier.width(16.dp))
-        Text(title, Modifier.weight(1f), color = Color.White, style = MaterialTheme.typography.bodyLarge, maxLines = 1)
-        if (value != null) Text(value, color = Color.White.copy(alpha = 0.6f), style = MaterialTheme.typography.bodyMedium, maxLines = 1)
-    }
+private fun DrawerItem(icon: ImageVector, title: String, value: String? = null, onClick: () -> Unit) {
+    ListItem(
+        headlineContent = { Text(title, maxLines = 1) },
+        leadingContent = { Icon(icon, null, Modifier.size(22.dp)) },
+        trailingContent = value?.let { { Text(it, maxLines = 1) } },
+        colors = ListItemDefaults.colors(
+            containerColor = Color.Transparent,
+            headlineColor = Color.White,
+            leadingIconColor = Color.White.copy(alpha = 0.86f),
+            trailingIconColor = Color.White.copy(alpha = 0.6f),
+            supportingColor = Color.White.copy(alpha = 0.6f),
+        ),
+        modifier = Modifier.clip(RoundedCornerShape(16.dp)).clickable(role = Role.Button, onClick = onClick),
+    )
 }
 
-/** Everything that left the player's main UI: quality, audio, servers, picture-in-picture, split screen and the rest. */
+/**
+ * Right-edge frosted drawer that replaces the old bottom sheet: the stream stays visible beside it.
+ * The slot is pinned to the physical right edge whatever the layout direction (in the RTL app, End would be the left edge).
+ */
 @Composable
-internal fun PlayerOptionsSheet(
-    favorite: Boolean,
+internal fun PlayerOptionsDrawer(
+    visible: Boolean,
     qualityLabel: String,
     serverIndex: Int,
     serverCount: Int,
@@ -279,50 +276,80 @@ internal fun PlayerOptionsSheet(
     onMultiView: () -> Unit,
     onChannels: () -> Unit,
     onRotate: () -> Unit,
-    onFavorite: () -> Unit,
     onDismiss: () -> Unit,
 ) {
-    ModalBottomSheet(onDismissRequest = onDismiss, containerColor = SheetGlass, scrimColor = Color.Black.copy(alpha = 0.32f)) {
-        WindowBlurBehind()
-        Column(
-            Modifier
-                .fillMaxWidth()
-                .verticalScroll(rememberScrollState())
-                .padding(start = 8.dp, end = 8.dp, bottom = 24.dp),
-        ) {
-            OptionRow(Icons.Rounded.HighQuality, "איכות וידאו", qualityLabel, onQuality)
-            OptionRow(Icons.Rounded.Audiotrack, "שמע", onClick = onAudio)
-            OptionRow(Icons.Rounded.PictureInPictureAlt, "חלון צף", onClick = onPip)
-            OptionRow(Icons.Rounded.GridView, "פיצול מסך", onClick = onMultiView)
-            OptionRow(Icons.AutoMirrored.Rounded.List, "רשימת ערוצים", onClick = onChannels)
-            OptionRow(Icons.Rounded.ScreenRotation, "סיבוב מסך", onClick = onRotate)
-            OptionRow(
-                if (favorite) Icons.Rounded.Bookmark else Icons.Rounded.BookmarkBorder,
-                if (favorite) "הסר מהרשימה שלי" else "שמור ברשימה שלי",
-                onClick = onFavorite,
-            )
-            if (serverCount > 1) {
-                Row(Modifier.padding(horizontal = 16.dp).padding(top = 16.dp, bottom = 8.dp), verticalAlignment = Alignment.CenterVertically) {
-                    Icon(Icons.Rounded.SwapHoriz, null, Modifier.size(22.dp), tint = Color.White.copy(alpha = 0.86f))
-                    Spacer(Modifier.width(16.dp))
-                    Text("שרתים", color = Color.White, style = MaterialTheme.typography.bodyLarge)
-                }
-                Row(
-                    Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()).padding(horizontal = 16.dp),
-                    horizontalArrangement = Arrangement.spacedBy(8.dp),
-                ) {
-                    for (i in 0 until serverCount) {
-                        val active = i == serverIndex
+    val scheme = MaterialTheme.colorScheme
+    val outer = LocalLayoutDirection.current
+    if (visible) BackHandler(onBack = onDismiss)
+    CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {
+        Box(Modifier.fillMaxSize()) {
+            if (visible) {
+                // a tap on the stream closes the drawer without dimming it
+                Box(Modifier.fillMaxSize().clickable(interactionSource = remember { MutableInteractionSource() }, indication = null, onClick = onDismiss))
+            }
+            AnimatedVisibility(
+                visible = visible,
+                modifier = Modifier.align(Alignment.CenterEnd),
+                enter = slideInHorizontally { it } + fadeIn(),
+                exit = slideOutHorizontally { it } + fadeOut(),
+            ) {
+                val shape = RoundedCornerShape(topStart = 28.dp, bottomStart = 28.dp)
+                CompositionLocalProvider(LocalLayoutDirection provides outer) {
+                    Column(
+                        Modifier
+                            .width(320.dp)
+                            .fillMaxHeight()
+                            .clip(shape)
+                            .background(scheme.surfaceContainerHigh.copy(alpha = 0.82f))
+                            .border(BorderStroke(1.dp, Color.White.copy(alpha = 0.12f)), shape)
+                            .windowInsetsPadding(WindowInsets.displayCutout.only(WindowInsetsSides.Right))
+                            .verticalScroll(rememberScrollState())
+                            .padding(horizontal = 8.dp, vertical = 16.dp),
+                    ) {
                         Text(
-                            if (i == 0) "ראשי" else "גיבוי $i",
-                            Modifier
-                                .clip(CircleShape)
-                                .background(if (active) Color.White else Color.White.copy(alpha = 0.12f))
-                                .clickable(role = Role.Button) { onSelectServer(i) }
-                                .padding(horizontal = 16.dp, vertical = 8.dp),
-                            color = if (active) Color.Black else Color.White,
-                            style = MaterialTheme.typography.labelLarge,
+                            "אפשרויות",
+                            Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+                            color = Color.White,
+                            style = MaterialTheme.typography.titleLarge,
                         )
+                        DrawerItem(Icons.Rounded.Audiotrack, "שמע", onClick = onAudio)
+                        DrawerItem(Icons.Rounded.PictureInPictureAlt, "חלון צף", onClick = onPip)
+                        DrawerItem(Icons.Rounded.HighQuality, "איכות וידאו", qualityLabel, onQuality)
+                        DrawerItem(Icons.Rounded.GridView, "פיצול מסך", onClick = onMultiView)
+                        if (serverCount > 1) {
+                            ListItem(
+                                headlineContent = { Text("שרתים") },
+                                leadingContent = { Icon(Icons.Rounded.SwapHoriz, null, Modifier.size(22.dp)) },
+                                supportingContent = {
+                                    Row(
+                                        Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()).padding(top = 8.dp),
+                                        horizontalArrangement = Arrangement.spacedBy(8.dp),
+                                    ) {
+                                        for (i in 0 until serverCount) {
+                                            val active = i == serverIndex
+                                            Text(
+                                                if (i == 0) "ראשי" else "גיבוי $i",
+                                                Modifier
+                                                    .clip(CircleShape)
+                                                    .background(if (active) Color.White else Color.White.copy(alpha = 0.12f))
+                                                    .clickable(role = Role.Button) { onSelectServer(i) }
+                                                    .padding(horizontal = 16.dp, vertical = 8.dp),
+                                                color = if (active) Color.Black else Color.White,
+                                                style = MaterialTheme.typography.labelLarge,
+                                            )
+                                        }
+                                    }
+                                },
+                                colors = ListItemDefaults.colors(
+                                    containerColor = Color.Transparent,
+                                    headlineColor = Color.White,
+                                    leadingIconColor = Color.White.copy(alpha = 0.86f),
+                                ),
+                            )
+                        }
+                        HorizontalDivider(Modifier.padding(horizontal = 16.dp, vertical = 8.dp), color = Color.White.copy(alpha = 0.12f))
+                        DrawerItem(Icons.AutoMirrored.Rounded.List, "רשימת ערוצים", onClick = onChannels)
+                        DrawerItem(Icons.Rounded.ScreenRotation, "סיבוב מסך", onClick = onRotate)
                     }
                 }
             }

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nuvio_tab_home">בית</string>
+    <string name="nuvio_tab_channels">ערוצים</string>
+    <string name="nuvio_tab_mine">שלי</string>
+    <string name="nuvio_tab_settings">הגדרות</string>
+    <string name="nuvio_nav_description">ניווט ראשי</string>
+    <string name="nuvio_channel_count">%1$d ערוצים</string>
+    <string name="nuvio_soon">יגיע בקרוב</string>
+    <string name="nuvio_empty_feed">לא נמצאו ערוצים</string>
+</resources>

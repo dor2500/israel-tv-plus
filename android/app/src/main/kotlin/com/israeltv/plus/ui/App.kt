@@ -60,6 +60,8 @@ import com.israeltv.plus.ui.components.MacroCategories
 import com.israeltv.plus.ui.components.MoreCategoriesSheet
 import com.israeltv.plus.ui.components.PlayOrigin
 import com.israeltv.plus.ui.components.Tab
+import com.israeltv.plus.ui.nuvio.NuvioShell
+import com.israeltv.plus.ui.nuvio.NuvioUi
 import com.israeltv.plus.ui.player.PlayerScreen
 import com.israeltv.plus.ui.screens.ChannelInfoSheet
 import com.israeltv.plus.ui.screens.ChannelsScreen
@@ -172,7 +174,7 @@ fun ItvApp(
                                 onPicked = { feed.reset(); page = Page.Feed },
                                 onClose = { page = Page.Feed },
                             )
-                            Page.Feed -> Feed(
+                            Page.Feed -> if (NuvioUi.enabled) NuvioShell(store, onPlay) else Feed(
                                 data, prefs, updater, feed, haze, logo, onPlay,
                                 onOpenMultiView = {
                                     val all = data?.channels.orEmpty()
@@ -404,6 +406,7 @@ private fun Feed(
                 onSelect = { s.searchOpen = false; s.barCollapsed = false; s.tab = it },
                 onSearch = { s.searchOpen = true },
                 modifier = Modifier.align(Alignment.BottomCenter),
+                collapsed = s.barCollapsed,
             )
 
             AnimatedVisibility(

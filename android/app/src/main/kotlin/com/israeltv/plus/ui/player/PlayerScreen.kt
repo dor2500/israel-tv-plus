@@ -16,6 +16,7 @@ import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.spring
@@ -98,6 +99,8 @@ import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
+import androidx.compose.ui.draw.scale
+import androidx.compose.ui.semantics.Role
 import androidx.compose.material3.ripple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
@@ -562,6 +565,7 @@ fun PlayerScreen(
                         height = 68.dp,
                         primary = true,
                         drawableRes = if (playing) R.drawable.ic_player_pause else R.drawable.ic_player_play,
+                        morphed = !playing,
                     ) {
                         touchTick++
                         if (player.isPlaying) player.pause() else { player.volume = 1.0f; player.play() }
@@ -594,6 +598,11 @@ fun PlayerScreen(
         ) {
             PlayerTopBar(
                 isCasting = castController.isCasting || castController.isConnecting,
+                favorite = prefs.isFavorite(current.id),
+                onFavorite = {
+                    touchTick++
+                    prefs.toggleFavorite(current.id)
+                },
                 onCast = {
                     touchTick++
                     castController.startDiscovery(current)
@@ -611,14 +620,9 @@ fun PlayerScreen(
             PlayerBottomBar(
                 ch = current,
                 fit = fit,
-                favorite = prefs.isFavorite(current.id),
                 onCycleFit = {
                     touchTick++
                     fit = fit.next()
-                },
-                onFavorite = {
-                    touchTick++
-                    prefs.toggleFavorite(current.id)
                 },
                 onOptions = {
                     touchTick++
@@ -627,30 +631,8 @@ fun PlayerScreen(
             )
         }
 
-        if (multiViewActive) {
-            MultiViewOverlay(
-                initialChannel = current,
-                allChannels = list,
-                logo = logo,
-                onExpandChannel = { ch ->
-                    val targetIdx = list.indexOfFirst { it.id == ch.id }
-                    if (targetIdx >= 0) index = targetIdx
-                    multiViewActive = false
-                },
-                onClose = {
-                    if (startInMultiView) onClose() else multiViewActive = false
-                },
-            )
-        }
-    }
-    }
-
-    when (sheet) {
-        "list" -> ChannelListSheet(list, index, logo, onPick = { switchTo(it); sheet = null }, onDismiss = { sheet = null })
-        "audio" -> AudioSheet(player, tracks, onDismiss = { sheet = null })
-        "quality" -> ResolutionDialog(player, tracks, onDismiss = { sheet = null })
-        "more" -> PlayerOptionsSheet(
-            favorite = prefs.isFavorite(current.id),
+        PlayerOptionsDrawer(
+            visible = sheet == "more",
             qualityLabel = selectedVideoHeight(player, tracks)?.let { "${it}p" } ?: "אוטומטי",
             serverIndex = sourceIndex,
             serverCount = candidates.size,
@@ -676,9 +658,31 @@ fun PlayerScreen(
                 (context as Activity).requestedOrientation =
                     if (landscape) ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE else ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
             },
-            onFavorite = { prefs.toggleFavorite(current.id) },
             onDismiss = { sheet = null },
         )
+
+        if (multiViewActive) {
+            MultiViewOverlay(
+                initialChannel = current,
+                allChannels = list,
+                logo = logo,
+                onExpandChannel = { ch ->
+                    val targetIdx = list.indexOfFirst { it.id == ch.id }
+                    if (targetIdx >= 0) index = targetIdx
+                    multiViewActive = false
+                },
+                onClose = {
+                    if (startInMultiView) onClose() else multiViewActive = false
+                },
+            )
+        }
+    }
+    }
+
+    when (sheet) {
+        "list" -> ChannelListSheet(list, index, logo, onPick = { switchTo(it); sheet = null }, onDismiss = { sheet = null })
+        "audio" -> AudioSheet(player, tracks, onDismiss = { sheet = null })
+        "quality" -> ResolutionDialog(player, tracks, onDismiss = { sheet = null })
         "cast" -> CastSheet(
             channel = current,
             castController = castController,
@@ -706,7 +710,8 @@ private fun Modifier.pointerInputs(onTap: () -> Unit, onSwipe: (Boolean) -> Unit
     }
 
 /**
- * Nuvio player control icon button — removes all pill/capsule background shapes behind the icon.
+ * Material 3 Expressive playback control: a translucent tonal surface whose corners morph between a circle and a
+ * 22 dp squircle on press (and on [morphed], e.g. while paused), with spring scale physics.
  */
 @Composable
 private fun ExpressiveGlassButton(
@@ -716,15 +721,30 @@ private fun ExpressiveGlassButton(
     height: Dp,
     primary: Boolean = false,
     drawableRes: Int? = null,
+    morphed: Boolean = false,
     onClick: () -> Unit,
 ) {
     val interaction = remember { MutableInteractionSource() }
+    val pressed by interaction.collectIsPressedAsState()
     val haptic = LocalHapticFeedback.current
+    val corner by animateDpAsState(
+        targetValue = if (pressed || morphed) 22.dp else minOf(width, height) / 2,
+        animationSpec = spring(dampingRatio = 0.58f, stiffness = Spring.StiffnessMedium),
+        label = "playbackMorph",
+    )
+    val pressScale by animateFloatAsState(
+        targetValue = if (pressed) 0.90f else 1.0f,
+        animationSpec = spring(dampingRatio = 0.58f, stiffness = Spring.StiffnessMedium),
+        label = "playbackScale",
+    )
+    val shape = RoundedCornerShape(corner)
     Box(
         Modifier
             .size(width, height)
-            .pressPhysics(interaction, tilt = false, glowShape = CircleShape)
-            .clickable(interaction, null) {
+            .scale(pressScale)
+            .clip(shape)
+            .background(MaterialTheme.colorScheme.surfaceContainerHigh.copy(alpha = 0.65f))
+            .clickable(interaction, null, role = Role.Button) {
                 haptic.performHapticFeedback(HapticFeedbackType.VirtualKey)
                 onClick()
             },
@@ -734,17 +754,11 @@ private fun ExpressiveGlassButton(
             Icon(
                 painter = androidx.compose.ui.res.painterResource(drawableRes),
                 contentDescription = label,
-                modifier = Modifier.size(if (primary) 42.dp else 32.dp),
+                modifier = Modifier.size(if (primary) 36.dp else 28.dp),
                 tint = Color.White,
             )
         } else {
-            BoldIcon(
-                icon = icon,
-                contentDescription = label,
-                modifier = Modifier.size(if (primary) 46.dp else 34.dp),
-                tint = Color.White,
-                weight = if (primary) 0.90.dp else 0.75.dp,
-            )
+            Icon(icon, label, Modifier.size(if (primary) 40.dp else 28.dp), tint = Color.White)
         }
     }
 }

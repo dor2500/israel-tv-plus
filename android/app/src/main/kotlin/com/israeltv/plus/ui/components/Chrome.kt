@@ -15,6 +15,7 @@ import androidx.compose.animation.shrinkHorizontally
 import androidx.compose.animation.shrinkVertically
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsPressedAsState
@@ -31,6 +32,7 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
@@ -324,14 +326,16 @@ private data class NavItem(
 )
 
 /**
- * The Nuvio navigation: ONE compact floating pill (56 dp tall). Inactive tabs are icon-only; only the active tab
- * expands inline with its label on a secondaryContainer indicator. Colours come from the Material You scheme.
+ * The Nuvio navigation: ONE compact floating glass pill (52 dp tall). Inactive tabs are icon-only; only the active tab
+ * expands inline with its label on a secondaryContainer indicator. While [collapsed] (feed scrolling down) the pill
+ * drops towards the edge and goes icon-only; it springs back open on the way up. Colours come from the Material You scheme.
  */
 @Composable
 fun NuvioFloatingNavbar(
     currentRoute: String,
     onNavigate: (String) -> Unit,
     modifier: Modifier = Modifier,
+    collapsed: Boolean = false,
 ) {
     val items = listOf(
         NavItem("home", "בית", Icons.Outlined.Home, Icons.Filled.Home),
@@ -340,24 +344,30 @@ fun NuvioFloatingNavbar(
         NavItem("search", "חיפוש", Icons.Outlined.Search, Icons.Filled.Search),
     )
     val haptic = LocalHapticFeedback.current
+    val offsetY by animateDpAsState(
+        targetValue = if (collapsed) 24.dp else 0.dp,
+        animationSpec = spring(dampingRatio = 0.8f, stiffness = Spring.StiffnessMediumLow),
+        label = "navbarOffset",
+    )
 
     Box(
         modifier = modifier
             .fillMaxWidth()
             .navigationBarsPadding()
-            .padding(bottom = 16.dp),
+            .padding(bottom = 16.dp)
+            .offset(y = offsetY),
         contentAlignment = Alignment.Center
     ) {
-        Surface(
-            shape = CircleShape,
-            color = MaterialTheme.colorScheme.surfaceContainerHigh.copy(alpha = 0.88f),
-            border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.2f)),
-            shadowElevation = 12.dp
+        // Backdrop blur (Haze) under a translucent tonal fill; a plain tint where no blur source exists
+        Box(
+            Modifier
+                .frostedGlass(CircleShape, MaterialTheme.colorScheme.surfaceContainer.copy(alpha = 0.78f), blur = 14.dp, border = false)
+                .border(BorderStroke(1.dp, Color.White.copy(alpha = 0.15f)), CircleShape)
         ) {
             Row(
                 modifier = Modifier
-                    .padding(horizontal = 8.dp, vertical = 6.dp)
-                    .height(44.dp),
+                    .padding(horizontal = 4.dp)
+                    .height(52.dp),
                 horizontalArrangement = Arrangement.spacedBy(4.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
@@ -380,7 +390,7 @@ fun NuvioFloatingNavbar(
                                 haptic.performHapticFeedback(HapticFeedbackType.SegmentTick)
                                 onNavigate(item.route)
                             }
-                            .padding(horizontal = if (isSelected) 16.dp else 8.dp, vertical = 8.dp),
+                            .padding(horizontal = if (isSelected && !collapsed) 16.dp else 12.dp, vertical = 8.dp),
                         contentAlignment = Alignment.Center
                     ) {
                         Row(
@@ -394,7 +404,7 @@ fun NuvioFloatingNavbar(
                                 modifier = Modifier.size(24.dp)
                             )
                             AnimatedVisibility(
-                                visible = isSelected,
+                                visible = isSelected && !collapsed,
                                 enter = fadeIn() + expandHorizontally(),
                                 exit = fadeOut() + shrinkHorizontally()
                             ) {
@@ -423,6 +433,7 @@ fun FloatingTabBar(
     onSelect: (Tab) -> Unit,
     onSearch: () -> Unit,
     modifier: Modifier = Modifier,
+    collapsed: Boolean = false,
 ) {
     val route = when {
         searchOpen -> "search"
@@ -431,13 +442,18 @@ fun FloatingTabBar(
         selected == Tab.Mine -> "favorites"
         else -> ""
     }
+    val bg = MaterialTheme.colorScheme.background
     Box(modifier.fillMaxWidth().zIndex(10f)) {
         Box(
             Modifier
                 .align(Alignment.BottomCenter)
                 .fillMaxWidth()
-                .height(140.dp)
-                .background(Brush.verticalGradient(listOf(Color.Transparent, Color.Black)))
+                .height(120.dp)
+                .background(
+                    Brush.verticalGradient(
+                        colorStops = arrayOf(0.00f to Color.Transparent, 0.40f to bg.copy(alpha = 0.35f), 0.75f to bg.copy(alpha = 0.85f), 1.00f to bg),
+                    )
+                )
         )
         NuvioFloatingNavbar(
             currentRoute = route,
@@ -450,6 +466,7 @@ fun FloatingTabBar(
                 }
             },
             modifier = Modifier.align(Alignment.BottomCenter),
+            collapsed = collapsed,
         )
     }
 }
