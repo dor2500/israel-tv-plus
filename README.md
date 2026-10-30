@@ -19,6 +19,7 @@
 | 🐧 **Linux** | [x64](https://github.com/dor2500/israel-tv-plus/releases/latest/download/IsraelTVPlus-linux-x64.zip) · [ARM64 / Raspberry Pi](https://github.com/dor2500/israel-tv-plus/releases/latest/download/IsraelTVPlus-linux-arm64.zip) | |
 | 🔷 **Samsung Tizen** | [פרויקט](https://github.com/dor2500/israel-tv-plus/releases/latest/download/IsraelTVPlus-tizen-project.zip) | נדרשת חתימה ב-Tizen Studio (תעודת סמסונג) |
 | 🎬 **Stremio** | [התקנת ההרחבה](https://dor2500.github.io/israel-tv-plus/stremio/) | או להדביק בחיפוש התוספים: `https://dor2500.github.io/israel-tv-plus/stremio/manifest.json` |
+| 🎬 **Kodi** (19 ומעלה) | [תוסף להתקנה מ-zip](https://github.com/dor2500/israel-tv-plus/releases/latest) | Add-ons ← Install from zip file |
 | 📋 **נגני IPTV** (Kodi, VLC, TiviMate...) | [playlist.m3u](https://dor2500.github.io/israel-tv-plus/playlist.m3u) | גם [ישראל בלבד](https://dor2500.github.io/israel-tv-plus/playlist-israel.m3u) · [טלוויזיה](https://dor2500.github.io/israel-tv-plus/playlist-tv.m3u) · [רדיו](https://dor2500.github.io/israel-tv-plus/radio.m3u) |
 | 🍎 **iPhone / iPad** | [האתר](https://dor2500.github.io/israel-tv-plus/) | Safari ← שיתוף ← הוספה למסך הבית |
 

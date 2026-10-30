@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.video.israeltvplus" name="ישראל TV+" version="@VERSION@" provider-name="dor2500">
+  <requires>
+    <import addon="xbmc.python" version="3.0.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="main.py">
+    <provides>video audio</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="he_IL">ערוצי טלוויזיה ורדיו בשידור חי</summary>
+    <summary lang="en_GB">Live TV and radio channels from Israel and the world</summary>
+    <description lang="he_IL">ערוצי ישראל והעולם בשידור חי, לפי קטגוריות, עם חיפוש ומעבר אוטומטי לשרתי גיבוי.</description>
+    <description lang="en_GB">Live channels from Israel and the world, by category, with search and automatic backup servers.</description>
+    <platform>all</platform>
+    <website>https://dor2500.github.io/israel-tv-plus/</website>
+    <source>https://github.com/dor2500/israel-tv-plus</source>
+    <assets>
+      <icon>resources/icon.png</icon>
+      <fanart>resources/fanart.png</fanart>
+    </assets>
+  </extension>
+</addon>

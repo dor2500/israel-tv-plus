@@ -17,6 +17,7 @@
 | `IsraelTVPlus-wearos.apk` | Wear OS – **חובה**: אפליקציית הטלפון מורידה אותו מהריליס | `wear/gradlew :app:assembleRelease` |
 | `com.israeltv.plus_all.ipk` | LG webOS | `python -I tools/build_ipk.py dist` |
 | `IsraelTVPlus-tizen-project.zip` | סמסונג Tizen (פרויקט לפתיחה ב-Tizen Studio) | `python -I tools/build_tizen_zip.py dist` |
+| `plugin.video.israeltvplus-X.Y.Z.zip` | תוסף Kodi (19 ומעלה, התקנה מקובץ zip) | `python -I tools/build_kodi.py dist` |
 | `IsraelTVPlus-windows-setup.exe` + `-portable.zip` | Windows | `tools/build_windows.ps1` |
 | `IsraelTVPlus-linux-x64.zip` / `-linux-arm64.zip` | לינוקס | `python -I tools/build_desktop.py` |
 | `IsraelTVPlus-macos-arm64.zip` / `-macos-x64.zip` | macOS | `python -I tools/build_desktop.py` |

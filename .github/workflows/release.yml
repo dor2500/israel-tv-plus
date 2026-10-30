@@ -75,6 +75,9 @@ jobs:
       - name: build Samsung Tizen project
         run: python -I tools/build_tizen_zip.py dist
 
+      - name: build Kodi add-on
+        run: python -I tools/build_kodi.py dist
+
       - name: build Linux + macOS desktop apps
         continue-on-error: true
         run: python -I tools/build_desktop.py
@@ -108,6 +111,7 @@ jobs:
             dist/com.israeltv.plus_all.ipk
             dist/com.israeltv.plus_*_all.ipk
             dist/IsraelTVPlus-tizen-project.zip
+            dist/plugin.video.israeltvplus-*.zip
             dist/SHA256SUMS.txt
             dist/IsraelTVPlus-linux-*.zip
             dist/IsraelTVPlus-macos-*.zip
