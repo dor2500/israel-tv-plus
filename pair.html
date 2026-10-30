@@ -63,7 +63,7 @@
     if (!/^AIza[0-9A-Za-z_\-]{30,}$/.test(key)) { msg('זה לא נראה כמו מפתח Gemini (מתחיל ב-AIza)', 'err'); return; }
     $('send').disabled = true;
     msg('בודק את המפתח…');
-    fetch('https://generativelanguage.googleapis.com/v1beta/models?key=' + encodeURIComponent(key)).then(function (r) {
+    fetch('https://generativelanguage.googleapis.com/v1beta/models', { headers: { 'x-goog-api-key': key } }).then(function (r) {
       if (!r.ok) throw new Error('המפתח לא עובד (Google החזיר ' + r.status + ') – בדקו שהעתקתם אותו במלואו');
       return crypto.subtle.importKey('raw', unb64(h.k), { name: 'AES-GCM' }, false, ['encrypt']);
     }).then(function (k) {
@@ -72,7 +72,7 @@
         .then(function (ct) { var out = new Uint8Array(12 + ct.byteLength); out.set(iv); out.set(new Uint8Array(ct), 12); return out; });
     }).then(function (data) {
       msg('שולח…');
-      return fetch('https://ntfy.sh/' + h.t, { method: 'POST', body: b64(data) });
+      return fetch('https://ntfy.sh/' + encodeURIComponent(h.t), { method: 'POST', body: b64(data) });
     }).then(function (r) {
       if (!r.ok) throw new Error('השליחה נכשלה (' + r.status + ')');
       msg('✅ נשלח! תוך כמה שניות הטלוויזיה תאשר שהדיבוב פועל.', 'ok');
