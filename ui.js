@@ -105,6 +105,7 @@ window.ITV_UI = (function (I) {
   // ---------------------------------------------------------------- TV: Apple TV+ browse screen
   '<div class="atv" id="atv">' +
     '<div class="atv-stage"><div class="atv-bd" id="atv-bd-a"></div><div class="atv-bd" id="atv-bd-b"></div><div class="atv-shade"></div></div>' +
+    '<button class="atv-tab atv-profile" id="atv-profile" aria-label="פרופיל"></button>' +
     '<nav class="atv-pill" id="atv-pill"></nav>' +
     '<section class="atv-meta" id="atv-meta-a"></section><section class="atv-meta" id="atv-meta-b"></section>' +
     '<div class="atv-search" id="atv-search"><span class="ico">' + I('search') + '</span><input id="atv-q" type="search" ' +
@@ -163,6 +164,9 @@ window.ITV_UI = (function (I) {
       '</div>' +
       '<div class="osd-dub hidden" id="osd-dub"><span class="dub-dot"></span><span id="osd-dub-text"></span></div>' +
       '<div class="osd-bottom">' +
+        '<div class="scrub tv" id="scrub"><b class="scrub-t" id="scrub-cur">0:00</b>' +
+          '<div class="scrub-bar"><i class="scrub-buf" id="scrub-buf"></i><i class="scrub-fill" id="scrub-fill"></i><u class="scrub-knob" id="scrub-knob"></u></div>' +
+          '<b class="scrub-t" id="scrub-end">LIVE</b></div>' +
         '<div class="osd-buttons" id="osd-buttons">' +
           '<button class="obtn tv" data-act="back" title="למדריך">' + I('back') + '<span>מדריך</span></button>' +
           '<button class="obtn tv" data-act="next" title="ערוץ הבא">' + I('next') + '</button>' +

@@ -1720,3 +1720,81 @@ body:not(.phone) #menu .menu-item.focused { background: #202025 !important; bord
 body:not(.phone) #menu .mi-ico { -webkit-filter: grayscale(1); filter: grayscale(1); }
 body:not(.phone):not(.anim-off) #menu .menu-box { animation: tv-panel .42s cubic-bezier(.16, 1, .3, 1) both; }
 @keyframes tv-panel { from { transform: translate3d(100%, 0, 0); opacity: 0; } to { transform: translate3d(0, 0, 0); opacity: 1; } }
+
+/* ================================================================== TV overhaul (Apple TV style)
+ * 1. no live backdrop-filter anywhere on TV (keeps 60 fps on weak GPUs): glass becomes a flat translucent fill
+ * 2. D-pad focus: scale 1.08, crisp 2px white ring, soft elevation shadow – transform / opacity only
+ * 3. minimal playback: title, play/pause, scrub bar; audio / subtitles / quality in a side panel
+ * 4. profile button top right; no emoji, no technical clutter
+ */
+body.tvui *, body.tvui *::before, body.tvui *::after {
+  -webkit-backdrop-filter: none !important; backdrop-filter: none !important; }
+body.tvui .atv-pill, body.tvui .atv-search { background: rgba(22, 22, 28, .82) !important; }
+body.tvui .overlay { background: rgba(0, 0, 0, .5) !important; }
+body.tvui .atv-colors, body.tvui .osd-hints, body.tvui .hints { display: none !important; }
+
+/* ---- focus physics (same curve everywhere, the ring is a spread shadow so nothing reflows) */
+body.tvui .atv-card, body.tvui .atv-tab, body.tvui .btn, body.tvui .obtn, body.tvui .menu-item, body.tvui .drawer-item,
+body.tvui .nav-item, body.tvui .set-row, body.tvui .kb-key, body.tvui .av-opt {
+  transition: transform .24s cubic-bezier(.16, 1, .3, 1), box-shadow .24s cubic-bezier(.16, 1, .3, 1), background-color .2s ease, color .2s ease !important;
+  will-change: transform; }
+body.tvui .atv-item.focused .atv-card,
+body.tvui .atv-tab.focused, body.tvui .btn.focused, body.tvui .obtn.focused, body.tvui .menu-item.focused,
+body.tvui .drawer-item.focused, body.tvui .nav-item.focused, body.tvui .set-row.focused, body.tvui .kb-key.focused,
+body.tvui .av-opt.focused {
+  -webkit-transform: scale3d(1.08, 1.08, 1) !important; transform: scale3d(1.08, 1.08, 1) !important;
+  border-color: #fff !important;
+  box-shadow: 0 0 0 2px #fff, 0 1.1rem 2.4rem rgba(0, 0, 0, .55) !important;
+  z-index: 6; }
+body.tvui .atv-item.focused .atv-card { border: 0 !important; }
+body.tvui .menu-item.focused, body.tvui .set-row.focused { -webkit-transform: scale3d(1.03, 1.03, 1) !important; transform: scale3d(1.03, 1.03, 1) !important; }
+
+/* ---- top-right profile button */
+.atv-profile { position: absolute; top: 2.75rem; right: 3.5rem; z-index: 3; display: flex; align-items: center; height: 3.625rem;
+  margin: 0; padding: 0 1.3rem 0 .5rem; border-radius: 999px; background: rgba(22, 22, 28, .82); border: 1px solid rgba(255, 255, 255, .16);
+  color: rgba(255, 255, 255, .92); font-size: 1.3rem; font-weight: 600; white-space: nowrap; }
+.atv-profile img { width: 2.6rem; height: 2.6rem; margin-left: .7rem; border-radius: 50%; background: rgba(255, 255, 255, .1); }
+body.player-open .atv-profile { visibility: hidden; }
+
+/* ---- minimal player: title row, scrub bar, one play / pause button */
+body.tvui #player .osd-tags, body.tvui #player .osd-clock, body.tvui #player .osd-dub { display: none !important; }
+body.tvui #player .osd-bottom { padding: 6rem 6rem 3rem; }
+body.tvui #player .osd-buttons { justify-content: center; margin-top: 1.4rem; }
+body.tvui #player .osd-buttons .obtn:not([data-act="playpause"]) { display: none !important; }
+body.tvui #player .osd-buttons .obtn[data-act="playpause"] { width: 6.4rem; height: 6.4rem; min-width: 0; padding: 0; margin: 0;
+  border-radius: 50%; font-size: 3.2rem; background: rgba(255, 255, 255, .16) !important; border: 0; }
+body.tvui #player .osd-buttons .obtn[data-act="playpause"].focused { background: #fff !important; color: #000 !important; }
+.scrub { display: none; align-items: center; direction: rtl; }
+body.tvui .scrub { display: flex; }
+.scrub-t { flex: none; min-width: 5.5rem; font-size: 1.3rem; font-weight: 600; text-align: center; color: rgba(255, 255, 255, .8);
+  font-variant-numeric: tabular-nums; direction: ltr; }
+.scrub-bar { position: relative; flex: 1; height: .5rem; margin: 0 1.2rem; border-radius: 99px; background: rgba(255, 255, 255, .25); }
+.scrub-fill { position: absolute; top: 0; right: 0; bottom: 0; left: 0; border-radius: inherit; background: #fff;
+  -webkit-transform-origin: 100% 50%; transform-origin: 100% 50%; -webkit-transform: scaleX(0); transform: scaleX(0);
+  transition: transform .5s linear; }
+.scrub-knob { position: absolute; top: 50%; width: 1.4rem; height: 1.4rem; margin: -.7rem -.7rem 0 0; border-radius: 50%; background: #fff;
+  box-shadow: 0 .2rem .8rem rgba(0, 0, 0, .5); transition: right .5s linear; text-decoration: none; }
+.scrub.live .scrub-fill { background: rgba(255, 255, 255, .85); }
+.scrub.live #scrub-cur, .scrub.live #scrub-end { color: #fff; }
+
+/* ---- the slide-out side panel (options menu / profiles) */
+body.tvui #menu { justify-content: flex-start !important; align-items: stretch !important; padding: 0 !important; background: rgba(0, 0, 0, .35) !important; }
+body.tvui #menu .menu-box { width: 32rem !important; max-width: 40vw !important; max-height: none !important; height: 100% !important;
+  border-radius: 0 !important; padding: 3rem 1.6rem !important; background: rgba(10, 12, 18, .9) !important;
+  border: 0 !important; border-left: 1px solid rgba(255, 255, 255, .12) !important; box-shadow: -1.5rem 0 4rem rgba(0, 0, 0, .5) !important; }
+body.tvui #menu:not(.hidden) .menu-box { -webkit-animation: tv-panel-in .34s cubic-bezier(.16, 1, .3, 1); animation: tv-panel-in .34s cubic-bezier(.16, 1, .3, 1); }
+@-webkit-keyframes tv-panel-in { from { -webkit-transform: translate3d(-100%, 0, 0); opacity: .6; } to { -webkit-transform: none; opacity: 1; } }
+@keyframes tv-panel-in { from { transform: translate3d(-100%, 0, 0); opacity: .6; } to { transform: none; opacity: 1; } }
+body.tvui #menu .menu-logo { display: none; }
+body.tvui #menu .menu-title { font-size: 1.9rem; font-weight: 700; }
+body.tvui #menu .menu-sub { font-size: 1.2rem; color: rgba(255, 255, 255, .55); }
+body.tvui #menu .menu-list { margin-top: 1.6rem; }
+body.tvui #menu .menu-item { margin: 0 0 .6rem !important; padding: .9rem 1.2rem !important; font-size: 1.35rem !important; }
+body.tvui #menu .mi-ico:empty, body.tvui .ni-ico:empty { display: none; }
+body.tvui #menu .mi-ico img { width: 2.6rem; height: 2.6rem; border-radius: 50%; }
+body.tvui #menu .cdot { display: none; }
+
+/* ---- profile editor */
+.prof-name { display: block; width: 100%; margin: 0 0 1rem; padding: .9rem 1.2rem; border-radius: 1rem; font: inherit; font-size: 1.5rem; color: #fff;
+  background: rgba(255, 255, 255, .08); border: 2px solid transparent; outline: 0; text-align: center; }
+.prof-name.focused, .prof-name:focus { border-color: #fff; background: rgba(255, 255, 255, .14); }

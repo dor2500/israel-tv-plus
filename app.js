@@ -276,6 +276,9 @@
     setupNativeBridge();
     setupPhone();
     setupAtv();
+    setupTvClean();
+    setupTvProfiles();
+    setupScrub();
     setupClock();
     readDeviceInfo();
     resetSaver();
@@ -963,6 +966,149 @@
     card.addEventListener('click', function (e) { e.stopPropagation(); card.onclickAction(); });
   }
 
+  // ================================================================== TV: profiles (who is watching)
+  /**
+   * The web port of the phone app's profiles (Prefs.kt): each profile has a name, an avatar and its own favourites and
+   * "recently watched". The favourites / recents of the ACTIVE profile live in the usual keys (everything else keeps
+   * working untouched); the list of profiles, with the others' lists, is "itv_profiles".
+   */
+  var profiles = { list: [], active: '' };
+  function profilesInit() {
+    var list = lsGet('itv_profiles', null);
+    if (!(list instanceof Array) || !list.length) list = [{ id: 'p1', name: 'פרופיל ראשי', avatar: S.avatar, favorites: [], recents: [] }];
+    var active = lsGet('itv_profile_active', '');
+    if (!list.some(function (p) { return p.id === active; })) active = list[0].id;
+    profiles.list = list;
+    profiles.active = active;
+  }
+  function curProfile() { return profiles.list.filter(function (p) { return p.id === profiles.active; })[0] || profiles.list[0]; }
+  function profilesSave() {
+    var p = curProfile();
+    p.favorites = state.favorites.slice(); p.recents = state.recents.slice(); p.avatar = S.avatar;
+    lsSet('itv_profiles', profiles.list);
+    lsSet('itv_profile_active', profiles.active);
+  }
+  function profileRefresh() {
+    updateProfileButton();
+    homeDirty = true; atv.dirty = true;
+    buildCategories();
+    filterList();
+    if (!state.overlay || state.overlay === 'menu' || state.overlay === 'dialog') { atv.built = false; atvRestore(); atvRenderPill(); }
+  }
+  function loadProfileLists(p) {
+    state.favorites = (p.favorites || []).slice();
+    state.recents = (p.recents || []).slice();
+    lsSet('israel_tv_favorites', state.favorites);
+    lsSet('israel_tv_recents', state.recents);
+    setSetting('avatar', p.avatar);
+  }
+  function switchProfile(id) {
+    if (id === profiles.active) return;
+    profilesSave();
+    profiles.active = id;
+    var p = curProfile();
+    loadProfileLists(p);
+    profilesSave();
+    profileRefresh();
+    toast(p.name);
+  }
+  function updateProfileButton() {
+    var b = $('atv-profile');
+    if (!b) return;
+    var code = AVATARS.indexOf(S.avatar) !== -1 ? S.avatar : AVATARS[0];
+    b.innerHTML = '<img alt="" src="' + avatarUrl(code) + '"><span>' + esc(curProfile().name) + '</span>';
+  }
+  function openProfilesPanel() {
+    var items = profiles.list.map(function (p) {
+      return { ico: '', label: p.name, val: function () { return p.id === profiles.active ? 'פעיל' : ''; }, avatar: p.avatar,
+        act: function () { switchProfile(p.id); } };
+    });
+    items.push({ ico: '', label: 'פרופיל חדש', act: function () {
+      var n = profiles.list.length + 1, p = { id: 'p' + Date.now().toString(36), name: 'פרופיל ' + n,
+        avatar: AVATARS[(n - 1) % AVATARS.length], favorites: [], recents: [] };
+      profilesSave(); profiles.list.push(p); lsSet('itv_profiles', profiles.list);
+      switchProfile(p.id); editProfile();
+    } });
+    items.push({ ico: '', label: 'עריכת הפרופיל הפעיל', act: editProfile });
+    items.push({ ico: '', label: 'הגדרות', act: function () { openSettings(); } });
+    openMenu('מי צופה?', curProfile().name, null, items);
+  }
+  function editProfile() {
+    var p = curProfile(), pick = p.avatar;
+    var html = '<input class="dlg-focus prof-name" id="prof-name" type="text" maxlength="16" value="' + esc(p.name) + '" placeholder="שם">' +
+      '<div class="av-grid">' + AVATARS.map(function (c) {
+        return '<button class="btn dlg-focus av-opt' + (c === pick ? ' on' : '') + '" data-av="' + c + '"><img alt="" src="' + avatarUrl(c) + '"></button>';
+      }).join('') + '</div>';
+    var buttons = [{ label: 'שמירה', primary: true, act: function () {
+      var nm = ($('prof-name') || {}).value;
+      p.name = (nm || '').trim().slice(0, 16) || p.name;
+      setSetting('avatar', pick); p.avatar = pick;
+      profilesSave(); updateProfileButton();
+    } }, { label: 'ביטול' }];
+    if (profiles.list.length > 1) buttons.push({ label: 'מחיקת הפרופיל', act: function () {
+      confirmBox('למחוק את "' + p.name + '"?', function () {
+        profiles.list = profiles.list.filter(function (x) { return x !== p; });
+        profiles.active = profiles.list[0].id;
+        loadProfileLists(profiles.list[0]);
+        profilesSave(); profileRefresh();
+      });
+    } });
+    openDialog({ ico: '', title: 'עריכת פרופיל', html: html, cls: 'profile', buttons: buttons });
+    var nameIn = $('prof-name');
+    nameIn.onclickAction = function () { nameIn.focus(); };
+    Array.prototype.forEach.call(el.dialogBody.querySelectorAll('.av-opt'), function (b) {
+      b.onclickAction = function () {
+        pick = b.getAttribute('data-av');
+        Array.prototype.forEach.call(el.dialogBody.querySelectorAll('.av-opt'), function (x) { toggleClass(x, 'on', x === b); });
+      };
+      b.addEventListener('click', function (e) { e.stopPropagation(); b.onclickAction(); });
+    });
+  }
+  function setupTvProfiles() {
+    profilesInit();
+    profilesSave();
+    updateProfileButton();
+    var b = $('atv-profile');
+    if (b) b.addEventListener('click', function () { atvFocusPill(0); atvOk(); });
+    window.addEventListener('pagehide', profilesSave);
+  }
+
+  // ================================================================== TV: no emoji
+  function CH(h) { return String.fromCharCode(h); }
+  // astral emoji (surrogate pairs), symbols / dingbats / emoji-presentation arrows, variation selector, joiner
+  var EMOJI_RE = new RegExp('[' + CH(0xD83C) + '-' + CH(0xD83E) + '][' + CH(0xDC00) + '-' + CH(0xDFFF) + ']|[' + CH(0x25B6) + CH(0x25C0) + CH(0x2122) + ']' + CH(0xFE0F) +
+    '|[' + CH(0x2139) + CH(0x2600) + '-' + CH(0x27BF) + CH(0x2B00) + '-' + CH(0x2BFF) + CH(0x231A) + CH(0x231B) + CH(0x23E9) + '-' + CH(0x23FA) + CH(0xFE0F) + CH(0x200D) + ']', 'g');
+  function plain(str) { return str.replace(EMOJI_RE, '').replace(/ {2,}/g, ' '); }
+  function cleanTree(root) {
+    if (!root) return;
+    if (root.nodeType === 3) { var v = root.nodeValue; if (plain(v) !== v) root.nodeValue = plain(v); return; }
+    if (root.nodeType !== 1 || /^(SCRIPT|STYLE|INPUT|TEXTAREA)$/.test(root.nodeName)) return;
+    var w = document.createTreeWalker(root, 4, null, false), n, list = [];
+    while ((n = w.nextNode())) if (plain(n.nodeValue) !== n.nodeValue) list.push(n);
+    list.forEach(function (t) { t.nodeValue = plain(t.nodeValue); });
+  }
+  /** The TV UI carries no emoji: whatever text lands in the page is cleaned once per frame (a no-op when it has none). */
+  function setupTvClean() {
+    if (!window.MutationObserver) return;
+    var pending = [], raf = null, opts = { childList: true, subtree: true, characterData: true };
+    var obs = new MutationObserver(function (muts) {
+      if (!TVUI) return;
+      muts.forEach(function (m) {
+        if (m.type === 'characterData') pending.push(m.target);
+        else for (var i = 0; i < m.addedNodes.length; i++) pending.push(m.addedNodes[i]);
+      });
+      if (!raf) raf = setTimeout(function () {
+        raf = null;
+        var batch = pending; pending = [];
+        obs.disconnect();
+        batch.forEach(cleanTree);
+        obs.observe(document.body, opts);
+      }, 24);
+    });
+    if (TVUI) cleanTree(document.body);
+    obs.observe(document.body, opts);
+  }
+
   // ================================================================== phone: scroll physics (BitChord)
   /**
    * iOS-style rubber band + bounce for the phone's scroll containers: a port of BitChord's IosOverscroll.kt
@@ -1578,9 +1724,11 @@
       return t[1] === 'top' || t[1] === 'search' || t[1] === 'multiview' || t[1] === 'settings' || atvRowIndex(t[1]) !== -1 || (atv.search && t[1] !== 'mine');
     });
     if (S.kids) tabs = tabs.filter(function (t) { return t[1] !== 'settings'; }).concat([['יציאה ממצב ילדים', 'kids-exit']]);
+    tabs.unshift(['פרופיל', 'profile']);
     atv.tabs = tabs;
     $('atv-pill').innerHTML = tabs.map(function (t, i) {
       var id = t[1];
+      if (id === 'profile') return '';
       if (id === 'search' || id === 'multiview' || id === 'settings') {
         var ico = id === 'search' ? I('search') : id === 'multiview' ? I('multiview') : I('settings');
         return '<button class="atv-tab ico-only" data-i="' + i + '" aria-label="' + esc(t[0]) + '" title="' + esc(t[0]) + '">' + ico + '</button>';
@@ -1590,6 +1738,9 @@
     atvPillState();
   }
 
+  /** The tab buttons in tab order: the profile button (top right) first, then the pill's. */
+  function atvTabEls() { return [$('atv-profile')].concat(Array.prototype.slice.call($('atv-pill').children)); }
+
   /** The active tab is the white pill; while the remote is on the bar, the focused tab grows a little. */
   function atvPillState() {
     var row = atv.rows[atv.row], active = -1;
@@ -1597,8 +1748,8 @@
       var t = atv.tabs[i][1];
       if ((atv.search && t === 'search') || (!atv.search && row && t === row.id)) { active = i; break; }
     }
-    if (active === -1 && !atv.search && atv.row === 0) active = 0;
-    var btns = $('atv-pill').children;
+    if (active === -1 && !atv.search && atv.row === 0) active = 1;
+    var btns = atvTabEls();
     for (var k = 0; k < btns.length; k++) {
       var onBar = atv.zone === 'pill' && state.zone === 'atv' && !state.overlay;
       // on the bar the focused tab itself wears the white pill; elsewhere the active one does
@@ -1664,7 +1815,7 @@
     else if (atvRowIndex(t) !== -1) { atv.row = atvRowIndex(t); atvLayout(); state.list = atv.rows[atv.row].list; }
     atvMark();
     atvPillState();
-    var btns = $('atv-pill').children;
+    var btns = atvTabEls();
     for (var k = 0; k < btns.length; k++) toggleClass(btns[k], 'focused', k === atv.tab);
     atvSettle(atvCurrent());
   }
@@ -1763,7 +1914,8 @@
   function atvOk() {
     if (atv.zone === 'pill') {
       var t = atv.tabs[atv.tab] && atv.tabs[atv.tab][1];
-      if (t === 'search') atvOpenSearch();
+      if (t === 'profile') openProfilesPanel();
+      else if (t === 'search') atvOpenSearch();
       else if (t === 'multiview') openMultiView(atvCurrent() || state.playing);
       else if (t === 'settings') openSettings();
       else if (t === 'kids-exit') askPin(function () { setSetting('kids', false); toast('יצאתם ממצב ילדים'); });
@@ -1954,7 +2106,7 @@
     var pill = $('atv-pill'), rows = $('atv-rows');
     pill.addEventListener('click', function (e) {
       var b = e.target.closest('.atv-tab');
-      if (!b) return;
+      if (!b || b.id === 'atv-profile') return;
       atvFocusPill(+b.getAttribute('data-i'));
       atvOk();
     });
@@ -2359,6 +2511,55 @@
     else { m.pause(); toast('⏸ מושהה'); }
     updatePlayIcon();
   }
+  // ---- TV scrub bar: the only progress control. Live streams: position inside the seekable window (the DVR the stream
+  // offers) with "LIVE" at its edge; recordings: elapsed / total.
+  function clock(sec) {
+    sec = Math.max(0, Math.floor(sec));
+    var h = Math.floor(sec / 3600), m = Math.floor(sec % 3600 / 60), x = sec % 60;
+    return (h ? h + ':' + (m < 10 ? '0' : '') : '') + m + ':' + (x < 10 ? '0' : '') + x;
+  }
+  function seekRange() {
+    var m = media();
+    if (!m || state.isRadio) return null;
+    try {
+      if (m.seekable && m.seekable.length) {
+        var a = m.seekable.start(0), b = m.seekable.end(m.seekable.length - 1);
+        if (isFinite(b) && b - a > 1) return { a: a, b: b, live: !isFinite(m.duration) || !!(state.hls && state.hls.liveSyncPosition) };
+      }
+    } catch (e) {}
+    return null;
+  }
+  function updateScrub() {
+    if (!TVUI || state.overlay !== 'player' || !el.scrubFill) return;
+    var m = media(), r = seekRange(), f = 0;
+    if (r && m) {
+      f = clamp((m.currentTime - r.a) / (r.b - r.a), 0, 1);
+      el.scrubCur.textContent = r.live ? (r.b - m.currentTime < 8 ? 'LIVE' : '-' + clock(r.b - m.currentTime)) : clock(m.currentTime - r.a);
+      el.scrubEnd.textContent = r.live ? 'LIVE' : clock(r.b - r.a);
+    } else { f = 1; el.scrubCur.textContent = 'LIVE'; el.scrubEnd.textContent = ''; }
+    el.scrubFill.style.transform = 'scaleX(' + f + ')';
+    el.scrubKnob.style.right = (f * 100) + '%';
+    toggleClass(el.scrub, 'live', !r || (r.live && r.b - m.currentTime < 8));
+  }
+  function seekBy(sec) {
+    var m = media(), r = seekRange();
+    if (!m || !r) return false;
+    m.currentTime = clamp(m.currentTime + sec, r.a, r.b);
+    updateScrub();
+    return true;
+  }
+  function setupScrub() {
+    ['scrub', 'scrub-cur', 'scrub-end', 'scrub-fill', 'scrub-knob'].forEach(function (id) { el[id.replace(/-(\w)/g, function (_, c) { return c.toUpperCase(); })] = $(id); });
+    setInterval(updateScrub, 500);
+    var bar = el.scrub && el.scrub.querySelector('.scrub-bar');
+    if (bar) bar.addEventListener('click', function (e) {
+      var m = media(), r = seekRange();
+      if (!m || !r) return;
+      var rc = bar.getBoundingClientRect();
+      m.currentTime = r.a + clamp((rc.right - e.clientX) / rc.width, 0, 1) * (r.b - r.a);
+      updateScrub(); showOsd();
+    });
+  }
   function updatePlayIcon() {
     var m = media(), icon = I(m && m.paused ? 'play' : 'pause');
     var nodes = document.querySelectorAll('.ob-play');
@@ -2500,7 +2701,7 @@
   }
   function renderMenu() {
     el.menuList.innerHTML = state.menu.map(function (it, i) {
-      return '<div class="menu-item" data-i="' + i + '"><span class="mi-ico">' + (it.ico || '') + '</span>' +
+      return '<div class="menu-item" data-i="' + i + '"><span class="mi-ico">' + (it.avatar ? '<img alt="" src="' + avatarUrl(it.avatar) + '">' : (it.ico || '')) + '</span>' +
         '<span class="mi-label">' + esc(it.label) + '</span>' +
         (it.val ? '<span class="mi-val">' + esc(it.val()) + '</span>' : '') +
         (it.dot ? '<span class="cdot ' + it.dot + '"></span>' : '') + '</div>';
@@ -2555,9 +2756,41 @@
     openMenu(ch.name, '#' + ch.number + ' · ' + splitCat(ch.category), ch, items);
   }
 
+  /** TV: the translucent side panel with the three things worth changing while watching – audio, subtitles, quality. */
+  function tvPlayerPanel(ch) {
+    var items = [], h = state.hls;
+    var tname = function (t) { return (t && (t.name || t.lang)) || 'מקורי'; };
+    if (h && h.audioTracks && h.audioTracks.length > 1) {
+      items.push({ label: 'שמע', stay: true, val: function () { return tname(h.audioTracks[h.audioTrack]); },
+        act: function (st) { h.audioTrack = (h.audioTrack + (st < 0 ? -1 : 1) + h.audioTracks.length) % h.audioTracks.length; } });
+    } else if (Dub && foreign(ch)) {
+      items.push({ label: 'שמע', stay: true, val: function () { return Dub.settings.enabled ? 'דיבוב לעברית' : 'מקורי'; }, act: function () { toggleDub(); } });
+    }
+    if (h && h.subtitleTracks && h.subtitleTracks.length) {
+      items.push({ label: 'כתוביות', stay: true, val: function () { return h.subtitleTrack < 0 ? 'כבויות' : tname(h.subtitleTracks[h.subtitleTrack]); },
+        act: function (st) { var n = h.subtitleTracks.length + 1; h.subtitleTrack = ((h.subtitleTrack + 1 + (st < 0 ? -1 : 1) + n) % n) - 1; } });
+    } else if (Dub && foreign(ch)) {
+      items.push({ label: 'כתוביות', stay: true, val: function () { return Dub.settings.subtitles ? 'בעברית' : 'כבויות'; },
+        act: function () { Dub.save({ subtitles: !Dub.settings.subtitles }); } });
+    }
+    if (!state.isRadio) {
+      items.push({ label: 'איכות', stay: true, val: function () { return label(QUALITIES, S.quality); },
+        act: function (st) { setSetting('quality', cycle(QUALITIES, S.quality, st)); if (state.playing) loadStream(state.playing); } });
+      items.push({ label: 'גודל תמונה', stay: true, val: function () { return label(ASPECTS, S.aspect); },
+        act: function (st) { setSetting('aspect', cycle(ASPECTS, S.aspect, st)); } });
+    }
+    if (state.candidates && state.candidates.length > 1) {
+      items.push({ label: 'שרת שידור', stay: true, val: function () { return (((state.candIdx || 0) + 1) + '/' + state.candidates.length); }, act: function () { switchBackupServer(); } });
+    }
+    items.push({ label: 'ערוצים', act: openDrawer });
+    items.push({ label: isFav(ch) ? 'הסר מהרשימה שלי' : 'שמור ברשימה שלי', act: function () { toggleFav(ch); } });
+    openMenu(ch.name, '#' + ch.number, null, items);
+  }
+
   function playerMenu() {
     var ch = state.playing;
     if (!ch) return;
+    if (TVUI) { tvPlayerPanel(ch); return; }
     var items = [];
     if (state.candidates && state.candidates.length > 1) {
       items.push({ ico: '🔀', label: 'שרת שידור', stay: true, val: function () { return 'שרת ' + ((state.candIdx || 0) + 1) + '/' + state.candidates.length; },
@@ -3045,6 +3278,7 @@
         action('איפוס כל ההגדרות', function () { confirmBox('לאפס את כל ההגדרות? (מועדפים נשמרים)', function () { try { localStorage.removeItem('itv_settings'); } catch (e) {} location.reload(); }); }, '', true)
       ] }
     ];
+    if (TVUI) secs = tvTrimSettings(secs);
     if (PHONE) {
       secs = secs.filter(function (s) { return !s.tvOnly; });
       secs.forEach(function (s) { s.rows = s.rows.filter(function (r) { return !r.tvOnly; }); });
@@ -3053,6 +3287,17 @@
   }
 
   function tvRow(r) { r.tvOnly = true; return r; }
+
+  /** TV settings: the few things a viewer sets from the couch. Remote-key mapping, probes, logs and tuning knobs go. */
+  var TV_DROP_SECTIONS = ['remote', 'saver'];
+  var TV_DROP_ROWS = /^(צבע הדגשה|מנוע תרגום|מהירות דיבור|עוצמת הסאונד|גם הטקסט|בדיקת קול|קול הדיבוב|מצב$|חיבור מפתח|כרטיסים בשורה|הצגת פרטי|מספרי ערוצים|הצגת מקור|שורת עזרה|ביצועים|חידוד|סוג חיבור|התחברות מחדש|החלפת ערוצים|כיוון החצים|משך הצגת|שעון בנגן|מצב תמונה|לנגן את הערוץ|בדיקה אוטומטית|עדכון אונליין|גרסה פעילה|מערכת|מסך|דפדפן|שלט|סגירות|שגיאה|ניקוי יומן|ערוצים$|מאיפה|הפרויקט|האפליקציה לשאר|מה חדש|צליל פתיחה)/;
+  function tvTrimSettings(secs) {
+    secs = secs.filter(function (s) { return TV_DROP_SECTIONS.indexOf(s.id) === -1; });
+    secs.forEach(function (s) { s.rows = s.rows.filter(function (r) { return r.type === 'sep' || r.type === 'card' || !TV_DROP_ROWS.test(r.label || ''); }); });
+    // category toggles are a long list of switches: the Channels section keeps the actions only
+    secs.forEach(function (s) { if (s.id === 'channels') s.rows = s.rows.filter(function (r) { return r.type === 'action' || r.type === 'choice'; }); });
+    return secs;
+  }
 
   var sections = [];
   function openSettings(sectionId) {
@@ -4354,6 +4599,7 @@
         return;
       }
       if (state.overlay === 'settings') { settingsKey(code, e); return; }
+      if (state.overlay === 'dialog') { if (code === 13 || code === 40 || (isBack(code) && code !== 8)) { if (e.preventDefault) e.preventDefault(); t.blur(); } return; }
       if (t.id === 'atv-q') { atvSearchKey(code, e); return; }
       if (t === el.searchInput) {
         if (code === 40 || code === 13) { e.preventDefault(); t.blur(); focusGrid(0); }
@@ -4399,6 +4645,8 @@
     if (code === 415 || code === 19 || code === 179 || (code === 32 && state.overlay === 'player')) {
       if (e.preventDefault) e.preventDefault(); togglePlay(); return;
     }
+    if (state.overlay === 'player' && (code === 417 || code === 228)) { if (e.preventDefault) e.preventDefault(); seekBy(15); showOsd(); return; }
+    if (state.overlay === 'player' && (code === 412 || code === 227)) { if (e.preventDefault) e.preventDefault(); seekBy(-15); showOsd(); return; }
     if (code === 457) { runAction('info'); return; } // Info key
     if (code === 10135 || code === 18) { runAction('menu'); return; } // Samsung Tools
 
@@ -4440,7 +4688,9 @@
       case 'drawer': var i = state.drawerIdx; closeDrawer(true); playIndex(i); return;
       case 'player':
         if (state.zone === 'perror') { errorButtons()[state.perrIdx || 0].click(); return; }
-        if (el.osd.classList.contains('off')) showOsd(); else playerMenu();
+        if (el.osd.classList.contains('off')) showOsd();
+        else if (TVUI) togglePlay();
+        else playerMenu();
         return;
     }
     if (state.zone === 'atv') { atvOk(); return; }
@@ -4511,6 +4761,7 @@
     if (isBack(code)) { closePlayer(true); return; }
     if (code === 38) zap(S.upNext ? 1 : -1);
     else if (code === 40) zap(S.upNext ? -1 : 1);
+    else if (TVUI && (code === 37 || code === 39) && media() && media().paused && seekBy(code === 37 ? 10 : -10)) return;
     else if (code === 37) openDrawer();
     else if (code === 39) playerMenu();
   }
