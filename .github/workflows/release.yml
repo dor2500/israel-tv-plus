@@ -125,6 +125,7 @@ jobs:
           fail_on_unmatched_files: false
 
   windows:
+    needs: packages   # the release must exist before the Windows files can be attached to it
     runs-on: windows-latest
     env:
       TAG: ${{ github.event.inputs.tag || github.ref_name }}
