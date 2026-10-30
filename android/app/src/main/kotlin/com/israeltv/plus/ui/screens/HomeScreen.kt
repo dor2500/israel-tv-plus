@@ -69,6 +69,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDirection
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -108,6 +109,7 @@ import com.israeltv.plus.ui.theme.LocalDarkTheme
 import kotlinx.coroutines.delay
 
 private val HeroShape = RoundedCornerShape(0.dp)
+private val HeroHeight = 420.dp
 
 /**
  * Home: one master LazyColumn - the full-bleed hero with parallax & graceful fallback, the "רק ישראלי" switch
@@ -147,11 +149,12 @@ fun HomeScreen(
     LazyColumn(
         Modifier.fillMaxSize(),
         state = listState,
+        // Top clears the glass header; bottom keeps the last row and the "רק ישראלי" switch clear of the floating navbar
         contentPadding = padding,
         flingBehavior = rememberBitChordFlingBehavior(),
     ) {
         if (data == null) {
-            item { Box(Modifier.bleedToTop(padding).padding(bottom = 28.dp).fillMaxWidth().height(580.dp).glassShimmer(HeroShape)) }
+            item { Box(Modifier.bleedToTop(padding).padding(bottom = 28.dp).fillMaxWidth().height(HeroHeight).glassShimmer(HeroShape)) }
             items(4) { ShelfSkeleton() }
             return@LazyColumn
         }
@@ -161,6 +164,7 @@ fun HomeScreen(
                 prefs = prefs,
                 logo = logo,
                 scrollOffsetPx = heroScrollPx,
+                topInset = padding.calculateTopPadding(),
                 onPlay = { onPlay(it, data.featured) },
                 onInfo = onInfo,
                 modifier = Modifier.bleedToTop(padding).cascadeIn(0),
@@ -276,6 +280,7 @@ private fun HeroPager(
     prefs: AppPrefs,
     logo: (Channel) -> String,
     scrollOffsetPx: Float,
+    topInset: Dp,
     onPlay: (Channel) -> Unit,
     onInfo: (Channel) -> Unit,
     modifier: Modifier = Modifier,
@@ -296,6 +301,7 @@ private fun HeroPager(
                 favorite = prefs.isFavorite(ch.id),
                 playBackground = page == pager.settledPage,
                 scrollOffsetPx = scrollOffsetPx,
+                topInset = topInset,
                 onPlay = onPlay,
                 onInfo = onInfo,
                 onFavorite = { prefs.toggleFavorite(ch.id) },
@@ -481,6 +487,7 @@ private fun HeroPage(
     favorite: Boolean,
     playBackground: Boolean,
     scrollOffsetPx: Float,
+    topInset: Dp,
     onPlay: (Channel) -> Unit,
     onInfo: (Channel) -> Unit,
     onFavorite: () -> Unit,
@@ -504,7 +511,7 @@ private fun HeroPage(
     Box(
         Modifier
             .fillMaxWidth()
-            .height(580.dp)
+            .height(HeroHeight)
             .sharedContainer(key, HeroShape)
             .clipToBounds()
             .background(Color.Black)
@@ -566,17 +573,19 @@ private fun HeroPage(
         )
 
         Column(
-            Modifier.align(Alignment.BottomCenter).fillMaxWidth().padding(horizontal = 24.dp).padding(bottom = 26.dp),
+            // Centred in the space left below the glass header, with room for the page dots underneath
+            Modifier.fillMaxSize().padding(top = topInset, bottom = 28.dp).padding(horizontal = 24.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center,
         ) {
             Box(contentAlignment = Alignment.Center) {
                 Box(
                     Modifier
-                        .size(width = 300.dp, height = 190.dp)
+                        .size(width = 260.dp, height = 130.dp)
                         .background(Brush.radialGradient(listOf(Color.White.copy(alpha = if (dark) 0.30f else 0.55f), Color.Transparent)))
                 )
                 if (logo.isNotEmpty()) {
-                    AsyncImage(logo, ch.name, Modifier.fillMaxWidth(0.62f).height(140.dp), contentScale = ContentScale.Fit)
+                    AsyncImage(logo, ch.name, Modifier.fillMaxWidth(0.55f).height(100.dp), contentScale = ContentScale.Fit)
                 } else {
                     Text(ch.name, style = MaterialTheme.typography.displaySmall, color = scheme.onSurface, maxLines = 2)
                 }

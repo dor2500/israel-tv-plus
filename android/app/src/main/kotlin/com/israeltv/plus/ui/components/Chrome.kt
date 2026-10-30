@@ -10,6 +10,7 @@ import androidx.compose.animation.expandVertically
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.shrinkVertically
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -42,6 +43,7 @@ import androidx.compose.material.icons.rounded.LiveTv
 import androidx.compose.material.icons.rounded.Search
 import androidx.compose.material.icons.rounded.Settings
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
@@ -254,9 +256,9 @@ fun AppHeader(
 }
 
 /**
- * The Nuvio navigation: a standalone glass circle holding only a bold search glyph on the physical left, and 16 dp
- * away a glass capsule whose tabs stack a bold icon directly above its label - with heavy Essentials glass blur
- * (Color(0xFF16161E) at 65%) behind both elements.
+ * The Nuvio navigation: ONE floating pill holding all four destinations (בית, ערוצים, שלי, חיפוש). Every item shares the
+ * same touch target; the active one gets a secondaryContainer indicator. Colours come straight from the Material You
+ * scheme, so the bar follows the user's wallpaper palette. [collapsed] tightens the item width while the feed scrolls.
  */
 @Composable
 fun FloatingTabBar(
@@ -269,78 +271,62 @@ fun FloatingTabBar(
 ) {
     val scheme = MaterialTheme.colorScheme
     val haptic = LocalHapticFeedback.current
-    val tabs = listOf(Tab.Home, Tab.Channels, Tab.Mine)
-    val glass = Color(0xFF16161E).copy(alpha = 0.65f)
-    CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {
-        BoxWithConstraints(modifier.fillMaxWidth().zIndex(10f).navigationBarsPadding().padding(bottom = 18.dp)) {
-            val capsuleTarget = (maxWidth - 112.dp - if (collapsed) 30.dp else 0.dp).coerceAtLeast(200.dp)
-            val capsuleWidth by animateDpAsState(
-                capsuleTarget,
-                spring(dampingRatio = 0.82f, stiffness = Spring.StiffnessMediumLow),
-                label = "capsuleWidth",
-            )
+    val itemWidth by animateDpAsState(
+        if (collapsed) 60.dp else 68.dp,
+        spring(dampingRatio = 0.82f, stiffness = Spring.StiffnessMediumLow),
+        label = "tabItemWidth",
+    )
+    // Home, Channels, Mine, Search: the first entry sits on the right edge in Hebrew RTL
+    val items = listOf(
+        Triple(Tab.Home.label, Tab.Home.icon, !searchOpen && selected == Tab.Home) to { onSelect(Tab.Home) },
+        Triple(Tab.Channels.label, Tab.Channels.icon, !searchOpen && selected == Tab.Channels) to { onSelect(Tab.Channels) },
+        Triple(Tab.Mine.label, Tab.Mine.icon, !searchOpen && selected == Tab.Mine) to { onSelect(Tab.Mine) },
+        Triple("חיפוש", Icons.Rounded.Search, searchOpen) to onSearch,
+    )
+    Box(
+        modifier.fillMaxWidth().zIndex(10f).navigationBarsPadding().padding(bottom = 24.dp),
+        contentAlignment = Alignment.BottomCenter,
+    ) {
+        Surface(
+            shape = CircleShape,
+            color = scheme.surfaceContainerHigh.copy(alpha = 0.94f),
+            contentColor = scheme.onSurface,
+            tonalElevation = 3.dp,
+            shadowElevation = 10.dp,
+            border = BorderStroke(1.dp, scheme.outlineVariant.copy(alpha = 0.4f)),
+        ) {
             Row(
-                Modifier.fillMaxWidth().padding(horizontal = 16.dp),
-                horizontalArrangement = Arrangement.spacedBy(16.dp, Alignment.CenterHorizontally),
+                Modifier.padding(6.dp),
+                horizontalArrangement = Arrangement.spacedBy(2.dp),
                 verticalAlignment = Alignment.CenterVertically,
             ) {
-                val searchInteraction = remember { MutableInteractionSource() }
-                Box(
-                    Modifier
-                        .size(64.dp)
-                        .pressPhysics(searchInteraction, tilt = false, glowShape = CircleShape)
-                        .frostedGlass(CircleShape, glass, blur = 36.dp)
-                        .clickable(searchInteraction, null) {
-                            haptic.performHapticFeedback(HapticFeedbackType.SegmentTick)
-                            onSearch()
-                        },
-                    contentAlignment = Alignment.Center,
-                ) {
-                    BoldIcon(Icons.Rounded.Search, "חיפוש", Modifier.size(26.dp), tint = scheme.onSurface, weight = 0.6.dp)
-                }
-
-                CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Rtl) {
-                    Row(
+                items.forEach { (item, action) ->
+                    val (label, icon, active) = item
+                    val interaction = remember { MutableInteractionSource() }
+                    val tint = if (active) scheme.onSecondaryContainer else scheme.onSurfaceVariant
+                    Column(
                         Modifier
-                            .width(capsuleWidth)
-                            .height(68.dp)
-                            .frostedGlass(RoundedCornerShape(50), glass, blur = 36.dp)
-                            .padding(horizontal = 6.dp, vertical = 6.dp),
-                        horizontalArrangement = Arrangement.spacedBy(2.dp),
-                        verticalAlignment = Alignment.CenterVertically,
+                            .width(itemWidth)
+                            .height(56.dp)
+                            .pressPhysics(interaction, tilt = false, glowShape = CircleShape)
+                            .clip(CircleShape)
+                            .background(if (active) scheme.secondaryContainer else Color.Transparent)
+                            .clickable(interaction, null) {
+                                haptic.performHapticFeedback(HapticFeedbackType.SegmentTick)
+                                action()
+                            },
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.Center,
                     ) {
-                        tabs.forEach { tab ->
-                            val active = !searchOpen && selected == tab
-                            val tabInteraction = remember { MutableInteractionSource() }
-                            Column(
-                                Modifier
-                                    .weight(1f)
-                                    .fillMaxHeight()
-                                    .pressPhysics(tabInteraction, tilt = false, glowShape = RoundedCornerShape(50))
-                                    .clip(RoundedCornerShape(50))
-                                    .background(if (active) Color.White.copy(alpha = 0.16f) else Color.Transparent)
-                                    .clickable(tabInteraction, null) {
-                                        haptic.performHapticFeedback(HapticFeedbackType.SegmentTick)
-                                        onSelect(tab)
-                                    },
-                                horizontalAlignment = Alignment.CenterHorizontally,
-                                verticalArrangement = Arrangement.Center,
-                            ) {
-                                BoldIcon(
-                                    tab.icon, tab.label, Modifier.size(22.dp),
-                                    tint = if (active) scheme.onSurface else scheme.onSurfaceVariant,
-                                    weight = if (active) 0.6.dp else 0.45.dp,
-                                )
-                                Spacer(Modifier.height(3.dp))
-                                Text(
-                                    tab.label,
-                                    color = if (active) scheme.onSurface else scheme.onSurfaceVariant,
-                                    fontSize = 10.5.sp,
-                                    fontWeight = if (active) FontWeight.SemiBold else FontWeight.Normal,
-                                    maxLines = 1,
-                                )
-                            }
-                        }
+                        BoldIcon(icon, label, Modifier.size(22.dp), tint = tint, weight = if (active) 0.6.dp else 0.45.dp)
+                        Spacer(Modifier.height(3.dp))
+                        Text(
+                            label,
+                            color = tint,
+                            fontSize = 10.5.sp,
+                            fontWeight = if (active) FontWeight.SemiBold else FontWeight.Normal,
+                            maxLines = 1,
+                        )
                     }
                 }
             }
