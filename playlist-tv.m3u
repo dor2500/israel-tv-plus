@@ -104,7 +104,7 @@ https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/karaoke/live.livx/
 #EXTINF:-1 tvg-id="" tvg-name="הכותל המערבי – שידור חי 24/7" tvg-chno="53" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/kotel_live_il.png" group-title="ערוצי ישראל",הכותל המערבי – שידור חי 24/7
 https://cdn1.cast-tv.com/23595/Live_Kotel3_ABR/playlist.m3u8
 #EXTINF:-1 tvg-id="TVRain.il" tvg-name="ערוץ דוז'ד ישראל HD (TV Rain)" tvg-chno="54" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/rain_tv_il.png" group-title="ערוצי ישראל",ערוץ דוז'ד ישראל HD (TV Rain)
-http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32156/index.m3u8
+https://wl.tvrain.tv/transcode/ngrp:ses_all/playlist.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="ערוץ הסטייל והאופנה HD" tvg-chno="55" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/il_the_style_channel_hd_il.png" group-title="ערוצי ישראל",ערוץ הסטייל והאופנה HD
 http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32155/index.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="רשת 13 ערוץ הנופש HD" tvg-chno="56" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/reshet13_nofesh_il.png" group-title="ערוצי ישראל",רשת 13 ערוץ הנופש HD
@@ -360,13 +360,13 @@ http://stream.mcquack.net/474/index.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="ערוץ הדרמות הטורקיות – סלקום ופרטנר TV HD" tvg-chno="184" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/turkish_dramas_cellcom_il.png" group-title="סרטים וסדרות",ערוץ הדרמות הטורקיות – סלקום ופרטנר TV HD
 http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2363/index.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="Pluto TV Action Movies FHD" tvg-chno="185" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hot_zone_plus_il.png" group-title="סרטים וסדרות",Pluto TV Action Movies FHD
-https://service-stitcher.clusters.pluto.tv/v1/stitch/embed/hls/channel/561d7d484dc7c8770484914a/master.m3u8?advertisingId=channel&appName=rokuchannel&appVersion=1.0&bmodel=bm1&channel_id=channel&content=channel&content_rating=ROKU_ADS_CONTENT_RATING&content_type=livefeed&coppa=false&deviceDNT=1&deviceId=channel&deviceMake=rokuChannel&deviceModel=web&deviceType=rokuChannel&deviceVersion=1.0&embedPartner=rokuChannel&genre=ROKU_ADS_CONTENT_GENRE&is_lat=1&platform=web&rdid=channel&studio_id=viacom&tags=ROKU_CONTENT_TAGS
+https://jmp2.uk/plu-561d7d484dc7c8770484914a.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="Pluto TV Sci-Fi FHD" tvg-chno="186" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hot_3_plus_il.png" group-title="סרטים וסדרות",Pluto TV Sci-Fi FHD
 https://service-stitcher.clusters.pluto.tv/v1/stitch/embed/hls/channel/5b4e92e4694c027be5ed7b68/master.m3u8?advertisingId=channel&appName=rokuchannel&appVersion=1.0&bmodel=bm1&channel_id=channel&content=channel&content_rating=ROKU_ADS_CONTENT_RATING&content_type=livefeed&coppa=false&deviceDNT=1&deviceId=channel&deviceMake=rokuChannel&deviceModel=web&deviceType=rokuChannel&deviceVersion=1.0&embedPartner=rokuChannel&genre=ROKU_ADS_CONTENT_GENRE&is_lat=1&platform=web&rdid=channel&studio_id=viacom&tags=ROKU_CONTENT_TAGS
 #EXTINF:-1 tvg-id="" tvg-name="Pluto TV Thrillers FHD" tvg-chno="187" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hot_zone_plus_il.png" group-title="סרטים וסדרות",Pluto TV Thrillers FHD
-https://service-stitcher.clusters.pluto.tv/v1/stitch/embed/hls/channel/5cb0cae7a461406ffe3f5213/master.m3u8?advertisingId=channel&appName=rokuchannel&appVersion=1.0&bmodel=bm1&channel_id=channel&content=channel&content_rating=ROKU_ADS_CONTENT_RATING&content_type=livefeed&coppa=false&deviceDNT=1&deviceId=channel&deviceMake=rokuChannel&deviceModel=web&deviceType=rokuChannel&deviceVersion=1.0&embedPartner=rokuChannel&genre=ROKU_ADS_CONTENT_GENRE&is_lat=1&platform=web&rdid=channel&studio_id=viacom&tags=ROKU_CONTENT_TAGS
+https://jmp2.uk/plu-5cb0cae7a461406ffe3f5213.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="Pluto TV Comedy Movies FHD" tvg-chno="188" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/cellcom_humor_il.png" group-title="סרטים וסדרות",Pluto TV Comedy Movies FHD
-https://service-stitcher.clusters.pluto.tv/v1/stitch/embed/hls/channel/5a4d3a00ad95e4718ae8d8db/master.m3u8?advertisingId=channel&appName=rokuchannel&appVersion=1.0&bmodel=bm1&channel_id=channel&content=channel&content_rating=ROKU_ADS_CONTENT_RATING&content_type=livefeed&coppa=false&deviceDNT=1&deviceId=channel&deviceMake=rokuChannel&deviceModel=web&deviceType=rokuChannel&deviceVersion=1.0&embedPartner=rokuChannel&genre=ROKU_ADS_CONTENT_GENRE&is_lat=1&platform=web&rdid=channel&studio_id=viacom&tags=ROKU_CONTENT_TAGS
+https://jmp2.uk/plu-5a4d3a00ad95e4718ae8d8db.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="ערוץ האוכל Food Network HD" tvg-chno="189" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/food_network_il.png" group-title="אוכל ובישול",ערוץ האוכל Food Network HD
 http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12209/index.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="ערוץ פודי Foody HD" tvg-chno="190" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/foody_tv.png" group-title="אוכל ובישול",ערוץ פודי Foody HD
@@ -430,7 +430,7 @@ https://fox-foxnewsnow-samsungus.amagi.tv/playlist.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="CBS News 24/7 FHD" tvg-chno="219" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/cbs_news_hd.png" group-title="חדשות מהעולם",CBS News 24/7 FHD
 https://cbsn-us.cbsnstream.cbsnews.com/out/v1/55a8648e8f134e82a470f83d562deeca/master.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="Bloomberg TV+ Business FHD" tvg-chno="220" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/bloomberg_tv_hd.png" group-title="חדשות מהעולם",Bloomberg TV+ Business FHD
-https://liveproduseast.global.ssl.fastly.net/us/Channel-USTV-AWS-virginia-1/Source-USTV-1000-1_live.m3u8
+https://www.bloomberg.com/media-manifest/streams/us.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="Scripps News USA FHD" tvg-chno="221" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/scripps_news_hd.png" group-title="חדשות מהעולם",Scripps News USA FHD
 https://aegis-cloudfront-1.tubi.video/7e1c26b7-7975-4240-9a4f-480eaa8f3ea4/playlist.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="Newsmax TV HD" tvg-chno="222" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/newsmax_hd.png" group-title="חדשות מהעולם",Newsmax TV HD
@@ -438,7 +438,7 @@ https://amg00217-newsmax-newsmax-zeasn-022k9.amagi.tv/playlist.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="TRT World News FHD" tvg-chno="223" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/trt_world_hd.png" group-title="חדשות מהעולם",TRT World News FHD
 https://tv-trtworld.medya.trt.com.tr/master.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="CGTN News English FHD" tvg-chno="224" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/cgtn_news_hd.png" group-title="חדשות מהעולם",CGTN News English FHD
-https://news.cgtn.com/resource/live/english/cgtn-news.m3u8
+https://english-livetx.cgtn.com/hls/yypdyyctzb_hd.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="CNBC Business Live HD" tvg-chno="225" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/bloomberg_tv_hd.png" group-title="חדשות מהעולם",CNBC Business Live HD
 https://service-stitcher.clusters.pluto.tv/v1/stitch/embed/hls/channel/5ced7d5959c03777c1212328/master.m3u8?advertisingId=channel&appName=rokuchannel&appVersion=1.0&bmodel=bm1&channel_id=channel&content=channel&content_rating=ROKU_ADS_CONTENT_RATING&content_type=livefeed&coppa=false&deviceDNT=1&deviceId=channel&deviceMake=rokuChannel&deviceModel=web&deviceType=rokuChannel&deviceVersion=1.0&embedPartner=rokuChannel&genre=ROKU_ADS_CONTENT_GENRE&is_lat=1&platform=web&rdid=channel&studio_id=viacom&tags=ROKU_CONTENT_TAGS
 #EXTINF:-1 tvg-id="NationalGeographic.il" tvg-name="נשיונל ג'יאוגרפיק ישראל HD (Nat Geo)" tvg-chno="226" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/nat_geo_il.png" group-title="טבע ודוקו",נשיונל ג'יאוגרפיק ישראל HD (Nat Geo)
@@ -546,48 +546,48 @@ http://stream.mcquack.net/197/index.m3u8
 #EXTINF:-1 tvg-id="Vgostyakhuskazki.ru" tvg-name="ערוץ אגדות וסיפורים HD (Fairy Tales Kids)" tvg-chno="417" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/fairy_tales_kids.png" group-title="ילדים מהעולם",ערוץ אגדות וסיפורים HD (Fairy Tales Kids)
 http://stream.mcquack.net/93/index.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="Pluto TV Spotlight Movies FHD" tvg-chno="418" tvg-logo="https://www.google.com/s2/favicons?domain=pluto.tv&sz=128" group-title="סרטים וסדרות",Pluto TV Spotlight Movies FHD
-https://service-stitcher.clusters.pluto.tv/stitch/hls/channel/5616f3c04f186d7d330c2e5a/master.m3u8?advertisingId=&appName=web&appVersion=unknown&deviceDNT=0&deviceId=5616f3c04f186d7d330c2e5a&deviceMake=web&deviceModel=web&deviceType=web&deviceVersion=unknown&marketingRegion=US&sid=5616f3c04f186d7d330c2e5a
+https://jmp2.uk/plu-5ba3fb9c4b078e0f37ad34e8.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="Pluto TV True Crime & Drama FHD" tvg-chno="419" tvg-logo="https://www.google.com/s2/favicons?domain=pluto.tv&sz=128" group-title="סרטים וסדרות",Pluto TV True Crime & Drama FHD
-https://service-stitcher.clusters.pluto.tv/stitch/hls/channel/5812b821249444e05d09cc49/master.m3u8?advertisingId=&appName=web&appVersion=unknown&deviceDNT=0&deviceId=5812b821249444e05d09cc49&deviceMake=web&deviceModel=web&deviceType=web&deviceVersion=unknown&marketingRegion=US&sid=5812b821249444e05d09cc49
+https://jmp2.uk/plu-65a6a7a00c7ff50008cba07b.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="Pluto TV Drama Movies FHD" tvg-chno="420" tvg-logo="https://www.google.com/s2/favicons?domain=pluto.tv&sz=128" group-title="סרטים וסדרות",Pluto TV Drama Movies FHD
-https://service-stitcher.clusters.pluto.tv/stitch/hls/channel/5812bd9f249444e05d09cc4e/master.m3u8?advertisingId=&appName=web&appVersion=unknown&deviceDNT=0&deviceId=5812bd9f249444e05d09cc4e&deviceMake=web&deviceModel=web&deviceType=web&deviceVersion=unknown&marketingRegion=US&sid=5812bd9f249444e05d09cc4e
+https://jmp2.uk/plu-5ddf91149880d60009d35d27.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="Pluto TV Horror Movies FHD" tvg-chno="421" tvg-logo="https://www.google.com/s2/favicons?domain=pluto.tv&sz=128" group-title="סרטים וסדרות",Pluto TV Horror Movies FHD
-https://service-stitcher.clusters.pluto.tv/stitch/hls/channel/569546031a619b8f07ce6e25/master.m3u8?advertisingId=&appName=web&appVersion=unknown&deviceDNT=0&deviceId=569546031a619b8f07ce6e25&deviceMake=web&deviceModel=web&deviceType=web&deviceVersion=unknown&marketingRegion=US&sid=569546031a619b8f07ce6e25
+https://jmp2.uk/plu-569546031a619b8f07ce6e25.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="MLB Baseball Live FHD" tvg-chno="422" tvg-logo="https://www.google.com/s2/favicons?domain=mlb.com&sz=128" group-title="ספורט",MLB Baseball Live FHD
-https://service-stitcher.clusters.pluto.tv/stitch/hls/channel/5e66968a70f34c0007d050be/master.m3u8?advertisingId=&appName=web&appVersion=unknown&deviceDNT=0&deviceId=5e66968a70f34c0007d050be&deviceMake=web&deviceModel=web&deviceType=web&deviceVersion=unknown&marketingRegion=US&sid=5e66968a70f34c0007d050be
+https://jmp2.uk/plu-5e66968a70f34c0007d050be.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="FOX Sports Live FHD" tvg-chno="423" tvg-logo="https://www.google.com/s2/favicons?domain=foxsports.com&sz=128" group-title="ספורט",FOX Sports Live FHD
-https://service-stitcher.clusters.pluto.tv/stitch/hls/channel/5a74b8e1e22a61737979c6bf/master.m3u8?advertisingId=&appName=web&appVersion=unknown&deviceDNT=0&deviceId=5a74b8e1e22a61737979c6bf&deviceMake=web&deviceModel=web&deviceType=web&deviceVersion=unknown&marketingRegion=US&sid=5a74b8e1e22a61737979c6bf
+https://jmp2.uk/plu-5a74b8e1e22a61737979c6bf.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="Pluto TV Classic Movies FHD" tvg-chno="424" tvg-logo="https://www.google.com/s2/favicons?domain=pluto.tv&sz=128" group-title="סרטים וסדרות",Pluto TV Classic Movies FHD
 https://service-stitcher.clusters.pluto.tv/stitch/hls/channel/561c5f613286e48904fb2677/master.m3u8?advertisingId=&appName=web&appVersion=unknown&deviceDNT=0&deviceId=561c5f613286e48904fb2677&deviceMake=web&deviceModel=web&deviceType=web&deviceVersion=unknown&marketingRegion=US&sid=561c5f613286e48904fb2677
 #EXTINF:-1 tvg-id="" tvg-name="beIN SPORTS XTRA FHD" tvg-chno="425" tvg-logo="https://www.google.com/s2/favicons?domain=beinsports.com&sz=128" group-title="ספורט",beIN SPORTS XTRA FHD
-https://service-stitcher.clusters.pluto.tv/stitch/hls/channel/5df975e2b27cf5000921c102/master.m3u8?advertisingId=&appName=web&appUpdateNotifications=false&appVersion=unknown&architecture=&buildVersion=&clientTime=0&deviceDNT=0&deviceId=5df975e2b27cf5000921c102&deviceLat=0&deviceLon=0&deviceMake=web&deviceModel=web&deviceType=web&deviceVersion=unknown&includeExtendedEvents=false&marketingRegion=US&sid=5df975e2b27cf5000921c102&userId=
+https://bein-xtra-bein.amagi.tv/playlist.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="Pluto TV Romance Movies FHD" tvg-chno="426" tvg-logo="https://www.google.com/s2/favicons?domain=pluto.tv&sz=128" group-title="סרטים וסדרות",Pluto TV Romance Movies FHD
-https://service-stitcher.clusters.pluto.tv/stitch/hls/channel/5a66795ef91fef2c7031c599/master.m3u8?advertisingId=&appName=web&appVersion=unknown&deviceDNT=0&deviceId=5a66795ef91fef2c7031c599&deviceMake=web&deviceModel=web&deviceType=web&deviceVersion=unknown&marketingRegion=US&sid=5a66795ef91fef2c7031c599
+https://jmp2.uk/plu-5dc287ce3086a20009f5024c.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="PGA Tour Golf Live FHD" tvg-chno="427" tvg-logo="https://www.google.com/s2/favicons?domain=pgatour.com&sz=128" group-title="ספורט",PGA Tour Golf Live FHD
-https://service-stitcher.clusters.pluto.tv/stitch/hls/channel/5d48674d34ceb37d3c758a58/master.m3u8?advertisingId=&appName=web&appVersion=unknown&deviceDNT=0&deviceId=5d48674d34ceb37d3c758a58&deviceMake=web&deviceModel=web&deviceType=web&deviceVersion=unknown&marketingRegion=US&sid=5d48674d34ceb37d3c758a58
+https://d11k1mnrgfposz.cloudfront.net/playlist.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="Star Trek 24/7 Channel FHD" tvg-chno="428" tvg-logo="https://www.google.com/s2/favicons?domain=startrek.com&sz=128" group-title="סרטים וסדרות",Star Trek 24/7 Channel FHD
-https://service-stitcher.clusters.pluto.tv/stitch/hls/channel/5efbd39f8c4ce900075d7698/master.m3u8?advertisingId=&appName=web&appVersion=unknown&deviceDNT=0&deviceId=5efbd39f8c4ce900075d7698&deviceMake=web&deviceModel=web&deviceType=web&deviceVersion=unknown&marketingRegion=US&sid=5efbd39f8c4ce900075d7698
+https://jmp2.uk/plu-5efbd39f8c4ce900075d7698.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="צבי הנינג׳ה 24/7 — Totally Turtles FHD" tvg-chno="429" tvg-logo="https://www.google.com/s2/favicons?domain=nick.com&sz=128" group-title="ילדים מהעולם",צבי הנינג׳ה 24/7 — Totally Turtles FHD
-https://service-stitcher.clusters.pluto.tv/stitch/hls/channel/5cf96dad1652631e36d43320/master.m3u8?advertisingId=&appName=web&appVersion=unknown&deviceDNT=0&deviceId=5cf96dad1652631e36d43320&deviceMake=web&deviceModel=web&deviceType=web&deviceVersion=unknown&marketingRegion=US&sid=5cf96dad1652631e36d43320
+https://jmp2.uk/plu-5d6792bd6be2998ad0ccce30.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="רובוטריקים 24/7 — Transformers TV FHD" tvg-chno="430" tvg-logo="https://www.google.com/s2/favicons?domain=hasbro.com&sz=128" group-title="ילדים מהעולם",רובוטריקים 24/7 — Transformers TV FHD
 https://service-stitcher.clusters.pluto.tv/stitch/hls/channel/5f7790b9630f5d00074bc27c/master.m3u8?advertisingId=&appName=web&appVersion=unknown&deviceDNT=0&deviceId=5f7790b9630f5d00074bc27c&deviceMake=web&deviceModel=web&deviceType=web&deviceVersion=unknown&marketingRegion=US&sid=5f7790b9630f5d00074bc27c
 #EXTINF:-1 tvg-id="" tvg-name="Nick Pluto TV Kids FHD" tvg-chno="431" tvg-logo="https://www.google.com/s2/favicons?domain=nick.com&sz=128" group-title="ילדים מהעולם",Nick Pluto TV Kids FHD
-https://service-stitcher.clusters.pluto.tv/stitch/hls/channel/5ca673e0d0bd6c2689c94ce3/master.m3u8?advertisingId=&appName=web&appVersion=unknown&deviceDNT=0&deviceId=5ca673e0d0bd6c2689c94ce3&deviceMake=web&deviceModel=web&deviceType=web&deviceVersion=unknown&marketingRegion=US&sid=5ca673e0d0bd6c2689c94ce3
+https://jmp2.uk/plu-5ca673e0d0bd6c2689c94ce3.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="מטבחי הגיהנום 24/7 — Hell's Kitchen FHD" tvg-chno="432" tvg-logo="https://www.google.com/s2/favicons?domain=fox.com&sz=128" group-title="אוכל ובישול",מטבחי הגיהנום 24/7 — Hell's Kitchen FHD
 https://service-stitcher.clusters.pluto.tv/stitch/hls/channel/5d48678992e97a7e088d658a/master.m3u8?advertisingId=&appName=web&appVersion=unknown&deviceDNT=0&deviceId=5d48678992e97a7e088d658a&deviceMake=web&deviceModel=web&deviceType=web&deviceVersion=unknown&marketingRegion=US&sid=5d48678992e97a7e088d658a
 #EXTINF:-1 tvg-id="" tvg-name="Smithsonian Channel Selects FHD" tvg-chno="433" tvg-logo="https://www.google.com/s2/favicons?domain=smithsonianchannel.com&sz=128" group-title="טבע ודוקו",Smithsonian Channel Selects FHD
 https://service-stitcher.clusters.pluto.tv/stitch/hls/channel/5e8df4bc59326700075a87d2/master.m3u8?advertisingId=&appName=web&appVersion=unknown&deviceDNT=0&deviceId=5e8df4bc59326700075a87d2&deviceMake=web&deviceModel=web&deviceType=web&deviceVersion=unknown&marketingRegion=US&sid=5e8df4bc59326700075a87d2
 #EXTINF:-1 tvg-id="" tvg-name="Vevo 90s Music Classics FHD" tvg-chno="434" tvg-logo="https://www.google.com/s2/favicons?domain=vevo.com&sz=128" group-title="מוזיקה",Vevo 90s Music Classics FHD
-https://service-stitcher.clusters.pluto.tv/stitch/hls/channel/5fd7b8bf927e090007685853/master.m3u8?advertisingId=&appName=web&appVersion=unknown&deviceDNT=0&deviceId=5fd7b8bf927e090007685853&deviceMake=web&deviceModel=web&deviceType=web&deviceVersion=unknown&marketingRegion=US&sid=5fd7b8bf927e090007685853
+https://jmp2.uk/plu-5fd7b8bf927e090007685853.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="גארפילד וחברים 24/7 FHD" tvg-chno="435" tvg-logo="https://www.google.com/s2/favicons?domain=garfield.com&sz=128" group-title="ילדים מהעולם",גארפילד וחברים 24/7 FHD
-https://service-stitcher.clusters.pluto.tv/stitch/hls/channel/60fb22f89f87050007bc18c3/master.m3u8?advertisingId=&appName=web&appVersion=unknown&deviceDNT=0&deviceId=60fb22f89f87050007bc18c3&deviceMake=web&deviceModel=web&deviceType=web&deviceVersion=unknown&marketingRegion=US&sid=60fb22f89f87050007bc18c3
+https://jmp2.uk/plu-677f927554f43dad4b3258aa.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="Pluto TV Science & Space FHD" tvg-chno="436" tvg-logo="https://www.google.com/s2/favicons?domain=pluto.tv&sz=128" group-title="טבע ודוקו",Pluto TV Science & Space FHD
 https://service-stitcher.clusters.pluto.tv/stitch/hls/channel/5812b4a3249444e05d09cc44/master.m3u8?advertisingId=&appName=web&appVersion=unknown&deviceDNT=0&deviceId=5812b4a3249444e05d09cc44&deviceMake=web&deviceModel=web&deviceType=web&deviceVersion=unknown&marketingRegion=US&sid=5812b4a3249444e05d09cc44
 #EXTINF:-1 tvg-id="" tvg-name="Vevo Pop Music Hits FHD" tvg-chno="437" tvg-logo="https://www.google.com/s2/favicons?domain=vevo.com&sz=128" group-title="מוזיקה",Vevo Pop Music Hits FHD
-https://service-stitcher.clusters.pluto.tv/stitch/hls/channel/5d93b635b43dd1a399b390d6/master.m3u8?advertisingId=&appName=web&appVersion=unknown&deviceDNT=0&deviceId=5d93b635b43dd1a399b390d6&deviceMake=web&deviceModel=web&deviceType=web&deviceVersion=unknown&marketingRegion=US&sid=5d93b635b43dd1a399b390d6
+https://amg00056-amg00056c6-rakuten-uk-3235.playouts.now.amagi.tv/playlist.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="CBS Sports HQ FHD" tvg-chno="438" tvg-logo="https://www.google.com/s2/favicons?domain=cbssports.com&sz=128" group-title="ספורט",CBS Sports HQ FHD
 https://dai.google.com/linear/hls/event/Sid4xiTQTkCT1SLu6rjUSQ/master.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="Nick Jr. Pluto TV FHD" tvg-chno="439" tvg-logo="https://www.google.com/s2/favicons?domain=nickjr.com&sz=128" group-title="ילדים מהעולם",Nick Jr. Pluto TV FHD
-https://service-stitcher.clusters.pluto.tv/stitch/hls/channel/5ca6748a37b88b269472dad9/master.m3u8?advertisingId=&appName=web&appVersion=unknown&deviceDNT=0&deviceId=5ca6748a37b88b269472dad9&deviceMake=web&deviceModel=web&deviceType=web&deviceVersion=unknown&marketingRegion=US&sid=5ca6748a37b88b269472dad9
+https://jmp2.uk/plu-5ca6748a37b88b269472dad9.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="CSI Crime Scene Investigation FHD" tvg-chno="440" tvg-logo="https://www.google.com/s2/favicons?domain=cbs.com&sz=128" group-title="סרטים וסדרות",CSI Crime Scene Investigation FHD
-https://service-stitcher.clusters.pluto.tv/stitch/hls/channel/5efbd29e4aa26700076c0d06/master.m3u8?advertisingId=&appName=web&appVersion=unknown&deviceDNT=0&deviceId=5efbd29e4aa26700076c0d06&deviceMake=web&deviceModel=web&deviceType=web&deviceVersion=unknown&marketingRegion=US&sid=5efbd29e4aa26700076c0d06
+https://jmp2.uk/plu-5efbd29e4aa26700076c0d06.m3u8

@@ -59,35 +59,42 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
 import com.israeltv.plus.data.AppPrefs
 import com.israeltv.plus.data.Channel
 import com.israeltv.plus.data.ChannelData
+import com.israeltv.plus.data.Category
 import com.israeltv.plus.ui.components.BoldIcon
+import com.israeltv.plus.ui.components.ChannelShelf
 import com.israeltv.plus.ui.components.ChannelCard
 import com.israeltv.plus.ui.components.SectionHeader
 import com.israeltv.plus.ui.components.ShelfSkeleton
 import com.israeltv.plus.ui.components.feedPadding
 import com.israeltv.plus.ui.components.frostedGlass
 import com.israeltv.plus.ui.components.rememberBitChordFlingBehavior
+import com.israeltv.plus.ui.theme.LocalDimens
 
-/** A two-column grid inside the master LazyColumn: one row item per pair (items(list.chunked(2))). */
+/** A poster grid inside the master LazyColumn: one row item per [columns] channels. */
 fun LazyListScope.channelGrid(
     list: List<Channel>,
     keyPrefix: String,
+    columns: Int,
+    gutter: Dp,
+    gap: Dp,
     logo: (Channel) -> String,
     subtitle: (Channel) -> String,
     onPlay: (Channel) -> Unit,
 ) {
-    items(list.chunked(2), key = { keyPrefix + it.first().id }) { row ->
+    items(list.chunked(columns), key = { keyPrefix + it.first().id }) { row ->
         Row(
-            Modifier.fillMaxWidth().padding(horizontal = 16.dp).padding(bottom = 18.dp),
-            horizontalArrangement = Arrangement.spacedBy(12.dp),
+            Modifier.fillMaxWidth().padding(horizontal = gutter).padding(bottom = gap * 2),
+            horizontalArrangement = Arrangement.spacedBy(gap),
         ) {
             row.forEach { ch -> ChannelCard(ch, logo(ch), subtitle(ch), { onPlay(ch) }, Modifier.weight(1f), sharedKey = keyPrefix + ch.id) }
-            if (row.size == 1) Spacer(Modifier.weight(1f))
+            repeat(columns - row.size) { Spacer(Modifier.weight(1f)) }
         }
     }
 }
@@ -105,10 +112,8 @@ private fun EmptyState(text: String) {
 }
 
 /**
- * Channels page: mirrors the Top Header architecture from the Home page.
- * - The 4 macro-categories (הכל, סרטים וסדרות, ילדים ונוער, ספורט) + "עוד..." pill are pinned at the TOP via AppHeader.
- * - The "רק ישראלי" (Israeli Only) switch is pinned right below these categories.
- * - The 2-column grid of channels is displayed below these pinned headers.
+ * Channels page, under the pinned macro-categories and "רק ישראלי" switch: a vertical list of categories, each a
+ * horizontal row of posters with a "הכל" action. Picking a category (either way) shows its full poster grid.
  */
 @Composable
 fun ChannelsScreen(
@@ -120,9 +125,11 @@ fun ChannelsScreen(
     logo: (Channel) -> String,
     subtitle: (Channel) -> String,
     onPlay: (Channel, List<Channel>) -> Unit,
+    onViewAll: (String) -> Unit,
     listState: LazyListState = rememberLazyListState(),
 ) {
     val scheme = MaterialTheme.colorScheme
+    val d = LocalDimens.current
     val basePadding = feedPadding(withCategories = true)
     val topInset = basePadding.calculateTopPadding()
     val bottomInset = basePadding.calculateBottomPadding()
@@ -149,26 +156,29 @@ fun ChannelsScreen(
                 items(4) { ShelfSkeleton() }
                 return@LazyColumn
             }
-            val categoryChannels = if (macroCategory == null) {
-                data.channels
-            } else {
-                data.categories.firstOrNull { it.name == macroCategory || it.key == macroCategory }?.channels.orEmpty()
+            val israeli: (Channel) -> Boolean = { it.categoryEn == "israel" || it.countryHe == "ישראל" }
+            if (macroCategory == null) {
+                val shelves = data.categories
+                    .map { c -> if (israeliOnly) Category(c.key, c.name, c.channels.filter(israeli)) else c }
+                    .filter { it.channels.isNotEmpty() }
+                if (shelves.isEmpty()) item(key = "empty") { EmptyState("עוד אין פה כלום...") }
+                items(shelves, key = { "cat:" + it.key }, contentType = { "shelf" }) { c ->
+                    ChannelShelf(
+                        c.name, c.channels.take(24), logo, subtitle, { onPlay(it, c.channels) },
+                        count = c.channels.size, onSeeAll = { onViewAll(c.name) },
+                    )
+                }
+                return@LazyColumn
             }
-            val list = if (israeliOnly) {
-                categoryChannels.filter { it.categoryEn == "israel" || it.countryHe == "ישראל" }
-            } else {
-                categoryChannels
-            }
+            val categoryChannels = data.categories.firstOrNull { it.name == macroCategory || it.key == macroCategory }?.channels.orEmpty()
+            val list = if (israeliOnly) categoryChannels.filter(israeli) else categoryChannels
             item(key = "count") {
-                SectionHeader(
-                    macroCategory ?: if (israeliOnly) "ערוצי ישראל" else "כל הערוצים",
-                )
+                SectionHeader(macroCategory)
                 Text(
                     "${list.size} ערוצים",
-                    Modifier.padding(start = 18.dp, bottom = 12.dp),
+                    Modifier.padding(start = d.gutter, bottom = 16.dp),
                     color = scheme.onSurfaceVariant,
-                    fontSize = 11.5.sp,
-                    fontWeight = FontWeight.Light,
+                    style = MaterialTheme.typography.bodySmall,
                 )
             }
             if (list.isEmpty()) {
@@ -176,7 +186,7 @@ fun ChannelsScreen(
                     EmptyState("עוד אין פה כלום...")
                 }
             } else {
-                channelGrid(list, "c:", logo, subtitle) { onPlay(it, list) }
+                channelGrid(list, "c:", d.gridColumns, d.gutter, d.cardGap, logo, subtitle) { onPlay(it, list) }
             }
         }
 
@@ -222,16 +232,17 @@ fun MineScreen(
     subtitle: (Channel) -> String,
     onPlay: (Channel, List<Channel>) -> Unit,
 ) {
+    val d = LocalDimens.current
     LazyColumn(Modifier.fillMaxSize(), contentPadding = feedPadding(withCategories = false), flingBehavior = rememberBitChordFlingBehavior()) {
         if (data == null) return@LazyColumn
         val favs = prefs.favorites.mapNotNull { data.byId[it] }
         val recent = prefs.recents.mapNotNull { data.byId[it] }
         item(key = "fh") { SectionHeader("הרשימה שלי") }
         if (favs.isEmpty()) item(key = "fe") { EmptyState("עוד אין פה כלום...") }
-        else channelGrid(favs, "f:", logo, subtitle) { onPlay(it, favs) }
+        else channelGrid(favs, "f:", d.gridColumns, d.gutter, d.cardGap, logo, subtitle) { onPlay(it, favs) }
         item(key = "rh") { SectionHeader("המשך צפייה") }
         if (recent.isEmpty()) item(key = "re") { EmptyState("עוד אין פה כלום...") }
-        else channelGrid(recent, "r:", logo, subtitle) { onPlay(it, recent) }
+        else channelGrid(recent, "r:", d.gridColumns, d.gutter, d.cardGap, logo, subtitle) { onPlay(it, recent) }
     }
 }
 
@@ -245,6 +256,7 @@ fun SearchOverlay(
     onClose: () -> Unit,
 ) {
     val scheme = MaterialTheme.colorScheme
+    val d = LocalDimens.current
     var query by rememberSaveable { mutableStateOf("") }
     val focus = remember { FocusRequester() }
     val keyboard = LocalSoftwareKeyboardController.current
@@ -273,7 +285,7 @@ fun SearchOverlay(
                 )
             }
             if (q.isNotEmpty() && results.isEmpty()) item(key = "e") { EmptyState("עוד אין פה כלום...") }
-            channelGrid(results, "s:", logo, subtitle) { focusManager.clearFocus(); onPlay(it, results) }
+            channelGrid(results, "s:", d.gridColumns, d.gutter, d.cardGap, logo, subtitle) { focusManager.clearFocus(); onPlay(it, results) }
         }
         Row(
             Modifier

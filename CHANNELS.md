@@ -1,6 +1,6 @@
 # 📺 כל הערוצים – ישראל TV+
 
-נוצר אוטומטית מ-`channels.json` (`tools/make_channel_list.py`). **440** פריטים: **297** ערוצי טלוויזיה, **143** תחנות רדיו ו-**0** שירותי מנויים, מ-**6** מדינות. 312 מהם מתנגנים גם באתר; כל השאר באפליקציות (Android, טלוויזיה, Windows, Mac, Linux) וב-Stremio.
+נוצר אוטומטית מ-`channels.json` (`tools/make_channel_list.py`). **440** פריטים: **297** ערוצי טלוויזיה, **143** תחנות רדיו ו-**0** שירותי מנויים, מ-**6** מדינות. 313 מהם מתנגנים גם באתר; כל השאר באפליקציות (Android, טלוויזיה, Windows, Mac, Linux) וב-Stremio.
 
 **▶ צפייה:** https://dor2500.github.io/israel-tv-plus/ · **🎬 Stremio:** https://dor2500.github.io/israel-tv-plus/stremio/ · **📋 מקור כל שידור:** [SOURCES.md](SOURCES.md)
 
@@ -77,7 +77,7 @@
 | 51 | <img src="assets/logos/freetv_doco_il.png" width="56" alt=""> | **FreeTV דוקו ישראלי HD** | 🇮🇱 ישראל | עברית | FHD | 🌐 אתר + 📲 אפליקציות |
 | 52 | <img src="assets/logos/karaoke_il.png" width="56" alt=""> | **ערוץ הקריוקי הישראלי HD** | 🇮🇱 ישראל | עברית | FHD | 🌐 אתר + 📲 אפליקציות |
 | 53 | <img src="assets/logos/kotel_live_il.png" width="56" alt=""> | **הכותל המערבי – שידור חי 24/7** | 🇮🇱 ישראל | עברית | HD | 🌐 אתר + 📲 אפליקציות |
-| 54 | <img src="assets/logos/rain_tv_il.png" width="56" alt=""> | **ערוץ דוז'ד ישראל HD (TV Rain)** | 🇮🇱 ישראל | רוסית | HD | 📲 אפליקציות בלבד |
+| 54 | <img src="assets/logos/rain_tv_il.png" width="56" alt=""> | **ערוץ דוז'ד ישראל HD (TV Rain)** | 🇮🇱 ישראל | רוסית | HD | 🌐 אתר + 📲 אפליקציות |
 | 55 | <img src="assets/logos/il_the_style_channel_hd_il.png" width="56" alt=""> | **ערוץ הסטייל והאופנה HD** | 🇮🇱 ישראל |  | HD | 📲 אפליקציות בלבד |
 | 56 | <img src="assets/logos/reshet13_nofesh_il.png" width="56" alt=""> | **רשת 13 ערוץ הנופש HD** | 🇮🇱 ישראל |  | HD | 🌐 אתר + 📲 אפליקציות |
 | 57 | <img src="assets/logos/reshet13_reality_il.png" width="56" alt=""> | **רשת 13 ערוץ הריאליטי HD** | 🇮🇱 ישראל |  | HD | 🌐 אתר + 📲 אפליקציות |

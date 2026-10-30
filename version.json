@@ -1,51 +1,56 @@
 {
-  "version": "4.6.4",
-  "code": 202610281307,
-  "app": 564,
+  "version": "4.6.5",
+  "code": 202610301410,
+  "app": 565,
   "shell": 3,
-  "date": "2026-10-28",
+  "date": "2026-10-30",
   "notes": [
-    "סרגל ניווט צף מקורי של Nuvio (FloatingTabBar): שוחזר במדויק קוד סרגל הניווט הצף של Nuvio כולל הריווחים, המבנה הדו-רכיבי (64.dp כפתור חיפוש מעגלי ו-68.dp קפסולת טאבים) וסט האייקונים המקורי ללא מלבן רקע מלא מאחורי הסרגל וללא רקעים אטומים מאחורי האייקונים, כשהוא מורם מעל קצה המסך באמצעות Modifier.navigationBarsPadding().padding(bottom = 24.dp).",
-    "פקדי נגן הווידאו של Nuvio בפריסה רחבה (Arrangement.SpaceBetween) ותווית \"אפשרויות\": יובאו והוטמעו אייקוני הווקטור הרשמיים של נגן Nuvio (ic_player_play, ic_player_pause, ic_player_audio_filled, ic_player_episodes, ic_player_source, ic_player_aspect_ratio) ללא קפסולות רקע מאחוריהם; פקדי התחתית בנגן (Dock) נפרסו מקצה שמאל לקצה ימין באמצעות Arrangement.SpaceBetween; ותווית כפתור ההגדרות בנגן הוחלפה מ-\"הגדרות\" ל-\"אפשרויות\".",
-    "רקע שחור OLED כברירת מחדל (#000000), ניקיון ה-Header הגלובלי ותיקוני אזור ה-Hero: נוספה הגדרת רקע OLED Black המופעלת כברירת מחדל (#000000 טהור) תוך שמירה מלאה על הילת הצבע האדומה באזור ה-Hero; הוסרו אייקוני ה-Cast ופיצול המסך מהסרגל העליון הראשי כך שיופיעו אך ורק בתוך הנגן; תוקנה חפיפת כפתור \"צפייה\" מול הקטגוריות העליונות באמצעות הגדלת מרווח ה-Hero ודעיכה חלקה בגלילה; ולוגו הערוץ הראשי ב-Hero הוגבל עם Modifier.heightIn(max = 80.dp).",
-    "כרטיסי \"המשך צפייה\" בפורמט קולנועי 16:9 ומתג \"רק ישראלי\" טבעי של Material 3: הוחל Modifier.aspectRatio(16f / 9f) ישירות על הכרטיסים והתמונות של \"המשך צפייה\" ליצירת תצוגת מסך רחב אמיתית, והוטמע רכיב Switch מקורי של Material You (Material 3) עבור \"רק ישראלי\" עם האנימציות והפיזיקה הטבעיות של המערכת ללא שום דריסה."
+    "נגן נקי בסגנון YouTube בטלפון: הפקדים נדחפו לקצוות המסך; שידור חי ושם הערוץ בצד אחד, גודל תמונה (16:9, חיתוך, מלא) ו\"אפשרויות\" בצד השני, עם כפתורים שמשנים צורה בלחיצה.",
+    "חלון \"אפשרויות\" חדש: שמע, חלון צף, שרתים, פיצול מסך ועוד עברו לחלון תחתון עם טשטוש מאחוריו (מ-Android 12).",
+    "בחירת איכות וידאו: חלון חדש עם הרזולוציות שהשידור מציע, או בחירה אוטומטית.",
+    "כרטיסי פוסטר אנכיים: כל כרטיסי הערוצים ביחס 2:3, ו\"המשך צפייה\" נשאר 16:9.",
+    "עמוד ערוצים חדש: שורות לפי קטגוריה עם כפתור \"הכל\" במקום רשת שטוחה.",
+    "Hero וסרגל ניווט: מידות חדשות בהשראת Nuvio.",
+    "מסך שגיאה וחלון שידור למסך: עיצוב נקי ומינימליסטי יותר, ובלי אימוג'י בנגן.",
+    "טלוויזיה: רקע שחור מלא, בלי טשטוש, הגדלה של 1.1 עם מסגרת לבנה בפוקוס, ובנגן נשארים רק הפעלה/השהיה ו\"אפשרויות\", שנפתחות כפאנל צד.",
+    "עדכון רשימת הערוצים ומקורות השידור."
   ],
   "native": {
     "android": {
-      "version": "4.6.4",
-      "app": 564,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.4/IsraelTVPlus-android.apk"
+      "version": "4.6.5",
+      "app": 565,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.5/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "4.6.4",
-      "app": 564,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.4/IsraelTVPlus-windows-setup.exe"
+      "version": "4.6.5",
+      "app": 565,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.5/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "4.6.4",
-      "app": 564,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.4/com.israeltv.plus_all.ipk",
+      "version": "4.6.5",
+      "app": 565,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.5/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "4.6.4",
-      "app": 564,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.4/IsraelTVPlus-tizen-project.zip"
+      "version": "4.6.5",
+      "app": 565,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.5/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "4.6.4",
-      "app": 564,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.4/IsraelTVPlus-macos-arm64.zip"
+      "version": "4.6.5",
+      "app": 565,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.5/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "4.6.4",
-      "app": 564,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.4/IsraelTVPlus-linux-x64.zip"
+      "version": "4.6.5",
+      "app": 565,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.5/IsraelTVPlus-linux-x64.zip"
     },
     "wear": {
-      "version": "4.6.4",
-      "app": 1000464,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.4/IsraelTVPlus-wearos.apk"
+      "version": "4.6.5",
+      "app": 1000465,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.6.5/IsraelTVPlus-wearos.apk"
     }
   }
 }

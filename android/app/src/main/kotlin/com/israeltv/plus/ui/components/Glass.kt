@@ -45,6 +45,7 @@ import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.israeltv.plus.ui.theme.LocalDarkTheme
+import com.israeltv.plus.ui.theme.LocalDimens
 import dev.chrisbanes.haze.HazeInput
 import dev.chrisbanes.haze.HazeState
 import dev.chrisbanes.haze.blur.HazeBlurStyle
@@ -79,7 +80,7 @@ fun Modifier.frostedGlass(
     border: Boolean = true,
     mask: Brush? = null,
 ): Modifier = composed {
-    val haze = LocalHaze.current
+    val haze = LocalHaze.current.takeIf { LocalDimens.current.blurAllowed }
     val clipped = clip(shape)
     val glass = if (haze != null) {
         clipped.hazeBlur(

@@ -25,6 +25,7 @@ import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.pager.HorizontalPager
@@ -68,6 +69,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.boundsInRoot
 import androidx.compose.ui.layout.layout
 import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.platform.LocalLayoutDirection
@@ -113,10 +115,11 @@ import com.israeltv.plus.ui.components.pressPhysics
 import com.israeltv.plus.ui.components.rememberBitChordFlingBehavior
 import com.israeltv.plus.ui.components.sharedContainer
 import com.israeltv.plus.ui.theme.LocalDarkTheme
+import com.israeltv.plus.ui.theme.LocalDimens
 import kotlinx.coroutines.delay
 import kotlin.math.abs
 
-private val HeroShape = RoundedCornerShape(0.dp)
+private val HeroShape = RoundedCornerShape(bottomStart = 28.dp, bottomEnd = 28.dp)
 
 /**
  * Home: one master LazyColumn - the full-bleed hero with parallax & graceful fallback, the "רק ישראלי" switch
@@ -160,7 +163,7 @@ fun HomeScreen(
         flingBehavior = rememberBitChordFlingBehavior(),
     ) {
         if (data == null) {
-            item { Box(Modifier.bleedToTop(padding).padding(bottom = 28.dp).fillMaxWidth().height(580.dp).glassShimmer(HeroShape)) }
+            item { Box(Modifier.bleedToTop(padding).padding(bottom = 28.dp).fillMaxWidth().height((LocalConfiguration.current.screenHeightDp * 0.82f).dp.coerceIn(360.dp, 760.dp)).glassShimmer(HeroShape)) }
             items(4) { ShelfSkeleton() }
             return@LazyColumn
         }
@@ -179,7 +182,7 @@ fun HomeScreen(
         item(key = "israeli-only-filter") {
             IsraeliOnlySwitch(
                 checked = israeliOnly,
-                modifier = Modifier.padding(top = 12.dp, bottom = 16.dp).cascadeIn(1),
+                modifier = Modifier.padding(top = 16.dp, bottom = 24.dp).cascadeIn(1),
                 onPositioned = onSwitchPositioned,
                 onCheckedChange = onIsraeliOnlyChange,
             )
@@ -261,7 +264,7 @@ internal fun IsraeliOnlySwitch(
     Row(
         modifier
             .fillMaxWidth()
-            .padding(horizontal = 20.dp, vertical = 4.dp),
+            .padding(horizontal = LocalDimens.current.gutter, vertical = 4.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically,
     ) {
@@ -314,16 +317,15 @@ private fun HeroPager(
         }
         // Capsule page indicator: the active dot stretches to 24 dp
         Row(
-            Modifier.align(Alignment.BottomCenter).padding(bottom = 6.dp),
-            horizontalArrangement = Arrangement.Center,
+            Modifier.align(Alignment.BottomCenter).padding(bottom = 12.dp),
+            horizontalArrangement = Arrangement.spacedBy(8.dp),
         ) {
             repeat(featured.size) { i ->
                 val on = i == pager.currentPage
-                val w by animateDpAsState(if (on) 24.dp else 6.dp, spring(Spring.DampingRatioMediumBouncy, Spring.StiffnessMediumLow), label = "dot")
+                val w by animateDpAsState(if (on) 32.dp else 8.dp, spring(Spring.DampingRatioMediumBouncy, Spring.StiffnessMediumLow), label = "dot")
                 Box(
                     Modifier
-                        .padding(horizontal = 3.dp)
-                        .height(6.dp)
+                        .height(8.dp)
                         .width(w)
                         .clip(RoundedCornerShape(50))
                         .background(MaterialTheme.colorScheme.onSurface.copy(alpha = if (on) 1f else 0.3f))
@@ -548,7 +550,9 @@ private fun HeroPage(
     val quality = ch.badge.ifBlank { if (ch.isRadio) "רדיו" else "FHD" }
     val where = if (ch.categoryEn == "israel") "ערוצי ישראל" else shortCategory(ch.category)
     val (glowPrimary, glowSecondary) = remember(ch.id, scheme.primary) { dominantHeroGlowColors(ch, scheme.primary) }
-    val heroHeight = (topInset + 480.dp).coerceAtLeast(640.dp)
+    val d = LocalDimens.current
+    // 82% of the viewport, within 360-760 dp
+    val heroHeight = (LocalConfiguration.current.screenHeightDp * 0.82f).dp.coerceIn(360.dp, 760.dp)
     val foregroundAlpha = (1f - (scrollOffsetPx / 260f)).coerceIn(0f, 1f)
 
     var videoReady by remember(ch.id, playBackground) { mutableStateOf(false) }
@@ -564,7 +568,7 @@ private fun HeroPage(
             .fillMaxWidth()
             .height(heroHeight)
             .sharedContainer(key, HeroShape)
-            .clipToBounds()
+            .clip(HeroShape)
             .background(Color.Black)
     ) {
         // Heavily blurred dynamic color Ambient Glow behind the Hero preview video (preserved untouched)
@@ -630,29 +634,38 @@ private fun HeroPage(
             }
         }
 
-        // Ambient glow halo + bottom gradient blending the hero edge into the feed background
+        // Overall veil, then a dedicated fade into the feed background
         Box(
             Modifier.fillMaxSize().background(
                 Brush.verticalGradient(
-                    0f to Color.Transparent,
-                    0.54f to Color.Transparent,
-                    0.76f to glowPrimary.copy(alpha = 0.18f),
-                    0.91f to scheme.surfaceContainerLowest.copy(alpha = 0.80f),
-                    1f to scheme.surfaceContainerLowest,
+                    listOf(
+                        scheme.background.copy(alpha = 0.02f),
+                        scheme.background.copy(alpha = 0.12f),
+                        scheme.background.copy(alpha = 0.34f),
+                        scheme.background.copy(alpha = 0.78f),
+                    )
                 )
             )
+        )
+        Box(
+            Modifier
+                .align(Alignment.BottomCenter)
+                .fillMaxWidth()
+                .height(d.heroBottomFade)
+                .background(Brush.verticalGradient(listOf(scheme.background.copy(alpha = 0f), scheme.background)))
         )
 
         Column(
             Modifier
                 .align(Alignment.BottomCenter)
+                .widthIn(max = d.heroContentMaxWidth)
                 .fillMaxWidth()
-                .padding(top = topInset + 56.dp, start = 20.dp, end = 20.dp, bottom = 26.dp)
+                .padding(top = topInset + 56.dp, start = d.heroContentPadding, end = d.heroContentPadding, bottom = 40.dp)
                 .graphicsLayer { alpha = foregroundAlpha },
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Box(
-                Modifier.heightIn(max = 80.dp),
+                Modifier.fillMaxWidth(0.72f).aspectRatio(2.6f),
                 contentAlignment = Alignment.Center,
             ) {
                 Box(
@@ -674,8 +687,7 @@ private fun HeroPage(
                         model = logo,
                         contentDescription = ch.name,
                         modifier = Modifier
-                            .fillMaxWidth(0.46f)
-                            .heightIn(max = 80.dp),
+                            .fillMaxSize(),
                         contentScale = ContentScale.Fit,
                     )
                 } else {
@@ -688,16 +700,16 @@ private fun HeroPage(
                 Spacer(Modifier.height(4.dp))
                 Text(ch.name, style = MaterialTheme.typography.titleLarge, color = scheme.onSurface, maxLines = 1, overflow = TextOverflow.Ellipsis)
             }
-            Spacer(Modifier.height(18.dp))
-            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+            Spacer(Modifier.height(16.dp))
+            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                 GlassIconButton(
-                    if (favorite) Icons.Rounded.Star else Icons.Rounded.StarBorder, "שמור", onFavorite, size = 43.dp,
+                    if (favorite) Icons.Rounded.Star else Icons.Rounded.StarBorder, "שמור", onFavorite, size = 48.dp,
                     tint = scheme.onSurface.copy(alpha = 0.14f), iconTint = if (favorite) Color(0xFFFFD54F) else scheme.onSurface,
                 )
                 val playInteraction = remember { MutableInteractionSource() }
                 val playPressed by playInteraction.collectIsPressedAsState()
                 val playCorner by animateDpAsState(
-                    targetValue = if (playPressed) 12.dp else 22.dp,
+                    targetValue = if (playPressed) 16.dp else 40.dp,
                     animationSpec = spring(dampingRatio = 0.56f, stiffness = Spring.StiffnessMedium),
                     label = "heroPlayMorph",
                 )
@@ -714,17 +726,17 @@ private fun HeroPage(
                         containerColor = if (dark) Color.White else scheme.onSurface,
                         contentColor = if (dark) Color.Black else scheme.surface,
                     ),
-                    contentPadding = PaddingValues(horizontal = 28.dp),
+                    contentPadding = PaddingValues(horizontal = 28.dp, vertical = 12.dp),
                     modifier = Modifier
-                        .height(43.dp)
+                        .height(48.dp)
                         .pressPhysics(playInteraction, tilt = false, glowShape = playShape),
                 ) {
                     Icon(Icons.Rounded.PlayArrow, null, Modifier.size(21.dp))
                     Spacer(Modifier.width(5.dp))
-                    Text("צפייה", fontSize = 14.5.sp, fontWeight = FontWeight.SemiBold)
+                    Text("צפייה", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
                 }
                 GlassIconButton(
-                    Icons.Rounded.Info, "מידע", { onInfo(ch) }, size = 43.dp,
+                    Icons.Rounded.Info, "מידע", { onInfo(ch) }, size = 48.dp,
                     tint = scheme.onSurface.copy(alpha = 0.14f), iconTint = scheme.onSurface,
                 )
             }

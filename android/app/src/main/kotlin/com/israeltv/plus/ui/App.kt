@@ -302,7 +302,11 @@ private fun Feed(
     val restCategories = remember(pool) { pool.filter { it.name !in MacroCategories } }
 
     BackHandler(enabled = s.searchOpen || s.tab != Tab.Home) {
-        if (s.searchOpen) s.searchOpen = false else s.tab = Tab.Home
+        when {
+            s.searchOpen -> s.searchOpen = false
+            s.tab == Tab.Channels && s.macroCategory != null -> s.macroCategory = null
+            else -> s.tab = Tab.Home
+        }
     }
 
     Box(Modifier.fillMaxSize()) {
@@ -362,6 +366,7 @@ private fun Feed(
                             logo = logo,
                             subtitle = subtitle,
                             onPlay = onPlay,
+                            onViewAll = { s.macroCategory = it },
                             listState = s.channelsList,
                         )
                         Tab.Mine -> MineScreen(data, prefs, logo, subtitle, onPlay)

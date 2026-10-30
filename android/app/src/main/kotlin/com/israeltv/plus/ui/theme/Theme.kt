@@ -100,6 +100,7 @@ fun ItvTheme(choice: ThemeChoice, content: @Composable () -> Unit) {
     }
     MaterialExpressiveTheme(colorScheme = scheme, motionScheme = MotionScheme.expressive(), typography = ItvTypography) {
         CompositionLocalProvider(
+            LocalDimens provides rememberDimens(),
             LocalDarkTheme provides choice.dark,
             LocalOledBlack provides (choice.dark && choice.oledBlack),
             LocalLayoutDirection provides LayoutDirection.Rtl,

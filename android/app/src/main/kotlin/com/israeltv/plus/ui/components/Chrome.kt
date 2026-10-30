@@ -1,6 +1,7 @@
 package com.israeltv.plus.ui.components
 
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.animateFloatAsState
@@ -67,6 +68,7 @@ import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
+import com.israeltv.plus.ui.theme.LocalDimens
 import com.israeltv.plus.ui.theme.LocalOledBlack
 
 enum class Tab(
@@ -86,7 +88,7 @@ fun feedPadding(withCategories: Boolean = true): PaddingValues {
     val top = WindowInsets.statusBars.asPaddingValues().calculateTopPadding()
     val bottom = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
     val headerHeight = if (withCategories) 114.dp else 72.dp
-    return PaddingValues(top = top + headerHeight, bottom = bottom + 118.dp)
+    return PaddingValues(top = top + headerHeight, bottom = bottom + LocalDimens.current.navHeight + 40.dp)
 }
 
 /**
@@ -320,6 +322,7 @@ fun FloatingTabBar(
     val haptic = LocalHapticFeedback.current
     val tabs = listOf(Tab.Home, Tab.Channels, Tab.Mine)
     val glass = Color.Black.copy(alpha = 0.25f)
+    val d = LocalDimens.current
 
     CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {
         BoxWithConstraints(
@@ -333,10 +336,10 @@ fun FloatingTabBar(
                 dampingRatio = 0.82f,
                 stiffness = Spring.StiffnessMediumLow,
             )
-            val capsuleTarget = (maxWidth - 112.dp - if (collapsed) 40.dp else 0.dp).coerceAtLeast(180.dp)
+            val capsuleTarget = (maxWidth - d.navHeight - 48.dp - if (collapsed) 40.dp else 0.dp).coerceIn(180.dp, d.navMaxWidth)
             val capsuleWidth by animateDpAsState(capsuleTarget, bouncy, label = "capsuleWidth")
-            val barHeight by animateDpAsState(if (collapsed) 52.dp else 68.dp, bouncy, label = "barHeight")
-            val searchSize by animateDpAsState(if (collapsed) 52.dp else 64.dp, bouncy, label = "searchSize")
+            val barHeight by animateDpAsState(if (collapsed) d.navHeightCollapsed else d.navHeight, bouncy, label = "barHeight")
+            val searchSize = barHeight
 
             Row(
                 Modifier.fillMaxWidth().padding(horizontal = 16.dp),
@@ -377,12 +380,17 @@ fun FloatingTabBar(
                         tabs.forEach { tab ->
                             val active = !searchOpen && selected == tab
                             val tabInteraction = remember { MutableInteractionSource() }
+                            val indicator by animateColorAsState(
+                                if (active) scheme.primary.copy(alpha = 0.18f) else Color.Transparent,
+                                label = "tabIndicator",
+                            )
                             Column(
                                 Modifier
                                     .weight(1f)
                                     .fillMaxHeight()
                                     .pressPhysics(tabInteraction, tilt = false, glowShape = RoundedCornerShape(50))
                                     .clip(RoundedCornerShape(50))
+                                    .background(indicator)
                                     .clickable(tabInteraction, null) {
                                         haptic.performHapticFeedback(HapticFeedbackType.SegmentTick)
                                         onSelect(tab)
@@ -407,7 +415,7 @@ fun FloatingTabBar(
                                         Text(
                                             tab.label,
                                             color = if (active) scheme.onSurface else scheme.onSurfaceVariant.copy(alpha = 0.65f),
-                                            fontSize = 10.5.sp,
+                                            style = MaterialTheme.typography.labelSmall,
                                             fontWeight = if (active) FontWeight.SemiBold else FontWeight.Medium,
                                             maxLines = 1,
                                         )

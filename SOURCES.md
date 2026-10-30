@@ -18,9 +18,9 @@
 ## ⚖️ מצב הזכויות – חשוב לדעת
 
 - **210 שידורים רשמיים** – מהשרתים של הגוף המשדר עצמו או של המפיץ שלו (כאן, 13, 14, i24NEWS, גלי צה"ל, תחנות הרדיו, DW, אל-ג'זירה...).
-- **24 ערוצי FAST** – ערוצים חינמיים עם פרסומות שהבעלים מפיצים בעצמם (Pluto TV, BabyFirst, LEGO, Baby Shark...).
+- **38 ערוצי FAST** – ערוצים חינמיים עם פרסומות שהבעלים מפיצים בעצמם (Pluto TV, BabyFirst, LEGO, Baby Shark...).
 - **0 ערוצים מהעולם** – שידורים פתוחים מהמאגר הציבורי iptv-org (ייבוא אוטומטי, `tools/import_iptv.py`): כל אחד נבדק שהוא משדר ושיש בו תמונה, ללא ערוצים שדורשים מנוי/כתובת מיוחדת. רובם מהשרתים של הערוצים עצמם, אבל הבעלים לא נבדקו אחד-אחד.
-- **206 ממסרי צד שלישי** – בעיקר `stream.mcquack.net` (35 ערוצים). אלה **אינם** השרתים של הערוצים: אתר חיצוני קולט את השידור ומפיץ אותו מחדש. בהם נמצאים גם ערוצים בתשלום (HOT, yes, viju/TV1000, ערוצי ספורט) – סביר מאוד שההפצה הזו **ללא רישיון** מבעלי הזכויות, והם עלולים להיעלם בכל רגע. ההחלטה אם להשאיר אותם היא שלך; הסקריפטים לא מוסיפים ממסרים חדשים של ערוצים בתשלום.
+- **192 ממסרי צד שלישי** – בעיקר `stream.mcquack.net` (35 ערוצים). אלה **אינם** השרתים של הערוצים: אתר חיצוני קולט את השידור ומפיץ אותו מחדש. בהם נמצאים גם ערוצים בתשלום (HOT, yes, viju/TV1000, ערוצי ספורט) – סביר מאוד שההפצה הזו **ללא רישיון** מבעלי הזכויות, והם עלולים להיעלם בכל רגע. ההחלטה אם להשאיר אותם היא שלך; הסקריפטים לא מוסיפים ממסרים חדשים של ערוצים בתשלום.
 - **שירותי המנויים** (פרטנר, סלקום, STING, yes, HOT) – אין בפרויקט שום שידור שלהם; הכרטיס רק פותח את האפליקציה/האתר הרשמי, וצפייה דורשת מנוי.
 
 > הסיווג רשמי / FAST / ממסר נקבע לפי שם השרת שממנו מגיע השידור (למשל CDN של הגוף המשדר), ולא אושר מול כל גוף משדר בנפרד.
@@ -29,16 +29,16 @@
 
 | שרת | מי זה | סוג | מספר |
 |---|---|---|---|
-| `b84203c4.ottrast.com` | b84203c4.ottrast.com | ⚠️ ממסר צד שלישי | 89 |
+| `b84203c4.ottrast.com` | b84203c4.ottrast.com | ⚠️ ממסר צד שלישי | 88 |
 | `d1zqtf09wb8nt5.cloudfront.net` | FreeTV – השידור הרשמי (AWS CloudFront) | ✅ רשמי | 66 |
 | `gb25.streamgates.net` | StreamGates – ערוצי רדיוס 100FM | ✅ רשמי | 60 |
 | `stream.mcquack.net` | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | 35 |
-| `service-stitcher.clusters.pluto.tv` | CDN רשמי (HTTPS) | ✅ FAST חינמי | 31 |
+| `jmp2.uk` | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | 22 |
 | `cdn.cybercdn.live` | CyberCDN – ה-CDN של תחנות הרדיו עצמן | ✅ רשמי | 18 |
+| `service-stitcher.clusters.pluto.tv` | CDN רשמי (HTTPS) | ✅ FAST חינמי | 11 |
 | `playerservices.streamtheworld.com` | Triton StreamTheWorld – מפיץ הרדיו של כאן | ✅ רשמי | 7 |
 | `edge1.il.kab.tv` | edge1.il.kab.tv | ⚠️ ממסר צד שלישי | 6 |
 | `glzwizzlv.bynetcdn.com` | גלי צה"ל / גלגלצ – CDN רשמי (Bynet) | ✅ רשמי | 6 |
-| `jmp2.uk` | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | 5 |
 | `cast.breslevforyou.co.il` | רדיו ברסלב – שרת התחנה | ✅ רשמי | 5 |
 | `icecast.kab.tv` | icecast.kab.tv | ⚠️ ממסר צד שלישי | 5 |
 | `kancdn.medonecdn.net` | כאן – תאגיד השידור (CDN רשמי) | ✅ רשמי | 3 |
@@ -67,6 +67,7 @@
 | `janya-digimix.akamaized.net` | Angel TV Hebrew – Akamai (רשמי) | ✅ רשמי | 1 |
 | `reshet.g-mana.live` | רשת 13 – השרת הרשמי (G-Mana) | ✅ רשמי | 1 |
 | `cdn1.cast-tv.com` | cdn1.cast-tv.com | ⚠️ ממסר צד שלישי | 1 |
+| `wl.tvrain.tv` | wl.tvrain.tv | ⚠️ ממסר צד שלישי | 1 |
 | `ynet-live-02.ynet-pic1.yit.co.il` | ynet-live-02.ynet-pic1.yit.co.il | ✅ רשמי | 1 |
 | `i24newsfrench-cdn.encoders.immergo.tv` | i24NEWS – שרת רשמי | ✅ רשמי | 1 |
 | `636ffd31f0e12.streamlock.net` | 636ffd31f0e12.streamlock.net | ⚠️ ממסר צד שלישי | 1 |
@@ -83,10 +84,10 @@
 | `turnerlive.warnermediacdn.com` | turnerlive.warnermediacdn.com | ⚠️ ממסר צד שלישי | 1 |
 | `fox-foxnewsnow-samsungus.amagi.tv` | fox-foxnewsnow-samsungus.amagi.tv | ⚠️ ממסר צד שלישי | 1 |
 | `cbsn-us.cbsnstream.cbsnews.com` | cbsn-us.cbsnstream.cbsnews.com | ⚠️ ממסר צד שלישי | 1 |
-| `liveproduseast.global.ssl.fastly.net` | liveproduseast.global.ssl.fastly.net | ⚠️ ממסר צד שלישי | 1 |
+| `www.bloomberg.com` | www.bloomberg.com | ⚠️ ממסר צד שלישי | 1 |
 | `amg00217-newsmax-newsmax-zeasn-022k9.amagi.tv` | amg00217-newsmax-newsmax-zeasn-022k9.amagi.tv | ⚠️ ממסר צד שלישי | 1 |
 | `tv-trtworld.medya.trt.com.tr` | tv-trtworld.medya.trt.com.tr | ⚠️ ממסר צד שלישי | 1 |
-| `news.cgtn.com` | news.cgtn.com | ⚠️ ממסר צד שלישי | 1 |
+| `english-livetx.cgtn.com` | english-livetx.cgtn.com | ⚠️ ממסר צד שלישי | 1 |
 | `skyfolk.mk` | Sky Folk Live | ✅ רשמי | 1 |
 | `stream.4fun.tv` | 4FUN TV – שרת רשמי | ✅ רשמי | 1 |
 | `176.118.197.101` | שרת IP ללא שם (1HD) | ⚠️ ממסר צד שלישי | 1 |
@@ -95,6 +96,9 @@
 | `cdn.fast.jwp.services` | BabyFirst – JW Player FAST | ✅ FAST חינמי | 1 |
 | `zoomoo-samsungau.amagi.tv` | amagi.tv | ✅ FAST חינמי | 1 |
 | `dltiqboxjw21d.cloudfront.net` | LEGO Channel – AWS CloudFront FAST | ✅ FAST חינמי | 1 |
+| `bein-xtra-bein.amagi.tv` | bein-xtra-bein.amagi.tv | ⚠️ ממסר צד שלישי | 1 |
+| `d11k1mnrgfposz.cloudfront.net` | d11k1mnrgfposz.cloudfront.net | ⚠️ ממסר צד שלישי | 1 |
+| `amg00056-amg00056c6-rakuten-uk-3235.playouts.now.amagi.tv` | amg00056-amg00056c6-rakuten-uk-3235.playouts.now.amagi.tv | ⚠️ ממסר צד שלישי | 1 |
 | `dai.google.com` | dai.google.com | ⚠️ ממסר צד שלישי | 1 |
 | `eco-live.mediacast.co.il` | eco99fm – Mediacast (רשמי) | ✅ רשמי | 1 |
 | `102.livecdn.biz` | 102FM – LiveCDN (רשמי) | ✅ רשמי | 1 |
@@ -185,7 +189,7 @@
 | 51 | FreeTV דוקו ישראלי HD | FreeTV – השידור הרשמי (AWS CloudFront) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
 | 52 | ערוץ הקריוקי הישראלי HD | FreeTV – השידור הרשמי (AWS CloudFront) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
 | 53 | הכותל המערבי – שידור חי 24/7 | cdn1.cast-tv.com | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
-| 54 | ערוץ דוז'ד ישראל HD (TV Rain) | b84203c4.ottrast.com | ⚠️ ממסר צד שלישי | iptv-org (TVRain.il) | ❌ רק באפליקציה (HTTP) |
+| 54 | ערוץ דוז'ד ישראל HD (TV Rain) | wl.tvrain.tv | ⚠️ ממסר צד שלישי | iptv-org (TVRain.il) | ✅ |
 | 55 | ערוץ הסטייל והאופנה HD | b84203c4.ottrast.com | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
 | 56 | רשת 13 ערוץ הנופש HD | ערוץ FAST ישראלי – AWS CloudFront | ✅ FAST חינמי | רשימה ידנית (גרסה קודמת) | ✅ |
 | 57 | רשת 13 ערוץ הריאליטי HD | ערוץ FAST ישראלי – AWS CloudFront | ✅ FAST חינמי | רשימה ידנית (גרסה קודמת) | ✅ |
@@ -258,10 +262,10 @@
 | 117 | ספורט 5 – שידור חי | ספורט 5 – השידור הרשמי של RGE (Akamai) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
 | 118 | יורוספורט 1 ישראל HD (Eurosport 1) | b84203c4.ottrast.com | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
 | 119 | Red Bull TV Extreme Sports FHD | Red Bull TV – Akamai (רשמי) | ✅ רשמי | סריקת רשת v4.6.0 | ✅ |
-| 422 | MLB Baseball Live FHD | service-stitcher.clusters.pluto.tv | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
-| 423 | FOX Sports Live FHD | service-stitcher.clusters.pluto.tv | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
-| 425 | beIN SPORTS XTRA FHD | service-stitcher.clusters.pluto.tv | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
-| 427 | PGA Tour Golf Live FHD | service-stitcher.clusters.pluto.tv | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 422 | MLB Baseball Live FHD | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 423 | FOX Sports Live FHD | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 425 | beIN SPORTS XTRA FHD | bein-xtra-bein.amagi.tv | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 427 | PGA Tour Golf Live FHD | d11k1mnrgfposz.cloudfront.net | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
 | 438 | CBS Sports HQ FHD | dai.google.com | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
 
 ## 📺 סרטים וסדרות (Movies & Series)
@@ -333,18 +337,18 @@
 | 182 | משפחת סימפסון 24/7 HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
 | 183 | קולנוע רטרו VHS Cinema HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
 | 184 | ערוץ הדרמות הטורקיות – סלקום ופרטנר TV HD | b84203c4.ottrast.com | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
-| 185 | Pluto TV Action Movies FHD | CDN רשמי (HTTPS) | ✅ FAST חינמי | סריקת רשת v4.6.0 | ✅ |
+| 185 | Pluto TV Action Movies FHD | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | סריקת רשת v4.6.0 | ✅ |
 | 186 | Pluto TV Sci-Fi FHD | CDN רשמי (HTTPS) | ✅ FAST חינמי | סריקת רשת v4.6.0 | ✅ |
-| 187 | Pluto TV Thrillers FHD | CDN רשמי (HTTPS) | ✅ FAST חינמי | סריקת רשת v4.6.0 | ✅ |
-| 188 | Pluto TV Comedy Movies FHD | CDN רשמי (HTTPS) | ✅ FAST חינמי | סריקת רשת v4.6.0 | ✅ |
-| 418 | Pluto TV Spotlight Movies FHD | service-stitcher.clusters.pluto.tv | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
-| 419 | Pluto TV True Crime & Drama FHD | service-stitcher.clusters.pluto.tv | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
-| 420 | Pluto TV Drama Movies FHD | service-stitcher.clusters.pluto.tv | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
-| 421 | Pluto TV Horror Movies FHD | service-stitcher.clusters.pluto.tv | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 187 | Pluto TV Thrillers FHD | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | סריקת רשת v4.6.0 | ✅ |
+| 188 | Pluto TV Comedy Movies FHD | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | סריקת רשת v4.6.0 | ✅ |
+| 418 | Pluto TV Spotlight Movies FHD | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 419 | Pluto TV True Crime & Drama FHD | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 420 | Pluto TV Drama Movies FHD | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 421 | Pluto TV Horror Movies FHD | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | רשימה ידנית (גרסה קודמת) | ✅ |
 | 424 | Pluto TV Classic Movies FHD | service-stitcher.clusters.pluto.tv | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
-| 426 | Pluto TV Romance Movies FHD | service-stitcher.clusters.pluto.tv | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
-| 428 | Star Trek 24/7 Channel FHD | service-stitcher.clusters.pluto.tv | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
-| 440 | CSI Crime Scene Investigation FHD | service-stitcher.clusters.pluto.tv | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 426 | Pluto TV Romance Movies FHD | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 428 | Star Trek 24/7 Channel FHD | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 440 | CSI Crime Scene Investigation FHD | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | רשימה ידנית (גרסה קודמת) | ✅ |
 
 ## 📺 אוכל ובישול (Food)
 
@@ -387,11 +391,11 @@
 | 217 | Fox News Channel HD | b84203c4.ottrast.com | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
 | 218 | FOX LiveNOW News HD | fox-foxnewsnow-samsungus.amagi.tv | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
 | 219 | CBS News 24/7 FHD | cbsn-us.cbsnstream.cbsnews.com | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
-| 220 | Bloomberg TV+ Business FHD | liveproduseast.global.ssl.fastly.net | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 220 | Bloomberg TV+ Business FHD | www.bloomberg.com | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
 | 221 | Scripps News USA FHD | aegis-cloudfront-1.tubi.video | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
 | 222 | Newsmax TV HD | amg00217-newsmax-newsmax-zeasn-022k9.amagi.tv | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
 | 223 | TRT World News FHD | tv-trtworld.medya.trt.com.tr | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
-| 224 | CGTN News English FHD | news.cgtn.com | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 224 | CGTN News English FHD | english-livetx.cgtn.com | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
 | 225 | CNBC Business Live HD | CDN רשמי (HTTPS) | ✅ FAST חינמי | סריקת רשת v4.6.0 | ✅ |
 
 ## 📺 טבע ודוקו (Documentary & Nature)
@@ -421,8 +425,8 @@
 | 239 | 4Fun TV Pop Hits HD | 4FUN TV – שרת רשמי | ✅ רשמי | iptv-org (4FunTV.pl) | ✅ |
 | 240 | ¡Viva Latino! Dance HD | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (VivaLatino.ua) | ❌ רק באפליקציה (HTTP) |
 | 241 | 1HD Music Television | שרת IP ללא שם (1HD) | ⚠️ ממסר צד שלישי | iptv-org (1HDMusicTelevision.ru) | ❌ רק באפליקציה (HTTP) |
-| 434 | Vevo 90s Music Classics FHD | service-stitcher.clusters.pluto.tv | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
-| 437 | Vevo Pop Music Hits FHD | service-stitcher.clusters.pluto.tv | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 434 | Vevo 90s Music Classics FHD | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 437 | Vevo Pop Music Hits FHD | amg00056-amg00056c6-rakuten-uk-3235.playouts.now.amagi.tv | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
 
 ## 📺 מסורת וקהילה
 
@@ -469,11 +473,11 @@
 | 415 | קרוסלה ערוץ הילדים HD (Carousel Kids) | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (Carousel.ru) | ✅ דרך מקור חלופי: Smotrim (VGTRK) – הבעלים של קרוסלה |
 | 416 | סי טי סי קידס HD (CTC Kids) | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (STSkids.ru) | ❌ רק באפליקציה (HTTP) |
 | 417 | ערוץ אגדות וסיפורים HD (Fairy Tales Kids) | mcquack.net – אתר ממסר (restream) של צד שלישי | ⚠️ ממסר צד שלישי | iptv-org (Vgostyakhuskazki.ru) | ✅ דרך מקור חלופי: Cinerama.uz – ספק IPTV באוזבקיסטן |
-| 429 | צבי הנינג׳ה 24/7 — Totally Turtles FHD | service-stitcher.clusters.pluto.tv | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 429 | צבי הנינג׳ה 24/7 — Totally Turtles FHD | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | רשימה ידנית (גרסה קודמת) | ✅ |
 | 430 | רובוטריקים 24/7 — Transformers TV FHD | service-stitcher.clusters.pluto.tv | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
-| 431 | Nick Pluto TV Kids FHD | service-stitcher.clusters.pluto.tv | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
-| 435 | גארפילד וחברים 24/7 FHD | service-stitcher.clusters.pluto.tv | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
-| 439 | Nick Jr. Pluto TV FHD | service-stitcher.clusters.pluto.tv | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 431 | Nick Pluto TV Kids FHD | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 435 | גארפילד וחברים 24/7 FHD | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 439 | Nick Jr. Pluto TV FHD | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | רשימה ידנית (גרסה קודמת) | ✅ |
 
 ## 📻 רדיו
 

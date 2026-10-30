@@ -145,6 +145,7 @@ dependencies {
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.foundation:foundation")
     implementation("androidx.compose.material3:material3:1.5.0-beta02")   // Material 3 Expressive
+    implementation("androidx.compose.material3:material3-window-size-class:1.5.0-beta02")
     implementation("androidx.compose.material:material-icons-extended")
     implementation("androidx.activity:activity-compose:1.13.0")
     implementation("androidx.core:core-ktx:1.19.1")

@@ -1681,3 +1681,42 @@ body.phone .slide-body {
 }
 
 
+
+/* ================================================================== TV (Apple TV aesthetic)
+ * Only non-phone bodies: pure black, deep #0B0B0E gradients and no blur anywhere, so phone glass never reaches a TV.
+ */
+html, body:not(.phone) { background: #000; }
+body:not(.phone), body.light:not(.phone) {
+  --bg: #000; --bg2: #0b0b0e; --surface: #16161a; --surface2: #202025; --container: #202025;
+  --text: #f5f7f8; --text2: #b8bec5; --muted: #969ca3; --dim: #6b7178; --focus: #fff; --focus-bg: #202025;
+  --line: #202025; --line2: #34343a;
+}
+body:not(.phone) .card.focused .card-logo, body:not(.phone) .atv-item.focused .atv-card {
+  -webkit-transform: scale3d(1.1, 1.1, 1) !important; transform: scale3d(1.1, 1.1, 1) !important;
+  border: 2px solid #fff !important;
+  box-shadow: 0 1.2rem 2.4rem rgba(0, 0, 0, .7), 0 3.2rem 6.4rem rgba(0, 0, 0, .85) !important;
+}
+/* the card alone carries the focus: an older rule also ringed its wrapper, which drew a second outline */
+body:not(.phone) .atv-item.focused { -webkit-transform: none !important; transform: none !important; border: 0 !important; box-shadow: none !important; }
+body:not(.phone) .atv-item.focused .atv-card::before { display: none; }
+/* OLED: the browse stage is black behind its gradients; only a live preview brings colour */
+body:not(.phone) .atv-bd { background: #000 !important; }
+body:not(.phone) .atv-shade { background: linear-gradient(to top, #000 0%, rgba(0, 0, 0, .85) 28.6%, rgba(0, 0, 0, 0) 50%),
+  linear-gradient(to left, rgba(0, 0, 0, .82) 0%, rgba(0, 0, 0, .35) 38%, rgba(0, 0, 0, 0) 62%); }
+body:not(.phone) .player *, body:not(.phone) .overlay, body:not(.phone) .overlay * { -webkit-backdrop-filter: none !important; backdrop-filter: none !important; }
+body:not(.phone) .osd-top { background: linear-gradient(#0b0b0e, rgba(11, 11, 14, 0)); }
+body:not(.phone) .osd-bottom { background: linear-gradient(rgba(11, 11, 14, 0), #0b0b0e); }
+/* the player keeps play/pause and the way into the side panel; everything else lives in the panel */
+body:not(.phone) .osd-buttons .obtn:not([data-act="playpause"]):not([data-act="menu"]), body:not(.phone) .osd-hints { display: none; }
+/* the options menu as a slide-out side panel (right edge, the app is RTL) */
+body:not(.phone) #menu { padding: 0 !important; justify-content: flex-start !important; align-items: stretch !important; background: linear-gradient(to left, rgba(0, 0, 0, .6), rgba(0, 0, 0, 0) 70%) !important; }
+body:not(.phone) #menu .menu-box {
+  position: static !important; width: 56rem !important; max-width: 56rem !important; height: 100% !important; max-height: none !important;
+  margin: 0 !important; border: 0 !important; border-radius: 0 !important; box-shadow: none !important; padding: 4rem 3.2rem 4rem 8rem !important;
+  background: linear-gradient(to left, #0b0b0e 72%, rgba(11, 11, 14, 0)) !important;
+}
+body:not(.phone) #menu .menu-item { height: auto !important; min-height: 5.6rem; padding: 0 1.6rem !important; font-size: 1.7rem !important; background: none !important; border: 2px solid transparent !important; box-shadow: none !important; -webkit-transform: none !important; transform: none !important; }
+body:not(.phone) #menu .menu-item.focused { background: #202025 !important; border-color: #fff !important; }
+body:not(.phone) #menu .mi-ico { -webkit-filter: grayscale(1); filter: grayscale(1); }
+body:not(.phone):not(.anim-off) #menu .menu-box { animation: tv-panel .42s cubic-bezier(.16, 1, .3, 1) both; }
+@keyframes tv-panel { from { transform: translate3d(100%, 0, 0); opacity: 0; } to { transform: translate3d(0, 0, 0); opacity: 1; } }

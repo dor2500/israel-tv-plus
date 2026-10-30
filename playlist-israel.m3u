@@ -104,7 +104,7 @@ https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/karaoke/live.livx/
 #EXTINF:-1 tvg-id="" tvg-name="הכותל המערבי – שידור חי 24/7" tvg-chno="53" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/kotel_live_il.png" group-title="ערוצי ישראל",הכותל המערבי – שידור חי 24/7
 https://cdn1.cast-tv.com/23595/Live_Kotel3_ABR/playlist.m3u8
 #EXTINF:-1 tvg-id="TVRain.il" tvg-name="ערוץ דוז'ד ישראל HD (TV Rain)" tvg-chno="54" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/rain_tv_il.png" group-title="ערוצי ישראל",ערוץ דוז'ד ישראל HD (TV Rain)
-http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32156/index.m3u8
+https://wl.tvrain.tv/transcode/ngrp:ses_all/playlist.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="ערוץ הסטייל והאופנה HD" tvg-chno="55" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/il_the_style_channel_hd_il.png" group-title="ערוצי ישראל",ערוץ הסטייל והאופנה HD
 http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32155/index.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="רשת 13 ערוץ הנופש HD" tvg-chno="56" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/reshet13_nofesh_il.png" group-title="ערוצי ישראל",רשת 13 ערוץ הנופש HD

@@ -66,10 +66,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
 import com.israeltv.plus.data.Channel
+import com.israeltv.plus.ui.theme.LocalDimens
 import kotlin.math.abs
 
-val CardShape = RoundedCornerShape(20.dp)
-private val ContinueCardShape = RoundedCornerShape(18.dp)
+const val PosterAspect = 2f / 3f
+
+val CardShape = RoundedCornerShape(16.dp)
+private val ContinueCardShape = RoundedCornerShape(16.dp)
 
 /** The shared-element key of the card that was tapped last: the player grows out of it and shrinks back into it. */
 @Stable
@@ -108,9 +111,8 @@ fun ChannelLogo(url: String, modifier: Modifier = Modifier, isRadio: Boolean = f
 }
 
 /**
- * Standard VOD / Channel poster card: dark translucent glass (Color.White.copy(alpha = 0.05f)) with Apple TV spring
- * press/focus physics (no Android ripple), ContentScale.Fit logo floating with no solid background behind it,
- * SemiBold title, Light metadata subtitle, and the Nuvio long-press context menu.
+ * The vertical 2:3 channel poster: a dark translucent plate with the logo centred on it, title and metadata below,
+ * spring press/focus physics (no Android ripple) and the long-press context menu.
  */
 @Composable
 fun ChannelCard(
@@ -132,7 +134,7 @@ fun ChannelCard(
         Box(
             Modifier
                 .fillMaxWidth()
-                .aspectRatio(16f / 9f)
+                .aspectRatio(PosterAspect)
                 .pressPhysics(interaction, glowShape = CardShape)
                 .then(if (sharedKey != null) Modifier.sharedContainer(sharedKey, CardShape) else Modifier)
                 .frostedGlass(CardShape, Color.White.copy(alpha = 0.05f), blur = 24.dp)
@@ -151,7 +153,7 @@ fun ChannelCard(
                 ),
             contentAlignment = Alignment.Center,
         ) {
-            ChannelLogo(logo, Modifier.fillMaxWidth(0.60f).aspectRatio(16f / 9f), channel.isRadio)
+            ChannelLogo(logo, Modifier.fillMaxWidth(0.72f).aspectRatio(1f), channel.isRadio)
             val badge = if (channel.isRadio) "רדיו" else channel.badge
             if (badge.isNotEmpty()) {
                 val badgeShape = RoundedCornerShape(6.dp)
@@ -165,16 +167,14 @@ fun ChannelCard(
                         .border(0.75.dp, Color.White.copy(alpha = 0.28f), badgeShape)
                         .padding(horizontal = 6.dp, vertical = 1.5.dp),
                     color = Color.White.copy(alpha = 0.92f),
-                    fontSize = 9.sp,
-                    fontWeight = FontWeight.Medium,
+                    style = MaterialTheme.typography.labelSmall,
                 )
             }
             Text(
                 channel.number.toString(),
                 Modifier.align(Alignment.TopEnd).padding(8.dp),
                 color = scheme.onSurfaceVariant.copy(alpha = 0.78f),
-                fontSize = 10.sp,
-                fontWeight = FontWeight.Normal,
+                style = MaterialTheme.typography.labelSmall,
             )
             if (favorite) {
                 BoldIcon(
@@ -200,13 +200,11 @@ fun ChannelCard(
                 },
             )
         }
-        Spacer(Modifier.height(6.dp))
+        Spacer(Modifier.height(8.dp))
         Text(
             channel.name,
             Modifier.fillMaxWidth().padding(horizontal = 4.dp),
-            style = Rtl,
-            fontSize = 13.sp,
-            fontWeight = FontWeight.SemiBold,
+            style = MaterialTheme.typography.labelLarge.merge(Rtl),
             color = scheme.onSurface,
             maxLines = 1,
             overflow = TextOverflow.Ellipsis,
@@ -214,9 +212,7 @@ fun ChannelCard(
         Text(
             subtitle,
             Modifier.fillMaxWidth().padding(horizontal = 4.dp),
-            style = Rtl,
-            fontSize = 10.5.sp,
-            fontWeight = FontWeight.Light,
+            style = MaterialTheme.typography.labelSmall.merge(Rtl),
             color = scheme.onSurfaceVariant,
             maxLines = 1,
             overflow = TextOverflow.Ellipsis,
@@ -250,7 +246,7 @@ fun ContinueWatchingCard(
 
     Box(
         modifier
-            .width(220.dp)
+            .width(LocalDimens.current.continueWidth)
             .aspectRatio(16f / 9f)
             .pressPhysics(interaction, glowShape = ContinueCardShape)
             .then(if (sharedKey != null) Modifier.sharedContainer(sharedKey, ContinueCardShape) else Modifier)
@@ -496,7 +492,7 @@ fun SectionHeader(title: String, count: Int? = null, onSeeAll: (() -> Unit)? = n
     val scheme = MaterialTheme.colorScheme
     val haptic = LocalHapticFeedback.current
     Row(
-        Modifier.fillMaxWidth().padding(start = 18.dp, end = 14.dp, bottom = 10.dp),
+        Modifier.fillMaxWidth().padding(start = LocalDimens.current.gutter, end = LocalDimens.current.gutter, bottom = 12.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Box(
@@ -507,7 +503,7 @@ fun SectionHeader(title: String, count: Int? = null, onSeeAll: (() -> Unit)? = n
                 .background(Color.White)
         )
         Spacer(Modifier.width(9.dp))
-        Text(title, Modifier.weight(1f), fontSize = 16.5.sp, fontWeight = FontWeight.SemiBold, color = scheme.onSurface)
+        Text(title, Modifier.weight(1f), style = MaterialTheme.typography.titleMedium, color = scheme.onSurface)
         if (onSeeAll != null) {
             val interaction = remember { MutableInteractionSource() }
             val pressed by interaction.collectIsPressedAsState()
@@ -554,11 +550,12 @@ fun ContinueWatchingShelf(
     onPlay: (Channel) -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    Column(modifier.padding(bottom = 22.dp)) {
+    val d = LocalDimens.current
+    Column(modifier.padding(bottom = d.shelfGap)) {
         SectionHeader(title)
         LazyRow(
-            contentPadding = PaddingValues(horizontal = 16.dp),
-            horizontalArrangement = Arrangement.spacedBy(12.dp),
+            contentPadding = PaddingValues(horizontal = d.gutter),
+            horizontalArrangement = Arrangement.spacedBy(d.cardGap),
             flingBehavior = rememberBitChordFlingBehavior(),
         ) {
             itemsIndexed(channels, key = { _, ch -> ch.id }) { idx, ch ->
@@ -592,15 +589,16 @@ fun ChannelShelf(
     onSeeAll: (() -> Unit)? = null,
     modifier: Modifier = Modifier,
 ) {
-    Column(modifier.padding(bottom = 22.dp)) {
+    val d = LocalDimens.current
+    Column(modifier.padding(bottom = d.shelfGap)) {
         SectionHeader(title, count, onSeeAll)
         LazyRow(
-            contentPadding = PaddingValues(horizontal = 16.dp),
-            horizontalArrangement = Arrangement.spacedBy(10.dp),
+            contentPadding = PaddingValues(horizontal = d.gutter),
+            horizontalArrangement = Arrangement.spacedBy(d.cardGap),
             flingBehavior = rememberBitChordFlingBehavior(),
         ) {
             items(channels, key = { it.id }) { ch ->
-                ChannelCard(ch, logo(ch), subtitle(ch), { onPlay(ch) }, Modifier.width(164.dp), sharedKey = "$title:${ch.id}")
+                ChannelCard(ch, logo(ch), subtitle(ch), { onPlay(ch) }, Modifier.width(d.posterWidth), sharedKey = "$title:${ch.id}")
             }
         }
     }
@@ -609,23 +607,24 @@ fun ChannelShelf(
 /** Dark-themed shimmer loading placeholders in the shape of a shelf. */
 @Composable
 fun ShelfSkeleton() {
-    Column(Modifier.padding(bottom = 22.dp)) {
+    val d = LocalDimens.current
+    Column(Modifier.padding(bottom = d.shelfGap)) {
         Row(
-            Modifier.padding(start = 18.dp, bottom = 12.dp),
+            Modifier.padding(start = d.gutter, bottom = 12.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
             Box(Modifier.width(3.5.dp).height(16.dp).glassShimmer(RoundedCornerShape(2.dp)))
             Spacer(Modifier.width(9.dp))
             Box(Modifier.width(124.dp).height(18.dp).glassShimmer(RoundedCornerShape(9.dp)))
         }
-        Row(Modifier.padding(horizontal = 16.dp), horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-            repeat(3) {
-                Column(Modifier.width(164.dp)) {
-                    Box(Modifier.fillMaxWidth().aspectRatio(16f / 9f).glassShimmer(CardShape))
+        Row(Modifier.padding(horizontal = d.gutter), horizontalArrangement = Arrangement.spacedBy(d.cardGap)) {
+            repeat(4) {
+                Column(Modifier.width(d.posterWidth)) {
+                    Box(Modifier.fillMaxWidth().aspectRatio(PosterAspect).glassShimmer(CardShape))
                     Spacer(Modifier.height(8.dp))
-                    Box(Modifier.width(104.dp).height(12.dp).glassShimmer(RoundedCornerShape(6.dp)))
+                    Box(Modifier.fillMaxWidth(0.8f).height(12.dp).glassShimmer(RoundedCornerShape(6.dp)))
                     Spacer(Modifier.height(5.dp))
-                    Box(Modifier.width(68.dp).height(10.dp).glassShimmer(RoundedCornerShape(5.dp)))
+                    Box(Modifier.fillMaxWidth(0.5f).height(10.dp).glassShimmer(RoundedCornerShape(5.dp)))
                 }
             }
         }

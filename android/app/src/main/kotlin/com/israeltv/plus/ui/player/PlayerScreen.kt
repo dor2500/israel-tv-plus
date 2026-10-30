@@ -266,6 +266,7 @@ fun PlayerScreen(
     var sourceIndex by remember(current.id, attempt) { mutableIntStateOf(0) }
     var lastPlayedRawUrl by remember { mutableStateOf("") }
     var multiViewActive by remember { mutableStateOf(startInMultiView) }
+    var fit by remember { mutableStateOf(VideoFit.Fit) }
     var statusToast by remember(current.id) { mutableStateOf<String?>(null) }
 
     LaunchedEffect(startInCast) {
@@ -314,7 +315,7 @@ fun PlayerScreen(
                     buffering = true
                     error = null
                     val nextIdx = sourceIndex + 1
-                    statusToast = "🔀 שרת גיבוי (${nextIdx + 1}/${candidates.size})"
+                    statusToast = "שרת גיבוי (${nextIdx + 1}/${candidates.size})"
                     sourceIndex = nextIdx
                 } else {
                     error = describe(e)
@@ -378,7 +379,7 @@ fun PlayerScreen(
         delay(6000)
         if (buffering && !playing && error == null && !castController.isCasting && sourceIndex + 1 < candidates.size) {
             val nextIdx = sourceIndex + 1
-            statusToast = "🔀 שרת גיבוי (${nextIdx + 1}/${candidates.size})"
+            statusToast = "שרת גיבוי (${nextIdx + 1}/${candidates.size})"
             sourceIndex = nextIdx
         }
     }
@@ -428,14 +429,9 @@ fun PlayerScreen(
         }
     }
 
-    val configuration = LocalConfiguration.current
-    val isTv = remember(context, configuration) {
-        context.packageManager.hasSystemFeature(PackageManager.FEATURE_LEANBACK) ||
-            (configuration.uiMode and Configuration.UI_MODE_TYPE_MASK) == Configuration.UI_MODE_TYPE_TELEVISION
-    }
     val playerHaze = rememberHazeState()
 
-    CompositionLocalProvider(LocalHaze provides if (isTv) null else playerHaze) {
+    CompositionLocalProvider(LocalHaze provides playerHaze) {
     Box(
         Modifier
             .fillMaxSize()
@@ -455,7 +451,7 @@ fun PlayerScreen(
         Box(
             Modifier
                 .fillMaxSize()
-                .then(if (!isTv) Modifier.hazeSource(playerHaze) else Modifier)
+                .hazeSource(playerHaze)
         ) {
             if ((settled || inPip) && !multiViewActive) AndroidView(
                 factory = { ctx ->
@@ -470,6 +466,7 @@ fun PlayerScreen(
                     }
                 },
                 update = { v ->
+                    v.resizeMode = fit.resizeMode
                     val lift = if (controls && !inPip) with(density) { 82.dp.roundToPx() } else 0
                     v.subtitleView?.setPadding(0, 0, 0, lift)
                 },
@@ -481,11 +478,7 @@ fun PlayerScreen(
         Box(
             Modifier.fillMaxSize().pointerInputs(
                 onTap = {
-                    if (sheet == "more") {
-                        sheet = null
-                    } else {
-                        controls = !controls
-                    }
+                    controls = !controls
                     touchTick++
                 },
                 onSwipe = { up ->
@@ -577,14 +570,14 @@ fun PlayerScreen(
                         Icons.Rounded.SkipPrevious, "ערוץ קודם", 48.dp, 56.dp,
                     ) { switchTo(index - 1) }
                 }
-                "error" -> ErrorCard(
+                "error" -> PlayerErrorState(
                     ch = current,
                     reason = error.orEmpty(),
                     hasBackups = candidates.size > 1,
                     onNextServer = {
                         val nextIdx = (sourceIndex + 1) % candidates.size
                         sourceIndex = nextIdx
-                        statusToast = "🔀 שרת גיבוי (${nextIdx + 1}/${candidates.size})"
+                        statusToast = "שרת גיבוי (${nextIdx + 1}/${candidates.size})"
                     },
                     onRetry = { attempt++ },
                     onNext = { switchTo(index + 1) },
@@ -599,16 +592,8 @@ fun PlayerScreen(
             exit = fadeOut(tween(320)),
             modifier = Modifier.align(Alignment.TopCenter),
         ) {
-            TopBar(
-                ch = current,
-                logo = logo(current),
-                landscape = landscape,
-                isTv = isTv,
+            PlayerTopBar(
                 isCasting = castController.isCasting || castController.isConnecting,
-                onOpenSettings = {
-                    touchTick++
-                    sheet = if (sheet == "more") null else "more"
-                },
                 onCast = {
                     touchTick++
                     castController.startDiscovery(current)
@@ -623,70 +608,17 @@ fun PlayerScreen(
             exit = fadeOut(tween(320)),
             modifier = Modifier.align(Alignment.BottomCenter),
         ) {
-            Dock(
-                landscape = landscape,
-                isTv = isTv,
-                isCasting = castController.isCasting || castController.isConnecting,
-                settingsOpen = sheet == "more",
-                onItem = { key ->
-                    touchTick++
-                    haptic.performHapticFeedback(HapticFeedbackType.VirtualKey)
-                    when (key) {
-                        "pip" -> onEnterPip()
-                        "multiview" -> multiViewActive = true
-                        "full" -> {
-                            landscape = !landscape
-                            (context as Activity).requestedOrientation =
-                                if (landscape) ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE else ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
-                        }
-                        "cast" -> {
-                            castController.startDiscovery(current)
-                            sheet = "cast"
-                        }
-                        "more" -> {
-                            sheet = if (sheet == "more") null else "more"
-                        }
-                        else -> sheet = key
-                    }
-                },
-            )
-        }
-
-        // Sleek, transparent Apple TV style side-panel for secondary settings ("שרת", "פיצול", etc.)
-        AnimatedVisibility(
-            visible = sheet == "more" && !multiViewActive,
-            enter = slideInHorizontally(tween(260)) { -it } + fadeIn(tween(200)),
-            exit = slideOutHorizontally(tween(220)) { -it } + fadeOut(tween(180)),
-            modifier = Modifier.align(Alignment.CenterEnd),
-        ) {
-            PlayerSettingsSidePanel(
+            PlayerBottomBar(
                 ch = current,
-                prefs = prefs,
-                isTv = isTv,
-                serverIndex = sourceIndex,
-                serverCount = candidates.size,
-                onSelectServer = { idx ->
+                fit = fit,
+                onCycleFit = {
                     touchTick++
-                    sourceIndex = idx
-                    statusToast = "🔀 שרת (${idx + 1}/${candidates.size})"
-                    sheet = null
+                    fit = fit.next()
                 },
-                onOpenMultiView = {
-                    sheet = null
-                    multiViewActive = true
+                onOptions = {
+                    touchTick++
+                    sheet = "more"
                 },
-                onOpenAudio = {
-                    sheet = "audio"
-                },
-                onOpenPip = {
-                    sheet = null
-                    onEnterPip()
-                },
-                onOpenCast = {
-                    castController.startDiscovery(current)
-                    sheet = "cast"
-                },
-                onDismiss = { sheet = null },
             )
         }
 
@@ -711,6 +643,37 @@ fun PlayerScreen(
     when (sheet) {
         "list" -> ChannelListSheet(list, index, logo, onPick = { switchTo(it); sheet = null }, onDismiss = { sheet = null })
         "audio" -> AudioSheet(player, tracks, onDismiss = { sheet = null })
+        "quality" -> ResolutionDialog(player, tracks, onDismiss = { sheet = null })
+        "more" -> PlayerOptionsSheet(
+            favorite = prefs.isFavorite(current.id),
+            qualityLabel = selectedVideoHeight(player, tracks)?.let { "${it}p" } ?: "אוטומטי",
+            serverIndex = sourceIndex,
+            serverCount = candidates.size,
+            onSelectServer = { idx ->
+                sourceIndex = idx
+                statusToast = "שרת (${idx + 1}/${candidates.size})"
+                sheet = null
+            },
+            onQuality = { sheet = "quality" },
+            onAudio = { sheet = "audio" },
+            onPip = {
+                sheet = null
+                onEnterPip()
+            },
+            onMultiView = {
+                sheet = null
+                multiViewActive = true
+            },
+            onChannels = { sheet = "list" },
+            onRotate = {
+                sheet = null
+                landscape = !landscape
+                (context as Activity).requestedOrientation =
+                    if (landscape) ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE else ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
+            },
+            onFavorite = { prefs.toggleFavorite(current.id) },
+            onDismiss = { sheet = null },
+        )
         "cast" -> CastSheet(
             channel = current,
             castController = castController,
@@ -827,48 +790,6 @@ private fun BufferingPill() {
     }
 }
 
-@Composable
-private fun ErrorCard(
-    ch: Channel,
-    reason: String,
-    hasBackups: Boolean,
-    onNextServer: () -> Unit,
-    onRetry: () -> Unit,
-    onNext: () -> Unit,
-) {
-    val shape = RoundedCornerShape(32.dp)
-    Column(
-        Modifier
-            .padding(28.dp)
-            .clip(shape)
-            .background(Color.Black.copy(alpha = 0.55f))
-            .specularBorder(shape)
-            .padding(24.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-    ) {
-        Text("השידור לא זמין כרגע", color = Color.White, fontSize = 20.sp, fontWeight = FontWeight.ExtraBold)
-        Text(
-            "לא הצלחנו להתחבר ל\"${ch.name}\" ($reason).",
-            color = Color.White.copy(alpha = 0.75f), fontSize = 14.sp, modifier = Modifier.padding(top = 8.dp, bottom = 18.dp),
-        )
-        Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-            if (hasBackups) {
-                Button(onNextServer, shape = RoundedCornerShape(50)) {
-                    BoldIcon(Icons.Rounded.SwapHoriz, null, Modifier.size(18.dp), tint = MaterialTheme.colorScheme.onPrimary)
-                    Spacer(Modifier.width(6.dp))
-                    Text("שרת גיבוי", fontWeight = FontWeight.Bold)
-                }
-            }
-            Button(onRetry, shape = RoundedCornerShape(50)) {
-                BoldIcon(Icons.Rounded.Refresh, null, Modifier.size(18.dp), tint = MaterialTheme.colorScheme.onPrimary)
-                Spacer(Modifier.width(6.dp))
-                Text("נסה שוב", fontWeight = FontWeight.Bold)
-            }
-            FilledTonalButton(onNext, shape = RoundedCornerShape(50)) { Text("ערוץ הבא", fontWeight = FontWeight.Bold) }
-        }
-    }
-}
-
 /** Displayed in the center of the player when actively casting to a TV (Chromecast / Google TV / LG DLNA). */
 @Composable
 private fun CastActiveCard(
@@ -970,543 +891,6 @@ private fun CastActiveCard(
     }
 }
 
-/**
- * Top Player Header:
- * - Portrait Notch Fix: Pushes top title/metadata down past statusBars & displayCutout so it is NEVER cut off by the phone's notch or camera hole.
- * - Performance Split: Heavy Glassmorphism (Gradient + Blur) on Mobile; smooth, deep dark linear gradient (NO BlurEffect) on Smart TV.
- * - Ultra-thin bordered glass badges for Live and FHD/HD.
- */
-@Composable
-private fun TopBar(
-    ch: Channel,
-    logo: String,
-    landscape: Boolean,
-    isTv: Boolean,
-    isCasting: Boolean,
-    onOpenSettings: () -> Unit,
-    onCast: () -> Unit,
-    onBack: () -> Unit,
-) {
-    val statusTop = WindowInsets.statusBars.asPaddingValues().calculateTopPadding()
-    val cutoutTop = WindowInsets.displayCutout.asPaddingValues().calculateTopPadding()
-    val safeTop = maxOf(statusTop, cutoutTop, if (landscape) 14.dp else 36.dp) + if (landscape) 6.dp else 14.dp
-    val headerGradient = Brush.verticalGradient(
-        listOf(
-            Color.Black.copy(alpha = 0.75f),
-            Color.Black.copy(alpha = 0.32f),
-            Color.Transparent,
-        )
-    )
-    val badgeShape = RoundedCornerShape(6.dp)
-    Row(
-        Modifier
-            .fillMaxWidth()
-            .background(headerGradient)
-            .padding(top = safeTop, bottom = 12.dp, start = 16.dp, end = 16.dp),
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-        TopBarIconAction(
-            icon = Icons.AutoMirrored.Rounded.ArrowBack,
-            contentDescription = "חזרה",
-            onClick = onBack,
-        )
-        Spacer(Modifier.width(10.dp))
-        Box(
-            Modifier
-                .size(width = 54.dp, height = 34.dp)
-                .clip(RoundedCornerShape(10.dp))
-                .background(Color.White.copy(alpha = 0.10f))
-                .border(0.75.dp, Color.White.copy(alpha = 0.22f), RoundedCornerShape(10.dp)),
-            contentAlignment = Alignment.Center,
-        ) { ChannelLogo(logo, Modifier.size(width = 44.dp, height = 25.dp), ch.isRadio) }
-        Spacer(Modifier.width(10.dp))
-        Column(Modifier.weight(1f)) {
-            Text(
-                ch.name,
-                color = Color.White,
-                fontSize = 15.5.sp,
-                fontWeight = FontWeight.ExtraBold,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis,
-            )
-            Spacer(Modifier.height(3.dp))
-            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-                Box(
-                    Modifier
-                        .clip(badgeShape)
-                        .background(Color.White.copy(alpha = 0.07f))
-                        .border(0.75.dp, Color.White.copy(alpha = 0.34f), badgeShape)
-                        .padding(horizontal = 6.dp, vertical = 1.5.dp)
-                ) {
-                    Text(
-                        "Live",
-                        color = Color.White.copy(alpha = 0.94f),
-                        fontSize = 9.5.sp,
-                        fontWeight = FontWeight.SemiBold,
-                    )
-                }
-                val qualityLabel = ch.badge.ifEmpty { if (ch.isRadio) "HQ" else "FHD" }
-                Box(
-                    Modifier
-                        .clip(badgeShape)
-                        .background(Color.White.copy(alpha = 0.06f))
-                        .border(0.75.dp, Color.White.copy(alpha = 0.28f), badgeShape)
-                        .padding(horizontal = 6.dp, vertical = 1.5.dp)
-                ) {
-                    Text(
-                        qualityLabel,
-                        color = Color.White.copy(alpha = 0.90f),
-                        fontSize = 9.5.sp,
-                        fontWeight = FontWeight.SemiBold,
-                    )
-                }
-                Text(
-                    "ערוץ ${ch.number}",
-                    color = Color.White.copy(alpha = 0.68f),
-                    fontSize = 11.sp,
-                    fontWeight = FontWeight.Medium,
-                )
-            }
-        }
-        Spacer(Modifier.width(8.dp))
-        TopBarIconAction(
-            icon = if (isCasting) Icons.Rounded.CastConnected else Icons.Rounded.Cast,
-            contentDescription = "שידור לטלוויזיה (Cast)",
-            tint = if (isCasting) MaterialTheme.colorScheme.primary else Color.White,
-            onClick = onCast,
-        )
-        Spacer(Modifier.width(4.dp))
-        TopBarIconAction(
-            icon = Icons.Rounded.MoreHoriz,
-            contentDescription = "אפשרויות",
-            onClick = onOpenSettings,
-        )
-    }
-}
-
-/**
- * Nuvio Player Bottom Controls (Spread Layout & Zero Pill/Capsule Backgrounds):
- * - Inherits exact Nuvio icons (List, Cast, Audiotrack, PictureInPictureAlt, MoreHoriz, Fullscreen).
- * - Removes all pill/capsule background shapes behind the icons and dock.
- * - Uses Arrangement.SpaceBetween on the full-width Row to push elements to the far left and far right sides.
- * - Uses "אפשרויות" for the settings button label.
- */
-@Composable
-private fun Dock(
-    landscape: Boolean,
-    isTv: Boolean,
-    isCasting: Boolean,
-    settingsOpen: Boolean,
-    onItem: (String) -> Unit,
-) {
-    val bottomScrim = Brush.verticalGradient(
-        listOf(
-            Color.Transparent,
-            Color.Black.copy(alpha = 0.52f),
-            Color.Black.copy(alpha = 0.86f),
-        )
-    )
-    Row(
-        Modifier
-            .fillMaxWidth()
-            .background(bottomScrim)
-            .navigationBarsPadding()
-            .padding(horizontal = 24.dp, vertical = 20.dp),
-        horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-        DockItem(
-            icon = Icons.AutoMirrored.Rounded.List,
-            label = "ערוצים",
-            drawableRes = R.drawable.ic_player_episodes,
-        ) { onItem("list") }
-        DockItem(
-            icon = if (isCasting) Icons.Rounded.CastConnected else Icons.Rounded.Cast,
-            label = "שידור",
-            highlight = isCasting,
-        ) { onItem("cast") }
-        DockItem(
-            icon = Icons.Rounded.Audiotrack,
-            label = "שמע",
-            drawableRes = R.drawable.ic_player_audio_filled,
-        ) { onItem("audio") }
-        if (!isTv) {
-            DockItem(Icons.Rounded.PictureInPictureAlt, "חלון צף") { onItem("pip") }
-        }
-        DockItem(
-            icon = Icons.Rounded.MoreHoriz,
-            label = "אפשרויות",
-            highlight = settingsOpen,
-            drawableRes = R.drawable.ic_player_source,
-        ) { onItem("more") }
-        DockItem(
-            icon = if (landscape) Icons.Rounded.FullscreenExit else Icons.Rounded.Fullscreen,
-            label = "מסך",
-            drawableRes = R.drawable.ic_player_aspect_ratio,
-        ) { onItem("full") }
-    }
-}
-
-@Composable
-private fun DockItem(
-    icon: ImageVector,
-    label: String,
-    highlight: Boolean = false,
-    drawableRes: Int? = null,
-    onClick: () -> Unit,
-) {
-    val tint = if (highlight) MaterialTheme.colorScheme.primary else Color.White
-    val interaction = remember { MutableInteractionSource() }
-    Column(
-        Modifier
-            .pressPhysics(interaction, tilt = false, glowShape = CircleShape)
-            .clickable(interaction, null, onClick = onClick)
-            .padding(horizontal = 6.dp, vertical = 4.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center,
-    ) {
-        if (drawableRes != null) {
-            Icon(
-                painter = androidx.compose.ui.res.painterResource(drawableRes),
-                contentDescription = label,
-                modifier = Modifier.size(22.dp),
-                tint = tint,
-            )
-        } else {
-            BoldIcon(icon, label, Modifier.size(22.dp), tint = tint, weight = 0.68.dp)
-        }
-        Spacer(Modifier.height(3.dp))
-        Text(
-            label,
-            color = if (highlight) tint else Color.White.copy(alpha = 0.88f),
-            fontSize = 10.sp,
-            fontWeight = if (highlight) FontWeight.Bold else FontWeight.Medium,
-            maxLines = 1,
-        )
-    }
-}
-
-/**
- * Multi-protocol Cast & Share bottom sheet.
- */
-@Composable
-private fun CastSheet(
-    channel: Channel,
-    castController: CastController,
-    onDisconnectAndResumePhone: () -> Unit,
-    onDismiss: () -> Unit,
-) {
-    val scheme = MaterialTheme.colorScheme
-    ModalBottomSheet(onDismissRequest = onDismiss, containerColor = scheme.surfaceContainer) {
-        Column(
-            Modifier
-                .fillMaxWidth()
-                .verticalScroll(rememberScrollState())
-                .padding(horizontal = 22.dp)
-                .padding(bottom = 32.dp),
-        ) {
-            Row(
-                Modifier.fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.SpaceBetween,
-            ) {
-                Column(Modifier.weight(1f)) {
-                    Text(
-                        "שידור לטלוויזיה (Cast & Share)",
-                        fontSize = 21.sp,
-                        fontWeight = FontWeight.ExtraBold,
-                        color = scheme.onSurface,
-                    )
-                    Text(
-                        "צפייה ב״${channel.name}״ על המסך הגדול",
-                        fontSize = 13.sp,
-                        color = scheme.onSurfaceVariant,
-                        modifier = Modifier.padding(top = 2.dp),
-                    )
-                }
-                FilledTonalButton(
-                    onClick = { castController.startDiscovery(channel) },
-                    shape = RoundedCornerShape(50),
-                    contentPadding = PaddingValues(horizontal = 14.dp, vertical = 8.dp),
-                ) {
-                    if (castController.isScanning) {
-                        CircularProgressIndicator(
-                            modifier = Modifier.size(16.dp),
-                            strokeWidth = 2.dp,
-                            color = scheme.onSecondaryContainer,
-                        )
-                    } else {
-                        Icon(Icons.Rounded.Refresh, null, modifier = Modifier.size(16.dp))
-                    }
-                    Spacer(Modifier.width(6.dp))
-                    Text(if (castController.isScanning) "סורק…" else "סרוק שוב", fontSize = 12.sp, fontWeight = FontWeight.Bold)
-                }
-            }
-
-            Spacer(Modifier.height(16.dp))
-
-            castController.connectedDevice?.let { active ->
-                Column(
-                    Modifier
-                        .fillMaxWidth()
-                        .clip(RoundedCornerShape(20.dp))
-                        .background(scheme.primaryContainer.copy(alpha = 0.45f))
-                        .padding(16.dp),
-                ) {
-                    Row(verticalAlignment = Alignment.CenterVertically) {
-                        Icon(Icons.Rounded.CastConnected, null, tint = scheme.primary)
-                        Spacer(Modifier.width(10.dp))
-                        Column(Modifier.weight(1f)) {
-                            Text(
-                                "מחובר אל ${active.name}",
-                                color = scheme.onSurface,
-                                fontWeight = FontWeight.ExtraBold,
-                                fontSize = 15.sp,
-                            )
-                            Text(
-                                castController.statusMessage ?: active.protocol.labelHe,
-                                color = scheme.onSurfaceVariant,
-                                fontSize = 12.sp,
-                            )
-                        }
-                        Button(
-                            onClick = onDisconnectAndResumePhone,
-                            shape = RoundedCornerShape(50),
-                            contentPadding = PaddingValues(horizontal = 14.dp, vertical = 8.dp),
-                        ) {
-                            Text("נתק", fontWeight = FontWeight.Bold, fontSize = 12.sp)
-                        }
-                    }
-                }
-                Spacer(Modifier.height(14.dp))
-            }
-
-            castController.errorMessage?.let { err ->
-                Column(
-                    Modifier
-                        .fillMaxWidth()
-                        .clip(RoundedCornerShape(18.dp))
-                        .background(scheme.errorContainer)
-                        .padding(14.dp),
-                ) {
-                    Text(
-                        err,
-                        color = scheme.onErrorContainer,
-                        fontSize = 13.sp,
-                        fontWeight = FontWeight.Medium,
-                    )
-                }
-                Spacer(Modifier.height(14.dp))
-            }
-
-            Text(
-                "1. שידור ישיר לטלוויזיה (Google Cast / Chromecast / DLNA)",
-                color = scheme.primary,
-                fontSize = 13.sp,
-                fontWeight = FontWeight.Bold,
-            )
-            Text(
-                "הזרמה ישירה של הערוץ לטלוויזיה באיכות מלאה תוך שמירה על השליטה מהטלפון.",
-                color = scheme.onSurfaceVariant,
-                fontSize = 12.sp,
-                modifier = Modifier.padding(top = 2.dp, bottom = 10.dp),
-            )
-
-            if (castController.devices.isEmpty()) {
-                Box(
-                    Modifier
-                        .fillMaxWidth()
-                        .clip(RoundedCornerShape(18.dp))
-                        .background(scheme.surfaceContainerHigh)
-                        .padding(16.dp),
-                ) {
-                    Row(verticalAlignment = Alignment.CenterVertically) {
-                        if (castController.isScanning) {
-                            CircularProgressIndicator(Modifier.size(22.dp), strokeWidth = 2.5.dp)
-                            Spacer(Modifier.width(12.dp))
-                            Text(
-                                "מחפש מכשירי Chromecast, Android TV וטלוויזיות חכמות (LG / Samsung) ברשת ה-Wi-Fi…",
-                                color = scheme.onSurfaceVariant,
-                                fontSize = 13.sp,
-                            )
-                        } else {
-                            Icon(Icons.Rounded.Tv, null, tint = scheme.onSurfaceVariant)
-                            Spacer(Modifier.width(12.dp))
-                            Column {
-                                Text(
-                                    "לא נמצאו מקלטי Google Cast או DLNA ברשת הנוכחית",
-                                    color = scheme.onSurface,
-                                    fontSize = 14.sp,
-                                    fontWeight = FontWeight.Bold,
-                                )
-                                Text(
-                                    "ודא שהטלפון והטלוויזיה מחוברים לאותה רשת Wi-Fi, או השתמש בשיקוף מסך (Miracast / LG Screen Share) למטה.",
-                                    color = scheme.onSurfaceVariant,
-                                    fontSize = 12.sp,
-                                    modifier = Modifier.padding(top = 2.dp),
-                                )
-                            }
-                        }
-                    }
-                }
-            } else {
-                Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                    castController.devices.forEach { dev ->
-                        val isSelected = castController.connectedDevice?.id == dev.id
-                        CastDeviceRow(
-                            device = dev,
-                            selected = isSelected,
-                            onClick = {
-                                castController.connectAndCast(dev, channel)
-                                onDismiss()
-                            },
-                        )
-                    }
-                }
-            }
-
-            Spacer(Modifier.height(20.dp))
-
-            Text(
-                "2. שיקוף מסך אלחוטי (טלוויזיות LG webOS / Miracast / Smart View)",
-                color = scheme.primary,
-                fontSize = 13.sp,
-                fontWeight = FontWeight.Bold,
-            )
-            Column(
-                Modifier
-                    .padding(top = 8.dp)
-                    .fillMaxWidth()
-                    .clip(RoundedCornerShape(20.dp))
-                    .background(scheme.surfaceContainerHigh)
-                    .padding(16.dp),
-            ) {
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Icon(Icons.Rounded.ScreenShare, null, tint = scheme.primary, modifier = Modifier.size(26.dp))
-                    Spacer(Modifier.width(12.dp))
-                    Column(Modifier.weight(1f)) {
-                        Text(
-                            "שיתוף מסך מלא (Miracast / LG Screen Share)",
-                            color = scheme.onSurface,
-                            fontSize = 15.sp,
-                            fontWeight = FontWeight.Bold,
-                        )
-                        Text(
-                            "מתאים לטלוויזיות LG webOS ולכל טלוויזיה תומכת Miracast. משקף את מסך הטלפון והשמע ישירות לטלוויזיה ותומך ב-100% מהערוצים.",
-                            color = scheme.onSurfaceVariant,
-                            fontSize = 12.sp,
-                            modifier = Modifier.padding(top = 3.dp),
-                        )
-                    }
-                }
-                Spacer(Modifier.height(12.dp))
-                FilledTonalButton(
-                    onClick = {
-                        castController.openSystemMirroring()
-                        onDismiss()
-                    },
-                    modifier = Modifier.fillMaxWidth(),
-                    shape = RoundedCornerShape(50),
-                ) {
-                    Icon(Icons.Rounded.ScreenShare, null, modifier = Modifier.size(18.dp))
-                    Spacer(Modifier.width(8.dp))
-                    Text("פתח בורר שיקוף מסך במכשיר (Cast / Miracast)", fontWeight = FontWeight.Bold)
-                }
-            }
-
-            Spacer(Modifier.height(16.dp))
-
-            Text(
-                "3. פתיחה באפליקציית שידור חיצונית",
-                color = scheme.primary,
-                fontSize = 13.sp,
-                fontWeight = FontWeight.Bold,
-            )
-            Column(
-                Modifier
-                    .padding(top = 8.dp)
-                    .fillMaxWidth()
-                    .clip(RoundedCornerShape(20.dp))
-                    .background(scheme.surfaceContainerHigh)
-                    .padding(16.dp),
-            ) {
-                Text(
-                    "שליחת קישור השידור החי לאפליקציות כגון Web Video Caster, LG ThinQ או VLC.",
-                    color = scheme.onSurfaceVariant,
-                    fontSize = 12.sp,
-                )
-                Spacer(Modifier.height(10.dp))
-                OutlinedButton(
-                    onClick = {
-                        castController.openExternalCaster(channel)
-                        onDismiss()
-                    },
-                    modifier = Modifier.fillMaxWidth(),
-                    shape = RoundedCornerShape(50),
-                ) {
-                    Icon(Icons.AutoMirrored.Rounded.OpenInNew, null, modifier = Modifier.size(18.dp))
-                    Spacer(Modifier.width(8.dp))
-                    Text("שלח שידור לאפליקציה חיצונית", fontWeight = FontWeight.Bold)
-                }
-            }
-        }
-    }
-}
-
-@Composable
-private fun CastDeviceRow(
-    device: CastDeviceItem,
-    selected: Boolean,
-    onClick: () -> Unit,
-) {
-    val scheme = MaterialTheme.colorScheme
-    Row(
-        Modifier
-            .fillMaxWidth()
-            .clip(RoundedCornerShape(18.dp))
-            .background(if (selected) scheme.secondaryContainer else scheme.surfaceContainerHigh)
-            .clickable(onClick = onClick)
-            .padding(horizontal = 16.dp, vertical = 14.dp),
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-        Icon(
-            imageVector = if (device.protocol == CastProtocol.GOOGLE_CAST) Icons.Rounded.Cast else Icons.Rounded.Tv,
-            contentDescription = null,
-            tint = if (selected) scheme.primary else scheme.onSurface,
-            modifier = Modifier.size(24.dp),
-        )
-        Spacer(Modifier.width(14.dp))
-        Column(Modifier.weight(1f)) {
-            Text(
-                device.name,
-                color = scheme.onSurface,
-                fontSize = 15.sp,
-                fontWeight = FontWeight.Bold,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis,
-            )
-            Text(
-                device.description,
-                color = scheme.onSurfaceVariant,
-                fontSize = 12.sp,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis,
-            )
-        }
-        Spacer(Modifier.width(8.dp))
-        Text(
-            device.protocol.badgeHe,
-            modifier = Modifier
-                .clip(RoundedCornerShape(8.dp))
-                .background(scheme.primary.copy(alpha = 0.14f))
-                .padding(horizontal = 8.dp, vertical = 4.dp),
-            color = scheme.primary,
-            fontSize = 11.sp,
-            fontWeight = FontWeight.Bold,
-        )
-    }
-}
-
 @Composable
 private fun ChannelListSheet(list: List<Channel>, current: Int, logo: (Channel) -> String, onPick: (Int) -> Unit, onDismiss: () -> Unit) {
     val scheme = MaterialTheme.colorScheme
@@ -1599,253 +983,6 @@ private fun AudioSheet(player: ExoPlayer, tracks: Tracks, onDismiss: () -> Unit)
 }
 
 /**
- * Sleek, transparent Apple TV style side-panel for secondary player settings ("שרת", "פיצול", "רצועת שמע", etc.).
- * Completely replaces the old chunky solid blocks.
- * - Mobile: Heavy Glassmorphism (`frostedGlass`)
- * - Smart TV: Smooth, deep dark linear gradient (NO BlurEffect inside the TV Video Player)
- */
-@Composable
-private fun PlayerSettingsSidePanel(
-    ch: Channel,
-    prefs: AppPrefs,
-    isTv: Boolean,
-    serverIndex: Int,
-    serverCount: Int,
-    onSelectServer: (Int) -> Unit,
-    onOpenMultiView: () -> Unit,
-    onOpenAudio: () -> Unit,
-    onOpenPip: () -> Unit,
-    onOpenCast: () -> Unit,
-    onDismiss: () -> Unit,
-) {
-    val scheme = MaterialTheme.colorScheme
-    val panelShape = RoundedCornerShape(24.dp)
-    val tvGradient = Brush.linearGradient(
-        listOf(
-            Color(0xFF0A0D14).copy(alpha = 0.88f),
-            Color(0xFF05070B).copy(alpha = 0.94f),
-        )
-    )
-    val mobileTint = Color(0xFF0A0D14).copy(alpha = 0.44f)
-    val isFav = prefs.isFavorite(ch.id)
-
-    Column(
-        Modifier
-            .padding(horizontal = 16.dp, vertical = 24.dp)
-            .width(276.dp)
-            .clip(panelShape)
-            .then(
-                if (isTv) {
-                    Modifier.background(tvGradient)
-                } else {
-                    Modifier.frostedGlass(panelShape, mobileTint, blur = 42.dp)
-                }
-            )
-            .specularBorder(panelShape, alpha = 0.34f)
-            .verticalScroll(rememberScrollState())
-            .padding(16.dp),
-        verticalArrangement = Arrangement.spacedBy(10.dp),
-    ) {
-        Row(
-            Modifier.fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween,
-        ) {
-            Column(Modifier.weight(1f)) {
-                Text(
-                    ch.name,
-                    color = Color.White,
-                    fontSize = 15.sp,
-                    fontWeight = FontWeight.ExtraBold,
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis,
-                )
-                Text(
-                    "אפשרויות",
-                    color = Color.White.copy(alpha = 0.62f),
-                    fontSize = 11.sp,
-                    fontWeight = FontWeight.Medium,
-                )
-            }
-            GlassIconButton(
-                icon = Icons.Rounded.Close,
-                contentDescription = "סגור",
-                onClick = onDismiss,
-                size = 32.dp,
-                tint = Color.White.copy(alpha = 0.10f),
-            )
-        }
-
-        // Inline Server Selector ("שרת")
-        Column(
-            Modifier
-                .fillMaxWidth()
-                .clip(RoundedCornerShape(16.dp))
-                .background(Color.White.copy(alpha = 0.05f))
-                .border(0.75.dp, Color.White.copy(alpha = 0.14f), RoundedCornerShape(16.dp))
-                .padding(12.dp),
-            verticalArrangement = Arrangement.spacedBy(8.dp),
-        ) {
-            Row(
-                Modifier.fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.SpaceBetween,
-            ) {
-                Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-                    BoldIcon(Icons.Rounded.SwapHoriz, null, Modifier.size(16.dp), tint = scheme.primary)
-                    Text(
-                        "שרת שידור",
-                        color = Color.White,
-                        fontSize = 12.5.sp,
-                        fontWeight = FontWeight.Bold,
-                    )
-                }
-                Text(
-                    "${serverIndex + 1}/$serverCount",
-                    color = Color.White.copy(alpha = 0.62f),
-                    fontSize = 11.sp,
-                    fontWeight = FontWeight.SemiBold,
-                )
-            }
-            Row(
-                Modifier.horizontalScroll(rememberScrollState()),
-                horizontalArrangement = Arrangement.spacedBy(6.dp),
-            ) {
-                for (i in 0 until serverCount.coerceAtLeast(1)) {
-                    val active = i == serverIndex
-                    val srvInteraction = remember(i) { MutableInteractionSource() }
-                    val srvPressed by srvInteraction.collectIsPressedAsState()
-                    val srvCorner by animateDpAsState(
-                        targetValue = if (srvPressed) 8.dp else 14.dp,
-                        animationSpec = spring(dampingRatio = 0.58f, stiffness = Spring.StiffnessMedium),
-                        label = "srvPillMorph",
-                    )
-                    val srvShape = RoundedCornerShape(srvCorner)
-                    Box(
-                        Modifier
-                            .pressPhysics(srvInteraction, tilt = false, glowShape = srvShape)
-                            .clip(srvShape)
-                            .background(
-                                if (active) scheme.primary else Color.White.copy(alpha = 0.08f)
-                            )
-                            .border(
-                                width = 0.75.dp,
-                                color = if (active) Color.White.copy(alpha = 0.55f) else Color.White.copy(alpha = 0.18f),
-                                shape = srvShape,
-                            )
-                            .clickable(srvInteraction, ripple()) { onSelectServer(i) }
-                            .padding(horizontal = 11.dp, vertical = 6.dp),
-                        contentAlignment = Alignment.Center,
-                    ) {
-                        Text(
-                            if (i == 0) "ראשי #1" else "גיבוי #${i + 1}",
-                            color = if (active) scheme.onPrimary else Color.White.copy(alpha = 0.90f),
-                            fontSize = 11.sp,
-                            fontWeight = FontWeight.Bold,
-                        )
-                    }
-                }
-            }
-        }
-
-        // Sleek Action Rows ("פיצול", "שמע", "שידור", "חלון צף", "שמור")
-        SidePanelActionRow(
-            icon = Icons.Rounded.GridView,
-            title = "פיצול מסך",
-            subtitle = "צפייה ב-2 עד 4 ערוצים במקביל",
-            onClick = onOpenMultiView,
-        )
-        SidePanelActionRow(
-            icon = Icons.Rounded.Audiotrack,
-            title = "רצועת שמע",
-            subtitle = "בחירת שפת פסקול",
-            onClick = onOpenAudio,
-        )
-        SidePanelActionRow(
-            icon = Icons.Rounded.Cast,
-            title = "שידור לטלוויזיה",
-            subtitle = "Chromecast / DLNA / שיקוף",
-            onClick = onOpenCast,
-        )
-        if (!isTv) {
-            SidePanelActionRow(
-                icon = Icons.Rounded.PictureInPictureAlt,
-                title = "חלון צף",
-                subtitle = "המשך צפייה מחוץ לאפליקציה",
-                onClick = onOpenPip,
-            )
-        }
-        SidePanelActionRow(
-            icon = if (isFav) Icons.Rounded.Bookmark else Icons.Rounded.BookmarkBorder,
-            title = if (isFav) "הסר מהרשימה שלי" else "שמור ברשימה שלי",
-            subtitle = if (isFav) "שמור במועדפים" else "גישה מהירה מהמסך הראשי",
-            highlight = isFav,
-            onClick = { prefs.toggleFavorite(ch.id) },
-        )
-    }
-}
-
-@Composable
-private fun SidePanelActionRow(
-    icon: ImageVector,
-    title: String,
-    subtitle: String,
-    highlight: Boolean = false,
-    onClick: () -> Unit,
-) {
-    val scheme = MaterialTheme.colorScheme
-    val interaction = remember { MutableInteractionSource() }
-    val pressed by interaction.collectIsPressedAsState()
-    val corner by animateDpAsState(
-        targetValue = if (pressed) 10.dp else 15.dp,
-        animationSpec = spring(dampingRatio = 0.58f, stiffness = Spring.StiffnessMedium),
-        label = "sidePanelRowMorph",
-    )
-    val rowShape = RoundedCornerShape(corner)
-    Row(
-        Modifier
-            .fillMaxWidth()
-            .pressPhysics(interaction, tilt = false, glowShape = rowShape)
-            .clip(rowShape)
-            .background(
-                if (highlight) scheme.primary.copy(alpha = 0.18f) else Color.White.copy(alpha = 0.06f)
-            )
-            .border(
-                0.75.dp,
-                if (highlight) scheme.primary.copy(alpha = 0.50f) else Color.White.copy(alpha = 0.14f),
-                rowShape,
-            )
-            .clickable(interaction, ripple(), onClick = onClick)
-            .padding(horizontal = 12.dp, vertical = 10.dp),
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-        BoldIcon(
-            icon = icon,
-            contentDescription = title,
-            modifier = Modifier.size(18.dp),
-            tint = if (highlight) scheme.primary else Color.White.copy(alpha = 0.92f),
-        )
-        Spacer(Modifier.width(10.dp))
-        Column(Modifier.weight(1f)) {
-            Text(
-                title,
-                color = Color.White,
-                fontSize = 12.5.sp,
-                fontWeight = FontWeight.Bold,
-                maxLines = 1,
-            )
-            Text(
-                subtitle,
-                color = Color.White.copy(alpha = 0.58f),
-                fontSize = 10.5.sp,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis,
-            )
-        }
-    }
-}
-
-/**
  * Orders candidate URLs for a Multi-View cell so multi-connection CDNs (CloudFront, Akamai, MedOne, Redge, etc.)
  * are tried BEFORE single-connection `ottrast.com` streams when another cell is already using `ottrast.com`.
  */
@@ -1920,7 +1057,7 @@ private fun MultiViewOverlay(
                     Spacer(Modifier.width(8.dp))
                     Column {
                         Text("פיצול מסך · Split-TV", color = Color.White, fontSize = 16.sp, fontWeight = FontWeight.ExtraBold)
-                        Text("הקש על משבצת לשמע · 🔄 להחלפת כל ערוץ", color = Color.White.copy(alpha = 0.68f), fontSize = 11.sp)
+                        Text("הקש על משבצת לשמע", color = Color.White.copy(alpha = 0.68f), fontSize = 11.sp)
                     }
                 }
                 Row(horizontalArrangement = Arrangement.spacedBy(6.dp), verticalAlignment = Alignment.CenterVertically) {
@@ -1951,7 +1088,7 @@ private fun MultiViewOverlay(
                             .clickable(onClick = onClose)
                             .padding(horizontal = 12.dp, vertical = 6.dp),
                     ) {
-                        Text("✕ סגור", color = Color.White, fontSize = 12.sp, fontWeight = FontWeight.ExtraBold)
+                        Text("סגור", color = Color.White, fontSize = 12.sp, fontWeight = FontWeight.ExtraBold)
                     }
                 }
             }
@@ -2196,7 +1333,7 @@ private fun MultiViewCell(
                         .clickable { srvIdx = (srvIdx + 1) % candidates.size }
                         .padding(horizontal = 8.dp, vertical = 4.dp),
                 ) {
-                    Text("🔀 ${srvIdx + 1}/${candidates.size}", color = Color.White, fontSize = 10.sp, fontWeight = FontWeight.Bold)
+                    Text("שרת ${srvIdx + 1}/${candidates.size}", color = Color.White, fontSize = 10.sp, fontWeight = FontWeight.Bold)
                 }
             }
             Box(
@@ -2206,7 +1343,7 @@ private fun MultiViewCell(
                     .clickable(onClick = onPickChannel)
                     .padding(horizontal = 8.dp, vertical = 4.dp),
             ) {
-                Text("🔄 ערוץ", color = Color.White, fontSize = 10.sp, fontWeight = FontWeight.Bold)
+                Text("ערוץ", color = Color.White, fontSize = 10.sp, fontWeight = FontWeight.Bold)
             }
             Box(
                 Modifier
@@ -2215,7 +1352,7 @@ private fun MultiViewCell(
                     .clickable(onClick = onExpand)
                     .padding(horizontal = 8.dp, vertical = 4.dp),
             ) {
-                Text("⛶ הרחב", color = Color.White, fontSize = 10.sp, fontWeight = FontWeight.Bold)
+                Text("הרחב", color = Color.White, fontSize = 10.sp, fontWeight = FontWeight.Bold)
             }
         }
     }
