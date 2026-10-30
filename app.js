@@ -318,13 +318,8 @@
       // Home / another app: webOS kills a backgrounded app that still holds the hardware decoder (it then never shows
       // in the recents bar). Release every media pipeline when hidden and bring the channel back when shown again.
       document.addEventListener('visibilitychange', function () {
-        if (document.hidden) {
-          clearTimeout(bgTimer);
-          bgTimer = setTimeout(suspendMedia, 700); // ignore a momentary hide
-        } else {
-          clearTimeout(bgTimer);
-          resumeMedia();
-        }
+        // at once, not on a timer: webOS freezes a hidden page's timers, so a delayed release never ran
+        if (document.hidden) suspendMedia(); else resumeMedia();
       });
       // appinfo's handlesRelaunch leaves it to the app to come back: without activate() a second launch shows nothing
       document.addEventListener('webOSRelaunch', function () {
@@ -341,7 +336,7 @@
   }
 
   // ---- LG: release media while the app is in the background
-  var bgTimer = null, bgResume = null;
+  var bgResume = null;
   function suspendMedia() {
     if (!document.hidden || bgResume) return;
     try {
