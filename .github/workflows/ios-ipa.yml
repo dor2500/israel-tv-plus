@@ -1,0 +1,76 @@
+name: iOS IPA
+
+# Builds an unsigned IPA (Sideloadly / AltStore sign it with the user's Apple ID when installing)
+# and launches the app on iPhone and iPad simulators for screenshots.
+
+on:
+  push:
+    branches: [feat/ios-ipa-4.6.8]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  ipa:
+    runs-on: macos-26
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Prepare the web app and the Capacitor project
+        run: |
+          python -I tools/build_ios_www.py
+          npm ci
+          npx cap sync ios
+      - name: Build for devices (no signing)
+        run: |
+          VERSION=$(tr -d '[:space:]' < VERSION)
+          xcodebuild -project ios/App/App.xcodeproj -scheme App -configuration Release \
+            -sdk iphoneos -destination 'generic/platform=iOS' -derivedDataPath build/device \
+            MARKETING_VERSION="$VERSION" CURRENT_PROJECT_VERSION="$GITHUB_RUN_NUMBER" \
+            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY="" build
+      - name: Package the IPA
+        run: |
+          VERSION=$(tr -d '[:space:]' < VERSION)
+          mkdir -p Payload out
+          cp -R build/device/Build/Products/Release-iphoneos/App.app Payload/
+          /usr/bin/plutil -p Payload/App.app/Info.plist | grep -E 'CFBundleShortVersionString|CFBundleIdentifier|CFBundleDisplayName'
+          grep -q 'ios.js' Payload/App.app/public/index.html
+          zip -qry "out/IsraelTVPlus-ios-$VERSION-unsigned.ipa" Payload
+          ls -la out
+      - uses: actions/upload-artifact@v4
+        with:
+          name: IsraelTVPlus-iOS-IPA
+          path: out/*.ipa
+          if-no-files-found: error
+          compression-level: 0
+      - name: Build for the simulator
+        run: |
+          xcodebuild -project ios/App/App.xcodeproj -scheme App -configuration Release \
+            -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' -derivedDataPath build/sim \
+            CODE_SIGNING_ALLOWED=NO build
+      - name: Launch on iPhone and iPad, take screenshots
+        run: |
+          mkdir -p shots
+          APP=build/sim/Build/Products/Release-iphonesimulator/App.app
+          for kind in iPhone iPad; do
+            UDID=$(xcrun simctl list devices available -j | python3 -c "import json,sys;print([d['udid'] for r,ds in json.load(sys.stdin)['devices'].items() if 'iOS' in r for d in ds if d['name'].startswith('$kind')][0])")
+            xcrun simctl boot "$UDID"
+            xcrun simctl bootstatus "$UDID" -b
+            xcrun simctl install "$UDID" "$APP"
+            xcrun simctl launch "$UDID" com.israeltv.plus.ios
+            sleep 25
+            xcrun simctl io "$UDID" screenshot "shots/$kind.png"
+            xcrun simctl shutdown "$UDID"
+          done
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iOS-screenshots
+          path: shots/

@@ -1,0 +1,7 @@
+/* iOS shell only: native feel on top of the phone layout. */
+html.ios, html.ios body { background: #000; overscroll-behavior: none; -webkit-text-size-adjust: 100%; }
+html.ios * { -webkit-tap-highlight-color: transparent; -webkit-touch-callout: none; }
+html.ios body { -webkit-user-select: none; user-select: none; }
+html.ios input, html.ios textarea { -webkit-user-select: text; user-select: text; font-size: 16px; }
+/* iPad: app.js caps the phone layout's root size for phone screens; a tablet is read from further away */
+html.ipad { font-size: 13px !important; }

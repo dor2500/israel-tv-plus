@@ -28,3 +28,5 @@ tools/.*state.json
 keystore.properties
 google-services.json
 .claude/worktrees/
+node_modules/
+www/

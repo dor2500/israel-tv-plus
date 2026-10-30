@@ -444,7 +444,7 @@
     var w = window.innerWidth, hgt = window.innerHeight;
     var compact = w < 900 || (TOUCH && w < 1100 && hgt > w * 0.9);
     // phones: portrait, or a touch screen whose short side is phone-sized (landscape phones too); never TVs
-    PHONE = !IS_TV && (w < 700 || (TOUCH && (Math.min(w, hgt) < 600 || hgt > w)));
+    PHONE = !IS_TV && (window.ITV_IOS || w < 700 || (TOUCH && (Math.min(w, hgt) < 600 || hgt > w)));
     var base = PHONE ? clamp(Math.min(w, hgt) / 40, 8.5, 11) : compact ? clamp(w / 40, 8.5, 11) : w / 120;
     document.documentElement.style.fontSize = (base * (compact || PHONE ? 1 : S.uiScale)) + 'px';
     toggleClass(document.body, 'compact', compact);
