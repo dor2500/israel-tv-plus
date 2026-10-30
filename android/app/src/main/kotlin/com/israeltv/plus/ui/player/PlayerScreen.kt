@@ -611,9 +611,14 @@ fun PlayerScreen(
             PlayerBottomBar(
                 ch = current,
                 fit = fit,
+                favorite = prefs.isFavorite(current.id),
                 onCycleFit = {
                     touchTick++
                     fit = fit.next()
+                },
+                onFavorite = {
+                    touchTick++
+                    prefs.toggleFavorite(current.id)
                 },
                 onOptions = {
                     touchTick++
