@@ -304,7 +304,7 @@ private fun HeroPager(
         delay(8000)
         pager.animateScrollToPage((pager.currentPage + 1) % featured.size)
     }
-    Box(modifier.padding(bottom = 14.dp)) {
+    Box(modifier.padding(bottom = 16.dp)) {
         HorizontalPager(pager, key = { featured[it].id }) { page ->
             val ch = featured[page]
             HeroPage(
@@ -708,7 +708,7 @@ private fun HeroPage(
                     Text(ch.name, style = MaterialTheme.typography.headlineMedium, color = scheme.onSurface, maxLines = 2)
                 }
             }
-            Spacer(Modifier.height(14.dp))
+            Spacer(Modifier.height(16.dp))
             HeroMetadata(quality, where)
             if (logo.isEmpty()) {
                 Spacer(Modifier.height(4.dp))
@@ -745,8 +745,8 @@ private fun HeroPage(
                         .height(48.dp)
                         .pressPhysics(playInteraction, tilt = false, glowShape = playShape),
                 ) {
-                    Icon(Icons.Rounded.PlayArrow, null, Modifier.size(21.dp))
-                    Spacer(Modifier.width(5.dp))
+                    Icon(Icons.Rounded.PlayArrow, null, Modifier.size(20.dp))
+                    Spacer(Modifier.width(4.dp))
                     Text("צפייה", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
                 }
                 GlassIconButton(
@@ -767,7 +767,7 @@ private fun HeroMetadata(quality: String, where: String) {
     CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(7.dp, Alignment.CenterHorizontally),
+            horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterHorizontally),
         ) {
             HeroGlassBadge(quality)
             HeroGlassBadge(where)
