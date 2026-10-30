@@ -313,6 +313,17 @@
       // LG: TV apps stay open for days – check again every 6 hours, and apply a downloaded update on returning to the app
       setInterval(function () { if (S.autoUpdate) checkUpdates(false); }, 6 * 3600 * 1000);
       document.addEventListener('visibilitychange', function () { if (!document.hidden) applyLiveIfIdle(); });
+      // Home / another app: webOS kills a backgrounded app that still holds the hardware decoder (it then never shows
+      // in the recents bar). Release every media pipeline when hidden and bring the channel back when shown again.
+      document.addEventListener('visibilitychange', function () {
+        if (document.hidden) {
+          clearTimeout(bgTimer);
+          bgTimer = setTimeout(suspendMedia, 700); // ignore a momentary hide
+        } else {
+          clearTimeout(bgTimer);
+          resumeMedia();
+        }
+      });
       // appinfo's handlesRelaunch leaves it to the app to come back: without activate() a second launch shows nothing
       document.addEventListener('webOSRelaunch', function () {
         try {
@@ -325,6 +336,30 @@
     }
     if (Dub && Dub.settings.migratedFromLocal) setTimeout(explainTvDub, 1500);
     window.__itv = { state: state, S: S, playIndex: playIndex, openSettings: openSettings, checkUpdates: checkUpdates };
+  }
+
+  // ---- LG: release media while the app is in the background
+  var bgTimer = null, bgResume = null;
+  function suspendMedia() {
+    if (!document.hidden || bgResume) return;
+    try {
+      if (state.overlay === 'multiview') closeMultiView();
+      if (state.playing || state.hls) {
+        bgResume = state.overlay === 'player' ? state.playing : null;
+        stopPlayback();
+      }
+      crumb('background');
+    } catch (e) {}
+  }
+  function resumeMedia() {
+    var ch = bgResume;
+    bgResume = null;
+    if (!ch || state.overlay !== 'player' || state.playing) return;
+    try {
+      var i = state.list.indexOf(ch);
+      if (i === -1) for (var k = 0; k < state.list.length; k++) if (state.list[k].id === ch.id) { i = k; break; }
+      if (i !== -1) playIndex(i); else closePlayer(false);
+    } catch (e) {}
   }
 
   function cacheEls() {
@@ -364,7 +399,9 @@
     }
     var mark = function (c) { try { localStorage.setItem('itv_clean', c ? '1' : ''); } catch (e) {} };
     mark(false);
-    document.addEventListener('visibilitychange', function () { mark(document.hidden); });
+    // LG: a hide is not a clean exit – if the system kills the app in the background it must show up as a crash
+    if (PLATFORM !== 'webos') document.addEventListener('visibilitychange', function () { mark(document.hidden); });
+    else document.addEventListener('visibilitychange', function () { if (!document.hidden) mark(false); });
     window.addEventListener('pagehide', function () { mark(true); });
     window.addEventListener('error', function (e) {
       errors.unshift({ t: Date.now(), m: String(e.message || 'error').slice(0, 160), at: (e.filename || '').split('/').pop() + ':' + (e.lineno || 0) });
