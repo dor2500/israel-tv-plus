@@ -54,7 +54,10 @@ import com.israeltv.plus.data.UpdateState
 import com.israeltv.plus.data.Updater
 import com.israeltv.plus.ui.components.BoldIcon
 import com.israeltv.plus.ui.components.ProfileAvatar
-import com.israeltv.plus.ui.components.SectionHeader
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.material3.Icon
+import androidx.compose.material3.HorizontalDivider
 import com.israeltv.plus.ui.components.feedPadding
 import com.israeltv.plus.ui.components.rememberBitChordFlingBehavior
 import com.israeltv.plus.ui.components.specularBorder
@@ -69,12 +72,13 @@ fun SettingsScreen(data: ChannelData?, prefs: AppPrefs, updater: Updater, onProf
     LazyColumn(Modifier.fillMaxSize(), contentPadding = feedPadding(withCategories = false), flingBehavior = rememberBitChordFlingBehavior()) {
         item(key = "update") { UpdateCard(updater, Modifier.padding(horizontal = 16.dp).padding(bottom = 28.dp)) }
         item(key = "look") {
-            SectionHeader("תצוגה וצליל")
+            SettingsSectionLabel("תצוגה וצליל")
             SettingsGroup {
                 SettingRow(Icons.Rounded.Palette, "צבעים וסגנון", "צבעי הטפט, פלטות נוספות ומצב כהה", onClick = onStyle)
+                SettingsDivider()
                 SettingRow(
                     Icons.Rounded.Palette,
-                    "רקע שחור OLED (OLED Black)",
+                    "רקע שחור OLED",
                     "רקע שחור מוחלט (#000000) למסכי OLED",
                     onClick = {
                         val next = !prefs.theme.oledBlack
@@ -90,9 +94,11 @@ fun SettingsScreen(data: ChannelData?, prefs: AppPrefs, updater: Updater, onProf
                         },
                     )
                 }
+                SettingsDivider()
                 SettingRow(Icons.Rounded.Face, "פרופילים", "${prefs.profile.name} · ${prefs.profiles.size} פרופילים", onClick = onProfiles) {
                     ProfileAvatar(prefs.avatar, glyphSize = 30.dp)
                 }
+                SettingsDivider()
                 SettingRow(Icons.Rounded.MusicNote, "צליל פתיחה", "צליל קצר כשהאפליקציה נפתחת (שקט כשהטלפון על שקט)",
                     onClick = {
                         haptic.performHapticFeedback(if (prefs.launchSound) HapticFeedbackType.ToggleOff else HapticFeedbackType.ToggleOn)
@@ -107,13 +113,15 @@ fun SettingsScreen(data: ChannelData?, prefs: AppPrefs, updater: Updater, onProf
             Spacer(Modifier.height(28.dp))
         }
         item(key = "about") {
-            SectionHeader("אודות")
+            SettingsSectionLabel("אודות")
             SettingsGroup {
                 SettingRow(Icons.Rounded.Tv, "ישראל TV+ " + updater.installedVersion,
                     "${data?.channels?.size ?: 0} ערוצים ותחנות · ${data?.categories?.size ?: 0} קטגוריות")
+                SettingsDivider()
                 SettingRow(Icons.Rounded.Language, "האתר", "dor2500.github.io/israel-tv-plus", onClick = {
                     ctx.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://dor2500.github.io/israel-tv-plus/")))
                 })
+                SettingsDivider()
                 SettingRow(Icons.Rounded.Code, "קוד המקור ומקורות השידור", "GitHub · SOURCES.md", onClick = {
                     ctx.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/dor2500/israel-tv-plus")))
                 })
@@ -195,20 +203,35 @@ fun UpdateCard(updater: Updater, modifier: Modifier = Modifier) {
     }
 }
 
+/** Nuvio's SettingsGroup: one flat card (surface, 16 dp corners, hairline border); rows are split by inset hairlines. */
 @Composable
-private fun SettingsGroup(content: @Composable () -> Unit) {
-    val shape = RoundedCornerShape(28.dp)
+private fun SettingsGroup(content: @Composable ColumnScope.() -> Unit) {
+    val shape = RoundedCornerShape(16.dp)
+    val scheme = MaterialTheme.colorScheme
     Column(
         Modifier
             .padding(horizontal = 16.dp)
             .fillMaxWidth()
             .clip(shape)
-            .background(MaterialTheme.colorScheme.surfaceContainerHigh.copy(alpha = 0.7f))
-            .specularBorder(shape),
-        verticalArrangement = Arrangement.spacedBy(2.dp),
-    ) { content() }
+            .background(scheme.surfaceContainerHigh.copy(alpha = 0.7f))
+            .border(0.5.dp, scheme.outlineVariant.copy(alpha = 0.5f), shape),
+        content = content,
+    )
 }
 
+/** Nuvio's NuvioSectionLabel: small bold muted caption above a card. */
+@Composable
+private fun SettingsSectionLabel(text: String) {
+    Text(
+        text,
+        Modifier.padding(horizontal = 32.dp).padding(bottom = 10.dp),
+        style = MaterialTheme.typography.labelMedium,
+        fontWeight = FontWeight.Bold,
+        color = MaterialTheme.colorScheme.onSurfaceVariant,
+    )
+}
+
+/** Nuvio's SettingsNavigationRow / SettingsSwitchRow: 36 dp accent-tinted icon chip, 16/14 dp padding, title + muted description. */
 @Composable
 private fun SettingRow(
     icon: ImageVector,
@@ -222,23 +245,31 @@ private fun SettingRow(
         Modifier
             .fillMaxWidth()
             .then(if (onClick != null) Modifier.clickable(remember { MutableInteractionSource() }, null, onClick = onClick) else Modifier)
-            .padding(horizontal = 18.dp, vertical = 14.dp),
+            .padding(horizontal = 16.dp, vertical = 14.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        Box(Modifier.size(40.dp).clip(CircleShape).background(scheme.secondaryContainer), contentAlignment = Alignment.Center) {
-            BoldIcon(icon, null, Modifier.size(22.dp), tint = scheme.onSecondaryContainer, weight = 0.55.dp)
+        Box(
+            Modifier.size(36.dp).clip(RoundedCornerShape(12.dp)).background(scheme.primary.copy(alpha = 0.16f)),
+            contentAlignment = Alignment.Center,
+        ) {
+            Icon(icon, null, Modifier.size(22.dp), tint = scheme.primary)
         }
         Spacer(Modifier.width(14.dp))
-        Column(Modifier.weight(1f)) {
-            Text(title, fontSize = 16.sp, fontWeight = FontWeight.SemiBold, color = scheme.onSurface)
-            Text(subtitle, fontSize = 13.sp, fontWeight = FontWeight.Light, color = scheme.onSurfaceVariant)
+        Column(Modifier.weight(1f).padding(end = 12.dp)) {
+            Text(title, style = MaterialTheme.typography.bodyLarge, fontWeight = FontWeight.Medium, color = scheme.onSurface)
+            Spacer(Modifier.height(2.dp))
+            Text(subtitle, style = MaterialTheme.typography.bodyMedium, color = scheme.onSurfaceVariant)
         }
         when {
             trailing != null -> trailing()
-            onClick != null -> BoldIcon(
-                Icons.AutoMirrored.Rounded.KeyboardArrowLeft, null, Modifier.size(24.dp),
-                tint = scheme.onSurfaceVariant, weight = 0.5.dp,
+            onClick != null -> Icon(
+                Icons.AutoMirrored.Rounded.KeyboardArrowLeft, null, Modifier.size(24.dp), tint = scheme.onSurfaceVariant,
             )
         }
     }
+}
+
+@Composable
+private fun SettingsDivider() {
+    HorizontalDivider(Modifier.padding(start = 66.dp), thickness = 0.5.dp, color = MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.5f))
 }
