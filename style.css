@@ -958,6 +958,7 @@ body.atv-live .atv-bd { opacity: 0; }
     linear-gradient(to bottom, rgba(6, 6, 10, .55) 0%, rgba(6, 6, 10, 0) 18%); }
 
 /* ---- the floating pill */
+.atv-pill:empty { display: none !important; }
 .atv-pill { position: absolute; top: 2.75rem; left: 50%; z-index: 3; display: flex; align-items: center; height: 3.625rem;
   padding: 0 .3rem; border-radius: 999px; white-space: nowrap; background: linear-gradient(180deg, rgba(12, 14, 22, .36) 0%, rgba(12, 14, 22, .14) 100%);
   border: 1px solid rgba(255, 255, 255, .14); box-shadow: 0 1rem 3rem rgba(0, 0, 0, .35);

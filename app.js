@@ -316,6 +316,10 @@
     selectCategory(state.cats.some(function (c) { return c.id === startCat; }) ? startCat : 'ALL', true);
     focusGrid(0);
     if (PHONE) { buildHome(); setTab(S.startCat === 'FAVORITES' && state.favorites.length ? 'library' : 'home', true); }
+    if (TVUI) {
+      atvBuild();
+      atvLayout();
+    }
     if (S.autoplay && S.lastId) {
       var idx = indexInList(S.lastId);
       if (idx !== -1) { focusGrid(idx); playIndex(idx); }
@@ -2060,7 +2064,7 @@
 
   function atvRenderPill() {
     var tabs = ATV_TABS.filter(function (t) {
-      return t[1] === 'profiles' || t[1] === 'top' || t[1] === 'search' || t[1] === 'multiview' || t[1] === 'guide' || t[1] === 'settings' || atvRowIndex(t[1]) !== -1 || (atv.search && t[1] !== 'mine');
+      return t[1] === 'profiles' || t[1] === 'all_channels' || t[1] === 'top' || t[1] === 'search' || t[1] === 'multiview' || t[1] === 'guide' || t[1] === 'settings' || atvRowIndex(t[1]) !== -1 || (atv.search && t[1] !== 'mine');
     });
     if (S.kids) tabs = tabs.filter(function (t) { return t[1] !== 'settings'; }).concat([['יציאה ממצב ילדים', 'kids-exit']]);
     atv.tabs = tabs;
@@ -2151,7 +2155,7 @@
     atv.tab = clamp(i, 0, atv.tabs.length - 1);
     var t = atv.tabs[atv.tab][1];
     // a row tab jumps the shelves straight to its row
-    if (t === 'top' && atv.rows.length) { atv.row = 0; atvLayout(); }
+    if ((t === 'top' || t === 'all_channels') && atv.rows.length) { atv.row = 0; atvLayout(); state.list = atv.rows[0].list; }
     else if (atvRowIndex(t) !== -1) { atv.row = atvRowIndex(t); atvLayout(); state.list = atv.rows[atv.row].list; }
     atvMark();
     atvPillState();
@@ -2166,7 +2170,7 @@
     if (atv.restTimer) clearTimeout(atv.restTimer);
     if (state.playing && state.playing !== ch && state.overlay !== 'player') atvStopPreview();
     if (!ch) return;
-    atv.restTimer = setTimeout(function () { atvPreview(ch); }, 550);
+    atv.restTimer = setTimeout(function () { atvPreview(ch); }, PLATFORM === 'webos' ? 1200 : 550);
   }
 
   /** The focused channel's details, sliding up into the second of two layers while the first fades. */
@@ -2864,22 +2868,21 @@ function loadCandidate(ch, rawUrl) {
 
     if (window.Hls && Hls.isSupported()) {
       var delayed = Dub && Dub.wantsSync(ch);
-      var isSport = /sport|ספורט|one_1|one_2|charlton|eurosport/i.test((ch.category || '') + ' ' + (ch.name || '') + ' ' + (ch.id || ''));
+      var isSport = /sport|ספורט|one_1|one_2|charlton|eurosport|5plus|5live|5gold|5stars|5max|54k/i.test((ch.category || '') + ' ' + (ch.name || '') + ' ' + (ch.id || ''));
       var low = (S.latency === 'low' || S.latency === 'realtime' || TVUI || isSport) && !delayed;
       var isStable = (S.latency === 'stable' && !isSport);
       var is4K = S.quality === 'upscale4k';
       var hls = new Hls({
         enableWorker: true,
-        lowLatencyMode: !is4K,
-        backBufferLength: fastMode() ? 10 : (is4K ? 30 : 20),
-        liveSyncDurationCount: isSport && !is4K ? 1 : (isStable ? 2 : 1),
-        liveMaxLatencyDurationCount: isSport && !is4K ? 2 : (isStable ? 4 : 2),
+        lowLatencyMode: true,
+        backBufferLength: fastMode() ? 8 : (isSport ? 6 : 15),
+        liveSyncDurationCount: isSport ? 1 : (isStable ? 2 : 1),
+        liveMaxLatencyDurationCount: isSport ? 2 : (isStable ? 4 : 2),
         liveDurationInfinity: true,
-        maxLiveSyncPlaybackRate: 1.15,
-        maxBufferLength: is4K ? 45 : (isSport ? 8 : 16),
-        maxMaxBufferLength: is4K ? 90 : (isSport ? 16 : 30),
-        maxBufferSize: is4K ? 60 * 1000 * 1000 : (isSport ? 16 * 1000 * 1000 : 32 * 1000 * 1000),
-        maxBufferSize: 30 * 1000 * 1000,
+        maxLiveSyncPlaybackRate: isSport ? 1.40 : 1.20,
+        maxBufferLength: isSport ? 6 : (is4K ? 24 : 14),
+        maxMaxBufferLength: isSport ? 10 : (is4K ? 45 : 24),
+        maxBufferSize: isSport ? 10 * 1000 * 1000 : 25 * 1000 * 1000,
         manifestLoadingMaxRetry: 5,
         levelLoadingMaxRetry: 5,
         fragLoadingMaxRetry: 6,
@@ -2903,9 +2906,13 @@ function loadCandidate(ch, rawUrl) {
           return;
         }
         if (!state.catchup && data && data.details && data.details.live) {
-          var lsp = hls.liveSyncPosition;
-          if (lsp != null && v.currentTime && (lsp - v.currentTime > (isSport ? 14 : 25))) {
-            v.currentTime = lsp;
+          var edge = data.details.edge || (data.details.fragments && data.details.fragments.length ? data.details.fragments[data.details.fragments.length - 1].start : null);
+          var lsp = hls.liveSyncPosition || edge;
+          if (lsp != null) {
+            // Force jump to zero-latency live edge on initial play or when lag exceeds 5s for sports
+            if (!v.currentTime || (lsp - v.currentTime > (isSport ? 5 : 14))) {
+              try { v.currentTime = lsp; } catch (err) {}
+            }
           }
         }
         if (!adjusted && Dub) { adjusted = true; Dub.adjustMainHls(hls, data.details, ch); }
