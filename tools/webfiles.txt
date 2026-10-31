@@ -6,6 +6,7 @@ boot.js
 ui.js
 fonts.css
 style.css
+tvguide.js
 app.js
 dub.js
 dub-local-worker.js

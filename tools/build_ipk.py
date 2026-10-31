@@ -71,7 +71,12 @@ def main():
             entries.append((app_dir + f, fh.read()))
     pkginfo = {"app": app_id, "id": app_id, "loc_name": info.get("title", app_id), "package_format_version": 2,
                "vendor": info.get("vendor", ""), "version": version}
-    entries.append((pkg_dir + "packageinfo.json", json.dumps(pkginfo, ensure_ascii=False, indent=2).encode()))
+    # the TV guide works from the first start, before the published epg.json is reachable
+    epg_path = os.path.join(ROOT, "epg.json")
+    if os.path.exists(epg_path):
+        with open(epg_path, "rb") as fh:
+            entries.append((app_dir + "epg-snapshot.js", b"window.ITV_EPG=" + fh.read() + b";"))
+    entries.append((pkg_dir + "packageinfo.json",json.dumps(pkginfo, ensure_ascii=False, indent=2).encode()))
 
     size_kb = sum(len(d) for _, d in entries if d) // 1024
     control = (f"Package: {app_id}\nVersion: {version}\nSection: misc\nPriority: optional\nArchitecture: all\n"

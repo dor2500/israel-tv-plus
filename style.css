@@ -2219,3 +2219,111 @@ body:not(.phone):not(.anim-off) #menu .menu-box { animation: tv-panel .42s cubic
   background: #ef4444;
   box-shadow: 0 0 12px rgba(239, 68, 68, 0.6);
 }
+
+/* ================================================================== TV / computer: player OSD and programme guide (tvguide.js) */
+body:not(.tvui) #tvosd, body:not(.tvui) .osd > .tv-brand { display: none; }
+bdi.tv-t { direction: ltr; unicode-bidi: isolate; }
+.tv-clip { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tv-logo { max-width: 100%; max-height: 100%; object-fit: contain; display: block; }
+.tv-brand { position: absolute; left: 3rem; bottom: 2.4rem; z-index: 2; text-align: center; color: #fff; }
+.tv-brand img { display: block; width: 4.4rem; height: 4.4rem; margin: 0 auto .3rem; border-radius: 1rem; }
+.tv-clock { font-size: 2.2rem; font-weight: 500; }
+body.no-osd-clock .tv-clock { display: none; }
+
+/* the new OSD replaces the old top bar and buttons */
+body.tvui #player .osd-top, body.tvui #player .osd-bottom { display: none !important; }
+body.tvui #player .osd::before { content: ''; position: absolute; right: 0; left: 0; bottom: 0; height: 66%; pointer-events: none;
+  background: linear-gradient(to top, rgba(0, 0, 0, .96) 0, rgba(0, 0, 0, .82) 38%, rgba(0, 0, 0, 0) 100%); }
+#tvosd { position: absolute; right: 3rem; left: 10rem; bottom: 2.4rem; display: flex; align-items: flex-end; pointer-events: auto; color: #fff; }
+.osd.off #tvosd { pointer-events: none; }
+#tvo-strip { flex: none; width: 23rem; margin-left: 1.5rem; }
+.tv-strip-item { display: flex; align-items: center; padding: .8rem 1.2rem; border-radius: 1rem; cursor: pointer; opacity: .45; }
+.tv-strip-item.mid { opacity: 1; padding: 1.2rem; }
+.tv-strip-item.focus { background: rgba(255, 255, 255, .1); box-shadow: 0 0 0 .22rem #fff, 0 0 2.4rem rgba(255, 255, 255, .42); }
+.tv-num { flex: none; width: 4.4rem; font-size: 1.8rem; font-weight: 500; }
+.tv-who { flex: 1; min-width: 0; }
+.tv-strip-logo { height: 3rem; }
+.tv-strip-item.mid .tv-strip-logo { height: 4.4rem; }
+.tv-nm { font-size: 1.4rem; line-height: 1.25; color: #c4c6cb; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tv-strip-item.mid .tv-nm { font-size: 1.65rem; color: #fff; }
+.tv-arrow { height: 1.5rem; line-height: 1.5rem; text-align: center; font-size: 1.2rem; visibility: hidden; }
+#tvo-strip.on .tv-arrow { visibility: visible; }
+#tvo-peek { flex: none; width: 14rem; margin-left: 1rem; padding-bottom: 10.6rem; display: flex; align-items: center; cursor: pointer; }
+#tvo-peek.none, #tvo-go.none { visibility: hidden; }
+.tv-peek-txt { flex: 1; min-width: 0; font-size: 1.6rem; line-height: 1.3; }
+.tv-peek-txt small { display: block; margin-top: .4rem; font-size: 1.4rem; color: #c4c6cb; }
+.tv-chev { display: block; flex: none; width: 2rem; height: 2rem; border-top: .3rem solid #fff; border-right: .3rem solid #fff; }
+.tv-chev.right { transform: rotate(45deg); margin-left: 1rem; }
+.tv-chev.left { transform: rotate(-135deg); }
+#tvo-main { flex: none; width: 31rem; margin-left: 1.8rem; }
+.tv-card { position: relative; overflow: hidden; border-radius: .9rem; background: #16161b; cursor: pointer; }
+.tv-poster { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; }
+.tv-poster-logo { position: absolute; top: 12%; right: 25%; left: 25%; height: 42%; display: flex; align-items: center; justify-content: center; }
+.tv-card::after { content: ''; position: absolute; right: 0; left: 0; bottom: 0; height: 70%; background: linear-gradient(to top, rgba(0, 0, 0, .92), rgba(0, 0, 0, 0)); }
+.tv-cap { position: absolute; right: 0; left: 0; bottom: 0; z-index: 1; padding: .9rem 1.2rem; text-align: center; line-height: 1.25; }
+.tv-cap em { display: block; font-style: normal; font-size: 1.5rem; color: #d0d2d6; }
+.tv-cap b { font-size: 2.3rem; font-weight: 700; }
+.tv-cap span { font-size: 1.5rem; }
+#tvo-big { height: 17.4rem; }
+#tvo-big.focus { box-shadow: 0 0 0 .22rem #fff, 0 0 2.4rem rgba(255, 255, 255, .42); }
+#tvo-big.flip > * { animation: tv-fade .2s var(--ease); }
+@keyframes tv-fade { from { opacity: 0; } to { opacity: 1; } }
+#tvo-small { height: 12.9rem; }
+#tvo-small .tv-cap b { font-size: 1.9rem; }
+.tv-timing { display: flex; align-items: center; justify-content: space-between; height: 3rem; margin-top: .6rem; font-size: 1.7rem; font-weight: 500; }
+.tv-day { font-size: 1.6rem; font-weight: 400; color: #c4c6cb; }
+.tv-mid { margin: auto; }
+#tvo-bar { position: relative; height: .4rem; margin-top: .6rem; background: rgba(255, 255, 255, .34); }
+#tvo-bar.none { visibility: hidden; }
+/* time runs right to left, like the cards above it */
+#tvo-bar i { position: absolute; top: 0; right: 0; bottom: 0; background: #e5202e; }
+#tvo-bar u { position: absolute; top: -.35rem; width: .22rem; height: 1.1rem; background: #fff; }
+#tvo-opts-wrap { height: 5rem; margin-top: .5rem; text-align: center; }
+#tvo-opts { display: inline-block; min-width: 13rem; height: 4.6rem; line-height: 4.6rem; padding: 0 2rem; border-radius: .7rem; font-size: 1.75rem; font-weight: 500; background: rgba(255, 255, 255, .15); cursor: pointer; }
+#tvo-opts.focus { background: #f5f5f5; color: #111; box-shadow: 0 0 2rem rgba(255, 255, 255, .45); }
+#tvo-next { flex: none; width: 23rem; margin-left: 1.2rem; padding-bottom: 5.5rem; }
+#tvo-go { flex: none; padding: 0 .6rem 13rem .4rem; cursor: pointer; }
+
+#tvguide { position: fixed; top: 0; right: 0; bottom: 0; left: 0; z-index: 9000; background: #050507; color: #f5f5f5; }
+#tvg-head { position: absolute; top: 2.4rem; right: 2.5rem; left: 2.5rem; height: 6.6rem; display: flex; }
+#tvg-title { flex: none; width: 22rem; padding-left: 1.4rem; }
+#tvg-title b { display: block; font-size: 2.1rem; font-weight: 700; padding-bottom: .35rem; border-bottom: .16rem solid #fff; }
+#tvg-title span { display: block; margin-top: .6rem; font-size: 1.6rem; color: #b4b6bc; }
+#tvg-ruler { position: relative; flex: 1; overflow: hidden; border-bottom: .1rem solid rgba(255, 255, 255, .26); }
+.tv-tick { position: absolute; bottom: 0; width: .1rem; height: .9rem; background: rgba(255, 255, 255, .26); }
+.tv-tick.major { height: 2rem; background: rgba(255, 255, 255, .6); }
+.tv-tlabel { position: absolute; bottom: 2.3rem; font-size: 1.8rem; font-weight: 500; transform: translateX(50%); }
+.tv-nowflag { position: absolute; bottom: 0; z-index: 2; padding: 0 .7rem; height: 2rem; line-height: 2rem; border-radius: .4rem .4rem 0 0; background: #e5202e; font-size: 1.35rem; font-weight: 700; transform: translateX(50%); }
+#tvg-body { position: absolute; top: 9rem; right: 2.5rem; left: 2.5rem; height: 38rem; display: flex; }
+#tvg-rail { flex: none; width: 22rem; overflow: hidden; border-left: .16rem solid rgba(255, 255, 255, .7); }
+.tv-rail-item { display: flex; align-items: center; height: 7.6rem; padding-left: .8rem; border-bottom: .1rem solid rgba(255, 255, 255, .13); }
+.tv-rail-item .tv-num { width: 4rem; font-size: 1.6rem; }
+.tv-rail-logo { flex: none; width: 5rem; height: 3.6rem; margin-left: .8rem; display: flex; align-items: center; justify-content: center; }
+.tv-rail-item .tv-nm { flex: 1; min-width: 0; white-space: normal; max-height: 3.5rem; font-size: 1.3rem; }
+.tv-heart { flex: none; width: 3.6rem; height: 3.6rem; margin-left: .3rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+.tv-heart svg { width: 2.2rem; height: 2.2rem; fill: none; stroke: #fff; stroke-width: 2; }
+.tv-heart.on svg { fill: #e5202e; stroke: #e5202e; }
+.tv-heart.focus { background: #fff; box-shadow: 0 0 1.8rem rgba(255, 255, 255, .55); }
+.tv-heart.focus:not(.on) svg { stroke: #111; }
+#tvg-grid { position: relative; flex: 1; overflow: hidden; }
+.tv-p { position: absolute; height: 7.6rem; border-bottom: .1rem solid rgba(255, 255, 255, .13); border-left: .1rem solid rgba(255, 255, 255, .26); display: flex; align-items: center; cursor: pointer; }
+.tv-ttl { position: relative; z-index: 1; min-width: 0; padding: 0 1.1rem; font-size: 1.9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tv-p.past { color: #74767d; cursor: default; background: rgba(255, 255, 255, .025); }
+.tv-p.air .tv-ttl { font-weight: 500; }
+.tv-p.focus { z-index: 3; background: #1e1e24; box-shadow: inset 0 0 0 .22rem #fff, 0 0 2rem rgba(255, 255, 255, .34); }
+.tv-p.focus .tv-ttl { font-weight: 700; }
+.tv-nowline { position: absolute; top: 0; bottom: 0; z-index: 0; width: .18rem; background: #e5202e; pointer-events: none; }
+#tvg-empty { position: absolute; top: 24rem; right: 0; left: 0; text-align: center; font-size: 2.2rem; color: #b4b6bc; }
+#tvg-detail { position: absolute; right: 2.5rem; left: 12rem; bottom: 2.4rem; height: 14rem; display: flex; }
+#tvg-thumb { position: relative; flex: none; width: 24.9rem; height: 14rem; margin-left: 2.2rem; border-radius: .7rem; overflow: hidden; background: #16161b; }
+#tvg-thumb .tv-poster-logo { top: 22%; height: 56%; }
+#tvg-txt { flex: 1; min-width: 0; }
+#tvg-name { font-size: 2.5rem; font-weight: 700; line-height: 1.2; }
+#tvg-time { margin-top: .4rem; font-size: 1.6rem; color: #b4b6bc; }
+#tvg-desc { margin-top: .6rem; font-size: 1.6rem; line-height: 1.4; max-height: 4.5rem; overflow: hidden; }
+#tvg-cta { margin-top: .4rem; font-size: 1.4rem; font-weight: 700; }
+#tvo-live { display: none; min-width: 13rem; height: 4.6rem; line-height: 4.6rem; padding: 0 2rem; margin-left: 1rem; border-radius: .7rem; font-size: 1.75rem; font-weight: 500; background: rgba(255, 255, 255, .15); cursor: pointer; }
+#tvosd.catchup #tvo-live { display: inline-block; }
+#tvosd.catchup #tvo-opts { min-width: 0; }
+#tvo-live.focus { background: #f5f5f5; color: #111; box-shadow: 0 0 2rem rgba(255, 255, 255, .45); }
+.tv-p.cu .tv-ttl::before { content: '\21BA'; margin-left: .6rem; color: #b4b6bc; }
