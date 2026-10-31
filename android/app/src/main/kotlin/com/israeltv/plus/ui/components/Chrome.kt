@@ -40,6 +40,8 @@ import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.shape.CircleShape
+import com.israeltv.plus.ui.components.jelly.JellyNavItem
+import com.israeltv.plus.ui.components.jelly.JellyNavigationBar
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
@@ -324,10 +326,7 @@ private data class NavItem(
     val selectedIcon: ImageVector,
 )
 
-/**
- * The Nuvio navigation: ONE floating frosted capsule (64 dp tall, max 400 dp wide): icon over label on every tab, the active tab on an
- * accent-tinted capsule. Proportions follow the Nuvio design; the code is our own.
- */
+/** The Nuvio navigation: the ported jelly bar (see jelly/JellyNavigationBar.kt) fed with this app's four routes. */
 @Composable
 fun NuvioFloatingNavbar(
     currentRoute: String,
@@ -341,71 +340,22 @@ fun NuvioFloatingNavbar(
         NavItem("search", "חיפוש", Icons.Outlined.Search, Icons.Filled.Search),
     )
     val haptic = LocalHapticFeedback.current
-
-    val accent = MaterialTheme.colorScheme.primary
-    val shape = RoundedCornerShape(50)
-
-    // Nuvio proportions: one frosted capsule up to 400 dp wide, 64 dp tall, equal-width tabs with the icon over an
-    // always-visible label; the active tab sits on an accent-tinted capsule inset 4 dp from the track.
-    Box(
-        modifier = modifier
-            .fillMaxWidth()
-            .navigationBarsPadding()
-            .padding(start = 28.dp, end = 28.dp, bottom = 16.dp),
-        contentAlignment = Alignment.Center
-    ) {
-        Row(
-            modifier = Modifier
-                .widthIn(max = 400.dp)
-                .fillMaxWidth()
-                .height(64.dp)
-                .frostedGlass(shape, MaterialTheme.colorScheme.surfaceContainerHigh.copy(alpha = 0.55f), blur = 40.dp)
-                .padding(4.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            items.forEach { item ->
-                val isSelected = currentRoute == item.route
-                val pill by animateColorAsState(
-                    targetValue = if (isSelected) accent.copy(alpha = 0.22f) else Color.Transparent,
-                    label = "nav_pill"
-                )
-                val contentColor by animateColorAsState(
-                    targetValue = if (isSelected) accent else MaterialTheme.colorScheme.onSurface.copy(alpha = 0.62f),
-                    label = "nav_content"
-                )
-                Column(
-                    modifier = Modifier
-                        .weight(1f)
-                        .fillMaxHeight()
-                        .clip(shape)
-                        .background(pill)
-                        .clickable {
-                            haptic.performHapticFeedback(HapticFeedbackType.SegmentTick)
-                            onNavigate(item.route)
-                        },
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.Center
-                ) {
-                    Icon(
-                        imageVector = if (isSelected) item.selectedIcon else item.unselectedIcon,
-                        contentDescription = item.label,
-                        tint = contentColor,
-                        modifier = Modifier.size(28.dp)
-                    )
-                    Text(
-                        text = item.label,
-                        style = MaterialTheme.typography.labelMedium.copy(
-                            fontSize = 13.sp,
-                            lineHeight = 16.sp,
-                            fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Medium,
-                            color = contentColor
-                        ),
-                        maxLines = 1
-                    )
-                }
-            }
-        }
-    }
+    JellyNavigationBar(
+        items = items.map { item ->
+            val selected = currentRoute == item.route
+            JellyNavItem(
+                label = item.label,
+                selected = selected,
+                icon = if (selected) item.selectedIcon else item.unselectedIcon,
+                onClick = {
+                    haptic.performHapticFeedback(HapticFeedbackType.SegmentTick)
+                    onNavigate(item.route)
+                },
+            )
+        },
+        modifier = modifier,
+        contentPadding = PaddingValues(bottom = 16.dp + WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()),
+    )
 }
 
 /** App-level wrapper: maps [Tab]/search state to Nuvio routes and fades the feed to OLED black behind the pill. */
