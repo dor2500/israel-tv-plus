@@ -69,33 +69,33 @@ https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kids_channel/live.
 https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/logi/live.livx/playlist.m3u8
 #EXTINF:-1 tvg-id="HopChannel.il" tvg-name="ערוץ הופ! ילדים בעברית HD" tvg-chno="63" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hop.png" group-title="ילדים ונוער (בעברית)",ערוץ הופ! ילדים בעברית HD
 http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12244/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ערוץ הופ! פלא HD (Hop Pele)" tvg-chno="65" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hop_pele_tv.png" group-title="ילדים ונוער (בעברית)",ערוץ הופ! פלא HD (Hop Pele)
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ הופ! פלא HD (Hop Pele)" tvg-chno="66" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hop_pele_tv.png" group-title="ילדים ונוער (בעברית)",ערוץ הופ! פלא HD (Hop Pele)
 https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/hop_pele/live.livx/playlist.m3u8
-#EXTINF:-1 tvg-id="Luli.il" tvg-name="ערוץ לולי לפעוטות בעברית HD" tvg-chno="66" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/luli_tv.png" group-title="ילדים ונוער (בעברית)",ערוץ לולי לפעוטות בעברית HD
+#EXTINF:-1 tvg-id="Luli.il" tvg-name="ערוץ לולי לפעוטות בעברית HD" tvg-chno="67" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/luli_tv.png" group-title="ילדים ונוער (בעברית)",ערוץ לולי לפעוטות בעברית HD
 http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2364/index.m3u8
-#EXTINF:-1 tvg-id="DisneyChannel.il" tvg-name="ערוץ דיסני ישראל HD (Disney Channel)" tvg-chno="67" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/disney.png" group-title="ילדים ונוער (בעברית)",ערוץ דיסני ישראל HD (Disney Channel)
+#EXTINF:-1 tvg-id="DisneyChannel.il" tvg-name="ערוץ דיסני ישראל HD (Disney Channel)" tvg-chno="68" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/disney.png" group-title="ילדים ונוער (בעברית)",ערוץ דיסני ישראל HD (Disney Channel)
 http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2382/index.m3u8
-#EXTINF:-1 tvg-id="DisneyJunior.il" tvg-name="ערוץ דיסני ג'וניור ישראל HD (Disney Jr.)" tvg-chno="68" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/disney_junior.png" group-title="ילדים ונוער (בעברית)",ערוץ דיסני ג'וניור ישראל HD (Disney Jr.)
+#EXTINF:-1 tvg-id="DisneyJunior.il" tvg-name="ערוץ דיסני ג'וניור ישראל HD (Disney Jr.)" tvg-chno="69" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/disney_junior.png" group-title="ילדים ונוער (בעברית)",ערוץ דיסני ג'וניור ישראל HD (Disney Jr.)
 http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2333/index.m3u8
-#EXTINF:-1 tvg-id="Nickelodeon.il" tvg-name="ערוץ ניקלודיאון ישראל HD (Nickelodeon)" tvg-chno="69" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/nickelodeon.png" group-title="ילדים ונוער (בעברית)",ערוץ ניקלודיאון ישראל HD (Nickelodeon)
+#EXTINF:-1 tvg-id="Nickelodeon.il" tvg-name="ערוץ ניקלודיאון ישראל HD (Nickelodeon)" tvg-chno="70" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/nickelodeon.png" group-title="ילדים ונוער (בעברית)",ערוץ ניקלודיאון ישראל HD (Nickelodeon)
 http://stream.mcquack.net/443/index.m3u8
-#EXTINF:-1 tvg-id="NickJr.il" tvg-name="ערוץ ניק ג'וניור ישראל HD (Nick Jr.)" tvg-chno="70" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/nick_jr.png" group-title="ילדים ונוער (בעברית)",ערוץ ניק ג'וניור ישראל HD (Nick Jr.)
+#EXTINF:-1 tvg-id="NickJr.il" tvg-name="ערוץ ניק ג'וניור ישראל HD (Nick Jr.)" tvg-chno="71" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/nick_jr.png" group-title="ילדים ונוער (בעברית)",ערוץ ניק ג'וניור ישראל HD (Nick Jr.)
 http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2337/index.m3u8
-#EXTINF:-1 tvg-id="TeenNick.il" tvg-name="ערוץ טין ניק ישראל HD (TeenNick)" tvg-chno="71" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/teennick.png" group-title="ילדים ונוער (בעברית)",ערוץ טין ניק ישראל HD (TeenNick)
+#EXTINF:-1 tvg-id="TeenNick.il" tvg-name="ערוץ טין ניק ישראל HD (TeenNick)" tvg-chno="72" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/teennick.png" group-title="ילדים ונוער (בעברית)",ערוץ טין ניק ישראל HD (TeenNick)
 http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32148/index.m3u8
-#EXTINF:-1 tvg-id="Zoom.il" tvg-name="ערוץ זום ZOOM ילדים ונוער HD" tvg-chno="72" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/zoom.png" group-title="ילדים ונוער (בעברית)",ערוץ זום ZOOM ילדים ונוער HD
+#EXTINF:-1 tvg-id="Zoom.il" tvg-name="ערוץ זום ZOOM ילדים ונוער HD" tvg-chno="73" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/zoom.png" group-title="ילדים ונוער (בעברית)",ערוץ זום ZOOM ילדים ונוער HD
 http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2359/index.m3u8
 #EXTINF:-1 tvg-id="Junior.il" tvg-name="ערוץ ג'וניור HD (Junior)" tvg-chno="73" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/junior.png" group-title="ילדים ונוער (בעברית)",ערוץ ג'וניור HD (Junior)
 https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/junior/live.livx/playlist.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ערוץ יויו HD (YoYo)" tvg-chno="74" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/yoyo_tv.png" group-title="ילדים ונוער (בעברית)",ערוץ יויו HD (YoYo)
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ יויו HD (YoYo)" tvg-chno="78" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/yoyo_tv.png" group-title="ילדים ונוער (בעברית)",ערוץ יויו HD (YoYo)
 https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/yoyo/live.livx/playlist.m3u8
 #EXTINF:-1 tvg-id="BabyTV.il" tvg-name="ערוץ בייבי ישראל HD (BabyTV)" tvg-chno="75" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/baby_tv_he.png" group-title="ילדים ונוער (בעברית)",ערוץ בייבי ישראל HD (BabyTV)
 https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/baby_new/live.livx/playlist.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="yes קולנוע ילדים FHD (yes Movies Kids)" tvg-chno="76" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/yes_cinema_kids.png" group-title="ילדים ונוער (בעברית)",yes קולנוע ילדים FHD (yes Movies Kids)
 http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2365/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="HOT סינמה פמילי HD (סרטי ילדים ומשפחה)" tvg-chno="77" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hot_cinema_family_il.png" group-title="ילדים ונוער (בעברית)",HOT סינמה פמילי HD (סרטי ילדים ומשפחה)
+#EXTINF:-1 tvg-id="" tvg-name="HOT סינמה פמילי HD (סרטי ילדים ומשפחה)" tvg-chno="83" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hot_cinema_family_il.png" group-title="ילדים ונוער (בעברית)",HOT סינמה פמילי HD (סרטי ילדים ומשפחה)
 http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32146/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ערוץ WIZ! לילדים ונוער HD" tvg-chno="78" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/wiz.png" group-title="ילדים ונוער (בעברית)",ערוץ WIZ! לילדים ונוער HD
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ WIZ! לילדים ונוער HD" tvg-chno="82" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/wiz.png" group-title="ילדים ונוער (בעברית)",ערוץ WIZ! לילדים ונוער HD
 http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12283/index.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="ערוץ HOT באזז לנוער HD (HOT Buzz)" tvg-chno="79" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hot_buzz.png" group-title="ילדים ונוער (בעברית)",ערוץ HOT באזז לנוער HD (HOT Buzz)
 http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32139/index.m3u8
@@ -103,9 +103,9 @@ http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32139/index.m3u8
 https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/fomo/live.livx/playlist.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="ערוץ שירי ילדותי HD" tvg-chno="81" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/yalduti_songs_tv.png" group-title="ילדים ונוער (בעברית)",ערוץ שירי ילדותי HD
 https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/yalduti_songs/live.livx/playlist.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ערוץ A+ ילדים HD" tvg-chno="82" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/a_plus_kids_il.png" group-title="ילדים ונוער (בעברית)",ערוץ A+ ילדים HD
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ A+ ילדים HD" tvg-chno="79" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/a_plus_kids_il.png" group-title="ילדים ונוער (בעברית)",ערוץ A+ ילדים HD
 https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/a_plus/live.livx/playlist.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ערוץ הכוכבים לילדים ונוער HD" tvg-chno="83" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/stars_kids_il.png" group-title="ילדים ונוער (בעברית)",ערוץ הכוכבים לילדים ונוער HD
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ הכוכבים לילדים ונוער HD" tvg-chno="80" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/stars_kids_il.png" group-title="ילדים ונוער (בעברית)",ערוץ הכוכבים לילדים ונוער HD
 https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/starz/live.livx/playlist.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="רדיוס 100% שירי דיסני" tvg-chno="84" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/radios_disney.png" group-title="ילדים ונוער (בעברית)" radio="true",רדיוס 100% שירי דיסני
 https://gb25.streamgates.net/radios-audio/100Disney/icecast.audio
@@ -499,3 +499,11 @@ https://edge3.uk.kab.tv/live/tv66-heb-high/playlist.m3u8
 https://ch16israel-cdn.encoders.immergo.tv/2/streamPlaylist.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="ערוץ i24NEWS עברית HD" tvg-chno="422" tvg-logo="https://www.i24news.tv/images/favicon.png" group-title="ערוצי ישראל",ערוץ i24NEWS עברית HD
 https://i24newshebrew-cdn.encoders.immergo.tv/master.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ הופ! ילדות ישראלית HD" tvg-chno="64" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hop_yaldut.png" group-title="ילדים ונוער (בעברית)",ערוץ הופ! ילדות ישראלית HD
+http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2383/index.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ הופ! פלוס HD" tvg-chno="65" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hop_plus_kids_il.png" group-title="ילדים ונוער (בעברית)",ערוץ הופ! פלוס HD
+http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2338/index.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="FreeTV סרטי ילדים ומשפחה HD" tvg-chno="75" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/channels/freetv_movies.png" group-title="ילדים ונוער (בעברית)",FreeTV סרטי ילדים ומשפחה HD
+https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/free_movies_family/live.livx/playlist.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="yes קולנוע ילדים פלוס HD" tvg-chno="76" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/channels/yes_movies_kids.png" group-title="ילדים ונוער (בעברית)",yes קולנוע ילדים פלוס HD
+http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2365/index.m3u8

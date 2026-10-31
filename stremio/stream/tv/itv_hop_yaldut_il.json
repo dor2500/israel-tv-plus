@@ -1,0 +1,21 @@
+{
+  "streams": [
+    {
+      "name": "ישראל TV+\n[FHD ראשי]",
+      "title": "ערוץ הופ! ילדות ישראלית HD\n📡 פרטנר TV וסלקום – שרתי שידור ישראליים\n✅ שידור רשמי ישיר",
+      "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2383/index.m3u8",
+      "behaviorHints": {
+        "notWebReady": true,
+        "bingeGroup": "itv-live"
+      }
+    },
+    {
+      "name": "ישראל TV+\n[שרת גיבוי HD]",
+      "title": "ערוץ הופ! ילדות ישראלית HD (שרת גיבוי מהיר)",
+      "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/yalduti/live.livx/playlist.m3u8",
+      "behaviorHints": {
+        "bingeGroup": "itv-live"
+      }
+    }
+  ]
+}

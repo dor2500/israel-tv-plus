@@ -1336,7 +1336,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "badge": "HD",
   "lang": "he",
   "desc": "ערוץ שירי וסדרות ילדות ישראלית מבית FreeTV – קלאסיקות, שירי ילדות ישראלית, תוכניות אהובות וסדרות 24/7 ללא הפסקה.",
-  "number": 64,
+  "number": 77,
   "src": {
    "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
    "kind": "official",
@@ -1362,7 +1362,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "lang": "he",
   "country": "IL",
   "countryHe": "ישראל",
-  "number": 65,
+  "number": 66,
   "src": {
    "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
    "kind": "official",
@@ -1386,7 +1386,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "lang": "he",
   "iptv": "Luli.il",
   "desc": "ערוץ לולי – ערוץ ייעודי לפעוטות עד גיל 3 בעברית: שירים ראשונים, צבעים, חיות ומשחקים",
-  "number": 66,
+  "number": 67,
   "src": {
    "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
    "kind": "official",
@@ -1408,7 +1408,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "lang": "he",
   "iptv": "DisneyChannel.il",
   "desc": "ערוץ דיסני ישראל – החממה, כפולה, המופלאה, פיניאס ופרב וסרטי דיסני בדיבוב וכתוביות בעברית",
-  "number": 67,
+  "number": 68,
   "src": {
    "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
    "kind": "official",
@@ -1431,7 +1431,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "lang": "he",
   "iptv": "DisneyJunior.il",
   "desc": "ערוץ דיסני ג'וניור ישראל – מיקי מאוס, ספיידי וחבריו המופלאים, בלואי וכוח פיג'יי בדיבוב לעברית",
-  "number": 68,
+  "number": 69,
   "src": {
    "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
    "kind": "official",
@@ -1455,7 +1455,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "lang": "he",
   "country": "IL",
   "countryHe": "ישראל",
-  "number": 69,
+  "number": 70,
   "src": {
    "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
    "kind": "restream",
@@ -1482,7 +1482,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "lang": "he",
   "iptv": "NickJr.il",
   "desc": "ערוץ ניק ג'וניור ישראל – מפרץ ההרפתקאות (PAW Patrol), דורה, בלייז, פפה פיג ומסעדת החיות בעברית",
-  "number": 70,
+  "number": 71,
   "src": {
    "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
    "kind": "official",
@@ -1509,7 +1509,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "lang": "he",
   "iptv": "TeenNick.il",
   "desc": "ערוץ טין ניק ישראל – שכונה, נעלמים, פלמ\"ח, זיגי, סדרות נוער ישראליות ולהיטי נוער מהעולם",
-  "number": 71,
+  "number": 72,
   "src": {
    "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
    "kind": "official",
@@ -1533,7 +1533,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "iptv": "Zoom.il",
   "desc": "ערוץ ZOOM לילדים ונוער – מועדון החנונים, סדרות אקשן, אנימציה וקומדיה בעברית",
   "logo": "assets/logos/zoom.png",
-  "number": 72,
+  "number": 73,
   "src": {
    "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
    "kind": "official",
@@ -1592,7 +1592,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "country": "IL",
   "countryHe": "ישראל",
   "logo": "assets/logos/yoyo_tv.png",
-  "number": 74,
+  "number": 78,
   "src": {
    "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
    "kind": "official",
@@ -1669,7 +1669,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "badge": "HD",
   "lang": "he",
   "desc": "HOT Cinema Family – סרטי אנימציה, הרפתקאות וקומדיות לכל המשפחה בדיבוב וכתוביות בעברית",
-  "number": 77,
+  "number": 83,
   "src": {
    "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
    "kind": "official",
@@ -1691,7 +1691,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "badge": "HD",
   "lang": "he",
   "desc": "ערוץ WIZ! – סדרות מדע, טבע, הרפתקאות וידע מרתק לילדים סקרנים בעברית",
-  "number": 78,
+  "number": 82,
   "src": {
    "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
    "kind": "official",
@@ -1785,7 +1785,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "lang": "he",
   "country": "IL",
   "countryHe": "ישראל",
-  "number": 82,
+  "number": 79,
   "src": {
    "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
    "kind": "official",
@@ -1809,7 +1809,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "lang": "he",
   "country": "IL",
   "countryHe": "ישראל",
-  "number": 83,
+  "number": 80,
   "src": {
    "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
    "kind": "official",
@@ -9989,5 +9989,111 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
    "web": "✅"
   },
   "number": 422
+ },
+ {
+  "id": "hop_yaldut_il",
+  "name": "ערוץ הופ! ילדות ישראלית HD",
+  "number": 64,
+  "category": "ילדים ונוער (בעברית)",
+  "categoryEn": "kids_he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "lang": "he",
+  "logo": "assets/logos/hop_yaldut.png",
+  "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2383/index.m3u8",
+  "subsUrl": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/yalduti/live.livx/playlist.m3u8",
+  "src": {
+   "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
+   "kind": "official",
+   "host": "b84203c4.ottrast.com",
+   "found": "רשימה ידנית (גרסה קודמת)",
+   "web": "❌ רק באפליקציה (HTTP)"
+  },
+  "desc": "ערוץ הופ! ילדות ישראלית – שירי ילדות קלאסיים, סיפורים, הצגות וסדרות איכותיות לילדים ופעוטות בעברית.",
+  "webOk": true
+ },
+ {
+  "id": "hop_plus_kids_il",
+  "name": "ערוץ הופ! פלוס HD",
+  "number": 65,
+  "category": "ילדים ונוער (בעברית)",
+  "categoryEn": "kids_he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "lang": "he",
+  "logo": "assets/logos/hop_plus_kids_il.png",
+  "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2338/index.m3u8",
+  "src": {
+   "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
+   "kind": "official",
+   "host": "b84203c4.ottrast.com",
+   "found": "רשימה ידנית (גרסה קודמת)",
+   "web": "❌ רק באפליקציה (HTTP)"
+  },
+  "desc": "ערוץ הופ! פלוס – תוכניות אהובות, לימוד והרפתקאות לקטנטנים.",
+  "webOk": true
+ },
+ {
+  "id": "freetv_kids_family_il",
+  "name": "FreeTV סרטי ילדים ומשפחה HD",
+  "number": 75,
+  "category": "ילדים ונוער (בעברית)",
+  "categoryEn": "kids_he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "lang": "he",
+  "logo": "assets/channels/freetv_movies.png",
+  "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/free_movies_family/live.livx/playlist.m3u8",
+  "src": {
+   "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
+   "kind": "official",
+   "host": "d1zqtf09wb8nt5.cloudfront.net",
+   "found": "רשימה ידנית (גרסה קודמת)",
+   "web": "✅"
+  },
+  "desc": "ערוץ סרטי ילדים, אנימציה ומשפחה 24/7 מדובב לעברית.",
+  "webOk": true
+ },
+ {
+  "id": "yes_movies_kids_plus_il",
+  "name": "yes קולנוע ילדים פלוס HD",
+  "number": 76,
+  "category": "ילדים ונוער (בעברית)",
+  "categoryEn": "kids_he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "lang": "he",
+  "logo": "assets/channels/yes_movies_kids.png",
+  "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2365/index.m3u8",
+  "src": {
+   "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
+   "kind": "official",
+   "host": "b84203c4.ottrast.com",
+   "found": "רשימה ידנית (גרסה קודמת)",
+   "web": "❌ רק באפליקציה (HTTP)"
+  },
+  "desc": "ערוץ סרטי ילדים ונוער שוברי קופות מבית yes.",
+  "webOk": true
+ },
+ {
+  "id": "keshet_music_il",
+  "name": "ערוץ מוזיקה ישראלית 24/7 HD",
+  "number": 115,
+  "category": "מוזיקה (Music TV)",
+  "categoryEn": "music",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "lang": "he",
+  "logo": "assets/channels/music_il.png",
+  "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/music_il/live.livx/playlist.m3u8",
+  "src": {
+   "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
+   "kind": "official",
+   "host": "d1zqtf09wb8nt5.cloudfront.net",
+   "found": "רשימה ידנית (גרסה קודמת)",
+   "web": "✅"
+  },
+  "desc": "להיטי מוזיקה ישראלית מכל הזמנים, קליפים והופעות חיות 24 שעות ביממה.",
+  "webOk": true
  }
 ];

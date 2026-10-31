@@ -1,13 +1,13 @@
 # 📺 כל הערוצים – ישראל TV+
 
-נוצר אוטומטית מ-`channels.json` (`tools/make_channel_list.py`). **393** פריטים: **257** ערוצי טלוויזיה, **136** תחנות רדיו ו-**0** שירותי מנויים, מ-**8** מדינות. 290 מהם מתנגנים גם באתר; כל השאר באפליקציות (Android, טלוויזיה, Windows, Mac, Linux) וב-Stremio.
+נוצר אוטומטית מ-`channels.json` (`tools/make_channel_list.py`). **398** פריטים: **262** ערוצי טלוויזיה, **136** תחנות רדיו ו-**0** שירותי מנויים, מ-**8** מדינות. 292 מהם מתנגנים גם באתר; כל השאר באפליקציות (Android, טלוויזיה, Windows, Mac, Linux) וב-Stremio.
 
 **▶ צפייה:** https://dor2500.github.io/israel-tv-plus/ · **🎬 Stremio:** https://dor2500.github.io/israel-tv-plus/stremio/ · **📋 מקור כל שידור:** [SOURCES.md](SOURCES.md)
 
 ## תוכן
 
 - 🇮🇱 [ערוצי ישראל - שידור חי](#ערוצי-ישראל---שידור-חי) – 66
-- 🧸 [ילדים ונוער (בעברית)](#ילדים-ונוער-בעברית) – 27
+- 🧸 [ילדים ונוער (בעברית)](#ילדים-ונוער-בעברית) – 31
 - 📻 [רדיו ישראלי (Israeli Radio)](#רדיו-ישראלי-israeli-radio) – 129
 - 🕯️ [מסורת וקהילה](#מסורת-וקהילה) – 10
 - ⚽ [ספורט (Sports)](#ספורט-sports) – 31
@@ -16,7 +16,7 @@
 - 🍳 [אוכל ובישול (Food)](#אוכל-ובישול-food) – 13
 - 🎈 [ילדים מהעולם (Kids World)](#ילדים-מהעולם-kids-world) – 18
 - 🌍 [טבע ודוקו (Documentary & Nature)](#טבע-ודוקו-documentary--nature) – 9
-- 🎵 [מוזיקה (Music TV)](#מוזיקה-music-tv) – 7
+- 🎵 [מוזיקה (Music TV)](#מוזיקה-music-tv) – 8
 - 📺 [ערוצי ילדים ונוער בעברית](#ערוצי-ילדים-ונוער-בעברית) – 1
 
 ## ערוצי ישראל - שידור חי
@@ -94,7 +94,7 @@
 
 ## ילדים ונוער (בעברית)
 
-🧸 27 ערוצים
+🧸 31 ערוצים
 
 | # | | ערוץ | מדינה | שפה | איכות | איפה מתנגן |
 |---|---|---|---|---|---|---|
@@ -102,25 +102,29 @@
 | 61 | <img src="assets/logos/arutz_hayeladim.png" width="56" alt=""> | **ערוץ הילדים HD (המקום האמיתי)** | 🇮🇱 ישראל | עברית | HD | 🌐 אתר + 📲 אפליקציות |
 | 62 | <img src="assets/logos/logi_tv.png" width="56" alt=""> | **ערוץ לוגי HD (Logi)** | 🇮🇱 ישראל | עברית | HD | 🌐 אתר + 📲 אפליקציות |
 | 63 | <img src="assets/logos/hop.png" width="56" alt=""> | **ערוץ הופ! ילדים בעברית HD** | 🇮🇱 ישראל | עברית | HD | 📲 אפליקציות בלבד |
-| 65 | <img src="assets/logos/hop_pele_tv.png" width="56" alt=""> | **ערוץ הופ! פלא HD (Hop Pele)** | 🇮🇱 ישראל | עברית | HD | 🌐 אתר + 📲 אפליקציות |
-| 66 | <img src="assets/logos/luli_tv.png" width="56" alt=""> | **ערוץ לולי לפעוטות בעברית HD** | 🇮🇱 ישראל | עברית | HD | 📲 אפליקציות בלבד |
-| 67 | <img src="assets/logos/disney.png" width="56" alt=""> | **ערוץ דיסני ישראל HD (Disney Channel)** | 🇮🇱 ישראל | עברית | HD | 📲 אפליקציות בלבד |
-| 68 | <img src="assets/logos/disney_junior.png" width="56" alt=""> | **ערוץ דיסני ג'וניור ישראל HD (Disney Jr.)** | 🇮🇱 ישראל | עברית | HD | 📲 אפליקציות בלבד |
-| 69 | <img src="assets/logos/nickelodeon.png" width="56" alt=""> | **ערוץ ניקלודיאון ישראל HD (Nickelodeon)** | 🇮🇱 ישראל | עברית | HD | 📲 אפליקציות בלבד |
-| 70 | <img src="assets/logos/nick_jr.png" width="56" alt=""> | **ערוץ ניק ג'וניור ישראל HD (Nick Jr.)** | 🇮🇱 ישראל | עברית | HD | 📲 אפליקציות בלבד |
-| 71 | <img src="assets/logos/teennick.png" width="56" alt=""> | **ערוץ טין ניק ישראל HD (TeenNick)** | 🇮🇱 ישראל | עברית | HD | 📲 אפליקציות בלבד |
-| 72 | <img src="assets/logos/zoom.png" width="56" alt=""> | **ערוץ זום ZOOM ילדים ונוער HD** | 🇮🇱 ישראל | עברית | HD | 📲 אפליקציות בלבד |
+| 64 | <img src="assets/logos/hop_yaldut.png" width="56" alt=""> | **ערוץ הופ! ילדות ישראלית HD** | 🇮🇱 ישראל | עברית |  | 📲 אפליקציות בלבד |
+| 65 | <img src="assets/logos/hop_plus_kids_il.png" width="56" alt=""> | **ערוץ הופ! פלוס HD** | 🇮🇱 ישראל | עברית |  | 📲 אפליקציות בלבד |
+| 66 | <img src="assets/logos/hop_pele_tv.png" width="56" alt=""> | **ערוץ הופ! פלא HD (Hop Pele)** | 🇮🇱 ישראל | עברית | HD | 🌐 אתר + 📲 אפליקציות |
+| 67 | <img src="assets/logos/luli_tv.png" width="56" alt=""> | **ערוץ לולי לפעוטות בעברית HD** | 🇮🇱 ישראל | עברית | HD | 📲 אפליקציות בלבד |
+| 68 | <img src="assets/logos/disney.png" width="56" alt=""> | **ערוץ דיסני ישראל HD (Disney Channel)** | 🇮🇱 ישראל | עברית | HD | 📲 אפליקציות בלבד |
+| 69 | <img src="assets/logos/disney_junior.png" width="56" alt=""> | **ערוץ דיסני ג'וניור ישראל HD (Disney Jr.)** | 🇮🇱 ישראל | עברית | HD | 📲 אפליקציות בלבד |
+| 70 | <img src="assets/logos/nickelodeon.png" width="56" alt=""> | **ערוץ ניקלודיאון ישראל HD (Nickelodeon)** | 🇮🇱 ישראל | עברית | HD | 📲 אפליקציות בלבד |
+| 71 | <img src="assets/logos/nick_jr.png" width="56" alt=""> | **ערוץ ניק ג'וניור ישראל HD (Nick Jr.)** | 🇮🇱 ישראל | עברית | HD | 📲 אפליקציות בלבד |
+| 72 | <img src="assets/logos/teennick.png" width="56" alt=""> | **ערוץ טין ניק ישראל HD (TeenNick)** | 🇮🇱 ישראל | עברית | HD | 📲 אפליקציות בלבד |
+| 73 | <img src="assets/logos/zoom.png" width="56" alt=""> | **ערוץ זום ZOOM ילדים ונוער HD** | 🇮🇱 ישראל | עברית | HD | 📲 אפליקציות בלבד |
 | 73 | <img src="assets/logos/junior.png" width="56" alt=""> | **ערוץ ג'וניור HD (Junior)** | 🇮🇱 ישראל | עברית | HD | 🌐 אתר + 📲 אפליקציות |
-| 74 | <img src="assets/logos/yoyo_tv.png" width="56" alt=""> | **ערוץ יויו HD (YoYo)** | 🇮🇱 ישראל | עברית | HD | 🌐 אתר + 📲 אפליקציות |
 | 75 | <img src="assets/logos/baby_tv_he.png" width="56" alt=""> | **ערוץ בייבי ישראל HD (BabyTV)** | 🇮🇱 ישראל | עברית | HD | 🌐 אתר + 📲 אפליקציות |
+| 75 | <img src="assets/channels/freetv_movies.png" width="56" alt=""> | **FreeTV סרטי ילדים ומשפחה HD** | 🇮🇱 ישראל | עברית |  | 🌐 אתר + 📲 אפליקציות |
 | 76 | <img src="assets/logos/yes_cinema_kids.png" width="56" alt=""> | **yes קולנוע ילדים FHD (yes Movies Kids)** | 🇮🇱 ישראל | עברית | FHD | 📲 אפליקציות בלבד |
-| 77 | <img src="assets/logos/hot_cinema_family_il.png" width="56" alt=""> | **HOT סינמה פמילי HD (סרטי ילדים ומשפחה)** | 🇮🇱 ישראל | עברית | HD | 📲 אפליקציות בלבד |
-| 78 | <img src="assets/logos/wiz.png" width="56" alt=""> | **ערוץ WIZ! לילדים ונוער HD** | 🇮🇱 ישראל | עברית | HD | 📲 אפליקציות בלבד |
+| 76 | <img src="assets/channels/yes_movies_kids.png" width="56" alt=""> | **yes קולנוע ילדים פלוס HD** | 🇮🇱 ישראל | עברית |  | 📲 אפליקציות בלבד |
+| 78 | <img src="assets/logos/yoyo_tv.png" width="56" alt=""> | **ערוץ יויו HD (YoYo)** | 🇮🇱 ישראל | עברית | HD | 🌐 אתר + 📲 אפליקציות |
 | 79 | <img src="assets/logos/hot_buzz.png" width="56" alt=""> | **ערוץ HOT באזז לנוער HD (HOT Buzz)** | 🇮🇱 ישראל | עברית | HD | 📲 אפליקציות בלבד |
+| 79 | <img src="assets/logos/a_plus_kids_il.png" width="56" alt=""> | **ערוץ A+ ילדים HD** | 🇮🇱 ישראל | עברית | HD | 🌐 אתר + 📲 אפליקציות |
 | 80 | <img src="assets/logos/fomo_tv.png" width="56" alt=""> | **ערוץ FOMO לנוער ורשת HD** | 🇮🇱 ישראל | עברית | HD | 🌐 אתר + 📲 אפליקציות |
+| 80 | <img src="assets/logos/stars_kids_il.png" width="56" alt=""> | **ערוץ הכוכבים לילדים ונוער HD** | 🇮🇱 ישראל | עברית | HD | 🌐 אתר + 📲 אפליקציות |
 | 81 | <img src="assets/logos/yalduti_songs_tv.png" width="56" alt=""> | **ערוץ שירי ילדותי HD** | 🇮🇱 ישראל | עברית | HD | 🌐 אתר + 📲 אפליקציות |
-| 82 | <img src="assets/logos/a_plus_kids_il.png" width="56" alt=""> | **ערוץ A+ ילדים HD** | 🇮🇱 ישראל | עברית | HD | 🌐 אתר + 📲 אפליקציות |
-| 83 | <img src="assets/logos/stars_kids_il.png" width="56" alt=""> | **ערוץ הכוכבים לילדים ונוער HD** | 🇮🇱 ישראל | עברית | HD | 🌐 אתר + 📲 אפליקציות |
+| 82 | <img src="assets/logos/wiz.png" width="56" alt=""> | **ערוץ WIZ! לילדים ונוער HD** | 🇮🇱 ישראל | עברית | HD | 📲 אפליקציות בלבד |
+| 83 | <img src="assets/logos/hot_cinema_family_il.png" width="56" alt=""> | **HOT סינמה פמילי HD (סרטי ילדים ומשפחה)** | 🇮🇱 ישראל | עברית | HD | 📲 אפליקציות בלבד |
 | 84 | <img src="assets/logos/radios_disney.png" width="56" alt=""> | **רדיוס 100% שירי דיסני** | 🇮🇱 ישראל | מוזיקה | LIVE | 🌐 אתר + 📲 אפליקציות |
 | 85 | <img src="assets/logos/radios_kids.png" width="56" alt=""> | **רדיוס 100% ילדים** | 🇮🇱 ישראל | מוזיקה | LIVE | 🌐 אתר + 📲 אפליקציות |
 | 86 | <img src="assets/logos/radios_stars.png" width="56" alt=""> | **רדיוס 100% ערוץ הכוכבים** | 🇮🇱 ישראל | מוזיקה | LIVE | 🌐 אתר + 📲 אפליקציות |
@@ -476,10 +480,11 @@
 
 ## מוזיקה (Music TV)
 
-🎵 7 ערוצים
+🎵 8 ערוצים
 
 | # | | ערוץ | מדינה | שפה | איכות | איפה מתנגן |
 |---|---|---|---|---|---|---|
+| 115 | <img src="assets/channels/music_il.png" width="56" alt=""> | **ערוץ מוזיקה ישראלית 24/7 HD** | 🇮🇱 ישראל | עברית |  | 🌐 אתר + 📲 אפליקציות |
 | 242 | <img src="assets/logos/radios_video.png" width="56" alt=""> | **רדיוס 100FM – אולפן וידאו HD** | 🇮🇱 ישראל | עברית | HD | 🌐 אתר + 📲 אפליקציות |
 | 243 | <img src="assets/logos/sky_news.png" width="56" alt=""> | **Sky Folk TV HD (סקיי פולק)** | 🇲🇰 מקדוניה | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
 | 244 | <img src="assets/logos/music_4ever.png" width="56" alt=""> | **4ever Music Hits HD** |  | מוזיקה | FHD | 📲 אפליקציות בלבד |
@@ -494,7 +499,7 @@
 
 | # | | ערוץ | מדינה | שפה | איכות | איפה מתנגן |
 |---|---|---|---|---|---|---|
-| 64 | <img src="assets/logos/yalduti_tv.png" width="56" alt=""> | **ערוץ ילדותי ישראלי HD (FreeTV Yalduti)** |  | עברית | HD | 🌐 אתר + 📲 אפליקציות |
+| 77 | <img src="assets/logos/yalduti_tv.png" width="56" alt=""> | **ערוץ ילדותי ישראלי HD (FreeTV Yalduti)** |  | עברית | HD | 🌐 אתר + 📲 אפליקציות |
 
 ---
 

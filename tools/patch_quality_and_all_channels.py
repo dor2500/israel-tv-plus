@@ -208,3 +208,4 @@ if old_manifest_parsed in text:
 with open(app_path, 'w', encoding='utf-8') as f:
     f.write(text)
 print("app.js completely patched!")
+

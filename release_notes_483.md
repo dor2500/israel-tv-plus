@@ -26,3 +26,4 @@
 4. **הרחבת המידע ב-GitHub ובתיעוד המקורות**:
    - עודכן קובץ `README.md` ו-`SOURCES.md` עם פירוט מעמיק על ארכיטקטורת השידור של כל ערוץ.
    - פירוט מלא של שרתי המקור, ה-CDNs (Kaltura, CloudFront, Akamai, Fastly, Ottrast), מנגנוני ה-Dual-Origin Failover, קידודים ומספרי שלט.
+

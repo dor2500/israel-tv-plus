@@ -59,3 +59,4 @@ for script in ["tools/build_ipk.py", "tools/build_kodi.py", "tools/build_tizen_z
             print(f"Executed {script} successfully")
         except Exception as e:
             print(f"Failed {script}: {e}")
+
