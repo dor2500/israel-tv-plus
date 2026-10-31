@@ -123,7 +123,7 @@ https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kids_channel/live.
 https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/logi/live.livx/playlist.m3u8
 #EXTINF:-1 tvg-id="HopChannel.il" tvg-name="ערוץ הופ! ילדים בעברית HD" tvg-chno="63" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hop.png" group-title="ילדים ונוער (בעברית)",ערוץ הופ! ילדים בעברית HD
 http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12244/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ערוץ הופ! ילדות ישראלית HD" tvg-chno="64" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hop_yaldut.png" group-title="ערוצי ילדים ונוער בעברית",ערוץ הופ! ילדות ישראלית HD
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ ילדותי ישראלי HD (FreeTV Yalduti)" tvg-chno="64" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/yalduti_tv.png" group-title="ערוצי ילדים ונוער בעברית",ערוץ ילדותי ישראלי HD (FreeTV Yalduti)
 https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/yalduti/live.livx/playlist.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="ערוץ הופ! פלא HD (Hop Pele)" tvg-chno="65" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hop_pele_tv.png" group-title="ילדים ונוער (בעברית)",ערוץ הופ! פלא HD (Hop Pele)
 https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/hop_pele/live.livx/playlist.m3u8

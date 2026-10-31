@@ -26,6 +26,7 @@ import kotlinx.serialization.json.jsonObject
 import kotlinx.serialization.json.jsonPrimitive
 import okhttp3.OkHttpClient
 import okhttp3.Request
+import androidx.core.content.FileProvider
 import java.io.File
 
 @Immutable
@@ -92,10 +93,18 @@ class Updater(private val context: Context, private val http: OkHttpClient, priv
         if (!canInstall) {
             // Android 8+: the user allows this app to install updates once
             awaitingPermission = info
-            context.startActivity(
-                Intent(Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES, Uri.parse("package:" + context.packageName))
-                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-            )
+            try {
+                context.startActivity(
+                    Intent(Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES, Uri.parse("package:" + context.packageName))
+                        .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                )
+            } catch (e: Exception) {
+                try {
+                    context.startActivity(Intent(Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
+                } catch (e2: Exception) {
+                    runCatching { context.startActivity(Intent(Settings.ACTION_SECURITY_SETTINGS).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)) }
+                }
+            }
             state = UpdateState.Failed("אשרו התקנת עדכונים לאפליקציה ולחצו שוב", info)
             return
         }
@@ -140,18 +149,28 @@ class Updater(private val context: Context, private val http: OkHttpClient, priv
     }
 
     private fun install(apk: File) {
-        val installer = context.packageManager.packageInstaller
-        val params = PackageInstaller.SessionParams(PackageInstaller.SessionParams.MODE_FULL_INSTALL)
-        if (Build.VERSION.SDK_INT >= 31) params.setRequireUserAction(PackageInstaller.SessionParams.USER_ACTION_NOT_REQUIRED)
-        val id = installer.createSession(params)
-        installer.openSession(id).use { session ->
-            session.openWrite("app.apk", 0, apk.length()).use { out ->
-                apk.inputStream().use { it.copyTo(out) }
-                session.fsync(out)
+        try {
+            val uri = FileProvider.getUriForFile(context, context.packageName + ".fileprovider", apk)
+            val intent = Intent(Intent.ACTION_VIEW).apply {
+                setDataAndType(uri, "application/vnd.android.package-archive")
+                addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             }
-            val flags = PendingIntent.FLAG_UPDATE_CURRENT or (if (Build.VERSION.SDK_INT >= 31) PendingIntent.FLAG_MUTABLE else 0)
-            val status = PendingIntent.getBroadcast(context, id, Intent(ACTION_INSTALL_STATUS).setPackage(context.packageName), flags)
-            session.commit(status.intentSender)
+            context.startActivity(intent)
+        } catch (e: Exception) {
+            val installer = context.packageManager.packageInstaller
+            val params = PackageInstaller.SessionParams(PackageInstaller.SessionParams.MODE_FULL_INSTALL)
+            if (Build.VERSION.SDK_INT >= 31) params.setRequireUserAction(PackageInstaller.SessionParams.USER_ACTION_NOT_REQUIRED)
+            val id = installer.createSession(params)
+            installer.openSession(id).use { session ->
+                session.openWrite("app.apk", 0, apk.length()).use { out ->
+                    apk.inputStream().use { it.copyTo(out) }
+                    session.fsync(out)
+                }
+                val flags = PendingIntent.FLAG_UPDATE_CURRENT or (if (Build.VERSION.SDK_INT >= 31) PendingIntent.FLAG_MUTABLE else 0)
+                val status = PendingIntent.getBroadcast(context, id, Intent(ACTION_INSTALL_STATUS).setPackage(context.packageName), flags)
+                session.commit(status.intentSender)
+            }
         }
     }
 

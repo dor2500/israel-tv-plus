@@ -106,6 +106,7 @@ data class Profile(
     val theme: ThemeChoice = ThemeChoice(),
     val favorites: List<String> = emptyList(),
     val recents: List<String> = emptyList(),
+    val isKids: Boolean = false,
 )
 
 private val json = Json { ignoreUnknownKeys = true; encodeDefaults = true }
@@ -135,6 +136,7 @@ class AppPrefs(context: Context) {
     val recents: List<String> get() = profile.recents
     val avatar: String get() = profile.avatar
     val theme: ThemeChoice get() = profile.theme
+    val isKids: Boolean get() = profile.isKids || profile.name.trim() == "ילדים"
 
     fun isFavorite(id: String) = id in favorites
 

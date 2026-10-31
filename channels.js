@@ -1806,20 +1806,21 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "iptv": "HopChannel.il",
   "backups": [
    "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2338/index.m3u8",
-   "http://stream.mcquack.net/44/index.m3u8"
+   "http://stream.mcquack.net/44/index.m3u8",
+   "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12244/index.m3u8"
   ]
  },
  {
-  "id": "hop_yaldut_il",
-  "name": "ערוץ הופ! ילדות ישראלית HD",
-  "title": "ערוץ הופ! ילדות ישראלית (ילדותי)",
+  "id": "yalduti_tv",
+  "name": "ערוץ ילדותי ישראלי HD (FreeTV Yalduti)",
+  "title": "ערוץ שירי וסדרות ילדות ישראלית HD",
   "category": "ערוצי ילדים ונוער בעברית",
   "categoryEn": "kids",
   "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/yalduti/live.livx/playlist.m3u8",
-  "logo": "assets/logos/hop_yaldut.png",
+  "logo": "assets/logos/yalduti_tv.png",
   "badge": "HD",
   "lang": "he",
-  "desc": "ערוץ שירי וסדרות ילדות ישראלית מבית הופ! ו-FreeTV – קלאסיקות, שירים ותוכניות אהובות לילדים ולכל המשפחה בשידור חי רציף 24/7.",
+  "desc": "ערוץ שירי וסדרות ילדות ישראלית מבית FreeTV – קלאסיקות, שירי ילדות ישראלית, תוכניות אהובות וסדרות 24/7 ללא הפסקה.",
   "number": 64,
   "src": {
    "by": "FreeTV – השידור הרשמי (AWS CloudFront)",

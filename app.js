@@ -159,11 +159,17 @@
     var en = (ch.categoryEn || '').toLowerCase();
     var name = (ch.name || '').toLowerCase();
     var id = (ch.id || '').toLowerCase();
-    if (/חדשות|ספורט|פוליטיקה|דת |כלכלה|ויוה|viva|טלנובלה|telenovela|היפ הופ|hiphop|אימה|horror|news|sport|finance/.test(cat + ' ' + name + ' ' + en + ' ' + id)) {
-      return false;
+    var full = cat + ' ' + en + ' ' + name + ' ' + id;
+    if (/היפ הופ|hiphop|הופעות|אירוויזיון|יהודית|חדשות|ספורט|פוליטיקה|דת |כלכלה|ויוה|viva|טלנובלה|telenovela|אימה|horror|news|sport|finance|דרמה|drama|רכב|מרוצים|motor|cars|racing|אוכל|בישול|cooking|food|טבע|פרא|docu|דוקו|lifestyle|עיצוב|שיפוץ|האח הגדול|big brother|reality|ריאליטי|קומדיה|comedy|קולנוע ישראלי|סרטים|cinema|movies|hbo|hot 3|yes tv|action|אקשן|פוד|foody|סדרות|series|ערוץ 9|ערוץ 11|ערוץ 12|ערוץ 13|ערוץ 14|ערוץ 15|ערוץ 16|כאן 11|קשת 12|רשת 13|עכשיו 14|i24news|כנסת|knesset|103fm|100fm|eco99|גלגלצ|גלצ|קול ברמה|קול חי|מכאן/.test(full)) {
+      if (!/ילדים|פמילי|kids|family|מצויר|cartoon|disney|דיסני|ניק|nick|ג'וניור|junior|הופ!|לולי|luli|חינוכית|hinuchit|ילדותי|yalduti|שירי ילדות|baby|duck|lego/.test(full)) {
+        return false;
+      }
+    }
+    if (ch.kind === 'radio' || /radio/.test(en) || ch.isRadio) {
+      return id === 'radios_disney' || id === 'radios_kids' || id === 'radios_stars' || id === 'kan_kids_radio';
     }
     if (/ילדים/.test(cat) || /^(kids|kids_he|kids_world|cartoons)$/.test(en)) return true;
-    if (/ילדים|נוער|פעוטות|קטנטנים|אנימציה|מצוירים|הופ!|בייבי|דיסני|ניקלודיאון|ניק ג'וניור|ג'וניור|קארטון נטוורק|בומרנג|baby shark|ducktv|lego|transformers|cartoon network|boomerang/.test(name + ' ' + id)) return true;
+    if (/ילדים|נוער|פעוטות|קטנטנים|אנימציה|מצוירים|הופ!|בייבי|דיסני|ניקלודיאון|ניק ג'וניור|ג'וניור|קארטון נטוורק|בומרנג|שירי ילדותי|ילדותי|baby shark|ducktv|lego|transformers|cartoon network|boomerang|luli|לולי|זום|zoom|חינוכית|hinuchit|יויו|yoyo|וויז|wiz|באזז|fomo|stars_kids|a_plus_kids/.test(full)) return true;
     return false;
   }
   function isFav(ch) { return ch && state.favorites.indexOf(ch.id) !== -1; }
@@ -1053,6 +1059,7 @@
     lsSet('israel_tv_recents', state.recents);
     S.avatar = p.avatar || '1f60e';
     S.kids = !!p.isKids;
+    buildChannels();
     updateAvatar();
     if (typeof atvRenderPill === 'function') atvRenderPill();
     if (typeof buildCategories === 'function') buildCategories();
@@ -3493,7 +3500,7 @@
       ]) : [info('דיבוב', 'לא זמין במכשיר הזה')] },
       { id: 'kids', ico: '🧸', name: 'מצב ילדים', desc: 'רק ערוצי ילדים, ויציאה עם קוד', rows: [
         { type: 'toggle', label: 'מצב ילדים', help: 'מציג רק ערוצי ילדים (בעברית ומהעולם) ותחנת רדיו לילדים', on: function () { return S.kids; },
-          act: function () { if (S.kids) askPin(function () { setSetting('kids', false); renderSettings(); }); else { setSetting('kids', true); toast('🧸 מצב ילדים פועל'); } } },
+          act: function () { if (S.kids) askPin(function () { setSetting('kids', false); buildChannels(); buildCategories(); filterList(); if (typeof atvRender === 'function') atvRender(); renderSettings(); }); else { setSetting('kids', true); buildChannels(); buildCategories(); filterList(); if (typeof atvRender === 'function') atvRender(); toast('🧸 מצב ילדים פועל'); } } },
         { type: 'action', label: S.kidsPin ? 'שינוי קוד יציאה (' + S.kidsPin.replace(/./g, '•') + ')' : 'הגדרת קוד יציאה (4 ספרות)', help: 'בלי קוד – כל אחד יכול לצאת ממצב ילדים',
           act: function () { askPin(function () { newPin(); }); } }
       ] },
