@@ -7,14 +7,18 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.windowInsetsPadding
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -25,6 +29,10 @@ import com.israeltv.plus.data.ChannelStore
 import com.israeltv.plus.ui.components.LocalHaze
 import dev.chrisbanes.haze.hazeSource
 import dev.chrisbanes.haze.rememberHazeState
+import kotlinx.coroutines.flow.collect
+
+/** Scrolling down past this many px collapses the navbar's selected label; scrolling back up restores it. */
+private const val LabelCollapseAfterPx = 60
 
 /**
  * The Nuvio shell: content as the haze source, the glass pill floating over it at the bottom. Phase 1 renders Home;
@@ -37,12 +45,26 @@ fun NuvioShell(
     modifier: Modifier = Modifier,
 ) {
     var tab by rememberSaveable { mutableStateOf(NuvioTab.Home) }
+    val homeList = rememberLazyListState()
+    var labelsVisible by remember { mutableStateOf(true) }
+    LaunchedEffect(homeList) {
+        var lastIndex = homeList.firstVisibleItemIndex
+        var lastOffset = homeList.firstVisibleItemScrollOffset
+        snapshotFlow { homeList.firstVisibleItemIndex to homeList.firstVisibleItemScrollOffset }.collect { (index, offset) ->
+            val down = index > lastIndex || (index == lastIndex && offset > lastOffset)
+            val up = index < lastIndex || (index == lastIndex && offset < lastOffset)
+            if (down && (index > 0 || offset > LabelCollapseAfterPx)) labelsVisible = false
+            if (up) labelsVisible = true
+            lastIndex = index
+            lastOffset = offset
+        }
+    }
     val haze = rememberHazeState()
     CompositionLocalProvider(LocalHaze provides haze) {
         Box(modifier.fillMaxSize().background(MaterialTheme.colorScheme.background)) {
             Box(Modifier.fillMaxSize().hazeSource(haze)) {
                 when (tab) {
-                    NuvioTab.Home -> NuvioHomeScreen(store = store, onPlay = onPlay)
+                    NuvioTab.Home -> NuvioHomeScreen(store = store, onPlay = onPlay, listState = homeList)
                     else -> Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
                         Text(
                             stringResource(R.string.nuvio_soon),
@@ -55,10 +77,11 @@ fun NuvioShell(
             NuvioNavBar(
                 selected = tab,
                 onSelect = { tab = it },
+                labelsVisible = labelsVisible || tab != NuvioTab.Home,
                 modifier = Modifier
                     .align(Alignment.BottomCenter)
                     .windowInsetsPadding(WindowInsets.navigationBars)
-                    .padding(bottom = 12.dp),
+                    .padding(bottom = 14.dp),
             )
         }
     }

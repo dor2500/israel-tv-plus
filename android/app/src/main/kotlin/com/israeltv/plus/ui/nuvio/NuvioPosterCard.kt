@@ -23,6 +23,9 @@ import com.israeltv.plus.ui.components.ChannelLogo
 /** Nuvio poster ratio: every channel and VOD card is 2:3. */
 const val NuvioPosterAspect = 2f / 3f
 
+/** Resting corner radius of a poster; the press morphs it outwards from here. */
+private val PosterRadius = 12.dp
+
 /**
  * Vertical 2:3 poster: the logo on a tonal plate, name and subtitle below. Press = scale 0.96 with corners morphing
  * outwards. Only theme tokens are used for colour, so it follows Material You and the profile palette.
@@ -35,12 +38,12 @@ fun NuvioPosterCard(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    Column(modifier.nuvioPressable(onClick)) {
+    Column(modifier.nuvioPressable(onClick, restRadius = PosterRadius)) {
         Box(
             modifier = Modifier
                 .fillMaxWidth()
                 .aspectRatio(NuvioPosterAspect)
-                .clip(RoundedCornerShape(NuvioPress.RestRadius))
+                .clip(RoundedCornerShape(PosterRadius))
                 .background(MaterialTheme.colorScheme.surfaceContainerHigh),
             contentAlignment = Alignment.Center,
         ) {

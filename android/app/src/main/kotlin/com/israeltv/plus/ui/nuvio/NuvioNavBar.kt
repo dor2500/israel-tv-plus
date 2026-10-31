@@ -17,6 +17,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.foundation.shape.CircleShape
@@ -41,20 +42,24 @@ import com.israeltv.plus.ui.components.glassTint
 
 private val PillHeight = 52.dp
 private val ItemHeight = 44.dp
+private val PillMaxWidth = 400.dp
 
 /**
- * Nuvio's floating glass pill: frosted over whatever LocalHaze sources, 52 dp tall at most. The selected tab grows
- * its label out of the icon with a spring. Layout direction decides the order, so under RTL Home sits on the right.
+ * Nuvio's floating glass pill: frosted over whatever LocalHaze sources, 52 dp tall and at most 400 dp wide. The
+ * selected tab grows its label out of the icon with a spring; [labelsVisible] = false collapses that label while the
+ * feed scrolls. Layout direction decides the order, so under RTL Home sits on the right.
  */
 @Composable
 fun NuvioNavBar(
     selected: NuvioTab,
     onSelect: (NuvioTab) -> Unit,
     modifier: Modifier = Modifier,
+    labelsVisible: Boolean = true,
 ) {
     val navDescription = stringResource(R.string.nuvio_nav_description)
     Row(
         modifier = modifier
+            .widthIn(max = PillMaxWidth)
             .height(PillHeight)
             .frostedGlass(CircleShape, glassTint(), blur = 40.dp)
             .padding(horizontal = 4.dp)
@@ -63,13 +68,18 @@ fun NuvioNavBar(
         verticalAlignment = Alignment.CenterVertically,
     ) {
         for (tab in NuvioTab.entries) {
-            NuvioNavItem(tab = tab, selected = tab == selected, onClick = { onSelect(tab) })
+            NuvioNavItem(
+                tab = tab,
+                selected = tab == selected,
+                labelVisible = labelsVisible,
+                onClick = { onSelect(tab) },
+            )
         }
     }
 }
 
 @Composable
-private fun NuvioNavItem(tab: NuvioTab, selected: Boolean, onClick: () -> Unit) {
+private fun NuvioNavItem(tab: NuvioTab, selected: Boolean, labelVisible: Boolean, onClick: () -> Unit) {
     val colors = MaterialTheme.colorScheme
     val container by animateColorAsState(
         targetValue = if (selected) colors.primaryContainer else Color.Transparent,
@@ -100,7 +110,7 @@ private fun NuvioNavItem(tab: NuvioTab, selected: Boolean, onClick: () -> Unit) 
             modifier = Modifier.size(24.dp),
         )
         AnimatedVisibility(
-            visible = selected,
+            visible = selected && labelVisible,
             enter = expandHorizontally(spring(dampingRatio = Spring.DampingRatioLowBouncy, stiffness = Spring.StiffnessMediumLow)) + fadeIn(),
             exit = shrinkHorizontally(spring(stiffness = Spring.StiffnessMedium)) + fadeOut(),
         ) {
