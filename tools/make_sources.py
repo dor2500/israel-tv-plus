@@ -84,7 +84,7 @@ HOSTS = {
     "stream.smotrim.ru": ("Smotrim (VGTRK) – הבעלים של קרוסלה", "official"),
     "amg00793-amg00793c6-xumo-us-2669.playouts.now.amagi.tv": ("BBC Earth – Amagi / Xumo FAST", "fast"),
 }
-KIND_HE = {"official": "✅ רשמי", "fast": "✅ FAST חינמי", "restream": "⚠️ ממסר צד שלישי", "public": "🌐 ציבורי (iptv-org)"}
+KIND_HE = {"official": "✅ רשמי", "fast": "✅ FAST חינמי", "restream": "⚠️ ממסר צד שלישי", "public": "🌐 ציבורי (iptv-org)", "live": "✅ שידור חי"}
 
 
 def host(url):

@@ -1,12 +1,12 @@
 # 📺 כל הערוצים – ישראל TV+
 
-נוצר אוטומטית מ-`channels.json` (`tools/make_channel_list.py`). **440** פריטים: **297** ערוצי טלוויזיה, **143** תחנות רדיו ו-**0** שירותי מנויים, מ-**6** מדינות. 313 מהם מתנגנים גם באתר; כל השאר באפליקציות (Android, טלוויזיה, Windows, Mac, Linux) וב-Stremio.
+נוצר אוטומטית מ-`channels.json` (`tools/make_channel_list.py`). **453** פריטים: **310** ערוצי טלוויזיה, **143** תחנות רדיו ו-**0** שירותי מנויים, מ-**7** מדינות. 324 מהם מתנגנים גם באתר; כל השאר באפליקציות (Android, טלוויזיה, Windows, Mac, Linux) וב-Stremio.
 
 **▶ צפייה:** https://dor2500.github.io/israel-tv-plus/ · **🎬 Stremio:** https://dor2500.github.io/israel-tv-plus/stremio/ · **📋 מקור כל שידור:** [SOURCES.md](SOURCES.md)
 
 ## תוכן
 
-- 🇮🇱 [ערוצי ישראל - שידור חי](#ערוצי-ישראל---שידור-חי) – 66
+- 🇮🇱 [ערוצי ישראל - שידור חי](#ערוצי-ישראל---שידור-חי) – 70
 - 🧸 [ילדים ונוער (בעברית)](#ילדים-ונוער-בעברית) – 29
 - 📻 [רדיו ישראלי (Israeli Radio)](#רדיו-ישראלי-israeli-radio) – 136
 - 🕯️ [מסורת וקהילה](#מסורת-וקהילה) – 12
@@ -14,13 +14,13 @@
 - 📰 [חדשות מהעולם (News)](#חדשות-מהעולם-news) – 20
 - 🎬 [סרטים וסדרות (Movies & Series)](#סרטים-וסדרות-movies--series) – 77
 - 🍳 [אוכל ובישול (Food)](#אוכל-ובישול-food) – 18
-- 🎈 [ילדים מהעולם (Kids World)](#ילדים-מהעולם-kids-world) – 33
+- 🎈 [ילדים מהעולם (Kids World)](#ילדים-מהעולם-kids-world) – 42
 - 🌍 [טבע ודוקו (Documentary & Nature)](#טבע-ודוקו-documentary--nature) – 12
 - 🎵 [מוזיקה (Music TV)](#מוזיקה-music-tv) – 8
 
 ## ערוצי ישראל - שידור חי
 
-🇮🇱 66 ערוצים
+🇮🇱 70 ערוצים
 
 | # | | ערוץ | מדינה | שפה | איכות | איפה מתנגן |
 |---|---|---|---|---|---|---|
@@ -90,6 +90,10 @@
 | 152 | <img src="assets/logos/cellcom_home_design_il.png" width="56" alt=""> | **ערוץ בית ועיצוב – סלקום ופרטנר TV HD** | 🇮🇱 ישראל |  | HD | 📲 אפליקציות בלבד |
 | 153 | <img src="assets/logos/partner_reality_il.png" width="56" alt=""> | **ערוץ הריאליטי הישראלי – פרטנר וסלקום TV HD** | 🇮🇱 ישראל |  | HD | 🌐 אתר + 📲 אפליקציות |
 | 154 | <img src="assets/logos/i24news_fr_il.png" width="56" alt=""> | **i24NEWS צרפתית ישראל FHD** | 🇮🇱 ישראל |  | FHD | 🌐 אתר + 📲 אפליקציות |
+| 537 | <img src="playlist-logos/makan33.png" width="56" alt=""> | **ערוץ מכאן 33 כאן FHD** | 🇮🇱 ישראל | ערבית | FHD | 🌐 אתר + 📲 אפליקציות |
+| 538 | <img src="assets/logos/halatv.png" width="56" alt=""> | **ערוץ הלא TV ישראל HD** | 🇮🇱 ישראל | ערבית | HD | 🌐 אתר + 📲 אפליקציות |
+| 539 | <img src="assets/logos/comedy_channel.png" width="56" alt=""> | **ערוץ הקומדיה הישראלי HD** | 🇮🇱 ישראל | עברית | HD | 🌐 אתר + 📲 אפליקציות |
+| 540 | <img src="assets/logos/kabbalah.png" width="56" alt=""> | **ערוץ קבלה לעם שידור חי HD** | 🇮🇱 ישראל | עברית | HD | 🌐 אתר + 📲 אפליקציות |
 
 ## ילדים ונוער (בעברית)
 
@@ -463,7 +467,7 @@
 
 ## ילדים מהעולם (Kids World)
 
-🎈 33 ערוצים
+🎈 42 ערוצים
 
 | # | | ערוץ | מדינה | שפה | איכות | איפה מתנגן |
 |---|---|---|---|---|---|---|
@@ -500,6 +504,15 @@
 | 518 | <img src="https://www.google.com/s2/favicons?domain=nick.com&sz=128" width="56" alt=""> | **Nick Pluto TV Kids FHD** |  |  |  | 🌐 אתר + 📲 אפליקציות |
 | 522 | <img src="https://www.google.com/s2/favicons?domain=garfield.com&sz=128" width="56" alt=""> | **גארפילד וחברים 24/7 FHD** |  |  |  | 🌐 אתר + 📲 אפליקציות |
 | 526 | <img src="https://www.google.com/s2/favicons?domain=nickjr.com&sz=128" width="56" alt=""> | **Nick Jr. Pluto TV FHD** |  |  |  | 🌐 אתר + 📲 אפליקציות |
+| 528 | <img src="https://upload.wikimedia.org/wikipedia/commons/8/80/Cartoon_Network_2010_logo.svg" width="56" alt=""> | **Cartoon Network HD (קארטון נטוורק)** | 🇺🇸 ארה״ב | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
+| 529 | <img src="https://upload.wikimedia.org/wikipedia/commons/c/c5/Boomerang_2014_logo.svg" width="56" alt=""> | **Boomerang HD (בומרנג)** | 🇺🇸 ארה״ב | אנגלית | FHD | 📲 אפליקציות בלבד |
+| 530 | <img src="https://upload.wikimedia.org/wikipedia/commons/d/d2/2019_Disney_Channel_logo.svg" width="56" alt=""> | **Disney Channel Global HD** | 🇺🇸 ארה״ב | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
+| 531 | <img src="https://upload.wikimedia.org/wikipedia/commons/8/80/Cartoon_Network_2010_logo.svg" width="56" alt=""> | **Cartoon Network בערבית HD** | 🇦🇪 איחוד האמירויות | ערבית | HD | 📲 אפליקציות בלבד |
+| 532 | <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Crunchyroll_Logo.png" width="56" alt=""> | **Crunchyroll Anime HD** | 🇺🇸 ארה״ב | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
+| 533 | <img src="https://upload.wikimedia.org/wikipedia/commons/9/94/PBS_Kids_2022_logo.svg" width="56" alt=""> | **PBS Kids HD** | 🇺🇸 ארה״ב | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
+| 534 | <img src="https://upload.wikimedia.org/wikipedia/commons/2/23/Peppa_Pig_logo.svg" width="56" alt=""> | **ערוץ פפה פיג Peppa Pig 24/7** | 🇬🇧 בריטניה | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
+| 535 | <img src="https://upload.wikimedia.org/wikipedia/en/e/e9/Dora_the_Explorer_logo.png" width="56" alt=""> | **ערוץ מגלים עם דורה 24/7 (Dora TV)** | 🇺🇸 ארה״ב | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
+| 536 | <img src="https://upload.wikimedia.org/wikipedia/en/2/20/Baby_shark_logo.png" width="56" alt=""> | **ערוץ בייבי שארק (Baby Shark TV)** | 🇺🇸 ארה״ב | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
 
 ## טבע ודוקו (Documentary & Nature)
 

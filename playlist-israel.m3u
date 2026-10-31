@@ -521,3 +521,11 @@ https://streams.radio.co/s9f35c3afc/listen
 http://uksoutha.streaming.broadcast.radio:20691/kolradio
 #EXTINF:-1 tvg-id="" tvg-name="Imsostablee Radio ישראל" tvg-chno="476" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/imsostablee_radio_il.png" group-title="רדיו ישראלי" radio="true",Imsostablee Radio ישראל
 https://c44.radioboss.fm:8178/stream
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ מכאן 33 כאן FHD" tvg-chno="537" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/makan33.svg" group-title="ערוצי ישראל",ערוץ מכאן 33 כאן FHD
+https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/makan/live.livx/playlist.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ הלא TV ישראל HD" tvg-chno="538" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/halatv.png" group-title="ערוצי ישראל",ערוץ הלא TV ישראל HD
+https://stream.panet.com/edge/halaTV/playlist.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ הקומדיה הישראלי HD" tvg-chno="539" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/comedy_channel.png" group-title="ערוצי ישראל",ערוץ הקומדיה הישראלי HD
+https://d15ds134q59udk.cloudfront.net/out/v1/fbba879221d045598540ee783b140fe2/index.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ קבלה לעם שידור חי HD" tvg-chno="540" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/kabbalah.png" group-title="ערוצי ישראל",ערוץ קבלה לעם שידור חי HD
+https://edge3.uk.kab.tv/live/tv66-heb-high/playlist.m3u8

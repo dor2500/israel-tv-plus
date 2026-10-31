@@ -877,3 +877,29 @@ https://dai.google.com/linear/hls/event/Sid4xiTQTkCT1SLu6rjUSQ/master.m3u8
 https://jmp2.uk/plu-5ca6748a37b88b269472dad9.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="CSI Crime Scene Investigation FHD" tvg-chno="527" tvg-logo="https://www.google.com/s2/favicons?domain=cbs.com&sz=128" group-title="סרטים וסדרות",CSI Crime Scene Investigation FHD
 https://jmp2.uk/plu-5efbd29e4aa26700076c0d06.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="Cartoon Network HD (קארטון נטוורק)" tvg-chno="528" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/8/80/Cartoon_Network_2010_logo.svg" group-title="ילדים מהעולם",Cartoon Network HD (קארטון נטוורק)
+https://vodzong.mjunoon.tv:8087/streamtest/cartoon-network-87/live/87H/chunks.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="Boomerang HD (בומרנג)" tvg-chno="529" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/c/c5/Boomerang_2014_logo.svg" group-title="ילדים מהעולם",Boomerang HD (בומרנג)
+http://23.237.104.106:8080/USA_BOOMERANG/index.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="Disney Channel Global HD" tvg-chno="530" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/d/d2/2019_Disney_Channel_logo.svg" group-title="ילדים מהעולם",Disney Channel Global HD
+https://s6.hopslan.com/disneyX/index.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="Cartoon Network בערבית HD" tvg-chno="531" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/8/80/Cartoon_Network_2010_logo.svg" group-title="ילדים מהעולם",Cartoon Network בערבית HD
+http://149.100.11.252:8000/play/a056/index.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="Crunchyroll Anime HD" tvg-chno="532" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/0/08/Crunchyroll_Logo.png" group-title="ילדים מהעולם",Crunchyroll Anime HD
+https://jmp2.uk/stvp-US2000018YI
+#EXTINF:-1 tvg-id="" tvg-name="PBS Kids HD" tvg-chno="533" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/9/94/PBS_Kids_2022_logo.svg" group-title="ילדים מהעולם",PBS Kids HD
+https://jmp2.uk/stvp-USBC3600013PC
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ פפה פיג Peppa Pig 24/7" tvg-chno="534" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/2/23/Peppa_Pig_logo.svg" group-title="ילדים מהעולם",ערוץ פפה פיג Peppa Pig 24/7
+https://jmp2.uk/plu-5d14fb6c84dd37df3b4290c5.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ מגלים עם דורה 24/7 (Dora TV)" tvg-chno="535" tvg-logo="https://upload.wikimedia.org/wikipedia/en/e/e9/Dora_the_Explorer_logo.png" group-title="ילדים מהעולם",ערוץ מגלים עם דורה 24/7 (Dora TV)
+https://jmp2.uk/plu-6a70da97a4bf6cded4fdaf53.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ בייבי שארק (Baby Shark TV)" tvg-chno="536" tvg-logo="https://upload.wikimedia.org/wikipedia/en/2/20/Baby_shark_logo.png" group-title="ילדים מהעולם",ערוץ בייבי שארק (Baby Shark TV)
+https://jmp2.uk/plu-60faffc3fbbc120007fc4376.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ מכאן 33 כאן FHD" tvg-chno="537" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/makan33.svg" group-title="ערוצי ישראל",ערוץ מכאן 33 כאן FHD
+https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/makan/live.livx/playlist.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ הלא TV ישראל HD" tvg-chno="538" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/halatv.png" group-title="ערוצי ישראל",ערוץ הלא TV ישראל HD
+https://stream.panet.com/edge/halaTV/playlist.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ הקומדיה הישראלי HD" tvg-chno="539" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/comedy_channel.png" group-title="ערוצי ישראל",ערוץ הקומדיה הישראלי HD
+https://d15ds134q59udk.cloudfront.net/out/v1/fbba879221d045598540ee783b140fe2/index.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ קבלה לעם שידור חי HD" tvg-chno="540" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/kabbalah.png" group-title="ערוצי ישראל",ערוץ קבלה לעם שידור חי HD
+https://edge3.uk.kab.tv/live/tv66-heb-high/playlist.m3u8
