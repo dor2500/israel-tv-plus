@@ -61,3 +61,4 @@ for fname in sorted(os.listdir(dist_dir)):
 with open(f"{dist_dir}/SHA256SUMS", "w", encoding="utf-8") as f:
     f.write("\n".join(sums) + "\n")
 print(f"Generated SHA256SUMS with {len(sums)} files")
+

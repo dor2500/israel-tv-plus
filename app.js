@@ -1915,7 +1915,7 @@
     ['ילדים', 'kids'],
     ['סרטים ודיבוב', 'movies'],
     ['רדיו', 'radio'],
-    ['מועדפים', 'mine'],
+    ['מועדפים', 'mine'], ['לוח שידורים', 'guide'],
     ['חיפוש', 'search'],
     ['פיצול מסך', 'multiview'],
     ['הגדרות', 'settings']
@@ -2312,9 +2312,33 @@
 
   function atvBack() {
     if (atv.search) { atvCloseSearch(); return; }
-    if (atv.zone === 'pill') { atvFocus(atv.row, atv.cols[atv.row] || 0); return; }
-    if (atv.row > 0 || (atv.cols[atv.row] || 0) > 0) { atv.cols[atv.row] = 0; atvFocus(0, atv.cols[0] || 0); return; }
-    if (state.playing && !state.preview) { stopPlayback(); document.body.classList.remove('atv-live'); el.player.classList.add('hidden'); return; }
+    if (atv.zone === 'kb') { atv.zone = 'rows'; atvKbMark(); return; }
+    // If a channel is playing in background behind the shelves, BACK returns directly to full-screen video!
+    if (state.playing && !state.preview) {
+      openPlayer();
+      showOsd();
+      return;
+    }
+    if (atv.zone === 'pill') {
+      atvFocus(atv.row, atv.cols[atv.row] || 0);
+      return;
+    }
+    // If inside a row (column > 0), step back to column 0 of that row first
+    if ((atv.cols[atv.row] || 0) > 0) {
+      atvFocus(atv.row, 0);
+      return;
+    }
+    // If on row > 0, step back up one row at a time
+    if (atv.row > 0) {
+      atvFocus(atv.row - 1, 0);
+      return;
+    }
+    // Already at row 0 col 0: go up to category tab pill
+    if (atv.zone === 'rows') {
+      atvFocusPill(atv.tab || 0);
+      return;
+    }
+    // At the very top: double-tap to exit application
     var now = Date.now();
     if (now - (state.lastBack || 0) < 2500) exitApp();
     else { state.lastBack = now; toast('לחצו שוב BACK ליציאה'); }
@@ -2858,6 +2882,13 @@ function loadCandidate(ch, rawUrl) {
           onFatal(ch, 'השידור אינו פעיל בשרת זה');
           return;
         }
+        if (state.catchup && state.catchup.ch === ch) {
+          if (!adjusted) {
+            adjusted = true;
+            if (!catchupSeek(hls, data.details)) onFatal(ch, 'התכנית כבר לא זמינה');
+          }
+          return;
+        }
         if (!adjusted && Dub) { adjusted = true; Dub.adjustMainHls(hls, data.details, ch); }
       });
       hls.on(Hls.Events.MANIFEST_PARSED, function (e, data) {
@@ -2933,6 +2964,7 @@ function loadCandidate(ch, rawUrl) {
   function onFatal(ch, reason) {
     if (state.stallTimer) { clearTimeout(state.stallTimer); state.stallTimer = null; }
     if (state.playing !== ch) return;
+    if (state.catchup) { toast('הצפייה החוזרת לא זמינה · חוזרים לשידור החי'); loadStream(ch); return; }
     var cands = state.candidates && state.candidates.length ? state.candidates : candidateUrlsOf(ch);
     state.candidates = cands;
     while ((state.candIdx || 0) + 1 < cands.length) {
@@ -3052,6 +3084,7 @@ function loadCandidate(ch, rawUrl) {
   }
 
   function fillOsd(ch) {
+    if (Guide) Guide.fill();
     el.osdNum.textContent = ch.number;
     el.osdName.textContent = ch.name;
     el.osdCat.textContent = splitCat(ch.category) + (S.showSource ? ' · ' + sourceLine(ch).replace(/^מקור: /, '') : '');
@@ -3062,7 +3095,15 @@ function loadCandidate(ch, rawUrl) {
     // TV / computer OSD and programme guide (tvguide.js); phones keep the player below
   var Guide = null;
   function setupGuide() {
-    if (PHONE || !window.ITVGuide) return;
+    if (PHONE || Guide) return;
+    if (!window.ITVGuide) {
+      // live update on an installed build whose boot.js predates tvguide.js
+      var gs = document.createElement('script');
+      gs.src = (window.ITV_BASE || '') + 'tvguide.js' + (window.ITV_LIVE ? '?v=' + window.ITV_LIVE.code : '');
+      gs.onload = function () { if (window.ITVGuide && !Guide) setupGuide(); };
+      document.body.appendChild(gs);
+      return;
+    }
     Guide = window.ITVGuide({
       state: state, S: S, osdEl: el.osd, isBack: isBack, isFav: isFav, toggleFav: toggleFav, toast: toast, showOsd: showOsd, playerMenu: playerMenu, markFocus: markFocus,
       playable: function (ch) { return !isApp(ch) && !appOnly(ch); },
@@ -3924,7 +3965,7 @@ function showOsd() {
       if (data.code > activeCode && S.liveUpdates && (data.shell || 0) <= (BUILD.shell || 0)) {
         u.liveDownloading = true;
         var q = '?v=' + data.code;
-        prefetch(['style.css', 'ui.js', 'channels.js', 'dub.js', 'app.js'].map(function (f) { return REMOTE + f + q; }), function (ok) {
+        prefetch(['style.css', 'ui.js', 'channels.js', 'dub.js', 'tvguide.js', 'app.js'].map(function (f) { return REMOTE + f + q; }), function (ok) {
           u.liveDownloading = false;
           if (ok) {
             state.liveReady = { code: data.code, version: data.version, shell: data.shell || 0 };
@@ -3971,7 +4012,9 @@ function showOsd() {
     if (!file || IS_SITE) { done(); return; }
     xhrJson(RELEASES_API, 10000, function (r) {
       var v = String(r && r.tag_name || '').replace(/^v/i, '');
-      var asset = ((r && r.assets) || []).filter(function (a) { return a.name === file; })[0];
+      var list = (r && r.assets) || [];
+      var vfile = file.replace('IsraelTVPlus-', 'IsraelTVPlus-' + v + '-');
+      var asset = list.filter(function (a) { return a.name === vfile; })[0] || list.filter(function (a) { return a.name === file; })[0];
       if (asset && trustedReleaseUrl(asset.browser_download_url) && !r.draft && !r.prerelease && verNum(v) > verNum(installedAppVersion()) && (!u.native || verNum(v) > verNum(u.native.version))) {
         u.native = { version: v, url: asset.browser_download_url, size: asset.size, notes: releaseNotes(r.body),
           date: String(r.published_at || '').slice(0, 10), release: true };
@@ -5207,18 +5250,35 @@ function showOsd() {
   
   function playerKey(code) {
     var wasOff = el.osd.classList.contains('off');
-    showOsd();
+    var back = isBack(code);
+    if (!back || state.zone === 'perror') showOsd();
     if (state.zone === 'perror') {
       var b = errorButtons();
       if (code === 37) state.perrIdx = clamp((state.perrIdx || 0) + 1, 0, b.length - 1);
       else if (code === 39) state.perrIdx = clamp((state.perrIdx || 0) - 1, 0, b.length - 1);
       else if (code === 38 || code === 40) { zap(code === 40 ? 1 : -1); return; }
-      else if (isBack(code)) { closePlayer(false); return; }
+      else if (back) { closePlayer(false); return; }
       markFocus();
       return;
     }
-    if (Guide && Guide.playerKey(code, wasOff)) return;
-    if (isBack(code)) { closePlayer(true); return; }
+    if (Guide && Guide.playerKey(code, wasOff)) { if (back) showOsd(); return; }
+    if (back) {
+      var now = Date.now();
+      if (!PHONE && now - (state.playerBackAt || 0) > 2500) {
+        state.playerBackAt = now;
+        if (!wasOff) {
+          if (state.osdTimer) clearTimeout(state.osdTimer);
+          if (Guide) Guide.onHide();
+          el.osd.classList.add('off');
+          el.player.classList.add('cursor-hidden');
+        }
+        toast('לחצו שוב BACK לחזרה למסך הראשי');
+        return;
+      }
+      state.playerBackAt = 0;
+      closePlayer(true);
+      return;
+    }
     if (code === 38) zap(S.upNext ? 1 : -1);
     else if (code === 40) zap(S.upNext ? -1 : 1);
     else if (code === 37) openDrawer();

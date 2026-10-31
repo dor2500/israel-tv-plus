@@ -529,8 +529,21 @@ public class MainActivity extends Activity {
             }
             HttpURLConnection c = (HttpURLConnection) new URL(url).openConnection();
             c.setInstanceFollowRedirects(true);
+            c.setRequestProperty("User-Agent", "Mozilla/5.0 (Linux; Android) IsraelTVPlus-Updater");
             c.setConnectTimeout(20000);
             c.setReadTimeout(30000);
+            for (int hop = 0; hop < 5; hop++) {
+                int rc = c.getResponseCode();
+                if (rc < 300 || rc >= 400) break;
+                String loc = c.getHeaderField("Location");
+                if (loc == null) break;
+                c.disconnect();
+                c = (HttpURLConnection) new URL(new URL(url), loc).openConnection();
+                c.setRequestProperty("User-Agent", "Mozilla/5.0 (Linux; Android) IsraelTVPlus-Updater");
+                c.setConnectTimeout(20000);
+                c.setReadTimeout(30000);
+            }
+            if (c.getResponseCode() != 200) { report("error", "השרת החזיר " + c.getResponseCode()); return; }
             long len = c.getContentLength();
             PackageInstaller pi = getPackageManager().getPackageInstaller();
             PackageInstaller.SessionParams params = new PackageInstaller.SessionParams(PackageInstaller.SessionParams.MODE_FULL_INSTALL);
