@@ -69,9 +69,9 @@ import com.israeltv.plus.data.Channel
 import com.israeltv.plus.ui.theme.LocalDimens
 import kotlin.math.abs
 
-const val PosterAspect = 2f / 3f
+const val PosterAspect = 0.675f
 
-val CardShape = RoundedCornerShape(16.dp)
+val CardShape = RoundedCornerShape(12.dp)
 private val ContinueCardShape = RoundedCornerShape(16.dp)
 
 /** The shared-element key of the card that was tapped last: the player grows out of it and shrinks back into it. */
@@ -137,7 +137,8 @@ fun ChannelCard(
                 .aspectRatio(PosterAspect)
                 .pressPhysics(interaction, glowShape = CardShape)
                 .then(if (sharedKey != null) Modifier.sharedContainer(sharedKey, CardShape) else Modifier)
-                .frostedGlass(CardShape, Color.White.copy(alpha = 0.05f), blur = 24.dp)
+                .clip(CardShape)
+                .background(MaterialTheme.colorScheme.surfaceContainerHigh.copy(alpha = 0.6f))
                 .combinedClickable(
                     interactionSource = interaction,
                     indication = null,
@@ -200,18 +201,18 @@ fun ChannelCard(
                 },
             )
         }
-        Spacer(Modifier.height(8.dp))
+        Spacer(Modifier.height(6.dp))
         Text(
             channel.name,
-            Modifier.fillMaxWidth().padding(horizontal = 4.dp),
-            style = MaterialTheme.typography.labelLarge.merge(Rtl),
+            Modifier.fillMaxWidth(),
+            style = MaterialTheme.typography.bodyMedium.merge(Rtl),
             color = scheme.onSurface,
             maxLines = 1,
             overflow = TextOverflow.Ellipsis,
         )
         Text(
             subtitle,
-            Modifier.fillMaxWidth().padding(horizontal = 4.dp),
+            Modifier.fillMaxWidth(),
             style = MaterialTheme.typography.labelSmall.merge(Rtl),
             color = scheme.onSurfaceVariant,
             maxLines = 1,
@@ -493,47 +494,28 @@ fun SectionHeader(title: String, count: Int? = null, onSeeAll: (() -> Unit)? = n
     val haptic = LocalHapticFeedback.current
     Row(
         Modifier.fillMaxWidth().padding(start = LocalDimens.current.gutter, end = LocalDimens.current.gutter, bottom = 12.dp),
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        Box(
-            Modifier
-                .width(3.5.dp)
-                .height(16.dp)
-                .clip(RoundedCornerShape(2.dp))
-                .background(Color.White)
+        Text(
+            title, Modifier.weight(1f), style = MaterialTheme.typography.titleLarge, color = scheme.onSurface,
+            maxLines = 1, overflow = TextOverflow.Ellipsis,
         )
-        Spacer(Modifier.width(9.dp))
-        Text(title, Modifier.weight(1f), style = MaterialTheme.typography.titleMedium, color = scheme.onSurface)
         if (onSeeAll != null) {
-            val interaction = remember { MutableInteractionSource() }
-            val pressed by interaction.collectIsPressedAsState()
-            val corner by animateDpAsState(
-                targetValue = if (pressed) 8.dp else 18.dp,
-                animationSpec = spring(dampingRatio = 0.58f, stiffness = Spring.StiffnessMedium),
-                label = "seeAllMorph",
-            )
-            val pillShape = RoundedCornerShape(corner)
-            Row(
+            Box(
                 Modifier
-                    .pressPhysics(interaction, tilt = false, glowShape = pillShape)
-                    .clip(pillShape)
-                    .background(scheme.secondaryContainer.copy(alpha = 0.55f))
-                    .clickable(interaction, null) {
+                    .size(32.dp)
+                    .clip(RoundedCornerShape(16.dp))
+                    .background(scheme.surfaceContainerHigh)
+                    .clickable {
                         haptic.performHapticFeedback(HapticFeedbackType.SegmentTick)
                         onSeeAll()
-                    }
-                    .padding(start = 12.dp, end = 6.dp, top = 4.5.dp, bottom = 4.5.dp),
-                verticalAlignment = Alignment.CenterVertically,
+                    },
+                contentAlignment = Alignment.Center,
             ) {
-                Text(
-                    if (count != null) "הכל · $count" else "הכל",
-                    fontSize = 11.5.sp,
-                    fontWeight = FontWeight.Medium,
-                    color = scheme.onSecondaryContainer,
-                )
                 Icon(
-                    Icons.AutoMirrored.Rounded.KeyboardArrowRight, null,
-                    Modifier.size(16.dp), tint = scheme.onSecondaryContainer,
+                    Icons.AutoMirrored.Rounded.KeyboardArrowRight, if (count != null) "הכל · $count" else "הכל",
+                    Modifier.size(20.dp), tint = scheme.onSurfaceVariant,
                 )
             }
         }
