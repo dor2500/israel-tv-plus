@@ -1,14 +1,27 @@
 {
-  "version": "4.7.9",
-  "code": 202610311539,
-  "app": 579,
+  "version": "4.8.0",
+  "code": 202610311615,
+  "app": 580,
   "shell": 3,
   "date": "2026-10-31",
   "notes": [
-    "הסרת כפילויות ערוצים מוחלטת (402 ערוצים ייחודיים ומאומתים 100%):",
-    "בוצע ניקוי עמוק והסרה של 14 ערוצים כפולים שהציגו את אותו השידור או הופיעו פעמיים (כולל איחוד ערוצי חופש/נופש, ריאליטי, קומדיה, חיים טובים, ספורט 5 ודרמות).",
-    "0 כפילויות של מזהי ערוצים (IDs), 0 כפילויות של קישורי שידור (URLs), 0 כפילויות שמות, ו-0 כפילויות מספרי ערוצים.",
-    "כל שרתי הגיבוי אוחדו לרשימות ה-backups של הערוצים המקוריים ללא איבוד מקורות שידור.",
+    "סנכרון שידור חי בזמן אמת עם הטלפון הנייד (Low-Latency Live Edge):",
+    "עודכנה הגדרת ברירת המחדל להשהיית שידור נמוכה (latency: 'low').",
+    "צומצם מרווח הסנכרון של נגן ה-HLS בטלוויזיה (liveSyncDurationCount: 2 עם liveMaxLatencyDurationCount: 3), כך שהטלוויזיה משדרת בלייב אמיתי ובסנכרון מלא ללא איחור מול הטלפון הנייד.",
+    "שקופית \"סליחה, תקלה זמנית בשידור\" מעוצבת וסינמטית:",
+    "במקרה של אי-זמינות זמנית בערוץ מוצגת שקופית שידור מקצועית בסגנון ערוצי הטלוויזיה עם לוגו הערוץ, פסי צבע סטנדרטיים והודעת התנצלות נעימה עם כפתור מעבר מיידי לערוץ הבא בלחיצה אחת.",
+    "מעבר מיידי לצפייה בלחיצה על פרופיל (\"מי צופה?\"):",
+    "לחיצה על כרטיס פרופיל (או לחיצת OK בשלט) מעבירה ומפעילה מיד את השידור האחרון או הערוץ הראשון של הפרופיל, ללא צורך בלחיצה נוספת על \"המשך לצפייה\".",
+    "פרופיל ילדים מוגן ומוקפד 100% (תכני ילדים בלבד):",
+    "הוחל סינון קפדני ומוחלט: בפרופיל ילדים מוצגים אך ורק 47 ערוצי ילדים, נוער, אנימציה, סרטים מצוירים ותחנות שירים לקטנטנים.",
+    "כל ערוצי החדשות, הספורט, הפוליטיקה והסדרות למבוגרים נחסמים לחלוטין.",
+    "מדפי הטלוויזיה (Shelves) וסרגל הטאבים מותאמים אישית לילדים בלבד.",
+    "איחוד ערוצי פרטנר ומניעת כפילויות בשמות שונים (388 ערוצים ייחודיים ומאומתים):",
+    "ערוצי פרטנר שהיוו שידור זהה לערוצים קיימים אוחדו במלואם: ערוץ הריאליטי אוחד לרשת 13 ריאליטי, ערוץ ג'וניור אוחד לג'וניור, ערוץ עולם הילדים אוחד לערוץ הילדים, וערוץ הדרמות הטורקיות אוחד לערוץ הדרמות הטורקיות הראשי.",
+    "כל שרתי השידור נשמרו כשרתי גיבוי מרובים תחת הערוצים המקוריים ללא איבוד מקורות שידור.",
+    "0 כפילויות של מזהים (IDs), 0 כפילויות של קישורי שידור (URLs), 0 כפילויות שמות ו-0 כפילויות מספרי ערוצים.",
+    "תיקון ערוצי \"הופ! ילדות ישראלית\" ו\"ערוץ העיצוב\" (סיום תופעת הלופ והתקיעה):",
+    "חיבור לשרתי CloudFront חיים 24/7 ללא קפיאות ובאיכות HD / Full HD 1080p.",
     "מערכת פרופילים מלאה בטלוויזיה כמו בנטפליקס ובאפליקציה (\"מי צופה?\"):",
     "פתיחת מסך \"מי צופה?\" באופן אוטומטי בהפעלת הטלוויזיה (Netflix-style cold start), לבחירת פרופיל אישי בלחיצה אחת מהשלט.",
     "כפתורי ניהול פרופילים פעילים: \"ניהול פרופילים\" (עריכת שמות, החלפת אווטארים 3D, מחיקה), \"הוסף פרופיל\" ו\"המשך לצפייה\".",
@@ -37,40 +50,40 @@
   ],
   "native": {
     "android": {
-      "version": "4.7.9",
-      "app": 579,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.7.9/IsraelTVPlus-android.apk"
+      "version": "4.8.0",
+      "app": 580,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.0/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "4.7.9",
-      "app": 579,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.7.9/IsraelTVPlus-windows-setup.exe"
+      "version": "4.8.0",
+      "app": 580,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.0/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "4.7.9",
-      "app": 579,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.7.9/com.israeltv.plus_all.ipk",
+      "version": "4.8.0",
+      "app": 580,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.0/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "4.7.9",
-      "app": 579,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.7.9/IsraelTVPlus-tizen-project.zip"
+      "version": "4.8.0",
+      "app": 580,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.0/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "4.7.9",
-      "app": 579,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.7.9/IsraelTVPlus-macos-arm64.zip"
+      "version": "4.8.0",
+      "app": 580,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.0/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "4.7.9",
-      "app": 579,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.7.9/IsraelTVPlus-linux-x64.zip"
+      "version": "4.8.0",
+      "app": 580,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.0/IsraelTVPlus-linux-x64.zip"
     },
     "wear": {
-      "version": "4.7.9",
-      "app": 1000479,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.7.9/IsraelTVPlus-wearos.apk"
+      "version": "4.8.0",
+      "app": 1000480,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.0/IsraelTVPlus-wearos.apk"
     }
   }
 }
