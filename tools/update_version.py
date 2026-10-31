@@ -74,3 +74,4 @@ with open(r'C:\Users\Dorp\Documents\deepseek-harness\default-workspace\repo\CHAN
     f.write(new_entry + cl)
 
 print('All version files updated to', ver)
+

@@ -611,7 +611,7 @@
   </channel>
   <channel id="classic_comedy_il">
     <display-name lang="he">ערוץ הקומדיות הקלאסיות HD</display-name>
-    <icon src="https://dor2500.github.io/israel-tv-plus/assets/logos/classic_comedy_il.png" />
+    <icon src="https://dor2500.github.io/israel-tv-plus/assets/logos/reshet13_comedy_il.png" />
   </channel>
   <channel id="love_channel_il">
     <display-name lang="he">ערוץ האהבה והרומנטיקה HD</display-name>
@@ -1032,6 +1032,62 @@
   <channel id="keshet_music_il">
     <display-name lang="he">ערוץ מוזיקה ישראלית 24/7 HD</display-name>
     <icon src="https://dor2500.github.io/israel-tv-plus/assets/channels/music_il.png" />
+  </channel>
+  <channel id="hot_docu_il">
+    <display-name lang="he">HOT 8 מדע ודוקו HD</display-name>
+    <icon src="https://dor2500.github.io/israel-tv-plus/assets/channels/hot8.png" />
+  </channel>
+  <channel id="hot_mind_docu_il">
+    <display-name lang="he">HOT מיינד דוקו והעשרה HD</display-name>
+    <icon src="https://dor2500.github.io/israel-tv-plus/assets/logos/hot_reality.png" />
+  </channel>
+  <channel id="humor_2_channel_il">
+    <display-name lang="he">ערוץ ההומור 2 HD</display-name>
+    <icon src="https://dor2500.github.io/israel-tv-plus/assets/logos/humor.png" />
+  </channel>
+  <channel id="viva_vintage_il">
+    <display-name lang="he">ערוץ ויוה וינטג&apos; וספרדיות HD</display-name>
+    <icon src="https://dor2500.github.io/israel-tv-plus/assets/logos/viva.png" />
+  </channel>
+  <channel id="freetv_action_cinema_il">
+    <display-name lang="he">FreeTV קולנוע אקשן HD</display-name>
+    <icon src="https://dor2500.github.io/israel-tv-plus/assets/channels/freetv_movies.png" />
+  </channel>
+  <channel id="freetv_drama_cinema_il">
+    <display-name lang="he">FreeTV קולנוע דרמה HD</display-name>
+    <icon src="https://dor2500.github.io/israel-tv-plus/assets/channels/freetv_movies.png" />
+  </channel>
+  <channel id="freetv_comedy_cinema_il">
+    <display-name lang="he">FreeTV קולנוע קומדיה HD</display-name>
+    <icon src="https://dor2500.github.io/israel-tv-plus/assets/channels/freetv_movies.png" />
+  </channel>
+  <channel id="freetv_israeli_cinema_il">
+    <display-name lang="he">FreeTV קולנוע ישראלי HD</display-name>
+    <icon src="https://dor2500.github.io/israel-tv-plus/assets/channels/freetv_movies.png" />
+  </channel>
+  <channel id="mtv_live_hd">
+    <display-name lang="he">MTV Live HD (הופעות וקליפים)</display-name>
+    <icon src="https://dor2500.github.io/israel-tv-plus/assets/logos/music.png" />
+  </channel>
+  <channel id="mtv_clips_hd">
+    <display-name lang="he">MTV Hits &amp; Clips HD</display-name>
+    <icon src="https://dor2500.github.io/israel-tv-plus/assets/logos/music.png" />
+  </channel>
+  <channel id="rtl_zwei_hd">
+    <display-name lang="he">RTL ZWEI HD (גרמניה)</display-name>
+    <icon src="https://dor2500.github.io/israel-tv-plus/assets/logos/rtl2.png" />
+  </channel>
+  <channel id="natgeo_wild_il">
+    <display-name lang="he">National Geographic WILD FHD</display-name>
+    <icon src="https://dor2500.github.io/israel-tv-plus/assets/logos/natgeo_wild.png" />
+  </channel>
+  <channel id="games_shows_il">
+    <display-name lang="he">ערוץ השעשועונים והמשחקים HD</display-name>
+    <icon src="https://dor2500.github.io/israel-tv-plus/assets/logos/reshet13_comedy_il.png" />
+  </channel>
+  <channel id="beautyz_fashion_il">
+    <display-name lang="he">ערוץ Beautyz אופנה ולייפסטייל HD</display-name>
+    <icon src="https://dor2500.github.io/israel-tv-plus/assets/logos/hot_reality.png" />
   </channel>
   <programme start="20261031164800 +0000" stop="20261031173300 +0000" channel="hot_bidur">
     <title lang="he">משחק החיים</title>

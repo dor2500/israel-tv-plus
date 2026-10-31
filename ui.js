@@ -105,7 +105,7 @@ window.ITV_UI = (function (I) {
   // ---------------------------------------------------------------- TV: Apple TV+ browse screen
   '<div class="atv" id="atv">' +
     '<div class="atv-stage"><div class="atv-bd" id="atv-bd-a"></div><div class="atv-bd" id="atv-bd-b"></div><div class="atv-shade"></div></div>' +
-    '<nav class="atv-pill" id="atv-pill"></nav>' +
+    '<nav class="atv-pill hidden" id="atv-pill"></nav>' +
     '<section class="atv-meta" id="atv-meta-a"></section><section class="atv-meta" id="atv-meta-b"></section>' +
     '<div class="atv-search" id="atv-search"><span class="ico">' + I('search') + '</span><input id="atv-q" type="search" ' +
       'autocomplete="off" spellcheck="false" enterkeyhint="search" placeholder="חיפוש ערוץ – שם, מדינה או מספר"></div>' +

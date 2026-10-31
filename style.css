@@ -958,8 +958,8 @@ body.atv-live .atv-bd { opacity: 0; }
     linear-gradient(to bottom, rgba(6, 6, 10, .55) 0%, rgba(6, 6, 10, 0) 18%); }
 
 /* ---- the floating pill */
-.atv-pill:empty { display: none !important; }
-.atv-pill { position: absolute; top: 2.75rem; left: 50%; z-index: 3; display: flex; align-items: center; height: 3.625rem;
+.atv-pill:empty, .atv-pill.hidden, .atv-pill:not(:has(.atv-tab)) { display: none !important; }
+.atv-pill { position: absolute; top: 2.75rem; left: 50%; z-index: 3; display: flex; align-items: center; height: 3.625rem; min-width: 140px;
   padding: 0 .3rem; border-radius: 999px; white-space: nowrap; background: linear-gradient(180deg, rgba(12, 14, 22, .36) 0%, rgba(12, 14, 22, .14) 100%);
   border: 1px solid rgba(255, 255, 255, .14); box-shadow: 0 1rem 3rem rgba(0, 0, 0, .35);
   -webkit-transform: translate3d(-50%, 0, 0); transform: translate3d(-50%, 0, 0); }
@@ -2343,3 +2343,12 @@ body.tvui #player .osd::before { content: ''; position: absolute; right: 0; left
 #tvosd.catchup #tvo-opts { min-width: 0; }
 #tvo-live.focus { background: #f5f5f5; color: #111; box-shadow: 0 0 2rem rgba(255, 255, 255, .45); }
 .tv-p.cu .tv-ttl::before { content: '\21BA'; margin-left: .6rem; color: #b4b6bc; }
+
+/* ---- VOD series modal and cards */
+.vod-dialog .dialog-box { max-width: 52rem; width: 90vw; background: rgba(18, 20, 29, 0.95); backdrop-filter: blur(28px); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 1.5rem; }
+.vod-ep-card { display: flex; align-items: center; justify-content: space-between; padding: 0.9rem 1.2rem; background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 0.8rem; cursor: pointer; transition: all 0.25s ease; }
+.vod-ep-card:hover, .vod-ep-card:focus, .vod-ep-card.focused { background: rgba(255, 255, 255, 0.18); border-color: rgba(255, 255, 255, 0.4); transform: scale3d(1.015, 1.015, 1); }
+.vod-ep-info b { display: block; font-size: 1.15rem; color: #fff; margin-bottom: 0.2rem; }
+.vod-ep-info span { font-size: 0.9rem; color: rgba(255, 255, 255, 0.65); }
+.vod-play-btn { margin-right: 0.8rem; padding: 0.45rem 1rem; font-size: 0.95rem; border-radius: 0.5rem; white-space: nowrap; }
+
