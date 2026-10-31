@@ -8,6 +8,7 @@ fonts.css
 style.css
 app.js
 dub.js
+tvguide.js
 dub-local-worker.js
 channels.js
 icon.png

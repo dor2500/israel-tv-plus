@@ -1,7 +1,7 @@
 // Israel TV+ service worker: makes the site installable and opens it offline-fast.
 // Same-origin files: network first (updates show up at once), cache as fallback. Streams are never touched.
 const CACHE = 'itv-v3';
-const SHELL = ['./', './index.html', './version.js', './boot.js', './ui.js', './fonts.css', './style.css', './app.js',
+const SHELL = ['./', './index.html', './version.js', './boot.js', './ui.js', './fonts.css', './style.css', './app.js', './tvguide.js',
   './dub.js', './channels.js', './assets/hls.min.js', './manifest.webmanifest', './icon.png',
   './assets/app/icon-192.png', './assets/app/icon-512.png'];
 

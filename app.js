@@ -1461,7 +1461,7 @@
     ['kids', 'ילדים ונוער'], ['fun', 'בידור, טבע ומוזיקה'], ['world', 'ערוצים בינלאומיים'], ['radio', 'רדיו ישראלי'],
     ['faith', 'דת ומסורת']];
   var ATV_TABS = [['צפייה כעת', 'top'], ['ערוצי ישראל', 'broadcast'], ['ספורט', 'sports'], ['ילדים', 'kids'],
-    ['סרטים ודיבוב', 'movies'], ['רדיו', 'radio'], ['מועדפים', 'mine'], ['חיפוש', 'search'], ['פיצול מסך', 'multiview'], ['הגדרות', 'settings']];
+    ['סרטים ודיבוב', 'movies'], ['רדיו', 'radio'], ['מועדפים', 'mine'], ['לוח שידורים', 'guide'], ['חיפוש', 'search'], ['פיצול מסך', 'multiview'], ['הגדרות', 'settings']];
 
   function atvRem(rem) { return rem * (parseFloat(document.documentElement.style.fontSize) || 16); }
 
@@ -1579,7 +1579,7 @@
 
   function atvRenderPill() {
     var tabs = ATV_TABS.filter(function (t) {
-      return t[1] === 'top' || t[1] === 'search' || t[1] === 'multiview' || t[1] === 'settings' || atvRowIndex(t[1]) !== -1 || (atv.search && t[1] !== 'mine');
+      return t[1] === 'top' || t[1] === 'search' || t[1] === 'multiview' || t[1] === 'guide' || t[1] === 'settings' || atvRowIndex(t[1]) !== -1 || (atv.search && t[1] !== 'mine');
     });
     if (S.kids) tabs = tabs.filter(function (t) { return t[1] !== 'settings'; }).concat([['יציאה ממצב ילדים', 'kids-exit']]);
     atv.tabs = tabs;
@@ -1776,6 +1776,7 @@
       var t = atv.tabs[atv.tab] && atv.tabs[atv.tab][1];
       if (t === 'search') atvOpenSearch();
       else if (t === 'multiview') openMultiView(atvCurrent() || state.playing);
+      else if (t === 'guide') { if (Guide) Guide.open(); }
       else if (t === 'settings') openSettings();
       else if (t === 'kids-exit') askPin(function () { setSetting('kids', false); toast('יצאתם ממצב ילדים'); });
       else atvFocus(atv.row, atv.cols[atv.row] || 0);
@@ -2113,6 +2114,7 @@
     el.radioAudio.pause(); el.radioAudio.removeAttribute('src');
     state.playing = null;
     state.preview = null;
+    state.catchup = state.catchupNext = null;
     document.body.classList.remove('atv-live');
     for (var k = 0; k < cards.length; k++) cards[k].classList.remove('is-playing');
   }
@@ -2163,7 +2165,60 @@
     loadCandidate(ch, cands[state.candIdx]);
   }
 
+  // Catch-up: the broadcasters' own streams that keep hours of video behind the live edge (measured 31.10.2026).
+  // Past programmes play from those streams, from the first segment of the programme.
+  var CATCHUP = {
+    reshet13: { hours: 24, url: 'https://d198ztbnlup2iq.cloudfront.net/out/v1/2d9050c90fb94df8b78d1d98306a1a65/index.m3u8' },
+    kan11: { hours: 6, url: 'https://r.il.cdn-redge.media/livehls/oil/kancdn-live/live/kan11/live.livx/playlist.m3u8?dvr=21600000' },
+    kan_hinuchit: { hours: 6, url: 'https://r.il.cdn-redge.media/livehls/oil/kancdn-live/live/kan_edu/live.livx/playlist.m3u8?dvr=21600000' },
+    i24news_he: { hours: 3, url: 'https://i24newshebrew-cdn.encoders.immergo.tv/master.m3u8' },
+    i24news_en: { hours: 3, url: 'https://i24newsenglish-cdn.encoders.immergo.tv/2/streamPlaylist.m3u8' },
+    i24news_fr: { hours: 3, url: 'https://i24newsfrench-cdn.encoders.immergo.tv/master.m3u8' }
+  };
+  function playCatchup(ch, startMin, endMin) {
+    var c = CATCHUP[ch.id];
+    if (!c) return;
+    if (indexInList(ch.id) === -1) { state.query = ''; el.searchInput.value = ''; selectCategory('ALL', true); }
+    state.catchupNext = { ch: ch, url: c.url, startMs: startMin * 60000, endMs: endMin * 60000, anchorMs: null };
+    state.gridIdx = indexInList(ch.id);
+    playIndex(state.gridIdx);
+  }
+  // Where the first fragment of the programme sits on the player's timeline
+  function catchupSeek(hls, details) {
+    var cu = state.catchup, frags = details.fragments || [], hit = null;
+    for (var i = 0; i < frags.length; i++) {
+      if (frags[i].programDateTime && frags[i].programDateTime <= cu.startMs) hit = frags[i]; else if (hit) break;
+    }
+    if (!hit && frags[0] && frags[0].programDateTime && frags[0].programDateTime < cu.endMs - 60000) hit = frags[0]; // its start already left the window
+    if (!hit) return false;
+    cu.anchorMs = hit.programDateTime - hit.start * 1000;
+    var pos = Math.max(hit.start, (cu.startMs - cu.anchorMs) / 1000);
+    hls.startLoad(pos);
+    el.video.currentTime = pos;
+    return true;
+  }
+  function catchupSeekBy(sec) {
+    var v = el.video, s = v.seekable;
+    if (!state.catchup || !s || !s.length) return;
+    v.currentTime = Math.max(s.start(0), Math.min(s.end(s.length - 1) - 15, v.currentTime + sec));
+  }
+  function catchupPosMin() {
+    var cu = state.catchup;
+    return cu && cu.anchorMs !== null ? (cu.anchorMs + el.video.currentTime * 1000) / 60000 : cu ? cu.startMs / 60000 : null;
+  }
+
   function loadStream(ch) {
+    var cu = state.catchupNext && state.catchupNext.ch === ch ? state.catchupNext : null;
+    state.catchupNext = null;
+    state.catchup = cu;
+    if (Guide) Guide.fill();
+    if (cu) {
+      state.candidates = [cu.url];
+      state.candIdx = 0;
+      updateServerButton();
+      loadResolved(ch, cu.url);
+      return;
+    }
     state.candidates = candidateUrlsOf(ch);
     state.candIdx = 0;
     state.backupIdx = 0;
@@ -2242,8 +2297,9 @@
     var v = el.video;
 
     if (window.Hls && Hls.isSupported()) {
-      var delayed = Dub && Dub.wantsSync(ch);
-      var low = S.latency === 'low' && !delayed;
+      var cu = state.catchup && state.catchup.ch === ch ? state.catchup : null;
+      var delayed = !cu && Dub && Dub.wantsSync(ch);
+      var low = S.latency === 'low' && !delayed && !cu;
       var hls = new Hls({
         enableWorker: true, lowLatencyMode: low, backBufferLength: fastMode() ? 15 : 45,
         liveSyncDurationCount: low ? 2 : 4, maxBufferLength: fastMode() ? 20 : 30,
@@ -2257,6 +2313,13 @@
       hls.on(Hls.Events.LEVEL_LOADED, function (e, data) {
         if (data && data.details && (!data.details.fragments || !data.details.fragments.length)) {
           onFatal(ch, 'השידור אינו פעיל בשרת זה');
+          return;
+        }
+        if (cu) {
+          if (!adjusted) {
+            adjusted = true;
+            if (!catchupSeek(hls, data.details)) onFatal(ch, 'התכנית כבר לא זמינה');
+          }
           return;
         }
         if (!adjusted && Dub) { adjusted = true; Dub.adjustMainHls(hls, data.details, ch); }
@@ -2279,7 +2342,7 @@
         }
         if (delayed) spinner(true, 'מכין דיבוב מסונכרן… התמונה מושהית ב-' + Dub.settings.delay + ' שניות');
         startPlay(v, ch);
-        if (Dub && state.playing === ch && state.preview !== ch) Dub.attach({ video: v, hls: hls, channel: ch, url: url });
+        if (!cu && Dub && state.playing === ch && state.preview !== ch) Dub.attach({ video: v, hls: hls, channel: ch, url: url });
       });
       hls.on(Hls.Events.LEVEL_SWITCHED, function (e, data) {
         var l = hls.levels && hls.levels[data.level];
@@ -2334,6 +2397,7 @@
   function onFatal(ch, reason) {
     if (state.stallTimer) { clearTimeout(state.stallTimer); state.stallTimer = null; }
     if (state.playing !== ch) return;
+    if (state.catchup) { toast('הצפייה החוזרת לא זמינה · חוזרים לשידור החי'); loadStream(ch); return; } // loadStream clears catch-up
     var cands = state.candidates && state.candidates.length ? state.candidates : candidateUrlsOf(ch);
     state.candidates = cands;
     while ((state.candIdx || 0) + 1 < cands.length) {
@@ -2448,6 +2512,7 @@
   }
 
   function fillOsd(ch) {
+    if (Guide) Guide.fill();
     el.osdNum.textContent = ch.number;
     el.osdName.textContent = ch.name;
     el.osdCat.textContent = splitCat(ch.category) + (S.showSource ? ' · ' + sourceLine(ch).replace(/^מקור: /, '') : '');
@@ -2455,6 +2520,36 @@
     applyPicture();
     refreshDubUi();
   }
+  // TV / computer OSD and programme guide (tvguide.js); phones keep the player below
+  var Guide = null;
+  function setupGuide() {
+    if (PHONE || !window.ITVGuide) return;
+    Guide = window.ITVGuide({
+      state: state, S: S, osdEl: el.osd, isBack: isBack, isFav: isFav, toggleFav: toggleFav, toast: toast, showOsd: showOsd, playerMenu: playerMenu, markFocus: markFocus,
+      playable: function (ch) { return !isApp(ch) && !appOnly(ch); },
+      catchupHours: function (ch) { return ch && CATCHUP[ch.id] ? CATCHUP[ch.id].hours : 0; },
+      playCatchup: playCatchup,
+      inCatchup: function () { return !!state.catchup; },
+      catchupPos: catchupPosMin,
+      catchupSeek: catchupSeekBy,
+      goLive: function () { if (state.playing) loadStream(state.playing); },
+      togglePlay: togglePlay,
+      logoUrl: function (ch) { return /^https?:/i.test(ch.logo || '') ? ch.logo : (window.ITV_BASE || '') + (ch.logo || ''); },
+      hideOsd: function () {
+        if (state.osdTimer) clearTimeout(state.osdTimer);
+        Guide.onHide();
+        el.osd.classList.add('off');
+        el.player.classList.add('cursor-hidden');
+      },
+      play: function (ch) {
+        if (!ch) return;
+        if (indexInList(ch.id) === -1) { state.query = ''; el.searchInput.value = ''; selectCategory('ALL', true); }
+        state.gridIdx = indexInList(ch.id);
+        playIndex(state.gridIdx);
+      }
+    });
+  }
+
   function showOsd() {
     el.osd.classList.remove('off');
     el.player.classList.remove('cursor-hidden');
@@ -2465,6 +2560,7 @@
         state.zone = 'video';
         markFocus();
       }
+      if (Guide) Guide.onHide();
       el.osd.classList.add('off');
       el.player.classList.add('cursor-hidden');
     }, 5000);
@@ -2570,6 +2666,7 @@
     var ch = state.playing;
     if (!ch) return;
     var items = [];
+    if (Guide) items.push({ ico: '▦', label: 'לוח שידורים', act: Guide.open });
     if (state.candidates && state.candidates.length > 1) {
       items.push({ ico: '🔀', label: 'שרת שידור', stay: true, val: function () { return 'שרת ' + ((state.candIdx || 0) + 1) + '/' + state.candidates.length; },
         act: function () { switchBackupServer(); } });
@@ -3668,6 +3765,7 @@
   function typing(t) { return t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA'); }
 
   function setupInput() {
+    setupGuide();
     window.addEventListener('keydown', onKeyDown);
     window.addEventListener('keyup', onKeyUp);
     el.searchInput.addEventListener('input', function () {
@@ -4418,6 +4516,7 @@
       if (code === 70) { toggleFullscreen(); return; }       // F
       if (code === 68) { toggleDub(); return; }              // D
       if (code === 83) { openSettings(); return; }           // S
+      if ((code === 71 || code === 458) && Guide) { Guide.open(); return; } // G / the remote's Guide key
       if (code === 79 || code === 93) { runAction('menu'); return; } // O / context-menu key
       if (code === 191 && !state.overlay) { if (e.preventDefault) e.preventDefault(); focusSearch(); return; } // '/'
     }
@@ -4432,12 +4531,14 @@
       case 'menu': menuKey(code); return;
       case 'drawer': drawerKey(code); return;
       case 'player': playerKey(code); return;
+      case 'tvguide': Guide.key(code); return;
       default: if (TVUI) atvKey(code); else guideKey(code);
     }
   }
 
   function zapOrPage(dir) {
     if (state.overlay === 'player') { zap(dir); return; }
+    if (state.overlay === 'tvguide') { Guide.page(dir > 0 ? -1 : 1); return; }
     if (!state.overlay && state.zone === 'atv') { atvKey(dir > 0 ? 38 : 40); return; }
     if (!state.overlay && state.zone === 'grid') focusGrid(state.gridIdx + (dir > 0 ? -1 : 1) * state.cols * 3);
   }
@@ -4449,9 +4550,10 @@
       case 'dialog': pressDialog(state.dialogIdx); return;
       case 'menu': runMenuItem(state.menuIdx); return;
       case 'drawer': var i = state.drawerIdx; closeDrawer(true); playIndex(i); return;
+      case 'tvguide': Guide.key(13); return;
       case 'player':
         if (state.zone === 'perror') { errorButtons()[state.perrIdx || 0].click(); return; }
-        if (el.osd.classList.contains('off')) showOsd(); else playerMenu();
+        if (el.osd.classList.contains('off')) showOsd(); else if (Guide) Guide.ok(); else playerMenu();
         return;
     }
     if (state.zone === 'atv') { atvOk(); return; }
@@ -4509,6 +4611,7 @@
   }
 
   function playerKey(code) {
+    var wasOff = el.osd.classList.contains('off');
     showOsd();
     if (state.zone === 'perror') {
       var b = errorButtons();
@@ -4519,6 +4622,7 @@
       markFocus();
       return;
     }
+    if (Guide && Guide.playerKey(code, wasOff)) return;
     if (isBack(code)) { closePlayer(true); return; }
     if (code === 38) zap(S.upNext ? 1 : -1);
     else if (code === 40) zap(S.upNext ? -1 : 1);
