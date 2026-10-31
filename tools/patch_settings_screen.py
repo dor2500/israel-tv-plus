@@ -71,3 +71,4 @@ with open(settings_screen, 'w', encoding='utf-8') as f:
     f.write(c)
 
 print('Successfully patched SettingsScreen.kt')
+

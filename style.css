@@ -1961,8 +1961,23 @@ body:not(.phone):not(.anim-off) #menu .menu-box { animation: tv-panel .42s cubic
 /* ------------------------------------------------------------------ 4K Ultra Sharp Video Upscale */
 .video-4k-upscale {
   image-rendering: -webkit-optimize-contrast !important;
-  image-rendering: crisp-edges !important;
-  transform: translateZ(0);
+  image-rendering: high-quality !important;
+  -webkit-transform: translate3d(0, 0, 0) !important;
+  transform: translate3d(0, 0, 0) !important;
+  backface-visibility: hidden !important;
+  -webkit-backface-visibility: hidden !important;
+  filter: url(#filter-4k-upscale) contrast(1.06) saturate(1.05) brightness(1.01) !important;
+  will-change: transform, filter !important;
+}
+
+.osd-quality-4k {
+  background: linear-gradient(135deg, #ffd700, #ff8c00) !important;
+  color: #000 !important;
+  font-weight: 800 !important;
+  border-radius: 4px !important;
+  padding: 2px 7px !important;
+  letter-spacing: 0.5px !important;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.45) !important;
 }
 
 

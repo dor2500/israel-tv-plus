@@ -2698,6 +2698,8 @@
         if (sc >= bestSc) { bestSc = sc; best = i; }
       }
       hls.currentLevel = best;
+      hls.loadLevel = best;
+      hls.autoLevelCapping = -1;
     } else if (S.quality === '1080p') {
       hls.currentLevel = pickLevelByHeight(levels, 1080);
     } else if (S.quality === '720p') {
@@ -2716,10 +2718,17 @@
     if (!el || !el.video) return;
     if (S.quality === 'upscale4k') {
       el.video.classList.add('video-4k-upscale');
-      el.video.style.filter = 'contrast(1.08) saturate(1.06) brightness(1.02)';
+      el.video.style.filter = 'url(#filter-4k-upscale) contrast(1.06) saturate(1.05) brightness(1.01)';
+      if (el.osdQuality) {
+        el.osdQuality.textContent = '4K ULTRA HD';
+        el.osdQuality.className = 'osd-quality osd-quality-4k';
+      }
     } else {
       el.video.classList.remove('video-4k-upscale');
       el.video.style.filter = '';
+      if (el.osdQuality) {
+        el.osdQuality.className = 'osd-quality';
+      }
     }
   }
 
@@ -2858,16 +2867,18 @@ function loadCandidate(ch, rawUrl) {
       var isSport = /sport|ספורט|one_1|one_2|charlton|eurosport/i.test((ch.category || '') + ' ' + (ch.name || '') + ' ' + (ch.id || ''));
       var low = (S.latency === 'low' || S.latency === 'realtime' || TVUI || isSport) && !delayed;
       var isStable = (S.latency === 'stable' && !isSport);
+      var is4K = S.quality === 'upscale4k';
       var hls = new Hls({
         enableWorker: true,
-        lowLatencyMode: true,
-        backBufferLength: fastMode() ? 10 : 20,
-        liveSyncDurationCount: isSport ? 1 : (isStable ? 2 : 1),
-        liveMaxLatencyDurationCount: isSport ? 2 : (isStable ? 4 : 2),
+        lowLatencyMode: !is4K,
+        backBufferLength: fastMode() ? 10 : (is4K ? 30 : 20),
+        liveSyncDurationCount: isSport && !is4K ? 1 : (isStable ? 2 : 1),
+        liveMaxLatencyDurationCount: isSport && !is4K ? 2 : (isStable ? 4 : 2),
         liveDurationInfinity: true,
         maxLiveSyncPlaybackRate: 1.15,
-        maxBufferLength: isSport ? 8 : 16,
-        maxMaxBufferLength: isSport ? 16 : 30,
+        maxBufferLength: is4K ? 45 : (isSport ? 8 : 16),
+        maxMaxBufferLength: is4K ? 90 : (isSport ? 16 : 30),
+        maxBufferSize: is4K ? 60 * 1000 * 1000 : (isSport ? 16 * 1000 * 1000 : 32 * 1000 * 1000),
         maxBufferSize: 30 * 1000 * 1000,
         manifestLoadingMaxRetry: 5,
         levelLoadingMaxRetry: 5,
@@ -4004,16 +4015,24 @@ function showOsd() {
       });
       if (data.code > activeCode && S.liveUpdates && (data.shell || 0) <= (BUILD.shell || 0)) {
         u.liveDownloading = true;
+        try { localStorage.removeItem('itv_bad'); } catch (e) {}
+        if (manual) toast('⬆️ נמצא עדכון ' + data.version + ' – מוריד עדכון...');
         var q = '?v=' + data.code;
         prefetch(['style.css', 'ui.js', 'channels.js', 'dub.js', 'tvguide.js', 'app.js'].map(function (f) { return REMOTE + f + q; }), function (ok) {
           u.liveDownloading = false;
           if (ok) {
             state.liveReady = { code: data.code, version: data.version, shell: data.shell || 0 };
-            try { localStorage.setItem('itv_live', JSON.stringify(state.liveReady)); localStorage.removeItem('itv_bad'); } catch (e) {}
-            if (!applyLiveIfIdle()) {
-              showUpdateButton();
-              toast('⬆️ עדכון ' + data.version + ' מוכן – יופעל בפתיחה הבאה (או בהגדרות ← עדכונים)');
+            try { localStorage.setItem('itv_live', JSON.stringify(state.liveReady)); localStorage.removeItem('itv_bad'); localStorage.removeItem('itv_pending'); } catch (e) {}
+            showUpdateButton();
+            if (manual) {
+              confirmBox('עדכון גרסה ' + data.version + ' מוכן! להפעיל כעת?', function () {
+                location.reload();
+              });
+            } else if (!applyLiveIfIdle()) {
+              toast('⬆️ עדכון ' + data.version + ' מוכן – יופעל בפתיחה הבאה');
             }
+          } else {
+            if (manual) toast('הורדת העדכון לא הצליחה, נסה שוב');
           }
           refreshSettingsIfOpen();
         });
@@ -4096,7 +4115,14 @@ function showOsd() {
   function updateCardAction() {
     var u = state.update;
     if (state.checking) return;
-    if (u && (u.native || state.liveReady)) showUpdateDialog(); else checkUpdates(true);
+    if (state.liveReady) {
+      confirmBox('להפעיל כעת את עדכון ' + state.liveReady.version + '?', function () {
+        location.reload();
+      });
+      return;
+    }
+    if (u && u.native && PLATFORM !== 'webos') showUpdateDialog();
+    else checkUpdates(true);
   }
   function offerReload(data) {
     openDialog({ ico: '⬆️', title: 'גרסה ' + data.version + ' זמינה', html: notesHtml(data),

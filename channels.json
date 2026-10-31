@@ -4540,30 +4540,6 @@
     }
   },
   {
-    "id": "pluto_scifi_movies_fhd",
-    "name": "Pluto TV Sci-Fi FHD",
-    "title": "Pluto TV Sci-Fi – סרטי וסדרות מדע בדיוני FHD",
-    "category": "סרטים וסדרות (Movies & Series)",
-    "categoryEn": "movies",
-    "url": "https://service-stitcher.clusters.pluto.tv/v1/stitch/embed/hls/channel/5b4e92e4694c027be5ed7b68/master.m3u8?advertisingId=channel&appName=rokuchannel&appVersion=1.0&bmodel=bm1&channel_id=channel&content=channel&content_rating=ROKU_ADS_CONTENT_RATING&content_type=livefeed&coppa=false&deviceDNT=1&deviceId=channel&deviceMake=rokuChannel&deviceModel=web&deviceType=rokuChannel&deviceVersion=1.0&embedPartner=rokuChannel&genre=ROKU_ADS_CONTENT_GENRE&is_lat=1&platform=web&rdid=channel&studio_id=viacom&tags=ROKU_CONTENT_TAGS",
-    "fallbackUrls": [],
-    "logo": "assets/logos/hot_3_plus_il.png",
-    "badge": "FHD",
-    "lang": "en",
-    "country": "US",
-    "countryHe": "ארה״ב",
-    "desc": "סרטי וסדרות מדע בדיוני ופנטזיה מסביב לשעון ב-Full HD",
-    "backups": [],
-    "src": {
-      "by": "CDN רשמי (HTTPS)",
-      "kind": "fast",
-      "host": "service-stitcher.clusters.pluto.tv",
-      "found": "סריקת רשת v4.6.0",
-      "web": "✅"
-    },
-    "number": 202
-  },
-  {
     "id": "food_network_il",
     "name": "ערוץ האוכל Food Network HD",
     "title": "ערוץ האוכל והקולינריה Food Network בעברית HD",
@@ -4815,62 +4791,6 @@
     "backups": [
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32122/index.m3u8"
     ]
-  },
-  {
-    "id": "america_test_kitchen_hd",
-    "name": "America's Test Kitchen FHD",
-    "title": "America's Test Kitchen Cooking Channel FHD",
-    "category": "אוכל ובישול (Food)",
-    "categoryEn": "food",
-    "url": "https://service-stitcher.clusters.pluto.tv/v1/stitch/embed/hls/channel/5d48678991994083343b0682/master.m3u8?advertisingId=channel&appName=rokuchannel&appVersion=1.0&bmodel=bm1&channel_id=channel&content=channel&content_rating=ROKU_ADS_CONTENT_RATING&content_type=livefeed&coppa=false&deviceDNT=1&deviceId=channel&deviceMake=rokuChannel&deviceModel=web&deviceType=rokuChannel&deviceVersion=1.0&embedPartner=rokuChannel&genre=ROKU_ADS_CONTENT_GENRE&is_lat=1&platform=web&rdid=channel&studio_id=viacom&tags=ROKU_CONTENT_TAGS",
-    "fallbackUrls": [
-      "https://tastemade-int-samsunguk.amagi.tv/playlist.m3u8"
-    ],
-    "logo": "assets/logos/bon_appetit_hd.png",
-    "badge": "FHD",
-    "lang": "en",
-    "country": "US",
-    "countryHe": "ארה״ב",
-    "desc": "ערוץ הבישול והאפייה America's Test Kitchen – מתכונים, טכניקות מטבח ושפים מובילים",
-    "backups": [
-      "https://tastemade-int-samsunguk.amagi.tv/playlist.m3u8"
-    ],
-    "src": {
-      "by": "CDN רשמי (HTTPS)",
-      "kind": "fast",
-      "host": "service-stitcher.clusters.pluto.tv",
-      "found": "סריקת רשת v4.6.0",
-      "web": "✅"
-    },
-    "number": 213
-  },
-  {
-    "id": "jamie_oliver_channel_hd",
-    "name": "Jamie Oliver Channel FHD",
-    "title": "ערוץ השף ג׳יימי אוליבר (Jamie Oliver TV FHD)",
-    "category": "אוכל ובישול (Food)",
-    "categoryEn": "food",
-    "url": "https://service-stitcher.clusters.pluto.tv/v1/stitch/embed/hls/channel/60d343a7482f22000729f029/master.m3u8?advertisingId=channel&appName=rokuchannel&appVersion=1.0&bmodel=bm1&channel_id=channel&content=channel&content_rating=ROKU_ADS_CONTENT_RATING&content_type=livefeed&coppa=false&deviceDNT=1&deviceId=channel&deviceMake=rokuChannel&deviceModel=web&deviceType=rokuChannel&deviceVersion=1.0&embedPartner=rokuChannel&genre=ROKU_ADS_CONTENT_GENRE&is_lat=1&platform=web&rdid=channel&studio_id=viacom&tags=ROKU_CONTENT_TAGS",
-    "fallbackUrls": [
-      "https://gustotv-samsunguk.amagi.tv/playlist.m3u8"
-    ],
-    "logo": "assets/logos/tastemade_food_hd.png",
-    "badge": "FHD",
-    "lang": "en",
-    "country": "GB",
-    "countryHe": "בריטניה",
-    "desc": "ערוץ הבישול של השף ג׳יימי אוליבר – ארוחות מהירות, מטבח איטלקי ובישול ביתי ב-Full HD",
-    "backups": [
-      "https://gustotv-samsunguk.amagi.tv/playlist.m3u8"
-    ],
-    "src": {
-      "by": "CDN רשמי (HTTPS)",
-      "kind": "fast",
-      "host": "service-stitcher.clusters.pluto.tv",
-      "found": "סריקת רשת v4.6.0",
-      "web": "✅"
-    },
-    "number": 214
   },
   {
     "id": "i24_english_world_hd",
@@ -5348,34 +5268,6 @@
     ]
   },
   {
-    "id": "cnbc_intl_fhd",
-    "name": "CNBC Business Live HD",
-    "title": "CNBC Financial & Business News HD",
-    "category": "חדשות מהעולם (News)",
-    "categoryEn": "news",
-    "url": "https://service-stitcher.clusters.pluto.tv/v1/stitch/embed/hls/channel/5ced7d5959c03777c1212328/master.m3u8?advertisingId=channel&appName=rokuchannel&appVersion=1.0&bmodel=bm1&channel_id=channel&content=channel&content_rating=ROKU_ADS_CONTENT_RATING&content_type=livefeed&coppa=false&deviceDNT=1&deviceId=channel&deviceMake=rokuChannel&deviceModel=web&deviceType=rokuChannel&deviceVersion=1.0&embedPartner=rokuChannel&genre=ROKU_ADS_CONTENT_GENRE&is_lat=1&platform=web&rdid=channel&studio_id=viacom&tags=ROKU_CONTENT_TAGS",
-    "fallbackUrls": [
-      "https://bloomberg-bloombergtv-1-eu.rakuten.wurl.tv/playlist.m3u8"
-    ],
-    "logo": "assets/logos/bloomberg_tv_hd.png",
-    "badge": "FHD",
-    "lang": "en",
-    "country": "US",
-    "countryHe": "ארה״ב",
-    "desc": "ערוץ הכלכלה והשווקים CNBC – חדשות פיננסיות, בורסה וטכנולוגיה",
-    "backups": [
-      "https://bloomberg-bloombergtv-1-eu.rakuten.wurl.tv/playlist.m3u8"
-    ],
-    "src": {
-      "by": "CDN רשמי (HTTPS)",
-      "kind": "fast",
-      "host": "service-stitcher.clusters.pluto.tv",
-      "found": "סריקת רשת v4.6.0",
-      "web": "✅"
-    },
-    "number": 234
-  },
-  {
     "id": "nat_geo_il",
     "name": "נשיונל ג'יאוגרפיק ישראל HD (Nat Geo)",
     "title": "ערוץ נשיונל ג'יאוגרפיק עם תרגום לעברית HD",
@@ -5502,54 +5394,6 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     }
-  },
-  {
-    "id": "pluto_history_docu_fhd",
-    "name": "Pluto TV History FHD",
-    "title": "Pluto TV History – ערוץ ההיסטוריה והתעודה FHD",
-    "category": "טבע ודוקו (Documentary & Nature)",
-    "categoryEn": "docu",
-    "url": "https://service-stitcher.clusters.pluto.tv/v1/stitch/embed/hls/channel/5a66795ef91fef2c7031c599/master.m3u8?advertisingId=channel&appName=rokuchannel&appVersion=1.0&bmodel=bm1&channel_id=channel&content=channel&content_rating=ROKU_ADS_CONTENT_RATING&content_type=livefeed&coppa=false&deviceDNT=1&deviceId=channel&deviceMake=rokuChannel&deviceModel=web&deviceType=rokuChannel&deviceVersion=1.0&embedPartner=rokuChannel&genre=ROKU_ADS_CONTENT_GENRE&is_lat=1&platform=web&rdid=channel&studio_id=viacom&tags=ROKU_CONTENT_TAGS",
-    "fallbackUrls": [],
-    "logo": "assets/logos/yes_docu_plus_il.png",
-    "badge": "FHD",
-    "lang": "en",
-    "country": "US",
-    "countryHe": "ארה״ב",
-    "desc": "ערוץ ההיסטוריה והדוקו של Pluto TV – סדרות תעודה מרתקות ב-Full HD",
-    "backups": [],
-    "src": {
-      "by": "CDN רשמי (HTTPS)",
-      "kind": "fast",
-      "host": "service-stitcher.clusters.pluto.tv",
-      "found": "סריקת רשת v4.6.0",
-      "web": "✅"
-    },
-    "number": 240
-  },
-  {
-    "id": "pluto_animals_nature_fhd",
-    "name": "Pluto TV Animals & Nature FHD",
-    "title": "Pluto TV Animals – עולם הטבע ובעלי החיים FHD",
-    "category": "טבע ודוקו (Documentary & Nature)",
-    "categoryEn": "docu",
-    "url": "https://service-stitcher.clusters.pluto.tv/v1/stitch/embed/hls/channel/5ce4475cd43850831ca91ce7/master.m3u8?advertisingId=channel&appName=rokuchannel&appVersion=1.0&bmodel=bm1&channel_id=channel&content=channel&content_rating=ROKU_ADS_CONTENT_RATING&content_type=livefeed&coppa=false&deviceDNT=1&deviceId=channel&deviceMake=rokuChannel&deviceModel=web&deviceType=rokuChannel&deviceVersion=1.0&embedPartner=rokuChannel&genre=ROKU_ADS_CONTENT_GENRE&is_lat=1&platform=web&rdid=channel&studio_id=viacom&tags=ROKU_CONTENT_TAGS",
-    "fallbackUrls": [],
-    "logo": "assets/logos/yes_docu_plus_il.png",
-    "badge": "FHD",
-    "lang": "en",
-    "country": "US",
-    "countryHe": "ארה״ב",
-    "desc": "עולם החי, הטבע והספארי ב-Full HD",
-    "backups": [],
-    "src": {
-      "by": "CDN רשמי (HTTPS)",
-      "kind": "fast",
-      "host": "service-stitcher.clusters.pluto.tv",
-      "found": "סריקת רשת v4.6.0",
-      "web": "✅"
-    },
-    "number": 241
   },
   {
     "id": "radios_video",
@@ -9368,30 +9212,6 @@
     ]
   },
   {
-    "id": "pluto_classic_movies_fhd",
-    "name": "Pluto TV Classic Movies FHD",
-    "nameEn": "Pluto TV Classic Movies",
-    "category": "סרטים וסדרות (Movies & Series)",
-    "url": "https://service-stitcher.clusters.pluto.tv/stitch/hls/channel/561c5f613286e48904fb2677/master.m3u8?advertisingId=&appName=web&appVersion=unknown&deviceDNT=0&deviceId=561c5f613286e48904fb2677&deviceMake=web&deviceModel=web&deviceType=web&deviceVersion=unknown&marketingRegion=US&sid=561c5f613286e48904fb2677",
-    "logo": "https://www.google.com/s2/favicons?domain=pluto.tv&sz=128",
-    "color": "#475569",
-    "quality": "FHD",
-    "desc": "קלאסיקות קולנועיות מכל הזמנים באיכות משוחזרת FHD.",
-    "type": "hls",
-    "iframeUrl": "",
-    "externalUrl": "",
-    "backups": [],
-    "fallbackUrls": [],
-    "number": 399,
-    "src": {
-      "by": "service-stitcher.clusters.pluto.tv",
-      "kind": "restream",
-      "host": "service-stitcher.clusters.pluto.tv",
-      "found": "רשימה ידנית (גרסה קודמת)",
-      "web": "✅"
-    }
-  },
-  {
     "id": "beinsports_xtra_fhd",
     "name": "beIN SPORTS XTRA FHD",
     "nameEn": "beIN SPORTS XTRA",
@@ -9443,102 +9263,6 @@
       "by": "d11k1mnrgfposz.cloudfront.net",
       "kind": "restream",
       "host": "d11k1mnrgfposz.cloudfront.net",
-      "found": "רשימה ידנית (גרסה קודמת)",
-      "web": "✅"
-    }
-  },
-  {
-    "id": "transformers_tv_fhd",
-    "name": "רובוטריקים 24/7 — Transformers TV FHD",
-    "nameEn": "Transformers TV",
-    "category": "ילדים מהעולם (Kids World)",
-    "url": "https://service-stitcher.clusters.pluto.tv/stitch/hls/channel/5f7790b9630f5d00074bc27c/master.m3u8?advertisingId=&appName=web&appVersion=unknown&deviceDNT=0&deviceId=5f7790b9630f5d00074bc27c&deviceMake=web&deviceModel=web&deviceType=web&deviceVersion=unknown&marketingRegion=US&sid=5f7790b9630f5d00074bc27c",
-    "logo": "https://www.google.com/s2/favicons?domain=hasbro.com&sz=128",
-    "color": "#dc2626",
-    "quality": "FHD",
-    "desc": "סדרות רובוטריקים (Transformers) מסביב לשעון ב-Full HD.",
-    "type": "hls",
-    "iframeUrl": "",
-    "externalUrl": "",
-    "backups": [],
-    "fallbackUrls": [],
-    "number": 402,
-    "src": {
-      "by": "service-stitcher.clusters.pluto.tv",
-      "kind": "restream",
-      "host": "service-stitcher.clusters.pluto.tv",
-      "found": "רשימה ידנית (גרסה קודמת)",
-      "web": "✅"
-    }
-  },
-  {
-    "id": "hell_kitchen_247_fhd",
-    "name": "מטבחי הגיהנום 24/7 — Hell's Kitchen FHD",
-    "nameEn": "Hell's Kitchen 24/7",
-    "category": "אוכל ובישול (Food)",
-    "url": "https://service-stitcher.clusters.pluto.tv/stitch/hls/channel/5d48678992e97a7e088d658a/master.m3u8?advertisingId=&appName=web&appVersion=unknown&deviceDNT=0&deviceId=5d48678992e97a7e088d658a&deviceMake=web&deviceModel=web&deviceType=web&deviceVersion=unknown&marketingRegion=US&sid=5d48678992e97a7e088d658a",
-    "logo": "https://www.google.com/s2/favicons?domain=fox.com&sz=128",
-    "color": "#dc2626",
-    "quality": "FHD",
-    "desc": "גורדון רמזי במטבחי הגיהנום (Hell's Kitchen) מסביב לשעון ב-Full HD.",
-    "type": "hls",
-    "iframeUrl": "",
-    "externalUrl": "",
-    "backups": [],
-    "fallbackUrls": [],
-    "number": 403,
-    "src": {
-      "by": "service-stitcher.clusters.pluto.tv",
-      "kind": "restream",
-      "host": "service-stitcher.clusters.pluto.tv",
-      "found": "רשימה ידנית (גרסה קודמת)",
-      "web": "✅"
-    }
-  },
-  {
-    "id": "smithsonian_channel_selects_fhd",
-    "name": "Smithsonian Channel Selects FHD",
-    "nameEn": "Smithsonian Channel",
-    "category": "טבע ודוקו (Documentary & Nature)",
-    "url": "https://service-stitcher.clusters.pluto.tv/stitch/hls/channel/5e8df4bc59326700075a87d2/master.m3u8?advertisingId=&appName=web&appVersion=unknown&deviceDNT=0&deviceId=5e8df4bc59326700075a87d2&deviceMake=web&deviceModel=web&deviceType=web&deviceVersion=unknown&marketingRegion=US&sid=5e8df4bc59326700075a87d2",
-    "logo": "https://www.google.com/s2/favicons?domain=smithsonianchannel.com&sz=128",
-    "color": "#ca8a04",
-    "quality": "FHD",
-    "desc": "סרטי תעודה, היסטוריה, תעופה וטבע מבית סמית׳סוניאן ב-Full HD.",
-    "type": "hls",
-    "iframeUrl": "",
-    "externalUrl": "",
-    "backups": [],
-    "fallbackUrls": [],
-    "number": 404,
-    "src": {
-      "by": "service-stitcher.clusters.pluto.tv",
-      "kind": "restream",
-      "host": "service-stitcher.clusters.pluto.tv",
-      "found": "רשימה ידנית (גרסה קודמת)",
-      "web": "✅"
-    }
-  },
-  {
-    "id": "pluto_science_fhd",
-    "name": "Pluto TV Science & Space FHD",
-    "nameEn": "Pluto TV Science",
-    "category": "טבע ודוקו (Documentary & Nature)",
-    "url": "https://service-stitcher.clusters.pluto.tv/stitch/hls/channel/5812b4a3249444e05d09cc44/master.m3u8?advertisingId=&appName=web&appVersion=unknown&deviceDNT=0&deviceId=5812b4a3249444e05d09cc44&deviceMake=web&deviceModel=web&deviceType=web&deviceVersion=unknown&marketingRegion=US&sid=5812b4a3249444e05d09cc44",
-    "logo": "https://www.google.com/s2/favicons?domain=pluto.tv&sz=128",
-    "color": "#0284c7",
-    "quality": "FHD",
-    "desc": "מדע, חלל, אסטרונומיה וטכנולוגיה מתקדמת ב-Full HD.",
-    "type": "hls",
-    "iframeUrl": "",
-    "externalUrl": "",
-    "backups": [],
-    "fallbackUrls": [],
-    "number": 405,
-    "src": {
-      "by": "service-stitcher.clusters.pluto.tv",
-      "kind": "restream",
-      "host": "service-stitcher.clusters.pluto.tv",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     }

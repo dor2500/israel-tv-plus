@@ -689,10 +689,6 @@
     <display-name lang="he">FreeTV גלובל סדרות HD</display-name>
     <icon src="https://dor2500.github.io/israel-tv-plus/assets/logos/freetv_global_il.png" />
   </channel>
-  <channel id="pluto_scifi_movies_fhd">
-    <display-name lang="he">Pluto TV Sci-Fi FHD</display-name>
-    <icon src="https://dor2500.github.io/israel-tv-plus/assets/logos/hot_3_plus_il.png" />
-  </channel>
   <channel id="food_network_il">
     <display-name lang="he">ערוץ האוכל Food Network HD</display-name>
     <icon src="https://dor2500.github.io/israel-tv-plus/assets/logos/food_network_il.png" />
@@ -732,14 +728,6 @@
   <channel id="kuskus_food_hd">
     <display-name lang="he">Kus-Kus Culinary TV HD – ערוץ קוסקוס אוכל ומתכונים</display-name>
     <icon src="https://dor2500.github.io/israel-tv-plus/assets/logos/kuskus_food_hd.png" />
-  </channel>
-  <channel id="america_test_kitchen_hd">
-    <display-name lang="he">America&apos;s Test Kitchen FHD</display-name>
-    <icon src="https://dor2500.github.io/israel-tv-plus/assets/logos/bon_appetit_hd.png" />
-  </channel>
-  <channel id="jamie_oliver_channel_hd">
-    <display-name lang="he">Jamie Oliver Channel FHD</display-name>
-    <icon src="https://dor2500.github.io/israel-tv-plus/assets/logos/tastemade_food_hd.png" />
   </channel>
   <channel id="i24_english_world_hd">
     <display-name lang="he">i24NEWS English World HD</display-name>
@@ -817,10 +805,6 @@
     <display-name lang="he">CGTN News English FHD</display-name>
     <icon src="https://dor2500.github.io/israel-tv-plus/assets/logos/cgtn_news_hd.png" />
   </channel>
-  <channel id="cnbc_intl_fhd">
-    <display-name lang="he">CNBC Business Live HD</display-name>
-    <icon src="https://dor2500.github.io/israel-tv-plus/assets/logos/bloomberg_tv_hd.png" />
-  </channel>
   <channel id="nat_geo_il">
     <display-name lang="he">נשיונל ג&apos;יאוגרפיק ישראל HD (Nat Geo)</display-name>
     <icon src="https://dor2500.github.io/israel-tv-plus/assets/logos/nat_geo_il.png" />
@@ -840,14 +824,6 @@
   <channel id="teva_israel_hd">
     <display-name lang="he">ערוץ הטבע הישראלי HD (Teva)</display-name>
     <icon src="https://dor2500.github.io/israel-tv-plus/assets/logos/teva_israel_hd.png" />
-  </channel>
-  <channel id="pluto_history_docu_fhd">
-    <display-name lang="he">Pluto TV History FHD</display-name>
-    <icon src="https://dor2500.github.io/israel-tv-plus/assets/logos/yes_docu_plus_il.png" />
-  </channel>
-  <channel id="pluto_animals_nature_fhd">
-    <display-name lang="he">Pluto TV Animals &amp; Nature FHD</display-name>
-    <icon src="https://dor2500.github.io/israel-tv-plus/assets/logos/yes_docu_plus_il.png" />
   </channel>
   <channel id="radios_video">
     <display-name lang="he">רדיוס 100FM – אולפן וידאו HD</display-name>
@@ -961,10 +937,6 @@
     <display-name lang="he">דאק טי וי ducktv HD</display-name>
     <icon src="https://dor2500.github.io/israel-tv-plus/assets/logos/ducktv_hd.png" />
   </channel>
-  <channel id="pluto_classic_movies_fhd">
-    <display-name lang="he">Pluto TV Classic Movies FHD</display-name>
-    <icon src="https://www.google.com/s2/favicons?domain=pluto.tv&amp;sz=128" />
-  </channel>
   <channel id="beinsports_xtra_fhd">
     <display-name lang="he">beIN SPORTS XTRA FHD</display-name>
     <icon src="https://www.google.com/s2/favicons?domain=beinsports.com&amp;sz=128" />
@@ -972,22 +944,6 @@
   <channel id="pga_tour_golf_fhd">
     <display-name lang="he">PGA Tour Golf Live FHD</display-name>
     <icon src="https://www.google.com/s2/favicons?domain=pgatour.com&amp;sz=128" />
-  </channel>
-  <channel id="transformers_tv_fhd">
-    <display-name lang="he">רובוטריקים 24/7 — Transformers TV FHD</display-name>
-    <icon src="https://www.google.com/s2/favicons?domain=hasbro.com&amp;sz=128" />
-  </channel>
-  <channel id="hell_kitchen_247_fhd">
-    <display-name lang="he">מטבחי הגיהנום 24/7 — Hell&apos;s Kitchen FHD</display-name>
-    <icon src="https://www.google.com/s2/favicons?domain=fox.com&amp;sz=128" />
-  </channel>
-  <channel id="smithsonian_channel_selects_fhd">
-    <display-name lang="he">Smithsonian Channel Selects FHD</display-name>
-    <icon src="https://www.google.com/s2/favicons?domain=smithsonianchannel.com&amp;sz=128" />
-  </channel>
-  <channel id="pluto_science_fhd">
-    <display-name lang="he">Pluto TV Science &amp; Space FHD</display-name>
-    <icon src="https://www.google.com/s2/favicons?domain=pluto.tv&amp;sz=128" />
   </channel>
   <channel id="vevo_pop_live_fhd">
     <display-name lang="he">Vevo Pop Music Hits FHD</display-name>

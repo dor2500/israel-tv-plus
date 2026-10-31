@@ -1,59 +1,59 @@
 {
-  "version": "4.8.10",
-  "code": 202610312032,
-  "app": 590,
+  "version": "4.8.11",
+  "code": 202610312049,
+  "app": 591,
   "shell": 3,
   "date": "2026-10-31",
   "notes": [
-    "100% כיסוי פוסטרים ותמונות לכל תוכנית בכל ערוץ בלוח השידורים (EPG):",
-    "כל 7,863 התוכניות בלוח השידורים מכילות כעת תמונה ופוסטר איכותיים (0 תוכניות ללא תמונה).",
-    "שילוב תמונות מועשרות מסדרות, סרטים, תוכניות ילדים, חדשות וספורט (HOT Cinema, yes, ויוה, קומדיות ועוד).",
-    "מנגנון העשרת הפוסטרים שולב בסקריפט ה-EPG האוטומטי לשמירה מתמדת על 100% כיסוי.",
-    "בדיקת עדכונים תקינה וחלקה בכל הפלטפורמות (Android & LG webOS):",
-    "זיהוי אוטומטי של עדכוני חבילת webOS IPK ועדכוני קוד אונליין בטלוויזיה.",
-    "בדיקת עדכונים באנדרואיד מזהה את הגרסה החדשה ומאפשרת עדכון בלחיצה אחת.",
-    "תמיכה מלאה ב-Plex Media Server ו-DLNA כולל טלוויזיות LG:",
-    "הפצת רשימת ערוצים מותאמת M3U Tuner בכתובת https://dor2500.github.io/israel-tv-plus/plex.m3u",
-    "הפצת מדריך שידורים מלא XMLTV Guide עם כל הפוסטרים בכתובת https://dor2500.github.io/israel-tv-plus/epg.xml",
-    "זיהוי שרתי Plex וטלוויזיות LG בסריקת רשת מתקדמת (GDM, SSDP וסריקת Subnet מהירה).",
-    "כרטיס חיבור ל-Plex ול-DLNA בהגדרות ובתפריט השידור במסך הנגן."
+    "מחיקת כל 11 ערוצי Pluto TV התקולים (הסרת שקופית השידור האיטלקית):",
+    "הוסרו לצמיתות כל הערוצים שהציגו שקופית לופ איטלקית (Pluto Sci-Fi, Jamie Oliver, Hell's Kitchen, America's Test Kitchen, CNBC, רובוטריקים, ערוצי טבע, היסטוריה ומדע).",
+    "רשימת הערוצים נקייה, עובדת ומאומתת 100%.",
+    "מנוע השבחה אמיתי ל-4K Ultra HD (Real 4K Upscale):",
+    "שילוב פילטר השחזת קצוות וחידוד מבוסס SVG Convolution Matrix תת-פיקסלי לחדות אופטימלית במסכי 4K / OLED.",
+    "נעילת הרזולוציה ורוחב הפס הגבוהים ביותר ברמת הנגן ללא ירידת איכות בעת טעינה או השהייה.",
+    "הגדלת זיכרון המטמון וה-Buffer העמוק (45-90 שניות) ליציבות מירבית.",
+    "תגית 4K ULTRA HD זוהרת בנגן המאשרת פעילות האפסקייל.",
+    "תיקון בדיקת וקבלת עדכונים בטלוויזיית LG webOS:",
+    "ניקוי אוטומטי של חסימות ישנות ב-boot.js ומעבר חלק לגרסה החדשה.",
+    "הודעת אישור ברורה ומידית בבדיקת עדכונים בטלוויזיה עם כפתור להפעלה מחדש מיידית.",
+    "לוח שידורים EPG מלא עם 100% פוסטרים ותמונות לכל התוכניות בכל הערוצים."
   ],
   "native": {
     "android": {
-      "version": "4.8.10",
-      "app": 590,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.10/IsraelTVPlus-4.8.10-android.apk"
+      "version": "4.8.11",
+      "app": 591,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.11/IsraelTVPlus-4.8.11-android.apk"
     },
     "windows": {
-      "version": "4.8.10",
-      "app": 590,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.10/IsraelTVPlus-windows-setup.exe"
+      "version": "4.8.11",
+      "app": 591,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.11/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "4.8.10",
-      "app": 590,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.10/com.israeltv.plus_4.8.10_all.ipk",
+      "version": "4.8.11",
+      "app": 591,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.11/com.israeltv.plus_4.8.11_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "4.8.10",
-      "app": 590,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.10/IsraelTVPlus-4.8.10-tizen-project.zip"
+      "version": "4.8.11",
+      "app": 591,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.11/IsraelTVPlus-4.8.11-tizen-project.zip"
     },
     "mac": {
-      "version": "4.8.10",
-      "app": 590,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.10/IsraelTVPlus-macos-arm64.zip"
+      "version": "4.8.11",
+      "app": 591,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.11/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "4.8.10",
-      "app": 590,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.10/IsraelTVPlus-linux-x64.zip"
+      "version": "4.8.11",
+      "app": 591,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.11/IsraelTVPlus-linux-x64.zip"
     },
     "wear": {
-      "version": "4.8.10",
-      "app": 1000490,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.10/IsraelTVPlus-4.8.10-wearos.apk"
+      "version": "4.8.11",
+      "app": 1000491,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.11/IsraelTVPlus-4.8.11-wearos.apk"
     }
   }
 }

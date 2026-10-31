@@ -27,6 +27,7 @@
     var forcedLocal = false;
     try { forcedLocal = sessionStorage.getItem('itv_local') === '1'; } catch (e) {}
     if (live && get('itv_pending') === String(live.code)) set('itv_bad', String(live.code)); // last start never finished
+    if (live && live.code > (parseInt(get('itv_bad') || '0', 10))) store.removeItem('itv_bad');
     if (!live || !(live.code > BUILD.code) || settings.liveUpdates === false || forcedLocal ||
         (live.shell || 0) > (BUILD.shell || 0) || get('itv_bad') === String(live.code)) {
       live = null;

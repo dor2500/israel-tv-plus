@@ -28,3 +28,4 @@ if target in text:
     print("Patched tools/make_epg.py successfully!")
 else:
     print("Target not found")
+

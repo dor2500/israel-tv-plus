@@ -328,3 +328,4 @@ c = c[:discover_idx] + new_discover_code + '\n' + c[desc_idx:]
 with open(path, 'w', encoding='utf-8') as f:
     f.write(c)
 print('Successfully applied patch to CastManager.kt')
+
