@@ -232,17 +232,45 @@ internal fun PlayerBottomBar(
             Text(ch.name, color = Color.White, style = MaterialTheme.typography.titleMedium, maxLines = 1, overflow = TextOverflow.Ellipsis)
         }
         Spacer(Modifier.width(16.dp))
-        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            MorphAction(
+        // Nuvio's action pill: one translucent black capsule (24 dp, 1 dp white-20% rim) holding flat icon+label actions
+        val pill = RoundedCornerShape(24.dp)
+        Row(
+            Modifier
+                .clip(pill)
+                .background(Color.Black.copy(alpha = 0.5f))
+                .border(1.dp, Color.White.copy(alpha = 0.2f), pill)
+                .padding(horizontal = 4.dp, vertical = 2.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            PlayerActionPillButton(
                 if (favorite) Icons.Rounded.Star else Icons.Rounded.StarBorder,
-                if (favorite) "הסר ממועדפים" else "הוסף למועדפים",
+                if (favorite) "במועדפים" else "מועדף",
                 tint = if (favorite) Color(0xFFFFD54F) else Color.White,
-                showLabel = false,
                 onClick = onFavorite,
             )
-            MorphAction(fit.icon, fit.label, onClick = onCycleFit)
-            MorphAction(Icons.Rounded.MoreHoriz, "אפשרויות", onClick = onOptions)
+            PlayerActionPillButton(fit.icon, fit.label, onClick = onCycleFit)
+            PlayerActionPillButton(Icons.Rounded.MoreHoriz, "אפשרויות", onClick = onOptions)
         }
+    }
+}
+
+/** Nuvio's PlayerActionPillButton: 22 dp rounded, 12 dp padding, 18 dp icon + label. */
+@Composable
+private fun PlayerActionPillButton(icon: ImageVector, label: String, tint: Color = Color.White, onClick: () -> Unit) {
+    val haptic = LocalHapticFeedback.current
+    Row(
+        Modifier
+            .clip(RoundedCornerShape(22.dp))
+            .clickable(role = Role.Button) {
+                haptic.performHapticFeedback(HapticFeedbackType.VirtualKey)
+                onClick()
+            }
+            .padding(horizontal = 12.dp, vertical = 12.dp),
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Icon(icon, null, Modifier.size(18.dp), tint = tint)
+        Text(label, color = tint, style = MaterialTheme.typography.labelLarge, maxLines = 1)
     }
 }
 
