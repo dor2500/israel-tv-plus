@@ -195,6 +195,7 @@ private fun buildPlayer(context: Context, handleAudioFocus: Boolean = true): Exo
         .setAllowCrossProtocolRedirects(true)
         .setConnectTimeoutMs(7_000)
         .setReadTimeoutMs(9_000)
+        .setDefaultRequestProperties(mapOf("Referer" to "https://stmify.com/"))
     val loadControl = DefaultLoadControl.Builder()
         .setBufferDurationsMs(
             /* minBufferMs = */ 12_000,

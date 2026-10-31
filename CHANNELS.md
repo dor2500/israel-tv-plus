@@ -1,18 +1,18 @@
 # 📺 כל הערוצים – ישראל TV+
 
-נוצר אוטומטית מ-`channels.json` (`tools/make_channel_list.py`). **401** פריטים: **265** ערוצי טלוויזיה, **136** תחנות רדיו ו-**0** שירותי מנויים, מ-**6** מדינות. 278 מהם מתנגנים גם באתר; כל השאר באפליקציות (Android, טלוויזיה, Windows, Mac, Linux) וב-Stremio.
+נוצר אוטומטית מ-`channels.json` (`tools/make_channel_list.py`). **416** פריטים: **280** ערוצי טלוויזיה, **136** תחנות רדיו ו-**0** שירותי מנויים, מ-**8** מדינות. 292 מהם מתנגנים גם באתר; כל השאר באפליקציות (Android, טלוויזיה, Windows, Mac, Linux) וב-Stremio.
 
 **▶ צפייה:** https://dor2500.github.io/israel-tv-plus/ · **🎬 Stremio:** https://dor2500.github.io/israel-tv-plus/stremio/ · **📋 מקור כל שידור:** [SOURCES.md](SOURCES.md)
 
 ## תוכן
 
-- 🇮🇱 [ערוצי ישראל - שידור חי](#ערוצי-ישראל---שידור-חי) – 67
+- 🇮🇱 [ערוצי ישראל - שידור חי](#ערוצי-ישראל---שידור-חי) – 72
 - 🧸 [ילדים ונוער (בעברית)](#ילדים-ונוער-בעברית) – 29
 - 📻 [רדיו ישראלי (Israeli Radio)](#רדיו-ישראלי-israeli-radio) – 129
 - 🕯️ [מסורת וקהילה](#מסורת-וקהילה) – 10
-- ⚽ [ספורט (Sports)](#ספורט-sports) – 24
+- ⚽ [ספורט (Sports)](#ספורט-sports) – 32
 - 📰 [חדשות מהעולם (News)](#חדשות-מהעולם-news) – 20
-- 🎬 [סרטים וסדרות (Movies & Series)](#סרטים-וסדרות-movies--series) – 63
+- 🎬 [סרטים וסדרות (Movies & Series)](#סרטים-וסדרות-movies--series) – 65
 - 🍳 [אוכל ובישול (Food)](#אוכל-ובישול-food) – 13
 - 🎈 [ילדים מהעולם (Kids World)](#ילדים-מהעולם-kids-world) – 18
 - 🌍 [טבע ודוקו (Documentary & Nature)](#טבע-ודוקו-documentary--nature) – 9
@@ -21,7 +21,7 @@
 
 ## ערוצי ישראל - שידור חי
 
-🇮🇱 67 ערוצים
+🇮🇱 72 ערוצים
 
 | # | | ערוץ | מדינה | שפה | איכות | איפה מתנגן |
 |---|---|---|---|---|---|---|
@@ -92,6 +92,11 @@
 | 165 | <img src="assets/logos/i24news_fr_il.png" width="56" alt=""> | **i24NEWS צרפתית ישראל FHD** | 🇮🇱 ישראל |  | FHD | 🌐 אתר + 📲 אפליקציות |
 | 487 | <img src="assets/logos/comedy_channel.png" width="56" alt=""> | **ערוץ הקומדיה הישראלי HD** | 🇮🇱 ישראל | עברית | HD | 🌐 אתר + 📲 אפליקציות |
 | 488 | <img src="assets/logos/kabbalah.png" width="56" alt=""> | **ערוץ קבלה לעם שידור חי HD** | 🇮🇱 ישראל | עברית | HD | 🌐 אתר + 📲 אפליקציות |
+| 496 | <img src="https://upload.wikimedia.org/wikipedia/he/thumb/f/f6/Walla%21_logo_2020.svg/500px-Walla%21_logo_2020.svg.png" width="56" alt=""> | **וואלה!+ yes תרבות ובידור HD** | 🇮🇱 ישראל | עברית | HD | 🌐 אתר + 📲 אפליקציות |
+| 498 | <img src="https://static.g-cdn.app/streams/vacation-channel-il-hd.png" width="56" alt=""> | **ערוץ הנופש והחופש Vacation HD** | 🇮🇱 ישראל | עברית | HD | 🌐 אתר + 📲 אפליקציות |
+| 500 | <img src="https://ch16israel.vod.immergo.tv/ch16israel/uploaded/bfbd4781-67a7-437e-8f7e-898a5cbc4ab4.png" width="56" alt=""> | **ערוץ 16 ישראל HD** | 🇮🇱 ישראל | עברית | HD | 🌐 אתר + 📲 אפליקציות |
+| 501 | <img src="https://www.i24news.tv/images/favicon.png" width="56" alt=""> | **ערוץ i24NEWS עברית HD** | 🇮🇱 ישראל | עברית | HD | 🌐 אתר + 📲 אפליקציות |
+| 502 | <img src="https://upload.wikimedia.org/wikipedia/he/thumb/8/87/HaAh_HaGadol_logo.png/500px-HaAh_HaGadol_logo.png" width="56" alt=""> | **האח הגדול שידור חי 24/7 HD** | 🇮🇱 ישראל | עברית | HD | 📲 אפליקציות בלבד |
 
 ## ילדים ונוער (בעברית)
 
@@ -284,7 +289,7 @@
 
 ## ספורט (Sports)
 
-⚽ 24 ערוצים
+⚽ 32 ערוצים
 
 | # | | ערוץ | מדינה | שפה | איכות | איפה מתנגן |
 |---|---|---|---|---|---|---|
@@ -312,6 +317,14 @@
 | 474 | <img src="https://www.google.com/s2/favicons?domain=beinsports.com&sz=128" width="56" alt=""> | **beIN SPORTS XTRA FHD** |  |  |  | 🌐 אתר + 📲 אפליקציות |
 | 475 | <img src="https://www.google.com/s2/favicons?domain=pgatour.com&sz=128" width="56" alt=""> | **PGA Tour Golf Live FHD** |  |  |  | 🌐 אתר + 📲 אפליקציות |
 | 481 | <img src="https://www.google.com/s2/favicons?domain=cbssports.com&sz=128" width="56" alt=""> | **CBS Sports HQ FHD** |  |  |  | 🌐 אתר + 📲 אפליקציות |
+| 489 | <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/F1.svg" width="56" alt=""> | **Sky Sports F1 HD (פורמולה 1 שידור חי)** | 🇬🇧 בריטניה | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
+| 490 | <img src="https://i.imgur.com/v4kj8pI.png" width="56" alt=""> | **מוטורוויז'ן Motorvision HD** | 🇩🇪 גרמניה | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
+| 491 | <img src="https://i.imgur.com/JLSHiTp.png" width="56" alt=""> | **ערוץ הרכב Cars.TV HD** | 🇺🇸 ארה״ב | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
+| 492 | <img src="https://provider-static.plex.tv/epg/cms/production/dd4e5871-4347-49e3-9ea1-a8770ea9c518/RACER_Intl_logo_1500x1000.png" width="56" alt=""> | **ערוץ מרוצים RACER International HD** | 🇺🇸 ארה״ב | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
+| 493 | <img src="https://images.fubo.tv/station-logos/on-dark/powernation.png" width="56" alt=""> | **ערוץ PowerNation TV מנועים ומוטורספורט** | 🇺🇸 ארה״ב | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
+| 494 | <img src="https://upload.wikimedia.org/wikipedia/en/thumb/e/e4/Red_Bull_TV_logo.svg/512px-Red_Bull_TV_logo.svg.png" width="56" alt=""> | **רד בול טי וי אקסטרים Red Bull TV FHD** | 🇦🇹 אוסטריה | אנגלית | FHD | 🌐 אתר + 📲 אפליקציות |
+| 495 | <img src="https://i.imgur.com/Hf0EiaW.png" width="56" alt=""> | **ערוץ מרוצים Sky Racing 1 HD** | 🇦🇺 אוסטרליה | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
+| 503 | <img src="https://i.imgur.com/L3RA9Lv.png" width="56" alt=""> | **ספורט 5 לייב פרימיום HD** | 🇮🇱 ישראל | עברית | HD | 🌐 אתר + 📲 אפליקציות |
 
 ## חדשות מהעולם (News)
 
@@ -342,7 +355,7 @@
 
 ## סרטים וסדרות (Movies & Series)
 
-🎬 63 ערוצים
+🎬 65 ערוצים
 
 | # | | ערוץ | מדינה | שפה | איכות | איפה מתנגן |
 |---|---|---|---|---|---|---|
@@ -409,6 +422,8 @@
 | 275 | <img src="assets/logos/turkish_dramas_cellcom_il.png" width="56" alt=""> | **ערוץ הדרמות הטורקיות – סלקום ופרטנר TV HD** |  |  | HD | 📲 אפליקציות בלבד |
 | 276 | <img src="assets/logos/hot_3_plus_il.png" width="56" alt=""> | **Pluto TV Sci-Fi FHD** | 🇺🇸 ארה״ב | אנגלית | FHD | 🌐 אתר + 📲 אפליקציות |
 | 473 | <img src="https://www.google.com/s2/favicons?domain=pluto.tv&sz=128" width="56" alt=""> | **Pluto TV Classic Movies FHD** |  |  |  | 🌐 אתר + 📲 אפליקציות |
+| 497 | <img src="https://static.g-cdn.app/streams/yes-reality-channel-il-hd.png" width="56" alt=""> | **ערוץ הריאליטי Reality Channel HD** | 🇮🇱 ישראל | עברית | HD | 🌐 אתר + 📲 אפליקציות |
+| 499 | <img src="https://images.frp1.ott.kaltura.com/Service.svc/GetImage/p/5031/entry_id/fc0d8109a18a4db3b585f154d32bd5b1/version/93/width/288/height/153/" width="56" alt=""> | **ערוץ הקומדיה Comedy Channel HD** | 🇮🇱 ישראל | עברית | HD | 🌐 אתר + 📲 אפליקציות |
 
 ## אוכל ובישול (Food)
 

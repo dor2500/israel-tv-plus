@@ -529,3 +529,13 @@ https://c44.radioboss.fm:8178/stream
 https://d15ds134q59udk.cloudfront.net/out/v1/fbba879221d045598540ee783b140fe2/index.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="ערוץ קבלה לעם שידור חי HD" tvg-chno="488" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/kabbalah.png" group-title="ערוצי ישראל",ערוץ קבלה לעם שידור חי HD
 https://edge3.uk.kab.tv/live/tv66-heb-high/playlist.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="וואלה!+ yes תרבות ובידור HD" tvg-chno="496" tvg-logo="https://upload.wikimedia.org/wikipedia/he/thumb/f/f6/Walla%21_logo_2020.svg/500px-Walla%21_logo_2020.svg.png" group-title="ערוצי ישראל",וואלה!+ yes תרבות ובידור HD
+https://live.wcdn.co.il/yes/prog_index.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ הנופש והחופש Vacation HD" tvg-chno="498" tvg-logo="https://static.g-cdn.app/streams/vacation-channel-il-hd.png" group-title="ערוצי ישראל",ערוץ הנופש והחופש Vacation HD
+https://d1yd8hohnldm33.cloudfront.net/out/v1/19dee23c2cc24f689bd4e1288661ee0c/index_2.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ 16 ישראל HD" tvg-chno="500" tvg-logo="https://ch16israel.vod.immergo.tv/ch16israel/uploaded/bfbd4781-67a7-437e-8f7e-898a5cbc4ab4.png" group-title="ערוצי ישראל",ערוץ 16 ישראל HD
+https://ch16israel-cdn.encoders.immergo.tv/2/streamPlaylist.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ i24NEWS עברית HD" tvg-chno="501" tvg-logo="https://www.i24news.tv/images/favicon.png" group-title="ערוצי ישראל",ערוץ i24NEWS עברית HD
+https://i24newshebrew-cdn.encoders.immergo.tv/master.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="האח הגדול שידור חי 24/7 HD" tvg-chno="502" tvg-logo="https://upload.wikimedia.org/wikipedia/he/thumb/8/87/HaAh_HaGadol_logo.png/500px-HaAh_HaGadol_logo.png" group-title="ערוצי ישראל",האח הגדול שידור חי 24/7 HD
+http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32128/index.m3u8

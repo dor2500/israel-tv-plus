@@ -527,3 +527,34 @@ https://jmp2.uk/stvp-USBC3600013PC
 https://d15ds134q59udk.cloudfront.net/out/v1/fbba879221d045598540ee783b140fe2/index.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="ערוץ קבלה לעם שידור חי HD" tvg-chno="488" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/kabbalah.png" group-title="ערוצי ישראל",ערוץ קבלה לעם שידור חי HD
 https://edge3.uk.kab.tv/live/tv66-heb-high/playlist.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="Sky Sports F1 HD (פורמולה 1 שידור חי)" tvg-chno="489" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/3/33/F1.svg" group-title="ספורט" http-referrer="https://stmify.com/",Sky Sports F1 HD (פורמולה 1 שידור חי)
+#EXTVLCOPT:http-referrer=https://stmify.com/
+https://cdn.stmify.com/out/v1/SKY_SPORTS_F1/index.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="מוטורוויז'ן Motorvision HD" tvg-chno="490" tvg-logo="https://i.imgur.com/v4kj8pI.png" group-title="ספורט",מוטורוויז'ן Motorvision HD
+https://mvg-mv-xumo.otteravision.com/mvg/mv/mv.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ הרכב Cars.TV HD" tvg-chno="491" tvg-logo="https://i.imgur.com/JLSHiTp.png" group-title="ספורט",ערוץ הרכב Cars.TV HD
+https://a-cdn.klowdtv.com/live2/carstv_720p/playlist.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ מרוצים RACER International HD" tvg-chno="492" tvg-logo="https://provider-static.plex.tv/epg/cms/production/dd4e5871-4347-49e3-9ea1-a8770ea9c518/RACER_Intl_logo_1500x1000.png" group-title="ספורט",ערוץ מרוצים RACER International HD
+https://amg00378-mavtv-amg00378c2-rakuten-us-1048.playouts.now.amagi.tv/playlist/amg00378-mavtvfast-motorsportsnetwork-rakutenus/playlist.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ PowerNation TV מנועים ומוטורספורט" tvg-chno="493" tvg-logo="https://images.fubo.tv/station-logos/on-dark/powernation.png" group-title="ספורט",ערוץ PowerNation TV מנועים ומוטורספורט
+https://amg01258-raycomsports-powernationau-samsungau-18bwc.amagi.tv/playlist.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="רד בול טי וי אקסטרים Red Bull TV FHD" tvg-chno="494" tvg-logo="https://upload.wikimedia.org/wikipedia/en/thumb/e/e4/Red_Bull_TV_logo.svg/512px-Red_Bull_TV_logo.svg.png" group-title="ספורט",רד בול טי וי אקסטרים Red Bull TV FHD
+https://rbmn-live.akamaized.net/hls/live/590964/BoRB-AT/master.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ מרוצים Sky Racing 1 HD" tvg-chno="495" tvg-logo="https://i.imgur.com/Hf0EiaW.png" group-title="ספורט",ערוץ מרוצים Sky Racing 1 HD
+https://636ffd31f0e12.streamlock.net/RacingStream1/RacingStream1/chunklist_w1848520265.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="וואלה!+ yes תרבות ובידור HD" tvg-chno="496" tvg-logo="https://upload.wikimedia.org/wikipedia/he/thumb/f/f6/Walla%21_logo_2020.svg/500px-Walla%21_logo_2020.svg.png" group-title="ערוצי ישראל",וואלה!+ yes תרבות ובידור HD
+https://live.wcdn.co.il/yes/prog_index.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ הריאליטי Reality Channel HD" tvg-chno="497" tvg-logo="https://static.g-cdn.app/streams/yes-reality-channel-il-hd.png" group-title="סרטים וסדרות",ערוץ הריאליטי Reality Channel HD
+https://d2dffl3588mvfk.cloudfront.net/out/v1/d8e15050ca4148aab0ee387a5e2eb46b/index_1.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ הנופש והחופש Vacation HD" tvg-chno="498" tvg-logo="https://static.g-cdn.app/streams/vacation-channel-il-hd.png" group-title="ערוצי ישראל",ערוץ הנופש והחופש Vacation HD
+https://d1yd8hohnldm33.cloudfront.net/out/v1/19dee23c2cc24f689bd4e1288661ee0c/index_2.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ הקומדיה Comedy Channel HD" tvg-chno="499" tvg-logo="https://images.frp1.ott.kaltura.com/Service.svc/GetImage/p/5031/entry_id/fc0d8109a18a4db3b585f154d32bd5b1/version/93/width/288/height/153/" group-title="סרטים וסדרות",ערוץ הקומדיה Comedy Channel HD
+https://d15ds134q59udk.cloudfront.net/out/v1/fbba879221d045598540ee783b140fe2/index.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ 16 ישראל HD" tvg-chno="500" tvg-logo="https://ch16israel.vod.immergo.tv/ch16israel/uploaded/bfbd4781-67a7-437e-8f7e-898a5cbc4ab4.png" group-title="ערוצי ישראל",ערוץ 16 ישראל HD
+https://ch16israel-cdn.encoders.immergo.tv/2/streamPlaylist.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ i24NEWS עברית HD" tvg-chno="501" tvg-logo="https://www.i24news.tv/images/favicon.png" group-title="ערוצי ישראל",ערוץ i24NEWS עברית HD
+https://i24newshebrew-cdn.encoders.immergo.tv/master.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="האח הגדול שידור חי 24/7 HD" tvg-chno="502" tvg-logo="https://upload.wikimedia.org/wikipedia/he/thumb/8/87/HaAh_HaGadol_logo.png/500px-HaAh_HaGadol_logo.png" group-title="ערוצי ישראל",האח הגדול שידור חי 24/7 HD
+http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32128/index.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ספורט 5 לייב פרימיום HD" tvg-chno="503" tvg-logo="https://i.imgur.com/L3RA9Lv.png" group-title="ספורט",ספורט 5 לייב פרימיום HD
+https://rgelive.akamaized.net/hls/live/2043095/live3/playlist.m3u8

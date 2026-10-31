@@ -393,6 +393,7 @@ private fun MutedHeroHls(
     val player = remember(context) {
         val http = DefaultHttpDataSource.Factory()
             .setUserAgent(USER_AGENT)
+            .setDefaultRequestProperties(mapOf("Referer" to "https://stmify.com/"))
             .setAllowCrossProtocolRedirects(true)
             .setConnectTimeoutMs(10_000)
             .setReadTimeoutMs(12_000)
