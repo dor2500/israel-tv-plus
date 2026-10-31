@@ -1451,7 +1451,7 @@
     rowEls: [], built: false, dirty: false, search: false, query: '', flip: false, bdFlip: false,
     restTimer: null, metaTimer: null, stopTimer: null, searchTimer: null, focusedEl: null };
   var ATV_PITCH = 19;        // rem: a 17.5rem card + 1.5rem gap
-  var ATV_ROW = 16.25;       // rem: one shelf (title + card + name), 260 px on a 1080p screen
+  var ATV_ROW = 17.25;       // rem: one shelf (title + card + name), 276 px on a 1080p screen
   var ATV_FIRST = 14, ATV_MORE = 18;
   var ATV_ROWS = [['broadcast', 'ערוצי ברודקאסט וחדשות'], ['sports', 'ספורט בשידור חי'], ['movies', 'סרטים וסדרות'],
     ['kids', 'ילדים ונוער'], ['fun', 'בידור, טבע ומוזיקה'], ['world', 'ערוצים בינלאומיים'], ['radio', 'רדיו ישראלי'],
