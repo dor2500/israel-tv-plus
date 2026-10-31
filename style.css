@@ -1147,7 +1147,10 @@ body.phone .atv-colors, body.player-open .atv-colors {
 
 /* On-Screen Virtual Keyboard for Smart TV / LG webOS Search */
 .atv-kb {
-  margin-top: .85rem;
+  position: absolute;
+  top: 15.85rem;
+  right: 4.5rem;
+  z-index: 3;
   display: flex;
   flex-wrap: wrap;
   max-width: 44rem;
@@ -1718,6 +1721,8 @@ body.ui-large .atv-meta { top: 7.5rem; }
 body.ui-large .atv-mlogo { width: 20rem; height: 7rem; max-height: 7rem !important; }
 body.ui-large .atv-mlogo img { max-height: 7rem !important; }
 body.ui-large .atv-src { display: none; }
+body.ui-large .atv-search { top: 7.5rem; }
+body.ui-large .atv-kb { top: 13.35rem; }
 body.ui-xl .atv-shelves { height: 24rem; }
 body.ui-xxl .atv-shelves { height: 20rem; }
 body:not(.phone) .atv-shade { background: linear-gradient(to top, #000 0%, rgba(0, 0, 0, .9) 30%, rgba(0, 0, 0, .55) 44%, rgba(0, 0, 0, 0) 62%),
