@@ -2226,7 +2226,7 @@ bdi.tv-t { direction: ltr; unicode-bidi: isolate; }
 .tv-clip { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .tv-logo { max-width: 100%; max-height: 100%; object-fit: contain; display: block; }
 .tv-brand { position: absolute; left: 3rem; bottom: 2.4rem; z-index: 2; text-align: center; color: #fff; }
-.tv-brand img { display: block; width: 4.4rem; height: 4.4rem; margin: 0 auto .3rem; border-radius: 1rem; }
+.tv-brand img { display: none !important; }
 .tv-clock { font-size: 2.2rem; font-weight: 500; }
 body.no-osd-clock .tv-clock { display: none; }
 

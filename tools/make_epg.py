@@ -19,8 +19,8 @@ import xml.etree.ElementTree as ET
 from calendar import timegm
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-# earlier feeds win: epgshare01 has clean Hebrew ids and titles for the Israeli channels
-FEEDS = ["https://epgshare01.online/epgshare01/epg_ripper_IL1.xml.gz", "https://iptv-epg.org/files/epg-il.xml"]
+# earlier feeds win: iptv-epg.org has rich working posters, epgshare01 for extra Israeli channels
+FEEDS = ["https://iptv-epg.org/files/epg-il.xml", "https://epgshare01.online/epgshare01/epg_ripper_IL1.xml.gz"]
 HOURS_BACK, HOURS_AHEAD = 3, 36
 # channels with catch-up keep their past as far as the app can play it (CATCHUP in app.js)
 CATCHUP_HOURS = {"reshet13": 24, "kan11": 6, "kan_hinuchit": 6, "i24news_he": 3, "i24news_en": 3, "i24news_fr": 3}
@@ -28,7 +28,8 @@ DESC_MAX = 170
 
 # Names the automatic match can't work out: our channel id -> normalised feed name (see norm()).
 ALIASES = {
-    "channel9": "9", "keshet12": "12", "reshet13": "רשת", "now14": "14", "kan_hinuchit": "כאןחינוכית", "i24news_he": "עבריתi24",
+    "channel9": "9", "keshet12": "קשת", "reshet13": "רשת", "now14": "ערוץ14", "kan11": "כאן11", "kan_hinuchit": "כאןחינוכית", "i24news_he": "עבריתi24",
+    "sport1_israel": "ספורט1", "sport2_israel": "ספורט2", "sport3_israel": "ספורט3", "sport4_israel": "ספורט4",
     "channel24": "24החדש", "channel_98_il": "98", "knesset": "הכנסת", "calcala10": "הכלכלה", "hot_bidur": "הוטבידורי", "hot_reality": "hotreal",
     "hot_8": "hot8", "home_plus_il": "בית+", "health_channel_il": "בריאות", "vacation_channel_il": "הנופש", "ego_channel_il": "אגו",
     "humor_channel_il": "ההומור", "il_the_style_channel_hd_il": "הסטייל", "hop_kids_israel": "הופ", "hop_yaldut_il": "ילדותית", "luli_tv_il": "hotluli",
@@ -78,10 +79,13 @@ def read_feed(url):
         if e <= lo or s >= hi or e <= s:
             continue
         icon = p.find("icon")
+        icon_url = icon.get("src", "") if icon is not None else ""
+        if "kaltura.com" in icon_url:
+            icon_url = ""
         desc = " ".join((p.findtext("desc") or "").split())
         if len(desc) > DESC_MAX:
             desc = desc[:DESC_MAX].rsplit(" ", 1)[0] + "…"
-        c["progs"].append([s, e - s, title, desc, icon.get("src", "") if icon is not None else ""])
+        c["progs"].append([s, e - s, title, desc, icon_url])
     return out
 
 

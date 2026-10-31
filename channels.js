@@ -1,4 +1,5 @@
-window.CHANNELS_DATA = window.ITV_CHANNELS = [
+// written by tools/make_channel_list.py
+window.ITV_CHANNELS = [
  {
   "id": "walla_news_il",
   "name": "וואלה!+ חדשות – שידור חי HD",
@@ -1143,13 +1144,15 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
    "web": "❌ רק באפליקציה (HTTP)"
   },
   "fallbackUrls": [
+   "http://45.156.223.202/iptv/QAP2YS2594ZQS3/12249/index.m3u8",
    "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2353/index.m3u8",
-   "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12249/index.m3u8?r=1"
+   "http://45.156.223.202/iptv/QAP2YS2594ZQS3/2353/index.m3u8"
   ],
   "iptv": "Sport1.il",
   "backups": [
+   "http://45.156.223.202/iptv/QAP2YS2594ZQS3/12249/index.m3u8",
    "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2353/index.m3u8",
-   "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12249/index.m3u8?r=1"
+   "http://45.156.223.202/iptv/QAP2YS2594ZQS3/2353/index.m3u8"
   ]
  },
  {
@@ -1174,13 +1177,15 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
    "web": "❌ רק באפליקציה (HTTP)"
   },
   "fallbackUrls": [
+   "http://45.156.223.202/iptv/QAP2YS2594ZQS3/12250/index.m3u8",
    "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2352/index.m3u8",
-   "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12250/index.m3u8?r=1"
+   "http://45.156.223.202/iptv/QAP2YS2594ZQS3/2352/index.m3u8"
   ],
   "iptv": "Sport2.il",
   "backups": [
+   "http://45.156.223.202/iptv/QAP2YS2594ZQS3/12250/index.m3u8",
    "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2352/index.m3u8",
-   "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12250/index.m3u8?r=1"
+   "http://45.156.223.202/iptv/QAP2YS2594ZQS3/2352/index.m3u8"
   ]
  },
  {
@@ -1205,13 +1210,15 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
    "web": "❌ רק באפליקציה (HTTP)"
   },
   "fallbackUrls": [
+   "http://45.156.223.202/iptv/QAP2YS2594ZQS3/12251/index.m3u8",
    "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2388/index.m3u8",
-   "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12251/index.m3u8?r=1"
+   "http://45.156.223.202/iptv/QAP2YS2594ZQS3/2388/index.m3u8"
   ],
   "iptv": "Sport3.il",
   "backups": [
+   "http://45.156.223.202/iptv/QAP2YS2594ZQS3/12251/index.m3u8",
    "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2388/index.m3u8",
-   "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12251/index.m3u8?r=1"
+   "http://45.156.223.202/iptv/QAP2YS2594ZQS3/2388/index.m3u8"
   ]
  },
  {
@@ -1236,13 +1243,15 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
    "web": "❌ רק באפליקציה (HTTP)"
   },
   "fallbackUrls": [
+   "http://45.156.223.202/iptv/QAP2YS2594ZQS3/12252/index.m3u8",
    "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2389/index.m3u8",
-   "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12252/index.m3u8?r=1"
+   "http://45.156.223.202/iptv/QAP2YS2594ZQS3/2389/index.m3u8"
   ],
   "iptv": "Sport4.il",
   "backups": [
+   "http://45.156.223.202/iptv/QAP2YS2594ZQS3/12252/index.m3u8",
    "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2389/index.m3u8",
-   "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12252/index.m3u8?r=1"
+   "http://45.156.223.202/iptv/QAP2YS2594ZQS3/2389/index.m3u8"
   ]
  },
  {
