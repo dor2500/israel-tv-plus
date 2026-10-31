@@ -59,3 +59,4 @@ for cid, name, s1, s2 in frozen:
 print("\n--- SAMPLE WORKING CHANNELS ---")
 for cid, name, s1, s2 in working[:10]:
     print(f"[LIVE]   {cid:30} | {name:40} | {s1} -> {s2}")
+

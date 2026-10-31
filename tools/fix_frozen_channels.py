@@ -95,3 +95,4 @@ with open('channels.js', 'w', encoding='utf-8') as f:
     f.write('window.CHANNELS = ' + json.dumps(new_channels, ensure_ascii=False, indent=2) + ';\n')
 
 print("Saved channels.json and channels.js")
+

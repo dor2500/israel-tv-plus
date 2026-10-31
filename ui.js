@@ -142,9 +142,17 @@ window.ITV_UI = (function (I) {
       '<div class="eq"><i></i><i></i><i></i><i></i><i></i></div></div></div>' +
     '<div class="spinner hidden" id="spinner"><div class="ring"></div><div id="spinner-text">מתחבר...</div></div>' +
     '<div class="perror hidden" id="perror"><div class="perror-box">' +
-      '<div class="perror-ico">' + I('info') + '</div><h3 id="perror-title"></h3><p id="perror-desc"></p>' +
-      '<div class="perror-actions"><button class="btn primary" id="perror-retry">נסה שוב</button>' +
-      '<button class="btn" id="perror-next">ערוץ הבא</button><button class="btn" id="perror-back">חזרה</button></div>' +
+      '<div class="perror-standby-graphic">' +
+        '<div class="perror-colorbars"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>' +
+        '<div class="perror-logo-wrap"><img id="perror-ch-logo" class="perror-ch-logo" src="icon.png" alt=""></div>' +
+      '</div>' +
+      '<h3 class="perror-title" id="perror-title">סליחה, תקלה זמנית בשידור</h3>' +
+      '<p class="perror-desc" id="perror-desc">השידור בערוץ זה אינו זמין כעת. צוות הערוץ פועל להחזרת השידור בהקדם. אנו מתנצלים על אי הנוחות!</p>' +
+      '<div class="perror-actions">' +
+        '<button class="btn primary" id="perror-retry">נסה להתחבר שוב</button>' +
+        '<button class="btn" id="perror-next">עבור לערוץ הבא (OK)</button>' +
+        '<button class="btn" id="perror-back">חזרה למדריך הערוצים</button>' +
+      '</div>' +
     '</div></div>' +
 
     '<div class="osd" id="osd">' +

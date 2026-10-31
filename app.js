@@ -46,7 +46,7 @@
   var DEFAULTS = {
     theme: 'oled', accent: 'auto', uiScale: 1, cols: 0, hero: true, numbers: true, hints: true, perf: 'auto',
     startCat: 'ALL', autoplay: false, hideAppOnly: false, hiddenCats: [], hidden: [], showSource: true,
-    pic: 'off', aspect: 'fit', sharpen: false, quality: 'max', latency: 'stable', osdSec: 5, osdClock: true,
+    pic: 'off', aspect: 'fit', sharpen: false, quality: 'max', latency: 'low', osdSec: 5, osdClock: true,
     retry: true, zap: 'category', upNext: true, upNextV2: true,
     remote: 'auto', keyRed: 'menu', keyGreen: 'aspect', keyYellow: 'fav', keyBlue: 'dub', longOk: 'menu', numWait: 1.2,
     saver: 2, kids: false, kidsPin: '', autoUpdate: true, liveUpdates: true, avatar: '1f60e', profileOnStart: true,
@@ -153,7 +153,19 @@
     return u;
   }
   function appOnly(ch) { return false; }
-  function isKidsCh(ch) { return /ילדים/.test(ch.category) || ch.id === 'radios_kids'; }
+  function isKidsCh(ch) {
+    if (!ch) return false;
+    var cat = (ch.category || '').toLowerCase();
+    var en = (ch.categoryEn || '').toLowerCase();
+    var name = (ch.name || '').toLowerCase();
+    var id = (ch.id || '').toLowerCase();
+    if (/חדשות|ספורט|פוליטיקה|דת |כלכלה|ויוה|viva|טלנובלה|telenovela|היפ הופ|hiphop|אימה|horror|news|sport|finance/.test(cat + ' ' + name + ' ' + en + ' ' + id)) {
+      return false;
+    }
+    if (/ילדים/.test(cat) || /^(kids|kids_he|kids_world|cartoons)$/.test(en)) return true;
+    if (/ילדים|נוער|פעוטות|קטנטנים|אנימציה|מצוירים|הופ!|בייבי|דיסני|ניקלודיאון|ניק ג'וניור|ג'וניור|קארטון נטוורק|בומרנג|baby shark|ducktv|lego|transformers|cartoon network|boomerang/.test(name + ' ' + id)) return true;
+    return false;
+  }
   function isFav(ch) { return ch && state.favorites.indexOf(ch.id) !== -1; }
   function foreign(ch) { return !!(Dub && ch && Dub.isForeign(ch)); }
 
@@ -1123,6 +1135,26 @@
           applyTvProfileData(p, true);
           saveTvProfiles();
           closeTvProfiles();
+          // Immediately enter playback / TV guide
+          if (TVUI) {
+            var targetCh = null;
+            if (p.recents && p.recents.length) {
+              for (var ri = 0; ri < p.recents.length; ri++) {
+                var cIdx = indexInAll(p.recents[ri]);
+                if (cIdx !== -1 && (!p.isKids || isKidsCh(state.all[cIdx]))) {
+                  targetCh = state.all[cIdx];
+                  break;
+                }
+              }
+            }
+            if (!targetCh && state.visible && state.visible.length) targetCh = state.visible[0];
+            if (!targetCh && state.all && state.all.length) {
+              targetCh = p.isKids ? state.all.find(isKidsCh) : state.all[0];
+            }
+            if (targetCh) {
+              playChannel(targetCh);
+            }
+          }
         }
       });
     });
@@ -1873,11 +1905,33 @@
     if (atv.search) {
       var q = atv.query.trim().toLowerCase();
       var res = !q ? [] : state.all.filter(function (c) {
+        if (S.kids && !isKidsCh(c)) return false;
         return c.name.toLowerCase().indexOf(q) !== -1 || String(c.number) === q ||
           (c.countryHe && c.countryHe.indexOf(q) !== -1) || (c.title && c.title.toLowerCase().indexOf(q) !== -1);
       });
-      return [{ id: 'search', title: q ? 'תוצאות לחיפוש "' + atv.query.trim() + '" · ' + res.length : 'הקלידו שם ערוץ, מדינה או מספר', list: res }];
+      return [{ id: 'search', title: q ? 'תוצאות לחיפוש ילדים "' + atv.query.trim() + '" · ' + res.length : 'הקלידו שם ערוץ ילדים', list: res }];
     }
+
+    if (S.kids) {
+      var kidsAll = state.all.filter(isKidsCh);
+      var kidsHe = kidsAll.filter(function (c) { return c.country === 'IL' || c.lang === 'he'; });
+      var kidsWorld = kidsAll.filter(function (c) { return c.country !== 'IL' && c.lang !== 'he'; });
+      var kidsMine = [];
+      var seenK = {};
+      (state.recents || []).concat(state.favorites || []).forEach(function (id) {
+        var idx = indexInAll(id);
+        if (idx !== -1 && isKidsCh(state.all[idx]) && !seenK[id]) {
+          seenK[id] = 1;
+          kidsMine.push(state.all[idx]);
+        }
+      });
+      var kRows = [];
+      if (kidsMine.length) kRows.push({ id: 'mine', title: '🧸 מועדפים לאחרונה (ילדים)', list: kidsMine });
+      if (kidsHe.length) kRows.push({ id: 'kids_he', title: '🇮🇱 ערוצי ילדים ונוער בעברית', list: kidsHe });
+      if (kidsWorld.length) kRows.push({ id: 'kids_world', title: '🌍 ערוצי ילדים וסדרות מצוירות מהעולם', list: kidsWorld });
+      return kRows;
+    }
+
     var buckets = {};
     ATV_ROWS.forEach(function (r) { buckets[r[0]] = []; });
     var kidsRadio = [];
@@ -2639,11 +2693,19 @@
 
     if (window.Hls && Hls.isSupported()) {
       var delayed = Dub && Dub.wantsSync(ch);
-      var low = S.latency === 'low' && !delayed;
+      var low = (S.latency === 'low' || S.latency === 'realtime' || TVUI) && !delayed;
       var hls = new Hls({
-        enableWorker: true, lowLatencyMode: low, backBufferLength: fastMode() ? 15 : 45,
-        liveSyncDurationCount: low ? 2 : 4, maxBufferLength: fastMode() ? 20 : 30,
-        manifestLoadingMaxRetry: 2, levelLoadingMaxRetry: 2, fragLoadingMaxRetry: 3,
+        enableWorker: true,
+        lowLatencyMode: true,
+        backBufferLength: fastMode() ? 15 : 30,
+        liveSyncDurationCount: low ? 2 : 3,
+        liveMaxLatencyDurationCount: low ? 3 : 5,
+        liveDurationInfinity: true,
+        maxBufferLength: low ? 12 : 20,
+        maxMaxBufferLength: low ? 20 : 35,
+        manifestLoadingMaxRetry: 3,
+        levelLoadingMaxRetry: 3,
+        fragLoadingMaxRetry: 4,
         capLevelToPlayerSize: S.quality === 'auto'
       });
       state.hls = hls;
@@ -2746,10 +2808,15 @@
     if (Dub) Dub.detach();
     if (state.hls) { try { state.hls.destroy(); } catch (e) {} state.hls = null; }
     var insecure = location.protocol === 'https:' && /^http:/i.test(streamUrl(ch));
-    el.perrorTitle.textContent = insecure ? 'הערוץ פועל באפליקציה' : 'השידור לא זמין כרגע';
+    var chLogo = $('perror-ch-logo');
+    if (chLogo) {
+      chLogo.src = ch.logo || 'icon.png';
+      chLogo.onerror = function () { chLogo.src = 'icon.png'; };
+    }
+    el.perrorTitle.textContent = insecure ? 'הערוץ פועל באפליקציה' : 'סליחה, תקלה זמנית בשידור';
     el.perrorDesc.textContent = insecure
-      ? 'הערוץ משדר ב-HTTP, ודפדפנים חוסמים שידור כזה מאתר מאובטח. באפליקציות (טלוויזיה, אנדרואיד, מחשב) הוא פועל.'
-      : 'לא הצלחנו להתחבר ל"' + ch.name + '" (' + (reason || 'שגיאת רשת') + '). ייתכן שהשידור כבוי זמנית – נסו שוב או עברו ערוץ.';
+      ? 'הערוץ משדר ב-HTTP, ודפדפנים חוסמים שידור כזה מאתר מאובטח. באפליקציות טלוויזיה, אנדרואיד ומחשב השידור פועל תקין.'
+      : 'אנו מתנצלים על אי הנוחות. השידור בערוץ "' + ch.name + '" אינו זמין כעת. צוות הערוץ פועל להחזרת השידור בהקדם.';
     el.perror.classList.remove('hidden');
     state.zone = 'perror';
     state.perrIdx = 0;
