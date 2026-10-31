@@ -1,48 +1,50 @@
 {
-  "version": "4.7.3",
-  "code": 202610311305,
-  "app": 573,
+  "version": "4.7.4",
+  "code": 202610311323,
+  "app": 574,
   "shell": 3,
   "date": "2026-10-31",
   "notes": [
-    "אריזה מחדש של חבילות ההפצה לגרסה חדשה לכל הפלטפורמות."
+    "פרוטוטייפ ממשק טלוויזיה (Smart TV 10ft UI): הוטמעו טוקני העיצוב של Nuvio עם תמיכה מלאה ב-RTL, לוח שידורים (EPG), שכבת OSD וסימולטור שלט רחוק וירטואלי.",
+    "שדרוג צינור השחרור האוטומטי (Release Pipeline): תמיכה משופרת בהפצה ידנית ואוטומטית ב-GitHub Actions לכל הפלטפורמות.",
+    "סנכרון ואימות ערוצים: סנכרון 1:1 מלא בין כל 440 ערוצי הטלוויזיה ותחנות הרדיו בכל קובצי הפרויקט, האפליקציות והמניפסטים."
   ],
   "native": {
     "android": {
-      "version": "4.7.3",
-      "app": 573,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.7.3/IsraelTVPlus-android.apk"
+      "version": "4.7.4",
+      "app": 574,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.7.4/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "4.7.3",
-      "app": 573,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.7.3/IsraelTVPlus-windows-setup.exe"
+      "version": "4.7.4",
+      "app": 574,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.7.4/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "4.7.3",
-      "app": 573,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.7.3/com.israeltv.plus_all.ipk",
+      "version": "4.7.4",
+      "app": 574,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.7.4/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "4.7.3",
-      "app": 573,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.7.3/IsraelTVPlus-tizen-project.zip"
+      "version": "4.7.4",
+      "app": 574,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.7.4/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "4.7.3",
-      "app": 573,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.7.3/IsraelTVPlus-macos-arm64.zip"
+      "version": "4.7.4",
+      "app": 574,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.7.4/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "4.7.3",
-      "app": 573,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.7.3/IsraelTVPlus-linux-x64.zip"
+      "version": "4.7.4",
+      "app": 574,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.7.4/IsraelTVPlus-linux-x64.zip"
     },
     "wear": {
-      "version": "4.7.3",
-      "app": 1000473,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.7.3/IsraelTVPlus-wearos.apk"
+      "version": "4.7.4",
+      "app": 1000474,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.7.4/IsraelTVPlus-wearos.apk"
     }
   }
 }
