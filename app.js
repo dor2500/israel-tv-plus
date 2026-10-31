@@ -1063,12 +1063,11 @@
     lsSet('israel_tv_recents', state.recents);
     S.avatar = p.avatar || '1f60e';
     S.kids = !!p.isKids;
-    buildChannels();
+    loadChannels();
     updateAvatar();
     if (typeof atvRenderPill === 'function') atvRenderPill();
     if (typeof buildCategories === 'function') buildCategories();
     if (typeof filterList === 'function') filterList();
-    if (typeof atvRender === 'function') atvRender();
     if (notify) toast('שלום, ' + p.name + '!');
   }
 
@@ -3870,7 +3869,7 @@ function showOsd() {
       ]) : [info('דיבוב', 'לא זמין במכשיר הזה')] },
       { id: 'kids', ico: '🧸', name: 'מצב ילדים', desc: 'רק ערוצי ילדים, ויציאה עם קוד', rows: [
         { type: 'toggle', label: 'מצב ילדים', help: 'מציג רק ערוצי ילדים (בעברית ומהעולם) ותחנת רדיו לילדים', on: function () { return S.kids; },
-          act: function () { if (S.kids) askPin(function () { setSetting('kids', false); buildChannels(); buildCategories(); filterList(); if (typeof atvRender === 'function') atvRender(); renderSettings(); }); else { setSetting('kids', true); buildChannels(); buildCategories(); filterList(); if (typeof atvRender === 'function') atvRender(); toast('🧸 מצב ילדים פועל'); } } },
+          act: function () { if (S.kids) askPin(function () { setSetting('kids', false); loadChannels(); buildCategories(); filterList(); renderSettings(); }); else { setSetting('kids', true); loadChannels(); buildCategories(); filterList(); toast('🧸 מצב ילדים פועל'); } } },
         { type: 'action', label: S.kidsPin ? 'שינוי קוד יציאה (' + S.kidsPin.replace(/./g, '•') + ')' : 'הגדרת קוד יציאה (4 ספרות)', help: 'בלי קוד – כל אחד יכול לצאת ממצב ילדים',
           act: function () { askPin(function () { newPin(); }); } }
       ] },
