@@ -32,3 +32,4 @@ if old3 in txt3 and 'setDefaultRequestProperties' not in txt3:
     txt3 = txt3.replace(old3, old3 + '\n            .setDefaultRequestProperties(mapOf("Referer" to "https://stmify.com/"))', 1)
     open(p3, 'w', encoding='utf-8', newline='').write(txt3)
     print('Patched Playback.kt')
+

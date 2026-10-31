@@ -49,7 +49,7 @@
     pic: 'off', aspect: 'fit', sharpen: false, quality: 'max', latency: 'stable', osdSec: 5, osdClock: true,
     retry: true, zap: 'category', upNext: true, upNextV2: true,
     remote: 'auto', keyRed: 'menu', keyGreen: 'aspect', keyYellow: 'fav', keyBlue: 'dub', longOk: 'menu', numWait: 1.2,
-    saver: 2, kids: false, kidsPin: '', autoUpdate: true, liveUpdates: true, avatar: '1f60e', profileOnStart: false,
+    saver: 2, kids: false, kidsPin: '', autoUpdate: true, liveUpdates: true, avatar: '1f60e', profileOnStart: true,
     lastId: '', lastCat: 'ALL', seenColors: false
   };
   var S = loadSettings();
@@ -301,6 +301,11 @@
     if (S.autoplay && S.lastId) {
       var idx = indexInList(S.lastId);
       if (idx !== -1) { focusGrid(idx); playIndex(idx); }
+    }
+    if (TVUI && (S.profileOnStart !== false)) {
+      setTimeout(function () {
+        openTvProfiles();
+      }, 60);
     }
 
     // the build started fine: a live update that got this far is good
@@ -1070,9 +1075,36 @@
 
     var btnManage = $('btn-tv-prof-manage');
     var btnDone = $('btn-tv-prof-done');
+    var btnClose = $('btn-tv-prof-close');
     if (btnManage && btnDone) {
       toggleClass(btnManage, 'hidden', tvProfileManaging);
       toggleClass(btnDone, 'hidden', !tvProfileManaging);
+    }
+    if (btnManage && !btnManage._bound) {
+      btnManage._bound = true;
+      btnManage.addEventListener('click', function () {
+        tvProfileManaging = true;
+        renderTvProfilesScreen();
+        tvProfileZone = 'cards';
+        tvProfileIdx = 0;
+        markTvProfilesFocus();
+      });
+    }
+    if (btnDone && !btnDone._bound) {
+      btnDone._bound = true;
+      btnDone.addEventListener('click', function () {
+        tvProfileManaging = false;
+        renderTvProfilesScreen();
+        tvProfileZone = 'cards';
+        tvProfileIdx = 0;
+        markTvProfilesFocus();
+      });
+    }
+    if (btnClose && !btnClose._bound) {
+      btnClose._bound = true;
+      btnClose.addEventListener('click', function () {
+        closeTvProfiles();
+      });
     }
 
     Array.prototype.forEach.call(grid.children, function (card) {
@@ -3312,6 +3344,11 @@
     });
     var d = state.device;
     var secs = [
+      { id: 'profiles', ico: '👤', name: 'פרופילים', desc: 'מי צופה בטלוויזיה, מועדפים והיסטוריה אישיים', rows: [
+        action('החלפת פרופיל / מי צופה?', function () { closeSettings(); openTvProfiles(); }, 'פתיחת מסך בחירת הפרופיל בסגנון נטפליקס'),
+        toggle('profileOnStart', 'בחירת פרופיל בכל הפעלה', 'מציג את מסך "מי צופה?" בכל פתיחה של הטלוויזיה'),
+        action('ניהול פרופילים (עריכה / הוספה)', function () { closeSettings(); openTvProfiles(); tvProfileManaging = true; renderTvProfilesScreen(); markTvProfilesFocus(); }, 'עריכת שמות, החלפת אווטארים 3D והוספת פרופילים')
+      ] },
       { id: 'display', ico: '🖥️', name: 'תצוגה', desc: 'גודל, צבעים ומה מופיע במסך', rows: [
         choice('theme', 'ערכת צבעים', THEMES),
         { type: 'choice', label: 'צבע הדגשה', help: readSystemColors() ? 'צבעי המערכת = הצבעים של הטפט (Material You)' : 'ערכות הצבע של Nuvio',

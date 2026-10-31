@@ -371,3 +371,4 @@ with open(os.path.join(ROOT, "channels.js"), "w", encoding="utf-8", newline="\n"
     f.write("window.CHANNELS_DATA = window.ITV_CHANNELS = " + json.dumps(chs, ensure_ascii=False, indent=1) + ";\n")
 
 print(f"Saved {len(chs)} channels to channels.json and channels.js")
+

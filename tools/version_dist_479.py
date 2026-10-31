@@ -66,3 +66,4 @@ with open(os.path.join(dist, "SHA256SUMS.txt"), "w", encoding="utf-8", newline="
     f.writelines(sha_lines)
 
 print(f"Computed SHA256 for {len(sha_lines)} files in {dist}/SHA256SUMS.txt")
+
