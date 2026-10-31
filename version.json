@@ -1,46 +1,46 @@
 {
-  "version": "4.8.6",
-  "code": 202610312102,
-  "app": 586,
+  "version": "4.8.7",
+  "code": 202610311908,
+  "app": 587,
   "shell": 3,
   "date": "2026-10-31",
   "notes": [],
   "native": {
     "android": {
-      "version": "4.8.6",
-      "app": 586,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.6/IsraelTVPlus-4.8.6-android.apk"
+      "version": "4.8.7",
+      "app": 587,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.7/IsraelTVPlus-4.8.7-android.apk"
     },
     "windows": {
-      "version": "4.8.6",
-      "app": 586,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.6/IsraelTVPlus-windows-setup.exe"
+      "version": "4.8.7",
+      "app": 587,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.7/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "4.8.6",
-      "app": 586,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.6/com.israeltv.plus_4.8.6_all.ipk",
+      "version": "4.8.7",
+      "app": 587,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.7/com.israeltv.plus_4.8.7_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "4.8.6",
-      "app": 586,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.6/IsraelTVPlus-4.8.6-tizen-project.zip"
+      "version": "4.8.7",
+      "app": 587,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.7/IsraelTVPlus-4.8.7-tizen-project.zip"
     },
     "mac": {
-      "version": "4.8.6",
-      "app": 586,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.6/IsraelTVPlus-macos-arm64.zip"
+      "version": "4.8.7",
+      "app": 587,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.7/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "4.8.6",
-      "app": 586,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.6/IsraelTVPlus-linux-x64.zip"
+      "version": "4.8.7",
+      "app": 587,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.7/IsraelTVPlus-linux-x64.zip"
     },
     "wear": {
-      "version": "4.8.6",
-      "app": 1000486,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.6/IsraelTVPlus-4.8.6-wearos.apk"
+      "version": "4.8.7",
+      "app": 1000487,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.7/IsraelTVPlus-4.8.7-wearos.apk"
     }
   }
 }
