@@ -38,6 +38,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -324,8 +325,8 @@ private data class NavItem(
 )
 
 /**
- * The Nuvio navigation: ONE compact floating pill (56 dp tall). Inactive tabs are icon-only; only the active tab
- * expands inline with its label on a secondaryContainer indicator. Colours come from the Material You scheme.
+ * The Nuvio navigation: ONE floating frosted capsule (64 dp tall, max 400 dp wide): icon over label on every tab, the active tab on an
+ * accent-tinted capsule. Proportions follow the Nuvio design; the code is our own.
  */
 @Composable
 fun NuvioFloatingNavbar(
@@ -341,74 +342,66 @@ fun NuvioFloatingNavbar(
     )
     val haptic = LocalHapticFeedback.current
 
+    val accent = MaterialTheme.colorScheme.primary
+    val shape = RoundedCornerShape(50)
+
+    // Nuvio proportions: one frosted capsule up to 400 dp wide, 64 dp tall, equal-width tabs with the icon over an
+    // always-visible label; the active tab sits on an accent-tinted capsule inset 4 dp from the track.
     Box(
         modifier = modifier
             .fillMaxWidth()
             .navigationBarsPadding()
-            .padding(bottom = 16.dp),
+            .padding(start = 28.dp, end = 28.dp, bottom = 16.dp),
         contentAlignment = Alignment.Center
     ) {
-        Surface(
-            shape = CircleShape,
-            color = MaterialTheme.colorScheme.surfaceContainerHigh.copy(alpha = 0.88f),
-            border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.2f)),
-            shadowElevation = 12.dp
+        Row(
+            modifier = Modifier
+                .widthIn(max = 400.dp)
+                .fillMaxWidth()
+                .height(64.dp)
+                .frostedGlass(shape, MaterialTheme.colorScheme.surfaceContainerHigh.copy(alpha = 0.55f), blur = 40.dp)
+                .padding(4.dp),
+            verticalAlignment = Alignment.CenterVertically
         ) {
-            Row(
-                modifier = Modifier
-                    .padding(horizontal = 8.dp, vertical = 6.dp)
-                    .height(44.dp),
-                horizontalArrangement = Arrangement.spacedBy(4.dp),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                items.forEach { item ->
-                    val isSelected = currentRoute == item.route
-                    val containerColor by animateColorAsState(
-                        targetValue = if (isSelected) MaterialTheme.colorScheme.secondaryContainer else Color.Transparent,
-                        label = "pill_container"
+            items.forEach { item ->
+                val isSelected = currentRoute == item.route
+                val pill by animateColorAsState(
+                    targetValue = if (isSelected) accent.copy(alpha = 0.22f) else Color.Transparent,
+                    label = "nav_pill"
+                )
+                val contentColor by animateColorAsState(
+                    targetValue = if (isSelected) accent else MaterialTheme.colorScheme.onSurface.copy(alpha = 0.62f),
+                    label = "nav_content"
+                )
+                Column(
+                    modifier = Modifier
+                        .weight(1f)
+                        .fillMaxHeight()
+                        .clip(shape)
+                        .background(pill)
+                        .clickable {
+                            haptic.performHapticFeedback(HapticFeedbackType.SegmentTick)
+                            onNavigate(item.route)
+                        },
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.Center
+                ) {
+                    Icon(
+                        imageVector = if (isSelected) item.selectedIcon else item.unselectedIcon,
+                        contentDescription = item.label,
+                        tint = contentColor,
+                        modifier = Modifier.size(28.dp)
                     )
-                    val contentColor by animateColorAsState(
-                        targetValue = if (isSelected) MaterialTheme.colorScheme.onSecondaryContainer else MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.6f),
-                        label = "pill_content"
+                    Text(
+                        text = item.label,
+                        style = MaterialTheme.typography.labelMedium.copy(
+                            fontSize = 13.sp,
+                            lineHeight = 16.sp,
+                            fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Medium,
+                            color = contentColor
+                        ),
+                        maxLines = 1
                     )
-
-                    Box(
-                        modifier = Modifier
-                            .clip(CircleShape)
-                            .background(containerColor)
-                            .clickable {
-                                haptic.performHapticFeedback(HapticFeedbackType.SegmentTick)
-                                onNavigate(item.route)
-                            }
-                            .padding(horizontal = if (isSelected) 16.dp else 8.dp, vertical = 8.dp),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Row(
-                            verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.spacedBy(8.dp)
-                        ) {
-                            Icon(
-                                imageVector = if (isSelected) item.selectedIcon else item.unselectedIcon,
-                                contentDescription = item.label,
-                                tint = contentColor,
-                                modifier = Modifier.size(24.dp)
-                            )
-                            AnimatedVisibility(
-                                visible = isSelected,
-                                enter = fadeIn() + expandHorizontally(),
-                                exit = fadeOut() + shrinkHorizontally()
-                            ) {
-                                Text(
-                                    text = item.label,
-                                    style = MaterialTheme.typography.labelMedium.copy(
-                                        fontWeight = FontWeight.Bold,
-                                        color = contentColor
-                                    ),
-                                    maxLines = 1
-                                )
-                            }
-                        }
-                    }
                 }
             }
         }
