@@ -1957,3 +1957,10 @@ body:not(.phone):not(.anim-off) #menu .menu-box { animation: tv-panel .42s cubic
 .net-prof-card.focused, .net-prof-card:hover {
   box-shadow: 0 1.2rem 3.5rem rgba(0, 0, 0, .8), 0 0 30px rgba(99, 102, 241, .4), inset 0 1px 1px rgba(255, 255, 255, 0.2);
 }
+
+/* ------------------------------------------------------------------ 4K Ultra Sharp Video Upscale */
+.video-4k-upscale {
+  image-rendering: -webkit-optimize-contrast !important;
+  image-rendering: crisp-edges !important;
+  transform: translateZ(0);
+}

@@ -1895,11 +1895,31 @@
   var ATV_PITCH = 19;        // rem: a 17.5rem card + 1.5rem gap
   var ATV_ROW = 17.25;       // rem: one shelf (title + card + name), 276 px on a 1080p screen
   var ATV_FIRST = 14, ATV_MORE = 18;
-  var ATV_ROWS = [['broadcast', 'ערוצי ברודקאסט וחדשות'], ['sports', 'ספורט בשידור חי'], ['movies', 'סרטים וסדרות'],
-    ['kids', 'ילדים ונוער'], ['fun', 'בידור, טבע ומוזיקה'], ['world', 'ערוצים בינלאומיים'], ['radio', 'רדיו ישראלי'],
-    ['faith', 'דת ומסורת']];
-  var ATV_TABS = [['פרופיל', 'profiles'], ['צפייה כעת', 'top'], ['ערוצי ישראל', 'broadcast'], ['ספורט', 'sports'], ['ילדים', 'kids'],
-    ['סרטים ודיבוב', 'movies'], ['רדיו', 'radio'], ['מועדפים', 'mine'], ['חיפוש', 'search'], ['פיצול מסך', 'multiview'], ['הגדרות', 'settings']];
+  var ATV_ROWS = [
+    ['all_channels', '📺 כל הערוצים (All Channels)'],
+    ['broadcast', 'ערוצי ברודקאסט וחדשות'],
+    ['sports', 'ספורט בשידור חי'],
+    ['movies', 'סרטים וסדרות'],
+    ['kids', 'ילדים ונוער'],
+    ['fun', 'בידור, טבע ומוזיקה'],
+    ['world', 'ערוצים בינלאומיים'],
+    ['radio', 'רדיו ישראלי'],
+    ['faith', 'דת ומסורת']
+  ];
+  var ATV_TABS = [
+    ['פרופיל', 'profiles'],
+    ['כל הערוצים', 'all_channels'],
+    ['צפייה כעת', 'top'],
+    ['ערוצי ישראל', 'broadcast'],
+    ['ספורט', 'sports'],
+    ['ילדים', 'kids'],
+    ['סרטים ודיבוב', 'movies'],
+    ['רדיו', 'radio'],
+    ['מועדפים', 'mine'],
+    ['חיפוש', 'search'],
+    ['פיצול מסך', 'multiview'],
+    ['הגדרות', 'settings']
+  ];
 
   function atvRem(rem) { return rem * (parseFloat(document.documentElement.style.fontSize) || 16); }
 
@@ -1951,6 +1971,7 @@
 
     var buckets = {};
     ATV_ROWS.forEach(function (r) { buckets[r[0]] = []; });
+    buckets.all_channels = (S.kids ? state.all.filter(isKidsCh) : state.all).slice();
     var kidsRadio = [];
     state.all.forEach(function (c) {
       var b = atvBucket(c);
@@ -2630,6 +2651,52 @@
     loadCandidate(ch, cands[state.candIdx]);
   }
 
+  
+  function pickLevelByHeight(levels, targetH) {
+    if (!levels || !levels.length) return 0;
+    var closest = 0, minDiff = 99999;
+    for (var i = 0; i < levels.length; i++) {
+      var h = levels[i].height || 0;
+      var diff = Math.abs(h - targetH);
+      if (diff < minDiff) { minDiff = diff; closest = i; }
+    }
+    return closest;
+  }
+
+  function applyQualityLevel(hls, levels) {
+    if (!hls || !levels || !levels.length) return;
+    if (S.quality === 'upscale4k' || S.quality === 'max') {
+      var best = 0, bestSc = 0;
+      for (var i = 0; i < levels.length; i++) {
+        var sc = (levels[i].height || 0) * 1000000 + (levels[i].bitrate || 0);
+        if (sc >= bestSc) { bestSc = sc; best = i; }
+      }
+      hls.currentLevel = best;
+    } else if (S.quality === '1080p') {
+      hls.currentLevel = pickLevelByHeight(levels, 1080);
+    } else if (S.quality === '720p') {
+      hls.currentLevel = pickLevelByHeight(levels, 720);
+    } else if (S.quality === '480p' || S.quality === 'saver') {
+      hls.currentLevel = pickLevelByHeight(levels, 480);
+    } else if (S.quality === '360p') {
+      hls.currentLevel = pickLevelByHeight(levels, 360);
+    } else {
+      hls.currentLevel = -1; // auto adaptive
+    }
+    applyVideoPostProcessing();
+  }
+
+  function applyVideoPostProcessing() {
+    if (!el || !el.video) return;
+    if (S.quality === 'upscale4k') {
+      el.video.classList.add('video-4k-upscale');
+      el.video.style.filter = 'contrast(1.08) saturate(1.06) brightness(1.02)';
+    } else {
+      el.video.classList.remove('video-4k-upscale');
+      el.video.style.filter = '';
+    }
+  }
+
   function loadStream(ch) {
     state.candidates = candidateUrlsOf(ch);
     state.candIdx = 0;
@@ -2711,18 +2778,21 @@
     if (window.Hls && Hls.isSupported()) {
       var delayed = Dub && Dub.wantsSync(ch);
       var low = (S.latency === 'low' || S.latency === 'realtime' || TVUI) && !delayed;
+      var isStable = (S.latency === 'stable' || S.latency !== 'low');
       var hls = new Hls({
         enableWorker: true,
-        lowLatencyMode: true,
-        backBufferLength: fastMode() ? 15 : 30,
-        liveSyncDurationCount: low ? 2 : 3,
-        liveMaxLatencyDurationCount: low ? 3 : 5,
+        lowLatencyMode: S.latency === 'low',
+        backBufferLength: fastMode() ? 20 : 40,
+        liveSyncDurationCount: isStable ? 4 : 2,
+        liveMaxLatencyDurationCount: isStable ? 8 : 4,
         liveDurationInfinity: true,
-        maxBufferLength: low ? 12 : 20,
-        maxMaxBufferLength: low ? 20 : 35,
-        manifestLoadingMaxRetry: 3,
-        levelLoadingMaxRetry: 3,
-        fragLoadingMaxRetry: 4,
+        maxBufferLength: isStable ? 35 : 16,
+        maxMaxBufferLength: isStable ? 60 : 30,
+        maxBufferSize: 60 * 1000 * 1000,
+        manifestLoadingMaxRetry: 5,
+        levelLoadingMaxRetry: 5,
+        fragLoadingMaxRetry: 6,
+        fragLoadingRetryDelay: 500,
         capLevelToPlayerSize: S.quality === 'auto'
       });
       state.hls = hls;
@@ -2738,20 +2808,20 @@
       });
       hls.on(Hls.Events.MANIFEST_PARSED, function (e, data) {
         var levels = data.levels || [];
-        if (levels.length > 1) {
-          if (S.quality === 'saver') {
-            var cap = 0;
-            for (var i = 0; i < levels.length; i++) if ((levels[i].height || 0) <= 576) cap = i;
-            hls.autoLevelCapping = cap;
-          } else {
-            var best = levels.length - 1, bestScore = 0;
-            for (var j = 0; j < levels.length; j++) {
-              var sc = (levels[j].height || 0) * 1000000 + (levels[j].bitrate || 0);
-              if (sc >= bestScore) { bestScore = sc; best = j; }
-            }
-            if (S.quality === 'max') hls.nextLevel = best;
-          }
+        if (levels.length > 0) {
+          applyQualityLevel(hls, levels);
         }
+        // Anti-stutter auto-recovery watchdog
+        var stallCount = 0;
+        v.onwaiting = function () {
+          stallCount++;
+          if (stallCount >= 2 && hls.currentLevel > 0 && (S.quality === 'auto' || S.quality === 'upscale4k')) {
+            hls.currentLevel = Math.max(0, hls.currentLevel - 1);
+          }
+        };
+        v.onplaying = function () {
+          setTimeout(function () { stallCount = 0; }, 10000);
+        };
         if (delayed) spinner(true, 'מכין דיבוב מסונכרן… התמונה מושהית ב-' + Dub.settings.delay + ' שניות');
         startPlay(v, ch);
         if (Dub && state.playing === ch && state.preview !== ch) Dub.attach({ video: v, hls: hls, channel: ch, url: url });
@@ -3377,7 +3447,15 @@
   }
 
   // ================================================================== settings
-  var QUALITIES = [['auto', 'אוטומטי (לפי הרשת)'], ['max', 'הכי גבוהה'], ['saver', 'חסכונית (SD)']];
+  var QUALITIES = [
+    ['auto', 'אוטומטי (Adaptive)'],
+    ['upscale4k', 'השבחה ל-4K / Ultra Sharp (AI & חדות מוגברת)'],
+    ['1080p', 'Full HD (1080p) מקסימלי'],
+    ['720p', 'HD (720p) - מומלץ ליציבות'],
+    ['480p', 'SD (480p) - יציב במיוחד'],
+    ['360p', '360p - לחיבור חלש (ללא תקיעות)'],
+    ['saver', 'חסכונית (SD)']
+  ];
   var THEMES = [['oled', 'שחור מלא (OLED)'], ['dark', 'כהה'], ['light', 'בהיר']];
   var SCALES = [[0.85, 'קטן'], [1, 'רגיל'], [1.15, 'גדול'], [1.3, 'גדול מאוד'], [1.5, 'ענק']];
   var COLS = [[0, 'אוטומטי'], [3, '3'], [4, '4'], [5, '5'], [6, '6'], [7, '7'], [8, '8']];
