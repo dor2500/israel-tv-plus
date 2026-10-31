@@ -233,6 +233,12 @@ def main():
     path = os.path.join(ROOT, "epg.json")
     with open(path, "w", encoding="utf-8") as f:
         json.dump({"generated": int(time.time() // 60), "channels": guide}, f, ensure_ascii=False, separators=(",", ":"))
+    try:
+        sys.path.append(os.path.dirname(__file__))
+        from enrich_epg_thumbnails import enrich_epg
+        enrich_epg()
+    except Exception as e:
+        print("enrichment error:", e)
     print("epg.json:", len(guide), "channels,", os.path.getsize(path) // 1024, "KB")
 
 

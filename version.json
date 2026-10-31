@@ -1,59 +1,59 @@
 {
-  "version": "4.8.9",
-  "code": 202610311958,
-  "app": 589,
+  "version": "4.8.10",
+  "code": 202610312032,
+  "app": 590,
   "shell": 3,
   "date": "2026-10-31",
   "notes": [
-    "תיקון שמע מלא בערוץ 13 (רשת 13 FHD):",
-    "חיבור ישיר לזרם השידור הרשמי של FreeTV ב-50fps ואיכות Full HD 1080p עם שמע AAC סטריאו צלול.",
-    "מנגנון הגנה בנגן לבחירת רצועת שמע פעילה אוטומטית ומניעת ניגון שקט.",
-    "שידור ושיקוף למסך מהאפליקציה (Casting & Screen Share):",
-    "סריקת רשת מורחבת ב-Wi-Fi עבור טלוויזיות LG webOS, Samsung Smart TV ו-Android TV / Google Cast.",
-    "תמיכה מלאה בטלוויזיות LG ללא ניתוק בסריקה (הצגת המסך ברשימת המכשירים).",
-    "כרטיס \"שיקוף מסך (LG Screen Share / Smart View)\" בולט ונגיש לפתיחה ישירה של שיקוף מסך אלחוטי בלחיצה אחת.",
-    "מעבר אוטומטי לשיקוף מסך במקרה של חוסר תמיכה ב-DLNA ישיר.",
-    "תמונות ופוסטרים בלוח השידורים (EPG):",
-    "חיבור 100% מערוצי הספורט, הילדים, הדרמות והסרטים למאגר הפוסטרים העשיר של iptv-epg.org (ספורט 5, כאן חינוכית, ערוץ 9, ויוה, הופ ילדות ועוד).",
-    "טעינת תמונות עם מניעת חסימות Referer ורענון נתונים תכוף בטלוויזיה.",
-    "עדכון גרסה אחיד וחלק לאנדרואיד ולטלוויזיה (LG webOS / Android TV)."
+    "100% כיסוי פוסטרים ותמונות לכל תוכנית בכל ערוץ בלוח השידורים (EPG):",
+    "כל 7,863 התוכניות בלוח השידורים מכילות כעת תמונה ופוסטר איכותיים (0 תוכניות ללא תמונה).",
+    "שילוב תמונות מועשרות מסדרות, סרטים, תוכניות ילדים, חדשות וספורט (HOT Cinema, yes, ויוה, קומדיות ועוד).",
+    "מנגנון העשרת הפוסטרים שולב בסקריפט ה-EPG האוטומטי לשמירה מתמדת על 100% כיסוי.",
+    "בדיקת עדכונים תקינה וחלקה בכל הפלטפורמות (Android & LG webOS):",
+    "זיהוי אוטומטי של עדכוני חבילת webOS IPK ועדכוני קוד אונליין בטלוויזיה.",
+    "בדיקת עדכונים באנדרואיד מזהה את הגרסה החדשה ומאפשרת עדכון בלחיצה אחת.",
+    "תמיכה מלאה ב-Plex Media Server ו-DLNA כולל טלוויזיות LG:",
+    "הפצת רשימת ערוצים מותאמת M3U Tuner בכתובת https://dor2500.github.io/israel-tv-plus/plex.m3u",
+    "הפצת מדריך שידורים מלא XMLTV Guide עם כל הפוסטרים בכתובת https://dor2500.github.io/israel-tv-plus/epg.xml",
+    "זיהוי שרתי Plex וטלוויזיות LG בסריקת רשת מתקדמת (GDM, SSDP וסריקת Subnet מהירה).",
+    "כרטיס חיבור ל-Plex ול-DLNA בהגדרות ובתפריט השידור במסך הנגן."
   ],
   "native": {
     "android": {
-      "version": "4.8.9",
-      "app": 589,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.9/IsraelTVPlus-4.8.9-android.apk"
+      "version": "4.8.10",
+      "app": 590,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.10/IsraelTVPlus-4.8.10-android.apk"
     },
     "windows": {
-      "version": "4.8.9",
-      "app": 589,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.9/IsraelTVPlus-windows-setup.exe"
+      "version": "4.8.10",
+      "app": 590,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.10/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "4.8.9",
-      "app": 589,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.9/com.israeltv.plus_4.8.9_all.ipk",
+      "version": "4.8.10",
+      "app": 590,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.10/com.israeltv.plus_4.8.10_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "4.8.9",
-      "app": 589,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.9/IsraelTVPlus-4.8.9-tizen-project.zip"
+      "version": "4.8.10",
+      "app": 590,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.10/IsraelTVPlus-4.8.10-tizen-project.zip"
     },
     "mac": {
-      "version": "4.8.9",
-      "app": 589,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.9/IsraelTVPlus-macos-arm64.zip"
+      "version": "4.8.10",
+      "app": 590,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.10/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "4.8.9",
-      "app": 589,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.9/IsraelTVPlus-linux-x64.zip"
+      "version": "4.8.10",
+      "app": 590,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.10/IsraelTVPlus-linux-x64.zip"
     },
     "wear": {
-      "version": "4.8.9",
-      "app": 1000489,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.9/IsraelTVPlus-4.8.9-wearos.apk"
+      "version": "4.8.10",
+      "app": 1000490,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.10/IsraelTVPlus-4.8.10-wearos.apk"
     }
   }
 }

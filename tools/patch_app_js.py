@@ -1,183 +1,65 @@
-import re
+import os
 
-with open('app.js', 'r', encoding='utf-8') as f:
-    code = f.read().replace('\r\n', '\n')
+app_js = r'C:\Users\Dorp\Documents\deepseek-harness\default-workspace\repo\app.js'
+with open(app_js, 'r', encoding='utf-8') as f:
+    c = f.read()
 
-# 1. Update DEFAULTS to latency: 'low'
-code = code.replace("latency: 'stable'", "latency: 'low'")
+# 1. nativeKey
+old_native_key = '''  function nativeKey() {
+    if (PLATFORM === 'android') return 'android';
+    if (PLATFORM === 'windows') return 'windows';
+    if (PLATFORM === 'tizen') return 'tizen';'''
 
-# 2. Update isKidsCh to pure strict kids
-old_iskids = "function isKidsCh(ch) { return /ילדים/.test(ch.category) || ch.id === 'radios_kids'; }"
-new_iskids = """function isKidsCh(ch) {
-    if (!ch) return false;
-    var cat = (ch.category || '').toLowerCase();
-    var en = (ch.categoryEn || '').toLowerCase();
-    var name = (ch.name || '').toLowerCase();
-    var id = (ch.id || '').toLowerCase();
-    if (/חדשות|ספורט|פוליטיקה|דת |כלכלה|ויוה|viva|טלנובלה|telenovela|היפ הופ|hiphop|אימה|horror|news|sport|finance/.test(cat + ' ' + name + ' ' + en + ' ' + id)) {
-      return false;
-    }
-    if (/ילדים/.test(cat) || /^(kids|kids_he|kids_world|cartoons)$/.test(en)) return true;
-    if (/ילדים|נוער|פעוטות|קטנטנים|אנימציה|מצוירים|הופ!|בייבי|דיסני|ניקלודיאון|ניק ג'וניור|ג'וניור|קארטון נטוורק|בומרנג|baby shark|ducktv|lego|transformers|cartoon network|boomerang/.test(name + ' ' + id)) return true;
-    return false;
-  }"""
-if old_iskids in code:
-    code = code.replace(old_iskids, new_iskids, 1)
-    print("Patched isKidsCh successfully!")
-else:
-    print("Could not find old_iskids!")
+new_native_key = '''  function nativeKey() {
+    if (PLATFORM === 'android') return 'android';
+    if (PLATFORM === 'windows') return 'windows';
+    if (PLATFORM === 'webos') return 'webos';
+    if (PLATFORM === 'tizen') return 'tizen';'''
 
-# 3. Patch Hls config in loadStream (around lines 2640-2650)
-old_hls_config = """      var delayed = Dub && Dub.wantsSync(ch);
-      var low = S.latency === 'low' && !delayed;
-      var hls = new Hls({
-        enableWorker: true, lowLatencyMode: low, backBufferLength: fastMode() ? 15 : 45,
-        liveSyncDurationCount: low ? 2 : 4, maxBufferLength: fastMode() ? 20 : 30,
-        manifestLoadingMaxRetry: 2, levelLoadingMaxRetry: 2, fragLoadingMaxRetry: 3,
-        capLevelToPlayerSize: S.quality === 'auto'
-      });"""
+assert old_native_key in c, 'old_native_key not found'
+c = c.replace(old_native_key, new_native_key, 1)
 
-new_hls_config = """      var delayed = Dub && Dub.wantsSync(ch);
-      var low = (S.latency === 'low' || S.latency === 'realtime' || TVUI) && !delayed;
-      var hls = new Hls({
-        enableWorker: true,
-        lowLatencyMode: true,
-        backBufferLength: fastMode() ? 15 : 30,
-        liveSyncDurationCount: low ? 2 : 3,
-        liveMaxLatencyDurationCount: low ? 3 : 5,
-        liveDurationInfinity: true,
-        maxBufferLength: low ? 12 : 20,
-        maxMaxBufferLength: low ? 20 : 35,
-        manifestLoadingMaxRetry: 3,
-        levelLoadingMaxRetry: 3,
-        fragLoadingMaxRetry: 4,
-        capLevelToPlayerSize: S.quality === 'auto'
-      });"""
+# 2. settingsSections about row
+old_about_row = '''        action('📲 האפליקציה לשאר המכשירים', function () { showGetApp(); }),'''
+new_about_row = '''        action('📡 חיבור ל-Plex ול-DLNA (טלוויזיות LG)', function () { showPlexModal(); }, 'הגדרת 269 הערוצים ולוח שידורים ב-Plex Live TV & DVR'),
+        action('📲 האפליקציה לשאר המכשירים', function () { showGetApp(); }),'''
 
-if old_hls_config in code:
-    code = code.replace(old_hls_config, new_hls_config, 1)
-    print("Patched Hls config in loadStream successfully!")
-else:
-    print("Could not find old_hls_config in loadStream!")
+assert old_about_row in c, 'old_about_row not found'
+c = c.replace(old_about_row, new_about_row, 1)
 
-# 4. Patch renderTvProfilesScreen profile click to immediately switch & start watching
-old_card_click = """        if (tvProfileManaging) {
-          openEditProfileDialog(p);
-        } else {
-          applyTvProfileData(p, true);
-          saveTvProfiles();
-          closeTvProfiles();
-        }"""
+# 3. showPlexModal implementation
+plex_modal_code = '''
+  function showPlexModal() {
+    var m3u = 'https://dor2500.github.io/israel-tv-plus/plex.m3u';
+    var xmltv = 'https://dor2500.github.io/israel-tv-plus/epg.xml';
+    var html = '<div style="direction:rtl;text-align:right;font-size:15px;line-height:1.6;color:var(--t-sec);">' +
+      '<p><b style="color:var(--t-pri);font-size:16px;">צפייה בכל 269 הערוצים דרך אפליקציית Plex בטלוויזיית LG, סמסונג או סטרימר:</b></p>' +
+      '<p>1. פתח את הגדרות שרת ה-Plex שלך במחשב / NAS ← עבור ל-<b>Live TV & DVR</b>.</p>' +
+      '<p>2. לחץ על <b>Set up a Plex Tuner</b> ובחר <b>M3U Tuner</b>.</p>' +
+      '<div style="background:rgba(255,255,255,0.07);padding:10px 14px;border-radius:10px;margin:8px 0;word-break:break-all;user-select:all;font-family:monospace;font-size:13px;color:var(--t-pri);">' +
+      esc(m3u) + '</div>' +
+      '<p>3. בלשונית מדריך השידורים (XMLTV Guide), הדבק את הכתובת:</p>' +
+      '<div style="background:rgba(255,255,255,0.07);padding:10px 14px;border-radius:10px;margin:8px 0;word-break:break-all;user-select:all;font-family:monospace;font-size:13px;color:var(--t-pri);">' +
+      esc(xmltv) + '</div>' +
+      '<p>4. פתח את אפליקציית Plex בטלוויזיית ה-LG שלך (מחנות LG Content Store) – כל הערוצים, לוח השידורים והפוסטרים יופיעו אוטומטית!</p>' +
+      '</div>';
+    openDialog({
+      ico: '📡',
+      title: 'חיבור ל-Plex ול-DLNA',
+      html: html,
+      buttons: [
+        { label: 'הבנתי, תודה', primary: true }
+      ]
+    });
+  }
+'''
 
-new_card_click = """        if (tvProfileManaging) {
-          openEditProfileDialog(p);
-        } else {
-          applyTvProfileData(p, true);
-          saveTvProfiles();
-          closeTvProfiles();
-          // Immediately enter playback / TV guide
-          if (TVUI) {
-            var targetCh = null;
-            if (p.recents && p.recents.length) {
-              for (var ri = 0; ri < p.recents.length; ri++) {
-                var cIdx = indexInAll(p.recents[ri]);
-                if (cIdx !== -1 && (!p.isKids || isKidsCh(state.all[cIdx]))) {
-                  targetCh = state.all[cIdx];
-                  break;
-                }
-              }
-            }
-            if (!targetCh && state.visible && state.visible.length) targetCh = state.visible[0];
-            if (!targetCh && state.all && state.all.length) {
-              targetCh = p.isKids ? state.all.find(isKidsCh) : state.all[0];
-            }
-            if (targetCh) {
-              playChannel(targetCh);
-            }
-          }
-        }"""
+# Insert showPlexModal right before showGetApp
+get_app_idx = c.find('  function showGetApp(ch)')
+assert get_app_idx != -1, 'showGetApp(ch) not found'
+c = c[:get_app_idx] + plex_modal_code + '\n' + c[get_app_idx:]
 
-if old_card_click in code:
-    code = code.replace(old_card_click, new_card_click, 1)
-    print("Patched card click in renderTvProfilesScreen successfully!")
-else:
-    print("Could not find old_card_click!")
+with open(app_js, 'w', encoding='utf-8') as f:
+    f.write(c)
 
-# 5. Patch atvRowsData for pure kids rows
-old_atv_rows_data = """  function atvRowsData() {
-    if (atv.search) {
-      var q = atv.query.trim().toLowerCase();
-      var res = !q ? [] : state.all.filter(function (c) {
-        return c.name.toLowerCase().indexOf(q) !== -1 || String(c.number) === q ||
-          (c.countryHe && c.countryHe.indexOf(q) !== -1) || (c.title && c.title.toLowerCase().indexOf(q) !== -1);
-      });
-      return [{ id: 'search', title: q ? 'תוצאות לחיפוש "' + atv.query.trim() + '" · ' + res.length : 'הקלידו שם ערוץ, מדינה או מספר', list: res }];
-    }
-    var buckets = {};"""
-
-new_atv_rows_data = """  function atvRowsData() {
-    if (atv.search) {
-      var q = atv.query.trim().toLowerCase();
-      var res = !q ? [] : state.all.filter(function (c) {
-        if (S.kids && !isKidsCh(c)) return false;
-        return c.name.toLowerCase().indexOf(q) !== -1 || String(c.number) === q ||
-          (c.countryHe && c.countryHe.indexOf(q) !== -1) || (c.title && c.title.toLowerCase().indexOf(q) !== -1);
-      });
-      return [{ id: 'search', title: q ? 'תוצאות לחיפוש ילדים "' + atv.query.trim() + '" · ' + res.length : 'הקלידו שם ערוץ ילדים', list: res }];
-    }
-
-    if (S.kids) {
-      var kidsAll = state.all.filter(isKidsCh);
-      var kidsHe = kidsAll.filter(function (c) { return c.country === 'IL' || c.lang === 'he'; });
-      var kidsWorld = kidsAll.filter(function (c) { return c.country !== 'IL' && c.lang !== 'he'; });
-      var kidsMine = [];
-      var seenK = {};
-      (state.recents || []).concat(state.favorites || []).forEach(function (id) {
-        var idx = indexInAll(id);
-        if (idx !== -1 && isKidsCh(state.all[idx]) && !seenK[id]) {
-          seenK[id] = 1;
-          kidsMine.push(state.all[idx]);
-        }
-      });
-      var kRows = [];
-      if (kidsMine.length) kRows.push({ id: 'mine', title: '🧸 מועדפים לאחרונה (ילדים)', list: kidsMine });
-      if (kidsHe.length) kRows.push({ id: 'kids_he', title: '🇮🇱 ערוצי ילדים ונוער בעברית', list: kidsHe });
-      if (kidsWorld.length) kRows.push({ id: 'kids_world', title: '🌍 ערוצי ילדים וסדרות מצוירות מהעולם', list: kidsWorld });
-      return kRows;
-    }
-
-    var buckets = {};"""
-
-if old_atv_rows_data in code:
-    code = code.replace(old_atv_rows_data, new_atv_rows_data, 1)
-    print("Patched atvRowsData successfully!")
-else:
-    print("Could not find old_atv_rows_data!")
-
-# 6. Patch onFatal for broadcast standby apology slide
-old_on_fatal = """    var insecure = location.protocol === 'https:' && /^http:/i.test(streamUrl(ch));
-    el.perrorTitle.textContent = insecure ? 'הערוץ פועל באפליקציה' : 'השידור לא זמין כרגע';
-    el.perrorDesc.textContent = insecure
-      ? 'הערוץ משדר ב-HTTP, ודפדפנים חוסמים שידור כזה מאתר מאובטח. באפליקציות (טלוויזיה, אנדרואיד, מחשב) הוא פועל.'
-      : 'לא הצלחנו להתחבר ל"' + ch.name + '" (' + (reason || 'שגיאת רשת') + '). ייתכן שהשידור כבוי זמנית – נסו שוב או עברו ערוץ.';"""
-
-new_on_fatal = """    var insecure = location.protocol === 'https:' && /^http:/i.test(streamUrl(ch));
-    var chLogo = $('perror-ch-logo');
-    if (chLogo) {
-      chLogo.src = ch.logo || 'icon.png';
-      chLogo.onerror = function () { chLogo.src = 'icon.png'; };
-    }
-    el.perrorTitle.textContent = insecure ? 'הערוץ פועל באפליקציה' : 'סליחה, תקלה זמנית בשידור';
-    el.perrorDesc.textContent = insecure
-      ? 'הערוץ משדר ב-HTTP, ודפדפנים חוסמים שידור כזה מאתר מאובטח. באפליקציות טלוויזיה, אנדרואיד ומחשב השידור פועל תקין.'
-      : 'אנו מתנצלים על אי הנוחות. השידור בערוץ "' + ch.name + '" אינו זמין כעת. צוות הערוץ פועל להחזרת השידור בהקדם.';"""
-
-if old_on_fatal in code:
-    code = code.replace(old_on_fatal, new_on_fatal, 1)
-    print("Patched onFatal successfully!")
-else:
-    print("Could not find old_on_fatal!")
-
-with open('app.js', 'w', encoding='utf-8', newline='\n') as f:
-    f.write(code)
-print("Finished patching app.js!")
+print('Successfully patched app.js')
