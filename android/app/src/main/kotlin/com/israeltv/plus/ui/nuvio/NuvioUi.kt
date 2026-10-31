@@ -3,9 +3,8 @@ package com.israeltv.plus.ui.nuvio
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import com.israeltv.plus.BuildConfig
 
-/** Switch between the Nuvio UI and the legacy feed while the rebuild is in progress: on in debug builds, off in release. */
+/** Fully integrated Nuvio UI architecture (always enabled across both Debug and Release builds). */
 object NuvioUi {
-    var enabled by mutableStateOf(BuildConfig.DEBUG)
+    var enabled by mutableStateOf(true)
 }

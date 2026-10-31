@@ -15,6 +15,7 @@ WORK = os.path.join(ROOT, "..", "israel-tv-plus-work")
 # fast = the channel's own free (ad-supported) stream on a FAST platform, restream = a third party re-broadcasting it
 HOSTS = {
     "stream.mcquack.net": ("mcquack.net – אתר ממסר (restream) של צד שלישי", "restream"),
+    "b84203c4.ottrast.com": ("פרטנר TV וסלקום – שרתי שידור ישראליים", "official"),
     "88.212.15.17": ("שרת של Antik (סלובקיה), נתיבי test_", "restream"),
     "dash3.antik.sk": ("Antik Telecom (סלובקיה), נתיבי test", "restream"),
     "176.118.197.101": ("שרת IP ללא שם (1HD)", "restream"),
