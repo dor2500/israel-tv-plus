@@ -1693,8 +1693,15 @@
       '<h1 class="atv-title">' + esc(ch.name) + '</h1><div class="atv-tags">' + tags + '</div>' +
       (ch.desc ? '<p class="atv-desc">' + esc(ch.desc) + '</p>' : '') +
       (S.showSource ? '<p class="atv-src">' + esc(sourceLine(ch)) + '</p>' : '');
-    setLogo(target.querySelector('img'), target.querySelector('.mono'), ch);
-    target.className = 'atv-meta in';
+    var logoImg = target.querySelector('img'), logoMono = target.querySelector('.mono');
+    setLogo(logoImg, logoMono, ch);
+    // the logo stands in for the name (Nuvio hero); a channel without one, or whose logo fails, shows the name instead
+    var nextLogo = logoImg.onerror;
+    logoImg.onerror = function () {
+      nextLogo();
+      if (!logoMono.classList.contains('hidden') && target.contains(logoImg)) target.classList.remove('has-logo');
+    };
+    target.className = 'atv-meta in' + (ch.logo ? ' has-logo' : '');
     other.className = 'atv-meta';
     // the stage: a soft wash in the channel's colours, cross-faded
     var bd = atv.bdFlip ? $('atv-bd-b') : $('atv-bd-a'), bo = atv.bdFlip ? $('atv-bd-a') : $('atv-bd-b');
