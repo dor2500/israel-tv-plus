@@ -43,3 +43,4 @@ with open("version.json", "w", encoding="utf-8") as f:
     json.dump(vdata, f, ensure_ascii=False, indent=2)
     f.write("\n")
 print(f"Updated version.json for {VERSION}")
+
