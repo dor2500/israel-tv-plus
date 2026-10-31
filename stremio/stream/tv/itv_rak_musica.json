@@ -1,1 +1,12 @@
-{"streams":[{"name":"ישראל TV+\nLIVE","title":"רק מוזיקה (Rak Musica)\n📡 play.radioking.io\n⚠️ ממסר צד שלישי","url":"https://play.radioking.io/rak-musica/670240","behaviorHints":{"bingeGroup":"itv-live"}}]}
+{
+  "streams": [
+    {
+      "name": "ישראל TV+\n[FHD ראשי]",
+      "title": "רק מוזיקה (Rak Musica)\n📡 play.radioking.io\n⚠️ ממסר צד שלישי",
+      "url": "https://play.radioking.io/rak-musica/670240",
+      "behaviorHints": {
+        "bingeGroup": "itv-live"
+      }
+    }
+  ]
+}

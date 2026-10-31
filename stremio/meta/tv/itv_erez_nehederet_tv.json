@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_erez_nehederet_tv",
+    "type": "tv",
+    "name": "17. ערוץ ארץ נהדרת 24/7 HD",
+    "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/keshet12.png",
+    "posterShape": "landscape",
+    "logo": "https://dor2500.github.io/israel-tv-plus/assets/logos/keshet12.png",
+    "background": "https://dor2500.github.io/israel-tv-plus/assets/logos/keshet12.png",
+    "description": "כל העונות, החיקויים, המערכונים הבלתי נשכחים והדמויות האהובות מתולדות ארץ נהדרת בשידור רציף 24/7 מבית קשת 12 ו-FreeTV.\n\n📡 מקור השידור:",
+    "genres": [
+      "ערוצי ישראל - שידור חי",
+      "ישראל"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "ישראל"
+  }
+}

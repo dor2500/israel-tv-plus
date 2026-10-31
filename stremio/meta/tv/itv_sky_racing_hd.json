@@ -1,1 +1,18 @@
-{"meta":{"id":"itv_sky_racing_hd","type":"tv","name":"386. ערוץ מרוצים Sky Racing 1 HD 🇦🇺","poster":"https://i.imgur.com/Hf0EiaW.png","posterShape":"landscape","logo":"https://i.imgur.com/Hf0EiaW.png","background":"https://i.imgur.com/Hf0EiaW.png","description":"ערוץ המרוצים המקצועי Sky Racing לשידורי מרוצים חיים\n\n📡 מקור השידור: 636ffd31f0e12.streamlock.net\n⚠️ ממסר צד שלישי","genres":["ספורט","אוסטרליה"],"releaseInfo":"LIVE","country":"אוסטרליה"}}
+{
+  "meta": {
+    "id": "itv_sky_racing_hd",
+    "type": "tv",
+    "name": "420. ערוץ מרוצים Sky Racing 1 HD",
+    "poster": "https://i.imgur.com/Hf0EiaW.png",
+    "posterShape": "landscape",
+    "logo": "https://i.imgur.com/Hf0EiaW.png",
+    "background": "https://i.imgur.com/Hf0EiaW.png",
+    "description": "ערוץ המרוצים המקצועי Sky Racing לשידורי מרוצים חיים\n\n📡 מקור השידור: 636ffd31f0e12.streamlock.net\n⚠️ ממסר צד שלישי",
+    "genres": [
+      "ספורט",
+      "אוסטרליה"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "אוסטרליה"
+  }
+}

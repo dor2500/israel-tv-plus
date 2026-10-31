@@ -1,55 +1,46 @@
 {
-  "version": "4.8.1",
-  "code": 202610311644,
-  "app": 581,
+  "version": "4.8.2",
+  "code": 202610311711,
+  "app": 582,
   "shell": 3,
   "date": "2026-10-31",
-  "notes": [
-    "תיקון ערוץ 64 בשלט: הערוץ הוגדר במדויק כ-\"ערוץ ילדותי ישראלי HD (FreeTV Yalduti)\" עם שידור חי ויציב של שירי וסדרות ילדות ישראלית 24/7 ללא הפסקה, כולל לוגו רשמי מתאים.",
-    "תיקון מלא של מנגנון העדכונים באפליקציה (Android TV + Mobile): שילוב FileProvider מובנה לפתיחה מיידית וחלקה של חלון ההתקנה של אנדרואיד בסיום ההורדה, פתרון לחסימות הרשאות בגרסאות אנדרואיד מתקדמות ופתיחת מודאל העדכונים ישירות.",
-    "אכיפה קשיחה ומוחלטת של מצב ילדים (100% תוכן ילדים בלבד):",
-    "סינון קפדני ובלעדי המציג אך ורק 47 ערוצי ילדים, נוער, אנימציה ורדיו ילדים – ללא אף ערוץ חדשות, ספורט, פוליטיקה, דרמה, לייפסטייל או רדיו למבוגרים.",
-    "הפעלת buildChannels() אוטומטית בעת מעבר לפרופיל ילדים בטלוויזיה, כך שכל רשימת הערוצים, מדפי התוכן, החיפוש והדפדוף בשלט מוגבלים אך ורק לתכני ילדים.",
-    "סנכרון שידור חי בזמן אמת (Low-Latency) מול הטלפון הנייד.",
-    "שקופית שידור מעוצבת בעת תקלה (\"סליחה, תקלה זמנית בשידור\").",
-    "מעבר מיידי לצפייה בלחיצה על כרטיס פרופיל במסך \"מי צופה?\" בטלוויזיה."
-  ],
+  "notes": [],
   "native": {
     "android": {
-      "version": "4.8.1",
-      "app": 581,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.1/IsraelTVPlus-android.apk"
+      "version": "4.8.2",
+      "app": 582,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.2/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "4.8.1",
-      "app": 581,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.1/IsraelTVPlus-windows-setup.exe"
+      "version": "4.8.2",
+      "app": 582,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.2/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "4.8.1",
-      "app": 581,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.1/com.israeltv.plus_all.ipk",
+      "version": "4.8.2",
+      "app": 582,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.2/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "4.8.1",
-      "app": 581,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.1/IsraelTVPlus-tizen-project.zip"
+      "version": "4.8.2",
+      "app": 582,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.2/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "4.8.1",
-      "app": 581,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.1/IsraelTVPlus-macos-arm64.zip"
+      "version": "4.8.2",
+      "app": 582,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.2/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "4.8.1",
-      "app": 581,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.1/IsraelTVPlus-linux-x64.zip"
+      "version": "4.8.2",
+      "app": 582,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.2/IsraelTVPlus-linux-x64.zip"
     },
     "wear": {
-      "version": "4.8.1",
-      "app": 1000481,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.1/IsraelTVPlus-wearos.apk"
+      "version": "4.8.2",
+      "app": 1000482,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.2/IsraelTVPlus-wearos.apk"
     }
   }
 }

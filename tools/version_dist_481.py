@@ -75,3 +75,4 @@ with open(f"{dist_dir}/SHA256SUMS.txt", "w", encoding="utf-8") as f:
     f.write("\n".join(sums) + "\n")
 
 print(f"Generated {dist_dir}/SHA256SUMS.txt with {len(sums)} files.")
+

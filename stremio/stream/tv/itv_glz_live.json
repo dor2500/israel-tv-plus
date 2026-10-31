@@ -1,1 +1,12 @@
-{"streams":[{"name":"ישראל TV+\nLIVE","title":"גלי צה\"ל\n📡 גלי צה\"ל / גלגלצ – CDN רשמי (Bynet)\n✅ שידור רשמי","url":"https://glzwizzlv.bynetcdn.com/glz_mp3","behaviorHints":{"bingeGroup":"itv-live"}}]}
+{
+  "streams": [
+    {
+      "name": "ישראל TV+\n[FHD ראשי]",
+      "title": "גלי צה\"ל\n📡 גלי צה\"ל / גלגלצ – CDN רשמי (Bynet)\n✅ שידור רשמי ישיר",
+      "url": "https://glzwizzlv.bynetcdn.com/glz_mp3",
+      "behaviorHints": {
+        "bingeGroup": "itv-live"
+      }
+    }
+  ]
+}

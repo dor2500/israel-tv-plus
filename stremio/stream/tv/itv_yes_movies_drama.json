@@ -1,1 +1,13 @@
-{"streams":[{"name":"ישראל TV+\nLIVE","title":"yes קולנוע דרמה FHD (yes Movies Drama)\n📡 פרטנר TV וסלקום – שרתי שידור ישראליים\n✅ שידור רשמי","url":"http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12272/index.m3u8","behaviorHints":{"notWebReady":true,"bingeGroup":"itv-live"}}]}
+{
+  "streams": [
+    {
+      "name": "ישראל TV+\n[FHD ראשי]",
+      "title": "yes קולנוע דרמה FHD (yes Movies Drama)\n📡 פרטנר TV וסלקום – שרתי שידור ישראליים\n✅ שידור רשמי ישיר",
+      "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12272/index.m3u8",
+      "behaviorHints": {
+        "notWebReady": true,
+        "bingeGroup": "itv-live"
+      }
+    }
+  ]
+}

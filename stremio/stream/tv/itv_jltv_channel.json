@@ -1,1 +1,12 @@
-{"streams":[{"name":"ישראל TV+\nLIVE","title":"JLTV טלוויזיה יהודית HD\n📡 JLTV – Ottera / Xumo FAST\n✅ ערוץ FAST רשמי","url":"https://jlt-jltv-xumo.otteravision.com/jlt/jltv/jltv.m3u8","behaviorHints":{"bingeGroup":"itv-live"}}]}
+{
+  "streams": [
+    {
+      "name": "ישראל TV+\n[FHD ראשי]",
+      "title": "JLTV טלוויזיה יהודית HD\n📡 JLTV – Ottera / Xumo FAST\n✅ ערוץ FAST רשמי",
+      "url": "https://jlt-jltv-xumo.otteravision.com/jlt/jltv/jltv.m3u8",
+      "behaviorHints": {
+        "bingeGroup": "itv-live"
+      }
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_one_doco",
+    "type": "tv",
+    "name": "49. ערוץ ONE דוקו ספורט HD",
+    "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/one_sport.svg",
+    "posterShape": "landscape",
+    "logo": "https://dor2500.github.io/israel-tv-plus/assets/logos/one_sport.svg",
+    "background": "https://dor2500.github.io/israel-tv-plus/assets/logos/one_sport.svg",
+    "description": "סרטי דוקומנטרי וסיפורי עומק של גדולי הספורטאים, מאחורי הקלעים של קבוצות ליגת העל ועולם הספורט הבינלאומי.\n\n📡 מקור השידור:",
+    "genres": [
+      "ספורט",
+      "ישראל"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "ישראל"
+  }
+}

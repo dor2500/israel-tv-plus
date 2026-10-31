@@ -1,1 +1,12 @@
-{"streams":[{"name":"ישראל TV+\nLIVE","title":"beIN SPORTS XTRA FHD\n📡 bein-xtra-bein.amagi.tv\n⚠️ ממסר צד שלישי","url":"https://bein-xtra-bein.amagi.tv/playlist.m3u8","behaviorHints":{"bingeGroup":"itv-live"}}]}
+{
+  "streams": [
+    {
+      "name": "ישראל TV+\n[FHD ראשי]",
+      "title": "beIN SPORTS XTRA FHD\n📡 bein-xtra-bein.amagi.tv\n⚠️ ממסר צד שלישי",
+      "url": "https://bein-xtra-bein.amagi.tv/playlist.m3u8",
+      "behaviorHints": {
+        "bingeGroup": "itv-live"
+      }
+    }
+  ]
+}

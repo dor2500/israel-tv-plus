@@ -1,1 +1,12 @@
-{"streams":[{"name":"ישראל TV+\nLIVE","title":"רדיו סהר\n📡 eCast – שרת התחנה\n✅ שידור רשמי","url":"https://live.ecast.co.il/stream/sahar/stream","behaviorHints":{"bingeGroup":"itv-live"}}]}
+{
+  "streams": [
+    {
+      "name": "ישראל TV+\n[FHD ראשי]",
+      "title": "רדיו סהר\n📡 eCast – שרת התחנה\n✅ שידור רשמי ישיר",
+      "url": "https://live.ecast.co.il/stream/sahar/stream",
+      "behaviorHints": {
+        "bingeGroup": "itv-live"
+      }
+    }
+  ]
+}

@@ -1,1 +1,18 @@
-{"meta":{"id":"itv_kuskus_food_hd","type":"tv","name":"178. Kus-Kus Culinary TV HD – ערוץ קוסקוס אוכל ומתכונים","poster":"https://dor2500.github.io/israel-tv-plus/assets/logos/kuskus_food_hd.png","posterShape":"landscape","logo":"https://dor2500.github.io/israel-tv-plus/assets/logos/kuskus_food_hd.png","background":"https://dor2500.github.io/israel-tv-plus/assets/logos/kuskus_food_hd.png","description":"ערוץ הבישול והמתכונים Kus-Kus TV HD – תוכניות בישול ביתי ושפים 24/7\n\n📡 מקור השידור: פרטנר TV וסלקום – שרתי שידור ישראליים\n✅ שידור רשמי","genres":["אוכל ובישול","בינלאומי"],"releaseInfo":"LIVE","country":"בינלאומי"}}
+{
+  "meta": {
+    "id": "itv_kuskus_food_hd",
+    "type": "tv",
+    "name": "212. Kus-Kus Culinary TV HD – ערוץ קוסקוס אוכל ומתכונים",
+    "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/kuskus_food_hd.png",
+    "posterShape": "landscape",
+    "logo": "https://dor2500.github.io/israel-tv-plus/assets/logos/kuskus_food_hd.png",
+    "background": "https://dor2500.github.io/israel-tv-plus/assets/logos/kuskus_food_hd.png",
+    "description": "ערוץ הבישול והמתכונים Kus-Kus TV HD – תוכניות בישול ביתי ושפים 24/7\n\n📡 מקור השידור: פרטנר TV וסלקום – שרתי שידור ישראליים\n✅ שידור רשמי ישיר",
+    "genres": [
+      "אוכל ובישול",
+      "עולם"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "עולם"
+  }
+}

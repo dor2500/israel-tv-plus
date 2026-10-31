@@ -1,1 +1,12 @@
-{"streams":[{"name":"ישראל TV+\nLIVE","title":"101FM רדיו ירושלים\n📡 StreamGates – ה-CDN של התחנה\n✅ שידור רשמי","url":"https://radio.streamgates.net/stream/101fm","behaviorHints":{"bingeGroup":"itv-live"}}]}
+{
+  "streams": [
+    {
+      "name": "ישראל TV+\n[FHD ראשי]",
+      "title": "101FM רדיו ירושלים\n📡 StreamGates – ה-CDN של התחנה\n✅ שידור רשמי ישיר",
+      "url": "https://radio.streamgates.net/stream/101fm",
+      "behaviorHints": {
+        "bingeGroup": "itv-live"
+      }
+    }
+  ]
+}

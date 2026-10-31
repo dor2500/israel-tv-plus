@@ -1142,8 +1142,12 @@
           applyTvProfileData(p, true);
           saveTvProfiles();
           closeTvProfiles();
-          // Immediately enter playback / TV guide
+          // Immediately enter playback / TV guide like Netflix
           if (TVUI) {
+            atvBuild();
+            if (atv.rows && atv.rows.length) {
+              atvFocus(0, 0);
+            }
             var targetCh = null;
             if (p.recents && p.recents.length) {
               for (var ri = 0; ri < p.recents.length; ri++) {
@@ -1159,7 +1163,13 @@
               targetCh = p.isKids ? state.all.find(isKidsCh) : state.all[0];
             }
             if (targetCh) {
-              playChannel(targetCh);
+              var pIdx = indexInList(targetCh.id);
+              if (pIdx !== -1) playIndex(pIdx);
+            }
+          } else {
+            if (state.visible && state.visible.length) {
+              focusGrid(0);
+              playIndex(0);
             }
           }
         }

@@ -1,1 +1,18 @@
-{"meta":{"id":"itv_bollywood_hd","type":"tv","name":"143. ערוץ בוליווד סרטים הודיים HD","poster":"https://dor2500.github.io/israel-tv-plus/assets/logos/bollywood_hd.png","posterShape":"landscape","logo":"https://dor2500.github.io/israel-tv-plus/assets/logos/bollywood_hd.png","background":"https://dor2500.github.io/israel-tv-plus/assets/logos/bollywood_hd.png","description":"ערוץ בוליווד HD – שוברי קופות וסרטים הודיים חדשים עם כתוביות בעברית\n\n📡 מקור השידור: פרטנר TV וסלקום – שרתי שידור ישראליים\n✅ שידור רשמי","genres":["סרטים וסדרות","ישראל"],"releaseInfo":"LIVE","country":"ישראל"}}
+{
+  "meta": {
+    "id": "itv_bollywood_hd",
+    "type": "tv",
+    "name": "177. ערוץ בוליווד סרטים הודיים HD",
+    "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/bollywood_hd.png",
+    "posterShape": "landscape",
+    "logo": "https://dor2500.github.io/israel-tv-plus/assets/logos/bollywood_hd.png",
+    "background": "https://dor2500.github.io/israel-tv-plus/assets/logos/bollywood_hd.png",
+    "description": "ערוץ בוליווד HD – שוברי קופות וסרטים הודיים חדשים עם כתוביות בעברית\n\n📡 מקור השידור: פרטנר TV וסלקום – שרתי שידור ישראליים\n✅ שידור רשמי ישיר",
+    "genres": [
+      "סרטים וסדרות",
+      "ישראל"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "ישראל"
+  }
+}

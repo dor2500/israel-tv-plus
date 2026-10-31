@@ -1,1 +1,12 @@
-{"streams":[{"name":"ישראל TV+\nLIVE","title":"רדיו נהריה\n📡 רדיו נהריה – שרת התחנה\n✅ שידור רשמי","url":"https://cast.radionahariya.com:8443/main.mp3","behaviorHints":{"bingeGroup":"itv-live"}}]}
+{
+  "streams": [
+    {
+      "name": "ישראל TV+\n[FHD ראשי]",
+      "title": "רדיו נהריה\n📡 רדיו נהריה – שרת התחנה\n✅ שידור רשמי ישיר",
+      "url": "https://cast.radionahariya.com:8443/main.mp3",
+      "behaviorHints": {
+        "bingeGroup": "itv-live"
+      }
+    }
+  ]
+}

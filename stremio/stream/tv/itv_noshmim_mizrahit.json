@@ -1,1 +1,13 @@
-{"streams":[{"name":"ישראל TV+\nLIVE","title":"נושמים מזרחית\n📡 www.rs.mizrahit.fm\n⚠️ ממסר צד שלישי","url":"http://www.rs.mizrahit.fm:7777/","behaviorHints":{"notWebReady":true,"bingeGroup":"itv-live"}}]}
+{
+  "streams": [
+    {
+      "name": "ישראל TV+\n[FHD ראשי]",
+      "title": "נושמים מזרחית\n📡 www.rs.mizrahit.fm\n⚠️ ממסר צד שלישי",
+      "url": "http://www.rs.mizrahit.fm:7777/",
+      "behaviorHints": {
+        "notWebReady": true,
+        "bingeGroup": "itv-live"
+      }
+    }
+  ]
+}

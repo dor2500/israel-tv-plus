@@ -244,7 +244,6 @@ window.ITV_UI = (function (I) {
       '<div class="net-prof-actions" id="tv-profiles-actions">' +
         '<button class="btn net-prof-act-btn" id="btn-tv-prof-manage">ניהול פרופילים</button>' +
         '<button class="btn net-prof-act-btn hidden" id="btn-tv-prof-done">סיום ניהול</button>' +
-        '<button class="btn net-prof-act-btn primary" id="btn-tv-prof-close">המשך לצפייה</button>' +
       '</div>' +
     '</div>' +
   '</div>' +

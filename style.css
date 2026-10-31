@@ -1945,3 +1945,15 @@ body:not(.phone):not(.anim-off) #menu .menu-box { animation: tv-panel .42s cubic
 .perror-actions { display: flex; flex-wrap: wrap; gap: 1.2rem; justify-content: center; }
 .perror-actions .btn { min-height: 5rem; padding: 0 2.8rem; font-size: 1.6rem; border-radius: 2.5rem; transition: transform .2s ease, box-shadow .2s ease; }
 .perror-actions .btn:focus, .perror-actions .btn.focused { transform: scale(1.06); box-shadow: 0 0 25px rgba(255,255,255,0.4); outline: 3px solid #fff; }
+
+/* ------------------------------------------------------------------ Nuvio Micro-Interactions & Glass Polish */
+.card:active .card-logo, .atv-card:active, .net-prof-card:active {
+  transform: scale(0.97) !important;
+  transition: transform .12s cubic-bezier(0.2, 0, 0, 1) !important;
+}
+.card-logo, .atv-card {
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.08);
+}
+.net-prof-card.focused, .net-prof-card:hover {
+  box-shadow: 0 1.2rem 3.5rem rgba(0, 0, 0, .8), 0 0 30px rgba(99, 102, 241, .4), inset 0 1px 1px rgba(255, 255, 255, 0.2);
+}
