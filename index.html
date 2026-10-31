@@ -20,6 +20,17 @@
   <script src="assets/hls.min.js"></script>
 </head>
 <body class="oled">
+  <svg style="position:absolute;width:0;height:0;overflow:hidden;" aria-hidden="true">
+    <filter id="filter-4k-upscale" color-interpolation-filters="sRGB">
+      <feConvolveMatrix order="3" preserveAlpha="true" kernelMatrix="0 -0.55 0 -0.55 3.2 -0.55 0 -0.55 0"/>
+      <feColorMatrix type="matrix" values="
+        1.03 0    0    0   -0.01
+        0    1.03 0    0   -0.01
+        0    0    1.03 0   -0.01
+        0    0    0    1    0"/>
+    </filter>
+  </svg>
+
   <div id="root"><div id="boot"><img src="icon.png" alt=""><div>ישראל TV+</div></div></div>
   <script src="boot.js"></script>
 </body>

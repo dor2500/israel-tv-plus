@@ -30,3 +30,9 @@ google-services.json
 .claude/worktrees/
 node_modules/
 www/
+
+dist47/
+dist48/
+.agents/
+.claude/
+

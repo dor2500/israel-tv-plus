@@ -86,7 +86,7 @@ window.ITVGuide = function (api) {
   // A programme's own picture when the feed has one, otherwise the channel logo on a dark card.
   function poster(ch, p) {
     var base = '<div class="tv-poster-logo">' + logo(ch) + '</div>';
-    return p && p[4] ? base + '<img class="tv-poster" alt="" src="' + esc(p[4]) + '" onerror="this.style.display=\'none\'">' : base;
+    return p && p[4] ? base + '<img class="tv-poster" referrerpolicy="no-referrer" alt="" src="' + esc(p[4]) + '" onerror="this.style.display=\'none\'">' : base;
   }
   function zapList() {
     var s = api.state, list = api.S.zap === 'all' ? s.all : s.list;
@@ -113,7 +113,7 @@ window.ITVGuide = function (api) {
     api.osdEl.appendChild(box);
     var brand = document.createElement('div');
     brand.className = 'tv-brand';
-    brand.innerHTML = '<img src="icon.png" alt=""><div class="tv-clock"></div>';
+    brand.innerHTML = '<div class="tv-clock"></div>';
     api.osdEl.appendChild(brand);
     ['strip', 'peek', 'big', 'bar', 'timing', 'opts', 'live', 'next', 'small', 'go'].forEach(function (k) { o[k] = document.getElementById('tvo-' + (k === 'timing' ? 'timing' : k)); });
     o.nextTime = document.getElementById('tvo-next-time');
@@ -274,7 +274,8 @@ window.ITVGuide = function (api) {
       return true;
     }
     if (osd.zone === 'opts') {
-      if (code === 38) { osd.zone = 'big'; renderOsd(); }
+      if (code === 38) { osd.zone = 'big'; renderOsd(); return true; }
+      if (code === 40) return false;          // Down from options zaps channel down!
       return true;
     }
     var up = api.S.upNext ? 1 : -1;
@@ -293,7 +294,7 @@ window.ITVGuide = function (api) {
       '<div id="tvg-body"><div id="tvg-rail"></div><div id="tvg-grid"></div></div>' +
       '<div id="tvg-empty" class="hidden">טוען את לוח השידורים…</div>' +
       '<div id="tvg-detail"><div id="tvg-thumb"></div><div id="tvg-txt"><div id="tvg-name" class="tv-clip"></div><div id="tvg-time"></div><div id="tvg-desc"></div><div id="tvg-cta"></div></div></div>' +
-      '<div class="tv-brand"><img src="icon.png" alt=""><div class="tv-clock"></div></div>';
+      '<div class="tv-brand"><div class="tv-clock"></div></div>';
     document.getElementById('root').appendChild(box);
     gui.box = box;
     ['ruler', 'rail', 'grid', 'empty', 'detail', 'thumb', 'name', 'time', 'desc', 'cta', 'day'].forEach(function (k) { gui[k] = document.getElementById('tvg-' + k); });
