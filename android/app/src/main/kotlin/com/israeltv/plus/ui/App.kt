@@ -174,7 +174,7 @@ fun ItvApp(
                                 onPicked = { feed.reset(); page = Page.Feed },
                                 onClose = { page = Page.Feed },
                             )
-                            Page.Feed -> if (NuvioUi.enabled) NuvioShell(store, onPlay) else Feed(
+                            Page.Feed -> if (NuvioUi.enabled) NuvioShell(store, prefs, onPlay) else Feed(
                                 data, prefs, updater, feed, haze, logo, onPlay,
                                 onOpenMultiView = {
                                     val all = data?.channels.orEmpty()

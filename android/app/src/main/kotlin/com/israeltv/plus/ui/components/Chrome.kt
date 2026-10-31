@@ -40,6 +40,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -361,6 +362,7 @@ fun NuvioFloatingNavbar(
         // Backdrop blur (Haze) under a translucent tonal fill; a plain tint where no blur source exists
         Box(
             Modifier
+                .widthIn(max = 400.dp)
                 .frostedGlass(CircleShape, MaterialTheme.colorScheme.surfaceContainer.copy(alpha = 0.78f), blur = 14.dp, border = false)
                 .border(BorderStroke(1.dp, Color.White.copy(alpha = 0.15f)), CircleShape)
         ) {
@@ -375,18 +377,25 @@ fun NuvioFloatingNavbar(
                     val isSelected = currentRoute == item.route
                     val containerColor by animateColorAsState(
                         targetValue = if (isSelected) MaterialTheme.colorScheme.secondaryContainer else Color.Transparent,
+                        animationSpec = spring(stiffness = Spring.StiffnessMediumLow),
                         label = "pill_container"
                     )
                     val contentColor by animateColorAsState(
                         targetValue = if (isSelected) MaterialTheme.colorScheme.onSecondaryContainer else MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.6f),
+                        animationSpec = spring(stiffness = Spring.StiffnessMediumLow),
                         label = "pill_content"
                     )
 
+                    val interaction = remember { MutableInteractionSource() }
                     Box(
                         modifier = Modifier
+                            .height(44.dp)
                             .clip(CircleShape)
                             .background(containerColor)
-                            .clickable {
+                            .clickable(
+                                interactionSource = interaction,
+                                indication = null,
+                            ) {
                                 haptic.performHapticFeedback(HapticFeedbackType.SegmentTick)
                                 onNavigate(item.route)
                             }
@@ -405,8 +414,12 @@ fun NuvioFloatingNavbar(
                             )
                             AnimatedVisibility(
                                 visible = isSelected && !collapsed,
-                                enter = fadeIn() + expandHorizontally(),
-                                exit = fadeOut() + shrinkHorizontally()
+                                enter = fadeIn(tween(180)) + expandHorizontally(
+                                    spring(dampingRatio = Spring.DampingRatioLowBouncy, stiffness = Spring.StiffnessMediumLow)
+                                ),
+                                exit = fadeOut(tween(140)) + shrinkHorizontally(
+                                    spring(stiffness = Spring.StiffnessMedium)
+                                )
                             ) {
                                 Text(
                                     text = item.label,
