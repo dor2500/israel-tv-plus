@@ -449,6 +449,10 @@
     document.documentElement.style.fontSize = (base * (compact || PHONE ? 1 : S.uiScale)) + 'px';
     toggleClass(document.body, 'compact', compact);
     toggleClass(document.body, 'phone', PHONE);
+    var scaled = !compact && !PHONE;
+    toggleClass(document.body, 'ui-large', scaled && S.uiScale >= 1.15);
+    toggleClass(document.body, 'ui-xl', scaled && S.uiScale === 1.3);
+    toggleClass(document.body, 'ui-xxl', scaled && S.uiScale >= 1.5);
     TVUI = !PHONE;
     toggleClass(document.body, 'tvui', TVUI);
     var cols = S.cols || (PHONE ? (w < 600 ? 2 : w < 900 ? 3 : 4) : compact ? (w < 600 ? 2 : 3) : clamp(Math.round(5 / S.uiScale), 3, 7));
