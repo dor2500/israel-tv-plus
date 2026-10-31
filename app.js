@@ -49,7 +49,7 @@
     pic: 'off', aspect: 'fit', sharpen: false, quality: 'max', latency: 'stable', osdSec: 5, osdClock: true,
     retry: true, zap: 'category', upNext: true, upNextV2: true,
     remote: 'auto', keyRed: 'menu', keyGreen: 'aspect', keyYellow: 'fav', keyBlue: 'dub', longOk: 'menu', numWait: 1.2,
-    saver: 2, kids: false, kidsPin: '', autoUpdate: true, liveUpdates: true, avatar: '1f60e',
+    saver: 2, kids: false, kidsPin: '', autoUpdate: true, liveUpdates: true, avatar: '1f60e', profileOnStart: false,
     lastId: '', lastCat: 'ALL', seenColors: false
   };
   var S = loadSettings();
@@ -967,6 +967,363 @@
     card.addEventListener('click', function (e) { e.stopPropagation(); card.onclickAction(); });
   }
 
+
+  // ================================================================== TV Profiles Engine (Netflix / Disney+ Style)
+  var TV_PROFILES_KEY = 'itv_tv_profiles';
+  var TV_ACTIVE_KEY = 'itv_tv_active_profile_id';
+  var tvProfiles = [];
+  var tvActiveProfile = null;
+  var tvProfileManaging = false;
+  var tvProfileZone = 'cards'; // 'cards' | 'actions'
+  var tvProfileIdx = 0;
+
+  function loadTvProfiles() {
+    try {
+      var raw = localStorage.getItem(TV_PROFILES_KEY);
+      if (raw) tvProfiles = JSON.parse(raw);
+    } catch (e) { tvProfiles = []; }
+    if (!Array.isArray(tvProfiles) || !tvProfiles.length) {
+      tvProfiles = [
+        {
+          id: 'p_main',
+          name: 'ראשי',
+          avatar: (S && S.avatar) || '1f60e',
+          color: 'gold',
+          isKids: false,
+          favorites: state.favorites ? state.favorites.slice() : [],
+          recents: state.recents ? state.recents.slice() : []
+        },
+        {
+          id: 'p_kids',
+          name: 'ילדים',
+          avatar: '1f981',
+          color: 'amber',
+          isKids: true,
+          favorites: ['partner_kids_il', 'partner_toddlers_luli_il', 'hop_kids_israel', 'junior_plus_kids_il', 'baby_israel_tv', 'kan_hinuchit'],
+          recents: []
+        }
+      ];
+      saveTvProfiles();
+    }
+    var activeId = localStorage.getItem(TV_ACTIVE_KEY);
+    tvActiveProfile = tvProfiles.find(function (p) { return p.id === activeId; }) || tvProfiles[0];
+    applyTvProfileData(tvActiveProfile, false);
+  }
+
+  function saveTvProfiles() {
+    if (tvActiveProfile) {
+      tvActiveProfile.favorites = state.favorites ? state.favorites.slice() : [];
+      tvActiveProfile.recents = state.recents ? state.recents.slice() : [];
+    }
+    try {
+      localStorage.setItem(TV_PROFILES_KEY, JSON.stringify(tvProfiles));
+      if (tvActiveProfile) localStorage.setItem(TV_ACTIVE_KEY, tvActiveProfile.id);
+    } catch (e) {}
+  }
+
+  function getActiveTvProfile() {
+    if (!tvActiveProfile) loadTvProfiles();
+    return tvActiveProfile;
+  }
+
+  function applyTvProfileData(p, notify) {
+    if (!p) return;
+    tvActiveProfile = p;
+    try { localStorage.setItem(TV_ACTIVE_KEY, p.id); } catch (e) {}
+    state.favorites = Array.isArray(p.favorites) ? p.favorites.slice() : [];
+    state.recents = Array.isArray(p.recents) ? p.recents.slice() : [];
+    lsSet('israel_tv_favorites', state.favorites);
+    lsSet('israel_tv_recents', state.recents);
+    S.avatar = p.avatar || '1f60e';
+    S.kids = !!p.isKids;
+    updateAvatar();
+    if (typeof atvRenderPill === 'function') atvRenderPill();
+    if (typeof buildCategories === 'function') buildCategories();
+    if (typeof filterList === 'function') filterList();
+    if (typeof atvRender === 'function') atvRender();
+    if (notify) toast('שלום, ' + p.name + '!');
+  }
+
+  function renderTvProfilesScreen() {
+    var grid = $('tv-profiles-grid');
+    if (!grid) return;
+    var html = '';
+    tvProfiles.forEach(function (p, idx) {
+      var isCurrent = tvActiveProfile && tvActiveProfile.id === p.id;
+      var badge = p.isKids ? '<span class="net-prof-badge">🧸 ילדים</span>' : '';
+      var editIcon = tvProfileManaging ? '<span class="net-prof-edit-badge">✏️ עריכה</span>' : '';
+      html += '<div class="net-prof-card" data-idx="' + idx + '" data-pid="' + esc(p.id) + '">' +
+        '<img class="net-prof-avatar" src="' + avatarUrl(p.avatar || '1f60e') + '" alt="">' +
+        editIcon +
+        '<div class="net-prof-name">' + esc(p.name) + '</div>' +
+        badge +
+        (isCurrent && !tvProfileManaging ? '<div class="net-prof-active-dot">● פעיל</div>' : '') +
+        '</div>';
+    });
+    if (tvProfiles.length < 8) {
+      html += '<div class="net-prof-card net-prof-add" data-idx="' + tvProfiles.length + '" data-act="add">' +
+        '<div class="net-prof-add-ico">+</div>' +
+        '<div class="net-prof-name">הוסף פרופיל</div>' +
+        '</div>';
+    }
+    grid.innerHTML = html;
+
+    var btnManage = $('btn-tv-prof-manage');
+    var btnDone = $('btn-tv-prof-done');
+    if (btnManage && btnDone) {
+      toggleClass(btnManage, 'hidden', tvProfileManaging);
+      toggleClass(btnDone, 'hidden', !tvProfileManaging);
+    }
+
+    Array.prototype.forEach.call(grid.children, function (card) {
+      card.addEventListener('click', function () {
+        var act = card.getAttribute('data-act');
+        if (act === 'add') {
+          openAddProfileDialog();
+          return;
+        }
+        var pid = card.getAttribute('data-pid');
+        var p = tvProfiles.find(function (item) { return item.id === pid; });
+        if (!p) return;
+        if (tvProfileManaging) {
+          openEditProfileDialog(p);
+        } else {
+          applyTvProfileData(p, true);
+          saveTvProfiles();
+          closeTvProfiles();
+        }
+      });
+    });
+  }
+
+  function markTvProfilesFocus() {
+    var grid = $('tv-profiles-grid');
+    if (!grid) return;
+    Array.prototype.forEach.call(grid.querySelectorAll('.net-prof-card'), function (c) {
+      c.classList.remove('focused');
+    });
+    var actBtns = $('tv-profiles-actions').querySelectorAll('button:not(.hidden)');
+    Array.prototype.forEach.call(actBtns, function (b) {
+      b.classList.remove('focused');
+    });
+
+    if (tvProfileZone === 'cards') {
+      var card = grid.children[tvProfileIdx];
+      if (card) {
+        card.classList.add('focused');
+        try { card.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' }); } catch (e) {}
+      }
+    } else {
+      var btn = actBtns[tvProfileIdx];
+      if (btn) btn.classList.add('focused');
+    }
+  }
+
+  function openTvProfiles() {
+    if (!tvProfiles.length) loadTvProfiles();
+    tvProfileManaging = false;
+    tvProfileZone = 'cards';
+    var curIdx = tvProfiles.findIndex(function (p) { return p.id === (tvActiveProfile && tvActiveProfile.id); });
+    tvProfileIdx = curIdx >= 0 ? curIdx : 0;
+    state.overlay = 'tv-profiles';
+    renderTvProfilesScreen();
+    var elScreen = $('tv-profiles');
+    if (elScreen) elScreen.classList.remove('hidden');
+    markTvProfilesFocus();
+  }
+
+  function closeTvProfiles() {
+    var elScreen = $('tv-profiles');
+    if (elScreen) elScreen.classList.add('hidden');
+    state.overlay = null;
+    markFocus();
+  }
+
+  function tvProfilesKey(code) {
+    var totalCards = tvProfiles.length + (tvProfiles.length < 8 ? 1 : 0);
+    if (isBack(code)) {
+      if (tvProfileManaging) {
+        tvProfileManaging = false;
+        renderTvProfilesScreen();
+        markTvProfilesFocus();
+        return;
+      }
+      closeTvProfiles();
+      return;
+    }
+    if (code === 37) {
+      if (tvProfileZone === 'cards') {
+        tvProfileIdx = (tvProfileIdx + 1) % totalCards;
+        markTvProfilesFocus();
+      } else {
+        var actBtns = $('tv-profiles-actions').querySelectorAll('button:not(.hidden)');
+        tvProfileIdx = Math.min(tvProfileIdx + 1, actBtns.length - 1);
+        markTvProfilesFocus();
+      }
+    } else if (code === 39) {
+      if (tvProfileZone === 'cards') {
+        tvProfileIdx = (tvProfileIdx - 1 + totalCards) % totalCards;
+        markTvProfilesFocus();
+      } else {
+        tvProfileIdx = Math.max(tvProfileIdx - 1, 0);
+        markTvProfilesFocus();
+      }
+    } else if (code === 40) {
+      if (tvProfileZone === 'cards') {
+        tvProfileZone = 'actions';
+        tvProfileIdx = 0;
+        markTvProfilesFocus();
+      }
+    } else if (code === 38) {
+      if (tvProfileZone === 'actions') {
+        tvProfileZone = 'cards';
+        tvProfileIdx = Math.min(tvProfileIdx, totalCards - 1);
+        markTvProfilesFocus();
+      }
+    }
+  }
+
+  function tvProfilesOk() {
+    if (tvProfileZone === 'cards') {
+      var cards = $('tv-profiles-grid').children;
+      var c = cards[tvProfileIdx];
+      if (c) c.click();
+    } else {
+      var actBtns = $('tv-profiles-actions').querySelectorAll('button:not(.hidden)');
+      var b = actBtns[tvProfileIdx];
+      if (b) b.click();
+    }
+  }
+
+  function openAddProfileDialog() {
+    var chosenAv = AVATARS[tvProfiles.length % AVATARS.length];
+    var html = '<div style="margin-bottom:1.5rem;">' +
+      '<label style="display:block;margin-bottom:.5rem;font-weight:700;">שם הפרופיל:</label>' +
+      '<input id="prof-add-name" type="text" class="dlg-focus" value="פרופיל ' + (tvProfiles.length + 1) + '" style="width:100%;padding:.8rem;border-radius:1rem;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#fff;font-size:1.3rem;">' +
+      '</div>' +
+      '<div style="margin-bottom:1.5rem;">' +
+      '<label style="display:block;margin-bottom:.5rem;font-weight:700;">בחירת אווטאר:</label>' +
+      '<div class="av-grid">' + AVATARS.map(function (c) {
+        return '<button class="btn dlg-focus av-opt' + (c === chosenAv ? ' on' : '') + '" data-av="' + c + '"><img alt="" src="' + avatarUrl(c) + '"></button>';
+      }).join('') + '</div>' +
+      '</div>' +
+      '<div>' +
+      '<label style="display:inline-flex;align-items:center;gap:.8rem;cursor:pointer;font-size:1.2rem;font-weight:700;">' +
+      '<input id="prof-add-kids" type="checkbox" style="transform:scale(1.4);"> פרופיל ילדים (מציג תכני ילדים בלבד)' +
+      '</label>' +
+      '</div>';
+
+    openDialog({
+      ico: '👤',
+      title: 'הוספת פרופיל חדש',
+      html: html,
+      buttons: [
+        { label: 'ביטול' },
+        {
+          label: 'שמור פרופיל',
+          primary: true,
+          act: function () {
+            var nameInp = $('prof-add-name');
+            var kidsInp = $('prof-add-kids');
+            var name = (nameInp && nameInp.value.trim()) || ('פרופיל ' + (tvProfiles.length + 1));
+            var isKids = kidsInp ? kidsInp.checked : false;
+            var newProf = {
+              id: 'p_' + Date.now(),
+              name: name,
+              avatar: chosenAv,
+              color: isKids ? 'amber' : 'arctic',
+              isKids: isKids,
+              favorites: isKids ? ['partner_kids_il', 'partner_toddlers_luli_il', 'hop_kids_israel', 'junior_plus_kids_il', 'baby_israel_tv'] : [],
+              recents: []
+            };
+            tvProfiles.push(newProf);
+            applyTvProfileData(newProf, true);
+            saveTvProfiles();
+            openTvProfiles();
+          }
+        }
+      ]
+    });
+
+    Array.prototype.forEach.call(el.dialogBody.querySelectorAll('.av-opt'), function (b) {
+      b.onclickAction = function () {
+        chosenAv = b.getAttribute('data-av');
+        Array.prototype.forEach.call(el.dialogBody.querySelectorAll('.av-opt'), function (x) { toggleClass(x, 'on', x === b); });
+      };
+      b.addEventListener('click', function (e) { e.stopPropagation(); b.onclickAction(); });
+    });
+  }
+
+  function openEditProfileDialog(p) {
+    var chosenAv = p.avatar || '1f60e';
+    var html = '<div style="margin-bottom:1.5rem;">' +
+      '<label style="display:block;margin-bottom:.5rem;font-weight:700;">שם הפרופיל:</label>' +
+      '<input id="prof-edit-name" type="text" class="dlg-focus" value="' + esc(p.name) + '" style="width:100%;padding:.8rem;border-radius:1rem;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#fff;font-size:1.3rem;">' +
+      '</div>' +
+      '<div style="margin-bottom:1.5rem;">' +
+      '<label style="display:block;margin-bottom:.5rem;font-weight:700;">בחירת אווטאר:</label>' +
+      '<div class="av-grid">' + AVATARS.map(function (c) {
+        return '<button class="btn dlg-focus av-opt' + (c === chosenAv ? ' on' : '') + '" data-av="' + c + '"><img alt="" src="' + avatarUrl(c) + '"></button>';
+      }).join('') + '</div>' +
+      '</div>' +
+      '<div>' +
+      '<label style="display:inline-flex;align-items:center;gap:.8rem;cursor:pointer;font-size:1.2rem;font-weight:700;">' +
+      '<input id="prof-edit-kids" type="checkbox" ' + (p.isKids ? 'checked' : '') + ' style="transform:scale(1.4);"> פרופיל ילדים (מציג תכני ילדים בלבד)' +
+      '</label>' +
+      '</div>';
+
+    var btns = [
+      { label: 'ביטול' },
+      {
+        label: 'שמור שינויים',
+        primary: true,
+        act: function () {
+          var nameInp = $('prof-edit-name');
+          var kidsInp = $('prof-edit-kids');
+          p.name = (nameInp && nameInp.value.trim()) || p.name;
+          p.avatar = chosenAv;
+          p.isKids = kidsInp ? kidsInp.checked : false;
+          if (tvActiveProfile && tvActiveProfile.id === p.id) {
+            applyTvProfileData(p, false);
+          }
+          saveTvProfiles();
+          openTvProfiles();
+        }
+      }
+    ];
+
+    if (tvProfiles.length > 1) {
+      btns.unshift({
+        label: 'מחק פרופיל',
+        act: function () {
+          confirmBox('האם למחוק את הפרופיל "' + p.name + '"?', function () {
+            tvProfiles = tvProfiles.filter(function (x) { return x.id !== p.id; });
+            if (tvActiveProfile.id === p.id) {
+              applyTvProfileData(tvProfiles[0], true);
+            }
+            saveTvProfiles();
+            openTvProfiles();
+          });
+        }
+      });
+    }
+
+    openDialog({
+      ico: '✏️',
+      title: 'עריכת פרופיל: ' + p.name,
+      html: html,
+      buttons: btns
+    });
+
+    Array.prototype.forEach.call(el.dialogBody.querySelectorAll('.av-opt'), function (b) {
+      b.onclickAction = function () {
+        chosenAv = b.getAttribute('data-av');
+        Array.prototype.forEach.call(el.dialogBody.querySelectorAll('.av-opt'), function (x) { toggleClass(x, 'on', x === b); });
+      };
+      b.addEventListener('click', function (e) { e.stopPropagation(); b.onclickAction(); });
+    });
+  }
+
   // ================================================================== phone: scroll physics (BitChord)
   /**
    * iOS-style rubber band + bounce for the phone's scroll containers: a port of BitChord's IosOverscroll.kt
@@ -1460,7 +1817,7 @@
   var ATV_ROWS = [['broadcast', 'ערוצי ברודקאסט וחדשות'], ['sports', 'ספורט בשידור חי'], ['movies', 'סרטים וסדרות'],
     ['kids', 'ילדים ונוער'], ['fun', 'בידור, טבע ומוזיקה'], ['world', 'ערוצים בינלאומיים'], ['radio', 'רדיו ישראלי'],
     ['faith', 'דת ומסורת']];
-  var ATV_TABS = [['צפייה כעת', 'top'], ['ערוצי ישראל', 'broadcast'], ['ספורט', 'sports'], ['ילדים', 'kids'],
+  var ATV_TABS = [['פרופיל', 'profiles'], ['צפייה כעת', 'top'], ['ערוצי ישראל', 'broadcast'], ['ספורט', 'sports'], ['ילדים', 'kids'],
     ['סרטים ודיבוב', 'movies'], ['רדיו', 'radio'], ['מועדפים', 'mine'], ['חיפוש', 'search'], ['פיצול מסך', 'multiview'], ['הגדרות', 'settings']];
 
   function atvRem(rem) { return rem * (parseFloat(document.documentElement.style.fontSize) || 16); }
@@ -1579,12 +1936,18 @@
 
   function atvRenderPill() {
     var tabs = ATV_TABS.filter(function (t) {
-      return t[1] === 'top' || t[1] === 'search' || t[1] === 'multiview' || t[1] === 'settings' || atvRowIndex(t[1]) !== -1 || (atv.search && t[1] !== 'mine');
+      return t[1] === 'profiles' || t[1] === 'top' || t[1] === 'search' || t[1] === 'multiview' || t[1] === 'settings' || atvRowIndex(t[1]) !== -1 || (atv.search && t[1] !== 'mine');
     });
     if (S.kids) tabs = tabs.filter(function (t) { return t[1] !== 'settings'; }).concat([['יציאה ממצב ילדים', 'kids-exit']]);
     atv.tabs = tabs;
     $('atv-pill').innerHTML = tabs.map(function (t, i) {
       var id = t[1];
+      if (id === 'profiles') {
+        var p = getActiveTvProfile();
+        var av = p ? avatarUrl(p.avatar || '1f60e') : avatarUrl('1f60e');
+        var nm = p ? p.name : 'פרופיל';
+        return '<button class="atv-tab atv-tab-prof" data-i="' + i + '" title="מי צופה? - החלף פרופיל"><img class="atv-prof-ico" src="' + av + '" alt=""><span>' + esc(nm) + '</span></button>';
+      }
       if (id === 'search' || id === 'multiview' || id === 'settings') {
         var ico = id === 'search' ? I('search') : id === 'multiview' ? I('multiview') : I('settings');
         return '<button class="atv-tab ico-only" data-i="' + i + '" aria-label="' + esc(t[0]) + '" title="' + esc(t[0]) + '">' + ico + '</button>';
@@ -1774,7 +2137,8 @@
   function atvOk() {
     if (atv.zone === 'pill') {
       var t = atv.tabs[atv.tab] && atv.tabs[atv.tab][1];
-      if (t === 'search') atvOpenSearch();
+      if (t === 'profiles') openTvProfiles();
+      else if (t === 'search') atvOpenSearch();
       else if (t === 'multiview') openMultiView(atvCurrent() || state.playing);
       else if (t === 'settings') openSettings();
       else if (t === 'kids-exit') askPin(function () { setSetting('kids', false); toast('יצאתם ממצב ילדים'); });
@@ -4426,6 +4790,7 @@
     if (isBack(code) && e.preventDefault) e.preventDefault();
 
     switch (state.overlay) {
+      case 'tv-profiles': tvProfilesKey(code); return;
       case 'multiview': multiViewKey(code, e); return;
       case 'settings': settingsKey(code, e); return;
       case 'dialog': dialogKey(code); return;
@@ -4444,6 +4809,7 @@
 
   function shortOk() {
     switch (state.overlay) {
+      case 'tv-profiles': tvProfilesOk(); return;
       case 'multiview': multiViewKey(13, { preventDefault: function () {} }); return;
       case 'settings': settingsKey(13, { preventDefault: function () {} }); return;
       case 'dialog': pressDialog(state.dialogIdx); return;

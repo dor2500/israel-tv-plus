@@ -39,3 +39,4 @@ if os.path.exists(os.path.join(dist, ipk_v)):
     print(f"Copied {ipk_v} -> {ipk_canon}")
 
 print("Dist versioning complete.")
+

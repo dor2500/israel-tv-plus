@@ -15,3 +15,4 @@ for u in urls:
             print(f"[OK 200] {u}: {len(data)} bytes")
     except Exception as e:
         print(f"[FAIL] {u}: {e}")
+

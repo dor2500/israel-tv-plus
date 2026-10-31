@@ -224,6 +224,23 @@ window.ITV_UI = (function (I) {
     '<div class="settings-rows" id="settings-rows"></div></div>' +
   '</div></div>' +
 
+  // ---------------------------------------------------------------- TV Netflix-style profiles screen
+  '<div class="overlay net-prof-overlay hidden" id="tv-profiles" role="dialog" aria-modal="true">' +
+    '<div class="net-prof-box">' +
+      '<div class="net-prof-head">' +
+        '<div class="net-prof-brand"><img src="icon.png" alt="">ישראל <b>TV+</b></div>' +
+        '<h1 class="net-prof-title">מי צופה עכשיו?</h1>' +
+        '<p class="net-prof-sub">בחרו פרופיל לקבלת מועדפים, היסטוריה ותכנים מותאמים אישית</p>' +
+      '</div>' +
+      '<div class="net-prof-grid" id="tv-profiles-grid"></div>' +
+      '<div class="net-prof-actions" id="tv-profiles-actions">' +
+        '<button class="btn net-prof-act-btn" id="btn-tv-prof-manage">ניהול פרופילים</button>' +
+        '<button class="btn net-prof-act-btn hidden" id="btn-tv-prof-done">סיום ניהול</button>' +
+        '<button class="btn net-prof-act-btn primary" id="btn-tv-prof-close">המשך לצפייה</button>' +
+      '</div>' +
+    '</div>' +
+  '</div>' +
+
   // ---------------------------------------------------------------- dialog
   '<div class="overlay hidden" id="dialog"><div class="dialog-box" id="dialog-box">' +
     '<div class="dialog-ico" id="dialog-ico"></div><h2 id="dialog-title"></h2><div class="dialog-body" id="dialog-body"></div>' +

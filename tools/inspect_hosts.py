@@ -12,3 +12,4 @@ for c in chs:
 
 for h, count in sorted(hosts.items(), key=lambda x: -x[1])[:20]:
     print(f"{h}: {count} channels")
+

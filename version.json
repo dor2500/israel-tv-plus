@@ -1,56 +1,59 @@
 {
-  "version": "4.7.7",
-  "code": 202610311440,
-  "app": 577,
+  "version": "4.7.8",
+  "code": 202610311459,
+  "app": 578,
   "shell": 3,
   "date": "2026-10-31",
   "notes": [
-    "אינטגרציה מלאה ומוחלטת של שפת העיצוב NuvioMobile: ממשק Nuvio פעיל כברירת מחדל בכל גרסאות ההפצה (Release & Debug), ללא תלות ב-DEBUG mode.",
-    "טוקנים וערכות צבעי יוקרה של נוביו: שולבו פלטות Nuvio (Gold, Jade, RoseGold, ArcticBlue, Graphite, Crimson) ורקעי OLED אמביינטיים עמוקים.",
-    "פיזיקת קפיצים ואנימציות Jelly מתקדמות: סרגל ניווט צף קומפקטי (52dp) עם אינדיקטור Jelly נמתח, פיזיקת מגע וכרטיסי פוסטר ביחס 2:3 ברוחב 126dp.",
-    "שחזור מלא של מסך הבית ו-Hero דינמי: תצוגת Hero מרהיבה עם גלריית ערוצים מתחלפת, כפתור \"צפייה\" זוהר ותגיות זכוכית מעוצבות.",
-    "הוספת מערך ערוצי פרטנר TV ישראליים HD: נוספו 12 ערוצי פרטנר TV ייעודיים (הומור וסטנדאפ, בית ועיצוב, ריאליטי ישראלי, הדרמות הטורקיות, החיים הטובים, עולם הילדים, לולי לפעוטות, שעשועונים ומשחקים, נופש וחופש, ויוה טלנובלות, ג'וניור פלוס, עיצוב ולייף סטייל) עם שרתי גיבוי חיים ומאומתים.",
-    "ניקוי וסינון מוחלט של ערוצים בשפות זרות: הוסרו לחלוטין כל 36 הערוצים ברוסית וכל 3 הערוצים בערבית.",
-    "סינון ערוצי Pluto TV לא רלוונטיים/לא תקינים: הוסרו 25 ערוצי פלוטו שלא שידרו את הערוץ המבוקש או לא פעלו כהלכה.",
-    "אימות מקיף של 100% מהערוצים (401 ערוצים פעילים): כל 401 הערוצים במערכת אומתו ונבדקו באופן ידני וממוחשב עם 0 תקלות.",
-    "מספרי גרסה בשמות קובצי ההפצה: כל קובצי ההפצה לכל הפלטפורמות כוללים את מספר הגרסה 4.7.7 בשם הקובץ."
+    "מערכת פרופילים מלאה בטלוויזיה בסגנון נטפליקס (\"מי צופה?\"):",
+    "מסך בחירת פרופילים סינמטי מרהיב למסך הגדול עם אווטארים תלת-ממדיים זוהרים של Neo 3D.",
+    "מועדפים והיסטוריית צפייה נפרדים לחלוטין לכל בן משפחה / משתמש בטלוויזיה.",
+    "מצב ילדים ייעודי לפרופיל ילדים (מסנן ומציג ערוצי ילדים ותכנים מותאמים בלבד).",
+    "ניהול פרופילים מלא (עריכת שם, החלפת אווטאר, הוספת ומחיקת פרופילים).",
+    "כפתור פרופיל מהיר בסרגל הטאבים העליון בטלוויזיה ובהגדרות עם תמיכה מלאה בשלטי טלוויזיה ו-D-pad.",
+    "ביסוס העיצוב על גרסה 4.7.6:",
+    "מסך הבית והממשק שוחזרו לפרופורציות ועיצוב 4.7.6 הנקי, המהיר והמדויק (ממשק Kan Box / Expressive עם סרגלי מאקרו-קטגוריות מלוטשים).",
+    "שימור כל מערך הערוצים המאומת של 4.7.7:",
+    "ערוצי פרטנר TV החדשים, ללא ערוצים ברוסית, ללא ערוצים בערבית, ללא ערוצי פלוטו לא פעילים.",
+    "401 ערוצים פעילים ומאומתים 100%.",
+    "מספרי גרסה 4.7.8 בכל קובצי ההפצה."
   ],
   "native": {
     "android": {
-      "version": "4.7.7",
-      "app": 577,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.7.7/IsraelTVPlus-android.apk"
+      "version": "4.7.8",
+      "app": 578,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.7.8/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "4.7.7",
-      "app": 577,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.7.7/IsraelTVPlus-windows-setup.exe"
+      "version": "4.7.8",
+      "app": 578,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.7.8/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "4.7.7",
-      "app": 577,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.7.7/com.israeltv.plus_all.ipk",
+      "version": "4.7.8",
+      "app": 578,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.7.8/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "4.7.7",
-      "app": 577,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.7.7/IsraelTVPlus-tizen-project.zip"
+      "version": "4.7.8",
+      "app": 578,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.7.8/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "4.7.7",
-      "app": 577,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.7.7/IsraelTVPlus-macos-arm64.zip"
+      "version": "4.7.8",
+      "app": 578,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.7.8/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "4.7.7",
-      "app": 577,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.7.7/IsraelTVPlus-linux-x64.zip"
+      "version": "4.7.8",
+      "app": 578,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.7.8/IsraelTVPlus-linux-x64.zip"
     },
     "wear": {
-      "version": "4.7.7",
-      "app": 1000477,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.7.7/IsraelTVPlus-wearos.apk"
+      "version": "4.7.8",
+      "app": 1000478,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.7.8/IsraelTVPlus-wearos.apk"
     }
   }
 }
