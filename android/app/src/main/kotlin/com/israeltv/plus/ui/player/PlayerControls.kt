@@ -504,16 +504,31 @@ internal fun CastSheet(
             }
             if (castController.devices.isEmpty()) {
                 Text(
-                    if (castController.isScanning) "מחפש מכשירים ברשת..." else "לא נמצאו מכשירים. ודאו שהטלפון והטלוויזיה באותה רשת Wi-Fi.",
-                    Modifier.fillMaxWidth().padding(horizontal = 8.dp, vertical = 16.dp),
+                    if (castController.isScanning) "מחפש מכשירים וטלוויזיות ברשת ה-Wi-Fi..." else "לא נמצאו מכשירים בסריקה האוטומטית. ודאו שהטלפון והטלוויזיה באותה רשת Wi-Fi.",
+                    Modifier.fillMaxWidth().padding(horizontal = 8.dp, vertical = 12.dp),
                     color = scheme.onSurfaceVariant,
                     style = MaterialTheme.typography.bodyMedium,
                 )
             }
             Spacer(Modifier.height(8.dp))
-            CastQuietRow(Icons.Rounded.ScreenShare, "שיקוף מסך") {
-                castController.openSystemMirroring()
-                onDismiss()
+            Row(
+                Modifier
+                    .fillMaxWidth()
+                    .clip(RoundedCornerShape(16.dp))
+                    .background(scheme.primaryContainer)
+                    .clickable(role = Role.Button) {
+                        castController.openSystemMirroring()
+                        onDismiss()
+                    }
+                    .padding(horizontal = 16.dp, vertical = 12.dp),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                Icon(Icons.Rounded.ScreenShare, null, tint = scheme.onPrimaryContainer, modifier = Modifier.size(26.dp))
+                Spacer(Modifier.width(16.dp))
+                Column(Modifier.weight(1f)) {
+                    Text("שיקוף מסך (LG Screen Share / Smart View)", color = scheme.onPrimaryContainer, style = MaterialTheme.typography.titleMedium)
+                    Text("שיקוף ישיר של מסך הטלפון אל הטלוויזיה בלחיצה אחת", color = scheme.onPrimaryContainer.copy(alpha = 0.8f), style = MaterialTheme.typography.bodySmall)
+                }
             }
             CastQuietRow(Icons.AutoMirrored.Rounded.OpenInNew, "פתיחה באפליקציה חיצונית") {
                 castController.openExternalCaster(channel)

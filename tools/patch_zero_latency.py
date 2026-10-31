@@ -100,3 +100,4 @@ if target_norm in content_norm:
     print("Patched app.js successfully!")
 else:
     print("Target not found in app.js")
+

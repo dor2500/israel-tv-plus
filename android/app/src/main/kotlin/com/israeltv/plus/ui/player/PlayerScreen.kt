@@ -326,7 +326,16 @@ fun PlayerScreen(
                     buffering = false
                 }
             }
-            override fun onTracksChanged(t: Tracks) { tracks = t }
+            override fun onTracksChanged(t: Tracks) {
+                tracks = t
+                val audioGroups = t.groups.filter { it.type == C.TRACK_TYPE_AUDIO }
+                if (audioGroups.isNotEmpty() && audioGroups.none { it.isSelected }) {
+                    val firstAudio = audioGroups.first()
+                    player.trackSelectionParameters = player.trackSelectionParameters.buildUpon()
+                        .setOverrideForType(TrackSelectionOverride(firstAudio.mediaTrackGroup, 0))
+                        .build()
+                }
+            }
         }
         player.addListener(listener)
         onDispose {

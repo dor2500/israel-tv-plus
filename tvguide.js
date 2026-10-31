@@ -86,7 +86,7 @@ window.ITVGuide = function (api) {
   // A programme's own picture when the feed has one, otherwise the channel logo on a dark card.
   function poster(ch, p) {
     var base = '<div class="tv-poster-logo">' + logo(ch) + '</div>';
-    return p && p[4] ? base + '<img class="tv-poster" alt="" src="' + esc(p[4]) + '" onerror="this.style.display=\'none\'">' : base;
+    return p && p[4] ? base + '<img class="tv-poster" referrerpolicy="no-referrer" alt="" src="' + esc(p[4]) + '" onerror="this.style.display=\'none\'">' : base;
   }
   function zapList() {
     var s = api.state, list = api.S.zap === 'all' ? s.all : s.list;

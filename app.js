@@ -2919,6 +2919,11 @@ function loadCandidate(ch, rawUrl) {
         startPlay(v, ch);
         if (Dub && state.playing === ch && state.preview !== ch) Dub.attach({ video: v, hls: hls, channel: ch, url: url });
       });
+      hls.on(Hls.Events.AUDIO_TRACKS_UPDATED, function (e, data) {
+        if (hls.audioTracks && hls.audioTracks.length > 0 && hls.audioTrack === -1) {
+          hls.audioTrack = 0;
+        }
+      });
       hls.on(Hls.Events.LEVEL_SWITCHED, function (e, data) {
         var l = hls.levels && hls.levels[data.level];
         if (l && l.height) el.osdQuality.textContent = l.height >= 1080 ? 'FHD ' + l.height + 'p' : l.height >= 720 ? 'HD ' + l.height + 'p' : 'SD ' + l.height + 'p';
