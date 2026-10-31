@@ -522,7 +522,10 @@ body.phone .card-meta { font-size: 1.2rem; }
 
 /* -------- floating navigation bar (Nuvio FloatingNavigationBar: glass pill + jelly indicator + glow) */
 .navbar { position: fixed; left: 0; right: 0; bottom: calc(var(--sab) + 1.2rem); z-index: 25; display: flex; justify-content: center;
-  padding: 0 calc(var(--sar) + 2.8rem) 0 calc(var(--sal) + 2.8rem); pointer-events: none; view-transition-name: navbar; }
+  padding: 0 calc(var(--sar) + 2.8rem) 0 calc(var(--sal) + 2.8rem); pointer-events: none; }
+/* named on the glass itself: a name on .navbar makes it a backdrop root, so the blur has nothing to blur */
+body.phone .nb-track { view-transition-name: nb-track; }
+body.phone .nb-search { view-transition-name: nb-search; }
 .nb-track { position: relative; display: flex; width: 100%; max-width: 40rem; height: 6.4rem; padding: .6rem; border-radius: 3.2rem;
   pointer-events: auto; background: rgba(30, 30, 32, .72); border: .1rem solid rgba(255, 255, 255, .08);
   box-shadow: 0 1rem 3rem rgba(0, 0, 0, .45); -webkit-backdrop-filter: blur(2.4rem) saturate(1.7); backdrop-filter: blur(2.4rem) saturate(1.7);
@@ -549,7 +552,7 @@ body.in-pip .osd, body.in-pip .toast, body.in-pip .drawer, body.in-pip .spinner 
 ::view-transition-new(root) { animation: vt-in .26s var(--ease-out) both; }
 @keyframes vt-out { to { opacity: 0; transform: scale(.985); } }
 @keyframes vt-in { from { opacity: 0; transform: translateY(1.2rem); } }
-::view-transition-group(navbar) { animation: none; }
+::view-transition-group(nb-track), ::view-transition-group(nb-search) { animation: none; }
 
 /* -------- player: edge-to-edge, big touch controls */
 body.phone .osd-top { align-items: center; padding: calc(var(--sat) + 1.2rem) calc(var(--sar) + 1.4rem) 5rem calc(var(--sal) + 1.4rem); }
