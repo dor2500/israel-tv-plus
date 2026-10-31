@@ -449,6 +449,10 @@
     document.documentElement.style.fontSize = (base * (compact || PHONE ? 1 : S.uiScale)) + 'px';
     toggleClass(document.body, 'compact', compact);
     toggleClass(document.body, 'phone', PHONE);
+    var scaled = !compact && !PHONE;
+    toggleClass(document.body, 'ui-large', scaled && S.uiScale >= 1.15);
+    toggleClass(document.body, 'ui-xl', scaled && S.uiScale === 1.3);
+    toggleClass(document.body, 'ui-xxl', scaled && S.uiScale >= 1.5);
     TVUI = !PHONE;
     toggleClass(document.body, 'tvui', TVUI);
     var cols = S.cols || (PHONE ? (w < 600 ? 2 : w < 900 ? 3 : 4) : compact ? (w < 600 ? 2 : 3) : clamp(Math.round(5 / S.uiScale), 3, 7));
@@ -1451,7 +1455,7 @@
     rowEls: [], built: false, dirty: false, search: false, query: '', flip: false, bdFlip: false,
     restTimer: null, metaTimer: null, stopTimer: null, searchTimer: null, focusedEl: null };
   var ATV_PITCH = 19;        // rem: a 17.5rem card + 1.5rem gap
-  var ATV_ROW = 16.25;       // rem: one shelf (title + card + name), 260 px on a 1080p screen
+  var ATV_ROW = 17.25;       // rem: one shelf (title + card + name), 276 px on a 1080p screen
   var ATV_FIRST = 14, ATV_MORE = 18;
   var ATV_ROWS = [['broadcast', 'ערוצי ברודקאסט וחדשות'], ['sports', 'ספורט בשידור חי'], ['movies', 'סרטים וסדרות'],
     ['kids', 'ילדים ונוער'], ['fun', 'בידור, טבע ומוזיקה'], ['world', 'ערוצים בינלאומיים'], ['radio', 'רדיו ישראלי'],
@@ -1693,8 +1697,15 @@
       '<h1 class="atv-title">' + esc(ch.name) + '</h1><div class="atv-tags">' + tags + '</div>' +
       (ch.desc ? '<p class="atv-desc">' + esc(ch.desc) + '</p>' : '') +
       (S.showSource ? '<p class="atv-src">' + esc(sourceLine(ch)) + '</p>' : '');
-    setLogo(target.querySelector('img'), target.querySelector('.mono'), ch);
-    target.className = 'atv-meta in';
+    var logoImg = target.querySelector('img'), logoMono = target.querySelector('.mono');
+    setLogo(logoImg, logoMono, ch);
+    // the logo stands in for the name (Nuvio hero); a channel without one, or whose logo fails, shows the name instead
+    var nextLogo = logoImg.onerror;
+    logoImg.onerror = function () {
+      nextLogo();
+      if (!logoMono.classList.contains('hidden') && target.contains(logoImg)) target.classList.remove('has-logo');
+    };
+    target.className = 'atv-meta in' + (ch.logo ? ' has-logo' : '');
     other.className = 'atv-meta';
     // the stage: a soft wash in the channel's colours, cross-faded
     var bd = atv.bdFlip ? $('atv-bd-b') : $('atv-bd-a'), bo = atv.bdFlip ? $('atv-bd-a') : $('atv-bd-b');

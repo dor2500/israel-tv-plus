@@ -522,7 +522,10 @@ body.phone .card-meta { font-size: 1.2rem; }
 
 /* -------- floating navigation bar (Nuvio FloatingNavigationBar: glass pill + jelly indicator + glow) */
 .navbar { position: fixed; left: 0; right: 0; bottom: calc(var(--sab) + 1.2rem); z-index: 25; display: flex; justify-content: center;
-  padding: 0 calc(var(--sar) + 2.8rem) 0 calc(var(--sal) + 2.8rem); pointer-events: none; view-transition-name: navbar; }
+  padding: 0 calc(var(--sar) + 2.8rem) 0 calc(var(--sal) + 2.8rem); pointer-events: none; }
+/* named on the glass itself: a name on .navbar makes it a backdrop root, so the blur has nothing to blur */
+body.phone .nb-track { view-transition-name: nb-track; }
+body.phone .nb-search { view-transition-name: nb-search; }
 .nb-track { position: relative; display: flex; width: 100%; max-width: 40rem; height: 6.4rem; padding: .6rem; border-radius: 3.2rem;
   pointer-events: auto; background: rgba(30, 30, 32, .72); border: .1rem solid rgba(255, 255, 255, .08);
   box-shadow: 0 1rem 3rem rgba(0, 0, 0, .45); -webkit-backdrop-filter: blur(2.4rem) saturate(1.7); backdrop-filter: blur(2.4rem) saturate(1.7);
@@ -549,7 +552,7 @@ body.in-pip .osd, body.in-pip .toast, body.in-pip .drawer, body.in-pip .spinner 
 ::view-transition-new(root) { animation: vt-in .26s var(--ease-out) both; }
 @keyframes vt-out { to { opacity: 0; transform: scale(.985); } }
 @keyframes vt-in { from { opacity: 0; transform: translateY(1.2rem); } }
-::view-transition-group(navbar) { animation: none; }
+::view-transition-group(nb-track), ::view-transition-group(nb-search) { animation: none; }
 
 /* -------- player: edge-to-edge, big touch controls */
 body.phone .osd-top { align-items: center; padding: calc(var(--sat) + 1.2rem) calc(var(--sar) + 1.4rem) 5rem calc(var(--sal) + 1.4rem); }
@@ -956,8 +959,8 @@ body.atv-live .atv-bd { opacity: 0; }
 
 /* ---- the floating pill */
 .atv-pill { position: absolute; top: 2.75rem; left: 50%; z-index: 3; display: flex; align-items: center; height: 3.625rem;
-  padding: 0 .3rem; border-radius: 999px; white-space: nowrap; background: rgba(22, 22, 28, .68);
-  border: 1px solid rgba(255, 255, 255, .16); box-shadow: 0 1rem 3rem rgba(0, 0, 0, .35);
+  padding: 0 .3rem; border-radius: 999px; white-space: nowrap; background: linear-gradient(180deg, rgba(12, 14, 22, .36) 0%, rgba(12, 14, 22, .14) 100%);
+  border: 1px solid rgba(255, 255, 255, .14); box-shadow: 0 1rem 3rem rgba(0, 0, 0, .35);
   -webkit-transform: translate3d(-50%, 0, 0); transform: translate3d(-50%, 0, 0); }
 @supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
   .atv-pill, .atv-search { -webkit-backdrop-filter: blur(36px) saturate(180%); backdrop-filter: blur(36px) saturate(180%); }
@@ -985,10 +988,9 @@ body.atv-searching .atv-meta { opacity: 0; }
   text-shadow: 0 .2rem 1.2rem rgba(0, 0, 0, .5); }
 .atv-tags { display: flex; align-items: center; flex-wrap: wrap; font-size: 1.25rem; }
 .atv-tags > span { margin-left: .8rem; }
-.atv-live { display: flex; align-items: center; padding: .15rem .75rem; border-radius: .45rem; background: #ff3b30;
+/* span.: body.atv-live is a different thing, the state "a channel is showing behind the shelves" */
+span.atv-live { display: flex; align-items: center; padding: .15rem .75rem; border-radius: .45rem; background: #ff3b30;
   font-weight: 800; letter-spacing: .04em; }
-.atv-live i { width: .55rem; height: .55rem; margin-left: .45rem; border-radius: 50%; background: #fff; animation: atv-pulse 1.4s ease-in-out infinite; }
-@keyframes atv-pulse { 0%, 100% { opacity: 1; } 50% { opacity: .25; } }
 .atv-pill-q { padding: .1rem .6rem; border: 1px solid rgba(255, 255, 255, .55); border-radius: .45rem; font-weight: 700; }
 .atv-tag { color: rgba(255, 255, 255, .75); font-weight: 500; }
 .atv-desc { margin: 1rem 0 0; font-size: 1.45rem; line-height: 1.45; color: rgba(255, 255, 255, .82); overflow: hidden;
@@ -1008,7 +1010,7 @@ body.atv-searching .atv-search { display: flex; }
 .atv-shelves { position: absolute; left: 0; right: 0; bottom: 0; z-index: 2; height: 34rem; }
 .atv-rows { transition: transform .42s cubic-bezier(.16, 1, .3, 1); will-change: transform;
   -webkit-backface-visibility: hidden; backface-visibility: hidden; }
-.atv-row { height: 16.25rem; opacity: .5; transition: opacity .42s cubic-bezier(.16, 1, .3, 1); will-change: opacity; }
+.atv-row { height: 17.25rem; opacity: .5; transition: opacity .42s cubic-bezier(.16, 1, .3, 1); will-change: opacity; }
 .atv-row.active { opacity: 1; }
 .atv-row.above { opacity: 0; }
 .atv-row-title { height: 2.4rem; margin: 0 4.5rem .7rem; font-size: 1.6rem; font-weight: 700; line-height: 2.4rem; white-space: nowrap; }
@@ -1019,10 +1021,6 @@ body.atv-searching .atv-search { display: flex; }
 .atv-card { position: relative; width: 17.5rem; height: 9.875rem; border-radius: 1.25rem; background: rgba(255, 255, 255, .06);
   -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0);
   transition: transform .42s cubic-bezier(.16, 1, .3, 1); will-change: transform; -webkit-backface-visibility: hidden; backface-visibility: hidden; }
-/* the deep shadow and the white ring are a layer of their own that only fades (no box-shadow animation) */
-.atv-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; border-radius: inherit; opacity: 0;
-  border: .156rem solid rgba(255, 255, 255, .95); box-shadow: 0 1.75rem 3.75rem rgba(0, 0, 0, .9), 0 .5rem 1.2rem rgba(0, 0, 0, .5);
-  transition: opacity .3s ease; }
 .atv-logo { position: absolute; top: 0; left: 0; right: 0; bottom: 0; display: flex; align-items: center; justify-content: center;
   border-radius: inherit; background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, .17), rgba(255, 255, 255, 0) 62%); }
 .atv-logo img { max-width: 62%; max-height: 56%; object-fit: contain; }
@@ -1036,13 +1034,13 @@ body.atv-searching .atv-search { display: flex; }
   background: linear-gradient(115deg, rgba(255, 255, 255, 0) 20%, rgba(255, 255, 255, .22) 50%, rgba(255, 255, 255, 0) 80%);
   -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); }
 .atv-name { margin-top: .75rem; padding: 0 .3rem; font-size: 1.2rem; font-weight: 500; color: rgba(255, 255, 255, .6);
-  overflow: hidden; text-overflow: ellipsis; white-space: nowrap; transition: color .3s ease, transform .42s cubic-bezier(.16, 1, .3, 1); }
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap; transition: color .3s ease, opacity .3s ease, transform .42s cubic-bezier(.16, 1, .3, 1); }
 .atv-item.focused { z-index: 2; }
-.atv-item.focused .atv-card { -webkit-transform: translate3d(0, -.5rem, 0) scale3d(1.14, 1.14, 1); transform: translate3d(0, -.5rem, 0) scale3d(1.14, 1.14, 1); }
-.atv-item.focused .atv-card::before { opacity: 1; }
 .atv-item.focused .atv-sheen::after { -webkit-transform: translate3d(29rem, 0, 0); transform: translate3d(29rem, 0, 0);
   transition: transform .9s cubic-bezier(.16, 1, .3, 1) .05s; }
 .atv-item.focused .atv-name { color: #fff; font-weight: 700; -webkit-transform: translate3d(0, .7rem, 0); transform: translate3d(0, .7rem, 0); }
+/* the shelf below peeks in as cards only: its names would run under the colour buttons */
+.atv-row.below .atv-item:not(.focused) .atv-name { opacity: 0; }
 .atv-item.is-locked .atv-card { opacity: .55; }
 .atv-empty { padding: 3rem 4.5rem; font-size: 1.6rem; color: rgba(255, 255, 255, .6); }
 
@@ -1061,16 +1059,6 @@ body.phone .topbar.solid {
   -webkit-backdrop-filter: blur(28px) saturate(180%);
   backdrop-filter: blur(28px) saturate(180%);
 }
-body.phone .navbar {
-  background: transparent !important;
-  -webkit-backdrop-filter: none !important;
-  backdrop-filter: none !important;
-  border: none !important;
-  box-shadow: none !important;
-}
-.osd-top {
-  background: linear-gradient(180deg, rgba(0,0,0,.64) 0%, rgba(0,0,0,.18) 68%, rgba(0,0,0,0) 100%) !important;
-}
 .osd-bottom {
   background: linear-gradient(0deg, rgba(0,0,0,.68) 0%, rgba(0,0,0,.20) 68%, rgba(0,0,0,0) 100%) !important;
 }
@@ -1088,10 +1076,6 @@ body.phone .navbar {
 }
 
 /* Smart TV Top Pill & Focus Physics */
-.atv-pill {
-  background: linear-gradient(180deg, rgba(12, 14, 22, 0.36) 0%, rgba(12, 14, 22, 0.14) 100%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.14) !important;
-}
 .atv-tab.ico-only {
   padding: .55rem .75rem;
   display: inline-flex;
@@ -1101,11 +1085,6 @@ body.phone .navbar {
 .atv-tab.ico-only svg {
   width: 1.35rem;
   height: 1.35rem;
-}
-.atv-item.focused .atv-card {
-  transform: scale(1.10) translateZ(0) !important;
-  border: 2px solid #ffffff !important;
-  box-shadow: 0 18px 46px rgba(0,0,0,.78), 0 0 28px var(--glow, rgba(255,255,255,.35)) !important;
 }
 
 /* Clickable Color Hints & LG Magic Remote Color Bar */
@@ -1132,7 +1111,7 @@ button.hint.hint-btn:hover, button.hint.hint-btn.focused {
 .atv-colors {
   position: fixed;
   left: 3.6rem;
-  bottom: 1.35rem;
+  bottom: .6rem;
   z-index: 25;
   display: flex;
   align-items: center;
@@ -1144,7 +1123,10 @@ body.phone .atv-colors, body.player-open .atv-colors {
 
 /* On-Screen Virtual Keyboard for Smart TV / LG webOS Search */
 .atv-kb {
-  margin-top: .85rem;
+  position: absolute;
+  top: 15.85rem;
+  right: 4.5rem;
+  z-index: 3;
   display: flex;
   flex-wrap: wrap;
   max-width: 44rem;
@@ -1622,13 +1604,13 @@ body.tvui .atv-tab.focused,
 body.tvui .obtn.focused,
 body.tvui #menu .menu-item.focused {
   transform: scale(1.1) !important;
-  border: 2px solid #ffffff !important;
-  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.88), 0 0 24px rgba(255, 255, 255, 0.34) !important;
+  border: 2px solid var(--focus) !important;
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.88), 0 0 24px var(--glow) !important;
   z-index: 6;
 }
 
 /* 6. Ultra-thin bordered glass badges for Live / FHD */
-.live-pill, .atv-live, .atv-pill-q, #osd-quality {
+.live-pill, span.atv-live, .atv-pill-q, #osd-quality {
   background: rgba(255, 255, 255, 0.07) !important;
   border: 0.75px solid rgba(255, 255, 255, 0.34) !important;
   border-radius: .38rem !important;
@@ -1637,7 +1619,7 @@ body.tvui #menu .menu-item.focused {
   font-weight: 600 !important;
   color: rgba(255, 255, 255, 0.94) !important;
 }
-.live-pill .live-dot, .atv-live i {
+.live-pill .live-dot, span.atv-live i {
   display: none !important;
 }
 
@@ -1670,7 +1652,7 @@ body.phone .osd-buttons .obtn {
   -webkit-backdrop-filter: none !important;
   backdrop-filter: none !important;
 }
-.pg-logo, .pg-logo img, .hero-logo img, .slide-logo, .slide-logo img, .atv-mlogo, .atv-mlogo img {
+.pg-logo, .pg-logo img, .hero-logo img, .slide-logo, .slide-logo img {
   max-height: 80px !important;
 }
 body.phone .pager {
@@ -1687,25 +1669,40 @@ body.phone .slide-body {
  */
 html, body:not(.phone) { background: #000; }
 body:not(.phone), body.light:not(.phone) {
-  --bg: #000; --bg2: #0b0b0e; --surface: #16161a; --surface2: #202025; --container: #202025;
-  --text: #f5f7f8; --text2: #b8bec5; --muted: #969ca3; --dim: #6b7178; --focus: #fff; --focus-bg: #202025;
+  --bg: #000; --bg2: #0b0b0e; --surface: #16161a; --surface2: #202025;
+  --text: #f5f7f8; --text2: #b8bec5; --muted: #969ca3; --dim: #6b7178;
   --line: #202025; --line2: #34343a;
 }
+/* the focus colours come from the palette (app.js); the light theme's are dark, and a TV stays black */
+body.light:not(.phone) { --focus: #fff; --focus-bg: #202025; --container: #202025; }
+/* readable from the sofa: the shared glass badge size is for phones */
+body:not(.phone) .live-pill, body:not(.phone) span.atv-live, body:not(.phone) .atv-pill-q, body:not(.phone) #osd-quality { font-size: 1.1rem !important; }
 body:not(.phone) .card.focused .card-logo, body:not(.phone) .atv-item.focused .atv-card {
   -webkit-transform: scale3d(1.1, 1.1, 1) !important; transform: scale3d(1.1, 1.1, 1) !important;
-  border: 2px solid #fff !important;
+  border: 2px solid var(--focus) !important;
   box-shadow: 0 1.2rem 2.4rem rgba(0, 0, 0, .7), 0 3.2rem 6.4rem rgba(0, 0, 0, .85) !important;
 }
 /* the card alone carries the focus: an older rule also ringed its wrapper, which drew a second outline */
 body:not(.phone) .atv-item.focused { -webkit-transform: none !important; transform: none !important; border: 0 !important; box-shadow: none !important; }
-body:not(.phone) .atv-item.focused .atv-card::before { display: none; }
 /* OLED: the browse stage is black behind its gradients; only a live preview brings colour */
 body:not(.phone) .atv-bd { background: #000 !important; }
-body:not(.phone) .atv-shade { background: linear-gradient(to top, #000 0%, rgba(0, 0, 0, .85) 28.6%, rgba(0, 0, 0, 0) 50%),
+/* the hero after Nuvio's: the logo replaces the name, and the picture fades out into the shelves */
+.atv-meta:not(.has-logo) .atv-mlogo, .atv-meta.has-logo .atv-title { display: none; }
+.atv-meta.has-logo .atv-tags { margin-top: 1.2rem; }
+body:not(.phone) .atv-mlogo { width: 30rem; height: 11rem; max-height: 11rem !important; }
+body:not(.phone) .atv-mlogo img { width: auto; height: 100%; max-height: 11rem !important; }
+/* larger interface sizes have fewer rem on screen: a smaller hero, and from 1.3× one shelf plus a peek of the next */
+body.ui-large .atv-meta { top: 7.5rem; }
+body.ui-large .atv-mlogo { width: 20rem; height: 7rem; max-height: 7rem !important; }
+body.ui-large .atv-mlogo img { max-height: 7rem !important; }
+body.ui-large .atv-src { display: none; }
+body.ui-large .atv-search { top: 7.5rem; }
+body.ui-large .atv-kb { top: 13.35rem; }
+body.ui-xl .atv-shelves { height: 24rem; }
+body.ui-xxl .atv-shelves { height: 20rem; }
+body:not(.phone) .atv-shade { background: linear-gradient(to top, #000 0%, rgba(0, 0, 0, .9) 30%, rgba(0, 0, 0, .55) 44%, rgba(0, 0, 0, 0) 62%),
   linear-gradient(to left, rgba(0, 0, 0, .82) 0%, rgba(0, 0, 0, .35) 38%, rgba(0, 0, 0, 0) 62%); }
 body:not(.phone) .player *, body:not(.phone) .overlay, body:not(.phone) .overlay * { -webkit-backdrop-filter: none !important; backdrop-filter: none !important; }
-body:not(.phone) .osd-top { background: linear-gradient(#0b0b0e, rgba(11, 11, 14, 0)); }
-body:not(.phone) .osd-bottom { background: linear-gradient(rgba(11, 11, 14, 0), #0b0b0e); }
 /* the player keeps play/pause and the way into the side panel; everything else lives in the panel */
 body:not(.phone) .osd-buttons .obtn:not([data-act="playpause"]):not([data-act="menu"]), body:not(.phone) .osd-hints { display: none; }
 /* the options menu as a slide-out side panel (right edge, the app is RTL) */
@@ -1716,7 +1713,7 @@ body:not(.phone) #menu .menu-box {
   background: linear-gradient(to left, #0b0b0e 72%, rgba(11, 11, 14, 0)) !important;
 }
 body:not(.phone) #menu .menu-item { height: auto !important; min-height: 5.6rem; padding: 0 1.6rem !important; font-size: 1.7rem !important; background: none !important; border: 2px solid transparent !important; box-shadow: none !important; -webkit-transform: none !important; transform: none !important; }
-body:not(.phone) #menu .menu-item.focused { background: #202025 !important; border-color: #fff !important; }
+body:not(.phone) #menu .menu-item.focused { background: var(--focus-bg) !important; border-color: var(--focus) !important; }
 body:not(.phone) #menu .mi-ico { -webkit-filter: grayscale(1); filter: grayscale(1); }
 body:not(.phone):not(.anim-off) #menu .menu-box { animation: tv-panel .42s cubic-bezier(.16, 1, .3, 1) both; }
 @keyframes tv-panel { from { transform: translate3d(100%, 0, 0); opacity: 0; } to { transform: translate3d(0, 0, 0); opacity: 1; } }
