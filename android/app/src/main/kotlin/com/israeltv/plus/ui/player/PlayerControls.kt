@@ -69,7 +69,6 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -282,7 +281,7 @@ internal fun PlayerOptionsSheet(
     onFavorite: () -> Unit,
     onDismiss: () -> Unit,
 ) {
-    ModalBottomSheet(onDismissRequest = onDismiss, containerColor = SheetGlass, scrimColor = Color.Black.copy(alpha = 0.32f)) {
+    PlayerSidePanelSheet(onDismiss) {
         WindowBlurBehind()
         Column(
             Modifier
@@ -424,7 +423,7 @@ internal fun CastSheet(
     onDismiss: () -> Unit,
 ) {
     val scheme = MaterialTheme.colorScheme
-    ModalBottomSheet(onDismissRequest = onDismiss, containerColor = scheme.surfaceContainer) {
+    PlayerSidePanelSheet(onDismiss) {
         Column(
             Modifier
                 .fillMaxWidth()

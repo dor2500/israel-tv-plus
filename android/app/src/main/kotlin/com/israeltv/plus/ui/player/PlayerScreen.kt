@@ -94,7 +94,6 @@ import androidx.compose.material3.CircularWavyProgressIndicator
 import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
@@ -912,7 +911,7 @@ private fun ChannelListSheet(list: List<Channel>, current: Int, logo: (Channel) 
     }
     val initialIdx = if (searchQuery.isEmpty()) (current - 2).coerceAtLeast(0) else 0
     val state = rememberLazyListState(initialFirstVisibleItemIndex = initialIdx)
-    ModalBottomSheet(onDismissRequest = onDismiss, containerColor = scheme.surfaceContainer) {
+    PlayerSidePanelSheet(onDismiss) {
         Column(Modifier.fillMaxWidth()) {
             OutlinedTextField(
                 value = searchQuery,
@@ -960,7 +959,7 @@ private fun ChannelListSheet(list: List<Channel>, current: Int, logo: (Channel) 
 private fun AudioSheet(player: ExoPlayer, tracks: Tracks, onDismiss: () -> Unit) {
     val scheme = MaterialTheme.colorScheme
     val groups = tracks.groups.filter { it.type == C.TRACK_TYPE_AUDIO }
-    ModalBottomSheet(onDismissRequest = onDismiss, containerColor = scheme.surfaceContainer) {
+    PlayerSidePanelSheet(onDismiss) {
         Column(Modifier.padding(horizontal = 24.dp).padding(bottom = 32.dp)) {
             Text("רצועת שמע", fontSize = 22.sp, fontWeight = FontWeight.ExtraBold, color = scheme.onSurface, modifier = Modifier.padding(bottom = 12.dp))
             if (groups.size <= 1) {
