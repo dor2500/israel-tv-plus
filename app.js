@@ -1903,7 +1903,8 @@
     ['all_channels', '📺 כל הערוצים (All Channels)'],
     ['broadcast', 'ערוצי ברודקאסט וחדשות'],
     ['sports', 'ספורט בשידור חי'],
-    ['movies', 'סרטים וסדרות'],
+    ['movies', 'סרטים וקולנוע'],
+    ['vod', '🍿 סדרות לצפייה ישירה (VOD)'],
     ['kids', 'ילדים ונוער'],
     ['fun', 'בידור, טבע ומוזיקה'],
     ['world', 'ערוצים בינלאומיים'],
@@ -1916,8 +1917,9 @@
     ['צפייה כעת', 'top'],
     ['ערוצי ישראל', 'broadcast'],
     ['ספורט', 'sports'],
+    ['סרטים', 'movies'],
+    ['סדרות VOD', 'vod'],
     ['ילדים', 'kids'],
-    ['סרטים ודיבוב', 'movies'],
     ['רדיו', 'radio'],
     ['מועדפים', 'mine'], ['לוח שידורים', 'guide'],
     ['חיפוש', 'search'],
@@ -1976,6 +1978,23 @@
     var buckets = {};
     ATV_ROWS.forEach(function (r) { buckets[r[0]] = []; });
     buckets.all_channels = (S.kids ? state.all.filter(isKidsCh) : state.all).slice();
+    if (window.VOD_DATA && window.VOD_DATA.length) {
+      buckets.vod = window.VOD_DATA.map(function (s) {
+        return {
+          id: s.id,
+          name: s.title,
+          title: s.title + ' - ' + (s.genres || []).join(', '),
+          badge: 'VOD',
+          category: 'סדרות VOD',
+          categoryEn: 'vod',
+          logo: s.poster,
+          desc: s.desc,
+          isVod: true,
+          vodData: s,
+          url: (s.episodes && s.episodes[0] && s.episodes[0].url) || ''
+        };
+      });
+    }
     var kidsRadio = [];
     state.all.forEach(function (c) {
       var b = atvBucket(c);
@@ -2063,12 +2082,17 @@
   }
 
   function atvRenderPill() {
+    var pill = $('atv-pill');
+    if (!pill) return;
     var tabs = ATV_TABS.filter(function (t) {
-      return t[1] === 'profiles' || t[1] === 'all_channels' || t[1] === 'top' || t[1] === 'search' || t[1] === 'multiview' || t[1] === 'guide' || t[1] === 'settings' || atvRowIndex(t[1]) !== -1 || (atv.search && t[1] !== 'mine');
+      return t[1] === 'profiles' || t[1] === 'all_channels' || t[1] === 'top' || t[1] === 'vod' || t[1] === 'search' || t[1] === 'multiview' || t[1] === 'guide' || t[1] === 'settings' || atvRowIndex(t[1]) !== -1 || (atv.search && t[1] !== 'mine');
     });
+    if (!tabs || !tabs.length) {
+      tabs = [['מי צופה?', 'profiles'], ['כל הערוצים', 'all_channels'], ['צפייה כעת', 'top'], ['סדרות VOD', 'vod'], ['מדריך שידורים', 'guide'], ['חיפוש', 'search'], ['הגדרות', 'settings']];
+    }
     if (S.kids) tabs = tabs.filter(function (t) { return t[1] !== 'settings'; }).concat([['יציאה ממצב ילדים', 'kids-exit']]);
     atv.tabs = tabs;
-    $('atv-pill').innerHTML = tabs.map(function (t, i) {
+    pill.innerHTML = tabs.map(function (t, i) {
       var id = t[1];
       if (id === 'profiles') {
         var p = getActiveTvProfile();
@@ -2082,6 +2106,8 @@
       }
       return '<button class="atv-tab" data-i="' + i + '">' + esc(t[0]) + '</button>';
     }).join('');
+    pill.classList.remove('hidden');
+    pill.style.display = 'flex';
     atvPillState();
   }
 
@@ -2238,6 +2264,10 @@
   function atvWatch() {
     var ch = atvCurrent();
     if (!ch) return;
+    if (ch.isVod && ch.vodData) {
+      openVodModal(ch.vodData);
+      return;
+    }
     if (Dub) Dub.unlockAudio();
     var c = atv.cols[atv.row] || 0;
     state.list = atv.rows[atv.row].list;
@@ -2261,6 +2291,75 @@
       return;
     }
     playIndex(c);
+  }
+
+  function openVodModal(series) {
+    if (!series) return;
+    var eps = series.episodes || [];
+    var epHtml = eps.map(function (ep, idx) {
+      return '<div class="vod-ep-card" data-epi="' + idx + '" tabindex="0">' +
+        '<div class="vod-ep-info"><b>' + esc(ep.title) + '</b><span>' + esc(ep.duration || '') + '</span></div>' +
+        '<button class="btn primary vod-play-btn" data-epi="' + idx + '">▶ צפייה בפרק</button>' +
+        '</div>';
+    }).join('');
+
+    var html = '<div class="vod-modal-hero" style="display:flex;gap:1.5rem;align-items:flex-start;margin-bottom:1.5rem;">' +
+      '<img src="' + esc(series.poster) + '" style="width:130px;height:185px;object-fit:cover;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,0.6);" alt="">' +
+      '<div><h2 style="margin:0 0 0.5rem;font-size:1.8rem;">' + esc(series.title) + '</h2>' +
+      '<div style="display:flex;gap:0.5rem;margin-bottom:0.75rem;font-size:0.95rem;color:rgba(255,255,255,0.7);">' +
+      '<span>⭐ ' + esc(series.rating || '9.0') + '</span><span>•</span>' +
+      '<span>' + esc(series.year || '') + '</span><span>•</span>' +
+      '<span>' + esc((series.genres || []).join(', ')) + '</span></div>' +
+      '<p style="font-size:1rem;line-height:1.5;color:rgba(255,255,255,0.85);margin:0;">' + esc(series.desc) + '</p>' +
+      '</div></div>' +
+      '<div class="vod-episodes" style="max-height:42vh;overflow-y:auto;display:flex;flex-direction:column;gap:0.75rem;">' + epHtml + '</div>';
+
+    openDialog({
+      ico: '🍿',
+      title: 'סדרות לצפייה ישירה - ' + series.title,
+      html: html,
+      buttons: [{ label: 'סגירה' }],
+      cls: 'vod-dialog'
+    });
+
+    setTimeout(function () {
+      var d = $('dialog');
+      if (!d) return;
+      var cards = d.querySelectorAll('.vod-ep-card, .vod-play-btn');
+      for (var k = 0; k < cards.length; k++) {
+        cards[k].addEventListener('click', function (e) {
+          var epIdx = parseInt(this.getAttribute('data-epi'), 10);
+          var ep = eps[epIdx];
+          if (ep) {
+            closeDialog();
+            playVodEpisode(series, ep);
+          }
+        });
+      }
+    }, 50);
+  }
+
+  function playVodEpisode(series, ep) {
+    if (!series || !ep) return;
+    toast('🍿 מנגן: ' + series.title + ' - ' + ep.title);
+    var vodCh = {
+      id: ep.id,
+      name: series.title + ': ' + ep.title,
+      url: ep.url,
+      logo: series.poster,
+      badge: 'VOD',
+      category: 'סדרות VOD',
+      isVod: true
+    };
+    state.playing = vodCh;
+    var m = media();
+    m.src = ep.url;
+    m.load();
+    var p = m.play();
+    if (p && p.catch) p.catch(function () {});
+    openPlayer();
+    fillOsd(vodCh);
+    showOsd();
   }
 
   function atvOk() {
@@ -3975,9 +4074,6 @@ function showOsd() {
   function nativeKey() {
     if (PLATFORM === 'android') return 'android';
     if (PLATFORM === 'windows') return 'windows';
-    if (PLATFORM === 'webos') return 'webos';
-    if (PLATFORM === 'tizen') return 'tizen';
-    if (PLATFORM === 'desktop') return /Mac/.test(UA) ? 'mac' : 'linux';
     return '';
   }
   function updateStatusText() {
@@ -4013,6 +4109,7 @@ function showOsd() {
       // the newest GitHub release too (it can be out before version.json): a new app version opens the update modal
       checkRelease(u, function () {
         state.lastCheck = Date.now();
+        if (PLATFORM === 'webos') u.native = null;
         if (u.native) {
           showUpdateButton();
           if (!manual) offerOnce(u.native);

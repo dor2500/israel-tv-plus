@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_hop_plus_kids_il",
+    "type": "tv",
+    "name": "65. ערוץ הופ! פלוס HD",
+    "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/hop_plus_kids_il.png",
+    "posterShape": "landscape",
+    "logo": "https://dor2500.github.io/israel-tv-plus/assets/logos/hop_plus_kids_il.png",
+    "background": "https://dor2500.github.io/israel-tv-plus/assets/logos/hop_plus_kids_il.png",
+    "description": "ערוץ הופ! פלוס – תוכניות אהובות, לימוד והרפתקאות לקטנטנים.\n\n📡 מקור השידור: פרטנר TV וסלקום – שרתי שידור ישראליים\n✅ שידור רשמי ישיר",
+    "genres": [
+      "ילדים ונוער",
+      "ישראל"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "ישראל"
+  }
+}

@@ -138,12 +138,9 @@ fun ItvApp(
     val update = updater.state
     LaunchedEffect(update) {
         if (update is UpdateState.Available) {
+            updateOpen = true
             if (updater.canInstall) {
                 updater.download(update.info)
-            } else if (prefs.updatePrompted != update.info.version) {
-                // the one thing only the user can do: allow this app to install updates
-                prefs.markUpdatePrompted(update.info.version)
-                updateOpen = true
             }
         }
     }
@@ -174,7 +171,7 @@ fun ItvApp(
                                 onPicked = { feed.reset(); page = Page.Feed },
                                 onClose = { page = Page.Feed },
                             )
-                            Page.Feed -> if (NuvioUi.enabled) NuvioShell(store, onPlay) else Feed(
+                            Page.Feed -> if (NuvioUi.enabled) NuvioShell(store, prefs, onPlay) else Feed(
                                 data, prefs, updater, feed, haze, logo, onPlay,
                                 onOpenMultiView = {
                                     val all = data?.channels.orEmpty()

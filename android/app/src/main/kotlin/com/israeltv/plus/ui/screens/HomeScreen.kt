@@ -1,5 +1,7 @@
 package com.israeltv.plus.ui.screens
 
+import com.israeltv.plus.data.isKids
+
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.compose.animation.core.Spring
@@ -147,11 +149,19 @@ fun HomeScreen(
     onSeeAll: (String) -> Unit,
 ) {
     val padding = feedPadding(withCategories = true)
-    val categories = data?.categories.orEmpty()
+    val isKids = prefs.isKids
+    val rawCategories = data?.categories.orEmpty()
+    val categories = if (isKids) {
+        rawCategories.mapNotNull { cat ->
+            val filtered = cat.channels.filter { it.isKids() }
+            if (filtered.isNotEmpty()) cat.copy(channels = filtered) else null
+        }
+    } else rawCategories
+
     val israeliCategories = remember(categories) {
         categories.filter { category -> category.channels.any { it.categoryEn == "israel" } }
     }
-    val pool = if (israeliOnly) israeliCategories else categories
+    val pool = if (israeliOnly && !isKids) israeliCategories else categories
     val visibleCategories = if (macroCategory == null) pool else pool.filter { it.name == macroCategory }
 
     // Parallax offset derived from the LazyColumn's first item scroll position
@@ -174,13 +184,18 @@ fun HomeScreen(
             return@LazyColumn
         }
         item(key = "hero") {
+            val heroFeatured = if (prefs.isKids) {
+                data.channels.filter { it.isKids() }.take(8)
+            } else {
+                data.featured
+            }
             HeroPager(
-                featured = data.featured,
+                featured = heroFeatured,
                 prefs = prefs,
                 logo = logo,
                 scrollOffsetPx = heroScrollPx,
                 topInset = padding.calculateTopPadding(),
-                onPlay = { onPlay(it, data.featured) },
+                onPlay = { onPlay(it, heroFeatured) },
                 onInfo = onInfo,
                 modifier = Modifier.bleedToTop(padding).cascadeIn(0),
             )
@@ -393,6 +408,7 @@ private fun MutedHeroHls(
     val player = remember(context) {
         val http = DefaultHttpDataSource.Factory()
             .setUserAgent(USER_AGENT)
+            .setDefaultRequestProperties(mapOf("Referer" to "https://stmify.com/"))
             .setAllowCrossProtocolRedirects(true)
             .setConnectTimeoutMs(10_000)
             .setReadTimeoutMs(12_000)

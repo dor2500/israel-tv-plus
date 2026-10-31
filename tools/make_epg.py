@@ -19,8 +19,8 @@ import xml.etree.ElementTree as ET
 from calendar import timegm
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-# earlier feeds win: epgshare01 has clean Hebrew ids and titles for the Israeli channels
-FEEDS = ["https://epgshare01.online/epgshare01/epg_ripper_IL1.xml.gz", "https://iptv-epg.org/files/epg-il.xml"]
+# earlier feeds win: iptv-epg.org has rich working posters, epgshare01 for extra Israeli channels
+FEEDS = ["https://iptv-epg.org/files/epg-il.xml", "https://epgshare01.online/epgshare01/epg_ripper_IL1.xml.gz"]
 HOURS_BACK, HOURS_AHEAD = 3, 36
 # channels with catch-up keep their past as far as the app can play it (CATCHUP in app.js)
 CATCHUP_HOURS = {"reshet13": 24, "kan11": 6, "kan_hinuchit": 6, "i24news_he": 3, "i24news_en": 3, "i24news_fr": 3}
@@ -28,14 +28,122 @@ DESC_MAX = 170
 
 # Names the automatic match can't work out: our channel id -> normalised feed name (see norm()).
 ALIASES = {
-    "channel9": "9", "keshet12": "12", "reshet13": "רשת", "now14": "14", "kan_hinuchit": "כאןחינוכית", "i24news_he": "עבריתi24",
-    "channel24": "24החדש", "channel_98_il": "98", "knesset": "הכנסת", "calcala10": "הכלכלה", "hot_bidur": "הוטבידורי", "hot_reality": "hotreal",
-    "hot_8": "hot8", "home_plus_il": "בית+", "health_channel_il": "בריאות", "vacation_channel_il": "הנופש", "ego_channel_il": "אגו",
-    "humor_channel_il": "ההומור", "il_the_style_channel_hd_il": "הסטייל", "hop_kids_israel": "הופ", "hop_yaldut_il": "ילדותית", "luli_tv_il": "hotluli",
-    "yes_movies_kids_il": "yesmovieskids", "wiz_kids_il": "wiz", "fomo_tv": "fomo", "stars_kids_il": "הכוכבים", "sport5_stars_hd": "5stars",
-    "one_doco_hd": "onedoco", "one_edge_hd": "sportedge", "hot_israeli_cinema": "הקולנועהי", "yam_tichoni_hd": "יםתיכוני", "bollyshow_hd": "bollyshow",
-    "food_network_il": "foodnetwork", "foody_tv": "foody", "nat_geo_wild_il": "נגיאוגרפיקwild", "hidabroot": "הידברות", "cnn_intl_hd": "cnn",
-    "fox_news_hd": "foxnews", "bloomberg_tv_hd": "בלומברג", "sky_news_uk": "skynews", "dw_english": "dwenglish", "i24_english_world_hd": "i24newsenglish",
+    # Main Israeli channels
+    "channel9": "ישראלפלוס.il",
+    "keshet12": "קשת.il",
+    "reshet13": "רשת.il",
+    "now14": "ערוץ14.il",
+    "kan11": "כאן11.il",
+    "kan_hinuchit": "ערוץ23חינוכית.il",
+    "i24news_he": "עבריתi24",
+    "channel24": "ערוץ24החדש.il",
+    "channel_98_il": "ערוץ98.il",
+    "knesset": "ערוץהכנסת.il",
+    "calcala10": "הכלכלה",
+    "hidabroot": "ערוץהידברות.il",
+    
+    # Sports channels
+    "sport1_israel": "ספורט1hd.il",
+    "sport2_israel": "ספורט2hd.il",
+    "sport3_israel": "ספורט3hd.il",
+    "sport4_israel": "ספורט4hd.il",
+    "sport5_israel_hd": "5sporthd.il",
+    "sport5_plus_hd": "5plushd.il",
+    "sport5_live_hd": "5livehd.il",
+    "sport5_gold_hd": "5gold.il",
+    "sport5_stars_hd": "5stars.il",
+    "sport5_4k_uhd": "5sport4k.il",
+    "sport_5_4k": "5sport4k.il",
+    "sport5_live": "5sporthd.il",
+    "one_1_hd": "one.il",
+    "one_2_hd": "one2.il",
+    "one_doco_hd": "onedoco",
+    "one_edge_hd": "sportedge",
+    "eurosport_2_il": "eurosport2.il",
+
+    # Kids & Youth
+    "hop_kids_israel": "הופ!.il",
+    "hop_yaldut_il": "ילדותישראלית.il",
+    "yalduti_tv": "ילדותישראלית.il",
+    "yalduti_songs_tv": "ילדותישראלית.il",
+    "baby_israel_tv": "בייבי.il",
+    "babytv_global_hd": "בייבי.il",
+    "nickelodeon_il": "ניקלודיאון.il",
+    "teennick_il": "teennick.il",
+    "zoom_kids": "zoom.il",
+    "disney_channel_il": "דיסניhd.il",
+    "stars_kids_il": "ערוץהכוכבים.il",
+    "wiz_kids_il": "ערוץwiz.il",
+    "yes_movies_kids_il": "yesmovieskids.il",
+    "yes_movies_kids_plus_il": "yesmovieskids.il",
+    "luli_tv_il": "hotluli.il",
+    "fomo_tv": "fomo",
+
+    # Lifestyle & Entertainment
+    "hot_3_fhd": "hot3.il",
+    "hot_8": "hot8.il",
+    "hot_bidur": "hotentertainment.il",
+    "hot_reality": "hotreal.il",
+    "hot_zone": "hotzone.il",
+    "hot_comedy": "hotcomedycentral.il",
+    "hot_hbo_hd": "hothbo.il",
+    "hot_cinema_1": "hotcinema1.il",
+    "hot_cinema_2": "hotcinema2.il",
+    "hot_cinema_3": "hotcinema3.il",
+    "hot_cinema_4": "hotcinema4.il",
+    "hot_israeli_cinema": "הקולנועהי",
+
+    "yes_docu": "yesדוקו.il",
+    "yes_israeli_cinema": "yesקולנועישראלי.il",
+    "yes_movies_action": "yesmoviesaction.il",
+    "yes_movies_comedy": "yesmoviescomedy.il",
+    "yes_movies_drama": "yesmoviesdrama.il",
+    "yes_tv_action": "yestvaction.il",
+    "yes_tv_comedy": "yestvcomedy.il",
+    "yes_tv_drama": "yestvdrama.il",
+
+    # Telenovelas & Dramas
+    "viva_israel": "ויוה.il",
+    "viva_plus_il": "ויוה+.il",
+    "viva_premium_il": "vivapremium.il",
+    "turkish_dramas_plus": "ערוץהדרמותהטורקיות+.il",
+    "turkish_dramas_2": "ערוץהדרמותהטורקיות2.il",
+    "turkish_dramas_3": "ערוץהדרמותהטורקיות3.il",
+    "yam_tichoni_hd": "יםתיכוני.il",
+    "yam_tichoni_plus_il": "הערוץהיםתיכוני+.il",
+    "bollyshow_hd": "bollyshow.il",
+    "bollywood_hd": "yesbollywood.il",
+    "zee_tv_il": "zeetv.il",
+
+    # Food, Nature & General
+    "food_network_il": "ערוץהאוכל.il",
+    "keshet_food": "ערוץהאוכל.il",
+    "foody_tv": "foody",
+    "home_plus_il": "בית+.il",
+    "humor_channel_il": "ערוץההומור.il",
+    "gameshow_channel_il": "ערוץהשעשועונים.il",
+    "travel_channel_il": "ערוץהטיולים.il",
+    "health_channel_il": "ערוץבריאות.il",
+    "il_the_style_channel_hd_il": "ערוץהסטייל.il",
+    "nat_geo_il": "nationalgeographic.il",
+    "nat_geo_wild_il": "ngwild.il",
+    "discovery_il": "דיסקבריhd.il",
+    "history_il": "ערוץההיסטוריה.il",
+    "ego_channel_il": "ערוץאגו.il",
+    "vacation_channel_il": "ערוץהנופש.il",
+    "e_entertainment_il": "e!.il",
+    "cbs_reality_il": "ערוץהריאליטי.il",
+    "gtv_il": "gtv.il",
+    "daystar_freetv_il": "daystar.il",
+
+    # International News
+    "cnn_intl_hd": "cnn.il",
+    "fox_news_hd": "foxnews.il",
+    "sky_news_uk": "skynews.il",
+    "bloomberg_tv_hd": "בלומברג.il",
+    "france24_freetv_il": "france24.il",
+    "dw_english": "dwenglish",
+    "i24_english_world_hd": "i24newsenglish",
 }
 
 DROP = re.compile(r"\b(fhd|uhd|hd|4k|sd|il|tv|live|israel)\b|ישראל|ישראלי|שידור חי|ערוץ|ילדים ונוער|\(.*?\)", re.I)
@@ -78,10 +186,13 @@ def read_feed(url):
         if e <= lo or s >= hi or e <= s:
             continue
         icon = p.find("icon")
+        icon_url = icon.get("src", "") if icon is not None else ""
+        if "kaltura.com" in icon_url:
+            icon_url = ""
         desc = " ".join((p.findtext("desc") or "").split())
         if len(desc) > DESC_MAX:
             desc = desc[:DESC_MAX].rsplit(" ", 1)[0] + "…"
-        c["progs"].append([s, e - s, title, desc, icon.get("src", "") if icon is not None else ""])
+        c["progs"].append([s, e - s, title, desc, icon_url])
     return out
 
 
@@ -122,6 +233,12 @@ def main():
     path = os.path.join(ROOT, "epg.json")
     with open(path, "w", encoding="utf-8") as f:
         json.dump({"generated": int(time.time() // 60), "channels": guide}, f, ensure_ascii=False, separators=(",", ":"))
+    try:
+        sys.path.append(os.path.dirname(__file__))
+        from enrich_epg_thumbnails import enrich_epg
+        enrich_epg()
+    except Exception as e:
+        print("enrichment error:", e)
     print("epg.json:", len(guide), "channels,", os.path.getsize(path) // 1024, "KB")
 
 

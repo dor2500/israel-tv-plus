@@ -98,7 +98,7 @@ jobs:
       # throw-away key would break the update path of every installed user. Without the secret the
       # workflow still builds everything (Actions artifacts) but never overwrites release assets.
       - name: publish the release
-        if: startsWith(github.ref, 'refs/tags/') && env.KEYSTORE_B64 != ''
+        if: (startsWith(github.ref, 'refs/tags/') || github.event_name == 'workflow_dispatch') && env.KEYSTORE_B64 != ''
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ env.TAG }}
@@ -153,7 +153,7 @@ jobs:
           if-no-files-found: warn
 
       - name: attach to the release
-        if: startsWith(github.ref, 'refs/tags/')
+        if: startsWith(github.ref, 'refs/tags/') || github.event_name == 'workflow_dispatch'
         shell: pwsh
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

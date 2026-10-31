@@ -20,7 +20,7 @@ SITE = "https://dor2500.github.io/israel-tv-plus/"
 EPG = "https://epgshare01.online/epgshare01/epg_ripper_IL1.xml.gz"
 EDGE = [p for p in (r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe",
                     r"C:\Program Files\Microsoft\Edge\Application\msedge.exe") if os.path.isfile(p)]
-ISRAELI = ("ערוצי ישראל - שידור חי", "ילדים ונוער (בעברית)", "רדיו ישראלי (Israeli Radio)", "מסורת וקהילה")
+ISRAELI = ("ערוצי ישראל - שידור חי", "ערוצי פרטנר TV (Partner TV)", "ילדים ונוער (בעברית)", "רדיו ישראלי (Israeli Radio)", "מסורת וקהילה")
 
 
 def png_logo(svg_rel):
@@ -69,8 +69,14 @@ def entry(c):
              f'tvg-logo="{logo_url(c)}"', f'group-title="{group(c)}"']
     if c.get("kind") == "radio":
         attrs.append('radio="true"')
+    if c.get("http_referrer"):
+        attrs.append(f'http-referrer="{c["http_referrer"]}"')
     name = c["name"].replace("\u2066", "").replace("\u2069", "").replace(",", " ")
-    return f'#EXTINF:-1 {" ".join(attrs)},{name}\n{c["url"]}\n'
+    lines = [f'#EXTINF:-1 {" ".join(attrs)},{name}']
+    if c.get("http_referrer"):
+        lines.append(f'#EXTVLCOPT:http-referrer={c["http_referrer"]}')
+    lines.append(c["url"])
+    return "\n".join(lines) + "\n"
 
 
 def write(name, items):

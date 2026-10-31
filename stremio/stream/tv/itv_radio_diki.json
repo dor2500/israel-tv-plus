@@ -1,1 +1,12 @@
-{"streams":[{"name":"ישראל TV+\nLIVE","title":"רדיו שירי דיכאון\n📡 רדיו שירי דיכאון – השרת של התחנה\n✅ שידור רשמי","url":"https://radio.diki-mizrahit.co.il","behaviorHints":{"bingeGroup":"itv-live"}}]}
+{
+  "streams": [
+    {
+      "name": "ישראל TV+\n[FHD ראשי]",
+      "title": "רדיו שירי דיכאון\n📡 רדיו שירי דיכאון – השרת של התחנה\n✅ שידור רשמי ישיר",
+      "url": "https://radio.diki-mizrahit.co.il",
+      "behaviorHints": {
+        "bingeGroup": "itv-live"
+      }
+    }
+  ]
+}

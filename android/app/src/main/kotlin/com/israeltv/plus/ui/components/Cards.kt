@@ -71,6 +71,181 @@ import kotlin.math.abs
 
 const val PosterAspect = 2f / 3f
 
+
+val NuvioPosterAspect = 2f / 3f
+val NuvioPosterRadius = 12.dp
+
+/**
+ * Nuvio 2:3 vertical poster card ported from NuvioMobile into components directory.
+ * Maps channel data (title, logo, subtitle/stream) into Nuvio's 2:3 card parameters.
+ */
+@Composable
+fun NuvioPosterCard(
+    title: String,
+    imageUrl: String?,
+    subtitle: String? = null,
+    modifier: Modifier = Modifier,
+    badge: String? = null,
+    channelNumber: Int? = null,
+    isFavorite: Boolean = false,
+    onClick: (() -> Unit)? = null,
+    onLongClick: (() -> Unit)? = null,
+    sharedKey: String? = null,
+) {
+    val origin = LocalPlayOrigin.current
+    val interaction = remember { MutableInteractionSource() }
+    val haptic = LocalHapticFeedback.current
+    val scheme = MaterialTheme.colorScheme
+    val cardShape = RoundedCornerShape(NuvioPosterRadius)
+
+    Column(modifier = modifier) {
+        Box(
+            Modifier
+                .fillMaxWidth()
+                .aspectRatio(NuvioPosterAspect)
+                .pressPhysics(interaction, glowShape = cardShape)
+                .then(if (sharedKey != null) Modifier.sharedContainer(sharedKey, cardShape) else Modifier)
+                .clip(cardShape)
+                .background(scheme.surfaceContainerHigh)
+                .border(BorderStroke(0.75.dp, Color.White.copy(alpha = 0.12f)), cardShape)
+                .combinedClickable(
+                    interactionSource = interaction,
+                    indication = null,
+                    onLongClick = onLongClick?.let {
+                        {
+                            haptic.performHapticFeedback(HapticFeedbackType.LongPress)
+                            it()
+                        }
+                    },
+                    onClick = {
+                        haptic.performHapticFeedback(HapticFeedbackType.Confirm)
+                        origin.key = sharedKey
+                        onClick?.invoke()
+                    },
+                ),
+            contentAlignment = Alignment.Center,
+        ) {
+            if (!imageUrl.isNullOrBlank()) {
+                AsyncImage(
+                    model = imageUrl,
+                    contentDescription = title,
+                    modifier = Modifier.fillMaxWidth(0.75f).aspectRatio(1f),
+                    contentScale = ContentScale.Fit,
+                )
+            } else {
+                Text(
+                    text = title,
+                    modifier = Modifier.padding(12.dp),
+                    style = MaterialTheme.typography.titleMedium,
+                    color = scheme.onSurfaceVariant,
+                    textAlign = TextAlign.Center,
+                    maxLines = 2,
+                    overflow = TextOverflow.Ellipsis,
+                )
+            }
+
+            if (!badge.isNullOrBlank()) {
+                val badgeShape = RoundedCornerShape(6.dp)
+                Text(
+                    text = badge,
+                    modifier = Modifier
+                        .align(Alignment.TopStart)
+                        .padding(8.dp)
+                        .clip(badgeShape)
+                        .background(Color.White.copy(alpha = 0.08f))
+                        .border(0.75.dp, Color.White.copy(alpha = 0.28f), badgeShape)
+                        .padding(horizontal = 6.dp, vertical = 2.dp),
+                    color = Color.White.copy(alpha = 0.92f),
+                    style = MaterialTheme.typography.labelSmall,
+                )
+            }
+
+            if (channelNumber != null && channelNumber > 0) {
+                Text(
+                    text = channelNumber.toString(),
+                    modifier = Modifier.align(Alignment.TopEnd).padding(8.dp),
+                    color = scheme.onSurfaceVariant.copy(alpha = 0.8f),
+                    style = MaterialTheme.typography.labelSmall,
+                )
+            }
+
+            if (isFavorite) {
+                BoldIcon(
+                    Icons.Rounded.Star, null,
+                    Modifier.align(Alignment.BottomEnd).padding(8.dp).size(14.dp),
+                    tint = Color(0xFFFFD54F), weight = 0.45.dp,
+                )
+            }
+        }
+        Spacer(Modifier.height(8.dp))
+        Text(
+            text = title,
+            modifier = Modifier.fillMaxWidth().padding(horizontal = 4.dp),
+            style = MaterialTheme.typography.labelLarge.merge(Rtl),
+            color = scheme.onSurface,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
+        )
+        if (!subtitle.isNullOrBlank()) {
+            Text(
+                text = subtitle,
+                modifier = Modifier.fillMaxWidth().padding(horizontal = 4.dp),
+                style = MaterialTheme.typography.labelSmall.merge(Rtl),
+                color = scheme.onSurfaceVariant,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
+            )
+        }
+    }
+}
+
+/**
+ * Convenience mapping from Israel TV+ Channel to Nuvio's 2:3 Poster Card.
+ */
+@Composable
+fun NuvioChannelCard(
+    channel: Channel,
+    logoUrl: String,
+    subtitle: String,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    sharedKey: String? = null,
+) {
+    val menu = LocalCardMenu.current
+    var menuOpen by remember { mutableStateOf(false) }
+    val favorite = menu.isFavorite(channel)
+
+    Box(modifier = modifier) {
+        NuvioPosterCard(
+            title = channel.name,
+            imageUrl = logoUrl,
+            subtitle = subtitle,
+            badge = if (channel.isRadio) "רדיו" else channel.badge,
+            channelNumber = channel.number,
+            isFavorite = favorite,
+            onClick = onClick,
+            onLongClick = { menuOpen = true },
+            sharedKey = sharedKey ?: "nuvio:${channel.id}",
+        )
+        NuvioCardMenu(
+            expanded = menuOpen,
+            channel = channel,
+            logo = logoUrl,
+            subtitle = subtitle,
+            favorite = favorite,
+            onDismiss = { menuOpen = false },
+            onFavorite = {
+                menuOpen = false
+                menu.toggleFavorite(channel)
+            },
+            onInfo = {
+                menuOpen = false
+                menu.onInfo(channel)
+            },
+        )
+    }
+}
+
 val CardShape = RoundedCornerShape(16.dp)
 private val ContinueCardShape = RoundedCornerShape(16.dp)
 

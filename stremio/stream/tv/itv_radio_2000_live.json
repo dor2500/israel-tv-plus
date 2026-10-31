@@ -1,1 +1,12 @@
-{"streams":[{"name":"ישראל TV+\nLIVE","title":"רדיו 2000\n📡 CyberCDN – ה-CDN של תחנות הרדיו עצמן\n✅ שידור רשמי","url":"https://cdn.cybercdn.live/Radio2000/MP3/icecast.audio","behaviorHints":{"bingeGroup":"itv-live"}}]}
+{
+  "streams": [
+    {
+      "name": "ישראל TV+\n[FHD ראשי]",
+      "title": "רדיו 2000\n📡 CyberCDN – ה-CDN של תחנות הרדיו עצמן\n✅ שידור רשמי ישיר",
+      "url": "https://cdn.cybercdn.live/Radio2000/MP3/icecast.audio",
+      "behaviorHints": {
+        "bingeGroup": "itv-live"
+      }
+    }
+  ]
+}

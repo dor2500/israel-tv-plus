@@ -1,1 +1,12 @@
-{"streams":[{"name":"ישראל TV+\nLIVE","title":"רדיו ברסלב\n📡 רדיו ברסלב – שרת התחנה\n✅ שידור רשמי","url":"https://cast.breslevforyou.co.il/listen/radiobreslev/radio.mp3","behaviorHints":{"bingeGroup":"itv-live"}}]}
+{
+  "streams": [
+    {
+      "name": "ישראל TV+\n[FHD ראשי]",
+      "title": "רדיו ברסלב\n📡 רדיו ברסלב – שרת התחנה\n✅ שידור רשמי ישיר",
+      "url": "https://cast.breslevforyou.co.il/listen/radiobreslev/radio.mp3",
+      "behaviorHints": {
+        "bingeGroup": "itv-live"
+      }
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "metas": [
+    {
+      "id": "itv_redbull_tv_sports_fhd",
+      "type": "tv",
+      "name": "143. Red Bull TV Extreme Sports FHD",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/eurosport_1_il.png",
+      "posterShape": "landscape",
+      "description": "ערוץ הספורט והאקסטרים Red Bull TV – מרוצים, גלישה, ספורט מוטורי ואירועים חיים ב-Full HD\n\n📡 מקור השידור: Red Bull TV – Akamai (רשמי)\n✅ שידור רשמי ישיר",
+      "genres": [
+        "ספורט",
+        "בינלאומי"
+      ]
+    }
+  ]
+}

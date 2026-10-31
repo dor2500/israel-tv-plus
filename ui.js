@@ -105,7 +105,7 @@ window.ITV_UI = (function (I) {
   // ---------------------------------------------------------------- TV: Apple TV+ browse screen
   '<div class="atv" id="atv">' +
     '<div class="atv-stage"><div class="atv-bd" id="atv-bd-a"></div><div class="atv-bd" id="atv-bd-b"></div><div class="atv-shade"></div></div>' +
-    '<nav class="atv-pill" id="atv-pill"></nav>' +
+    '<nav class="atv-pill hidden" id="atv-pill"></nav>' +
     '<section class="atv-meta" id="atv-meta-a"></section><section class="atv-meta" id="atv-meta-b"></section>' +
     '<div class="atv-search" id="atv-search"><span class="ico">' + I('search') + '</span><input id="atv-q" type="search" ' +
       'autocomplete="off" spellcheck="false" enterkeyhint="search" placeholder="חיפוש ערוץ – שם, מדינה או מספר"></div>' +
@@ -142,9 +142,17 @@ window.ITV_UI = (function (I) {
       '<div class="eq"><i></i><i></i><i></i><i></i><i></i></div></div></div>' +
     '<div class="spinner hidden" id="spinner"><div class="ring"></div><div id="spinner-text">מתחבר...</div></div>' +
     '<div class="perror hidden" id="perror"><div class="perror-box">' +
-      '<div class="perror-ico">' + I('info') + '</div><h3 id="perror-title"></h3><p id="perror-desc"></p>' +
-      '<div class="perror-actions"><button class="btn primary" id="perror-retry">נסה שוב</button>' +
-      '<button class="btn" id="perror-next">ערוץ הבא</button><button class="btn" id="perror-back">חזרה</button></div>' +
+      '<div class="perror-standby-graphic">' +
+        '<div class="perror-colorbars"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>' +
+        '<div class="perror-logo-wrap"><img id="perror-ch-logo" class="perror-ch-logo" src="icon.png" alt=""></div>' +
+      '</div>' +
+      '<h3 class="perror-title" id="perror-title">סליחה, תקלה זמנית בשידור</h3>' +
+      '<p class="perror-desc" id="perror-desc">השידור בערוץ זה אינו זמין כעת. צוות הערוץ פועל להחזרת השידור בהקדם. אנו מתנצלים על אי הנוחות!</p>' +
+      '<div class="perror-actions">' +
+        '<button class="btn primary" id="perror-retry">נסה להתחבר שוב</button>' +
+        '<button class="btn" id="perror-next">עבור לערוץ הבא (OK)</button>' +
+        '<button class="btn" id="perror-back">חזרה למדריך הערוצים</button>' +
+      '</div>' +
     '</div></div>' +
 
     '<div class="osd" id="osd">' +
@@ -223,6 +231,22 @@ window.ITV_UI = (function (I) {
     '<div class="settings-main"><div class="settings-head"><h2 id="settings-h"></h2><p id="settings-p"></p></div>' +
     '<div class="settings-rows" id="settings-rows"></div></div>' +
   '</div></div>' +
+
+  // ---------------------------------------------------------------- TV Netflix-style profiles screen
+  '<div class="overlay net-prof-overlay hidden" id="tv-profiles" role="dialog" aria-modal="true">' +
+    '<div class="net-prof-box">' +
+      '<div class="net-prof-head">' +
+        '<div class="net-prof-brand"><img src="icon.png" alt="">ישראל <b>TV+</b></div>' +
+        '<h1 class="net-prof-title">מי צופה עכשיו?</h1>' +
+        '<p class="net-prof-sub">בחרו פרופיל לקבלת מועדפים, היסטוריה ותכנים מותאמים אישית</p>' +
+      '</div>' +
+      '<div class="net-prof-grid" id="tv-profiles-grid"></div>' +
+      '<div class="net-prof-actions" id="tv-profiles-actions">' +
+        '<button class="btn net-prof-act-btn" id="btn-tv-prof-manage">ניהול פרופילים</button>' +
+        '<button class="btn net-prof-act-btn hidden" id="btn-tv-prof-done">סיום ניהול</button>' +
+      '</div>' +
+    '</div>' +
+  '</div>' +
 
   // ---------------------------------------------------------------- dialog
   '<div class="overlay hidden" id="dialog"><div class="dialog-box" id="dialog-box">' +

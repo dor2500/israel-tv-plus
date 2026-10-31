@@ -1,0 +1,12 @@
+{
+  "streams": [
+    {
+      "name": "ישראל TV+\n[FHD ראשי]",
+      "title": "ערוץ i24NEWS עברית HD\n📡 i24NEWS – שרת רשמי\n✅ שידור רשמי ישיר",
+      "url": "https://i24newshebrew-cdn.encoders.immergo.tv/master.m3u8",
+      "behaviorHints": {
+        "bingeGroup": "itv-live"
+      }
+    }
+  ]
+}

@@ -146,3 +146,22 @@ class ChannelStore(private val context: Context, private val http: OkHttpClient)
     }.getOrNull()
 }
 
+
+fun Channel.isKids(): Boolean {
+    val cat = category.lowercase()
+    val en = categoryEn.lowercase()
+    val n = name.lowercase()
+    val cid = id.lowercase()
+    val full = "$cat $en $n $cid"
+    val exclude = listOf("היפ הופ", "hiphop", "הופעות", "אירוויזיון", "יהודית", "חדשות", "ספורט", "פוליטיקה", "דת ", "כלכלה", "ויוה", "viva", "טלנובלה", "telenovela", "אימה", "horror", "news", "sport", "finance", "דרמה", "drama", "רכב", "מרוצים", "motor", "cars", "racing", "אוכל", "בישול", "cooking", "food", "טבע", "פרא", "docu", "דוקו", "lifestyle", "עיצוב", "שיפוץ", "האח הגדול", "big brother", "reality", "ריאליטי", "קומדיה", "comedy", "קולנוע ישראלי", "סרטים", "cinema", "movies", "hbo", "hot 3", "yes tv", "action", "אקשן", "פוד", "foody", "סדרות", "series", "ערוץ 9", "ערוץ 11", "ערוץ 12", "ערוץ 13", "ערוץ 14", "ערוץ 15", "ערוץ 16", "כאן 11", "קשת 12", "רשת 13", "עכשיו 14", "i24news", "כנסת", "knesset", "103fm", "100fm", "eco99", "גלגלצ", "גלצ", "קול ברמה", "קול חי", "מכאן")
+    if (exclude.any { it in full }) {
+        val allow = listOf("ילדים", "פמילי", "kids", "family", "מצויר", "cartoon", "disney", "דיסני", "ניק", "nick", "ג'וניור", "junior", "הופ!", "לולי", "luli", "חינוכית", "hinuchit", "ילדותי", "yalduti", "שירי ילדות", "baby", "duck", "lego")
+        if (allow.none { it in full }) return false
+    }
+    if (isRadio || "radio" in en) {
+        return cid in listOf("radios_disney", "radios_kids", "radios_stars", "kan_kids_radio")
+    }
+    if ("ילדים" in cat || en in listOf("kids", "kids_he", "kids_world", "cartoons")) return true
+    val allowWords = listOf("ילדים", "נוער", "פעוטות", "קטנטנים", "אנימציה", "מצוירים", "הופ!", "בייבי", "דיסני", "ניקלודיאון", "ניק ג'וניור", "ג'וניור", "קארטון נטוורק", "בומרנג", "שירי ילדותי", "ילדותי", "baby shark", "ducktv", "lego", "transformers", "cartoon network", "boomerang", "luli", "לולי", "זום", "zoom", "חינוכית", "hinuchit", "יויו", "yoyo", "וויז", "wiz", "באזז", "fomo", "stars_kids", "a_plus_kids")
+    return allowWords.any { it in full }
+}

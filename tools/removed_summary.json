@@ -1,0 +1,314 @@
+{
+  "removed_ru": [
+    {
+      "id": "rain_tv_il",
+      "name": "ערוץ דוז'ד ישראל HD (TV Rain)"
+    },
+    {
+      "id": "viju_sport",
+      "name": "ספורט פלוס HD (viju+ Sport)"
+    },
+    {
+      "id": "setanta_sports_2_hd",
+      "name": "ספורט סטאנטה Setanta Sports 2 HD"
+    },
+    {
+      "id": "extreme_sports_hd",
+      "name": "ערוץ אקסטרים Extreme Sports HD"
+    },
+    {
+      "id": "kinouzhas",
+      "name": "ערוץ סרטי אימה HD"
+    },
+    {
+      "id": "kinohit",
+      "name": "קולנוע להיטים KinoHit HD"
+    },
+    {
+      "id": "simpsons_247",
+      "name": "משפחת סימפסון 24/7 HD"
+    },
+    {
+      "id": "cineman_vhs_retro",
+      "name": "קולנוע רטרו VHS Cinema HD"
+    },
+    {
+      "id": "animal_planet",
+      "name": "Animal Planet World HD"
+    },
+    {
+      "id": "investigation_discovery",
+      "name": "Discovery חקירות (ID)"
+    },
+    {
+      "id": "viju_planet",
+      "name": "עולם וטבע HD (viju+ Planet)"
+    },
+    {
+      "id": "kabbalah_ru",
+      "name": "קבלה לעם – רוסית (ערוץ 66)"
+    },
+    {
+      "id": "kabbalah_tv_ru_il",
+      "name": "קבלה לעם – רוסית HD"
+    },
+    {
+      "id": "radio_best_1064",
+      "name": "הרדיו הטוב 106.4FM (רוסית)"
+    },
+    {
+      "id": "pervoe_radio",
+      "name": "הרדיו הראשון 89.1FM (רוסית)"
+    },
+    {
+      "id": "kabbalah_radio_ru",
+      "name": "קבלה לעם רדיו – רוסית"
+    },
+    {
+      "id": "eli_nisman",
+      "name": "רדיו אלי ניסמן"
+    },
+    {
+      "id": "dusha_kavkaza_live",
+      "name": "Душа Кавказа – רדיו קהילת קווקז בישראל"
+    },
+    {
+      "id": "orenu_radio_live",
+      "name": "רדיו אורנו (Орэну)"
+    },
+    {
+      "id": "radios_russian_891",
+      "name": "רדיוס 100% רוסית (89.1)"
+    },
+    {
+      "id": "nick_jr_he",
+      "name": "ניק ג'וניור (ברוסית)"
+    },
+    {
+      "id": "gulli_kids_hd",
+      "name": "גולי גירל Gulli Girl (ברוסית)"
+    },
+    {
+      "id": "tiji_kids_hd",
+      "name": "ערוץ טיז'י TiJi לילדים HD"
+    },
+    {
+      "id": "jimjam_kids_hd",
+      "name": "ג'ים ג'אם JimJam לילדים HD"
+    },
+    {
+      "id": "cartoons_90s",
+      "name": "קלאסיקות מצוירות 90s HD"
+    },
+    {
+      "id": "kinokazka",
+      "name": "קולנוע אגדות וילדים HD"
+    },
+    {
+      "id": "pixel_tv",
+      "name": "פיקסל TV ילדים HD"
+    },
+    {
+      "id": "niki_kids",
+      "name": "ניקי קידס Niki Kids HD"
+    },
+    {
+      "id": "kapitan_fantastika",
+      "name": "קפטן פנטסטיקה HD"
+    },
+    {
+      "id": "okids",
+      "name": "ערוץ O! ילדים וטבע"
+    },
+    {
+      "id": "solntse_kids",
+      "name": "ערוץ השמש לילדים HD (Solntse Kids)"
+    },
+    {
+      "id": "mult_kids",
+      "name": "ערוץ מולט ילדים HD (Mult Kids)"
+    },
+    {
+      "id": "mult_music_kids",
+      "name": "מולט ומוזיקה לילדים HD (Mult & Music)"
+    },
+    {
+      "id": "carousel_kids",
+      "name": "קרוסלה ערוץ הילדים HD (Carousel Kids)"
+    },
+    {
+      "id": "ctc_kids",
+      "name": "סי טי סי קידס HD (CTC Kids)"
+    },
+    {
+      "id": "fairy_tales_kids",
+      "name": "ערוץ אגדות וסיפורים HD (Fairy Tales Kids)"
+    }
+  ],
+  "removed_ar": [
+    {
+      "id": "cartoon_network_arabic",
+      "name": "Cartoon Network בערבית HD"
+    },
+    {
+      "id": "makan33",
+      "name": "ערוץ מכאן 33 כאן FHD"
+    },
+    {
+      "id": "halatv",
+      "name": "ערוץ הלא TV ישראל HD"
+    }
+  ],
+  "removed_pluto": [
+    {
+      "id": "pluto_movies_action_fhd",
+      "name": "Pluto TV Action Movies FHD"
+    },
+    {
+      "id": "pluto_thriller_movies_fhd",
+      "name": "Pluto TV Thrillers FHD"
+    },
+    {
+      "id": "pluto_comedy_movies_fhd",
+      "name": "Pluto TV Comedy Movies FHD"
+    },
+    {
+      "id": "tastemade_food_hd",
+      "name": "Tastemade Food & Travel HD"
+    },
+    {
+      "id": "pluto_food_hd",
+      "name": "Pluto TV Food & Cooking HD"
+    },
+    {
+      "id": "pluto_cuisine_hd",
+      "name": "Pluto TV Cuisine HD – קולינריה עולמית"
+    },
+    {
+      "id": "pluto_cucina_hd",
+      "name": "Pluto TV Cucina Italiana HD – המטבח האיטלקי"
+    },
+    {
+      "id": "pluto_kfood_hd",
+      "name": "Pluto TV K-Food HD – אוכל אסייתי וקוריאני"
+    },
+    {
+      "id": "pluto_spotlight_movies_fhd",
+      "name": "Pluto TV Spotlight Movies FHD"
+    },
+    {
+      "id": "pluto_crime_drama_fhd",
+      "name": "Pluto TV True Crime & Drama FHD"
+    },
+    {
+      "id": "pluto_drama_movies_fhd",
+      "name": "Pluto TV Drama Movies FHD"
+    },
+    {
+      "id": "pluto_horror_movies_fhd",
+      "name": "Pluto TV Horror Movies FHD"
+    },
+    {
+      "id": "mlb_network_pluto_fhd",
+      "name": "MLB Baseball Live FHD"
+    },
+    {
+      "id": "fox_sports_live_fhd",
+      "name": "FOX Sports Live FHD"
+    },
+    {
+      "id": "pluto_romantic_movies_fhd",
+      "name": "Pluto TV Romance Movies FHD"
+    },
+    {
+      "id": "star_trek_channel_fhd",
+      "name": "Star Trek 24/7 Channel FHD"
+    },
+    {
+      "id": "totally_turtles_fhd",
+      "name": "צבי הנינג׳ה 24/7 — Totally Turtles FHD"
+    },
+    {
+      "id": "nick_pluto_fhd",
+      "name": "Nick Pluto TV Kids FHD"
+    },
+    {
+      "id": "vevo_90s_live_fhd",
+      "name": "Vevo 90s Music Classics FHD"
+    },
+    {
+      "id": "garfield_friends_fhd",
+      "name": "גארפילד וחברים 24/7 FHD"
+    },
+    {
+      "id": "nick_jr_pluto_fhd",
+      "name": "Nick Jr. Pluto TV FHD"
+    },
+    {
+      "id": "csi_channel_fhd",
+      "name": "CSI Crime Scene Investigation FHD"
+    },
+    {
+      "id": "peppa_pig_247",
+      "name": "ערוץ פפה פיג Peppa Pig 24/7"
+    },
+    {
+      "id": "dora_explorer_247",
+      "name": "ערוץ מגלים עם דורה 24/7 (Dora TV)"
+    },
+    {
+      "id": "baby_shark_tv",
+      "name": "ערוץ בייבי שארק (Baby Shark TV)"
+    }
+  ],
+  "added_partner": [
+    {
+      "id": "partner_humor_il",
+      "name": "ערוץ פרטנר TV – הומור וסטנדאפ HD"
+    },
+    {
+      "id": "partner_home_design_il",
+      "name": "ערוץ פרטנר TV – בית ועיצוב HD"
+    },
+    {
+      "id": "partner_reality_il",
+      "name": "ערוץ פרטנר TV – ריאליטי ישראלי HD"
+    },
+    {
+      "id": "partner_turkish_dramas_il",
+      "name": "ערוץ פרטנר TV – הדרמות הטורקיות HD"
+    },
+    {
+      "id": "partner_good_life_il",
+      "name": "ערוץ פרטנר TV – החיים הטובים HD"
+    },
+    {
+      "id": "partner_kids_il",
+      "name": "ערוץ פרטנר TV – עולם הילדים HD"
+    },
+    {
+      "id": "partner_toddlers_luli_il",
+      "name": "ערוץ פרטנר TV – לולי לגיל הרך HD"
+    },
+    {
+      "id": "partner_gameshow_il",
+      "name": "ערוץ פרטנר TV – השעשועונים והמשחקים HD"
+    },
+    {
+      "id": "partner_vacation_il",
+      "name": "ערוץ פרטנר TV – הנופש והחופש HD"
+    },
+    {
+      "id": "partner_viva_il",
+      "name": "ערוץ פרטנר TV – ויוה טלנובלות HD"
+    },
+    {
+      "id": "partner_junior_il",
+      "name": "ערוץ פרטנר TV – ג'וניור פלוס HD"
+    },
+    {
+      "id": "partner_design_il",
+      "name": "ערוץ פרטנר TV – עיצוב ולייף סטייל HD"
+    }
+  ]
+}

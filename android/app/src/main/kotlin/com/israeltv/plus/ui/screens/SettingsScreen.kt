@@ -52,6 +52,10 @@ import com.israeltv.plus.data.AppPrefs
 import com.israeltv.plus.data.ChannelData
 import com.israeltv.plus.data.UpdateState
 import com.israeltv.plus.data.Updater
+import com.israeltv.plus.ui.player.PlexIntegrationDialog
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 import com.israeltv.plus.ui.components.BoldIcon
 import com.israeltv.plus.ui.components.ProfileAvatar
 import com.israeltv.plus.ui.components.SectionHeader
@@ -66,6 +70,7 @@ import java.util.Locale
 fun SettingsScreen(data: ChannelData?, prefs: AppPrefs, updater: Updater, onProfiles: () -> Unit, onStyle: () -> Unit) {
     val ctx = LocalContext.current
     val haptic = LocalHapticFeedback.current
+    var showPlexDialog by remember { mutableStateOf(false) }
     LazyColumn(Modifier.fillMaxSize(), contentPadding = feedPadding(withCategories = false), flingBehavior = rememberBitChordFlingBehavior()) {
         item(key = "update") { UpdateCard(updater, Modifier.padding(horizontal = 16.dp).padding(bottom = 28.dp)) }
         item(key = "look") {
@@ -103,6 +108,18 @@ fun SettingsScreen(data: ChannelData?, prefs: AppPrefs, updater: Updater, onProf
                         prefs.setLaunchSoundOn(it)
                     })
                 }
+            }
+            Spacer(Modifier.height(28.dp))
+        }
+        item(key = "plex") {
+            SectionHeader("שידור, Plex ו-DLNA")
+            SettingsGroup {
+                SettingRow(
+                    Icons.Rounded.Tv,
+                    "חיבור ל-Plex ולטלוויזיות LG",
+                    "הגדרת 269 הערוצים ולוח השידורים ב-Plex (Live TV & DVR) ו-DLNA",
+                    onClick = { showPlexDialog = true },
+                )
             }
             Spacer(Modifier.height(28.dp))
         }

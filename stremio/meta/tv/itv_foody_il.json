@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_foody_il",
+    "type": "tv",
+    "name": "30. ערוץ פודי Foody בישול ישראלי HD",
+    "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/food_channel.svg",
+    "posterShape": "landscape",
+    "logo": "https://dor2500.github.io/israel-tv-plus/assets/logos/food_channel.svg",
+    "background": "https://dor2500.github.io/israel-tv-plus/assets/logos/food_channel.svg",
+    "description": "ערוץ האוכל המוביל של ישראל: השפים הטובים בארץ, מתכונים לשישי, סדנאות אפייה ורעיונות לארוחות מהירות 24/7.\n\n📡 מקור השידור: FreeTV – השידור הרשמי (AWS CloudFront)\n✅ שידור רשמי ישיר",
+    "genres": [
+      "ערוצי ישראל - שידור חי",
+      "ישראל"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "ישראל"
+  }
+}

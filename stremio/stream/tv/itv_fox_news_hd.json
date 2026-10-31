@@ -1,1 +1,12 @@
-{"streams":[{"name":"ישראל TV+\nLIVE","title":"Fox News Channel HD\n📡 b84203c4.ottrast.com\n⚠️ ממסר צד שלישי","url":"http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2335/index.m3u8","behaviorHints":{"notWebReady":true,"bingeGroup":"itv-live"}}]}
+{
+  "streams": [
+    {
+      "name": "ישראל TV+\n[FHD ראשי]",
+      "title": "Fox News Channel HD\n📡 fox-foxnewsnow-samsungus.amagi.tv\n⚠️ ממסר צד שלישי",
+      "url": "https://fox-foxnewsnow-samsungus.amagi.tv/playlist.m3u8",
+      "behaviorHints": {
+        "bingeGroup": "itv-live"
+      }
+    }
+  ]
+}

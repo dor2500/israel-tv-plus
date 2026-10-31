@@ -195,6 +195,7 @@ private fun buildPlayer(context: Context, handleAudioFocus: Boolean = true): Exo
         .setAllowCrossProtocolRedirects(true)
         .setConnectTimeoutMs(7_000)
         .setReadTimeoutMs(9_000)
+        .setDefaultRequestProperties(mapOf("Referer" to "https://stmify.com/"))
     val loadControl = DefaultLoadControl.Builder()
         .setBufferDurationsMs(
             /* minBufferMs = */ 12_000,
@@ -325,7 +326,16 @@ fun PlayerScreen(
                     buffering = false
                 }
             }
-            override fun onTracksChanged(t: Tracks) { tracks = t }
+            override fun onTracksChanged(t: Tracks) {
+                tracks = t
+                val audioGroups = t.groups.filter { it.type == C.TRACK_TYPE_AUDIO }
+                if (audioGroups.isNotEmpty() && audioGroups.none { it.isSelected }) {
+                    val firstAudio = audioGroups.first()
+                    player.trackSelectionParameters = player.trackSelectionParameters.buildUpon()
+                        .setOverrideForType(TrackSelectionOverride(firstAudio.mediaTrackGroup, 0))
+                        .build()
+                }
+            }
         }
         player.addListener(listener)
         onDispose {

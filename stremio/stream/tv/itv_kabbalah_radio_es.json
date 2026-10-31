@@ -1,1 +1,13 @@
-{"streams":[{"name":"ישראל TV+\nLIVE","title":"קבלה לעם רדיו – ספרדית\n📡 icecast.kab.tv\n⚠️ ממסר צד שלישי","url":"http://icecast.kab.tv/live1-spa-574bcfd5.mp3","behaviorHints":{"notWebReady":true,"bingeGroup":"itv-live"}}]}
+{
+  "streams": [
+    {
+      "name": "ישראל TV+\n[FHD ראשי]",
+      "title": "קבלה לעם רדיו – ספרדית\n📡 icecast.kab.tv\n⚠️ ממסר צד שלישי",
+      "url": "http://icecast.kab.tv/live1-spa-574bcfd5.mp3",
+      "behaviorHints": {
+        "notWebReady": true,
+        "bingeGroup": "itv-live"
+      }
+    }
+  ]
+}

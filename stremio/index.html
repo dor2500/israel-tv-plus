@@ -1,14 +1,303 @@
 <!DOCTYPE html>
-<html lang="he" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ישראל TV+ ל-Stremio</title>
-<style>body{margin:0;background:#05070d;color:#f5f7fb;font-family:Heebo,Arial,sans-serif;display:flex;min-height:100vh;align-items:center;justify-content:center}
-main{max-width:720px;padding:32px;text-align:center}img{width:120px;border-radius:24px}h1{font-size:36px;margin:16px 0 8px}
-p{color:#9aa7bd;font-size:18px;line-height:1.6}a.btn{display:inline-block;margin:8px;padding:14px 26px;border-radius:12px;font-size:20px;font-weight:700;text-decoration:none;background:#7b5bf5;color:#fff}
-a.btn.alt{background:#1a2438}code{display:block;direction:ltr;background:#121a2b;padding:12px;border-radius:10px;margin:12px 0;word-break:break-all;font-size:15px}</style></head>
-<body><main><img src="../assets/app/icon-512.png" alt=""><h1>ישראל TV+ ל-Stremio</h1>
-<p>440 ערוצים ותחנות רדיו בשידור חי, מסודרים ב-11 קטגוריות. בכל ערוץ כתוב מאיפה מגיע השידור.</p>
-<a class="btn" href="stremio://dor2500.github.io/israel-tv-plus/stremio/manifest.json">התקנה ב-Stremio</a>
-<a class="btn alt" href="https://web.stremio.com/#/addons?addon=https%3A%2F%2Fdor2500.github.io%2Fisrael-tv-plus%2Fstremio%2Fmanifest.json">התקנה ב-Stremio Web</a>
-<p>או הדביקו את הכתובת בחיפוש התוספים של Stremio:</p><code>https://dor2500.github.io/israel-tv-plus/stremio/manifest.json</code>
-<p>ערוצי HTTP מתנגנים באפליקציות Stremio (מחשב, אנדרואיד, טלוויזיה) ולא ב-Stremio Web. דיבוב לעברית, מועדפים ומצב ילדים קיימים באפליקציה ישראל TV+ עצמה.</p>
-</main></body></html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ישראל TV+ עבור Stremio | תוסף השידורים החיים הגדול בישראל</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #06080F;
+      --card-bg: rgba(18, 24, 38, 0.72);
+      --card-border: rgba(255, 255, 255, 0.12);
+      --accent-primary: #6366f1;
+      --accent-secondary: #a855f7;
+      --accent-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Rubik', system-ui, -apple-system, sans-serif;
+      background-color: var(--bg);
+      background-image: 
+        radial-gradient(circle at 50% 15%, rgba(99, 102, 241, 0.18) 0%, transparent 55%),
+        radial-gradient(circle at 85% 75%, rgba(236, 72, 153, 0.12) 0%, transparent 45%),
+        radial-gradient(circle at 15% 85%, rgba(168, 85, 247, 0.12) 0%, transparent 45%);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.2rem;
+      direction: rtl;
+    }
+    .glass-card {
+      max-width: 680px;
+      width: 100%;
+      background: var(--card-bg);
+      backdrop-filter: blur(28px) saturate(180%);
+      -webkit-backdrop-filter: blur(28px) saturate(180%);
+      border: 1px solid var(--card-border);
+      border-radius: 2.2rem;
+      padding: 3.5rem 2.5rem;
+      text-align: center;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+      position: relative;
+      overflow: hidden;
+    }
+    .glass-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 15%;
+      right: 15%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+    }
+    .logo-wrap {
+      position: relative;
+      width: 110px;
+      height: 110px;
+      margin: 0 auto 1.8rem;
+    }
+    .logo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 2rem;
+      box-shadow: 0 12px 30px rgba(99, 102, 241, 0.4);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+    }
+    .live-badge {
+      position: absolute;
+      bottom: -6px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #ef4444;
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 0.2rem 0.7rem;
+      border-radius: 1rem;
+      letter-spacing: 0.05em;
+      box-shadow: 0 0 15px rgba(239, 68, 68, 0.7);
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .live-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #fff;
+      animation: pulse 1.4s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.8); }
+    }
+    h1 {
+      font-size: 2.4rem;
+      font-weight: 900;
+      margin-bottom: 0.8rem;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #ffffff 30%, #cbd5e1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .tagline {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 2.2rem;
+    }
+    .stats-row {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 2.4rem;
+    }
+    .stat-pill {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 0.6rem 1.2rem;
+      border-radius: 1.2rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #e2e8f0;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .stat-pill span {
+      color: #818cf8;
+      font-weight: 800;
+    }
+    .btn-group {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 2.2rem;
+    }
+    @media (min-width: 480px) {
+      .btn-group { flex-direction: row; }
+    }
+    .btn {
+      flex: 1;
+      padding: 1.1rem 1.6rem;
+      border-radius: 1.2rem;
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      cursor: pointer;
+      transition: all 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+      border: none;
+      outline: none;
+    }
+    .btn-primary {
+      background: var(--accent-gradient);
+      color: #fff;
+      box-shadow: 0 10px 28px rgba(99, 102, 241, 0.35);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 34px rgba(99, 102, 241, 0.5);
+    }
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.07);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.12);
+      transform: translateY(-2px);
+    }
+    .copy-box {
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 1.2rem;
+      padding: 0.8rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.8rem;
+      margin-bottom: 1.5rem;
+    }
+    .copy-box code {
+      direction: ltr;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.9rem;
+      color: #cbd5e1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .btn-copy {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 0.8rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+    .btn-copy:hover {
+      background: #6366f1;
+    }
+    .features-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0.8rem;
+      text-align: right;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .feature-item {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .feature-item svg {
+      color: #10b981;
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+<body>
+  <main class="glass-card">
+    <div class="logo-wrap">
+      <img src="../assets/app/icon-512.png" alt="ישראל TV+">
+      <div class="live-badge"><span class="live-dot"></span> LIVE</div>
+    </div>
+    <h1>ישראל TV+ ל-Stremio</h1>
+    <p class="tagline">398 ערוצי שידור חי ורדיו מסודרים בקטגוריות, תמיכה מלאה במספרי שלט, איכות FHD ושרתי גיבוי אוטומטיים.</p>
+
+    <div class="stats-row">
+      <div class="stat-pill">📺 <span>398</span> ערוצים</div>
+      <div class="stat-pill">🗂️ <span>12</span> קטגוריות</div>
+      <div class="stat-pill">🛡️ <span>100%</span> שרתי גיבוי</div>
+    </div>
+
+    <div class="btn-group">
+      <a class="btn btn-primary" href="stremio://dor2500.github.io/israel-tv-plus/stremio/manifest.json">
+        <span>🚀 התקנה באפליקציה</span>
+      </a>
+      <a class="btn btn-secondary" href="https://web.stremio.com/#/addons?addon=https%3A%2F%2Fdor2500.github.io%2Fisrael-tv-plus%2Fstremio%2Fmanifest.json" target="_blank">
+        <span>🌐 התקנה ב-Web</span>
+      </a>
+    </div>
+
+    <div class="copy-box">
+      <code id="manifest-url">https://dor2500.github.io/israel-tv-plus/stremio/manifest.json</code>
+      <button class="btn-copy" onclick="copyManifest()">העתק קישור</button>
+    </div>
+
+    <div class="features-list">
+      <div class="feature-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        מספור מותאם לשלט טלוויזיה
+      </div>
+      <div class="feature-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        איכות FHD 1080p מקורית
+      </div>
+      <div class="feature-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        שרתי גיבוי ישירים Ottrast/CF
+      </div>
+      <div class="feature-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        ערוצי ספורט 4K ודוקו בלעדיים
+      </div>
+    </div>
+  </main>
+
+  <script>
+    function copyManifest() {
+      const u = document.getElementById('manifest-url').innerText;
+      navigator.clipboard.writeText(u).then(() => {
+        const b = document.querySelector('.btn-copy');
+        const orig = b.innerText;
+        b.innerText = 'הועתק! ✓';
+        b.style.background = '#10b981';
+        setTimeout(() => {
+          b.innerText = orig;
+          b.style.background = '';
+        }, 2200);
+      });
+    }
+  </script>
+</body>
+</html>

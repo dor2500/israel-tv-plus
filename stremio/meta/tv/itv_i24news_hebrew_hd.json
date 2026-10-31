@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_i24news_hebrew_hd",
+    "type": "tv",
+    "name": "422. ערוץ i24NEWS עברית HD",
+    "poster": "https://www.i24news.tv/images/favicon.png",
+    "posterShape": "landscape",
+    "logo": "https://www.i24news.tv/images/favicon.png",
+    "background": "https://www.i24news.tv/images/favicon.png",
+    "description": "ערוץ החדשות והאקטואליה הבינלאומי i24NEWS בשידור חי בעברית 24/7\n\n📡 מקור השידור: i24NEWS – שרת רשמי\n✅ שידור רשמי ישיר",
+    "genres": [
+      "ערוצי ישראל - שידור חי",
+      "ישראל"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "ישראל"
+  }
+}

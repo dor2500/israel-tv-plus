@@ -34,10 +34,15 @@ import kotlinx.coroutines.withContext
 import java.net.DatagramPacket
 import java.net.DatagramSocket
 import java.net.HttpURLConnection
+import java.net.NetworkInterface
 import java.net.InetAddress
 import java.net.SocketTimeoutException
 import java.net.URI
 import java.net.URL
+import java.net.InetSocketAddress
+import java.net.Socket
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
 
 /**
  * Registered in AndroidManifest.xml so Google Cast SDK initializes with the standard
@@ -57,6 +62,7 @@ class CastOptionsProvider : OptionsProvider {
 enum class CastProtocol(val labelHe: String, val badgeHe: String) {
     GOOGLE_CAST("שידור ישיר (Google Cast / Chromecast / Android TV)", "Google Cast"),
     DLNA("שידור ישיר ברשת (LG webOS / Samsung / DLNA)", "DLNA / Smart TV"),
+    PLEX("Plex Live TV & DVR / נגן מדיה", "Plex"),
 }
 
 data class CastDeviceItem(
@@ -66,6 +72,7 @@ data class CastDeviceItem(
     val protocol: CastProtocol,
     val routeId: String? = null,
     val dlnaControlUrl: String? = null,
+    val plexUrl: String? = null,
 )
 
 fun Channel.remoteLogoUrl(): String = when {
@@ -336,9 +343,19 @@ class CastController(
             }
             CastProtocol.DLNA -> {
                 connectedDevice = device
-                isConnecting = true
-                statusMessage = "שולח שידור אל ${device.name}…"
-                loadChannel(channel)
+                if (device.dlnaControlUrl != null) {
+                    isConnecting = true
+                    statusMessage = "שולח שידור אל ${device.name}…"
+                    loadChannel(channel)
+                } else {
+                    statusMessage = "פותח שיקוף מסך אל ${device.name}…"
+                    openSystemMirroring()
+                }
+            }
+            CastProtocol.PLEX -> {
+                connectedDevice = device
+                isConnecting = false
+                statusMessage = "מחובר אל ${device.name} (Live TV & DVR)"
             }
         }
     }
@@ -364,6 +381,10 @@ class CastController(
                 currentCandidates = channel.allCandidateUrls()
                 currentCandidateIndex = 0
                 loadCurrentDlnaCandidate(dev, channel)
+            }
+            CastProtocol.PLEX -> {
+                isConnecting = false
+                statusMessage = "שידור ערוץ ${channel.name} ב-Plex"
             }
         }
     }
@@ -462,7 +483,8 @@ class CastController(
                 isConnecting = false
                 isCasting = false
                 remotePlaying = false
-                errorMessage = "הטלוויזיה ${device.name} דחתה את השידור הישיר. מומלץ להשתמש ב״שיקוף מסך (LG Screen Share / Miracast)״ למטה."
+                errorMessage = "הטלוויזיה ${device.name} דורשת שיקוף מסך ישיר (LG Screen Share / Smart View). עובר לשיקוף מסך…"
+                openSystemMirroring()
             }
         }
     }
@@ -497,6 +519,7 @@ class CastController(
                     }
                 }
             }
+            CastProtocol.PLEX -> {}
         }
     }
 
@@ -522,7 +545,7 @@ class CastController(
                     }
                 }
             }
-            null -> {}
+            CastProtocol.PLEX, null -> {}
         }
         connectedDevice = null
         isConnecting = false
@@ -538,6 +561,11 @@ class CastController(
             Intent(Settings.ACTION_CAST_SETTINGS),
             Intent("android.settings.WIFI_DISPLAY_SETTINGS"),
             Intent("com.samsung.wfd.LAUNCH_WFD_PICKER_DLG"),
+            Intent("com.lge.smartshare.screenshare"),
+            Intent("android.settings.CAST_SETTINGS"),
+            Intent("com.android.settings.WIFI_DISPLAY_SETTINGS"),
+            Intent("android.media.action.OPEN_CAST_DIALOG"),
+            Intent("com.huawei.android.wfd.WFD_ACTION"),
             Intent(Settings.ACTION_WIFI_SETTINGS),
         )
         for (intent in intents) {
@@ -574,6 +602,7 @@ class CastController(
 
     private suspend fun discoverDlnaDevices(): List<CastDeviceItem> = withContext(Dispatchers.IO) {
         val locations = linkedSetOf<String>()
+        val foundPlexDevices = mutableListOf<CastDeviceItem>()
         val wifi = runCatching {
             context.applicationContext.getSystemService(Context.WIFI_SERVICE) as? WifiManager
         }.getOrNull()
@@ -585,35 +614,93 @@ class CastController(
         }.getOrNull()
 
         try {
+            val multicastAddr = InetAddress.getByName("239.255.255.250")
+            val broadcastAddr = InetAddress.getByName("255.255.255.255")
+            val searchTargets = listOf(
+                "ssdp:all",
+                "upnp:rootdevice",
+                "urn:schemas-upnp-org:device:MediaRenderer:1",
+                "urn:schemas-upnp-org:service:AVTransport:1",
+                "urn:schemas-upnp-org:device:MediaServer:1",
+                "urn:plex-tv:service:PlexMediaServer:1",
+                "urn:lge-com:service:webos-second-screen:1",
+                "urn:dial-multiscreen-org:service:dial:1",
+            )
+            val packets = searchTargets.map { st ->
+                val query = buildString {
+                    append("M-SEARCH * HTTP/1.1\r\n")
+                    append("HOST: 239.255.255.250:1900\r\n")
+                    append("MAN: \"ssdp:discover\"\r\n")
+                    append("MX: 2\r\n")
+                    append("ST: $st\r\n\r\n")
+                }.toByteArray(Charsets.UTF_8)
+                DatagramPacket(query, query.size, multicastAddr, 1900)
+            }
+
+            // GDM discovery packets for Plex Media Server (UDP 32414)
+            val gdmQuery = "M-SEARCH * HTTP/1.0\r\n".toByteArray(Charsets.UTF_8)
+            val gdmPackets = listOf(
+                DatagramPacket(gdmQuery, gdmQuery.size, multicastAddr, 32414),
+                DatagramPacket(gdmQuery, gdmQuery.size, broadcastAddr, 32414),
+            )
+
             DatagramSocket().use { socket ->
                 socket.broadcast = true
-                socket.soTimeout = 750
-                val multicastAddr = InetAddress.getByName("239.255.255.250")
-                val searchTargets = listOf(
-                    "urn:schemas-upnp-org:service:AVTransport:1",
-                    "urn:schemas-upnp-org:device:MediaRenderer:1",
-                )
-                for (st in searchTargets) {
-                    val query = buildString {
-                        append("M-SEARCH * HTTP/1.1\r\n")
-                        append("HOST: 239.255.255.250:1900\r\n")
-                        append("MAN: \"ssdp:discover\"\r\n")
-                        append("MX: 2\r\n")
-                        append("ST: $st\r\n\r\n")
-                    }.toByteArray(Charsets.UTF_8)
-                    val packet = DatagramPacket(query, query.size, multicastAddr, 1900)
+                socket.soTimeout = 600
+
+                // Send first burst
+                for (packet in packets + gdmPackets) {
                     runCatching { socket.send(packet) }
                 }
 
-                val deadline = System.currentTimeMillis() + 2200L
-                val buf = ByteArray(4096)
+                // Also send through all active multicast-capable interfaces (e.g. wlan0)
+                runCatching {
+                    val interfaces = NetworkInterface.getNetworkInterfaces() ?: return@runCatching
+                    for (ni in interfaces) {
+                        if (ni.isUp && !ni.isLoopback && ni.supportsMulticast()) {
+                            for (packet in packets + gdmPackets) {
+                                runCatching { socket.send(packet) }
+                            }
+                        }
+                    }
+                }
+
+                // Listen for responses with wave 2 burst at halfway
+                val deadline = System.currentTimeMillis() + 3000L
+                var secondWaveSent = false
+                val buf = ByteArray(8192)
+
                 while (System.currentTimeMillis() < deadline) {
+                    if (!secondWaveSent && System.currentTimeMillis() > (deadline - 1800L)) {
+                        secondWaveSent = true
+                        for (packet in packets + gdmPackets) {
+                            runCatching { socket.send(packet) }
+                        }
+                    }
                     try {
                         val recv = DatagramPacket(buf, buf.size)
                         socket.receive(recv)
                         val resp = String(recv.data, 0, recv.length, Charsets.UTF_8)
                         val loc = Regex("(?im)^LOCATION:\\s*(.+)$").find(resp)?.groupValues?.get(1)?.trim()
                         if (!loc.isNullOrEmpty()) locations.add(loc)
+
+                        // Parse Plex GDM responses
+                        if (resp.contains("plex/media-server", true) || resp.contains("Resource-Identifier", true)) {
+                            val hostIp = recv.address.hostAddress
+                            if (!hostIp.isNullOrEmpty()) {
+                                val pName = Regex("(?im)^Name:\\s*(.+)$").find(resp)?.groupValues?.get(1)?.trim() ?: "שרת Plex"
+                                val pPort = Regex("(?im)^Port:\\s*(\\d+)$").find(resp)?.groupValues?.get(1)?.trim()?.toIntOrNull() ?: 32400
+                                foundPlexDevices.add(
+                                    CastDeviceItem(
+                                        id = "plex:$hostIp:$pPort",
+                                        name = "Plex ($pName)",
+                                        description = "שרת Plex Media Server • Live TV & DVR",
+                                        protocol = CastProtocol.PLEX,
+                                        plexUrl = "http://$hostIp:$pPort",
+                                    )
+                                )
+                            }
+                        }
                     } catch (_: SocketTimeoutException) {
                         // keep listening until deadline
                     } catch (_: Exception) {
@@ -626,14 +713,125 @@ class CastController(
             runCatching { if (lock?.isHeld == true) lock.release() }
         }
 
-        locations.mapNotNull { loc -> fetchDlnaDeviceDescription(loc) }
-            .distinctBy { it.dlnaControlUrl ?: it.id }
+        val parsedDlna = locations.mapNotNull { loc -> fetchDlnaDeviceDescription(loc) }
+        val probed = probeSubnetDevices()
+
+        (parsedDlna + foundPlexDevices + probed)
+            .distinctBy { it.id }
     }
+
+    private suspend fun probeSubnetDevices(): List<CastDeviceItem> = withContext(Dispatchers.IO) {
+        val localIp = getLocalIpv4() ?: return@withContext emptyList()
+        val bytes = localIp.address
+        val prefix = "${bytes[0].toUByte()}.${bytes[1].toUByte()}.${bytes[2].toUByte()}."
+        val myHost = bytes[3].toUByte().toInt()
+
+        val hosts = (1..254).filter { it != myHost }
+        val results = mutableListOf<CastDeviceItem>()
+
+        // Probe in chunks to maintain low resource usage while completing fast
+        val chunks = hosts.chunked(32)
+        for (chunk in chunks) {
+            val jobs = chunk.map { host ->
+                async {
+                    val ip = "$prefix$host"
+                    probeHost(ip)
+                }
+            }
+            val found = jobs.awaitAll().filterNotNull()
+            results.addAll(found)
+            if (results.size >= 8) break
+        }
+        results
+    }
+
+    private fun probeHost(ip: String): CastDeviceItem? {
+        // 1. Check Plex port 32400
+        if (isPortOpen(ip, 32400, 180)) {
+            val dev = fetchPlexHttpIdentity(ip, 32400)
+            if (dev != null) return dev
+        }
+        // 2. Check LG webOS TV port 3000 or 3001
+        if (isPortOpen(ip, 3000, 150) || isPortOpen(ip, 3001, 150)) {
+            return CastDeviceItem(
+                id = "tv:lg:$ip",
+                name = "טלוויזיית LG webOS ($ip)",
+                description = "טלוויזיית LG webOS • שיקוף מסך / שידור אלחוטי",
+                protocol = CastProtocol.DLNA,
+            )
+        }
+        // 3. Check Google Cast port 8008
+        if (isPortOpen(ip, 8008, 150)) {
+            val castDev = fetchCastHttpInfo(ip)
+            if (castDev != null) return castDev
+        }
+        // 4. Check UPnP ports
+        for (port in listOf(8080, 7676, 52235)) {
+            if (isPortOpen(ip, port, 120)) {
+                val dev = fetchDlnaDeviceDescription("http://$ip:$port/description.xml")
+                    ?: fetchDlnaDeviceDescription("http://$ip:$port/dmr/LG_DMR.xml")
+                if (dev != null) return dev
+            }
+        }
+        return null
+    }
+
+    private fun isPortOpen(ip: String, port: Int, timeoutMs: Int): Boolean = runCatching {
+        Socket().use { s ->
+            s.connect(InetSocketAddress(ip, port), timeoutMs)
+            true
+        }
+    }.getOrDefault(false)
+
+    private fun fetchPlexHttpIdentity(ip: String, port: Int): CastDeviceItem? = runCatching {
+        val conn = (URL("http://$ip:$port/identity").openConnection() as HttpURLConnection).apply {
+            connectTimeout = 800
+            readTimeout = 800
+        }
+        val xml = conn.inputStream.bufferedReader().use { it.readText() }
+        val machineId = Regex("(?im)machineIdentifier=\"([^\"]+)\"").find(xml)?.groupValues?.get(1) ?: return null
+        val ver = Regex("(?im)version=\"([^\"]+)\"").find(xml)?.groupValues?.get(1) ?: ""
+        CastDeviceItem(
+            id = "plex:$machineId",
+            name = "שרת Plex ($ip)",
+            description = "Plex Media Server $ver • Live TV & DVR".trim(),
+            protocol = CastProtocol.PLEX,
+            plexUrl = "http://$ip:$port",
+        )
+    }.getOrNull()
+
+    private fun fetchCastHttpInfo(ip: String): CastDeviceItem? = runCatching {
+        val conn = (URL("http://$ip:8008/setup/eureka_info?params=name").openConnection() as HttpURLConnection).apply {
+            connectTimeout = 800
+            readTimeout = 800
+        }
+        val jsonStr = conn.inputStream.bufferedReader().use { it.readText() }
+        val name = Regex("(?im)\"name\"\\s*:\\s*\"([^\"]+)\"").find(jsonStr)?.groupValues?.get(1) ?: "Chromecast ($ip)"
+        CastDeviceItem(
+            id = "cast_http:$ip",
+            name = name,
+            description = "Google Cast / Chromecast ($ip)",
+            protocol = CastProtocol.GOOGLE_CAST,
+        )
+    }.getOrNull()
+
+    private fun getLocalIpv4(): InetAddress? = runCatching {
+        val interfaces = NetworkInterface.getNetworkInterfaces() ?: return null
+        for (ni in interfaces) {
+            if (!ni.isUp || ni.isLoopback) continue
+            for (addr in ni.inetAddresses) {
+                if (addr is java.net.Inet4Address && !addr.isLoopbackAddress && !addr.isLinkLocalAddress) {
+                    return addr
+                }
+            }
+        }
+        null
+    }.getOrNull()
 
     private fun fetchDlnaDeviceDescription(locationUrl: String): CastDeviceItem? = runCatching {
         val conn = (URL(locationUrl).openConnection() as HttpURLConnection).apply {
-            connectTimeout = 1500
-            readTimeout = 1500
+            connectTimeout = 2000
+            readTimeout = 2000
             setRequestProperty("User-Agent", USER_AGENT)
         }
         val xml = conn.inputStream.bufferedReader().use { it.readText() }
@@ -641,8 +839,10 @@ class CastController(
             .find(xml)?.groupValues?.get(1)?.trim() ?: return null
         val manufacturer = Regex("(?is)<manufacturer>\\s*([^<]+?)\\s*</manufacturer>")
             .find(xml)?.groupValues?.get(1)?.trim().orEmpty()
+        val modelName = Regex("(?is)<modelName>\\s*([^<]+?)\\s*</modelName>")
+            .find(xml)?.groupValues?.get(1)?.trim().orEmpty()
 
-        // Locate AVTransport:1 service block and its controlURL
+        // Locate AVTransport:1 service block and its controlURL anywhere in device or embedded devices
         val serviceBlocks = Regex("(?is)<service>(.*?)</service>").findAll(xml)
         var avControlPath: String? = null
         for (m in serviceBlocks) {
@@ -653,26 +853,32 @@ class CastController(
                 if (!avControlPath.isNullOrEmpty()) break
             }
         }
-        val controlPath = avControlPath ?: return null
+
         val baseUri = URI(locationUrl)
-        val controlUrl = if (controlPath.startsWith("http://", true) || controlPath.startsWith("https://", true)) {
-            controlPath
-        } else {
-            val prefix = "${baseUri.scheme}://${baseUri.Authority()}"
-            if (controlPath.startsWith("/")) prefix + controlPath else "$prefix/$controlPath"
+        val controlUrl = avControlPath?.let { path ->
+            if (path.startsWith("http://", true) || path.startsWith("https://", true)) {
+                path
+            } else {
+                val prefix = "${baseUri.scheme}://${baseUri.Authority()}"
+                if (path.startsWith("/")) prefix + path else "$prefix/$path"
+            }
         }
 
+        val isLg = manufacturer.contains("LG", true) || friendlyName.contains("LG", true) || modelName.contains("webOS", true)
+        val isSamsung = manufacturer.contains("Samsung", true) || friendlyName.contains("Samsung", true)
+
         val desc = when {
-            manufacturer.contains("LG", ignoreCase = true) || friendlyName.contains("LG", ignoreCase = true) ->
-                "טלוויזיית LG webOS • שידור ישיר DLNA"
-            manufacturer.contains("Samsung", ignoreCase = true) || friendlyName.contains("Samsung", ignoreCase = true) ->
-                "טלוויזיית Samsung • שידור ישיר DLNA"
-            manufacturer.isNotBlank() -> "$manufacturer • שידור ישיר DLNA"
-            else -> "טלוויזיה חכמה ברשת (DLNA / UPnP)"
+            isLg && controlUrl != null -> "טלוויזיית LG webOS • שידור ישיר DLNA"
+            isLg -> "טלוויזיית LG webOS • שיקוף מסך / שידור"
+            isSamsung && controlUrl != null -> "טלוויזיית Samsung • שידור ישיר DLNA"
+            isSamsung -> "טלוויזיית Samsung • שיקוף מסך Smart View"
+            controlUrl != null -> if (manufacturer.isNotBlank()) "$manufacturer • שידור ישיר DLNA" else "טלוויזיה חכמה ברשת (DLNA)"
+            manufacturer.isNotBlank() -> "$manufacturer • שיקוף מסך אלחוטי"
+            else -> "טלוויזיה חכמה ברשת • שיקוף מסך"
         }
 
         CastDeviceItem(
-            id = "dlna:$controlUrl",
+            id = "tv:${controlUrl ?: locationUrl}",
             name = friendlyName,
             description = desc,
             protocol = CastProtocol.DLNA,

@@ -84,6 +84,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
+import androidx.compose.material3.Button
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -93,6 +96,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalHapticFeedback
+import androidx.compose.ui.platform.LocalClipboardManager
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.AnnotatedString
+import android.content.Intent
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.font.FontWeight
@@ -451,6 +458,7 @@ internal fun CastSheet(
     onDismiss: () -> Unit,
 ) {
     val scheme = MaterialTheme.colorScheme
+    var showPlexDialog by remember { mutableStateOf(false) }
     ModalBottomSheet(onDismissRequest = onDismiss, containerColor = scheme.surfaceContainer) {
         Column(
             Modifier
@@ -504,22 +512,59 @@ internal fun CastSheet(
             }
             if (castController.devices.isEmpty()) {
                 Text(
-                    if (castController.isScanning) "מחפש מכשירים ברשת..." else "לא נמצאו מכשירים. ודאו שהטלפון והטלוויזיה באותה רשת Wi-Fi.",
-                    Modifier.fillMaxWidth().padding(horizontal = 8.dp, vertical = 16.dp),
+                    if (castController.isScanning) "מחפש מכשירים וטלוויזיות ברשת ה-Wi-Fi..." else "לא נמצאו מכשירים בסריקה האוטומטית. ודאו שהטלפון והטלוויזיה באותה רשת Wi-Fi.",
+                    Modifier.fillMaxWidth().padding(horizontal = 8.dp, vertical = 12.dp),
                     color = scheme.onSurfaceVariant,
                     style = MaterialTheme.typography.bodyMedium,
                 )
             }
             Spacer(Modifier.height(8.dp))
-            CastQuietRow(Icons.Rounded.ScreenShare, "שיקוף מסך") {
-                castController.openSystemMirroring()
-                onDismiss()
+            Row(
+                Modifier
+                    .fillMaxWidth()
+                    .clip(RoundedCornerShape(16.dp))
+                    .background(scheme.primaryContainer)
+                    .clickable(role = Role.Button) {
+                        castController.openSystemMirroring()
+                        onDismiss()
+                    }
+                    .padding(horizontal = 16.dp, vertical = 12.dp),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                Icon(Icons.Rounded.ScreenShare, null, tint = scheme.onPrimaryContainer, modifier = Modifier.size(26.dp))
+                Spacer(Modifier.width(16.dp))
+                Column(Modifier.weight(1f)) {
+                    Text("שיקוף מסך (LG Screen Share / Smart View)", color = scheme.onPrimaryContainer, style = MaterialTheme.typography.titleMedium)
+                    Text("שיקוף ישיר של מסך הטלפון אל הטלוויזיה בלחיצה אחת", color = scheme.onPrimaryContainer.copy(alpha = 0.8f), style = MaterialTheme.typography.bodySmall)
+                }
+            }
+            Spacer(Modifier.height(8.dp))
+            Row(
+                Modifier
+                    .fillMaxWidth()
+                    .clip(RoundedCornerShape(16.dp))
+                    .background(scheme.surfaceContainerHigh)
+                    .clickable(role = Role.Button) {
+                        showPlexDialog = true
+                    }
+                    .padding(horizontal = 16.dp, vertical = 12.dp),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                Icon(Icons.Rounded.Tv, null, tint = scheme.primary, modifier = Modifier.size(26.dp))
+                Spacer(Modifier.width(16.dp))
+                Column(Modifier.weight(1f)) {
+                    Text("חיבור ל-Plex ול-DLNA (טלוויזיית LG / מחשב)", color = scheme.onSurface, style = MaterialTheme.typography.titleMedium)
+                    Text("הוספת 269 הערוצים ולוח השידורים ל-Plex Live TV & DVR", color = scheme.onSurfaceVariant, style = MaterialTheme.typography.bodySmall)
+                }
             }
             CastQuietRow(Icons.AutoMirrored.Rounded.OpenInNew, "פתיחה באפליקציה חיצונית") {
                 castController.openExternalCaster(channel)
                 onDismiss()
             }
         }
+    }
+    if (showPlexDialog) {
+        PlexIntegrationDialog(onDismiss = { showPlexDialog = false })
     }
 }
 
@@ -612,6 +657,113 @@ internal fun PlayerErrorState(
                 Icon(Icons.Rounded.SkipNext, null, Modifier.size(18.dp))
                 Spacer(Modifier.width(8.dp))
                 Text("ערוץ הבא")
+            }
+        }
+    }
+}
+
+
+@Composable
+fun PlexIntegrationDialog(onDismiss: () -> Unit) {
+    val scheme = MaterialTheme.colorScheme
+    val context = LocalContext.current
+    val clipboard = LocalClipboardManager.current
+    val haptic = LocalHapticFeedback.current
+    val m3uUrl = "https://dor2500.github.io/israel-tv-plus/plex.m3u"
+    val epgUrl = "https://dor2500.github.io/israel-tv-plus/epg.xml"
+
+    BasicAlertDialog(onDismissRequest = onDismiss) {
+        Surface(
+            shape = RoundedCornerShape(28.dp),
+            color = scheme.surfaceContainerHigh,
+            modifier = Modifier.fillMaxWidth().padding(16.dp),
+        ) {
+            Column(
+                Modifier
+                    .fillMaxWidth()
+                    .verticalScroll(rememberScrollState())
+                    .padding(24.dp),
+            ) {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Icon(Icons.Rounded.Tv, null, tint = scheme.primary, modifier = Modifier.size(32.dp))
+                    Spacer(Modifier.width(16.dp))
+                    Text("חיבור ל-Plex ול-DLNA", style = MaterialTheme.typography.headlineSmall, color = scheme.onSurface)
+                }
+                Spacer(Modifier.height(16.dp))
+                Text(
+                    "באמצעות כתובות אלו ניתן לצפות בכל 269 הערוצים הישראליים בתוך אפליקציית Plex בטלוויזיית LG, סמסונג או סטרימר, עם לוח שידורים (EPG) ופוסטרים מלאים לכל תוכנית.",
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = scheme.onSurfaceVariant,
+                )
+                Spacer(Modifier.height(16.dp))
+
+                Text("רשימת ערוצים (M3U Tuner):", style = MaterialTheme.typography.labelLarge, color = scheme.primary)
+                Spacer(Modifier.height(4.dp))
+                Row(
+                    Modifier
+                        .fillMaxWidth()
+                        .clip(RoundedCornerShape(12.dp))
+                        .background(scheme.surfaceContainerLowest)
+                        .padding(12.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Text(m3uUrl, Modifier.weight(1f), style = MaterialTheme.typography.bodySmall, color = scheme.onSurface, maxLines = 2)
+                    Spacer(Modifier.width(8.dp))
+                    FilledTonalButton(onClick = {
+                        clipboard.setText(AnnotatedString(m3uUrl))
+                        haptic.performHapticFeedback(HapticFeedbackType.VirtualKey)
+                        android.widget.Toast.makeText(context, "הועתק ללוח", android.widget.Toast.LENGTH_SHORT).show()
+                    }) {
+                        Text("העתק")
+                    }
+                }
+
+                Spacer(Modifier.height(12.dp))
+
+                Text("מדריך שידורים (XMLTV Guide):", style = MaterialTheme.typography.labelLarge, color = scheme.primary)
+                Spacer(Modifier.height(4.dp))
+                Row(
+                    Modifier
+                        .fillMaxWidth()
+                        .clip(RoundedCornerShape(12.dp))
+                        .background(scheme.surfaceContainerLowest)
+                        .padding(12.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Text(epgUrl, Modifier.weight(1f), style = MaterialTheme.typography.bodySmall, color = scheme.onSurface, maxLines = 2)
+                    Spacer(Modifier.width(8.dp))
+                    FilledTonalButton(onClick = {
+                        clipboard.setText(AnnotatedString(epgUrl))
+                        haptic.performHapticFeedback(HapticFeedbackType.VirtualKey)
+                        android.widget.Toast.makeText(context, "הועתק ללוח", android.widget.Toast.LENGTH_SHORT).show()
+                    }) {
+                        Text("העתק")
+                    }
+                }
+
+                Spacer(Modifier.height(16.dp))
+                Text(
+                    "כיצד להגדיר בטלוויזיית LG:\n1. פתחו את Plex Web במחשב או בשרת ← הגדרות ← Live TV & DVR.\n2. לחצו Add Device / Tuner ובחרו M3U Tuner והדביקו את כתובת הרשימה.\n3. בלשונית XMLTV Guide הדביקו את כתובת מדריך השידורים.\n4. בטלוויזיית LG פתחו את אפליקציית Plex מחנות webOS, ועברו אל Live TV!",
+                    style = MaterialTheme.typography.bodySmall,
+                    color = scheme.onSurfaceVariant,
+                )
+
+                Spacer(Modifier.height(20.dp))
+                Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+                    FilledTonalButton(onClick = {
+                        val shareText = "ישראל TV+ ב-Plex:\nרשימת ערוצים: $m3uUrl\nמדריך שידורים: $epgUrl"
+                        val shareIntent = Intent(Intent.ACTION_SEND).apply {
+                            type = "text/plain"
+                            putExtra(Intent.EXTRA_TEXT, shareText)
+                        }
+                        context.startActivity(Intent.createChooser(shareIntent, "שיתוף הגדרות Plex"))
+                    }) {
+                        Text("שתף קישורים")
+                    }
+                    Button(onClick = onDismiss) {
+                        Text("סגור")
+                    }
+                }
             }
         }
     }

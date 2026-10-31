@@ -45,6 +45,7 @@ object Playback {
 
     fun player(context: Context): ExoPlayer = exo ?: run {
         val http = DefaultHttpDataSource.Factory().setUserAgent(USER_AGENT).setAllowCrossProtocolRedirects(true)
+            .setDefaultRequestProperties(mapOf("Referer" to "https://stmify.com/"))
             .setConnectTimeoutMs(12_000).setReadTimeoutMs(15_000)
         ExoPlayer.Builder(context.applicationContext)
             .setMediaSourceFactory(DefaultMediaSourceFactory(context.applicationContext).setDataSourceFactory(http))

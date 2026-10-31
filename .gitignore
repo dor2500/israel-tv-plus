@@ -31,8 +31,4 @@ google-services.json
 node_modules/
 www/
 
-dist47/
-dist48/
-.agents/
-.claude/
-
+.nuvio_reference

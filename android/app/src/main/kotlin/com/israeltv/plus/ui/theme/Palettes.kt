@@ -22,6 +22,25 @@ data class PaletteOption(val key: String, val seed: Color, val style: PaletteSty
 
 private val GoogleBlue = Color(0xFF4285F4)
 
+/** Authentic Nuvio theme color palettes ported directly from NuvioMobile. */
+val NuvioPalettes: List<PaletteOption> = listOf(
+    PaletteOption("nuvio_gold",     Color(0xFFFFD45C), PaletteStyle.Expressive, wallpaper = false),
+    PaletteOption("nuvio_jade",     Color(0xFF7BF08D), PaletteStyle.Vibrant,    wallpaper = false),
+    PaletteOption("nuvio_rosegold", Color(0xFFFFB37A), PaletteStyle.Expressive, wallpaper = false),
+    PaletteOption("nuvio_arctic",   Color(0xFF4DE3FF), PaletteStyle.Vibrant,    wallpaper = false),
+    PaletteOption("nuvio_graphite", Color(0xFFF3F5F7), PaletteStyle.TonalSpot,  wallpaper = false),
+    PaletteOption("nuvio_crimson",  Color(0xFFE53935), PaletteStyle.Vibrant,    wallpaper = false),
+)
+
+private val NuvioSeeds = mapOf(
+    "nuvio_gold"     to Color(0xFFFFD45C),
+    "nuvio_jade"     to Color(0xFF7BF08D),
+    "nuvio_rosegold" to Color(0xFFFFB37A),
+    "nuvio_arctic"   to Color(0xFF4DE3FF),
+    "nuvio_graphite" to Color(0xFFF3F5F7),
+    "nuvio_crimson"  to Color(0xFFE53935),
+)
+
 /** Curated "Premium Streaming" highly saturated shades (Netflix Crimson, Apple Azure, Hulu Mint, Vibrant Amber). */
 val StreamingPalettes: List<PaletteOption> = listOf(
     PaletteOption("crimson", Color(0xFFE31837), PaletteStyle.Vibrant, wallpaper = false),
@@ -37,8 +56,8 @@ private val StreamingSeeds = mapOf(
     "amber"   to Color(0xFFF59E0B),
 )
 
-/** "צבעים נוספים": Premium Streaming shades first, followed by Pixel-like curated seeds. */
-val CuratedPalettes: List<PaletteOption> = StreamingPalettes + listOf(
+/** "צבעים נוספים": Nuvio luxury palettes first, followed by Streaming and Pixel curated seeds. */
+val CuratedPalettes: List<PaletteOption> = NuvioPalettes + StreamingPalettes + listOf(
     0xFF4285F4, 0xFF1B6EF3, 0xFF00A3BF, 0xFF00897B, 0xFF34A853, 0xFF9E9D24,
     0xFFF9AB00, 0xFFFF7043, 0xFFEA4335, 0xFFE91E63, 0xFFAB47BC, 0xFF7E57C2,
 ).mapIndexed { i, argb -> PaletteOption("c$i", Color(argb), PaletteStyle.TonalSpot, wallpaper = false) }
@@ -97,12 +116,12 @@ private fun schemeFor(context: Context, key: String, seed: Color, style: Palette
     return synchronized(cache) {
         cache.getOrPut(id) {
             val base = dynamicColorScheme(seedColor = seed, isDark = dark, style = style)
-            val streamingSeed = StreamingSeeds[key]
-            if (streamingSeed != null && dark) {
+            val targetSeed = NuvioSeeds[key] ?: StreamingSeeds[key]
+            if (targetSeed != null && dark) {
                 base.copy(
-                    primary = streamingSeed,
-                    onPrimary = Color.White,
-                    surfaceTint = streamingSeed,
+                    primary = targetSeed,
+                    onPrimary = if (key == "nuvio_gold" || key == "nuvio_graphite") Color(0xFF111111) else Color.White,
+                    surfaceTint = targetSeed,
                 )
             } else {
                 base

@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_motorvision_hd",
+    "type": "tv",
+    "name": "416. מוטורוויז'ן Motorvision HD",
+    "poster": "https://i.imgur.com/v4kj8pI.png",
+    "posterShape": "landscape",
+    "logo": "https://i.imgur.com/v4kj8pI.png",
+    "background": "https://i.imgur.com/v4kj8pI.png",
+    "description": "ערוץ הספורט המוטורי ועולם הרכב המוביל Motorvision TV – סופרקארס, מרוצי מסלול ומגזיני רכב\n\n📡 מקור השידור: mvg-mv-xumo.otteravision.com\n⚠️ ממסר צד שלישי",
+    "genres": [
+      "ספורט",
+      "גרמניה"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "גרמניה"
+  }
+}
