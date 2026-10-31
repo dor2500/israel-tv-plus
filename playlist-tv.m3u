@@ -426,7 +426,7 @@ https://turnerlive.warnermediacdn.com/hls/live/586495/cnngo/cnn_slate/VIDEO_0_35
 #EXTINF:-1 tvg-id="" tvg-name="Fox News Channel HD" tvg-chno="304" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/fox_news_hd.png" group-title="חדשות מהעולם",Fox News Channel HD
 http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2335/index.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="FOX LiveNOW News HD" tvg-chno="305" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/fox_livenow_hd.png" group-title="חדשות מהעולם",FOX LiveNOW News HD
-https://fox-foxnewsnow-samsungus.amagi.tv/playlist.m3u8
+https://cdn-uw2-prod.tsv2.amagi.tv/linear/amg00488-foxdigital-livenowbyfox-lgus/playlist.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="CBS News 24/7 FHD" tvg-chno="306" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/cbs_news_hd.png" group-title="חדשות מהעולם",CBS News 24/7 FHD
 https://cbsn-us.cbsnstream.cbsnews.com/out/v1/55a8648e8f134e82a470f83d562deeca/master.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="Bloomberg TV+ Business FHD" tvg-chno="307" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/bloomberg_tv_hd.png" group-title="חדשות מהעולם",Bloomberg TV+ Business FHD

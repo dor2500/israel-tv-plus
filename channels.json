@@ -59,13 +59,11 @@
     "countryHe": "ישראל",
     "fallbackUrls": [
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/calcala_10/live.livx/playlist.m3u8",
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/calcala_10/live.livx/playlist.m3u8?fmp4&renditions",
-      "https://r.il.cdn-redge.media/livehls/oil/ch14/live/ch14/live.livx/playlist.m3u8"
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/calcala_10/live.livx/playlist.m3u8?fmp4&renditions"
     ],
     "backups": [
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/calcala_10/live.livx/playlist.m3u8",
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/calcala_10/live.livx/playlist.m3u8?fmp4&renditions",
-      "https://r.il.cdn-redge.media/livehls/oil/ch14/live/ch14/live.livx/playlist.m3u8"
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/calcala_10/live.livx/playlist.m3u8?fmp4&renditions"
     ]
   },
   {
@@ -346,15 +344,13 @@
     },
     "backups": [
       "https://ch16israel-cdn.encoders.immergo.tv/2/streamPlaylist.m3u8",
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/channel16/live.livx/playlist.m3u8?fmp4&renditions",
-      "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan11/live.livx/playlist.m3u8"
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/channel16/live.livx/playlist.m3u8?fmp4&renditions"
     ],
     "country": "IL",
     "countryHe": "ישראל",
     "fallbackUrls": [
       "https://ch16israel-cdn.encoders.immergo.tv/2/streamPlaylist.m3u8",
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/channel16/live.livx/playlist.m3u8?fmp4&renditions",
-      "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan11/live.livx/playlist.m3u8"
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/channel16/live.livx/playlist.m3u8?fmp4&renditions"
     ],
     "isIsraeli": true,
     "kind": "tv"
@@ -462,12 +458,8 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8"
-    ],
-    "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8"
-    ]
+    "fallbackUrls": [],
+    "backups": []
   },
   {
     "id": "knesset",
@@ -533,12 +525,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8"
-    ],
-    "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8"
-    ]
+    "fallbackUrls": [],
+    "backups": []
   },
   {
     "id": "walla_news_il",
@@ -561,12 +549,8 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
-    "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8"
-    ],
-    "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8"
-    ]
+    "fallbackUrls": [],
+    "backups": []
   },
   {
     "id": "walla_yes_il",
@@ -575,9 +559,7 @@
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
     "url": "https://live.wcdn.co.il/yes/prog_index.m3u8",
-    "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8"
-    ],
+    "fallbackUrls": [],
     "logo": "assets/logos/walla_yes_il.png",
     "badge": "HD",
     "lang": "he",
@@ -591,9 +573,7 @@
       "found": "iptv-org (WallaYes.il)",
       "web": "✅"
     },
-    "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8"
-    ]
+    "backups": []
   },
   {
     "id": "hot_bidur",
@@ -649,12 +629,8 @@
       "web": "❌ רק באפליקציה (HTTP)"
     },
     "number": 104,
-    "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8"
-    ],
-    "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8"
-    ]
+    "fallbackUrls": [],
+    "backups": []
   },
   {
     "id": "reshet13_comedy_il",
@@ -663,9 +639,7 @@
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
     "url": "https://d15ds134q59udk.cloudfront.net/media/3b45de9e-c944-4fdc-a344-7c3042b5b104/mainManifest.m3u8",
-    "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8"
-    ],
+    "fallbackUrls": [],
     "logo": "assets/logos/reshet13_comedy_il.png",
     "badge": "HD",
     "lang": "he",
@@ -679,9 +653,7 @@
       "found": "iptv-org (Reshet13Comedy.il)",
       "web": "✅"
     },
-    "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8"
-    ]
+    "backups": []
   },
   {
     "id": "yes_docu",
@@ -705,11 +677,9 @@
     },
     "countryHe": "ישראל",
     "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8",
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2344/index.m3u8"
     ],
     "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8",
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2344/index.m3u8"
     ]
   },
@@ -758,12 +728,8 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8"
-    ],
-    "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8"
-    ]
+    "fallbackUrls": [],
+    "backups": []
   },
   {
     "id": "good_life_israel",
@@ -838,12 +804,8 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8"
-    ],
-    "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8"
-    ]
+    "fallbackUrls": [],
+    "backups": []
   },
   {
     "id": "health_channel_il",
@@ -852,9 +814,7 @@
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
     "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2378/index.m3u8",
-    "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8"
-    ],
+    "fallbackUrls": [],
     "logo": "assets/logos/health_channel_il.png",
     "badge": "HD",
     "lang": "he",
@@ -867,9 +827,7 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8"
-    ]
+    "backups": []
   },
   {
     "id": "travel_channel_il",
@@ -890,12 +848,8 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8"
-    ],
-    "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8"
-    ]
+    "fallbackUrls": [],
+    "backups": []
   },
   {
     "id": "vacation_channel_il",
@@ -916,12 +870,8 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8"
-    ],
-    "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8"
-    ]
+    "fallbackUrls": [],
+    "backups": []
   },
   {
     "id": "e_entertainment_il",
@@ -942,12 +892,8 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8"
-    ],
-    "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8"
-    ]
+    "fallbackUrls": [],
+    "backups": []
   },
   {
     "id": "ego_channel_il",
@@ -956,9 +902,7 @@
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
     "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32317/index.m3u8",
-    "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8"
-    ],
+    "fallbackUrls": [],
     "logo": "assets/logos/ego_channel_il.png",
     "badge": "HD",
     "lang": "he",
@@ -971,9 +915,7 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8"
-    ]
+    "backups": []
   },
   {
     "id": "cbs_reality_il",
@@ -994,12 +936,8 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8"
-    ],
-    "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8"
-    ]
+    "fallbackUrls": [],
+    "backups": []
   },
   {
     "id": "game_show_channel_il",
@@ -1020,12 +958,8 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8"
-    ],
-    "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8"
-    ]
+    "fallbackUrls": [],
+    "backups": []
   },
   {
     "id": "humor_channel_il",
@@ -1102,12 +1036,8 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
-    "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8"
-    ],
-    "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8"
-    ]
+    "fallbackUrls": [],
+    "backups": []
   },
   {
     "id": "keshet_music",
@@ -1133,12 +1063,10 @@
     "country": "IL",
     "countryHe": "ישראל",
     "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/music_il/live.livx/playlist.m3u8",
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8"
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/music_il/live.livx/playlist.m3u8"
     ],
     "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/music_il/live.livx/playlist.m3u8",
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8"
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/music_il/live.livx/playlist.m3u8"
     ]
   },
   {
@@ -1162,12 +1090,8 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
-    "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8"
-    ],
-    "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8"
-    ]
+    "fallbackUrls": [],
+    "backups": []
   },
   {
     "id": "kan11_subs_il",
@@ -1309,12 +1233,8 @@
       "web": "✅"
     },
     "number": 128,
-    "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8"
-    ],
-    "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8"
-    ]
+    "fallbackUrls": [],
+    "backups": []
   },
   {
     "id": "shelanu_tv_live",
@@ -1337,12 +1257,8 @@
     },
     "number": 129,
     "countryHe": "ישראל",
-    "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8"
-    ],
-    "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8"
-    ]
+    "fallbackUrls": [],
+    "backups": []
   },
   {
     "id": "iltv_fr",
@@ -1366,12 +1282,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8"
-    ],
-    "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8"
-    ]
+    "fallbackUrls": [],
+    "backups": []
   },
   {
     "id": "jltv_channel",
@@ -1394,12 +1306,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8"
-    ],
-    "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8"
-    ]
+    "fallbackUrls": [],
+    "backups": []
   },
   {
     "id": "angel_tv_hebrew_hd",
@@ -1422,12 +1330,8 @@
     },
     "number": 132,
     "countryHe": "ישראל",
-    "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8"
-    ],
-    "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8"
-    ]
+    "fallbackUrls": [],
+    "backups": []
   },
   {
     "id": "kan11_subs",
@@ -1478,12 +1382,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8"
-    ],
-    "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8"
-    ]
+    "fallbackUrls": [],
+    "backups": []
   },
   {
     "id": "knesset_access",
@@ -1599,12 +1499,8 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
-    "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8"
-    ],
-    "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8"
-    ]
+    "fallbackUrls": [],
+    "backups": []
   },
   {
     "id": "freetv_doco_il",
@@ -1627,12 +1523,8 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
-    "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8"
-    ],
-    "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8"
-    ]
+    "fallbackUrls": [],
+    "backups": []
   },
   {
     "id": "karaoke_il",
@@ -1655,12 +1547,8 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
-    "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8"
-    ],
-    "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8"
-    ]
+    "fallbackUrls": [],
+    "backups": []
   },
   {
     "id": "kotel_live_il",
@@ -1683,12 +1571,8 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
-    "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8"
-    ],
-    "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8"
-    ]
+    "fallbackUrls": [],
+    "backups": []
   },
   {
     "id": "rain_tv_il",
@@ -1698,7 +1582,7 @@
     "categoryEn": "israel",
     "url": "https://wl.tvrain.tv/transcode/ngrp:ses_all/playlist.m3u8",
     "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8"
+      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32156/index.m3u8"
     ],
     "logo": "assets/logos/rain_tv_il.png",
     "badge": "HD",
@@ -1714,8 +1598,7 @@
       "web": "✅"
     },
     "backups": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32156/index.m3u8",
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8"
+      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32156/index.m3u8"
     ]
   },
   {
@@ -1723,9 +1606,7 @@
     "name": "ערוץ הסטייל והאופנה HD",
     "category": "ערוצי ישראל - שידור חי",
     "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32155/index.m3u8",
-    "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8"
-    ],
+    "fallbackUrls": [],
     "logo": "assets/logos/il_the_style_channel_hd_il.png",
     "badge": "HD",
     "color": "#f472b6",
@@ -1740,18 +1621,14 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8"
-    ]
+    "backups": []
   },
   {
     "id": "reshet13_nofesh_il",
     "name": "רשת 13 ערוץ הנופש HD",
     "category": "ערוצי ישראל - שידור חי",
     "url": "https://d1yd8hohnldm33.cloudfront.net/out/v1/19dee23c2cc24f689bd4e1288661ee0c/index.m3u8",
-    "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8"
-    ],
+    "fallbackUrls": [],
     "logo": "assets/logos/reshet13_nofesh_il.png",
     "badge": "HD",
     "color": "#38bdf8",
@@ -1766,9 +1643,7 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
-    "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8"
-    ]
+    "backups": []
   },
   {
     "id": "reshet13_reality_il",
@@ -1855,9 +1730,7 @@
     "name": "הרדיו הראשון 89.1FM – וידאו חי",
     "category": "ערוצי ישראל - שידור חי",
     "url": "https://cdn.cybercdn.live/Pervoia/Video/playlist.m3u8",
-    "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8"
-    ],
+    "fallbackUrls": [],
     "logo": "assets/logos/radio_891_video_il.png",
     "badge": "HD",
     "color": "#f59e0b",
@@ -1872,18 +1745,14 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
-    "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8"
-    ]
+    "backups": []
   },
   {
     "id": "radio_91fm_video_il",
     "name": "רדיו לב המדינה 91FM – וידאו חי",
     "category": "ערוצי ישראל - שידור חי",
     "url": "https://cdn.cybercdn.live/Lev_Hamedina/Video/playlist.m3u8",
-    "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8"
-    ],
+    "fallbackUrls": [],
     "logo": "assets/logos/radio_91fm_video_il.png",
     "badge": "HD",
     "color": "#ec4899",
@@ -1898,18 +1767,14 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
-    "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8"
-    ]
+    "backups": []
   },
   {
     "id": "daystar_freetv_il",
     "name": "Daystar TV (FreeTV ישראל)",
     "category": "ערוצי ישראל - שידור חי",
     "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/daystar/live.livx/playlist.m3u8",
-    "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8"
-    ],
+    "fallbackUrls": [],
     "logo": "assets/logos/daystar_freetv_il.png",
     "badge": "FHD",
     "color": "#fbbf24",
@@ -1924,9 +1789,7 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
-    "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8"
-    ]
+    "backups": []
   },
   {
     "id": "cellcom_humor_il",
@@ -2017,9 +1880,7 @@
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
     "url": "https://i24newsfrench-cdn.encoders.immergo.tv/master.m3u8",
-    "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8"
-    ],
+    "fallbackUrls": [],
     "badge": "FHD",
     "color": "#ef4444",
     "isIsraeli": true,
@@ -2034,9 +1895,7 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
-    "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8"
-    ]
+    "backups": []
   },
   {
     "id": "arutz_hayeladim",
@@ -2059,12 +1918,8 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
-    "fallbackUrls": [
-      "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan23/live.livx/playlist.m3u8"
-    ],
-    "backups": [
-      "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan23/live.livx/playlist.m3u8"
-    ]
+    "fallbackUrls": [],
+    "backups": []
   },
   {
     "id": "logi_tv",
@@ -2087,12 +1942,8 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
-    "fallbackUrls": [
-      "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan23/live.livx/playlist.m3u8"
-    ],
-    "backups": [
-      "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan23/live.livx/playlist.m3u8"
-    ]
+    "fallbackUrls": [],
+    "backups": []
   },
   {
     "id": "hop_kids_israel",
@@ -2144,12 +1995,8 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "fallbackUrls": [
-      "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan23/live.livx/playlist.m3u8"
-    ],
-    "backups": [
-      "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan23/live.livx/playlist.m3u8"
-    ]
+    "fallbackUrls": [],
+    "backups": []
   },
   {
     "id": "hop_pele_tv",
@@ -2172,12 +2019,8 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
-    "fallbackUrls": [
-      "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan23/live.livx/playlist.m3u8"
-    ],
-    "backups": [
-      "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan23/live.livx/playlist.m3u8"
-    ]
+    "fallbackUrls": [],
+    "backups": []
   },
   {
     "id": "luli_tv_il",
@@ -2186,9 +2029,7 @@
     "category": "ילדים ונוער (בעברית)",
     "categoryEn": "kids_he",
     "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2364/index.m3u8",
-    "fallbackUrls": [
-      "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan23/live.livx/playlist.m3u8"
-    ],
+    "fallbackUrls": [],
     "logo": "assets/logos/luli_tv.png",
     "badge": "HD",
     "lang": "he",
@@ -2202,9 +2043,7 @@
       "found": "iptv-org (Luli.il)",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "backups": [
-      "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan23/live.livx/playlist.m3u8"
-    ]
+    "backups": []
   },
   {
     "id": "disney_channel_il",
@@ -2226,12 +2065,8 @@
       "found": "iptv-org (DisneyChannel.il)",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "fallbackUrls": [
-      "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan23/live.livx/playlist.m3u8"
-    ],
-    "backups": [
-      "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan23/live.livx/playlist.m3u8"
-    ]
+    "fallbackUrls": [],
+    "backups": []
   },
   {
     "id": "disney_jr_il",
@@ -2253,12 +2088,8 @@
       "found": "iptv-org (DisneyJunior.il)",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "fallbackUrls": [
-      "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan23/live.livx/playlist.m3u8"
-    ],
-    "backups": [
-      "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan23/live.livx/playlist.m3u8"
-    ]
+    "fallbackUrls": [],
+    "backups": []
   },
   {
     "id": "nickelodeon_il",
@@ -2282,12 +2113,8 @@
       "web": "❌ רק באפליקציה (HTTP)"
     },
     "iptv": "Nickelodeon.il",
-    "fallbackUrls": [
-      "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan23/live.livx/playlist.m3u8"
-    ],
-    "backups": [
-      "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan23/live.livx/playlist.m3u8"
-    ]
+    "fallbackUrls": [],
+    "backups": []
   },
   {
     "id": "nick_jr_il",
@@ -2324,7 +2151,6 @@
     "categoryEn": "kids_he",
     "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32148/index.m3u8",
     "fallbackUrls": [
-      "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan23/live.livx/playlist.m3u8",
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2334/index.m3u8"
     ],
     "logo": "assets/logos/teennick.png",
@@ -2341,7 +2167,6 @@
       "web": "❌ רק באפליקציה (HTTP)"
     },
     "backups": [
-      "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan23/live.livx/playlist.m3u8",
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2334/index.m3u8"
     ]
   },
@@ -2424,12 +2249,8 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
-    "fallbackUrls": [
-      "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan23/live.livx/playlist.m3u8"
-    ],
-    "backups": [
-      "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan23/live.livx/playlist.m3u8"
-    ]
+    "fallbackUrls": [],
+    "backups": []
   },
   {
     "id": "baby_israel_tv",
@@ -2507,12 +2328,8 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "fallbackUrls": [
-      "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan23/live.livx/playlist.m3u8"
-    ],
-    "backups": [
-      "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan23/live.livx/playlist.m3u8"
-    ]
+    "fallbackUrls": [],
+    "backups": []
   },
   {
     "id": "wiz_kids_il",
@@ -2533,12 +2350,8 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "fallbackUrls": [
-      "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan23/live.livx/playlist.m3u8"
-    ],
-    "backups": [
-      "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan23/live.livx/playlist.m3u8"
-    ]
+    "fallbackUrls": [],
+    "backups": []
   },
   {
     "id": "hot_buzz_il",
@@ -2559,12 +2372,8 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "fallbackUrls": [
-      "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan23/live.livx/playlist.m3u8"
-    ],
-    "backups": [
-      "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan23/live.livx/playlist.m3u8"
-    ]
+    "fallbackUrls": [],
+    "backups": []
   },
   {
     "id": "fomo_tv",
@@ -2587,12 +2396,8 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
-    "fallbackUrls": [
-      "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan23/live.livx/playlist.m3u8"
-    ],
-    "backups": [
-      "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan23/live.livx/playlist.m3u8"
-    ]
+    "fallbackUrls": [],
+    "backups": []
   },
   {
     "id": "yalduti_tv",
@@ -2615,12 +2420,8 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
-    "fallbackUrls": [
-      "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan23/live.livx/playlist.m3u8"
-    ],
-    "backups": [
-      "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan23/live.livx/playlist.m3u8"
-    ]
+    "fallbackUrls": [],
+    "backups": []
   },
   {
     "id": "yalduti_songs_tv",
@@ -2643,12 +2444,8 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
-    "fallbackUrls": [
-      "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan23/live.livx/playlist.m3u8"
-    ],
-    "backups": [
-      "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan23/live.livx/playlist.m3u8"
-    ]
+    "fallbackUrls": [],
+    "backups": []
   },
   {
     "id": "a_plus_kids_il",
@@ -2671,12 +2468,8 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
-    "fallbackUrls": [
-      "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan23/live.livx/playlist.m3u8"
-    ],
-    "backups": [
-      "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan23/live.livx/playlist.m3u8"
-    ]
+    "fallbackUrls": [],
+    "backups": []
   },
   {
     "id": "stars_kids_il",
@@ -2699,12 +2492,8 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
-    "fallbackUrls": [
-      "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan23/live.livx/playlist.m3u8"
-    ],
-    "backups": [
-      "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan23/live.livx/playlist.m3u8"
-    ]
+    "fallbackUrls": [],
+    "backups": []
   },
   {
     "id": "radios_disney",
@@ -2728,12 +2517,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "fallbackUrls": [
-      "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan23/live.livx/playlist.m3u8"
-    ],
-    "backups": [
-      "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan23/live.livx/playlist.m3u8"
-    ]
+    "fallbackUrls": [],
+    "backups": []
   },
   {
     "id": "radios_kids",
@@ -2757,12 +2542,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "fallbackUrls": [
-      "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan23/live.livx/playlist.m3u8"
-    ],
-    "backups": [
-      "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan23/live.livx/playlist.m3u8"
-    ]
+    "fallbackUrls": [],
+    "backups": []
   },
   {
     "id": "radios_stars",
@@ -2786,12 +2567,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "fallbackUrls": [
-      "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan23/live.livx/playlist.m3u8"
-    ],
-    "backups": [
-      "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan23/live.livx/playlist.m3u8"
-    ]
+    "fallbackUrls": [],
+    "backups": []
   },
   {
     "id": "nick_jr_party_il",
@@ -3338,12 +3115,8 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport5_fhd/live.livx/playlist.m3u8"
-    ],
-    "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport5_fhd/live.livx/playlist.m3u8"
-    ]
+    "fallbackUrls": [],
+    "backups": []
   },
   {
     "id": "sky_racing_1",
@@ -3366,12 +3139,8 @@
       "web": "✅"
     },
     "number": 200,
-    "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport5_fhd/live.livx/playlist.m3u8"
-    ],
-    "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport5_fhd/live.livx/playlist.m3u8"
-    ]
+    "fallbackUrls": [],
+    "backups": []
   },
   {
     "id": "viju_sport",
@@ -3394,12 +3163,8 @@
       "found": "iptv-org (vijuPlusSport.ru)",
       "web": "✅ דרך מקור חלופי: Cinerama.uz – ספק IPTV באוזבקיסטן"
     },
-    "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport5_fhd/live.livx/playlist.m3u8"
-    ],
-    "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport5_fhd/live.livx/playlist.m3u8"
-    ]
+    "fallbackUrls": [],
+    "backups": []
   },
   {
     "id": "setanta_sports_2_hd",
@@ -3421,12 +3186,8 @@
       "found": "iptv-org (SetantaSports2Eurasia.ie)",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport5_fhd/live.livx/playlist.m3u8"
-    ],
-    "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport5_fhd/live.livx/playlist.m3u8"
-    ]
+    "fallbackUrls": [],
+    "backups": []
   },
   {
     "id": "extreme_sports_hd",
@@ -3447,12 +3208,8 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport5_fhd/live.livx/playlist.m3u8"
-    ],
-    "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport5_fhd/live.livx/playlist.m3u8"
-    ]
+    "fallbackUrls": [],
+    "backups": []
   },
   {
     "id": "sport5_live",
@@ -4833,12 +4590,8 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
-    "fallbackUrls": [
-      "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan23/live.livx/playlist.m3u8"
-    ],
-    "backups": [
-      "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan23/live.livx/playlist.m3u8"
-    ]
+    "fallbackUrls": [],
+    "backups": []
   },
   {
     "id": "freetv_movies_10stars",
@@ -5254,9 +5007,7 @@
     "category": "אוכל ובישול (Food)",
     "categoryEn": "food",
     "url": "https://bonappetit-samsung.amagi.tv/playlist.m3u8",
-    "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/foody/live.livx/playlist.m3u8"
-    ],
+    "fallbackUrls": [],
     "badge": "HD",
     "color": "#eab308",
     "isIsraeli": false,
@@ -5271,9 +5022,7 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
-    "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/foody/live.livx/playlist.m3u8"
-    ]
+    "backups": []
   },
   {
     "id": "gusto_tv_hd",
@@ -5281,9 +5030,7 @@
     "category": "אוכל ובישול (Food)",
     "categoryEn": "food",
     "url": "https://e75fc053c0d2406fb74cdd71d77e1a7f.mediatailor.us-east-1.amazonaws.com/v1/master/f4e8c53a8367a5b58e20ce054ea3ce25a3e904d3/RakutenTV-eu_GustoTV/playlist.m3u8",
-    "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/foody/live.livx/playlist.m3u8"
-    ],
+    "fallbackUrls": [],
     "badge": "FHD",
     "color": "#f59e0b",
     "isIsraeli": false,
@@ -5298,9 +5045,7 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
-    "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/foody/live.livx/playlist.m3u8"
-    ]
+    "backups": []
   },
   {
     "id": "hells_kitchen_hd",
@@ -5308,9 +5053,7 @@
     "category": "אוכל ובישול (Food)",
     "categoryEn": "food",
     "url": "https://aegis-cloudfront-1.tubi.video/c8364f36-c60b-4a39-8d86-0b92db4611c0/index.m3u8",
-    "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/foody/live.livx/playlist.m3u8"
-    ],
+    "fallbackUrls": [],
     "badge": "HD",
     "color": "#dc2626",
     "isIsraeli": false,
@@ -5325,9 +5068,7 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
-    "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/foody/live.livx/playlist.m3u8"
-    ]
+    "backups": []
   },
   {
     "id": "food_network_eu",
@@ -5389,9 +5130,7 @@
     "category": "אוכל ובישול (Food)",
     "categoryEn": "food",
     "url": "https://tvf-tv5ch.otteravision.com/tvf/tv5ch/tv5ch.m3u8",
-    "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/foody/live.livx/playlist.m3u8"
-    ],
+    "fallbackUrls": [],
     "badge": "HD",
     "color": "#38bdf8",
     "isIsraeli": false,
@@ -5406,9 +5145,7 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
-    "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/foody/live.livx/playlist.m3u8"
-    ]
+    "backups": []
   },
   {
     "id": "cooking_panda_hd",
@@ -5416,9 +5153,7 @@
     "category": "אוכל ובישול (Food)",
     "categoryEn": "food",
     "url": "https://stream-us-east-1.getpublica.com/playlist.m3u8?network_id=46",
-    "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/foody/live.livx/playlist.m3u8"
-    ],
+    "fallbackUrls": [],
     "badge": "HD",
     "color": "#ec4899",
     "isIsraeli": false,
@@ -5433,9 +5168,7 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
-    "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/foody/live.livx/playlist.m3u8"
-    ]
+    "backups": []
   },
   {
     "id": "pluto_food_hd",
@@ -5470,9 +5203,7 @@
     "category": "אוכל ובישול (Food)",
     "categoryEn": "food",
     "url": "https://jmp2.uk/plu-5f8ed48146ba9e00078424b6.m3u8",
-    "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/foody/live.livx/playlist.m3u8"
-    ],
+    "fallbackUrls": [],
     "badge": "HD",
     "color": "#a855f7",
     "isIsraeli": false,
@@ -5487,9 +5218,7 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
-    "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/foody/live.livx/playlist.m3u8"
-    ]
+    "backups": []
   },
   {
     "id": "pluto_cucina_hd",
@@ -5497,9 +5226,7 @@
     "category": "אוכל ובישול (Food)",
     "categoryEn": "food",
     "url": "https://jmp2.uk/plu-608aa718a8ec810007d87fee.m3u8",
-    "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/foody/live.livx/playlist.m3u8"
-    ],
+    "fallbackUrls": [],
     "badge": "HD",
     "color": "#22c55e",
     "isIsraeli": false,
@@ -5514,9 +5241,7 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
-    "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/foody/live.livx/playlist.m3u8"
-    ]
+    "backups": []
   },
   {
     "id": "pluto_kfood_hd",
@@ -5677,12 +5402,8 @@
       "web": "✅"
     },
     "number": 294,
-    "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/i24news_en/live.livx/playlist.m3u8"
-    ],
-    "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/i24news_en/live.livx/playlist.m3u8"
-    ]
+    "fallbackUrls": [],
+    "backups": []
   },
   {
     "id": "sky_news_au_extra1",
@@ -5705,12 +5426,8 @@
       "web": "✅"
     },
     "number": 295,
-    "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/i24news_en/live.livx/playlist.m3u8"
-    ],
-    "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/i24news_en/live.livx/playlist.m3u8"
-    ]
+    "fallbackUrls": [],
+    "backups": []
   },
   {
     "id": "sky_news_au_extra2",
@@ -5733,12 +5450,8 @@
       "web": "✅"
     },
     "number": 296,
-    "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/i24news_en/live.livx/playlist.m3u8"
-    ],
-    "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/i24news_en/live.livx/playlist.m3u8"
-    ]
+    "fallbackUrls": [],
+    "backups": []
   },
   {
     "id": "sky_news_au_extra3",
@@ -5761,12 +5474,8 @@
       "web": "✅"
     },
     "number": 297,
-    "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/i24news_en/live.livx/playlist.m3u8"
-    ],
-    "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/i24news_en/live.livx/playlist.m3u8"
-    ]
+    "fallbackUrls": [],
+    "backups": []
   },
   {
     "id": "dw_english",
@@ -5787,12 +5496,8 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
-    "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/i24news_en/live.livx/playlist.m3u8"
-    ],
-    "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/i24news_en/live.livx/playlist.m3u8"
-    ]
+    "fallbackUrls": [],
+    "backups": []
   },
   {
     "id": "bfmtv",
@@ -5815,11 +5520,10 @@
       "web": "✅"
     },
     "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/i24news_en/live.livx/playlist.m3u8"
+      "https://live-cdn-stream-euw1.bfmtv.bct.nextradiotv.com/master.m3u8"
     ],
     "backups": [
-      "https://live-cdn-stream-euw1.bfmtv.bct.nextradiotv.com/master.m3u8",
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/i24news_en/live.livx/playlist.m3u8"
+      "https://live-cdn-stream-euw1.bfmtv.bct.nextradiotv.com/master.m3u8"
     ]
   },
   {
@@ -5842,21 +5546,15 @@
       "found": "iptv-org (BFMTechCo.fr)",
       "web": "✅"
     },
-    "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/i24news_en/live.livx/playlist.m3u8"
-    ],
-    "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/i24news_en/live.livx/playlist.m3u8"
-    ]
+    "fallbackUrls": [],
+    "backups": []
   },
   {
     "id": "france24_freetv_il",
     "name": "France 24 (FreeTV ישראל)",
     "category": "חדשות מהעולם (News)",
     "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/france_24_eng/live.livx/playlist.m3u8",
-    "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/i24news_en/live.livx/playlist.m3u8"
-    ],
+    "fallbackUrls": [],
     "logo": "assets/logos/france24_freetv_il.png",
     "badge": "FHD",
     "color": "#38bdf8",
@@ -5872,9 +5570,7 @@
       "web": "✅"
     },
     "categoryEn": "news",
-    "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/i24news_en/live.livx/playlist.m3u8"
-    ]
+    "backups": []
   },
   {
     "id": "bbc_news_hd",
@@ -5962,9 +5658,9 @@
     "name": "FOX LiveNOW News HD",
     "category": "חדשות מהעולם (News)",
     "categoryEn": "news",
-    "url": "https://fox-foxnewsnow-samsungus.amagi.tv/playlist.m3u8",
+    "url": "https://cdn-uw2-prod.tsv2.amagi.tv/linear/amg00488-foxdigital-livenowbyfox-lgus/playlist.m3u8",
     "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/i24news_en/live.livx/playlist.m3u8"
+      "https://fox-foxnewsnow-vizio.amagi.tv/playlist.m3u8"
     ],
     "badge": "HD",
     "color": "#2563eb",
@@ -5974,14 +5670,14 @@
     "logo": "assets/logos/fox_livenow_hd.png",
     "number": 305,
     "src": {
-      "by": "fox-foxnewsnow-samsungus.amagi.tv",
+      "by": "cdn-uw2-prod.tsv2.amagi.tv",
       "kind": "restream",
-      "host": "fox-foxnewsnow-samsungus.amagi.tv",
+      "host": "cdn-uw2-prod.tsv2.amagi.tv",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
     "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/i24news_en/live.livx/playlist.m3u8"
+      "https://fox-foxnewsnow-vizio.amagi.tv/playlist.m3u8"
     ]
   },
   {
@@ -5990,9 +5686,7 @@
     "category": "חדשות מהעולם (News)",
     "categoryEn": "news",
     "url": "https://cbsn-us.cbsnstream.cbsnews.com/out/v1/55a8648e8f134e82a470f83d562deeca/master.m3u8",
-    "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/i24news_en/live.livx/playlist.m3u8"
-    ],
+    "fallbackUrls": [],
     "badge": "FHD",
     "color": "#0284c7",
     "isIsraeli": false,
@@ -6007,9 +5701,7 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
-    "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/i24news_en/live.livx/playlist.m3u8"
-    ]
+    "backups": []
   },
   {
     "id": "bloomberg_tv_hd",
@@ -6018,7 +5710,8 @@
     "categoryEn": "news",
     "url": "https://www.bloomberg.com/media-manifest/streams/us.m3u8",
     "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/i24news_en/live.livx/playlist.m3u8"
+      "https://bloomberg.com/media-manifest/streams/us.m3u8",
+      "https://liveproduseast.global.ssl.fastly.net/us/Channel-USTV-AWS-virginia-1/Source-USTV-1000-1_live.m3u8"
     ],
     "badge": "FHD",
     "color": "#6366f1",
@@ -6036,8 +5729,7 @@
     },
     "backups": [
       "https://bloomberg.com/media-manifest/streams/us.m3u8",
-      "https://liveproduseast.global.ssl.fastly.net/us/Channel-USTV-AWS-virginia-1/Source-USTV-1000-1_live.m3u8",
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/i24news_en/live.livx/playlist.m3u8"
+      "https://liveproduseast.global.ssl.fastly.net/us/Channel-USTV-AWS-virginia-1/Source-USTV-1000-1_live.m3u8"
     ]
   },
   {
@@ -6046,9 +5738,7 @@
     "category": "חדשות מהעולם (News)",
     "categoryEn": "news",
     "url": "https://aegis-cloudfront-1.tubi.video/7e1c26b7-7975-4240-9a4f-480eaa8f3ea4/playlist.m3u8",
-    "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/i24news_en/live.livx/playlist.m3u8"
-    ],
+    "fallbackUrls": [],
     "badge": "FHD",
     "color": "#0ea5e9",
     "isIsraeli": false,
@@ -6063,9 +5753,7 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
-    "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/i24news_en/live.livx/playlist.m3u8"
-    ]
+    "backups": []
   },
   {
     "id": "newsmax_hd",
@@ -6073,9 +5761,7 @@
     "category": "חדשות מהעולם (News)",
     "categoryEn": "news",
     "url": "https://amg00217-newsmax-newsmax-zeasn-022k9.amagi.tv/playlist.m3u8",
-    "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/i24news_en/live.livx/playlist.m3u8"
-    ],
+    "fallbackUrls": [],
     "badge": "HD",
     "color": "#3b82f6",
     "isIsraeli": false,
@@ -6090,9 +5776,7 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
-    "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/i24news_en/live.livx/playlist.m3u8"
-    ]
+    "backups": []
   },
   {
     "id": "trt_world_hd",
@@ -6100,9 +5784,7 @@
     "category": "חדשות מהעולם (News)",
     "categoryEn": "news",
     "url": "https://tv-trtworld.medya.trt.com.tr/master.m3u8",
-    "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/i24news_en/live.livx/playlist.m3u8"
-    ],
+    "fallbackUrls": [],
     "badge": "FHD",
     "color": "#06b6d4",
     "isIsraeli": false,
@@ -6117,9 +5799,7 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
-    "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/i24news_en/live.livx/playlist.m3u8"
-    ]
+    "backups": []
   },
   {
     "id": "cgtn_news_hd",
@@ -6128,7 +5808,8 @@
     "categoryEn": "news",
     "url": "https://english-livetx.cgtn.com/hls/yypdyyctzb_hd.m3u8",
     "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/i24news_en/live.livx/playlist.m3u8"
+      "https://english-livebkali.cgtn.com/live/encgtn.m3u8",
+      "https://news.cgtn.com/resource/live/english/cgtn-news.m3u8"
     ],
     "badge": "FHD",
     "color": "#f59e0b",
@@ -6146,8 +5827,7 @@
     },
     "backups": [
       "https://english-livebkali.cgtn.com/live/encgtn.m3u8",
-      "https://news.cgtn.com/resource/live/english/cgtn-news.m3u8",
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/i24news_en/live.livx/playlist.m3u8"
+      "https://news.cgtn.com/resource/live/english/cgtn-news.m3u8"
     ]
   },
   {
@@ -6862,12 +6542,10 @@
     "countryHe": "ישראל",
     "fallbackUrls": [
       "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/radio/kan_reshet_bet/live.livx/playlist.m3u8?renditions",
-      "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan11/live.livx/playlist.m3u8",
       "https://kanbet.media.kan.org.il/hls/live/2024811/2024811/master.m3u8"
     ],
     "backups": [
       "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/radio/kan_reshet_bet/live.livx/playlist.m3u8?renditions",
-      "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan11/live.livx/playlist.m3u8",
       "https://kanbet.media.kan.org.il/hls/live/2024811/2024811/master.m3u8"
     ]
   },
