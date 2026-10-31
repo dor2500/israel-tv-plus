@@ -10101,77 +10101,84 @@
     "id": "hot_doco_hd",
     "name": "HOT דוקו HD (HOT Doco)",
     "number": 402,
-    "category": "israel",
+    "category": "טבע ודוקו (Documentary & Nature)",
     "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32129/index.m3u8",
     "logo": "https://upload.wikimedia.org/wikipedia/he/thumb/3/36/HOT_Doco_Logo_2022.svg/300px-HOT_Doco_Logo_2022.svg.png",
     "language": "he",
     "quality": "HD",
-    "description": "ערוץ הסרטים והסדרות התיעודיים המוביל בישראל מבית HOT."
+    "description": "ערוץ הסרטים והסדרות התיעודיים המוביל בישראל מבית HOT.",
+    "categoryEn": "docu"
   },
   {
     "id": "channel_hayeladim_hd",
     "name": "ערוץ הילדים HD",
     "number": 403,
-    "category": "kids",
+    "category": "ילדים ונוער (בעברית)",
     "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2347/index.m3u8",
     "logo": "https://upload.wikimedia.org/wikipedia/he/thumb/4/4e/Arutz_HaYeladim_Logo_2023.svg/300px-Arutz_HaYeladim_Logo_2023.svg.png",
     "language": "he",
     "quality": "HD",
-    "description": "ערוץ הילדים – שידורי ילדים ונוער, סדרות מקור ותוכניות אהובות בעברית."
+    "description": "ערוץ הילדים – שידורי ילדים ונוער, סדרות מקור ותוכניות אהובות בעברית.",
+    "categoryEn": "kids_he"
   },
   {
     "id": "junior_channel_hd",
     "name": "ערוץ ג'וניור HD (Junior)",
     "number": 404,
-    "category": "kids",
+    "category": "ילדים ונוער (בעברית)",
     "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2366/index.m3u8",
     "logo": "https://upload.wikimedia.org/wikipedia/he/thumb/a/a2/Junior_Channel_Logo.svg/300px-Junior_Channel_Logo.svg.png",
     "language": "he",
     "quality": "HD",
-    "description": "ערוץ ג'וניור לילדים בעברית – סדרות אנימציה ונוסטלגיה אהובות."
+    "description": "ערוץ ג'וניור לילדים בעברית – סדרות אנימציה ונוסטלגיה אהובות.",
+    "categoryEn": "kids_he"
   },
   {
     "id": "baby_channel_hd",
     "name": "ערוץ בייבי HD (Baby Channel)",
     "number": 405,
-    "category": "kids",
+    "category": "ילדים ונוער (בעברית)",
     "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2370/index.m3u8",
     "logo": "https://upload.wikimedia.org/wikipedia/he/thumb/5/52/BabyTV_Logo_2020.svg/300px-BabyTV_Logo_2020.svg.png",
     "language": "he",
     "quality": "HD",
-    "description": "ערוץ בייבי המיועד לפעוטות והורים – תוכניות מעשירות ומפתחות בעברית."
+    "description": "ערוץ בייבי המיועד לפעוטות והורים – תוכניות מעשירות ומפתחות בעברית.",
+    "categoryEn": "kids_he"
   },
   {
     "id": "luli_channel_hd",
     "name": "ערוץ לולי לפעוטות HD (Luli)",
     "number": 406,
-    "category": "kids",
+    "category": "ילדים ונוער (בעברית)",
     "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12246/index.m3u8",
     "logo": "https://upload.wikimedia.org/wikipedia/he/thumb/e/e6/Luli_Logo_2021.svg/300px-Luli_Logo_2021.svg.png",
     "language": "he",
     "quality": "HD",
-    "description": "ערוץ לולי לפעוטות – שירים, סיפורים והפעלות בעברית מבית הופ!."
+    "description": "ערוץ לולי לפעוטות – שירים, סיפורים והפעלות בעברית מבית הופ!.",
+    "categoryEn": "kids_he"
   },
   {
     "id": "yes_movies_kids_hd",
     "name": "yes קולנוע ילדים HD (yes Movies Kids)",
     "number": 407,
-    "category": "kids",
+    "category": "ילדים ונוער (בעברית)",
     "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12273/index.m3u8",
     "logo": "https://upload.wikimedia.org/wikipedia/he/thumb/3/36/Yes_Movies_Kids_Logo.png/300px-Yes_Movies_Kids_Logo.png",
     "language": "he",
     "quality": "HD",
-    "description": "סרטי ילדים ומשפחה מובילים בדיבוב עברי ובאיכות HD מבית yes."
+    "description": "סרטי ילדים ומשפחה מובילים בדיבוב עברי ובאיכות HD מבית yes.",
+    "categoryEn": "kids_he"
   },
   {
     "id": "vacation_channel_hd",
     "name": "ערוץ החופש והנופש HD (Vacation Channel)",
     "number": 408,
-    "category": "entertainment",
+    "category": "ערוצי ישראל - שידור חי",
     "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32160/index.m3u8",
     "logo": "https://static.g-cdn.app/streams/vacation-channel-il-hd.png",
     "language": "he",
     "quality": "HD",
-    "description": "ערוץ תיירות, נופש, חופשות וטיולים בישראל ובעולם."
+    "description": "ערוץ תיירות, נופש, חופשות וטיולים בישראל ובעולם.",
+    "categoryEn": "israel"
   }
 ]

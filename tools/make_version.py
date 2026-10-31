@@ -19,6 +19,8 @@ import os
 import re
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# 4.8.13 was stamped with a local-time code ahead of UTC; a lower code never reaches apps already on it
+MIN_CODE = 202611010030
 SHELL = 3   # bump when MainActivity.java / IsraelTVPlus.cs gain something the web code depends on
 DL = "https://github.com/dor2500/israel-tv-plus/releases/latest/download/"
 
@@ -58,6 +60,7 @@ def main():
         app = 100 + major * 100 + minor * 10 + patch
     now = datetime.datetime.now(datetime.timezone.utc)
     code = int(now.strftime("%Y%m%d%H%M"))
+    code = max(code, json.loads(read("version.json"))["code"] + 1, MIN_CODE + 1)  # must always grow
     date = now.strftime("%Y-%m-%d")
     build = {"version": version, "code": code, "app": app, "shell": SHELL, "date": date}
     # https relay for the web site's http channels (relay/worker.js); the file relay.url holds its address once deployed
