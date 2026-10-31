@@ -1438,11 +1438,11 @@
   },
   {
     "id": "nickelodeon_il",
-    "name": "ערוץ ניקלודיאון ישראל HD (Nickelodeon)",
+    "name": "ערוץ ניקלודיאון ישראל HD (TeenNick / Nickelodeon)",
     "title": "ערוץ ניקלודיאון לילדים ונוער (Nickelodeon HD)",
     "category": "ילדים ונוער (בעברית)",
     "categoryEn": "kids_he",
-    "url": "http://stream.mcquack.net/443/index.m3u8",
+    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32148/index.m3u8",
     "logo": "assets/logos/nickelodeon.png",
     "badge": "HD",
     "desc": "ערוץ ניקלודיאון – בובספוג מכנסמרובע, הרעשנים, אווטאר, צבי הנינג'ה וקומדיות לילדים",
@@ -1459,7 +1459,26 @@
     },
     "iptv": "Nickelodeon.il",
     "fallbackUrls": [],
-    "backups": []
+    "backups": [],
+    "language": "he",
+    "servers": [
+      {
+        "name": "ראשי (עברית)",
+        "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32148/index.m3u8"
+      },
+      {
+        "name": "גיבוי 1 (TeenNick+ עברית)",
+        "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2334/index.m3u8"
+      },
+      {
+        "name": "גיבוי 2 (Nick Jr עברית)",
+        "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2337/index.m3u8"
+      },
+      {
+        "name": "גיבוי 3 (Nick Jr+ עברית)",
+        "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12240/index.m3u8"
+      }
+    ]
   },
   {
     "id": "nick_jr_il",
@@ -10077,5 +10096,82 @@
     "countryHe": "ישראל",
     "webOk": true,
     "number": 401
+  },
+  {
+    "id": "hot_doco_hd",
+    "name": "HOT דוקו HD (HOT Doco)",
+    "number": 402,
+    "category": "israel",
+    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32129/index.m3u8",
+    "logo": "https://upload.wikimedia.org/wikipedia/he/thumb/3/36/HOT_Doco_Logo_2022.svg/300px-HOT_Doco_Logo_2022.svg.png",
+    "language": "he",
+    "quality": "HD",
+    "description": "ערוץ הסרטים והסדרות התיעודיים המוביל בישראל מבית HOT."
+  },
+  {
+    "id": "channel_hayeladim_hd",
+    "name": "ערוץ הילדים HD",
+    "number": 403,
+    "category": "kids",
+    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2347/index.m3u8",
+    "logo": "https://upload.wikimedia.org/wikipedia/he/thumb/4/4e/Arutz_HaYeladim_Logo_2023.svg/300px-Arutz_HaYeladim_Logo_2023.svg.png",
+    "language": "he",
+    "quality": "HD",
+    "description": "ערוץ הילדים – שידורי ילדים ונוער, סדרות מקור ותוכניות אהובות בעברית."
+  },
+  {
+    "id": "junior_channel_hd",
+    "name": "ערוץ ג'וניור HD (Junior)",
+    "number": 404,
+    "category": "kids",
+    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2366/index.m3u8",
+    "logo": "https://upload.wikimedia.org/wikipedia/he/thumb/a/a2/Junior_Channel_Logo.svg/300px-Junior_Channel_Logo.svg.png",
+    "language": "he",
+    "quality": "HD",
+    "description": "ערוץ ג'וניור לילדים בעברית – סדרות אנימציה ונוסטלגיה אהובות."
+  },
+  {
+    "id": "baby_channel_hd",
+    "name": "ערוץ בייבי HD (Baby Channel)",
+    "number": 405,
+    "category": "kids",
+    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2370/index.m3u8",
+    "logo": "https://upload.wikimedia.org/wikipedia/he/thumb/5/52/BabyTV_Logo_2020.svg/300px-BabyTV_Logo_2020.svg.png",
+    "language": "he",
+    "quality": "HD",
+    "description": "ערוץ בייבי המיועד לפעוטות והורים – תוכניות מעשירות ומפתחות בעברית."
+  },
+  {
+    "id": "luli_channel_hd",
+    "name": "ערוץ לולי לפעוטות HD (Luli)",
+    "number": 406,
+    "category": "kids",
+    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12246/index.m3u8",
+    "logo": "https://upload.wikimedia.org/wikipedia/he/thumb/e/e6/Luli_Logo_2021.svg/300px-Luli_Logo_2021.svg.png",
+    "language": "he",
+    "quality": "HD",
+    "description": "ערוץ לולי לפעוטות – שירים, סיפורים והפעלות בעברית מבית הופ!."
+  },
+  {
+    "id": "yes_movies_kids_hd",
+    "name": "yes קולנוע ילדים HD (yes Movies Kids)",
+    "number": 407,
+    "category": "kids",
+    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12273/index.m3u8",
+    "logo": "https://upload.wikimedia.org/wikipedia/he/thumb/3/36/Yes_Movies_Kids_Logo.png/300px-Yes_Movies_Kids_Logo.png",
+    "language": "he",
+    "quality": "HD",
+    "description": "סרטי ילדים ומשפחה מובילים בדיבוב עברי ובאיכות HD מבית yes."
+  },
+  {
+    "id": "vacation_channel_hd",
+    "name": "ערוץ החופש והנופש HD (Vacation Channel)",
+    "number": 408,
+    "category": "entertainment",
+    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32160/index.m3u8",
+    "logo": "https://static.g-cdn.app/streams/vacation-channel-il-hd.png",
+    "language": "he",
+    "quality": "HD",
+    "description": "ערוץ תיירות, נופש, חופשות וטיולים בישראל ובעולם."
   }
 ]

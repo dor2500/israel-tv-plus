@@ -30,3 +30,4 @@ with open(os.path.join(dist, "SHA256SUMS"), "w", encoding="utf-8") as f:
     f.write("\n".join(lines) + "\n")
 
 print("Generated SHA256SUMS for 4.8.13!")
+

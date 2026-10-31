@@ -35,3 +35,4 @@ CHROMIUM_FLAGS=(
 
 # Launch Israel TV+ Fullscreen Appliance
 chromium-browser "${CHROMIUM_FLAGS[@]}" "https://dor2500.github.io/israel-tv-plus/"
+

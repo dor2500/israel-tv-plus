@@ -1,43 +1,39 @@
 {
-  "version": "4.8.13",
-  "code": 202611010030,
-  "app": 593,
+  "version": "4.8.14",
+  "code": 202610312319,
+  "app": 594,
   "shell": 3,
-  "date": "2026-11-01",
+  "date": "2026-10-31",
   "notes": [
-    "עדכון שקט ומידי לטלוויזיות LG webOS (OTA): עדכון מלא ישירות מתוך האפליקציה ללא צורך בהורדת קובץ IPK ידנית וללא קפיצת שגיאות.",
-    "תיקון מוחלט לסרגל העליון (Top Bar): הגנה מלאה המונעת היעלמות הסרגל או הופעת קפסולה ריקה.",
-    "שידור חי ישיר לערוץ דיסני ג'וניור (Disney Jr): שרת שידור חי פעיל 24/7 ללא לופים.",
-    "תוספת ערוצים ישראליים ועולמיים חדשים (401 ערוצים): HOT 8 מדע ודוקו, HOT מיינד, ויוה וינטג', קומדיות קלאסיות, ערוץ ההומור 2, ערוצי סרטי FreeTV (אקשן, דרמה, קומדיה, ישראלי), ערוצי MTV בינלאומיים וערוצים נדירים.",
-    "מדור VOD חדש (סדרות לצפייה ישירה): קופה ראשית, מנאייכ, טהרן, פאודה, שבאבניקים, היהודים באים, רמזור, עספור והפיג'מות.",
-    "מערכת הפעלה ייעודית מלאה לרספברי פאי (Pi 2, 3, 4, 5): הפיכת המכשיר לסטרימר TV מלא עם שליטה משלט הטלוויזיה (HDMI-CEC).",
-    "ממשק מהיר וזורם (60 FPS): אופטימיזציה לטלוויזיות חכמות ו-webOS."
+    "תיקון ערוץ ניקלודיאון (ערוץ 70 / nickelodeon_il) לשידור עברי מלא: החלפת השרת הרוסי בשידור חי ישראלי בעברית כולל שרתי גיבוי ישראליים.",
+    "תיקון מקיף למנגנון העדכונים באנדרואיד (Android / Android TV / Fire TV): עדכון versionCode אמיתי בקובץ ה-APK (594), התמודדות עם הרשאות אפליקציות לא מוכרות בכל הגרסאות וכפתור הורדה ישירה חלופי (APK).",
+    "הוספת 7 ערוצים ישראליים מבוקשים (408 ערוצים סה\"כ): HOT דוקו HD, ערוץ הילדים HD, ערוץ ג'וניור HD, ערוץ בייבי HD, ערוץ לולי לפעוטות HD, yes קולנוע ילדים HD וערוץ החופש והנופש HD."
   ],
   "native": {
     "android": {
-      "version": "4.8.13",
-      "app": 593,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.13/IsraelTVPlus-4.8.13-android.apk"
+      "version": "4.8.14",
+      "app": 594,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.14/IsraelTVPlus-4.8.14-android.apk"
     },
     "windows": {
-      "version": "4.8.13",
-      "app": 593,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.13/IsraelTVPlus-windows-setup.exe"
+      "version": "4.8.14",
+      "app": 594,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.14/IsraelTVPlus-windows-setup.exe"
     },
     "mac": {
-      "version": "4.8.13",
-      "app": 593,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.13/IsraelTVPlus-macos-arm64.zip"
+      "version": "4.8.14",
+      "app": 594,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.14/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "4.8.13",
-      "app": 593,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.13/IsraelTVPlus-linux-x64.zip"
+      "version": "4.8.14",
+      "app": 594,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.14/IsraelTVPlus-linux-x64.zip"
     },
     "wear": {
-      "version": "4.8.13",
-      "app": 593,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.13/IsraelTVPlus-4.8.13-wearos.apk"
+      "version": "4.8.14",
+      "app": 594,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.14/IsraelTVPlus-4.8.14-wearos.apk"
     }
   }
 }

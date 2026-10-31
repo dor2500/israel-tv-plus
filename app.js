@@ -4259,6 +4259,9 @@ function showOsd() {
     if (u.native) {
       if ((PLATFORM === 'android' && window.AndroidApp && window.AndroidApp.installUpdate) || PLATFORM === 'windows') {
         buttons.push({ label: 'עדכון עכשיו', primary: true, keep: true, act: function () { installNative(u.native); } });
+        if (PLATFORM === 'android') {
+          buttons.push({ label: '🌐 הורדה ישירה (APK)', act: function () { openUrl(u.native.url || RELEASES); } });
+        }
       } else if (PLATFORM === 'webos') {
         html += '<p>בטלוויזיית LG: התקנה מחדש של קובץ ה-IPK (Developer Mode / Homebrew Channel). המסך, הקוד והערוצים מתעדכנים גם בלי זה.</p>';
         buttons.push({ label: '🌐 דף ההורדה', act: function () { openUrl(RELEASES); } });
@@ -4300,6 +4303,12 @@ function showOsd() {
         if (prog) prog.classList.remove('indet');
         haptic('reject');
         toast('⚠️ ההורדה נכשלה');
+        if (el.dialogActions) {
+          el.dialogActions.innerHTML = '<button class="btn primary" id="upd-fb-btn">🌐 הורדה ישירה בדפדפן (APK)</button><button class="btn" id="upd-close-btn">סגירה</button>';
+          var fb = $('upd-fb-btn'), cb = $('upd-close-btn');
+          if (fb) fb.onclick = function () { openUrl(n.url || RELEASES); };
+          if (cb) cb.onclick = function () { closeDialog(); };
+        }
       }
     };
     if (PLATFORM === 'android') window.AndroidApp.installUpdate(n.url);
