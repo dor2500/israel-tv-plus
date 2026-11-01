@@ -171,29 +171,7 @@ fun ItvApp(
                                 onPicked = { feed.reset(); page = Page.Feed },
                                 onClose = { page = Page.Feed },
                             )
-                            Page.Feed -> if (NuvioUi.enabled) NuvioShell(store, prefs, onPlay) else Feed(
-                                data, prefs, updater, feed, haze, logo, onPlay,
-                                onOpenMultiView = {
-                                    val all = data?.channels.orEmpty()
-                                    val first = prefs.recents.firstNotNullOfOrNull { data?.byId?.get(it) }
-                                        ?: data?.featured?.firstOrNull()
-                                        ?: all.firstOrNull()
-                                    if (first != null) {
-                                        page = Page.Player(PlayRequest(first, all, null, startInMultiView = true))
-                                    }
-                                },
-                                onOpenCast = {
-                                    val all = data?.channels.orEmpty()
-                                    val first = prefs.recents.firstNotNullOfOrNull { data?.byId?.get(it) }
-                                        ?: data?.featured?.firstOrNull()
-                                        ?: all.firstOrNull()
-                                    if (first != null) {
-                                        page = Page.Player(PlayRequest(first, all, null, startInCast = true))
-                                    }
-                                },
-                                onInfo = { info = it },
-                                onProfiles = { profilesFromFeed = true; page = Page.Profiles },
-                            )
+                            Page.Feed -> NuvioShell(store, prefs, onPlay)
                             is Page.Player -> PlayerScreen(
                                 start = p.request.channel,
                                 playlist = p.request.playlist,

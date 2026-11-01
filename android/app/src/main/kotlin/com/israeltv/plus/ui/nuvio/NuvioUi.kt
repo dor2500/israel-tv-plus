@@ -1,11 +1,6 @@
 package com.israeltv.plus.ui.nuvio
 
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
-import com.israeltv.plus.BuildConfig
-
-/** Fully integrated Nuvio UI architecture (always enabled across both Debug and Release builds). */
+/** Fully integrated Nuvio UI architecture (sole and default UI across all builds and devices). */
 object NuvioUi {
-    var enabled by mutableStateOf(BuildConfig.DEBUG)
+    const val enabled: Boolean = true
 }
