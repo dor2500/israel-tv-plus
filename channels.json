@@ -234,7 +234,7 @@
       "https://contact.gostreaming.tv/Channel9/myStream/playlist.m3u8",
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2331/index.m3u8",
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2374/index.m3u8",
-      "http://stream.mcquack.net/454/index.m3u8",
+      "https://stream.mcquack.net/454/index.m3u8",
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12206/index.m3u8"
     ],
     "country": "IL",
@@ -304,7 +304,7 @@
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11_subs/live.livx/playlist.m3u8",
       "https://r.il.cdn-redge.media/livehls/oil/kancdn-live/live/kan11/live.livx/playlist.m3u8?dvr=21600000",
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2332/index.m3u8",
-      "http://stream.mcquack.net/20/index.m3u8",
+      "https://stream.mcquack.net/20/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11_hevc/live.livx/playlist.m3u8",
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32252/index.m3u8",
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12200/index.m3u8"
@@ -351,15 +351,15 @@
       "https://keshethlslive-LH.akamaihd.net/i/c2n_1@195269/master.m3u8",
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2345/index.m3u8",
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32250/index.m3u8",
-      "http://stream.mcquack.net/449/index.m3u8",
+      "https://stream.mcquack.net/449/index.m3u8",
       "https://mako-streaming.akamaized.net/stream/hls/live/2033791/k12/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/keshet_12_subs/live.livx/playlist.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/keshet_12_hevc/live.livx/playlist.m3u8",
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2349/index.m3u8",
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2329/index.m3u8",
-      "http://stream.mcquack.net/294/index.m3u8",
+      "https://stream.mcquack.net/294/index.m3u8",
       "https://mako-streaming.akamaized.net/stream/hls/live/2033791/k12n12wad/index.m3u8",
-      "http://stream.mcquack.net/293/index.m3u8",
+      "https://stream.mcquack.net/293/index.m3u8",
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12201/index.m3u8"
     ],
     "country": "IL",
@@ -414,15 +414,15 @@
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/reshet13_hevc/live.livx/playlist.m3u8",
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2344/index.m3u8",
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32249/index.m3u8",
-      "http://stream.mcquack.net/450/index.m3u8",
+      "https://stream.mcquack.net/450/index.m3u8",
       "https://d198ztbnlup2iq.cloudfront.net/out/v1/2d9050c90fb94df8b78d1d98306a1a65/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/reshet_13_subs/live.livx/playlist.m3u8",
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2330/index.m3u8",
-      "http://stream.mcquack.net/295/index.m3u8",
+      "https://stream.mcquack.net/295/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/reshet_13_hevc/live.livx/playlist.m3u8",
       "https://d2xg1g9o5vns8m.cloudfront.net/out/v1/0855d703f7d5436fae6a9c7ce8ca5075/index.m3u8",
       "https://reshet.g-mana.live/media/87f59c77-03f6-4bad-a648-897e095e7360/mainManifest.m3u8",
-      "http://stream.mcquack.net/294/index.m3u8",
+      "https://stream.mcquack.net/294/index.m3u8",
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12202/index.m3u8",
       "https://d15ds134q59udk.cloudfront.net/media/3b45de9e-c944-4fdc-a344-7c3042b5b104/mainManifest.m3u8"
     ],
@@ -476,13 +476,13 @@
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/ch14_hevc/live.livx/playlist.m3u8",
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/7103/index.m3u8",
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32325/index.m3u8",
-      "http://stream.mcquack.net/451/index.m3u8",
+      "https://stream.mcquack.net/451/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/ch14_subs/live.livx/playlist.m3u8",
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12242/index.m3u8",
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32152/index.m3u8",
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12239/index.m3u8",
       "https://channel14-live-consume.immergo.tv/output/2/streamPlaylist-archive.m3u8",
-      "http://stream.mcquack.net/295/index.m3u8",
+      "https://stream.mcquack.net/295/index.m3u8",
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12203/index.m3u8"
     ],
     "country": "IL",
@@ -529,7 +529,7 @@
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2386/index.m3u8",
       "https://i24newshebrew-cdn.encoders.immergo.tv/2/streamPlaylist.m3u8",
       "https://hlspackager.akamaized.net/live/bitmovin-i24news/2589137645123855490/index.m3u8",
-      "http://stream.mcquack.net/45/index.m3u8",
+      "https://stream.mcquack.net/45/index.m3u8",
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12205/index.m3u8"
     ],
     "country": "IL",
@@ -752,7 +752,7 @@
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32149/index.m3u8",
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2380/index.m3u8",
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32318/index.m3u8",
-      "http://stream.mcquack.net/378/index.m3u8",
+      "https://stream.mcquack.net/378/index.m3u8",
       "https://r.il.cdn-redge.media/livehls/oil/kancdn-live/live/kan_edu/live.livx/playlist.m3u8?dvr=21600000",
       "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/23/live.livx/playlist.m3u8",
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12207/index.m3u8"
@@ -793,9 +793,9 @@
       "https://mako-streaming.akamaized.net/stream/hls/live/2035897/ch24/index.m3u8",
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2330/index.m3u8",
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32320/index.m3u8",
-      "http://stream.mcquack.net/452/index.m3u8",
+      "https://stream.mcquack.net/452/index.m3u8",
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12237/index.m3u8",
-      "http://stream.mcquack.net/42/index.m3u8",
+      "https://stream.mcquack.net/42/index.m3u8",
       "https://mako-streaming.akamaized.net/direct/hls/live/2035340/ch24live/index.m3u8?as=1",
       "https://mako-streaming.akamaized.net/evrideo/hls/live/20001278/ch24live/index.m3u8",
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12208/index.m3u8"
@@ -1005,7 +1005,7 @@
     },
     "backups": [
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32127/index.m3u8",
-      "http://stream.mcquack.net/43/index.m3u8"
+      "https://stream.mcquack.net/43/index.m3u8"
     ],
     "countryHe": "ישראל",
     "fallbackUrls": [
@@ -1091,12 +1091,17 @@
     "kind": "tv",
     "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5_4k/live.livx/playlist.m3u8",
     "badge": "4K UHD",
-    "desc": "שידורי ספורט ישירים בטכנולוגיית 4K Ultra HD: ליגת האלופות, ליגת העל בכדורגל, מכבי תל אביב ביורוליג והמשחקים המרכזיים בחדות שיא.",
+    "desc": "שידורי ספורט ישירים בטכנולוגיית 4K Ultra HD ו-FHD H.264 מלא: ליגת האלופות, ליגת העל בכדורגל, מכבי תל אביב ביורוליג והמשחקים המרכזיים בחדות שיא עם גיבוי FHD אוטומטי.",
     "lang": "he",
     "logo": "assets/logos/sport5.png",
     "country": "IL",
     "countryHe": "ישראל",
-    "backups": [],
+    "backups": [
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5/live.livx/playlist.m3u8",
+      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32004/index.m3u8",
+      "http://45.156.223.202/iptv/QAP2YS2594ZQS3/32004/index.m3u8",
+      "https://rgelive.akamaized.net/hls/live/2043095/live3/playlist.m3u8"
+    ],
     "number": 36,
     "src": {
       "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
@@ -1160,7 +1165,8 @@
     "backups": [
       "http://45.156.223.202/iptv/QAP2YS2594ZQS3/12249/index.m3u8",
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2353/index.m3u8",
-      "http://45.156.223.202/iptv/QAP2YS2594ZQS3/2353/index.m3u8"
+      "http://45.156.223.202/iptv/QAP2YS2594ZQS3/2353/index.m3u8",
+      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32001/index.m3u8"
     ],
     "backupUrls": [
       "http://45.156.223.202/iptv/QAP2YS2594ZQS3/2353/index.m3u8",
@@ -1197,7 +1203,8 @@
     "backups": [
       "http://45.156.223.202/iptv/QAP2YS2594ZQS3/12250/index.m3u8",
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2352/index.m3u8",
-      "http://45.156.223.202/iptv/QAP2YS2594ZQS3/2352/index.m3u8"
+      "http://45.156.223.202/iptv/QAP2YS2594ZQS3/2352/index.m3u8",
+      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32001/index.m3u8"
     ],
     "backupUrls": [
       "http://45.156.223.202/iptv/QAP2YS2594ZQS3/2352/index.m3u8",
@@ -1234,7 +1241,8 @@
     "backups": [
       "http://45.156.223.202/iptv/QAP2YS2594ZQS3/12251/index.m3u8",
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2388/index.m3u8",
-      "http://45.156.223.202/iptv/QAP2YS2594ZQS3/2388/index.m3u8"
+      "http://45.156.223.202/iptv/QAP2YS2594ZQS3/2388/index.m3u8",
+      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32002/index.m3u8"
     ],
     "backupUrls": [
       "http://stream.mcquack.net/52/index.m3u8"
@@ -1270,7 +1278,8 @@
     "backups": [
       "http://45.156.223.202/iptv/QAP2YS2594ZQS3/12252/index.m3u8",
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2389/index.m3u8",
-      "http://45.156.223.202/iptv/QAP2YS2594ZQS3/2389/index.m3u8"
+      "http://45.156.223.202/iptv/QAP2YS2594ZQS3/2389/index.m3u8",
+      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32002/index.m3u8"
     ],
     "backupUrls": [
       "http://stream.mcquack.net/53/index.m3u8"
@@ -1352,7 +1361,7 @@
     "iptv": "HopChannel.il",
     "backups": [
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2338/index.m3u8",
-      "http://stream.mcquack.net/44/index.m3u8",
+      "https://stream.mcquack.net/44/index.m3u8",
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12244/index.m3u8"
     ]
   },
@@ -1599,7 +1608,7 @@
       "http://stream.mcquack.net/377/index.m3u8"
     ],
     "backups": [
-      "http://stream.mcquack.net/377/index.m3u8"
+      "https://stream.mcquack.net/377/index.m3u8"
     ]
   },
   {
@@ -1952,7 +1961,7 @@
     "name": "ערוץ ניק ג'וניור פלוס בעברית HD (Nick Jr.+)",
     "category": "ילדים ונוער (בעברית)",
     "categoryEn": "kids",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12240/index.m3u8",
+    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2337/index.m3u8",
     "fallbackUrls": [
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2337/index.m3u8"
     ],
@@ -1971,7 +1980,8 @@
       "web": "❌ רק באפליקציה (HTTP)"
     },
     "backups": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2337/index.m3u8"
+      "http://45.156.223.202/iptv/QAP2YS2594ZQS3/2337/index.m3u8",
+      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12240/index.m3u8"
     ]
   },
   {
@@ -2024,7 +2034,7 @@
       "https://kneset.gostreaming.tv/p2-kneset/_definst_/myStream/index.m3u8",
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12269/index.m3u8",
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12238/index.m3u8",
-      "http://stream.mcquack.net/48/index.m3u8"
+      "https://stream.mcquack.net/48/index.m3u8"
     ],
     "country": "IL",
     "countryHe": "ישראל",
@@ -2816,9 +2826,8 @@
     "kind": "tv",
     "iptv": "Sport6.il",
     "backups": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32003/index.m3u8?r=1",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32003/index.m3u8?r=2",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32002/index.m3u8"
+      "http://45.156.223.202/iptv/QAP2YS2594ZQS3/32003/index.m3u8",
+      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32004/index.m3u8"
     ]
   },
   {
@@ -2847,8 +2856,8 @@
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2391/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5_hevc/live.livx/playlist.m3u8",
       "https://rgelive.akamaized.net/hls/live/2043150/live/playlist.m3u8",
-      "http://stream.mcquack.net/41/index.m3u8",
-      "http://stream.mcquack.net/212/index.m3u8"
+      "https://stream.mcquack.net/41/index.m3u8",
+      "https://stream.mcquack.net/212/index.m3u8"
     ],
     "fallbackUrls": [
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2341/index.m3u8",
@@ -3030,13 +3039,16 @@
     "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5_4k/live.livx/playlist.m3u8",
     "logo": "assets/logos/sport5.png",
     "badge": "4K",
-    "desc": "ספורט 5 4K – המשחקים המרכזיים מליגת האלופות והיורוליג באיכות שידור Ultra HD",
+    "desc": "שידורי ספורט ישירים בטכנולוגיית 4K Ultra HD ו-FHD H.264 מלא: ליגת האלופות, ליגת העל בכדורגל, מכבי תל אביב ביורוליג והמשחקים המרכזיים בחדות שיא עם גיבוי FHD אוטומטי.",
     "lang": "he",
     "country": "IL",
     "countryHe": "ישראל",
     "number": 106,
     "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5_4k_hevc/live.livx/playlist.m3u8"
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5/live.livx/playlist.m3u8",
+      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32004/index.m3u8",
+      "http://45.156.223.202/iptv/QAP2YS2594ZQS3/32004/index.m3u8",
+      "https://rgelive.akamaized.net/hls/live/2043095/live3/playlist.m3u8"
     ],
     "src": {
       "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
@@ -3325,7 +3337,7 @@
       "http://stream.mcquack.net/381/index.m3u8"
     ],
     "backups": [
-      "http://stream.mcquack.net/381/index.m3u8"
+      "https://stream.mcquack.net/381/index.m3u8"
     ]
   },
   {
@@ -3378,7 +3390,8 @@
       "web": "❌ רק באפליקציה (HTTP)"
     },
     "countryHe": "ישראל",
-    "iptv": "HotCinema2.il"
+    "iptv": "HotCinema2.il",
+    "backups": []
   },
   {
     "id": "hot_cinema_3",
@@ -3428,7 +3441,8 @@
       "host": "b84203c4.ottrast.com",
       "found": "iptv-org (HotCinema4.il)",
       "web": "❌ רק באפליקציה (HTTP)"
-    }
+    },
+    "backups": []
   },
   {
     "id": "hot_cinema_5",
@@ -3448,7 +3462,8 @@
       "host": "b84203c4.ottrast.com",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
-    }
+    },
+    "backups": []
   },
   {
     "id": "hot_israeli_cinema",
@@ -3468,7 +3483,8 @@
       "host": "b84203c4.ottrast.com",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
-    }
+    },
+    "backups": []
   },
   {
     "id": "hot_romantic_cinema",
@@ -3488,7 +3504,8 @@
       "host": "b84203c4.ottrast.com",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
-    }
+    },
+    "backups": []
   },
   {
     "id": "hot_drama",
@@ -3511,7 +3528,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "fallbackUrls": []
+    "fallbackUrls": [],
+    "backups": []
   },
   {
     "id": "hot_zone",
@@ -3540,7 +3558,7 @@
     ],
     "iptv": "HotZone.il",
     "backups": [
-      "http://stream.mcquack.net/379/index.m3u8",
+      "https://stream.mcquack.net/379/index.m3u8",
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12222/index.m3u8"
     ]
   },
@@ -3567,7 +3585,8 @@
     },
     "number": 126,
     "fallbackUrls": [],
-    "iptv": "HotComedyCentral.il"
+    "iptv": "HotComedyCentral.il",
+    "backups": []
   },
   {
     "id": "yes_israeli_cinema",
@@ -3590,7 +3609,8 @@
       "web": "❌ רק באפליקציה (HTTP)"
     },
     "countryHe": "ישראל",
-    "iptv": "YesIsraeliCinema.il"
+    "iptv": "YesIsraeliCinema.il",
+    "backups": []
   },
   {
     "id": "yes_movies_action",
@@ -3622,7 +3642,7 @@
     "backups": [
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12280/index.m3u8",
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2350/index.m3u8",
-      "http://stream.mcquack.net/380/index.m3u8"
+      "https://stream.mcquack.net/380/index.m3u8"
     ]
   },
   {
@@ -3708,7 +3728,8 @@
       "web": "❌ רק באפליקציה (HTTP)"
     },
     "countryHe": "ישראל",
-    "iptv": "YesTvAction.il"
+    "iptv": "YesTvAction.il",
+    "backups": []
   },
   {
     "id": "yes_tv_drama",
@@ -3731,7 +3752,8 @@
       "web": "❌ רק באפליקציה (HTTP)"
     },
     "countryHe": "ישראל",
-    "iptv": "YesTvDrama.il"
+    "iptv": "YesTvDrama.il",
+    "backups": []
   },
   {
     "id": "yes_tv_comedy",
@@ -3752,7 +3774,8 @@
       "host": "b84203c4.ottrast.com",
       "found": "iptv-org (YesTvComedy.il)",
       "web": "❌ רק באפליקציה (HTTP)"
-    }
+    },
+    "backups": []
   },
   {
     "id": "viva_premium_il",
@@ -3762,7 +3785,7 @@
     "categoryEn": "movies",
     "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12226/index.m3u8",
     "backups": [
-      "http://stream.mcquack.net/43/index.m3u8",
+      "https://stream.mcquack.net/43/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/viva/live.livx/playlist.m3u8"
     ],
     "logo": "assets/logos/viva_premium_il.png",
@@ -3809,7 +3832,7 @@
     },
     "backups": [
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12211/index.m3u8",
-      "http://stream.mcquack.net/46/index.m3u8"
+      "https://stream.mcquack.net/46/index.m3u8"
     ]
   },
   {
@@ -3830,7 +3853,8 @@
       "host": "b84203c4.ottrast.com",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
-    }
+    },
+    "backups": []
   },
   {
     "id": "turkish_dramas_plus",
@@ -3876,7 +3900,8 @@
       "host": "b84203c4.ottrast.com",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
-    }
+    },
+    "backups": []
   },
   {
     "id": "turkish_dramas_3",
@@ -3896,7 +3921,8 @@
       "host": "b84203c4.ottrast.com",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
-    }
+    },
+    "backups": []
   },
   {
     "id": "mediterranean_movies_1",
@@ -3916,7 +3942,8 @@
       "host": "b84203c4.ottrast.com",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
-    }
+    },
+    "backups": []
   },
   {
     "id": "mediterranean_movies_2",
@@ -3936,7 +3963,8 @@
       "host": "b84203c4.ottrast.com",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
-    }
+    },
+    "backups": []
   },
   {
     "id": "global_action_1",
@@ -3956,7 +3984,8 @@
       "host": "b84203c4.ottrast.com",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
-    }
+    },
+    "backups": []
   },
   {
     "id": "global_action_2",
@@ -3976,7 +4005,8 @@
       "host": "b84203c4.ottrast.com",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
-    }
+    },
+    "backups": []
   },
   {
     "id": "spanish_dramas_1",
@@ -3996,7 +4026,8 @@
       "host": "b84203c4.ottrast.com",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
-    }
+    },
+    "backups": []
   },
   {
     "id": "spanish_dramas_2",
@@ -4016,7 +4047,8 @@
       "host": "b84203c4.ottrast.com",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
-    }
+    },
+    "backups": []
   },
   {
     "id": "indian_series_1",
@@ -4036,7 +4068,8 @@
       "host": "b84203c4.ottrast.com",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
-    }
+    },
+    "backups": []
   },
   {
     "id": "indian_series_2",
@@ -4056,7 +4089,8 @@
       "host": "b84203c4.ottrast.com",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
-    }
+    },
+    "backups": []
   },
   {
     "id": "bollywood_hd",
@@ -4076,7 +4110,8 @@
       "host": "b84203c4.ottrast.com",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
-    }
+    },
+    "backups": []
   },
   {
     "id": "bollywood_classic_hd",
@@ -4096,7 +4131,8 @@
       "host": "b84203c4.ottrast.com",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
-    }
+    },
+    "backups": []
   },
   {
     "id": "bollyshow_hd",
@@ -4116,7 +4152,8 @@
       "host": "b84203c4.ottrast.com",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
-    }
+    },
+    "backups": []
   },
   {
     "id": "zee_tv_il",
@@ -4138,7 +4175,8 @@
       "host": "b84203c4.ottrast.com",
       "found": "iptv-org (ZeeTV.il)",
       "web": "❌ רק באפליקציה (HTTP)"
-    }
+    },
+    "backups": []
   },
   {
     "id": "gtv_il",
@@ -4160,7 +4198,8 @@
       "host": "b84203c4.ottrast.com",
       "found": "iptv-org (GTV.il)",
       "web": "❌ רק באפליקציה (HTTP)"
-    }
+    },
+    "backups": []
   },
   {
     "id": "classic_comedy_il",
@@ -4205,7 +4244,8 @@
       "host": "b84203c4.ottrast.com",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
-    }
+    },
+    "backups": []
   },
   {
     "id": "eretz_nehederet",
@@ -4344,7 +4384,8 @@
       "host": "d1zqtf09wb8nt5.cloudfront.net",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
-    }
+    },
+    "backups": []
   },
   {
     "id": "freetv_movies_action",
@@ -4366,7 +4407,8 @@
       "host": "d1zqtf09wb8nt5.cloudfront.net",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
-    }
+    },
+    "backups": []
   },
   {
     "id": "freetv_movies_comedy",
@@ -4388,7 +4430,8 @@
       "host": "d1zqtf09wb8nt5.cloudfront.net",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
-    }
+    },
+    "backups": []
   },
   {
     "id": "freetv_movies_drama",
@@ -4410,7 +4453,8 @@
       "host": "d1zqtf09wb8nt5.cloudfront.net",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
-    }
+    },
+    "backups": []
   },
   {
     "id": "freetv_movies_thriller",
@@ -4432,7 +4476,8 @@
       "host": "d1zqtf09wb8nt5.cloudfront.net",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
-    }
+    },
+    "backups": []
   },
   {
     "id": "freetv_movies_horror",
@@ -4454,7 +4499,8 @@
       "host": "d1zqtf09wb8nt5.cloudfront.net",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
-    }
+    },
+    "backups": []
   },
   {
     "id": "freetv_movies_romance",
@@ -4476,7 +4522,8 @@
       "host": "d1zqtf09wb8nt5.cloudfront.net",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
-    }
+    },
+    "backups": []
   },
   {
     "id": "freetv_movies_feelgood",
@@ -4498,7 +4545,8 @@
       "host": "d1zqtf09wb8nt5.cloudfront.net",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
-    }
+    },
+    "backups": []
   },
   {
     "id": "freetv_movies_family",
@@ -4544,7 +4592,8 @@
       "host": "d1zqtf09wb8nt5.cloudfront.net",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
-    }
+    },
+    "backups": []
   },
   {
     "id": "freetv_series_comedy2",
@@ -4566,7 +4615,8 @@
       "host": "d1zqtf09wb8nt5.cloudfront.net",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
-    }
+    },
+    "backups": []
   },
   {
     "id": "daily_drama_il",
@@ -4588,7 +4638,8 @@
       "host": "d1zqtf09wb8nt5.cloudfront.net",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
-    }
+    },
+    "backups": []
   },
   {
     "id": "vamos_telenovela_il",
@@ -4610,7 +4661,8 @@
       "host": "d1zqtf09wb8nt5.cloudfront.net",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
-    }
+    },
+    "backups": []
   },
   {
     "id": "freetv_global_il",
@@ -4632,7 +4684,8 @@
       "host": "d1zqtf09wb8nt5.cloudfront.net",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
-    }
+    },
+    "backups": []
   },
   {
     "id": "food_network_il",
@@ -5149,7 +5202,7 @@
       "web": "✅"
     },
     "backups": [
-      "http://stream.mcquack.net/363/index.m3u8"
+      "https://stream.mcquack.net/363/index.m3u8"
     ]
   },
   {
@@ -5157,7 +5210,7 @@
     "name": "CNN International HD",
     "category": "חדשות מהעולם (News)",
     "categoryEn": "news",
-    "url": "https://turnerlive.warnermediacdn.com/hls/live/586495/cnngo/cnn_slate/VIDEO_0_3564000.m3u8",
+    "url": "https://jmp2.uk/plu-5421f71da6af422839419cb3.m3u8",
     "fallbackUrls": [
       "https://jmp2.uk/plu-5421f71da6af422839419cb3.m3u8"
     ],
@@ -5176,7 +5229,7 @@
       "web": "✅"
     },
     "backups": [
-      "https://jmp2.uk/plu-5421f71da6af422839419cb3.m3u8"
+      "https://turnerlive.warnermediacdn.com/hls/live/586495/cnngo/cnn_slate/VIDEO_0_3564000.m3u8"
     ]
   },
   {
@@ -5507,7 +5560,8 @@
       "host": "d1zqtf09wb8nt5.cloudfront.net",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
-    }
+    },
+    "backups": []
   },
   {
     "id": "radios_video",
@@ -5528,7 +5582,8 @@
       "host": "cdn.cybercdn.live",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
-    }
+    },
+    "backups": []
   },
   {
     "id": "sky_folk_tv",
@@ -5550,7 +5605,8 @@
       "found": "שידור רשמי Sky",
       "web": "✅ מתנגן בכל הפלטפורמות"
     },
-    "number": 208
+    "number": 208,
+    "backups": []
   },
   {
     "id": "music_4ever",
@@ -5558,7 +5614,7 @@
     "title": "4ever Music Hits HD",
     "category": "מוזיקה (Music TV)",
     "categoryEn": "music",
-    "url": "http://stream.mcquack.net/257/index.m3u8",
+    "url": "https://stream.mcquack.net/257/index.m3u8",
     "logo": "assets/logos/music_4ever.png",
     "badge": "FHD",
     "desc": "הלהיטים הגדולים מכל הזמנים ברצף קליפים מרהיב",
@@ -5571,7 +5627,8 @@
       "host": "stream.mcquack.net",
       "found": "iptv-org (4everMusic.ua)",
       "web": "❌ רק באפליקציה (HTTP)"
-    }
+    },
+    "backups": []
   },
   {
     "id": "music_4fun",
@@ -5592,7 +5649,8 @@
       "host": "stream.4fun.tv",
       "found": "iptv-org (4FunTV.pl)",
       "web": "✅"
-    }
+    },
+    "backups": []
   },
   {
     "id": "music_vivalatino",
@@ -5600,7 +5658,7 @@
     "title": "¡Viva Latino! Dance & Reggaeton HD",
     "category": "מוזיקה (Music TV)",
     "categoryEn": "music",
-    "url": "http://stream.mcquack.net/285/index.m3u8",
+    "url": "https://stream.mcquack.net/285/index.m3u8",
     "logo": "assets/logos/music_vivalatino.png",
     "badge": "FHD",
     "desc": "רגאטון, מוזיקה לטינית סוחפת, סלסה ודאנס קצבי",
@@ -5613,7 +5671,8 @@
       "host": "stream.mcquack.net",
       "found": "iptv-org (VivaLatino.ua)",
       "web": "❌ רק באפליקציה (HTTP)"
-    }
+    },
+    "backups": []
   },
   {
     "id": "music_1hd",
@@ -5634,7 +5693,8 @@
       "host": "176.118.197.101",
       "found": "iptv-org (1HDMusicTelevision.ru)",
       "web": "❌ רק באפליקציה (HTTP)"
-    }
+    },
+    "backups": []
   },
   {
     "id": "hidabroot",
@@ -5715,7 +5775,8 @@
       "host": "edge1.il.kab.tv",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
-    }
+    },
+    "backups": []
   },
   {
     "id": "kabbalah_tv_de_il",
@@ -5736,7 +5797,8 @@
       "host": "edge1.il.kab.tv",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
-    }
+    },
+    "backups": []
   },
   {
     "id": "kabbalah_tv_it_il",
@@ -5757,7 +5819,8 @@
       "host": "edge1.il.kab.tv",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
-    }
+    },
+    "backups": []
   },
   {
     "id": "jaitv_il",
@@ -5778,7 +5841,8 @@
       "host": "vivo.solumedia.com",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
-    }
+    },
+    "backups": []
   },
   {
     "id": "breslev_halachot",
@@ -5801,7 +5865,8 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "breslev_books",
@@ -5824,7 +5889,8 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "breslev_shorts",
@@ -5847,7 +5913,8 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "breslev_torah",
@@ -5870,7 +5937,8 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "kan_bet",
@@ -6098,7 +6166,8 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "glz_live",
@@ -6121,7 +6190,8 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "galgalatz_hits_live",
@@ -6144,7 +6214,8 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "eco99fm",
@@ -6167,7 +6238,8 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "radio_103fm",
@@ -6190,7 +6262,8 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "radios_100fm",
@@ -6213,7 +6286,8 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "lev_hamedina",
@@ -6236,7 +6310,8 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "radio_102fm",
@@ -6259,7 +6334,8 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "radio_haifa",
@@ -6282,7 +6358,8 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "radio_101fm",
@@ -6305,7 +6382,8 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "radio_90fm",
@@ -6328,7 +6406,8 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "radio_darom_live",
@@ -6351,7 +6430,8 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "radio_darom_97",
@@ -6374,7 +6454,8 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "radio_1045fm",
@@ -6426,7 +6507,8 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "radio_eilat",
@@ -6449,7 +6531,8 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "galei_israel",
@@ -6472,7 +6555,8 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "kol_chai",
@@ -6495,7 +6579,8 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "kol_chai_music",
@@ -6576,7 +6661,8 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "radio_2000_live",
@@ -6599,7 +6685,8 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "radio_breslev",
@@ -6622,7 +6709,8 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "mizrahit_fm",
@@ -6645,7 +6733,8 @@
       "web": "❌ רק באפליקציה (HTTP)"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "noshmim_mizrahit",
@@ -6668,7 +6757,8 @@
       "web": "❌ רק באפליקציה (HTTP)"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "ivri6",
@@ -6691,7 +6781,8 @@
       "host": "streaming.radio.co",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
-    }
+    },
+    "backups": []
   },
   {
     "id": "kz_radio_live",
@@ -6714,7 +6805,8 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "radio_sport5",
@@ -6737,7 +6829,8 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "radio_995",
@@ -6760,7 +6853,8 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "aviv_media",
@@ -6783,7 +6877,8 @@
       "web": "❌ רק באפליקציה (HTTP)"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "israeli_voice",
@@ -6806,7 +6901,8 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "radio_france_israel",
@@ -6829,7 +6925,8 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "timbr_radio",
@@ -6852,7 +6949,8 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "up2dance",
@@ -6875,7 +6973,8 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "ystream",
@@ -6898,7 +6997,8 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "joint_blues",
@@ -6921,7 +7021,8 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "joint_beat",
@@ -6944,7 +7045,8 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "joint_reggae",
@@ -6967,7 +7069,8 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "glglz_decades",
@@ -6990,7 +7093,8 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "glglz_weekend",
@@ -7013,7 +7117,8 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "glglz_rock",
@@ -7036,7 +7141,8 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "star33",
@@ -7059,7 +7165,8 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "kabbalah_radio",
@@ -7082,7 +7189,8 @@
       "web": "❌ רק באפליקציה (HTTP)"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "kabbalah_radio_en",
@@ -7105,7 +7213,8 @@
       "web": "❌ רק באפליקציה (HTTP)"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "kabbalah_radio_es",
@@ -7128,7 +7237,8 @@
       "web": "❌ רק באפליקציה (HTTP)"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "kabbalah_radio_fr",
@@ -7151,7 +7261,8 @@
       "web": "❌ רק באפליקציה (HTTP)"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "kol_hatzafon",
@@ -7174,7 +7285,8 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "radio_cs",
@@ -7197,7 +7309,8 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "radio_love_romantic",
@@ -7220,7 +7333,8 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "radio_hatahana",
@@ -7243,7 +7357,8 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "radio_nahariya",
@@ -7266,7 +7381,8 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "radio_sahar",
@@ -7289,7 +7405,8 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "radio_diki",
@@ -7312,7 +7429,8 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "radios_kpop",
@@ -7335,7 +7453,8 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "radios_legends",
@@ -7416,7 +7535,8 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "radios_workout",
@@ -7439,7 +7559,8 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "radios_eurovision",
@@ -7549,7 +7670,8 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "radios_gamer",
@@ -7572,7 +7694,8 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "radios_top40",
@@ -7595,7 +7718,8 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "radios_tiktok",
@@ -7618,7 +7742,8 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "radios_yehudi",
@@ -7757,7 +7882,8 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "radios_standup",
@@ -7780,7 +7906,8 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "radios_selfie",
@@ -7832,7 +7959,8 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "radios_chillout",
@@ -7942,7 +8070,8 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "radios_classic",
@@ -7994,7 +8123,8 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "radios_rock",
@@ -8075,7 +8205,8 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "radios_80s",
@@ -8098,7 +8229,8 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "radios_90s",
@@ -8121,7 +8253,8 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "radios_nostalgia",
@@ -8144,7 +8277,8 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "rak_musica",
@@ -8167,7 +8301,8 @@
       "web": "✅"
     },
     "country": "IL",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "audioversity_live",
@@ -8190,7 +8325,8 @@
     },
     "number": 316,
     "kind": "radio",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "radio_angelika_live",
@@ -8213,7 +8349,8 @@
     },
     "number": 317,
     "kind": "radio",
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "radio_qualita",
@@ -8236,7 +8373,8 @@
       "found": "זרם Radio Qualita; זהות התחנה אומתה באתר qualita.org.il",
       "web": "✅"
     },
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "radio_plus_il",
@@ -8259,7 +8397,8 @@
       "found": "נגן Radio Plus באתר radioplus.co.il",
       "web": "✅"
     },
-    "countryHe": "ישראל"
+    "countryHe": "ישראל",
+    "backups": []
   },
   {
     "id": "jewish_music_stream_live",
@@ -8282,7 +8421,8 @@
       "host": "stream.jewishmusicstream.com",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
-    }
+    },
+    "backups": []
   },
   {
     "id": "radios_shlomo_artzi",
@@ -8953,7 +9093,8 @@
       "host": "ff_engine.streamgates.net",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
-    }
+    },
+    "backups": []
   },
   {
     "id": "kan_kids_radio",
@@ -8974,7 +9115,8 @@
       "host": "kancdn.medonecdn.net",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
-    }
+    },
+    "backups": []
   },
   {
     "id": "chabad_music_radio",
@@ -8995,7 +9137,8 @@
       "host": "stream.radio.co",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
-    }
+    },
+    "backups": []
   },
   {
     "id": "chabad_torah_radio",
@@ -9016,7 +9159,8 @@
       "host": "streams.radio.co",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
-    }
+    },
+    "backups": []
   },
   {
     "id": "kol_radio_il",
@@ -9037,7 +9181,8 @@
       "host": "uksoutha.streaming.broadcast.radio",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
-    }
+    },
+    "backups": []
   },
   {
     "id": "imsostablee_radio_il",
@@ -9084,7 +9229,8 @@
       "found": "סריקת ערוצי ילדים",
       "web": "✅"
     },
-    "number": 352
+    "number": 352,
+    "backups": []
   },
   {
     "id": "babytv_global_hd",
@@ -9105,7 +9251,8 @@
       "found": "סריקת ערוצי ילדים",
       "web": "✅"
     },
-    "number": 353
+    "number": 353,
+    "backups": []
   },
   {
     "id": "zoomoo_kids_hd",
@@ -9126,7 +9273,8 @@
       "found": "סריקת ערוצי ילדים",
       "web": "✅"
     },
-    "number": 354
+    "number": 354,
+    "backups": []
   },
   {
     "id": "ani_kids_hd",
@@ -9134,7 +9282,7 @@
     "title": "ערוץ אני אנימציה HD",
     "category": "ילדים מהעולם (Kids World)",
     "categoryEn": "kids",
-    "url": "http://stream.mcquack.net/306/index.m3u8",
+    "url": "https://stream.mcquack.net/306/index.m3u8",
     "logo": "assets/logos/ani_kids.png",
     "badge": "HD",
     "desc": "ערוץ סדרות אנימציה עולמיות, צבעוניות וחינוכיות לילדים באיכות HD",
@@ -9147,7 +9295,8 @@
       "found": "סריקת ערוצי ילדים",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "number": 355
+    "number": 355,
+    "backups": []
   },
   {
     "id": "plusplus_kids_hd",
@@ -9155,7 +9304,7 @@
     "title": "ערוץ האנימציה PLUSPLUS HD",
     "category": "ילדים מהעולם (Kids World)",
     "categoryEn": "kids",
-    "url": "http://stream.mcquack.net/339/index.m3u8",
+    "url": "https://stream.mcquack.net/339/index.m3u8",
     "logo": "assets/logos/plusplus.png",
     "badge": "HD",
     "desc": "ערוץ הילדים והאנימציה PLUSPLUS – הרפתקאות, מדע וסדרות לילדים",
@@ -9168,7 +9317,8 @@
       "found": "סריקת ערוצי ילדים",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "number": 356
+    "number": 356,
+    "backups": []
   },
   {
     "id": "niki_junior_kids_hd",
@@ -9176,7 +9326,7 @@
     "title": "ערוץ ניקי ג'וניור HD",
     "category": "ילדים מהעולם (Kids World)",
     "categoryEn": "kids",
-    "url": "http://stream.mcquack.net/262/index.m3u8",
+    "url": "https://stream.mcquack.net/262/index.m3u8",
     "logo": "assets/logos/niki_junior_kids_hd.png",
     "badge": "HD",
     "desc": "ערוץ תוכניות וסדרות לגיל הרך ולילדים",
@@ -9189,7 +9339,8 @@
       "found": "סריקת ערוצי ילדים",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "number": 357
+    "number": 357,
+    "backups": []
   },
   {
     "id": "cartoons_short_hd",
@@ -9197,7 +9348,7 @@
     "title": "ערוץ סרטוני אנימציה קצרים",
     "category": "ילדים מהעולם (Kids World)",
     "categoryEn": "kids",
-    "url": "http://stream.mcquack.net/347/index.m3u8",
+    "url": "https://stream.mcquack.net/347/index.m3u8",
     "logo": "assets/logos/cartoons_short_hd.png",
     "badge": "HD",
     "desc": "מרתון סרטוני אנימציה קצרים ומצחיקים ברצף ללא הפסקה",
@@ -9210,7 +9361,8 @@
       "found": "סריקת ערוצי ילדים",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "number": 358
+    "number": 358,
+    "backups": []
   },
   {
     "id": "cartoons_big_hd",
@@ -9218,7 +9370,7 @@
     "title": "ערוץ סרטי אנימציה לילדים",
     "category": "ילדים מהעולם (Kids World)",
     "categoryEn": "kids",
-    "url": "http://stream.mcquack.net/348/index.m3u8",
+    "url": "https://stream.mcquack.net/348/index.m3u8",
     "logo": "assets/logos/cartoons_big_hd.png",
     "badge": "HD",
     "desc": "סרטי אנימציה מלאים והרפתקאות מצוירות לכל המשפחה ברצף 24/7",
@@ -9231,7 +9383,8 @@
       "found": "סריקת ערוצי ילדים",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "number": 359
+    "number": 359,
+    "backups": []
   },
   {
     "id": "fresh_kids_tv_hd",
@@ -9239,7 +9392,7 @@
     "title": "פרש קידס (Fresh Kids TV HD)",
     "category": "ילדים מהעולם (Kids World)",
     "categoryEn": "kids",
-    "url": "http://stream.mcquack.net/425/index.m3u8",
+    "url": "https://stream.mcquack.net/425/index.m3u8",
     "logo": "assets/logos/fresh_kids_tv_hd.png",
     "badge": "HD",
     "desc": "ערוץ מוזיקה, שירים וקצב לילדים ולנוער",
@@ -9252,7 +9405,8 @@
       "found": "סריקת ערוצי ילדים",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "number": 360
+    "number": 360,
+    "backups": []
   },
   {
     "id": "ducktv_plus_hd",
@@ -9273,7 +9427,8 @@
       "host": "dash3.antik.sk",
       "found": "iptv-org (ducktvPLUS.sk)",
       "web": "✅"
-    }
+    },
+    "backups": []
   },
   {
     "id": "lego_channel_hd",
@@ -9837,7 +9992,8 @@
       "web": "❌ רק באפליקציה (HTTP)"
     },
     "desc": "ערוץ הופ! ילדות ישראלית – שירי ילדות קלאסיים, סיפורים, הצגות וסדרות איכותיות לילדים ופעוטות בעברית.",
-    "webOk": true
+    "webOk": true,
+    "backups": []
   },
   {
     "id": "hop_plus_kids_il",
@@ -9858,7 +10014,8 @@
       "web": "❌ רק באפליקציה (HTTP)"
     },
     "desc": "ערוץ הופ! פלוס – תוכניות אהובות, לימוד והרפתקאות לקטנטנים.",
-    "webOk": true
+    "webOk": true,
+    "backups": []
   },
   {
     "id": "freetv_kids_family_il",
@@ -9879,7 +10036,8 @@
       "web": "✅"
     },
     "desc": "ערוץ סרטי ילדים, אנימציה ומשפחה 24/7 מדובב לעברית.",
-    "webOk": true
+    "webOk": true,
+    "backups": []
   },
   {
     "id": "yes_movies_kids_plus_il",
@@ -9900,7 +10058,8 @@
       "web": "❌ רק באפליקציה (HTTP)"
     },
     "desc": "ערוץ סרטי ילדים ונוער שוברי קופות מבית yes.",
-    "webOk": true
+    "webOk": true,
+    "backups": []
   },
   {
     "id": "keshet_music_il",
@@ -9921,7 +10080,8 @@
       "web": "✅"
     },
     "desc": "להיטי מוזיקה ישראלית מכל הזמנים, קליפים והופעות חיות 24 שעות ביממה.",
-    "webOk": true
+    "webOk": true,
+    "backups": []
   },
   {
     "id": "hot_docu_il",
@@ -10195,7 +10355,8 @@
     "language": "he",
     "quality": "HD",
     "description": "ערוץ הסרטים והסדרות התיעודיים המוביל בישראל מבית HOT.",
-    "categoryEn": "docu"
+    "categoryEn": "docu",
+    "backups": []
   },
   {
     "id": "channel_hayeladim_hd",
@@ -10207,7 +10368,8 @@
     "language": "he",
     "quality": "HD",
     "description": "ערוץ הילדים – שידורי ילדים ונוער, סדרות מקור ותוכניות אהובות בעברית.",
-    "categoryEn": "kids_he"
+    "categoryEn": "kids_he",
+    "backups": []
   },
   {
     "id": "junior_channel_hd",
@@ -10219,7 +10381,8 @@
     "language": "he",
     "quality": "HD",
     "description": "ערוץ ג'וניור לילדים בעברית – סדרות אנימציה ונוסטלגיה אהובות.",
-    "categoryEn": "kids_he"
+    "categoryEn": "kids_he",
+    "backups": []
   },
   {
     "id": "baby_channel_hd",
@@ -10231,7 +10394,8 @@
     "language": "he",
     "quality": "HD",
     "description": "ערוץ בייבי המיועד לפעוטות והורים – תוכניות מעשירות ומפתחות בעברית.",
-    "categoryEn": "kids_he"
+    "categoryEn": "kids_he",
+    "backups": []
   },
   {
     "id": "luli_channel_hd",
@@ -10243,7 +10407,8 @@
     "language": "he",
     "quality": "HD",
     "description": "ערוץ לולי לפעוטות – שירים, סיפורים והפעלות בעברית מבית הופ!.",
-    "categoryEn": "kids_he"
+    "categoryEn": "kids_he",
+    "backups": []
   },
   {
     "id": "yes_movies_kids_hd",
@@ -10255,7 +10420,8 @@
     "language": "he",
     "quality": "HD",
     "description": "סרטי ילדים ומשפחה מובילים בדיבוב עברי ובאיכות HD מבית yes.",
-    "categoryEn": "kids_he"
+    "categoryEn": "kids_he",
+    "backups": []
   },
   {
     "id": "vacation_channel_hd",
@@ -10267,7 +10433,8 @@
     "language": "he",
     "quality": "HD",
     "description": "ערוץ תיירות, נופש, חופשות וטיולים בישראל ובעולם.",
-    "categoryEn": "israel"
+    "categoryEn": "israel",
+    "backups": []
   },
   {
     "id": "good_life_channel_hd",
@@ -10361,7 +10528,8 @@
         "name": "ראשי (Hala TV HD)",
         "url": "https://stream.panet.com/edge/halaTV/playlist.m3u8"
       }
-    ]
+    ],
+    "backups": []
   },
   {
     "id": "vod_checkout",
@@ -11298,7 +11466,7 @@
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
     "logo": "assets/logos/knesset.png",
-    "url": "http://stream.mcquack.net/48/index.m3u8",
+    "url": "https://stream.mcquack.net/48/index.m3u8",
     "backupUrls": [
       "http://45.156.223.202/iptv/QAP2YS2594ZQS3/2369/index.m3u8",
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2369/index.m3u8"
@@ -11312,7 +11480,8 @@
     "badge": "HD",
     "quality": "HD",
     "resolution": "1080p",
-    "desc": "ערוץ הכנסת המשדר דיוני מליאה, ועדות ומשדרים פוליטיים ואקטואליים."
+    "desc": "ערוץ הכנסת המשדר דיוני מליאה, ועדות ומשדרים פוליטיים ואקטואליים.",
+    "backups": []
   },
   {
     "id": "channel_9_israel_hd",
@@ -11334,7 +11503,8 @@
     "badge": "HD",
     "quality": "HD",
     "resolution": "1080p",
-    "desc": "ערוץ 9 הישראלי המשדר חדשות, אקטואליה, תרבות ותוכן ישראלי ורוסי."
+    "desc": "ערוץ 9 הישראלי המשדר חדשות, אקטואליה, תרבות ותוכן ישראלי ורוסי.",
+    "backups": []
   },
   {
     "id": "ch14_now_fast",
@@ -11356,7 +11526,8 @@
     "badge": "HD",
     "quality": "HD",
     "resolution": "1080p",
-    "desc": "ערוץ 14 – שידורי חדשות, פטריוטים, אקטואליה ומבזקים שוטפים בטעינה מהירה."
+    "desc": "ערוץ 14 – שידורי חדשות, פטריוטים, אקטואליה ומבזקים שוטפים בטעינה מהירה.",
+    "backups": []
   },
   {
     "id": "hidabroot_tv_hd",
@@ -11376,7 +11547,8 @@
     "badge": "HD",
     "quality": "HD",
     "resolution": "1080p",
-    "desc": "שידורי ערוץ הידברות HD: הרצאות, תוכניות אירוח, חינוך ויהדות."
+    "desc": "שידורי ערוץ הידברות HD: הרצאות, תוכניות אירוח, חינוך ויהדות.",
+    "backups": []
   },
   {
     "id": "i24news_arabic_hd",
@@ -11398,7 +11570,8 @@
     "badge": "HD",
     "quality": "HD",
     "resolution": "1080p",
-    "desc": "חדשות ואקטואליה ישראלית ובינלאומית בערבית מאולפני נמל יפו."
+    "desc": "חדשות ואקטואליה ישראלית ובינלאומית בערבית מאולפני נמל יפו.",
+    "backups": []
   },
   {
     "id": "i24news_english_hd",
@@ -11420,7 +11593,8 @@
     "badge": "HD",
     "quality": "HD",
     "resolution": "1080p",
-    "desc": "ערוץ i24NEWS המשדר חדשות ואקטואליה בינלאומית וישראלית באנגלית."
+    "desc": "ערוץ i24NEWS המשדר חדשות ואקטואליה בינלאומית וישראלית באנגלית.",
+    "backups": []
   },
   {
     "id": "kan_hinuchit_mc",
@@ -11429,7 +11603,7 @@
     "category": "ילדים ונוער (בעברית)",
     "categoryEn": "kids",
     "logo": "assets/logos/kan_hinuchit.png",
-    "url": "http://stream.mcquack.net/378/index.m3u8",
+    "url": "https://stream.mcquack.net/378/index.m3u8",
     "backupUrls": [
       "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan23/live.livx/playlist.m3u8"
     ],
@@ -11442,7 +11616,8 @@
     "badge": "HD",
     "quality": "HD",
     "resolution": "1080p",
-    "desc": "שידורי כאן חינוכית לילדים ולנוער – סדרות איכותיות ומקוריות לכל המשפחה."
+    "desc": "שידורי כאן חינוכית לילדים ולנוער – סדרות איכותיות ומקוריות לכל המשפחה.",
+    "backups": []
   },
   {
     "id": "hop_kids_mc",
@@ -11451,7 +11626,7 @@
     "category": "ילדים ונוער (בעברית)",
     "categoryEn": "kids",
     "logo": "assets/logos/hop_kids_israel.png",
-    "url": "http://stream.mcquack.net/44/index.m3u8",
+    "url": "https://stream.mcquack.net/44/index.m3u8",
     "backupUrls": [
       "http://45.156.223.202/iptv/QAP2YS2594ZQS3/12244/index.m3u8",
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12244/index.m3u8"
@@ -11465,7 +11640,8 @@
     "badge": "HD",
     "quality": "HD",
     "resolution": "1080p",
-    "desc": "ערוץ הופ! המוביל בישראל לילדים וגיל הרך עם תוכניות מקור ושירים אהובים."
+    "desc": "ערוץ הופ! המוביל בישראל לילדים וגיל הרך עם תוכניות מקור ושירים אהובים.",
+    "backups": []
   },
   {
     "id": "zoom_kids_mc",
@@ -11474,7 +11650,7 @@
     "category": "ילדים ונוער (בעברית)",
     "categoryEn": "kids",
     "logo": "assets/logos/zoom_kids_israel.png",
-    "url": "http://stream.mcquack.net/377/index.m3u8",
+    "url": "https://stream.mcquack.net/377/index.m3u8",
     "backupUrls": [
       "http://45.156.223.202/iptv/QAP2YS2594ZQS3/2359/index.m3u8",
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2359/index.m3u8"
@@ -11488,7 +11664,8 @@
     "badge": "HD",
     "quality": "HD",
     "resolution": "1080p",
-    "desc": "ערוץ זום: סדרות אקשן, קומדיות והרפתקאות בדיבוב עברי לנוער וילדים."
+    "desc": "ערוץ זום: סדרות אקשן, קומדיות והרפתקאות בדיבוב עברי לנוער וילדים.",
+    "backups": []
   },
   {
     "id": "viva_premium_mc",
@@ -11497,7 +11674,7 @@
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "series",
     "logo": "assets/logos/viva_premium_il.png",
-    "url": "http://stream.mcquack.net/43/index.m3u8",
+    "url": "https://stream.mcquack.net/43/index.m3u8",
     "backupUrls": [
       "http://45.156.223.202/iptv/QAP2YS2594ZQS3/12226/index.m3u8",
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12226/index.m3u8"
@@ -11511,7 +11688,8 @@
     "badge": "HD",
     "quality": "HD",
     "resolution": "1080p",
-    "desc": "ויוה פרימיום – מיטב הטלנובלות והסדרות הבינלאומיות עם תרגום עברי מלא."
+    "desc": "ויוה פרימיום – מיטב הטלנובלות והסדרות הבינלאומיות עם תרגום עברי מלא.",
+    "backups": []
   },
   {
     "id": "good_life_mc",
@@ -11520,7 +11698,7 @@
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
     "logo": "assets/logos/good_life_israel.png",
-    "url": "http://stream.mcquack.net/47/index.m3u8",
+    "url": "https://stream.mcquack.net/47/index.m3u8",
     "backupUrls": [
       "http://45.156.223.202/iptv/QAP2YS2594ZQS3/2355/index.m3u8",
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2355/index.m3u8"
@@ -11534,7 +11712,8 @@
     "badge": "HD",
     "quality": "HD",
     "resolution": "1080p",
-    "desc": "ערוץ החיים הטובים: תוכניות אירוח, עיצוב הבית, אוכל ונופש."
+    "desc": "ערוץ החיים הטובים: תוכניות אירוח, עיצוב הבית, אוכל ונופש.",
+    "backups": []
   },
   {
     "id": "yes_movies_action_mc",
@@ -11543,7 +11722,7 @@
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
     "logo": "assets/logos/yes_movies_action.png",
-    "url": "http://stream.mcquack.net/380/index.m3u8",
+    "url": "https://stream.mcquack.net/380/index.m3u8",
     "backupUrls": [
       "http://45.156.223.202/iptv/QAP2YS2594ZQS3/12270/index.m3u8",
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12270/index.m3u8"
@@ -11557,7 +11736,8 @@
     "badge": "HD",
     "quality": "HD",
     "resolution": "1080p",
-    "desc": "ערוץ הסרטים המוביל ב-yes לסרטי פעולה, מתח ומד\"ב בדיבוב ותרגום עברי."
+    "desc": "ערוץ הסרטים המוביל ב-yes לסרטי פעולה, מתח ומד\"ב בדיבוב ותרגום עברי.",
+    "backups": []
   },
   {
     "id": "hot_drama_mc",
@@ -11566,7 +11746,7 @@
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "series",
     "logo": "assets/logos/hot_drama.png",
-    "url": "http://stream.mcquack.net/381/index.m3u8",
+    "url": "https://stream.mcquack.net/381/index.m3u8",
     "backupUrls": [
       "http://45.156.223.202/iptv/QAP2YS2594ZQS3/32140/index.m3u8",
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32140/index.m3u8"
@@ -11580,6 +11760,7 @@
     "badge": "HD",
     "quality": "HD",
     "resolution": "1080p",
-    "desc": "HOT דרמה – סרטים מרגשים, הפקות מקור ודרמות מנצחות מהקולנוע העולמי."
+    "desc": "HOT דרמה – סרטים מרגשים, הפקות מקור ודרמות מנצחות מהקולנוע העולמי.",
+    "backups": []
   }
 ]

@@ -449,11 +449,26 @@ fun PlayerScreen(
         player.volume = 1.0f
         player.prepare()
         player.playWhenReady = !castController.isCasting
-        delay(3500)
+        // Allow adequate buffer time (8.5s) for slow or 10-second segment streams (such as ottrast) before candidate failover
+        delay(8500)
         if (buffering && !playing && error == null && !castController.isCasting && sourceIndex + 1 < candidates.size) {
             val nextIdx = sourceIndex + 1
             statusToast = "שרת גיבוי (${nextIdx + 1}/${candidates.size})"
             sourceIndex = nextIdx
+        }
+    }
+
+    // Video Presence Watchdog: if audio is playing on a TV video channel but video decoder failed (width == 0),
+    // automatically failover to a supported FHD H.264 candidate stream (e.g. 4K HEVC device incompatibility)
+    LaunchedEffect(playing, current.id, sourceIndex, isAudioOnlyMode) {
+        if (playing && !isAudioOnlyMode && !current.isRadio && current.kind != "vod" && current.kind != "radio") {
+            delay(2800)
+            if (player.isPlaying && !isAudioOnlyMode && player.videoSize.width == 0 && player.videoSize.height == 0) {
+                if (sourceIndex + 1 < candidates.size) {
+                    statusToast = "מעבר אוטומטי לשידור FHD (וידאו)"
+                    sourceIndex += 1
+                }
+            }
         }
     }
 

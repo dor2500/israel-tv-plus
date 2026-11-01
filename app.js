@@ -109,11 +109,23 @@
   // The web site can't play http streams (mixed content) or https ones without CORS: they go through the https relay
   // (relay/worker.js, a Cloudflare Worker) when one is configured (file relay.url → version.js); the apps play them directly.
   var RELAY = (new URLSearchParams(location.search).get('relay') || BUILD.relay || '').replace(/\/+$/, '');
+  function isHevcSupported() {
+    try {
+      if (window.MediaSource && typeof MediaSource.isTypeSupported === 'function') {
+        return MediaSource.isTypeSupported('video/mp4; codecs="hev1.1.2.L123.90"') ||
+               MediaSource.isTypeSupported('video/mp4; codecs="hev1.1.6.L93.B0"') ||
+               MediaSource.isTypeSupported('video/mp4; codecs="hvc1.1.6.L93.B0"');
+      }
+    } catch (e) {}
+    return false;
+  }
   function normalizeStreamUrl(u) {
     var s = String(u || '').trim();
     if (!s) return '';
     if (location.protocol === 'https:') {
       s = s.replace(/^http:\/\/(?:s2\.ottrast\.com|212\.80\.215\.72)(?::\d+)?\//i, 'https://s2.ottrast.com/');
+      s = s.replace(/^http:\/\/stream\.mcquack\.net\//i, 'https://stream.mcquack.net/');
+      s = s.replace(/^http:\/\/glzwizzlv\.bynetcdn\.com\//i, 'https://glzwizzlv.bynetcdn.com/');
     }
     return s;
   }
@@ -132,6 +144,7 @@
       if (/^http:/i.test(u)) httpList.push(u);
       else httpsList.push(u);
     }
+    var list = httpsList.concat(httpList);
     if (location.protocol === 'https:') {
       var proxied = [];
       for (var j = 0; j < httpList.length; j++) {
@@ -139,9 +152,18 @@
         if (RELAY) proxied.push(RELAY + '/?u=' + encodeURIComponent(hu));
         // corsproxy removed due to 403 blocks
       }
-      return httpsList.concat(proxied).concat(httpList);
+      list = httpsList.concat(proxied).concat(httpList);
     }
-    return httpsList.concat(httpList);
+    // If the browser does not support 4K HEVC in MSE, prioritize FHD H.264 streams so video plays
+    if (!isHevcSupported() && /_4k|sport_5_4k|54k/i.test((ch.id || '') + ' ' + (ch.url || '') + ' ' + (ch.name || ''))) {
+      var non4k = [], is4k = [];
+      for (var k = 0; k < list.length; k++) {
+        if (/_4k|54k/i.test(list[k])) is4k.push(list[k]);
+        else non4k.push(list[k]);
+      }
+      return non4k.concat(is4k);
+    }
+    return list;
   }
   function needsRelay(ch) { return IS_WEB && !ch.webUrl && (ch.webOk === false || /^http:/i.test(normalizeStreamUrl(ch.url))); }
   function streamUrl(ch) {
@@ -2978,6 +3000,7 @@
   function stopPlayback() {
     if (state.stallTimer) { clearTimeout(state.stallTimer); state.stallTimer = null; }
     if (state.connectTimer) { clearTimeout(state.connectTimer); state.connectTimer = null; }
+    if (state.noVideoTimer) { clearTimeout(state.noVideoTimer); state.noVideoTimer = null; }
     if (state.streamUrl && /ottrast\.com|212\.80\.215\.72/i.test(state.streamUrl)) {
       state.lastOttrastStop = Date.now();
     }
@@ -3444,6 +3467,20 @@ function loadCandidate(ch, rawUrl) {
         };
         v.onplaying = function () {
           setTimeout(function () { stallCount = 0; }, 10000);
+          // Video Dimension Watchdog: if audio plays but video decoder fails (videoWidth == 0), auto switch to backup stream
+          if (!state.isRadio && !state.audioOnly && !ch.isRadio && !ch.isVod) {
+            if (state.noVideoTimer) clearTimeout(state.noVideoTimer);
+            state.noVideoTimer = setTimeout(function () {
+              if (state.playing === ch && !v.paused && v.videoWidth === 0 && v.videoHeight === 0) {
+                var cands = state.candidates && state.candidates.length ? state.candidates : candidateUrlsOf(ch);
+                if ((state.candIdx || 0) + 1 < cands.length) {
+                  toast('מעבר אוטומטי לשידור FHD (וידאו)');
+                  state.candIdx = (state.candIdx || 0) + 1;
+                  loadCandidate(ch, cands[state.candIdx]);
+                }
+              }
+            }, 2500);
+          }
         };
         v.onended = function () {
           if (ch.isVod && ch.vodSeries && ch.vodEpisodeIndex != null) {
@@ -3519,6 +3556,7 @@ function loadCandidate(ch, rawUrl) {
 
   function onFatal(ch, reason) {
     if (state.stallTimer) { clearTimeout(state.stallTimer); state.stallTimer = null; }
+    if (state.noVideoTimer) { clearTimeout(state.noVideoTimer); state.noVideoTimer = null; }
     if (state.playing !== ch) return;
     if (state.catchup) { toast('הצפייה החוזרת לא זמינה · חוזרים לשידור החי'); loadStream(ch); return; }
     var cands = state.candidates && state.candidates.length ? state.candidates : candidateUrlsOf(ch);
