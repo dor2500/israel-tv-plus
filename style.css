@@ -3231,168 +3231,312 @@ body.phone .m3-tv-hints { display: none; }
   color: var(--text, #fff);
 }
 
-/* ------------------------------------------------------------------ TV Interface Design Styles */
-/* 1. Apple TV Style (Default Liquid Glass) */
-body.tvstyle-appletv .m3-settings-container,
-body.tvstyle-appletv .dialog-box,
-body.tvstyle-appletv .m3-nav-item.focused,
-body.tvstyle-appletv .m3-card.focused {
-  backdrop-filter: blur(28px) saturate(180%);
-  -webkit-backdrop-filter: blur(28px) saturate(180%);
-}
-body.tvstyle-appletv .m3-card.focused {
-  border-radius: 2.2rem;
-  box-shadow: 0 16px 36px rgba(0,0,0,0.45), 0 0 0 2px rgba(255,255,255,0.4);
-}
+/* ================================================================== designs (Settings > Appearance > Design)
+   Each one replaces the whole interface on top of the classic rules. The colours come from DESIGNS in app.js. */
 
-/* 2. Google TV / Android TV (Material 3 Expressive) */
-body.tvstyle-googletv {
-  background-color: #0f1013 !important;
-}
-body.tvstyle-googletv .m3-settings-container {
-  background: #18191e !important;
-  border-radius: 2.8rem !important;
-  border: 1px solid rgba(255,255,255,0.08) !important;
-  box-shadow: 0 20px 48px rgba(0,0,0,0.6) !important;
-}
-body.tvstyle-googletv .m3-nav-item {
-  border-radius: 9999px !important;
-  transition: all 0.2s cubic-bezier(0.2, 0, 0, 1) !important;
-}
-body.tvstyle-googletv .m3-nav-item.focused {
-  background: var(--accent, #a8c7fa) !important;
-  color: #040e25 !important;
-  font-weight: 800 !important;
-  transform: scale(1.02) !important;
-  box-shadow: 0 4px 16px rgba(168,199,250,0.3) !important;
-}
-body.tvstyle-googletv .m3-nav-item.focused .m3-nav-name,
-body.tvstyle-googletv .m3-nav-item.focused .m3-nav-desc,
-body.tvstyle-googletv .m3-nav-item.focused .m3-nav-ico svg {
-  color: #040e25 !important;
-  fill: #040e25 !important;
-}
-body.tvstyle-googletv .m3-card.focused {
-  border-radius: 2.4rem !important;
-  background: rgba(255,255,255,0.12) !important;
-  outline: 3px solid var(--accent, #a8c7fa) !important;
-  outline-offset: 3px !important;
-  box-shadow: 0 12px 32px rgba(0,0,0,0.5) !important;
-}
-body.tvstyle-googletv .channel-card.focused,
-body.tvstyle-googletv .vod-card.focused {
-  border-radius: 2.4rem !important;
-  outline: 3.5px solid var(--accent, #a8c7fa) !important;
-  outline-offset: 4px !important;
-  transform: scale(1.06) !important;
-}
+/* ------------------------------------------------------------------ shared: a preview window instead of a full-screen picture */
+body.design-rail.tvui:not(.player-open) #player, body.design-metro.tvui:not(.player-open) #player, body.design-paper.tvui:not(.player-open) #player { overflow: hidden; }
+body.design-rail.tvui, body.design-metro.tvui, body.design-paper.tvui { background: var(--bg); }
+body.design-rail .atv, body.design-metro .atv, body.design-paper .atv { background: none; }
+body.design-rail .atv-shade, body.design-metro .atv-shade, body.design-paper .atv-shade { display: none; }
+body.design-rail .atv-stage, body.design-metro .atv-stage, body.design-paper .atv-stage { bottom: auto; right: auto; overflow: hidden; }
+/* the surfaces of the new designs are solid */
+body.design-rail .atv-pill, body.design-metro .atv-pill, body.design-paper .atv-pill, body.design-cinema .atv-pill { -webkit-backdrop-filter: none; backdrop-filter: none; box-shadow: none; }
 
-/* 3. Samsung One UI (Minimalist Flat, Deep AMOLED & Sharp Squircles) */
-body.tvstyle-oneui {
-  background-color: #000000 !important;
-}
-body.tvstyle-oneui .m3-settings-container {
-  background: #08080a !important;
-  border-radius: 1.6rem !important;
-  border: 1.5px solid #222228 !important;
-  box-shadow: none !important;
-}
-body.tvstyle-oneui .m3-nav-item {
-  border-radius: 1.2rem !important;
-  border: 1px solid transparent !important;
-}
-body.tvstyle-oneui .m3-nav-item.focused {
-  background: #15151c !important;
-  border: 2px solid var(--accent, #3876f6) !important;
-  box-shadow: none !important;
-  transform: none !important;
-}
-body.tvstyle-oneui .m3-card {
-  border-radius: 1.4rem !important;
-  border: 1px solid rgba(255,255,255,0.06) !important;
-}
-body.tvstyle-oneui .m3-card.focused {
-  background: #181822 !important;
-  border: 2.5px solid var(--accent, #3876f6) !important;
-  box-shadow: 0 0 18px rgba(56,118,246,0.35) !important;
-  transform: none !important;
-}
-body.tvstyle-oneui .channel-card,
-body.tvstyle-oneui .vod-card {
-  border-radius: 1.4rem !important;
-}
-body.tvstyle-oneui .channel-card.focused,
-body.tvstyle-oneui .vod-card.focused {
-  border: 3px solid var(--accent, #3876f6) !important;
-  border-radius: 1.4rem !important;
-  transform: scale(1.04) !important;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.8) !important;
-}
-body.tvstyle-oneui .dialog-box {
-  border-radius: 1.8rem !important;
-  border: 1.5px solid #2a2a34 !important;
-  background: #0d0d12 !important;
-}
+/* ------------------------------------------------------------------ cinema: full picture, centred title, one row of posters */
+body.design-cinema { --radius: .3rem; }
+body.design-cinema .atv-shade { background:
+  linear-gradient(to bottom, #000 0, rgba(0, 0, 0, .55) 9%, rgba(0, 0, 0, 0) 24%),
+  linear-gradient(to top, #050403 0, rgba(5, 4, 3, .96) 34%, rgba(5, 4, 3, .55) 56%, rgba(5, 4, 3, 0) 78%); }
+body.design-cinema .atv-pill { top: 1.6rem; left: auto; right: 4rem; height: 3.6rem; padding: 0; border: 0; border-radius: 0; background: none; -webkit-transform: none; transform: none; }
+body.design-cinema .atv-tab { height: 3.2rem; margin: 0 0 0 .6rem; padding: 0 1rem; border-radius: 0; font-size: 1.35rem; font-weight: 500; color: rgba(255, 255, 255, .72);
+  background: none !important; border: 0 !important; border-bottom: .22rem solid transparent !important; box-shadow: none !important; -webkit-transform: none !important; transform: none !important; }
+body.design-cinema .atv-tab.on { color: var(--accent); border-bottom-color: var(--accent) !important; }
+body.design-cinema .atv-tab.focused { color: #14100a; background: var(--accent) !important; font-weight: 700; }
+body.design-cinema .atv-meta { top: auto; bottom: 23.5rem; left: 0; right: 0; width: 76rem; margin: 0 auto; text-align: center; }
+body.design-cinema .atv-mlogo { width: auto; height: 9rem; justify-content: center; }
+body.design-cinema .atv-mlogo::before { display: none; }
+body.design-cinema .atv-title { font-size: 5.4rem; font-weight: 700; letter-spacing: 0; }
+body.design-cinema .atv-tags { justify-content: center; }
+body.design-cinema .atv-tags > span { margin: 0 .4rem; }
+body.design-cinema .atv-desc { font-size: 1.5rem; }
+body.design-cinema .atv-shelves { height: 22rem; }
+body.design-cinema .atv-row { height: 21rem; }
+body.design-cinema .atv-row.below { opacity: 0; }
+body.design-cinema .atv-row-title { margin: 0 4rem .5rem; font-size: 1.15rem; font-weight: 700; letter-spacing: .12em; color: var(--accent); }
+body.design-cinema .atv-track { padding: 0 4rem; }
+body.design-cinema .atv-item { flex: 0 0 11rem; width: 11rem; }
+body.design-cinema .atv-card { width: 11rem; height: 15.4rem; border-radius: .3rem; background: linear-gradient(170deg, #241c0e, #0d0a05); border: 1px solid rgba(232, 180, 74, .22); box-shadow: none; }
+body.design-cinema .atv-logo img { max-width: 76%; max-height: 40%; }
+body.design-cinema .atv-item.is-vod .atv-logo img { max-width: 100%; max-height: 100%; }
+body.design-cinema .atv-name { margin-top: .5rem; font-size: 1.05rem; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+body.design-cinema:not(.phone) .atv-item.focused .atv-card { -webkit-transform: scale3d(1.06, 1.06, 1) !important; transform: scale3d(1.06, 1.06, 1) !important;
+  border: .2rem solid var(--accent) !important; box-shadow: 0 0 3rem rgba(232, 180, 74, .4) !important; }
+body.design-cinema .atv-item.focused .atv-name { color: var(--accent); -webkit-transform: none; transform: none; }
+body.design-cinema span.atv-live { background: none !important; color: var(--accent); border: 1px solid var(--accent); }
+body.design-cinema #player .osd::before { background: linear-gradient(to top, #000 0, rgba(0, 0, 0, .9) 42%, rgba(0, 0, 0, 0) 100%); }
+body.design-cinema #tvo-bar i { background: var(--accent); }
+body.design-cinema .tv-card, body.design-cinema .tv-strip-item, body.design-cinema #tvo-opts { border-radius: .3rem; }
+body.design-cinema .tv-strip-item.focus, body.design-cinema #tvo-big.focus { box-shadow: 0 0 0 .2rem var(--accent), 0 0 2.4rem rgba(232, 180, 74, .4); }
+body.design-cinema #tvo-opts.focus { background: var(--accent); color: #14100a; }
+body.design-cinema .dialog-box, body.design-cinema .menu-box, body.design-cinema .btn, body.design-cinema .net-prof-card { border-radius: .4rem !important; }
+body.design-cinema .net-prof-title, body.design-cinema #settings-h, body.design-cinema .settings-title { letter-spacing: .02em; color: var(--accent); }
+body.design-cinema.phone .pager { height: 80vh; max-height: none; border-radius: 0; }
+body.design-cinema.phone .slide-body { text-align: center; align-items: center; }
+body.design-cinema.phone .slide-actions, body.design-cinema.phone .slide-meta { justify-content: center; }
+body.design-cinema.phone .shelf-head h3 { font-size: 1.3rem; letter-spacing: .1em; color: var(--accent); }
+body.design-cinema.phone .pcard { width: 12rem; }
+body.design-cinema.phone .pc-media { aspect-ratio: 5 / 7; border-radius: .3rem; border: 1px solid rgba(232, 180, 74, .22); }
+body.design-cinema.phone .pc-name { font-size: 1.25rem; text-align: center; }
+body.design-cinema.phone .pc-meta { display: none; }
+body.design-cinema.phone .nb-track { background: #000; border-top: 1px solid rgba(232, 180, 74, .3); }
+body.design-cinema.phone .nb-pill { display: none; }
+body.design-cinema.phone .nb-item.on { color: var(--accent); }
 
-/* 4. LG webOS (Vibrant Gradients, Floating Ribbons & Color Depth) */
-body.tvstyle-webos {
-  background: radial-gradient(circle at 80% 20%, #151828, #07080f 80%) !important;
-}
-body.tvstyle-webos .m3-settings-container {
-  background: linear-gradient(145deg, rgba(28,32,52,0.92), rgba(13,15,26,0.95)) !important;
-  border-radius: 2.2rem !important;
-  border: 1.5px solid rgba(130,150,255,0.18) !important;
-  box-shadow: 0 24px 60px rgba(0,0,0,0.7) !important;
-}
-body.tvstyle-webos .m3-nav-item.focused {
-  background: linear-gradient(90deg, var(--accent, #ec4899), #8b5cf6) !important;
-  color: #ffffff !important;
-  border-radius: 1.6rem !important;
-  box-shadow: 0 8px 25px rgba(236,72,153,0.35) !important;
-  transform: scale(1.03) !important;
-}
-body.tvstyle-webos .m3-card.focused {
-  border-radius: 1.8rem !important;
-  background: rgba(255,255,255,0.1) !important;
-  border: 2.5px solid #ec4899 !important;
-  box-shadow: 0 10px 30px rgba(236,72,153,0.3) !important;
-}
-body.tvstyle-webos .channel-card.focused,
-body.tvstyle-webos .vod-card.focused {
-  border: 3px solid #ec4899 !important;
-  border-radius: 1.8rem !important;
-  transform: scale(1.07) translateY(-4px) !important;
-  box-shadow: 0 18px 36px rgba(236,72,153,0.25) !important;
-}
+/* ------------------------------------------------------------------ flat tab bar shared by the new designs on phones */
+body.design-cinema.phone .navbar, body.design-rail.phone .navbar, body.design-metro.phone .navbar, body.design-paper.phone .navbar { left: 0; right: 0; bottom: 0; padding: 0; }
+body.design-cinema.phone .nb-track, body.design-rail.phone .nb-track, body.design-metro.phone .nb-track, body.design-paper.phone .nb-track {
+  max-width: none; height: calc(6rem + var(--sab)); padding: 0 0 var(--sab); border-radius: 0; box-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none; }
+body.design-cinema.phone .nb-search, body.design-rail.phone .nb-search, body.design-metro.phone .nb-search, body.design-paper.phone .nb-search { display: none; }
 
-/* 5. Cinematic Theater (Dramatic Dark Vignette & High Impact Focus) */
-body.tvstyle-cinema {
-  background: radial-gradient(circle at 50% 50%, #1a080a 0%, #050102 100%) !important;
-}
-body.tvstyle-cinema .m3-settings-container {
-  background: rgba(14, 4, 6, 0.94) !important;
-  border-radius: 1.8rem !important;
-  border: 1px solid rgba(229, 9, 20, 0.25) !important;
-  box-shadow: 0 30px 80px rgba(0,0,0,0.9), 0 0 30px rgba(229, 9, 20, 0.15) !important;
-}
-body.tvstyle-cinema .m3-nav-item.focused {
-  background: #e50914 !important;
-  color: #ffffff !important;
-  border-radius: 1.2rem !important;
-  box-shadow: 0 8px 28px rgba(229, 9, 20, 0.45) !important;
-  transform: scale(1.04) !important;
-}
-body.tvstyle-cinema .m3-card.focused {
-  border-radius: 1.4rem !important;
-  border: 2.5px solid #e50914 !important;
-  box-shadow: 0 12px 35px rgba(229, 9, 20, 0.4) !important;
-  transform: scale(1.03) !important;
-}
-body.tvstyle-cinema .channel-card.focused,
-body.tvstyle-cinema .vod-card.focused {
-  border: 3.5px solid #e50914 !important;
-  border-radius: 1.4rem !important;
-  transform: scale(1.09) !important;
-  box-shadow: 0 24px 50px rgba(0,0,0,0.9), 0 0 25px rgba(229, 9, 20, 0.5) !important;
-  z-index: 10 !important;
-}
+/* ------------------------------------------------------------------ rail: tabs in a fixed column, preview window, dense shelves */
+body.design-rail { --radius: .7rem; }
+body.design-rail.tvui:not(.player-open) #player { top: 2.5rem; left: 2.5rem; right: auto; bottom: auto; width: 50rem; height: 28.125rem; border-radius: .8rem; }
+body.design-rail .atv-stage { top: 2.5rem; left: 2.5rem; width: 50rem; height: 28.125rem; border-radius: .8rem; }
+body.design-rail .atv-pill { top: 0; right: 0; bottom: 0; left: auto; width: 21rem; height: auto; min-width: 0; padding: 2.5rem 1.2rem; flex-direction: column; align-items: stretch; justify-content: flex-start;
+  border: 0; border-left: 1px solid rgba(45, 212, 191, .2); border-radius: 0; background: var(--bg2); -webkit-transform: none; transform: none; overflow: hidden; }
+body.design-rail .atv-tab { flex: none; display: flex; align-items: center; justify-content: flex-start; width: 100%; height: 3.5rem; margin: 0 0 .3rem; padding: 0 1.2rem; border-radius: .6rem; font-size: 1.3rem; font-weight: 500; text-align: right; color: rgba(255, 255, 255, .78);
+  background: none !important; border: 0 !important; box-shadow: none !important; -webkit-transform: none !important; transform: none !important; }
+body.design-rail .atv-tab.ico-only, body.design-rail .atv-tab-prof { justify-content: flex-start; width: 100%; }
+body.design-rail .atv-tab.ico-only::after { content: attr(aria-label); margin-right: .9rem; font-size: 1.2rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+body.design-rail .atv-tab.on { color: var(--accent); background: rgba(45, 212, 191, .13) !important; font-weight: 700; }
+body.design-rail .atv-tab.focused { color: var(--on-accent); background: var(--accent) !important; font-weight: 700; }
+body.design-rail .atv-meta { top: 2.5rem; right: 23.5rem; width: 41rem; }
+body.design-rail .atv-mlogo { width: 16rem; height: 6.5rem; }
+body.design-rail .atv-mlogo::before { display: none; }
+body.design-rail .atv-title { font-size: 2.6rem; }
+body.design-rail .atv-desc { -webkit-line-clamp: 5; max-height: 10.6rem; font-size: 1.35rem; }
+body.design-rail .atv-search { top: 3rem; right: 23.5rem; width: 41rem; height: 4rem; border-radius: .6rem; }
+body.design-rail .atv-shelves { left: 0; right: 21rem; top: 32rem; bottom: 0; height: auto; overflow: hidden; }
+body.design-rail .atv-row { height: 14rem; }
+body.design-rail .atv-row.below { opacity: .7; }
+body.design-rail .atv-row-title { height: 2rem; margin: 0 2.5rem .35rem; font-size: 1.25rem; line-height: 2rem; color: var(--accent); }
+body.design-rail .atv-track { padding: 0 2.5rem; }
+body.design-rail .atv-item { flex: 0 0 13.25rem; width: 13.25rem; margin-left: 1.25rem; }
+body.design-rail .atv-card { width: 13.25rem; height: 7.45rem; border-radius: .6rem; background: var(--surface); border: 1px solid rgba(45, 212, 191, .16); box-shadow: none; }
+body.design-rail .atv-name { margin-top: .45rem; font-size: 1.05rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+body.design-rail:not(.phone) .atv-item.focused .atv-card { -webkit-transform: none !important; transform: none !important; border: .22rem solid var(--focus) !important; box-shadow: 0 0 1.6rem rgba(45, 212, 191, .45) !important; }
+body.design-rail .atv-item.focused .atv-name { -webkit-transform: none; transform: none; color: var(--focus); }
+body.design-rail #player .osd::before { background: linear-gradient(to top, rgba(8, 26, 36, .98) 0, rgba(8, 26, 36, .9) 40%, rgba(8, 26, 36, 0) 100%); }
+body.design-rail #tvo-bar i { background: var(--accent); }
+body.design-rail .tv-strip-item.focus, body.design-rail #tvo-big.focus { background: rgba(45, 212, 191, .14); box-shadow: 0 0 0 .2rem var(--accent); }
+body.design-rail #tvo-opts.focus { background: var(--accent); color: var(--on-accent); }
+body.design-rail.phone .pager { height: 34vh; min-height: 22rem; border-radius: 0; }
+body.design-rail.phone .shelf-head h3 { font-size: 1.5rem; color: var(--accent); }
+body.design-rail.phone .pcard { width: 13rem; }
+body.design-rail.phone .pc-media { border-radius: .6rem; border: 1px solid rgba(45, 212, 191, .16); }
+body.design-rail.phone .pc-name { font-size: 1.2rem; }
+body.design-rail.phone .pc-meta { display: none; }
+body.design-rail.phone .nb-track { background: var(--bg2); }
+body.design-rail.phone .nb-pill { top: 0; bottom: auto; right: 0; width: 25%; height: .25rem; border-radius: 0; background: var(--accent); }
+
+/* ------------------------------------------------------------------ metro: flat colour tiles, no rounding, big plain headings */
+body.design-metro { --radius: 0; }
+body.design-metro.tvui:not(.player-open) #player { top: 7rem; left: 3rem; right: auto; bottom: auto; width: 32rem; height: 18rem; }
+body.design-metro .atv-stage { top: 7rem; left: 3rem; width: 32rem; height: 18rem; }
+body.design-metro .atv-pill { top: 1.6rem; right: 3rem; left: 3rem; height: 4rem; padding: 0; border: 0; border-radius: 0; background: none; -webkit-transform: none; transform: none; justify-content: flex-start; }
+body.design-metro .atv-tab { height: 4rem; margin: 0 0 0 1.2rem; padding: 0 .6rem; border-radius: 0; font-size: 1.9rem; font-weight: 400; color: rgba(255, 255, 255, .45);
+  background: none !important; border: 0 !important; box-shadow: none !important; -webkit-transform: none !important; transform: none !important; }
+body.design-metro .atv-tab.on { color: #fff; font-weight: 700; }
+body.design-metro .atv-tab.focused { color: #fff; background: var(--accent) !important; font-weight: 700; }
+body.design-metro .atv-meta { top: 7rem; right: 3rem; width: 78rem; }
+body.design-metro .atv-mlogo { display: none !important; }
+body.design-metro .atv-meta.has-logo .atv-title, body.design-metro .atv-title { display: block; margin: 0 0 .9rem; font-size: 4.6rem; font-weight: 800; letter-spacing: -.02em; }
+body.design-metro .atv-tags { margin-top: 0 !important; }
+body.design-metro .atv-desc { font-size: 1.5rem; -webkit-line-clamp: 3; max-height: 6.6rem; }
+body.design-metro span.atv-live, body.design-metro .atv-pill-q { border-radius: 0 !important; }
+body.design-metro span.atv-live { background: var(--accent) !important; }
+body.design-metro .atv-search { top: 7rem; right: 3rem; width: 78rem; border-radius: 0; background: var(--surface); }
+body.design-metro .atv-shelves { top: 27rem; bottom: 0; height: auto; overflow: hidden; }
+body.design-metro .atv-row { height: 15rem; }
+body.design-metro .atv-row.below { opacity: 1; }
+body.design-metro .atv-row-title { height: 2.6rem; margin: 0 3rem .4rem; font-size: 1.8rem; font-weight: 300; line-height: 2.6rem; }
+body.design-metro .atv-track { padding: 0 3rem; }
+body.design-metro .atv-item { flex: 0 0 18rem; width: 18rem; margin-left: .5rem; }
+body.design-metro .atv-card { width: 18rem; height: 11.5rem; border-radius: 0; border: 0; box-shadow: none; background: #0078d4; }
+body.design-metro .atv-item:nth-child(6n+2) .atv-card { background: #d83b01; }
+body.design-metro .atv-item:nth-child(6n+3) .atv-card { background: #107c10; }
+body.design-metro .atv-item:nth-child(6n+4) .atv-card { background: #5c2d91; }
+body.design-metro .atv-item:nth-child(6n+5) .atv-card { background: #008272; }
+body.design-metro .atv-item:nth-child(6n) .atv-card { background: #b4009e; }
+body.design-metro .atv-sheen { display: none; }
+body.design-metro .atv-num { color: rgba(255, 255, 255, .8); }
+body.design-metro .atv-q { border-radius: 0; }
+body.design-metro .atv-logo { bottom: 2.2rem; }
+body.design-metro .atv-name { position: absolute; right: 0; left: 0; top: 9.3rem; height: 2.2rem; margin: 0; padding: 0 .8rem; font-size: 1.1rem; font-weight: 600; line-height: 2.2rem; color: #fff; opacity: 1 !important; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+body.design-metro .atv-item.focused .atv-name { -webkit-transform: none; transform: none; }
+body.design-metro:not(.phone) .atv-item.focused .atv-card { -webkit-transform: none !important; transform: none !important; border: .3rem solid #fff !important; box-shadow: none !important; }
+body.design-metro #player .osd::before { display: none; }
+body.design-metro #tvosd { right: 0; left: 0; bottom: 0; padding: 1.6rem 3rem 1.6rem 10rem; background: #1b1c20; }
+body.design-metro .tv-card, body.design-metro .tv-strip-item, body.design-metro #tvo-opts { border-radius: 0; }
+body.design-metro .tv-strip-item.focus, body.design-metro #tvo-big.focus { background: var(--accent); box-shadow: 0 0 0 .25rem #fff; }
+body.design-metro #tvo-opts.focus { background: var(--accent); color: #fff; box-shadow: none; }
+body.design-metro #tvo-bar i { background: var(--accent); }
+body.design-metro .dialog-box, body.design-metro .menu-box, body.design-metro .btn, body.design-metro .net-prof-card, body.design-metro .net-prof-avatar,
+body.design-metro .set-row, body.design-metro .set-group, body.design-metro .nav-item, body.design-metro .switch, body.design-metro .toast,
+body.design-metro .settings-box, body.design-metro .drawer, body.design-metro .obtn, body.design-metro .home-chip, body.design-metro .card-logo { border-radius: 0 !important; }
+body.design-metro .nav-item.active, body.design-metro .nav-item.focused { background: var(--accent) !important; color: #fff !important; }
+body.design-metro.phone .pager { height: 38vh; min-height: 24rem; border-radius: 0; }
+body.design-metro.phone .shelf-head h3 { font-size: 2.4rem; font-weight: 300; }
+body.design-metro.phone .pcard { width: 16rem; margin-left: .4rem; }
+body.design-metro.phone .pc-media { border-radius: 0; background: #0078d4; aspect-ratio: 1 / 1; }
+body.design-metro.phone .pcard:nth-child(6n+2) .pc-media { background: #d83b01; }
+body.design-metro.phone .pcard:nth-child(6n+3) .pc-media { background: #107c10; }
+body.design-metro.phone .pcard:nth-child(6n+4) .pc-media { background: #5c2d91; }
+body.design-metro.phone .pcard:nth-child(6n+5) .pc-media { background: #008272; }
+body.design-metro.phone .pcard:nth-child(6n) .pc-media { background: #b4009e; }
+body.design-metro.phone .pc-media::before, body.design-metro.phone .pc-media::after { display: none; }
+body.design-metro.phone .pc-meta { display: none; }
+body.design-metro.phone .nb-track { background: #1b1c20; }
+body.design-metro.phone .nb-pill { top: 0; bottom: 0; right: 0; width: 25%; border-radius: 0; background: var(--accent); }
+body.design-metro.phone .nb-item.on { color: #fff; }
+
+/* ------------------------------------------------------------------ paper: a bright page, ink, hairlines and serif headlines */
+body.design-paper { --radius: 0; --serif: 'Frank Ruhl Libre', 'Noto Serif Hebrew', David, 'Times New Roman', serif; --ink: #1a1a1a; --text: #1a1a1a; --text2: #4a4640; --muted: #6a655c; --dim: #8a8478; --line: #d8cfba; --line2: #b9af98; }
+body.design-paper.tvui, body.design-paper .atv { color: var(--ink); }
+body.design-paper.tvui:not(.player-open) #player { top: 8rem; left: 3.5rem; right: auto; bottom: auto; width: 44rem; height: 24.75rem; outline: 1px solid #1a1a1a; outline-offset: .5rem; }
+body.design-paper .atv-stage { top: 8rem; left: 3.5rem; width: 44rem; height: 24.75rem; }
+body.design-paper .atv-pill { top: 1.4rem; left: 3.5rem; right: 3.5rem; height: 4.6rem; padding: 0; justify-content: center; border: 0; border-top: .25rem solid #1a1a1a; border-bottom: 1px solid #1a1a1a; border-radius: 0; background: none; -webkit-transform: none; transform: none; }
+body.design-paper .atv-tab { height: 3.4rem; margin: 0 .4rem; padding: 0 1rem; border-radius: 0; font-family: var(--serif); font-size: 1.5rem; font-weight: 500; color: #1a1a1a;
+  background: none !important; border: 0 !important; box-shadow: none !important; -webkit-transform: none !important; transform: none !important; }
+body.design-paper .atv-tab .ic, body.design-paper .atv-tab svg { fill: #1a1a1a; color: #1a1a1a; }
+body.design-paper .atv-tab.on { color: var(--accent); font-weight: 700; text-decoration: underline; }
+body.design-paper .atv-tab.focused { color: #fff; background: #1a1a1a !important; font-weight: 700; }
+body.design-paper .atv-tab.focused svg { fill: #fff; color: #fff; }
+body.design-paper .atv-meta { top: 8rem; right: 3.5rem; width: 62rem; }
+body.design-paper .atv-mlogo { display: none !important; }
+body.design-paper .atv-meta.has-logo .atv-title, body.design-paper .atv-title { display: block; margin: 0 0 1rem; font-family: var(--serif); font-size: 5rem; font-weight: 700; line-height: 1.08; letter-spacing: -.01em; color: #1a1a1a; text-shadow: none; }
+body.design-paper .atv-tag, body.design-paper .atv-src { color: #5a554c; }
+body.design-paper .atv-desc { font-family: var(--serif); font-size: 1.7rem; -webkit-line-clamp: 4; max-height: 10rem; color: #2c2a26; }
+body.design-paper span.atv-live { background: var(--accent) !important; color: #fff; border-radius: 0 !important; }
+body.design-paper .atv-pill-q { color: #1a1a1a; background: none !important; border: 1px solid #1a1a1a !important; border-radius: 0 !important; }
+body.design-paper .atv-search { top: 8rem; right: 3.5rem; width: 62rem; border-radius: 0; background: #fffdf7; border: 1px solid #1a1a1a; color: #1a1a1a; }
+body.design-paper .atv-search input, body.design-paper .atv-search .ico { color: #1a1a1a; }
+body.design-paper .atv-shelves { top: 35rem; bottom: 0; height: auto; overflow: hidden; }
+body.design-paper .atv-row { height: 16.5rem; margin: 0 3.5rem; border-top: 1px solid #1a1a1a; }
+body.design-paper .atv-row.below { opacity: 1; }
+body.design-paper .atv-row-title { height: 2.6rem; margin: .4rem 0; font-family: var(--serif); font-size: 1.7rem; line-height: 2.6rem; color: #1a1a1a; }
+body.design-paper .atv-row-title small { color: #6a655c; }
+body.design-paper .atv-track { padding: 0; }
+body.design-paper .atv-item { flex: 0 0 16rem; width: 16rem; }
+body.design-paper .atv-card { width: 16rem; height: 9rem; border-radius: 0; background: #fffdf7; border: 1px solid #1a1a1a; box-shadow: none; }
+body.design-paper .atv-sheen { display: none; }
+body.design-paper .atv-num { color: #6a655c; }
+body.design-paper .atv-logo .mono { border-radius: 0; }
+body.design-paper .atv-name { margin-top: .5rem; font-size: 1.15rem; color: #2c2a26; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+body.design-paper:not(.phone) .atv-item.focused .atv-card { -webkit-transform: none !important; transform: none !important; border: .3rem solid var(--accent) !important; box-shadow: none !important; }
+body.design-paper .atv-item.focused .atv-name { -webkit-transform: none; transform: none; color: var(--accent); }
+body.design-paper .atv-row.below .atv-item:not(.focused) .atv-name { opacity: 1; }
+body.design-paper:not(.phone) { --focus: #b3261e; --focus-bg: #efe6d4; --container: #efe6d4; }
+body.design-paper h1, body.design-paper h2, body.design-paper h3, body.design-paper .net-prof-title, body.design-paper .settings-title { font-family: var(--serif); }
+body.design-paper .dialog-box, body.design-paper .menu-box, body.design-paper .btn, body.design-paper .net-prof-card, body.design-paper .set-row, body.design-paper .set-group,
+body.design-paper .nav-item, body.design-paper .toast, body.design-paper .settings-box, body.design-paper .drawer, body.design-paper .obtn, body.design-paper .home-chip { border-radius: 0 !important; }
+body.design-paper .net-prof-overlay, body.design-paper .settings .settings-box { background: var(--bg) !important; color: var(--ink); }
+body.design-paper .net-prof-title, body.design-paper .net-prof-sub, body.design-paper .net-prof-brand { color: var(--ink); }
+body.design-paper .dialog-box, body.design-paper .menu-box { background: #fffdf7 !important; color: var(--ink); border: 1px solid #1a1a1a; box-shadow: none; }
+body.design-paper #player .osd::before { display: none; }
+body.design-paper #tvosd { right: 0; left: 0; bottom: 0; padding: 1.6rem 3rem 1.6rem 10rem; background: var(--bg); color: var(--ink); border-top: .25rem solid #1a1a1a; }
+body.design-paper .tv-nm, body.design-paper .tv-day, body.design-paper .tv-peek-txt small { color: #5a554c; }
+body.design-paper .tv-strip-item.mid .tv-nm { color: var(--ink); }
+body.design-paper .tv-card, body.design-paper .tv-strip-item, body.design-paper #tvo-opts { border-radius: 0; }
+body.design-paper .tv-strip-item.focus, body.design-paper #tvo-big.focus { background: none; box-shadow: 0 0 0 .25rem var(--accent); }
+body.design-paper #tvo-bar { background: #c9bfa8; }
+body.design-paper #tvo-bar i { background: var(--accent); }
+body.design-paper #tvo-bar u { background: var(--ink); }
+body.design-paper #tvo-opts.focus { background: var(--ink); color: #fff; box-shadow: none; }
+body.design-paper .tv-chev { border-color: var(--ink); }
+body.design-paper.phone .pager { height: 40vh; min-height: 26rem; border-radius: 0; border-bottom: .25rem solid #1a1a1a; }
+body.design-paper.phone .shelf-head { margin: 0 1.6rem .8rem; padding: .8rem 0 0; border-top: 1px solid #1a1a1a; }
+body.design-paper.phone .shelf-head h3 { font-family: var(--serif); font-size: 2.2rem; }
+body.design-paper.phone .pc-media { border-radius: 0; background: #fffdf7; border: 1px solid #1a1a1a; }
+body.design-paper.phone .pc-media::before, body.design-paper.phone .pc-media::after { display: none; }
+body.design-paper.phone .nb-track { background: var(--bg); border-top: .2rem solid #1a1a1a; }
+body.design-paper.phone .nb-pill { display: none; }
+body.design-paper.phone .nb-item { color: #5a554c; }
+body.design-paper.phone .nb-item.on { color: var(--accent); }
+
+/* ------------------------------------------------------------------ every new design: its own page colours (a TV is otherwise forced to black) */
+html:has(body.design-cinema) { background: #050403; }
+body.design-cinema, body.design-cinema:not(.phone) { --bg: #050403; --bg2: #100d08; --surface: #191409; --surface2: #231c0d; --line: #2a2214; --line2: #4a3b1e; background: #050403; }
+body.design-rail, body.design-rail:not(.phone) { --bg: #081a24; --bg2: #0d2431; --surface: #12303f; --surface2: #173a4c; --line: #17394a; --line2: #245468; background: #081a24; }
+body.design-metro, body.design-metro:not(.phone) { --bg: #111214; --bg2: #1b1c20; --surface: #25272c; --surface2: #2e3036; --line: #2b2d32; --line2: #44464c; background: #111214; }
+body.design-paper, body.design-paper:not(.phone), body.design-paper.light:not(.phone) { --bg: #f6f0e3; --bg2: #ece4d2; --surface: #fffdf7; --surface2: #f0e9d8; --text: #1a1a1a; --text2: #4a4640; --muted: #6a655c; --dim: #8a8478; --line: #d8cfba; --line2: #b9af98; background: #f6f0e3; }
+body.design-cinema .app, body.design-rail .app, body.design-metro .app, body.design-paper .app { background: var(--bg); }
+
+body.design-cinema:not(.phone) .nav-item.focused, body.design-rail:not(.phone) .nav-item.focused, body.design-metro:not(.phone) .nav-item.focused, body.design-paper:not(.phone) .nav-item.focused {
+  background: var(--accent) !important; color: var(--on-accent) !important; outline: 0 !important; box-shadow: none !important; -webkit-transform: none !important; transform: none !important; }
+body.design-cinema .set-row.focused, body.design-rail .set-row.focused, body.design-metro .set-row.focused, body.design-paper .set-row.focused { outline-color: var(--accent) !important; border-color: var(--accent) !important; }
+/* the colour-key hints would sit on top of the shelves here */
+body.design-cinema .atv-colors, body.design-rail .atv-colors, body.design-metro .atv-colors, body.design-paper .atv-colors { display: none; }
+
+/* paper: logos are made for dark backgrounds, so the cards are ink */
+body.design-paper .atv-card { background: #1a1a1a; }
+body.design-paper .atv-num { color: rgba(255, 255, 255, .7); }
+body.design-paper.phone .pc-media { background: #1a1a1a; }
+body.design-paper .tv-card { color: #fff; }
+body.design-paper .settings .sr-label, body.design-paper .settings .nav-item, body.design-paper .settings-title, body.design-paper #settings-h { color: var(--ink); }
+body.design-paper .settings .sr-help, body.design-paper .settings .v, body.design-paper #settings-p { color: #5a554c; }
+body.design-paper .set-row, body.design-paper .set-group .set-row { background: #fffdf7 !important; border: 1px solid #d8cfba !important; }
+
+/* the settings tab is hidden on phones: three tabs share the bar */
+body.design-rail.phone .nb-pill, body.design-metro.phone .nb-pill { width: 33.34%; }
+
+/* ------------------------------------------------------------------ changelog */
+.dialog-box.changelog { text-align: right; }
+.cl-ver { padding: 1.2rem 0; border-top: 1px solid var(--line); }
+.cl-ver h3 { margin: 0 0 .6rem; font-size: 1.9rem; }
+.cl-ver h3 small { margin-right: 1rem; padding: .1rem .7rem; border-radius: .5rem; font-size: 1.1rem; background: var(--accent); color: var(--on-accent); }
+.cl-ver ul { margin: 0; padding-right: 2rem; font-size: 1.45rem; line-height: 1.5; }
+.cl-ver li { margin-bottom: .4rem; }
+
+/* ------------------------------------------------------------------ full-page settings in three of the designs */
+body.design-cinema:not(.phone) .settings-box, body.design-metro:not(.phone) .settings-box, body.design-paper:not(.phone) .settings-box {
+  width: 100% !important; max-width: none !important; height: 100% !important; max-height: none !important; border: 0 !important; border-radius: 0 !important; box-shadow: none !important; }
+body.design-cinema .settings-title svg, body.design-rail .settings-title svg, body.design-metro .settings-title svg, body.design-paper .settings-title svg,
+body.design-cinema .set-close, body.design-rail .set-close, body.design-metro .set-close, body.design-paper .set-close { color: var(--accent) !important; fill: var(--accent) !important; }
+body.design-paper .m3-hint-pill { color: #4a4640; background: none; border-color: #b9af98; }
+body.design-paper .m3-key { color: #fff; background: #1a1a1a; }
+
+/* paper: the player's panel is ink, the logos and the picture need the dark */
+body.design-paper #tvosd { background: #1a1a1a; color: #fff; border-top-color: var(--accent); }
+body.design-paper .tv-nm, body.design-paper .tv-day, body.design-paper .tv-peek-txt small { color: #c4c6cb; }
+body.design-paper .tv-strip-item.mid .tv-nm { color: #fff; }
+body.design-paper .tv-chev { border-color: #fff; }
+body.design-paper #tvo-bar { background: rgba(255, 255, 255, .34); }
+body.design-paper #tvo-bar u { background: #fff; }
+body.design-paper #tvo-opts { color: #fff; }
+body.design-paper #tvo-opts.focus { background: #fff; color: #1a1a1a; }
+body.design-paper .atv-pill-q { color: #1a1a1a !important; }
+body.design-cinema.phone .nb-track, body.design-rail.phone .nb-track, body.design-metro.phone .nb-track, body.design-paper.phone .nb-track { border-left: 0; border-right: 0; border-bottom: 0; }
+
+/* ------------------------------------------------------------------ the programme guide in each design */
+body.design-cinema #tvguide { background: #050403; }
+body.design-rail #tvguide { background: #081a24; }
+body.design-metro #tvguide { background: #111214; }
+body.design-cinema .tv-nowline, body.design-rail .tv-nowline, body.design-metro .tv-nowline, body.design-paper .tv-nowline { background: var(--accent); }
+body.design-cinema .tv-p.focus, body.design-rail .tv-p.focus { background: var(--container); box-shadow: inset 0 0 0 .22rem var(--accent), 0 0 2rem var(--glow); }
+body.design-metro .tv-p.focus { background: var(--accent); color: #fff; box-shadow: inset 0 0 0 .25rem #fff; }
+body.design-paper #tvguide { background: #f6f0e3; color: #1a1a1a; }
+body.design-paper #tvg-title b { font-family: var(--serif); border-bottom-color: #1a1a1a; }
+body.design-paper #tvg-title span, body.design-paper #tvg-time { color: #5a554c; }
+body.design-paper #tvg-ruler { border-bottom-color: #1a1a1a; color: #1a1a1a; }
+body.design-paper #tvg-rail { border-left-color: #1a1a1a; }
+body.design-paper #tvg-name { font-family: var(--serif); }
+body.design-paper .tv-p { border-color: #c9bfa8; color: #1a1a1a; }
+body.design-paper .tv-p.past { color: #8a8478; background: rgba(0, 0, 0, .03); }
+body.design-paper .tv-p.focus { background: #fffdf7; box-shadow: inset 0 0 0 .25rem var(--accent); }
+body.design-paper #tvguide .tv-logo { background: #1a1a1a; }
+body.design-paper #tvguide .tv-clock, body.design-paper #tvguide .tv-num { color: #1a1a1a; }
+body.design-paper #tvguide .tv-nm { color: #4a4640; }
+body.design-paper #tvguide .tv-heart { filter: invert(1) brightness(.2); }
+body.design-cinema.phone .nb-track, body.design-rail.phone .nb-track, body.design-metro.phone .nb-track, body.design-paper.phone .nb-track { outline: 0; border-image: none; }

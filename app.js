@@ -45,8 +45,21 @@
     windows: 'Windows', desktop: /Mac/.test(UA) ? 'macOS' : 'Linux', web: 'דפדפן (אתר)', local: 'דפדפן (מקומי)' };
 
   // ================================================================== settings
+  // A design replaces the whole interface: its look and colours (body.design-*, style.css) and the size of the home
+  // screen's cards. pitch = card + gap, row = one shelf, in rem; vert = the tabs stand in a column.
+  var DESIGNS = {
+    classic: { name: 'קלאסי', help: 'המראה הרגיל: תצוגה מקדימה על כל המסך, סרגל זכוכית ומדפי ערוצים.', pitch: 19, row: 17.25 },
+    cinema: { name: 'קולנוע', help: 'שחור וזהב: תמונה מלאה, פרטי הערוץ במרכז ושורת פוסטרים אחת בתחתית.', pitch: 12.5, row: 21,
+      pal: ['#e8b44a', '#14100a', '#a87a1c', '#ffd98a', '#33270f', '#050403', '#100d08', '#191409'] },
+    rail: { name: 'לוח שידורים', help: 'סרגל צד קבוע, חלון תצוגה מקדימה ומדפים צפופים שמראים הרבה ערוצים.', pitch: 14.5, row: 14, vert: true,
+      pal: ['#2dd4bf', '#04211d', '#0e9f8e', '#7df3e3', '#0f3a38', '#081a24', '#0d2431', '#12303f'] },
+    metro: { name: 'מטרו', help: 'משבצות צבעוניות וחדות, כותרות גדולות ובלי שקיפויות.', pitch: 18.5, row: 15,
+      pal: ['#ff5a1f', '#ffffff', '#d9480f', '#ffffff', '#4a1c08', '#111214', '#1b1c20', '#25272c'] },
+    paper: { name: 'מגזין', help: 'מסך בהיר כמו עיתון: נייר, דיו שחור, קווים דקים וכותרות גדולות.', pitch: 17.5, row: 16.5, light: true,
+      pal: ['#b3261e', '#ffffff', '#7a1410', '#1a1a1a', '#efe6d4', '#f6f0e3', '#ece4d2', '#fffdf7'] }
+  };
   var DEFAULTS = {
-    theme: 'oled', accent: 'auto', tvStyle: 'appletv', uiScale: 1, cols: 0, hero: true, numbers: true, hints: true, perf: 'auto',
+    theme: 'oled', accent: 'auto', design: 'classic', uiScale: 1, cols: 0, hero: true, numbers: true, hints: true, perf: 'auto',
     startCat: 'ALL', autoplay: false, hideAppOnly: false, hiddenCats: [], hidden: [], showSource: true,
     pic: 'off', aspect: 'fit', upscaleMode: 'off', sharpen: false, quality: 'max', latency: 'low', osdSec: 5, osdClock: true,
     retry: true, zap: 'category', upNext: true, upNextV2: true,
@@ -66,7 +79,9 @@
       if (s.quality === 'upscale4k') out.upscaleMode = 'ai_4k';
       else if (s.sharpen) out.upscaleMode = 'crystal_hd';
     }
-    if (!out.tvStyle) out.tvStyle = 'appletv';
+    // the "interface style" of 4.8.50 only had a real counterpart for cinema
+    if (s.design === undefined && s.tvStyle === 'cinema') out.design = 'cinema';
+    if (!DESIGNS[out.design]) out.design = 'classic';
     // settings of the previous version
     try {
       if (s.theme === undefined && localStorage.getItem('israel_tv_theme') === 'light') out.theme = 'light';
@@ -494,7 +509,7 @@
 
   function applyAll() {
     applyScale();
-    ['theme', 'tvStyle', 'hero', 'numbers', 'hints', 'perf', 'osdClock', 'pic', 'aspect', 'sharpen', 'upscaleMode', 'kids'].forEach(applySetting);
+    ['theme', 'design', 'hero', 'numbers', 'hints', 'perf', 'osdClock', 'pic', 'aspect', 'sharpen', 'upscaleMode', 'kids'].forEach(applySetting);
     document.body.classList.add('platform-' + PLATFORM);
     toggleClass(document.body, 'touch', TOUCH);
   }
@@ -560,9 +575,11 @@
   }
   function rgba(h, a) { var c = hexRgb(h); return 'rgba(' + c[0] + ',' + c[1] + ',' + c[2] + ',' + a + ')'; }
   function applyColors() {
-    var name = accentName(), sc = readSystemColors(), light = S.theme === 'light', oled = S.theme === 'oled';
+    var name = accentName(), sc = readSystemColors(), des = DESIGNS[S.design] || DESIGNS.classic;
+    var light = des.pal ? !!des.light : S.theme === 'light', oled = !des.pal && S.theme === 'oled';
     var p;
-    if (name === 'system' && sc) {
+    if (des.pal) { p = des.pal; name = 'design'; }
+    else if (name === 'system' && sc) {
       p = light ? [sc.a1_600, '#ffffff', sc.a2_600, sc.a1_700, sc.a1_100, sc.n1_50, sc.n1_100 || mix(sc.n1_50, sc.n1_200, .5), '#ffffff']
         : [sc.a1_200, sc.a1_800, sc.a2_200, sc.a1_100, sc.a1_700, sc.n1_900, mix(sc.n1_900, sc.n1_800, .5), sc.n1_800];
     } else {
@@ -596,13 +613,14 @@
 
   function applySetting(k) {
     var b = document.body;
-    if (k === 'theme' || k === 'accent') {
+    if (k === 'theme' || k === 'accent' || k === 'design') {
+      var des = DESIGNS[S.design] || DESIGNS.classic;
       b.classList.remove('oled', 'light', 'dark');
-      b.classList.add(S.theme);
+      b.classList.add(des.pal ? (des.light ? 'light' : 'dark') : S.theme);
+      Object.keys(DESIGNS).forEach(function (d) { b.classList.remove('design-' + d); });
+      b.classList.add('design-' + (DESIGNS[S.design] ? S.design : 'classic'));
       applyColors();
-    } else if (k === 'tvStyle') {
-      b.classList.remove('tvstyle-appletv', 'tvstyle-googletv', 'tvstyle-oneui', 'tvstyle-webos', 'tvstyle-cinema');
-      b.classList.add('tvstyle-' + (S.tvStyle || 'appletv'));
+      if (k === 'design' && atv && atv.built) { atvLayout(); atvMark(); }
     } else if (k === 'uiScale' || k === 'cols') { applyScale(); renderGridFresh(); }
     else if (k === 'hero') toggleClass(b, 'no-hero', !S.hero);
     else if (k === 'numbers') toggleClass(b, 'no-numbers', !S.numbers);
@@ -623,13 +641,7 @@
     else if (k === 'avatar') updateAvatar();
   }
 
-  var TV_STYLES = [
-    ['appletv', 'Apple TV (Liquid Glass & Frosted Blur – זכוכית שקופה ועיקולים רכים)'],
-    ['googletv', 'Google TV / Material 3 (משטחים נקיים, קווי מתאר והדגשות זוהרות)'],
-    ['oneui', 'Samsung One UI (מינימליזם שטוח, שחור OLED מלא וריבועים מעוגלים)'],
-    ['webos', 'LG webOS (כרטיסיות צבעוניות, עומק שכבות וצלליות אלגנטיות)'],
-    ['cinema', 'Cinematic Theater (קולנוע אפל, זום פוקוס דרמטי ורקע סינמטי)']
-  ];
+  var DESIGN_LIST = Object.keys(DESIGNS).map(function (d) { return [d, DESIGNS[d].name]; });
   var UPSCALE_MODES = [
     ['off', 'כבוי (תמונה מקורית ללא עיבוד)'],
     ['ai_4k', 'השבחת AI 4K Ultra Sharp (חדות דינמית ושיפור רזולוציה)'],
@@ -1994,8 +2006,6 @@
   var atv = { rows: [], row: 0, cols: [], zone: 'rows', tab: 0, tabs: [], rendered: [], tracks: [], items: [],
     rowEls: [], built: false, dirty: false, search: false, query: '', flip: false, bdFlip: false,
     restTimer: null, metaTimer: null, stopTimer: null, searchTimer: null, focusedEl: null };
-  var ATV_PITCH = 19;        // rem: a 17.5rem card + 1.5rem gap
-  var ATV_ROW = 17.25;       // rem: one shelf (title + card + name), 276 px on a 1080p screen
   var ATV_FIRST = 14, ATV_MORE = 18;
   var ATV_ROWS = [
     ['all_channels', '📺 כל הערוצים (All Channels)'],
@@ -2026,6 +2036,7 @@
     ['הגדרות', 'settings']
   ];
 
+  function atvGeo() { return DESIGNS[S.design] || DESIGNS.classic; }
   function atvRem(rem) { return rem * (parseFloat(document.documentElement.style.fontSize) || 16); }
 
   /** Which shelf a channel belongs on. */
@@ -2252,14 +2263,14 @@
   /** Moves the camera: the shelves slide up / down, the row's track glides sideways, the rest is opacity. */
   function atvLayout() {
     var r = atv.row;
-    $('atv-rows').style.transform = 'translate3d(0,' + (-r * atvRem(ATV_ROW)) + 'px,0)';
+    $('atv-rows').style.transform = 'translate3d(0,' + (-r * atvRem(atvGeo().row)) + 'px,0)';
     for (var i = 0; i < atv.rowEls.length; i++) {
       var cls = 'atv-row' + (i < r ? ' above' : i === r ? ' active' : ' below');
       if (Math.abs(i - r) > 2) cls += ' far-off';
       atv.rowEls[i].className = cls;
     }
     var c = atv.cols[r] || 0;
-    if (atv.tracks[r]) atv.tracks[r].style.transform = 'translate3d(' + (Math.max(0, c - 1) * atvRem(ATV_PITCH)) + 'px,0,0)';
+    if (atv.tracks[r]) atv.tracks[r].style.transform = 'translate3d(' + (Math.max(0, c - 1) * atvRem(atvGeo().pitch)) + 'px,0,0)';
   }
 
   function atvMark() {
@@ -2718,6 +2729,12 @@
   function atvKey(code) {
     if (isBack(code)) { atvBack(); return; }
     if (atv.zone === 'pill') {
+      if (atvGeo().vert && !atv.search) {
+        if (code === 40) atvFocusPill(atv.tab + 1);
+        else if (code === 38) atvFocusPill(atv.tab - 1);
+        else if (code === 37) atvFocus(atv.row, atv.cols[atv.row] || 0);
+        return;
+      }
       if (code === 37) atvFocusPill(atv.tab + 1);
       else if (code === 39) atvFocusPill(atv.tab - 1);
       else if (code === 40) { if (atv.search) atvFocusSearch(); else atvFocus(atv.row, atv.cols[atv.row] || 0); }
@@ -2737,7 +2754,7 @@
     }
     var c = atv.cols[atv.row] || 0;
     if (code === 37) atvFocus(atv.row, c + 1);
-    else if (code === 39) atvFocus(atv.row, c - 1);
+    else if (code === 39) { if (c === 0 && atvGeo().vert && !atv.search) atvFocusPill(atv.tab); else atvFocus(atv.row, c - 1); }
     else if (code === 38) {
       if (atv.search) atvFocusSearch();
       else if (atv.row > 0) atvFocus(atv.row - 1, atv.cols[atv.row - 1] || 0);
@@ -4200,6 +4217,24 @@ function showOsd() {
   window.toast = toast;
   window.loadQrLib = loadQrLib;
 
+  /** What changed in each version, newest first: version.json carries the recent CHANGELOG sections. */
+  function openChangelog() {
+    var show = function (list, offline) {
+      var html = list.map(function (v) {
+        return '<section class="cl-ver"><h3>' + esc(v.version) + (v.version === (LIVE ? LIVE.version : BUILD.version) ? '<small>הגרסה שלך</small>' : '') + '</h3><ul>' +
+          (v.notes || []).map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') + '</ul></section>';
+      }).join('');
+      openDialog({ title: 'לוג שינויים', cls: 'changelog', wide: true, scroll: true,
+        html: (offline ? '<p>אין חיבור לשרת, לכן מוצגת רק הגרסה הנוכחית.</p>' : '') + html });
+      el.dialogBox.scrollTop = 0;
+    };
+    var fallback = function () { show([{ version: BUILD.version, notes: BUILD.notes || [] }], true); };
+    xhrJson(REMOTE + 'version.json?t=' + Date.now(), 10000, function (data) {
+      if (data && data.history && data.history.length) show(data.history);
+      else if (data && data.notes) show([{ version: data.version, notes: data.notes }]);
+      else fallback();
+    }, fallback);
+  }
   function openDialog(opts) {
     state.dialog = opts;
     el.dialogIco.textContent = opts.ico || '';
@@ -4813,14 +4848,15 @@ function showOsd() {
       })() },
       { id: 'display', ico: M3_ICONS.display, name: 'תצוגה וממשק', desc: 'ערכות נושא, סגנון עיצוב טלוויזיה, פלטת צבעים ועיצוב מסך', rows: [
         sep('מראה וסגנון עיצוב'),
-        choice('tvStyle', 'סגנון עיצוב ממשק הטלוויזיה', TV_STYLES, 'בחירת שפת העיצוב: Apple TV זכוכיתי, Google TV מודרני, סמסונג One UI שטוח, LG webOS או קולנוע סינמטי'),
-        choice('theme', 'ערכת נושא', THEMES),
-        { type: 'choice', label: 'פלטת צבעים (Material You)', help: readSystemColors() ? 'צבעי המערכת מבוססים על ערכת הטפט (Dynamic Colors)' : 'ערכות הצבע הנבחרות של הממשק',
+        { type: 'choice', label: 'עיצוב', help: (DESIGNS[S.design] || DESIGNS.classic).help, get: function () { return label(DESIGN_LIST, S.design); },
+          step: function (st) { setSetting('design', cycle(DESIGN_LIST, S.design, st)); } },
+        designRow(choice('theme', 'ערכת נושא', THEMES)),
+        designRow({ type: 'choice', label: 'פלטת צבעים (Material You)', help: readSystemColors() ? 'צבעי המערכת מבוססים על ערכת הטפט (Dynamic Colors)' : 'ערכות הצבע הנבחרות של הממשק',
           get: function () { return label(PALETTES, S.accent) + (S.accent === 'auto' ? ' (' + label(PALETTES, accentName()) + ')' : ''); },
           step: function (st) {
             var list = PALETTES.filter(function (p) { return p[0] !== 'system' || readSystemColors(); });
             setSetting('accent', cycle(list, S.accent, st));
-          } },
+          } }),
         { type: 'choice', tvOnly: true, label: 'קנה מידה של התצוגה', help: 'התאמת גודל טקסטים ורכיבים לצפייה ממרחק סלון', get: function () { return label(SCALES, S.uiScale); },
           step: function (st) { setSetting('uiScale', cycle(SCALES, S.uiScale, st)); } },
         { type: 'choice', label: 'מספר ערוצים בשורה', get: function () { return S.cols ? String(S.cols) : 'אוטומטי (' + state.cols + ')'; },
@@ -4936,7 +4972,7 @@ function showOsd() {
         info('גרסה פעילה', function () { return LIVE ? LIVE.version + ' (עודכנה אונליין)' : BUILD.version; }),
         toggle('autoUpdate', 'בדיקת עדכונים אוטומטית בהפעלה'),
         toggle('liveUpdates', 'עדכונים שוטפים אונליין', 'קבלת שיפורים, ערוצים חדשים ותיקונים ללא צורך בהתקנה מחדש'),
-        action('יומן גרסאות וחידושים (GitHub)', function () { openUrl(RELEASES); })
+        action('לוג שינויים', openChangelog)
       ] },
       { id: 'about', ico: M3_ICONS.about, name: 'אודות והגדרות מתקדמות', desc: 'פרטי החומרה, מקורות שידור, שרתי מדיה ואיפוס', rows: [
         sep('חומרה ומערכת'),
@@ -4959,6 +4995,7 @@ function showOsd() {
         action('איפוס כל ההגדרות לברירת מחדל', function () { confirmBox('לאפס את כל הגדרות האפליקציה? (רשימת המועדפים תישמר)', function () { try { localStorage.removeItem('itv_settings'); } catch (e) {} location.reload(); }); }, '', true)
       ] }
     ];
+    if (S.design !== 'classic') secs.forEach(function (s) { s.rows = s.rows.filter(function (r) { return !r.classicOnly; }); });
     if (PHONE) {
       secs = secs.filter(function (s) { return !s.tvOnly; });
       secs.forEach(function (s) { s.rows = s.rows.filter(function (r) { return !r.tvOnly; }); });
@@ -4967,6 +5004,8 @@ function showOsd() {
   }
 
   function tvRow(r) { r.tvOnly = true; return r; }
+  // the classic design is the only one that takes its colours from these rows
+  function designRow(r) { r.classicOnly = true; return r; }
 
   var sections = [];
   function openSettings(sectionId) {
@@ -6547,6 +6586,7 @@ function showOsd() {
 
   function dialogKey(code) {
     var n = dialogButtons().length;
+    if (state.dialog && state.dialog.scroll && (code === 38 || code === 40)) { el.dialogBox.scrollTop += (code === 40 ? 1 : -1) * atvRem(14); return; }
     if (code === 37 || code === 40) state.dialogIdx = clamp(state.dialogIdx + 1, 0, n - 1);
     else if (code === 39 || code === 38) state.dialogIdx = clamp(state.dialogIdx - 1, 0, n - 1);
     else if (isBack(code)) { closeDialog(); return; }

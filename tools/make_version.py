@@ -47,6 +47,15 @@ def notes(version):
     return [re.sub(r"\*\*|`", "", l.strip()[2:]) for l in m.group(1).splitlines() if l.strip().startswith("- ")]
 
 
+def history(count=25):
+    """The newest CHANGELOG sections, for the app's changelog screen."""
+    try:
+        versions = re.findall(r"^## v?(\d+\.\d+\.\d+)", read("CHANGELOG.md"), re.M)
+    except FileNotFoundError:
+        return []
+    return [{"version": v, "notes": notes(v)} for v in versions[:count]]
+
+
 def main():
     version = read("VERSION").strip()
     major, minor, patch = (int(x) for x in version.split("."))
@@ -88,7 +97,7 @@ def main():
         "wear": {"version": version, "app": 1000000 + major * 100 + minor * 10 + patch,
                  "url": dl + "IsraelTVPlus-wearos.apk"},
     }
-    data = dict(build, notes=notes(version), native=native)
+    data = dict(build, notes=notes(version), history=history(), native=native)
     write("version.json", json.dumps(data, ensure_ascii=False, indent=2) + "\n")
 
     info = json.loads(read("appinfo.json"))

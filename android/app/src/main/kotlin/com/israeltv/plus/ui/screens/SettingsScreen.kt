@@ -37,7 +37,12 @@ import androidx.compose.material.icons.rounded.MusicNote
 import androidx.compose.material.icons.rounded.Palette
 import androidx.compose.material.icons.rounded.SystemUpdate
 import androidx.compose.material.icons.rounded.Tv
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
+import androidx.compose.material3.TextButton
+import androidx.compose.foundation.lazy.items
+import androidx.compose.runtime.rememberCoroutineScope
+import kotlinx.coroutines.launch
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.LinearWavyProgressIndicator
 import androidx.compose.material3.MaterialTheme
@@ -79,6 +84,24 @@ fun SettingsScreen(data: ChannelData?, prefs: AppPrefs, updater: Updater, google
     val ctx = LocalContext.current
     val haptic = LocalHapticFeedback.current
     var showPlexDialog by remember { mutableStateOf(false) }
+    val scope = rememberCoroutineScope()
+    var changelog by remember { mutableStateOf<List<Pair<String, List<String>>>?>(null) }
+    changelog?.let { list ->
+        AlertDialog(
+            onDismissRequest = { changelog = null },
+            confirmButton = { TextButton(onClick = { changelog = null }) { Text("סגירה") } },
+            title = { Text("לוג שינויים") },
+            text = {
+                if (list.isEmpty()) Text("אין חיבור לשרת, נסו שוב מאוחר יותר")
+                else LazyColumn {
+                    items(list) { (version, notes) ->
+                        Text(version, style = MaterialTheme.typography.titleMedium, modifier = Modifier.padding(top = 12.dp, bottom = 4.dp))
+                        notes.forEach { Text("• $it", style = MaterialTheme.typography.bodyMedium, modifier = Modifier.padding(bottom = 4.dp)) }
+                    }
+                }
+            }
+        )
+    }
     val activity = ctx as Activity
     val googlePicker = rememberLauncherForActivityResult(ActivityResultContracts.StartIntentSenderForResult()) {
         google.onPickerResult(activity, it.data)
@@ -163,6 +186,9 @@ fun SettingsScreen(data: ChannelData?, prefs: AppPrefs, updater: Updater, google
             SettingsGroup {
                 SettingRow(Icons.Rounded.Tv, "ישראל TV+ " + updater.installedVersion,
                     "${data?.channels?.size ?: 0} ערוצים ותחנות · ${data?.categories?.size ?: 0} קטגוריות")
+                SettingRow(Icons.Rounded.SystemUpdate, "לוג שינויים", "מה השתנה בכל גרסה", onClick = {
+                    scope.launch { changelog = updater.changelog() }
+                })
                 SettingRow(Icons.Rounded.Language, "האתר", "dor2500.github.io/israel-tv-plus", onClick = {
                     ctx.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://dor2500.github.io/israel-tv-plus/")))
                 })
