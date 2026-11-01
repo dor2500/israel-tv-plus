@@ -159,6 +159,8 @@ dependencies {
     implementation("androidx.media3:media3-exoplayer:1.11.1")
     implementation("androidx.media3:media3-exoplayer-hls:1.11.1")
     implementation("androidx.media3:media3-ui:1.11.1")
+    implementation("androidx.media3:media3-session:1.11.1")   // Android Auto
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-guava:1.11.0")
 
     implementation("com.materialkolor:material-kolor:5.0.1")     // Material You palettes from a seed colour
     implementation("dev.chrisbanes.haze:haze:2.0.1")        // real frosted glass (RenderEffect blur)
