@@ -41,6 +41,7 @@ import com.israeltv.plus.ui.ItvApp
 import com.israeltv.plus.ui.theme.ItvTheme
 import kotlinx.coroutines.launch
 import okhttp3.OkHttpClient
+import java.util.Locale
 import java.util.concurrent.TimeUnit
 
 /**
@@ -153,7 +154,7 @@ class PhoneActivity : ComponentActivity() {
             packageManager.hasSystemFeature("android.software.live_tv")) return true
         if (!packageManager.hasSystemFeature(PackageManager.FEATURE_TOUCHSCREEN)) return true
         val b = "${Build.MODEL} ${Build.PRODUCT} ${Build.DEVICE} ${Build.MANUFACTURER}".lowercase(Locale.US)
-        return b.contains("tv") || b.contains("box") || b.contains("bravia") || b.contains("aft") || b.contains("chromecast") || b.contains("shield") || b.contains("atv")
+        return Regex("(^|[^a-z])(tv|atv|tvbox|mibox|bravia|chromecast)([^a-z]|$)|^aft[a-z]").containsMatchIn(b)
     }
 
     // ------------------------------------------------------------------ picture-in-picture

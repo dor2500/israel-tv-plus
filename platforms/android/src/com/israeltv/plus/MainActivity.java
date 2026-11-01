@@ -632,7 +632,7 @@ public class MainActivity extends Activity {
             || pm.hasSystemFeature("android.software.live_tv")) return true;
         if (!pm.hasSystemFeature(PackageManager.FEATURE_TOUCHSCREEN)) return true;
         String b = (Build.MODEL + " " + Build.PRODUCT + " " + Build.DEVICE + " " + Build.MANUFACTURER).toLowerCase(Locale.US);
-        return b.contains("tv") || b.contains("box") || b.contains("bravia") || b.contains("aft") || b.contains("chromecast") || b.contains("shield") || b.contains("atv");
+        return java.util.regex.Pattern.compile("(^|[^a-z])(tv|atv|tvbox|mibox|bravia|chromecast)([^a-z]|$)|^aft[a-z]").matcher(b).find();
     }
 
     boolean start(Intent i) {

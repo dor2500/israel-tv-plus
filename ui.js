@@ -236,7 +236,7 @@ window.ITV_UI = (function (I) {
 
   // ---------------------------------------------------------------- settings
   '<div class="overlay settings hidden" id="settings"><div class="settings-box">' +
-    '<div class="settings-side"><div class="settings-title">' + I('settings') + '<span>הגדרות</span></div><div class="settings-nav" id="settings-nav"></div></div>' +
+    '<div class="settings-side"><div class="settings-title">' + I('settings') + '<span>הגדרות</span><button class="set-close" id="btn-settings-close" aria-label="סגירה">' + I('close') + '</button></div><div class="settings-nav" id="settings-nav"></div></div>' +
     '<div class="settings-main"><div class="settings-head"><h2 id="settings-h"></h2><p id="settings-p"></p></div>' +
     '<div class="settings-rows" id="settings-rows"></div></div>' +
   '</div></div>' +

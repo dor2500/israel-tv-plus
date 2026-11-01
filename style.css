@@ -2769,119 +2769,60 @@ body:not(.light) ::-webkit-scrollbar-thumb { border-radius: .4rem; background: r
 }
 
 
-/* ---- TV & Desktop Settings Premium Layout & Focus Styling ---- */
-body:not(.phone) #settings.overlay {
-  background: rgba(0, 0, 0, 0.72);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-}
-body:not(.phone) .settings-box {
-  width: 92vw;
-  max-width: 122rem;
-  height: 86vh;
-  margin: auto;
-  border-radius: 2.4rem;
-  background: rgba(13, 17, 28, 0.95);
-  backdrop-filter: blur(32px);
-  -webkit-backdrop-filter: blur(32px);
-  border: 1.5px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.85);
-  overflow: hidden;
-}
-body:not(.phone) .settings-side {
-  width: 36rem;
-  background: rgba(255, 255, 255, 0.02);
-  border-left: 1.5px solid rgba(255, 255, 255, 0.08);
-  padding: 2.8rem 1.8rem;
-}
-body:not(.phone) .settings-title {
-  font-size: 2.6rem;
-  font-weight: 900;
-  color: #fff;
-  padding-bottom: 1.8rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  margin-bottom: 1.4rem;
-}
-body:not(.phone) .nav-item {
-  height: 5.4rem;
-  font-size: 1.6rem;
-  font-weight: 700;
-  border-radius: 1.4rem;
-  margin-bottom: 0.55rem;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-body:not(.phone) .nav-item.active {
-  background: rgba(255, 255, 255, 0.09);
-  color: #fff;
-  font-weight: 800;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-}
-body:not(.phone) .nav-item.focused {
-  background: linear-gradient(135deg, #2563eb, #1d4ed8) !important;
-  color: #fff !important;
-  transform: scale(1.03) !important;
-  border-color: #60a5fa !important;
-  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.5), 0 0 0 2px rgba(96, 165, 250, 0.4) !important;
-}
-body:not(.phone) .settings-main {
-  padding: 2.8rem 3.4rem 2rem;
-}
-body:not(.phone) .settings-head h2 {
-  font-size: 2.6rem;
-  font-weight: 900;
-  color: #fff;
-  letter-spacing: -0.02em;
-}
-body:not(.phone) .settings-head p {
-  font-size: 1.35rem;
-  color: #94a3b8;
-  margin: 0.5rem 0 1.8rem;
-  line-height: 1.4;
-}
-body:not(.phone) .set-row {
-  min-height: 6rem;
-  padding: 1rem 2rem;
-  margin-bottom: 0.75rem;
-  border-radius: 1.6rem;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1.5px solid rgba(255, 255, 255, 0.08);
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-body:not(.phone) .set-row.focused {
-  background: rgba(255, 255, 255, 0.14) !important;
-  border-color: #60a5fa !important;
-  transform: scale(1.02) !important;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 0 2px rgba(96, 165, 250, 0.4) !important;
-}
-body:not(.phone) .set-row .sr-label {
-  font-size: 1.65rem;
-  font-weight: 700;
-  color: #fff;
-}
-body:not(.phone) .set-row .sr-help {
-  font-size: 1.25rem;
-  color: #94a3b8;
-  margin-top: 0.25rem;
-}
-body:not(.phone) .set-row .sr-val .v {
-  background: rgba(0, 0, 0, 0.35);
-  padding: 0.4rem 1.4rem;
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #60a5fa;
-  font-weight: 800;
-  min-width: 14rem;
-}
-body:not(.phone) .set-row.focused .arr {
-  color: #60a5fa;
-  transform: scale(1.2);
-}
-body:not(.phone) .set-sep {
-  font-size: 1.35rem;
-  font-weight: 900;
-  color: #60a5fa;
-  letter-spacing: 0.05em;
-  padding: 1.8rem 0.5rem 0.6rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  margin-bottom: 0.8rem;
-}
+/* ---- settings on computers and TVs: a full page with grouped rows, in the theme's own colors */
+body:not(.phone) #settings.overlay { background: var(--bg); -webkit-backdrop-filter: none; backdrop-filter: none; }
+body:not(.phone) .settings-box { width: 100%; height: 100%; background: var(--bg); }
+body:not(.phone) .settings-side { width: 31rem; padding: 2.4rem 1.6rem; background: var(--bg2); scrollbar-width: none; }
+body:not(.phone) .settings-side::-webkit-scrollbar { display: none; }
+body:not(.phone) .settings-title { font-size: 2.4rem; font-weight: 800; padding: .4rem 1.2rem 1.8rem; color: var(--text); }
+body:not(.phone) .settings-title .ic { font-size: 2.6rem; margin-left: .9rem; }
+.set-close { display: flex; align-items: center; justify-content: center; width: 3.6rem; height: 3.6rem; margin-right: auto; padding: 0; border: 0;
+  border-radius: 50%; font-size: 2rem; color: var(--muted); background: none; cursor: pointer; }
+.set-close:hover { color: var(--text); background: var(--surface2); }
+body.phone .set-close { display: none; }
+body:not(.phone) .nav-item { height: 4.6rem; padding: 0 1.2rem; margin-bottom: .3rem; font-size: 1.5rem; font-weight: 600; border-radius: 1.2rem; }
+body:not(.phone) .nav-item:hover { color: var(--text); background: var(--surface2); }
+body:not(.phone) .nav-item.active { background: var(--container); color: var(--on-container); }
+body:not(.phone) .nav-item.focused { background: var(--accent) !important; color: var(--on-accent) !important; border-color: transparent !important;
+  transform: none !important; box-shadow: none !important; }
+body:not(.phone) .settings-main { align-items: center; padding: 2.8rem 3.2rem 0; }
+body:not(.phone) .settings-head, body:not(.phone) .settings-rows { width: 100%; max-width: 92rem; }
+body:not(.phone) .settings-head h2 { font-size: 2.8rem; font-weight: 800; color: var(--text); }
+body:not(.phone) .settings-head p { font-size: 1.4rem; color: var(--muted); margin: .3rem 0 1.4rem; }
+body:not(.phone) .settings-rows { padding: .3rem .3rem 4rem; scrollbar-width: thin; }
+body:not(.phone) .settings-rows::-webkit-scrollbar { display: block; width: .7rem; }
+.set-group { margin-bottom: 1rem; border-radius: 1.6rem; background: var(--bg2); }
+body:not(.phone) .set-group .set-row { min-height: 5.6rem; padding: .7rem 1.8rem; margin: 0; border: 0; border-radius: 0; background: none; box-shadow: inset 0 -.1rem 0 var(--line); }
+.set-group .set-row:first-child { border-top-left-radius: 1.6rem; border-top-right-radius: 1.6rem; }
+.set-group .set-row:last-child { border-bottom-left-radius: 1.6rem; border-bottom-right-radius: 1.6rem; }
+body:not(.phone) .set-group .set-row:last-child { box-shadow: none; }
+body:not(.phone) .set-group .set-row:not(.info):hover { background: var(--surface2); }
+body:not(.phone) .set-group .set-row.focused { background: var(--surface2) !important; box-shadow: inset 0 0 0 .25rem var(--focus) !important; transform: none !important; border-radius: 1.6rem; }
+body:not(.phone) .set-row .sr-label { font-size: 1.55rem; font-weight: 600; color: var(--text); }
+body:not(.phone) .set-row.action .sr-label { color: var(--focus); }
+body:not(.phone) .set-row.danger .sr-label { color: var(--danger); }
+body:not(.phone) .set-row .sr-help { font-size: 1.25rem; color: var(--muted); }
+body:not(.phone) .set-row .sr-val .v { min-width: 13rem; color: var(--text); }
+body:not(.phone) .set-row.info .sr-val .v { min-width: 0; padding: 0; font-weight: 500; color: var(--muted); }
+body:not(.phone) .set-row.focused .arr { color: var(--focus); }
+body:not(.phone) .set-sep { padding: 1.4rem 1.8rem .6rem; font-size: 1.3rem; font-weight: 700; color: var(--muted); }
+body:not(.phone) .set-row.upd-row { margin-bottom: 1rem; }
+.upd-card.gcard { display: block; padding: 0; border-radius: 1.6rem; background: var(--bg2); color: var(--text); }
+.upd-card.gcard::after { display: none; }
+.gc { display: flex; align-items: center; padding: 1.8rem; }
+.gc-logo { flex: none; display: flex; align-items: center; justify-content: center; width: 5.2rem; height: 5.2rem; margin-left: 1.6rem; border-radius: 50%;
+  object-fit: cover; font-size: 2.2rem; font-weight: 700; color: #fff; background: #fff; }
+div.gc-logo:not(:has(svg)) { background: #4285F4; }
+.gc-text { flex: 1; min-width: 0; }
+.gc-name { font-size: 1.7rem; font-weight: 700; }
+.gc-sub { margin-top: .15rem; font-size: 1.3rem; color: var(--muted); overflow: hidden; text-overflow: ellipsis; }
+.gc-btn, .gc-on { flex: none; margin-right: 1.6rem; padding: .7rem 1.6rem; border-radius: 2rem; font-size: 1.35rem; font-weight: 700; }
+.gc-btn { background: var(--accent); color: var(--on-accent); }
+.gc-on { background: var(--container); color: var(--on-container); }
+/* the phone page: the chip already names the section */
+body.phone .settings-head h2 { display: none; }
+body.phone .settings-head p { margin: 0 0 1.2rem; }
+body.phone .set-group .set-row { margin: 0; }
+body.phone .set-group .set-row:active { background: var(--surface2); }
+body.phone .set-row.upd-row { padding: 0; }
+body.phone .gc { flex-wrap: wrap; padding: 1.6rem; }

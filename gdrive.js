@@ -150,13 +150,13 @@
           if (tokenResp && tokenResp.access_token) {
             GDrive.fetchUserProfile(tokenResp.access_token, tokenResp.expires_in, onSuccess, onError);
           } else {
-            console.warn('GIS returned no token, falling back to device flow:', tokenResp);
-            GDrive.startDeviceFlow(onSuccess, onError);
+            GDrive.reportAuthError(new Error((tokenResp && tokenResp.error) || 'ההתחברות בוטלה'), onError);
           }
         };
         activeTokenClient.error_callback = function (e) {
-          console.warn('GIS error callback, falling back to device flow:', e);
-          GDrive.startDeviceFlow(onSuccess, onError);
+          // closing the Google window is a choice, not a failure: only a blocked window moves to the code flow
+          if (e && e.type === 'popup_failed_to_open') GDrive.startDeviceFlow(onSuccess, onError);
+          else if (onError) onError(new Error('ההתחברות בוטלה'));
         };
         activeTokenClient.requestAccessToken({ prompt: '' });
       } catch (e) {
@@ -280,7 +280,7 @@
       if (window.openDialog) {
         window.openDialog({
           ico: '☁️',
-          title: 'התחברות לחשבון Google בטלוויזיה',
+          title: GDrive.isTv() ? 'התחברות לחשבון Google בטלוויזיה' : 'התחברות לחשבון Google',
           html: modalHtml,
           wide: true,
           buttons: [{ label: 'ביטול', primary: true }],

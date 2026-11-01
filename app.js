@@ -1200,36 +1200,15 @@
           applyTvProfileData(p, true);
           saveTvProfiles();
           closeTvProfiles();
-          // Immediately enter playback / TV guide like Netflix
+          // Land on the home screen; playback starts by itself only with the "play the last channel" setting
           if (TVUI) {
             atvBuild();
-            if (atv.rows && atv.rows.length) {
-              atvFocus(0, 0);
-            }
-            var targetCh = null;
-            if (p.recents && p.recents.length) {
-              for (var ri = 0; ri < p.recents.length; ri++) {
-                var cIdx = indexInAll(p.recents[ri]);
-                if (cIdx !== -1 && (!p.isKids || isKidsCh(state.all[cIdx]))) {
-                  targetCh = state.all[cIdx];
-                  break;
-                }
-              }
-            }
-            if (!targetCh && state.visible && state.visible.length) targetCh = state.visible[0];
-            if (!targetCh && state.all && state.all.length) {
-              targetCh = p.isKids ? state.all.find(isKidsCh) : state.all[0];
-            }
-            if (targetCh) {
-              var pIdx = indexInList(targetCh.id);
-              if (pIdx !== -1) playIndex(pIdx);
-            }
-          } else {
-            if (state.visible && state.visible.length) {
-              focusGrid(0);
-              playIndex(0);
-            }
+            if (atv.rows && atv.rows.length) atvFocus(0, 0);
+          } else if (state.visible && state.visible.length) {
+            focusGrid(0);
           }
+          var lastCh = S.autoplay && p.recents && p.recents.length ? indexInList(p.recents[0]) : -1;
+          if (lastCh !== -1) playIndex(lastCh);
         }
       });
     });
@@ -4083,7 +4062,7 @@ function showOsd() {
     if (!ch) return;
     var items = [];
     if (ch.isVod) {
-      items.push({ ico: '⏩', label: 'דלג על פתיח (Skip Intro)', act: function () { el.video.currentTime = 85; toast('⏩ דולג על הפתיח'); } });
+      items.push({ ico: '⏩', label: 'דלג על פתיח (Skip Intro)', act: function () { el.video.currentTime = Math.max(el.video.currentTime, 85); toast('⏩ דולג על הפתיח'); } });
       if (ch.series) {
         items.push({ ico: '📋', label: 'פרקים בסדרה (' + ch.series.title + ')', act: function () { openVodModal(ch.series); } });
         items.push({ ico: '💾', label: 'הקלט פרק זה ל-Google Drive', act: function () {
@@ -4494,6 +4473,7 @@ function showOsd() {
   // ================================================================== settings
   var QUALITIES = [
     ['auto', 'אוטומטי (Adaptive)'],
+    ['max', 'הכי גבוהה שיש'],
     ['upscale4k', 'השבחה ל-4K / Ultra Sharp (AI & חדות מוגברת)'],
     ['1080p', 'Full HD (1080p) מקסימלי'],
     ['720p', 'HD (720p) - מומלץ ליציבות'],
@@ -4551,78 +4531,42 @@ function showOsd() {
     });
     var d = state.device;
     var secs = [
-      { id: 'profiles', ico: '👤', name: 'פרופילים', desc: 'מי צופה בטלוויזיה, מועדפים והיסטוריה אישיים', rows: [
-        action('החלפת פרופיל / מי צופה?', function () { closeSettings(); openTvProfiles(); }, 'פתיחת מסך בחירת הפרופיל בסגנון נטפליקס'),
-        toggle('profileOnStart', 'בחירת פרופיל בכל הפעלה', 'מציג את מסך "מי צופה?" בכל פתיחה של הטלוויזיה'),
-        action('ניהול פרופילים (עריכה / הוספה)', function () { closeSettings(); openTvProfiles(); tvProfileManaging = true; renderTvProfilesScreen(); markTvProfilesFocus(); }, 'עריכת שמות, החלפת אווטארים 3D והוספת פרופילים')
-      ] },
-      { id: 'google_cloud', ico: '☁️', name: 'חשבון Google & סנכרון ענן', desc: 'חיבור Google Drive, סנכרון מועדפים והגדרות והקלטות', rows: [
-        { type: 'card', state: function () {
-          var u = (window.GDrive && window.GDrive.getUser()) || null;
-          return (u && u.access_token) ? 'connected' : 'disconnected';
-        }, html: function () {
-          var u = (window.GDrive && window.GDrive.getUser()) || null;
-          if (u && u.access_token) {
-            var pic = u.picture ? '<img class="gdrive-avatar" src="' + esc(u.picture) + '" alt="">' : '<div class="gdrive-avatar" style="background:#4285F4;display:flex;align-items:center;justify-content:center;font-size:1.6rem;color:#fff;">G</div>';
-            return '<div class="gdrive-card" style="border:1.5px solid rgba(66,133,244,0.4);background:linear-gradient(135deg, rgba(66,133,244,0.12) 0%, rgba(15,23,42,0.4) 100%);">' +
-              '<div class="gdrive-user-row">' + pic +
-              '<div><div style="font-size:1.3rem;font-weight:800;color:#fff;">' + esc(u.name || 'משתמש מחובר') + '</div>' +
-              '<div style="font-size:0.95rem;color:rgba(255,255,255,0.75);margin-bottom:0.4rem;">' + esc(u.email || '') + '</div>' +
-              '<span class="gdrive-badge-connected">● מחובר ל-Google Drive (סנכרון ענן פעיל)</span></div></div>' +
-              '<div style="margin-top:1.1rem;padding-top:0.9rem;border-top:1px solid rgba(255,255,255,0.12);display:flex;justify-content:space-between;align-items:center;font-size:0.92rem;color:rgba(255,255,255,0.85);">' +
-              '<span>📁 תיקיית ענן: <b>ישראל TV+ - הקלטות</b></span>' +
-              '<span style="color:#94a3b8;">סונכרן: ' + (window.GDrive ? window.GDrive.getLastSyncFormatted() : '') + '</span></div></div>';
+      { id: 'google_cloud', ico: '☁️', name: 'חשבון Google וסנכרון', desc: 'מועדפים, היסטוריה והגדרות זהים בכל המכשירים, והקלטות ב-Drive', rows: (function () {
+        var signedIn = function () { var u = window.GDrive && window.GDrive.getUser(); return !!(u && u.access_token); };
+        var rows = [{ type: 'card', state: function () { return 'gcard'; }, html: function () {
+          var u = (window.GDrive && window.GDrive.getUser()) || {};
+          if (signedIn()) {
+            var pic = u.picture ? '<img class="gc-logo" src="' + esc(u.picture) + '" alt="">' : '<div class="gc-logo">G</div>';
+            return '<div class="gc">' + pic + '<div class="gc-text"><div class="gc-name">' + esc(u.name || 'משתמש מחובר') + '</div>' +
+              '<div class="gc-sub">' + esc(u.email || '') + '</div>' +
+              '<div class="gc-sub">סונכרן: ' + esc(window.GDrive.getLastSyncFormatted()) + '</div></div>' +
+              '<span class="gc-on">מחובר</span></div>';
           }
-          return '<div class="gdrive-card" style="border:1.5px solid rgba(255,255,255,0.16);">' +
-            '<div style="display:flex;align-items:center;gap:1.2rem;margin-bottom:1rem;">' +
-            '<div style="width:52px;height:52px;border-radius:14px;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(0,0,0,0.3);">' +
-            '<svg width="28" height="28" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/></svg>' +
-            '</div>' +
-            '<div style="flex:1;">' +
-            '<div style="font-size:1.25rem;font-weight:800;color:#fff;">התחברות עם חשבון Google</div>' +
-            '<div style="font-size:0.92rem;color:rgba(255,255,255,0.7);line-height:1.4;">סנכרון ערוצים מועדפים, היסטוריה, פרופילים והגדרות בין כל המכשירים, והקלטה ישירה לענן.</div>' +
-            '</div></div></div>';
+          return '<div class="gc"><div class="gc-logo"><svg width="28" height="28" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/></svg></div>' +
+            '<div class="gc-text"><div class="gc-name">התחברות עם חשבון Google</div>' +
+            '<div class="gc-sub">סנכרון המועדפים, ההיסטוריה, הפרופילים וההגדרות, והקלטה ישירה לענן</div></div>' +
+            '<span class="gc-btn">התחברות</span></div>';
         }, act: function () {
-          var u = (window.GDrive && window.GDrive.getUser()) || null;
-          if (u && u.access_token) {
-            confirmBox('להתנתק מחשבון Google?', function () {
-              if (window.GDrive) window.GDrive.signOut(function () { renderSettings(); });
-            });
-          } else {
-            if (window.GDrive) {
-              if (window.GDrive) window.GDrive.signIn(function () { renderSettings(); });
-            }
-          }
-        } },
-        action('🔄 סנכרן עכשיו עם Google Drive', function () { triggerCloudSync(true); }, 'סנכרון מיידי של ערוצים מועדפים, היסטוריה והגדרות מול הענן'),
-        action('📁 ההקלטות שלי ב-Google Drive', function () { openDriveRecordingsDialog(); }, 'צפייה, ניגון וניהול של כל הסדרות והשידורים שהקלטתם בענן'),
-        action(function () {
-          var rem = getSleepTimerRemaining();
-          return rem > 0 ? '💤 טיימר שינה (פעיל: ' + rem + ' דקות)' : '💤 טיימר שינה (כיבוי אוטומטי)';
-        }, function () {
-          var cur = getSleepTimerRemaining();
-          var next = cur === 0 ? 30 : cur <= 30 ? 60 : cur <= 60 ? 90 : 0;
-          setSleepTimer(next);
-        }, 'הגדרת טיימר לכיבוי אוטומטי של השידור והטלוויזיה (לחיצה משנה: 30 / 60 / 90 דק / כבוי)'),
-        action(function () {
-          var u = (window.GDrive && window.GDrive.getUser()) || null;
-          return (u && u.access_token) ? '🚪 התנתק מחשבון Google' : '🔑 התחבר עם חשבון Google';
-        }, function () {
-          var u = (window.GDrive && window.GDrive.getUser()) || null;
-          if (u && u.access_token) {
-            confirmBox('להתנתק מחשבון Google?', function () {
-              if (window.GDrive) window.GDrive.signOut(function () { renderSettings(); });
-            });
-          } else {
-            if (window.GDrive) {
-              if (window.GDrive) window.GDrive.signIn(function () { renderSettings(); });
-            }
-          }
-        })
+          if (!signedIn() && window.GDrive) window.GDrive.signIn(function () { renderSettings(); });
+        } }];
+        if (!signedIn()) return rows;
+        return rows.concat([
+          action('סנכרון עכשיו', function () { triggerCloudSync(true); }, 'מעדכן מול הענן את המועדפים, ההיסטוריה וההגדרות'),
+          action('ההקלטות שלי ב-Google Drive', function () { openDriveRecordingsDialog(); }, 'צפייה וניהול של מה שהקלטתם'),
+          action('התנתקות מחשבון Google', function () {
+            confirmBox('להתנתק מחשבון Google?', function () { window.GDrive.signOut(function () { renderSettings(); }); });
+          }, '', true)
+        ]);
+      })() },
+      { id: 'profiles', ico: '👤', name: 'פרופילים', desc: 'מועדפים והיסטוריה נפרדים לכל מי שצופה', rows: [
+        action('החלפת פרופיל', function () { closeSettings(); openTvProfiles(); }, 'פתיחת המסך "מי צופה?"'),
+        toggle('profileOnStart', 'בחירת פרופיל בכל הפעלה', 'מציג את המסך "מי צופה?" בכל פתיחה של האפליקציה'),
+        action('ניהול פרופילים (עריכה / הוספה)', function () { closeSettings(); openTvProfiles(); tvProfileManaging = true; renderTvProfilesScreen(); markTvProfilesFocus(); }, 'עריכת שמות ואווטארים והוספת פרופילים')
       ] },
       { id: 'display', ico: '🖥️', name: 'תצוגה', desc: 'גודל, צבעים ומה מופיע במסך', rows: [
+        sep('מראה'),
         choice('theme', 'ערכת צבעים', THEMES),
-        { type: 'choice', label: 'צבע הדגשה', help: readSystemColors() ? 'צבעי המערכת = הצבעים של הטפט (Material You)' : 'ערכות הצבע של Nuvio',
+        { type: 'choice', label: 'צבע הדגשה', help: readSystemColors() ? 'צבעי המערכת = הצבעים של הטפט (Material You)' : 'הצבע של הכפתורים וההדגשות',
           get: function () { return label(PALETTES, S.accent) + (S.accent === 'auto' ? ' (' + label(PALETTES, accentName()) + ')' : ''); },
           step: function (st) {
             var list = PALETTES.filter(function (p) { return p[0] !== 'system' || readSystemColors(); });
@@ -4632,10 +4576,12 @@ function showOsd() {
           step: function (st) { setSetting('uiScale', cycle(SCALES, S.uiScale, st)); } },
         { type: 'choice', label: 'כרטיסים בשורה', get: function () { return S.cols ? String(S.cols) : 'אוטומטי (' + state.cols + ')'; },
           step: function (st) { setSetting('cols', cycle(COLS, S.cols, st)); } },
+        sep('מה מוצג'),
         tvRow(toggle('hero', 'הצגת פרטי הערוץ הנבחר (למעלה)')),
         toggle('numbers', 'מספרי ערוצים על הכרטיסים'),
         toggle('showSource', 'הצגת מקור השידור', 'שורת "מקור" בפרטי הערוץ ובנגן', function () { updateHero(state.list[state.gridIdx]); }),
         tvRow(toggle('hints', 'שורת עזרה לשלט בתחתית')),
+        sep('מערכת'),
         { type: 'choice', label: 'ביצועים', help: 'מהיר = בלי אנימציות, למכשירים חלשים. ' + (S.perf === 'auto' ? 'זוהה: ' + (state.lowEnd ? 'מכשיר חלש – מצב מהיר' : 'מצב מלא') : ''),
           get: function () { return label(PERF, S.perf); }, step: function (st) { setSetting('perf', cycle(PERF, S.perf, st)); } }
       ].concat(NATIVE && NATIVE.launchSound ? [
@@ -4643,8 +4589,10 @@ function showOsd() {
           on: function () { return native('launchSound') !== false; }, act: function () { native('setLaunchSound', native('launchSound') === false); } }
       ] : []) },
       { id: 'channels', ico: '📺', name: 'ערוצים', desc: 'מה מופיע במדריך ואיך האפליקציה נפתחת', rows: [
+        sep('בפתיחה'),
         choice('startCat', 'בפתיחת האפליקציה', STARTS),
         toggle('autoplay', 'לנגן את הערוץ האחרון בפתיחה'),
+        sep('ניהול'),
         info('ערוצים מוסתרים', function () { return (S.hidden || []).length ? (S.hidden || []).length + ' ערוצים' : 'אין'; }),
         action('החזרת כל הערוצים המוסתרים', function () { setSetting('hidden', []); toast('כל הערוצים חזרו'); }),
         action('ניקוי "צפית לאחרונה"', function () { state.recents = []; lsSet('israel_tv_recents', []); buildCategories(); toast('נוקה'); }),
@@ -4652,15 +4600,21 @@ function showOsd() {
       ].concat(IS_WEB ? [toggle('hideAppOnly', 'הסתרת ערוצים שפועלים רק באפליקציה', 'ערוצי HTTP שהדפדפן חוסם')] : [])
         .concat([sep('קטגוריות שמוצגות')]).concat(catRows) },
       { id: 'player', ico: '▶️', name: 'נגן', desc: 'תמונה, איכות והחלפת ערוצים', rows: [
+        sep('תמונה'),
         choice('pic', 'מצב תמונה', PICS), choice('aspect', 'גודל תמונה', ASPECTS),
         toggle('sharpen', 'חידוד לשידורי SD ישנים', 'פילטר חידוד – כבד יותר על מעבדים חלשים'),
+        sep('שידור'),
         choice('quality', 'איכות שידור', QUALITIES), choice('latency', 'סוג חיבור', LAT, 'השהיה נמוכה = קרוב יותר לשידור החי, אבל יותר עצירות'),
         toggle('retry', 'התחברות מחדש אוטומטית כשהשידור נקטע'),
+        sep('שליטה'),
         choice('zap', 'החלפת ערוצים ב-▲▼', ZAPS),
         { type: 'toggle', label: 'כיוון החצים בנגן', help: S.upNext ? '▲ = ערוץ הבא' : '▲ = ערוץ קודם (מספר נמוך)', on: function () { return S.upNext; },
           act: function () { setSetting('upNext', !S.upNext); } },
         choice('osdSec', 'משך הצגת פרטי הערוץ בנגן', OSDS),
-        toggle('osdClock', 'שעון בנגן')
+        toggle('osdClock', 'שעון בנגן'),
+        { type: 'choice', label: 'טיימר שינה', help: 'עוצר את השידור אחרי הזמן שנבחר',
+          get: function () { var rem = getSleepTimerRemaining(); return rem > 0 ? rem + ' דקות' : 'כבוי'; },
+          step: function () { var cur = getSleepTimerRemaining(); setSleepTimer(cur === 0 ? 30 : cur <= 30 ? 60 : cur <= 60 ? 90 : 0); } }
       ] },
       { id: 'remote', tvOnly: true, ico: '🎮', name: 'שלט רחוק', desc: 'זוהה: ' + remoteName(), rows: [
         { type: 'choice', label: 'סוג השלט', help: 'קובע את ההסברים במסך. אוטומטי: לפי סוג המכשיר, ועובר לכפתורי צבע ברגע שלוחצים על אחד',
@@ -4731,19 +4685,23 @@ function showOsd() {
         action('📋 מה חדש (GitHub)', function () { openUrl(RELEASES); })
       ] },
       { id: 'about', ico: 'ℹ️', name: 'אודות ומכשיר', desc: 'פרטי המכשיר שזוהה, מקורות ואיפוס', rows: [
+        sep('המכשיר'),
         info('מכשיר', function () { return d.platform + (d.model ? ' · ' + d.model : ''); }),
         info('מערכת', function () { return d.os || '—'; }),
         info('מסך', function () { return screen.width + '×' + screen.height + ' (תצוגה ' + window.innerWidth + '×' + window.innerHeight + ')'; }),
         info('דפדפן המערכת', function () { var m = /Chrome\/([\d.]+)/.exec(UA); return m ? 'Chromium ' + m[1] : UA.slice(0, 60); }),
         info('שלט', remoteName),
+        sep('תקלות'),
         info('סגירות לא צפויות', crashText),
         info('שגיאה אחרונה', function () { return errors.length ? when(errors[0].t) + ' · ' + errors[0].m + ' (' + errors[0].at + ')' : 'אין'; }),
         action('ניקוי יומן התקלות', function () { crashes = []; errors = []; lsSet('itv_crashes', []); lsSet('itv_errors', []); toast('נוקה'); }),
+        sep('מידע וקישורים'),
         info('ערוצים', function () { return (window.CHANNELS_DATA || []).length + ' (מתוכם ' + state.all.length + ' מוצגים)'; }),
         action('📋 מאיפה מגיע כל ערוץ', function () { openUrl(REPO + '/blob/master/SOURCES.md'); }),
         action('🌐 הפרויקט ב-GitHub', function () { openUrl(REPO); }),
-        action('📡 חיבור ל-Plex ול-DLNA (טלוויזיות LG)', function () { showPlexModal(); }, 'הגדרת 269 הערוצים ולוח שידורים ב-Plex Live TV & DVR'),
+        action('📡 חיבור ל-Plex ול-DLNA (טלוויזיות LG)', function () { showPlexModal(); }, 'הגדרת הערוצים ולוח השידורים ב-Plex Live TV'),
         action('📲 האפליקציה לשאר המכשירים', function () { showGetApp(); }),
+        sep('איפוס'),
         action('איפוס כל ההגדרות', function () { confirmBox('לאפס את כל ההגדרות? (מועדפים נשמרים)', function () { try { localStorage.removeItem('itv_settings'); } catch (e) {} location.reload(); }); }, '', true)
       ] }
     ];
@@ -4793,20 +4751,26 @@ function showOsd() {
     var sec = sections[state.setSection];
     var navs = el.settingsNav.children;
     for (var i = 0; i < navs.length; i++) toggleClass(navs[i], 'active', i === state.setSection);
-    el.settingsH.textContent = sec.ico + ' ' + sec.name;
+    el.settingsH.textContent = sec.name;
     el.settingsP.textContent = sec.desc || '';
-    var n = 0;
+    if (state.setShown !== state.setSection) { state.setShown = state.setSection; el.settingsRows.scrollTop = 0; }
+    var n = 0, inGroup = false;
+    var group = function (html, open) {
+      var out = (inGroup && !open ? '</div>' : '') + (!inGroup && open ? '<div class="set-group">' : '') + html;
+      inGroup = open;
+      return out;
+    };
     el.settingsRows.innerHTML = sec.rows.map(function (r) {
-      if (r.type === 'sep') return '<div class="set-sep">' + esc(r.label) + '</div>';
-      if (r.type === 'card') return '<div class="set-row upd-row" data-i="' + (n++) + '"><div class="upd-card ' + r.state() + '">' + r.html() + '</div></div>';
+      if (r.type === 'sep') return group('<div class="set-sep">' + esc(r.label) + '</div>', false);
+      if (r.type === 'card') return group('<div class="set-row upd-row" data-i="' + (n++) + '"><div class="upd-card ' + r.state() + '">' + r.html() + '</div></div>', false);
       var val = '';
       if (r.type === 'choice') val = '<span class="arr">▶</span><span class="v">' + esc(r.get()) + '</span><span class="arr">◀</span>';
       else if (r.type === 'toggle') val = '<span class="switch' + (r.on() ? ' on' : '') + '"></span>';
       else if (r.type === 'info') val = '<span class="v">' + esc(r.get()) + '</span>';
       else if (r.type === 'text') val = '<input type="' + (r.secret ? 'password' : 'text') + '" placeholder="' + esc(r.placeholder || '') + '" value="' + esc(r.get()) + '">';
-      return '<div class="set-row ' + r.type + (r.danger ? ' danger' : '') + '" data-i="' + (n++) + '"><div class="sr-text"><div class="sr-label">' + esc(r.label) + '</div>' +
-        (r.help ? '<div class="sr-help">' + esc(r.help) + '</div>' : '') + '</div><div class="sr-val">' + val + '</div></div>';
-    }).join('');
+      return group('<div class="set-row ' + r.type + (r.danger ? ' danger' : '') + '" data-i="' + (n++) + '"><div class="sr-text"><div class="sr-label">' + esc(r.label) + '</div>' +
+        (r.help ? '<div class="sr-help">' + esc(r.help) + '</div>' : '') + '</div><div class="sr-val">' + val + '</div></div>', true);
+    }).join('') + group('', false);
     state.setIdx = clamp(state.setIdx, 0, Math.max(0, n - 1));
     markFocus();
   }
@@ -5600,6 +5564,8 @@ function showOsd() {
       if (r && r.set) { r.set(e.target.value); toast('נשמר'); }
     });
     el.settings.addEventListener('click', function (e) { if (e.target === el.settings) closeSettings(); });
+    var setClose = $('btn-settings-close');
+    if (setClose) setClose.addEventListener('click', function () { closeSettings(); });
     el.dialogActions.addEventListener('click', function (e) {
       var b = e.target.closest('.btn');
       if (!b) return;
