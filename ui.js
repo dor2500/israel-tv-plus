@@ -31,6 +31,7 @@ window.ITV_ICONS = {
   cast: 'M21 3H3c-1.1 0-2 .9-2 2v3h2V5h18v14h-7v2h7c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM1 18v3h3c0-1.66-1.34-3-3-3zm0-4v2c2.76 0 5 2.24 5 5h2c0-3.87-3.13-7-7-7zm0-4v2c4.97 0 9 4.03 9 9h2c0-6.08-4.93-11-11-11z',
   multiview: 'M4 4h7c.55 0 1 .45 1 1v5c0 .55-.45 1-1 1H4c-.55 0-1-.45-1-1V5c0-.55.45-1 1-1zm9 0h7c.55 0 1 .45 1 1v5c0 .55-.45 1-1 1h-7c-.55 0-1-.45-1-1V5c0-.55.45-1 1-1zM4 13h7c.55 0 1 .45 1 1v5c0 .55-.45 1-1 1H4c-.55 0-1-.45-1-1v-5c0-.55.45-1 1-1zm9 0h7c.55 0 1 .45 1 1v5c0 .55-.45 1-1 1h-7c-.55 0-1-.45-1-1v-5c0-.55.45-1 1-1z',
   server: 'M4 6h16c1.1 0 2-.9 2-2s-.9-2-2-2H4c-1.1 0-2 .9-2 2s.9 2 2 2zm0 8h16c1.1 0 2-.9 2-2s-.9-2-2-2H4c-1.1 0-2 .9-2 2s.9 2 2 2zm0 8h16c1.1 0 2-.9 2-2s-.9-2-2-2H4c-1.1 0-2 .9-2 2s.9 2 2 2z',
+  cloud: 'M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z',
   radio: 'M3.24 6.15C2.51 6.43 2 7.17 2 8v12c0 1.1.9 2 2 2h16c1.11 0 2-.9 2-2V8c0-1.1-.9-2-2-2H8.3l7.43-3c.46-.19.68-.71.49-1.17-.19-.46-.71-.68-1.17-.49L3.24 6.15zM7 20c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm13-8h-2v-1c0-.55-.45-1-1-1s-1 .45-1 1v1H4V9c0-.55.45-1 1-1h14c.55 0 1 .45 1 1v3z'
 };
 window.ITV_ICON = function (name, cls) {
@@ -204,14 +205,13 @@ window.ITV_UI = (function (I) {
 
   // ---------------------------------------------------------------- Multi-View / Split-Screen (https://split-tv.org/ style)
   '<div class="multiview hidden" id="multiview">' +
-    '<header class="mv-top">' +
-      '<div class="mv-brand"><span class="ico">' + I('multiview') + '</span><b>פיצול מסך · Split-TV</b>' +
-        '<span class="mv-sub">לחצו על מסך לבחירת שמע פעיל · 🔄 להחלפת כל ערוץ</span></div>' +
-      '<div class="mv-actions">' +
-        '<button class="mv-btn" data-mv-layout="2">2 מסכים</button>' +
-        '<button class="mv-btn" data-mv-layout="3">3 מסכים</button>' +
-        '<button class="mv-btn active" data-mv-layout="4">4 מסכים</button>' +
-        '<button class="mv-btn mv-close" id="mv-close">' + I('close') + '<span>סגור פיצול</span></button>' +
+    '<header class="mv-bar">' +
+      '<div class="mv-title"><span class="ico">' + I('multiview') + '</span><b>פיצול מסך</b></div>' +
+      '<div class="mv-layouts">' +
+        '<button class="mv-lbtn" data-mv="2">2 מסכים</button>' +
+        '<button class="mv-lbtn" data-mv="3">3 מסכים</button>' +
+        '<button class="mv-lbtn on" data-mv="4">4 מסכים</button>' +
+        '<button class="mv-close" id="mv-close">' + I('close') + '<span>סגירה</span></button>' +
       '</div>' +
     '</header>' +
     '<div class="mv-grid mv-g4" id="mv-grid"></div>' +

@@ -3231,216 +3231,6 @@ body.phone .m3-tv-hints { display: none; }
   color: var(--text, #fff);
 }
 
-/* ================================================================== designs (Settings > Appearance > Design)
-   Each one replaces the whole interface on top of the classic rules. The colours come from DESIGNS in app.js. */
-
-/* ------------------------------------------------------------------ shared: a preview window instead of a full-screen picture */
-body.design-rail.tvui:not(.player-open) #player, body.design-metro.tvui:not(.player-open) #player, body.design-paper.tvui:not(.player-open) #player { overflow: hidden; }
-body.design-rail.tvui, body.design-metro.tvui, body.design-paper.tvui { background: var(--bg); }
-body.design-rail .atv, body.design-metro .atv, body.design-paper .atv { background: none; }
-body.design-rail .atv-shade, body.design-metro .atv-shade, body.design-paper .atv-shade { display: none; }
-body.design-rail .atv-stage, body.design-metro .atv-stage, body.design-paper .atv-stage { bottom: auto; right: auto; overflow: hidden; }
-/* the surfaces of the new designs are solid */
-body.design-rail .atv-pill, body.design-metro .atv-pill, body.design-paper .atv-pill, body.design-cinema .atv-pill { -webkit-backdrop-filter: none; backdrop-filter: none; box-shadow: none; }
-
-/* ------------------------------------------------------------------ cinema: full picture, centred title, one row of posters */
-body.design-cinema { --radius: .3rem; }
-body.design-cinema .atv-shade { background:
-  linear-gradient(to bottom, #000 0, rgba(0, 0, 0, .55) 9%, rgba(0, 0, 0, 0) 24%),
-  linear-gradient(to top, #050403 0, rgba(5, 4, 3, .96) 34%, rgba(5, 4, 3, .55) 56%, rgba(5, 4, 3, 0) 78%); }
-body.design-cinema .atv-pill { top: 1.6rem; left: auto; right: 4rem; height: 3.6rem; padding: 0; border: 0; border-radius: 0; background: none; -webkit-transform: none; transform: none; }
-body.design-cinema .atv-tab { height: 3.2rem; margin: 0 0 0 .6rem; padding: 0 1rem; border-radius: 0; font-size: 1.35rem; font-weight: 500; color: rgba(255, 255, 255, .72);
-  background: none !important; border: 0 !important; border-bottom: .22rem solid transparent !important; box-shadow: none !important; -webkit-transform: none !important; transform: none !important; }
-body.design-cinema .atv-tab.on { color: var(--accent); border-bottom-color: var(--accent) !important; }
-body.design-cinema .atv-tab.focused { color: #14100a; background: var(--accent) !important; font-weight: 700; }
-body.design-cinema .atv-meta { top: auto; bottom: 23.5rem; left: 0; right: 0; width: 76rem; margin: 0 auto; text-align: center; }
-body.design-cinema .atv-mlogo { width: auto; height: 9rem; justify-content: center; }
-body.design-cinema .atv-mlogo::before { display: none; }
-body.design-cinema .atv-title { font-size: 5.4rem; font-weight: 700; letter-spacing: 0; }
-body.design-cinema .atv-tags { justify-content: center; }
-body.design-cinema .atv-tags > span { margin: 0 .4rem; }
-body.design-cinema .atv-desc { font-size: 1.5rem; }
-body.design-cinema .atv-shelves { height: 22rem; }
-body.design-cinema .atv-row { height: 21rem; }
-body.design-cinema .atv-row.below { opacity: 0; }
-body.design-cinema .atv-row-title { margin: 0 4rem .5rem; font-size: 1.15rem; font-weight: 700; letter-spacing: .12em; color: var(--accent); }
-body.design-cinema .atv-track { padding: 0 4rem; }
-body.design-cinema .atv-item { flex: 0 0 11rem; width: 11rem; }
-body.design-cinema .atv-card { width: 11rem; height: 15.4rem; border-radius: .3rem; background: linear-gradient(170deg, #241c0e, #0d0a05); border: 1px solid rgba(232, 180, 74, .22); box-shadow: none; }
-body.design-cinema .atv-logo img { max-width: 76%; max-height: 40%; }
-body.design-cinema .atv-item.is-vod .atv-logo img { max-width: 100%; max-height: 100%; }
-body.design-cinema .atv-name { margin-top: .5rem; font-size: 1.05rem; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-body.design-cinema:not(.phone) .atv-item.focused .atv-card { -webkit-transform: scale3d(1.06, 1.06, 1) !important; transform: scale3d(1.06, 1.06, 1) !important;
-  border: .2rem solid var(--accent) !important; box-shadow: 0 0 3rem rgba(232, 180, 74, .4) !important; }
-body.design-cinema .atv-item.focused .atv-name { color: var(--accent); -webkit-transform: none; transform: none; }
-body.design-cinema span.atv-live { background: none !important; color: var(--accent); border: 1px solid var(--accent); }
-body.design-cinema #player .osd::before { background: linear-gradient(to top, #000 0, rgba(0, 0, 0, .9) 42%, rgba(0, 0, 0, 0) 100%); }
-body.design-cinema #tvo-bar i { background: var(--accent); }
-body.design-cinema .tv-card, body.design-cinema .tv-strip-item, body.design-cinema #tvo-opts { border-radius: .3rem; }
-body.design-cinema .tv-strip-item.focus, body.design-cinema #tvo-big.focus { box-shadow: 0 0 0 .2rem var(--accent), 0 0 2.4rem rgba(232, 180, 74, .4); }
-body.design-cinema #tvo-opts.focus { background: var(--accent); color: #14100a; }
-body.design-cinema .dialog-box, body.design-cinema .menu-box, body.design-cinema .btn, body.design-cinema .net-prof-card { border-radius: .4rem !important; }
-body.design-cinema .net-prof-title, body.design-cinema #settings-h, body.design-cinema .settings-title { letter-spacing: .02em; color: var(--accent); }
-
-
-/* ------------------------------------------------------------------ rail: tabs in a fixed column, preview window, dense shelves */
-body.design-rail { --radius: .7rem; }
-body.design-rail.tvui:not(.player-open) #player { top: 2.5rem; left: 2.5rem; right: auto; bottom: auto; width: 50rem; height: 28.125rem; border-radius: .8rem; }
-body.design-rail .atv-stage { top: 2.5rem; left: 2.5rem; width: 50rem; height: 28.125rem; border-radius: .8rem; }
-body.design-rail .atv-pill { top: 0; right: 0; bottom: 0; left: auto; width: 21rem; height: auto; min-width: 0; padding: 2.5rem 1.2rem; flex-direction: column; align-items: stretch; justify-content: flex-start;
-  border: 0; border-left: 1px solid rgba(45, 212, 191, .2); border-radius: 0; background: var(--bg2); -webkit-transform: none; transform: none; overflow: hidden; }
-body.design-rail .atv-tab { flex: none; display: flex; align-items: center; justify-content: flex-start; width: 100%; height: 3.5rem; margin: 0 0 .3rem; padding: 0 1.2rem; border-radius: .6rem; font-size: 1.3rem; font-weight: 500; text-align: right; color: rgba(255, 255, 255, .78);
-  background: none !important; border: 0 !important; box-shadow: none !important; -webkit-transform: none !important; transform: none !important; }
-body.design-rail .atv-tab.ico-only, body.design-rail .atv-tab-prof { justify-content: flex-start; width: 100%; }
-body.design-rail .atv-tab.ico-only::after { content: attr(aria-label); margin-right: .9rem; font-size: 1.2rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-body.design-rail .atv-tab.on { color: var(--accent); background: rgba(45, 212, 191, .13) !important; font-weight: 700; }
-body.design-rail .atv-tab.focused { color: var(--on-accent); background: var(--accent) !important; font-weight: 700; }
-body.design-rail .atv-meta { top: 2.5rem; right: 23.5rem; width: 41rem; }
-body.design-rail .atv-mlogo { width: 16rem; height: 6.5rem; }
-body.design-rail .atv-mlogo::before { display: none; }
-body.design-rail .atv-title { font-size: 2.6rem; }
-body.design-rail .atv-desc { -webkit-line-clamp: 5; max-height: 10.6rem; font-size: 1.35rem; }
-body.design-rail .atv-search { top: 3rem; right: 23.5rem; width: 41rem; height: 4rem; border-radius: .6rem; }
-body.design-rail .atv-shelves { left: 0; right: 21rem; top: 32rem; bottom: 0; height: auto; overflow: hidden; }
-body.design-rail .atv-row { height: 14rem; }
-body.design-rail .atv-row.below { opacity: .7; }
-body.design-rail .atv-row-title { height: 2rem; margin: 0 2.5rem .35rem; font-size: 1.25rem; line-height: 2rem; color: var(--accent); }
-body.design-rail .atv-track { padding: 0 2.5rem; }
-body.design-rail .atv-item { flex: 0 0 13.25rem; width: 13.25rem; margin-left: 1.25rem; }
-body.design-rail .atv-card { width: 13.25rem; height: 7.45rem; border-radius: .6rem; background: var(--surface); border: 1px solid rgba(45, 212, 191, .16); box-shadow: none; }
-body.design-rail .atv-name { margin-top: .45rem; font-size: 1.05rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-body.design-rail:not(.phone) .atv-item.focused .atv-card { -webkit-transform: none !important; transform: none !important; border: .22rem solid var(--focus) !important; box-shadow: 0 0 1.6rem rgba(45, 212, 191, .45) !important; }
-body.design-rail .atv-item.focused .atv-name { -webkit-transform: none; transform: none; color: var(--focus); }
-body.design-rail #player .osd::before { background: linear-gradient(to top, rgba(8, 26, 36, .98) 0, rgba(8, 26, 36, .9) 40%, rgba(8, 26, 36, 0) 100%); }
-body.design-rail #tvo-bar i { background: var(--accent); }
-body.design-rail .tv-strip-item.focus, body.design-rail #tvo-big.focus { background: rgba(45, 212, 191, .14); box-shadow: 0 0 0 .2rem var(--accent); }
-body.design-rail #tvo-opts.focus { background: var(--accent); color: var(--on-accent); }
-
-/* ------------------------------------------------------------------ metro: flat colour tiles, no rounding, big plain headings */
-body.design-metro { --radius: 0; }
-body.design-metro.tvui:not(.player-open) #player { top: 7rem; left: 3rem; right: auto; bottom: auto; width: 32rem; height: 18rem; }
-body.design-metro .atv-stage { top: 7rem; left: 3rem; width: 32rem; height: 18rem; }
-body.design-metro .atv-pill { top: 1.6rem; right: 3rem; left: 3rem; height: 4rem; padding: 0; border: 0; border-radius: 0; background: none; -webkit-transform: none; transform: none; justify-content: flex-start; }
-body.design-metro .atv-tab { height: 4rem; margin: 0 0 0 1.2rem; padding: 0 .6rem; border-radius: 0; font-size: 1.9rem; font-weight: 400; color: rgba(255, 255, 255, .45);
-  background: none !important; border: 0 !important; box-shadow: none !important; -webkit-transform: none !important; transform: none !important; }
-body.design-metro .atv-tab.on { color: #fff; font-weight: 700; }
-body.design-metro .atv-tab.focused { color: #fff; background: var(--accent) !important; font-weight: 700; }
-body.design-metro .atv-meta { top: 7rem; right: 3rem; width: 78rem; }
-body.design-metro .atv-mlogo { display: none !important; }
-body.design-metro .atv-meta.has-logo .atv-title, body.design-metro .atv-title { display: block; margin: 0 0 .9rem; font-size: 4.6rem; font-weight: 800; letter-spacing: -.02em; }
-body.design-metro .atv-tags { margin-top: 0 !important; }
-body.design-metro .atv-desc { font-size: 1.5rem; -webkit-line-clamp: 3; max-height: 6.6rem; }
-body.design-metro span.atv-live, body.design-metro .atv-pill-q { border-radius: 0 !important; }
-body.design-metro span.atv-live { background: var(--accent) !important; }
-body.design-metro .atv-search { top: 7rem; right: 3rem; width: 78rem; border-radius: 0; background: var(--surface); }
-body.design-metro .atv-shelves { top: 27rem; bottom: 0; height: auto; overflow: hidden; }
-body.design-metro .atv-row { height: 15rem; }
-body.design-metro .atv-row.below { opacity: 1; }
-body.design-metro .atv-row-title { height: 2.6rem; margin: 0 3rem .4rem; font-size: 1.8rem; font-weight: 300; line-height: 2.6rem; }
-body.design-metro .atv-track { padding: 0 3rem; }
-body.design-metro .atv-item { flex: 0 0 18rem; width: 18rem; margin-left: .5rem; }
-body.design-metro .atv-card { width: 18rem; height: 11.5rem; border-radius: 0; border: 0; box-shadow: none; background: #0078d4; }
-body.design-metro .atv-item:nth-child(6n+2) .atv-card { background: #d83b01; }
-body.design-metro .atv-item:nth-child(6n+3) .atv-card { background: #107c10; }
-body.design-metro .atv-item:nth-child(6n+4) .atv-card { background: #5c2d91; }
-body.design-metro .atv-item:nth-child(6n+5) .atv-card { background: #008272; }
-body.design-metro .atv-item:nth-child(6n) .atv-card { background: #b4009e; }
-body.design-metro .atv-sheen { display: none; }
-body.design-metro .atv-num { color: rgba(255, 255, 255, .8); }
-body.design-metro .atv-q { border-radius: 0; }
-body.design-metro .atv-logo { bottom: 2.2rem; }
-body.design-metro .atv-name { position: absolute; right: 0; left: 0; top: 9.3rem; height: 2.2rem; margin: 0; padding: 0 .8rem; font-size: 1.1rem; font-weight: 600; line-height: 2.2rem; color: #fff; opacity: 1 !important; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-body.design-metro .atv-item.focused .atv-name { -webkit-transform: none; transform: none; }
-body.design-metro:not(.phone) .atv-item.focused .atv-card { -webkit-transform: none !important; transform: none !important; border: .3rem solid #fff !important; box-shadow: none !important; }
-body.design-metro #player .osd::before { display: none; }
-body.design-metro #tvosd { right: 0; left: 0; bottom: 0; padding: 1.6rem 3rem 1.6rem 10rem; background: #1b1c20; }
-body.design-metro .tv-card, body.design-metro .tv-strip-item, body.design-metro #tvo-opts { border-radius: 0; }
-body.design-metro .tv-strip-item.focus, body.design-metro #tvo-big.focus { background: var(--accent); box-shadow: 0 0 0 .25rem #fff; }
-body.design-metro #tvo-opts.focus { background: var(--accent); color: #fff; box-shadow: none; }
-body.design-metro #tvo-bar i { background: var(--accent); }
-body.design-metro .dialog-box, body.design-metro .menu-box, body.design-metro .btn, body.design-metro .net-prof-card, body.design-metro .net-prof-avatar,
-body.design-metro .set-row, body.design-metro .set-group, body.design-metro .nav-item, body.design-metro .switch, body.design-metro .toast,
-body.design-metro .settings-box, body.design-metro .drawer, body.design-metro .obtn, body.design-metro .home-chip, body.design-metro .card-logo { border-radius: 0 !important; }
-body.design-metro .nav-item.active, body.design-metro .nav-item.focused { background: var(--accent) !important; color: #fff !important; }
-
-/* ------------------------------------------------------------------ paper: a bright page, ink, hairlines and serif headlines */
-body.design-paper { --radius: 0; --serif: 'Frank Ruhl Libre', 'Noto Serif Hebrew', David, 'Times New Roman', serif; --ink: #1a1a1a; --text: #1a1a1a; --text2: #4a4640; --muted: #6a655c; --dim: #8a8478; --line: #d8cfba; --line2: #b9af98; }
-body.design-paper.tvui, body.design-paper .atv { color: var(--ink); }
-body.design-paper.tvui:not(.player-open) #player { top: 8rem; left: 3.5rem; right: auto; bottom: auto; width: 44rem; height: 24.75rem; outline: 1px solid #1a1a1a; outline-offset: .5rem; }
-body.design-paper .atv-stage { top: 8rem; left: 3.5rem; width: 44rem; height: 24.75rem; }
-body.design-paper .atv-pill { top: 1.4rem; left: 3.5rem; right: 3.5rem; height: 4.6rem; padding: 0; justify-content: center; border: 0; border-top: .25rem solid #1a1a1a; border-bottom: 1px solid #1a1a1a; border-radius: 0; background: none; -webkit-transform: none; transform: none; }
-body.design-paper .atv-tab { height: 3.4rem; margin: 0 .4rem; padding: 0 1rem; border-radius: 0; font-family: var(--serif); font-size: 1.5rem; font-weight: 500; color: #1a1a1a;
-  background: none !important; border: 0 !important; box-shadow: none !important; -webkit-transform: none !important; transform: none !important; }
-body.design-paper .atv-tab .ic, body.design-paper .atv-tab svg { fill: #1a1a1a; color: #1a1a1a; }
-body.design-paper .atv-tab.on { color: var(--accent); font-weight: 700; text-decoration: underline; }
-body.design-paper .atv-tab.focused { color: #fff; background: #1a1a1a !important; font-weight: 700; }
-body.design-paper .atv-tab.focused svg { fill: #fff; color: #fff; }
-body.design-paper .atv-meta { top: 8rem; right: 3.5rem; width: 62rem; }
-body.design-paper .atv-mlogo { display: none !important; }
-body.design-paper .atv-meta.has-logo .atv-title, body.design-paper .atv-title { display: block; margin: 0 0 1rem; font-family: var(--serif); font-size: 5rem; font-weight: 700; line-height: 1.08; letter-spacing: -.01em; color: #1a1a1a; text-shadow: none; }
-body.design-paper .atv-tag, body.design-paper .atv-src { color: #5a554c; }
-body.design-paper .atv-desc { font-family: var(--serif); font-size: 1.7rem; -webkit-line-clamp: 4; max-height: 10rem; color: #2c2a26; }
-body.design-paper span.atv-live { background: var(--accent) !important; color: #fff; border-radius: 0 !important; }
-body.design-paper .atv-pill-q { color: #1a1a1a; background: none !important; border: 1px solid #1a1a1a !important; border-radius: 0 !important; }
-body.design-paper .atv-search { top: 8rem; right: 3.5rem; width: 62rem; border-radius: 0; background: #fffdf7; border: 1px solid #1a1a1a; color: #1a1a1a; }
-body.design-paper .atv-search input, body.design-paper .atv-search .ico { color: #1a1a1a; }
-body.design-paper .atv-shelves { top: 35rem; bottom: 0; height: auto; overflow: hidden; }
-body.design-paper .atv-row { height: 16.5rem; margin: 0 3.5rem; border-top: 1px solid #1a1a1a; }
-body.design-paper .atv-row.below { opacity: 1; }
-body.design-paper .atv-row-title { height: 2.6rem; margin: .4rem 0; font-family: var(--serif); font-size: 1.7rem; line-height: 2.6rem; color: #1a1a1a; }
-body.design-paper .atv-row-title small { color: #6a655c; }
-body.design-paper .atv-track { padding: 0; }
-body.design-paper .atv-item { flex: 0 0 16rem; width: 16rem; }
-body.design-paper .atv-card { width: 16rem; height: 9rem; border-radius: 0; background: #fffdf7; border: 1px solid #1a1a1a; box-shadow: none; }
-body.design-paper .atv-sheen { display: none; }
-body.design-paper .atv-num { color: #6a655c; }
-body.design-paper .atv-logo .mono { border-radius: 0; }
-body.design-paper .atv-name { margin-top: .5rem; font-size: 1.15rem; color: #2c2a26; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-body.design-paper:not(.phone) .atv-item.focused .atv-card { -webkit-transform: none !important; transform: none !important; border: .3rem solid var(--accent) !important; box-shadow: none !important; }
-body.design-paper .atv-item.focused .atv-name { -webkit-transform: none; transform: none; color: var(--accent); }
-body.design-paper .atv-row.below .atv-item:not(.focused) .atv-name { opacity: 1; }
-body.design-paper:not(.phone) { --focus: #b3261e; --focus-bg: #efe6d4; --container: #efe6d4; }
-body.design-paper h1, body.design-paper h2, body.design-paper h3, body.design-paper .net-prof-title, body.design-paper .settings-title { font-family: var(--serif); }
-body.design-paper .dialog-box, body.design-paper .menu-box, body.design-paper .btn, body.design-paper .net-prof-card, body.design-paper .set-row, body.design-paper .set-group,
-body.design-paper .nav-item, body.design-paper .toast, body.design-paper .settings-box, body.design-paper .drawer, body.design-paper .obtn, body.design-paper .home-chip { border-radius: 0 !important; }
-body.design-paper .net-prof-overlay, body.design-paper .settings .settings-box { background: var(--bg) !important; color: var(--ink); }
-body.design-paper .net-prof-title, body.design-paper .net-prof-sub, body.design-paper .net-prof-brand { color: var(--ink); }
-body.design-paper .dialog-box, body.design-paper .menu-box { background: #fffdf7 !important; color: var(--ink); border: 1px solid #1a1a1a; box-shadow: none; }
-body.design-paper #player .osd::before { display: none; }
-body.design-paper #tvosd { right: 0; left: 0; bottom: 0; padding: 1.6rem 3rem 1.6rem 10rem; background: var(--bg); color: var(--ink); border-top: .25rem solid #1a1a1a; }
-body.design-paper .tv-nm, body.design-paper .tv-day, body.design-paper .tv-peek-txt small { color: #5a554c; }
-body.design-paper .tv-strip-item.mid .tv-nm { color: var(--ink); }
-body.design-paper .tv-card, body.design-paper .tv-strip-item, body.design-paper #tvo-opts { border-radius: 0; }
-body.design-paper .tv-strip-item.focus, body.design-paper #tvo-big.focus { background: none; box-shadow: 0 0 0 .25rem var(--accent); }
-body.design-paper #tvo-bar { background: #c9bfa8; }
-body.design-paper #tvo-bar i { background: var(--accent); }
-body.design-paper #tvo-bar u { background: var(--ink); }
-body.design-paper #tvo-opts.focus { background: var(--ink); color: #fff; box-shadow: none; }
-body.design-paper .tv-chev { border-color: var(--ink); }
-
-/* ------------------------------------------------------------------ every new design: its own page colours (a TV is otherwise forced to black) */
-html:has(body.design-cinema) { background: #050403; }
-body.design-cinema, body.design-cinema:not(.phone) { --bg: #050403; --bg2: #100d08; --surface: #191409; --surface2: #231c0d; --line: #2a2214; --line2: #4a3b1e; background: #050403; }
-body.design-rail, body.design-rail:not(.phone) { --bg: #081a24; --bg2: #0d2431; --surface: #12303f; --surface2: #173a4c; --line: #17394a; --line2: #245468; background: #081a24; }
-body.design-metro, body.design-metro:not(.phone) { --bg: #111214; --bg2: #1b1c20; --surface: #25272c; --surface2: #2e3036; --line: #2b2d32; --line2: #44464c; background: #111214; }
-body.design-paper, body.design-paper:not(.phone), body.design-paper.light:not(.phone) { --bg: #f6f0e3; --bg2: #ece4d2; --surface: #fffdf7; --surface2: #f0e9d8; --text: #1a1a1a; --text2: #4a4640; --muted: #6a655c; --dim: #8a8478; --line: #d8cfba; --line2: #b9af98; background: #f6f0e3; }
-body.design-cinema .app, body.design-rail .app, body.design-metro .app, body.design-paper .app { background: var(--bg); }
-
-body.design-cinema:not(.phone) .nav-item.focused, body.design-rail:not(.phone) .nav-item.focused, body.design-metro:not(.phone) .nav-item.focused, body.design-paper:not(.phone) .nav-item.focused {
-  background: var(--accent) !important; color: var(--on-accent) !important; outline: 0 !important; box-shadow: none !important; -webkit-transform: none !important; transform: none !important; }
-body.design-cinema .set-row.focused, body.design-rail .set-row.focused, body.design-metro .set-row.focused, body.design-paper .set-row.focused { outline-color: var(--accent) !important; border-color: var(--accent) !important; }
-/* the colour-key hints would sit on top of the shelves here */
-body.design-cinema .atv-colors, body.design-rail .atv-colors, body.design-metro .atv-colors, body.design-paper .atv-colors { display: none; }
-
-/* paper: logos are made for dark backgrounds, so the cards are ink */
-body.design-paper .atv-card { background: #1a1a1a; }
-body.design-paper .atv-num { color: rgba(255, 255, 255, .7); }
-body.design-paper .tv-card { color: #fff; }
-body.design-paper .settings .sr-label, body.design-paper .settings .nav-item, body.design-paper .settings-title, body.design-paper #settings-h { color: var(--ink); }
-body.design-paper .settings .sr-help, body.design-paper .settings .v, body.design-paper #settings-p { color: #5a554c; }
-body.design-paper .set-row, body.design-paper .set-group .set-row { background: #fffdf7 !important; border: 1px solid #d8cfba !important; }
-
-
 /* ------------------------------------------------------------------ changelog */
 .dialog-box.changelog { text-align: right; }
 .cl-ver { padding: 1.2rem 0; border-top: 1px solid var(--line); }
@@ -3449,42 +3239,148 @@ body.design-paper .set-row, body.design-paper .set-group .set-row { background: 
 .cl-ver ul { margin: 0; padding-right: 2rem; font-size: 1.45rem; line-height: 1.5; }
 .cl-ver li { margin-bottom: .4rem; }
 
-/* ------------------------------------------------------------------ full-page settings in three of the designs */
-body.design-cinema:not(.phone) .settings-box, body.design-metro:not(.phone) .settings-box, body.design-paper:not(.phone) .settings-box {
-  width: 100% !important; max-width: none !important; height: 100% !important; max-height: none !important; border: 0 !important; border-radius: 0 !important; box-shadow: none !important; }
-body.design-cinema .settings-title svg, body.design-rail .settings-title svg, body.design-metro .settings-title svg, body.design-paper .settings-title svg,
-body.design-cinema .set-close, body.design-rail .set-close, body.design-metro .set-close, body.design-paper .set-close { color: var(--accent) !important; fill: var(--accent) !important; }
-body.design-paper .m3-hint-pill { color: #4a4640; background: none; border-color: #b9af98; }
-body.design-paper .m3-key { color: #fff; background: #1a1a1a; }
+/* ================================================================== computers and TVs: the one look
+   Night-blue page, flat surfaces, no glass or glow. Focus is always a solid white plate: readable from the sofa.
+   Red means on air and nothing else. Phones keep their own interface, so everything here starts with body.tvui. */
+body.tvui {
+  --bg: #101c2c; --bg2: #17263a; --surface: #1e2f46; --surface2: #2c4260; --line: #2a3d57; --line2: #40567a;
+  --text: #f3f5f8; --text2: #c3cedc; --muted: #a3b2c6; --dim: #7c8da5;
+  --accent: #f3f5f8; --on-accent: #101c2c; --focus: #fff; --focus-bg: #22344c; --container: #22344c; --on-container: #f3f5f8;
+  --glow: transparent; --ink: #101c2c; --live: #e8352b; background: var(--bg); }
 
-/* paper: the player's panel is ink, the logos and the picture need the dark */
-body.design-paper #tvosd { background: #1a1a1a; color: #fff; border-top-color: var(--accent); }
-body.design-paper .tv-nm, body.design-paper .tv-day, body.design-paper .tv-peek-txt small { color: #c4c6cb; }
-body.design-paper .tv-strip-item.mid .tv-nm { color: #fff; }
-body.design-paper .tv-chev { border-color: #fff; }
-body.design-paper #tvo-bar { background: rgba(255, 255, 255, .34); }
-body.design-paper #tvo-bar u { background: #fff; }
-body.design-paper #tvo-opts { color: #fff; }
-body.design-paper #tvo-opts.focus { background: #fff; color: #1a1a1a; }
-body.design-paper .atv-pill-q { color: #1a1a1a !important; }
+/* ---- home */
+body.tvui .atv-bd { background: var(--bg) !important; }
+body.tvui .atv-shade { background:
+  linear-gradient(to top, #101c2c 0, rgba(16, 28, 44, .94) 42%, rgba(16, 28, 44, 0) 66%),
+  linear-gradient(to left, rgba(16, 28, 44, .95) 0, rgba(16, 28, 44, .7) 38%, rgba(16, 28, 44, 0) 64%),
+  linear-gradient(to bottom, rgba(16, 28, 44, .8) 0, rgba(16, 28, 44, 0) 14%); }
+body.tvui .atv-pill { top: 1.2rem; left: 4.5rem; right: 4.5rem; height: 3.6rem; min-width: 0; padding: 0; justify-content: flex-start; border: 0; border-radius: 0; background: none;
+  box-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none; -webkit-transform: none; transform: none; }
+body.tvui .atv-tab { height: 3rem; margin: 0 0 0 .3rem; padding: 0 1rem; border: 0 !important; border-radius: .35rem; background: none; font-size: 1.35rem; font-weight: 500; color: rgba(255, 255, 255, .72);
+  box-shadow: none !important; -webkit-transform: none !important; transform: none !important; transition: none; }
+body.tvui .atv-tab.on { background: none; color: #fff; font-weight: 700; box-shadow: inset 0 -.18rem 0 #fff !important; border-radius: 0; }
+body.tvui .atv-tab.focused { background: #fff; color: var(--ink); font-weight: 700; }
+body.tvui .atv-tab.atv-tab-prof { padding: 0 1rem; background: none !important; border: 0; }
+body.tvui .atv-tab.atv-tab-prof.focused { background: #fff !important; color: var(--ink); }
+body.tvui .atv-prof-ico { display: none; }
+body.tvui .atv-tab:not(.ico-only) + .atv-tab.ico-only { margin-right: auto; }
+body.tvui .atv-tab.ico-only { width: 3rem; padding: 0; background: none; }
+body.tvui .atv-tab.ico-only.focused { background: #fff; color: var(--ink); }
+body.tvui .atv-tab.ico-only svg { fill: currentColor; }
 
-/* ------------------------------------------------------------------ the programme guide in each design */
-body.design-cinema #tvguide { background: #050403; }
-body.design-rail #tvguide { background: #081a24; }
-body.design-metro #tvguide { background: #111214; }
-body.design-cinema .tv-nowline, body.design-rail .tv-nowline, body.design-metro .tv-nowline, body.design-paper .tv-nowline { background: var(--accent); }
-body.design-cinema .tv-p.focus, body.design-rail .tv-p.focus { background: var(--container); box-shadow: inset 0 0 0 .22rem var(--accent), 0 0 2rem var(--glow); }
-body.design-metro .tv-p.focus { background: var(--accent); color: #fff; box-shadow: inset 0 0 0 .25rem #fff; }
-body.design-paper #tvguide { background: #f6f0e3; color: #1a1a1a; }
-body.design-paper #tvg-title b { font-family: var(--serif); border-bottom-color: #1a1a1a; }
-body.design-paper #tvg-title span, body.design-paper #tvg-time { color: #5a554c; }
-body.design-paper #tvg-ruler { border-bottom-color: #1a1a1a; color: #1a1a1a; }
-body.design-paper #tvg-rail { border-left-color: #1a1a1a; }
-body.design-paper #tvg-name { font-family: var(--serif); }
-body.design-paper .tv-p { border-color: #c9bfa8; color: #1a1a1a; }
-body.design-paper .tv-p.past { color: #8a8478; background: rgba(0, 0, 0, .03); }
-body.design-paper .tv-p.focus { background: #fffdf7; box-shadow: inset 0 0 0 .25rem var(--accent); }
-body.design-paper #tvguide .tv-logo { background: #1a1a1a; }
-body.design-paper #tvguide .tv-clock, body.design-paper #tvguide .tv-num { color: #1a1a1a; }
-body.design-paper #tvguide .tv-nm { color: #4a4640; }
-body.design-paper #tvguide .tv-heart { filter: invert(1) brightness(.2); }
+body.tvui .atv-meta { top: 7rem; right: 4.5rem; width: 54rem; }
+body.tvui .atv-mlogo { width: 20rem; height: 6.5rem; }
+body.tvui .atv-mlogo::before { display: none; }
+body.tvui .atv-mlogo img { filter: none; }
+body.tvui .atv-title { font-size: 3.6rem; font-weight: 700; letter-spacing: 0; text-shadow: none; }
+body.tvui .atv-tags { font-size: 1.3rem; }
+body.tvui .atv-tags > span { margin-left: 1.2rem; }
+body.tvui span.atv-live { padding: 0 !important; border: 0 !important; border-radius: 0 !important; background: none !important; -webkit-backdrop-filter: none !important; backdrop-filter: none !important; color: #ff5a50 !important; font-size: 1.3rem !important; font-weight: 700; letter-spacing: 0 !important; }
+body.tvui .atv-pill-q { padding: 0 !important; border: 0 !important; background: none !important; -webkit-backdrop-filter: none !important; backdrop-filter: none !important; color: #fff !important; font-size: 1.3rem !important; font-weight: 500; letter-spacing: 0 !important; }
+body.tvui .atv-tag { color: var(--text2); }
+body.tvui .atv-desc { max-width: 46rem; font-size: 1.5rem; color: var(--text2); }
+body.tvui .atv-src { display: none; }
+
+body.tvui .atv-row-title { font-size: 1.5rem; font-weight: 500; color: var(--text2); }
+body.tvui .atv-row.active .atv-row-title { color: #fff; font-weight: 700; }
+body.tvui .atv-row-title small { display: none; }
+body.tvui .atv-card { border: 0; border-radius: .5rem; background: var(--surface); box-shadow: none; }
+body.tvui .atv-sheen, body.tvui .atv-num { display: none; }
+body.tvui .atv-q { display: none; top: .6rem; left: .6rem; padding: .05rem .45rem; border: 0; border-radius: .25rem; background: rgba(16, 28, 44, .85); font-weight: 500; color: #fff; }
+body.tvui .atv-item.focused .atv-q { display: block; }
+body.tvui .atv-name { margin-top: .6rem; padding: 0; font-size: 1.25rem; font-weight: 400; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+body.tvui .atv-n { display: inline-block; margin-left: .7rem; font-weight: 700; color: #fff; font-variant-numeric: tabular-nums; }
+body.no-numbers .atv-n { display: none; }
+body.tvui .atv-item.focused .atv-name { color: #fff; font-weight: 500; -webkit-transform: none; transform: none; }
+body.tvui .atv-item.focused, body.tvui .atv-tab.focused, body.tvui #menu .menu-item.focused, body.tvui .obtn.focused { z-index: 6; }
+body.tvui .atv-item.focused .atv-card { -webkit-transform: none !important; transform: none !important; border: 0 !important; outline: .25rem solid #fff; outline-offset: .2rem; box-shadow: none !important; }
+body.tvui .atv-colors { left: 4.5rem; bottom: .7rem; }
+body.tvui .atv-colors > * { margin-right: 1.2rem; padding: 0; border: 0 !important; border-radius: 0; background: none !important; box-shadow: none !important; -webkit-backdrop-filter: none; backdrop-filter: none; font-size: 1.05rem; color: var(--muted); }
+body.tvui .atv-search { top: 7rem; right: 4.5rem; width: 54rem; height: 4.4rem; border: 0; border-radius: .5rem; background: var(--surface); }
+body.tvui .atv-search.focused { border: 0; box-shadow: none; outline: .22rem solid #fff; outline-offset: .15rem; }
+body.tvui .atv-kb { border: 0; border-radius: .5rem; background: var(--bg2); box-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none; }
+body.tvui .kb-key { border: 0; border-radius: .3rem; background: var(--surface); box-shadow: none; }
+body.tvui .kb-key:hover, body.tvui .kb-key.focused { background: #fff; color: var(--ink); -webkit-transform: none; transform: none; box-shadow: none; }
+
+/* ---- settings: a full page, rows on the page itself */
+body.tvui .settings-box { width: 100% !important; max-width: none !important; height: 100% !important; max-height: none !important; border: 0 !important; border-radius: 0 !important; background: var(--bg) !important; box-shadow: none !important; -webkit-backdrop-filter: none !important; backdrop-filter: none !important; }
+body.tvui .settings-side { background: var(--bg2) !important; border: 0 !important; }
+body.tvui .settings-title { border: 0 !important; color: #fff; }
+body.tvui .settings-title > svg, body.tvui .set-head-ico, body.tvui .m3-tv-hints { display: none !important; }
+body.tvui .set-close, body.tvui .set-close svg { color: var(--muted) !important; fill: var(--muted) !important; background: none !important; }
+body.tvui .nav-item { border: 0 !important; border-radius: .35rem !important; background: none !important; font-weight: 500; color: var(--text2); }
+body.tvui .nav-item.active { background: var(--surface) !important; color: #fff !important; }
+body.tvui .nav-item.focused { background: #fff !important; color: var(--ink) !important; outline: 0 !important; box-shadow: none !important; -webkit-transform: none !important; transform: none !important; }
+body.tvui .nav-item .ni-ico, body.tvui .nav-item svg { color: inherit !important; fill: currentColor; }
+body.tvui #settings-h { font-weight: 700; color: #fff; }
+body.tvui .set-sep { padding: 2rem .2rem .5rem !important; border: 0 !important; font-size: 1.25rem; font-weight: 500; letter-spacing: 0 !important; color: var(--muted) !important; }
+body.tvui .set-group { border: 0 !important; border-radius: 0 !important; background: none !important; box-shadow: none !important; }
+body.tvui .set-row, body.tvui .set-group .set-row { margin: 0 !important; border: 0 !important; border-bottom: 1px solid var(--line) !important; border-radius: 0 !important; background: none !important; box-shadow: none !important; outline: 0 !important; -webkit-transform: none !important; transform: none !important; }
+body.tvui .set-row .sr-label { font-weight: 500; color: #fff !important; }
+body.tvui .set-row .sr-help { color: var(--muted); }
+body.tvui .set-row .sr-val .v { padding: 0 !important; border: 0 !important; background: none !important; box-shadow: none !important; color: #fff !important; font-weight: 500; }
+body.tvui .set-row .arr { color: var(--dim) !important; }
+body.tvui .set-row.focused, body.tvui .set-group .set-row.focused { border-bottom-color: transparent !important; border-radius: .35rem !important; background: #fff !important; }
+body.tvui .set-row.focused .sr-label, body.tvui .set-row.focused .sr-val .v, body.tvui .set-row.focused .arr { color: var(--ink) !important; }
+body.tvui .set-row.focused .sr-help { color: #46566c !important; }
+body.tvui .set-row.danger .sr-label { color: #ff8a82 !important; }
+body.tvui .set-row.focused.danger .sr-label { color: #b3261e !important; }
+body.tvui .switch { background: var(--surface2) !important; border: 0 !important; box-shadow: none !important; }
+body.tvui .switch.on { background: #4f9cf0 !important; }
+body.tvui .switch::after { background: #fff !important; box-shadow: none !important; }
+body.tvui .set-row.focused .switch { background: #b8c4d3 !important; }
+body.tvui .set-row.focused .switch.on { background: #1668c7 !important; }
+
+/* ---- dialogs and menus */
+body.tvui .dialog-box, body.tvui .menu-box, body.tvui .drawer, body.tvui .toast { border: 0 !important; border-radius: .6rem !important; background: var(--bg2) !important; box-shadow: 0 1.6rem 4rem rgba(5, 10, 18, .6) !important; -webkit-backdrop-filter: none !important; backdrop-filter: none !important; color: var(--text); }
+body.tvui .dialog-box { text-align: right; }
+body.tvui .dialog-ico, body.tvui .mi-ico { display: none; }
+body.tvui .dialog-box h2 { font-size: 2.4rem; font-weight: 700; }
+body.tvui .dialog-box h2:empty { display: none; }
+body.tvui .btn { border: 0 !important; border-radius: .35rem !important; background: var(--surface) !important; color: #fff !important; box-shadow: none !important; font-weight: 500; }
+body.tvui .btn.primary { background: var(--surface2) !important; font-weight: 700; }
+body.tvui .btn.focused, body.tvui .btn:hover { background: #fff !important; color: var(--ink) !important; outline: 0 !important; box-shadow: none !important; -webkit-transform: none !important; transform: none !important; }
+body.tvui .menu-item { border: 0 !important; border-radius: .35rem !important; background: none !important; }
+body.tvui .menu-item.focused, body.tvui #menu .menu-item.focused { background: #fff !important; color: var(--ink) !important; box-shadow: none !important; -webkit-transform: none !important; transform: none !important; }
+body.tvui .menu-item.focused .mi-val { color: #46566c; }
+
+/* ---- a series */
+body.tvui .vod-chip, body.tvui .vod-chip-rating, body.tvui .vod-chip-q { padding: 0 !important; border: 0 !important; background: none !important; box-shadow: none !important; color: var(--text2) !important; font-weight: 500; }
+body.tvui .vod-poster { border-radius: .5rem; box-shadow: none; }
+body.tvui .vod-ep-card { border: 0 !important; border-radius: .5rem !important; background: var(--surface) !important; box-shadow: none !important; -webkit-transform: none !important; transform: none !important; }
+body.tvui .vod-ep-card.focused { outline: .22rem solid #fff; outline-offset: .15rem; }
+body.tvui .vod-play-pill { border: 0 !important; border-radius: .3rem !important; background: var(--surface2) !important; box-shadow: none !important; color: #fff !important; }
+body.tvui .vod-ep-num { color: var(--muted) !important; }
+body.tvui .vod-season-tabs .btn { min-height: 3.4rem; }
+
+/* ---- split screen */
+body.tvui .mv-bar { border: 0; background: var(--bg); box-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none; }
+body.tvui .mv-lbtn, body.tvui .mv-close { border: 0 !important; border-radius: .35rem !important; background: var(--surface) !important; color: #fff !important; box-shadow: none !important; }
+body.tvui .mv-lbtn.on { background: var(--surface2) !important; font-weight: 700; }
+body.tvui .mv-lbtn.focused, body.tvui .mv-close.focused, body.tvui .mv-lbtn:hover, body.tvui .mv-close:hover { background: #fff !important; color: var(--ink) !important; }
+body.tvui .mv-cell { border-radius: 0; box-shadow: none; }
+body.tvui .mv-cell.active-audio { box-shadow: inset 0 0 0 .2rem #fff; }
+body.tvui .mv-cbtn { border: 0 !important; border-radius: .3rem !important; background: rgba(16, 28, 44, .85) !important; box-shadow: none !important; -webkit-backdrop-filter: none; backdrop-filter: none; color: #fff !important; }
+body.tvui .mv-cbtn.on, body.tvui .mv-cbtn:hover { background: #fff !important; color: var(--ink) !important; }
+
+/* ---- player and guide */
+body.tvui #player .osd::before { background: linear-gradient(to top, rgba(16, 28, 44, .97) 0, rgba(16, 28, 44, .86) 40%, rgba(16, 28, 44, 0) 100%); }
+body.tvui .tv-card, body.tvui .tv-strip-item, body.tvui #tvo-opts { border-radius: .5rem; }
+body.tvui .tv-card { background: var(--surface); }
+body.tvui .tv-strip-item.focus, body.tvui #tvo-big.focus { background: none; box-shadow: 0 0 0 .22rem #fff; }
+body.tvui #tvo-opts.focus { background: #fff; color: var(--ink); box-shadow: none; }
+body.tvui #tvguide { background: var(--bg); }
+body.tvui .tv-p.focus { background: var(--surface); box-shadow: inset 0 0 0 .22rem #fff; }
+
+/* ---- who's watching: the picture stays small, the name does the work */
+body.tvui .net-prof-overlay { background: var(--bg) !important; }
+body.tvui .net-prof-brand { display: none; }
+body.tvui .net-prof-sub { display: none; }
+body.tvui .net-prof-title { font-size: 3.2rem; font-weight: 700; background: none; color: #fff; -webkit-text-fill-color: #fff; text-shadow: none; }
+body.tvui .net-prof-card { border: 0 !important; border-radius: .5rem !important; background: var(--surface) !important; box-shadow: none !important; -webkit-transform: none !important; transform: none !important; }
+body.tvui .net-prof-card.focused, body.tvui .net-prof-card:hover { background: #fff !important; color: var(--ink) !important; }
+body.tvui .net-prof-card.focused * , body.tvui .net-prof-card:hover * { color: var(--ink) !important; }
+body.tvui .net-prof-avatar { width: 6.5rem !important; height: 6.5rem !important; -webkit-transform: none !important; transform: none !important; filter: none !important; }
+body.tvui .net-prof-badge { padding: 0; border: 0; background: none; box-shadow: none; color: var(--muted); font-weight: 400; }
+body.tvui .net-prof-grid { align-items: stretch; }
+body.tvui .net-prof-card { justify-content: center; }
