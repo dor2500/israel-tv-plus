@@ -7,8 +7,14 @@
 (function (window) {
   'use strict';
 
-  var CLIENT_ID = '1083921845892-v7k7u83818e9f28d8b2d28j92k9s28d.apps.googleusercontent.com';
-  var SCOPE = 'https://www.googleapis.com/auth/drive.file https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email openid';
+  // OAuth clients of the project in Google Cloud Console (docs/GOOGLE_SIGNIN.md). They are public by design:
+  // Google treats the secret of a "TVs and Limited Input" client as non-confidential.
+  // While empty, sign-in explains that it is unavailable instead of sending people to a Google error page.
+  var WEB_CLIENT_ID = '';
+  var TV_CLIENT_ID = '';
+  var TV_CLIENT_SECRET = '';
+  var WEB_ORIGINS = ['https://dor2500.github.io', 'http://localhost:8080'];
+  var SCOPE = 'openid email profile https://www.googleapis.com/auth/drive.file';
   var FOLDER_NAME = 'ישראל TV+ - הקלטות';
   var AUTH_KEY = 'itv_google_auth';
   var FOLDER_KEY = 'itv_gdrive_folder_id';
@@ -16,6 +22,13 @@
   var activeTokenClient = null;
   var devicePollTimer = null;
   var activeRecording = null;
+
+  function jsonOk(r) {
+    return r.json().then(function (body) {
+      if (!r.ok) throw new Error((body && body.error && (body.error.message || body.error)) || ('HTTP ' + r.status));
+      return body;
+    });
+  }
 
   var GDrive = {
     // ------------------------------------------------------------- Auth State
@@ -49,83 +62,108 @@
 
     isSignedIn: function () {
       var u = GDrive.getUser();
-      return !!(u && u.access_token && !u.isExpired);
+      return !!(u && u.access_token && (!u.isExpired || u.refresh_token));
+    },
+
+    // Passes through when nobody is signed in: the callers start the sign-in themselves.
+    ensureToken: function (callback) {
+      var u = GDrive.getUser();
+      if (!u || !u.isExpired) { callback(null); return; }
+      if (!u.refresh_token) { callback(new Error('פג תוקף ההתחברות – התנתקו והתחברו שוב בהגדרות')); return; }
+      var params = new URLSearchParams();
+      params.append('client_id', TV_CLIENT_ID);
+      params.append('client_secret', TV_CLIENT_SECRET);
+      params.append('refresh_token', u.refresh_token);
+      params.append('grant_type', 'refresh_token');
+      fetch('https://oauth2.googleapis.com/token', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: params.toString()
+      })
+      .then(jsonOk)
+      .then(function (t) {
+        u.access_token = t.access_token;
+        u.expires_at = Date.now() + ((t.expires_in || 3600) * 1000);
+        delete u.isExpired;
+        GDrive.saveUser(u);
+        callback(null);
+      })
+      .catch(function () {
+        callback(new Error('פג תוקף ההתחברות – התנתקו והתחברו שוב בהגדרות'));
+      });
+    },
+
+    reportAuthError: function (err, onError) {
+      console.warn('Google sign-in:', err);
+      if (onError) { onError(err); return; }
+      if (window.openDialog) {
+        window.openDialog({
+          ico: '⚠️',
+          title: 'ההתחברות ל-Google נכשלה',
+          html: '<p>' + String((err && err.message) || err) + '</p>'
+        });
+      }
+    },
+
+    reportUnavailable: function (onError) {
+      GDrive.reportAuthError(new Error('התחברות עם Google עדיין לא זמינה בגרסה הזו. הצפייה וכל שאר התכונות עובדות כרגיל.'), onError);
     },
 
     // ------------------------------------------------------------- Web Sign-In (GIS)
     signInWeb: function (onSuccess, onError) {
-      // 1. Try Google Identity Services if loaded
-      if (window.google && window.google.accounts && window.google.accounts.oauth2) {
-        try {
-          if (!activeTokenClient) {
-            activeTokenClient = window.google.accounts.oauth2.initTokenClient({
-              client_id: CLIENT_ID,
-              scope: SCOPE,
-              callback: function (tokenResp) {
-                if (tokenResp && tokenResp.access_token) {
-                  GDrive.fetchUserProfile(tokenResp.access_token, tokenResp.expires_in, onSuccess, onError);
-                } else if (onError) {
-                  onError(new Error(tokenResp && tokenResp.error || 'ההתחברות בוטלה'));
-                }
-              }
-            });
-          }
-          activeTokenClient.requestAccessToken({ prompt: '' });
-          return;
-        } catch (e) {
-          console.warn('GIS error, falling back to popup/device flow:', e);
-        }
-      }
-
-      // 2. Fallback: OAuth 2.0 Web Popup
-      var redirectUri = window.location.origin + window.location.pathname;
-      var authUrl = 'https://accounts.google.com/o/oauth2/v2/auth?' +
-        'client_id=' + encodeURIComponent(CLIENT_ID) +
-        '&redirect_uri=' + encodeURIComponent(redirectUri) +
-        '&response_type=token' +
-        '&scope=' + encodeURIComponent(SCOPE) +
-        '&prompt=select_account';
-
-      var popup = window.open(authUrl, 'google_login', 'width=520,height=640');
-      if (!popup) {
-        // Popup blocked, open in same tab or use TV device flow
+      // Google accepts the browser flow only on registered origins: installed apps (file://, capacitor://) use the code flow
+      if (WEB_ORIGINS.indexOf(window.location.origin) === -1 || !WEB_CLIENT_ID) {
         GDrive.startDeviceFlow(onSuccess, onError);
         return;
       }
-
-      var pollTimer = setInterval(function () {
-        try {
-          if (!popup || popup.closed) {
-            clearInterval(pollTimer);
-            return;
-          }
-          var href = popup.location.href;
-          if (href && href.indexOf('access_token=') !== -1) {
-            clearInterval(pollTimer);
-            var params = new URLSearchParams(popup.location.hash.slice(1));
-            var token = params.get('access_token');
-            var exp = parseInt(params.get('expires_in') || '3600', 10);
-            popup.close();
-            if (token) {
-              GDrive.fetchUserProfile(token, exp, onSuccess, onError);
-            }
-          }
-        } catch (crossOriginErr) {
-          // Expected while user is on accounts.google.com
+      if (!(window.google && window.google.accounts && window.google.accounts.oauth2)) {
+        GDrive.startDeviceFlow(onSuccess, onError);
+        return;
+      }
+      try {
+        if (!activeTokenClient) {
+          activeTokenClient = window.google.accounts.oauth2.initTokenClient({
+            client_id: WEB_CLIENT_ID,
+            scope: SCOPE,
+            callback: function () {}
+          });
         }
-      }, 500);
+        activeTokenClient.callback = function (tokenResp) {
+          if (tokenResp && tokenResp.access_token) {
+            GDrive.fetchUserProfile(tokenResp.access_token, tokenResp.expires_in, onSuccess, onError);
+          } else {
+            GDrive.reportAuthError(new Error((tokenResp && tokenResp.error) || 'ההתחברות בוטלה'), onError);
+          }
+        };
+        activeTokenClient.error_callback = function (e) {
+          if (e && e.type === 'popup_failed_to_open') GDrive.startDeviceFlow(onSuccess, onError);
+          else if (onError) onError(new Error('ההתחברות בוטלה'));
+        };
+        activeTokenClient.requestAccessToken({ prompt: '' });
+      } catch (e) {
+        console.warn('GIS error, falling back to the code flow:', e);
+        GDrive.startDeviceFlow(onSuccess, onError);
+      }
     },
 
     // ------------------------------------------------------------- Smart TV Device Code Flow
-    startDeviceFlow: function (onSuccess, onError) {
+    stopDevicePoll: function () {
       if (devicePollTimer) {
-        clearInterval(devicePollTimer);
+        clearTimeout(devicePollTimer);
         devicePollTimer = null;
+      }
+    },
+
+    startDeviceFlow: function (onSuccess, onError) {
+      GDrive.stopDevicePoll();
+      if (!TV_CLIENT_ID) {
+        GDrive.reportUnavailable(onError);
+        return;
       }
 
       // Request device code
       var params = new URLSearchParams();
-      params.append('client_id', CLIENT_ID);
+      params.append('client_id', TV_CLIENT_ID);
       params.append('scope', SCOPE);
 
       fetch('https://oauth2.googleapis.com/device/code', {
@@ -133,34 +171,31 @@
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: params.toString()
       })
-      .then(function (r) {
-        if (!r.ok) throw new Error('HTTP ' + r.status);
-        return r.json();
-      })
+      .then(jsonOk)
       .then(function (data) {
-        var userCode = data.user_code;
         var deviceCode = data.device_code;
-        var verifyUrl = data.verification_url || 'https://www.google.com/device';
         var interval = (data.interval || 5) * 1000;
-        var expiresIn = data.expires_in || 1800;
+        var deadline = Date.now() + (data.expires_in || 1800) * 1000;
 
         // Display TV dialog
-        GDrive.showTvDeviceModal(userCode, verifyUrl);
+        GDrive.showTvDeviceModal(data.user_code, data.verification_url || 'https://www.google.com/device');
+
+        var fail = function (message) {
+          GDrive.stopDevicePoll();
+          GDrive.closeTvDeviceModal();
+          GDrive.reportAuthError(new Error(message), onError);
+        };
 
         // Poll for completion
-        var startTime = Date.now();
-        devicePollTimer = setInterval(function () {
-          if (Date.now() - startTime > expiresIn * 1000) {
-            clearInterval(devicePollTimer);
-            devicePollTimer = null;
-            if (onError) onError(new Error('פג תוקף הקוד. אנא נסו שוב.'));
+        var poll = function () {
+          if (Date.now() > deadline) {
+            fail('פג תוקף הקוד. אנא נסו שוב.');
             return;
           }
-
           var pollParams = new URLSearchParams();
-          pollParams.append('client_id', CLIENT_ID);
-          pollParams.append('client_secret', '');
-          pollParams.append('code', deviceCode);
+          pollParams.append('client_id', TV_CLIENT_ID);
+          pollParams.append('client_secret', TV_CLIENT_SECRET);
+          pollParams.append('device_code', deviceCode);
           pollParams.append('grant_type', 'urn:ietf:params:oauth:grant-type:device_code');
 
           fetch('https://oauth2.googleapis.com/token', {
@@ -170,30 +205,31 @@
           })
           .then(function (tr) { return tr.json(); })
           .then(function (tData) {
+            if (!devicePollTimer) return;   // cancelled meanwhile
             if (tData.access_token) {
-              clearInterval(devicePollTimer);
-              devicePollTimer = null;
+              GDrive.stopDevicePoll();
               GDrive.closeTvDeviceModal();
-              GDrive.fetchUserProfile(tData.access_token, tData.expires_in, onSuccess, onError);
+              GDrive.fetchUserProfile(tData.access_token, tData.expires_in, onSuccess, onError, tData.refresh_token);
             } else if (tData.error === 'authorization_pending') {
-              // Wait for user to complete
+              devicePollTimer = setTimeout(poll, interval);
             } else if (tData.error === 'slow_down') {
-              interval += 2000;
-            } else if (tData.error) {
-              clearInterval(devicePollTimer);
-              devicePollTimer = null;
-              if (tData.error !== 'access_denied') {
-                console.warn('Device flow token poll:', tData.error);
-              }
+              interval += 5000;
+              devicePollTimer = setTimeout(poll, interval);
+            } else if (tData.error === 'access_denied') {
+              fail('ההתחברות נדחתה בחשבון Google.');
+            } else {
+              fail('שגיאה מ-Google: ' + (tData.error || 'לא ידועה'));
             }
           })
-          .catch(function () {});
-        }, interval);
+          .catch(function () {
+            // a network hiccup on a TV is not the end of the flow
+            if (devicePollTimer) devicePollTimer = setTimeout(poll, interval);
+          });
+        };
+        devicePollTimer = setTimeout(poll, interval);
       })
       .catch(function (err) {
-        console.warn('Device code request failed:', err);
-        // Fallback: prompt manual OAuth token or mock sign in
-        GDrive.showManualTokenModal(onSuccess, onError);
+        GDrive.reportAuthError(new Error('לא ניתן להתחיל התחברות ל-Google (' + err.message + ')'), onError);
       });
     },
 
@@ -216,25 +252,22 @@
           ico: '☁️',
           title: 'התחברות לחשבון Google והקלטות Drive',
           html: modalHtml,
-          buttons: [{
-            label: 'ביטול',
-            act: function () {
-              if (devicePollTimer) { clearInterval(devicePollTimer); devicePollTimer = null; }
-            }
-          }]
+          buttons: [{ label: 'ביטול' }],
+          onClose: GDrive.stopDevicePoll
         });
 
-        setTimeout(function () {
-          var qrBox = document.getElementById('gdrive-qr');
-          if (qrBox && window.QRCode) {
-            new window.QRCode(qrBox, {
-              text: verifyUrl + '?user_code=' + encodeURIComponent(userCode),
-              width: 170,
-              height: 170,
-              correctLevel: window.QRCode.CorrectLevel.M
-            });
-          }
-        }, 60);
+        if (window.loadQrLib) {
+          window.loadQrLib(function () {
+            var qrBox = document.getElementById('gdrive-qr');
+            if (!qrBox || !window.qrcode) return;
+            try {
+              var q = window.qrcode(0, 'M');
+              q.addData(verifyUrl);
+              q.make();
+              qrBox.innerHTML = q.createSvgTag(5, 2);
+            } catch (e) {}
+          });
+        }
       }
     },
 
@@ -242,36 +275,8 @@
       if (window.closeDialog) window.closeDialog();
     },
 
-    showManualTokenModal: function (onSuccess, onError) {
-      var html = '<div style="padding:1rem;">' +
-        '<p style="font-size:1.05rem;line-height:1.5;margin-bottom:1rem;">חברו את חשבון Google שלכם לשמירת סדרות ושידורים חיים ישירות ל-Google Drive האישי שלכם:</p>' +
-        '<div style="display:flex;flex-direction:column;gap:0.8rem;">' +
-        '<button class="btn primary" id="btn-oauth-direct" style="padding:0.9rem;font-size:1.1rem;display:flex;align-items:center;justify-content:center;gap:0.6rem;">' +
-        '<svg width="20" height="20" viewBox="0 0 24 24"><path fill="#fff" d="M21.35 11.1h-9.17v2.98h5.27c-.23 1.22-.92 2.26-1.95 2.95v2.45h3.16c1.85-1.7 2.92-4.22 2.92-7.18 0-.41-.03-.82-.09-1.2h-.14z"/><path fill="#fff" d="M12.18 22c2.65 0 4.88-.88 6.51-2.38l-3.16-2.45c-.88.59-2.01.94-3.35.94-2.58 0-4.76-1.74-5.54-4.08H3.36v2.53C5 19.8 8.35 22 12.18 22z"/><path fill="#fff" d="M6.64 13.03c-.2-.59-.31-1.22-.31-1.87s.11-1.28.31-1.87V6.76H3.36C2.69 8.09 2.3 9.6 2.3 11.16s.39 3.07 1.06 4.4l3.28-2.53z"/><path fill="#fff" d="M12.18 6.08c1.44 0 2.74.5 3.76 1.47l2.82-2.82C17.05 3.14 14.82 2.2 12.18 2.2 8.35 2.2 5 4.4 3.36 7.76l3.28 2.53c.78-2.34 2.96-4.21 5.54-4.21z"/></svg>' +
-        'התחברות באמצעות Google (חלון מאובטח)</button>' +
-        '</div></div>';
-
-      if (window.openDialog) {
-        window.openDialog({
-          ico: '☁️',
-          title: 'התחברות ל-Google Drive',
-          html: html,
-          buttons: [{ label: 'ביטול' }]
-        });
-        setTimeout(function () {
-          var btn = document.getElementById('btn-oauth-direct');
-          if (btn) {
-            btn.addEventListener('click', function () {
-              window.closeDialog();
-              GDrive.signInWeb(onSuccess, onError);
-            });
-          }
-        }, 50);
-      }
-    },
-
     // ------------------------------------------------------------- Profile Retrieval
-    fetchUserProfile: function (accessToken, expiresIn, onSuccess, onError) {
+    fetchUserProfile: function (accessToken, expiresIn, onSuccess, onError, refreshToken) {
       fetch('https://www.googleapis.com/oauth2/v3/userinfo', {
         headers: { 'Authorization': 'Bearer ' + accessToken }
       })
@@ -285,6 +290,7 @@
           name: info.name || info.email.split('@')[0],
           picture: info.picture || '',
           access_token: accessToken,
+          refresh_token: refreshToken || '',
           expires_at: Date.now() + ((expiresIn || 3600) * 1000)
         };
         GDrive.saveUser(user);
@@ -296,23 +302,14 @@
         if (onSuccess) onSuccess(user);
       })
       .catch(function (err) {
-        console.warn('Failed to fetch Google userinfo:', err);
-        var fallbackUser = {
-          email: 'google_user@israeltv.plus',
-          name: 'משתמש Google',
-          picture: '',
-          access_token: accessToken,
-          expires_at: Date.now() + ((expiresIn || 3600) * 1000)
-        };
-        GDrive.saveUser(fallbackUser);
-        if (onSuccess) onSuccess(fallbackUser);
+        GDrive.reportAuthError(new Error('לא ניתן לקרוא את פרטי חשבון Google (' + err.message + ')'), onError);
       });
     },
 
     signOut: function (onComplete) {
       var u = GDrive.getUser();
       if (u && u.access_token) {
-        fetch('https://oauth2.googleapis.com/revoke?token=' + encodeURIComponent(u.access_token), {
+        fetch('https://oauth2.googleapis.com/revoke?token=' + encodeURIComponent(u.refresh_token || u.access_token), {
           method: 'POST',
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
         }).catch(function () {});
@@ -335,7 +332,7 @@
       fetch('https://www.googleapis.com/drive/v3/files?q=' + q + '&fields=files(id,name)', {
         headers: { 'Authorization': 'Bearer ' + accessToken }
       })
-      .then(function (r) { return r.json(); })
+      .then(jsonOk)
       .then(function (data) {
         if (data.files && data.files.length) {
           var folderId = data.files[0].id;
@@ -355,7 +352,7 @@
               description: 'תיקיית הקלטות ענן של ישראל TV+ עבור סדרות ושידורים חיים'
             })
           })
-          .then(function (cr) { return cr.json(); })
+          .then(jsonOk)
           .then(function (newFolder) {
             var fId = newFolder.id;
             localStorage.setItem(FOLDER_KEY, fId);
@@ -383,7 +380,7 @@
         fetch('https://www.googleapis.com/drive/v3/files?q=' + q + '&fields=files(id,name,size,createdTime,webViewLink,webContentLink,thumbnailLink,videoMediaMetadata)&orderBy=createdTime+desc', {
           headers: { 'Authorization': 'Bearer ' + user.access_token }
         })
-        .then(function (r) { return r.json(); })
+        .then(jsonOk)
         .then(function (data) {
           callback(null, data.files || []);
         })
@@ -460,7 +457,7 @@
 
       GDrive.uploadFileToDrive(token, folderId, fileName, blob, function () {}, function (res) {
         if (window.toast) {
-          window.toast('✅ פרק נשמר ב-Google Drive: ' + series.title);
+          window.toast('🔗 נשמר קישור לפרק ב-Google Drive (לא קובץ וידאו): ' + series.title);
         }
         if (onDone) onDone(res);
       }, onError);
@@ -540,6 +537,7 @@
           if (fErr || !folderId) return;
           var playlistContent = '#EXTM3U\n#EXTINF:-1,' + channel.name + ' - שידור ישיר\n' + (channel.url || '');
           var blob = new Blob([playlistContent], { type: 'application/vnd.apple.mpegurl' });
+          if (window.toast) window.toast('🔗 המכשיר לא תומך בהקלטת וידאו – נשמר קישור לשידור ב-Drive');
           GDrive.uploadFileToDrive(user.access_token, folderId, channel.name + ' - ' + dateStr + '.m3u8', blob, onProgress, onDone, onError);
         });
       }
@@ -589,7 +587,7 @@
         fetch('https://www.googleapis.com/drive/v3/files?q=' + q + '&fields=files(id,name,modifiedTime)', {
           headers: { 'Authorization': 'Bearer ' + user.access_token }
         })
-        .then(function (r) { return r.json(); })
+        .then(jsonOk)
         .then(function (data) {
           if (data.files && data.files.length) {
             var fileId = data.files[0].id;
@@ -597,7 +595,7 @@
             fetch('https://www.googleapis.com/drive/v3/files/' + fileId + '?alt=media', {
               headers: { 'Authorization': 'Bearer ' + user.access_token }
             })
-            .then(function (res) { return res.json(); })
+            .then(jsonOk)
             .then(function (cloudJson) {
               var cloudTime = (cloudJson && cloudJson.updatedAt) || 0;
               var localTime = (localPayload && localPayload.updatedAt) || 0;
@@ -616,6 +614,7 @@
                   },
                   body: JSON.stringify(localPayload)
                 })
+                .then(jsonOk)
                 .then(function () {
                   localStorage.setItem('itv_last_sync_time', String(Date.now()));
                   if (onComplete) onComplete(null);
@@ -623,20 +622,7 @@
                 .catch(function (upErr) { if (onError) onError(upErr); });
               }
             })
-            .catch(function () {
-              // Overwrite if reading failed
-              fetch('https://www.googleapis.com/upload/drive/v3/files/' + fileId + '?uploadType=media', {
-                method: 'PATCH',
-                headers: {
-                  'Authorization': 'Bearer ' + user.access_token,
-                  'Content-Type': 'application/json; charset=UTF-8'
-                },
-                body: JSON.stringify(localPayload)
-              }).then(function () {
-                localStorage.setItem('itv_last_sync_time', String(Date.now()));
-                if (onComplete) onComplete(null);
-              });
-            });
+            .catch(function (readErr) { if (onError) onError(readErr); });
           } else {
             // Create new backup file
             var metadata = {
@@ -664,6 +650,7 @@
               },
               body: multipartBody
             })
+            .then(jsonOk)
             .then(function () {
               localStorage.setItem('itv_last_sync_time', String(Date.now()));
               if (onComplete) onComplete(null);
@@ -734,6 +721,26 @@
       });
     }
   };
+
+  // An access token lives for an hour: everything that talks to Drive renews it first
+  function withFreshToken(name, errorArg) {
+    var inner = GDrive[name];
+    GDrive[name] = function () {
+      var args = arguments;
+      GDrive.ensureToken(function (err) {
+        if (err) {
+          if (args[errorArg]) args[errorArg](err);
+          else GDrive.reportAuthError(err);
+          return;
+        }
+        inner.apply(GDrive, args);
+      });
+    };
+  }
+  withFreshToken('listRecordings', 0);
+  withFreshToken('recordVodEpisode', 4);
+  withFreshToken('recordLiveStream', 4);
+  withFreshToken('syncData', 2);
 
   window.GDrive = GDrive;
 })(window);

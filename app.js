@@ -339,6 +339,7 @@
     setTimeout(function () { native('ready'); }, 30);
     if (S.autoUpdate) setTimeout(function () { checkUpdates(false); }, 4000);
     if (window.GDrive && window.GDrive.isSignedIn()) setTimeout(function () { triggerCloudSync(false); }, 3000);
+    if (location.hash === '#google') setTimeout(openGoogleFromLink, 600);
     if (PLATFORM === 'webos') {
       // LG: TV apps stay open for days – check again every 6 hours, and apply a downloaded update on returning to the app
       setInterval(function () { if (S.autoUpdate) checkUpdates(false); }, 6 * 3600 * 1000);
@@ -3634,6 +3635,21 @@ function showOsd() {
     }, 4000);
   }
 
+  // The Android phone app links here (#google): a popup must start from a tap, so ask for one
+  function openGoogleFromLink() {
+    if (!window.GDrive) return;
+    if (window.GDrive.isSignedIn()) { triggerCloudSync(true); return; }
+    openDialog({
+      ico: '☁️',
+      title: 'התחברות עם חשבון Google',
+      html: '<p>התחברו כדי לסנכרן מועדפים, היסטוריה והגדרות של האתר ולשמור הקלטות ב-Google Drive.</p>',
+      buttons: [
+        { label: 'התחברות', primary: true, act: function () { window.GDrive.signInWeb(function () { triggerCloudSync(true); }); } },
+        { label: 'ביטול' }
+      ]
+    });
+  }
+
   function openDriveRecordingsDialog() {
     if (!window.GDrive) return;
     var u = window.GDrive.getUser();
@@ -3734,6 +3750,12 @@ function showOsd() {
 
   // ================================================================== dialogs
   /** opts: { ico, title, html, buttons: [{ label, primary, act, keep }], onBack } */
+  // gdrive.js is a separate file and shows its dialogs through these
+  window.openDialog = openDialog;
+  window.closeDialog = closeDialog;
+  window.toast = toast;
+  window.loadQrLib = loadQrLib;
+
   function openDialog(opts) {
     state.dialog = opts;
     el.dialogIco.textContent = opts.ico || '';
