@@ -85,7 +85,7 @@ https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kids_channel/live.
 https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/logi/live.livx/playlist.m3u8
 #EXTINF:-1 tvg-id="HopChannel.il" tvg-name="ערוץ הופ! ילדים בעברית HD" tvg-chno="44" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hop.png" group-title="ילדים ונוער (בעברית)",ערוץ הופ! ילדים בעברית HD
 http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12244/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ערוץ ילדותי ישראלי HD (FreeTV Yalduti)" tvg-chno="45" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/yalduti_tv.png" group-title="ערוצי ילדים ונוער בעברית",ערוץ ילדותי ישראלי HD (FreeTV Yalduti)
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ ילדותי ישראלי HD (FreeTV Yalduti)" tvg-chno="45" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/yalduti_tv.png" group-title="ילדים ונוער (בעברית)",ערוץ ילדותי ישראלי HD (FreeTV Yalduti)
 https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/yalduti/live.livx/playlist.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="ערוץ הופ! פלא HD (Hop Pele)" tvg-chno="46" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hop_pele_tv.png" group-title="ילדים ונוער (בעברית)",ערוץ הופ! פלא HD (Hop Pele)
 https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/hop_pele/live.livx/playlist.m3u8
@@ -341,7 +341,7 @@ https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/daily_drama/live.l
 https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/vamos/live.livx/playlist.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="FreeTV גלובל סדרות HD" tvg-chno="172" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/freetv_global_il.png" group-title="סרטים וסדרות",FreeTV גלובל סדרות HD
 https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/free_global/live.livx/playlist.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ערוץ האוכל HD (מבית החיים הטובים)" tvg-chno="173" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/food_channel.png" group-title="israel",ערוץ האוכל HD (מבית החיים הטובים)
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ האוכל HD (מבית החיים הטובים)" tvg-chno="173" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/food_channel.png" group-title="אוכל ובישול",ערוץ האוכל HD (מבית החיים הטובים)
 http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12209/index.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="ערוץ פודי Foody HD" tvg-chno="174" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/foody_tv.png" group-title="אוכל ובישול",ערוץ פודי Foody HD
 https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/foody/live.livx/playlist.m3u8
@@ -800,21 +800,43 @@ http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12248/index.m3u8
 http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32158/index.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="ערוץ Beautyz אופנה ולייפסטייל HD" tvg-chno="401" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hot_reality.png" group-title="ערוצי ישראל",ערוץ Beautyz אופנה ולייפסטייל HD
 http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32164/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="HOT דוקו HD (HOT Doco)" tvg-chno="402" tvg-logo="https://upload.wikimedia.org/wikipedia/he/thumb/3/36/HOT_Doco_Logo_2022.svg/300px-HOT_Doco_Logo_2022.svg.png" group-title="israel",HOT דוקו HD (HOT Doco)
+#EXTINF:-1 tvg-id="" tvg-name="HOT דוקו HD (HOT Doco)" tvg-chno="402" tvg-logo="https://upload.wikimedia.org/wikipedia/he/thumb/3/36/HOT_Doco_Logo_2022.svg/300px-HOT_Doco_Logo_2022.svg.png" group-title="טבע ודוקו",HOT דוקו HD (HOT Doco)
 http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32129/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ערוץ הילדים HD" tvg-chno="403" tvg-logo="https://upload.wikimedia.org/wikipedia/he/thumb/4/4e/Arutz_HaYeladim_Logo_2023.svg/300px-Arutz_HaYeladim_Logo_2023.svg.png" group-title="kids",ערוץ הילדים HD
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ הילדים HD" tvg-chno="403" tvg-logo="https://upload.wikimedia.org/wikipedia/he/thumb/4/4e/Arutz_HaYeladim_Logo_2023.svg/300px-Arutz_HaYeladim_Logo_2023.svg.png" group-title="ילדים ונוער (בעברית)",ערוץ הילדים HD
 http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2347/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ערוץ ג'וניור HD (Junior)" tvg-chno="404" tvg-logo="https://upload.wikimedia.org/wikipedia/he/thumb/a/a2/Junior_Channel_Logo.svg/300px-Junior_Channel_Logo.svg.png" group-title="kids",ערוץ ג'וניור HD (Junior)
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ ג'וניור HD (Junior)" tvg-chno="404" tvg-logo="https://upload.wikimedia.org/wikipedia/he/thumb/a/a2/Junior_Channel_Logo.svg/300px-Junior_Channel_Logo.svg.png" group-title="ילדים ונוער (בעברית)",ערוץ ג'וניור HD (Junior)
 http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2366/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ערוץ בייבי HD (Baby Channel)" tvg-chno="405" tvg-logo="https://upload.wikimedia.org/wikipedia/he/thumb/5/52/BabyTV_Logo_2020.svg/300px-BabyTV_Logo_2020.svg.png" group-title="kids",ערוץ בייבי HD (Baby Channel)
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ בייבי HD (Baby Channel)" tvg-chno="405" tvg-logo="https://upload.wikimedia.org/wikipedia/he/thumb/5/52/BabyTV_Logo_2020.svg/300px-BabyTV_Logo_2020.svg.png" group-title="ילדים ונוער (בעברית)",ערוץ בייבי HD (Baby Channel)
 http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2370/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ערוץ לולי לפעוטות HD (Luli)" tvg-chno="406" tvg-logo="https://upload.wikimedia.org/wikipedia/he/thumb/e/e6/Luli_Logo_2021.svg/300px-Luli_Logo_2021.svg.png" group-title="kids",ערוץ לולי לפעוטות HD (Luli)
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ לולי לפעוטות HD (Luli)" tvg-chno="406" tvg-logo="https://upload.wikimedia.org/wikipedia/he/thumb/e/e6/Luli_Logo_2021.svg/300px-Luli_Logo_2021.svg.png" group-title="ילדים ונוער (בעברית)",ערוץ לולי לפעוטות HD (Luli)
 http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12246/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="yes קולנוע ילדים HD (yes Movies Kids)" tvg-chno="407" tvg-logo="https://upload.wikimedia.org/wikipedia/he/thumb/3/36/Yes_Movies_Kids_Logo.png/300px-Yes_Movies_Kids_Logo.png" group-title="kids",yes קולנוע ילדים HD (yes Movies Kids)
+#EXTINF:-1 tvg-id="" tvg-name="yes קולנוע ילדים HD (yes Movies Kids)" tvg-chno="407" tvg-logo="https://upload.wikimedia.org/wikipedia/he/thumb/3/36/Yes_Movies_Kids_Logo.png/300px-Yes_Movies_Kids_Logo.png" group-title="ילדים ונוער (בעברית)",yes קולנוע ילדים HD (yes Movies Kids)
 http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12273/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ערוץ החופש והנופש HD (Vacation Channel)" tvg-chno="408" tvg-logo="https://static.g-cdn.app/streams/vacation-channel-il-hd.png" group-title="entertainment",ערוץ החופש והנופש HD (Vacation Channel)
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ החופש והנופש HD (Vacation Channel)" tvg-chno="408" tvg-logo="https://static.g-cdn.app/streams/vacation-channel-il-hd.png" group-title="ערוצי ישראל",ערוץ החופש והנופש HD (Vacation Channel)
 http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32160/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ערוץ החיים הטובים HD (Good Life)" tvg-chno="409" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/good_life_israel.png" group-title="israel",ערוץ החיים הטובים HD (Good Life)
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ החיים הטובים HD (Good Life)" tvg-chno="409" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/good_life_israel.png" group-title="ערוצי ישראל",ערוץ החיים הטובים HD (Good Life)
 http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2355/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ערוץ האוכל הישראלי HD (מבית החיים הטובים)" tvg-chno="410" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/food_channel.png" group-title="israel",ערוץ האוכל הישראלי HD (מבית החיים הטובים)
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ האוכל הישראלי HD (מבית החיים הטובים)" tvg-chno="410" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/food_channel.png" group-title="אוכל ובישול",ערוץ האוכל הישראלי HD (מבית החיים הטובים)
 http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12209/index.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ הלא TV HD (Hala TV)" tvg-chno="411" tvg-logo="https://upload.wikimedia.org/wikipedia/he/thumb/4/41/Hala_TV_Logo.png/300px-Hala_TV_Logo.png" group-title="ערוצי ישראל",ערוץ הלא TV HD (Hala TV)
+https://stream.panet.com/edge/halaTV/playlist.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="קופה ראשית FHD (VOD)" tvg-chno="501" tvg-logo="https://upload.wikimedia.org/wikipedia/he/9/90/%D7%A7%D7%95%D7%A4%D7%94_%D7%A8%D7%90%D7%A9%D7%99%D7%AA_%D7%A2%D7%95%D7%A0%D7%94_4.jpg" group-title="סדרות לצפייה ישירה",קופה ראשית FHD (VOD)
+https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2246979/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4
+#EXTINF:-1 tvg-id="" tvg-name="מנאייכ FHD (VOD)" tvg-chno="502" tvg-logo="https://upload.wikimedia.org/wikipedia/he/6/69/Manayek_poster.jpg" group-title="סדרות לצפייה ישירה",מנאייכ FHD (VOD)
+https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_4a6kir7n/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4
+#EXTINF:-1 tvg-id="" tvg-name="טהרן FHD (VOD)" tvg-chno="503" tvg-logo="https://upload.wikimedia.org/wikipedia/he/8/87/Tehran_Poster.jpg" group-title="סדרות לצפייה ישירה",טהרן FHD (VOD)
+https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_5kuznpwi/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4
+#EXTINF:-1 tvg-id="" tvg-name="היהודים באים FHD (VOD)" tvg-chno="504" tvg-logo="https://upload.wikimedia.org/wikipedia/he/0/05/Hayehudim_baim.png" group-title="סדרות לצפייה ישירה",היהודים באים FHD (VOD)
+https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_2g3g8n3j/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4
+#EXTINF:-1 tvg-id="" tvg-name="המפקדת FHD (VOD)" tvg-chno="505" tvg-logo="https://upload.wikimedia.org/wikipedia/he/thumb/4/4b/%D7%94%D7%9E%D7%A4%D7%A7%D7%93%D7%AA_%D7%A2%D7%95%D7%A0%D7%94_2.jpg/300px-%D7%94%D7%9E%D7%A4%D7%A7%D7%93%D7%AA_%D7%A2%D7%95%D7%A0%D7%94_2.jpg" group-title="סדרות לצפייה ישירה",המפקדת FHD (VOD)
+https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2216527/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4
+#EXTINF:-1 tvg-id="" tvg-name="בואו לאכול איתי FHD (VOD)" tvg-chno="506" tvg-logo="https://upload.wikimedia.org/wikipedia/he/thumb/d/d4/Bo_Leechol_Iti_Logo.png/300px-Bo_Leechol_Iti_Logo.png" group-title="סדרות לצפייה ישירה",בואו לאכול איתי FHD (VOD)
+https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2214986/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4
+#EXTINF:-1 tvg-id="" tvg-name="כראמל FHD (VOD)" tvg-chno="507" tvg-logo="https://upload.wikimedia.org/wikipedia/he/thumb/9/9c/%D7%9B%D7%A8%D7%90%D7%9E%D7%9C_%D7%A4%D7%95%D7%A1%D7%98%D7%A8.jpg/300px-%D7%9B%D7%A8%D7%90%D7%9E%D7%9C_%D7%A4%D7%95%D7%A1%D7%98%D7%A8.jpg" group-title="סדרות לצפייה ישירה",כראמל FHD (VOD)
+https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1948788/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4
+#EXTINF:-1 tvg-id="" tvg-name="זהו זה! FHD (VOD)" tvg-chno="508" tvg-logo="https://upload.wikimedia.org/wikipedia/he/thumb/e/e0/%D7%96%D7%94%D7%95_%D7%96%D7%94_2020.png/300px-%D7%96%D7%94%D7%95_%D7%96%D7%94_2020.png" group-title="סדרות לצפייה ישירה",זהו זה! FHD (VOD)
+https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2197024/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4
+#EXTINF:-1 tvg-id="" tvg-name="חזרות FHD (VOD)" tvg-chno="509" tvg-logo="https://upload.wikimedia.org/wikipedia/he/thumb/7/7f/Chazarot_Poster.jpg/300px-Chazarot_Poster.jpg" group-title="סדרות לצפייה ישירה",חזרות FHD (VOD)
+https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_817geznm/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4
+#EXTINF:-1 tvg-id="" tvg-name="שעת נעילה FHD (VOD)" tvg-chno="510" tvg-logo="https://upload.wikimedia.org/wikipedia/he/thumb/f/f6/Valley_of_Tears_poster.jpg/300px-Valley_of_Tears_poster.jpg" group-title="סדרות לצפייה ישירה",שעת נעילה FHD (VOD)
+https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_ajaped1u/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4

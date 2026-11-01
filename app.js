@@ -137,7 +137,7 @@
       for (var j = 0; j < httpList.length; j++) {
         var hu = httpList[j];
         if (RELAY) proxied.push(RELAY + '/?u=' + encodeURIComponent(hu));
-        proxied.push('https://corsproxy.io/?url=' + encodeURIComponent(hu));
+        // corsproxy removed due to 403 blocks
       }
       return httpsList.concat(proxied).concat(httpList);
     }
@@ -3135,7 +3135,7 @@ function loadCandidate(ch, rawUrl) {
     if (Dub) Dub.detach();
     if (state.hls) { try { state.hls.stopLoad(); state.hls.detachMedia(); state.hls.destroy(); } catch (e) {} state.hls = null; }
     spinner(true);
-    var isOttrast = /ottrast\.com|212\.80\.215\.72/i.test(url);
+    var isOttrast = /ottrast\.com|212\.80\.215\.72|45\.156\.223/i.test(url);
     var sinceOttrast = Date.now() - (state.lastOttrastStop || 0);
     if (isOttrast && sinceOttrast < 380) {
       state.lastOttrastStop = 0;
@@ -3187,23 +3187,24 @@ function loadCandidate(ch, rawUrl) {
     if (window.Hls && Hls.isSupported()) {
       var delayed = Dub && Dub.wantsSync(ch);
       var isSport = /sport|ספורט|one_1|one_2|charlton|eurosport|5plus|5live|5gold|5stars|5max|54k/i.test((ch.category || '') + ' ' + (ch.name || '') + ' ' + (ch.id || ''));
-      var low = (S.latency === 'low' || S.latency === 'realtime' || TVUI || isSport) && !delayed;
-      var isStable = (S.latency === 'stable' && !isSport);
+      var isOttrast = /ottrast\.com|212\.80\.215\.72|45\.156\.223/i.test(url);
+      var low = (S.latency === 'low' || S.latency === 'realtime' || TVUI || (isSport && !isOttrast)) && !delayed;
+      var isStable = (S.latency === 'stable' && (!isSport || isOttrast));
       var is4K = S.quality === 'upscale4k';
       var isVod = !!(ch.isVod || ch.categoryEn === 'vod');
       var hls = new Hls({
         enableWorker: true,
-        lowLatencyMode: !isVod,
-        startPosition: isSport ? -1 : undefined,
+        lowLatencyMode: !isVod && !isOttrast,
+        startPosition: (isSport && !isOttrast) ? -1 : undefined,
         startFragPrefetch: true,
-        backBufferLength: fastMode() ? 8 : (isSport ? 4 : (isVod ? 30 : 15)),
-        liveSyncDuration: isSport ? 2 : 7,
-        liveMaxLatencyDuration: isSport ? 4 : 14,
+        backBufferLength: fastMode() ? 8 : (isSport ? (isOttrast ? 15 : 4) : (isVod ? 30 : 15)),
+        liveSyncDuration: (isSport && !isOttrast) ? 2 : (isOttrast ? 12 : 7),
+        liveMaxLatencyDuration: (isSport && !isOttrast) ? 4 : (isOttrast ? 25 : 14),
         liveDurationInfinity: !isVod,
-        maxLiveSyncPlaybackRate: isSport ? 1.5 : 1.15,
-        maxBufferLength: isSport ? 5 : (isVod ? 60 : (is4K ? 24 : 14)),
-        maxMaxBufferLength: isSport ? 8 : (isVod ? 120 : (is4K ? 45 : 24)),
-        maxBufferSize: isSport ? 8 * 1000 * 1000 : (isVod ? 60 * 1000 * 1000 : 25 * 1000 * 1000),
+        maxLiveSyncPlaybackRate: (isSport && !isOttrast) ? 1.5 : 1.15,
+        maxBufferLength: isSport ? (isOttrast ? 25 : 5) : (isVod ? 60 : (is4K ? 24 : 14)),
+        maxMaxBufferLength: isSport ? (isOttrast ? 45 : 8) : (isVod ? 120 : (is4K ? 45 : 24)),
+        maxBufferSize: (isSport && !isOttrast) ? 8 * 1000 * 1000 : (isVod ? 60 * 1000 * 1000 : 30 * 1000 * 1000),
         manifestLoadingMaxRetry: 6,
         levelLoadingMaxRetry: 6,
         fragLoadingMaxRetry: 6,
@@ -3228,10 +3229,10 @@ function loadCandidate(ch, rawUrl) {
         }
         if (!state.catchup && data && data.details && data.details.live) {
           var edge = data.details.edge || (data.details.fragments && data.details.fragments.length ? data.details.fragments[data.details.fragments.length - 1].start : null);
-          var lsp = (isSport && edge != null) ? Math.max(edge - 2, 0) : (hls.liveSyncPosition || edge);
+          var lsp = (isSport && !isOttrast && edge != null) ? Math.max(edge - 2, 0) : (hls.liveSyncPosition || edge);
           if (lsp != null && v.readyState >= 1) {
-            // Force jump to zero-latency live edge on initial play or when lag exceeds 4s for sports
-            if (!v.currentTime || (lsp - v.currentTime > (isSport ? 4 : 14))) {
+            // Force jump to zero-latency live edge on initial play or when lag exceeds 4s for sports (excluding 10s-segment ottrast)
+            if (!isOttrast && (!v.currentTime || (lsp - v.currentTime > (isSport ? 4 : 14)))) {
               try { v.currentTime = lsp; } catch (err) {}
             }
           }

@@ -525,3 +525,4 @@ if os.path.exists("www/channels.js"):
         f.write(new_js_text)
 
 print("channels.js updated successfully!")
+

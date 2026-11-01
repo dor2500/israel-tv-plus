@@ -119,3 +119,4 @@ with open("CHANGELOG.md", "w", encoding="utf-8") as f:
     f.write(changelog_entry + cl)
 
 print(f"Bumped all version files to {new_version} (app {app_code}) successfully.")
+

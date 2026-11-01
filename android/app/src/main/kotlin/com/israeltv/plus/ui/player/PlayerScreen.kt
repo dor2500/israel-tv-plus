@@ -1131,7 +1131,7 @@ private fun multiViewCandidatesFor(channel: Channel, otherCellsUsingOttrast: Boo
     val all = channel.allCandidateUrls()
     if (!otherCellsUsingOttrast || all.size <= 1) return all
     val (ottrast, multiCdn) = all.partition {
-        it.contains("ottrast.com", ignoreCase = true) || it.contains("212.80.215.72")
+        it.contains("ottrast.com", ignoreCase = true) || it.contains("212.80.215.72") || it.contains("45.156.223")
     }
     return multiCdn + ottrast
 }

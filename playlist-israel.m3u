@@ -69,6 +69,8 @@ https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kids_channel/live.
 https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/logi/live.livx/playlist.m3u8
 #EXTINF:-1 tvg-id="HopChannel.il" tvg-name="ערוץ הופ! ילדים בעברית HD" tvg-chno="44" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hop.png" group-title="ילדים ונוער (בעברית)",ערוץ הופ! ילדים בעברית HD
 http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12244/index.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ ילדותי ישראלי HD (FreeTV Yalduti)" tvg-chno="45" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/yalduti_tv.png" group-title="ילדים ונוער (בעברית)",ערוץ ילדותי ישראלי HD (FreeTV Yalduti)
+https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/yalduti/live.livx/playlist.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="ערוץ הופ! פלא HD (Hop Pele)" tvg-chno="46" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hop_pele_tv.png" group-title="ילדים ונוער (בעברית)",ערוץ הופ! פלא HD (Hop Pele)
 https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/hop_pele/live.livx/playlist.m3u8
 #EXTINF:-1 tvg-id="Luli.il" tvg-name="ערוץ לולי לפעוטות בעברית HD" tvg-chno="47" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/luli_tv.png" group-title="ילדים ונוער (בעברית)",ערוץ לולי לפעוטות בעברית HD
@@ -521,3 +523,19 @@ http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32132/index.m3u8
 http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32158/index.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="ערוץ Beautyz אופנה ולייפסטייל HD" tvg-chno="401" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hot_reality.png" group-title="ערוצי ישראל",ערוץ Beautyz אופנה ולייפסטייל HD
 http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32164/index.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ הילדים HD" tvg-chno="403" tvg-logo="https://upload.wikimedia.org/wikipedia/he/thumb/4/4e/Arutz_HaYeladim_Logo_2023.svg/300px-Arutz_HaYeladim_Logo_2023.svg.png" group-title="ילדים ונוער (בעברית)",ערוץ הילדים HD
+http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2347/index.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ ג'וניור HD (Junior)" tvg-chno="404" tvg-logo="https://upload.wikimedia.org/wikipedia/he/thumb/a/a2/Junior_Channel_Logo.svg/300px-Junior_Channel_Logo.svg.png" group-title="ילדים ונוער (בעברית)",ערוץ ג'וניור HD (Junior)
+http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2366/index.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ בייבי HD (Baby Channel)" tvg-chno="405" tvg-logo="https://upload.wikimedia.org/wikipedia/he/thumb/5/52/BabyTV_Logo_2020.svg/300px-BabyTV_Logo_2020.svg.png" group-title="ילדים ונוער (בעברית)",ערוץ בייבי HD (Baby Channel)
+http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2370/index.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ לולי לפעוטות HD (Luli)" tvg-chno="406" tvg-logo="https://upload.wikimedia.org/wikipedia/he/thumb/e/e6/Luli_Logo_2021.svg/300px-Luli_Logo_2021.svg.png" group-title="ילדים ונוער (בעברית)",ערוץ לולי לפעוטות HD (Luli)
+http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12246/index.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="yes קולנוע ילדים HD (yes Movies Kids)" tvg-chno="407" tvg-logo="https://upload.wikimedia.org/wikipedia/he/thumb/3/36/Yes_Movies_Kids_Logo.png/300px-Yes_Movies_Kids_Logo.png" group-title="ילדים ונוער (בעברית)",yes קולנוע ילדים HD (yes Movies Kids)
+http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12273/index.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ החופש והנופש HD (Vacation Channel)" tvg-chno="408" tvg-logo="https://static.g-cdn.app/streams/vacation-channel-il-hd.png" group-title="ערוצי ישראל",ערוץ החופש והנופש HD (Vacation Channel)
+http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32160/index.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ החיים הטובים HD (Good Life)" tvg-chno="409" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/good_life_israel.png" group-title="ערוצי ישראל",ערוץ החיים הטובים HD (Good Life)
+http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2355/index.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ הלא TV HD (Hala TV)" tvg-chno="411" tvg-logo="https://upload.wikimedia.org/wikipedia/he/thumb/4/41/Hala_TV_Logo.png/300px-Hala_TV_Logo.png" group-title="ערוצי ישראל",ערוץ הלא TV HD (Hala TV)
+https://stream.panet.com/edge/halaTV/playlist.m3u8
