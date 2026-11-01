@@ -80,6 +80,7 @@ data class ChannelData(
     val categories: List<Category>,
     val byId: Map<String, Channel>,
     val featured: List<Channel>,
+    val vod: List<VodSeries> = emptyList(),
 )
 
 /** "ספורט (Sports)" -> "ספורט", "ערוצי ישראל - שידור חי" -> "ערוצי ישראל" */
@@ -109,19 +110,21 @@ class ChannelStore(private val context: Context, private val http: OkHttpClient)
     val state: StateFlow<ChannelData?> = _state
 
     suspend fun load() = withContext(Dispatchers.IO) {
+        val vod = VodRepository.load(context)
         val text = cache.takeIf { it.isFile && it.length() > 1000 }?.let { runCatching { it.readText() }.getOrNull() }
             ?: context.assets.open("channels.json").bufferedReader().use { it.readText() }
-        parse(text)?.let { _state.value = it }
-            ?: parse(context.assets.open("channels.json").bufferedReader().use { it.readText() })?.let { _state.value = it }
+        parse(text, vod)?.let { _state.value = it }
+            ?: parse(context.assets.open("channels.json").bufferedReader().use { it.readText() }, vod)?.let { _state.value = it }
     }
 
     suspend fun refresh() = withContext(Dispatchers.IO) {
+        val freshVod = VodRepository.refresh(context, http) ?: _state.value?.vod.orEmpty()
         runCatching {
             val req = Request.Builder().url(REMOTE + "channels.json?t=" + System.currentTimeMillis()).build()
             http.newCall(req).execute().use { r ->
                 if (!r.isSuccessful) return@runCatching
                 val text = r.body.string()
-                val data = parse(text) ?: return@runCatching
+                val data = parse(text, freshVod) ?: return@runCatching
                 cache.writeText(text)
                 _state.value = data
             }
@@ -135,14 +138,14 @@ class ChannelStore(private val context: Context, private val http: OkHttpClient)
         else -> REMOTE + ch.logo
     }
 
-    private fun parse(text: String): ChannelData? = runCatching {
+    private fun parse(text: String, vod: List<VodSeries> = emptyList()): ChannelData? = runCatching {
         val all = json.decodeFromString<List<Channel>>(text)
             .filter { it.kind != "app" && it.url.isNotEmpty() }
             .sortedBy { it.number }
         if (all.isEmpty()) return null
         val cats = all.groupBy { it.category }.map { (k, v) -> Category(k, shortCategory(k), v) }
         val israel = cats.firstOrNull { it.channels.first().categoryEn == "israel" }?.channels.orEmpty()
-        ChannelData(all, cats, all.associateBy { it.id }, israel.filter { !it.isRadio }.take(8))
+        ChannelData(all, cats, all.associateBy { it.id }, israel.filter { !it.isRadio }.take(8), vod)
     }.getOrNull()
 }
 

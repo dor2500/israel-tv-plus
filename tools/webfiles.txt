@@ -9,6 +9,7 @@ style.css
 tvguide.js
 app.js
 gdrive.js
+vod_data.json
 dub.js
 dub-local-worker.js
 channels.js

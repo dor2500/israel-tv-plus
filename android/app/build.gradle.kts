@@ -91,6 +91,7 @@ abstract class WebAssets @Inject constructor(private val fs: FileSystemOperation
     @get:InputDirectory @get:PathSensitive(PathSensitivity.RELATIVE) abstract val repoAssets: DirectoryProperty
     @get:InputFiles @get:PathSensitive(PathSensitivity.RELATIVE) abstract val webFiles: ConfigurableFileCollection
     @get:InputFile @get:PathSensitive(PathSensitivity.NONE) abstract val channels: RegularFileProperty
+    @get:InputFile @get:PathSensitive(PathSensitivity.NONE) abstract val vodData: RegularFileProperty
     @get:OutputDirectory abstract val outputDir: DirectoryProperty
 
     @TaskAction
@@ -103,6 +104,7 @@ abstract class WebAssets @Inject constructor(private val fs: FileSystemOperation
                 exclude("**/*&*", "**/*.map", "app/banner-1280*", "app/icon-1024*")
             }
             from(channels)
+            from(vodData)
         }
     }
 }
@@ -129,6 +131,7 @@ val webAssets = tasks.register<WebAssets>("webAssets") {
     webFiles.from(repo.resolve("tools/webfiles.txt").readLines().map { it.trim() }
         .filter { it.isNotEmpty() && !it.startsWith("#") }.map { repo.resolve(it) })
     channels.set(repo.resolve("channels.json"))
+    vodData.set(repo.resolve("vod_data.json"))
 }
 val appIcons = tasks.register<AppIcons>("appIcons") { appArt.set(repo.resolve("assets/app")) }
 

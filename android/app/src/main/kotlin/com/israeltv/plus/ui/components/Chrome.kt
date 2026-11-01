@@ -48,10 +48,12 @@ import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Tv
+import androidx.compose.material.icons.filled.VideoLibrary
 import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material.icons.outlined.Tv
+import androidx.compose.material.icons.outlined.VideoLibrary
 import androidx.compose.material.icons.rounded.Favorite
 import androidx.compose.material.icons.rounded.Home
 import androidx.compose.material.icons.rounded.LiveTv
@@ -94,6 +96,7 @@ enum class Tab(
 ) {
     Home("בית", "ישראל TV+‎", Icons.Rounded.Home),
     Channels("ערוצים", "ערוצים", Icons.Rounded.LiveTv),
+    Vod("VOD", "סדרות VOD", Icons.Filled.VideoLibrary),
     Mine("שלי", "הרשימה שלי", Icons.Rounded.Favorite),
     Settings("הגדרות", "הגדרות", Icons.Rounded.Settings),
 }
@@ -341,6 +344,7 @@ fun NuvioFloatingNavbar(
     val items = listOf(
         NavItem("home", "בית", Icons.Outlined.Home, Icons.Filled.Home),
         NavItem("channels", "ערוצים", Icons.Outlined.Tv, Icons.Filled.Tv),
+        NavItem("vod", "VOD", Icons.Outlined.VideoLibrary, Icons.Filled.VideoLibrary),
         NavItem("favorites", "שלי", Icons.Outlined.FavoriteBorder, Icons.Filled.Favorite),
         NavItem("search", "חיפוש", Icons.Outlined.Search, Icons.Filled.Search),
     )
@@ -452,6 +456,7 @@ fun FloatingTabBar(
         searchOpen -> "search"
         selected == Tab.Home -> "home"
         selected == Tab.Channels -> "channels"
+        selected == Tab.Vod -> "vod"
         selected == Tab.Mine -> "favorites"
         else -> ""
     }
@@ -474,6 +479,7 @@ fun FloatingTabBar(
                 when (it) {
                     "home" -> onSelect(Tab.Home)
                     "channels" -> onSelect(Tab.Channels)
+                    "vod" -> onSelect(Tab.Vod)
                     "favorites" -> onSelect(Tab.Mine)
                     "search" -> onSearch()
                 }

@@ -71,6 +71,7 @@ import com.israeltv.plus.ui.screens.MineScreen
 import com.israeltv.plus.ui.screens.ProfilesScreen
 import com.israeltv.plus.ui.screens.SearchOverlay
 import com.israeltv.plus.ui.screens.SettingsScreen
+import com.israeltv.plus.ui.screens.VodScreen
 import com.israeltv.plus.ui.screens.StyleScreen
 import com.israeltv.plus.ui.screens.UpdateModal
 import com.israeltv.plus.ui.screens.UpdatingScreen
@@ -367,6 +368,7 @@ private fun Feed(
                                 s.macroCategory = shortCategory(catKey)
                                 s.tab = Tab.Channels
                             },
+                            onSeeAllVod = { s.tab = Tab.Vod },
                         )
                         Tab.Channels -> ChannelsScreen(
                             data = data,
@@ -383,6 +385,7 @@ private fun Feed(
                             onViewAll = { s.macroCategory = it },
                             listState = s.channelsList,
                         )
+                        Tab.Vod -> VodScreen(data = data, onPlay = onPlay)
                         Tab.Mine -> MineScreen(data, prefs, logo, subtitle, onPlay)
                         Tab.Settings -> SettingsScreen(data, prefs, updater, google, onProfiles = onProfiles, onStyle = { s.styleOpen = true })
                     }

@@ -229,13 +229,18 @@ internal fun PlayerBottomBar(
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Row(Modifier.weight(1f, fill = false), verticalAlignment = Alignment.CenterVertically) {
+            val isVod = ch.kind == "vod" || ch.categoryEn == "vod"
             Text(
-                if (ch.isRadio) "רדיו" else "Live",
+                when {
+                    ch.isRadio -> "רדיו"
+                    isVod -> "VOD"
+                    else -> "Live"
+                },
                 Modifier
                     .clip(badgeShape)
-                    .border(1.dp, Color.White.copy(alpha = 0.42f), badgeShape)
+                    .border(1.dp, if (isVod) MaterialTheme.colorScheme.primary else Color.White.copy(alpha = 0.42f), badgeShape)
                     .padding(horizontal = 8.dp, vertical = 2.dp),
-                color = Color.White,
+                color = if (isVod) MaterialTheme.colorScheme.primary else Color.White,
                 style = MaterialTheme.typography.labelMedium,
             )
             Spacer(Modifier.width(12.dp))
