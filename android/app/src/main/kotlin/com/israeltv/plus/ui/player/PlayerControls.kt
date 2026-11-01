@@ -58,6 +58,7 @@ import androidx.compose.material.icons.rounded.Crop
 import androidx.compose.material.icons.rounded.FitScreen
 import androidx.compose.material.icons.rounded.Fullscreen
 import androidx.compose.material.icons.rounded.GridView
+import androidx.compose.material.icons.rounded.History
 import androidx.compose.material.icons.rounded.HighQuality
 import androidx.compose.material.icons.rounded.MoreHoriz
 import androidx.compose.material.icons.rounded.PictureInPictureAlt
@@ -113,6 +114,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.media3.common.C
 import androidx.media3.common.TrackSelectionOverride
 import androidx.media3.common.Tracks
@@ -230,13 +232,18 @@ internal fun PlayerBottomBar(
     fit: VideoFit,
     positionMs: Long = 0L,
     durationMs: Long = 0L,
+    isCatchupActive: Boolean = false,
+    catchupTitle: String? = null,
     onSeek: (Long) -> Unit = {},
     onCycleFit: () -> Unit,
+    onCatchup: () -> Unit = {},
+    onReturnLive: () -> Unit = {},
     onOptions: () -> Unit,
 ) {
     val d = LocalDimens.current
     val badgeShape = RoundedCornerShape(6.dp)
     val isVod = ch.kind == "vod" || ch.categoryEn == "vod"
+    val showScrubber = (isVod || isCatchupActive) && durationMs > 0L
     Column(
         Modifier
             .fillMaxWidth()
@@ -245,7 +252,7 @@ internal fun PlayerBottomBar(
             .windowInsetsPadding(WindowInsets.displayCutout.only(WindowInsetsSides.Horizontal))
             .padding(start = d.playerEdge, end = d.playerEdge, top = 20.dp, bottom = 16.dp),
     ) {
-        if (isVod && durationMs > 0L) {
+        if (showScrubber) {
             Row(
                 Modifier.fillMaxWidth().padding(bottom = 6.dp),
                 verticalAlignment = Alignment.CenterVertically,
@@ -263,8 +270,8 @@ internal fun PlayerBottomBar(
                     },
                     modifier = Modifier.weight(1f).height(24.dp),
                     colors = SliderDefaults.colors(
-                        thumbColor = MaterialTheme.colorScheme.primary,
-                        activeTrackColor = MaterialTheme.colorScheme.primary,
+                        thumbColor = if (isCatchupActive) Color(0xFFE5A93C) else MaterialTheme.colorScheme.primary,
+                        activeTrackColor = if (isCatchupActive) Color(0xFFE5A93C) else MaterialTheme.colorScheme.primary,
                         inactiveTrackColor = Color.White.copy(alpha = 0.28f)
                     )
                 )
@@ -280,31 +287,78 @@ internal fun PlayerBottomBar(
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically,
         ) {
-        Row(Modifier.weight(1f, fill = false), verticalAlignment = Alignment.CenterVertically) {
-            val isVod = ch.kind == "vod" || ch.categoryEn == "vod"
-            Text(
-                when {
-                    ch.isRadio -> "רדיו"
-                    isVod -> "VOD"
-                    else -> "Live"
-                },
-                Modifier
-                    .clip(badgeShape)
-                    .border(1.dp, if (isVod) MaterialTheme.colorScheme.primary else Color.White.copy(alpha = 0.42f), badgeShape)
-                    .padding(horizontal = 8.dp, vertical = 2.dp),
-                color = if (isVod) MaterialTheme.colorScheme.primary else Color.White,
-                style = MaterialTheme.typography.labelMedium,
-            )
+            Row(Modifier.weight(1f, fill = false), verticalAlignment = Alignment.CenterVertically) {
+                Text(
+                    when {
+                        isCatchupActive -> "קאץ' אפ"
+                        ch.isRadio -> "רדיו"
+                        isVod -> "VOD"
+                        else -> "Live"
+                    },
+                    Modifier
+                        .clip(badgeShape)
+                        .border(
+                            1.dp,
+                            when {
+                                isCatchupActive -> Color(0xFFE5A93C)
+                                isVod -> MaterialTheme.colorScheme.primary
+                                else -> Color.White.copy(alpha = 0.42f)
+                            },
+                            badgeShape
+                        )
+                        .background(if (isCatchupActive) Color(0xFFE5A93C).copy(alpha = 0.16f) else Color.Transparent)
+                        .padding(horizontal = 8.dp, vertical = 2.dp),
+                    color = when {
+                        isCatchupActive -> Color(0xFFE5A93C)
+                        isVod -> MaterialTheme.colorScheme.primary
+                        else -> Color.White
+                    },
+                    style = MaterialTheme.typography.labelMedium,
+                )
+                Spacer(Modifier.width(10.dp))
+                Column {
+                    Text(
+                        if (isCatchupActive && !catchupTitle.isNullOrEmpty()) catchupTitle else ch.name,
+                        color = Color.White,
+                        style = MaterialTheme.typography.titleMedium,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis
+                    )
+                    if (isCatchupActive && !catchupTitle.isNullOrEmpty()) {
+                        Text(
+                            "${ch.name} · שידור חוזר",
+                            color = Color.White.copy(alpha = 0.62f),
+                            fontSize = 12.sp,
+                            maxLines = 1,
+                        )
+                    }
+                }
+            }
             Spacer(Modifier.width(12.dp))
-            Text(ch.name, color = Color.White, style = MaterialTheme.typography.titleMedium, maxLines = 1, overflow = TextOverflow.Ellipsis)
-        }
-        Spacer(Modifier.width(16.dp))
-        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            MorphAction(fit.icon, fit.label, onClick = onCycleFit)
-            MorphAction(Icons.Rounded.MoreHoriz, "אפשרויות", onClick = onOptions)
+            Row(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
+                if (isCatchupActive) {
+                    Box(
+                        Modifier
+                            .clip(RoundedCornerShape(50))
+                            .background(Color(0xFFE53935))
+                            .clickable(onClick = onReturnLive)
+                            .padding(horizontal = 11.dp, vertical = 6.dp),
+                        contentAlignment = Alignment.Center,
+                    ) {
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Box(Modifier.size(7.dp).clip(CircleShape).background(Color.White))
+                            Spacer(Modifier.width(5.dp))
+                            Text("חזרה לשידור חי", color = Color.White, fontSize = 11.sp, fontWeight = FontWeight.Bold)
+                        }
+                    }
+                } else if (!ch.isRadio && !isVod) {
+                    MorphAction(Icons.Rounded.History, "קאץ' אפ", onClick = onCatchup)
+                }
+                MorphAction(fit.icon, fit.label, onClick = onCycleFit)
+                MorphAction(Icons.Rounded.MoreHoriz, "אפשרויות", onClick = onOptions)
+            }
         }
     }
-}
 }
 
 @Composable
@@ -343,6 +397,7 @@ internal fun PlayerOptionsDrawer(
     onSleepTimer: () -> Unit = {},
     onPip: () -> Unit,
     onMultiView: () -> Unit,
+    onCatchup: () -> Unit = {},
     onChannels: () -> Unit,
     onRotate: () -> Unit,
     onDismiss: () -> Unit,
@@ -386,6 +441,7 @@ internal fun PlayerOptionsDrawer(
                         DrawerItem(Icons.Rounded.Bedtime, "טיימר שינה", if (sleepTimerMinutes > 0) "$sleepTimerMinutes דק'" else "כבוי", onClick = onSleepTimer)
                         DrawerItem(Icons.Rounded.PictureInPictureAlt, "חלון צף", onClick = onPip)
                         DrawerItem(Icons.Rounded.HighQuality, "איכות וידאו", qualityLabel, onQuality)
+                        DrawerItem(Icons.Rounded.History, "קאץ' אפ (שידור חוזר)", "תוכניות קודמות", onClick = onCatchup)
                         DrawerItem(Icons.Rounded.GridView, "פיצול מסך", onClick = onMultiView)
                         if (serverCount > 1) {
                             ListItem(

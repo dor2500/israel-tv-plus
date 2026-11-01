@@ -47,3 +47,4 @@ for js_path in ["app.js", "www/app.js"]:
     with open(js_path, "w", encoding="utf-8") as f:
         f.write(js_code)
     print(f"Updated {js_path} for sub-5s startup & failover")
+

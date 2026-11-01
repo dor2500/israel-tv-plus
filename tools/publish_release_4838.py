@@ -63,3 +63,4 @@ res = subprocess.run(cmd, capture_output=True, text=True, encoding="utf-8")
 print("STDOUT:", res.stdout)
 print("STDERR:", res.stderr)
 print("Exit code:", res.returncode)
+

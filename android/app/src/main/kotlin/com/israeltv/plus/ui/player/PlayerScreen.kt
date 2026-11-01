@@ -116,6 +116,7 @@ import androidx.compose.runtime.mutableStateMapOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import kotlinx.coroutines.launch
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -171,6 +172,8 @@ import com.israeltv.plus.data.CastController
 import com.israeltv.plus.data.CastDeviceItem
 import com.israeltv.plus.data.CastProtocol
 import com.israeltv.plus.data.Channel
+import com.israeltv.plus.data.CatchupDvr
+import com.israeltv.plus.data.CatchupProgram
 import com.israeltv.plus.data.USER_AGENT
 import com.israeltv.plus.data.playableUrl
 import com.israeltv.plus.ui.components.BoldIcon
@@ -289,6 +292,8 @@ fun PlayerScreen(
     var sleepTimerMinutes by remember { mutableIntStateOf(0) }
     var currentPositionMs by remember { mutableLongStateOf(0L) }
     var durationMs by remember { mutableLongStateOf(0L) }
+    var isCatchupMode by remember(current.id) { mutableStateOf(false) }
+    var catchupProgram by remember(current.id) { mutableStateOf<CatchupProgram?>(null) }
 
     LaunchedEffect(startInCast) {
         if (startInCast) {
@@ -369,6 +374,9 @@ fun PlayerScreen(
 
     fun switchTo(i: Int) {
         index = (i + list.size) % list.size
+        isCatchupMode = false
+        catchupProgram = null
+        sourceIndex = 0
         touchTick++
     }
 
@@ -724,6 +732,8 @@ fun PlayerScreen(
                 fit = fit,
                 positionMs = currentPositionMs,
                 durationMs = durationMs,
+                isCatchupActive = isCatchupMode,
+                catchupTitle = catchupProgram?.title,
                 onSeek = { pos ->
                     touchTick++
                     currentPositionMs = pos
@@ -732,6 +742,22 @@ fun PlayerScreen(
                 onCycleFit = {
                     touchTick++
                     fit = fit.next()
+                },
+                onCatchup = {
+                    touchTick++
+                    sheet = "catchup"
+                },
+                onReturnLive = {
+                    touchTick++
+                    isCatchupMode = false
+                    catchupProgram = null
+                    sourceIndex = 0
+                    statusToast = "🔴 חזרה לשידור חי"
+                    if (player.isCurrentMediaItemLive) {
+                        player.seekToDefaultPosition()
+                    } else {
+                        switchTo(index)
+                    }
                 },
                 onOptions = {
                     touchTick++
@@ -764,6 +790,9 @@ fun PlayerScreen(
                 sheet = null
                 multiViewActive = true
             },
+            onCatchup = {
+                sheet = "catchup"
+            },
             onChannels = { sheet = "list" },
             onRotate = {
                 sheet = null
@@ -793,6 +822,78 @@ fun PlayerScreen(
     }
 
     when (sheet) {
+        "catchup" -> CatchupSheet(
+            channel = current,
+            logoUrl = logo(current),
+            onSelectProgram = { prog ->
+                isCatchupMode = true
+                catchupProgram = prog
+                val dvrUrl = CatchupDvr.dvrUrlFor(current)
+                val now = System.currentTimeMillis()
+                val offsetFromLiveMs = (now - prog.startMs).coerceAtLeast(0L)
+                statusToast = "⏮️ שידור חוזר: ${prog.title}"
+                sheet = null
+                if (dvrUrl != null) {
+                    player.setMediaItem(
+                        androidx.media3.common.MediaItem.Builder()
+                            .setUri(dvrUrl)
+                            .setMimeType(androidx.media3.common.MimeTypes.APPLICATION_M3U8)
+                            .build()
+                    )
+                    player.prepare()
+                    player.playWhenReady = true
+                    scope.launch {
+                        kotlinx.coroutines.delay(1000)
+                        val dur = player.duration
+                        if (dur > 0L) {
+                            val targetPos = (dur - offsetFromLiveMs).coerceAtLeast(0L)
+                            player.seekTo(targetPos)
+                        }
+                    }
+                } else {
+                    val dur = player.duration
+                    if (dur > 0L) {
+                        val targetPos = (dur - offsetFromLiveMs).coerceAtLeast(0L)
+                        player.seekTo(targetPos)
+                    }
+                }
+            },
+            onRewindMinutes = { mins ->
+                isCatchupMode = true
+                catchupProgram = CatchupProgram(
+                    startMin = (System.currentTimeMillis() / 60_000L) - mins,
+                    durationMin = mins,
+                    title = "לפני $mins דקות"
+                )
+                val dvrUrl = CatchupDvr.dvrUrlFor(current)
+                val rewindMs = mins * 60_000L
+                statusToast = "⏮️ חזרה $mins דקות אחורה"
+                sheet = null
+                if (dvrUrl != null) {
+                    player.setMediaItem(
+                        androidx.media3.common.MediaItem.Builder()
+                            .setUri(dvrUrl)
+                            .setMimeType(androidx.media3.common.MimeTypes.APPLICATION_M3U8)
+                            .build()
+                    )
+                    player.prepare()
+                    player.playWhenReady = true
+                    scope.launch {
+                        kotlinx.coroutines.delay(1000)
+                        val dur = player.duration
+                        if (dur > 0L) {
+                            val targetPos = (dur - rewindMs).coerceAtLeast(0L)
+                            player.seekTo(targetPos)
+                        }
+                    }
+                } else {
+                    val cur = player.currentPosition
+                    val targetPos = (cur - rewindMs).coerceAtLeast(0L)
+                    player.seekTo(targetPos)
+                }
+            },
+            onDismiss = { sheet = null },
+        )
         "list" -> ChannelListSheet(list, index, logo, onPick = { switchTo(it); sheet = null }, onDismiss = { sheet = null })
         "audio" -> AudioSheet(player, tracks, onDismiss = { sheet = null })
         "quality" -> ResolutionDialog(player, tracks, onDismiss = { sheet = null })

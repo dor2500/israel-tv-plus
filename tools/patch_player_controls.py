@@ -1,214 +1,263 @@
 import os
 
-player_controls = r'C:\Users\Dorp\Documents\deepseek-harness\default-workspace\repo\android\app\src\main\kotlin\com\israeltv\plus\ui\player\PlayerControls.kt'
+path = "android/app/src/main/kotlin/com/israeltv/plus/ui/player/PlayerControls.kt"
+with open(path, "r", encoding="utf-8") as f:
+    text = f.read()
 
-with open(player_controls, 'r', encoding='utf-8') as f:
-    c = f.read()
+# Add History icon import if not present
+if "import androidx.compose.material.icons.rounded.History" not in text:
+    text = text.replace(
+        "import androidx.compose.material.icons.rounded.GridView",
+        "import androidx.compose.material.icons.rounded.GridView\nimport androidx.compose.material.icons.rounded.History"
+    )
 
-# Add imports
-old_imp = 'import androidx.compose.ui.platform.LocalHapticFeedback\n'
-new_imp = '''import androidx.compose.ui.platform.LocalHapticFeedback
-import androidx.compose.ui.platform.LocalClipboardManager
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.AnnotatedString
-import android.content.Intent
-'''
-if old_imp in c:
-    c = c.replace(old_imp, new_imp, 1)
-
-# In CastSheet: add showPlexDialog state and Plex option row + dialog
-old_cast_sheet_start = '''internal fun CastSheet(
-    channel: Channel,
-    castController: CastController,
-    onDisconnectAndResumePhone: () -> Unit,
-    onDismiss: () -> Unit,
+# Replace PlayerBottomBar signature & implementation
+old_bar = """internal fun PlayerBottomBar(
+    ch: Channel,
+    fit: VideoFit,
+    positionMs: Long = 0L,
+    durationMs: Long = 0L,
+    onSeek: (Long) -> Unit = {},
+    onCycleFit: () -> Unit,
+    onOptions: () -> Unit,
 ) {
-    val scheme = MaterialTheme.colorScheme'''
-
-new_cast_sheet_start = '''internal fun CastSheet(
-    channel: Channel,
-    castController: CastController,
-    onDisconnectAndResumePhone: () -> Unit,
-    onDismiss: () -> Unit,
-) {
-    val scheme = MaterialTheme.colorScheme
-    var showPlexDialog by remember { mutableStateOf(false) }'''
-
-if old_cast_sheet_start in c:
-    c = c.replace(old_cast_sheet_start, new_cast_sheet_start, 1)
-
-# After ScreenShare row in CastSheet
-old_screen_share_end = '''                Column(Modifier.weight(1f)) {
-                    Text("שיקוף מסך (LG Screen Share / Smart View)", color = scheme.onPrimaryContainer, style = MaterialTheme.typography.titleMedium)
-                    Text("שיקוף ישיר של מסך הטלפון אל הטלוויזיה בלחיצה אחת", color = scheme.onPrimaryContainer.copy(alpha = 0.8f), style = MaterialTheme.typography.bodySmall)
-                }
-            }'''
-
-new_screen_share_end = '''                Column(Modifier.weight(1f)) {
-                    Text("שיקוף מסך (LG Screen Share / Smart View)", color = scheme.onPrimaryContainer, style = MaterialTheme.typography.titleMedium)
-                    Text("שיקוף ישיר של מסך הטלפון אל הטלוויזיה בלחיצה אחת", color = scheme.onPrimaryContainer.copy(alpha = 0.8f), style = MaterialTheme.typography.bodySmall)
-                }
-            }
-            Spacer(Modifier.height(8.dp))
+    val d = LocalDimens.current
+    val badgeShape = RoundedCornerShape(6.dp)
+    val isVod = ch.kind == "vod" || ch.categoryEn == "vod"
+    Column(
+        Modifier
+            .fillMaxWidth()
+            .background(Brush.verticalGradient(listOf(Color.Transparent, Color.Black.copy(alpha = 0.88f))))
+            .navigationBarsPadding()
+            .windowInsetsPadding(WindowInsets.displayCutout.only(WindowInsetsSides.Horizontal))
+            .padding(start = d.playerEdge, end = d.playerEdge, top = 20.dp, bottom = 16.dp),
+    ) {
+        if (isVod && durationMs > 0L) {
             Row(
-                Modifier
-                    .fillMaxWidth()
-                    .clip(RoundedCornerShape(16.dp))
-                    .background(scheme.surfaceContainerHigh)
-                    .clickable(role = Role.Button) {
-                        showPlexDialog = true
-                    }
-                    .padding(horizontal = 16.dp, vertical = 12.dp),
+                Modifier.fillMaxWidth().padding(bottom = 6.dp),
                 verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(10.dp)
             ) {
-                Icon(Icons.Rounded.Tv, null, tint = scheme.primary, modifier = Modifier.size(26.dp))
-                Spacer(Modifier.width(16.dp))
-                Column(Modifier.weight(1f)) {
-                    Text("חיבור ל-Plex ול-DLNA (טלוויזיית LG / מחשב)", color = scheme.onSurface, style = MaterialTheme.typography.titleMedium)
-                    Text("הוספת 269 הערוצים ולוח השידורים ל-Plex Live TV & DVR", color = scheme.onSurfaceVariant, style = MaterialTheme.typography.bodySmall)
-                }
-            }'''
-
-if old_screen_share_end in c:
-    c = c.replace(old_screen_share_end, new_screen_share_end, 1)
-
-# Add showPlexDialog check before ending CastSheet
-old_cast_sheet_end = '''            CastQuietRow(Icons.AutoMirrored.Rounded.OpenInNew, "פתיחה באפליקציה חיצונית") {
-                castController.openExternalCaster(channel)
-                onDismiss()
+                Text(
+                    formatTime(positionMs),
+                    color = Color.White.copy(alpha = 0.9f),
+                    style = MaterialTheme.typography.labelSmall
+                )
+                Slider(
+                    value = (positionMs.toFloat() / durationMs.toFloat()).coerceIn(0f, 1f),
+                    onValueChange = { frac ->
+                        onSeek((frac * durationMs).toLong())
+                    },
+                    modifier = Modifier.weight(1f).height(24.dp),
+                    colors = SliderDefaults.colors(
+                        thumbColor = MaterialTheme.colorScheme.primary,
+                        activeTrackColor = MaterialTheme.colorScheme.primary,
+                        inactiveTrackColor = Color.White.copy(alpha = 0.28f)
+                    )
+                )
+                Text(
+                    formatTime(durationMs),
+                    color = Color.White.copy(alpha = 0.9f),
+                    style = MaterialTheme.typography.labelSmall
+                )
             }
         }
-    }
-}'''
-
-new_cast_sheet_end = '''            CastQuietRow(Icons.AutoMirrored.Rounded.OpenInNew, "פתיחה באפליקציה חיצונית") {
-                castController.openExternalCaster(channel)
-                onDismiss()
-            }
-        }
-    }
-    if (showPlexDialog) {
-        PlexIntegrationDialog(onDismiss = { showPlexDialog = false })
-    }
-}'''
-
-if old_cast_sheet_end in c:
-    c = c.replace(old_cast_sheet_end, new_cast_sheet_end, 1)
-
-# Add PlexIntegrationDialog composable at bottom of file
-dialog_code = '''
-
-@Composable
-fun PlexIntegrationDialog(onDismiss: () -> Unit) {
-    val scheme = MaterialTheme.colorScheme
-    val context = LocalContext.current
-    val clipboard = LocalClipboardManager.current
-    val haptic = LocalHapticFeedback.current
-    val m3uUrl = "https://dor2500.github.io/israel-tv-plus/plex.m3u"
-    val epgUrl = "https://dor2500.github.io/israel-tv-plus/epg.xml"
-
-    BasicAlertDialog(onDismissRequest = onDismiss) {
-        Surface(
-            shape = RoundedCornerShape(28.dp),
-            color = scheme.surfaceContainerHigh,
-            modifier = Modifier.fillMaxWidth().padding(16.dp),
+        Row(
+            Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically,
         ) {
-            Column(
+        Row(Modifier.weight(1f, fill = false), verticalAlignment = Alignment.CenterVertically) {
+            val isVod = ch.kind == "vod" || ch.categoryEn == "vod"
+            Text(
+                when {
+                    ch.isRadio -> "רדיו"
+                    isVod -> "VOD"
+                    else -> "Live"
+                },
                 Modifier
-                    .fillMaxWidth()
-                    .verticalScroll(rememberScrollState())
-                    .padding(24.dp),
-            ) {
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Icon(Icons.Rounded.Tv, null, tint = scheme.primary, modifier = Modifier.size(32.dp))
-                    Spacer(Modifier.width(16.dp))
-                    Text("חיבור ל-Plex ול-DLNA", style = MaterialTheme.typography.headlineSmall, color = scheme.onSurface)
-                }
-                Spacer(Modifier.height(16.dp))
-                Text(
-                    "באמצעות כתובות אלו ניתן לצפות בכל 269 הערוצים הישראליים בתוך אפליקציית Plex בטלוויזיית LG, סמסונג או סטרימר, עם לוח שידורים (EPG) ופוסטרים מלאים לכל תוכנית.",
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = scheme.onSurfaceVariant,
-                )
-                Spacer(Modifier.height(16.dp))
-
-                Text("רשימת ערוצים (M3U Tuner):", style = MaterialTheme.typography.labelLarge, color = scheme.primary)
-                Spacer(Modifier.height(4.dp))
-                Row(
-                    Modifier
-                        .fillMaxWidth()
-                        .clip(RoundedCornerShape(12.dp))
-                        .background(scheme.surfaceContainerLowest)
-                        .padding(12.dp),
-                    verticalAlignment = Alignment.CenterVertically,
-                ) {
-                    Text(m3uUrl, Modifier.weight(1f), style = MaterialTheme.typography.bodySmall, color = scheme.onSurface, maxLines = 2)
-                    Spacer(Modifier.width(8.dp))
-                    FilledTonalButton(onClick = {
-                        clipboard.setText(AnnotatedString(m3uUrl))
-                        haptic.performHapticFeedback(HapticFeedbackType.VirtualKey)
-                        android.widget.Toast.makeText(context, "הועתק ללוח", android.widget.Toast.LENGTH_SHORT).show()
-                    }) {
-                        Text("העתק")
-                    }
-                }
-
-                Spacer(Modifier.height(12.dp))
-
-                Text("מדריך שידורים (XMLTV Guide):", style = MaterialTheme.typography.labelLarge, color = scheme.primary)
-                Spacer(Modifier.height(4.dp))
-                Row(
-                    Modifier
-                        .fillMaxWidth()
-                        .clip(RoundedCornerShape(12.dp))
-                        .background(scheme.surfaceContainerLowest)
-                        .padding(12.dp),
-                    verticalAlignment = Alignment.CenterVertically,
-                ) {
-                    Text(epgUrl, Modifier.weight(1f), style = MaterialTheme.typography.bodySmall, color = scheme.onSurface, maxLines = 2)
-                    Spacer(Modifier.width(8.dp))
-                    FilledTonalButton(onClick = {
-                        clipboard.setText(AnnotatedString(epgUrl))
-                        haptic.performHapticFeedback(HapticFeedbackType.VirtualKey)
-                        android.widget.Toast.makeText(context, "הועתק ללוח", android.widget.Toast.LENGTH_SHORT).show()
-                    }) {
-                        Text("העתק")
-                    }
-                }
-
-                Spacer(Modifier.height(16.dp))
-                Text(
-                    "כיצד להגדיר בטלוויזיית LG:\\n1. פתחו את Plex Web במחשב או בשרת ← הגדרות ← Live TV & DVR.\\n2. לחצו Add Device / Tuner ובחרו M3U Tuner והדביקו את כתובת הרשימה.\\n3. בלשונית XMLTV Guide הדביקו את כתובת מדריך השידורים.\\n4. בטלוויזיית LG פתחו את אפליקציית Plex מחנות webOS, ועברו אל Live TV!",
-                    style = MaterialTheme.typography.bodySmall,
-                    color = scheme.onSurfaceVariant,
-                )
-
-                Spacer(Modifier.height(20.dp))
-                Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-                    FilledTonalButton(onClick = {
-                        val shareText = "ישראל TV+ ב-Plex:\\nרשימת ערוצים: $m3uUrl\\nמדריך שידורים: $epgUrl"
-                        val shareIntent = Intent(Intent.ACTION_SEND).apply {
-                            type = "text/plain"
-                            putExtra(Intent.EXTRA_TEXT, shareText)
-                        }
-                        context.startActivity(Intent.createChooser(shareIntent, "שיתוף הגדרות Plex"))
-                    }) {
-                        Text("שתף קישורים")
-                    }
-                    Button(onClick = onDismiss) {
-                        Text("סגור")
-                    }
-                }
-            }
+                    .clip(badgeShape)
+                    .border(1.dp, if (isVod) MaterialTheme.colorScheme.primary else Color.White.copy(alpha = 0.42f), badgeShape)
+                    .padding(horizontal = 8.dp, vertical = 2.dp),
+                color = if (isVod) MaterialTheme.colorScheme.primary else Color.White,
+                style = MaterialTheme.typography.labelMedium,
+            )
+            Spacer(Modifier.width(12.dp))
+            Text(ch.name, color = Color.White, style = MaterialTheme.typography.titleMedium, maxLines = 1, overflow = TextOverflow.Ellipsis)
+        }
+        Spacer(Modifier.width(16.dp))
+        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            MorphAction(fit.icon, fit.label, onClick = onCycleFit)
+            MorphAction(Icons.Rounded.MoreHoriz, "אפשרויות", onClick = onOptions)
         }
     }
 }
-'''
+}"""
 
-c = c + dialog_code
+new_bar = """internal fun PlayerBottomBar(
+    ch: Channel,
+    fit: VideoFit,
+    positionMs: Long = 0L,
+    durationMs: Long = 0L,
+    isCatchupActive: Boolean = false,
+    catchupTitle: String? = null,
+    onSeek: (Long) -> Unit = {},
+    onCycleFit: () -> Unit,
+    onCatchup: () -> Unit = {},
+    onReturnLive: () -> Unit = {},
+    onOptions: () -> Unit,
+) {
+    val d = LocalDimens.current
+    val badgeShape = RoundedCornerShape(6.dp)
+    val isVod = ch.kind == "vod" || ch.categoryEn == "vod"
+    val showScrubber = (isVod || isCatchupActive) && durationMs > 0L
+    Column(
+        Modifier
+            .fillMaxWidth()
+            .background(Brush.verticalGradient(listOf(Color.Transparent, Color.Black.copy(alpha = 0.88f))))
+            .navigationBarsPadding()
+            .windowInsetsPadding(WindowInsets.displayCutout.only(WindowInsetsSides.Horizontal))
+            .padding(start = d.playerEdge, end = d.playerEdge, top = 20.dp, bottom = 16.dp),
+    ) {
+        if (showScrubber) {
+            Row(
+                Modifier.fillMaxWidth().padding(bottom = 6.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(10.dp)
+            ) {
+                Text(
+                    formatTime(positionMs),
+                    color = Color.White.copy(alpha = 0.9f),
+                    style = MaterialTheme.typography.labelSmall
+                )
+                Slider(
+                    value = (positionMs.toFloat() / durationMs.toFloat()).coerceIn(0f, 1f),
+                    onValueChange = { frac ->
+                        onSeek((frac * durationMs).toLong())
+                    },
+                    modifier = Modifier.weight(1f).height(24.dp),
+                    colors = SliderDefaults.colors(
+                        thumbColor = if (isCatchupActive) Color(0xFFE5A93C) else MaterialTheme.colorScheme.primary,
+                        activeTrackColor = if (isCatchupActive) Color(0xFFE5A93C) else MaterialTheme.colorScheme.primary,
+                        inactiveTrackColor = Color.White.copy(alpha = 0.28f)
+                    )
+                )
+                Text(
+                    formatTime(durationMs),
+                    color = Color.White.copy(alpha = 0.9f),
+                    style = MaterialTheme.typography.labelSmall
+                )
+            }
+        }
+        Row(
+            Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Row(Modifier.weight(1f, fill = false), verticalAlignment = Alignment.CenterVertically) {
+                Text(
+                    when {
+                        isCatchupActive -> "קאץ' אפ"
+                        ch.isRadio -> "רדיו"
+                        isVod -> "VOD"
+                        else -> "Live"
+                    },
+                    Modifier
+                        .clip(badgeShape)
+                        .border(
+                            1.dp,
+                            when {
+                                isCatchupActive -> Color(0xFFE5A93C)
+                                isVod -> MaterialTheme.colorScheme.primary
+                                else -> Color.White.copy(alpha = 0.42f)
+                            },
+                            badgeShape
+                        )
+                        .background(if (isCatchupActive) Color(0xFFE5A93C).copy(alpha = 0.16f) else Color.Transparent)
+                        .padding(horizontal = 8.dp, vertical = 2.dp),
+                    color = when {
+                        isCatchupActive -> Color(0xFFE5A93C)
+                        isVod -> MaterialTheme.colorScheme.primary
+                        else -> Color.White
+                    },
+                    style = MaterialTheme.typography.labelMedium,
+                )
+                Spacer(Modifier.width(10.dp))
+                Column {
+                    Text(
+                        if (isCatchupActive && !catchupTitle.isNullOrEmpty()) catchupTitle else ch.name,
+                        color = Color.White,
+                        style = MaterialTheme.typography.titleMedium,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis
+                    )
+                    if (isCatchupActive && !catchupTitle.isNullOrEmpty()) {
+                        Text(
+                            "${ch.name} · שידור חוזר",
+                            color = Color.White.copy(alpha = 0.62f),
+                            fontSize = 11.5.sp,
+                            maxLines = 1,
+                        )
+                    }
+                }
+            }
+            Spacer(Modifier.width(12.dp))
+            Row(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
+                if (isCatchupActive) {
+                    Box(
+                        Modifier
+                            .clip(RoundedCornerShape(50))
+                            .background(Color(0xFFE53935))
+                            .clickable(onClick = onReturnLive)
+                            .padding(horizontal = 11.dp, vertical = 6.dp),
+                        contentAlignment = Alignment.Center,
+                    ) {
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Box(Modifier.size(7.dp).clip(CircleShape).background(Color.White))
+                            Spacer(Modifier.width(5.dp))
+                            Text("חזרה לשידור חי", color = Color.White, fontSize = 11.sp, fontWeight = FontWeight.Bold)
+                        }
+                    }
+                } else if (!ch.isRadio && !isVod) {
+                    MorphAction(Icons.Rounded.History, "קאץ' אפ", onClick = onCatchup)
+                }
+                MorphAction(fit.icon, fit.label, onClick = onCycleFit)
+                MorphAction(Icons.Rounded.MoreHoriz, "אפשרויות", onClick = onOptions)
+            }
+        }
+    }
+}"""
 
-with open(player_controls, 'w', encoding='utf-8') as f:
-    f.write(c)
+# Check CRLF
+old_bar_crlf = old_bar.replace("\n", "\r\n")
+if old_bar in text:
+    text = text.replace(old_bar, new_bar)
+elif old_bar_crlf in text:
+    text = text.replace(old_bar_crlf, new_bar.replace("\n", "\r\n"))
+else:
+    print("Could not find old_bar exactly! Checking substring...")
 
-print('Successfully patched PlayerControls.kt')
+# Update PlayerOptionsDrawer signature & items
+old_drawer_sig = """    onPip: () -> Unit,
+    onMultiView: () -> Unit,
+    onChannels: () -> Unit,"""
+new_drawer_sig = """    onPip: () -> Unit,
+    onMultiView: () -> Unit,
+    onCatchup: () -> Unit = {},
+    onChannels: () -> Unit,"""
+if old_drawer_sig in text:
+    text = text.replace(old_drawer_sig, new_drawer_sig)
+else:
+    text = text.replace(old_drawer_sig.replace("\n", "\r\n"), new_drawer_sig.replace("\n", "\r\n"))
 
+old_drawer_item = """DrawerItem(Icons.Rounded.GridView, "פיצול מסך", onClick = onMultiView)"""
+new_drawer_item = """DrawerItem(Icons.Rounded.History, "קאץ' אפ (שידור חוזר)", "תוכניות קודמות", onClick = onCatchup)
+                        DrawerItem(Icons.Rounded.GridView, "פיצול מסך", onClick = onMultiView)"""
+if old_drawer_item in text:
+    text = text.replace(old_drawer_item, new_drawer_item)
+else:
+    text = text.replace(old_drawer_item.replace("\n", "\r\n"), new_drawer_item.replace("\n", "\r\n"))
+
+with open(path, "w", encoding="utf-8") as f:
+    f.write(text)
+print("Updated PlayerControls.kt successfully!")
