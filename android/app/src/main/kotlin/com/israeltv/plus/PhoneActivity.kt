@@ -64,7 +64,12 @@ class PhoneActivity : ComponentActivity() {
     private var updater: Updater? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
+        if (isTv()) {
+            super.onCreate(savedInstanceState)
+            startActivity(Intent(this, MainActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION))
+            finish()
+            return
+        }
         val splash = installSplashScreen()
         super.onCreate(savedInstanceState)
         // the system splash only covers the first frame; the cinematic intro (ui/Intro.kt) takes over on black

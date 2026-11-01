@@ -87,10 +87,93 @@ public class MainActivity extends Activity {
     @Override
     @SuppressWarnings("deprecation")
     protected void onCreate(Bundle state) {
-        // Universal entrypoint: delegate unconditionally to PhoneActivity (native Jetpack Compose Nuvio UI)
+        // Phones run the native app (PhoneActivity) since 3.4.0; a shortcut or task from 3.3.0 that still points
+        // here opens it instead of the old web screen
+        if (!isTv()) {
+            super.onCreate(state);
+            startActivity(new Intent(this, PhoneActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+            finish();
+            return;
+        }
+        SplashScreen splash = SplashScreen.installSplashScreen(this);   // before super.onCreate (sets the app theme back)
         super.onCreate(state);
-        startActivity(new Intent(this, PhoneActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
-        finish();
+        prefs = getSharedPreferences("itv", MODE_PRIVATE);
+        splashUntil = SystemClock.uptimeMillis() + SPLASH_MAX_MS;
+        splash.setKeepOnScreenCondition(() -> !pageReady && SystemClock.uptimeMillis() < splashUntil);
+        splash.setOnExitAnimationListener(p -> {
+            // the icon grows and the splash fades: Material "emphasized decelerate"
+            PathInterpolator ease = new PathInterpolator(0.05f, 0.7f, 0.1f, 1f);
+            View icon = null;
+            // core-splashscreen 1.0.1 throws on Android 12+ when the system's splash has no icon view (warm starts)
+            try { icon = p.getIconView(); } catch (RuntimeException ignored) { }
+            if (icon != null) icon.animate().scaleX(1.6f).scaleY(1.6f).alpha(0f).setDuration(420).setInterpolator(ease).start();
+            try {
+                p.getView().animate().alpha(0f).setStartDelay(80).setDuration(380).setInterpolator(ease)
+                    .withEndAction(p::remove).start();
+            } catch (RuntimeException e) {
+                p.remove();
+            }
+        });
+        if (state == null) playLaunchSound();
+        tv = isTv();
+        Window w = getWindow();
+        w.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        if (Build.VERSION.SDK_INT >= 30) {
+            w.getAttributes().layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_ALWAYS;
+        } else if (Build.VERSION.SDK_INT >= 28) {
+            w.getAttributes().layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES;
+        }
+        WebView.setWebContentsDebuggingEnabled((getApplicationInfo().flags & android.content.pm.ApplicationInfo.FLAG_DEBUGGABLE) != 0); // devtools only in debug builds
+        web = new WebView(this);
+        web.setBackgroundColor(0xff000000);
+        WebSettings s = web.getSettings();
+        s.setJavaScriptEnabled(true);
+        s.setDomStorageEnabled(true);
+        s.setDatabaseEnabled(true);
+        s.setMediaPlaybackRequiresUserGesture(false);
+        s.setAllowFileAccess(true);
+        s.setAllowFileAccessFromFileURLs(true);
+        s.setAllowUniversalAccessFromFileURLs(true);
+        s.setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
+        // TVs: honour the page's fixed-width viewport (app.js sets width=1600 for "AndroidTV"), like the LG app
+        s.setUseWideViewPort(true);
+        s.setLoadWithOverviewMode(true);
+        s.setUserAgentString(s.getUserAgentString() + " IsraelTVPlus/3 " + (tv ? "AndroidTV" : "AndroidPhone"));
+
+        web.setWebViewClient(new WebViewClient() {
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView v, WebResourceRequest r) {
+                Uri u = r.getUrl();
+                if ("file".equals(u.getScheme())) return false;
+                openUrl(u.toString()); // links (downloads page, service sites) go to the browser
+                return true;
+            }
+
+            @Override
+            public void onPageFinished(WebView v, String url) {
+                sendInsets();
+                // builds without Bridge.ready (older live updates): the scripts have loaded by now
+                v.postDelayed(() -> pageReady = true, 250);
+            }
+
+            /** The page's process ran out of memory or crashed: start the app again instead of closing it. */
+            @Override
+            public boolean onRenderProcessGone(WebView v, android.webkit.RenderProcessGoneDetail d) {
+                if (web == v) web = null;
+                try { ((android.view.ViewGroup) v.getParent()).removeView(v); } catch (Exception ignored) { }
+                v.destroy();
+                recreate();
+                return true;
+            }
+        });
+        web.setWebChromeClient(new WebChromeClient());
+        web.addJavascriptInterface(new Bridge(), "AndroidApp");
+        setContentView(web);
+        if (tv) hideSystemBars();
+        else { edgeToEdge(); highRefreshRate(); }
+        if (Build.VERSION.SDK_INT >= 33) registerBack();
+        if (state != null) web.restoreState(state);
+        else web.loadUrl("file:///android_asset/www/index.html");
     }
 
     // ------------------------------------------------------------------ edge-to-edge (phones)
