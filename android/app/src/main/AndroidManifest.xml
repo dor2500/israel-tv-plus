@@ -16,6 +16,7 @@
     <!-- TVs have no touch screen; Leanback makes it show up in the Android TV launcher -->
     <uses-feature android:name="android.hardware.touchscreen" android:required="false" />
     <uses-feature android:name="android.software.leanback" android:required="false" />
+    <uses-feature android:name="android.hardware.type.automotive" android:required="false" />
 
     <queries>
         <intent>
@@ -67,6 +68,18 @@
             android:resizeableActivity="true"
             android:launchMode="singleTask"
             android:windowSoftInputMode="adjustResize" />
+                <activity
+            android:name=".CarVideoActivity"
+            android:exported="true"
+            android:theme="@style/AppTheme"
+            android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboard|keyboardHidden|navigation|uiMode|density"
+            android:supportsPictureInPicture="true"
+            android:resizeableActivity="true"
+            android:launchMode="singleTask">
+            <meta-data
+                android:name="distractionOptimized"
+                android:value="true" />
+        </activity>
         <meta-data
             android:name="com.google.android.gms.car.application"
             android:resource="@xml/automotive_app_desc" />

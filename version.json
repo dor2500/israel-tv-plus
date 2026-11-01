@@ -1,49 +1,51 @@
 {
-  "version": "4.8.30",
-  "code": 202611011240,
-  "app": 610,
+  "version": "4.8.31",
+  "code": 202611011500,
+  "app": 611,
   "shell": 3,
   "date": "2026-11-01",
   "notes": [
-    "מסך ההורדות מציג קודם את הקובץ המתאים למכשיר: במחשב Windows, Mac או לינוקס כבר לא נפתח על APK של אנדרואיד.",
-    "כפתור ההורדה הידנית אחרי כשל בעדכון לא מציין יותר APK במחשב."
+    "שידורי וידאו חי וסדרות VOD במסכי רכב (Android Auto / Android Automotive).",
+    "מסך וידאו ייעודי לרכב (CarVideoActivity) עם תמיכה במצב תמונה-בתוך-תמונה (PiP) אוטומטי בעת מעבר לניווט (Waze / Google Maps).",
+    "שליטה מלאה בווידאו ובערוצים מכפתורי ההגה, שלטי מדיה ומגע.",
+    "הקרנת וידאו ישירה על צגים ומסכים ברכב באמצעות CarPresentation."
   ],
   "native": {
     "android": {
-      "version": "4.8.30",
-      "app": 610,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.30/IsraelTVPlus-android.apk"
+      "version": "4.8.31",
+      "app": 611,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.31/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "4.8.30",
-      "app": 610,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.30/IsraelTVPlus-windows-setup.exe"
+      "version": "4.8.31",
+      "app": 611,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.31/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "4.8.30",
-      "app": 610,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.30/com.israeltv.plus_all.ipk",
+      "version": "4.8.31",
+      "app": 611,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.31/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "4.8.30",
-      "app": 610,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.30/IsraelTVPlus-tizen-project.zip"
+      "version": "4.8.31",
+      "app": 611,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.31/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "4.8.30",
-      "app": 610,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.30/IsraelTVPlus-macos-arm64.zip"
+      "version": "4.8.31",
+      "app": 611,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.31/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "4.8.30",
-      "app": 610,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.30/IsraelTVPlus-linux-x64.zip"
+      "version": "4.8.31",
+      "app": 611,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.31/IsraelTVPlus-linux-x64.zip"
     },
     "wear": {
-      "version": "4.8.30",
-      "app": 1000510,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.30/IsraelTVPlus-wearos.apk"
+      "version": "4.8.31",
+      "app": 1000511,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.31/IsraelTVPlus-wearos.apk"
     }
   }
 }
