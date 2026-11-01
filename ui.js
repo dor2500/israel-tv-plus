@@ -68,8 +68,16 @@ window.ITV_UI = (function (I) {
       '<button class="top-btn nav-top" id="btn-gdrive" data-nav="gdrive" title="Google Drive והקלטות ענן"><span class="ico">☁️</span><span>הקלטות ענן</span></button>' +
       '<button class="top-btn nav-top tv" id="btn-settings" data-nav="settings"><span class="ico">' + I('settings') + '</span><span>הגדרות</span></button>' +
       '<div class="clock" id="clock">00:00</div>' +
+      '<button class="top-btn ph" id="btn-ph-settings" aria-label="הגדרות"><span class="ico">' + I('settings') + '</span></button>' +
       '<button class="avatar ph" id="btn-avatar" aria-label="פרופיל ועדכונים"><img id="avatar-img" alt="">' +
         '<i class="avatar-dot hidden" id="avatar-dot"></i></button>' +
+    '</div>' +
+    '<div class="home-chips ph" id="home-chips">' +
+      '<button class="home-chip on" data-macro="">הכל</button>' +
+      '<button class="home-chip" data-macro="סרטים וסדרות">סרטים וסדרות</button>' +
+      '<button class="home-chip" data-macro="ילדים ונוער">ילדים ונוער</button>' +
+      '<button class="home-chip" data-macro="ספורט">ספורט</button>' +
+      '<button class="home-chip" data-more="1">עוד</button>' +
     '</div>' +
   '</header>' +
 

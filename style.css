@@ -2420,3 +2420,42 @@ body.tvui #player .osd::before { content: ''; position: absolute; right: 0; left
   -webkit-transform: translateZ(0);
   backface-visibility: hidden;
 }
+
+
+/* ---- phone browser: the same top row, chips and hero as the Android app */
+body.phone .topbar { flex-wrap: wrap; justify-content: center; padding-bottom: .4rem; }
+body.phone .brand { position: absolute; top: calc(var(--sat, 0px) + 1.6rem); left: 50%; margin: 0; transform: translateX(-50%); z-index: 1; pointer-events: none; }
+body.phone .brand-icon, body.phone .brand-sub { display: none; }
+body.phone .brand-name { font-size: 2.1rem; white-space: nowrap; }
+body.phone .top-actions { width: 100%; margin: 0; }
+body.phone #btn-avatar { order: -1; margin: 0 0 0 auto; }
+body.phone #btn-gdrive, body.phone #btn-getapp, body.phone #btn-update, body.phone #btn-search { display: none !important; }
+body.phone #btn-ph-settings { order: 9; margin: 0; }
+body.phone .nb-item[data-tab="settings"] { display: none; }
+.home-chips { display: flex; justify-content: safe center; gap: .6rem; width: 100%; padding: .9rem .8rem .2rem; overflow-x: auto; scrollbar-width: none; }
+body.phone .topbar.solid .home-chips { display: none; }
+body.phone.tab-home .topbar.solid .brand-text { transform: none; }
+.home-chips::-webkit-scrollbar { display: none; }
+body.phone:not(.tab-home) .home-chips { display: none; }
+.home-chip { flex: none; height: 3.4rem; padding: 0 1.1rem; border: 1px solid rgba(255, 255, 255, .28); border-radius: 1.7rem; background: rgba(0, 0, 0, .28); color: #fff; font: inherit; font-size: 1.25rem; font-weight: 600; transition: border-radius .2s var(--spring), background-color .2s; }
+.home-chip.on { background: #fff; border-color: #fff; color: #111; }
+.home-chip:active { border-radius: .9rem; }
+body.phone .slide-title { display: none; }
+body.phone .slide-meta { gap: .7rem; margin-bottom: 1.5rem; }
+body.phone .slide-meta span + span::before { content: none; }
+body.phone .slide-meta > span { padding: .25rem .9rem; border: 1px solid rgba(255, 255, 255, .32); border-radius: .7rem; background: rgba(0, 0, 0, .25); color: #fff; font-size: 1.2rem; }
+body.phone .slide-meta .live { padding: 0; border: 0; background: none; color: #fff; letter-spacing: 0; }
+body.phone .slide-actions { gap: 1.2rem; }
+body.phone .slide-actions .icon-tonal { margin: 0; }
+.il-row { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.6rem .4rem; font-size: 1.5rem; font-weight: 600; cursor: pointer; }
+.il-row input { position: absolute; opacity: 0; pointer-events: none; }
+.il-switch { position: relative; width: 5.2rem; height: 3.2rem; border: .2rem solid rgba(255, 255, 255, .45); border-radius: 1.6rem; background: rgba(255, 255, 255, .08); transition: background-color .2s; }
+.il-switch::after { content: ''; position: absolute; top: .55rem; right: .6rem; width: 1.7rem; height: 1.7rem; border-radius: 50%; background: rgba(255, 255, 255, .7); transition: transform .25s var(--spring), background-color .2s; }
+.il-row input:checked + .il-switch { background: #fff; border-color: #fff; }
+.il-row input:checked + .il-switch::after { transform: translateX(-1.9rem); background: #111; }
+
+/* ---- computers: a quiet scrollbar on the dark screens */
+body:not(.light) { scrollbar-color: rgba(255, 255, 255, .22) transparent; scrollbar-width: thin; }
+body:not(.light) ::-webkit-scrollbar { width: .7rem; height: .7rem; }
+body:not(.light) ::-webkit-scrollbar-track { background: transparent; }
+body:not(.light) ::-webkit-scrollbar-thumb { border-radius: .4rem; background: rgba(255, 255, 255, .22); }

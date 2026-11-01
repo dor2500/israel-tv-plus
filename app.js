@@ -338,6 +338,7 @@
     // the Android app's splash screen (core-splashscreen) waits for this: the first screen is ready to draw
     setTimeout(function () { native('ready'); }, 30);
     if (S.autoUpdate) setTimeout(function () { checkUpdates(false); }, 4000);
+    setTimeout(loadVodData, 800);
     if (window.GDrive && window.GDrive.isSignedIn()) setTimeout(function () { triggerCloudSync(false); }, 3000);
     if (PLATFORM === 'webos') {
       // LG: TV apps stay open for days – check again every 6 hours, and apply a downloaded update on returning to the app
@@ -605,6 +606,22 @@
     if (S.aspect !== 'fit') v.classList.add('aspect-' + S.aspect);
     if (S.sharpen) v.classList.add('sharpen');
     if (el.osdPic) el.osdPic.textContent = (S.pic !== 'off' ? '✨ ' + label(PICS, S.pic) + ' · ' : '') + label(ASPECTS, S.aspect);
+  }
+
+  /** The series catalog is a large file of its own: it comes after the first screen, then the shelves are rebuilt. */
+  function loadVodData() {
+    if (window.VOD_DATA && window.VOD_DATA.length) return;
+    var urls = [(window.ITV_BASE || '') + 'vod_data.json', REMOTE + 'vod_data.json'], i = 0;
+    (function next() {
+      if (i >= urls.length) return;
+      xhrJson(urls[i++], 20000, function (list) {
+        if (!Array.isArray(list) || !list.length) { next(); return; }
+        window.VOD_DATA = list;
+        homeDirty = true;
+        if (TVUI && !atv.search) { atvBuild(); atvLayout(); atvMark(); }
+        else if (PHONE && state.tab === 'home') buildHome();
+      }, next);
+    })();
   }
 
   // ================================================================== channels & categories
@@ -1617,9 +1634,7 @@
   }
 
   function slideMeta(ch) {
-    var parts = ['<span class="live">LIVE</span>', esc(splitCat(ch.category))];
-    if (ch.countryHe) parts.push(esc(ch.countryHe));
-    else if (foreign(ch) && ch.lang !== 'auto') parts.push(esc(Dub.langName(ch.lang)));
+    var parts = ['<span class="live">Live</span>', esc(splitCat(ch.category))];
     if (ch.badge && !isRadioCh(ch)) parts.push(esc(ch.badge));
     return '<span>' + parts.join('</span><span>') + '</span>';
   }
@@ -1635,8 +1650,8 @@
         'radial-gradient(ellipse at 15% 85%, hsla(' + ((h + 50) % 360) + ',70%,40%,.4), hsla(0,0%,0%,0) 60%)"><img alt=""></div><div class="slide-shade"></div>' +
         '<div class="slide-body"><div class="slide-logo"><img alt=""><div class="mono hidden"></div></div>' +
         '<div class="slide-meta">' + slideMeta(ch) + '</div><h2 class="slide-title">' + esc(ch.name) + '</h2>' +
-        '<div class="slide-actions"><button class="fab-play" data-act="play">' + I('play') + (isRadioCh(ch) ? 'האזנה' : 'צפייה') + '</button>' +
-        '<button class="icon-tonal' + (isFav(ch) ? ' on' : '') + '" data-act="fav" aria-label="מועדף">' + I(isFav(ch) ? 'star' : 'starOutline') + '</button>' +
+        '<div class="slide-actions"><button class="icon-tonal' + (isFav(ch) ? ' on' : '') + '" data-act="fav" aria-label="מועדף">' + I(isFav(ch) ? 'star' : 'starOutline') + '</button>' +
+        '<button class="fab-play" data-act="play">' + I('play') + (isRadioCh(ch) ? 'האזנה' : 'צפייה') + '</button>' +
         '<button class="icon-tonal" data-act="info" aria-label="מידע">' + I('info') + '</button></div></div></div>';
     }).join('');
     Array.prototype.forEach.call(el.pagerTrack.children, function (slide, i) {
@@ -1651,13 +1666,16 @@
 
     // ---- shelves
     var shelves = [];
-    var recents = state.recents.map(function (id) { return state.all[indexInAll(id)]; }).filter(Boolean);
+    var macro = state.homeMacro || '', ilOnly = !!state.homeIsraeli;
+    var recents = macro ? [] : state.recents.map(function (id) { return state.all[indexInAll(id)]; }).filter(Boolean);
     if (recents.length) shelves.push({ id: 'RECENT', title: 'המשך צפייה', list: recents, wide: true });
-    var favs = state.all.filter(isFav);
+    var favs = macro ? [] : state.all.filter(isFav);
     if (favs.length) shelves.push({ id: 'FAVORITES', title: 'המועדפים שלי', list: favs });
     var dubShelf = null, israeli = /ישראל|בעברית|מנויים|מסורת/;
     state.cats.forEach(function (c) {
       if (c.id === 'ALL' || c.id === 'FAVORITES' || c.id === 'RECENT') return;
+      if (macro && c.id.split(' (')[0].split(' - ')[0].trim() !== macro) return;
+      if (ilOnly && (c.id === 'DUB' || !israeli.test(c.id))) return;
       var list = c.id === 'DUB' ? state.all.filter(function (x) { return foreign(x) && !/ישראל/.test(x.category); })
         : state.all.filter(function (x) { return x.category === c.id; });
       if (IS_WEB) list = list.filter(function (x) { return !appOnly(x); }).concat(list.filter(appOnly));
@@ -1670,6 +1688,10 @@
     if (dubShelf) shelves.push(dubShelf);
     el.shelves.innerHTML = '';
     var frag = document.createDocumentFragment();
+    var ilRow = document.createElement('label');
+    ilRow.className = 'il-row';
+    ilRow.innerHTML = '<span>רק ישראלי</span><input type="checkbox" class="il-toggle"' + (ilOnly ? ' checked' : '') + '><i class="il-switch"></i>';
+    frag.appendChild(ilRow);
     shelves.forEach(function (sh, si) {
       var sec = document.createElement('section');
       sec.className = 'shelf' + (sh.wide ? ' wide' : '');
@@ -1761,6 +1783,22 @@
     // iOS-style rubber band + bounce (BitChord physics) on every phone scroller; tilt + parallax on press
     [el.home, el.grid, el.settingsRows, el.menuList, el.drawerList].forEach(function (b) { Bounce.attach(b, 'y'); });
     setupTilt();
+
+    // the phone app's top row: settings, category chips, "only Israeli"
+    $('btn-ph-settings').addEventListener('click', function () { el.navbar.querySelector('.nb-item[data-tab="settings"]').click(); });
+    $('home-chips').addEventListener('click', function (e) {
+      var chip = e.target.closest('.home-chip');
+      if (!chip) return;
+      if (chip.getAttribute('data-more')) { setTab('explore'); return; }
+      state.homeMacro = chip.getAttribute('data-macro');
+      Array.prototype.forEach.call(this.children, function (c) { toggleClass(c, 'on', c === chip); });
+      buildHome();
+    });
+    el.home.addEventListener('change', function (e) {
+      if (!e.target.classList.contains('il-toggle')) return;
+      state.homeIsraeli = e.target.checked;
+      buildHome();
+    });
 
     // home: posters, "view all", hero buttons
     el.home.addEventListener('click', function (e) {
@@ -2085,7 +2123,7 @@
       it.setAttribute('data-c', i);
       var q = isApp(ch) ? 'אפליקציה' : isRadioCh(ch) ? 'רדיו' : (ch.badge || '');
       it.innerHTML = '<div class="atv-card"><div class="atv-logo"><img alt=""><div class="mono hidden"></div></div>' +
-        (q ? '<span class="atv-q">' + esc(q) + '</span>' : '') + '<span class="atv-num">' + ch.number + '</span>' +
+        (q ? '<span class="atv-q">' + esc(q) + '</span>' : '') + '<span class="atv-num">' + (ch.number || '') + '</span>' +
         '<i class="atv-sheen"></i></div><div class="atv-name">' + esc(ch.name) + '</div>';
       lazyLogo(it.querySelector('img'), it.querySelector('.mono'), ch);
       frag.appendChild(it);
@@ -2241,7 +2279,7 @@
     atv.flip = !atv.flip;
     if (!ch) { other.className = 'atv-meta'; target.className = 'atv-meta'; return; }
     var q = isApp(ch) ? 'אפליקציה' : isRadioCh(ch) ? 'רדיו' : (ch.badge || 'HD');
-    var tags = '<span class="atv-live"><i></i>LIVE</span><span class="atv-pill-q">' + esc(q) + '</span>' +
+    var tags = (ch.isVod ? '' : '<span class="atv-live"><i></i>LIVE</span>') + '<span class="atv-pill-q">' + esc(q) + '</span>' +
       '<span class="atv-tag">' + esc(splitCat(ch.category)) + '</span>' +
       (ch.countryHe ? '<span class="atv-tag">' + esc(ch.countryHe) + '</span>' : '') +
       (isFav(ch) ? '<span class="atv-tag">★ מועדף</span>' : '');

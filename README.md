@@ -1,7 +1,7 @@
 # ישראל TV+ | Israel TV Plus 🇮🇱 📺
 
 ערוצי טלוויזיה ותחנות רדיו ישראליות בשידור חי – **לטלוויזיה (LG, סמסונג, Android TV), לאנדרואיד, למחשב, לדפדפן ול-Stremio**.
-**440 ערוצים ותחנות**: ערוצי ישראל, ילדים בעברית, 143 תחנות רדיו, חדשות, סרטים, ספורט, אוכל ובישול, טיולים, מדע, כלכלה, קומדיה, דוקו, מוזיקה וערוצים מכל העולם עם **דיבוב חי לעברית**. באנדרואיד (טלפון וטאבלט): אפליקציה מקורית ב-Jetpack Compose – כרטיסי פוסטר, נגן נקי וטשטוש זכוכית של Material 3 Expressive, בצבעי הטפט או בפלטה לבחירה, פרופילים כמו בנטפליקס ומצב בהיר / כהה, עם גלילה וקפיצה כמו באייפון (אנדרואיד 7 ומעלה); בטלוויזיה (LG, סמסונג, Android TV): מסך בסגנון Apple TV+ עם תצוגה מקדימה חיה של הערוץ ברקע.
+**434 ערוצים ותחנות**, 136 תחנות רדיו ו-158 סדרות VOD: ערוצי ישראל, ילדים בעברית, חדשות, סרטים, ספורט, אוכל ובישול, טיולים, מדע, כלכלה, קומדיה, דוקו, מוזיקה וערוצים מכל העולם עם **דיבוב חי לעברית**. באנדרואיד (טלפון וטאבלט): אפליקציה מקורית ב-Jetpack Compose – כרטיסי פוסטר, נגן נקי וטשטוש זכוכית של Material 3 Expressive, בצבעי הטפט או בפלטה לבחירה, פרופילים כמו בנטפליקס ומצב בהיר / כהה, עם גלילה וקפיצה כמו באייפון (אנדרואיד 7 ומעלה); בטלוויזיה (LG, סמסונג, Android TV): מסך בסגנון Apple TV+ עם תצוגה מקדימה חיה של הערוץ ברקע.
 
 **▶ צפייה בדפדפן:** https://dor2500.github.io/israel-tv-plus/ · **📺 כל הערוצים:** [CHANNELS.md](CHANNELS.md) · **📋 מאיפה מגיע כל ערוץ:** [SOURCES.md](SOURCES.md) · **🆕 מה חדש:** [CHANGELOG.md](CHANGELOG.md)
 
@@ -90,14 +90,15 @@ irm https://dor2500.github.io/israel-tv-plus/install.ps1 | iex
 | | | |
 |---|---|---|
 | ![המסך הראשי](docs/screenshots/phone_home.jpg) | ![מדפים וכרטיסי פוסטר](docs/screenshots/phone_shelves.jpg) | ![עמוד הערוצים](docs/screenshots/phone_channels.jpg) |
-| ![הנגן](docs/screenshots/phone_player.jpg) | ![חלון אפשרויות](docs/screenshots/phone_options.jpg) | ![איכות וידאו](docs/screenshots/phone_quality.jpg) |
+| ![הגדרות](docs/screenshots/phone_settings.jpg) | ![הנגן](docs/screenshots/phone_player.jpg) | ![חלון אפשרויות](docs/screenshots/phone_options.jpg) |
 
-### 📺 בטלוויזיה
+### 📺 במחשב ובטלוויזיה
 
 | | |
 |---|---|
-| ![המסך הראשי](docs/screenshots/tv_home.jpg) | ![פוקוס על ערוץ](docs/screenshots/tv_focus.jpg) |
-| ![הנגן](docs/screenshots/tv_player.jpg) | ![פאנל אפשרויות](docs/screenshots/tv_panel.jpg) |
+| ![המסך הראשי](docs/screenshots/tv_home.jpg) | ![מדף ערוצי ישראל](docs/screenshots/tv_focus.jpg) |
+| ![סדרות VOD](docs/screenshots/tv_vod.jpg) | ![פרקי סדרה ועונות](docs/screenshots/tv_vod_series.jpg) |
+| ![לוח שידורים](docs/screenshots/tv_guide.jpg) | ![הגדרות](docs/screenshots/tv_settings.jpg) |
 
 ### ⌚ בשעון (Wear OS)
 
