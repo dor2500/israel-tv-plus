@@ -156,8 +156,8 @@
       }
       list = httpsList.concat(proxied).concat(httpList);
     }
-    // If the browser does not support 4K HEVC in MSE, prioritize FHD H.264 streams so video plays
-    if (!isHevcSupported() && /_4k|sport_5_4k|54k/i.test((ch.id || '') + ' ' + (ch.url || '') + ' ' + (ch.name || ''))) {
+    // Prioritize reliable FHD H.264 streams over 4K HEVC unless user explicitly selected 4K upscale mode
+    if ((S.quality !== 'upscale4k' || !isHevcSupported()) && /_4k|sport_5_4k|54k/i.test((ch.id || '') + ' ' + (ch.url || '') + ' ' + (ch.name || ''))) {
       var non4k = [], is4k = [];
       for (var k = 0; k < list.length; k++) {
         if (/_4k|54k/i.test(list[k])) is4k.push(list[k]);
@@ -3425,9 +3425,10 @@ function loadCandidate(ch, rawUrl) {
         levelLoadingMaxRetry: 6,
         fragLoadingMaxRetry: 6,
         // a whole segment must fit: some streams have 10 s segments on slow servers, and cutting them off restarts them
-        manifestLoadingTimeOut: 10000,
-        fragLoadingTimeOut: 20000,
-        levelLoadingTimeOut: 10000,
+        manifestLoadingTimeOut: 4500,
+        fragLoadingTimeOut: 12000,
+        levelLoadingTimeOut: 4500,
+        abrEwmaDefaultEstimate: 3500000,
         fragLoadingRetryDelay: 300,
         capLevelToPlayerSize: S.quality === 'auto'
       });
@@ -3496,12 +3497,12 @@ function loadCandidate(ch, rawUrl) {
               if (state.playing === ch && !v.paused && v.videoWidth === 0 && v.videoHeight === 0) {
                 var cands = state.candidates && state.candidates.length ? state.candidates : candidateUrlsOf(ch);
                 if ((state.candIdx || 0) + 1 < cands.length) {
-                  toast('מעבר אוטומטי לשידור FHD (וידאו)');
+                  toast('מעבר אוטומטי לשידור יציב עם תמונה');
                   state.candIdx = (state.candIdx || 0) + 1;
                   loadCandidate(ch, cands[state.candIdx]);
                 }
               }
-            }, 2500);
+            }, 1500);
           }
         };
         v.onended = function () {
@@ -4084,7 +4085,24 @@ function showOsd() {
       items.push({ ico: '🔴', label: 'חזרה לשידור חי', act: function () { if (state.playing) loadStream(state.playing); } });
     }
     if (CATCHUP[ch.id] || CATCHUP[(ch.id || '').toLowerCase()]) {
-      items.push({ ico: '⏮️', label: 'קאץ\' אפ (שידור חוזר)', act: function () { openCatchupModal(ch); } });
+      var nowMin = Date.now() / 60000;
+      var epgKey = (typeof CATCHUP_EPG !== 'undefined' && CATCHUP_EPG[ch.id]) || ch.id;
+      var epgList = (window.ITV_EPG && window.ITV_EPG.channels && window.ITV_EPG.channels[epgKey]) || [];
+      var curProg = null;
+      for (var pi = 0; pi < epgList.length; pi++) {
+        if (epgList[pi][0] <= nowMin && nowMin < epgList[pi][0] + epgList[pi][1]) {
+          curProg = epgList[pi];
+          break;
+        }
+      }
+      if (curProg && (nowMin - curProg[0] > 1)) {
+        items.push({
+          ico: '⏮️',
+          label: 'התחל תכנית מחדש: ' + curProg[2],
+          act: function () { playCatchup(ch, curProg[0], curProg[0] + curProg[1]); }
+        });
+      }
+      items.push({ ico: '⏮️', label: "קאץ' אפ ושידורים קודמים", act: function () { openCatchupModal(ch); } });
     }
     items.push({
       ico: '📶',

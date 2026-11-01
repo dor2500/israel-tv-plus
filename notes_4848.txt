@@ -1,0 +1,22 @@
+## מה חדש בגרסה 4.8.48:
+
+### עיצוב מודרני ומינימליסטי למסך ההגדרות בטלוויזיה (Material 3 Expressive):
+- **חלונית OLED Glassmorphic מעוגלת (28px)**: מסך הגדרות יוקרתי, צף ונקי ללא חסימה של חוויית הצפייה, עם מסגרת עדינה וטשטוש רקע עמוק (Backdrop Blur 36px).
+- **לשוניות ניווט בצורת Stadium (גלולה)**: עמודת הניווט עוצבה בהשראת Material You עם לשוניות קפסולה עגולות (`border-radius: 9999px`), טיפוגרפיה ברורה ואינדיקטור בחירה תואם.
+- **כרטיסי הגדרות טונאליים (20px) עם פוקוס שלט בולט**: שורות ההגדרה מופרדות ככרטיסים מודרניים עם רקע טונאלי עדין. בעת מעבר עם חיצי השלט, הכרטיס הממוקד מודגש במסגרת פוקוס כחולה זוהרת (`#60a5fa`, 3px) והגדלה אלגנטית (`scale 1.02`).
+- **סרגל מקשי שלט M3 בתחתית המסך**: הוספת מעגן גלולות מקשים בתחתית התפריט (ניווט, בחירה/שינוי, אישור, יציאה) המקל על התמצאות מהירה בסלון.
+
+### הסרת כל האימוג'ים ואייקונים וקטוריים Material Symbols:
+- **0 אימוג'ים**: הוסרו לחלוטין כל האימוג'ים החובבניים שהופיעו בכותרות, בסעיפים, בכרטיסי המשתמש ובשורות ההגדרה.
+- **אייקונים וקטוריים חדים**: כל קטגוריה בהגדרות מיוצגת כעת על ידי אייקון וקטורי חד ומדויק מבית Google Material Symbols (SVG).
+
+### תרגום Native מלא לעברית:
+- **עברית שידורית טבעית**: ניסוח מקצועי, קולח וברור בהתאם לסטנדרטים של ממשקי Yes+, Hot, Partner TV ו-Android TV. ללא תרגומי מכונה או ניסוחים מסורבלים.
+
+### הורדות והתקנה:
+- **Android TV / Google TV / Fire TV**: [`IsraelTVPlus-androidtv.apk`](https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.48/IsraelTVPlus-androidtv.apk)
+- **טלפון וטאבלט אנדרואיד**: [`IsraelTVPlus-android.apk`](https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.48/IsraelTVPlus-android.apk)
+- **LG webOS (טלוויזיות LG)**: [`com.israeltv.plus_all.ipk`](https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.48/com.israeltv.plus_all.ipk)
+- **Samsung Tizen (טלוויזיות סמסונג)**: [`IsraelTVPlus-tizen-project.zip`](https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.48/IsraelTVPlus-tizen-project.zip)
+- **Kodi הרחבה**: [`plugin.video.israeltvplus.zip`](https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.48/plugin.video.israeltvplus.zip)
+- **צפייה ישירה בדפדפן**: [https://dor2500.github.io/IsraelTVPlus/](https://dor2500.github.io/IsraelTVPlus/)

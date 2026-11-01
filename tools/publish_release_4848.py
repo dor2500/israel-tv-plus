@@ -52,3 +52,4 @@ cmd = ["gh", "release", "create", "v4.8.48", "--title", "v4.8.48: עיצוב Mat
 print("Running:", " ".join(cmd[:6]), f"+ {len(existing_assets)} files")
 subprocess.run(cmd, check=True)
 print("Release v4.8.48 published successfully!")
+

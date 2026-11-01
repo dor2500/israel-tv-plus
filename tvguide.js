@@ -407,7 +407,15 @@ window.ITVGuide = function (api) {
     if (!p) return;
     var m = now();
     if (canCatchup(ch, p)) { closeGuide(); resetOsd(); api.playCatchup(ch, startOf(p), endOf(p)); return; }
-    if (startOf(p) <= m && m < endOf(p)) { closeGuide(); resetOsd(); api.play(ch); }
+    if (startOf(p) <= m && m < endOf(p)) {
+      if (api.catchupHours && api.catchupHours(ch) && (m - startOf(p) > 2)) {
+        closeGuide(); resetOsd();
+        api.playCatchup(ch, startOf(p), endOf(p));
+        api.toast('⏮️ מתחיל את התכנית מחדש: ' + p[2]);
+        return;
+      }
+      closeGuide(); resetOsd(); api.play(ch);
+    }
     else api.toast(p[2] + ' · ' + dayLabel(startOf(p)) + ' ב-' + clock(startOf(p)));
   }
   function guideKey(code) {

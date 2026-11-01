@@ -1089,7 +1089,7 @@
     "category": "ספורט (Sports)",
     "categoryEn": "sports",
     "kind": "tv",
-    "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5_4k/live.livx/playlist.m3u8",
+    "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5/live.livx/playlist.m3u8",
     "badge": "4K UHD",
     "desc": "שידורי ספורט ישירים בטכנולוגיית 4K Ultra HD ו-FHD H.264 מלא: ליגת האלופות, ליגת העל בכדורגל, מכבי תל אביב ביורוליג והמשחקים המרכזיים בחדות שיא עם גיבוי FHD אוטומטי.",
     "lang": "he",
@@ -1097,7 +1097,7 @@
     "country": "IL",
     "countryHe": "ישראל",
     "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5/live.livx/playlist.m3u8",
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5_4k/live.livx/playlist.m3u8",
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32004/index.m3u8",
       "http://45.156.223.202/iptv/QAP2YS2594ZQS3/32004/index.m3u8",
       "https://rgelive.akamaized.net/hls/live/2043095/live3/playlist.m3u8"
@@ -3036,7 +3036,7 @@
     "title": "ערוץ ספורט 5 4K אולטרה HD",
     "category": "ספורט (Sports)",
     "categoryEn": "sports",
-    "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5_4k/live.livx/playlist.m3u8",
+    "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5/live.livx/playlist.m3u8",
     "logo": "assets/logos/sport5.png",
     "badge": "4K",
     "desc": "שידורי ספורט ישירים בטכנולוגיית 4K Ultra HD ו-FHD H.264 מלא: ליגת האלופות, ליגת העל בכדורגל, מכבי תל אביב ביורוליג והמשחקים המרכזיים בחדות שיא עם גיבוי FHD אוטומטי.",
@@ -3045,7 +3045,7 @@
     "countryHe": "ישראל",
     "number": 106,
     "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5/live.livx/playlist.m3u8",
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5_4k/live.livx/playlist.m3u8",
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32004/index.m3u8",
       "http://45.156.223.202/iptv/QAP2YS2594ZQS3/32004/index.m3u8",
       "https://rgelive.akamaized.net/hls/live/2043095/live3/playlist.m3u8"

@@ -537,3 +537,4 @@ else:
 with open("style.css", "w", encoding="utf-8") as f:
     f.write(css_code.strip() + "\n")
 print("style.css saved successfully!")
+

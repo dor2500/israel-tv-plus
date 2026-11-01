@@ -1085,15 +1085,15 @@
       "קאלט"
     ],
     "desc": "הסדרה הקומית זוכת פרס אמי הבינלאומי של אדיר מילר ורן דנקר. אמיר וטלי (אדום), איצקו ולילך (צהוב), וחפר הרווק הנצחי (ירוק) במצבים קורעים מצחוק.",
-    "poster": "assets/vod/savri_maranan.jpg",
-    "backdrop": "assets/vod/savri_maranan.jpg",
+    "poster": "assets/vod/ramzor.jpg",
+    "backdrop": "assets/vod/ramzor.jpg",
     "totalEpisodes": 52,
     "episodes": [
       {
         "id": "vod_ramzor_s1_ep1",
         "title": "עונה 1 · פרק 1: מחזיק מפתחות",
         "duration": "28 דק'",
-        "thumb": "assets/vod/savri_maranan.jpg",
+        "thumb": "assets/vod/ramzor.jpg",
         "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/savri/live.livx/playlist.m3u8",
         "season": 1,
         "episode": 1
@@ -1102,7 +1102,7 @@
         "id": "vod_ramzor_s1_ep2",
         "title": "עונה 1 · פרק 2: אופניים חשמליים",
         "duration": "27 דק'",
-        "thumb": "assets/vod/savri_maranan.jpg",
+        "thumb": "assets/vod/ramzor.jpg",
         "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/savri/live.livx/playlist.m3u8",
         "season": 1,
         "episode": 2
@@ -1111,7 +1111,7 @@
         "id": "vod_ramzor_s1_ep3",
         "title": "עונה 1 · פרק 3: סופשבוע בצימר",
         "duration": "29 דק'",
-        "thumb": "assets/vod/savri_maranan.jpg",
+        "thumb": "assets/vod/ramzor.jpg",
         "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/savri/live.livx/playlist.m3u8",
         "season": 1,
         "episode": 3
@@ -1120,7 +1120,7 @@
         "id": "vod_ramzor_s1_ep4",
         "title": "עונה 1 · פרק 4: החתונה של גיסו של חפר",
         "duration": "28 דק'",
-        "thumb": "assets/vod/savri_maranan.jpg",
+        "thumb": "assets/vod/ramzor.jpg",
         "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/savri/live.livx/playlist.m3u8",
         "season": 1,
         "episode": 4
@@ -1129,7 +1129,7 @@
         "id": "vod_ramzor_s1_ep5",
         "title": "עונה 1 · פרק 5: ערב טאקי",
         "duration": "26 דק'",
-        "thumb": "assets/vod/savri_maranan.jpg",
+        "thumb": "assets/vod/ramzor.jpg",
         "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/savri/live.livx/playlist.m3u8",
         "season": 1,
         "episode": 5
@@ -1138,7 +1138,7 @@
         "id": "vod_ramzor_s1_ep6",
         "title": "עונה 1 · פרק 6: בדיקת דם",
         "duration": "28 דק'",
-        "thumb": "assets/vod/savri_maranan.jpg",
+        "thumb": "assets/vod/ramzor.jpg",
         "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/savri/live.livx/playlist.m3u8",
         "season": 1,
         "episode": 6
@@ -1147,7 +1147,7 @@
         "id": "vod_ramzor_s1_ep7",
         "title": "עונה 1 · פרק 7: ליל הסדר",
         "duration": "30 דק'",
-        "thumb": "assets/vod/savri_maranan.jpg",
+        "thumb": "assets/vod/ramzor.jpg",
         "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/savri/live.livx/playlist.m3u8",
         "season": 1,
         "episode": 7
@@ -1156,7 +1156,7 @@
         "id": "vod_ramzor_s1_ep8",
         "title": "עונה 1 · פרק 8: פקקים",
         "duration": "27 דק'",
-        "thumb": "assets/vod/savri_maranan.jpg",
+        "thumb": "assets/vod/ramzor.jpg",
         "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/savri/live.livx/playlist.m3u8",
         "season": 1,
         "episode": 8
@@ -1165,7 +1165,7 @@
         "id": "vod_ramzor_s1_ep9",
         "title": "עונה 1 · פרק 9: ראיון עבודה",
         "duration": "28 דק'",
-        "thumb": "assets/vod/savri_maranan.jpg",
+        "thumb": "assets/vod/ramzor.jpg",
         "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/savri/live.livx/playlist.m3u8",
         "season": 1,
         "episode": 9
@@ -1174,7 +1174,7 @@
         "id": "vod_ramzor_s1_ep10",
         "title": "עונה 1 · פרק 10: מסיבת רווקים",
         "duration": "29 דק'",
-        "thumb": "assets/vod/savri_maranan.jpg",
+        "thumb": "assets/vod/ramzor.jpg",
         "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/savri/live.livx/playlist.m3u8",
         "season": 1,
         "episode": 10
@@ -1183,7 +1183,7 @@
         "id": "vod_ramzor_s1_ep11",
         "title": "עונה 1 · פרק 11: משבר גיל ה-30",
         "duration": "28 דק'",
-        "thumb": "assets/vod/savri_maranan.jpg",
+        "thumb": "assets/vod/ramzor.jpg",
         "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/savri/live.livx/playlist.m3u8",
         "season": 1,
         "episode": 11
@@ -1192,7 +1192,7 @@
         "id": "vod_ramzor_s1_ep12",
         "title": "עונה 1 · פרק 12: המעבר לתל אביב",
         "duration": "28 דק'",
-        "thumb": "assets/vod/savri_maranan.jpg",
+        "thumb": "assets/vod/ramzor.jpg",
         "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/savri/live.livx/playlist.m3u8",
         "season": 1,
         "episode": 12
@@ -1201,7 +1201,7 @@
         "id": "vod_ramzor_s1_ep13",
         "title": "עונה 1 · פרק 13: סיום עונה 1",
         "duration": "31 דק'",
-        "thumb": "assets/vod/savri_maranan.jpg",
+        "thumb": "assets/vod/ramzor.jpg",
         "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/savri/live.livx/playlist.m3u8",
         "season": 1,
         "episode": 13
@@ -1210,7 +1210,7 @@
         "id": "vod_ramzor_s2_ep1",
         "title": "עונה 2 · פרק 1: קורס הכנה ללידה",
         "duration": "28 דק'",
-        "thumb": "assets/vod/savri_maranan.jpg",
+        "thumb": "assets/vod/ramzor.jpg",
         "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/savri/live.livx/playlist.m3u8",
         "season": 2,
         "episode": 1
@@ -1219,7 +1219,7 @@
         "id": "vod_ramzor_s2_ep2",
         "title": "עונה 2 · פרק 2: פסיכולוג זוגי",
         "duration": "29 דק'",
-        "thumb": "assets/vod/savri_maranan.jpg",
+        "thumb": "assets/vod/ramzor.jpg",
         "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/savri/live.livx/playlist.m3u8",
         "season": 2,
         "episode": 2
@@ -1228,7 +1228,7 @@
         "id": "vod_ramzor_s2_ep3",
         "title": "עונה 2 · פרק 3: איצקו פותח חנות",
         "duration": "27 דק'",
-        "thumb": "assets/vod/savri_maranan.jpg",
+        "thumb": "assets/vod/ramzor.jpg",
         "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/savri/live.livx/playlist.m3u8",
         "season": 2,
         "episode": 3
@@ -1237,7 +1237,7 @@
         "id": "vod_ramzor_s2_ep4",
         "title": "עונה 2 · פרק 4: חפר והסטודנטית",
         "duration": "28 דק'",
-        "thumb": "assets/vod/savri_maranan.jpg",
+        "thumb": "assets/vod/ramzor.jpg",
         "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/savri/live.livx/playlist.m3u8",
         "season": 2,
         "episode": 4
@@ -1246,7 +1246,7 @@
         "id": "vod_ramzor_s2_ep5",
         "title": "עונה 2 · פרק 5: הברית",
         "duration": "30 דק'",
-        "thumb": "assets/vod/savri_maranan.jpg",
+        "thumb": "assets/vod/ramzor.jpg",
         "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/savri/live.livx/playlist.m3u8",
         "season": 2,
         "episode": 5
@@ -1255,7 +1255,7 @@
         "id": "vod_ramzor_s2_ep6",
         "title": "עונה 2 · פרק 6: חופשה באילת",
         "duration": "28 דק'",
-        "thumb": "assets/vod/savri_maranan.jpg",
+        "thumb": "assets/vod/ramzor.jpg",
         "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/savri/live.livx/playlist.m3u8",
         "season": 2,
         "episode": 6
@@ -1264,7 +1264,7 @@
         "id": "vod_ramzor_s2_ep7",
         "title": "עונה 2 · פרק 7: יום הולדת ללילך",
         "duration": "29 דק'",
-        "thumb": "assets/vod/savri_maranan.jpg",
+        "thumb": "assets/vod/ramzor.jpg",
         "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/savri/live.livx/playlist.m3u8",
         "season": 2,
         "episode": 7
@@ -1273,7 +1273,7 @@
         "id": "vod_ramzor_s2_ep8",
         "title": "עונה 2 · פרק 8: הלוואה",
         "duration": "27 דק'",
-        "thumb": "assets/vod/savri_maranan.jpg",
+        "thumb": "assets/vod/ramzor.jpg",
         "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/savri/live.livx/playlist.m3u8",
         "season": 2,
         "episode": 8
@@ -1282,7 +1282,7 @@
         "id": "vod_ramzor_s2_ep9",
         "title": "עונה 2 · פרק 9: שיפוצים",
         "duration": "28 דק'",
-        "thumb": "assets/vod/savri_maranan.jpg",
+        "thumb": "assets/vod/ramzor.jpg",
         "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/savri/live.livx/playlist.m3u8",
         "season": 2,
         "episode": 9
@@ -1291,7 +1291,7 @@
         "id": "vod_ramzor_s2_ep10",
         "title": "עונה 2 · פרק 10: קמפינג בכנרת",
         "duration": "29 דק'",
-        "thumb": "assets/vod/savri_maranan.jpg",
+        "thumb": "assets/vod/ramzor.jpg",
         "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/savri/live.livx/playlist.m3u8",
         "season": 2,
         "episode": 10
@@ -1300,7 +1300,7 @@
         "id": "vod_ramzor_s2_ep11",
         "title": "עונה 2 · פרק 11: הדיאטה של איצקו",
         "duration": "27 דק'",
-        "thumb": "assets/vod/savri_maranan.jpg",
+        "thumb": "assets/vod/ramzor.jpg",
         "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/savri/live.livx/playlist.m3u8",
         "season": 2,
         "episode": 11
@@ -1309,7 +1309,7 @@
         "id": "vod_ramzor_s2_ep12",
         "title": "עונה 2 · פרק 12: הפרידה של חפר",
         "duration": "28 דק'",
-        "thumb": "assets/vod/savri_maranan.jpg",
+        "thumb": "assets/vod/ramzor.jpg",
         "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/savri/live.livx/playlist.m3u8",
         "season": 2,
         "episode": 12
@@ -1318,7 +1318,7 @@
         "id": "vod_ramzor_s2_ep13",
         "title": "עונה 2 · פרק 13: לידה - סיום עונה 2",
         "duration": "32 דק'",
-        "thumb": "assets/vod/savri_maranan.jpg",
+        "thumb": "assets/vod/ramzor.jpg",
         "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/savri/live.livx/playlist.m3u8",
         "season": 2,
         "episode": 13
@@ -1327,7 +1327,7 @@
         "id": "vod_ramzor_s3_ep1",
         "title": "עונה 3 · פרק 1: דניאלה",
         "duration": "28 דק'",
-        "thumb": "assets/vod/savri_maranan.jpg",
+        "thumb": "assets/vod/ramzor.jpg",
         "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/savri/live.livx/playlist.m3u8",
         "season": 3,
         "episode": 1
@@ -1336,7 +1336,7 @@
         "id": "vod_ramzor_s3_ep2",
         "title": "עונה 3 · פרק 2: שמרטפית",
         "duration": "29 דק'",
-        "thumb": "assets/vod/savri_maranan.jpg",
+        "thumb": "assets/vod/ramzor.jpg",
         "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/savri/live.livx/playlist.m3u8",
         "season": 3,
         "episode": 2
@@ -1345,7 +1345,7 @@
         "id": "vod_ramzor_s3_ep3",
         "title": "עונה 3 · פרק 3: חפר פותח עסק",
         "duration": "27 דק'",
-        "thumb": "assets/vod/savri_maranan.jpg",
+        "thumb": "assets/vod/ramzor.jpg",
         "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/savri/live.livx/playlist.m3u8",
         "season": 3,
         "episode": 3
@@ -1354,7 +1354,7 @@
         "id": "vod_ramzor_s3_ep4",
         "title": "עונה 3 · פרק 4: איצקו קונה רכב",
         "duration": "28 דק'",
-        "thumb": "assets/vod/savri_maranan.jpg",
+        "thumb": "assets/vod/ramzor.jpg",
         "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/savri/live.livx/playlist.m3u8",
         "season": 3,
         "episode": 4
@@ -1363,7 +1363,7 @@
         "id": "vod_ramzor_s3_ep5",
         "title": "עונה 3 · פרק 5: מסיבת גן",
         "duration": "29 דק'",
-        "thumb": "assets/vod/savri_maranan.jpg",
+        "thumb": "assets/vod/ramzor.jpg",
         "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/savri/live.livx/playlist.m3u8",
         "season": 3,
         "episode": 5
@@ -1372,7 +1372,7 @@
         "id": "vod_ramzor_s3_ep6",
         "title": "עונה 3 · פרק 6: חמותי ואני",
         "duration": "28 דק'",
-        "thumb": "assets/vod/savri_maranan.jpg",
+        "thumb": "assets/vod/ramzor.jpg",
         "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/savri/live.livx/playlist.m3u8",
         "season": 3,
         "episode": 6
@@ -1381,7 +1381,7 @@
         "id": "vod_ramzor_s3_ep7",
         "title": "עונה 3 · פרק 7: ליל גברים",
         "duration": "27 דק'",
-        "thumb": "assets/vod/savri_maranan.jpg",
+        "thumb": "assets/vod/ramzor.jpg",
         "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/savri/live.livx/playlist.m3u8",
         "season": 3,
         "episode": 7
@@ -1390,7 +1390,7 @@
         "id": "vod_ramzor_s3_ep8",
         "title": "עונה 3 · פרק 8: הטיול לחו\"ל",
         "duration": "30 דק'",
-        "thumb": "assets/vod/savri_maranan.jpg",
+        "thumb": "assets/vod/ramzor.jpg",
         "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/savri/live.livx/playlist.m3u8",
         "season": 3,
         "episode": 8
@@ -1399,7 +1399,7 @@
         "id": "vod_ramzor_s3_ep9",
         "title": "עונה 3 · פרק 9: זוגיות במשבר",
         "duration": "28 דק'",
-        "thumb": "assets/vod/savri_maranan.jpg",
+        "thumb": "assets/vod/ramzor.jpg",
         "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/savri/live.livx/playlist.m3u8",
         "season": 3,
         "episode": 9
@@ -1408,7 +1408,7 @@
         "id": "vod_ramzor_s3_ep10",
         "title": "עונה 3 · פרק 10: סדנת כעסים",
         "duration": "29 דק'",
-        "thumb": "assets/vod/savri_maranan.jpg",
+        "thumb": "assets/vod/ramzor.jpg",
         "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/savri/live.livx/playlist.m3u8",
         "season": 3,
         "episode": 10
@@ -1417,7 +1417,7 @@
         "id": "vod_ramzor_s3_ep11",
         "title": "עונה 3 · פרק 11: יום נישואין",
         "duration": "28 דק'",
-        "thumb": "assets/vod/savri_maranan.jpg",
+        "thumb": "assets/vod/ramzor.jpg",
         "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/savri/live.livx/playlist.m3u8",
         "season": 3,
         "episode": 11
@@ -1426,7 +1426,7 @@
         "id": "vod_ramzor_s3_ep12",
         "title": "עונה 3 · פרק 12: המשחק הגדול",
         "duration": "28 דק'",
-        "thumb": "assets/vod/savri_maranan.jpg",
+        "thumb": "assets/vod/ramzor.jpg",
         "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/savri/live.livx/playlist.m3u8",
         "season": 3,
         "episode": 12
@@ -1435,7 +1435,7 @@
         "id": "vod_ramzor_s3_ep13",
         "title": "עונה 3 · פרק 13: סיום עונה 3",
         "duration": "32 דק'",
-        "thumb": "assets/vod/savri_maranan.jpg",
+        "thumb": "assets/vod/ramzor.jpg",
         "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/savri/live.livx/playlist.m3u8",
         "season": 3,
         "episode": 13
@@ -1444,7 +1444,7 @@
         "id": "vod_ramzor_s4_ep1",
         "title": "עונה 4 · פרק 1: החיים החדשים",
         "duration": "28 דק'",
-        "thumb": "assets/vod/savri_maranan.jpg",
+        "thumb": "assets/vod/ramzor.jpg",
         "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/savri/live.livx/playlist.m3u8",
         "season": 4,
         "episode": 1
@@ -1453,7 +1453,7 @@
         "id": "vod_ramzor_s4_ep2",
         "title": "עונה 4 · פרק 2: חפר מוצא אהבה",
         "duration": "29 דק'",
-        "thumb": "assets/vod/savri_maranan.jpg",
+        "thumb": "assets/vod/ramzor.jpg",
         "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/savri/live.livx/playlist.m3u8",
         "season": 4,
         "episode": 2
@@ -1462,7 +1462,7 @@
         "id": "vod_ramzor_s4_ep3",
         "title": "עונה 4 · פרק 3: איצקו והגירושין",
         "duration": "28 דק'",
-        "thumb": "assets/vod/savri_maranan.jpg",
+        "thumb": "assets/vod/ramzor.jpg",
         "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/savri/live.livx/playlist.m3u8",
         "season": 4,
         "episode": 3
@@ -1471,7 +1471,7 @@
         "id": "vod_ramzor_s4_ep4",
         "title": "עונה 4 · פרק 4: המעבר לבית החדש",
         "duration": "27 דק'",
-        "thumb": "assets/vod/savri_maranan.jpg",
+        "thumb": "assets/vod/ramzor.jpg",
         "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/savri/live.livx/playlist.m3u8",
         "season": 4,
         "episode": 4
@@ -1480,7 +1480,7 @@
         "id": "vod_ramzor_s4_ep5",
         "title": "עונה 4 · פרק 5: דייט ראשון",
         "duration": "29 דק'",
-        "thumb": "assets/vod/savri_maranan.jpg",
+        "thumb": "assets/vod/ramzor.jpg",
         "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/savri/live.livx/playlist.m3u8",
         "season": 4,
         "episode": 5
@@ -1489,7 +1489,7 @@
         "id": "vod_ramzor_s4_ep6",
         "title": "עונה 4 · פרק 6: הבת מצווה",
         "duration": "28 דק'",
-        "thumb": "assets/vod/savri_maranan.jpg",
+        "thumb": "assets/vod/ramzor.jpg",
         "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/savri/live.livx/playlist.m3u8",
         "season": 4,
         "episode": 6
@@ -1498,7 +1498,7 @@
         "id": "vod_ramzor_s4_ep7",
         "title": "עונה 4 · פרק 7: פגישת מחזור",
         "duration": "28 דק'",
-        "thumb": "assets/vod/savri_maranan.jpg",
+        "thumb": "assets/vod/ramzor.jpg",
         "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/savri/live.livx/playlist.m3u8",
         "season": 4,
         "episode": 7
@@ -1507,7 +1507,7 @@
         "id": "vod_ramzor_s4_ep8",
         "title": "עונה 4 · פרק 8: סופ\"ש של בנים",
         "duration": "30 דק'",
-        "thumb": "assets/vod/savri_maranan.jpg",
+        "thumb": "assets/vod/ramzor.jpg",
         "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/savri/live.livx/playlist.m3u8",
         "season": 4,
         "episode": 8
@@ -1516,7 +1516,7 @@
         "id": "vod_ramzor_s4_ep9",
         "title": "עונה 4 · פרק 9: החתונה של חפר?",
         "duration": "29 דק'",
-        "thumb": "assets/vod/savri_maranan.jpg",
+        "thumb": "assets/vod/ramzor.jpg",
         "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/savri/live.livx/playlist.m3u8",
         "season": 4,
         "episode": 9
@@ -1525,7 +1525,7 @@
         "id": "vod_ramzor_s4_ep10",
         "title": "עונה 4 · פרק 10: מילואים",
         "duration": "28 דק'",
-        "thumb": "assets/vod/savri_maranan.jpg",
+        "thumb": "assets/vod/ramzor.jpg",
         "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/savri/live.livx/playlist.m3u8",
         "season": 4,
         "episode": 10
@@ -1534,7 +1534,7 @@
         "id": "vod_ramzor_s4_ep11",
         "title": "עונה 4 · פרק 11: הצעת נישואין",
         "duration": "29 דק'",
-        "thumb": "assets/vod/savri_maranan.jpg",
+        "thumb": "assets/vod/ramzor.jpg",
         "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/savri/live.livx/playlist.m3u8",
         "season": 4,
         "episode": 11
@@ -1543,7 +1543,7 @@
         "id": "vod_ramzor_s4_ep12",
         "title": "עונה 4 · פרק 12: רגע לפני",
         "duration": "28 דק'",
-        "thumb": "assets/vod/savri_maranan.jpg",
+        "thumb": "assets/vod/ramzor.jpg",
         "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/savri/live.livx/playlist.m3u8",
         "season": 4,
         "episode": 12
@@ -1552,7 +1552,7 @@
         "id": "vod_ramzor_s4_ep13",
         "title": "עונה 4 · פרק 13: פרק הסיום הגדול של רמזור",
         "duration": "35 דק'",
-        "thumb": "assets/vod/savri_maranan.jpg",
+        "thumb": "assets/vod/ramzor.jpg",
         "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/savri/live.livx/playlist.m3u8",
         "season": 4,
         "episode": 13
@@ -39154,43 +39154,43 @@
       "ישראלי"
     ],
     "desc": "אדיר מילר מציג את חייו האישיים, הזוגיים והמקצועיים בין הופעות סטנד-אפ לגידול המשפחה בליווי עופר שכטר, מירי אלוני וגל זייד.",
-    "poster": "assets/vod/savri_maranan.jpg",
-    "backdrop": "assets/vod/savri_maranan.jpg",
+    "poster": "assets/vod/tzomet_miller.jpg",
+    "backdrop": "assets/vod/tzomet_miller.jpg",
     "totalEpisodes": 5,
     "episodes": [
       {
         "id": "vod_miller_live",
         "title": "מרתון צומת מילר HD",
         "duration": "שידור רצוף",
-        "thumb": "assets/vod/savri_maranan.jpg",
+        "thumb": "assets/vod/tzomet_miller.jpg",
         "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/savri/live.livx/playlist.m3u8"
       },
       {
         "id": "vod_miller_ep1",
         "title": "פרק 1 - סודות הזוגיות והבמה",
         "duration": "35 דקות",
-        "thumb": "assets/vod/savri_maranan.jpg",
+        "thumb": "assets/vod/tzomet_miller.jpg",
         "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/savri/live.livx/playlist.m3u8"
       },
       {
         "id": "vod_miller_ep2",
         "title": "פרק 2 - הופעה בחתונה של עבריין",
         "duration": "33 דקות",
-        "thumb": "assets/vod/savri_maranan.jpg",
+        "thumb": "assets/vod/tzomet_miller.jpg",
         "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/savri/live.livx/playlist.m3u8"
       },
       {
         "id": "vod_miller_ep3",
         "title": "פרק 3 - משבר גיל ה-40",
         "duration": "30 דקות",
-        "thumb": "assets/vod/savri_maranan.jpg",
+        "thumb": "assets/vod/tzomet_miller.jpg",
         "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/savri/live.livx/playlist.m3u8"
       },
       {
         "id": "vod_miller_ep4",
         "title": "פרק 4 - המפגש עם המעריצים",
         "duration": "31 דקות",
-        "thumb": "assets/vod/savri_maranan.jpg",
+        "thumb": "assets/vod/tzomet_miller.jpg",
         "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/savri/live.livx/playlist.m3u8"
       }
     ]
@@ -41175,15 +41175,15 @@
       "קולנוע"
     ],
     "desc": "סרט הקאלט הישראלי הגדול בכל הזמנים בבימויו של דרור שאול. שלושה אחים בקיבוץ מנסים להביא את סבתם המנוחה חיה לקבורה מסודרת, ומסתבכים בשורת אירועים בלתי נשכחים. 'אתה מתחיל הכי מהר שלך, ולאט לאט אתה מגביר!'.",
-    "poster": "assets/logos/savri_maranan.png",
-    "backdrop": "assets/logos/savri_maranan.png",
+    "poster": "assets/vod/mivtza_savta.jpg",
+    "backdrop": "assets/vod/mivtza_savta.jpg",
     "totalEpisodes": 1,
     "episodes": [
       {
         "id": "vod_mivtza_savta_full",
         "title": "הסרט המלא באיכות HD",
         "duration": "00:50:00",
-        "thumb": "assets/logos/savri_maranan.png",
+        "thumb": "assets/vod/mivtza_savta.jpg",
         "url": "https://d15ds134q59udk.cloudfront.net/out/v1/fa9d8b1e4c344793b8d145e5bbcae912/index.m3u8",
         "season": 1,
         "episode": 1
