@@ -1,4 +1,4 @@
-window.CHANNELS = [
+window.CHANNELS_DATA = window.ITV_CHANNELS = window.CHANNELS = [
   {
     "id": "walla_news_il",
     "name": "וואלה!+ חדשות – שידור חי HD",
@@ -11235,80 +11235,92 @@ window.VOD_DATA = [
       "סאטירה"
     ],
     "desc": "עלילותיהם הקורעות מצחוק של עובדי ולקוחות סניף שפע יששכר ביבנה. שירה שטיינבוך, כוכבה שביט, ראמזי עבד ראמזי, ניסים ואנטולי, טיטיבנסקי, אסתי ואמנון.",
-    "poster": "https://upload.wikimedia.org/wikipedia/he/9/90/%D7%A7%D7%95%D7%A4%D7%94_%D7%A8%D7%90%D7%A9%D7%99%D7%AA_%D7%A2%D7%95%D7%A0%D7%94_4.jpg",
-    "backdrop": "https://upload.wikimedia.org/wikipedia/he/9/90/%D7%A7%D7%95%D7%A4%D7%94_%D7%A8%D7%90%D7%A9%D7%99%D7%AA_%D7%A2%D7%95%D7%A0%D7%94_4.jpg",
+    "poster": "assets/vod/checkout.png",
+    "backdrop": "https://mobapi.kan.org.il/media/rphp2ksg/169-no-logo-1920x1080%D7%A7%D7%95%D7%A4%D7%94%D7%A8%D7%90%D7%A9%D7%99%D7%AA%D7%A2%D7%95%D7%A0%D7%944.jpg?width=1280",
     "episodes": [
       {
         "id": "vod_checkout_ep_1098487",
         "title": "פרק 1 - אבא גנוב",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2246979/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2246979/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/501jdh55/%D7%A7%D7%95%D7%A4%D7%94-%D7%A8%D7%90%D7%A9%D7%99%D7%AA-61.png?width=480"
       },
       {
         "id": "vod_checkout_ep_1102541",
         "title": "פרק 2 - אנטולי קצב עליון",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2248982/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2248982/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/aqrj0enl/%D7%9C%D7%90%D7%AA%D7%A8-%D7%9E%D7%AA%D7%95%D7%A7%D7%9F.jpg?width=480"
       },
       {
         "id": "vod_checkout_ep_1098490",
         "title": "פרק 3 -  ניסים משלים מניין",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2244718/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2244718/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/qyadt0cc/%D7%A0%D7%A7%D7%99-%D7%9C%D7%90%D7%AA%D7%A8.jpg?width=480"
       },
       {
         "id": "vod_checkout_ep_1098491",
         "title": "פרק 4 - זהבה וארנון",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2244719/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2244719/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/ejucl3dr/%D7%9C%D7%90%D7%AA%D7%A8.jpg?width=480"
       },
       {
         "id": "vod_checkout_ep_1098375",
         "title": "פרק 5 - שמור לי תור לי",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2244720/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2244720/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/xj4k5tr3/%D7%9C%D7%90%D7%AA%D7%A8-%D7%97%D7%93%D7%A9.jpg?width=480"
       },
       {
         "id": "vod_checkout_ep_1098376",
         "title": "פרק 6 - ראמזי תמיד אשם",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2244721/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2244721/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/nmug0edp/s0580002-kupa-s06e05_last_scene_clean_h265_12mbps_2026-10-1900_21_27_13still009.jpg?width=480"
       },
       {
         "id": "vod_checkout_ep_1113189",
         "title": "ספיישל בחירות 2026 - אמנון לשלטון",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2259546/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2259546/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/cjsoicse/%D7%A7%D7%95%D7%A4%D7%94-%D7%A8%D7%90%D7%A9%D7%99%D7%AA-%D7%9C%D7%90%D7%AA%D7%A8.jpg?width=480"
       },
       {
         "id": "vod_checkout_ep_809113",
         "title": "פרק 1 - כפרות",
         "duration": "פרק מלא",
-        "url": "https://kancdn.cdns.avcom-bezeq.tv/webcache/gorigin/hls/oil/kancdn/vod/1_csokhtwe/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://kancdn.cdns.avcom-bezeq.tv/webcache/gorigin/hls/oil/kancdn/vod/1_csokhtwe/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/dpoecwvn/%D7%A7%D7%95%D7%A4%D7%94-%D7%A8%D7%90%D7%A9%D7%99%D7%AA-%D7%A0%D7%A7%D7%99.jpg?width=480"
       },
       {
         "id": "vod_checkout_ep_809157",
         "title": "פרק 2 - הסטארט-אפ של כוכבה",
         "duration": "פרק מלא",
-        "url": "https://kancdn.cdns.avcom-bezeq.tv/webcache/gorigin/hls/oil/kancdn/vod/1_ygac97dd/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://kancdn.cdns.avcom-bezeq.tv/webcache/gorigin/hls/oil/kancdn/vod/1_ygac97dd/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/bsud5mh1/%D7%A7%D7%95%D7%A4%D7%94-%D7%A8%D7%90%D7%A9%D7%99%D7%AA-%D7%A4%D7%A8%D7%A7-2-%D7%A2%D7%95%D7%A0%D7%94-5.jpg?width=480"
       },
       {
         "id": "vod_checkout_ep_809161",
         "title": "פרק 3 - שברת שילמת",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_y8emnwxk/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_y8emnwxk/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/41shjzq0/%D7%A7%D7%95%D7%A4%D7%94-%D7%A8%D7%90%D7%A9%D7%99%D7%AA.jpg?width=480"
       },
       {
         "id": "vod_checkout_ep_809162",
         "title": "פרק 4 - דניס קמחי",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_wy8yk2x8/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_wy8yk2x8/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/nqklbwn4/whatsapp-image-2024-12-02-at-104701.jpeg?width=480"
       },
       {
         "id": "vod_checkout_ep_809165",
         "title": "פרק 5 - טלפונובלה",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_6hu0lscj/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_6hu0lscj/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/0zccodbs/%D7%90%D7%AA%D7%A8-_%D7%97%D7%93%D7%A9.jpg?width=480"
       }
     ],
     "totalEpisodes": 120
@@ -11327,80 +11339,92 @@ window.VOD_DATA = [
       "ישראלי"
     ],
     "desc": "דרמת מתח משטרתית זוכת פרסי האקדמיה. חוקר מח\"ש איזי בכר יוצא לחקור את חברו הטוב ביותר במשטרה, ברק הראל.",
-    "poster": "https://upload.wikimedia.org/wikipedia/he/6/69/Manayek_poster.jpg",
-    "backdrop": "https://upload.wikimedia.org/wikipedia/he/6/69/Manayek_poster.jpg",
+    "poster": "assets/vod/manayek.jpg",
+    "backdrop": "https://mobapi.kan.org.il/media/s2lbdecs/1920x1080_no-logo_%D7%9E%D7%A0%D7%90%D7%99%D7%99%D7%9B3.jpg?width=1280",
     "episodes": [
       {
         "id": "vod_manayek_ep_686141",
         "title": "פרק 1 - הבכורה",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_4a6kir7n/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_4a6kir7n/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/14td1wvm/%D7%9C%D7%90%D7%AA%D7%A8-%D7%A4%D7%A8%D7%A7-1.jpg?width=480"
       },
       {
         "id": "vod_manayek_ep_686145",
         "title": "פרק 2 - בריחה",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_tsgj6ml2/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_tsgj6ml2/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/1mwp1g30/%D7%9C%D7%90%D7%AA%D7%A8-%D7%A2%D7%95%D7%A0%D7%94-3-%D7%A4%D7%A8%D7%A7-2.jpg?width=480"
       },
       {
         "id": "vod_manayek_ep_693480",
         "title": "פרק 3 - אמת",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_u03397eb/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_u03397eb/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/g5xkbgzl/%D7%90%D7%AA%D7%A8.jpg?width=480"
       },
       {
         "id": "vod_manayek_ep_693488",
         "title": "פרק 4 - אודי",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_si83kkaa/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_si83kkaa/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/vjihshqd/%D7%9E%D7%A0%D7%90%D7%99%D7%9B-3-%D7%A4%D7%A8%D7%A7-4.jpg?width=480"
       },
       {
         "id": "vod_manayek_ep_695456",
         "title": "פרק 5 - מבחן",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_bghfulgx/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_bghfulgx/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/df0drgut/%D7%9E%D7%A0%D7%90%D7%99%D7%99%D7%9B-3-%D7%A4%D7%A8%D7%A7-5-%D7%9C%D7%90%D7%AA%D7%A8.jpg?width=480"
       },
       {
         "id": "vod_manayek_ep_695459",
         "title": "פרק 6 - מלכודות",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_f27osj0m/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_f27osj0m/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/zxofnc1v/%D7%9E%D7%A0%D7%90%D7%99%D7%9B-3-%D7%A4%D7%A8%D7%A7-6.jpg?width=480"
       },
       {
         "id": "vod_manayek_ep_699113",
         "title": "פרק 7 - מניע",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_0mppw3wa/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_0mppw3wa/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/nyxidifg/%D7%9E%D7%A0%D7%90%D7%99%D7%99%D7%9B-3-%D7%A4%D7%A8%D7%A7-7-%D7%90%D7%AA%D7%A8.jpg?width=480"
       },
       {
         "id": "vod_manayek_ep_699461",
         "title": "פרק 8 - תוצאות",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_8787h75d/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_8787h75d/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/4myfaaqy/%D7%9C%D7%90%D7%AA%D7%A8-%D7%9E%D7%A0%D7%90%D7%99%D7%99%D7%9B-3-%D7%A4%D7%A8%D7%A7-8.jpg?width=480"
       },
       {
         "id": "vod_manayek_ep_704401",
         "title": "פרק 9 - התפרקות",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_1zxap76o/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_1zxap76o/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/ytwc5w2n/%D7%98%D7%90%D7%9E%D7%A0%D7%99%D7%99%D7%9C-%D7%90%D7%AA%D7%A8.jpg?width=480"
       },
       {
         "id": "vod_manayek_ep_707890",
         "title": "פרק 10 (אחרון) - תקווה",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_52mtat4f/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_52mtat4f/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/qivbwd0h/%D7%9C%D7%90%D7%AA%D7%A8-%D7%A4%D7%A8%D7%A7-10-%D7%9E%D7%A0%D7%90%D7%99%D7%99%D7%9B-3.jpg?width=480"
       },
       {
         "id": "vod_manayek_ep_146166",
         "title": "פרק 1 - לחץ",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_8j349kh7/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_8j349kh7/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/aqnk5pp3/https-kanstaticazureedgenet-download-pictures-2022-6-7-imgid-75752_aa.jpeg?width=480"
       },
       {
         "id": "vod_manayek_ep_146307",
         "title": "פרק 2 - האשמה",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_qnmt6aqc/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_qnmt6aqc/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/zkkplh2a/https-kanstaticazureedgenet-download-pictures-2022-6-9-imgid-75901_aa.jpeg?width=480"
       }
     ],
     "totalEpisodes": 33
@@ -11418,80 +11442,92 @@ window.VOD_DATA = [
       "ריגול"
     ],
     "desc": "תמר רביניאן, האקרית מבריקה של המוסד, נשלחת בזהות בדויה ללב בירת איראן במטרה לנטרל את מערכות המכ\"ם של הכור הגרעיני.",
-    "poster": "https://upload.wikimedia.org/wikipedia/he/8/87/Tehran_Poster.jpg",
-    "backdrop": "https://upload.wikimedia.org/wikipedia/he/8/87/Tehran_Poster.jpg",
+    "poster": "assets/vod/tehran.jpg",
+    "backdrop": "https://mobapi.kan.org.il/media/fwkpkmw1/1920x1080_no-logo_%D7%98%D7%94%D7%A8%D7%9F-%D7%A2%D7%95%D7%A0%D7%943.jpg?width=1280",
     "episodes": [
       {
         "id": "vod_tehran_ep_833707",
         "title": "פרק 1 - עולם רדיואקטיבי",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_5kuznpwi/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_5kuznpwi/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/pn3ifewd/%D7%98%D7%94%D7%A8%D7%9F-1.jpg?width=480"
       },
       {
         "id": "vod_tehran_ep_836534",
         "title": "פרק 2 - אגרוף בפרצוף",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_xov7asuv/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_xov7asuv/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/a3wayh3m/%D7%98%D7%94%D7%A8%D7%9F-2.jpg?width=480"
       },
       {
         "id": "vod_tehran_ep_839205",
         "title": "פרק 3 - בגוב האריות",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_am337lsk/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_am337lsk/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/oahjeguu/%D7%98%D7%94%D7%A8%D7%9F-3.jpg?width=480"
       },
       {
         "id": "vod_tehran_ep_841808",
         "title": "פרק 4 - אל תוך האש",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_7g2761vp/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_7g2761vp/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/t2dfnqn2/hero_kan-box-copy-3.jpg?width=480"
       },
       {
         "id": "vod_tehran_ep_844227",
         "title": "פרק 5 - עסק לא גמור",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_oh4gnroy/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_oh4gnroy/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/cmwo2tnz/%D7%9C%D7%90%D7%AA%D7%A8-%D7%A2%D7%9D-%D7%A4%D7%9C%D7%99%D7%A4.jpg?width=480"
       },
       {
         "id": "vod_tehran_ep_846647",
         "title": "פרק 6 - אין מוצא",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_l4f97mga/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_l4f97mga/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/yeokrinb/%D7%98%D7%94%D7%A8%D7%9F-%D7%90%D7%AA%D7%A8.jpg?width=480"
       },
       {
         "id": "vod_tehran_ep_852555",
         "title": "פרק 7 - רגע האמת של ניסן",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2215001/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2215001/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/grpjmzgo/%D7%9C%D7%90%D7%AA%D7%A8.png?width=480"
       },
       {
         "id": "vod_tehran_ep_852556",
         "title": "פרק 8 - על סף תהום",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_vszyia2l/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_vszyia2l/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/30nfhywl/%D7%9C%D7%90%D7%AA%D7%A8.png?width=480"
       },
       {
         "id": "vod_tehran_ep_144504",
         "title": "פרק 1 - 13,000",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_fanlu3fh/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_fanlu3fh/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/2gijd3u1/1.jpg?width=480"
       },
       {
         "id": "vod_tehran_ep_144507",
         "title": "פרק 2 - שינוי בתוכנית",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_88ds59jp/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_88ds59jp/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/e53hdhdh/https-kanstaticazureedgenet-download-pictures-2022-5-5-imgid-73892_aa.jpeg?width=480"
       },
       {
         "id": "vod_tehran_ep_144879",
         "title": "פרק 3 - PTSD",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_8ff00dg3/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_8ff00dg3/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/qtflkrbn/https-kanstaticazureedgenet-download-pictures-2022-5-12-imgid-74315_aa.jpeg?width=480"
       },
       {
         "id": "vod_tehran_ep_145326",
         "title": "פרק 4 - בני עשירים",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2219499/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2219499/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/c0kamqfm/https-kanstaticazureedgenet-download-pictures-2022-5-19-imgid-74779_aa.jpeg?width=480"
       }
     ],
     "totalEpisodes": 28
@@ -11509,80 +11545,92 @@ window.VOD_DATA = [
       "מערכונים"
     ],
     "desc": "סאטירה מבריקה של כאן 11 המציגה מערכונים פרועים על ההיסטוריה היהודית והישראלית.",
-    "poster": "https://upload.wikimedia.org/wikipedia/he/0/05/Hayehudim_baim.png",
-    "backdrop": "https://upload.wikimedia.org/wikipedia/he/0/05/Hayehudim_baim.png",
+    "poster": "assets/vod/hayehudim_baim.jpg",
+    "backdrop": "https://mobapi.kan.org.il/media/jqbh4ygc/1920x1080_no-logo_%D7%94%D7%99%D7%94%D7%95%D7%93%D7%99%D7%9D-%D7%91%D7%90%D7%99%D7%9D-%D7%A2%D7%95%D7%A0%D7%94-6.jpg?width=1280",
     "episodes": [
       {
         "id": "vod_hayehudim_baim_ep_783879",
         "title": "לקט ראש השנה - בראשית",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_2g3g8n3j/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_2g3g8n3j/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/isvl40c0/%D7%94%D7%99%D7%94%D7%95%D7%93%D7%99%D7%9D-%D7%91%D7%90%D7%99%D7%9D-%D7%9C%D7%A7%D7%98-%D7%A8%D7%90%D7%A9-%D7%94%D7%A9%D7%A0%D7%94-%D7%91%D7%A8%D7%90%D7%A9%D7%99%D7%AA.jpg?width=480"
       },
       {
         "id": "vod_hayehudim_baim_ep_759232",
         "title": "לקט שבועות",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_75y87nco/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_75y87nco/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/ppkhnzbk/%D7%AA%D7%9E%D7%95%D7%A0%D7%94.jpg?width=480"
       },
       {
         "id": "vod_hayehudim_baim_ep_837936",
         "title": "לקט חנוכה",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_hdjm43ts/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_hdjm43ts/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/kjmjf5rf/%D7%9C%D7%90%D7%AA%D7%A8.png?width=480"
       },
       {
         "id": "vod_hayehudim_baim_ep_783881",
         "title": "לקט נשים בציונות",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_f69kcijb/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_f69kcijb/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/qbxh5nr3/%D7%9C%D7%A7%D7%98-%D7%A0%D7%A9%D7%99%D7%9D-%D7%91%D7%A6%D7%99%D7%95%D7%A0%D7%95%D7%AA.jpg?width=480"
       },
       {
         "id": "vod_hayehudim_baim_ep_783883",
         "title": "לקט מעבדות לחירות",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_0dk8geyz/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_0dk8geyz/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/oabd0yvi/%D7%94%D7%99%D7%94%D7%95%D7%93%D7%99%D7%9D-%D7%91%D7%90%D7%99%D7%9D-%D7%9C%D7%A7%D7%98-%D7%9E%D7%A2%D7%91%D7%93%D7%95%D7%AA-%D7%9C%D7%97%D7%99%D7%A8%D7%95%D7%AA.jpg?width=480"
       },
       {
         "id": "vod_hayehudim_baim_ep_783877",
         "title": "לקט קיבוץ גלויות",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_swuewtay/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_swuewtay/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/2denwmkf/%D7%AA%D7%9E%D7%95%D7%A0%D7%94-%D7%9E%D7%A2%D7%95%D7%93%D7%9B%D7%A0%D7%AA.jpg?width=480"
       },
       {
         "id": "vod_hayehudim_baim_ep_783869",
         "title": "לקט ראשי ממשלות",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_74gr2qjl/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_74gr2qjl/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/skenmj5a/%D7%94%D7%99%D7%94%D7%95%D7%93%D7%99%D7%9D-%D7%91%D7%90%D7%99%D7%9D-%D7%9C%D7%A7%D7%98-%D7%A8%D7%90%D7%A9%D7%99-%D7%9E%D7%9E%D7%A9%D7%9C%D7%95%D7%AA.jpg?width=480"
       },
       {
         "id": "vod_hayehudim_baim_ep_748629",
         "title": "פרק 1 - ספיישל עצמאות",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_88c72fv6/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_88c72fv6/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/t33jgfjf/%D7%94%D7%99%D7%94%D7%95%D7%93%D7%99%D7%9D-%D7%91%D7%90%D7%99%D7%9D.jpg?width=480"
       },
       {
         "id": "vod_hayehudim_baim_ep_748630",
         "title": "פרק 2",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_1x4kxgp7/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_1x4kxgp7/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/0gpecnhe/%D7%9C%D7%90%D7%AA%D7%A8.jpg?width=480"
       },
       {
         "id": "vod_hayehudim_baim_ep_748698",
         "title": "פרק 3",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_470kg86z/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_470kg86z/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/c1ebgxvu/%D7%94%D7%99%D7%94%D7%95%D7%93%D7%99%D7%9D-%D7%91%D7%90%D7%99%D7%9D.jpg?width=480"
       },
       {
         "id": "vod_hayehudim_baim_ep_751088",
         "title": "פרק 4",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_1eubipqy/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_1eubipqy/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/hjtpobo1/%D7%9C%D7%90%D7%AA%D7%A8.jpg?width=480"
       },
       {
         "id": "vod_hayehudim_baim_ep_757726",
         "title": "פרק 5",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_oljq8q9b/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_oljq8q9b/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/51fowklm/s0421919_item01.jpg?width=480"
       }
     ],
     "totalEpisodes": 94
@@ -11600,80 +11648,92 @@ window.VOD_DATA = [
       "צה\"ל"
     ],
     "desc": "נועה, קצינה צעירה ומורעלת, מקבלת פיקוד על מחלקת טירוניות בעייתיות בבסיס חוות השומר.",
-    "poster": "https://upload.wikimedia.org/wikipedia/he/thumb/4/4b/%D7%94%D7%9E%D7%A4%D7%A7%D7%93%D7%AA_%D7%A2%D7%95%D7%A0%D7%94_2.jpg/300px-%D7%94%D7%9E%D7%A4%D7%A7%D7%93%D7%AA_%D7%A2%D7%95%D7%A0%D7%94_2.jpg",
-    "backdrop": "https://upload.wikimedia.org/wikipedia/he/thumb/4/4b/%D7%94%D7%9E%D7%A4%D7%A7%D7%93%D7%AA_%D7%A2%D7%95%D7%A0%D7%94_2.jpg/300px-%D7%94%D7%9E%D7%A4%D7%A7%D7%93%D7%AA_%D7%A2%D7%95%D7%A0%D7%94_2.jpg",
+    "poster": "assets/vod/hamefakedet.jpg",
+    "backdrop": "https://mobapi.kan.org.il/media/vkefj0e3/1920x1080_no-logo_%D7%94%D7%9E%D7%A4%D7%A7%D7%93%D7%AA_%D7%A2%D7%95%D7%A0%D7%943.jpg?width=1280",
     "episodes": [
       {
         "id": "vod_hamefakedet_ep_771333",
         "title": "פרק 1 - הבוגדת חלק א'",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2216527/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2216527/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/wcdoqiam/%D7%9C%D7%90%D7%AA%D7%A8.jpg?width=480"
       },
       {
         "id": "vod_hamefakedet_ep_771335",
         "title": "פרק 2 - הבוגדת חלק ב'",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_7poovgt4/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_7poovgt4/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/205lvybo/%D7%9C%D7%90%D7%AA%D7%A8.jpg?width=480"
       },
       {
         "id": "vod_hamefakedet_ep_772921",
         "title": "פרק 3 - ציפיות",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_9yl7d297/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_9yl7d297/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/aprixfmt/%D7%90%D7%AA%D7%A8.jpg?width=480"
       },
       {
         "id": "vod_hamefakedet_ep_772922",
         "title": "פרק 4 - סרגל מאמצים",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_fy4x26np/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_fy4x26np/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/3upfvwiv/%D7%94%D7%9E%D7%A4%D7%A7%D7%93%D7%AA.jpg?width=480"
       },
       {
         "id": "vod_hamefakedet_ep_772924",
         "title": "פרק 5 - רעיונות לא תקינים",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_ew6rztg7/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_ew6rztg7/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/cn3gltjy/%D7%94%D7%9E%D7%A4%D7%A7%D7%93%D7%AA.jpg?width=480"
       },
       {
         "id": "vod_hamefakedet_ep_772925",
         "title": "פרק 6 - איפוס כוונות",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_i1idr3if/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_i1idr3if/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/hxwlvwpq/%D7%9C%D7%90%D7%AA%D7%A8.jpg?width=480"
       },
       {
         "id": "vod_hamefakedet_ep_772912",
         "title": "פרק 7 - מהנה ומגבש",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_r9mpnanp/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_r9mpnanp/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/y3aew5io/%D7%9E%D7%A4%D7%A7%D7%93%D7%AA-%D7%A4%D7%A8%D7%A7-7.jpg?width=480"
       },
       {
         "id": "vod_hamefakedet_ep_772914",
         "title": "פרק 8 - המפקד",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_lekkvqvw/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_lekkvqvw/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/pvubbkay/%D7%94%D7%9E%D7%A4%D7%A7%D7%93%D7%AA-2.jpg?width=480"
       },
       {
         "id": "vod_hamefakedet_ep_772926",
         "title": "פרק 9 - סיפור דרך",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_vq8jmv42/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_vq8jmv42/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/2m0bdr3x/%D7%90%D7%AA%D7%A8-%D7%9E%D7%95%D7%91%D7%94%D7%A8.jpg?width=480"
       },
       {
         "id": "vod_hamefakedet_ep_772927",
         "title": "פרק 10 - שירות משמעותי",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_hhqmvjqw/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_hhqmvjqw/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/10ej0isn/%D7%90%D7%AA%D7%A8-%D7%97%D7%93%D7%A9.jpg?width=480"
       },
       {
         "id": "vod_hamefakedet_ep_794952",
         "title": "צריכים תזכורת? יוגב מ\"המפקדת\" עושה לכם ריקאפ",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_7bm87dkj/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_7bm87dkj/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/1heprdfo/3362_hamefakedet_tv_no_sub_1.jpg?width=480"
       },
       {
         "id": "vod_hamefakedet_ep_802979",
         "title": "ריכולים על הסט של \"המפקדת\" וקרמבו",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_di44iuo0/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_di44iuo0/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/5thhacmj/rc5_03773.jpg?width=480"
       }
     ],
     "totalEpisodes": 34
@@ -11691,80 +11751,92 @@ window.VOD_DATA = [
       "קומדיה"
     ],
     "desc": "חמישה בשלנים חובבים שלא מכירים נפגשים לארוחות ערב הדדיות בבתיהם. בקריינותו המושחזת והקורעת של שי אביבי.",
-    "poster": "https://upload.wikimedia.org/wikipedia/he/thumb/d/d4/Bo_Leechol_Iti_Logo.png/300px-Bo_Leechol_Iti_Logo.png",
-    "backdrop": "https://upload.wikimedia.org/wikipedia/he/thumb/d/d4/Bo_Leechol_Iti_Logo.png/300px-Bo_Leechol_Iti_Logo.png",
+    "poster": "assets/vod/bo_nechol.jpg",
+    "backdrop": "assets/vod/bo_nechol.jpg",
     "episodes": [
       {
         "id": "vod_bo_nechol_ep_1059625",
         "title": "פרק 1 - שבוע ירושלים, יום א'",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2214986/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2214986/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/qppfjuyv/%D7%9C%D7%90%D7%AA%D7%A8.jpg?width=480"
       },
       {
         "id": "vod_bo_nechol_ep_1059627",
         "title": "פרק 2 - שבוע ירושלים, יום ב'",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2214987/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2214987/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/11yli0ci/%D7%91%D7%95%D7%90%D7%95.jpg?width=480"
       },
       {
         "id": "vod_bo_nechol_ep_1059652",
         "title": "פרק 3 - שבוע ירושלים, יום ג'",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2215013/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2215013/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/y3vhpwx0/%D7%90%D7%AA%D7%A82.jpg?width=480"
       },
       {
         "id": "vod_bo_nechol_ep_1059629",
         "title": "פרק 4 - שבוע ירושלים, יום ד'",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2214993/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2214993/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/52nbpics/%D7%90%D7%AA%D7%A8.jpg?width=480"
       },
       {
         "id": "vod_bo_nechol_ep_1059645",
         "title": "פרק 5 - שבוע ירושלים, יום ה'",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2215008/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2215008/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/gy1hf4h1/%D7%90%D7%AA%D7%A8.jpg?width=480"
       },
       {
         "id": "vod_bo_nechol_ep_1061353",
         "title": "פרק 6 - שבוע שפלה, יום א'",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2215941/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2215941/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/0lyh2fhm/%D7%9C%D7%90%D7%AA%D7%A8_%D7%97%D7%93%D7%A9.jpg?width=480"
       },
       {
         "id": "vod_bo_nechol_ep_1061354",
         "title": "פרק 7 - שבוע שפלה, יום ב'",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2215942/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2215942/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/yc1aesvh/%D7%90%D7%AA%D7%A8.jpg?width=480"
       },
       {
         "id": "vod_bo_nechol_ep_1061355",
         "title": "פרק 8 - שבוע שפלה, יום ג'",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2215943/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2215943/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/yvehe330/4.jpg?width=480"
       },
       {
         "id": "vod_bo_nechol_ep_1073273",
         "title": "פרק 9 - שבוע שפלה, יום ד'",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2223042/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2223042/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/aabb4zv1/%D7%90%D7%AA%D7%A8.jpg?width=480"
       },
       {
         "id": "vod_bo_nechol_ep_1073279",
         "title": "פרק 10 - שבוע שפלה, יום ה'",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2223043/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2223043/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/s0teagep/image-15.png?width=480"
       },
       {
         "id": "vod_bo_nechol_ep_1077371",
         "title": "פרק 11 - שבוע צפון, יום א'",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2226083/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2226083/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/r2ycyc11/%D7%9C%D7%90%D7%AA%D7%A8.jpg?width=480"
       },
       {
         "id": "vod_bo_nechol_ep_1077372",
         "title": "פרק 12 - שבוע צפון, יום ב'",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2226084/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2226084/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/1vihprm3/%D7%9C%D7%90%D7%AA%D7%A8.jpg?width=480"
       }
     ],
     "totalEpisodes": 200
@@ -11782,80 +11854,92 @@ window.VOD_DATA = [
       "הרפתקאות"
     ],
     "desc": "שלושה אחים יתומים מאומצים על ידי גבירה עשירה ומקבלים בירושה חתול מיוחד ומדבר בעל יכולות קסומות בשם כראמל.",
-    "poster": "https://upload.wikimedia.org/wikipedia/he/thumb/9/9c/%D7%9B%D7%A8%D7%90%D7%9E%D7%9C_%D7%A4%D7%95%D7%A1%D7%98%D7%A8.jpg/300px-%D7%9B%D7%A8%D7%90%D7%9E%D7%9C_%D7%A4%D7%95%D7%A1%D7%98%D7%A8.jpg",
-    "backdrop": "https://upload.wikimedia.org/wikipedia/he/thumb/9/9c/%D7%9B%D7%A8%D7%90%D7%9E%D7%9C_%D7%A4%D7%95%D7%A1%D7%98%D7%A8.jpg/300px-%D7%9B%D7%A8%D7%90%D7%9E%D7%9C_%D7%A4%D7%95%D7%A1%D7%98%D7%A8.jpg",
+    "poster": "assets/vod/cramel.jpg",
+    "backdrop": "assets/vod/cramel.jpg",
     "episodes": [
       {
         "id": "vod_cramel_ep_1000631",
         "title": "פרק 1 - החלום",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1948788/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1948788/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/5r1pz40c/%D7%9B%D7%A8%D7%90%D7%9E%D7%9C-5-%D7%A4%D7%A8%D7%A7-1.jpg?width=480"
       },
       {
         "id": "vod_cramel_ep_1000635",
         "title": "פרק 2 - האיש בסרבל האפור",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1948755/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1948755/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/5jxffks2/%D7%9B%D7%A8%D7%90%D7%9E%D7%9C-5-%D7%A4%D7%A8%D7%A7-2.jpg?width=480"
       },
       {
         "id": "vod_cramel_ep_1000643",
         "title": "פרק 3 - גול החדש",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1948787/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1948787/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/drkfoz3h/%D7%9B%D7%A8%D7%90%D7%9E%D7%9C-5-%D7%A4%D7%A8%D7%A7-3.jpg?width=480"
       },
       {
         "id": "vod_cramel_ep_1000655",
         "title": "פרק 4 - השליטה",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1961752/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1961752/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/2gujxdv3/%D7%9B%D7%A8%D7%90%D7%9E%D7%9C-5-%D7%A4%D7%A8%D7%A7-4.jpg?width=480"
       },
       {
         "id": "vod_cramel_ep_1002501",
         "title": "פרק 5 - דולי",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1961764/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1961764/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/xjml4bmu/%D7%9B%D7%A8%D7%90%D7%9E%D7%9C-5-%D7%A4%D7%A8%D7%A7-5.jpg?width=480"
       },
       {
         "id": "vod_cramel_ep_1002511",
         "title": "פרק 6 - האחד",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1975056/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1975056/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/z2sponti/%D7%9B%D7%A8%D7%90%D7%9E%D7%9C-5-%D7%A4%D7%A8%D7%A7-6.jpg?width=480"
       },
       {
         "id": "vod_cramel_ep_1001867",
         "title": "פרק 7 - מוצאים את כראמל",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2169704/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2169704/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/y45hjsf2/%D7%9B%D7%A8%D7%90%D7%9E%D7%9C-5-%D7%A4%D7%A8%D7%A7-7.jpg?width=480"
       },
       {
         "id": "vod_cramel_ep_995457",
         "title": "פרק 8 - ההפנוט",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2158206/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2158206/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/q23hba1k/%D7%9B%D7%A8%D7%90%D7%9E%D7%9C-5-%D7%A4%D7%A8%D7%A7-8.jpg?width=480"
       },
       {
         "id": "vod_cramel_ep_1006477",
         "title": "פרק 9 - החיים הם לא עוגת גבינה",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2044429/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2044429/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/jwhnjgty/%D7%9B%D7%A8%D7%90%D7%9E%D7%9C-5-%D7%A4%D7%A8%D7%A7-9.jpg?width=480"
       },
       {
         "id": "vod_cramel_ep_1006483",
         "title": "פרק 10 - מלחמת העולמות",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2070392/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2070392/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/5pmh5mwb/%D7%9B%D7%A8%D7%90%D7%9E%D7%9C-5-%D7%A4%D7%A8%D7%A7-10.jpg?width=480"
       },
       {
         "id": "vod_cramel_ep_1006493",
         "title": "פרק 11- מאגיה פיניטו",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2070362/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2070362/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/u3wbdbxp/%D7%9B%D7%A8%D7%90%D7%9E%D7%9C-5-%D7%A4%D7%A8%D7%A7-11.jpg?width=480"
       },
       {
         "id": "vod_cramel_ep_993153",
         "title": "פרק 12 - עוזבים את הטירה",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2121358/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2121358/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/1tepfews/%D7%9B%D7%A8%D7%90%D7%9E%D7%9C-5-%D7%A4%D7%A8%D7%A7-12.jpg?width=480"
       }
     ],
     "totalEpisodes": 123
@@ -11873,80 +11957,92 @@ window.VOD_DATA = [
       "מוזיקה"
     ],
     "desc": "תוכנית הקאלט והסאטירה המיתולוגית של מוני מושונוב, בראבא, דובל'ה גליקמן, אבי קושניר וגידי גוב.",
-    "poster": "https://upload.wikimedia.org/wikipedia/he/thumb/e/e0/%D7%96%D7%94%D7%95_%D7%96%D7%94_2020.png/300px-%D7%96%D7%94%D7%95_%D7%96%D7%94_2020.png",
-    "backdrop": "https://upload.wikimedia.org/wikipedia/he/thumb/e/e0/%D7%96%D7%94%D7%95_%D7%96%D7%94_2020.png/300px-%D7%96%D7%94%D7%95_%D7%96%D7%94_2020.png",
+    "poster": "assets/vod/zehu_ze.jpg",
+    "backdrop": "assets/vod/zehu_ze.jpg",
     "episodes": [
       {
         "id": "vod_zehu_ze_ep_1037654",
         "title": "פרק 24 - 05.05.26",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2197024/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2197024/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/yuamxeil/%D7%9C%D7%90%D7%AA%D7%A8.jpg?width=480"
       },
       {
         "id": "vod_zehu_ze_ep_1034603",
         "title": "פרק 23 - 28.04.26",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2194840/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2194840/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/mypikxs5/%D7%9C%D7%90%D7%AA%D7%A8-%D7%9E%D7%A2%D7%95%D7%93%D7%9B%D7%9F.jpg?width=480"
       },
       {
         "id": "vod_zehu_ze_ep_1032571",
         "title": "פרק 22 - 23.04.26",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2192956/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2192956/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/1pln02sa/%D7%90%D7%AA%D7%A8.jpg?width=480"
       },
       {
         "id": "vod_zehu_ze_ep_1028838",
         "title": "פרק 21 - 14.04.26",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2189754/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2189754/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/n4jhdcp2/%D7%9C%D7%90%D7%AA%D7%A8.jpg?width=480"
       },
       {
         "id": "vod_zehu_ze_ep_1024986",
         "title": "פרק 20 - 12.04.26",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2188482/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2188482/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/z2djkhiz/%D7%9C%D7%90%D7%AA%D7%A8.jpg?width=480"
       },
       {
         "id": "vod_zehu_ze_ep_1017979",
         "title": "פרק 19 - 24.03.26",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2180816/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2180816/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/01bbvn1o/%D7%9C%D7%90%D7%AA%D7%A8.jpg?width=480"
       },
       {
         "id": "vod_zehu_ze_ep_1014158",
         "title": "פרק 18 - 17.03.26",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2179262/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2179262/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/udqnm3mp/%D7%96%D7%94%D7%95-%D7%96%D7%94-%D7%9C%D7%90%D7%AA%D7%A8-%D7%A1%D7%95%D7%A4%D7%99.jpg?width=480"
       },
       {
         "id": "vod_zehu_ze_ep_1009902",
         "title": "פרק 17 - 10.03.26",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2176319/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2176319/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/0q2nszor/%D7%9C%D7%90%D7%AA%D7%A8-%D7%AA%D7%99%D7%A7%D7%95%D7%9F.jpg?width=480"
       },
       {
         "id": "vod_zehu_ze_ep_1006166",
         "title": "פרק 16 - 03.03.26",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2173358/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2173358/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/koin23kz/%D7%9C%D7%90%D7%AA%D7%A8.jpg?width=480"
       },
       {
         "id": "vod_zehu_ze_ep_1000214",
         "title": "פרק 15 - 17.02.26",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2168085/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2168085/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/uzrpc4il/%D7%90%D7%AA%D7%A8.jpg?width=480"
       },
       {
         "id": "vod_zehu_ze_ep_997755",
         "title": "פרק 14 - 10.02.26",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2165567/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2165567/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/q5ucdha0/%D7%A0%D7%A7%D7%99.jpg?width=480"
       },
       {
         "id": "vod_zehu_ze_ep_995573",
         "title": "פרק 13 - 03.02.26",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2158759/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2158759/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/z0tdxign/%D7%A7%D7%A8%D7%99%D7%90%D7%99%D7%99%D7%98%D7%99%D7%91-%D7%91%D7%92%D7%94%D7%99%D7%A0%D7%95%D7%9D.jpg?width=480"
       }
     ],
     "totalEpisodes": 200
@@ -11964,80 +12060,92 @@ window.VOD_DATA = [
       "רומנטי"
     ],
     "desc": "איריס ותומר הם בני זוג ויוצרי תיאטרון שנפרדים בדיוק כשהמחזה שכתבו מתקבל להפקה בתיאטרון הגדול.",
-    "poster": "https://upload.wikimedia.org/wikipedia/he/thumb/7/7f/Chazarot_Poster.jpg/300px-Chazarot_Poster.jpg",
-    "backdrop": "https://upload.wikimedia.org/wikipedia/he/thumb/7/7f/Chazarot_Poster.jpg/300px-Chazarot_Poster.jpg",
+    "poster": "assets/vod/chazarot.jpg",
+    "backdrop": "assets/vod/chazarot.jpg",
     "episodes": [
       {
         "id": "vod_rehearsals_ep_117923",
         "title": "פרק 1",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_817geznm/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_817geznm/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/2vof1n4p/https-kanstaticazureedgenet-download-pictures-2020-11-12-imgid-41976_aa.jpeg?width=480"
       },
       {
         "id": "vod_rehearsals_ep_117925",
         "title": "פרק 2",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_9r4v43jo/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_9r4v43jo/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/t3ph0wko/https-kanstaticazureedgenet-download-pictures-2020-11-19-imgid-42394_aa.jpeg?width=480"
       },
       {
         "id": "vod_rehearsals_ep_117927",
         "title": "פרק 3",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_a4d23hat/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_a4d23hat/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/sl4jratd/https-kanstaticazureedgenet-download-pictures-2020-11-23-imgid-42549_aa.jpeg?width=480"
       },
       {
         "id": "vod_rehearsals_ep_117929",
         "title": "פרק 4",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_cae13m03/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_cae13m03/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/gv3lyiji/https-kanstaticazureedgenet-download-pictures-2020-11-25-imgid-42665_aa.jpeg?width=480"
       },
       {
         "id": "vod_rehearsals_ep_117931",
         "title": "פרק 5",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_pawj9j8q/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_pawj9j8q/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/gujjgcup/https-kanstaticazureedgenet-download-pictures-2020-12-10-imgid-43487_aa.jpeg?width=480"
       },
       {
         "id": "vod_rehearsals_ep_117933",
         "title": "פרק 6",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_tdhrfqgf/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_tdhrfqgf/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/soycdb3h/https-kanstaticazureedgenet-download-pictures-2020-12-14-imgid-43677_aa.jpeg?width=480"
       },
       {
         "id": "vod_rehearsals_ep_117935",
         "title": "פרק 7",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_8fuuygax/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_8fuuygax/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/hjejqzlo/https-kanstaticazureedgenet-download-pictures-2020-12-21-imgid-44042_aa.jpeg?width=480"
       },
       {
         "id": "vod_rehearsals_ep_117937",
         "title": "פרק 8",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_jcbzlusy/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_jcbzlusy/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/e0qhaqxt/https-kanstaticazureedgenet-download-pictures-2020-12-28-imgid-44406_aa.jpeg?width=480"
       },
       {
         "id": "vod_rehearsals_ep_117939",
         "title": "פרק 9",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_88m2sqqg/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_88m2sqqg/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/j3hf2y2m/https-kanstaticazureedgenet-download-pictures-2021-1-4-imgid-44844_aa.jpeg?width=480"
       },
       {
         "id": "vod_rehearsals_ep_117942",
         "title": "פרק אחרון לעונה",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_7yuptbxr/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_7yuptbxr/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/3cljpetk/https-kanstaticazureedgenet-download-pictures-2022-10-16-imgid-83427_aa.jpeg?width=480"
       },
       {
         "id": "vod_rehearsals_ep_855965",
         "title": "טעות בליהוק",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_j54ll6qm/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_j54ll6qm/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/hwclkr2r/%D7%97%D7%96%D7%A8%D7%95%D7%AA-2.jpg?width=480"
       },
       {
         "id": "vod_rehearsals_ep_855955",
         "title": "אני נינה",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_kl7p0u3r/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_kl7p0u3r/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/5oodwdoh/%D7%97%D7%96%D7%A8%D7%95%D7%AA-1.jpg?width=480"
       }
     ],
     "totalEpisodes": 13
@@ -12055,70 +12163,562 @@ window.VOD_DATA = [
       "מתח"
     ],
     "desc": "סדרת המלחמה העוצמתית והגדולה בתולדות הטלוויזיה הישראלית, על לוחמי חרמון ורמת הגולן במלחמת יום הכיפורים.",
-    "poster": "https://upload.wikimedia.org/wikipedia/he/thumb/f/f6/Valley_of_Tears_poster.jpg/300px-Valley_of_Tears_poster.jpg",
-    "backdrop": "https://upload.wikimedia.org/wikipedia/he/thumb/f/f6/Valley_of_Tears_poster.jpg/300px-Valley_of_Tears_poster.jpg",
+    "poster": "assets/vod/valley_of_tears.jpg",
+    "backdrop": "assets/vod/valley_of_tears.jpg",
     "episodes": [
       {
         "id": "vod_valley_of_tears_ep_117278",
         "title": "פרק בכורה כפול",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_ajaped1u/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_ajaped1u/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/a3ab35aj/https-kanstaticazureedgenet-download-pictures-2020-10-20-imgid-40755_aa.jpeg?width=480"
       },
       {
         "id": "vod_valley_of_tears_ep_117281",
         "title": "פרק 3",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_fx0k9jpy/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_fx0k9jpy/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/qfpfsbo1/https-kanstaticazureedgenet-download-pictures-2020-10-26-imgid-41077_aa.jpeg?width=480"
       },
       {
         "id": "vod_valley_of_tears_ep_117284",
         "title": "פרק 4",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_5ct5o3zt/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_5ct5o3zt/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/5mjmer20/https-kanstaticazureedgenet-download-pictures-2020-11-1-imgid-41400_aa.jpeg?width=480"
       },
       {
         "id": "vod_valley_of_tears_ep_117287",
         "title": "פרק 5",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_fnfjorco/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_fnfjorco/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/obobjwgd/https-kanstaticazureedgenet-download-pictures-2020-11-9-imgid-41794_aa.jpeg?width=480"
       },
       {
         "id": "vod_valley_of_tears_ep_117290",
         "title": "פרק 6",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_2ihb33gr/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_2ihb33gr/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/jp3o2of4/https-kanstaticazureedgenet-download-pictures-2020-11-24-imgid-42573_aa.jpeg?width=480"
       },
       {
         "id": "vod_valley_of_tears_ep_117293",
         "title": "פרק 7",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_i64grnno/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_i64grnno/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/1volznwg/https-kanstaticazureedgenet-download-pictures-2020-12-23-imgid-44174_aa.jpeg?width=480"
       },
       {
         "id": "vod_valley_of_tears_ep_117296",
         "title": "פרק 8",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_1lih95oz/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_1lih95oz/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/yi0m12c3/https-kanstaticazureedgenet-download-pictures-2020-11-30-imgid-42929_aa.jpeg?width=480"
       },
       {
         "id": "vod_valley_of_tears_ep_117299",
         "title": "פרק סיום כפול",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_7bovtnb6/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_7bovtnb6/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/frcdvc3q/https-kanstaticazureedgenet-download-pictures-2020-12-7-imgid-43322_aa.jpeg?width=480"
       },
       {
         "id": "vod_valley_of_tears_ep_866531",
         "title": "סימני מלחמה",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_2x78e9bg/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_2x78e9bg/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/iwxl5nrl/%D7%A9%D7%A2%D7%AA-%D7%94%D7%A0%D7%A2%D7%99%D7%9C%D7%94-%D7%94%D7%A6%D7%A6%D7%94-1.jpg?width=480"
       },
       {
         "id": "vod_valley_of_tears_ep_866534",
         "title": "כוננות ליום קרב",
         "duration": "פרק מלא",
-        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_eq84htcy/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_eq84htcy/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/rjyeh3tk/%D7%A9%D7%A2%D7%AA-%D7%94%D7%A0%D7%A2%D7%99%D7%9C%D7%94-%D7%94%D7%A6%D7%A6%D7%94-2.jpg?width=480"
       }
     ],
     "totalEpisodes": 16
+  },
+  {
+    "id": "vod_savri_maranan",
+    "title": "סברי מרנן",
+    "originalTitle": "Savri Maranan",
+    "year": "2011-2024",
+    "rating": "8.6",
+    "genres": [
+      "קומדיה",
+      "ישראלי",
+      "משפחה"
+    ],
+    "desc": "קומדיית מצבים ישראלית מצליחה בכיכובם של דביר בנדק, רותם אבוהב, יונה אליאן, יהורם גאון, טוביה צפיר וסנדרה שדה. סיפורם של שי ושני והמשפחות רוזן וחסון בארוחות ליל שישי קורעות מצחוק.",
+    "poster": "assets/vod/savri_maranan.jpg",
+    "backdrop": "assets/logos/savri_maranan.png",
+    "totalEpisodes": 50,
+    "episodes": [
+      {
+        "id": "vod_savri_maranan_live",
+        "title": "מרתון סברי מרנן 24/7 (שידור רצוף)",
+        "duration": "מרתון רצוף",
+        "thumb": "assets/vod/savri_maranan.jpg",
+        "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/savri/live.livx/playlist.m3u8"
+      },
+      {
+        "id": "vod_savri_maranan_ep1",
+        "title": "פרק 1 - ארוחת שישי אצל חסון",
+        "duration": "30 דקות",
+        "thumb": "assets/vod/savri_maranan.jpg",
+        "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/savri/live.livx/playlist.m3u8"
+      },
+      {
+        "id": "vod_savri_maranan_ep2",
+        "title": "פרק 2 - ספיישל משפחת רוזן",
+        "duration": "28 דקות",
+        "thumb": "assets/vod/savri_maranan.jpg",
+        "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/savri/live.livx/playlist.m3u8"
+      },
+      {
+        "id": "vod_savri_maranan_ep3",
+        "title": "פרק 3 - מלחמת חמות וכלה",
+        "duration": "32 דקות",
+        "thumb": "assets/vod/savri_maranan.jpg",
+        "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/savri/live.livx/playlist.m3u8"
+      },
+      {
+        "id": "vod_savri_maranan_ep4",
+        "title": "פרק 4 - הפתעה ביום שישי",
+        "duration": "29 דקות",
+        "thumb": "assets/vod/savri_maranan.jpg",
+        "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/savri/live.livx/playlist.m3u8"
+      },
+      {
+        "id": "vod_savri_maranan_ep5",
+        "title": "פרק 5 - קינוחים וצעקות",
+        "duration": "31 דקות",
+        "thumb": "assets/vod/savri_maranan.jpg",
+        "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/savri/live.livx/playlist.m3u8"
+      }
+    ]
+  },
+  {
+    "id": "vod_eretz_nehederet",
+    "title": "ארץ נהדרת",
+    "originalTitle": "Eretz Nehederet",
+    "year": "2003-2026",
+    "rating": "9.4",
+    "genres": [
+      "סאטירה",
+      "קומדיה",
+      "ישראלי"
+    ],
+    "desc": "תוכנית הסאטירה הלאומית של ישראל בהובלת איל קיציס, אלי פיניש, מריאנו אידלמן, עלמה זק, ערן זרחוביץ', יניב ביטון, שני כהן, גיה באר גורביץ', אורנה בנאי ורועי בר נתן.",
+    "poster": "assets/vod/eretz_nehederet.jpg",
+    "backdrop": "assets/logos/keshet12.png",
+    "totalEpisodes": 45,
+    "episodes": [
+      {
+        "id": "vod_eretz_nehederet_live",
+        "title": "מרתון ארץ נהדרת 24/7 HD",
+        "duration": "שידור רצוף",
+        "thumb": "assets/vod/eretz_nehederet.jpg",
+        "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/erez_nehederet/live.livx/playlist.m3u8"
+      },
+      {
+        "id": "vod_eretz_nehederet_ep1",
+        "title": "ספיישל שאולי ואירנה - לקט הקלאסיקות",
+        "duration": "40 דקות",
+        "thumb": "assets/vod/eretz_nehederet.jpg",
+        "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/erez_nehederet/live.livx/playlist.m3u8"
+      },
+      {
+        "id": "vod_eretz_nehederet_ep2",
+        "title": "ספיישל אשר הנהג מונית ופילוס",
+        "duration": "35 דקות",
+        "thumb": "assets/vod/eretz_nehederet.jpg",
+        "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/erez_nehederet/live.livx/playlist.m3u8"
+      },
+      {
+        "id": "vod_eretz_nehederet_ep3",
+        "title": "מערכוני הבחירות והממשלה הגדולים",
+        "duration": "45 דקות",
+        "thumb": "assets/vod/eretz_nehederet.jpg",
+        "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/erez_nehederet/live.livx/playlist.m3u8"
+      },
+      {
+        "id": "vod_eretz_nehederet_ep4",
+        "title": "ספיישל הטורטלים וחברת החשמל",
+        "duration": "38 דקות",
+        "thumb": "assets/vod/eretz_nehederet.jpg",
+        "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/erez_nehederet/live.livx/playlist.m3u8"
+      }
+    ]
+  },
+  {
+    "id": "vod_haborer",
+    "title": "הבורר",
+    "originalTitle": "The Arbitrator",
+    "year": "2007-2014",
+    "rating": "9.1",
+    "genres": [
+      "דרמה",
+      "פשע",
+      "ישראלי",
+      "קאלט"
+    ],
+    "desc": "דרמת הפשע הישראלית הגדולה בכל הזמנים מאת רשף לוי. ברוך אסולין (משה איבגי) הוא \"הבורר\" של עולם הפשע. נדב פלדמן (יהודה לוי), עובד סוציאלי צעיר, מגלה שהוא בנו הביולוגי של הבורר ונשאב למאבקי הדמים לצד יגאל הנאצי, אבי הטחול, קוברה ואיציק סאסא.",
+    "poster": "assets/vod/haborer.jpg",
+    "backdrop": "assets/vod/haborer.jpg",
+    "totalEpisodes": 45,
+    "episodes": [
+      {
+        "id": "vod_haborer_ep1",
+        "title": "פרק 1 - הבן האובד",
+        "duration": "50 דקות",
+        "thumb": "assets/vod/haborer.jpg",
+        "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/free_israeli_movies/live.livx/playlist.m3u8"
+      },
+      {
+        "id": "vod_haborer_ep2",
+        "title": "פרק 2 - יגאל הנאצי חוזר",
+        "duration": "48 דקות",
+        "thumb": "assets/vod/haborer.jpg",
+        "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/free_israeli_movies/live.livx/playlist.m3u8"
+      },
+      {
+        "id": "vod_haborer_ep3",
+        "title": "פרק 3 - החוקים של משפחת אסולין",
+        "duration": "52 דקות",
+        "thumb": "assets/vod/haborer.jpg",
+        "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/free_israeli_movies/live.livx/playlist.m3u8"
+      },
+      {
+        "id": "vod_haborer_ep4",
+        "title": "פרק 4 - אבי הטחול מאבד שליטה",
+        "duration": "46 דקות",
+        "thumb": "assets/vod/haborer.jpg",
+        "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/free_israeli_movies/live.livx/playlist.m3u8"
+      },
+      {
+        "id": "vod_haborer_ep5",
+        "title": "פרק 5 - הבוררות הגדולה",
+        "duration": "55 דקות",
+        "thumb": "assets/vod/haborer.jpg",
+        "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/free_israeli_movies/live.livx/playlist.m3u8"
+      }
+    ]
+  },
+  {
+    "id": "vod_asfur",
+    "title": "עספור",
+    "originalTitle": "Asfur",
+    "year": "2010-2011",
+    "rating": "9.0",
+    "genres": [
+      "דרמה",
+      "קומדיה",
+      "ישראלי",
+      "קאלט"
+    ],
+    "desc": "עלילותיהם של מוטי, איציק, קצר וניוטון (שלום מיכאלשווילי, גיא עמיר, חנן סביון ועוז זהבי), ארבעה חברים שגרים בתוך אוטובוסים נטושים בחווה בירושלים ויוצאים להרפתקאות מטורפות כדי להציל את ביתם מחוב ענק.",
+    "poster": "assets/vod/asfur.jpg",
+    "backdrop": "assets/vod/asfur.jpg",
+    "totalEpisodes": 50,
+    "episodes": [
+      {
+        "id": "vod_asfur_ep1",
+        "title": "פרק 1 - החווה בירושלים",
+        "duration": "45 דקות",
+        "thumb": "assets/vod/asfur.jpg",
+        "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12214/index.m3u8"
+      },
+      {
+        "id": "vod_asfur_ep2",
+        "title": "פרק 2 - קצר וניוטון עושים עסקים",
+        "duration": "42 דקות",
+        "thumb": "assets/vod/asfur.jpg",
+        "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12214/index.m3u8"
+      },
+      {
+        "id": "vod_asfur_ep3",
+        "title": "פרק 3 - החוב של העירייה",
+        "duration": "44 דקות",
+        "thumb": "assets/vod/asfur.jpg",
+        "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12214/index.m3u8"
+      },
+      {
+        "id": "vod_asfur_ep4",
+        "title": "פרק 4 - מוטי ואיציק בדרך למיליון",
+        "duration": "46 דקות",
+        "thumb": "assets/vod/asfur.jpg",
+        "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12214/index.m3u8"
+      },
+      {
+        "id": "vod_asfur_ep5",
+        "title": "פרק 5 - עספור באמסטרדם",
+        "duration": "48 דקות",
+        "thumb": "assets/vod/asfur.jpg",
+        "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12214/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": "vod_hapijamot",
+    "title": "הפיג'מות",
+    "originalTitle": "The Pyjamas",
+    "year": "2003-2015",
+    "rating": "9.3",
+    "genres": [
+      "קומדיה",
+      "ילדים ונוער",
+      "ישראלי",
+      "קאלט"
+    ],
+    "desc": "סדרת הקאלט הגדולה של הילדים והנוער בישראל. שלישיית להקת הפיג'מות מנתניה – אילן, קובי ועודד – עוברים לתל אביב ומשגעים את גרי מנדלבאום וההמבורגרי שלו לצד רוני, אלונה, ימית ודנה.",
+    "poster": "assets/vod/hapijamot.jpg",
+    "backdrop": "assets/vod/hapijamot.jpg",
+    "totalEpisodes": 60,
+    "episodes": [
+      {
+        "id": "vod_hapijamot_live",
+        "title": "מרתון הפיג'מות וסדרות ערוץ הילדים HD",
+        "duration": "מרתון רצוף",
+        "thumb": "assets/vod/hapijamot.jpg",
+        "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kids_channel/live.livx/playlist.m3u8"
+      },
+      {
+        "id": "vod_hapijamot_ep1",
+        "title": "פרק 1 - איך הכל התחיל",
+        "duration": "25 דקות",
+        "thumb": "assets/vod/hapijamot.jpg",
+        "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kids_channel/live.livx/playlist.m3u8"
+      },
+      {
+        "id": "vod_hapijamot_ep2",
+        "title": "פרק 2 - גרי מנדלבאום וההמבורגרי",
+        "duration": "24 דקות",
+        "thumb": "assets/vod/hapijamot.jpg",
+        "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kids_channel/live.livx/playlist.m3u8"
+      },
+      {
+        "id": "vod_hapijamot_ep3",
+        "title": "פרק 3 - קובי ונג'י הקריין האיראני",
+        "duration": "26 דקות",
+        "thumb": "assets/vod/hapijamot.jpg",
+        "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kids_channel/live.livx/playlist.m3u8"
+      },
+      {
+        "id": "vod_hapijamot_ep4",
+        "title": "פרק 4 - פרדי פלומבה מפיק על",
+        "duration": "25 דקות",
+        "thumb": "assets/vod/hapijamot.jpg",
+        "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kids_channel/live.livx/playlist.m3u8"
+      },
+      {
+        "id": "vod_hapijamot_ep5",
+        "title": "פרק 5 - עודד אמר להרים ידיים",
+        "duration": "27 דקות",
+        "thumb": "assets/vod/hapijamot.jpg",
+        "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kids_channel/live.livx/playlist.m3u8"
+      }
+    ]
+  },
+  {
+    "id": "vod_shnot_haye80",
+    "title": "שנות ה-80 ושנות ה-90",
+    "originalTitle": "The 80s & 90s",
+    "year": "2013-2023",
+    "rating": "8.9",
+    "genres": [
+      "קומדיה",
+      "ישראלי",
+      "נוסטלגיה"
+    ],
+    "desc": "קומדיית המצבים האהובה של שלום ומני אסייג. קורות משפחת אסייג בשכונה בטירת כרמל – פרוספר, לילי, מורדי, שלום, ממוקה, קוקו, גידי ומנחם.",
+    "poster": "assets/vod/shnot80.jpg",
+    "backdrop": "assets/logos/reshet13_comedy_il.png",
+    "totalEpisodes": 50,
+    "episodes": [
+      {
+        "id": "vod_shnot80_live",
+        "title": "מרתון קומדיה וסאטירה - רשת 13 HD",
+        "duration": "שידור רצוף",
+        "thumb": "assets/vod/shnot80.jpg",
+        "url": "https://d15ds134q59udk.cloudfront.net/media/3b45de9e-c944-4fdc-a344-7c3042b5b104/mainManifest.m3u8"
+      },
+      {
+        "id": "vod_shnot80_ep1",
+        "title": "פרק 1 - החבילה מאמריקה",
+        "duration": "32 דקות",
+        "thumb": "assets/vod/shnot80.jpg",
+        "url": "https://d15ds134q59udk.cloudfront.net/media/3b45de9e-c944-4fdc-a344-7c3042b5b104/mainManifest.m3u8"
+      },
+      {
+        "id": "vod_shnot80_ep2",
+        "title": "פרק 2 - מכשיר הווידאו של ממוקה",
+        "duration": "30 דקות",
+        "thumb": "assets/vod/shnot80.jpg",
+        "url": "https://d15ds134q59udk.cloudfront.net/media/3b45de9e-c944-4fdc-a344-7c3042b5b104/mainManifest.m3u8"
+      },
+      {
+        "id": "vod_shnot80_ep3",
+        "title": "פרק 3 - מורדי והסוס הלבן",
+        "duration": "31 דקות",
+        "thumb": "assets/vod/shnot80.jpg",
+        "url": "https://d15ds134q59udk.cloudfront.net/media/3b45de9e-c944-4fdc-a344-7c3042b5b104/mainManifest.m3u8"
+      },
+      {
+        "id": "vod_shnot80_ep4",
+        "title": "פרק 4 - פרוספר עושה כבוד בבית הכנסת",
+        "duration": "29 דקות",
+        "thumb": "assets/vod/shnot80.jpg",
+        "url": "https://d15ds134q59udk.cloudfront.net/media/3b45de9e-c944-4fdc-a344-7c3042b5b104/mainManifest.m3u8"
+      }
+    ]
+  },
+  {
+    "id": "vod_bourekas_classics",
+    "title": "סרטי בורקס וקלאסיקות קאלט ישראלי",
+    "originalTitle": "Israeli Cult Classics",
+    "year": "1970-2024",
+    "rating": "9.5",
+    "genres": [
+      "קומדיה",
+      "ישראלי",
+      "קלאסיקה",
+      "קאלט"
+    ],
+    "desc": "נבחרת סרטי הקאלט והקומדיות הישראליות הגדולות בכל הזמנים: גבעת חלפון אינה עונה (הגשש החיוור), חגיגה בסנוקר, צ'רלי וחצי, אלכס חולה אהבה, משפחת צנעני ומבצע יונתן.",
+    "poster": "assets/vod/bourekas.jpg",
+    "backdrop": "assets/logos/freetv_israeli_movies.png",
+    "totalEpisodes": 20,
+    "episodes": [
+      {
+        "id": "vod_bourekas_live",
+        "title": "ערוץ קולנוע ישראלי וקלאסיקות בורקס HD",
+        "duration": "שידור רצוף",
+        "thumb": "assets/vod/bourekas.jpg",
+        "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/free_israeli_movies/live.livx/playlist.m3u8"
+      },
+      {
+        "id": "vod_bourekas_givat_halfon",
+        "title": "גבעת חלפון אינה עונה (הגשש החיוור)",
+        "duration": "סרט מלא (90 דק')",
+        "thumb": "assets/vod/bourekas.jpg",
+        "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/free_israeli_movies/live.livx/playlist.m3u8"
+      },
+      {
+        "id": "vod_bourekas_snooker",
+        "title": "חגיגה בסנוקר (יהודה ברקן וזאב רווח)",
+        "duration": "סרט מלא (92 דק')",
+        "thumb": "assets/vod/bourekas.jpg",
+        "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/free_israeli_movies/live.livx/playlist.m3u8"
+      },
+      {
+        "id": "vod_bourekas_charlie",
+        "title": "צ'רלי וחצי (יהודה ברקן ואריה אליאס)",
+        "duration": "סרט מלא (95 דק')",
+        "thumb": "assets/vod/bourekas.jpg",
+        "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/free_israeli_movies/live.livx/playlist.m3u8"
+      },
+      {
+        "id": "vod_bourekas_alex",
+        "title": "אלכס חולה אהבה",
+        "duration": "סרט מלא (88 דק')",
+        "thumb": "assets/vod/bourekas.jpg",
+        "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/free_israeli_movies/live.livx/playlist.m3u8"
+      }
+    ]
+  },
+  {
+    "id": "vod_fauda",
+    "title": "פאודה",
+    "originalTitle": "Fauda",
+    "year": "2015-2024",
+    "rating": "9.3",
+    "genres": [
+      "אקשן",
+      "מתח",
+      "דרמה",
+      "ישראלי"
+    ],
+    "desc": "דרמת המתח והאקשן שכבשה את ישראל והעולם בכיכובו של ליאור רז (דורון קביליו) וצוות המסתערבים שלו במרדף עוצר נשימה.",
+    "poster": "assets/vod/fauda.jpg",
+    "backdrop": "assets/vod/fauda.jpg",
+    "totalEpisodes": 48,
+    "episodes": [
+      {
+        "id": "vod_fauda_ep1",
+        "title": "פרק 1 - הפנתר חוזר",
+        "duration": "45 דקות",
+        "thumb": "assets/vod/fauda.jpg",
+        "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32140/index.m3u8"
+      },
+      {
+        "id": "vod_fauda_ep2",
+        "title": "פרק 2 - המבצע בקסבה",
+        "duration": "44 דקות",
+        "thumb": "assets/vod/fauda.jpg",
+        "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32140/index.m3u8"
+      },
+      {
+        "id": "vod_fauda_ep3",
+        "title": "פרק 3 - עמוק בשטח",
+        "duration": "46 דקות",
+        "thumb": "assets/vod/fauda.jpg",
+        "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32140/index.m3u8"
+      },
+      {
+        "id": "vod_fauda_ep4",
+        "title": "פרק 4 - מרדף בעיניים",
+        "duration": "43 דקות",
+        "thumb": "assets/vod/fauda.jpg",
+        "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32140/index.m3u8"
+      }
+    ]
+  },
+  {
+    "id": "vod_shababnikim",
+    "title": "שבאבניקים",
+    "originalTitle": "Shababnikim",
+    "year": "2017-2024",
+    "rating": "9.1",
+    "genres": [
+      "קומדיה",
+      "דרמה",
+      "ישראלי"
+    ],
+    "desc": "קומדיה שנונה ועטורת פרסים על ארבעה תלמידי ישיבה חרדית מובחרת בירושלים – אבינועם, דב לייזר, מאיר ולזר – שמנסים לאזן בין עולם הישיבה לחיים המודרניים.",
+    "poster": "assets/vod/shababnikim.jpg",
+    "backdrop": "assets/logos/hot_comedy.png",
+    "totalEpisodes": 36,
+    "episodes": [
+      {
+        "id": "vod_shababnikim_ep1",
+        "title": "פרק 1 - הבלקוני של הישיבה",
+        "duration": "35 דקות",
+        "thumb": "assets/vod/shababnikim.jpg",
+        "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12217/index.m3u8"
+      },
+      {
+        "id": "vod_shababnikim_ep2",
+        "title": "פרק 2 - השידוך של אבינועם",
+        "duration": "34 דקות",
+        "thumb": "assets/vod/shababnikim.jpg",
+        "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12217/index.m3u8"
+      },
+      {
+        "id": "vod_shababnikim_ep3",
+        "title": "פרק 3 - החליפה של ורסצ'ה",
+        "duration": "36 דקות",
+        "thumb": "assets/vod/shababnikim.jpg",
+        "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12217/index.m3u8"
+      },
+      {
+        "id": "vod_shababnikim_ep4",
+        "title": "פרק 4 - הרב בלוך מגיע",
+        "duration": "33 דקות",
+        "thumb": "assets/vod/shababnikim.jpg",
+        "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12217/index.m3u8"
+      }
+    ]
   }
 ];

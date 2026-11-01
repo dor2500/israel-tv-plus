@@ -10,7 +10,7 @@
   'use strict';
 
   // channels.js exposes ITV_CHANNELS; keep the app's canonical alias available to all screens.
-  window.CHANNELS_DATA = window.CHANNELS_DATA || window.ITV_CHANNELS || [];
+  window.CHANNELS_DATA = window.CHANNELS_DATA || window.ITV_CHANNELS || window.CHANNELS || [];
   window.ITV_CHANNELS = window.CHANNELS_DATA;
 
   var REMOTE = 'https://dor2500.github.io/israel-tv-plus/';
@@ -3146,8 +3146,6 @@ function loadCandidate(ch, rawUrl) {
         lowLatencyMode: true,
         startPosition: isSport ? -1 : undefined,
         backBufferLength: fastMode() ? 8 : (isSport ? 4 : 15),
-        liveSyncDurationCount: isSport ? 1 : (isStable ? 2 : 1),
-        liveMaxLatencyDurationCount: isSport ? 2 : (isStable ? 4 : 2),
         liveSyncDuration: isSport ? 2 : 7,
         liveMaxLatencyDuration: isSport ? 4 : 14,
         liveDurationInfinity: true,
