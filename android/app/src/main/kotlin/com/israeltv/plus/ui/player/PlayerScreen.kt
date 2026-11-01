@@ -401,7 +401,24 @@ fun PlayerScreen(
             return@LaunchedEffect
         }
         val item = MediaItem.Builder().setUri(url)
-        if (rawCandidate.contains(".m3u8", ignoreCase = true) || !current.isRadio) item.setMimeType(MimeTypes.APPLICATION_M3U8)
+        if (rawCandidate.contains(".m3u8", ignoreCase = true) || !current.isRadio) {
+            item.setMimeType(MimeTypes.APPLICATION_M3U8)
+            if (current.kind != "vod") {
+                val isOttrastStream = url.contains("ottrast.com", ignoreCase = true) || url.contains("45.156.223") || url.contains("212.80.215")
+                val targetOffset = if (isOttrastStream) 12_000L else 1_800L
+                val maxOffset = if (isOttrastStream) 25_000L else 4_000L
+                val minOffset = if (isOttrastStream) 8_000L else 800L
+                item.setLiveConfiguration(
+                    MediaItem.LiveConfiguration.Builder()
+                        .setTargetOffsetMs(targetOffset)
+                        .setMinOffsetMs(minOffset)
+                        .setMaxOffsetMs(maxOffset)
+                        .setMinPlaybackSpeed(0.97f)
+                        .setMaxPlaybackSpeed(1.08f)
+                        .build()
+                )
+            }
+        }
         player.setMediaItem(item.build())
         player.volume = 1.0f
         player.prepare()

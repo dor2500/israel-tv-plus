@@ -5002,7 +5002,7 @@
     "title": "BFM TV (France)",
     "category": "חדשות מהעולם (News)",
     "categoryEn": "news",
-    "url": "https://ncdn-live-bfm.pfd.sfr.net/shls/LIVE$BFM_TV/index.m3u8?end=END&start=LIVE",
+    "url": "https://live-cdn-stream-euw1.bfmtv.bct.nextradiotv.com/master.m3u8",
     "logo": "assets/logos/bfmtv.png",
     "badge": "FHD",
     "desc": "רשת החדשות המובילה בצרפת",
@@ -9557,7 +9557,7 @@
     "title": "ערוץ פורמולה 1 שידור חי (Sky Sports F1 HD)",
     "category": "ספורט (Sports)",
     "categoryEn": "sports",
-    "url": "https://cdn.stmify.com/out/v1/SKY_SPORTS_F1/index.m3u8",
+    "url": "https://mvg-mv-xumo.otteravision.com/mvg/mv/mv.m3u8",
     "backups": [
       "https://mvg-mv-xumo.otteravision.com/mvg/mv/mv.m3u8"
     ],

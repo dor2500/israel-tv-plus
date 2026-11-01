@@ -37,3 +37,4 @@ with open(os.path.join(dist, "SHA256SUMS.txt"), "w", encoding="utf-8") as f:
     f.write(out_content)
 
 print(f"Generated SHA256SUMS and SHA256SUMS.txt for {v} with {len(lines)} files!")
+
