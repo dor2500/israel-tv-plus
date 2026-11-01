@@ -2372,18 +2372,57 @@
       url: ep.url,
       logo: series.poster,
       badge: 'VOD',
-      category: 'סדרות VOD',
-      isVod: true
+      category: 'סדרות לצפייה ישירה (VOD)',
+      isVod: true,
+      series: series,
+      currentEpisode: ep
     };
     state.playing = vodCh;
-    var m = media();
-    m.src = ep.url;
-    m.load();
-    var p = m.play();
-    if (p && p.catch) p.catch(function () {});
     openPlayer();
     fillOsd(vodCh);
     showOsd();
+    loadStream(vodCh);
+  }
+
+  function cyclePlaybackSpeed() {
+    var v = el.video;
+    if (!v) return;
+    var speeds = [1, 1.25, 1.5, 2, 0.75];
+    var cur = v.playbackRate || 1;
+    var idx = speeds.indexOf(cur);
+    var next = speeds[(idx + 1) % speeds.length];
+    v.playbackRate = next;
+    toast('⚡ מהירות ניגון: ' + next + 'x');
+  }
+
+  function playNextVodEpisode() {
+    var ch = state.playing;
+    if (!ch || !ch.isVod || !ch.series || !ch.series.episodes) return;
+    var eps = ch.series.episodes;
+    var curIdx = -1;
+    for (var i = 0; i < eps.length; i++) {
+      if (eps[i].id === ch.id || eps[i].url === ch.url) { curIdx = i; break; }
+    }
+    if (curIdx !== -1 && curIdx + 1 < eps.length) {
+      playVodEpisode(ch.series, eps[curIdx + 1]);
+    } else {
+      toast('זהו הפרק האחרון ברשימה זו');
+    }
+  }
+
+  function playPrevVodEpisode() {
+    var ch = state.playing;
+    if (!ch || !ch.isVod || !ch.series || !ch.series.episodes) return;
+    var eps = ch.series.episodes;
+    var curIdx = -1;
+    for (var i = 0; i < eps.length; i++) {
+      if (eps[i].id === ch.id || eps[i].url === ch.url) { curIdx = i; break; }
+    }
+    if (curIdx > 0) {
+      playVodEpisode(ch.series, eps[curIdx - 1]);
+    } else {
+      toast('זהו הפרק הראשון');
+    }
   }
 
   function atvOk() {
@@ -2669,6 +2708,13 @@
     el.video.addEventListener('playing', function () {
       if (TVUI && state.playing && state.overlay !== 'player') document.body.classList.add('atv-live');
     });
+    el.video.addEventListener('timeupdate', function () {
+      if (state.playing && state.playing.isVod && el.video.currentTime > 5) {
+        try {
+          localStorage.setItem('itv_vod_pos_' + state.playing.id, el.video.currentTime);
+        } catch (e) {}
+      }
+    });
   }
 
   // ================================================================== playback
@@ -2677,6 +2723,10 @@
     var ch = state.list[i];
     if (isApp(ch)) { openServiceApp(ch); addRecent(ch); return; }
     if (appOnly(ch)) { showGetApp(ch); return; }
+    if (ch.isVod || ch.categoryEn === 'vod') {
+      var s = ch.vodData || (window.VOD_DATA && window.VOD_DATA.find(function (v) { return v.id === ch.id || v.title === ch.name.replace(' FHD (VOD)', '').trim(); }));
+      if (s) { openVodModal(s); return; }
+    }
     state.playIdx = i;
     state.playing = ch;
     addRecent(ch);
@@ -3049,7 +3099,15 @@ function loadCandidate(ch, rawUrl) {
         }
         v.addEventListener('loadedmetadata', function onMeta() {
           v.removeEventListener('loadedmetadata', onMeta);
-          if (isSport && hls.liveSyncPosition != null) {
+          if (ch.isVod) {
+            try {
+              var saved = parseFloat(localStorage.getItem('itv_vod_pos_' + ch.id) || '0');
+              if (saved > 10 && saved < (v.duration || 999999) - 30) {
+                v.currentTime = saved;
+                toast('⏩ ממשיך מהנקודה שעצרת (' + Math.floor(saved / 60) + ' דקות)');
+              }
+            } catch (e) {}
+          } else if (isSport && hls.liveSyncPosition != null) {
             try { v.currentTime = hls.liveSyncPosition; } catch (e) {}
           }
         });
@@ -3408,6 +3466,14 @@ function showOsd() {
     var ch = state.playing;
     if (!ch) return;
     var items = [];
+    if (ch.isVod) {
+      if (ch.series) {
+        items.push({ ico: '📋', label: 'פרקים בסדרה (' + ch.series.title + ')', act: function () { openVodModal(ch.series); } });
+      }
+      items.push({ ico: '⏭️', label: 'פרק הבא', act: playNextVodEpisode });
+      items.push({ ico: '⏮️', label: 'פרק קודם', act: playPrevVodEpisode });
+      items.push({ ico: '⚡', label: 'מהירות ניגון', stay: true, val: function () { return (el.video.playbackRate || 1) + 'x'; }, act: cyclePlaybackSpeed });
+    }
     if (Guide) items.push({ ico: '▦', label: 'לוח שידורים', act: Guide.open });
     if (state.candidates && state.candidates.length > 1) {
       items.push({ ico: '🔀', label: 'שרת שידור', stay: true, val: function () { return 'שרת ' + ((state.candIdx || 0) + 1) + '/' + state.candidates.length; },
