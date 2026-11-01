@@ -3141,20 +3141,22 @@ function loadCandidate(ch, rawUrl) {
       var low = (S.latency === 'low' || S.latency === 'realtime' || TVUI || isSport) && !delayed;
       var isStable = (S.latency === 'stable' && !isSport);
       var is4K = S.quality === 'upscale4k';
+      var isVod = !!(ch.isVod || ch.categoryEn === 'vod');
       var hls = new Hls({
         enableWorker: true,
-        lowLatencyMode: true,
+        lowLatencyMode: !isVod,
         startPosition: isSport ? -1 : undefined,
-        backBufferLength: fastMode() ? 8 : (isSport ? 4 : 15),
+        startFragPrefetch: true,
+        backBufferLength: fastMode() ? 8 : (isSport ? 4 : (isVod ? 30 : 15)),
         liveSyncDuration: isSport ? 2 : 7,
         liveMaxLatencyDuration: isSport ? 4 : 14,
-        liveDurationInfinity: true,
+        liveDurationInfinity: !isVod,
         maxLiveSyncPlaybackRate: isSport ? 1.5 : 1.15,
-        maxBufferLength: isSport ? 5 : (is4K ? 24 : 14),
-        maxMaxBufferLength: isSport ? 8 : (is4K ? 45 : 24),
-        maxBufferSize: isSport ? 8 * 1000 * 1000 : 25 * 1000 * 1000,
-        manifestLoadingMaxRetry: 5,
-        levelLoadingMaxRetry: 5,
+        maxBufferLength: isSport ? 5 : (isVod ? 60 : (is4K ? 24 : 14)),
+        maxMaxBufferLength: isSport ? 8 : (isVod ? 120 : (is4K ? 45 : 24)),
+        maxBufferSize: isSport ? 8 * 1000 * 1000 : (isVod ? 60 * 1000 * 1000 : 25 * 1000 * 1000),
+        manifestLoadingMaxRetry: 6,
+        levelLoadingMaxRetry: 6,
         fragLoadingMaxRetry: 6,
         fragLoadingRetryDelay: 500,
         capLevelToPlayerSize: S.quality === 'auto'
@@ -3216,6 +3218,19 @@ function loadCandidate(ch, rawUrl) {
         };
         v.onplaying = function () {
           setTimeout(function () { stallCount = 0; }, 10000);
+        };
+        v.onended = function () {
+          if (ch.isVod && ch.vodSeries && ch.vodEpisodeIndex != null) {
+            var series = ch.vodSeries;
+            var nextIdx = ch.vodEpisodeIndex + 1;
+            if (series.episodes && nextIdx < series.episodes.length) {
+              var nextEp = series.episodes[nextIdx];
+              toast('🍿 הפרק הסתיים · עובר לפרק הבא: ' + (nextEp.title || ('פרק ' + (nextIdx + 1))));
+              setTimeout(function () {
+                playVodEpisode(series, nextEp);
+              }, 1200);
+            }
+          }
         };
         if (delayed) spinner(true, 'מכין דיבוב מסונכרן… התמונה מושהית ב-' + Dub.settings.delay + ' שניות');
         startPlay(v, ch);

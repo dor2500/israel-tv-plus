@@ -159,6 +159,7 @@ import androidx.media3.common.Player
 import androidx.media3.common.TrackSelectionOverride
 import androidx.media3.common.Tracks
 import androidx.media3.datasource.DefaultHttpDataSource
+import androidx.media3.exoplayer.DefaultRenderersFactory
 import androidx.media3.exoplayer.DefaultLoadControl
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.exoplayer.source.DefaultMediaSourceFactory
@@ -197,23 +198,28 @@ private fun buildPlayer(context: Context, handleAudioFocus: Boolean = true): Exo
     val http = DefaultHttpDataSource.Factory()
         .setUserAgent(USER_AGENT)
         .setAllowCrossProtocolRedirects(true)
-        .setConnectTimeoutMs(7_000)
-        .setReadTimeoutMs(9_000)
+        .setConnectTimeoutMs(6_000)
+        .setReadTimeoutMs(8_000)
         .setDefaultRequestProperties(mapOf("Referer" to "https://stmify.com/"))
     val loadControl = DefaultLoadControl.Builder()
         .setBufferDurationsMs(
-            /* minBufferMs = */ 12_000,
-            /* maxBufferMs = */ 45_000,
-            /* bufferForPlaybackMs = */ 800,
-            /* bufferForPlaybackAfterRebufferMs = */ 1_600,
+            /* minBufferMs = */ 15_000,
+            /* maxBufferMs = */ 60_000,
+            /* bufferForPlaybackMs = */ 350,
+            /* bufferForPlaybackAfterRebufferMs = */ 1_000,
         )
+        .setPrioritizeTimeOverSizeThresholds(true)
         .build()
     val trackSelector = DefaultTrackSelector(context).apply {
         parameters = buildUponParameters()
             .setForceHighestSupportedBitrate(true)
             .build()
     }
-    return ExoPlayer.Builder(context)
+    val renderersFactory = DefaultRenderersFactory(context)
+        .setEnableDecoderFallback(true)
+        .setExtensionRendererMode(DefaultRenderersFactory.EXTENSION_RENDERER_MODE_PREFER)
+
+    return ExoPlayer.Builder(context, renderersFactory)
         .setTrackSelector(trackSelector)
         .setLoadControl(loadControl)
         .setMediaSourceFactory(DefaultMediaSourceFactory(http))
@@ -222,6 +228,8 @@ private fun buildPlayer(context: Context, handleAudioFocus: Boolean = true): Exo
             /* handleAudioFocus = */ handleAudioFocus,
         )
         .setHandleAudioBecomingNoisy(true)
+        .setVideoScalingMode(C.VIDEO_SCALING_MODE_SCALE_TO_FIT_WITH_CROPPING)
+        .setWakeMode(C.WAKE_MODE_NETWORK)
         .build()
         .apply { volume = 1.0f }
 }
@@ -526,7 +534,7 @@ fun PlayerScreen(
                         useController = false
                         artworkDisplayMode = PlayerView.ARTWORK_DISPLAY_MODE_OFF
                         setShutterBackgroundColor(android.graphics.Color.BLACK)
-                        setKeepContentOnPlayerReset(false)
+                        setKeepContentOnPlayerReset(true)
                         resizeMode = AspectRatioFrameLayout.RESIZE_MODE_FIT
                         this.player = player
                     }
