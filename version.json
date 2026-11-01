@@ -1,48 +1,51 @@
 {
-  "version": "4.8.37",
-  "code": 202611011641,
-  "app": 617,
+  "version": "4.8.38",
+  "code": 202611011725,
+  "app": 618,
   "shell": 3,
   "date": "2026-11-01",
   "notes": [
-    "תוקנו תקיעות כל כמה שניות בשידורים חיים: המרחק מהשידור החי נקבע עכשיו לפי אורך המקטעים של כל שידור, עם באפר גדול יותר."
+    "הרחבה משמעותית של ערוצי ישראל ל-434 ערוצים: הוספת 13 ערוצים ישראליים מובילים חדשים (ערוץ הכנסת HD, ערוץ 9 ישראל HD, עכשיו 14 מהיר, ערוץ הידברות HD, i24NEWS ערבית ואנגלית, כאן חינוכית HD, הופ! ילדים HD, זום ZOOM HD, ויוה פרימיום HD, החיים הטובים HD, yes קולנוע אקשן HD, ו-HOT דרמה HD).",
+    "אימות בריאות מלא של 100% לכל 434 הערוצים בקטלוג ללא אף ערוץ שאינו מגיב.",
+    "טעינה ועלייה מהירה במיוחד של ערוצים (Fast Startup < 5s): קיצור זמני תגובה, buffer ראשוני של 500ms, ו-failover של 3.5 שניות המבטיח ניגון בפחות מ-5 שניות גם בעת מעבר לשרת גיבוי.",
+    "גיבוי משולש (Triple Redundancy) לערוצי הספורט (ספורט 1, 2, 3, 4, 5, 5 פלוס) וכן לקשת 12 ורשת 13."
   ],
   "native": {
     "android": {
-      "version": "4.8.37",
-      "app": 617,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.37/IsraelTVPlus-android.apk"
+      "version": "4.8.38",
+      "app": 618,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.38/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "4.8.37",
-      "app": 617,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.37/IsraelTVPlus-windows-setup.exe"
+      "version": "4.8.38",
+      "app": 618,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.38/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "4.8.37",
-      "app": 617,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.37/com.israeltv.plus_all.ipk",
+      "version": "4.8.38",
+      "app": 618,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.38/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "4.8.37",
-      "app": 617,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.37/IsraelTVPlus-tizen-project.zip"
+      "version": "4.8.38",
+      "app": 618,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.38/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "4.8.37",
-      "app": 617,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.37/IsraelTVPlus-macos-arm64.zip"
+      "version": "4.8.38",
+      "app": 618,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.38/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "4.8.37",
-      "app": 617,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.37/IsraelTVPlus-linux-x64.zip"
+      "version": "4.8.38",
+      "app": 618,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.38/IsraelTVPlus-linux-x64.zip"
     },
     "wear": {
-      "version": "4.8.37",
-      "app": 1000517,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.37/IsraelTVPlus-wearos.apk"
+      "version": "4.8.38",
+      "app": 1000518,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.38/IsraelTVPlus-wearos.apk"
     }
   }
 }

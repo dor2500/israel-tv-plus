@@ -539,3 +539,19 @@ http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32160/index.m3u8
 http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2355/index.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="ערוץ הלא TV HD (Hala TV)" tvg-chno="411" tvg-logo="https://upload.wikimedia.org/wikipedia/he/thumb/4/41/Hala_TV_Logo.png/300px-Hala_TV_Logo.png" group-title="ערוצי ישראל",ערוץ הלא TV HD (Hala TV)
 https://stream.panet.com/edge/halaTV/playlist.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ הכנסת HD (Knesset Channel)" tvg-chno="99" tvg-logo="https://upload.wikimedia.org/wikipedia/he/thumb/9/91/Knesset_Channel_logo.svg/300px-Knesset_Channel_logo.svg.png" group-title="ערוצי ישראל",ערוץ הכנסת HD (Knesset Channel)
+http://stream.mcquack.net/48/index.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ 9 ישראל HD" tvg-chno="9" tvg-logo="https://upload.wikimedia.org/wikipedia/he/thumb/b/b3/Channel_9_Israel_logo_2021.svg/300px-Channel_9_Israel_logo_2021.svg.png" group-title="ערוצי ישראל",ערוץ 9 ישראל HD
+https://contact.gostreaming.tv/Con-11/index.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ 14 החדשות עכשיו (Now 14 Live)" tvg-chno="140" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Now_14_Logo.svg/300px-Now_14_Logo.svg.png" group-title="ערוצי ישראל",ערוץ 14 החדשות עכשיו (Now 14 Live)
+https://r.il.cdn-redge.media/livehls/oil/ch14/live/ch14/live.livx/playlist.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ הידברות HD" tvg-chno="97" tvg-logo="https://upload.wikimedia.org/wikipedia/he/thumb/2/22/Hidabroot_Logo.png/300px-Hidabroot_Logo.png" group-title="מסורת וקהילה",ערוץ הידברות HD
+https://cdn.cybercdn.live/HidabrootIL/Live97/playlist.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="כאן חינוכית HD (חינוכית ילדים)" tvg-chno="80" tvg-logo="https://upload.wikimedia.org/wikipedia/he/thumb/8/87/Kan_Hinuchit.svg/300px-Kan_Hinuchit.svg.png" group-title="ילדים ונוער (בעברית)",כאן חינוכית HD (חינוכית ילדים)
+http://stream.mcquack.net/378/index.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ הופ! ילדים HD (Hop! Kids)" tvg-chno="77" tvg-logo="https://upload.wikimedia.org/wikipedia/he/thumb/b/b3/Hop%21_Channel_Logo_2020.svg/300px-Hop%21_Channel_Logo_2020.svg.png" group-title="ילדים ונוער (בעברית)",ערוץ הופ! ילדים HD (Hop! Kids)
+http://stream.mcquack.net/44/index.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ זום ZOOM ילדים ונוער HD" tvg-chno="84" tvg-logo="https://upload.wikimedia.org/wikipedia/he/thumb/f/f6/Zoom_Channel_Logo.png/300px-Zoom_Channel_Logo.png" group-title="ילדים ונוער (בעברית)",ערוץ זום ZOOM ילדים ונוער HD
+http://stream.mcquack.net/377/index.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ החיים הטובים HD (Good Life)" tvg-chno="32" tvg-logo="https://upload.wikimedia.org/wikipedia/he/thumb/3/3d/Good_Life_Channel_Logo.png/300px-Good_Life_Channel_Logo.png" group-title="ערוצי ישראל",ערוץ החיים הטובים HD (Good Life)
+http://stream.mcquack.net/47/index.m3u8

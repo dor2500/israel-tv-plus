@@ -3149,7 +3149,7 @@ function loadCandidate(ch, rawUrl) {
     if (state.candidates && (state.candIdx || 0) + 1 < state.candidates.length) {
       state.stallTimer = setTimeout(function () {
         if (state.playing === ch && state.streamUrl === url) onFatal(ch, 'מעבר לשרת גיבוי');
-      }, 7500);
+      }, 3500);
     }
 
     if (isAudioUrl(url, ch)) {
@@ -3210,7 +3210,10 @@ function loadCandidate(ch, rawUrl) {
         manifestLoadingMaxRetry: 6,
         levelLoadingMaxRetry: 6,
         fragLoadingMaxRetry: 6,
-        fragLoadingRetryDelay: 500,
+        manifestLoadingTimeOut: 3500,
+        fragLoadingTimeOut: 4500,
+        levelLoadingTimeOut: 3500,
+        fragLoadingRetryDelay: 300,
         capLevelToPlayerSize: S.quality === 'auto'
       });
       state.hls = hls;

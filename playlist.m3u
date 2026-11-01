@@ -374,7 +374,7 @@ https://skynewsau-live.akamaized.net/hls/live/2002691/skynewsau-extra3/master.m3
 #EXTINF:-1 tvg-id="" tvg-name="DW News English HD" tvg-chno="188" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/dw_english.png" group-title="חדשות מהעולם",DW News English HD
 https://dwamdstream102.akamaized.net/hls/live/2015525/dwstream102/index.m3u8
 #EXTINF:-1 tvg-id="BFMTV.fr" tvg-name="BFM TV HD (France)" tvg-chno="189" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/bfmtv.png" group-title="חדשות מהעולם",BFM TV HD (France)
-https://ncdn-live-bfm.pfd.sfr.net/shls/LIVE$BFM_TV/index.m3u8?end=END&start=LIVE
+https://live-cdn-stream-euw1.bfmtv.bct.nextradiotv.com/master.m3u8
 #EXTINF:-1 tvg-id="BFMTechCo.fr" tvg-name="BFM Tech & Co HD" tvg-chno="190" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/bfm_tech.png" group-title="חדשות מהעולם",BFM Tech & Co HD
 https://ncdn-live-bfm.pfd.sfr.net/shls/LIVE$BFM_TECHANDCO/index.m3u8?end=END&start=LIVE
 #EXTINF:-1 tvg-id="" tvg-name="France 24 (FreeTV ישראל)" tvg-chno="191" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/france24_freetv_il.png" group-title="חדשות מהעולם",France 24 (FreeTV ישראל)
@@ -747,7 +747,7 @@ https://d15ds134q59udk.cloudfront.net/out/v1/fbba879221d045598540ee783b140fe2/in
 https://edge3.uk.kab.tv/live/tv66-heb-high/playlist.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="Sky Sports F1 HD (פורמולה 1 שידור חי)" tvg-chno="375" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/3/33/F1.svg" group-title="ספורט" http-referrer="https://stmify.com/",Sky Sports F1 HD (פורמולה 1 שידור חי)
 #EXTVLCOPT:http-referrer=https://stmify.com/
-https://cdn.stmify.com/out/v1/SKY_SPORTS_F1/index.m3u8
+https://mvg-mv-xumo.otteravision.com/mvg/mv/mv.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="מוטורוויז'ן Motorvision HD" tvg-chno="376" tvg-logo="https://i.imgur.com/v4kj8pI.png" group-title="ספורט",מוטורוויז'ן Motorvision HD
 https://mvg-mv-xumo.otteravision.com/mvg/mv/mv.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="ערוץ הרכב Cars.TV HD" tvg-chno="377" tvg-logo="https://i.imgur.com/JLSHiTp.png" group-title="ספורט",ערוץ הרכב Cars.TV HD
@@ -840,3 +840,29 @@ https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2197024/LIBCODE
 https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_817geznm/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4
 #EXTINF:-1 tvg-id="" tvg-name="שעת נעילה FHD (VOD)" tvg-chno="510" tvg-logo="https://upload.wikimedia.org/wikipedia/he/thumb/f/f6/Valley_of_Tears_poster.jpg/300px-Valley_of_Tears_poster.jpg" group-title="סדרות לצפייה ישירה",שעת נעילה FHD (VOD)
 https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_ajaped1u/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ הכנסת HD (Knesset Channel)" tvg-chno="99" tvg-logo="https://upload.wikimedia.org/wikipedia/he/thumb/9/91/Knesset_Channel_logo.svg/300px-Knesset_Channel_logo.svg.png" group-title="ערוצי ישראל",ערוץ הכנסת HD (Knesset Channel)
+http://stream.mcquack.net/48/index.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ 9 ישראל HD" tvg-chno="9" tvg-logo="https://upload.wikimedia.org/wikipedia/he/thumb/b/b3/Channel_9_Israel_logo_2021.svg/300px-Channel_9_Israel_logo_2021.svg.png" group-title="ערוצי ישראל",ערוץ 9 ישראל HD
+https://contact.gostreaming.tv/Con-11/index.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ 14 החדשות עכשיו (Now 14 Live)" tvg-chno="140" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Now_14_Logo.svg/300px-Now_14_Logo.svg.png" group-title="ערוצי ישראל",ערוץ 14 החדשות עכשיו (Now 14 Live)
+https://r.il.cdn-redge.media/livehls/oil/ch14/live/ch14/live.livx/playlist.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ הידברות HD" tvg-chno="97" tvg-logo="https://upload.wikimedia.org/wikipedia/he/thumb/2/22/Hidabroot_Logo.png/300px-Hidabroot_Logo.png" group-title="מסורת וקהילה",ערוץ הידברות HD
+https://cdn.cybercdn.live/HidabrootIL/Live97/playlist.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ i24NEWS ערבית HD" tvg-chno="331" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/I24NEWS_logo.svg/300px-I24NEWS_logo.svg.png" group-title="חדשות מהעולם",ערוץ i24NEWS ערבית HD
+https://i24newsarabic-cdn.encoders.immergo.tv/master.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ i24NEWS אנגלית HD" tvg-chno="332" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/I24NEWS_logo.svg/300px-I24NEWS_logo.svg.png" group-title="חדשות מהעולם",ערוץ i24NEWS אנגלית HD
+https://i24newsenglish-cdn.encoders.immergo.tv/master.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="כאן חינוכית HD (חינוכית ילדים)" tvg-chno="80" tvg-logo="https://upload.wikimedia.org/wikipedia/he/thumb/8/87/Kan_Hinuchit.svg/300px-Kan_Hinuchit.svg.png" group-title="ילדים ונוער (בעברית)",כאן חינוכית HD (חינוכית ילדים)
+http://stream.mcquack.net/378/index.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ הופ! ילדים HD (Hop! Kids)" tvg-chno="77" tvg-logo="https://upload.wikimedia.org/wikipedia/he/thumb/b/b3/Hop%21_Channel_Logo_2020.svg/300px-Hop%21_Channel_Logo_2020.svg.png" group-title="ילדים ונוער (בעברית)",ערוץ הופ! ילדים HD (Hop! Kids)
+http://stream.mcquack.net/44/index.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ זום ZOOM ילדים ונוער HD" tvg-chno="84" tvg-logo="https://upload.wikimedia.org/wikipedia/he/thumb/f/f6/Zoom_Channel_Logo.png/300px-Zoom_Channel_Logo.png" group-title="ילדים ונוער (בעברית)",ערוץ זום ZOOM ילדים ונוער HD
+http://stream.mcquack.net/377/index.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ ויוה פרימיום HD (Viva Premium)" tvg-chno="39" tvg-logo="https://upload.wikimedia.org/wikipedia/he/thumb/1/14/Viva_logo.svg/300px-Viva_logo.svg.png" group-title="סרטים וסדרות",ערוץ ויוה פרימיום HD (Viva Premium)
+http://stream.mcquack.net/43/index.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ החיים הטובים HD (Good Life)" tvg-chno="32" tvg-logo="https://upload.wikimedia.org/wikipedia/he/thumb/3/3d/Good_Life_Channel_Logo.png/300px-Good_Life_Channel_Logo.png" group-title="ערוצי ישראל",ערוץ החיים הטובים HD (Good Life)
+http://stream.mcquack.net/47/index.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="yes קולנוע אקשן HD (yes Movies Action)" tvg-chno="18" tvg-logo="https://upload.wikimedia.org/wikipedia/he/thumb/a/a2/Yes_Movies_Action.svg/300px-Yes_Movies_Action.svg.png" group-title="סרטים וסדרות",yes קולנוע אקשן HD (yes Movies Action)
+http://stream.mcquack.net/380/index.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="HOT דרמה HD (HOT Drama)" tvg-chno="19" tvg-logo="https://upload.wikimedia.org/wikipedia/he/thumb/9/91/HOT_Drama.png/300px-HOT_Drama.png" group-title="סרטים וסדרות",HOT דרמה HD (HOT Drama)
+http://stream.mcquack.net/381/index.m3u8

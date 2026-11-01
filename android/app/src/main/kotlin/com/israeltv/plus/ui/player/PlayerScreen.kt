@@ -198,14 +198,14 @@ private fun buildPlayer(context: Context, handleAudioFocus: Boolean = true): Exo
     val http = DefaultHttpDataSource.Factory()
         .setUserAgent(USER_AGENT)
         .setAllowCrossProtocolRedirects(true)
-        .setConnectTimeoutMs(6_000)
-        .setReadTimeoutMs(8_000)
+        .setConnectTimeoutMs(3_500)
+        .setReadTimeoutMs(4_500)
         .setDefaultRequestProperties(mapOf("Referer" to "https://stmify.com/"))
     val loadControl = DefaultLoadControl.Builder()
         .setBufferDurationsMs(
             /* minBufferMs = */ 15_000,
             /* maxBufferMs = */ 60_000,
-            /* bufferForPlaybackMs = */ 1_000,
+            /* bufferForPlaybackMs = */ 500,
             /* bufferForPlaybackAfterRebufferMs = */ 2_500,
         )
         .setPrioritizeTimeOverSizeThresholds(true)
@@ -417,7 +417,7 @@ fun PlayerScreen(
         player.volume = 1.0f
         player.prepare()
         player.playWhenReady = !castController.isCasting
-        delay(6000)
+        delay(3500)
         if (buffering && !playing && error == null && !castController.isCasting && sourceIndex + 1 < candidates.size) {
             val nextIdx = sourceIndex + 1
             statusToast = "שרת גיבוי (${nextIdx + 1}/${candidates.size})"
@@ -1386,7 +1386,7 @@ private fun MultiViewCell(
         cellPlayer.volume = if (isAudioActive) 1.0f else 0f
         cellPlayer.prepare()
         cellPlayer.playWhenReady = true
-        delay(5500)
+        delay(3500)
         if (!cellPlaying && srvIdx + 1 < candidates.size) {
             srvIdx += 1
         }
