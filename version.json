@@ -1,51 +1,51 @@
 {
-  "version": "4.8.45",
-  "code": 202611012025,
-  "app": 625,
+  "version": "4.8.46",
+  "code": 202611012055,
+  "app": 626,
   "shell": 3,
   "date": "2026-11-01",
   "notes": [
-    "תיקון התחברות לחשבון Google בטלוויזיה (Android TV, LG webOS, Samsung Tizen, Fire TV ודפדפני Smart TV) – פרוטוקול TV Device Code Flow משודרג עם סריקת קוד QR חכם שמזין אוטומטית את הקוד בנייד ללא צורך בהקלדה.",
-    "זיהוי אוטומטי מורחב ומדויק של כל דגמי הטלוויזיות, מזרימי המדיה וה-TV Boxes (Xiaomi Mi Box, Chromecast, Sony Bravia, Hisense VIDAA, Apple TV, דפדפני טלוויזיה ומכשירים ללא מסך מגע).",
-    "מניעת קריסות וחסימות פופאפים בדפדפני Smart TV עם מעבר ישיר ואוטומטי לחלונית התחברות טלוויזיה מותאמת שלט.",
-    "טעינה מקומית מיידית של ספריית ה-QR מ-assets/qrcode.js ב-index.html לתצוגה אולטרה-מהירה ללא השהיות."
+    "שדרוג מקיף של ממשק ה-VOD בטלוויזיה – עיצוב קולנועי רחב (Cinema Mode) עם פוסטר ענק, תגיות איכות, זיהוי עונות וכרטיסיות פרקים ב-2 טורים עם תמונות 16:9 וזמני צפייה.",
+    "ניווט שלט D-Pad מלא ונגיש ב-VOD – מעבר חלק עם חיצי השלט בין עונות, פרקים וכפתור צפייה/הקלטה ישיר ל-Drive בלחיצת כפתור OK.",
+    "כרטיסי סדרות VOD במדפי הטלוויזיה מציגים כעת פוסטרים מלאים ללא שוליים שחורים (Full Cover Art) ותגית VOD כחולה בולטת.",
+    "עיצוב פרימיום למסך ההגדרות בטלוויזיה – חלונית זכוכית יוקרתית (Glassmorphic TV Panel), סרגל קטגוריות מובחן, שורות מוגדלות וקריאות עם הבלטת פוקוס שלט כחולה וברורה."
   ],
   "native": {
     "android": {
-      "version": "4.8.45",
-      "app": 625,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.45/IsraelTVPlus-android.apk"
+      "version": "4.8.46",
+      "app": 626,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.46/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "4.8.45",
-      "app": 625,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.45/IsraelTVPlus-windows-setup.exe"
+      "version": "4.8.46",
+      "app": 626,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.46/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "4.8.45",
-      "app": 625,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.45/com.israeltv.plus_all.ipk",
+      "version": "4.8.46",
+      "app": 626,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.46/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "4.8.45",
-      "app": 625,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.45/IsraelTVPlus-tizen-project.zip"
+      "version": "4.8.46",
+      "app": 626,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.46/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "4.8.45",
-      "app": 625,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.45/IsraelTVPlus-macos-arm64.zip"
+      "version": "4.8.46",
+      "app": 626,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.46/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "4.8.45",
-      "app": 625,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.45/IsraelTVPlus-linux-x64.zip"
+      "version": "4.8.46",
+      "app": 626,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.46/IsraelTVPlus-linux-x64.zip"
     },
     "wear": {
-      "version": "4.8.45",
-      "app": 1000525,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.45/IsraelTVPlus-wearos.apk"
+      "version": "4.8.46",
+      "app": 1000526,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.46/IsraelTVPlus-wearos.apk"
     }
   }
 }

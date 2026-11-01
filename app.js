@@ -2142,7 +2142,7 @@
     for (var i = atv.rendered[r]; i < want; i++) {
       var ch = row.list[i];
       var it = document.createElement('div');
-      it.className = 'atv-item' + (appOnly(ch) ? ' is-locked' : '');
+      it.className = 'atv-item' + (appOnly(ch) ? ' is-locked' : '') + (ch.isVod ? ' is-vod' : '');
       it.setAttribute('data-r', r);
       it.setAttribute('data-c', i);
       var q = isApp(ch) ? 'אפליקציה' : isRadioCh(ch) ? 'רדיו' : (ch.badge || '');
@@ -2408,82 +2408,93 @@
 
     var seasonTabsHtml = '';
     if (seasonsFound.length > 1) {
-      seasonTabsHtml = '<div class="vod-season-tabs" style="display:flex;gap:0.5rem;overflow-x:auto;padding-bottom:0.6rem;margin-bottom:0.8rem;">' +
-        '<button class="btn season-tab-btn active" data-season="all" style="padding:0.35rem 0.75rem;font-size:0.85rem;border-radius:6px;background:#3b82f6;color:#fff;border:none;cursor:pointer;">כל העונות (' + eps.length + ')</button>';
+      seasonTabsHtml = '<div class="vod-season-tabs">' +
+        '<button class="btn dlg-focus season-tab-btn active" data-season="all">כל העונות (' + eps.length + ')</button>';
       seasonsFound.forEach(function (sNum) {
         var count = eps.filter(function (e) { return e.season == sNum; }).length;
-        seasonTabsHtml += '<button class="btn season-tab-btn" data-season="' + sNum + '" style="padding:0.35rem 0.75rem;font-size:0.85rem;border-radius:6px;background:rgba(255,255,255,0.1);color:#fff;border:1px solid rgba(255,255,255,0.15);cursor:pointer;">עונה ' + sNum + ' (' + count + ')</button>';
+        seasonTabsHtml += '<button class="btn dlg-focus season-tab-btn" data-season="' + sNum + '">עונה ' + sNum + ' (' + count + ')</button>';
       });
       seasonTabsHtml += '</div>';
     }
 
     var epHtml = eps.map(function (ep, idx) {
-      var epThumb = ep.thumb || series.backdrop || series.poster || '';
-      var thumbTag = epThumb ? '<img src="' + esc(epThumb) + '" style="width:84px;height:48px;object-fit:cover;border-radius:6px;flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,0.4);" onerror="this.style.display=\'none\'" alt="">' : '';
+      var epThumb = ep.thumb || series.backdrop || series.poster || 'assets/vod/checkout.png';
       var sAttr = ep.season ? ' data-ep-season="' + ep.season + '"' : '';
-      return '<div class="vod-ep-card" data-epi="' + idx + '"' + sAttr + ' tabindex="0" style="display:flex;align-items:center;gap:0.9rem;padding:0.6rem 0.8rem;background:rgba(255,255,255,0.06);border-radius:8px;border:1px solid rgba(255,255,255,0.08);">' +
-        thumbTag +
-        '<div class="vod-ep-info" style="flex:1;"><b>' + esc(ep.title) + '</b><span style="display:block;font-size:0.85rem;color:rgba(255,255,255,0.6);">' + esc(ep.duration || '') + '</span></div>' +
-        '<div style="display:flex;gap:0.5rem;align-items:center;">' +
-        '<button class="btn vod-rec-btn" data-rec-epi="' + idx + '" title="הקלט פרק זה ישירות ל-Google Drive">💾 הקלט ל-Drive</button>' +
-        '<button class="btn primary vod-play-btn" data-epi="' + idx + '">▶ צפייה בפרק</button>' +
+      var epNumStr = ep.season ? ('עונה ' + ep.season + ' · פרק ' + (ep.episode || (idx + 1))) : ('פרק ' + (idx + 1));
+
+      var saved = 0;
+      try { saved = parseFloat(localStorage.getItem('itv_vod_pos_' + ep.id) || '0'); } catch (e) {}
+      var progressHtml = saved > 30 ? '<div class="vod-ep-progress"><div class="vod-ep-bar" style="width:' + Math.min(95, Math.round((saved / 2700) * 100)) + '%"></div></div>' : '';
+
+      return '<div class="vod-ep-card dlg-focus" data-epi="' + idx + '"' + sAttr + ' tabindex="0">' +
+        '<div class="vod-ep-thumb-wrap">' +
+          '<img class="vod-ep-thumb" src="' + esc(epThumb) + '" onerror="this.src=\'assets/vod/checkout.png\'" alt="">' +
+          '<div class="vod-ep-play-overlay">▶</div>' +
+          progressHtml +
         '</div>' +
-        '</div>';
+        '<div class="vod-ep-info">' +
+          '<div class="vod-ep-num">' + epNumStr + '</div>' +
+          '<div class="vod-ep-title">' + esc(ep.title) + '</div>' +
+          '<div class="vod-ep-meta">' +
+            (ep.duration ? '<span class="vod-ep-dur">⏱️ ' + esc(ep.duration) + '</span>' : '') +
+            (saved > 30 ? '<span class="vod-ep-resumed">נעצר ב-' + Math.floor(saved / 60) + ' דק\'</span>' : '') +
+          '</div>' +
+        '</div>' +
+        '<div class="vod-ep-actions">' +
+          '<button class="btn vod-rec-btn" data-rec-epi="' + idx + '" title="הקלט פרק ל-Drive">💾 הקלטה</button>' +
+          '<span class="vod-play-pill">צפייה ▶</span>' +
+        '</div>' +
+      '</div>';
     }).join('');
 
-    var html = '<div class="vod-modal-hero" style="display:flex;gap:1.5rem;align-items:flex-start;margin-bottom:1.5rem;">' +
-      '<img src="' + esc(series.poster) + '" style="width:130px;height:185px;object-fit:cover;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,0.6);" onerror="this.src=\'assets/vod/checkout.png\'" alt="">' +
-      '<div style="flex:1;"><h2 style="margin:0 0 0.5rem;font-size:1.8rem;">' + esc(series.title) + '</h2>' +
-      '<div style="display:flex;gap:0.5rem;margin-bottom:0.75rem;font-size:0.95rem;color:rgba(255,255,255,0.7);">' +
-      '<span>⭐ ' + esc(series.rating || '9.0') + '</span><span>•</span>' +
-      '<span>' + esc(series.year || '') + '</span><span>•</span>' +
-      '<span>' + esc((series.genres || []).join(', ')) + '</span></div>' +
-      '<p style="font-size:1rem;line-height:1.5;color:rgba(255,255,255,0.85);margin:0 0 0.8rem;">' + esc(series.desc) + '</p>' +
-      '<div style="display:flex;gap:0.75rem;flex-wrap:wrap;">' +
-      '<button class="btn vod-rec-all-btn" style="background:rgba(239,68,68,0.22);border:1px solid #ef4444;color:#fff;border-radius:8px;padding:0.45rem 0.95rem;font-weight:700;display:inline-flex;align-items:center;gap:0.4rem;cursor:pointer;">🔴 הקלט סדרה ל-Google Drive</button>' +
+    var genresHtml = (series.genres || []).map(function (g) {
+      return '<span class="vod-chip">' + esc(g) + '</span>';
+    }).join('');
+
+    var heroHtml = '<div class="vod-hero">' +
+      '<div class="vod-poster-wrap">' +
+        '<img class="vod-poster" src="' + esc(series.poster) + '" onerror="this.src=\'assets/vod/checkout.png\'" alt="">' +
       '</div>' +
-      '</div></div>' +
-      seasonTabsHtml +
-      '<div class="vod-episodes" style="max-height:42vh;overflow-y:auto;display:flex;flex-direction:column;gap:0.75rem;">' + epHtml + '</div>';
+      '<div class="vod-hero-details">' +
+        '<h1 class="vod-hero-title">' + esc(series.title) + '</h1>' +
+        '<div class="vod-hero-badges">' +
+          '<span class="vod-chip-rating">⭐ ' + esc(series.rating || '9.0') + '</span>' +
+          (series.year ? '<span class="vod-chip">' + esc(series.year) + '</span>' : '') +
+          '<span class="vod-chip vod-chip-q">FHD 1080p</span>' +
+          '<span class="vod-chip">' + eps.length + ' פרקים</span>' +
+          genresHtml +
+        '</div>' +
+        '<p class="vod-hero-desc">' + esc(series.desc || '') + '</p>' +
+        '<div class="vod-hero-actions">' +
+          '<button class="btn dlg-focus primary vod-hero-play-btn" data-epi="0">▶ צפה עכשיו (פרק 1)</button>' +
+          '<button class="btn dlg-focus vod-rec-all-btn">🔴 הקלט סדרה ל-Google Drive</button>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+
+    var html = heroHtml + seasonTabsHtml +
+      '<div class="vod-episodes-section">' +
+        '<div class="vod-episodes-heading">פרקי הסדרה (' + eps.length + ')</div>' +
+        '<div class="vod-episodes">' + epHtml + '</div>' +
+      '</div>';
 
     openDialog({
       ico: '🍿',
-      title: 'סדרות לצפייה ישירה - ' + series.title,
+      title: 'VOD ישראל TV+ · ' + series.title,
       html: html,
-      buttons: [{ label: 'סגירה' }],
-      cls: 'vod-dialog'
+      wide: true,
+      cls: 'vod-dialog',
+      buttons: [{ label: 'סגירה', primary: false }]
     });
 
     setTimeout(function () {
       var d = $('dialog');
       if (!d) return;
-      var tabs = d.querySelectorAll('.season-tab-btn');
+
       var epCards = d.querySelectorAll('.vod-ep-card');
-      for (var ti = 0; ti < tabs.length; ti++) {
-        tabs[ti].addEventListener('click', function (e) {
-          e.stopPropagation();
-          var selS = this.getAttribute('data-season');
-          for (var tj = 0; tj < tabs.length; tj++) {
-            tabs[tj].style.background = 'rgba(255,255,255,0.1)';
-            tabs[tj].style.border = '1px solid rgba(255,255,255,0.15)';
-          }
-          this.style.background = '#3b82f6';
-          this.style.border = 'none';
-          for (var ci = 0; ci < epCards.length; ci++) {
-            var card = epCards[ci];
-            var cSeason = card.getAttribute('data-ep-season');
-            if (selS === 'all' || !selS || cSeason === selS) {
-              card.style.display = 'flex';
-            } else {
-              card.style.display = 'none';
-            }
-          }
-        });
-      }
-      var playBtns = d.querySelectorAll('.vod-play-btn');
-      for (var k = 0; k < playBtns.length; k++) {
-        playBtns[k].addEventListener('click', function (e) {
-          e.stopPropagation();
+      for (var ci = 0; ci < epCards.length; ci++) {
+        epCards[ci].addEventListener('click', function (e) {
+          if (e.target.closest('.vod-rec-btn')) return;
           var epIdx = parseInt(this.getAttribute('data-epi'), 10);
           var ep = eps[epIdx];
           if (ep) {
@@ -2492,6 +2503,35 @@
           }
         });
       }
+
+      var heroPlayBtn = d.querySelector('.vod-hero-play-btn');
+      if (heroPlayBtn) {
+        heroPlayBtn.addEventListener('click', function () {
+          if (eps.length) {
+            closeDialog();
+            playVodEpisode(series, eps[0]);
+          }
+        });
+      }
+
+      var tabs = d.querySelectorAll('.season-tab-btn');
+      for (var ti = 0; ti < tabs.length; ti++) {
+        tabs[ti].addEventListener('click', function (e) {
+          e.stopPropagation();
+          var selS = this.getAttribute('data-season');
+          for (var tj = 0; tj < tabs.length; tj++) tabs[tj].classList.remove('active');
+          this.classList.add('active');
+          for (var k = 0; k < epCards.length; k++) {
+            var cSeason = epCards[k].getAttribute('data-ep-season');
+            if (selS === 'all' || !selS || cSeason === selS) {
+              epCards[k].style.display = '';
+            } else {
+              epCards[k].style.display = 'none';
+            }
+          }
+        });
+      }
+
       var recBtns = d.querySelectorAll('.vod-rec-btn');
       for (var rk = 0; rk < recBtns.length; rk++) {
         recBtns[rk].addEventListener('click', function (e) {
@@ -2505,6 +2545,7 @@
           }
         });
       }
+
       var recAllBtn = d.querySelector('.vod-rec-all-btn');
       if (recAllBtn) {
         recAllBtn.addEventListener('click', function (e) {
