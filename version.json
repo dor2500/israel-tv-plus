@@ -1,51 +1,56 @@
 {
-  "version": "4.8.31",
-  "code": 202611011500,
-  "app": 611,
+  "version": "4.8.32",
+  "code": 202611011530,
+  "app": 612,
   "shell": 3,
   "date": "2026-11-01",
   "notes": [
-    "שידורי וידאו חי וסדרות VOD במסכי רכב (Android Auto / Android Automotive).",
-    "מסך וידאו ייעודי לרכב (CarVideoActivity) עם תמיכה במצב תמונה-בתוך-תמונה (PiP) אוטומטי בעת מעבר לניווט (Waze / Google Maps).",
-    "שליטה מלאה בווידאו ובערוצים מכפתורי ההגה, שלטי מדיה ומגע.",
-    "הקרנת וידאו ישירה על צגים ומסכים ברכב באמצעות CarPresentation."
+    "הרחבה ענקית לקטלוג ה-VOD: עשרות סדרות מובילות מכל ערוצי הטלוויזיה בישראל.",
+    "קשת 12: סברי מרנן, רמזור, ארץ נהדרת, צומת מילר, נינג'ה ישראל, הכוכב הבא, חתונמי, בשבילה גיבורים עפים, עובדה.",
+    "רשת 13: שנות ה-80/90, הישרדות, האח הגדול, משחקי השף, נבסו, לצבי יש בעיה, החברים של נאור, המקור.",
+    "עכשיו 14: הפטריוטים, הדו\"ח של אראל, פתחי וזמרי בעם, שבע עם שרון גל.",
+    "כאן 11: קופה ראשית, מנאייכ, טהרן, היהודים באים, המפקדת, בואו לאכול איתי, כראמל, זהו זה!, חזרות, שעת נעילה.",
+    "HOT ו-yes קאלט: הבורר, עספור, זגורי אימפריה, פאודה, תאג\"ד, שטיסל, בני אור, פצועים בראש.",
+    "ילדים ונוער: הפיג'מות, גאליס, החממה, השמיניה, אלישע, שכונה, קלמרים, מנדלבאום בלש פרטי.",
+    "נוסטלגיה ואוכל: שמש, קרובים קרובים, סרטי בורקס, מאסטר שף, אהרוני וגידי, ויוה טלנובלות והכלה מאיסטנבול.",
+    "סינון וחיפוש קל לפי ערוצים וז'אנרים בכל הפלטפורמות (סמארטפון, טלוויזיות, מחשב, ו-Android Auto)."
   ],
   "native": {
     "android": {
-      "version": "4.8.31",
-      "app": 611,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.31/IsraelTVPlus-android.apk"
+      "version": "4.8.32",
+      "app": 612,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.32/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "4.8.31",
-      "app": 611,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.31/IsraelTVPlus-windows-setup.exe"
+      "version": "4.8.32",
+      "app": 612,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.32/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "4.8.31",
-      "app": 611,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.31/com.israeltv.plus_all.ipk",
+      "version": "4.8.32",
+      "app": 612,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.32/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "4.8.31",
-      "app": 611,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.31/IsraelTVPlus-tizen-project.zip"
+      "version": "4.8.32",
+      "app": 612,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.32/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "4.8.31",
-      "app": 611,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.31/IsraelTVPlus-macos-arm64.zip"
+      "version": "4.8.32",
+      "app": 612,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.32/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "4.8.31",
-      "app": 611,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.31/IsraelTVPlus-linux-x64.zip"
+      "version": "4.8.32",
+      "app": 612,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.32/IsraelTVPlus-linux-x64.zip"
     },
     "wear": {
-      "version": "4.8.31",
-      "app": 1000511,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.31/IsraelTVPlus-wearos.apk"
+      "version": "4.8.32",
+      "app": 1000512,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.32/IsraelTVPlus-wearos.apk"
     }
   }
 }
