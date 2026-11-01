@@ -3198,12 +3198,14 @@ function loadCandidate(ch, rawUrl) {
         startPosition: (isSport && !isOttrast) ? -1 : undefined,
         startFragPrefetch: true,
         backBufferLength: fastMode() ? 8 : (isSport ? (isOttrast ? 15 : 4) : (isVod ? 30 : 15)),
-        liveSyncDuration: (isSport && !isOttrast) ? 1.5 : (isOttrast ? 12 : 2.5),
-        liveMaxLatencyDuration: (isSport && !isOttrast) ? 3.5 : (isOttrast ? 22 : 5.5),
+        // counted in segments, so the distance from the live edge fits every stream: a fixed 2 s on 6 s segments
+        // leaves nothing to play and freezes and jumps every few seconds
+        liveSyncDurationCount: (isSport && !isOttrast) ? 2 : 3,
+        liveMaxLatencyDurationCount: (isSport && !isOttrast) ? 5 : 8,
         liveDurationInfinity: !isVod,
-        maxLiveSyncPlaybackRate: (isSport && !isOttrast) ? 1.4 : 1.2,
-        maxBufferLength: isSport ? (isOttrast ? 25 : 4) : (isVod ? 60 : (is4K ? 24 : 8)),
-        maxMaxBufferLength: isSport ? (isOttrast ? 45 : 8) : (isVod ? 120 : (is4K ? 45 : 16)),
+        maxLiveSyncPlaybackRate: 1.05,
+        maxBufferLength: isSport ? (isOttrast ? 25 : 15) : (isVod ? 60 : (is4K ? 24 : 20)),
+        maxMaxBufferLength: isSport ? (isOttrast ? 45 : 25) : (isVod ? 120 : (is4K ? 45 : 30)),
         maxBufferSize: (isSport && !isOttrast) ? 8 * 1000 * 1000 : (isVod ? 60 * 1000 * 1000 : 30 * 1000 * 1000),
         manifestLoadingMaxRetry: 6,
         levelLoadingMaxRetry: 6,
@@ -3232,7 +3234,8 @@ function loadCandidate(ch, rawUrl) {
           var lsp = (isSport && !isOttrast && edge != null) ? Math.max(edge - 2, 0) : (hls.liveSyncPosition || edge);
           if (lsp != null && v.readyState >= 1) {
             // Force jump to zero-latency live edge on initial play or when lag exceeds 4s for sports (excluding 10s-segment ottrast)
-            if (!isOttrast && (!v.currentTime || (lsp - v.currentTime > (isSport ? 4 : 14)))) {
+            var far = (data.details.targetduration || 6) * (isSport ? 6 : 10);
+            if (!isOttrast && (!v.currentTime || lsp - v.currentTime > far)) {
               try { v.currentTime = lsp; } catch (err) {}
             }
           }
