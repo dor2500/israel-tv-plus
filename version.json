@@ -1,51 +1,51 @@
 {
-  "version": "4.8.39",
-  "code": 202611011745,
-  "app": 619,
+  "version": "4.8.40",
+  "code": 202611011800,
+  "app": 620,
   "shell": 3,
   "date": "2026-11-01",
   "notes": [
-    "הטמעת שירות קאץ' אפ (שידור חוזר / Catch-Up TV) מלא בנגן האנדרואיד ובנגן ה-Web/Smart TV.",
-    "באנדרואיד: הוספת כפתור קאץ' אפ ייעודי בסרגל הנגן ובמגירת האפשרויות, פתיחת גיליון צפייה חוזרת (CatchupSheet) עם דילוג מהיר (15, 30, 60, 120 דקות), רשימת תוכניות 24 השעות האחרונות עם תמונות פוסטר ושעות, דילוג מדויק לתחילת תוכנית ב-DVR, וכפתור חזרה מהירה לשידור חי.",
-    "ב-Web / טלוויזיות: הרחבת מיפויי DVR (עד 24 שעות ברשת 13, 12 שעות בכאן 11, עכשיו 14, חינוכית ומכאן 33, ו-3 שעות ב-i24NEWS), מודאל תוכניות לבחירה ישירה, וכפתור חזרה לשידור חי.",
-    "הטמעת מאגר ה-EPG ישירות כ-Asset באפליקציית האנדרואיד (epg.json) לטעינת לוח שידורים מיידית גם ללא המתנה לרשת."
+    "סריקה ובדיקה מקיפה של 100% מכלל האייקונים ולוגואי הערוצים וה-VOD (434 ערוצים).",
+    "תיקון ועדכון של 63 ערוצים שהיו חסרי לוגו, בעלי נתיב שגוי או קישור מרוחק שנחסם (HTTP 400/404/429 בוויקימדיה).",
+    "העברת כלל הלוגואים לקבצים מקומיים איכותיים וקבועים בתוך האפליקציה (assets/logos/) – ללא תלות ברשת וללא שגיאות טעינה.",
+    "תמיכה מלאה בהצגת לוגואים אופליין וב-Android Compose מתוך תיקיות ה-Assets (bundledLogos עבור logos, vod ו-app)."
   ],
   "native": {
     "android": {
-      "version": "4.8.39",
-      "app": 619,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.39/IsraelTVPlus-android.apk"
+      "version": "4.8.40",
+      "app": 620,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.40/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "4.8.39",
-      "app": 619,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.39/IsraelTVPlus-windows-setup.exe"
+      "version": "4.8.40",
+      "app": 620,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.40/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "4.8.39",
-      "app": 619,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.39/com.israeltv.plus_all.ipk",
+      "version": "4.8.40",
+      "app": 620,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.40/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "4.8.39",
-      "app": 619,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.39/IsraelTVPlus-tizen-project.zip"
+      "version": "4.8.40",
+      "app": 620,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.40/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "4.8.39",
-      "app": 619,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.39/IsraelTVPlus-macos-arm64.zip"
+      "version": "4.8.40",
+      "app": 620,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.40/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "4.8.39",
-      "app": 619,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.39/IsraelTVPlus-linux-x64.zip"
+      "version": "4.8.40",
+      "app": 620,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.40/IsraelTVPlus-linux-x64.zip"
     },
     "wear": {
-      "version": "4.8.39",
-      "app": 1000519,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.39/IsraelTVPlus-wearos.apk"
+      "version": "4.8.40",
+      "app": 1000520,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.40/IsraelTVPlus-wearos.apk"
     }
   }
 }

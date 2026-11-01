@@ -104,7 +104,11 @@ class ChannelStore(private val context: Context, private val http: OkHttpClient)
     // per app version: after an update the list bundled with the new APK is used until the site's list is fetched
     private val cache = File(context.filesDir, "channels-${com.israeltv.plus.BuildConfig.VERSION_CODE}.json")
     private val bundledLogos: Set<String> by lazy {
-        runCatching { context.assets.list("www/assets/logos")?.toSet() }.getOrNull().orEmpty()
+        val s = mutableSetOf<String>()
+        runCatching { context.assets.list("www/assets/logos")?.let { s.addAll(it) } }
+        runCatching { context.assets.list("www/assets/vod")?.let { s.addAll(it) } }
+        runCatching { context.assets.list("www/assets/app")?.let { s.addAll(it) } }
+        s
     }
     private val _state = MutableStateFlow<ChannelData?>(null)
     val state: StateFlow<ChannelData?> = _state
@@ -134,8 +138,8 @@ class ChannelStore(private val context: Context, private val http: OkHttpClient)
     fun logoUrl(ch: Channel): String = when {
         ch.logo.isEmpty() -> ""
         ch.logo.startsWith("http") -> ch.logo
-        ch.logo.substringAfterLast('/') in bundledLogos -> "file:///android_asset/www/" + ch.logo
-        else -> REMOTE + ch.logo
+        ch.logo.substringAfterLast('/') in bundledLogos -> "file:///android_asset/www/" + ch.logo.removePrefix("/")
+        else -> REMOTE + ch.logo.removePrefix("/")
     }
 
     private fun parse(text: String, vod: List<VodSeries> = emptyList()): ChannelData? = runCatching {

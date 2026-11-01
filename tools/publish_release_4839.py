@@ -60,3 +60,4 @@ cmd = ["gh", "release", "create", "v4.8.39", "--title", "v4.8.39: שירות ק�
 print("Running gh release...")
 subprocess.run(cmd, check=True)
 print("Release v4.8.39 created successfully!")
+
