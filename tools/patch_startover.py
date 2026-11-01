@@ -31,3 +31,4 @@ for idx, line in enumerate(lines):
 with open("app.js", "w", encoding="utf-8") as f:
     f.write("\n".join(lines))
 print("Patched app.js successfully!")
+

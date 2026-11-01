@@ -1,0 +1,25 @@
+## מה חדש בגרסה 4.8.49:
+
+### תיקון מקיף לערוץ 36 (ערוץ ספורט 5 4K UHD):
+- **תמונה ושמע מלאים ללא תקיעות**: החלפת שידור ברירת המחדל לשידור FHD H.264 איכותי ויציב במיוחד משרתי AWS CloudFront, המציג תמונה וקול מושלמים בכל טלוויזיה חכמה, דפדפן ומכשיר אנדרואיד.
+- **מנגנון הגנה נגד מסך שחור (Video Dimension Watchdog)**: קיצור זמן הבדיקה האוטומטי ל-1.5 שניות – אם הנגן מקבל שמע אך מפענח הוידאו נכשל, השידור עובר מיד לשרת גיבוי עם תמונה פעילה.
+- **העדפת קידוד חכם**: שידורי 4K HEVC מופעלים רק כאשר נבחר מצב 4K ייעודי בהגדרות וקיימת תמיכת חומרה, מה שמונע שגיאות פענוח ומסכים שחורים.
+
+### זמני טעינה מהירים במיוחד (עד 3 שניות לערוץ) ותמיכה בחיבור חלש (5Mbps):
+- **קיצור זמני תגובה**: הפחתת זמני ה-Timeout ל-4.5 שניות מאפשרת מעבר ערוצים מהיר פי 2 ודילוג מיידי על שרתים איטיים.
+- **אופטימיזציה לחיבורי 5Mbps**: כיול סף רוחב פס ראשוני ב-HLS.js (3.5Mbps) להתחלת ניגון חלקה וללא גמגומים גם בקליטה אלחוטית ביתית מאתגרת.
+
+### שדרוג תכונת Catch-Up והוספת Start-Over (התחל תכנית מחדש):
+- **התחלה מחדש בלחיצה אחת**: בתפריט הנגן ובמדריך השידורים (EPG), נוספה אפשרות מיידית להתחיל את התכנית המשודרת כעת מראשיתה (Start-Over) עבור ערוצים תומכים (כאן 11, רשת 13, עכשיו 14, חינוכית, מכאן 33, i24News).
+- **ניווט נוח בארכיון**: מעבר חלק לתכניות מהשעות האחרונות ישירות ממדריך השידורים בטלוויזיה.
+
+### פוסטרים ואיכות קטלוג ה-VOD:
+- **כרטיסיות ופוסטרים ייעודיים**: עוצבו ונוצרו פוסטרים חדשים באיכות גבוהה לסדרות 'רמזור', 'צומת מילר' ו'מבצע סבתא' במקום תמונות חלופיות, ועדכון תמונות הפרקים בהתאם.
+
+### הורדות והתקנה:
+- **Android TV / Google TV / Fire TV**: [`IsraelTVPlus-androidtv.apk`](https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.49/IsraelTVPlus-androidtv.apk)
+- **טלפון וטאבלט אנדרואיד**: [`IsraelTVPlus-android.apk`](https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.49/IsraelTVPlus-android.apk)
+- **LG webOS (טלוויזיות LG)**: [`com.israeltv.plus_all.ipk`](https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.49/com.israeltv.plus_all.ipk)
+- **Samsung Tizen (טלוויזיות סמסונג)**: [`IsraelTVPlus-tizen-project.zip`](https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.49/IsraelTVPlus-tizen-project.zip)
+- **Kodi הרחבה**: [`plugin.video.israeltvplus.zip`](https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.49/plugin.video.israeltvplus.zip)
+- **צפייה ישירה בדפדפן**: [https://dor2500.github.io/IsraelTVPlus/](https://dor2500.github.io/IsraelTVPlus/)

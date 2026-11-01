@@ -196,3 +196,4 @@ if old_guide_click in guide:
 with open("tvguide.js", "w", encoding="utf-8") as f:
     f.write(guide)
 print("tvguide.js saved successfully!")
+

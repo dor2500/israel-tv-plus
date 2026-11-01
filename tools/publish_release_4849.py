@@ -55,3 +55,4 @@ cmd = ["gh", "release", "create", "v4.8.49", "--title", "v4.8.49: תיקון ע�
 print("Running:", " ".join(cmd[:6]), f"+ {len(existing_assets)} files")
 subprocess.run(cmd, check=True)
 print("Release v4.8.49 published successfully!")
+

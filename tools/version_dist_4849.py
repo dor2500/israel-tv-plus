@@ -61,3 +61,4 @@ with open(os.path.join(dist, "SHA256SUMS.txt"), "w", encoding="utf-8") as f:
     f.write(out_content)
 
 print(f"Dist packages built and SHA256SUMS updated for v{v} successfully!")
+
