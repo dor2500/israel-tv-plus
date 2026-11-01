@@ -34,6 +34,7 @@ import coil3.request.crossfade
 import coil3.svg.SvgDecoder
 import com.israeltv.plus.data.AppPrefs
 import com.israeltv.plus.data.ChannelStore
+import com.israeltv.plus.data.GoogleAccount
 import com.israeltv.plus.data.USER_AGENT
 import com.israeltv.plus.data.Updater
 import com.israeltv.plus.ui.ItvApp
@@ -51,6 +52,7 @@ import java.util.concurrent.TimeUnit
  * The window asks for the display's fastest refresh rate (120 Hz where available).
  */
 class PhoneActivity : ComponentActivity() {
+    private lateinit var google: GoogleAccount
     private val http by lazy {
         OkHttpClient.Builder()
             .connectTimeout(10, TimeUnit.SECONDS)
@@ -83,6 +85,7 @@ class PhoneActivity : ComponentActivity() {
         }
 
         val prefs = AppPrefs(this)
+        google = GoogleAccount(applicationContext, prefs, http, lifecycleScope)
         if (savedInstanceState == null && prefs.launchSound) playLaunchSound()
         enableEdgeToEdge(SystemBarStyle.dark(Color.TRANSPARENT), SystemBarStyle.dark(Color.TRANSPARENT))
         if (Build.VERSION.SDK_INT >= 29) window.isNavigationBarContrastEnforced = false
@@ -117,6 +120,7 @@ class PhoneActivity : ComponentActivity() {
                     store = store,
                     prefs = prefs,
                     updater = updater,
+                    google = google,
                     inPip = inPip.value,
                     coldStart = savedInstanceState == null,
                     onPlaying = { on -> playing = on; updatePip() },
@@ -124,6 +128,16 @@ class PhoneActivity : ComponentActivity() {
                 )
             }
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        google.sync(this)
+    }
+
+    override fun onStop() {
+        google.sync(this)
+        super.onStop()
     }
 
     override fun onResume() {

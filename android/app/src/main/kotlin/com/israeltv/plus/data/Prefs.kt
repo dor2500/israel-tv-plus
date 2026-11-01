@@ -131,6 +131,10 @@ class AppPrefs(context: Context) {
     var updatePrompted by mutableStateOf(sp.getString("phoneUpdatePrompted", "") ?: "")
         private set
 
+    /** When the synced data last changed on this device (Google sync: the newest side wins). */
+    var changedAt = sp.getLong("phoneChangedAt", 0L)
+        private set
+
     val profile: Profile get() = profiles.firstOrNull { it.id == activeId } ?: profiles.first()
     val favorites: List<String> get() = profile.favorites
     val recents: List<String> get() = profile.recents
@@ -185,7 +189,26 @@ class AppPrefs(context: Context) {
         persist()
     }
 
-    private fun persist() = sp.edit { putString("phoneProfiles", json.encodeToString(profiles)) }
+    private fun persist() {
+        changedAt = System.currentTimeMillis()
+        sp.edit { putString("phoneProfiles", json.encodeToString(profiles)); putLong("phoneChangedAt", changedAt) }
+    }
+
+    fun exportProfiles(): String = json.encodeToString(profiles)
+
+    /** Takes over what Google sync downloaded. It keeps the cloud's time, so it does not count as a local change. */
+    fun applyCloud(cloudProfiles: String?, cloudFavorites: List<String>?, cloudRecents: List<String>?, cloudAt: Long) {
+        cloudProfiles?.let { s ->
+            runCatching { json.decodeFromString<List<Profile>>(s) }.getOrNull()?.takeIf { it.isNotEmpty() }?.let { profiles = it }
+        }
+        if (profiles.none { it.id == activeId }) switchTo(profiles.first().id)
+        val id = profile.id
+        profiles = profiles.map {
+            if (it.id == id) it.copy(favorites = cloudFavorites ?: it.favorites, recents = cloudRecents ?: it.recents) else it
+        }
+        changedAt = cloudAt
+        sp.edit { putString("phoneProfiles", json.encodeToString(profiles)); putLong("phoneChangedAt", cloudAt) }
+    }
 
     /** The saved profiles; any flat emoji:* or legacy series-* avatar ID is migrated to the Neo 3D WebP set. */
     private fun loadProfiles(): List<Profile> {

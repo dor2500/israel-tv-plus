@@ -21,3 +21,4 @@ for cid in check_ids:
             print(f'{cid} | {name}: OK ({resp.getcode()}) -> {first_line}')
     except Exception as e:
         print(f'{cid} | {name}: FAILED -> {e}')
+

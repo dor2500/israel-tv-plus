@@ -36,6 +36,7 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.zIndex
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.israeltv.plus.data.AppPrefs
+import com.israeltv.plus.data.GoogleAccount
 import com.israeltv.plus.data.Channel
 import com.israeltv.plus.data.ChannelData
 import com.israeltv.plus.data.ChannelStore
@@ -98,11 +99,14 @@ private sealed interface Page {
  * the player, which grows out of the tapped card (container transform) and shrinks back into it. The cold-start
  * intro and the update modal sit above all of them.
  */
+private val LocalGoogleAccount = androidx.compose.runtime.staticCompositionLocalOf<GoogleAccount> { error("no GoogleAccount") }
+
 @Composable
 fun ItvApp(
     store: ChannelStore,
     prefs: AppPrefs,
     updater: Updater,
+    google: GoogleAccount,
     inPip: Boolean,
     coldStart: Boolean,
     onPlaying: (Boolean) -> Unit,
@@ -172,7 +176,7 @@ fun ItvApp(
                                 onClose = { page = Page.Feed },
                             )
                             Page.Feed -> if (NuvioUi.enabled) NuvioShell(store, prefs, onPlay) else Feed(
-                                data, prefs, updater, feed, haze, logo, onPlay,
+                                data, prefs, updater, google, feed, haze, logo, onPlay,
                                 onOpenMultiView = {
                                     val all = data?.channels.orEmpty()
                                     val first = prefs.recents.firstNotNullOfOrNull { data?.byId?.get(it) }
@@ -265,6 +269,7 @@ private fun Feed(
     data: ChannelData?,
     prefs: AppPrefs,
     updater: Updater,
+    google: GoogleAccount,
     s: FeedState,
     haze: HazeState,
     logo: (Channel) -> String,
@@ -379,7 +384,7 @@ private fun Feed(
                             listState = s.channelsList,
                         )
                         Tab.Mine -> MineScreen(data, prefs, logo, subtitle, onPlay)
-                        Tab.Settings -> SettingsScreen(data, prefs, updater, onProfiles = onProfiles, onStyle = { s.styleOpen = true })
+                        Tab.Settings -> SettingsScreen(data, prefs, updater, google, onProfiles = onProfiles, onStyle = { s.styleOpen = true })
                     }
                 }
             }

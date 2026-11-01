@@ -523,8 +523,20 @@ public class MainActivity extends Activity {
     void download(String url) {
         try {
             if (Build.VERSION.SDK_INT >= 26 && !getPackageManager().canRequestPackageInstalls()) {
-                report("error", "יש לאשר התקנת עדכונים מהאפליקציה (נפתח מסך ההגדרות) ואז לנסות שוב");
-                runOnUiThread(() -> start(new Intent(Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES, Uri.parse("package:" + getPackageName()))));
+                report("error", "יש לאשר התקנת אפליקציות ממקור לא מוכר (נפתח מסך ההגדרות) או להוריד ישירות בדפדפן");
+                runOnUiThread(() -> {
+                    try {
+                        start(new Intent(Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES, Uri.parse("package:" + getPackageName())));
+                    } catch (Exception e1) {
+                        try {
+                            start(new Intent(Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES));
+                        } catch (Exception e2) {
+                            try {
+                                start(new Intent(Settings.ACTION_SECURITY_SETTINGS));
+                            } catch (Exception ignored) {}
+                        }
+                    }
+                });
                 return;
             }
             HttpURLConnection c = (HttpURLConnection) new URL(url).openConnection();
