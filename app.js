@@ -3886,11 +3886,15 @@ function showOsd() {
       ['🪟', 'Windows', 'התקנה', 'IsraelTVPlus-windows-setup.exe'], ['🖥️', 'LG webOS', 'IPK · Developer Mode', 'com.israeltv.plus_all.ipk'],
       ['🔷', 'Samsung Tizen', 'פרויקט לחתימה', 'IsraelTVPlus-tizen-project.zip'], ['🍏', 'Mac', 'Apple Silicon', 'IsraelTVPlus-macos-arm64.zip'],
       ['🐧', 'Linux', 'x64 · ZIP', 'IsraelTVPlus-linux-x64.zip'], ['🎬', 'Stremio', 'הרחבה (Addon)', 'stremio'], ['📋', 'נגני IPTV', 'פלייליסט M3U', 'm3u']];
+    // this device's own download first: a computer must not open on the Android APK
+    var mine = /Android/i.test(UA) ? 'IsraelTVPlus-android.apk' : /Windows/i.test(UA) ? 'IsraelTVPlus-windows-setup.exe'
+      : /Macintosh|Mac OS/i.test(UA) ? 'IsraelTVPlus-macos-arm64.zip' : /Linux/i.test(UA) ? 'IsraelTVPlus-linux-x64.zip' : '';
+    items.sort(function (x, y) { return (y[3] === mine) - (x[3] === mine); });
     var html = '<p>' + (ch ? '"' + esc(ch.name) + '" משדר ב-HTTP, ודפדפנים חוסמים שידור כזה מאתר מאובטח. באפליקציות הוא פועל – וגם כל שאר הערוצים.'
       : 'באפליקציות פועלים כל הערוצים (גם מה שהדפדפן חוסם), עם שלט רחוק, מועדפים, דיבוב ועדכונים אוטומטיים.') + '</p>' +
       '<div class="getapp">' + items.map(function (it) {
         var href = it[3] === 'stremio' ? REMOTE + 'stremio/' : it[3] === 'm3u' ? REMOTE + 'playlist.m3u' : RELEASES + '/download/' + it[3];
-        return '<a class="btn dlg-focus" target="_blank" rel="noopener" href="' + href + '">' + it[0] + ' ' + it[1] + '<small>' + it[2] + '</small></a>';
+        return '<a class="btn dlg-focus' + (it[3] === mine ? ' primary' : '') + '" target="_blank" rel="noopener" href="' + href + '">' + it[0] + ' ' + it[1] + '<small>' + (it[3] === mine ? 'למכשיר הזה · ' : '') + it[2] + '</small></a>';
       }).join('') + '</div>';
     openDialog({ ico: '📲', title: ch ? 'הערוץ זמין באפליקציה' : 'ישראל TV+ לכל המכשירים', html: html, wide: true });
   }
@@ -4775,7 +4779,7 @@ function showOsd() {
         haptic('reject');
         toast('⚠️ ההורדה נכשלה');
         if (el.dialogActions) {
-          el.dialogActions.innerHTML = '<button class="btn primary" id="upd-fb-btn">🌐 הורדה ישירה בדפדפן (APK)</button><button class="btn" id="upd-close-btn">סגירה</button>';
+          el.dialogActions.innerHTML = '<button class="btn primary" id="upd-fb-btn">🌐 הורדה ישירה בדפדפן</button><button class="btn" id="upd-close-btn">סגירה</button>';
           var fb = $('upd-fb-btn'), cb = $('upd-close-btn');
           if (fb) fb.onclick = function () { openUrl(n.url || RELEASES); };
           if (cb) cb.onclick = function () { closeDialog(); };
