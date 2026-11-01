@@ -1,2 +1,1 @@
-// written by tools/make_version.py
-window.ITV_BUILD = {"version": "4.8.47", "code": 202611012056, "app": 627, "shell": 3, "date": "2026-11-01"};
+window.ITV_BUILD = {"version": "4.8.48", "code": 202611012220, "app": 628, "shell": 3, "date": "2026-11-01"};

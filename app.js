@@ -4518,11 +4518,25 @@ function showOsd() {
   function info(labelText, value) { return { type: 'info', label: labelText, get: typeof value === 'function' ? value : function () { return value; } }; }
   function sep(text) { return { type: 'sep', label: text }; }
 
+  var M3_ICONS = {
+    profiles: '<svg class="m3-ico" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>',
+    google_cloud: '<svg class="m3-ico" viewBox="0 0 24 24"><path fill="currentColor" d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM19 18H6c-2.21 0-4-1.79-4-4 0-2.05 1.53-3.76 3.56-3.97l1.07-.11.5-.95C8.08 7.14 9.94 6 12 6c2.62 0 4.88 1.86 5.39 4.43l.3 1.5 1.53.11c1.56.1 2.78 1.41 2.78 2.96 0 1.65-1.35 3-3 3z"/></svg>',
+    display: '<svg class="m3-ico" viewBox="0 0 24 24"><path fill="currentColor" d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0 1.99-.9 1.99-2L23 5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/></svg>',
+    channels: '<svg class="m3-ico" viewBox="0 0 24 24"><path fill="currentColor" d="M21 6h-7.58l3.29-3.29L16 2l-4 4h-.03l-4-4-.71.71L10.56 6H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 14H3V8h18v12z"/></svg>',
+    player: '<svg class="m3-ico" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>',
+    remote: '<svg class="m3-ico" viewBox="0 0 24 24"><path fill="currentColor" d="M15 9H9c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-4c0-.55-.45-1-1-1zm-1 4h-4v-2h4v2zM6 5v14c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2zm10 14H8V5h8v14z"/></svg>',
+    dub: '<svg class="m3-ico" viewBox="0 0 24 24"><path fill="currentColor" d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/></svg>',
+    kids: '<svg class="m3-ico" viewBox="0 0 24 24"><path fill="currentColor" d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/></svg>',
+    saver: '<svg class="m3-ico" viewBox="0 0 24 24"><path fill="currentColor" d="M12.3 2a10 10 0 0 0-1.9 20 10 10 0 0 0 9.6-7.3 1 1 0 0 0-1.1-1.2 8 8 0 0 1-7.8-10.4 1 1 0 0 0-1.2-1.1z"/></svg>',
+    updates: '<svg class="m3-ico" viewBox="0 0 24 24"><path fill="currentColor" d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14zm-1-6h-2.5V9h-3v4H8l4 4 4-4z"/></svg>',
+    about: '<svg class="m3-ico" viewBox="0 0 24 24"><path fill="currentColor" d="M11 17h2v-6h-2v6zm1-15C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM11 9h2V7h-2v2z"/></svg>'
+  };
+
   function settingsSections() {
     var cats = [];
     (window.CHANNELS_DATA || []).forEach(function (c) { if (cats.indexOf(c.category) === -1) cats.push(c.category); });
     var catRows = cats.map(function (c) {
-      return { type: 'toggle', label: catIcon(c) + ' ' + splitCat(c), on: function () { return (S.hiddenCats || []).indexOf(c) === -1; },
+      return { type: 'toggle', label: splitCat(c), on: function () { return (S.hiddenCats || []).indexOf(c) === -1; },
         act: function () {
           var h = (S.hiddenCats || []).slice(), i = h.indexOf(c);
           if (i === -1) h.push(c); else h.splice(i, 1);
@@ -4531,7 +4545,12 @@ function showOsd() {
     });
     var d = state.device;
     var secs = [
-      { id: 'google_cloud', ico: '☁️', name: 'חשבון Google וסנכרון', desc: 'מועדפים, היסטוריה והגדרות זהים בכל המכשירים, והקלטות ב-Drive', rows: (function () {
+      { id: 'profiles', ico: M3_ICONS.profiles, name: 'פרופיל משתמש', desc: 'ניהול פרופילים אישיים, היסטוריית צפייה ומועדפים', rows: [
+        action('החלפת פרופיל פעיל', function () { closeSettings(); openTvProfiles(); }, 'בחירת פרופיל משתמש אישי'),
+        toggle('profileOnStart', 'הצגת מסך בחירת פרופיל בהפעלה', 'מציג את מסך מי צופה בכל פתיחה של האפליקציה'),
+        action('ניהול ועריכת פרופילים', function () { closeSettings(); openTvProfiles(); tvProfileManaging = true; renderTvProfilesScreen(); markTvProfilesFocus(); }, 'שינוי שמות, החלפת תמונות פרופיל והוספת משתמשים')
+      ] },
+      { id: 'google_cloud', ico: M3_ICONS.google_cloud, name: 'חשבון Google וסנכרון ענן', desc: 'גיבוי הגדרות, מועדפים והקלטות ישירות ל-Google Drive', rows: (function () {
         var signedIn = function () { var u = window.GDrive && window.GDrive.getUser(); return !!(u && u.access_token); };
         var rows = [{ type: 'card', state: function () { return 'gcard'; }, html: function () {
           var u = (window.GDrive && window.GDrive.getUser()) || {};
@@ -4551,106 +4570,105 @@ function showOsd() {
         } }];
         if (!signedIn()) return rows;
         return rows.concat([
-          action('סנכרון עכשיו', function () { triggerCloudSync(true); }, 'מעדכן מול הענן את המועדפים, ההיסטוריה וההגדרות'),
-          action('ההקלטות שלי ב-Google Drive', function () { openDriveRecordingsDialog(); }, 'צפייה וניהול של מה שהקלטתם'),
+          action('סנכרון עכשיו מול הענן', function () { triggerCloudSync(true); }, 'סנכרון מיידי של ערוצים מועדפים, היסטוריה והגדרות מול חשבון ה-Drive'),
+          action('ההקלטות שלי ב-Google Drive', function () { openDriveRecordingsDialog(); }, 'צפייה, ניגון וניהול של כל הסדרות והשידורים שהוקלטו בענן'),
           action('התנתקות מחשבון Google', function () {
             confirmBox('להתנתק מחשבון Google?', function () { window.GDrive.signOut(function () { renderSettings(); }); });
           }, '', true)
         ]);
       })() },
-      { id: 'profiles', ico: '👤', name: 'פרופילים', desc: 'מועדפים והיסטוריה נפרדים לכל מי שצופה', rows: [
-        action('החלפת פרופיל', function () { closeSettings(); openTvProfiles(); }, 'פתיחת המסך "מי צופה?"'),
-        toggle('profileOnStart', 'בחירת פרופיל בכל הפעלה', 'מציג את המסך "מי צופה?" בכל פתיחה של האפליקציה'),
-        action('ניהול פרופילים (עריכה / הוספה)', function () { closeSettings(); openTvProfiles(); tvProfileManaging = true; renderTvProfilesScreen(); markTvProfilesFocus(); }, 'עריכת שמות ואווטארים והוספת פרופילים')
-      ] },
-      { id: 'display', ico: '🖥️', name: 'תצוגה', desc: 'גודל, צבעים ומה מופיע במסך', rows: [
+      { id: 'display', ico: M3_ICONS.display, name: 'תצוגה וממשק', desc: 'ערכות נושא, פלטת צבעים, קנה מידה ועיצוב מסך', rows: [
         sep('מראה'),
-        choice('theme', 'ערכת צבעים', THEMES),
-        { type: 'choice', label: 'צבע הדגשה', help: readSystemColors() ? 'צבעי המערכת = הצבעים של הטפט (Material You)' : 'הצבע של הכפתורים וההדגשות',
+        choice('theme', 'ערכת נושא', THEMES),
+        { type: 'choice', label: 'פלטת צבעים (Material You)', help: readSystemColors() ? 'צבעי המערכת מבוססים על ערכת הטפט (Dynamic Colors)' : 'ערכות הצבע הנבחרות של הממשק',
           get: function () { return label(PALETTES, S.accent) + (S.accent === 'auto' ? ' (' + label(PALETTES, accentName()) + ')' : ''); },
           step: function (st) {
             var list = PALETTES.filter(function (p) { return p[0] !== 'system' || readSystemColors(); });
             setSetting('accent', cycle(list, S.accent, st));
           } },
-        { type: 'choice', tvOnly: true, label: 'גודל הממשק', help: 'הגדלה לצפייה מרחוק – משנה את כל הטקסטים והכרטיסים', get: function () { return label(SCALES, S.uiScale); },
+        { type: 'choice', tvOnly: true, label: 'קנה מידה של התצוגה', help: 'התאמת גודל טקסטים ורכיבים לצפייה ממרחק סלון', get: function () { return label(SCALES, S.uiScale); },
           step: function (st) { setSetting('uiScale', cycle(SCALES, S.uiScale, st)); } },
-        { type: 'choice', label: 'כרטיסים בשורה', get: function () { return S.cols ? String(S.cols) : 'אוטומטי (' + state.cols + ')'; },
+        { type: 'choice', label: 'מספר ערוצים בשורה', get: function () { return S.cols ? String(S.cols) : 'אוטומטי (' + state.cols + ')'; },
           step: function (st) { setSetting('cols', cycle(COLS, S.cols, st)); } },
-        sep('מה מוצג'),
-        tvRow(toggle('hero', 'הצגת פרטי הערוץ הנבחר (למעלה)')),
-        toggle('numbers', 'מספרי ערוצים על הכרטיסים'),
-        toggle('showSource', 'הצגת מקור השידור', 'שורת "מקור" בפרטי הערוץ ובנגן', function () { updateHero(state.list[state.gridIdx]); }),
-        tvRow(toggle('hints', 'שורת עזרה לשלט בתחתית')),
-        sep('מערכת'),
-        { type: 'choice', label: 'ביצועים', help: 'מהיר = בלי אנימציות, למכשירים חלשים. ' + (S.perf === 'auto' ? 'זוהה: ' + (state.lowEnd ? 'מכשיר חלש – מצב מהיר' : 'מצב מלא') : ''),
+        sep('רכיבי מסך'),
+        tvRow(toggle('hero', 'כרטיס מידע מורחב לערוץ הנבחר')),
+        toggle('numbers', 'מספרי ערוצים על גבי הכרטיסים'),
+        toggle('showSource', 'מקור ושרת השידור', 'פרטי שרת השידור ואיכות המקור בפרטי הערוץ ובנגן', function () { updateHero(state.list[state.gridIdx]); }),
+        tvRow(toggle('hints', 'סרגל מקשי שלט בתחתית המסך')),
+        { type: 'choice', label: 'מצב ביצועים ואנימציה', help: 'מצב מהיר מבטל אנימציות כבדות ומשפר תגובתיות בטלוויזיות חלשות',
           get: function () { return label(PERF, S.perf); }, step: function (st) { setSetting('perf', cycle(PERF, S.perf, st)); } }
       ].concat(NATIVE && NATIVE.launchSound ? [
-        { type: 'toggle', label: 'צליל פתיחה', help: 'צליל קצר כשהאפליקציה נפתחת (שקט כשהמכשיר על שקט או רטט)',
+        { type: 'toggle', label: 'צליל פתיחה בהפעלה', help: 'השמעת צליל קצר בעת עליית האפליקציה',
           on: function () { return native('launchSound') !== false; }, act: function () { native('setLaunchSound', native('launchSound') === false); } }
       ] : []) },
-      { id: 'channels', ico: '📺', name: 'ערוצים', desc: 'מה מופיע במדריך ואיך האפליקציה נפתחת', rows: [
-        sep('בפתיחה'),
-        choice('startCat', 'בפתיחת האפליקציה', STARTS),
-        toggle('autoplay', 'לנגן את הערוץ האחרון בפתיחה'),
-        sep('ניהול'),
-        info('ערוצים מוסתרים', function () { return (S.hidden || []).length ? (S.hidden || []).length + ' ערוצים' : 'אין'; }),
-        action('החזרת כל הערוצים המוסתרים', function () { setSetting('hidden', []); toast('כל הערוצים חזרו'); }),
-        action('ניקוי "צפית לאחרונה"', function () { state.recents = []; lsSet('israel_tv_recents', []); buildCategories(); toast('נוקה'); }),
-        action('מחיקת כל המועדפים', function () { confirmBox('למחוק את כל המועדפים?', function () { state.favorites = []; lsSet('israel_tv_favorites', []); buildCategories(); filterList(); toast('המועדפים נמחקו'); }); }, '', true)
-      ].concat(IS_WEB ? [toggle('hideAppOnly', 'הסתרת ערוצים שפועלים רק באפליקציה', 'ערוצי HTTP שהדפדפן חוסם')] : [])
-        .concat([sep('קטגוריות שמוצגות')]).concat(catRows) },
-      { id: 'player', ico: '▶️', name: 'נגן', desc: 'תמונה, איכות והחלפת ערוצים', rows: [
-        sep('תמונה'),
-        choice('pic', 'מצב תמונה', PICS), choice('aspect', 'גודל תמונה', ASPECTS),
-        toggle('sharpen', 'חידוד לשידורי SD ישנים', 'פילטר חידוד – כבד יותר על מעבדים חלשים'),
-        sep('שידור'),
-        choice('quality', 'איכות שידור', QUALITIES), choice('latency', 'סוג חיבור', LAT, 'השהיה נמוכה = קרוב יותר לשידור החי, אבל יותר עצירות'),
-        toggle('retry', 'התחברות מחדש אוטומטית כשהשידור נקטע'),
-        sep('שליטה'),
-        choice('zap', 'החלפת ערוצים ב-▲▼', ZAPS),
-        { type: 'toggle', label: 'כיוון החצים בנגן', help: S.upNext ? '▲ = ערוץ הבא' : '▲ = ערוץ קודם (מספר נמוך)', on: function () { return S.upNext; },
+      { id: 'channels', ico: M3_ICONS.channels, name: 'ערוצים ומדריך שידורים', desc: 'הגדרת קטגוריות, ערוצים מוסתרים ואפשרויות פתיחה', rows: [
+        sep('התנהגות'),
+        choice('startCat', 'קטגוריית פתיחה', STARTS),
+        toggle('autoplay', 'הפעלת הערוץ האחרון שנצפה בעלייה'),
+        sep('ניהול ערוצים ומועדפים'),
+        info('ערוצים מוסתרים', function () { return (S.hidden || []).length ? (S.hidden || []).length + ' ערוצים' : 'אין ערוצים מוסתרים'; }),
+        action('שחזור כל הערוצים המוסתרים', function () { setSetting('hidden', []); toast('כל הערוצים שוחזרו'); }),
+        action('איפוס היסטוריית צפייה (ערוצים אחרונים)', function () { state.recents = []; lsSet('israel_tv_recents', []); buildCategories(); toast('היסטוריית הצפייה אופסה'); }),
+        action('מחיקת כל הערוצים המועדפים', function () { confirmBox('למחוק את כל הערוצים המועדפים?', function () { state.favorites = []; lsSet('israel_tv_favorites', []); buildCategories(); filterList(); toast('המועדפים נמחקו'); }); }, '', true)
+      ].concat(IS_WEB ? [toggle('hideAppOnly', 'הסתרת ערוצים הפועלים באפליקציה בלבד', 'הסתרת שידורי HTTP הנחסמים בדפדפנים')] : [])
+        .concat([sep('קטגוריות מוצגות')]).concat(catRows) },
+      { id: 'player', ico: M3_ICONS.player, name: 'נגן וידאו ושידור', desc: 'איכות תמונה, השהיה, שחזור שידור ומעבר ערוצים', rows: [
+        sep('תמונה ואיכות'),
+        choice('pic', 'יחס תמונה', PICS), choice('aspect', 'התאמת תמונה למסך', ASPECTS),
+        toggle('sharpen', 'שיפור חדות תמונה (SD Enhancer)', 'מנגנון חידוד תמונה מתקדם לשידורים ישנים'),
+        choice('quality', 'איכות שידור מועדפת', QUALITIES),
+        choice('latency', 'מצב השהיה וחיבור', LAT, 'השהיה נמוכה מקרבת לשידור החי בזמן אמת'),
+        toggle('retry', 'חיבור מחדש אוטומטי בעת ניתוק שידור'),
+        sep('שליטה ומעבר ערוצים'),
+        choice('zap', 'סדר מעבר ערוצים בחיצים', ZAPS),
+        { type: 'toggle', label: 'כיוון מעבר ערוצים בשלט', help: S.upNext ? 'חץ למעלה = מעבר לערוץ הבא' : 'חץ למעלה = מעבר לערוץ הקודם', on: function () { return S.upNext; },
           act: function () { setSetting('upNext', !S.upNext); } },
-        choice('osdSec', 'משך הצגת פרטי הערוץ בנגן', OSDS),
-        toggle('osdClock', 'שעון בנגן'),
-        { type: 'choice', label: 'טיימר שינה', help: 'עוצר את השידור אחרי הזמן שנבחר',
-          get: function () { var rem = getSleepTimerRemaining(); return rem > 0 ? rem + ' דקות' : 'כבוי'; },
-          step: function () { var cur = getSleepTimerRemaining(); setSleepTimer(cur === 0 ? 30 : cur <= 30 ? 60 : cur <= 60 ? 90 : 0); } }
+        sep('תצוגת פרטי שידור (OSD)'),
+        choice('osdSec', 'משך הצגת פרטי שידור', OSDS),
+        toggle('osdClock', 'הצגת שעון בנגן')
       ] },
-      { id: 'remote', tvOnly: true, ico: '🎮', name: 'שלט רחוק', desc: 'זוהה: ' + remoteName(), rows: [
-        { type: 'choice', label: 'סוג השלט', help: 'קובע את ההסברים במסך. אוטומטי: לפי סוג המכשיר, ועובר לכפתורי צבע ברגע שלוחצים על אחד',
+      { id: 'remote', tvOnly: true, ico: M3_ICONS.remote, name: 'הגדרות שלט רחוק', desc: 'התאמת מקשי צבע וקיצורי דרך בשלט: ' + remoteName(), rows: [
+        sep('סוג שלט'),
+        { type: 'choice', label: 'סוג שלט מזוהה', help: 'התאמת מקשים והנחיות על המסך בהתאם לדגם השלט',
           get: function () { return label(REMOTES, S.remote); }, step: function (st) { setSetting('remote', cycle(REMOTES, S.remote, st)); } },
-        { type: 'choice', label: '🔴 כפתור אדום', get: function () { return label(ACTIONS, S.keyRed); }, step: function (st) { setSetting('keyRed', cycle(ACTIONS, S.keyRed, st)); } },
-        { type: 'choice', label: '🟢 כפתור ירוק', get: function () { return label(ACTIONS, S.keyGreen); }, step: function (st) { setSetting('keyGreen', cycle(ACTIONS, S.keyGreen, st)); } },
-        { type: 'choice', label: '🟡 כפתור צהוב', get: function () { return label(ACTIONS, S.keyYellow); }, step: function (st) { setSetting('keyYellow', cycle(ACTIONS, S.keyYellow, st)); } },
-        { type: 'choice', label: '🔵 כפתור כחול', get: function () { return label(ACTIONS, S.keyBlue); }, step: function (st) { setSetting('keyBlue', cycle(ACTIONS, S.keyBlue, st)); } },
-        choice('longOk', 'לחיצה ארוכה על OK', LONGOK, 'עובד בכל שלט – גם בלי כפתורי צבע'),
-        choice('numWait', 'זמן המתנה בהקלדת מספר ערוץ', NUMW)
+        sep('מקשי צבע'),
+        { type: 'choice', label: 'מקש אדום (Red)', get: function () { return label(ACTIONS, S.keyRed); }, step: function (st) { setSetting('keyRed', cycle(ACTIONS, S.keyRed, st)); } },
+        { type: 'choice', label: 'מקש ירוק (Green)', get: function () { return label(ACTIONS, S.keyGreen); }, step: function (st) { setSetting('keyGreen', cycle(ACTIONS, S.keyGreen, st)); } },
+        { type: 'choice', label: 'מקש צהוב (Yellow)', get: function () { return label(ACTIONS, S.keyYellow); }, step: function (st) { setSetting('keyYellow', cycle(ACTIONS, S.keyYellow, st)); } },
+        { type: 'choice', label: 'מקש כחול (Blue)', get: function () { return label(ACTIONS, S.keyBlue); }, step: function (st) { setSetting('keyBlue', cycle(ACTIONS, S.keyBlue, st)); } },
+        sep('פעולות נוספות'),
+        choice('longOk', 'פעולת לחיצה ארוכה על מקש OK', LONGOK, 'קיצור דרך נוח לכל סוגי השלטים'),
+        choice('numWait', 'זמן המתנה בהזנת מספר ערוץ', NUMW)
       ] },
-      { id: 'dub', ico: '🎙️', name: 'דיבוב לעברית', desc: 'תרגום והקראה בעברית של ערוצים זרים', rows: Dub ? [
-        dubToggle('enabled', 'דיבוב פעיל'),
-        dubChoice('engine', 'מנוע תרגום', (Dub.NO_LOCAL ? [] : [['local', 'בלי מפתח – זיהוי דיבור במכשיר']]).concat([
-          ['gemini', 'Google Gemini (מפתח חינמי, הכי מדויק)'], ['openai', 'OpenAI (בתשלום)']]),
-          Dub.NO_LOCAL ? 'בטלוויזיה הדיבוב עובד דרך Gemini – זיהוי דיבור בתוך הטלוויזיה צורך יותר זיכרון ממה שיש לה'
-            : 'בלי מפתח עובד מיד; עם מפתח Gemini התרגום מדויק יותר ומזהה דוברים'),
-        info('מצב', function () { return Dub.missingConfig() || (Dub.settings.enabled ? '✅ מוכן' : 'כבוי'); }),
-        action('📱 חיבור מפתח מהטלפון (QR)', function () { pairKey(); }, 'בלי הקלדה בשלט: סורקים, מדביקים בטלפון, והמפתח מגיע מוצפן'),
-        dubText('geminiKey', 'מפתח Gemini API', 'מפתח חינמי: aistudio.google.com/apikey • נשמר רק במכשיר', 'AIza...'),
-        dubText('openaiKey', 'מפתח OpenAI API', 'נשמר רק במכשיר', 'sk-...'),
-        dubChoice('tts', 'קול הדיבוב', [['auto', 'אוטומטי'], ['browser', 'קול המכשיר'], ['google', 'Google'], ['openai', 'OpenAI'], ['none', 'כתוביות בלבד']]),
+      { id: 'dub', ico: M3_ICONS.dub, name: 'דיבוב ותרגום חכם', desc: 'תרגום קולי אוטומטי של ערוצים זרים לעברית', rows: Dub ? [
+        sep('מצב שירות'),
+        dubToggle('enabled', 'דיבוב קולי פעיל'),
+        dubChoice('engine', 'מנוע תרגום', (Dub.NO_LOCAL ? [] : [['local', 'ללא מפתח API – זיהוי דיבור מקומי במכשיר']]).concat([
+          ['gemini', 'Google Gemini (מפתח חינמי, דיוק מקסימלי)'], ['openai', 'OpenAI (דיבוב מתקדם)']]),
+          Dub.NO_LOCAL ? 'בטלוויזיה הדיבוב פועל דרך Google Gemini לצורך דיוק מרבי וביצועים מהירים'
+            : 'ללא מפתח הדיבוב פועל מקומית; עם מפתח Gemini התרגום מדויק ומזהה דוברים'),
+        info('מצב שירות', function () { return Dub.missingConfig() || (Dub.settings.enabled ? 'פעיל ומוכן' : 'מושבת'); }),
+        action('חיבור מפתח מהטלפון (סריקת QR)', function () { pairKey(); }, 'הזנת מפתח API בקלות באמצעות סריקת קוד QR מהטלפון הנייד'),
+        sep('מפתחות API'),
+        dubText('geminiKey', 'מפתח Gemini API', 'מפתח חינמי: aistudio.google.com/apikey (נשמר מקומית בלבד)', 'AIza...'),
+        dubText('openaiKey', 'מפתח OpenAI API', 'נשמר מקומית במכשיר בלבד', 'sk-...'),
+        sep('קול וסנכרון'),
+        dubChoice('tts', 'קול הדיבוב', [['auto', 'אוטומטי'], ['browser', 'קול המערכת'], ['google', 'Google TTS'], ['openai', 'OpenAI Audio'], ['none', 'כתוביות בלבד']]),
         { type: 'choice', label: 'מהירות דיבור', get: function () { return Number(Dub.settings.rate).toFixed(2); },
           step: function (st) { Dub.save({ rate: clamp(Math.round((Dub.settings.rate + 0.05 * st) * 100) / 100, 0.8, 1.6) }); } },
-        { type: 'choice', label: 'עוצמת הסאונד המקורי בזמן דיבוב', get: function () { return Math.round(Dub.settings.duck * 100) + '%'; },
+        { type: 'choice', label: 'עוצמת שמע מקור בזמן דיבוב', get: function () { return Math.round(Dub.settings.duck * 100) + '%'; },
           step: function (st) { Dub.save({ duck: clamp(Math.round((Dub.settings.duck + 0.05 * st) * 100) / 100, 0.1, 1) }); } },
-      ].concat(Dub.IS_TV ? [info('סנכרון לשפתיים', 'אוטומטי בטלוויזיה – כל משפט נאמר כשהתמונה מגיעה אליו')] : [
-        dubToggle('sync', 'סנכרון לשפתיים', 'התמונה מושהית כדי שהדיבוב יגיע בזמן'),
-        dubChoice('delay', 'השהיית תמונה', [[6, '6 שניות'], [8, '8 שניות'], [10, '10 שניות'], [12, '12 שניות'], [15, '15 שניות'], [20, '20 שניות']])
+      ].concat(Dub.IS_TV ? [info('סנכרון שפתיים', 'סנכרון תמונה וקול אוטומטי מלא בטלוויזיה')] : [
+        dubToggle('sync', 'סנכרון שפתיים', 'השהיית התמונה לסנכרון מושלם עם הדיבוב'),
+        dubChoice('delay', 'משך השהיית וידאו', [[6, '6 שניות'], [8, '8 שניות'], [10, '10 שניות'], [12, '12 שניות'], [15, '15 שניות'], [20, '20 שניות']])
       ]).concat([
+        sep('כתוביות ובדיקה'),
         dubToggle('subtitles', 'כתוביות בעברית'),
-        dubToggle('showOriginal', 'גם הטקסט המקורי'),
-        action('🔊 בדיקת קול', function () { Dub.unlockAudio(); Dub.testVoice(); })
-      ]) : [info('דיבוב', 'לא זמין במכשיר הזה')] },
-      { id: 'kids', ico: '🧸', name: 'מצב ילדים', desc: 'רק ערוצי ילדים, ויציאה עם קוד', rows: [
-        { type: 'toggle', label: 'מצב ילדים', help: 'מציג רק ערוצי ילדים (בעברית ומהעולם) ותחנת רדיו לילדים', on: function () { return S.kids; },
+        dubToggle('showOriginal', 'הצגת טקסט מקורי לצד התרגום'),
+        action('בדיקת שמע וקול', function () { Dub.unlockAudio(); Dub.testVoice(); })
+      ]) : [info('דיבוב', 'אינו זמין במכשיר זה')] },
+      { id: 'kids', ico: M3_ICONS.kids, name: 'בקרת הורים ומצב ילדים', desc: 'הגבלת צפייה לערוצי ילדים בלבד ונעילה בקוד PIN', rows: [
+        { type: 'toggle', label: 'הפעלת מצב ילדים', help: 'הגבלת הממשק לערוצי ילדים ותחנות שידור ייעודיות בלבד', on: function () { return S.kids; },
           act: function () {
             if (S.kids) {
               askPin(function () {
@@ -4667,42 +4685,42 @@ function showOsd() {
               buildCategories();
               filterList();
               if (TVUI && typeof atvBuild === 'function') atvBuild();
-              toast('🧸 מצב ילדים פועל');
+              toast('מצב ילדים הופעל');
             }
           } },
-        { type: 'action', label: S.kidsPin ? 'שינוי קוד יציאה (' + S.kidsPin.replace(/./g, '•') + ')' : 'הגדרת קוד יציאה (4 ספרות)', help: 'בלי קוד – כל אחד יכול לצאת ממצב ילדים',
+        { type: 'action', label: S.kidsPin ? 'שינוי קוד PIN (' + S.kidsPin.replace(/./g, '•') + ')' : 'הגדרת קוד PIN ליציאה (4 ספרות)', help: 'ללא קוד נעילה, ניתן לצאת ממצב ילדים באופן חופשי',
           act: function () { askPin(function () { newPin(); }); } }
       ] },
-      { id: 'saver', tvOnly: true, ico: '🌙', name: 'שומר מסך', desc: 'הגנה על מסכי OLED כשאין צפייה', rows: [
-        choice('saver', 'הפעלה אחרי', SAVERS, 'רק במדריך או כשהשידור מושהה – לא בזמן צפייה')
+      { id: 'saver', tvOnly: true, ico: M3_ICONS.saver, name: 'שומר מסך OLED', desc: 'מניעת צריבת מסך והגנה על פאנל הטלוויזיה', rows: [
+        choice('saver', 'זמן המתנה להפעלת שומר מסך', SAVERS, 'מופעל במדריך שידורים או כשהשידור מושהה בלבד')
       ] },
-      { id: 'updates', ico: '⬆️', name: 'עדכונים', desc: 'עדכונים מגיעים ישירות מ-GitHub', rows: [
+      { id: 'updates', ico: M3_ICONS.updates, name: 'עדכוני תוכנה ומערכת', desc: 'גרסאות תוכנה, עדכונים אונליין ויומן שינויים', rows: [
         { type: 'card', state: updateCardState, html: updateCardHtml, act: updateCardAction },
-        info('גרסה מותקנת', (d.appVersion ? 'אפליקציה ' + d.appVersion + ' · ' : '') + BUILD.version + (BUILD.date ? ' (' + BUILD.date + ')' : '')),
-        info('גרסה פעילה', function () { return LIVE ? LIVE.version + ' – עודכנה אונליין' : BUILD.version; }),
-        toggle('autoUpdate', 'בדיקה אוטומטית בכל פתיחה'),
-        toggle('liveUpdates', 'עדכון אונליין של המסך, הקוד והערוצים', 'עדכונים קטנים מגיעים לכל המכשירים בלי להתקין מחדש'),
-        action('📋 מה חדש (GitHub)', function () { openUrl(RELEASES); })
+        info('גרסת אפליקציה', (d.appVersion ? 'גרסת חבילה ' + d.appVersion + ' · ' : '') + BUILD.version + (BUILD.date ? ' (' + BUILD.date + ')' : '')),
+        info('גרסה פעילה', function () { return LIVE ? LIVE.version + ' (עודכנה אונליין)' : BUILD.version; }),
+        toggle('autoUpdate', 'בדיקת עדכונים אוטומטית בהפעלה'),
+        toggle('liveUpdates', 'עדכונים שוטפים אונליין', 'קבלת שיפורים, ערוצים חדשים ותיקונים ללא צורך בהתקנה מחדש'),
+        action('יומן גרסאות וחידושים (GitHub)', function () { openUrl(RELEASES); })
       ] },
-      { id: 'about', ico: 'ℹ️', name: 'אודות ומכשיר', desc: 'פרטי המכשיר שזוהה, מקורות ואיפוס', rows: [
-        sep('המכשיר'),
-        info('מכשיר', function () { return d.platform + (d.model ? ' · ' + d.model : ''); }),
-        info('מערכת', function () { return d.os || '—'; }),
-        info('מסך', function () { return screen.width + '×' + screen.height + ' (תצוגה ' + window.innerWidth + '×' + window.innerHeight + ')'; }),
-        info('דפדפן המערכת', function () { var m = /Chrome\/([\d.]+)/.exec(UA); return m ? 'Chromium ' + m[1] : UA.slice(0, 60); }),
-        info('שלט', remoteName),
-        sep('תקלות'),
+      { id: 'about', ico: M3_ICONS.about, name: 'אודות והגדרות מתקדמות', desc: 'פרטי החומרה, מקורות שידור, שרתי מדיה ואיפוס', rows: [
+        sep('חומרה ומערכת'),
+        info('דגם מכשיר', function () { return d.platform + (d.model ? ' · ' + d.model : ''); }),
+        info('מערכת הפעלה', function () { return d.os || '—'; }),
+        info('רזולוציית מסך', function () { return screen.width + '×' + screen.height + ' (גודל תצוגה ' + window.innerWidth + '×' + window.innerHeight + ')'; }),
+        info('דפדפן מערכת', function () { var m = /Chrome\/([\d.]+)/.exec(UA); return m ? 'Chromium ' + m[1] : UA.slice(0, 60); }),
+        info('שלט מזוהה', remoteName),
+        sep('יומן תקלות'),
         info('סגירות לא צפויות', crashText),
-        info('שגיאה אחרונה', function () { return errors.length ? when(errors[0].t) + ' · ' + errors[0].m + ' (' + errors[0].at + ')' : 'אין'; }),
-        action('ניקוי יומן התקלות', function () { crashes = []; errors = []; lsSet('itv_crashes', []); lsSet('itv_errors', []); toast('נוקה'); }),
-        sep('מידע וקישורים'),
-        info('ערוצים', function () { return (window.CHANNELS_DATA || []).length + ' (מתוכם ' + state.all.length + ' מוצגים)'; }),
-        action('📋 מאיפה מגיע כל ערוץ', function () { openUrl(REPO + '/blob/master/SOURCES.md'); }),
-        action('🌐 הפרויקט ב-GitHub', function () { openUrl(REPO); }),
-        action('📡 חיבור ל-Plex ול-DLNA (טלוויזיות LG)', function () { showPlexModal(); }, 'הגדרת הערוצים ולוח השידורים ב-Plex Live TV'),
-        action('📲 האפליקציה לשאר המכשירים', function () { showGetApp(); }),
-        sep('איפוס'),
-        action('איפוס כל ההגדרות', function () { confirmBox('לאפס את כל ההגדרות? (מועדפים נשמרים)', function () { try { localStorage.removeItem('itv_settings'); } catch (e) {} location.reload(); }); }, '', true)
+        info('שגיאה אחרונה', function () { return errors.length ? when(errors[0].t) + ' · ' + errors[0].m + ' (' + errors[0].at + ')' : 'אין שגיאות מתועדות'; }),
+        action('איפוס יומן תקלות', function () { crashes = []; errors = []; lsSet('itv_crashes', []); lsSet('itv_errors', []); toast('יומן התקלות אופס'); }),
+        sep('ערוצים ושרתים'),
+        info('ערוצים פעילים', function () { return (window.CHANNELS_DATA || []).length + ' ערוצים (מתוכם ' + state.all.length + ' מוצגים)'; }),
+        action('מקורות שידור ורישיונות', function () { openUrl(REPO + '/blob/master/SOURCES.md'); }),
+        action('דף הפרויקט ב-GitHub', function () { openUrl(REPO); }),
+        action('שרת מדיה ביתי (Plex & DLNA)', function () { showPlexModal(); }, 'הגדרת 269 ערוצים ולוח שידורים ב-Plex Live TV & DVR או שרת DLNA'),
+        action('הורדה למכשירים נוספים (Android, TV, Windows, Mac, Linux)', function () { showGetApp(); }),
+        sep('איפוס מערכת'),
+        action('איפוס כל ההגדרות לברירת מחדל', function () { confirmBox('לאפס את כל הגדרות האפליקציה? (רשימת המועדפים תישמר)', function () { try { localStorage.removeItem('itv_settings'); } catch (e) {} location.reload(); }); }, '', true)
       ] }
     ];
     if (PHONE) {
@@ -4725,7 +4743,7 @@ function showOsd() {
     state.setSection = 0;
     if (typeof sectionId === 'string') for (var i = 0; i < sections.length; i++) if (sections[i].id === sectionId) state.setSection = i;
     el.settingsNav.innerHTML = sections.map(function (s, i) {
-      return '<div class="nav-item" data-i="' + i + '"><span class="ni-ico">' + s.ico + '</span>' + esc(s.name) + '</div>';
+      return '<div class="nav-item" data-i="' + i + '"><span class="ni-ico">' + s.ico + '</span><span class="ni-label">' + esc(s.name) + '</span></div>';
     }).join('');
     if (state.overlay && state.overlay !== 'settings') state.stack.push(state.overlay);
     state.overlay = 'settings';
@@ -4751,7 +4769,7 @@ function showOsd() {
     var sec = sections[state.setSection];
     var navs = el.settingsNav.children;
     for (var i = 0; i < navs.length; i++) toggleClass(navs[i], 'active', i === state.setSection);
-    el.settingsH.textContent = sec.name;
+    el.settingsH.innerHTML = '<span class="set-head-ico">' + sec.ico + '</span><span>' + esc(sec.name) + '</span>';
     el.settingsP.textContent = sec.desc || '';
     if (state.setShown !== state.setSection) { state.setShown = state.setSection; el.settingsRows.scrollTop = 0; }
     var n = 0, inGroup = false;

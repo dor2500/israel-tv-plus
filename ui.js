@@ -238,7 +238,7 @@ window.ITV_UI = (function (I) {
   '<div class="overlay settings hidden" id="settings"><div class="settings-box">' +
     '<div class="settings-side"><div class="settings-title">' + I('settings') + '<span>הגדרות</span><button class="set-close" id="btn-settings-close" aria-label="סגירה">' + I('close') + '</button></div><div class="settings-nav" id="settings-nav"></div></div>' +
     '<div class="settings-main"><div class="settings-head"><h2 id="settings-h"></h2><p id="settings-p"></p></div>' +
-    '<div class="settings-rows" id="settings-rows"></div></div>' +
+    '<div class="settings-rows" id="settings-rows"></div><div class="m3-tv-hints" id="settings-tv-hints"><span class="m3-hint-pill"><span class="m3-key">▲▼</span> ניווט</span><span class="m3-hint-pill"><span class="m3-key">◀▶</span> בחירה / שינוי</span><span class="m3-hint-pill"><span class="m3-key">OK</span> אישור</span><span class="m3-hint-pill"><span class="m3-key">Back</span> יציאה</span></div></div>' +
   '</div></div>' +
 
   // ---------------------------------------------------------------- TV Netflix-style profiles screen
