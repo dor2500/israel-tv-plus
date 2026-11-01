@@ -1,20 +1,23 @@
 {
-  "version": "4.8.51",
-  "code": 202611012301,
-  "app": 631,
+  "version": "4.8.52",
+  "code": 202611012302,
+  "app": 632,
   "shell": 3,
   "date": "2026-11-01",
   "notes": [
-    "עיצובים חדשים: בהגדרות > תצוגה וממשק > עיצוב אפשר לבחור בין קלאסי, קולנוע, לוח שידורים, מטרו ומגזין. כל עיצוב מחליף את פריסת מסך הבית, הצבעים, הכרטיסים, ההגדרות והנגן, בטלוויזיה, במחשב ובדפדפן בטלפון. הבחירה חלה מיד.",
-    "חמשת סגנונות הטלוויזיה של 4.8.50 הוחלפו בעיצובים האלה, כי הם כמעט לא שינו את המסך.",
-    "לוג שינויים בתוך האפליקציה: בהגדרות > עדכוני תוכנה ומערכת, ובאפליקציית אנדרואיד בהגדרות > אודות.",
-    "טייזן: שוב תוקן קובץ התצורה שנפגע בעדכוני הגרסה."
+    "העיצובים החדשים חלים רק בטלוויזיה ובמחשב. ממשק הטלפון נשאר כמו שהיה."
   ],
   "history": [
     {
+      "version": "4.8.52",
+      "notes": [
+        "העיצובים החדשים חלים רק בטלוויזיה ובמחשב. ממשק הטלפון נשאר כמו שהיה."
+      ]
+    },
+    {
       "version": "4.8.51",
       "notes": [
-        "עיצובים חדשים: בהגדרות > תצוגה וממשק > עיצוב אפשר לבחור בין קלאסי, קולנוע, לוח שידורים, מטרו ומגזין. כל עיצוב מחליף את פריסת מסך הבית, הצבעים, הכרטיסים, ההגדרות והנגן, בטלוויזיה, במחשב ובדפדפן בטלפון. הבחירה חלה מיד.",
+        "עיצובים חדשים: בהגדרות > תצוגה וממשק > עיצוב אפשר לבחור בין קלאסי, קולנוע, לוח שידורים, מטרו ומגזין. כל עיצוב מחליף את פריסת מסך הבית, הצבעים, הכרטיסים, ההגדרות והנגן, בטלוויזיה ובמחשב. הבחירה חלה מיד.",
         "חמשת סגנונות הטלוויזיה של 4.8.50 הוחלפו בעיצובים האלה, כי הם כמעט לא שינו את המסך.",
         "לוג שינויים בתוך האפליקציה: בהגדרות > עדכוני תוכנה ומערכת, ובאפליקציית אנדרואיד בהגדרות > אודות.",
         "טייזן: שוב תוקן קובץ התצורה שנפגע בעדכוני הגרסה."
@@ -218,51 +221,44 @@
       "notes": [
         "אייקון חדש ומודרני בכל הפלטפורמות: סימן ניגון משלושה סרטי צבע על רקע כהה."
       ]
-    },
-    {
-      "version": "4.8.27",
-      "notes": [
-        "אייקון חדש בכל הפלטפורמות: מגן דוד עם סימן ניגון על רקע כחול.",
-        "מסך הפתיחה של LG וסמסונג ו-iOS עודכן בהתאם."
-      ]
     }
   ],
   "native": {
     "android": {
-      "version": "4.8.51",
-      "app": 631,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.51/IsraelTVPlus-android.apk"
+      "version": "4.8.52",
+      "app": 632,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.52/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "4.8.51",
-      "app": 631,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.51/IsraelTVPlus-windows-setup.exe"
+      "version": "4.8.52",
+      "app": 632,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.52/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "4.8.51",
-      "app": 631,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.51/com.israeltv.plus_all.ipk",
+      "version": "4.8.52",
+      "app": 632,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.52/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "4.8.51",
-      "app": 631,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.51/IsraelTVPlus-tizen-project.zip"
+      "version": "4.8.52",
+      "app": 632,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.52/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "4.8.51",
-      "app": 631,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.51/IsraelTVPlus-macos-arm64.zip"
+      "version": "4.8.52",
+      "app": 632,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.52/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "4.8.51",
-      "app": 631,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.51/IsraelTVPlus-linux-x64.zip"
+      "version": "4.8.52",
+      "app": 632,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.52/IsraelTVPlus-linux-x64.zip"
     },
     "wear": {
-      "version": "4.8.51",
-      "app": 1000531,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.51/IsraelTVPlus-wearos.apk"
+      "version": "4.8.52",
+      "app": 1000532,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.52/IsraelTVPlus-wearos.apk"
     }
   }
 }

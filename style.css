@@ -3281,23 +3281,7 @@ body.design-cinema .tv-strip-item.focus, body.design-cinema #tvo-big.focus { box
 body.design-cinema #tvo-opts.focus { background: var(--accent); color: #14100a; }
 body.design-cinema .dialog-box, body.design-cinema .menu-box, body.design-cinema .btn, body.design-cinema .net-prof-card { border-radius: .4rem !important; }
 body.design-cinema .net-prof-title, body.design-cinema #settings-h, body.design-cinema .settings-title { letter-spacing: .02em; color: var(--accent); }
-body.design-cinema.phone .pager { height: 80vh; max-height: none; border-radius: 0; }
-body.design-cinema.phone .slide-body { text-align: center; align-items: center; }
-body.design-cinema.phone .slide-actions, body.design-cinema.phone .slide-meta { justify-content: center; }
-body.design-cinema.phone .shelf-head h3 { font-size: 1.3rem; letter-spacing: .1em; color: var(--accent); }
-body.design-cinema.phone .pcard { width: 12rem; }
-body.design-cinema.phone .pc-media { aspect-ratio: 5 / 7; border-radius: .3rem; border: 1px solid rgba(232, 180, 74, .22); }
-body.design-cinema.phone .pc-name { font-size: 1.25rem; text-align: center; }
-body.design-cinema.phone .pc-meta { display: none; }
-body.design-cinema.phone .nb-track { background: #000; border-top: 1px solid rgba(232, 180, 74, .3); }
-body.design-cinema.phone .nb-pill { display: none; }
-body.design-cinema.phone .nb-item.on { color: var(--accent); }
 
-/* ------------------------------------------------------------------ flat tab bar shared by the new designs on phones */
-body.design-cinema.phone .navbar, body.design-rail.phone .navbar, body.design-metro.phone .navbar, body.design-paper.phone .navbar { left: 0; right: 0; bottom: 0; padding: 0; }
-body.design-cinema.phone .nb-track, body.design-rail.phone .nb-track, body.design-metro.phone .nb-track, body.design-paper.phone .nb-track {
-  max-width: none; height: calc(6rem + var(--sab)); padding: 0 0 var(--sab); border-radius: 0; box-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none; }
-body.design-cinema.phone .nb-search, body.design-rail.phone .nb-search, body.design-metro.phone .nb-search, body.design-paper.phone .nb-search { display: none; }
 
 /* ------------------------------------------------------------------ rail: tabs in a fixed column, preview window, dense shelves */
 body.design-rail { --radius: .7rem; }
@@ -3331,14 +3315,6 @@ body.design-rail #player .osd::before { background: linear-gradient(to top, rgba
 body.design-rail #tvo-bar i { background: var(--accent); }
 body.design-rail .tv-strip-item.focus, body.design-rail #tvo-big.focus { background: rgba(45, 212, 191, .14); box-shadow: 0 0 0 .2rem var(--accent); }
 body.design-rail #tvo-opts.focus { background: var(--accent); color: var(--on-accent); }
-body.design-rail.phone .pager { height: 34vh; min-height: 22rem; border-radius: 0; }
-body.design-rail.phone .shelf-head h3 { font-size: 1.5rem; color: var(--accent); }
-body.design-rail.phone .pcard { width: 13rem; }
-body.design-rail.phone .pc-media { border-radius: .6rem; border: 1px solid rgba(45, 212, 191, .16); }
-body.design-rail.phone .pc-name { font-size: 1.2rem; }
-body.design-rail.phone .pc-meta { display: none; }
-body.design-rail.phone .nb-track { background: var(--bg2); }
-body.design-rail.phone .nb-pill { top: 0; bottom: auto; right: 0; width: 25%; height: .25rem; border-radius: 0; background: var(--accent); }
 
 /* ------------------------------------------------------------------ metro: flat colour tiles, no rounding, big plain headings */
 body.design-metro { --radius: 0; }
@@ -3386,20 +3362,6 @@ body.design-metro .dialog-box, body.design-metro .menu-box, body.design-metro .b
 body.design-metro .set-row, body.design-metro .set-group, body.design-metro .nav-item, body.design-metro .switch, body.design-metro .toast,
 body.design-metro .settings-box, body.design-metro .drawer, body.design-metro .obtn, body.design-metro .home-chip, body.design-metro .card-logo { border-radius: 0 !important; }
 body.design-metro .nav-item.active, body.design-metro .nav-item.focused { background: var(--accent) !important; color: #fff !important; }
-body.design-metro.phone .pager { height: 38vh; min-height: 24rem; border-radius: 0; }
-body.design-metro.phone .shelf-head h3 { font-size: 2.4rem; font-weight: 300; }
-body.design-metro.phone .pcard { width: 16rem; margin-left: .4rem; }
-body.design-metro.phone .pc-media { border-radius: 0; background: #0078d4; aspect-ratio: 1 / 1; }
-body.design-metro.phone .pcard:nth-child(6n+2) .pc-media { background: #d83b01; }
-body.design-metro.phone .pcard:nth-child(6n+3) .pc-media { background: #107c10; }
-body.design-metro.phone .pcard:nth-child(6n+4) .pc-media { background: #5c2d91; }
-body.design-metro.phone .pcard:nth-child(6n+5) .pc-media { background: #008272; }
-body.design-metro.phone .pcard:nth-child(6n) .pc-media { background: #b4009e; }
-body.design-metro.phone .pc-media::before, body.design-metro.phone .pc-media::after { display: none; }
-body.design-metro.phone .pc-meta { display: none; }
-body.design-metro.phone .nb-track { background: #1b1c20; }
-body.design-metro.phone .nb-pill { top: 0; bottom: 0; right: 0; width: 25%; border-radius: 0; background: var(--accent); }
-body.design-metro.phone .nb-item.on { color: #fff; }
 
 /* ------------------------------------------------------------------ paper: a bright page, ink, hairlines and serif headlines */
 body.design-paper { --radius: 0; --serif: 'Frank Ruhl Libre', 'Noto Serif Hebrew', David, 'Times New Roman', serif; --ink: #1a1a1a; --text: #1a1a1a; --text2: #4a4640; --muted: #6a655c; --dim: #8a8478; --line: #d8cfba; --line2: #b9af98; }
@@ -3455,15 +3417,6 @@ body.design-paper #tvo-bar i { background: var(--accent); }
 body.design-paper #tvo-bar u { background: var(--ink); }
 body.design-paper #tvo-opts.focus { background: var(--ink); color: #fff; box-shadow: none; }
 body.design-paper .tv-chev { border-color: var(--ink); }
-body.design-paper.phone .pager { height: 40vh; min-height: 26rem; border-radius: 0; border-bottom: .25rem solid #1a1a1a; }
-body.design-paper.phone .shelf-head { margin: 0 1.6rem .8rem; padding: .8rem 0 0; border-top: 1px solid #1a1a1a; }
-body.design-paper.phone .shelf-head h3 { font-family: var(--serif); font-size: 2.2rem; }
-body.design-paper.phone .pc-media { border-radius: 0; background: #fffdf7; border: 1px solid #1a1a1a; }
-body.design-paper.phone .pc-media::before, body.design-paper.phone .pc-media::after { display: none; }
-body.design-paper.phone .nb-track { background: var(--bg); border-top: .2rem solid #1a1a1a; }
-body.design-paper.phone .nb-pill { display: none; }
-body.design-paper.phone .nb-item { color: #5a554c; }
-body.design-paper.phone .nb-item.on { color: var(--accent); }
 
 /* ------------------------------------------------------------------ every new design: its own page colours (a TV is otherwise forced to black) */
 html:has(body.design-cinema) { background: #050403; }
@@ -3482,14 +3435,11 @@ body.design-cinema .atv-colors, body.design-rail .atv-colors, body.design-metro 
 /* paper: logos are made for dark backgrounds, so the cards are ink */
 body.design-paper .atv-card { background: #1a1a1a; }
 body.design-paper .atv-num { color: rgba(255, 255, 255, .7); }
-body.design-paper.phone .pc-media { background: #1a1a1a; }
 body.design-paper .tv-card { color: #fff; }
 body.design-paper .settings .sr-label, body.design-paper .settings .nav-item, body.design-paper .settings-title, body.design-paper #settings-h { color: var(--ink); }
 body.design-paper .settings .sr-help, body.design-paper .settings .v, body.design-paper #settings-p { color: #5a554c; }
 body.design-paper .set-row, body.design-paper .set-group .set-row { background: #fffdf7 !important; border: 1px solid #d8cfba !important; }
 
-/* the settings tab is hidden on phones: three tabs share the bar */
-body.design-rail.phone .nb-pill, body.design-metro.phone .nb-pill { width: 33.34%; }
 
 /* ------------------------------------------------------------------ changelog */
 .dialog-box.changelog { text-align: right; }
@@ -3517,7 +3467,6 @@ body.design-paper #tvo-bar u { background: #fff; }
 body.design-paper #tvo-opts { color: #fff; }
 body.design-paper #tvo-opts.focus { background: #fff; color: #1a1a1a; }
 body.design-paper .atv-pill-q { color: #1a1a1a !important; }
-body.design-cinema.phone .nb-track, body.design-rail.phone .nb-track, body.design-metro.phone .nb-track, body.design-paper.phone .nb-track { border-left: 0; border-right: 0; border-bottom: 0; }
 
 /* ------------------------------------------------------------------ the programme guide in each design */
 body.design-cinema #tvguide { background: #050403; }
@@ -3539,4 +3488,3 @@ body.design-paper #tvguide .tv-logo { background: #1a1a1a; }
 body.design-paper #tvguide .tv-clock, body.design-paper #tvguide .tv-num { color: #1a1a1a; }
 body.design-paper #tvguide .tv-nm { color: #4a4640; }
 body.design-paper #tvguide .tv-heart { filter: invert(1) brightness(.2); }
-body.design-cinema.phone .nb-track, body.design-rail.phone .nb-track, body.design-metro.phone .nb-track, body.design-paper.phone .nb-track { outline: 0; border-image: none; }

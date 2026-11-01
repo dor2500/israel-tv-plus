@@ -515,7 +515,7 @@
   }
 
   function applyScale() {
-    var w = window.innerWidth, hgt = window.innerHeight;
+    var w = window.innerWidth, hgt = window.innerHeight, wasPhone = PHONE;
     var compact = w < 900 || (TOUCH && w < 1100 && hgt > w * 0.9);
     // phones: portrait, or a touch screen whose short side is phone-sized (landscape phones too); never TVs
     PHONE = !IS_TV && (window.ITV_IOS || w < 700 || (TOUCH && (Math.min(w, hgt) < 600 || hgt > w)));
@@ -533,6 +533,7 @@
     if (PHONE && S.cols) cols = Math.min(S.cols, w < 600 ? 3 : 5);
     state.cols = cols;
     document.documentElement.style.setProperty('--card-cols', cols);
+    if (wasPhone !== PHONE) applySetting('design');
   }
 
   // ---- colours: Nuvio accent palettes, or Material You (the Android 12+ wallpaper colours from the native app)
@@ -574,8 +575,10 @@
     return o;
   }
   function rgba(h, a) { var c = hexRgb(h); return 'rgba(' + c[0] + ',' + c[1] + ',' + c[2] + ',' + a + ')'; }
+  // phones keep their own interface whatever design is chosen on a big screen
+  function activeDesign() { return (!PHONE && DESIGNS[S.design]) || DESIGNS.classic; }
   function applyColors() {
-    var name = accentName(), sc = readSystemColors(), des = DESIGNS[S.design] || DESIGNS.classic;
+    var name = accentName(), sc = readSystemColors(), des = activeDesign();
     var light = des.pal ? !!des.light : S.theme === 'light', oled = !des.pal && S.theme === 'oled';
     var p;
     if (des.pal) { p = des.pal; name = 'design'; }
@@ -614,11 +617,11 @@
   function applySetting(k) {
     var b = document.body;
     if (k === 'theme' || k === 'accent' || k === 'design') {
-      var des = DESIGNS[S.design] || DESIGNS.classic;
+      var des = activeDesign();
       b.classList.remove('oled', 'light', 'dark');
       b.classList.add(des.pal ? (des.light ? 'light' : 'dark') : S.theme);
       Object.keys(DESIGNS).forEach(function (d) { b.classList.remove('design-' + d); });
-      b.classList.add('design-' + (DESIGNS[S.design] ? S.design : 'classic'));
+      b.classList.add('design-' + (!PHONE && DESIGNS[S.design] ? S.design : 'classic'));
       applyColors();
       if (k === 'design' && atv && atv.built) { atvLayout(); atvMark(); }
     } else if (k === 'uiScale' || k === 'cols') { applyScale(); renderGridFresh(); }
@@ -2036,7 +2039,7 @@
     ['הגדרות', 'settings']
   ];
 
-  function atvGeo() { return DESIGNS[S.design] || DESIGNS.classic; }
+  function atvGeo() { return activeDesign(); }
   function atvRem(rem) { return rem * (parseFloat(document.documentElement.style.fontSize) || 16); }
 
   /** Which shelf a channel belongs on. */
@@ -4848,7 +4851,7 @@ function showOsd() {
       })() },
       { id: 'display', ico: M3_ICONS.display, name: 'תצוגה וממשק', desc: 'ערכות נושא, סגנון עיצוב טלוויזיה, פלטת צבעים ועיצוב מסך', rows: [
         sep('מראה וסגנון עיצוב'),
-        { type: 'choice', label: 'עיצוב', help: (DESIGNS[S.design] || DESIGNS.classic).help, get: function () { return label(DESIGN_LIST, S.design); },
+        { type: 'choice', tvOnly: true, label: 'עיצוב', help: (DESIGNS[S.design] || DESIGNS.classic).help, get: function () { return label(DESIGN_LIST, S.design); },
           step: function (st) { setSetting('design', cycle(DESIGN_LIST, S.design, st)); } },
         designRow(choice('theme', 'ערכת נושא', THEMES)),
         designRow({ type: 'choice', label: 'פלטת צבעים (Material You)', help: readSystemColors() ? 'צבעי המערכת מבוססים על ערכת הטפט (Dynamic Colors)' : 'ערכות הצבע הנבחרות של הממשק',
@@ -4995,7 +4998,7 @@ function showOsd() {
         action('איפוס כל ההגדרות לברירת מחדל', function () { confirmBox('לאפס את כל הגדרות האפליקציה? (רשימת המועדפים תישמר)', function () { try { localStorage.removeItem('itv_settings'); } catch (e) {} location.reload(); }); }, '', true)
       ] }
     ];
-    if (S.design !== 'classic') secs.forEach(function (s) { s.rows = s.rows.filter(function (r) { return !r.classicOnly; }); });
+    if (activeDesign() !== DESIGNS.classic) secs.forEach(function (s) { s.rows = s.rows.filter(function (r) { return !r.classicOnly; }); });
     if (PHONE) {
       secs = secs.filter(function (s) { return !s.tvOnly; });
       secs.forEach(function (s) { s.rows = s.rows.filter(function (r) { return !r.tvOnly; }); });
