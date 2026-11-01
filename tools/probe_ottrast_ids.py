@@ -30,3 +30,4 @@ for cid in candidates:
 print(f"Total active candidates: {len(live)}")
 with open(os.path.join(out_dir, "live_ids.json"), "w") as f:
     json.dump(live, f)
+

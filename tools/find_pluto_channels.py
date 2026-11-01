@@ -12,3 +12,4 @@ for c in chs:
 print(f"Total Pluto TV channels: {len(pluto_chs)}")
 for num, cid, name, u in pluto_chs:
     print(f"#{num} [{cid}] {name} -> {u}")
+

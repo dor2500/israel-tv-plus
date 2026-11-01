@@ -8,3 +8,4 @@ for cid in test_ids:
     p = subprocess.run(cmd, capture_output=True, text=True)
     print(f"=== ID {cid} ===")
     print(p.stdout.strip())
+

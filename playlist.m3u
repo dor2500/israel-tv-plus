@@ -341,7 +341,7 @@ https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/daily_drama/live.l
 https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/vamos/live.livx/playlist.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="FreeTV גלובל סדרות HD" tvg-chno="172" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/freetv_global_il.png" group-title="סרטים וסדרות",FreeTV גלובל סדרות HD
 https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/free_global/live.livx/playlist.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ערוץ האוכל Food Network HD" tvg-chno="173" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/food_network_il.png" group-title="אוכל ובישול",ערוץ האוכל Food Network HD
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ האוכל HD (מבית החיים הטובים)" tvg-chno="173" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/food_channel.png" group-title="israel",ערוץ האוכל HD (מבית החיים הטובים)
 http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12209/index.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="ערוץ פודי Foody HD" tvg-chno="174" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/foody_tv.png" group-title="אוכל ובישול",ערוץ פודי Foody HD
 https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/foody/live.livx/playlist.m3u8
@@ -814,3 +814,7 @@ http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12246/index.m3u8
 http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12273/index.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="ערוץ החופש והנופש HD (Vacation Channel)" tvg-chno="408" tvg-logo="https://static.g-cdn.app/streams/vacation-channel-il-hd.png" group-title="entertainment",ערוץ החופש והנופש HD (Vacation Channel)
 http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32160/index.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ החיים הטובים HD (Good Life)" tvg-chno="409" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/good_life_israel.png" group-title="israel",ערוץ החיים הטובים HD (Good Life)
+http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2355/index.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ האוכל הישראלי HD (מבית החיים הטובים)" tvg-chno="410" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/food_channel.png" group-title="israel",ערוץ האוכל הישראלי HD (מבית החיים הטובים)
+http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12209/index.m3u8

@@ -30,3 +30,4 @@ with concurrent.futures.ThreadPoolExecutor(max_workers=16) as ex:
 
 success = [cid for cid, ok in results if ok]
 print(f"Successfully captured {len(success)} frames!")
+

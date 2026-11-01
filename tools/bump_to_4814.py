@@ -53,3 +53,4 @@ with open(vjson_p, "w", encoding="utf-8") as f:
     f.write("\n")
 
 print(f"Bumped version to {v} (code {code}, app {app_code})!")
+

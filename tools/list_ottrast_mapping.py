@@ -12,3 +12,4 @@ for c in chs:
 
 for k in sorted(mapping.keys(), key=lambda x: int(x) if x.isdigit() else 0):
     print(f"{k}: {mapping[k]}")
+

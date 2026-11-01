@@ -11,3 +11,4 @@ for f in sorted(glob.glob(os.path.join(frames_dir, "*.jpg"))):
     # Is it mostly colorful/cartoon?
     colors = im.convert("P", palette=Image.ADAPTIVE, colors=32).getcolors()
     # print if something interesting
+

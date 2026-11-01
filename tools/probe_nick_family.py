@@ -17,3 +17,4 @@ for cid in check_ids:
     p = subprocess.run(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, timeout=8)
     if os.path.exists(img_dest) and os.path.getsize(img_dest) > 1000:
         print(f"Captured {cid}")
+

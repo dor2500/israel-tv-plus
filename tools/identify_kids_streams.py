@@ -33,3 +33,4 @@ with concurrent.futures.ThreadPoolExecutor(max_workers=8) as ex:
     for cid, ok in results:
         if ok:
             print(f"Captured frame for {cid}")
+

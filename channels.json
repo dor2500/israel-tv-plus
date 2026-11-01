@@ -4567,18 +4567,18 @@
   },
   {
     "id": "food_network_il",
-    "name": "ערוץ האוכל Food Network HD",
-    "title": "ערוץ האוכל והקולינריה Food Network בעברית HD",
-    "category": "אוכל ובישול (Food)",
+    "name": "ערוץ האוכל HD (מבית החיים הטובים)",
+    "title": "ערוץ האוכל הישראלי מבית החיים הטובים וענני תקשורת HD",
+    "category": "israel",
     "categoryEn": "food",
     "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12209/index.m3u8",
     "fallbackUrls": [
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2377/index.m3u8"
     ],
-    "logo": "assets/logos/food_network_il.png",
+    "logo": "assets/logos/food_channel.png",
     "badge": "HD",
     "lang": "he",
-    "desc": "ערוץ האוכל Food Network עם תרגום לעברית – תוכניות שף, אפייה ובישול עולמי",
+    "desc": "ערוץ האוכל הישראלי מבית החיים הטובים וענני תקשורת – שפים ישראליים, מתכונים וקולינריה בעברית",
     "number": 173,
     "src": {
       "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
@@ -4588,7 +4588,23 @@
       "web": "❌ רק באפליקציה (HTTP)"
     },
     "backups": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2377/index.m3u8"
+      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2377/index.m3u8",
+      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32154/index.m3u8"
+    ],
+    "description": "ערוץ האוכל הישראלי מבית החיים הטובים וענני תקשורת – שפים ישראליים, מתכונים וקולינריה בעברית",
+    "servers": [
+      {
+        "name": "ראשי (ערוץ האוכל הישראלי FHD)",
+        "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12209/index.m3u8"
+      },
+      {
+        "name": "גיבוי 1 (ערוץ האוכל פלוס)",
+        "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2377/index.m3u8"
+      },
+      {
+        "name": "גיבוי 2 (ערוץ פודי Foody בישול ישראלי)",
+        "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32154/index.m3u8"
+      }
     ]
   },
   {
@@ -10180,5 +10196,76 @@
     "quality": "HD",
     "description": "ערוץ תיירות, נופש, חופשות וטיולים בישראל ובעולם.",
     "categoryEn": "israel"
+  },
+  {
+    "id": "good_life_channel_hd",
+    "name": "ערוץ החיים הטובים HD (Good Life)",
+    "title": "ערוץ החיים הטובים והלייפסטייל מבית ענני תקשורת HD",
+    "number": 409,
+    "category": "israel",
+    "categoryEn": "lifestyle",
+    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2355/index.m3u8",
+    "logo": "assets/logos/good_life_israel.png",
+    "quality": "HD",
+    "lang": "he",
+    "language": "he",
+    "description": "ערוץ החיים הטובים – תיירות, קולינריה, עיצוב הבית, לייפסטייל ואירוח ישראלי ועולמי מבית ענני תקשורת.",
+    "desc": "ערוץ החיים הטובים – תיירות, קולינריה, עיצוב הבית, לייפסטייל ואירוח ישראלי ועולמי מבית ענני תקשורת.",
+    "servers": [
+      {
+        "name": "ראשי (ערוץ החיים הטובים HD)",
+        "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2355/index.m3u8"
+      },
+      {
+        "name": "גיבוי 1 (ערוץ האוכל מבית החיים הטובים)",
+        "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12209/index.m3u8"
+      },
+      {
+        "name": "גיבוי 2 (ערוץ בית+ Home Plus)",
+        "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2339/index.m3u8"
+      }
+    ],
+    "backups": [
+      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12209/index.m3u8",
+      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2339/index.m3u8"
+    ]
+  },
+  {
+    "id": "food_channel_israel_hd",
+    "name": "ערוץ האוכל הישראלי HD (מבית החיים הטובים)",
+    "title": "ערוץ האוכל הישראלי מבית החיים הטובים וענני תקשורת HD",
+    "number": 410,
+    "category": "israel",
+    "categoryEn": "food",
+    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12209/index.m3u8",
+    "logo": "assets/logos/food_channel.png",
+    "quality": "FHD",
+    "lang": "he",
+    "language": "he",
+    "description": "ערוץ האוכל מבית החיים הטובים וענני תקשורת – שפים מובילים, מתכונים וסדנאות בישול ואפייה בעברית.",
+    "desc": "ערוץ האוכל מבית החיים הטובים וענני תקשורת – שפים מובילים, מתכונים וסדנאות בישול ואפייה בעברית.",
+    "servers": [
+      {
+        "name": "ראשי (ערוץ האוכל הישראלי FHD)",
+        "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12209/index.m3u8"
+      },
+      {
+        "name": "גיבוי 1 (ערוץ האוכל פלוס)",
+        "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2377/index.m3u8"
+      },
+      {
+        "name": "גיבוי 2 (ערוץ החיים הטובים HD)",
+        "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2355/index.m3u8"
+      },
+      {
+        "name": "גיבוי 3 (ערוץ פודי בישול ישראלי)",
+        "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32154/index.m3u8"
+      }
+    ],
+    "backups": [
+      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2377/index.m3u8",
+      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2355/index.m3u8",
+      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32154/index.m3u8"
+    ]
   }
 ]

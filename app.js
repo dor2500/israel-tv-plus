@@ -1049,8 +1049,16 @@
   }
 
   function getActiveTvProfile() {
-    if (!tvActiveProfile) loadTvProfiles();
+    try {
+      if (!tvActiveProfile) loadTvProfiles();
+    } catch (e) {
+      console.warn('loadTvProfiles error:', e);
+    }
     return tvActiveProfile;
+  }
+
+  function buildChannels() {
+    return loadChannels();
   }
 
   function applyTvProfileData(p, notify) {
@@ -1063,11 +1071,14 @@
     lsSet('israel_tv_recents', state.recents);
     S.avatar = p.avatar || '1f60e';
     S.kids = !!p.isKids;
-    loadChannels();
-    updateAvatar();
-    if (typeof atvRenderPill === 'function') atvRenderPill();
-    if (typeof buildCategories === 'function') buildCategories();
-    if (typeof filterList === 'function') filterList();
+    try {
+      if (typeof loadChannels === 'function') loadChannels();
+    } catch (err) { console.error('loadChannels error in profile:', err); }
+    try { updateAvatar(); } catch (err) {}
+    try { if (typeof atvRenderPill === 'function') atvRenderPill(); } catch (err) {}
+    try { if (typeof buildCategories === 'function') buildCategories(); } catch (err) {}
+    try { if (typeof filterList === 'function') filterList(); } catch (err) {}
+    try { if (TVUI && typeof atvBuild === 'function') atvBuild(); } catch (err) {}
     if (notify) toast('שלום, ' + p.name + '!');
   }
 
@@ -2083,31 +2094,45 @@
   function atvRenderPill() {
     var pill = $('atv-pill');
     if (!pill) return;
-    var tabs = ATV_TABS.filter(function (t) {
-      return t[1] === 'profiles' || t[1] === 'all_channels' || t[1] === 'top' || t[1] === 'vod' || t[1] === 'search' || t[1] === 'multiview' || t[1] === 'guide' || t[1] === 'settings' || atvRowIndex(t[1]) !== -1 || (atv.search && t[1] !== 'mine');
-    });
-    if (!tabs || !tabs.length) {
-      tabs = [['מי צופה?', 'profiles'], ['כל הערוצים', 'all_channels'], ['צפייה כעת', 'top'], ['סדרות VOD', 'vod'], ['מדריך שידורים', 'guide'], ['חיפוש', 'search'], ['הגדרות', 'settings']];
+    try {
+      var tabs = ATV_TABS.filter(function (t) {
+        return t[1] === 'profiles' || t[1] === 'all_channels' || t[1] === 'top' || t[1] === 'vod' || t[1] === 'search' || t[1] === 'multiview' || t[1] === 'guide' || t[1] === 'settings' || atvRowIndex(t[1]) !== -1 || (atv.search && t[1] !== 'mine');
+      });
+      if (!tabs || !tabs.length) {
+        tabs = [['מי צופה?', 'profiles'], ['כל הערוצים', 'all_channels'], ['צפייה כעת', 'top'], ['סדרות VOD', 'vod'], ['מדריך שידורים', 'guide'], ['חיפוש', 'search'], ['הגדרות', 'settings']];
+      }
+      if (S.kids) tabs = tabs.filter(function (t) { return t[1] !== 'settings'; }).concat([['יציאה ממצב ילדים', 'kids-exit']]);
+      atv.tabs = tabs;
+      pill.innerHTML = tabs.map(function (t, i) {
+        var id = t[1];
+        if (id === 'profiles') {
+          var p = null;
+          try { p = getActiveTvProfile(); } catch (pe) {}
+          var av = p ? avatarUrl(p.avatar || '1f60e') : avatarUrl('1f60e');
+          var nm = p ? p.name : 'פרופיל';
+          return '<button class="atv-tab atv-tab-prof" data-i="' + i + '" title="מי צופה? - החלף פרופיל"><img class="atv-prof-ico" src="' + av + '" alt=""><span>' + esc(nm) + '</span></button>';
+        }
+        if (id === 'search' || id === 'multiview' || id === 'settings') {
+          var ico = id === 'search' ? I('search') : id === 'multiview' ? I('multiview') : I('settings');
+          return '<button class="atv-tab ico-only" data-i="' + i + '" aria-label="' + esc(t[0]) + '" title="' + esc(t[0]) + '">' + ico + '</button>';
+        }
+        return '<button class="atv-tab" data-i="' + i + '">' + esc(t[0]) + '</button>';
+      }).join('');
+      if (tabs.length) {
+        pill.classList.remove('hidden');
+        pill.style.display = 'flex';
+      } else {
+        pill.classList.add('hidden');
+        pill.style.display = 'none';
+      }
+      atvPillState();
+    } catch (err) {
+      console.error('atvRenderPill error:', err);
+      try {
+        pill.classList.add('hidden');
+        pill.style.display = 'none';
+      } catch (e) {}
     }
-    if (S.kids) tabs = tabs.filter(function (t) { return t[1] !== 'settings'; }).concat([['יציאה ממצב ילדים', 'kids-exit']]);
-    atv.tabs = tabs;
-    pill.innerHTML = tabs.map(function (t, i) {
-      var id = t[1];
-      if (id === 'profiles') {
-        var p = getActiveTvProfile();
-        var av = p ? avatarUrl(p.avatar || '1f60e') : avatarUrl('1f60e');
-        var nm = p ? p.name : 'פרופיל';
-        return '<button class="atv-tab atv-tab-prof" data-i="' + i + '" title="מי צופה? - החלף פרופיל"><img class="atv-prof-ico" src="' + av + '" alt=""><span>' + esc(nm) + '</span></button>';
-      }
-      if (id === 'search' || id === 'multiview' || id === 'settings') {
-        var ico = id === 'search' ? I('search') : id === 'multiview' ? I('multiview') : I('settings');
-        return '<button class="atv-tab ico-only" data-i="' + i + '" aria-label="' + esc(t[0]) + '" title="' + esc(t[0]) + '">' + ico + '</button>';
-      }
-      return '<button class="atv-tab" data-i="' + i + '">' + esc(t[0]) + '</button>';
-    }).join('');
-    pill.classList.remove('hidden');
-    pill.style.display = 'flex';
-    atvPillState();
   }
 
   /** The active tab is the white pill; while the remote is on the bar, the focused tab grows a little. */
@@ -2976,11 +3001,13 @@ function loadCandidate(ch, rawUrl) {
         backBufferLength: fastMode() ? 8 : (isSport ? 6 : 15),
         liveSyncDurationCount: isSport ? 1 : (isStable ? 2 : 1),
         liveMaxLatencyDurationCount: isSport ? 2 : (isStable ? 4 : 2),
+        liveSyncDuration: isSport ? 3 : 7,
+        liveMaxLatencyDuration: isSport ? 6 : 14,
         liveDurationInfinity: true,
-        maxLiveSyncPlaybackRate: isSport ? 1.40 : 1.20,
-        maxBufferLength: isSport ? 6 : (is4K ? 24 : 14),
-        maxMaxBufferLength: isSport ? 10 : (is4K ? 45 : 24),
-        maxBufferSize: isSport ? 10 * 1000 * 1000 : 25 * 1000 * 1000,
+        maxLiveSyncPlaybackRate: isSport ? 1.35 : 1.15,
+        maxBufferLength: isSport ? 5 : (is4K ? 24 : 14),
+        maxMaxBufferLength: isSport ? 8 : (is4K ? 45 : 24),
+        maxBufferSize: isSport ? 8 * 1000 * 1000 : 25 * 1000 * 1000,
         manifestLoadingMaxRetry: 5,
         levelLoadingMaxRetry: 5,
         fragLoadingMaxRetry: 6,
@@ -3005,10 +3032,10 @@ function loadCandidate(ch, rawUrl) {
         }
         if (!state.catchup && data && data.details && data.details.live) {
           var edge = data.details.edge || (data.details.fragments && data.details.fragments.length ? data.details.fragments[data.details.fragments.length - 1].start : null);
-          var lsp = hls.liveSyncPosition || edge;
-          if (lsp != null) {
-            // Force jump to zero-latency live edge on initial play or when lag exceeds 5s for sports
-            if (!v.currentTime || (lsp - v.currentTime > (isSport ? 5 : 14))) {
+          var lsp = (isSport && edge != null) ? Math.max(edge - 2, 0) : (hls.liveSyncPosition || edge);
+          if (lsp != null && v.readyState >= 1) {
+            // Force jump to zero-latency live edge on initial play or when lag exceeds 4s for sports
+            if (!v.currentTime || (lsp - v.currentTime > (isSport ? 4 : 14))) {
               try { v.currentTime = lsp; } catch (err) {}
             }
           }
@@ -3020,6 +3047,12 @@ function loadCandidate(ch, rawUrl) {
         if (levels.length > 0) {
           applyQualityLevel(hls, levels);
         }
+        v.addEventListener('loadedmetadata', function onMeta() {
+          v.removeEventListener('loadedmetadata', onMeta);
+          if (isSport && hls.liveSyncPosition != null) {
+            try { v.currentTime = hls.liveSyncPosition; } catch (e) {}
+          }
+        });
         // Anti-stutter auto-recovery watchdog
         var stallCount = 0;
         v.onwaiting = function () {
@@ -3869,7 +3902,25 @@ function showOsd() {
       ]) : [info('דיבוב', 'לא זמין במכשיר הזה')] },
       { id: 'kids', ico: '🧸', name: 'מצב ילדים', desc: 'רק ערוצי ילדים, ויציאה עם קוד', rows: [
         { type: 'toggle', label: 'מצב ילדים', help: 'מציג רק ערוצי ילדים (בעברית ומהעולם) ותחנת רדיו לילדים', on: function () { return S.kids; },
-          act: function () { if (S.kids) askPin(function () { setSetting('kids', false); loadChannels(); buildCategories(); filterList(); renderSettings(); }); else { setSetting('kids', true); loadChannels(); buildCategories(); filterList(); toast('🧸 מצב ילדים פועל'); } } },
+          act: function () {
+            if (S.kids) {
+              askPin(function () {
+                setSetting('kids', false);
+                loadChannels();
+                buildCategories();
+                filterList();
+                if (TVUI && typeof atvBuild === 'function') atvBuild();
+                renderSettings();
+              });
+            } else {
+              setSetting('kids', true);
+              loadChannels();
+              buildCategories();
+              filterList();
+              if (TVUI && typeof atvBuild === 'function') atvBuild();
+              toast('🧸 מצב ילדים פועל');
+            }
+          } },
         { type: 'action', label: S.kidsPin ? 'שינוי קוד יציאה (' + S.kidsPin.replace(/./g, '•') + ')' : 'הגדרת קוד יציאה (4 ספרות)', help: 'בלי קוד – כל אחד יכול לצאת ממצב ילדים',
           act: function () { askPin(function () { newPin(); }); } }
       ] },

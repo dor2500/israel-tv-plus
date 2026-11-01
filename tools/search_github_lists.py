@@ -24,3 +24,4 @@ for u in urls:
     except Exception as e:
         # print(f"Failed {u}: {e}")
         pass
+

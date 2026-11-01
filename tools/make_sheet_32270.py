@@ -21,3 +21,4 @@ for i, f in enumerate(files):
 out_path = os.path.join(audio_dir, "sheet_32270.jpg")
 sheet.save(out_path, quality=85)
 print("Saved sheet:", out_path)
+

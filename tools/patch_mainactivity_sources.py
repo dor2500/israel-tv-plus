@@ -45,3 +45,4 @@ else:
         print("Successfully patched MainActivity.java with CRLF!")
     else:
         print("Failed to find target in MainActivity.java")
+

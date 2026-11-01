@@ -31,3 +31,4 @@ for b_idx in range(0, len(files), batch_size):
     out_path = os.path.join(out_dir, f"sheet_{b_idx // batch_size + 1}.jpg")
     sheet.save(out_path, quality=85)
     print(f"Saved {out_path}")
+

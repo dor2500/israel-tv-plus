@@ -690,8 +690,8 @@
     <icon src="https://dor2500.github.io/israel-tv-plus/assets/logos/freetv_global_il.png" />
   </channel>
   <channel id="food_network_il">
-    <display-name lang="he">ערוץ האוכל Food Network HD</display-name>
-    <icon src="https://dor2500.github.io/israel-tv-plus/assets/logos/food_network_il.png" />
+    <display-name lang="he">ערוץ האוכל HD (מבית החיים הטובים)</display-name>
+    <icon src="https://dor2500.github.io/israel-tv-plus/assets/logos/food_channel.png" />
   </channel>
   <channel id="foody_tv">
     <display-name lang="he">ערוץ פודי Foody HD</display-name>
@@ -1116,6 +1116,14 @@
   <channel id="vacation_channel_hd">
     <display-name lang="he">ערוץ החופש והנופש HD (Vacation Channel)</display-name>
     <icon src="https://static.g-cdn.app/streams/vacation-channel-il-hd.png" />
+  </channel>
+  <channel id="good_life_channel_hd">
+    <display-name lang="he">ערוץ החיים הטובים HD (Good Life)</display-name>
+    <icon src="https://dor2500.github.io/israel-tv-plus/assets/logos/good_life_israel.png" />
+  </channel>
+  <channel id="food_channel_israel_hd">
+    <display-name lang="he">ערוץ האוכל הישראלי HD (מבית החיים הטובים)</display-name>
+    <icon src="https://dor2500.github.io/israel-tv-plus/assets/logos/food_channel.png" />
   </channel>
   <programme start="20261031191400 +0000" stop="20261031193700 +0000" channel="hot_bidur">
     <title lang="he">מחוברים 12</title>

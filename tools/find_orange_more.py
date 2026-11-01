@@ -29,3 +29,4 @@ matches.sort(key=lambda x: x[1], reverse=True)
 print(f"Candidate IDs with orange logo elements in more_frames:")
 for cid, cnt in matches[:25]:
     print(f"ID {cid}: {cnt} orange pixels")
+

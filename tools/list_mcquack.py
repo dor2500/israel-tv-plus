@@ -7,3 +7,4 @@ for c in chs:
     u = c.get("url", "")
     if "mcquack.net" in u:
         print(f"#{c.get('number')}: {c.get('name')} -> {u}")
+

@@ -11,3 +11,4 @@ for c in chs:
     url = c.get("url", "")
     if any(k in name.lower() for k in ["nick", "ניק"]):
         print(f"{name} -> {url}")
+

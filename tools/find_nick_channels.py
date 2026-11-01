@@ -13,3 +13,4 @@ for c in channels:
     url = c.get("url", "")
     if "ניק" in name or "nick" in name.lower() or str(num) == "70" or cid == "nickelodeon_il":
         print(f"#{num} [{cid}] {name} -> {url}")
+
