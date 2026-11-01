@@ -2,7 +2,8 @@
 
 usage: python -I tools/make_icons.py
 writes assets/app/icon-{48..1024}.png, icon-maskable-512.png, banner-320x180.png (Android TV), banner-1280x720.png,
-       icon.ico (Windows), and the webOS icon.png (80) / largeIcon.png (130) in the project root.
+       icon.ico (Windows), the webOS icon.png (80) / largeIcon.png (130) / splash.png in the project root,
+       the Android adaptive icon layers and the iOS app icon and splash images.
 """
 import os
 
@@ -63,60 +64,50 @@ def tv_mark(size, pad=0.16, bg=True):
     return im.resize((size, size), Image.LANCZOS)
 
 
-def mesh(S, base=(10, 10, 16)):
-    """Dark tile with soft colour light (Nuvio-like): blue top-left, violet right, pink bottom."""
-    im = Image.new("RGB", (S, S), base)
-    for (cx, cy, r, col, a) in ((0.18, 0.12, 0.75, (59, 130, 246), 0.85), (0.95, 0.45, 0.7, (139, 92, 246), 0.75),
-                                (0.45, 1.05, 0.7, (236, 72, 153), 0.6)):
-        layer = Image.new("RGB", (S, S), col)
-        m = Image.new("L", (S, S), 0)
-        ImageDraw.Draw(m).ellipse([(cx - r / 2) * S, (cy - r / 2) * S, (cx + r / 2) * S, (cy + r / 2) * S], fill=int(255 * a))
-        im = Image.composite(layer, im, m.filter(ImageFilter.GaussianBlur(S * 0.16)))
-    shade = Image.new("L", (S, S), 0)   # darken the middle a little so the mark pops
-    ImageDraw.Draw(shade).ellipse([S * 0.18, S * 0.18, S * 0.82, S * 0.82], fill=110)
-    return Image.composite(Image.new("RGB", (S, S), base), im, shade.filter(ImageFilter.GaussianBlur(S * 0.12)))
+TILE = (11, 59, 219)      # cobalt
+STAR = (255, 255, 255)
+PLAY = (255, 210, 63)     # gold
 
 
-def play_mask(S, scale=1.0):
-    """Rounded play triangle (corners rounded by stroking a smaller triangle with round joints)."""
-    m = Image.new("L", (S, S), 0)
-    d = ImageDraw.Draw(m)
-    r = S * 0.07 * scale
-    cx, cy, h = S * 0.535, S * 0.5, S * 0.40 * scale
-    pts = [(cx - h * 0.5 + r, cy - h * 0.58 + r * 1.2), (cx + h * 0.62 - r * 1.3, cy), (cx - h * 0.5 + r, cy + h * 0.58 - r * 1.2)]
-    d.polygon(pts, fill=255)
-    d.line(pts + [pts[0], pts[1]], fill=255, width=int(r * 2), joint="curve")
+def mesh(S):
+    """The tile colour, also the background layer of the adaptive icons and of the banner."""
+    return Image.new("RGB", (S, S), TILE)
+
+
+def closed_stroke(d, pts, width, fill):
+    """A closed outline with round corners."""
+    d.line(pts + [pts[0], pts[1]], fill=fill, width=width, joint="curve")
     for x, y in pts:
-        d.ellipse([x - r, y - r, x + r, y + r], fill=255)
-    return m
+        d.ellipse([x - width / 2, y - width / 2, x + width / 2, y + width / 2], fill=fill)
 
 
 def app_mark(size, bg=True, mono=False, scale=1.0):
-    """The app icon: dark mesh tile, white rounded play mark with a soft glow, red LIVE dot. mono = white on clear."""
+    """The app icon: cobalt tile, white Star of David outline, gold play triangle in its centre. mono = white on clear."""
     S = size * 4
     im = Image.new("RGBA", (S, S), (0, 0, 0, 0))
-    if bg:
-        mask = Image.new("L", (S, S), 0)
-        ImageDraw.Draw(mask).rounded_rectangle([0, 0, S - 1, S - 1], radius=int(S * 0.23), fill=255)
-        im.paste(mesh(S), (0, 0), mask)
-    pm = play_mask(S, scale)
-    if not mono:
-        glow = Image.new("RGBA", (S, S), (160, 190, 255, 0))
-        glow.putalpha(pm.filter(ImageFilter.GaussianBlur(S * 0.05)).point(lambda v: int(v * 0.55)))
-        im.alpha_composite(glow)
-    fill = gradient(32, 32, (255, 255, 255), (214, 222, 255)).resize((S, S), Image.BICUBIC).convert("RGBA") if not mono \
-        else Image.new("RGBA", (S, S), (255, 255, 255, 255))
-    fill.putalpha(pm)
-    im.alpha_composite(fill)
-    # live dot, top right of the mark
     d = ImageDraw.Draw(im)
-    rr = S * 0.062 * scale
-    x, y = S * (0.5 + 0.215 * scale), S * (0.5 - 0.215 * scale)
-    if not mono:
-        ring = S * 0.022
-        d.ellipse([x - rr - ring, y - rr - ring, x + rr + ring, y + rr + ring], fill=(10, 10, 16, 255) if bg else (0, 0, 0, 0))
-    d.ellipse([x - rr, y - rr, x + rr, y + rr], fill=(255, 255, 255, 255) if mono else (239, 68, 68, 255))
+    if bg:
+        d.rounded_rectangle([0, 0, S - 1, S - 1], radius=int(S * 0.2227), fill=TILE + (255,))
+
+    def at(x, y):   # drawn on a 512 grid, scaled around the centre
+        return (S * (0.5 + (x - 256) / 512 * scale), S * (0.5 + (y - 256) / 512 * scale))
+
+    star = int(S * 34 / 512 * scale)
+    closed_stroke(d, [at(256, 76), at(412, 346), at(100, 346)], star, STAR + (255,))
+    closed_stroke(d, [at(256, 436), at(100, 166), at(412, 166)], star, STAR + (255,))
+    play = [at(222, 204), at(318, 256), at(222, 308)]
+    colour = (STAR if mono else PLAY) + (255,)
+    d.polygon(play, fill=colour)
+    closed_stroke(d, play, int(S * 14 / 512 * scale), colour)
     return im.resize((size, size), Image.LANCZOS)
+
+
+def splash(w, h):
+    """The icon in the middle of the dark screen the apps open on."""
+    im = Image.new("RGBA", (w, h), (13, 13, 13, 255))
+    icon = app_mark(min(w, h) // 4)
+    im.alpha_composite(icon, ((w - icon.size[0]) // 2, (h - icon.size[1]) // 2))
+    return im
 
 
 def banner(w, h):
@@ -154,6 +145,14 @@ def main():
     app_mark(256).save(os.path.join(OUT, "icon.ico"), sizes=[(16, 16), (24, 24), (32, 32), (48, 48), (64, 64), (128, 128), (256, 256)])
     app_mark(80).save(os.path.join(ROOT, "icon.png"))
     app_mark(130).save(os.path.join(ROOT, "largeIcon.png"))
+    splash(1920, 1080).save(os.path.join(ROOT, "splash.png"))
+    # iOS: no transparency allowed, the system rounds the corners itself
+    assets = os.path.join(ROOT, "ios", "App", "App", "Assets.xcassets")
+    ios = mesh(1024).convert("RGBA")
+    ios.alpha_composite(app_mark(1024, bg=False))
+    ios.convert("RGB").save(os.path.join(assets, "AppIcon.appiconset", "AppIcon-512@2x.png"))
+    for name in ("splash-2732x2732.png", "splash-2732x2732-1.png", "splash-2732x2732-2.png"):
+        splash(2732, 2732).convert("RGB").save(os.path.join(assets, "Splash.imageset", name))
     # Android 8+ adaptive icon (background + foreground layers, 108dp, mark inside the 66dp safe zone) and the
     # Android 13+ themed icon (monochrome layer, tinted by the system with the wallpaper colours – Material You)
     res = os.path.join(ROOT, "platforms", "android", "res")
@@ -161,8 +160,8 @@ def main():
         d = os.path.join(res, "mipmap-" + dpi)
         os.makedirs(d, exist_ok=True)
         mesh(px).save(os.path.join(d, "ic_launcher_background.png"))
-        app_mark(px, bg=False, scale=0.62).save(os.path.join(d, "ic_launcher_foreground.png"))
-        app_mark(px, bg=False, mono=True, scale=0.62).save(os.path.join(d, "ic_launcher_monochrome.png"))
+        app_mark(px, bg=False, scale=0.8).save(os.path.join(d, "ic_launcher_foreground.png"))
+        app_mark(px, bg=False, mono=True, scale=0.8).save(os.path.join(d, "ic_launcher_monochrome.png"))
     any_dpi = os.path.join(res, "mipmap-anydpi-v26")
     os.makedirs(any_dpi, exist_ok=True)
     with open(os.path.join(any_dpi, "ic_launcher.xml"), "w", encoding="utf-8") as f:
