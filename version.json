@@ -1,51 +1,51 @@
 {
-  "version": "4.8.42",
-  "code": 202611011803,
-  "app": 622,
+  "version": "4.8.43",
+  "code": 202611011915,
+  "app": 623,
   "shell": 3,
   "date": "2026-11-01",
   "notes": [
-    "דפדפן בטלפון: הממשק נראה עכשיו כמו אפליקציית האנדרואיד: גלגל שיניים ואווטאר למעלה, צ'יפים לקטגוריות, מתג \"רק ישראלי\" וסרגל תחתון זהה.",
-    "מחשב, טלוויזיה ואתר: סדרות ה-VOD חזרו, עם 158 סדרות. טאב ה-VOD עובד שוב.",
-    "כרטיסי VOD לא מציגים יותר \"undefined\" וסדרות לא מסומנות LIVE.",
-    "פס גלילה עדין במסכים הכהים, ותמונות מעודכנות במסמכי הפרויקט."
+    "מצב רשת איטית (Ultra Low-Bandwidth / 5Mbps ומטה): צפייה חלקה ורציפה ללא תקיעות גם בקליטה חלשה מאוד (הגבלת ביטרייט דינמית ל-1.4Mbps ו-480p, והפחתת זמן טעינה).",
+    "מצב האזנה בלבד וחיסכון בסוללה (Audio-Only Mode): כיבוי תצוגת וידאו ומסך שחור OLED עם אנימציית גלי קול ולוגו הערוץ לחיסכון של 85% בסוללה ובחבילת הגלישה.",
+    "דילוג על פתיח (Skip Intro) ומעבר אוטומטי לפרק הבא ב-VOD בלחיצה אחת.",
+    "הרחבת קטלוג ה-VOD ל-164 כותרים: הוספת סרטי קאלט ישראליים מיתולוגיים (מבצע סבתא, גבעת חלפון אינה עונה, חגיגה בסנוקר, אלכס חולה אהבה) וסדרות אהובות (השוטרים, שבאבניקים, ילדי בית העץ ועוד)."
   ],
   "native": {
     "android": {
-      "version": "4.8.42",
-      "app": 622,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.42/IsraelTVPlus-android.apk"
+      "version": "4.8.43",
+      "app": 623,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.43/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "4.8.42",
-      "app": 622,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.42/IsraelTVPlus-windows-setup.exe"
+      "version": "4.8.43",
+      "app": 623,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.43/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "4.8.42",
-      "app": 622,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.42/com.israeltv.plus_all.ipk",
+      "version": "4.8.43",
+      "app": 623,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.43/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "4.8.42",
-      "app": 622,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.42/IsraelTVPlus-tizen-project.zip"
+      "version": "4.8.43",
+      "app": 623,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.43/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "4.8.42",
-      "app": 622,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.42/IsraelTVPlus-macos-arm64.zip"
+      "version": "4.8.43",
+      "app": 623,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.43/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "4.8.42",
-      "app": 622,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.42/IsraelTVPlus-linux-x64.zip"
+      "version": "4.8.43",
+      "app": 623,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.43/IsraelTVPlus-linux-x64.zip"
     },
     "wear": {
-      "version": "4.8.42",
-      "app": 1000522,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.42/IsraelTVPlus-wearos.apk"
+      "version": "4.8.43",
+      "app": 1000523,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.43/IsraelTVPlus-wearos.apk"
     }
   }
 }

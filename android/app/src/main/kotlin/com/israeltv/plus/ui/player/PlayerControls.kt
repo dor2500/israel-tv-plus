@@ -234,10 +234,14 @@ internal fun PlayerBottomBar(
     durationMs: Long = 0L,
     isCatchupActive: Boolean = false,
     catchupTitle: String? = null,
+    isLowBandwidth: Boolean = false,
+    isAudioOnly: Boolean = false,
     onSeek: (Long) -> Unit = {},
     onCycleFit: () -> Unit,
     onCatchup: () -> Unit = {},
     onReturnLive: () -> Unit = {},
+    onToggleLowBandwidth: () -> Unit = {},
+    onToggleAudioOnly: () -> Unit = {},
     onOptions: () -> Unit,
 ) {
     val d = LocalDimens.current
@@ -353,6 +357,24 @@ internal fun PlayerBottomBar(
                     }
                 } else if (!ch.isRadio && !isVod) {
                     MorphAction(Icons.Rounded.History, "קאץ' אפ", onClick = onCatchup)
+                    MorphAction(Icons.Rounded.Audiotrack, "האזנה", onClick = onToggleAudioOnly)
+                }
+                if (isLowBandwidth) {
+                    Box(
+                        Modifier
+                            .clip(RoundedCornerShape(50))
+                            .background(Color(0xFF0284C7).copy(alpha = 0.25f))
+                            .border(1.dp, Color(0xFF38BDF8), RoundedCornerShape(50))
+                            .clickable(onClick = onToggleLowBandwidth)
+                            .padding(horizontal = 8.dp, vertical = 4.dp),
+                        contentAlignment = Alignment.Center,
+                    ) {
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Icon(Icons.Rounded.Speed, null, tint = Color(0xFF38BDF8), modifier = Modifier.size(12.dp))
+                            Spacer(Modifier.width(4.dp))
+                            Text("5Mbps", color = Color(0xFF38BDF8), fontSize = 11.sp, fontWeight = FontWeight.Bold)
+                        }
+                    }
                 }
                 MorphAction(fit.icon, fit.label, onClick = onCycleFit)
                 MorphAction(Icons.Rounded.MoreHoriz, "אפשרויות", onClick = onOptions)
@@ -398,6 +420,10 @@ internal fun PlayerOptionsDrawer(
     onPip: () -> Unit,
     onMultiView: () -> Unit,
     onCatchup: () -> Unit = {},
+    isLowBandwidth: Boolean = false,
+    isAudioOnly: Boolean = false,
+    onToggleLowBandwidth: () -> Unit = {},
+    onToggleAudioOnly: () -> Unit = {},
     onChannels: () -> Unit,
     onRotate: () -> Unit,
     onDismiss: () -> Unit,
@@ -441,6 +467,8 @@ internal fun PlayerOptionsDrawer(
                         DrawerItem(Icons.Rounded.Bedtime, "טיימר שינה", if (sleepTimerMinutes > 0) "$sleepTimerMinutes דק'" else "כבוי", onClick = onSleepTimer)
                         DrawerItem(Icons.Rounded.PictureInPictureAlt, "חלון צף", onClick = onPip)
                         DrawerItem(Icons.Rounded.HighQuality, "איכות וידאו", qualityLabel, onQuality)
+                        DrawerItem(Icons.Rounded.Speed, "מצב רשת איטית (5Mbps ומטה)", if (isLowBandwidth) "פעיל (480p)" else "איכות רגילה", onClick = onToggleLowBandwidth)
+                        DrawerItem(Icons.Rounded.Audiotrack, "מצב האזנה (חיסכון בסוללה)", if (isAudioOnly) "פעיל" else "כבוי", onClick = onToggleAudioOnly)
                         DrawerItem(Icons.Rounded.History, "קאץ' אפ (שידור חוזר)", "תוכניות קודמות", onClick = onCatchup)
                         DrawerItem(Icons.Rounded.GridView, "פיצול מסך", onClick = onMultiView)
                         if (serverCount > 1) {

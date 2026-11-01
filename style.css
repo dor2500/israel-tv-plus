@@ -2459,3 +2459,24 @@ body:not(.light) { scrollbar-color: rgba(255, 255, 255, .22) transparent; scroll
 body:not(.light) ::-webkit-scrollbar { width: .7rem; height: .7rem; }
 body:not(.light) ::-webkit-scrollbar-track { background: transparent; }
 body:not(.light) ::-webkit-scrollbar-thumb { border-radius: .4rem; background: rgba(255, 255, 255, .22); }
+
+/* Audio-Only / Battery Saver mode */
+#player.audio-only-view video {
+  visibility: hidden !important;
+}
+#player.audio-only-view::before {
+  content: '🎧 מצב האזנה פעיל (חיסכון בסוללה ודאטה) · הקש בכל מקום לחזרה לוידאו';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #10b981;
+  background: rgba(0, 0, 0, 0.9);
+  border: 1px solid #10b981;
+  border-radius: 50px;
+  padding: 14px 28px;
+  font-size: 1.05rem;
+  font-weight: bold;
+  z-index: 50;
+  pointer-events: none;
+}

@@ -3051,6 +3051,15 @@
 
   function applyQualityLevel(hls, levels) {
     if (!hls || !levels || !levels.length) return;
+    if (S.lowBandwidth) {
+      var low = pickLevelByHeight(levels, 480);
+      if (low === -1) low = 0;
+      hls.currentLevel = low;
+      hls.loadLevel = low;
+      hls.autoLevelCapping = low;
+      applyVideoPostProcessing();
+      return;
+    }
     if (S.quality === 'upscale4k' || S.quality === 'max') {
       var best = 0, bestSc = 0;
       for (var i = 0; i < levels.length; i++) {
@@ -3995,6 +4004,7 @@ function showOsd() {
     if (!ch) return;
     var items = [];
     if (ch.isVod) {
+      items.push({ ico: '⏩', label: 'דלג על פתיח (Skip Intro)', act: function () { el.video.currentTime = 85; toast('⏩ דולג על הפתיח'); } });
       if (ch.series) {
         items.push({ ico: '📋', label: 'פרקים בסדרה (' + ch.series.title + ')', act: function () { openVodModal(ch.series); } });
         items.push({ ico: '💾', label: 'הקלט פרק זה ל-Google Drive', act: function () {
@@ -4017,6 +4027,28 @@ function showOsd() {
     }
     if (CATCHUP[ch.id] || CATCHUP[(ch.id || '').toLowerCase()]) {
       items.push({ ico: '⏮️', label: 'קאץ\' אפ (שידור חוזר)', act: function () { openCatchupModal(ch); } });
+    }
+    items.push({
+      ico: '📶',
+      label: 'מצב רשת איטית (5Mbps ומטה)',
+      stay: true,
+      val: function () { return S.lowBandwidth ? 'פועל (480p)' : 'כבוי (איכות מלאה)'; },
+      act: function () {
+        setSetting('lowBandwidth', !S.lowBandwidth);
+        if (state.hls && state.hls.levels) applyQualityLevel(state.hls, state.hls.levels);
+        toast(S.lowBandwidth ? '📶 מצב רשת איטית מופעל · מותאם לקליטה חלשה עד 5Mbps' : '📶 מצב איכות רגילה מופעל');
+      }
+    });
+    if (!state.isRadio) {
+      items.push({
+        ico: '🎧',
+        label: 'מצב האזנה בלבד (חיסכון בסוללה)',
+        act: function () {
+          toast('🎧 מצב האזנה מופעל · הקש על הנגן לחזרה לוידאו');
+          var pl = $('player');
+          if (pl) pl.classList.toggle('audio-only-view');
+        }
+      });
     }
     if (Guide) items.push({ ico: '▦', label: 'לוח שידורים', act: Guide.open });
     if (state.candidates && state.candidates.length > 1) {
