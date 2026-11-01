@@ -169,7 +169,10 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp:5.5.1")
     implementation("androidx.mediarouter:mediarouter:1.7.0")
     implementation("com.google.android.gms:play-services-cast-framework:21.5.0")
-    implementation("com.google.android.gms:play-services-auth:21.4.0")   // system Google account picker
+    implementation("com.google.android.gms:play-services-auth:21.4.0")   // Drive access for the signed-in account
+    implementation("androidx.credentials:credentials:1.5.0")   // the system "Choose an account" sheet
+    implementation("androidx.credentials:credentials-play-services-auth:1.5.0")
+    implementation("com.google.android.libraries.identity.googleid:googleid:1.1.1")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.12.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.11.0")
 }

@@ -11,6 +11,11 @@ import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.core.content.edit
+import androidx.credentials.ClearCredentialStateRequest
+import androidx.credentials.CredentialManager
+import androidx.credentials.CustomCredential
+import androidx.credentials.GetCredentialRequest
+import androidx.credentials.exceptions.GetCredentialCancellationException
 import com.google.android.gms.auth.api.identity.AuthorizationRequest
 import com.google.android.gms.auth.api.identity.AuthorizationResult
 import com.google.android.gms.auth.api.identity.Identity
@@ -18,6 +23,8 @@ import com.google.android.gms.auth.api.identity.RevokeAccessRequest
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.common.api.CommonStatusCodes
 import com.google.android.gms.common.api.Scope
+import com.google.android.libraries.identity.googleid.GetGoogleIdOption
+import com.google.android.libraries.identity.googleid.GoogleIdTokenCredential
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -38,6 +45,8 @@ import okhttp3.Request
 import okhttp3.RequestBody.Companion.toRequestBody
 import java.net.URLEncoder
 
+// The Web client of the same Google Cloud project: Google signs the sheet's answer for it (docs/GOOGLE_SIGNIN.md)
+private const val WEB_CLIENT_ID = "233862122434-psa4t9s1vehqgss7ocqm2bitbq546t4n.apps.googleusercontent.com"
 private const val FOLDER_NAME = "ישראל TV+ - הקלטות"
 private const val BACKUP_NAME = "israel_tv_backup.json"
 private const val DRIVE = "https://www.googleapis.com/drive/v3/files"
@@ -53,9 +62,9 @@ private val SCOPES = listOf(
 )
 
 /**
- * The Google account of the phone app. The account picker is the system's own (Google Play services), with no browser
- * and no web page. Google recognises the app by package name + signing certificate, so no client id is stored here
- * (docs/GOOGLE_SIGNIN.md). Play services keeps and renews the token.
+ * The Google account of the phone app. The person picks an account in the system's "Choose an account" sheet
+ * (Credential Manager), with no browser and no web page. Drive access is then requested for that account from Play
+ * services, which recognises the app by package name + signing certificate and keeps and renews the token.
  *
  * Sync shares israel_tv_backup.json with the TV and web apps: favourites and recents of the active profile use their
  * fields, and the phone profiles live in "phoneProfiles". Other fields of the file are left as they are.
@@ -80,13 +89,38 @@ class GoogleAccount(context: Context, private val prefs: AppPrefs, private val h
 
     val signedIn: Boolean get() = email.isNotEmpty()
 
-    private fun request() = AuthorizationRequest.builder().setRequestedScopes(SCOPES).build()
+    private fun request(account: String = email) = AuthorizationRequest.builder().setRequestedScopes(SCOPES).apply {
+        if (account.isNotEmpty()) setAccount(Account(account, "com.google"))
+    }.build()
 
-    /** Starts sign-in; [launch] shows the system account picker when Play services needs the person to choose. */
+    /** Starts sign-in with the account sheet; [launch] shows Google's consent screen the first time Drive access is asked. */
     fun signIn(activity: Activity, launch: (IntentSenderRequest) -> Unit) {
         problem = ""
         busy = true
-        Identity.getAuthorizationClient(activity).authorize(request())
+        scope.launch {
+            val option = GetGoogleIdOption.Builder()
+                .setServerClientId(WEB_CLIENT_ID)
+                .setFilterByAuthorizedAccounts(false)
+                .setAutoSelectEnabled(false)
+                .build()
+            val account = try {
+                val credential = CredentialManager.create(activity)
+                    .getCredential(activity, GetCredentialRequest(listOf(option))).credential
+                if (credential is CustomCredential && credential.type == GoogleIdTokenCredential.TYPE_GOOGLE_ID_TOKEN_CREDENTIAL) {
+                    GoogleIdTokenCredential.createFrom(credential.data).id
+                } else ""
+            } catch (_: GetCredentialCancellationException) {
+                busy = false
+                return@launch
+            } catch (_: Exception) {
+                "" // no account on the device or no sheet on this one: Play services' own picker still works
+            }
+            authorize(activity, account, launch)
+        }
+    }
+
+    private fun authorize(activity: Activity, account: String, launch: (IntentSenderRequest) -> Unit) {
+        Identity.getAuthorizationClient(activity).authorize(request(account))
             .addOnSuccessListener { r ->
                 val pending = r.pendingIntent
                 if (r.hasResolution() && pending != null) launch(IntentSenderRequest.Builder(pending.intentSender).build())
@@ -121,6 +155,7 @@ class GoogleAccount(context: Context, private val prefs: AppPrefs, private val h
         val account = Account(email, "com.google")
         Identity.getAuthorizationClient(activity)
             .revokeAccess(RevokeAccessRequest.builder().setAccount(account).setScopes(SCOPES).build())
+        scope.launch { runCatching { CredentialManager.create(activity).clearCredentialState(ClearCredentialStateRequest()) } }
         email = ""
         name = ""
         picture = ""
