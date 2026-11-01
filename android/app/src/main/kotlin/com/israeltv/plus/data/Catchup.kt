@@ -68,6 +68,15 @@ object CatchupDvr {
         // Makan 33 (12h Redge DVR window)
         "makan33" to "https://r.il.cdn-redge.media/livehls/oil/kancdn-live/live/makan/live.livx/playlist.m3u8?dvr=43200000",
         "makan_33" to "https://r.il.cdn-redge.media/livehls/oil/kancdn-live/live/makan/live.livx/playlist.m3u8?dvr=43200000",
+        // the same broadcasts under their other channel entries
+        "i24_english_world_hd" to "https://i24newsenglish-cdn.encoders.immergo.tv/master.m3u8",
+        "i24news_fr_il" to "https://i24newsfrench-cdn.encoders.immergo.tv/master.m3u8",
+        "i24news_hebrew_hd" to "https://i24newshebrew-cdn.encoders.immergo.tv/master.m3u8",
+        "kan11_subs" to "https://r.il.cdn-redge.media/livehls/oil/kancdn-live/live/kan11/live.livx/playlist.m3u8?dvr=43200000",
+        "kan11_subs_il" to "https://r.il.cdn-redge.media/livehls/oil/kancdn-live/live/kan11/live.livx/playlist.m3u8?dvr=43200000",
+        "now14_subs_il" to "https://r.il.cdn-redge.media/livehls/oil/ch14/live/ch14/live.livx/playlist.m3u8?dvr=43200000",
+        "reshet13_access" to "https://d198ztbnlup2iq.cloudfront.net/out/v1/2d9050c90fb94df8b78d1d98306a1a65/index.m3u8",
+        "reshet13_subs_il" to "https://d198ztbnlup2iq.cloudfront.net/out/v1/2d9050c90fb94df8b78d1d98306a1a65/index.m3u8",
         // i24NEWS
         "i24news_he" to "https://i24newshebrew-cdn.encoders.immergo.tv/master.m3u8",
         "i24news_en" to "https://i24newsenglish-cdn.encoders.immergo.tv/master.m3u8",
@@ -135,7 +144,9 @@ object CatchupRepository {
         val root = getEpgObject(context) ?: return@withContext emptyList()
         val channelsObj = root.optJSONObject("channels") ?: return@withContext emptyList()
 
+        val sameGuide = mapOf("ch14_now_fast" to "now14", "i24news_english_hd" to "i24news_en", "i24news_fr_il" to "i24news_fr", "i24news_hebrew_hd" to "i24news_he", "i24_english_world_hd" to "i24news_en", "kan11_subs" to "kan11", "kan11_subs_il" to "kan11", "now14_subs_il" to "now14", "reshet13_access" to "reshet13", "reshet13_subs_il" to "reshet13")
         val candidates = listOf(
+            sameGuide[channel.id] ?: channel.id,
             channel.id,
             channel.id.lowercase(),
             channel.id.replace("_hd", ""),
@@ -184,7 +195,7 @@ object CatchupRepository {
     }
 
     fun hasCatchup(channel: Channel): Boolean {
-        return CatchupDvr.dvrUrlFor(channel) != null || !channel.isRadio
+        return CatchupDvr.dvrUrlFor(channel) != null
     }
 }
 

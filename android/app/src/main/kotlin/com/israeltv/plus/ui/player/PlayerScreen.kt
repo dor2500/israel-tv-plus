@@ -174,6 +174,7 @@ import com.israeltv.plus.data.CastProtocol
 import com.israeltv.plus.data.Channel
 import com.israeltv.plus.data.CatchupDvr
 import com.israeltv.plus.data.CatchupProgram
+import com.israeltv.plus.data.CatchupRepository
 import com.israeltv.plus.data.USER_AGENT
 import com.israeltv.plus.data.playableUrl
 import com.israeltv.plus.ui.components.BoldIcon
@@ -201,8 +202,8 @@ private fun buildPlayer(context: Context, handleAudioFocus: Boolean = true): Exo
     val http = DefaultHttpDataSource.Factory()
         .setUserAgent(USER_AGENT)
         .setAllowCrossProtocolRedirects(true)
-        .setConnectTimeoutMs(3_500)
-        .setReadTimeoutMs(4_500)
+        .setConnectTimeoutMs(6_000)
+        .setReadTimeoutMs(10_000)
         .setDefaultRequestProperties(mapOf("Referer" to "https://stmify.com/"))
     val loadControl = DefaultLoadControl.Builder()
         .setBufferDurationsMs(
@@ -745,7 +746,7 @@ fun PlayerScreen(
                 },
                 onCatchup = {
                     touchTick++
-                    sheet = "catchup"
+                    if (CatchupRepository.hasCatchup(current)) sheet = "catchup" else statusToast = "לערוץ הזה אין שידור חוזר"
                 },
                 onReturnLive = {
                     touchTick++
@@ -791,7 +792,7 @@ fun PlayerScreen(
                 multiViewActive = true
             },
             onCatchup = {
-                sheet = "catchup"
+                if (CatchupRepository.hasCatchup(current)) sheet = "catchup" else statusToast = "לערוץ הזה אין שידור חוזר"
             },
             onChannels = { sheet = "list" },
             onRotate = {
@@ -843,7 +844,12 @@ fun PlayerScreen(
                     player.prepare()
                     player.playWhenReady = true
                     scope.launch {
-                        kotlinx.coroutines.delay(1000)
+                        // the DVR playlist is long: its length is known only once it has loaded
+                        var waited = 0
+                        while (player.duration <= 0L && waited < 150) {
+                            kotlinx.coroutines.delay(100)
+                            waited++
+                        }
                         val dur = player.duration
                         if (dur > 0L) {
                             val targetPos = (dur - offsetFromLiveMs).coerceAtLeast(0L)
@@ -879,7 +885,11 @@ fun PlayerScreen(
                     player.prepare()
                     player.playWhenReady = true
                     scope.launch {
-                        kotlinx.coroutines.delay(1000)
+                        var waited = 0
+                        while (player.duration <= 0L && waited < 150) {
+                            kotlinx.coroutines.delay(100)
+                            waited++
+                        }
                         val dur = player.duration
                         if (dur > 0L) {
                             val targetPos = (dur - rewindMs).coerceAtLeast(0L)

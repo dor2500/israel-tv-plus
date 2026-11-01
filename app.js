@@ -3097,12 +3097,14 @@
     i24news_en: { hours: 3, url: 'https://i24newsenglish-cdn.encoders.immergo.tv/master.m3u8' },
     i24news_english_hd: { hours: 3, url: 'https://i24newsenglish-cdn.encoders.immergo.tv/master.m3u8' },
     i24_english_world_hd: { hours: 3, url: 'https://i24newsenglish-cdn.encoders.immergo.tv/master.m3u8' },
-    i24news_ar: { hours: 3, url: 'https://i24newsarabic-cdn.encoders.immergo.tv/master.m3u8' },
-    i24news_arabic_hd: { hours: 3, url: 'https://i24newsarabic-cdn.encoders.immergo.tv/master.m3u8' },
+    i24news_ar: { hours: 0.5, url: 'https://i24newsarabic-cdn.encoders.immergo.tv/master.m3u8' },
+    i24news_arabic_hd: { hours: 0.5, url: 'https://i24newsarabic-cdn.encoders.immergo.tv/master.m3u8' },
     i24news_fr: { hours: 3, url: 'https://i24newsfrench-cdn.encoders.immergo.tv/master.m3u8' },
     i24news_fr_il: { hours: 3, url: 'https://i24newsfrench-cdn.encoders.immergo.tv/master.m3u8' }
   };
 
+  // channels that repeat another channel's programme guide
+  var CATCHUP_EPG = { ch14_now_fast: 'now14', i24news_english_hd: 'i24news_en', i24news_fr_il: 'i24news_fr', i24news_hebrew_hd: 'i24news_he', i24_english_world_hd: 'i24news_en', kan11_subs: 'kan11', kan11_subs_il: 'kan11', now14_subs_il: 'now14', reshet13_access: 'reshet13', reshet13_subs_il: 'reshet13' };
   function openCatchupModal(ch) {
     if (!ch) ch = state.playing;
     if (!ch) return;
@@ -3183,7 +3185,7 @@
 
     var epgChannels = (window.ITV_EPG && window.ITV_EPG.channels) || null;
     if (epgChannels) {
-      var k = ch.id;
+      var k = CATCHUP_EPG[ch.id] || ch.id;
       var arr = epgChannels[k] || epgChannels[k.toLowerCase()] || epgChannels[k.replace('_fast', '')] || epgChannels[k.replace('ch14', 'now14')] || epgChannels[k.replace('kan_hinuchit_mc', 'kan_hinuchit')];
       renderModal(arr);
     } else {
@@ -3191,7 +3193,7 @@
         .then(function (r) { return r.json(); })
         .then(function (d) {
           window.ITV_EPG = d;
-          var k = ch.id;
+          var k = CATCHUP_EPG[ch.id] || ch.id;
           var arr = d.channels ? (d.channels[k] || d.channels[k.toLowerCase()] || d.channels[k.replace('_fast', '')] || d.channels[k.replace('ch14', 'now14')] || d.channels[k.replace('kan_hinuchit_mc', 'kan_hinuchit')]) : null;
           renderModal(arr);
         })
@@ -3310,27 +3312,30 @@ function loadCandidate(ch, rawUrl) {
       var isStable = (S.latency === 'stable' && (!isSport || isOttrast));
       var is4K = S.quality === 'upscale4k';
       var isVod = !!(ch.isVod || ch.categoryEn === 'vod');
+      // catch-up plays far behind the live edge on purpose: nothing may pull it back there
+      var inCatchup = !!(state.catchup && state.catchup.ch === ch);
       var hls = new Hls({
         enableWorker: true,
-        lowLatencyMode: !isVod && !isOttrast,
+        lowLatencyMode: !isVod && !isOttrast && !inCatchup,
         startPosition: (isSport && !isOttrast) ? -1 : undefined,
         startFragPrefetch: true,
         backBufferLength: fastMode() ? 8 : (isSport ? (isOttrast ? 15 : 4) : (isVod ? 30 : 15)),
         // counted in segments, so the distance from the live edge fits every stream: a fixed 2 s on 6 s segments
         // leaves nothing to play and freezes and jumps every few seconds
         liveSyncDurationCount: (isSport && !isOttrast) ? 2 : 3,
-        liveMaxLatencyDurationCount: (isSport && !isOttrast) ? 5 : 8,
+        liveMaxLatencyDurationCount: inCatchup ? Infinity : ((isSport && !isOttrast) ? 5 : 8),
         liveDurationInfinity: !isVod,
-        maxLiveSyncPlaybackRate: 1.05,
+        maxLiveSyncPlaybackRate: inCatchup ? 1 : 1.05,
         maxBufferLength: isSport ? (isOttrast ? 25 : 15) : (isVod ? 60 : (is4K ? 24 : 20)),
         maxMaxBufferLength: isSport ? (isOttrast ? 45 : 25) : (isVod ? 120 : (is4K ? 45 : 30)),
         maxBufferSize: (isSport && !isOttrast) ? 8 * 1000 * 1000 : (isVod ? 60 * 1000 * 1000 : 30 * 1000 * 1000),
         manifestLoadingMaxRetry: 6,
         levelLoadingMaxRetry: 6,
         fragLoadingMaxRetry: 6,
-        manifestLoadingTimeOut: 3500,
-        fragLoadingTimeOut: 4500,
-        levelLoadingTimeOut: 3500,
+        // a whole segment must fit: some streams have 10 s segments on slow servers, and cutting them off restarts them
+        manifestLoadingTimeOut: 10000,
+        fragLoadingTimeOut: 20000,
+        levelLoadingTimeOut: 10000,
         fragLoadingRetryDelay: 300,
         capLevelToPlayerSize: S.quality === 'auto'
       });
@@ -3973,7 +3978,7 @@ function showOsd() {
       items.push({ ico: '🔴', label: 'חזרה לשידור חי', act: function () { if (state.playing) loadStream(state.playing); } });
     }
     if (CATCHUP[ch.id] || CATCHUP[(ch.id || '').toLowerCase()]) {
-      items.push({ ico: '⏮️', label: 'קאץ\' אפ (שידור חוזר 24 שעות)', act: function () { openCatchupModal(ch); } });
+      items.push({ ico: '⏮️', label: 'קאץ\' אפ (שידור חוזר)', act: function () { openCatchupModal(ch); } });
     }
     if (Guide) items.push({ ico: '▦', label: 'לוח שידורים', act: Guide.open });
     if (state.candidates && state.candidates.length > 1) {
