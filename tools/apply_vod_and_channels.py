@@ -114,3 +114,4 @@ new_js_content = base_js_updated + "\n\nwindow.VOD_DATA = " + vod_json_str + ";\
 with open(ch_js_path, "w", encoding="utf-8") as f:
     f.write(new_js_content)
 print(f"channels.js updated successfully with all channels and full VOD_DATA!")
+

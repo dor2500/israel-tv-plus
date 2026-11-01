@@ -1,54 +1,51 @@
 {
-  "version": "4.8.15",
-  "code": 202611010045,
-  "app": 595,
+  "version": "4.8.16",
+  "code": 202611010536,
+  "app": 596,
   "shell": 3,
-  "date": "2026-10-31",
+  "date": "2026-11-01",
   "notes": [
-    "הוספת ערוץ החיים הטובים HD (ערוץ 409): שידור חי ישיר ואיכותי מבית ענני תקשורת עם הלוגו והמיתוג הרשמי.",
-    "הוספת ערוץ האוכל הישראלי HD מבית החיים הטובים וענני תקשורת (ערוץ 173 ו-410) באיכות Full HD 1080p עם 3 שרתי גיבוי.",
-    "תיקון באג הסרגל העליון שלא הופיע והציג רק קו (תיקון תאימות CSS ותיקון קריסת אתחול בפרופילים).",
-    "ביטול הדילאי בשידורי ספורט (קפיצה מיידית ל-Live Edge ללא השהייה של 60 שניות).",
-    "שרת DLNA מעודכן עם תמיכה מלאה ב-SmartShare של LG TV ו-410 ערוצים.",
-    "תיקון עדכונים ב-LG TV: העלאת קוד הבנייה ל-202611010045 כך שעדכון חי מתקבל ללא שגיאות וללא צורך בהורדה ידנית.",
-    "תיקון ניקלודיאון ישראל (ערוץ 70) לעברית מלאה ועדכון גרסת האנדרואיד (code 595)."
+    "התחברות מלאה ומאובטחת עם חשבון Google בכל הפלטפורמות (GIS Web ו-Device Code Flow לטלוויזיות חכמות עם QR Code).",
+    "הקלטת סדרות VOD ושידורים חיים ישירות ל-Google Drive בתיקייה ייעודית ('ישראל TV+ - הקלטות').",
+    "תיקון באג קו הקפסולה העליון הריק במסכי טלוויזיה (מניעת קו 8px בודד בזמן טעינה).",
+    "סנכרון שידורי ספורט ישירים ב-0 דילאי (Live Edge סופר-מהיר ללא השהיית דקה)."
   ],
   "native": {
     "android": {
-      "version": "4.8.15",
-      "app": 595,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.15/IsraelTVPlus-android.apk"
+      "version": "4.8.16",
+      "app": 596,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.16/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "4.8.15",
-      "app": 595,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.15/IsraelTVPlus-windows-setup.exe"
+      "version": "4.8.16",
+      "app": 596,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.16/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "4.8.15",
-      "app": 595,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.15/com.israeltv.plus_all.ipk",
+      "version": "4.8.16",
+      "app": 596,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.16/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "4.8.15",
-      "app": 595,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.15/IsraelTVPlus-tizen-project.zip"
+      "version": "4.8.16",
+      "app": 596,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.16/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "4.8.15",
-      "app": 595,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.15/IsraelTVPlus-macos-arm64.zip"
+      "version": "4.8.16",
+      "app": 596,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.16/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "4.8.15",
-      "app": 595,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.15/IsraelTVPlus-linux-x64.zip"
+      "version": "4.8.16",
+      "app": 596,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.16/IsraelTVPlus-linux-x64.zip"
     },
     "wear": {
-      "version": "4.8.15",
-      "app": 1000495,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.15/IsraelTVPlus-wearos.apk"
+      "version": "4.8.16",
+      "app": 596,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.16/IsraelTVPlus-wearos.apk"
     }
   }
 }

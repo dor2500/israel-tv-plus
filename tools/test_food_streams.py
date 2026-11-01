@@ -12,3 +12,4 @@ for name, u in streams.items():
     res = subprocess.run(cmd, capture_output=True, text=True, timeout=10)
     print(f"=== {name} ===")
     print(res.stdout.strip())
+

@@ -287,9 +287,45 @@ private fun NuvioSettingsTab(
                 modifier = Modifier.padding(horizontal = d.gutter),
             )
         }
+        item(key = "settings_gdrive") {
+            androidx.compose.material3.Surface(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = d.gutter),
+                shape = androidx.compose.foundation.shape.RoundedCornerShape(16.dp),
+                color = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f),
+                border = androidx.compose.foundation.BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.4f)),
+            ) {
+                Column(
+                    modifier = Modifier.padding(16.dp),
+                    verticalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(8.dp)
+                    ) {
+                        Text(
+                            text = "☁️",
+                            style = MaterialTheme.typography.titleLarge
+                        )
+                        Text(
+                            text = "חשבון Google & הקלטות ב-Google Drive",
+                            style = MaterialTheme.typography.titleMedium,
+                            color = MaterialTheme.colorScheme.onSurface,
+                            fontWeight = androidx.compose.ui.text.font.FontWeight.Bold
+                        )
+                    }
+                    Text(
+                        text = "חברו את חשבון ה-Google שלכם להקלטת פרקי סדרות VOD ושידורים חיים ישירות לתיקיית 'ישראל TV+ - הקלטות' בענן.",
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
+            }
+        }
         item(key = "settings_info") {
             Text(
-                text = "ישראל TV+ • ממשק Nuvio",
+                text = "ישראל TV+ • ממשק Nuvio • גרסה 4.8.16",
                 style = MaterialTheme.typography.bodyLarge,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.padding(horizontal = d.gutter),

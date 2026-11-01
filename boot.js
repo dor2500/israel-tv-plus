@@ -53,7 +53,7 @@
   css.href = base + 'style.css' + q;
   document.head.appendChild(css);
 
-  var files = ['ui.js', 'channels.js', 'dub.js', 'tvguide.js', 'app.js'];
+  var files = ['ui.js', 'channels.js', 'dub.js', 'tvguide.js', 'gdrive.js', 'app.js'];
   var i = 0;
   (function next() {
     if (i >= files.length) return;
