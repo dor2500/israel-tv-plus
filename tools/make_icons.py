@@ -64,9 +64,14 @@ def tv_mark(size, pad=0.16, bg=True):
     return im.resize((size, size), Image.LANCZOS)
 
 
-TILE = (11, 59, 219)      # cobalt
-STAR = (255, 255, 255)
-PLAY = (255, 210, 63)     # gold
+TILE = (14, 15, 20)       # near black
+# The three ribbons of the play mark, in drawing order, on a 512 grid: from, to, colour at "from", colour at "to"
+RIBBONS = (
+    ((170, 130), (170, 382), (33, 212, 253), (124, 92, 255)),
+    ((170, 130), (382, 256), (124, 92, 255), (255, 77, 141)),
+    ((170, 382), (382, 256), (255, 122, 69), (255, 194, 75)),
+)
+RIBBON_WIDTH = 70
 
 
 def mesh(S):
@@ -74,31 +79,42 @@ def mesh(S):
     return Image.new("RGB", (S, S), TILE)
 
 
-def closed_stroke(d, pts, width, fill):
-    """A closed outline with round corners."""
-    d.line(pts + [pts[0], pts[1]], fill=fill, width=width, joint="curve")
-    for x, y in pts:
-        d.ellipse([x - width / 2, y - width / 2, x + width / 2, y + width / 2], fill=fill)
+def along(S, a, b, c1, c2):
+    """A colour fade from point a to point b. Worked out small and enlarged, which is smooth and fast."""
+    n = 128
+    im = Image.new("RGB", (n, n))
+    px = im.load()
+    dx, dy = b[0] - a[0], b[1] - a[1]
+    length = dx * dx + dy * dy
+    for y in range(n):
+        for x in range(n):
+            t = ((x / n * S - a[0]) * dx + (y / n * S - a[1]) * dy) / length
+            t = max(0.0, min(1.0, t))
+            px[x, y] = tuple(int(u + (v - u) * t) for u, v in zip(c1, c2))
+    return im.resize((S, S), Image.BICUBIC).convert("RGBA")
 
 
 def app_mark(size, bg=True, mono=False, scale=1.0):
-    """The app icon: cobalt tile, white Star of David outline, gold play triangle in its centre. mono = white on clear."""
+    """The app icon: near-black tile, a play mark made of three colour ribbons. mono = white on clear."""
     S = size * 4
     im = Image.new("RGBA", (S, S), (0, 0, 0, 0))
-    d = ImageDraw.Draw(im)
     if bg:
-        d.rounded_rectangle([0, 0, S - 1, S - 1], radius=int(S * 0.2227), fill=TILE + (255,))
+        ImageDraw.Draw(im).rounded_rectangle([0, 0, S - 1, S - 1], radius=int(S * 0.2227), fill=TILE + (255,))
 
-    def at(x, y):   # drawn on a 512 grid, scaled around the centre
-        return (S * (0.5 + (x - 256) / 512 * scale), S * (0.5 + (y - 256) / 512 * scale))
+    def at(p):   # scaled around the centre
+        return (S * (0.5 + (p[0] - 256) / 512 * scale), S * (0.5 + (p[1] - 256) / 512 * scale))
 
-    star = int(S * 34 / 512 * scale)
-    closed_stroke(d, [at(256, 76), at(412, 346), at(100, 346)], star, STAR + (255,))
-    closed_stroke(d, [at(256, 436), at(100, 166), at(412, 166)], star, STAR + (255,))
-    play = [at(222, 204), at(318, 256), at(222, 308)]
-    colour = (STAR if mono else PLAY) + (255,)
-    d.polygon(play, fill=colour)
-    closed_stroke(d, play, int(S * 14 / 512 * scale), colour)
+    width = S * RIBBON_WIDTH / 512 * scale
+    for start, end, c1, c2 in RIBBONS:
+        a, b = at(start), at(end)
+        mask = Image.new("L", (S, S), 0)
+        d = ImageDraw.Draw(mask)
+        d.line([a, b], fill=255, width=int(width))
+        for x, y in (a, b):
+            d.ellipse([x - width / 2, y - width / 2, x + width / 2, y + width / 2], fill=255)
+        ribbon = Image.new("RGBA", (S, S), (255, 255, 255, 255)) if mono else along(S, a, b, c1, c2)
+        ribbon.putalpha(mask)
+        im.alpha_composite(ribbon)
     return im.resize((size, size), Image.LANCZOS)
 
 
@@ -160,8 +176,8 @@ def main():
         d = os.path.join(res, "mipmap-" + dpi)
         os.makedirs(d, exist_ok=True)
         mesh(px).save(os.path.join(d, "ic_launcher_background.png"))
-        app_mark(px, bg=False, scale=0.8).save(os.path.join(d, "ic_launcher_foreground.png"))
-        app_mark(px, bg=False, mono=True, scale=0.8).save(os.path.join(d, "ic_launcher_monochrome.png"))
+        app_mark(px, bg=False, scale=0.95).save(os.path.join(d, "ic_launcher_foreground.png"))
+        app_mark(px, bg=False, mono=True, scale=0.95).save(os.path.join(d, "ic_launcher_monochrome.png"))
     any_dpi = os.path.join(res, "mipmap-anydpi-v26")
     os.makedirs(any_dpi, exist_ok=True)
     with open(os.path.join(any_dpi, "ic_launcher.xml"), "w", encoding="utf-8") as f:
