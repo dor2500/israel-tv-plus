@@ -109,10 +109,28 @@
       GDrive.reportAuthError(new Error('התחברות עם Google עדיין לא זמינה בגרסה הזו. הצפייה וכל שאר התכונות עובדות כרגיל.'), onError);
     },
 
+    isTv: function () {
+      if (typeof window !== 'undefined' && window.IS_TV) return true;
+      var ua = (typeof navigator !== 'undefined' && navigator.userAgent) || '';
+      if (/Web0S|webOS|Tizen|SMART-TV|SmartTV|AndroidTV|GoogleTV|AppleTV|HbbTV|NetCast|VIDAA|AFT[BMT]|POV_TV|BRAVIA|MiTV|MiBOX/i.test(ua)) return true;
+      if (typeof window !== 'undefined' && window.AndroidApp && window.AndroidApp.isTv && window.AndroidApp.isTv()) return true;
+      if (typeof window !== 'undefined' && window.location && new URLSearchParams(window.location.search).get('tv') === '1') return true;
+      if (typeof window !== 'undefined' && window.TVUI) return true;
+      return false;
+    },
+
+    signIn: function (onSuccess, onError) {
+      if (GDrive.isTv()) {
+        GDrive.startDeviceFlow(onSuccess, onError);
+      } else {
+        GDrive.signInWeb(onSuccess, onError);
+      }
+    },
+
     // ------------------------------------------------------------- Web Sign-In (GIS)
     signInWeb: function (onSuccess, onError) {
-      // Google accepts the browser flow only on registered origins: installed apps (file://, capacitor://) use the code flow
-      if (WEB_ORIGINS.indexOf(window.location.origin) === -1 || !WEB_CLIENT_ID) {
+      // Smart TVs and limited environments must always use the Device Code Flow
+      if (GDrive.isTv() || WEB_ORIGINS.indexOf(window.location.origin) === -1 || !WEB_CLIENT_ID) {
         GDrive.startDeviceFlow(onSuccess, onError);
         return;
       }
@@ -132,12 +150,13 @@
           if (tokenResp && tokenResp.access_token) {
             GDrive.fetchUserProfile(tokenResp.access_token, tokenResp.expires_in, onSuccess, onError);
           } else {
-            GDrive.reportAuthError(new Error((tokenResp && tokenResp.error) || 'ההתחברות בוטלה'), onError);
+            console.warn('GIS returned no token, falling back to device flow:', tokenResp);
+            GDrive.startDeviceFlow(onSuccess, onError);
           }
         };
         activeTokenClient.error_callback = function (e) {
-          if (e && e.type === 'popup_failed_to_open') GDrive.startDeviceFlow(onSuccess, onError);
-          else if (onError) onError(new Error('ההתחברות בוטלה'));
+          console.warn('GIS error callback, falling back to device flow:', e);
+          GDrive.startDeviceFlow(onSuccess, onError);
         };
         activeTokenClient.requestAccessToken({ prompt: '' });
       } catch (e) {
@@ -234,39 +253,75 @@
     },
 
     showTvDeviceModal: function (userCode, verifyUrl) {
-      var modalHtml = '<div style="text-align:center;padding:1.5rem 1rem;">' +
-        '<div style="display:flex;justify-content:center;margin-bottom:1.2rem;">' +
-        '<div id="gdrive-qr" style="background:#fff;padding:12px;border-radius:14px;display:inline-block;"></div>' +
+      var baseVerify = verifyUrl || 'https://www.google.com/device';
+      // Embedding the user_code parameter allows mobile QR scanners to automatically prefill the code on Google's page!
+      var pairUrl = baseVerify + (baseVerify.indexOf('?') === -1 ? '?user_code=' : '&user_code=') + encodeURIComponent(userCode);
+
+      var modalHtml = '<div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:2.5rem;padding:1.5rem 1rem;direction:rtl;text-align:right;">' +
+        '<div style="text-align:center;background:#fff;padding:16px;border-radius:20px;box-shadow:0 12px 32px rgba(0,0,0,0.4);display:inline-block;">' +
+        '<div id="gdrive-qr" style="width:200px;height:200px;display:flex;align-items:center;justify-content:center;color:#475569;font-size:0.95rem;font-weight:600;">' +
+        '<span>טוען קוד QR...</span>' +
         '</div>' +
-        '<p style="font-size:1.15rem;margin:0 0 0.8rem;color:#e2e8f0;">1. סרקו את קוד ה-QR או היכנסו בנייד אל:</p>' +
-        '<div style="font-size:1.35rem;font-weight:700;color:#60a5fa;margin-bottom:1.2rem;letter-spacing:0.02em;">' + verifyUrl + '</div>' +
-        '<p style="font-size:1.15rem;margin:0 0 0.6rem;color:#e2e8f0;">2. הזינו את קוד ההתחברות:</p>' +
-        '<div style="font-size:2.8rem;font-weight:900;letter-spacing:0.25em;background:rgba(255,255,255,0.08);' +
-        'border:2px dashed #3b82f6;border-radius:16px;padding:0.6rem 1.2rem;display:inline-block;color:#facc15;font-family:monospace;">' +
+        '<div style="margin-top:8px;font-size:0.85rem;font-weight:700;color:#2563eb;letter-spacing:0.02em;">סריקה מהירה בנייד 📱</div>' +
+        '</div>' +
+        '<div style="max-width:400px;text-align:right;">' +
+        '<div style="font-size:1.2rem;font-weight:800;color:#fff;margin-bottom:0.4rem;">1. סרקו את הקוד עם מצלמת הנייד</div>' +
+        '<div style="font-size:0.95rem;color:#94a3b8;margin-bottom:1.2rem;line-height:1.4;">קוד ההתחברות יוזן אוטומטית בטלפון ללא צורך בהקלדה.</div>' +
+        '<div style="font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:0.4rem;">2. או היכנסו בדפדפן אל:</div>' +
+        '<div style="font-size:1.2rem;font-weight:800;color:#60a5fa;margin-bottom:0.9rem;direction:ltr;text-align:right;user-select:all;">' + baseVerify + '</div>' +
+        '<div style="font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:0.4rem;">והזינו את הקוד:</div>' +
+        '<div style="font-size:2.5rem;font-weight:900;letter-spacing:0.18em;background:rgba(255,255,255,0.08);' +
+        'border:2px dashed #3b82f6;border-radius:14px;padding:0.4rem 1rem;display:inline-block;color:#facc15;font-family:monospace;direction:ltr;user-select:all;">' +
         userCode + '</div>' +
-        '<p style="font-size:0.95rem;color:#94a3b8;margin:1.4rem 0 0;">לאחר האישור, הטלוויזיה תתחבר אוטומטית לחשבון ה-Google Drive שלכם.</p>' +
+        '<div style="font-size:0.88rem;color:#94a3b8;margin-top:1.2rem;line-height:1.4;">לאחר האישור, הטלוויזיה תתחבר מיד לחשבון ה-Google Drive שלכם ותסנכרן את ההקלטות והמועדפים.</div>' +
+        '</div>' +
         '</div>';
 
       if (window.openDialog) {
         window.openDialog({
           ico: '☁️',
-          title: 'התחברות לחשבון Google והקלטות Drive',
+          title: 'התחברות לחשבון Google בטלוויזיה',
           html: modalHtml,
-          buttons: [{ label: 'ביטול' }],
+          wide: true,
+          buttons: [{ label: 'ביטול', primary: true }],
           onClose: GDrive.stopDevicePoll
         });
 
-        if (window.loadQrLib) {
-          window.loadQrLib(function () {
-            var qrBox = document.getElementById('gdrive-qr');
-            if (!qrBox || !window.qrcode) return;
+        var renderQr = function () {
+          var qrBox = document.getElementById('gdrive-qr');
+          if (!qrBox || !window.qrcode) return;
+          try {
+            var q = window.qrcode(0, 'M');
+            q.addData(pairUrl);
+            q.make();
+            qrBox.innerHTML = q.createSvgTag(5, 0);
+            var svg = qrBox.querySelector('svg');
+            if (svg) {
+              svg.style.width = '200px';
+              svg.style.height = '200px';
+              svg.style.display = 'block';
+            }
+          } catch (e) {
+            console.warn('QR error, fallback to short url:', e);
             try {
-              var q = window.qrcode(0, 'M');
-              q.addData(verifyUrl);
-              q.make();
-              qrBox.innerHTML = q.createSvgTag(5, 2);
-            } catch (e) {}
-          });
+              var q2 = window.qrcode(0, 'L');
+              q2.addData(baseVerify);
+              q2.make();
+              qrBox.innerHTML = q2.createSvgTag(5, 0);
+              var svg2 = qrBox.querySelector('svg');
+              if (svg2) {
+                svg2.style.width = '200px';
+                svg2.style.height = '200px';
+                svg2.style.display = 'block';
+              }
+            } catch (e2) {}
+          }
+        };
+
+        if (window.loadQrLib) {
+          window.loadQrLib(renderQr);
+        } else if (window.qrcode) {
+          renderQr();
         }
       }
     },

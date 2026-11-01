@@ -32,8 +32,10 @@
     : /IsraelTVPlus\/\d+ Desktop/.test(UA) ? 'desktop'
     : location.protocol === 'https:' ? 'web' : 'local');
   var IS_WEB = PLATFORM === 'web';
-  var IS_TV = PLATFORM === 'webos' || PLATFORM === 'tizen' || /AndroidTV/.test(UA) ||
-    (PLATFORM === 'android' && window.AndroidApp && window.AndroidApp.isTv && window.AndroidApp.isTv());
+  var IS_TV = PLATFORM === 'webos' || PLATFORM === 'tizen' ||
+    /Web0S|webOS|Tizen|SMART-TV|SmartTV|AndroidTV|GoogleTV|AppleTV|HbbTV|NetCast|VIDAA|AFT[BMT]|POV_TV|BRAVIA|MiTV|MiBOX/i.test(UA) ||
+    (PLATFORM === 'android' && window.AndroidApp && window.AndroidApp.isTv && window.AndroidApp.isTv()) ||
+    (new URLSearchParams(location.search).get('tv') === '1');
   var TOUCH = !IS_TV && ('ontouchstart' in window) && window.matchMedia && matchMedia('(pointer: coarse)').matches;
   var PHONE = false;            // phone layout (Nuvio home + navigation bar), set by applyScale()
   var I = window.ITV_ICON || function () { return ''; };
@@ -3842,8 +3844,7 @@ function showOsd() {
     if (!window.GDrive) return;
     var u = window.GDrive.getUser();
     if (!u || !u.access_token) {
-      if (IS_TV) window.GDrive.startDeviceFlow(function () { startLiveRecordingDialog(ch); });
-      else window.GDrive.signInWeb(function () { startLiveRecordingDialog(ch); });
+      if (window.GDrive) window.GDrive.signIn(function () { startLiveRecordingDialog(ch); });
       return;
     }
 
@@ -3990,8 +3991,7 @@ function showOsd() {
     if (!window.GDrive) return;
     var u = window.GDrive.getUser();
     if (!u || !u.access_token) {
-      if (IS_TV) window.GDrive.startDeviceFlow(function () { openDriveRecordingsDialog(); });
-      else window.GDrive.signInWeb(function () { openDriveRecordingsDialog(); });
+      if (window.GDrive) window.GDrive.signIn(function () { openDriveRecordingsDialog(); });
       return;
     }
 
@@ -4549,8 +4549,7 @@ function showOsd() {
             });
           } else {
             if (window.GDrive) {
-              if (IS_TV) window.GDrive.startDeviceFlow(function () { renderSettings(); });
-              else window.GDrive.signInWeb(function () { renderSettings(); });
+              if (window.GDrive) window.GDrive.signIn(function () { renderSettings(); });
             }
           }
         } },
@@ -4575,8 +4574,7 @@ function showOsd() {
             });
           } else {
             if (window.GDrive) {
-              if (IS_TV) window.GDrive.startDeviceFlow(function () { renderSettings(); });
-              else window.GDrive.signInWeb(function () { renderSettings(); });
+              if (window.GDrive) window.GDrive.signIn(function () { renderSettings(); });
             }
           }
         })

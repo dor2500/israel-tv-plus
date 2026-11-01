@@ -147,8 +147,13 @@ class PhoneActivity : ComponentActivity() {
 
     private fun isTv(): Boolean {
         val ui = getSystemService(Context.UI_MODE_SERVICE) as? UiModeManager
-        return ui?.currentModeType == Configuration.UI_MODE_TYPE_TELEVISION ||
-            packageManager.hasSystemFeature(PackageManager.FEATURE_LEANBACK)
+        if (ui?.currentModeType == Configuration.UI_MODE_TYPE_TELEVISION) return true
+        if (packageManager.hasSystemFeature(PackageManager.FEATURE_LEANBACK) ||
+            packageManager.hasSystemFeature("android.hardware.type.television") ||
+            packageManager.hasSystemFeature("android.software.live_tv")) return true
+        if (!packageManager.hasSystemFeature(PackageManager.FEATURE_TOUCHSCREEN)) return true
+        val b = "${Build.MODEL} ${Build.PRODUCT} ${Build.DEVICE} ${Build.MANUFACTURER}".lowercase(Locale.US)
+        return b.contains("tv") || b.contains("box") || b.contains("bravia") || b.contains("aft") || b.contains("chromecast") || b.contains("shield") || b.contains("atv")
     }
 
     // ------------------------------------------------------------------ picture-in-picture

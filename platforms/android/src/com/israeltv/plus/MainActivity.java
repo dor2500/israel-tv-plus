@@ -625,8 +625,14 @@ public class MainActivity extends Activity {
 
     boolean isTv() {
         UiModeManager ui = (UiModeManager) getSystemService(Context.UI_MODE_SERVICE);
-        return (ui != null && ui.getCurrentModeType() == Configuration.UI_MODE_TYPE_TELEVISION)
-            || getPackageManager().hasSystemFeature("android.software.leanback");
+        if (ui != null && ui.getCurrentModeType() == Configuration.UI_MODE_TYPE_TELEVISION) return true;
+        PackageManager pm = getPackageManager();
+        if (pm.hasSystemFeature("android.software.leanback")
+            || pm.hasSystemFeature("android.hardware.type.television")
+            || pm.hasSystemFeature("android.software.live_tv")) return true;
+        if (!pm.hasSystemFeature(PackageManager.FEATURE_TOUCHSCREEN)) return true;
+        String b = (Build.MODEL + " " + Build.PRODUCT + " " + Build.DEVICE + " " + Build.MANUFACTURER).toLowerCase(Locale.US);
+        return b.contains("tv") || b.contains("box") || b.contains("bravia") || b.contains("aft") || b.contains("chromecast") || b.contains("shield") || b.contains("atv");
     }
 
     boolean start(Intent i) {
