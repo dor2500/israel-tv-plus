@@ -10,9 +10,9 @@
   // OAuth clients of the project in Google Cloud Console (docs/GOOGLE_SIGNIN.md). They are public by design:
   // Google treats the secret of a "TVs and Limited Input" client as non-confidential.
   // While empty, sign-in explains that it is unavailable instead of sending people to a Google error page.
-  var WEB_CLIENT_ID = '';
-  var TV_CLIENT_ID = '';
-  var TV_CLIENT_SECRET = '';
+  var WEB_CLIENT_ID = '233862122434-psa4t9s1vehqgss7ocqm2bitbq546t4n.apps.googleusercontent.com';
+  var TV_CLIENT_ID = '233862122434-saudlfl3pnicmr2ap94mo4900bhn0neu.apps.googleusercontent.com';
+  var TV_CLIENT_SECRET = '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';
   var WEB_ORIGINS = ['https://dor2500.github.io', 'http://localhost:8080'];
   var SCOPE = 'openid email profile https://www.googleapis.com/auth/drive.file';
   var FOLDER_NAME = 'ישראל TV+ - הקלטות';

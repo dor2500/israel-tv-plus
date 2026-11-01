@@ -144,7 +144,7 @@ class GoogleAccount(context: Context, private val prefs: AppPrefs, private val h
             CommonStatusCodes.DEVELOPER_ERROR -> "התחברות עם Google עדיין לא הוגדרה עבור האפליקציה"
             CommonStatusCodes.NETWORK_ERROR -> "אין חיבור לאינטרנט"
             null -> "ההתחברות בוטלה"
-            else -> "ההתחברות נכשלה (קוד $code). במכשיר חייבים להיות שירותי Google Play"
+            else -> "ההתחברות נכשלה (קוד $code). נסו שוב בעוד כמה דקות"
         }
     }
 
