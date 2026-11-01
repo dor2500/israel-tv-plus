@@ -1,52 +1,52 @@
 {
-  "version": "4.8.17",
-  "code": 202611010601,
-  "app": 597,
+  "version": "4.8.18",
+  "code": 202611010613,
+  "app": 598,
   "shell": 3,
   "date": "2026-11-01",
   "notes": [
-    "שחזור עיצוב 4.8.15 המקורי והאהוב בכל המערכות (טלוויזיה, אנדרואיד ודפדפן).",
-    "התחברות מלאה לחשבון Google והקלטות ישירות ל-Google Drive בתיקייה ייעודית ('ישראל TV+ - הקלטות').",
-    "כפתורי הקלטה לסדרות VOD (הקלטת פרק בודד או סדרה שלמה) והקלטת שידורים חיים מהנגן.",
-    "לשונית וכפתור גישה מהיר 'הקלטות Drive' בסרגל העליון ובהגדרות.",
-    "ביטול הדילאי בשידורי ספורט (קפיצה מיידית ל-Live Edge ללא השהיית דקה)."
+    "חיבור מקורי לחשבון Google בהגדרות בכל הפלטפורמות (אנדרואיד, טלוויזיות חכמות ודפדפן).",
+    "סנכרון ענן מלא למידע, מועדפים, היסטוריה, פרופילים והגדרות מול Google Drive.",
+    "שמירה קפדנית ומדויקת על עיצוב 4.8.15 המקורי והאהוב ללא שום שינוי במבנה המסך.",
+    "הקלטת סדרות VOD ושידורים חיים ישירות לתיקיית הענן 'ישראל TV+ - הקלטות'.",
+    "אפס דילאי בשידורי ספורט וסנכרון אוטומטי שקט ברקע."
   ],
   "native": {
     "android": {
-      "version": "4.8.17",
-      "app": 597,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.17/IsraelTVPlus-android.apk"
+      "version": "4.8.18",
+      "app": 598,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.18/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "4.8.17",
-      "app": 597,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.17/IsraelTVPlus-windows-setup.exe"
+      "version": "4.8.18",
+      "app": 598,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.18/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "4.8.17",
-      "app": 597,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.17/com.israeltv.plus_all.ipk",
+      "version": "4.8.18",
+      "app": 598,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.18/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "4.8.17",
-      "app": 597,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.17/IsraelTVPlus-tizen-project.zip"
+      "version": "4.8.18",
+      "app": 598,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.18/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "4.8.17",
-      "app": 597,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.17/IsraelTVPlus-macos-arm64.zip"
+      "version": "4.8.18",
+      "app": 598,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.18/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "4.8.17",
-      "app": 597,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.17/IsraelTVPlus-linux-x64.zip"
+      "version": "4.8.18",
+      "app": 598,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.18/IsraelTVPlus-linux-x64.zip"
     },
     "wear": {
-      "version": "4.8.17",
-      "app": 597,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.17/IsraelTVPlus-wearos.apk"
+      "version": "4.8.18",
+      "app": 598,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.18/IsraelTVPlus-wearos.apk"
     }
   }
 }

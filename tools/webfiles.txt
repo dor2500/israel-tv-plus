@@ -8,6 +8,7 @@ fonts.css
 style.css
 tvguide.js
 app.js
+gdrive.js
 dub.js
 dub-local-worker.js
 channels.js
