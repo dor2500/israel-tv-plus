@@ -66,6 +66,7 @@ import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
 import com.israeltv.plus.data.VodEpisode
 import com.israeltv.plus.data.VodSeries
+import com.israeltv.plus.data.resolveVodImage
 import com.israeltv.plus.ui.theme.LocalDimens
 
 private val Rtl = androidx.compose.ui.text.TextStyle(
@@ -112,13 +113,34 @@ fun VodSeriesCard(
                 .background(Color.White.copy(alpha = 0.05f))
                 .border(1.dp, Color.White.copy(alpha = 0.12f), VodCardShape)
         ) {
-            // Poster Image
-            AsyncImage(
-                model = series.poster,
-                contentDescription = series.title,
-                modifier = Modifier.fillMaxSize(),
-                contentScale = ContentScale.Crop,
-            )
+            // Poster Image with fallback
+            val posterUrl = resolveVodImage(series.poster)
+            if (posterUrl.isNotEmpty()) {
+                AsyncImage(
+                    model = posterUrl,
+                    contentDescription = series.title,
+                    modifier = Modifier.fillMaxSize(),
+                    contentScale = ContentScale.Crop,
+                )
+            } else {
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(
+                            Brush.verticalGradient(
+                                listOf(Color(0xFF232838), Color(0xFF10121C))
+                            )
+                        ),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(
+                        series.title.take(2),
+                        color = Color.White.copy(alpha = 0.45f),
+                        fontSize = 32.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+                }
+            }
 
             // Top Badges
             Row(
@@ -277,12 +299,15 @@ fun VodSeriesSheet(
                     .fillMaxWidth()
                     .height(200.dp)
             ) {
-                AsyncImage(
-                    model = series.backdrop.ifEmpty { series.poster },
-                    contentDescription = null,
-                    modifier = Modifier.fillMaxSize(),
-                    contentScale = ContentScale.Crop,
-                )
+                val backdropUrl = resolveVodImage(series.backdrop.ifEmpty { series.poster })
+                if (backdropUrl.isNotEmpty()) {
+                    AsyncImage(
+                        model = backdropUrl,
+                        contentDescription = null,
+                        modifier = Modifier.fillMaxSize(),
+                        contentScale = ContentScale.Crop,
+                    )
+                }
                 Box(
                     Modifier
                         .fillMaxSize()
@@ -464,7 +489,7 @@ fun VodSeriesSheet(
                                 haptic.performHapticFeedback(HapticFeedbackType.VirtualKey)
                                 onPlayEpisode(ep)
                             }
-                            .padding(horizontal = 14.dp, vertical = 12.dp),
+                            .padding(horizontal = 10.dp, vertical = 8.dp),
                         verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.SpaceBetween
                     ) {
@@ -473,27 +498,47 @@ fun VodSeriesSheet(
                             verticalAlignment = Alignment.CenterVertically,
                             horizontalArrangement = Arrangement.spacedBy(12.dp)
                         ) {
+                            // Episode 16:9 Thumbnail
                             Box(
                                 modifier = Modifier
-                                    .size(36.dp)
-                                    .clip(CircleShape)
-                                    .background(MaterialTheme.colorScheme.primaryContainer),
+                                    .width(88.dp)
+                                    .aspectRatio(16f / 9f)
+                                    .clip(RoundedCornerShape(8.dp))
+                                    .background(MaterialTheme.colorScheme.surfaceContainerHighest)
+                                    .border(0.5.dp, Color.White.copy(alpha = 0.15f), RoundedCornerShape(8.dp)),
                                 contentAlignment = Alignment.Center
                             ) {
-                                Icon(
-                                    Icons.Rounded.PlayArrow,
-                                    contentDescription = null,
-                                    tint = MaterialTheme.colorScheme.onPrimaryContainer,
-                                    modifier = Modifier.size(20.dp)
-                                )
+                                val epThumb = resolveVodImage(ep.thumb.ifEmpty { series.backdrop.ifEmpty { series.poster } })
+                                if (epThumb.isNotEmpty()) {
+                                    AsyncImage(
+                                        model = epThumb,
+                                        contentDescription = ep.title,
+                                        modifier = Modifier.fillMaxSize(),
+                                        contentScale = ContentScale.Crop,
+                                    )
+                                }
+                                Box(
+                                    modifier = Modifier
+                                        .size(24.dp)
+                                        .clip(CircleShape)
+                                        .background(Color.Black.copy(alpha = 0.62f)),
+                                    contentAlignment = Alignment.Center
+                                ) {
+                                    Icon(
+                                        Icons.Rounded.PlayArrow,
+                                        contentDescription = null,
+                                        tint = Color.White,
+                                        modifier = Modifier.size(16.dp)
+                                    )
+                                }
                             }
 
-                            Column {
+                            Column(modifier = Modifier.weight(1f)) {
                                 Text(
                                     ep.title,
                                     style = Rtl,
                                     color = MaterialTheme.colorScheme.onSurface,
-                                    fontSize = 14.sp,
+                                    fontSize = 13.5.sp,
                                     fontWeight = FontWeight.SemiBold,
                                     maxLines = 1,
                                     overflow = TextOverflow.Ellipsis
@@ -511,7 +556,8 @@ fun VodSeriesSheet(
                             "#${idx + 1}",
                             color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.6f),
                             fontSize = 13.sp,
-                            fontWeight = FontWeight.Bold
+                            fontWeight = FontWeight.Bold,
+                            modifier = Modifier.padding(start = 6.dp)
                         )
                     }
                 }

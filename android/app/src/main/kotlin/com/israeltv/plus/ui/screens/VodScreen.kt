@@ -56,6 +56,7 @@ import com.israeltv.plus.data.Channel
 import com.israeltv.plus.data.ChannelData
 import com.israeltv.plus.data.VodEpisode
 import com.israeltv.plus.data.VodSeries
+import com.israeltv.plus.data.resolveVodImage
 import com.israeltv.plus.ui.components.PosterAspect
 import com.israeltv.plus.ui.components.SectionHeader
 import com.israeltv.plus.ui.components.VodCardShape
@@ -209,12 +210,15 @@ private fun VodHeroBanner(
             .clickable { onDetailsClick() }
     ) {
         // Backdrop Image
-        AsyncImage(
-            model = series.backdrop.ifEmpty { series.poster },
-            contentDescription = null,
-            modifier = Modifier.fillMaxSize(),
-            contentScale = ContentScale.Crop,
-        )
+        val backdropUrl = resolveVodImage(series.backdrop.ifEmpty { series.poster })
+        if (backdropUrl.isNotEmpty()) {
+            AsyncImage(
+                model = backdropUrl,
+                contentDescription = null,
+                modifier = Modifier.fillMaxSize(),
+                contentScale = ContentScale.Crop,
+            )
+        }
 
         // Gradient Overlay
         Box(

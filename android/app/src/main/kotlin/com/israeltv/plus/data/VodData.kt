@@ -20,6 +20,7 @@ data class VodEpisode(
     val title: String,
     val duration: String = "",
     val url: String,
+    val thumb: String = "",
 ) {
     fun toChannel(series: VodSeries): Channel = Channel(
         id = id,
@@ -28,11 +29,21 @@ data class VodEpisode(
         category = "סדרות VOD",
         categoryEn = "vod",
         url = url,
-        logo = series.poster,
+        logo = if (thumb.isNotBlank()) resolveVodImage(thumb) else resolveVodImage(series.poster),
         desc = series.desc,
         badge = "VOD",
         kind = "vod",
     )
+}
+
+/**
+ * Resolves local assets or remote CDN URLs for VOD posters and thumbnails.
+ */
+fun resolveVodImage(path: String): String = when {
+    path.isEmpty() -> ""
+    path.startsWith("http://") || path.startsWith("https://") -> path
+    path.startsWith("file://") -> path
+    else -> "file:///android_asset/www/" + path.removePrefix("/")
 }
 
 /**
