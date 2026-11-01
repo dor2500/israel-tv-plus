@@ -339,7 +339,6 @@
     setTimeout(function () { native('ready'); }, 30);
     if (S.autoUpdate) setTimeout(function () { checkUpdates(false); }, 4000);
     if (window.GDrive && window.GDrive.isSignedIn()) setTimeout(function () { triggerCloudSync(false); }, 3000);
-    if (location.hash === '#google') setTimeout(openGoogleFromLink, 600);
     if (PLATFORM === 'webos') {
       // LG: TV apps stay open for days – check again every 6 hours, and apply a downloaded update on returning to the app
       setInterval(function () { if (S.autoUpdate) checkUpdates(false); }, 6 * 3600 * 1000);
@@ -3568,17 +3567,17 @@ function showOsd() {
       recents: state.recents || [],
       settings: S || {},
       vodProgress: vodMap,
-      updatedAt: Date.now()
+      updatedAt: parseInt(localStorage.getItem('itv_local_changed') || '0', 10)
     };
   }
 
   function applyCloudData(d) {
     if (!d) return;
     try {
+      localStorage.setItem('itv_local_changed', String(d.updatedAt || 0));
       if (Array.isArray(d.favorites)) {
         state.favorites = d.favorites;
         lsSet('israel_tv_favorites', state.favorites);
-    scheduleCloudSync();
       }
       if (Array.isArray(d.recents)) {
         state.recents = d.recents;
@@ -3628,26 +3627,12 @@ function showOsd() {
 
   var syncDebounceTimer = null;
   function scheduleCloudSync() {
+    try { localStorage.setItem('itv_local_changed', String(Date.now())); } catch (e) {}
     if (!window.GDrive || !window.GDrive.isSignedIn()) return;
     clearTimeout(syncDebounceTimer);
     syncDebounceTimer = setTimeout(function () {
       triggerCloudSync(false);
     }, 4000);
-  }
-
-  // The Android phone app links here (#google): a popup must start from a tap, so ask for one
-  function openGoogleFromLink() {
-    if (!window.GDrive) return;
-    if (window.GDrive.isSignedIn()) { triggerCloudSync(true); return; }
-    openDialog({
-      ico: '☁️',
-      title: 'התחברות עם חשבון Google',
-      html: '<p>התחברו כדי לסנכרן מועדפים, היסטוריה והגדרות של האתר ולשמור הקלטות ב-Google Drive.</p>',
-      buttons: [
-        { label: 'התחברות', primary: true, act: function () { window.GDrive.signInWeb(function () { triggerCloudSync(true); }); } },
-        { label: 'ביטול' }
-      ]
-    });
   }
 
   function openDriveRecordingsDialog() {

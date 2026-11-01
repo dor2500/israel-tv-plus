@@ -605,7 +605,8 @@
                 localStorage.setItem('itv_last_sync_time', String(Date.now()));
                 if (onComplete) onComplete(cloudJson);
               } else {
-                // Local is newer or equal, update cloud file
+                // Local is newer or equal, update cloud file (the phone app keeps its profiles in the same file)
+                if (cloudJson && cloudJson.phoneProfiles) localPayload.phoneProfiles = cloudJson.phoneProfiles;
                 fetch('https://www.googleapis.com/upload/drive/v3/files/' + fileId + '?uploadType=media', {
                   method: 'PATCH',
                   headers: {

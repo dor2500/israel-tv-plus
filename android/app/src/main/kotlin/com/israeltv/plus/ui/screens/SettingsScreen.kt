@@ -1,6 +1,10 @@
 package com.israeltv.plus.ui.screens
 
+import android.app.Activity
 import android.content.Intent
+import android.text.format.DateUtils
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import android.net.Uri
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -24,7 +28,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.KeyboardArrowLeft
 import androidx.compose.material.icons.rounded.CheckCircle
 import androidx.compose.material.icons.rounded.Cloud
-import androidx.compose.material.icons.rounded.Folder
+import androidx.compose.material.icons.rounded.Logout
 import androidx.compose.material.icons.rounded.Refresh
 import androidx.compose.material.icons.rounded.Code
 import androidx.compose.material.icons.rounded.Face
@@ -52,6 +56,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.israeltv.plus.data.AppPrefs
+import com.israeltv.plus.data.GoogleAccount
 import com.israeltv.plus.data.ChannelData
 import com.israeltv.plus.data.UpdateState
 import com.israeltv.plus.data.Updater
@@ -70,10 +75,14 @@ import java.util.Date
 import java.util.Locale
 
 @Composable
-fun SettingsScreen(data: ChannelData?, prefs: AppPrefs, updater: Updater, onProfiles: () -> Unit, onStyle: () -> Unit) {
+fun SettingsScreen(data: ChannelData?, prefs: AppPrefs, updater: Updater, google: GoogleAccount, onProfiles: () -> Unit, onStyle: () -> Unit) {
     val ctx = LocalContext.current
     val haptic = LocalHapticFeedback.current
     var showPlexDialog by remember { mutableStateOf(false) }
+    val activity = ctx as Activity
+    val googlePicker = rememberLauncherForActivityResult(ActivityResultContracts.StartIntentSenderForResult()) {
+        google.onPickerResult(activity, it.data)
+    }
     LazyColumn(Modifier.fillMaxSize(), contentPadding = feedPadding(withCategories = false), flingBehavior = rememberBitChordFlingBehavior()) {
         item(key = "update") { UpdateCard(updater, Modifier.padding(horizontal = 16.dp).padding(bottom = 28.dp)) }
         item(key = "look") {
@@ -115,24 +124,25 @@ fun SettingsScreen(data: ChannelData?, prefs: AppPrefs, updater: Updater, onProf
             Spacer(Modifier.height(28.dp))
         }
         item(key = "gdrive") {
-            SectionHeader("חשבון Google וסנכרון ענן (Google Drive)")
+            SectionHeader("חשבון Google וסנכרון ענן")
             SettingsGroup {
-                SettingRow(
-                    Icons.Rounded.Cloud,
-                    "חשבון Google באתר",
-                    "נפתח בדפדפן: סנכרון והקלטות של האתר. האפליקציה בטלפון עדיין לא מסתנכרנת",
-                    onClick = {
-                        ctx.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://dor2500.github.io/israel-tv-plus/#google")))
-                    }
-                )
-                SettingRow(
-                    Icons.Rounded.Folder,
-                    "תיקיית ההקלטות והגיבוי בענן",
-                    "פתיחת תיקיית 'ישראל TV+ - הקלטות' וקובץ הגיבוי ב-Google Drive",
-                    onClick = {
-                        ctx.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://drive.google.com/drive/my-drive")))
-                    }
-                )
+                if (google.signedIn) {
+                    SettingRow(Icons.Rounded.CheckCircle, google.name, google.problem.ifEmpty { google.email })
+                    SettingRow(
+                        Icons.Rounded.Refresh,
+                        if (google.busy) "מסנכרן…" else "סנכרן עכשיו",
+                        if (google.lastSync > 0L) "סונכרן " + DateUtils.getRelativeTimeSpanString(google.lastSync) else "מועדפים, היסטוריה ופרופילים",
+                        onClick = { google.sync(activity) },
+                    )
+                    SettingRow(Icons.Rounded.Logout, "התנתקות", "הנתונים בטלפון נשארים", onClick = { google.signOut(activity) })
+                } else {
+                    SettingRow(
+                        Icons.Rounded.Cloud,
+                        if (google.busy) "מתחבר…" else "התחברות עם חשבון Google",
+                        google.problem.ifEmpty { "סנכרון מועדפים, היסטוריה ופרופילים בין המכשירים" },
+                        onClick = { if (!google.busy) google.signIn(activity) { googlePicker.launch(it) } },
+                    )
+                }
             }
             Spacer(Modifier.height(28.dp))
         }

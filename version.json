@@ -1,54 +1,50 @@
 {
-  "version": "4.8.19",
-  "code": 202611010636,
-  "app": 599,
+  "version": "4.8.20",
+  "code": 202611010647,
+  "app": 600,
   "shell": 3,
   "date": "2026-11-01",
   "notes": [
-    "התחברות Google: הודעת Error 401: invalid_client לא תופיע יותר. כל עוד ההגדרה מול Google לא הושלמה, האפליקציה מסבירה שההתחברות עדיין לא זמינה.",
-    "בטלוויזיה: תוקן חלון הקוד וה-QR, שלא הוצג כלל, וכן בדיקת ההתחברות מול Google. ההתחברות מתחדשת לבד אחרי שעה.",
-    "סנכרון: תקלה בקריאת הגיבוי מהענן כבר לא דורסת אותו, ושגיאות מוצגות במקום הודעת הצלחה שגויה.",
-    "הוסר משתמש פיקטיבי שהוצג כשקריאת פרטי החשבון נכשלה.",
-    "הקלטות: כשאפשר לשמור רק קישור ולא קובץ וידאו, האפליקציה אומרת זאת.",
-    "אנדרואיד: כפתור Google פותח את ההתחברות באתר. האפליקציה בטלפון עדיין לא מסתנכרנת עם הענן.",
-    "הריליס כולל שוב את כל הקבצים: Wear OS, סמסונג, לינוקס, macOS ו-SHA256SUMS.txt, שחסרו בגרסאות האחרונות."
+    "אנדרואיד: התחברות לחשבון Google מתוך האפליקציה עם בורר החשבונות של המערכת, בלי דפדפן ובלי האתר.",
+    "אנדרואיד: סנכרון מועדפים, היסטוריה ופרופילים מול Google Drive ישירות מהאפליקציה, בפתיחה וביציאה.",
+    "סנכרון: מכשיר חדש מקבל עכשיו את הנתונים מהענן. עד עכשיו המכשיר תמיד נחשב חדש יותר והנתונים לא ירדו."
   ],
   "native": {
     "android": {
-      "version": "4.8.19",
-      "app": 599,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.19/IsraelTVPlus-android.apk"
+      "version": "4.8.20",
+      "app": 600,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.20/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "4.8.19",
-      "app": 599,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.19/IsraelTVPlus-windows-setup.exe"
+      "version": "4.8.20",
+      "app": 600,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.20/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "4.8.19",
-      "app": 599,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.19/com.israeltv.plus_all.ipk",
+      "version": "4.8.20",
+      "app": 600,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.20/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "4.8.19",
-      "app": 599,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.19/IsraelTVPlus-tizen-project.zip"
+      "version": "4.8.20",
+      "app": 600,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.20/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "4.8.19",
-      "app": 599,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.19/IsraelTVPlus-macos-arm64.zip"
+      "version": "4.8.20",
+      "app": 600,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.20/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "4.8.19",
-      "app": 599,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.19/IsraelTVPlus-linux-x64.zip"
+      "version": "4.8.20",
+      "app": 600,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.20/IsraelTVPlus-linux-x64.zip"
     },
     "wear": {
-      "version": "4.8.19",
-      "app": 1000499,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.19/IsraelTVPlus-wearos.apk"
+      "version": "4.8.20",
+      "app": 1000500,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.20/IsraelTVPlus-wearos.apk"
     }
   }
 }
