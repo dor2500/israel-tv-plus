@@ -48,6 +48,8 @@ import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -281,6 +283,14 @@ fun VodSeriesSheet(
 ) {
     val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
     val haptic = LocalHapticFeedback.current
+    val seasons = remember(series.episodes) {
+        series.episodes.map { it.season }.distinct().sorted()
+    }
+    var selectedSeason by remember { mutableStateOf<Int?>(null) }
+    val displayedEpisodes = remember(series.episodes, selectedSeason) {
+        if (selectedSeason == null) series.episodes
+        else series.episodes.filter { it.season == selectedSeason }
+    }
 
     ModalBottomSheet(
         onDismissRequest = onDismiss,
@@ -461,14 +471,75 @@ fun VodSeriesSheet(
             }
 
             // Episodes Section Header
-            Text(
-                "פרקים (${series.episodes.size})",
-                style = Rtl,
-                color = MaterialTheme.colorScheme.onSurface,
-                fontSize = 16.sp,
-                fontWeight = FontWeight.Bold,
-                modifier = Modifier.padding(horizontal = 20.dp, vertical = 8.dp)
-            )
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 20.dp, vertical = 6.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                Text(
+                    "פרקים (${displayedEpisodes.size})",
+                    style = Rtl,
+                    color = MaterialTheme.colorScheme.onSurface,
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Bold,
+                )
+                if (seasons.size > 1) {
+                    Text(
+                        if (selectedSeason == null) "כל ${seasons.size} העונות" else "עונה $selectedSeason מתוך ${seasons.size}",
+                        color = MaterialTheme.colorScheme.primary,
+                        fontSize = 12.sp,
+                        fontWeight = FontWeight.SemiBold
+                    )
+                }
+            }
+
+            // Season Filter Chips
+            if (seasons.size > 1) {
+                LazyRow(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp, vertical = 4.dp),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
+                    item {
+                        val isAll = selectedSeason == null
+                        Box(
+                            modifier = Modifier
+                                .clip(RoundedCornerShape(8.dp))
+                                .background(if (isAll) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f))
+                                .clickable { selectedSeason = null }
+                                .padding(horizontal = 12.dp, vertical = 6.dp)
+                        ) {
+                            Text(
+                                "כל העונות",
+                                color = if (isAll) MaterialTheme.colorScheme.onPrimary else MaterialTheme.colorScheme.onSurfaceVariant,
+                                fontSize = 12.5.sp,
+                                fontWeight = if (isAll) FontWeight.Bold else FontWeight.Medium
+                            )
+                        }
+                    }
+                    items(seasons) { sNum ->
+                        val isSel = selectedSeason == sNum
+                        val count = series.episodes.count { it.season == sNum }
+                        Box(
+                            modifier = Modifier
+                                .clip(RoundedCornerShape(8.dp))
+                                .background(if (isSel) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f))
+                                .clickable { selectedSeason = sNum }
+                                .padding(horizontal = 12.dp, vertical = 6.dp)
+                        ) {
+                            Text(
+                                "עונה $sNum ($count)",
+                                color = if (isSel) MaterialTheme.colorScheme.onPrimary else MaterialTheme.colorScheme.onSurfaceVariant,
+                                fontSize = 12.5.sp,
+                                fontWeight = if (isSel) FontWeight.Bold else FontWeight.Medium
+                            )
+                        }
+                    }
+                }
+            }
 
             // Episodes List
             LazyColumn(
@@ -479,7 +550,7 @@ fun VodSeriesSheet(
                 verticalArrangement = Arrangement.spacedBy(6.dp),
                 contentPadding = PaddingValues(bottom = 24.dp)
             ) {
-                itemsIndexed(series.episodes, key = { _, ep -> ep.id }) { idx, ep ->
+                itemsIndexed(displayedEpisodes, key = { _, ep -> ep.id }) { idx, ep ->
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()

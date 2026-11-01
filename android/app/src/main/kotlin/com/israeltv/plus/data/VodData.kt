@@ -21,6 +21,8 @@ data class VodEpisode(
     val duration: String = "",
     val url: String,
     val thumb: String = "",
+    val season: Int = 1,
+    val episode: Int = 1,
 ) {
     fun toChannel(series: VodSeries): Channel = Channel(
         id = id,

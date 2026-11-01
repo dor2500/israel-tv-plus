@@ -2331,10 +2331,35 @@
   function openVodModal(series) {
     if (!series) return;
     var eps = series.episodes || [];
+
+    // Detect seasons
+    var seasonsFound = [];
+    var seasonsSet = {};
+    eps.forEach(function (ep) {
+      var s = ep.season;
+      if (s && !seasonsSet[s]) {
+        seasonsSet[s] = true;
+        seasonsFound.push(s);
+      }
+    });
+    seasonsFound.sort(function (a, b) { return a - b; });
+
+    var seasonTabsHtml = '';
+    if (seasonsFound.length > 1) {
+      seasonTabsHtml = '<div class="vod-season-tabs" style="display:flex;gap:0.5rem;overflow-x:auto;padding-bottom:0.6rem;margin-bottom:0.8rem;">' +
+        '<button class="btn season-tab-btn active" data-season="all" style="padding:0.35rem 0.75rem;font-size:0.85rem;border-radius:6px;background:#3b82f6;color:#fff;border:none;cursor:pointer;">כל העונות (' + eps.length + ')</button>';
+      seasonsFound.forEach(function (sNum) {
+        var count = eps.filter(function (e) { return e.season == sNum; }).length;
+        seasonTabsHtml += '<button class="btn season-tab-btn" data-season="' + sNum + '" style="padding:0.35rem 0.75rem;font-size:0.85rem;border-radius:6px;background:rgba(255,255,255,0.1);color:#fff;border:1px solid rgba(255,255,255,0.15);cursor:pointer;">עונה ' + sNum + ' (' + count + ')</button>';
+      });
+      seasonTabsHtml += '</div>';
+    }
+
     var epHtml = eps.map(function (ep, idx) {
       var epThumb = ep.thumb || series.backdrop || series.poster || '';
       var thumbTag = epThumb ? '<img src="' + esc(epThumb) + '" style="width:84px;height:48px;object-fit:cover;border-radius:6px;flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,0.4);" onerror="this.style.display=\'none\'" alt="">' : '';
-      return '<div class="vod-ep-card" data-epi="' + idx + '" tabindex="0" style="display:flex;align-items:center;gap:0.9rem;padding:0.6rem 0.8rem;background:rgba(255,255,255,0.06);border-radius:8px;border:1px solid rgba(255,255,255,0.08);">' +
+      var sAttr = ep.season ? ' data-ep-season="' + ep.season + '"' : '';
+      return '<div class="vod-ep-card" data-epi="' + idx + '"' + sAttr + ' tabindex="0" style="display:flex;align-items:center;gap:0.9rem;padding:0.6rem 0.8rem;background:rgba(255,255,255,0.06);border-radius:8px;border:1px solid rgba(255,255,255,0.08);">' +
         thumbTag +
         '<div class="vod-ep-info" style="flex:1;"><b>' + esc(ep.title) + '</b><span style="display:block;font-size:0.85rem;color:rgba(255,255,255,0.6);">' + esc(ep.duration || '') + '</span></div>' +
         '<div style="display:flex;gap:0.5rem;align-items:center;">' +
@@ -2356,6 +2381,7 @@
       '<button class="btn vod-rec-all-btn" style="background:rgba(239,68,68,0.22);border:1px solid #ef4444;color:#fff;border-radius:8px;padding:0.45rem 0.95rem;font-weight:700;display:inline-flex;align-items:center;gap:0.4rem;cursor:pointer;">🔴 הקלט סדרה ל-Google Drive</button>' +
       '</div>' +
       '</div></div>' +
+      seasonTabsHtml +
       '<div class="vod-episodes" style="max-height:42vh;overflow-y:auto;display:flex;flex-direction:column;gap:0.75rem;">' + epHtml + '</div>';
 
     openDialog({
@@ -2369,6 +2395,29 @@
     setTimeout(function () {
       var d = $('dialog');
       if (!d) return;
+      var tabs = d.querySelectorAll('.season-tab-btn');
+      var epCards = d.querySelectorAll('.vod-ep-card');
+      for (var ti = 0; ti < tabs.length; ti++) {
+        tabs[ti].addEventListener('click', function (e) {
+          e.stopPropagation();
+          var selS = this.getAttribute('data-season');
+          for (var tj = 0; tj < tabs.length; tj++) {
+            tabs[tj].style.background = 'rgba(255,255,255,0.1)';
+            tabs[tj].style.border = '1px solid rgba(255,255,255,0.15)';
+          }
+          this.style.background = '#3b82f6';
+          this.style.border = 'none';
+          for (var ci = 0; ci < epCards.length; ci++) {
+            var card = epCards[ci];
+            var cSeason = card.getAttribute('data-ep-season');
+            if (selS === 'all' || !selS || cSeason === selS) {
+              card.style.display = 'flex';
+            } else {
+              card.style.display = 'none';
+            }
+          }
+        });
+      }
       var playBtns = d.querySelectorAll('.vod-play-btn');
       for (var k = 0; k < playBtns.length; k++) {
         playBtns[k].addEventListener('click', function (e) {
@@ -3602,6 +3651,29 @@ function showOsd() {
     setTimeout(function () {
       var d = $('dialog');
       if (!d) return;
+      var tabs = d.querySelectorAll('.season-tab-btn');
+      var epCards = d.querySelectorAll('.vod-ep-card');
+      for (var ti = 0; ti < tabs.length; ti++) {
+        tabs[ti].addEventListener('click', function (e) {
+          e.stopPropagation();
+          var selS = this.getAttribute('data-season');
+          for (var tj = 0; tj < tabs.length; tj++) {
+            tabs[tj].style.background = 'rgba(255,255,255,0.1)';
+            tabs[tj].style.border = '1px solid rgba(255,255,255,0.15)';
+          }
+          this.style.background = '#3b82f6';
+          this.style.border = 'none';
+          for (var ci = 0; ci < epCards.length; ci++) {
+            var card = epCards[ci];
+            var cSeason = card.getAttribute('data-ep-season');
+            if (selS === 'all' || !selS || cSeason === selS) {
+              card.style.display = 'flex';
+            } else {
+              card.style.display = 'none';
+            }
+          }
+        });
+      }
       var btns = d.querySelectorAll('.rec-dur-btn');
       for (var b = 0; b < btns.length; b++) {
         btns[b].addEventListener('click', function () {
