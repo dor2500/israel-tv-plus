@@ -44,3 +44,4 @@
   - `plex.m3u`, `epg.xml`, `playlist.m3u`
 - **אימות קבצים**:
   - `SHA256SUMS`
+

@@ -78,6 +78,10 @@ import androidx.compose.material.icons.rounded.MoreHoriz
 import androidx.compose.material.icons.rounded.Pause
 import androidx.compose.material.icons.rounded.PictureInPictureAlt
 import androidx.compose.material.icons.rounded.PlayArrow
+import androidx.compose.material.icons.rounded.Forward10
+import androidx.compose.material.icons.rounded.Replay10
+import androidx.compose.runtime.mutableFloatStateOf
+import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.material.icons.rounded.Refresh
 import androidx.compose.material.icons.rounded.ScreenShare
 import androidx.compose.material.icons.rounded.Search
@@ -272,6 +276,11 @@ fun PlayerScreen(
     var multiViewActive by remember { mutableStateOf(startInMultiView) }
     var fit by remember { mutableStateOf(VideoFit.Fit) }
     var statusToast by remember(current.id) { mutableStateOf<String?>(null) }
+    var playbackSpeed by remember { mutableFloatStateOf(1.0f) }
+    var sleepTimerEndMs by remember { mutableLongStateOf(0L) }
+    var sleepTimerMinutes by remember { mutableIntStateOf(0) }
+    var currentPositionMs by remember { mutableLongStateOf(0L) }
+    var durationMs by remember { mutableLongStateOf(0L) }
 
     LaunchedEffect(startInCast) {
         if (startInCast) {
@@ -394,6 +403,46 @@ fun PlayerScreen(
             val nextIdx = sourceIndex + 1
             statusToast = "שרת גיבוי (${nextIdx + 1}/${candidates.size})"
             sourceIndex = nextIdx
+        }
+    }
+
+
+    // Position tracking, VOD resume, and sleep timer loop
+    LaunchedEffect(playing, current) {
+        val isVod = current.kind == "vod" || current.categoryEn == "vod"
+        if (isVod) {
+            val sp = context.getSharedPreferences("israel_tv_prefs", Context.MODE_PRIVATE)
+            val savedPos = sp.getLong("itv_vod_pos_" + current.id, 0L)
+            if (savedPos > 10_000L) {
+                delay(800)
+                if (player.duration > 0 && savedPos < player.duration - 20_000L) {
+                    player.seekTo(savedPos)
+                    statusToast = "ממשיך מצפייה קודמת"
+                }
+            }
+        }
+
+        while (true) {
+            delay(1000)
+            if (player.isPlaying) {
+                currentPositionMs = player.currentPosition
+                durationMs = if (player.duration > 0) player.duration else 0L
+
+                if (isVod && currentPositionMs > 5_000L) {
+                    val sp = context.getSharedPreferences("israel_tv_prefs", Context.MODE_PRIVATE)
+                    sp.edit().putLong("itv_vod_pos_" + current.id, currentPositionMs).apply()
+                }
+
+                if (sleepTimerEndMs > 0L) {
+                    val remainingMs = sleepTimerEndMs - System.currentTimeMillis()
+                    if (remainingMs <= 0) {
+                        player.pause()
+                        sleepTimerEndMs = 0L
+                        sleepTimerMinutes = 0
+                        statusToast = "טיימר שינה: כיבוי אוטומטי 💤"
+                    }
+                }
+            }
         }
     }
 
@@ -565,9 +614,19 @@ fun PlayerScreen(
                 )
                 "buffering" -> BufferingPill()
                 "controls" -> Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(24.dp)) {
-                    ExpressiveGlassButton(
-                        Icons.Rounded.SkipNext, "ערוץ הבא", 48.dp, 56.dp,
-                    ) { switchTo(index + 1) }
+                    val isVod = current.kind == "vod" || current.categoryEn == "vod"
+                    if (isVod) {
+                        ExpressiveGlassButton(
+                            Icons.Rounded.Replay10, "10 שניות אחורה", 52.dp, 56.dp,
+                        ) {
+                            touchTick++
+                            player.seekTo((player.currentPosition - 10_000L).coerceAtLeast(0L))
+                        }
+                    } else {
+                        ExpressiveGlassButton(
+                            Icons.Rounded.SkipNext, "ערוץ הבא", 48.dp, 56.dp,
+                        ) { switchTo(index + 1) }
+                    }
                     ExpressiveGlassButton(
                         icon = if (playing) Icons.Rounded.Pause else Icons.Rounded.PlayArrow,
                         label = "נגן / השהה",
@@ -580,9 +639,19 @@ fun PlayerScreen(
                         touchTick++
                         if (player.isPlaying) player.pause() else { player.volume = 1.0f; player.play() }
                     }
-                    ExpressiveGlassButton(
-                        Icons.Rounded.SkipPrevious, "ערוץ קודם", 48.dp, 56.dp,
-                    ) { switchTo(index - 1) }
+                    if (isVod) {
+                        ExpressiveGlassButton(
+                            Icons.Rounded.Forward10, "10 שניות קדימה", 52.dp, 56.dp,
+                        ) {
+                            touchTick++
+                            val maxPos = if (player.duration > 0) player.duration else Long.MAX_VALUE
+                            player.seekTo((player.currentPosition + 10_000L).coerceAtMost(maxPos))
+                        }
+                    } else {
+                        ExpressiveGlassButton(
+                            Icons.Rounded.SkipPrevious, "ערוץ קודם", 48.dp, 56.dp,
+                        ) { switchTo(index - 1) }
+                    }
                 }
                 "error" -> PlayerErrorState(
                     ch = current,
@@ -630,6 +699,13 @@ fun PlayerScreen(
             PlayerBottomBar(
                 ch = current,
                 fit = fit,
+                positionMs = currentPositionMs,
+                durationMs = durationMs,
+                onSeek = { pos ->
+                    touchTick++
+                    currentPositionMs = pos
+                    player.seekTo(pos)
+                },
                 onCycleFit = {
                     touchTick++
                     fit = fit.next()
@@ -644,8 +720,12 @@ fun PlayerScreen(
         PlayerOptionsDrawer(
             visible = sheet == "more",
             qualityLabel = selectedVideoHeight(player, tracks)?.let { "${it}p" } ?: "אוטומטי",
+            playbackSpeed = playbackSpeed,
+            sleepTimerMinutes = sleepTimerMinutes,
             serverIndex = sourceIndex,
             serverCount = candidates.size,
+            onSpeed = { sheet = "speed" },
+            onSleepTimer = { sheet = "sleep" },
             onSelectServer = { idx ->
                 sourceIndex = idx
                 statusToast = "שרת (${idx + 1}/${candidates.size})"
@@ -693,6 +773,26 @@ fun PlayerScreen(
         "list" -> ChannelListSheet(list, index, logo, onPick = { switchTo(it); sheet = null }, onDismiss = { sheet = null })
         "audio" -> AudioSheet(player, tracks, onDismiss = { sheet = null })
         "quality" -> ResolutionDialog(player, tracks, onDismiss = { sheet = null })
+        "speed" -> PlaybackSpeedDialog(
+            currentSpeed = playbackSpeed,
+            onSelectSpeed = { sp ->
+                playbackSpeed = sp
+                player.setPlaybackSpeed(sp)
+                statusToast = "מהירות: ${sp}x"
+                sheet = null
+            },
+            onDismiss = { sheet = null }
+        )
+        "sleep" -> SleepTimerDialog(
+            currentMinutes = sleepTimerMinutes,
+            onSelectMinutes = { mins ->
+                sleepTimerMinutes = mins
+                sleepTimerEndMs = if (mins > 0) System.currentTimeMillis() + mins * 60_000L else 0L
+                statusToast = if (mins > 0) "טיימר שינה: יכבה בעוד $mins דקות" else "טיימר שינה בוטל"
+                sheet = null
+            },
+            onDismiss = { sheet = null }
+        )
         "cast" -> CastSheet(
             channel = current,
             castController = castController,

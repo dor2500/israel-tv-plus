@@ -2426,6 +2426,54 @@
     fillOsd(vodCh);
     showOsd();
     loadStream(vodCh);
+    try {
+      var savedPos = parseFloat(localStorage.getItem('itv_vod_pos_' + ep.id) || '0');
+      if (savedPos > 15) {
+        setTimeout(function () {
+          if (el.video && el.video.currentTime < 10) {
+            el.video.currentTime = savedPos;
+            toast('ממשיך מצפייה קודמת');
+          }
+        }, 1200);
+      }
+    } catch (ve) {}
+  }
+
+
+  var sleepTimerId = null;
+  var sleepTimerEndTime = 0;
+
+  function setSleepTimer(minutes) {
+    if (sleepTimerId) {
+      clearTimeout(sleepTimerId);
+      sleepTimerId = null;
+      sleepTimerEndTime = 0;
+    }
+    if (!minutes || minutes <= 0) {
+      toast('💤 טיימר שינה בוטל');
+      renderSettings();
+      return;
+    }
+    sleepTimerEndTime = Date.now() + minutes * 60 * 1000;
+    toast('💤 טיימר שינה הופעל: יכבה בעוד ' + minutes + ' דקות');
+    renderSettings();
+    sleepTimerId = setTimeout(function () {
+      sleepTimerId = null;
+      sleepTimerEndTime = 0;
+      if (el.video) {
+        el.video.pause();
+        el.video.muted = true;
+      }
+      closePlayer();
+      toast('💤 כיבוי אוטומטי - שינה ערבה!');
+      renderSettings();
+    }, minutes * 60 * 1000);
+  }
+
+  function getSleepTimerRemaining() {
+    if (!sleepTimerEndTime) return 0;
+    var rem = Math.round((sleepTimerEndTime - Date.now()) / 60000);
+    return rem > 0 ? rem : 0;
   }
 
   function cyclePlaybackSpeed() {
@@ -4172,6 +4220,14 @@ function showOsd() {
         } },
         action('🔄 סנכרן עכשיו עם Google Drive', function () { triggerCloudSync(true); }, 'סנכרון מיידי של ערוצים מועדפים, היסטוריה והגדרות מול הענן'),
         action('📁 ההקלטות שלי ב-Google Drive', function () { openDriveRecordingsDialog(); }, 'צפייה, ניגון וניהול של כל הסדרות והשידורים שהקלטתם בענן'),
+        action(function () {
+          var rem = getSleepTimerRemaining();
+          return rem > 0 ? '💤 טיימר שינה (פעיל: ' + rem + ' דקות)' : '💤 טיימר שינה (כיבוי אוטומטי)';
+        }, function () {
+          var cur = getSleepTimerRemaining();
+          var next = cur === 0 ? 30 : cur <= 30 ? 60 : cur <= 60 ? 90 : 0;
+          setSleepTimer(next);
+        }, 'הגדרת טיימר לכיבוי אוטומטי של השידור והטלוויזיה (לחיצה משנה: 30 / 60 / 90 דק / כבוי)'),
         action(function () {
           var u = (window.GDrive && window.GDrive.getUser()) || null;
           return (u && u.access_token) ? '🚪 התנתק מחשבון Google' : '🔑 התחבר עם חשבון Google';

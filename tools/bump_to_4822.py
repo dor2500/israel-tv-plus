@@ -91,3 +91,4 @@ if os.path.exists(cl_p):
         f.write(cl)
 
 print(f"Bumped version to {v} (code {code}, app {app_code})!")
+
