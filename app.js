@@ -387,7 +387,7 @@
   }
 
   function cacheEls() {
-    ['app', 'search-input', 'top-search', 'btn-update', 'btn-getapp', 'btn-kids-exit', 'btn-settings', 'clock', 'count-badge',
+    ['app', 'search-input', 'top-search', 'btn-update', 'btn-getapp', 'btn-kids-exit', 'btn-settings', 'btn-gdrive', 'clock', 'count-badge',
       'rail-list', 'hero', 'hero-logo', 'hero-mono', 'hero-num', 'hero-cat', 'hero-q', 'hero-lang', 'hero-fav', 'hero-title',
       'hero-desc', 'hero-src', 'grid-title', 'grid-count', 'grid', 'hints', 'numhud', 'numhud-digits', 'numhud-name',
       'radio-audio', 'player', 'video', 'radio-view', 'radio-logo', 'radio-mono', 'radio-name', 'spinner', 'spinner-text',
@@ -1934,6 +1934,7 @@
     ['מועדפים', 'mine'], ['לוח שידורים', 'guide'],
     ['חיפוש', 'search'],
     ['פיצול מסך', 'multiview'],
+    ['הקלטות Drive', 'gdrive'],
     ['הגדרות', 'settings']
   ];
 
@@ -2096,7 +2097,7 @@
     if (!pill) return;
     try {
       var tabs = ATV_TABS.filter(function (t) {
-        return t[1] === 'profiles' || t[1] === 'all_channels' || t[1] === 'top' || t[1] === 'vod' || t[1] === 'search' || t[1] === 'multiview' || t[1] === 'guide' || t[1] === 'settings' || atvRowIndex(t[1]) !== -1 || (atv.search && t[1] !== 'mine');
+        return t[1] === 'profiles' || t[1] === 'all_channels' || t[1] === 'top' || t[1] === 'vod' || t[1] === 'search' || t[1] === 'multiview' || t[1] === 'guide' || t[1] === 'gdrive' || t[1] === 'settings' || atvRowIndex(t[1]) !== -1 || (atv.search && t[1] !== 'mine');
       });
       if (!tabs || !tabs.length) {
         tabs = [['מי צופה?', 'profiles'], ['כל הערוצים', 'all_channels'], ['צפייה כעת', 'top'], ['סדרות VOD', 'vod'], ['מדריך שידורים', 'guide'], ['חיפוש', 'search'], ['הגדרות', 'settings']];
@@ -2112,7 +2113,8 @@
           var nm = p ? p.name : 'פרופיל';
           return '<button class="atv-tab atv-tab-prof" data-i="' + i + '" title="מי צופה? - החלף פרופיל"><img class="atv-prof-ico" src="' + av + '" alt=""><span>' + esc(nm) + '</span></button>';
         }
-        if (id === 'search' || id === 'multiview' || id === 'settings') {
+        if (id === 'search' || id === 'multiview' || id === 'gdrive' || id === 'settings') {
+          if (id === 'gdrive') return '<button class="atv-tab ico-only" data-i="' + i + '" aria-label="הקלטות ענן" title="Google Drive והקלטות ענן">☁️</button>';
           var ico = id === 'search' ? I('search') : id === 'multiview' ? I('multiview') : I('settings');
           return '<button class="atv-tab ico-only" data-i="' + i + '" aria-label="' + esc(t[0]) + '" title="' + esc(t[0]) + '">' + ico + '</button>';
         }
@@ -2471,6 +2473,7 @@
       else if (t === 'search') atvOpenSearch();
       else if (t === 'multiview') openMultiView(atvCurrent() || state.playing);
       else if (t === 'guide') { if (Guide) Guide.open(); }
+      else if (t === 'gdrive') openDriveRecordingsDialog();
       else if (t === 'settings') openSettings();
       else if (t === 'kids-exit') askPin(function () { setSetting('kids', false); toast('יצאתם ממצב ילדים'); });
       else atvFocus(atv.row, atv.cols[atv.row] || 0);
@@ -4931,6 +4934,7 @@ function showOsd() {
     }, { passive: true });
 
     el.btnSettings.addEventListener('click', function () { openSettings(); });
+    if (el.btnGdrive) el.btnGdrive.addEventListener('click', function () { openDriveRecordingsDialog(); });
     if (el.btnMultiview) el.btnMultiview.addEventListener('click', function () { openMultiView(state.playing || (TVUI ? atvCurrent() : state.list[state.gridIdx])); });
     if (el.btnCastTop) el.btnCastTop.addEventListener('click', function () { openCastDialog(state.playing || (TVUI ? atvCurrent() : state.list[state.gridIdx])); });
     el.btnUpdate.addEventListener('click', showUpdateDialog);

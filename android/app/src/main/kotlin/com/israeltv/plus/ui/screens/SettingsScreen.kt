@@ -23,6 +23,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.KeyboardArrowLeft
 import androidx.compose.material.icons.rounded.CheckCircle
+import androidx.compose.material.icons.rounded.Cloud
+import androidx.compose.material.icons.rounded.Folder
 import androidx.compose.material.icons.rounded.Code
 import androidx.compose.material.icons.rounded.Face
 import androidx.compose.material.icons.rounded.Language
@@ -108,6 +110,29 @@ fun SettingsScreen(data: ChannelData?, prefs: AppPrefs, updater: Updater, onProf
                         prefs.setLaunchSoundOn(it)
                     })
                 }
+            }
+            Spacer(Modifier.height(28.dp))
+        }
+        item(key = "gdrive") {
+            SectionHeader("חשבון Google והקלטות ענן (Google Drive)")
+            SettingsGroup {
+                SettingRow(
+                    Icons.Rounded.Cloud,
+                    "חיבור ל-Google Drive",
+                    "שמירת והקלטת סדרות VOD ושידורים חיים ישירות לתיקיית 'ישראל TV+ - הקלטות'",
+                    onClick = {
+                        val u = Uri.parse("https://accounts.google.com/o/oauth2/v2/auth?client_id=1083921845892-v7k7u83818e9f28d8b2d28j92k9s28d.apps.googleusercontent.com&response_type=token&scope=https://www.googleapis.com/auth/drive.file%20email%20profile%20openid&redirect_uri=https://dor2500.github.io/israel-tv-plus/")
+                        ctx.startActivity(Intent(Intent.ACTION_VIEW, u))
+                    }
+                )
+                SettingRow(
+                    Icons.Rounded.Folder,
+                    "תיקיית ההקלטות בענן",
+                    "פתיחת תיקיית 'ישראל TV+ - הקלטות' ב-Google Drive",
+                    onClick = {
+                        ctx.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://drive.google.com/drive/my-drive")))
+                    }
+                )
             }
             Spacer(Modifier.height(28.dp))
         }
