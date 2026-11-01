@@ -408,7 +408,8 @@ fun PlayerScreen(
 
 
     // Position tracking, VOD resume, and sleep timer loop
-    LaunchedEffect(playing, current) {
+    // Resume once per episode: pausing or buffering must not seek back or repeat the message
+    LaunchedEffect(current) {
         val isVod = current.kind == "vod" || current.categoryEn == "vod"
         if (isVod) {
             val sp = context.getSharedPreferences("israel_tv_prefs", Context.MODE_PRIVATE)
@@ -421,7 +422,10 @@ fun PlayerScreen(
                 }
             }
         }
+    }
 
+    LaunchedEffect(playing, current) {
+        val isVod = current.kind == "vod" || current.categoryEn == "vod"
         while (true) {
             delay(1000)
             if (player.isPlaying) {

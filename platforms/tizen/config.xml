@@ -1,9 +1,9 @@
-<?xml version="4.8.23" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!-- Samsung Smart TV (Tizen) web app. tools\build_tizen.ps1 puts this next to the web app files;
      sign + install with Tizen Studio (a Samsung certificate is required for every Tizen TV). -->
 <widget xmlns="http://www.w3.org/ns/widgets" xmlns:tizen="http://tizen.org/ns/widgets"
-        id="http://github.com/dor2500/israel-tv-plus" version="4.8.23" viewmodes="maximized">
-    <tizen:application id="ItvPlus001.IsraelTVPlus" package="ItvPlus001" required_version="4.8.23"/>
+        id="http://github.com/dor2500/israel-tv-plus" version="4.8.24" viewmodes="maximized">
+    <tizen:application id="ItvPlus001.IsraelTVPlus" package="ItvPlus001" required_version="4.0"/>
     <name>ישראל TV+</name>
     <description>ערוצי טלוויזיה ותחנות רדיו ישראליות בשידור חי</description>
     <author href="https://github.com/dor2500">dor2500</author>
