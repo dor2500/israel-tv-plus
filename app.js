@@ -45,11 +45,21 @@
     windows: 'Windows', desktop: /Mac/.test(UA) ? 'macOS' : 'Linux', web: 'דפדפן (אתר)', local: 'דפדפן (מקומי)' };
 
   // ================================================================== settings
-  // computers and TVs have one fixed look (accent, on accent, variant, focus, container, background, elevated, card);
-  // only phones still choose a theme and a palette
-  var BIG_SCREEN = ['#f3f5f8', '#101c2c', '#a3b2c6', '#ffffff', '#22344c', '#101c2c', '#17263a', '#1e2f46'];
+  // A design replaces the whole interface: its look and colours (body.design-*, style.css) and the size of the home
+  // screen's cards. pitch = card + gap, row = one shelf, in rem; vert = the tabs stand in a column.
+  var DESIGNS = {
+    classic: { name: 'קלאסי', help: 'המראה הרגיל: תצוגה מקדימה על כל המסך, סרגל זכוכית ומדפי ערוצים.', pitch: 19, row: 17.25 },
+    cinema: { name: 'קולנוע', help: 'שחור וזהב: תמונה מלאה, פרטי הערוץ במרכז ושורת פוסטרים אחת בתחתית.', pitch: 12.5, row: 21,
+      pal: ['#e8b44a', '#14100a', '#a87a1c', '#ffd98a', '#33270f', '#050403', '#100d08', '#191409'] },
+    rail: { name: 'לוח שידורים', help: 'סרגל צד קבוע, חלון תצוגה מקדימה ומדפים צפופים שמראים הרבה ערוצים.', pitch: 14.5, row: 14, vert: true,
+      pal: ['#2dd4bf', '#04211d', '#0e9f8e', '#7df3e3', '#0f3a38', '#081a24', '#0d2431', '#12303f'] },
+    metro: { name: 'מטרו', help: 'משבצות צבעוניות וחדות, כותרות גדולות ובלי שקיפויות.', pitch: 18.5, row: 15,
+      pal: ['#ff5a1f', '#ffffff', '#d9480f', '#ffffff', '#4a1c08', '#111214', '#1b1c20', '#25272c'] },
+    paper: { name: 'מגזין', help: 'מסך בהיר כמו עיתון: נייר, דיו שחור, קווים דקים וכותרות גדולות.', pitch: 17.5, row: 16.5, light: true,
+      pal: ['#b3261e', '#ffffff', '#7a1410', '#1a1a1a', '#efe6d4', '#f6f0e3', '#ece4d2', '#fffdf7'] }
+  };
   var DEFAULTS = {
-    theme: 'oled', accent: 'auto', uiScale: 1, cols: 0, hero: true, numbers: true, hints: true, perf: 'auto',
+    theme: 'oled', accent: 'auto', design: 'classic', uiScale: 1, cols: 0, hero: true, numbers: true, hints: true, perf: 'auto',
     startCat: 'ALL', autoplay: false, hideAppOnly: false, hiddenCats: [], hidden: [], showSource: true,
     pic: 'off', aspect: 'fit', upscaleMode: 'off', sharpen: false, quality: 'max', latency: 'low', osdSec: 5, osdClock: true,
     retry: true, zap: 'category', upNext: true, upNextV2: true,
@@ -69,6 +79,9 @@
       if (s.quality === 'upscale4k') out.upscaleMode = 'ai_4k';
       else if (s.sharpen) out.upscaleMode = 'crystal_hd';
     }
+    // the "interface style" of 4.8.50 only had a real counterpart for cinema
+    if (s.design === undefined && s.tvStyle === 'cinema') out.design = 'cinema';
+    if (!DESIGNS[out.design]) out.design = 'classic';
     // settings of the previous version
     try {
       if (s.theme === undefined && localStorage.getItem('israel_tv_theme') === 'light') out.theme = 'light';
@@ -496,7 +509,7 @@
 
   function applyAll() {
     applyScale();
-    ['theme', 'hero', 'numbers', 'hints', 'perf', 'osdClock', 'pic', 'aspect', 'sharpen', 'upscaleMode', 'kids'].forEach(applySetting);
+    ['theme', 'design', 'hero', 'numbers', 'hints', 'perf', 'osdClock', 'pic', 'aspect', 'sharpen', 'upscaleMode', 'kids'].forEach(applySetting);
     document.body.classList.add('platform-' + PLATFORM);
     toggleClass(document.body, 'touch', TOUCH);
   }
@@ -520,7 +533,7 @@
     if (PHONE && S.cols) cols = Math.min(S.cols, w < 600 ? 3 : 5);
     state.cols = cols;
     document.documentElement.style.setProperty('--card-cols', cols);
-    if (wasPhone !== PHONE) applySetting('theme');
+    if (wasPhone !== PHONE) applySetting('design');
   }
 
   // ---- colours: Nuvio accent palettes, or Material You (the Android 12+ wallpaper colours from the native app)
@@ -562,11 +575,13 @@
     return o;
   }
   function rgba(h, a) { var c = hexRgb(h); return 'rgba(' + c[0] + ',' + c[1] + ',' + c[2] + ',' + a + ')'; }
+  // phones keep their own interface whatever design is chosen on a big screen
+  function activeDesign() { return (!PHONE && DESIGNS[S.design]) || DESIGNS.classic; }
   function applyColors() {
-    var name = accentName(), sc = readSystemColors();
-    var light = PHONE && S.theme === 'light', oled = PHONE && S.theme === 'oled';
+    var name = accentName(), sc = readSystemColors(), des = activeDesign();
+    var light = des.pal ? !!des.light : S.theme === 'light', oled = !des.pal && S.theme === 'oled';
     var p;
-    if (!PHONE) { p = BIG_SCREEN; name = 'big'; }
+    if (des.pal) { p = des.pal; name = 'design'; }
     else if (name === 'system' && sc) {
       p = light ? [sc.a1_600, '#ffffff', sc.a2_600, sc.a1_700, sc.a1_100, sc.n1_50, sc.n1_100 || mix(sc.n1_50, sc.n1_200, .5), '#ffffff']
         : [sc.a1_200, sc.a1_800, sc.a2_200, sc.a1_100, sc.a1_700, sc.n1_900, mix(sc.n1_900, sc.n1_800, .5), sc.n1_800];
@@ -601,10 +616,14 @@
 
   function applySetting(k) {
     var b = document.body;
-    if (k === 'theme' || k === 'accent') {
+    if (k === 'theme' || k === 'accent' || k === 'design') {
+      var des = activeDesign();
       b.classList.remove('oled', 'light', 'dark');
-      b.classList.add(PHONE ? S.theme : 'dark');
+      b.classList.add(des.pal ? (des.light ? 'light' : 'dark') : S.theme);
+      Object.keys(DESIGNS).forEach(function (d) { b.classList.remove('design-' + d); });
+      b.classList.add('design-' + (!PHONE && DESIGNS[S.design] ? S.design : 'classic'));
       applyColors();
+      if (k === 'design' && atv && atv.built) { atvLayout(); atvMark(); }
     } else if (k === 'uiScale' || k === 'cols') { applyScale(); renderGridFresh(); }
     else if (k === 'hero') toggleClass(b, 'no-hero', !S.hero);
     else if (k === 'numbers') toggleClass(b, 'no-numbers', !S.numbers);
@@ -625,19 +644,19 @@
     else if (k === 'avatar') updateAvatar();
   }
 
+  var DESIGN_LIST = Object.keys(DESIGNS).map(function (d) { return [d, DESIGNS[d].name]; });
   var UPSCALE_MODES = [
-    ['off', 'כבוי'],
-    ['ai_4k', 'חדות גבוהה'],
-    ['crystal_hd', 'חדות לשידורי SD'],
-    ['cinema_hdr', 'ניגודיות גבוהה'],
-    ['vivid_oled', 'צבעים חיים'],
-    ['sports_pro', 'ספורט'],
-    ['smooth_denoise', 'הפחתת רעש'],
-    ['retro_crt', 'מראה ישן']
+    ['off', 'כבוי (תמונה מקורית ללא עיבוד)'],
+    ['ai_4k', 'השבחת AI 4K Ultra Sharp (חדות דינמית ושיפור רזולוציה)'],
+    ['crystal_hd', 'מנוע Crystal Clear HD (חידוד מוגבר לשידורי SD/HD)'],
+    ['cinema_hdr', 'קולנוע HDR Dynamic (טווח דינמי רחב ושחורים עמוקים)'],
+    ['vivid_oled', 'צבעים חיים OLED Pop (גוונים עשירים ותמונה בוהקת)'],
+    ['sports_pro', 'ספורט Pro Ultra (תנועה חלקה ומשטחים חיים)'],
+    ['smooth_denoise', 'החלקה והפחתת רעשים (De-Noise עדין לשידורים מגורענים)'],
+    ['retro_crt', 'אפקט שידור קלאסי / רטרו (חמימות נוסטלגית)']
   ];
   var PICS = [['off', 'רגיל (ללא שינוי)'], ['cinema', 'קולנוע'], ['vivid', 'צבעים חיים'], ['sports', 'ספורט'], ['warm', 'חם']];
   var ASPECTS = [['fit', 'מקורי (התאמה)'], ['zoom', 'מילוי מסך (חיתוך)'], ['stretch', 'מתיחה'], ['pillarbox', '4:3']];
-  function plain(s) { return PHONE ? s : String(s).replace(/[\u2600-\u2604\u2607-\u2712\u2714-\u27BF\uFE0F]|[\uD83C-\uD83E][\uDC00-\uDFFF]/g, '').replace(/^\s+/, ''); }
   function label(list, v) { for (var i = 0; i < list.length; i++) if (list[i][0] === v) return list[i][1]; return v; }
   function cycle(list, v, step) {
     var i = 0;
@@ -657,7 +676,7 @@
     if (S.sharpen && (!S.upscaleMode || S.upscaleMode === 'off')) v.classList.add('upscale-crystal_hd');
     if (el.osdPic) {
       var upL = (S.upscaleMode && S.upscaleMode !== 'off') ? label(UPSCALE_MODES, S.upscaleMode) : (S.pic !== 'off' ? label(PICS, S.pic) : '');
-      el.osdPic.textContent = (upL ? upL + ' · ' : '') + label(ASPECTS, S.aspect);
+      el.osdPic.textContent = (upL ? '✨ ' + upL + ' · ' : '') + label(ASPECTS, S.aspect);
     }
     if (el.osdQuality) {
       if (S.upscaleMode === 'ai_4k') {
@@ -1172,8 +1191,8 @@
     var html = '';
     tvProfiles.forEach(function (p, idx) {
       var isCurrent = tvActiveProfile && tvActiveProfile.id === p.id;
-      var badge = p.isKids ? '<span class="net-prof-badge">' + plain('🧸 ילדים') + '</span>' : '';
-      var editIcon = tvProfileManaging ? '<span class="net-prof-edit-badge">' + plain('✏️ עריכה') + '</span>' : '';
+      var badge = p.isKids ? '<span class="net-prof-badge">🧸 ילדים</span>' : '';
+      var editIcon = tvProfileManaging ? '<span class="net-prof-edit-badge">✏️ עריכה</span>' : '';
       html += '<div class="net-prof-card" data-idx="' + idx + '" data-pid="' + esc(p.id) + '">' +
         '<img class="net-prof-avatar" src="' + avatarUrl(p.avatar || '1f60e') + '" alt="">' +
         editIcon +
@@ -1992,11 +2011,11 @@
     restTimer: null, metaTimer: null, stopTimer: null, searchTimer: null, focusedEl: null };
   var ATV_FIRST = 14, ATV_MORE = 18;
   var ATV_ROWS = [
-    ['all_channels', 'כל הערוצים'],
+    ['all_channels', '📺 כל הערוצים (All Channels)'],
     ['broadcast', 'ערוצי ברודקאסט וחדשות'],
     ['sports', 'ספורט בשידור חי'],
     ['movies', 'סרטים וקולנוע'],
-    ['vod', 'סדרות לצפייה'],
+    ['vod', '🍿 סדרות לצפייה ישירה (VOD)'],
     ['kids', 'ילדים ונוער'],
     ['fun', 'בידור, טבע ומוזיקה'],
     ['world', 'ערוצים בינלאומיים'],
@@ -2010,7 +2029,7 @@
     ['ערוצי ישראל', 'broadcast'],
     ['ספורט', 'sports'],
     ['סרטים', 'movies'],
-    ['סדרות', 'vod'],
+    ['סדרות VOD', 'vod'],
     ['ילדים', 'kids'],
     ['רדיו', 'radio'],
     ['מועדפים', 'mine'], ['לוח שידורים', 'guide'],
@@ -2020,7 +2039,7 @@
     ['הגדרות', 'settings']
   ];
 
-  var ATV_PITCH = 19, ATV_ROW = 17.25;   // rem: card + gap, one shelf
+  function atvGeo() { return activeDesign(); }
   function atvRem(rem) { return rem * (parseFloat(document.documentElement.style.fontSize) || 16); }
 
   /** Which shelf a channel belongs on. */
@@ -2046,7 +2065,7 @@
         return c.name.toLowerCase().indexOf(q) !== -1 || String(c.number) === q ||
           (c.countryHe && c.countryHe.indexOf(q) !== -1) || (c.title && c.title.toLowerCase().indexOf(q) !== -1);
       });
-      return [{ id: 'search', title: q ? res.length + ' תוצאות עבור "' + atv.query.trim() + '"' : (S.kids ? 'הקלידו שם ערוץ ילדים' : 'הקלידו שם ערוץ'), list: res }];
+      return [{ id: 'search', title: q ? (S.kids ? 'תוצאות לחיפוש ילדים "' : 'תוצאות לחיפוש "') + atv.query.trim() + '" · ' + res.length : (S.kids ? 'הקלידו שם ערוץ ילדים' : 'הקלידו שם ערוץ'), list: res }];
     }
 
     if (S.kids) {
@@ -2063,9 +2082,9 @@
         }
       });
       var kRows = [];
-      if (kidsMine.length) kRows.push({ id: 'mine', title: 'מועדפים ואחרונים', list: kidsMine });
+      if (kidsMine.length) kRows.push({ id: 'mine', title: '🧸 מועדפים לאחרונה (ילדים)', list: kidsMine });
       if (kidsHe.length) kRows.push({ id: 'kids_he', title: '🇮🇱 ערוצי ילדים ונוער בעברית', list: kidsHe });
-      if (kidsWorld.length) kRows.push({ id: 'kids_world', title: 'ערוצי ילדים וסדרות מצוירות מהעולם', list: kidsWorld });
+      if (kidsWorld.length) kRows.push({ id: 'kids_world', title: '🌍 ערוצי ילדים וסדרות מצוירות מהעולם', list: kidsWorld });
       return kRows;
     }
 
@@ -2166,7 +2185,7 @@
       var q = isApp(ch) ? 'אפליקציה' : isRadioCh(ch) ? 'רדיו' : (ch.badge || '');
       it.innerHTML = '<div class="atv-card"><div class="atv-logo"><img alt=""><div class="mono hidden"></div></div>' +
         (q ? '<span class="atv-q">' + esc(q) + '</span>' : '') + '<span class="atv-num">' + (ch.number || '') + '</span>' +
-        '<i class="atv-sheen"></i></div><div class="atv-name">' + (ch.number ? '<b class="atv-n">' + ch.number + '</b>' : '') + esc(ch.name) + '</div>';
+        '<i class="atv-sheen"></i></div><div class="atv-name">' + esc(ch.name) + '</div>';
       lazyLogo(it.querySelector('img'), it.querySelector('.mono'), ch);
       frag.appendChild(it);
       atv.items[r].push(it);
@@ -2183,7 +2202,7 @@
         return t[1] === 'profiles' || t[1] === 'all_channels' || t[1] === 'top' || t[1] === 'vod' || t[1] === 'search' || t[1] === 'multiview' || t[1] === 'guide' || t[1] === 'gdrive' || t[1] === 'settings' || atvRowIndex(t[1]) !== -1 || (atv.search && t[1] !== 'mine');
       });
       if (!tabs || !tabs.length) {
-        tabs = [['מי צופה?', 'profiles'], ['כל הערוצים', 'all_channels'], ['צפייה כעת', 'top'], ['סדרות', 'vod'], ['מדריך שידורים', 'guide'], ['חיפוש', 'search'], ['הגדרות', 'settings']];
+        tabs = [['מי צופה?', 'profiles'], ['כל הערוצים', 'all_channels'], ['צפייה כעת', 'top'], ['סדרות VOD', 'vod'], ['מדריך שידורים', 'guide'], ['חיפוש', 'search'], ['הגדרות', 'settings']];
       }
       if (S.kids) tabs = tabs.filter(function (t) { return t[1] !== 'settings'; }).concat([['יציאה ממצב ילדים', 'kids-exit']]);
       atv.tabs = tabs;
@@ -2197,7 +2216,7 @@
           return '<button class="atv-tab atv-tab-prof" data-i="' + i + '" title="מי צופה? - החלף פרופיל"><img class="atv-prof-ico" src="' + av + '" alt=""><span>' + esc(nm) + '</span></button>';
         }
         if (id === 'search' || id === 'multiview' || id === 'gdrive' || id === 'settings') {
-          if (id === 'gdrive') return '<button class="atv-tab ico-only" data-i="' + i + '" aria-label="הקלטות ענן" title="Google Drive והקלטות ענן">' + I('cloud') + '</button>';
+          if (id === 'gdrive') return '<button class="atv-tab ico-only" data-i="' + i + '" aria-label="הקלטות ענן" title="Google Drive והקלטות ענן">☁️</button>';
           var ico = id === 'search' ? I('search') : id === 'multiview' ? I('multiview') : I('settings');
           return '<button class="atv-tab ico-only" data-i="' + i + '" aria-label="' + esc(t[0]) + '" title="' + esc(t[0]) + '">' + ico + '</button>';
         }
@@ -2247,14 +2266,14 @@
   /** Moves the camera: the shelves slide up / down, the row's track glides sideways, the rest is opacity. */
   function atvLayout() {
     var r = atv.row;
-    $('atv-rows').style.transform = 'translate3d(0,' + (-r * atvRem(ATV_ROW)) + 'px,0)';
+    $('atv-rows').style.transform = 'translate3d(0,' + (-r * atvRem(atvGeo().row)) + 'px,0)';
     for (var i = 0; i < atv.rowEls.length; i++) {
       var cls = 'atv-row' + (i < r ? ' above' : i === r ? ' active' : ' below');
       if (Math.abs(i - r) > 2) cls += ' far-off';
       atv.rowEls[i].className = cls;
     }
     var c = atv.cols[r] || 0;
-    if (atv.tracks[r]) atv.tracks[r].style.transform = 'translate3d(' + (Math.max(0, c - 1) * atvRem(ATV_PITCH)) + 'px,0,0)';
+    if (atv.tracks[r]) atv.tracks[r].style.transform = 'translate3d(' + (Math.max(0, c - 1) * atvRem(atvGeo().pitch)) + 'px,0,0)';
   }
 
   function atvMark() {
@@ -2321,7 +2340,7 @@
     atv.flip = !atv.flip;
     if (!ch) { other.className = 'atv-meta'; target.className = 'atv-meta'; return; }
     var q = isApp(ch) ? 'אפליקציה' : isRadioCh(ch) ? 'רדיו' : (ch.badge || 'HD');
-    var tags = (ch.isVod ? '' : '<span class="atv-live">שידור חי</span>') + '<span class="atv-pill-q">' + esc(q) + '</span>' +
+    var tags = (ch.isVod ? '' : '<span class="atv-live"><i></i>LIVE</span>') + '<span class="atv-pill-q">' + esc(q) + '</span>' +
       '<span class="atv-tag">' + esc(splitCat(ch.category)) + '</span>' +
       (ch.countryHe ? '<span class="atv-tag">' + esc(ch.countryHe) + '</span>' : '') +
       (isFav(ch) ? '<span class="atv-tag">★ מועדף</span>' : '');
@@ -2498,7 +2517,7 @@
 
     openDialog({
       ico: '🍿',
-      title: PHONE ? 'VOD ישראל TV+ · ' + series.title : '',
+      title: 'VOD ישראל TV+ · ' + series.title,
       html: html,
       wide: true,
       cls: 'vod-dialog',
@@ -2713,6 +2732,12 @@
   function atvKey(code) {
     if (isBack(code)) { atvBack(); return; }
     if (atv.zone === 'pill') {
+      if (atvGeo().vert && !atv.search) {
+        if (code === 40) atvFocusPill(atv.tab + 1);
+        else if (code === 38) atvFocusPill(atv.tab - 1);
+        else if (code === 37) atvFocus(atv.row, atv.cols[atv.row] || 0);
+        return;
+      }
       if (code === 37) atvFocusPill(atv.tab + 1);
       else if (code === 39) atvFocusPill(atv.tab - 1);
       else if (code === 40) { if (atv.search) atvFocusSearch(); else atvFocus(atv.row, atv.cols[atv.row] || 0); }
@@ -2732,7 +2757,7 @@
     }
     var c = atv.cols[atv.row] || 0;
     if (code === 37) atvFocus(atv.row, c + 1);
-    else if (code === 39) atvFocus(atv.row, c - 1);
+    else if (code === 39) { if (c === 0 && atvGeo().vert && !atv.search) atvFocusPill(atv.tab); else atvFocus(atv.row, c - 1); }
     else if (code === 38) {
       if (atv.search) atvFocusSearch();
       else if (atv.row > 0) atvFocus(atv.row - 1, atv.cols[atv.row - 1] || 0);
@@ -3729,7 +3754,7 @@ function loadCandidate(ch, rawUrl) {
     if (Guide) Guide.fill();
     el.osdNum.textContent = ch.number;
     el.osdName.textContent = ch.name;
-    el.osdCat.textContent = splitCat(ch.category) + (S.showSource && PHONE ? ' · ' + sourceLine(ch).replace(/^מקור: /, '') : '');
+    el.osdCat.textContent = splitCat(ch.category) + (S.showSource ? ' · ' + sourceLine(ch).replace(/^מקור: /, '') : '');
     setLogo(el.osdLogo, el.osdMono, ch);
     applyPicture();
     refreshDubUi();
@@ -4216,8 +4241,8 @@ function showOsd() {
   function openDialog(opts) {
     state.dialog = opts;
     el.dialogIco.textContent = opts.ico || '';
-    el.dialogTitle.textContent = plain(opts.title || '');
-    el.dialogBody.innerHTML = plain(opts.html || '');
+    el.dialogTitle.textContent = opts.title || '';
+    el.dialogBody.innerHTML = opts.html || '';
     var btns = opts.buttons || [{ label: 'סגירה', primary: true }];
     el.dialogActions.innerHTML = btns.map(function (b, i) {
       return '<button class="btn' + (b.primary ? ' primary' : '') + '" data-i="' + i + '">' + b.label + '</button>';
@@ -4826,8 +4851,10 @@ function showOsd() {
       })() },
       { id: 'display', ico: M3_ICONS.display, name: 'תצוגה וממשק', desc: 'ערכות נושא, סגנון עיצוב טלוויזיה, פלטת צבעים ועיצוב מסך', rows: [
         sep('מראה וסגנון עיצוב'),
-        phoneRow(choice('theme', 'ערכת נושא', THEMES)),
-        phoneRow({ type: 'choice', label: 'פלטת צבעים (Material You)', help: readSystemColors() ? 'צבעי המערכת מבוססים על ערכת הטפט (Dynamic Colors)' : 'ערכות הצבע הנבחרות של הממשק',
+        { type: 'choice', tvOnly: true, label: 'עיצוב', help: (DESIGNS[S.design] || DESIGNS.classic).help, get: function () { return label(DESIGN_LIST, S.design); },
+          step: function (st) { setSetting('design', cycle(DESIGN_LIST, S.design, st)); } },
+        designRow(choice('theme', 'ערכת נושא', THEMES)),
+        designRow({ type: 'choice', label: 'פלטת צבעים (Material You)', help: readSystemColors() ? 'צבעי המערכת מבוססים על ערכת הטפט (Dynamic Colors)' : 'ערכות הצבע הנבחרות של הממשק',
           get: function () { return label(PALETTES, S.accent) + (S.accent === 'auto' ? ' (' + label(PALETTES, accentName()) + ')' : ''); },
           step: function (st) {
             var list = PALETTES.filter(function (p) { return p[0] !== 'system' || readSystemColors(); });
@@ -4971,10 +4998,7 @@ function showOsd() {
         action('איפוס כל ההגדרות לברירת מחדל', function () { confirmBox('לאפס את כל הגדרות האפליקציה? (רשימת המועדפים תישמר)', function () { try { localStorage.removeItem('itv_settings'); } catch (e) {} location.reload(); }); }, '', true)
       ] }
     ];
-    if (!PHONE) secs.forEach(function (s) {
-      s.rows = s.rows.filter(function (r) { return !r.phoneOnly && r.label !== 'מראה וסגנון עיצוב' && r.label !== 'מקור ושרת השידור'; });
-      if (BIG_NAMES[s.id]) { s.name = BIG_NAMES[s.id][0]; s.desc = BIG_NAMES[s.id][1]; }
-    });
+    if (activeDesign() !== DESIGNS.classic) secs.forEach(function (s) { s.rows = s.rows.filter(function (r) { return !r.classicOnly; }); });
     if (PHONE) {
       secs = secs.filter(function (s) { return !s.tvOnly; });
       secs.forEach(function (s) { s.rows = s.rows.filter(function (r) { return !r.tvOnly; }); });
@@ -4983,20 +5007,8 @@ function showOsd() {
   }
 
   function tvRow(r) { r.tvOnly = true; return r; }
-  function phoneRow(r) { r.phoneOnly = true; return r; }
-  var BIG_NAMES = {
-    profiles: ['פרופילים', 'מי צופה, ומה נשמר לכל אחד'],
-    google_cloud: ['חשבון Google', 'גיבוי הגדרות ומועדפים, והקלטות ב-Drive'],
-    display: ['תצוגה', 'גודל הטקסט ומה מופיע על המסך'],
-    channels: ['ערוצים', 'קטגוריות, ערוצים מוסתרים ומה נפתח בהתחלה'],
-    player: ['נגן', 'תמונה, איכות וחיבור מחדש'],
-    remote: ['שלט רחוק', 'מקשי הצבע וקיצורי הדרך'],
-    dub: ['דיבוב לעברית', 'תרגום קולי של ערוצים זרים'],
-    kids: ['מצב ילדים', 'רק ערוצי ילדים, עם קוד ליציאה'],
-    saver: ['שומר מסך', 'מתי המסך מתעמעם'],
-    updates: ['עדכונים', 'הגרסה שלך ולוג השינויים'],
-    about: ['אודות', 'פרטי המכשיר, מקורות השידור ואיפוס']
-  };
+  // the classic design is the only one that takes its colours from these rows
+  function designRow(r) { r.classicOnly = true; return r; }
 
   var sections = [];
   function openSettings(sectionId) {
@@ -5567,7 +5579,7 @@ function showOsd() {
     setInterval(tick, 5000);
   }
   function toast(msg) {
-    el.toast.textContent = plain(msg);
+    el.toast.textContent = msg;
     el.toast.classList.remove('hidden');
     if (state.toastTimer) clearTimeout(state.toastTimer);
     state.toastTimer = setTimeout(function () { el.toast.classList.add('hidden'); }, 3200);
@@ -6019,7 +6031,7 @@ function showOsd() {
         toggleClass(cellNode, 'active-audio', active);
         var abtn = cellNode.querySelector('[data-mvact="audio"]');
         if (abtn) {
-          abtn.textContent = active ? 'שמע פעיל' : 'הפעל שמע';
+          abtn.textContent = active ? '🔊 שמע פעיל' : '🔇 הפעל שמע';
           toggleClass(abtn, 'on', active);
         }
       }
@@ -6051,10 +6063,10 @@ function showOsd() {
         '<div class="mv-cell-hud">' +
           '<div class="mv-cell-info"><span class="mv-cell-num">' + ch.number + '</span><span class="mv-cell-name">' + esc(ch.name) + '</span></div>' +
           '<div class="mv-cell-actions">' +
-            '<button type="button" class="mv-cbtn' + (i === mv.activeAudio ? ' on' : '') + '" data-mvact="audio">' + (i === mv.activeAudio ? 'שמע פעיל' : 'הפעל שמע') + '</button>' +
-            '<button type="button" class="mv-cbtn" data-mvact="server">שרת</button>' +
-            '<button type="button" class="mv-cbtn" data-mvact="pick">החלף ערוץ</button>' +
-            '<button type="button" class="mv-cbtn" data-mvact="full">מסך מלא</button>' +
+            '<button type="button" class="mv-cbtn' + (i === mv.activeAudio ? ' on' : '') + '" data-mvact="audio">' + (i === mv.activeAudio ? '🔊 שמע פעיל' : '🔇 הפעל שמע') + '</button>' +
+            '<button type="button" class="mv-cbtn" data-mvact="server">🔀 שרת</button>' +
+            '<button type="button" class="mv-cbtn" data-mvact="pick">📺 החלף ערוץ</button>' +
+            '<button type="button" class="mv-cbtn" data-mvact="full">⛶ מסך מלא</button>' +
           '</div>' +
         '</div>';
       el.mvGrid.appendChild(div);
@@ -6309,7 +6321,7 @@ function showOsd() {
     else if (code === 38 || code === 40) {
       mv.activeAudio = mv.focusIdx;
       updateMultiViewAudio();
-      toast('שמע פעיל: ' + (mv.cells[mv.focusIdx] && mv.cells[mv.focusIdx].ch ? mv.cells[mv.focusIdx].ch.name : ''));
+      toast('🔊 שמע פעיל: ' + (mv.cells[mv.focusIdx] && mv.cells[mv.focusIdx].ch ? mv.cells[mv.focusIdx].ch.name : ''));
       return;
     } else if (code === 13) {
       openMultiViewPicker(mv.focusIdx);
