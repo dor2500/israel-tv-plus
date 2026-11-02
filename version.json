@@ -1,13 +1,25 @@
 {
-  "version": "4.8.55",
-  "code": 202611020633,
-  "app": 635,
+  "version": "4.8.56",
+  "code": 202611020734,
+  "app": 636,
   "shell": 3,
   "date": "2026-11-02",
   "notes": [
-    "הלוגו הקודם חזר: משולש פליי לבן עם נקודה אדומה, בכל המכשירים."
+    "לכל מספר ערוץ יש עכשיו ערוץ אחד. 13 מספרים היו משותפים לשני ערוצים, והקשת המספר בשלט יכלה להוביל לערוץ הלא נכון. הערוץ המוכר שמר על המספר, והשני עבר למספר חדש מ-511 ומעלה.",
+    "מצב האזנה חוסך נתונים באמת: התמונה כבויה והשידור עובר לאיכות הנמוכה ביותר. קודם רק התמונה הוסתרה והווידאו המשיך לרדת במלואו.",
+    "\"דלג על פתיח\" הוחלף ב\"דילוג 90 שניות קדימה\", שתמיד מקדם ולא קופץ לנקודה קבועה.",
+    "מקשי הצבע עברו מתחתית המסך אל מתחת לשורת הלשוניות, כי הם הסתירו את שורת הערוצים התחתונה."
   ],
   "history": [
+    {
+      "version": "4.8.56",
+      "notes": [
+        "לכל מספר ערוץ יש עכשיו ערוץ אחד. 13 מספרים היו משותפים לשני ערוצים, והקשת המספר בשלט יכלה להוביל לערוץ הלא נכון. הערוץ המוכר שמר על המספר, והשני עבר למספר חדש מ-511 ומעלה.",
+        "מצב האזנה חוסך נתונים באמת: התמונה כבויה והשידור עובר לאיכות הנמוכה ביותר. קודם רק התמונה הוסתרה והווידאו המשיך לרדת במלואו.",
+        "\"דלג על פתיח\" הוחלף ב\"דילוג 90 שניות קדימה\", שתמיד מקדם ולא קופץ לנקודה קבועה.",
+        "מקשי הצבע עברו מתחתית המסך אל מתחת לשורת הלשוניות, כי הם הסתירו את שורת הערוצים התחתונה."
+      ]
+    },
     {
       "version": "4.8.55",
       "notes": [
@@ -215,53 +227,44 @@
         "תמיכה בסינון וקטגוריות ישירות לפי ערוצים ראשיים וז'אנרים ב-VOD.",
         "עדכון קטלוג ה-VOD בסמארטפונים, Android Auto, טלוויזיות חכמות, מחשב ודפדפן."
       ]
-    },
-    {
-      "version": "4.8.31",
-      "notes": [
-        "אנדרואיד אוטו ומסכי רכב: הוספת שידורי וידאו מלאים לערוצי הטלוויזיה החיים וסדרות VOD.",
-        "מסך וידאו ייעודי לרכב (CarVideoActivity) עם תמיכה במצב תמונה-בתוך-תמונה (PiP) אוטומטי בעת מעבר לניווט (Waze / Google Maps).",
-        "שליטה מלאה בווידאו ובערוצים מכפתורי ההגה, שלטי מדיה ומגע.",
-        "הקרנת וידאו ישירה על צגים ומסכים ברכב באמצעות CarPresentation."
-      ]
     }
   ],
   "native": {
     "android": {
-      "version": "4.8.55",
-      "app": 635,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.55/IsraelTVPlus-android.apk"
+      "version": "4.8.56",
+      "app": 636,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.56/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "4.8.55",
-      "app": 635,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.55/IsraelTVPlus-windows-setup.exe"
+      "version": "4.8.56",
+      "app": 636,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.56/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "4.8.55",
-      "app": 635,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.55/com.israeltv.plus_all.ipk",
+      "version": "4.8.56",
+      "app": 636,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.56/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "4.8.55",
-      "app": 635,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.55/IsraelTVPlus-tizen-project.zip"
+      "version": "4.8.56",
+      "app": 636,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.56/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "4.8.55",
-      "app": 635,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.55/IsraelTVPlus-macos-arm64.zip"
+      "version": "4.8.56",
+      "app": 636,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.56/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "4.8.55",
-      "app": 635,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.55/IsraelTVPlus-linux-x64.zip"
+      "version": "4.8.56",
+      "app": 636,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.56/IsraelTVPlus-linux-x64.zip"
     },
     "wear": {
-      "version": "4.8.55",
-      "app": 1000535,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.55/IsraelTVPlus-wearos.apk"
+      "version": "4.8.56",
+      "app": 1000536,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.56/IsraelTVPlus-wearos.apk"
     }
   }
 }

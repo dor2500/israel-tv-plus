@@ -2809,7 +2809,7 @@ window.CHANNELS_DATA = [
     "badge": "HD",
     "lang": "he",
     "desc": "ערוץ ספורט 6 מבית צ'רלטון – שידורים חיים של טניס, פאדל, כדורגל עולמי וספורט בינלאומי ב-HD",
-    "number": 99,
+    "number": 511,
     "src": {
       "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
       "kind": "official",
@@ -3935,7 +3935,7 @@ window.CHANNELS_DATA = [
     "badge": "HD",
     "lang": "he",
     "desc": "ערוץ הסרטים הים תיכוני 1 – קולנוע טורקי, יווני וים תיכוני מרגש בתרגום לעברית",
-    "number": 140,
+    "number": 512,
     "src": {
       "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
       "kind": "official",
@@ -11495,7 +11495,7 @@ window.CHANNELS_DATA = [
       "https://hlspackager.akamaized.net/live/DB/Israel9/HLS/Israel9.m3u8"
     ],
     "channelNumber": 9,
-    "number": 9,
+    "number": 513,
     "language": "Hebrew/Russian",
     "lang": "he,ru",
     "country": "IL",
@@ -11539,7 +11539,7 @@ window.CHANNELS_DATA = [
     "url": "https://cdn.cybercdn.live/HidabrootIL/Live97/playlist.m3u8",
     "backupUrls": [],
     "channelNumber": 97,
-    "number": 97,
+    "number": 514,
     "language": "Hebrew",
     "lang": "he",
     "country": "IL",
@@ -11562,7 +11562,7 @@ window.CHANNELS_DATA = [
       "https://hlspackager.akamaized.net/live/DB/i24_ARABIC/HLS/i24_ARABIC.m3u8"
     ],
     "channelNumber": 331,
-    "number": 331,
+    "number": 515,
     "language": "Arabic",
     "lang": "ar",
     "country": "IL",
@@ -11585,7 +11585,7 @@ window.CHANNELS_DATA = [
       "https://hlspackager.akamaized.net/live/DB/i24_ENG/HLS/i24_ENG.m3u8"
     ],
     "channelNumber": 332,
-    "number": 332,
+    "number": 516,
     "language": "English",
     "lang": "en",
     "country": "IL",
@@ -11608,7 +11608,7 @@ window.CHANNELS_DATA = [
       "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan23/live.livx/playlist.m3u8"
     ],
     "channelNumber": 80,
-    "number": 80,
+    "number": 517,
     "language": "Hebrew",
     "lang": "he",
     "country": "IL",
@@ -11632,7 +11632,7 @@ window.CHANNELS_DATA = [
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12244/index.m3u8"
     ],
     "channelNumber": 77,
-    "number": 77,
+    "number": 518,
     "language": "Hebrew",
     "lang": "he",
     "country": "IL",
@@ -11656,7 +11656,7 @@ window.CHANNELS_DATA = [
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2359/index.m3u8"
     ],
     "channelNumber": 84,
-    "number": 84,
+    "number": 519,
     "language": "Hebrew",
     "lang": "he",
     "country": "IL",
@@ -11680,7 +11680,7 @@ window.CHANNELS_DATA = [
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12226/index.m3u8"
     ],
     "channelNumber": 39,
-    "number": 39,
+    "number": 520,
     "language": "Hebrew/Spanish",
     "lang": "he,es",
     "country": "IL",
@@ -11704,7 +11704,7 @@ window.CHANNELS_DATA = [
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2355/index.m3u8"
     ],
     "channelNumber": 32,
-    "number": 32,
+    "number": 521,
     "language": "Hebrew",
     "lang": "he",
     "country": "IL",
@@ -11728,7 +11728,7 @@ window.CHANNELS_DATA = [
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12270/index.m3u8"
     ],
     "channelNumber": 18,
-    "number": 18,
+    "number": 522,
     "language": "Hebrew/English",
     "lang": "he,en",
     "country": "IL",
@@ -11752,7 +11752,7 @@ window.CHANNELS_DATA = [
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32140/index.m3u8"
     ],
     "channelNumber": 19,
-    "number": 19,
+    "number": 523,
     "language": "Hebrew/English",
     "lang": "he,en",
     "country": "IL",

@@ -116,7 +116,7 @@ https://gb25.streamgates.net/radios-audio/100Kids/icecast.audio
 #EXTINF:-1 tvg-id="" tvg-name="רדיוס 100% ערוץ הכוכבים" tvg-chno="67" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/radios_stars.png" group-title="ילדים ונוער (בעברית)" radio="true",רדיוס 100% ערוץ הכוכבים
 https://gb25.streamgates.net/radios-audio/100Stars/icecast.audio
 #EXTINF:-1 tvg-id="" tvg-name="ערוץ ניק ג'וניור פלוס בעברית HD (Nick Jr.+)" tvg-chno="68" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/nick_jr_party_il.png" group-title="ילדים ונוער (בעברית)",ערוץ ניק ג'וניור פלוס בעברית HD (Nick Jr.+)
-http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12240/index.m3u8
+http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2337/index.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="ערוץ 98 – האזרח הוותיק HD" tvg-chno="69" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/channel_98_il.png" group-title="ערוצי ישראל",ערוץ 98 – האזרח הוותיק HD
 http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2369/index.m3u8
 #EXTINF:-1 tvg-id="KnessetChannel.il" tvg-name="ערוץ הכנסת 99 HD" tvg-chno="70" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/knesset.png" group-title="ערוצי ישראל",ערוץ הכנסת 99 HD
@@ -540,18 +540,18 @@ http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2355/index.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="ערוץ הלא TV HD (Hala TV)" tvg-chno="411" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hala_tv_il.png" group-title="ערוצי ישראל",ערוץ הלא TV HD (Hala TV)
 https://stream.panet.com/edge/halaTV/playlist.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="ערוץ הכנסת HD (Knesset Channel)" tvg-chno="99" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/knesset.png" group-title="ערוצי ישראל",ערוץ הכנסת HD (Knesset Channel)
-http://stream.mcquack.net/48/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ערוץ 9 ישראל HD" tvg-chno="9" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/ch9.png" group-title="ערוצי ישראל",ערוץ 9 ישראל HD
+https://stream.mcquack.net/48/index.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ 9 ישראל HD" tvg-chno="513" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/ch9.png" group-title="ערוצי ישראל",ערוץ 9 ישראל HD
 https://contact.gostreaming.tv/Con-11/index.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="ערוץ 14 החדשות עכשיו (Now 14 Live)" tvg-chno="140" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/now14.png" group-title="ערוצי ישראל",ערוץ 14 החדשות עכשיו (Now 14 Live)
 https://r.il.cdn-redge.media/livehls/oil/ch14/live/ch14/live.livx/playlist.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ערוץ הידברות HD" tvg-chno="97" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hidabroot.png" group-title="מסורת וקהילה",ערוץ הידברות HD
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ הידברות HD" tvg-chno="514" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hidabroot.png" group-title="מסורת וקהילה",ערוץ הידברות HD
 https://cdn.cybercdn.live/HidabrootIL/Live97/playlist.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="כאן חינוכית HD (חינוכית ילדים)" tvg-chno="80" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/kan_hinuchit.png" group-title="ילדים ונוער (בעברית)",כאן חינוכית HD (חינוכית ילדים)
-http://stream.mcquack.net/378/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ערוץ הופ! ילדים HD (Hop! Kids)" tvg-chno="77" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hop_kids_israel.png" group-title="ילדים ונוער (בעברית)",ערוץ הופ! ילדים HD (Hop! Kids)
-http://stream.mcquack.net/44/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ערוץ זום ZOOM ילדים ונוער HD" tvg-chno="84" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/zoom_kids_israel.png" group-title="ילדים ונוער (בעברית)",ערוץ זום ZOOM ילדים ונוער HD
-http://stream.mcquack.net/377/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ערוץ החיים הטובים HD (Good Life)" tvg-chno="32" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/good_life_israel.png" group-title="ערוצי ישראל",ערוץ החיים הטובים HD (Good Life)
-http://stream.mcquack.net/47/index.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="כאן חינוכית HD (חינוכית ילדים)" tvg-chno="517" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/kan_hinuchit.png" group-title="ילדים ונוער (בעברית)",כאן חינוכית HD (חינוכית ילדים)
+https://stream.mcquack.net/378/index.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ הופ! ילדים HD (Hop! Kids)" tvg-chno="518" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hop_kids_israel.png" group-title="ילדים ונוער (בעברית)",ערוץ הופ! ילדים HD (Hop! Kids)
+https://stream.mcquack.net/44/index.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ זום ZOOM ילדים ונוער HD" tvg-chno="519" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/zoom_kids_israel.png" group-title="ילדים ונוער (בעברית)",ערוץ זום ZOOM ילדים ונוער HD
+https://stream.mcquack.net/377/index.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ החיים הטובים HD (Good Life)" tvg-chno="521" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/good_life_israel.png" group-title="ערוצי ישראל",ערוץ החיים הטובים HD (Good Life)
+https://stream.mcquack.net/47/index.m3u8

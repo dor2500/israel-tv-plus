@@ -3512,6 +3512,7 @@ function loadCandidate(ch, rawUrl) {
         if (!adjusted && Dub) { adjusted = true; Dub.adjustMainHls(hls, data.details, ch); }
       });
       hls.on(Hls.Events.MANIFEST_PARSED, function (e, data) {
+        if (state.audioOnly) hls.autoLevelCapping = 0;
         var levels = data.levels || [];
         if (levels.length > 0) {
           applyQualityLevel(hls, levels);
@@ -4113,7 +4114,11 @@ function showOsd() {
     if (!ch) return;
     var items = [];
     if (ch.isVod) {
-      items.push({ ico: '⏩', label: 'דלג על פתיח (Skip Intro)', act: function () { el.video.currentTime = Math.max(el.video.currentTime, 85); toast('⏩ דולג על הפתיח'); } });
+      items.push({ ico: '⏩', label: 'דילוג 90 שניות קדימה', act: function () {
+        var v = el.video, end = isFinite(v.duration) ? v.duration - 5 : Infinity;
+        v.currentTime = Math.min(v.currentTime + 90, end);
+        toast('דילגת 90 שניות קדימה');
+      } });
       if (ch.series) {
         items.push({ ico: '📋', label: 'פרקים בסדרה (' + ch.series.title + ')', act: function () { openVodModal(ch.series); } });
         items.push({ ico: '💾', label: 'הקלט פרק זה ל-Google Drive', act: function () {
@@ -4168,12 +4173,8 @@ function showOsd() {
     if (!state.isRadio) {
       items.push({
         ico: '🎧',
-        label: 'מצב האזנה בלבד (חיסכון בסוללה)',
-        act: function () {
-          toast('🎧 מצב האזנה מופעל · הקש על הנגן לחזרה לוידאו');
-          var pl = $('player');
-          if (pl) pl.classList.toggle('audio-only-view');
-        }
+        label: state.audioOnly ? 'חזרה לתמונה' : 'מצב האזנה (בלי תמונה, איכות נמוכה)',
+        act: function () { setAudioOnly(!state.audioOnly); }
       });
     }
     if (Guide) items.push({ ico: '▦', label: 'לוח שידורים', act: Guide.open });
@@ -5577,6 +5578,13 @@ function showOsd() {
     };
     tick();
     setInterval(tick, 5000);
+  }
+  /** Listening mode: no picture and the lowest quality the stream offers (most of the data is the video). */
+  function setAudioOnly(on) {
+    state.audioOnly = on;
+    toggleClass(el.player, 'audio-only-view', on);
+    if (state.hls) { try { state.hls.autoLevelCapping = on ? 0 : -1; if (on) state.hls.nextLevel = 0; } catch (e) {} }
+    toast(on ? 'מצב האזנה: בלי תמונה, והשידור עבר לאיכות הנמוכה ביותר' : 'התמונה חזרה');
   }
   function toast(msg) {
     el.toast.textContent = msg;

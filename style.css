@@ -1157,7 +1157,7 @@ button.hint.hint-btn:hover, button.hint.hint-btn.focused {
 .atv-colors {
   position: fixed;
   left: 3.6rem;
-  bottom: .6rem;
+  top: 7.6rem;
   z-index: 25;
   display: flex;
   align-items: center;
@@ -2797,7 +2797,7 @@ body:not(.light) ::-webkit-scrollbar-thumb { border-radius: .4rem; background: r
   visibility: hidden !important;
 }
 #player.audio-only-view::before {
-  content: '🎧 מצב האזנה פעיל (חיסכון בסוללה ודאטה) · הקש בכל מקום לחזרה לוידאו';
+  content: 'מצב האזנה · התמונה כבויה והשידור באיכות הנמוכה ביותר';
   position: absolute;
   top: 50%;
   left: 50%;
