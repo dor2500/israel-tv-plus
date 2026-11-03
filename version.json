@@ -1,16 +1,19 @@
 {
-  "version": "4.8.57",
-  "code": 202611030835,
-  "app": 40857,
+  "version": "4.8.58",
+  "code": 202611031500,
+  "app": 40858,
   "shell": 3,
   "date": "2026-11-03",
   "notes": [
-    "באנר תוכנית חיה ומד התקדמות בזמן אמת במסך הראשי ובאנדרואיד – מעבר על כל ערוץ מציג מיד את שם התוכנית המשודרת כעת, שעות השידור, פרוגרס-בר חי, תקציר התוכנית והתוכנית הבאה אחריה, הן בטלוויזיה ובמחשב והן בחלונית המידע באנדרואיד.",
-    "האצת זמני עלייה וחיסכון של 5.2MB בגודל ה-APK – טעינה מקבילית של קובצי הליבה ב-boot.js, פליטה מיידית של הערוצים החיים באנדרואיד לפני פענוח קטלוג ה-VOD, איחוד קאש לוח השידורים (למניעת הורדה כפולה של epg.json), וביטול כפילות קובצי הנתונים בתוך חבילת האנדרואיד.",
-    "תיקון באג עדכון לוח השידורים באנדרואיד, תיקון ה-Service Worker לעבודה מלאה אופליין, שדרוג ביצועי שרת ה-Relay (שמירת מפתח HMAC בזיכרון וכותרות מקור מותאמות), ומעבר לנוסחת versionCode מונוטונית חדשה המונעת חסימת עדכונים עתידיים.",
-    "ניקיון המאגר מ-150 סקריפטי עזר ישנים וקובצי לוג."
+    "סדרות: הוסתרו 163 סדרות שלא עבדו. ברובן הפרקים לא נטענו בכלל, ובחלק מהן כל הפרקים ניגנו את השידור החי של ערוץ אחר (למשל \"רמזור\" ניגנה את ערוץ סברי מרנן). נשארה כראמל, שכל 12 הפרקים שלה מתנגנים."
   ],
   "history": [
+    {
+      "version": "4.8.58",
+      "notes": [
+        "סדרות: הוסתרו 163 סדרות שלא עבדו. ברובן הפרקים לא נטענו בכלל, ובחלק מהן כל הפרקים ניגנו את השידור החי של ערוץ אחר (למשל \"רמזור\" ניגנה את ערוץ סברי מרנן). נשארה כראמל, שכל 12 הפרקים שלה מתנגנים."
+      ]
+    },
     {
       "version": "4.8.57",
       "notes": [
@@ -219,53 +222,44 @@
         "טאבים לבחירת עונה (Season Selector Tabs) בממשק ה-VOD באנדרואיד, ב-Web ובטלוויזיות חכמות.",
         "ניגון רציף וחלק עם מפענחי חומרה מואצים ומעבר אוטומטי לפרק הבא."
       ]
-    },
-    {
-      "version": "4.8.33",
-      "notes": [
-        "סריקת ענק והרחבת VOD מכל הרשת: מעל 137 סדרות ו-2,280 פרקים מלאים מכל ערוצי הטלוויזיה בישראל.",
-        "צפייה חלקה במיוחד (Smooth Playback & UI): האצת זמני טעינת הווידאו, הקטנת ה-Buffer להתחלה מיידית (350ms), מניעת תקיעות וניצול האצת חומרה (GPU compositing).",
-        "מעבר רציף וללא מסך שחור בין ערוצים ופרקים (KeepContentOnPlayerReset).",
-        "ניגון אוטומטי של הפרק הבא בסיום צפייה בפרק ב-VOD."
-      ]
     }
   ],
   "native": {
     "android": {
-      "version": "4.8.57",
-      "app": 40857,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.57/IsraelTVPlus-android.apk"
+      "version": "4.8.58",
+      "app": 40858,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.58/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "4.8.57",
-      "app": 40857,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.57/IsraelTVPlus-windows-setup.exe"
+      "version": "4.8.58",
+      "app": 40858,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.58/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "4.8.57",
-      "app": 40857,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.57/com.israeltv.plus_all.ipk",
+      "version": "4.8.58",
+      "app": 40858,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.58/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "4.8.57",
-      "app": 40857,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.57/IsraelTVPlus-tizen-project.zip"
+      "version": "4.8.58",
+      "app": 40858,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.58/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "4.8.57",
-      "app": 40857,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.57/IsraelTVPlus-macos-arm64.zip"
+      "version": "4.8.58",
+      "app": 40858,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.58/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "4.8.57",
-      "app": 40857,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.57/IsraelTVPlus-linux-x64.zip"
+      "version": "4.8.58",
+      "app": 40858,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.58/IsraelTVPlus-linux-x64.zip"
     },
     "wear": {
-      "version": "4.8.57",
-      "app": 1040857,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.57/IsraelTVPlus-wearos.apk"
+      "version": "4.8.58",
+      "app": 1040858,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.58/IsraelTVPlus-wearos.apk"
     }
   }
 }
