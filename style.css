@@ -3488,3 +3488,62 @@ body.design-paper #tvguide .tv-logo { background: #1a1a1a; }
 body.design-paper #tvguide .tv-clock, body.design-paper #tvguide .tv-num { color: #1a1a1a; }
 body.design-paper #tvguide .tv-nm { color: #4a4640; }
 body.design-paper #tvguide .tv-heart { filter: invert(1) brightness(.2); }
+
+/* ------------------------------------------------------------------ Live EPG Stage Banner (TV Home) */
+.atv-epg-box {
+  display: flex;
+  flex-direction: column;
+  gap: .45rem;
+  max-width: 44rem;
+  margin: .35rem 0 .55rem;
+  padding: .65rem 1.1rem;
+  border-radius: 1.1rem;
+  background: rgba(15, 23, 42, .52);
+  border: 1px solid rgba(255, 255, 255, .14);
+}
+.atv-epg-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .6rem;
+  font-size: 1.25rem;
+  line-height: 1.3;
+}
+.atv-epg-now {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #ff5252;
+  background: rgba(255, 82, 82, .16);
+  padding: .12rem .65rem;
+  border-radius: 99rem;
+}
+.atv-epg-title {
+  font-size: 1.38rem;
+  font-weight: 800;
+  color: #fff;
+}
+.atv-epg-time {
+  font-size: 1.18rem;
+  color: rgba(255, 255, 255, .75);
+  font-weight: 600;
+}
+.atv-epg-bar {
+  width: 100%;
+  height: .38rem;
+  background: rgba(255, 255, 255, .16);
+  border-radius: 99rem;
+  overflow: hidden;
+}
+.atv-epg-bar i {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent, #60a5fa), #38bdf8);
+  border-radius: 99rem;
+}
+body.design-paper .atv-epg-box {
+  background: rgba(26, 26, 26, .06);
+  border-color: #c9bfa8;
+}
+body.design-paper .atv-epg-title { color: #1a1a1a; }
+body.design-paper .atv-epg-time { color: #4a4640; }
+body.design-paper .atv-epg-bar { background: rgba(26, 26, 26, .15); }

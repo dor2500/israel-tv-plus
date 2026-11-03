@@ -10,8 +10,7 @@ val repo: File = rootDir.parentFile                      // the israel-tv-plus r
 val appVersion = repo.resolve("VERSION").readText().trim()
 val appCode = appVersion.split(".").let { p ->
     val (maj, min, pat) = Triple(p[0].toInt(), p[1].toInt(), p[2].toInt())
-    if (maj == 4 && min == 3) 500 + pat
-    else 100 + maj * 100 + min * 10 + pat
+    maj * 10000 + min * 100 + pat
 }
 
 // Release key: the same one tools/build_apk.ps1 always used, so the update installs over every earlier APK.
@@ -91,8 +90,6 @@ abstract class WebAssets @Inject constructor(private val fs: FileSystemOperation
     @get:InputDirectory @get:PathSensitive(PathSensitivity.RELATIVE) abstract val repoAssets: DirectoryProperty
     @get:InputFiles @get:PathSensitive(PathSensitivity.RELATIVE) abstract val webFiles: ConfigurableFileCollection
     @get:InputFile @get:PathSensitive(PathSensitivity.NONE) abstract val channels: RegularFileProperty
-    @get:InputFile @get:PathSensitive(PathSensitivity.NONE) abstract val vodData: RegularFileProperty
-    @get:InputFile @get:PathSensitive(PathSensitivity.NONE) abstract val epg: RegularFileProperty
     @get:OutputDirectory abstract val outputDir: DirectoryProperty
 
     @TaskAction
@@ -105,8 +102,6 @@ abstract class WebAssets @Inject constructor(private val fs: FileSystemOperation
                 exclude("**/*&*", "**/*.map", "app/banner-1280*", "app/icon-1024*")
             }
             from(channels)
-            from(vodData)
-            from(epg)
         }
     }
 }
@@ -133,8 +128,6 @@ val webAssets = tasks.register<WebAssets>("webAssets") {
     webFiles.from(repo.resolve("tools/webfiles.txt").readLines().map { it.trim() }
         .filter { it.isNotEmpty() && !it.startsWith("#") }.map { repo.resolve(it) })
     channels.set(repo.resolve("channels.json"))
-    vodData.set(repo.resolve("vod_data.json"))
-    epg.set(repo.resolve("epg.json"))
 }
 val appIcons = tasks.register<AppIcons>("appIcons") { appArt.set(repo.resolve("assets/app")) }
 
@@ -181,4 +174,3 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.12.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.11.0")
 }
-

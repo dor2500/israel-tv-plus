@@ -8,14 +8,45 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.Transient
 import kotlinx.serialization.json.Json
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import java.io.File
+import java.util.concurrent.ConcurrentHashMap
 
 /** The published site: channel list, logos, version.json (GitHub Pages). */
 const val REMOTE = "https://dor2500.github.io/israel-tv-plus/"
-const val USER_AGENT = "Mozilla/5.0 (Linux; Android 14) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Mobile Safari/537.36 IsraelTVPlus/3 AndroidPhone"
+const val USER_AGENT = "Mozilla/5.0 (Linux; Android 14) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Mobile Safari/537.36 IsraelTVPlus/3 AndroidPhone"
+
+private val KIDS_EXCLUDE_WORDS = listOf(
+    "היפ הופ", "hiphop", "הופעות", "אירוויזיון", "יהודית", "חדשות", "ספורט", "פוליטיקה",
+    "דת ", "כלכלה", "ויוה", "viva", "טלנובלה", "telenovela", "אימה", "horror", "news",
+    "sport", "finance", "דרמה", "drama", "רכב", "מרוצים", "motor", "cars", "racing",
+    "אוכל", "בישול", "cooking", "food", "טבע", "פרא", "docu", "דוקו", "lifestyle",
+    "עיצוב", "שיפוץ", "האח הגדול", "big brother", "reality", "ריאליטי", "קומדיה", "comedy",
+    "קולנוע ישראלי", "סרטים", "cinema", "movies", "hbo", "hot 3", "yes tv", "action",
+    "אקשן", "פוד", "foody", "סדרות", "series", "ערוץ 9", "ערוץ 11", "ערוץ 12", "ערוץ 13",
+    "ערוץ 14", "ערוץ 15", "ערוץ 16", "כאן 11", "קשת 12", "רשת 13", "עכשיו 14", "i24news",
+    "כנסת", "knesset", "103fm", "100fm", "eco99", "גלגלצ", "גלצ", "קול ברמה", "קול חי", "מכאן"
+)
+
+private val KIDS_ALLOW_OVERRIDE = listOf(
+    "ילדים", "פמילי", "kids", "family", "מצויר", "cartoon", "disney", "דיסני", "ניק", "nick",
+    "ג'וניור", "junior", "הופ!", "לולי", "luli", "חינוכית", "hinuchit", "ילדותי", "yalduti",
+    "שירי ילדות", "baby", "duck", "lego"
+)
+
+private val KIDS_RADIO_IDS = setOf("radios_disney", "radios_kids", "radios_stars", "kan_kids_radio")
+private val KIDS_CATS_EN = setOf("kids", "kids_he", "kids_world", "cartoons")
+
+private val KIDS_ALLOW_WORDS = listOf(
+    "ילדים", "נוער", "פעוטות", "קטנטנים", "אנימציה", "מצוירים", "הופ!", "בייבי", "דיסני",
+    "ניקלודיאון", "ניק ג'וניור", "ג'וניור", "קארטון נטוורק", "בומרנג", "שירי ילדותי", "ילדותי",
+    "baby shark", "ducktv", "lego", "transformers", "cartoon network", "boomerang", "luli",
+    "לולי", "זום", "zoom", "חינוכית", "hinuchit", "יויו", "yoyo", "וויז", "wiz", "באזז",
+    "fomo", "stars_kids", "a_plus_kids"
+)
 
 /** One entry of channels.json (the same file the web app, the M3U playlists and Stremio are made from). */
 @Immutable
@@ -41,32 +72,65 @@ data class Channel(
 ) {
     val isRadio: Boolean get() = kind == "radio"
 
+    @Transient
+    val isKidsChannel: Boolean = computeIsKids()
+
+    private fun computeIsKids(): Boolean {
+        val cat = category.lowercase()
+        val en = categoryEn.lowercase()
+        val n = name.lowercase()
+        val cid = id.lowercase()
+        val full = "$cat $en $n $cid"
+        if (KIDS_EXCLUDE_WORDS.any { it in full }) {
+            if (KIDS_ALLOW_OVERRIDE.none { it in full }) return false
+        }
+        if (isRadio || "radio" in en) {
+            return cid in KIDS_RADIO_IDS
+        }
+        if ("ילדים" in cat || en in KIDS_CATS_EN) return true
+        return KIDS_ALLOW_WORDS.any { it in full }
+    }
+
     /** Ordered list of all stream URLs (primary + fallbacks + backups) to try automatically on playback error. */
     fun allCandidateUrls(): List<String> =
         (listOf(url) + fallbackUrls + backups).map { it.trim() }.filter { it.isNotEmpty() }.distinct()
 }
 
 private const val MAKO_ENTITLEMENT = "https://mass.mako.co.il/ClicksStatistics/entitlementsServicesV2.jsp"
+private const val MAKO_TICKET_TTL_MS = 10 * 60_000L
+private val makoTicketCache = ConcurrentHashMap<String, Pair<String, Long>>()
 
 /**
  * Resolves a single candidate stream URL. Automatically fetches a Mako entitlement ticket whenever the URL is hosted
  * on mako-streaming.akamaized.net (or when auth == "mako" and the URL is a Mako stream); every other stream plays as is.
  */
-suspend fun playableUrl(rawUrl: String, auth: String = ""): String = withContext(Dispatchers.IO) {
+suspend fun playableUrl(rawUrl: String, auth: String = "", forceRefresh: Boolean = false): String = withContext(Dispatchers.IO) {
     val needsMakoTicket = rawUrl.contains("mako-streaming.akamaized.net", ignoreCase = true) ||
         (auth == "mako" && rawUrl.contains("mako", ignoreCase = true))
     if (!needsMakoTicket) return@withContext rawUrl
+
+    val now = System.currentTimeMillis()
+    if (!forceRefresh) {
+        makoTicketCache[rawUrl]?.let { (signedUrl, ts) ->
+            if (now - ts < MAKO_TICKET_TTL_MS) return@withContext signedUrl
+        }
+    }
+
     val path = java.net.URI(rawUrl).let { it.rawPath + (it.rawQuery?.let { q -> "?$q" } ?: "") }
     val req = java.net.URL(MAKO_ENTITLEMENT + "?et=ngt&rv=AKAMAI&lp=" + java.net.URLEncoder.encode(path, "UTF-8"))
     val text = (req.openConnection() as java.net.HttpURLConnection).run {
-        connectTimeout = 10_000
-        readTimeout = 10_000
+        connectTimeout = 8_000
+        readTimeout = 8_000
         setRequestProperty("User-Agent", USER_AGENT)
+        setRequestProperty("Referer", "https://www.mako.co.il/")
+        setRequestProperty("Origin", "https://www.mako.co.il")
         inputStream.bufferedReader().use { it.readText() }
     }
     val ticket = Regex("\"ticket\"\\s*:\\s*\"([^\"]+)\"").find(text)?.groupValues?.get(1)
         ?: error("no mako ticket")
-    rawUrl + (if ('?' in rawUrl) "&" else "?") + java.net.URLDecoder.decode(ticket, "UTF-8")
+    val resolved = rawUrl + (if ('?' in rawUrl) "&" else "?") + java.net.URLDecoder.decode(ticket, "UTF-8")
+    makoTicketCache[rawUrl] = resolved to now
+    resolved
 }
 
 suspend fun playableUrl(ch: Channel): String = playableUrl(ch.url, ch.auth)
@@ -114,11 +178,19 @@ class ChannelStore(private val context: Context, private val http: OkHttpClient)
     val state: StateFlow<ChannelData?> = _state
 
     suspend fun load() = withContext(Dispatchers.IO) {
-        val vod = VodRepository.load(context)
+        // 1. Emit live channels immediately for <50ms startup
         val text = cache.takeIf { it.isFile && it.length() > 1000 }?.let { runCatching { it.readText() }.getOrNull() }
             ?: context.assets.open("channels.json").bufferedReader().use { it.readText() }
-        parse(text, vod)?.let { _state.value = it }
-            ?: parse(context.assets.open("channels.json").bufferedReader().use { it.readText() }, vod)?.let { _state.value = it }
+        val initial = parse(text)
+            ?: parse(context.assets.open("channels.json").bufferedReader().use { it.readText() })
+        if (initial != null) {
+            _state.value = initial
+        }
+        // 2. Load 2MB VOD catalog right after without blocking live channels
+        val vod = VodRepository.load(context)
+        if (vod.isNotEmpty()) {
+            _state.value = (_state.value ?: initial)?.copy(vod = vod)
+        }
     }
 
     suspend fun refresh() = withContext(Dispatchers.IO) {
@@ -153,22 +225,4 @@ class ChannelStore(private val context: Context, private val http: OkHttpClient)
     }.getOrNull()
 }
 
-
-fun Channel.isKids(): Boolean {
-    val cat = category.lowercase()
-    val en = categoryEn.lowercase()
-    val n = name.lowercase()
-    val cid = id.lowercase()
-    val full = "$cat $en $n $cid"
-    val exclude = listOf("היפ הופ", "hiphop", "הופעות", "אירוויזיון", "יהודית", "חדשות", "ספורט", "פוליטיקה", "דת ", "כלכלה", "ויוה", "viva", "טלנובלה", "telenovela", "אימה", "horror", "news", "sport", "finance", "דרמה", "drama", "רכב", "מרוצים", "motor", "cars", "racing", "אוכל", "בישול", "cooking", "food", "טבע", "פרא", "docu", "דוקו", "lifestyle", "עיצוב", "שיפוץ", "האח הגדול", "big brother", "reality", "ריאליטי", "קומדיה", "comedy", "קולנוע ישראלי", "סרטים", "cinema", "movies", "hbo", "hot 3", "yes tv", "action", "אקשן", "פוד", "foody", "סדרות", "series", "ערוץ 9", "ערוץ 11", "ערוץ 12", "ערוץ 13", "ערוץ 14", "ערוץ 15", "ערוץ 16", "כאן 11", "קשת 12", "רשת 13", "עכשיו 14", "i24news", "כנסת", "knesset", "103fm", "100fm", "eco99", "גלגלצ", "גלצ", "קול ברמה", "קול חי", "מכאן")
-    if (exclude.any { it in full }) {
-        val allow = listOf("ילדים", "פמילי", "kids", "family", "מצויר", "cartoon", "disney", "דיסני", "ניק", "nick", "ג'וניור", "junior", "הופ!", "לולי", "luli", "חינוכית", "hinuchit", "ילדותי", "yalduti", "שירי ילדות", "baby", "duck", "lego")
-        if (allow.none { it in full }) return false
-    }
-    if (isRadio || "radio" in en) {
-        return cid in listOf("radios_disney", "radios_kids", "radios_stars", "kan_kids_radio")
-    }
-    if ("ילדים" in cat || en in listOf("kids", "kids_he", "kids_world", "cartoons")) return true
-    val allowWords = listOf("ילדים", "נוער", "פעוטות", "קטנטנים", "אנימציה", "מצוירים", "הופ!", "בייבי", "דיסני", "ניקלודיאון", "ניק ג'וניור", "ג'וניור", "קארטון נטוורק", "בומרנג", "שירי ילדותי", "ילדותי", "baby shark", "ducktv", "lego", "transformers", "cartoon network", "boomerang", "luli", "לולי", "זום", "zoom", "חינוכית", "hinuchit", "יויו", "yoyo", "וויז", "wiz", "באזז", "fomo", "stars_kids", "a_plus_kids")
-    return allowWords.any { it in full }
-}
+fun Channel.isKids(): Boolean = isKidsChannel

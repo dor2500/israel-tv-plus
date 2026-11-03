@@ -98,8 +98,8 @@ import androidx.compose.material.icons.rounded.StopCircle
 import androidx.compose.material.icons.rounded.SwapHoriz
 import androidx.compose.material.icons.rounded.Tune
 import androidx.compose.material.icons.rounded.Tv
-import androidx.compose.material.icons.rounded.VolumeOff
-import androidx.compose.material.icons.rounded.VolumeUp
+import androidx.compose.material.icons.automirrored.rounded.VolumeOff
+import androidx.compose.material.icons.automirrored.rounded.VolumeUp
 import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.CircularWavyProgressIndicator
@@ -423,7 +423,7 @@ fun PlayerScreen(
         if (prevWasOttrast && rawCandidate.contains("ottrast.com", ignoreCase = true)) {
             delay(250)
         }
-        val url = runCatching { playableUrl(rawCandidate, current.auth) }.getOrElse {
+        val url = runCatching { playableUrl(rawCandidate, current.auth, forceRefresh = attempt > 0) }.getOrElse {
             if (sourceIndex + 1 < candidates.size) {
                 sourceIndex += 1
                 return@LaunchedEffect
@@ -1739,7 +1739,7 @@ private fun MultiViewCell(
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 Icon(
-                    if (isAudioActive) Icons.Rounded.VolumeUp else Icons.Rounded.VolumeOff,
+                    if (isAudioActive) Icons.AutoMirrored.Rounded.VolumeUp else Icons.AutoMirrored.Rounded.VolumeOff,
                     contentDescription = null,
                     tint = if (isAudioActive) MaterialTheme.colorScheme.onPrimary else Color.White.copy(alpha = 0.75f),
                     modifier = Modifier.size(13.dp),

@@ -10,7 +10,7 @@ val repo: File = rootDir.parentFile                      // the israel-tv-plus r
 val appVersion = repo.resolve("VERSION").readText().trim()   // the app's version, read only (never bumped here)
 // The watch app is an app of its own (com.israeltv.plus.wear), installed from the phone app (Settings → install on watch);
 // its version code stays in the 1,000,000+ range of 4.1.0 so it never goes down.
-val appCode = 1_000_000 + appVersion.split(".").let { it[0].toInt() * 100 + it[1].toInt() * 10 + it[2].toInt() }
+val appCode = 1_000_000 + appVersion.split(".").let { it[0].toInt() * 10000 + it[1].toInt() * 100 + it[2].toInt() }
 
 // Release key: the phone app's key (~/.android), so the watch app is signed like every other Android build.
 val keyStore = File(System.getProperty("user.home"), ".android/israel-tv-plus.jks")

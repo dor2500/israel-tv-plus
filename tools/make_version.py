@@ -59,14 +59,7 @@ def history(count=25):
 def main():
     version = read("VERSION").strip()
     major, minor, patch = (int(x) for x in version.split("."))
-    if major == 4 and minor == 3:
-        app = 500 + patch
-    elif major == 4 and minor == 4:
-        app = 540 + patch
-    elif major == 4 and minor == 5:
-        app = 550 + patch
-    else:
-        app = 100 + major * 100 + minor * 10 + patch
+    app = major * 10000 + minor * 100 + patch
     now = datetime.datetime.now(datetime.timezone.utc)
     code = int(now.strftime("%Y%m%d%H%M"))
     code = max(code, json.loads(read("version.json"))["code"] + 1, MIN_CODE + 1)  # must always grow
@@ -94,7 +87,7 @@ def main():
         "linux": {"version": version, "app": app, "url": dl + "IsraelTVPlus-linux-x64.zip"},
         # the watch app is installed by the phone app (data/WatchInstaller.kt) from the same release;
         # its versionCode is 1,000,000 + major*100+minor*10+patch (wear/app/build.gradle.kts)
-        "wear": {"version": version, "app": 1000000 + major * 100 + minor * 10 + patch,
+        "wear": {"version": version, "app": 1000000 + major * 10000 + minor * 100 + patch,
                  "url": dl + "IsraelTVPlus-wearos.apk"},
     }
     data = dict(build, notes=notes(version), history=history(), native=native)

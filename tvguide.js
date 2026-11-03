@@ -17,12 +17,22 @@ window.ITVGuide = function (api) {
 
   /* ---------- schedule ---------- */
   function loadEpg() {
-    var urls = /^https?:/.test(location.protocol) ? ['epg.json', REMOTE_EPG] : [REMOTE_EPG];
-    function use(data) {
-      epg = data.channels || {};
+    if (window.ITV_EPG && window.ITV_EPG.channels) {
+      epg = window.ITV_EPG.channels;
       epgDone = true;
       renderOsd();
       if (api.state.overlay === 'tvguide') openGuide();
+      return;
+    }
+    var urls = /^https?:/.test(location.protocol) ? ['epg.json', REMOTE_EPG] : [REMOTE_EPG];
+    function use(data) {
+      window.ITV_EPG = data;
+      window.ITV_EPG_CHANNELS = data.channels || {};
+      epg = window.ITV_EPG_CHANNELS;
+      epgDone = true;
+      renderOsd();
+      if (api.state.overlay === 'tvguide') openGuide();
+      if (typeof window.onItvEpgReady === 'function') window.onItvEpgReady();
     }
     (function next(n) {
       if (n >= urls.length) {
@@ -36,7 +46,7 @@ window.ITVGuide = function (api) {
         return;
       }
       var x = new XMLHttpRequest();
-      x.open('GET', urls[n] + '?t=' + Math.floor(Date.now() / 3600000));
+      x.open('GET', urls[n] + '?t=' + Math.floor(Date.now() / 21600000));
       x.onload = function () {
         try {
           if (x.status !== 200) throw 0;

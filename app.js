@@ -860,7 +860,15 @@
     el.heroCat.textContent = splitCat(ch.category);
     el.heroQ.textContent = isApp(ch) ? 'אפליקציה' : isRadioCh(ch) ? 'רדיו' : (ch.badge || 'HD');
     el.heroTitle.textContent = ch.name;
-    el.heroDesc.textContent = ch.desc || '';
+    var heroPi = !ch.isVod && !isRadioCh(ch) && !isApp(ch) ? getEpgProgramInfo(ch) : null;
+    if (heroPi && heroPi.cur) {
+      var hCur = heroPi.cur;
+      var hTime = formatEpgTime(hCur[0]) + '–' + formatEpgTime(hCur[0] + hCur[1]);
+      var hSyn = hCur[3] ? ' — ' + hCur[3] : (ch.desc ? ' — ' + ch.desc : '');
+      el.heroDesc.textContent = (heroPi.isLive ? '● כעת: ' : 'בקרוב: ') + hCur[2] + ' (' + hTime + ')' + hSyn;
+    } else {
+      el.heroDesc.textContent = ch.desc || '';
+    }
     var f = foreign(ch);
     toggleClass(el.heroLang, 'hidden', !f);
     if (f) el.heroLang.textContent = '🎙️ ' + Dub.langName(ch.lang) + ' – אפשר דיבוב לעברית';
@@ -2344,9 +2352,26 @@
       '<span class="atv-tag">' + esc(splitCat(ch.category)) + '</span>' +
       (ch.countryHe ? '<span class="atv-tag">' + esc(ch.countryHe) + '</span>' : '') +
       (isFav(ch) ? '<span class="atv-tag">★ מועדף</span>' : '');
+    var epgHtml = '';
+    var descText = ch.desc || '';
+    var pi = !ch.isVod && !isRadioCh(ch) && !isApp(ch) ? getEpgProgramInfo(ch) : null;
+    if (pi && pi.cur) {
+      var cur = pi.cur, sMin = cur[0], dur = Math.max(1, cur[1]), eMin = sMin + dur;
+      var pct = pi.isLive ? Math.min(100, Math.max(0, Math.round(((pi.nowMin - sMin) / dur) * 100))) : 0;
+      var timeRange = formatEpgTime(sMin) + ' – ' + formatEpgTime(eMin);
+      var nextTxt = pi.next ? ' · הבאה (' + formatEpgTime(pi.next[0]) + '): ' + esc(pi.next[2]) : '';
+      epgHtml = '<div class="atv-epg-box">' +
+        '<div class="atv-epg-head"><span class="atv-epg-now">' + (pi.isLive ? '● משודר כעת' : 'בקרוב') + '</span>' +
+        '<b class="atv-epg-title">' + esc(cur[2]) + '</b>' +
+        '<span class="atv-epg-time">' + timeRange + nextTxt + '</span></div>' +
+        (pi.isLive ? '<div class="atv-epg-bar"><i style="width:' + pct + '%"></i></div>' : '') +
+      '</div>';
+      if (cur[3]) descText = cur[3];
+    }
     target.innerHTML = '<div class="atv-mlogo"><img alt=""><div class="mono hidden"></div></div>' +
       '<h1 class="atv-title">' + esc(ch.name) + '</h1><div class="atv-tags">' + tags + '</div>' +
-      (ch.desc ? '<p class="atv-desc">' + esc(ch.desc) + '</p>' : '') +
+      epgHtml +
+      (descText ? '<p class="atv-desc">' + esc(descText) + '</p>' : '') +
       (S.showSource ? '<p class="atv-src">' + esc(sourceLine(ch)) + '</p>' : '');
     var logoImg = target.querySelector('img'), logoMono = target.querySelector('.mono');
     setLogo(logoImg, logoMono, ch);
@@ -4279,6 +4304,12 @@ function showOsd() {
     if (b && b.act) b.act();
   }
 
+  window.onItvEpgReady = function () {
+    if (!state.overlay) {
+      if (TVUI) atvMeta(atvCurrent());
+      else drawHero(current());
+    }
+  };
   function ensureEpgData(cb) {
     if (window.ITV_EPG && window.ITV_EPG.channels) {
       if (cb) cb(window.ITV_EPG.channels);
@@ -4295,6 +4326,7 @@ function showOsd() {
         if (data && data.channels) {
           window.ITV_EPG = data;
           window.ITV_EPG_CHANNELS = data.channels;
+          if (typeof window.onItvEpgReady === 'function') window.onItvEpgReady();
           if (cb) cb(data.channels);
         } else {
           next();
@@ -5228,7 +5260,7 @@ function showOsd() {
         try { localStorage.removeItem('itv_bad'); } catch (e) {}
         if (manual) toast('⬆️ נמצא עדכון ' + data.version + ' – מוריד עדכון...');
         var q = '?v=' + data.code;
-        prefetch(['style.css', 'ui.js', 'channels.js', 'dub.js', 'tvguide.js', 'app.js'].map(function (f) { return REMOTE + f + q; }), function (ok) {
+        prefetch(['style.css', 'ui.js', 'channels.js', 'dub.js', 'tvguide.js', 'gdrive.js', 'app.js'].map(function (f) { return REMOTE + f + q; }), function (ok) {
           u.liveDownloading = false;
           if (ok) {
             state.liveReady = { code: data.code, version: data.version, shell: data.shell || 0 };

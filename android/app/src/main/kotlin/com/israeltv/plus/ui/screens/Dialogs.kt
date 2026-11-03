@@ -28,24 +28,33 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.SystemUpdate
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
+import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.LinearWavyProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.israeltv.plus.data.AVATARS
 import com.israeltv.plus.data.AppPrefs
+import com.israeltv.plus.data.CatchupProgram
+import com.israeltv.plus.data.CatchupRepository
 import com.israeltv.plus.data.Channel
 import com.israeltv.plus.data.UpdateState
 import com.israeltv.plus.data.Updater
@@ -152,32 +161,140 @@ fun UpdateModal(updater: Updater, onDismiss: () -> Unit) {
     }
 }
 
-/** Channel details: description, category, country, quality, favourite. */
+/** Channel details: live EPG program synopsis, progress bar, upcoming show, description, category, country, quality, favourite. */
 @Composable
 fun ChannelInfoSheet(channel: Channel, logo: String, prefs: AppPrefs, onPlay: () -> Unit, onDismiss: () -> Unit) {
     val scheme = MaterialTheme.colorScheme
+    val context = LocalContext.current
+    var currentProg by remember(channel.id) { mutableStateOf<CatchupProgram?>(null) }
+    var nextProg by remember(channel.id) { mutableStateOf<CatchupProgram?>(null) }
+
+    LaunchedEffect(channel.id) {
+        val (cur, nxt) = CatchupRepository.getCurrentAndNextProgram(context, channel)
+        currentProg = cur
+        nextProg = nxt
+    }
+
     ModalBottomSheet(onDismissRequest = onDismiss, containerColor = scheme.surfaceContainer) {
-        Column(Modifier.padding(horizontal = 24.dp).navigationBarsPadding().padding(bottom = 24.dp)) {
+        Column(
+            Modifier
+                .padding(horizontal = 24.dp)
+                .navigationBarsPadding()
+                .padding(bottom = 24.dp)
+                .verticalScroll(rememberScrollState())
+        ) {
             Row(verticalAlignment = Alignment.CenterVertically) {
-                Box(Modifier.size(width = 96.dp, height = 56.dp).clip(RoundedCornerShape(16.dp)).background(scheme.surfaceContainerHighest), contentAlignment = Alignment.Center) {
+                Box(
+                    Modifier
+                        .size(width = 96.dp, height = 56.dp)
+                        .clip(RoundedCornerShape(16.dp))
+                        .background(scheme.surfaceContainerHighest),
+                    contentAlignment = Alignment.Center,
+                ) {
                     ChannelLogo(logo, Modifier.size(width = 72.dp, height = 40.dp), channel.isRadio)
                 }
                 Spacer(Modifier.width(14.dp))
-                Column {
+                Column(Modifier.weight(1f)) {
                     Text(channel.name, fontSize = 22.sp, fontWeight = FontWeight.ExtraBold, color = scheme.onSurface)
                     Text(
-                        listOf(shortCategory(channel.category), channel.countryHe, channel.badge).filter { it.isNotEmpty() }.joinToString(" · "),
-                        fontSize = 13.sp, color = scheme.onSurfaceVariant,
+                        listOf(shortCategory(channel.category), channel.countryHe, channel.badge, if (channel.number > 0) "ערוץ ${channel.number}" else "")
+                            .filter { it.isNotEmpty() }
+                            .joinToString(" · "),
+                        fontSize = 13.sp,
+                        color = scheme.onSurfaceVariant,
                     )
                 }
             }
-            if (channel.desc.isNotEmpty()) {
+
+            // Live EPG Program Synopsis Card
+            val prog = currentProg
+            if (prog != null) {
+                Spacer(Modifier.height(16.dp))
+                Column(
+                    Modifier
+                        .fillMaxWidth()
+                        .clip(RoundedCornerShape(20.dp))
+                        .background(scheme.surfaceContainerHigh)
+                        .border(1.dp, scheme.outlineVariant.copy(alpha = 0.35f), RoundedCornerShape(20.dp))
+                        .padding(16.dp)
+                ) {
+                    Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                        Box(
+                            Modifier
+                                .clip(RoundedCornerShape(50))
+                                .background(Color(0xFFEF4444).copy(alpha = 0.16f))
+                                .padding(horizontal = 10.dp, vertical = 3.dp)
+                        ) {
+                            Text("● משודר עכשיו", fontSize = 11.5.sp, fontWeight = FontWeight.Bold, color = Color(0xFFEF4444))
+                        }
+                        Text(prog.timeLabel, fontSize = 12.5.sp, fontWeight = FontWeight.SemiBold, color = scheme.onSurfaceVariant)
+                    }
+                    Spacer(Modifier.height(8.dp))
+                    Text(
+                        prog.title,
+                        fontSize = 18.sp,
+                        fontWeight = FontWeight.ExtraBold,
+                        color = scheme.onSurface,
+                        maxLines = 2,
+                        overflow = TextOverflow.Ellipsis,
+                    )
+                    Spacer(Modifier.height(8.dp))
+                    LinearProgressIndicator(
+                        progress = { prog.progressFraction },
+                        modifier = Modifier.fillMaxWidth().height(6.dp).clip(RoundedCornerShape(50)),
+                        color = scheme.primary,
+                        trackColor = scheme.surfaceContainerHighest,
+                    )
+                    if (prog.description.isNotBlank()) {
+                        Spacer(Modifier.height(10.dp))
+                        Text(
+                            prog.description,
+                            fontSize = 14.sp,
+                            lineHeight = 20.sp,
+                            color = scheme.onSurface.copy(alpha = 0.9f),
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .clip(RoundedCornerShape(12.dp))
+                                .background(scheme.surfaceContainerLowest.copy(alpha = 0.55f))
+                                .padding(12.dp),
+                        )
+                    }
+                    val upcoming = nextProg
+                    if (upcoming != null) {
+                        Spacer(Modifier.height(10.dp))
+                        Row(
+                            Modifier
+                                .fillMaxWidth()
+                                .clip(RoundedCornerShape(10.dp))
+                                .background(scheme.surfaceContainerHighest.copy(alpha = 0.5f))
+                                .padding(horizontal = 12.dp, vertical = 8.dp),
+                            verticalAlignment = Alignment.CenterVertically,
+                        ) {
+                            Text(
+                                "הבאה (${upcoming.timeLabel}): ",
+                                fontSize = 12.5.sp,
+                                fontWeight = FontWeight.Bold,
+                                color = scheme.primary,
+                            )
+                            Text(
+                                upcoming.title,
+                                fontSize = 12.5.sp,
+                                color = scheme.onSurfaceVariant,
+                                maxLines = 1,
+                                overflow = TextOverflow.Ellipsis,
+                            )
+                        }
+                    }
+                }
+            } else if (channel.desc.isNotEmpty()) {
                 Text(channel.desc, fontSize = 15.sp, color = scheme.onSurface, modifier = Modifier.padding(top = 16.dp))
             }
-            Text("ערוץ ${channel.number}", fontSize = 13.sp, color = scheme.onSurfaceVariant, modifier = Modifier.padding(top = 8.dp))
+
             Spacer(Modifier.height(18.dp))
-            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                Button(onPlay, shape = RoundedCornerShape(50), modifier = Modifier.height(44.dp)) { Text("צפייה", fontSize = 14.5.sp, fontWeight = FontWeight.ExtraBold) }
+            Row(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
+                Button(onPlay, shape = RoundedCornerShape(50), modifier = Modifier.height(46.dp)) {
+                    Text("צפייה בשידור חי", fontSize = 14.5.sp, fontWeight = FontWeight.ExtraBold)
+                }
                 TextButton({ prefs.toggleFavorite(channel.id) }) {
                     Text(if (prefs.isFavorite(channel.id)) "★ הסר מהרשימה שלי" else "☆ שמור ברשימה שלי")
                 }

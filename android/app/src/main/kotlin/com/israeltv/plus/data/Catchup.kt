@@ -28,6 +28,12 @@ data class CatchupProgram(
 
     val isPast: Boolean get() = System.currentTimeMillis() > endMs
 
+    val progressFraction: Float get() {
+        val total = (endMs - startMs).coerceAtLeast(1L)
+        val elapsed = (System.currentTimeMillis() - startMs).coerceIn(0L, total)
+        return (elapsed.toFloat() / total.toFloat()).coerceIn(0f, 1f)
+    }
+
     val timeLabel: String get() {
         val sdf = SimpleDateFormat("HH:mm", Locale.getDefault())
         return "${sdf.format(Date(startMs))} - ${sdf.format(Date(endMs))}"
@@ -94,27 +100,28 @@ object CatchupRepository {
     private var cachedEpgJson: JSONObject? = null
     private var lastFetchTime = 0L
 
+    private fun readBundledEpg(context: Context): String? {
+        for (name in listOf("www/epg.json", "epg.json")) {
+            val s = runCatching { context.assets.open(name).bufferedReader().use { it.readText() } }.getOrNull()
+            if (!s.isNullOrBlank()) return s
+        }
+        return null
+    }
+
     private suspend fun getEpgObject(context: Context): JSONObject? = withContext(Dispatchers.IO) {
         val now = System.currentTimeMillis()
         if (cachedEpgJson != null && now - lastFetchTime < 30 * 60_000L) {
             return@withContext cachedEpgJson
         }
 
-        // Try reading cached file
+        // 1. Try reading fresh cached file (< 3 hours old)
         val cacheFile = File(context.filesDir, "epg_cache.json")
         var jsonStr: String? = null
         if (cacheFile.exists() && cacheFile.length() > 1000 && now - cacheFile.lastModified() < 3 * 3600_000L) {
             jsonStr = runCatching { cacheFile.readText() }.getOrNull()
         }
 
-        // If no fresh cache, try assets
-        if (jsonStr == null) {
-            jsonStr = runCatching {
-                context.assets.open("epg.json").bufferedReader().use { it.readText() }
-            }.getOrNull()
-        }
-
-        // Try remote if needed
+        // 2. Fetch fresh remote EPG from GitHub Pages (updated every 6h by epg.yml)
         if (jsonStr == null) {
             jsonStr = runCatching {
                 val url = java.net.URL(REMOTE + "epg.json")
@@ -124,12 +131,20 @@ object CatchupRepository {
                 conn.setRequestProperty("User-Agent", USER_AGENT)
                 conn.inputStream.bufferedReader().use { it.readText() }
             }.getOrNull()
-            if (jsonStr != null) {
+            if (!jsonStr.isNullOrBlank()) {
                 runCatching { cacheFile.writeText(jsonStr) }
             }
         }
 
-        if (jsonStr != null) {
+        // 3. Offline fallback: stale cache or bundled asset
+        if (jsonStr == null && cacheFile.exists() && cacheFile.length() > 1000) {
+            jsonStr = runCatching { cacheFile.readText() }.getOrNull()
+        }
+        if (jsonStr == null) {
+            jsonStr = readBundledEpg(context)
+        }
+
+        if (!jsonStr.isNullOrBlank()) {
             runCatching {
                 val obj = JSONObject(jsonStr)
                 cachedEpgJson = obj
@@ -144,7 +159,18 @@ object CatchupRepository {
         val root = getEpgObject(context) ?: return@withContext emptyList()
         val channelsObj = root.optJSONObject("channels") ?: return@withContext emptyList()
 
-        val sameGuide = mapOf("ch14_now_fast" to "now14", "i24news_english_hd" to "i24news_en", "i24news_fr_il" to "i24news_fr", "i24news_hebrew_hd" to "i24news_he", "i24_english_world_hd" to "i24news_en", "kan11_subs" to "kan11", "kan11_subs_il" to "kan11", "now14_subs_il" to "now14", "reshet13_access" to "reshet13", "reshet13_subs_il" to "reshet13")
+        val sameGuide = mapOf(
+            "ch14_now_fast" to "now14",
+            "i24news_english_hd" to "i24news_en",
+            "i24news_fr_il" to "i24news_fr",
+            "i24news_hebrew_hd" to "i24news_he",
+            "i24_english_world_hd" to "i24news_en",
+            "kan11_subs" to "kan11",
+            "kan11_subs_il" to "kan11",
+            "now14_subs_il" to "now14",
+            "reshet13_access" to "reshet13",
+            "reshet13_subs_il" to "reshet13"
+        )
         val candidates = listOf(
             sameGuide[channel.id] ?: channel.id,
             channel.id,
@@ -175,7 +201,7 @@ object CatchupRepository {
         val list = mutableListOf<CatchupProgram>()
         val nowMin = System.currentTimeMillis() / 60_000L
         val minLimit = nowMin - 24 * 60L // Past 24 hours
-        val maxLimit = nowMin + 4 * 60L  // Up to next 4 hours
+        val maxLimit = nowMin + 6 * 60L  // Up to next 6 hours
 
         for (i in 0 until arr.length()) {
             val item = arr.optJSONArray(i) ?: continue
@@ -194,8 +220,22 @@ object CatchupRepository {
         list.sortedByDescending { it.startMin }
     }
 
+    /** Returns the currently airing program and the next upcoming program for a channel. */
+    suspend fun getCurrentAndNextProgram(context: Context, channel: Channel): Pair<CatchupProgram?, CatchupProgram?> = withContext(Dispatchers.IO) {
+        val programs = getProgramsForChannel(context, channel).sortedBy { it.startMin }
+        if (programs.isEmpty()) return@withContext null to null
+        val now = System.currentTimeMillis()
+        val currentIdx = programs.indexOfFirst { now in it.startMs..it.endMs }
+        if (currentIdx != -1) {
+            val current = programs[currentIdx]
+            val next = programs.getOrNull(currentIdx + 1)
+            return@withContext current to next
+        }
+        val upcoming = programs.firstOrNull { it.startMs > now }
+        null to upcoming
+    }
+
     fun hasCatchup(channel: Channel): Boolean {
         return CatchupDvr.dvrUrlFor(channel) != null
     }
 }
-
