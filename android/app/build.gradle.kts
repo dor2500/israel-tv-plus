@@ -166,6 +166,7 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp:5.5.1")
     implementation("androidx.mediarouter:mediarouter:1.7.0")
     implementation("com.google.android.gms:play-services-cast-framework:21.5.0")
+    implementation("com.google.android.gms:play-services-auth:21.4.0")   // system Google account picker
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.12.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.11.0")
 }

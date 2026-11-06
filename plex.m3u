@@ -97,8 +97,8 @@ http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2364/index.m3u8
 http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2382/index.m3u8
 #EXTINF:-1 tvg-id="disney_jr_il" tvg-name="ערוץ דיסני ג'וניור ישראל HD (Disney Jr.)" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/disney_junior.png" tvg-chno="49" group-title="ילדים ונוער (בעברית)",ערוץ דיסני ג'וניור ישראל HD (Disney Jr.)
 http://88.212.15.50/live/test_disney_junior/playlist.m3u8
-#EXTINF:-1 tvg-id="nickelodeon_il" tvg-name="ערוץ ניקלודיאון ישראל HD (Nickelodeon)" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/nickelodeon.png" tvg-chno="50" group-title="ילדים ונוער (בעברית)",ערוץ ניקלודיאון ישראל HD (Nickelodeon)
-http://stream.mcquack.net/443/index.m3u8
+#EXTINF:-1 tvg-id="nickelodeon_il" tvg-name="ערוץ ניקלודיאון ישראל HD (TeenNick / Nickelodeon)" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/nickelodeon.png" tvg-chno="50" group-title="ילדים ונוער (בעברית)",ערוץ ניקלודיאון ישראל HD (TeenNick / Nickelodeon)
+http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32148/index.m3u8
 #EXTINF:-1 tvg-id="nick_jr_il" tvg-name="ערוץ ניק ג'וניור ישראל HD (Nick Jr.)" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/nick_jr.png" tvg-chno="51" group-title="ילדים ונוער (בעברית)",ערוץ ניק ג'וניור ישראל HD (Nick Jr.)
 http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2337/index.m3u8
 #EXTINF:-1 tvg-id="teennick_il" tvg-name="ערוץ טין ניק ישראל HD (TeenNick)" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/teennick.png" tvg-chno="52" group-title="ילדים ונוער (בעברית)",ערוץ טין ניק ישראל HD (TeenNick)
@@ -343,7 +343,7 @@ https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/daily_drama/live.l
 https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/vamos/live.livx/playlist.m3u8
 #EXTINF:-1 tvg-id="freetv_global_il" tvg-name="FreeTV גלובל סדרות HD" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/freetv_global_il.png" tvg-chno="172" group-title="סרטים וסדרות (Movies & Series)",FreeTV גלובל סדרות HD
 https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/free_global/live.livx/playlist.m3u8
-#EXTINF:-1 tvg-id="food_network_il" tvg-name="ערוץ האוכל Food Network HD" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/food_network_il.png" tvg-chno="173" group-title="ערוצי אוכל (Food Channels)",ערוץ האוכל Food Network HD
+#EXTINF:-1 tvg-id="food_network_il" tvg-name="ערוץ האוכל HD (מבית החיים הטובים)" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/food_channel.png" tvg-chno="173" group-title="israel",ערוץ האוכל HD (מבית החיים הטובים)
 http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12209/index.m3u8
 #EXTINF:-1 tvg-id="foody_tv" tvg-name="ערוץ פודי Foody HD" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/foody_tv.png" tvg-chno="174" group-title="ערוצי אוכל (Food Channels)",ערוץ פודי Foody HD
 https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/foody/live.livx/playlist.m3u8
@@ -543,3 +543,21 @@ http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12248/index.m3u8
 http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32158/index.m3u8
 #EXTINF:-1 tvg-id="beautyz_fashion_il" tvg-name="ערוץ Beautyz אופנה ולייפסטייל HD" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hot_reality.png" tvg-chno="401" group-title="ערוצי ישראל - שידור חי",ערוץ Beautyz אופנה ולייפסטייל HD
 http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32164/index.m3u8
+#EXTINF:-1 tvg-id="hot_doco_hd" tvg-name="HOT דוקו HD (HOT Doco)" tvg-logo="https://upload.wikimedia.org/wikipedia/he/thumb/3/36/HOT_Doco_Logo_2022.svg/300px-HOT_Doco_Logo_2022.svg.png" tvg-chno="402" group-title="israel",HOT דוקו HD (HOT Doco)
+http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32129/index.m3u8
+#EXTINF:-1 tvg-id="channel_hayeladim_hd" tvg-name="ערוץ הילדים HD" tvg-logo="https://upload.wikimedia.org/wikipedia/he/thumb/4/4e/Arutz_HaYeladim_Logo_2023.svg/300px-Arutz_HaYeladim_Logo_2023.svg.png" tvg-chno="403" group-title="kids",ערוץ הילדים HD
+http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2347/index.m3u8
+#EXTINF:-1 tvg-id="junior_channel_hd" tvg-name="ערוץ ג'וניור HD (Junior)" tvg-logo="https://upload.wikimedia.org/wikipedia/he/thumb/a/a2/Junior_Channel_Logo.svg/300px-Junior_Channel_Logo.svg.png" tvg-chno="404" group-title="kids",ערוץ ג'וניור HD (Junior)
+http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2366/index.m3u8
+#EXTINF:-1 tvg-id="baby_channel_hd" tvg-name="ערוץ בייבי HD (Baby Channel)" tvg-logo="https://upload.wikimedia.org/wikipedia/he/thumb/5/52/BabyTV_Logo_2020.svg/300px-BabyTV_Logo_2020.svg.png" tvg-chno="405" group-title="kids",ערוץ בייבי HD (Baby Channel)
+http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2370/index.m3u8
+#EXTINF:-1 tvg-id="luli_channel_hd" tvg-name="ערוץ לולי לפעוטות HD (Luli)" tvg-logo="https://upload.wikimedia.org/wikipedia/he/thumb/e/e6/Luli_Logo_2021.svg/300px-Luli_Logo_2021.svg.png" tvg-chno="406" group-title="kids",ערוץ לולי לפעוטות HD (Luli)
+http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12246/index.m3u8
+#EXTINF:-1 tvg-id="yes_movies_kids_hd" tvg-name="yes קולנוע ילדים HD (yes Movies Kids)" tvg-logo="https://upload.wikimedia.org/wikipedia/he/thumb/3/36/Yes_Movies_Kids_Logo.png/300px-Yes_Movies_Kids_Logo.png" tvg-chno="407" group-title="kids",yes קולנוע ילדים HD (yes Movies Kids)
+http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12273/index.m3u8
+#EXTINF:-1 tvg-id="vacation_channel_hd" tvg-name="ערוץ החופש והנופש HD (Vacation Channel)" tvg-logo="https://static.g-cdn.app/streams/vacation-channel-il-hd.png" tvg-chno="408" group-title="entertainment",ערוץ החופש והנופש HD (Vacation Channel)
+http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32160/index.m3u8
+#EXTINF:-1 tvg-id="good_life_channel_hd" tvg-name="ערוץ החיים הטובים HD (Good Life)" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/good_life_israel.png" tvg-chno="409" group-title="israel",ערוץ החיים הטובים HD (Good Life)
+http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2355/index.m3u8
+#EXTINF:-1 tvg-id="food_channel_israel_hd" tvg-name="ערוץ האוכל הישראלי HD (מבית החיים הטובים)" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/food_channel.png" tvg-chno="410" group-title="israel",ערוץ האוכל הישראלי HD (מבית החיים הטובים)
+http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12209/index.m3u8

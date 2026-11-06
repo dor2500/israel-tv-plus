@@ -238,11 +238,11 @@ def build_channel_didl(ch, parent_id="0"):
         f'<dc:title>{name}</dc:title>'
         f'<upnp:class>{upnp_class}</upnp:class>'
         f'{logo_tag}'
-        f'<res protocolInfo="http-get:*:application/vnd.apple.mpegurl:*">{xml_escape(stream_url)}</res>'
-        f'<res protocolInfo="http-get:*:video/mp2t:*">{xml_escape(stream_url)}</res>'
-        f'<res protocolInfo="http-get:*:video/mp4:*">{xml_escape(stream_url)}</res>'
-        f'<res protocolInfo="http-get:*:*">{xml_escape(stream_url)}</res>'
         f'<res protocolInfo="http-get:*:application/vnd.apple.mpegurl:*">{xml_escape(proxy_url)}</res>'
+        f'<res protocolInfo="http-get:*:application/vnd.apple.mpegurl:*">{xml_escape(stream_url)}</res>'
+        f'<res protocolInfo="http-get:*:video/mp4:*">{xml_escape(proxy_url)}</res>'
+        f'<res protocolInfo="http-get:*:video/mp2t:*">{xml_escape(proxy_url)}</res>'
+        f'<res protocolInfo="http-get:*:*">{xml_escape(proxy_url)}</res>'
         f'</item>'
     )
 
@@ -261,7 +261,7 @@ def handle_browse_or_search(obj_id, flag="BrowseDirectChildren", starting_idx=0,
 
     log_event(f"handle_browse_or_search: obj_id='{obj_id}', flag='{flag}', is_search={is_search}, start={starting_idx}, count={req_count}")
 
-    root_ids = ["0", "2", "video", "0$2", "0/video", "-1", "0$1$2", "0$1$3", "0$1"]
+    root_ids = ["0", "1", "2", "video", "0$1", "0$2", "0/video", "-1", "0$1$2", "0$1$3", "root", "videos", "V"]
 
     if flag == "BrowseMetadata":
         if obj_id in root_ids:
@@ -307,7 +307,9 @@ def handle_browse_or_search(obj_id, flag="BrowseDirectChildren", starting_idx=0,
                 items.append(build_channel_didl(ch, obj_id))
             total = len(items)
         else:
-            total = 0
+            for ch in CHANNELS:
+                items.append(build_channel_didl(ch, obj_id))
+            total = len(items)
 
     if req_count > 0:
         sliced = items[starting_idx:starting_idx + req_count]
@@ -357,7 +359,7 @@ class DlnaHandler(BaseHTTPRequestHandler):
             self.send_header("Content-Type", "text/xml; charset=utf-8")
             self.send_header("Content-Length", str(len(body)))
             self.send_header("Access-Control-Allow-Origin", "*")
-            self.send_header("SERVER", "Windows/10 UPnP/1.0 DLNADOC/1.50 IsraelTVPlus/4.8.12")
+            self.send_header("SERVER", "Windows/10 UPnP/1.0 DLNADOC/1.50 IsraelTVPlus/4.8.15")
             self.end_headers()
             self.wfile.write(body)
             return
@@ -408,7 +410,7 @@ class DlnaHandler(BaseHTTPRequestHandler):
                 stream_url = CH_MAP[cid].get("url", "")
                 # Proxy the manifest directly instead of 302 redirect for LG webOS DLNA compliance
                 try:
-                    req = urllib.request.Request(stream_url, headers={"User-Agent": "Mozilla/5.0 IsraelTVPlus/4.8.12"})
+                    req = urllib.request.Request(stream_url, headers={"User-Agent": "Mozilla/5.0 IsraelTVPlus/4.8.15"})
                     with urllib.request.urlopen(req, timeout=8) as upstream:
                         data = upstream.read()
                         self.send_response(200)
@@ -483,11 +485,11 @@ class DlnaHandler(BaseHTTPRequestHandler):
   </s:Body>
 </s:Envelope>"""
             elif "Search" in soap_action or "<u:Search" in body:
-                m_cid = re.search(r"<ContainerID>([^<]+)</ContainerID>", body)
+                m_cid = re.search(r"<(?:\w+:)?ContainerID[^>]*>([^<]+)</(?:\w+:)?ContainerID>", body)
                 cid = m_cid.group(1).strip() if m_cid else "0"
-                m_idx = re.search(r"<StartingIndex>(\d+)</StartingIndex>", body)
+                m_idx = re.search(r"<(?:\w+:)?StartingIndex[^>]*>(\d+)</(?:\w+:)?StartingIndex>", body)
                 starting_idx = int(m_idx.group(1)) if m_idx else 0
-                m_count = re.search(r"<RequestedCount>(\d+)</RequestedCount>", body)
+                m_count = re.search(r"<(?:\w+:)?RequestedCount[^>]*>(\d+)</(?:\w+:)?RequestedCount>", body)
                 req_count = int(m_count.group(1)) if m_count else 0
 
                 didl, count, total = handle_browse_or_search(cid, starting_idx=starting_idx, req_count=req_count, is_search=True)
@@ -504,13 +506,13 @@ class DlnaHandler(BaseHTTPRequestHandler):
   </s:Body>
 </s:Envelope>"""
             else:  # Browse
-                m_id = re.search(r"<ObjectID>([^<]+)</ObjectID>", body)
+                m_id = re.search(r"<(?:\w+:)?ObjectID[^>]*>([^<]+)</(?:\w+:)?ObjectID>", body)
                 obj_id = m_id.group(1).strip() if m_id else "0"
-                m_flag = re.search(r"<BrowseFlag>([^<]+)</BrowseFlag>", body)
+                m_flag = re.search(r"<(?:\w+:)?BrowseFlag[^>]*>([^<]+)</(?:\w+:)?BrowseFlag>", body)
                 flag = m_flag.group(1).strip() if m_flag else "BrowseDirectChildren"
-                m_idx = re.search(r"<StartingIndex>(\d+)</StartingIndex>", body)
+                m_idx = re.search(r"<(?:\w+:)?StartingIndex[^>]*>(\d+)</(?:\w+:)?StartingIndex>", body)
                 starting_idx = int(m_idx.group(1)) if m_idx else 0
-                m_count = re.search(r"<RequestedCount>(\d+)</RequestedCount>", body)
+                m_count = re.search(r"<(?:\w+:)?RequestedCount[^>]*>(\d+)</(?:\w+:)?RequestedCount>", body)
                 req_count = int(m_count.group(1)) if m_count else 0
 
                 didl, count, total = handle_browse_or_search(obj_id, flag, starting_idx, req_count)
@@ -601,7 +603,7 @@ def run_ssdp():
                     f"LOCATION: http://{LOCAL_IP}:{PORT}/description.xml\r\n"
                     f"NT: {nt}\r\n"
                     f"NTS: ssdp:alive\r\n"
-                    f"SERVER: Windows/10 UPnP/1.0 DLNADOC/1.50 IsraelTVPlus/4.8.12\r\n"
+                    f"SERVER: Windows/10 UPnP/1.0 DLNADOC/1.50 IsraelTVPlus/4.8.15\r\n"
                     f"USN: {usn}\r\n\r\n"
                 ).encode("utf-8")
                 for dest in destinations:
@@ -637,7 +639,7 @@ def run_ssdp():
                         f"DATE: {time.strftime('%a, %d %b %Y %H:%M:%S GMT', time.gmtime())}\r\n"
                         f"EXT:\r\n"
                         f"LOCATION: http://{LOCAL_IP}:{PORT}/description.xml\r\n"
-                        f"SERVER: Windows/10 UPnP/1.0 DLNADOC/1.50 IsraelTVPlus/4.8.12\r\n"
+                        f"SERVER: Windows/10 UPnP/1.0 DLNADOC/1.50 IsraelTVPlus/4.8.15\r\n"
                         f"ST: {resp_st}\r\n"
                         f"USN: {usn}\r\n\r\n"
                     ).encode("utf-8")

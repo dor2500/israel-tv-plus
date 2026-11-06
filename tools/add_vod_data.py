@@ -150,3 +150,4 @@ with open(path, 'w', encoding='utf-8') as f:
     f.write(c)
 
 print('VOD_DATA successfully added to channels.js!')
+
