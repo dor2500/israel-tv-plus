@@ -1,15 +1,21 @@
 {
-  "version": "4.8.62",
-  "code": 202611061605,
-  "app": 40862,
+  "version": "4.8.63",
+  "code": 202611062018,
+  "app": 40863,
   "shell": 3,
   "date": "2026-11-06",
   "notes": [
-    "נגן באנדרואיד ובטלוויזיה – פקדים חדשים, כולם בתחתית המסך: שלושה כרטיסי תוכניות מלוח השידורים במרכז. התוכנית המסומנת גדולה ובולטת, והתוכניות שלפניה ואחריה קטנות ומעומעמות. החיצים בשלט עוברים בין התוכניות, לחיצה על התוכנית המשודרת עוצרת או ממשיכה את השידור, ולחיצה על תוכנית שכבר שודרה מפעילה שידור חוזר.",
-    "כפתור \"אפשרויות\" אחד מתחת לכרטיס האמצעי. המועדפים, השידור למסך והתאמת התמונה עברו לתוכו.",
-    "השעה של השידור בפינה השמאלית התחתונה, ורשימת ערוצים קטנה בצד ימין שעוברים ממנה ישר לערוץ אחר."
+    "נגן בטלפון ובטאבלט: אותו עיצוב כמו בטלוויזיה. התוכנית המשודרת בכרטיס גדול במרכז עם פס התקדמות ושעות, התוכנית הבאה בכרטיס קטן לידה, \"לתכנית הקודמת\" בצד השני, כפתור \"אפשרויות\" אחד מתחת, השעון בפינה השמאלית ורשימת ערוצים עם מספרים בצד ימין.",
+    "בדיקת עדכונים: כשיש גרסה חדשה של האפליקציה, לחיצה אחת על הכפתור פותחת ישר את חלון העדכון (קודם היה צריך ללחוץ פעמיים)."
   ],
   "history": [
+    {
+      "version": "4.8.63",
+      "notes": [
+        "נגן בטלפון ובטאבלט: אותו עיצוב כמו בטלוויזיה. התוכנית המשודרת בכרטיס גדול במרכז עם פס התקדמות ושעות, התוכנית הבאה בכרטיס קטן לידה, \"לתכנית הקודמת\" בצד השני, כפתור \"אפשרויות\" אחד מתחת, השעון בפינה השמאלית ורשימת ערוצים עם מספרים בצד ימין.",
+        "בדיקת עדכונים: כשיש גרסה חדשה של האפליקציה, לחיצה אחת על הכפתור פותחת ישר את חלון העדכון (קודם היה צריך ללחוץ פעמיים)."
+      ]
+    },
     {
       "version": "4.8.62",
       "notes": [
@@ -223,50 +229,44 @@
         "עליית ערוצים מהירה במיוחד (Sub-5s Fast Startup): זמני טעינה מהירים (500ms startup buffer, 3.5s failover timeout) בעלייה ממוצעת של 0.5–2 שניות.",
         "גיבוי משולש (Triple Route Redundancy) לערוצי הספורט (ספורט 1, 2, 3, 4, 5, 5 פלוס) וערוצי 12 ו-13."
       ]
-    },
-    {
-      "version": "4.8.37",
-      "notes": [
-        "תוקנו תקיעות כל כמה שניות בשידורים חיים: המרחק מהשידור החי נקבע עכשיו לפי אורך המקטעים של כל שידור, עם באפר גדול יותר."
-      ]
     }
   ],
   "native": {
     "android": {
-      "version": "4.8.62",
-      "app": 40862,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.62/IsraelTVPlus-android.apk"
+      "version": "4.8.63",
+      "app": 40863,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.63/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "4.8.62",
-      "app": 40862,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.62/IsraelTVPlus-windows-setup.exe"
+      "version": "4.8.63",
+      "app": 40863,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.63/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "4.8.62",
-      "app": 40862,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.62/com.israeltv.plus_all.ipk",
+      "version": "4.8.63",
+      "app": 40863,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.63/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "4.8.62",
-      "app": 40862,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.62/IsraelTVPlus-tizen-project.zip"
+      "version": "4.8.63",
+      "app": 40863,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.63/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "4.8.62",
-      "app": 40862,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.62/IsraelTVPlus-macos-arm64.zip"
+      "version": "4.8.63",
+      "app": 40863,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.63/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "4.8.62",
-      "app": 40862,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.62/IsraelTVPlus-linux-x64.zip"
+      "version": "4.8.63",
+      "app": 40863,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.63/IsraelTVPlus-linux-x64.zip"
     },
     "wear": {
-      "version": "4.8.62",
-      "app": 1040862,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.62/IsraelTVPlus-wearos.apk"
+      "version": "4.8.63",
+      "app": 1040863,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.63/IsraelTVPlus-wearos.apk"
     }
   }
 }
