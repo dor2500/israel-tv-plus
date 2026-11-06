@@ -5371,14 +5371,16 @@ function showOsd() {
   function updateCardAction() {
     var u = state.update;
     if (state.checking) return;
+    // a new app version wins over a downloaded screen update: the card advertises the app version, so OK must open
+    // its installer at once (the dialog also offers the screen-update restart), not a reload that needs a second press
+    if (u && u.native && PLATFORM !== 'webos') { showUpdateDialog(); return; }
     if (state.liveReady) {
       confirmBox('להפעיל כעת את עדכון ' + state.liveReady.version + '?', function () {
         location.reload();
       });
       return;
     }
-    if (u && u.native && PLATFORM !== 'webos') showUpdateDialog();
-    else checkUpdates(true);
+    checkUpdates(true);
   }
   function offerReload(data) {
     openDialog({ ico: '⬆️', title: 'גרסה ' + data.version + ' זמינה', html: notesHtml(data),

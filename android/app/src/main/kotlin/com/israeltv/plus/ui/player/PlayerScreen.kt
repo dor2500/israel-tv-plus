@@ -746,21 +746,20 @@ fun PlayerScreen(
                 programs = programs,
                 positionMs = currentPositionMs,
                 durationMs = durationMs,
-                showDuration = isVodNow || isCatchupMode,
+                isVod = isVodNow,
+                inCatchup = isCatchupMode,
+                catchupTitle = catchupProgram?.title,
+                canCatchup = CatchupRepository.hasCatchup(current),
                 channels = list,
                 currentIndex = index,
                 logo = logo,
                 onProgramClick = { prog ->
                     touchTick++
                     when {
-                        // the live programme (or no guide at all): the card is the play/pause control
+                        // the live programme, catch-up playback or no guide at all: the card is the play/pause control
+                        // (in catch-up, "לשידור החי" beside Options returns to live)
                         prog == null || prog.isLiveNow -> {
-                            if (isCatchupMode) {
-                                isCatchupMode = false
-                                catchupProgram = null
-                                statusToast = "🔴 חזרה לשידור חי"
-                                if (player.isCurrentMediaItemLive) player.seekToDefaultPosition() else switchTo(index)
-                            } else if (player.isPlaying) {
+                            if (player.isPlaying) {
                                 player.pause()
                             } else {
                                 player.volume = 1.0f
@@ -774,6 +773,13 @@ fun PlayerScreen(
                 onOptions = {
                     touchTick++
                     sheet = "more"
+                },
+                onGoLive = {
+                    touchTick++
+                    isCatchupMode = false
+                    catchupProgram = null
+                    statusToast = "🔴 חזרה לשידור חי"
+                    if (player.isCurrentMediaItemLive) player.seekToDefaultPosition() else switchTo(index)
                 },
                 onPickChannel = { i ->
                     touchTick++
