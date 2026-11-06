@@ -61,6 +61,19 @@ class Updater(private val context: Context, private val http: OkHttpClient, priv
 
     val installedVersion: String get() = BuildConfig.VERSION_NAME
 
+    /** Recent versions and what changed in them, newest first (the "history" list of version.json). */
+    suspend fun changelog(): List<Pair<String, List<String>>> = withContext(Dispatchers.IO) {
+        runCatching {
+            val req = Request.Builder().url(REMOTE + "version.json?t=" + System.currentTimeMillis()).build()
+            http.newCall(req).execute().use { r ->
+                Json.parseToJsonElement(r.body.string()).jsonObject["history"]?.jsonArray?.map { v ->
+                    val o = v.jsonObject
+                    o["version"]!!.jsonPrimitive.content to o["notes"]?.jsonArray?.map { it.jsonPrimitive.content }.orEmpty()
+                }.orEmpty()
+            }
+        }.getOrDefault(emptyList())
+    }
+
     fun check() {
         if (state is UpdateState.Checking || state is UpdateState.Downloading || state is UpdateState.Installing) return
         state = UpdateState.Checking

@@ -11,3 +11,6 @@
 -dontwarn org.slf4j.**
 # Google Cast OptionsProvider loaded via reflection from AndroidManifest
 -keep class com.israeltv.plus.data.CastOptionsProvider { *; }
+# Credential Manager loads its Play services provider by reflection
+-if class androidx.credentials.CredentialManager
+-keep class androidx.credentials.playservices.** { *; }

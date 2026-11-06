@@ -74,10 +74,21 @@ import androidx.compose.material.icons.rounded.Close
 import androidx.compose.material.icons.rounded.Fullscreen
 import androidx.compose.material.icons.rounded.FullscreenExit
 import androidx.compose.material.icons.rounded.GridView
+import androidx.compose.material.icons.rounded.BatteryChargingFull
+import androidx.compose.material.icons.rounded.FastForward
+import androidx.compose.animation.core.rememberInfiniteTransition
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.LinearEasing
+
 import androidx.compose.material.icons.rounded.MoreHoriz
 import androidx.compose.material.icons.rounded.Pause
 import androidx.compose.material.icons.rounded.PictureInPictureAlt
 import androidx.compose.material.icons.rounded.PlayArrow
+import androidx.compose.material.icons.rounded.Forward10
+import androidx.compose.material.icons.rounded.Replay10
+import androidx.compose.runtime.mutableFloatStateOf
+import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.material.icons.rounded.Refresh
 import androidx.compose.material.icons.rounded.ScreenShare
 import androidx.compose.material.icons.rounded.Search
@@ -87,8 +98,8 @@ import androidx.compose.material.icons.rounded.StopCircle
 import androidx.compose.material.icons.rounded.SwapHoriz
 import androidx.compose.material.icons.rounded.Tune
 import androidx.compose.material.icons.rounded.Tv
-import androidx.compose.material.icons.rounded.VolumeOff
-import androidx.compose.material.icons.rounded.VolumeUp
+import androidx.compose.material.icons.automirrored.rounded.VolumeOff
+import androidx.compose.material.icons.automirrored.rounded.VolumeUp
 import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.CircularWavyProgressIndicator
@@ -112,6 +123,7 @@ import androidx.compose.runtime.mutableStateMapOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import kotlinx.coroutines.launch
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -155,6 +167,7 @@ import androidx.media3.common.Player
 import androidx.media3.common.TrackSelectionOverride
 import androidx.media3.common.Tracks
 import androidx.media3.datasource.DefaultHttpDataSource
+import androidx.media3.exoplayer.DefaultRenderersFactory
 import androidx.media3.exoplayer.DefaultLoadControl
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.exoplayer.source.DefaultMediaSourceFactory
@@ -166,6 +179,9 @@ import com.israeltv.plus.data.CastController
 import com.israeltv.plus.data.CastDeviceItem
 import com.israeltv.plus.data.CastProtocol
 import com.israeltv.plus.data.Channel
+import com.israeltv.plus.data.CatchupDvr
+import com.israeltv.plus.data.CatchupProgram
+import com.israeltv.plus.data.CatchupRepository
 import com.israeltv.plus.data.USER_AGENT
 import com.israeltv.plus.data.playableUrl
 import com.israeltv.plus.ui.components.BoldIcon
@@ -193,23 +209,28 @@ private fun buildPlayer(context: Context, handleAudioFocus: Boolean = true): Exo
     val http = DefaultHttpDataSource.Factory()
         .setUserAgent(USER_AGENT)
         .setAllowCrossProtocolRedirects(true)
-        .setConnectTimeoutMs(7_000)
-        .setReadTimeoutMs(9_000)
+        .setConnectTimeoutMs(6_000)
+        .setReadTimeoutMs(10_000)
         .setDefaultRequestProperties(mapOf("Referer" to "https://stmify.com/"))
     val loadControl = DefaultLoadControl.Builder()
         .setBufferDurationsMs(
-            /* minBufferMs = */ 12_000,
-            /* maxBufferMs = */ 45_000,
-            /* bufferForPlaybackMs = */ 800,
-            /* bufferForPlaybackAfterRebufferMs = */ 1_600,
+            /* minBufferMs = */ 15_000,
+            /* maxBufferMs = */ 60_000,
+            /* bufferForPlaybackMs = */ 500,
+            /* bufferForPlaybackAfterRebufferMs = */ 2_500,
         )
+        .setPrioritizeTimeOverSizeThresholds(true)
         .build()
     val trackSelector = DefaultTrackSelector(context).apply {
         parameters = buildUponParameters()
             .setForceHighestSupportedBitrate(true)
             .build()
     }
-    return ExoPlayer.Builder(context)
+    val renderersFactory = DefaultRenderersFactory(context)
+        .setEnableDecoderFallback(true)
+        .setExtensionRendererMode(DefaultRenderersFactory.EXTENSION_RENDERER_MODE_PREFER)
+
+    return ExoPlayer.Builder(context, renderersFactory)
         .setTrackSelector(trackSelector)
         .setLoadControl(loadControl)
         .setMediaSourceFactory(DefaultMediaSourceFactory(http))
@@ -218,6 +239,8 @@ private fun buildPlayer(context: Context, handleAudioFocus: Boolean = true): Exo
             /* handleAudioFocus = */ handleAudioFocus,
         )
         .setHandleAudioBecomingNoisy(true)
+        .setVideoScalingMode(C.VIDEO_SCALING_MODE_SCALE_TO_FIT_WITH_CROPPING)
+        .setWakeMode(C.WAKE_MODE_NETWORK)
         .build()
         .apply { volume = 1.0f }
 }
@@ -272,6 +295,29 @@ fun PlayerScreen(
     var multiViewActive by remember { mutableStateOf(startInMultiView) }
     var fit by remember { mutableStateOf(VideoFit.Fit) }
     var statusToast by remember(current.id) { mutableStateOf<String?>(null) }
+    var playbackSpeed by remember { mutableFloatStateOf(1.0f) }
+    var sleepTimerEndMs by remember { mutableLongStateOf(0L) }
+    var sleepTimerMinutes by remember { mutableIntStateOf(0) }
+    var currentPositionMs by remember { mutableLongStateOf(0L) }
+    var durationMs by remember { mutableLongStateOf(0L) }
+    var isCatchupMode by remember(current.id) { mutableStateOf(false) }
+    var catchupProgram by remember(current.id) { mutableStateOf<CatchupProgram?>(null) }
+    var lowBandwidthMode by remember { mutableStateOf(false) }
+    var isAudioOnlyMode by remember { mutableStateOf(false) }
+
+    LaunchedEffect(lowBandwidthMode) {
+        val p = player.trackSelectionParameters.buildUpon()
+        if (lowBandwidthMode) {
+            p.setMaxVideoBitrate(1_400_000)
+             .setMaxVideoSize(854, 480)
+             .setForceHighestSupportedBitrate(false)
+        } else {
+            p.setMaxVideoBitrate(15_000_000)
+             .clearVideoSizeConstraints()
+             .setForceHighestSupportedBitrate(true)
+        }
+        player.trackSelectionParameters = p.build()
+    }
 
     LaunchedEffect(startInCast) {
         if (startInCast) {
@@ -352,6 +398,9 @@ fun PlayerScreen(
 
     fun switchTo(i: Int) {
         index = (i + list.size) % list.size
+        isCatchupMode = false
+        catchupProgram = null
+        sourceIndex = 0
         touchTick++
     }
 
@@ -374,7 +423,7 @@ fun PlayerScreen(
         if (prevWasOttrast && rawCandidate.contains("ottrast.com", ignoreCase = true)) {
             delay(250)
         }
-        val url = runCatching { playableUrl(rawCandidate, current.auth) }.getOrElse {
+        val url = runCatching { playableUrl(rawCandidate, current.auth, forceRefresh = attempt > 0) }.getOrElse {
             if (sourceIndex + 1 < candidates.size) {
                 sourceIndex += 1
                 return@LaunchedEffect
@@ -384,16 +433,86 @@ fun PlayerScreen(
             return@LaunchedEffect
         }
         val item = MediaItem.Builder().setUri(url)
-        if (rawCandidate.contains(".m3u8", ignoreCase = true) || !current.isRadio) item.setMimeType(MimeTypes.APPLICATION_M3U8)
+        if (rawCandidate.contains(".m3u8", ignoreCase = true) || !current.isRadio) {
+            item.setMimeType(MimeTypes.APPLICATION_M3U8)
+            if (current.kind != "vod") {
+                item.setLiveConfiguration(
+                    MediaItem.LiveConfiguration.Builder()
+                        // no fixed offset: the player's default follows the stream's own segment length
+                        .setMinPlaybackSpeed(0.97f)
+                        .setMaxPlaybackSpeed(1.03f)
+                        .build()
+                )
+            }
+        }
         player.setMediaItem(item.build())
         player.volume = 1.0f
         player.prepare()
         player.playWhenReady = !castController.isCasting
-        delay(6000)
+        // Allow adequate buffer time (8.5s) for slow or 10-second segment streams (such as ottrast) before candidate failover
+        delay(8500)
         if (buffering && !playing && error == null && !castController.isCasting && sourceIndex + 1 < candidates.size) {
             val nextIdx = sourceIndex + 1
             statusToast = "שרת גיבוי (${nextIdx + 1}/${candidates.size})"
             sourceIndex = nextIdx
+        }
+    }
+
+    // Video Presence Watchdog: if audio is playing on a TV video channel but video decoder failed (width == 0),
+    // automatically failover to a supported FHD H.264 candidate stream (e.g. 4K HEVC device incompatibility)
+    LaunchedEffect(playing, current.id, sourceIndex, isAudioOnlyMode) {
+        if (playing && !isAudioOnlyMode && !current.isRadio && current.kind != "vod" && current.kind != "radio") {
+            delay(2800)
+            if (player.isPlaying && !isAudioOnlyMode && player.videoSize.width == 0 && player.videoSize.height == 0) {
+                if (sourceIndex + 1 < candidates.size) {
+                    statusToast = "מעבר אוטומטי לשידור FHD (וידאו)"
+                    sourceIndex += 1
+                }
+            }
+        }
+    }
+
+
+    // Position tracking, VOD resume, and sleep timer loop
+    // Resume once per episode: pausing or buffering must not seek back or repeat the message
+    LaunchedEffect(current) {
+        val isVod = current.kind == "vod" || current.categoryEn == "vod"
+        if (isVod) {
+            val sp = context.getSharedPreferences("israel_tv_prefs", Context.MODE_PRIVATE)
+            val savedPos = sp.getLong("itv_vod_pos_" + current.id, 0L)
+            if (savedPos > 10_000L) {
+                delay(800)
+                if (player.duration > 0 && savedPos < player.duration - 20_000L) {
+                    player.seekTo(savedPos)
+                    statusToast = "ממשיך מצפייה קודמת"
+                }
+            }
+        }
+    }
+
+    LaunchedEffect(playing, current) {
+        val isVod = current.kind == "vod" || current.categoryEn == "vod"
+        while (true) {
+            delay(1000)
+            if (player.isPlaying) {
+                currentPositionMs = player.currentPosition
+                durationMs = if (player.duration > 0) player.duration else 0L
+
+                if (isVod && currentPositionMs > 5_000L) {
+                    val sp = context.getSharedPreferences("israel_tv_prefs", Context.MODE_PRIVATE)
+                    sp.edit().putLong("itv_vod_pos_" + current.id, currentPositionMs).apply()
+                }
+
+                if (sleepTimerEndMs > 0L) {
+                    val remainingMs = sleepTimerEndMs - System.currentTimeMillis()
+                    if (remainingMs <= 0) {
+                        player.pause()
+                        sleepTimerEndMs = 0L
+                        sleepTimerMinutes = 0
+                        statusToast = "טיימר שינה: כיבוי אוטומטי 💤"
+                    }
+                }
+            }
         }
     }
 
@@ -473,7 +592,7 @@ fun PlayerScreen(
                         useController = false
                         artworkDisplayMode = PlayerView.ARTWORK_DISPLAY_MODE_OFF
                         setShutterBackgroundColor(android.graphics.Color.BLACK)
-                        setKeepContentOnPlayerReset(false)
+                        setKeepContentOnPlayerReset(true)
                         resizeMode = AspectRatioFrameLayout.RESIZE_MODE_FIT
                         this.player = player
                     }
@@ -565,9 +684,19 @@ fun PlayerScreen(
                 )
                 "buffering" -> BufferingPill()
                 "controls" -> Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(24.dp)) {
-                    ExpressiveGlassButton(
-                        Icons.Rounded.SkipNext, "ערוץ הבא", 48.dp, 56.dp,
-                    ) { switchTo(index + 1) }
+                    val isVod = current.kind == "vod" || current.categoryEn == "vod"
+                    if (isVod) {
+                        ExpressiveGlassButton(
+                            Icons.Rounded.Replay10, "10 שניות אחורה", 52.dp, 56.dp,
+                        ) {
+                            touchTick++
+                            player.seekTo((player.currentPosition - 10_000L).coerceAtLeast(0L))
+                        }
+                    } else {
+                        ExpressiveGlassButton(
+                            Icons.Rounded.SkipNext, "ערוץ הבא", 48.dp, 56.dp,
+                        ) { switchTo(index + 1) }
+                    }
                     ExpressiveGlassButton(
                         icon = if (playing) Icons.Rounded.Pause else Icons.Rounded.PlayArrow,
                         label = "נגן / השהה",
@@ -580,9 +709,19 @@ fun PlayerScreen(
                         touchTick++
                         if (player.isPlaying) player.pause() else { player.volume = 1.0f; player.play() }
                     }
-                    ExpressiveGlassButton(
-                        Icons.Rounded.SkipPrevious, "ערוץ קודם", 48.dp, 56.dp,
-                    ) { switchTo(index - 1) }
+                    if (isVod) {
+                        ExpressiveGlassButton(
+                            Icons.Rounded.Forward10, "10 שניות קדימה", 52.dp, 56.dp,
+                        ) {
+                            touchTick++
+                            val maxPos = if (player.duration > 0) player.duration else Long.MAX_VALUE
+                            player.seekTo((player.currentPosition + 10_000L).coerceAtMost(maxPos))
+                        }
+                    } else {
+                        ExpressiveGlassButton(
+                            Icons.Rounded.SkipPrevious, "ערוץ קודם", 48.dp, 56.dp,
+                        ) { switchTo(index - 1) }
+                    }
                 }
                 "error" -> PlayerErrorState(
                     ch = current,
@@ -630,9 +769,41 @@ fun PlayerScreen(
             PlayerBottomBar(
                 ch = current,
                 fit = fit,
+                positionMs = currentPositionMs,
+                durationMs = durationMs,
+                isCatchupActive = isCatchupMode,
+                catchupTitle = catchupProgram?.title,
+                isLowBandwidth = lowBandwidthMode,
+                isAudioOnly = isAudioOnlyMode,
+                onToggleLowBandwidth = {
+                    lowBandwidthMode = !lowBandwidthMode
+                    statusToast = if (lowBandwidthMode) "📶 מצב רשת איטית (5Mbps ומטה) מופעל" else "📶 איכות רגילה"
+                },
+                onToggleAudioOnly = { isAudioOnlyMode = !isAudioOnlyMode },
+                onSeek = { pos ->
+                    touchTick++
+                    currentPositionMs = pos
+                    player.seekTo(pos)
+                },
                 onCycleFit = {
                     touchTick++
                     fit = fit.next()
+                },
+                onCatchup = {
+                    touchTick++
+                    if (CatchupRepository.hasCatchup(current)) sheet = "catchup" else statusToast = "לערוץ הזה אין שידור חוזר"
+                },
+                onReturnLive = {
+                    touchTick++
+                    isCatchupMode = false
+                    catchupProgram = null
+                    sourceIndex = 0
+                    statusToast = "🔴 חזרה לשידור חי"
+                    if (player.isCurrentMediaItemLive) {
+                        player.seekToDefaultPosition()
+                    } else {
+                        switchTo(index)
+                    }
                 },
                 onOptions = {
                     touchTick++
@@ -644,8 +815,12 @@ fun PlayerScreen(
         PlayerOptionsDrawer(
             visible = sheet == "more",
             qualityLabel = selectedVideoHeight(player, tracks)?.let { "${it}p" } ?: "אוטומטי",
+            playbackSpeed = playbackSpeed,
+            sleepTimerMinutes = sleepTimerMinutes,
             serverIndex = sourceIndex,
             serverCount = candidates.size,
+            onSpeed = { sheet = "speed" },
+            onSleepTimer = { sheet = "sleep" },
             onSelectServer = { idx ->
                 sourceIndex = idx
                 statusToast = "שרת (${idx + 1}/${candidates.size})"
@@ -661,6 +836,19 @@ fun PlayerScreen(
                 sheet = null
                 multiViewActive = true
             },
+            onCatchup = {
+                if (CatchupRepository.hasCatchup(current)) sheet = "catchup" else statusToast = "לערוץ הזה אין שידור חוזר"
+            },
+            isLowBandwidth = lowBandwidthMode,
+            isAudioOnly = isAudioOnlyMode,
+            onToggleLowBandwidth = {
+                lowBandwidthMode = !lowBandwidthMode
+                statusToast = if (lowBandwidthMode) "📶 מצב רשת איטית (5Mbps ומטה) מופעל" else "📶 איכות רגילה"
+            },
+            onToggleAudioOnly = {
+                isAudioOnlyMode = !isAudioOnlyMode
+                sheet = null
+            },
             onChannels = { sheet = "list" },
             onRotate = {
                 sheet = null
@@ -670,6 +858,124 @@ fun PlayerScreen(
             },
             onDismiss = { sheet = null },
         )
+
+        // VOD Skip Intro & Next Episode pills
+        val isVod = current.kind == "vod" || current.categoryEn == "vod"
+        AnimatedVisibility(
+            visible = isVod && currentPositionMs in 5_000L..85_000L,
+            enter = fadeIn(tween(250)) + slideInHorizontally { it },
+            exit = fadeOut(tween(250)) + slideOutHorizontally { it },
+            modifier = Modifier.align(Alignment.BottomEnd).padding(end = 24.dp, bottom = 96.dp)
+        ) {
+            Box(
+                Modifier
+                    .clip(RoundedCornerShape(24.dp))
+                    .background(Color.Black.copy(alpha = 0.82f))
+                    .border(1.dp, Color.White.copy(alpha = 0.38f), RoundedCornerShape(24.dp))
+                    .clickable {
+                        touchTick++
+                        val target = 85_000L
+                        player.seekTo(target)
+                        currentPositionMs = target
+                        statusToast = "⏩ דולג על הפתיח"
+                    }
+                    .padding(horizontal = 16.dp, vertical = 10.dp),
+                contentAlignment = Alignment.Center
+            ) {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
+                    Icon(Icons.Rounded.FastForward, null, tint = Color.White, modifier = Modifier.size(18.dp))
+                    Text("דלג על פתיח", color = Color.White, fontSize = 13.sp, fontWeight = FontWeight.Bold)
+                }
+            }
+        }
+
+        AnimatedVisibility(
+            visible = isVod && durationMs > 60_000L && currentPositionMs >= (durationMs - 35_000L),
+            enter = fadeIn(tween(250)) + slideInHorizontally { it },
+            exit = fadeOut(tween(250)) + slideOutHorizontally { it },
+            modifier = Modifier.align(Alignment.BottomEnd).padding(end = 24.dp, bottom = 96.dp)
+        ) {
+            Box(
+                Modifier
+                    .clip(RoundedCornerShape(24.dp))
+                    .background(MaterialTheme.colorScheme.primary.copy(alpha = 0.9f))
+                    .border(1.dp, Color.White.copy(alpha = 0.45f), RoundedCornerShape(24.dp))
+                    .clickable {
+                        touchTick++
+                        switchTo(index + 1)
+                        statusToast = "⏭️ עובר לפרק הבא"
+                    }
+                    .padding(horizontal = 16.dp, vertical = 10.dp),
+                contentAlignment = Alignment.Center
+            ) {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
+                    Icon(Icons.Rounded.SkipNext, null, tint = Color.White, modifier = Modifier.size(18.dp))
+                    Text("הפרק הבא", color = Color.White, fontSize = 13.sp, fontWeight = FontWeight.Bold)
+                }
+            }
+        }
+
+        // Ambient Audio-Only / Battery Saver Screen
+        if (isAudioOnlyMode) {
+            Box(
+                Modifier
+                    .fillMaxSize()
+                    .background(Color.Black)
+                    .clickable { isAudioOnlyMode = false },
+                contentAlignment = Alignment.Center
+            ) {
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.Center,
+                    modifier = Modifier.padding(24.dp)
+                ) {
+                    ChannelLogo(
+                        url = logo(current),
+                        modifier = Modifier.size(110.dp),
+                        isRadio = current.isRadio
+                    )
+                    Spacer(Modifier.height(18.dp))
+                    Text(
+                        current.name,
+                        color = Color.White,
+                        style = MaterialTheme.typography.headlineSmall,
+                        fontWeight = FontWeight.Bold
+                    )
+                    val progTitle = catchupProgram?.title
+                    if (!progTitle.isNullOrEmpty()) {
+                        Spacer(Modifier.height(6.dp))
+                        Text(progTitle, color = Color.White.copy(alpha = 0.7f), fontSize = 14.sp)
+                    }
+                    Spacer(Modifier.height(28.dp))
+                    AudioWaveform()
+                    Spacer(Modifier.height(28.dp))
+                    Box(
+                        Modifier
+                            .clip(RoundedCornerShape(50))
+                            .background(Color(0xFF10B981).copy(alpha = 0.2f))
+                            .border(1.dp, Color(0xFF10B981), RoundedCornerShape(50))
+                            .padding(horizontal = 16.dp, vertical = 8.dp),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Icon(Icons.Rounded.BatteryChargingFull, null, tint = Color(0xFF10B981), modifier = Modifier.size(18.dp))
+                            Spacer(Modifier.width(8.dp))
+                            Text("מצב האזנה בלבד · חיסכון של 85% בסוללה ודאטה", color = Color(0xFF10B981), fontSize = 12.sp, fontWeight = FontWeight.Bold)
+                        }
+                    }
+                    Spacer(Modifier.height(20.dp))
+                    Text("הקש בכל מקום במסך לחזרה לוידאו", color = Color.White.copy(alpha = 0.45f), fontSize = 12.sp)
+                }
+            }
+        }
 
         if (multiViewActive) {
             MultiViewOverlay(
@@ -690,9 +996,110 @@ fun PlayerScreen(
     }
 
     when (sheet) {
+        "catchup" -> CatchupSheet(
+            channel = current,
+            logoUrl = logo(current),
+            onSelectProgram = { prog ->
+                isCatchupMode = true
+                catchupProgram = prog
+                val dvrUrl = CatchupDvr.dvrUrlFor(current)
+                val now = System.currentTimeMillis()
+                val offsetFromLiveMs = (now - prog.startMs).coerceAtLeast(0L)
+                statusToast = "⏮️ שידור חוזר: ${prog.title}"
+                sheet = null
+                if (dvrUrl != null) {
+                    player.setMediaItem(
+                        androidx.media3.common.MediaItem.Builder()
+                            .setUri(dvrUrl)
+                            .setMimeType(androidx.media3.common.MimeTypes.APPLICATION_M3U8)
+                            .build()
+                    )
+                    player.prepare()
+                    player.playWhenReady = true
+                    scope.launch {
+                        // the DVR playlist is long: its length is known only once it has loaded
+                        var waited = 0
+                        while (player.duration <= 0L && waited < 150) {
+                            kotlinx.coroutines.delay(100)
+                            waited++
+                        }
+                        val dur = player.duration
+                        if (dur > 0L) {
+                            val targetPos = (dur - offsetFromLiveMs).coerceAtLeast(0L)
+                            player.seekTo(targetPos)
+                        }
+                    }
+                } else {
+                    val dur = player.duration
+                    if (dur > 0L) {
+                        val targetPos = (dur - offsetFromLiveMs).coerceAtLeast(0L)
+                        player.seekTo(targetPos)
+                    }
+                }
+            },
+            onRewindMinutes = { mins ->
+                isCatchupMode = true
+                catchupProgram = CatchupProgram(
+                    startMin = (System.currentTimeMillis() / 60_000L) - mins,
+                    durationMin = mins,
+                    title = "לפני $mins דקות"
+                )
+                val dvrUrl = CatchupDvr.dvrUrlFor(current)
+                val rewindMs = mins * 60_000L
+                statusToast = "⏮️ חזרה $mins דקות אחורה"
+                sheet = null
+                if (dvrUrl != null) {
+                    player.setMediaItem(
+                        androidx.media3.common.MediaItem.Builder()
+                            .setUri(dvrUrl)
+                            .setMimeType(androidx.media3.common.MimeTypes.APPLICATION_M3U8)
+                            .build()
+                    )
+                    player.prepare()
+                    player.playWhenReady = true
+                    scope.launch {
+                        var waited = 0
+                        while (player.duration <= 0L && waited < 150) {
+                            kotlinx.coroutines.delay(100)
+                            waited++
+                        }
+                        val dur = player.duration
+                        if (dur > 0L) {
+                            val targetPos = (dur - rewindMs).coerceAtLeast(0L)
+                            player.seekTo(targetPos)
+                        }
+                    }
+                } else {
+                    val cur = player.currentPosition
+                    val targetPos = (cur - rewindMs).coerceAtLeast(0L)
+                    player.seekTo(targetPos)
+                }
+            },
+            onDismiss = { sheet = null },
+        )
         "list" -> ChannelListSheet(list, index, logo, onPick = { switchTo(it); sheet = null }, onDismiss = { sheet = null })
         "audio" -> AudioSheet(player, tracks, onDismiss = { sheet = null })
         "quality" -> ResolutionDialog(player, tracks, onDismiss = { sheet = null })
+        "speed" -> PlaybackSpeedDialog(
+            currentSpeed = playbackSpeed,
+            onSelectSpeed = { sp ->
+                playbackSpeed = sp
+                player.setPlaybackSpeed(sp)
+                statusToast = "מהירות: ${sp}x"
+                sheet = null
+            },
+            onDismiss = { sheet = null }
+        )
+        "sleep" -> SleepTimerDialog(
+            currentMinutes = sleepTimerMinutes,
+            onSelectMinutes = { mins ->
+                sleepTimerMinutes = mins
+                sleepTimerEndMs = if (mins > 0) System.currentTimeMillis() + mins * 60_000L else 0L
+                statusToast = if (mins > 0) "טיימר שינה: יכבה בעוד $mins דקות" else "טיימר שינה בוטל"
+                sheet = null
+            },
+            onDismiss = { sheet = null }
+        )
         "cast" -> CastSheet(
             channel = current,
             castController = castController,
@@ -1019,7 +1426,7 @@ private fun multiViewCandidatesFor(channel: Channel, otherCellsUsingOttrast: Boo
     val all = channel.allCandidateUrls()
     if (!otherCellsUsingOttrast || all.size <= 1) return all
     val (ottrast, multiCdn) = all.partition {
-        it.contains("ottrast.com", ignoreCase = true) || it.contains("212.80.215.72")
+        it.contains("ottrast.com", ignoreCase = true) || it.contains("212.80.215.72") || it.contains("45.156.223")
     }
     return multiCdn + ottrast
 }
@@ -1263,7 +1670,7 @@ private fun MultiViewCell(
         cellPlayer.volume = if (isAudioActive) 1.0f else 0f
         cellPlayer.prepare()
         cellPlayer.playWhenReady = true
-        delay(5500)
+        delay(3500)
         if (!cellPlaying && srvIdx + 1 < candidates.size) {
             srvIdx += 1
         }
@@ -1332,7 +1739,7 @@ private fun MultiViewCell(
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 Icon(
-                    if (isAudioActive) Icons.Rounded.VolumeUp else Icons.Rounded.VolumeOff,
+                    if (isAudioActive) Icons.AutoMirrored.Rounded.VolumeUp else Icons.AutoMirrored.Rounded.VolumeOff,
                     contentDescription = null,
                     tint = if (isAudioActive) MaterialTheme.colorScheme.onPrimary else Color.White.copy(alpha = 0.75f),
                     modifier = Modifier.size(13.dp),
@@ -1387,3 +1794,24 @@ private fun MultiViewCell(
     }
 }
 
+@Composable
+private fun AudioWaveform(modifier: Modifier = Modifier) {
+    val infiniteTransition = rememberInfiniteTransition(label = "wave")
+    val h1 = infiniteTransition.animateFloat(0.3f, 1f, infiniteRepeatable(tween(400, easing = LinearEasing), androidx.compose.animation.core.RepeatMode.Reverse), label = "h1")
+    val h2 = infiniteTransition.animateFloat(0.5f, 0.9f, infiniteRepeatable(tween(550, easing = LinearEasing), androidx.compose.animation.core.RepeatMode.Reverse), label = "h2")
+    val h3 = infiniteTransition.animateFloat(0.2f, 1f, infiniteRepeatable(tween(350, easing = LinearEasing), androidx.compose.animation.core.RepeatMode.Reverse), label = "h3")
+    val h4 = infiniteTransition.animateFloat(0.4f, 0.85f, infiniteRepeatable(tween(600, easing = LinearEasing), androidx.compose.animation.core.RepeatMode.Reverse), label = "h4")
+    val h5 = infiniteTransition.animateFloat(0.3f, 0.95f, infiniteRepeatable(tween(450, easing = LinearEasing), androidx.compose.animation.core.RepeatMode.Reverse), label = "h5")
+    val heights = listOf(h1, h2, h3, h4, h5)
+    Row(modifier.height(36.dp), horizontalArrangement = Arrangement.spacedBy(6.dp), verticalAlignment = Alignment.CenterVertically) {
+        heights.forEach { h ->
+            Box(
+                Modifier
+                    .width(5.dp)
+                    .fillMaxHeight(h.value)
+                    .clip(RoundedCornerShape(3.dp))
+                    .background(Color(0xFF38BDF8))
+            )
+        }
+    }
+}

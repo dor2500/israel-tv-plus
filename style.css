@@ -192,7 +192,52 @@ video.pic-vivid { filter: saturate(1.3) contrast(1.06); }
 video.pic-cinema { filter: contrast(1.08) brightness(.97); }
 video.pic-sports { filter: saturate(1.15) contrast(1.1) brightness(1.03); }
 video.pic-warm { filter: sepia(.15) saturate(1.1); }
-video.sharpen { filter: url(#retro-sharpen-filter) !important; }
+/* ------------------------------------------------------------------ Hardware-Accelerated Video Upscale & Enhancements */
+video.upscale-ai_4k, .video-4k-upscale {
+  image-rendering: -webkit-optimize-contrast !important;
+  image-rendering: crisp-edges !important;
+  -webkit-transform: translate3d(0, 0, 0) !important;
+  transform: translate3d(0, 0, 0) !important;
+  backface-visibility: hidden !important;
+  -webkit-backface-visibility: hidden !important;
+  filter: contrast(1.09) saturate(1.07) brightness(1.01) !important;
+  will-change: transform, filter !important;
+}
+video.upscale-crystal_hd, video.sharpen {
+  image-rendering: -webkit-optimize-contrast !important;
+  image-rendering: crisp-edges !important;
+  -webkit-transform: translate3d(0, 0, 0) !important;
+  transform: translate3d(0, 0, 0) !important;
+  filter: contrast(1.14) saturate(1.10) brightness(1.03) !important;
+  will-change: transform, filter !important;
+}
+video.upscale-cinema_hdr {
+  -webkit-transform: translate3d(0, 0, 0) !important;
+  transform: translate3d(0, 0, 0) !important;
+  filter: contrast(1.18) saturate(1.16) brightness(0.97) !important;
+}
+video.upscale-vivid_oled {
+  -webkit-transform: translate3d(0, 0, 0) !important;
+  transform: translate3d(0, 0, 0) !important;
+  filter: contrast(1.12) saturate(1.30) brightness(1.02) !important;
+}
+video.upscale-sports_pro {
+  image-rendering: -webkit-optimize-contrast !important;
+  image-rendering: crisp-edges !important;
+  -webkit-transform: translate3d(0, 0, 0) !important;
+  transform: translate3d(0, 0, 0) !important;
+  filter: contrast(1.12) saturate(1.18) brightness(1.04) !important;
+}
+video.upscale-smooth_denoise {
+  -webkit-transform: translate3d(0, 0, 0) !important;
+  transform: translate3d(0, 0, 0) !important;
+  filter: contrast(1.04) saturate(1.03) brightness(1.01) !important;
+}
+video.upscale-retro_crt {
+  -webkit-transform: translate3d(0, 0, 0) !important;
+  transform: translate3d(0, 0, 0) !important;
+  filter: sepia(0.20) contrast(1.10) saturate(1.12) !important;
+}
 .player.cursor-hidden { cursor: none; }
 
 .radio-view { position: absolute; top: 0; left: 0; right: 0; bottom: 0; display: flex; align-items: center; justify-content: center;
@@ -1112,7 +1157,7 @@ button.hint.hint-btn:hover, button.hint.hint-btn.focused {
 .atv-colors {
   position: fixed;
   left: 3.6rem;
-  bottom: .6rem;
+  top: 7.6rem;
   z-index: 25;
   display: flex;
   align-items: center;
@@ -2339,13 +2384,300 @@ body.tvui #player .osd::before { content: ''; position: absolute; right: 0; left
 #tvg-cta { margin-top: .4rem; font-size: 1.4rem; font-weight: 700; }
 .tv-p.cu .tv-ttl::before { content: '\21BA'; margin-left: .6rem; color: #b4b6bc; }
 
-/* ---- VOD series modal and cards */
-.vod-dialog .dialog-box { max-width: 52rem; width: 90vw; background: rgba(18, 20, 29, 0.95); backdrop-filter: blur(28px); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 1.5rem; }
-.vod-ep-card { display: flex; align-items: center; justify-content: space-between; padding: 0.9rem 1.2rem; background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 0.8rem; cursor: pointer; transition: all 0.25s ease; }
-.vod-ep-card:hover, .vod-ep-card:focus, .vod-ep-card.focused { background: rgba(255, 255, 255, 0.18); border-color: rgba(255, 255, 255, 0.4); transform: scale3d(1.015, 1.015, 1); }
-.vod-ep-info b { display: block; font-size: 1.15rem; color: #fff; margin-bottom: 0.2rem; }
-.vod-ep-info span { font-size: 0.9rem; color: rgba(255, 255, 255, 0.65); }
-.vod-play-btn { margin-right: 0.8rem; padding: 0.45rem 1rem; font-size: 0.95rem; border-radius: 0.5rem; white-space: nowrap; }
+/* ---- VOD series cinema modal and cards (TV & Desktop) ---- */
+.vod-dialog .dialog-box {
+  max-width: 108rem;
+  width: 92vw;
+  max-height: 88vh;
+  background: rgba(13, 16, 28, 0.96);
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
+  border: 1.5px solid rgba(255, 255, 255, 0.14);
+  border-radius: 2.2rem;
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.85);
+  padding: 2.4rem 2.8rem 2rem;
+  text-align: right;
+  direction: rtl;
+  overflow-y: auto;
+}
+.vod-hero {
+  display: flex;
+  gap: 2.2rem;
+  align-items: flex-start;
+  margin-bottom: 1.8rem;
+  padding-bottom: 1.6rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.vod-poster-wrap {
+  flex-shrink: 0;
+}
+.vod-poster {
+  width: 165px;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+.vod-hero-details {
+  flex: 1;
+  min-width: 0;
+}
+.vod-hero-title {
+  margin: 0 0 0.8rem;
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: -0.02em;
+}
+.vod-hero-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.vod-chip {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #e2e8f0;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 0.25rem 0.75rem;
+  border-radius: 8px;
+}
+.vod-chip-rating {
+  background: rgba(234, 179, 8, 0.18);
+  border: 1px solid rgba(234, 179, 8, 0.45);
+  color: #facc15;
+  font-size: 1.05rem;
+  font-weight: 900;
+  padding: 0.25rem 0.8rem;
+  border-radius: 8px;
+}
+.vod-chip-q {
+  background: rgba(59, 130, 246, 0.2);
+  border-color: rgba(59, 130, 246, 0.5);
+  color: #60a5fa;
+}
+.vod-hero-desc {
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: #cbd5e1;
+  margin: 0 0 1.2rem;
+  max-height: 5.6rem;
+  overflow-y: auto;
+}
+.vod-hero-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.vod-hero-play-btn {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8) !important;
+  color: #fff !important;
+  font-size: 1.15rem !important;
+  font-weight: 800 !important;
+  padding: 0.65rem 1.6rem !important;
+  border-radius: 12px !important;
+  border: none !important;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.4);
+}
+.vod-hero-play-btn.focused {
+  transform: scale(1.05);
+  box-shadow: 0 0 0 3px #60a5fa, 0 8px 24px rgba(37, 99, 235, 0.6) !important;
+}
+.vod-rec-all-btn {
+  background: rgba(239, 68, 68, 0.16) !important;
+  border: 1px solid rgba(239, 68, 68, 0.45) !important;
+  color: #fca5a5 !important;
+  font-size: 1.1rem !important;
+  font-weight: 700 !important;
+  padding: 0.65rem 1.3rem !important;
+  border-radius: 12px !important;
+  cursor: pointer;
+}
+.vod-rec-all-btn.focused {
+  background: rgba(239, 68, 68, 0.35) !important;
+  border-color: #ef4444 !important;
+  color: #fff !important;
+  transform: scale(1.04);
+}
+
+.vod-season-tabs {
+  display: flex;
+  gap: 0.6rem;
+  overflow-x: auto;
+  padding-bottom: 0.8rem;
+  margin-bottom: 1.2rem;
+  scrollbar-width: none;
+}
+.vod-season-tabs::-webkit-scrollbar { display: none; }
+.season-tab-btn {
+  padding: 0.55rem 1.25rem !important;
+  font-size: 1.1rem !important;
+  font-weight: 700 !important;
+  border-radius: 12px !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: #e2e8f0 !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.12) !important;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.season-tab-btn.active {
+  background: #2563eb !important;
+  border-color: #60a5fa !important;
+  color: #fff !important;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.45);
+}
+.season-tab-btn.focused {
+  transform: scale(1.05);
+  border-color: #60a5fa !important;
+  box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.5);
+}
+
+.vod-episodes-section {
+  display: flex;
+  flex-direction: column;
+}
+.vod-episodes-heading {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #cbd5e1;
+  margin-bottom: 0.8rem;
+}
+.vod-episodes {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 0.9rem;
+  max-height: 44vh;
+  overflow-y: auto;
+  padding: 0.4rem;
+  scrollbar-width: thin;
+}
+.vod-ep-card {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  padding: 0.8rem 1.1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1.5px solid rgba(255, 255, 255, 0.09);
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+.vod-ep-card:hover, .vod-ep-card:focus, .vod-ep-card.focused {
+  background: rgba(59, 130, 246, 0.22) !important;
+  border-color: #60a5fa !important;
+  transform: scale(1.025) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 0 2px rgba(96, 165, 250, 0.4) !important;
+}
+.vod-ep-thumb-wrap {
+  width: 110px;
+  height: 64px;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+  background: #000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+.vod-ep-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.vod-ep-play-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.35);
+  color: #fff;
+  font-size: 1.2rem;
+  opacity: 0.8;
+}
+.vod-ep-card.focused .vod-ep-play-overlay {
+  background: rgba(37, 99, 235, 0.4);
+  opacity: 1;
+}
+.vod-ep-progress {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.3);
+}
+.vod-ep-bar {
+  height: 100%;
+  background: #ef4444;
+}
+.vod-ep-info {
+  flex: 1;
+  min-width: 0;
+}
+.vod-ep-num {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #60a5fa;
+  margin-bottom: 0.15rem;
+}
+.vod-ep-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.vod-ep-meta {
+  font-size: 0.88rem;
+  color: #94a3b8;
+  margin-top: 0.2rem;
+  display: flex;
+  gap: 0.6rem;
+}
+.vod-ep-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+.vod-play-pill {
+  background: #2563eb;
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 0.4rem 0.9rem;
+  border-radius: 8px;
+}
+.vod-ep-card.focused .vod-play-pill {
+  background: #fff;
+  color: #1e3a8a;
+}
+
+/* ATV Shelf VOD Cards */
+.atv-item.is-vod .atv-card {
+  overflow: hidden;
+  background: #111;
+}
+.atv-item.is-vod .atv-logo img {
+  max-width: 100%;
+  max-height: 100%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 1.25rem;
+}
+.atv-item.is-vod .atv-q {
+  background: #2563eb;
+  color: #fff;
+  font-weight: 800;
+}
 
 
 /* channel names under the logos: bigger and bolder, readable from across the room */
@@ -2508,40 +2840,841 @@ body.phone .rail-item { margin: 0 0 0 1.2rem; }
   font-weight: 700;
 }
 
-/* ================================================================== TV / desktop home layout (webOS, Android TV, Windows)
-   Column {
-     TopBar                                   – the category navigation, alone at the top
-     Row {                                    – RTL: first child on the right
-       InfoPanel  (fixed width, right)        – programme / channel details, never floats over the grid
-       Column(weight 1f) { Grid ; ColorKeys } – the channel shelves fill the rest; the colour buttons sit under them
-     }
-   } */
-body.tvui .atv-top { position: absolute; top: 0; left: 0; right: 0; height: 7.6rem; z-index: 4; pointer-events: none; }
-body.tvui .atv-top .atv-pill { pointer-events: auto; top: 2rem; }
-body.tvui .atv-main { position: absolute; top: 7.6rem; left: 0; right: 0; bottom: 0; z-index: 2;
-  display: flex; flex-direction: row; align-items: stretch; }
-/* right: the info panel, fixed width; its two layers cross-fade on top of each other */
-body.tvui .atv-info { position: relative; flex: 0 0 36rem; width: 36rem; margin: 0 3.2rem 0 0; overflow: hidden; }
-body.tvui .atv-info .atv-meta, body.tvui.ui-large .atv-info .atv-meta { position: absolute; top: 1.2rem; right: 0; left: 0; width: auto; }
-body.tvui .atv-info .atv-mlogo { width: 100%; max-width: 26rem; height: 7rem; }
-body.tvui .atv-info .atv-title { font-size: 2.8rem; }
-body.tvui .atv-info .atv-tags { flex-wrap: wrap; row-gap: .5rem; }
-body.tvui .atv-info .atv-prog-title { white-space: normal; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-clamp: 2; }
-body.tvui .atv-info .atv-src { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-/* left: the grid column takes the rest (weight 1f) */
-body.tvui .atv-left { position: relative; flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; overflow: hidden; }
-body.tvui .atv-left .atv-shelves, body.tvui.ui-xl .atv-left .atv-shelves, body.tvui.ui-xxl .atv-left .atv-shelves {
-  position: relative; left: auto; right: auto; bottom: auto; flex: 1 1 0; min-height: 0; height: auto; overflow: hidden; padding-top: 1.2rem; }
-body.tvui .atv-left .atv-row-title { margin-right: 2.4rem; }
-body.tvui .atv-left .atv-track { padding-right: 2.4rem; }
-/* the next shelves show in full now (no colour buttons under them any more) */
-body.tvui .atv-left .atv-row.below .atv-item:not(.focused) .atv-name { opacity: 1; }
-/* search sits at the top of the grid column and pushes the results down instead of covering them */
-body.tvui .atv-left .atv-search, body.tvui.ui-large .atv-left .atv-search { position: relative; top: auto; right: auto; flex: none;
-  width: auto; max-width: 56rem; margin: 1.2rem 2.4rem 0 2.4rem; }
-body.tvui .atv-left .atv-kb, body.tvui.ui-large .atv-left .atv-kb { position: relative; top: auto; right: auto; flex: none; margin: .8rem 2.4rem 0 2.4rem; }
-body.tvui .atv-left .atv-kb.hidden { display: none; }
-/* bottom of the grid column: the colour action buttons in their own strip */
-body.tvui .atv-left .atv-colors { position: relative; left: auto; bottom: auto; flex: none; z-index: 3;
-  display: flex; align-items: center; justify-content: flex-end; gap: .4rem; min-height: 4.4rem; padding: .6rem 2.4rem 1.4rem; }
-body.tvui.player-open .atv-left .atv-colors { display: none !important; }
+
+/* Hardware-accelerated smooth playback and UI compositing */
+#player video {
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  will-change: transform;
+}
+.vod-ep-card, .vod-modal-hero, .channel-card, .card, .vod-series-card {
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+
+/* ---- phone browser: the same top row, chips and hero as the Android app */
+body.phone .topbar { flex-wrap: wrap; justify-content: center; padding-bottom: .4rem; }
+body.phone .brand { position: absolute; top: calc(var(--sat, 0px) + 1.6rem); left: 50%; margin: 0; transform: translateX(-50%); z-index: 1; pointer-events: none; }
+body.phone .brand-icon, body.phone .brand-sub { display: none; }
+body.phone .brand-name { font-size: 2.1rem; white-space: nowrap; }
+body.phone .top-actions { width: 100%; margin: 0; }
+body.phone #btn-avatar { order: -1; margin: 0 0 0 auto; }
+body.phone #btn-gdrive, body.phone #btn-getapp, body.phone #btn-update, body.phone #btn-search { display: none !important; }
+body.phone #btn-ph-settings { order: 9; margin: 0; }
+body.phone .nb-item[data-tab="settings"] { display: none; }
+.home-chips { display: flex; justify-content: safe center; gap: .6rem; width: 100%; padding: .9rem .8rem .2rem; overflow-x: auto; scrollbar-width: none; }
+body.phone .topbar.solid .home-chips { display: none; }
+body.phone.tab-home .topbar.solid .brand-text { transform: none; }
+.home-chips::-webkit-scrollbar { display: none; }
+body.phone:not(.tab-home) .home-chips { display: none; }
+.home-chip { flex: none; height: 3.4rem; padding: 0 1.1rem; border: 1px solid rgba(255, 255, 255, .28); border-radius: 1.7rem; background: rgba(0, 0, 0, .28); color: #fff; font: inherit; font-size: 1.25rem; font-weight: 600; transition: border-radius .2s var(--spring), background-color .2s; }
+.home-chip.on { background: #fff; border-color: #fff; color: #111; }
+.home-chip:active { border-radius: .9rem; }
+body.phone .slide-title { display: none; }
+body.phone .slide-meta { gap: .7rem; margin-bottom: 1.5rem; }
+body.phone .slide-meta span + span::before { content: none; }
+body.phone .slide-meta > span { padding: .25rem .9rem; border: 1px solid rgba(255, 255, 255, .32); border-radius: .7rem; background: rgba(0, 0, 0, .25); color: #fff; font-size: 1.2rem; }
+body.phone .slide-meta .live { padding: 0; border: 0; background: none; color: #fff; letter-spacing: 0; }
+body.phone .slide-actions { gap: 1.2rem; }
+body.phone .slide-actions .icon-tonal { margin: 0; }
+.il-row { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.6rem .4rem; font-size: 1.5rem; font-weight: 600; cursor: pointer; }
+.il-row input { position: absolute; opacity: 0; pointer-events: none; }
+.il-switch { position: relative; width: 5.2rem; height: 3.2rem; border: .2rem solid rgba(255, 255, 255, .45); border-radius: 1.6rem; background: rgba(255, 255, 255, .08); transition: background-color .2s; }
+.il-switch::after { content: ''; position: absolute; top: .55rem; right: .6rem; width: 1.7rem; height: 1.7rem; border-radius: 50%; background: rgba(255, 255, 255, .7); transition: transform .25s var(--spring), background-color .2s; }
+.il-row input:checked + .il-switch { background: #fff; border-color: #fff; }
+.il-row input:checked + .il-switch::after { transform: translateX(-1.9rem); background: #111; }
+
+/* ---- computers: a quiet scrollbar on the dark screens */
+body:not(.light) { scrollbar-color: rgba(255, 255, 255, .22) transparent; scrollbar-width: thin; }
+body:not(.light) ::-webkit-scrollbar { width: .7rem; height: .7rem; }
+body:not(.light) ::-webkit-scrollbar-track { background: transparent; }
+body:not(.light) ::-webkit-scrollbar-thumb { border-radius: .4rem; background: rgba(255, 255, 255, .22); }
+
+/* Audio-Only / Battery Saver mode */
+#player.audio-only-view video {
+  visibility: hidden !important;
+}
+#player.audio-only-view::before {
+  content: 'מצב האזנה · התמונה כבויה והשידור באיכות הנמוכה ביותר';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #10b981;
+  background: rgba(0, 0, 0, 0.9);
+  border: 1px solid #10b981;
+  border-radius: 50px;
+  padding: 14px 28px;
+  font-size: 1.05rem;
+  font-weight: bold;
+  z-index: 50;
+  pointer-events: none;
+}
+
+
+/* ---- settings on computers and TVs: a full page with grouped rows, in the theme's own colors */
+body:not(.phone) #settings.overlay { background: var(--bg); -webkit-backdrop-filter: none; backdrop-filter: none; }
+body:not(.phone) .settings-box { width: 100%; height: 100%; background: var(--bg); }
+body:not(.phone) .settings-side { width: 31rem; padding: 2.4rem 1.6rem; background: var(--bg2); scrollbar-width: none; }
+body:not(.phone) .settings-side::-webkit-scrollbar { display: none; }
+body:not(.phone) .settings-title { font-size: 2.4rem; font-weight: 800; padding: .4rem 1.2rem 1.8rem; color: var(--text); }
+body:not(.phone) .settings-title .ic { font-size: 2.6rem; margin-left: .9rem; }
+.set-close { display: flex; align-items: center; justify-content: center; width: 3.6rem; height: 3.6rem; margin-right: auto; padding: 0; border: 0;
+  border-radius: 50%; font-size: 2rem; color: var(--muted); background: none; cursor: pointer; }
+.set-close:hover { color: var(--text); background: var(--surface2); }
+body.phone .set-close { display: none; }
+body:not(.phone) .nav-item { height: 4.6rem; padding: 0 1.2rem; margin-bottom: .3rem; font-size: 1.5rem; font-weight: 600; border-radius: 1.2rem; }
+body:not(.phone) .nav-item:hover { color: var(--text); background: var(--surface2); }
+body:not(.phone) .nav-item.active { background: var(--container); color: var(--on-container); }
+body:not(.phone) .nav-item.focused { background: var(--accent) !important; color: var(--on-accent) !important; border-color: transparent !important;
+  transform: none !important; box-shadow: none !important; }
+body:not(.phone) .settings-main { align-items: center; padding: 2.8rem 3.2rem 0; }
+body:not(.phone) .settings-head, body:not(.phone) .settings-rows { width: 100%; max-width: 92rem; }
+body:not(.phone) .settings-head h2 { font-size: 2.8rem; font-weight: 800; color: var(--text); }
+body:not(.phone) .settings-head p { font-size: 1.4rem; color: var(--muted); margin: .3rem 0 1.4rem; }
+body:not(.phone) .settings-rows { padding: .3rem .3rem 4rem; scrollbar-width: thin; }
+body:not(.phone) .settings-rows::-webkit-scrollbar { display: block; width: .7rem; }
+.set-group { margin-bottom: 1rem; border-radius: 1.6rem; background: var(--bg2); }
+body:not(.phone) .set-group .set-row { min-height: 5.6rem; padding: .7rem 1.8rem; margin: 0; border: 0; border-radius: 0; background: none; box-shadow: inset 0 -.1rem 0 var(--line); }
+.set-group .set-row:first-child { border-top-left-radius: 1.6rem; border-top-right-radius: 1.6rem; }
+.set-group .set-row:last-child { border-bottom-left-radius: 1.6rem; border-bottom-right-radius: 1.6rem; }
+body:not(.phone) .set-group .set-row:last-child { box-shadow: none; }
+body:not(.phone) .set-group .set-row:not(.info):hover { background: var(--surface2); }
+body:not(.phone) .set-group .set-row.focused { background: var(--surface2) !important; box-shadow: inset 0 0 0 .25rem var(--focus) !important; transform: none !important; border-radius: 1.6rem; }
+body:not(.phone) .set-row .sr-label { font-size: 1.55rem; font-weight: 600; color: var(--text); }
+body:not(.phone) .set-row.action .sr-label { color: var(--focus); }
+body:not(.phone) .set-row.danger .sr-label { color: var(--danger); }
+body:not(.phone) .set-row .sr-help { font-size: 1.25rem; color: var(--muted); }
+body:not(.phone) .set-row .sr-val .v { min-width: 13rem; color: var(--text); }
+body:not(.phone) .set-row.info .sr-val .v { min-width: 0; padding: 0; font-weight: 500; color: var(--muted); }
+body:not(.phone) .set-row.focused .arr { color: var(--focus); }
+body:not(.phone) .set-sep { padding: 1.4rem 1.8rem .6rem; font-size: 1.3rem; font-weight: 700; color: var(--muted); }
+body:not(.phone) .set-row.upd-row { margin-bottom: 1rem; }
+.upd-card.gcard { display: block; padding: 0; border-radius: 1.6rem; background: var(--bg2); color: var(--text); }
+.upd-card.gcard::after { display: none; }
+.gc { display: flex; align-items: center; padding: 1.8rem; }
+.gc-logo { flex: none; display: flex; align-items: center; justify-content: center; width: 5.2rem; height: 5.2rem; margin-left: 1.6rem; border-radius: 50%;
+  object-fit: cover; font-size: 2.2rem; font-weight: 700; color: #fff; background: #fff; }
+div.gc-logo:not(:has(svg)) { background: #4285F4; }
+.gc-text { flex: 1; min-width: 0; }
+.gc-name { font-size: 1.7rem; font-weight: 700; }
+.gc-sub { margin-top: .15rem; font-size: 1.3rem; color: var(--muted); overflow: hidden; text-overflow: ellipsis; }
+.gc-btn, .gc-on { flex: none; margin-right: 1.6rem; padding: .7rem 1.6rem; border-radius: 2rem; font-size: 1.35rem; font-weight: 700; }
+.gc-btn { background: var(--accent); color: var(--on-accent); }
+.gc-on { background: var(--container); color: var(--on-container); }
+/* the phone page: the chip already names the section */
+body.phone .settings-head h2 { display: none; }
+body.phone .settings-head p { margin: 0 0 1.2rem; }
+body.phone .set-group .set-row { margin: 0; }
+body.phone .set-group .set-row:active { background: var(--surface2); }
+body.phone .set-row.upd-row { padding: 0; }
+body.phone .gc { flex-wrap: wrap; padding: 1.6rem; }
+
+/* ---- Material 3 Expressive TV & Desktop Settings System ---- */
+body:not(.phone) #settings.overlay {
+  background: rgba(0, 0, 0, 0.78);
+  backdrop-filter: blur(36px);
+  -webkit-backdrop-filter: blur(36px);
+  z-index: 60;
+}
+body:not(.phone) .settings-box {
+  width: 90vw;
+  max-width: 124rem;
+  height: 86vh;
+  margin: auto;
+  border-radius: 28px;
+  background: rgba(14, 18, 27, 0.98);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 28px 72px rgba(0, 0, 0, 0.85);
+  overflow: hidden;
+  display: flex;
+  direction: rtl;
+}
+body:not(.phone) .settings-side {
+  width: 35rem;
+  padding: 2.8rem 1.8rem;
+  background: rgba(255, 255, 255, 0.015);
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  scrollbar-width: none;
+  flex-shrink: 0;
+}
+body:not(.phone) .settings-side::-webkit-scrollbar { display: none; }
+body:not(.phone) .settings-title {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: #f8fafc;
+  letter-spacing: -0.02em;
+  padding: 0 1rem 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 1.6rem;
+}
+body:not(.phone) .settings-title .ic {
+  font-size: 2.6rem;
+  width: 2.6rem;
+  height: 2.6rem;
+  fill: #60a5fa;
+  color: #60a5fa;
+  margin: 0;
+}
+body:not(.phone) .nav-item {
+  display: flex;
+  align-items: center;
+  height: 5.2rem;
+  padding: 0 1.8rem;
+  margin-bottom: 0.55rem;
+  border-radius: 9999px;
+  font-size: 1.55rem;
+  font-weight: 600;
+  color: #94a3b8;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+}
+body:not(.phone) .nav-item .ni-ico {
+  width: 2.4rem;
+  height: 2.4rem;
+  margin-left: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: inherit;
+}
+body:not(.phone) .nav-item .ni-ico svg, body:not(.phone) .m3-ico {
+  width: 2.2rem;
+  height: 2.2rem;
+  fill: currentColor;
+}
+body:not(.phone) .nav-item.active {
+  background: rgba(59, 130, 246, 0.16);
+  color: #93c5fd;
+  font-weight: 700;
+  border-color: rgba(59, 130, 246, 0.28);
+}
+body:not(.phone) .nav-item.focused {
+  background: #2563eb !important;
+  color: #ffffff !important;
+  transform: scale(1.03) !important;
+  outline: 3px solid #60a5fa !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.5) !important;
+}
+body:not(.phone) .settings-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 2.8rem 3.4rem 2rem;
+}
+body:not(.phone) .settings-head {
+  width: 100%;
+}
+body:not(.phone) .settings-head h2 {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  font-size: 2.6rem;
+  font-weight: 800;
+  color: #f8fafc;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+body:not(.phone) .set-head-ico {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+body:not(.phone) .set-head-ico svg {
+  width: 3.2rem;
+  height: 3.2rem;
+  fill: #60a5fa;
+}
+body:not(.phone) .settings-head p {
+  font-size: 1.35rem;
+  color: #94a3b8;
+  margin: 0.5rem 0 2rem;
+  line-height: 1.4;
+}
+body:not(.phone) .settings-rows {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0.4rem;
+  scrollbar-width: thin;
+}
+body:not(.phone) .set-group {
+  margin-bottom: 1.2rem;
+  background: transparent;
+}
+body:not(.phone) .set-row {
+  display: flex;
+  align-items: center;
+  min-height: 6.2rem;
+  padding: 1.1rem 2.2rem;
+  margin-bottom: 0.8rem;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1.5px solid rgba(255, 255, 255, 0.07);
+  cursor: pointer;
+  box-shadow: none;
+  transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+}
+body:not(.phone) .set-group .set-row {
+  min-height: 6.2rem;
+  padding: 1.1rem 2.2rem;
+  margin-bottom: 0.8rem;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1.5px solid rgba(255, 255, 255, 0.07);
+  box-shadow: none;
+}
+body:not(.phone) .set-group .set-row:first-child,
+body:not(.phone) .set-group .set-row:last-child {
+  border-radius: 20px;
+}
+body:not(.phone) .set-row.focused,
+body:not(.phone) .set-group .set-row.focused {
+  background: rgba(255, 255, 255, 0.12) !important;
+  border-color: #60a5fa !important;
+  outline: 3px solid #60a5fa !important;
+  outline-offset: 2px !important;
+  transform: scale(1.02) !important;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.6) !important;
+}
+body:not(.phone) .set-row .sr-label {
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: #f8fafc;
+}
+body:not(.phone) .set-row .sr-help {
+  font-size: 1.25rem;
+  color: #94a3b8;
+  margin-top: 0.25rem;
+  line-height: 1.4;
+}
+body:not(.phone) .set-row .sr-val .v {
+  background: rgba(0, 0, 0, 0.4);
+  padding: 0.45rem 1.4rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #93c5fd;
+  font-size: 1.45rem;
+  font-weight: 700;
+  min-width: 14rem;
+  text-align: center;
+}
+body:not(.phone) .set-row.focused .arr {
+  color: #60a5fa;
+  transform: scale(1.2);
+}
+body:not(.phone) .set-sep {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #60a5fa;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 2rem 0.6rem 0.8rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 1rem;
+}
+body:not(.phone) .upd-card.gcard {
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1.5px solid rgba(255, 255, 255, 0.07);
+}
+
+/* Material 3 Expressive TV Navigation Hints Bar */
+.m3-tv-hints {
+  margin-top: auto;
+  padding-top: 1.4rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  gap: 1.2rem;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+}
+body.phone .m3-tv-hints { display: none; }
+.m3-hint-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.35rem 0.9rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #cbd5e1;
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+.m3-key {
+  background: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+  padding: 0.15rem 0.6rem;
+  border-radius: 6px;
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+
+
+/* ------------------------------------------------------------------ Rich EPG Program Info Card */
+.info-prog-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  background: var(--surface2, rgba(255, 255, 255, 0.06));
+  border: 1px solid var(--line, rgba(255, 255, 255, 0.12));
+  border-radius: 1.8rem;
+  padding: 1.6rem;
+  margin-bottom: 1.4rem;
+  text-align: right;
+  direction: rtl;
+}
+.info-prog-header {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+}
+.info-prog-poster {
+  width: 10rem;
+  height: 6.6rem;
+  border-radius: 1.2rem;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.info-prog-meta {
+  flex: 1;
+  min-width: 0;
+}
+.info-prog-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #ff5252;
+  background: rgba(255, 82, 82, 0.14);
+  padding: 0.2rem 0.8rem;
+  border-radius: 2rem;
+  margin-bottom: 0.4rem;
+}
+.info-prog-badge.vod {
+  color: #40c4ff;
+  background: rgba(64, 196, 255, 0.14);
+}
+.info-prog-title {
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: var(--text, #fff);
+  line-height: 1.25;
+  margin-bottom: 0.4rem;
+}
+.info-prog-time {
+  font-size: 1.3rem;
+  color: var(--text2, rgba(255, 255, 255, 0.75));
+  font-weight: 600;
+}
+.info-prog-progress {
+  width: 100%;
+  height: 0.55rem;
+  background: rgba(255, 255, 255, 0.14);
+  border-radius: 9999px;
+  overflow: hidden;
+  margin: 0.5rem 0;
+}
+.info-prog-progress-fill {
+  height: 100%;
+  background: var(--accent, #6366f1);
+  border-radius: 9999px;
+  transition: width 0.3s ease;
+}
+.info-prog-desc {
+  font-size: 1.45rem;
+  line-height: 1.6;
+  color: var(--text, #f0f0f0);
+  background: rgba(0, 0, 0, 0.25);
+  padding: 1.2rem 1.4rem;
+  border-radius: 1.2rem;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.info-prog-next {
+  font-size: 1.25rem;
+  color: var(--text2, rgba(255, 255, 255, 0.75));
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.8rem 1.2rem;
+  border-radius: 1rem;
+}
+.info-tech-details {
+  margin-top: 1.2rem;
+  border-top: 1px solid var(--line, rgba(255, 255, 255, 0.1));
+  padding-top: 1rem;
+}
+.info-tech-details summary {
+  cursor: pointer;
+  padding: 0.8rem 0;
+  color: var(--text2, rgba(255, 255, 255, 0.7));
+  font-size: 1.35rem;
+  user-select: none;
+  font-weight: 700;
+}
+.info-tech-details summary:hover {
+  color: var(--text, #fff);
+}
+
+/* ================================================================== designs (Settings > Appearance > Design)
+   Each one replaces the whole interface on top of the classic rules. The colours come from DESIGNS in app.js. */
+
+/* ------------------------------------------------------------------ shared: a preview window instead of a full-screen picture */
+body.design-rail.tvui:not(.player-open) #player, body.design-metro.tvui:not(.player-open) #player, body.design-paper.tvui:not(.player-open) #player { overflow: hidden; }
+body.design-rail.tvui, body.design-metro.tvui, body.design-paper.tvui { background: var(--bg); }
+body.design-rail .atv, body.design-metro .atv, body.design-paper .atv { background: none; }
+body.design-rail .atv-shade, body.design-metro .atv-shade, body.design-paper .atv-shade { display: none; }
+body.design-rail .atv-stage, body.design-metro .atv-stage, body.design-paper .atv-stage { bottom: auto; right: auto; overflow: hidden; }
+/* the surfaces of the new designs are solid */
+body.design-rail .atv-pill, body.design-metro .atv-pill, body.design-paper .atv-pill, body.design-cinema .atv-pill { -webkit-backdrop-filter: none; backdrop-filter: none; box-shadow: none; }
+
+/* ------------------------------------------------------------------ cinema: full picture, centred title, one row of posters */
+body.design-cinema { --radius: .3rem; }
+body.design-cinema .atv-shade { background:
+  linear-gradient(to bottom, #000 0, rgba(0, 0, 0, .55) 9%, rgba(0, 0, 0, 0) 24%),
+  linear-gradient(to top, #050403 0, rgba(5, 4, 3, .96) 34%, rgba(5, 4, 3, .55) 56%, rgba(5, 4, 3, 0) 78%); }
+body.design-cinema .atv-pill { top: 1.6rem; left: auto; right: 4rem; height: 3.6rem; padding: 0; border: 0; border-radius: 0; background: none; -webkit-transform: none; transform: none; }
+body.design-cinema .atv-tab { height: 3.2rem; margin: 0 0 0 .6rem; padding: 0 1rem; border-radius: 0; font-size: 1.35rem; font-weight: 500; color: rgba(255, 255, 255, .72);
+  background: none !important; border: 0 !important; border-bottom: .22rem solid transparent !important; box-shadow: none !important; -webkit-transform: none !important; transform: none !important; }
+body.design-cinema .atv-tab.on { color: var(--accent); border-bottom-color: var(--accent) !important; }
+body.design-cinema .atv-tab.focused { color: #14100a; background: var(--accent) !important; font-weight: 700; }
+body.design-cinema .atv-meta { top: auto; bottom: 23.5rem; left: 0; right: 0; width: 76rem; margin: 0 auto; text-align: center; }
+body.design-cinema .atv-mlogo { width: auto; height: 9rem; justify-content: center; }
+body.design-cinema .atv-mlogo::before { display: none; }
+body.design-cinema .atv-title { font-size: 5.4rem; font-weight: 700; letter-spacing: 0; }
+body.design-cinema .atv-tags { justify-content: center; }
+body.design-cinema .atv-tags > span { margin: 0 .4rem; }
+body.design-cinema .atv-desc { font-size: 1.5rem; }
+body.design-cinema .atv-shelves { height: 22rem; }
+body.design-cinema .atv-row { height: 21rem; }
+body.design-cinema .atv-row.below { opacity: 0; }
+body.design-cinema .atv-row-title { margin: 0 4rem .5rem; font-size: 1.15rem; font-weight: 700; letter-spacing: .12em; color: var(--accent); }
+body.design-cinema .atv-track { padding: 0 4rem; }
+body.design-cinema .atv-item { flex: 0 0 11rem; width: 11rem; }
+body.design-cinema .atv-card { width: 11rem; height: 15.4rem; border-radius: .3rem; background: linear-gradient(170deg, #241c0e, #0d0a05); border: 1px solid rgba(232, 180, 74, .22); box-shadow: none; }
+body.design-cinema .atv-logo img { max-width: 76%; max-height: 40%; }
+body.design-cinema .atv-item.is-vod .atv-logo img { max-width: 100%; max-height: 100%; }
+body.design-cinema .atv-name { margin-top: .5rem; font-size: 1.05rem; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+body.design-cinema:not(.phone) .atv-item.focused .atv-card { -webkit-transform: scale3d(1.06, 1.06, 1) !important; transform: scale3d(1.06, 1.06, 1) !important;
+  border: .2rem solid var(--accent) !important; box-shadow: 0 0 3rem rgba(232, 180, 74, .4) !important; }
+body.design-cinema .atv-item.focused .atv-name { color: var(--accent); -webkit-transform: none; transform: none; }
+body.design-cinema span.atv-live { background: none !important; color: var(--accent); border: 1px solid var(--accent); }
+body.design-cinema #player .osd::before { background: linear-gradient(to top, #000 0, rgba(0, 0, 0, .9) 42%, rgba(0, 0, 0, 0) 100%); }
+body.design-cinema #tvo-bar i { background: var(--accent); }
+body.design-cinema .tv-card, body.design-cinema .tv-strip-item, body.design-cinema #tvo-opts { border-radius: .3rem; }
+body.design-cinema .tv-strip-item.focus, body.design-cinema #tvo-big.focus { box-shadow: 0 0 0 .2rem var(--accent), 0 0 2.4rem rgba(232, 180, 74, .4); }
+body.design-cinema #tvo-opts.focus { background: var(--accent); color: #14100a; }
+body.design-cinema .dialog-box, body.design-cinema .menu-box, body.design-cinema .btn, body.design-cinema .net-prof-card { border-radius: .4rem !important; }
+body.design-cinema .net-prof-title, body.design-cinema #settings-h, body.design-cinema .settings-title { letter-spacing: .02em; color: var(--accent); }
+
+
+/* ------------------------------------------------------------------ rail: tabs in a fixed column, preview window, dense shelves */
+body.design-rail { --radius: .7rem; }
+body.design-rail.tvui:not(.player-open) #player { top: 2.5rem; left: 2.5rem; right: auto; bottom: auto; width: 50rem; height: 28.125rem; border-radius: .8rem; }
+body.design-rail .atv-stage { top: 2.5rem; left: 2.5rem; width: 50rem; height: 28.125rem; border-radius: .8rem; }
+body.design-rail .atv-pill { top: 0; right: 0; bottom: 0; left: auto; width: 21rem; height: auto; min-width: 0; padding: 2.5rem 1.2rem; flex-direction: column; align-items: stretch; justify-content: flex-start;
+  border: 0; border-left: 1px solid rgba(45, 212, 191, .2); border-radius: 0; background: var(--bg2); -webkit-transform: none; transform: none; overflow: hidden; }
+body.design-rail .atv-tab { flex: none; display: flex; align-items: center; justify-content: flex-start; width: 100%; height: 3.5rem; margin: 0 0 .3rem; padding: 0 1.2rem; border-radius: .6rem; font-size: 1.3rem; font-weight: 500; text-align: right; color: rgba(255, 255, 255, .78);
+  background: none !important; border: 0 !important; box-shadow: none !important; -webkit-transform: none !important; transform: none !important; }
+body.design-rail .atv-tab.ico-only, body.design-rail .atv-tab-prof { justify-content: flex-start; width: 100%; }
+body.design-rail .atv-tab.ico-only::after { content: attr(aria-label); margin-right: .9rem; font-size: 1.2rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+body.design-rail .atv-tab.on { color: var(--accent); background: rgba(45, 212, 191, .13) !important; font-weight: 700; }
+body.design-rail .atv-tab.focused { color: var(--on-accent); background: var(--accent) !important; font-weight: 700; }
+body.design-rail .atv-meta { top: 2.5rem; right: 23.5rem; width: 41rem; }
+body.design-rail .atv-mlogo { width: 16rem; height: 6.5rem; }
+body.design-rail .atv-mlogo::before { display: none; }
+body.design-rail .atv-title { font-size: 2.6rem; }
+body.design-rail .atv-desc { -webkit-line-clamp: 5; max-height: 10.6rem; font-size: 1.35rem; }
+body.design-rail .atv-search { top: 3rem; right: 23.5rem; width: 41rem; height: 4rem; border-radius: .6rem; }
+body.design-rail .atv-shelves { left: 0; right: 21rem; top: 32rem; bottom: 0; height: auto; overflow: hidden; }
+body.design-rail .atv-row { height: 14rem; }
+body.design-rail .atv-row.below { opacity: .7; }
+body.design-rail .atv-row-title { height: 2rem; margin: 0 2.5rem .35rem; font-size: 1.25rem; line-height: 2rem; color: var(--accent); }
+body.design-rail .atv-track { padding: 0 2.5rem; }
+body.design-rail .atv-item { flex: 0 0 13.25rem; width: 13.25rem; margin-left: 1.25rem; }
+body.design-rail .atv-card { width: 13.25rem; height: 7.45rem; border-radius: .6rem; background: var(--surface); border: 1px solid rgba(45, 212, 191, .16); box-shadow: none; }
+body.design-rail .atv-name { margin-top: .45rem; font-size: 1.05rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+body.design-rail:not(.phone) .atv-item.focused .atv-card { -webkit-transform: none !important; transform: none !important; border: .22rem solid var(--focus) !important; box-shadow: 0 0 1.6rem rgba(45, 212, 191, .45) !important; }
+body.design-rail .atv-item.focused .atv-name { -webkit-transform: none; transform: none; color: var(--focus); }
+body.design-rail #player .osd::before { background: linear-gradient(to top, rgba(8, 26, 36, .98) 0, rgba(8, 26, 36, .9) 40%, rgba(8, 26, 36, 0) 100%); }
+body.design-rail #tvo-bar i { background: var(--accent); }
+body.design-rail .tv-strip-item.focus, body.design-rail #tvo-big.focus { background: rgba(45, 212, 191, .14); box-shadow: 0 0 0 .2rem var(--accent); }
+body.design-rail #tvo-opts.focus { background: var(--accent); color: var(--on-accent); }
+
+/* ------------------------------------------------------------------ metro: flat colour tiles, no rounding, big plain headings */
+body.design-metro { --radius: 0; }
+body.design-metro.tvui:not(.player-open) #player { top: 7rem; left: 3rem; right: auto; bottom: auto; width: 32rem; height: 18rem; }
+body.design-metro .atv-stage { top: 7rem; left: 3rem; width: 32rem; height: 18rem; }
+body.design-metro .atv-pill { top: 1.6rem; right: 3rem; left: 3rem; height: 4rem; padding: 0; border: 0; border-radius: 0; background: none; -webkit-transform: none; transform: none; justify-content: flex-start; }
+body.design-metro .atv-tab { height: 4rem; margin: 0 0 0 1.2rem; padding: 0 .6rem; border-radius: 0; font-size: 1.9rem; font-weight: 400; color: rgba(255, 255, 255, .45);
+  background: none !important; border: 0 !important; box-shadow: none !important; -webkit-transform: none !important; transform: none !important; }
+body.design-metro .atv-tab.on { color: #fff; font-weight: 700; }
+body.design-metro .atv-tab.focused { color: #fff; background: var(--accent) !important; font-weight: 700; }
+body.design-metro .atv-meta { top: 7rem; right: 3rem; width: 78rem; }
+body.design-metro .atv-mlogo { display: none !important; }
+body.design-metro .atv-meta.has-logo .atv-title, body.design-metro .atv-title { display: block; margin: 0 0 .9rem; font-size: 4.6rem; font-weight: 800; letter-spacing: -.02em; }
+body.design-metro .atv-tags { margin-top: 0 !important; }
+body.design-metro .atv-desc { font-size: 1.5rem; -webkit-line-clamp: 3; max-height: 6.6rem; }
+body.design-metro span.atv-live, body.design-metro .atv-pill-q { border-radius: 0 !important; }
+body.design-metro span.atv-live { background: var(--accent) !important; }
+body.design-metro .atv-search { top: 7rem; right: 3rem; width: 78rem; border-radius: 0; background: var(--surface); }
+body.design-metro .atv-shelves { top: 27rem; bottom: 0; height: auto; overflow: hidden; }
+body.design-metro .atv-row { height: 15rem; }
+body.design-metro .atv-row.below { opacity: 1; }
+body.design-metro .atv-row-title { height: 2.6rem; margin: 0 3rem .4rem; font-size: 1.8rem; font-weight: 300; line-height: 2.6rem; }
+body.design-metro .atv-track { padding: 0 3rem; }
+body.design-metro .atv-item { flex: 0 0 18rem; width: 18rem; margin-left: .5rem; }
+body.design-metro .atv-card { width: 18rem; height: 11.5rem; border-radius: 0; border: 0; box-shadow: none; background: #0078d4; }
+body.design-metro .atv-item:nth-child(6n+2) .atv-card { background: #d83b01; }
+body.design-metro .atv-item:nth-child(6n+3) .atv-card { background: #107c10; }
+body.design-metro .atv-item:nth-child(6n+4) .atv-card { background: #5c2d91; }
+body.design-metro .atv-item:nth-child(6n+5) .atv-card { background: #008272; }
+body.design-metro .atv-item:nth-child(6n) .atv-card { background: #b4009e; }
+body.design-metro .atv-sheen { display: none; }
+body.design-metro .atv-num { color: rgba(255, 255, 255, .8); }
+body.design-metro .atv-q { border-radius: 0; }
+body.design-metro .atv-logo { bottom: 2.2rem; }
+body.design-metro .atv-name { position: absolute; right: 0; left: 0; top: 9.3rem; height: 2.2rem; margin: 0; padding: 0 .8rem; font-size: 1.1rem; font-weight: 600; line-height: 2.2rem; color: #fff; opacity: 1 !important; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+body.design-metro .atv-item.focused .atv-name { -webkit-transform: none; transform: none; }
+body.design-metro:not(.phone) .atv-item.focused .atv-card { -webkit-transform: none !important; transform: none !important; border: .3rem solid #fff !important; box-shadow: none !important; }
+body.design-metro #player .osd::before { display: none; }
+body.design-metro #tvosd { right: 0; left: 0; bottom: 0; padding: 1.6rem 3rem 1.6rem 10rem; background: #1b1c20; }
+body.design-metro .tv-card, body.design-metro .tv-strip-item, body.design-metro #tvo-opts { border-radius: 0; }
+body.design-metro .tv-strip-item.focus, body.design-metro #tvo-big.focus { background: var(--accent); box-shadow: 0 0 0 .25rem #fff; }
+body.design-metro #tvo-opts.focus { background: var(--accent); color: #fff; box-shadow: none; }
+body.design-metro #tvo-bar i { background: var(--accent); }
+body.design-metro .dialog-box, body.design-metro .menu-box, body.design-metro .btn, body.design-metro .net-prof-card, body.design-metro .net-prof-avatar,
+body.design-metro .set-row, body.design-metro .set-group, body.design-metro .nav-item, body.design-metro .switch, body.design-metro .toast,
+body.design-metro .settings-box, body.design-metro .drawer, body.design-metro .obtn, body.design-metro .home-chip, body.design-metro .card-logo { border-radius: 0 !important; }
+body.design-metro .nav-item.active, body.design-metro .nav-item.focused { background: var(--accent) !important; color: #fff !important; }
+
+/* ------------------------------------------------------------------ paper: a bright page, ink, hairlines and serif headlines */
+body.design-paper { --radius: 0; --serif: 'Frank Ruhl Libre', 'Noto Serif Hebrew', David, 'Times New Roman', serif; --ink: #1a1a1a; --text: #1a1a1a; --text2: #4a4640; --muted: #6a655c; --dim: #8a8478; --line: #d8cfba; --line2: #b9af98; }
+body.design-paper.tvui, body.design-paper .atv { color: var(--ink); }
+body.design-paper.tvui:not(.player-open) #player { top: 8rem; left: 3.5rem; right: auto; bottom: auto; width: 44rem; height: 24.75rem; outline: 1px solid #1a1a1a; outline-offset: .5rem; }
+body.design-paper .atv-stage { top: 8rem; left: 3.5rem; width: 44rem; height: 24.75rem; }
+body.design-paper .atv-pill { top: 1.4rem; left: 3.5rem; right: 3.5rem; height: 4.6rem; padding: 0; justify-content: center; border: 0; border-top: .25rem solid #1a1a1a; border-bottom: 1px solid #1a1a1a; border-radius: 0; background: none; -webkit-transform: none; transform: none; }
+body.design-paper .atv-tab { height: 3.4rem; margin: 0 .4rem; padding: 0 1rem; border-radius: 0; font-family: var(--serif); font-size: 1.5rem; font-weight: 500; color: #1a1a1a;
+  background: none !important; border: 0 !important; box-shadow: none !important; -webkit-transform: none !important; transform: none !important; }
+body.design-paper .atv-tab .ic, body.design-paper .atv-tab svg { fill: #1a1a1a; color: #1a1a1a; }
+body.design-paper .atv-tab.on { color: var(--accent); font-weight: 700; text-decoration: underline; }
+body.design-paper .atv-tab.focused { color: #fff; background: #1a1a1a !important; font-weight: 700; }
+body.design-paper .atv-tab.focused svg { fill: #fff; color: #fff; }
+body.design-paper .atv-meta { top: 8rem; right: 3.5rem; width: 62rem; }
+body.design-paper .atv-mlogo { display: none !important; }
+body.design-paper .atv-meta.has-logo .atv-title, body.design-paper .atv-title { display: block; margin: 0 0 1rem; font-family: var(--serif); font-size: 5rem; font-weight: 700; line-height: 1.08; letter-spacing: -.01em; color: #1a1a1a; text-shadow: none; }
+body.design-paper .atv-tag, body.design-paper .atv-src { color: #5a554c; }
+body.design-paper .atv-desc { font-family: var(--serif); font-size: 1.7rem; -webkit-line-clamp: 4; max-height: 10rem; color: #2c2a26; }
+body.design-paper span.atv-live { background: var(--accent) !important; color: #fff; border-radius: 0 !important; }
+body.design-paper .atv-pill-q { color: #1a1a1a; background: none !important; border: 1px solid #1a1a1a !important; border-radius: 0 !important; }
+body.design-paper .atv-search { top: 8rem; right: 3.5rem; width: 62rem; border-radius: 0; background: #fffdf7; border: 1px solid #1a1a1a; color: #1a1a1a; }
+body.design-paper .atv-search input, body.design-paper .atv-search .ico { color: #1a1a1a; }
+body.design-paper .atv-shelves { top: 35rem; bottom: 0; height: auto; overflow: hidden; }
+body.design-paper .atv-row { height: 16.5rem; margin: 0 3.5rem; border-top: 1px solid #1a1a1a; }
+body.design-paper .atv-row.below { opacity: 1; }
+body.design-paper .atv-row-title { height: 2.6rem; margin: .4rem 0; font-family: var(--serif); font-size: 1.7rem; line-height: 2.6rem; color: #1a1a1a; }
+body.design-paper .atv-row-title small { color: #6a655c; }
+body.design-paper .atv-track { padding: 0; }
+body.design-paper .atv-item { flex: 0 0 16rem; width: 16rem; }
+body.design-paper .atv-card { width: 16rem; height: 9rem; border-radius: 0; background: #fffdf7; border: 1px solid #1a1a1a; box-shadow: none; }
+body.design-paper .atv-sheen { display: none; }
+body.design-paper .atv-num { color: #6a655c; }
+body.design-paper .atv-logo .mono { border-radius: 0; }
+body.design-paper .atv-name { margin-top: .5rem; font-size: 1.15rem; color: #2c2a26; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+body.design-paper:not(.phone) .atv-item.focused .atv-card { -webkit-transform: none !important; transform: none !important; border: .3rem solid var(--accent) !important; box-shadow: none !important; }
+body.design-paper .atv-item.focused .atv-name { -webkit-transform: none; transform: none; color: var(--accent); }
+body.design-paper .atv-row.below .atv-item:not(.focused) .atv-name { opacity: 1; }
+body.design-paper:not(.phone) { --focus: #b3261e; --focus-bg: #efe6d4; --container: #efe6d4; }
+body.design-paper h1, body.design-paper h2, body.design-paper h3, body.design-paper .net-prof-title, body.design-paper .settings-title { font-family: var(--serif); }
+body.design-paper .dialog-box, body.design-paper .menu-box, body.design-paper .btn, body.design-paper .net-prof-card, body.design-paper .set-row, body.design-paper .set-group,
+body.design-paper .nav-item, body.design-paper .toast, body.design-paper .settings-box, body.design-paper .drawer, body.design-paper .obtn, body.design-paper .home-chip { border-radius: 0 !important; }
+body.design-paper .net-prof-overlay, body.design-paper .settings .settings-box { background: var(--bg) !important; color: var(--ink); }
+body.design-paper .net-prof-title, body.design-paper .net-prof-sub, body.design-paper .net-prof-brand { color: var(--ink); }
+body.design-paper .dialog-box, body.design-paper .menu-box { background: #fffdf7 !important; color: var(--ink); border: 1px solid #1a1a1a; box-shadow: none; }
+body.design-paper #player .osd::before { display: none; }
+body.design-paper #tvosd { right: 0; left: 0; bottom: 0; padding: 1.6rem 3rem 1.6rem 10rem; background: var(--bg); color: var(--ink); border-top: .25rem solid #1a1a1a; }
+body.design-paper .tv-nm, body.design-paper .tv-day, body.design-paper .tv-peek-txt small { color: #5a554c; }
+body.design-paper .tv-strip-item.mid .tv-nm { color: var(--ink); }
+body.design-paper .tv-card, body.design-paper .tv-strip-item, body.design-paper #tvo-opts { border-radius: 0; }
+body.design-paper .tv-strip-item.focus, body.design-paper #tvo-big.focus { background: none; box-shadow: 0 0 0 .25rem var(--accent); }
+body.design-paper #tvo-bar { background: #c9bfa8; }
+body.design-paper #tvo-bar i { background: var(--accent); }
+body.design-paper #tvo-bar u { background: var(--ink); }
+body.design-paper #tvo-opts.focus { background: var(--ink); color: #fff; box-shadow: none; }
+body.design-paper .tv-chev { border-color: var(--ink); }
+
+/* ------------------------------------------------------------------ every new design: its own page colours (a TV is otherwise forced to black) */
+html:has(body.design-cinema) { background: #050403; }
+body.design-cinema, body.design-cinema:not(.phone) { --bg: #050403; --bg2: #100d08; --surface: #191409; --surface2: #231c0d; --line: #2a2214; --line2: #4a3b1e; background: #050403; }
+body.design-rail, body.design-rail:not(.phone) { --bg: #081a24; --bg2: #0d2431; --surface: #12303f; --surface2: #173a4c; --line: #17394a; --line2: #245468; background: #081a24; }
+body.design-metro, body.design-metro:not(.phone) { --bg: #111214; --bg2: #1b1c20; --surface: #25272c; --surface2: #2e3036; --line: #2b2d32; --line2: #44464c; background: #111214; }
+body.design-paper, body.design-paper:not(.phone), body.design-paper.light:not(.phone) { --bg: #f6f0e3; --bg2: #ece4d2; --surface: #fffdf7; --surface2: #f0e9d8; --text: #1a1a1a; --text2: #4a4640; --muted: #6a655c; --dim: #8a8478; --line: #d8cfba; --line2: #b9af98; background: #f6f0e3; }
+body.design-cinema .app, body.design-rail .app, body.design-metro .app, body.design-paper .app { background: var(--bg); }
+
+body.design-cinema:not(.phone) .nav-item.focused, body.design-rail:not(.phone) .nav-item.focused, body.design-metro:not(.phone) .nav-item.focused, body.design-paper:not(.phone) .nav-item.focused {
+  background: var(--accent) !important; color: var(--on-accent) !important; outline: 0 !important; box-shadow: none !important; -webkit-transform: none !important; transform: none !important; }
+body.design-cinema .set-row.focused, body.design-rail .set-row.focused, body.design-metro .set-row.focused, body.design-paper .set-row.focused { outline-color: var(--accent) !important; border-color: var(--accent) !important; }
+/* the colour-key hints would sit on top of the shelves here */
+body.design-cinema .atv-colors, body.design-rail .atv-colors, body.design-metro .atv-colors, body.design-paper .atv-colors { display: none; }
+
+/* paper: logos are made for dark backgrounds, so the cards are ink */
+body.design-paper .atv-card { background: #1a1a1a; }
+body.design-paper .atv-num { color: rgba(255, 255, 255, .7); }
+body.design-paper .tv-card { color: #fff; }
+body.design-paper .settings .sr-label, body.design-paper .settings .nav-item, body.design-paper .settings-title, body.design-paper #settings-h { color: var(--ink); }
+body.design-paper .settings .sr-help, body.design-paper .settings .v, body.design-paper #settings-p { color: #5a554c; }
+body.design-paper .set-row, body.design-paper .set-group .set-row { background: #fffdf7 !important; border: 1px solid #d8cfba !important; }
+
+
+/* ------------------------------------------------------------------ changelog */
+.dialog-box.changelog { text-align: right; }
+.cl-ver { padding: 1.2rem 0; border-top: 1px solid var(--line); }
+.cl-ver h3 { margin: 0 0 .6rem; font-size: 1.9rem; }
+.cl-ver h3 small { margin-right: 1rem; padding: .1rem .7rem; border-radius: .5rem; font-size: 1.1rem; background: var(--accent); color: var(--on-accent); }
+.cl-ver ul { margin: 0; padding-right: 2rem; font-size: 1.45rem; line-height: 1.5; }
+.cl-ver li { margin-bottom: .4rem; }
+
+/* ------------------------------------------------------------------ full-page settings in three of the designs */
+body.design-cinema:not(.phone) .settings-box, body.design-metro:not(.phone) .settings-box, body.design-paper:not(.phone) .settings-box {
+  width: 100% !important; max-width: none !important; height: 100% !important; max-height: none !important; border: 0 !important; border-radius: 0 !important; box-shadow: none !important; }
+body.design-cinema .settings-title svg, body.design-rail .settings-title svg, body.design-metro .settings-title svg, body.design-paper .settings-title svg,
+body.design-cinema .set-close, body.design-rail .set-close, body.design-metro .set-close, body.design-paper .set-close { color: var(--accent) !important; fill: var(--accent) !important; }
+body.design-paper .m3-hint-pill { color: #4a4640; background: none; border-color: #b9af98; }
+body.design-paper .m3-key { color: #fff; background: #1a1a1a; }
+
+/* paper: the player's panel is ink, the logos and the picture need the dark */
+body.design-paper #tvosd { background: #1a1a1a; color: #fff; border-top-color: var(--accent); }
+body.design-paper .tv-nm, body.design-paper .tv-day, body.design-paper .tv-peek-txt small { color: #c4c6cb; }
+body.design-paper .tv-strip-item.mid .tv-nm { color: #fff; }
+body.design-paper .tv-chev { border-color: #fff; }
+body.design-paper #tvo-bar { background: rgba(255, 255, 255, .34); }
+body.design-paper #tvo-bar u { background: #fff; }
+body.design-paper #tvo-opts { color: #fff; }
+body.design-paper #tvo-opts.focus { background: #fff; color: #1a1a1a; }
+body.design-paper .atv-pill-q { color: #1a1a1a !important; }
+
+/* ------------------------------------------------------------------ the programme guide in each design */
+body.design-cinema #tvguide { background: #050403; }
+body.design-rail #tvguide { background: #081a24; }
+body.design-metro #tvguide { background: #111214; }
+body.design-cinema .tv-nowline, body.design-rail .tv-nowline, body.design-metro .tv-nowline, body.design-paper .tv-nowline { background: var(--accent); }
+body.design-cinema .tv-p.focus, body.design-rail .tv-p.focus { background: var(--container); box-shadow: inset 0 0 0 .22rem var(--accent), 0 0 2rem var(--glow); }
+body.design-metro .tv-p.focus { background: var(--accent); color: #fff; box-shadow: inset 0 0 0 .25rem #fff; }
+body.design-paper #tvguide { background: #f6f0e3; color: #1a1a1a; }
+body.design-paper #tvg-title b { font-family: var(--serif); border-bottom-color: #1a1a1a; }
+body.design-paper #tvg-title span, body.design-paper #tvg-time { color: #5a554c; }
+body.design-paper #tvg-ruler { border-bottom-color: #1a1a1a; color: #1a1a1a; }
+body.design-paper #tvg-rail { border-left-color: #1a1a1a; }
+body.design-paper #tvg-name { font-family: var(--serif); }
+body.design-paper .tv-p { border-color: #c9bfa8; color: #1a1a1a; }
+body.design-paper .tv-p.past { color: #8a8478; background: rgba(0, 0, 0, .03); }
+body.design-paper .tv-p.focus { background: #fffdf7; box-shadow: inset 0 0 0 .25rem var(--accent); }
+body.design-paper #tvguide .tv-logo { background: #1a1a1a; }
+body.design-paper #tvguide .tv-clock, body.design-paper #tvguide .tv-num { color: #1a1a1a; }
+body.design-paper #tvguide .tv-nm { color: #4a4640; }
+body.design-paper #tvguide .tv-heart { filter: invert(1) brightness(.2); }
+
+/* ------------------------------------------------------------------ Live EPG Stage Banner (TV Home) */
+.atv-epg-box {
+  display: flex;
+  flex-direction: column;
+  gap: .45rem;
+  max-width: 44rem;
+  margin: .35rem 0 .55rem;
+  padding: .65rem 1.1rem;
+  border-radius: 1.1rem;
+  background: rgba(15, 23, 42, .52);
+  border: 1px solid rgba(255, 255, 255, .14);
+}
+.atv-epg-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .6rem;
+  font-size: 1.25rem;
+  line-height: 1.3;
+}
+.atv-epg-now {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #ff5252;
+  background: rgba(255, 82, 82, .16);
+  padding: .12rem .65rem;
+  border-radius: 99rem;
+}
+.atv-epg-title {
+  font-size: 1.38rem;
+  font-weight: 800;
+  color: #fff;
+}
+.atv-epg-time {
+  font-size: 1.18rem;
+  color: rgba(255, 255, 255, .75);
+  font-weight: 600;
+}
+.atv-epg-bar {
+  width: 100%;
+  height: .38rem;
+  background: rgba(255, 255, 255, .16);
+  border-radius: 99rem;
+  overflow: hidden;
+}
+.atv-epg-bar i {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent, #60a5fa), #38bdf8);
+  border-radius: 99rem;
+}
+body.design-paper .atv-epg-box {
+  background: rgba(26, 26, 26, .06);
+  border-color: #c9bfa8;
+}
+body.design-paper .atv-epg-title { color: #1a1a1a; }
+body.design-paper .atv-epg-time { color: #4a4640; }
+body.design-paper .atv-epg-bar { background: rgba(26, 26, 26, .15); }
+
+/* ================================================================== TV / desktop home layout – classic design (webOS, Android TV, Windows)
+   Column { TopBar ; Row { InfoPanel (fixed width, right) ; Column(weight 1f) { ChannelGrid ; ColorKeys } } }
+   Built from fixed, non-overlapping regions on the flat markup (no wrappers, so the other designs and webOS 4's
+   Chromium 53 are unaffected):  top band 0–7.6rem · info panel 36rem on the right · the grid region takes the rest
+   of the width, with the colour buttons in their own strip at its bottom. */
+body.tvui.design-classic .atv-pill { top: 2rem; }
+body.tvui.design-classic .atv-meta { top: 8.8rem; right: 3.2rem; width: 36rem; max-height: calc(100% - 10.4rem); overflow: hidden; }
+body.tvui.design-classic .atv-mlogo { width: 100%; max-width: 26rem; height: 7rem; }
+body.tvui.design-classic .atv-title { font-size: 2.8rem; }
+body.tvui.design-classic .atv-epg-box { max-width: none; }
+body.tvui.design-classic .atv-src { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+body.tvui.design-classic .atv-shelves { top: 7.6rem; bottom: 6.4rem; left: 0; right: 41.6rem; height: auto; overflow: hidden; padding-top: 1.2rem; }
+body.tvui.design-classic .atv-row-title { margin-right: 2.4rem; }
+body.tvui.design-classic .atv-track { padding-right: 2.4rem; }
+/* the colour buttons have their own strip now, so the shelves below show their names */
+body.tvui.design-classic .atv-row.below .atv-item:not(.focused) .atv-name { opacity: 1; }
+body.tvui.design-classic .atv-colors { position: absolute; top: auto; left: 0; right: 41.6rem; bottom: 0; height: 6.4rem;
+  display: flex; align-items: center; justify-content: flex-end; padding: 0 2.4rem; }
+/* search: at the top of the grid region; the results start below the field (and below the keyboard when it's open) */
+body.tvui.design-classic .atv-search { top: 8.8rem; right: 44rem; left: 2.4rem; width: auto; }
+body.tvui.design-classic .atv-kb { top: 14.6rem; right: 44rem; left: 2.4rem; max-width: none; }
+body.tvui.design-classic.atv-searching .atv-shelves { top: 14.4rem; }
+body.tvui.design-classic.atv-searching .atv-kb:not(.hidden) ~ .atv-shelves { top: 30rem; }
+
+/* programme on air (EPG panel, every TV design): the title is the headline, the synopsis at most 3 lines */
+body.tvui .atv-epg-title { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-clamp: 2; overflow: hidden;
+  width: 100%; order: 1; font-size: 2.4rem; font-weight: 800; line-height: 1.2; }
+body.tvui .atv-epg-time { order: 2; }

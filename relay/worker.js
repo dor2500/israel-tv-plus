@@ -17,6 +17,7 @@ const CORS = {
   'Access-Control-Expose-Headers': 'Content-Length, Content-Range, Content-Type'
 };
 let hosts = null, hostsAt = 0;
+let cachedKey = null, cachedKeySecret = '';
 
 async function allowedHosts(env) {
   if (hosts && Date.now() - hostsAt < 3600e3) return hosts;
@@ -27,12 +28,25 @@ async function allowedHosts(env) {
   return hosts || new Set();
 }
 
+async function getHmacKey(env) {
+  if (!env || !env.RELAY_KEY) return null;
+  if (cachedKey && cachedKeySecret === env.RELAY_KEY) return cachedKey;
+  cachedKeySecret = env.RELAY_KEY;
+  cachedKey = await crypto.subtle.importKey(
+    'raw',
+    new TextEncoder().encode(env.RELAY_KEY),
+    { name: 'HMAC', hash: 'SHA-256' },
+    false,
+    ['sign']
+  );
+  return cachedKey;
+}
+
 // links the relay writes into a playlist carry a signature (HMAC with the RELAY_KEY secret), so segments on other
 // servers (CDNs, redirects) pass, but nobody can use the relay for arbitrary addresses
 async function sign(env, u) {
-  // no built-in fallback key: without the RELAY_KEY secret nothing is signed (and no signature is ever accepted)
-  if (!env.RELAY_KEY) return '';
-  const k = await crypto.subtle.importKey('raw', new TextEncoder().encode(env.RELAY_KEY), { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']);
+  const k = await getHmacKey(env);
+  if (!k) return '';
   const mac = new Uint8Array(await crypto.subtle.sign('HMAC', k, new TextEncoder().encode(u)));
   return btoa(String.fromCharCode.apply(null, mac.slice(0, 16))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
 }
@@ -51,16 +65,46 @@ async function relayUrl(env, origin, abs) {
 /** Every URI in an HLS playlist (lines and URI="..." attributes) -> absolute upstream URL -> through the relay. */
 async function rewritePlaylist(env, text, base, origin) {
   const abs = (u) => { try { return new URL(u, base).href; } catch (e) { return u; } };
-  const out = [];
-  for (const line of text.split(/\r?\n/)) {
+  const lines = text.split(/\r?\n/);
+  const out = await Promise.all(lines.map(async (line) => {
     const t = line.trim();
-    if (!t) { out.push(line); continue; }
+    if (!t) return line;
     if (t.startsWith('#')) {
-      const m = /URI="([^"]+)"/.exec(line);
-      out.push(m ? line.replace(m[0], 'URI="' + (await relayUrl(env, origin, abs(m[1]))) + '"') : line);
-    } else out.push(await relayUrl(env, origin, abs(t)));
-  }
+      const matches = [...line.matchAll(/URI="([^"]+)"/g)];
+      if (!matches.length) return line;
+      let rewritten = line;
+      for (const m of matches) {
+        const signed = await relayUrl(env, origin, abs(m[1]));
+        rewritten = rewritten.replace(m[0], 'URI="' + signed + '"');
+      }
+      return rewritten;
+    }
+    return relayUrl(env, origin, abs(t));
+  }));
   return out.join('\n');
+}
+
+function upstreamHeadersFor(url, req) {
+  const headers = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36'
+  };
+  const range = req.headers.get('Range');
+  if (range) headers.Range = range;
+  const host = url.hostname.toLowerCase();
+  if (host.includes('mako') || host.includes('keshet')) {
+    headers.Origin = 'https://www.mako.co.il';
+    headers.Referer = 'https://www.mako.co.il/';
+  } else if (host.includes('13tv') || host.includes('reshet')) {
+    headers.Origin = 'https://13tv.co.il';
+    headers.Referer = 'https://13tv.co.il/';
+  } else if (host.includes('kan.org.il') || host.includes('kancdn')) {
+    headers.Origin = 'https://www.kan.org.il';
+    headers.Referer = 'https://www.kan.org.il/';
+  } else if (host.includes('now14') || host.includes('ch14')) {
+    headers.Origin = 'https://www.now14.co.il';
+    headers.Referer = 'https://www.now14.co.il/';
+  }
+  return headers;
 }
 
 export default {
@@ -77,9 +121,7 @@ export default {
     const ok = (await allowedHosts(env)).has(url.host) || sameSig(t, await sign(env, url.href));
     if (!ok) return new Response('host not in the channel list', { status: 403, headers: CORS });
 
-    const headers = { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36' };
-    const range = req.headers.get('Range');
-    if (range) headers.Range = range;
+    const headers = upstreamHeadersFor(url, req);
     // redirects are followed by hand: a few hops, web schemes only, no credentials in the address
     let up, finalUrl = url.href;
     try {

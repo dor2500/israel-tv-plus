@@ -106,6 +106,9 @@ import com.israeltv.plus.data.Channel
 import com.israeltv.plus.data.ChannelData
 import com.israeltv.plus.data.USER_AGENT
 import com.israeltv.plus.data.playableUrl
+import com.israeltv.plus.data.VodSeries
+import com.israeltv.plus.ui.components.VodShelf
+import com.israeltv.plus.ui.components.VodSeriesSheet
 import com.israeltv.plus.data.shortCategory
 import com.israeltv.plus.ui.components.BoldIcon
 import com.israeltv.plus.ui.components.ChannelShelf
@@ -147,6 +150,7 @@ fun HomeScreen(
     onPlay: (Channel, List<Channel>) -> Unit,
     onInfo: (Channel) -> Unit,
     onSeeAll: (String) -> Unit,
+    onSeeAllVod: (() -> Unit)? = null,
 ) {
     val padding = feedPadding(withCategories = true)
     val isKids = prefs.isKids
@@ -170,6 +174,7 @@ fun HomeScreen(
             if (listState.firstVisibleItemIndex == 0) listState.firstVisibleItemScrollOffset.toFloat() else 900f
         }
     }
+    var selectedVodSeries by remember { mutableStateOf<VodSeries?>(null) }
 
     LazyColumn(
         Modifier.fillMaxSize(),
@@ -237,6 +242,19 @@ fun HomeScreen(
                 )
             }
         }
+        val vodList = data.vod
+        if (vodList.isNotEmpty() && !isKids && macroCategory == null) {
+            val i = row++
+            item(key = "vod_shelf") {
+                VodShelf(
+                    title = "סדרות VOD ישראליות",
+                    seriesList = vodList,
+                    onSeriesClick = { selectedVodSeries = it },
+                    onSeeAll = onSeeAllVod,
+                    modifier = Modifier.cascadeIn(i),
+                )
+            }
+        }
         if (visibleCategories.isEmpty()) {
             item(key = "empty") {
                 Box(Modifier.padding(horizontal = 16.dp)) { filterChip() }
@@ -263,6 +281,18 @@ fun HomeScreen(
                 )
             }
         }
+    }
+    selectedVodSeries?.let { series ->
+        VodSeriesSheet(
+            series = series,
+            onPlayEpisode = { ep ->
+                val ch = ep.toChannel(series)
+                val playlist = series.episodes.map { it.toChannel(series) }
+                onPlay(ch, playlist)
+                selectedVodSeries = null
+            },
+            onDismiss = { selectedVodSeries = null }
+        )
     }
 }
 

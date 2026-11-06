@@ -40,9 +40,11 @@
   window.ITV_LIVE = live;       // the live-update build in use, or null for the installed one
   if (live) set('itv_pending', String(live.code));
 
+  var failed = false;
   function fallback() {
     // A file of the live build could not load (offline, bad build): start again from the installed copy.
-    if (!live) return;
+    if (!live || failed) return;
+    failed = true;
     set('itv_bad', String(live.code));
     try { sessionStorage.setItem('itv_local', '1'); } catch (e) {}
     location.reload();
@@ -53,20 +55,18 @@
   css.href = base + 'style.css' + q;
   document.head.appendChild(css);
 
+  // Load all scripts in parallel while preserving exact execution order (async = false).
   var files = ['ui.js', 'channels.js', 'dub.js', 'tvguide.js', 'gdrive.js', 'app.js'];
-  var i = 0;
-  (function next() {
-    if (i >= files.length) return;
+  for (var i = 0; i < files.length; i++) {
     var s = document.createElement('script');
-    s.src = base + files[i++] + q;
-    s.onload = next;
+    s.src = base + files[i] + q;
+    s.async = false;
     s.onerror = fallback;
     document.body.appendChild(s);
-  })();
+  }
 
   // The installable web app (PWA) on the https site only.
   if (location.protocol === 'https:' && 'serviceWorker' in navigator) {
     navigator.serviceWorker.register('sw.js').catch(function () {});
   }
 })();
-

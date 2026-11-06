@@ -41,6 +41,7 @@ import com.israeltv.plus.ui.ItvApp
 import com.israeltv.plus.ui.theme.ItvTheme
 import kotlinx.coroutines.launch
 import okhttp3.OkHttpClient
+import java.util.Locale
 import java.util.concurrent.TimeUnit
 
 /**
@@ -147,8 +148,13 @@ class PhoneActivity : ComponentActivity() {
 
     private fun isTv(): Boolean {
         val ui = getSystemService(Context.UI_MODE_SERVICE) as? UiModeManager
-        return ui?.currentModeType == Configuration.UI_MODE_TYPE_TELEVISION ||
-            packageManager.hasSystemFeature(PackageManager.FEATURE_LEANBACK)
+        if (ui?.currentModeType == Configuration.UI_MODE_TYPE_TELEVISION) return true
+        if (packageManager.hasSystemFeature(PackageManager.FEATURE_LEANBACK) ||
+            packageManager.hasSystemFeature("android.hardware.type.television") ||
+            packageManager.hasSystemFeature("android.software.live_tv")) return true
+        if (!packageManager.hasSystemFeature(PackageManager.FEATURE_TOUCHSCREEN)) return true
+        val b = "${Build.MODEL} ${Build.PRODUCT} ${Build.DEVICE} ${Build.MANUFACTURER}".lowercase(Locale.US)
+        return Regex("(^|[^a-z])(tv|atv|tvbox|mibox|bravia|chromecast)([^a-z]|$)|^aft[a-z]").containsMatchIn(b)
     }
 
     // ------------------------------------------------------------------ picture-in-picture

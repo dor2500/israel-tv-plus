@@ -17,12 +17,22 @@ window.ITVGuide = function (api) {
 
   /* ---------- schedule ---------- */
   function loadEpg() {
-    var urls = /^https?:/.test(location.protocol) ? ['epg.json', REMOTE_EPG] : [REMOTE_EPG];
-    function use(data) {
-      epg = data.channels || {};
+    if (window.ITV_EPG && window.ITV_EPG.channels) {
+      epg = window.ITV_EPG.channels;
       epgDone = true;
       renderOsd();
       if (api.state.overlay === 'tvguide') openGuide();
+      return;
+    }
+    var urls = /^https?:/.test(location.protocol) ? ['epg.json', REMOTE_EPG] : [REMOTE_EPG];
+    function use(data) {
+      window.ITV_EPG = data;
+      window.ITV_EPG_CHANNELS = data.channels || {};
+      epg = window.ITV_EPG_CHANNELS;
+      epgDone = true;
+      renderOsd();
+      if (api.state.overlay === 'tvguide') openGuide();
+      if (typeof window.onItvEpgReady === 'function') window.onItvEpgReady();
     }
     (function next(n) {
       if (n >= urls.length) {
@@ -36,7 +46,7 @@ window.ITVGuide = function (api) {
         return;
       }
       var x = new XMLHttpRequest();
-      x.open('GET', urls[n] + '?t=' + Math.floor(Date.now() / 3600000));
+      x.open('GET', urls[n] + '?t=' + Math.floor(Date.now() / 21600000));
       x.onload = function () {
         try {
           if (x.status !== 200) throw 0;
@@ -457,7 +467,15 @@ window.ITVGuide = function (api) {
     if (!p) return;
     var m = now();
     if (canCatchup(ch, p)) { closeGuide(); resetOsd(); api.playCatchup(ch, startOf(p), endOf(p)); return; }
-    if (startOf(p) <= m && m < endOf(p)) { closeGuide(); resetOsd(); api.play(ch); }
+    if (startOf(p) <= m && m < endOf(p)) {
+      if (api.catchupHours && api.catchupHours(ch) && (m - startOf(p) > 2)) {
+        closeGuide(); resetOsd();
+        api.playCatchup(ch, startOf(p), endOf(p));
+        api.toast('⏮️ מתחיל את התכנית מחדש: ' + p[2]);
+        return;
+      }
+      closeGuide(); resetOsd(); api.play(ch);
+    }
     else api.toast(p[2] + ' · ' + dayLabel(startOf(p)) + ' ב-' + clock(startOf(p)));
   }
   function guideKey(code) {

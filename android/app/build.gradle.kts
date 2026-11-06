@@ -10,8 +10,7 @@ val repo: File = rootDir.parentFile                      // the israel-tv-plus r
 val appVersion = repo.resolve("VERSION").readText().trim()
 val appCode = appVersion.split(".").let { p ->
     val (maj, min, pat) = Triple(p[0].toInt(), p[1].toInt(), p[2].toInt())
-    if (maj == 4 && min == 3) 500 + pat
-    else 100 + maj * 100 + min * 10 + pat
+    maj * 10000 + min * 100 + pat
 }
 
 // Release key: the same one tools/build_apk.ps1 always used, so the update installs over every earlier APK.
@@ -156,6 +155,8 @@ dependencies {
     implementation("androidx.media3:media3-exoplayer:1.11.1")
     implementation("androidx.media3:media3-exoplayer-hls:1.11.1")
     implementation("androidx.media3:media3-ui:1.11.1")
+    implementation("androidx.media3:media3-session:1.11.1")   // Android Auto
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-guava:1.11.0")
 
     implementation("com.materialkolor:material-kolor:5.0.1")     // Material You palettes from a seed colour
     implementation("dev.chrisbanes.haze:haze:2.0.1")        // real frosted glass (RenderEffect blur)
@@ -166,8 +167,10 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp:5.5.1")
     implementation("androidx.mediarouter:mediarouter:1.7.0")
     implementation("com.google.android.gms:play-services-cast-framework:21.5.0")
-    implementation("com.google.android.gms:play-services-auth:21.4.0")   // system Google account picker
+    implementation("com.google.android.gms:play-services-auth:21.4.0")   // Drive access for the signed-in account
+    implementation("androidx.credentials:credentials:1.5.0")   // the system "Choose an account" sheet
+    implementation("androidx.credentials:credentials-play-services-auth:1.5.0")
+    implementation("com.google.android.libraries.identity.googleid:googleid:1.1.1")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.12.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.11.0")
 }
-

@@ -68,8 +68,16 @@ window.ITV_UI = (function (I) {
       '<button class="top-btn nav-top" id="btn-gdrive" data-nav="gdrive" title="Google Drive והקלטות ענן"><span class="ico">☁️</span><span>הקלטות ענן</span></button>' +
       '<button class="top-btn nav-top tv" id="btn-settings" data-nav="settings"><span class="ico">' + I('settings') + '</span><span>הגדרות</span></button>' +
       '<div class="clock" id="clock">00:00</div>' +
+      '<button class="top-btn ph" id="btn-ph-settings" aria-label="הגדרות"><span class="ico">' + I('settings') + '</span></button>' +
       '<button class="avatar ph" id="btn-avatar" aria-label="פרופיל ועדכונים"><img id="avatar-img" alt="">' +
         '<i class="avatar-dot hidden" id="avatar-dot"></i></button>' +
+    '</div>' +
+    '<div class="home-chips ph" id="home-chips">' +
+      '<button class="home-chip on" data-macro="">הכל</button>' +
+      '<button class="home-chip" data-macro="סרטים וסדרות">סרטים וסדרות</button>' +
+      '<button class="home-chip" data-macro="ילדים ונוער">ילדים ונוער</button>' +
+      '<button class="home-chip" data-macro="ספורט">ספורט</button>' +
+      '<button class="home-chip" data-more="1">עוד</button>' +
     '</div>' +
   '</header>' +
 
@@ -106,20 +114,13 @@ window.ITV_UI = (function (I) {
   // ---------------------------------------------------------------- TV: Apple TV+ browse screen
   '<div class="atv" id="atv">' +
     '<div class="atv-stage"><div class="atv-bd" id="atv-bd-a"></div><div class="atv-bd" id="atv-bd-b"></div><div class="atv-shade"></div></div>' +
-    // top: the category navigation bar, alone in its own band
-    '<header class="atv-top"><nav class="atv-pill hidden" id="atv-pill"></nav></header>' +
-    // below it one row (RTL): the programme / channel info panel on the right (fixed width), the channel grid on the
-    // left (takes the rest), with the colour buttons under the grid - nothing floats over anything else
-    '<div class="atv-main">' +
-      '<aside class="atv-info"><section class="atv-meta" id="atv-meta-a"></section><section class="atv-meta" id="atv-meta-b"></section></aside>' +
-      '<div class="atv-left">' +
-        '<div class="atv-search" id="atv-search"><span class="ico">' + I('search') + '</span><input id="atv-q" type="search" ' +
-          'autocomplete="off" spellcheck="false" enterkeyhint="search" placeholder="חיפוש ערוץ – שם, מדינה או מספר"></div>' +
-        '<div class="atv-kb hidden" id="atv-kb" role="group" aria-label="מקלדת חיפוש"></div>' +
-        '<div class="atv-shelves" id="atv-shelves"><div class="atv-rows" id="atv-rows"></div></div>' +
-        '<div class="atv-colors" id="atv-colors"></div>' +
-      '</div>' +
-    '</div>' +
+    '<nav class="atv-pill hidden" id="atv-pill"></nav>' +
+    '<section class="atv-meta" id="atv-meta-a"></section><section class="atv-meta" id="atv-meta-b"></section>' +
+    '<div class="atv-search" id="atv-search"><span class="ico">' + I('search') + '</span><input id="atv-q" type="search" ' +
+      'autocomplete="off" spellcheck="false" enterkeyhint="search" placeholder="חיפוש ערוץ – שם, מדינה או מספר"></div>' +
+    '<div class="atv-kb hidden" id="atv-kb" role="group" aria-label="מקלדת חיפוש"></div>' +
+    '<div class="atv-shelves" id="atv-shelves"><div class="atv-rows" id="atv-rows"></div></div>' +
+    '<div class="atv-colors" id="atv-colors"></div>' +
   '</div>' +
 
   '<footer class="hints tv" id="hints"></footer>' +
@@ -203,14 +204,13 @@ window.ITV_UI = (function (I) {
 
   // ---------------------------------------------------------------- Multi-View / Split-Screen (https://split-tv.org/ style)
   '<div class="multiview hidden" id="multiview">' +
-    '<header class="mv-top">' +
-      '<div class="mv-brand"><span class="ico">' + I('multiview') + '</span><b>פיצול מסך · Split-TV</b>' +
-        '<span class="mv-sub">לחצו על מסך לבחירת שמע פעיל · 🔄 להחלפת כל ערוץ</span></div>' +
-      '<div class="mv-actions">' +
-        '<button class="mv-btn" data-mv-layout="2">2 מסכים</button>' +
-        '<button class="mv-btn" data-mv-layout="3">3 מסכים</button>' +
-        '<button class="mv-btn active" data-mv-layout="4">4 מסכים</button>' +
-        '<button class="mv-btn mv-close" id="mv-close">' + I('close') + '<span>סגור פיצול</span></button>' +
+    '<header class="mv-bar">' +
+      '<div class="mv-title"><span class="ico">' + I('multiview') + '</span><b>פיצול מסך</b></div>' +
+      '<div class="mv-layouts">' +
+        '<button class="mv-lbtn" data-mv="2">2 מסכים</button>' +
+        '<button class="mv-lbtn" data-mv="3">3 מסכים</button>' +
+        '<button class="mv-lbtn on" data-mv="4">4 מסכים</button>' +
+        '<button class="mv-close" id="mv-close">' + I('close') + '<span>סגור פיצול</span></button>' +
       '</div>' +
     '</header>' +
     '<div class="mv-grid mv-g4" id="mv-grid"></div>' +
@@ -235,9 +235,9 @@ window.ITV_UI = (function (I) {
 
   // ---------------------------------------------------------------- settings
   '<div class="overlay settings hidden" id="settings"><div class="settings-box">' +
-    '<div class="settings-side"><div class="settings-title">' + I('settings') + '<span>הגדרות</span></div><div class="settings-nav" id="settings-nav"></div></div>' +
+    '<div class="settings-side"><div class="settings-title">' + I('settings') + '<span>הגדרות</span><button class="set-close" id="btn-settings-close" aria-label="סגירה">' + I('close') + '</button></div><div class="settings-nav" id="settings-nav"></div></div>' +
     '<div class="settings-main"><div class="settings-head"><h2 id="settings-h"></h2><p id="settings-p"></p></div>' +
-    '<div class="settings-rows" id="settings-rows"></div></div>' +
+    '<div class="settings-rows" id="settings-rows"></div><div class="m3-tv-hints" id="settings-tv-hints"><span class="m3-hint-pill"><span class="m3-key">▲▼</span> ניווט</span><span class="m3-hint-pill"><span class="m3-key">◀▶</span> בחירה / שינוי</span><span class="m3-hint-pill"><span class="m3-key">OK</span> אישור</span><span class="m3-hint-pill"><span class="m3-key">Back</span> יציאה</span></div></div>' +
   '</div></div>' +
 
   // ---------------------------------------------------------------- TV Netflix-style profiles screen

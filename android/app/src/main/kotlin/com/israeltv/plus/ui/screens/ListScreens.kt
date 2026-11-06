@@ -1,5 +1,9 @@
 package com.israeltv.plus.ui.screens
 
+import com.israeltv.plus.data.VodSeries
+import com.israeltv.plus.ui.components.VodShelf
+import com.israeltv.plus.ui.components.VodSeriesSheet
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -263,12 +267,20 @@ fun SearchOverlay(
     val focusManager = LocalFocusManager.current
     LaunchedEffect(Unit) { focus.requestFocus(); keyboard?.show() }
     val q = query.trim()
+    var inspectingSeries by remember { mutableStateOf<VodSeries?>(null) }
     val results = remember(q, data) {
         if (data == null || q.isEmpty()) emptyList()
         else data.channels.filter { ch ->
             ch.name.contains(q, true) || ch.title.contains(q, true) || ch.category.contains(q, true) ||
                 ch.countryHe.contains(q, true) || ch.number.toString() == q
         }.take(120)
+    }
+    val vodResults = remember(q, data) {
+        if (data == null || q.isEmpty()) emptyList()
+        else data.vod.filter { s ->
+            s.title.contains(q, true) || s.originalTitle.contains(q, true) || s.desc.contains(q, true) ||
+                s.genres.any { g -> g.contains(q, true) }
+        }
     }
     Box(Modifier.fillMaxSize().background(scheme.surfaceContainerLowest.copy(alpha = 0.97f))) {
         val top = WindowInsets.statusBars.asPaddingValues().calculateTopPadding()
@@ -278,13 +290,24 @@ fun SearchOverlay(
             flingBehavior = rememberBitChordFlingBehavior(),
         ) {
             item(key = "h") {
+                val totalCount = results.size + vodResults.size
                 Text(
-                    if (q.isEmpty()) "חיפוש" else "${results.size} תוצאות",
+                    if (q.isEmpty()) "חיפוש" else "$totalCount תוצאות",
                     Modifier.padding(horizontal = 18.dp).padding(bottom = 14.dp),
                     fontSize = 25.sp, fontWeight = FontWeight.SemiBold, color = scheme.onSurface,
                 )
             }
-            if (q.isNotEmpty() && results.isEmpty()) item(key = "e") { EmptyState("עוד אין פה כלום...") }
+            if (vodResults.isNotEmpty()) {
+                item(key = "vod_res") {
+                    VodShelf(
+                        title = "סדרות VOD תואמות",
+                        seriesList = vodResults,
+                        onSeriesClick = { inspectingSeries = it },
+                        modifier = Modifier.padding(bottom = 8.dp)
+                    )
+                }
+            }
+            if (q.isNotEmpty() && results.isEmpty() && vodResults.isEmpty()) item(key = "e") { EmptyState("עוד אין פה כלום...") }
             channelGrid(results, "s:", d.gridColumns, d.gutter, d.cardGap, logo, subtitle) { focusManager.clearFocus(); onPlay(it, results) }
         }
         Row(
@@ -301,7 +324,7 @@ fun SearchOverlay(
         ) {
             BoldIcon(Icons.Rounded.Search, null, Modifier.size(20.dp), tint = scheme.onSurfaceVariant, weight = 0.65.dp)
             Box(Modifier.weight(1f).padding(horizontal = 10.dp)) {
-                if (query.isEmpty()) Text("חפשו ערוץ, קטגוריה או מספר...", color = scheme.onSurfaceVariant, fontSize = 14.sp, fontWeight = FontWeight.Light)
+                if (query.isEmpty()) Text("חפשו ערוץ, סדרת VOD או מספר...", color = scheme.onSurfaceVariant, fontSize = 14.sp, fontWeight = FontWeight.Light)
                 BasicTextField(
                     query, { query = it },
                     Modifier.fillMaxWidth().focusRequester(focus),
@@ -316,6 +339,21 @@ fun SearchOverlay(
                 Icons.Rounded.Close, "סגירה",
                 Modifier.size(22.dp).clip(RoundedCornerShape(50)).clickable(remember { MutableInteractionSource() }, null) { if (query.isNotEmpty()) query = "" else onClose() },
                 tint = scheme.onSurfaceVariant, weight = 0.6.dp,
+            )
+        }
+ 
+        inspectingSeries?.let { series ->
+            VodSeriesSheet(
+                series = series,
+                onPlayEpisode = { ep ->
+                    val ch = ep.toChannel(series)
+                    val playlist = series.episodes.map { it.toChannel(series) }
+                    focusManager.clearFocus()
+                    onPlay(ch, playlist)
+                    inspectingSeries = null
+                    onClose()
+                },
+                onDismiss = { inspectingSeries = null }
             )
         }
     }

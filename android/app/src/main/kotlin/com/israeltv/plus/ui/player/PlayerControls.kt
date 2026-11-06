@@ -58,6 +58,7 @@ import androidx.compose.material.icons.rounded.Crop
 import androidx.compose.material.icons.rounded.FitScreen
 import androidx.compose.material.icons.rounded.Fullscreen
 import androidx.compose.material.icons.rounded.GridView
+import androidx.compose.material.icons.rounded.History
 import androidx.compose.material.icons.rounded.HighQuality
 import androidx.compose.material.icons.rounded.MoreHoriz
 import androidx.compose.material.icons.rounded.PictureInPictureAlt
@@ -69,6 +70,12 @@ import androidx.compose.material.icons.rounded.Star
 import androidx.compose.material.icons.rounded.StarBorder
 import androidx.compose.material.icons.rounded.SwapHoriz
 import androidx.compose.material.icons.rounded.Tv
+import androidx.compose.material.icons.rounded.Bedtime
+import androidx.compose.material.icons.rounded.Speed
+import androidx.compose.material.icons.rounded.Forward10
+import androidx.compose.material.icons.rounded.Replay10
+import androidx.compose.material3.Slider
+import androidx.compose.material3.SliderDefaults
 import androidx.compose.material3.BasicAlertDialog
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.FilledTonalButton
@@ -107,6 +114,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.media3.common.C
 import androidx.media3.common.TrackSelectionOverride
 import androidx.media3.common.Tracks
@@ -118,6 +126,15 @@ import com.israeltv.plus.data.CastProtocol
 import com.israeltv.plus.data.Channel
 import com.israeltv.plus.ui.components.pressPhysics
 import com.israeltv.plus.ui.theme.LocalDimens
+
+
+internal fun formatTime(ms: Long): String {
+    val totalSec = (ms / 1000).coerceAtLeast(0)
+    val h = totalSec / 3600
+    val m = (totalSec % 3600) / 60
+    val s = totalSec % 60
+    return if (h > 0) "%d:%02d:%02d".format(h, m, s) else "%02d:%02d".format(m, s)
+}
 
 internal enum class VideoFit(val label: String, val icon: ImageVector, val resizeMode: Int) {
     /** Letterboxed original 16:9 stream. */
@@ -213,38 +230,155 @@ internal fun PlayerTopBar(
 internal fun PlayerBottomBar(
     ch: Channel,
     fit: VideoFit,
+    positionMs: Long = 0L,
+    durationMs: Long = 0L,
+    isCatchupActive: Boolean = false,
+    catchupTitle: String? = null,
+    isLowBandwidth: Boolean = false,
+    isAudioOnly: Boolean = false,
+    onSeek: (Long) -> Unit = {},
     onCycleFit: () -> Unit,
+    onCatchup: () -> Unit = {},
+    onReturnLive: () -> Unit = {},
+    onToggleLowBandwidth: () -> Unit = {},
+    onToggleAudioOnly: () -> Unit = {},
     onOptions: () -> Unit,
 ) {
     val d = LocalDimens.current
     val badgeShape = RoundedCornerShape(6.dp)
-    Row(
+    val isVod = ch.kind == "vod" || ch.categoryEn == "vod"
+    val showScrubber = (isVod || isCatchupActive) && durationMs > 0L
+    Column(
         Modifier
             .fillMaxWidth()
-            .background(Brush.verticalGradient(listOf(Color.Transparent, Color.Black.copy(alpha = 0.82f))))
+            .background(Brush.verticalGradient(listOf(Color.Transparent, Color.Black.copy(alpha = 0.88f))))
             .navigationBarsPadding()
             .windowInsetsPadding(WindowInsets.displayCutout.only(WindowInsetsSides.Horizontal))
-            .padding(start = d.playerEdge, end = d.playerEdge, top = 32.dp, bottom = 16.dp),
-        horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = Alignment.CenterVertically,
+            .padding(start = d.playerEdge, end = d.playerEdge, top = 20.dp, bottom = 16.dp),
     ) {
-        Row(Modifier.weight(1f, fill = false), verticalAlignment = Alignment.CenterVertically) {
-            Text(
-                if (ch.isRadio) "רדיו" else "Live",
-                Modifier
-                    .clip(badgeShape)
-                    .border(1.dp, Color.White.copy(alpha = 0.42f), badgeShape)
-                    .padding(horizontal = 8.dp, vertical = 2.dp),
-                color = Color.White,
-                style = MaterialTheme.typography.labelMedium,
-            )
-            Spacer(Modifier.width(12.dp))
-            Text(ch.name, color = Color.White, style = MaterialTheme.typography.titleMedium, maxLines = 1, overflow = TextOverflow.Ellipsis)
+        if (showScrubber) {
+            Row(
+                Modifier.fillMaxWidth().padding(bottom = 6.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(10.dp)
+            ) {
+                Text(
+                    formatTime(positionMs),
+                    color = Color.White.copy(alpha = 0.9f),
+                    style = MaterialTheme.typography.labelSmall
+                )
+                Slider(
+                    value = (positionMs.toFloat() / durationMs.toFloat()).coerceIn(0f, 1f),
+                    onValueChange = { frac ->
+                        onSeek((frac * durationMs).toLong())
+                    },
+                    modifier = Modifier.weight(1f).height(24.dp),
+                    colors = SliderDefaults.colors(
+                        thumbColor = if (isCatchupActive) Color(0xFFE5A93C) else MaterialTheme.colorScheme.primary,
+                        activeTrackColor = if (isCatchupActive) Color(0xFFE5A93C) else MaterialTheme.colorScheme.primary,
+                        inactiveTrackColor = Color.White.copy(alpha = 0.28f)
+                    )
+                )
+                Text(
+                    formatTime(durationMs),
+                    color = Color.White.copy(alpha = 0.9f),
+                    style = MaterialTheme.typography.labelSmall
+                )
+            }
         }
-        Spacer(Modifier.width(16.dp))
-        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            MorphAction(fit.icon, fit.label, onClick = onCycleFit)
-            MorphAction(Icons.Rounded.MoreHoriz, "אפשרויות", onClick = onOptions)
+        Row(
+            Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Row(Modifier.weight(1f, fill = false), verticalAlignment = Alignment.CenterVertically) {
+                Text(
+                    when {
+                        isCatchupActive -> "קאץ' אפ"
+                        ch.isRadio -> "רדיו"
+                        isVod -> "VOD"
+                        else -> "Live"
+                    },
+                    Modifier
+                        .clip(badgeShape)
+                        .border(
+                            1.dp,
+                            when {
+                                isCatchupActive -> Color(0xFFE5A93C)
+                                isVod -> MaterialTheme.colorScheme.primary
+                                else -> Color.White.copy(alpha = 0.42f)
+                            },
+                            badgeShape
+                        )
+                        .background(if (isCatchupActive) Color(0xFFE5A93C).copy(alpha = 0.16f) else Color.Transparent)
+                        .padding(horizontal = 8.dp, vertical = 2.dp),
+                    color = when {
+                        isCatchupActive -> Color(0xFFE5A93C)
+                        isVod -> MaterialTheme.colorScheme.primary
+                        else -> Color.White
+                    },
+                    style = MaterialTheme.typography.labelMedium,
+                )
+                Spacer(Modifier.width(10.dp))
+                Column {
+                    Text(
+                        if (isCatchupActive && !catchupTitle.isNullOrEmpty()) catchupTitle else ch.name,
+                        color = Color.White,
+                        style = MaterialTheme.typography.titleMedium,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis
+                    )
+                    if (isCatchupActive && !catchupTitle.isNullOrEmpty()) {
+                        Text(
+                            "${ch.name} · שידור חוזר",
+                            color = Color.White.copy(alpha = 0.62f),
+                            fontSize = 12.sp,
+                            maxLines = 1,
+                        )
+                    }
+                }
+            }
+            Spacer(Modifier.width(12.dp))
+            Row(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
+                if (isCatchupActive) {
+                    Box(
+                        Modifier
+                            .clip(RoundedCornerShape(50))
+                            .background(Color(0xFFE53935))
+                            .clickable(onClick = onReturnLive)
+                            .padding(horizontal = 11.dp, vertical = 6.dp),
+                        contentAlignment = Alignment.Center,
+                    ) {
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Box(Modifier.size(7.dp).clip(CircleShape).background(Color.White))
+                            Spacer(Modifier.width(5.dp))
+                            Text("חזרה לשידור חי", color = Color.White, fontSize = 11.sp, fontWeight = FontWeight.Bold)
+                        }
+                    }
+                } else if (!ch.isRadio && !isVod) {
+                    MorphAction(Icons.Rounded.History, "קאץ' אפ", onClick = onCatchup)
+                    MorphAction(Icons.Rounded.Audiotrack, "האזנה", onClick = onToggleAudioOnly)
+                }
+                if (isLowBandwidth) {
+                    Box(
+                        Modifier
+                            .clip(RoundedCornerShape(50))
+                            .background(Color(0xFF0284C7).copy(alpha = 0.25f))
+                            .border(1.dp, Color(0xFF38BDF8), RoundedCornerShape(50))
+                            .clickable(onClick = onToggleLowBandwidth)
+                            .padding(horizontal = 8.dp, vertical = 4.dp),
+                        contentAlignment = Alignment.Center,
+                    ) {
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Icon(Icons.Rounded.Speed, null, tint = Color(0xFF38BDF8), modifier = Modifier.size(12.dp))
+                            Spacer(Modifier.width(4.dp))
+                            Text("5Mbps", color = Color(0xFF38BDF8), fontSize = 11.sp, fontWeight = FontWeight.Bold)
+                        }
+                    }
+                }
+                MorphAction(fit.icon, fit.label, onClick = onCycleFit)
+                MorphAction(Icons.Rounded.MoreHoriz, "אפשרויות", onClick = onOptions)
+            }
         }
     }
 }
@@ -274,13 +408,22 @@ private fun DrawerItem(icon: ImageVector, title: String, value: String? = null, 
 internal fun PlayerOptionsDrawer(
     visible: Boolean,
     qualityLabel: String,
+    playbackSpeed: Float = 1.0f,
+    sleepTimerMinutes: Int = 0,
     serverIndex: Int,
     serverCount: Int,
     onSelectServer: (Int) -> Unit,
     onQuality: () -> Unit,
     onAudio: () -> Unit,
+    onSpeed: () -> Unit = {},
+    onSleepTimer: () -> Unit = {},
     onPip: () -> Unit,
     onMultiView: () -> Unit,
+    onCatchup: () -> Unit = {},
+    isLowBandwidth: Boolean = false,
+    isAudioOnly: Boolean = false,
+    onToggleLowBandwidth: () -> Unit = {},
+    onToggleAudioOnly: () -> Unit = {},
     onChannels: () -> Unit,
     onRotate: () -> Unit,
     onDismiss: () -> Unit,
@@ -320,8 +463,13 @@ internal fun PlayerOptionsDrawer(
                             style = MaterialTheme.typography.titleLarge,
                         )
                         DrawerItem(Icons.Rounded.Audiotrack, "שמע", onClick = onAudio)
+                        DrawerItem(Icons.Rounded.Speed, "מהירות צפייה", "${playbackSpeed}x", onClick = onSpeed)
+                        DrawerItem(Icons.Rounded.Bedtime, "טיימר שינה", if (sleepTimerMinutes > 0) "$sleepTimerMinutes דק'" else "כבוי", onClick = onSleepTimer)
                         DrawerItem(Icons.Rounded.PictureInPictureAlt, "חלון צף", onClick = onPip)
                         DrawerItem(Icons.Rounded.HighQuality, "איכות וידאו", qualityLabel, onQuality)
+                        DrawerItem(Icons.Rounded.Speed, "מצב רשת איטית (5Mbps ומטה)", if (isLowBandwidth) "פעיל (480p)" else "איכות רגילה", onClick = onToggleLowBandwidth)
+                        DrawerItem(Icons.Rounded.Audiotrack, "מצב האזנה (חיסכון בסוללה)", if (isAudioOnly) "פעיל" else "כבוי", onClick = onToggleAudioOnly)
+                        DrawerItem(Icons.Rounded.History, "קאץ' אפ (שידור חוזר)", "תוכניות קודמות", onClick = onCatchup)
                         DrawerItem(Icons.Rounded.GridView, "פיצול מסך", onClick = onMultiView)
                         if (serverCount > 1) {
                             ListItem(
@@ -385,6 +533,70 @@ internal fun selectedVideoHeight(player: ExoPlayer, tracks: Tracks): Int? {
     return videoQualities(tracks).firstOrNull { q ->
         overrides[q.group.mediaTrackGroup]?.trackIndices?.contains(q.trackIndex) == true
     }?.height
+}
+
+
+@Composable
+internal fun PlaybackSpeedDialog(
+    currentSpeed: Float,
+    onSelectSpeed: (Float) -> Unit,
+    onDismiss: () -> Unit,
+) {
+    val speeds = listOf(0.75f, 1.0f, 1.25f, 1.5f, 1.75f, 2.0f)
+    BasicAlertDialog(onDismissRequest = onDismiss) {
+        Surface(shape = RoundedCornerShape(28.dp), color = MaterialTheme.colorScheme.surfaceContainerHigh) {
+            Column(Modifier.padding(vertical = 24.dp, horizontal = 8.dp)) {
+                Text(
+                    "מהירות צפייה",
+                    Modifier.padding(horizontal = 16.dp).padding(bottom = 16.dp),
+                    color = MaterialTheme.colorScheme.onSurface,
+                    style = MaterialTheme.typography.headlineSmall,
+                )
+                speeds.forEach { sp ->
+                    val label = if (sp == 1.0f) "1.0x (רגיל)" else "${sp}x"
+                    QualityRow(label, null, currentSpeed == sp) {
+                        onSelectSpeed(sp)
+                        onDismiss()
+                    }
+                }
+            }
+        }
+    }
+}
+
+@Composable
+internal fun SleepTimerDialog(
+    currentMinutes: Int,
+    onSelectMinutes: (Int) -> Unit,
+    onDismiss: () -> Unit,
+) {
+    val options = listOf(
+        0 to "כבוי",
+        15 to "15 דקות",
+        30 to "30 דקות",
+        45 to "45 דקות",
+        60 to "שעה (60 דקות)",
+        90 to "שעה וחצי (90 דקות)",
+        120 to "שעתיים (120 דקות)",
+    )
+    BasicAlertDialog(onDismissRequest = onDismiss) {
+        Surface(shape = RoundedCornerShape(28.dp), color = MaterialTheme.colorScheme.surfaceContainerHigh) {
+            Column(Modifier.padding(vertical = 24.dp, horizontal = 8.dp)) {
+                Text(
+                    "טיימר שינה (כיבוי אוטומטי)",
+                    Modifier.padding(horizontal = 16.dp).padding(bottom = 16.dp),
+                    color = MaterialTheme.colorScheme.onSurface,
+                    style = MaterialTheme.typography.headlineSmall,
+                )
+                options.forEach { (mins, label) ->
+                    QualityRow(label, null, currentMinutes == mins) {
+                        onSelectMinutes(mins)
+                        onDismiss()
+                    }
+                }
+            }
+        }
+    }
 }
 
 @Composable

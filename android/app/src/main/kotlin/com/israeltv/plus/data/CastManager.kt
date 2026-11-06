@@ -299,12 +299,12 @@ class CastController(
         val list = router.routes.mapNotNull { route ->
             if (route.isDefault || !route.isEnabled || route.isBluetooth) return@mapNotNull null
             if (!route.matchesSelector(selector)) return@mapNotNull null
-            val name = route.name.toString().trim()
+            val name = route.name.trim()
             if (name.isEmpty()) return@mapNotNull null
             CastDeviceItem(
                 id = "cast:${route.id}",
                 name = name,
-                description = route.description?.toString()?.takeIf { it.isNotBlank() } ?: "Google Cast / Chromecast",
+                description = route.description?.takeIf { it.isNotBlank() } ?: "Google Cast / Chromecast",
                 protocol = CastProtocol.GOOGLE_CAST,
                 routeId = route.id,
             )
