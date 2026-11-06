@@ -145,244 +145,6 @@ internal enum class VideoFit(val label: String, val icon: ImageVector, val resiz
     fun next(): VideoFit = entries[(ordinal + 1) % entries.size]
 }
 
-/** Corners tighten on press with spring physics; the same morph on every player control. */
-@Composable
-private fun MorphAction(icon: ImageVector, label: String, tint: Color = Color.White, showLabel: Boolean = true, onClick: () -> Unit) {
-    val d = LocalDimens.current
-    val haptic = LocalHapticFeedback.current
-    val interaction = remember { MutableInteractionSource() }
-    val pressed by interaction.collectIsPressedAsState()
-    val corner by animateDpAsState(
-        targetValue = if (pressed) 10.dp else d.playerActionHeight / 2,
-        animationSpec = spring(dampingRatio = 0.58f, stiffness = Spring.StiffnessMedium),
-        label = "playerActionMorph",
-    )
-    val pressScale by animateFloatAsState(
-        targetValue = if (pressed) 0.92f else 1f,
-        animationSpec = spring(dampingRatio = 0.58f, stiffness = Spring.StiffnessMedium),
-        label = "playerActionScale",
-    )
-    val shape = RoundedCornerShape(corner)
-    Row(
-        Modifier
-            .heightIn(min = d.playerActionHeight)
-            .scale(pressScale)
-            .pressPhysics(interaction, tilt = false, glowShape = shape)
-            .clip(shape)
-            .background(Color.White.copy(alpha = 0.12f))
-            .clickable(interaction, null, role = Role.Button) {
-                haptic.performHapticFeedback(HapticFeedbackType.VirtualKey)
-                onClick()
-            }
-            .padding(horizontal = if (showLabel) 16.dp else 12.dp),
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-        Icon(icon, if (showLabel) null else label, Modifier.size(d.playerIcon), tint = tint)
-        if (showLabel) {
-            Spacer(Modifier.width(8.dp))
-            Text(label, color = tint, style = MaterialTheme.typography.labelLarge, maxLines = 1)
-        }
-    }
-}
-
-/** Back on one edge; favourite and Cast side by side on the other. The channel identity lives in the bottom bar. */
-@Composable
-internal fun PlayerTopBar(
-    isCasting: Boolean,
-    favorite: Boolean,
-    onFavorite: () -> Unit,
-    onCast: () -> Unit,
-    onBack: () -> Unit,
-) {
-    val d = LocalDimens.current
-    val statusTop = WindowInsets.statusBars.asPaddingValues().calculateTopPadding()
-    Row(
-        Modifier
-            .fillMaxWidth()
-            .background(Brush.verticalGradient(listOf(Color.Black.copy(alpha = 0.72f), Color.Transparent)))
-            .windowInsetsPadding(WindowInsets.displayCutout.only(WindowInsetsSides.Horizontal + WindowInsetsSides.Top))
-            .padding(top = statusTop.coerceAtLeast(8.dp), bottom = 24.dp, start = d.playerEdge, end = d.playerEdge),
-        horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-        MorphAction(Icons.AutoMirrored.Rounded.ArrowBack, "חזרה", showLabel = false, onClick = onBack)
-        Row(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
-            MorphAction(
-                if (favorite) Icons.Rounded.Star else Icons.Rounded.StarBorder,
-                if (favorite) "הסר ממועדפים" else "מועדפים",
-                tint = if (favorite) Color(0xFFFFD54F) else Color.White,
-                showLabel = false,
-                onClick = onFavorite,
-            )
-            MorphAction(
-                if (isCasting) Icons.Rounded.CastConnected else Icons.Rounded.Cast,
-                "שידור למסך",
-                tint = if (isCasting) MaterialTheme.colorScheme.primary else Color.White,
-                showLabel = false,
-                onClick = onCast,
-            )
-        }
-    }
-}
-
-/** In RTL the first child sits on the physical right: Live + channel name there, fit + options on the far left. */
-@Composable
-internal fun PlayerBottomBar(
-    ch: Channel,
-    fit: VideoFit,
-    positionMs: Long = 0L,
-    durationMs: Long = 0L,
-    isCatchupActive: Boolean = false,
-    catchupTitle: String? = null,
-    isLowBandwidth: Boolean = false,
-    isAudioOnly: Boolean = false,
-    onSeek: (Long) -> Unit = {},
-    onCycleFit: () -> Unit,
-    onCatchup: () -> Unit = {},
-    onReturnLive: () -> Unit = {},
-    onToggleLowBandwidth: () -> Unit = {},
-    onToggleAudioOnly: () -> Unit = {},
-    onOptions: () -> Unit,
-) {
-    val d = LocalDimens.current
-    val badgeShape = RoundedCornerShape(6.dp)
-    val isVod = ch.kind == "vod" || ch.categoryEn == "vod"
-    val showScrubber = (isVod || isCatchupActive) && durationMs > 0L
-    Column(
-        Modifier
-            .fillMaxWidth()
-            .background(Brush.verticalGradient(listOf(Color.Transparent, Color.Black.copy(alpha = 0.88f))))
-            .navigationBarsPadding()
-            .windowInsetsPadding(WindowInsets.displayCutout.only(WindowInsetsSides.Horizontal))
-            .padding(start = d.playerEdge, end = d.playerEdge, top = 20.dp, bottom = 16.dp),
-    ) {
-        if (showScrubber) {
-            Row(
-                Modifier.fillMaxWidth().padding(bottom = 6.dp),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(10.dp)
-            ) {
-                Text(
-                    formatTime(positionMs),
-                    color = Color.White.copy(alpha = 0.9f),
-                    style = MaterialTheme.typography.labelSmall
-                )
-                Slider(
-                    value = (positionMs.toFloat() / durationMs.toFloat()).coerceIn(0f, 1f),
-                    onValueChange = { frac ->
-                        onSeek((frac * durationMs).toLong())
-                    },
-                    modifier = Modifier.weight(1f).height(24.dp),
-                    colors = SliderDefaults.colors(
-                        thumbColor = if (isCatchupActive) Color(0xFFE5A93C) else MaterialTheme.colorScheme.primary,
-                        activeTrackColor = if (isCatchupActive) Color(0xFFE5A93C) else MaterialTheme.colorScheme.primary,
-                        inactiveTrackColor = Color.White.copy(alpha = 0.28f)
-                    )
-                )
-                Text(
-                    formatTime(durationMs),
-                    color = Color.White.copy(alpha = 0.9f),
-                    style = MaterialTheme.typography.labelSmall
-                )
-            }
-        }
-        Row(
-            Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            Row(Modifier.weight(1f, fill = false), verticalAlignment = Alignment.CenterVertically) {
-                Text(
-                    when {
-                        isCatchupActive -> "קאץ' אפ"
-                        ch.isRadio -> "רדיו"
-                        isVod -> "VOD"
-                        else -> "Live"
-                    },
-                    Modifier
-                        .clip(badgeShape)
-                        .border(
-                            1.dp,
-                            when {
-                                isCatchupActive -> Color(0xFFE5A93C)
-                                isVod -> MaterialTheme.colorScheme.primary
-                                else -> Color.White.copy(alpha = 0.42f)
-                            },
-                            badgeShape
-                        )
-                        .background(if (isCatchupActive) Color(0xFFE5A93C).copy(alpha = 0.16f) else Color.Transparent)
-                        .padding(horizontal = 8.dp, vertical = 2.dp),
-                    color = when {
-                        isCatchupActive -> Color(0xFFE5A93C)
-                        isVod -> MaterialTheme.colorScheme.primary
-                        else -> Color.White
-                    },
-                    style = MaterialTheme.typography.labelMedium,
-                )
-                Spacer(Modifier.width(10.dp))
-                Column {
-                    Text(
-                        if (isCatchupActive && !catchupTitle.isNullOrEmpty()) catchupTitle else ch.name,
-                        color = Color.White,
-                        style = MaterialTheme.typography.titleMedium,
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis
-                    )
-                    if (isCatchupActive && !catchupTitle.isNullOrEmpty()) {
-                        Text(
-                            "${ch.name} · שידור חוזר",
-                            color = Color.White.copy(alpha = 0.62f),
-                            fontSize = 12.sp,
-                            maxLines = 1,
-                        )
-                    }
-                }
-            }
-            Spacer(Modifier.width(12.dp))
-            Row(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
-                if (isCatchupActive) {
-                    Box(
-                        Modifier
-                            .clip(RoundedCornerShape(50))
-                            .background(Color(0xFFE53935))
-                            .clickable(onClick = onReturnLive)
-                            .padding(horizontal = 11.dp, vertical = 6.dp),
-                        contentAlignment = Alignment.Center,
-                    ) {
-                        Row(verticalAlignment = Alignment.CenterVertically) {
-                            Box(Modifier.size(7.dp).clip(CircleShape).background(Color.White))
-                            Spacer(Modifier.width(5.dp))
-                            Text("חזרה לשידור חי", color = Color.White, fontSize = 11.sp, fontWeight = FontWeight.Bold)
-                        }
-                    }
-                } else if (!ch.isRadio && !isVod) {
-                    MorphAction(Icons.Rounded.History, "קאץ' אפ", onClick = onCatchup)
-                    MorphAction(Icons.Rounded.Audiotrack, "האזנה", onClick = onToggleAudioOnly)
-                }
-                if (isLowBandwidth) {
-                    Box(
-                        Modifier
-                            .clip(RoundedCornerShape(50))
-                            .background(Color(0xFF0284C7).copy(alpha = 0.25f))
-                            .border(1.dp, Color(0xFF38BDF8), RoundedCornerShape(50))
-                            .clickable(onClick = onToggleLowBandwidth)
-                            .padding(horizontal = 8.dp, vertical = 4.dp),
-                        contentAlignment = Alignment.Center,
-                    ) {
-                        Row(verticalAlignment = Alignment.CenterVertically) {
-                            Icon(Icons.Rounded.Speed, null, tint = Color(0xFF38BDF8), modifier = Modifier.size(12.dp))
-                            Spacer(Modifier.width(4.dp))
-                            Text("5Mbps", color = Color(0xFF38BDF8), fontSize = 11.sp, fontWeight = FontWeight.Bold)
-                        }
-                    }
-                }
-                MorphAction(fit.icon, fit.label, onClick = onCycleFit)
-                MorphAction(Icons.Rounded.MoreHoriz, "אפשרויות", onClick = onOptions)
-            }
-        }
-    }
-}
-
 @Composable
 private fun DrawerItem(icon: ImageVector, title: String, value: String? = null, onClick: () -> Unit) {
     ListItem(
@@ -407,6 +169,11 @@ private fun DrawerItem(icon: ImageVector, title: String, value: String? = null, 
 @Composable
 internal fun PlayerOptionsDrawer(
     visible: Boolean,
+    favorite: Boolean,
+    onFavorite: () -> Unit,
+    onCast: () -> Unit,
+    fitLabel: String,
+    onCycleFit: () -> Unit,
     qualityLabel: String,
     playbackSpeed: Float = 1.0f,
     sleepTimerMinutes: Int = 0,
@@ -462,6 +229,13 @@ internal fun PlayerOptionsDrawer(
                             color = Color.White,
                             style = MaterialTheme.typography.titleLarge,
                         )
+                        DrawerItem(
+                            if (favorite) Icons.Rounded.Star else Icons.Rounded.StarBorder,
+                            if (favorite) "הסר ממועדפים" else "הוסף למועדפים",
+                            onClick = onFavorite,
+                        )
+                        DrawerItem(Icons.Rounded.Cast, "שידור למסך", onClick = onCast)
+                        DrawerItem(Icons.Rounded.FitScreen, "התאמת תמונה", fitLabel, onClick = onCycleFit)
                         DrawerItem(Icons.Rounded.Audiotrack, "שמע", onClick = onAudio)
                         DrawerItem(Icons.Rounded.Speed, "מהירות צפייה", "${playbackSpeed}x", onClick = onSpeed)
                         DrawerItem(Icons.Rounded.Bedtime, "טיימר שינה", if (sleepTimerMinutes > 0) "$sleepTimerMinutes דק'" else "כבוי", onClick = onSleepTimer)
