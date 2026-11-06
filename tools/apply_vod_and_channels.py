@@ -106,7 +106,8 @@ base_js = parts[0].strip()
 
 # Make sure window.CHANNELS is synced
 ch_json_str = json.dumps(channels, ensure_ascii=False, indent=2)
-base_js_updated = "window.CHANNELS = " + ch_json_str + ";"
+# app.js reads CHANNELS_DATA (ITV_CHANNELS for older builds) - "window.CHANNELS" left every TV / web build empty
+base_js_updated = "window.CHANNELS_DATA = window.ITV_CHANNELS = " + ch_json_str + ";"
 
 vod_json_str = json.dumps(vod_data, ensure_ascii=False, indent=2)
 new_js_content = base_js_updated + "\n\nwindow.VOD_DATA = " + vod_json_str + ";\n"

@@ -2348,52 +2348,6 @@ body.tvui #player .osd::before { content: ''; position: absolute; right: 0; left
 .vod-play-btn { margin-right: 0.8rem; padding: 0.45rem 1rem; font-size: 0.95rem; border-radius: 0.5rem; white-space: nowrap; }
 
 
-/* ================================================================== TV side navigation drawer (webOS + Android TV)
-   The categories live in a slim icon rail on the right edge (RTL start). While the remote is on it
-   (body.atv-nav-open) or the Magic Remote pointer hovers it, it opens to show the labels. */
-body.tvui .atv-pill.atv-side {
-  top: 0; bottom: 0; right: 0; left: auto; height: auto; width: 6rem; min-width: 0;
-  -webkit-transform: none; transform: none;
-  flex-direction: column; align-items: stretch; justify-content: center;
-  padding: 2rem .7rem; border: 0; border-radius: 0; z-index: 6;
-  overflow-x: hidden; overflow-y: auto; scrollbar-width: none;
-  background: linear-gradient(to left, rgba(6, 6, 10, .92) 0%, rgba(6, 6, 10, .55) 70%, rgba(6, 6, 10, 0) 100%);
-  box-shadow: none;
-  -webkit-backdrop-filter: none; backdrop-filter: none;
-  transition: width .32s cubic-bezier(.16, 1, .3, 1), background-color .32s ease;
-}
-body.tvui .atv-pill.atv-side::-webkit-scrollbar { display: none; }
-body.tvui.atv-nav-open .atv-pill.atv-side,
-body.tvui .atv-pill.atv-side:hover {
-  width: 21rem;
-  background: linear-gradient(to left, rgba(6, 6, 10, .98) 0%, rgba(6, 6, 10, .94) 75%, rgba(6, 6, 10, .6) 100%);
-  box-shadow: -2rem 0 4rem rgba(0, 0, 0, .55);
-}
-body.tvui .atv-side .atv-tab {
-  display: flex !important; align-items: center; justify-content: flex-start; gap: 1.1rem;
-  flex: 0 0 auto; width: 100%; height: 3.4rem; margin: .12rem 0; padding: 0 1.15rem !important;
-  border-radius: 1rem !important; border: 2px solid transparent !important;
-  background: transparent !important; box-shadow: none !important;
-  color: rgba(255, 255, 255, .78); font-size: 1.4rem; font-weight: 600; text-align: right;
-  -webkit-transform: none !important; transform: none !important;
-}
-body.tvui .atv-side .atv-tab .ic { flex: 0 0 auto; width: 1.7rem; height: 1.7rem; fill: currentColor; }
-body.tvui .atv-side .atv-tab-lbl { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; opacity: 0; transition: opacity .2s ease; }
-body.tvui.atv-nav-open .atv-side .atv-tab-lbl, body.tvui .atv-side:hover .atv-tab-lbl { opacity: 1; }
-/* the current category: an accent bar + white icon, visible even while collapsed */
-body.tvui .atv-side .atv-tab.on { color: #fff; background: rgba(255, 255, 255, .12) !important; box-shadow: inset -.3rem 0 0 #38bdf8 !important; }
-/* remote focus: solid white chip, thick ring (readable from the couch on LG and Android TV) */
-body.tvui .atv-side .atv-tab.focused, body.tvui .atv-side .atv-tab:hover {
-  color: #0b0e14 !important; background: #f5f5f7 !important; border-color: #fff !important; font-weight: 800;
-  box-shadow: 0 0 0 .25rem rgba(56, 189, 248, .7), 0 .6rem 1.6rem rgba(0, 0, 0, .5) !important;
-}
-body.tvui .atv-side .atv-tab-prof { padding: 0 .65rem !important; margin-bottom: 1rem; }
-body.tvui .atv-side .atv-prof-ico { flex: 0 0 auto; width: 2.6rem; height: 2.6rem; }
-/* everything else steps aside for the collapsed rail */
-body.tvui .atv-meta, body.tvui .atv-search, body.tvui .atv-kb { right: 8rem; }
-body.tvui .atv-row-title { margin-right: 8rem; }
-body.tvui .atv-track { padding-right: 8rem; }
-
 /* channel names under the logos: bigger and bolder, readable from across the room */
 body.tvui .atv-name { margin-top: .8rem; font-size: 1.45rem; font-weight: 700; color: rgba(255, 255, 255, .82); }
 body.tvui .atv-item.focused .atv-name { font-size: 1.5rem; font-weight: 800; color: #fff; }
@@ -2412,11 +2366,6 @@ body.tvui .atv-item.focused .atv-name { font-size: 1.5rem; font-weight: 800; col
 #tvg-name { font-size: 3.2rem; font-weight: 800; line-height: 1.15; }
 #tvg-desc { font-size: 1.6rem; line-height: 1.4; max-height: calc(1.6rem * 1.4 * 3);
   display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; line-clamp: 3; overflow: hidden; text-overflow: ellipsis; }
-/* the top bar is gone (side drawer): the details and search move up into its space */
-body.tvui .atv-meta { top: 3.2rem; }
-body.tvui .atv-search { top: 3.6rem; }
-body.tvui .atv-kb { top: 9.45rem; }
-
 /* ================================================================== TV player OSD (webOS + Android TV)
    Everything sits at the bottom: the info row (channel strip · programme · up next), a full-width progress
    bar with large times, and one row of icon controls (previous / next programme, options, back to live).
@@ -2558,3 +2507,41 @@ body.phone .rail-item { margin: 0 0 0 1.2rem; }
   font-size: 0.85rem;
   font-weight: 700;
 }
+
+/* ================================================================== TV / desktop home layout (webOS, Android TV, Windows)
+   Column {
+     TopBar                                   – the category navigation, alone at the top
+     Row {                                    – RTL: first child on the right
+       InfoPanel  (fixed width, right)        – programme / channel details, never floats over the grid
+       Column(weight 1f) { Grid ; ColorKeys } – the channel shelves fill the rest; the colour buttons sit under them
+     }
+   } */
+body.tvui .atv-top { position: absolute; top: 0; left: 0; right: 0; height: 7.6rem; z-index: 4; pointer-events: none; }
+body.tvui .atv-top .atv-pill { pointer-events: auto; top: 2rem; }
+body.tvui .atv-main { position: absolute; top: 7.6rem; left: 0; right: 0; bottom: 0; z-index: 2;
+  display: flex; flex-direction: row; align-items: stretch; }
+/* right: the info panel, fixed width; its two layers cross-fade on top of each other */
+body.tvui .atv-info { position: relative; flex: 0 0 36rem; width: 36rem; margin: 0 3.2rem 0 0; overflow: hidden; }
+body.tvui .atv-info .atv-meta, body.tvui.ui-large .atv-info .atv-meta { position: absolute; top: 1.2rem; right: 0; left: 0; width: auto; }
+body.tvui .atv-info .atv-mlogo { width: 100%; max-width: 26rem; height: 7rem; }
+body.tvui .atv-info .atv-title { font-size: 2.8rem; }
+body.tvui .atv-info .atv-tags { flex-wrap: wrap; row-gap: .5rem; }
+body.tvui .atv-info .atv-prog-title { white-space: normal; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-clamp: 2; }
+body.tvui .atv-info .atv-src { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+/* left: the grid column takes the rest (weight 1f) */
+body.tvui .atv-left { position: relative; flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; overflow: hidden; }
+body.tvui .atv-left .atv-shelves, body.tvui.ui-xl .atv-left .atv-shelves, body.tvui.ui-xxl .atv-left .atv-shelves {
+  position: relative; left: auto; right: auto; bottom: auto; flex: 1 1 0; min-height: 0; height: auto; overflow: hidden; padding-top: 1.2rem; }
+body.tvui .atv-left .atv-row-title { margin-right: 2.4rem; }
+body.tvui .atv-left .atv-track { padding-right: 2.4rem; }
+/* the next shelves show in full now (no colour buttons under them any more) */
+body.tvui .atv-left .atv-row.below .atv-item:not(.focused) .atv-name { opacity: 1; }
+/* search sits at the top of the grid column and pushes the results down instead of covering them */
+body.tvui .atv-left .atv-search, body.tvui.ui-large .atv-left .atv-search { position: relative; top: auto; right: auto; flex: none;
+  width: auto; max-width: 56rem; margin: 1.2rem 2.4rem 0 2.4rem; }
+body.tvui .atv-left .atv-kb, body.tvui.ui-large .atv-left .atv-kb { position: relative; top: auto; right: auto; flex: none; margin: .8rem 2.4rem 0 2.4rem; }
+body.tvui .atv-left .atv-kb.hidden { display: none; }
+/* bottom of the grid column: the colour action buttons in their own strip */
+body.tvui .atv-left .atv-colors { position: relative; left: auto; bottom: auto; flex: none; z-index: 3;
+  display: flex; align-items: center; justify-content: flex-end; gap: .4rem; min-height: 4.4rem; padding: .6rem 2.4rem 1.4rem; }
+body.tvui.player-open .atv-left .atv-colors { display: none !important; }

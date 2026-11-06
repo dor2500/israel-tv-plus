@@ -31,10 +31,6 @@ window.ITV_ICONS = {
   cast: 'M21 3H3c-1.1 0-2 .9-2 2v3h2V5h18v14h-7v2h7c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM1 18v3h3c0-1.66-1.34-3-3-3zm0-4v2c2.76 0 5 2.24 5 5h2c0-3.87-3.13-7-7-7zm0-4v2c4.97 0 9 4.03 9 9h2c0-6.08-4.93-11-11-11z',
   multiview: 'M4 4h7c.55 0 1 .45 1 1v5c0 .55-.45 1-1 1H4c-.55 0-1-.45-1-1V5c0-.55.45-1 1-1zm9 0h7c.55 0 1 .45 1 1v5c0 .55-.45 1-1 1h-7c-.55 0-1-.45-1-1V5c0-.55.45-1 1-1zM4 13h7c.55 0 1 .45 1 1v5c0 .55-.45 1-1 1H4c-.55 0-1-.45-1-1v-5c0-.55.45-1 1-1zm9 0h7c.55 0 1 .45 1 1v5c0 .55-.45 1-1 1h-7c-.55 0-1-.45-1-1v-5c0-.55.45-1 1-1z',
   server: 'M4 6h16c1.1 0 2-.9 2-2s-.9-2-2-2H4c-1.1 0-2 .9-2 2s.9 2 2 2zm0 8h16c1.1 0 2-.9 2-2s-.9-2-2-2H4c-1.1 0-2 .9-2 2s.9 2 2 2zm0 8h16c1.1 0 2-.9 2-2s-.9-2-2-2H4c-1.1 0-2 .9-2 2s.9 2 2 2z',
-  sports: 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 3.3l1.35-.95c1.82.56 3.37 1.76 4.38 3.34l-.39 1.34-1.35.46L13 6.7V5.3zm-3.35-.95L11 5.3v1.4L7.01 9.49l-1.35-.46-.39-1.34c1.01-1.57 2.56-2.77 4.38-3.34zM7.08 17.11l-1.14.1C4.73 15.81 4 13.99 4 12c0-.12.01-.23.02-.35l1-.73 1.38.48 1.46 4.34-.78 1.37zm7.42 2.48c-.79.26-1.63.41-2.5.41s-1.71-.15-2.5-.41l-.69-1.49.64-1.1h5.11l.64 1.11-.7 1.48zM14.27 15H9.73l-1.35-4.02L12 8.44l3.63 2.54L14.27 15zm3.79 2.21l-1.14-.1-.79-1.37 1.46-4.34 1.39-.47 1 .73c.01.11.02.22.02.34 0 1.99-.73 3.81-1.94 5.21z',
-  movie: 'M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4z',
-  vod: 'M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8 12.5v-9l6 4.5-6 4.5z',
-  guide: 'M17 10H7v2h10v-2zm2-7h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zm-5-5H7v2h7v-2z',
   radio: 'M3.24 6.15C2.51 6.43 2 7.17 2 8v12c0 1.1.9 2 2 2h16c1.11 0 2-.9 2-2V8c0-1.1-.9-2-2-2H8.3l7.43-3c.46-.19.68-.71.49-1.17-.19-.46-.71-.68-1.17-.49L3.24 6.15zM7 20c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm13-8h-2v-1c0-.55-.45-1-1-1s-1 .45-1 1v1H4V9c0-.55.45-1 1-1h14c.55 0 1 .45 1 1v3z'
 };
 window.ITV_ICON = function (name, cls) {
@@ -110,13 +106,20 @@ window.ITV_UI = (function (I) {
   // ---------------------------------------------------------------- TV: Apple TV+ browse screen
   '<div class="atv" id="atv">' +
     '<div class="atv-stage"><div class="atv-bd" id="atv-bd-a"></div><div class="atv-bd" id="atv-bd-b"></div><div class="atv-shade"></div></div>' +
-    '<nav class="atv-pill hidden" id="atv-pill"></nav>' +
-    '<section class="atv-meta" id="atv-meta-a"></section><section class="atv-meta" id="atv-meta-b"></section>' +
-    '<div class="atv-search" id="atv-search"><span class="ico">' + I('search') + '</span><input id="atv-q" type="search" ' +
-      'autocomplete="off" spellcheck="false" enterkeyhint="search" placeholder="חיפוש ערוץ – שם, מדינה או מספר"></div>' +
-    '<div class="atv-kb hidden" id="atv-kb" role="group" aria-label="מקלדת חיפוש"></div>' +
-    '<div class="atv-shelves" id="atv-shelves"><div class="atv-rows" id="atv-rows"></div></div>' +
-    '<div class="atv-colors" id="atv-colors"></div>' +
+    // top: the category navigation bar, alone in its own band
+    '<header class="atv-top"><nav class="atv-pill hidden" id="atv-pill"></nav></header>' +
+    // below it one row (RTL): the programme / channel info panel on the right (fixed width), the channel grid on the
+    // left (takes the rest), with the colour buttons under the grid - nothing floats over anything else
+    '<div class="atv-main">' +
+      '<aside class="atv-info"><section class="atv-meta" id="atv-meta-a"></section><section class="atv-meta" id="atv-meta-b"></section></aside>' +
+      '<div class="atv-left">' +
+        '<div class="atv-search" id="atv-search"><span class="ico">' + I('search') + '</span><input id="atv-q" type="search" ' +
+          'autocomplete="off" spellcheck="false" enterkeyhint="search" placeholder="חיפוש ערוץ – שם, מדינה או מספר"></div>' +
+        '<div class="atv-kb hidden" id="atv-kb" role="group" aria-label="מקלדת חיפוש"></div>' +
+        '<div class="atv-shelves" id="atv-shelves"><div class="atv-rows" id="atv-rows"></div></div>' +
+        '<div class="atv-colors" id="atv-colors"></div>' +
+      '</div>' +
+    '</div>' +
   '</div>' +
 
   '<footer class="hints tv" id="hints"></footer>' +

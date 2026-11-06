@@ -10,7 +10,7 @@
   'use strict';
 
   // channels.js exposes ITV_CHANNELS; keep the app's canonical alias available to all screens.
-  window.CHANNELS_DATA = window.CHANNELS_DATA || window.ITV_CHANNELS || [];
+  window.CHANNELS_DATA = window.CHANNELS_DATA || window.ITV_CHANNELS || window.CHANNELS || [];
   window.ITV_CHANNELS = window.CHANNELS_DATA;
 
   var REMOTE = 'https://dor2500.github.io/israel-tv-plus/';
@@ -1949,9 +1949,6 @@
     ['הגדרות', 'settings']
   ];
 
-  var ATV_TAB_ICONS = { all_channels: 'list', top: 'play', broadcast: 'tv', sports: 'sports', movies: 'movie', vod: 'vod', kids: 'kids',
-    radio: 'radio', mine: 'star', guide: 'guide', search: 'search', multiview: 'multiview', settings: 'settings', 'kids-exit': 'close' };
-
   function atvRem(rem) { return rem * (parseFloat(document.documentElement.style.fontSize) || 16); }
 
   /** Which shelf a channel belongs on. */
@@ -2173,9 +2170,6 @@
       toggleClass(btns[k], 'focused', onBar && k === atv.tab);
     }
     if (atv.zone !== 'pill') atv.tab = active === -1 ? 0 : active;
-    var open = atv.zone === 'pill' && state.zone === 'atv' && !state.overlay;
-    toggleClass(document.body, 'atv-nav-open', open);
-    if (open && btns[atv.tab]) { try { btns[atv.tab].scrollIntoView({ block: 'nearest' }); } catch (e) {} }
   }
 
   /** Moves the camera: the shelves slide up / down, the row's track glides sideways, the rest is opacity. */
@@ -2492,7 +2486,6 @@
   function atvOk() {
     if (atv.zone === 'pill') {
       var t = atv.tabs[atv.tab] && atv.tabs[atv.tab][1];
-      document.body.classList.remove('atv-nav-open'); // an overlay / the shelves take over
       if (t === 'profiles') openTvProfiles();
       else if (t === 'search') atvOpenSearch();
       else if (t === 'multiview') openMultiView(atvCurrent() || state.playing);
@@ -2513,10 +2506,10 @@
   function atvKey(code) {
     if (isBack(code)) { atvBack(); return; }
     if (atv.zone === 'pill') {
-      // the side drawer: Up / Down walk it, Left (into the screen, RTL) goes back to the shelves
-      if (code === 38) atvFocusPill(atv.tab - 1);
-      else if (code === 40) atvFocusPill(atv.tab + 1);
-      else if (code === 37) { if (atv.search) atvFocusSearch(); else atvFocus(atv.row, atv.cols[atv.row] || 0); }
+      // the top bar (RTL): Left / Right walk the tabs, Down goes to the shelves
+      if (code === 37) atvFocusPill(atv.tab + 1);
+      else if (code === 39) atvFocusPill(atv.tab - 1);
+      else if (code === 40) { if (atv.search) atvFocusSearch(); else atvFocus(atv.row, atv.cols[atv.row] || 0); }
       return;
     }
     if (atv.zone === 'kb') {
@@ -2533,7 +2526,7 @@
     }
     var c = atv.cols[atv.row] || 0;
     if (code === 37) atvFocus(atv.row, c + 1);
-    else if (code === 39) { if (c > 0) atvFocus(atv.row, c - 1); else atvFocusPill(atv.tab); } // first card: Right opens the drawer
+    else if (code === 39) atvFocus(atv.row, c - 1);
     else if (code === 38) {
       if (atv.search) atvFocusSearch();
       else if (atv.row > 0) atvFocus(atv.row - 1, atv.cols[atv.row - 1] || 0);
@@ -3119,8 +3112,6 @@ function loadCandidate(ch, rawUrl) {
         backBufferLength: fastMode() ? 8 : (isSport ? 4 : 15),
         liveSyncDurationCount: isSport ? 1 : (isStable ? 2 : 1),
         liveMaxLatencyDurationCount: isSport ? 2 : (isStable ? 4 : 2),
-        liveSyncDuration: isSport ? 2 : 7,
-        liveMaxLatencyDuration: isSport ? 4 : 14,
         liveDurationInfinity: true,
         maxLiveSyncPlaybackRate: isSport ? 1.5 : 1.15,
         maxBufferLength: isSport ? 5 : (is4K ? 24 : 14),
@@ -4978,11 +4969,41 @@ function showOsd() {
   }
 
   // ================================================================== input: keys, long OK, mouse, touch
-  function isBack(code) { return code === 461 || code === 27 || code === 10009 || code === 8; }
+  function isBack(code) { return code === 461 || code === 27 || code === 10009 || code === 8 || code === 166; } // 166: keyboard Browser Back
   function typing(t) { return t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA'); }
+
+  /**
+   * Desktop "back" (mouse Back button / Browser Back key / Electron app-command): one step back, the same as the
+   * remote's Back - player, guide, settings, menus all lead back to the home screen. On the home screen itself it
+   * stays there (the remote's Back would reopen a channel still playing behind the shelves).
+   */
+  function desktopBack() {
+    if (TVUI && !state.overlay && state.zone === 'atv') {
+      if (atv.search) atvCloseSearch();
+      return;
+    }
+    // the player asks for a second Back (remote safety); a mouse Back click goes straight home, so it counts as the second
+    if (state.overlay === 'player') state.playerBackAt = Date.now();
+    onKeyDown({ keyCode: 27, which: 27, target: document.body, preventDefault: function () {}, stopPropagation: function () {} });
+  }
+  window.__itvBack = desktopBack;
 
   function setupInput() {
     setupGuide();
+    // mouse Back button (XButton1 = button 3): our own back, and the browser / WebView2 history navigation is cancelled
+    var mouseBackAt = 0;
+    function onMouseBack(e) {
+      if (e.button !== 3) return;
+      if (e.preventDefault) e.preventDefault();
+      if (e.stopPropagation) e.stopPropagation();
+      var now = Date.now();
+      if (now - mouseBackAt < 250) return; // mouseup and auxclick of the same press
+      mouseBackAt = now;
+      desktopBack();
+    }
+    window.addEventListener('mouseup', onMouseBack, true);
+    window.addEventListener('auxclick', onMouseBack, true);
+    window.addEventListener('mousedown', function (e) { if (e.button === 3 || e.button === 4) e.preventDefault(); }, true);
         var wheelGlobalAt = 0;
     window.addEventListener('wheel', function (e) {
       var now = Date.now();

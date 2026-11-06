@@ -1,4 +1,4 @@
-window.CHANNELS = [
+window.CHANNELS_DATA = window.ITV_CHANNELS = [
   {
     "id": "walla_news_il",
     "name": "וואלה!+ חדשות – שידור חי HD",

@@ -25,6 +25,10 @@ function createWindow() {
   });
   win.maximize();
   win.loadFile(path.join(__dirname, 'www', 'index.html'));
+  // mouse Back button / Browser Back key on Windows and Linux: the app's own back (to the home screen), not history
+  win.on('app-command', (e, cmd) => {
+    if (cmd === 'browser-backward') win.webContents.executeJavaScript('window.__itvBack && window.__itvBack()').catch(() => {});
+  });
   // links and the TV-service tiles open in the system browser
   win.webContents.setWindowOpenHandler(({ url }) => { openExternal(url); return { action: 'deny' }; });
   win.webContents.on('will-navigate', (e, url) => {
