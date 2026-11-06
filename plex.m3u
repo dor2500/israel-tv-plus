@@ -343,25 +343,25 @@ https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/daily_drama/live.l
 https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/vamos/live.livx/playlist.m3u8
 #EXTINF:-1 tvg-id="freetv_global_il" tvg-name="FreeTV גלובל סדרות HD" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/freetv_global_il.png" tvg-chno="172" group-title="סרטים וסדרות (Movies & Series)",FreeTV גלובל סדרות HD
 https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/free_global/live.livx/playlist.m3u8
-#EXTINF:-1 tvg-id="food_network_il" tvg-name="ערוץ האוכל Food Network HD" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/food_network_il.png" tvg-chno="173" group-title="אוכל ובישול (Food)",ערוץ האוכל Food Network HD
+#EXTINF:-1 tvg-id="food_network_il" tvg-name="ערוץ האוכל Food Network HD" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/food_network_il.png" tvg-chno="173" group-title="ערוצי אוכל (Food Channels)",ערוץ האוכל Food Network HD
 http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12209/index.m3u8
-#EXTINF:-1 tvg-id="foody_tv" tvg-name="ערוץ פודי Foody HD" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/foody_tv.png" tvg-chno="174" group-title="אוכל ובישול (Food)",ערוץ פודי Foody HD
+#EXTINF:-1 tvg-id="foody_tv" tvg-name="ערוץ פודי Foody HD" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/foody_tv.png" tvg-chno="174" group-title="ערוצי אוכל (Food Channels)",ערוץ פודי Foody HD
 https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/foody/live.livx/playlist.m3u8
-#EXTINF:-1 tvg-id="keshet_food" tvg-name="ערוץ האוכל והבישול – קשת / FreeTV" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/keshet_food.png" tvg-chno="175" group-title="אוכל ובישול (Food)",ערוץ האוכל והבישול – קשת / FreeTV
+#EXTINF:-1 tvg-id="keshet_food" tvg-name="ערוץ האוכל והבישול – קשת / FreeTV" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/keshet_food.png" tvg-chno="175" group-title="ערוצי אוכל (Food Channels)",ערוץ האוכל והבישול – קשת / FreeTV
 https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/imagin_cooking/live.livx/playlist.m3u8
-#EXTINF:-1 tvg-id="bon_appetit_hd" tvg-name="Bon Appétit HD – ערוץ הבישול בון אפטיט" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/bon_appetit_hd.png" tvg-chno="176" group-title="אוכל ובישול (Food)",Bon Appétit HD – ערוץ הבישול בון אפטיט
+#EXTINF:-1 tvg-id="bon_appetit_hd" tvg-name="Bon Appétit HD – ערוץ הבישול בון אפטיט" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/bon_appetit_hd.png" tvg-chno="176" group-title="ערוצי אוכל (Food Channels)",Bon Appétit HD – ערוץ הבישול בון אפטיט
 https://bonappetit-samsung.amagi.tv/playlist.m3u8
-#EXTINF:-1 tvg-id="gusto_tv_hd" tvg-name="Gusto TV FHD – ערוץ האוכל העולמי גוסטו" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/gusto_tv_hd.png" tvg-chno="177" group-title="אוכל ובישול (Food)",Gusto TV FHD – ערוץ האוכל העולמי גוסטו
+#EXTINF:-1 tvg-id="gusto_tv_hd" tvg-name="Gusto TV FHD – ערוץ האוכל העולמי גוסטו" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/gusto_tv_hd.png" tvg-chno="177" group-title="ערוצי אוכל (Food Channels)",Gusto TV FHD – ערוץ האוכל העולמי גוסטו
 https://e75fc053c0d2406fb74cdd71d77e1a7f.mediatailor.us-east-1.amazonaws.com/v1/master/f4e8c53a8367a5b58e20ce054ea3ce25a3e904d3/RakutenTV-eu_GustoTV/playlist.m3u8
-#EXTINF:-1 tvg-id="hells_kitchen_hd" tvg-name="Gordon Ramsay's Hell's Kitchen 24/7 HD" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hells_kitchen_hd.png" tvg-chno="178" group-title="אוכל ובישול (Food)",Gordon Ramsay's Hell's Kitchen 24/7 HD
+#EXTINF:-1 tvg-id="hells_kitchen_hd" tvg-name="Gordon Ramsay's Hell's Kitchen 24/7 HD" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hells_kitchen_hd.png" tvg-chno="178" group-title="ערוצי אוכל (Food Channels)",Gordon Ramsay's Hell's Kitchen 24/7 HD
 https://aegis-cloudfront-1.tubi.video/c8364f36-c60b-4a39-8d86-0b92db4611c0/index.m3u8
-#EXTINF:-1 tvg-id="food_network_eu" tvg-name="Food Network International HD" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/food_network_eu.png" tvg-chno="179" group-title="אוכל ובישול (Food)",Food Network International HD
+#EXTINF:-1 tvg-id="food_network_eu" tvg-name="Food Network International HD" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/food_network_eu.png" tvg-chno="179" group-title="ערוצי אוכל (Food Channels)",Food Network International HD
 https://streaming.aurora.enhanced.live/live/mpc/enl0eG1mLmVncmVzcy5mZDJ2eHI=/out/v1/IT_SIMULCAST/FOODNETWORK/CMAF/index.m3u8
-#EXTINF:-1 tvg-id="tv5monde_chefs_hd" tvg-name="TV5MONDE Chefs HD – שפים וגסטרונומיה" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/tv5monde_chefs_hd.png" tvg-chno="180" group-title="אוכל ובישול (Food)",TV5MONDE Chefs HD – שפים וגסטרונומיה
+#EXTINF:-1 tvg-id="tv5monde_chefs_hd" tvg-name="TV5MONDE Chefs HD – שפים וגסטרונומיה" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/tv5monde_chefs_hd.png" tvg-chno="180" group-title="ערוצי אוכל (Food Channels)",TV5MONDE Chefs HD – שפים וגסטרונומיה
 https://tvf-tv5ch.otteravision.com/tvf/tv5ch/tv5ch.m3u8
-#EXTINF:-1 tvg-id="cooking_panda_hd" tvg-name="Cooking Panda HD – מתכונים ובישול" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/cooking_panda_hd.png" tvg-chno="181" group-title="אוכל ובישול (Food)",Cooking Panda HD – מתכונים ובישול
+#EXTINF:-1 tvg-id="cooking_panda_hd" tvg-name="Cooking Panda HD – מתכונים ובישול" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/cooking_panda_hd.png" tvg-chno="181" group-title="ערוצי אוכל (Food Channels)",Cooking Panda HD – מתכונים ובישול
 https://stream-us-east-1.getpublica.com/playlist.m3u8?network_id=46
-#EXTINF:-1 tvg-id="kuskus_food_hd" tvg-name="Kus-Kus Culinary TV HD – ערוץ קוסקוס אוכל ומתכונים" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/kuskus_food_hd.png" tvg-chno="182" group-title="אוכל ובישול (Food)",Kus-Kus Culinary TV HD – ערוץ קוסקוס אוכל ומתכונים
+#EXTINF:-1 tvg-id="kuskus_food_hd" tvg-name="Kus-Kus Culinary TV HD – ערוץ קוסקוס אוכל ומתכונים" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/kuskus_food_hd.png" tvg-chno="182" group-title="ערוצי אוכל (Food Channels)",Kus-Kus Culinary TV HD – ערוץ קוסקוס אוכל ומתכונים
 http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32121/index.m3u8
 #EXTINF:-1 tvg-id="i24_english_world_hd" tvg-name="i24NEWS English World HD" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/i24news_en.png" tvg-chno="183" group-title="חדשות מהעולם (News)",i24NEWS English World HD
 https://hlspackager.akamaized.net/live/DB/i24_ENGLISH/HLS/i24_ENGLISH.m3u8

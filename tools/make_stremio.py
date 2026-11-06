@@ -33,7 +33,7 @@ CAT_ORDER = [
     "כלכלה ועסקים (Business)",
     "סרטים וסדרות (Movies & Series)",
     "קומדיה (Comedy)",
-    "אוכל ובישול (Food)",
+    "ערוצי אוכל (Food Channels)",
     "ילדים מהעולם (Kids World)",
     "טבע ודוקו (Documentary & Nature)",
     "טיולים והרפתקאות (Travel)",

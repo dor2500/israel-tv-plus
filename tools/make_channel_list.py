@@ -14,14 +14,14 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE = "https://dor2500.github.io/israel-tv-plus/"
 ORDER = ["ערוצי ישראל - שידור חי", "ילדים ונוער (בעברית)", "רדיו ישראלי (Israeli Radio)", "מסורת וקהילה", "דת ומסורת",
          "ספורט (Sports)", "חדשות מהעולם (News)", "כלכלה ועסקים (Business)", "סרטים וסדרות (Movies & Series)",
-         "קומדיה (Comedy)", "אוכל ובישול (Food)", "ילדים מהעולם (Kids World)", "טבע ודוקו (Documentary & Nature)",
+         "קומדיה (Comedy)", "ערוצי אוכל (Food Channels)", "ילדים מהעולם (Kids World)", "טבע ודוקו (Documentary & Nature)",
          "טיולים והרפתקאות (Travel)", "מדע ולמידה (Science)", "מוזיקה (Music TV)", "לייף סטייל ובידור",
          "דת ואמונה (Religion)", "ערוצים בינלאומיים (World)", "מנויים ואפליקציות (TV Apps)"]
 ICON = {"ערוצי ישראל - שידור חי": "🇮🇱", "ילדים ונוער (בעברית)": "🧸", "רדיו ישראלי (Israeli Radio)": "📻",
         "מסורת וקהילה": "🕯️", "דת ומסורת": "🕍", "חדשות מהעולם (News)": "📰", "סרטים וסדרות (Movies & Series)": "🎬", "ספורט (Sports)": "⚽",
         "ילדים מהעולם (Kids World)": "🎈", "טבע ודוקו (Documentary & Nature)": "🌍", "מוזיקה (Music TV)": "🎵",
         "לייף סטייל ובידור": "🍿", "דת ואמונה (Religion)": "🙏", "ערוצים בינלאומיים (World)": "🌐",
-        "מנויים ואפליקציות (TV Apps)": "📲", "אוכל ובישול (Food)": "🍳", "טיולים והרפתקאות (Travel)": "✈️",
+        "מנויים ואפליקציות (TV Apps)": "📲", "ערוצי אוכל (Food Channels)": "🍳", "טיולים והרפתקאות (Travel)": "✈️",
         "קומדיה (Comedy)": "😂", "מדע ולמידה (Science)": "🔬", "כלכלה ועסקים (Business)": "📈"}
 ISRAELI = set(ORDER[:4]) | {"מנויים ואפליקציות (TV Apps)"}
 

@@ -4550,7 +4550,7 @@
     "id": "food_network_il",
     "name": "ערוץ האוכל Food Network HD",
     "title": "ערוץ האוכל והקולינריה Food Network בעברית HD",
-    "category": "אוכל ובישול (Food)",
+    "category": "ערוצי אוכל (Food Channels)",
     "categoryEn": "food",
     "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12209/index.m3u8",
     "fallbackUrls": [
@@ -4576,7 +4576,7 @@
     "id": "foody_tv",
     "name": "ערוץ פודי Foody HD",
     "title": "ערוץ פודי אוכל ובישול ישראלי (Foody HD)",
-    "category": "אוכל ובישול (Food)",
+    "category": "ערוצי אוכל (Food Channels)",
     "categoryEn": "food",
     "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/foody/live.livx/playlist.m3u8",
     "badge": "HD",
@@ -4604,7 +4604,7 @@
     "id": "keshet_food",
     "name": "ערוץ האוכל והבישול – קשת / FreeTV",
     "title": "ערוץ האוכל והבישול – קשת (FreeTV)",
-    "category": "אוכל ובישול (Food)",
+    "category": "ערוצי אוכל (Food Channels)",
     "categoryEn": "food",
     "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/imagin_cooking/live.livx/playlist.m3u8",
     "auth": "",
@@ -4633,7 +4633,7 @@
   {
     "id": "bon_appetit_hd",
     "name": "Bon Appétit HD – ערוץ הבישול בון אפטיט",
-    "category": "אוכל ובישול (Food)",
+    "category": "ערוצי אוכל (Food Channels)",
     "categoryEn": "food",
     "url": "https://bonappetit-samsung.amagi.tv/playlist.m3u8",
     "fallbackUrls": [],
@@ -4656,7 +4656,7 @@
   {
     "id": "gusto_tv_hd",
     "name": "Gusto TV FHD – ערוץ האוכל העולמי גוסטו",
-    "category": "אוכל ובישול (Food)",
+    "category": "ערוצי אוכל (Food Channels)",
     "categoryEn": "food",
     "url": "https://e75fc053c0d2406fb74cdd71d77e1a7f.mediatailor.us-east-1.amazonaws.com/v1/master/f4e8c53a8367a5b58e20ce054ea3ce25a3e904d3/RakutenTV-eu_GustoTV/playlist.m3u8",
     "fallbackUrls": [],
@@ -4679,7 +4679,7 @@
   {
     "id": "hells_kitchen_hd",
     "name": "Gordon Ramsay's Hell's Kitchen 24/7 HD",
-    "category": "אוכל ובישול (Food)",
+    "category": "ערוצי אוכל (Food Channels)",
     "categoryEn": "food",
     "url": "https://aegis-cloudfront-1.tubi.video/c8364f36-c60b-4a39-8d86-0b92db4611c0/index.m3u8",
     "fallbackUrls": [],
@@ -4702,7 +4702,7 @@
   {
     "id": "food_network_eu",
     "name": "Food Network International HD",
-    "category": "אוכל ובישול (Food)",
+    "category": "ערוצי אוכל (Food Channels)",
     "categoryEn": "food",
     "url": "https://streaming.aurora.enhanced.live/live/mpc/enl0eG1mLmVncmVzcy5mZDJ2eHI=/out/v1/IT_SIMULCAST/FOODNETWORK/CMAF/index.m3u8",
     "fallbackUrls": [
@@ -4729,7 +4729,7 @@
   {
     "id": "tv5monde_chefs_hd",
     "name": "TV5MONDE Chefs HD – שפים וגסטרונומיה",
-    "category": "אוכל ובישול (Food)",
+    "category": "ערוצי אוכל (Food Channels)",
     "categoryEn": "food",
     "url": "https://tvf-tv5ch.otteravision.com/tvf/tv5ch/tv5ch.m3u8",
     "fallbackUrls": [],
@@ -4752,7 +4752,7 @@
   {
     "id": "cooking_panda_hd",
     "name": "Cooking Panda HD – מתכונים ובישול",
-    "category": "אוכל ובישול (Food)",
+    "category": "ערוצי אוכל (Food Channels)",
     "categoryEn": "food",
     "url": "https://stream-us-east-1.getpublica.com/playlist.m3u8?network_id=46",
     "fallbackUrls": [],
@@ -4775,7 +4775,7 @@
   {
     "id": "kuskus_food_hd",
     "name": "Kus-Kus Culinary TV HD – ערוץ קוסקוס אוכל ומתכונים",
-    "category": "אוכל ובישול (Food)",
+    "category": "ערוצי אוכל (Food Channels)",
     "categoryEn": "food",
     "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32121/index.m3u8",
     "fallbackUrls": [

@@ -13,7 +13,7 @@
 - ⚽ [ספורט (Sports)](#ספורט-sports) – 31
 - 📰 [חדשות מהעולם (News)](#חדשות-מהעולם-news) – 20
 - 🎬 [סרטים וסדרות (Movies & Series)](#סרטים-וסדרות-movies--series) – 62
-- 🍳 [אוכל ובישול (Food)](#אוכל-ובישול-food) – 13
+- 🍳 [ערוצי אוכל (Food Channels)](#אוכל-ובישול-food) – 13
 - 🎈 [ילדים מהעולם (Kids World)](#ילדים-מהעולם-kids-world) – 18
 - 🌍 [טבע ודוקו (Documentary & Nature)](#טבע-ודוקו-documentary--nature) – 9
 - 🎵 [מוזיקה (Music TV)](#מוזיקה-music-tv) – 8
@@ -417,7 +417,7 @@
 | 202 | <img src="assets/logos/hot_3_plus_il.png" width="56" alt=""> | **Pluto TV Sci-Fi FHD** | 🇺🇸 ארה״ב | אנגלית | FHD | 🌐 אתר + 📲 אפליקציות |
 | 399 | <img src="https://www.google.com/s2/favicons?domain=pluto.tv&sz=128" width="56" alt=""> | **Pluto TV Classic Movies FHD** |  |  |  | 🌐 אתר + 📲 אפליקציות |
 
-## אוכל ובישול (Food)
+## ערוצי אוכל (Food Channels)
 
 🍳 13 ערוצים
 
