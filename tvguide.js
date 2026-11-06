@@ -112,20 +112,28 @@ window.ITVGuide = function (api) {
   function buildOsd() {
     var box = document.createElement('div');
     box.id = 'tvosd';
+    // Bottom-anchored OSD: info row (channel strip, programme, up next), a full-width progress bar with the
+    // times, and one row of icon controls the D-pad walks with Left / Right.
+    var ic = window.ITV_ICON || function () { return ''; };
     box.innerHTML =
-      '<div id="tvo-strip"></div>' +
-      '<div id="tvo-peek" data-tv="peek"><i class="tv-chev right"></i><div class="tv-peek-txt"></div></div>' +
-      '<div id="tvo-main"><div id="tvo-big" class="tv-card" data-tv="big"></div>' +
-        '<div id="tvo-bar"><i></i><u></u></div><div class="tv-timing" id="tvo-timing"></div>' +
-        '<div id="tvo-opts-wrap"><span id="tvo-live" data-tv="live">לשידור החי</span><span id="tvo-opts" data-tv="opts">אפשרויות</span></div></div>' +
-      '<div id="tvo-next"><div id="tvo-small" class="tv-card" data-tv="small"></div><div class="tv-timing" id="tvo-next-time"></div></div>' +
-      '<div id="tvo-go" data-tv="small"><i class="tv-chev left"></i></div>';
+      '<div id="tvo-info">' +
+        '<div id="tvo-strip"></div>' +
+        '<div id="tvo-main"><div id="tvo-big" class="tv-card" data-tv="big"></div></div>' +
+        '<div id="tvo-next" data-tv="small"><div id="tvo-small"></div><div class="tv-timing" id="tvo-next-time"></div></div>' +
+      '</div>' +
+      '<div id="tvo-progress"><div id="tvo-bar"><i></i><u></u></div><div class="tv-timing" id="tvo-timing"></div></div>' +
+      '<div id="tvo-ctl">' +
+        '<button type="button" class="tvo-btn" id="tvo-peek" data-tv="peek" data-ctl="prev">' + ic('prev') + '<span>התכנית הקודמת</span></button>' +
+        '<button type="button" class="tvo-btn" id="tvo-go" data-tv="small" data-ctl="next">' + ic('next') + '<span>התכנית הבאה</span></button>' +
+        '<button type="button" class="tvo-btn" id="tvo-opts" data-tv="opts" data-ctl="opts">' + ic('settings') + '<span>אפשרויות</span></button>' +
+        '<button type="button" class="tvo-btn" id="tvo-live" data-tv="live" data-ctl="live">' + ic('tv') + '<span>לשידור החי</span></button>' +
+      '</div>';
     api.osdEl.appendChild(box);
     var brand = document.createElement('div');
     brand.className = 'tv-brand';
     brand.innerHTML = '<div class="tv-clock"></div>';
     api.osdEl.appendChild(brand);
-    ['strip', 'peek', 'big', 'bar', 'timing', 'opts', 'live', 'next', 'small', 'go'].forEach(function (k) { o[k] = document.getElementById('tvo-' + (k === 'timing' ? 'timing' : k)); });
+    ['strip', 'peek', 'big', 'bar', 'timing', 'opts', 'live', 'next', 'small', 'go', 'ctl'].forEach(function (k) { o[k] = document.getElementById('tvo-' + (k === 'timing' ? 'timing' : k)); });
     o.nextTime = document.getElementById('tvo-next-time');
     box.addEventListener('click', function (e) {
       e.stopPropagation();
@@ -135,8 +143,8 @@ window.ITVGuide = function (api) {
       if (v === 'big') { osd.zone = 'big'; ok(); }
       else if (v === 'opts') { osd.zone = 'opts'; ok(); }
       else if (v === 'live') api.goLive();
-      else if (v === 'small') moveOffset(1);
-      else if (v === 'peek') moveOffset(-1);
+      else if (v === 'small') moveOffset(1, true);
+      else if (v === 'peek') moveOffset(-1, true);
       else if (v.indexOf('ch:') === 0) api.play(chById(v.slice(3)));
       api.showOsd();
     });
@@ -166,8 +174,8 @@ window.ITVGuide = function (api) {
     o.strip.innerHTML = stripItem(neighbour(ch, upDir), '') + '<div class="tv-arrow">▲</div>' +
       stripItem(ch, 'mid' + (sf ? ' focus' : '')) + '<div class="tv-arrow">▼</div>' + stripItem(neighbour(ch, -upDir), '');
 
-    o.peek.className = prev && (osd.offset > -1 || canCatchup(ch, prev)) ? '' : 'none';
-    if (prev) o.peek.querySelector('.tv-peek-txt').innerHTML = '<div>לתכנית הקודמת</div><small class="tv-clip">' + esc(prev[2]) + '</small><small>' + range(prev) + '</small>';
+    setBtn(o.peek, prev && (osd.offset > -1 || canCatchup(ch, prev)), true);
+    o.peek.title = prev ? prev[2] : '';
 
     var airingNow = p && startOf(p) <= now();
     var label = !p ? 'משודר עכשיו' : osd.offset < 0 ? (canCatchup(ch, p) ? 'OK לצפייה חוזרת' : 'שודר קודם') : osd.offset === 0 ? (airingNow ? 'משודר עכשיו' : 'בקרוב') : osd.offset === 1 ? 'הבאה' : 'בהמשך';
@@ -184,14 +192,48 @@ window.ITVGuide = function (api) {
       : '<span class="tv-mid">' + range(p) + '</span>';
     progress();
 
-    o.opts.classList.toggle('focus', osd.zone === 'opts');
-    o.live.classList.remove('focus');
+    setBtn(o.go, next && osd.offset < MAX_OFFSET, true);
+    o.go.title = next ? next[2] : '';
+    setBtn(o.opts, true, true);
+    setBtn(o.live, false, false);
     o.next.style.visibility = next ? '' : 'hidden';
-    o.go.className = next && osd.offset < MAX_OFFSET ? '' : 'none';
     if (next) {
-      o.small.innerHTML = poster(ch, next) + '<div class="tv-cap"><em>' + (osd.offset === -1 ? 'משודר עכשיו' : osd.offset === 0 ? 'הבאה' : 'בהמשך') + '</em><b class="tv-clip">' + esc(next[2]) + '</b></div>';
-      o.nextTime.innerHTML = '<span class="tv-mid">' + range(next) + '</span>';
+      o.small.innerHTML = '<em>' + (osd.offset === -1 ? 'משודר עכשיו' : osd.offset === 0 ? 'הבאה' : 'בהמשך') + '</em><b class="tv-clip">' + esc(next[2]) + '</b>';
+      o.nextTime.innerHTML = range(next);
     }
+    markCtl();
+  }
+
+  /* ---------- the control row ---------- */
+  // a button that can't act right now stays in place, dimmed, and the remote skips it; [shown] false removes it
+  function setBtn(b, on, shown) {
+    b.style.display = shown ? '' : 'none';
+    b.classList.toggle('none', !on);
+  }
+  function ctlId(b) { var c = b.getAttribute('data-ctl'); return c === 'prev' ? 'peek' : c === 'next' ? 'go' : c; }
+  function isCtl(z) { return z === 'peek' || z === 'go' || z === 'opts' || z === 'live'; }
+  function ctlButtons() {
+    var all = o.ctl.querySelectorAll('.tvo-btn'), out = [];
+    for (var i = 0; i < all.length; i++) if (all[i].style.display !== 'none' && !all[i].classList.contains('none')) out.push(all[i]);
+    return out;
+  }
+  function markCtl() {
+    var all = o.ctl.querySelectorAll('.tvo-btn');
+    for (var i = 0; i < all.length; i++) all[i].classList.toggle('focus', ctlId(all[i]) === osd.zone);
+  }
+  // RTL row: Left moves on to the next button, Right back to the previous one
+  function ctlMove(d) {
+    var bs = ctlButtons(), i = -1;
+    for (var k = 0; k < bs.length; k++) if (ctlId(bs[k]) === osd.zone) i = k;
+    var n = Math.max(0, Math.min(bs.length - 1, i + d));
+    if (bs[n]) { osd.zone = ctlId(bs[n]); markCtl(); }
+  }
+  // Down from the programme lands on Options (always there); Left / Right reach the others
+  function ctlEnter() {
+    var bs = ctlButtons(), pick = null;
+    for (var k = 0; k < bs.length; k++) if (ctlId(bs[k]) === 'opts') pick = bs[k];
+    pick = pick || bs[0];
+    if (pick) osd.zone = ctlId(pick);
   }
   function box() { return api.osdEl.querySelector('#tvosd'); }
   function catchupProg(ch) {
@@ -205,16 +247,17 @@ window.ITVGuide = function (api) {
     osd.cuProg = p;
     o.strip.className = '';
     o.strip.innerHTML = stripItem(neighbour(ch, upDir), '') + '<div class="tv-arrow">▲</div>' + stripItem(ch, 'mid') + '<div class="tv-arrow">▼</div>' + stripItem(neighbour(ch, -upDir), '');
-    o.peek.className = 'none';
-    o.go.className = 'none';
+    setBtn(o.peek, false, false);
+    setBtn(o.go, false, false);
+    setBtn(o.opts, true, true);
+    setBtn(o.live, true, true);
     o.next.style.visibility = 'hidden';
     o.big.innerHTML = poster(ch, p) + '<div class="tv-cap"><em>צפייה חוזרת · ◄ ► 30 שניות</em><b class="tv-clip">' + esc(p ? p[2] : ch.name) + '</b><span class="tv-clip">' + esc(ch.name) + '</span></div>';
     o.big.classList.toggle('focus', osd.zone === 'big');
     o.big.classList.remove('flip');
     if (flip) { void o.big.offsetWidth; o.big.classList.add('flip'); }
     o.bar.className = p ? '' : 'none';
-    o.opts.classList.toggle('focus', osd.zone === 'opts');
-    o.live.classList.toggle('focus', osd.zone === 'live');
+    markCtl();
     progress();
   }
   function progress() {
@@ -234,12 +277,15 @@ window.ITVGuide = function (api) {
     o.bar.firstChild.style.width = pct + '%';
     o.bar.lastChild.style.right = pct + '%';
   }
-  function moveOffset(d) {
+  function moveOffset(d, fromButton) {
     var ch = browsed(), air = airingIndex(ch), list = progs(ch), n = osd.offset + d;
     var floor = Math.min(-1, firstIndex(ch) - air);
     if (air === -1 || n < floor || n > MAX_OFFSET || air + n < 0 || air + n >= list.length) return false;
-    osd.offset = n; osd.zone = 'big';
+    osd.offset = n;
+    if (!fromButton || !isCtl(osd.zone)) osd.zone = 'big';
     renderOsd(true);
+    // the button pressed may have just run out (first / last programme): fall back to Options
+    if (isCtl(osd.zone) && !ctlButtons().some(function (b) { return ctlId(b) === osd.zone; })) { ctlEnter(); markCtl(); }
     return true;
   }
   function resetOsd() { osd.zone = 'big'; osd.offset = 0; osd.browse = null; }
@@ -247,6 +293,8 @@ window.ITVGuide = function (api) {
     var ch = browsed();
     if (osd.zone === 'opts') { api.playerMenu(); return; }
     if (osd.zone === 'live') { api.goLive(); return; }
+    if (osd.zone === 'peek') { moveOffset(-1, true); return; }
+    if (osd.zone === 'go') { moveOffset(1, true); return; }
     if (api.inCatchup()) { api.togglePlay(); return; }
     if (osd.zone === 'strip') { var c = osd.browse; resetOsd(); if (c && c.id !== api.state.playing.id) api.play(c); else renderOsd(); return; }
     var p = progs(ch)[airingIndex(ch) + osd.offset];
@@ -265,10 +313,9 @@ window.ITVGuide = function (api) {
         else return false;                   // Up zaps, which goes back to live
         return true;
       }
-      if (code === 38) osd.zone = 'big';
-      else if (code === 37) osd.zone = 'opts';
-      else if (code === 39) osd.zone = 'live';
-      renderOsd();
+      if (code === 38) { osd.zone = 'big'; renderOsd(); }
+      else if (code === 37) ctlMove(1);
+      else if (code === 39) ctlMove(-1);
       return true;
     }
     if (osdWasOff) return code === 37 || code === 39;
@@ -279,13 +326,16 @@ window.ITVGuide = function (api) {
     if (osd.zone === 'big') {
       if (code === 37) moveOffset(1);        // later: time runs right to left
       else if (code === 39) { if (!moveOffset(-1)) { osd.zone = 'strip'; renderOsd(); } }
-      else if (code === 40) { osd.zone = 'opts'; renderOsd(); }
+      else if (code === 40) { ctlEnter(); renderOsd(); }
       else return false;                     // Up keeps zapping
       return true;
     }
-    if (osd.zone === 'opts') {
+    if (isCtl(osd.zone)) {
+      // the control row: Left / Right walk the buttons (RTL), Up back to the programme, Down zaps
       if (code === 38) { osd.zone = 'big'; renderOsd(); return true; }
-      if (code === 40) return false;          // Down from options zaps channel down!
+      if (code === 40) return false;
+      if (code === 37) ctlMove(1);
+      else if (code === 39) ctlMove(-1);
       return true;
     }
     var up = api.S.upNext ? 1 : -1;
@@ -481,6 +531,12 @@ window.ITVGuide = function (api) {
     ok: ok,
     playerKey: playerKey,
     open: openGuide,
+    /** The programme on air now on [ch] ([start, length, title, synopsis, image] in minutes), or null. */
+    airing: function (ch) {
+      var i = airingIndex(ch), p = i === -1 ? null : progs(ch)[i];
+      return p && startOf(p) <= now() ? p : null;
+    },
+    range: range,
     key: guideKey,
     page: page
   };

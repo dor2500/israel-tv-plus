@@ -217,6 +217,13 @@
     return false;
   }
   function isFav(ch) { return ch && state.favorites.indexOf(ch.id) !== -1; }
+  /** Phone cards: the name without the repetitive word "ערוץ" ("ערוץ זום ZOOM" -> "זום ZOOM"); kept when only a number is left. */
+  function displayName(ch) {
+    var n = (ch && ch.name) || '';
+    // kept before a number or a definite ("ה") brand noun: "ערוץ 12", "ערוץ הילדים"; "ערוץ הופ!" -> "הופ!"
+    var s = n.replace(/(^|\s)ערוץ(?=\s|$)(?!\s+(\d|ה(?!ופ)))/g, ' ').replace(/\s+/g, ' ').replace(/^[\s\-–]+/, '').trim();
+    return !s || /^[\d\s+]*$/.test(s) ? n : s;
+  }
   function foreign(ch) { return !!(Dub && ch && Dub.isForeign(ch)); }
 
   function monogramText(ch) {
@@ -301,7 +308,7 @@
   function catIcon(name) { for (var i = 0; i < CAT_ICONS.length; i++) if (CAT_ICONS[i][0].test(name)) return CAT_ICONS[i][1]; return '📺'; }
   var CAT_ORDER = ['ערוצי ישראל - שידור חי', 'ילדים ונוער (בעברית)', 'רדיו ישראלי (Israeli Radio)', 'מנויים ואפליקציות (TV Apps)',
     'ספורט (Sports)', 'חדשות מהעולם (News)', 'כלכלה ועסקים (Business)', 'סרטים וסדרות (Movies & Series)', 'קומדיה (Comedy)',
-    'אוכל ובישול (Food)', 'ילדים מהעולם (Kids World)', 'מוזיקה (Music TV)', 'טבע ודוקו (Documentary & Nature)',
+    'ערוצי אוכל (Food Channels)', 'ילדים מהעולם (Kids World)', 'מוזיקה (Music TV)', 'טבע ודוקו (Documentary & Nature)',
     'טיולים והרפתקאות (Travel)', 'מדע ולמידה (Science)', 'לייף סטייל ובידור', 'מסורת וקהילה', 'דת ומסורת', 'דת ואמונה (Religion)',
     'ערוצים בינלאומיים (World)'];
 
@@ -332,6 +339,7 @@
     cacheEls();
     detectPerformance();
     applyAll();
+    if (TVUI) getActiveTvProfile(); // the active profile's favourites / kids mode before the first build
     loadChannels();
     setupDub();
     setupInput();
@@ -838,7 +846,7 @@
         (isRadioCh(ch) ? '<span>📻</span>' : '') + (appOnly(ch) ? '<span>📲</span>' : '');
       card.innerHTML = '<div class="card-logo" style="background-image:' + tintOf(ch) + '"><div class="card-num">' + ch.number + '</div>' +
         '<div class="card-flags">' + flags + '</div><img alt="" loading="lazy"><div class="mono hidden"></div></div>' +
-        '<div class="card-body"><div class="card-name">' + esc(ch.name) + '</div><div class="card-meta">' + esc(cardMeta(ch)) + '</div></div>';
+        '<div class="card-body"><div class="card-name">' + esc(PHONE ? displayName(ch) : ch.name) + '</div><div class="card-meta">' + esc(cardMeta(ch)) + '</div></div>';
       lazyLogo(card.querySelector('img'), card.querySelector('.mono'), ch);
       frag.appendChild(card);
       cards.push(card);
@@ -1144,7 +1152,7 @@
     }
     var activeId = localStorage.getItem(TV_ACTIVE_KEY);
     tvActiveProfile = tvProfiles.find(function (p) { return p.id === activeId; }) || tvProfiles[0];
-    applyTvProfileData(tvActiveProfile, false);
+    applyTvProfileData(tvActiveProfile, false, true);
   }
 
   function saveTvProfiles() {
@@ -1171,7 +1179,7 @@
     return loadChannels();
   }
 
-  function applyTvProfileData(p, notify) {
+  function applyTvProfileData(p, notify, dataOnly) {
     if (!p) return;
     tvActiveProfile = p;
     try { localStorage.setItem(TV_ACTIVE_KEY, p.id); } catch (e) {}
@@ -1182,14 +1190,14 @@
     lsSet('israel_tv_recents', state.recents);
     S.avatar = p.avatar || '1f60e';
     S.kids = !!p.isKids;
-    try {
-      if (typeof loadChannels === 'function') loadChannels();
-    } catch (err) { console.error('loadChannels error in profile:', err); }
-    try { updateAvatar(); } catch (err) {}
-    try { if (typeof atvRenderPill === 'function') atvRenderPill(); } catch (err) {}
-    try { if (typeof buildCategories === 'function') buildCategories(); } catch (err) {}
-    try { if (typeof filterList === 'function') filterList(); } catch (err) {}
-    try { if (TVUI && typeof atvBuild === 'function') atvBuild(); } catch (err) {}
+    if (dataOnly) return; // first load (start): the channel list and shelves are built right after
+    loadChannels(); // also rebuilds the categories
+    updateAvatar();
+    filterList();
+    if (TVUI && atv.built) {
+      atv.dirty = true;
+      if (!state.overlay) atvRestore(); else atvRenderPill(); // closing an overlay rebuilds the dirty shelves
+    }
     if (notify) toast('שלום, ' + p.name + '!');
   }
 
@@ -1336,21 +1344,21 @@
       closeTvProfiles();
       return;
     }
+    // RTL: the cards run right to left and the manage button sits left of the last card ("add profile"),
+    // so Left walks the cards and then steps onto the button; Right comes back.
     if (code === 37) {
       if (tvProfileZone === 'cards') {
-        tvProfileIdx = (tvProfileIdx + 1) % totalCards;
-        markTvProfilesFocus();
-      } else {
-        var actBtns = $('tv-profiles-actions').querySelectorAll('button:not(.hidden)');
-        tvProfileIdx = Math.min(tvProfileIdx + 1, actBtns.length - 1);
+        if (tvProfileIdx < totalCards - 1) tvProfileIdx++;
+        else { tvProfileZone = 'actions'; tvProfileIdx = 0; }
         markTvProfilesFocus();
       }
     } else if (code === 39) {
       if (tvProfileZone === 'cards') {
-        tvProfileIdx = (tvProfileIdx - 1 + totalCards) % totalCards;
+        if (tvProfileIdx > 0) tvProfileIdx--;
         markTvProfilesFocus();
       } else {
-        tvProfileIdx = Math.max(tvProfileIdx - 1, 0);
+        tvProfileZone = 'cards';
+        tvProfileIdx = totalCards - 1;
         markTvProfilesFocus();
       }
     } else if (code === 40) {
@@ -1789,7 +1797,7 @@
       (isApp(ch) ? '<span>↗</span>' : '') + (appOnly(ch) ? '<span>📲</span>' : '');
     d.innerHTML = '<div class="pc-media" style="--tint:' + tintOf(ch).replace(/"/g, '') + '"><div class="pc-badges">' + badges + '</div>' +
       '<img alt=""><div class="mono hidden"></div>' + (shelf.wide ? '<div class="pc-live-bar"></div>' : '') + '</div>' +
-      '<div class="pc-name">' + esc(ch.name) + '</div><div class="pc-meta">' + esc(ch.countryHe ? ch.countryHe : cardMeta(ch)) + '</div>';
+      '<div class="pc-name">' + esc(displayName(ch)) + '</div><div class="pc-meta">' + esc(ch.countryHe ? ch.countryHe : cardMeta(ch)) + '</div>';
     lazyLogo(d.querySelector('img'), d.querySelector('.mono'), ch);
     return d;
   }
@@ -4137,7 +4145,10 @@ function showOsd() {
   function playerMenu() {
     var ch = state.playing;
     if (!ch) return;
+    // ordered by how often they are used: language / subtitles first, troubleshooting and settings last
     var items = [];
+    if (foreign(ch)) items.push({ ico: '🎙️', label: 'כתוביות ודיבוב לעברית', stay: true, dot: colourOf('dub'), val: function () { return Dub.settings.enabled ? 'פועל' : 'כבוי'; },
+      act: function () { toggleDub(); } });
     if (ch.isVod) {
       items.push({ ico: '⏩', label: 'דילוג 90 שניות קדימה', act: function () {
         var v = el.video, end = isFinite(v.duration) ? v.duration - 5 : Infinity;
@@ -4184,6 +4195,30 @@ function showOsd() {
       }
       items.push({ ico: '⏮️', label: "קאץ' אפ ושידורים קודמים", act: function () { openCatchupModal(ch); } });
     }
+    if (!state.isRadio) {
+      items.push({ ico: '🖼️', label: 'גודל תמונה', stay: true, dot: colourOf('aspect'), val: function () { return label(ASPECTS, S.aspect); },
+        act: function (st) { setSetting('aspect', cycle(ASPECTS, S.aspect, st)); } });
+      items.push({ ico: '📶', label: 'איכות', stay: true, val: function () { return label(QUALITIES, S.quality); },
+        act: function (st) { setSetting('quality', cycle(QUALITIES, S.quality, st)); if (state.playing) loadStream(state.playing); } });
+      items.push({ ico: '🎨', label: 'מצב צבע ותמונה', stay: true, dot: colourOf('picture'), val: function () { return label(PICS, S.pic); },
+        act: function (st) { setSetting('pic', cycle(PICS, S.pic, st)); } });
+      items.push({
+        ico: '✨',
+        label: 'מצב אפסקייל והשבחת תמונה',
+        stay: true,
+        val: function () { return label(UPSCALE_MODES, S.upscaleMode); },
+        act: function (st) {
+          var nextM = cycle(UPSCALE_MODES, S.upscaleMode, st);
+          setSetting('upscaleMode', nextM);
+          toast('✨ אפסקייל: ' + label(UPSCALE_MODES, nextM));
+        }
+      });
+    }
+    items.push({ ico: isFav(ch) ? '★' : '☆', label: isFav(ch) ? 'הסר מהרשימה שלי' : 'שמור ברשימה שלי', dot: colourOf('fav'), act: function () { toggleFav(ch); } });
+    items.push({ ico: '☰', label: 'רשימת ערוצים', dot: colourOf('drawer'), act: openDrawer });
+    if (Guide) items.push({ ico: '▦', label: 'לוח שידורים', act: Guide.open });
+    items.push({ ico: 'ℹ️', label: 'מידע על התוכנית והערוץ', dot: colourOf('info'), act: function () { showInfo(ch); } });
+    items.push({ ico: '⊞', label: 'פיצול מסך', act: function () { openMultiView(ch); } });
     items.push({
       ico: '📶',
       label: 'מצב רשת איטית (5Mbps ומטה)',
@@ -4202,37 +4237,10 @@ function showOsd() {
         act: function () { setAudioOnly(!state.audioOnly); }
       });
     }
-    if (Guide) items.push({ ico: '▦', label: 'לוח שידורים', act: Guide.open });
     if (state.candidates && state.candidates.length > 1) {
       items.push({ ico: '🔀', label: 'שרת שידור', stay: true, val: function () { return 'שרת ' + ((state.candIdx || 0) + 1) + '/' + state.candidates.length; },
         act: function () { switchBackupServer(); } });
     }
-    items.push({ ico: '⊞', label: 'פיצול מסך', act: function () { openMultiView(ch); } });
-    if (!state.isRadio) {
-      items.push({
-        ico: '✨',
-        label: 'מצב אפסקייל והשבחת תמונה',
-        stay: true,
-        val: function () { return label(UPSCALE_MODES, S.upscaleMode); },
-        act: function (st) {
-          var nextM = cycle(UPSCALE_MODES, S.upscaleMode, st);
-          setSetting('upscaleMode', nextM);
-          toast('✨ אפסקייל: ' + label(UPSCALE_MODES, nextM));
-        }
-      });
-      items.push({ ico: '🎨', label: 'מצב צבע ותמונה', stay: true, dot: colourOf('picture'), val: function () { return label(PICS, S.pic); },
-        act: function (st) { setSetting('pic', cycle(PICS, S.pic, st)); } });
-      items.push({ ico: '🖼️', label: 'גודל תמונה', stay: true, dot: colourOf('aspect'), val: function () { return label(ASPECTS, S.aspect); },
-        act: function (st) { setSetting('aspect', cycle(ASPECTS, S.aspect, st)); } });
-      items.push({ ico: '📶', label: 'איכות', stay: true, val: function () { return label(QUALITIES, S.quality); },
-        act: function (st) { setSetting('quality', cycle(QUALITIES, S.quality, st)); if (state.playing) loadStream(state.playing); } });
-    }
-    if (foreign(ch)) items.push({ ico: '🎙️', label: 'דיבוב לעברית', stay: true, dot: colourOf('dub'), val: function () { return Dub.settings.enabled ? 'פועל' : 'כבוי'; },
-      act: function () { toggleDub(); } });
-    if (!IS_TV) items.push({ ico: '📺', label: 'שידור לטלוויזיה', act: function () { openCastDialog(ch); } });
-    items.push({ ico: isFav(ch) ? '★' : '☆', label: isFav(ch) ? 'הסר מהרשימה שלי' : 'שמור ברשימה שלי', dot: colourOf('fav'), act: function () { toggleFav(ch); } });
-    items.push({ ico: '☰', label: 'רשימת ערוצים', dot: colourOf('drawer'), act: openDrawer });
-    items.push({ ico: 'ℹ️', label: 'מידע על התוכנית והערוץ', dot: colourOf('info'), act: function () { showInfo(ch); } });
     items.push({ ico: '⟳', label: 'רענן שידור', act: function () { loadStream(ch); } });
     items.push({ ico: '⚙️', label: 'הגדרות', act: openSettings });
     openMenu(ch.name, '#' + ch.number + ' · ' + el.osdQuality.textContent, ch, items);
@@ -4948,18 +4956,13 @@ function showOsd() {
         choice('longOk', 'פעולת לחיצה ארוכה על מקש OK', LONGOK, 'קיצור דרך נוח לכל סוגי השלטים'),
         choice('numWait', 'זמן המתנה בהזנת מספר ערוץ', NUMW)
       ] },
-      { id: 'dub', ico: M3_ICONS.dub, name: 'דיבוב ותרגום חכם', desc: 'תרגום קולי אוטומטי של ערוצים זרים לעברית', rows: Dub ? [
-        sep('מצב שירות'),
+      // most used first: subtitles / language and the voice; the translation engine and API keys are advanced, at the bottom
+      { id: 'dub', ico: M3_ICONS.dub, name: 'שפה, כתוביות ודיבוב', desc: 'כתוביות ודיבוב קולי בעברית לערוצים זרים', rows: Dub ? [
+        sep('כתוביות ודיבוב'),
         dubToggle('enabled', 'דיבוב קולי פעיל'),
-        dubChoice('engine', 'מנוע תרגום', (Dub.NO_LOCAL ? [] : [['local', 'ללא מפתח API – זיהוי דיבור מקומי במכשיר']]).concat([
-          ['gemini', 'Google Gemini (מפתח חינמי, דיוק מקסימלי)'], ['openai', 'OpenAI (דיבוב מתקדם)']]),
-          Dub.NO_LOCAL ? 'בטלוויזיה הדיבוב פועל דרך Google Gemini לצורך דיוק מרבי וביצועים מהירים'
-            : 'ללא מפתח הדיבוב פועל מקומית; עם מפתח Gemini התרגום מדויק ומזהה דוברים'),
+        dubToggle('subtitles', 'כתוביות בעברית'),
+        dubToggle('showOriginal', 'הצגת טקסט מקורי לצד התרגום'),
         info('מצב שירות', function () { return Dub.missingConfig() || (Dub.settings.enabled ? 'פעיל ומוכן' : 'מושבת'); }),
-        action('חיבור מפתח מהטלפון (סריקת QR)', function () { pairKey(); }, 'הזנת מפתח API בקלות באמצעות סריקת קוד QR מהטלפון הנייד'),
-        sep('מפתחות API'),
-        dubText('geminiKey', 'מפתח Gemini API', 'מפתח חינמי: aistudio.google.com/apikey (נשמר מקומית בלבד)', 'AIza...'),
-        dubText('openaiKey', 'מפתח OpenAI API', 'נשמר מקומית במכשיר בלבד', 'sk-...'),
         sep('קול וסנכרון'),
         dubChoice('tts', 'קול הדיבוב', [['auto', 'אוטומטי'], ['browser', 'קול המערכת'], ['google', 'Google TTS'], ['openai', 'OpenAI Audio'], ['none', 'כתוביות בלבד']]),
         { type: 'choice', label: 'מהירות דיבור', get: function () { return Number(Dub.settings.rate).toFixed(2); },
@@ -4970,10 +4973,15 @@ function showOsd() {
         dubToggle('sync', 'סנכרון שפתיים', 'השהיית התמונה לסנכרון מושלם עם הדיבוב'),
         dubChoice('delay', 'משך השהיית וידאו', [[6, '6 שניות'], [8, '8 שניות'], [10, '10 שניות'], [12, '12 שניות'], [15, '15 שניות'], [20, '20 שניות']])
       ]).concat([
-        sep('כתוביות ובדיקה'),
-        dubToggle('subtitles', 'כתוביות בעברית'),
-        dubToggle('showOriginal', 'הצגת טקסט מקורי לצד התרגום'),
-        action('בדיקת שמע וקול', function () { Dub.unlockAudio(); Dub.testVoice(); })
+        action('בדיקת שמע וקול', function () { Dub.unlockAudio(); Dub.testVoice(); }),
+        sep('מתקדם · מנוע תרגום ומפתחות API'),
+        dubChoice('engine', 'מנוע תרגום', (Dub.NO_LOCAL ? [] : [['local', 'ללא מפתח API – זיהוי דיבור מקומי במכשיר']]).concat([
+          ['gemini', 'Google Gemini (מפתח חינמי, דיוק מקסימלי)'], ['openai', 'OpenAI (דיבוב מתקדם)']]),
+          Dub.NO_LOCAL ? 'בטלוויזיה הדיבוב פועל דרך Google Gemini לצורך דיוק מרבי וביצועים מהירים'
+            : 'ללא מפתח הדיבוב פועל מקומית; עם מפתח Gemini התרגום מדויק ומזהה דוברים'),
+        action('חיבור מפתח מהטלפון (סריקת QR)', function () { pairKey(); }, 'הזנת מפתח API בקלות באמצעות סריקת קוד QR מהטלפון הנייד'),
+        dubText('geminiKey', 'מפתח Gemini API', 'מפתח חינמי: aistudio.google.com/apikey (נשמר מקומית בלבד)', 'AIza...'),
+        dubText('openaiKey', 'מפתח OpenAI API', 'נשמר מקומית במכשיר בלבד', 'sk-...')
       ]) : [info('דיבוב', 'אינו זמין במכשיר זה')] },
       { id: 'kids', ico: M3_ICONS.kids, name: 'בקרת הורים ומצב ילדים', desc: 'הגבלת צפייה לערוצי ילדים בלבד ונעילה בקוד PIN', rows: [
         { type: 'toggle', label: 'הפעלת מצב ילדים', help: 'הגבלת הממשק לערוצי ילדים ותחנות שידור ייעודיות בלבד', on: function () { return S.kids; },
@@ -5032,6 +5040,10 @@ function showOsd() {
       ] }
     ];
     if (activeDesign() !== DESIGNS.classic) secs.forEach(function (s) { s.rows = s.rows.filter(function (r) { return !r.classicOnly; }); });
+    // by how often they are used: language / subtitles and the player first, maintenance and about last
+    var SEC_ORDER = ['dub', 'player', 'display', 'channels', 'profiles', 'kids', 'remote', 'saver', 'google_cloud', 'updates', 'about'];
+    secs.forEach(function (s) { if (SEC_ORDER.indexOf(s.id) === -1) SEC_ORDER.splice(SEC_ORDER.length - 2, 0, s.id); }); // new sections: before updates / about
+    if (TVUI) secs.sort(function (a, b) { return SEC_ORDER.indexOf(a.id) - SEC_ORDER.indexOf(b.id); });
     if (PHONE) {
       secs = secs.filter(function (s) { return !s.tvOnly; });
       secs.forEach(function (s) { s.rows = s.rows.filter(function (r) { return !r.tvOnly; }); });
@@ -5680,11 +5692,41 @@ function showOsd() {
   }
 
   // ================================================================== input: keys, long OK, mouse, touch
-  function isBack(code) { return code === 461 || code === 27 || code === 10009 || code === 8; }
+  function isBack(code) { return code === 461 || code === 27 || code === 10009 || code === 8 || code === 166; } // 166: keyboard Browser Back
   function typing(t) { return t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA'); }
+
+  /**
+   * Desktop "back" (mouse Back button / Browser Back key / Electron app-command): one step back, the same as the
+   * remote's Back - player, guide, settings, menus all lead back to the home screen. On the home screen itself it
+   * stays there (the remote's Back would reopen a channel still playing behind the shelves).
+   */
+  function desktopBack() {
+    if (TVUI && !state.overlay && state.zone === 'atv') {
+      if (atv.search) atvCloseSearch();
+      return;
+    }
+    // the player asks for a second Back (remote safety); a mouse Back click goes straight home, so it counts as the second
+    if (state.overlay === 'player') state.playerBackAt = Date.now();
+    onKeyDown({ keyCode: 27, which: 27, target: document.body, preventDefault: function () {}, stopPropagation: function () {} });
+  }
+  window.__itvBack = desktopBack;
 
   function setupInput() {
     setupGuide();
+    // mouse Back button (XButton1 = button 3): our own back, and the browser / WebView2 history navigation is cancelled
+    var mouseBackAt = 0;
+    function onMouseBack(e) {
+      if (e.button !== 3) return;
+      if (e.preventDefault) e.preventDefault();
+      if (e.stopPropagation) e.stopPropagation();
+      var now = Date.now();
+      if (now - mouseBackAt < 250) return; // mouseup and auxclick of the same press
+      mouseBackAt = now;
+      desktopBack();
+    }
+    window.addEventListener('mouseup', onMouseBack, true);
+    window.addEventListener('auxclick', onMouseBack, true);
+    window.addEventListener('mousedown', function (e) { if (e.button === 3 || e.button === 4) e.preventDefault(); }, true);
         var wheelGlobalAt = 0;
     window.addEventListener('wheel', function (e) {
       var now = Date.now();

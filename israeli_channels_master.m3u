@@ -227,9 +227,9 @@ http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12222/index.m3u8
 http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32320/index.m3u8
 #EXTINF:-1 tvg-id="turkish_dramas_cellcom_il" tvg-name="ערוץ הדרמות הטורקיות – סלקום ופרטנר TV HD" tvg-chno="200" tvg-logo="https://raw.githubusercontent.com/dor2500/israel-tv-plus/master/playlist-logos/turkish_dramas_cellcom_il.png" group-title="סרטים וסדרות (Movies & Series)",ערוץ הדרמות הטורקיות – סלקום ופרטנר TV HD
 http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2363/index.m3u8
-#EXTINF:-1 tvg-id="food_network_il_plus" tvg-name="ערוץ האוכל Food Network פלוס (מתורגם) HD" tvg-chno="205" tvg-logo="https://raw.githubusercontent.com/dor2500/israel-tv-plus/master/playlist-logos/food_network_il_plus.png" group-title="אוכל ובישול (Food)",ערוץ האוכל Food Network פלוס (מתורגם) HD
+#EXTINF:-1 tvg-id="food_network_il_plus" tvg-name="ערוץ האוכל Food Network פלוס (מתורגם) HD" tvg-chno="205" tvg-logo="https://raw.githubusercontent.com/dor2500/israel-tv-plus/master/playlist-logos/food_network_il_plus.png" group-title="ערוצי אוכל (Food Channels)",ערוץ האוכל Food Network פלוס (מתורגם) HD
 http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2377/index.m3u8
-#EXTINF:-1 tvg-id="foody_plus_il" tvg-name="ערוץ פודי Foody פלוס – בישול ישראלי HD" tvg-chno="206" tvg-logo="https://raw.githubusercontent.com/dor2500/israel-tv-plus/master/playlist-logos/foody_plus_il.png" group-title="אוכל ובישול (Food)",ערוץ פודי Foody פלוס – בישול ישראלי HD
+#EXTINF:-1 tvg-id="foody_plus_il" tvg-name="ערוץ פודי Foody פלוס – בישול ישראלי HD" tvg-chno="206" tvg-logo="https://raw.githubusercontent.com/dor2500/israel-tv-plus/master/playlist-logos/foody_plus_il.png" group-title="ערוצי אוכל (Food Channels)",ערוץ פודי Foody פלוס – בישול ישראלי HD
 http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32154/index.m3u8
 #EXTINF:-1 tvg-id="yes_docu_plus_il" tvg-name="yes דוקו פלוס – תעודה ישראלית HD" tvg-chno="227" tvg-logo="https://raw.githubusercontent.com/dor2500/israel-tv-plus/master/playlist-logos/yes_docu_plus_il.png" group-title="טבע ודוקו (Documentary & Nature)",yes דוקו פלוס – תעודה ישראלית HD
 http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2344/index.m3u8

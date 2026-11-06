@@ -15,13 +15,13 @@ with open(vod_json_path, "r", encoding="utf-8") as f:
 for ch in channels:
     cid = ch.get("id")
     if cid == "food_network_il":
-        ch["category"] = "אוכל ובישול (Food)"
+        ch["category"] = "ערוצי אוכל (Food Channels)"
         ch["categoryEn"] = "food"
     elif cid == "good_life_channel_hd":
         ch["category"] = "ערוצי ישראל - שידור חי"
         ch["categoryEn"] = "lifestyle"
     elif cid == "food_channel_israel_hd":
-        ch["category"] = "אוכל ובישול (Food)"
+        ch["category"] = "ערוצי אוכל (Food Channels)"
         ch["categoryEn"] = "food"
     elif cid == "freetv_yalduti_il" or ch.get("name", "").startswith("ערוץ ילדותי"):
         ch["category"] = "ילדים ונוער (בעברית)"
@@ -106,7 +106,8 @@ base_js = parts[0].strip()
 
 # Make sure window.CHANNELS is synced
 ch_json_str = json.dumps(channels, ensure_ascii=False, indent=2)
-base_js_updated = "window.CHANNELS = " + ch_json_str + ";"
+# app.js reads CHANNELS_DATA (ITV_CHANNELS for older builds) - "window.CHANNELS" left every TV / web build empty
+base_js_updated = "window.CHANNELS_DATA = window.ITV_CHANNELS = " + ch_json_str + ";"
 
 vod_json_str = json.dumps(vod_data, ensure_ascii=False, indent=2)
 new_js_content = base_js_updated + "\n\nwindow.VOD_DATA = " + vod_json_str + ";\n"

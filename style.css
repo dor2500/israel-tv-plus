@@ -1820,13 +1820,20 @@ body:not(.phone):not(.anim-off) #menu .menu-box { animation: tv-panel .42s cubic
   color: rgba(255, 255, 255, .65);
   margin: 0;
 }
+/* cards and the manage button share one row: the outline button sits right next to "add profile" */
+.net-prof-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  margin-bottom: 4rem;
+}
 .net-prof-grid {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   gap: 2.5rem;
-  margin-bottom: 4rem;
 }
 .net-prof-card {
   position: relative;
@@ -1947,6 +1954,28 @@ body:not(.phone):not(.anim-off) #menu .menu-box { animation: tv-panel .42s cubic
   background: #f0f0f0;
   box-shadow: 0 0 30px rgba(255, 255, 255, .7);
 }
+/* "ניהול פרופילים": a clear outline button (transparent, solid border), standard TV button size */
+.net-prof-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .7rem;
+  min-width: 0;
+  height: 4.4rem;
+  padding: 0 2rem;
+  font-size: 1.35rem;
+  white-space: nowrap;
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, .75);
+  border-radius: 2.2rem;
+}
+.net-prof-outline.focused, .net-prof-outline:hover {
+  transform: scale(1.08);
+  background: rgba(255, 255, 255, .14);
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 4px rgba(56, 189, 248, .55), 0 0 24px rgba(255, 255, 255, .35);
+}
+.net-prof-btn-ico { font-size: 1.3em; line-height: 1; }
 
 /* TV topbar profile button */
 .atv-tab-prof {
@@ -2295,9 +2324,6 @@ body.no-osd-clock .tv-clock { display: none; }
 body.tvui #player .osd-top, body.tvui #player .osd-bottom { display: none !important; }
 body.tvui #player .osd::before { content: ''; position: absolute; right: 0; left: 0; bottom: 0; height: 66%; pointer-events: none;
   background: linear-gradient(to top, rgba(0, 0, 0, .96) 0, rgba(0, 0, 0, .82) 38%, rgba(0, 0, 0, 0) 100%); }
-#tvosd { position: absolute; right: 3rem; left: 10rem; bottom: 2.4rem; display: flex; align-items: flex-end; pointer-events: auto; color: #fff; }
-.osd.off #tvosd { pointer-events: none; }
-#tvo-strip { flex: none; width: 23rem; margin-left: 1.5rem; }
 .tv-strip-item { display: flex; align-items: center; padding: .8rem 1.2rem; border-radius: 1rem; cursor: pointer; opacity: .45; }
 .tv-strip-item.mid { opacity: 1; padding: 1.2rem; }
 .tv-strip-item.focus { background: rgba(255, 255, 255, .1); box-shadow: 0 0 0 .22rem #fff, 0 0 2.4rem rgba(255, 255, 255, .42); }
@@ -2308,15 +2334,6 @@ body.tvui #player .osd::before { content: ''; position: absolute; right: 0; left
 .tv-nm { font-size: 1.4rem; line-height: 1.25; color: #c4c6cb; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .tv-strip-item.mid .tv-nm { font-size: 1.65rem; color: #fff; }
 .tv-arrow { height: 1.5rem; line-height: 1.5rem; text-align: center; font-size: 1.2rem; visibility: hidden; }
-#tvo-strip.on .tv-arrow { visibility: visible; }
-#tvo-peek { flex: none; width: 14rem; margin-left: 1rem; padding-bottom: 10.6rem; display: flex; align-items: center; cursor: pointer; }
-#tvo-peek.none, #tvo-go.none { visibility: hidden; }
-.tv-peek-txt { flex: 1; min-width: 0; font-size: 1.6rem; line-height: 1.3; }
-.tv-peek-txt small { display: block; margin-top: .4rem; font-size: 1.4rem; color: #c4c6cb; }
-.tv-chev { display: block; flex: none; width: 2rem; height: 2rem; border-top: .3rem solid #fff; border-right: .3rem solid #fff; }
-.tv-chev.right { transform: rotate(45deg); margin-left: 1rem; }
-.tv-chev.left { transform: rotate(-135deg); }
-#tvo-main { flex: none; width: 31rem; margin-left: 1.8rem; }
 .tv-card { position: relative; overflow: hidden; border-radius: .9rem; background: #16161b; cursor: pointer; }
 .tv-poster { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; }
 .tv-poster-logo { position: absolute; top: 12%; right: 25%; left: 25%; height: 42%; display: flex; align-items: center; justify-content: center; }
@@ -2325,25 +2342,7 @@ body.tvui #player .osd::before { content: ''; position: absolute; right: 0; left
 .tv-cap em { display: block; font-style: normal; font-size: 1.5rem; color: #d0d2d6; }
 .tv-cap b { font-size: 2.3rem; font-weight: 700; }
 .tv-cap span { font-size: 1.5rem; }
-#tvo-big { height: 17.4rem; }
-#tvo-big.focus { box-shadow: 0 0 0 .22rem #fff, 0 0 2.4rem rgba(255, 255, 255, .42); }
-#tvo-big.flip > * { animation: tv-fade .2s var(--ease); }
 @keyframes tv-fade { from { opacity: 0; } to { opacity: 1; } }
-#tvo-small { height: 12.9rem; }
-#tvo-small .tv-cap b { font-size: 1.9rem; }
-.tv-timing { display: flex; align-items: center; justify-content: space-between; height: 3rem; margin-top: .6rem; font-size: 1.7rem; font-weight: 500; }
-.tv-day { font-size: 1.6rem; font-weight: 400; color: #c4c6cb; }
-.tv-mid { margin: auto; }
-#tvo-bar { position: relative; height: .4rem; margin-top: .6rem; background: rgba(255, 255, 255, .34); }
-#tvo-bar.none { visibility: hidden; }
-/* time runs right to left, like the cards above it */
-#tvo-bar i { position: absolute; top: 0; right: 0; bottom: 0; background: #e5202e; }
-#tvo-bar u { position: absolute; top: -.35rem; width: .22rem; height: 1.1rem; background: #fff; }
-#tvo-opts-wrap { height: 5rem; margin-top: .5rem; text-align: center; }
-#tvo-opts { display: inline-block; min-width: 13rem; height: 4.6rem; line-height: 4.6rem; padding: 0 2rem; border-radius: .7rem; font-size: 1.75rem; font-weight: 500; background: rgba(255, 255, 255, .15); cursor: pointer; }
-#tvo-opts.focus { background: #f5f5f5; color: #111; box-shadow: 0 0 2rem rgba(255, 255, 255, .45); }
-#tvo-next { flex: none; width: 23rem; margin-left: 1.2rem; padding-bottom: 5.5rem; }
-#tvo-go { flex: none; padding: 0 .6rem 13rem .4rem; cursor: pointer; }
 
 #tvguide { position: fixed; top: 0; right: 0; bottom: 0; left: 0; z-index: 9000; background: #050507; color: #f5f5f5; }
 #tvg-head { position: absolute; top: 2.4rem; right: 2.5rem; left: 2.5rem; height: 6.6rem; display: flex; }
@@ -2383,10 +2382,6 @@ body.tvui #player .osd::before { content: ''; position: absolute; right: 0; left
 #tvg-time { margin-top: .4rem; font-size: 1.6rem; color: #b4b6bc; }
 #tvg-desc { margin-top: .6rem; font-size: 1.6rem; line-height: 1.4; max-height: 4.5rem; overflow: hidden; }
 #tvg-cta { margin-top: .4rem; font-size: 1.4rem; font-weight: 700; }
-#tvo-live { display: none; min-width: 13rem; height: 4.6rem; line-height: 4.6rem; padding: 0 2rem; margin-left: 1rem; border-radius: .7rem; font-size: 1.75rem; font-weight: 500; background: rgba(255, 255, 255, .15); cursor: pointer; }
-#tvosd.catchup #tvo-live { display: inline-block; }
-#tvosd.catchup #tvo-opts { min-width: 0; }
-#tvo-live.focus { background: #f5f5f5; color: #111; box-shadow: 0 0 2rem rgba(255, 255, 255, .45); }
 .tv-p.cu .tv-ttl::before { content: '\21BA'; margin-left: .6rem; color: #b4b6bc; }
 
 /* ---- VOD series cinema modal and cards (TV & Desktop) ---- */
@@ -2685,6 +2680,112 @@ body.tvui #player .osd::before { content: ''; position: absolute; right: 0; left
 }
 
 
+/* channel names under the logos: bigger and bolder, readable from across the room */
+body.tvui .atv-name { margin-top: .8rem; font-size: 1.45rem; font-weight: 700; color: rgba(255, 255, 255, .82); }
+body.tvui .atv-item.focused .atv-name { font-size: 1.5rem; font-weight: 800; color: #fff; }
+
+/* ================================================================== programme info panels
+   Home details (right side) and the guide's details: the programme title is the headline; the synopsis is
+   capped at 3 lines with an ellipsis (maxLines = 3, TextOverflow.Ellipsis). */
+.atv-prog { margin-top: 1.1rem; }
+.atv-prog-k { font-size: 1.25rem; font-weight: 600; color: rgba(255, 255, 255, .7); }
+.atv-prog-title { margin: .3rem 0 0; font-size: 3rem; font-weight: 800; line-height: 1.15; letter-spacing: -.01em; color: #fff;
+  text-shadow: 0 .2rem 1.2rem rgba(0, 0, 0, .55); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.atv-prog-desc, .atv-desc { margin: .7rem 0 0; font-size: 1.45rem; line-height: 1.45; color: rgba(255, 255, 255, .85);
+  display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; line-clamp: 3; overflow: hidden; text-overflow: ellipsis;
+  max-height: calc(1.45rem * 1.45 * 3); }
+#tvg-detail { height: 16rem; }
+#tvg-name { font-size: 3.2rem; font-weight: 800; line-height: 1.15; }
+#tvg-desc { font-size: 1.6rem; line-height: 1.4; max-height: calc(1.6rem * 1.4 * 3);
+  display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; line-clamp: 3; overflow: hidden; text-overflow: ellipsis; }
+/* ================================================================== TV player OSD (webOS + Android TV)
+   Everything sits at the bottom: the info row (channel strip · programme · up next), a full-width progress
+   bar with large times, and one row of icon controls (previous / next programme, options, back to live).
+   D-pad: Down from the programme enters the controls, Left / Right walk them, OK runs one, Up goes back. */
+#tvosd { position: absolute; right: 3rem; left: 3rem; bottom: 2rem; display: flex; flex-direction: column; pointer-events: auto; color: #fff; }
+.osd.off #tvosd { pointer-events: none; }
+#tvo-info { display: flex; align-items: flex-end; }
+#tvo-strip { flex: none; width: 21rem; margin-left: 1.6rem; }
+#tvo-main { flex: 1; min-width: 0; }
+#tvo-big { display: flex; align-items: center; height: 9.5rem; background: rgba(22, 22, 27, .72); }
+#tvo-big::after { display: none; }
+#tvo-big .tv-poster-logo, #tvo-big .tv-poster { position: relative; top: auto; right: auto; left: auto; flex: none; width: 16.9rem; height: 9.5rem; }
+#tvo-big .tv-poster { position: absolute; right: 0; top: 0; }
+#tvo-big .tv-poster-logo { padding: 1.6rem 2.4rem; box-sizing: border-box; background: rgba(255, 255, 255, .05); }
+#tvo-big .tv-cap { position: relative; flex: 1; min-width: 0; padding: 0 1.8rem; text-align: right; }
+#tvo-big .tv-cap em { font-size: 1.35rem; font-weight: 600; color: #c9ccd2; }
+#tvo-big .tv-cap b { display: block; font-size: 2.6rem; font-weight: 800; line-height: 1.2; }
+#tvo-big .tv-cap span { font-size: 1.4rem; color: #d6d8dc; }
+#tvo-big.focus { box-shadow: 0 0 0 .25rem #fff, 0 0 2.4rem rgba(255, 255, 255, .42); }
+#tvo-big.flip > * { animation: tv-fade .2s var(--ease); }
+@keyframes tv-fade { from { opacity: 0; } to { opacity: 1; } }
+#tvo-next { flex: none; width: 20rem; margin-right: 1.6rem; padding: 1rem 1.4rem; border-radius: .9rem; background: rgba(22, 22, 27, .55); cursor: pointer; }
+#tvo-small em { display: block; font-style: normal; font-size: 1.3rem; color: #c9ccd2; }
+#tvo-small b { font-size: 1.7rem; font-weight: 700; }
+#tvo-next-time { height: auto; margin-top: .3rem; font-size: 1.4rem; color: #c9ccd2; justify-content: flex-start; }
+/* progress: the whole width, time runs right to left like the cards; the times are large */
+#tvo-progress { margin-top: 1.4rem; }
+#tvo-bar { position: relative; height: .55rem; border-radius: .3rem; background: rgba(255, 255, 255, .3); }
+#tvo-bar.none { visibility: hidden; }
+#tvo-bar i { position: absolute; top: 0; right: 0; bottom: 0; border-radius: .3rem; background: #e5202e; }
+#tvo-bar u { position: absolute; top: -.45rem; width: .3rem; height: 1.45rem; margin-right: -.15rem; border-radius: .15rem; background: #fff; }
+.tv-timing { display: flex; align-items: center; justify-content: space-between; height: 3.2rem; margin-top: .5rem; font-size: 2.1rem; font-weight: 700; }
+.tv-day { font-size: 1.6rem; font-weight: 500; color: #c4c6cb; }
+.tv-mid { margin: auto; }
+/* the control row: standard TV buttons (4.6rem high), icon + label, big focus ring for the remote */
+#tvo-ctl { display: flex; align-items: center; justify-content: center; gap: 1.2rem; margin-top: .8rem; }
+.tvo-btn { display: inline-flex; align-items: center; gap: .8rem; height: 4.6rem; padding: 0 2rem; border-radius: 2.3rem;
+  border: 2px solid rgba(255, 255, 255, .28); background: rgba(255, 255, 255, .12); color: #fff;
+  font: inherit; font-size: 1.55rem; font-weight: 600; cursor: pointer; white-space: nowrap;
+  transition: transform .18s ease, background-color .18s ease, box-shadow .18s ease; }
+.tvo-btn .ic { width: 2rem; height: 2rem; fill: currentColor; flex: none; }
+.tvo-btn.none { opacity: .35; cursor: default; }
+.tvo-btn.focus, .tvo-btn:not(.none):hover { transform: scale(1.08); background: #f5f5f7; color: #0b0e14; border-color: #fff;
+  box-shadow: 0 0 0 .25rem rgba(56, 189, 248, .7), 0 .6rem 1.8rem rgba(0, 0, 0, .55); }
+body.tvui #player .osd::before { height: 58%; }
+/* the clock moves up out of the control row's way */
+body.tvui #player .osd > .tv-brand { bottom: auto; top: 2rem; }
+#tvo-strip.on .tv-arrow { visibility: visible; }
+
+/* ================================================================== TV settings & menus: unmistakable focus, standard TV sizes
+   Focused item = solid light chip + thick accent ring + slight lift, readable from the couch on LG and Android TV. */
+body.tvui .nav-item, body.tvui .set-row, body.tvui #menu .menu-item {
+  transition: transform .16s ease, background-color .16s ease, box-shadow .16s ease, color .16s ease; }
+body.tvui .nav-item.focused, body.tvui .set-row.focused, body.tvui #menu .menu-item.focused {
+  background: #f5f5f7 !important; color: #0b0e14 !important; border: .3rem solid #38bdf8 !important;
+  box-shadow: 0 0 0 .3rem rgba(56, 189, 248, .45), 0 .8rem 2.4rem rgba(0, 0, 0, .55) !important;
+  -webkit-transform: scale(1.025) !important; transform: scale(1.025) !important; position: relative; z-index: 1; }
+body.tvui .set-row.focused .sr-label, body.tvui .set-row.action.focused .sr-label, body.tvui .set-row.focused .sr-val,
+body.tvui .set-row.focused .v, body.tvui #menu .menu-item.focused .mi-val { color: #0b0e14 !important; }
+body.tvui .set-row.danger.focused .sr-label { color: #c62828 !important; }
+body.tvui .set-row.focused .sr-help { color: #42454d !important; }
+body.tvui .set-row.focused .arr { color: #0b0e14 !important; }
+body.tvui .set-row.focused .switch:not(.on) { background: #8d9099; border-color: #5f636c; }
+body.tvui .set-row.focused .switch:not(.on)::after { background: #fff; }
+/* the section whose rows are open keeps a clear marker while the remote is in the rows */
+body.tvui .nav-item.active:not(.focused) { box-shadow: inset -.35rem 0 0 #38bdf8; }
+body.tvui .set-row.upd-row.focused { background: none !important; border-color: transparent !important; box-shadow: none !important; }
+/* standard TV dimensions (≈ 48dp rows / 40dp buttons at 1080p) instead of the oversized ones */
+body.tvui .nav-item { height: 4.6rem; font-size: 1.55rem; }
+body.tvui .set-row { min-height: 5rem; padding: .6rem 1.8rem; }
+body.tvui #menu .menu-item { min-height: 4.8rem !important; font-size: 1.6rem !important; }
+body.tvui .btn { min-height: 4.4rem; padding: 0 2.2rem; font-size: 1.5rem; }
+body.tvui .perror-actions .btn { min-height: 4.4rem; padding: 0 2.4rem; font-size: 1.5rem; }
+body.tvui .getapp .btn { min-height: 6rem; }
+
+/* ================================================================== phone (iOS / PWA / site) – Phase 3
+   Channel names: shorter (no "ערוץ"), a bit smaller, wrapping to two lines instead of being cut off. */
+body.phone .pc-name, body.phone .card-name {
+  font-size: 1.3rem; line-height: 1.6rem; white-space: normal; overflow: hidden; text-overflow: ellipsis;
+  display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-clamp: 2; min-height: 3.2rem; word-break: break-word; }
+/* "הכל ›": a plain text link, no capsule, so it doesn't compete with the shelf title */
+body.phone .view-all { height: auto; min-height: 3.6rem; padding: 0 .6rem; border-radius: .8rem; background: none !important;
+  -webkit-backdrop-filter: none; backdrop-filter: none; box-shadow: none; color: var(--muted); font-size: 1.35rem; font-weight: 600; }
+body.phone .view-all::before { display: none; }
+body.phone .view-all:active { opacity: .6; }
+/* more room between the category filter chips */
+body.phone .rail-item { margin: 0 0 0 1.2rem; }
+
 /* Google Drive Cloud Recording & VOD UI */
 .vod-rec-btn {
   background: rgba(239, 68, 68, 0.16);
@@ -2738,6 +2839,7 @@ body.tvui #player .osd::before { content: ''; position: absolute; right: 0; left
   font-size: 0.85rem;
   font-weight: 700;
 }
+
 
 /* Hardware-accelerated smooth playback and UI compositing */
 #player video {
@@ -3547,3 +3649,32 @@ body.design-paper .atv-epg-box {
 body.design-paper .atv-epg-title { color: #1a1a1a; }
 body.design-paper .atv-epg-time { color: #4a4640; }
 body.design-paper .atv-epg-bar { background: rgba(26, 26, 26, .15); }
+
+/* ================================================================== TV / desktop home layout – classic design (webOS, Android TV, Windows)
+   Column { TopBar ; Row { InfoPanel (fixed width, right) ; Column(weight 1f) { ChannelGrid ; ColorKeys } } }
+   Built from fixed, non-overlapping regions on the flat markup (no wrappers, so the other designs and webOS 4's
+   Chromium 53 are unaffected):  top band 0–7.6rem · info panel 36rem on the right · the grid region takes the rest
+   of the width, with the colour buttons in their own strip at its bottom. */
+body.tvui.design-classic .atv-pill { top: 2rem; }
+body.tvui.design-classic .atv-meta { top: 8.8rem; right: 3.2rem; width: 36rem; max-height: calc(100% - 10.4rem); overflow: hidden; }
+body.tvui.design-classic .atv-mlogo { width: 100%; max-width: 26rem; height: 7rem; }
+body.tvui.design-classic .atv-title { font-size: 2.8rem; }
+body.tvui.design-classic .atv-epg-box { max-width: none; }
+body.tvui.design-classic .atv-src { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+body.tvui.design-classic .atv-shelves { top: 7.6rem; bottom: 6.4rem; left: 0; right: 41.6rem; height: auto; overflow: hidden; padding-top: 1.2rem; }
+body.tvui.design-classic .atv-row-title { margin-right: 2.4rem; }
+body.tvui.design-classic .atv-track { padding-right: 2.4rem; }
+/* the colour buttons have their own strip now, so the shelves below show their names */
+body.tvui.design-classic .atv-row.below .atv-item:not(.focused) .atv-name { opacity: 1; }
+body.tvui.design-classic .atv-colors { position: absolute; top: auto; left: 0; right: 41.6rem; bottom: 0; height: 6.4rem;
+  display: flex; align-items: center; justify-content: flex-end; padding: 0 2.4rem; }
+/* search: at the top of the grid region; the results start below the field (and below the keyboard when it's open) */
+body.tvui.design-classic .atv-search { top: 8.8rem; right: 44rem; left: 2.4rem; width: auto; }
+body.tvui.design-classic .atv-kb { top: 14.6rem; right: 44rem; left: 2.4rem; max-width: none; }
+body.tvui.design-classic.atv-searching .atv-shelves { top: 14.4rem; }
+body.tvui.design-classic.atv-searching .atv-kb:not(.hidden) ~ .atv-shelves { top: 30rem; }
+
+/* programme on air (EPG panel, every TV design): the title is the headline, the synopsis at most 3 lines */
+body.tvui .atv-epg-title { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-clamp: 2; overflow: hidden;
+  width: 100%; order: 1; font-size: 2.4rem; font-weight: 800; line-height: 1.2; }
+body.tvui .atv-epg-time { order: 2; }

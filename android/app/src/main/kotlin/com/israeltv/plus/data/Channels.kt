@@ -151,6 +151,20 @@ data class ChannelData(
 fun shortCategory(name: String): String =
     name.substringBefore(" (").substringBefore(" - ").trim()
 
+/** "ערוץ" as a word, kept before a number or a definite ("ה") brand noun: "ערוץ 12", "ערוץ הילדים"; "ערוץ הופ!" -> "הופ!". */
+private val ChannelWord = Regex("""(^|\s)ערוץ(?=\s|$)(?!\s+(\d|ה(?!ופ)))""")
+private val NumberOnly = Regex("^[\\d\\s+]*$")
+
+/**
+ * The name shown on cards: the repetitive word "ערוץ" (channel) dropped, so the real name fits
+ * ("ערוץ זום ZOOM ילדים ונוער HD" -> "זום ZOOM ילדים ונוער HD"). Kept when only a number would be left ("ערוץ 12").
+ */
+val Channel.displayName: String
+    get() {
+        val short = name.replace(ChannelWord, " ").replace(Regex("\\s+"), " ").trim().trimStart('-', '–', ' ')
+        return if (short.isEmpty() || NumberOnly.matches(short)) name else short
+    }
+
 /** The line under a card: country for world channels, the category for Israeli ones. */
 fun Channel.subtitle(): String = when {
     isRadio -> "רדיו"

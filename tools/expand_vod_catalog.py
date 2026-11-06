@@ -1122,7 +1122,7 @@ new_series_list = [
         ]
     },
 
-    # --- אוכל ובישול (Food) ---
+    # --- ערוצי אוכל (Food Channels) ---
     {
         "id": "vod_master_chef",
         "title": "מאסטר שף ישראל",

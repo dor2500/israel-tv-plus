@@ -2725,7 +2725,7 @@
     {
       "id": "food_network_il_plus",
       "name": "ערוץ האוכל Food Network פלוס (מתורגם) HD",
-      "category": "אוכל ובישול (Food)",
+      "category": "ערוצי אוכל (Food Channels)",
       "categoryEn": "food",
       "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2377/index.m3u8",
       "fallbackUrls": [
@@ -2749,7 +2749,7 @@
     {
       "id": "foody_plus_il",
       "name": "ערוץ פודי Foody פלוס – בישול ישראלי HD",
-      "category": "אוכל ובישול (Food)",
+      "category": "ערוצי אוכל (Food Channels)",
       "categoryEn": "food",
       "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32154/index.m3u8",
       "fallbackUrls": [

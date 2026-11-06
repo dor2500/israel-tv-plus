@@ -248,10 +248,12 @@ window.ITV_UI = (function (I) {
         '<h1 class="net-prof-title">מי צופה עכשיו?</h1>' +
         '<p class="net-prof-sub">בחרו פרופיל לקבלת מועדפים, היסטוריה ותכנים מותאמים אישית</p>' +
       '</div>' +
-      '<div class="net-prof-grid" id="tv-profiles-grid"></div>' +
-      '<div class="net-prof-actions" id="tv-profiles-actions">' +
-        '<button class="btn net-prof-act-btn" id="btn-tv-prof-manage">ניהול פרופילים</button>' +
-        '<button class="btn net-prof-act-btn hidden" id="btn-tv-prof-done">סיום ניהול</button>' +
+      '<div class="net-prof-row">' +
+        '<div class="net-prof-grid" id="tv-profiles-grid"></div>' +
+        '<div class="net-prof-actions" id="tv-profiles-actions">' +
+          '<button class="btn net-prof-act-btn net-prof-outline" id="btn-tv-prof-manage"><span class="net-prof-btn-ico" aria-hidden="true">✎</span>ניהול פרופילים</button>' +
+          '<button class="btn net-prof-act-btn net-prof-outline hidden" id="btn-tv-prof-done"><span class="net-prof-btn-ico" aria-hidden="true">✓</span>סיום ניהול</button>' +
+        '</div>' +
       '</div>' +
     '</div>' +
   '</div>' +
