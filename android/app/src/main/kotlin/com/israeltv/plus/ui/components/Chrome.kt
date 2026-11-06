@@ -98,13 +98,24 @@ enum class Tab(
     Settings("הגדרות", "הגדרות", Icons.Rounded.Settings),
 }
 
-/** The master LazyColumn's insets: under the header + macro categories (114 dp on Home, 72 dp on inner tabs) and 118 dp clear of the floating bar. */
+/** The floating bar: 52 dp pill, 16 dp above the system bar, under a 120 dp fade to the background. */
+private val FloatingBarHeight = 52.dp
+private val FloatingBarMargin = 16.dp
+private val FloatingBarFade = 120.dp
+
+/**
+ * Space the feed keeps free under its last row: clear of the whole fade behind the floating bar plus breathing room,
+ * so the bottom row of channels (poster, two-line name and subtitle) can always be scrolled fully into view.
+ */
+val FloatingBarClearance = maxOf(FloatingBarFade, FloatingBarHeight + FloatingBarMargin) + 36.dp
+
+/** The master LazyColumn's insets: under the header + macro categories (114 dp on Home, 72 dp on inner tabs) and clear of the floating bar. */
 @Composable
 fun feedPadding(withCategories: Boolean = true): PaddingValues {
     val top = WindowInsets.statusBars.asPaddingValues().calculateTopPadding()
     val bottom = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
     val headerHeight = if (withCategories) 114.dp else 72.dp
-    return PaddingValues(top = top + headerHeight, bottom = bottom + 120.dp)
+    return PaddingValues(top = top + headerHeight, bottom = bottom + FloatingBarClearance)
 }
 
 /**
@@ -355,7 +366,7 @@ fun NuvioFloatingNavbar(
         modifier = modifier
             .fillMaxWidth()
             .navigationBarsPadding()
-            .padding(bottom = 16.dp)
+            .padding(bottom = FloatingBarMargin)
             .offset(y = offsetY),
         contentAlignment = Alignment.Center
     ) {
@@ -369,7 +380,7 @@ fun NuvioFloatingNavbar(
             Row(
                 modifier = Modifier
                     .padding(horizontal = 4.dp)
-                    .height(52.dp),
+                    .height(FloatingBarHeight),
                 horizontalArrangement = Arrangement.spacedBy(4.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
@@ -461,7 +472,7 @@ fun FloatingTabBar(
             Modifier
                 .align(Alignment.BottomCenter)
                 .fillMaxWidth()
-                .height(120.dp)
+                .height(FloatingBarFade)
                 .background(
                     Brush.verticalGradient(
                         colorStops = arrayOf(0.00f to Color.Transparent, 0.40f to bg.copy(alpha = 0.35f), 0.75f to bg.copy(alpha = 0.85f), 1.00f to bg),

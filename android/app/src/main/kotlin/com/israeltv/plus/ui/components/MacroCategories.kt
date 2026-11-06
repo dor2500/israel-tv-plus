@@ -70,8 +70,8 @@ fun MacroCategoryRow(
     val entries = listOf<Pair<String?, String>>(null to "הכל") + MacroCategories.map { it to it }
     LazyRow(
         modifier.fillMaxWidth(),
-        contentPadding = PaddingValues(horizontal = 14.dp),
-        horizontalArrangement = Arrangement.spacedBy(9.dp, Alignment.CenterHorizontally),
+        contentPadding = PaddingValues(horizontal = 16.dp),
+        horizontalArrangement = Arrangement.spacedBy(14.dp, Alignment.CenterHorizontally),
         verticalAlignment = Alignment.CenterVertically,
         flingBehavior = rememberBitChordFlingBehavior(),
     ) {

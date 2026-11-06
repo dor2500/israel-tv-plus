@@ -66,6 +66,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
 import com.israeltv.plus.data.Channel
+import com.israeltv.plus.data.displayName
 import com.israeltv.plus.ui.theme.LocalDimens
 import kotlin.math.abs
 
@@ -181,9 +182,10 @@ fun NuvioPosterCard(
         Text(
             text = title,
             modifier = Modifier.fillMaxWidth().padding(horizontal = 4.dp),
-            style = MaterialTheme.typography.labelLarge.merge(Rtl),
+            style = MaterialTheme.typography.labelLarge.merge(Rtl).merge(CardTitle),
             color = scheme.onSurface,
-            maxLines = 1,
+            minLines = 2,
+            maxLines = 2,
             overflow = TextOverflow.Ellipsis,
         )
         if (!subtitle.isNullOrBlank()) {
@@ -217,7 +219,7 @@ fun NuvioChannelCard(
 
     Box(modifier = modifier) {
         NuvioPosterCard(
-            title = channel.name,
+            title = channel.displayName,
             imageUrl = logoUrl,
             subtitle = subtitle,
             badge = if (channel.isRadio) "רדיו" else channel.badge,
@@ -273,6 +275,9 @@ val LocalCardMenu = staticCompositionLocalOf { CardMenuActions() }
 
 /** Labels are always right-aligned (Hebrew), also when the channel name is Latin. */
 private val Rtl = TextStyle(textDirection = TextDirection.Rtl, textAlign = TextAlign.Start)
+
+/** Card titles: a touch smaller than labelLarge so two lines fit under a poster. */
+private val CardTitle = TextStyle(fontSize = 12.5.sp, lineHeight = 15.sp)
 
 @Composable
 fun ChannelLogo(url: String, modifier: Modifier = Modifier, isRadio: Boolean = false) {
@@ -376,12 +381,14 @@ fun ChannelCard(
             )
         }
         Spacer(Modifier.height(8.dp))
+        // the name may wrap to a second line (both lines reserved, so a row of cards stays aligned)
         Text(
-            channel.name,
+            channel.displayName,
             Modifier.fillMaxWidth().padding(horizontal = 4.dp),
-            style = MaterialTheme.typography.labelLarge.merge(Rtl),
+            style = MaterialTheme.typography.labelLarge.merge(Rtl).merge(CardTitle),
             color = scheme.onSurface,
-            maxLines = 1,
+            minLines = 2,
+            maxLines = 2,
             overflow = TextOverflow.Ellipsis,
         )
         Text(
@@ -507,7 +514,7 @@ fun ContinueWatchingCard(
         ) {
             Column(Modifier.weight(1f)) {
                 Text(
-                    channel.name,
+                    channel.displayName,
                     style = Rtl,
                     color = Color.White,
                     fontSize = 13.sp,
@@ -684,35 +691,29 @@ fun SectionHeader(title: String, count: Int? = null, onSeeAll: (() -> Unit)? = n
             if (onSeeAll != null) Spacer(Modifier.width(8.dp))
         }
         if (onSeeAll != null) {
+            // a quiet text link (no capsule), so it never competes with the row title; it dims while pressed
             val interaction = remember { MutableInteractionSource() }
             val pressed by interaction.collectIsPressedAsState()
-            val corner by animateDpAsState(
-                targetValue = if (pressed) 8.dp else 18.dp,
-                animationSpec = spring(dampingRatio = 0.58f, stiffness = Spring.StiffnessMedium),
-                label = "seeAllMorph",
-            )
-            val pillShape = RoundedCornerShape(corner)
+            val tint = scheme.onSurfaceVariant.copy(alpha = if (pressed) 0.5f else 0.9f)
             Row(
                 Modifier
-                    .pressPhysics(interaction, tilt = false, glowShape = pillShape)
-                    .clip(pillShape)
-                    .background(scheme.secondaryContainer.copy(alpha = 0.55f))
+                    .clip(RoundedCornerShape(8.dp))
                     .clickable(interaction, null) {
                         haptic.performHapticFeedback(HapticFeedbackType.SegmentTick)
                         onSeeAll()
                     }
-                    .padding(start = 12.dp, end = 6.dp, top = 4.5.dp, bottom = 4.5.dp),
+                    .padding(start = 8.dp, end = 2.dp, top = 8.dp, bottom = 8.dp),
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 Text(
                     if (count != null) "הכל · $count" else "הכל",
-                    fontSize = 11.5.sp,
+                    fontSize = 13.sp,
                     fontWeight = FontWeight.Medium,
-                    color = scheme.onSecondaryContainer,
+                    color = tint,
                 )
                 Icon(
                     Icons.AutoMirrored.Rounded.KeyboardArrowRight, null,
-                    Modifier.size(16.dp), tint = scheme.onSecondaryContainer,
+                    Modifier.size(18.dp), tint = tint,
                 )
             }
         }
