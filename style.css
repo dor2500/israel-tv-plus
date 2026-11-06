@@ -3653,43 +3653,30 @@ body.design-paper .atv-epg-time { color: #4a4640; }
 body.design-paper .atv-epg-bar { background: rgba(26, 26, 26, .15); }
 
 /* ================================================================== TV / desktop home layout – classic design (webOS, Android TV, Windows)
-   Column(fillMaxSize) {
-     TopBar                                    – the category navigation, alone in the top band (0 – 7.6rem)
-     Row(weight 1f) {                          – RTL: the first slot is on the right
-       InfoPanel(width 42rem, fixed)           – the live preview in a 16:9 window, the programme / channel info under it
-       Column(weight 1f) { Grid ; ColorKeys }  – the channel shelves on a plain background, the colour buttons under them
+   Box(fillMaxSize) {
+     full-screen live preview / channel backdrop      – the background, as before
+     dark gradients at the top and bottom             – .atv-shade, for readable text
+     TopBar                    align(TopCenter)       – the category navigation, pinned to the top
+     InfoPanel                 align(TopEnd)          – right side, between the top bar and the grid: its box is
+                                                        bounded top AND bottom, so it can never reach the grid
+     Column(align BottomCenter) {
+       ChannelGrid             (fixed height)         – the horizontal shelves
+       ColorKeys               (Row)                  – the colour buttons, directly underneath the grid
      }
    }
-   Nothing plays or paints behind the grid any more: the preview, its colour wash and the shades stay inside the panel.
-   Fixed regions on the flat markup (no wrappers), so the other designs and webOS 4 (Chromium 53) are unaffected. */
-body.tvui.design-classic { background: var(--bg, #000); }
-body.tvui.design-classic .atv { background: none; }
-body.tvui.design-classic .atv-shade { display: none; }
+   Heights (rem): keys strip 5.6 at the very bottom, the grid 26 above it, a 1.2 gap, then the info panel. */
 body.tvui.design-classic .atv-pill { top: 2rem; }
-/* right column: preview window on top … */
-body.tvui.design-classic:not(.player-open) #player { top: 8.8rem; right: 3.2rem; left: auto; bottom: auto; width: 42rem; height: 23.625rem;
-  border-radius: 1rem; overflow: hidden; }
-body.tvui.design-classic .atv-stage { top: 8.8rem; right: 3.2rem; left: auto; bottom: auto; width: 42rem; height: 23.625rem; border-radius: 1rem; overflow: hidden; }
-/* … and the info under it, inside the same fixed-width column */
-body.tvui.design-classic .atv-meta, body.tvui.design-classic.ui-large .atv-meta { top: 33.6rem; right: 3.2rem; width: 42rem; bottom: 6.4rem; max-height: none; overflow: hidden; }
-body.tvui.design-classic .atv-mlogo { width: 100%; max-width: 22rem; height: 5.6rem; }
-body.tvui.design-classic .atv-title { font-size: 2.6rem; }
-body.tvui.design-classic .atv-epg-box { max-width: none; }
-body.tvui.design-classic .atv-src { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-/* left: the grid takes the rest of the width */
+body.tvui.design-classic .atv-meta, body.tvui.design-classic.ui-large .atv-meta {
+  top: 8rem; bottom: 32.8rem; right: 4.5rem; width: 56rem; max-height: none; overflow: hidden; }
+body.tvui.design-classic .atv-mlogo { height: 6.4rem; }
+body.tvui.design-classic .atv-epg-box { max-width: 52rem; }
 body.tvui.design-classic .atv-shelves, body.tvui.design-classic.ui-xl .atv-shelves, body.tvui.design-classic.ui-xxl .atv-shelves {
-  top: 7.6rem; bottom: 6.4rem; left: 0; right: 47.6rem; height: auto; overflow: hidden; padding-top: 1.2rem; }
-body.tvui.design-classic .atv-row-title { margin-right: 2.4rem; }
-body.tvui.design-classic .atv-track { padding-right: 2.4rem; }
-body.tvui.design-classic .atv-row.below .atv-item:not(.focused) .atv-name { opacity: 1; }
-/* under the grid: the colour buttons in their own strip */
-body.tvui.design-classic .atv-colors { position: absolute; top: auto; left: 0; right: 47.6rem; bottom: 0; height: 6.4rem;
-  display: flex; align-items: center; justify-content: flex-end; padding: 0 2.4rem; }
-/* search: at the top of the grid column; the results start below the field (and the keyboard when it's open) */
-body.tvui.design-classic .atv-search, body.tvui.design-classic.ui-large .atv-search { top: 8.8rem; right: 50rem; left: 2.4rem; width: auto; }
-body.tvui.design-classic .atv-kb, body.tvui.design-classic.ui-large .atv-kb { top: 14.6rem; right: 50rem; left: 2.4rem; max-width: none; }
-body.tvui.design-classic.atv-searching .atv-shelves { top: 14.4rem; }
-body.tvui.design-classic.atv-searching .atv-kb:not(.hidden) ~ .atv-shelves { top: 30rem; }
+  top: auto; bottom: 5.6rem; left: 0; right: 0; height: 26rem; overflow: hidden; }
+body.tvui.design-classic .atv-colors { position: absolute; top: auto; left: 0; right: 0; bottom: 0; height: 5.6rem;
+  display: flex; align-items: center; justify-content: flex-end; padding: 0 4.5rem; z-index: 3; }
+/* search keeps its place in the info area; the keyboard under it stays above the grid */
+body.tvui.design-classic .atv-search, body.tvui.design-classic.ui-large .atv-search { top: 8.8rem; right: 4.5rem; }
+body.tvui.design-classic .atv-kb, body.tvui.design-classic.ui-large .atv-kb { top: 14.6rem; right: 4.5rem; max-height: calc(100% - 14.6rem - 32.8rem); overflow: hidden; }
 
 /* ================================================================== settings: full screen on TV / desktop (every design)
    No card, no margins, no blurred frame: the side menu sits against the right edge, the content fills the rest. */
