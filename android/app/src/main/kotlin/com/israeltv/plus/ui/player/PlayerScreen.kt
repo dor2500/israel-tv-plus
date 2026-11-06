@@ -404,6 +404,41 @@ fun PlayerScreen(
         touchTick++
     }
 
+    // the guide behind the overlay's programme carousel, oldest first
+    var programs by remember(current.id) { mutableStateOf<List<CatchupProgram>>(emptyList()) }
+    LaunchedEffect(current.id) {
+        programs = runCatching { CatchupRepository.getProgramsForChannel(context, current) }
+            .getOrDefault(emptyList())
+            .sortedBy { it.startMin }
+    }
+
+    fun startCatchup(prog: CatchupProgram) {
+        isCatchupMode = true
+        catchupProgram = prog
+        val dvrUrl = CatchupDvr.dvrUrlFor(current)
+        val offsetFromLiveMs = (System.currentTimeMillis() - prog.startMs).coerceAtLeast(0L)
+        statusToast = "⏮️ שידור חוזר: ${prog.title}"
+        sheet = null
+        if (dvrUrl != null) {
+            player.setMediaItem(MediaItem.Builder().setUri(dvrUrl).setMimeType(MimeTypes.APPLICATION_M3U8).build())
+            player.prepare()
+            player.playWhenReady = true
+            scope.launch {
+                // the DVR playlist is long: its length is known only once it has loaded
+                var waited = 0
+                while (player.duration <= 0L && waited < 150) {
+                    delay(100)
+                    waited++
+                }
+                val dur = player.duration
+                if (dur > 0L) player.seekTo((dur - offsetFromLiveMs).coerceAtLeast(0L))
+            }
+        } else {
+            val dur = player.duration
+            if (dur > 0L) player.seekTo((dur - offsetFromLiveMs).coerceAtLeast(0L))
+        }
+    }
+
     // every channel switch, automatic fallback step, or manual "נסו שוב": resolve stream, full volume, play
     LaunchedEffect(current.id, attempt, sourceIndex, multiViewActive) {
         if (multiViewActive) {
@@ -599,7 +634,7 @@ fun PlayerScreen(
                 },
                 update = { v ->
                     v.resizeMode = fit.resizeMode
-                    val lift = if (controls && !inPip) with(density) { 82.dp.roundToPx() } else 0
+                    val lift = if (controls && !inPip) with(density) { 240.dp.roundToPx() } else 0
                     v.subtitleView?.setPadding(0, 0, 0, lift)
                 },
                 modifier = Modifier.fillMaxSize(),
@@ -650,13 +685,12 @@ fun PlayerScreen(
             }
         }
 
-        // center: active TV cast card OR error card OR buffering pill OR floating glass play controls
+        // center: active TV cast card OR error card OR buffering pill; playback controls live only in the bottom overlay
         val center = when {
             multiViewActive -> "none"
             castController.isCasting || castController.isConnecting -> "casting"
             error != null -> "error"
             buffering -> "buffering"
-            controls -> "controls"
             else -> "none"
         }
         AnimatedContent(
@@ -683,46 +717,6 @@ fun PlayerScreen(
                     },
                 )
                 "buffering" -> BufferingPill()
-                "controls" -> Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(24.dp)) {
-                    val isVod = current.kind == "vod" || current.categoryEn == "vod"
-                    if (isVod) {
-                        ExpressiveGlassButton(
-                            Icons.Rounded.Replay10, "10 שניות אחורה", 52.dp, 56.dp,
-                        ) {
-                            touchTick++
-                            player.seekTo((player.currentPosition - 10_000L).coerceAtLeast(0L))
-                        }
-                    } else {
-                        ExpressiveGlassButton(
-                            Icons.Rounded.SkipNext, "ערוץ הבא", 48.dp, 56.dp,
-                        ) { switchTo(index + 1) }
-                    }
-                    ExpressiveGlassButton(
-                        icon = if (playing) Icons.Rounded.Pause else Icons.Rounded.PlayArrow,
-                        label = "נגן / השהה",
-                        width = 68.dp,
-                        height = 68.dp,
-                        primary = true,
-                        drawableRes = if (playing) R.drawable.ic_player_pause else R.drawable.ic_player_play,
-                        morphed = !playing,
-                    ) {
-                        touchTick++
-                        if (player.isPlaying) player.pause() else { player.volume = 1.0f; player.play() }
-                    }
-                    if (isVod) {
-                        ExpressiveGlassButton(
-                            Icons.Rounded.Forward10, "10 שניות קדימה", 52.dp, 56.dp,
-                        ) {
-                            touchTick++
-                            val maxPos = if (player.duration > 0) player.duration else Long.MAX_VALUE
-                            player.seekTo((player.currentPosition + 10_000L).coerceAtMost(maxPos))
-                        }
-                    } else {
-                        ExpressiveGlassButton(
-                            Icons.Rounded.SkipPrevious, "ערוץ קודם", 48.dp, 56.dp,
-                        ) { switchTo(index - 1) }
-                    }
-                }
                 "error" -> PlayerErrorState(
                     ch = current,
                     reason = error.orEmpty(),
@@ -739,81 +733,65 @@ fun PlayerScreen(
             }
         }
 
+        // the single bottom-anchored overlay: programme carousel, Options, time (left) and mini channel list (right)
         AnimatedVisibility(
-            !multiViewActive && (controls || error != null || castController.isCasting || castController.isConnecting),
+            !multiViewActive && controls && error == null && !castController.isCasting && !castController.isConnecting,
             enter = fadeIn(tween(220)),
             exit = fadeOut(tween(320)),
-            modifier = Modifier.align(Alignment.TopCenter),
+            modifier = Modifier.fillMaxSize(),
         ) {
-            PlayerTopBar(
-                isCasting = castController.isCasting || castController.isConnecting,
-                favorite = prefs.isFavorite(current.id),
-                onFavorite = {
-                    touchTick++
-                    prefs.toggleFavorite(current.id)
-                },
-                onCast = {
-                    touchTick++
-                    castController.startDiscovery(current)
-                    sheet = "cast"
-                },
-                onBack = onClose,
-            )
-        }
-        AnimatedVisibility(
-            !multiViewActive && (controls || castController.isCasting),
-            enter = fadeIn(tween(220)),
-            exit = fadeOut(tween(320)),
-            modifier = Modifier.align(Alignment.BottomCenter),
-        ) {
-            PlayerBottomBar(
-                ch = current,
-                fit = fit,
+            val isVodNow = current.kind == "vod" || current.categoryEn == "vod"
+            PlayerOverlay(
+                channel = current,
+                programs = programs,
                 positionMs = currentPositionMs,
                 durationMs = durationMs,
-                isCatchupActive = isCatchupMode,
-                catchupTitle = catchupProgram?.title,
-                isLowBandwidth = lowBandwidthMode,
-                isAudioOnly = isAudioOnlyMode,
-                onToggleLowBandwidth = {
-                    lowBandwidthMode = !lowBandwidthMode
-                    statusToast = if (lowBandwidthMode) "📶 מצב רשת איטית (5Mbps ומטה) מופעל" else "📶 איכות רגילה"
-                },
-                onToggleAudioOnly = { isAudioOnlyMode = !isAudioOnlyMode },
-                onSeek = { pos ->
+                showDuration = isVodNow || isCatchupMode,
+                channels = list,
+                currentIndex = index,
+                logo = logo,
+                onProgramClick = { prog ->
                     touchTick++
-                    currentPositionMs = pos
-                    player.seekTo(pos)
-                },
-                onCycleFit = {
-                    touchTick++
-                    fit = fit.next()
-                },
-                onCatchup = {
-                    touchTick++
-                    if (CatchupRepository.hasCatchup(current)) sheet = "catchup" else statusToast = "לערוץ הזה אין שידור חוזר"
-                },
-                onReturnLive = {
-                    touchTick++
-                    isCatchupMode = false
-                    catchupProgram = null
-                    sourceIndex = 0
-                    statusToast = "🔴 חזרה לשידור חי"
-                    if (player.isCurrentMediaItemLive) {
-                        player.seekToDefaultPosition()
-                    } else {
-                        switchTo(index)
+                    when {
+                        // the live programme (or no guide at all): the card is the play/pause control
+                        prog == null || prog.isLiveNow -> {
+                            if (isCatchupMode) {
+                                isCatchupMode = false
+                                catchupProgram = null
+                                statusToast = "🔴 חזרה לשידור חי"
+                                if (player.isCurrentMediaItemLive) player.seekToDefaultPosition() else switchTo(index)
+                            } else if (player.isPlaying) {
+                                player.pause()
+                            } else {
+                                player.volume = 1.0f
+                                player.play()
+                            }
+                        }
+                        prog.isPast -> if (CatchupRepository.hasCatchup(current)) startCatchup(prog) else statusToast = "לערוץ הזה אין שידור חוזר"
+                        else -> statusToast = "${prog.title} · ${prog.timeLabel}"
                     }
                 },
                 onOptions = {
                     touchTick++
                     sheet = "more"
                 },
+                onPickChannel = { i ->
+                    touchTick++
+                    if (i != index) switchTo(i)
+                },
             )
         }
 
         PlayerOptionsDrawer(
             visible = sheet == "more",
+            favorite = prefs.isFavorite(current.id),
+            onFavorite = { prefs.toggleFavorite(current.id) },
+            onCast = {
+                castController.startDiscovery(current)
+                sheet = "cast"
+            },
+            fitLabel = fit.label,
+            onCycleFit = { fit = fit.next() },
             qualityLabel = selectedVideoHeight(player, tracks)?.let { "${it}p" } ?: "אוטומטי",
             playbackSpeed = playbackSpeed,
             sleepTimerMinutes = sleepTimerMinutes,
@@ -862,7 +840,7 @@ fun PlayerScreen(
         // VOD Skip Intro & Next Episode pills
         val isVod = current.kind == "vod" || current.categoryEn == "vod"
         AnimatedVisibility(
-            visible = isVod && currentPositionMs in 5_000L..85_000L,
+            visible = !controls && isVod && currentPositionMs in 5_000L..85_000L,
             enter = fadeIn(tween(250)) + slideInHorizontally { it },
             exit = fadeOut(tween(250)) + slideOutHorizontally { it },
             modifier = Modifier.align(Alignment.BottomEnd).padding(end = 24.dp, bottom = 96.dp)
@@ -893,7 +871,7 @@ fun PlayerScreen(
         }
 
         AnimatedVisibility(
-            visible = isVod && durationMs > 60_000L && currentPositionMs >= (durationMs - 35_000L),
+            visible = !controls && isVod && durationMs > 60_000L && currentPositionMs >= (durationMs - 35_000L),
             enter = fadeIn(tween(250)) + slideInHorizontally { it },
             exit = fadeOut(tween(250)) + slideOutHorizontally { it },
             modifier = Modifier.align(Alignment.BottomEnd).padding(end = 24.dp, bottom = 96.dp)
@@ -999,44 +977,7 @@ fun PlayerScreen(
         "catchup" -> CatchupSheet(
             channel = current,
             logoUrl = logo(current),
-            onSelectProgram = { prog ->
-                isCatchupMode = true
-                catchupProgram = prog
-                val dvrUrl = CatchupDvr.dvrUrlFor(current)
-                val now = System.currentTimeMillis()
-                val offsetFromLiveMs = (now - prog.startMs).coerceAtLeast(0L)
-                statusToast = "⏮️ שידור חוזר: ${prog.title}"
-                sheet = null
-                if (dvrUrl != null) {
-                    player.setMediaItem(
-                        androidx.media3.common.MediaItem.Builder()
-                            .setUri(dvrUrl)
-                            .setMimeType(androidx.media3.common.MimeTypes.APPLICATION_M3U8)
-                            .build()
-                    )
-                    player.prepare()
-                    player.playWhenReady = true
-                    scope.launch {
-                        // the DVR playlist is long: its length is known only once it has loaded
-                        var waited = 0
-                        while (player.duration <= 0L && waited < 150) {
-                            kotlinx.coroutines.delay(100)
-                            waited++
-                        }
-                        val dur = player.duration
-                        if (dur > 0L) {
-                            val targetPos = (dur - offsetFromLiveMs).coerceAtLeast(0L)
-                            player.seekTo(targetPos)
-                        }
-                    }
-                } else {
-                    val dur = player.duration
-                    if (dur > 0L) {
-                        val targetPos = (dur - offsetFromLiveMs).coerceAtLeast(0L)
-                        player.seekTo(targetPos)
-                    }
-                }
-            },
+            onSelectProgram = { prog -> startCatchup(prog) },
             onRewindMinutes = { mins ->
                 isCatchupMode = true
                 catchupProgram = CatchupProgram(
