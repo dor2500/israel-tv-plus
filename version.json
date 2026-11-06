@@ -1,16 +1,23 @@
 {
-  "version": "4.8.61",
-  "code": 202611061205,
-  "app": 40861,
+  "version": "4.8.62",
+  "code": 202611061605,
+  "app": 40862,
   "shell": 3,
   "date": "2026-11-06",
   "notes": [
-    "טלוויזיה ומחשב – מסך הבית: השידור שוב ממלא את כל המסך ברקע, וכל חלק במקום משלו בלי חפיפות. סרגל הקטגוריות למעלה; פרטי התוכנית (שם, תקציר, שעות) מימין, תמיד מעל רשת הערוצים; רשת הערוצים בתחתית; ומקשי הצבע בשורה מתחת לרשת.",
-    "מסכים רחבים במיוחד (21:9) וחלונות נמוכים במחשב: הממשק נשמר בפרופורציה הנכונה ופרטי התוכנית לא נחתכים.",
-    "הגדרות במסך מלא: בלי כרטיס צף ושוליים כהים. התפריט הצדדי צמוד לקצה הימני והתוכן ממלא את שאר המסך.",
-    "נגן בטלוויזיה – חזרה לעיצוב הקלאסי בתחתית המסך: התוכנית הנוכחית בכרטיס גדול במרכז, התוכנית הבאה קטנה לידה, כפתור \"אפשרויות\" אחד מתחת, ופס ההתקדמות עם השעות בתחתית. רשימת הערוצים מופיעה רק כשעוברים בין ערוצים."
+    "נגן באנדרואיד ובטלוויזיה – פקדים חדשים, כולם בתחתית המסך: שלושה כרטיסי תוכניות מלוח השידורים במרכז. התוכנית המסומנת גדולה ובולטת, והתוכניות שלפניה ואחריה קטנות ומעומעמות. החיצים בשלט עוברים בין התוכניות, לחיצה על התוכנית המשודרת עוצרת או ממשיכה את השידור, ולחיצה על תוכנית שכבר שודרה מפעילה שידור חוזר.",
+    "כפתור \"אפשרויות\" אחד מתחת לכרטיס האמצעי. המועדפים, השידור למסך והתאמת התמונה עברו לתוכו.",
+    "השעה של השידור בפינה השמאלית התחתונה, ורשימת ערוצים קטנה בצד ימין שעוברים ממנה ישר לערוץ אחר."
   ],
   "history": [
+    {
+      "version": "4.8.62",
+      "notes": [
+        "נגן באנדרואיד ובטלוויזיה – פקדים חדשים, כולם בתחתית המסך: שלושה כרטיסי תוכניות מלוח השידורים במרכז. התוכנית המסומנת גדולה ובולטת, והתוכניות שלפניה ואחריה קטנות ומעומעמות. החיצים בשלט עוברים בין התוכניות, לחיצה על התוכנית המשודרת עוצרת או ממשיכה את השידור, ולחיצה על תוכנית שכבר שודרה מפעילה שידור חוזר.",
+        "כפתור \"אפשרויות\" אחד מתחת לכרטיס האמצעי. המועדפים, השידור למסך והתאמת התמונה עברו לתוכו.",
+        "השעה של השידור בפינה השמאלית התחתונה, ורשימת ערוצים קטנה בצד ימין שעוברים ממנה ישר לערוץ אחר."
+      ]
+    },
     {
       "version": "4.8.61",
       "notes": [
@@ -222,52 +229,44 @@
       "notes": [
         "תוקנו תקיעות כל כמה שניות בשידורים חיים: המרחק מהשידור החי נקבע עכשיו לפי אורך המקטעים של כל שידור, עם באפר גדול יותר."
       ]
-    },
-    {
-      "version": "4.8.36",
-      "notes": [
-        "אימות פעילות מלא לכל 421 הערוצים: 100% זמינות ותקינות שידור.",
-        "צמצום השהיה למינימום (Zero/Ultra-Low Latency): שידור חי בהשהיה מזערית של 1.5–2.5 שניות מקצה השידור.",
-        "מנגנון סנכרון חי מתקדם ב-ExoPlayer (LiveConfiguration) וב-HLS.js עם מהירות התאמה עדינה ללא תקיעות."
-      ]
     }
   ],
   "native": {
     "android": {
-      "version": "4.8.61",
-      "app": 40861,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.61/IsraelTVPlus-android.apk"
+      "version": "4.8.62",
+      "app": 40862,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.62/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "4.8.61",
-      "app": 40861,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.61/IsraelTVPlus-windows-setup.exe"
+      "version": "4.8.62",
+      "app": 40862,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.62/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "4.8.61",
-      "app": 40861,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.61/com.israeltv.plus_all.ipk",
+      "version": "4.8.62",
+      "app": 40862,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.62/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "4.8.61",
-      "app": 40861,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.61/IsraelTVPlus-tizen-project.zip"
+      "version": "4.8.62",
+      "app": 40862,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.62/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "4.8.61",
-      "app": 40861,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.61/IsraelTVPlus-macos-arm64.zip"
+      "version": "4.8.62",
+      "app": 40862,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.62/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "4.8.61",
-      "app": 40861,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.61/IsraelTVPlus-linux-x64.zip"
+      "version": "4.8.62",
+      "app": 40862,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.62/IsraelTVPlus-linux-x64.zip"
     },
     "wear": {
-      "version": "4.8.61",
-      "app": 1040861,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.61/IsraelTVPlus-wearos.apk"
+      "version": "4.8.62",
+      "app": 1040862,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.62/IsraelTVPlus-wearos.apk"
     }
   }
 }
