@@ -19,6 +19,7 @@ REAL_NUMBERS = {
     "channel16": 16,
     "kan_hinuchit": 23,
     "channel24": 24,
+    "makan_33": 33,
     "channel_98_il": 98,
     "knesset": 99,
 }

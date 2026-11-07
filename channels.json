@@ -828,7 +828,7 @@
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
     "kind": "tv",
-    "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/savri/live.livx/playlist.m3u8",
+    "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/savri/live.livx/playlist.m3u8?bitrate=5628000&audioId=1&videoId=0",
     "badge": "HD 24/7",
     "desc": "סדרת הקומדיה המשפחתית המצליחה בישראל: כל ארוחות שישי של משפחת חסון ורוזן בשידור רציף מסביב לשעון.",
     "lang": "he",
@@ -1022,28 +1022,32 @@
     "iptv": "Viva.il"
   },
   {
-    "id": "karaoke_il",
-    "name": "ערוץ הקריוקי הישראלי HD",
-    "title": "ערוץ הקריוקי HD",
+    "id": "makan_33",
+    "name": "ערוץ מכאן 33 FHD",
+    "title": "ערוץ מכאן 33 (כאן בערבית)",
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
-    "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/karaoke/live.livx/playlist.m3u8",
-    "logo": "assets/logos/karaoke_il.png",
+    "url": "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/makan/live.livx/playlist.m3u8",
+    "logo": "assets/logos/makan33.png",
     "badge": "FHD",
-    "desc": "ערוץ הקריוקי הישראלי – להיטים ישראליים ובינלאומיים עם מילים לשירה בסלון 24/7",
-    "lang": "he",
+    "desc": "ערוץ הטלוויזיה הציבורי מכאן 33 של תאגיד השידור הישראלי כאן – שידורי חדשות, תרבות וסדרות בערבית ובעברית",
+    "lang": "ar",
     "country": "IL",
     "countryHe": "ישראל",
     "number": 33,
     "src": {
-      "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
+      "by": "כאן – תאגיד השידור (CDN רשמי)",
       "kind": "official",
-      "host": "d1zqtf09wb8nt5.cloudfront.net",
-      "found": "רשימה ידנית (גרסה קודמת)",
+      "host": "kancdn.medonecdn.net",
+      "found": "סריקת ערוצים רשמית",
       "web": "✅"
     },
-    "fallbackUrls": [],
-    "backups": []
+    "backups": [
+      "https://r.il.cdn-redge.media/livehls/oil/kancdn-live/live/makan/live.livx/playlist.m3u8"
+    ],
+    "fallbackUrls": [
+      "https://r.il.cdn-redge.media/livehls/oil/kancdn-live/live/makan/live.livx/playlist.m3u8"
+    ]
   },
   {
     "id": "il_the_style_channel_hd_il",
@@ -1670,7 +1674,7 @@
     "title": "ערוץ בייבי לפעוטות בעברית (BabyTV Israel HD)",
     "category": "ילדים ונוער (בעברית)",
     "categoryEn": "kids_he",
-    "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/baby_new/live.livx/playlist.m3u8",
+    "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/baby_new/live.livx/playlist.m3u8?bitrate=4928000&audioId=1&videoId=0",
     "logo": "assets/logos/baby_tv_he.png",
     "badge": "HD",
     "desc": "ערוץ בייבי ישראל – תוכניות התפתחות, שירים, צורות וצבעים לתינוקות ופעוטות בעברית 24/7",
@@ -2095,7 +2099,7 @@
     "title": "ערוץ המוזיקה הישראלית Music il HD",
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
-    "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/music_il/live.livx/playlist.m3u8",
+    "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/music_il/live.livx/playlist.m3u8?bitrate=2928000&audioId=1&videoId=4",
     "badge": "HD",
     "desc": "ערוץ מוזיקה il – מיטב הלהיטים והקליפים של המוזיקה הישראלית ב-HD",
     "lang": "he",
@@ -2590,30 +2594,6 @@
     "backups": []
   },
   {
-    "id": "kotel_live_il",
-    "name": "הכותל המערבי – שידור חי 24/7",
-    "title": "מצלמות הכותל המערבי חי",
-    "category": "ערוצי ישראל - שידור חי",
-    "categoryEn": "israel",
-    "url": "https://cdn1.cast-tv.com/23595/Live_Kotel3_ABR/playlist.m3u8",
-    "logo": "assets/logos/kotel_live_il.png",
-    "badge": "HD",
-    "desc": "שידור ישיר 24/7 מרחבת הכותל המערבי בירושלים",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 90,
-    "src": {
-      "by": "cdn1.cast-tv.com",
-      "kind": "restream",
-      "host": "cdn1.cast-tv.com",
-      "found": "רשימה ידנית (גרסה קודמת)",
-      "web": "✅"
-    },
-    "fallbackUrls": [],
-    "backups": []
-  },
-  {
     "id": "reshet13_nofesh_il",
     "name": "רשת 13 ערוץ הנופש HD",
     "category": "ערוצי ישראל - שידור חי",
@@ -2811,37 +2791,35 @@
     "backups": []
   },
   {
-    "id": "sport6_israel",
-    "name": "ספורט 6 HD (Sport 6)",
-    "title": "ספורט 6 ישיר HD (צ'רלטון Sport 6)",
-    "category": "ספורט (Sports)",
-    "categoryEn": "sports",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32003/index.m3u8",
-    "logo": "assets/logos/sport6_israel.png",
-    "badge": "HD",
-    "lang": "he",
-    "desc": "ערוץ ספורט 6 מבית צ'רלטון – שידורים חיים של טניס, פאדל, כדורגל עולמי וספורט בינלאומי ב-HD",
-    "number": 511,
-    "src": {
-      "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
-      "kind": "official",
-      "host": "b84203c4.ottrast.com",
-      "found": "שידור ישראלי מקורי צ'רלטון FHD",
-      "web": "❌ רק באפליקציה (הפניה בלי CORS)"
-    },
-    "fallbackUrls": [
-      "http://45.156.223.202/iptv/QAP2YS2594ZQS3/32003/index.m3u8"
-    ],
-    "isIsraeli": true,
-    "kind": "tv",
-    "iptv": "Sport6.il",
-    "backups": [
-      "http://45.156.223.202/iptv/QAP2YS2594ZQS3/32003/index.m3u8"
-    ],
-    "webOk": false,
+    "id": "knesset_tv_hd",
+    "name": "ערוץ הכנסת HD (Knesset Channel)",
+    "title": "ערוץ הכנסת HD – שידורי המליאה והוועדות",
+    "category": "ערוצי ישראל - שידור חי",
+    "categoryEn": "israel",
+    "logo": "assets/logos/knesset.png",
+    "url": "http://stream.mcquack.net/48/index.m3u8",
     "backupUrls": [
-      "http://45.156.223.202/iptv/QAP2YS2594ZQS3/32003/index.m3u8"
-    ]
+      "http://45.156.223.202/iptv/QAP2YS2594ZQS3/2369/index.m3u8",
+      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2369/index.m3u8"
+    ],
+    "channelNumber": 99,
+    "number": 99,
+    "language": "Hebrew",
+    "lang": "he",
+    "country": "IL",
+    "countryHe": "ישראל",
+    "badge": "HD",
+    "quality": "HD",
+    "resolution": "1080p",
+    "desc": "ערוץ הכנסת המשדר דיוני מליאה, ועדות ומשדרים פוליטיים ואקטואליים.",
+    "backups": [],
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "❌ רק באפליקציה (HTTP)"
+    }
   },
   {
     "id": "sport5_israel_hd",
@@ -3935,25 +3913,34 @@
     "backups": []
   },
   {
-    "id": "mediterranean_movies_1",
-    "name": "ערוץ הסרטים הים תיכוני 1 HD",
-    "title": "ערוץ הסרטים הים תיכוני 1 בתרגום לעברית HD",
-    "category": "סרטים וסדרות (Movies & Series)",
-    "categoryEn": "movies",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32162/index.m3u8",
-    "logo": "assets/logos/mediterranean_movies_1.png",
-    "badge": "HD",
+    "id": "ch14_now_fast",
+    "name": "ערוץ 14 החדשות עכשיו (Now 14 Live)",
+    "title": "עכשיו 14 – מהדורות החדשות והאקטואליה בשידור ישיר",
+    "category": "ערוצי ישראל - שידור חי",
+    "categoryEn": "israel",
+    "logo": "assets/logos/now14.png",
+    "url": "https://r.il.cdn-redge.media/livehls/oil/ch14/live/ch14/live.livx/playlist.m3u8",
+    "backupUrls": [
+      "https://ch14-channel14-live.cdn.ch22.co.il/live/ch14_1/playlist.m3u8"
+    ],
+    "channelNumber": 140,
+    "number": 140,
+    "language": "Hebrew",
     "lang": "he",
-    "desc": "ערוץ הסרטים הים תיכוני 1 – קולנוע טורקי, יווני וים תיכוני מרגש בתרגום לעברית",
-    "number": 512,
+    "country": "IL",
+    "countryHe": "ישראל",
+    "badge": "HD",
+    "quality": "HD",
+    "resolution": "1080p",
+    "desc": "ערוץ 14 – שידורי חדשות, פטריוטים, אקטואליה ומבזקים שוטפים בטעינה מהירה.",
+    "backups": [],
     "src": {
-      "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
+      "by": "Redge – ה-CDN הרשמי של כאן, ערוץ 14 וכלכלה 10",
       "kind": "official",
-      "host": "b84203c4.ottrast.com",
+      "host": "r.il.cdn-redge.media",
       "found": "רשימה ידנית (גרסה קודמת)",
-      "web": "❌ רק באפליקציה (HTTP)"
-    },
-    "backups": []
+      "web": "✅"
+    }
   },
   {
     "id": "mediterranean_movies_2",
@@ -4541,7 +4528,7 @@
     "title": "FreeTV Feel Good HD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "israel",
-    "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/feel_good/live.livx/playlist.m3u8",
+    "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/feel_good/live.livx/playlist.m3u8?bitrate=5628000&audioId=1&videoId=0",
     "logo": "assets/logos/freetv_movies_feelgood.png",
     "badge": "FHD",
     "desc": "ערוץ סרטי Feel Good מחממי לב של FreeTV עם תרגום לעברית 24/7",
@@ -4588,10 +4575,10 @@
     "title": "FreeTV 10 Stars HD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "israel",
-    "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/free_movies_10_hevc/live.livx/playlist.m3u8",
+    "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/free_movies_10/live.livx/playlist.m3u8?bitrate=5628000&audioId=1&videoId=0",
     "logo": "assets/logos/freetv_movies_10stars.png",
     "badge": "FHD",
-    "desc": "ערוץ שוברי הקופות וכוכבי הקולנוע של FreeTV בשידור חי",
+    "desc": "ערוץ 10 כוכבים – סרטי קולנוע שוברי קופות בהזרמת FHD נקייה",
     "lang": "he",
     "country": "IL",
     "countryHe": "ישראל",
@@ -4981,16 +4968,16 @@
     "title": "i24NEWS English World HD",
     "category": "חדשות מהעולם (News)",
     "categoryEn": "news",
-    "url": "https://hlspackager.akamaized.net/live/DB/i24_ENGLISH/HLS/i24_ENGLISH.m3u8",
+    "url": "https://i24newsenglish-cdn.encoders.immergo.tv/master.m3u8",
     "logo": "assets/logos/i24news_en.png",
     "badge": "FHD",
     "desc": "שידורי מהדורת החדשות הבינלאומית של i24NEWS מנמל יפו באנגלית באיכות FHD",
     "lang": "en",
     "country": "IL",
     "src": {
-      "by": "i24NEWS – CDN Akamai של השידור הרשמי",
+      "by": "i24NEWS – שרת רשמי",
       "kind": "official",
-      "host": "hlspackager.akamaized.net",
+      "host": "i24newsenglish-cdn.encoders.immergo.tv",
       "found": "סריקת ערוצים מאומתת",
       "web": "✅"
     },
@@ -11735,35 +11722,58 @@
     }
   },
   {
-    "id": "knesset_tv_hd",
-    "name": "ערוץ הכנסת HD (Knesset Channel)",
-    "title": "ערוץ הכנסת HD – שידורי המליאה והוועדות",
-    "category": "ערוצי ישראל - שידור חי",
-    "categoryEn": "israel",
-    "logo": "assets/logos/knesset.png",
-    "url": "http://stream.mcquack.net/48/index.m3u8",
-    "backupUrls": [
-      "http://45.156.223.202/iptv/QAP2YS2594ZQS3/2369/index.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2369/index.m3u8"
-    ],
-    "channelNumber": 99,
-    "number": 99,
-    "language": "Hebrew",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
+    "id": "sport6_israel",
+    "name": "ספורט 6 HD (Sport 6)",
+    "title": "ספורט 6 ישיר HD (צ'רלטון Sport 6)",
+    "category": "ספורט (Sports)",
+    "categoryEn": "sports",
+    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32003/index.m3u8",
+    "logo": "assets/logos/sport6_israel.png",
     "badge": "HD",
-    "quality": "HD",
-    "resolution": "1080p",
-    "desc": "ערוץ הכנסת המשדר דיוני מליאה, ועדות ומשדרים פוליטיים ואקטואליים.",
-    "backups": [],
+    "lang": "he",
+    "desc": "ערוץ ספורט 6 מבית צ'רלטון – שידורים חיים של טניס, פאדל, כדורגל עולמי וספורט בינלאומי ב-HD",
+    "number": 511,
     "src": {
-      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
-      "kind": "restream",
-      "host": "stream.mcquack.net",
+      "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
+      "kind": "official",
+      "host": "b84203c4.ottrast.com",
+      "found": "שידור ישראלי מקורי צ'רלטון FHD",
+      "web": "❌ רק באפליקציה (הפניה בלי CORS)"
+    },
+    "fallbackUrls": [
+      "http://45.156.223.202/iptv/QAP2YS2594ZQS3/32003/index.m3u8"
+    ],
+    "isIsraeli": true,
+    "kind": "tv",
+    "iptv": "Sport6.il",
+    "backups": [
+      "http://45.156.223.202/iptv/QAP2YS2594ZQS3/32003/index.m3u8"
+    ],
+    "webOk": false,
+    "backupUrls": [
+      "http://45.156.223.202/iptv/QAP2YS2594ZQS3/32003/index.m3u8"
+    ]
+  },
+  {
+    "id": "mediterranean_movies_1",
+    "name": "ערוץ הסרטים הים תיכוני 1 HD",
+    "title": "ערוץ הסרטים הים תיכוני 1 בתרגום לעברית HD",
+    "category": "סרטים וסדרות (Movies & Series)",
+    "categoryEn": "movies",
+    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32162/index.m3u8",
+    "logo": "assets/logos/mediterranean_movies_1.png",
+    "badge": "HD",
+    "lang": "he",
+    "desc": "ערוץ הסרטים הים תיכוני 1 – קולנוע טורקי, יווני וים תיכוני מרגש בתרגום לעברית",
+    "number": 512,
+    "src": {
+      "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
+      "kind": "official",
+      "host": "b84203c4.ottrast.com",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
-    }
+    },
+    "backups": []
   },
   {
     "id": "channel_9_israel_hd",
@@ -11791,36 +11801,6 @@
       "by": "GoStreaming – ספק השידור של ערוץ 9",
       "kind": "official",
       "host": "contact.gostreaming.tv",
-      "found": "רשימה ידנית (גרסה קודמת)",
-      "web": "✅"
-    }
-  },
-  {
-    "id": "ch14_now_fast",
-    "name": "ערוץ 14 החדשות עכשיו (Now 14 Live)",
-    "title": "עכשיו 14 – מהדורות החדשות והאקטואליה בשידור ישיר",
-    "category": "ערוצי ישראל - שידור חי",
-    "categoryEn": "israel",
-    "logo": "assets/logos/now14.png",
-    "url": "https://r.il.cdn-redge.media/livehls/oil/ch14/live/ch14/live.livx/playlist.m3u8",
-    "backupUrls": [
-      "https://ch14-channel14-live.cdn.ch22.co.il/live/ch14_1/playlist.m3u8"
-    ],
-    "channelNumber": 140,
-    "number": 140,
-    "language": "Hebrew",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "badge": "HD",
-    "quality": "HD",
-    "resolution": "1080p",
-    "desc": "ערוץ 14 – שידורי חדשות, פטריוטים, אקטואליה ומבזקים שוטפים בטעינה מהירה.",
-    "backups": [],
-    "src": {
-      "by": "Redge – ה-CDN הרשמי של כאן, ערוץ 14 וכלכלה 10",
-      "kind": "official",
-      "host": "r.il.cdn-redge.media",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     }
@@ -12131,5 +12111,125 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
     }
+  },
+  {
+    "id": "hot_zone_mc",
+    "name": "HOT זון HD (HOT Zone)",
+    "title": "ערוץ סדרות האקשן והמתח HOT זון HD",
+    "category": "סרטים וסדרות (Movies & Series)",
+    "categoryEn": "movies",
+    "url": "http://stream.mcquack.net/379/index.m3u8",
+    "logo": "assets/logos/hot_zone.png",
+    "badge": "HD",
+    "desc": "ערוץ סדרות הפעולה, המתח והאקשן המוביל של HOT בישראל",
+    "lang": "he",
+    "country": "IL",
+    "countryHe": "ישראל",
+    "number": 524,
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "סריקת ערוצים מאומתת",
+      "web": "❌ רק באפליקציה (HTTP)"
+    },
+    "backups": [],
+    "fallbackUrls": []
+  },
+  {
+    "id": "yam_tichoni_mc",
+    "name": "הערוץ הים תיכוני HD (Yam Tichoni)",
+    "title": "ערוץ הים תיכוני שידור חי",
+    "category": "סרטים וסדרות (Movies & Series)",
+    "categoryEn": "series",
+    "url": "http://stream.mcquack.net/46/index.m3u8",
+    "logo": "assets/logos/yam_tichoni_israel.png",
+    "badge": "HD",
+    "desc": "ערוץ הסדרות הטורקיות והים תיכוניות המוביל בישראל",
+    "lang": "he",
+    "country": "IL",
+    "countryHe": "ישראל",
+    "number": 525,
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "סריקת ערוצים מאומתת",
+      "web": "❌ רק באפליקציה (HTTP)"
+    },
+    "backups": [],
+    "fallbackUrls": []
+  },
+  {
+    "id": "channel24_mc",
+    "name": "ערוץ 24 הישראלי HD (Music 24)",
+    "title": "ערוץ 24 שידור ישיר",
+    "category": "מוזיקה (Music TV)",
+    "categoryEn": "music",
+    "url": "http://stream.mcquack.net/42/index.m3u8",
+    "logo": "assets/logos/channel24_israel.png",
+    "badge": "HD",
+    "desc": "ערוץ המוזיקה והבידור הישראלי 24 – הופעות, קליפים ומוזיקה ישראלית 24/7",
+    "lang": "he",
+    "country": "IL",
+    "countryHe": "ישראל",
+    "number": 526,
+    "src": {
+      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+      "kind": "restream",
+      "host": "stream.mcquack.net",
+      "found": "סריקת ערוצים מאומתת",
+      "web": "❌ רק באפליקציה (HTTP)"
+    },
+    "backups": [],
+    "fallbackUrls": []
+  },
+  {
+    "id": "kabbalah_tv_rus",
+    "name": "ערוץ קבלה לעם ברוסית HD",
+    "title": "Kabbalah TV Russian Israel",
+    "category": "מסורת וקהילה",
+    "categoryEn": "heritage",
+    "url": "https://edge3.uk.kab.tv/live/tv66-rus-high/playlist.m3u8",
+    "logo": "assets/logos/kabbalah_tv_ru_il.png",
+    "badge": "HD",
+    "desc": "שידורי ערוץ קבלה לעם מישראל בשפה הרוסית – שיעורים, ראיונות ושידורים חיים",
+    "lang": "ru",
+    "country": "IL",
+    "countryHe": "ישראל",
+    "number": 527,
+    "src": {
+      "by": "קבלה לעם – שרת רשמי",
+      "kind": "official",
+      "host": "edge3.uk.kab.tv",
+      "found": "סריקת ערוצים מאומתת",
+      "web": "✅"
+    },
+    "backups": [],
+    "fallbackUrls": []
+  },
+  {
+    "id": "karaoke_il",
+    "name": "ערוץ הקריוקי הישראלי HD",
+    "title": "ערוץ הקריוקי HD",
+    "category": "ערוצי ישראל - שידור חי",
+    "categoryEn": "israel",
+    "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/karaoke/live.livx/playlist.m3u8",
+    "logo": "assets/logos/karaoke_il.png",
+    "badge": "FHD",
+    "desc": "ערוץ הקריוקי הישראלי – להיטים ישראליים ובינלאומיים עם מילים לשירה בסלון 24/7",
+    "lang": "he",
+    "country": "IL",
+    "countryHe": "ישראל",
+    "number": 528,
+    "src": {
+      "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
+      "kind": "official",
+      "host": "d1zqtf09wb8nt5.cloudfront.net",
+      "found": "רשימה ידנית (גרסה קודמת)",
+      "web": "✅"
+    },
+    "fallbackUrls": [],
+    "backups": []
   }
 ]

@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_makan_33",
+    "type": "tv",
+    "name": "33. ערוץ מכאן 33 FHD",
+    "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/makan33.png",
+    "posterShape": "landscape",
+    "logo": "https://dor2500.github.io/israel-tv-plus/assets/logos/makan33.png",
+    "background": "https://dor2500.github.io/israel-tv-plus/assets/logos/makan33.png",
+    "description": "ערוץ הטלוויזיה הציבורי מכאן 33 של תאגיד השידור הישראלי כאן – שידורי חדשות, תרבות וסדרות בערבית ובעברית\n\n📡 מקור השידור: כאן – תאגיד השידור (CDN רשמי)\n✅ שידור רשמי ישיר",
+    "genres": [
+      "ערוצי ישראל - שידור חי",
+      "ישראל"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "ישראל"
+  }
+}

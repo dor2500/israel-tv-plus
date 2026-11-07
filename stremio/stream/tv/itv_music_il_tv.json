@@ -3,7 +3,7 @@
     {
       "name": "ישראל TV+\n[FHD ראשי]",
       "title": "ערוץ מוזיקה il HD\n📡 FreeTV – השידור הרשמי (AWS CloudFront)\n✅ שידור רשמי ישיר",
-      "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/music_il/live.livx/playlist.m3u8",
+      "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/music_il/live.livx/playlist.m3u8?bitrate=2928000&audioId=1&videoId=4",
       "behaviorHints": {
         "bingeGroup": "itv-live"
       }
