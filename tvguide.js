@@ -91,7 +91,11 @@ window.ITVGuide = function (api) {
     return d.toDateString() === today.toDateString() ? 'היום' : 'יום ' + DAYS[d.getDay()];
   }
   function logo(ch) {
-    return '<img class="tv-logo" alt="" src="' + esc(api.logoUrl(ch)) + '" onerror="this.style.visibility=\'hidden\'">';
+    if (!ch) return '';
+    var rel = (ch.logo || '').replace(/^\/+/, '');
+    var local = (window.ITV_BASE || '') + rel;
+    var remote = 'https://dor2500.github.io/israel-tv-plus/' + rel;
+    return '<img class="tv-logo" alt="" src="' + esc(local) + '" onerror="if(this.src!=\'' + esc(remote) + '\'){this.src=\'' + esc(remote) + '\';}else{this.style.visibility=\'hidden\';}">';
   }
   // A programme's own picture when the feed has one, otherwise the channel logo on a dark card.
   function poster(ch, p) {

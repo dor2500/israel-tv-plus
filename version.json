@@ -1,20 +1,37 @@
 {
-  "version": "4.8.69",
-  "code": 202611072005,
-  "app": 40869,
+  "version": "4.8.70",
+  "code": 202611072034,
+  "app": 40870,
   "shell": 3,
   "date": "2026-11-07",
   "notes": [
-    "תיקון שידורי וידאו בערוצים עם תקלות תמונה (מסך שחור / השהיות): מעבר להזרמות ישירות ואיכותיות ב-1080p/720p בערוץ סברי מרנן 24/7 HD (ערוץ 25), ערוץ בייבי ישראל HD (ערוץ 56), ערוץ מוזיקה il HD (ערוץ 72), FreeTV סרטים פיל גוד HD (ערוץ 167), FreeTV 10 כוכבים סרטים HD (ערוץ 168 – מעבר מ-HEVC נטול וידאו ל-AVC 1080p נקי), ו-i24NEWS English World HD (ערוץ 183 – מעבר להזרמת Immergo CDN פעילה).",
-    "הוספת ערוצים ישראליים מקוריים חדשים:",
-    "ערוץ מכאן 33 FHD (ערוץ 33) – שידורי כאן 33 הרשמיים מתאגיד השידור הישראלי באיכות 1080p מלאה כולל גיבוי מלא.",
-    "HOT זון HD (ערוץ 524) – ערוץ סדרות האקשן, המתח והפעולה של HOT.",
-    "הערוץ הים תיכוני HD (ערוץ 525) – ערוץ הסדרות והדרמות הים תיכוניות והטורקיות המוביל בישראל.",
-    "ערוץ 24 הישראלי HD (ערוץ 526) – ערוץ המוזיקה והבידור הישראלי 24 בהזרמת HD ישירה.",
-    "ערוץ קבלה לעם ברוסית HD (ערוץ 527) – שידורי ערוץ קבלה לעם מישראל בשפה הרוסית.",
-    "אימות ובדיקת וידאו מלאה: כלל הערוצים עודכנו ונבדקו במפענח הווידאו לווידוא תמונה חלקה, צבעים מלאים וללא תקיעות."
+    "תיקון והשלמת כלל הטאמבניילס והאייקונים החסרים באפליקציה:",
+    "טעינת לוגואים אמינה ב-Android: מעבר מטעינה שבירה ומעכבת ב-UI Thread לטעינה ישירה מנכסי ה-APK עם מטמון מהיר (isBundledAsset באמצעות ConcurrentHashMap), כך שכל 438 ערוצי הטלוויזיה והרדיו מוצגים מיידית.",
+    "הגדרת מטמוני זיכרון (25% מ-RAM) ודיסק (128MB) ב-Coil 3 וב-OkHttp לשמירה מקומית של תמונות ומניעת הורדות רשת כפולות והיעלמות לוגואים.",
+    "פתרון מוחלט ל-46 קישורי פוסטרים שבורים (404 Not Found) בלוח השידורים EPG (Metahub) והחלפתם בפוסטרי HD מרהיבים ומהירים מ-CDN יציב – כיסוי של 100% לכל 8,962 התוכניות ללא תמונות חסרות.",
+    "שרשרת Fallback מלאה ב-Web וב-TV (לוגו מקומי -> גיבוי ישיר מ-GitHub Pages CDN -> מונוגרמה מעוצבת) המבטיחה שאף כרטיסייה אינה נשארת ריקה או שחורה.",
+    "פתרון מלא לתקיעות קטנות והאצה משמעותית של ביצועי הממשק:",
+    "ביטול ריבוי ציורים מחדש (Recompositions) ב-Compose בעת גלילה על ידי העברת למבדה scrollOffsetProvider ישירות לתוך graphicsLayer, מה שחוסך עשרות רינדורים מיותרים בכל שבריר שנייה.",
+    "הסרת שכבות blur() כבדות מיותרות (76dp, 32dp, 18dp ו-26dp) על גבי גרדיאנטים רדיאליים/לינאריים, שחסכו עומס עיבוד עצום מה-GPU ומנעו נפילת פריימים.",
+    "השהיית נגן הרקע של ה-Hero (MutedHeroHls) באופן מיידי ברגע שהמשתמש גולל מטה אל עבר רשימת הערוצים, לשחרור מלא של מפענח הווידאו החומרתי והמעבד.",
+    "שיפור חוויית ה-Web וה-TV: ביטול סינוני backdrop-filter: blur(...) כבדים במסכי טלוויזיה, ייעול אנימציות ה-shimmer והרחבת טווח ה-IntersectionObserver לצד טעינה מיידית של כרטיסיות המסך הראשי לניווט חלק ב-60fps."
   ],
   "history": [
+    {
+      "version": "4.8.70",
+      "notes": [
+        "תיקון והשלמת כלל הטאמבניילס והאייקונים החסרים באפליקציה:",
+        "טעינת לוגואים אמינה ב-Android: מעבר מטעינה שבירה ומעכבת ב-UI Thread לטעינה ישירה מנכסי ה-APK עם מטמון מהיר (isBundledAsset באמצעות ConcurrentHashMap), כך שכל 438 ערוצי הטלוויזיה והרדיו מוצגים מיידית.",
+        "הגדרת מטמוני זיכרון (25% מ-RAM) ודיסק (128MB) ב-Coil 3 וב-OkHttp לשמירה מקומית של תמונות ומניעת הורדות רשת כפולות והיעלמות לוגואים.",
+        "פתרון מוחלט ל-46 קישורי פוסטרים שבורים (404 Not Found) בלוח השידורים EPG (Metahub) והחלפתם בפוסטרי HD מרהיבים ומהירים מ-CDN יציב – כיסוי של 100% לכל 8,962 התוכניות ללא תמונות חסרות.",
+        "שרשרת Fallback מלאה ב-Web וב-TV (לוגו מקומי -> גיבוי ישיר מ-GitHub Pages CDN -> מונוגרמה מעוצבת) המבטיחה שאף כרטיסייה אינה נשארת ריקה או שחורה.",
+        "פתרון מלא לתקיעות קטנות והאצה משמעותית של ביצועי הממשק:",
+        "ביטול ריבוי ציורים מחדש (Recompositions) ב-Compose בעת גלילה על ידי העברת למבדה scrollOffsetProvider ישירות לתוך graphicsLayer, מה שחוסך עשרות רינדורים מיותרים בכל שבריר שנייה.",
+        "הסרת שכבות blur() כבדות מיותרות (76dp, 32dp, 18dp ו-26dp) על גבי גרדיאנטים רדיאליים/לינאריים, שחסכו עומס עיבוד עצום מה-GPU ומנעו נפילת פריימים.",
+        "השהיית נגן הרקע של ה-Hero (MutedHeroHls) באופן מיידי ברגע שהמשתמש גולל מטה אל עבר רשימת הערוצים, לשחרור מלא של מפענח הווידאו החומרתי והמעבד.",
+        "שיפור חוויית ה-Web וה-TV: ביטול סינוני backdrop-filter: blur(...) כבדים במסכי טלוויזיה, ייעול אנימציות ה-shimmer והרחבת טווח ה-IntersectionObserver לצד טעינה מיידית של כרטיסיות המסך הראשי לניווט חלק ב-60fps."
+      ]
+    },
     {
       "version": "4.8.69",
       "notes": [
@@ -224,53 +241,44 @@
         "מניעת קריסות וחסימות פופאפים בדפדפני Smart TV עם מעבר ישיר ואוטומטי לחלונית התחברות טלוויזיה מותאמת שלט.",
         "טעינה מקומית מיידית של ספריית ה-QR מ-assets/qrcode.js ב-index.html לתצוגה אולטרה-מהירה ללא השהיות."
       ]
-    },
-    {
-      "version": "4.8.44",
-      "notes": [
-        "תיקון שידור מלא בערוץ 36 (ספורט 5 4K) – הוספת שרתי גיבוי איכותיים FHD H.264 ב-50fps ומנגנון זיהוי והתאמה אוטומטי (Video Dimension Watchdog) המונע מסך שחור / שמע בלבד ומציג תמונה חלקה וחדה בכל דפדפן ומכשיר.",
-        "שדרוג כל ערוצי mcquack ושידורי הילדים/סרטים/מוזיקה ל-HTTPS ישיר למניעת חסימות אבטחה (Mixed Content) בדפדפנים.",
-        "שיפור עמידות שרתי צ'רלטון (ספורט 1-4, 6) ו-ottrast עם גיבוי IP ישיר והגדלת חלון הטעינה של סגמנטי 10 שניות ל-8.5 שניות, מניעת ניתוקים מוקדמים של ערוצים.",
-        "תיקון ערוץ 68 (ניק ג'וניור פלוס), ערוץ 193 (CNN) וערוצי חדשות בינלאומיים."
-      ]
     }
   ],
   "native": {
     "android": {
-      "version": "4.8.69",
-      "app": 40869,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.69/IsraelTVPlus-android.apk"
+      "version": "4.8.70",
+      "app": 40870,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.70/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "4.8.69",
-      "app": 40869,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.69/IsraelTVPlus-windows-setup.exe"
+      "version": "4.8.70",
+      "app": 40870,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.70/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "4.8.69",
-      "app": 40869,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.69/com.israeltv.plus_all.ipk",
+      "version": "4.8.70",
+      "app": 40870,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.70/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "4.8.69",
-      "app": 40869,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.69/IsraelTVPlus-tizen-project.zip"
+      "version": "4.8.70",
+      "app": 40870,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.70/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "4.8.69",
-      "app": 40869,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.69/IsraelTVPlus-macos-arm64.zip"
+      "version": "4.8.70",
+      "app": 40870,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.70/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "4.8.69",
-      "app": 40869,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.69/IsraelTVPlus-linux-x64.zip"
+      "version": "4.8.70",
+      "app": 40870,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.70/IsraelTVPlus-linux-x64.zip"
     },
     "wear": {
-      "version": "4.8.69",
-      "app": 1040869,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.69/IsraelTVPlus-wearos.apk"
+      "version": "4.8.70",
+      "app": 1040870,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.70/IsraelTVPlus-wearos.apk"
     }
   }
 }

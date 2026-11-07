@@ -169,10 +169,8 @@ fun HomeScreen(
     val visibleCategories = if (macroCategory == null) pool else pool.filter { it.name == macroCategory }
 
     // Parallax offset derived from the LazyColumn's first item scroll position
-    val heroScrollPx by remember(listState) {
-        derivedStateOf {
-            if (listState.firstVisibleItemIndex == 0) listState.firstVisibleItemScrollOffset.toFloat() else 900f
-        }
+    val heroScrollProvider = remember(listState) {
+        { if (listState.firstVisibleItemIndex == 0) listState.firstVisibleItemScrollOffset.toFloat() else 900f }
     }
     var selectedVodSeries by remember { mutableStateOf<VodSeries?>(null) }
 
@@ -198,7 +196,7 @@ fun HomeScreen(
                 featured = heroFeatured,
                 prefs = prefs,
                 logo = logo,
-                scrollOffsetPx = heroScrollPx,
+                scrollOffsetProvider = heroScrollProvider,
                 topInset = padding.calculateTopPadding(),
                 onPlay = { onPlay(it, heroFeatured) },
                 onInfo = onInfo,
@@ -372,7 +370,7 @@ private fun HeroPager(
     featured: List<Channel>,
     prefs: AppPrefs,
     logo: (Channel) -> String,
-    scrollOffsetPx: Float,
+    scrollOffsetProvider: () -> Float,
     topInset: androidx.compose.ui.unit.Dp,
     onPlay: (Channel) -> Unit,
     onInfo: (Channel) -> Unit,
@@ -383,7 +381,9 @@ private fun HeroPager(
     LaunchedEffect(pager.settledPage, pager.isScrollInProgress) {
         if (pager.isScrollInProgress) return@LaunchedEffect
         delay(8000)
-        pager.animateScrollToPage((pager.currentPage + 1) % featured.size)
+        if (scrollOffsetProvider() < 250f) {
+            pager.animateScrollToPage((pager.currentPage + 1) % featured.size)
+        }
     }
     Box(modifier.padding(bottom = 8.dp)) {
         HorizontalPager(pager, key = { featured[it].id }) { page ->
@@ -393,7 +393,7 @@ private fun HeroPager(
                 logo = logo(ch),
                 favorite = prefs.isFavorite(ch.id),
                 playBackground = page == pager.settledPage,
-                scrollOffsetPx = scrollOffsetPx,
+                scrollOffsetProvider = scrollOffsetProvider,
                 topInset = topInset,
                 onPlay = onPlay,
                 onInfo = onInfo,
@@ -428,6 +428,7 @@ private fun HeroPager(
 @Composable
 private fun MutedHeroHls(
     channel: Channel,
+    scrollOffsetProvider: () -> Float,
     onFirstFrame: () -> Unit,
     onError: () -> Unit,
     modifier: Modifier = Modifier,
@@ -449,6 +450,16 @@ private fun MutedHeroHls(
                 repeatMode = Player.REPEAT_MODE_ONE
                 volume = 0f
             }
+    }
+
+    val isScrolledAway = scrollOffsetProvider() > 480f
+    LaunchedEffect(isScrolledAway, player) {
+        if (isScrolledAway) {
+            player.pause()
+        } else {
+            player.volume = 0f
+            player.play()
+        }
     }
 
     val candidates = remember(channel.id, channel.url, channel.fallbackUrls, channel.backups) { channel.allCandidateUrls() }
@@ -588,8 +599,7 @@ private fun HeroStaticFallbackPoster(
                     .padding(top = topInset * 0.45f)
                     .fillMaxWidth(0.85f)
                     .height(220.dp)
-                    .blur(26.dp)
-                    .graphicsLayer { alpha = 0.42f },
+                    .graphicsLayer { alpha = 0.38f },
                 contentScale = ContentScale.Fit,
             )
         }
@@ -622,7 +632,7 @@ private fun HeroPage(
     logo: String,
     favorite: Boolean,
     playBackground: Boolean,
-    scrollOffsetPx: Float,
+    scrollOffsetProvider: () -> Float,
     topInset: androidx.compose.ui.unit.Dp,
     onPlay: (Channel) -> Unit,
     onInfo: (Channel) -> Unit,
@@ -639,7 +649,6 @@ private fun HeroPage(
     val d = LocalDimens.current
     // 82% of the viewport, within 360-760 dp
     val heroHeight = HeroHeight
-    val foregroundAlpha = (1f - (scrollOffsetPx / 260f)).coerceIn(0f, 1f)
 
     var videoReady by remember(ch.id, playBackground) { mutableStateOf(false) }
     var videoFailed by remember(ch.id, playBackground) { mutableStateOf(false) }
@@ -657,11 +666,10 @@ private fun HeroPage(
             .clip(HeroShape)
             .background(scheme.background)
     ) {
-        // Heavily blurred dynamic color Ambient Glow behind the Hero preview video (preserved untouched)
+        // Dynamic color Ambient Glow behind the Hero preview video (smooth radial gradient)
         Box(
             Modifier
                 .fillMaxSize()
-                .blur(76.dp)
                 .background(
                     Brush.radialGradient(
                         colors = listOf(
@@ -679,13 +687,14 @@ private fun HeroPage(
             Modifier
                 .fillMaxSize()
                 .graphicsLayer {
-                    translationY = scrollOffsetPx * 0.42f
-                    val s = 1f + (scrollOffsetPx / 2400f).coerceIn(0f, 0.10f)
+                    val offset = scrollOffsetProvider()
+                    translationY = offset * 0.42f
+                    val s = 1f + (offset / 2400f).coerceIn(0f, 0.10f)
                     scaleX = s
                     scaleY = s
                 }
         ) {
-            // Graceful degradation: static blurred hero poster shown while buffering or if video fails
+            // Graceful degradation: static hero poster shown while buffering or if video fails
             HeroStaticFallbackPoster(ch = ch, logo = logo, topInset = topInset)
 
             if (playBackground && !videoFailed && !ch.isRadio && (ch.url.contains(".m3u8", ignoreCase = true) || ch.auth == "mako")) {
@@ -696,17 +705,17 @@ private fun HeroPage(
                 ) {
                     MutedHeroHls(
                         channel = ch,
+                        scrollOffsetProvider = scrollOffsetProvider,
                         onFirstFrame = { videoReady = true },
                         onError = { videoFailed = true },
                         modifier = Modifier.fillMaxSize(),
                     )
-                    // Seamless Transition: gentle blur + ambient color glow + soft bottom edge fade
+                    // Seamless Transition: ambient color glow + soft bottom edge fade
                     Box(
                         Modifier
                             .align(Alignment.BottomCenter)
                             .fillMaxWidth()
                             .height(144.dp)
-                            .blur(18.dp)
                             .background(
                                 Brush.verticalGradient(
                                     0f to Color.Transparent,
@@ -756,7 +765,10 @@ private fun HeroPage(
                 .widthIn(max = d.heroContentMaxWidth)
                 .fillMaxWidth()
                 .padding(top = topInset + 8.dp, start = d.heroContentPadding, end = d.heroContentPadding, bottom = 28.dp)
-                .graphicsLayer { alpha = foregroundAlpha },
+                .graphicsLayer {
+                    val offset = scrollOffsetProvider()
+                    alpha = (1f - (offset / 260f)).coerceIn(0f, 1f)
+                },
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center,
         ) {
@@ -767,7 +779,6 @@ private fun HeroPage(
                 Box(
                     Modifier
                         .size(width = 180.dp, height = 80.dp)
-                        .blur(32.dp)
                         .background(
                             Brush.radialGradient(
                                 listOf(

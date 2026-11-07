@@ -245,8 +245,11 @@
     if (ch.logo) {
       if (/^https?:/i.test(ch.logo)) urls.push(ch.logo);
       else {
-        urls.push((window.ITV_BASE || '') + ch.logo);
-        if (!IS_SITE && !window.ITV_BASE) urls.push(REMOTE + ch.logo);
+        var rel = ch.logo.replace(/^\/+/, '');
+        var local = (window.ITV_BASE || '') + rel;
+        urls.push(local);
+        var remote = REMOTE + rel;
+        if (urls.indexOf(remote) === -1) urls.push(remote);
       }
     }
     var i = 0, box = img.parentNode;
@@ -287,11 +290,15 @@
     }
     img.__ch = ch;
     img.__mono = mono;
-    if (ch.logo && img.parentNode) img.parentNode.classList.add('loading');
     var h = hueOf(ch.id);
     mono.textContent = monogramText(ch);
     mono.style.background = 'linear-gradient(135deg, hsl(' + h + ',70%,42%), hsl(' + ((h + 40) % 360) + ',75%,30%))';
-    logoObserver.observe(img);
+    if (cards.length < 24) {
+      setLogo(img, mono, ch);
+    } else {
+      if (ch.logo && img.parentNode) img.parentNode.classList.add('loading');
+      logoObserver.observe(img);
+    }
   }
 
   var CAT_SHORT = { 'ילדים ונוער (בעברית)': 'ילדים בעברית', 'מנויים ואפליקציות (TV Apps)': 'מנויים ואפליקציות' };
