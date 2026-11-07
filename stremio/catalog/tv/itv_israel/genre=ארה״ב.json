@@ -1,26 +1,62 @@
 {
   "metas": [
     {
-      "id": "itv_pluto_history_docu_fhd",
+      "id": "itv_cartoon_network_hd",
       "type": "tv",
-      "name": "240. Pluto TV History FHD",
-      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/yes_docu_plus_il.png",
+      "name": "368. Cartoon Network HD (קארטון נטוורק)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/cartoon_network_hd.svg",
       "posterShape": "landscape",
-      "description": "ערוץ ההיסטוריה והדוקו של Pluto TV – סדרות תעודה מרתקות ב-Full HD\n\n📡 מקור השידור: CDN רשמי (HTTPS)\n✅ ערוץ FAST רשמי",
+      "description": "ערוץ האנימציה והסדרות המוביל בעולם Cartoon Network – שידור חי באיכות HD\n\n📡 מקור השידור: Cartoon Network Broadcast Stream",
       "genres": [
-        "טבע ודוקו",
+        "ילדים מהעולם",
         "ארה״ב"
       ]
     },
     {
-      "id": "itv_pluto_animals_nature_fhd",
+      "id": "itv_boomerang_hd",
       "type": "tv",
-      "name": "241. Pluto TV Animals & Nature FHD",
-      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/yes_docu_plus_il.png",
+      "name": "369. Boomerang HD (בומרנג)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/boomerang.png",
       "posterShape": "landscape",
-      "description": "עולם החי, הטבע והספארי ב-Full HD\n\n📡 מקור השידור: CDN רשמי (HTTPS)\n✅ ערוץ FAST רשמי",
+      "description": "ערוץ בומרנג – סדרות האנימציה והסרטים המצוירים הקלאסיים מבית Cartoon Network\n\n📡 מקור השידור: Boomerang Broadcast",
       "genres": [
-        "טבע ודוקו",
+        "ילדים מהעולם",
+        "ארה״ב"
+      ]
+    },
+    {
+      "id": "itv_disney_channel_global",
+      "type": "tv",
+      "name": "370. Disney Channel Global HD",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/disney.png",
+      "posterShape": "landscape",
+      "description": "ערוץ דיסני הבינלאומי – סדרות, סרטים ואנימציה של דיסני\n\n📡 מקור השידור: Disney Channel Stream",
+      "genres": [
+        "ילדים מהעולם",
+        "ארה״ב"
+      ]
+    },
+    {
+      "id": "itv_crunchyroll_anime",
+      "type": "tv",
+      "name": "371. Crunchyroll Anime HD",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/crunchyroll_anime.png",
+      "posterShape": "landscape",
+      "description": "ערוץ האנימה הרשמי של Crunchyroll 24/7 מבית סמסונג TV Plus\n\n📡 מקור השידור: Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "ילדים מהעולם",
+        "ארה״ב"
+      ]
+    },
+    {
+      "id": "itv_pbs_kids_hd",
+      "type": "tv",
+      "name": "372. PBS Kids HD",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/pbs_kids.png",
+      "posterShape": "landscape",
+      "description": "ערוץ הילדים החינוכי והפופולרי בארה״ב PBS Kids\n\n📡 מקור השידור: Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "ילדים מהעולם",
         "ארה״ב"
       ]
     }

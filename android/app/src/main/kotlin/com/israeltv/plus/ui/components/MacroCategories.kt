@@ -50,7 +50,7 @@ import com.israeltv.plus.data.Category
  * The four macro categories of the Kan Box reference. The five real categories of the catalog are mapped onto them by
  * their short Hebrew name ("סרטים וסדרות (Movies & Series)" -> "סרטים וסדרות"), and everything else lives behind "עוד...".
  */
-val MacroCategories = listOf("סרטים וסדרות", "ילדים ונוער", "ספורט")
+val MacroCategories = listOf("סרטים וסדרות", "ילדים ונוער", "ספורט", "ערוצי אוכל")
 
 private val PillShape = RoundedCornerShape(50)
 

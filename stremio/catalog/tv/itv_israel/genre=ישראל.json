@@ -1,14 +1,26 @@
 {
   "metas": [
     {
-      "id": "itv_yalduti_tv",
+      "id": "itv_radios_video",
       "type": "tv",
-      "name": "77. ערוץ ילדותי ישראלי HD (FreeTV Yalduti)",
-      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/yalduti_tv.png",
+      "name": "207. רדיוס 100FM – אולפן וידאו HD",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/radios_video.png",
       "posterShape": "landscape",
-      "description": "ערוץ שירי וסדרות ילדות ישראלית מבית FreeTV – קלאסיקות, שירי ילדות ישראלית, תוכניות אהובות וסדרות 24/7 ללא הפסקה.\n\n📡 מקור השידור: FreeTV – השידור הרשמי (AWS CloudFront)\n✅ שידור רשמי ישיר",
+      "description": "האולפן של רדיוס 100FM בשידור וידאו חי מהאולפן\n\n📡 מקור השידור: CyberCDN – ה-CDN של תחנות הרדיו עצמן\n✅ שידור רשמי ישיר",
       "genres": [
-        "ערוצי ילדים ונוער בעברית",
+        "מוזיקה",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_keshet_music_il",
+      "type": "tv",
+      "name": "387. ערוץ מוזיקה ישראלית 24/7 HD",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/keshet_music.png",
+      "posterShape": "landscape",
+      "description": "להיטי מוזיקה ישראלית מכל הזמנים, קליפים והופעות חיות 24 שעות ביממה.\n\n📡 מקור השידור: FreeTV – השידור הרשמי (AWS CloudFront)\n✅ שידור רשמי ישיר",
+      "genres": [
+        "מוזיקה",
         "ישראל"
       ]
     }

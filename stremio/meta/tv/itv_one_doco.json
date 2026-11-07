@@ -2,11 +2,11 @@
   "meta": {
     "id": "itv_one_doco",
     "type": "tv",
-    "name": "49. ערוץ ONE דוקו ספורט HD",
-    "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/one_sport.svg",
+    "name": "37. ערוץ ONE דוקו ספורט HD",
+    "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/one_doco_hd.png",
     "posterShape": "landscape",
-    "logo": "https://dor2500.github.io/israel-tv-plus/assets/logos/one_sport.svg",
-    "background": "https://dor2500.github.io/israel-tv-plus/assets/logos/one_sport.svg",
+    "logo": "https://dor2500.github.io/israel-tv-plus/assets/logos/one_doco_hd.png",
+    "background": "https://dor2500.github.io/israel-tv-plus/assets/logos/one_doco_hd.png",
     "description": "סרטי דוקומנטרי וסיפורי עומק של גדולי הספורטאים, מאחורי הקלעים של קבוצות ליגת העל ועולם הספורט הבינלאומי.\n\n📡 מקור השידור: FreeTV – השידור הרשמי (AWS CloudFront)\n✅ שידור רשמי ישיר",
     "genres": [
       "ספורט",

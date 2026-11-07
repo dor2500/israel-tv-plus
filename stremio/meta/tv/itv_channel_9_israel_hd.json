@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_channel_9_israel_hd",
+    "type": "tv",
+    "name": "513. ערוץ 9 ישראל HD",
+    "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/ch9.png",
+    "posterShape": "landscape",
+    "logo": "https://dor2500.github.io/israel-tv-plus/assets/logos/ch9.png",
+    "background": "https://dor2500.github.io/israel-tv-plus/assets/logos/ch9.png",
+    "description": "ערוץ 9 הישראלי המשדר חדשות, אקטואליה, תרבות ותוכן ישראלי ורוסי.\n\n📡 מקור השידור:",
+    "genres": [
+      "ערוצי ישראל - שידור חי",
+      "ישראל"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "ישראל"
+  }
+}

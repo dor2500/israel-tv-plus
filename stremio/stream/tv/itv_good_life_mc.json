@@ -1,0 +1,13 @@
+{
+  "streams": [
+    {
+      "name": "ישראל TV+\n[FHD ראשי]",
+      "title": "ערוץ החיים הטובים HD (Good Life)\n📡 \n",
+      "url": "http://stream.mcquack.net/47/index.m3u8",
+      "behaviorHints": {
+        "notWebReady": true,
+        "bingeGroup": "itv-live"
+      }
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_hop_kids_mc",
+    "type": "tv",
+    "name": "518. ערוץ הופ! ילדים HD (Hop! Kids)",
+    "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/hop_kids_israel.png",
+    "posterShape": "landscape",
+    "logo": "https://dor2500.github.io/israel-tv-plus/assets/logos/hop_kids_israel.png",
+    "background": "https://dor2500.github.io/israel-tv-plus/assets/logos/hop_kids_israel.png",
+    "description": "ערוץ הופ! המוביל בישראל לילדים וגיל הרך עם תוכניות מקור ושירים אהובים.\n\n📡 מקור השידור:",
+    "genres": [
+      "ילדים ונוער",
+      "ישראל"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "ישראל"
+  }
+}

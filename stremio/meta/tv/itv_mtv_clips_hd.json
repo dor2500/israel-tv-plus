@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_mtv_clips_hd",
+    "type": "tv",
+    "name": "397. MTV Hits & Clips HD",
+    "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/mtv_hits.png",
+    "posterShape": "landscape",
+    "logo": "https://dor2500.github.io/israel-tv-plus/assets/logos/mtv_hits.png",
+    "background": "https://dor2500.github.io/israel-tv-plus/assets/logos/mtv_hits.png",
+    "description": "ערוץ MTV להיטים וקליפים ברצף 24 שעות ביממה.\n\n📡 מקור השידור:",
+    "genres": [
+      "מוזיקה",
+      "ארה\"ב"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "ארה\"ב"
+  }
+}

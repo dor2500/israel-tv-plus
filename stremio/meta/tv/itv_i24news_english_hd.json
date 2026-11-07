@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_i24news_english_hd",
+    "type": "tv",
+    "name": "516. ערוץ i24NEWS אנגלית HD",
+    "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/i24news_en.png",
+    "posterShape": "landscape",
+    "logo": "https://dor2500.github.io/israel-tv-plus/assets/logos/i24news_en.png",
+    "background": "https://dor2500.github.io/israel-tv-plus/assets/logos/i24news_en.png",
+    "description": "ערוץ i24NEWS המשדר חדשות ואקטואליה בינלאומית וישראלית באנגלית.\n\n📡 מקור השידור:",
+    "genres": [
+      "חדשות מהעולם",
+      "ישראל"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "ישראל"
+  }
+}

@@ -3653,30 +3653,28 @@ body.design-paper .atv-epg-time { color: #4a4640; }
 body.design-paper .atv-epg-bar { background: rgba(26, 26, 26, .15); }
 
 /* ================================================================== TV / desktop home layout – classic design (webOS, Android TV, Windows)
-   Box(fillMaxSize) {
-     full-screen live preview / channel backdrop      – the background, as before
-     dark gradients at the top and bottom             – .atv-shade, for readable text
-     TopBar                    align(TopCenter)       – the category navigation, pinned to the top
-     InfoPanel                 align(TopEnd)          – right side, between the top bar and the grid: its box is
-                                                        bounded top AND bottom, so it can never reach the grid
-     Column(align BottomCenter) {
-       ChannelGrid             (fixed height)         – the horizontal shelves
-       ColorKeys               (Row)                  – the colour buttons, directly underneath the grid
+   Column(fillMaxSize) {
+     TopBar                                           – main categories navigation menu at the absolute TOP of the screen
+     Row(weight(1f).fillMaxWidth()) {
+       Column(weight(1f).fillMaxHeight()) {           – Left Side (EPG Grid + Action Buttons underneath)
+         ChannelGrid(weight(1f).fillMaxWidth())
+         ColorKeys(Row, fillMaxWidth())               – colored action buttons directly underneath the Left Side EPG Grid
+       }
+       InfoPanel(width(350.dp).fillMaxHeight())       – Right Side (strictly defined width, never overlaps the channel grid)
      }
-   }
-   Heights (rem): keys strip 5.6 at the very bottom, the grid 26 above it, a 1.2 gap, then the info panel. */
-body.tvui.design-classic .atv-pill { top: 2rem; }
+   } */
+body.tvui.design-classic .atv-pill { top: 1.6rem; }
 body.tvui.design-classic .atv-meta, body.tvui.design-classic.ui-large .atv-meta {
-  top: 8rem; bottom: 32.8rem; right: 4.5rem; width: 56rem; max-height: none; overflow: hidden; }
+  top: 7.6rem; bottom: 2.4rem; right: 3.6rem; width: 42rem; max-height: none; overflow: hidden; }
 body.tvui.design-classic .atv-mlogo { height: 6.4rem; }
-body.tvui.design-classic .atv-epg-box { max-width: 52rem; }
+body.tvui.design-classic .atv-epg-box { max-width: 100%; }
 body.tvui.design-classic .atv-shelves, body.tvui.design-classic.ui-xl .atv-shelves, body.tvui.design-classic.ui-xxl .atv-shelves {
-  top: auto; bottom: 5.6rem; left: 0; right: 0; height: 26rem; overflow: hidden; }
-body.tvui.design-classic .atv-colors { position: absolute; top: auto; left: 0; right: 0; bottom: 0; height: 5.6rem;
-  display: flex; align-items: center; justify-content: flex-end; padding: 0 4.5rem; z-index: 3; }
-/* search keeps its place in the info area; the keyboard under it stays above the grid */
-body.tvui.design-classic .atv-search, body.tvui.design-classic.ui-large .atv-search { top: 8.8rem; right: 4.5rem; }
-body.tvui.design-classic .atv-kb, body.tvui.design-classic.ui-large .atv-kb { top: 14.6rem; right: 4.5rem; max-height: calc(100% - 14.6rem - 32.8rem); overflow: hidden; }
+  top: 7.6rem; bottom: 6.4rem; left: 0; right: 47.6rem; height: auto; overflow-y: auto; overflow-x: hidden; }
+body.tvui.design-classic .atv-colors { position: absolute; top: auto; left: 0; right: 47.6rem; bottom: 0; height: 6.4rem;
+  display: flex; align-items: center; justify-content: center; padding: 0 3.2rem; z-index: 3; }
+/* search keeps its place in the info area; the keyboard under it stays inside the right panel */
+body.tvui.design-classic .atv-search, body.tvui.design-classic.ui-large .atv-search { top: 8.2rem; right: 3.6rem; width: 42rem; }
+body.tvui.design-classic .atv-kb, body.tvui.design-classic.ui-large .atv-kb { top: 14rem; right: 3.6rem; width: 42rem; max-height: calc(100% - 16.4rem); overflow: hidden; }
 
 /* ================================================================== settings: full screen on TV / desktop (every design)
    No card, no margins, no blurred frame: the side menu sits against the right edge, the content fills the rest. */

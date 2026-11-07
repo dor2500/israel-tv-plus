@@ -1,0 +1,13 @@
+{
+  "streams": [
+    {
+      "name": "ישראל TV+\n[FHD ראשי]",
+      "title": "ערוץ הופ! ילדים HD (Hop! Kids)\n📡 \n",
+      "url": "http://stream.mcquack.net/44/index.m3u8",
+      "behaviorHints": {
+        "notWebReady": true,
+        "bingeGroup": "itv-live"
+      }
+    }
+  ]
+}

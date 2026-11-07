@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_hidabroot_tv_hd",
+    "type": "tv",
+    "name": "514. ערוץ הידברות HD",
+    "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/hidabroot.png",
+    "posterShape": "landscape",
+    "logo": "https://dor2500.github.io/israel-tv-plus/assets/logos/hidabroot.png",
+    "background": "https://dor2500.github.io/israel-tv-plus/assets/logos/hidabroot.png",
+    "description": "שידורי ערוץ הידברות HD: הרצאות, תוכניות אירוח, חינוך ויהדות.\n\n📡 מקור השידור:",
+    "genres": [
+      "מסורת וקהילה",
+      "ישראל"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "ישראל"
+  }
+}

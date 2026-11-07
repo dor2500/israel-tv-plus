@@ -2,11 +2,11 @@
   "meta": {
     "id": "itv_pbs_kids_hd",
     "type": "tv",
-    "name": "412. PBS Kids HD",
-    "poster": "https://upload.wikimedia.org/wikipedia/commons/9/94/PBS_Kids_2022_logo.svg",
+    "name": "372. PBS Kids HD",
+    "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/pbs_kids.png",
     "posterShape": "landscape",
-    "logo": "https://upload.wikimedia.org/wikipedia/commons/9/94/PBS_Kids_2022_logo.svg",
-    "background": "https://upload.wikimedia.org/wikipedia/commons/9/94/PBS_Kids_2022_logo.svg",
+    "logo": "https://dor2500.github.io/israel-tv-plus/assets/logos/pbs_kids.png",
+    "background": "https://dor2500.github.io/israel-tv-plus/assets/logos/pbs_kids.png",
     "description": "ערוץ הילדים החינוכי והפופולרי בארה״ב PBS Kids\n\n📡 מקור השידור: Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk\n✅ ערוץ FAST רשמי",
     "genres": [
       "ילדים מהעולם",

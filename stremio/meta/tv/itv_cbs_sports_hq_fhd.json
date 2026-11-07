@@ -2,11 +2,11 @@
   "meta": {
     "id": "itv_cbs_sports_hq_fhd",
     "type": "tv",
-    "name": "407. CBS Sports HQ FHD",
-    "poster": "https://www.google.com/s2/favicons?domain=cbssports.com&sz=128",
+    "name": "367. CBS Sports HQ FHD",
+    "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/cbs_sports_hq_fhd.png",
     "posterShape": "landscape",
-    "logo": "https://www.google.com/s2/favicons?domain=cbssports.com&sz=128",
-    "background": "https://www.google.com/s2/favicons?domain=cbssports.com&sz=128",
+    "logo": "https://dor2500.github.io/israel-tv-plus/assets/logos/cbs_sports_hq_fhd.png",
+    "background": "https://dor2500.github.io/israel-tv-plus/assets/logos/cbs_sports_hq_fhd.png",
     "description": "חדשות ספורט, ליגת האלופות, NBA ותקצירים מסביב לשעון ב-Full HD.\n\n📡 מקור השידור: dai.google.com\n⚠️ ממסר צד שלישי",
     "genres": [
       "ספורט",

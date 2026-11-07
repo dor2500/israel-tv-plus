@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_food_channel_israel_hd",
+    "type": "tv",
+    "name": "410. ערוץ האוכל הישראלי HD (מבית החיים הטובים)",
+    "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/food_channel.png",
+    "posterShape": "landscape",
+    "logo": "https://dor2500.github.io/israel-tv-plus/assets/logos/food_channel.png",
+    "background": "https://dor2500.github.io/israel-tv-plus/assets/logos/food_channel.png",
+    "description": "ערוץ האוכל מבית החיים הטובים וענני תקשורת – שפים מובילים, מתכונים וסדנאות בישול ואפייה בעברית.\n\n📡 מקור השידור:",
+    "genres": [
+      "ערוצי אוכל",
+      "ישראל"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "ישראל"
+  }
+}

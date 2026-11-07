@@ -2,14 +2,14 @@
   "meta": {
     "id": "itv_cooking_panda_hd",
     "type": "tv",
-    "name": "211. Cooking Panda HD – מתכונים ובישול",
+    "name": "181. Cooking Panda HD – מתכונים ובישול",
     "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/cooking_panda_hd.png",
     "posterShape": "landscape",
     "logo": "https://dor2500.github.io/israel-tv-plus/assets/logos/cooking_panda_hd.png",
     "background": "https://dor2500.github.io/israel-tv-plus/assets/logos/cooking_panda_hd.png",
     "description": "ערוץ הבישול Cooking Panda – מתכונים יצירתיים, מנות מהירות וטיפים למטבח 24/7\n\n📡 מקור השידור: stream-us-east-1.getpublica.com\n⚠️ ממסר צד שלישי",
     "genres": [
-      "אוכל ובישול",
+      "ערוצי אוכל",
       "עולם"
     ],
     "releaseInfo": "LIVE",

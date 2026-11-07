@@ -2,11 +2,11 @@
   "meta": {
     "id": "itv_beinsports_xtra_fhd",
     "type": "tv",
-    "name": "400. beIN SPORTS XTRA FHD",
-    "poster": "https://www.google.com/s2/favicons?domain=beinsports.com&sz=128",
+    "name": "364. beIN SPORTS XTRA FHD",
+    "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/beinsports_xtra_fhd.png",
     "posterShape": "landscape",
-    "logo": "https://www.google.com/s2/favicons?domain=beinsports.com&sz=128",
-    "background": "https://www.google.com/s2/favicons?domain=beinsports.com&sz=128",
+    "logo": "https://dor2500.github.io/israel-tv-plus/assets/logos/beinsports_xtra_fhd.png",
+    "background": "https://dor2500.github.io/israel-tv-plus/assets/logos/beinsports_xtra_fhd.png",
     "description": "שידורי ספורט וכדורגל אירופאי ועולמי ב-Full HD.\n\n📡 מקור השידור: bein-xtra-bein.amagi.tv\n⚠️ ממסר צד שלישי",
     "genres": [
       "ספורט",

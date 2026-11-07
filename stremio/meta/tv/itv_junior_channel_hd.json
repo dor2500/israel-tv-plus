@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_junior_channel_hd",
+    "type": "tv",
+    "name": "404. ערוץ ג'וניור HD (Junior)",
+    "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/junior.png",
+    "posterShape": "landscape",
+    "logo": "https://dor2500.github.io/israel-tv-plus/assets/logos/junior.png",
+    "background": "https://dor2500.github.io/israel-tv-plus/assets/logos/junior.png",
+    "description": "📡 מקור השידור:",
+    "genres": [
+      "ילדים ונוער",
+      "ישראל"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "ישראל"
+  }
+}

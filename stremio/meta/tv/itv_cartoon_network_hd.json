@@ -2,11 +2,11 @@
   "meta": {
     "id": "itv_cartoon_network_hd",
     "type": "tv",
-    "name": "408. Cartoon Network HD (קארטון נטוורק)",
-    "poster": "https://upload.wikimedia.org/wikipedia/commons/8/80/Cartoon_Network_2010_logo.svg",
+    "name": "368. Cartoon Network HD (קארטון נטוורק)",
+    "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/cartoon_network_hd.svg",
     "posterShape": "landscape",
-    "logo": "https://upload.wikimedia.org/wikipedia/commons/8/80/Cartoon_Network_2010_logo.svg",
-    "background": "https://upload.wikimedia.org/wikipedia/commons/8/80/Cartoon_Network_2010_logo.svg",
+    "logo": "https://dor2500.github.io/israel-tv-plus/assets/logos/cartoon_network_hd.svg",
+    "background": "https://dor2500.github.io/israel-tv-plus/assets/logos/cartoon_network_hd.svg",
     "description": "ערוץ האנימציה והסדרות המוביל בעולם Cartoon Network – שידור חי באיכות HD\n\n📡 מקור השידור: Cartoon Network Broadcast Stream",
     "genres": [
       "ילדים מהעולם",

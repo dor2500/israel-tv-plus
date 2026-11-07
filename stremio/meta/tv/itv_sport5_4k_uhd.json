@@ -2,12 +2,12 @@
   "meta": {
     "id": "itv_sport5_4k_uhd",
     "type": "tv",
-    "name": "135. ספורט 5 4K UHD",
+    "name": "106. ספורט 5 4K UHD",
     "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/sport5.png",
     "posterShape": "landscape",
     "logo": "https://dor2500.github.io/israel-tv-plus/assets/logos/sport5.png",
     "background": "https://dor2500.github.io/israel-tv-plus/assets/logos/sport5.png",
-    "description": "ספורט 5 4K – המשחקים המרכזיים מליגת האלופות והיורוליג באיכות שידור Ultra HD\n\n📡 מקור השידור: FreeTV – השידור הרשמי (AWS CloudFront)\n✅ שידור רשמי ישיר",
+    "description": "שידורי ספורט ישירים בטכנולוגיית 4K Ultra HD ו-FHD H.264 מלא: ליגת האלופות, ליגת העל בכדורגל, מכבי תל אביב ביורוליג והמשחקים המרכזיים בחדות שיא עם גיבוי FHD אוטומטי.\n\n📡 מקור השידור: FreeTV – השידור הרשמי (AWS CloudFront)\n✅ שידור רשמי ישיר",
     "genres": [
       "ספורט",
       "ישראל"

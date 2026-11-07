@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_hot_doco_hd",
+    "type": "tv",
+    "name": "402. HOT דוקו HD (HOT Doco)",
+    "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/hot_8.png",
+    "posterShape": "landscape",
+    "logo": "https://dor2500.github.io/israel-tv-plus/assets/logos/hot_8.png",
+    "background": "https://dor2500.github.io/israel-tv-plus/assets/logos/hot_8.png",
+    "description": "📡 מקור השידור:",
+    "genres": [
+      "טבע ודוקו",
+      "עולם"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "עולם"
+  }
+}

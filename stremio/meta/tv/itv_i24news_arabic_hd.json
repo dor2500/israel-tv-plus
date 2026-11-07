@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_i24news_arabic_hd",
+    "type": "tv",
+    "name": "515. ערוץ i24NEWS ערבית HD",
+    "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/i24news_ar.png",
+    "posterShape": "landscape",
+    "logo": "https://dor2500.github.io/israel-tv-plus/assets/logos/i24news_ar.png",
+    "background": "https://dor2500.github.io/israel-tv-plus/assets/logos/i24news_ar.png",
+    "description": "חדשות ואקטואליה ישראלית ובינלאומית בערבית מאולפני נמל יפו.\n\n📡 מקור השידור:",
+    "genres": [
+      "חדשות מהעולם",
+      "ישראל"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "ישראל"
+  }
+}

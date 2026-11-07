@@ -3,7 +3,7 @@
     {
       "name": "ישראל TV+\n[FHD ראשי]",
       "title": "Sky Sports F1 HD (פורמולה 1 שידור חי)\n📡 Sky Sports F1 Playout\n",
-      "url": "https://cdn.stmify.com/out/v1/SKY_SPORTS_F1/index.m3u8",
+      "url": "https://mvg-mv-xumo.otteravision.com/mvg/mv/mv.m3u8",
       "behaviorHints": {
         "bingeGroup": "itv-live"
       }

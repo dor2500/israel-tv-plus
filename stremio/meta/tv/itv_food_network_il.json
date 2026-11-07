@@ -2,14 +2,14 @@
   "meta": {
     "id": "itv_food_network_il",
     "type": "tv",
-    "name": "203. ערוץ האוכל Food Network HD",
-    "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/food_network_il.png",
+    "name": "173. ערוץ האוכל HD (Food Network / החיים הטובים)",
+    "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/food_channel.png",
     "posterShape": "landscape",
-    "logo": "https://dor2500.github.io/israel-tv-plus/assets/logos/food_network_il.png",
-    "background": "https://dor2500.github.io/israel-tv-plus/assets/logos/food_network_il.png",
-    "description": "ערוץ האוכל Food Network עם תרגום לעברית – תוכניות שף, אפייה ובישול עולמי\n\n📡 מקור השידור: פרטנר TV וסלקום – שרתי שידור ישראליים\n✅ שידור רשמי ישיר",
+    "logo": "https://dor2500.github.io/israel-tv-plus/assets/logos/food_channel.png",
+    "background": "https://dor2500.github.io/israel-tv-plus/assets/logos/food_channel.png",
+    "description": "ערוץ האוכל הישראלי מבית החיים הטובים וענני תקשורת – שפים ישראליים, מתכונים וקולינריה בעברית\n\n📡 מקור השידור: פרטנר TV וסלקום – שרתי שידור ישראליים\n✅ שידור רשמי ישיר",
     "genres": [
-      "אוכל ובישול",
+      "ערוצי אוכל",
       "ישראל"
     ],
     "releaseInfo": "LIVE",

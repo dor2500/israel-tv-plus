@@ -1,14 +1,25 @@
 {
-  "version": "4.8.63",
-  "code": 202611062018,
-  "app": 40863,
+  "version": "4.8.64",
+  "code": 202611071301,
+  "app": 40864,
   "shell": 3,
-  "date": "2026-11-06",
+  "date": "2026-11-07",
   "notes": [
-    "נגן בטלפון ובטאבלט: אותו עיצוב כמו בטלוויזיה. התוכנית המשודרת בכרטיס גדול במרכז עם פס התקדמות ושעות, התוכנית הבאה בכרטיס קטן לידה, \"לתכנית הקודמת\" בצד השני, כפתור \"אפשרויות\" אחד מתחת, השעון בפינה השמאלית ורשימת ערוצים עם מספרים בצד ימין.",
-    "בדיקת עדכונים: כשיש גרסה חדשה של האפליקציה, לחיצה אחת על הכפתור פותחת ישר את חלון העדכון (קודם היה צריך ללחוץ פעמיים)."
+    "עדכון מקורות שידור וערוצי ילדים, סרטים, ספורט ואוכל: דיסני ג'וניור בעברית (ערוץ 49), ניקלודיאון ישראל (ערוץ 50), הפרדה מלאה בין ערוץ זום (ערוץ 53) לזום טון (ערוץ 519), HOT Cinema Family (ערוץ 58), HOT Buzz (ערוץ 60), הופ! ילדות ישראלית בשידור חי, ספורט 6 (ערוץ 511), ערוץ האוכל Food Network (ערוץ 173) וקטגוריית \"ערוצי אוכל\" חדשה.",
+    "עיצוב מחדש של שכבת הנגן (Overlay) לטלוויזיה ולמצב רוחבי: סרגל שליטה תחתון עם גרדיאנט כהה, כרטיס תוכנית נוכחית מרכזי ובולט ולצידו כרטיס התוכנית הבאה, כפתור \"אפשרויות\" ממורכז מתחת לכרטיס הראשי ופס התקדמות מלא עם שעות השידור בתחתית.",
+    "סידור מסך הבית ולוח השידורים (EPG) ללא חפיפות: תפריט הקטגוריות בראש המסך, חלוקה אופקית בין רשת הערוצים משמאל לבין חלונית פרטי התוכנית ברוחב קבוע מימין, ושורת מקשי הפעולה הצבעוניים ישירות מתחת לרשת הערוצים.",
+    "מסך הגדרות במסך מלא ללא שוליים צפים ותמיכה מלאה בכפתור \"אחורה\" בעכבר במחשב לחזרה מהירה למסך הבית."
   ],
   "history": [
+    {
+      "version": "4.8.64",
+      "notes": [
+        "עדכון מקורות שידור וערוצי ילדים, סרטים, ספורט ואוכל: דיסני ג'וניור בעברית (ערוץ 49), ניקלודיאון ישראל (ערוץ 50), הפרדה מלאה בין ערוץ זום (ערוץ 53) לזום טון (ערוץ 519), HOT Cinema Family (ערוץ 58), HOT Buzz (ערוץ 60), הופ! ילדות ישראלית בשידור חי, ספורט 6 (ערוץ 511), ערוץ האוכל Food Network (ערוץ 173) וקטגוריית \"ערוצי אוכל\" חדשה.",
+        "עיצוב מחדש של שכבת הנגן (Overlay) לטלוויזיה ולמצב רוחבי: סרגל שליטה תחתון עם גרדיאנט כהה, כרטיס תוכנית נוכחית מרכזי ובולט ולצידו כרטיס התוכנית הבאה, כפתור \"אפשרויות\" ממורכז מתחת לכרטיס הראשי ופס התקדמות מלא עם שעות השידור בתחתית.",
+        "סידור מסך הבית ולוח השידורים (EPG) ללא חפיפות: תפריט הקטגוריות בראש המסך, חלוקה אופקית בין רשת הערוצים משמאל לבין חלונית פרטי התוכנית ברוחב קבוע מימין, ושורת מקשי הפעולה הצבעוניים ישירות מתחת לרשת הערוצים.",
+        "מסך הגדרות במסך מלא ללא שוליים צפים ותמיכה מלאה בכפתור \"אחורה\" בעכבר במחשב לחזרה מהירה למסך הבית."
+      ]
+    },
     {
       "version": "4.8.63",
       "notes": [
@@ -220,53 +231,44 @@
         "ב-Web וטלוויזיות: הרחבת מיפויי DVR לכלל ערוצי ישראל המובילים, חלון בחירת תוכניות מהשעות האחרונות, ניווט אינטואיטיבי בשלט/מקלדת, וחזרה מיידית לשידור החי.",
         "אריזת epg.json מובנה ב-assets של ה-APK לטעינה וצפייה מיידית ללא השהיית רשת."
       ]
-    },
-    {
-      "version": "4.8.38",
-      "notes": [
-        "הרחבת קטלוג ערוצי ישראל ל-434 ערוצים פעילים: הוספת 13 ערוצים ישראליים מובילים (ערוץ הכנסת HD, ערוץ 9 ישראל HD, עכשיו 14 מהיר, הידברות HD, i24NEWS ערבית ואנגלית, חינוכית HD, הופ! ילדים HD, זום HD, ויוה פרימיום HD, החיים הטובים HD, yes אקשן HD, HOT דרמה HD).",
-        "אימות פעילות 100% לכל 434 הערוצים בקטלוג.",
-        "עליית ערוצים מהירה במיוחד (Sub-5s Fast Startup): זמני טעינה מהירים (500ms startup buffer, 3.5s failover timeout) בעלייה ממוצעת של 0.5–2 שניות.",
-        "גיבוי משולש (Triple Route Redundancy) לערוצי הספורט (ספורט 1, 2, 3, 4, 5, 5 פלוס) וערוצי 12 ו-13."
-      ]
     }
   ],
   "native": {
     "android": {
-      "version": "4.8.63",
-      "app": 40863,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.63/IsraelTVPlus-android.apk"
+      "version": "4.8.64",
+      "app": 40864,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.64/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "4.8.63",
-      "app": 40863,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.63/IsraelTVPlus-windows-setup.exe"
+      "version": "4.8.64",
+      "app": 40864,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.64/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "4.8.63",
-      "app": 40863,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.63/com.israeltv.plus_all.ipk",
+      "version": "4.8.64",
+      "app": 40864,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.64/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "4.8.63",
-      "app": 40863,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.63/IsraelTVPlus-tizen-project.zip"
+      "version": "4.8.64",
+      "app": 40864,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.64/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "4.8.63",
-      "app": 40863,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.63/IsraelTVPlus-macos-arm64.zip"
+      "version": "4.8.64",
+      "app": 40864,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.64/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "4.8.63",
-      "app": 40863,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.63/IsraelTVPlus-linux-x64.zip"
+      "version": "4.8.64",
+      "app": 40864,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.64/IsraelTVPlus-linux-x64.zip"
     },
     "wear": {
-      "version": "4.8.63",
-      "app": 1040863,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.63/IsraelTVPlus-wearos.apk"
+      "version": "4.8.64",
+      "app": 1040864,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.64/IsraelTVPlus-wearos.apk"
     }
   }
 }

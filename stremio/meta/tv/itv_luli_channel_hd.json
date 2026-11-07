@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_luli_channel_hd",
+    "type": "tv",
+    "name": "406. ערוץ לולי לפעוטות HD (Luli)",
+    "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/luli_tv.png",
+    "posterShape": "landscape",
+    "logo": "https://dor2500.github.io/israel-tv-plus/assets/logos/luli_tv.png",
+    "background": "https://dor2500.github.io/israel-tv-plus/assets/logos/luli_tv.png",
+    "description": "📡 מקור השידור:",
+    "genres": [
+      "ילדים ונוער",
+      "ישראל"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "ישראל"
+  }
+}

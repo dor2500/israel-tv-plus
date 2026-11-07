@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_zoom_toon_il",
+    "type": "tv",
+    "name": "519. ערוץ זום טון HD (Zoom Toon)",
+    "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/zoom.png",
+    "posterShape": "landscape",
+    "logo": "https://dor2500.github.io/israel-tv-plus/assets/logos/zoom.png",
+    "background": "https://dor2500.github.io/israel-tv-plus/assets/logos/zoom.png",
+    "description": "ערוץ זום טון (Zoom Toon) – סדרות אנימציה, הרפתקאות וגיבורי על בדיבוב לעברית 24/7.\n\n📡 מקור השידור:",
+    "genres": [
+      "ילדים ונוער",
+      "ישראל"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "ישראל"
+  }
+}

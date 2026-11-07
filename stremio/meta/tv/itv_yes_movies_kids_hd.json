@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_yes_movies_kids_hd",
+    "type": "tv",
+    "name": "407. yes קולנוע ילדים HD (yes Movies Kids)",
+    "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/yes_movies_kids_il.png",
+    "posterShape": "landscape",
+    "logo": "https://dor2500.github.io/israel-tv-plus/assets/logos/yes_movies_kids_il.png",
+    "background": "https://dor2500.github.io/israel-tv-plus/assets/logos/yes_movies_kids_il.png",
+    "description": "📡 מקור השידור:",
+    "genres": [
+      "ילדים ונוער",
+      "ישראל"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "ישראל"
+  }
+}

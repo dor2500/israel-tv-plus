@@ -20,6 +20,14 @@ data class CatchupProgram(
 ) {
     val startMs: Long get() = startMin * 60_000L
     val endMs: Long get() = (startMin + durationMin) * 60_000L
+    val startTimeEpochMs: Long get() = startMs
+    val endTimeEpochMs: Long get() = endMs
+
+    val startTimeFormatted: String get() =
+        SimpleDateFormat("HH:mm", Locale.getDefault()).format(Date(startMs))
+
+    val endTimeFormatted: String get() =
+        SimpleDateFormat("HH:mm", Locale.getDefault()).format(Date(endMs))
 
     val isLiveNow: Boolean get() {
         val now = System.currentTimeMillis()
@@ -33,6 +41,8 @@ data class CatchupProgram(
         val elapsed = (System.currentTimeMillis() - startMs).coerceIn(0L, total)
         return (elapsed.toFloat() / total.toFloat()).coerceIn(0f, 1f)
     }
+
+    fun progressFraction(): Float = progressFraction
 
     val timeLabel: String get() {
         val sdf = SimpleDateFormat("HH:mm", Locale.getDefault())
@@ -238,4 +248,48 @@ object CatchupRepository {
     fun hasCatchup(channel: Channel): Boolean {
         return CatchupDvr.dvrUrlFor(channel) != null
     }
+
+    internal fun getCurrentAndNextProgramSync(channelId: String): Pair<CatchupProgram?, CatchupProgram?> {
+        val root = cachedEpgJson ?: return null to null
+        val channelsObj = root.optJSONObject("channels") ?: return null to null
+        val candidates = listOf(
+            channelId,
+            channelId.lowercase(),
+            channelId.replace("_hd", ""),
+            channelId.replace("_fhd", ""),
+            channelId.replace("_il", ""),
+        )
+        var arr: org.json.JSONArray? = null
+        for (cand in candidates) {
+            if (channelsObj.has(cand)) {
+                arr = channelsObj.optJSONArray(cand)
+                break
+            }
+        }
+        if (arr == null) return null to null
+        val nowMs = System.currentTimeMillis()
+        val programs = mutableListOf<CatchupProgram>()
+        for (i in 0 until arr.length()) {
+            val item = arr.optJSONArray(i) ?: continue
+            val start = item.optLong(0, 0L)
+            val dur = item.optInt(1, 0)
+            val title = item.optString(2, "")
+            val desc = item.optString(3, "")
+            val poster = item.optString(4, "")
+            if (title.isNotEmpty()) {
+                programs.add(CatchupProgram(start, dur, title, desc, poster))
+            }
+        }
+        val sorted = programs.sortedBy { it.startMin }
+        val currentIdx = sorted.indexOfFirst { nowMs in it.startMs..it.endMs }
+        if (currentIdx != -1) {
+            return sorted[currentIdx] to sorted.getOrNull(currentIdx + 1)
+        }
+        return null to sorted.firstOrNull { it.startMs > nowMs }
+    }
+}
+
+object CatchupManager {
+    fun getCurrentAndNextProgram(channelId: String): Pair<CatchupProgram?, CatchupProgram?> =
+        CatchupRepository.getCurrentAndNextProgramSync(channelId)
 }

@@ -2,14 +2,14 @@
   "meta": {
     "id": "itv_classic_comedy_il",
     "type": "tv",
-    "name": "182. ערוץ הקומדיות הקלאסיות HD",
-    "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/classic_comedy_il.png",
+    "name": "153. ערוץ הקומדיות הקלאסיות HD",
+    "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/reshet13_comedy_il.png",
     "posterShape": "landscape",
-    "logo": "https://dor2500.github.io/israel-tv-plus/assets/logos/classic_comedy_il.png",
-    "background": "https://dor2500.github.io/israel-tv-plus/assets/logos/classic_comedy_il.png",
-    "description": "ערוץ הקומדיות הקלאסיות – הסיטקומים והקומדיות האהובות מכל הזמנים עם כתוביות בעברית\n\n📡 מקור השידור: פרטנר TV וסלקום – שרתי שידור ישראליים\n✅ שידור רשמי ישיר",
+    "logo": "https://dor2500.github.io/israel-tv-plus/assets/logos/reshet13_comedy_il.png",
+    "background": "https://dor2500.github.io/israel-tv-plus/assets/logos/reshet13_comedy_il.png",
+    "description": "ערוץ הקומדיות הקלאסיות – סדרות הקומדיה האהובות מכל הזמנים, מערכונים נוסטלגיים וסרטי בורקס.\n\n📡 מקור השידור: פרטנר TV וסלקום – שרתי שידור ישראליים\n✅ שידור רשמי ישיר",
     "genres": [
-      "סרטים וסדרות",
+      "ערוצי ישראל - שידור חי",
       "ישראל"
     ],
     "releaseInfo": "LIVE",

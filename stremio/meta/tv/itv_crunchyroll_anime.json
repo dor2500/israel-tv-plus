@@ -2,11 +2,11 @@
   "meta": {
     "id": "itv_crunchyroll_anime",
     "type": "tv",
-    "name": "411. Crunchyroll Anime HD",
-    "poster": "https://upload.wikimedia.org/wikipedia/commons/0/08/Crunchyroll_Logo.png",
+    "name": "371. Crunchyroll Anime HD",
+    "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/crunchyroll_anime.png",
     "posterShape": "landscape",
-    "logo": "https://upload.wikimedia.org/wikipedia/commons/0/08/Crunchyroll_Logo.png",
-    "background": "https://upload.wikimedia.org/wikipedia/commons/0/08/Crunchyroll_Logo.png",
+    "logo": "https://dor2500.github.io/israel-tv-plus/assets/logos/crunchyroll_anime.png",
+    "background": "https://dor2500.github.io/israel-tv-plus/assets/logos/crunchyroll_anime.png",
     "description": "ערוץ האנימה הרשמי של Crunchyroll 24/7 מבית סמסונג TV Plus\n\n📡 מקור השידור: Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk\n✅ ערוץ FAST רשמי",
     "genres": [
       "ילדים מהעולם",

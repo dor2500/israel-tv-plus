@@ -55,8 +55,6 @@ http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32317/index.m3u8
 http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32159/index.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="ערוץ ההומור והצחוק HD" tvg-chno="29" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/humor_channel_il.png" group-title="ערוצי ישראל",ערוץ ההומור והצחוק HD
 http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32161/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ערוץ פודי Foody בישול ישראלי HD" tvg-chno="30" tvg-logo="https://dor2500.github.io/israel-tv-plus/playlist-logos/food_channel.png" group-title="ערוצי ישראל",ערוץ פודי Foody בישול ישראלי HD
-https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/foody/live.livx/playlist.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="ערוץ הקריוקי הישראלי HD" tvg-chno="33" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/karaoke_il.png" group-title="ערוצי ישראל",ערוץ הקריוקי הישראלי HD
 https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/karaoke/live.livx/playlist.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="ערוץ הסטייל והאופנה HD" tvg-chno="34" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/il_the_style_channel_hd_il.png" group-title="ערוצי ישראל",ערוץ הסטייל והאופנה HD
@@ -78,15 +76,15 @@ http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2364/index.m3u8
 #EXTINF:-1 tvg-id="DisneyChannel.il" tvg-name="ערוץ דיסני ישראל HD (Disney Channel)" tvg-chno="48" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/disney.png" group-title="ילדים ונוער (בעברית)",ערוץ דיסני ישראל HD (Disney Channel)
 http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2382/index.m3u8
 #EXTINF:-1 tvg-id="DisneyJunior.il" tvg-name="ערוץ דיסני ג'וניור ישראל HD (Disney Jr.)" tvg-chno="49" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/disney_junior.png" group-title="ילדים ונוער (בעברית)",ערוץ דיסני ג'וניור ישראל HD (Disney Jr.)
-http://88.212.15.50/live/test_disney_junior/playlist.m3u8
-#EXTINF:-1 tvg-id="Nickelodeon.il" tvg-name="ערוץ ניקלודיאון ישראל HD (TeenNick / Nickelodeon)" tvg-chno="50" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/nickelodeon.png" group-title="ילדים ונוער (בעברית)",ערוץ ניקלודיאון ישראל HD (TeenNick / Nickelodeon)
-http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32148/index.m3u8
+http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2333/index.m3u8
+#EXTINF:-1 tvg-id="Nickelodeon.il" tvg-name="ערוץ ניקלודיאון ישראל HD (Nickelodeon)" tvg-chno="50" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/nickelodeon.png" group-title="ילדים ונוער (בעברית)",ערוץ ניקלודיאון ישראל HD (Nickelodeon)
+http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32275/index.m3u8
 #EXTINF:-1 tvg-id="NickJr.il" tvg-name="ערוץ ניק ג'וניור ישראל HD (Nick Jr.)" tvg-chno="51" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/nick_jr.png" group-title="ילדים ונוער (בעברית)",ערוץ ניק ג'וניור ישראל HD (Nick Jr.)
 http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2337/index.m3u8
 #EXTINF:-1 tvg-id="TeenNick.il" tvg-name="ערוץ טין ניק ישראל HD (TeenNick)" tvg-chno="52" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/teennick.png" group-title="ילדים ונוער (בעברית)",ערוץ טין ניק ישראל HD (TeenNick)
 http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32148/index.m3u8
 #EXTINF:-1 tvg-id="Zoom.il" tvg-name="ערוץ זום ZOOM ילדים ונוער HD" tvg-chno="53" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/zoom.png" group-title="ילדים ונוער (בעברית)",ערוץ זום ZOOM ילדים ונוער HD
-http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2359/index.m3u8
+http://stream.mcquack.net/377/index.m3u8
 #EXTINF:-1 tvg-id="Junior.il" tvg-name="ערוץ ג'וניור HD (Junior)" tvg-chno="54" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/junior.png" group-title="ילדים ונוער (בעברית)",ערוץ ג'וניור HD (Junior)
 https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/junior/live.livx/playlist.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="ערוץ יויו HD (YoYo)" tvg-chno="55" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/yoyo_tv.png" group-title="ילדים ונוער (בעברית)",ערוץ יויו HD (YoYo)
@@ -504,7 +502,7 @@ https://ch16israel-cdn.encoders.immergo.tv/2/streamPlaylist.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="ערוץ i24NEWS עברית HD" tvg-chno="382" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/i24news_he.png" group-title="ערוצי ישראל",ערוץ i24NEWS עברית HD
 https://i24newshebrew-cdn.encoders.immergo.tv/master.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="ערוץ הופ! ילדות ישראלית HD" tvg-chno="383" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hop_yaldut.png" group-title="ילדים ונוער (בעברית)",ערוץ הופ! ילדות ישראלית HD
-http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2383/index.m3u8
+https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/yalduti/live.livx/playlist.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="ערוץ הופ! פלוס HD" tvg-chno="384" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hop_plus_kids_il.png" group-title="ילדים ונוער (בעברית)",ערוץ הופ! פלוס HD
 http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2338/index.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="FreeTV סרטי ילדים ומשפחה HD" tvg-chno="385" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/freetv_kids_family_il.png" group-title="ילדים ונוער (בעברית)",FreeTV סרטי ילדים ומשפחה HD
@@ -540,7 +538,7 @@ http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2355/index.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="ערוץ הלא TV HD (Hala TV)" tvg-chno="411" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hala_tv_il.png" group-title="ערוצי ישראל",ערוץ הלא TV HD (Hala TV)
 https://stream.panet.com/edge/halaTV/playlist.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="ערוץ הכנסת HD (Knesset Channel)" tvg-chno="99" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/knesset.png" group-title="ערוצי ישראל",ערוץ הכנסת HD (Knesset Channel)
-https://stream.mcquack.net/48/index.m3u8
+http://stream.mcquack.net/48/index.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="ערוץ 9 ישראל HD" tvg-chno="513" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/ch9.png" group-title="ערוצי ישראל",ערוץ 9 ישראל HD
 https://contact.gostreaming.tv/Con-11/index.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="ערוץ 14 החדשות עכשיו (Now 14 Live)" tvg-chno="140" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/now14.png" group-title="ערוצי ישראל",ערוץ 14 החדשות עכשיו (Now 14 Live)
@@ -548,10 +546,10 @@ https://r.il.cdn-redge.media/livehls/oil/ch14/live/ch14/live.livx/playlist.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="ערוץ הידברות HD" tvg-chno="514" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hidabroot.png" group-title="מסורת וקהילה",ערוץ הידברות HD
 https://cdn.cybercdn.live/HidabrootIL/Live97/playlist.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="כאן חינוכית HD (חינוכית ילדים)" tvg-chno="517" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/kan_hinuchit.png" group-title="ילדים ונוער (בעברית)",כאן חינוכית HD (חינוכית ילדים)
-https://stream.mcquack.net/378/index.m3u8
+http://stream.mcquack.net/378/index.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="ערוץ הופ! ילדים HD (Hop! Kids)" tvg-chno="518" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hop_kids_israel.png" group-title="ילדים ונוער (בעברית)",ערוץ הופ! ילדים HD (Hop! Kids)
-https://stream.mcquack.net/44/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ערוץ זום ZOOM ילדים ונוער HD" tvg-chno="519" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/zoom_kids_israel.png" group-title="ילדים ונוער (בעברית)",ערוץ זום ZOOM ילדים ונוער HD
-https://stream.mcquack.net/377/index.m3u8
+http://stream.mcquack.net/44/index.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="ערוץ זום טון HD (Zoom Toon)" tvg-chno="519" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/zoom.png" group-title="ילדים ונוער (בעברית)",ערוץ זום טון HD (Zoom Toon)
+http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2359/index.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="ערוץ החיים הטובים HD (Good Life)" tvg-chno="521" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/good_life_israel.png" group-title="ערוצי ישראל",ערוץ החיים הטובים HD (Good Life)
-https://stream.mcquack.net/47/index.m3u8
+http://stream.mcquack.net/47/index.m3u8

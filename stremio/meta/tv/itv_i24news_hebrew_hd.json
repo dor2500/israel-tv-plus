@@ -2,11 +2,11 @@
   "meta": {
     "id": "itv_i24news_hebrew_hd",
     "type": "tv",
-    "name": "422. ערוץ i24NEWS עברית HD",
-    "poster": "https://www.i24news.tv/images/favicon.png",
+    "name": "382. ערוץ i24NEWS עברית HD",
+    "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/i24news_he.png",
     "posterShape": "landscape",
-    "logo": "https://www.i24news.tv/images/favicon.png",
-    "background": "https://www.i24news.tv/images/favicon.png",
+    "logo": "https://dor2500.github.io/israel-tv-plus/assets/logos/i24news_he.png",
+    "background": "https://dor2500.github.io/israel-tv-plus/assets/logos/i24news_he.png",
     "description": "ערוץ החדשות והאקטואליה הבינלאומי i24NEWS בשידור חי בעברית 24/7\n\n📡 מקור השידור: i24NEWS – שרת רשמי\n✅ שידור רשמי ישיר",
     "genres": [
       "ערוצי ישראל - שידור חי",

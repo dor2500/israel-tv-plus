@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_good_life_channel_hd",
+    "type": "tv",
+    "name": "409. ערוץ החיים הטובים HD (Good Life)",
+    "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/good_life_israel.png",
+    "posterShape": "landscape",
+    "logo": "https://dor2500.github.io/israel-tv-plus/assets/logos/good_life_israel.png",
+    "background": "https://dor2500.github.io/israel-tv-plus/assets/logos/good_life_israel.png",
+    "description": "ערוץ החיים הטובים – תיירות, קולינריה, עיצוב הבית, לייפסטייל ואירוח ישראלי ועולמי מבית ענני תקשורת.\n\n📡 מקור השידור:",
+    "genres": [
+      "ערוצי ישראל - שידור חי",
+      "ישראל"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "ישראל"
+  }
+}

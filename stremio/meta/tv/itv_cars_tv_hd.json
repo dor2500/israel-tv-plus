@@ -2,11 +2,11 @@
   "meta": {
     "id": "itv_cars_tv_hd",
     "type": "tv",
-    "name": "417. ערוץ הרכב Cars.TV HD",
-    "poster": "https://i.imgur.com/JLSHiTp.png",
+    "name": "377. ערוץ הרכב Cars.TV HD",
+    "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/cars_tv_hd.png",
     "posterShape": "landscape",
-    "logo": "https://i.imgur.com/JLSHiTp.png",
-    "background": "https://i.imgur.com/JLSHiTp.png",
+    "logo": "https://dor2500.github.io/israel-tv-plus/assets/logos/cars_tv_hd.png",
+    "background": "https://dor2500.github.io/israel-tv-plus/assets/logos/cars_tv_hd.png",
     "description": "ערוץ רכבי יוקרה, אספנות וביצועים מבית Cars.TV\n\n📡 מקור השידור: a-cdn.klowdtv.com\n⚠️ ממסר צד שלישי",
     "genres": [
       "ספורט",

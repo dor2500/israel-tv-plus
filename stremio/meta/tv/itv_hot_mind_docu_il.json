@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_hot_mind_docu_il",
+    "type": "tv",
+    "name": "389. HOT מיינד דוקו והעשרה HD",
+    "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/hot_reality.png",
+    "posterShape": "landscape",
+    "logo": "https://dor2500.github.io/israel-tv-plus/assets/logos/hot_reality.png",
+    "background": "https://dor2500.github.io/israel-tv-plus/assets/logos/hot_reality.png",
+    "description": "ערוץ HOT Mind – ערוץ דוקו, מדע, מחשבה, טכנולוגיה ותרבות.\n\n📡 מקור השידור:",
+    "genres": [
+      "ערוצי ישראל - שידור חי",
+      "ישראל"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "ישראל"
+  }
+}

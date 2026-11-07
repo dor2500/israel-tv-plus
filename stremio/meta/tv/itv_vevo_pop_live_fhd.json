@@ -2,11 +2,11 @@
   "meta": {
     "id": "itv_vevo_pop_live_fhd",
     "type": "tv",
-    "name": "406. Vevo Pop Music Hits FHD",
-    "poster": "https://www.google.com/s2/favicons?domain=vevo.com&sz=128",
+    "name": "366. Vevo Pop Music Hits FHD",
+    "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/vevo_pop_live_fhd.png",
     "posterShape": "landscape",
-    "logo": "https://www.google.com/s2/favicons?domain=vevo.com&sz=128",
-    "background": "https://www.google.com/s2/favicons?domain=vevo.com&sz=128",
+    "logo": "https://dor2500.github.io/israel-tv-plus/assets/logos/vevo_pop_live_fhd.png",
+    "background": "https://dor2500.github.io/israel-tv-plus/assets/logos/vevo_pop_live_fhd.png",
     "description": "קליפים ולהיטי פופ עולמיים מבית Vevo ב-Full HD.\n\n📡 מקור השידור: amg00056-amg00056c6-rakuten-uk-3235.playouts.now.amagi.tv\n⚠️ ממסר צד שלישי",
     "genres": [
       "מוזיקה",

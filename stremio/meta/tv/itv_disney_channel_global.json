@@ -2,11 +2,11 @@
   "meta": {
     "id": "itv_disney_channel_global",
     "type": "tv",
-    "name": "410. Disney Channel Global HD",
-    "poster": "https://upload.wikimedia.org/wikipedia/commons/d/d2/2019_Disney_Channel_logo.svg",
+    "name": "370. Disney Channel Global HD",
+    "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/disney.png",
     "posterShape": "landscape",
-    "logo": "https://upload.wikimedia.org/wikipedia/commons/d/d2/2019_Disney_Channel_logo.svg",
-    "background": "https://upload.wikimedia.org/wikipedia/commons/d/d2/2019_Disney_Channel_logo.svg",
+    "logo": "https://dor2500.github.io/israel-tv-plus/assets/logos/disney.png",
+    "background": "https://dor2500.github.io/israel-tv-plus/assets/logos/disney.png",
     "description": "ערוץ דיסני הבינלאומי – סדרות, סרטים ואנימציה של דיסני\n\n📡 מקור השידור: Disney Channel Stream",
     "genres": [
       "ילדים מהעולם",

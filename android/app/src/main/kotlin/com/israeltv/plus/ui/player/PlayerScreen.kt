@@ -2,6 +2,9 @@ package com.israeltv.plus.ui.player
 
 import android.app.Activity
 import com.israeltv.plus.R
+import com.israeltv.plus.ui.desktopMouseBackHandler
+import androidx.compose.ui.input.key.Key
+import androidx.compose.ui.input.key.key
 import android.content.Context
 import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
@@ -286,7 +289,7 @@ fun PlayerScreen(
     var controls by remember { mutableStateOf(true) }
     var touchTick by remember { mutableIntStateOf(0) }
     var sheet by remember { mutableStateOf<String?>(if (startInCast) "cast" else null) }
-    var landscape by remember { mutableStateOf(false) }
+    var landscape by remember { mutableStateOf(true) }
     var tracks by remember { mutableStateOf(Tracks.EMPTY) }
     var attempt by remember { mutableIntStateOf(0) }
     val candidates = remember(current.id, current.url, current.fallbackUrls, current.backups) { current.allCandidateUrls() }
@@ -559,18 +562,22 @@ fun PlayerScreen(
         }
     }
 
-    // full screen while watching: bars hidden (swipe from the edge shows them), screen kept on
+    // full screen while watching: bars hidden (swipe from the edge shows them), screen kept on, landscape orientation
     val view = LocalView.current
     DisposableEffect(Unit) {
-        val window = (context as Activity).window
+        val act = context as Activity
+        val window = act.window
         val ctl = WindowCompat.getInsetsController(window, view)
         ctl.systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
         ctl.hide(WindowInsetsCompat.Type.systemBars())
         view.keepScreenOn = true
+        if (!current.isRadio) {
+            act.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE
+        }
         onDispose {
             ctl.show(WindowInsetsCompat.Type.systemBars())
             view.keepScreenOn = false
-            context.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
+            act.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
         }
     }
 
@@ -588,13 +595,15 @@ fun PlayerScreen(
         onDispose { lifecycle.removeObserver(obs) }
     }
 
-    BackHandler {
+    val handlePlayerBack: () -> Unit = {
         when {
             sheet != null -> sheet = null
             multiViewActive && !startInMultiView -> multiViewActive = false
             else -> onClose()
         }
     }
+
+    BackHandler(onBack = handlePlayerBack)
 
     val playerHaze = rememberHazeState()
 
@@ -604,8 +613,13 @@ fun PlayerScreen(
             .fillMaxSize()
             .then(if (sharedKey != null) Modifier.sharedContainer(sharedKey, RectangleShape, scaleContent = true) else Modifier)
             .background(Color.Black)
+            .desktopMouseBackHandler(enabled = true, onBack = handlePlayerBack)
             .onPreviewKeyEvent { keyEvent ->
                 if (keyEvent.type == KeyEventType.KeyDown) {
+                    if (keyEvent.key == Key.Back || keyEvent.key == Key.NavigateOut || keyEvent.key == Key.Escape) {
+                        handlePlayerBack()
+                        return@onPreviewKeyEvent true
+                    }
                     touchTick++
                     if (!controls) {
                         controls = true

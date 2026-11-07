@@ -65,6 +65,7 @@ import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
+import com.israeltv.plus.data.CatchupManager
 import com.israeltv.plus.data.Channel
 import com.israeltv.plus.data.displayName
 import com.israeltv.plus.ui.theme.LocalDimens
@@ -682,7 +683,7 @@ fun SectionHeader(title: String, count: Int? = null, onSeeAll: (() -> Unit)? = n
                 .width(4.dp)
                 .height(16.dp)
                 .clip(RoundedCornerShape(2.dp))
-                .background(Color.White)
+                .background(scheme.primary)
         )
         Spacer(Modifier.width(8.dp))
         Text(title, Modifier.weight(1f), style = MaterialTheme.typography.titleMedium, color = scheme.onSurface)
@@ -740,15 +741,18 @@ fun ContinueWatchingShelf(
             flingBehavior = rememberBitChordFlingBehavior(),
         ) {
             itemsIndexed(channels, key = { _, ch -> ch.id }) { idx, ch ->
-                // Deterministic progress per channel/recency so the bar looks natural and consistent
-                val p = remember(ch.id, idx) {
-                    val hash = abs(ch.id.hashCode() % 60) / 100f
-                    (0.32f + hash).coerceIn(0.24f, 0.88f)
+                val liveProg = remember(ch.id) { CatchupManager.getCurrentAndNextProgram(ch.id).first }
+                val p = remember(ch.id, idx, liveProg) {
+                    liveProg?.progressFraction() ?: run {
+                        val hash = abs(ch.id.hashCode() % 60) / 100f
+                        (0.32f + hash).coerceIn(0.24f, 0.88f)
+                    }
                 }
+                val liveSub = liveProg?.let { "${it.startTimeFormatted} · ${it.title}" } ?: subtitle(ch)
                 ContinueWatchingCard(
                     channel = ch,
                     logo = logo(ch),
-                    subtitle = subtitle(ch),
+                    subtitle = liveSub,
                     progress = p,
                     onClick = { onPlay(ch) },
                     sharedKey = "continue:${ch.id}",

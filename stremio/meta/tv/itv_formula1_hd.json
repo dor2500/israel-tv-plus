@@ -2,11 +2,11 @@
   "meta": {
     "id": "itv_formula1_hd",
     "type": "tv",
-    "name": "415. Sky Sports F1 HD (פורמולה 1 שידור חי)",
-    "poster": "https://upload.wikimedia.org/wikipedia/commons/3/33/F1.svg",
+    "name": "375. Sky Sports F1 HD (פורמולה 1 שידור חי)",
+    "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/formula1.png",
     "posterShape": "landscape",
-    "logo": "https://upload.wikimedia.org/wikipedia/commons/3/33/F1.svg",
-    "background": "https://upload.wikimedia.org/wikipedia/commons/3/33/F1.svg",
+    "logo": "https://dor2500.github.io/israel-tv-plus/assets/logos/formula1.png",
+    "background": "https://dor2500.github.io/israel-tv-plus/assets/logos/formula1.png",
     "description": "ערוץ הספורט המוביל בעולם לשידורי פורמולה 1 Formula 1 בשידור חי ובאיכות HD – מרוצים, מקצי דירוג, אימונים ופרשנות עולמית\n\n📡 מקור השידור: Sky Sports F1 Playout",
     "genres": [
       "ספורט",

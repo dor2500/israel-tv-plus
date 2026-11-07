@@ -1,5 +1,7 @@
 package com.israeltv.plus.ui
 
+import android.content.res.Configuration
+import android.view.MotionEvent
 import androidx.activity.compose.BackHandler
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.AnimatedVisibility
@@ -30,9 +32,19 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.input.key.Key
+import androidx.compose.ui.input.key.KeyEventType
+import androidx.compose.ui.input.key.key
+import androidx.compose.ui.input.key.onPreviewKeyEvent
+import androidx.compose.ui.input.key.type
 import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
 import androidx.compose.ui.input.nestedscroll.NestedScrollSource
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.input.pointer.PointerEventPass
+import androidx.compose.ui.input.pointer.PointerEventType
+import androidx.compose.ui.input.pointer.isBackPressed
+import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.zIndex
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.israeltv.plus.data.AppPrefs
@@ -150,7 +162,35 @@ fun ItvApp(
         }
     }
 
-    Box(Modifier.fillMaxSize()) {
+    val routeBackToHome: () -> Unit = {
+        when {
+            info != null -> info = null
+            page is Page.Player -> page = Page.Feed
+            page is Page.Profiles && profilesFromFeed -> page = Page.Feed
+            feed.styleOpen -> feed.styleOpen = false
+            feed.searchOpen -> feed.searchOpen = false
+            feed.moreCategoriesOpen -> feed.moreCategoriesOpen = false
+            feed.tab != Tab.Home -> feed.tab = Tab.Home
+            feed.macroCategory != null -> feed.macroCategory = null
+        }
+    }
+
+    val canNavigateBack = info != null ||
+        page is Page.Player ||
+        (page is Page.Profiles && profilesFromFeed) ||
+        feed.styleOpen ||
+        feed.searchOpen ||
+        feed.moreCategoriesOpen ||
+        feed.tab != Tab.Home ||
+        feed.macroCategory != null
+
+    BackHandler(enabled = canNavigateBack, onBack = routeBackToHome)
+
+    Box(
+        Modifier
+            .fillMaxSize()
+            .desktopMouseBackHandler(enabled = canNavigateBack, onBack = routeBackToHome)
+    ) {
         CompositionLocalProvider(
             LocalCascade provides cascade,
             LocalPlayOrigin provides origin,
@@ -316,15 +356,29 @@ private fun Feed(
     val pool = if (s.israeliOnly) israeliCategories else categories
     val restCategories = remember(pool) { pool.filter { it.name !in MacroCategories } }
 
-    BackHandler(enabled = s.searchOpen || s.tab != Tab.Home) {
+    val config = LocalConfiguration.current
+    val isTvOrLandscape = config.orientation == Configuration.ORIENTATION_LANDSCAPE || config.screenWidthDp >= 720
+
+    val handleFeedBack: () -> Unit = {
         when {
+            s.styleOpen -> s.styleOpen = false
             s.searchOpen -> s.searchOpen = false
+            s.moreCategoriesOpen -> s.moreCategoriesOpen = false
             s.tab == Tab.Channels && s.macroCategory != null -> s.macroCategory = null
             else -> s.tab = Tab.Home
         }
     }
 
-    Box(Modifier.fillMaxSize()) {
+    BackHandler(enabled = s.styleOpen || s.searchOpen || s.moreCategoriesOpen || s.tab != Tab.Home, onBack = handleFeedBack)
+
+    Box(
+        Modifier
+            .fillMaxSize()
+            .desktopMouseBackHandler(
+                enabled = s.styleOpen || s.searchOpen || s.moreCategoriesOpen || s.tab != Tab.Home || s.macroCategory != null,
+                onBack = handleFeedBack,
+            )
+    ) {
         // The feed: what the glass blurs. Glass inside it is a plain tint (LocalHaze = null), never blur in blur.
         Box(Modifier.fillMaxSize().hazeSource(haze).nestedScroll(barScroll)) {
             AmbientBackground()
@@ -369,6 +423,9 @@ private fun Feed(
                                 s.tab = Tab.Channels
                             },
                             onSeeAllVod = { s.tab = Tab.Vod },
+                            onSelectMacroCategory = { s.macroCategory = it },
+                            onOpenSettings = { s.searchOpen = false; s.tab = Tab.Settings },
+                            onOpenSearch = { s.searchOpen = true },
                         )
                         Tab.Channels -> ChannelsScreen(
                             data = data,
@@ -394,25 +451,29 @@ private fun Feed(
         }
 
         CompositionLocalProvider(LocalHaze provides haze) {
-            AppHeader(
-                profileId = prefs.profile.id,
-                avatar = prefs.avatar,
-                scrollFraction = headerScrollFraction,
-                showCategories = (s.tab == Tab.Home || s.tab == Tab.Channels) && !s.searchOpen,
-                selectedCategory = s.macroCategory,
-                onSelectCategory = { s.macroCategory = it },
-                onMoreCategories = { s.moreCategoriesOpen = true },
-                onAvatar = onProfiles,
-                onSettings = { s.searchOpen = false; s.tab = Tab.Settings },
-                modifier = Modifier.align(Alignment.TopCenter),
-            )
-            FloatingTabBar(
-                s.tab, s.searchOpen,
-                onSelect = { s.searchOpen = false; s.barCollapsed = false; s.tab = it },
-                onSearch = { s.searchOpen = true },
-                modifier = Modifier.align(Alignment.BottomCenter),
-                collapsed = s.barCollapsed,
-            )
+            if (!(isTvOrLandscape && (s.tab == Tab.Home || s.tab == Tab.Settings))) {
+                AppHeader(
+                    profileId = prefs.profile.id,
+                    avatar = prefs.avatar,
+                    scrollFraction = headerScrollFraction,
+                    showCategories = (s.tab == Tab.Home || s.tab == Tab.Channels) && !s.searchOpen,
+                    selectedCategory = s.macroCategory,
+                    onSelectCategory = { s.macroCategory = it },
+                    onMoreCategories = { s.moreCategoriesOpen = true },
+                    onAvatar = onProfiles,
+                    onSettings = { s.searchOpen = false; s.tab = Tab.Settings },
+                    modifier = Modifier.align(Alignment.TopCenter),
+                )
+            }
+            if (!(isTvOrLandscape && s.tab == Tab.Home)) {
+                FloatingTabBar(
+                    s.tab, s.searchOpen,
+                    onSelect = { s.searchOpen = false; s.barCollapsed = false; s.tab = it },
+                    onSearch = { s.searchOpen = true },
+                    modifier = Modifier.align(Alignment.BottomCenter),
+                    collapsed = s.barCollapsed,
+                )
+            }
 
             AnimatedVisibility(
                 s.searchOpen,
@@ -453,3 +514,40 @@ private fun Feed(
         }
     }
 }
+
+/**
+ * Desktop & TV Mouse/Key Back Navigation Handler:
+ * Listens for the physical mouse "Back" button (`PointerButtons.isBackPressed` / `MotionEvent.BUTTON_BACK`)
+ * as well as Back/Escape/NavigateOut keys, explicitly routing the user back to the main Home/EPG screen.
+ */
+fun Modifier.desktopMouseBackHandler(
+    enabled: Boolean = true,
+    onBack: () -> Unit,
+): Modifier = this
+    .pointerInput(enabled, onBack) {
+        if (!enabled) return@pointerInput
+        awaitPointerEventScope {
+            while (true) {
+                val event = awaitPointerEvent(PointerEventPass.Initial)
+                if (event.type == PointerEventType.Press) {
+                    val isMouseBack = event.buttons.isBackPressed ||
+                        ((event.changes.isNotEmpty()) && event.buttons.isBackPressed)
+                    if (isMouseBack) {
+                        event.changes.forEach { it.consume() }
+                        onBack()
+                    }
+                }
+            }
+        }
+    }
+    .onPreviewKeyEvent { keyEvent ->
+        if (!enabled) return@onPreviewKeyEvent false
+        if (keyEvent.type == KeyEventType.KeyDown &&
+            (keyEvent.key == Key.Back || keyEvent.key == Key.NavigateOut || keyEvent.key == Key.Escape)
+        ) {
+            onBack()
+            true
+        } else {
+            false
+        }
+    }

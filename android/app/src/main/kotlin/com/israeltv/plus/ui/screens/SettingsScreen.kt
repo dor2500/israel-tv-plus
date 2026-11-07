@@ -28,7 +28,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.KeyboardArrowLeft
 import androidx.compose.material.icons.rounded.CheckCircle
 import androidx.compose.material.icons.rounded.Cloud
-import androidx.compose.material.icons.rounded.Logout
+import androidx.compose.material.icons.automirrored.rounded.Logout
 import androidx.compose.material.icons.rounded.Refresh
 import androidx.compose.material.icons.rounded.Code
 import androidx.compose.material.icons.rounded.Face
@@ -106,97 +106,110 @@ fun SettingsScreen(data: ChannelData?, prefs: AppPrefs, updater: Updater, google
     val googlePicker = rememberLauncherForActivityResult(ActivityResultContracts.StartIntentSenderForResult()) {
         google.onPickerResult(activity, it.data)
     }
-    LazyColumn(Modifier.fillMaxSize(), contentPadding = feedPadding(withCategories = false), flingBehavior = rememberBitChordFlingBehavior()) {
-        item(key = "update") { UpdateCard(updater, Modifier.padding(horizontal = 16.dp).padding(bottom = 28.dp)) }
-        item(key = "look") {
-            SectionHeader("תצוגה וצליל")
-            SettingsGroup {
-                SettingRow(Icons.Rounded.Palette, "צבעים וסגנון", "צבעי הטפט, פלטות נוספות ומצב כהה", onClick = onStyle)
-                SettingRow(
-                    Icons.Rounded.Palette,
-                    "רקע שחור OLED (OLED Black)",
-                    "רקע שחור מוחלט (#000000) למסכי OLED",
-                    onClick = {
-                        val next = !prefs.theme.oledBlack
-                        haptic.performHapticFeedback(if (next) HapticFeedbackType.ToggleOn else HapticFeedbackType.ToggleOff)
-                        prefs.setTheme(prefs.theme.copy(oledBlack = next))
-                    },
-                ) {
-                    Switch(
-                        checked = prefs.theme.oledBlack,
-                        onCheckedChange = {
-                            haptic.performHapticFeedback(if (it) HapticFeedbackType.ToggleOn else HapticFeedbackType.ToggleOff)
-                            prefs.setTheme(prefs.theme.copy(oledBlack = it))
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(MaterialTheme.colorScheme.background),
+    ) {
+        LazyColumn(
+            modifier = Modifier.fillMaxSize(),
+            contentPadding = PaddingValues(0.dp),
+            flingBehavior = rememberBitChordFlingBehavior(),
+        ) {
+            item(key = "update") { UpdateCard(updater, Modifier.fillMaxWidth().padding(bottom = 16.dp)) }
+            item(key = "look") {
+                SectionHeader("תצוגה וצליל")
+                SettingsGroup {
+                    SettingRow(Icons.Rounded.Palette, "צבעים וסגנון", "צבעי הטפט, פלטות נוספות ומצב כהה", onClick = onStyle)
+                    SettingRow(
+                        Icons.Rounded.Palette,
+                        "רקע שחור OLED (OLED Black)",
+                        "רקע שחור מוחלט (#000000) למסכי OLED",
+                        onClick = {
+                            val next = !prefs.theme.oledBlack
+                            haptic.performHapticFeedback(if (next) HapticFeedbackType.ToggleOn else HapticFeedbackType.ToggleOff)
+                            prefs.setTheme(prefs.theme.copy(oledBlack = next))
                         },
+                    ) {
+                        Switch(
+                            checked = prefs.theme.oledBlack,
+                            onCheckedChange = {
+                                haptic.performHapticFeedback(if (it) HapticFeedbackType.ToggleOn else HapticFeedbackType.ToggleOff)
+                                prefs.setTheme(prefs.theme.copy(oledBlack = it))
+                            },
+                        )
+                    }
+                    SettingRow(Icons.Rounded.Face, "פרופילים", "${prefs.profile.name} · ${prefs.profiles.size} פרופילים", onClick = onProfiles) {
+                        ProfileAvatar(prefs.avatar, glyphSize = 30.dp)
+                    }
+                    SettingRow(Icons.Rounded.MusicNote, "צליל פתיחה", "צליל קצר כשהאפליקציה נפתחת (שקט כשהטלפון על שקט)",
+                        onClick = {
+                            haptic.performHapticFeedback(if (prefs.launchSound) HapticFeedbackType.ToggleOff else HapticFeedbackType.ToggleOn)
+                            prefs.setLaunchSoundOn(!prefs.launchSound)
+                        }) {
+                        Switch(prefs.launchSound, {
+                            haptic.performHapticFeedback(if (it) HapticFeedbackType.ToggleOn else HapticFeedbackType.ToggleOff)
+                            prefs.setLaunchSoundOn(it)
+                        })
+                    }
+                }
+                Spacer(Modifier.height(16.dp))
+            }
+            item(key = "gdrive") {
+                SectionHeader("חשבון Google וסנכרון ענן")
+                SettingsGroup {
+                    if (google.signedIn) {
+                        SettingRow(Icons.Rounded.CheckCircle, google.name, google.problem.ifEmpty { google.email })
+                        SettingRow(
+                            Icons.Rounded.Refresh,
+                            if (google.busy) "מסנכרן…" else "סנכרן עכשיו",
+                            if (google.lastSync > 0L) "סונכרן " + DateUtils.getRelativeTimeSpanString(google.lastSync) else "מועדפים, היסטוריה ופרופילים",
+                            onClick = { google.sync(activity) },
+                        )
+                        SettingRow(Icons.AutoMirrored.Rounded.Logout, "התנתקות", "הנתונים בטלפון נשארים", onClick = { google.signOut(activity) })
+                    } else {
+                        SettingRow(
+                            Icons.Rounded.Cloud,
+                            if (google.busy) "מתחבר…" else "התחברות עם חשבון Google",
+                            google.problem.ifEmpty { "סנכרון מועדפים, היסטוריה ופרופילים בין המכשירים" },
+                            onClick = { if (!google.busy) google.signIn(activity) { googlePicker.launch(it) } },
+                        )
+                    }
+                }
+                Spacer(Modifier.height(16.dp))
+            }
+            item(key = "plex") {
+                SectionHeader("שידור, Plex ו-DLNA")
+                SettingsGroup {
+                    SettingRow(
+                        Icons.Rounded.Tv,
+                        "חיבור ל-Plex ולטלוויזיות LG",
+                        "הגדרת 269 הערוצים ולוח השידורים ב-Plex (Live TV & DVR) ו-DLNA",
+                        onClick = { showPlexDialog = true },
                     )
                 }
-                SettingRow(Icons.Rounded.Face, "פרופילים", "${prefs.profile.name} · ${prefs.profiles.size} פרופילים", onClick = onProfiles) {
-                    ProfileAvatar(prefs.avatar, glyphSize = 30.dp)
-                }
-                SettingRow(Icons.Rounded.MusicNote, "צליל פתיחה", "צליל קצר כשהאפליקציה נפתחת (שקט כשהטלפון על שקט)",
-                    onClick = {
-                        haptic.performHapticFeedback(if (prefs.launchSound) HapticFeedbackType.ToggleOff else HapticFeedbackType.ToggleOn)
-                        prefs.setLaunchSoundOn(!prefs.launchSound)
-                    }) {
-                    Switch(prefs.launchSound, {
-                        haptic.performHapticFeedback(if (it) HapticFeedbackType.ToggleOn else HapticFeedbackType.ToggleOff)
-                        prefs.setLaunchSoundOn(it)
+                Spacer(Modifier.height(16.dp))
+            }
+            item(key = "about") {
+                SectionHeader("אודות")
+                SettingsGroup {
+                    SettingRow(Icons.Rounded.Tv, "ישראל TV+ " + updater.installedVersion,
+                        "${data?.channels?.size ?: 0} ערוצים ותחנות · ${data?.categories?.size ?: 0} קטגוריות")
+                    SettingRow(Icons.Rounded.SystemUpdate, "לוג שינויים", "מה השתנה בכל גרסה", onClick = {
+                        scope.launch { changelog = updater.changelog() }
+                    })
+                    SettingRow(Icons.Rounded.Language, "האתר", "dor2500.github.io/israel-tv-plus", onClick = {
+                        ctx.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://dor2500.github.io/israel-tv-plus/")))
+                    })
+                    SettingRow(Icons.Rounded.Code, "קוד המקור ומקורות השידור", "GitHub · SOURCES.md", onClick = {
+                        ctx.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/dor2500/israel-tv-plus")))
                     })
                 }
             }
-            Spacer(Modifier.height(28.dp))
         }
-        item(key = "gdrive") {
-            SectionHeader("חשבון Google וסנכרון ענן")
-            SettingsGroup {
-                if (google.signedIn) {
-                    SettingRow(Icons.Rounded.CheckCircle, google.name, google.problem.ifEmpty { google.email })
-                    SettingRow(
-                        Icons.Rounded.Refresh,
-                        if (google.busy) "מסנכרן…" else "סנכרן עכשיו",
-                        if (google.lastSync > 0L) "סונכרן " + DateUtils.getRelativeTimeSpanString(google.lastSync) else "מועדפים, היסטוריה ופרופילים",
-                        onClick = { google.sync(activity) },
-                    )
-                    SettingRow(Icons.Rounded.Logout, "התנתקות", "הנתונים בטלפון נשארים", onClick = { google.signOut(activity) })
-                } else {
-                    SettingRow(
-                        Icons.Rounded.Cloud,
-                        if (google.busy) "מתחבר…" else "התחברות עם חשבון Google",
-                        google.problem.ifEmpty { "סנכרון מועדפים, היסטוריה ופרופילים בין המכשירים" },
-                        onClick = { if (!google.busy) google.signIn(activity) { googlePicker.launch(it) } },
-                    )
-                }
-            }
-            Spacer(Modifier.height(28.dp))
-        }
-        item(key = "plex") {
-            SectionHeader("שידור, Plex ו-DLNA")
-            SettingsGroup {
-                SettingRow(
-                    Icons.Rounded.Tv,
-                    "חיבור ל-Plex ולטלוויזיות LG",
-                    "הגדרת 269 הערוצים ולוח השידורים ב-Plex (Live TV & DVR) ו-DLNA",
-                    onClick = { showPlexDialog = true },
-                )
-            }
-            Spacer(Modifier.height(28.dp))
-        }
-        item(key = "about") {
-            SectionHeader("אודות")
-            SettingsGroup {
-                SettingRow(Icons.Rounded.Tv, "ישראל TV+ " + updater.installedVersion,
-                    "${data?.channels?.size ?: 0} ערוצים ותחנות · ${data?.categories?.size ?: 0} קטגוריות")
-                SettingRow(Icons.Rounded.SystemUpdate, "לוג שינויים", "מה השתנה בכל גרסה", onClick = {
-                    scope.launch { changelog = updater.changelog() }
-                })
-                SettingRow(Icons.Rounded.Language, "האתר", "dor2500.github.io/israel-tv-plus", onClick = {
-                    ctx.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://dor2500.github.io/israel-tv-plus/")))
-                })
-                SettingRow(Icons.Rounded.Code, "קוד המקור ומקורות השידור", "GitHub · SOURCES.md", onClick = {
-                    ctx.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/dor2500/israel-tv-plus")))
-                })
-            }
-        }
+    }
+    if (showPlexDialog) {
+        PlexIntegrationDialog(onDismiss = { showPlexDialog = false })
     }
 }
 
@@ -206,7 +219,7 @@ fun UpdateCard(updater: Updater, modifier: Modifier = Modifier) {
     val scheme = MaterialTheme.colorScheme
     val haptic = LocalHapticFeedback.current
     val state = updater.state
-    val shape = RoundedCornerShape(topStart = 32.dp, topEnd = 32.dp, bottomStart = 32.dp, bottomEnd = 12.dp)
+    val shape = RoundedCornerShape(0.dp)
     val available = state is UpdateState.Available || state is UpdateState.Downloading ||
         state is UpdateState.Installing || (state is UpdateState.Failed && state.info != null)
     Column(
@@ -214,7 +227,6 @@ fun UpdateCard(updater: Updater, modifier: Modifier = Modifier) {
             .fillMaxWidth()
             .clip(shape)
             .background(if (available) scheme.primaryContainer else scheme.surfaceContainerHigh.copy(alpha = 0.8f))
-            .specularBorder(shape)
             .padding(24.dp)
     ) {
         Box(
@@ -275,14 +287,10 @@ fun UpdateCard(updater: Updater, modifier: Modifier = Modifier) {
 
 @Composable
 private fun SettingsGroup(content: @Composable () -> Unit) {
-    val shape = RoundedCornerShape(28.dp)
     Column(
         Modifier
-            .padding(horizontal = 16.dp)
             .fillMaxWidth()
-            .clip(shape)
-            .background(MaterialTheme.colorScheme.surfaceContainerHigh.copy(alpha = 0.7f))
-            .specularBorder(shape),
+            .background(MaterialTheme.colorScheme.surfaceContainerHigh.copy(alpha = 0.7f)),
         verticalArrangement = Arrangement.spacedBy(2.dp),
     ) { content() }
 }

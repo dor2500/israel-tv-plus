@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_hala_tv_hd",
+    "type": "tv",
+    "name": "411. ערוץ הלא TV HD (Hala TV)",
+    "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/hala_tv_il.png",
+    "posterShape": "landscape",
+    "logo": "https://dor2500.github.io/israel-tv-plus/assets/logos/hala_tv_il.png",
+    "background": "https://dor2500.github.io/israel-tv-plus/assets/logos/hala_tv_il.png",
+    "description": "ערוץ הלא TV – הערוץ הטלוויזיוני המסחרי המוביל המשדר מישראל לציבור הערבי-ישראלי.\n\n📡 מקור השידור:",
+    "genres": [
+      "ערוצי ישראל - שידור חי",
+      "ישראל"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "ישראל"
+  }
+}
