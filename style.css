@@ -2341,7 +2341,11 @@ body.tvui #player .osd::before { content: ''; position: absolute; right: 0; left
 #tvo-peek { position: absolute; right: 25rem; bottom: 8.8rem; width: 12.6rem; display: flex; align-items: center; cursor: pointer; }
 .tv-peek-txt { flex: 1; min-width: 0; padding-left: .6rem; font-size: 1.5rem; line-height: 1.3; color: #d4d6dc; }
 .tv-peek-txt b { font-size: 1.65rem; color: #fff; }
-.tv-chev { flex: none; font-size: 3.6rem; line-height: 1; font-weight: 300; color: #d8d9de; }
+.tv-chev { flex: none; display: block; width: 3.2rem; height: 3.2rem; color: #d8d9de; }
+/* the arrow is drawn (the <i> has no text): two borders of a square, turned to point right or left */
+.tv-chev::before { content: ''; display: block; width: 1.6rem; height: 1.6rem; margin: .8rem; border-top: .3rem solid currentColor; border-right: .3rem solid currentColor; }
+.tv-chev.right::before { transform: translateX(-.3rem) rotate(45deg); }
+.tv-chev.left::before { transform: translateX(.3rem) rotate(-135deg); }
 .tv-chev.focus { color: #fff; text-shadow: 0 0 1.4rem #fff; transform: scale(1.25); }
 #tvo-main { position: absolute; right: 38.6rem; bottom: 1.8rem; width: 31rem; }
 .tv-card { position: relative; overflow: hidden; border-radius: .9rem; background: #16161b; cursor: pointer; }
@@ -2363,6 +2367,7 @@ body.tvui #player .osd::before { content: ''; position: absolute; right: 0; left
 .tv-mid { margin: auto; }
 #tvo-bar { position: relative; height: .36rem; margin-top: .5rem; border-radius: .2rem; background: rgba(255, 255, 255, .28); }
 #tvo-bar.none { visibility: hidden; }
+#tvo-peek.none, #tvo-go.none { visibility: hidden; }   /* no previous / next programme to walk to */
 #tvo-bar i { position: absolute; top: 0; right: 0; bottom: 0; border-radius: .2rem; background: #e5202e; }
 #tvo-bar u { position: absolute; top: -.4rem; width: .22rem; height: 1.16rem; margin-right: -.11rem; border-radius: .1rem; background: #fff; }
 #tvo-opts-wrap { display: flex; justify-content: center; margin-top: 1.1rem; }
@@ -2371,9 +2376,12 @@ body.tvui #player .osd::before { content: ''; position: absolute; right: 0; left
 #tvo-opts.focus { background: #f2f2f4; color: #111; border-color: #fff; box-shadow: 0 0 2.6rem rgba(255, 255, 255, .5); }
 #tvo-next { position: absolute; right: 71.2rem; bottom: 5.5rem; width: 23rem; cursor: pointer; }
 #tvo-go { position: absolute; right: 95rem; bottom: 13.2rem; width: 3.2rem; text-align: center; cursor: pointer; }
-#tvo-live { position: absolute; right: 71.2rem; bottom: 1.8rem; display: flex; align-items: center; gap: .6rem; padding: .6rem 1.4rem;
+/* "back to live" only while watching catch-up, beside Options */
+#tvo-live { position: static; margin-left: 1rem; display: none; align-items: center; gap: .6rem; padding: .6rem 1.4rem;
   border: 0; border-radius: 2rem; background: rgba(255, 255, 255, .14); color: #fff; font: inherit; font-size: 1.45rem; cursor: pointer; }
 #tvo-live svg { width: 1.6rem; height: 1.6rem; fill: currentColor; }
+#tvosd.catchup #tvo-live { display: flex; }
+#tvo-live.focus { background: #f2f2f4; color: #111; box-shadow: 0 0 2.6rem rgba(255, 255, 255, .5); }
 
 #tvguide { position: fixed; top: 0; right: 0; bottom: 0; left: 0; z-index: 9000; background: #050507; color: #f5f5f5; }
 #tvg-head { position: absolute; top: 2.4rem; right: 2.5rem; left: 2.5rem; height: 6.6rem; display: flex; }
