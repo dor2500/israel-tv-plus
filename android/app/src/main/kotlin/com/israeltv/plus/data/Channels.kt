@@ -69,7 +69,6 @@ data class Channel(
     val countryHe: String = "",
     /** "mako": Keshet's own CDN, the URL needs a viewing ticket from mako (see [playableUrl]). */
     val auth: String = "",
-    val headers: Map<String, String> = emptyMap(),
 ) {
     val isRadio: Boolean get() = kind == "radio"
 

@@ -112,29 +112,20 @@ window.ITVGuide = function (api) {
   function buildOsd() {
     var box = document.createElement('div');
     box.id = 'tvosd';
-    // Classic bottom-anchored OSD, one block across the bottom of the screen over a dark gradient:
-    //   the programme on now as the big focused card in the middle, the next one smaller beside it,
-    //   one "Options" button under the current card, and the progress bar with its times at the bottom.
-    // The channel list is not part of the default view: it appears only while the remote browses channels.
-    var ic = window.ITV_ICON || function () { return ''; };
     box.innerHTML =
       '<div id="tvo-strip"></div>' +
-      '<div id="tvo-cards">' +
-        '<div id="tvo-main"><div id="tvo-big" class="tv-card" data-tv="big"></div>' +
-          '<div id="tvo-opts-wrap">' +
-            '<button type="button" class="tvo-btn" id="tvo-opts" data-tv="opts">' + ic('settings') + '<span>אפשרויות</span></button>' +
-            '<button type="button" class="tvo-btn" id="tvo-live" data-tv="live">' + ic('tv') + '<span>לשידור החי</span></button>' +
-          '</div>' +
-        '</div>' +
-        '<div id="tvo-next" data-tv="small"><div id="tvo-small" class="tv-card"></div><div class="tv-timing" id="tvo-next-time"></div></div>' +
-      '</div>' +
-      '<div id="tvo-progress"><div class="tv-timing" id="tvo-timing"></div><div id="tvo-bar"><i></i><u></u></div></div>';
+      '<div id="tvo-peek" data-tv="peek"><i class="tv-chev right"></i><div class="tv-peek-txt"></div></div>' +
+      '<div id="tvo-main"><div id="tvo-big" class="tv-card" data-tv="big"></div>' +
+        '<div id="tvo-bar"><i></i><u></u></div><div class="tv-timing" id="tvo-timing"></div>' +
+        '<div id="tvo-opts-wrap"><span id="tvo-live" data-tv="live">לשידור החי</span><span id="tvo-opts" data-tv="opts">אפשרויות</span></div></div>' +
+      '<div id="tvo-next"><div id="tvo-small" class="tv-card" data-tv="small"></div><div class="tv-timing" id="tvo-next-time"></div></div>' +
+      '<div id="tvo-go" data-tv="small"><i class="tv-chev left"></i></div>';
     api.osdEl.appendChild(box);
     var brand = document.createElement('div');
     brand.className = 'tv-brand';
     brand.innerHTML = '<div class="tv-clock"></div>';
     api.osdEl.appendChild(brand);
-    ['strip', 'big', 'bar', 'timing', 'opts', 'live', 'next', 'small'].forEach(function (k) { o[k] = document.getElementById('tvo-' + k); });
+    ['strip', 'peek', 'big', 'bar', 'timing', 'opts', 'live', 'next', 'small', 'go'].forEach(function (k) { o[k] = document.getElementById('tvo-' + (k === 'timing' ? 'timing' : k)); });
     o.nextTime = document.getElementById('tvo-next-time');
     box.addEventListener('click', function (e) {
       e.stopPropagation();
@@ -145,6 +136,7 @@ window.ITVGuide = function (api) {
       else if (v === 'opts') { osd.zone = 'opts'; ok(); }
       else if (v === 'live') api.goLive();
       else if (v === 'small') moveOffset(1);
+      else if (v === 'peek') moveOffset(-1);
       else if (v.indexOf('ch:') === 0) api.play(chById(v.slice(3)));
       api.showOsd();
     });
@@ -166,14 +158,16 @@ window.ITVGuide = function (api) {
     if (api.inCatchup()) { renderCatchup(ch, flip); return; }
     var list = progs(ch), air = airingIndex(ch), has = air !== -1;
     var idx = air + osd.offset;
-    var p = has ? list[idx] : null, next = has ? list[idx + 1] : null;
+    var p = has ? list[idx] : null, next = has ? list[idx + 1] : null, prev = has ? list[idx - 1] : null;
     var upDir = api.S.upNext ? 1 : -1;
 
-    // the channel list only while browsing channels (Right on the earliest programme); hidden otherwise
     var sf = osd.zone === 'strip';
     o.strip.className = sf ? 'on' : '';
-    o.strip.innerHTML = sf ? stripItem(neighbour(ch, upDir), '') + '<div class="tv-arrow">▲</div>' +
-      stripItem(ch, 'mid focus') + '<div class="tv-arrow">▼</div>' + stripItem(neighbour(ch, -upDir), '') : '';
+    o.strip.innerHTML = stripItem(neighbour(ch, upDir), '') + '<div class="tv-arrow">▲</div>' +
+      stripItem(ch, 'mid' + (sf ? ' focus' : '')) + '<div class="tv-arrow">▼</div>' + stripItem(neighbour(ch, -upDir), '');
+
+    o.peek.className = prev && (osd.offset > -1 || canCatchup(ch, prev)) ? '' : 'none';
+    if (prev) o.peek.querySelector('.tv-peek-txt').innerHTML = '<div>לתכנית הקודמת</div><small class="tv-clip">' + esc(prev[2]) + '</small><small>' + range(prev) + '</small>';
 
     var airingNow = p && startOf(p) <= now();
     var label = !p ? 'משודר עכשיו' : osd.offset < 0 ? (canCatchup(ch, p) ? 'OK לצפייה חוזרת' : 'שודר קודם') : osd.offset === 0 ? (airingNow ? 'משודר עכשיו' : 'בקרוב') : osd.offset === 1 ? 'הבאה' : 'בהמשך';
@@ -191,12 +185,11 @@ window.ITVGuide = function (api) {
     progress();
 
     o.opts.classList.toggle('focus', osd.zone === 'opts');
-    o.live.style.display = 'none';
     o.live.classList.remove('focus');
     o.next.style.visibility = next ? '' : 'hidden';
+    o.go.className = next && osd.offset < MAX_OFFSET ? '' : 'none';
     if (next) {
-      o.small.innerHTML = poster(ch, next) + '<div class="tv-cap"><em>' + (osd.offset === -1 ? 'משודר עכשיו' : osd.offset === 0 ? 'הבאה' : 'בהמשך') + '</em>' +
-        '<b class="tv-clip">' + esc(next[2]) + '</b></div>';
+      o.small.innerHTML = poster(ch, next) + '<div class="tv-cap"><em>' + (osd.offset === -1 ? 'משודר עכשיו' : osd.offset === 0 ? 'הבאה' : 'בהמשך') + '</em><b class="tv-clip">' + esc(next[2]) + '</b></div>';
       o.nextTime.innerHTML = '<span class="tv-mid">' + range(next) + '</span>';
     }
   }
@@ -206,20 +199,20 @@ window.ITVGuide = function (api) {
     for (var i = 0; i < list.length; i++) if (pos < endOf(list[i])) return list[i];
     return null;
   }
-  // Watching the past: the card shows the programme at the playhead and the bar is the position inside it;
-  // "back to live" joins "Options" under the card
+  // Watching the past: the card shows the programme at the playhead and the bar is the position inside it
   function renderCatchup(ch, flip) {
-    var p = catchupProg(ch);
+    var p = catchupProg(ch), upDir = api.S.upNext ? 1 : -1;
     osd.cuProg = p;
     o.strip.className = '';
-    o.strip.innerHTML = '';
+    o.strip.innerHTML = stripItem(neighbour(ch, upDir), '') + '<div class="tv-arrow">▲</div>' + stripItem(ch, 'mid') + '<div class="tv-arrow">▼</div>' + stripItem(neighbour(ch, -upDir), '');
+    o.peek.className = 'none';
+    o.go.className = 'none';
     o.next.style.visibility = 'hidden';
     o.big.innerHTML = poster(ch, p) + '<div class="tv-cap"><em>צפייה חוזרת · ◄ ► 30 שניות</em><b class="tv-clip">' + esc(p ? p[2] : ch.name) + '</b><span class="tv-clip">' + esc(ch.name) + '</span></div>';
     o.big.classList.toggle('focus', osd.zone === 'big');
     o.big.classList.remove('flip');
     if (flip) { void o.big.offsetWidth; o.big.classList.add('flip'); }
     o.bar.className = p ? '' : 'none';
-    o.live.style.display = '';
     o.opts.classList.toggle('focus', osd.zone === 'opts');
     o.live.classList.toggle('focus', osd.zone === 'live');
     progress();
@@ -262,21 +255,19 @@ window.ITVGuide = function (api) {
     else if (osd.offset === 0) api.hideOsd();
   }
   // Returns true when the key was used here; app.js handles the rest (zapping with the OSD closed).
-  // D-pad: Left / Right walk the programmes on the big card (time runs right to left), Down goes to "Options",
-  // Up from "Options" back to the card; Right on the earliest programme opens the channel list.
   function playerKey(code, osdWasOff) {
     if (api.inCatchup()) {
       if (api.isBack(code)) { api.goLive(); return true; }
       if (osdWasOff) return code === 37 || code === 39;
       if (osd.zone === 'big') {
         if (code === 37 || code === 39) { api.catchupSeek(code === 37 ? 30 : -30); progress(); }
-        else if (code === 40) { osd.zone = 'opts'; renderOsd(); }
+        else if (code === 40) { osd.zone = 'live'; renderOsd(); }
         else return false;                   // Up zaps, which goes back to live
         return true;
       }
       if (code === 38) osd.zone = 'big';
-      else if (code === 37) osd.zone = 'live';
-      else if (code === 39) osd.zone = 'opts';
+      else if (code === 37) osd.zone = 'opts';
+      else if (code === 39) osd.zone = 'live';
       renderOsd();
       return true;
     }
@@ -294,7 +285,7 @@ window.ITVGuide = function (api) {
     }
     if (osd.zone === 'opts') {
       if (code === 38) { osd.zone = 'big'; renderOsd(); return true; }
-      if (code === 40) return false;          // Down from Options zaps
+      if (code === 40) return false;          // Down from options zaps channel down!
       return true;
     }
     var up = api.S.upNext ? 1 : -1;
@@ -490,13 +481,9 @@ window.ITVGuide = function (api) {
     ok: ok,
     playerKey: playerKey,
     open: openGuide,
-    /** The programme on air now on [ch] ([start, length, title, synopsis, image] in minutes), or null. */
-    airing: function (ch) {
-      var i = airingIndex(ch), p = i === -1 ? null : progs(ch)[i];
-      return p && startOf(p) <= now() ? p : null;
-    },
-    range: range,
     key: guideKey,
-    page: page
+    page: page,
+    airing: function (ch) { var list = shows(ch), i = airingIndex(ch); return i >= 0 ? list[i] : null; },
+    range: range
   };
 };
