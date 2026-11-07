@@ -2,7 +2,7 @@
   "streams": [
     {
       "name": "ישראל TV+\n[FHD ראשי]",
-      "title": "כאן חינוכית HD (חינוכית ילדים)\n📡 \n",
+      "title": "כאן חינוכית HD (חינוכית ילדים)\n📡 mcquack.net – אתר ממסר (restream) של צד שלישי\n⚠️ ממסר צד שלישי",
       "url": "http://stream.mcquack.net/378/index.m3u8",
       "behaviorHints": {
         "notWebReady": true,

@@ -1,26 +1,50 @@
 {
   "metas": [
     {
-      "id": "itv_radios_video",
+      "id": "itv_freetv_action_cinema_il",
       "type": "tv",
-      "name": "207. רדיוס 100FM – אולפן וידאו HD",
-      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/radios_video.png",
+      "name": "392. FreeTV קולנוע אקשן HD",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/freetv_movies_action.png",
       "posterShape": "landscape",
-      "description": "האולפן של רדיוס 100FM בשידור וידאו חי מהאולפן\n\n📡 מקור השידור: CyberCDN – ה-CDN של תחנות הרדיו עצמן\n✅ שידור רשמי ישיר",
+      "description": "ערוץ סרטי פעולה, מתח ואקשן שוברי קופות 24/7 באיכות HD ללא הפסקה.\n\n📡 מקור השידור: FreeTV – השידור הרשמי (AWS CloudFront)\n✅ שידור רשמי ישיר",
       "genres": [
-        "מוזיקה",
+        "סרטים וקולנוע",
         "ישראל"
       ]
     },
     {
-      "id": "itv_keshet_music_il",
+      "id": "itv_freetv_drama_cinema_il",
       "type": "tv",
-      "name": "387. ערוץ מוזיקה ישראלית 24/7 HD",
-      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/keshet_music.png",
+      "name": "393. FreeTV קולנוע דרמה HD",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/freetv_movies_drama.png",
       "posterShape": "landscape",
-      "description": "להיטי מוזיקה ישראלית מכל הזמנים, קליפים והופעות חיות 24 שעות ביממה.\n\n📡 מקור השידור: FreeTV – השידור הרשמי (AWS CloudFront)\n✅ שידור רשמי ישיר",
+      "description": "ערוץ דרמות מרגשות, סרטי איכות ופסטיבלים מובילים מהארץ ומהעולם.\n\n📡 מקור השידור: FreeTV – השידור הרשמי (AWS CloudFront)\n✅ שידור רשמי ישיר",
       "genres": [
-        "מוזיקה",
+        "סרטים וקולנוע",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_freetv_comedy_cinema_il",
+      "type": "tv",
+      "name": "394. FreeTV קולנוע קומדיה HD",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/freetv_movies_comedy.png",
+      "posterShape": "landscape",
+      "description": "ערוץ קומדיות קולנועיות, סרטים מצחיקים וקלילים מסביב לשעון.\n\n📡 מקור השידור: FreeTV – השידור הרשמי (AWS CloudFront)\n✅ שידור רשמי ישיר",
+      "genres": [
+        "סרטים וקולנוע",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_freetv_israeli_cinema_il",
+      "type": "tv",
+      "name": "395. FreeTV קולנוע ישראלי HD",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/freetv_israeli_movies.png",
+      "posterShape": "landscape",
+      "description": "ערוץ מיטב הקולנוע הישראלי – יצירות מופת ישראליות מכל השנים.\n\n📡 מקור השידור: FreeTV – השידור הרשמי (AWS CloudFront)\n✅ שידור רשמי ישיר",
+      "genres": [
+        "סרטים וקולנוע",
         "ישראל"
       ]
     }

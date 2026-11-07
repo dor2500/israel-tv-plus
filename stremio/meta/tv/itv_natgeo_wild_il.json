@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_natgeo_wild_il",
+    "type": "tv",
+    "name": "399. National Geographic WILD FHD",
+    "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/nat_geo_wild_il.png",
+    "posterShape": "landscape",
+    "logo": "https://dor2500.github.io/israel-tv-plus/assets/logos/nat_geo_wild_il.png",
+    "background": "https://dor2500.github.io/israel-tv-plus/assets/logos/nat_geo_wild_il.png",
+    "description": "ערוץ נשיונל ג'יאוגרפיק WILD – עולם החי, טבע פראי וטורפים בסרטי תעודה מרהיבים.\n\n📡 מקור השידור: פרטנר TV וסלקום – שרתי שידור ישראליים\n✅ שידור רשמי ישיר",
+    "genres": [
+      "טבע ומדע",
+      "ישראל"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "ישראל"
+  }
+}

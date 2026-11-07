@@ -2,7 +2,7 @@
   "streams": [
     {
       "name": "ישראל TV+\n[FHD ראשי]",
-      "title": "ערוץ הופ! ילדות ישראלית HD\n📡 פרטנר TV וסלקום – שרתי שידור ישראליים\n✅ שידור רשמי ישיר",
+      "title": "ערוץ הופ! ילדות ישראלית HD\n📡 FreeTV – השידור הרשמי (AWS CloudFront)\n✅ שידור רשמי ישיר",
       "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/yalduti/live.livx/playlist.m3u8",
       "behaviorHints": {
         "bingeGroup": "itv-live"

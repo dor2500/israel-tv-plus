@@ -2,7 +2,7 @@
   "streams": [
     {
       "name": "ישראל TV+\n[FHD ראשי]",
-      "title": "MTV Live HD (הופעות וקליפים)\n📡 \n",
+      "title": "MTV Live HD (הופעות וקליפים)\n📡 23.237.104.106\n⚠️ ממסר צד שלישי",
       "url": "http://23.237.104.106:8080/USA_MTV_LIVE/index.m3u8",
       "behaviorHints": {
         "notWebReady": true,

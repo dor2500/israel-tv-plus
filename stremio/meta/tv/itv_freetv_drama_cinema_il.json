@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_freetv_drama_cinema_il",
+    "type": "tv",
+    "name": "393. FreeTV קולנוע דרמה HD",
+    "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/freetv_movies_drama.png",
+    "posterShape": "landscape",
+    "logo": "https://dor2500.github.io/israel-tv-plus/assets/logos/freetv_movies_drama.png",
+    "background": "https://dor2500.github.io/israel-tv-plus/assets/logos/freetv_movies_drama.png",
+    "description": "ערוץ דרמות מרגשות, סרטי איכות ופסטיבלים מובילים מהארץ ומהעולם.\n\n📡 מקור השידור: FreeTV – השידור הרשמי (AWS CloudFront)\n✅ שידור רשמי ישיר",
+    "genres": [
+      "סרטים וקולנוע",
+      "ישראל"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "ישראל"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_freetv_action_cinema_il",
+    "type": "tv",
+    "name": "392. FreeTV קולנוע אקשן HD",
+    "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/freetv_movies_action.png",
+    "posterShape": "landscape",
+    "logo": "https://dor2500.github.io/israel-tv-plus/assets/logos/freetv_movies_action.png",
+    "background": "https://dor2500.github.io/israel-tv-plus/assets/logos/freetv_movies_action.png",
+    "description": "ערוץ סרטי פעולה, מתח ואקשן שוברי קופות 24/7 באיכות HD ללא הפסקה.\n\n📡 מקור השידור: FreeTV – השידור הרשמי (AWS CloudFront)\n✅ שידור רשמי ישיר",
+    "genres": [
+      "סרטים וקולנוע",
+      "ישראל"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "ישראל"
+  }
+}

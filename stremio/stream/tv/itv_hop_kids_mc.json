@@ -2,7 +2,7 @@
   "streams": [
     {
       "name": "ישראל TV+\n[FHD ראשי]",
-      "title": "ערוץ הופ! ילדים HD (Hop! Kids)\n📡 \n",
+      "title": "ערוץ הופ! ילדים HD (Hop! Kids)\n📡 mcquack.net – אתר ממסר (restream) של צד שלישי\n⚠️ ממסר צד שלישי",
       "url": "http://stream.mcquack.net/44/index.m3u8",
       "behaviorHints": {
         "notWebReady": true,

@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_vod_hayehudim_baim",
+    "type": "tv",
+    "name": "504. היהודים באים FHD (VOD)",
+    "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/vod_hayehudim_baim.jpg",
+    "posterShape": "landscape",
+    "logo": "https://dor2500.github.io/israel-tv-plus/assets/logos/vod_hayehudim_baim.jpg",
+    "background": "https://dor2500.github.io/israel-tv-plus/assets/logos/vod_hayehudim_baim.jpg",
+    "description": "סאטירה מבריקה של כאן 11 המציגה מערכונים פרועים על ההיסטוריה היהודית והישראלית.\n\n📡 מקור השידור: Redge – ה-CDN הרשמי של כאן, ערוץ 14 וכלכלה 10\n✅ שידור רשמי ישיר",
+    "genres": [
+      "סדרות לצפייה ישירה",
+      "ישראל"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "ישראל"
+  }
+}

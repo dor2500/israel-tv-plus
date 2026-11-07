@@ -2,7 +2,7 @@
   "streams": [
     {
       "name": "ישראל TV+\n[FHD ראשי]",
-      "title": "Sky Sports F1 HD (פורמולה 1 שידור חי)\n📡 Sky Sports F1 Playout\n",
+      "title": "Sky Sports F1 HD (פורמולה 1 שידור חי)\n📡 mvg-mv-xumo.otteravision.com\n⚠️ ממסר צד שלישי",
       "url": "https://mvg-mv-xumo.otteravision.com/mvg/mv/mv.m3u8",
       "behaviorHints": {
         "bingeGroup": "itv-live"

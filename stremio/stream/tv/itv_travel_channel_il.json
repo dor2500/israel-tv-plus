@@ -2,10 +2,9 @@
   "streams": [
     {
       "name": "ישראל TV+\n[FHD ראשי]",
-      "title": "ערוץ הטיולים HD\n📡 פרטנר TV וסלקום – שרתי שידור ישראליים\n✅ שידור רשמי ישיר",
-      "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2361/index.m3u8",
+      "title": "ערוץ הטיולים HD\n📡 ערוץ FAST ישראלי – AWS CloudFront\n✅ ערוץ FAST רשמי",
+      "url": "https://d1yd8hohnldm33.cloudfront.net/out/v1/19dee23c2cc24f689bd4e1288661ee0c/index.m3u8",
       "behaviorHints": {
-        "notWebReady": true,
         "bingeGroup": "itv-live"
       }
     }

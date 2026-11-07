@@ -2,7 +2,7 @@
   "streams": [
     {
       "name": "ישראל TV+\n[FHD ראשי]",
-      "title": "ערוץ 14 החדשות עכשיו (Now 14 Live)\n📡 \n",
+      "title": "ערוץ 14 החדשות עכשיו (Now 14 Live)\n📡 Redge – ה-CDN הרשמי של כאן, ערוץ 14 וכלכלה 10\n✅ שידור רשמי ישיר",
       "url": "https://r.il.cdn-redge.media/livehls/oil/ch14/live/ch14/live.livx/playlist.m3u8",
       "behaviorHints": {
         "bingeGroup": "itv-live"

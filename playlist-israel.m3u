@@ -40,7 +40,7 @@ http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2339/index.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="ערוץ הבריאות HD" tvg-chno="21" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/health_channel_il.png" group-title="ערוצי ישראל",ערוץ הבריאות HD
 http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2378/index.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="ערוץ הטיולים HD" tvg-chno="22" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/travel_channel_il.png" group-title="ערוצי ישראל",ערוץ הטיולים HD
-http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2361/index.m3u8
+https://d1yd8hohnldm33.cloudfront.net/out/v1/19dee23c2cc24f689bd4e1288661ee0c/index.m3u8
 #EXTINF:-1 tvg-id="KanEducational.il" tvg-name="כאן חינוכית 23 FHD" tvg-chno="23" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/kan_hinuchit.png" group-title="ילדים ונוער (בעברית)",כאן חינוכית 23 FHD
 https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan_edu/live.livx/playlist.m3u8
 #EXTINF:-1 tvg-id="Channel24.il" tvg-name="ערוץ 24 HD" tvg-chno="24" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/ch24.png" group-title="ערוצי ישראל",ערוץ 24 HD
@@ -522,13 +522,13 @@ http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32158/index.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="ערוץ Beautyz אופנה ולייפסטייל HD" tvg-chno="401" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/hot_reality.png" group-title="ערוצי ישראל",ערוץ Beautyz אופנה ולייפסטייל HD
 http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32164/index.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="ערוץ הילדים HD" tvg-chno="403" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/arutz_hayeladim.png" group-title="ילדים ונוער (בעברית)",ערוץ הילדים HD
-http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2347/index.m3u8
+https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kids_channel/live.livx/playlist.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="ערוץ ג'וניור HD (Junior)" tvg-chno="404" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/junior.png" group-title="ילדים ונוער (בעברית)",ערוץ ג'וניור HD (Junior)
 http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2366/index.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="ערוץ בייבי HD (Baby Channel)" tvg-chno="405" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/baby_tv_he.png" group-title="ילדים ונוער (בעברית)",ערוץ בייבי HD (Baby Channel)
 http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2370/index.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="ערוץ לולי לפעוטות HD (Luli)" tvg-chno="406" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/luli_tv.png" group-title="ילדים ונוער (בעברית)",ערוץ לולי לפעוטות HD (Luli)
-http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12246/index.m3u8
+http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2364/index.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="yes קולנוע ילדים HD (yes Movies Kids)" tvg-chno="407" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/yes_movies_kids_il.png" group-title="ילדים ונוער (בעברית)",yes קולנוע ילדים HD (yes Movies Kids)
 http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12273/index.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="ערוץ החופש והנופש HD (Vacation Channel)" tvg-chno="408" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/vacation_channel_il.png" group-title="ערוצי ישראל",ערוץ החופש והנופש HD (Vacation Channel)

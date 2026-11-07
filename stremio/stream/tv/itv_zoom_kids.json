@@ -2,7 +2,7 @@
   "streams": [
     {
       "name": "ישראל TV+\n[FHD ראשי]",
-      "title": "ערוץ זום ZOOM ילדים ונוער HD\n📡 פרטנר TV וסלקום – שרתי שידור ישראליים\n✅ שידור רשמי ישיר",
+      "title": "ערוץ זום ZOOM ילדים ונוער HD\n📡 mcquack.net – אתר ממסר (restream) של צד שלישי\n⚠️ ממסר צד שלישי",
       "url": "http://stream.mcquack.net/377/index.m3u8",
       "behaviorHints": {
         "notWebReady": true,

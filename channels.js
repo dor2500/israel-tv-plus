@@ -1,5 +1,4 @@
-// written by tools/make_channel_list.py
-window.ITV_CHANNELS = [
+window.CHANNELS_DATA = window.ITV_CHANNELS = [
  {
   "id": "walla_news_il",
   "name": "וואלה!+ חדשות – שידור חי HD",
@@ -712,21 +711,28 @@ window.ITV_CHANNELS = [
   "title": "ערוץ הטיולים והתיירות בעברית HD",
   "category": "ערוצי ישראל - שידור חי",
   "categoryEn": "israel",
-  "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2361/index.m3u8",
+  "url": "https://d1yd8hohnldm33.cloudfront.net/out/v1/19dee23c2cc24f689bd4e1288661ee0c/index.m3u8",
   "logo": "assets/logos/travel_channel_il.png",
   "badge": "HD",
   "lang": "he",
   "desc": "ערוץ הטיולים – מסעות, יעדים קסומים, תרבויות וחוויות בארץ ובעולם",
   "number": 22,
   "src": {
-   "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
-   "kind": "official",
-   "host": "b84203c4.ottrast.com",
-   "found": "רשימה ידנית (גרסה קודמת)",
-   "web": "❌ רק באפליקציה (HTTP)"
+   "by": "ערוץ FAST ישראלי – AWS CloudFront",
+   "kind": "fast",
+   "host": "d1yd8hohnldm33.cloudfront.net",
+   "found": "שידור רשמי ערוץ הנופש והתיירות HD",
+   "web": "✅"
   },
-  "fallbackUrls": [],
-  "backups": []
+  "fallbackUrls": [
+   "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32160/index.m3u8",
+   "http://45.156.223.202/iptv/QAP2YS2594ZQS3/32160/index.m3u8"
+  ],
+  "backups": [
+   "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32160/index.m3u8",
+   "http://45.156.223.202/iptv/QAP2YS2594ZQS3/32160/index.m3u8"
+  ],
+  "webOk": true
  },
  {
   "id": "kan_hinuchit",
@@ -1143,7 +1149,7 @@ window.ITV_CHANNELS = [
   "title": "ערוץ ספורט 1 צ'רלטון שידור חי (Charlton Sport 1 HD)",
   "category": "ספורט (Sports)",
   "categoryEn": "sports",
-  "url": "http://stream.mcquack.net/391/index.m3u8",
+  "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12249/index.m3u8",
   "logo": "assets/logos/sport1_israel.png",
   "badge": "HD",
   "desc": "ספורט 1 (צ'רלטון) – ליגת העל הישראלית, הפרמייר ליג האנגלית, גביע המדינה ומשחקים מרכזיים בשידור חי",
@@ -1155,21 +1161,20 @@ window.ITV_CHANNELS = [
    "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
    "kind": "official",
    "host": "b84203c4.ottrast.com",
-   "found": "רשימה ידנית (גרסה קודמת)",
-   "web": "❌ רק באפליקציה (HTTP)"
+   "found": "שידור ישראלי מקורי צ'רלטון FHD",
+   "web": "❌ רק באפליקציה (הפניה בלי CORS)"
   },
   "fallbackUrls": [
-   "http://stream.mcquack.net/391/index.m3u8"
+   "http://45.156.223.202/iptv/QAP2YS2594ZQS3/12249/index.m3u8"
   ],
   "iptv": "Sport1.il",
   "backups": [
-   "http://stream.mcquack.net/391/index.m3u8"
+   "http://45.156.223.202/iptv/QAP2YS2594ZQS3/12249/index.m3u8"
   ],
   "backupUrls": [
-   "http://45.156.223.202/iptv/QAP2YS2594ZQS3/2353/index.m3u8",
-   "http://stream.mcquack.net/50/index.m3u8"
+   "http://45.156.223.202/iptv/QAP2YS2594ZQS3/12249/index.m3u8"
   ],
-  "webOk": true
+  "webOk": false
  },
  {
   "id": "sport2_israel",
@@ -1177,7 +1182,7 @@ window.ITV_CHANNELS = [
   "title": "ערוץ ספורט 2 צ'רלטון שידור חי (Charlton Sport 2 HD)",
   "category": "ספורט (Sports)",
   "categoryEn": "sports",
-  "url": "http://stream.mcquack.net/392/index.m3u8",
+  "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12250/index.m3u8",
   "logo": "assets/logos/sport2_israel.png",
   "badge": "HD",
   "desc": "ספורט 2 (צ'רלטון) – שידורים ישירים מהליגה האנגלית, הליגה האיטלקית, בונדסליגה, ליגה אירופית וטניס",
@@ -1189,21 +1194,20 @@ window.ITV_CHANNELS = [
    "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
    "kind": "official",
    "host": "b84203c4.ottrast.com",
-   "found": "רשימה ידנית (גרסה קודמת)",
-   "web": "❌ רק באפליקציה (HTTP)"
+   "found": "שידור ישראלי מקורי צ'רלטון FHD",
+   "web": "❌ רק באפליקציה (הפניה בלי CORS)"
   },
   "fallbackUrls": [
-   "http://stream.mcquack.net/392/index.m3u8"
+   "http://45.156.223.202/iptv/QAP2YS2594ZQS3/12250/index.m3u8"
   ],
   "iptv": "Sport2.il",
   "backups": [
-   "http://stream.mcquack.net/392/index.m3u8"
+   "http://45.156.223.202/iptv/QAP2YS2594ZQS3/12250/index.m3u8"
   ],
   "backupUrls": [
-   "http://45.156.223.202/iptv/QAP2YS2594ZQS3/2352/index.m3u8",
-   "http://stream.mcquack.net/51/index.m3u8"
+   "http://45.156.223.202/iptv/QAP2YS2594ZQS3/12250/index.m3u8"
   ],
-  "webOk": true
+  "webOk": false
  },
  {
   "id": "sport3_israel",
@@ -1211,7 +1215,7 @@ window.ITV_CHANNELS = [
   "title": "ערוץ ספורט 3 צ'רלטון שידור חי (Charlton Sport 3 HD)",
   "category": "ספורט (Sports)",
   "categoryEn": "sports",
-  "url": "http://stream.mcquack.net/393/index.m3u8",
+  "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12251/index.m3u8",
   "logo": "assets/logos/sport3_israel.png",
   "badge": "HD",
   "desc": "ספורט 3 (צ'רלטון) – כדורגל ישראלי ואירופי, כדורסל, אולפנים חיים ואירועי ספורט בינלאומיים",
@@ -1223,20 +1227,20 @@ window.ITV_CHANNELS = [
    "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
    "kind": "official",
    "host": "b84203c4.ottrast.com",
-   "found": "רשימה ידנית (גרסה קודמת)",
-   "web": "❌ רק באפליקציה (HTTP)"
+   "found": "שידור ישראלי מקורי צ'רלטון FHD",
+   "web": "❌ רק באפליקציה (הפניה בלי CORS)"
   },
   "fallbackUrls": [
-   "http://stream.mcquack.net/393/index.m3u8"
+   "http://45.156.223.202/iptv/QAP2YS2594ZQS3/12251/index.m3u8"
   ],
   "iptv": "Sport3.il",
   "backups": [
-   "http://stream.mcquack.net/393/index.m3u8"
+   "http://45.156.223.202/iptv/QAP2YS2594ZQS3/12251/index.m3u8"
   ],
   "backupUrls": [
-   "http://stream.mcquack.net/52/index.m3u8"
+   "http://45.156.223.202/iptv/QAP2YS2594ZQS3/12251/index.m3u8"
   ],
-  "webOk": true
+  "webOk": false
  },
  {
   "id": "sport4_israel",
@@ -1244,7 +1248,7 @@ window.ITV_CHANNELS = [
   "title": "ערוץ ספורט 4 צ'רלטון שידור חי (Charlton Sport 4 FHD)",
   "category": "ספורט (Sports)",
   "categoryEn": "sports",
-  "url": "http://stream.mcquack.net/394/index.m3u8",
+  "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12252/index.m3u8",
   "logo": "assets/logos/sport4_israel.png",
   "badge": "FHD",
   "desc": "ספורט 4 FHD (צ'רלטון) – שידורים חיים באיכות FHD מליגת העל, הפרמייר ליג ומפעלי אופ\"א",
@@ -1256,20 +1260,20 @@ window.ITV_CHANNELS = [
    "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
    "kind": "official",
    "host": "b84203c4.ottrast.com",
-   "found": "רשימה ידנית (גרסה קודמת)",
-   "web": "❌ רק באפליקציה (HTTP)"
+   "found": "שידור ישראלי מקורי צ'רלטון FHD",
+   "web": "❌ רק באפליקציה (הפניה בלי CORS)"
   },
   "fallbackUrls": [
-   "http://stream.mcquack.net/394/index.m3u8"
+   "http://45.156.223.202/iptv/QAP2YS2594ZQS3/12252/index.m3u8"
   ],
   "iptv": "Sport4.il",
   "backups": [
-   "http://stream.mcquack.net/394/index.m3u8"
+   "http://45.156.223.202/iptv/QAP2YS2594ZQS3/12252/index.m3u8"
   ],
   "backupUrls": [
-   "http://stream.mcquack.net/53/index.m3u8"
+   "http://45.156.223.202/iptv/QAP2YS2594ZQS3/12252/index.m3u8"
   ],
-  "webOk": true
+  "webOk": false
  },
  {
   "id": "arutz_hayeladim",
@@ -1451,7 +1455,7 @@ window.ITV_CHANNELS = [
   "title": "ערוץ דיסני ג'וניור בעברית (Disney Junior Israel HD)",
   "category": "ילדים ונוער (בעברית)",
   "categoryEn": "kids_he",
-  "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2333/index.m3u8",
+  "url": "http://88.212.15.50/live/test_disney_junior/playlist.m3u8",
   "logo": "assets/logos/disney_junior.png",
   "badge": "HD",
   "lang": "he",
@@ -1459,21 +1463,19 @@ window.ITV_CHANNELS = [
   "desc": "ערוץ דיסני ג'וניור ישראל – שידור חי ישיר 24/7 ללא לופים",
   "number": 49,
   "src": {
-   "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
-   "kind": "official",
-   "host": "b84203c4.ottrast.com",
+   "by": "88.212.15.50",
+   "kind": "restream",
+   "host": "88.212.15.50",
    "found": "iptv-org (DisneyJunior.il)",
    "web": "❌ רק באפליקציה (HTTP)"
   },
   "fallbackUrls": [
-   "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12206/index.m3u8",
-   "http://45.156.223.202/iptv/QAP2YS2594ZQS3/2333/index.m3u8",
-   "http://88.212.15.50/live/test_disney_junior/playlist.m3u8"
+   "http://88.212.15.50/live/test_disney_junior/playlist.m3u8",
+   "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2333/index.m3u8"
   ],
   "backups": [
-   "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12206/index.m3u8",
-   "http://45.156.223.202/iptv/QAP2YS2594ZQS3/2333/index.m3u8",
-   "http://88.212.15.50/live/test_disney_junior/playlist.m3u8"
+   "http://88.212.15.50/live/test_disney_junior/playlist.m3u8",
+   "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2333/index.m3u8"
   ]
  },
  {
@@ -1482,7 +1484,7 @@ window.ITV_CHANNELS = [
   "title": "ערוץ ניקלודיאון לילדים ונוער בעברית (Nickelodeon Israel HD)",
   "category": "ילדים ונוער (בעברית)",
   "categoryEn": "kids_he",
-  "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32275/index.m3u8",
+  "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2337/index.m3u8",
   "logo": "assets/logos/nickelodeon.png",
   "badge": "HD",
   "desc": "ערוץ ניקלודיאון – בובספוג מכנסמרובע, הרעשנים, אווטאר, צבי הנינג'ה וקומדיות לילדים",
@@ -1491,21 +1493,17 @@ window.ITV_CHANNELS = [
   "countryHe": "ישראל",
   "number": 50,
   "src": {
-   "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
-   "kind": "restream",
-   "host": "stream.mcquack.net",
+   "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
+   "kind": "official",
+   "host": "b84203c4.ottrast.com",
    "found": "רשימה ידנית (גרסה קודמת)",
    "web": "❌ רק באפליקציה (HTTP)"
   },
   "iptv": "Nickelodeon.il",
   "fallbackUrls": [
-   "http://45.156.223.202/iptv/QAP2YS2594ZQS3/32275/index.m3u8",
-   "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2337/index.m3u8",
    "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12240/index.m3u8"
   ],
   "backups": [
-   "http://45.156.223.202/iptv/QAP2YS2594ZQS3/32275/index.m3u8",
-   "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2337/index.m3u8",
    "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12240/index.m3u8"
   ],
   "language": "he",
@@ -1596,9 +1594,9 @@ window.ITV_CHANNELS = [
   "logo": "assets/logos/zoom.png",
   "number": 53,
   "src": {
-   "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
-   "kind": "official",
-   "host": "b84203c4.ottrast.com",
+   "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+   "kind": "restream",
+   "host": "stream.mcquack.net",
    "found": "iptv-org (Zoom.il)",
    "web": "❌ רק באפליקציה (HTTP)"
   },
@@ -2818,7 +2816,7 @@ window.ITV_CHANNELS = [
   "title": "ספורט 6 ישיר HD (צ'רלטון Sport 6)",
   "category": "ספורט (Sports)",
   "categoryEn": "sports",
-  "url": "http://stream.mcquack.net/416/index.m3u8",
+  "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32003/index.m3u8",
   "logo": "assets/logos/sport6_israel.png",
   "badge": "HD",
   "lang": "he",
@@ -2828,21 +2826,22 @@ window.ITV_CHANNELS = [
    "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
    "kind": "official",
    "host": "b84203c4.ottrast.com",
-   "found": "רשימה ידנית (גרסה קודמת)",
-   "web": "❌ רק באפליקציה (HTTP)"
+   "found": "שידור ישראלי מקורי צ'רלטון FHD",
+   "web": "❌ רק באפליקציה (הפניה בלי CORS)"
   },
   "fallbackUrls": [
-   "http://stream.mcquack.net/234/index.m3u8",
-   "http://stream.mcquack.net/333/index.m3u8"
+   "http://45.156.223.202/iptv/QAP2YS2594ZQS3/32003/index.m3u8"
   ],
   "isIsraeli": true,
   "kind": "tv",
   "iptv": "Sport6.il",
   "backups": [
-   "http://stream.mcquack.net/234/index.m3u8",
-   "http://stream.mcquack.net/333/index.m3u8"
+   "http://45.156.223.202/iptv/QAP2YS2594ZQS3/32003/index.m3u8"
   ],
-  "webOk": true
+  "webOk": false,
+  "backupUrls": [
+   "http://45.156.223.202/iptv/QAP2YS2594ZQS3/32003/index.m3u8"
+  ]
  },
  {
   "id": "sport5_israel_hd",
@@ -3199,9 +3198,9 @@ window.ITV_CHANNELS = [
   "desc": "יורוספורט 2 HD – טניס גראנד סלאם, מרוצי אופניים, ספורט חורף וספורט אולימפי בשידור חי",
   "number": 111,
   "src": {
-   "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
-   "kind": "official",
-   "host": "b84203c4.ottrast.com",
+   "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+   "kind": "restream",
+   "host": "stream.mcquack.net",
    "found": "רשימה ידנית (גרסה קודמת)",
    "web": "❌ רק באפליקציה (HTTP)"
   },
@@ -5139,9 +5138,9 @@ window.ITV_CHANNELS = [
   "lang": "fr",
   "iptv": "BFMTV.fr",
   "src": {
-   "by": "BFM – SFR (רשמי)",
-   "kind": "official",
-   "host": "ncdn-live-bfm.pfd.sfr.net",
+   "by": "live-cdn-stream-euw1.bfmtv.bct.nextradiotv.com",
+   "kind": "restream",
+   "host": "live-cdn-stream-euw1.bfmtv.bct.nextradiotv.com",
    "found": "iptv-org (BFMTV.fr)",
    "web": "✅"
   },
@@ -5242,9 +5241,9 @@ window.ITV_CHANNELS = [
   "logo": "assets/logos/cnn_intl_hd.png",
   "number": 193,
   "src": {
-   "by": "turnerlive.warnermediacdn.com",
-   "kind": "restream",
-   "host": "turnerlive.warnermediacdn.com",
+   "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
+   "kind": "fast",
+   "host": "jmp2.uk",
    "found": "רשימה ידנית (גרסה קודמת)",
    "web": "✅"
   },
@@ -9803,9 +9802,10 @@ window.ITV_CHANNELS = [
   "countryHe": "בריטניה",
   "http_referrer": "https://stmify.com/",
   "src": {
-   "by": "Sky Sports F1 Playout",
-   "kind": "live",
-   "host": "cdn.stmify.com",
+   "by": "mvg-mv-xumo.otteravision.com",
+   "kind": "restream",
+   "host": "mvg-mv-xumo.otteravision.com",
+   "found": "רשימה ידנית (גרסה קודמת)",
    "web": "✅"
   },
   "number": 375
@@ -10005,11 +10005,11 @@ window.ITV_CHANNELS = [
   "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/yalduti/live.livx/playlist.m3u8",
   "subsUrl": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/yalduti/live.livx/playlist.m3u8",
   "src": {
-   "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
+   "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
    "kind": "official",
-   "host": "b84203c4.ottrast.com",
+   "host": "d1zqtf09wb8nt5.cloudfront.net",
    "found": "רשימה ידנית (גרסה קודמת)",
-   "web": "❌ רק באפליקציה (HTTP)"
+   "web": "✅"
   },
   "desc": "ערוץ הופ! ילדות ישראלית – שירי ילדות קלאסיים, סיפורים, הצגות וסדרות איכותיות לילדים ופעוטות בעברית.",
   "webOk": true,
@@ -10132,7 +10132,14 @@ window.ITV_CHANNELS = [
   "country": "IL",
   "countryHe": "ישראל",
   "webOk": true,
-  "number": 388
+  "number": 388,
+  "src": {
+   "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
+   "kind": "official",
+   "host": "b84203c4.ottrast.com",
+   "found": "רשימה ידנית (גרסה קודמת)",
+   "web": "❌ רק באפליקציה (HTTP)"
+  }
  },
  {
   "id": "hot_mind_docu_il",
@@ -10150,7 +10157,14 @@ window.ITV_CHANNELS = [
   "country": "IL",
   "countryHe": "ישראל",
   "webOk": true,
-  "number": 389
+  "number": 389,
+  "src": {
+   "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
+   "kind": "official",
+   "host": "b84203c4.ottrast.com",
+   "found": "רשימה ידנית (גרסה קודמת)",
+   "web": "❌ רק באפליקציה (HTTP)"
+  }
  },
  {
   "id": "humor_2_channel_il",
@@ -10170,7 +10184,14 @@ window.ITV_CHANNELS = [
   "country": "IL",
   "countryHe": "ישראל",
   "webOk": true,
-  "number": 390
+  "number": 390,
+  "src": {
+   "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
+   "kind": "official",
+   "host": "b84203c4.ottrast.com",
+   "found": "רשימה ידנית (גרסה קודמת)",
+   "web": "❌ רק באפליקציה (HTTP)"
+  }
  },
  {
   "id": "viva_vintage_il",
@@ -10190,7 +10211,14 @@ window.ITV_CHANNELS = [
   "country": "IL",
   "countryHe": "ישראל",
   "webOk": true,
-  "number": 391
+  "number": 391,
+  "src": {
+   "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
+   "kind": "official",
+   "host": "b84203c4.ottrast.com",
+   "found": "רשימה ידנית (גרסה קודמת)",
+   "web": "❌ רק באפליקציה (HTTP)"
+  }
  },
  {
   "id": "freetv_action_cinema_il",
@@ -10208,7 +10236,14 @@ window.ITV_CHANNELS = [
   "country": "IL",
   "countryHe": "ישראל",
   "webOk": true,
-  "number": 392
+  "number": 392,
+  "src": {
+   "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
+   "kind": "official",
+   "host": "d1zqtf09wb8nt5.cloudfront.net",
+   "found": "רשימה ידנית (גרסה קודמת)",
+   "web": "✅"
+  }
  },
  {
   "id": "freetv_drama_cinema_il",
@@ -10226,7 +10261,14 @@ window.ITV_CHANNELS = [
   "country": "IL",
   "countryHe": "ישראל",
   "webOk": true,
-  "number": 393
+  "number": 393,
+  "src": {
+   "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
+   "kind": "official",
+   "host": "d1zqtf09wb8nt5.cloudfront.net",
+   "found": "רשימה ידנית (גרסה קודמת)",
+   "web": "✅"
+  }
  },
  {
   "id": "freetv_comedy_cinema_il",
@@ -10244,7 +10286,14 @@ window.ITV_CHANNELS = [
   "country": "IL",
   "countryHe": "ישראל",
   "webOk": true,
-  "number": 394
+  "number": 394,
+  "src": {
+   "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
+   "kind": "official",
+   "host": "d1zqtf09wb8nt5.cloudfront.net",
+   "found": "רשימה ידנית (גרסה קודמת)",
+   "web": "✅"
+  }
  },
  {
   "id": "freetv_israeli_cinema_il",
@@ -10262,7 +10311,14 @@ window.ITV_CHANNELS = [
   "country": "IL",
   "countryHe": "ישראל",
   "webOk": true,
-  "number": 395
+  "number": 395,
+  "src": {
+   "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
+   "kind": "official",
+   "host": "d1zqtf09wb8nt5.cloudfront.net",
+   "found": "רשימה ידנית (גרסה קודמת)",
+   "web": "✅"
+  }
  },
  {
   "id": "mtv_live_hd",
@@ -10278,9 +10334,16 @@ window.ITV_CHANNELS = [
   "desc": "ערוץ MTV Live HD – הופעות חיות בינלאומיות, פסטיבלי מוזיקה ולהיטים מכל הזמנים.",
   "lang": "en",
   "country": "US",
-  "countryHe": "ארה\"ב",
+  "countryHe": "ארה״ב",
   "webOk": true,
-  "number": 396
+  "number": 396,
+  "src": {
+   "by": "23.237.104.106",
+   "kind": "restream",
+   "host": "23.237.104.106",
+   "found": "רשימה ידנית (גרסה קודמת)",
+   "web": "❌ רק באפליקציה (HTTP)"
+  }
  },
  {
   "id": "mtv_clips_hd",
@@ -10296,9 +10359,16 @@ window.ITV_CHANNELS = [
   "desc": "ערוץ MTV להיטים וקליפים ברצף 24 שעות ביממה.",
   "lang": "en",
   "country": "US",
-  "countryHe": "ארה\"ב",
+  "countryHe": "ארה״ב",
   "webOk": true,
-  "number": 397
+  "number": 397,
+  "src": {
+   "by": "ma.anixa.tv",
+   "kind": "restream",
+   "host": "ma.anixa.tv",
+   "found": "רשימה ידנית (גרסה קודמת)",
+   "web": "✅"
+  }
  },
  {
   "id": "rtl_zwei_hd",
@@ -10316,7 +10386,14 @@ window.ITV_CHANNELS = [
   "country": "DE",
   "countryHe": "גרמניה",
   "webOk": true,
-  "number": 398
+  "number": 398,
+  "src": {
+   "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
+   "kind": "official",
+   "host": "b84203c4.ottrast.com",
+   "found": "רשימה ידנית (גרסה קודמת)",
+   "web": "❌ רק באפליקציה (HTTP)"
+  }
  },
  {
   "id": "natgeo_wild_il",
@@ -10336,7 +10413,14 @@ window.ITV_CHANNELS = [
   "country": "IL",
   "countryHe": "ישראל",
   "webOk": true,
-  "number": 399
+  "number": 399,
+  "src": {
+   "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
+   "kind": "official",
+   "host": "b84203c4.ottrast.com",
+   "found": "רשימה ידנית (גרסה קודמת)",
+   "web": "❌ רק באפליקציה (HTTP)"
+  }
  },
  {
   "id": "games_shows_il",
@@ -10354,7 +10438,14 @@ window.ITV_CHANNELS = [
   "country": "IL",
   "countryHe": "ישראל",
   "webOk": true,
-  "number": 400
+  "number": 400,
+  "src": {
+   "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
+   "kind": "official",
+   "host": "b84203c4.ottrast.com",
+   "found": "רשימה ידנית (גרסה קודמת)",
+   "web": "❌ רק באפליקציה (HTTP)"
+  }
  },
  {
   "id": "beautyz_fashion_il",
@@ -10372,7 +10463,14 @@ window.ITV_CHANNELS = [
   "country": "IL",
   "countryHe": "ישראל",
   "webOk": true,
-  "number": 401
+  "number": 401,
+  "src": {
+   "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
+   "kind": "official",
+   "host": "b84203c4.ottrast.com",
+   "found": "רשימה ידנית (גרסה קודמת)",
+   "web": "❌ רק באפליקציה (HTTP)"
+  }
  },
  {
   "id": "hot_doco_hd",
@@ -10385,20 +10483,36 @@ window.ITV_CHANNELS = [
   "quality": "HD",
   "description": "ערוץ הסרטים והסדרות התיעודיים המוביל בישראל מבית HOT.",
   "categoryEn": "docu",
-  "backups": []
+  "backups": [],
+  "src": {
+   "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
+   "kind": "official",
+   "host": "b84203c4.ottrast.com",
+   "found": "רשימה ידנית (גרסה קודמת)",
+   "web": "❌ רק באפליקציה (HTTP)"
+  }
  },
  {
   "id": "channel_hayeladim_hd",
   "name": "ערוץ הילדים HD",
   "number": 403,
   "category": "ילדים ונוער (בעברית)",
-  "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2347/index.m3u8",
+  "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kids_channel/live.livx/playlist.m3u8",
   "logo": "assets/logos/arutz_hayeladim.png",
   "language": "he",
   "quality": "HD",
   "description": "ערוץ הילדים – שידורי ילדים ונוער, סדרות מקור ותוכניות אהובות בעברית.",
   "categoryEn": "kids_he",
-  "backups": []
+  "backups": [],
+  "fallbackUrls": [],
+  "src": {
+   "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
+   "kind": "official",
+   "host": "d1zqtf09wb8nt5.cloudfront.net",
+   "found": "שידור ערוץ הילדים HD המקום האמיתי",
+   "web": "✅"
+  },
+  "webOk": true
  },
  {
   "id": "junior_channel_hd",
@@ -10411,7 +10525,14 @@ window.ITV_CHANNELS = [
   "quality": "HD",
   "description": "ערוץ ג'וניור לילדים בעברית – סדרות אנימציה ונוסטלגיה אהובות.",
   "categoryEn": "kids_he",
-  "backups": []
+  "backups": [],
+  "src": {
+   "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
+   "kind": "official",
+   "host": "b84203c4.ottrast.com",
+   "found": "רשימה ידנית (גרסה קודמת)",
+   "web": "❌ רק באפליקציה (HTTP)"
+  }
  },
  {
   "id": "baby_channel_hd",
@@ -10424,20 +10545,40 @@ window.ITV_CHANNELS = [
   "quality": "HD",
   "description": "ערוץ בייבי המיועד לפעוטות והורים – תוכניות מעשירות ומפתחות בעברית.",
   "categoryEn": "kids_he",
-  "backups": []
+  "backups": [],
+  "src": {
+   "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
+   "kind": "official",
+   "host": "b84203c4.ottrast.com",
+   "found": "רשימה ידנית (גרסה קודמת)",
+   "web": "❌ רק באפליקציה (HTTP)"
+  }
  },
  {
   "id": "luli_channel_hd",
   "name": "ערוץ לולי לפעוטות HD (Luli)",
   "number": 406,
   "category": "ילדים ונוער (בעברית)",
-  "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12246/index.m3u8",
+  "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2364/index.m3u8",
   "logo": "assets/logos/luli_tv.png",
   "language": "he",
   "quality": "HD",
   "description": "ערוץ לולי לפעוטות – שירים, סיפורים והפעלות בעברית מבית הופ!.",
   "categoryEn": "kids_he",
-  "backups": []
+  "backups": [
+   "http://45.156.223.202/iptv/QAP2YS2594ZQS3/2364/index.m3u8"
+  ],
+  "fallbackUrls": [
+   "http://45.156.223.202/iptv/QAP2YS2594ZQS3/2364/index.m3u8"
+  ],
+  "src": {
+   "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
+   "kind": "official",
+   "host": "b84203c4.ottrast.com",
+   "found": "ערוץ לולי לפעוטות בעברית HD",
+   "web": "❌ רק באפליקציה (הפניה בלי CORS)"
+  },
+  "webOk": false
  },
  {
   "id": "yes_movies_kids_hd",
@@ -10450,7 +10591,14 @@ window.ITV_CHANNELS = [
   "quality": "HD",
   "description": "סרטי ילדים ומשפחה מובילים בדיבוב עברי ובאיכות HD מבית yes.",
   "categoryEn": "kids_he",
-  "backups": []
+  "backups": [],
+  "src": {
+   "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
+   "kind": "official",
+   "host": "b84203c4.ottrast.com",
+   "found": "רשימה ידנית (גרסה קודמת)",
+   "web": "❌ רק באפליקציה (HTTP)"
+  }
  },
  {
   "id": "vacation_channel_hd",
@@ -10463,7 +10611,14 @@ window.ITV_CHANNELS = [
   "quality": "HD",
   "description": "ערוץ תיירות, נופש, חופשות וטיולים בישראל ובעולם.",
   "categoryEn": "israel",
-  "backups": []
+  "backups": [],
+  "src": {
+   "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
+   "kind": "official",
+   "host": "b84203c4.ottrast.com",
+   "found": "רשימה ידנית (גרסה קודמת)",
+   "web": "❌ רק באפליקציה (HTTP)"
+  }
  },
  {
   "id": "good_life_channel_hd",
@@ -10496,7 +10651,14 @@ window.ITV_CHANNELS = [
   "backups": [
    "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12209/index.m3u8",
    "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2339/index.m3u8"
-  ]
+  ],
+  "src": {
+   "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
+   "kind": "official",
+   "host": "b84203c4.ottrast.com",
+   "found": "רשימה ידנית (גרסה קודמת)",
+   "web": "❌ רק באפליקציה (HTTP)"
+  }
  },
  {
   "id": "food_channel_israel_hd",
@@ -10534,7 +10696,14 @@ window.ITV_CHANNELS = [
    "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2377/index.m3u8",
    "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2355/index.m3u8",
    "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32154/index.m3u8"
-  ]
+  ],
+  "src": {
+   "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
+   "kind": "official",
+   "host": "b84203c4.ottrast.com",
+   "found": "רשימה ידנית (גרסה קודמת)",
+   "web": "❌ רק באפליקציה (HTTP)"
+  }
  },
  {
   "id": "hala_tv_hd",
@@ -10558,7 +10727,14 @@ window.ITV_CHANNELS = [
     "url": "https://stream.panet.com/edge/halaTV/playlist.m3u8"
    }
   ],
-  "backups": []
+  "backups": [],
+  "src": {
+   "by": "פאנט – הלא TV (רשמי)",
+   "kind": "official",
+   "host": "stream.panet.com",
+   "found": "רשימה ידנית (גרסה קודמת)",
+   "web": "✅"
+  }
  },
  {
   "id": "vod_checkout",
@@ -10652,7 +10828,14 @@ window.ITV_CHANNELS = [
     "name": "פרק 5 - טלפונובלה",
     "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_6hu0lscj/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
    }
-  ]
+  ],
+  "src": {
+   "by": "Redge – ה-CDN הרשמי של כאן, ערוץ 14 וכלכלה 10",
+   "kind": "official",
+   "host": "r.il.cdn-redge.media",
+   "found": "רשימה ידנית (גרסה קודמת)",
+   "web": "✅"
+  }
  },
  {
   "id": "vod_manayek",
@@ -10746,7 +10929,14 @@ window.ITV_CHANNELS = [
     "name": "פרק 2 - האשמה",
     "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_qnmt6aqc/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
    }
-  ]
+  ],
+  "src": {
+   "by": "Redge – ה-CDN הרשמי של כאן, ערוץ 14 וכלכלה 10",
+   "kind": "official",
+   "host": "r.il.cdn-redge.media",
+   "found": "רשימה ידנית (גרסה קודמת)",
+   "web": "✅"
+  }
  },
  {
   "id": "vod_tehran",
@@ -10840,7 +11030,14 @@ window.ITV_CHANNELS = [
     "name": "פרק 4 - בני עשירים",
     "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2219499/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
    }
-  ]
+  ],
+  "src": {
+   "by": "Redge – ה-CDN הרשמי של כאן, ערוץ 14 וכלכלה 10",
+   "kind": "official",
+   "host": "r.il.cdn-redge.media",
+   "found": "רשימה ידנית (גרסה קודמת)",
+   "web": "✅"
+  }
  },
  {
   "id": "vod_hayehudim_baim",
@@ -10934,7 +11131,14 @@ window.ITV_CHANNELS = [
     "name": "פרק 5",
     "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_oljq8q9b/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
    }
-  ]
+  ],
+  "src": {
+   "by": "Redge – ה-CDN הרשמי של כאן, ערוץ 14 וכלכלה 10",
+   "kind": "official",
+   "host": "r.il.cdn-redge.media",
+   "found": "רשימה ידנית (גרסה קודמת)",
+   "web": "✅"
+  }
  },
  {
   "id": "vod_hamefakedet",
@@ -11028,7 +11232,14 @@ window.ITV_CHANNELS = [
     "name": "ריכולים על הסט של \"המפקדת\" וקרמבו",
     "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_di44iuo0/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
    }
-  ]
+  ],
+  "src": {
+   "by": "Redge – ה-CDN הרשמי של כאן, ערוץ 14 וכלכלה 10",
+   "kind": "official",
+   "host": "r.il.cdn-redge.media",
+   "found": "רשימה ידנית (גרסה קודמת)",
+   "web": "✅"
+  }
  },
  {
   "id": "vod_bo_nechol",
@@ -11122,7 +11333,14 @@ window.ITV_CHANNELS = [
     "name": "פרק 12 - שבוע צפון, יום ב'",
     "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2226084/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
    }
-  ]
+  ],
+  "src": {
+   "by": "Redge – ה-CDN הרשמי של כאן, ערוץ 14 וכלכלה 10",
+   "kind": "official",
+   "host": "r.il.cdn-redge.media",
+   "found": "רשימה ידנית (גרסה קודמת)",
+   "web": "✅"
+  }
  },
  {
   "id": "vod_cramel",
@@ -11216,7 +11434,14 @@ window.ITV_CHANNELS = [
     "name": "פרק 12 - עוזבים את הטירה",
     "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2121358/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
    }
-  ]
+  ],
+  "src": {
+   "by": "Redge – ה-CDN הרשמי של כאן, ערוץ 14 וכלכלה 10",
+   "kind": "official",
+   "host": "r.il.cdn-redge.media",
+   "found": "רשימה ידנית (גרסה קודמת)",
+   "web": "✅"
+  }
  },
  {
   "id": "vod_zehu_ze",
@@ -11310,7 +11535,14 @@ window.ITV_CHANNELS = [
     "name": "פרק 13 - 03.02.26",
     "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2158759/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
    }
-  ]
+  ],
+  "src": {
+   "by": "Redge – ה-CDN הרשמי של כאן, ערוץ 14 וכלכלה 10",
+   "kind": "official",
+   "host": "r.il.cdn-redge.media",
+   "found": "רשימה ידנית (גרסה קודמת)",
+   "web": "✅"
+  }
  },
  {
   "id": "vod_rehearsals",
@@ -11404,7 +11636,14 @@ window.ITV_CHANNELS = [
     "name": "אני נינה",
     "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_kl7p0u3r/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
    }
-  ]
+  ],
+  "src": {
+   "by": "Redge – ה-CDN הרשמי של כאן, ערוץ 14 וכלכלה 10",
+   "kind": "official",
+   "host": "r.il.cdn-redge.media",
+   "found": "רשימה ידנית (גרסה קודמת)",
+   "web": "✅"
+  }
  },
  {
   "id": "vod_valley_of_tears",
@@ -11486,7 +11725,14 @@ window.ITV_CHANNELS = [
     "name": "כוננות ליום קרב",
     "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_eq84htcy/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4"
    }
-  ]
+  ],
+  "src": {
+   "by": "Redge – ה-CDN הרשמי של כאן, ערוץ 14 וכלכלה 10",
+   "kind": "official",
+   "host": "r.il.cdn-redge.media",
+   "found": "רשימה ידנית (גרסה קודמת)",
+   "web": "✅"
+  }
  },
  {
   "id": "knesset_tv_hd",
@@ -11510,7 +11756,14 @@ window.ITV_CHANNELS = [
   "quality": "HD",
   "resolution": "1080p",
   "desc": "ערוץ הכנסת המשדר דיוני מליאה, ועדות ומשדרים פוליטיים ואקטואליים.",
-  "backups": []
+  "backups": [],
+  "src": {
+   "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+   "kind": "restream",
+   "host": "stream.mcquack.net",
+   "found": "רשימה ידנית (גרסה קודמת)",
+   "web": "❌ רק באפליקציה (HTTP)"
+  }
  },
  {
   "id": "channel_9_israel_hd",
@@ -11533,7 +11786,14 @@ window.ITV_CHANNELS = [
   "quality": "HD",
   "resolution": "1080p",
   "desc": "ערוץ 9 הישראלי המשדר חדשות, אקטואליה, תרבות ותוכן ישראלי ורוסי.",
-  "backups": []
+  "backups": [],
+  "src": {
+   "by": "GoStreaming – ספק השידור של ערוץ 9",
+   "kind": "official",
+   "host": "contact.gostreaming.tv",
+   "found": "רשימה ידנית (גרסה קודמת)",
+   "web": "✅"
+  }
  },
  {
   "id": "ch14_now_fast",
@@ -11556,7 +11816,14 @@ window.ITV_CHANNELS = [
   "quality": "HD",
   "resolution": "1080p",
   "desc": "ערוץ 14 – שידורי חדשות, פטריוטים, אקטואליה ומבזקים שוטפים בטעינה מהירה.",
-  "backups": []
+  "backups": [],
+  "src": {
+   "by": "Redge – ה-CDN הרשמי של כאן, ערוץ 14 וכלכלה 10",
+   "kind": "official",
+   "host": "r.il.cdn-redge.media",
+   "found": "רשימה ידנית (גרסה קודמת)",
+   "web": "✅"
+  }
  },
  {
   "id": "hidabroot_tv_hd",
@@ -11577,7 +11844,14 @@ window.ITV_CHANNELS = [
   "quality": "HD",
   "resolution": "1080p",
   "desc": "שידורי ערוץ הידברות HD: הרצאות, תוכניות אירוח, חינוך ויהדות.",
-  "backups": []
+  "backups": [],
+  "src": {
+   "by": "CyberCDN – ה-CDN של תחנות הרדיו עצמן",
+   "kind": "official",
+   "host": "cdn.cybercdn.live",
+   "found": "רשימה ידנית (גרסה קודמת)",
+   "web": "✅"
+  }
  },
  {
   "id": "i24news_arabic_hd",
@@ -11600,7 +11874,14 @@ window.ITV_CHANNELS = [
   "quality": "HD",
   "resolution": "1080p",
   "desc": "חדשות ואקטואליה ישראלית ובינלאומית בערבית מאולפני נמל יפו.",
-  "backups": []
+  "backups": [],
+  "src": {
+   "by": "i24NEWS – שרת רשמי",
+   "kind": "official",
+   "host": "i24newsarabic-cdn.encoders.immergo.tv",
+   "found": "רשימה ידנית (גרסה קודמת)",
+   "web": "✅"
+  }
  },
  {
   "id": "i24news_english_hd",
@@ -11623,7 +11904,14 @@ window.ITV_CHANNELS = [
   "quality": "HD",
   "resolution": "1080p",
   "desc": "ערוץ i24NEWS המשדר חדשות ואקטואליה בינלאומית וישראלית באנגלית.",
-  "backups": []
+  "backups": [],
+  "src": {
+   "by": "i24NEWS – שרת רשמי",
+   "kind": "official",
+   "host": "i24newsenglish-cdn.encoders.immergo.tv",
+   "found": "רשימה ידנית (גרסה קודמת)",
+   "web": "✅"
+  }
  },
  {
   "id": "kan_hinuchit_mc",
@@ -11646,7 +11934,14 @@ window.ITV_CHANNELS = [
   "quality": "HD",
   "resolution": "1080p",
   "desc": "שידורי כאן חינוכית לילדים ולנוער – סדרות איכותיות ומקוריות לכל המשפחה.",
-  "backups": []
+  "backups": [],
+  "src": {
+   "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+   "kind": "restream",
+   "host": "stream.mcquack.net",
+   "found": "רשימה ידנית (גרסה קודמת)",
+   "web": "❌ רק באפליקציה (HTTP)"
+  }
  },
  {
   "id": "hop_kids_mc",
@@ -11670,7 +11965,14 @@ window.ITV_CHANNELS = [
   "quality": "HD",
   "resolution": "1080p",
   "desc": "ערוץ הופ! המוביל בישראל לילדים וגיל הרך עם תוכניות מקור ושירים אהובים.",
-  "backups": []
+  "backups": [],
+  "src": {
+   "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+   "kind": "restream",
+   "host": "stream.mcquack.net",
+   "found": "רשימה ידנית (גרסה קודמת)",
+   "web": "❌ רק באפליקציה (HTTP)"
+  }
  },
  {
   "id": "zoom_toon_il",
@@ -11697,7 +11999,14 @@ window.ITV_CHANNELS = [
   "fallbackUrls": [
    "http://45.156.223.202/iptv/QAP2YS2594ZQS3/2359/index.m3u8",
    "http://stream.mcquack.net/377/index.m3u8"
-  ]
+  ],
+  "src": {
+   "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
+   "kind": "official",
+   "host": "b84203c4.ottrast.com",
+   "found": "רשימה ידנית (גרסה קודמת)",
+   "web": "❌ רק באפליקציה (HTTP)"
+  }
  },
  {
   "id": "viva_premium_mc",
@@ -11721,7 +12030,14 @@ window.ITV_CHANNELS = [
   "quality": "HD",
   "resolution": "1080p",
   "desc": "ויוה פרימיום – מיטב הטלנובלות והסדרות הבינלאומיות עם תרגום עברי מלא.",
-  "backups": []
+  "backups": [],
+  "src": {
+   "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+   "kind": "restream",
+   "host": "stream.mcquack.net",
+   "found": "רשימה ידנית (גרסה קודמת)",
+   "web": "❌ רק באפליקציה (HTTP)"
+  }
  },
  {
   "id": "good_life_mc",
@@ -11745,7 +12061,14 @@ window.ITV_CHANNELS = [
   "quality": "HD",
   "resolution": "1080p",
   "desc": "ערוץ החיים הטובים: תוכניות אירוח, עיצוב הבית, אוכל ונופש.",
-  "backups": []
+  "backups": [],
+  "src": {
+   "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+   "kind": "restream",
+   "host": "stream.mcquack.net",
+   "found": "רשימה ידנית (גרסה קודמת)",
+   "web": "❌ רק באפליקציה (HTTP)"
+  }
  },
  {
   "id": "yes_movies_action_mc",
@@ -11769,7 +12092,14 @@ window.ITV_CHANNELS = [
   "quality": "HD",
   "resolution": "1080p",
   "desc": "ערוץ הסרטים המוביל ב-yes לסרטי פעולה, מתח ומד\"ב בדיבוב ותרגום עברי.",
-  "backups": []
+  "backups": [],
+  "src": {
+   "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+   "kind": "restream",
+   "host": "stream.mcquack.net",
+   "found": "רשימה ידנית (גרסה קודמת)",
+   "web": "❌ רק באפליקציה (HTTP)"
+  }
  },
  {
   "id": "hot_drama_mc",
@@ -11793,6 +12123,13 @@ window.ITV_CHANNELS = [
   "quality": "HD",
   "resolution": "1080p",
   "desc": "HOT דרמה – סרטים מרגשים, הפקות מקור ודרמות מנצחות מהקולנוע העולמי.",
-  "backups": []
+  "backups": [],
+  "src": {
+   "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+   "kind": "restream",
+   "host": "stream.mcquack.net",
+   "found": "רשימה ידנית (גרסה קודמת)",
+   "web": "❌ רק באפליקציה (HTTP)"
+  }
  }
 ];
