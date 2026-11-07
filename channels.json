@@ -1142,7 +1142,7 @@
   "title": "ערוץ ספורט 1 צ'רלטון שידור חי (Charlton Sport 1 HD)",
   "category": "ספורט (Sports)",
   "categoryEn": "sports",
-  "url": "http://stream.mcquack.net/391/index.m3u8",
+  "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5_live/live.livx/playlist.m3u8",
   "logo": "assets/logos/sport1_israel.png",
   "badge": "HD",
   "desc": "ספורט 1 (צ'רלטון) – ליגת העל הישראלית, הפרמייר ליג האנגלית, גביע המדינה ומשחקים מרכזיים בשידור חי",
@@ -1151,18 +1151,22 @@
   "number": 38,
   "countryHe": "ישראל",
   "src": {
-   "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
+   "by": "שידור ספורט ישראלי רשמי (AWS CloudFront)",
    "kind": "official",
-   "host": "b84203c4.ottrast.com",
-   "found": "רשימה ידנית (גרסה קודמת)",
-   "web": "❌ רק באפליקציה (HTTP)"
+   "host": "d1zqtf09wb8nt5.cloudfront.net",
+   "found": "שידור ספורט ישראלי מהארץ FHD",
+   "web": "✅"
   },
   "fallbackUrls": [
-   "http://stream.mcquack.net/391/index.m3u8"
+   "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5/live.livx/playlist.m3u8",
+   "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12249/index.m3u8",
+   "http://45.156.223.202/iptv/QAP2YS2594ZQS3/12249/index.m3u8"
   ],
   "iptv": "Sport1.il",
   "backups": [
-   "http://stream.mcquack.net/391/index.m3u8"
+   "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5/live.livx/playlist.m3u8",
+   "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12249/index.m3u8",
+   "http://45.156.223.202/iptv/QAP2YS2594ZQS3/12249/index.m3u8"
   ],
   "backupUrls": [
    "http://45.156.223.202/iptv/QAP2YS2594ZQS3/2353/index.m3u8",
@@ -1176,7 +1180,7 @@
   "title": "ערוץ ספורט 2 צ'רלטון שידור חי (Charlton Sport 2 HD)",
   "category": "ספורט (Sports)",
   "categoryEn": "sports",
-  "url": "http://stream.mcquack.net/392/index.m3u8",
+  "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5_starz/live.livx/playlist.m3u8",
   "logo": "assets/logos/sport2_israel.png",
   "badge": "HD",
   "desc": "ספורט 2 (צ'רלטון) – שידורים ישירים מהליגה האנגלית, הליגה האיטלקית, בונדסליגה, ליגה אירופית וטניס",
@@ -1185,18 +1189,22 @@
   "number": 39,
   "countryHe": "ישראל",
   "src": {
-   "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
+   "by": "שידור ספורט ישראלי רשמי (AWS CloudFront)",
    "kind": "official",
-   "host": "b84203c4.ottrast.com",
-   "found": "רשימה ידנית (גרסה קודמת)",
-   "web": "❌ רק באפליקציה (HTTP)"
+   "host": "d1zqtf09wb8nt5.cloudfront.net",
+   "found": "שידור ספורט ישראלי מהארץ FHD",
+   "web": "✅"
   },
   "fallbackUrls": [
-   "http://stream.mcquack.net/392/index.m3u8"
+   "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5_plus/live.livx/playlist.m3u8",
+   "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12250/index.m3u8",
+   "http://45.156.223.202/iptv/QAP2YS2594ZQS3/12250/index.m3u8"
   ],
   "iptv": "Sport2.il",
   "backups": [
-   "http://stream.mcquack.net/392/index.m3u8"
+   "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5_plus/live.livx/playlist.m3u8",
+   "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12250/index.m3u8",
+   "http://45.156.223.202/iptv/QAP2YS2594ZQS3/12250/index.m3u8"
   ],
   "backupUrls": [
    "http://45.156.223.202/iptv/QAP2YS2594ZQS3/2352/index.m3u8",
@@ -1210,7 +1218,7 @@
   "title": "ערוץ ספורט 3 צ'רלטון שידור חי (Charlton Sport 3 HD)",
   "category": "ספורט (Sports)",
   "categoryEn": "sports",
-  "url": "http://stream.mcquack.net/393/index.m3u8",
+  "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/one_1/live.livx/playlist.m3u8",
   "logo": "assets/logos/sport3_israel.png",
   "badge": "HD",
   "desc": "ספורט 3 (צ'רלטון) – כדורגל ישראלי ואירופי, כדורסל, אולפנים חיים ואירועי ספורט בינלאומיים",
@@ -1219,18 +1227,22 @@
   "number": 40,
   "countryHe": "ישראל",
   "src": {
-   "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
+   "by": "שידור ספורט ישראלי רשמי (AWS CloudFront)",
    "kind": "official",
-   "host": "b84203c4.ottrast.com",
-   "found": "רשימה ידנית (גרסה קודמת)",
-   "web": "❌ רק באפליקציה (HTTP)"
+   "host": "d1zqtf09wb8nt5.cloudfront.net",
+   "found": "שידור ספורט ישראלי מהארץ FHD",
+   "web": "✅"
   },
   "fallbackUrls": [
-   "http://stream.mcquack.net/393/index.m3u8"
+   "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5_gold/live.livx/playlist.m3u8",
+   "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12251/index.m3u8",
+   "http://45.156.223.202/iptv/QAP2YS2594ZQS3/12251/index.m3u8"
   ],
   "iptv": "Sport3.il",
   "backups": [
-   "http://stream.mcquack.net/393/index.m3u8"
+   "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5_gold/live.livx/playlist.m3u8",
+   "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12251/index.m3u8",
+   "http://45.156.223.202/iptv/QAP2YS2594ZQS3/12251/index.m3u8"
   ],
   "backupUrls": [
    "http://stream.mcquack.net/52/index.m3u8"
@@ -1243,7 +1255,7 @@
   "title": "ערוץ ספורט 4 צ'רלטון שידור חי (Charlton Sport 4 FHD)",
   "category": "ספורט (Sports)",
   "categoryEn": "sports",
-  "url": "http://stream.mcquack.net/394/index.m3u8",
+  "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/one_2/live.livx/playlist.m3u8",
   "logo": "assets/logos/sport4_israel.png",
   "badge": "FHD",
   "desc": "ספורט 4 FHD (צ'רלטון) – שידורים חיים באיכות FHD מליגת העל, הפרמייר ליג ומפעלי אופ\"א",
@@ -1252,18 +1264,22 @@
   "number": 41,
   "countryHe": "ישראל",
   "src": {
-   "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
+   "by": "שידור ספורט ישראלי רשמי (AWS CloudFront)",
    "kind": "official",
-   "host": "b84203c4.ottrast.com",
-   "found": "רשימה ידנית (גרסה קודמת)",
-   "web": "❌ רק באפליקציה (HTTP)"
+   "host": "d1zqtf09wb8nt5.cloudfront.net",
+   "found": "שידור ספורט ישראלי מהארץ FHD",
+   "web": "✅"
   },
   "fallbackUrls": [
-   "http://stream.mcquack.net/394/index.m3u8"
+   "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5_max/live.livx/playlist.m3u8",
+   "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12252/index.m3u8",
+   "http://45.156.223.202/iptv/QAP2YS2594ZQS3/12252/index.m3u8"
   ],
   "iptv": "Sport4.il",
   "backups": [
-   "http://stream.mcquack.net/394/index.m3u8"
+   "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5_max/live.livx/playlist.m3u8",
+   "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12252/index.m3u8",
+   "http://45.156.223.202/iptv/QAP2YS2594ZQS3/12252/index.m3u8"
   ],
   "backupUrls": [
    "http://stream.mcquack.net/53/index.m3u8"
@@ -1450,7 +1466,7 @@
   "title": "ערוץ דיסני ג'וניור בעברית (Disney Junior Israel HD)",
   "category": "ילדים ונוער (בעברית)",
   "categoryEn": "kids_he",
-  "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2333/index.m3u8",
+  "url": "http://88.212.15.50/live/test_disney_junior/playlist.m3u8",
   "logo": "assets/logos/disney_junior.png",
   "badge": "HD",
   "lang": "he",
@@ -1465,14 +1481,12 @@
    "web": "❌ רק באפליקציה (HTTP)"
   },
   "fallbackUrls": [
-   "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12206/index.m3u8",
-   "http://45.156.223.202/iptv/QAP2YS2594ZQS3/2333/index.m3u8",
-   "http://88.212.15.50/live/test_disney_junior/playlist.m3u8"
+   "http://88.212.15.50/live/test_disney_junior/playlist.m3u8",
+   "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2333/index.m3u8"
   ],
   "backups": [
-   "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12206/index.m3u8",
-   "http://45.156.223.202/iptv/QAP2YS2594ZQS3/2333/index.m3u8",
-   "http://88.212.15.50/live/test_disney_junior/playlist.m3u8"
+   "http://88.212.15.50/live/test_disney_junior/playlist.m3u8",
+   "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2333/index.m3u8"
   ]
  },
  {
@@ -1481,7 +1495,7 @@
   "title": "ערוץ ניקלודיאון לילדים ונוער בעברית (Nickelodeon Israel HD)",
   "category": "ילדים ונוער (בעברית)",
   "categoryEn": "kids_he",
-  "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32275/index.m3u8",
+  "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2337/index.m3u8",
   "logo": "assets/logos/nickelodeon.png",
   "badge": "HD",
   "desc": "ערוץ ניקלודיאון – בובספוג מכנסמרובע, הרעשנים, אווטאר, צבי הנינג'ה וקומדיות לילדים",
@@ -1498,13 +1512,9 @@
   },
   "iptv": "Nickelodeon.il",
   "fallbackUrls": [
-   "http://45.156.223.202/iptv/QAP2YS2594ZQS3/32275/index.m3u8",
-   "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2337/index.m3u8",
    "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12240/index.m3u8"
   ],
   "backups": [
-   "http://45.156.223.202/iptv/QAP2YS2594ZQS3/32275/index.m3u8",
-   "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2337/index.m3u8",
    "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12240/index.m3u8"
   ],
   "language": "he",
@@ -2817,29 +2827,27 @@
   "title": "ספורט 6 ישיר HD (צ'רלטון Sport 6)",
   "category": "ספורט (Sports)",
   "categoryEn": "sports",
-  "url": "http://stream.mcquack.net/416/index.m3u8",
+  "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5_max/live.livx/playlist.m3u8",
   "logo": "assets/logos/sport6_israel.png",
   "badge": "HD",
   "lang": "he",
   "desc": "ערוץ ספורט 6 מבית צ'רלטון – שידורים חיים של טניס, פאדל, כדורגל עולמי וספורט בינלאומי ב-HD",
   "number": 511,
   "src": {
-   "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
+   "by": "שידור ספורט ישראלי רשמי (AWS CloudFront)",
    "kind": "official",
-   "host": "b84203c4.ottrast.com",
-   "found": "רשימה ידנית (גרסה קודמת)",
-   "web": "❌ רק באפליקציה (HTTP)"
+   "host": "d1zqtf09wb8nt5.cloudfront.net",
+   "found": "שידור ספורט ישראלי מהארץ FHD",
+   "web": "✅"
   },
   "fallbackUrls": [
-   "http://stream.mcquack.net/234/index.m3u8",
-   "http://stream.mcquack.net/333/index.m3u8"
+   "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/one_edge/live.livx/playlist.m3u8"
   ],
   "isIsraeli": true,
   "kind": "tv",
   "iptv": "Sport6.il",
   "backups": [
-   "http://stream.mcquack.net/234/index.m3u8",
-   "http://stream.mcquack.net/333/index.m3u8"
+   "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/one_edge/live.livx/playlist.m3u8"
   ],
   "webOk": true
  },

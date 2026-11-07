@@ -1,6 +1,6 @@
 # 📺 כל הערוצים – ישראל TV+
 
-נוצר אוטומטית מ-`channels.json` (`tools/make_channel_list.py`). **434** פריטים: **298** ערוצי טלוויזיה, **136** תחנות רדיו ו-**0** שירותי מנויים, מ-**8** מדינות. 303 מהם מתנגנים גם באתר; כל השאר באפליקציות (Android, טלוויזיה, Windows, Mac, Linux) וב-Stremio.
+נוצר אוטומטית מ-`channels.json` (`tools/make_channel_list.py`). **434** פריטים: **298** ערוצי טלוויזיה, **136** תחנות רדיו ו-**0** שירותי מנויים, מ-**8** מדינות. 308 מהם מתנגנים גם באתר; כל השאר באפליקציות (Android, טלוויזיה, Windows, Mac, Linux) וב-Stremio.
 
 **▶ צפייה:** https://dor2500.github.io/israel-tv-plus/ · **🎬 Stremio:** https://dor2500.github.io/israel-tv-plus/stremio/ · **📋 מקור כל שידור:** [SOURCES.md](SOURCES.md)
 
@@ -17,8 +17,8 @@
 - 🎈 [ילדים מהעולם (Kids World)](#ילדים-מהעולם-kids-world) – 17
 - 🌍 [טבע ודוקו (Documentary & Nature)](#טבע-ודוקו-documentary--nature) – 6
 - 🎵 [מוזיקה (Music TV)](#מוזיקה-music-tv) – 10
-- 📺 [טבע ומדע (Documentary)](#טבע-ומדע-documentary) – 1
 - 📺 [ערוצים בינלאומיים (חדשות ועולם)](#ערוצים-בינלאומיים-חדשות-ועולם) – 1
+- 📺 [טבע ומדע (Documentary)](#טבע-ומדע-documentary) – 1
 - 📺 [סדרות לצפייה ישירה (VOD)](#סדרות-לצפייה-ישירה-vod) – 10
 - 📺 [סרטים וקולנוע (Movies TV)](#סרטים-וקולנוע-movies-tv) – 4
 
@@ -317,10 +317,10 @@
 |---|---|---|---|---|---|---|
 | 36 | <img src="assets/logos/sport5.png" width="56" alt=""> | **ערוץ ספורט 5 4K UHD** | 🇮🇱 ישראל | עברית | 4K UHD | 🌐 אתר + 📲 אפליקציות |
 | 37 | <img src="assets/logos/one_doco_hd.png" width="56" alt=""> | **ערוץ ONE דוקו ספורט HD** | 🇮🇱 ישראל | עברית | HD | 🌐 אתר + 📲 אפליקציות |
-| 38 | <img src="assets/logos/sport1_israel.png" width="56" alt=""> | **ספורט 1 HD (Sport 1)** | 🇮🇱 ישראל | עברית | HD | 📲 אפליקציות בלבד |
-| 39 | <img src="assets/logos/sport2_israel.png" width="56" alt=""> | **ספורט 2 HD (Sport 2)** | 🇮🇱 ישראל | עברית | HD | 📲 אפליקציות בלבד |
-| 40 | <img src="assets/logos/sport3_israel.png" width="56" alt=""> | **ספורט 3 HD (Sport 3)** | 🇮🇱 ישראל | עברית | HD | 📲 אפליקציות בלבד |
-| 41 | <img src="assets/logos/sport4_israel.png" width="56" alt=""> | **ספורט 4 FHD (Sport 4)** | 🇮🇱 ישראל | עברית | FHD | 📲 אפליקציות בלבד |
+| 38 | <img src="assets/logos/sport1_israel.png" width="56" alt=""> | **ספורט 1 HD (Sport 1)** | 🇮🇱 ישראל | עברית | HD | 🌐 אתר + 📲 אפליקציות |
+| 39 | <img src="assets/logos/sport2_israel.png" width="56" alt=""> | **ספורט 2 HD (Sport 2)** | 🇮🇱 ישראל | עברית | HD | 🌐 אתר + 📲 אפליקציות |
+| 40 | <img src="assets/logos/sport3_israel.png" width="56" alt=""> | **ספורט 3 HD (Sport 3)** | 🇮🇱 ישראל | עברית | HD | 🌐 אתר + 📲 אפליקציות |
+| 41 | <img src="assets/logos/sport4_israel.png" width="56" alt=""> | **ספורט 4 FHD (Sport 4)** | 🇮🇱 ישראל | עברית | FHD | 🌐 אתר + 📲 אפליקציות |
 | 100 | <img src="assets/logos/sport5_israel_hd.png" width="56" alt=""> | **ספורט 5 FHD (5SPORT)** | 🇮🇱 ישראל | עברית | FHD | 🌐 אתר + 📲 אפליקציות |
 | 101 | <img src="assets/logos/sport5_plus.png" width="56" alt=""> | **ספורט 5 פלוס FHD (5PLUS)** | 🇮🇱 ישראל | עברית | FHD | 🌐 אתר + 📲 אפליקציות |
 | 102 | <img src="assets/logos/sport5_live.png" width="56" alt=""> | **ספורט 5 לייב FHD (5LIVE)** | 🇮🇱 ישראל | עברית | FHD | 🌐 אתר + 📲 אפליקציות |
@@ -345,7 +345,7 @@
 | 378 | <img src="assets/logos/racer_international_hd.png" width="56" alt=""> | **ערוץ מרוצים RACER International HD** | 🇺🇸 ארה״ב | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
 | 379 | <img src="assets/logos/powernation.png" width="56" alt=""> | **ערוץ PowerNation TV מנועים ומוטורספורט** | 🇺🇸 ארה״ב | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
 | 380 | <img src="assets/logos/sky_racing_hd.png" width="56" alt=""> | **ערוץ מרוצים Sky Racing 1 HD** | 🇦🇺 אוסטרליה | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
-| 511 | <img src="assets/logos/sport6_israel.png" width="56" alt=""> | **ספורט 6 HD (Sport 6)** |  | עברית | HD | 📲 אפליקציות בלבד |
+| 511 | <img src="assets/logos/sport6_israel.png" width="56" alt=""> | **ספורט 6 HD (Sport 6)** |  | עברית | HD | 🌐 אתר + 📲 אפליקציות |
 
 ## חדשות מהעולם (News)
 
@@ -517,14 +517,6 @@
 | 396 | <img src="assets/logos/mtv_live.png" width="56" alt=""> | **MTV Live HD (הופעות וקליפים)** | 🇺🇸 ארה"ב | אנגלית | HD | 📲 אפליקציות בלבד |
 | 397 | <img src="assets/logos/mtv_hits.png" width="56" alt=""> | **MTV Hits & Clips HD** | 🇺🇸 ארה"ב | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
 
-## טבע ומדע (Documentary)
-
-📺 1 ערוצים
-
-| # | | ערוץ | מדינה | שפה | איכות | איפה מתנגן |
-|---|---|---|---|---|---|---|
-| 399 | <img src="assets/logos/nat_geo_wild_il.png" width="56" alt=""> | **National Geographic WILD FHD** | 🇮🇱 ישראל | עברית | FHD | 📲 אפליקציות בלבד |
-
 ## ערוצים בינלאומיים (חדשות ועולם)
 
 📺 1 ערוצים
@@ -532,6 +524,14 @@
 | # | | ערוץ | מדינה | שפה | איכות | איפה מתנגן |
 |---|---|---|---|---|---|---|
 | 398 | <img src="assets/logos/rtl2.png" width="56" alt=""> | **RTL ZWEI HD (גרמניה)** | 🇩🇪 גרמניה | גרמנית | HD | 📲 אפליקציות בלבד |
+
+## טבע ומדע (Documentary)
+
+📺 1 ערוצים
+
+| # | | ערוץ | מדינה | שפה | איכות | איפה מתנגן |
+|---|---|---|---|---|---|---|
+| 399 | <img src="assets/logos/nat_geo_wild_il.png" width="56" alt=""> | **National Geographic WILD FHD** | 🇮🇱 ישראל | עברית | FHD | 📲 אפליקציות בלבד |
 
 ## סדרות לצפייה ישירה (VOD)
 
