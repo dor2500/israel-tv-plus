@@ -233,7 +233,7 @@
     "android": {
       "version": "4.8.65",
       "app": 40865,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.65/IsraelTVPlus-android.apk"
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.65/IsraelTVPlus.apk"
     },
     "windows": {
       "version": "4.8.65",
@@ -264,7 +264,7 @@
     "wear": {
       "version": "4.8.65",
       "app": 1040865,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.65/IsraelTVPlus-wearos.apk"
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.65/IsraelTVPlus-wear.apk"
     }
   }
 }
