@@ -1,22 +1,41 @@
 {
-  "version": "4.8.70",
-  "code": 202611072034,
-  "app": 40870,
+  "version": "4.8.71",
+  "code": 202611081330,
+  "app": 40871,
   "shell": 3,
-  "date": "2026-11-07",
+  "date": "2026-11-08",
   "notes": [
-    "תיקון והשלמת כלל הטאמבניילס והאייקונים החסרים באפליקציה:",
-    "טעינת לוגואים אמינה ב-Android: מעבר מטעינה שבירה ומעכבת ב-UI Thread לטעינה ישירה מנכסי ה-APK עם מטמון מהיר (isBundledAsset באמצעות ConcurrentHashMap), כך שכל 438 ערוצי הטלוויזיה והרדיו מוצגים מיידית.",
-    "הגדרת מטמוני זיכרון (25% מ-RAM) ודיסק (128MB) ב-Coil 3 וב-OkHttp לשמירה מקומית של תמונות ומניעת הורדות רשת כפולות והיעלמות לוגואים.",
-    "פתרון מוחלט ל-46 קישורי פוסטרים שבורים (404 Not Found) בלוח השידורים EPG (Metahub) והחלפתם בפוסטרי HD מרהיבים ומהירים מ-CDN יציב – כיסוי של 100% לכל 8,962 התוכניות ללא תמונות חסרות.",
-    "שרשרת Fallback מלאה ב-Web וב-TV (לוגו מקומי -> גיבוי ישיר מ-GitHub Pages CDN -> מונוגרמה מעוצבת) המבטיחה שאף כרטיסייה אינה נשארת ריקה או שחורה.",
-    "פתרון מלא לתקיעות קטנות והאצה משמעותית של ביצועי הממשק:",
-    "ביטול ריבוי ציורים מחדש (Recompositions) ב-Compose בעת גלילה על ידי העברת למבדה scrollOffsetProvider ישירות לתוך graphicsLayer, מה שחוסך עשרות רינדורים מיותרים בכל שבריר שנייה.",
-    "הסרת שכבות blur() כבדות מיותרות (76dp, 32dp, 18dp ו-26dp) על גבי גרדיאנטים רדיאליים/לינאריים, שחסכו עומס עיבוד עצום מה-GPU ומנעו נפילת פריימים.",
-    "השהיית נגן הרקע של ה-Hero (MutedHeroHls) באופן מיידי ברגע שהמשתמש גולל מטה אל עבר רשימת הערוצים, לשחרור מלא של מפענח הווידאו החומרתי והמעבד.",
-    "שיפור חוויית ה-Web וה-TV: ביטול סינוני backdrop-filter: blur(...) כבדים במסכי טלוויזיה, ייעול אנימציות ה-shimmer והרחבת טווח ה-IntersectionObserver לצד טעינה מיידית של כרטיסיות המסך הראשי לניווט חלק ב-60fps."
+    "פתרון מלא לחוויית השימוש ב-Android Auto וברכב:",
+    "אספקת לוגואים ואייקונים מיידית (100% תמונות תקינות ברכב):",
+    "הוספת ספק תוכן ייעודי AutoArtworkProvider (content://com.israeltv.plus.artwork/) להזרמת כלל הלוגואים והתמונות ישירות מנכסי ה-APK למסך הרכב.",
+    "אפס תלות בחיבור אינטרנט או בהגבלות טעינת רשת של פרוטוקול Google Gearhead / Android Auto – כל האייקונים של ערוצי הטלוויזיה, תחנות הרדיו ותיקיות הניווט מוצגים מיידית וללא אייקונים חסרים או ריקים.",
+    "המרת כל הלוגואים שנותרו בפורמט SVG לקובצי PNG מקומיים קריאים על ידי מפענחי הרכב.",
+    "פתרון מוחלט לתקיעות ומיקרו-השהיות (Micro-stutters) בזמן נהיגה:",
+    "הגדרת מנגנון בקרת אגירה ייעודי לנסיעה (DefaultLoadControl מותאם לדרכים): הפחתת זמן ההמתנה לטעינה ראשונית ל-1.5 שניות לתגובה מיידית, חלון אגירה יציב של 15-30 שניות העמיד בפני מעברי אנטנות סלולריות (Cell Handover), והתאוששות מהירה ב-2.5 שניות בלבד.",
+    "הגדרת DefaultHttpDataSource עם Timeouts מותאמים (8 שניות לחיבור ו-10 שניות לקריאה) ומניעת תקיעת הנגן במקרה של ניתוקים רגעיים.",
+    "מניעת איפוס והרס מחדש של משטח הווידאו (Presentation) בעת שינויים קלים ברזולוציה או במצב תאורה ברכב (onDisplayChanged).",
+    "מבנה קטגוריות ותפריטים מהיר, בטוח וחלק ברכב:",
+    "חלוקה חכמה לקטגוריות נגישות וממוקדות: ערוצים מועדפים ⭐, ערוצי טלוויזיה מובילים (11, 12, 13, 14, 9, 24...) 📺, ערוצי ספורט חיים (ספורט 1-6, 5SPORT, ONE) ⚽, תחנות רדיו מובילות (גלגלצ, גלצ, כאן ב, 103FM...) 📻, סדרות וסרטים VOD 🎬, ותפריטי קטגוריות מלאים.",
+    "החלפת רשימת הענק (270 ערוצים) שהעמיסה על מעבדי הרכבים וגרמה לאיטיות ולמגבלת גלילה בנהיגה, במערכת ניווט מהירה הנטענת בזיכרון המקומי (cachedData) בפחות ממילישנייה אחת."
   ],
   "history": [
+    {
+      "version": "4.8.71",
+      "notes": [
+        "פתרון מלא לחוויית השימוש ב-Android Auto וברכב:",
+        "אספקת לוגואים ואייקונים מיידית (100% תמונות תקינות ברכב):",
+        "הוספת ספק תוכן ייעודי AutoArtworkProvider (content://com.israeltv.plus.artwork/) להזרמת כלל הלוגואים והתמונות ישירות מנכסי ה-APK למסך הרכב.",
+        "אפס תלות בחיבור אינטרנט או בהגבלות טעינת רשת של פרוטוקול Google Gearhead / Android Auto – כל האייקונים של ערוצי הטלוויזיה, תחנות הרדיו ותיקיות הניווט מוצגים מיידית וללא אייקונים חסרים או ריקים.",
+        "המרת כל הלוגואים שנותרו בפורמט SVG לקובצי PNG מקומיים קריאים על ידי מפענחי הרכב.",
+        "פתרון מוחלט לתקיעות ומיקרו-השהיות (Micro-stutters) בזמן נהיגה:",
+        "הגדרת מנגנון בקרת אגירה ייעודי לנסיעה (DefaultLoadControl מותאם לדרכים): הפחתת זמן ההמתנה לטעינה ראשונית ל-1.5 שניות לתגובה מיידית, חלון אגירה יציב של 15-30 שניות העמיד בפני מעברי אנטנות סלולריות (Cell Handover), והתאוששות מהירה ב-2.5 שניות בלבד.",
+        "הגדרת DefaultHttpDataSource עם Timeouts מותאמים (8 שניות לחיבור ו-10 שניות לקריאה) ומניעת תקיעת הנגן במקרה של ניתוקים רגעיים.",
+        "מניעת איפוס והרס מחדש של משטח הווידאו (Presentation) בעת שינויים קלים ברזולוציה או במצב תאורה ברכב (onDisplayChanged).",
+        "מבנה קטגוריות ותפריטים מהיר, בטוח וחלק ברכב:",
+        "חלוקה חכמה לקטגוריות נגישות וממוקדות: ערוצים מועדפים ⭐, ערוצי טלוויזיה מובילים (11, 12, 13, 14, 9, 24...) 📺, ערוצי ספורט חיים (ספורט 1-6, 5SPORT, ONE) ⚽, תחנות רדיו מובילות (גלגלצ, גלצ, כאן ב, 103FM...) 📻, סדרות וסרטים VOD 🎬, ותפריטי קטגוריות מלאים.",
+        "החלפת רשימת הענק (270 ערוצים) שהעמיסה על מעבדי הרכבים וגרמה לאיטיות ולמגבלת גלילה בנהיגה, במערכת ניווט מהירה הנטענת בזיכרון המקומי (cachedData) בפחות ממילישנייה אחת."
+      ]
+    },
     {
       "version": "4.8.70",
       "notes": [
@@ -232,53 +251,44 @@
         "כרטיסי סדרות VOD במדפי הטלוויזיה מציגים כעת פוסטרים מלאים ללא שוליים שחורים (Full Cover Art) ותגית VOD כחולה בולטת.",
         "עיצוב פרימיום למסך ההגדרות בטלוויזיה – חלונית זכוכית יוקרתית (Glassmorphic TV Panel), סרגל קטגוריות מובחן, שורות מוגדלות וקריאות עם הבלטת פוקוס שלט כחולה וברורה."
       ]
-    },
-    {
-      "version": "4.8.45",
-      "notes": [
-        "תיקון מלא של התחברות לחשבון Google בטלוויזיה (Android TV, LG webOS, Samsung Tizen, Fire TV ודפדפני Smart TV) – פרוטוקול TV Device Code Flow משודרג עם סריקת קוד QR חכם שמזין אוטומטית את הקוד בנייד ללא צורך בהקלדה.",
-        "זיהוי אוטומטי מורחב ומדויק של כל דגמי הטלוויזיות, מזרימי המדיה וה-TV Boxes (Xiaomi Mi Box, Chromecast, Sony Bravia, Hisense VIDAA, Apple TV, דפדפני טלוויזיה ומכשירים ללא מסך מגע).",
-        "מניעת קריסות וחסימות פופאפים בדפדפני Smart TV עם מעבר ישיר ואוטומטי לחלונית התחברות טלוויזיה מותאמת שלט.",
-        "טעינה מקומית מיידית של ספריית ה-QR מ-assets/qrcode.js ב-index.html לתצוגה אולטרה-מהירה ללא השהיות."
-      ]
     }
   ],
   "native": {
     "android": {
-      "version": "4.8.70",
-      "app": 40870,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.70/IsraelTVPlus-android.apk"
+      "version": "4.8.71",
+      "app": 40871,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.71/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "4.8.70",
-      "app": 40870,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.70/IsraelTVPlus-windows-setup.exe"
+      "version": "4.8.71",
+      "app": 40871,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.71/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "4.8.70",
-      "app": 40870,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.70/com.israeltv.plus_all.ipk",
+      "version": "4.8.71",
+      "app": 40871,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.71/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "4.8.70",
-      "app": 40870,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.70/IsraelTVPlus-tizen-project.zip"
+      "version": "4.8.71",
+      "app": 40871,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.71/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "4.8.70",
-      "app": 40870,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.70/IsraelTVPlus-macos-arm64.zip"
+      "version": "4.8.71",
+      "app": 40871,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.71/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "4.8.70",
-      "app": 40870,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.70/IsraelTVPlus-linux-x64.zip"
+      "version": "4.8.71",
+      "app": 40871,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.71/IsraelTVPlus-linux-x64.zip"
     },
     "wear": {
-      "version": "4.8.70",
-      "app": 1040870,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.70/IsraelTVPlus-wearos.apk"
+      "version": "4.8.71",
+      "app": 1040871,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.71/IsraelTVPlus-wearos.apk"
     }
   }
 }

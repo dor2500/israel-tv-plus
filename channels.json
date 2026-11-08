@@ -169,7 +169,7 @@
     "countryHe": "ישראל",
     "badge": "FHD",
     "kind": "live",
-    "logo": "assets/logos/partner.svg",
+    "logo": "assets/logos/partner.png",
     "number": 7,
     "src": {
       "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
@@ -197,7 +197,7 @@
     "countryHe": "ישראל",
     "badge": "HD",
     "kind": "live",
-    "logo": "assets/logos/partner.svg",
+    "logo": "assets/logos/partner.png",
     "number": 8,
     "src": {
       "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
@@ -948,7 +948,7 @@
     "badge": "FHD",
     "desc": "ערוץ האוכל המוביל של ישראל: השפים הטובים בארץ, מתכונים לשישי, סדנאות אפייה ורעיונות לארוחות מהירות 24/7.",
     "lang": "he",
-    "logo": "assets/logos/food_channel.svg",
+    "logo": "assets/logos/food_channel.png",
     "country": "IL",
     "countryHe": "ישראל",
     "backups": [],
@@ -9611,7 +9611,7 @@
     "badge": "HD",
     "desc": "ערוץ האנימציה והסדרות המוביל בעולם Cartoon Network – שידור חי באיכות HD",
     "lang": "en",
-    "logo": "assets/logos/cartoon_network_hd.svg",
+    "logo": "assets/logos/cartoon_network_hd.png",
     "country": "US",
     "countryHe": "ארה״ב",
     "src": {

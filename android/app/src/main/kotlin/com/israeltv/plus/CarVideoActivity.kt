@@ -133,8 +133,8 @@ class CarVideoActivity : Activity() {
             titleView?.text = ch.name
             subtitleView?.text = if (ch.isRadio) "רדיו בשידור חי" else "שידור וידאו חי · ${ch.category}"
             if (ch.logo.isNotEmpty()) {
-                val url = if (ch.logo.startsWith("http")) ch.logo else "${com.israeltv.plus.data.REMOTE}${ch.logo.removePrefix("/")}"
-                logoView?.load(url)
+                val uri = if (ch.logo.startsWith("http")) android.net.Uri.parse(ch.logo) else com.israeltv.plus.data.AutoArtworkProvider.buildUri(ch.logo)
+                logoView?.load(uri)
                 logoView?.visibility = View.VISIBLE
             } else {
                 logoView?.visibility = View.GONE

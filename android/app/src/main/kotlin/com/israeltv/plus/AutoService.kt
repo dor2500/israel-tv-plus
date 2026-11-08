@@ -15,6 +15,7 @@ import androidx.media3.common.PlaybackException
 import androidx.media3.common.Player
 import androidx.media3.datasource.DefaultDataSource
 import androidx.media3.datasource.DefaultHttpDataSource
+import androidx.media3.exoplayer.DefaultLoadControl
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.exoplayer.source.DefaultMediaSourceFactory
 import androidx.media3.session.LibraryResult
@@ -23,10 +24,10 @@ import androidx.media3.session.MediaSession
 import com.google.common.collect.ImmutableList
 import com.google.common.util.concurrent.ListenableFuture
 import com.israeltv.plus.data.AppPrefs
+import com.israeltv.plus.data.AutoArtworkProvider
 import com.israeltv.plus.data.Channel
 import com.israeltv.plus.data.ChannelData
 import com.israeltv.plus.data.ChannelStore
-import com.israeltv.plus.data.REMOTE
 import com.israeltv.plus.data.USER_AGENT
 import com.israeltv.plus.data.VodSeries
 import com.israeltv.plus.data.playableUrl
@@ -39,10 +40,25 @@ import kotlinx.coroutines.launch
 import okhttp3.OkHttpClient
 
 private const val ROOT = "root"
-private const val RADIO = "radio"
-private const val TV = "tv"
-private const val VOD = "vod"
 private const val FAVORITES = "favorites"
+private const val TV = "tv"
+private const val TV_MAIN = "tv_main"
+private const val TV_SPORTS = "tv_sports"
+private const val TV_NEWS = "tv_news"
+private const val TV_KIDS = "tv_kids"
+private const val TV_ENTERTAINMENT = "tv_entertainment"
+private const val TV_ALL = "tv_all"
+private const val TV_CATEGORIES = "tv_categories"
+
+private const val RADIO = "radio"
+private const val RADIO_TOP = "radio_top"
+private const val RADIO_REGIONAL = "radio_regional"
+private const val RADIO_MUSIC = "radio_music"
+private const val RADIO_HERITAGE = "radio_heritage"
+private const val RADIO_ALL = "radio_all"
+private const val RADIO_CATEGORIES = "radio_categories"
+
+private const val VOD = "vod"
 private const val CONTENT_STYLE_PLAYABLE = "android.media.browse.CONTENT_STYLE_PLAYABLE_HINT"
 private const val CONTENT_STYLE_GRID = 2
 
@@ -58,6 +74,9 @@ class AutoService : MediaLibraryService() {
     private var presentation: CarPresentation? = null
     private var displayManager: DisplayManager? = null
 
+    @Volatile
+    private var cachedData: ChannelData? = null
+
     /** Which stream of a channel is playing, so a failing one can move on to the next. */
     private val attempts = mutableMapOf<String, Int>()
 
@@ -71,14 +90,35 @@ class AutoService : MediaLibraryService() {
     private val displayListener = object : DisplayManager.DisplayListener {
         override fun onDisplayAdded(displayId: Int) = updatePresentation()
         override fun onDisplayRemoved(displayId: Int) = updatePresentation()
-        override fun onDisplayChanged(displayId: Int) = updatePresentation()
+        override fun onDisplayChanged(displayId: Int) {
+            // Intentionally ignore minor display metric/mode adjustments while driving
+            // to prevent surface reconnections and video flickering.
+        }
     }
 
     override fun onCreate() {
         super.onCreate()
-        val http = DefaultHttpDataSource.Factory().setUserAgent(USER_AGENT).setAllowCrossProtocolRedirects(true)
+        val http = DefaultHttpDataSource.Factory()
+            .setUserAgent(USER_AGENT)
+            .setAllowCrossProtocolRedirects(true)
+            .setConnectTimeoutMs(8000)
+            .setReadTimeoutMs(10000)
+
+        // Car/road tuned load control: lower initial buffering for instant start while driving,
+        // resilient buffer window to withstand cellular handovers between towers.
+        val loadControl = DefaultLoadControl.Builder()
+            .setBufferDurationsMs(
+                /* minBufferMs = */ 15_000,
+                /* maxBufferMs = */ 30_000,
+                /* bufferForPlaybackMs = */ 1_500,
+                /* bufferForPlaybackAfterRebufferMs = */ 2_500
+            )
+            .setPrioritizeTimeOverSizeThresholds(true)
+            .build()
+
         val player = ExoPlayer.Builder(this)
             .setMediaSourceFactory(DefaultMediaSourceFactory(DefaultDataSource.Factory(this, http)))
+            .setLoadControl(loadControl)
             .setAudioAttributes(
                 AudioAttributes.Builder().setUsage(C.USAGE_MEDIA).setContentType(C.AUDIO_CONTENT_TYPE_MOVIE).build(),
                 true,
@@ -113,6 +153,11 @@ class AutoService : MediaLibraryService() {
         displayManager?.registerDisplayListener(displayListener, null)
         updatePresentation()
 
+        scope.launch {
+            store.state.collect { d ->
+                if (d != null) cachedData = d
+            }
+        }
         scope.launch {
             store.load()
             store.refresh()
@@ -161,22 +206,117 @@ class AutoService : MediaLibraryService() {
     }
 
     private suspend fun data(): ChannelData? {
-        if (store.state.value == null) store.load()
-        return store.state.value
+        cachedData?.let { return it }
+        val s = store.state.value
+        if (s != null) {
+            cachedData = s
+            return s
+        }
+        store.load()
+        cachedData = store.state.value
+        return cachedData
     }
 
-    private fun radios(d: ChannelData) = d.channels.filter { it.isRadio }.sortedBy { it.number }
-    private fun israeliTv(d: ChannelData) = d.channels.filter { !it.isRadio && it.categoryEn == "israel" }.sortedBy { it.number }
+    private fun isTv(c: Channel) = !c.isRadio
+    private fun isRadio(c: Channel) = c.isRadio
+
+    private val topTvIds = listOf(
+        "kan11", "keshet12", "reshet13", "now14", "i24news_he",
+        "channel9", "channel24_israel", "ch33_makan", "knesset",
+        "ynet_live", "walla_news_il", "sport5_israel_hd", "sport1_israel"
+    )
+
+    private fun tvMain(d: ChannelData): List<Channel> {
+        val topMap = d.channels.filter { isTv(it) && it.id in topTvIds }.associateBy { it.id }
+        val orderedTop = topTvIds.mapNotNull { topMap[it] }
+        val rest = d.channels.filter { isTv(it) && it.categoryEn == "israel" && it.id !in topTvIds }.sortedBy { it.number }
+        return (orderedTop + rest).distinctBy { it.id }
+    }
+
+    private fun tvSports(d: ChannelData): List<Channel> =
+        d.channels.filter { isTv(it) && (it.categoryEn == "sports" || "ספורט" in it.category || "sport" in it.name.lowercase() || "ספורט" in it.name || "one" in it.name.lowercase()) }
+            .sortedBy { it.number }
+
+    private fun tvNews(d: ChannelData): List<Channel> =
+        d.channels.filter { isTv(it) && (it.categoryEn == "news" || "חדשות" in it.category || "חדשות" in it.name || "news" in it.name.lowercase() || it.id in setOf("kan11", "keshet12", "reshet13", "now14", "i24news_he", "knesset", "ynet_live")) }
+            .sortedBy { it.number }
+
+    private fun tvKids(d: ChannelData): List<Channel> =
+        d.channels.filter { isTv(it) && it.isKidsChannel }
+            .sortedBy { it.number }
+
+    private fun tvEntertainment(d: ChannelData): List<Channel> =
+        d.channels.filter { isTv(it) && (it.categoryEn in setOf("movies", "series", "lifestyle", "food", "docu") || "סרטים" in it.category || "סדרות" in it.category || "בידור" in it.category) }
+            .sortedBy { it.number }
+
+    private fun tvAll(d: ChannelData): List<Channel> =
+        d.channels.filter { isTv(it) }.sortedBy { it.number }
+
+    private val topRadioIds = listOf(
+        "galgalatz_live", "glz_live", "kan_bet", "kan_gimel", "kan_88",
+        "radio_103fm", "eco99fm", "radios_100fm", "radio_102fm", "radio_91fm",
+        "kol_chai", "kol_barama_live"
+    )
+
+    private fun radioTop(d: ChannelData): List<Channel> {
+        val topMap = d.channels.filter { isRadio(it) && it.id in topRadioIds }.associateBy { it.id }
+        val ordered = topRadioIds.mapNotNull { topMap[it] }
+        val rest = d.channels.filter { isRadio(it) && it.id !in topRadioIds }
+        return (ordered + rest.take(10)).distinctBy { it.id }
+    }
+
+    private fun radioRegional(d: ChannelData): List<Channel> =
+        d.channels.filter { isRadio(it) && ("אזורי" in it.category || it.id in setOf("radio_103fm", "eco99fm", "radios_100fm", "radio_102fm", "radio_91fm", "radio_haifa", "radio_darom_live", "radio_jerusalem", "radio_kol_rega", "radio_eilat")) }
+            .sortedBy { it.number }
+
+    private fun radioMusic(d: ChannelData): List<Channel> =
+        d.channels.filter { isRadio(it) && ("מוזיקה" in it.category || "מוסיקה" in it.category || "music" in it.categoryEn || "galgalatz" in it.id || "kan_gimel" in it.id || "kan_88" in it.id || "kan_kol_hamusica" in it.id || "joint" in it.id || "mizrahit" in it.id) }
+            .sortedBy { it.number }
+
+    private fun radioHeritage(d: ChannelData): List<Channel> =
+        d.channels.filter { isRadio(it) && ("מורשת" in it.category || "יהדות" in it.category || "דת" in it.category || "breslev" in it.id || "kol_chai" in it.id || "kol_barama" in it.id || "kan_moreshet" in it.id || "chabad" in it.id || "radio_2000" in it.id) }
+            .sortedBy { it.number }
+
+    private fun radioAll(d: ChannelData): List<Channel> =
+        d.channels.filter { isRadio(it) }.sortedBy { it.number }
 
     private fun children(d: ChannelData, parent: String): List<MediaItem> = when (parent) {
         ROOT -> listOf(
-            folder(RADIO, "תחנות רדיו"),
-            folder(TV, "ערוצי טלוויזיה ווידאו"),
-            folder(VOD, "סדרות וסרטים (VOD)"),
-            folder(FAVORITES, "מועדפים")
+            folder(FAVORITES, "⭐ ערוצים מועדפים"),
+            folder(TV_MAIN, "📺 ערוצי טלוויזיה מובילים (שידור חי)"),
+            folder(TV_SPORTS, "⚽ ערוצי ספורט (שידור חי)"),
+            folder(RADIO_TOP, "📻 תחנות רדיו מובילות"),
+            folder(TV_CATEGORIES, "📁 כל ערוצי הטלוויזיה לפי קטגוריות"),
+            folder(RADIO_CATEGORIES, "📁 כל תחנות הרדיו"),
+            folder(VOD, "🎬 סדרות וסרטים (VOD)")
         )
-        RADIO -> radios(d).map(::playable)
-        TV -> israeliTv(d).map(::playable)
+        FAVORITES -> AppPrefs(this).favorites.mapNotNull { d.byId[it] }.map(::playable)
+        TV_MAIN, TV -> tvMain(d).map(::playable)
+        TV_SPORTS -> tvSports(d).map(::playable)
+        TV_NEWS -> tvNews(d).map(::playable)
+        TV_KIDS -> tvKids(d).map(::playable)
+        TV_ENTERTAINMENT -> tvEntertainment(d).map(::playable)
+        TV_ALL -> tvAll(d).map(::playable)
+        TV_CATEGORIES -> listOf(
+            folder(TV_MAIN, "📺 ערוצים מובילים (11, 12, 13, 14, 9, 24...)"),
+            folder(TV_SPORTS, "⚽ כל ערוצי הספורט (ספורט 1-6, 5SPORT, ONE)"),
+            folder(TV_NEWS, "📰 חדשות ואקטואליה"),
+            folder(TV_KIDS, "👶 ערוצי ילדים ונוער"),
+            folder(TV_ENTERTAINMENT, "🍿 סרטים, סדרות ובידור"),
+            folder(TV_ALL, "📋 כל הערוצים (א-ב)")
+        )
+        RADIO_TOP, RADIO -> radioTop(d).map(::playable)
+        RADIO_REGIONAL -> radioRegional(d).map(::playable)
+        RADIO_MUSIC -> radioMusic(d).map(::playable)
+        RADIO_HERITAGE -> radioHeritage(d).map(::playable)
+        RADIO_ALL -> radioAll(d).map(::playable)
+        RADIO_CATEGORIES -> listOf(
+            folder(RADIO_TOP, "📻 תחנות מובילות (גלגלצ, גלצ, כאן ב, 103FM...)"),
+            folder(RADIO_REGIONAL, "🏙️ רדיו אזורי"),
+            folder(RADIO_MUSIC, "🎵 מוזיקה ומגוון סגנונות"),
+            folder(RADIO_HERITAGE, "🕍 מורשת ויהדות"),
+            folder(RADIO_ALL, "📋 כל תחנות הרדיו (א-ב)")
+        )
         VOD -> d.vod.map { s ->
             MediaItem.Builder()
                 .setMediaId("vod_series_${s.id}")
@@ -192,7 +332,6 @@ class AutoService : MediaLibraryService() {
                 )
                 .build()
         }
-        FAVORITES -> AppPrefs(this).favorites.mapNotNull { d.byId[it] }.map(::playable)
         else -> {
             if (parent.startsWith("vod_series_")) {
                 val seriesId = parent.removePrefix("vod_series_")
@@ -222,7 +361,7 @@ class AutoService : MediaLibraryService() {
     private fun search(d: ChannelData, query: String): List<Channel> {
         val q = query.trim()
         if (q.isEmpty()) return emptyList()
-        return (radios(d) + israeliTv(d)).filter { it.name.contains(q, true) || it.title.contains(q, true) }
+        return d.channels.filter { it.name.contains(q, true) || it.title.contains(q, true) }
     }
 
     private fun folder(id: String, title: String) = MediaItem.Builder()
@@ -230,9 +369,10 @@ class AutoService : MediaLibraryService() {
         .setMediaMetadata(
             MediaMetadata.Builder()
                 .setTitle(title)
+                .setArtworkUri(AutoArtworkProvider.buildUri("icon.png"))
                 .setIsBrowsable(true)
                 .setIsPlayable(false)
-                .setMediaType(if (id == RADIO) MediaMetadata.MEDIA_TYPE_FOLDER_RADIO_STATIONS else MediaMetadata.MEDIA_TYPE_FOLDER_TV_CHANNELS)
+                .setMediaType(if (id.startsWith("radio")) MediaMetadata.MEDIA_TYPE_FOLDER_RADIO_STATIONS else MediaMetadata.MEDIA_TYPE_FOLDER_TV_CHANNELS)
                 .build()
         )
         .build()
@@ -253,9 +393,10 @@ class AutoService : MediaLibraryService() {
         .build()
 
     private fun artworkUrl(path: String): Uri? = when {
-        path.isBlank() -> null
-        path.startsWith("http") -> Uri.parse(path)
-        else -> Uri.parse(REMOTE + path.removePrefix("/"))
+        path.isBlank() -> AutoArtworkProvider.buildUri("icon.png")
+        path.startsWith("content://") -> Uri.parse(path)
+        path.startsWith("http://") || path.startsWith("https://") -> Uri.parse(path)
+        else -> AutoArtworkProvider.buildUri(path)
     }
 
     private fun artwork(ch: Channel): Uri? = artworkUrl(ch.logo)
@@ -386,7 +527,7 @@ class AutoService : MediaLibraryService() {
             }
             currentChannel = ch
             if (ch.isRadio) {
-                val list = radios(d)
+                val list = radioAll(d)
                 list.forEach { attempts[it.id] = 0 }
                 MediaSession.MediaItemsWithStartPosition(
                     list.map { playable(it, it.url) }, list.indexOfFirst { it.id == ch.id }.coerceAtLeast(0), C.TIME_UNSET,
