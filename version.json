@@ -1,19 +1,23 @@
 {
-  "version": "4.8.72",
-  "code": 202611081832,
-  "app": 40872,
+  "version": "4.8.73",
+  "code": 202611081915,
+  "app": 40873,
   "shell": 3,
   "date": "2026-11-08",
   "notes": [
-    "השקת תמיכה מלאה ורשמית ב-Home Assistant:",
-    "אינטגרציה ייעודית מלאה (custom_components/israel_tv_plus) התומכת ב-HACS ובהתקנה ידנית.",
-    "תמיכה מלאה ב-Media Browser (דפדפן המדיה): גלישה נוחה בכל קטגוריות הטלוויזיה, הספורט, הילדים והרדיו ושידור בלחיצה אחת לכל טלוויזיה, Chromecast, רמקול חכם או מסך בבית.",
-    "שירות אוטומציות israel_tv_plus.play_channel: מאפשר הפעלת ערוצים על נגני מדיה לפי שם, מספר ערוץ או מזהה (לדוגמה: \"12\", \"ספורט 1\", \"גלגלצ\").",
-    "מודול כרטיס Lovelace מותאם אישית (israel-tv-card.js) לדשבורד של Home Assistant עם לוגואים ובחירת נגן יעד.",
-    "הרחבת Add-on רשמית ל-Home Assistant Supervisor עם תמיכה ב-Ingress ישירות בסרגל הצד.",
-    "חבילת הפצה ייעודית IsraelTVPlus-homeassistant.zip להורדה ישירה מתוך ה-Release."
+    "תיקון ערוץ 60 (HOT באזז) והפרדה מוחלטת מערוץ 61 (FOMO):",
+    "הסרת ניתוב ה-Fallback השגוי שהפנה את ערוץ 60 לשידור החי של ערוץ FOMO בעת תקלת שרת.",
+    "סנכרון מלא של קובצי הערוצים, הפלייליסטים, רכיב Home Assistant ותוספי Stremio למניעת כפילויות שידור."
   ],
   "history": [
+    {
+      "version": "4.8.73",
+      "notes": [
+        "תיקון ערוץ 60 (HOT באזז) והפרדה מוחלטת מערוץ 61 (FOMO):",
+        "הסרת ניתוב ה-Fallback השגוי שהפנה את ערוץ 60 לשידור החי של ערוץ FOMO בעת תקלת שרת.",
+        "סנכרון מלא של קובצי הערוצים, הפלייליסטים, רכיב Home Assistant ותוספי Stremio למניעת כפילויות שידור."
+      ]
+    },
     {
       "version": "4.8.72",
       "notes": [
@@ -236,57 +240,44 @@
         "תרגום Native מלא ומקצועי לעברית – ניסוח טבעי ומדויק לכל ההגדרות, שמות הקטגוריות ותיאורי העזרה, בהתאם לסטנדרט ממשקי הטלוויזיה המובילים בישראל.",
         "סרגל קיצורי שלט M3 בתחתית מסך ההגדרות – מעגן מקשי ניווט ייעודיים (ניווט, בחירה/שינוי, אישור, יציאה) לנוחות צפייה בסלון."
       ]
-    },
-    {
-      "version": "4.8.47",
-      "notes": [
-        "אנדרואיד: תיקון הבנייה שנכשלה ב-4.8.45 וב-4.8.46. ה-APK שפורסם בגרסאות האלה היה עדיין 4.8.44, ועכשיו מגיעה הגרסה האמיתית עם עדכון טלוויזיה, מצב רשת איטית ושיפורי הנגן.",
-        "בחירת פרופיל פותחת את מסך הבית, במקום לקפוץ ישר לנגן במסך מלא. ההגדרה \"לנגן את הערוץ האחרון בפתיחה\" ממשיכה לעבוד.",
-        "מסך הגדרות חדש במחשב ובטלוויזיה: עמוד מלא בצבעי ערכת הנושא, שורות מקובצות, כפתור סגירה וכל הקטגוריות גלויות בלי גלילה. גם בטלפון השורות מקובצות.",
-        "תיקון שורות בהגדרות שהציגו קוד תוכנה במקום טקסט (טיימר שינה והתחברות). טיימר השינה עבר לקטגוריית הנגן.",
-        "חשבון Google: כרטיס ברור אחד, ופעולות החשבון מופיעות רק אחרי התחברות. סגירת חלון ההתחברות בדפדפן לא פותחת יותר את מסך הקוד של הטלוויזיה.",
-        "אנדרואיד: טלפון וטאבלט לא מזוהים בטעות כטלוויזיה בגלל שם הדגם.",
-        "טייזן: תיקון קובץ התצורה שנפגע בעדכוני הגרסה.",
-        "דילוג על פתיח לא מחזיר יותר אחורה, ואיכות השידור מוצגת בעברית."
-      ]
     }
   ],
   "native": {
     "android": {
-      "version": "4.8.72",
-      "app": 40872,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.72/IsraelTVPlus-android.apk"
+      "version": "4.8.73",
+      "app": 40873,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.73/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "4.8.72",
-      "app": 40872,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.72/IsraelTVPlus-windows-setup.exe"
+      "version": "4.8.73",
+      "app": 40873,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.73/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "4.8.72",
-      "app": 40872,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.72/com.israeltv.plus_all.ipk",
+      "version": "4.8.73",
+      "app": 40873,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.73/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "4.8.72",
-      "app": 40872,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.72/IsraelTVPlus-tizen-project.zip"
+      "version": "4.8.73",
+      "app": 40873,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.73/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "4.8.72",
-      "app": 40872,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.72/IsraelTVPlus-macos-arm64.zip"
+      "version": "4.8.73",
+      "app": 40873,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.73/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "4.8.72",
-      "app": 40872,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.72/IsraelTVPlus-linux-x64.zip"
+      "version": "4.8.73",
+      "app": 40873,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.73/IsraelTVPlus-linux-x64.zip"
     },
     "wear": {
-      "version": "4.8.72",
-      "app": 1040872,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.72/IsraelTVPlus-wearos.apk"
+      "version": "4.8.73",
+      "app": 1040873,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.73/IsraelTVPlus-wearos.apk"
     }
   }
 }

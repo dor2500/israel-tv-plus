@@ -1793,12 +1793,10 @@
       "web": "❌ רק באפליקציה (HTTP)"
     },
     "fallbackUrls": [
-      "http://45.156.223.202/iptv/QAP2YS2594ZQS3/32139/index.m3u8",
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/fomo/live.livx/playlist.m3u8"
+      "http://45.156.223.202/iptv/QAP2YS2594ZQS3/32139/index.m3u8"
     ],
     "backups": [
-      "http://45.156.223.202/iptv/QAP2YS2594ZQS3/32139/index.m3u8",
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/fomo/live.livx/playlist.m3u8"
+      "http://45.156.223.202/iptv/QAP2YS2594ZQS3/32139/index.m3u8"
     ]
   },
   {
