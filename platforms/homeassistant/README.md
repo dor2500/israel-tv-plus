@@ -16,10 +16,17 @@
 
 [![הפעל שילוב בלחיצה אחת](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start/?domain=israel_tv_plus)
 
-### 📱 הוספה ישירה למסך הבית (דשבורד Lovelace) בלחיצה אחת:
-לחצו כאן כדי להוסיף את כרטיס השלט של ישראל TV+ ישירות למסך הבית שלכם:
+### 📺 פתיחת ישראל TV+ בסרגל הצד ובמסך הראשי:
+האינטגרציה מוסיפה אוטומטית את **ישראל TV+** ישירות לסרגל הצד (Sidebar) ולתפריט הראשי של Home Assistant בלחיצה אחת!
 
-[![הוסף כרטיס למסך הבית בדשבורד](https://my.home-assistant.io/badges/lovelace_card.svg)](https://my.home-assistant.io/redirect/lovelace_card/?yaml=type%3A%20custom%3Aisrael-tv-card)
+### 🎴 הוספת כרטיס השלט למסך הבית (Lovelace Dashboard):
+1. פתחו את לוח הבקרה שלכם:
+[![פתח את לוחות הבקרה](https://my.home-assistant.io/badges/lovelace_dashboards.svg)](https://my.home-assistant.io/redirect/lovelace_dashboards/)
+2. לחצו על שלוש הנקודות בפינה -> **עריכת לוח הבקרה (Edit Dashboard)** -> **הוסף כרטיס (Add Card)**.
+3. גללו למטה ובחרו **ידני (Manual)**, הדביקו את הקוד ושמרו:
+```yaml
+type: custom:israel-tv-card
+```
 
 להתקנת תוסף ה-Add-on (הרחבה לסרגל הצד):
 

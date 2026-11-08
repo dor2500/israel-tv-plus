@@ -51,9 +51,9 @@ irm https://dor2500.github.io/israel-tv-plus/install.ps1 | iex
 
 [![הפעל שילוב בלחיצה אחת](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start/?domain=israel_tv_plus)
 
-הוסיפו את כרטיס השלט של ישראל TV+ ישירות למסך הבית בדשבורד (Lovelace):
+פתחו את לוחות הבקרה (Dashboards) להוספת כרטיס שלט:
 
-[![הוסף כרטיס למסך הבית בדשבורד](https://my.home-assistant.io/badges/lovelace_card.svg)](https://my.home-assistant.io/redirect/lovelace_card/?yaml=type%3A%20custom%3Aisrael-tv-card)
+[![פתח את לוחות הבקרה](https://my.home-assistant.io/badges/lovelace_dashboards.svg)](https://my.home-assistant.io/redirect/lovelace_dashboards/)
 
 או התקינו כתוסף לסרגל הצד (Add-on):
 
