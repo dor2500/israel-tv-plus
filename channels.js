@@ -1783,6 +1783,8 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "logo": "assets/logos/hot_buzz.png",
   "badge": "HD",
   "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
   "desc": "ערוץ HOT באזז – כוכבי רשת, סדרות נוער, מוזיקה, גיימינג וטרנדים לצעירים",
   "number": 60,
   "src": {
