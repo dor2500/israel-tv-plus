@@ -283,7 +283,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "title": "כאן 11 תאגיד השידור הישראלי (Kan 11 FHD)",
   "category": "ערוצי ישראל - שידור חי",
   "categoryEn": "israel",
-  "url": "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan11/live.livx/playlist.m3u8",
+  "url": "https://r.il.cdn-redge.media/livehls/oil/kancdn-live/live/kan11/live.livx/playlist.m3u8",
   "logo": "assets/logos/kan11.png",
   "badge": "FHD",
   "desc": "תאגיד השידור הישראלי כאן 11 – חדשות, אקטואליה, דוקו ויצירה ישראלית מקורית",
@@ -291,36 +291,25 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "lang": "he",
   "iptv": "Kan11.il",
   "src": {
-   "by": "כאן – תאגיד השידור (CDN רשמי)",
+   "by": "Redge – ה-CDN הרשמי של כאן, ערוץ 14 וכלכלה 10",
    "kind": "official",
-   "host": "kancdn.medonecdn.net",
-   "found": "iptv-org (Kan11.il)",
+   "host": "r.il.cdn-redge.media",
+   "found": "שידור רשמי ויציב ללא תקיעות",
    "web": "✅"
   },
   "backups": [
    "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8",
-   "https://kan11.media.kan.org.il/hls/live/2024514/2024514/master.m3u8",
-   "https://kan11w.media.kan.org.il/hls/live/2105694/2105694/master.m3u8",
-   "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11_subs/live.livx/playlist.m3u8",
-   "https://r.il.cdn-redge.media/livehls/oil/kancdn-live/live/kan11/live.livx/playlist.m3u8?dvr=21600000",
-   "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2332/index.m3u8",
+   "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan11/live.livx/playlist.m3u8",
    "http://stream.mcquack.net/20/index.m3u8",
-   "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11_hevc/live.livx/playlist.m3u8",
-   "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32252/index.m3u8",
-   "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12200/index.m3u8"
+   "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11_subs/live.livx/playlist.m3u8"
   ],
   "country": "IL",
   "countryHe": "ישראל",
   "fallbackUrls": [
    "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8",
-   "https://kan11.media.kan.org.il/hls/live/2024514/2024514/master.m3u8",
-   "https://kan11w.media.kan.org.il/hls/live/2105694/2105694/master.m3u8",
-   "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11_subs/live.livx/playlist.m3u8",
-   "https://r.il.cdn-redge.media/livehls/oil/kancdn-live/live/kan11/live.livx/playlist.m3u8?dvr=21600000",
-   "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2332/index.m3u8",
+   "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan11/live.livx/playlist.m3u8",
    "http://stream.mcquack.net/20/index.m3u8",
-   "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11_hevc/live.livx/playlist.m3u8",
-   "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32252/index.m3u8"
+   "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11_subs/live.livx/playlist.m3u8"
   ]
  },
  {
@@ -740,7 +729,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "title": "כאן חינוכית 23 תאגיד השידור לילדים ונוער FHD",
   "category": "ילדים ונוער (בעברית)",
   "categoryEn": "kids_he",
-  "url": "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan_edu/live.livx/playlist.m3u8",
+  "url": "https://r.il.cdn-redge.media/livehls/oil/kancdn-live/live/kan_edu/live.livx/playlist.m3u8",
   "logo": "assets/logos/kan_hinuchit.png",
   "badge": "FHD",
   "desc": "כאן חינוכית 23 – קופה ראשית לילדים, שקשוקה, כראמל, פרפר נחמד וסדרות איכות בעברית",
@@ -748,31 +737,23 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "lang": "he",
   "iptv": "KanEducational.il",
   "src": {
-   "by": "כאן – תאגיד השידור (CDN רשמי)",
+   "by": "Redge – ה-CDN הרשמי של כאן, ערוץ 14 וכלכלה 10",
    "kind": "official",
-   "host": "kancdn.medonecdn.net",
-   "found": "iptv-org (KanEducational.il)",
+   "host": "r.il.cdn-redge.media",
+   "found": "שידור רשמי ויציב ללא תקיעות",
    "web": "✅"
   },
   "backups": [
    "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/edu23/live.livx/playlist.m3u8",
-   "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32149/index.m3u8",
-   "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2380/index.m3u8",
-   "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32318/index.m3u8",
-   "http://stream.mcquack.net/378/index.m3u8",
-   "https://r.il.cdn-redge.media/livehls/oil/kancdn-live/live/kan_edu/live.livx/playlist.m3u8?dvr=21600000",
-   "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/23/live.livx/playlist.m3u8",
-   "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12207/index.m3u8"
+   "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan_edu/live.livx/playlist.m3u8",
+   "http://stream.mcquack.net/378/index.m3u8"
   ],
   "country": "IL",
   "countryHe": "ישראל",
   "fallbackUrls": [
    "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/edu23/live.livx/playlist.m3u8",
-   "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32149/index.m3u8",
-   "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2380/index.m3u8",
-   "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32318/index.m3u8",
-   "http://stream.mcquack.net/378/index.m3u8",
-   "https://r.il.cdn-redge.media/livehls/oil/kancdn-live/live/kan_edu/live.livx/playlist.m3u8?dvr=21600000"
+   "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan_edu/live.livx/playlist.m3u8",
+   "http://stream.mcquack.net/378/index.m3u8"
   ]
  },
  {
@@ -1341,9 +1322,9 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "country": "IL",
   "number": 44,
   "src": {
-   "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
-   "kind": "official",
-   "host": "b84203c4.ottrast.com",
+   "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
+   "kind": "restream",
+   "host": "stream.mcquack.net",
    "found": "רשימה ידנית (גרסה קודמת)",
    "web": "❌ רק באפליקציה (HTTP)"
   },
@@ -2583,6 +2564,36 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   },
   "fallbackUrls": [],
   "backups": []
+ },
+ {
+  "id": "kotel_live_il",
+  "name": "הכותל המערבי – שידור חי 24/7 HD",
+  "title": "הכותל המערבי HD",
+  "category": "מסורת וקהילה",
+  "categoryEn": "heritage",
+  "url": "https://cdn1.cast-tv.com/23595/Live_Kotel3_ABR/playlist.m3u8",
+  "logo": "assets/logos/kotel_live_il.png",
+  "badge": "1080p",
+  "desc": "מצלמות הכותל המערבי בירושלים – שידור ישיר באיכות Full HD 24/7 מסביב לשעון",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 90,
+  "fallbackUrls": [
+   "https://cdn1.cast-tv.com/23595/Live_Kotel1_ABR/playlist.m3u8",
+   "https://cdn1.cast-tv.com/23595/Live_Kotel2_ABR/playlist.m3u8"
+  ],
+  "backups": [
+   "https://cdn1.cast-tv.com/23595/Live_Kotel1_ABR/playlist.m3u8",
+   "https://cdn1.cast-tv.com/23595/Live_Kotel2_ABR/playlist.m3u8"
+  ],
+  "src": {
+   "by": "cdn1.cast-tv.com",
+   "kind": "restream",
+   "host": "cdn1.cast-tv.com",
+   "found": "שידור רשמי הקרן למורשת הכותל",
+   "web": "✅"
+  }
  },
  {
   "id": "reshet13_nofesh_il",
@@ -12169,5 +12180,173 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   },
   "fallbackUrls": [],
   "backups": []
+ },
+ {
+  "id": "freetv_lifestyle_il",
+  "name": "FreeTV לייף סטייל HD",
+  "title": "FreeTV לייף סטייל HD",
+  "category": "ערוצי ישראל - שידור חי",
+  "categoryEn": "israel",
+  "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/imagin_lifestyle/live.livx/playlist.m3u8",
+  "logo": "assets/logos/freetv_lifestyle_il.png",
+  "badge": "HD",
+  "desc": "ערוץ הלייף סטייל של FreeTV – עיצוב, בית, בריאות, אופנה וסגנון חיים ישראלי",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 529,
+  "fallbackUrls": [],
+  "backups": [],
+  "src": {
+   "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
+   "kind": "official",
+   "host": "d1zqtf09wb8nt5.cloudfront.net",
+   "found": "שידור FreeTV רשמי",
+   "web": "✅"
+  }
+ },
+ {
+  "id": "music_channel_il",
+  "name": "ערוץ המוזיקה הישראלי 24/7 HD",
+  "title": "ערוץ המוזיקה הישראלי HD",
+  "category": "מוזיקה (Music TV)",
+  "categoryEn": "music",
+  "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/music_channel/live.livx/playlist.m3u8",
+  "logo": "assets/logos/music_channel_il.png",
+  "badge": "HD",
+  "desc": "ערוץ המוזיקה הישראלי – מיטב הקליפים והלהיטים הישראליים ברצף 24 שעות ביממה באיכות HD",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 530,
+  "fallbackUrls": [],
+  "backups": [],
+  "src": {
+   "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
+   "kind": "official",
+   "host": "d1zqtf09wb8nt5.cloudfront.net",
+   "found": "שידור FreeTV רשמי",
+   "web": "✅"
+  }
+ },
+ {
+  "id": "partner_reality_il",
+  "name": "ערוץ הריאליטי הישראלי HD",
+  "title": "ערוץ הריאליטי HD",
+  "category": "סרטים וסדרות (Movies & Series)",
+  "categoryEn": "series",
+  "url": "https://d2dffl3588mvfk.cloudfront.net/out/v1/d8e15050ca4148aab0ee387a5e2eb46b/index_1.m3u8",
+  "logo": "assets/logos/partner_reality_il.png",
+  "badge": "HD",
+  "desc": "ערוץ הריאליטי הישראלי – כל תוכניות הריאליטי המובילות, התחרויות והדרמות ברצף שידורים HD",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 531,
+  "fallbackUrls": [],
+  "backups": [],
+  "src": {
+   "by": "ערוץ FAST ישראלי – AWS CloudFront",
+   "kind": "fast",
+   "host": "d2dffl3588mvfk.cloudfront.net",
+   "found": "שידור פרטנר TV רשמי",
+   "web": "✅"
+  }
+ },
+ {
+  "id": "ch9_contact_il",
+  "name": "ערוץ 9 ישראל – שידור אולפן ישיר HD",
+  "title": "ערוץ 9 אולפן ישיר HD",
+  "category": "ערוצי ישראל - שידור חי",
+  "categoryEn": "israel",
+  "url": "https://contact.gostreaming.tv/Con-11/index.m3u8",
+  "logo": "assets/logos/ch9_contact_il.png",
+  "badge": "HD",
+  "desc": "שידור ישיר מתוך אולפני ערוץ 9 בישראל – חדשות, ראיונות ודיונים באיכות HD",
+  "lang": "ru",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 532,
+  "fallbackUrls": [],
+  "backups": [],
+  "src": {
+   "by": "GoStreaming – ספק השידור של ערוץ 9",
+   "kind": "official",
+   "host": "contact.gostreaming.tv",
+   "found": "שידור אולפן ערוץ 9 ישיר",
+   "web": "✅"
+  }
+ },
+ {
+  "id": "radio_best_1064",
+  "name": "הרדיו הטוב 106.4FM (The Best Radio)",
+  "title": "הרדיו הטוב 106.4FM",
+  "category": "רדיו ישראלי (Israeli Radio)",
+  "categoryEn": "radio",
+  "url": "https://cdna.streamgates.net/TheBest/live/playlist.m3u8",
+  "logo": "assets/logos/radio_best_1064.png",
+  "badge": "LIVE",
+  "desc": "תחנת הרדיו הטוב 106.4FM – שידורי מוזיקה ואקטואליה 24/7",
+  "lang": "ru",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 533,
+  "fallbackUrls": [],
+  "backups": [],
+  "src": {
+   "by": "StreamGates – ה-CDN של התחנה",
+   "kind": "official",
+   "host": "cdna.streamgates.net",
+   "found": "שידור רשמי הרדיו הטוב",
+   "web": "✅"
+  }
+ },
+ {
+  "id": "pervoe_radio",
+  "name": "הרדיו הראשון 89.1FM (Первое радио)",
+  "title": "הרדיו הראשון 89.1FM",
+  "category": "רדיו ישראלי (Israeli Radio)",
+  "categoryEn": "radio",
+  "url": "https://cdn.cybercdn.live/Pervoia/Audio/icecast.audio",
+  "logo": "assets/logos/pervoe_radio.png",
+  "badge": "LIVE",
+  "desc": "הרדיו הראשון 89.1FM בישראל – מוזיקה, חדשות, תרבות ובידור",
+  "lang": "ru",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 534,
+  "fallbackUrls": [],
+  "backups": [],
+  "src": {
+   "by": "CyberCDN – ה-CDN של תחנות הרדיו עצמן",
+   "kind": "official",
+   "host": "cdn.cybercdn.live",
+   "found": "שידור רשמי הרדיו הראשון",
+   "web": "✅"
+  }
+ },
+ {
+  "id": "radios_russian_891",
+  "name": "רדיוס 100% רוסית 89.1 (Radios Russian)",
+  "title": "רדיוס 100% רוסית",
+  "category": "רדיו ישראלי (Israeli Radio)",
+  "categoryEn": "radio",
+  "url": "https://gb25.streamgates.net/radios-audio/891Digital/playlist.m3u8",
+  "logo": "assets/logos/radios_russian_891.png",
+  "badge": "LIVE",
+  "desc": "ערוץ המוזיקה של רדיוס 100FM – מיטב הלהיטים ברוסית ללא הפסקה",
+  "lang": "ru",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 535,
+  "fallbackUrls": [],
+  "backups": [],
+  "src": {
+   "by": "StreamGates – ערוצי רדיוס 100FM",
+   "kind": "official",
+   "host": "gb25.streamgates.net",
+   "found": "שידור רדיוס 100FM רשמי",
+   "web": "✅"
+  }
  }
 ];

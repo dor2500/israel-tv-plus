@@ -38,14 +38,31 @@
     (new URLSearchParams(location.search).get('tv') === '1');
   var TOUCH = !IS_TV && ('ontouchstart' in window) && window.matchMedia && matchMedia('(pointer: coarse)').matches;
   var PHONE = false;            // phone layout (Nuvio home + navigation bar), set by applyScale()
-  var IS_HA = (new URLSearchParams(location.search).get('ha') === '1') ||
-    (new URLSearchParams(location.search).get('widget') === '1') ||
-    (window.self !== window.top && (location.search.indexOf('ha') !== -1 || (document.referrer && document.referrer.indexOf(':8123') !== -1)));
+  var IN_IFRAME = false;
+  try {
+    IN_IFRAME = (window.self !== window.top);
+  } catch (e) {
+    IN_IFRAME = true;
+  }
+  var urlParams = new URLSearchParams(location.search);
+  var IS_HA = urlParams.get('ha') === '1' ||
+    urlParams.get('widget') === '1' ||
+    urlParams.get('embed') === '1' ||
+    IN_IFRAME ||
+    (document.referrer && document.referrer.indexOf(':8123') !== -1);
   if (IS_HA) {
     try {
       document.documentElement.classList.add('ha-mode');
-      if (document.body) document.body.classList.add('ha-mode');
-      else window.addEventListener('DOMContentLoaded', function () { document.body.classList.add('ha-mode'); });
+      document.documentElement.classList.add('embedded');
+      if (document.body) {
+        document.body.classList.add('ha-mode');
+        document.body.classList.add('embedded');
+      } else {
+        window.addEventListener('DOMContentLoaded', function () {
+          document.body.classList.add('ha-mode');
+          document.body.classList.add('embedded');
+        });
+      }
     } catch (e) {}
   }
   var I = window.ITV_ICON || function () { return ''; };
@@ -109,7 +126,7 @@
     all: [], list: [], cats: [], cat: 'ALL', query: '',
     favorites: lsGet('israel_tv_favorites', []), recents: lsGet('israel_tv_recents', []),
     zone: 'grid', gridIdx: 0, railIdx: 0, topIdx: 0,
-    playing: null, playIdx: -1, isRadio: false, hls: null, retries: 0,
+    playing: null, playIdx: -1, prevChannel: null, isRadio: false, hls: null, retries: 0,
     overlay: null,            // 'player' | 'drawer' | 'menu' | 'settings' | 'dialog'
     stack: [],                // overlays under the current one
     drawerIdx: 0, menu: null, menuIdx: 0, dialog: null, dialogIdx: 0,
@@ -2687,13 +2704,18 @@
 
   var sleepTimerId = null;
   var sleepTimerEndTime = 0;
+  var sleepTimerFadeInterval = null;
 
   function setSleepTimer(minutes) {
     if (sleepTimerId) {
       clearTimeout(sleepTimerId);
       sleepTimerId = null;
-      sleepTimerEndTime = 0;
     }
+    if (sleepTimerFadeInterval) {
+      clearInterval(sleepTimerFadeInterval);
+      sleepTimerFadeInterval = null;
+    }
+    sleepTimerEndTime = 0;
     if (!minutes || minutes <= 0) {
       toast('💤 טיימר שינה בוטל');
       renderSettings();
@@ -2702,23 +2724,127 @@
     sleepTimerEndTime = Date.now() + minutes * 60 * 1000;
     toast('💤 טיימר שינה הופעל: יכבה בעוד ' + minutes + ' דקות');
     renderSettings();
-    sleepTimerId = setTimeout(function () {
-      sleepTimerId = null;
-      sleepTimerEndTime = 0;
-      if (el.video) {
-        el.video.pause();
-        el.video.muted = true;
+
+    // Start interval to monitor remaining time and do a smooth 60s audio fade-out before shutdown
+    sleepTimerFadeInterval = setInterval(function () {
+      if (!sleepTimerEndTime) {
+        clearInterval(sleepTimerFadeInterval);
+        return;
       }
-      closePlayer();
-      toast('💤 כיבוי אוטומטי - שינה ערבה!');
-      renderSettings();
-    }, minutes * 60 * 1000);
+      var msLeft = sleepTimerEndTime - Date.now();
+      if (msLeft <= 0) {
+        clearInterval(sleepTimerFadeInterval);
+        sleepTimerFadeInterval = null;
+        sleepTimerEndTime = 0;
+        if (el.video) {
+          el.video.pause();
+          el.video.muted = true;
+          el.video.volume = 1;
+        }
+        closePlayer();
+        toast('💤 כיבוי אוטומטי - שינה ערבה!');
+        renderSettings();
+      } else if (msLeft <= 60000 && el.video) {
+        var frac = Math.max(0, msLeft / 60000);
+        el.video.volume = frac;
+      }
+    }, 1000);
   }
 
   function getSleepTimerRemaining() {
     if (!sleepTimerEndTime) return 0;
-    var rem = Math.round((sleepTimerEndTime - Date.now()) / 60000);
+    var rem = Math.ceil((sleepTimerEndTime - Date.now()) / 60000);
     return rem > 0 ? rem : 0;
+  }
+
+  function openSleepTimerDialog() {
+    var rem = getSleepTimerRemaining();
+    var options = [
+      { mins: 15, label: '⏱️ 15 דקות' },
+      { mins: 30, label: '⏱️ 30 דקות' },
+      { mins: 45, label: '⏱️ 45 דקות' },
+      { mins: 60, label: '⏱️ 60 דקות (שעה)' },
+      { mins: 90, label: '⏱️ 90 דקות (שעה וחצי)' },
+      { mins: 120, label: '⏱️ 120 דקות (שעתיים)' },
+      { mins: 0, label: '❌ בטל טיימר שינה' }
+    ];
+    var html = '<div style="text-align:center;padding:10px 0;">' +
+      '<p style="font-size:1.15em;margin-bottom:14px;color:rgba(255,255,255,0.9);">' +
+      (rem > 0 ? 'טיימר פעיל כעת: יכבה בעוד <strong style="color:var(--accent);">' + rem + ' דק׳</strong>' : 'בחר זמן לכיבוי אוטומטי של השידור:') +
+      '</p>' +
+      '<div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(130px, 1fr));gap:10px;">' +
+      options.map(function(opt) {
+        return '<button class="btn dlg-focus" data-mins="' + opt.mins + '" style="padding:10px 8px;font-size:0.95em;' + (rem > 0 && rem === opt.mins ? 'border:2px solid var(--accent);background:rgba(255,255,255,0.18);' : '') + '">' + opt.label + '</button>';
+      }).join('') +
+      '</div></div>';
+
+    openDialog({
+      title: '🌙 טיימר שינה וכיבוי אוטומטי',
+      ico: '🌙',
+      html: html,
+      buttons: [{ label: 'סגירה', primary: true, act: closeDialog }]
+    });
+
+    setTimeout(function() {
+      if (!el.dialogBody) return;
+      var btns = el.dialogBody.querySelectorAll('button[data-mins]');
+      for (var i = 0; i < btns.length; i++) {
+        (function(b) {
+          b.onclick = function() {
+            var m = parseInt(b.getAttribute('data-mins'), 10);
+            setSleepTimer(m);
+            closeDialog();
+          };
+        })(btns[i]);
+      }
+    }, 50);
+  }
+
+  // Audio Boost (+200% Gain using Web Audio API)
+  var audioBoostCtx = null;
+  var audioBoostSource = null;
+  var audioBoostGain = null;
+  var audioBoostLevel = 1.0;
+
+  function initAudioBoost() {
+    if (!el.video) return;
+    try {
+      var AC = window.AudioContext || window.webkitAudioContext;
+      if (!AC) return;
+      if (!audioBoostCtx) {
+        audioBoostCtx = new AC();
+      }
+      if (audioBoostCtx.state === 'suspended') {
+        audioBoostCtx.resume();
+      }
+      if (!audioBoostSource) {
+        audioBoostSource = audioBoostCtx.createMediaElementSource(el.video);
+        audioBoostGain = audioBoostCtx.createGain();
+        audioBoostSource.connect(audioBoostGain);
+        audioBoostGain.connect(audioBoostCtx.destination);
+      }
+      if (audioBoostGain) {
+        audioBoostGain.gain.value = audioBoostLevel;
+      }
+    } catch (e) {
+      console.warn('Audio boost notice:', e);
+    }
+  }
+
+  function setAudioBoost(lvl) {
+    audioBoostLevel = lvl;
+    initAudioBoost();
+    if (audioBoostGain) {
+      audioBoostGain.gain.value = lvl;
+    }
+    toast(lvl > 1.0 ? '🔊 הגברת עוצמת שמע: ' + Math.round(lvl * 100) + '%' : '🔊 הגברת שמע: רגיל (100%)');
+  }
+
+  function cycleAudioBoost() {
+    var levels = [1.0, 1.4, 1.8, 2.2, 2.6, 3.0];
+    var idx = levels.indexOf(audioBoostLevel);
+    var next = levels[(idx + 1) % levels.length];
+    setAudioBoost(next);
   }
 
   function cyclePlaybackSpeed() {
@@ -3071,6 +3197,9 @@
       var s = ch.vodData || (window.VOD_DATA && window.VOD_DATA.find(function (v) { return v.id === ch.id || v.title === ch.name.replace(' FHD (VOD)', '').trim(); }));
       if (s) { openVodModal(s); return; }
     }
+    if (state.playing && state.playing.id !== ch.id) {
+      state.prevChannel = state.playing;
+    }
     state.playIdx = i;
     state.playing = ch;
     addRecent(ch);
@@ -3080,6 +3209,33 @@
     fillOsd(ch);
     showOsd();
     loadStream(ch);
+  }
+
+  function switchPreviousChannel() {
+    if (!state.prevChannel) {
+      toast('🔁 אין ערוץ קודם');
+      return;
+    }
+    var prev = state.prevChannel;
+    var idx = -1;
+    for (var i = 0; i < state.list.length; i++) {
+      if (state.list[i].id === prev.id) { idx = i; break; }
+    }
+    if (idx === -1 && state.channels) {
+      for (var j = 0; j < state.channels.length; j++) {
+        if (state.channels[j].id === prev.id) {
+          state.list = state.channels;
+          idx = j;
+          break;
+        }
+      }
+    }
+    if (idx !== -1) {
+      toast('🔁 זיפזופ לערוץ: ' + prev.name);
+      playIndex(idx);
+    } else {
+      toast('🔁 ערוץ קודם: ' + prev.name);
+    }
   }
 
   function openPlayer() {
@@ -3511,26 +3667,23 @@ function loadCandidate(ch, rawUrl) {
       var inCatchup = !!(state.catchup && state.catchup.ch === ch);
       var hls = new Hls({
         enableWorker: true,
-        lowLatencyMode: !isVod && !isOttrast && !inCatchup,
+        lowLatencyMode: isSport && (S.latency === 'low' || S.latency === 'realtime') && !isVod && !isOttrast && !inCatchup,
         startPosition: (isSport && !isOttrast) ? -1 : undefined,
         startFragPrefetch: true,
-        backBufferLength: fastMode() ? 8 : (isSport ? (isOttrast ? 15 : 4) : (isVod ? 30 : 15)),
-        // counted in segments, so the distance from the live edge fits every stream: a fixed 2 s on 6 s segments
-        // leaves nothing to play and freezes and jumps every few seconds
-        liveSyncDurationCount: (isSport && !isOttrast) ? 2 : 3,
-        liveMaxLatencyDurationCount: inCatchup ? Infinity : ((isSport && !isOttrast) ? 5 : 8),
+        backBufferLength: fastMode() ? 8 : (isSport ? (isOttrast ? 15 : 4) : (isVod ? 30 : 20)),
+        liveSyncDurationCount: (isSport && !isOttrast) ? 2 : 4,
+        liveMaxLatencyDurationCount: inCatchup ? Infinity : ((isSport && !isOttrast) ? 5 : 10),
         liveDurationInfinity: !isVod,
         maxLiveSyncPlaybackRate: inCatchup ? 1 : 1.05,
-        maxBufferLength: isSport ? (isOttrast ? 25 : 15) : (isVod ? 60 : (is4K ? 24 : 20)),
-        maxMaxBufferLength: isSport ? (isOttrast ? 45 : 25) : (isVod ? 120 : (is4K ? 45 : 30)),
-        maxBufferSize: (isSport && !isOttrast) ? 8 * 1000 * 1000 : (isVod ? 60 * 1000 * 1000 : 30 * 1000 * 1000),
+        maxBufferLength: isSport ? (isOttrast ? 25 : 15) : (isVod ? 60 : (is4K ? 35 : 30)),
+        maxMaxBufferLength: isSport ? (isOttrast ? 45 : 25) : (isVod ? 120 : (is4K ? 60 : 60)),
+        maxBufferSize: (isSport && !isOttrast) ? 10 * 1000 * 1000 : (isVod ? 60 * 1000 * 1000 : 50 * 1000 * 1000),
         manifestLoadingMaxRetry: 6,
         levelLoadingMaxRetry: 6,
         fragLoadingMaxRetry: 6,
-        // a whole segment must fit: some streams have 10 s segments on slow servers, and cutting them off restarts them
-        manifestLoadingTimeOut: 4500,
-        fragLoadingTimeOut: 12000,
-        levelLoadingTimeOut: 4500,
+        manifestLoadingTimeOut: 5000,
+        fragLoadingTimeOut: 15000,
+        levelLoadingTimeOut: 5000,
         abrEwmaDefaultEstimate: 3500000,
         fragLoadingRetryDelay: 300,
         capLevelToPlayerSize: S.quality === 'auto'
@@ -4169,6 +4322,32 @@ function showOsd() {
     var items = [];
     if (foreign(ch)) items.push({ ico: '🎙️', label: 'כתוביות ודיבוב לעברית', stay: true, dot: colourOf('dub'), val: function () { return Dub.settings.enabled ? 'פועל' : 'כבוי'; },
       act: function () { toggleDub(); } });
+    if (state.prevChannel) {
+      items.push({
+        ico: '🔁',
+        label: 'חזרה לערוץ קודם (' + (state.prevChannel.name || '#' + state.prevChannel.number) + ')',
+        act: switchPreviousChannel
+      });
+    }
+    items.push({
+      ico: '🌙',
+      label: 'טיימר שינה וכיבוי',
+      stay: true,
+      val: function () {
+        var r = getSleepTimerRemaining();
+        return r > 0 ? r + ' דק׳' : 'כבוי';
+      },
+      act: openSleepTimerDialog
+    });
+    items.push({
+      ico: '🔊',
+      label: 'הגברת עוצמת שמע (Audio Boost)',
+      stay: true,
+      val: function () {
+        return Math.round(audioBoostLevel * 100) + '%';
+      },
+      act: cycleAudioBoost
+    });
     if (ch.isVod) {
       items.push({ ico: '⏩', label: 'דילוג 90 שניות קדימה', act: function () {
         var v = el.video, end = isFinite(v.duration) ? v.duration - 5 : Infinity;
@@ -4732,11 +4911,12 @@ function showOsd() {
 
   // ================================================================== remote profiles & hints
   var ACTIONS = [['menu', 'תפריט אפשרויות'], ['fav', 'מועדף (הוספה/הסרה)'], ['favorites', 'מעבר למועדפים'], ['dub', 'דיבוב לעברית'],
+    ['recall', 'חזרה לערוץ קודם (Q.View)'], ['sleep', 'טיימר שינה'],
     ['picture', 'מצב תמונה'], ['aspect', 'גודל תמונה'], ['drawer', 'רשימת ערוצים'], ['info', 'מידע ומקור'], ['search', 'חיפוש'],
     ['all', 'כל הערוצים'], ['recent', 'צפית לאחרונה'], ['settings', 'הגדרות'], ['none', 'ללא']];
   var REMOTES = [['auto', 'אוטומטי (לפי המכשיר)'], ['colors', 'שלט עם כפתורי צבע'], ['magic', 'LG Magic Remote'], ['android', 'שלט אנדרואיד / Google TV'],
     ['keyboard', 'מקלדת ועכבר'], ['touch', 'מסך מגע']];
-  var SHORT = { menu: 'אפשרויות', fav: 'מועדף', favorites: 'מועדפים', dub: 'דיבוב', picture: 'תמונה', aspect: 'גודל תמונה', drawer: 'ערוצים',
+  var SHORT = { menu: 'אפשרויות', fav: 'מועדף', favorites: 'מועדפים', dub: 'דיבוב', recall: 'ערוץ קודם', sleep: 'טיימר שינה', picture: 'תמונה', aspect: 'גודל תמונה', drawer: 'ערוצים',
     info: 'מידע', search: 'חיפוש', all: 'כל הערוצים', recent: 'אחרונים', settings: 'הגדרות' };
 
   function remoteProfile() {
@@ -4789,6 +4969,8 @@ function showOsd() {
     var ch = inPlayer ? state.playing : (TVUI ? atvCurrent() : state.list[state.gridIdx]);
     switch (action) {
       case 'menu': if (inPlayer) playerMenu(); else channelMenu(ch); break;
+      case 'recall': switchPreviousChannel(); break;
+      case 'sleep': openSleepTimerDialog(); break;
       case 'fav': if (ch) toggleFav(ch); break;
       case 'favorites': if (inPlayer) closePlayer(true); if (state.cats.some(function (c) { return c.id === 'FAVORITES'; })) { selectCategory('FAVORITES'); focusGrid(0); } else toast('אין עדיין מועדפים – הוסיפו ⭐ מתפריט האפשרויות'); break;
       case 'dub': if (inPlayer) toggleDub(); else if (ch && foreign(ch)) watchDubbed(ch); else toggleDub(); break;
@@ -6538,6 +6720,7 @@ function showOsd() {
       if (code === 70) { toggleFullscreen(); return; }       // F
       if (code === 68) { toggleDub(); return; }              // D
       if (code === 83) { openSettings(); return; }           // S
+      if (code === 81 || code === 10190 || code === 10199) { switchPreviousChannel(); return; } // Q / PRE-CH Recall
       if ((code === 71 || code === 458) && Guide) { Guide.open(); return; } // G / the remote's Guide key
       if (code === 79 || code === 93) { runAction('menu'); return; } // O / context-menu key
       if (code === 191 && !state.overlay) { if (e.preventDefault) e.preventDefault(); focusSearch(); return; } // '/'

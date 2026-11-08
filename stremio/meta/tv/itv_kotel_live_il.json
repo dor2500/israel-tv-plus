@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_kotel_live_il",
+    "type": "tv",
+    "name": "90. הכותל המערבי – שידור חי 24/7 HD",
+    "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/kotel_live_il.png",
+    "posterShape": "landscape",
+    "logo": "https://dor2500.github.io/israel-tv-plus/assets/logos/kotel_live_il.png",
+    "background": "https://dor2500.github.io/israel-tv-plus/assets/logos/kotel_live_il.png",
+    "description": "מצלמות הכותל המערבי בירושלים – שידור ישיר באיכות Full HD 24/7 מסביב לשעון\n\n📡 מקור השידור: cdn1.cast-tv.com\n⚠️ ממסר צד שלישי",
+    "genres": [
+      "מסורת וקהילה",
+      "ישראל"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "ישראל"
+  }
+}

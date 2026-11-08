@@ -214,16 +214,17 @@ private fun buildPlayer(context: Context, handleAudioFocus: Boolean = true): Exo
         .setDefaultRequestProperties(mapOf("Referer" to "https://stmify.com/"))
     val loadControl = DefaultLoadControl.Builder()
         .setBufferDurationsMs(
-            /* minBufferMs = */ 15_000,
+            /* minBufferMs = */ 20_000,
             /* maxBufferMs = */ 60_000,
-            /* bufferForPlaybackMs = */ 500,
-            /* bufferForPlaybackAfterRebufferMs = */ 2_500,
+            /* bufferForPlaybackMs = */ 1_000,
+            /* bufferForPlaybackAfterRebufferMs = */ 3_000,
         )
         .setPrioritizeTimeOverSizeThresholds(true)
         .build()
     val trackSelector = DefaultTrackSelector(context).apply {
         parameters = buildUponParameters()
-            .setForceHighestSupportedBitrate(true)
+            .setAllowVideoMixedMimeTypeAdaptiveness(true)
+            .setAllowVideoNonSeamlessAdaptiveness(true)
             .build()
     }
     val renderersFactory = DefaultRenderersFactory(context)

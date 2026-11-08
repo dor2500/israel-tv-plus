@@ -1,6 +1,6 @@
 name: "Israel TV+"
 description: "צפייה והאזנה לכלל ערוצי הטלוויזיה והרדיו הישראליים בשידור חי ישירות ב-Home Assistant"
-version: "4.8.73"
+version: "4.8.74"
 slug: "israel_tv_plus"
 init: false
 arch:

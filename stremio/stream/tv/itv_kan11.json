@@ -2,8 +2,8 @@
   "streams": [
     {
       "name": "ישראל TV+\n[FHD ראשי]",
-      "title": "כאן 11 FHD\n📡 כאן – תאגיד השידור (CDN רשמי)\n✅ שידור רשמי ישיר",
-      "url": "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan11/live.livx/playlist.m3u8",
+      "title": "כאן 11 FHD\n📡 כאן – תאגיד השידור (Redge Media CDN רשמי מהיר)\n✅ שידור רשמי ישיר",
+      "url": "https://r.il.cdn-redge.media/livehls/oil/kancdn-live/live/kan11/live.livx/playlist.m3u8",
       "behaviorHints": {
         "bingeGroup": "itv-live"
       }

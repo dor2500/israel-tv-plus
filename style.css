@@ -3677,45 +3677,120 @@ body.tvui .atv-epg-title { display: -webkit-box; -webkit-box-orient: vertical; -
   width: 100%; order: 1; font-size: 2.4rem; font-weight: 800; line-height: 1.2; }
 body.tvui .atv-epg-time { order: 2; }
 
-/* ------------------------------------------------------------------ Home Assistant Dashboard Widget Mode */
-.ha-mode, body.ha-mode {
-  background: transparent !important;
+/* ------------------------------------------------------------------ Home Assistant & Embedded Dashboard Mode */
+.ha-mode, body.ha-mode, body.embedded {
+  background: #0d1117 !important;
+  color: #fff !important;
 }
-body.ha-mode .topbar,
-body.ha-mode #topbar {
-  display: none !important;
-}
-body.ha-mode #navbar,
-body.ha-mode .navbar {
-  display: none !important;
-}
+
+body.ha-mode .hero,
+body.ha-mode #hero,
 body.ha-mode .pager,
-body.ha-mode #pager {
+body.ha-mode #pager,
+body.embedded .hero,
+body.embedded #hero,
+body.embedded .pager,
+body.embedded #pager {
   display: none !important;
 }
-body.ha-mode .home {
+
+body.ha-mode .topbar,
+body.embedded .topbar {
+  position: sticky !important;
+  top: 0 !important;
+  min-height: 4.4rem !important;
+  height: 4.4rem !important;
+  padding: 0.2rem 1rem !important;
+  background: rgba(13, 17, 23, 0.95) !important;
+  backdrop-filter: blur(12px) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  z-index: 50 !important;
+}
+
+body.ha-mode .brand-icon,
+body.embedded .brand-icon {
+  width: 2.6rem !important;
+  height: 2.6rem !important;
+  margin-left: 0.6rem !important;
+}
+
+body.ha-mode .brand-name,
+body.embedded .brand-name {
+  font-size: 1.6rem !important;
+}
+
+body.ha-mode .brand-sub,
+body.embedded .brand-sub {
+  font-size: 1rem !important;
+}
+
+body.ha-mode .home,
+body.embedded .home {
   padding-top: 0.6rem !important;
-  padding-bottom: 1.2rem !important;
+  padding-bottom: 7.5rem !important;
 }
-body.ha-mode .shelf {
-  margin-top: 1.2rem !important;
+
+body.ha-mode .shelf,
+body.embedded .shelf {
+  margin-top: 1rem !important;
 }
-body.ha-mode .shelf:first-child {
-  margin-top: 0.2rem !important;
+
+body.ha-mode .shelf-head,
+body.embedded .shelf-head {
+  padding: 0 1rem 0.4rem !important;
 }
-body.ha-mode .shelf-head {
-  padding: 0 1rem 0.5rem !important;
+
+body.ha-mode .shelf-head h3,
+body.embedded .shelf-head h3 {
+  font-size: 1.35rem !important;
 }
-body.ha-mode .shelf-head h3 {
-  font-size: 1.45rem !important;
-}
-body.ha-mode .shelf-row {
+
+body.ha-mode .shelf-row,
+body.embedded .shelf-row {
   padding: 0 0.8rem 0.4rem !important;
 }
-body.ha-mode .pcard {
-  width: 11.5rem !important;
-  margin-left: 0.7rem !important;
+
+body.ha-mode .pcard,
+body.embedded .pcard {
+  width: 11rem !important;
+  margin-left: 0.6rem !important;
 }
-body.ha-mode .shelf.wide .pcard {
-  width: 17rem !important;
+
+body.ha-mode .shelf.wide .pcard,
+body.embedded .shelf.wide .pcard {
+  width: 16rem !important;
+}
+
+body.ha-mode .player,
+body.embedded .player {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  z-index: 1000 !important;
+  background: #000 !important;
+}
+
+body.ha-mode .player video,
+body.embedded .player video {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+}
+
+/* Sleek custom scrollbars for embedded dashboard widgets */
+body.ha-mode::-webkit-scrollbar,
+body.ha-mode *::-webkit-scrollbar,
+body.embedded::-webkit-scrollbar,
+body.embedded *::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+body.ha-mode::-webkit-scrollbar-thumb,
+body.ha-mode *::-webkit-scrollbar-thumb,
+body.embedded::-webkit-scrollbar-thumb,
+body.embedded *::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
 }

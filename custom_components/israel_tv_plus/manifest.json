@@ -6,7 +6,7 @@
   "integration_type": "service",
   "iot_class": "cloud_polling",
   "issue_tracker": "https://github.com/dor2500/israel-tv-plus/issues",
-  "version": "4.8.73",
+  "version": "4.8.74",
   "dependencies": ["media_source"],
   "requirements": ["aiohttp>=3.8.0"]
 }

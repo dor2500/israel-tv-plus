@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_radios_russian_891",
+    "type": "tv",
+    "name": "535. רדיוס 100% רוסית 89.1 (Radios Russian)",
+    "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/radios_russian_891.png",
+    "posterShape": "landscape",
+    "logo": "https://dor2500.github.io/israel-tv-plus/assets/logos/radios_russian_891.png",
+    "background": "https://dor2500.github.io/israel-tv-plus/assets/logos/radios_russian_891.png",
+    "description": "ערוץ המוזיקה של רדיוס 100FM – מיטב הלהיטים ברוסית ללא הפסקה\n\n📡 מקור השידור: gb25.streamgates.net\n✅ שידור רשמי ישיר",
+    "genres": [
+      "רדיו ישראלי",
+      "ישראל"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "ישראל"
+  }
+}

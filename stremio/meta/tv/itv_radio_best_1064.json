@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_radio_best_1064",
+    "type": "tv",
+    "name": "533. הרדיו הטוב 106.4FM (The Best Radio)",
+    "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/radio_best_1064.png",
+    "posterShape": "landscape",
+    "logo": "https://dor2500.github.io/israel-tv-plus/assets/logos/radio_best_1064.png",
+    "background": "https://dor2500.github.io/israel-tv-plus/assets/logos/radio_best_1064.png",
+    "description": "תחנת הרדיו הטוב 106.4FM – שידורי מוזיקה ואקטואליה 24/7\n\n📡 מקור השידור: cdna.streamgates.net\n✅ שידור רשמי ישיר",
+    "genres": [
+      "רדיו ישראלי",
+      "ישראל"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "ישראל"
+  }
+}

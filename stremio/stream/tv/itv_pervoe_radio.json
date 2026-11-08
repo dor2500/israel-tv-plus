@@ -1,0 +1,12 @@
+{
+  "streams": [
+    {
+      "name": "ישראל TV+\n[FHD ראשי]",
+      "title": "הרדיו הראשון 89.1FM (Первое радио)\n📡 cdn.cybercdn.live\n✅ שידור רשמי ישיר",
+      "url": "https://cdn.cybercdn.live/Pervoia/Audio/icecast.audio",
+      "behaviorHints": {
+        "bingeGroup": "itv-live"
+      }
+    }
+  ]
+}

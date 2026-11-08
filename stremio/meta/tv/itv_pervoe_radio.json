@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_pervoe_radio",
+    "type": "tv",
+    "name": "534. הרדיו הראשון 89.1FM (Первое радио)",
+    "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/pervoe_radio.png",
+    "posterShape": "landscape",
+    "logo": "https://dor2500.github.io/israel-tv-plus/assets/logos/pervoe_radio.png",
+    "background": "https://dor2500.github.io/israel-tv-plus/assets/logos/pervoe_radio.png",
+    "description": "הרדיו הראשון 89.1FM בישראל – מוזיקה, חדשות, תרבות ובידור\n\n📡 מקור השידור: cdn.cybercdn.live\n✅ שידור רשמי ישיר",
+    "genres": [
+      "רדיו ישראלי",
+      "ישראל"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "ישראל"
+  }
+}
