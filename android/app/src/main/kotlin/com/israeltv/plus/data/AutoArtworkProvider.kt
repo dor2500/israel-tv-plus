@@ -32,6 +32,10 @@ class AutoArtworkProvider : ContentProvider(), ContentProvider.PipeDataWriter<In
 
     override fun onCreate(): Boolean = true
 
+    override fun openFile(uri: Uri, mode: String): ParcelFileDescriptor? {
+        return openAssetFile(uri, mode)?.parcelFileDescriptor
+    }
+
     override fun openAssetFile(uri: Uri, mode: String): AssetFileDescriptor? {
         val filename = uri.lastPathSegment ?: throw FileNotFoundException("Empty URI: $uri")
         val ctx = context ?: throw FileNotFoundException("No context")

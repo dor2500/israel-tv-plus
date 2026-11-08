@@ -1,12 +1,17 @@
 package com.israeltv.plus
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.content.pm.ServiceInfo
 import android.hardware.display.DisplayManager
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.view.Display
+import androidx.core.app.NotificationCompat
 import androidx.media3.common.AudioAttributes
 import androidx.media3.common.C
 import androidx.media3.common.MediaItem
@@ -165,6 +170,33 @@ class AutoService : MediaLibraryService() {
     }
 
     override fun onGetSession(controllerInfo: MediaSession.ControllerInfo): MediaLibrarySession? = session
+
+    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val nm = getSystemService(Context.NOTIFICATION_SERVICE) as? NotificationManager
+            if (nm != null && nm.getNotificationChannel("car_play") == null) {
+                val channel = NotificationChannel("car_play", "שידור ברכב", NotificationManager.IMPORTANCE_LOW)
+                nm.createNotificationChannel(channel)
+            }
+            val notif = NotificationCompat.Builder(this, "car_play")
+                .setSmallIcon(R.drawable.ic_player_play)
+                .setContentTitle("ישראל TV+")
+                .setContentText("מחובר לרכב (Android Auto)")
+                .setSilent(true)
+                .setOngoing(true)
+                .build()
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                runCatching {
+                    startForeground(101, notif, ServiceInfo.FOREGROUND_SERVICE_TYPE_MEDIA_PLAYBACK)
+                }
+            } else {
+                runCatching {
+                    startForeground(101, notif)
+                }
+            }
+        }
+        return super.onStartCommand(intent, flags, startId)
+    }
 
     override fun onTaskRemoved(rootIntent: Intent?) {
         if (session?.player?.playWhenReady != true) stopSelf()
