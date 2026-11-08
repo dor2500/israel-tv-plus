@@ -1,0 +1,19 @@
+play_channel:
+  name: Play Channel
+  description: Play an Israeli TV channel or radio station on one or more media players.
+  fields:
+    entity_id:
+      name: Target Media Player
+      description: The media player entity (TV, Chromecast, smart speaker, etc.) to stream to.
+      required: true
+      selector:
+        entity:
+          domain: media_player
+    channel:
+      name: Channel
+      description: Channel name, number, or ID (e.g. "12", "11", "ספורט 1", "גלגלצ", "kan11", "keshet12").
+      required: true
+      example: "12"
+      selector:
+        text:
+

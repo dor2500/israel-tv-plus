@@ -1,0 +1,106 @@
+[
+  {
+    "id": "vod_cramel",
+    "pid": 11204,
+    "title": "כראמל",
+    "originalTitle": "Cramel",
+    "year": "2022-2024",
+    "rating": "9.1",
+    "genres": [
+      "פנטזיה",
+      "ילדים ונוער",
+      "הרפתקאות",
+      "כאן 11"
+    ],
+    "desc": "שלושה אחים יתומים מאומצים על ידי גבירה עשירה ומקבלים בירושה חתול מיוחד ומדבר בעל יכולות קסומות בשם כראמל.",
+    "poster": "assets/vod/cramel.jpg",
+    "backdrop": "assets/vod/cramel.jpg",
+    "episodes": [
+      {
+        "id": "vod_cramel_ep_1000631",
+        "title": "פרק 1 - החלום",
+        "duration": "פרק מלא",
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1948788/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/5r1pz40c/%D7%9B%D7%A8%D7%90%D7%9E%D7%9C-5-%D7%A4%D7%A8%D7%A7-1.jpg?width=480"
+      },
+      {
+        "id": "vod_cramel_ep_1000635",
+        "title": "פרק 2 - האיש בסרבל האפור",
+        "duration": "פרק מלא",
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1948755/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/5jxffks2/%D7%9B%D7%A8%D7%90%D7%9E%D7%9C-5-%D7%A4%D7%A8%D7%A7-2.jpg?width=480"
+      },
+      {
+        "id": "vod_cramel_ep_1000643",
+        "title": "פרק 3 - גול החדש",
+        "duration": "פרק מלא",
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1948787/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/drkfoz3h/%D7%9B%D7%A8%D7%90%D7%9E%D7%9C-5-%D7%A4%D7%A8%D7%A7-3.jpg?width=480"
+      },
+      {
+        "id": "vod_cramel_ep_1000655",
+        "title": "פרק 4 - השליטה",
+        "duration": "פרק מלא",
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1961752/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/2gujxdv3/%D7%9B%D7%A8%D7%90%D7%9E%D7%9C-5-%D7%A4%D7%A8%D7%A7-4.jpg?width=480"
+      },
+      {
+        "id": "vod_cramel_ep_1002501",
+        "title": "פרק 5 - דולי",
+        "duration": "פרק מלא",
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1961764/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/xjml4bmu/%D7%9B%D7%A8%D7%90%D7%9E%D7%9C-5-%D7%A4%D7%A8%D7%A7-5.jpg?width=480"
+      },
+      {
+        "id": "vod_cramel_ep_1002511",
+        "title": "פרק 6 - האחד",
+        "duration": "פרק מלא",
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1975056/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/z2sponti/%D7%9B%D7%A8%D7%90%D7%9E%D7%9C-5-%D7%A4%D7%A8%D7%A7-6.jpg?width=480"
+      },
+      {
+        "id": "vod_cramel_ep_1001867",
+        "title": "פרק 7 - מוצאים את כראמל",
+        "duration": "פרק מלא",
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2169704/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/y45hjsf2/%D7%9B%D7%A8%D7%90%D7%9E%D7%9C-5-%D7%A4%D7%A8%D7%A7-7.jpg?width=480"
+      },
+      {
+        "id": "vod_cramel_ep_995457",
+        "title": "פרק 8 - ההפנוט",
+        "duration": "פרק מלא",
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2158206/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/q23hba1k/%D7%9B%D7%A8%D7%90%D7%9E%D7%9C-5-%D7%A4%D7%A8%D7%A7-8.jpg?width=480"
+      },
+      {
+        "id": "vod_cramel_ep_1006477",
+        "title": "פרק 9 - החיים הם לא עוגת גבינה",
+        "duration": "פרק מלא",
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2044429/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/jwhnjgty/%D7%9B%D7%A8%D7%90%D7%9E%D7%9C-5-%D7%A4%D7%A8%D7%A7-9.jpg?width=480"
+      },
+      {
+        "id": "vod_cramel_ep_1006483",
+        "title": "פרק 10 - מלחמת העולמות",
+        "duration": "פרק מלא",
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2070392/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/5pmh5mwb/%D7%9B%D7%A8%D7%90%D7%9E%D7%9C-5-%D7%A4%D7%A8%D7%A7-10.jpg?width=480"
+      },
+      {
+        "id": "vod_cramel_ep_1006493",
+        "title": "פרק 11- מאגיה פיניטו",
+        "duration": "פרק מלא",
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2070362/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/u3wbdbxp/%D7%9B%D7%A8%D7%90%D7%9E%D7%9C-5-%D7%A4%D7%A8%D7%A7-11.jpg?width=480"
+      },
+      {
+        "id": "vod_cramel_ep_993153",
+        "title": "פרק 12 - עוזבים את הטירה",
+        "duration": "פרק מלא",
+        "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2121358/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4",
+        "thumb": "https://mobapi.kan.org.il/media/1tepfews/%D7%9B%D7%A8%D7%90%D7%9E%D7%9C-5-%D7%A4%D7%A8%D7%A7-12.jpg?width=480"
+      }
+    ],
+    "totalEpisodes": 123
+  }
+]

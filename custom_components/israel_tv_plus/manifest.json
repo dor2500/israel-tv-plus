@@ -1,0 +1,13 @@
+{
+  "domain": "israel_tv_plus",
+  "name": "Israel TV+",
+  "codeowners": ["@dor2500"],
+  "documentation": "https://github.com/dor2500/israel-tv-plus",
+  "integration_type": "service",
+  "iot_class": "cloud_polling",
+  "issue_tracker": "https://github.com/dor2500/israel-tv-plus/issues",
+  "version": "4.8.72",
+  "dependencies": ["media_source"],
+  "requirements": ["aiohttp>=3.8.0"]
+}
+

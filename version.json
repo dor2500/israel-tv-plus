@@ -1,24 +1,31 @@
 {
-  "version": "4.8.71",
-  "code": 202611081330,
-  "app": 40871,
+  "version": "4.8.72",
+  "code": 202611081717,
+  "app": 40872,
   "shell": 3,
   "date": "2026-11-08",
   "notes": [
-    "פתרון מלא לחוויית השימוש ב-Android Auto וברכב:",
-    "אספקת לוגואים ואייקונים מיידית (100% תמונות תקינות ברכב):",
-    "הוספת ספק תוכן ייעודי AutoArtworkProvider (content://com.israeltv.plus.artwork/) להזרמת כלל הלוגואים והתמונות ישירות מנכסי ה-APK למסך הרכב.",
-    "אפס תלות בחיבור אינטרנט או בהגבלות טעינת רשת של פרוטוקול Google Gearhead / Android Auto – כל האייקונים של ערוצי הטלוויזיה, תחנות הרדיו ותיקיות הניווט מוצגים מיידית וללא אייקונים חסרים או ריקים.",
-    "המרת כל הלוגואים שנותרו בפורמט SVG לקובצי PNG מקומיים קריאים על ידי מפענחי הרכב.",
-    "פתרון מוחלט לתקיעות ומיקרו-השהיות (Micro-stutters) בזמן נהיגה:",
-    "הגדרת מנגנון בקרת אגירה ייעודי לנסיעה (DefaultLoadControl מותאם לדרכים): הפחתת זמן ההמתנה לטעינה ראשונית ל-1.5 שניות לתגובה מיידית, חלון אגירה יציב של 15-30 שניות העמיד בפני מעברי אנטנות סלולריות (Cell Handover), והתאוששות מהירה ב-2.5 שניות בלבד.",
-    "הגדרת DefaultHttpDataSource עם Timeouts מותאמים (8 שניות לחיבור ו-10 שניות לקריאה) ומניעת תקיעת הנגן במקרה של ניתוקים רגעיים.",
-    "מניעת איפוס והרס מחדש של משטח הווידאו (Presentation) בעת שינויים קלים ברזולוציה או במצב תאורה ברכב (onDisplayChanged).",
-    "מבנה קטגוריות ותפריטים מהיר, בטוח וחלק ברכב:",
-    "חלוקה חכמה לקטגוריות נגישות וממוקדות: ערוצים מועדפים ⭐, ערוצי טלוויזיה מובילים (11, 12, 13, 14, 9, 24...) 📺, ערוצי ספורט חיים (ספורט 1-6, 5SPORT, ONE) ⚽, תחנות רדיו מובילות (גלגלצ, גלצ, כאן ב, 103FM...) 📻, סדרות וסרטים VOD 🎬, ותפריטי קטגוריות מלאים.",
-    "החלפת רשימת הענק (270 ערוצים) שהעמיסה על מעבדי הרכבים וגרמה לאיטיות ולמגבלת גלילה בנהיגה, במערכת ניווט מהירה הנטענת בזיכרון המקומי (cachedData) בפחות ממילישנייה אחת."
+    "השקת תמיכה מלאה ורשמית ב-Home Assistant:",
+    "אינטגרציה ייעודית מלאה (custom_components/israel_tv_plus) התומכת ב-HACS ובהתקנה ידנית.",
+    "תמיכה מלאה ב-Media Browser (דפדפן המדיה): גלישה נוחה בכל קטגוריות הטלוויזיה, הספורט, הילדים והרדיו ושידור בלחיצה אחת לכל טלוויזיה, Chromecast, רמקול חכם או מסך בבית.",
+    "שירות אוטומציות israel_tv_plus.play_channel: מאפשר הפעלת ערוצים על נגני מדיה לפי שם, מספר ערוץ או מזהה (לדוגמה: \"12\", \"ספורט 1\", \"גלגלצ\").",
+    "מודול כרטיס Lovelace מותאם אישית (israel-tv-card.js) לדשבורד של Home Assistant עם לוגואים ובחירת נגן יעד.",
+    "הרחבת Add-on רשמית ל-Home Assistant Supervisor עם תמיכה ב-Ingress ישירות בסרגל הצד.",
+    "חבילת הפצה ייעודית IsraelTVPlus-homeassistant.zip להורדה ישירה מתוך ה-Release."
   ],
   "history": [
+    {
+      "version": "4.8.72",
+      "notes": [
+        "השקת תמיכה מלאה ורשמית ב-Home Assistant:",
+        "אינטגרציה ייעודית מלאה (custom_components/israel_tv_plus) התומכת ב-HACS ובהתקנה ידנית.",
+        "תמיכה מלאה ב-Media Browser (דפדפן המדיה): גלישה נוחה בכל קטגוריות הטלוויזיה, הספורט, הילדים והרדיו ושידור בלחיצה אחת לכל טלוויזיה, Chromecast, רמקול חכם או מסך בבית.",
+        "שירות אוטומציות israel_tv_plus.play_channel: מאפשר הפעלת ערוצים על נגני מדיה לפי שם, מספר ערוץ או מזהה (לדוגמה: \"12\", \"ספורט 1\", \"גלגלצ\").",
+        "מודול כרטיס Lovelace מותאם אישית (israel-tv-card.js) לדשבורד של Home Assistant עם לוגואים ובחירת נגן יעד.",
+        "הרחבת Add-on רשמית ל-Home Assistant Supervisor עם תמיכה ב-Ingress ישירות בסרגל הצד.",
+        "חבילת הפצה ייעודית IsraelTVPlus-homeassistant.zip להורדה ישירה מתוך ה-Release."
+      ]
+    },
     {
       "version": "4.8.71",
       "notes": [
@@ -242,53 +249,44 @@
         "טייזן: תיקון קובץ התצורה שנפגע בעדכוני הגרסה.",
         "דילוג על פתיח לא מחזיר יותר אחורה, ואיכות השידור מוצגת בעברית."
       ]
-    },
-    {
-      "version": "4.8.46",
-      "notes": [
-        "שדרוג מקיף של ממשק ה-VOD בטלוויזיה – עיצוב קולנועי רחב (Cinema Mode) עם פוסטר ענק, תגיות איכות, זיהוי עונות וכרטיסיות פרקים ב-2 טורים עם תמונות 16:9 וזמני צפייה.",
-        "ניווט שלט D-Pad מלא ונגיש ב-VOD – מעבר חלק עם חיצי השלט בין עונות, פרקים וכפתור צפייה/הקלטה ישיר ל-Drive בלחיצת כפתור OK.",
-        "כרטיסי סדרות VOD במדפי הטלוויזיה מציגים כעת פוסטרים מלאים ללא שוליים שחורים (Full Cover Art) ותגית VOD כחולה בולטת.",
-        "עיצוב פרימיום למסך ההגדרות בטלוויזיה – חלונית זכוכית יוקרתית (Glassmorphic TV Panel), סרגל קטגוריות מובחן, שורות מוגדלות וקריאות עם הבלטת פוקוס שלט כחולה וברורה."
-      ]
     }
   ],
   "native": {
     "android": {
-      "version": "4.8.71",
-      "app": 40871,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.71/IsraelTVPlus-android.apk"
+      "version": "4.8.72",
+      "app": 40872,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.72/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "4.8.71",
-      "app": 40871,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.71/IsraelTVPlus-windows-setup.exe"
+      "version": "4.8.72",
+      "app": 40872,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.72/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "4.8.71",
-      "app": 40871,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.71/com.israeltv.plus_all.ipk",
+      "version": "4.8.72",
+      "app": 40872,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.72/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "4.8.71",
-      "app": 40871,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.71/IsraelTVPlus-tizen-project.zip"
+      "version": "4.8.72",
+      "app": 40872,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.72/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "4.8.71",
-      "app": 40871,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.71/IsraelTVPlus-macos-arm64.zip"
+      "version": "4.8.72",
+      "app": 40872,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.72/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "4.8.71",
-      "app": 40871,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.71/IsraelTVPlus-linux-x64.zip"
+      "version": "4.8.72",
+      "app": 40872,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.72/IsraelTVPlus-linux-x64.zip"
     },
     "wear": {
-      "version": "4.8.71",
-      "app": 1040871,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.71/IsraelTVPlus-wearos.apk"
+      "version": "4.8.72",
+      "app": 1040872,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.72/IsraelTVPlus-wearos.apk"
     }
   }
 }

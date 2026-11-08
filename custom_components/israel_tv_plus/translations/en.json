@@ -1,0 +1,30 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Israel TV+",
+        "description": "Add Israel TV+ to Home Assistant to browse and stream Israeli live TV, sports, kids, and radio directly on your media players."
+      }
+    },
+    "abort": {
+      "single_instance_allowed": "Only a single instance of Israel TV+ is necessary."
+    }
+  },
+  "services": {
+    "play_channel": {
+      "name": "Play Channel",
+      "description": "Play an Israeli TV channel or radio station on one or more media players.",
+      "fields": {
+        "entity_id": {
+          "name": "Target Media Player",
+          "description": "The media player entity to stream to."
+        },
+        "channel": {
+          "name": "Channel",
+          "description": "Channel name, number, or ID (e.g. 12, 11, ספורט 1, גלגלצ)."
+        }
+      }
+    }
+  }
+}
+
