@@ -38,6 +38,16 @@
     (new URLSearchParams(location.search).get('tv') === '1');
   var TOUCH = !IS_TV && ('ontouchstart' in window) && window.matchMedia && matchMedia('(pointer: coarse)').matches;
   var PHONE = false;            // phone layout (Nuvio home + navigation bar), set by applyScale()
+  var IS_HA = (new URLSearchParams(location.search).get('ha') === '1') ||
+    (new URLSearchParams(location.search).get('widget') === '1') ||
+    (window.self !== window.top && (location.search.indexOf('ha') !== -1 || (document.referrer && document.referrer.indexOf(':8123') !== -1)));
+  if (IS_HA) {
+    try {
+      document.documentElement.classList.add('ha-mode');
+      if (document.body) document.body.classList.add('ha-mode');
+      else window.addEventListener('DOMContentLoaded', function () { document.body.classList.add('ha-mode'); });
+    } catch (e) {}
+  }
   var I = window.ITV_ICON || function () { return ''; };
   var NATIVE = window.AndroidApp || null;
   function native(fn) { try { return NATIVE && NATIVE[fn] ? NATIVE[fn].apply(NATIVE, [].slice.call(arguments, 1)) : undefined; } catch (e) { return undefined; } }
@@ -1729,6 +1739,7 @@
   function buildHome() {
     if (!PHONE || !el.home) return;
     homeDirty = false;
+    if (IS_HA && el.pager) el.pager.style.display = 'none';
     // ---- hero pager
     pagerItems = featured();
     el.pagerTrack.innerHTML = pagerItems.map(function (ch, i) {

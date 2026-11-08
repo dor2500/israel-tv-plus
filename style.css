@@ -3676,3 +3676,46 @@ body:not(.phone) #settings .settings-main { flex: 1 1 0; min-width: 0; height: 1
 body.tvui .atv-epg-title { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-clamp: 2; overflow: hidden;
   width: 100%; order: 1; font-size: 2.4rem; font-weight: 800; line-height: 1.2; }
 body.tvui .atv-epg-time { order: 2; }
+
+/* ------------------------------------------------------------------ Home Assistant Dashboard Widget Mode */
+.ha-mode, body.ha-mode {
+  background: transparent !important;
+}
+body.ha-mode .topbar,
+body.ha-mode #topbar {
+  display: none !important;
+}
+body.ha-mode #navbar,
+body.ha-mode .navbar {
+  display: none !important;
+}
+body.ha-mode .pager,
+body.ha-mode #pager {
+  display: none !important;
+}
+body.ha-mode .home {
+  padding-top: 0.6rem !important;
+  padding-bottom: 1.2rem !important;
+}
+body.ha-mode .shelf {
+  margin-top: 1.2rem !important;
+}
+body.ha-mode .shelf:first-child {
+  margin-top: 0.2rem !important;
+}
+body.ha-mode .shelf-head {
+  padding: 0 1rem 0.5rem !important;
+}
+body.ha-mode .shelf-head h3 {
+  font-size: 1.45rem !important;
+}
+body.ha-mode .shelf-row {
+  padding: 0 0.8rem 0.4rem !important;
+}
+body.ha-mode .pcard {
+  width: 11.5rem !important;
+  margin-left: 0.7rem !important;
+}
+body.ha-mode .shelf.wide .pcard {
+  width: 17rem !important;
+}
