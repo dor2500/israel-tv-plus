@@ -29,13 +29,65 @@ _LOGGER = logging.getLogger(__name__)
 PLATFORMS = ["media_source"]
 
 
-async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> Boolean:
+async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Set up Israel TV+ from a config entry."""
     manager = IsraelTvDataManager(hass)
     await manager.async_ensure_data()
     hass.data.setdefault(DOMAIN, manager)
 
     await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
+
+    # 1. Register static path for Lovelace card
+    www_dir = os.path.join(os.path.dirname(__file__), "www")
+    os.makedirs(www_dir, exist_ok=True)
+    card_file = os.path.join(www_dir, "israel-tv-card.js")
+    if not os.path.isfile(card_file):
+        card_src = os.path.join(
+            os.path.dirname(os.path.dirname(os.path.dirname(__file__))),
+            "platforms", "homeassistant", "israel-tv-card.js"
+        )
+        if os.path.isfile(card_src):
+            try:
+                import shutil
+                shutil.copy2(card_src, card_file)
+            except Exception:
+                pass
+
+    try:
+        hass.http.register_static_path(
+            "/israel_tv_plus_card",
+            www_dir,
+            cache_headers=False,
+        )
+    except Exception as err:
+        _LOGGER.debug("Static path registration: %s", err)
+
+    # 2. Automatically register Lovelace resource if available
+    try:
+        lovelace_resources = getattr(hass.data.get("lovelace"), "resources", None)
+        if lovelace_resources and hasattr(lovelace_resources, "async_get_items"):
+            items = lovelace_resources.async_get_items()
+            card_url = "/israel_tv_plus_card/israel-tv-card.js"
+            if not any(item.get("url") == card_url for item in items):
+                await lovelace_resources.async_create_item({"res_type": "module", "url": card_url})
+                _LOGGER.info("Successfully auto-registered Israel TV+ card resource")
+    except Exception as err:
+        _LOGGER.debug("Could not auto-register Lovelace resource: %s", err)
+
+    # 3. Add to Home Screen & Sidebar Navigation
+    if "frontend" in hass.config.components:
+        try:
+            hass.components.frontend.async_register_built_in_panel(
+                component_name="iframe",
+                sidebar_title="ישראל TV+",
+                sidebar_icon="mdi:television-classic",
+                frontend_url_path="israel-tv-plus",
+                config={"url": "https://dor2500.github.io/israel-tv-plus/"},
+                require_admin=False,
+            )
+            _LOGGER.info("Successfully added Israel TV+ to Home Assistant sidebar panel")
+        except Exception as err:
+            _LOGGER.debug("Could not register sidebar panel: %s", err)
 
     async def async_handle_play_channel(call: ServiceCall) -> None:
         """Handle service call to play a channel by ID, number, or name."""
@@ -91,6 +143,11 @@ async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     if unload_ok:
         hass.data.pop(DOMAIN, None)
         hass.services.async_remove(DOMAIN, "play_channel")
+        if "frontend" in hass.config.components:
+            try:
+                hass.components.frontend.async_remove_panel("israel-tv-plus")
+            except Exception:
+                pass
     return unload_ok
 
 
