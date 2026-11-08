@@ -6,16 +6,32 @@
 
 ---
 
-## 🚀 אפשרויות התקנה
+## ⚡ התקנה ישירה בלחיצה אחת (My Home Assistant)
 
-### אפשרות 1: התקנה דרך HACS (מומלץ)
+לחצו על הכפתור למטה כדי לפתוח ישירות את ה-Home Assistant שלכם ולהתקין:
+
+[![הוסף ל-HACS בלחיצה אחת](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=dor2500&repository=israel-tv-plus&category=integration)
+
+לאחר ההורדה והפעלה מחדש של Home Assistant, לחצו להוספת האינטגרציה:
+
+[![הפעל שילוב בלחיצה אחת](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start/?domain=israel_tv_plus)
+
+להתקנת תוסף ה-Add-on (הרחבה לסרגל הצד):
+
+[![הוסף חנות הרחבות בלחיצה אחת](https://my.home-assistant.io/badges/supervisor_add_addon_repository.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2Fdor2500%2Fisrael-tv-plus)
+
+---
+
+## 🚀 אפשרויות התקנה נוספות
+
+### אפשרות 1: התקנה דרך HACS (ידני)
 1. פתח את **HACS** ב-Home Assistant.
 2. לחץ על **Integrations** -> שלוש נקודות בפינה -> **Custom repositories**.
 3. הוסף את הקישור: `https://github.com/dor2500/israel-tv-plus`
 4. בחר בקטגוריה: **Integration** ולחץ **Add**.
 5. חפש את **Israel TV+** ולחץ **Download**.
 6. הפעל מחדש את Home Assistant.
-7. עבור אל: **הגדרות (Settings) -> מכשירים ושירותים (Devices & Services) -> הוסף שילוב (Add Integration)** -> חפש **Israel TV+** ואשר.
+7. עבור אל: **הגדרות (Settings) -> מכשירים ושירותים (Devices & Services) -> הוסף שילוב (Add Integration)** -> חפש **Israel TV+** ואשר (או השתמש בכפתור הלחיצה למעלה).
 
 ---
 

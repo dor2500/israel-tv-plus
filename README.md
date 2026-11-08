@@ -37,8 +37,24 @@ irm https://dor2500.github.io/israel-tv-plus/install.ps1 | iex
 | 🎬 **Kodi** (19 ומעלה) | [תוסף להתקנה מ-zip](https://github.com/dor2500/israel-tv-plus/releases/latest) | Add-ons ← Install from zip file |
 | 📋 **נגני IPTV** (Kodi, VLC, TiviMate...) | [playlist.m3u](https://dor2500.github.io/israel-tv-plus/playlist.m3u) | גם [ישראל בלבד](https://dor2500.github.io/israel-tv-plus/playlist-israel.m3u) · [טלוויזיה](https://dor2500.github.io/israel-tv-plus/playlist-tv.m3u) · [רדיו](https://dor2500.github.io/israel-tv-plus/radio.m3u) |
 | 🍎 **iPhone / iPad** | [האתר](https://dor2500.github.io/israel-tv-plus/) | Safari ← שיתוף ← הוספה למסך הבית |
+| 🏠 **Home Assistant** | [התקנה ישירה בלחיצה אחת](https://my.home-assistant.io/redirect/hacs_repository/?owner=dor2500&repository=israel-tv-plus&category=integration) · [קובץ ZIP](https://github.com/dor2500/israel-tv-plus/releases/latest/download/IsraelTVPlus-homeassistant.zip) · [מדריך מלא](platforms/homeassistant/README.md) | תמיכה מלאה ב-HACS, דפדפן המדיה Media Browser וכרטיס Lovelace |
 
 > ערוצים שמשדרים ב-HTTP: באפליקציות הם פועלים תמיד. בדפדפן הם עוברים דרך שרת ממסר HTTPS קטן (`relay/` – Cloudflare Worker) כשהוא פעיל; בלעדיו הם מסומנים 📲.
+
+## 🏠 התקנה מהירה ב-Home Assistant (בלחיצה אחת)
+
+הוסיפו את ישראל TV+ ישירות למערכת Home Assistant שלכם בלחיצה אחת:
+
+[![הוסף ל-HACS בלחיצה אחת](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=dor2500&repository=israel-tv-plus&category=integration)
+
+לאחר מכן הפעילו את השילוב ישירות ב-Home Assistant:
+
+[![הפעל שילוב בלחיצה אחת](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start/?domain=israel_tv_plus)
+
+או התקינו כתוסף לסרגל הצד (Add-on):
+
+[![הוסף מאגר הרחבות בלחיצה אחת](https://my.home-assistant.io/badges/supervisor_add_addon_repository.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2Fdor2500%2Fisrael-tv-plus)
+
 
 
 ## 📡 מקורות שידור, שרתי CDN וארכיטקטורת שידור (Broadcast Sources & Infrastructure)
