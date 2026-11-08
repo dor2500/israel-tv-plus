@@ -1333,7 +1333,7 @@
     "title": "ערוץ הופ! (Hop!) לגיל הרך וילדים בעברית HD",
     "category": "ילדים ונוער (בעברית)",
     "categoryEn": "kids_he",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12244/index.m3u8",
+    "url": "http://stream.mcquack.net/44/index.m3u8",
     "logo": "assets/logos/hop.png",
     "badge": "HD",
     "desc": "ערוץ הופ! – לגדול בידיים טובות: יובל המבולבל, דוד חיים, מטוסי על, סמי הכבאי ותוכניות לגיל הרך",
@@ -1349,13 +1349,10 @@
     },
     "countryHe": "ישראל",
     "fallbackUrls": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2338/index.m3u8",
-      "http://stream.mcquack.net/44/index.m3u8"
+      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12244/index.m3u8"
     ],
     "iptv": "HopChannel.il",
     "backups": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2338/index.m3u8",
-      "http://stream.mcquack.net/44/index.m3u8",
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12244/index.m3u8"
     ]
   },
@@ -1743,12 +1740,10 @@
       "web": "❌ רק באפליקציה (HTTP)"
     },
     "fallbackUrls": [
-      "http://45.156.223.202/iptv/QAP2YS2594ZQS3/32146/index.m3u8",
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/free_movies_family/live.livx/playlist.m3u8"
+      "http://45.156.223.202/iptv/QAP2YS2594ZQS3/32146/index.m3u8"
     ],
     "backups": [
-      "http://45.156.223.202/iptv/QAP2YS2594ZQS3/32146/index.m3u8",
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/free_movies_family/live.livx/playlist.m3u8"
+      "http://45.156.223.202/iptv/QAP2YS2594ZQS3/32146/index.m3u8"
     ]
   },
   {
@@ -1774,32 +1769,28 @@
     "backups": []
   },
   {
-    "id": "hot_buzz_il",
-    "name": "ערוץ HOT באזז לנוער HD (HOT Buzz)",
-    "title": "ערוץ הצעירים והנוער HOT Buzz HD",
+    "id": "freetv_kids_family_il",
+    "name": "ערוץ סרטי ילדים ומשפחה HD",
+    "title": "ערוץ סרטי ילדים ומשפחה HD (FreeTV Kids)",
     "category": "ילדים ונוער (בעברית)",
     "categoryEn": "kids_he",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32139/index.m3u8",
-    "logo": "assets/logos/hot_buzz.png",
+    "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/free_movies_family/live.livx/playlist.m3u8",
+    "logo": "assets/logos/freetv_kids_family_il.png",
     "badge": "HD",
     "lang": "he",
     "country": "IL",
     "countryHe": "ישראל",
-    "desc": "ערוץ HOT באזז – כוכבי רשת, סדרות נוער, מוזיקה, גיימינג וטרנדים לצעירים",
+    "desc": "ערוץ סרטי ילדים, אנימציה ומשפחה 24/7 מדובב לעברית – מיטב סרטי הילדים והקולנוע לכל המשפחה",
     "number": 60,
     "src": {
-      "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
+      "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
       "kind": "official",
-      "host": "b84203c4.ottrast.com",
+      "host": "d1zqtf09wb8nt5.cloudfront.net",
       "found": "רשימה ידנית (גרסה קודמת)",
-      "web": "❌ רק באפליקציה (HTTP)"
+      "web": "✅"
     },
-    "fallbackUrls": [
-      "http://45.156.223.202/iptv/QAP2YS2594ZQS3/32139/index.m3u8"
-    ],
-    "backups": [
-      "http://45.156.223.202/iptv/QAP2YS2594ZQS3/32139/index.m3u8"
-    ]
+    "fallbackUrls": [],
+    "backups": []
   },
   {
     "id": "fomo_tv",
@@ -10034,28 +10025,6 @@
     "backups": []
   },
   {
-    "id": "freetv_kids_family_il",
-    "name": "FreeTV סרטי ילדים ומשפחה HD",
-    "number": 385,
-    "category": "ילדים ונוער (בעברית)",
-    "categoryEn": "kids_he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "lang": "he",
-    "logo": "assets/logos/freetv_kids_family_il.png",
-    "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/free_movies_family/live.livx/playlist.m3u8",
-    "src": {
-      "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
-      "kind": "official",
-      "host": "d1zqtf09wb8nt5.cloudfront.net",
-      "found": "רשימה ידנית (גרסה קודמת)",
-      "web": "✅"
-    },
-    "desc": "ערוץ סרטי ילדים, אנימציה ומשפחה 24/7 מדובב לעברית.",
-    "webOk": true,
-    "backups": []
-  },
-  {
     "id": "yes_movies_kids_plus_il",
     "name": "yes קולנוע ילדים פלוס HD",
     "number": 386,
@@ -11914,37 +11883,6 @@
     "quality": "HD",
     "resolution": "1080p",
     "desc": "שידורי כאן חינוכית לילדים ולנוער – סדרות איכותיות ומקוריות לכל המשפחה.",
-    "backups": [],
-    "src": {
-      "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
-      "kind": "restream",
-      "host": "stream.mcquack.net",
-      "found": "רשימה ידנית (גרסה קודמת)",
-      "web": "❌ רק באפליקציה (HTTP)"
-    }
-  },
-  {
-    "id": "hop_kids_mc",
-    "name": "ערוץ הופ! ילדים HD (Hop! Kids)",
-    "title": "ערוץ הופ! לילדים ופעוטות – תוכניות בעברית",
-    "category": "ילדים ונוער (בעברית)",
-    "categoryEn": "kids",
-    "logo": "assets/logos/hop_kids_israel.png",
-    "url": "http://stream.mcquack.net/44/index.m3u8",
-    "backupUrls": [
-      "http://45.156.223.202/iptv/QAP2YS2594ZQS3/12244/index.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12244/index.m3u8"
-    ],
-    "channelNumber": 77,
-    "number": 518,
-    "language": "Hebrew",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "badge": "HD",
-    "quality": "HD",
-    "resolution": "1080p",
-    "desc": "ערוץ הופ! המוביל בישראל לילדים וגיל הרך עם תוכניות מקור ושירים אהובים.",
     "backups": [],
     "src": {
       "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
