@@ -94,6 +94,7 @@ fun SettingsScreen(data: ChannelData?, prefs: AppPrefs, updater: Updater, google
     val ctx = LocalContext.current
     val haptic = LocalHapticFeedback.current
     var showPlexDialog by remember { mutableStateOf(false) }
+    val scope = rememberCoroutineScope()
     var m3uList by remember { mutableStateOf(store.m3u.load()) }
     var showM3uUrlDialog by remember { mutableStateOf(false) }
     var m3uUrlInput by remember { mutableStateOf("") }
