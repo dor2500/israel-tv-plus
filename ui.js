@@ -65,6 +65,7 @@ window.ITV_UI = (function (I) {
       '<button class="top-btn nav-top hidden" id="btn-getapp" data-nav="getapp"><span class="ico">' + I('phone') + '</span><span>הורדת האפליקציה</span></button>' +
       '<button class="top-btn nav-top hidden" id="btn-kids-exit" data-nav="kids"><span class="ico">' + I('kids') + '</span><span>מצב ילדים</span></button>' +
       '<button class="top-btn ph" id="btn-search" aria-label="חיפוש"><span class="ico">' + I('search') + '</span></button>' +
+      '<button class="top-btn nav-top" id="btn-m3u" data-nav="m3u" title="טעינת קובץ או קישור M3U"><span class="ico">📋</span><span>M3U</span></button>' +
       '<button class="top-btn nav-top" id="btn-gdrive" data-nav="gdrive" title="Google Drive והקלטות ענן"><span class="ico">☁️</span><span>הקלטות ענן</span></button>' +
       '<button class="top-btn nav-top tv" id="btn-settings" data-nav="settings"><span class="ico">' + I('settings') + '</span><span>הגדרות</span></button>' +
       '<div class="clock" id="clock">00:00</div>' +

@@ -335,7 +335,7 @@
     var main = m ? m[1] : name;
     return main.replace(/\s*-\s*שידור חי\s*$/, '').replace(/\s*-\s*$/, '');
   }
-  var CAT_ICONS = [[/אפליקציות|מנויים/, '📲'], [/רדיו/, '📻'], [/ישראל/, '📡'], [/ילדים/, '🧸'], [/סרטים|סדרות/, '🎬'],
+  var CAT_ICONS = [[/M3U/i, '📋'], [/אפליקציות|מנויים/, '📲'], [/רדיו/, '📻'], [/ישראל/, '📡'], [/ילדים/, '🧸'], [/סרטים|סדרות/, '🎬'],
     [/ספורט/, '⚽'], [/אוכל|בישול/, '🍳'], [/קומדיה/, '😂'], [/טיולים/, '✈️'], [/מדע/, '🔬'], [/כלכלה/, '📈'],
     [/מוזיקה/, '🎵'], [/לייף|בידור/, '🏖️'], [/דוקו|טבע/, '🌍'], [/חדשות|News/i, '📰'],
     [/מסורת|יהדות/, '🕍'], [/דת|אמונה/, '🙏'], [/בינלאומי|World/i, '🌐']];
@@ -476,7 +476,7 @@
   }
 
   function cacheEls() {
-    ['app', 'search-input', 'top-search', 'btn-update', 'btn-getapp', 'btn-kids-exit', 'btn-settings', 'btn-gdrive', 'clock', 'count-badge',
+    ['app', 'search-input', 'top-search', 'btn-update', 'btn-getapp', 'btn-kids-exit', 'btn-settings', 'btn-m3u', 'btn-gdrive', 'clock', 'count-badge',
       'rail-list', 'hero', 'hero-logo', 'hero-mono', 'hero-num', 'hero-cat', 'hero-q', 'hero-lang', 'hero-fav', 'hero-title',
       'hero-desc', 'hero-src', 'grid-title', 'grid-count', 'grid', 'hints', 'numhud', 'numhud-digits', 'numhud-name',
       'radio-audio', 'player', 'video', 'radio-view', 'radio-logo', 'radio-mono', 'radio-name', 'spinner', 'spinner-text',
@@ -751,11 +751,400 @@
     })();
   }
 
+  // ================================================================== M3U custom playlists
+  var M3U_LS_KEY = 'itv_m3u_playlists';
+  var m3uSessionPlaylists = null;
+  var m3uFileInput = null;
+
+  function loadM3uPlaylists() {
+    if (m3uSessionPlaylists) return m3uSessionPlaylists;
+    var list = lsGet(M3U_LS_KEY, []);
+    return Array.isArray(list) ? list : [];
+  }
+
+  function saveM3uPlaylists(list) {
+    m3uSessionPlaylists = list;
+    try {
+      localStorage.setItem(M3U_LS_KEY, JSON.stringify(list));
+    } catch (e) {
+      toast('⚠️ הרשימה גדולה מדי לשמירה קבועה – נטענה להפעלה הנוכחית בלבד');
+    }
+  }
+
+  function parseM3uAttr(line, attr) {
+    var re = new RegExp(attr + '\\s*=\\s*(?:"([^"]*)"|\'([^\']*)\'|([^\\s,]+))', 'i');
+    var m = re.exec(line);
+    return m ? (m[1] || m[2] || m[3] || '').trim() : '';
+  }
+
+  function parseM3uName(extinfLine) {
+    var inQ = false, qChar = '', lastComma = -1;
+    for (var i = 0; i < extinfLine.length; i++) {
+      var c = extinfLine.charAt(i);
+      if ((c === '"' || c === "'") && (!inQ || qChar === c)) {
+        inQ = !inQ;
+        qChar = inQ ? c : '';
+      } else if (c === ',' && !inQ) {
+        lastComma = i;
+      }
+    }
+    return lastComma !== -1 ? extinfLine.slice(lastComma + 1).trim() : '';
+  }
+
+  function parseM3u(text, playlistName, playlistId) {
+    var clean = String(text || '').replace(/^\uFEFF/, '');
+    if (/#EXT-X-TARGETDURATION|#EXT-X-MEDIA-SEQUENCE|#EXT-X-STREAM-INF/i.test(clean)) {
+      return { error: 'hls_stream', channels: [] };
+    }
+    var lines = clean.split(/\r?\n/);
+    var channels = [];
+    var cur = null;
+    var curGrp = '';
+    for (var i = 0; i < lines.length; i++) {
+      var line = lines[i].trim();
+      if (!line) continue;
+      if (/^#EXTINF:/i.test(line)) {
+        var name = parseM3uName(line) || parseM3uAttr(line, 'tvg-name');
+        var logo = parseM3uAttr(line, 'tvg-logo');
+        var group = parseM3uAttr(line, 'group-title') || curGrp;
+        var epgId = parseM3uAttr(line, 'tvg-id');
+        var chno = parseM3uAttr(line, 'tvg-chno');
+        cur = { name: name, logo: logo, group: group, epgId: epgId, chno: chno };
+      } else if (/^#EXTGRP:/i.test(line)) {
+        curGrp = line.slice(8).trim();
+        if (cur && !cur.group) cur.group = curGrp;
+      } else if (line.charAt(0) === '#') {
+        continue;
+      } else if (/^(https?|rtmps?|rtsp|udp|mms):\/\//i.test(line)) {
+        var idx = channels.length;
+        var chName = (cur && cur.name) ? cur.name : ('ערוץ M3U ' + (idx + 1));
+        var grp = (cur && cur.group) ? cur.group : '';
+        var logoUrl = (cur && cur.logo && /^https?:\/\//i.test(cur.logo)) ? cur.logo : '';
+        channels.push({
+          id: 'm3u_' + playlistId + '_' + idx,
+          name: chName,
+          url: line,
+          logo: logoUrl,
+          epgId: (cur && cur.epgId) || '',
+          chno: (cur && cur.chno) || '',
+          group: grp,
+          isRadio: /radio|רדיו/i.test(grp) || /\.(mp3|aac)(\?|$)/i.test(line)
+        });
+        cur = null;
+      }
+    }
+    return { error: null, channels: channels };
+  }
+
+  function getM3uChannels() {
+    var pls = loadM3uPlaylists();
+    if (!pls.length) return [];
+    var baseNum = 999;
+    (window.CHANNELS_DATA || []).forEach(function (c) {
+      var n = parseInt(c.number, 10);
+      if (n > baseNum) baseNum = n;
+    });
+    var out = [];
+    pls.forEach(function (pl) {
+      if (pl.enabled === false || !Array.isArray(pl.channels)) return;
+      var catName = 'רשימת M3U: ' + (pl.name || 'אישית');
+      pl.channels.forEach(function (c) {
+        baseNum++;
+        out.push({
+          id: c.id,
+          name: c.name,
+          number: parseInt(c.chno, 10) || baseNum,
+          url: c.url,
+          logo: c.logo || '',
+          epgId: c.epgId || '',
+          category: catName,
+          categoryEn: c.isRadio ? 'radio' : 'm3u',
+          kind: c.isRadio ? 'radio' : 'tv',
+          desc: (c.group ? c.group + ' · ' : '') + 'רשימת M3U: ' + (pl.name || 'אישית'),
+          badge: c.group || 'M3U',
+          lang: 'he',
+          isM3u: true,
+          m3uPlaylistId: pl.id,
+          m3uGroup: c.group || ''
+        });
+      });
+    });
+    return out;
+  }
+
+  function refreshM3uViews(jumpCat) {
+    homeDirty = true;
+    atv.dirty = true;
+    loadChannels();
+    if (jumpCat && state.cats.some(function (c) { return c.id === jumpCat; })) {
+      selectCategory(jumpCat);
+      focusGrid(0);
+    } else {
+      filterList();
+    }
+    if (PHONE) buildHome();
+    if (TVUI && atv.built) atvBuild();
+    if (state.overlay === 'settings') renderSettings();
+  }
+
+  function addM3uPlaylistFromText(text, name, sourceType, url, existingId) {
+    var pid = existingId || ('pl_' + Date.now().toString(36) + '_' + Math.random().toString(36).slice(2, 6));
+    var plName = (name || '').trim() || 'רשימה אישית';
+    var parsed = parseM3u(text, plName, pid);
+    if (parsed.error === 'hls_stream') {
+      if (sourceType === 'url' && url) {
+        parsed = {
+          error: null,
+          channels: [{ id: 'm3u_' + pid + '_0', name: plName, url: url, logo: '', epgId: '', chno: '', group: 'שידור ישיר', isRadio: false }]
+        };
+      } else {
+        toast('⚠️ זהו קובץ זרם HLS בודד (.m3u8) ולא רשימת ערוצים');
+        return false;
+      }
+    }
+    if (!parsed.channels.length) {
+      toast('⚠️ לא נמצאו ערוצים תקינים בקובץ ה-M3U');
+      return false;
+    }
+    var pls = loadM3uPlaylists().slice();
+    var entry = {
+      id: pid,
+      name: plName,
+      sourceType: sourceType || 'file',
+      url: url || '',
+      enabled: true,
+      updatedAt: Date.now(),
+      channels: parsed.channels
+    };
+    var idx = -1;
+    for (var i = 0; i < pls.length; i++) if (pls[i].id === pid) { idx = i; break; }
+    if (idx !== -1) pls[idx] = entry; else pls.push(entry);
+    saveM3uPlaylists(pls);
+    refreshM3uViews();
+    toast('✅ נטענו ' + parsed.channels.length + ' ערוצים מרשימת "' + plName + '"');
+    return true;
+  }
+
+  function pickM3uFile(onDone) {
+    if (!m3uFileInput) {
+      m3uFileInput = document.createElement('input');
+      m3uFileInput.type = 'file';
+      m3uFileInput.accept = '.m3u,.m3u8,.txt,audio/x-mpegurl,application/vnd.apple.mpegurl';
+      m3uFileInput.style.display = 'none';
+      document.body.appendChild(m3uFileInput);
+    }
+    m3uFileInput.value = '';
+    m3uFileInput.onchange = function () {
+      var file = m3uFileInput.files && m3uFileInput.files[0];
+      if (!file) return;
+      var reader = new FileReader();
+      reader.onload = function () {
+        var baseName = file.name.replace(/\.(m3u8?|txt)$/i, '') || 'קובץ M3U';
+        var ok = addM3uPlaylistFromText(reader.result, baseName, 'file', '');
+        if (onDone) onDone(ok);
+      };
+      reader.onerror = function () { toast('⚠️ שגיאה בקריאת הקובץ'); };
+      reader.readAsText(file, 'utf-8');
+    };
+    m3uFileInput.click();
+  }
+
+  function fetchM3uUrl(url, name, existingId, onDone) {
+    var cleanUrl = (url || '').trim();
+    if (!/^https?:\/\//i.test(cleanUrl)) {
+      toast('⚠️ יש להזין כתובת תקינה המתחילה ב-http:// או https://');
+      return;
+    }
+    var derivedName = (name || '').trim();
+    if (!derivedName) {
+      try {
+        var uo = new URL(cleanUrl);
+        var seg = uo.pathname.split('/').filter(Boolean).pop() || uo.hostname;
+        derivedName = seg.replace(/\.(m3u8?|txt)$/i, '') || uo.hostname;
+      } catch (e) { derivedName = 'רשימת M3U'; }
+    }
+    toast('⏳ טוען רשימת M3U...');
+    var tryFetch = function (targetUrl, allowRelay) {
+      fetch(targetUrl).then(function (r) {
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        return r.text();
+      }).then(function (txt) {
+        var ok = addM3uPlaylistFromText(txt, derivedName, 'url', cleanUrl, existingId);
+        if (onDone) onDone(ok);
+      }).catch(function () {
+        if (allowRelay && RELAY) {
+          tryFetch(RELAY + '/?u=' + encodeURIComponent(cleanUrl), false);
+        } else {
+          toast('⚠️ שגיאה בטעינת הקישור – ודאו שהכתובת זמינה ותומכת בגישה');
+          if (onDone) onDone(false);
+        }
+      });
+    };
+    tryFetch(cleanUrl, IS_WEB && !!RELAY);
+  }
+
+  function openM3uUrlDialog() {
+    openDialog({
+      ico: '🔗',
+      title: 'טעינת M3U מקישור (URL)',
+      html: '<div style="text-align:right;display:flex;flex-direction:column;gap:0.8rem;margin:0.5rem 0;">' +
+        '<label style="font-size:0.95rem;opacity:0.85;">כתובת קובץ M3U / M3U8:</label>' +
+        '<input id="m3u-url-in" type="url" dir="ltr" placeholder="https://example.com/playlist.m3u" ' +
+        'style="width:100%;box-sizing:border-box;padding:0.8rem 1rem;border-radius:10px;border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.08);color:#fff;font-size:1rem;">' +
+        '<label style="font-size:0.95rem;opacity:0.85;">שם הרשימה (אופציונלי):</label>' +
+        '<input id="m3u-url-name" type="text" placeholder="לדוגמה: ערוצי סרטים שלי" ' +
+        'style="width:100%;box-sizing:border-box;padding:0.8rem 1rem;border-radius:10px;border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.08);color:#fff;font-size:1rem;">' +
+        '</div>',
+      buttons: [
+        { label: 'ביטול', act: openM3uDialog },
+        { label: 'טען רשימה', primary: true, keep: true, act: function () {
+          var uEl = $('m3u-url-in'), nEl = $('m3u-url-name');
+          var uVal = uEl ? uEl.value.trim() : '';
+          var nVal = nEl ? nEl.value.trim() : '';
+          if (!/^https?:\/\//i.test(uVal)) { toast('⚠️ יש להזין כתובת http:// או https://'); return; }
+          closeDialog();
+          fetchM3uUrl(uVal, nVal, null, function (ok) { if (ok) openM3uDialog(); });
+        } }
+      ]
+    });
+    setTimeout(function () { var u = $('m3u-url-in'); if (u) u.focus(); }, 50);
+  }
+
+  function openM3uPasteDialog() {
+    openDialog({
+      ico: '📝',
+      title: 'הדבקת תוכן M3U',
+      wide: true,
+      html: '<div style="text-align:right;display:flex;flex-direction:column;gap:0.8rem;margin:0.5rem 0;">' +
+        '<label style="font-size:0.95rem;opacity:0.85;">שם הרשימה:</label>' +
+        '<input id="m3u-paste-name" type="text" placeholder="לדוגמה: רשימה אישית" ' +
+        'style="width:100%;box-sizing:border-box;padding:0.8rem 1rem;border-radius:10px;border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.08);color:#fff;font-size:1rem;">' +
+        '<label style="font-size:0.95rem;opacity:0.85;">הדביקו כאן את תוכן ה-M3U (#EXTM3U...):</label>' +
+        '<textarea id="m3u-paste-txt" dir="ltr" rows="7" placeholder="#EXTM3U&#10;#EXTINF:-1,My Channel&#10;https://example.com/stream.m3u8" ' +
+        'style="width:100%;box-sizing:border-box;padding:0.8rem 1rem;border-radius:10px;border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.08);color:#fff;font-size:0.9rem;font-family:monospace;resize:vertical;"></textarea>' +
+        '</div>',
+      buttons: [
+        { label: 'ביטול', act: openM3uDialog },
+        { label: 'טען ערוצים', primary: true, keep: true, act: function () {
+          var nEl = $('m3u-paste-name'), tEl = $('m3u-paste-txt');
+          var nVal = nEl ? nEl.value.trim() : '';
+          var tVal = tEl ? tEl.value : '';
+          if (!tVal.trim()) { toast('⚠️ יש להדביק תוכן M3U'); return; }
+          if (addM3uPlaylistFromText(tVal, nVal || 'רשימת M3U', 'text', '')) {
+            closeDialog();
+            openM3uDialog();
+          }
+        } }
+      ]
+    });
+    setTimeout(function () { var t = $('m3u-paste-txt'); if (t) t.focus(); }, 50);
+  }
+
+  function openM3uDialog() {
+    var pls = loadM3uPlaylists();
+    var totalCh = 0;
+    pls.forEach(function (p) { if (p.enabled !== false && p.channels) totalCh += p.channels.length; });
+    var actionsBar = '<div style="display:flex;flex-wrap:wrap;gap:0.6rem;justify-content:center;margin:0.4rem 0 1.2rem;">' +
+      '<button type="button" class="btn primary dlg-focus" id="m3u-act-file">📂 בחר קובץ M3U</button>' +
+      '<button type="button" class="btn dlg-focus" id="m3u-act-url">🔗 טען מקישור URL</button>' +
+      '<button type="button" class="btn dlg-focus" id="m3u-act-paste">📝 הדבק טקסט</button>' +
+      '</div>';
+    var listHtml = '';
+    if (!pls.length) {
+      listHtml = '<div style="text-align:center;padding:1.6rem 1rem;background:rgba(255,255,255,0.04);border-radius:14px;border:1px dashed rgba(255,255,255,0.16);">' +
+        '<div style="font-size:2.4rem;margin-bottom:0.6rem;">📋</div>' +
+        '<div style="font-size:1.1rem;font-weight:600;margin-bottom:0.4rem;">עדיין לא נטענו רשימות M3U</div>' +
+        '<div style="font-size:0.9rem;opacity:0.75;">בחרו קובץ <b>.m3u / .m3u8</b> מהמכשיר או הזינו קישור לרשימה כדי לצפות בערוצים נוספים לצד הערוצים הקיימים.</div>' +
+        '</div>';
+    } else {
+      listHtml = '<div style="max-height:42vh;overflow-y:auto;text-align:right;display:flex;flex-direction:column;gap:0.6rem;">' +
+        pls.map(function (pl, i) {
+          var ico = pl.sourceType === 'url' ? '🔗' : pl.sourceType === 'text' ? '📝' : '📁';
+          var on = pl.enabled !== false;
+          var dt = pl.updatedAt ? new Date(pl.updatedAt).toLocaleDateString('he-IL') : '';
+          var chCount = pl.channels ? pl.channels.length : 0;
+          return '<div style="display:flex;align-items:center;justify-content:space-between;gap:0.8rem;padding:0.8rem 1rem;border-radius:12px;background:rgba(255,255,255,' + (on ? '0.07' : '0.03') + ');border:1px solid rgba(255,255,255,' + (on ? '0.16' : '0.08') + ');opacity:' + (on ? '1' : '0.65') + ';">' +
+            '<div style="flex:1;min-width:0;">' +
+              '<div style="font-weight:700;font-size:1.05rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + ico + ' ' + esc(pl.name) + '</div>' +
+              '<div style="font-size:0.82rem;opacity:0.7;margin-top:0.15rem;">' + chCount + ' ערוצים' + (dt ? ' · ' + dt : '') + (on ? '' : ' · מושבת') + '</div>' +
+            '</div>' +
+            '<div style="display:flex;gap:0.4rem;flex:none;flex-wrap:wrap;">' +
+              (on && chCount ? '<button type="button" class="btn dlg-focus" data-m3u-watch="' + i + '" style="padding:0.4rem 0.7rem;font-size:0.85rem;">📺 צפה</button>' : '') +
+              (pl.sourceType === 'url' && pl.url ? '<button type="button" class="btn dlg-focus" data-m3u-ref="' + i + '" style="padding:0.4rem 0.7rem;font-size:0.85rem;" title="רענן מהקישור">🔄</button>' : '') +
+              '<button type="button" class="btn dlg-focus" data-m3u-tog="' + i + '" style="padding:0.4rem 0.7rem;font-size:0.85rem;">' + (on ? 'השבת' : 'הפעל') + '</button>' +
+              '<button type="button" class="btn dlg-focus" data-m3u-del="' + i + '" style="padding:0.4rem 0.7rem;font-size:0.85rem;color:#ff8a80;">🗑️</button>' +
+            '</div>' +
+          '</div>';
+        }).join('') +
+      '</div>';
+    }
+    openDialog({
+      ico: '📋',
+      title: 'רשימות M3U אישיות' + (totalCh ? ' (' + totalCh + ' ערוצים)' : ''),
+      wide: true,
+      html: actionsBar + listHtml,
+      buttons: [{ label: 'סגירה', primary: true }]
+    });
+    var fBtn = $('m3u-act-file'), uBtn = $('m3u-act-url'), pBtn = $('m3u-act-paste');
+    if (fBtn) fBtn.onclick = function () { pickM3uFile(function (ok) { if (ok) openM3uDialog(); }); };
+    if (uBtn) uBtn.onclick = function () { openM3uUrlDialog(); };
+    if (pBtn) pBtn.onclick = function () { openM3uPasteDialog(); };
+    Array.prototype.forEach.call(el.dialogBody.querySelectorAll('[data-m3u-watch]'), function (b) {
+      b.onclick = function () {
+        var idx = parseInt(b.getAttribute('data-m3u-watch'), 10);
+        var pl = loadM3uPlaylists()[idx];
+        closeDialog();
+        if (state.overlay === 'settings') closeSettings();
+        if (pl) {
+          var catId = 'רשימת M3U: ' + (pl.name || 'אישית');
+          if (TVUI) {
+            var r = atvRowIndex('m3u');
+            if (r !== -1) atvFocus(r, 0);
+          } else {
+            refreshM3uViews(catId);
+          }
+        }
+      };
+    });
+    Array.prototype.forEach.call(el.dialogBody.querySelectorAll('[data-m3u-ref]'), function (b) {
+      b.onclick = function () {
+        var idx = parseInt(b.getAttribute('data-m3u-ref'), 10);
+        var pl = loadM3uPlaylists()[idx];
+        if (pl && pl.url) fetchM3uUrl(pl.url, pl.name, pl.id, function (ok) { if (ok) openM3uDialog(); });
+      };
+    });
+    Array.prototype.forEach.call(el.dialogBody.querySelectorAll('[data-m3u-tog]'), function (b) {
+      b.onclick = function () {
+        var idx = parseInt(b.getAttribute('data-m3u-tog'), 10);
+        var list = loadM3uPlaylists().slice();
+        if (!list[idx]) return;
+        list[idx].enabled = list[idx].enabled === false;
+        saveM3uPlaylists(list);
+        refreshM3uViews();
+        openM3uDialog();
+      };
+    });
+    Array.prototype.forEach.call(el.dialogBody.querySelectorAll('[data-m3u-del]'), function (b) {
+      b.onclick = function () {
+        var idx = parseInt(b.getAttribute('data-m3u-del'), 10);
+        var list = loadM3uPlaylists().slice();
+        if (!list[idx]) return;
+        var name = list[idx].name;
+        list.splice(idx, 1);
+        saveM3uPlaylists(list);
+        refreshM3uViews();
+        toast('🗑️ הרשימה "' + name + '" הוסרה');
+        openM3uDialog();
+      };
+    });
+  }
+
   // ================================================================== channels & categories
   function loadChannels() {
     var hidden = S.hidden || [];
     var hiddenCats = S.hiddenCats || [];
-    state.all = (window.CHANNELS_DATA || []).filter(function (c) {
+    var merged = (window.CHANNELS_DATA || []).concat(getM3uChannels());
+    state.all = merged.filter(function (c) {
       if (hidden.indexOf(c.id) !== -1) return false;
       if (hiddenCats.indexOf(c.category) !== -1) return false;
       if (S.kids && !isKidsCh(c)) return false;
@@ -2073,7 +2462,8 @@
     ['fun', 'בידור, טבע ומוזיקה'],
     ['world', 'ערוצים בינלאומיים'],
     ['radio', 'רדיו ישראלי'],
-    ['faith', 'דת ומסורת']
+    ['faith', 'דת ומסורת'],
+    ['m3u', '📋 רשימות M3U שלי']
   ];
   var ATV_TABS = [
     ['פרופיל', 'profiles'],
@@ -2085,6 +2475,7 @@
     ['סדרות VOD', 'vod'],
     ['ילדים', 'kids'],
     ['רדיו', 'radio'],
+    ['רשימות M3U', 'm3u'],
     ['מועדפים', 'mine'], ['לוח שידורים', 'guide'],
     ['חיפוש', 'search'],
     ['פיצול מסך', 'multiview'],
@@ -2097,6 +2488,7 @@
 
   /** Which shelf a channel belongs on. */
   function atvBucket(c) {
+    if (c && c.isM3u) return 'm3u';
     var en = c.categoryEn || '', cat = c.category || '';
     if (/ילדים/.test(cat) && !isRadioCh(c)) return 'kids';
     if (isRadioCh(c)) return 'radio';
@@ -2896,6 +3288,11 @@
       else if (t === 'multiview') openMultiView(atvCurrent() || state.playing);
       else if (t === 'guide') { if (Guide) Guide.open(); }
       else if (t === 'gdrive') openDriveRecordingsDialog();
+      else if (t === 'm3u') {
+        var m3uRow = atvRowIndex('m3u');
+        if (m3uRow !== -1) atvFocus(m3uRow, atv.cols[m3uRow] || 0);
+        else openM3uDialog();
+      }
       else if (t === 'settings') openSettings();
       else if (t === 'kids-exit') askPin(function () { setSetting('kids', false); toast('יצאתם ממצב ילדים'); });
       else atvFocus(atv.row, atv.cols[atv.row] || 0);
@@ -3654,8 +4051,10 @@ function loadCandidate(ch, rawUrl) {
     el.radioView.classList.add('hidden');
     el.osdQuality.textContent = 'HD';
     var v = el.video;
+    state.hlsFallbackTried = false;
+    var isDirectVideo = /\.(mp4|m4v|mkv|webm|ogv|mov|avi)(\?|$)/i.test(url);
 
-    if (window.Hls && Hls.isSupported()) {
+    if (!isDirectVideo && window.Hls && Hls.isSupported()) {
       var delayed = Dub && Dub.wantsSync(ch);
       var isSport = /sport|ספורט|one_1|one_2|charlton|eurosport|5plus|5live|5gold|5stars|5max|54k/i.test((ch.category || '') + ' ' + (ch.name || '') + ' ' + (ch.id || ''));
       var isOttrast = /ottrast\.com|212\.80\.215\.72|45\.156\.223/i.test(url);
@@ -3790,6 +4189,15 @@ function loadCandidate(ch, rawUrl) {
       });
       hls.on(Hls.Events.ERROR, function (e, data) {
         if (!data.fatal) return;
+        if (data.details === Hls.ErrorDetails.MANIFEST_PARSING_ERROR && !/\.m3u8(\?|$)/i.test(url) && !state.hlsFallbackTried) {
+          state.hlsFallbackTried = true;
+          try { hls.destroy(); } catch (err) {}
+          state.hls = null;
+          v.src = url;
+          v.onerror = function () { onFatal(ch, 'פורמט לא נתמך'); };
+          startPlay(v, ch);
+          return;
+        }
         if (data.type === Hls.ErrorTypes.MEDIA_ERROR && state.retries < 2) { state.retries++; hls.recoverMediaError(); return; }
         if (data.type === Hls.ErrorTypes.NETWORK_ERROR && S.retry && state.retries < 3) {
           state.retries++;
@@ -5119,6 +5527,8 @@ function showOsd() {
           on: function () { return native('launchSound') !== false; }, act: function () { native('setLaunchSound', native('launchSound') === false); } }
       ] : []) },
       { id: 'channels', ico: M3_ICONS.channels, name: 'ערוצים ומדריך שידורים', desc: 'הגדרת קטגוריות, ערוצים מוסתרים ואפשרויות פתיחה', rows: [
+        sep('רשימות M3U אישיות'),
+        action('📋 טעינה וניהול של קובץ / קישור M3U', function () { openM3uDialog(); }, 'הוסיפו קובץ .m3u / .m3u8 או קישור URL לצפייה בערוצים נוספים'),
         sep('התנהגות'),
         choice('startCat', 'קטגוריית פתיחה', STARTS),
         toggle('autoplay', 'הפעלת הערוץ האחרון שנצפה בעלייה'),
@@ -5129,6 +5539,46 @@ function showOsd() {
         action('מחיקת כל הערוצים המועדפים', function () { confirmBox('למחוק את כל הערוצים המועדפים?', function () { state.favorites = []; lsSet('israel_tv_favorites', []); buildCategories(); filterList(); toast('המועדפים נמחקו'); }); }, '', true)
       ].concat(IS_WEB ? [toggle('hideAppOnly', 'הסתרת ערוצים הפועלים באפליקציה בלבד', 'הסתרת שידורי HTTP הנחסמים בדפדפנים')] : [])
         .concat([sep('קטגוריות מוצגות')]).concat(catRows) },
+      { id: 'm3u', ico: M3_ICONS.channels, name: 'רשימות M3U אישיות', desc: 'טעינת קובץ M3U / M3U8 או קישור URL לצפייה בערוצים נוספים', rows: (function () {
+        var pls = loadM3uPlaylists();
+        var total = 0;
+        pls.forEach(function (p) { if (p.enabled !== false && p.channels) total += p.channels.length; });
+        var rows = [
+          sep('טעינת רשימה חדשה'),
+          action('📂 בחירת קובץ M3U / M3U8 מהמכשיר', function () { pickM3uFile(); }, 'טעינת קובץ פלייליסט מקומי מהמחשב או מהטלפון'),
+          action('🔗 טעינת רשימת M3U מקישור (URL)', function () { openM3uUrlDialog(); }, 'הדבקת כתובת HTTP / HTTPS של פלייליסט'),
+          action('📝 הדבקת תוכן M3U ידנית', function () { openM3uPasteDialog(); }, 'הדבקת תוכן #EXTM3U ישירות'),
+          action('📋 פתיחת מנהל הרשימות המלא', function () { openM3uDialog(); }, 'צפייה, רענון, השבתה ומחיקה של רשימות M3U'),
+          sep('רשימות טעונות (' + pls.length + ' · ' + total + ' ערוצים פעילים)')
+        ];
+        if (!pls.length) {
+          rows.push(info('מצב נוכחי', 'לא נטענו רשימות M3U אישיות'));
+        } else {
+          pls.forEach(function (pl, idx) {
+            rows.push({
+              type: 'toggle',
+              label: (pl.sourceType === 'url' ? '🔗 ' : pl.sourceType === 'text' ? '📝 ' : '📁 ') + pl.name,
+              help: (pl.channels ? pl.channels.length : 0) + ' ערוצים · לחיצה להפעלה / השבתה',
+              on: function () { return pl.enabled !== false; },
+              act: function () {
+                var list = loadM3uPlaylists().slice();
+                if (!list[idx]) return;
+                list[idx].enabled = list[idx].enabled === false;
+                saveM3uPlaylists(list);
+                refreshM3uViews();
+              }
+            });
+          });
+          rows.push(action('🗑️ מחיקת כל רשימות ה-M3U', function () {
+            confirmBox('למחוק את כל רשימות ה-M3U שנטענו?', function () {
+              saveM3uPlaylists([]);
+              refreshM3uViews();
+              toast('כל רשימות ה-M3U נמחקו');
+            });
+          }, '', true));
+        }
+        return rows;
+      })() },
       { id: 'player', ico: M3_ICONS.player, name: 'נגן וידאו ושידור', desc: 'איכות תמונה, אפסקייל והשבחת וידאו, השהיה ושחזור שידור', rows: [
         sep('השבחת תמונה ואפסקייל'),
         choice('upscaleMode', 'מצב אפסקייל והשבחת תמונה', UPSCALE_MODES, 'מנגנון השבחת רזולוציה וחדות תמונה דינמית מואץ חומרה ל-4K ו-HD'),
@@ -5243,7 +5693,7 @@ function showOsd() {
     ];
     if (activeDesign() !== DESIGNS.classic) secs.forEach(function (s) { s.rows = s.rows.filter(function (r) { return !r.classicOnly; }); });
     // by how often they are used: language / subtitles and the player first, maintenance and about last
-    var SEC_ORDER = ['dub', 'player', 'display', 'channels', 'profiles', 'kids', 'remote', 'saver', 'google_cloud', 'updates', 'about'];
+    var SEC_ORDER = ['dub', 'player', 'display', 'channels', 'm3u', 'profiles', 'kids', 'remote', 'saver', 'google_cloud', 'updates', 'about'];
     secs.forEach(function (s) { if (SEC_ORDER.indexOf(s.id) === -1) SEC_ORDER.splice(SEC_ORDER.length - 2, 0, s.id); }); // new sections: before updates / about
     if (TVUI) secs.sort(function (a, b) { return SEC_ORDER.indexOf(a.id) - SEC_ORDER.indexOf(b.id); });
     if (PHONE) {
@@ -6012,6 +6462,7 @@ function showOsd() {
     }, { passive: true });
 
     el.btnSettings.addEventListener('click', function () { openSettings(); });
+    if (el.btnM3u) el.btnM3u.addEventListener('click', function () { openM3uDialog(); });
     if (el.btnGdrive) el.btnGdrive.addEventListener('click', function () { openDriveRecordingsDialog(); });
     if (el.btnMultiview) el.btnMultiview.addEventListener('click', function () { openMultiView(state.playing || (TVUI ? atvCurrent() : state.list[state.gridIdx])); });
     if (el.btnCastTop) el.btnCastTop.addEventListener('click', function () { openCastDialog(state.playing || (TVUI ? atvCurrent() : state.list[state.gridIdx])); });
