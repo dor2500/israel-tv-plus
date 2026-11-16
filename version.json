@@ -1,16 +1,25 @@
 {
-  "version": "4.8.78",
-  "code": 202611162251,
-  "app": 40878,
+  "version": "4.8.79",
+  "code": 202611162305,
+  "app": 40879,
   "shell": 3,
   "date": "2026-11-16",
   "notes": [
-    "סריקה מקיפה ותיקון 89 ערוצים שהפסיקו לעבוד (437 מתוך 444 ערוצים פעילים!):",
-    "איתור תקלה מערכתית בטוקן QAP2YS2594ZQS3 בשרת b84203c4.ottrast.com שהפיל 89 ערוצים (ערוצי סרטים וסדרות של HOT/yes, ילדים, דוקו, אוכל, בידור, טבע ועוד).",
-    "העברת כל 89 הערוצים הראשיים + ניקוי/עדכון 76 רשימות גיבוי לשרת הפעיל והמאומת zybrpjv6.zyntras.top (130 מזהי שידור אומתו כפעילים).",
-    "רענון כל קבצי הפלייליסט, Stremio ו-Home Assistant בהתאם."
+    "תמיכה בארכיון והקלטות ספק (Catch-up / Archive) לערוצי M3U ולשרתי IPTV:",
+    "פענוח מלא של תכונות ארכיון בקובצי M3U (tvg-rec, catchup, catchup-days, catchup-source, timeshift) הן ב-Android והן בגרסת Web/TV/Desktop.",
+    "תמיכה בכתובות ארכיון של Flussonic (archive-{utc}-{duration}.m3u8), שרתי zyntras.top/ottrast, פרמטרי append/shift (?utc=...) ותבניות catchup-source מותאמות.",
+    "התאמת לוח שידורים אוטומטית (לפי tvg-id ושם הערוץ בעברית) + יצירת משבצות ארכיון שעתיות כשאין EPG זמין, כך שניתן ללחוץ על תוכניות קודמות במסך הקאץ' אפ ולצפות בהן ישירות מארכיון הספק."
   ],
   "history": [
+    {
+      "version": "4.8.79",
+      "notes": [
+        "תמיכה בארכיון והקלטות ספק (Catch-up / Archive) לערוצי M3U ולשרתי IPTV:",
+        "פענוח מלא של תכונות ארכיון בקובצי M3U (tvg-rec, catchup, catchup-days, catchup-source, timeshift) הן ב-Android והן בגרסת Web/TV/Desktop.",
+        "תמיכה בכתובות ארכיון של Flussonic (archive-{utc}-{duration}.m3u8), שרתי zyntras.top/ottrast, פרמטרי append/shift (?utc=...) ותבניות catchup-source מותאמות.",
+        "התאמת לוח שידורים אוטומטית (לפי tvg-id ושם הערוץ בעברית) + יצירת משבצות ארכיון שעתיות כשאין EPG זמין, כך שניתן ללחוץ על תוכניות קודמות במסך הקאץ' אפ ולצפות בהן ישירות מארכיון הספק."
+      ]
+    },
     {
       "version": "4.8.78",
       "notes": [
@@ -253,55 +262,44 @@
         "הממשק בטלוויזיה ובמחשב חזר להיות כמו ב-4.8.51, כולל בחירת העיצובים וערכות הנושא. המראה של 4.8.53 הוסר.",
         "נשארו שני תיקונים: כפתורי 2, 3 ו-4 מסכים בפיצול מסך עובדים, והכותרת בחיפוש לא מציגה \"ילדים\" למי שלא במצב ילדים."
       ]
-    },
-    {
-      "version": "4.8.53",
-      "notes": [
-        "בטלוויזיה ובמחשב יש עכשיו מראה אחד, חדש ושטוח: דף כחול כהה, פוקוס לבן ומלא שקל לראות מהספה, ומספר הערוץ ליד השם. ההגדרות הן עמוד מלא עם שמות קצרים.",
-        "הוסרו העיצובים, ערכות הנושא ופלטות הצבעים בטלוויזיה ובמחשב. בטלפון שום דבר מזה לא השתנה.",
-        "הוסרו האימוג'ים, הזכוכית והזוהר מהממשק בטלוויזיה ובמחשב.",
-        "פיצול מסך: כפתורי 2, 3 ו-4 מסכים לא עבדו, ועכשיו הם עובדים.",
-        "חיפוש: הכותרת הראתה \"חיפוש ילדים\" גם למי שלא במצב ילדים.",
-        "חלון סדרה: הכותרת הכפולה הוסרה. שמות מצבי התמונה קוצרו."
-      ]
     }
   ],
   "native": {
     "android": {
-      "version": "4.8.78",
-      "app": 40878,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.78/IsraelTVPlus-android.apk"
+      "version": "4.8.79",
+      "app": 40879,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.79/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "4.8.78",
-      "app": 40878,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.78/IsraelTVPlus-windows-setup.exe"
+      "version": "4.8.79",
+      "app": 40879,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.79/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "4.8.78",
-      "app": 40878,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.78/com.israeltv.plus_all.ipk",
+      "version": "4.8.79",
+      "app": 40879,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.79/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "4.8.78",
-      "app": 40878,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.78/IsraelTVPlus-tizen-project.zip"
+      "version": "4.8.79",
+      "app": 40879,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.79/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "4.8.78",
-      "app": 40878,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.78/IsraelTVPlus-macos-arm64.zip"
+      "version": "4.8.79",
+      "app": 40879,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.79/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "4.8.78",
-      "app": 40878,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.78/IsraelTVPlus-linux-x64.zip"
+      "version": "4.8.79",
+      "app": 40879,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.79/IsraelTVPlus-linux-x64.zip"
     },
     "wear": {
-      "version": "4.8.78",
-      "app": 1040878,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.78/IsraelTVPlus-wearos.apk"
+      "version": "4.8.79",
+      "app": 1040879,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.79/IsraelTVPlus-wearos.apk"
     }
   }
 }

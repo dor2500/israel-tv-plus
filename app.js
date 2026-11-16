@@ -812,16 +812,27 @@
     var channels = [];
     var cur = null;
     var curGrp = '';
+    var defRec = 0, defCuType = '', defCuSrc = '';
     for (var i = 0; i < lines.length; i++) {
       var line = lines[i].trim();
       if (!line) continue;
+      if (/^#EXTM3U/i.test(line)) {
+        defRec = parseInt(parseM3uAttr(line, 'catchup-days') || parseM3uAttr(line, 'tvg-rec') || parseM3uAttr(line, 'timeshift') || '0', 10) || 0;
+        defCuType = parseM3uAttr(line, 'catchup') || parseM3uAttr(line, 'catchup-type') || '';
+        defCuSrc = parseM3uAttr(line, 'catchup-source') || '';
+        continue;
+      }
       if (/^#EXTINF:/i.test(line)) {
         var name = parseM3uName(line) || parseM3uAttr(line, 'tvg-name');
         var logo = parseM3uAttr(line, 'tvg-logo');
         var group = parseM3uAttr(line, 'group-title') || curGrp;
         var epgId = parseM3uAttr(line, 'tvg-id');
         var chno = parseM3uAttr(line, 'tvg-chno');
-        cur = { name: name, logo: logo, group: group, epgId: epgId, chno: chno };
+        var cuDays = parseInt(parseM3uAttr(line, 'tvg-rec') || parseM3uAttr(line, 'catchup-days') || parseM3uAttr(line, 'timeshift') || '0', 10) || defRec;
+        var cuType = parseM3uAttr(line, 'catchup') || parseM3uAttr(line, 'catchup-type') || defCuType;
+        var cuSrc = parseM3uAttr(line, 'catchup-source') || defCuSrc;
+        if (!cuDays && (cuType || cuSrc)) cuDays = 3;
+        cur = { name: name, logo: logo, group: group, epgId: epgId, chno: chno, catchupDays: cuDays, catchupType: cuType, catchupSource: cuSrc };
       } else if (/^#EXTGRP:/i.test(line)) {
         curGrp = line.slice(8).trim();
         if (cur && !cur.group) cur.group = curGrp;
@@ -840,7 +851,10 @@
           epgId: (cur && cur.epgId) || '',
           chno: (cur && cur.chno) || '',
           group: grp,
-          isRadio: /radio|רדיו/i.test(grp) || /\.(mp3|aac)(\?|$)/i.test(line)
+          isRadio: /radio|רדיו/i.test(grp) || /\.(mp3|aac)(\?|$)/i.test(line),
+          catchupDays: (cur && cur.catchupDays) || defRec || ((defCuType || defCuSrc) ? 3 : 0),
+          catchupType: (cur && cur.catchupType) || defCuType || '',
+          catchupSource: (cur && cur.catchupSource) || defCuSrc || ''
         });
         cur = null;
       }
@@ -877,7 +891,10 @@
           lang: 'he',
           isM3u: true,
           m3uPlaylistId: pl.id,
-          m3uGroup: c.group || ''
+          m3uGroup: c.group || '',
+          catchupDays: c.catchupDays || 0,
+          catchupType: c.catchupType || '',
+          catchupSource: c.catchupSource || ''
         });
       });
     });
@@ -3873,19 +3890,89 @@
 
   // channels that repeat another channel's programme guide
   var CATCHUP_EPG = { ch14_now_fast: 'now14', i24news_english_hd: 'i24news_en', i24news_fr_il: 'i24news_fr', i24news_hebrew_hd: 'i24news_he', i24_english_world_hd: 'i24news_en', kan11_subs: 'kan11', kan11_subs_il: 'kan11', now14_subs_il: 'now14', reshet13_access: 'reshet13', reshet13_subs_il: 'reshet13' };
+  function hasArchiveCatchup(ch) {
+    if (!ch || !ch.url) return false;
+    return !!(ch.catchupDays > 0 || ch.catchupSource || ch.catchupType || /\/iptv\/[^/]+\/\d+\/(index|video|mono)\.m3u8/i.test(ch.url));
+  }
+  function buildArchiveUrl(ch, startMs, durSec) {
+    if (!hasArchiveCatchup(ch)) return null;
+    var startSec = Math.max(1, Math.floor(startMs / 1000));
+    var nowSec = Math.floor(Date.now() / 1000);
+    var dur = clamp(Math.floor(durSec || 3600), 60, 6 * 3600);
+    var endSec = startSec + dur;
+    var offsetSec = Math.max(0, nowSec - startSec);
+    var url = normalizeStreamUrl(ch.url);
+    if (ch.catchupSource) {
+      var d = new Date(startSec * 1000);
+      var pad = function (n) { return String(n).padStart(2, '0'); };
+      var tmpl = ch.catchupSource
+        .replace(/\{utc\}|\$\{start\}/g, String(startSec))
+        .replace(/\{end\}|\$\{end\}/g, String(endSec))
+        .replace(/\{duration\}|\$\{duration\}/g, String(dur))
+        .replace(/\{offset\}/g, String(offsetSec))
+        .replace(/\{lutc\}|\$\{timestamp\}/g, String(nowSec))
+        .replace(/\{Y\}/g, String(d.getUTCFullYear()))
+        .replace(/\{m\}/g, pad(d.getUTCMonth() + 1))
+        .replace(/\{d\}/g, pad(d.getUTCDate()))
+        .replace(/\{H\}/g, pad(d.getUTCHours()))
+        .replace(/\{M\}/g, pad(d.getUTCMinutes()))
+        .replace(/\{S\}/g, pad(d.getUTCSeconds()));
+      if (tmpl.charAt(0) === '?' || tmpl.charAt(0) === '&') return url + (url.indexOf('?') === -1 ? '?' : '&') + tmpl.replace(/^[?&]/, '');
+      if (/^https?:\/\//i.test(tmpl)) return tmpl;
+    }
+    var tp = (ch.catchupType || '').toLowerCase();
+    if (tp === 'append' || tp === 'shift') {
+      return url + (url.indexOf('?') === -1 ? '?' : '&') + 'utc=' + startSec + '&lutc=' + nowSec;
+    }
+    if (/\/(index|video|mono)\.m3u8(\?.*)?$/i.test(url)) {
+      return url.replace(/\/(index|video|mono)\.m3u8(\?.*)?$/i, function (m, fn, q) { return '/archive-' + startSec + '-' + dur + '.m3u8' + (q || ''); });
+    }
+    return url + (url.indexOf('?') === -1 ? '?' : '&') + 'utc=' + startSec;
+  }
+  function epgKeyForCatchup(ch, epgChannels) {
+    if (!epgChannels || !ch) return null;
+    var nl = (ch.name || '').toLowerCase();
+    var cands = [ch.epgId, CATCHUP_EPG[ch.id], ch.id, (ch.id || '').toLowerCase(),
+      (ch.id || '').replace('_fast', ''), (ch.id || '').replace('ch14', 'now14'), (ch.id || '').replace('kan_hinuchit_mc', 'kan_hinuchit')];
+    if (/כאן 11|kan 11/.test(nl)) cands.unshift('kan11');
+    if (/קשת 12|ערוץ 12|keshet/.test(nl)) cands.unshift('keshet12');
+    if (/רשת 13|ערוץ 13|reshet/.test(nl)) cands.unshift('reshet13');
+    if (/עכשיו 14|ערוץ 14|now 14/.test(nl)) cands.unshift('now14');
+    if (/חינוכית|כאן 23/.test(nl)) cands.unshift('kan_hinuchit');
+    if (/מכאן 33|makan/.test(nl)) cands.unshift('makan33');
+    if (/ספורט 1|sport 1/.test(nl)) cands.unshift('sport1_israel');
+    if (/ספורט 2|sport 2/.test(nl)) cands.unshift('sport2_israel');
+    if (/ספורט 3|sport 3/.test(nl)) cands.unshift('sport3_israel');
+    if (/ספורט 4|sport 4/.test(nl)) cands.unshift('sport4_israel');
+    for (var i = 0; i < cands.length; i++) if (cands[i] && epgChannels[cands[i]]) return epgChannels[cands[i]];
+    return null;
+  }
   function openCatchupModal(ch) {
     if (!ch) ch = state.playing;
     if (!ch) return;
     var c = CATCHUP[ch.id] || CATCHUP[(ch.id || '').toLowerCase()];
+    var arch = !c && hasArchiveCatchup(ch);
+    var hrs = c ? c.hours : (arch ? (ch.catchupDays ? ch.catchupDays * 24 : 24) : 0);
     var nowMin = Date.now() / 60000;
 
     function renderModal(arr) {
+      if ((!arr || !arr.length) && arch) {
+        var nowHourMin = Math.floor(nowMin / 60) * 60;
+        var slots = Math.min(hrs, 72);
+        arr = [];
+        for (var h = slots - 1; h >= 0; h--) {
+          var sm = nowHourMin - h * 60;
+          var sd = new Date(sm * 60000);
+          var lbl = (h === 0 ? 'שידור נוכחי' : 'ארכיון ספק') + ' · ' + String(sd.getDate()).padStart(2, '0') + '/' + String(sd.getMonth() + 1).padStart(2, '0') + ' ' + String(sd.getHours()).padStart(2, '0') + ':00';
+          arr.push([sm, 60, lbl, '', '']);
+        }
+      }
       if (!arr || !arr.length) {
         openDialog({
           ico: '⏮️',
           title: 'קאץ\' אפ – ' + ch.name,
-          html: '<p style="padding:1rem;text-align:center;color:#94a3b8">לא נמצאו תוכניות בלוח השידורים עבור ערוץ זה כעת.<br>' + (c ? 'ניתן לקפוץ אחורה בשידור עד ' + c.hours + ' שעות.' : '') + '</p>',
-          buttons: c ? [
+          html: '<p style="padding:1rem;text-align:center;color:#94a3b8">לא נמצאו תוכניות בלוח השידורים עבור ערוץ זה כעת.<br>' + (hrs ? 'ניתן לקפוץ אחורה בשידור עד ' + hrs + ' שעות.' : '') + '</p>',
+          buttons: hrs ? [
             { label: 'חזרה שעה אחורה', primary: true, act: function () { playCatchup(ch, nowMin - 60, nowMin); closeDialog(); } },
             { label: 'חזרה שעתיים אחורה', act: function () { playCatchup(ch, nowMin - 120, nowMin); closeDialog(); } },
             { label: 'סגירה', act: closeDialog }
@@ -3893,7 +3980,7 @@
         });
         return;
       }
-      var minLimit = nowMin - (c ? c.hours * 60 : 24 * 60);
+      var minLimit = nowMin - (hrs ? hrs * 60 : 24 * 60);
       var pastProgs = [];
       for (var i = 0; i < arr.length; i++) {
         var p = arr[i];
@@ -3953,17 +4040,13 @@
 
     var epgChannels = (window.ITV_EPG && window.ITV_EPG.channels) || null;
     if (epgChannels) {
-      var k = CATCHUP_EPG[ch.id] || ch.id;
-      var arr = epgChannels[k] || epgChannels[k.toLowerCase()] || epgChannels[k.replace('_fast', '')] || epgChannels[k.replace('ch14', 'now14')] || epgChannels[k.replace('kan_hinuchit_mc', 'kan_hinuchit')];
-      renderModal(arr);
+      renderModal(epgKeyForCatchup(ch, epgChannels));
     } else {
       fetch('epg.json')
         .then(function (r) { return r.json(); })
         .then(function (d) {
           window.ITV_EPG = d;
-          var k = CATCHUP_EPG[ch.id] || ch.id;
-          var arr = d.channels ? (d.channels[k] || d.channels[k.toLowerCase()] || d.channels[k.replace('_fast', '')] || d.channels[k.replace('ch14', 'now14')] || d.channels[k.replace('kan_hinuchit_mc', 'kan_hinuchit')]) : null;
-          renderModal(arr);
+          renderModal(epgKeyForCatchup(ch, d.channels));
         })
         .catch(function () {
           renderModal(null);
@@ -3972,10 +4055,13 @@
   }
   window.openCatchupModal = openCatchupModal;
   function playCatchup(ch, startMin, endMin) {
-    var c = CATCHUP[ch.id];
-    if (!c) return;
+    var c = CATCHUP[ch.id] || CATCHUP[(ch.id || '').toLowerCase()];
+    var durSec = Math.max(1800, Math.round((endMin - startMin) * 60));
+    var archUrl = !c ? buildArchiveUrl(ch, startMin * 60000, durSec) : null;
+    if (!c && !archUrl) return;
     if (indexInList(ch.id) === -1) { state.query = ''; el.searchInput.value = ''; selectCategory('ALL', true); }
-    state.catchupNext = { ch: ch, url: c.url, startMs: startMin * 60000, endMs: endMin * 60000, anchorMs: null };
+    var targetUrl = c ? c.url : (RELAY && IS_WEB && /^http:/i.test(archUrl) ? RELAY + '/?u=' + encodeURIComponent(archUrl) : archUrl);
+    state.catchupNext = { ch: ch, url: targetUrl, startMs: startMin * 60000, endMs: endMin * 60000, anchorMs: null, isArchive: !c };
     state.gridIdx = indexInList(ch.id);
     playIndex(state.gridIdx);
   }
@@ -4117,6 +4203,7 @@
           return;
         }
         if (state.catchup && state.catchup.ch === ch) {
+          if (state.catchup.isArchive) return;
           if (!adjusted) {
             adjusted = true;
             if (!catchupSeek(hls, data.details)) onFatal(ch, 'התכנית כבר לא זמינה');
@@ -4409,7 +4496,7 @@
     Guide = window.ITVGuide({
       state: state, S: S, osdEl: el.osd, isBack: isBack, isFav: isFav, toggleFav: toggleFav, toast: toast, showOsd: showOsd, playerMenu: playerMenu, markFocus: markFocus,
       playable: function (ch) { return !isApp(ch) && !appOnly(ch); },
-      catchupHours: function (ch) { return ch && CATCHUP[ch.id] ? CATCHUP[ch.id].hours : 0; },
+      catchupHours: function (ch) { return ch && CATCHUP[ch.id] ? CATCHUP[ch.id].hours : (hasArchiveCatchup(ch) ? (ch.catchupDays ? ch.catchupDays * 24 : 24) : 0); },
       playCatchup: playCatchup,
       inCatchup: function () { return !!state.catchup; },
       catchupPos: catchupPosMin,
@@ -4812,7 +4899,7 @@
     if (state.catchup) {
       items.push({ ico: '🔴', label: 'חזרה לשידור חי', act: function () { if (state.playing) loadStream(state.playing); } });
     }
-    if (CATCHUP[ch.id] || CATCHUP[(ch.id || '').toLowerCase()]) {
+    if (CATCHUP[ch.id] || CATCHUP[(ch.id || '').toLowerCase()] || hasArchiveCatchup(ch)) {
       var nowMin = Date.now() / 60000;
       var epgKey = (typeof CATCHUP_EPG !== 'undefined' && CATCHUP_EPG[ch.id]) || ch.id;
       var epgList = (window.ITV_EPG && window.ITV_EPG.channels && window.ITV_EPG.channels[epgKey]) || [];
@@ -5086,7 +5173,7 @@
         nextHtml +
         '</div>';
 
-      if (CATCHUP[ch.id] || CATCHUP[(ch.id || '').toLowerCase()]) {
+      if (CATCHUP[ch.id] || CATCHUP[(ch.id || '').toLowerCase()] || hasArchiveCatchup(ch)) {
         buttons.push({
           label: '⏮️ צפה מראשית התוכנית',
           act: function () {
@@ -5109,7 +5196,7 @@
         '</div>';
     }
 
-    if (CATCHUP[ch.id] || CATCHUP[(ch.id || '').toLowerCase()]) {
+    if (CATCHUP[ch.id] || CATCHUP[(ch.id || '').toLowerCase()] || hasArchiveCatchup(ch)) {
       buttons.push({
         label: '📅 לוח שידורים מלא וקאצ\' אפ',
         act: function () {

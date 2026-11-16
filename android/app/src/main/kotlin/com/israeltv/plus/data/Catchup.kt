@@ -96,6 +96,70 @@ object CatchupDvr {
         DVR_CHANNELS[channel.id] ?: DVR_CHANNELS[channel.id.lowercase()]
 }
 
+object CatchupArchive {
+    private val FLUSSONIC_RE = Regex("""/(index|video|mono)\.m3u8(\?.*)?$""", RegexOption.IGNORE_CASE)
+    private val IPTV_ARCHIVE_HOST_RE = Regex("""/iptv/[^/]+/\d+/(index|video|mono)\.m3u8""", RegexOption.IGNORE_CASE)
+
+    fun supportsFlussonic(url: String): Boolean = IPTV_ARCHIVE_HOST_RE.containsMatchIn(url)
+
+    fun hasArchive(channel: Channel): Boolean =
+        channel.catchupDays > 0 || channel.catchupSource.isNotEmpty() || channel.catchupType.isNotEmpty() || supportsFlussonic(channel.url)
+
+    fun archiveUrlFor(channel: Channel, startMs: Long, durationSec: Int): String? {
+        if (!hasArchive(channel)) return null
+        val startSec = (startMs / 1000L).coerceAtLeast(1L)
+        val nowSec = System.currentTimeMillis() / 1000L
+        val dur = durationSec.coerceIn(60, 6 * 3600)
+        val endSec = startSec + dur
+        val offsetSec = (nowSec - startSec).coerceAtLeast(0L)
+        val url = channel.url
+
+        if (channel.catchupSource.isNotEmpty()) {
+            val utcCal = java.util.Calendar.getInstance(java.util.TimeZone.getTimeZone("UTC")).apply { timeInMillis = startSec * 1000L }
+            fun pad2(v: Int) = v.toString().padStart(2, '0')
+            var tmpl = channel.catchupSource
+                .replace("{utc}", startSec.toString())
+                .replace("\${start}", startSec.toString())
+                .replace("{end}", endSec.toString())
+                .replace("\${end}", endSec.toString())
+                .replace("{duration}", dur.toString())
+                .replace("\${duration}", dur.toString())
+                .replace("{offset}", offsetSec.toString())
+                .replace("{lutc}", nowSec.toString())
+                .replace("\${timestamp}", nowSec.toString())
+                .replace("{Y}", utcCal.get(java.util.Calendar.YEAR).toString())
+                .replace("{m}", pad2(utcCal.get(java.util.Calendar.MONTH) + 1))
+                .replace("{d}", pad2(utcCal.get(java.util.Calendar.DAY_OF_MONTH)))
+                .replace("{H}", pad2(utcCal.get(java.util.Calendar.HOUR_OF_DAY)))
+                .replace("{M}", pad2(utcCal.get(java.util.Calendar.MINUTE)))
+                .replace("{S}", pad2(utcCal.get(java.util.Calendar.SECOND)))
+            if (tmpl.startsWith("?") || tmpl.startsWith("&")) {
+                val sep = if ('?' in url) "&" else "?"
+                return url + sep + tmpl.trimStart('?', '&')
+            }
+            if (tmpl.startsWith("http://", ignoreCase = true) || tmpl.startsWith("https://", ignoreCase = true)) {
+                return tmpl
+            }
+            return runCatching { java.net.URI(url).resolve(tmpl).toString() }.getOrDefault(tmpl)
+        }
+
+        val type = channel.catchupType.lowercase()
+        if (type == "append" || type == "shift") {
+            val sep = if ('?' in url) "&" else "?"
+            return "${url}${sep}utc=${startSec}&lutc=${nowSec}"
+        }
+
+        if (FLUSSONIC_RE.containsMatchIn(url)) {
+            return FLUSSONIC_RE.replace(url) { m ->
+                val q = m.groupValues[2]
+                "/archive-${startSec}-${dur}.m3u8$q"
+            }
+        }
+        val sep = if ('?' in url) "&" else "?"
+        return "${url}${sep}utc=${startSec}"
+    }
+}
+
 object CatchupRepository {
     private var cachedEpgJson: JSONObject? = null
     private var lastFetchTime = 0L
@@ -171,7 +235,28 @@ object CatchupRepository {
             "reshet13_access" to "reshet13",
             "reshet13_subs_il" to "reshet13"
         )
-        val candidates = listOf(
+        val nameLower = channel.name.lowercase()
+        val nameAliases = buildList {
+            if (channel.epgId.isNotEmpty()) add(channel.epgId)
+            if ("כאן 11" in nameLower || "kan 11" in nameLower) add("kan11")
+            if ("קשת 12" in nameLower || "ערוץ 12" in nameLower || "keshet" in nameLower) add("keshet12")
+            if ("רשת 13" in nameLower || "ערוץ 13" in nameLower || "reshet" in nameLower) add("reshet13")
+            if ("עכשיו 14" in nameLower || "ערוץ 14" in nameLower || "now 14" in nameLower) add("now14")
+            if ("חינוכית" in nameLower || "כאן 23" in nameLower) add("kan_hinuchit")
+            if ("מכאן 33" in nameLower || "makan" in nameLower) add("makan33")
+            if ("ערוץ 9" in nameLower) add("channel9_israel_hd")
+            if ("ספורט 1" in nameLower || "sport 1" in nameLower) add("sport1_israel")
+            if ("ספורט 2" in nameLower || "sport 2" in nameLower) add("sport2_israel")
+            if ("ספורט 3" in nameLower || "sport 3" in nameLower) add("sport3_israel")
+            if ("ספורט 4" in nameLower || "sport 4" in nameLower) add("sport4_israel")
+            if ("ספורט 5+" in nameLower || "5+" in nameLower || "5plus" in nameLower) add("sport5_plus")
+            if ("5 לייב" in nameLower || "5live" in nameLower) add("sport5_live")
+            if ("5 גולד" in nameLower || "5gold" in nameLower) add("sport5_gold")
+            if ("ספורט 5" in nameLower || "sport 5" in nameLower) add("sport5")
+            if ("one 2" in nameLower || "וואן 2" in nameLower) add("one_2")
+            if ("one" in nameLower || "וואן" in nameLower) add("one_1")
+        }
+        val candidates = nameAliases + listOf(
             sameGuide[channel.id] ?: channel.id,
             channel.id,
             channel.id.lowercase(),
@@ -196,11 +281,22 @@ object CatchupRepository {
             }
         }
 
-        if (arr == null) return@withContext emptyList()
+        if (arr == null) {
+            if (!CatchupArchive.hasArchive(channel)) return@withContext emptyList()
+            val days = channel.catchupDays.coerceIn(1, 3)
+            val nowHourMin = (System.currentTimeMillis() / 3_600_000L) * 60L
+            return@withContext (0 until days * 24).map { h ->
+                val startMin = nowHourMin - h * 60L
+                val sdf = SimpleDateFormat("dd/MM HH:mm", Locale.getDefault())
+                val label = if (h == 0) "שידור נוכחי (${sdf.format(Date(startMin * 60_000L))})" else "ארכיון · ${sdf.format(Date(startMin * 60_000L))}"
+                CatchupProgram(startMin, 60, label, "הקלטת ספק IPTV")
+            }
+        }
 
         val list = mutableListOf<CatchupProgram>()
         val nowMin = System.currentTimeMillis() / 60_000L
-        val minLimit = nowMin - 24 * 60L // Past 24 hours
+        val lookbackHours = maxOf(24, channel.catchupDays.coerceAtMost(7) * 24)
+        val minLimit = nowMin - lookbackHours * 60L
         val maxLimit = nowMin + 6 * 60L  // Up to next 6 hours
 
         for (i in 0 until arr.length()) {
@@ -236,6 +332,6 @@ object CatchupRepository {
     }
 
     fun hasCatchup(channel: Channel): Boolean {
-        return CatchupDvr.dvrUrlFor(channel) != null
+        return CatchupDvr.dvrUrlFor(channel) != null || CatchupArchive.hasArchive(channel)
     }
 }

@@ -179,6 +179,7 @@ import com.israeltv.plus.data.CastController
 import com.israeltv.plus.data.CastDeviceItem
 import com.israeltv.plus.data.CastProtocol
 import com.israeltv.plus.data.Channel
+import com.israeltv.plus.data.CatchupArchive
 import com.israeltv.plus.data.CatchupDvr
 import com.israeltv.plus.data.CatchupProgram
 import com.israeltv.plus.data.CatchupRepository
@@ -417,10 +418,18 @@ fun PlayerScreen(
         isCatchupMode = true
         catchupProgram = prog
         val dvrUrl = CatchupDvr.dvrUrlFor(current)
+        val archiveUrl = if (dvrUrl == null) {
+            val durSec = (prog.durationMin.coerceAtLeast(30) * 60)
+            CatchupArchive.archiveUrlFor(current, prog.startMs, durSec)
+        } else null
         val offsetFromLiveMs = (System.currentTimeMillis() - prog.startMs).coerceAtLeast(0L)
         statusToast = "⏮️ שידור חוזר: ${prog.title}"
         sheet = null
-        if (dvrUrl != null) {
+        if (archiveUrl != null) {
+            player.setMediaItem(MediaItem.Builder().setUri(archiveUrl).setMimeType(MimeTypes.APPLICATION_M3U8).build())
+            player.prepare()
+            player.playWhenReady = true
+        } else if (dvrUrl != null) {
             player.setMediaItem(MediaItem.Builder().setUri(dvrUrl).setMimeType(MimeTypes.APPLICATION_M3U8).build())
             player.prepare()
             player.playWhenReady = true
@@ -993,10 +1002,22 @@ fun PlayerScreen(
                     title = "לפני $mins דקות"
                 )
                 val dvrUrl = CatchupDvr.dvrUrlFor(current)
+                val archiveUrl = if (dvrUrl == null) {
+                    CatchupArchive.archiveUrlFor(current, System.currentTimeMillis() - mins * 60_000L, (mins + 60) * 60)
+                } else null
                 val rewindMs = mins * 60_000L
                 statusToast = "⏮️ חזרה $mins דקות אחורה"
                 sheet = null
-                if (dvrUrl != null) {
+                if (archiveUrl != null) {
+                    player.setMediaItem(
+                        androidx.media3.common.MediaItem.Builder()
+                            .setUri(archiveUrl)
+                            .setMimeType(androidx.media3.common.MimeTypes.APPLICATION_M3U8)
+                            .build()
+                    )
+                    player.prepare()
+                    player.playWhenReady = true
+                } else if (dvrUrl != null) {
                     player.setMediaItem(
                         androidx.media3.common.MediaItem.Builder()
                             .setUri(dvrUrl)

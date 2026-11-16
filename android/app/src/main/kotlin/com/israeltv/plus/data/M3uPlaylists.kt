@@ -20,6 +20,10 @@ data class M3uEntry(
     val group: String = "",
     val chno: Int = 0,
     val isRadio: Boolean = false,
+    val epgId: String = "",
+    val catchupDays: Int = 0,
+    val catchupType: String = "",
+    val catchupSource: String = "",
 )
 
 @Serializable
@@ -70,12 +74,27 @@ object M3uParser {
         var curLogo = ""
         var curGroup = ""
         var curChno = 0
+        var curEpgId = ""
+        var curCatchupDays = 0
+        var curCatchupType = ""
+        var curCatchupSource = ""
+        var defCatchupDays = 0
+        var defCatchupType = ""
+        var defCatchupSource = ""
         var hasExtinf = false
 
         for (raw in lines) {
             val line = raw.trim()
             if (line.isEmpty()) continue
             when {
+                line.startsWith("#EXTM3U", ignoreCase = true) -> {
+                    defCatchupDays = parseAttr(line, "catchup-days").toIntOrNull()
+                        ?: parseAttr(line, "tvg-rec").toIntOrNull()
+                        ?: parseAttr(line, "timeshift").toIntOrNull()
+                        ?: 0
+                    defCatchupType = parseAttr(line, "catchup").ifEmpty { parseAttr(line, "catchup-type") }
+                    defCatchupSource = parseAttr(line, "catchup-source")
+                }
                 line.startsWith("#EXTINF:", ignoreCase = true) -> {
                     hasExtinf = true
                     curName = parseName(line).ifEmpty { parseAttr(line, "tvg-name") }
@@ -83,6 +102,13 @@ object M3uParser {
                     val grp = parseAttr(line, "group-title")
                     if (grp.isNotEmpty()) curGroup = grp
                     curChno = parseAttr(line, "tvg-chno").toIntOrNull() ?: 0
+                    curEpgId = parseAttr(line, "tvg-id")
+                    curCatchupDays = parseAttr(line, "tvg-rec").toIntOrNull()
+                        ?: parseAttr(line, "catchup-days").toIntOrNull()
+                        ?: parseAttr(line, "timeshift").toIntOrNull()
+                        ?: defCatchupDays
+                    curCatchupType = parseAttr(line, "catchup").ifEmpty { parseAttr(line, "catchup-type") }.ifEmpty { defCatchupType }
+                    curCatchupSource = parseAttr(line, "catchup-source").ifEmpty { defCatchupSource }
                 }
                 line.startsWith("#EXTGRP:", ignoreCase = true) -> {
                     curGroup = line.substring(8).trim()
@@ -92,6 +118,9 @@ object M3uParser {
                     val idx = out.size
                     val name = (if (hasExtinf && curName.isNotEmpty()) curName else "ערוץ M3U ${idx + 1}")
                     val isRadio = RADIO_RE.containsMatchIn(curGroup) || RADIO_RE.containsMatchIn(line)
+                    val effDays = if (hasExtinf) curCatchupDays else defCatchupDays
+                    val effType = if (hasExtinf) curCatchupType else defCatchupType
+                    val effSource = if (hasExtinf) curCatchupSource else defCatchupSource
                     out.add(
                         M3uEntry(
                             id = "m3u_${playlistId}_$idx",
@@ -101,12 +130,20 @@ object M3uParser {
                             group = if (hasExtinf) curGroup else "",
                             chno = if (hasExtinf) curChno else 0,
                             isRadio = isRadio,
+                            epgId = if (hasExtinf) curEpgId else "",
+                            catchupDays = if (effDays == 0 && (effType.isNotEmpty() || effSource.isNotEmpty())) 3 else effDays,
+                            catchupType = effType,
+                            catchupSource = effSource,
                         ),
                     )
                     hasExtinf = false
                     curName = ""
                     curLogo = ""
                     curChno = 0
+                    curEpgId = ""
+                    curCatchupDays = 0
+                    curCatchupType = ""
+                    curCatchupSource = ""
                 }
             }
         }
@@ -228,6 +265,10 @@ class M3uStore(private val context: Context, private val http: OkHttpClient) {
                         number = if (e.chno > 0) e.chno else num,
                         lang = "he",
                         kind = if (e.isRadio) "radio" else "tv",
+                        epgId = e.epgId,
+                        catchupDays = e.catchupDays,
+                        catchupType = e.catchupType,
+                        catchupSource = e.catchupSource,
                     ),
                 )
             }
