@@ -178,7 +178,6 @@ fun SettingsScreen(data: ChannelData?, prefs: AppPrefs, updater: Updater, google
             },
         )
     }
-    val scope = rememberCoroutineScope()
     var changelog by remember { mutableStateOf<List<Pair<String, List<String>>>?>(null) }
     changelog?.let { list ->
         AlertDialog(
