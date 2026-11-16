@@ -76,7 +76,7 @@
     "title": "ערוץ HOT בידור ישראלי וסלבס HD",
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32141/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32141/index.m3u8",
     "logo": "assets/logos/hot_bidur.png",
     "badge": "HD",
     "desc": "HOT בידור – דוקו-ריאליטי ישראלי, חדשות הבידור, סדרות מקור ואירוח",
@@ -94,12 +94,10 @@
     "webOk": false,
     "countryHe": "ישראל",
     "fallbackUrls": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12219/index.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2368/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12219/index.m3u8"
     ],
     "backups": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12219/index.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2368/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12219/index.m3u8"
     ]
   },
   {
@@ -108,7 +106,7 @@
     "title": "ערוץ HOT Real סדרות ריאליטי HD",
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12274/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12274/index.m3u8",
     "logo": "assets/logos/hot_reality.png",
     "badge": "HD",
     "desc": "ערוץ HOT Real – מיטב סדרות הריאליטי והדוקו-ריאליטי מישראל ומהעולם",
@@ -186,7 +184,7 @@
     "name": "ערוץ השעשועונים והמשחקים HD",
     "title": "ערוץ השעשועונים והחידונים 24/7",
     "desc": "שעשועוני טלוויזיה, משחקי ידע, אתגרים וחידונים מרתקים לכל המשפחה בפרטנר TV.",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32158/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32158/index.m3u8",
     "backup_urls": [
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32161/index.m3u8"
     ],
@@ -232,18 +230,17 @@
     "backups": [
       "https://contact.gostreaming.tv/Con-11/index.m3u8",
       "https://contact.gostreaming.tv/Channel9/myStream/playlist.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2331/index.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2374/index.m3u8",
-      "http://stream.mcquack.net/454/index.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12206/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2331/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2374/index.m3u8",
+      "http://stream.mcquack.net/454/index.m3u8"
     ],
     "country": "IL",
     "countryHe": "ישראל",
     "fallbackUrls": [
       "https://contact.gostreaming.tv/Con-11/index.m3u8",
       "https://contact.gostreaming.tv/Channel9/myStream/playlist.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2331/index.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2374/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2331/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2374/index.m3u8",
       "http://stream.mcquack.net/454/index.m3u8"
     ]
   },
@@ -338,18 +335,16 @@
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/keshet12_hevc/live.livx/playlist.m3u8",
       "https://mako-streaming.akamaized.net/stream/hls/live/2033791/k12dvr/index.m3u8",
       "https://keshethlslive-LH.akamaihd.net/i/c2n_1@195269/master.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2345/index.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32250/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2345/index.m3u8",
       "http://stream.mcquack.net/449/index.m3u8",
       "https://mako-streaming.akamaized.net/stream/hls/live/2033791/k12/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/keshet_12_subs/live.livx/playlist.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/keshet_12_hevc/live.livx/playlist.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2349/index.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2329/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2349/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2329/index.m3u8",
       "http://stream.mcquack.net/294/index.m3u8",
       "https://mako-streaming.akamaized.net/stream/hls/live/2033791/k12n12wad/index.m3u8",
-      "http://stream.mcquack.net/293/index.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12201/index.m3u8"
+      "http://stream.mcquack.net/293/index.m3u8"
     ],
     "country": "IL",
     "countryHe": "ישראל",
@@ -359,21 +354,34 @@
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/keshet12_hevc/live.livx/playlist.m3u8",
       "https://mako-streaming.akamaized.net/stream/hls/live/2033791/k12dvr/index.m3u8",
       "https://keshethlslive-LH.akamaihd.net/i/c2n_1@195269/master.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2345/index.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32250/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2345/index.m3u8",
       "http://stream.mcquack.net/449/index.m3u8",
       "https://mako-streaming.akamaized.net/stream/hls/live/2033791/k12/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/keshet_12_subs/live.livx/playlist.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/keshet_12_hevc/live.livx/playlist.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2349/index.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2329/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2349/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2329/index.m3u8",
       "http://stream.mcquack.net/294/index.m3u8",
       "https://mako-streaming.akamaized.net/stream/hls/live/2033791/k12n12wad/index.m3u8",
       "http://stream.mcquack.net/293/index.m3u8"
     ],
     "auth": "",
     "backupUrls": [
-      "http://stream.mcquack.net/294/index.m3u8"
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/keshet12/live.livx/playlist.m3u8",
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/keshet12_subs/live.livx/playlist.m3u8",
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/keshet12_hevc/live.livx/playlist.m3u8",
+      "https://mako-streaming.akamaized.net/stream/hls/live/2033791/k12dvr/index.m3u8",
+      "https://keshethlslive-LH.akamaihd.net/i/c2n_1@195269/master.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2345/index.m3u8",
+      "http://stream.mcquack.net/449/index.m3u8",
+      "https://mako-streaming.akamaized.net/stream/hls/live/2033791/k12/index.m3u8",
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/keshet_12_subs/live.livx/playlist.m3u8",
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/keshet_12_hevc/live.livx/playlist.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2349/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2329/index.m3u8",
+      "http://stream.mcquack.net/294/index.m3u8",
+      "https://mako-streaming.akamaized.net/stream/hls/live/2033791/k12n12wad/index.m3u8",
+      "http://stream.mcquack.net/293/index.m3u8"
     ]
   },
   {
@@ -401,18 +409,16 @@
       "https://d18b0e6mopany4.cloudfront.net/out/v1/08bc71cf0a0f4712b6b03c732b0e6d25/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/reshet13_subs/live.livx/playlist.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/reshet13_hevc/live.livx/playlist.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2344/index.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32249/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32249/index.m3u8",
       "http://stream.mcquack.net/450/index.m3u8",
       "https://d198ztbnlup2iq.cloudfront.net/out/v1/2d9050c90fb94df8b78d1d98306a1a65/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/reshet_13_subs/live.livx/playlist.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2330/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2330/index.m3u8",
       "http://stream.mcquack.net/295/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/reshet_13_hevc/live.livx/playlist.m3u8",
       "https://d2xg1g9o5vns8m.cloudfront.net/out/v1/0855d703f7d5436fae6a9c7ce8ca5075/index.m3u8",
       "https://reshet.g-mana.live/media/87f59c77-03f6-4bad-a648-897e095e7360/mainManifest.m3u8",
       "http://stream.mcquack.net/294/index.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12202/index.m3u8",
       "https://d15ds134q59udk.cloudfront.net/media/3b45de9e-c944-4fdc-a344-7c3042b5b104/mainManifest.m3u8"
     ],
     "country": "IL",
@@ -423,21 +429,36 @@
       "https://d18b0e6mopany4.cloudfront.net/out/v1/08bc71cf0a0f4712b6b03c732b0e6d25/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/reshet13_subs/live.livx/playlist.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/reshet13_hevc/live.livx/playlist.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2344/index.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32249/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32249/index.m3u8",
       "http://stream.mcquack.net/450/index.m3u8",
       "https://d198ztbnlup2iq.cloudfront.net/out/v1/2d9050c90fb94df8b78d1d98306a1a65/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/reshet_13_subs/live.livx/playlist.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2330/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2330/index.m3u8",
       "http://stream.mcquack.net/295/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/reshet_13_hevc/live.livx/playlist.m3u8",
       "https://d2xg1g9o5vns8m.cloudfront.net/out/v1/0855d703f7d5436fae6a9c7ce8ca5075/index.m3u8",
       "https://reshet.g-mana.live/media/87f59c77-03f6-4bad-a648-897e095e7360/mainManifest.m3u8",
-      "http://stream.mcquack.net/294/index.m3u8"
+      "http://stream.mcquack.net/294/index.m3u8",
+      "https://d15ds134q59udk.cloudfront.net/media/3b45de9e-c944-4fdc-a344-7c3042b5b104/mainManifest.m3u8"
     ],
     "iptv": "Reshet13.il",
     "backupUrls": [
-      "http://stream.mcquack.net/295/index.m3u8"
+      "https://d18b0e6mopany4.cloudfront.net/out/v1/2f2bc414a3db4698a8e94b89eaf2da2a/index.m3u8",
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/reshet13/live.livx/playlist.m3u8",
+      "https://d18b0e6mopany4.cloudfront.net/out/v1/08bc71cf0a0f4712b6b03c732b0e6d25/index.m3u8",
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/reshet13_subs/live.livx/playlist.m3u8",
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/reshet13_hevc/live.livx/playlist.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32249/index.m3u8",
+      "http://stream.mcquack.net/450/index.m3u8",
+      "https://d198ztbnlup2iq.cloudfront.net/out/v1/2d9050c90fb94df8b78d1d98306a1a65/index.m3u8",
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/reshet_13_subs/live.livx/playlist.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2330/index.m3u8",
+      "http://stream.mcquack.net/295/index.m3u8",
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/reshet_13_hevc/live.livx/playlist.m3u8",
+      "https://d2xg1g9o5vns8m.cloudfront.net/out/v1/0855d703f7d5436fae6a9c7ce8ca5075/index.m3u8",
+      "https://reshet.g-mana.live/media/87f59c77-03f6-4bad-a648-897e095e7360/mainManifest.m3u8",
+      "http://stream.mcquack.net/294/index.m3u8",
+      "https://d15ds134q59udk.cloudfront.net/media/3b45de9e-c944-4fdc-a344-7c3042b5b104/mainManifest.m3u8"
     ]
   },
   {
@@ -463,29 +484,24 @@
     "backups": [
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/ch14/live.livx/playlist.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/ch14_hevc/live.livx/playlist.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/7103/index.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32325/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32325/index.m3u8",
       "http://stream.mcquack.net/451/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/ch14_subs/live.livx/playlist.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12242/index.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32152/index.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12239/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12242/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32152/index.m3u8",
       "https://channel14-live-consume.immergo.tv/output/2/streamPlaylist-archive.m3u8",
-      "http://stream.mcquack.net/295/index.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12203/index.m3u8"
+      "http://stream.mcquack.net/295/index.m3u8"
     ],
     "country": "IL",
     "countryHe": "ישראל",
     "fallbackUrls": [
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/ch14/live.livx/playlist.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/ch14_hevc/live.livx/playlist.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/7103/index.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32325/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32325/index.m3u8",
       "http://stream.mcquack.net/451/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/ch14_subs/live.livx/playlist.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12242/index.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32152/index.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12239/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12242/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32152/index.m3u8",
       "https://channel14-live-consume.immergo.tv/output/2/streamPlaylist-archive.m3u8",
       "http://stream.mcquack.net/295/index.m3u8"
     ]
@@ -513,25 +529,26 @@
     "backups": [
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/i24news/live.livx/playlist.m3u8",
       "https://bcovlive-a.akamaihd.net/d8958672620e4ff3925c42b38c93e86f/eu-central-1/5377161796001/playlist.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/19194/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/19194/index.m3u8",
       "https://i24newshebrew-cdn.encoders.immergo.tv/master.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2386/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2386/index.m3u8",
       "https://i24newshebrew-cdn.encoders.immergo.tv/2/streamPlaylist.m3u8",
       "https://hlspackager.akamaized.net/live/bitmovin-i24news/2589137645123855490/index.m3u8",
       "http://stream.mcquack.net/45/index.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12205/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12205/index.m3u8"
     ],
     "country": "IL",
     "countryHe": "ישראל",
     "fallbackUrls": [
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/i24news/live.livx/playlist.m3u8",
       "https://bcovlive-a.akamaihd.net/d8958672620e4ff3925c42b38c93e86f/eu-central-1/5377161796001/playlist.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/19194/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/19194/index.m3u8",
       "https://i24newshebrew-cdn.encoders.immergo.tv/master.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2386/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2386/index.m3u8",
       "https://i24newshebrew-cdn.encoders.immergo.tv/2/streamPlaylist.m3u8",
       "https://hlspackager.akamaized.net/live/bitmovin-i24news/2589137645123855490/index.m3u8",
-      "http://stream.mcquack.net/45/index.m3u8"
+      "http://stream.mcquack.net/45/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12205/index.m3u8"
     ]
   },
   {
@@ -597,7 +614,7 @@
     "title": "ערוץ yes דוקו קולנוע תיעודי ישראלי ועולמי HD",
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12258/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12258/index.m3u8",
     "logo": "assets/logos/yes_docu.png",
     "badge": "HD",
     "desc": "ערוץ yes דוקו – סרטים וסדרות דוקומנטריות עטורי פרסים מישראל ומהעולם",
@@ -612,12 +629,8 @@
       "web": "❌ רק באפליקציה (HTTP)"
     },
     "countryHe": "ישראל",
-    "fallbackUrls": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2344/index.m3u8"
-    ],
-    "backups": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2344/index.m3u8"
-    ]
+    "fallbackUrls": [],
+    "backups": []
   },
   {
     "id": "hot_8",
@@ -625,9 +638,9 @@
     "title": "ערוץ HOT 8 דוקו, מדע ותרבות HD",
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32142/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32142/index.m3u8",
     "fallbackUrls": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12216/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12216/index.m3u8"
     ],
     "logo": "assets/logos/hot_8.png",
     "badge": "HD",
@@ -642,7 +655,7 @@
       "web": "❌ רק באפליקציה (HTTP)"
     },
     "backups": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12216/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12216/index.m3u8"
     ]
   },
   {
@@ -651,9 +664,9 @@
     "title": "ערוץ הבית פלוס עיצוב ולייף סטייל (Home+ HD)",
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2339/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2339/index.m3u8",
     "fallbackUrls": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32126/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2355/index.m3u8"
     ],
     "logo": "assets/logos/home_plus_il.png",
     "badge": "HD",
@@ -668,8 +681,7 @@
       "web": "❌ רק באפליקציה (HTTP)"
     },
     "backups": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32126/index.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2355/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2355/index.m3u8"
     ]
   },
   {
@@ -678,7 +690,7 @@
     "title": "ערוץ הבריאות והרפואה הישראלי HD",
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2378/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2378/index.m3u8",
     "fallbackUrls": [],
     "logo": "assets/logos/health_channel_il.png",
     "badge": "HD",
@@ -714,12 +726,10 @@
       "web": "✅"
     },
     "fallbackUrls": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32160/index.m3u8",
-      "http://45.156.223.202/iptv/QAP2YS2594ZQS3/32160/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32160/index.m3u8"
     ],
     "backups": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32160/index.m3u8",
-      "http://45.156.223.202/iptv/QAP2YS2594ZQS3/32160/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32160/index.m3u8"
     ],
     "webOk": true
   },
@@ -779,27 +789,26 @@
     "backups": [
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/ch24/live.livx/playlist.m3u8",
       "https://mako-streaming.akamaized.net/stream/hls/live/2035897/ch24/index.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2330/index.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32320/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2330/index.m3u8",
       "http://stream.mcquack.net/452/index.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12237/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12237/index.m3u8",
       "http://stream.mcquack.net/42/index.m3u8",
       "https://mako-streaming.akamaized.net/direct/hls/live/2035340/ch24live/index.m3u8?as=1",
       "https://mako-streaming.akamaized.net/evrideo/hls/live/20001278/ch24live/index.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12208/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12208/index.m3u8"
     ],
     "country": "IL",
     "countryHe": "ישראל",
     "fallbackUrls": [
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/ch24/live.livx/playlist.m3u8",
       "https://mako-streaming.akamaized.net/stream/hls/live/2035897/ch24/index.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2330/index.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32320/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2330/index.m3u8",
       "http://stream.mcquack.net/452/index.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12237/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12237/index.m3u8",
       "http://stream.mcquack.net/42/index.m3u8",
       "https://mako-streaming.akamaized.net/direct/hls/live/2035340/ch24live/index.m3u8?as=1",
-      "https://mako-streaming.akamaized.net/evrideo/hls/live/20001278/ch24live/index.m3u8"
+      "https://mako-streaming.akamaized.net/evrideo/hls/live/20001278/ch24live/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12208/index.m3u8"
     ]
   },
   {
@@ -832,7 +841,7 @@
     "title": "ערוץ E! בידור וסלבס עם תרגום לעברית HD",
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12243/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12243/index.m3u8",
     "logo": "assets/logos/e_entertainment_il.png",
     "badge": "HD",
     "lang": "he",
@@ -854,7 +863,7 @@
     "title": "ערוץ אגו רכב, אקסטרים ולייף סטייל HD",
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32317/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32317/index.m3u8",
     "fallbackUrls": [],
     "logo": "assets/logos/ego_channel_il.png",
     "badge": "HD",
@@ -876,7 +885,7 @@
     "title": "ערוץ הריאליטי והמציאות בעברית HD",
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32159/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32159/index.m3u8",
     "logo": "assets/logos/cbs_reality_il.png",
     "badge": "HD",
     "lang": "he",
@@ -898,9 +907,9 @@
     "title": "ערוץ ההומור סטנדאפ ומערכונים ישראלי HD",
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32161/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32161/index.m3u8",
     "fallbackUrls": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32316/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32316/index.m3u8"
     ],
     "logo": "assets/logos/humor_channel_il.png",
     "badge": "HD",
@@ -915,7 +924,7 @@
       "web": "❌ רק באפליקציה (HTTP)"
     },
     "backups": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32316/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32316/index.m3u8"
     ]
   },
   {
@@ -964,11 +973,11 @@
       "web": "✅"
     },
     "fallbackUrls": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12208/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12208/index.m3u8"
     ],
     "iptv": "VivaPlus.il",
     "backups": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12208/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12208/index.m3u8"
     ]
   },
   {
@@ -992,12 +1001,12 @@
       "web": "✅"
     },
     "backups": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32127/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32127/index.m3u8",
       "http://stream.mcquack.net/43/index.m3u8"
     ],
     "countryHe": "ישראל",
     "fallbackUrls": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32127/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32127/index.m3u8",
       "http://stream.mcquack.net/43/index.m3u8"
     ],
     "iptv": "Viva.il"
@@ -1034,7 +1043,7 @@
     "id": "il_the_style_channel_hd_il",
     "name": "ערוץ הסטייל והאופנה HD",
     "category": "ערוצי ישראל - שידור חי",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32155/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32155/index.m3u8",
     "fallbackUrls": [],
     "logo": "assets/logos/il_the_style_channel_hd_il.png",
     "badge": "HD",
@@ -1058,7 +1067,7 @@
     "title": "ערוץ HOT Mind מדע, פסיכולוגיה והעשרה HD",
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32143/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32143/index.m3u8",
     "logo": "assets/logos/hot_mind.png",
     "badge": "HD",
     "lang": "he",
@@ -1342,11 +1351,11 @@
     },
     "countryHe": "ישראל",
     "fallbackUrls": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12244/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12244/index.m3u8"
     ],
     "iptv": "HopChannel.il",
     "backups": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12244/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12244/index.m3u8"
     ]
   },
   {
@@ -1403,7 +1412,7 @@
     "title": "ערוץ לולי (Luli TV) לפעוטות בעברית HD",
     "category": "ילדים ונוער (בעברית)",
     "categoryEn": "kids_he",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2364/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2364/index.m3u8",
     "fallbackUrls": [],
     "logo": "assets/logos/luli_tv.png",
     "badge": "HD",
@@ -1426,7 +1435,7 @@
     "title": "ערוץ דיסני ישראל (Disney Channel Israel HD)",
     "category": "ילדים ונוער (בעברית)",
     "categoryEn": "kids_he",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2382/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2382/index.m3u8",
     "logo": "assets/logos/disney.png",
     "badge": "HD",
     "lang": "he",
@@ -1463,14 +1472,8 @@
       "found": "iptv-org (DisneyJunior.il)",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "fallbackUrls": [
-      "http://88.212.15.50/live/test_disney_junior/playlist.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2333/index.m3u8"
-    ],
-    "backups": [
-      "http://88.212.15.50/live/test_disney_junior/playlist.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2333/index.m3u8"
-    ]
+    "fallbackUrls": [],
+    "backups": []
   },
   {
     "id": "nickelodeon_il",
@@ -1478,7 +1481,7 @@
     "title": "ערוץ ניקלודיאון לילדים ונוער בעברית (Nickelodeon Israel HD)",
     "category": "ילדים ונוער (בעברית)",
     "categoryEn": "kids_he",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2337/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2337/index.m3u8",
     "logo": "assets/logos/nickelodeon.png",
     "badge": "HD",
     "desc": "ערוץ ניקלודיאון – בובספוג מכנסמרובע, הרעשנים, אווטאר, צבי הנינג'ה וקומדיות לילדים",
@@ -1495,10 +1498,10 @@
     },
     "iptv": "Nickelodeon.il",
     "fallbackUrls": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12240/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12240/index.m3u8"
     ],
     "backups": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12240/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12240/index.m3u8"
     ],
     "language": "he",
     "servers": [
@@ -1526,9 +1529,9 @@
     "title": "ערוץ ניק ג'וניור בעברית (Nick Jr. Israel HD)",
     "category": "ילדים ונוער (בעברית)",
     "categoryEn": "kids_he",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2337/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2337/index.m3u8",
     "fallbackUrls": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12240/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12240/index.m3u8"
     ],
     "logo": "assets/logos/nick_jr.png",
     "badge": "HD",
@@ -1544,7 +1547,7 @@
       "web": "❌ רק באפליקציה (HTTP)"
     },
     "backups": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12240/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12240/index.m3u8"
     ]
   },
   {
@@ -1553,10 +1556,8 @@
     "title": "ערוץ טין ניק לנוער בעברית (TeenNick Israel HD)",
     "category": "ילדים ונוער (בעברית)",
     "categoryEn": "kids_he",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32148/index.m3u8",
-    "fallbackUrls": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2334/index.m3u8"
-    ],
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32148/index.m3u8",
+    "fallbackUrls": [],
     "logo": "assets/logos/teennick.png",
     "badge": "HD",
     "lang": "he",
@@ -1570,9 +1571,7 @@
       "found": "iptv-org (TeenNick.il)",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "backups": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2334/index.m3u8"
-    ]
+    "backups": []
   },
   {
     "id": "zoom_kids",
@@ -1597,12 +1596,10 @@
     "country": "IL",
     "countryHe": "ישראל",
     "fallbackUrls": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2359/index.m3u8",
-      "http://45.156.223.202/iptv/QAP2YS2594ZQS3/2359/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2359/index.m3u8"
     ],
     "backups": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2359/index.m3u8",
-      "http://45.156.223.202/iptv/QAP2YS2594ZQS3/2359/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2359/index.m3u8"
     ]
   },
   {
@@ -1627,11 +1624,11 @@
       "web": "✅"
     },
     "fallbackUrls": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2366/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2366/index.m3u8"
     ],
     "iptv": "Junior.il",
     "backups": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2366/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2366/index.m3u8"
     ]
   },
   {
@@ -1680,12 +1677,12 @@
       "web": "✅"
     },
     "fallbackUrls": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2370/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2370/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/baby/live.livx/playlist.m3u8"
     ],
     "iptv": "BabyTV.il",
     "backups": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2370/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2370/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/baby/live.livx/playlist.m3u8"
     ]
   },
@@ -1695,10 +1692,8 @@
     "title": "ערוץ סרטי הילדים של יס (yes Movies Kids FHD)",
     "category": "ילדים ונוער (בעברית)",
     "categoryEn": "kids_he",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2365/index.m3u8",
-    "fallbackUrls": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2365/index.m3u8"
-    ],
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2365/index.m3u8",
+    "fallbackUrls": [],
     "logo": "assets/logos/yes_cinema_kids.png",
     "badge": "FHD",
     "lang": "he",
@@ -1719,7 +1714,7 @@
     "title": "ערוץ HOT Cinema Family סרטי משפחה וילדים HD",
     "category": "ילדים ונוער (בעברית)",
     "categoryEn": "kids_he",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32146/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32146/index.m3u8",
     "logo": "assets/logos/hot_cinema_family_il.png",
     "badge": "HD",
     "lang": "he",
@@ -1732,12 +1727,8 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "fallbackUrls": [
-      "http://45.156.223.202/iptv/QAP2YS2594ZQS3/32146/index.m3u8"
-    ],
-    "backups": [
-      "http://45.156.223.202/iptv/QAP2YS2594ZQS3/32146/index.m3u8"
-    ]
+    "fallbackUrls": [],
+    "backups": []
   },
   {
     "id": "wiz_kids_il",
@@ -1745,7 +1736,7 @@
     "title": "ערוץ הילדים החכם WIZ! בעברית HD",
     "category": "ילדים ונוער (בעברית)",
     "categoryEn": "kids_he",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12283/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12283/index.m3u8",
     "logo": "assets/logos/wiz.png",
     "badge": "HD",
     "lang": "he",
@@ -1961,9 +1952,9 @@
     "name": "ערוץ ניק ג'וניור פלוס בעברית HD (Nick Jr.+)",
     "category": "ילדים ונוער (בעברית)",
     "categoryEn": "kids",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2337/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2337/index.m3u8",
     "fallbackUrls": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2337/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12240/index.m3u8"
     ],
     "badge": "HD",
     "color": "#fb923c",
@@ -1980,8 +1971,7 @@
       "web": "❌ רק באפליקציה (HTTP)"
     },
     "backups": [
-      "http://45.156.223.202/iptv/QAP2YS2594ZQS3/2337/index.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12240/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12240/index.m3u8"
     ]
   },
   {
@@ -1990,7 +1980,7 @@
     "title": "ערוץ 98 שידורי קהילה והאזרח הוותיק",
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2369/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2369/index.m3u8",
     "logo": "assets/logos/channel_98_il.png",
     "badge": "HD",
     "lang": "he",
@@ -2030,10 +2020,8 @@
       "https://kneset.gostreaming.tv/p2-kneset/_definst_/myStream/playlist.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/knesset/live.livx/playlist.m3u8",
       "https://contact.gostreaming.tv/Knesset/myStream/playlist.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2375/index.m3u8",
       "https://kneset.gostreaming.tv/p2-kneset/_definst_/myStream/index.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12269/index.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12238/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12269/index.m3u8",
       "http://stream.mcquack.net/48/index.m3u8"
     ],
     "country": "IL",
@@ -2042,10 +2030,8 @@
       "https://kneset.gostreaming.tv/p2-kneset/_definst_/myStream/playlist.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/knesset/live.livx/playlist.m3u8",
       "https://contact.gostreaming.tv/Knesset/myStream/playlist.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2375/index.m3u8",
       "https://kneset.gostreaming.tv/p2-kneset/_definst_/myStream/index.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12269/index.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12238/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12269/index.m3u8",
       "http://stream.mcquack.net/48/index.m3u8"
     ]
   },
@@ -2071,10 +2057,10 @@
       "web": "✅"
     },
     "fallbackUrls": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32164/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32164/index.m3u8"
     ],
     "backups": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32164/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32164/index.m3u8"
     ]
   },
   {
@@ -2302,10 +2288,10 @@
     },
     "number": 79,
     "fallbackUrls": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32160/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32160/index.m3u8"
     ],
     "backups": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32160/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32160/index.m3u8"
     ]
   },
   {
@@ -2483,11 +2469,11 @@
     "countryHe": "ישראל",
     "fallbackUrls": [
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kneset/live.livx/playlist.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12269/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12269/index.m3u8"
     ],
     "backups": [
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kneset/live.livx/playlist.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12269/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12269/index.m3u8"
     ]
   },
   {
@@ -2813,8 +2799,7 @@
     "logo": "assets/logos/knesset.png",
     "url": "http://stream.mcquack.net/48/index.m3u8",
     "backupUrls": [
-      "http://45.156.223.202/iptv/QAP2YS2594ZQS3/2369/index.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2369/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2369/index.m3u8"
     ],
     "channelNumber": 99,
     "number": 99,
@@ -2826,14 +2811,19 @@
     "quality": "HD",
     "resolution": "1080p",
     "desc": "ערוץ הכנסת המשדר דיוני מליאה, ועדות ומשדרים פוליטיים ואקטואליים.",
-    "backups": [],
+    "backups": [
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2369/index.m3u8"
+    ],
     "src": {
       "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
       "kind": "restream",
       "host": "stream.mcquack.net",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
-    }
+    },
+    "fallbackUrls": [
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2369/index.m3u8"
+    ]
   },
   {
     "id": "sport5_israel_hd",
@@ -2857,14 +2847,19 @@
       "web": "✅"
     },
     "backups": [
-      "http://stream.mcquack.net/212/index.m3u8"
+      "http://stream.mcquack.net/212/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32001/index.m3u8",
+      "http://stream.mcquack.net/55/index.m3u8"
     ],
     "fallbackUrls": [
-      "http://stream.mcquack.net/212/index.m3u8"
+      "http://stream.mcquack.net/212/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32001/index.m3u8",
+      "http://stream.mcquack.net/55/index.m3u8"
     ],
     "iptv": "Sport5.il",
     "backupUrls": [
-      "http://45.156.223.202/iptv/QAP2YS2594ZQS3/32001/index.m3u8",
+      "http://stream.mcquack.net/212/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32001/index.m3u8",
       "http://stream.mcquack.net/55/index.m3u8"
     ],
     "webOk": true
@@ -2884,7 +2879,8 @@
     "countryHe": "ישראל",
     "number": 101,
     "backups": [
-      "http://stream.mcquack.net/333/index.m3u8"
+      "http://stream.mcquack.net/333/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32002/index.m3u8"
     ],
     "src": {
       "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
@@ -2894,11 +2890,13 @@
       "web": "✅"
     },
     "fallbackUrls": [
-      "http://stream.mcquack.net/333/index.m3u8"
+      "http://stream.mcquack.net/333/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32002/index.m3u8"
     ],
     "iptv": "Sport5Plus.il",
     "backupUrls": [
-      "http://45.156.223.202/iptv/QAP2YS2594ZQS3/32002/index.m3u8"
+      "http://stream.mcquack.net/333/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32002/index.m3u8"
     ],
     "webOk": true
   },
@@ -2917,8 +2915,8 @@
     "countryHe": "ישראל",
     "number": 102,
     "backups": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2362/index.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12255/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2362/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12255/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5_live_hevc/live.livx/playlist.m3u8"
     ],
     "src": {
@@ -2929,8 +2927,8 @@
       "web": "✅"
     },
     "fallbackUrls": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2362/index.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12255/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2362/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12255/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5_live_hevc/live.livx/playlist.m3u8"
     ],
     "iptv": "Sport5Live.il"
@@ -2957,11 +2955,11 @@
       "web": "✅"
     },
     "fallbackUrls": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12254/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12254/index.m3u8"
     ],
     "iptv": "Sport5Gold.il",
     "backups": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12254/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12254/index.m3u8"
     ]
   },
   {
@@ -2986,13 +2984,13 @@
       "web": "✅"
     },
     "fallbackUrls": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12278/index.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12232/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12278/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12232/index.m3u8"
     ],
     "iptv": "Sport5Stars.il",
     "backups": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12278/index.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12232/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12278/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12232/index.m3u8"
     ]
   },
   {
@@ -3017,11 +3015,11 @@
       "web": "✅"
     },
     "fallbackUrls": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32147/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32147/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5_max_hevc/live.livx/playlist.m3u8"
     ],
     "backups": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32147/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32147/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5_max_hevc/live.livx/playlist.m3u8"
     ]
   },
@@ -3040,9 +3038,9 @@
     "countryHe": "ישראל",
     "number": 106,
     "backups": [
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5_4k_hevc/live.livx/playlist.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5_4k/live.livx/playlist.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32004/index.m3u8",
-      "http://45.156.223.202/iptv/QAP2YS2594ZQS3/32004/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32004/index.m3u8",
       "https://rgelive.akamaized.net/hls/live/2043095/live3/playlist.m3u8"
     ],
     "src": {
@@ -3053,7 +3051,10 @@
       "web": "✅"
     },
     "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5_4k_hevc/live.livx/playlist.m3u8"
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5_4k_hevc/live.livx/playlist.m3u8",
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5_4k/live.livx/playlist.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32004/index.m3u8",
+      "https://rgelive.akamaized.net/hls/live/2043095/live3/playlist.m3u8"
     ],
     "iptv": "Sport54K.il"
   },
@@ -3072,7 +3073,7 @@
     "countryHe": "ישראל",
     "number": 107,
     "backups": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2340/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2340/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/one_1_hevc/live.livx/playlist.m3u8"
     ],
     "src": {
@@ -3083,7 +3084,7 @@
       "web": "✅"
     },
     "fallbackUrls": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2340/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2340/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/one_1_hevc/live.livx/playlist.m3u8"
     ],
     "iptv": "One.il"
@@ -3103,8 +3104,8 @@
     "logo": "assets/logos/one_2_hd.png",
     "number": 108,
     "backups": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12231/index.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2373/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12231/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2373/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/one_2_hevc/live.livx/playlist.m3u8"
     ],
     "src": {
@@ -3115,8 +3116,8 @@
       "web": "✅"
     },
     "fallbackUrls": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12231/index.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2373/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12231/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2373/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/one_2_hevc/live.livx/playlist.m3u8"
     ],
     "iptv": "One2.il"
@@ -3143,10 +3144,10 @@
       "web": "✅"
     },
     "fallbackUrls": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32129/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32129/index.m3u8"
     ],
     "backups": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32129/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32129/index.m3u8"
     ]
   },
   {
@@ -3171,10 +3172,10 @@
       "web": "✅"
     },
     "fallbackUrls": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32002/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32002/index.m3u8"
     ],
     "backups": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32002/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32002/index.m3u8"
     ]
   },
   {
@@ -3198,14 +3199,17 @@
     },
     "fallbackUrls": [
       "http://stream.mcquack.net/234/index.m3u8",
-      "http://stream.mcquack.net/457/index.m3u8"
+      "http://stream.mcquack.net/457/index.m3u8",
+      "http://stream.mcquack.net/51/index.m3u8"
     ],
     "backups": [
       "http://stream.mcquack.net/234/index.m3u8",
-      "http://stream.mcquack.net/457/index.m3u8"
+      "http://stream.mcquack.net/457/index.m3u8",
+      "http://stream.mcquack.net/51/index.m3u8"
     ],
     "backupUrls": [
-      "http://45.156.223.202/iptv/QAP2YS2594ZQS3/2352/index.m3u8",
+      "http://stream.mcquack.net/234/index.m3u8",
+      "http://stream.mcquack.net/457/index.m3u8",
       "http://stream.mcquack.net/51/index.m3u8"
     ],
     "webOk": true
@@ -3255,14 +3259,20 @@
     },
     "fallbackUrls": [
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport5_fhd/live.livx/playlist.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12252/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12252/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32001/index.m3u8",
+      "http://stream.mcquack.net/55/index.m3u8"
     ],
     "backups": [
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport5_fhd/live.livx/playlist.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12252/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12252/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32001/index.m3u8",
+      "http://stream.mcquack.net/55/index.m3u8"
     ],
     "backupUrls": [
-      "http://45.156.223.202/iptv/QAP2YS2594ZQS3/32001/index.m3u8",
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport5_fhd/live.livx/playlist.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12252/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32001/index.m3u8",
       "http://stream.mcquack.net/55/index.m3u8"
     ]
   },
@@ -3296,10 +3306,8 @@
     "title": "ערוץ הסדרות הישראליות והבינלאומיות HOT 3 FHD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12214/index.m3u8",
-    "fallbackUrls": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12214/index.m3u8"
-    ],
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12214/index.m3u8",
+    "fallbackUrls": [],
     "logo": "assets/logos/hot_3_fhd.png",
     "badge": "FHD",
     "lang": "he",
@@ -3321,7 +3329,7 @@
     "title": "ערוץ סדרות הפרימיום HOT HBO עם תרגום לעברית HD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2354/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2354/index.m3u8",
     "logo": "assets/logos/hot_hbo_hd.png",
     "badge": "HD",
     "lang": "he",
@@ -3348,7 +3356,7 @@
     "title": "ערוץ הסרטים HOT Cinema 1 שוברי קופות FHD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2357/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2357/index.m3u8",
     "logo": "assets/logos/hot_cinema_1.png",
     "badge": "FHD",
     "desc": "HOT סינמה 1 FHD – בכורות הוליוודיות ושוברי קופות מובילים עם כתוביות בעברית",
@@ -3364,11 +3372,11 @@
     },
     "countryHe": "ישראל",
     "fallbackUrls": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12245/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12245/index.m3u8"
     ],
     "iptv": "HotCinema1.il",
     "backups": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12245/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12245/index.m3u8"
     ]
   },
   {
@@ -3377,7 +3385,7 @@
     "title": "ערוץ הסרטים HOT Cinema 2 אקשן ומתח HD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12215/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12215/index.m3u8",
     "logo": "assets/logos/hot_cinema_2.png",
     "badge": "HD",
     "desc": "HOT סינמה 2 – סרטי אקשן, מתח, מדע בדיוני והרפתקאות עם כתוביות בעברית",
@@ -3401,7 +3409,7 @@
     "title": "ערוץ הסרטים HOT Cinema 3 קומדיה ודרמה FHD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2372/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2372/index.m3u8",
     "logo": "assets/logos/hot_cinema_3.png",
     "badge": "FHD",
     "desc": "HOT סינמה 3 FHD – קומדיות, סרטי דרמה ורומנטיקה עם כתוביות בעברית",
@@ -3417,11 +3425,11 @@
     },
     "countryHe": "ישראל",
     "fallbackUrls": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12220/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12220/index.m3u8"
     ],
     "iptv": "HotCinema3.il",
     "backups": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12220/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12220/index.m3u8"
     ]
   },
   {
@@ -3430,7 +3438,7 @@
     "title": "ערוץ הסרטים HOT Cinema 4 קולנוע נבחר HD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2356/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2356/index.m3u8",
     "logo": "assets/logos/hot_cinema_4.png",
     "badge": "HD",
     "lang": "he",
@@ -3452,7 +3460,7 @@
     "title": "ערוץ הסרטים HOT Cinema 5 HD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32137/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32137/index.m3u8",
     "logo": "assets/logos/hot_cinema_5.png",
     "badge": "HD",
     "lang": "he",
@@ -3473,7 +3481,7 @@
     "title": "ערוץ HOT קולנוע ישראלי סרטים ישראליים HD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32138/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32138/index.m3u8",
     "logo": "assets/logos/hot_israeli.png",
     "badge": "HD",
     "lang": "he",
@@ -3494,7 +3502,7 @@
     "title": "ערוץ HOT קולנוע רומנטי סרטי אהבה ורגש HD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32144/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32144/index.m3u8",
     "logo": "assets/logos/hot_romantic_cinema.png",
     "badge": "HD",
     "lang": "he",
@@ -3515,7 +3523,7 @@
     "title": "ערוץ הסדרות HOT Drama בתרגום לעברית HD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32140/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32140/index.m3u8",
     "badge": "HD",
     "desc": "HOT דרמה – סדרות דרמה ישראליות ובינלאומיות מובילות עם כתוביות בעברית",
     "lang": "he",
@@ -3539,7 +3547,7 @@
     "title": "ערוץ סדרות האקשן והמתח HOT Zone HD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2360/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2360/index.m3u8",
     "badge": "HD",
     "desc": "HOT זון – סדרות אקשן, פשע, מתח וחקירות מארה\"ב ומהעולם בתרגום לעברית",
     "lang": "he",
@@ -3555,13 +3563,11 @@
     "country": "IL",
     "countryHe": "ישראל",
     "fallbackUrls": [
-      "http://stream.mcquack.net/379/index.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12222/index.m3u8"
+      "http://stream.mcquack.net/379/index.m3u8"
     ],
     "iptv": "HotZone.il",
     "backups": [
-      "http://stream.mcquack.net/379/index.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12222/index.m3u8"
+      "http://stream.mcquack.net/379/index.m3u8"
     ]
   },
   {
@@ -3570,7 +3576,7 @@
     "title": "ערוץ הקומדיות והסיטקומים HOT Comedy HD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12217/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12217/index.m3u8",
     "logo": "assets/logos/hot_comedy.png",
     "badge": "HD",
     "desc": "HOT קומדי – סיטקומים, סדרות קומיות ומופעי סטנדאפ בתרגום לעברית",
@@ -3596,7 +3602,7 @@
     "title": "ערוץ yes קולנוע ישראלי סרטים וסדרות מישראל HD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2342/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2342/index.m3u8",
     "logo": "assets/logos/yes_israeli.png",
     "badge": "HD",
     "desc": "yes קולנוע ישראלי – סרטים ישראליים חדשים, קלאסיקות אהובות ויצירה מקורית",
@@ -3620,7 +3626,7 @@
     "title": "ערוץ הסרטים yes Movies Action FHD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12270/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12270/index.m3u8",
     "badge": "FHD",
     "desc": "yes קולנוע אקשן FHD – סרטי פעולה, מתח, גיבורי-על ומדע בדיוני עם כתוביות בעברית",
     "lang": "he",
@@ -3636,14 +3642,14 @@
     "country": "IL",
     "countryHe": "ישראל",
     "fallbackUrls": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12280/index.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2350/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12280/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2350/index.m3u8",
       "http://stream.mcquack.net/380/index.m3u8"
     ],
     "iptv": "YesMoviesAction.il",
     "backups": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12280/index.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2350/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12280/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2350/index.m3u8",
       "http://stream.mcquack.net/380/index.m3u8"
     ]
   },
@@ -3653,7 +3659,7 @@
     "title": "ערוץ הסרטים yes Movies Drama FHD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12272/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12272/index.m3u8",
     "logo": "assets/logos/yes_movies_drama.png",
     "badge": "FHD",
     "desc": "yes קולנוע דרמה FHD – סרטי דרמה מרגשים, ביוגרפיות וזוכי אוסקר עם תרגום לעברית",
@@ -3669,13 +3675,13 @@
     },
     "countryHe": "ישראל",
     "fallbackUrls": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12282/index.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2351/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12282/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2351/index.m3u8"
     ],
     "iptv": "YesMoviesDrama.il",
     "backups": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12282/index.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2351/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12282/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2351/index.m3u8"
     ]
   },
   {
@@ -3684,7 +3690,7 @@
     "title": "ערוץ הסרטים yes Movies Comedy FHD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12271/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12271/index.m3u8",
     "logo": "assets/logos/yes_movies_comedy.png",
     "badge": "FHD",
     "desc": "yes קולנוע קומדיה FHD – קומדיות הוליוודיות, סרטי פיל-גוד ורומנטיקה עם תרגום לעברית",
@@ -3700,13 +3706,13 @@
     },
     "countryHe": "ישראל",
     "fallbackUrls": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12281/index.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2348/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12281/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2348/index.m3u8"
     ],
     "iptv": "YesMoviesComedy.il",
     "backups": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12281/index.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2348/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12281/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2348/index.m3u8"
     ]
   },
   {
@@ -3715,7 +3721,7 @@
     "title": "ערוץ הסדרות yes TV Action HD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2346/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2346/index.m3u8",
     "logo": "assets/logos/yes_tv_action.png",
     "badge": "HD",
     "desc": "yes TV Action – סדרות מתח, אקשן, פשע ומדע בדיוני מובילות עם כתוביות בעברית",
@@ -3739,7 +3745,7 @@
     "title": "ערוץ הסדרות yes TV Drama HD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2343/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2343/index.m3u8",
     "logo": "assets/logos/yes_tv_drama.png",
     "badge": "HD",
     "desc": "yes TV Drama – סדרות המקור של yes וסדרות הדרמה הטובות בעולם בתרגום לעברית",
@@ -3763,7 +3769,7 @@
     "title": "ערוץ הסדרות yes TV Comedy HD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2345/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2345/index.m3u8",
     "logo": "assets/logos/yes_tv_comedy.png",
     "badge": "HD",
     "lang": "he",
@@ -3785,7 +3791,7 @@
     "title": "ערוץ ויוה פרימיום דרמות וטלנובלות HD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12226/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12226/index.m3u8",
     "backups": [
       "http://stream.mcquack.net/43/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/viva/live.livx/playlist.m3u8"
@@ -3815,9 +3821,9 @@
     "title": "הערוץ הים תיכוני סדרות, סרטים ומוזיקה HD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2390/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2390/index.m3u8",
     "fallbackUrls": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12211/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12211/index.m3u8",
       "http://stream.mcquack.net/46/index.m3u8"
     ],
     "logo": "assets/logos/yam_tichoni_hd.png",
@@ -3833,7 +3839,7 @@
       "web": "❌ רק באפליקציה (HTTP)"
     },
     "backups": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12211/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12211/index.m3u8",
       "http://stream.mcquack.net/46/index.m3u8"
     ]
   },
@@ -3843,7 +3849,7 @@
     "title": "הערוץ הים תיכוני פלוס סדרות ודרמות HD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12224/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12224/index.m3u8",
     "logo": "assets/logos/yam_tichoni_plus_il.png",
     "badge": "HD",
     "lang": "he",
@@ -3864,9 +3870,9 @@
     "title": "ערוץ הדרמות הטורקיות פלוס בתרגום לעברית FHD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12257/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12257/index.m3u8",
     "fallbackUrls": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2363/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2363/index.m3u8"
     ],
     "logo": "assets/logos/turkish_dramas_plus.png",
     "badge": "FHD",
@@ -3881,7 +3887,7 @@
       "web": "❌ רק באפליקציה (HTTP)"
     },
     "backups": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2363/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2363/index.m3u8"
     ]
   },
   {
@@ -3890,7 +3896,7 @@
     "title": "ערוץ הדרמות הטורקיות 2 בתרגום לעברית FHD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12262/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12262/index.m3u8",
     "logo": "assets/logos/turkish_dramas_2.png",
     "badge": "FHD",
     "lang": "he",
@@ -3911,7 +3917,7 @@
     "title": "ערוץ הדרמות הטורקיות 3 בתרגום לעברית FHD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12264/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12264/index.m3u8",
     "logo": "assets/logos/turkish_dramas_3.png",
     "badge": "FHD",
     "lang": "he",
@@ -3962,7 +3968,7 @@
     "title": "ערוץ הסרטים הים תיכוני 2 בתרגום לעברית HD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32163/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32163/index.m3u8",
     "logo": "assets/logos/mediterranean_movies_2.png",
     "badge": "HD",
     "lang": "he",
@@ -3983,7 +3989,7 @@
     "title": "ערוץ האקשן העולמי 1 סדרות וסרטי פעולה HD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32130/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32130/index.m3u8",
     "logo": "assets/logos/global_action_1.png",
     "badge": "HD",
     "lang": "he",
@@ -4004,7 +4010,7 @@
     "title": "ערוץ האקשן העולמי 2 סדרות וסרטי פעולה HD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32131/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32131/index.m3u8",
     "logo": "assets/logos/global_action_2.png",
     "badge": "HD",
     "lang": "he",
@@ -4025,7 +4031,7 @@
     "title": "ערוץ הדרמות הספרדיות 1 בתרגום לעברית HD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32132/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32132/index.m3u8",
     "logo": "assets/logos/spanish_dramas_1.png",
     "badge": "HD",
     "lang": "he",
@@ -4046,7 +4052,7 @@
     "title": "ערוץ הדרמות הספרדיות 2 בתרגום לעברית HD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32133/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32133/index.m3u8",
     "logo": "assets/logos/spanish_dramas_2.png",
     "badge": "HD",
     "lang": "he",
@@ -4067,7 +4073,7 @@
     "title": "ערוץ הדרמות ההודיות 1 בתרגום לעברית HD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32134/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32134/index.m3u8",
     "logo": "assets/logos/indian_series_1.png",
     "badge": "HD",
     "lang": "he",
@@ -4088,7 +4094,7 @@
     "title": "ערוץ הדרמות ההודיות 2 בתרגום לעברית HD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32135/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32135/index.m3u8",
     "logo": "assets/logos/indian_series_2.png",
     "badge": "HD",
     "lang": "he",
@@ -4109,7 +4115,7 @@
     "title": "ערוץ בוליווד Bollywood HD בתרגום לעברית",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12267/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12267/index.m3u8",
     "logo": "assets/logos/bollywood_hd.png",
     "badge": "HD",
     "lang": "he",
@@ -4130,7 +4136,7 @@
     "title": "ערוץ בוליווד סרטים הודיים קלאסיים HD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32150/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32150/index.m3u8",
     "logo": "assets/logos/bollywood_classic_hd.png",
     "badge": "HD",
     "lang": "he",
@@ -4151,7 +4157,7 @@
     "title": "ערוץ בולישואו סדרות ובידור הודי HD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32125/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32125/index.m3u8",
     "logo": "assets/logos/bollyshow_hd.png",
     "badge": "HD",
     "lang": "he",
@@ -4172,7 +4178,7 @@
     "title": "ערוץ הסדרות והסרטים ZEE TV ישראל (Zee TV Israel HD)",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32153/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32153/index.m3u8",
     "fallbackUrls": [],
     "logo": "assets/logos/zee_tv_il.png",
     "badge": "HD",
@@ -4195,7 +4201,7 @@
     "title": "ערוץ GTV סדרות וקולנוע (GTV HD)",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32157/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32157/index.m3u8",
     "fallbackUrls": [],
     "logo": "assets/logos/gtv_il.png",
     "badge": "HD",
@@ -4218,7 +4224,7 @@
     "title": "ערוץ הקומדיות הקלאסיות והישראליות HD",
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32136/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32136/index.m3u8",
     "logo": "assets/logos/reshet13_comedy_il.png",
     "badge": "HD",
     "lang": "he",
@@ -4243,7 +4249,7 @@
     "title": "ערוץ האהבה סדרות וסרטים רומנטיים HD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32145/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32145/index.m3u8",
     "logo": "assets/logos/love_channel_il.png",
     "badge": "HD",
     "lang": "he",
@@ -4704,12 +4710,11 @@
     "title": "ערוץ האוכל הישראלי ו-Food Network HD",
     "category": "ערוצי אוכל (Food Channels)",
     "categoryEn": "food",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12209/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12209/index.m3u8",
     "fallbackUrls": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2377/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2377/index.m3u8",
       "https://streaming.aurora.enhanced.live/live/mpc/enl0eG1mLmVncmVzcy5mZDJ2eHI=/out/v1/IT_SIMULCAST/FOODNETWORK/CMAF/index.m3u8",
-      "http://45.156.223.202/iptv/QAP2YS2594ZQS3/12209/index.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32154/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32154/index.m3u8"
     ],
     "logo": "assets/logos/food_channel.png",
     "badge": "HD",
@@ -4724,10 +4729,9 @@
       "web": "❌ רק באפליקציה (HTTP)"
     },
     "backups": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2377/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2377/index.m3u8",
       "https://streaming.aurora.enhanced.live/live/mpc/enl0eG1mLmVncmVzcy5mZDJ2eHI=/out/v1/IT_SIMULCAST/FOODNETWORK/CMAF/index.m3u8",
-      "http://45.156.223.202/iptv/QAP2YS2594ZQS3/12209/index.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32154/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32154/index.m3u8"
     ],
     "description": "ערוץ האוכל הישראלי מבית החיים הטובים וענני תקשורת – שפים ישראליים, מתכונים וקולינריה בעברית",
     "servers": [
@@ -4771,10 +4775,10 @@
       "web": "✅"
     },
     "fallbackUrls": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32154/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32154/index.m3u8"
     ],
     "backups": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32154/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32154/index.m3u8"
     ]
   },
   {
@@ -4954,9 +4958,9 @@
     "name": "Kus-Kus Culinary TV HD – ערוץ קוסקוס אוכל ומתכונים",
     "category": "ערוצי אוכל (Food Channels)",
     "categoryEn": "food",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32121/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32121/index.m3u8",
     "fallbackUrls": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32122/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32122/index.m3u8"
     ],
     "badge": "HD",
     "color": "#fbbf24",
@@ -4973,7 +4977,7 @@
       "web": "❌ רק באפליקציה (HTTP)"
     },
     "backups": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32122/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32122/index.m3u8"
     ]
   },
   {
@@ -5460,9 +5464,9 @@
     "title": "ערוץ נשיונל ג'יאוגרפיק עם תרגום לעברית HD",
     "category": "טבע ודוקו (Documentary & Nature)",
     "categoryEn": "docu",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12247/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12247/index.m3u8",
     "fallbackUrls": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2387/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2387/index.m3u8"
     ],
     "logo": "assets/logos/nat_geo_il.png",
     "badge": "HD",
@@ -5478,7 +5482,7 @@
       "web": "❌ רק באפליקציה (HTTP)"
     },
     "backups": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2387/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2387/index.m3u8"
     ]
   },
   {
@@ -5487,10 +5491,8 @@
     "title": "ערוץ הטבע Nat Geo Wild עם תרגום לעברית FHD",
     "category": "טבע ודוקו (Documentary & Nature)",
     "categoryEn": "docu",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12259/index.m3u8",
-    "fallbackUrls": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12259/index.m3u8"
-    ],
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12259/index.m3u8",
+    "fallbackUrls": [],
     "logo": "assets/logos/nat_geo_wild_il.png",
     "badge": "FHD",
     "lang": "he",
@@ -5512,9 +5514,9 @@
     "title": "ערוץ דיסקברי עם תרגום לעברית (Discovery Channel FHD)",
     "category": "טבע ודוקו (Documentary & Nature)",
     "categoryEn": "docu",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2358/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2358/index.m3u8",
     "fallbackUrls": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12241/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12241/index.m3u8"
     ],
     "logo": "assets/logos/discovery_il.png",
     "badge": "FHD",
@@ -5530,7 +5532,7 @@
       "web": "❌ רק באפליקציה (HTTP)"
     },
     "backups": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12241/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12241/index.m3u8"
     ]
   },
   {
@@ -5539,9 +5541,9 @@
     "title": "ערוץ ההיסטוריה עם תרגום לעברית (History Channel FHD)",
     "category": "טבע ודוקו (Documentary & Nature)",
     "categoryEn": "docu",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12265/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12265/index.m3u8",
     "fallbackUrls": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12223/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12223/index.m3u8"
     ],
     "logo": "assets/logos/history_il.png",
     "badge": "FHD",
@@ -5557,7 +5559,7 @@
       "web": "❌ רק באפליקציה (HTTP)"
     },
     "backups": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12223/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12223/index.m3u8"
     ]
   },
   {
@@ -5739,11 +5741,11 @@
     "country": "IL",
     "countryHe": "ישראל",
     "fallbackUrls": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32319/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32319/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/hidabroot/live.livx/playlist.m3u8"
     ],
     "backups": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32319/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32319/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/hidabroot/live.livx/playlist.m3u8"
     ]
   },
@@ -9738,10 +9740,10 @@
     "categoryEn": "israel",
     "url": "https://d15ds134q59udk.cloudfront.net/out/v1/fbba879221d045598540ee783b140fe2/index.m3u8",
     "backups": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32136/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32136/index.m3u8"
     ],
     "fallbackUrls": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32136/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32136/index.m3u8"
     ],
     "badge": "HD",
     "desc": "מיטב הקומדיות, המערכונים והסטנדאפ הישראלי 24/7",
@@ -9972,10 +9974,10 @@
     "categoryEn": "israel",
     "url": "https://i24newshebrew-cdn.encoders.immergo.tv/master.m3u8",
     "backups": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2386/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2386/index.m3u8"
     ],
     "fallbackUrls": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2386/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2386/index.m3u8"
     ],
     "badge": "HD",
     "desc": "ערוץ החדשות והאקטואליה הבינלאומי i24NEWS בשידור חי בעברית 24/7",
@@ -10016,13 +10018,13 @@
     "webOk": true,
     "backups": [
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/yalduti_songs/live.livx/playlist.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12244/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12244/index.m3u8"
     ],
     "title": "ערוץ הופ! ילדות ישראלית – שירים קלאסיים ותוכניות ילדות בעברית",
     "badge": "HD",
     "fallbackUrls": [
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/yalduti_songs/live.livx/playlist.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12244/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12244/index.m3u8"
     ]
   },
   {
@@ -10035,7 +10037,7 @@
     "countryHe": "ישראל",
     "lang": "he",
     "logo": "assets/logos/hop_plus_kids_il.png",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2338/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2338/index.m3u8",
     "src": {
       "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
       "kind": "official",
@@ -10057,7 +10059,7 @@
     "countryHe": "ישראל",
     "lang": "he",
     "logo": "assets/logos/yes_movies_kids_plus_il.png",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2365/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2365/index.m3u8",
     "src": {
       "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
       "kind": "official",
@@ -10097,12 +10099,12 @@
     "title": "HOT 8 ערוץ הדוקו והמדע (HOT Docu HD)",
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32142/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32142/index.m3u8",
     "backups": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12216/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12216/index.m3u8"
     ],
     "fallbackUrls": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12216/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12216/index.m3u8"
     ],
     "logo": "assets/logos/hot_8.png",
     "badge": "HD",
@@ -10126,7 +10128,7 @@
     "title": "ערוץ HOT Mind דוקו והעשרה HD",
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32143/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32143/index.m3u8",
     "backups": [],
     "fallbackUrls": [],
     "logo": "assets/logos/hot_reality.png",
@@ -10151,11 +10153,13 @@
     "title": "ערוץ ההומור 2 – צחוק ובידור HD",
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32316/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32316/index.m3u8",
     "backups": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32161/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32161/index.m3u8"
     ],
-    "fallbackUrls": [],
+    "fallbackUrls": [
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32161/index.m3u8"
+    ],
     "logo": "assets/logos/humor_channel_il.png",
     "badge": "HD",
     "desc": "ערוץ ההומור 2 – סטנדאפ, מערכונים, קומדיות ובידור ישראלי ברצף 24/7.",
@@ -10178,11 +10182,13 @@
     "title": "ערוץ ויוה וינטג' וטלנובלות ספרדיות HD",
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32132/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32132/index.m3u8",
     "backups": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32133/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32133/index.m3u8"
     ],
-    "fallbackUrls": [],
+    "fallbackUrls": [
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32133/index.m3u8"
+    ],
     "logo": "assets/logos/viva_israel.png",
     "badge": "HD",
     "desc": "ערוץ ויוה וינטג' – הטלנובלות הנוסטלגיות והאהובות ביותר שכבשו את המסך.",
@@ -10355,7 +10361,7 @@
     "title": "ערוץ RTL 2 גרמניה HD",
     "category": "ערוצים בינלאומיים (חדשות ועולם)",
     "categoryEn": "intl",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32170/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32170/index.m3u8",
     "backups": [],
     "fallbackUrls": [],
     "logo": "assets/logos/rtl2.png",
@@ -10380,11 +10386,13 @@
     "title": "נשיונל ג'יאוגרפיק WILD טבע וחיות FHD",
     "category": "טבע ומדע (Documentary)",
     "categoryEn": "science",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12248/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12248/index.m3u8",
     "backups": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12259/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12259/index.m3u8"
     ],
-    "fallbackUrls": [],
+    "fallbackUrls": [
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12259/index.m3u8"
+    ],
     "logo": "assets/logos/nat_geo_wild_il.png",
     "badge": "FHD",
     "desc": "ערוץ נשיונל ג'יאוגרפיק WILD – עולם החי, טבע פראי וטורפים בסרטי תעודה מרהיבים.",
@@ -10407,7 +10415,7 @@
     "title": "ערוץ המשחקים והשעשועונים HD",
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32158/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32158/index.m3u8",
     "backups": [],
     "fallbackUrls": [],
     "logo": "assets/logos/reshet13_comedy_il.png",
@@ -10432,7 +10440,7 @@
     "title": "ערוץ Beautyz אופנה ויופי HD",
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32164/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32164/index.m3u8",
     "backups": [],
     "fallbackUrls": [],
     "logo": "assets/logos/hot_reality.png",
@@ -10456,7 +10464,7 @@
     "name": "HOT דוקו HD (HOT Doco)",
     "number": 402,
     "category": "טבע ודוקו (Documentary & Nature)",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32129/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32129/index.m3u8",
     "logo": "assets/logos/hot_8.png",
     "language": "he",
     "quality": "HD",
@@ -10498,7 +10506,7 @@
     "name": "ערוץ ג'וניור HD (Junior)",
     "number": 404,
     "category": "ילדים ונוער (בעברית)",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2366/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2366/index.m3u8",
     "logo": "assets/logos/junior.png",
     "language": "he",
     "quality": "HD",
@@ -10518,7 +10526,7 @@
     "name": "ערוץ בייבי HD (Baby Channel)",
     "number": 405,
     "category": "ילדים ונוער (בעברית)",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2370/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2370/index.m3u8",
     "logo": "assets/logos/baby_tv_he.png",
     "language": "he",
     "quality": "HD",
@@ -10538,18 +10546,14 @@
     "name": "ערוץ לולי לפעוטות HD (Luli)",
     "number": 406,
     "category": "ילדים ונוער (בעברית)",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2364/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2364/index.m3u8",
     "logo": "assets/logos/luli_tv.png",
     "language": "he",
     "quality": "HD",
     "description": "ערוץ לולי לפעוטות – שירים, סיפורים והפעלות בעברית מבית הופ!.",
     "categoryEn": "kids_he",
-    "backups": [
-      "http://45.156.223.202/iptv/QAP2YS2594ZQS3/2364/index.m3u8"
-    ],
-    "fallbackUrls": [
-      "http://45.156.223.202/iptv/QAP2YS2594ZQS3/2364/index.m3u8"
-    ],
+    "backups": [],
+    "fallbackUrls": [],
     "src": {
       "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
       "kind": "official",
@@ -10564,7 +10568,7 @@
     "name": "yes קולנוע ילדים HD (yes Movies Kids)",
     "number": 407,
     "category": "ילדים ונוער (בעברית)",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12273/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12273/index.m3u8",
     "logo": "assets/logos/yes_movies_kids_il.png",
     "language": "he",
     "quality": "HD",
@@ -10584,7 +10588,7 @@
     "name": "ערוץ החופש והנופש HD (Vacation Channel)",
     "number": 408,
     "category": "ערוצי ישראל - שידור חי",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32160/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32160/index.m3u8",
     "logo": "assets/logos/vacation_channel_il.png",
     "language": "he",
     "quality": "HD",
@@ -10606,7 +10610,7 @@
     "number": 409,
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "lifestyle",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2355/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2355/index.m3u8",
     "logo": "assets/logos/good_life_israel.png",
     "quality": "HD",
     "lang": "he",
@@ -10628,8 +10632,8 @@
       }
     ],
     "backups": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12209/index.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2339/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12209/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2339/index.m3u8"
     ],
     "src": {
       "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
@@ -10637,7 +10641,11 @@
       "host": "b84203c4.ottrast.com",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
-    }
+    },
+    "fallbackUrls": [
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12209/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2339/index.m3u8"
+    ]
   },
   {
     "id": "food_channel_israel_hd",
@@ -10646,7 +10654,7 @@
     "number": 410,
     "category": "ערוצי אוכל (Food Channels)",
     "categoryEn": "food",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12209/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12209/index.m3u8",
     "logo": "assets/logos/food_channel.png",
     "quality": "FHD",
     "lang": "he",
@@ -10672,9 +10680,9 @@
       }
     ],
     "backups": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2377/index.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2355/index.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32154/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2377/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2355/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32154/index.m3u8"
     ],
     "src": {
       "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
@@ -10682,7 +10690,12 @@
       "host": "b84203c4.ottrast.com",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
-    }
+    },
+    "fallbackUrls": [
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2377/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2355/index.m3u8",
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32154/index.m3u8"
+    ]
   },
   {
     "id": "hala_tv_hd",
@@ -11719,7 +11732,7 @@
     "title": "ספורט 6 ישיר HD (צ'רלטון Sport 6)",
     "category": "ספורט (Sports)",
     "categoryEn": "sports",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32003/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32003/index.m3u8",
     "logo": "assets/logos/sport6_israel.png",
     "badge": "HD",
     "lang": "he",
@@ -11732,19 +11745,13 @@
       "found": "שידור ישראלי מקורי צ'רלטון FHD",
       "web": "❌ רק באפליקציה (הפניה בלי CORS)"
     },
-    "fallbackUrls": [
-      "http://45.156.223.202/iptv/QAP2YS2594ZQS3/32003/index.m3u8"
-    ],
+    "fallbackUrls": [],
     "isIsraeli": true,
     "kind": "tv",
     "iptv": "Sport6.il",
-    "backups": [
-      "http://45.156.223.202/iptv/QAP2YS2594ZQS3/32003/index.m3u8"
-    ],
+    "backups": [],
     "webOk": false,
-    "backupUrls": [
-      "http://45.156.223.202/iptv/QAP2YS2594ZQS3/32003/index.m3u8"
-    ]
+    "backupUrls": []
   },
   {
     "id": "mediterranean_movies_1",
@@ -11752,7 +11759,7 @@
     "title": "ערוץ הסרטים הים תיכוני 1 בתרגום לעברית HD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32162/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32162/index.m3u8",
     "logo": "assets/logos/mediterranean_movies_1.png",
     "badge": "HD",
     "lang": "he",
@@ -11922,7 +11929,7 @@
     "category": "ילדים ונוער (בעברית)",
     "categoryEn": "kids_he",
     "logo": "assets/logos/zoom.png",
-    "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2359/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2359/index.m3u8",
     "channelNumber": 84,
     "number": 519,
     "language": "Hebrew",
@@ -11934,11 +11941,9 @@
     "resolution": "1080p",
     "desc": "ערוץ זום טון (Zoom Toon) – סדרות אנימציה, הרפתקאות וגיבורי על בדיבוב לעברית 24/7.",
     "backups": [
-      "http://45.156.223.202/iptv/QAP2YS2594ZQS3/2359/index.m3u8",
       "http://stream.mcquack.net/377/index.m3u8"
     ],
     "fallbackUrls": [
-      "http://45.156.223.202/iptv/QAP2YS2594ZQS3/2359/index.m3u8",
       "http://stream.mcquack.net/377/index.m3u8"
     ],
     "src": {
@@ -11958,8 +11963,7 @@
     "logo": "assets/logos/viva_premium_il.png",
     "url": "http://stream.mcquack.net/43/index.m3u8",
     "backupUrls": [
-      "http://45.156.223.202/iptv/QAP2YS2594ZQS3/12226/index.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12226/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12226/index.m3u8"
     ],
     "channelNumber": 39,
     "number": 520,
@@ -11971,14 +11975,19 @@
     "quality": "HD",
     "resolution": "1080p",
     "desc": "ויוה פרימיום – מיטב הטלנובלות והסדרות הבינלאומיות עם תרגום עברי מלא.",
-    "backups": [],
+    "backups": [
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12226/index.m3u8"
+    ],
     "src": {
       "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
       "kind": "restream",
       "host": "stream.mcquack.net",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
-    }
+    },
+    "fallbackUrls": [
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12226/index.m3u8"
+    ]
   },
   {
     "id": "good_life_mc",
@@ -11989,8 +11998,7 @@
     "logo": "assets/logos/good_life_israel.png",
     "url": "http://stream.mcquack.net/47/index.m3u8",
     "backupUrls": [
-      "http://45.156.223.202/iptv/QAP2YS2594ZQS3/2355/index.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2355/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2355/index.m3u8"
     ],
     "channelNumber": 32,
     "number": 521,
@@ -12002,14 +12010,19 @@
     "quality": "HD",
     "resolution": "1080p",
     "desc": "ערוץ החיים הטובים: תוכניות אירוח, עיצוב הבית, אוכל ונופש.",
-    "backups": [],
+    "backups": [
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2355/index.m3u8"
+    ],
     "src": {
       "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
       "kind": "restream",
       "host": "stream.mcquack.net",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
-    }
+    },
+    "fallbackUrls": [
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2355/index.m3u8"
+    ]
   },
   {
     "id": "yes_movies_action_mc",
@@ -12020,8 +12033,7 @@
     "logo": "assets/logos/yes_movies_action.png",
     "url": "http://stream.mcquack.net/380/index.m3u8",
     "backupUrls": [
-      "http://45.156.223.202/iptv/QAP2YS2594ZQS3/12270/index.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12270/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12270/index.m3u8"
     ],
     "channelNumber": 18,
     "number": 522,
@@ -12033,14 +12045,19 @@
     "quality": "HD",
     "resolution": "1080p",
     "desc": "ערוץ הסרטים המוביל ב-yes לסרטי פעולה, מתח ומד\"ב בדיבוב ותרגום עברי.",
-    "backups": [],
+    "backups": [
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12270/index.m3u8"
+    ],
     "src": {
       "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
       "kind": "restream",
       "host": "stream.mcquack.net",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
-    }
+    },
+    "fallbackUrls": [
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12270/index.m3u8"
+    ]
   },
   {
     "id": "hot_drama_mc",
@@ -12051,8 +12068,7 @@
     "logo": "assets/logos/hot_drama.png",
     "url": "http://stream.mcquack.net/381/index.m3u8",
     "backupUrls": [
-      "http://45.156.223.202/iptv/QAP2YS2594ZQS3/32140/index.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32140/index.m3u8"
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32140/index.m3u8"
     ],
     "channelNumber": 19,
     "number": 523,
@@ -12064,14 +12080,19 @@
     "quality": "HD",
     "resolution": "1080p",
     "desc": "HOT דרמה – סרטים מרגשים, הפקות מקור ודרמות מנצחות מהקולנוע העולמי.",
-    "backups": [],
+    "backups": [
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32140/index.m3u8"
+    ],
     "src": {
       "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
       "kind": "restream",
       "host": "stream.mcquack.net",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
-    }
+    },
+    "fallbackUrls": [
+      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32140/index.m3u8"
+    ]
   },
   {
     "id": "hot_zone_mc",
