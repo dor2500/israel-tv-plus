@@ -1,15 +1,23 @@
 {
-  "version": "4.8.76",
-  "code": 202611162235,
-  "app": 40876,
+  "version": "4.8.77",
+  "code": 202611162246,
+  "app": 40877,
   "shell": 3,
   "date": "2026-11-16",
   "notes": [
-    "עדכון שרתים חדשים ופעילים לערוצי ספורט צ'רלטון (ספורט 1, ספורט 2, ספורט 3, ספורט 4):",
-    "החלפת השרתים הקודמים שהפסיקו לעבוד (HTTP 404) בשרת ראשי פעיל ומאומת (zybrpjv6.zyntras.top) עם מקטעי וידאו חיים.",
-    "הוספת שרתי גיבוי נוספים (siauliairsavlt.pw, 45.156.223.202) לערוצי ספורט 1–4, ועדכון קבצי הפלייליסט ו-Stremio בהתאם."
+    "תמיכה מלאה בקבצי M3U / IPTV כערוצים חיים גם באפליקציית Android (Kotlin/Compose) וגם בגרסת Web/TV/Desktop:",
+    "הוספת קטגוריית רשימות M3U / IPTV אישיות ישירות בהגדרות באנדרואיד עם בורר קבצים מהמכשיר (.m3u / .m3u8), טעינה מקישור URL, רענון, הפעלה/השבתה ומחיקה.",
+    "כל הערוצים מהקובץ מתווספים אוטומטית כערוצים חיים רגילים (כולל קטגוריות לפי group-title, לוגו tvg-logo, מספרי ערוצים, חיפוש, מועדפים וניגון מלא ב-ExoPlayer)."
   ],
   "history": [
+    {
+      "version": "4.8.77",
+      "notes": [
+        "תמיכה מלאה בקבצי M3U / IPTV כערוצים חיים גם באפליקציית Android (Kotlin/Compose) וגם בגרסת Web/TV/Desktop:",
+        "הוספת קטגוריית רשימות M3U / IPTV אישיות ישירות בהגדרות באנדרואיד עם בורר קבצים מהמכשיר (.m3u / .m3u8), טעינה מקישור URL, רענון, הפעלה/השבתה ומחיקה.",
+        "כל הערוצים מהקובץ מתווספים אוטומטית כערוצים חיים רגילים (כולל קטגוריות לפי group-title, לוגו tvg-logo, מספרי ערוצים, חיפוש, מועדפים וניגון מלא ב-ExoPlayer)."
+      ]
+    },
     {
       "version": "4.8.76",
       "notes": [
@@ -252,53 +260,44 @@
       "notes": [
         "העיצובים החדשים חלים רק בטלוויזיה ובמחשב. ממשק הטלפון נשאר כמו שהיה."
       ]
-    },
-    {
-      "version": "4.8.51",
-      "notes": [
-        "עיצובים חדשים: בהגדרות > תצוגה וממשק > עיצוב אפשר לבחור בין קלאסי, קולנוע, לוח שידורים, מטרו ומגזין. כל עיצוב מחליף את פריסת מסך הבית, הצבעים, הכרטיסים, ההגדרות והנגן, בטלוויזיה ובמחשב. הבחירה חלה מיד.",
-        "חמשת סגנונות הטלוויזיה של 4.8.50 הוחלפו בעיצובים האלה, כי הם כמעט לא שינו את המסך.",
-        "לוג שינויים בתוך האפליקציה: בהגדרות > עדכוני תוכנה ומערכת, ובאפליקציית אנדרואיד בהגדרות > אודות.",
-        "טייזן: שוב תוקן קובץ התצורה שנפגע בעדכוני הגרסה."
-      ]
     }
   ],
   "native": {
     "android": {
-      "version": "4.8.76",
-      "app": 40876,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.76/IsraelTVPlus-android.apk"
+      "version": "4.8.77",
+      "app": 40877,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.77/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "4.8.76",
-      "app": 40876,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.76/IsraelTVPlus-windows-setup.exe"
+      "version": "4.8.77",
+      "app": 40877,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.77/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "4.8.76",
-      "app": 40876,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.76/com.israeltv.plus_all.ipk",
+      "version": "4.8.77",
+      "app": 40877,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.77/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "4.8.76",
-      "app": 40876,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.76/IsraelTVPlus-tizen-project.zip"
+      "version": "4.8.77",
+      "app": 40877,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.77/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "4.8.76",
-      "app": 40876,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.76/IsraelTVPlus-macos-arm64.zip"
+      "version": "4.8.77",
+      "app": 40877,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.77/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "4.8.76",
-      "app": 40876,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.76/IsraelTVPlus-linux-x64.zip"
+      "version": "4.8.77",
+      "app": 40877,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.77/IsraelTVPlus-linux-x64.zip"
     },
     "wear": {
-      "version": "4.8.76",
-      "app": 1040876,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.76/IsraelTVPlus-wearos.apk"
+      "version": "4.8.77",
+      "app": 1040877,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.77/IsraelTVPlus-wearos.apk"
     }
   }
 }

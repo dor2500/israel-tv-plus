@@ -177,7 +177,7 @@ fun ItvApp(
                                 onClose = { page = Page.Feed },
                             )
                             Page.Feed -> if (NuvioUi.enabled) NuvioShell(store, prefs, onPlay) else Feed(
-                                data, prefs, updater, google, feed, haze, logo, onPlay,
+                                data, prefs, updater, google, store, feed, haze, logo, onPlay,
                                 onOpenMultiView = {
                                     val all = data?.channels.orEmpty()
                                     val first = prefs.recents.firstNotNullOfOrNull { data?.byId?.get(it) }
@@ -271,6 +271,7 @@ private fun Feed(
     prefs: AppPrefs,
     updater: Updater,
     google: GoogleAccount,
+    store: ChannelStore,
     s: FeedState,
     haze: HazeState,
     logo: (Channel) -> String,
@@ -387,7 +388,7 @@ private fun Feed(
                         )
                         Tab.Vod -> VodScreen(data = data, onPlay = onPlay)
                         Tab.Mine -> MineScreen(data, prefs, logo, subtitle, onPlay)
-                        Tab.Settings -> SettingsScreen(data, prefs, updater, google, onProfiles = onProfiles, onStyle = { s.styleOpen = true })
+                        Tab.Settings -> SettingsScreen(data, prefs, updater, google, store, onProfiles = onProfiles, onStyle = { s.styleOpen = true })
                     }
                 }
             }

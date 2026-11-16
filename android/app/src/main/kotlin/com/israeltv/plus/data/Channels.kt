@@ -178,7 +178,9 @@ fun Channel.subtitle(): String = when {
  */
 @Stable
 class ChannelStore(private val context: Context, private val http: OkHttpClient) {
+    val m3u = M3uStore(context, http)
     private val json = Json { ignoreUnknownKeys = true; coerceInputValues = true }
+    @Volatile private var lastBaseJson: String? = null
     // per app version: after an update the list bundled with the new APK is used until the site's list is fetched
     private val cache = File(context.filesDir, "channels-${com.israeltv.plus.BuildConfig.VERSION_CODE}.json")
     private val assetExistsCache = ConcurrentHashMap<String, Boolean>()
@@ -236,11 +238,20 @@ class ChannelStore(private val context: Context, private val http: OkHttpClient)
         }
     }
 
+    fun reloadWithM3u() {
+        val base = lastBaseJson ?: return
+        val currentVod = _state.value?.vod.orEmpty()
+        parse(base, currentVod)?.let { _state.value = it }
+    }
+
     private fun parse(text: String, vod: List<VodSeries> = emptyList()): ChannelData? = runCatching {
-        val all = json.decodeFromString<List<Channel>>(text)
+        lastBaseJson = text
+        val base = json.decodeFromString<List<Channel>>(text)
             .filter { it.kind != "app" && it.url.isNotEmpty() }
             .sortedBy { it.number }
-        if (all.isEmpty()) return null
+        if (base.isEmpty()) return null
+        val maxNum = base.maxOfOrNull { it.number } ?: 999
+        val all = base + m3u.toChannels(maxNum)
         val cats = all.groupBy { it.category }.map { (k, v) -> Category(k, shortCategory(k), v) }
         val israel = cats.firstOrNull { it.channels.first().categoryEn == "israel" }?.channels.orEmpty()
         ChannelData(all, cats, all.associateBy { it.id }, israel.filter { !it.isRadio }.take(8), vod)

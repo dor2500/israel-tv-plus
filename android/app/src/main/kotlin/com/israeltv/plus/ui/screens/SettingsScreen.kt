@@ -60,6 +60,16 @@ import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import android.provider.OpenableColumns
+import android.widget.Toast
+import androidx.compose.material.icons.rounded.AddLink
+import androidx.compose.material.icons.rounded.Delete
+import androidx.compose.material.icons.rounded.FolderOpen
+import androidx.compose.material.icons.rounded.PlaylistPlay
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.OutlinedTextField
+import com.israeltv.plus.data.ChannelStore
+import com.israeltv.plus.data.M3uPlaylist
 import com.israeltv.plus.data.AppPrefs
 import com.israeltv.plus.data.GoogleAccount
 import com.israeltv.plus.data.ChannelData
@@ -80,11 +90,94 @@ import java.util.Date
 import java.util.Locale
 
 @Composable
-fun SettingsScreen(data: ChannelData?, prefs: AppPrefs, updater: Updater, google: GoogleAccount, onProfiles: () -> Unit, onStyle: () -> Unit) {
+fun SettingsScreen(data: ChannelData?, prefs: AppPrefs, updater: Updater, google: GoogleAccount, store: ChannelStore, onProfiles: () -> Unit, onStyle: () -> Unit) {
     val ctx = LocalContext.current
     val haptic = LocalHapticFeedback.current
     var showPlexDialog by remember { mutableStateOf(false) }
     val scope = rememberCoroutineScope()
+    var m3uList by remember { mutableStateOf(store.m3u.load()) }
+    var showM3uUrlDialog by remember { mutableStateOf(false) }
+    var m3uUrlInput by remember { mutableStateOf("") }
+    var m3uNameInput by remember { mutableStateOf("") }
+    var m3uLoading by remember { mutableStateOf(false) }
+
+    val m3uFilePicker = rememberLauncherForActivityResult(ActivityResultContracts.OpenDocument()) { uri: Uri? ->
+        if (uri == null) return@rememberLauncherForActivityResult
+        scope.launch {
+            val fileName = runCatching {
+                ctx.contentResolver.query(uri, arrayOf(OpenableColumns.DISPLAY_NAME), null, null, null)?.use { c ->
+                    if (c.moveToFirst()) c.getString(0) else null
+                }
+            }.getOrNull() ?: uri.lastPathSegment ?: "רשימת M3U"
+            val cleanName = fileName.replace(Regex("\\.(m3u8?|txt)$", RegexOption.IGNORE_CASE), "")
+            val text = runCatching {
+                ctx.contentResolver.openInputStream(uri)?.bufferedReader()?.use { it.readText() }
+            }.getOrNull()
+            if (text.isNullOrBlank()) {
+                Toast.makeText(ctx, "שגיאה בקריאת הקובץ", Toast.LENGTH_SHORT).show()
+                return@launch
+            }
+            val res = store.m3u.addFromText(text, cleanName, sourceType = "file")
+            res.onSuccess { pl ->
+                m3uList = store.m3u.load()
+                store.reloadWithM3u()
+                Toast.makeText(ctx, "נטענו ${pl.channels.size} ערוצים מ-\"${pl.name}\"", Toast.LENGTH_LONG).show()
+            }.onFailure { err ->
+                Toast.makeText(ctx, err.message ?: "לא נמצאו ערוצים תקינים", Toast.LENGTH_LONG).show()
+            }
+        }
+    }
+
+    if (showM3uUrlDialog) {
+        AlertDialog(
+            onDismissRequest = { if (!m3uLoading) showM3uUrlDialog = false },
+            title = { Text("טעינת M3U מקישור (URL)") },
+            text = {
+                Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                    OutlinedTextField(
+                        value = m3uUrlInput,
+                        onValueChange = { m3uUrlInput = it },
+                        label = { Text("כתובת קובץ M3U / M3U8") },
+                        placeholder = { Text("https://example.com/playlist.m3u") },
+                        singleLine = true,
+                        modifier = Modifier.fillMaxWidth(),
+                    )
+                    OutlinedTextField(
+                        value = m3uNameInput,
+                        onValueChange = { m3uNameInput = it },
+                        label = { Text("שם הרשימה (אופציונלי)") },
+                        singleLine = true,
+                        modifier = Modifier.fillMaxWidth(),
+                    )
+                }
+            },
+            confirmButton = {
+                Button(
+                    enabled = !m3uLoading && m3uUrlInput.isNotBlank(),
+                    onClick = {
+                        m3uLoading = true
+                        scope.launch {
+                            val res = store.m3u.addFromUrl(m3uUrlInput, m3uNameInput)
+                            m3uLoading = false
+                            res.onSuccess { pl ->
+                                m3uList = store.m3u.load()
+                                store.reloadWithM3u()
+                                showM3uUrlDialog = false
+                                m3uUrlInput = ""
+                                m3uNameInput = ""
+                                Toast.makeText(ctx, "נטענו ${pl.channels.size} ערוצים מ-\"${pl.name}\"", Toast.LENGTH_LONG).show()
+                            }.onFailure { err ->
+                                Toast.makeText(ctx, "שגיאה בטעינה: ${err.message ?: "בדקו את הקישור"}", Toast.LENGTH_LONG).show()
+                            }
+                        }
+                    },
+                ) { Text(if (m3uLoading) "טוען..." else "טען") }
+            },
+            dismissButton = {
+                TextButton(enabled = !m3uLoading, onClick = { showM3uUrlDialog = false }) { Text("ביטול") }
+            },
+        )
+    }
     var changelog by remember { mutableStateOf<List<Pair<String, List<String>>>?>(null) }
     changelog?.let { list ->
         AlertDialog(
@@ -142,6 +235,77 @@ fun SettingsScreen(data: ChannelData?, prefs: AppPrefs, updater: Updater, google
                         haptic.performHapticFeedback(if (it) HapticFeedbackType.ToggleOn else HapticFeedbackType.ToggleOff)
                         prefs.setLaunchSoundOn(it)
                     })
+                }
+            }
+            Spacer(Modifier.height(28.dp))
+        }
+        item(key = "m3u") {
+            val activeM3uCount = m3uList.filter { it.enabled }.sumOf { it.channels.size }
+            SectionHeader("רשימות M3U / IPTV אישיות")
+            SettingsGroup {
+                SettingRow(
+                    Icons.Rounded.FolderOpen,
+                    "בחירת קובץ M3U / M3U8 מהמכשיר",
+                    "טעינת קובץ פלייליסט כערוצים חיים לצפייה ישירה באפליקציה",
+                    onClick = { m3uFilePicker.launch(arrayOf("*/*")) },
+                )
+                SettingRow(
+                    Icons.Rounded.AddLink,
+                    "טעינת רשימת M3U מקישור (URL)",
+                    "הוספת רשימת IPTV מרוחקת לפי כתובת אינטרנט",
+                    onClick = { showM3uUrlDialog = true },
+                )
+                if (m3uList.isNotEmpty()) {
+                    SettingRow(
+                        Icons.Rounded.PlaylistPlay,
+                        "ערוצי M3U פעילים",
+                        "$activeM3uCount ערוצים מתוך ${m3uList.size} רשימות (מוצגים בערוצים ובחיפוש)",
+                    )
+                }
+                m3uList.forEach { pl: M3uPlaylist ->
+                    SettingRow(
+                        Icons.Rounded.PlaylistPlay,
+                        pl.name,
+                        "${pl.channels.size} ערוצים · ${if (pl.sourceType == "url") "קישור" else "קובץ מקומי"}",
+                        onClick = {
+                            store.m3u.toggle(pl.id)
+                            m3uList = store.m3u.load()
+                            store.reloadWithM3u()
+                        },
+                    ) {
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            if (pl.sourceType == "url" && pl.url.isNotEmpty()) {
+                                IconButton(onClick = {
+                                    scope.launch {
+                                        val res = store.m3u.addFromUrl(pl.url, pl.name, pl.id)
+                                        res.onSuccess {
+                                            m3uList = store.m3u.load()
+                                            store.reloadWithM3u()
+                                            Toast.makeText(ctx, "הרשימה \"${pl.name}\" רועננה", Toast.LENGTH_SHORT).show()
+                                        }
+                                    }
+                                }) {
+                                    BoldIcon(Icons.Rounded.Refresh, "רענן")
+                                }
+                            }
+                            IconButton(onClick = {
+                                store.m3u.delete(pl.id)
+                                m3uList = store.m3u.load()
+                                store.reloadWithM3u()
+                                Toast.makeText(ctx, "הרשימה \"${pl.name}\" הוסרה", Toast.LENGTH_SHORT).show()
+                            }) {
+                                BoldIcon(Icons.Rounded.Delete, "מחק")
+                            }
+                            Switch(
+                                checked = pl.enabled,
+                                onCheckedChange = {
+                                    store.m3u.toggle(pl.id)
+                                    m3uList = store.m3u.load()
+                                    store.reloadWithM3u()
+                                },
+                            )
+                        }
+                    }
                 }
             }
             Spacer(Modifier.height(28.dp))
