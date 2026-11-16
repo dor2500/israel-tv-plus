@@ -1481,7 +1481,7 @@
     "title": "ערוץ ניקלודיאון לילדים ונוער בעברית (Nickelodeon Israel HD)",
     "category": "ילדים ונוער (בעברית)",
     "categoryEn": "kids_he",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2337/index.m3u8",
+    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12240/index.m3u8",
     "logo": "assets/logos/nickelodeon.png",
     "badge": "HD",
     "desc": "ערוץ ניקלודיאון – בובספוג מכנסמרובע, הרעשנים, אווטאר, צבי הנינג'ה וקומדיות לילדים",
@@ -1497,12 +1497,8 @@
       "web": "❌ רק באפליקציה (HTTP)"
     },
     "iptv": "Nickelodeon.il",
-    "fallbackUrls": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12240/index.m3u8"
-    ],
-    "backups": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12240/index.m3u8"
-    ],
+    "fallbackUrls": [],
+    "backups": [],
     "language": "he",
     "servers": [
       {
@@ -1530,9 +1526,7 @@
     "category": "ילדים ונוער (בעברית)",
     "categoryEn": "kids_he",
     "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2337/index.m3u8",
-    "fallbackUrls": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12240/index.m3u8"
-    ],
+    "fallbackUrls": [],
     "logo": "assets/logos/nick_jr.png",
     "badge": "HD",
     "lang": "he",
@@ -1546,9 +1540,7 @@
       "found": "iptv-org (NickJr.il)",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "backups": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12240/index.m3u8"
-    ]
+    "backups": []
   },
   {
     "id": "teennick_il",
@@ -1946,33 +1938,6 @@
     "countryHe": "ישראל",
     "fallbackUrls": [],
     "backups": []
-  },
-  {
-    "id": "nick_jr_party_il",
-    "name": "ערוץ ניק ג'וניור פלוס בעברית HD (Nick Jr.+)",
-    "category": "ילדים ונוער (בעברית)",
-    "categoryEn": "kids",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2337/index.m3u8",
-    "fallbackUrls": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12240/index.m3u8"
-    ],
-    "badge": "HD",
-    "color": "#fb923c",
-    "isIsraeli": true,
-    "kind": "tv",
-    "desc": "ערוץ ניק ג'וניור ישראל בעברית – מפרץ ההרפתקאות, דורה, בלייז וחברים",
-    "logo": "assets/logos/nick_jr_party_il.png",
-    "number": 68,
-    "src": {
-      "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
-      "kind": "official",
-      "host": "b84203c4.ottrast.com",
-      "found": "רשימה ידנית (גרסה קודמת)",
-      "web": "❌ רק באפליקציה (HTTP)"
-    },
-    "backups": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12240/index.m3u8"
-    ]
   },
   {
     "id": "channel_98_il",
@@ -3024,41 +2989,6 @@
     ]
   },
   {
-    "id": "sport5_4k_uhd",
-    "name": "ספורט 5 4K UHD",
-    "title": "ערוץ ספורט 5 4K אולטרה HD",
-    "category": "ספורט (Sports)",
-    "categoryEn": "sports",
-    "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5/live.livx/playlist.m3u8",
-    "logo": "assets/logos/sport5.png",
-    "badge": "4K",
-    "desc": "שידורי ספורט ישירים בטכנולוגיית 4K Ultra HD ו-FHD H.264 מלא: ליגת האלופות, ליגת העל בכדורגל, מכבי תל אביב ביורוליג והמשחקים המרכזיים בחדות שיא עם גיבוי FHD אוטומטי.",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 106,
-    "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5_4k_hevc/live.livx/playlist.m3u8",
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5_4k/live.livx/playlist.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32004/index.m3u8",
-      "https://rgelive.akamaized.net/hls/live/2043095/live3/playlist.m3u8"
-    ],
-    "src": {
-      "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
-      "kind": "official",
-      "host": "d1zqtf09wb8nt5.cloudfront.net",
-      "found": "רשימה ידנית (גרסה קודמת)",
-      "web": "✅"
-    },
-    "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5_4k_hevc/live.livx/playlist.m3u8",
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5_4k/live.livx/playlist.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32004/index.m3u8",
-      "https://rgelive.akamaized.net/hls/live/2043095/live3/playlist.m3u8"
-    ],
-    "iptv": "Sport54K.il"
-  },
-  {
     "id": "one_1_hd",
     "name": "ערוץ ONE 1 FHD",
     "title": "ערוץ הספורט ONE 1 ליגה ספרדית ואיטלקית FHD",
@@ -3121,34 +3051,6 @@
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/one_2_hevc/live.livx/playlist.m3u8"
     ],
     "iptv": "One2.il"
-  },
-  {
-    "id": "one_doco_hd",
-    "name": "ערוץ ONE דוקו HD (ONE DOCO)",
-    "title": "ערוץ ONE DOCO סרטי וסדרות דוקו ספורט HD",
-    "category": "ספורט (Sports)",
-    "categoryEn": "sports",
-    "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/one_doco/live.livx/playlist.m3u8",
-    "badge": "HD",
-    "desc": "ערוץ ONE DOCO – סרטים דוקומנטריים וסיפורים מרתקים מעולם הכדורגל והספורט",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "logo": "assets/logos/one_doco_hd.png",
-    "number": 109,
-    "src": {
-      "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
-      "kind": "official",
-      "host": "d1zqtf09wb8nt5.cloudfront.net",
-      "found": "רשימה ידנית (גרסה קודמת)",
-      "web": "✅"
-    },
-    "fallbackUrls": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32129/index.m3u8"
-    ],
-    "backups": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32129/index.m3u8"
-    ]
   },
   {
     "id": "one_edge_hd",
@@ -3933,36 +3835,6 @@
     "backups": []
   },
   {
-    "id": "ch14_now_fast",
-    "name": "ערוץ 14 החדשות עכשיו (Now 14 Live)",
-    "title": "עכשיו 14 – מהדורות החדשות והאקטואליה בשידור ישיר",
-    "category": "ערוצי ישראל - שידור חי",
-    "categoryEn": "israel",
-    "logo": "assets/logos/now14.png",
-    "url": "https://r.il.cdn-redge.media/livehls/oil/ch14/live/ch14/live.livx/playlist.m3u8",
-    "backupUrls": [
-      "https://ch14-channel14-live.cdn.ch22.co.il/live/ch14_1/playlist.m3u8"
-    ],
-    "channelNumber": 140,
-    "number": 140,
-    "language": "Hebrew",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "badge": "HD",
-    "quality": "HD",
-    "resolution": "1080p",
-    "desc": "ערוץ 14 – שידורי חדשות, פטריוטים, אקטואליה ומבזקים שוטפים בטעינה מהירה.",
-    "backups": [],
-    "src": {
-      "by": "Redge – ה-CDN הרשמי של כאן, ערוץ 14 וכלכלה 10",
-      "kind": "official",
-      "host": "r.il.cdn-redge.media",
-      "found": "רשימה ידנית (גרסה קודמת)",
-      "web": "✅"
-    }
-  },
-  {
     "id": "mediterranean_movies_2",
     "name": "ערוץ הסרטים הים תיכוני 2 HD",
     "title": "ערוץ הסרטים הים תיכוני 2 בתרגום לעברית HD",
@@ -4263,35 +4135,6 @@
       "web": "❌ רק באפליקציה (HTTP)"
     },
     "backups": []
-  },
-  {
-    "id": "eretz_nehederet",
-    "name": "ערוץ ארץ נהדרת 24/7",
-    "title": "ארץ נהדרת 24/7 (קשת 12)",
-    "category": "סרטים וסדרות (Movies & Series)",
-    "categoryEn": "israel",
-    "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/erez_nehederet/live.livx/playlist.m3u8",
-    "logo": "assets/logos/eretz_nehederet.png",
-    "badge": "FHD",
-    "desc": "ערוץ ארץ נהדרת 24/7 – מיטב המערכונים, הדמויות והרגעים הגדולים מכל העונות",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 155,
-    "src": {
-      "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
-      "kind": "official",
-      "host": "d1zqtf09wb8nt5.cloudfront.net",
-      "found": "רשימה ידנית (גרסה קודמת)",
-      "web": "✅"
-    },
-    "backups": [
-      "https://mako-streaming.akamaized.net/evrideo/hls/live/20001278/erets/index.m3u8"
-    ],
-    "auth": "",
-    "fallbackUrls": [
-      "https://mako-streaming.akamaized.net/evrideo/hls/live/20001278/erets/index.m3u8"
-    ]
   },
   {
     "id": "savri_maranan",
@@ -4751,34 +4594,6 @@
         "name": "גיבוי 3 (פודי Foody בישול ישראלי)",
         "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32154/index.m3u8"
       }
-    ]
-  },
-  {
-    "id": "foody_tv",
-    "name": "ערוץ פודי Foody HD",
-    "title": "ערוץ פודי אוכל ובישול ישראלי (Foody HD)",
-    "category": "ערוצי אוכל (Food Channels)",
-    "categoryEn": "food",
-    "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/foody/live.livx/playlist.m3u8",
-    "badge": "HD",
-    "desc": "ערוץ פודי (Foody) – מיטב השפים, המתכונים ותוכניות הבישול והאפייה מישראל",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "logo": "assets/logos/foody_tv.png",
-    "number": 174,
-    "src": {
-      "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
-      "kind": "official",
-      "host": "d1zqtf09wb8nt5.cloudfront.net",
-      "found": "רשימה ידנית (גרסה קודמת)",
-      "web": "✅"
-    },
-    "fallbackUrls": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32154/index.m3u8"
-    ],
-    "backups": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32154/index.m3u8"
     ]
   },
   {
@@ -9996,38 +9811,6 @@
     "number": 382
   },
   {
-    "id": "hop_yaldut_il",
-    "name": "ערוץ הופ! ילדות ישראלית HD",
-    "number": 383,
-    "category": "ילדים ונוער (בעברית)",
-    "categoryEn": "kids_he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "lang": "he",
-    "logo": "assets/logos/hop_yaldut.png",
-    "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/yalduti/live.livx/playlist.m3u8",
-    "subsUrl": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/yalduti/live.livx/playlist.m3u8",
-    "src": {
-      "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
-      "kind": "official",
-      "host": "d1zqtf09wb8nt5.cloudfront.net",
-      "found": "רשימה ידנית (גרסה קודמת)",
-      "web": "✅"
-    },
-    "desc": "ערוץ הופ! ילדות ישראלית – שירי ילדות קלאסיים, סיפורים, הצגות וסדרות איכותיות לילדים ופעוטות בעברית.",
-    "webOk": true,
-    "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/yalduti_songs/live.livx/playlist.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12244/index.m3u8"
-    ],
-    "title": "ערוץ הופ! ילדות ישראלית – שירים קלאסיים ותוכניות ילדות בעברית",
-    "badge": "HD",
-    "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/yalduti_songs/live.livx/playlist.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12244/index.m3u8"
-    ]
-  },
-  {
     "id": "hop_plus_kids_il",
     "name": "ערוץ הופ! פלוס HD",
     "number": 384,
@@ -10046,28 +9829,6 @@
       "web": "❌ רק באפליקציה (HTTP)"
     },
     "desc": "ערוץ הופ! פלוס – תוכניות אהובות, לימוד והרפתקאות לקטנטנים.",
-    "webOk": true,
-    "backups": []
-  },
-  {
-    "id": "yes_movies_kids_plus_il",
-    "name": "yes קולנוע ילדים פלוס HD",
-    "number": 386,
-    "category": "ילדים ונוער (בעברית)",
-    "categoryEn": "kids_he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "lang": "he",
-    "logo": "assets/logos/yes_movies_kids_plus_il.png",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2365/index.m3u8",
-    "src": {
-      "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
-      "kind": "official",
-      "host": "b84203c4.ottrast.com",
-      "found": "רשימה ידנית (גרסה קודמת)",
-      "web": "❌ רק באפליקציה (HTTP)"
-    },
-    "desc": "ערוץ סרטי ילדים ונוער שוברי קופות מבית yes.",
     "webOk": true,
     "backups": []
   },
@@ -10092,60 +9853,6 @@
     "desc": "להיטי מוזיקה ישראלית מכל הזמנים, קליפים והופעות חיות 24 שעות ביממה.",
     "webOk": true,
     "backups": []
-  },
-  {
-    "id": "hot_docu_il",
-    "name": "HOT 8 מדע ודוקו HD",
-    "title": "HOT 8 ערוץ הדוקו והמדע (HOT Docu HD)",
-    "category": "ערוצי ישראל - שידור חי",
-    "categoryEn": "israel",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32142/index.m3u8",
-    "backups": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12216/index.m3u8"
-    ],
-    "fallbackUrls": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12216/index.m3u8"
-    ],
-    "logo": "assets/logos/hot_8.png",
-    "badge": "HD",
-    "desc": "ערוץ הדוקו, המדע וההיסטוריה המוביל מבית HOT – סדרות תעודה איכותיות ויוצרים ישראליים.",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "webOk": true,
-    "number": 388,
-    "src": {
-      "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
-      "kind": "official",
-      "host": "b84203c4.ottrast.com",
-      "found": "רשימה ידנית (גרסה קודמת)",
-      "web": "❌ רק באפליקציה (HTTP)"
-    }
-  },
-  {
-    "id": "hot_mind_docu_il",
-    "name": "HOT מיינד דוקו והעשרה HD",
-    "title": "ערוץ HOT Mind דוקו והעשרה HD",
-    "category": "ערוצי ישראל - שידור חי",
-    "categoryEn": "israel",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32143/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/hot_reality.png",
-    "badge": "HD",
-    "desc": "ערוץ HOT Mind – ערוץ דוקו, מדע, מחשבה, טכנולוגיה ותרבות.",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "webOk": true,
-    "number": 389,
-    "src": {
-      "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
-      "kind": "official",
-      "host": "b84203c4.ottrast.com",
-      "found": "רשימה ידנית (גרסה קודמת)",
-      "web": "❌ רק באפליקציה (HTTP)"
-    }
   },
   {
     "id": "humor_2_channel_il",
@@ -10203,106 +9910,6 @@
       "host": "b84203c4.ottrast.com",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
-    }
-  },
-  {
-    "id": "freetv_action_cinema_il",
-    "name": "FreeTV קולנוע אקשן HD",
-    "title": "FreeTV Cinema Action HD",
-    "category": "סרטים וקולנוע (Movies TV)",
-    "categoryEn": "movies",
-    "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/free_movies_action/live.livx/playlist.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/freetv_movies_action.png",
-    "badge": "HD",
-    "desc": "ערוץ סרטי פעולה, מתח ואקשן שוברי קופות 24/7 באיכות HD ללא הפסקה.",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "webOk": true,
-    "number": 392,
-    "src": {
-      "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
-      "kind": "official",
-      "host": "d1zqtf09wb8nt5.cloudfront.net",
-      "found": "רשימה ידנית (גרסה קודמת)",
-      "web": "✅"
-    }
-  },
-  {
-    "id": "freetv_drama_cinema_il",
-    "name": "FreeTV קולנוע דרמה HD",
-    "title": "FreeTV Cinema Drama HD",
-    "category": "סרטים וקולנוע (Movies TV)",
-    "categoryEn": "movies",
-    "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/free_movies_drama/live.livx/playlist.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/freetv_movies_drama.png",
-    "badge": "HD",
-    "desc": "ערוץ דרמות מרגשות, סרטי איכות ופסטיבלים מובילים מהארץ ומהעולם.",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "webOk": true,
-    "number": 393,
-    "src": {
-      "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
-      "kind": "official",
-      "host": "d1zqtf09wb8nt5.cloudfront.net",
-      "found": "רשימה ידנית (גרסה קודמת)",
-      "web": "✅"
-    }
-  },
-  {
-    "id": "freetv_comedy_cinema_il",
-    "name": "FreeTV קולנוע קומדיה HD",
-    "title": "FreeTV Cinema Comedy HD",
-    "category": "סרטים וקולנוע (Movies TV)",
-    "categoryEn": "movies",
-    "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/free_movies_comedy/live.livx/playlist.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/freetv_movies_comedy.png",
-    "badge": "HD",
-    "desc": "ערוץ קומדיות קולנועיות, סרטים מצחיקים וקלילים מסביב לשעון.",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "webOk": true,
-    "number": 394,
-    "src": {
-      "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
-      "kind": "official",
-      "host": "d1zqtf09wb8nt5.cloudfront.net",
-      "found": "רשימה ידנית (גרסה קודמת)",
-      "web": "✅"
-    }
-  },
-  {
-    "id": "freetv_israeli_cinema_il",
-    "name": "FreeTV קולנוע ישראלי HD",
-    "title": "FreeTV קולנוע ישראלי HD",
-    "category": "סרטים וקולנוע (Movies TV)",
-    "categoryEn": "movies",
-    "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/free_israeli_movies/live.livx/playlist.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/freetv_israeli_movies.png",
-    "badge": "HD",
-    "desc": "ערוץ מיטב הקולנוע הישראלי – יצירות מופת ישראליות מכל השנים.",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "webOk": true,
-    "number": 395,
-    "src": {
-      "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
-      "kind": "official",
-      "host": "d1zqtf09wb8nt5.cloudfront.net",
-      "found": "רשימה ידנית (גרסה קודמת)",
-      "web": "✅"
     }
   },
   {
@@ -10410,31 +10017,6 @@
     }
   },
   {
-    "id": "games_shows_il",
-    "name": "ערוץ השעשועונים והמשחקים HD",
-    "title": "ערוץ המשחקים והשעשועונים HD",
-    "category": "ערוצי ישראל - שידור חי",
-    "categoryEn": "israel",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32158/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/reshet13_comedy_il.png",
-    "badge": "HD",
-    "desc": "ערוץ השעשועונים – גלגל המזל, אחד נגד 100, משחקי טריוויה ובידור.",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "webOk": true,
-    "number": 400,
-    "src": {
-      "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
-      "kind": "official",
-      "host": "b84203c4.ottrast.com",
-      "found": "רשימה ידנית (גרסה קודמת)",
-      "web": "❌ רק באפליקציה (HTTP)"
-    }
-  },
-  {
     "id": "beautyz_fashion_il",
     "name": "ערוץ Beautyz אופנה ולייפסטייל HD",
     "title": "ערוץ Beautyz אופנה ויופי HD",
@@ -10480,28 +10062,6 @@
     }
   },
   {
-    "id": "channel_hayeladim_hd",
-    "name": "ערוץ הילדים HD",
-    "number": 403,
-    "category": "ילדים ונוער (בעברית)",
-    "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kids_channel/live.livx/playlist.m3u8",
-    "logo": "assets/logos/arutz_hayeladim.png",
-    "language": "he",
-    "quality": "HD",
-    "description": "ערוץ הילדים – שידורי ילדים ונוער, סדרות מקור ותוכניות אהובות בעברית.",
-    "categoryEn": "kids_he",
-    "backups": [],
-    "fallbackUrls": [],
-    "src": {
-      "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
-      "kind": "official",
-      "host": "d1zqtf09wb8nt5.cloudfront.net",
-      "found": "שידור ערוץ הילדים HD המקום האמיתי",
-      "web": "✅"
-    },
-    "webOk": true
-  },
-  {
     "id": "junior_channel_hd",
     "name": "ערוץ ג'וניור HD (Junior)",
     "number": 404,
@@ -10540,28 +10100,6 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
     }
-  },
-  {
-    "id": "luli_channel_hd",
-    "name": "ערוץ לולי לפעוטות HD (Luli)",
-    "number": 406,
-    "category": "ילדים ונוער (בעברית)",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2364/index.m3u8",
-    "logo": "assets/logos/luli_tv.png",
-    "language": "he",
-    "quality": "HD",
-    "description": "ערוץ לולי לפעוטות – שירים, סיפורים והפעלות בעברית מבית הופ!.",
-    "categoryEn": "kids_he",
-    "backups": [],
-    "fallbackUrls": [],
-    "src": {
-      "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
-      "kind": "official",
-      "host": "b84203c4.ottrast.com",
-      "found": "ערוץ לולי לפעוטות בעברית HD",
-      "web": "❌ רק באפליקציה (הפניה בלי CORS)"
-    },
-    "webOk": false
   },
   {
     "id": "yes_movies_kids_hd",
@@ -10645,56 +10183,6 @@
     "fallbackUrls": [
       "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12209/index.m3u8",
       "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2339/index.m3u8"
-    ]
-  },
-  {
-    "id": "food_channel_israel_hd",
-    "name": "ערוץ האוכל הישראלי HD (מבית החיים הטובים)",
-    "title": "ערוץ האוכל הישראלי מבית החיים הטובים וענני תקשורת HD",
-    "number": 410,
-    "category": "ערוצי אוכל (Food Channels)",
-    "categoryEn": "food",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12209/index.m3u8",
-    "logo": "assets/logos/food_channel.png",
-    "quality": "FHD",
-    "lang": "he",
-    "language": "he",
-    "description": "ערוץ האוכל מבית החיים הטובים וענני תקשורת – שפים מובילים, מתכונים וסדנאות בישול ואפייה בעברית.",
-    "desc": "ערוץ האוכל מבית החיים הטובים וענני תקשורת – שפים מובילים, מתכונים וסדנאות בישול ואפייה בעברית.",
-    "servers": [
-      {
-        "name": "ראשי (ערוץ האוכל הישראלי FHD)",
-        "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12209/index.m3u8"
-      },
-      {
-        "name": "גיבוי 1 (ערוץ האוכל פלוס)",
-        "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2377/index.m3u8"
-      },
-      {
-        "name": "גיבוי 2 (ערוץ החיים הטובים HD)",
-        "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2355/index.m3u8"
-      },
-      {
-        "name": "גיבוי 3 (ערוץ פודי בישול ישראלי)",
-        "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32154/index.m3u8"
-      }
-    ],
-    "backups": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2377/index.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2355/index.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32154/index.m3u8"
-    ],
-    "src": {
-      "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
-      "kind": "official",
-      "host": "b84203c4.ottrast.com",
-      "found": "רשימה ידנית (גרסה קודמת)",
-      "web": "❌ רק באפליקציה (HTTP)"
-    },
-    "fallbackUrls": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2377/index.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2355/index.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32154/index.m3u8"
     ]
   },
   {
@@ -11805,34 +11293,6 @@
     }
   },
   {
-    "id": "hidabroot_tv_hd",
-    "name": "ערוץ הידברות HD",
-    "title": "ערוץ הידברות HD – ערוץ הטלוויזיה היהודי הגדול בעולם",
-    "category": "מסורת וקהילה",
-    "categoryEn": "tradition",
-    "logo": "assets/logos/hidabroot.png",
-    "url": "https://cdn.cybercdn.live/HidabrootIL/Live97/playlist.m3u8",
-    "backupUrls": [],
-    "channelNumber": 97,
-    "number": 514,
-    "language": "Hebrew",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "badge": "HD",
-    "quality": "HD",
-    "resolution": "1080p",
-    "desc": "שידורי ערוץ הידברות HD: הרצאות, תוכניות אירוח, חינוך ויהדות.",
-    "backups": [],
-    "src": {
-      "by": "CyberCDN – ה-CDN של תחנות הרדיו עצמן",
-      "kind": "official",
-      "host": "cdn.cybercdn.live",
-      "found": "רשימה ידנית (גרסה קודמת)",
-      "web": "✅"
-    }
-  },
-  {
     "id": "i24news_arabic_hd",
     "name": "ערוץ i24NEWS ערבית HD",
     "title": "ערוץ i24NEWS ערבית – שידורי אקטואליה וחדשות מישראל",
@@ -11858,36 +11318,6 @@
       "by": "i24NEWS – שרת רשמי",
       "kind": "official",
       "host": "i24newsarabic-cdn.encoders.immergo.tv",
-      "found": "רשימה ידנית (גרסה קודמת)",
-      "web": "✅"
-    }
-  },
-  {
-    "id": "i24news_english_hd",
-    "name": "ערוץ i24NEWS אנגלית HD",
-    "title": "ערוץ i24NEWS אנגלית – שידורי אקטואליה וחדשות מישראל",
-    "category": "חדשות מהעולם (News)",
-    "categoryEn": "news",
-    "logo": "assets/logos/i24news_en.png",
-    "url": "https://i24newsenglish-cdn.encoders.immergo.tv/master.m3u8",
-    "backupUrls": [
-      "https://hlspackager.akamaized.net/live/DB/i24_ENG/HLS/i24_ENG.m3u8"
-    ],
-    "channelNumber": 332,
-    "number": 516,
-    "language": "English",
-    "lang": "en",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "badge": "HD",
-    "quality": "HD",
-    "resolution": "1080p",
-    "desc": "ערוץ i24NEWS המשדר חדשות ואקטואליה בינלאומית וישראלית באנגלית.",
-    "backups": [],
-    "src": {
-      "by": "i24NEWS – שרת רשמי",
-      "kind": "official",
-      "host": "i24newsenglish-cdn.encoders.immergo.tv",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     }
@@ -12215,54 +11645,6 @@
     "backups": []
   },
   {
-    "id": "freetv_lifestyle_il",
-    "name": "FreeTV לייף סטייל HD",
-    "title": "FreeTV לייף סטייל HD",
-    "category": "ערוצי ישראל - שידור חי",
-    "categoryEn": "israel",
-    "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/imagin_lifestyle/live.livx/playlist.m3u8",
-    "logo": "assets/logos/freetv_lifestyle_il.png",
-    "badge": "HD",
-    "desc": "ערוץ הלייף סטייל של FreeTV – עיצוב, בית, בריאות, אופנה וסגנון חיים ישראלי",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 529,
-    "fallbackUrls": [],
-    "backups": [],
-    "src": {
-      "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
-      "kind": "official",
-      "host": "d1zqtf09wb8nt5.cloudfront.net",
-      "found": "שידור FreeTV רשמי",
-      "web": "✅"
-    }
-  },
-  {
-    "id": "music_channel_il",
-    "name": "ערוץ המוזיקה הישראלי 24/7 HD",
-    "title": "ערוץ המוזיקה הישראלי HD",
-    "category": "מוזיקה (Music TV)",
-    "categoryEn": "music",
-    "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/music_channel/live.livx/playlist.m3u8",
-    "logo": "assets/logos/music_channel_il.png",
-    "badge": "HD",
-    "desc": "ערוץ המוזיקה הישראלי – מיטב הקליפים והלהיטים הישראליים ברצף 24 שעות ביממה באיכות HD",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 530,
-    "fallbackUrls": [],
-    "backups": [],
-    "src": {
-      "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
-      "kind": "official",
-      "host": "d1zqtf09wb8nt5.cloudfront.net",
-      "found": "שידור FreeTV רשמי",
-      "web": "✅"
-    }
-  },
-  {
     "id": "partner_reality_il",
     "name": "ערוץ הריאליטי הישראלי HD",
     "title": "ערוץ הריאליטי HD",
@@ -12283,30 +11665,6 @@
       "kind": "fast",
       "host": "d2dffl3588mvfk.cloudfront.net",
       "found": "שידור פרטנר TV רשמי",
-      "web": "✅"
-    }
-  },
-  {
-    "id": "ch9_contact_il",
-    "name": "ערוץ 9 ישראל – שידור אולפן ישיר HD",
-    "title": "ערוץ 9 אולפן ישיר HD",
-    "category": "ערוצי ישראל - שידור חי",
-    "categoryEn": "israel",
-    "url": "https://contact.gostreaming.tv/Con-11/index.m3u8",
-    "logo": "assets/logos/ch9_contact_il.png",
-    "badge": "HD",
-    "desc": "שידור ישיר מתוך אולפני ערוץ 9 בישראל – חדשות, ראיונות ודיונים באיכות HD",
-    "lang": "ru",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 532,
-    "fallbackUrls": [],
-    "backups": [],
-    "src": {
-      "by": "GoStreaming – ספק השידור של ערוץ 9",
-      "kind": "official",
-      "host": "contact.gostreaming.tv",
-      "found": "שידור אולפן ערוץ 9 ישיר",
       "web": "✅"
     }
   },

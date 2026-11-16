@@ -1,50 +1,122 @@
 {
   "metas": [
     {
-      "id": "itv_freetv_action_cinema_il",
+      "id": "itv_vod_checkout",
       "type": "tv",
-      "name": "392. FreeTV קולנוע אקשן HD",
-      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/freetv_movies_action.png",
+      "name": "501. קופה ראשית FHD (VOD)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/vod_checkout.png",
       "posterShape": "landscape",
-      "description": "ערוץ סרטי פעולה, מתח ואקשן שוברי קופות 24/7 באיכות HD ללא הפסקה.\n\n📡 מקור השידור: FreeTV – השידור הרשמי (AWS CloudFront)\n✅ שידור רשמי ישיר",
+      "description": "עלילותיהם הקורעות מצחוק של עובדי ולקוחות סניף שפע יששכר ביבנה. שירה שטיינבוך, כוכבה שביט, ראמזי עבד ראמזי, ניסים ואנטולי, טיטיבנסקי, אסתי ואמנון.\n\n📡 מקור השידור: Redge – ה-CDN הרשמי של כאן, ערוץ 14 וכלכלה 10\n✅ שידור רשמי ישיר",
       "genres": [
-        "סרטים וקולנוע",
+        "סדרות לצפייה ישירה",
         "ישראל"
       ]
     },
     {
-      "id": "itv_freetv_drama_cinema_il",
+      "id": "itv_vod_manayek",
       "type": "tv",
-      "name": "393. FreeTV קולנוע דרמה HD",
-      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/freetv_movies_drama.png",
+      "name": "502. מנאייכ FHD (VOD)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/vod_manayek.jpg",
       "posterShape": "landscape",
-      "description": "ערוץ דרמות מרגשות, סרטי איכות ופסטיבלים מובילים מהארץ ומהעולם.\n\n📡 מקור השידור: FreeTV – השידור הרשמי (AWS CloudFront)\n✅ שידור רשמי ישיר",
+      "description": "דרמת מתח משטרתית זוכת פרסי האקדמיה. חוקר מח\"ש איזי בכר יוצא לחקור את חברו הטוב ביותר במשטרה, ברק הראל.\n\n📡 מקור השידור: Redge – ה-CDN הרשמי של כאן, ערוץ 14 וכלכלה 10\n✅ שידור רשמי ישיר",
       "genres": [
-        "סרטים וקולנוע",
+        "סדרות לצפייה ישירה",
         "ישראל"
       ]
     },
     {
-      "id": "itv_freetv_comedy_cinema_il",
+      "id": "itv_vod_tehran",
       "type": "tv",
-      "name": "394. FreeTV קולנוע קומדיה HD",
-      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/freetv_movies_comedy.png",
+      "name": "503. טהרן FHD (VOD)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/vod_tehran.jpg",
       "posterShape": "landscape",
-      "description": "ערוץ קומדיות קולנועיות, סרטים מצחיקים וקלילים מסביב לשעון.\n\n📡 מקור השידור: FreeTV – השידור הרשמי (AWS CloudFront)\n✅ שידור רשמי ישיר",
+      "description": "תמר רביניאן, האקרית מבריקה של המוסד, נשלחת בזהות בדויה ללב בירת איראן במטרה לנטרל את מערכות המכ\"ם של הכור הגרעיני.\n\n📡 מקור השידור: Redge – ה-CDN הרשמי של כאן, ערוץ 14 וכלכלה 10\n✅ שידור רשמי ישיר",
       "genres": [
-        "סרטים וקולנוע",
+        "סדרות לצפייה ישירה",
         "ישראל"
       ]
     },
     {
-      "id": "itv_freetv_israeli_cinema_il",
+      "id": "itv_vod_hayehudim_baim",
       "type": "tv",
-      "name": "395. FreeTV קולנוע ישראלי HD",
-      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/freetv_israeli_movies.png",
+      "name": "504. היהודים באים FHD (VOD)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/vod_hayehudim_baim.jpg",
       "posterShape": "landscape",
-      "description": "ערוץ מיטב הקולנוע הישראלי – יצירות מופת ישראליות מכל השנים.\n\n📡 מקור השידור: FreeTV – השידור הרשמי (AWS CloudFront)\n✅ שידור רשמי ישיר",
+      "description": "סאטירה מבריקה של כאן 11 המציגה מערכונים פרועים על ההיסטוריה היהודית והישראלית.\n\n📡 מקור השידור: Redge – ה-CDN הרשמי של כאן, ערוץ 14 וכלכלה 10\n✅ שידור רשמי ישיר",
       "genres": [
-        "סרטים וקולנוע",
+        "סדרות לצפייה ישירה",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_vod_hamefakedet",
+      "type": "tv",
+      "name": "505. המפקדת FHD (VOD)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/vod_hamefakedet.jpg",
+      "posterShape": "landscape",
+      "description": "נועה, קצינה צעירה ומורעלת, מקבלת פיקוד על מחלקת טירוניות בעייתיות בבסיס חוות השומר.\n\n📡 מקור השידור: Redge – ה-CDN הרשמי של כאן, ערוץ 14 וכלכלה 10\n✅ שידור רשמי ישיר",
+      "genres": [
+        "סדרות לצפייה ישירה",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_vod_bo_nechol",
+      "type": "tv",
+      "name": "506. בואו לאכול איתי FHD (VOD)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/vod_bo_nechol.jpg",
+      "posterShape": "landscape",
+      "description": "חמישה בשלנים חובבים שלא מכירים נפגשים לארוחות ערב הדדיות בבתיהם. בקריינותו המושחזת והקורעת של שי אביבי.\n\n📡 מקור השידור: Redge – ה-CDN הרשמי של כאן, ערוץ 14 וכלכלה 10\n✅ שידור רשמי ישיר",
+      "genres": [
+        "סדרות לצפייה ישירה",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_vod_cramel",
+      "type": "tv",
+      "name": "507. כראמל FHD (VOD)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/vod_cramel.jpg",
+      "posterShape": "landscape",
+      "description": "שלושה אחים יתומים מאומצים על ידי גבירה עשירה ומקבלים בירושה חתול מיוחד ומדבר בעל יכולות קסומות בשם כראמל.\n\n📡 מקור השידור: Redge – ה-CDN הרשמי של כאן, ערוץ 14 וכלכלה 10\n✅ שידור רשמי ישיר",
+      "genres": [
+        "סדרות לצפייה ישירה",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_vod_zehu_ze",
+      "type": "tv",
+      "name": "508. זהו זה! FHD (VOD)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/vod_zehu_ze.jpg",
+      "posterShape": "landscape",
+      "description": "תוכנית הקאלט והסאטירה המיתולוגית של מוני מושונוב, בראבא, דובל'ה גליקמן, אבי קושניר וגידי גוב.\n\n📡 מקור השידור: Redge – ה-CDN הרשמי של כאן, ערוץ 14 וכלכלה 10\n✅ שידור רשמי ישיר",
+      "genres": [
+        "סדרות לצפייה ישירה",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_vod_rehearsals",
+      "type": "tv",
+      "name": "509. חזרות FHD (VOD)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/vod_rehearsals.jpg",
+      "posterShape": "landscape",
+      "description": "איריס ותומר הם בני זוג ויוצרי תיאטרון שנפרדים בדיוק כשהמחזה שכתבו מתקבל להפקה בתיאטרון הגדול.\n\n📡 מקור השידור: Redge – ה-CDN הרשמי של כאן, ערוץ 14 וכלכלה 10\n✅ שידור רשמי ישיר",
+      "genres": [
+        "סדרות לצפייה ישירה",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_vod_valley_of_tears",
+      "type": "tv",
+      "name": "510. שעת נעילה FHD (VOD)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/vod_valley_of_tears.jpg",
+      "posterShape": "landscape",
+      "description": "סדרת המלחמה העוצמתית והגדולה בתולדות הטלוויזיה הישראלית, על לוחמי חרמון ורמת הגולן במלחמת יום הכיפורים.\n\n📡 מקור השידור: Redge – ה-CDN הרשמי של כאן, ערוץ 14 וכלכלה 10\n✅ שידור רשמי ישיר",
+      "genres": [
+        "סדרות לצפייה ישירה",
         "ישראל"
       ]
     }
