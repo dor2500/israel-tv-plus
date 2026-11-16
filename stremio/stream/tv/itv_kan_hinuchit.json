@@ -2,7 +2,7 @@
   "streams": [
     {
       "name": "ישראל TV+\n[FHD ראשי]",
-      "title": "כאן חינוכית 23 FHD\n📡 כאן – תאגיד השידור (Redge Media CDN רשמי מהיר)\n✅ שידור רשמי ישיר",
+      "title": "כאן חינוכית 23 FHD\n📡 Redge – ה-CDN הרשמי של כאן, ערוץ 14 וכלכלה 10\n✅ שידור רשמי ישיר",
       "url": "https://r.il.cdn-redge.media/livehls/oil/kancdn-live/live/kan_edu/live.livx/playlist.m3u8",
       "behaviorHints": {
         "bingeGroup": "itv-live"
