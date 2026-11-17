@@ -76,7 +76,7 @@
     "title": "ערוץ HOT בידור ישראלי וסלבס HD",
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32141/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32141/index.m3u8",
     "logo": "assets/logos/hot_bidur.png",
     "badge": "HD",
     "desc": "HOT בידור – דוקו-ריאליטי ישראלי, חדשות הבידור, סדרות מקור ואירוח",
@@ -94,10 +94,14 @@
     "webOk": false,
     "countryHe": "ישראל",
     "fallbackUrls": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12219/index.m3u8"
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32141/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32141/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32141/index.m3u8"
     ],
     "backups": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12219/index.m3u8"
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32141/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32141/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32141/index.m3u8"
     ]
   },
   {
@@ -106,7 +110,7 @@
     "title": "ערוץ HOT Real סדרות ריאליטי HD",
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12274/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12274/index.m3u8",
     "logo": "assets/logos/hot_reality.png",
     "badge": "HD",
     "desc": "ערוץ HOT Real – מיטב סדרות הריאליטי והדוקו-ריאליטי מישראל ומהעולם",
@@ -122,8 +126,16 @@
       "web": "❌ רק באפליקציה (HTTP)"
     },
     "number": 5,
-    "fallbackUrls": [],
-    "backups": []
+    "fallbackUrls": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12274/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12274/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12274/index.m3u8"
+    ],
+    "backups": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12274/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12274/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12274/index.m3u8"
+    ]
   },
   {
     "id": "reshet13_comedy_il",
@@ -184,7 +196,7 @@
     "name": "ערוץ השעשועונים והמשחקים HD",
     "title": "ערוץ השעשועונים והחידונים 24/7",
     "desc": "שעשועוני טלוויזיה, משחקי ידע, אתגרים וחידונים מרתקים לכל המשפחה בפרטנר TV.",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32158/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32158/index.m3u8",
     "backup_urls": [
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32161/index.m3u8"
     ],
@@ -204,8 +216,16 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "backups": [],
-    "fallbackUrls": []
+    "backups": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32158/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32158/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32158/index.m3u8"
+    ],
+    "fallbackUrls": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32158/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32158/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32158/index.m3u8"
+    ]
   },
   {
     "id": "channel9",
@@ -230,18 +250,22 @@
     "backups": [
       "https://contact.gostreaming.tv/Con-11/index.m3u8",
       "https://contact.gostreaming.tv/Channel9/myStream/playlist.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2331/index.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2374/index.m3u8",
-      "http://stream.mcquack.net/454/index.m3u8"
+      "http://stream.mcquack.net/454/index.m3u8",
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2331/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2331/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2331/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2331/index.m3u8"
     ],
     "country": "IL",
     "countryHe": "ישראל",
     "fallbackUrls": [
       "https://contact.gostreaming.tv/Con-11/index.m3u8",
       "https://contact.gostreaming.tv/Channel9/myStream/playlist.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2331/index.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2374/index.m3u8",
-      "http://stream.mcquack.net/454/index.m3u8"
+      "http://stream.mcquack.net/454/index.m3u8",
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2331/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2331/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2331/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2331/index.m3u8"
     ]
   },
   {
@@ -335,16 +359,17 @@
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/keshet12_hevc/live.livx/playlist.m3u8",
       "https://mako-streaming.akamaized.net/stream/hls/live/2033791/k12dvr/index.m3u8",
       "https://keshethlslive-LH.akamaihd.net/i/c2n_1@195269/master.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2345/index.m3u8",
       "http://stream.mcquack.net/449/index.m3u8",
       "https://mako-streaming.akamaized.net/stream/hls/live/2033791/k12/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/keshet_12_subs/live.livx/playlist.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/keshet_12_hevc/live.livx/playlist.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2349/index.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2329/index.m3u8",
       "http://stream.mcquack.net/294/index.m3u8",
       "https://mako-streaming.akamaized.net/stream/hls/live/2033791/k12n12wad/index.m3u8",
-      "http://stream.mcquack.net/293/index.m3u8"
+      "http://stream.mcquack.net/293/index.m3u8",
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2345/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2345/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2345/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2345/index.m3u8"
     ],
     "country": "IL",
     "countryHe": "ישראל",
@@ -354,16 +379,17 @@
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/keshet12_hevc/live.livx/playlist.m3u8",
       "https://mako-streaming.akamaized.net/stream/hls/live/2033791/k12dvr/index.m3u8",
       "https://keshethlslive-LH.akamaihd.net/i/c2n_1@195269/master.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2345/index.m3u8",
       "http://stream.mcquack.net/449/index.m3u8",
       "https://mako-streaming.akamaized.net/stream/hls/live/2033791/k12/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/keshet_12_subs/live.livx/playlist.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/keshet_12_hevc/live.livx/playlist.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2349/index.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2329/index.m3u8",
       "http://stream.mcquack.net/294/index.m3u8",
       "https://mako-streaming.akamaized.net/stream/hls/live/2033791/k12n12wad/index.m3u8",
-      "http://stream.mcquack.net/293/index.m3u8"
+      "http://stream.mcquack.net/293/index.m3u8",
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2345/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2345/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2345/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2345/index.m3u8"
     ],
     "auth": "",
     "backupUrls": [
@@ -372,16 +398,17 @@
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/keshet12_hevc/live.livx/playlist.m3u8",
       "https://mako-streaming.akamaized.net/stream/hls/live/2033791/k12dvr/index.m3u8",
       "https://keshethlslive-LH.akamaihd.net/i/c2n_1@195269/master.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2345/index.m3u8",
       "http://stream.mcquack.net/449/index.m3u8",
       "https://mako-streaming.akamaized.net/stream/hls/live/2033791/k12/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/keshet_12_subs/live.livx/playlist.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/keshet_12_hevc/live.livx/playlist.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2349/index.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2329/index.m3u8",
       "http://stream.mcquack.net/294/index.m3u8",
       "https://mako-streaming.akamaized.net/stream/hls/live/2033791/k12n12wad/index.m3u8",
-      "http://stream.mcquack.net/293/index.m3u8"
+      "http://stream.mcquack.net/293/index.m3u8",
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2345/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2345/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2345/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2345/index.m3u8"
     ]
   },
   {
@@ -409,17 +436,19 @@
       "https://d18b0e6mopany4.cloudfront.net/out/v1/08bc71cf0a0f4712b6b03c732b0e6d25/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/reshet13_subs/live.livx/playlist.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/reshet13_hevc/live.livx/playlist.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32249/index.m3u8",
       "http://stream.mcquack.net/450/index.m3u8",
       "https://d198ztbnlup2iq.cloudfront.net/out/v1/2d9050c90fb94df8b78d1d98306a1a65/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/reshet_13_subs/live.livx/playlist.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2330/index.m3u8",
       "http://stream.mcquack.net/295/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/reshet_13_hevc/live.livx/playlist.m3u8",
       "https://d2xg1g9o5vns8m.cloudfront.net/out/v1/0855d703f7d5436fae6a9c7ce8ca5075/index.m3u8",
       "https://reshet.g-mana.live/media/87f59c77-03f6-4bad-a648-897e095e7360/mainManifest.m3u8",
       "http://stream.mcquack.net/294/index.m3u8",
-      "https://d15ds134q59udk.cloudfront.net/media/3b45de9e-c944-4fdc-a344-7c3042b5b104/mainManifest.m3u8"
+      "https://d15ds134q59udk.cloudfront.net/media/3b45de9e-c944-4fdc-a344-7c3042b5b104/mainManifest.m3u8",
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32249/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32249/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32249/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32249/index.m3u8"
     ],
     "country": "IL",
     "countryHe": "ישראל",
@@ -429,17 +458,19 @@
       "https://d18b0e6mopany4.cloudfront.net/out/v1/08bc71cf0a0f4712b6b03c732b0e6d25/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/reshet13_subs/live.livx/playlist.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/reshet13_hevc/live.livx/playlist.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32249/index.m3u8",
       "http://stream.mcquack.net/450/index.m3u8",
       "https://d198ztbnlup2iq.cloudfront.net/out/v1/2d9050c90fb94df8b78d1d98306a1a65/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/reshet_13_subs/live.livx/playlist.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2330/index.m3u8",
       "http://stream.mcquack.net/295/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/reshet_13_hevc/live.livx/playlist.m3u8",
       "https://d2xg1g9o5vns8m.cloudfront.net/out/v1/0855d703f7d5436fae6a9c7ce8ca5075/index.m3u8",
       "https://reshet.g-mana.live/media/87f59c77-03f6-4bad-a648-897e095e7360/mainManifest.m3u8",
       "http://stream.mcquack.net/294/index.m3u8",
-      "https://d15ds134q59udk.cloudfront.net/media/3b45de9e-c944-4fdc-a344-7c3042b5b104/mainManifest.m3u8"
+      "https://d15ds134q59udk.cloudfront.net/media/3b45de9e-c944-4fdc-a344-7c3042b5b104/mainManifest.m3u8",
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32249/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32249/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32249/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32249/index.m3u8"
     ],
     "iptv": "Reshet13.il",
     "backupUrls": [
@@ -448,17 +479,19 @@
       "https://d18b0e6mopany4.cloudfront.net/out/v1/08bc71cf0a0f4712b6b03c732b0e6d25/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/reshet13_subs/live.livx/playlist.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/reshet13_hevc/live.livx/playlist.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32249/index.m3u8",
       "http://stream.mcquack.net/450/index.m3u8",
       "https://d198ztbnlup2iq.cloudfront.net/out/v1/2d9050c90fb94df8b78d1d98306a1a65/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/reshet_13_subs/live.livx/playlist.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2330/index.m3u8",
       "http://stream.mcquack.net/295/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/reshet_13_hevc/live.livx/playlist.m3u8",
       "https://d2xg1g9o5vns8m.cloudfront.net/out/v1/0855d703f7d5436fae6a9c7ce8ca5075/index.m3u8",
       "https://reshet.g-mana.live/media/87f59c77-03f6-4bad-a648-897e095e7360/mainManifest.m3u8",
       "http://stream.mcquack.net/294/index.m3u8",
-      "https://d15ds134q59udk.cloudfront.net/media/3b45de9e-c944-4fdc-a344-7c3042b5b104/mainManifest.m3u8"
+      "https://d15ds134q59udk.cloudfront.net/media/3b45de9e-c944-4fdc-a344-7c3042b5b104/mainManifest.m3u8",
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32249/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32249/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32249/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32249/index.m3u8"
     ]
   },
   {
@@ -484,26 +517,28 @@
     "backups": [
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/ch14/live.livx/playlist.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/ch14_hevc/live.livx/playlist.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32325/index.m3u8",
       "http://stream.mcquack.net/451/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/ch14_subs/live.livx/playlist.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12242/index.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32152/index.m3u8",
       "https://channel14-live-consume.immergo.tv/output/2/streamPlaylist-archive.m3u8",
-      "http://stream.mcquack.net/295/index.m3u8"
+      "http://stream.mcquack.net/295/index.m3u8",
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32325/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32325/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32325/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32325/index.m3u8"
     ],
     "country": "IL",
     "countryHe": "ישראל",
     "fallbackUrls": [
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/ch14/live.livx/playlist.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/ch14_hevc/live.livx/playlist.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32325/index.m3u8",
       "http://stream.mcquack.net/451/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/ch14_subs/live.livx/playlist.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12242/index.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32152/index.m3u8",
       "https://channel14-live-consume.immergo.tv/output/2/streamPlaylist-archive.m3u8",
-      "http://stream.mcquack.net/295/index.m3u8"
+      "http://stream.mcquack.net/295/index.m3u8",
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32325/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32325/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32325/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32325/index.m3u8"
     ]
   },
   {
@@ -529,26 +564,28 @@
     "backups": [
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/i24news/live.livx/playlist.m3u8",
       "https://bcovlive-a.akamaihd.net/d8958672620e4ff3925c42b38c93e86f/eu-central-1/5377161796001/playlist.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/19194/index.m3u8",
       "https://i24newshebrew-cdn.encoders.immergo.tv/master.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2386/index.m3u8",
       "https://i24newshebrew-cdn.encoders.immergo.tv/2/streamPlaylist.m3u8",
       "https://hlspackager.akamaized.net/live/bitmovin-i24news/2589137645123855490/index.m3u8",
       "http://stream.mcquack.net/45/index.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12205/index.m3u8"
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/19194/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/19194/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/19194/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/19194/index.m3u8"
     ],
     "country": "IL",
     "countryHe": "ישראל",
     "fallbackUrls": [
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/i24news/live.livx/playlist.m3u8",
       "https://bcovlive-a.akamaihd.net/d8958672620e4ff3925c42b38c93e86f/eu-central-1/5377161796001/playlist.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/19194/index.m3u8",
       "https://i24newshebrew-cdn.encoders.immergo.tv/master.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2386/index.m3u8",
       "https://i24newshebrew-cdn.encoders.immergo.tv/2/streamPlaylist.m3u8",
       "https://hlspackager.akamaized.net/live/bitmovin-i24news/2589137645123855490/index.m3u8",
       "http://stream.mcquack.net/45/index.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12205/index.m3u8"
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/19194/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/19194/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/19194/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/19194/index.m3u8"
     ]
   },
   {
@@ -614,7 +651,7 @@
     "title": "ערוץ yes דוקו קולנוע תיעודי ישראלי ועולמי HD",
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12258/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12258/index.m3u8",
     "logo": "assets/logos/yes_docu.png",
     "badge": "HD",
     "desc": "ערוץ yes דוקו – סרטים וסדרות דוקומנטריות עטורי פרסים מישראל ומהעולם",
@@ -629,8 +666,16 @@
       "web": "❌ רק באפליקציה (HTTP)"
     },
     "countryHe": "ישראל",
-    "fallbackUrls": [],
-    "backups": []
+    "fallbackUrls": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12258/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12258/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12258/index.m3u8"
+    ],
+    "backups": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12258/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12258/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12258/index.m3u8"
+    ]
   },
   {
     "id": "hot_8",
@@ -638,9 +683,11 @@
     "title": "ערוץ HOT 8 דוקו, מדע ותרבות HD",
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32142/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32142/index.m3u8",
     "fallbackUrls": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12216/index.m3u8"
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32142/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32142/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32142/index.m3u8"
     ],
     "logo": "assets/logos/hot_8.png",
     "badge": "HD",
@@ -655,7 +702,9 @@
       "web": "❌ רק באפליקציה (HTTP)"
     },
     "backups": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12216/index.m3u8"
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32142/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32142/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32142/index.m3u8"
     ]
   },
   {
@@ -664,9 +713,11 @@
     "title": "ערוץ הבית פלוס עיצוב ולייף סטייל (Home+ HD)",
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2339/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2339/index.m3u8",
     "fallbackUrls": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2355/index.m3u8"
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2339/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2339/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2339/index.m3u8"
     ],
     "logo": "assets/logos/home_plus_il.png",
     "badge": "HD",
@@ -681,7 +732,9 @@
       "web": "❌ רק באפליקציה (HTTP)"
     },
     "backups": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2355/index.m3u8"
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2339/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2339/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2339/index.m3u8"
     ]
   },
   {
@@ -690,8 +743,12 @@
     "title": "ערוץ הבריאות והרפואה הישראלי HD",
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2378/index.m3u8",
-    "fallbackUrls": [],
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2378/index.m3u8",
+    "fallbackUrls": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2378/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2378/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2378/index.m3u8"
+    ],
     "logo": "assets/logos/health_channel_il.png",
     "badge": "HD",
     "lang": "he",
@@ -704,7 +761,11 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "backups": []
+    "backups": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2378/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2378/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2378/index.m3u8"
+    ]
   },
   {
     "id": "travel_channel_il",
@@ -726,10 +787,16 @@
       "web": "✅"
     },
     "fallbackUrls": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32160/index.m3u8"
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32160/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32160/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32160/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32160/index.m3u8"
     ],
     "backups": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32160/index.m3u8"
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32160/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32160/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32160/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32160/index.m3u8"
     ],
     "webOk": true
   },
@@ -789,26 +856,28 @@
     "backups": [
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/ch24/live.livx/playlist.m3u8",
       "https://mako-streaming.akamaized.net/stream/hls/live/2035897/ch24/index.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2330/index.m3u8",
       "http://stream.mcquack.net/452/index.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12237/index.m3u8",
       "http://stream.mcquack.net/42/index.m3u8",
       "https://mako-streaming.akamaized.net/direct/hls/live/2035340/ch24live/index.m3u8?as=1",
       "https://mako-streaming.akamaized.net/evrideo/hls/live/20001278/ch24live/index.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12208/index.m3u8"
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2330/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2330/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2330/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2330/index.m3u8"
     ],
     "country": "IL",
     "countryHe": "ישראל",
     "fallbackUrls": [
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/ch24/live.livx/playlist.m3u8",
       "https://mako-streaming.akamaized.net/stream/hls/live/2035897/ch24/index.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2330/index.m3u8",
       "http://stream.mcquack.net/452/index.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12237/index.m3u8",
       "http://stream.mcquack.net/42/index.m3u8",
       "https://mako-streaming.akamaized.net/direct/hls/live/2035340/ch24live/index.m3u8?as=1",
       "https://mako-streaming.akamaized.net/evrideo/hls/live/20001278/ch24live/index.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12208/index.m3u8"
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2330/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2330/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2330/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2330/index.m3u8"
     ]
   },
   {
@@ -841,7 +910,7 @@
     "title": "ערוץ E! בידור וסלבס עם תרגום לעברית HD",
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12243/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12243/index.m3u8",
     "logo": "assets/logos/e_entertainment_il.png",
     "badge": "HD",
     "lang": "he",
@@ -854,8 +923,16 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "fallbackUrls": [],
-    "backups": []
+    "fallbackUrls": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12243/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12243/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12243/index.m3u8"
+    ],
+    "backups": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12243/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12243/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12243/index.m3u8"
+    ]
   },
   {
     "id": "ego_channel_il",
@@ -863,8 +940,12 @@
     "title": "ערוץ אגו רכב, אקסטרים ולייף סטייל HD",
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32317/index.m3u8",
-    "fallbackUrls": [],
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32317/index.m3u8",
+    "fallbackUrls": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32317/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32317/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32317/index.m3u8"
+    ],
     "logo": "assets/logos/ego_channel_il.png",
     "badge": "HD",
     "lang": "he",
@@ -877,7 +958,11 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "backups": []
+    "backups": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32317/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32317/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32317/index.m3u8"
+    ]
   },
   {
     "id": "cbs_reality_il",
@@ -885,7 +970,7 @@
     "title": "ערוץ הריאליטי והמציאות בעברית HD",
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32159/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32159/index.m3u8",
     "logo": "assets/logos/cbs_reality_il.png",
     "badge": "HD",
     "lang": "he",
@@ -898,8 +983,16 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "fallbackUrls": [],
-    "backups": []
+    "fallbackUrls": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32159/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32159/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32159/index.m3u8"
+    ],
+    "backups": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32159/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32159/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32159/index.m3u8"
+    ]
   },
   {
     "id": "humor_channel_il",
@@ -907,9 +1000,11 @@
     "title": "ערוץ ההומור סטנדאפ ומערכונים ישראלי HD",
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32161/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32161/index.m3u8",
     "fallbackUrls": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32316/index.m3u8"
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32161/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32161/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32161/index.m3u8"
     ],
     "logo": "assets/logos/humor_channel_il.png",
     "badge": "HD",
@@ -924,7 +1019,9 @@
       "web": "❌ רק באפליקציה (HTTP)"
     },
     "backups": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32316/index.m3u8"
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32161/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32161/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32161/index.m3u8"
     ]
   },
   {
@@ -973,11 +1070,17 @@
       "web": "✅"
     },
     "fallbackUrls": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12208/index.m3u8"
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12208/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12208/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12208/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12208/index.m3u8"
     ],
     "iptv": "VivaPlus.il",
     "backups": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12208/index.m3u8"
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12208/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12208/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12208/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12208/index.m3u8"
     ]
   },
   {
@@ -1001,13 +1104,19 @@
       "web": "✅"
     },
     "backups": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32127/index.m3u8",
-      "http://stream.mcquack.net/43/index.m3u8"
+      "http://stream.mcquack.net/43/index.m3u8",
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32127/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32127/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32127/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32127/index.m3u8"
     ],
     "countryHe": "ישראל",
     "fallbackUrls": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32127/index.m3u8",
-      "http://stream.mcquack.net/43/index.m3u8"
+      "http://stream.mcquack.net/43/index.m3u8",
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32127/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32127/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32127/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32127/index.m3u8"
     ],
     "iptv": "Viva.il"
   },
@@ -1043,8 +1152,12 @@
     "id": "il_the_style_channel_hd_il",
     "name": "ערוץ הסטייל והאופנה HD",
     "category": "ערוצי ישראל - שידור חי",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32155/index.m3u8",
-    "fallbackUrls": [],
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32155/index.m3u8",
+    "fallbackUrls": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32155/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32155/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32155/index.m3u8"
+    ],
     "logo": "assets/logos/il_the_style_channel_hd_il.png",
     "badge": "HD",
     "color": "#f472b6",
@@ -1059,7 +1172,11 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "backups": []
+    "backups": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32155/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32155/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32155/index.m3u8"
+    ]
   },
   {
     "id": "hot_mind",
@@ -1067,7 +1184,7 @@
     "title": "ערוץ HOT Mind מדע, פסיכולוגיה והעשרה HD",
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32143/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32143/index.m3u8",
     "logo": "assets/logos/hot_mind.png",
     "badge": "HD",
     "lang": "he",
@@ -1080,8 +1197,16 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "fallbackUrls": [],
-    "backups": []
+    "fallbackUrls": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32143/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32143/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32143/index.m3u8"
+    ],
+    "backups": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32143/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32143/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32143/index.m3u8"
+    ]
   },
   {
     "id": "sport_5_4k",
@@ -1143,7 +1268,7 @@
     "title": "ערוץ ספורט 1 צ'רלטון שידור חי (Charlton Sport 1 HD)",
     "category": "ספורט (Sports)",
     "categoryEn": "sports",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12249/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12249/index.m3u8",
     "logo": "assets/logos/sport1_israel.png",
     "badge": "HD",
     "desc": "ספורט 1 (צ'רלטון) – ליגת העל הישראלית, הפרמייר ליג האנגלית, גביע המדינה ומשחקים מרכזיים בשידור חי",
@@ -1159,17 +1284,20 @@
       "web": "❌ רק באפליקציה (הפניה בלי CORS)"
     },
     "fallbackUrls": [
-      "http://sewv654wfcsdwfi87fwvgbngh.siauliairsavlt.pw/iptv/XFKTEFMC42W8Z9/12249/index.m3u8",
-      "http://45.156.223.202/iptv/XFKTEFMC42W8Z9/12249/index.m3u8"
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12249/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12249/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12249/index.m3u8"
     ],
     "iptv": "Sport1.il",
     "backups": [
-      "http://sewv654wfcsdwfi87fwvgbngh.siauliairsavlt.pw/iptv/XFKTEFMC42W8Z9/12249/index.m3u8",
-      "http://45.156.223.202/iptv/XFKTEFMC42W8Z9/12249/index.m3u8"
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12249/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12249/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12249/index.m3u8"
     ],
     "backupUrls": [
-      "http://sewv654wfcsdwfi87fwvgbngh.siauliairsavlt.pw/iptv/XFKTEFMC42W8Z9/12249/index.m3u8",
-      "http://45.156.223.202/iptv/XFKTEFMC42W8Z9/12249/index.m3u8"
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12249/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12249/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12249/index.m3u8"
     ],
     "webOk": false
   },
@@ -1179,7 +1307,7 @@
     "title": "ערוץ ספורט 2 צ'רלטון שידור חי (Charlton Sport 2 HD)",
     "category": "ספורט (Sports)",
     "categoryEn": "sports",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12250/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12250/index.m3u8",
     "logo": "assets/logos/sport2_israel.png",
     "badge": "HD",
     "desc": "ספורט 2 (צ'רלטון) – שידורים ישירים מהליגה האנגלית, הליגה האיטלקית, בונדסליגה, ליגה אירופית וטניס",
@@ -1195,17 +1323,20 @@
       "web": "❌ רק באפליקציה (הפניה בלי CORS)"
     },
     "fallbackUrls": [
-      "http://sewv654wfcsdwfi87fwvgbngh.siauliairsavlt.pw/iptv/XFKTEFMC42W8Z9/12250/index.m3u8",
-      "http://45.156.223.202/iptv/XFKTEFMC42W8Z9/12250/index.m3u8"
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12250/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12250/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12250/index.m3u8"
     ],
     "iptv": "Sport2.il",
     "backups": [
-      "http://sewv654wfcsdwfi87fwvgbngh.siauliairsavlt.pw/iptv/XFKTEFMC42W8Z9/12250/index.m3u8",
-      "http://45.156.223.202/iptv/XFKTEFMC42W8Z9/12250/index.m3u8"
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12250/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12250/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12250/index.m3u8"
     ],
     "backupUrls": [
-      "http://sewv654wfcsdwfi87fwvgbngh.siauliairsavlt.pw/iptv/XFKTEFMC42W8Z9/12250/index.m3u8",
-      "http://45.156.223.202/iptv/XFKTEFMC42W8Z9/12250/index.m3u8"
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12250/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12250/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12250/index.m3u8"
     ],
     "webOk": false
   },
@@ -1215,7 +1346,7 @@
     "title": "ערוץ ספורט 3 צ'רלטון שידור חי (Charlton Sport 3 HD)",
     "category": "ספורט (Sports)",
     "categoryEn": "sports",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12251/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12251/index.m3u8",
     "logo": "assets/logos/sport3_israel.png",
     "badge": "HD",
     "desc": "ספורט 3 (צ'רלטון) – כדורגל ישראלי ואירופי, כדורסל, אולפנים חיים ואירועי ספורט בינלאומיים",
@@ -1231,17 +1362,20 @@
       "web": "❌ רק באפליקציה (הפניה בלי CORS)"
     },
     "fallbackUrls": [
-      "http://sewv654wfcsdwfi87fwvgbngh.siauliairsavlt.pw/iptv/XFKTEFMC42W8Z9/12251/index.m3u8",
-      "http://45.156.223.202/iptv/XFKTEFMC42W8Z9/12251/index.m3u8"
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12251/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12251/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12251/index.m3u8"
     ],
     "iptv": "Sport3.il",
     "backups": [
-      "http://sewv654wfcsdwfi87fwvgbngh.siauliairsavlt.pw/iptv/XFKTEFMC42W8Z9/12251/index.m3u8",
-      "http://45.156.223.202/iptv/XFKTEFMC42W8Z9/12251/index.m3u8"
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12251/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12251/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12251/index.m3u8"
     ],
     "backupUrls": [
-      "http://sewv654wfcsdwfi87fwvgbngh.siauliairsavlt.pw/iptv/XFKTEFMC42W8Z9/12251/index.m3u8",
-      "http://45.156.223.202/iptv/XFKTEFMC42W8Z9/12251/index.m3u8"
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12251/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12251/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12251/index.m3u8"
     ],
     "webOk": false
   },
@@ -1251,7 +1385,7 @@
     "title": "ערוץ ספורט 4 צ'רלטון שידור חי (Charlton Sport 4 FHD)",
     "category": "ספורט (Sports)",
     "categoryEn": "sports",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12252/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12252/index.m3u8",
     "logo": "assets/logos/sport4_israel.png",
     "badge": "FHD",
     "desc": "ספורט 4 FHD (צ'רלטון) – שידורים חיים באיכות FHD מליגת העל, הפרמייר ליג ומפעלי אופ\"א",
@@ -1267,17 +1401,20 @@
       "web": "❌ רק באפליקציה (הפניה בלי CORS)"
     },
     "fallbackUrls": [
-      "http://sewv654wfcsdwfi87fwvgbngh.siauliairsavlt.pw/iptv/XFKTEFMC42W8Z9/12252/index.m3u8",
-      "http://45.156.223.202/iptv/XFKTEFMC42W8Z9/12252/index.m3u8"
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12252/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12252/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12252/index.m3u8"
     ],
     "iptv": "Sport4.il",
     "backups": [
-      "http://sewv654wfcsdwfi87fwvgbngh.siauliairsavlt.pw/iptv/XFKTEFMC42W8Z9/12252/index.m3u8",
-      "http://45.156.223.202/iptv/XFKTEFMC42W8Z9/12252/index.m3u8"
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12252/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12252/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12252/index.m3u8"
     ],
     "backupUrls": [
-      "http://sewv654wfcsdwfi87fwvgbngh.siauliairsavlt.pw/iptv/XFKTEFMC42W8Z9/12252/index.m3u8",
-      "http://45.156.223.202/iptv/XFKTEFMC42W8Z9/12252/index.m3u8"
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12252/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12252/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12252/index.m3u8"
     ],
     "webOk": false
   },
@@ -1351,11 +1488,17 @@
     },
     "countryHe": "ישראל",
     "fallbackUrls": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12244/index.m3u8"
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12244/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12244/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12244/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12244/index.m3u8"
     ],
     "iptv": "HopChannel.il",
     "backups": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12244/index.m3u8"
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12244/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12244/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12244/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12244/index.m3u8"
     ]
   },
   {
@@ -1412,8 +1555,12 @@
     "title": "ערוץ לולי (Luli TV) לפעוטות בעברית HD",
     "category": "ילדים ונוער (בעברית)",
     "categoryEn": "kids_he",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2364/index.m3u8",
-    "fallbackUrls": [],
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2364/index.m3u8",
+    "fallbackUrls": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2364/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2364/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2364/index.m3u8"
+    ],
     "logo": "assets/logos/luli_tv.png",
     "badge": "HD",
     "lang": "he",
@@ -1427,7 +1574,11 @@
       "found": "iptv-org (Luli.il)",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "backups": []
+    "backups": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2364/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2364/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2364/index.m3u8"
+    ]
   },
   {
     "id": "disney_channel_il",
@@ -1435,7 +1586,7 @@
     "title": "ערוץ דיסני ישראל (Disney Channel Israel HD)",
     "category": "ילדים ונוער (בעברית)",
     "categoryEn": "kids_he",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2382/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2382/index.m3u8",
     "logo": "assets/logos/disney.png",
     "badge": "HD",
     "lang": "he",
@@ -1449,8 +1600,16 @@
       "found": "iptv-org (DisneyChannel.il)",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "fallbackUrls": [],
-    "backups": []
+    "fallbackUrls": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2382/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2382/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2382/index.m3u8"
+    ],
+    "backups": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2382/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2382/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2382/index.m3u8"
+    ]
   },
   {
     "id": "disney_jr_il",
@@ -1481,7 +1640,7 @@
     "title": "ערוץ ניקלודיאון לילדים ונוער בעברית (Nickelodeon Israel HD)",
     "category": "ילדים ונוער (בעברית)",
     "categoryEn": "kids_he",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12240/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12240/index.m3u8",
     "logo": "assets/logos/nickelodeon.png",
     "badge": "HD",
     "desc": "ערוץ ניקלודיאון – בובספוג מכנסמרובע, הרעשנים, אווטאר, צבי הנינג'ה וקומדיות לילדים",
@@ -1497,8 +1656,16 @@
       "web": "❌ רק באפליקציה (HTTP)"
     },
     "iptv": "Nickelodeon.il",
-    "fallbackUrls": [],
-    "backups": [],
+    "fallbackUrls": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12240/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12240/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12240/index.m3u8"
+    ],
+    "backups": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12240/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12240/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12240/index.m3u8"
+    ],
     "language": "he",
     "servers": [
       {
@@ -1525,8 +1692,12 @@
     "title": "ערוץ ניק ג'וניור בעברית (Nick Jr. Israel HD)",
     "category": "ילדים ונוער (בעברית)",
     "categoryEn": "kids_he",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2337/index.m3u8",
-    "fallbackUrls": [],
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2337/index.m3u8",
+    "fallbackUrls": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2337/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2337/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2337/index.m3u8"
+    ],
     "logo": "assets/logos/nick_jr.png",
     "badge": "HD",
     "lang": "he",
@@ -1540,7 +1711,11 @@
       "found": "iptv-org (NickJr.il)",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "backups": []
+    "backups": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2337/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2337/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2337/index.m3u8"
+    ]
   },
   {
     "id": "teennick_il",
@@ -1548,8 +1723,12 @@
     "title": "ערוץ טין ניק לנוער בעברית (TeenNick Israel HD)",
     "category": "ילדים ונוער (בעברית)",
     "categoryEn": "kids_he",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32148/index.m3u8",
-    "fallbackUrls": [],
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32148/index.m3u8",
+    "fallbackUrls": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32148/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32148/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32148/index.m3u8"
+    ],
     "logo": "assets/logos/teennick.png",
     "badge": "HD",
     "lang": "he",
@@ -1563,7 +1742,11 @@
       "found": "iptv-org (TeenNick.il)",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "backups": []
+    "backups": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32148/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32148/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32148/index.m3u8"
+    ]
   },
   {
     "id": "zoom_kids",
@@ -1588,10 +1771,16 @@
     "country": "IL",
     "countryHe": "ישראל",
     "fallbackUrls": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2359/index.m3u8"
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2359/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2359/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2359/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2359/index.m3u8"
     ],
     "backups": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2359/index.m3u8"
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2359/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2359/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2359/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2359/index.m3u8"
     ]
   },
   {
@@ -1616,11 +1805,17 @@
       "web": "✅"
     },
     "fallbackUrls": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2366/index.m3u8"
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2366/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2366/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2366/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2366/index.m3u8"
     ],
     "iptv": "Junior.il",
     "backups": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2366/index.m3u8"
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2366/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2366/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2366/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2366/index.m3u8"
     ]
   },
   {
@@ -1669,13 +1864,19 @@
       "web": "✅"
     },
     "fallbackUrls": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2370/index.m3u8",
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/baby/live.livx/playlist.m3u8"
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/baby/live.livx/playlist.m3u8",
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2370/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2370/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2370/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2370/index.m3u8"
     ],
     "iptv": "BabyTV.il",
     "backups": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2370/index.m3u8",
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/baby/live.livx/playlist.m3u8"
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/baby/live.livx/playlist.m3u8",
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2370/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2370/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2370/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2370/index.m3u8"
     ]
   },
   {
@@ -1684,8 +1885,12 @@
     "title": "ערוץ סרטי הילדים של יס (yes Movies Kids FHD)",
     "category": "ילדים ונוער (בעברית)",
     "categoryEn": "kids_he",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2365/index.m3u8",
-    "fallbackUrls": [],
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2365/index.m3u8",
+    "fallbackUrls": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2365/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2365/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2365/index.m3u8"
+    ],
     "logo": "assets/logos/yes_cinema_kids.png",
     "badge": "FHD",
     "lang": "he",
@@ -1698,7 +1903,11 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "backups": []
+    "backups": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2365/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2365/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2365/index.m3u8"
+    ]
   },
   {
     "id": "hot_cinema_family_il",
@@ -1706,7 +1915,7 @@
     "title": "ערוץ HOT Cinema Family סרטי משפחה וילדים HD",
     "category": "ילדים ונוער (בעברית)",
     "categoryEn": "kids_he",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32146/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32146/index.m3u8",
     "logo": "assets/logos/hot_cinema_family_il.png",
     "badge": "HD",
     "lang": "he",
@@ -1719,8 +1928,16 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "fallbackUrls": [],
-    "backups": []
+    "fallbackUrls": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32146/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32146/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32146/index.m3u8"
+    ],
+    "backups": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32146/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32146/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32146/index.m3u8"
+    ]
   },
   {
     "id": "wiz_kids_il",
@@ -1728,7 +1945,7 @@
     "title": "ערוץ הילדים החכם WIZ! בעברית HD",
     "category": "ילדים ונוער (בעברית)",
     "categoryEn": "kids_he",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12283/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12283/index.m3u8",
     "logo": "assets/logos/wiz.png",
     "badge": "HD",
     "lang": "he",
@@ -1741,8 +1958,16 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "fallbackUrls": [],
-    "backups": []
+    "fallbackUrls": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12283/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12283/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12283/index.m3u8"
+    ],
+    "backups": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12283/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12283/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12283/index.m3u8"
+    ]
   },
   {
     "id": "freetv_kids_family_il",
@@ -1945,7 +2170,7 @@
     "title": "ערוץ 98 שידורי קהילה והאזרח הוותיק",
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2369/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2369/index.m3u8",
     "logo": "assets/logos/channel_98_il.png",
     "badge": "HD",
     "lang": "he",
@@ -1958,8 +2183,16 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "fallbackUrls": [],
-    "backups": []
+    "fallbackUrls": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2369/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2369/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2369/index.m3u8"
+    ],
+    "backups": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2369/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2369/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2369/index.m3u8"
+    ]
   },
   {
     "id": "knesset",
@@ -1986,8 +2219,11 @@
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/knesset/live.livx/playlist.m3u8",
       "https://contact.gostreaming.tv/Knesset/myStream/playlist.m3u8",
       "https://kneset.gostreaming.tv/p2-kneset/_definst_/myStream/index.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12269/index.m3u8",
-      "http://stream.mcquack.net/48/index.m3u8"
+      "http://stream.mcquack.net/48/index.m3u8",
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12269/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12269/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12269/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12269/index.m3u8"
     ],
     "country": "IL",
     "countryHe": "ישראל",
@@ -1996,8 +2232,11 @@
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/knesset/live.livx/playlist.m3u8",
       "https://contact.gostreaming.tv/Knesset/myStream/playlist.m3u8",
       "https://kneset.gostreaming.tv/p2-kneset/_definst_/myStream/index.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12269/index.m3u8",
-      "http://stream.mcquack.net/48/index.m3u8"
+      "http://stream.mcquack.net/48/index.m3u8",
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12269/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12269/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12269/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12269/index.m3u8"
     ]
   },
   {
@@ -2022,10 +2261,16 @@
       "web": "✅"
     },
     "fallbackUrls": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32164/index.m3u8"
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32164/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32164/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32164/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32164/index.m3u8"
     ],
     "backups": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32164/index.m3u8"
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32164/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32164/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32164/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32164/index.m3u8"
     ]
   },
   {
@@ -2253,10 +2498,16 @@
     },
     "number": 79,
     "fallbackUrls": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32160/index.m3u8"
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32160/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32160/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32160/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32160/index.m3u8"
     ],
     "backups": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32160/index.m3u8"
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32160/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32160/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32160/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32160/index.m3u8"
     ]
   },
   {
@@ -2434,11 +2685,17 @@
     "countryHe": "ישראל",
     "fallbackUrls": [
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kneset/live.livx/playlist.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12269/index.m3u8"
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12269/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12269/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12269/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12269/index.m3u8"
     ],
     "backups": [
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kneset/live.livx/playlist.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12269/index.m3u8"
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12269/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12269/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12269/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12269/index.m3u8"
     ]
   },
   {
@@ -2764,7 +3021,10 @@
     "logo": "assets/logos/knesset.png",
     "url": "http://stream.mcquack.net/48/index.m3u8",
     "backupUrls": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2369/index.m3u8"
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2369/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2369/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2369/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2369/index.m3u8"
     ],
     "channelNumber": 99,
     "number": 99,
@@ -2777,7 +3037,10 @@
     "resolution": "1080p",
     "desc": "ערוץ הכנסת המשדר דיוני מליאה, ועדות ומשדרים פוליטיים ואקטואליים.",
     "backups": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2369/index.m3u8"
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2369/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2369/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2369/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2369/index.m3u8"
     ],
     "src": {
       "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
@@ -2787,7 +3050,10 @@
       "web": "❌ רק באפליקציה (HTTP)"
     },
     "fallbackUrls": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2369/index.m3u8"
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2369/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2369/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2369/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2369/index.m3u8"
     ]
   },
   {
@@ -2813,19 +3079,28 @@
     },
     "backups": [
       "http://stream.mcquack.net/212/index.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32001/index.m3u8",
-      "http://stream.mcquack.net/55/index.m3u8"
+      "http://stream.mcquack.net/55/index.m3u8",
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32001/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32001/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32001/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32001/index.m3u8"
     ],
     "fallbackUrls": [
       "http://stream.mcquack.net/212/index.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32001/index.m3u8",
-      "http://stream.mcquack.net/55/index.m3u8"
+      "http://stream.mcquack.net/55/index.m3u8",
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32001/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32001/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32001/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32001/index.m3u8"
     ],
     "iptv": "Sport5.il",
     "backupUrls": [
       "http://stream.mcquack.net/212/index.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32001/index.m3u8",
-      "http://stream.mcquack.net/55/index.m3u8"
+      "http://stream.mcquack.net/55/index.m3u8",
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32001/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32001/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32001/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32001/index.m3u8"
     ],
     "webOk": true
   },
@@ -2845,7 +3120,10 @@
     "number": 101,
     "backups": [
       "http://stream.mcquack.net/333/index.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32002/index.m3u8"
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32002/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32002/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32002/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32002/index.m3u8"
     ],
     "src": {
       "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
@@ -2856,12 +3134,18 @@
     },
     "fallbackUrls": [
       "http://stream.mcquack.net/333/index.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32002/index.m3u8"
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32002/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32002/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32002/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32002/index.m3u8"
     ],
     "iptv": "Sport5Plus.il",
     "backupUrls": [
       "http://stream.mcquack.net/333/index.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32002/index.m3u8"
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32002/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32002/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32002/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32002/index.m3u8"
     ],
     "webOk": true
   },
@@ -2880,9 +3164,11 @@
     "countryHe": "ישראל",
     "number": 102,
     "backups": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2362/index.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12255/index.m3u8",
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5_live_hevc/live.livx/playlist.m3u8"
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5_live_hevc/live.livx/playlist.m3u8",
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2362/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2362/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2362/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2362/index.m3u8"
     ],
     "src": {
       "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
@@ -2892,9 +3178,11 @@
       "web": "✅"
     },
     "fallbackUrls": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2362/index.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12255/index.m3u8",
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5_live_hevc/live.livx/playlist.m3u8"
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5_live_hevc/live.livx/playlist.m3u8",
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2362/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2362/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2362/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2362/index.m3u8"
     ],
     "iptv": "Sport5Live.il"
   },
@@ -2920,11 +3208,17 @@
       "web": "✅"
     },
     "fallbackUrls": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12254/index.m3u8"
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12254/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12254/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12254/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12254/index.m3u8"
     ],
     "iptv": "Sport5Gold.il",
     "backups": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12254/index.m3u8"
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12254/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12254/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12254/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12254/index.m3u8"
     ]
   },
   {
@@ -2949,13 +3243,17 @@
       "web": "✅"
     },
     "fallbackUrls": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12278/index.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12232/index.m3u8"
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12278/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12278/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12278/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12278/index.m3u8"
     ],
     "iptv": "Sport5Stars.il",
     "backups": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12278/index.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12232/index.m3u8"
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12278/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12278/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12278/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12278/index.m3u8"
     ]
   },
   {
@@ -2980,12 +3278,18 @@
       "web": "✅"
     },
     "fallbackUrls": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32147/index.m3u8",
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5_max_hevc/live.livx/playlist.m3u8"
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5_max_hevc/live.livx/playlist.m3u8",
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32147/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32147/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32147/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32147/index.m3u8"
     ],
     "backups": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32147/index.m3u8",
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5_max_hevc/live.livx/playlist.m3u8"
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5_max_hevc/live.livx/playlist.m3u8",
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32147/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32147/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32147/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32147/index.m3u8"
     ]
   },
   {
@@ -3003,8 +3307,11 @@
     "countryHe": "ישראל",
     "number": 107,
     "backups": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2340/index.m3u8",
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/one_1_hevc/live.livx/playlist.m3u8"
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/one_1_hevc/live.livx/playlist.m3u8",
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2340/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2340/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2340/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2340/index.m3u8"
     ],
     "src": {
       "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
@@ -3014,8 +3321,11 @@
       "web": "✅"
     },
     "fallbackUrls": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2340/index.m3u8",
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/one_1_hevc/live.livx/playlist.m3u8"
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/one_1_hevc/live.livx/playlist.m3u8",
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2340/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2340/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2340/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2340/index.m3u8"
     ],
     "iptv": "One.il"
   },
@@ -3034,9 +3344,11 @@
     "logo": "assets/logos/one_2_hd.png",
     "number": 108,
     "backups": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12231/index.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2373/index.m3u8",
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/one_2_hevc/live.livx/playlist.m3u8"
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/one_2_hevc/live.livx/playlist.m3u8",
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12231/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12231/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12231/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12231/index.m3u8"
     ],
     "src": {
       "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
@@ -3046,9 +3358,11 @@
       "web": "✅"
     },
     "fallbackUrls": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12231/index.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2373/index.m3u8",
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/one_2_hevc/live.livx/playlist.m3u8"
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/one_2_hevc/live.livx/playlist.m3u8",
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12231/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12231/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12231/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12231/index.m3u8"
     ],
     "iptv": "One2.il"
   },
@@ -3074,10 +3388,16 @@
       "web": "✅"
     },
     "fallbackUrls": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32002/index.m3u8"
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32002/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32002/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32002/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32002/index.m3u8"
     ],
     "backups": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32002/index.m3u8"
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32002/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32002/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32002/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32002/index.m3u8"
     ]
   },
   {
@@ -3161,21 +3481,27 @@
     },
     "fallbackUrls": [
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport5_fhd/live.livx/playlist.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12252/index.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32001/index.m3u8",
-      "http://stream.mcquack.net/55/index.m3u8"
+      "http://stream.mcquack.net/55/index.m3u8",
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12252/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12252/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12252/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12252/index.m3u8"
     ],
     "backups": [
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport5_fhd/live.livx/playlist.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12252/index.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32001/index.m3u8",
-      "http://stream.mcquack.net/55/index.m3u8"
+      "http://stream.mcquack.net/55/index.m3u8",
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12252/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12252/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12252/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12252/index.m3u8"
     ],
     "backupUrls": [
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport5_fhd/live.livx/playlist.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12252/index.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32001/index.m3u8",
-      "http://stream.mcquack.net/55/index.m3u8"
+      "http://stream.mcquack.net/55/index.m3u8",
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12252/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12252/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12252/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12252/index.m3u8"
     ]
   },
   {
@@ -3208,8 +3534,12 @@
     "title": "ערוץ הסדרות הישראליות והבינלאומיות HOT 3 FHD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12214/index.m3u8",
-    "fallbackUrls": [],
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12214/index.m3u8",
+    "fallbackUrls": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12214/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12214/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12214/index.m3u8"
+    ],
     "logo": "assets/logos/hot_3_fhd.png",
     "badge": "FHD",
     "lang": "he",
@@ -3223,7 +3553,11 @@
       "found": "iptv-org (Hot3.il)",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "backups": []
+    "backups": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12214/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12214/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12214/index.m3u8"
+    ]
   },
   {
     "id": "hot_hbo_hd",
@@ -3231,7 +3565,7 @@
     "title": "ערוץ סדרות הפרימיום HOT HBO עם תרגום לעברית HD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2354/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2354/index.m3u8",
     "logo": "assets/logos/hot_hbo_hd.png",
     "badge": "HD",
     "lang": "he",
@@ -3246,10 +3580,14 @@
       "web": "❌ רק באפליקציה (HTTP)"
     },
     "fallbackUrls": [
-      "http://stream.mcquack.net/381/index.m3u8"
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2354/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2354/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2354/index.m3u8"
     ],
     "backups": [
-      "http://stream.mcquack.net/381/index.m3u8"
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2354/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2354/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2354/index.m3u8"
     ]
   },
   {
@@ -3258,7 +3596,7 @@
     "title": "ערוץ הסרטים HOT Cinema 1 שוברי קופות FHD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2357/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2357/index.m3u8",
     "logo": "assets/logos/hot_cinema_1.png",
     "badge": "FHD",
     "desc": "HOT סינמה 1 FHD – בכורות הוליוודיות ושוברי קופות מובילים עם כתוביות בעברית",
@@ -3274,11 +3612,15 @@
     },
     "countryHe": "ישראל",
     "fallbackUrls": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12245/index.m3u8"
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2357/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2357/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2357/index.m3u8"
     ],
     "iptv": "HotCinema1.il",
     "backups": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12245/index.m3u8"
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2357/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2357/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2357/index.m3u8"
     ]
   },
   {
@@ -3287,7 +3629,7 @@
     "title": "ערוץ הסרטים HOT Cinema 2 אקשן ומתח HD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12215/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12215/index.m3u8",
     "logo": "assets/logos/hot_cinema_2.png",
     "badge": "HD",
     "desc": "HOT סינמה 2 – סרטי אקשן, מתח, מדע בדיוני והרפתקאות עם כתוביות בעברית",
@@ -3303,7 +3645,16 @@
     },
     "countryHe": "ישראל",
     "iptv": "HotCinema2.il",
-    "backups": []
+    "backups": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12215/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12215/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12215/index.m3u8"
+    ],
+    "fallbackUrls": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12215/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12215/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12215/index.m3u8"
+    ]
   },
   {
     "id": "hot_cinema_3",
@@ -3311,7 +3662,7 @@
     "title": "ערוץ הסרטים HOT Cinema 3 קומדיה ודרמה FHD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2372/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2372/index.m3u8",
     "logo": "assets/logos/hot_cinema_3.png",
     "badge": "FHD",
     "desc": "HOT סינמה 3 FHD – קומדיות, סרטי דרמה ורומנטיקה עם כתוביות בעברית",
@@ -3327,11 +3678,15 @@
     },
     "countryHe": "ישראל",
     "fallbackUrls": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12220/index.m3u8"
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2372/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2372/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2372/index.m3u8"
     ],
     "iptv": "HotCinema3.il",
     "backups": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12220/index.m3u8"
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2372/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2372/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2372/index.m3u8"
     ]
   },
   {
@@ -3340,7 +3695,7 @@
     "title": "ערוץ הסרטים HOT Cinema 4 קולנוע נבחר HD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2356/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2356/index.m3u8",
     "logo": "assets/logos/hot_cinema_4.png",
     "badge": "HD",
     "lang": "he",
@@ -3354,7 +3709,16 @@
       "found": "iptv-org (HotCinema4.il)",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "backups": []
+    "backups": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2356/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2356/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2356/index.m3u8"
+    ],
+    "fallbackUrls": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2356/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2356/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2356/index.m3u8"
+    ]
   },
   {
     "id": "hot_cinema_5",
@@ -3362,7 +3726,7 @@
     "title": "ערוץ הסרטים HOT Cinema 5 HD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32137/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32137/index.m3u8",
     "logo": "assets/logos/hot_cinema_5.png",
     "badge": "HD",
     "lang": "he",
@@ -3375,7 +3739,16 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "backups": []
+    "backups": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32137/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32137/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32137/index.m3u8"
+    ],
+    "fallbackUrls": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32137/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32137/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32137/index.m3u8"
+    ]
   },
   {
     "id": "hot_israeli_cinema",
@@ -3383,7 +3756,7 @@
     "title": "ערוץ HOT קולנוע ישראלי סרטים ישראליים HD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32138/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32138/index.m3u8",
     "logo": "assets/logos/hot_israeli.png",
     "badge": "HD",
     "lang": "he",
@@ -3396,7 +3769,16 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "backups": []
+    "backups": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32138/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32138/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32138/index.m3u8"
+    ],
+    "fallbackUrls": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32138/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32138/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32138/index.m3u8"
+    ]
   },
   {
     "id": "hot_romantic_cinema",
@@ -3404,7 +3786,7 @@
     "title": "ערוץ HOT קולנוע רומנטי סרטי אהבה ורגש HD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32144/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32144/index.m3u8",
     "logo": "assets/logos/hot_romantic_cinema.png",
     "badge": "HD",
     "lang": "he",
@@ -3417,7 +3799,16 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "backups": []
+    "backups": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32144/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32144/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32144/index.m3u8"
+    ],
+    "fallbackUrls": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32144/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32144/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32144/index.m3u8"
+    ]
   },
   {
     "id": "hot_drama",
@@ -3425,7 +3816,7 @@
     "title": "ערוץ הסדרות HOT Drama בתרגום לעברית HD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32140/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32140/index.m3u8",
     "badge": "HD",
     "desc": "HOT דרמה – סדרות דרמה ישראליות ובינלאומיות מובילות עם כתוביות בעברית",
     "lang": "he",
@@ -3440,8 +3831,16 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "fallbackUrls": [],
-    "backups": []
+    "fallbackUrls": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32140/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32140/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32140/index.m3u8"
+    ],
+    "backups": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32140/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32140/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32140/index.m3u8"
+    ]
   },
   {
     "id": "hot_zone",
@@ -3449,7 +3848,7 @@
     "title": "ערוץ סדרות האקשן והמתח HOT Zone HD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2360/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2360/index.m3u8",
     "badge": "HD",
     "desc": "HOT זון – סדרות אקשן, פשע, מתח וחקירות מארה\"ב ומהעולם בתרגום לעברית",
     "lang": "he",
@@ -3465,11 +3864,15 @@
     "country": "IL",
     "countryHe": "ישראל",
     "fallbackUrls": [
-      "http://stream.mcquack.net/379/index.m3u8"
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2360/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2360/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2360/index.m3u8"
     ],
     "iptv": "HotZone.il",
     "backups": [
-      "http://stream.mcquack.net/379/index.m3u8"
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2360/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2360/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2360/index.m3u8"
     ]
   },
   {
@@ -3478,7 +3881,7 @@
     "title": "ערוץ הקומדיות והסיטקומים HOT Comedy HD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12217/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12217/index.m3u8",
     "logo": "assets/logos/hot_comedy.png",
     "badge": "HD",
     "desc": "HOT קומדי – סיטקומים, סדרות קומיות ומופעי סטנדאפ בתרגום לעברית",
@@ -3494,9 +3897,17 @@
       "web": "❌ רק באפליקציה (HTTP)"
     },
     "number": 126,
-    "fallbackUrls": [],
+    "fallbackUrls": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12217/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12217/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12217/index.m3u8"
+    ],
     "iptv": "HotComedyCentral.il",
-    "backups": []
+    "backups": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12217/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12217/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12217/index.m3u8"
+    ]
   },
   {
     "id": "yes_israeli_cinema",
@@ -3504,7 +3915,7 @@
     "title": "ערוץ yes קולנוע ישראלי סרטים וסדרות מישראל HD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2342/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2342/index.m3u8",
     "logo": "assets/logos/yes_israeli.png",
     "badge": "HD",
     "desc": "yes קולנוע ישראלי – סרטים ישראליים חדשים, קלאסיקות אהובות ויצירה מקורית",
@@ -3520,7 +3931,16 @@
     },
     "countryHe": "ישראל",
     "iptv": "YesIsraeliCinema.il",
-    "backups": []
+    "backups": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2342/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2342/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2342/index.m3u8"
+    ],
+    "fallbackUrls": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2342/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2342/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2342/index.m3u8"
+    ]
   },
   {
     "id": "yes_movies_action",
@@ -3528,7 +3948,7 @@
     "title": "ערוץ הסרטים yes Movies Action FHD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12270/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12270/index.m3u8",
     "badge": "FHD",
     "desc": "yes קולנוע אקשן FHD – סרטי פעולה, מתח, גיבורי-על ומדע בדיוני עם כתוביות בעברית",
     "lang": "he",
@@ -3544,15 +3964,15 @@
     "country": "IL",
     "countryHe": "ישראל",
     "fallbackUrls": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12280/index.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2350/index.m3u8",
-      "http://stream.mcquack.net/380/index.m3u8"
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12270/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12270/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12270/index.m3u8"
     ],
     "iptv": "YesMoviesAction.il",
     "backups": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12280/index.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2350/index.m3u8",
-      "http://stream.mcquack.net/380/index.m3u8"
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12270/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12270/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12270/index.m3u8"
     ]
   },
   {
@@ -3561,7 +3981,7 @@
     "title": "ערוץ הסרטים yes Movies Drama FHD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12272/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12272/index.m3u8",
     "logo": "assets/logos/yes_movies_drama.png",
     "badge": "FHD",
     "desc": "yes קולנוע דרמה FHD – סרטי דרמה מרגשים, ביוגרפיות וזוכי אוסקר עם תרגום לעברית",
@@ -3577,13 +3997,15 @@
     },
     "countryHe": "ישראל",
     "fallbackUrls": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12282/index.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2351/index.m3u8"
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12272/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12272/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12272/index.m3u8"
     ],
     "iptv": "YesMoviesDrama.il",
     "backups": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12282/index.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2351/index.m3u8"
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12272/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12272/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12272/index.m3u8"
     ]
   },
   {
@@ -3592,7 +4014,7 @@
     "title": "ערוץ הסרטים yes Movies Comedy FHD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12271/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12271/index.m3u8",
     "logo": "assets/logos/yes_movies_comedy.png",
     "badge": "FHD",
     "desc": "yes קולנוע קומדיה FHD – קומדיות הוליוודיות, סרטי פיל-גוד ורומנטיקה עם תרגום לעברית",
@@ -3608,13 +4030,15 @@
     },
     "countryHe": "ישראל",
     "fallbackUrls": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12281/index.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2348/index.m3u8"
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12271/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12271/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12271/index.m3u8"
     ],
     "iptv": "YesMoviesComedy.il",
     "backups": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12281/index.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2348/index.m3u8"
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12271/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12271/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12271/index.m3u8"
     ]
   },
   {
@@ -3623,7 +4047,7 @@
     "title": "ערוץ הסדרות yes TV Action HD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2346/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2346/index.m3u8",
     "logo": "assets/logos/yes_tv_action.png",
     "badge": "HD",
     "desc": "yes TV Action – סדרות מתח, אקשן, פשע ומדע בדיוני מובילות עם כתוביות בעברית",
@@ -3639,7 +4063,16 @@
     },
     "countryHe": "ישראל",
     "iptv": "YesTvAction.il",
-    "backups": []
+    "backups": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2346/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2346/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2346/index.m3u8"
+    ],
+    "fallbackUrls": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2346/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2346/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2346/index.m3u8"
+    ]
   },
   {
     "id": "yes_tv_drama",
@@ -3647,7 +4080,7 @@
     "title": "ערוץ הסדרות yes TV Drama HD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2343/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2343/index.m3u8",
     "logo": "assets/logos/yes_tv_drama.png",
     "badge": "HD",
     "desc": "yes TV Drama – סדרות המקור של yes וסדרות הדרמה הטובות בעולם בתרגום לעברית",
@@ -3663,7 +4096,16 @@
     },
     "countryHe": "ישראל",
     "iptv": "YesTvDrama.il",
-    "backups": []
+    "backups": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2343/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2343/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2343/index.m3u8"
+    ],
+    "fallbackUrls": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2343/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2343/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2343/index.m3u8"
+    ]
   },
   {
     "id": "yes_tv_comedy",
@@ -3671,7 +4113,7 @@
     "title": "ערוץ הסדרות yes TV Comedy HD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2345/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2345/index.m3u8",
     "logo": "assets/logos/yes_tv_comedy.png",
     "badge": "HD",
     "lang": "he",
@@ -3685,7 +4127,16 @@
       "found": "iptv-org (YesTvComedy.il)",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "backups": []
+    "backups": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2345/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2345/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2345/index.m3u8"
+    ],
+    "fallbackUrls": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2345/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2345/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2345/index.m3u8"
+    ]
   },
   {
     "id": "viva_premium_il",
@@ -3693,10 +4144,11 @@
     "title": "ערוץ ויוה פרימיום דרמות וטלנובלות HD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12226/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12226/index.m3u8",
     "backups": [
-      "http://stream.mcquack.net/43/index.m3u8",
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/viva/live.livx/playlist.m3u8"
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12226/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12226/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12226/index.m3u8"
     ],
     "logo": "assets/logos/viva_premium_il.png",
     "badge": "HD",
@@ -3713,8 +4165,9 @@
       "web": "❌ רק באפליקציה (HTTP)"
     },
     "fallbackUrls": [
-      "http://stream.mcquack.net/43/index.m3u8",
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/viva/live.livx/playlist.m3u8"
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12226/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12226/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12226/index.m3u8"
     ]
   },
   {
@@ -3723,10 +4176,11 @@
     "title": "הערוץ הים תיכוני סדרות, סרטים ומוזיקה HD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2390/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2390/index.m3u8",
     "fallbackUrls": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12211/index.m3u8",
-      "http://stream.mcquack.net/46/index.m3u8"
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2390/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2390/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2390/index.m3u8"
     ],
     "logo": "assets/logos/yam_tichoni_hd.png",
     "badge": "HD",
@@ -3741,8 +4195,9 @@
       "web": "❌ רק באפליקציה (HTTP)"
     },
     "backups": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12211/index.m3u8",
-      "http://stream.mcquack.net/46/index.m3u8"
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2390/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2390/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2390/index.m3u8"
     ]
   },
   {
@@ -3751,7 +4206,7 @@
     "title": "הערוץ הים תיכוני פלוס סדרות ודרמות HD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12224/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12224/index.m3u8",
     "logo": "assets/logos/yam_tichoni_plus_il.png",
     "badge": "HD",
     "lang": "he",
@@ -3764,7 +4219,16 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "backups": []
+    "backups": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12224/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12224/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12224/index.m3u8"
+    ],
+    "fallbackUrls": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12224/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12224/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12224/index.m3u8"
+    ]
   },
   {
     "id": "turkish_dramas_plus",
@@ -3772,9 +4236,11 @@
     "title": "ערוץ הדרמות הטורקיות פלוס בתרגום לעברית FHD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12257/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12257/index.m3u8",
     "fallbackUrls": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2363/index.m3u8"
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12257/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12257/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12257/index.m3u8"
     ],
     "logo": "assets/logos/turkish_dramas_plus.png",
     "badge": "FHD",
@@ -3789,7 +4255,9 @@
       "web": "❌ רק באפליקציה (HTTP)"
     },
     "backups": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2363/index.m3u8"
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12257/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12257/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12257/index.m3u8"
     ]
   },
   {
@@ -3798,7 +4266,7 @@
     "title": "ערוץ הדרמות הטורקיות 2 בתרגום לעברית FHD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12262/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12262/index.m3u8",
     "logo": "assets/logos/turkish_dramas_2.png",
     "badge": "FHD",
     "lang": "he",
@@ -3811,7 +4279,16 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "backups": []
+    "backups": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12262/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12262/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12262/index.m3u8"
+    ],
+    "fallbackUrls": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12262/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12262/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12262/index.m3u8"
+    ]
   },
   {
     "id": "turkish_dramas_3",
@@ -3819,7 +4296,7 @@
     "title": "ערוץ הדרמות הטורקיות 3 בתרגום לעברית FHD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12264/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12264/index.m3u8",
     "logo": "assets/logos/turkish_dramas_3.png",
     "badge": "FHD",
     "lang": "he",
@@ -3832,7 +4309,16 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "backups": []
+    "backups": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12264/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12264/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12264/index.m3u8"
+    ],
+    "fallbackUrls": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12264/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12264/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12264/index.m3u8"
+    ]
   },
   {
     "id": "mediterranean_movies_2",
@@ -3840,7 +4326,7 @@
     "title": "ערוץ הסרטים הים תיכוני 2 בתרגום לעברית HD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32163/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32163/index.m3u8",
     "logo": "assets/logos/mediterranean_movies_2.png",
     "badge": "HD",
     "lang": "he",
@@ -3853,7 +4339,16 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "backups": []
+    "backups": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32163/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32163/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32163/index.m3u8"
+    ],
+    "fallbackUrls": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32163/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32163/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32163/index.m3u8"
+    ]
   },
   {
     "id": "global_action_1",
@@ -3861,7 +4356,7 @@
     "title": "ערוץ האקשן העולמי 1 סדרות וסרטי פעולה HD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32130/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32130/index.m3u8",
     "logo": "assets/logos/global_action_1.png",
     "badge": "HD",
     "lang": "he",
@@ -3874,7 +4369,16 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "backups": []
+    "backups": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32130/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32130/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32130/index.m3u8"
+    ],
+    "fallbackUrls": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32130/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32130/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32130/index.m3u8"
+    ]
   },
   {
     "id": "global_action_2",
@@ -3882,7 +4386,7 @@
     "title": "ערוץ האקשן העולמי 2 סדרות וסרטי פעולה HD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32131/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32131/index.m3u8",
     "logo": "assets/logos/global_action_2.png",
     "badge": "HD",
     "lang": "he",
@@ -3895,7 +4399,16 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "backups": []
+    "backups": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32131/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32131/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32131/index.m3u8"
+    ],
+    "fallbackUrls": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32131/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32131/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32131/index.m3u8"
+    ]
   },
   {
     "id": "spanish_dramas_1",
@@ -3903,7 +4416,7 @@
     "title": "ערוץ הדרמות הספרדיות 1 בתרגום לעברית HD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32132/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32132/index.m3u8",
     "logo": "assets/logos/spanish_dramas_1.png",
     "badge": "HD",
     "lang": "he",
@@ -3916,7 +4429,16 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "backups": []
+    "backups": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32132/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32132/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32132/index.m3u8"
+    ],
+    "fallbackUrls": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32132/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32132/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32132/index.m3u8"
+    ]
   },
   {
     "id": "spanish_dramas_2",
@@ -3924,7 +4446,7 @@
     "title": "ערוץ הדרמות הספרדיות 2 בתרגום לעברית HD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32133/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32133/index.m3u8",
     "logo": "assets/logos/spanish_dramas_2.png",
     "badge": "HD",
     "lang": "he",
@@ -3937,7 +4459,16 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "backups": []
+    "backups": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32133/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32133/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32133/index.m3u8"
+    ],
+    "fallbackUrls": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32133/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32133/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32133/index.m3u8"
+    ]
   },
   {
     "id": "indian_series_1",
@@ -3945,7 +4476,7 @@
     "title": "ערוץ הדרמות ההודיות 1 בתרגום לעברית HD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32134/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32134/index.m3u8",
     "logo": "assets/logos/indian_series_1.png",
     "badge": "HD",
     "lang": "he",
@@ -3958,7 +4489,16 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "backups": []
+    "backups": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32134/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32134/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32134/index.m3u8"
+    ],
+    "fallbackUrls": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32134/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32134/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32134/index.m3u8"
+    ]
   },
   {
     "id": "indian_series_2",
@@ -3966,7 +4506,7 @@
     "title": "ערוץ הדרמות ההודיות 2 בתרגום לעברית HD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32135/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32135/index.m3u8",
     "logo": "assets/logos/indian_series_2.png",
     "badge": "HD",
     "lang": "he",
@@ -3979,7 +4519,16 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "backups": []
+    "backups": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32135/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32135/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32135/index.m3u8"
+    ],
+    "fallbackUrls": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32135/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32135/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32135/index.m3u8"
+    ]
   },
   {
     "id": "bollywood_hd",
@@ -3987,7 +4536,7 @@
     "title": "ערוץ בוליווד Bollywood HD בתרגום לעברית",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12267/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12267/index.m3u8",
     "logo": "assets/logos/bollywood_hd.png",
     "badge": "HD",
     "lang": "he",
@@ -4000,7 +4549,16 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "backups": []
+    "backups": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12267/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12267/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12267/index.m3u8"
+    ],
+    "fallbackUrls": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12267/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12267/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12267/index.m3u8"
+    ]
   },
   {
     "id": "bollywood_classic_hd",
@@ -4008,7 +4566,7 @@
     "title": "ערוץ בוליווד סרטים הודיים קלאסיים HD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32150/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32150/index.m3u8",
     "logo": "assets/logos/bollywood_classic_hd.png",
     "badge": "HD",
     "lang": "he",
@@ -4021,7 +4579,16 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "backups": []
+    "backups": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32150/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32150/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32150/index.m3u8"
+    ],
+    "fallbackUrls": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32150/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32150/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32150/index.m3u8"
+    ]
   },
   {
     "id": "bollyshow_hd",
@@ -4029,7 +4596,7 @@
     "title": "ערוץ בולישואו סדרות ובידור הודי HD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32125/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32125/index.m3u8",
     "logo": "assets/logos/bollyshow_hd.png",
     "badge": "HD",
     "lang": "he",
@@ -4042,7 +4609,16 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "backups": []
+    "backups": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32125/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32125/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32125/index.m3u8"
+    ],
+    "fallbackUrls": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32125/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32125/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32125/index.m3u8"
+    ]
   },
   {
     "id": "zee_tv_il",
@@ -4050,8 +4626,12 @@
     "title": "ערוץ הסדרות והסרטים ZEE TV ישראל (Zee TV Israel HD)",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32153/index.m3u8",
-    "fallbackUrls": [],
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32153/index.m3u8",
+    "fallbackUrls": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32153/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32153/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32153/index.m3u8"
+    ],
     "logo": "assets/logos/zee_tv_il.png",
     "badge": "HD",
     "lang": "he",
@@ -4065,7 +4645,11 @@
       "found": "iptv-org (ZeeTV.il)",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "backups": []
+    "backups": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32153/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32153/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32153/index.m3u8"
+    ]
   },
   {
     "id": "gtv_il",
@@ -4073,8 +4657,12 @@
     "title": "ערוץ GTV סדרות וקולנוע (GTV HD)",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32157/index.m3u8",
-    "fallbackUrls": [],
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32157/index.m3u8",
+    "fallbackUrls": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32157/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32157/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32157/index.m3u8"
+    ],
     "logo": "assets/logos/gtv_il.png",
     "badge": "HD",
     "lang": "he",
@@ -4088,7 +4676,11 @@
       "found": "iptv-org (GTV.il)",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "backups": []
+    "backups": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32157/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32157/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32157/index.m3u8"
+    ]
   },
   {
     "id": "classic_comedy_il",
@@ -4096,7 +4688,7 @@
     "title": "ערוץ הקומדיות הקלאסיות והישראליות HD",
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32136/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32136/index.m3u8",
     "logo": "assets/logos/reshet13_comedy_il.png",
     "badge": "HD",
     "lang": "he",
@@ -4109,8 +4701,16 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "backups": [],
-    "fallbackUrls": [],
+    "backups": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32136/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32136/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32136/index.m3u8"
+    ],
+    "fallbackUrls": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32136/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32136/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32136/index.m3u8"
+    ],
     "country": "IL",
     "countryHe": "ישראל",
     "webOk": true
@@ -4121,7 +4721,7 @@
     "title": "ערוץ האהבה סדרות וסרטים רומנטיים HD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32145/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32145/index.m3u8",
     "logo": "assets/logos/love_channel_il.png",
     "badge": "HD",
     "lang": "he",
@@ -4134,7 +4734,16 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "backups": []
+    "backups": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32145/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32145/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32145/index.m3u8"
+    ],
+    "fallbackUrls": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32145/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32145/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32145/index.m3u8"
+    ]
   },
   {
     "id": "savri_maranan",
@@ -4553,11 +5162,11 @@
     "title": "ערוץ האוכל הישראלי ו-Food Network HD",
     "category": "ערוצי אוכל (Food Channels)",
     "categoryEn": "food",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12209/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12209/index.m3u8",
     "fallbackUrls": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2377/index.m3u8",
-      "https://streaming.aurora.enhanced.live/live/mpc/enl0eG1mLmVncmVzcy5mZDJ2eHI=/out/v1/IT_SIMULCAST/FOODNETWORK/CMAF/index.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32154/index.m3u8"
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12209/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12209/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12209/index.m3u8"
     ],
     "logo": "assets/logos/food_channel.png",
     "badge": "HD",
@@ -4572,9 +5181,9 @@
       "web": "❌ רק באפליקציה (HTTP)"
     },
     "backups": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2377/index.m3u8",
-      "https://streaming.aurora.enhanced.live/live/mpc/enl0eG1mLmVncmVzcy5mZDJ2eHI=/out/v1/IT_SIMULCAST/FOODNETWORK/CMAF/index.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32154/index.m3u8"
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12209/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12209/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12209/index.m3u8"
     ],
     "description": "ערוץ האוכל הישראלי מבית החיים הטובים וענני תקשורת – שפים ישראליים, מתכונים וקולינריה בעברית",
     "servers": [
@@ -4773,9 +5382,11 @@
     "name": "Kus-Kus Culinary TV HD – ערוץ קוסקוס אוכל ומתכונים",
     "category": "ערוצי אוכל (Food Channels)",
     "categoryEn": "food",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32121/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32121/index.m3u8",
     "fallbackUrls": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32122/index.m3u8"
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32121/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32121/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32121/index.m3u8"
     ],
     "badge": "HD",
     "color": "#fbbf24",
@@ -4792,7 +5403,9 @@
       "web": "❌ רק באפליקציה (HTTP)"
     },
     "backups": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32122/index.m3u8"
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32121/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32121/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32121/index.m3u8"
     ]
   },
   {
@@ -5279,9 +5892,11 @@
     "title": "ערוץ נשיונל ג'יאוגרפיק עם תרגום לעברית HD",
     "category": "טבע ודוקו (Documentary & Nature)",
     "categoryEn": "docu",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12247/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12247/index.m3u8",
     "fallbackUrls": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2387/index.m3u8"
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12247/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12247/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12247/index.m3u8"
     ],
     "logo": "assets/logos/nat_geo_il.png",
     "badge": "HD",
@@ -5297,7 +5912,9 @@
       "web": "❌ רק באפליקציה (HTTP)"
     },
     "backups": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2387/index.m3u8"
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12247/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12247/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12247/index.m3u8"
     ]
   },
   {
@@ -5306,8 +5923,12 @@
     "title": "ערוץ הטבע Nat Geo Wild עם תרגום לעברית FHD",
     "category": "טבע ודוקו (Documentary & Nature)",
     "categoryEn": "docu",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12259/index.m3u8",
-    "fallbackUrls": [],
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12259/index.m3u8",
+    "fallbackUrls": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12259/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12259/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12259/index.m3u8"
+    ],
     "logo": "assets/logos/nat_geo_wild_il.png",
     "badge": "FHD",
     "lang": "he",
@@ -5321,7 +5942,11 @@
       "found": "iptv-org (NationalGeographicWild.il)",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "backups": []
+    "backups": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12259/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12259/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12259/index.m3u8"
+    ]
   },
   {
     "id": "discovery_il",
@@ -5329,9 +5954,11 @@
     "title": "ערוץ דיסקברי עם תרגום לעברית (Discovery Channel FHD)",
     "category": "טבע ודוקו (Documentary & Nature)",
     "categoryEn": "docu",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2358/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2358/index.m3u8",
     "fallbackUrls": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12241/index.m3u8"
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2358/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2358/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2358/index.m3u8"
     ],
     "logo": "assets/logos/discovery_il.png",
     "badge": "FHD",
@@ -5347,7 +5974,9 @@
       "web": "❌ רק באפליקציה (HTTP)"
     },
     "backups": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12241/index.m3u8"
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2358/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2358/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2358/index.m3u8"
     ]
   },
   {
@@ -5356,9 +5985,11 @@
     "title": "ערוץ ההיסטוריה עם תרגום לעברית (History Channel FHD)",
     "category": "טבע ודוקו (Documentary & Nature)",
     "categoryEn": "docu",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12265/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12265/index.m3u8",
     "fallbackUrls": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12223/index.m3u8"
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12265/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12265/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12265/index.m3u8"
     ],
     "logo": "assets/logos/history_il.png",
     "badge": "FHD",
@@ -5374,7 +6005,9 @@
       "web": "❌ רק באפליקציה (HTTP)"
     },
     "backups": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12223/index.m3u8"
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12265/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12265/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12265/index.m3u8"
     ]
   },
   {
@@ -5556,12 +6189,18 @@
     "country": "IL",
     "countryHe": "ישראל",
     "fallbackUrls": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32319/index.m3u8",
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/hidabroot/live.livx/playlist.m3u8"
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/hidabroot/live.livx/playlist.m3u8",
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32319/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32319/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32319/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32319/index.m3u8"
     ],
     "backups": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32319/index.m3u8",
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/hidabroot/live.livx/playlist.m3u8"
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/hidabroot/live.livx/playlist.m3u8",
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32319/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32319/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32319/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32319/index.m3u8"
     ]
   },
   {
@@ -9555,10 +10194,16 @@
     "categoryEn": "israel",
     "url": "https://d15ds134q59udk.cloudfront.net/out/v1/fbba879221d045598540ee783b140fe2/index.m3u8",
     "backups": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32136/index.m3u8"
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32136/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32136/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32136/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32136/index.m3u8"
     ],
     "fallbackUrls": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32136/index.m3u8"
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32136/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32136/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32136/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32136/index.m3u8"
     ],
     "badge": "HD",
     "desc": "מיטב הקומדיות, המערכונים והסטנדאפ הישראלי 24/7",
@@ -9789,10 +10434,16 @@
     "categoryEn": "israel",
     "url": "https://i24newshebrew-cdn.encoders.immergo.tv/master.m3u8",
     "backups": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2386/index.m3u8"
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2386/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2386/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2386/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2386/index.m3u8"
     ],
     "fallbackUrls": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2386/index.m3u8"
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2386/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2386/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2386/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2386/index.m3u8"
     ],
     "badge": "HD",
     "desc": "ערוץ החדשות והאקטואליה הבינלאומי i24NEWS בשידור חי בעברית 24/7",
@@ -9820,7 +10471,7 @@
     "countryHe": "ישראל",
     "lang": "he",
     "logo": "assets/logos/hop_plus_kids_il.png",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2338/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2338/index.m3u8",
     "src": {
       "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
       "kind": "official",
@@ -9830,7 +10481,16 @@
     },
     "desc": "ערוץ הופ! פלוס – תוכניות אהובות, לימוד והרפתקאות לקטנטנים.",
     "webOk": true,
-    "backups": []
+    "backups": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2338/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2338/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2338/index.m3u8"
+    ],
+    "fallbackUrls": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2338/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2338/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2338/index.m3u8"
+    ]
   },
   {
     "id": "keshet_music_il",
@@ -9860,12 +10520,16 @@
     "title": "ערוץ ההומור 2 – צחוק ובידור HD",
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32316/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32316/index.m3u8",
     "backups": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32161/index.m3u8"
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32316/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32316/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32316/index.m3u8"
     ],
     "fallbackUrls": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32161/index.m3u8"
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32316/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32316/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32316/index.m3u8"
     ],
     "logo": "assets/logos/humor_channel_il.png",
     "badge": "HD",
@@ -9889,12 +10553,16 @@
     "title": "ערוץ ויוה וינטג' וטלנובלות ספרדיות HD",
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32132/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32132/index.m3u8",
     "backups": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32133/index.m3u8"
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32132/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32132/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32132/index.m3u8"
     ],
     "fallbackUrls": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32133/index.m3u8"
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32132/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32132/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32132/index.m3u8"
     ],
     "logo": "assets/logos/viva_israel.png",
     "badge": "HD",
@@ -9968,9 +10636,17 @@
     "title": "ערוץ RTL 2 גרמניה HD",
     "category": "ערוצים בינלאומיים (חדשות ועולם)",
     "categoryEn": "intl",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32170/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32170/index.m3u8",
+    "backups": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32170/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32170/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32170/index.m3u8"
+    ],
+    "fallbackUrls": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32170/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32170/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32170/index.m3u8"
+    ],
     "logo": "assets/logos/rtl2.png",
     "badge": "HD",
     "desc": "ערוץ הבידור והסדרות הפופולרי מגרמניה RTL ZWEI בשידור ישיר באיכות HD.",
@@ -9993,12 +10669,16 @@
     "title": "נשיונל ג'יאוגרפיק WILD טבע וחיות FHD",
     "category": "טבע ומדע (Documentary)",
     "categoryEn": "science",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12248/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12248/index.m3u8",
     "backups": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12259/index.m3u8"
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12248/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12248/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12248/index.m3u8"
     ],
     "fallbackUrls": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12259/index.m3u8"
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12248/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12248/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12248/index.m3u8"
     ],
     "logo": "assets/logos/nat_geo_wild_il.png",
     "badge": "FHD",
@@ -10022,9 +10702,17 @@
     "title": "ערוץ Beautyz אופנה ויופי HD",
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32164/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32164/index.m3u8",
+    "backups": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32164/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32164/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32164/index.m3u8"
+    ],
+    "fallbackUrls": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32164/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32164/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32164/index.m3u8"
+    ],
     "logo": "assets/logos/hot_reality.png",
     "badge": "HD",
     "desc": "ערוץ Beautyz – אופנה, יופי, עיצוב ולייפסטייל ישראלי ובינלאומי.",
@@ -10046,100 +10734,145 @@
     "name": "HOT דוקו HD (HOT Doco)",
     "number": 402,
     "category": "טבע ודוקו (Documentary & Nature)",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32129/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32129/index.m3u8",
     "logo": "assets/logos/hot_8.png",
     "language": "he",
     "quality": "HD",
     "description": "ערוץ הסרטים והסדרות התיעודיים המוביל בישראל מבית HOT.",
     "categoryEn": "docu",
-    "backups": [],
+    "backups": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32129/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32129/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32129/index.m3u8"
+    ],
     "src": {
       "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
       "kind": "official",
       "host": "b84203c4.ottrast.com",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
-    }
+    },
+    "fallbackUrls": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32129/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32129/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32129/index.m3u8"
+    ]
   },
   {
     "id": "junior_channel_hd",
     "name": "ערוץ ג'וניור HD (Junior)",
     "number": 404,
     "category": "ילדים ונוער (בעברית)",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2366/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2366/index.m3u8",
     "logo": "assets/logos/junior.png",
     "language": "he",
     "quality": "HD",
     "description": "ערוץ ג'וניור לילדים בעברית – סדרות אנימציה ונוסטלגיה אהובות.",
     "categoryEn": "kids_he",
-    "backups": [],
+    "backups": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2366/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2366/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2366/index.m3u8"
+    ],
     "src": {
       "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
       "kind": "official",
       "host": "b84203c4.ottrast.com",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
-    }
+    },
+    "fallbackUrls": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2366/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2366/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2366/index.m3u8"
+    ]
   },
   {
     "id": "baby_channel_hd",
     "name": "ערוץ בייבי HD (Baby Channel)",
     "number": 405,
     "category": "ילדים ונוער (בעברית)",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2370/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2370/index.m3u8",
     "logo": "assets/logos/baby_tv_he.png",
     "language": "he",
     "quality": "HD",
     "description": "ערוץ בייבי המיועד לפעוטות והורים – תוכניות מעשירות ומפתחות בעברית.",
     "categoryEn": "kids_he",
-    "backups": [],
+    "backups": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2370/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2370/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2370/index.m3u8"
+    ],
     "src": {
       "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
       "kind": "official",
       "host": "b84203c4.ottrast.com",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
-    }
+    },
+    "fallbackUrls": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2370/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2370/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2370/index.m3u8"
+    ]
   },
   {
     "id": "yes_movies_kids_hd",
     "name": "yes קולנוע ילדים HD (yes Movies Kids)",
     "number": 407,
     "category": "ילדים ונוער (בעברית)",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12273/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12273/index.m3u8",
     "logo": "assets/logos/yes_movies_kids_il.png",
     "language": "he",
     "quality": "HD",
     "description": "סרטי ילדים ומשפחה מובילים בדיבוב עברי ובאיכות HD מבית yes.",
     "categoryEn": "kids_he",
-    "backups": [],
+    "backups": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12273/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12273/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12273/index.m3u8"
+    ],
     "src": {
       "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
       "kind": "official",
       "host": "b84203c4.ottrast.com",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
-    }
+    },
+    "fallbackUrls": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12273/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12273/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12273/index.m3u8"
+    ]
   },
   {
     "id": "vacation_channel_hd",
     "name": "ערוץ החופש והנופש HD (Vacation Channel)",
     "number": 408,
     "category": "ערוצי ישראל - שידור חי",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32160/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32160/index.m3u8",
     "logo": "assets/logos/vacation_channel_il.png",
     "language": "he",
     "quality": "HD",
     "description": "ערוץ תיירות, נופש, חופשות וטיולים בישראל ובעולם.",
     "categoryEn": "israel",
-    "backups": [],
+    "backups": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32160/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32160/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32160/index.m3u8"
+    ],
     "src": {
       "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
       "kind": "official",
       "host": "b84203c4.ottrast.com",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
-    }
+    },
+    "fallbackUrls": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32160/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32160/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32160/index.m3u8"
+    ]
   },
   {
     "id": "good_life_channel_hd",
@@ -10148,7 +10881,7 @@
     "number": 409,
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "lifestyle",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2355/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2355/index.m3u8",
     "logo": "assets/logos/good_life_israel.png",
     "quality": "HD",
     "lang": "he",
@@ -10170,8 +10903,9 @@
       }
     ],
     "backups": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12209/index.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2339/index.m3u8"
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2355/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2355/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2355/index.m3u8"
     ],
     "src": {
       "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
@@ -10181,8 +10915,9 @@
       "web": "❌ רק באפליקציה (HTTP)"
     },
     "fallbackUrls": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12209/index.m3u8",
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2339/index.m3u8"
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2355/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2355/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2355/index.m3u8"
     ]
   },
   {
@@ -11220,7 +11955,7 @@
     "title": "ספורט 6 ישיר HD (צ'רלטון Sport 6)",
     "category": "ספורט (Sports)",
     "categoryEn": "sports",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32003/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32003/index.m3u8",
     "logo": "assets/logos/sport6_israel.png",
     "badge": "HD",
     "lang": "he",
@@ -11233,13 +11968,25 @@
       "found": "שידור ישראלי מקורי צ'רלטון FHD",
       "web": "❌ רק באפליקציה (הפניה בלי CORS)"
     },
-    "fallbackUrls": [],
+    "fallbackUrls": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32003/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32003/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32003/index.m3u8"
+    ],
     "isIsraeli": true,
     "kind": "tv",
     "iptv": "Sport6.il",
-    "backups": [],
+    "backups": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32003/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32003/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32003/index.m3u8"
+    ],
     "webOk": false,
-    "backupUrls": []
+    "backupUrls": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32003/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32003/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32003/index.m3u8"
+    ]
   },
   {
     "id": "mediterranean_movies_1",
@@ -11247,7 +11994,7 @@
     "title": "ערוץ הסרטים הים תיכוני 1 בתרגום לעברית HD",
     "category": "סרטים וסדרות (Movies & Series)",
     "categoryEn": "movies",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32162/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32162/index.m3u8",
     "logo": "assets/logos/mediterranean_movies_1.png",
     "badge": "HD",
     "lang": "he",
@@ -11260,7 +12007,16 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "backups": []
+    "backups": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32162/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32162/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32162/index.m3u8"
+    ],
+    "fallbackUrls": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32162/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32162/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32162/index.m3u8"
+    ]
   },
   {
     "id": "channel_9_israel_hd",
@@ -11359,7 +12115,7 @@
     "category": "ילדים ונוער (בעברית)",
     "categoryEn": "kids_he",
     "logo": "assets/logos/zoom.png",
-    "url": "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2359/index.m3u8",
+    "url": "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2359/index.m3u8",
     "channelNumber": 84,
     "number": 519,
     "language": "Hebrew",
@@ -11371,10 +12127,14 @@
     "resolution": "1080p",
     "desc": "ערוץ זום טון (Zoom Toon) – סדרות אנימציה, הרפתקאות וגיבורי על בדיבוב לעברית 24/7.",
     "backups": [
-      "http://stream.mcquack.net/377/index.m3u8"
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2359/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2359/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2359/index.m3u8"
     ],
     "fallbackUrls": [
-      "http://stream.mcquack.net/377/index.m3u8"
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2359/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2359/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2359/index.m3u8"
     ],
     "src": {
       "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
@@ -11393,7 +12153,10 @@
     "logo": "assets/logos/viva_premium_il.png",
     "url": "http://stream.mcquack.net/43/index.m3u8",
     "backupUrls": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12226/index.m3u8"
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12226/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12226/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12226/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12226/index.m3u8"
     ],
     "channelNumber": 39,
     "number": 520,
@@ -11406,7 +12169,10 @@
     "resolution": "1080p",
     "desc": "ויוה פרימיום – מיטב הטלנובלות והסדרות הבינלאומיות עם תרגום עברי מלא.",
     "backups": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12226/index.m3u8"
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12226/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12226/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12226/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12226/index.m3u8"
     ],
     "src": {
       "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
@@ -11416,7 +12182,10 @@
       "web": "❌ רק באפליקציה (HTTP)"
     },
     "fallbackUrls": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12226/index.m3u8"
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12226/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12226/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12226/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12226/index.m3u8"
     ]
   },
   {
@@ -11428,7 +12197,10 @@
     "logo": "assets/logos/good_life_israel.png",
     "url": "http://stream.mcquack.net/47/index.m3u8",
     "backupUrls": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2355/index.m3u8"
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2355/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2355/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2355/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2355/index.m3u8"
     ],
     "channelNumber": 32,
     "number": 521,
@@ -11441,7 +12213,10 @@
     "resolution": "1080p",
     "desc": "ערוץ החיים הטובים: תוכניות אירוח, עיצוב הבית, אוכל ונופש.",
     "backups": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2355/index.m3u8"
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2355/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2355/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2355/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2355/index.m3u8"
     ],
     "src": {
       "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
@@ -11451,7 +12226,10 @@
       "web": "❌ רק באפליקציה (HTTP)"
     },
     "fallbackUrls": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/2355/index.m3u8"
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2355/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2355/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2355/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2355/index.m3u8"
     ]
   },
   {
@@ -11463,7 +12241,10 @@
     "logo": "assets/logos/yes_movies_action.png",
     "url": "http://stream.mcquack.net/380/index.m3u8",
     "backupUrls": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12270/index.m3u8"
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12270/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12270/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12270/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12270/index.m3u8"
     ],
     "channelNumber": 18,
     "number": 522,
@@ -11476,7 +12257,10 @@
     "resolution": "1080p",
     "desc": "ערוץ הסרטים המוביל ב-yes לסרטי פעולה, מתח ומד\"ב בדיבוב ותרגום עברי.",
     "backups": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12270/index.m3u8"
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12270/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12270/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12270/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12270/index.m3u8"
     ],
     "src": {
       "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
@@ -11486,7 +12270,10 @@
       "web": "❌ רק באפליקציה (HTTP)"
     },
     "fallbackUrls": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/12270/index.m3u8"
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12270/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12270/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12270/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12270/index.m3u8"
     ]
   },
   {
@@ -11498,7 +12285,10 @@
     "logo": "assets/logos/hot_drama.png",
     "url": "http://stream.mcquack.net/381/index.m3u8",
     "backupUrls": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32140/index.m3u8"
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32140/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32140/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32140/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32140/index.m3u8"
     ],
     "channelNumber": 19,
     "number": 523,
@@ -11511,7 +12301,10 @@
     "resolution": "1080p",
     "desc": "HOT דרמה – סרטים מרגשים, הפקות מקור ודרמות מנצחות מהקולנוע העולמי.",
     "backups": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32140/index.m3u8"
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32140/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32140/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32140/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32140/index.m3u8"
     ],
     "src": {
       "by": "mcquack.net – אתר ממסר (restream) של צד שלישי",
@@ -11521,7 +12314,10 @@
       "web": "❌ רק באפליקציה (HTTP)"
     },
     "fallbackUrls": [
-      "http://zybrpjv6.zyntras.top/iptv/27UW3W9CE6C4XGYBWMTWAXNE/32140/index.m3u8"
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32140/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32140/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32140/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32140/index.m3u8"
     ]
   },
   {

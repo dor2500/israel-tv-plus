@@ -1,15 +1,21 @@
 {
-  "version": "4.8.80",
-  "code": 202611162310,
-  "app": 40880,
+  "version": "4.8.81",
+  "code": 202611171737,
+  "app": 40881,
   "shell": 3,
-  "date": "2026-11-16",
+  "date": "2026-11-17",
   "notes": [
-    "סידור ערוצי ניקלודיאון, ניק ג'וניור וטין ניק והסרת כפילויות:",
-    "הפרדת ערוץ ניקלודיאון ישראל HD (12240) מערוץ ניק ג'וניור ישראל HD (2337) וערוץ טין ניק ישראל HD (32148) – כל אחד עם השידור הייחודי שלו.",
-    "הסרת 23 ערוצים כפולים שהופיעו פעמיים עם אותו מקור שידור (בערוצי הילדים, סרטים, אוכל ומוזיקה) לניקוי וסדר מלא של רשימת הערוצים."
+    "עדכון שרתים ו-4 גיבויים בלתי תלויים לערוצי ספורט צ'רלטון (1–4) ולכלל ערוצי ה-IPTV:",
+    "החלפת הטוקן שפג (27UW3W9CE6C4XGYBWMTWAXNE) בשרת ראשי פעיל (ztf5jtil.zyntras.top) בתוספת 3 שרתי גיבוי עצמאיים עם טוקנים שונים (tqsxcvnh.ukminlt.fun, d875e960.megatv.fun, osoyz0xv.ottclub.xyz) למעבר אוטומטי במקרה שאחד הטוקנים יתחלף."
   ],
   "history": [
+    {
+      "version": "4.8.81",
+      "notes": [
+        "עדכון שרתים ו-4 גיבויים בלתי תלויים לערוצי ספורט צ'רלטון (1–4) ולכלל ערוצי ה-IPTV:",
+        "החלפת הטוקן שפג (27UW3W9CE6C4XGYBWMTWAXNE) בשרת ראשי פעיל (ztf5jtil.zyntras.top) בתוספת 3 שרתי גיבוי עצמאיים עם טוקנים שונים (tqsxcvnh.ukminlt.fun, d875e960.megatv.fun, osoyz0xv.ottclub.xyz) למעבר אוטומטי במקרה שאחד הטוקנים יתחלף."
+      ]
+    },
     {
       "version": "4.8.80",
       "notes": [
@@ -256,50 +262,44 @@
         "\"דלג על פתיח\" הוחלף ב\"דילוג 90 שניות קדימה\", שתמיד מקדם ולא קופץ לנקודה קבועה.",
         "מקשי הצבע עברו מתחתית המסך אל מתחת לשורת הלשוניות, כי הם הסתירו את שורת הערוצים התחתונה."
       ]
-    },
-    {
-      "version": "4.8.55",
-      "notes": [
-        "הלוגו הקודם חזר: משולש פליי לבן עם נקודה אדומה, בכל המכשירים."
-      ]
     }
   ],
   "native": {
     "android": {
-      "version": "4.8.80",
-      "app": 40880,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.80/IsraelTVPlus-android.apk"
+      "version": "4.8.81",
+      "app": 40881,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.81/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "4.8.80",
-      "app": 40880,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.80/IsraelTVPlus-windows-setup.exe"
+      "version": "4.8.81",
+      "app": 40881,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.81/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "4.8.80",
-      "app": 40880,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.80/com.israeltv.plus_all.ipk",
+      "version": "4.8.81",
+      "app": 40881,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.81/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "4.8.80",
-      "app": 40880,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.80/IsraelTVPlus-tizen-project.zip"
+      "version": "4.8.81",
+      "app": 40881,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.81/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "4.8.80",
-      "app": 40880,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.80/IsraelTVPlus-macos-arm64.zip"
+      "version": "4.8.81",
+      "app": 40881,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.81/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "4.8.80",
-      "app": 40880,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.80/IsraelTVPlus-linux-x64.zip"
+      "version": "4.8.81",
+      "app": 40881,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.81/IsraelTVPlus-linux-x64.zip"
     },
     "wear": {
-      "version": "4.8.80",
-      "app": 1040880,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.80/IsraelTVPlus-wearos.apk"
+      "version": "4.8.81",
+      "app": 1040881,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.81/IsraelTVPlus-wearos.apk"
     }
   }
 }
