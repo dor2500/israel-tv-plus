@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_ze_rock_radio_il",
+    "type": "tv",
+    "name": "538. רדיו זה רוק (Ze Rock Radio)",
+    "poster": "https://dor2500.github.io/israel-tv-plus/icon.png",
+    "posterShape": "landscape",
+    "logo": "https://dor2500.github.io/israel-tv-plus/icon.png",
+    "background": "https://dor2500.github.io/israel-tv-plus/icon.png",
+    "description": "תחנת הרדיו הישראלית למוזיקת רוק קלאסי ואלטרנטיבי 24/7\n\n📡 מקור השידור: rocky.kupernet.com\n⚠️ ממסר צד שלישי",
+    "genres": [
+      "רדיו ישראלי",
+      "ישראל"
+    ],
+    "releaseInfo": "רדיו",
+    "country": "ישראל"
+  }
+}

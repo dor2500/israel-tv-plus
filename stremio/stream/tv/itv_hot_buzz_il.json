@@ -1,0 +1,13 @@
+{
+  "streams": [
+    {
+      "name": "ישראל TV+\n[FHD ראשי]",
+      "title": "HOT באזז לילדים ונוער HD (HOT Buzz)\n📡 d875e960.megatv.fun\n⚠️ ממסר צד שלישי",
+      "url": "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32139/index.m3u8",
+      "behaviorHints": {
+        "notWebReady": true,
+        "bingeGroup": "itv-live"
+      }
+    }
+  ]
+}

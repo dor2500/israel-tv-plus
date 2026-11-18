@@ -1,0 +1,76 @@
+{
+  "metas": [
+    {
+      "id": "itv_moonbug_kids_hd",
+      "type": "tv",
+      "name": "539. Moonbug Kids HD (קוקומלון ומונבאג קידס)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/icon.png",
+      "posterShape": "landscape",
+      "description": "ערוץ Moonbug Kids הרשמי – CoComelon, Blippi, Little Baby Bum ועוד לפעוטות וילדים\n\n📡 מקור השידור: moonbug-rokuus.amagi.tv\n⚠️ ממסר צד שלישי",
+      "genres": [
+        "ילדים מהעולם",
+        "ארצות הברית"
+      ]
+    },
+    {
+      "id": "itv_peppa_pig_tv",
+      "type": "tv",
+      "name": "540. Peppa Pig TV (פפה פיג 24/7)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/icon.png",
+      "posterShape": "landscape",
+      "description": "ערוץ פפה פיג 24/7 – פרקים מלאים ברצף לפעוטות וילדים\n\n📡 מקור השידור: Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "ילדים מהעולם",
+        "ארצות הברית"
+      ]
+    },
+    {
+      "id": "itv_smurf_tv",
+      "type": "tv",
+      "name": "541. Smurf TV (הדרדסים 24/7)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/icon.png",
+      "posterShape": "landscape",
+      "description": "ערוץ הדרדסים הרשמי 24/7 – כל פרקי הדרדסים הקלאסיים ברצף\n\n📡 מקור השידור: stream.ads.ottera.tv\n⚠️ ממסר צד שלישי",
+      "genres": [
+        "ילדים מהעולם",
+        "ארצות הברית"
+      ]
+    },
+    {
+      "id": "itv_nick_jr_pluto_hd",
+      "type": "tv",
+      "name": "542. Nick Jr. Pluto TV HD (ניק ג'וניור עולמי)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/icon.png",
+      "posterShape": "landscape",
+      "description": "ערוץ Nick Jr. Pluto TV – מפרץ ההרפתקאות, דורה, בייבי שארק ועוד לגיל הרך\n\n📡 מקור השידור: Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "ילדים מהעולם",
+        "ארצות הברית"
+      ]
+    },
+    {
+      "id": "itv_nickelodeon_pluto_hd",
+      "type": "tv",
+      "name": "543. Nickelodeon Pluto TV HD (ניקלודיאון עולמי)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/icon.png",
+      "posterShape": "landscape",
+      "description": "ערוץ ניקלודיאון Pluto TV – בובספוג, אוואטר, סדרות אנימציה ונוער 24/7\n\n📡 מקור השידור: Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "ילדים מהעולם",
+        "ארצות הברית"
+      ]
+    },
+    {
+      "id": "itv_nicktoons_pluto_hd",
+      "type": "tv",
+      "name": "544. NickToons Pluto TV HD (ניקטונס)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/icon.png",
+      "posterShape": "landscape",
+      "description": "ערוץ NickToons Pluto TV – סדרות האנימציה האהובות של ניקלודיאון 24/7\n\n📡 מקור השידור: Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "ילדים מהעולם",
+        "ארצות הברית"
+      ]
+    }
+  ]
+}

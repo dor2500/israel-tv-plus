@@ -89,8 +89,6 @@ https://995.livecdn.biz/995fm
 http://176.9.7.145:8127/stream
 #EXTINF:-1 tvg-id="" tvg-name="Israeli Voice Radio" tvg-chno="260" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/israeli_voice.png" group-title="רדיו ישראלי" radio="true",Israeli Voice Radio
 https://icecast.live/ivr
-#EXTINF:-1 tvg-id="" tvg-name="Radio France Israël" tvg-chno="261" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/radio_france_israel.png" group-title="רדיו ישראלי" radio="true",Radio France Israël
-https://stream10.vestaradio.com/Radio-France-Israel
 #EXTINF:-1 tvg-id="" tvg-name="TIMBR רדיו" tvg-chno="262" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/timbr_radio.png" group-title="רדיו ישראלי" radio="true",TIMBR רדיו
 https://radio.betteradio.live/listen/better_radio/live
 #EXTINF:-1 tvg-id="" tvg-name="Up2Dance רדיו" tvg-chno="263" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/up2dance.png" group-title="רדיו ישראלי" radio="true",Up2Dance רדיו
@@ -271,3 +269,5 @@ https://streams.radio.co/s9f35c3afc/listen
 http://uksoutha.streaming.broadcast.radio:20691/kolradio
 #EXTINF:-1 tvg-id="" tvg-name="Imsostablee Radio ישראל" tvg-chno="351" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/imsostablee_radio_il.png" group-title="רדיו ישראלי" radio="true",Imsostablee Radio ישראל
 https://c44.radioboss.fm:8178/stream
+#EXTINF:-1 tvg-id="" tvg-name="רדיו זה רוק (Ze Rock Radio)" tvg-chno="538" tvg-logo="" group-title="רדיו ישראלי" radio="true",רדיו זה רוק (Ze Rock Radio)
+https://rocky.kupernet.com/stream

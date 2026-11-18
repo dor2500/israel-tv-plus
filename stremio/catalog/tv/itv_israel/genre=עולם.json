@@ -13,18 +13,6 @@
       ]
     },
     {
-      "id": "itv_music_4fun",
-      "type": "tv",
-      "name": "210. 4Fun TV Pop Hits HD",
-      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/music_4fun.png",
-      "posterShape": "landscape",
-      "description": "להיטי הפופ האירופיים והמצעדים החמים ביותר\n\n📡 מקור השידור: 4FUN TV – שרת רשמי\n✅ שידור רשמי ישיר",
-      "genres": [
-        "מוזיקה",
-        "עולם"
-      ]
-    },
-    {
       "id": "itv_music_vivalatino",
       "type": "tv",
       "name": "211. ¡Viva Latino! Dance HD",
