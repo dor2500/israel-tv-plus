@@ -486,8 +486,8 @@
   }
 
   function cacheEls() {
-    ['app', 'search-input', 'top-search', 'btn-update', 'btn-getapp', 'btn-kids-exit', 'btn-settings', 'btn-m3u', 'btn-gdrive', 'clock', 'count-badge',
-      'rail-list', 'hero', 'hero-logo', 'hero-mono', 'hero-num', 'hero-cat', 'hero-q', 'hero-lang', 'hero-fav', 'hero-title',
+    ['app', 'search-input', 'btn-search-clear', 'top-search', 'btn-update', 'btn-getapp', 'btn-kids-exit', 'btn-settings', 'btn-m3u', 'btn-gdrive', 'clock', 'count-badge',
+      'rail-list', 'hero', 'hero-play-btn', 'hero-logo', 'hero-mono', 'hero-num', 'hero-cat', 'hero-q', 'hero-lang', 'hero-fav', 'hero-title',
       'hero-desc', 'hero-src', 'grid-title', 'grid-count', 'grid', 'hints', 'numhud', 'numhud-digits', 'numhud-name',
       'radio-audio', 'player', 'video', 'radio-view', 'radio-logo', 'radio-mono', 'radio-name', 'spinner', 'spinner-text',
       'perror', 'perror-title', 'perror-desc', 'perror-retry', 'perror-next', 'perror-back', 'osd', 'osd-logo', 'osd-mono',
@@ -6610,8 +6610,36 @@
     window.addEventListener('keyup', onKeyUp);
     el.searchInput.addEventListener('input', function () {
       state.query = el.searchInput.value;
+      if (el.btnSearchClear) el.btnSearchClear.classList.toggle('hidden', !state.query);
       state.gridIdx = 0;
       filterList();
+    });
+    if (el.btnSearchClear) {
+      el.btnSearchClear.addEventListener('click', function (e) {
+        e.stopPropagation();
+        el.searchInput.value = '';
+        state.query = '';
+        el.btnSearchClear.classList.add('hidden');
+        state.gridIdx = 0;
+        filterList();
+        el.searchInput.focus();
+      });
+    }
+    if (el.hero) {
+      el.hero.addEventListener('click', function () {
+        if (!state.list.length) return;
+        if (Dub) Dub.unlockAudio();
+        playIndex(state.gridIdx);
+      });
+    }
+    window.addEventListener('keydown', function (e) {
+      if (PHONE || state.overlay || (el.player && !el.player.classList.contains('hidden'))) return;
+      var active = document.activeElement;
+      var inInput = active && (active.tagName === 'INPUT' || active.tagName === 'TEXTAREA');
+      if ((e.key === '/' && !inInput) || ((e.ctrlKey || e.metaKey) && (e.key === 'k' || e.key === 'K'))) {
+        e.preventDefault();
+        if (el.searchInput) { el.searchInput.focus(); el.searchInput.select(); }
+      }
     });
     el.searchInput.addEventListener('focus', function () { if (!state.overlay) { state.zone = 'top'; state.topIdx = topItems().indexOf(el.topSearch); markFocus(); } });
 

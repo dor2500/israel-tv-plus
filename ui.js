@@ -31,7 +31,9 @@ window.ITV_ICONS = {
   cast: 'M21 3H3c-1.1 0-2 .9-2 2v3h2V5h18v14h-7v2h7c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM1 18v3h3c0-1.66-1.34-3-3-3zm0-4v2c2.76 0 5 2.24 5 5h2c0-3.87-3.13-7-7-7zm0-4v2c4.97 0 9 4.03 9 9h2c0-6.08-4.93-11-11-11z',
   multiview: 'M4 4h7c.55 0 1 .45 1 1v5c0 .55-.45 1-1 1H4c-.55 0-1-.45-1-1V5c0-.55.45-1 1-1zm9 0h7c.55 0 1 .45 1 1v5c0 .55-.45 1-1 1h-7c-.55 0-1-.45-1-1V5c0-.55.45-1 1-1zM4 13h7c.55 0 1 .45 1 1v5c0 .55-.45 1-1 1H4c-.55 0-1-.45-1-1v-5c0-.55.45-1 1-1zm9 0h7c.55 0 1 .45 1 1v5c0 .55-.45 1-1 1h-7c-.55 0-1-.45-1-1v-5c0-.55.45-1 1-1z',
   server: 'M4 6h16c1.1 0 2-.9 2-2s-.9-2-2-2H4c-1.1 0-2 .9-2 2s.9 2 2 2zm0 8h16c1.1 0 2-.9 2-2s-.9-2-2-2H4c-1.1 0-2 .9-2 2s.9 2 2 2zm0 8h16c1.1 0 2-.9 2-2s-.9-2-2-2H4c-1.1 0-2 .9-2 2s.9 2 2 2z',
-  radio: 'M3.24 6.15C2.51 6.43 2 7.17 2 8v12c0 1.1.9 2 2 2h16c1.11 0 2-.9 2-2V8c0-1.1-.9-2-2-2H8.3l7.43-3c.46-.19.68-.71.49-1.17-.19-.46-.71-.68-1.17-.49L3.24 6.15zM7 20c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm13-8h-2v-1c0-.55-.45-1-1-1s-1 .45-1 1v1H4V9c0-.55.45-1 1-1h14c.55 0 1 .45 1 1v3z'
+  radio: 'M3.24 6.15C2.51 6.43 2 7.17 2 8v12c0 1.1.9 2 2 2h16c1.11 0 2-.9 2-2V8c0-1.1-.9-2-2-2H8.3l7.43-3c.46-.19.68-.71.49-1.17-.19-.46-.71-.68-1.17-.49L3.24 6.15zM7 20c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm13-8h-2v-1c0-.55-.45-1-1-1s-1 .45-1 1v1H4V9c0-.55.45-1 1-1h14c.55 0 1 .45 1 1v3z',
+  playlist: 'M3 10h11v2H3v-2zm0-4h11v2H3V6zm0 8h7v2H3v-2zm13-1v8l6-4-6-4z',
+  cloud: 'M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z'
 };
 window.ITV_ICON = function (name, cls) {
   return '<svg class="ic' + (cls ? ' ' + cls : '') + '" viewBox="0 0 24 24" aria-hidden="true"><path d="' +
@@ -59,14 +61,15 @@ window.ITV_UI = (function (I) {
       '<span id="count-badge">ערוצים</span></div></div></div>' +
     '<div class="top-search nav-top" id="top-search" data-nav="search">' +
       '<span class="ico">' + I('search') + '</span><input id="search-input" type="search" autocomplete="off" spellcheck="false" ' +
-      'enterkeyhint="search" placeholder="חיפוש ערוץ – שם, מדינה או מספר"></div>' +
+      'enterkeyhint="search" placeholder="חיפוש ערוץ – שם, מדינה או מספר ( / )">' +
+      '<button class="search-clear hidden" id="btn-search-clear" type="button" aria-label="נקה חיפוש">' + I('close') + '</button></div>' +
     '<div class="top-actions">' +
       '<button class="top-btn nav-top hidden" id="btn-update" data-nav="update"><span class="ico">' + I('download') + '</span><span>עדכון זמין</span></button>' +
       '<button class="top-btn nav-top hidden" id="btn-getapp" data-nav="getapp"><span class="ico">' + I('phone') + '</span><span>הורדת האפליקציה</span></button>' +
       '<button class="top-btn nav-top hidden" id="btn-kids-exit" data-nav="kids"><span class="ico">' + I('kids') + '</span><span>מצב ילדים</span></button>' +
       '<button class="top-btn ph" id="btn-search" aria-label="חיפוש"><span class="ico">' + I('search') + '</span></button>' +
-      '<button class="top-btn nav-top" id="btn-m3u" data-nav="m3u" title="טעינת קובץ או קישור M3U"><span class="ico">📋</span><span>M3U</span></button>' +
-      '<button class="top-btn nav-top" id="btn-gdrive" data-nav="gdrive" title="Google Drive והקלטות ענן"><span class="ico">☁️</span><span>הקלטות ענן</span></button>' +
+      '<button class="top-btn nav-top" id="btn-m3u" data-nav="m3u" title="טעינת קובץ או קישור M3U"><span class="ico">' + I('playlist') + '</span><span>M3U</span></button>' +
+      '<button class="top-btn nav-top" id="btn-gdrive" data-nav="gdrive" title="Google Drive והקלטות ענן"><span class="ico">' + I('cloud') + '</span><span>הקלטות ענן</span></button>' +
       '<button class="top-btn nav-top tv" id="btn-settings" data-nav="settings"><span class="ico">' + I('settings') + '</span><span>הגדרות</span></button>' +
       '<div class="clock" id="clock">00:00</div>' +
       '<button class="top-btn ph" id="btn-ph-settings" aria-label="הגדרות"><span class="ico">' + I('settings') + '</span></button>' +
@@ -101,7 +104,8 @@ window.ITV_UI = (function (I) {
         '<div class="hero-info">' +
           '<div class="hero-tags"><span class="tag num" id="hero-num">1</span><span class="tag" id="hero-cat"></span>' +
             '<span class="tag q" id="hero-q"></span><span class="tag lang hidden" id="hero-lang"></span>' +
-            '<span class="tag fav hidden" id="hero-fav">★ מועדף</span></div>' +
+            '<span class="tag fav hidden" id="hero-fav">★ מועדף</span>' +
+            '<button class="hero-play" id="hero-play-btn" type="button">' + I('play') + '<span>צפה עכשיו</span></button></div>' +
           '<h1 class="hero-title" id="hero-title"></h1>' +
           '<p class="hero-desc" id="hero-desc"></p>' +
           '<p class="hero-src" id="hero-src"></p>' +

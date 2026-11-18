@@ -77,6 +77,12 @@ body.anim-off *, body.anim-off *::before, body.anim-off *::after { transition: n
   background: none; border: 0; outline: 0; -webkit-appearance: none; appearance: none; }
 .top-search input::-webkit-search-cancel-button { display: none; }
 .top-search input::placeholder { color: var(--dim); }
+.search-clear { display: flex; align-items: center; justify-content: center; width: 3rem; height: 3rem; margin-right: .4rem;
+  border-radius: 50%; background: rgba(255, 255, 255, .08); color: var(--muted); font-size: 1.5rem; flex: none;
+  transition: background-color .15s, color .15s, transform .15s; }
+.search-clear:hover { background: rgba(255, 255, 255, .18); color: var(--text); transform: scale(1.06); }
+body.light .search-clear { background: rgba(0, 0, 0, .07); }
+body.light .search-clear:hover { background: rgba(0, 0, 0, .14); }
 .top-actions { display: flex; align-items: center; margin-right: auto; }
 .top-btn { display: flex; align-items: center; height: 4.6rem; padding: 0 1.8rem; margin-right: 1rem;
   font-size: 1.45rem; font-weight: 700; background: var(--bg2); border: .2rem solid transparent; border-radius: 2.3rem; }
@@ -101,11 +107,13 @@ body.anim-off *, body.anim-off *::before, body.anim-off *::after { transition: n
 
 /* hero: the focused channel, big, on a soft backdrop in the channel's colour (Nuvio hero) */
 .hero { position: relative; flex: none; display: flex; align-items: center; height: 19rem; padding: 0 2.6rem 1.8rem 0;
-  margin-bottom: .6rem; border-radius: 2.4rem; overflow: hidden; }
+  margin-bottom: .6rem; border-radius: 2.4rem; overflow: hidden; border: .12rem solid rgba(255, 255, 255, .07); cursor: pointer; }
+body.light .hero { border-color: rgba(0, 0, 0, .08); }
 .hero-bg { position: absolute; top: 0; left: 0; right: 0; bottom: 0; opacity: .9; }
 .hero-bg::after { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
   background: linear-gradient(to left, rgba(0, 0, 0, 0) 30%, var(--bg) 100%); }
 .hero-logo { position: relative; flex: none; width: 26rem; height: 14.6rem; border-radius: 1.6rem; background: rgba(0, 0, 0, .35);
+  border: .1rem solid rgba(255, 255, 255, .08); box-shadow: 0 1.2rem 3.2rem rgba(0, 0, 0, .45);
   display: flex; align-items: center; justify-content: center; overflow: hidden; margin: 0 2.6rem 0 2.6rem; }
 .hero-logo img { max-width: 82%; max-height: 78%; object-fit: contain; }
 .hero-info { position: relative; flex: 1; min-width: 0; }
@@ -116,15 +124,20 @@ body.anim-off *, body.anim-off *::before, body.anim-off *::after { transition: n
 .tag.q { border: .1rem solid var(--line2); background: none; }
 .tag.lang { background: var(--container); color: var(--on-container); }
 .tag.fav { background: #4a3608; color: #ffd45c; }
+.hero-play { display: inline-flex; align-items: center; font-size: 1.25rem; font-weight: 800; padding: .35rem 1.2rem;
+  border-radius: 99rem; background: var(--accent); color: var(--on-accent); margin: 0 auto .4rem 2.4rem;
+  box-shadow: 0 .4rem 1.4rem rgba(0, 0, 0, .35); transition: transform .15s var(--ease), opacity .15s; }
+.hero-play .ic { font-size: 1.5rem; margin-left: .4rem; }
+.hero-play:hover { transform: scale(1.05); }
 body.light .tag { background: rgba(0, 0, 0, .06); }
 .hero-title { font-size: 3.6rem; font-weight: 800; line-height: 1.12; margin: 0 0 .4rem; letter-spacing: -.08rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .hero-desc { font-size: 1.55rem; color: var(--text2); margin: 0; max-height: 4.2rem; overflow: hidden; }
 .hero-src { font-size: 1.2rem; color: var(--dim); margin: .6rem 0 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 body.no-hero .hero { display: none; }
 
-.grid-head { flex: none; display: flex; align-items: baseline; padding: .4rem 0 .8rem; }
-.grid-head h2 { font-size: 2.1rem; font-weight: 700; margin: 0 0 0 1.4rem; letter-spacing: -.04rem; }
-.grid-head span { font-size: 1.3rem; color: var(--muted); }
+.grid-head { flex: none; display: flex; align-items: center; padding: .4rem 0 .8rem; }
+.grid-head h2 { font-size: 2.1rem; font-weight: 700; margin: 0 0 0 1.2rem; letter-spacing: -.04rem; }
+.grid-head span { font-size: 1.25rem; font-weight: 700; color: var(--muted); padding: .2rem .95rem; border-radius: 99rem; background: var(--bg2); }
 
 /* channel cards: 16:9 posters, name under the poster; a fixed number per row (setting), so remote navigation
    never measures the layout */
@@ -133,7 +146,9 @@ body.no-hero .hero { display: none; }
 .grid::-webkit-scrollbar { display: none; }
 .card { position: relative; width: calc(100% / var(--card-cols) - 2rem); margin: 0 1rem 2rem; cursor: pointer; }
 .card-logo { position: relative; height: 0; padding-bottom: 56.25%; border-radius: var(--radius); overflow: hidden;
-  background: var(--surface); border: .25rem solid transparent; transition: transform .2s var(--ease), border-color .18s, box-shadow .2s; }
+  background: var(--surface); border: .25rem solid rgba(255, 255, 255, .06); transition: transform .2s var(--ease), border-color .18s, box-shadow .2s; }
+body.light .card-logo { border-color: rgba(0, 0, 0, .07); }
+.card.is-playing .card-logo { border-color: rgba(239, 68, 68, .65); }
 .card-logo::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 45%;
   background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, .45)); }
 .card-logo img, .card-logo .mono { position: absolute; top: 14%; left: 12%; width: 76%; height: 72%; object-fit: contain; }
@@ -163,6 +178,15 @@ body.no-numbers .card-num { display: none; }
 .btn.focused, .obtn.focused, .menu-item.focused, .drawer-item.focused, .nav-item.focused, .set-row.focused {
   border-color: var(--focus) !important; background: var(--focus-bg) !important; color: var(--text) !important; }
 body.light .card.focused .card-logo { box-shadow: 0 .8rem 2rem rgba(15, 23, 42, .25); }
+@media (hover: hover) {
+  .card:not(.focused):hover .card-logo { transform: scale(1.035); border-color: rgba(255, 255, 255, .32); }
+  body.light .card:not(.focused):hover .card-logo { border-color: rgba(15, 23, 42, .28); }
+  .rail-item:not(.focused):hover { background: var(--surface); color: var(--text); }
+  .top-btn:not(.focused):hover { background: var(--surface); border-color: var(--line2); }
+  .obtn:not(.focused):hover { background: rgba(255, 255, 255, .24); }
+  .drawer-item:not(.focused):hover { background: rgba(255, 255, 255, .1); }
+  .menu-item:not(.focused):hover { background: var(--surface); }
+}
 
 /* ------------------------------------------------------------------ remote hints */
 .hints { flex: none; height: 4.4rem; display: flex; align-items: center; justify-content: center; padding: 0 2rem;
