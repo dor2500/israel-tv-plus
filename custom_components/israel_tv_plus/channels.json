@@ -923,36 +923,6 @@
     ]
   },
   {
-    "id": "ego_channel_il",
-    "name": "ערוץ אגו Ego HD",
-    "title": "ערוץ אגו רכב, אקסטרים ולייף סטייל HD",
-    "category": "ערוצי ישראל - שידור חי",
-    "categoryEn": "israel",
-    "url": "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32317/index.m3u8",
-    "fallbackUrls": [
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32317/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32317/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32317/index.m3u8"
-    ],
-    "logo": "assets/logos/ego_channel_il.png",
-    "badge": "HD",
-    "lang": "he",
-    "desc": "ערוץ אגו – מכוניות, אקסטרים, ספורט זירה, טכנולוגיה ודוקו מרתק",
-    "number": 27,
-    "src": {
-      "by": "d875e960.megatv.fun",
-      "kind": "restream",
-      "host": "d875e960.megatv.fun",
-      "found": "רשימה ידנית (גרסה קודמת)",
-      "web": "❌ רק באפליקציה (HTTP)"
-    },
-    "backups": [
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32317/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32317/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32317/index.m3u8"
-    ]
-  },
-  {
     "id": "cbs_reality_il",
     "name": "ערוץ הריאליטי HD",
     "title": "ערוץ הריאליטי והמציאות בעברית HD",

@@ -1,12 +1,12 @@
 # 📺 כל הערוצים – ישראל TV+
 
-נוצר אוטומטית מ-`channels.json` (`tools/make_channel_list.py`). **426** פריטים: **290** ערוצי טלוויזיה, **136** תחנות רדיו ו-**0** שירותי מנויים, מ-**8** מדינות. 302 מהם מתנגנים גם באתר; כל השאר באפליקציות (Android, טלוויזיה, Windows, Mac, Linux) וב-Stremio.
+נוצר אוטומטית מ-`channels.json` (`tools/make_channel_list.py`). **425** פריטים: **289** ערוצי טלוויזיה, **136** תחנות רדיו ו-**0** שירותי מנויים, מ-**8** מדינות. 302 מהם מתנגנים גם באתר; כל השאר באפליקציות (Android, טלוויזיה, Windows, Mac, Linux) וב-Stremio.
 
 **▶ צפייה:** https://dor2500.github.io/israel-tv-plus/ · **🎬 Stremio:** https://dor2500.github.io/israel-tv-plus/stremio/ · **📋 מקור כל שידור:** [SOURCES.md](SOURCES.md)
 
 ## תוכן
 
-- 🇮🇱 [ערוצי ישראל - שידור חי](#ערוצי-ישראל---שידור-חי) – 75
+- 🇮🇱 [ערוצי ישראל - שידור חי](#ערוצי-ישראל---שידור-חי) – 74
 - 🧸 [ילדים ונוער (בעברית)](#ילדים-ונוער-בעברית) – 34
 - 📻 [רדיו ישראלי (Israeli Radio)](#רדיו-ישראלי-israeli-radio) – 132
 - 🕯️ [מסורת וקהילה](#מסורת-וקהילה) – 12
@@ -17,13 +17,13 @@
 - 🎈 [ילדים מהעולם (Kids World)](#ילדים-מהעולם-kids-world) – 23
 - 🌍 [טבע ודוקו (Documentary & Nature)](#טבע-ודוקו-documentary--nature) – 6
 - 🎵 [מוזיקה (Music TV)](#מוזיקה-music-tv) – 10
-- 📺 [טבע ומדע (Documentary)](#טבע-ומדע-documentary) – 1
-- 📺 [סדרות לצפייה ישירה (VOD)](#סדרות-לצפייה-ישירה-vod) – 10
 - 📺 [ערוצים בינלאומיים (חדשות ועולם)](#ערוצים-בינלאומיים-חדשות-ועולם) – 1
+- 📺 [סדרות לצפייה ישירה (VOD)](#סדרות-לצפייה-ישירה-vod) – 10
+- 📺 [טבע ומדע (Documentary)](#טבע-ומדע-documentary) – 1
 
 ## ערוצי ישראל - שידור חי
 
-🇮🇱 75 ערוצים
+🇮🇱 74 ערוצים
 
 | # | | ערוץ | מדינה | שפה | איכות | איפה מתנגן |
 |---|---|---|---|---|---|---|
@@ -52,7 +52,6 @@
 | 24 | <img src="assets/logos/ch24.png" width="56" alt=""> | **ערוץ 24 HD** | 🇮🇱 ישראל | עברית | HD | 🌐 אתר + 📲 אפליקציות |
 | 25 | <img src="assets/logos/keshet12.png" width="56" alt=""> | **ערוץ סברי מרנן 24/7 HD** | 🇮🇱 ישראל | עברית | HD 24/7 | 🌐 אתר + 📲 אפליקציות |
 | 26 | <img src="assets/logos/e_entertainment_il.png" width="56" alt=""> | **ערוץ הבידור E! ישראל HD** | 🇮🇱 ישראל | עברית | HD | 📲 אפליקציות בלבד |
-| 27 | <img src="assets/logos/ego_channel_il.png" width="56" alt=""> | **ערוץ אגו Ego HD** | 🇮🇱 ישראל | עברית | HD | 📲 אפליקציות בלבד |
 | 28 | <img src="assets/logos/cbs_reality_il.png" width="56" alt=""> | **ערוץ הריאליטי HD** | 🇮🇱 ישראל | עברית | HD | 📲 אפליקציות בלבד |
 | 29 | <img src="assets/logos/humor_channel_il.png" width="56" alt=""> | **ערוץ ההומור והצחוק HD** | 🇮🇱 ישראל | עברית | HD | 📲 אפליקציות בלבד |
 | 33 | <img src="assets/logos/makan33.png" width="56" alt=""> | **ערוץ מכאן 33 FHD** | 🇮🇱 ישראל | ערבית | FHD | 🌐 אתר + 📲 אפליקציות |
@@ -512,13 +511,13 @@
 | 397 | <img src="assets/logos/mtv_hits.png" width="56" alt=""> | **MTV Hits & Clips HD** | 🇺🇸 ארה״ב | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
 | 526 | <img src="assets/logos/channel24_israel.png" width="56" alt=""> | **ערוץ 24 הישראלי HD (Music 24)** | 🇮🇱 ישראל | עברית | HD | 📲 אפליקציות בלבד |
 
-## טבע ומדע (Documentary)
+## ערוצים בינלאומיים (חדשות ועולם)
 
 📺 1 ערוצים
 
 | # | | ערוץ | מדינה | שפה | איכות | איפה מתנגן |
 |---|---|---|---|---|---|---|
-| 399 | <img src="assets/logos/nat_geo_wild_il.png" width="56" alt=""> | **National Geographic WILD FHD** | 🇮🇱 ישראל | עברית | FHD | 📲 אפליקציות בלבד |
+| 398 | <img src="assets/logos/rtl2.png" width="56" alt=""> | **RTL ZWEI HD (גרמניה)** | 🇩🇪 גרמניה | גרמנית | HD | 📲 אפליקציות בלבד |
 
 ## סדרות לצפייה ישירה (VOD)
 
@@ -537,13 +536,13 @@
 | 509 | <img src="assets/logos/vod_rehearsals.jpg" width="56" alt=""> | **חזרות FHD (VOD)** | ישראל | עברית | VOD | 🌐 אתר + 📲 אפליקציות |
 | 510 | <img src="assets/logos/vod_valley_of_tears.jpg" width="56" alt=""> | **שעת נעילה FHD (VOD)** | ישראל | עברית | VOD | 🌐 אתר + 📲 אפליקציות |
 
-## ערוצים בינלאומיים (חדשות ועולם)
+## טבע ומדע (Documentary)
 
 📺 1 ערוצים
 
 | # | | ערוץ | מדינה | שפה | איכות | איפה מתנגן |
 |---|---|---|---|---|---|---|
-| 398 | <img src="assets/logos/rtl2.png" width="56" alt=""> | **RTL ZWEI HD (גרמניה)** | 🇩🇪 גרמניה | גרמנית | HD | 📲 אפליקציות בלבד |
+| 399 | <img src="assets/logos/nat_geo_wild_il.png" width="56" alt=""> | **National Geographic WILD FHD** | 🇮🇱 ישראל | עברית | FHD | 📲 אפליקציות בלבד |
 
 ---
 

@@ -49,8 +49,6 @@ https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/music24/live.livx/
 https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/savri/live.livx/playlist.m3u8?bitrate=5628000&audioId=1&videoId=0
 #EXTINF:-1 tvg-id="" tvg-name="ערוץ הבידור E! ישראל HD" tvg-chno="26" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/e_entertainment_il.png" group-title="ערוצי ישראל",ערוץ הבידור E! ישראל HD
 http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12243/index.m3u8
-#EXTINF:-1 tvg-id="" tvg-name="ערוץ אגו Ego HD" tvg-chno="27" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/ego_channel_il.png" group-title="ערוצי ישראל",ערוץ אגו Ego HD
-http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32317/index.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="ערוץ הריאליטי HD" tvg-chno="28" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/cbs_reality_il.png" group-title="ערוצי ישראל",ערוץ הריאליטי HD
 http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32159/index.m3u8
 #EXTINF:-1 tvg-id="" tvg-name="ערוץ ההומור והצחוק HD" tvg-chno="29" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/humor_channel_il.png" group-title="ערוצי ישראל",ערוץ ההומור והצחוק HD

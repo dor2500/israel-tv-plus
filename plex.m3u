@@ -51,8 +51,6 @@ https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/music24/live.livx/
 https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/savri/live.livx/playlist.m3u8?bitrate=5628000&audioId=1&videoId=0
 #EXTINF:-1 tvg-id="e_entertainment_il" tvg-name="ערוץ הבידור E! ישראל HD" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/e_entertainment_il.png" tvg-chno="26" group-title="ערוצי ישראל - שידור חי",ערוץ הבידור E! ישראל HD
 http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12243/index.m3u8
-#EXTINF:-1 tvg-id="ego_channel_il" tvg-name="ערוץ אגו Ego HD" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/ego_channel_il.png" tvg-chno="27" group-title="ערוצי ישראל - שידור חי",ערוץ אגו Ego HD
-http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32317/index.m3u8
 #EXTINF:-1 tvg-id="cbs_reality_il" tvg-name="ערוץ הריאליטי HD" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/cbs_reality_il.png" tvg-chno="28" group-title="ערוצי ישראל - שידור חי",ערוץ הריאליטי HD
 http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32159/index.m3u8
 #EXTINF:-1 tvg-id="humor_channel_il" tvg-name="ערוץ ההומור והצחוק HD" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/humor_channel_il.png" tvg-chno="29" group-title="ערוצי ישראל - שידור חי",ערוץ ההומור והצחוק HD
@@ -586,12 +584,4 @@ https://jmp2.uk/plu-5ca6748a37b88b269472dad9.m3u8
 #EXTINF:-1 tvg-id="nickelodeon_pluto_hd" tvg-name="Nickelodeon Pluto TV HD (ניקלודיאון עולמי)" tvg-logo="" tvg-chno="543" group-title="ילדים מהעולם (Kids World)",Nickelodeon Pluto TV HD (ניקלודיאון עולמי)
 https://jmp2.uk/plu-5ca673e0d0bd6c2689c94ce3.m3u8
 #EXTINF:-1 tvg-id="nicktoons_pluto_hd" tvg-name="NickToons Pluto TV HD (ניקטונס)" tvg-logo="" tvg-chno="544" group-title="ילדים מהעולם (Kids World)",NickToons Pluto TV HD (ניקטונס)
-https://jmp2.uk/plu-645951c0e94c38000802d2cb.m3u8
-#EXTINF:-1 tvg-id="smurf_tv_kids" tvg-name="ערוץ הדרדסים 24/7 (Smurf TV)" tvg-logo="" tvg-chno="551" group-title="ילדים מהעולם (Kids World)",ערוץ הדרדסים 24/7 (Smurf TV)
-https://stream.ads.ottera.tv/playlist.m3u8?network_id=4065
-#EXTINF:-1 tvg-id="nick_jr_pluto_tv" tvg-name="Nick Jr. Pluto TV HD (ניק ג'וניור עולמי)" tvg-logo="" tvg-chno="552" group-title="ילדים מהעולם (Kids World)",Nick Jr. Pluto TV HD (ניק ג'וניור עולמי)
-https://jmp2.uk/plu-5ca6748a37b88b269472dad9.m3u8
-#EXTINF:-1 tvg-id="nickelodeon_pluto_tv" tvg-name="Nickelodeon Pluto TV HD (ניקלודיאון עולמי)" tvg-logo="" tvg-chno="553" group-title="ילדים מהעולם (Kids World)",Nickelodeon Pluto TV HD (ניקלודיאון עולמי)
-https://jmp2.uk/plu-5ca673e0d0bd6c2689c94ce3.m3u8
-#EXTINF:-1 tvg-id="nicktoons_pluto_tv" tvg-name="NickToons Pluto TV HD (ניקטונס אנימציה)" tvg-logo="" tvg-chno="554" group-title="ילדים מהעולם (Kids World)",NickToons Pluto TV HD (ניקטונס אנימציה)
 https://jmp2.uk/plu-645951c0e94c38000802d2cb.m3u8
