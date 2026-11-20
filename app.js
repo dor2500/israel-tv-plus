@@ -496,7 +496,7 @@
       'menu-sub', 'menu-list', 'settings', 'settings-nav', 'settings-h', 'settings-p', 'settings-rows', 'dialog', 'dialog-box',
       'dialog-ico', 'dialog-title', 'dialog-body', 'dialog-actions', 'toast', 'saver', 'saver-in', 'saver-clock',
       'topbar', 'home', 'pager', 'pager-track', 'pager-dots', 'shelves', 'navbar', 'nb-pill', 'btn-search', 'hero-bg',
-      'osd-center', 'ob-pip', 'ob-server', 'guide-body', 'brand-tab', 'btn-avatar', 'avatar-img', 'avatar-dot', 'nb-search', 'btn-multiview', 'btn-cast-top', 'multiview', 'mv-grid', 'mv-close', 'mv-picker', 'mv-picker-title', 'mv-picker-close', 'mv-picker-search', 'mv-picker-cats', 'mv-picker-grid', 'atv-kb', 'atv-colors'
+      'osd-center', 'ob-pip', 'ob-server', 'guide-body', 'brand-tab', 'btn-avatar', 'avatar-img', 'avatar-dot', 'nb-search', 'btn-multiview', 'btn-cast-top', 'multiview', 'mv-grid', 'mv-close', 'mv-picker', 'mv-picker-title', 'mv-picker-close', 'mv-picker-search', 'mv-picker-cats', 'mv-picker-grid', 'atv-kb', 'atv-colors', 'atv-clock'
     ].forEach(function (id) {
       el[id.replace(/-([a-z])/g, function (m, c) { return c.toUpperCase(); })] = $(id);
     });
@@ -2808,11 +2808,11 @@
 
   function atvSettle(ch) {
     if (atv.metaTimer) clearTimeout(atv.metaTimer);
-    atv.metaTimer = setTimeout(function () { atvMeta(ch); }, fastMode() ? 160 : 70);
+    atv.metaTimer = setTimeout(function () { atvMeta(ch); }, fastMode() ? 110 : 45);
     if (atv.restTimer) clearTimeout(atv.restTimer);
     if (state.playing && state.playing !== ch && state.overlay !== 'player') atvStopPreview();
     if (!ch) return;
-    atv.restTimer = setTimeout(function () { atvPreview(ch); }, PLATFORM === 'webos' ? 1200 : 550);
+    atv.restTimer = setTimeout(function () { atvPreview(ch); }, PLATFORM === 'webos' ? 1400 : 1100);
   }
 
   /** The focused channel's details, sliding up into the second of two layers while the first fades. */
@@ -2825,7 +2825,8 @@
     var tags = (ch.isVod ? '' : '<span class="atv-live"><i></i>LIVE</span>') + '<span class="atv-pill-q">' + esc(q) + '</span>' +
       '<span class="atv-tag">' + esc(splitCat(ch.category)) + '</span>' +
       (ch.countryHe ? '<span class="atv-tag">' + esc(ch.countryHe) + '</span>' : '') +
-      (isFav(ch) ? '<span class="atv-tag">★ מועדף</span>' : '');
+      (isFav(ch) ? '<span class="atv-tag">★ מועדף</span>' : '') +
+      '<span class="atv-tag" style="color:#fff;font-weight:700;opacity:.9">▶ OK לצפייה</span>';
     var epgHtml = '';
     var descText = ch.desc || '';
     var pi = !ch.isVod && !isRadioCh(ch) && !isApp(ch) ? getEpgProgramInfo(ch) : null;
@@ -6471,7 +6472,7 @@
     var tick = function () {
       var d = new Date();
       var t = (d.getHours() < 10 ? '0' : '') + d.getHours() + ':' + (d.getMinutes() < 10 ? '0' : '') + d.getMinutes();
-      if (el.clock.textContent !== t) { el.clock.textContent = t; el.osdClock.textContent = t; el.saverClock.textContent = t; }
+      if (el.clock.textContent !== t) { el.clock.textContent = t; el.osdClock.textContent = t; el.saverClock.textContent = t; if (el.atvClock) el.atvClock.textContent = t; }
     };
     tick();
     setInterval(tick, 5000);

@@ -119,6 +119,10 @@ window.ITV_UI = (function (I) {
   // ---------------------------------------------------------------- TV: Apple TV+ browse screen
   '<div class="atv" id="atv">' +
     '<div class="atv-stage"><div class="atv-bd" id="atv-bd-a"></div><div class="atv-bd" id="atv-bd-b"></div><div class="atv-shade"></div></div>' +
+    '<div class="atv-hud">' +
+      '<div class="atv-brand"><img src="icon.png" alt=""><span>ישראל <b>TV+</b></span></div>' +
+      '<div class="atv-clock" id="atv-clock">00:00</div>' +
+    '</div>' +
     '<nav class="atv-pill hidden" id="atv-pill"></nav>' +
     '<section class="atv-meta" id="atv-meta-a"></section><section class="atv-meta" id="atv-meta-b"></section>' +
     '<div class="atv-search" id="atv-search"><span class="ico">' + I('search') + '</span><input id="atv-q" type="search" ' +
