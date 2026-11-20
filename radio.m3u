@@ -109,14 +109,6 @@ https://glzwizzlv.bynetcdn.com/glglz_sofshavua_mp3
 https://glzwizzlv.bynetcdn.com/glglz_rock_mp3
 #EXTINF:-1 tvg-id="" tvg-name="סטאר 33 רדיו" tvg-chno="271" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/star33.png" group-title="רדיו ישראלי" radio="true",סטאר 33 רדיו
 https://online.star33radio.com:1115/stream
-#EXTINF:-1 tvg-id="" tvg-name="קבלה לעם רדיו" tvg-chno="272" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/kabbalah_radio.png" group-title="רדיו ישראלי" radio="true",קבלה לעם רדיו
-http://icecast.kab.tv/live1-heb-574bcfd5.mp3
-#EXTINF:-1 tvg-id="" tvg-name="קבלה לעם רדיו – אנגלית" tvg-chno="273" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/kabbalah_radio_en.png" group-title="רדיו ישראלי" radio="true",קבלה לעם רדיו – אנגלית
-http://icecast.kab.tv/live1-eng-574bcfd5.mp3
-#EXTINF:-1 tvg-id="" tvg-name="קבלה לעם רדיו – ספרדית" tvg-chno="274" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/kabbalah_radio_es.png" group-title="רדיו ישראלי" radio="true",קבלה לעם רדיו – ספרדית
-http://icecast.kab.tv/live1-spa-574bcfd5.mp3
-#EXTINF:-1 tvg-id="" tvg-name="קבלה לעם רדיו – צרפתית" tvg-chno="275" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/kabbalah_radio_fr.png" group-title="רדיו ישראלי" radio="true",קבלה לעם רדיו – צרפתית
-http://icecast.kab.tv/live1-fre-574bcfd5.mp3
 #EXTINF:-1 tvg-id="" tvg-name="קול הצפון" tvg-chno="276" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/kol_hatzafon.png" group-title="רדיו ישראלי" radio="true",קול הצפון
 https://live.ecast.co.il/stream/khz
 #EXTINF:-1 tvg-id="" tvg-name="רדיו CS קלאסי" tvg-chno="277" tvg-logo="https://dor2500.github.io/israel-tv-plus/assets/logos/radio_cs.png" group-title="רדיו ישראלי" radio="true",רדיו CS קלאסי

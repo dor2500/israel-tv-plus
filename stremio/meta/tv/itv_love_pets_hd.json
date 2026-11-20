@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_love_pets_hd",
+    "type": "tv",
+    "name": "549. Love Pets HD (חיות מחמד וטבע)",
+    "poster": "https://dor2500.github.io/israel-tv-plus/icon.png",
+    "posterShape": "landscape",
+    "logo": "https://dor2500.github.io/israel-tv-plus/icon.png",
+    "background": "https://dor2500.github.io/israel-tv-plus/icon.png",
+    "description": "ערוץ חיות מחמד, וטרינריה וסיפורים מרגשים על בעלי חיים\n\n📡 מקור השידור: FAST Official\n✅ ערוץ FAST רשמי",
+    "genres": [
+      "טבע ודוקו",
+      "ארצות הברית"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "ארצות הברית"
+  }
+}

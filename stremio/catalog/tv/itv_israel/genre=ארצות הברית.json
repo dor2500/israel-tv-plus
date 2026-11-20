@@ -1,74 +1,74 @@
 {
   "metas": [
     {
-      "id": "itv_moonbug_kids_hd",
+      "id": "itv_bbc_earth_us_hd",
       "type": "tv",
-      "name": "539. Moonbug Kids HD (קוקומלון ומונבאג קידס)",
+      "name": "545. BBC Earth HD (טבע ומדע)",
       "poster": "https://dor2500.github.io/israel-tv-plus/icon.png",
       "posterShape": "landscape",
-      "description": "ערוץ Moonbug Kids הרשמי – CoComelon, Blippi, Little Baby Bum ועוד לפעוטות וילדים\n\n📡 מקור השידור: moonbug-rokuus.amagi.tv\n⚠️ ממסר צד שלישי",
+      "description": "ערוץ הטבע והמדע של BBC – סדרות דוקומנטריות מרהיבות באיכות Full HD\n\n📡 מקור השידור: FAST Official\n✅ ערוץ FAST רשמי",
       "genres": [
-        "ילדים מהעולם",
+        "טבע ודוקו",
         "ארצות הברית"
       ]
     },
     {
-      "id": "itv_peppa_pig_tv",
+      "id": "itv_history_hit_hd",
       "type": "tv",
-      "name": "540. Peppa Pig TV (פפה פיג 24/7)",
+      "name": "546. History Hit HD (היסטוריה)",
       "poster": "https://dor2500.github.io/israel-tv-plus/icon.png",
       "posterShape": "landscape",
-      "description": "ערוץ פפה פיג 24/7 – פרקים מלאים ברצף לפעוטות וילדים\n\n📡 מקור השידור: Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk\n✅ ערוץ FAST רשמי",
+      "description": "ערוץ ההיסטוריה והתעודה History Hit – מלחמות, ארכיאולוגיה והיסטוריה עולמית\n\n📡 מקור השידור: FAST Official\n✅ ערוץ FAST רשמי",
       "genres": [
-        "ילדים מהעולם",
+        "טבע ודוקו",
         "ארצות הברית"
       ]
     },
     {
-      "id": "itv_smurf_tv",
+      "id": "itv_nature_time_hd",
       "type": "tv",
-      "name": "541. Smurf TV (הדרדסים 24/7)",
+      "name": "547. NatureTime HD (עולם הטבע)",
       "poster": "https://dor2500.github.io/israel-tv-plus/icon.png",
       "posterShape": "landscape",
-      "description": "ערוץ הדרדסים הרשמי 24/7 – כל פרקי הדרדסים הקלאסיים ברצף\n\n📡 מקור השידור: stream.ads.ottera.tv\n⚠️ ממסר צד שלישי",
+      "description": "ערוץ טבע ובעלי חיים מבית Rakuten באיכות Full HD 24/7\n\n📡 מקור השידור: FAST Official\n✅ ערוץ FAST רשמי",
       "genres": [
-        "ילדים מהעולם",
+        "טבע ודוקו",
         "ארצות הברית"
       ]
     },
     {
-      "id": "itv_nick_jr_pluto_hd",
+      "id": "itv_love_the_planet_hd",
       "type": "tv",
-      "name": "542. Nick Jr. Pluto TV HD (ניק ג'וניור עולמי)",
+      "name": "548. Love The Planet HD (כדור הארץ)",
       "poster": "https://dor2500.github.io/israel-tv-plus/icon.png",
       "posterShape": "landscape",
-      "description": "ערוץ Nick Jr. Pluto TV – מפרץ ההרפתקאות, דורה, בייבי שארק ועוד לגיל הרך\n\n📡 מקור השידור: Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk\n✅ ערוץ FAST רשמי",
+      "description": "ערוץ סביבה, טבע ואקולוגיה מרהיב באיכות HD\n\n📡 מקור השידור: FAST Official\n✅ ערוץ FAST רשמי",
       "genres": [
-        "ילדים מהעולם",
+        "טבע ודוקו",
         "ארצות הברית"
       ]
     },
     {
-      "id": "itv_nickelodeon_pluto_hd",
+      "id": "itv_love_pets_hd",
       "type": "tv",
-      "name": "543. Nickelodeon Pluto TV HD (ניקלודיאון עולמי)",
+      "name": "549. Love Pets HD (חיות מחמד וטבע)",
       "poster": "https://dor2500.github.io/israel-tv-plus/icon.png",
       "posterShape": "landscape",
-      "description": "ערוץ ניקלודיאון Pluto TV – בובספוג, אוואטר, סדרות אנימציה ונוער 24/7\n\n📡 מקור השידור: Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk\n✅ ערוץ FAST רשמי",
+      "description": "ערוץ חיות מחמד, וטרינריה וסיפורים מרגשים על בעלי חיים\n\n📡 מקור השידור: FAST Official\n✅ ערוץ FAST רשמי",
       "genres": [
-        "ילדים מהעולם",
+        "טבע ודוקו",
         "ארצות הברית"
       ]
     },
     {
-      "id": "itv_nicktoons_pluto_hd",
+      "id": "itv_inwild_hd",
       "type": "tv",
-      "name": "544. NickToons Pluto TV HD (ניקטונס)",
+      "name": "550. INWILD HD (חיות בר)",
       "poster": "https://dor2500.github.io/israel-tv-plus/icon.png",
       "posterShape": "landscape",
-      "description": "ערוץ NickToons Pluto TV – סדרות האנימציה האהובות של ניקלודיאון 24/7\n\n📡 מקור השידור: Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk\n✅ ערוץ FAST רשמי",
+      "description": "ערוץ חיות הבר והטבע הפראי INWILD באיכות Full HD\n\n📡 מקור השידור: FAST Official\n✅ ערוץ FAST רשמי",
       "genres": [
-        "ילדים מהעולם",
+        "טבע ודוקו",
         "ארצות הברית"
       ]
     }

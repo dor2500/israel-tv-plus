@@ -1,0 +1,12 @@
+{
+  "streams": [
+    {
+      "name": "ישראל TV+\n[FHD ראשי]",
+      "title": "AMC Thrillers HD (סרטי מתח)\n📡 FAST Official\n✅ ערוץ FAST רשמי",
+      "url": "https://amc-rushbyamc-1-us.vizio.wurl.tv/playlist.m3u8",
+      "behaviorHints": {
+        "bingeGroup": "itv-live"
+      }
+    }
+  ]
+}

@@ -1,30 +1,6 @@
 {
   "metas": [
     {
-      "id": "itv_music_4ever",
-      "type": "tv",
-      "name": "209. 4ever Music Hits HD",
-      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/music_4ever.png",
-      "posterShape": "landscape",
-      "description": "הלהיטים הגדולים מכל הזמנים ברצף קליפים מרהיב\n\n📡 מקור השידור: mcquack.net – אתר ממסר (restream) של צד שלישי\n⚠️ ממסר צד שלישי",
-      "genres": [
-        "מוזיקה",
-        "עולם"
-      ]
-    },
-    {
-      "id": "itv_music_vivalatino",
-      "type": "tv",
-      "name": "211. ¡Viva Latino! Dance HD",
-      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/music_vivalatino.png",
-      "posterShape": "landscape",
-      "description": "רגאטון, מוזיקה לטינית סוחפת, סלסה ודאנס קצבי\n\n📡 מקור השידור: mcquack.net – אתר ממסר (restream) של צד שלישי\n⚠️ ממסר צד שלישי",
-      "genres": [
-        "מוזיקה",
-        "עולם"
-      ]
-    },
-    {
       "id": "itv_music_1hd",
       "type": "tv",
       "name": "212. 1HD Music Television",
