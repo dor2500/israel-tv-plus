@@ -267,3 +267,7 @@ https://rocky.kupernet.com/stream
 https://cdna.streamgates.net/Ashams/Live/icecast.audio
 #EXTINF:-1 tvg-id="" tvg-name="רדיו נאס ישראל (Radio Nas)" tvg-chno="558" tvg-logo="" group-title="רדיו ישראלי" radio="true",רדיו נאס ישראל (Radio Nas)
 https://cdna.streamgates.net/RadioNas/Live-Audio/icecast.audio
+#EXTINF:-1 tvg-id="" tvg-name="רדיו אנג'ליקה ישראל (Radio Angelika)" tvg-chno="559" tvg-logo="" group-title="רדיו ישראלי" radio="true",רדיו אנג'ליקה ישראל (Radio Angelika)
+https://radioangelika.com:8443/live
+#EXTINF:-1 tvg-id="" tvg-name="רדיו אלי ניסמן ישראל (Eli Nisman)" tvg-chno="560" tvg-logo="" group-title="רדיו ישראלי" radio="true",רדיו אלי ניסמן ישראל (Eli Nisman)
+https://listen6.myradio24.com/25715

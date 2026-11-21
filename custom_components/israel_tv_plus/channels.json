@@ -414,7 +414,8 @@
       "http://stream.mcquack.net/295/index.m3u8",
       "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32325/index.m3u8",
       "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32325/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32325/index.m3u8"
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32325/index.m3u8",
+      "https://r.il.cdn-redge.media/livehls/oil/freetv/live/ch14/live.livx/playlist.m3u8"
     ],
     "country": "IL",
     "countryHe": "ישראל",
@@ -427,7 +428,8 @@
       "http://stream.mcquack.net/295/index.m3u8",
       "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32325/index.m3u8",
       "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32325/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32325/index.m3u8"
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32325/index.m3u8",
+      "https://r.il.cdn-redge.media/livehls/oil/freetv/live/ch14/live.livx/playlist.m3u8"
     ]
   },
   {
@@ -3835,11 +3837,13 @@
     "countryHe": "ישראל",
     "fallbackUrls": [
       "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/radio/kan_reshet_bet/live.livx/playlist.m3u8?renditions",
-      "https://kanbet.media.kan.org.il/hls/live/2024811/2024811/master.m3u8"
+      "https://kanbet.media.kan.org.il/hls/live/2024811/2024811/master.m3u8",
+      "https://r.il.cdn-redge.media/livehls/oil/kancdn-live/live/radio/kan_reshet_bet/live.livx/playlist.m3u8?renditions"
     ],
     "backups": [
       "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/radio/kan_reshet_bet/live.livx/playlist.m3u8?renditions",
-      "https://kanbet.media.kan.org.il/hls/live/2024811/2024811/master.m3u8"
+      "https://kanbet.media.kan.org.il/hls/live/2024811/2024811/master.m3u8",
+      "https://r.il.cdn-redge.media/livehls/oil/kancdn-live/live/radio/kan_reshet_bet/live.livx/playlist.m3u8?renditions"
     ]
   },
   {
@@ -4429,7 +4433,12 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "backups": []
+    "backups": [
+      "https://cdn.cybercdn.live/Galei_Israel/Live/playlist.m3u8"
+    ],
+    "fallbackUrls": [
+      "https://cdn.cybercdn.live/Galei_Israel/Live/playlist.m3u8"
+    ]
   },
   {
     "id": "kol_chai",
@@ -9339,9 +9348,9 @@
     "fallbackUrls": [],
     "backups": [],
     "src": {
-      "by": "cdna.streamgates.net",
+      "by": "StreamGates – ה-CDN של התחנה",
       "kind": "official",
-      "host": "streamgates.net",
+      "host": "cdna.streamgates.net",
       "found": "שידור רשמי רדיו א-שמס",
       "web": "✅"
     }
@@ -9364,10 +9373,60 @@
     "fallbackUrls": [],
     "backups": [],
     "src": {
-      "by": "cdna.streamgates.net",
+      "by": "StreamGates – ה-CDN של התחנה",
       "kind": "official",
-      "host": "streamgates.net",
+      "host": "cdna.streamgates.net",
       "found": "שידור רשמי רדיו נאס",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "radio_angelika_il",
+    "name": "רדיו אנג'ליקה ישראל (Radio Angelika)",
+    "title": "Radio Angelika",
+    "category": "רדיו ישראלי (Israeli Radio)",
+    "categoryEn": "radio",
+    "kind": "radio",
+    "url": "https://radioangelika.com:8443/live",
+    "logo": "",
+    "badge": "LIVE",
+    "desc": "תחנת רדיו אנג'ליקה ישראל – מוזיקה, להיטים ושידורים חיים 24/7",
+    "lang": "ru",
+    "country": "IL",
+    "countryHe": "ישראל",
+    "number": 559,
+    "fallbackUrls": [],
+    "backups": [],
+    "src": {
+      "by": "radioangelika.com",
+      "kind": "official",
+      "host": "radioangelika.com",
+      "found": "שידור רשמי Radio Angelika",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "eli_nisman_radio_il",
+    "name": "רדיו אלי ניסמן ישראל (Eli Nisman)",
+    "title": "Eli Nisman Radio",
+    "category": "רדיו ישראלי (Israeli Radio)",
+    "categoryEn": "radio",
+    "kind": "radio",
+    "url": "https://listen6.myradio24.com/25715",
+    "logo": "",
+    "badge": "LIVE",
+    "desc": "תחנת הרדיו של אלי ניסמן בישראל – מוזיקה, תרבות ושידורים 24/7",
+    "lang": "he",
+    "country": "IL",
+    "countryHe": "ישראל",
+    "number": 560,
+    "fallbackUrls": [],
+    "backups": [],
+    "src": {
+      "by": "myradio24.com",
+      "kind": "official",
+      "host": "myradio24.com",
+      "found": "שידור רשמי Eli Nisman",
       "web": "✅"
     }
   }

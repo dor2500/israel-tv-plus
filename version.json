@@ -1,14 +1,25 @@
 {
-  "version": "4.8.81",
-  "code": 202611171737,
-  "app": 40881,
+  "version": "4.8.82",
+  "code": 202611211557,
+  "app": 40882,
   "shell": 3,
-  "date": "2026-11-17",
+  "date": "2026-11-21",
   "notes": [
-    "עדכון שרתים ו-4 גיבויים בלתי תלויים לערוצי ספורט צ'רלטון (1–4) ולכלל ערוצי ה-IPTV:",
-    "החלפת הטוקן שפג (27UW3W9CE6C4XGYBWMTWAXNE) בשרת ראשי פעיל (ztf5jtil.zyntras.top) בתוספת 3 שרתי גיבוי עצמאיים עם טוקנים שונים (tqsxcvnh.ukminlt.fun, d875e960.megatv.fun, osoyz0xv.ottclub.xyz) למעבר אוטומטי במקרה שאחד הטוקנים יתחלף."
+    "אייקון חדש ומודרני, שיפורי מהירות לממשק הטלוויזיה (TV UI), והוספת ערוצים חדשים:",
+    "אייקון חדש ומודרני לכל הפלטפורמות (Android, Android TV, Wear OS, webOS, Tizen, Windows, PWA).",
+    "שדרוג ביצועי ממשק הטלוויזיה (TVUI): קיצור זמני מעבר לחוויה חלקה וללא לאגים, הוספת סרגל HUD עם שעון חי ומיתוג, והגנה מתכנים של 18+.",
+    "רשימת ערוצים נקייה ו-100% פעילה (327 ערוצים): הסרת ערוצים מתים, הוספת תחנות ישראליות (הרשת הישראלית, רדיו א-שמס 101FM, רדיו נאס, Ze Rock, אלי ניסמן, גלי ישראל/כאן רשת ב'/ערוץ 14 גיבויי HLS) ו-18 ערוצי ילדים, טבע, דוקו וסרטים באיכות HD/FHD."
   ],
   "history": [
+    {
+      "version": "4.8.82",
+      "notes": [
+        "אייקון חדש ומודרני, שיפורי מהירות לממשק הטלוויזיה (TV UI), והוספת ערוצים חדשים:",
+        "אייקון חדש ומודרני לכל הפלטפורמות (Android, Android TV, Wear OS, webOS, Tizen, Windows, PWA).",
+        "שדרוג ביצועי ממשק הטלוויזיה (TVUI): קיצור זמני מעבר לחוויה חלקה וללא לאגים, הוספת סרגל HUD עם שעון חי ומיתוג, והגנה מתכנים של 18+.",
+        "רשימת ערוצים נקייה ו-100% פעילה (327 ערוצים): הסרת ערוצים מתים, הוספת תחנות ישראליות (הרשת הישראלית, רדיו א-שמס 101FM, רדיו נאס, Ze Rock, אלי ניסמן, גלי ישראל/כאן רשת ב'/ערוץ 14 גיבויי HLS) ו-18 ערוצי ילדים, טבע, דוקו וסרטים באיכות HD/FHD."
+      ]
+    },
     {
       "version": "4.8.81",
       "notes": [
@@ -253,53 +264,44 @@
         "תיקון באג עדכון לוח השידורים באנדרואיד, תיקון ה-Service Worker לעבודה מלאה אופליין, שדרוג ביצועי שרת ה-Relay (שמירת מפתח HMAC בזיכרון וכותרות מקור מותאמות), ומעבר לנוסחת versionCode מונוטונית חדשה המונעת חסימת עדכונים עתידיים.",
         "ניקיון המאגר מ-150 סקריפטי עזר ישנים וקובצי לוג."
       ]
-    },
-    {
-      "version": "4.8.56",
-      "notes": [
-        "לכל מספר ערוץ יש עכשיו ערוץ אחד. 13 מספרים היו משותפים לשני ערוצים, והקשת המספר בשלט יכלה להוביל לערוץ הלא נכון. הערוץ המוכר שמר על המספר, והשני עבר למספר חדש מ-511 ומעלה.",
-        "מצב האזנה חוסך נתונים באמת: התמונה כבויה והשידור עובר לאיכות הנמוכה ביותר. קודם רק התמונה הוסתרה והווידאו המשיך לרדת במלואו.",
-        "\"דלג על פתיח\" הוחלף ב\"דילוג 90 שניות קדימה\", שתמיד מקדם ולא קופץ לנקודה קבועה.",
-        "מקשי הצבע עברו מתחתית המסך אל מתחת לשורת הלשוניות, כי הם הסתירו את שורת הערוצים התחתונה."
-      ]
     }
   ],
   "native": {
     "android": {
-      "version": "4.8.81",
-      "app": 40881,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.81/IsraelTVPlus-android.apk"
+      "version": "4.8.82",
+      "app": 40882,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.82/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "4.8.81",
-      "app": 40881,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.81/IsraelTVPlus-windows-setup.exe"
+      "version": "4.8.82",
+      "app": 40882,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.82/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "4.8.81",
-      "app": 40881,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.81/com.israeltv.plus_all.ipk",
+      "version": "4.8.82",
+      "app": 40882,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.82/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "4.8.81",
-      "app": 40881,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.81/IsraelTVPlus-tizen-project.zip"
+      "version": "4.8.82",
+      "app": 40882,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.82/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "4.8.81",
-      "app": 40881,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.81/IsraelTVPlus-macos-arm64.zip"
+      "version": "4.8.82",
+      "app": 40882,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.82/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "4.8.81",
-      "app": 40881,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.81/IsraelTVPlus-linux-x64.zip"
+      "version": "4.8.82",
+      "app": 40882,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.82/IsraelTVPlus-linux-x64.zip"
     },
     "wear": {
-      "version": "4.8.81",
-      "app": 1040881,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.81/IsraelTVPlus-wearos.apk"
+      "version": "4.8.82",
+      "app": 1040882,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.82/IsraelTVPlus-wearos.apk"
     }
   }
 }
