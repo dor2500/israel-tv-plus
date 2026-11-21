@@ -4110,7 +4110,7 @@
     if (Dub) Dub.detach();
     if (state.hls) { try { state.hls.stopLoad(); state.hls.detachMedia(); state.hls.destroy(); } catch (e) { } state.hls = null; }
     spinner(true);
-    var isOttrast = /ottrast\.com|212\.80\.215\.72|45\.156\.223/i.test(url);
+    var isOttrast = /ottrast\.com|ottclub\.xyz|ukminlt\.fun|megatv\.fun|zyntras\.top|212\.80\.215\.72|45\.156\.223/i.test(url);
     var sinceOttrast = Date.now() - (state.lastOttrastStop || 0);
     if (isOttrast && sinceOttrast < 380) {
       state.lastOttrastStop = 0;
@@ -4164,7 +4164,8 @@
     if (!isDirectVideo && window.Hls && Hls.isSupported()) {
       var delayed = Dub && Dub.wantsSync(ch);
       var isSport = /sport|ספורט|one_1|one_2|charlton|eurosport|5plus|5live|5gold|5stars|5max|54k/i.test((ch.category || '') + ' ' + (ch.name || '') + ' ' + (ch.id || ''));
-      var isOttrast = /ottrast\.com|212\.80\.215\.72|45\.156\.223/i.test(url);
+      var isOttrast = /ottrast\.com|ottclub\.xyz|ukminlt\.fun|megatv\.fun|zyntras\.top|212\.80\.215\.72|45\.156\.223/i.test(url);
+      var hasBackups = state.candidates && (state.candIdx || 0) + 1 < state.candidates.length;
       var low = (S.latency === 'low' || S.latency === 'realtime' || TVUI || (isSport && !isOttrast)) && !delayed;
       var isStable = (S.latency === 'stable' && (!isSport || isOttrast));
       var is4K = S.quality === 'upscale4k';
@@ -4184,10 +4185,10 @@
         maxBufferLength: isSport ? (isOttrast ? 25 : 15) : (isVod ? 60 : (is4K ? 35 : 30)),
         maxMaxBufferLength: isSport ? (isOttrast ? 45 : 25) : (isVod ? 120 : (is4K ? 60 : 60)),
         maxBufferSize: (isSport && !isOttrast) ? 10 * 1000 * 1000 : (isVod ? 60 * 1000 * 1000 : 50 * 1000 * 1000),
-        manifestLoadingMaxRetry: 6,
-        levelLoadingMaxRetry: 6,
-        fragLoadingMaxRetry: 6,
-        manifestLoadingTimeOut: 5000,
+        manifestLoadingMaxRetry: hasBackups ? 1 : 4,
+        levelLoadingMaxRetry: hasBackups ? 2 : 5,
+        fragLoadingMaxRetry: 5,
+        manifestLoadingTimeOut: hasBackups ? 3500 : 5000,
         fragLoadingTimeOut: 15000,
         levelLoadingTimeOut: 5000,
         abrEwmaDefaultEstimate: 3500000,
@@ -4296,6 +4297,12 @@
         if (l && l.height) el.osdQuality.textContent = l.height >= 1080 ? 'FHD ' + l.height + 'p' : l.height >= 720 ? 'HD ' + l.height + 'p' : 'SD ' + l.height + 'p';
       });
       hls.on(Hls.Events.ERROR, function (e, data) {
+        if (data && data.details === Hls.ErrorDetails.MANIFEST_LOAD_ERROR && data.response &&
+            (data.response.code === 404 || data.response.code === 403 || data.response.code === 410) &&
+            state.candidates && (state.candIdx || 0) + 1 < state.candidates.length) {
+          onFatal(ch, 'השרת לא זמין (' + data.response.code + ')');
+          return;
+        }
         if (!data.fatal) return;
         if (data.details === Hls.ErrorDetails.MANIFEST_PARSING_ERROR && !/\.m3u8(\?|$)/i.test(url) && !state.hlsFallbackTried) {
           state.hlsFallbackTried = true;
