@@ -263,3 +263,7 @@ http://uksoutha.streaming.broadcast.radio:20691/kolradio
 https://c44.radioboss.fm:8178/stream
 #EXTINF:-1 tvg-id="" tvg-name="רדיו זה רוק (Ze Rock Radio)" tvg-chno="538" tvg-logo="" group-title="רדיו ישראלי" radio="true",רדיו זה רוק (Ze Rock Radio)
 https://rocky.kupernet.com/stream
+#EXTINF:-1 tvg-id="" tvg-name="רדיו א-שמס 101FM (A-Shams)" tvg-chno="557" tvg-logo="" group-title="רדיו ישראלי" radio="true",רדיו א-שמס 101FM (A-Shams)
+https://cdna.streamgates.net/Ashams/Live/icecast.audio
+#EXTINF:-1 tvg-id="" tvg-name="רדיו נאס ישראל (Radio Nas)" tvg-chno="558" tvg-logo="" group-title="רדיו ישראלי" radio="true",רדיו נאס ישראל (Radio Nas)
+https://cdna.streamgates.net/RadioNas/Live-Audio/icecast.audio

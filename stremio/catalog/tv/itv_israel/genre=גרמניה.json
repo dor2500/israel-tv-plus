@@ -1,14 +1,14 @@
 {
   "metas": [
     {
-      "id": "itv_rtl_zwei_hd",
+      "id": "itv_motorvision_hd",
       "type": "tv",
-      "name": "398. RTL ZWEI HD (גרמניה)",
-      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/rtl2.png",
+      "name": "376. מוטורוויז'ן Motorvision HD",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/motorvision_hd.png",
       "posterShape": "landscape",
-      "description": "ערוץ הבידור והסדרות הפופולרי מגרמניה RTL ZWEI בשידור ישיר באיכות HD.\n\n📡 מקור השידור: tqsxcvnh.ukminlt.fun\n⚠️ ממסר צד שלישי",
+      "description": "ערוץ הספורט המוטורי ועולם הרכב המוביל Motorvision TV – סופרקארס, מרוצי מסלול ומגזיני רכב\n\n📡 מקור השידור: mvg-mv-xumo.otteravision.com\n⚠️ ממסר צד שלישי",
       "genres": [
-        "ערוצים בינלאומיים",
+        "ספורט",
         "גרמניה"
       ]
     }

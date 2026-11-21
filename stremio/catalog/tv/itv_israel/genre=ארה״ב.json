@@ -1,18 +1,6 @@
 {
   "metas": [
     {
-      "id": "itv_mtv_live_hd",
-      "type": "tv",
-      "name": "396. MTV Live HD (הופעות וקליפים)",
-      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/mtv_live.png",
-      "posterShape": "landscape",
-      "description": "ערוץ MTV Live HD – הופעות חיות בינלאומיות, פסטיבלי מוזיקה ולהיטים מכל הזמנים.\n\n📡 מקור השידור: 23.237.104.106\n⚠️ ממסר צד שלישי",
-      "genres": [
-        "מוזיקה",
-        "ארה״ב"
-      ]
-    },
-    {
       "id": "itv_mtv_clips_hd",
       "type": "tv",
       "name": "397. MTV Hits & Clips HD",

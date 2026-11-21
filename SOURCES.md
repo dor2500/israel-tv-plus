@@ -1,6 +1,6 @@
 # מקורות – מאיפה מגיע כל ערוץ
 
-נוצר אוטומטית מ-`channels.json` על ידי `tools/make_sources.py`. סה"כ **417** פריטים: 285 ערוצי טלוויזיה, 132 תחנות רדיו, 0 אפליקציות/שירותים.
+נוצר אוטומטית מ-`channels.json` על ידי `tools/make_sources.py`. סה"כ **325** פריטים: 191 ערוצי טלוויזיה, 134 תחנות רדיו, 0 אפליקציות/שירותים.
 
 ## איך הערוצים נאספו ונבדקו
 
@@ -17,10 +17,10 @@
 
 ## ⚖️ מצב הזכויות – חשוב לדעת
 
-- **228 שידורים רשמיים** – מהשרתים של הגוף המשדר עצמו או של המפיץ שלו (כאן, 13, 14, i24NEWS, גלי צה"ל, תחנות הרדיו, DW, אל-ג'זירה...).
+- **230 שידורים רשמיים** – מהשרתים של הגוף המשדר עצמו או של המפיץ שלו (כאן, 13, 14, i24NEWS, גלי צה"ל, תחנות הרדיו, DW, אל-ג'זירה...).
 - **31 ערוצי FAST** – ערוצים חינמיים עם פרסומות שהבעלים מפיצים בעצמם (Pluto TV, BabyFirst, LEGO, Baby Shark...).
 - **0 ערוצים מהעולם** – שידורים פתוחים מהמאגר הציבורי iptv-org (ייבוא אוטומטי, `tools/import_iptv.py`): כל אחד נבדק שהוא משדר ושיש בו תמונה, ללא ערוצים שדורשים מנוי/כתובת מיוחדת. רובם מהשרתים של הערוצים עצמם, אבל הבעלים לא נבדקו אחד-אחד.
-- **155 ממסרי צד שלישי** – בעיקר `stream.mcquack.net` (0 ערוצים). אלה **אינם** השרתים של הערוצים: אתר חיצוני קולט את השידור ומפיץ אותו מחדש. בהם נמצאים גם ערוצים בתשלום (HOT, yes, viju/TV1000, ערוצי ספורט) – סביר מאוד שההפצה הזו **ללא רישיון** מבעלי הזכויות, והם עלולים להיעלם בכל רגע. ההחלטה אם להשאיר אותם היא שלך; הסקריפטים לא מוסיפים ממסרים חדשים של ערוצים בתשלום.
+- **62 ממסרי צד שלישי** – בעיקר `stream.mcquack.net` (0 ערוצים). אלה **אינם** השרתים של הערוצים: אתר חיצוני קולט את השידור ומפיץ אותו מחדש. בהם נמצאים גם ערוצים בתשלום (HOT, yes, viju/TV1000, ערוצי ספורט) – סביר מאוד שההפצה הזו **ללא רישיון** מבעלי הזכויות, והם עלולים להיעלם בכל רגע. ההחלטה אם להשאיר אותם היא שלך; הסקריפטים לא מוסיפים ממסרים חדשים של ערוצים בתשלום.
 - **שירותי המנויים** (פרטנר, סלקום, STING, yes, HOT) – אין בפרויקט שום שידור שלהם; הכרטיס רק פותח את האפליקציה/האתר הרשמי, וצפייה דורשת מנוי.
 
 > הסיווג רשמי / FAST / ממסר נקבע לפי שם השרת שממנו מגיע השידור (למשל CDN של הגוף המשדר), ולא אושר מול כל גוף משדר בנפרד.
@@ -29,7 +29,6 @@
 
 | שרת | מי זה | סוג | מספר |
 |---|---|---|---|
-| `tqsxcvnh.ukminlt.fun` | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | 91 |
 | `d1zqtf09wb8nt5.cloudfront.net` | FreeTV – השידור הרשמי (AWS CloudFront) | ✅ רשמי | 69 |
 | `gb25.streamgates.net` | StreamGates – ערוצי רדיוס 100FM | ✅ רשמי | 60 |
 | `cdn.cybercdn.live` | CyberCDN – ה-CDN של תחנות הרדיו עצמן | ✅ רשמי | 18 |
@@ -39,6 +38,7 @@
 | `glzwizzlv.bynetcdn.com` | גלי צה"ל / גלגלצ – CDN רשמי (Bynet) | ✅ רשמי | 6 |
 | `cast.breslevforyou.co.il` | רדיו ברסלב – שרת התחנה | ✅ רשמי | 5 |
 | `edge1.il.kab.tv` | edge1.il.kab.tv | ⚠️ ממסר צד שלישי | 4 |
+| `cdna.streamgates.net` | StreamGates – ה-CDN של התחנה | ✅ רשמי | 4 |
 | `d1yd8hohnldm33.cloudfront.net` | ערוץ FAST ישראלי – AWS CloudFront | ✅ FAST חינמי | 3 |
 | `skynewsau-live.akamaized.net` | skynewsau-live.akamaized.net | ⚠️ ממסר צד שלישי | 3 |
 | `jointil.com` | jointil.com | ⚠️ ממסר צד שלישי | 3 |
@@ -50,10 +50,8 @@
 | `636ffd31f0e12.streamlock.net` | 636ffd31f0e12.streamlock.net | ⚠️ ממסר צד שלישי | 2 |
 | `rgelive.akamaized.net` | ספורט 5 – השידור הרשמי של RGE (Akamai) | ✅ רשמי | 2 |
 | `dash3.antik.sk` | Antik Telecom (סלובקיה), נתיבי test | ⚠️ ממסר צד שלישי | 2 |
-| `23.237.104.106` | Boomerang Broadcast | ✅ שידור חי | 2 |
 | `edge3.uk.kab.tv` | קבלה לעם – שרת רשמי | ✅ רשמי | 2 |
 | `mvg-mv-xumo.otteravision.com` | mvg-mv-xumo.otteravision.com | ⚠️ ממסר צד שלישי | 2 |
-| `cdna.streamgates.net` | StreamGates – ה-CDN של התחנה | ✅ רשמי | 2 |
 | `radio.streamgates.net` | StreamGates – ה-CDN של התחנה | ✅ רשמי | 2 |
 | `media2.93fm.co.il` | קול חי – שרת התחנה | ✅ רשמי | 2 |
 | `icecast.live` | icecast.live | ⚠️ ממסר צד שלישי | 2 |
@@ -99,7 +97,6 @@
 | `dai.google.com` | dai.google.com | ⚠️ ממסר צד שלישי | 1 |
 | `vodzong.mjunoon.tv` | Cartoon Network Broadcast Stream | ✅ שידור חי | 1 |
 | `s6.hopslan.com` | Disney Channel Stream | ✅ שידור חי | 1 |
-| `a-cdn.klowdtv.com` | a-cdn.klowdtv.com | ⚠️ ממסר צד שלישי | 1 |
 | `amg00378-mavtv-amg00378c2-rakuten-us-1048.playouts.now.amagi.tv` | amg00378-mavtv-amg00378c2-rakuten-us-1048.playouts.now.amagi.tv | ⚠️ ממסר צד שלישי | 1 |
 | `amg01258-raycomsports-powernationau-samsungau-18bwc.amagi.tv` | amg01258-raycomsports-powernationau-samsungau-18bwc.amagi.tv | ⚠️ ממסר צד שלישי | 1 |
 | `ch16israel-cdn.encoders.immergo.tv` | ערוץ 16 – שרת רשמי | ✅ רשמי | 1 |
@@ -155,11 +152,8 @@
 | 1 | וואלה!+ חדשות – שידור חי HD | live.wcdn.co.il | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
 | 2 | ynet Live | ynet – השרת של ידיעות אחרונות | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
 | 3 | וואלה!+ yes תרבות ובידור HD | live.wcdn.co.il | ✅ רשמי | iptv-org (WallaYes.il) | ✅ |
-| 4 | HOT בידור ישראלי HD | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (הפניה בלי CORS) |
-| 5 | HOT ריאל HD (HOT Real) | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
 | 6 | רשת 13 קומדיה ובידור HD | ערוץ FAST ישראלי – AWS CloudFront | ✅ FAST חינמי | iptv-org (Reshet13Comedy.il) | ✅ |
 | 7 | ערוץ בית ועיצוב ישראלי HD | FreeTV – השידור הרשמי (AWS CloudFront) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
-| 8 | ערוץ השעשועונים והמשחקים HD | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
 | 9 | ערוץ 9 הישראלי FHD | FreeTV – השידור הרשמי (AWS CloudFront) | ✅ רשמי | iptv-org (Channel9.il) | ✅ |
 | 10 | ערוץ כלכלה 10 HD | Redge – ה-CDN הרשמי של כאן, ערוץ 14 וכלכלה 10 | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
 | 11 | כאן 11 FHD | Redge – ה-CDN הרשמי של כאן, ערוץ 14 וכלכלה 10 | ✅ רשמי | שידור רשמי ויציב ללא תקיעות | ✅ |
@@ -169,20 +163,10 @@
 | 15 | i24NEWS עברית HD | FreeTV – השידור הרשמי (AWS CloudFront) | ✅ רשמי | iptv-org (i24NEWSHebrew.il) | ✅ |
 | 16 | ערוץ חדשות 16 HD | FreeTV – השידור הרשמי (AWS CloudFront) | ✅ רשמי | iptv-org (Channel16.il) | ✅ |
 | 17 | ערוץ ארץ נהדרת 24/7 HD | FreeTV – השידור הרשמי (AWS CloudFront) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
-| 18 | yes דוקו HD | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
-| 19 | HOT 8 מדע ודוקו HD | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
-| 20 | ערוץ בית+ Home Plus HD | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
-| 21 | ערוץ הבריאות HD | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
 | 22 | ערוץ הטיולים HD | ערוץ FAST ישראלי – AWS CloudFront | ✅ FAST חינמי | שידור רשמי ערוץ הנופש והתיירות HD | ✅ |
 | 24 | ערוץ 24 HD | FreeTV – השידור הרשמי (AWS CloudFront) | ✅ רשמי | iptv-org (Channel24.il) | ✅ |
 | 25 | ערוץ סברי מרנן 24/7 HD | FreeTV – השידור הרשמי (AWS CloudFront) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
-| 26 | ערוץ הבידור E! ישראל HD | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
-| 28 | ערוץ הריאליטי HD | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
-| 29 | ערוץ ההומור והצחוק HD | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
 | 33 | ערוץ מכאן 33 FHD | כאן – תאגיד השידור (CDN רשמי) | ✅ רשמי | סריקת ערוצים רשמית | ✅ |
-| 34 | ערוץ הסטייל והאופנה HD | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
-| 35 | HOT מיינד דוקו והעשרה HD | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
-| 69 | ערוץ 98 – האזרח הוותיק HD | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
 | 70 | ערוץ הכנסת 99 HD | FreeTV – השידור הרשמי (AWS CloudFront) | ✅ רשמי | iptv-org (KnessetChannel.il) | ✅ |
 | 71 | ערוץ Beautyz אופנה ויופי HD | FreeTV – השידור הרשמי (AWS CloudFront) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
 | 72 | ערוץ מוזיקה il HD | FreeTV – השידור הרשמי (AWS CloudFront) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
@@ -211,19 +195,12 @@
 | 96 | רדיו לב המדינה 91FM – וידאו חי | CyberCDN – ה-CDN של תחנות הרדיו עצמן | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
 | 97 | Daystar TV (FreeTV ישראל) | FreeTV – השידור הרשמי (AWS CloudFront) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
 | 98 | i24NEWS צרפתית ישראל FHD | i24NEWS – שרת רשמי | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
-| 99 | ערוץ הכנסת HD (Knesset Channel) | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
-| 153 | ערוץ הקומדיות הקלאסיות HD | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
 | 373 | ערוץ הקומדיה הישראלי HD | ערוץ FAST ישראלי – AWS CloudFront | ✅ FAST חינמי | רשימה ידנית (גרסה קודמת) | ✅ |
 | 374 | ערוץ קבלה לעם שידור חי HD | קבלה לעם – שרת רשמי | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
 | 381 | ערוץ 16 ישראל HD | ערוץ 16 – שרת רשמי | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
 | 382 | ערוץ i24NEWS עברית HD | i24NEWS – שרת רשמי | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
-| 390 | ערוץ ההומור 2 HD | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
-| 391 | ערוץ ויוה וינטג' וספרדיות HD | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
-| 401 | ערוץ Beautyz אופנה ולייפסטייל HD | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
-| 409 | ערוץ החיים הטובים HD (Good Life) | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
 | 411 | ערוץ הלא TV HD (Hala TV) | פאנט – הלא TV (רשמי) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
 | 513 | ערוץ 9 ישראל HD | GoStreaming – ספק השידור של ערוץ 9 | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
-| 521 | ערוץ החיים הטובים HD (Good Life) | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
 | 528 | ערוץ הקריוקי הישראלי HD | FreeTV – השידור הרשמי (AWS CloudFront) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
 | 536 | הרשת הישראלית – The Israeli Network HD | r.eu.cdn-redge.media | ⚠️ ממסר צד שלישי | שידור רשמי The Israeli Network | ✅ |
 
@@ -234,46 +211,29 @@
 | 23 | כאן חינוכית 23 FHD | Redge – ה-CDN הרשמי של כאן, ערוץ 14 וכלכלה 10 | ✅ רשמי | שידור רשמי ויציב ללא תקיעות | ✅ |
 | 42 | ערוץ הילדים HD (המקום האמיתי) | FreeTV – השידור הרשמי (AWS CloudFront) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
 | 43 | ערוץ לוגי HD (Logi) | FreeTV – השידור הרשמי (AWS CloudFront) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
-| 44 | ערוץ הופ! ילדים בעברית HD | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
 | 45 | ערוץ ילדותי ישראלי HD (FreeTV Yalduti) | FreeTV – השידור הרשמי (AWS CloudFront) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
 | 46 | ערוץ הופ! פלא HD (Hop Pele) | FreeTV – השידור הרשמי (AWS CloudFront) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
-| 47 | ערוץ לולי לפעוטות בעברית HD | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | iptv-org (Luli.il) | ❌ רק באפליקציה (HTTP) |
-| 48 | ערוץ דיסני ישראל HD (Disney Channel) | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | iptv-org (DisneyChannel.il) | ❌ רק באפליקציה (HTTP) |
 | 49 | ערוץ דיסני ג'וניור ישראל HD (Disney Jr.) | 88.212.15.50 | ⚠️ ממסר צד שלישי | iptv-org (DisneyJunior.il) | ❌ רק באפליקציה (HTTP) |
-| 50 | ערוץ ניקלודיאון ישראל HD (Nickelodeon) | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
-| 51 | ערוץ ניק ג'וניור ישראל HD (Nick Jr.) | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | iptv-org (NickJr.il) | ❌ רק באפליקציה (HTTP) |
-| 52 | ערוץ טין ניק ישראל HD (TeenNick) | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | iptv-org (TeenNick.il) | ❌ רק באפליקציה (HTTP) |
-| 53 | ערוץ זום ZOOM ילדים ונוער HD | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | iptv-org (Zoom.il) | ❌ רק באפליקציה (HTTP) |
 | 54 | ערוץ ג'וניור HD (Junior) | FreeTV – השידור הרשמי (AWS CloudFront) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
 | 55 | ערוץ יויו HD (YoYo) | FreeTV – השידור הרשמי (AWS CloudFront) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
 | 56 | ערוץ בייבי ישראל HD (BabyTV) | FreeTV – השידור הרשמי (AWS CloudFront) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
-| 57 | yes קולנוע ילדים FHD (yes Movies Kids) | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
-| 58 | HOT סינמה פמילי HD (סרטי ילדים ומשפחה) | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
-| 59 | ערוץ WIZ! לילדים ונוער HD | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
 | 60 | ערוץ סרטי ילדים ומשפחה HD | FreeTV – השידור הרשמי (AWS CloudFront) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
 | 61 | ערוץ FOMO לנוער ורשת HD | FreeTV – השידור הרשמי (AWS CloudFront) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
 | 62 | ערוץ שירי ילדותי HD | FreeTV – השידור הרשמי (AWS CloudFront) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
 | 63 | ערוץ A+ ילדים HD | FreeTV – השידור הרשמי (AWS CloudFront) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
 | 64 | ערוץ הכוכבים לילדים ונוער HD | FreeTV – השידור הרשמי (AWS CloudFront) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
-| 384 | ערוץ הופ! פלוס HD | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
-| 404 | ערוץ ג'וניור HD (Junior) | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
-| 405 | ערוץ בייבי HD (Baby Channel) | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
-| 407 | yes קולנוע ילדים HD (yes Movies Kids) | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
-| 519 | ערוץ זום טון HD (Zoom Toon) | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
 
 ## 📺 ערוצי אוכל (Food Channels)
 
 | # | ערוץ | שרת השידור | סוג | נמצא ב | באתר (דפדפן) |
 |---|---|---|---|---|---|
 | 30 | ערוץ פודי Foody בישול ישראלי HD | FreeTV – השידור הרשמי (AWS CloudFront) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
-| 173 | ערוץ האוכל HD (Food Network / החיים הטובים) | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
 | 175 | ערוץ האוכל והבישול – קשת / FreeTV | FreeTV – השידור הרשמי (AWS CloudFront) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (הפניה בלי CORS) |
 | 176 | Bon Appétit HD – ערוץ הבישול בון אפטיט | bonappetit-samsung.amagi.tv | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
 | 177 | Gusto TV FHD – ערוץ האוכל העולמי גוסטו | e75fc053c0d2406fb74cdd71d77e1a7f.mediatailor.us-east-1.amazonaws.com | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
 | 179 | Food Network International HD | streaming.aurora.enhanced.live | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
 | 180 | TV5MONDE Chefs HD – שפים וגסטרונומיה | tvf-tv5ch.otteravision.com | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
 | 181 | Cooking Panda HD – מתכונים ובישול | stream-us-east-1.getpublica.com | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
-| 182 | Kus-Kus Culinary TV HD – ערוץ קוסקוס אוכל ומתכונים | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
 
 ## 📺 סרטים וסדרות (Movies & Series)
 
@@ -281,44 +241,6 @@
 |---|---|---|---|---|---|
 | 31 | ערוץ ויוה איסטנבול HD (Viva Istanbul) | FreeTV – השידור הרשמי (AWS CloudFront) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
 | 32 | ערוץ ויוה טלנובלות HD (Viva) | FreeTV – השידור הרשמי (AWS CloudFront) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
-| 115 | HOT 3 ערוץ הדגל FHD | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | iptv-org (Hot3.il) | ❌ רק באפליקציה (HTTP) |
-| 116 | HOT HBO סדרות פרימיום HD | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | iptv-org (HotHBO.il) | ❌ רק באפליקציה (HTTP) |
-| 117 | HOT סינמה 1 FHD | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
-| 118 | HOT סינמה 2 HD | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
-| 119 | HOT סינמה 3 FHD | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
-| 120 | HOT סינמה 4 HD | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | iptv-org (HotCinema4.il) | ❌ רק באפליקציה (HTTP) |
-| 121 | HOT סינמה 5 HD | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
-| 122 | HOT קולנוע ישראלי HD | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
-| 123 | HOT קולנוע רומנטי HD | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
-| 124 | HOT דרמה HD | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
-| 125 | HOT זון HD (HOT Zone) | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
-| 126 | HOT קומדי HD (HOT Comedy) | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
-| 127 | yes קולנוע ישראלי HD | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
-| 128 | yes קולנוע אקשן FHD (yes Movies Action) | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
-| 129 | yes קולנוע דרמה FHD (yes Movies Drama) | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
-| 130 | yes קולנוע קומדיה FHD (yes Movies Comedy) | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
-| 131 | yes TV אקשן HD (yes TV Action) | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
-| 132 | yes TV דרמה HD (yes TV Drama) | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
-| 133 | yes TV קומדיה HD (yes TV Comedy) | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | iptv-org (YesTvComedy.il) | ❌ רק באפליקציה (HTTP) |
-| 134 | ערוץ ויוה פרימיום HD (Viva Premium) | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
-| 135 | הערוץ הים תיכוני HD | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
-| 136 | הערוץ הים תיכוני+ HD | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
-| 137 | ערוץ הדרמות הטורקיות+ FHD | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
-| 138 | ערוץ הדרמות הטורקיות 2 FHD | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
-| 139 | ערוץ הדרמות הטורקיות 3 FHD | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
-| 141 | ערוץ הסרטים הים תיכוני 2 HD | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
-| 142 | ערוץ האקשן העולמי 1 HD | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
-| 143 | ערוץ האקשן העולמי 2 HD | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
-| 144 | ערוץ הדרמות הספרדיות 1 HD | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
-| 145 | ערוץ הדרמות הספרדיות 2 HD | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
-| 146 | ערוץ הדרמות ההודיות 1 HD | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
-| 147 | ערוץ הדרמות ההודיות 2 HD | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
-| 148 | ערוץ בוליווד סרטים הודיים HD | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
-| 149 | ערוץ בוליווד קלאסי HD | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
-| 150 | ערוץ בולישואו Bollyshow HD | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
-| 151 | ערוץ ZEE TV ישראל HD | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | iptv-org (ZeeTV.il) | ❌ רק באפליקציה (HTTP) |
-| 152 | ערוץ GTV דרמות וקולנוע HD | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | iptv-org (GTV.il) | ❌ רק באפליקציה (HTTP) |
-| 154 | ערוץ האהבה והרומנטיקה HD | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
 | 156 | סברי מרנן 24/7 – קשת / FreeTV | FreeTV – השידור הרשמי (AWS CloudFront) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
 | 157 | ערוץ הדרמה – קשת / FreeTV | FreeTV – השידור הרשמי (AWS CloudFront) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (הפניה בלי CORS) |
 | 158 | ערוץ הקומדיה – קשת / FreeTV | FreeTV – השידור הרשמי (AWS CloudFront) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (הפניה בלי CORS) |
@@ -336,10 +258,6 @@
 | 170 | ערוץ הדרמות היומיות HD | FreeTV – השידור הרשמי (AWS CloudFront) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
 | 171 | ערוץ וואמוס HD (Vamos) | FreeTV – השידור הרשמי (AWS CloudFront) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
 | 172 | FreeTV גלובל סדרות HD | FreeTV – השידור הרשמי (AWS CloudFront) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
-| 512 | ערוץ הסרטים הים תיכוני 1 HD | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
-| 520 | ערוץ ויוה פרימיום HD (Viva Premium) | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
-| 522 | yes קולנוע אקשן HD (yes Movies Action) | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
-| 523 | HOT דרמה HD (HOT Drama) | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
 | 531 | ערוץ הריאליטי הישראלי HD | ערוץ FAST ישראלי – AWS CloudFront | ✅ FAST חינמי | שידור פרטנר TV רשמי | ✅ |
 | 551 | AMC Thrillers HD (סרטי מתח) | FAST Official | ✅ FAST חינמי | שידור FAST רשמי | ✅ |
 | 552 | ARTFLIX Movie Classics HD (קלאסיקות) | FAST Official | ✅ FAST חינמי | שידור FAST רשמי | ✅ |
@@ -354,10 +272,6 @@
 |---|---|---|---|---|---|
 | 36 | ערוץ ספורט 5 4K UHD | Redge – ה-CDN הרשמי של כאן, ערוץ 14 וכלכלה 10 | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
 | 37 | ערוץ ONE דוקו ספורט HD | FreeTV – השידור הרשמי (AWS CloudFront) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
-| 38 | ספורט 1 HD (Sport 1) | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | שידור ישראלי מקורי צ'רלטון FHD | ❌ רק באפליקציה (הפניה בלי CORS) |
-| 39 | ספורט 2 HD (Sport 2) | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | שידור ישראלי מקורי צ'רלטון FHD | ❌ רק באפליקציה (הפניה בלי CORS) |
-| 40 | ספורט 3 HD (Sport 3) | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | שידור ישראלי מקורי צ'רלטון FHD | ❌ רק באפליקציה (הפניה בלי CORS) |
-| 41 | ספורט 4 FHD (Sport 4) | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | שידור ישראלי מקורי צ'רלטון FHD | ❌ רק באפליקציה (הפניה בלי CORS) |
 | 100 | ספורט 5 FHD (5SPORT) | FreeTV – השידור הרשמי (AWS CloudFront) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
 | 101 | ספורט 5 פלוס FHD (5PLUS) | FreeTV – השידור הרשמי (AWS CloudFront) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
 | 102 | ספורט 5 לייב FHD (5LIVE) | FreeTV – השידור הרשמי (AWS CloudFront) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
@@ -375,11 +289,9 @@
 | 367 | CBS Sports HQ FHD | dai.google.com | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
 | 375 | Sky Sports F1 HD (פורמולה 1 שידור חי) | mvg-mv-xumo.otteravision.com | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
 | 376 | מוטורוויז'ן Motorvision HD | mvg-mv-xumo.otteravision.com | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
-| 377 | ערוץ הרכב Cars.TV HD | a-cdn.klowdtv.com | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
 | 378 | ערוץ מרוצים RACER International HD | amg00378-mavtv-amg00378c2-rakuten-us-1048.playouts.now.amagi.tv | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
 | 379 | ערוץ PowerNation TV מנועים ומוטורספורט | amg01258-raycomsports-powernationau-samsungau-18bwc.amagi.tv | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
 | 380 | ערוץ מרוצים Sky Racing 1 HD | 636ffd31f0e12.streamlock.net | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
-| 511 | ספורט 6 HD (Sport 6) | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | שידור ישראלי מקורי צ'רלטון FHD | ❌ רק באפליקציה (הפניה בלי CORS) |
 
 ## 📺 מסורת וקהילה
 
@@ -421,12 +333,7 @@
 
 | # | ערוץ | שרת השידור | סוג | נמצא ב | באתר (דפדפן) |
 |---|---|---|---|---|---|
-| 202 | נשיונל ג'יאוגרפיק ישראל HD (Nat Geo) | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | iptv-org (NationalGeographic.il) | ❌ רק באפליקציה (HTTP) |
-| 203 | נשיונל ג'יאוגרפיק וויילד FHD (Nat Geo Wild) | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | iptv-org (NationalGeographicWild.il) | ❌ רק באפליקציה (HTTP) |
-| 204 | ערוץ דיסקברי ישראל FHD (Discovery) | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | iptv-org (DiscoveryChannel.il) | ❌ רק באפליקציה (HTTP) |
-| 205 | ערוץ ההיסטוריה ישראל FHD (History) | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | iptv-org (History.il) | ❌ רק באפליקציה (HTTP) |
 | 206 | ערוץ הטבע הישראלי HD (Teva) | FreeTV – השידור הרשמי (AWS CloudFront) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
-| 402 | HOT דוקו HD (HOT Doco) | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
 | 545 | BBC Earth HD (טבע ומדע) | FAST Official | ✅ FAST חינמי | שידור FAST רשמי | ✅ |
 | 546 | History Hit HD (היסטוריה) | FAST Official | ✅ FAST חינמי | שידור FAST רשמי | ✅ |
 | 547 | NatureTime HD (עולם הטבע) | FAST Official | ✅ FAST חינמי | שידור FAST רשמי | ✅ |
@@ -443,7 +350,6 @@
 | 212 | 1HD Music Television | שרת IP ללא שם (1HD) | ⚠️ ממסר צד שלישי | iptv-org (1HDMusicTelevision.ru) | ❌ רק באפליקציה (HTTP) |
 | 366 | Vevo Pop Music Hits FHD | amg00056-amg00056c6-rakuten-uk-3235.playouts.now.amagi.tv | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
 | 387 | ערוץ מוזיקה ישראלית 24/7 HD | FreeTV – השידור הרשמי (AWS CloudFront) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
-| 396 | MTV Live HD (הופעות וקליפים) | 23.237.104.106 | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
 | 397 | MTV Hits & Clips HD | ma.anixa.tv | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
 
 ## 📺 ילדים מהעולם (Kids World)
@@ -457,7 +363,6 @@
 | 362 | ערוץ לגו Lego Channel HD | LEGO Channel – AWS CloudFront FAST | ✅ FAST חינמי | iptv-org (LegoChannel.us) | ✅ |
 | 363 | דאק טי וי ducktv HD | Antik Telecom (סלובקיה), נתיבי test | ⚠️ ממסר צד שלישי | iptv-org (ducktv.sk) | ✅ |
 | 368 | Cartoon Network HD (קארטון נטוורק) | Cartoon Network Broadcast Stream | ✅ שידור חי | רשימה ידנית (גרסה קודמת) | ✅ |
-| 369 | Boomerang HD (בומרנג) | Boomerang Broadcast | ✅ שידור חי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
 | 370 | Disney Channel Global HD | Disney Channel Stream | ✅ שידור חי | רשימה ידנית (גרסה קודמת) | ✅ |
 | 371 | Crunchyroll Anime HD | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | רשימה ידנית (גרסה קודמת) | ✅ |
 | 372 | PBS Kids HD | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | רשימה ידנית (גרסה קודמת) | ✅ |
@@ -467,18 +372,6 @@
 | 542 | Nick Jr. Pluto TV HD (ניק ג'וניור עולמי) | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | שידור FAST רשמי Pluto TV | ✅ |
 | 543 | Nickelodeon Pluto TV HD (ניקלודיאון עולמי) | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | שידור FAST רשמי Pluto TV | ✅ |
 | 544 | NickToons Pluto TV HD (ניקטונס) | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | שידור FAST רשמי Pluto TV | ✅ |
-
-## 📺 ערוצים בינלאומיים (חדשות ועולם)
-
-| # | ערוץ | שרת השידור | סוג | נמצא ב | באתר (דפדפן) |
-|---|---|---|---|---|---|
-| 398 | RTL ZWEI HD (גרמניה) | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
-
-## 📺 טבע ומדע (Documentary)
-
-| # | ערוץ | שרת השידור | סוג | נמצא ב | באתר (דפדפן) |
-|---|---|---|---|---|---|
-| 399 | National Geographic WILD FHD | tqsxcvnh.ukminlt.fun | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
 
 ## 📺 סדרות לצפייה ישירה (VOD)
 
@@ -639,6 +532,8 @@
 | 350 | קול רדיו (Kol Radio) | uksoutha.streaming.broadcast.radio | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ❌ רק באפליקציה (HTTP) |
 | 351 | Imsostablee Radio ישראל | c44.radioboss.fm | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
 | 538 | רדיו זה רוק (Ze Rock Radio) | rocky.kupernet.com | ⚠️ ממסר צד שלישי | שידור רשמי Ze Rock Radio | ✅ |
+| 557 | רדיו א-שמס 101FM (A-Shams) | StreamGates – ה-CDN של התחנה | ✅ רשמי | שידור רשמי רדיו א-שמס | ✅ |
+| 558 | רדיו נאס ישראל (Radio Nas) | StreamGates – ה-CDN של התחנה | ✅ רשמי | שידור רשמי רדיו נאס | ✅ |
 
 ## 📲 מנויים ואפליקציות
 

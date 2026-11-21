@@ -1,0 +1,12 @@
+{
+  "streams": [
+    {
+      "name": "ישראל TV+\n[FHD ראשי]",
+      "title": "רדיו נאס ישראל (Radio Nas)\n📡 StreamGates – ה-CDN של התחנה\n✅ שידור רשמי ישיר",
+      "url": "https://cdna.streamgates.net/RadioNas/Live-Audio/icecast.audio",
+      "behaviorHints": {
+        "bingeGroup": "itv-live"
+      }
+    }
+  ]
+}
