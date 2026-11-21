@@ -3838,3 +3838,235 @@ body.embedded *::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.2);
   border-radius: 4px;
 }
+
+/* ================================================================== v5.0 Aurora Cinema UI Overhaul */
+body:not(.light) .app {
+  background:
+    radial-gradient(ellipse 65% 45% at 88% -8%, rgba(56, 189, 248, .14), rgba(56, 189, 248, 0) 65%),
+    radial-gradient(ellipse 55% 40% at 8% 102%, rgba(129, 140, 248, .12), rgba(129, 140, 248, 0) 65%),
+    var(--bg);
+}
+
+/* Modern Topbar */
+body:not(.phone) .topbar {
+  height: 7.4rem;
+  background: linear-gradient(180deg, rgba(7, 11, 20, .92) 0%, rgba(7, 11, 20, .68) 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, .07);
+}
+body.light:not(.phone) .topbar {
+  background: rgba(255, 255, 255, .86);
+  border-bottom: 1px solid rgba(15, 23, 42, .08);
+}
+.brand-icon {
+  box-shadow: 0 .4rem 1.4rem rgba(56, 189, 248, .28);
+}
+.brand-name b {
+  background: linear-gradient(135deg, var(--accent), var(--accent2, #818cf8));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.top-search {
+  background: rgba(255, 255, 255, .06);
+  border: 1.5px solid rgba(255, 255, 255, .09);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .05);
+}
+body.light .top-search {
+  background: rgba(15, 23, 42, .05);
+  border-color: rgba(15, 23, 42, .1);
+}
+.top-search.focused, .top-search:focus-within {
+  border-color: var(--focus);
+  background: rgba(56, 189, 248, .08);
+  box-shadow: 0 0 0 .2rem var(--glow);
+}
+.top-btn {
+  background: rgba(255, 255, 255, .06);
+  border: 1.5px solid rgba(255, 255, 255, .09);
+}
+body.light .top-btn {
+  background: rgba(15, 23, 42, .05);
+  border-color: rgba(15, 23, 42, .09);
+}
+.top-btn.focused {
+  background: linear-gradient(135deg, var(--accent), var(--accent2, #818cf8)) !important;
+  color: var(--on-accent) !important;
+  border-color: transparent !important;
+  box-shadow: 0 .5rem 1.8rem var(--glow);
+}
+.clock {
+  padding: .45rem 1.3rem;
+  border-radius: 99rem;
+  background: rgba(255, 255, 255, .06);
+  border: 1px solid rgba(255, 255, 255, .08);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Redesigned Category Rail */
+.rail {
+  background: transparent;
+  border-left: 1px solid rgba(255, 255, 255, .06);
+}
+body.light .rail { border-left-color: rgba(15, 23, 42, .07); }
+.rail-item {
+  border-radius: 1.4rem;
+  margin-bottom: .55rem;
+}
+.rail-item.active {
+  background: linear-gradient(135deg, rgba(56, 189, 248, .22), rgba(129, 140, 248, .18));
+  border-color: rgba(56, 189, 248, .35);
+  color: #fff;
+  box-shadow: 0 .4rem 1.4rem rgba(0, 0, 0, .25);
+}
+body.light .rail-item.active { color: #0f172a; }
+.rail-item.active .ri-count {
+  background: linear-gradient(135deg, var(--accent), var(--accent2, #818cf8));
+  color: var(--on-accent);
+}
+.rail-item.focused {
+  background: var(--focus-bg) !important;
+  border-color: var(--focus) !important;
+  box-shadow: 0 0 0 .18rem var(--glow);
+}
+
+/* Cinema Hero Showcase */
+.hero {
+  height: 20.5rem;
+  border-radius: 2.2rem;
+  background: rgba(15, 23, 42, .65);
+  border: 1.5px solid rgba(255, 255, 255, .10);
+  box-shadow: 0 1.4rem 3.6rem rgba(0, 0, 0, .45);
+}
+.hero-logo {
+  border-radius: 1.8rem;
+  background: linear-gradient(145deg, rgba(255, 255, 255, .10), rgba(0, 0, 0, .45));
+  border: 1.5px solid rgba(255, 255, 255, .14);
+}
+.tag.num {
+  background: linear-gradient(135deg, var(--accent), var(--accent2, #818cf8));
+  color: var(--on-accent);
+  box-shadow: 0 .25rem .9rem var(--glow);
+}
+.hero-play {
+  background: linear-gradient(135deg, var(--accent), var(--accent2, #818cf8));
+  color: var(--on-accent);
+  box-shadow: 0 .5rem 1.8rem var(--glow);
+}
+
+/* Poster Channel Cards */
+.card-logo {
+  background: linear-gradient(145deg, rgba(30, 41, 59, .88), rgba(15, 23, 42, .95));
+  border: 1.5px solid rgba(255, 255, 255, .09);
+  box-shadow: 0 .6rem 1.6rem rgba(0, 0, 0, .35);
+}
+.card.focused .card-logo {
+  transform: scale(1.07);
+  border-color: var(--focus);
+  box-shadow: 0 0 0 .22rem var(--glow), 0 1.4rem 3.2rem rgba(0, 0, 0, .7);
+}
+.card-num {
+  background: rgba(7, 11, 20, .78);
+  border: 1px solid rgba(255, 255, 255, .12);
+}
+
+/* TV UI (.atv) Aurora Overhaul */
+.atv-stage {
+  background:
+    radial-gradient(ellipse 70% 55% at 85% 15%, rgba(56, 189, 248, .16), transparent 65%),
+    radial-gradient(ellipse 60% 50% at 12% 85%, rgba(129, 140, 248, .14), transparent 65%),
+    #050811;
+}
+.atv-pill {
+  background: rgba(12, 18, 32, .76);
+  border: 1.5px solid rgba(255, 255, 255, .16);
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, .5), 0 0 0 1px rgba(56, 189, 248, .12);
+}
+.atv-tab.on, .atv-tab.focused {
+  background: linear-gradient(135deg, var(--accent), var(--accent2, #818cf8));
+  color: var(--on-accent);
+  box-shadow: 0 .4rem 1.6rem var(--glow);
+}
+.atv-clock {
+  background: rgba(12, 18, 32, .68);
+  border: 1.5px solid rgba(56, 189, 248, .24);
+  font-variant-numeric: tabular-nums;
+}
+.atv-epg-box {
+  background: rgba(15, 23, 42, .72);
+  border: 1px solid rgba(255, 255, 255, .12);
+  border-radius: 1.2rem;
+  padding: .9rem 1.2rem;
+  margin-top: .8rem;
+}
+.atv-epg-bar {
+  height: .4rem;
+  border-radius: 99rem;
+  background: rgba(255, 255, 255, .14);
+  overflow: hidden;
+  margin-top: .6rem;
+}
+.atv-epg-bar i {
+  display: block;
+  height: 100%;
+  border-radius: 99rem;
+  background: linear-gradient(90deg, var(--accent), var(--accent2, #818cf8));
+}
+.atv-card {
+  background: linear-gradient(145deg, rgba(30, 41, 59, .78), rgba(15, 23, 42, .92));
+  border: 1.5px solid rgba(255, 255, 255, .12);
+  box-shadow: 0 .8rem 2rem rgba(0, 0, 0, .45);
+}
+.atv-item.focused .atv-card {
+  border-color: var(--focus);
+  box-shadow: 0 0 0 .22rem var(--glow), 0 1.4rem 3.4rem rgba(0, 0, 0, .75);
+}
+
+/* Player OSD, Radio View & Buttons */
+.osd-buttons {
+  display: inline-flex;
+  padding: .6rem .9rem;
+  border-radius: 99rem;
+  background: rgba(10, 15, 28, .72);
+  border: 1px solid rgba(255, 255, 255, .14);
+  box-shadow: 0 1.2rem 3.2rem rgba(0, 0, 0, .55);
+}
+.osd-bottom {
+  text-align: center;
+}
+.obtn {
+  background: rgba(255, 255, 255, .08);
+  border: 1.5px solid rgba(255, 255, 255, .1);
+}
+.obtn.focused {
+  background: linear-gradient(135deg, var(--accent), var(--accent2, #818cf8)) !important;
+  color: var(--on-accent) !important;
+  border-color: transparent !important;
+  box-shadow: 0 .4rem 1.6rem var(--glow);
+}
+.radio-view {
+  background:
+    radial-gradient(circle at 50% 42%, rgba(56, 189, 248, .22), transparent 55%),
+    radial-gradient(circle at 50% 58%, rgba(129, 140, 248, .16), transparent 60%),
+    #050811;
+}
+.radio-logo {
+  border: 2px solid rgba(56, 189, 248, .35);
+  box-shadow: 0 0 4rem rgba(56, 189, 248, .25), 0 1.6rem 4rem rgba(0, 0, 0, .6);
+}
+.eq i {
+  background: linear-gradient(180deg, var(--accent), var(--accent2, #818cf8));
+}
+.btn.primary {
+  background: linear-gradient(135deg, var(--accent), var(--accent2, #818cf8));
+  color: var(--on-accent);
+  box-shadow: 0 .5rem 1.6rem var(--glow);
+}
+.menu-box, .dialog-box, .perror-box {
+  background: rgba(15, 23, 42, .94);
+  border: 1.5px solid rgba(255, 255, 255, .12);
+  box-shadow: 0 2rem 5rem rgba(0, 0, 0, .75);
+}
+body.light .menu-box, body.light .dialog-box, body.light .perror-box {
+  background: #ffffff;
+  border-color: rgba(15, 23, 42, .1);
+}

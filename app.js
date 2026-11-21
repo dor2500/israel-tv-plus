@@ -593,11 +593,12 @@
   }
 
   // ---- colours: Nuvio accent palettes, or Material You (the Android 12+ wallpaper colours from the native app)
-  var PALETTES = [['auto', 'אוטומטי'], ['system', 'צבעי המערכת (Material You)'], ['white', 'לבן'], ['arctic', 'כחול ארקטי'],
+  var PALETTES = [['auto', 'אוטומטי (אורורה)'], ['aurora', 'אורורה (כחול-סגול)'], ['system', 'צבעי המערכת (Material You)'], ['white', 'לבן'], ['arctic', 'כחול ארקטי'],
   ['gold', 'זהב'], ['jade', 'ירקן'], ['rosegold', 'רוז גולד'], ['crimson', 'ארגמן'], ['ocean', 'אוקיינוס'], ['violet', 'סגול'],
   ['emerald', 'אמרלד'], ['amber', 'ענבר'], ['rose', 'ורוד'], ['graphite', 'גרפיט']];
   // accent, on accent, variant, focus ring, focus / container background, background, elevated, card (Nuvio ThemeColors.kt)
   var PAL = {
+    aurora: ['#38bdf8', '#04101f', '#818cf8', '#7dd3fc', '#12263f', '#070b14', '#0f172a', '#162033'],
     white: ['#f5f5f5', '#111111', '#e0e0e0', '#ffffff', '#333333', '#0d0d0d', '#1a1a1a', '#242424'],
     arctic: ['#3185f5', '#ffffff', '#4d55e8', '#4de3ff', '#172844', '#0b0e14', '#141a24', '#161e2a'],
     gold: ['#e8a91c', '#111111', '#9a6200', '#ffd45c', '#3d2d1a', '#0f0e0b', '#1d1a14', '#262116'],
@@ -620,9 +621,9 @@
     return systemColors;
   }
   function accentName() {
-    if (S.accent === 'auto') return readSystemColors() ? 'system' : 'white';
-    if (S.accent === 'system' && !readSystemColors()) return 'white';
-    return (PAL[S.accent] || S.accent === 'system') ? S.accent : 'white';
+    if (S.accent === 'auto') return readSystemColors() ? 'system' : 'aurora';
+    if (S.accent === 'system' && !readSystemColors()) return 'aurora';
+    return (PAL[S.accent] || S.accent === 'system') ? S.accent : 'aurora';
   }
   function hexRgb(h) { h = h.replace('#', ''); if (h.length === 3) h = h.replace(/./g, '$&$&'); var n = parseInt(h, 16); return [n >> 16 & 255, n >> 8 & 255, n & 255]; }
   function mix(a, b, t) {
