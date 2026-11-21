@@ -97,6 +97,22 @@
     <display-name lang="he">ערוץ ONE דוקו ספורט HD</display-name>
     <icon src="https://dor2500.github.io/israel-tv-plus/assets/logos/one_doco_hd.png" />
   </channel>
+  <channel id="sport1_israel">
+    <display-name lang="he">ספורט 1 HD (Sport 1)</display-name>
+    <icon src="https://dor2500.github.io/israel-tv-plus/assets/logos/sport1_israel.png" />
+  </channel>
+  <channel id="sport2_israel">
+    <display-name lang="he">ספורט 2 HD (Sport 2)</display-name>
+    <icon src="https://dor2500.github.io/israel-tv-plus/assets/logos/sport2_israel.png" />
+  </channel>
+  <channel id="sport3_israel">
+    <display-name lang="he">ספורט 3 HD (Sport 3)</display-name>
+    <icon src="https://dor2500.github.io/israel-tv-plus/assets/logos/sport3_israel.png" />
+  </channel>
+  <channel id="sport4_israel">
+    <display-name lang="he">ספורט 4 FHD (Sport 4)</display-name>
+    <icon src="https://dor2500.github.io/israel-tv-plus/assets/logos/sport4_israel.png" />
+  </channel>
   <channel id="arutz_hayeladim">
     <display-name lang="he">ערוץ הילדים HD (המקום האמיתי)</display-name>
     <icon src="https://dor2500.github.io/israel-tv-plus/assets/logos/arutz_hayeladim.png" />
@@ -4181,6 +4197,706 @@
     <title lang="he">פורמולה 1</title>
     <desc lang="he">שידור חוזר: מירוצים. פורמולה 1, גרנד פרי לאס וגאס 2026: המירוץ.</desc>
     <icon src="https://iptv-epg.org/images/SF90fVj0LXtQXFnc0UG0HSBbAedazKweegFhI9M_WSIXK6vTiZyCtr0YDfPMOldQgkeaNkaZAah1bLaD-fdNT6ysVX-KUn7jpfkLgBQ" />
+  </programme>
+  <programme start="20261121042000 +0000" stop="20261121062000 +0000" channel="sport1_israel">
+    <title lang="he">ATP, טורניר גמר הסבב: אלקראס - קובולי</title>
+    <desc lang="he">שידור חוזר: טניס. קרלוס אלקראס - פלאביו קובולי. בכירי סבב ה-ATP נפגשים בטורניר גמר הסבב 2026. שדר: אור סוכריאנו, פרשן: נועם אוקון.</desc>
+    <icon src="https://iptv-epg.org/images/WSSsTHbhd2NFO_OGdH6gJSCIrqWvh8wP6KOFwg7b0TsRUS2YxttEeDgx56tqyVRJMeI3xiTb0GvTnQoosC5DBcmd5ktU5TATFQdYOyM" />
+  </programme>
+  <programme start="20261121062000 +0000" stop="20261121071000 +0000" channel="sport1_israel">
+    <title lang="he">מדברים פנטזי</title>
+    <desc lang="he">שידור חוזר: פודקאסט הפנטזי של ספורט 1. שחר איוואן, מיכאל זנדברג ועומר אפל עם כל העדכונים החשובים בעולם הפנטזי, החילופים הנכונים וההרכבים המדויקים לקראת עוד חץ ירוק.</desc>
+    <icon src="https://iptv-epg.org/images/WSSsTHbhd2NFO_OGdH6gJSCIrqWvh8wP6KOFwg7b0TsRUS2YxttEeDgx56tqyVRJMeI3xiTb0GvTnQoosC5DBcmd5ktU5TATFQdYOyM" />
+  </programme>
+  <programme start="20261121071000 +0000" stop="20261121090000 +0000" channel="sport1_israel">
+    <title lang="he">ב. מינכן - קלן</title>
+    <desc lang="he">שידור חוזר: כדורגל. באיירן מינכן - קלן, הליגה הגרמנית, מחזור 10, עונת 2026/27. באיירן חוזרת מפגרת הנבחרות ורוצה לשמור על הפסגה. שדר: מאור דייטש, פרשן: זאביק זלצר.</desc>
+    <icon src="https://iptv-epg.org/images/WSSsTHbhd2NFO_OGdH6gJSCIrqWvh8wP6KOFwg7b0TsRUS2YxttEeDgx56tqyVRJMeI3xiTb0GvTnQoosC5DBcmd5ktU5TATFQdYOyM" />
+  </programme>
+  <programme start="20261121090000 +0000" stop="20261121103000 +0000" channel="sport1_israel">
+    <title lang="he">תכנית הספורט של 103FM</title>
+    <desc lang="he">שידור חוזר: תכנית הספורט של 103FM בשידור ישיר על כל ענייני הספורט החמים בארץ ובעולם.</desc>
+    <icon src="https://iptv-epg.org/images/WSSsTHbhd2NFO_OGdH6gJSCIrqWvh8wP6KOFwg7b0TsRUS2YxttEeDgx56tqyVRJMeI3xiTb0GvTnQoosC5DBcmd5ktU5TATFQdYOyM" />
+  </programme>
+  <programme start="20261121103000 +0000" stop="20261121113000 +0000" channel="sport1_israel">
+    <title lang="he">חדשות הפרמיירליג</title>
+    <desc lang="he">כדורגל. תוכנית פאנל ופרשנות שבועית המתמקדת בהכנות, בניתוחים ובציפיות לקראת המחזור בפרמיירליג, עונת 2026/27.</desc>
+    <icon src="https://iptv-epg.org/images/WSSsTHbhd2NFO_OGdH6gJSCIrqWvh8wP6KOFwg7b0TsRUS2YxttEeDgx56tqyVRJMeI3xiTb0GvTnQoosC5DBcmd5ktU5TATFQdYOyM" />
+  </programme>
+  <programme start="20261121113000 +0000" stop="20261121122000 +0000" channel="sport1_israel">
+    <title lang="he">ישיר! אולפן הפרמיירליג</title>
+    <desc lang="he">שידור ישיר: כדורגל. אולפן מיוחד בהפקת הפרמיירליג לקראת משחקי היום באנגליה.</desc>
+    <icon src="https://iptv-epg.org/images/WSSsTHbhd2NFO_OGdH6gJSCIrqWvh8wP6KOFwg7b0TsRUS2YxttEeDgx56tqyVRJMeI3xiTb0GvTnQoosC5DBcmd5ktU5TATFQdYOyM" />
+  </programme>
+  <programme start="20261121122000 +0000" stop="20261121143000 +0000" channel="sport1_israel">
+    <title lang="he">ישיר! מנ. סיטי - פולהאם</title>
+    <desc lang="he">שידור ישיר: כדורגל. מנצ&apos;סטר סיטי - פולהאם, הליגה האנגלית, מחזור 11, עונת 2026/27. אחרי 3 הפסדים רצופים, הסיטיזנס ינסו להשיג ניצחון. שדר: דור הופמן, פרשן: אסף כהן.</desc>
+    <icon src="https://iptv-epg.org/images/WSSsTHbhd2NFO_OGdH6gJSCIrqWvh8wP6KOFwg7b0TsRUS2YxttEeDgx56tqyVRJMeI3xiTb0GvTnQoosC5DBcmd5ktU5TATFQdYOyM" />
+  </programme>
+  <programme start="20261121143000 +0000" stop="20261121145000 +0000" channel="sport1_israel">
+    <title lang="he">ישיר! אולפן הפרמיירליג</title>
+    <desc lang="he">שידור ישיר: כדורגל. אולפן מיוחד בהפקת הפרמיירליג לקראת משחקי היום באנגליה.</desc>
+    <icon src="https://iptv-epg.org/images/WSSsTHbhd2NFO_OGdH6gJSCIrqWvh8wP6KOFwg7b0TsRUS2YxttEeDgx56tqyVRJMeI3xiTb0GvTnQoosC5DBcmd5ktU5TATFQdYOyM" />
+  </programme>
+  <programme start="20261121145000 +0000" stop="20261121165500 +0000" channel="sport1_israel">
+    <title lang="he">ישיר! חגיגה אנגלית</title>
+    <desc lang="he">שידור ישיר: כדורגל. חגיגה אנגלית ע&apos;&apos;ג טוטנהאם - איפסוויץ&apos; וקובנטרי - קריסטל פאלאס של חלאילי ועדכונים משאר המגרשים, הליגה האנגלית, מחזור 11, עונת 2026/27. שדר: דור הופמן,…</desc>
+    <icon src="https://iptv-epg.org/images/WSSsTHbhd2NFO_OGdH6gJSCIrqWvh8wP6KOFwg7b0TsRUS2YxttEeDgx56tqyVRJMeI3xiTb0GvTnQoosC5DBcmd5ktU5TATFQdYOyM" />
+  </programme>
+  <programme start="20261121165500 +0000" stop="20261121172000 +0000" channel="sport1_israel">
+    <title lang="he">ישיר! סיכום היום באנגליה</title>
+    <desc lang="he">שידור ישיר: כדורגל. סיכום היום במחזור ה-11 באנגליה, עונת 2026/27. שדר: דור הופמן, פרשן: אסף כהן.</desc>
+    <icon src="https://iptv-epg.org/images/WSSsTHbhd2NFO_OGdH6gJSCIrqWvh8wP6KOFwg7b0TsRUS2YxttEeDgx56tqyVRJMeI3xiTb0GvTnQoosC5DBcmd5ktU5TATFQdYOyM" />
+  </programme>
+  <programme start="20261121172000 +0000" stop="20261121193000 +0000" channel="sport1_israel">
+    <title lang="he">ישיר! ניוקאסל - ארסנל</title>
+    <desc lang="he">שידור ישיר: כדורגל. ניוקאסל - ארסנל, הליגה האנגלית, מחזור 11, עונת 2026/27. המוליכה, ארסנל, מחפשת ניצחון 6 ברציפות בדהירה לעוד תואר. שדר: רמי ויץ, פרשן: אבי נמני.</desc>
+    <icon src="https://iptv-epg.org/images/WSSsTHbhd2NFO_OGdH6gJSCIrqWvh8wP6KOFwg7b0TsRUS2YxttEeDgx56tqyVRJMeI3xiTb0GvTnQoosC5DBcmd5ktU5TATFQdYOyM" />
+  </programme>
+  <programme start="20261121193000 +0000" stop="20261121210000 +0000" channel="sport1_israel">
+    <title lang="he">ישיר! אולפן הפרמיירליג</title>
+    <desc lang="he">שידור ישיר: כדורגל. אולפן מיוחד בהפקת הפרמיירליג לסיכום משחקי היום באנגליה.</desc>
+    <icon src="https://iptv-epg.org/images/WSSsTHbhd2NFO_OGdH6gJSCIrqWvh8wP6KOFwg7b0TsRUS2YxttEeDgx56tqyVRJMeI3xiTb0GvTnQoosC5DBcmd5ktU5TATFQdYOyM" />
+  </programme>
+  <programme start="20261121210000 +0000" stop="20261121212000 +0000" channel="sport1_israel">
+    <title lang="he">ניוקאסל - ארסנל</title>
+    <desc lang="he">שידור חוזר: כדורגל. ניוקאסל - ארסנל, הליגה האנגלית, מחזור 11, עונת 2026/27. המוליכה, ארסנל, מחפשת ניצחון 6 ברציפות בדהירה לעוד תואר. שדר: רמי ויץ, פרשן: אבי נמני.</desc>
+    <icon src="https://iptv-epg.org/images/WSSsTHbhd2NFO_OGdH6gJSCIrqWvh8wP6KOFwg7b0TsRUS2YxttEeDgx56tqyVRJMeI3xiTb0GvTnQoosC5DBcmd5ktU5TATFQdYOyM" />
+  </programme>
+  <programme start="20261121212000 +0000" stop="20261121214000 +0000" channel="sport1_israel">
+    <title lang="he">מנ. סיטי - פולהאם</title>
+    <desc lang="he">שידור חוזר: כדורגל. מנצ&apos;סטר סיטי - פולהאם, הליגה האנגלית, מחזור 11, עונת 2026/27. אחרי 3 הפסדים רצופים, הסיטיזנס ינסו להשיג ניצחון. שדר: דור הופמן, פרשן: אסף כהן.</desc>
+    <icon src="https://iptv-epg.org/images/WSSsTHbhd2NFO_OGdH6gJSCIrqWvh8wP6KOFwg7b0TsRUS2YxttEeDgx56tqyVRJMeI3xiTb0GvTnQoosC5DBcmd5ktU5TATFQdYOyM" />
+  </programme>
+  <programme start="20261121214000 +0000" stop="20261121233000 +0000" channel="sport1_israel">
+    <title lang="he">צ&apos;לסי - לידס</title>
+    <desc lang="he">שידור חוזר: כדורגל. צ&apos;לסי - לידס, הליגה האנגלית, מחזור 11, עונת 2026/27. הבלוז רוצים מקום בטופ 4, לידס תנסה להתקרב לחלק העליון. שדר: יורם ארבל, פרשן: גילי ורמוט.</desc>
+    <icon src="https://iptv-epg.org/images/WSSsTHbhd2NFO_OGdH6gJSCIrqWvh8wP6KOFwg7b0TsRUS2YxttEeDgx56tqyVRJMeI3xiTb0GvTnQoosC5DBcmd5ktU5TATFQdYOyM" />
+  </programme>
+  <programme start="20261121233000 +0000" stop="20261122012000 +0000" channel="sport1_israel">
+    <title lang="he">לאציו - לצ&apos;ה (גאנדלמן)</title>
+    <desc lang="he">שידור חוזר: כדורגל. לאציו - לצ&apos;ה, ליגה איטלקית, מחזור 12, עונת 2026/27. לצ&apos;ה של גאנדלמן תנסה להפתיע את המוליכה לאציו. שדר: רון ברבש, פרשן: מוטי איוניר.</desc>
+    <icon src="https://iptv-epg.org/images/WSSsTHbhd2NFO_OGdH6gJSCIrqWvh8wP6KOFwg7b0TsRUS2YxttEeDgx56tqyVRJMeI3xiTb0GvTnQoosC5DBcmd5ktU5TATFQdYOyM" />
+  </programme>
+  <programme start="20261122012000 +0000" stop="20261122031000 +0000" channel="sport1_israel">
+    <title lang="he">גמר: את. מיניירו - בוקה ג&apos;וניורס</title>
+    <desc lang="he">שידור חוזר: כדורגל. אתלטיקו מיניירו - בוקה ג&apos;וניורס, גמר גביע הסודאמריקנה 2026. בוקה חולמת על תואר יבשתי, מיניירו רוצה זכייה ראשונה בתואר. שדר: שלומי דניאלי, פרשן: יהודה…</desc>
+    <icon src="https://iptv-epg.org/images/WSSsTHbhd2NFO_OGdH6gJSCIrqWvh8wP6KOFwg7b0TsRUS2YxttEeDgx56tqyVRJMeI3xiTb0GvTnQoosC5DBcmd5ktU5TATFQdYOyM" />
+  </programme>
+  <programme start="20261122031000 +0000" stop="20261122033000 +0000" channel="sport1_israel">
+    <title lang="he">ב. מינכן - קלן</title>
+    <desc lang="he">שידור חוזר: כדורגל. באיירן מינכן - קלן, הליגה הגרמנית, מחזור 10, עונת 2026/27. באיירן חוזרת מפגרת הנבחרות ורוצה לשמור על הפסגה. שדר: מאור דייטש, פרשן: זאביק זלצר.</desc>
+    <icon src="https://iptv-epg.org/images/WSSsTHbhd2NFO_OGdH6gJSCIrqWvh8wP6KOFwg7b0TsRUS2YxttEeDgx56tqyVRJMeI3xiTb0GvTnQoosC5DBcmd5ktU5TATFQdYOyM" />
+  </programme>
+  <programme start="20261122033000 +0000" stop="20261122040000 +0000" channel="sport1_israel">
+    <title lang="he">הראיון הגדול: אלכס סקוט</title>
+    <desc lang="he">שידור חוזר: כדורגל. קשר בורנמות, אלכס סקוט, בשיחה על מסעו בפרמיירליג, העלייה במדי בורנמות ועד ההגעה לנבחרת אנגליה.</desc>
+    <icon src="https://iptv-epg.org/images/WSSsTHbhd2NFO_OGdH6gJSCIrqWvh8wP6KOFwg7b0TsRUS2YxttEeDgx56tqyVRJMeI3xiTb0GvTnQoosC5DBcmd5ktU5TATFQdYOyM" />
+  </programme>
+  <programme start="20261122040000 +0000" stop="20261122042000 +0000" channel="sport1_israel">
+    <title lang="he">ניוקאסל - ארסנל</title>
+    <desc lang="he">שידור חוזר: כדורגל. ניוקאסל - ארסנל, הליגה האנגלית, מחזור 11, עונת 2026/27. המוליכה, ארסנל, מחפשת ניצחון 6 ברציפות בדהירה לעוד תואר. שדר: רמי ויץ, פרשן: אבי נמני.</desc>
+    <icon src="https://iptv-epg.org/images/WSSsTHbhd2NFO_OGdH6gJSCIrqWvh8wP6KOFwg7b0TsRUS2YxttEeDgx56tqyVRJMeI3xiTb0GvTnQoosC5DBcmd5ktU5TATFQdYOyM" />
+  </programme>
+  <programme start="20261122042000 +0000" stop="20261122044000 +0000" channel="sport1_israel">
+    <title lang="he">גמר: את. מיניירו - בוקה ג&apos;וניורס</title>
+    <desc lang="he">שידור חוזר: כדורגל. אתלטיקו מיניירו - בוקה ג&apos;וניורס, גמר גביע הסודאמריקנה 2026. בוקה חולמת על תואר יבשתי, מיניירו רוצה זכייה ראשונה בתואר. שדר: שלומי דניאלי, פרשן: יהודה…</desc>
+    <icon src="https://iptv-epg.org/images/WSSsTHbhd2NFO_OGdH6gJSCIrqWvh8wP6KOFwg7b0TsRUS2YxttEeDgx56tqyVRJMeI3xiTb0GvTnQoosC5DBcmd5ktU5TATFQdYOyM" />
+  </programme>
+  <programme start="20261122044000 +0000" stop="20261122050000 +0000" channel="sport1_israel">
+    <title lang="he">מנ. סיטי - פולהאם</title>
+    <desc lang="he">שידור חוזר: כדורגל. מנצ&apos;סטר סיטי - פולהאם, הליגה האנגלית, מחזור 11, עונת 2026/27. אחרי 3 הפסדים רצופים, הסיטיזנס ינסו להשיג ניצחון. שדר: דור הופמן, פרשן: אסף כהן.</desc>
+    <icon src="https://iptv-epg.org/images/WSSsTHbhd2NFO_OGdH6gJSCIrqWvh8wP6KOFwg7b0TsRUS2YxttEeDgx56tqyVRJMeI3xiTb0GvTnQoosC5DBcmd5ktU5TATFQdYOyM" />
+  </programme>
+  <programme start="20261122050000 +0000" stop="20261122052000 +0000" channel="sport1_israel">
+    <title lang="he">ב. מינכן - קלן</title>
+    <desc lang="he">שידור חוזר: כדורגל. באיירן מינכן - קלן, הליגה הגרמנית, מחזור 10, עונת 2026/27. באיירן חוזרת מפגרת הנבחרות ורוצה לשמור על הפסגה. שדר: מאור דייטש, פרשן: זאביק זלצר.</desc>
+    <icon src="https://iptv-epg.org/images/WSSsTHbhd2NFO_OGdH6gJSCIrqWvh8wP6KOFwg7b0TsRUS2YxttEeDgx56tqyVRJMeI3xiTb0GvTnQoosC5DBcmd5ktU5TATFQdYOyM" />
+  </programme>
+  <programme start="20261122052000 +0000" stop="20261122054000 +0000" channel="sport1_israel">
+    <title lang="he">גמר: את. מיניירו - בוקה ג&apos;וניורס</title>
+    <desc lang="he">שידור חוזר: כדורגל. אתלטיקו מיניירו - בוקה ג&apos;וניורס, גמר גביע הסודאמריקנה 2026. בוקה חולמת על תואר יבשתי, מיניירו רוצה זכייה ראשונה בתואר. שדר: שלומי דניאלי, פרשן: יהודה…</desc>
+    <icon src="https://iptv-epg.org/images/WSSsTHbhd2NFO_OGdH6gJSCIrqWvh8wP6KOFwg7b0TsRUS2YxttEeDgx56tqyVRJMeI3xiTb0GvTnQoosC5DBcmd5ktU5TATFQdYOyM" />
+  </programme>
+  <programme start="20261122054000 +0000" stop="20261122060000 +0000" channel="sport1_israel">
+    <title lang="he">לאציו - לצ&apos;ה (גאנדלמן)</title>
+    <desc lang="he">שידור חוזר: כדורגל. לאציו - לצ&apos;ה, ליגה איטלקית, מחזור 12, עונת 2026/27. לצ&apos;ה של גאנדלמן תנסה להפתיע את המוליכה לאציו. שדר: רון ברבש, פרשן: מוטי איוניר.</desc>
+    <icon src="https://iptv-epg.org/images/WSSsTHbhd2NFO_OGdH6gJSCIrqWvh8wP6KOFwg7b0TsRUS2YxttEeDgx56tqyVRJMeI3xiTb0GvTnQoosC5DBcmd5ktU5TATFQdYOyM" />
+  </programme>
+  <programme start="20261122060000 +0000" stop="20261122062000 +0000" channel="sport1_israel">
+    <title lang="he">ב. מינכן - קלן</title>
+    <desc lang="he">שידור חוזר: כדורגל. באיירן מינכן - קלן, הליגה הגרמנית, מחזור 10, עונת 2026/27. באיירן חוזרת מפגרת הנבחרות ורוצה לשמור על הפסגה. שדר: מאור דייטש, פרשן: זאביק זלצר.</desc>
+    <icon src="https://iptv-epg.org/images/WSSsTHbhd2NFO_OGdH6gJSCIrqWvh8wP6KOFwg7b0TsRUS2YxttEeDgx56tqyVRJMeI3xiTb0GvTnQoosC5DBcmd5ktU5TATFQdYOyM" />
+  </programme>
+  <programme start="20261122062000 +0000" stop="20261122064000 +0000" channel="sport1_israel">
+    <title lang="he">ניוקאסל - ארסנל</title>
+    <desc lang="he">שידור חוזר: כדורגל. ניוקאסל - ארסנל, הליגה האנגלית, מחזור 11, עונת 2026/27. המוליכה, ארסנל, מחפשת ניצחון 6 ברציפות בדהירה לעוד תואר. שדר: רמי ויץ, פרשן: אבי נמני.</desc>
+    <icon src="https://iptv-epg.org/images/WSSsTHbhd2NFO_OGdH6gJSCIrqWvh8wP6KOFwg7b0TsRUS2YxttEeDgx56tqyVRJMeI3xiTb0GvTnQoosC5DBcmd5ktU5TATFQdYOyM" />
+  </programme>
+  <programme start="20261122064000 +0000" stop="20261122084000 +0000" channel="sport1_israel">
+    <title lang="he">ATP: חצי גמר טורניר גמר הסבב</title>
+    <desc lang="he">שידור חוזר: טניס. חצי גמר טורניר גמר הסבב 2026 עם בכירי סבב ה-ATP. שדר: אור סוכריאנו פרשן: הראל לוי.</desc>
+    <icon src="https://iptv-epg.org/images/WSSsTHbhd2NFO_OGdH6gJSCIrqWvh8wP6KOFwg7b0TsRUS2YxttEeDgx56tqyVRJMeI3xiTb0GvTnQoosC5DBcmd5ktU5TATFQdYOyM" />
+  </programme>
+  <programme start="20261122084000 +0000" stop="20261122090000 +0000" channel="sport1_israel">
+    <title lang="he">גמר: את. מיניירו - בוקה ג&apos;וניורס</title>
+    <desc lang="he">שידור חוזר: כדורגל. אתלטיקו מיניירו - בוקה ג&apos;וניורס, גמר גביע הסודאמריקנה 2026. בוקה חולמת על תואר יבשתי, מיניירו רוצה זכייה ראשונה בתואר. שדר: שלומי דניאלי, פרשן: יהודה…</desc>
+    <icon src="https://iptv-epg.org/images/WSSsTHbhd2NFO_OGdH6gJSCIrqWvh8wP6KOFwg7b0TsRUS2YxttEeDgx56tqyVRJMeI3xiTb0GvTnQoosC5DBcmd5ktU5TATFQdYOyM" />
+  </programme>
+  <programme start="20261122090000 +0000" stop="20261122092000 +0000" channel="sport1_israel">
+    <title lang="he">לאציו - לצ&apos;ה (גאנדלמן)</title>
+    <desc lang="he">שידור חוזר: כדורגל. לאציו - לצ&apos;ה, ליגה איטלקית, מחזור 12, עונת 2026/27. לצ&apos;ה של גאנדלמן תנסה להפתיע את המוליכה לאציו. שדר: רון ברבש, פרשן: מוטי איוניר.</desc>
+    <icon src="https://iptv-epg.org/images/WSSsTHbhd2NFO_OGdH6gJSCIrqWvh8wP6KOFwg7b0TsRUS2YxttEeDgx56tqyVRJMeI3xiTb0GvTnQoosC5DBcmd5ktU5TATFQdYOyM" />
+  </programme>
+  <programme start="20261122092000 +0000" stop="20261122111000 +0000" channel="sport1_israel">
+    <title lang="he">טוטנהאם - איפסוויץ&apos;</title>
+    <desc lang="he">שידור חוזר: כדורגל. טוטנהאם - איפסוויץ&apos;, הליגה האנגלית, מחזור 11, עונת 2026/27. טוטנהאם ודה זרבי מנסים להיצמד לחלק העליון, איפסוויץ&apos; לא רוצה להסתבך.</desc>
+    <icon src="https://iptv-epg.org/images/WSSsTHbhd2NFO_OGdH6gJSCIrqWvh8wP6KOFwg7b0TsRUS2YxttEeDgx56tqyVRJMeI3xiTb0GvTnQoosC5DBcmd5ktU5TATFQdYOyM" />
+  </programme>
+  <programme start="20261122111000 +0000" stop="20261122113000 +0000" channel="sport1_israel">
+    <title lang="he">מנ. סיטי - פולהאם</title>
+    <desc lang="he">שידור חוזר: כדורגל. מנצ&apos;סטר סיטי - פולהאם, הליגה האנגלית, מחזור 11, עונת 2026/27. אחרי 3 הפסדים רצופים, הסיטיזנס ינסו להשיג ניצחון. שדר: דור הופמן, פרשן: אסף כהן.</desc>
+    <icon src="https://iptv-epg.org/images/WSSsTHbhd2NFO_OGdH6gJSCIrqWvh8wP6KOFwg7b0TsRUS2YxttEeDgx56tqyVRJMeI3xiTb0GvTnQoosC5DBcmd5ktU5TATFQdYOyM" />
+  </programme>
+  <programme start="20261122113000 +0000" stop="20261122120000 +0000" channel="sport1_israel">
+    <title lang="he">צ&apos;לסי - לידס</title>
+    <desc lang="he">שידור חוזר: כדורגל. צ&apos;לסי - לידס, הליגה האנגלית, מחזור 11, עונת 2026/27. הבלוז רוצים מקום בטופ 4, לידס תנסה להתקרב לחלק העליון. שדר: יורם ארבל, פרשן: גילי ורמוט.</desc>
+    <icon src="https://iptv-epg.org/images/WSSsTHbhd2NFO_OGdH6gJSCIrqWvh8wP6KOFwg7b0TsRUS2YxttEeDgx56tqyVRJMeI3xiTb0GvTnQoosC5DBcmd5ktU5TATFQdYOyM" />
+  </programme>
+  <programme start="20261122120000 +0000" stop="20261122123000 +0000" channel="sport1_israel">
+    <title lang="he">קובנטרי - קריסטל פאלאס (חלאילי)</title>
+    <desc lang="he">שידור חוזר: כדורגל. קובנטרי - קריסטל פאלאס, הליגה האנגלית, מחזור 11, עונת 2026/27. פאלאס של חלאילי מתארחת אצל קונבטרי ולמפארד, כששתי הקבוצות חייבות נקודות בתחתית.</desc>
+    <icon src="https://iptv-epg.org/images/WSSsTHbhd2NFO_OGdH6gJSCIrqWvh8wP6KOFwg7b0TsRUS2YxttEeDgx56tqyVRJMeI3xiTb0GvTnQoosC5DBcmd5ktU5TATFQdYOyM" />
+  </programme>
+  <programme start="20261122123000 +0000" stop="20261122125000 +0000" channel="sport1_israel">
+    <title lang="he">ניוקאסל - ארסנל</title>
+    <desc lang="he">שידור חוזר: כדורגל. ניוקאסל - ארסנל, הליגה האנגלית, מחזור 11, עונת 2026/27. המוליכה, ארסנל, מחפשת ניצחון 6 ברציפות בדהירה לעוד תואר. שדר: רמי ויץ, פרשן: אבי נמני.</desc>
+    <icon src="https://iptv-epg.org/images/WSSsTHbhd2NFO_OGdH6gJSCIrqWvh8wP6KOFwg7b0TsRUS2YxttEeDgx56tqyVRJMeI3xiTb0GvTnQoosC5DBcmd5ktU5TATFQdYOyM" />
+  </programme>
+  <programme start="20261122125000 +0000" stop="20261122130000 +0000" channel="sport1_israel">
+    <title lang="he">וואלה! תיקתקנו - מבזק ספורט</title>
+    <desc lang="he">שידור חוזר: וואלה! תיקתקנו - האירועים והרגעים הבולטים ששודרו ביממה האחרונה בחבילת הערוצים של ספורט 1.</desc>
+    <icon src="https://iptv-epg.org/images/WSSsTHbhd2NFO_OGdH6gJSCIrqWvh8wP6KOFwg7b0TsRUS2YxttEeDgx56tqyVRJMeI3xiTb0GvTnQoosC5DBcmd5ktU5TATFQdYOyM" />
+  </programme>
+  <programme start="20261122130000 +0000" stop="20261122135000 +0000" channel="sport1_israel">
+    <title lang="he">ישיר! אולפן הפרמיירליג</title>
+    <desc lang="he">שידור ישיר: כדורגל. אולפן מיוחד בהפקת הפרמיירליג לקראת משחקי היום באנגליה.</desc>
+    <icon src="https://iptv-epg.org/images/WSSsTHbhd2NFO_OGdH6gJSCIrqWvh8wP6KOFwg7b0TsRUS2YxttEeDgx56tqyVRJMeI3xiTb0GvTnQoosC5DBcmd5ktU5TATFQdYOyM" />
+  </programme>
+  <programme start="20261122135000 +0000" stop="20261122160000 +0000" channel="sport1_israel">
+    <title lang="he">ישיר! האל - ברייטון</title>
+    <desc lang="he">שידור ישיר: כדורגל. האל - ברייטון, הליגה האנגלית, מחזור 11, עונת 2026/27. ברייטון, שבמקום ה-2, תנסה להמשיך בעונה הנהדרת עם ניצחון על האל. שדר: לירן שכנר, פרשן: אורי אוזן.</desc>
+    <icon src="https://iptv-epg.org/images/WSSsTHbhd2NFO_OGdH6gJSCIrqWvh8wP6KOFwg7b0TsRUS2YxttEeDgx56tqyVRJMeI3xiTb0GvTnQoosC5DBcmd5ktU5TATFQdYOyM" />
+  </programme>
+  <programme start="20261122160000 +0000" stop="20261122161500 +0000" channel="sport1_israel">
+    <title lang="he">בין ישירים</title>
+    <desc lang="he">שידור חוזר: מתכוננים לשידורים ישירים ונזכרים ברגעים הבולטים מהשבת שהייתה.</desc>
+    <icon src="https://iptv-epg.org/images/WSSsTHbhd2NFO_OGdH6gJSCIrqWvh8wP6KOFwg7b0TsRUS2YxttEeDgx56tqyVRJMeI3xiTb0GvTnQoosC5DBcmd5ktU5TATFQdYOyM" />
+  </programme>
+  <programme start="20261122161500 +0000" stop="20261122183000 +0000" channel="sport1_israel">
+    <title lang="he">ישיר! ליברפול - מנ. יונייטד</title>
+    <desc lang="he">שידור ישיר: כדורגל. ליברפול - מנצ&apos;סטר יונייטד, הליגה האנגלית, מחזור 11, עונת 2026/27. הקרב הגדול של אנגליה. פוצ&apos;טינו, בבכורה כמאמן יונייטד, ינסה להשיג ניצחון על היריבה…</desc>
+    <icon src="https://iptv-epg.org/images/WSSsTHbhd2NFO_OGdH6gJSCIrqWvh8wP6KOFwg7b0TsRUS2YxttEeDgx56tqyVRJMeI3xiTb0GvTnQoosC5DBcmd5ktU5TATFQdYOyM" />
+  </programme>
+  <programme start="20261122183000 +0000" stop="20261122200000 +0000" channel="sport1_israel">
+    <title lang="he">ישיר! אולפן הפרמיירליג</title>
+    <desc lang="he">שידור ישיר: כדורגל. אולפן מיוחד בהפקת הפרמיירליג לסיכום משחקי היום באנגליה.</desc>
+    <icon src="https://iptv-epg.org/images/WSSsTHbhd2NFO_OGdH6gJSCIrqWvh8wP6KOFwg7b0TsRUS2YxttEeDgx56tqyVRJMeI3xiTb0GvTnQoosC5DBcmd5ktU5TATFQdYOyM" />
+  </programme>
+  <programme start="20261121042000 +0000" stop="20261121044000 +0000" channel="sport2_israel">
+    <title lang="he">ספרד - אנגליה</title>
+    <desc lang="he">שידור חוזר: כדורגל. ספרד - אנגליה, ליגת האומות, דרג א&apos;, בית 4, מחזור 6, עונת 2026/27. אלופת העולם רוצה להשלים דאבל על האנגלים בקרב ענק. שדר: לירן שכנר, פרשן: אורי אוזן.</desc>
+    <icon src="https://iptv-epg.org/images/aBNXWTZbLrGttNpWDT1GM91uHAb9-8KeOF__Ant01QaMotMPHe3APF2JoLpCv3NzyDyN6Ckc33nyZ-b8Iov-8hfuUc83fQ7uJ0Q4bm0" />
+  </programme>
+  <programme start="20261121044000 +0000" stop="20261121063000 +0000" channel="sport2_israel">
+    <title lang="he">ב. מינכן - קלן</title>
+    <desc lang="he">שידור חוזר: כדורגל. באיירן מינכן - קלן, הליגה הגרמנית, מחזור 10, עונת 2026/27. באיירן חוזרת מפגרת הנבחרות ורוצה לשמור על הפסגה. שדר: מאור דייטש, פרשן: זאביק זלצר.</desc>
+    <icon src="https://iptv-epg.org/images/aBNXWTZbLrGttNpWDT1GM91uHAb9-8KeOF__Ant01QaMotMPHe3APF2JoLpCv3NzyDyN6Ckc33nyZ-b8Iov-8hfuUc83fQ7uJ0Q4bm0" />
+  </programme>
+  <programme start="20261121063000 +0000" stop="20261121082000 +0000" channel="sport2_israel">
+    <title lang="he">ספרד - אנגליה</title>
+    <desc lang="he">שידור חוזר: כדורגל. ספרד - אנגליה, ליגת האומות, דרג א&apos;, בית 4, מחזור 6, עונת 2026/27. אלופת העולם רוצה להשלים דאבל על האנגלים בקרב ענק. שדר: לירן שכנר, פרשן: אורי אוזן.</desc>
+    <icon src="https://iptv-epg.org/images/aBNXWTZbLrGttNpWDT1GM91uHAb9-8KeOF__Ant01QaMotMPHe3APF2JoLpCv3NzyDyN6Ckc33nyZ-b8Iov-8hfuUc83fQ7uJ0Q4bm0" />
+  </programme>
+  <programme start="20261121082000 +0000" stop="20261121102000 +0000" channel="sport2_israel">
+    <title lang="he">ATP, טורניר גמר הסבב: זברב - פיס</title>
+    <desc lang="he">שידור חוזר: טניס. אלכס זברב - ארתור פיס. בכירי סבב ה-ATP נפגשים בטורניר גמר הסבב 2026. שדר: ענבל מנור, פרשן: הראל לוי.</desc>
+    <icon src="https://iptv-epg.org/images/aBNXWTZbLrGttNpWDT1GM91uHAb9-8KeOF__Ant01QaMotMPHe3APF2JoLpCv3NzyDyN6Ckc33nyZ-b8Iov-8hfuUc83fQ7uJ0Q4bm0" />
+  </programme>
+  <programme start="20261121102000 +0000" stop="20261121105000 +0000" channel="sport2_israel">
+    <title lang="he">סיפורי הפרמיירליג</title>
+    <desc lang="he">שידור חוזר: כדורגל. קשר העבר, נמניה מאטיץ&apos;, נזכר תקופה שלו בצ&apos;לסי ובמנצ&apos;סטר יונייטד, המסע, האתגרים וההתבססות שלו ברמות הגבוהות.</desc>
+    <icon src="https://iptv-epg.org/images/aBNXWTZbLrGttNpWDT1GM91uHAb9-8KeOF__Ant01QaMotMPHe3APF2JoLpCv3NzyDyN6Ckc33nyZ-b8Iov-8hfuUc83fQ7uJ0Q4bm0" />
+  </programme>
+  <programme start="20261121105000 +0000" stop="20261121110500 +0000" channel="sport2_israel">
+    <title lang="he">מנ. יונייטד - אסטון וילה</title>
+    <desc lang="he">שידור חוזר: כדורגל. מנצ&apos;סטר יונייטד - אסטון וילה, הליגה האנגלית, מחזור 10, עונת 2026/27. יונייטד צמודה לקו האדום אחרי 6 משחקים ללא ניצחון וחייבת לעצור את הרצף השלילי.…</desc>
+    <icon src="https://iptv-epg.org/images/aBNXWTZbLrGttNpWDT1GM91uHAb9-8KeOF__Ant01QaMotMPHe3APF2JoLpCv3NzyDyN6Ckc33nyZ-b8Iov-8hfuUc83fQ7uJ0Q4bm0" />
+  </programme>
+  <programme start="20261121110500 +0000" stop="20261121115500 +0000" channel="sport2_israel">
+    <title lang="he">מדברים פנטזי</title>
+    <desc lang="he">שידור חוזר: פודקאסט הפנטזי של ספורט 1. שחר איוואן, מיכאל זנדברג ועומר אפל עם כל העדכונים החשובים בעולם הפנטזי, החילופים הנכונים וההרכבים המדויקים לקראת עוד חץ ירוק.</desc>
+    <icon src="https://iptv-epg.org/images/aBNXWTZbLrGttNpWDT1GM91uHAb9-8KeOF__Ant01QaMotMPHe3APF2JoLpCv3NzyDyN6Ckc33nyZ-b8Iov-8hfuUc83fQ7uJ0Q4bm0" />
+  </programme>
+  <programme start="20261121115500 +0000" stop="20261121122500 +0000" channel="sport2_israel">
+    <title lang="he">לקראת המחזור בליגה האנגלית</title>
+    <desc lang="he">שידור חוזר: כדורגל. לקראת המחזור ה-11 בליגה האנגלית.</desc>
+    <icon src="https://iptv-epg.org/images/aBNXWTZbLrGttNpWDT1GM91uHAb9-8KeOF__Ant01QaMotMPHe3APF2JoLpCv3NzyDyN6Ckc33nyZ-b8Iov-8hfuUc83fQ7uJ0Q4bm0" />
+  </programme>
+  <programme start="20261121122500 +0000" stop="20261121143000 +0000" channel="sport2_israel">
+    <title lang="he">ישיר! מילוול - ק.פ.ר</title>
+    <desc lang="he">שידור ישיר: כדורגל. מילוול - ק.פ.ר, צ&apos;מפיונשיפ, מחזור 16, עונת 2026/27. דרבי לונדוני בין ק.פ.ר שרוצה מקום בפלייאוף למילוול, שמנסה לא להסתבך בתחתית. שדר: ענבל מנור. פרשן:…</desc>
+    <icon src="https://iptv-epg.org/images/aBNXWTZbLrGttNpWDT1GM91uHAb9-8KeOF__Ant01QaMotMPHe3APF2JoLpCv3NzyDyN6Ckc33nyZ-b8Iov-8hfuUc83fQ7uJ0Q4bm0" />
+  </programme>
+  <programme start="20261121143000 +0000" stop="20261121145000 +0000" channel="sport2_israel">
+    <title lang="he">בין ישירים</title>
+    <desc lang="he">שידור חוזר: מתכוננים לעוד שבת גדולה של שידורים ישירים ונזכרים ברגעים הבולטים מהשבוע שהיה.</desc>
+    <icon src="https://iptv-epg.org/images/aBNXWTZbLrGttNpWDT1GM91uHAb9-8KeOF__Ant01QaMotMPHe3APF2JoLpCv3NzyDyN6Ckc33nyZ-b8Iov-8hfuUc83fQ7uJ0Q4bm0" />
+  </programme>
+  <programme start="20261121145000 +0000" stop="20261121165500 +0000" channel="sport2_israel">
+    <title lang="he">ישיר! צ&apos;לסי - לידס</title>
+    <desc lang="he">שידור ישיר: כדורגל. צ&apos;לסי - לידס, הליגה האנגלית, מחזור 11, עונת 2026/27. הבלוז רוצים מקום בטופ 4, לידס תנסה להתקרב לחלק העליון. שדר: יורם ארבל, פרשן: גילי ורמוט.</desc>
+    <icon src="https://iptv-epg.org/images/aBNXWTZbLrGttNpWDT1GM91uHAb9-8KeOF__Ant01QaMotMPHe3APF2JoLpCv3NzyDyN6Ckc33nyZ-b8Iov-8hfuUc83fQ7uJ0Q4bm0" />
+  </programme>
+  <programme start="20261121165500 +0000" stop="20261121190000 +0000" channel="sport2_israel">
+    <title lang="he">ישיר! פארמה - רומא</title>
+    <desc lang="he">שידור ישיר: כדורגל. פארמה - רומא, ליגה איטלקית, מחזור 12, עונת 2026/27. רומא, שצמודה לפסגה, מחפשת ניצחון 4 ברציפות. שדר: רון ברבש, פרשן: מוטי איוניר.</desc>
+    <icon src="https://iptv-epg.org/images/aBNXWTZbLrGttNpWDT1GM91uHAb9-8KeOF__Ant01QaMotMPHe3APF2JoLpCv3NzyDyN6Ckc33nyZ-b8Iov-8hfuUc83fQ7uJ0Q4bm0" />
+  </programme>
+  <programme start="20261121190000 +0000" stop="20261121192000 +0000" channel="sport2_israel">
+    <title lang="he">לאציו - לצ&apos;ה (גאנדלמן)</title>
+    <desc lang="he">שידור חוזר: כדורגל. לאציו - לצ&apos;ה, ליגה איטלקית, מחזור 12, עונת 2026/27. לצ&apos;ה של גאנדלמן תנסה להפתיע את המוליכה לאציו. שדר: רון ברבש, פרשן: מוטי איוניר.</desc>
+    <icon src="https://iptv-epg.org/images/aBNXWTZbLrGttNpWDT1GM91uHAb9-8KeOF__Ant01QaMotMPHe3APF2JoLpCv3NzyDyN6Ckc33nyZ-b8Iov-8hfuUc83fQ7uJ0Q4bm0" />
+  </programme>
+  <programme start="20261121192000 +0000" stop="20261121213000 +0000" channel="sport2_israel">
+    <title lang="he">ישיר! פלמיירס - פלמנגו</title>
+    <desc lang="he">שידור ישיר: כדורגל. פלמיירס - פלמנגו, הברזילראו, מחזור 36, עונת 2026. המוליכה, פלמנגו, מול השנייה, פלמיירס, במשחק העונה שיכול להכריע את גורל האליפות. שדר: שלומי דניאלי,…</desc>
+    <icon src="https://iptv-epg.org/images/aBNXWTZbLrGttNpWDT1GM91uHAb9-8KeOF__Ant01QaMotMPHe3APF2JoLpCv3NzyDyN6Ckc33nyZ-b8Iov-8hfuUc83fQ7uJ0Q4bm0" />
+  </programme>
+  <programme start="20261121213000 +0000" stop="20261121215000 +0000" channel="sport2_israel">
+    <title lang="he">לאציו - לצ&apos;ה (גאנדלמן)</title>
+    <desc lang="he">שידור חוזר: כדורגל. לאציו - לצ&apos;ה, ליגה איטלקית, מחזור 12, עונת 2026/27. לצ&apos;ה של גאנדלמן תנסה להפתיע את המוליכה לאציו. שדר: רון ברבש, פרשן: מוטי איוניר.</desc>
+    <icon src="https://iptv-epg.org/images/aBNXWTZbLrGttNpWDT1GM91uHAb9-8KeOF__Ant01QaMotMPHe3APF2JoLpCv3NzyDyN6Ckc33nyZ-b8Iov-8hfuUc83fQ7uJ0Q4bm0" />
+  </programme>
+  <programme start="20261121215000 +0000" stop="20261121234000 +0000" channel="sport2_israel">
+    <title lang="he">פארמה - רומא</title>
+    <desc lang="he">שידור חוזר: כדורגל. פארמה - רומא, ליגה איטלקית, מחזור 12, עונת 2026/27. רומא, שצמודה לפסגה, מחפשת ניצחון 4 ברציפות. שדר: רון ברבש, פרשן: מוטי איוניר.</desc>
+    <icon src="https://iptv-epg.org/images/aBNXWTZbLrGttNpWDT1GM91uHAb9-8KeOF__Ant01QaMotMPHe3APF2JoLpCv3NzyDyN6Ckc33nyZ-b8Iov-8hfuUc83fQ7uJ0Q4bm0" />
+  </programme>
+  <programme start="20261121234000 +0000" stop="20261122013000 +0000" channel="sport2_israel">
+    <title lang="he">חגיגה אנגלית</title>
+    <desc lang="he">שידור חוזר: כדורגל. חגיגה אנגלית ע&apos;&apos;ג טוטנהאם - איפסוויץ&apos; וקובנטרי - קריסטל פאלאס של חלאילי ועדכונים משאר המגרשים, הליגה האנגלית, מחזור 11, עונת 2026/27. שדר: דור הופמן,…</desc>
+    <icon src="https://iptv-epg.org/images/aBNXWTZbLrGttNpWDT1GM91uHAb9-8KeOF__Ant01QaMotMPHe3APF2JoLpCv3NzyDyN6Ckc33nyZ-b8Iov-8hfuUc83fQ7uJ0Q4bm0" />
+  </programme>
+  <programme start="20261122013000 +0000" stop="20261122032000 +0000" channel="sport2_israel">
+    <title lang="he">פלמיירס - פלמנגו</title>
+    <desc lang="he">שידור חוזר: כדורגל. פלמיירס - פלמנגו, הברזילראו, מחזור 36, עונת 2026. המוליכה, פלמנגו, מול השנייה, פלמיירס, במשחק העונה שיכול להכריע את גורל האליפות. שדר: שלומי דניאלי,…</desc>
+    <icon src="https://iptv-epg.org/images/aBNXWTZbLrGttNpWDT1GM91uHAb9-8KeOF__Ant01QaMotMPHe3APF2JoLpCv3NzyDyN6Ckc33nyZ-b8Iov-8hfuUc83fQ7uJ0Q4bm0" />
+  </programme>
+  <programme start="20261122032000 +0000" stop="20261122034000 +0000" channel="sport2_israel">
+    <title lang="he">לאציו - לצ&apos;ה (גאנדלמן)</title>
+    <desc lang="he">שידור חוזר: כדורגל. לאציו - לצ&apos;ה, ליגה איטלקית, מחזור 12, עונת 2026/27. לצ&apos;ה של גאנדלמן תנסה להפתיע את המוליכה לאציו. שדר: רון ברבש, פרשן: מוטי איוניר.</desc>
+    <icon src="https://iptv-epg.org/images/aBNXWTZbLrGttNpWDT1GM91uHAb9-8KeOF__Ant01QaMotMPHe3APF2JoLpCv3NzyDyN6Ckc33nyZ-b8Iov-8hfuUc83fQ7uJ0Q4bm0" />
+  </programme>
+  <programme start="20261122034000 +0000" stop="20261122040000 +0000" channel="sport2_israel">
+    <title lang="he">ניוקאסל - ארסנל</title>
+    <desc lang="he">שידור חוזר: כדורגל. ניוקאסל - ארסנל, הליגה האנגלית, מחזור 11, עונת 2026/27. המוליכה, ארסנל, מחפשת ניצחון 6 ברציפות בדהירה לעוד תואר. שדר: רמי ויץ, פרשן: אבי נמני.</desc>
+    <icon src="https://iptv-epg.org/images/aBNXWTZbLrGttNpWDT1GM91uHAb9-8KeOF__Ant01QaMotMPHe3APF2JoLpCv3NzyDyN6Ckc33nyZ-b8Iov-8hfuUc83fQ7uJ0Q4bm0" />
+  </programme>
+  <programme start="20261122040000 +0000" stop="20261122042000 +0000" channel="sport2_israel">
+    <title lang="he">מנ. סיטי - פולהאם</title>
+    <desc lang="he">שידור חוזר: כדורגל. מנצ&apos;סטר סיטי - פולהאם, הליגה האנגלית, מחזור 11, עונת 2026/27. אחרי 3 הפסדים רצופים, הסיטיזנס ינסו להשיג ניצחון. שדר: דור הופמן, פרשן: אסף כהן.</desc>
+    <icon src="https://iptv-epg.org/images/aBNXWTZbLrGttNpWDT1GM91uHAb9-8KeOF__Ant01QaMotMPHe3APF2JoLpCv3NzyDyN6Ckc33nyZ-b8Iov-8hfuUc83fQ7uJ0Q4bm0" />
+  </programme>
+  <programme start="20261122042000 +0000" stop="20261122044000 +0000" channel="sport2_israel">
+    <title lang="he">לאציו - לצ&apos;ה (גאנדלמן)</title>
+    <desc lang="he">שידור חוזר: כדורגל. לאציו - לצ&apos;ה, ליגה איטלקית, מחזור 12, עונת 2026/27. לצ&apos;ה של גאנדלמן תנסה להפתיע את המוליכה לאציו. שדר: רון ברבש, פרשן: מוטי איוניר.</desc>
+    <icon src="https://iptv-epg.org/images/aBNXWTZbLrGttNpWDT1GM91uHAb9-8KeOF__Ant01QaMotMPHe3APF2JoLpCv3NzyDyN6Ckc33nyZ-b8Iov-8hfuUc83fQ7uJ0Q4bm0" />
+  </programme>
+  <programme start="20261122044000 +0000" stop="20261122050000 +0000" channel="sport2_israel">
+    <title lang="he">ניוקאסל - ארסנל</title>
+    <desc lang="he">שידור חוזר: כדורגל. ניוקאסל - ארסנל, הליגה האנגלית, מחזור 11, עונת 2026/27. המוליכה, ארסנל, מחפשת ניצחון 6 ברציפות בדהירה לעוד תואר. שדר: רמי ויץ, פרשן: אבי נמני.</desc>
+    <icon src="https://iptv-epg.org/images/aBNXWTZbLrGttNpWDT1GM91uHAb9-8KeOF__Ant01QaMotMPHe3APF2JoLpCv3NzyDyN6Ckc33nyZ-b8Iov-8hfuUc83fQ7uJ0Q4bm0" />
+  </programme>
+  <programme start="20261122050000 +0000" stop="20261122052000 +0000" channel="sport2_israel">
+    <title lang="he">מנ. סיטי - פולהאם</title>
+    <desc lang="he">שידור חוזר: כדורגל. מנצ&apos;סטר סיטי - פולהאם, הליגה האנגלית, מחזור 11, עונת 2026/27. אחרי 3 הפסדים רצופים, הסיטיזנס ינסו להשיג ניצחון. שדר: דור הופמן, פרשן: אסף כהן.</desc>
+    <icon src="https://iptv-epg.org/images/aBNXWTZbLrGttNpWDT1GM91uHAb9-8KeOF__Ant01QaMotMPHe3APF2JoLpCv3NzyDyN6Ckc33nyZ-b8Iov-8hfuUc83fQ7uJ0Q4bm0" />
+  </programme>
+  <programme start="20261122052000 +0000" stop="20261122054000 +0000" channel="sport2_israel">
+    <title lang="he">לאציו - לצ&apos;ה (גאנדלמן)</title>
+    <desc lang="he">שידור חוזר: כדורגל. לאציו - לצ&apos;ה, ליגה איטלקית, מחזור 12, עונת 2026/27. לצ&apos;ה של גאנדלמן תנסה להפתיע את המוליכה לאציו. שדר: רון ברבש, פרשן: מוטי איוניר.</desc>
+    <icon src="https://iptv-epg.org/images/aBNXWTZbLrGttNpWDT1GM91uHAb9-8KeOF__Ant01QaMotMPHe3APF2JoLpCv3NzyDyN6Ckc33nyZ-b8Iov-8hfuUc83fQ7uJ0Q4bm0" />
+  </programme>
+  <programme start="20261122054000 +0000" stop="20261122060000 +0000" channel="sport2_israel">
+    <title lang="he">ניוקאסל - ארסנל</title>
+    <desc lang="he">שידור חוזר: כדורגל. ניוקאסל - ארסנל, הליגה האנגלית, מחזור 11, עונת 2026/27. המוליכה, ארסנל, מחפשת ניצחון 6 ברציפות בדהירה לעוד תואר. שדר: רמי ויץ, פרשן: אבי נמני.</desc>
+    <icon src="https://iptv-epg.org/images/aBNXWTZbLrGttNpWDT1GM91uHAb9-8KeOF__Ant01QaMotMPHe3APF2JoLpCv3NzyDyN6Ckc33nyZ-b8Iov-8hfuUc83fQ7uJ0Q4bm0" />
+  </programme>
+  <programme start="20261122060000 +0000" stop="20261122062000 +0000" channel="sport2_israel">
+    <title lang="he">גמר: את. מיניירו - בוקה ג&apos;וניורס</title>
+    <desc lang="he">שידור חוזר: כדורגל. אתלטיקו מיניירו - בוקה ג&apos;וניורס, גמר גביע הסודאמריקנה 2026. בוקה חולמת על תואר יבשתי, מיניירו רוצה זכייה ראשונה בתואר. שדר: שלומי דניאלי, פרשן: יהודה…</desc>
+    <icon src="https://iptv-epg.org/images/aBNXWTZbLrGttNpWDT1GM91uHAb9-8KeOF__Ant01QaMotMPHe3APF2JoLpCv3NzyDyN6Ckc33nyZ-b8Iov-8hfuUc83fQ7uJ0Q4bm0" />
+  </programme>
+  <programme start="20261122062000 +0000" stop="20261122081000 +0000" channel="sport2_israel">
+    <title lang="he">חגיגה אנגלית</title>
+    <desc lang="he">שידור חוזר: כדורגל. חגיגה אנגלית (טוטנהאם - איפסוויץ&apos;), הליגה האנגלית, מחזור 11, עונת 2026/27. שתי הקבוצות מגיעות אחרי הפסד, ועדכונים משאר המגרשים. שדר: דור הופמן, פרשן:…</desc>
+    <icon src="https://iptv-epg.org/images/aBNXWTZbLrGttNpWDT1GM91uHAb9-8KeOF__Ant01QaMotMPHe3APF2JoLpCv3NzyDyN6Ckc33nyZ-b8Iov-8hfuUc83fQ7uJ0Q4bm0" />
+  </programme>
+  <programme start="20261122081000 +0000" stop="20261122095500 +0000" channel="sport2_israel">
+    <title lang="he">פארמה - רומא</title>
+    <desc lang="he">שידור חוזר: כדורגל. פארמה - רומא, ליגה איטלקית, מחזור 12, עונת 2026/27. רומא, שצמודה לפסגה, מחפשת ניצחון 4 ברציפות. שדר: רון ברבש, פרשן: מוטי איוניר.</desc>
+    <icon src="https://iptv-epg.org/images/aBNXWTZbLrGttNpWDT1GM91uHAb9-8KeOF__Ant01QaMotMPHe3APF2JoLpCv3NzyDyN6Ckc33nyZ-b8Iov-8hfuUc83fQ7uJ0Q4bm0" />
+  </programme>
+  <programme start="20261122095500 +0000" stop="20261122114500 +0000" channel="sport2_israel">
+    <title lang="he">פאוק סלוניקי - אריס סלוניקי</title>
+    <desc lang="he">שידור חוזר: כדורסל. פאוק סלוניקי - אריס סלוניקי, כדורסל יווני, מחזור 8, עונת 2026/27. הדרבי הגדול של סלוניקי, אריס מול פאוק בקרב על הפסגה. שדר: ענבל מנור, פרשן: צביקה…</desc>
+    <icon src="https://iptv-epg.org/images/aBNXWTZbLrGttNpWDT1GM91uHAb9-8KeOF__Ant01QaMotMPHe3APF2JoLpCv3NzyDyN6Ckc33nyZ-b8Iov-8hfuUc83fQ7uJ0Q4bm0" />
+  </programme>
+  <programme start="20261122114500 +0000" stop="20261122115500 +0000" channel="sport2_israel">
+    <title lang="he">וואלה! תיקתקנו - מבזק ספורט</title>
+    <desc lang="he">שידור חוזר: וואלה! תיקתקנו - האירועים והרגעים הבולטים ששודרו ביממה האחרונה בחבילת הערוצים של ספורט 1.</desc>
+    <icon src="https://iptv-epg.org/images/aBNXWTZbLrGttNpWDT1GM91uHAb9-8KeOF__Ant01QaMotMPHe3APF2JoLpCv3NzyDyN6Ckc33nyZ-b8Iov-8hfuUc83fQ7uJ0Q4bm0" />
+  </programme>
+  <programme start="20261122115500 +0000" stop="20261122135500 +0000" channel="sport2_israel">
+    <title lang="he">ישיר! ברנלי - בלקבורן</title>
+    <desc lang="he">שידור ישיר: כדורגל. ברנלי - בלקבורן, צ&apos;מפיונשיפ, מחזור 16, עונת 2026/27. ברנלי חייבת נקודות כדי לנסות לעלות מעל לקו האדום.</desc>
+    <icon src="https://iptv-epg.org/images/aBNXWTZbLrGttNpWDT1GM91uHAb9-8KeOF__Ant01QaMotMPHe3APF2JoLpCv3NzyDyN6Ckc33nyZ-b8Iov-8hfuUc83fQ7uJ0Q4bm0" />
+  </programme>
+  <programme start="20261122135500 +0000" stop="20261122160000 +0000" channel="sport2_israel">
+    <title lang="he">ישיר! סאסואולו - גנואה</title>
+    <desc lang="he">שידור ישיר: כדורגל. סאסואולו - גנואה, ליגה איטלקית, מחזור 11, עונת 2026/27. סאסואולו מנסה להתרחק מהקו האדום, גנואה לא רוצה להסתבך.</desc>
+    <icon src="https://iptv-epg.org/images/aBNXWTZbLrGttNpWDT1GM91uHAb9-8KeOF__Ant01QaMotMPHe3APF2JoLpCv3NzyDyN6Ckc33nyZ-b8Iov-8hfuUc83fQ7uJ0Q4bm0" />
+  </programme>
+  <programme start="20261122160000 +0000" stop="20261122161500 +0000" channel="sport2_israel">
+    <title lang="he">צ&apos;לסי - לידס</title>
+    <desc lang="he">שידור חוזר: כדורגל. צ&apos;לסי - לידס, הליגה האנגלית, מחזור 11, עונת 2026/27. הבלוז רוצים מקום בטופ 4, לידס תנסה להתקרב לחלק העליון. שדר: יורם ארבל, פרשן: גילי ורמוט.</desc>
+    <icon src="https://iptv-epg.org/images/aBNXWTZbLrGttNpWDT1GM91uHAb9-8KeOF__Ant01QaMotMPHe3APF2JoLpCv3NzyDyN6Ckc33nyZ-b8Iov-8hfuUc83fQ7uJ0Q4bm0" />
+  </programme>
+  <programme start="20261122161500 +0000" stop="20261122163500 +0000" channel="sport2_israel">
+    <title lang="he">לאציו - לצ&apos;ה (גאנדלמן)</title>
+    <desc lang="he">שידור חוזר: כדורגל. לאציו - לצ&apos;ה, ליגה איטלקית, מחזור 12, עונת 2026/27. לצ&apos;ה של גאנדלמן תנסה להפתיע את המוליכה לאציו. שדר: רון ברבש, פרשן: מוטי איוניר.</desc>
+    <icon src="https://iptv-epg.org/images/aBNXWTZbLrGttNpWDT1GM91uHAb9-8KeOF__Ant01QaMotMPHe3APF2JoLpCv3NzyDyN6Ckc33nyZ-b8Iov-8hfuUc83fQ7uJ0Q4bm0" />
+  </programme>
+  <programme start="20261122163500 +0000" stop="20261122165500 +0000" channel="sport2_israel">
+    <title lang="he">הזווית המקצועית - מילאן מול אינטר</title>
+    <desc lang="he">שידור חוזר: כדורגל. סקירה מיוחדת הכוללת ניתוחים טקטיים במשחק המרכזי של הליגה האיטלקית לעונת 2026/27. והפעם: הדרבי של מילאנו, מילאן מול אינטר.</desc>
+    <icon src="https://iptv-epg.org/images/aBNXWTZbLrGttNpWDT1GM91uHAb9-8KeOF__Ant01QaMotMPHe3APF2JoLpCv3NzyDyN6Ckc33nyZ-b8Iov-8hfuUc83fQ7uJ0Q4bm0" />
+  </programme>
+  <programme start="20261122165500 +0000" stop="20261122190000 +0000" channel="sport2_israel">
+    <title lang="he">ישיר! מילאן - פרוזינונה</title>
+    <desc lang="he">שידור ישיר: כדורגל. מילאן - פרוזינונה, ליגה איטלקית, מחזור 11, עונת 2026/27. הרוסונרי רוצים ניצחון 3 ברציפות ופוגשים את הפתעת העונה, פרוזינונה. שדר: שלומי דניאלי, פרשן:…</desc>
+    <icon src="https://iptv-epg.org/images/aBNXWTZbLrGttNpWDT1GM91uHAb9-8KeOF__Ant01QaMotMPHe3APF2JoLpCv3NzyDyN6Ckc33nyZ-b8Iov-8hfuUc83fQ7uJ0Q4bm0" />
+  </programme>
+  <programme start="20261122190000 +0000" stop="20261122205000 +0000" channel="sport2_israel">
+    <title lang="he">ליברפול - מנ. יונייטד</title>
+    <desc lang="he">שידור חוזר: כדורגל. ליברפול - מנצ&apos;סטר יונייטד, הליגה האנגלית, מחזור 11, עונת 2026/27. הקרב הגדול של אנגליה. פוצ&apos;טינו, בבכורה כמאמן יונייטד, ינסה להשיג ניצחון על היריבה…</desc>
+    <icon src="https://iptv-epg.org/images/aBNXWTZbLrGttNpWDT1GM91uHAb9-8KeOF__Ant01QaMotMPHe3APF2JoLpCv3NzyDyN6Ckc33nyZ-b8Iov-8hfuUc83fQ7uJ0Q4bm0" />
+  </programme>
+  <programme start="20261121040000 +0000" stop="20261121055000 +0000" channel="sport3_israel">
+    <title lang="he">רוסטוק - ה. י-ם</title>
+    <desc lang="he">שידור חוזר: כדורסל. רוסטוק - הפועל ירושלים, היורוקאפ, בית 1, מחזור 8, עונת 2026/27. האדומים פייבוריטים לעוד ניצחון מול יריבה מגרמניה. שדר: דור הופמן, פרשן: שי האוזמן.</desc>
+    <icon src="https://iptv-epg.org/images/MRpVAwkt-0aLAcyuxlVUnQWaOzMe4IrYIKxyV3zGbSxfsJpUAiDRPb9mSHF_-ttub8xgs79cHZwRevuY3RG1tftUu6RBl205lkP_360" />
+  </programme>
+  <programme start="20261121055000 +0000" stop="20261121073500 +0000" channel="sport3_israel">
+    <title lang="he">אריס סלוניקי - אולימפיאקוס</title>
+    <desc lang="he">שידור חוזר: כדורסל. אריס סלוניקי - אולימפיאקוס, כדורסל יווני, מחזור 7, עונת 2026/27. אולימפיאקוס בקרב צמרת מול יריבת ירושלים ביורוקאפ, אריס. שדר: אורי לוי, פרשן: צביקה…</desc>
+    <icon src="https://iptv-epg.org/images/MRpVAwkt-0aLAcyuxlVUnQWaOzMe4IrYIKxyV3zGbSxfsJpUAiDRPb9mSHF_-ttub8xgs79cHZwRevuY3RG1tftUu6RBl205lkP_360" />
+  </programme>
+  <programme start="20261121073500 +0000" stop="20261121102500 +0000" channel="sport3_israel">
+    <title lang="he">אריס סלוניקי - לה מאן משולב</title>
+    <desc lang="he">שידור חוזר: כדורסל. מפגש בין יריבות הפ. ירושלים אריס ללה מאן ועדכונים ממהפגש בין מנרסה לפאוק, היורוקאפ, בית 1, מחזור 8, עונת 2026/27. שדר: שימי ששון פרשן: מאיר טפירו.</desc>
+    <icon src="https://iptv-epg.org/images/MRpVAwkt-0aLAcyuxlVUnQWaOzMe4IrYIKxyV3zGbSxfsJpUAiDRPb9mSHF_-ttub8xgs79cHZwRevuY3RG1tftUu6RBl205lkP_360" />
+  </programme>
+  <programme start="20261121102500 +0000" stop="20261121110000 +0000" channel="sport3_israel">
+    <title lang="he">אחיות תאומות: הקשר של בורנמות ומילאן</title>
+    <desc lang="he">שידור חוזר: מסע דרך חקר ההיסטוריה של בורנמות&apos; והקשר המיוחד שלה עם מילאן, שאת צבעיה האייקוניים האדום-שחורים אימץ המועדון האנגלי בשנת 1970.</desc>
+    <icon src="https://iptv-epg.org/images/MRpVAwkt-0aLAcyuxlVUnQWaOzMe4IrYIKxyV3zGbSxfsJpUAiDRPb9mSHF_-ttub8xgs79cHZwRevuY3RG1tftUu6RBl205lkP_360" />
+  </programme>
+  <programme start="20261121110000 +0000" stop="20261121130000 +0000" channel="sport3_israel">
+    <title lang="he">ATP: טורניר גמר הסבב</title>
+    <desc lang="he">שידור חוזר: טניס. בכירי סבב ה-ATP נפגשים בטורניר גמר הסבב 2026. שדר: אור סוכריאנו, פרשן: נועם אוקון.</desc>
+    <icon src="https://iptv-epg.org/images/MRpVAwkt-0aLAcyuxlVUnQWaOzMe4IrYIKxyV3zGbSxfsJpUAiDRPb9mSHF_-ttub8xgs79cHZwRevuY3RG1tftUu6RBl205lkP_360" />
+  </programme>
+  <programme start="20261121130000 +0000" stop="20261121133000 +0000" channel="sport3_israel">
+    <title lang="he">סיפורי הפרמיירליג</title>
+    <desc lang="he">שידור חוזר: כדורגל. קשר העבר, נמניה מאטיץ&apos;, נזכר תקופה שלו בצ&apos;לסי ובמנצ&apos;סטר יונייטד, המסע, האתגרים וההתבססות שלו ברמות הגבוהות.</desc>
+    <icon src="https://iptv-epg.org/images/MRpVAwkt-0aLAcyuxlVUnQWaOzMe4IrYIKxyV3zGbSxfsJpUAiDRPb9mSHF_-ttub8xgs79cHZwRevuY3RG1tftUu6RBl205lkP_360" />
+  </programme>
+  <programme start="20261121133000 +0000" stop="20261121152500 +0000" channel="sport3_israel">
+    <title lang="he">ישיר! ATP: חצי גמר טורניר גמר הסבב</title>
+    <desc lang="he">שידור ישיר: טניס. חצי גמר טורניר גמר הסבב 2026 עם בכירי סבב ה-ATP. שדר: אור סוכריאנו פרשן: הראל לוי.</desc>
+    <icon src="https://iptv-epg.org/images/MRpVAwkt-0aLAcyuxlVUnQWaOzMe4IrYIKxyV3zGbSxfsJpUAiDRPb9mSHF_-ttub8xgs79cHZwRevuY3RG1tftUu6RBl205lkP_360" />
+  </programme>
+  <programme start="20261121152500 +0000" stop="20261121174000 +0000" channel="sport3_israel">
+    <title lang="he">ישיר! פאוק סלוניקי - אריס סלוניקי</title>
+    <desc lang="he">שידור ישיר: כדורסל. פאוק סלוניקי - אריס סלוניקי. כדורסל יווני, מחזור 8, עונת 2026/27. הדרבי הגדול של סלוניקי, אריס מול פאוק בקרב על הפסגה. שדר: ענבל מנור פרשן: צביקה שרף.</desc>
+    <icon src="https://iptv-epg.org/images/MRpVAwkt-0aLAcyuxlVUnQWaOzMe4IrYIKxyV3zGbSxfsJpUAiDRPb9mSHF_-ttub8xgs79cHZwRevuY3RG1tftUu6RBl205lkP_360" />
+  </programme>
+  <programme start="20261121174000 +0000" stop="20261121195500 +0000" channel="sport3_israel">
+    <title lang="he">ישיר! פיינורד - אקסלסיור</title>
+    <desc lang="he">שידור ישיר: כדורגל. פיינורד - אקסלסיור. הליגה ההולנדית, מחזור 12, עונת 2026/27. אחרי שאיבדה את הפסגה, פיינורד תנסה להשיג 3 נק&apos; בדרבי קטן מול אקסלסיור. שדר: מוטי חביב…</desc>
+    <icon src="https://iptv-epg.org/images/MRpVAwkt-0aLAcyuxlVUnQWaOzMe4IrYIKxyV3zGbSxfsJpUAiDRPb9mSHF_-ttub8xgs79cHZwRevuY3RG1tftUu6RBl205lkP_360" />
+  </programme>
+  <programme start="20261121195500 +0000" stop="20261121220000 +0000" channel="sport3_israel">
+    <title lang="he">ישיר! ארחנטינוס - אינדפנדיינטה</title>
+    <desc lang="he">שידור ישיר: כדורגל. ארחנטינוס - אינדפנדיינטה. מאבק על הכרטיס לחצי גמר הפלייאוף של הליגה הארגנטינאית, עונת 2026/27. שדר: יניב רבינוביץ&apos; פרשן: יהודה ארם.</desc>
+    <icon src="https://iptv-epg.org/images/MRpVAwkt-0aLAcyuxlVUnQWaOzMe4IrYIKxyV3zGbSxfsJpUAiDRPb9mSHF_-ttub8xgs79cHZwRevuY3RG1tftUu6RBl205lkP_360" />
+  </programme>
+  <programme start="20261121220000 +0000" stop="20261121222000 +0000" channel="sport3_israel">
+    <title lang="he">ניוקאסל - ארסנל</title>
+    <desc lang="he">שידור חוזר: כדורגל. ניוקאסל - ארסנל, הליגה האנגלית, מחזור 11, עונת 2026/27. המוליכה, ארסנל, מחפשת ניצחון 6 ברציפות בדהירה לעוד תואר. שדר: רמי ויץ, פרשן: אבי נמני.</desc>
+    <icon src="https://iptv-epg.org/images/MRpVAwkt-0aLAcyuxlVUnQWaOzMe4IrYIKxyV3zGbSxfsJpUAiDRPb9mSHF_-ttub8xgs79cHZwRevuY3RG1tftUu6RBl205lkP_360" />
+  </programme>
+  <programme start="20261121222000 +0000" stop="20261122004500 +0000" channel="sport3_israel">
+    <title lang="he">ישיר! גמר: את. מיניירו - בוקה ג&apos;וניורס</title>
+    <desc lang="he">שידור ישיר: כדורגל. אתלטיקו מיניירו - בוקה ג&apos;וניורס, גמר גביע הסודאמריקנה 2026. בוקה חולמת על תואר יבשתי, מיניירו רוצה זכייה ראשונה בתואר. שדר: שלומי דניאלי, פרשן: יהודה…</desc>
+    <icon src="https://iptv-epg.org/images/MRpVAwkt-0aLAcyuxlVUnQWaOzMe4IrYIKxyV3zGbSxfsJpUAiDRPb9mSHF_-ttub8xgs79cHZwRevuY3RG1tftUu6RBl205lkP_360" />
+  </programme>
+  <programme start="20261122004500 +0000" stop="20261122010500 +0000" channel="sport3_israel">
+    <title lang="he">מנ. סיטי - פולהאם</title>
+    <desc lang="he">שידור חוזר: כדורגל. מנצ&apos;סטר סיטי - פולהאם, הליגה האנגלית, מחזור 11, עונת 2026/27. אחרי 3 הפסדים רצופים, הסיטיזנס ינסו להשיג ניצחון. שדר: דור הופמן, פרשן: אסף כהן.</desc>
+    <icon src="https://iptv-epg.org/images/MRpVAwkt-0aLAcyuxlVUnQWaOzMe4IrYIKxyV3zGbSxfsJpUAiDRPb9mSHF_-ttub8xgs79cHZwRevuY3RG1tftUu6RBl205lkP_360" />
+  </programme>
+  <programme start="20261122010500 +0000" stop="20261122012500 +0000" channel="sport3_israel">
+    <title lang="he">ניוקאסל - ארסנל</title>
+    <desc lang="he">שידור חוזר: כדורגל. ניוקאסל - ארסנל, הליגה האנגלית, מחזור 11, עונת 2026/27. המוליכה, ארסנל, מחפשת ניצחון 6 ברציפות בדהירה לעוד תואר. שדר: רמי ויץ, פרשן: אבי נמני.</desc>
+    <icon src="https://iptv-epg.org/images/MRpVAwkt-0aLAcyuxlVUnQWaOzMe4IrYIKxyV3zGbSxfsJpUAiDRPb9mSHF_-ttub8xgs79cHZwRevuY3RG1tftUu6RBl205lkP_360" />
+  </programme>
+  <programme start="20261122012500 +0000" stop="20261122040000 +0000" channel="sport3_israel">
+    <title lang="he">ATP: חצי גמר טורניר גמר הסבב</title>
+    <desc lang="he">שידור חוזר: טניס. חצי גמר טורניר גמר הסבב עם בכירי סבב ה-ATP, עונת 2026/27. שדר: שרון דוידוביץ&apos; פרשן: יוני ארליך.</desc>
+    <icon src="https://iptv-epg.org/images/MRpVAwkt-0aLAcyuxlVUnQWaOzMe4IrYIKxyV3zGbSxfsJpUAiDRPb9mSHF_-ttub8xgs79cHZwRevuY3RG1tftUu6RBl205lkP_360" />
+  </programme>
+  <programme start="20261122040000 +0000" stop="20261122060000 +0000" channel="sport3_israel">
+    <title lang="he">ATP: חצי גמר טורניר גמר הסבב</title>
+    <desc lang="he">שידור חוזר: טניס. חצי גמר טורניר גמר הסבב 2026 עם בכירי סבב ה-ATP. שדר: אור סוכריאנו פרשן: הראל לוי.</desc>
+    <icon src="https://iptv-epg.org/images/MRpVAwkt-0aLAcyuxlVUnQWaOzMe4IrYIKxyV3zGbSxfsJpUAiDRPb9mSHF_-ttub8xgs79cHZwRevuY3RG1tftUu6RBl205lkP_360" />
+  </programme>
+  <programme start="20261122060000 +0000" stop="20261122062000 +0000" channel="sport3_israel">
+    <title lang="he">מנ. סיטי - פולהאם</title>
+    <desc lang="he">שידור חוזר: כדורגל. מנצ&apos;סטר סיטי - פולהאם, הליגה האנגלית, מחזור 11, עונת 2026/27. אחרי 3 הפסדים רצופים, הסיטיזנס ינסו להשיג ניצחון. שדר: דור הופמן, פרשן: אסף כהן.</desc>
+    <icon src="https://iptv-epg.org/images/MRpVAwkt-0aLAcyuxlVUnQWaOzMe4IrYIKxyV3zGbSxfsJpUAiDRPb9mSHF_-ttub8xgs79cHZwRevuY3RG1tftUu6RBl205lkP_360" />
+  </programme>
+  <programme start="20261122062000 +0000" stop="20261122064000 +0000" channel="sport3_israel">
+    <title lang="he">לאציו - לצ&apos;ה (גאנדלמן)</title>
+    <desc lang="he">שידור חוזר: כדורגל. לאציו - לצ&apos;ה, ליגה איטלקית, מחזור 12, עונת 2026/27. לצ&apos;ה של גאנדלמן תנסה להפתיע את המוליכה לאציו. שדר: רון ברבש, פרשן: מוטי איוניר.</desc>
+    <icon src="https://iptv-epg.org/images/MRpVAwkt-0aLAcyuxlVUnQWaOzMe4IrYIKxyV3zGbSxfsJpUAiDRPb9mSHF_-ttub8xgs79cHZwRevuY3RG1tftUu6RBl205lkP_360" />
+  </programme>
+  <programme start="20261122064000 +0000" stop="20261122083000 +0000" channel="sport3_israel">
+    <title lang="he">פאוק סלוניקי - אריס סלוניקי</title>
+    <desc lang="he">שידור חוזר: כדורסל. פאוק סלוניקי - אריס סלוניקי, כדורסל יווני, מחזור 8, עונת 2026/27. הדרבי הגדול של סלוניקי, אריס מול פאוק בקרב על הפסגה. שדר: ענבל מנור, פרשן: צביקה…</desc>
+    <icon src="https://iptv-epg.org/images/MRpVAwkt-0aLAcyuxlVUnQWaOzMe4IrYIKxyV3zGbSxfsJpUAiDRPb9mSHF_-ttub8xgs79cHZwRevuY3RG1tftUu6RBl205lkP_360" />
+  </programme>
+  <programme start="20261122083000 +0000" stop="20261122101500 +0000" channel="sport3_israel">
+    <title lang="he">צ&apos;לסי - לידס</title>
+    <desc lang="he">שידור חוזר: כדורגל. צ&apos;לסי - לידס, הליגה האנגלית, מחזור 11, עונת 2026/27. הבלוז רוצים מקום בטופ 4, לידס תנסה להתקרב לחלק העליון. שדר: יורם ארבל, פרשן: גילי ורמוט.</desc>
+    <icon src="https://iptv-epg.org/images/MRpVAwkt-0aLAcyuxlVUnQWaOzMe4IrYIKxyV3zGbSxfsJpUAiDRPb9mSHF_-ttub8xgs79cHZwRevuY3RG1tftUu6RBl205lkP_360" />
+  </programme>
+  <programme start="20261122101500 +0000" stop="20261122103500 +0000" channel="sport3_israel">
+    <title lang="he">ניוקאסל - ארסנל</title>
+    <desc lang="he">שידור חוזר: כדורגל. ניוקאסל - ארסנל, הליגה האנגלית, מחזור 11, עונת 2026/27. המוליכה, ארסנל, מחפשת ניצחון 6 ברציפות בדהירה לעוד תואר. שדר: רמי ויץ, פרשן: אבי נמני.</desc>
+    <icon src="https://iptv-epg.org/images/MRpVAwkt-0aLAcyuxlVUnQWaOzMe4IrYIKxyV3zGbSxfsJpUAiDRPb9mSHF_-ttub8xgs79cHZwRevuY3RG1tftUu6RBl205lkP_360" />
+  </programme>
+  <programme start="20261122103500 +0000" stop="20261122105500 +0000" channel="sport3_israel">
+    <title lang="he">מנ. סיטי - פולהאם</title>
+    <desc lang="he">שידור חוזר: כדורגל. מנצ&apos;סטר סיטי - פולהאם, הליגה האנגלית, מחזור 11, עונת 2026/27. אחרי 3 הפסדים רצופים, הסיטיזנס ינסו להשיג ניצחון. שדר: דור הופמן, פרשן: אסף כהן.</desc>
+    <icon src="https://iptv-epg.org/images/MRpVAwkt-0aLAcyuxlVUnQWaOzMe4IrYIKxyV3zGbSxfsJpUAiDRPb9mSHF_-ttub8xgs79cHZwRevuY3RG1tftUu6RBl205lkP_360" />
+  </programme>
+  <programme start="20261122105500 +0000" stop="20261122125500 +0000" channel="sport3_israel">
+    <title lang="he">ישיר! בילבאו - באסקוניה</title>
+    <desc lang="he">שידור ישיר: כדורסל. בילבאו - באסקוניה. מחזור 9, עונת 2026/27. באסקוניה פוגשת את בילבאו לדרבי באסקי, כדורסל ספרדי. שדר: שחר איוואן פרשן: אהרל&apos;ה וייסברג.</desc>
+    <icon src="https://iptv-epg.org/images/MRpVAwkt-0aLAcyuxlVUnQWaOzMe4IrYIKxyV3zGbSxfsJpUAiDRPb9mSHF_-ttub8xgs79cHZwRevuY3RG1tftUu6RBl205lkP_360" />
+  </programme>
+  <programme start="20261122125500 +0000" stop="20261122143000 +0000" channel="sport3_israel">
+    <title lang="he">ישיר! טרבזונספור - אנדולו אפס</title>
+    <desc lang="he">שידור ישיר: כדורסל. טרבזונספור - אנדולו אפס. כדורסל טורקי, מחזור 9, עונת 2026/27. אחרי ההפסד לפנר, אנדולו מנסה להתאושש ע&apos;&apos;ח טרבזונספור. שדר: רון ברבש פרשן: לייזי גורדון.</desc>
+    <icon src="https://iptv-epg.org/images/MRpVAwkt-0aLAcyuxlVUnQWaOzMe4IrYIKxyV3zGbSxfsJpUAiDRPb9mSHF_-ttub8xgs79cHZwRevuY3RG1tftUu6RBl205lkP_360" />
+  </programme>
+  <programme start="20261122143000 +0000" stop="20261122145500 +0000" channel="sport3_israel">
+    <title lang="he">גמר: את. מיניירו - בוקה ג&apos;וניורס</title>
+    <desc lang="he">שידור חוזר: כדורגל. אתלטיקו מיניירו - בוקה ג&apos;וניורס, גמר גביע הסודאמריקנה 2026. בוקה חולמת על תואר יבשתי, מיניירו רוצה זכייה ראשונה בתואר. שדר: שלומי דניאלי, פרשן: יהודה…</desc>
+    <icon src="https://iptv-epg.org/images/MRpVAwkt-0aLAcyuxlVUnQWaOzMe4IrYIKxyV3zGbSxfsJpUAiDRPb9mSHF_-ttub8xgs79cHZwRevuY3RG1tftUu6RBl205lkP_360" />
+  </programme>
+  <programme start="20261122145500 +0000" stop="20261122170000 +0000" channel="sport3_israel">
+    <title lang="he">ישיר! דרטונה - מילאנו</title>
+    <desc lang="he">שידור ישיר: כדורסל. דרטונה - מילאנו. כדורסל איטלקי, מחזור 9, עונת 2026/27. מילאנו פוגשת את יריבת הפועל ירושלים ביורוקאפ. שדר: דני דבורין פרשן: לייזי גורדון.</desc>
+    <icon src="https://iptv-epg.org/images/MRpVAwkt-0aLAcyuxlVUnQWaOzMe4IrYIKxyV3zGbSxfsJpUAiDRPb9mSHF_-ttub8xgs79cHZwRevuY3RG1tftUu6RBl205lkP_360" />
+  </programme>
+  <programme start="20261122170000 +0000" stop="20261122193000 +0000" channel="sport3_israel">
+    <title lang="he">ישיר! ATP: גמר טורניר גמר הסבב</title>
+    <desc lang="he">שידור ישיר: טניס. גמר טורניר גמר הסבב 2026 עם בכירי סבב ה-ATP. שדר: שרון דוידוביץ&apos;, פרשן: נועם אוקון.</desc>
+    <icon src="https://iptv-epg.org/images/MRpVAwkt-0aLAcyuxlVUnQWaOzMe4IrYIKxyV3zGbSxfsJpUAiDRPb9mSHF_-ttub8xgs79cHZwRevuY3RG1tftUu6RBl205lkP_360" />
+  </programme>
+  <programme start="20261121040000 +0000" stop="20261121053000 +0000" channel="sport4_israel">
+    <title lang="he">תכנית הספורט של 103FM</title>
+    <desc lang="he">שידור חוזר: תכנית הספורט של 103FM בשידור ישיר על כל ענייני הספורט החמים בארץ ובעולם.</desc>
+    <icon src="https://iptv-epg.org/images/6LbGvbwa7r9bX4mCutlbgvMIWJui8crkisx3fJUfDQvwXmOCp2WsdNKDos5ndjXbl8yvQ6jqYc1KGCTjSxYnmK-33OBX-JXhqbOVwGE" />
+  </programme>
+  <programme start="20261121053000 +0000" stop="20261121072000 +0000" channel="sport4_israel">
+    <title lang="he">פורטו - פארדס</title>
+    <desc lang="he">שידור חוזר: כדורגל. פורטו - פארדס, הגביע הפורטוגלי, עונת 2026/27. פורטו פייבוריטית ברורה מול יריבה מהליגה ה-3.</desc>
+    <icon src="https://iptv-epg.org/images/6LbGvbwa7r9bX4mCutlbgvMIWJui8crkisx3fJUfDQvwXmOCp2WsdNKDos5ndjXbl8yvQ6jqYc1KGCTjSxYnmK-33OBX-JXhqbOVwGE" />
+  </programme>
+  <programme start="20261121072000 +0000" stop="20261121075000 +0000" channel="sport4_israel">
+    <title lang="he">סיפורי הליגה האיטלקית</title>
+    <desc lang="he">שידור חוזר: מגזין הליגה האיטלקית עם הכתבות, הראיונות וכל מה שצריך לדעת במהלך עונת 2026/27.</desc>
+    <icon src="https://iptv-epg.org/images/6LbGvbwa7r9bX4mCutlbgvMIWJui8crkisx3fJUfDQvwXmOCp2WsdNKDos5ndjXbl8yvQ6jqYc1KGCTjSxYnmK-33OBX-JXhqbOVwGE" />
+  </programme>
+  <programme start="20261121075000 +0000" stop="20261121081000 +0000" channel="sport4_israel">
+    <title lang="he">ספרד - אנגליה</title>
+    <desc lang="he">שידור חוזר: כדורגל. ספרד - אנגליה, ליגת האומות, דרג א&apos;, בית 4, מחזור 6, עונת 2026/27. אלופת העולם רוצה להשלים דאבל על האנגלים בקרב ענק. שדר: לירן שכנר, פרשן: אורי אוזן.</desc>
+    <icon src="https://iptv-epg.org/images/6LbGvbwa7r9bX4mCutlbgvMIWJui8crkisx3fJUfDQvwXmOCp2WsdNKDos5ndjXbl8yvQ6jqYc1KGCTjSxYnmK-33OBX-JXhqbOVwGE" />
+  </programme>
+  <programme start="20261121081000 +0000" stop="20261121100000 +0000" channel="sport4_israel">
+    <title lang="he">גרמניה - הולנד</title>
+    <desc lang="he">שידור חוזר: כדורגל. גרמניה - הולנד, ליגת האומות, דרג א&apos;, בית 2, מחזור 6, עונת 2026/27. האורנג&apos; ינסו להבטיח מקום ברבע מול החבורה של קלופ. שדר: שרון ניסים, פרשן: זאביק…</desc>
+    <icon src="https://iptv-epg.org/images/6LbGvbwa7r9bX4mCutlbgvMIWJui8crkisx3fJUfDQvwXmOCp2WsdNKDos5ndjXbl8yvQ6jqYc1KGCTjSxYnmK-33OBX-JXhqbOVwGE" />
+  </programme>
+  <programme start="20261121100000 +0000" stop="20261121115000 +0000" channel="sport4_israel">
+    <title lang="he">ב. מינכן - קלן</title>
+    <desc lang="he">שידור חוזר: כדורגל. באיירן מינכן - קלן. הליגה הגרמנית, מחזור 10, עונת 2026/27. באיירן חוזרת מפגרת הנבחרות ורוצה לשמור על הפסגה. שדר: מאור דייטש פרשן: זאביק זלצר.</desc>
+    <icon src="https://iptv-epg.org/images/6LbGvbwa7r9bX4mCutlbgvMIWJui8crkisx3fJUfDQvwXmOCp2WsdNKDos5ndjXbl8yvQ6jqYc1KGCTjSxYnmK-33OBX-JXhqbOVwGE" />
+  </programme>
+  <programme start="20261121115000 +0000" stop="20261121140000 +0000" channel="sport4_israel">
+    <title lang="he">ישיר! וולפסבורג - הולשטיין קיל</title>
+    <desc lang="he">שידור ישיר: כדורגל. וולפסבורג - הולשטיין קיל. הליגה הגרמנית השנייה, מחזור 12, עונת 2026/27. וולפסבורג רוצה לחזור לבונדסליגה וחייבת כל ניצחון. שדר: דני דבורין פרשן: מנחם…</desc>
+    <icon src="https://iptv-epg.org/images/6LbGvbwa7r9bX4mCutlbgvMIWJui8crkisx3fJUfDQvwXmOCp2WsdNKDos5ndjXbl8yvQ6jqYc1KGCTjSxYnmK-33OBX-JXhqbOVwGE" />
+  </programme>
+  <programme start="20261121140000 +0000" stop="20261121142000 +0000" channel="sport4_israel">
+    <title lang="he">בין ישירים</title>
+    <desc lang="he">שידור חוזר: מתכוננים לעוד שבת גדולה של שידורים ישירים ונזכרים ברגעים הבולטים מהשבוע שהיה.</desc>
+    <icon src="https://iptv-epg.org/images/6LbGvbwa7r9bX4mCutlbgvMIWJui8crkisx3fJUfDQvwXmOCp2WsdNKDos5ndjXbl8yvQ6jqYc1KGCTjSxYnmK-33OBX-JXhqbOVwGE" />
+  </programme>
+  <programme start="20261121142000 +0000" stop="20261121163000 +0000" channel="sport4_israel">
+    <title lang="he">ישיר! מנשנגלאדבך - דורטמונד</title>
+    <desc lang="he">שידור ישיר: כדורגל. מנשנגלאדבך - דורטמונד, הליגה הגרמנית, מחזור 10, עונת 2026/27. דורטמונד צמודה לבאיירן בפיסגה ופייבוריטית מול האחרונה, גלדבאך. שדר: שרון ניסים, פרשן:…</desc>
+    <icon src="https://iptv-epg.org/images/6LbGvbwa7r9bX4mCutlbgvMIWJui8crkisx3fJUfDQvwXmOCp2WsdNKDos5ndjXbl8yvQ6jqYc1KGCTjSxYnmK-33OBX-JXhqbOVwGE" />
+  </programme>
+  <programme start="20261121163000 +0000" stop="20261121165000 +0000" channel="sport4_israel">
+    <title lang="he">מנ. סיטי - פולהאם</title>
+    <desc lang="he">שידור חוזר: כדורגל. מנצ&apos;סטר סיטי - פולהאם, הליגה האנגלית, מחזור 11, עונת 2026/27. אחרי 3 הפסדים רצופים, הסיטיזנס ינסו להשיג ניצחון. שדר: דור הופמן, פרשן: אסף כהן.</desc>
+    <icon src="https://iptv-epg.org/images/6LbGvbwa7r9bX4mCutlbgvMIWJui8crkisx3fJUfDQvwXmOCp2WsdNKDos5ndjXbl8yvQ6jqYc1KGCTjSxYnmK-33OBX-JXhqbOVwGE" />
+  </programme>
+  <programme start="20261121165000 +0000" stop="20261121172000 +0000" channel="sport4_israel">
+    <title lang="he">סיפורי הפרמיירליג</title>
+    <desc lang="he">שידור חוזר: כדורגל. קשר העבר, נמניה מאטיץ&apos;, נזכר תקופה שלו בצ&apos;לסי ובמנצ&apos;סטר יונייטד, המסע, האתגרים וההתבססות שלו ברמות הגבוהות.</desc>
+    <icon src="https://iptv-epg.org/images/6LbGvbwa7r9bX4mCutlbgvMIWJui8crkisx3fJUfDQvwXmOCp2WsdNKDos5ndjXbl8yvQ6jqYc1KGCTjSxYnmK-33OBX-JXhqbOVwGE" />
+  </programme>
+  <programme start="20261121172000 +0000" stop="20261121193000 +0000" channel="sport4_israel">
+    <title lang="he">ישיר! שאלקה - שטוטגרט</title>
+    <desc lang="he">שידור ישיר: כדרגל. שאלקה - שטוטגרט. שאלקה רוצה ניצחון 2 העונה, שטוטגרט תנסה להתקרב לחלק העליון, הליגה הגרמנית, מחזור 10, עונת 2026/27. שדר: שרון ניסים פרשן: זאביק זלצר.</desc>
+    <icon src="https://iptv-epg.org/images/6LbGvbwa7r9bX4mCutlbgvMIWJui8crkisx3fJUfDQvwXmOCp2WsdNKDos5ndjXbl8yvQ6jqYc1KGCTjSxYnmK-33OBX-JXhqbOVwGE" />
+  </programme>
+  <programme start="20261121193000 +0000" stop="20261121213000 +0000" channel="sport4_israel">
+    <title lang="he">ישיר! ATP: חצי גמר טורניר גמר הסבב</title>
+    <desc lang="he">שידור ישיר: טניס. חצי גמר טורניר גמר הסבב עם בכירי סבב ה-ATP, עונת 2026/27. שדר: שרון דוידוביץ&apos; פרשן: יוני ארליך.</desc>
+    <icon src="https://iptv-epg.org/images/6LbGvbwa7r9bX4mCutlbgvMIWJui8crkisx3fJUfDQvwXmOCp2WsdNKDos5ndjXbl8yvQ6jqYc1KGCTjSxYnmK-33OBX-JXhqbOVwGE" />
+  </programme>
+  <programme start="20261121213000 +0000" stop="20261121215000 +0000" channel="sport4_israel">
+    <title lang="he">ניוקאסל - ארסנל</title>
+    <desc lang="he">שידור חוזר: כדורגל. ניוקאסל - ארסנל, הליגה האנגלית, מחזור 11, עונת 2026/27. המוליכה, ארסנל, מחפשת ניצחון 6 ברציפות בדהירה לעוד תואר. שדר: רמי ויץ, פרשן: אבי נמני.</desc>
+    <icon src="https://iptv-epg.org/images/6LbGvbwa7r9bX4mCutlbgvMIWJui8crkisx3fJUfDQvwXmOCp2WsdNKDos5ndjXbl8yvQ6jqYc1KGCTjSxYnmK-33OBX-JXhqbOVwGE" />
+  </programme>
+  <programme start="20261121215000 +0000" stop="20261121221000 +0000" channel="sport4_israel">
+    <title lang="he">לאציו - לצ&apos;ה (גאנדלמן)</title>
+    <desc lang="he">שידור חוזר: כדורגל. לאציו - לצ&apos;ה, ליגה איטלקית, מחזור 12, עונת 2026/27. לצ&apos;ה של גאנדלמן תנסה להפתיע את המוליכה לאציו. שדר: רון ברבש, פרשן: מוטי איוניר.</desc>
+    <icon src="https://iptv-epg.org/images/6LbGvbwa7r9bX4mCutlbgvMIWJui8crkisx3fJUfDQvwXmOCp2WsdNKDos5ndjXbl8yvQ6jqYc1KGCTjSxYnmK-33OBX-JXhqbOVwGE" />
+  </programme>
+  <programme start="20261121221000 +0000" stop="20261122000000 +0000" channel="sport4_israel">
+    <title lang="he">פאוק סלוניקי - אריס סלוניקי</title>
+    <desc lang="he">שידור חוזר: כדורסל. פאוק סלוניקי - אריס סלוניקי. כדורסל יווני, מחזור 8, עונת 2026/27. הדרבי הגדול של סלוניקי, אריס מול פאוק בקרב על הפסגה. שדר: ענבל מנור פרשן: צביקה שרף.</desc>
+    <icon src="https://iptv-epg.org/images/6LbGvbwa7r9bX4mCutlbgvMIWJui8crkisx3fJUfDQvwXmOCp2WsdNKDos5ndjXbl8yvQ6jqYc1KGCTjSxYnmK-33OBX-JXhqbOVwGE" />
+  </programme>
+  <programme start="20261122000000 +0000" stop="20261122015000 +0000" channel="sport4_israel">
+    <title lang="he">מנ. סיטי - פולהאם</title>
+    <desc lang="he">שידור חוזר: כדורגל. מנצ&apos;סטר סיטי - פולהאם, הליגה האנגלית, מחזור 11, עונת 2026/27. אחרי 3 הפסדים רצופים, הסיטיזנס ינסו להשיג ניצחון. שדר: דור הופמן, פרשן: אסף כהן.</desc>
+    <icon src="https://iptv-epg.org/images/6LbGvbwa7r9bX4mCutlbgvMIWJui8crkisx3fJUfDQvwXmOCp2WsdNKDos5ndjXbl8yvQ6jqYc1KGCTjSxYnmK-33OBX-JXhqbOVwGE" />
+  </programme>
+  <programme start="20261122015000 +0000" stop="20261122034000 +0000" channel="sport4_israel">
+    <title lang="he">ניוקאסל - ארסנל</title>
+    <desc lang="he">שידור חוזר: כדורגל. ניוקאסל - ארסנל, הליגה האנגלית, מחזור 11, עונת 2026/27. המוליכה, ארסנל, מחפשת ניצחון 6 ברציפות בדהירה לעוד תואר. שדר: רמי ויץ, פרשן: אבי נמני.</desc>
+    <icon src="https://iptv-epg.org/images/6LbGvbwa7r9bX4mCutlbgvMIWJui8crkisx3fJUfDQvwXmOCp2WsdNKDos5ndjXbl8yvQ6jqYc1KGCTjSxYnmK-33OBX-JXhqbOVwGE" />
+  </programme>
+  <programme start="20261122034000 +0000" stop="20261122040000 +0000" channel="sport4_israel">
+    <title lang="he">גמר: את. מיניירו - בוקה ג&apos;וניורס</title>
+    <desc lang="he">שידור חוזר: כדורגל. אתלטיקו מיניירו - בוקה ג&apos;וניורס, גמר גביע הסודאמריקנה 2026. בוקה חולמת על תואר יבשתי, מיניירו רוצה זכייה ראשונה בתואר. שדר: שלומי דניאלי, פרשן: יהודה…</desc>
+    <icon src="https://iptv-epg.org/images/6LbGvbwa7r9bX4mCutlbgvMIWJui8crkisx3fJUfDQvwXmOCp2WsdNKDos5ndjXbl8yvQ6jqYc1KGCTjSxYnmK-33OBX-JXhqbOVwGE" />
+  </programme>
+  <programme start="20261122040000 +0000" stop="20261122055000 +0000" channel="sport4_israel">
+    <title lang="he">טוטנהאם - איפסוויץ&apos;</title>
+    <desc lang="he">שידור חוזר: כדורגל. טוטנהאם - איפסוויץ&apos;, הליגה האנגלית, מחזור 11, עונת 2026/27. טוטנהאם ודה זרבי מנסים להיצמד לחלק העליון, איפסוויץ&apos; לא רוצה להסתבך.</desc>
+    <icon src="https://iptv-epg.org/images/6LbGvbwa7r9bX4mCutlbgvMIWJui8crkisx3fJUfDQvwXmOCp2WsdNKDos5ndjXbl8yvQ6jqYc1KGCTjSxYnmK-33OBX-JXhqbOVwGE" />
+  </programme>
+  <programme start="20261122055000 +0000" stop="20261122075000 +0000" channel="sport4_israel">
+    <title lang="he">ATP: חצי גמר טורניר גמר הסבב</title>
+    <desc lang="he">שידור חוזר: טניס. חצי גמר טורניר גמר הסבב עם בכירי סבב ה-ATP, עונת 2026/27. שדר: שרון דוידוביץ&apos; פרשן: יוני ארליך.</desc>
+    <icon src="https://iptv-epg.org/images/6LbGvbwa7r9bX4mCutlbgvMIWJui8crkisx3fJUfDQvwXmOCp2WsdNKDos5ndjXbl8yvQ6jqYc1KGCTjSxYnmK-33OBX-JXhqbOVwGE" />
+  </programme>
+  <programme start="20261122075000 +0000" stop="20261122082500 +0000" channel="sport4_israel">
+    <title lang="he">אחיות תאומות: הקשר של בורנמות ומילאן</title>
+    <desc lang="he">שידור חוזר: מסע דרך חקר ההיסטוריה של בורנמות&apos; והקשר המיוחד שלה עם מילאן, שאת צבעיה האייקוניים האדום-שחורים אימץ המועדון האנגלי בשנת 1970.</desc>
+    <icon src="https://iptv-epg.org/images/6LbGvbwa7r9bX4mCutlbgvMIWJui8crkisx3fJUfDQvwXmOCp2WsdNKDos5ndjXbl8yvQ6jqYc1KGCTjSxYnmK-33OBX-JXhqbOVwGE" />
+  </programme>
+  <programme start="20261122082500 +0000" stop="20261122101500 +0000" channel="sport4_israel">
+    <title lang="he">פלמיירס - פלמנגו</title>
+    <desc lang="he">שידור חוזר: כדורגל. פלמיירס - פלמנגו. הברזילראו, מחזור 36, עונת 2025/26. המוליכה, פלמנגו מול השנייה, פלמיירס במשחק העונה שיכול להכריע את גורל האליפות. שדר: שלומי דניאלי…</desc>
+    <icon src="https://iptv-epg.org/images/6LbGvbwa7r9bX4mCutlbgvMIWJui8crkisx3fJUfDQvwXmOCp2WsdNKDos5ndjXbl8yvQ6jqYc1KGCTjSxYnmK-33OBX-JXhqbOVwGE" />
+  </programme>
+  <programme start="20261122101500 +0000" stop="20261122121500 +0000" channel="sport4_israel">
+    <title lang="he">ATP: חצי גמר טורניר גמר הסבב</title>
+    <desc lang="he">שידור חוזר: טניס. חצי גמר טורניר גמר הסבב עם בכירי סבב ה-ATP, עונת 2026/27. שדר: שרון דוידוביץ&apos; פרשן: יוני ארליך.</desc>
+    <icon src="https://iptv-epg.org/images/6LbGvbwa7r9bX4mCutlbgvMIWJui8crkisx3fJUfDQvwXmOCp2WsdNKDos5ndjXbl8yvQ6jqYc1KGCTjSxYnmK-33OBX-JXhqbOVwGE" />
+  </programme>
+  <programme start="20261122121500 +0000" stop="20261122124500 +0000" channel="sport4_israel">
+    <title lang="he">סיפורי הפרמיירליג</title>
+    <desc lang="he">שידור חוזר: כדורגל. סקירה מיוחדת על עלייתה של טוטנהאם תחת פיקודו של מאמן ארה&apos;&apos;ב, מאוריסיו פוצ&apos;טינו.</desc>
+    <icon src="https://iptv-epg.org/images/6LbGvbwa7r9bX4mCutlbgvMIWJui8crkisx3fJUfDQvwXmOCp2WsdNKDos5ndjXbl8yvQ6jqYc1KGCTjSxYnmK-33OBX-JXhqbOVwGE" />
+  </programme>
+  <programme start="20261122124500 +0000" stop="20261122131500 +0000" channel="sport4_israel">
+    <title lang="he">קובנטרי - קריסטל פאלאס (חלאילי)</title>
+    <desc lang="he">שידור חוזר: כדורגל. קובנטרי - קריסטל פאלאס, הליגה האנגלית, מחזור 11, עונת 2026/27. פאלאס של חלאילי מתארחת אצל קונבטרי ולמפארד, כששתי הקבוצות חייבות נקודות בתחתית. שדר:…</desc>
+    <icon src="https://iptv-epg.org/images/6LbGvbwa7r9bX4mCutlbgvMIWJui8crkisx3fJUfDQvwXmOCp2WsdNKDos5ndjXbl8yvQ6jqYc1KGCTjSxYnmK-33OBX-JXhqbOVwGE" />
+  </programme>
+  <programme start="20261122131500 +0000" stop="20261122132500 +0000" channel="sport4_israel">
+    <title lang="he">וואלה! תיקתקנו - מבזק ספורט</title>
+    <desc lang="he">שידור חוזר: וואלה! תיקתקנו - האירועים והרגעים הבולטים ששודרו ביממה האחרונה בחבילת הערוצים של ספורט 1.</desc>
+    <icon src="https://iptv-epg.org/images/6LbGvbwa7r9bX4mCutlbgvMIWJui8crkisx3fJUfDQvwXmOCp2WsdNKDos5ndjXbl8yvQ6jqYc1KGCTjSxYnmK-33OBX-JXhqbOVwGE" />
+  </programme>
+  <programme start="20261122132500 +0000" stop="20261122153000 +0000" channel="sport4_israel">
+    <title lang="he">ישיר! איאקס (גלוך) - דן האג</title>
+    <desc lang="he">שידור ישיר: כדורגל. איאקס - דן האג, הליגה ההולנדית, מחזור 12, עונת 2026/27. איאקס וגלוך רוצים 3 נקודות במאבקים על הפסגה.</desc>
+    <icon src="https://iptv-epg.org/images/6LbGvbwa7r9bX4mCutlbgvMIWJui8crkisx3fJUfDQvwXmOCp2WsdNKDos5ndjXbl8yvQ6jqYc1KGCTjSxYnmK-33OBX-JXhqbOVwGE" />
+  </programme>
+  <programme start="20261122153000 +0000" stop="20261122160000 +0000" channel="sport4_israel">
+    <title lang="he">צ&apos;לסי - לידס</title>
+    <desc lang="he">שידור חוזר: כדורגל. צ&apos;לסי - לידס, הליגה האנגלית, מחזור 11, עונת 2026/27. הבלוז רוצים מקום בטופ 4, לידס תנסה להתקרב לחלק העליון. שדר: יורם ארבל, פרשן: גילי ורמוט.</desc>
+    <icon src="https://iptv-epg.org/images/6LbGvbwa7r9bX4mCutlbgvMIWJui8crkisx3fJUfDQvwXmOCp2WsdNKDos5ndjXbl8yvQ6jqYc1KGCTjSxYnmK-33OBX-JXhqbOVwGE" />
+  </programme>
+  <programme start="20261122160000 +0000" stop="20261122162500 +0000" channel="sport4_israel">
+    <title lang="he">ניוקאסל - ארסנל</title>
+    <desc lang="he">שידור חוזר: כדורגל. ניוקאסל - ארסנל, הליגה האנגלית, מחזור 11, עונת 2026/27. המוליכה, ארסנל, מחפשת ניצחון 6 ברציפות בדהירה לעוד תואר. שדר: רמי ויץ, פרשן: אבי נמני.</desc>
+    <icon src="https://iptv-epg.org/images/6LbGvbwa7r9bX4mCutlbgvMIWJui8crkisx3fJUfDQvwXmOCp2WsdNKDos5ndjXbl8yvQ6jqYc1KGCTjSxYnmK-33OBX-JXhqbOVwGE" />
+  </programme>
+  <programme start="20261122162500 +0000" stop="20261122165500 +0000" channel="sport4_israel">
+    <title lang="he">קובנטרי - קריסטל פאלאס (חלאילי)</title>
+    <desc lang="he">שידור חוזר: כדורגל. קובנטרי - קריסטל פאלאס, הליגה האנגלית, מחזור 11, עונת 2026/27. פאלאס של חלאילי מתארחת אצל קונבטרי ולמפארד, כששתי הקבוצות חייבות נקודות בתחתית. שדר:…</desc>
+    <icon src="https://iptv-epg.org/images/6LbGvbwa7r9bX4mCutlbgvMIWJui8crkisx3fJUfDQvwXmOCp2WsdNKDos5ndjXbl8yvQ6jqYc1KGCTjSxYnmK-33OBX-JXhqbOVwGE" />
+  </programme>
+  <programme start="20261122165500 +0000" stop="20261122180000 +0000" channel="sport4_israel">
+    <title lang="he">ישיר! טנריפה - ברצלונה</title>
+    <desc lang="he">שידור ישיר: כדורסל. טנריפה - ברצלונה. כדורסל ספרדי, מחזור 9, עונת 2026/27. קרב צמרת בין ה-4 בארסה לטנריפה, שבמקום השלישי. שדר: ענבל מנור פרשן: מאיר טפירו.</desc>
+    <icon src="https://iptv-epg.org/images/6LbGvbwa7r9bX4mCutlbgvMIWJui8crkisx3fJUfDQvwXmOCp2WsdNKDos5ndjXbl8yvQ6jqYc1KGCTjSxYnmK-33OBX-JXhqbOVwGE" />
+  </programme>
+  <programme start="20261122180000 +0000" stop="20261122185500 +0000" channel="sport4_israel">
+    <title lang="he">ישיר! טנריפה - ברצלונה משולב</title>
+    <desc lang="he">שידור ישיר: כדורסל. קרב צמרת בין ה-4 בארסה לטנריפה ועדכונים מהמפגש בין ריאל מדריד לבדאלונה, כדורסל ספרדי, מחזור 9, עונת 2026/27. שדר: ענבל מנור פרשן: מאיר טפירו.</desc>
+    <icon src="https://iptv-epg.org/images/6LbGvbwa7r9bX4mCutlbgvMIWJui8crkisx3fJUfDQvwXmOCp2WsdNKDos5ndjXbl8yvQ6jqYc1KGCTjSxYnmK-33OBX-JXhqbOVwGE" />
+  </programme>
+  <programme start="20261122185500 +0000" stop="20261122200000 +0000" channel="sport4_israel">
+    <title lang="he">ישיר! ר. מדריד - חובנטוד בדאלונה</title>
+    <desc lang="he">שידור ישיר: כדורסל. ריאל מדריד - חובנטוד בדאלונה, כדורסל ספרדי, מחזור 9, עונת 2026/27. הבלאנקוס ינסו להישאר היחידים עם מאזן מושלם. שדר: ענבל מנור, פרשן: מאיר טפירו.</desc>
+    <icon src="https://iptv-epg.org/images/6LbGvbwa7r9bX4mCutlbgvMIWJui8crkisx3fJUfDQvwXmOCp2WsdNKDos5ndjXbl8yvQ6jqYc1KGCTjSxYnmK-33OBX-JXhqbOVwGE" />
   </programme>
   <programme start="20261121042000 +0000" stop="20261121042500 +0000" channel="arutz_hayeladim">
     <title lang="he">לוקה והליופירוס</title>

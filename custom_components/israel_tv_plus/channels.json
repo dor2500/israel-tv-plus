@@ -848,6 +848,210 @@
     }
   },
   {
+    "id": "sport1_israel",
+    "name": "ספורט 1 HD (Sport 1)",
+    "title": "ערוץ ספורט 1 צ'רלטון שידור חי (Charlton Sport 1 HD)",
+    "category": "ספורט (Sports)",
+    "categoryEn": "sports",
+    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12249/index.m3u8",
+    "logo": "assets/logos/sport1_israel.png",
+    "badge": "HD",
+    "desc": "ספורט 1 (צ'רלטון) – ליגת העל הישראלית, הפרמייר ליג האנגלית, גביע המדינה ומשחקים מרכזיים בשידור חי",
+    "lang": "he",
+    "country": "IL",
+    "number": 38,
+    "countryHe": "ישראל",
+    "src": {
+      "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
+      "kind": "official",
+      "host": "b84203c4.ottrast.com",
+      "found": "שידור ישראלי מקורי צ'רלטון FHD",
+      "web": "❌ רק באפליקציה (הפניה בלי CORS)"
+    },
+    "fallbackUrls": [
+      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12249/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12249/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12249/index.m3u8",
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12249/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2353/index.m3u8",
+      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2353/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2353/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2353/index.m3u8",
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2353/index.m3u8"
+    ],
+    "iptv": "Sport1.il",
+    "backups": [
+      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12249/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12249/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12249/index.m3u8",
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12249/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2353/index.m3u8",
+      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2353/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2353/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2353/index.m3u8",
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2353/index.m3u8"
+    ],
+    "backupUrls": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12249/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12249/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12249/index.m3u8"
+    ],
+    "webOk": false
+  },
+  {
+    "id": "sport2_israel",
+    "name": "ספורט 2 HD (Sport 2)",
+    "title": "ערוץ ספורט 2 צ'רלטון שידור חי (Charlton Sport 2 HD)",
+    "category": "ספורט (Sports)",
+    "categoryEn": "sports",
+    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12250/index.m3u8",
+    "logo": "assets/logos/sport2_israel.png",
+    "badge": "HD",
+    "desc": "ספורט 2 (צ'רלטון) – שידורים ישירים מהליגה האנגלית, הליגה האיטלקית, בונדסליגה, ליגה אירופית וטניס",
+    "lang": "he",
+    "country": "IL",
+    "number": 39,
+    "countryHe": "ישראל",
+    "src": {
+      "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
+      "kind": "official",
+      "host": "b84203c4.ottrast.com",
+      "found": "שידור ישראלי מקורי צ'רלטון FHD",
+      "web": "❌ רק באפליקציה (הפניה בלי CORS)"
+    },
+    "fallbackUrls": [
+      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12250/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12250/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12250/index.m3u8",
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12250/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2352/index.m3u8",
+      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2352/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2352/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2352/index.m3u8",
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2352/index.m3u8"
+    ],
+    "iptv": "Sport2.il",
+    "backups": [
+      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12250/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12250/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12250/index.m3u8",
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12250/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2352/index.m3u8",
+      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2352/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2352/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2352/index.m3u8",
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2352/index.m3u8"
+    ],
+    "backupUrls": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12250/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12250/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12250/index.m3u8"
+    ],
+    "webOk": false
+  },
+  {
+    "id": "sport3_israel",
+    "name": "ספורט 3 HD (Sport 3)",
+    "title": "ערוץ ספורט 3 צ'רלטון שידור חי (Charlton Sport 3 HD)",
+    "category": "ספורט (Sports)",
+    "categoryEn": "sports",
+    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12251/index.m3u8",
+    "logo": "assets/logos/sport3_israel.png",
+    "badge": "HD",
+    "desc": "ספורט 3 (צ'רלטון) – כדורגל ישראלי ואירופי, כדורסל, אולפנים חיים ואירועי ספורט בינלאומיים",
+    "lang": "he",
+    "country": "IL",
+    "number": 40,
+    "countryHe": "ישראל",
+    "src": {
+      "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
+      "kind": "official",
+      "host": "b84203c4.ottrast.com",
+      "found": "שידור ישראלי מקורי צ'רלטון FHD",
+      "web": "❌ רק באפליקציה (הפניה בלי CORS)"
+    },
+    "fallbackUrls": [
+      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12251/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12251/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12251/index.m3u8",
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12251/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2388/index.m3u8",
+      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2388/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2388/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2388/index.m3u8",
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2388/index.m3u8"
+    ],
+    "iptv": "Sport3.il",
+    "backups": [
+      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12251/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12251/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12251/index.m3u8",
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12251/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2388/index.m3u8",
+      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2388/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2388/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2388/index.m3u8",
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2388/index.m3u8"
+    ],
+    "backupUrls": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12251/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12251/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12251/index.m3u8"
+    ],
+    "webOk": false
+  },
+  {
+    "id": "sport4_israel",
+    "name": "ספורט 4 FHD (Sport 4)",
+    "title": "ערוץ ספורט 4 צ'רלטון שידור חי (Charlton Sport 4 FHD)",
+    "category": "ספורט (Sports)",
+    "categoryEn": "sports",
+    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12252/index.m3u8",
+    "logo": "assets/logos/sport4_israel.png",
+    "badge": "FHD",
+    "desc": "ספורט 4 FHD (צ'רלטון) – שידורים חיים באיכות FHD מליגת העל, הפרמייר ליג ומפעלי אופ\"א",
+    "lang": "he",
+    "country": "IL",
+    "number": 41,
+    "countryHe": "ישראל",
+    "src": {
+      "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
+      "kind": "official",
+      "host": "b84203c4.ottrast.com",
+      "found": "שידור ישראלי מקורי צ'רלטון FHD",
+      "web": "❌ רק באפליקציה (הפניה בלי CORS)"
+    },
+    "fallbackUrls": [
+      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12252/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12252/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12252/index.m3u8",
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12252/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2389/index.m3u8",
+      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2389/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2389/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2389/index.m3u8",
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2389/index.m3u8"
+    ],
+    "iptv": "Sport4.il",
+    "backups": [
+      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12252/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12252/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12252/index.m3u8",
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12252/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2389/index.m3u8",
+      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2389/index.m3u8",
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2389/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2389/index.m3u8",
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2389/index.m3u8"
+    ],
+    "backupUrls": [
+      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12252/index.m3u8",
+      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12252/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12252/index.m3u8"
+    ],
+    "webOk": false
+  },
+  {
     "id": "arutz_hayeladim",
     "name": "ערוץ הילדים HD (המקום האמיתי)",
     "title": "ערוץ הילדים הישראלי בשידור חי HD",
@@ -9423,9 +9627,9 @@
     "fallbackUrls": [],
     "backups": [],
     "src": {
-      "by": "myradio24.com",
-      "kind": "official",
-      "host": "myradio24.com",
+      "by": "listen6.myradio24.com",
+      "kind": "restream",
+      "host": "listen6.myradio24.com",
       "found": "שידור רשמי Eli Nisman",
       "web": "✅"
     }

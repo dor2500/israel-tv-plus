@@ -1,16 +1,23 @@
 {
-  "version": "4.8.82",
-  "code": 202611211557,
-  "app": 40882,
+  "version": "4.8.83",
+  "code": 202611211710,
+  "app": 40883,
   "shell": 3,
   "date": "2026-11-21",
   "notes": [
-    "אייקון חדש ומודרני, שיפורי מהירות לממשק הטלוויזיה (TV UI), והוספת ערוצים חדשים:",
-    "אייקון חדש ומודרני לכל הפלטפורמות (Android, Android TV, Wear OS, webOS, Tizen, Windows, PWA).",
-    "שדרוג ביצועי ממשק הטלוויזיה (TVUI): קיצור זמני מעבר לחוויה חלקה וללא לאגים, הוספת סרגל HUD עם שעון חי ומיתוג, והגנה מתכנים של 18+.",
-    "רשימת ערוצים נקייה ו-100% פעילה (327 ערוצים): הסרת ערוצים מתים, הוספת תחנות ישראליות (הרשת הישראלית, רדיו א-שמס 101FM, רדיו נאס, Ze Rock, אלי ניסמן, גלי ישראל/כאן רשת ב'/ערוץ 14 גיבויי HLS) ו-18 ערוצי ילדים, טבע, דוקו וסרטים באיכות HD/FHD."
+    "שחזור וגיבוי מלא לספורט צ'רלטון (1–4) + בניית ריליס חתום ומלא:",
+    "החזרת ספורט 1, ספורט 2, ספורט 3, ספורט 4 עם שרשרת של 10 כתובות שרתים וגיבויים עצמאיים למעבר אוטומטי חלק.",
+    "חתימה ובנייה מלאה של קובצי ההתקנה (Android / Android TV / Wear OS / webOS / Tizen / Kodi / Home Assistant) ופרסום ריליס רשמי ב-GitHub כדי שכל המכשירים יוכלו להתעדכן מיידית."
   ],
   "history": [
+    {
+      "version": "4.8.83",
+      "notes": [
+        "שחזור וגיבוי מלא לספורט צ'רלטון (1–4) + בניית ריליס חתום ומלא:",
+        "החזרת ספורט 1, ספורט 2, ספורט 3, ספורט 4 עם שרשרת של 10 כתובות שרתים וגיבויים עצמאיים למעבר אוטומטי חלק.",
+        "חתימה ובנייה מלאה של קובצי ההתקנה (Android / Android TV / Wear OS / webOS / Tizen / Kodi / Home Assistant) ופרסום ריליס רשמי ב-GitHub כדי שכל המכשירים יוכלו להתעדכן מיידית."
+      ]
+    },
     {
       "version": "4.8.82",
       "notes": [
@@ -255,53 +262,44 @@
       "notes": [
         "סדרות: הוסתרו 163 סדרות שלא עבדו. ברובן הפרקים לא נטענו בכלל, ובחלק מהן כל הפרקים ניגנו את השידור החי של ערוץ אחר (למשל \"רמזור\" ניגנה את ערוץ סברי מרנן). נשארה כראמל, שכל 12 הפרקים שלה מתנגנים."
       ]
-    },
-    {
-      "version": "4.8.57",
-      "notes": [
-        "באנר תוכנית חיה ומד התקדמות בזמן אמת במסך הראשי ובאנדרואיד – מעבר על כל ערוץ מציג מיד את שם התוכנית המשודרת כעת, שעות השידור, פרוגרס-בר חי, תקציר התוכנית והתוכנית הבאה אחריה, הן בטלוויזיה ובמחשב והן בחלונית המידע באנדרואיד.",
-        "האצת זמני עלייה וחיסכון של 5.2MB בגודל ה-APK – טעינה מקבילית של קובצי הליבה ב-boot.js, פליטה מיידית של הערוצים החיים באנדרואיד לפני פענוח קטלוג ה-VOD, איחוד קאש לוח השידורים (למניעת הורדה כפולה של epg.json), וביטול כפילות קובצי הנתונים בתוך חבילת האנדרואיד.",
-        "תיקון באג עדכון לוח השידורים באנדרואיד, תיקון ה-Service Worker לעבודה מלאה אופליין, שדרוג ביצועי שרת ה-Relay (שמירת מפתח HMAC בזיכרון וכותרות מקור מותאמות), ומעבר לנוסחת versionCode מונוטונית חדשה המונעת חסימת עדכונים עתידיים.",
-        "ניקיון המאגר מ-150 סקריפטי עזר ישנים וקובצי לוג."
-      ]
     }
   ],
   "native": {
     "android": {
-      "version": "4.8.82",
-      "app": 40882,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.82/IsraelTVPlus-android.apk"
+      "version": "4.8.83",
+      "app": 40883,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.83/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "4.8.82",
-      "app": 40882,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.82/IsraelTVPlus-windows-setup.exe"
+      "version": "4.8.83",
+      "app": 40883,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.83/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "4.8.82",
-      "app": 40882,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.82/com.israeltv.plus_all.ipk",
+      "version": "4.8.83",
+      "app": 40883,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.83/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "4.8.82",
-      "app": 40882,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.82/IsraelTVPlus-tizen-project.zip"
+      "version": "4.8.83",
+      "app": 40883,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.83/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "4.8.82",
-      "app": 40882,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.82/IsraelTVPlus-macos-arm64.zip"
+      "version": "4.8.83",
+      "app": 40883,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.83/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "4.8.82",
-      "app": 40882,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.82/IsraelTVPlus-linux-x64.zip"
+      "version": "4.8.83",
+      "app": 40883,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.83/IsraelTVPlus-linux-x64.zip"
     },
     "wear": {
-      "version": "4.8.82",
-      "app": 1040882,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.82/IsraelTVPlus-wearos.apk"
+      "version": "4.8.83",
+      "app": 1040883,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.83/IsraelTVPlus-wearos.apk"
     }
   }
 }
