@@ -77,9 +77,27 @@
   // A design replaces the whole interface: its look and colours (body.design-*, style.css) and the size of the home
   // screen's cards. pitch = card + gap, row = one shelf, in rem; vert = the tabs stand in a column.
   var DESIGNS = {
-    classic: { name: 'קלאסי', help: 'המראה הרגיל: תצוגה מקדימה על כל המסך, סרגל זכוכית ומדפי ערוצים.', pitch: 19, row: 17.25 },
+    'ambient-glow': {
+      name: 'תאורה חיה - PS5 (Ambient Glow)',
+      help: 'רקע OLED שחור עמוק עם תאורת סביבה דינמית בצבע הערוץ, סרגל אייקונים מתרחב מימין (RTL) וכרטיסי זכוכית עם פס התקדמות חי.',
+      pitch: 19, row: 17.5, vert: true,
+      pal: ['#38bdf8', '#04101f', '#818cf8', '#7dd3fc', '#12263f', '#050608', '#0b0e14', '#141822']
+    },
+    'bento-grid': {
+      name: 'רשת בנטו דינמית (Bento Live Grid)',
+      help: 'אריחים א-סימטריים בולטים לערוצים המובילים עם תמונת תוכנית, תקציר ופס התקדמות חי, לצד רשת קומפקטית ובר קטגוריות מרווח.',
+      pitch: 18, row: 17,
+      pal: ['#60a5fa', '#04101f', '#a78bfa', '#93c5fd', '#172554', '#050608', '#0b0e14', '#141822']
+    },
+    'cinematic-preview': {
+      name: 'תצוגה קולנועית - Apple TV+',
+      help: 'תצוגה מקדימה חיה על חצי המסך העליון, בלוק מידע קולנועי מימין עם פס התקדמות ותקציר, ומדפי זכוכית נקיים בתחתית.',
+      pitch: 19, row: 17.25,
+      pal: ['#38bdf8', '#04101f', '#818cf8', '#7dd3fc', '#12263f', '#050608', '#0b0e14', '#141822']
+    },
+    classic: { name: 'קלאסי (Aurora)', help: 'המראה הקלאסי: תצוגה מקדימה על כל המסך, סרגל זכוכית ומדפי ערוצים.', pitch: 19, row: 17.25 },
     cinema: {
-      name: 'קולנוע', help: 'שחור וזהב: תמונה מלאה, פרטי הערוץ במרכז ושורת פוסטרים אחת בתחתית.', pitch: 12.5, row: 21,
+      name: 'קולנוע (זהב)', help: 'שחור וזהב: תמונה מלאה, פרטי הערוץ במרכז ושורת פוסטרים אחת בתחתית.', pitch: 12.5, row: 21,
       pal: ['#e8b44a', '#14100a', '#a87a1c', '#ffd98a', '#33270f', '#050403', '#100d08', '#191409']
     },
     rail: {
@@ -96,7 +114,7 @@
     }
   };
   var DEFAULTS = {
-    theme: 'oled', accent: 'auto', design: 'classic', uiScale: 1, cols: 0, hero: true, numbers: true, hints: true, perf: 'auto',
+    theme: 'oled', accent: 'auto', design: 'cinematic-preview', uiScale: 1, cols: 0, hero: true, numbers: true, hints: true, perf: 'auto',
     startCat: 'ALL', autoplay: false, hideAppOnly: false, hiddenCats: [], hidden: [], showSource: true,
     pic: 'off', aspect: 'fit', upscaleMode: 'off', sharpen: false, quality: 'max', latency: 'low', osdSec: 5, osdClock: true,
     retry: true, zap: 'category', upNext: true, upNextV2: true,
@@ -678,9 +696,11 @@
       b.classList.remove('oled', 'light', 'dark');
       b.classList.add(des.pal ? (des.light ? 'light' : 'dark') : S.theme);
       Object.keys(DESIGNS).forEach(function (d) { b.classList.remove('design-' + d); });
-      b.classList.add('design-' + (!PHONE && DESIGNS[S.design] ? S.design : 'classic'));
+      var activeDesName = !PHONE && DESIGNS[S.design] ? S.design : 'classic';
+      b.classList.add('design-' + activeDesName);
+      document.documentElement.setAttribute('data-theme', activeDesName);
       applyColors();
-      if (k === 'design' && atv && atv.built) { atvLayout(); atvMark(); }
+      if (k === 'design' && atv && atv.built) { atvBuild(); atvLayout(); atvMark(); }
     } else if (k === 'uiScale' || k === 'cols') { applyScale(); renderGridFresh(); }
     else if (k === 'hero') toggleClass(b, 'no-hero', !S.hero);
     else if (k === 'numbers') toggleClass(b, 'no-numbers', !S.numbers);
@@ -2666,9 +2686,26 @@
       it.setAttribute('data-r', r);
       it.setAttribute('data-c', i);
       var q = isApp(ch) ? 'אפליקציה' : isRadioCh(ch) ? 'רדיו' : (ch.badge || '');
-      it.innerHTML = '<div class="atv-card"><div class="atv-logo"><img alt=""><div class="mono hidden"></div></div>' +
+      var pi = !ch.isVod && !isRadioCh(ch) && !isApp(ch) ? getEpgProgramInfo(ch) : null;
+      var progPct = 0, progTitle = '', progDesc = '';
+      if (pi && pi.cur) {
+        progTitle = pi.cur[2] || '';
+        progDesc = pi.cur[3] || ch.desc || '';
+        if (pi.isLive) {
+          var dur = Math.max(1, pi.cur[1]);
+          progPct = Math.min(100, Math.max(0, Math.round(((pi.nowMin - pi.cur[0]) / dur) * 100)));
+        }
+      }
+      var isBentoFeat = (S.design === 'bento-grid' && r === 0 && i < 2);
+      it.className = 'atv-item' + (appOnly(ch) ? ' is-locked' : '') + (ch.isVod ? ' is-vod' : '') + (isBentoFeat ? ' bento-feat' : '');
+      var h = hueOf(ch.id);
+      it.innerHTML = '<div class="atv-card" style="--ch-hue:' + h + '"><div class="atv-logo"><img alt=""><div class="mono hidden"></div></div>' +
         (q ? '<span class="atv-q">' + esc(q) + '</span>' : '') + '<span class="atv-num">' + (ch.number || '') + '</span>' +
-        '<i class="atv-sheen"></i></div><div class="atv-name">' + esc(ch.name) + '</div>';
+        (isBentoFeat && progTitle ? '<div class="bento-overlay"><div class="bento-title">' + esc(progTitle) + '</div>' +
+          (progDesc ? '<div class="bento-desc">' + esc(progDesc) + '</div>' : '') + '</div>' : '') +
+        (progPct > 0 ? '<div class="atv-card-prog"><i style="width:' + progPct + '%"></i></div>' : '') +
+        '<i class="atv-sheen"></i></div><div class="atv-name">' + esc(ch.name) +
+        (progTitle && !isBentoFeat ? '<span class="atv-epg-sub"> · ' + esc(progTitle) + '</span>' : '') + '</div>';
       lazyLogo(it.querySelector('img'), it.querySelector('.mono'), ch);
       frag.appendChild(it);
       atv.items[r].push(it);
@@ -4549,9 +4586,13 @@
     var playingId = state.playing && state.playing.id;
     el.drawerCat.textContent = (state.cats[state.railIdx] || {}).name || '';
     el.drawerList.innerHTML = state.list.map(function (ch, i) {
+      var pi = !ch.isVod && !isRadioCh(ch) && !isApp(ch) ? getEpgProgramInfo(ch) : null;
+      var sub = pi && pi.cur ? pi.cur[2] : splitCat(ch.category);
       return '<div class="drawer-item' + (ch.id === playingId ? ' is-playing' : '') + '" data-i="' + i + '">' +
-        '<span class="d-num">' + ch.number + '</span><span class="d-name">' + esc(ch.name) + '</span>' +
-        (isFav(ch) ? '<span>⭐</span>' : '') + '</div>';
+        '<span class="d-num">' + ch.number + '</span>' +
+        '<div class="d-info"><span class="d-name">' + esc(ch.name) + '</span>' +
+        (sub ? '<span class="d-sub">' + esc(sub) + '</span>' : '') + '</div>' +
+        (isFav(ch) ? '<span class="d-fav">★</span>' : '') + '</div>';
     }).join('');
     el.drawer.classList.remove('hidden');
     state.stack.push(state.overlay);
@@ -5657,10 +5698,10 @@
         })()
       },
       {
-        id: 'display', ico: M3_ICONS.display, name: 'תצוגה וממשק', desc: 'ערכות נושא, סגנון עיצוב טלוויזיה, פלטת צבעים ועיצוב מסך', rows: [
-          sep('מראה וסגנון עיצוב'),
+        id: 'display', ico: M3_ICONS.display, name: 'מראה ועיצוב', desc: 'בחירת סגנון ממשק (Ambient Glow / Bento / Apple TV+), ערכות נושא וצבעים', rows: [
+          sep('מראה ועיצוב ממשק הטלוויזיה'),
           {
-            type: 'choice', tvOnly: true, label: 'עיצוב', help: (DESIGNS[S.design] || DESIGNS.classic).help, get: function () { return label(DESIGN_LIST, S.design); },
+            type: 'choice', tvOnly: true, label: 'סגנון ממשק ופריסה', help: (DESIGNS[S.design] || DESIGNS.classic).help, get: function () { return label(DESIGN_LIST, S.design); },
             step: function (st) { setSetting('design', cycle(DESIGN_LIST, S.design, st)); }
           },
           designRow(choice('theme', 'ערכת נושא', THEMES)),
