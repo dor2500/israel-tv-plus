@@ -1,0 +1,88 @@
+{
+  "metas": [
+    {
+      "id": "itv_foody_il",
+      "type": "tv",
+      "name": "30. ערוץ פודי Foody בישול ישראלי HD",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/food_channel.png",
+      "posterShape": "landscape",
+      "description": "ערוץ האוכל המוביל של ישראל: השפים הטובים בארץ, מתכונים לשישי, סדנאות אפייה ורעיונות לארוחות מהירות 24/7.\n\n📡 מקור השידור: FreeTV – השידור הרשמי (AWS CloudFront)\n✅ שידור רשמי ישיר",
+      "genres": [
+        "ערוצי אוכל",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_keshet_food",
+      "type": "tv",
+      "name": "175. ערוץ האוכל והבישול – קשת / FreeTV",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/keshet_food.png",
+      "posterShape": "landscape",
+      "description": "ערוץ האוכל והבישול של קשת ו-FreeTV 24/7 – מתכונים, שפים מובילים ומאסטר שף\n\n📡 מקור השידור: FreeTV – השידור הרשמי (AWS CloudFront)\n✅ שידור רשמי ישיר",
+      "genres": [
+        "ערוצי אוכל",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_bon_appetit_hd",
+      "type": "tv",
+      "name": "176. Bon Appétit HD – ערוץ הבישול בון אפטיט",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/bon_appetit_hd.png",
+      "posterShape": "landscape",
+      "description": "ערוץ הקולינריה והשפים הבינלאומי Bon Appétit בשידור חי 24/7\n\n📡 מקור השידור: bonappetit-samsung.amagi.tv\n⚠️ ממסר צד שלישי",
+      "genres": [
+        "ערוצי אוכל",
+        "עולם"
+      ]
+    },
+    {
+      "id": "itv_gusto_tv_hd",
+      "type": "tv",
+      "name": "177. Gusto TV FHD – ערוץ האוכל העולמי גוסטו",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/gusto_tv_hd.png",
+      "posterShape": "landscape",
+      "description": "ערוץ האוכל הבינלאומי המוביל Gusto TV – מתכונים, בישול עולמי, אפייה ואירוח ב-FHD\n\n📡 מקור השידור: e75fc053c0d2406fb74cdd71d77e1a7f.mediatailor.us-east-1.amazonaws.com\n⚠️ ממסר צד שלישי",
+      "genres": [
+        "ערוצי אוכל",
+        "עולם"
+      ]
+    },
+    {
+      "id": "itv_food_network_eu",
+      "type": "tv",
+      "name": "179. Food Network International HD",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/food_network_eu.png",
+      "posterShape": "landscape",
+      "description": "ערוץ Food Network הבינלאומי – תחרויות בישול, קונדיטוריה ומסעדות\n\n📡 מקור השידור: streaming.aurora.enhanced.live\n⚠️ ממסר צד שלישי",
+      "genres": [
+        "ערוצי אוכל",
+        "עולם"
+      ]
+    },
+    {
+      "id": "itv_tv5monde_chefs_hd",
+      "type": "tv",
+      "name": "180. TV5MONDE Chefs HD – שפים וגסטרונומיה",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/tv5monde_chefs_hd.png",
+      "posterShape": "landscape",
+      "description": "ערוץ השפים, הקונדיטוריה והגסטרונומיה הצרפתית והעולמית TV5MONDE Chefs\n\n📡 מקור השידור: tvf-tv5ch.otteravision.com\n⚠️ ממסר צד שלישי",
+      "genres": [
+        "ערוצי אוכל",
+        "עולם"
+      ]
+    },
+    {
+      "id": "itv_cooking_panda_hd",
+      "type": "tv",
+      "name": "181. Cooking Panda HD – מתכונים ובישול",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/cooking_panda_hd.png",
+      "posterShape": "landscape",
+      "description": "ערוץ הבישול Cooking Panda – מתכונים יצירתיים, מנות מהירות וטיפים למטבח 24/7\n\n📡 מקור השידור: stream-us-east-1.getpublica.com\n⚠️ ממסר צד שלישי",
+      "genres": [
+        "ערוצי אוכל",
+        "עולם"
+      ]
+    }
+  ]
+}

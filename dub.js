@@ -45,6 +45,9 @@
     duck: 0.2,               // level of the original sound while the Hebrew voice speaks (MIN_ORIGINAL..1)
     subtitles: true,
     showOriginal: false,
+    subSize: 'md',           // 'sm' | 'md' | 'lg' | 'xl'
+    subBg: 0.72,             // 0 | 0.45 | 0.72 | 0.92
+    subOffset: 0,            // seconds (-3..3) subtitle/dub timing tweak
     sync: !IS_TV,            // lip-sync mode (picture delayed); TVs usually have a single video decoder
     delay: 12
   };
@@ -105,6 +108,7 @@
     if (patch && patch.geminiKey && !patch.engine && settings.engine === 'local') patch.engine = 'gemini';
     Object.assign(settings, patch || {});
     try { localStorage.setItem(LS_KEY, JSON.stringify(settings)); } catch (e) {}
+    applySubtitleStyle();
   }
 
   function isForeign(ch) {
@@ -152,6 +156,14 @@
     if (ui.onStatus) ui.onStatus(state, text || '');
   }
 
+  const SUB_SIZE_MAP = { sm: '1.15rem', md: '1.55rem', lg: '1.95rem', xl: '2.4rem' };
+  function applySubtitleStyle() {
+    if (!subEl) return;
+    subEl.style.setProperty('--dub-sub-size', SUB_SIZE_MAP[settings.subSize] || SUB_SIZE_MAP.md);
+    const bg = typeof settings.subBg === 'number' ? settings.subBg : 0.72;
+    subEl.style.setProperty('--dub-sub-bg', 'rgba(5, 8, 17, ' + Math.max(0, Math.min(1, bg)) + ')');
+  }
+
   function ensureSubtitleEl() {
     if (subEl || !ui.container) return;
     subEl = document.createElement('div');
@@ -159,6 +171,7 @@
     subEl.innerHTML = '<div class="dub-sub-src" dir="auto"></div><div class="dub-sub-he" dir="rtl"></div>';
     subSrc = subEl.firstChild;
     subHe = subEl.lastChild;
+    applySubtitleStyle();
     ui.container.appendChild(subEl);
   }
 
@@ -532,7 +545,15 @@
           else job.resolve(m.text);
         }
       };
-      localWorker.onerror = (e) => reject(new Error(e.message || 'worker error'));
+      localWorker.onerror = (e) => {
+        const err = new Error(e.message || 'worker error');
+        for (const id in localJobs) {
+          localJobs[id].reject(err);
+          delete localJobs[id];
+        }
+        localReady = null;
+        reject(err);
+      };
       localWorker.postMessage({ type: 'load', model: LITE ? LITE_MODEL : settings.localModel, lowMem: LITE || (navigator.deviceMemory || 8) <= 4, lite: LITE });
     });
     localReady.catch(() => { localReady = null; });
@@ -655,6 +676,7 @@
 
   function playAudioUrl(sess, url, rate) {
     return new Promise((resolve) => {
+      if (!sess.alive) { resolve(); return; }
       const restore = /^https:\/\/translate\.google/.test(url) ? suppressReferrer() : () => {};
       const a = new Audio();
       a.preload = 'auto';
@@ -664,7 +686,17 @@
       sess.currentAudio = a;
       const loadTimer = setTimeout(restore, 4000);
       a.addEventListener('canplaythrough', () => { clearTimeout(loadTimer); restore(); }, { once: true });
-      const done = () => { a.onended = a.onerror = null; clearTimeout(loadTimer); restore(); resolve(); };
+      let finished = false;
+      const done = () => {
+        if (finished) return;
+        finished = true;
+        a.onended = a.onerror = null;
+        clearTimeout(loadTimer);
+        if (sess.abort && sess.abort.signal) sess.abort.signal.removeEventListener('abort', done);
+        restore();
+        resolve();
+      };
+      if (sess.abort && sess.abort.signal) sess.abort.signal.addEventListener('abort', done, { once: true });
       a.onended = done;
       a.onerror = done;
       a.play().catch(done);
@@ -800,7 +832,19 @@
       const auth = e.status === 401 || e.status === 403 || (e.status === 400 && /key/i.test(e.message));
       status('error', quota ? 'חריגה ממכסת הבקשות – ממשיך בעוד רגע…' : auth ? 'מפתח API שגוי – בדוק בהגדרות הדיבוב' : 'שגיאת תרגום: ' + e.message);
       if (auth) { stopSession(sess); return; }
-      await new Promise(r => setTimeout(r, quota ? 15000 : Math.min(10000, 1500 * sess.errors)));
+      if (sess.errors >= 5 && settings.engine !== 'local' && !NO_LOCAL) {
+        status('error', 'שגיאות חוזרות בספק הענן – עובר אוטומטית למנוע מקומי…');
+        settings.engine = 'local';
+        sess.errors = 0;
+        await new Promise(r => setTimeout(r, 1500));
+      } else if (sess.errors >= 6) {
+        status('error', 'שירות התרגום אינו זמין כרגע – השהייה זמנית (30 שנ׳)');
+        await new Promise(r => setTimeout(r, 30000));
+        sess.errors = 3;
+      } else {
+        const jitter = Math.floor(Math.random() * 600);
+        await new Promise(r => setTimeout(r, (quota ? 15000 : Math.min(12000, 1500 * sess.errors)) + jitter));
+      }
     } finally {
       sess.busy = false;
     }
@@ -829,6 +873,7 @@
       if (sess.video.paused) wait = Math.max(wait, 250);
       if (wait < -8000) { sess.speakQueue.shift(); tick(sess); return; } // far behind (seek / stall): skip the line
     }
+    if (settings.subOffset) wait += settings.subOffset * 1000;
     if (wait > 30) {
       clearTimeout(sess.ticker);
       sess.ticker = setTimeout(() => tick(sess), Math.min(wait, 1000));
@@ -852,7 +897,7 @@
     status('speaking', settings.subtitles ? 'מדבב לעברית 🔊' : 'מדבב: ' + item.he);
     showSubtitle(item.he, item.src);
     setOriginalLevel(settings.duck);
-    speak(sess, item, rate).then(() => {
+    speak(sess, item, rate).catch(() => {}).finally(() => {
       sess.speaking = false;
       if (!sess.alive) return;
       if (!sess.speakQueue.length) {

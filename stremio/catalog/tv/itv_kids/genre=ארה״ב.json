@@ -1,0 +1,52 @@
+{
+  "metas": [
+    {
+      "id": "itv_cartoon_network_hd",
+      "type": "tv",
+      "name": "368. Cartoon Network HD (קארטון נטוורק)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/cartoon_network_hd.png",
+      "posterShape": "landscape",
+      "description": "ערוץ האנימציה והסדרות המוביל בעולם Cartoon Network – שידור חי באיכות HD\n\n📡 מקור השידור: Cartoon Network Broadcast Stream",
+      "genres": [
+        "ילדים מהעולם",
+        "ארה״ב"
+      ]
+    },
+    {
+      "id": "itv_disney_channel_global",
+      "type": "tv",
+      "name": "370. Disney Channel Global HD",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/disney.png",
+      "posterShape": "landscape",
+      "description": "ערוץ דיסני הבינלאומי – סדרות, סרטים ואנימציה של דיסני\n\n📡 מקור השידור: Disney Channel Stream",
+      "genres": [
+        "ילדים מהעולם",
+        "ארה״ב"
+      ]
+    },
+    {
+      "id": "itv_crunchyroll_anime",
+      "type": "tv",
+      "name": "371. Crunchyroll Anime HD",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/crunchyroll_anime.png",
+      "posterShape": "landscape",
+      "description": "ערוץ האנימה הרשמי של Crunchyroll 24/7 מבית סמסונג TV Plus\n\n📡 מקור השידור: Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "ילדים מהעולם",
+        "ארה״ב"
+      ]
+    },
+    {
+      "id": "itv_pbs_kids_hd",
+      "type": "tv",
+      "name": "372. PBS Kids HD",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/pbs_kids.png",
+      "posterShape": "landscape",
+      "description": "ערוץ הילדים החינוכי והפופולרי בארה״ב PBS Kids\n\n📡 מקור השידור: Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "ילדים מהעולם",
+        "ארה״ב"
+      ]
+    }
+  ]
+}

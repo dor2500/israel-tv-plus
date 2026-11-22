@@ -1,0 +1,28 @@
+{
+  "metas": [
+    {
+      "id": "itv_racer_international_hd",
+      "type": "tv",
+      "name": "378. ערוץ מרוצים RACER International HD",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/racer_international_hd.png",
+      "posterShape": "landscape",
+      "description": "ערוץ המרוצים הבינלאומי MAVTV / RACER International – כיסוי עולמי של מרוצי מכוניות ואופנועים\n\n📡 מקור השידור: amg00378-mavtv-amg00378c2-rakuten-us-1048.playouts.now.amagi.tv\n⚠️ ממסר צד שלישי",
+      "genres": [
+        "ספורט",
+        "ארה״ב"
+      ]
+    },
+    {
+      "id": "itv_powernation_hd",
+      "type": "tv",
+      "name": "379. ערוץ PowerNation TV מנועים ומוטורספורט",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/powernation.png",
+      "posterShape": "landscape",
+      "description": "ערוץ מוטורי אמריקאי לבניית מכוניות מרוץ, שיפורי מנועים וספורט מוטורי PowerNation TV\n\n📡 מקור השידור: amg01258-raycomsports-powernationau-samsungau-18bwc.amagi.tv\n⚠️ ממסר צד שלישי",
+      "genres": [
+        "ספורט",
+        "ארה״ב"
+      ]
+    }
+  ]
+}

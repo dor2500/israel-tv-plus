@@ -1,123 +1,87 @@
 {
   "metas": [
     {
-      "id": "itv_vod_checkout",
+      "id": "itv_teva_israel_hd",
       "type": "tv",
-      "name": "501. קופה ראשית FHD (VOD)",
-      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/vod_checkout.png",
+      "name": "206. ערוץ הטבע הישראלי HD (Teva)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/teva_israel_hd.png",
       "posterShape": "landscape",
-      "description": "עלילותיהם הקורעות מצחוק של עובדי ולקוחות סניף שפע יששכר ביבנה. שירה שטיינבוך, כוכבה שביט, ראמזי עבד ראמזי, ניסים ואנטולי, טיטיבנסקי, אסתי ואמנון.\n\n📡 מקור השידור: Redge – ה-CDN הרשמי של כאן, ערוץ 14 וכלכלה 10\n✅ שידור רשמי ישיר",
+      "description": "ערוץ הטבע הישראלי – עולם החי, נופים, שמורות טבע ותיעוד מרהיב בעברית 24/7\n\n📡 מקור השידור: FreeTV – השידור הרשמי (AWS CloudFront)\n✅ שידור רשמי ישיר",
       "genres": [
-        "סדרות לצפייה ישירה",
+        "טבע ודוקו",
         "ישראל"
       ]
     },
     {
-      "id": "itv_vod_manayek",
+      "id": "itv_bbc_earth_us_hd",
       "type": "tv",
-      "name": "502. מנאייכ FHD (VOD)",
-      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/vod_manayek.jpg",
+      "name": "545. BBC Earth HD (טבע ומדע)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/icon.png",
       "posterShape": "landscape",
-      "description": "דרמת מתח משטרתית זוכת פרסי האקדמיה. חוקר מח\"ש איזי בכר יוצא לחקור את חברו הטוב ביותר במשטרה, ברק הראל.\n\n📡 מקור השידור: Redge – ה-CDN הרשמי של כאן, ערוץ 14 וכלכלה 10\n✅ שידור רשמי ישיר",
+      "description": "ערוץ הטבע והמדע של BBC – סדרות דוקומנטריות מרהיבות באיכות Full HD\n\n📡 מקור השידור: FAST Official\n✅ ערוץ FAST רשמי",
       "genres": [
-        "סדרות לצפייה ישירה",
-        "ישראל"
+        "טבע ודוקו",
+        "ארצות הברית"
       ]
     },
     {
-      "id": "itv_vod_tehran",
+      "id": "itv_history_hit_hd",
       "type": "tv",
-      "name": "503. טהרן FHD (VOD)",
-      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/vod_tehran.jpg",
+      "name": "546. History Hit HD (היסטוריה)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/icon.png",
       "posterShape": "landscape",
-      "description": "תמר רביניאן, האקרית מבריקה של המוסד, נשלחת בזהות בדויה ללב בירת איראן במטרה לנטרל את מערכות המכ\"ם של הכור הגרעיני.\n\n📡 מקור השידור: Redge – ה-CDN הרשמי של כאן, ערוץ 14 וכלכלה 10\n✅ שידור רשמי ישיר",
+      "description": "ערוץ ההיסטוריה והתעודה History Hit – מלחמות, ארכיאולוגיה והיסטוריה עולמית\n\n📡 מקור השידור: FAST Official\n✅ ערוץ FAST רשמי",
       "genres": [
-        "סדרות לצפייה ישירה",
-        "ישראל"
+        "טבע ודוקו",
+        "ארצות הברית"
       ]
     },
     {
-      "id": "itv_vod_hayehudim_baim",
+      "id": "itv_nature_time_hd",
       "type": "tv",
-      "name": "504. היהודים באים FHD (VOD)",
-      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/vod_hayehudim_baim.jpg",
+      "name": "547. NatureTime HD (עולם הטבע)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/icon.png",
       "posterShape": "landscape",
-      "description": "סאטירה מבריקה של כאן 11 המציגה מערכונים פרועים על ההיסטוריה היהודית והישראלית.\n\n📡 מקור השידור: Redge – ה-CDN הרשמי של כאן, ערוץ 14 וכלכלה 10\n✅ שידור רשמי ישיר",
+      "description": "ערוץ טבע ובעלי חיים מבית Rakuten באיכות Full HD 24/7\n\n📡 מקור השידור: FAST Official\n✅ ערוץ FAST רשמי",
       "genres": [
-        "סדרות לצפייה ישירה",
-        "ישראל"
+        "טבע ודוקו",
+        "ארצות הברית"
       ]
     },
     {
-      "id": "itv_vod_hamefakedet",
+      "id": "itv_love_the_planet_hd",
       "type": "tv",
-      "name": "505. המפקדת FHD (VOD)",
-      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/vod_hamefakedet.jpg",
+      "name": "548. Love The Planet HD (כדור הארץ)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/icon.png",
       "posterShape": "landscape",
-      "description": "נועה, קצינה צעירה ומורעלת, מקבלת פיקוד על מחלקת טירוניות בעייתיות בבסיס חוות השומר.\n\n📡 מקור השידור: Redge – ה-CDN הרשמי של כאן, ערוץ 14 וכלכלה 10\n✅ שידור רשמי ישיר",
+      "description": "ערוץ סביבה, טבע ואקולוגיה מרהיב באיכות HD\n\n📡 מקור השידור: FAST Official\n✅ ערוץ FAST רשמי",
       "genres": [
-        "סדרות לצפייה ישירה",
-        "ישראל"
+        "טבע ודוקו",
+        "ארצות הברית"
       ]
     },
     {
-      "id": "itv_vod_bo_nechol",
+      "id": "itv_love_pets_hd",
       "type": "tv",
-      "name": "506. בואו לאכול איתי FHD (VOD)",
-      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/vod_bo_nechol.jpg",
+      "name": "549. Love Pets HD (חיות מחמד וטבע)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/icon.png",
       "posterShape": "landscape",
-      "description": "חמישה בשלנים חובבים שלא מכירים נפגשים לארוחות ערב הדדיות בבתיהם. בקריינותו המושחזת והקורעת של שי אביבי.\n\n📡 מקור השידור: Redge – ה-CDN הרשמי של כאן, ערוץ 14 וכלכלה 10\n✅ שידור רשמי ישיר",
+      "description": "ערוץ חיות מחמד, וטרינריה וסיפורים מרגשים על בעלי חיים\n\n📡 מקור השידור: FAST Official\n✅ ערוץ FAST רשמי",
       "genres": [
-        "סדרות לצפייה ישירה",
-        "ישראל"
+        "טבע ודוקו",
+        "ארצות הברית"
       ]
     },
     {
-      "id": "itv_vod_cramel",
+      "id": "itv_inwild_hd",
       "type": "tv",
-      "name": "507. כראמל FHD (VOD)",
-      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/vod_cramel.jpg",
+      "name": "550. INWILD HD (חיות בר)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/icon.png",
       "posterShape": "landscape",
-      "description": "שלושה אחים יתומים מאומצים על ידי גבירה עשירה ומקבלים בירושה חתול מיוחד ומדבר בעל יכולות קסומות בשם כראמל.\n\n📡 מקור השידור: Redge – ה-CDN הרשמי של כאן, ערוץ 14 וכלכלה 10\n✅ שידור רשמי ישיר",
+      "description": "ערוץ חיות הבר והטבע הפראי INWILD באיכות Full HD\n\n📡 מקור השידור: FAST Official\n✅ ערוץ FAST רשמי",
       "genres": [
-        "סדרות לצפייה ישירה",
-        "ישראל"
-      ]
-    },
-    {
-      "id": "itv_vod_zehu_ze",
-      "type": "tv",
-      "name": "508. זהו זה! FHD (VOD)",
-      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/vod_zehu_ze.jpg",
-      "posterShape": "landscape",
-      "description": "תוכנית הקאלט והסאטירה המיתולוגית של מוני מושונוב, בראבא, דובל'ה גליקמן, אבי קושניר וגידי גוב.\n\n📡 מקור השידור: Redge – ה-CDN הרשמי של כאן, ערוץ 14 וכלכלה 10\n✅ שידור רשמי ישיר",
-      "genres": [
-        "סדרות לצפייה ישירה",
-        "ישראל"
-      ]
-    },
-    {
-      "id": "itv_vod_rehearsals",
-      "type": "tv",
-      "name": "509. חזרות FHD (VOD)",
-      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/vod_rehearsals.jpg",
-      "posterShape": "landscape",
-      "description": "איריס ותומר הם בני זוג ויוצרי תיאטרון שנפרדים בדיוק כשהמחזה שכתבו מתקבל להפקה בתיאטרון הגדול.\n\n📡 מקור השידור: Redge – ה-CDN הרשמי של כאן, ערוץ 14 וכלכלה 10\n✅ שידור רשמי ישיר",
-      "genres": [
-        "סדרות לצפייה ישירה",
-        "ישראל"
-      ]
-    },
-    {
-      "id": "itv_vod_valley_of_tears",
-      "type": "tv",
-      "name": "510. שעת נעילה FHD (VOD)",
-      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/vod_valley_of_tears.jpg",
-      "posterShape": "landscape",
-      "description": "סדרת המלחמה העוצמתית והגדולה בתולדות הטלוויזיה הישראלית, על לוחמי חרמון ורמת הגולן במלחמת יום הכיפורים.\n\n📡 מקור השידור: Redge – ה-CDN הרשמי של כאן, ערוץ 14 וכלכלה 10\n✅ שידור רשמי ישיר",
-      "genres": [
-        "סדרות לצפייה ישירה",
-        "ישראל"
+        "טבע ודוקו",
+        "ארצות הברית"
       ]
     }
   ]

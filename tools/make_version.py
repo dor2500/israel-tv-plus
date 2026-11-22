@@ -102,6 +102,15 @@ def main():
                                                 read("platforms/windows/setup.iss")))
     write("platforms/windows/IsraelTVPlus.cs", re.sub(r'AssemblyVersion\("[\d.]+"\)', f'AssemblyVersion("{version}.0")',
                                                       read("platforms/windows/IsraelTVPlus.cs")))
+    ha_manifest = os.path.join(ROOT, "custom_components", "israel_tv_plus", "manifest.json")
+    if os.path.exists(ha_manifest):
+        hm = json.loads(read("custom_components/israel_tv_plus/manifest.json"))
+        hm["version"] = version
+        write("custom_components/israel_tv_plus/manifest.json", json.dumps(hm, ensure_ascii=False, indent=2) + "\n")
+    ha_addon = os.path.join(ROOT, "platforms", "homeassistant", "addon", "config.yaml")
+    if os.path.exists(ha_addon):
+        write("platforms/homeassistant/addon/config.yaml",
+              re.sub(r'^version:\s*"[\d.]+"', f'version: "{version}"', read("platforms/homeassistant/addon/config.yaml"), flags=re.M))
     print(f"version {version} (app {app}, code {code}, shell {SHELL}), {len(data['notes'])} notes")
 
 

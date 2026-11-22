@@ -1,0 +1,208 @@
+{
+  "metas": [
+    {
+      "id": "itv_kan_hinuchit",
+      "type": "tv",
+      "name": "23. כאן חינוכית 23 FHD",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/kan_hinuchit.png",
+      "posterShape": "landscape",
+      "description": "כאן חינוכית 23 – קופה ראשית לילדים, שקשוקה, כראמל, פרפר נחמד וסדרות איכות בעברית\n\n📡 מקור השידור: Redge – ה-CDN הרשמי של כאן, ערוץ 14 וכלכלה 10\n✅ שידור רשמי ישיר",
+      "genres": [
+        "ילדים ונוער",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_arutz_hayeladim",
+      "type": "tv",
+      "name": "42. ערוץ הילדים HD (המקום האמיתי)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/arutz_hayeladim.png",
+      "posterShape": "landscape",
+      "description": "ערוץ הילדים (המקום האמיתי) – הפיג'מות, השמינייה, גאליס, סדרות נוער ואנימציה בעברית\n\n📡 מקור השידור: FreeTV – השידור הרשמי (AWS CloudFront)\n✅ שידור רשמי ישיר",
+      "genres": [
+        "ילדים ונוער",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_logi_tv",
+      "type": "tv",
+      "name": "43. ערוץ לוגי HD (Logi)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/logi_tv.png",
+      "posterShape": "landscape",
+      "description": "ערוץ לוגי – מדע, טבע, היסטוריה, חידות והרפתקאות מחכימות לילדים ונוער בעברית\n\n📡 מקור השידור: FreeTV – השידור הרשמי (AWS CloudFront)\n✅ שידור רשמי ישיר",
+      "genres": [
+        "ילדים ונוער",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_yalduti_tv",
+      "type": "tv",
+      "name": "45. ערוץ ילדותי ישראלי HD (FreeTV Yalduti)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/yalduti_tv.png",
+      "posterShape": "landscape",
+      "description": "ערוץ שירי וסדרות ילדות ישראלית מבית FreeTV – קלאסיקות, שירי ילדות ישראלית, תוכניות אהובות וסדרות 24/7 ללא הפסקה.\n\n📡 מקור השידור: FreeTV – השידור הרשמי (AWS CloudFront)\n✅ שידור רשמי ישיר",
+      "genres": [
+        "ילדים ונוער",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_hop_pele_tv",
+      "type": "tv",
+      "name": "46. ערוץ הופ! פלא HD (Hop Pele)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/hop_pele_tv.png",
+      "posterShape": "landscape",
+      "description": "ערוץ הופ! פלא – תוכניות העשרה, קסם, דמיון ויצירה לגיל הרך מבית הופ!\n\n📡 מקור השידור: FreeTV – השידור הרשמי (AWS CloudFront)\n✅ שידור רשמי ישיר",
+      "genres": [
+        "ילדים ונוער",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_disney_jr_il",
+      "type": "tv",
+      "name": "49. ערוץ דיסני ג'וניור ישראל HD (Disney Jr.)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/disney_junior.png",
+      "posterShape": "landscape",
+      "description": "ערוץ דיסני ג'וניור ישראל – שידור חי ישיר 24/7 ללא לופים\n\n📡 מקור השידור: 88.212.15.50\n⚠️ ממסר צד שלישי",
+      "genres": [
+        "ילדים ונוער",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_junior_tv",
+      "type": "tv",
+      "name": "54. ערוץ ג'וניור HD (Junior)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/junior.png",
+      "posterShape": "landscape",
+      "description": "ערוץ ג'וניור – קלאסיקות הילדים האהובות, סדרות הרפתקאות ואנימציה בדיבוב לעברית\n\n📡 מקור השידור: FreeTV – השידור הרשמי (AWS CloudFront)\n✅ שידור רשמי ישיר",
+      "genres": [
+        "ילדים ונוער",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_yoyo_tv",
+      "type": "tv",
+      "name": "55. ערוץ יויו HD (YoYo)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/yoyo_tv.png",
+      "posterShape": "landscape",
+      "description": "ערוץ יויו – תוכניות ילדים, כוכבי ילדים ישראלים, שירים ואנימציה צבעונית\n\n📡 מקור השידור: FreeTV – השידור הרשמי (AWS CloudFront)\n✅ שידור רשמי ישיר",
+      "genres": [
+        "ילדים ונוער",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_baby_israel_tv",
+      "type": "tv",
+      "name": "56. ערוץ בייבי ישראל HD (BabyTV)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/baby_tv_he.png",
+      "posterShape": "landscape",
+      "description": "ערוץ בייבי ישראל – תוכניות התפתחות, שירים, צורות וצבעים לתינוקות ופעוטות בעברית 24/7\n\n📡 מקור השידור: FreeTV – השידור הרשמי (AWS CloudFront)\n✅ שידור רשמי ישיר",
+      "genres": [
+        "ילדים ונוער",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_freetv_kids_family_il",
+      "type": "tv",
+      "name": "60. ערוץ סרטי ילדים ומשפחה HD",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/freetv_kids_family_il.png",
+      "posterShape": "landscape",
+      "description": "ערוץ סרטי ילדים, אנימציה ומשפחה 24/7 מדובב לעברית – מיטב סרטי הילדים והקולנוע לכל המשפחה\n\n📡 מקור השידור: FreeTV – השידור הרשמי (AWS CloudFront)\n✅ שידור רשמי ישיר",
+      "genres": [
+        "ילדים ונוער",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_fomo_tv",
+      "type": "tv",
+      "name": "61. ערוץ FOMO לנוער ורשת HD",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/fomo_tv.png",
+      "posterShape": "landscape",
+      "description": "ערוץ FOMO – סדרות נוער, יוצרי תוכן ישראלים, ולוגים ואתגרים\n\n📡 מקור השידור: FreeTV – השידור הרשמי (AWS CloudFront)\n✅ שידור רשמי ישיר",
+      "genres": [
+        "ילדים ונוער",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_yalduti_songs_tv",
+      "type": "tv",
+      "name": "62. ערוץ שירי ילדותי HD",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/yalduti_songs_tv.png",
+      "posterShape": "landscape",
+      "description": "ערוץ שירי ילדותי – שירים וקליפים אהובים לקטנטנים ולילדים בעברית מסביב לשעון\n\n📡 מקור השידור: FreeTV – השידור הרשמי (AWS CloudFront)\n✅ שידור רשמי ישיר",
+      "genres": [
+        "ילדים ונוער",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_a_plus_kids_il",
+      "type": "tv",
+      "name": "63. ערוץ A+ ילדים HD",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/a_plus_kids_il.png",
+      "posterShape": "landscape",
+      "description": "ערוץ A+ – סדרות אנימציה, הרפתקאות ותוכניות העשרה לילדים בעברית\n\n📡 מקור השידור: FreeTV – השידור הרשמי (AWS CloudFront)\n✅ שידור רשמי ישיר",
+      "genres": [
+        "ילדים ונוער",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_stars_kids_il",
+      "type": "tv",
+      "name": "64. ערוץ הכוכבים לילדים ונוער HD",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/stars_kids_il.png",
+      "posterShape": "landscape",
+      "description": "ערוץ הכוכבים – מיטב כוכבי הילדים של ישראל, מופעים, הצגות וסדרות מקור\n\n📡 מקור השידור: FreeTV – השידור הרשמי (AWS CloudFront)\n✅ שידור רשמי ישיר",
+      "genres": [
+        "ילדים ונוער",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_radios_disney",
+      "type": "tv",
+      "name": "65. רדיוס 100% שירי דיסני",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/radios_disney.png",
+      "posterShape": "landscape",
+      "description": "שירים מסרטי דיסני\n\n📡 מקור השידור: StreamGates – ערוצי רדיוס 100FM\n✅ שידור רשמי ישיר",
+      "genres": [
+        "ילדים ונוער",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_radios_kids",
+      "type": "tv",
+      "name": "66. רדיוס 100% ילדים",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/radios_kids.png",
+      "posterShape": "landscape",
+      "description": "שירי ילדים ברצף\n\n📡 מקור השידור: StreamGates – ערוצי רדיוס 100FM\n✅ שידור רשמי ישיר",
+      "genres": [
+        "ילדים ונוער",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_radios_stars",
+      "type": "tv",
+      "name": "67. רדיוס 100% ערוץ הכוכבים",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/radios_stars.png",
+      "posterShape": "landscape",
+      "description": "שירי ילדים וכוכבי ילדים\n\n📡 מקור השידור: StreamGates – ערוצי רדיוס 100FM\n✅ שידור רשמי ישיר",
+      "genres": [
+        "ילדים ונוער",
+        "ישראל"
+      ]
+    }
+  ]
+}

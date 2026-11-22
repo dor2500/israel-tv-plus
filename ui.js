@@ -168,6 +168,7 @@ window.ITV_UI = (function (I) {
       '<p class="perror-desc" id="perror-desc">השידור בערוץ זה אינו זמין כעת. צוות הערוץ פועל להחזרת השידור בהקדם. אנו מתנצלים על אי הנוחות!</p>' +
       '<div class="perror-actions">' +
         '<button class="btn primary" id="perror-retry">נסה להתחבר שוב</button>' +
+        '<button class="btn hidden" id="perror-switch">החלף שרת שידור</button>' +
         '<button class="btn" id="perror-next">עבור לערוץ הבא (OK)</button>' +
         '<button class="btn" id="perror-back">חזרה למדריך הערוצים</button>' +
       '</div>' +
@@ -208,6 +209,11 @@ window.ITV_UI = (function (I) {
 
     '<div class="drawer sheet hidden" id="drawer"><div class="sheet-handle ph"></div>' +
       '<div class="drawer-head"><h3>ערוצים</h3><span id="drawer-cat"></span></div>' +
+      '<div class="drawer-tabs" id="drawer-tabs">' +
+        '<button class="drawer-tab on" data-dtab="cat" type="button">קטגוריה</button>' +
+        '<button class="drawer-tab" data-dtab="recents" type="button">אחרונים</button>' +
+        '<button class="drawer-tab" data-dtab="favs" type="button">מועדפים</button>' +
+      '</div>' +
       '<div class="drawer-list" id="drawer-list"></div></div>' +
   '</div>' +
 

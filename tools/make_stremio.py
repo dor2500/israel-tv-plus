@@ -101,11 +101,14 @@ def main():
         cat = c["category"]
         countries.setdefault(cat, set()).add(country_of(c))
 
+    with open(os.path.join(ROOT, "VERSION"), encoding="utf-8") as vf:
+        app_version = vf.read().strip()
+
     manifest = {
         "id": "org.israeltvplus.addon",
-        "version": "4.8.2",
+        "version": app_version,
         "name": "ישראל TV+ Live",
-        "description": "390+ ערוצי טלוויזיה ישראליים ובינלאומיים בשידור חי, תחנות רדיו, שרתי גיבוי ומספור שלט נוח.",
+        "description": f"{len(chans)} ערוצי טלוויזיה ישראליים ובינלאומיים בשידור חי, תחנות רדיו, שרתי גיבוי ומספור שלט נוח.",
         "logo": SITE + "assets/app/icon-512.png",
         "background": SITE + "splash.png",
         "types": ["tv"],
@@ -114,13 +117,12 @@ def main():
         "catalogs": [
             {
                 "type": "tv",
-                "id": "itv_" + re.sub(r"[^a-z0-9]+", "_", (c.get("categoryEn") or "cat").lower()).strip("_"),
+                "id": "itv_" + re.sub(r"[^a-z0-9]+", "_", ((next((c for c in chans if c["category"] == cat), {})).get("categoryEn") or "cat").lower()).strip("_"),
                 "name": short_cat(cat),
                 "extra": [{"name": "genre", "options": sorted(countries[cat])}] if len(countries[cat]) > 1 else []
             }
             for cat in cats
-            for c in chans if c["category"] == cat
-        ][:len(cats)]
+        ]
     }
     dump("manifest.json", manifest)
 

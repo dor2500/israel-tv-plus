@@ -4236,3 +4236,117 @@ body.design-cinematic-preview .atv-card {
   background: rgba(20, 24, 34, .65);
   border: 1px solid rgba(255, 255, 255, .12);
 }
+
+/* ================================================================== v4.8.86 10-Foot Polish, Subtitles, Drawer Tabs, EPG Search & Reminders */
+.dub-subtitles {
+  position: fixed;
+  left: 50%;
+  bottom: 9.5rem;
+  transform: translateX(-50%);
+  max-width: 82vw;
+  z-index: 25;
+  text-align: center;
+  pointer-events: none;
+  padding: .55rem 1.4rem;
+  border-radius: .9rem;
+  background: var(--dub-sub-bg, rgba(5, 8, 17, .72));
+  border: 1px solid rgba(255, 255, 255, .12);
+  box-shadow: 0 .6rem 2rem rgba(0, 0, 0, .55);
+}
+.dub-sub-he {
+  font-size: var(--dub-sub-size, 1.55rem);
+  font-weight: 700;
+  line-height: 1.4;
+  color: #ffffff;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, .95);
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+.dub-sub-src {
+  font-size: calc(var(--dub-sub-size, 1.55rem) * .72);
+  color: rgba(226, 232, 240, .82);
+  margin-bottom: .25rem;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, .9);
+}
+
+/* Quick Zap Drawer Tabs */
+.drawer-tabs {
+  display: flex;
+  padding: 0 1.2rem .8rem;
+  border-bottom: 1px solid rgba(255, 255, 255, .10);
+}
+.drawer-tab {
+  flex: 1;
+  margin: 0 .25rem;
+  padding: .55rem .6rem;
+  border-radius: .8rem;
+  border: 1px solid rgba(255, 255, 255, .12);
+  background: rgba(255, 255, 255, .06);
+  color: rgba(255, 255, 255, .78);
+  font-size: 1.15rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.drawer-tab.on {
+  background: linear-gradient(135deg, var(--accent, #38bdf8), var(--accent2, #818cf8));
+  color: var(--on-accent, #04101f);
+  border-color: transparent;
+}
+
+/* EPG Search & Quick Time-Slot Bar */
+#tvg-tools {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 1.4rem;
+}
+#tvg-search {
+  width: 20rem;
+  padding: .45rem .9rem;
+  border-radius: 99rem;
+  border: 1px solid rgba(255, 255, 255, .18);
+  background: rgba(15, 23, 42, .82);
+  color: #fff;
+  font-size: 1.25rem;
+  outline: none;
+  margin-left: .6rem;
+}
+#tvg-search:focus {
+  border-color: var(--focus, #7dd3fc);
+  box-shadow: 0 0 0 .18rem var(--glow);
+}
+.tvg-slot {
+  padding: .42rem .9rem;
+  margin-right: .35rem;
+  border-radius: 99rem;
+  border: 1px solid rgba(255, 255, 255, .16);
+  background: rgba(255, 255, 255, .08);
+  color: #e2e8f0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.tvg-slot:hover, .tvg-slot:focus {
+  background: var(--accent, #38bdf8);
+  color: var(--on-accent, #04101f);
+  border-color: transparent;
+}
+.tv-p.rem {
+  border-color: rgba(250, 204, 21, .65);
+  background: rgba(250, 204, 21, .14);
+}
+
+/* RTL Typography & Bright-Video Contrast Guards */
+.hero-desc, .info-prog-desc, #tvg-desc, .perror-desc, .sr-help {
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+.osd-top, .osd-bottom {
+  text-shadow: 0 2px 8px rgba(0, 0, 0, .85);
+}
+.osd-name, .osd-tags {
+  background: rgba(5, 8, 17, .55);
+  padding: .25rem .75rem;
+  border-radius: .7rem;
+  display: inline-flex;
+  align-items: center;
+}
