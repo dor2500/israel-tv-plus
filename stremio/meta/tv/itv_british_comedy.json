@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_british_comedy",
+    "type": "tv",
+    "name": "קומדיה בריטית (British Comedy)",
+    "poster": "https://images.pluto.tv/channels/638e11951177840007fdd6b2/colorLogoPNG_1745597179027.png",
+    "posterShape": "landscape",
+    "logo": "https://images.pluto.tv/channels/638e11951177840007fdd6b2/colorLogoPNG_1745597179027.png",
+    "background": "https://images.pluto.tv/channels/638e11951177840007fdd6b2/colorLogoPNG_1745597179027.png",
+    "description": "📡 מקור השידור:",
+    "genres": [
+      "סרטים וסדרות",
+      "עולם"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "עולם"
+  }
+}

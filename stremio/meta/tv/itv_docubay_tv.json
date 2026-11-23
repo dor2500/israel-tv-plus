@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_docubay_tv",
+    "type": "tv",
+    "name": "דוקו עולמי (DocuBay)",
+    "poster": "https://i.imgur.com/OGyeLLR.png",
+    "posterShape": "landscape",
+    "logo": "https://i.imgur.com/OGyeLLR.png",
+    "background": "https://i.imgur.com/OGyeLLR.png",
+    "description": "📡 מקור השידור:",
+    "genres": [
+      "מדע וטבע",
+      "עולם"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "עולם"
+  }
+}

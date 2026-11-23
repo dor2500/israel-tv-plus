@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_classica_music",
+    "type": "tv",
+    "name": "מוזיקה קלאסית (Classica)",
+    "poster": "https://i.imgur.com/bLjmQTU.png",
+    "posterShape": "landscape",
+    "logo": "https://i.imgur.com/bLjmQTU.png",
+    "background": "https://i.imgur.com/bLjmQTU.png",
+    "description": "📡 מקור השידור:",
+    "genres": [
+      "מוזיקה",
+      "עולם"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "עולם"
+  }
+}

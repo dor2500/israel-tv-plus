@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_love_nature_fast",
+    "type": "tv",
+    "name": "טבע פראי (Love Nature)",
+    "poster": "https://tv.lovenature.com/wp-content/uploads/2024/10/LoveNature2024_Logo_full_colour-copy.png",
+    "posterShape": "landscape",
+    "logo": "https://tv.lovenature.com/wp-content/uploads/2024/10/LoveNature2024_Logo_full_colour-copy.png",
+    "background": "https://tv.lovenature.com/wp-content/uploads/2024/10/LoveNature2024_Logo_full_colour-copy.png",
+    "description": "📡 מקור השידור:",
+    "genres": [
+      "מדע וטבע",
+      "עולם"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "עולם"
+  }
+}

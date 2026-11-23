@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_wildearth_safari",
+    "type": "tv",
+    "name": "ספארי חי באפריקה (WildEarth)",
+    "poster": "https://i.imgur.com/Vhv5gjN.png",
+    "posterShape": "landscape",
+    "logo": "https://i.imgur.com/Vhv5gjN.png",
+    "background": "https://i.imgur.com/Vhv5gjN.png",
+    "description": "📡 מקור השידור:",
+    "genres": [
+      "מדע וטבע",
+      "עולם"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "עולם"
+  }
+}

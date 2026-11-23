@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_bellator_mma",
+    "type": "tv",
+    "name": "בלטור MMA (Bellator)",
+    "poster": "https://i.imgur.com/VBKoLHk.png",
+    "posterShape": "landscape",
+    "logo": "https://i.imgur.com/VBKoLHk.png",
+    "background": "https://i.imgur.com/VBKoLHk.png",
+    "description": "📡 מקור השידור:",
+    "genres": [
+      "ספורט",
+      "עולם"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "עולם"
+  }
+}

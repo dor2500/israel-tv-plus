@@ -1,0 +1,124 @@
+{
+  "metas": [
+    {
+      "id": "itv_zenlife_ambient",
+      "type": "tv",
+      "name": "אווירה ורגיעה (ZenLIFE)",
+      "poster": "https://www.stingray.com/wp-content/uploads/2023/12/stingray_zenlifebystingray_white.svg",
+      "posterShape": "landscape",
+      "description": "📡 מקור השידור:",
+      "genres": [
+        "מדע וטבע",
+        "עולם"
+      ]
+    },
+    {
+      "id": "itv_docubay_tv",
+      "type": "tv",
+      "name": "דוקו עולמי (DocuBay)",
+      "poster": "https://i.imgur.com/OGyeLLR.png",
+      "posterShape": "landscape",
+      "description": "📡 מקור השידור:",
+      "genres": [
+        "מדע וטבע",
+        "עולם"
+      ]
+    },
+    {
+      "id": "itv_documentary_plus",
+      "type": "tv",
+      "name": "דוקומנטרי+ (Documentary+)",
+      "poster": "https://i.imgur.com/x57klfS.png",
+      "posterShape": "landscape",
+      "description": "📡 מקור השידור:",
+      "genres": [
+        "מדע וטבע",
+        "עולם"
+      ]
+    },
+    {
+      "id": "itv_space_live_4k",
+      "type": "tv",
+      "name": "חלל בשידור חי (Space Live 4K)",
+      "poster": "https://static.frequency.com/studio/itv/channels/1224-400x200.png",
+      "posterShape": "landscape",
+      "description": "📡 מקור השידור:",
+      "genres": [
+        "מדע וטבע",
+        "עולם"
+      ]
+    },
+    {
+      "id": "itv_better_life_nature",
+      "type": "tv",
+      "name": "טבע ונופים (Better Life)",
+      "poster": "https://i.imgur.com/D8Vuw6I.png",
+      "posterShape": "landscape",
+      "description": "📡 מקור השידור:",
+      "genres": [
+        "מדע וטבע",
+        "עולם"
+      ]
+    },
+    {
+      "id": "itv_love_nature_fast",
+      "type": "tv",
+      "name": "טבע פראי (Love Nature)",
+      "poster": "https://tv.lovenature.com/wp-content/uploads/2024/10/LoveNature2024_Logo_full_colour-copy.png",
+      "posterShape": "landscape",
+      "description": "📡 מקור השידור:",
+      "genres": [
+        "מדע וטבע",
+        "עולם"
+      ]
+    },
+    {
+      "id": "itv_intravel_fast",
+      "type": "tv",
+      "name": "טיולים בעולם (INTRAVEL)",
+      "poster": "https://jiotvimages.cdn.jio.com/dare_images/images/Intravel.png",
+      "posterShape": "landscape",
+      "description": "📡 מקור השידור:",
+      "genres": [
+        "מדע וטבע",
+        "עולם"
+      ]
+    },
+    {
+      "id": "itv_smithsonian_selects",
+      "type": "tv",
+      "name": "סמית׳סוניאן דוקו (Smithsonian)",
+      "poster": "https://i.imgur.com/Kt5j8Vr.png",
+      "posterShape": "landscape",
+      "description": "📡 מקור השידור:",
+      "genres": [
+        "מדע וטבע",
+        "עולם"
+      ]
+    },
+    {
+      "id": "itv_wildearth_safari",
+      "type": "tv",
+      "name": "ספארי חי באפריקה (WildEarth)",
+      "poster": "https://i.imgur.com/Vhv5gjN.png",
+      "posterShape": "landscape",
+      "description": "📡 מקור השידור:",
+      "genres": [
+        "מדע וטבע",
+        "עולם"
+      ]
+    },
+    {
+      "id": "itv_pluto_science",
+      "type": "tv",
+      "name": "ערוץ המדע (Pluto Science)",
+      "poster": "https://i.imgur.com/uhunRoU.png",
+      "posterShape": "landscape",
+      "description": "📡 מקור השידור:",
+      "genres": [
+        "מדע וטבע",
+        "עולם"
+      ]
+    }
+  ]
+}

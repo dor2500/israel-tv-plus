@@ -331,6 +331,16 @@ fun PlayerScreen(
     var catchupProgram by remember(current.id) { mutableStateOf<CatchupProgram?>(null) }
     var lowBandwidthMode by remember { mutableStateOf(false) }
     var isAudioOnlyMode by remember { mutableStateOf(false) }
+    var showLiveClock by remember { mutableStateOf(false) }
+    var liveClockText by remember { mutableStateOf("") }
+
+    LaunchedEffect(showLiveClock) {
+        while (showLiveClock) {
+            val cal = java.util.Calendar.getInstance()
+            liveClockText = String.format(Locale.US, "%02d:%02d", cal.get(java.util.Calendar.HOUR_OF_DAY), cal.get(java.util.Calendar.MINUTE))
+            delay(15_000)
+        }
+    }
 
     LaunchedEffect(lowBandwidthMode) {
         val p = player.trackSelectionParameters.buildUpon()
@@ -821,6 +831,37 @@ fun PlayerScreen(
                         Text("לשידור החי", color = Color.White, fontSize = 11.sp, fontWeight = FontWeight.Bold)
                     }
                 }
+                if (list.size > 1) {
+                    Box(
+                        Modifier
+                            .padding(end = 6.dp)
+                            .clip(CircleShape)
+                            .background(Color.White.copy(alpha = 0.14f))
+                            .clickable {
+                                touchTick++
+                                val nextIdx = (0 until list.size).filter { it != index }.randomOrNull() ?: index
+                                statusToast = "🎲 זפזופ אקראי: ${list[nextIdx].name}"
+                                switchTo(nextIdx)
+                            }
+                            .padding(horizontal = 10.dp, vertical = 8.dp),
+                    ) {
+                        Text("🎲", fontSize = 14.sp)
+                    }
+                }
+                Box(
+                    Modifier
+                        .padding(end = 6.dp)
+                        .clip(CircleShape)
+                        .background(if (showLiveClock) Color(0xFF3B82F6).copy(alpha = 0.45f) else Color.White.copy(alpha = 0.14f))
+                        .clickable {
+                            touchTick++
+                            showLiveClock = !showLiveClock
+                            statusToast = if (showLiveClock) "🕒 שעון צף הופעל" else "🕒 שעון צף הוסתר"
+                        }
+                        .padding(horizontal = 10.dp, vertical = 8.dp),
+                ) {
+                    Text("🕒", fontSize = 14.sp)
+                }
                 GlassIconButton(
                     Icons.Rounded.MoreHoriz,
                     "אפשרויות",
@@ -829,6 +870,27 @@ fun PlayerScreen(
                         sheet = "more"
                     },
                     size = 40.dp,
+                )
+            }
+        }
+
+        // Persistent Floating Live TV Clock (stays visible even when top bar auto-hides)
+        if (showLiveClock && liveClockText.isNotEmpty() && !controls && !inPip && !multiViewActive) {
+            Box(
+                Modifier
+                    .align(Alignment.TopEnd)
+                    .windowInsetsPadding(WindowInsets.statusBars)
+                    .padding(14.dp)
+                    .clip(RoundedCornerShape(999.dp))
+                    .background(Color.Black.copy(alpha = 0.55f))
+                    .border(1.dp, Color.White.copy(alpha = 0.16f), RoundedCornerShape(999.dp))
+                    .padding(horizontal = 12.dp, vertical = 5.dp),
+            ) {
+                Text(
+                    liveClockText,
+                    color = Color.White.copy(alpha = 0.92f),
+                    fontSize = 13.sp,
+                    fontWeight = FontWeight.Bold,
                 )
             }
         }

@@ -1,8 +1,8 @@
 {
   "id": "org.israeltvplus.addon",
-  "version": "4.8.89",
+  "version": "4.8.90",
   "name": "ישראל TV+ Live",
-  "description": "331 ערוצי טלוויזיה ישראליים ובינלאומיים בשידור חי, תחנות רדיו, שרתי גיבוי ומספור שלט נוח.",
+  "description": "360 ערוצי טלוויזיה ישראליים ובינלאומיים בשידור חי, תחנות רדיו, שרתי גיבוי ומספור שלט נוח.",
   "logo": "https://dor2500.github.io/israel-tv-plus/assets/app/icon-512.png",
   "background": "https://dor2500.github.io/israel-tv-plus/splash.png",
   "types": [
@@ -151,8 +151,32 @@
     },
     {
       "type": "tv",
+      "id": "itv_docu",
+      "name": "מדע וטבע",
+      "extra": []
+    },
+    {
+      "type": "tv",
+      "id": "itv_music",
+      "name": "מוזיקה",
+      "extra": []
+    },
+    {
+      "type": "tv",
       "id": "itv_vod",
       "name": "סדרות לצפייה ישירה",
+      "extra": []
+    },
+    {
+      "type": "tv",
+      "id": "itv_sports",
+      "name": "ספורט",
+      "extra": []
+    },
+    {
+      "type": "tv",
+      "id": "itv_movies",
+      "name": "סרטים וסדרות",
       "extra": []
     }
   ]

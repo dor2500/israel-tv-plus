@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_mtv_biggest_pop",
+    "type": "tv",
+    "name": "MTV להיטי פופ (MTV Pop)",
+    "poster": "https://images.pluto.tv/channels/6047fbdbbb776a0007e7f2ff/colorLogoPNG.png",
+    "posterShape": "landscape",
+    "logo": "https://images.pluto.tv/channels/6047fbdbbb776a0007e7f2ff/colorLogoPNG.png",
+    "background": "https://images.pluto.tv/channels/6047fbdbbb776a0007e7f2ff/colorLogoPNG.png",
+    "description": "📡 מקור השידור:",
+    "genres": [
+      "מוזיקה",
+      "עולם"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "עולם"
+  }
+}

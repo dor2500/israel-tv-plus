@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_classic_movies_30a",
+    "type": "tv",
+    "name": "סרטים קלאסיים (Classic Movies)",
+    "poster": "https://dor2500.github.io/israel-tv-plus/icon.png",
+    "posterShape": "landscape",
+    "logo": "https://dor2500.github.io/israel-tv-plus/icon.png",
+    "background": "https://dor2500.github.io/israel-tv-plus/icon.png",
+    "description": "📡 מקור השידור:",
+    "genres": [
+      "סרטים וסדרות",
+      "עולם"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "עולם"
+  }
+}

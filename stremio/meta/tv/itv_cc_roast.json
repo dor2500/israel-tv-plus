@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_cc_roast",
+    "type": "tv",
+    "name": "קומדי סנטרל רוסט (CC Roast)",
+    "poster": "https://images.pluto.tv/channels/6641fd41b18d700008e7e2b8/colorLogoPNG.png",
+    "posterShape": "landscape",
+    "logo": "https://images.pluto.tv/channels/6641fd41b18d700008e7e2b8/colorLogoPNG.png",
+    "background": "https://images.pluto.tv/channels/6641fd41b18d700008e7e2b8/colorLogoPNG.png",
+    "description": "📡 מקור השידור:",
+    "genres": [
+      "סרטים וסדרות",
+      "עולם"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "עולם"
+  }
+}

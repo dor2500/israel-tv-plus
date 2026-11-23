@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_pluto_science",
+    "type": "tv",
+    "name": "ערוץ המדע (Pluto Science)",
+    "poster": "https://i.imgur.com/uhunRoU.png",
+    "posterShape": "landscape",
+    "logo": "https://i.imgur.com/uhunRoU.png",
+    "background": "https://i.imgur.com/uhunRoU.png",
+    "description": "📡 מקור השידור:",
+    "genres": [
+      "מדע וטבע",
+      "עולם"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "עולם"
+  }
+}

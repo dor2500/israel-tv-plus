@@ -4382,3 +4382,30 @@ body.phone .slide-body,
   position: relative;
   z-index: 1;
 }
+
+/* Live Floating TV Clock Overlay (v4.8.90) */
+#live-clock-badge {
+  position: fixed;
+  top: 22px;
+  left: 24px;
+  z-index: 45;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(8, 12, 22, 0.58);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 1.55rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+  pointer-events: none;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+}
+body.phone #live-clock-badge {
+  top: 12px;
+  left: 14px;
+  font-size: 0.92rem;
+  padding: 4px 10px;
+}

@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_space_live_4k",
+    "type": "tv",
+    "name": "חלל בשידור חי (Space Live 4K)",
+    "poster": "https://static.frequency.com/studio/itv/channels/1224-400x200.png",
+    "posterShape": "landscape",
+    "logo": "https://static.frequency.com/studio/itv/channels/1224-400x200.png",
+    "background": "https://static.frequency.com/studio/itv/channels/1224-400x200.png",
+    "description": "📡 מקור השידור:",
+    "genres": [
+      "מדע וטבע",
+      "עולם"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "עולם"
+  }
+}

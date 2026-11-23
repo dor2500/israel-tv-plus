@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_zenlife_ambient",
+    "type": "tv",
+    "name": "אווירה ורגיעה (ZenLIFE)",
+    "poster": "https://www.stingray.com/wp-content/uploads/2023/12/stingray_zenlifebystingray_white.svg",
+    "posterShape": "landscape",
+    "logo": "https://www.stingray.com/wp-content/uploads/2023/12/stingray_zenlifebystingray_white.svg",
+    "background": "https://www.stingray.com/wp-content/uploads/2023/12/stingray_zenlifebystingray_white.svg",
+    "description": "📡 מקור השידור:",
+    "genres": [
+      "מדע וטבע",
+      "עולם"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "עולם"
+  }
+}

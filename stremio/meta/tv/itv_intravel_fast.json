@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_intravel_fast",
+    "type": "tv",
+    "name": "טיולים בעולם (INTRAVEL)",
+    "poster": "https://jiotvimages.cdn.jio.com/dare_images/images/Intravel.png",
+    "posterShape": "landscape",
+    "logo": "https://jiotvimages.cdn.jio.com/dare_images/images/Intravel.png",
+    "background": "https://jiotvimages.cdn.jio.com/dare_images/images/Intravel.png",
+    "description": "📡 מקור השידור:",
+    "genres": [
+      "מדע וטבע",
+      "עולם"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "עולם"
+  }
+}

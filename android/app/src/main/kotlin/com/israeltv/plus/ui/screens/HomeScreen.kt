@@ -32,6 +32,9 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.CircleShape
@@ -102,6 +105,7 @@ import androidx.media3.ui.PlayerView
 import coil3.compose.AsyncImage
 import com.israeltv.plus.R
 import com.israeltv.plus.data.AppPrefs
+import com.israeltv.plus.data.CatchupProgram
 import com.israeltv.plus.data.CatchupRepository
 import com.israeltv.plus.data.Channel
 import com.israeltv.plus.data.ChannelData
@@ -176,9 +180,10 @@ fun HomeScreen(
     var selectedVodSeries by remember { mutableStateOf<VodSeries?>(null) }
     val ctx = LocalContext.current
     var recentEpg by remember { mutableStateOf<Map<String, String>>(emptyMap()) }
+    var liveNowItems by remember { mutableStateOf<List<Pair<Channel, CatchupProgram>>>(emptyList()) }
     val recentIds = prefs.recents
     LaunchedEffect(recentIds, data) {
-        if (data == null || recentIds.isEmpty()) return@LaunchedEffect
+        if (data == null) return@LaunchedEffect
         val resolved = mutableMapOf<String, String>()
         recentIds.take(12).forEach { id ->
             val ch = data.byId[id] ?: return@forEach
@@ -187,6 +192,18 @@ fun HomeScreen(
             if (cur != null && cur.title.isNotBlank()) resolved[id] = cur.title
         }
         recentEpg = resolved
+        // Load "On Air Now" live EPG snapshot for flagship Israeli channels
+        val flagshipIds = listOf("kan11", "keshet12", "reshet13", "channel14", "i24news_he", "i24news", "sport5", "kan_educational", "channel9")
+        val onAir = mutableListOf<Pair<Channel, CatchupProgram>>()
+        val candidates = flagshipIds.mapNotNull { data.byId[it] }.ifEmpty {
+            data.channels.filter { it.categoryEn == "israel" && !it.isRadio }.take(8)
+        }
+        candidates.forEach { ch ->
+            val progs = runCatching { CatchupRepository.getProgramsForChannel(ctx, ch) }.getOrNull().orEmpty()
+            val cur = progs.firstOrNull { it.isLiveNow }
+            if (cur != null && cur.title.isNotBlank()) onAir.add(ch to cur)
+        }
+        liveNowItems = onAir
     }
 
     LazyColumn(
@@ -217,6 +234,109 @@ fun HomeScreen(
                 onInfo = onInfo,
                 modifier = Modifier.bleedToTop(padding).cascadeIn(0),
             )
+        }
+        // Quick TV Actions: "הפתע אותי" (Channel Roulette) + Live "משודר עכשיו" Strip
+        item(key = "tv_quick_actions") {
+            val roulettePool = remember(pool, data) {
+                pool.flatMap { it.channels }.filter { !it.isRadio && it.url.isNotBlank() }.ifEmpty { data.channels }
+            }
+            Column(Modifier.fillMaxWidth().padding(bottom = 14.dp)) {
+                Row(
+                    Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 6.dp),
+                    horizontalArrangement = Arrangement.spacedBy(10.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Row(
+                        Modifier
+                            .clip(RoundedCornerShape(18.dp))
+                            .background(MaterialTheme.colorScheme.primary.copy(alpha = 0.18f))
+                            .border(1.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.45f), RoundedCornerShape(18.dp))
+                            .clickable {
+                                if (roulettePool.isNotEmpty()) {
+                                    val pick = roulettePool.random()
+                                    onPlay(pick, roulettePool)
+                                }
+                            }
+                            .padding(horizontal = 14.dp, vertical = 9.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(6.dp),
+                    ) {
+                        Text("🎲", fontSize = 14.sp)
+                        Text(
+                            "הפתע אותי",
+                            color = MaterialTheme.colorScheme.onSurface,
+                            fontSize = 13.sp,
+                            fontWeight = FontWeight.Bold,
+                        )
+                    }
+                    if (liveNowItems.isNotEmpty()) {
+                        Text(
+                            "🔴 משודר עכשיו (${liveNowItems.size})",
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            fontSize = 12.sp,
+                            fontWeight = FontWeight.Medium,
+                        )
+                    }
+                }
+                if (liveNowItems.isNotEmpty() && !isKids && macroCategory == null) {
+                    Spacer(Modifier.height(6.dp))
+                    LazyRow(
+                        contentPadding = PaddingValues(horizontal = 16.dp),
+                        horizontalArrangement = Arrangement.spacedBy(10.dp),
+                    ) {
+                        items(liveNowItems, key = { it.first.id }) { (ch, prog) ->
+                            val nowMs = System.currentTimeMillis()
+                            val totalMs = (prog.endMs - prog.startMs).coerceAtLeast(1L)
+                            val frac = ((nowMs - prog.startMs).toFloat() / totalMs.toFloat()).coerceIn(0f, 1f)
+                            Column(
+                                Modifier
+                                    .width(196.dp)
+                                    .clip(RoundedCornerShape(14.dp))
+                                    .background(MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.42f))
+                                    .border(1.dp, Color.White.copy(alpha = 0.08f), RoundedCornerShape(14.dp))
+                                    .clickable { onPlay(ch, liveNowItems.map { it.first }) }
+                                    .padding(11.dp),
+                            ) {
+                                Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                                    Box(Modifier.size(7.dp).clip(CircleShape).background(Color(0xFFEF4444)))
+                                    Text(
+                                        ch.name,
+                                        color = MaterialTheme.colorScheme.primary,
+                                        fontSize = 11.sp,
+                                        fontWeight = FontWeight.Bold,
+                                        maxLines = 1,
+                                        overflow = TextOverflow.Ellipsis,
+                                    )
+                                }
+                                Spacer(Modifier.height(4.dp))
+                                Text(
+                                    prog.title,
+                                    color = MaterialTheme.colorScheme.onSurface,
+                                    fontSize = 13.sp,
+                                    fontWeight = FontWeight.SemiBold,
+                                    maxLines = 1,
+                                    overflow = TextOverflow.Ellipsis,
+                                )
+                                Spacer(Modifier.height(8.dp))
+                                Box(
+                                    Modifier
+                                        .fillMaxWidth()
+                                        .height(3.dp)
+                                        .clip(RoundedCornerShape(2.dp))
+                                        .background(Color.White.copy(alpha = 0.14f)),
+                                ) {
+                                    Box(
+                                        Modifier
+                                            .fillMaxWidth(frac)
+                                            .fillMaxHeight()
+                                            .background(Color(0xFFEF4444)),
+                                    )
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
         // The "רק ישראלי" chip docks into the trailing edge of the Israeli shelf header (else the first shelf)
         val israeliKey = visibleCategories.firstOrNull { "ישראל" in it.name }?.key

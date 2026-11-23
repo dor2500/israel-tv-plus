@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_dry_bar_comedy",
+    "type": "tv",
+    "name": "סטנדאפ נקי (Dry Bar Comedy)",
+    "poster": "https://i.imgur.com/3N2C60N.png",
+    "posterShape": "landscape",
+    "logo": "https://i.imgur.com/3N2C60N.png",
+    "background": "https://i.imgur.com/3N2C60N.png",
+    "description": "📡 מקור השידור:",
+    "genres": [
+      "סרטים וסדרות",
+      "עולם"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "עולם"
+  }
+}

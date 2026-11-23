@@ -1,15 +1,27 @@
 {
-  "version": "4.8.89",
-  "code": 202611231800,
-  "app": 40889,
+  "version": "4.8.90",
+  "code": 202611231808,
+  "app": 40890,
   "shell": 3,
   "date": "2026-11-23",
   "notes": [
-    "מרכז פלטפורמות ושירותי VOD ישראליים ובינלאומיים מלא (במובייל, בטלוויזיה ובדסקטופ):",
-    "הוספת 51 שירותי ופורטלי VOD ישירות ללשונית ה-VOD באפליקציית האנדרואיד ([VodScreen.kt](android/app/src/main/kotlin/com/israeltv/plus/ui/screens/VodScreen.kt)) ובמדף ה-VOD בגרסת Web/TV/Desktop ([app.js](app.js)).",
-    "סינון לפי קטגוריות (הכל / חינם / OTT ישראלי / ילדים ונוער / קולנוע ודוקו / מורשת ומשפחה / ספורט / בינלאומי), תגי חינם/מנוי ופתיחה ישירה באפליקציה הרשמית או בדפדפן."
+    "29 ערוצי לייב ו-FAST חדשים ומאומתים (360 ערוצים בסה״כ): חלל בשידור חי (Space Live 4K), ספארי חי באפריקה (WildEarth), אווירה ורגיעה (ZenLIFE), טבע פראי (Love Nature), סמית׳סוניאן דוקו, Pluto Science, DocuBay, Documentary+, טיולים בעולם (INTRAVEL), FIFA+, FUEL TV, FightBox HD, Bellator MMA, FloRacing, DAZN Darts, סאות׳ פארק 24/7, Comedy Central Roast, Dry Bar Comedy, קומדיה בריטית, סרטים קלאסיים, 50 Cent Action, MTV Pop, MTV New, NOW Rock, Clubbing TV, פסקולי סרטים ומוזיקה קלאסית — כולם מאומתים בשידור HTTPS HLS ישיר וללא DRM.",
+    "זפזופ אקראי (\"🎲 הפתע אותי\" / Channel Roulette): קפיצה בלחיצה אחת לערוץ לייב אקראי גם ממסך הבית והנגן במובייל וגם מתפריט הנגן וממקש R בטלוויזיה/ווב.",
+    "פס \"🔴 משודר עכשיו בשידור חי\" במובייל: תצוגה חיה במסך הבית של התכניות המשודרות כרגע בערוצי ישראל המרכזיים עם פס התקדמות חי ומעבר מיידי לצפייה.",
+    "שעון חי צף על גבי הטלוויזיה (🕒 Live TV Clock): שעון פינתי עדין ושקוף על גבי שידור במסך מלא (במובייל ובטלוויזיה/ווב, כולל קיצור מקש C).",
+    "מצב לילה לשמע וצילום מסך מהשידור (Web/TV/Desktop): קומפרסור שמע אוטומטי (DynamicsCompressorNode) לאיזון פרסומות רועשות ודיבור שקט בלילה + צילום מסך מיידי (📸) מהשידור החי."
   ],
   "history": [
+    {
+      "version": "4.8.90",
+      "notes": [
+        "29 ערוצי לייב ו-FAST חדשים ומאומתים (360 ערוצים בסה״כ): חלל בשידור חי (Space Live 4K), ספארי חי באפריקה (WildEarth), אווירה ורגיעה (ZenLIFE), טבע פראי (Love Nature), סמית׳סוניאן דוקו, Pluto Science, DocuBay, Documentary+, טיולים בעולם (INTRAVEL), FIFA+, FUEL TV, FightBox HD, Bellator MMA, FloRacing, DAZN Darts, סאות׳ פארק 24/7, Comedy Central Roast, Dry Bar Comedy, קומדיה בריטית, סרטים קלאסיים, 50 Cent Action, MTV Pop, MTV New, NOW Rock, Clubbing TV, פסקולי סרטים ומוזיקה קלאסית — כולם מאומתים בשידור HTTPS HLS ישיר וללא DRM.",
+        "זפזופ אקראי (\"🎲 הפתע אותי\" / Channel Roulette): קפיצה בלחיצה אחת לערוץ לייב אקראי גם ממסך הבית והנגן במובייל וגם מתפריט הנגן וממקש R בטלוויזיה/ווב.",
+        "פס \"🔴 משודר עכשיו בשידור חי\" במובייל: תצוגה חיה במסך הבית של התכניות המשודרות כרגע בערוצי ישראל המרכזיים עם פס התקדמות חי ומעבר מיידי לצפייה.",
+        "שעון חי צף על גבי הטלוויזיה (🕒 Live TV Clock): שעון פינתי עדין ושקוף על גבי שידור במסך מלא (במובייל ובטלוויזיה/ווב, כולל קיצור מקש C).",
+        "מצב לילה לשמע וצילום מסך מהשידור (Web/TV/Desktop): קומפרסור שמע אוטומטי (DynamicsCompressorNode) לאיזון פרסומות רועשות ודיבור שקט בלילה + צילום מסך מיידי (📸) מהשידור החי."
+      ]
+    },
     {
       "version": "4.8.89",
       "notes": [
@@ -269,51 +281,44 @@
         "תיקון ערוצי הספורט: ספורט 1 (ערוץ 38), ספורט 2 (ערוץ 39), ספורט 3 (ערוץ 40), ספורט 4 (ערוץ 41), ספורט 6 (ערוץ 511), יורוספורט 2 (ערוץ 111), ספורט 5 (ערוצים 36 ו-100), ספורט 5 פלוס (ערוץ 101) – עדכון למקורות שידור חי יציבים ופעילים ב-FHD/HD ללא הודעות \"מתחבר מחדש\".",
         "תיקון מנגנון העדכון באנדרואיד: התאמה מלאה של שמות קובצי ה-APK בריליס (IsraelTVPlus-android.apk) כך שלחיצה על \"עדכן עכשיו\" באפליקציה תוריד ותתקין את העדכון באופן מיידי וחלק."
       ]
-    },
-    {
-      "version": "4.8.65",
-      "notes": [
-        "מסך הבית בטלוויזיה ובמחשב: סרגל הקטגוריות המעוגל בראש המסך, פרטי הערוץ (לוגו, תגיות, תקציר ומקור שידור) בצד ימין מעל המדפים ללא חפיפה, מדפי הערוצים בתחתית (\"צפייה לאחרונה ומועדפים\", \"כל הערוצים\" ועוד) על גבי וידאו חי במסך מלא ברקע, ושורת מקשי הצבע בתחתית (\"אפשרויות\", \"גודל תמונה\", \"מועדף\", \"דיבוב\").",
-        "נגן הווידאו בטלוויזיה, במחשב ובאנדרואיד: תצוגת OSD זהה לחלוטין – רשימת ערוצים אנכית עם לוגו ומספר ערוץ בצד ימין, \"לתכנית הקודמת\" עם חץ ימינה ושעות שידור, כרטיס התוכנית הנוכחית במרכז עם פס התקדמות אדום, שעות שידור וכפתור \"אפשרויות\" לבן מתחתיו, כרטיס \"בהמשך\" משמאלו עם חץ שמאלה, ושעון בפינה השמאלית התחתונה."
-      ]
     }
   ],
   "native": {
     "android": {
-      "version": "4.8.89",
-      "app": 40889,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.89/IsraelTVPlus-android.apk"
+      "version": "4.8.90",
+      "app": 40890,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.90/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "4.8.89",
-      "app": 40889,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.89/IsraelTVPlus-windows-setup.exe"
+      "version": "4.8.90",
+      "app": 40890,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.90/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "4.8.89",
-      "app": 40889,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.89/com.israeltv.plus_all.ipk",
+      "version": "4.8.90",
+      "app": 40890,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.90/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "4.8.89",
-      "app": 40889,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.89/IsraelTVPlus-tizen-project.zip"
+      "version": "4.8.90",
+      "app": 40890,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.90/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "4.8.89",
-      "app": 40889,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.89/IsraelTVPlus-macos-arm64.zip"
+      "version": "4.8.90",
+      "app": 40890,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.90/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "4.8.89",
-      "app": 40889,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.89/IsraelTVPlus-linux-x64.zip"
+      "version": "4.8.90",
+      "app": 40890,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.90/IsraelTVPlus-linux-x64.zip"
     },
     "wear": {
-      "version": "4.8.89",
-      "app": 1040889,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.89/IsraelTVPlus-wearos.apk"
+      "version": "4.8.90",
+      "app": 1040890,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.90/IsraelTVPlus-wearos.apk"
     }
   }
 }

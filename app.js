@@ -3550,11 +3550,13 @@
     }, 50);
   }
 
-  // Audio Boost (+200% Gain using Web Audio API)
+  // Audio Boost (+200% Gain) & Night Mode Dynamics Compressor using Web Audio API
   var audioBoostCtx = null;
   var audioBoostSource = null;
   var audioBoostGain = null;
+  var audioNightComp = null;
   var audioBoostLevel = 1.0;
+  var audioNightEnabled = false;
 
   function initAudioBoost() {
     if (!el.video) return;
@@ -3569,15 +3571,108 @@
       }
       if (!audioBoostSource) {
         audioBoostSource = audioBoostCtx.createMediaElementSource(el.video);
+        audioNightComp = audioBoostCtx.createDynamicsCompressor();
         audioBoostGain = audioBoostCtx.createGain();
-        audioBoostSource.connect(audioBoostGain);
+        audioBoostSource.connect(audioNightComp);
+        audioNightComp.connect(audioBoostGain);
         audioBoostGain.connect(audioBoostCtx.destination);
       }
+      if (audioNightComp) {
+        if (audioNightEnabled) {
+          audioNightComp.threshold.value = -36;
+          audioNightComp.knee.value = 30;
+          audioNightComp.ratio.value = 12;
+          audioNightComp.attack.value = 0.003;
+          audioNightComp.release.value = 0.25;
+        } else {
+          audioNightComp.threshold.value = 0;
+          audioNightComp.knee.value = 0;
+          audioNightComp.ratio.value = 1;
+        }
+      }
       if (audioBoostGain) {
-        audioBoostGain.gain.value = audioBoostLevel;
+        audioBoostGain.gain.value = audioNightEnabled ? Math.max(audioBoostLevel, 1.35) : audioBoostLevel;
       }
     } catch (e) {
       console.warn('Audio boost notice:', e);
+    }
+  }
+
+  function toggleNightAudio() {
+    audioNightEnabled = !audioNightEnabled;
+    initAudioBoost();
+    toast(audioNightEnabled ? '🌙 מצב לילה לשמע הופעל (מאזן פרסומות ודיבור)' : '🌙 מצב לילה לשמע כבוי');
+  }
+
+  // Live Floating TV Clock Overlay
+  var liveClockEnabled = false;
+  var liveClockTimer = null;
+  try { liveClockEnabled = localStorage.getItem('itv_live_clock') === '1'; } catch (e) { }
+
+  function updateLiveClockDom() {
+    var badge = document.getElementById('live-clock-badge');
+    if (!liveClockEnabled) {
+      if (badge) badge.style.display = 'none';
+      if (liveClockTimer) { clearInterval(liveClockTimer); liveClockTimer = null; }
+      return;
+    }
+    if (!badge && el.player) {
+      badge = document.createElement('div');
+      badge.id = 'live-clock-badge';
+      el.player.appendChild(badge);
+    }
+    if (badge) {
+      var d = new Date();
+      var hh = (d.getHours() < 10 ? '0' : '') + d.getHours();
+      var mm = (d.getMinutes() < 10 ? '0' : '') + d.getMinutes();
+      badge.textContent = hh + ':' + mm;
+      badge.style.display = 'block';
+    }
+    if (!liveClockTimer) {
+      liveClockTimer = setInterval(updateLiveClockDom, 15000);
+    }
+  }
+
+  function toggleLiveClock() {
+    liveClockEnabled = !liveClockEnabled;
+    try { localStorage.setItem('itv_live_clock', liveClockEnabled ? '1' : '0'); } catch (e) { }
+    updateLiveClockDom();
+    toast(liveClockEnabled ? '🕒 שעון צף על המסך הופעל' : '🕒 שעון צף על המסך הוסתר');
+  }
+
+  // Channel Roulette / Surprise Me!
+  function playRandomChannel() {
+    var pool = (state.all || []).filter(function (c) {
+      return c && c.url && !c.isVod && c.kind !== 'app' && (!state.playing || c.id !== state.playing.id);
+    });
+    if (!pool.length) { toast('אין ערוצים זמינים לזפזופ אקראי'); return; }
+    var pick = pool[Math.floor(Math.random() * pool.length)];
+    toast('🎲 זפזופ אקראי: ' + (pick.name || pick.id));
+    openPlayer();
+    loadStream(pick);
+  }
+
+  // Instant Screenshot Capture from Live Video
+  function captureVideoSnapshot() {
+    var v = el.video;
+    if (!v || !v.videoWidth || !v.videoHeight) { toast('📸 אין פריים וידאו זמין לצילום'); return; }
+    try {
+      var canvas = document.createElement('canvas');
+      canvas.width = v.videoWidth;
+      canvas.height = v.videoHeight;
+      var ctx = canvas.getContext('2d');
+      ctx.drawImage(v, 0, 0, canvas.width, canvas.height);
+      var dataUrl = canvas.toDataURL('image/png');
+      var a = document.createElement('a');
+      var chName = (state.playing && state.playing.id) ? state.playing.id : 'live';
+      a.href = dataUrl;
+      a.download = 'IsraelTV_' + chName + '_' + Date.now() + '.png';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      toast('📸 צילום המסך נשמר בהצלחה!');
+    } catch (e) {
+      toast('📸 השידור חסום ללכידת מסך בדפדפן (CORS)');
     }
   }
 
@@ -4014,10 +4109,13 @@
       if (PHONE) native('setImmersive', true);
     }
     native('setPlaying', true);
+    updateLiveClockDom();
     toggleClass(el.obPip, 'hidden', !(native('canPip') || (document.pictureInPictureEnabled && !state.isRadio)));
   }
 
   function closePlayer(keepPlaying) {
+    var clockEl = document.getElementById('live-clock-badge');
+    if (clockEl) clockEl.style.display = 'none';
     hideError();
     spinner(false);
     closeDrawer(true);
@@ -5450,6 +5548,30 @@
         return r > 0 ? r + ' דק׳' : 'כבוי';
       },
       act: openSleepTimerDialog
+    });
+    items.push({
+      ico: '🎲',
+      label: 'זפזופ אקראי (הפתע אותי!)',
+      act: playRandomChannel
+    });
+    items.push({
+      ico: '🕒',
+      label: 'שעון חי צף על המסך',
+      stay: true,
+      val: function () { return liveClockEnabled ? 'פועל' : 'כבוי'; },
+      act: toggleLiveClock
+    });
+    items.push({
+      ico: '🔇',
+      label: 'מצב לילה לשמע (איזון ווליום)',
+      stay: true,
+      val: function () { return audioNightEnabled ? 'פועל' : 'כבוי'; },
+      act: toggleNightAudio
+    });
+    items.push({
+      ico: '📸',
+      label: 'צילום מסך מהשידור',
+      act: captureVideoSnapshot
     });
     items.push({
       ico: '🔊',
@@ -8195,6 +8317,8 @@
     else if (code === 40) zap(S.upNext ? -1 : 1);
     else if (code === 37) openDrawer();
     else if (code === 39) playerMenu();
+    else if (code === 82) playRandomChannel();
+    else if (code === 67) toggleLiveClock();
   }
 
   function drawerKey(code) {

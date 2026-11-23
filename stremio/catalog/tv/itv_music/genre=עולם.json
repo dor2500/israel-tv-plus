@@ -1,24 +1,72 @@
 {
   "metas": [
     {
-      "id": "itv_music_1hd",
+      "id": "itv_mtv_biggest_pop",
       "type": "tv",
-      "name": "212. 1HD Music Television",
-      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/music_1hd.png",
+      "name": "MTV להיטי פופ (MTV Pop)",
+      "poster": "https://images.pluto.tv/channels/6047fbdbbb776a0007e7f2ff/colorLogoPNG.png",
       "posterShape": "landscape",
-      "description": "ערוץ מוזיקה בינלאומי באיכות תמונה וסאונד מדהימים\n\n📡 מקור השידור: שרת IP ללא שם (1HD)\n⚠️ ממסר צד שלישי",
+      "description": "📡 מקור השידור:",
       "genres": [
         "מוזיקה",
         "עולם"
       ]
     },
     {
-      "id": "itv_vevo_pop_live_fhd",
+      "id": "itv_mtv_spankin_new",
       "type": "tv",
-      "name": "366. Vevo Pop Music Hits FHD",
-      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/vevo_pop_live_fhd.png",
+      "name": "MTV שירים חדשים (MTV New)",
+      "poster": "https://images.pluto.tv/channels/6541010f770cf1000866be98/colorLogoPNG.png",
       "posterShape": "landscape",
-      "description": "קליפים ולהיטי פופ עולמיים מבית Vevo ב-Full HD.\n\n📡 מקור השידור: amg00056-amg00056c6-rakuten-uk-3235.playouts.now.amagi.tv\n⚠️ ממסר צד שלישי",
+      "description": "📡 מקור השידור:",
+      "genres": [
+        "מוזיקה",
+        "עולם"
+      ]
+    },
+    {
+      "id": "itv_clubbing_tv_uk",
+      "type": "tv",
+      "name": "מוזיקה אלקטרונית (Clubbing TV)",
+      "poster": "https://i.imgur.com/MyiA92q.png",
+      "posterShape": "landscape",
+      "description": "📡 מקור השידור:",
+      "genres": [
+        "מוזיקה",
+        "עולם"
+      ]
+    },
+    {
+      "id": "itv_classica_music",
+      "type": "tv",
+      "name": "מוזיקה קלאסית (Classica)",
+      "poster": "https://i.imgur.com/bLjmQTU.png",
+      "posterShape": "landscape",
+      "description": "📡 מקור השידור:",
+      "genres": [
+        "מוזיקה",
+        "עולם"
+      ]
+    },
+    {
+      "id": "itv_now_rock_tv",
+      "type": "tv",
+      "name": "ערוץ הרוק (NOW Rock)",
+      "poster": "https://i.imgur.com/GuM4GnX.png",
+      "posterShape": "landscape",
+      "description": "📡 מקור השידור:",
+      "genres": [
+        "מוזיקה",
+        "עולם"
+      ]
+    },
+    {
+      "id": "itv_stingray_movie_music",
+      "type": "tv",
+      "name": "פסקולים מסרטים (Movie Music)",
+      "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2CSpCdAxnLpqebMLZh6h7vMPk6LYpdqkVHA&s",
+      "posterShape": "landscape",
+      "description": "📡 מקור השידור:",
       "genres": [
         "מוזיקה",
         "עולם"

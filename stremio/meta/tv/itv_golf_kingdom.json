@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_golf_kingdom",
+    "type": "tv",
+    "name": "גולף עולמי (Golf Kingdom)",
+    "poster": "https://i.imgur.com/Lv53nh4.png",
+    "posterShape": "landscape",
+    "logo": "https://i.imgur.com/Lv53nh4.png",
+    "background": "https://i.imgur.com/Lv53nh4.png",
+    "description": "📡 מקור השידור:",
+    "genres": [
+      "ספורט",
+      "עולם"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "עולם"
+  }
+}

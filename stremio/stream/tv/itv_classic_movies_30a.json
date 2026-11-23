@@ -1,0 +1,12 @@
+{
+  "streams": [
+    {
+      "name": "ישראל TV+\n[FHD ראשי]",
+      "title": "סרטים קלאסיים (Classic Movies)\n📡 \n",
+      "url": "https://30a-tv.com/feeds/pzaz/30atvmovies.m3u8",
+      "behaviorHints": {
+        "bingeGroup": "itv-live"
+      }
+    }
+  ]
+}

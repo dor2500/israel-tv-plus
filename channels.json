@@ -9657,5 +9657,295 @@
       "found": "שידור רשמי Eli Nisman",
       "web": "✅"
     }
+  },
+  {
+    "id": "space_live_4k",
+    "name": "חלל בשידור חי (Space Live 4K)",
+    "nameEn": "Space Live powered by sen",
+    "category": "מדע וטבע",
+    "categoryEn": "docu",
+    "url": "https://linear-1224.frequency.stream/dist/lg-uk/1224/hls/master/playlist.m3u8",
+    "logo": "https://static.frequency.com/studio/itv/channels/1224-400x200.png",
+    "source": "FAST"
+  },
+  {
+    "id": "wildearth_safari",
+    "name": "ספארי חי באפריקה (WildEarth)",
+    "nameEn": "WildEarth",
+    "category": "מדע וטבע",
+    "categoryEn": "docu",
+    "url": "https://dqga3jatxofgx.cloudfront.net/WildEarth.m3u8",
+    "logo": "https://i.imgur.com/Vhv5gjN.png",
+    "source": "FAST"
+  },
+  {
+    "id": "zenlife_ambient",
+    "name": "אווירה ורגיעה (ZenLIFE)",
+    "nameEn": "ZenLIFE by Stingray",
+    "category": "מדע וטבע",
+    "categoryEn": "docu",
+    "url": "https://lotus.stingray.com/manifest/zenlife-zen001-montreal/samsungtvplus/master.m3u8",
+    "logo": "https://www.stingray.com/wp-content/uploads/2023/12/stingray_zenlifebystingray_white.svg",
+    "source": "FAST"
+  },
+  {
+    "id": "love_nature_fast",
+    "name": "טבע פראי (Love Nature)",
+    "nameEn": "Love Nature",
+    "category": "מדע וטבע",
+    "categoryEn": "docu",
+    "url": "https://aegis-cloudfront-1.tubi.video/6d6d0f24-8445-4b4c-bdf6-44f9e38beaa4/playlist.m3u8",
+    "logo": "https://tv.lovenature.com/wp-content/uploads/2024/10/LoveNature2024_Logo_full_colour-copy.png",
+    "source": "FAST"
+  },
+  {
+    "id": "better_life_nature",
+    "name": "טבע ונופים (Better Life)",
+    "nameEn": "Better Life Nature Channel",
+    "category": "מדע וטבע",
+    "categoryEn": "docu",
+    "url": "https://tgn.bozztv.com/betterlife/betternature/betternature/index.m3u8",
+    "logo": "https://i.imgur.com/D8Vuw6I.png",
+    "source": "FAST"
+  },
+  {
+    "id": "smithsonian_selects",
+    "name": "סמית׳סוניאן דוקו (Smithsonian)",
+    "nameEn": "Smithsonian Channel Selects",
+    "category": "מדע וטבע",
+    "categoryEn": "docu",
+    "url": "https://jmp2.uk/plu-5f21ea08007a49000762d349.m3u8",
+    "logo": "https://i.imgur.com/Kt5j8Vr.png",
+    "source": "FAST"
+  },
+  {
+    "id": "pluto_science",
+    "name": "ערוץ המדע (Pluto Science)",
+    "nameEn": "Pluto TV Science",
+    "category": "מדע וטבע",
+    "categoryEn": "docu",
+    "url": "https://jmp2.uk/plu-563a970aa1a1f7fe7c9daad7.m3u8",
+    "logo": "https://i.imgur.com/uhunRoU.png",
+    "source": "FAST"
+  },
+  {
+    "id": "docubay_tv",
+    "name": "דוקו עולמי (DocuBay)",
+    "nameEn": "DocuBay TV",
+    "category": "מדע וטבע",
+    "categoryEn": "docu",
+    "url": "https://cc-mgr91yrk4pehy.akamaized.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-mgr91yrk4pehy/playlist.m3u8",
+    "logo": "https://i.imgur.com/OGyeLLR.png",
+    "source": "FAST"
+  },
+  {
+    "id": "documentary_plus",
+    "name": "דוקומנטרי+ (Documentary+)",
+    "nameEn": "Documentary+",
+    "category": "מדע וטבע",
+    "categoryEn": "docu",
+    "url": "https://ef79b15c8c7c46c7a9de9d33001dbd07.mediatailor.us-west-2.amazonaws.com/v1/master/ba62fe743df0fe93366eba3a257d792884136c7f/LINEAR-859-DOCUMENTARYPLUS-DOCUMENTARYPLUS/mt/documentaryplus/859/hls/master/playlist.m3u8",
+    "logo": "https://i.imgur.com/x57klfS.png",
+    "source": "FAST"
+  },
+  {
+    "id": "intravel_fast",
+    "name": "טיולים בעולם (INTRAVEL)",
+    "nameEn": "INTRAVEL",
+    "category": "מדע וטבע",
+    "categoryEn": "docu",
+    "url": "https://amg00861-amg00861c10-rakuten-uk-3152.playouts.now.amagi.tv/playlist.m3u8",
+    "logo": "https://jiotvimages.cdn.jio.com/dare_images/images/Intravel.png",
+    "source": "FAST"
+  },
+  {
+    "id": "fifa_plus_global",
+    "name": "פיפ״א+ כדורגל (FIFA+)",
+    "nameEn": "FIFA+",
+    "category": "ספורט",
+    "categoryEn": "sports",
+    "url": "https://95cedebd.wurl.com/master/f36d25e7e52f1ba8d7e56eb859c636563214f541/Vml6aW9fRklGQVBsdXNFbmdsaXNoX0hMUw/playlist.m3u8",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/FIFA%2B_(2025).svg/960px-FIFA%2B_(2025).svg.png",
+    "source": "FAST"
+  },
+  {
+    "id": "fuel_tv_extreme",
+    "name": "ספורט אקסטרים (FUEL TV)",
+    "nameEn": "FUEL TV",
+    "category": "ספורט",
+    "categoryEn": "sports",
+    "url": "https://amg01074-fueltv-fueltvemeaen-rakuten-b6j62.amagi.tv/hls/amagi_hls_data_rakutenAA-fueltvemeaen/CDN/master.m3u8",
+    "logo": "https://i.imgur.com/I8mviBy.png",
+    "source": "FAST"
+  },
+  {
+    "id": "fightbox_hd",
+    "name": "אומנויות לחימה (FightBox HD)",
+    "nameEn": "FightBox HD",
+    "category": "ספורט",
+    "categoryEn": "sports",
+    "url": "https://nosignal1.antenaplay.ro/hls/fightbox-hd/index.m3u8",
+    "logo": "https://i.imgur.com/mRsnztA.png",
+    "source": "FAST"
+  },
+  {
+    "id": "bellator_mma",
+    "name": "בלטור MMA (Bellator)",
+    "nameEn": "Bellator MMA",
+    "category": "ספורט",
+    "categoryEn": "sports",
+    "url": "https://jmp2.uk/plu-5ebc8688f3697d00072f7cf8.m3u8",
+    "logo": "https://i.imgur.com/VBKoLHk.png",
+    "source": "FAST"
+  },
+  {
+    "id": "floracing_motorsport",
+    "name": "מרוצי מוטורספורט (FloRacing)",
+    "nameEn": "FloRacing",
+    "category": "ספורט",
+    "categoryEn": "sports",
+    "url": "https://amg02278-amg02278c1-flosports-worldwide-7592.playouts.now.amagi.tv/playlist.m3u8",
+    "logo": "https://images.fubo.tv/channel-config-ui/station-logos/on-dark/floracing-white.png",
+    "source": "FAST"
+  },
+  {
+    "id": "dazn_darts",
+    "name": "DAZN חצים (DAZN Darts)",
+    "nameEn": "DAZN Darts x Pluto TV",
+    "category": "ספורט",
+    "categoryEn": "sports",
+    "url": "https://jmp2.uk/plu-64b67f0424ade50008a3be17.m3u8",
+    "logo": "https://images.pluto.tv/channels/64b67f0424ade50008a3be17/colorLogoPNG.png",
+    "source": "FAST"
+  },
+  {
+    "id": "golf_kingdom",
+    "name": "גולף עולמי (Golf Kingdom)",
+    "nameEn": "30A Golf Kingdom",
+    "category": "ספורט",
+    "categoryEn": "sports",
+    "url": "https://30a-tv.com/feeds/vidaa/golf.m3u8",
+    "logo": "https://i.imgur.com/Lv53nh4.png",
+    "source": "FAST"
+  },
+  {
+    "id": "cc_south_park",
+    "name": "סאות׳ פארק 24/7 (South Park)",
+    "nameEn": "Comedy Central South Park",
+    "category": "סרטים וסדרות",
+    "categoryEn": "movies",
+    "url": "https://jmp2.uk/plu-609ae66b359b270007869ff1.m3u8",
+    "logo": "https://images.pluto.tv/channels/609ae66b359b270007869ff1/colorLogoPNG_1733160636316.png",
+    "source": "FAST"
+  },
+  {
+    "id": "cc_roast",
+    "name": "קומדי סנטרל רוסט (CC Roast)",
+    "nameEn": "Comedy Central Roast",
+    "category": "סרטים וסדרות",
+    "categoryEn": "movies",
+    "url": "https://jmp2.uk/plu-6641fd41b18d700008e7e2b8.m3u8",
+    "logo": "https://images.pluto.tv/channels/6641fd41b18d700008e7e2b8/colorLogoPNG.png",
+    "source": "FAST"
+  },
+  {
+    "id": "dry_bar_comedy",
+    "name": "סטנדאפ נקי (Dry Bar Comedy)",
+    "nameEn": "Dry Bar Comedy+",
+    "category": "סרטים וסדרות",
+    "categoryEn": "movies",
+    "url": "https://drybar-drybarcomedy-1-au.samsung.wurl.tv/playlist.m3u8",
+    "logo": "https://i.imgur.com/3N2C60N.png",
+    "source": "FAST"
+  },
+  {
+    "id": "british_comedy",
+    "name": "קומדיה בריטית (British Comedy)",
+    "nameEn": "British Comedy",
+    "category": "סרטים וסדרות",
+    "categoryEn": "movies",
+    "url": "https://jmp2.uk/plu-638e11951177840007fdd6b2.m3u8",
+    "logo": "https://images.pluto.tv/channels/638e11951177840007fdd6b2/colorLogoPNG_1745597179027.png",
+    "source": "FAST"
+  },
+  {
+    "id": "classic_movies_30a",
+    "name": "סרטים קלאסיים (Classic Movies)",
+    "nameEn": "30A TV Classic Movies",
+    "category": "סרטים וסדרות",
+    "categoryEn": "movies",
+    "url": "https://30a-tv.com/feeds/pzaz/30atvmovies.m3u8",
+    "logo": "",
+    "source": "FAST"
+  },
+  {
+    "id": "action_50cent",
+    "name": "סרטי אקשן (50 Cent Action)",
+    "nameEn": "50 Cent Action",
+    "category": "סרטים וסדרות",
+    "categoryEn": "movies",
+    "url": "https://jmp2.uk/plu-68487fb3f212bedacf5a53e3.m3u8",
+    "logo": "https://provider-static.plex.tv/epg/cms/production/bcfb9977-809f-49ae-acc7-430f2c6ffb26/50CentAction_Logo_1500x1000_DarkBG_-_Chris_Connors.png",
+    "source": "FAST"
+  },
+  {
+    "id": "mtv_biggest_pop",
+    "name": "MTV להיטי פופ (MTV Pop)",
+    "nameEn": "MTV Biggest Pop",
+    "category": "מוזיקה",
+    "categoryEn": "music",
+    "url": "https://jmp2.uk/plu-5d14fd1a252d35decbc4080c.m3u8",
+    "logo": "https://images.pluto.tv/channels/6047fbdbbb776a0007e7f2ff/colorLogoPNG.png",
+    "source": "FAST"
+  },
+  {
+    "id": "mtv_spankin_new",
+    "name": "MTV שירים חדשים (MTV New)",
+    "nameEn": "MTV Spankin' New",
+    "category": "מוזיקה",
+    "categoryEn": "music",
+    "url": "https://jmp2.uk/plu-5d14fdb8ca91eedee1633117.m3u8",
+    "logo": "https://images.pluto.tv/channels/6541010f770cf1000866be98/colorLogoPNG.png",
+    "source": "FAST"
+  },
+  {
+    "id": "now_rock_tv",
+    "name": "ערוץ הרוק (NOW Rock)",
+    "nameEn": "NOW Rock",
+    "category": "מוזיקה",
+    "categoryEn": "music",
+    "url": "https://lightning-now90s-samsungnz.amagi.tv/playlist.m3u8",
+    "logo": "https://i.imgur.com/GuM4GnX.png",
+    "source": "FAST"
+  },
+  {
+    "id": "clubbing_tv_uk",
+    "name": "מוזיקה אלקטרונית (Clubbing TV)",
+    "nameEn": "Clubbing TV UK",
+    "category": "מוזיקה",
+    "categoryEn": "music",
+    "url": "https://a-cdn.klowdtv.com/live3/clubbingtv_720p/playlist.m3u8",
+    "logo": "https://i.imgur.com/MyiA92q.png",
+    "source": "FAST"
+  },
+  {
+    "id": "stingray_movie_music",
+    "name": "פסקולים מסרטים (Movie Music)",
+    "nameEn": "Movie Music by Stingray",
+    "category": "מוזיקה",
+    "categoryEn": "music",
+    "url": "https://lotus.stingray.com/manifest/cmusic-cme004-montreal/samsungtvplus/master.m3u8",
+    "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2CSpCdAxnLpqebMLZh6h7vMPk6LYpdqkVHA&s",
+    "source": "FAST"
+  },
+  {
+    "id": "classica_music",
+    "name": "מוזיקה קלאסית (Classica)",
+    "nameEn": "Classica",
+    "category": "מוזיקה",
+    "categoryEn": "music",
+    "url": "https://jmp2.uk/plu-5f779951372da90007fd45e8.m3u8",
+    "logo": "https://i.imgur.com/bLjmQTU.png",
+    "source": "FAST"
   }
 ]

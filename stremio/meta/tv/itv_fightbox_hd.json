@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_fightbox_hd",
+    "type": "tv",
+    "name": "אומנויות לחימה (FightBox HD)",
+    "poster": "https://i.imgur.com/mRsnztA.png",
+    "posterShape": "landscape",
+    "logo": "https://i.imgur.com/mRsnztA.png",
+    "background": "https://i.imgur.com/mRsnztA.png",
+    "description": "📡 מקור השידור:",
+    "genres": [
+      "ספורט",
+      "עולם"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "עולם"
+  }
+}
