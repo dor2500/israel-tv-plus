@@ -288,7 +288,10 @@
   function displayName(ch) {
     var n = (ch && ch.name) || '';
     // kept before a number or a definite ("ה") brand noun: "ערוץ 12", "ערוץ הילדים"; "ערוץ הופ!" -> "הופ!"
-    var s = n.replace(/(^|\s)ערוץ(?=\s|$)(?!\s+(\d|ה(?!ופ)))/g, ' ').replace(/\s+/g, ' ').replace(/^[\s\-–]+/, '').trim();
+    var s = n.replace(/(^|\s)ערוץ(?=\s|$)(?!\s+(\d|ה(?!ופ)))/g, ' ')
+      .replace(/\s*\([^)]*\)\s*/g, ' ')
+      .replace(/\b(FHD|UHD|4K|HD|LIVE|TV)\b/gi, ' ')
+      .replace(/\s+/g, ' ').replace(/^[\s\-–]+|[\s\-–]+$/g, '').trim();
     return !s || /^[\d\s+]*$/.test(s) ? n : s;
   }
   function foreign(ch) { return !!(Dub && ch && Dub.isForeign(ch)); }
@@ -450,7 +453,7 @@
       var idx = indexInList(S.lastId);
       if (idx !== -1) { focusGrid(idx); playIndex(idx); }
     }
-    if (TVUI && (S.profileOnStart !== false)) {
+    if (TVUI && (S.profileOnStart !== false) && tvProfiles && tvProfiles.length > 1) {
       setTimeout(function () {
         openTvProfiles();
       }, 60);
@@ -2339,9 +2342,14 @@
     d.setAttribute('data-cat', shelf.id);
     var badges = (shelf.wide ? '' : '') + (foreign(ch) ? '<span>🎙️</span>' : '') + (isRadioCh(ch) ? '<span>📻</span>' : '') +
       (isApp(ch) ? '<span>↗</span>' : '') + (appOnly(ch) ? '<span>📲</span>' : '');
+    var metaTxt = ch.countryHe ? ch.countryHe : cardMeta(ch);
+    if (shelf.id === 'RECENT') {
+      var pi = getEpgProgramInfo(ch);
+      if (pi && pi.cur && pi.cur[2]) metaTxt = pi.cur[2];
+    }
     d.innerHTML = '<div class="pc-media" style="--tint:' + tintOf(ch).replace(/"/g, '') + '"><div class="pc-badges">' + badges + '</div>' +
       '<img alt=""><div class="mono hidden"></div>' + (shelf.wide ? '<div class="pc-live-bar"></div>' : '') + '</div>' +
-      '<div class="pc-name">' + esc(displayName(ch)) + '</div><div class="pc-meta">' + esc(ch.countryHe ? ch.countryHe : cardMeta(ch)) + '</div>';
+      '<div class="pc-name">' + esc(displayName(ch)) + '</div><div class="pc-meta">' + esc(metaTxt) + '</div>';
     lazyLogo(d.querySelector('img'), d.querySelector('.mono'), ch);
     return d;
   }
@@ -5260,7 +5268,7 @@
       items.push({ ico: '⏮️', label: 'פרק קודם', act: playPrevVodEpisode });
       items.push({ ico: '⚡', label: 'מהירות ניגון', stay: true, val: function () { return (el.video.playbackRate || 1) + 'x'; }, act: cyclePlaybackSpeed });
     } else {
-      items.push({ ico: '🔴', label: 'הקלט שידור ל-Google Drive', act: function () { startLiveRecordingDialog(ch); } });
+      items.push({ ico: '☁️', label: 'הקלטת שידור בענן / שרת (Server DVR)', act: function () { startLiveRecordingDialog(ch); } });
     }
     if (state.catchup) {
       items.push({ ico: '🔴', label: 'חזרה לשידור חי', act: function () { if (state.playing) loadStream(state.playing); } });

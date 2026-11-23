@@ -69,6 +69,7 @@ data class Channel(
     val countryHe: String = "",
     /** "mako": Keshet's own CDN, the URL needs a viewing ticket from mako (see [playableUrl]). */
     val auth: String = "",
+    val hamalSlug: String = "",
     val epgId: String = "",
     val catchupDays: Int = 0,
     val catchupType: String = "",
@@ -103,12 +104,47 @@ data class Channel(
 private const val MAKO_ENTITLEMENT = "https://mass.mako.co.il/ClicksStatistics/entitlementsServicesV2.jsp"
 private const val MAKO_TICKET_TTL_MS = 10 * 60_000L
 private val makoTicketCache = ConcurrentHashMap<String, Pair<String, Long>>()
+private const val HAMAL_TICKET_TTL_MS = 20 * 60_000L
+private val hamalUrlCache = ConcurrentHashMap<String, Pair<String, Long>>()
 
 /**
  * Resolves a single candidate stream URL. Automatically fetches a Mako entitlement ticket whenever the URL is hosted
- * on mako-streaming.akamaized.net (or when auth == "mako" and the URL is a Mako stream); every other stream plays as is.
+ * on mako-streaming.akamaized.net, and refreshes direct HLS tokens for HamalSport (2lacasaba.site) streams.
  */
-suspend fun playableUrl(rawUrl: String, auth: String = "", forceRefresh: Boolean = false): String = withContext(Dispatchers.IO) {
+suspend fun playableUrl(
+    rawUrl: String,
+    auth: String = "",
+    forceRefresh: Boolean = false,
+    hamalSlug: String = "",
+): String = withContext(Dispatchers.IO) {
+    val isHamal = rawUrl.contains("2lacasaba.site", ignoreCase = true) && hamalSlug.isNotBlank()
+    if (isHamal) {
+        val now = System.currentTimeMillis()
+        if (!forceRefresh) {
+            hamalUrlCache[hamalSlug]?.let { (cached, ts) ->
+                if (now - ts < HAMAL_TICKET_TTL_MS) return@withContext cached
+            }
+        }
+        val fresh = runCatching {
+            val req = java.net.URL("https://hamalsport.tv/kanal-izle/$hamalSlug")
+            val html = (req.openConnection() as java.net.HttpURLConnection).run {
+                connectTimeout = 8_000
+                readTimeout = 8_000
+                setRequestProperty("User-Agent", USER_AGENT)
+                setRequestProperty("Referer", "https://hamalsport.tv/")
+                inputStream.bufferedReader().use { it.readText() }
+            }
+            val found = Regex("""<source[^>]+src="([^"]+)"[^>]*type="application/x-mpegURL"""", RegexOption.IGNORE_CASE)
+                .find(html)?.groupValues?.get(1)
+                ?: Regex("""src="(https?://[^"]+(?:m3u8|mono\.css)[^"]*)"""", RegexOption.IGNORE_CASE)
+                    .find(html)?.groupValues?.get(1)
+            found?.replace("mono.css", "index.m3u8")
+        }.getOrNull()
+        val resolved = fresh ?: rawUrl.replace("mono.css", "index.m3u8")
+        hamalUrlCache[hamalSlug] = resolved to now
+        return@withContext resolved
+    }
+
     val needsMakoTicket = rawUrl.contains("mako-streaming.akamaized.net", ignoreCase = true) ||
         (auth == "mako" && rawUrl.contains("mako", ignoreCase = true))
     if (!needsMakoTicket) return@withContext rawUrl
@@ -137,7 +173,7 @@ suspend fun playableUrl(rawUrl: String, auth: String = "", forceRefresh: Boolean
     resolved
 }
 
-suspend fun playableUrl(ch: Channel): String = playableUrl(ch.url, ch.auth)
+suspend fun playableUrl(ch: Channel): String = playableUrl(ch.url, ch.auth, hamalSlug = ch.hamalSlug)
 
 @Immutable
 data class Category(val key: String, val name: String, val channels: List<Channel>)
@@ -165,8 +201,15 @@ private val NumberOnly = Regex("^[\\d\\s+]*$")
  */
 val Channel.displayName: String
     get() {
-        val short = name.replace(ChannelWord, " ").replace(Regex("\\s+"), " ").trim().trimStart('-', '–', ' ')
-        return if (short.isEmpty() || NumberOnly.matches(short)) name else short
+        var short = name.replace(ChannelWord, " ")
+            .replace(Regex("\\s*\\([^)]*\\)\\s*"), " ")
+            .replace(Regex("\\b(FHD|UHD|4K|HD|LIVE|TV)\\b", RegexOption.IGNORE_CASE), " ")
+            .replace(Regex("\\s+"), " ")
+            .trim()
+            .trimStart('-', '–', ' ')
+            .trimEnd('-', '–', ' ')
+        if (short.isEmpty() || NumberOnly.matches(short)) short = name
+        return short
     }
 
 /** The line under a card: country for world channels, the category for Israeli ones. */

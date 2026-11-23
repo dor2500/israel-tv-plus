@@ -226,6 +226,24 @@ fun SettingsScreen(data: ChannelData?, prefs: AppPrefs, updater: Updater, google
                 SettingRow(Icons.Rounded.Face, "פרופילים", "${prefs.profile.name} · ${prefs.profiles.size} פרופילים", onClick = onProfiles) {
                     ProfileAvatar(prefs.avatar, glyphSize = 30.dp)
                 }
+                SettingRow(
+                    Icons.Rounded.Face,
+                    "כניסה אוטומטית לפרופיל האחרון",
+                    "דילוג על מסך \"מי צופה?\" בפתיחת האפליקציה",
+                    onClick = {
+                        val next = !prefs.autoLoginProfile
+                        haptic.performHapticFeedback(if (next) HapticFeedbackType.ToggleOn else HapticFeedbackType.ToggleOff)
+                        prefs.setAutoLoginProfileOn(next)
+                    },
+                ) {
+                    Switch(
+                        checked = prefs.autoLoginProfile,
+                        onCheckedChange = {
+                            haptic.performHapticFeedback(if (it) HapticFeedbackType.ToggleOn else HapticFeedbackType.ToggleOff)
+                            prefs.setAutoLoginProfileOn(it)
+                        },
+                    )
+                }
                 SettingRow(Icons.Rounded.MusicNote, "צליל פתיחה", "צליל קצר כשהאפליקציה נפתחת (שקט כשהטלפון על שקט)",
                     onClick = {
                         haptic.performHapticFeedback(if (prefs.launchSound) HapticFeedbackType.ToggleOff else HapticFeedbackType.ToggleOn)

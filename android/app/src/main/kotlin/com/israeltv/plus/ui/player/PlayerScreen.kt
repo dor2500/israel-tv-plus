@@ -207,12 +207,37 @@ private val GlassDark = Color.Black.copy(alpha = 0.24f)
  * and automatic highest bitrate (1080p FHD) selection.
  */
 private fun buildPlayer(context: Context, handleAudioFocus: Boolean = true): ExoPlayer {
-    val http = DefaultHttpDataSource.Factory()
+    val defaultHttp = DefaultHttpDataSource.Factory()
         .setUserAgent(USER_AGENT)
         .setAllowCrossProtocolRedirects(true)
         .setConnectTimeoutMs(6_000)
         .setReadTimeoutMs(10_000)
         .setDefaultRequestProperties(mapOf("Referer" to "https://stmify.com/"))
+    val hamalHttp = DefaultHttpDataSource.Factory()
+        .setUserAgent(USER_AGENT)
+        .setAllowCrossProtocolRedirects(true)
+        .setConnectTimeoutMs(6_000)
+        .setReadTimeoutMs(10_000)
+        .setDefaultRequestProperties(mapOf("Referer" to "https://hamalsport.tv/", "Origin" to "https://hamalsport.tv"))
+    val routingHttp = androidx.media3.datasource.DataSource.Factory {
+        val base = defaultHttp.createDataSource()
+        val hamal = hamalHttp.createDataSource()
+        object : androidx.media3.datasource.DataSource {
+            private var active: androidx.media3.datasource.DataSource = base
+            override fun addTransferListener(transferListener: androidx.media3.datasource.TransferListener) {
+                base.addTransferListener(transferListener)
+                hamal.addTransferListener(transferListener)
+            }
+            override fun open(dataSpec: androidx.media3.datasource.DataSpec): Long {
+                val host = dataSpec.uri.host.orEmpty()
+                active = if (host.contains("2lacasaba", ignoreCase = true) || host.contains("hamalsport", ignoreCase = true)) hamal else base
+                return active.open(dataSpec)
+            }
+            override fun read(buffer: ByteArray, offset: Int, length: Int): Int = active.read(buffer, offset, length)
+            override fun getUri(): android.net.Uri? = active.uri
+            override fun close() = active.close()
+        }
+    }
     val loadControl = DefaultLoadControl.Builder()
         .setBufferDurationsMs(
             /* minBufferMs = */ 20_000,
@@ -235,7 +260,7 @@ private fun buildPlayer(context: Context, handleAudioFocus: Boolean = true): Exo
     return ExoPlayer.Builder(context, renderersFactory)
         .setTrackSelector(trackSelector)
         .setLoadControl(loadControl)
-        .setMediaSourceFactory(DefaultMediaSourceFactory(http))
+        .setMediaSourceFactory(DefaultMediaSourceFactory(routingHttp))
         .setAudioAttributes(
             AudioAttributes.Builder().setUsage(C.USAGE_MEDIA).setContentType(C.AUDIO_CONTENT_TYPE_MOVIE).build(),
             /* handleAudioFocus = */ handleAudioFocus,
@@ -468,7 +493,7 @@ fun PlayerScreen(
         if (prevWasOttrast && rawCandidate.contains("ottrast.com", ignoreCase = true)) {
             delay(250)
         }
-        val url = runCatching { playableUrl(rawCandidate, current.auth, forceRefresh = attempt > 0) }.getOrElse {
+        val url = runCatching { playableUrl(rawCandidate, current.auth, forceRefresh = attempt > 0, hamalSlug = current.hamalSlug) }.getOrElse {
             if (sourceIndex + 1 < candidates.size) {
                 sourceIndex += 1
                 return@LaunchedEffect
@@ -644,8 +669,7 @@ fun PlayerScreen(
                 },
                 update = { v ->
                     v.resizeMode = fit.resizeMode
-                    val lift = if (controls && !inPip) with(density) { 240.dp.roundToPx() } else 0
-                    v.subtitleView?.setPadding(0, 0, 0, lift)
+                    v.subtitleView?.setPadding(0, 0, 0, with(density) { 24.dp.roundToPx() })
                 },
                 modifier = Modifier.fillMaxSize(),
             )
@@ -743,59 +767,70 @@ fun PlayerScreen(
             }
         }
 
-        // the single bottom-anchored overlay: programme carousel, Options, time (left) and mini channel list (right)
+        // Mobile-only player chrome: clean minimal top bar only (bottom info bar completely removed on mobile)
         AnimatedVisibility(
             !multiViewActive && controls && error == null && !castController.isCasting && !castController.isConnecting,
             enter = fadeIn(tween(220)),
             exit = fadeOut(tween(320)),
-            modifier = Modifier.fillMaxSize(),
+            modifier = Modifier.align(Alignment.TopCenter).fillMaxWidth(),
         ) {
-            val isVodNow = current.kind == "vod" || current.categoryEn == "vod"
-            PlayerOverlay(
-                channel = current,
-                programs = programs,
-                positionMs = currentPositionMs,
-                durationMs = durationMs,
-                isVod = isVodNow,
-                inCatchup = isCatchupMode,
-                catchupTitle = catchupProgram?.title,
-                canCatchup = CatchupRepository.hasCatchup(current),
-                channels = list,
-                currentIndex = index,
-                logo = logo,
-                onProgramClick = { prog ->
-                    touchTick++
-                    when {
-                        // the live programme, catch-up playback or no guide at all: the card is the play/pause control
-                        // (in catch-up, "לשידור החי" beside Options returns to live)
-                        prog == null || prog.isLiveNow -> {
-                            if (player.isPlaying) {
-                                player.pause()
-                            } else {
-                                player.volume = 1.0f
-                                player.play()
-                            }
-                        }
-                        prog.isPast -> if (CatchupRepository.hasCatchup(current)) startCatchup(prog) else statusToast = "לערוץ הזה אין שידור חוזר"
-                        else -> statusToast = "${prog.title} · ${prog.timeLabel}"
+            Row(
+                Modifier
+                    .fillMaxWidth()
+                    .background(Brush.verticalGradient(listOf(Color.Black.copy(alpha = 0.72f), Color.Transparent)))
+                    .windowInsetsPadding(WindowInsets.statusBars)
+                    .padding(horizontal = 14.dp, vertical = 12.dp),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                GlassIconButton(Icons.AutoMirrored.Rounded.ArrowBack, "חזרה", onClose, size = 40.dp)
+                Spacer(Modifier.width(10.dp))
+                Column(Modifier.weight(1f)) {
+                    Text(
+                        current.name,
+                        color = Color.White,
+                        fontSize = 15.sp,
+                        fontWeight = FontWeight.Bold,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis,
+                    )
+                    if (isCatchupMode && catchupProgram != null) {
+                        Text(
+                            "⏮️ ${catchupProgram!!.title}",
+                            color = Color(0xFF7DD3FC),
+                            fontSize = 12.sp,
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis,
+                        )
                     }
-                },
-                onOptions = {
-                    touchTick++
-                    sheet = "more"
-                },
-                onGoLive = {
-                    touchTick++
-                    isCatchupMode = false
-                    catchupProgram = null
-                    statusToast = "🔴 חזרה לשידור חי"
-                    if (player.isCurrentMediaItemLive) player.seekToDefaultPosition() else switchTo(index)
-                },
-                onPickChannel = { i ->
-                    touchTick++
-                    if (i != index) switchTo(i)
-                },
-            )
+                }
+                if (isCatchupMode) {
+                    Box(
+                        Modifier
+                            .padding(end = 8.dp)
+                            .clip(RoundedCornerShape(16.dp))
+                            .background(Color(0xFFE5202E))
+                            .clickable {
+                                touchTick++
+                                isCatchupMode = false
+                                catchupProgram = null
+                                statusToast = "🔴 חזרה לשידור חי"
+                                if (player.isCurrentMediaItemLive) player.seekToDefaultPosition() else switchTo(index)
+                            }
+                            .padding(horizontal = 10.dp, vertical = 6.dp),
+                    ) {
+                        Text("לשידור החי", color = Color.White, fontSize = 11.sp, fontWeight = FontWeight.Bold)
+                    }
+                }
+                GlassIconButton(
+                    Icons.Rounded.MoreHoriz,
+                    "אפשרויות",
+                    {
+                        touchTick++
+                        sheet = "more"
+                    },
+                    size = 40.dp,
+                )
+            }
         }
 
         PlayerOptionsDrawer(

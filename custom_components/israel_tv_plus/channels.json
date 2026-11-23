@@ -853,7 +853,7 @@
     "title": "ערוץ ספורט 1 צ'רלטון שידור חי (Charlton Sport 1 HD)",
     "category": "ספורט (Sports)",
     "categoryEn": "sports",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12249/index.m3u8",
+    "url": "https://2lacasaba.site/yessport1/index.m3u8?token=5ef9ca0f660144278cc5252bc5b3032001ffe9e9&expires=1795454371",
     "logo": "assets/logos/sport1_israel.png",
     "badge": "HD",
     "desc": "ספורט 1 (צ'רלטון) – ליגת העל הישראלית, הפרמייר ליג האנגלית, גביע המדינה ומשחקים מרכזיים בשידור חי",
@@ -862,9 +862,9 @@
     "number": 38,
     "countryHe": "ישראל",
     "src": {
-      "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
-      "kind": "official",
-      "host": "b84203c4.ottrast.com",
+      "by": "osoyz0xv.ottclub.xyz",
+      "kind": "restream",
+      "host": "osoyz0xv.ottclub.xyz",
       "found": "שידור ישראלי מקורי צ'רלטון FHD",
       "web": "❌ רק באפליקציה (הפניה בלי CORS)"
     },
@@ -889,14 +889,16 @@
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2353/index.m3u8",
       "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2353/index.m3u8",
       "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2353/index.m3u8",
-      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2353/index.m3u8"
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2353/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12249/index.m3u8"
     ],
     "backupUrls": [
       "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12249/index.m3u8",
       "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12249/index.m3u8",
       "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12249/index.m3u8"
     ],
-    "webOk": false
+    "webOk": false,
+    "hamalSlug": "yes-1"
   },
   {
     "id": "sport2_israel",
@@ -904,7 +906,7 @@
     "title": "ערוץ ספורט 2 צ'רלטון שידור חי (Charlton Sport 2 HD)",
     "category": "ספורט (Sports)",
     "categoryEn": "sports",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12250/index.m3u8",
+    "url": "https://2lacasaba.site/yessport2/index.m3u8?token=c8b17ffcb18932d20487d603c813fcf039bc406a&expires=1795454372",
     "logo": "assets/logos/sport2_israel.png",
     "badge": "HD",
     "desc": "ספורט 2 (צ'רלטון) – שידורים ישירים מהליגה האנגלית, הליגה האיטלקית, בונדסליגה, ליגה אירופית וטניס",
@@ -913,9 +915,9 @@
     "number": 39,
     "countryHe": "ישראל",
     "src": {
-      "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
-      "kind": "official",
-      "host": "b84203c4.ottrast.com",
+      "by": "osoyz0xv.ottclub.xyz",
+      "kind": "restream",
+      "host": "osoyz0xv.ottclub.xyz",
       "found": "שידור ישראלי מקורי צ'רלטון FHD",
       "web": "❌ רק באפליקציה (הפניה בלי CORS)"
     },
@@ -940,14 +942,16 @@
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2352/index.m3u8",
       "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2352/index.m3u8",
       "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2352/index.m3u8",
-      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2352/index.m3u8"
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2352/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12250/index.m3u8"
     ],
     "backupUrls": [
       "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12250/index.m3u8",
       "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12250/index.m3u8",
       "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12250/index.m3u8"
     ],
-    "webOk": false
+    "webOk": false,
+    "hamalSlug": "yes-2"
   },
   {
     "id": "sport3_israel",
@@ -955,7 +959,7 @@
     "title": "ערוץ ספורט 3 צ'רלטון שידור חי (Charlton Sport 3 HD)",
     "category": "ספורט (Sports)",
     "categoryEn": "sports",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12251/index.m3u8",
+    "url": "https://2lacasaba.site/yessport3/index.m3u8?token=9c49ea3e70f91a96664e2736c22cb2689b60ea8f&expires=1795454373",
     "logo": "assets/logos/sport3_israel.png",
     "badge": "HD",
     "desc": "ספורט 3 (צ'רלטון) – כדורגל ישראלי ואירופי, כדורסל, אולפנים חיים ואירועי ספורט בינלאומיים",
@@ -964,9 +968,9 @@
     "number": 40,
     "countryHe": "ישראל",
     "src": {
-      "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
-      "kind": "official",
-      "host": "b84203c4.ottrast.com",
+      "by": "osoyz0xv.ottclub.xyz",
+      "kind": "restream",
+      "host": "osoyz0xv.ottclub.xyz",
       "found": "שידור ישראלי מקורי צ'רלטון FHD",
       "web": "❌ רק באפליקציה (הפניה בלי CORS)"
     },
@@ -991,14 +995,16 @@
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2388/index.m3u8",
       "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2388/index.m3u8",
       "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2388/index.m3u8",
-      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2388/index.m3u8"
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2388/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12251/index.m3u8"
     ],
     "backupUrls": [
       "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12251/index.m3u8",
       "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12251/index.m3u8",
       "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12251/index.m3u8"
     ],
-    "webOk": false
+    "webOk": false,
+    "hamalSlug": "yes-3"
   },
   {
     "id": "sport4_israel",
@@ -1006,7 +1012,7 @@
     "title": "ערוץ ספורט 4 צ'רלטון שידור חי (Charlton Sport 4 FHD)",
     "category": "ספורט (Sports)",
     "categoryEn": "sports",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12252/index.m3u8",
+    "url": "https://2lacasaba.site/yessport4/index.m3u8?token=d30f5fd0f552d7bf8cbafce906ec8bd48d862afc&expires=1795454374",
     "logo": "assets/logos/sport4_israel.png",
     "badge": "FHD",
     "desc": "ספורט 4 FHD (צ'רלטון) – שידורים חיים באיכות FHD מליגת העל, הפרמייר ליג ומפעלי אופ\"א",
@@ -1015,9 +1021,9 @@
     "number": 41,
     "countryHe": "ישראל",
     "src": {
-      "by": "פרטנר TV וסלקום – שרתי שידור ישראליים",
-      "kind": "official",
-      "host": "b84203c4.ottrast.com",
+      "by": "osoyz0xv.ottclub.xyz",
+      "kind": "restream",
+      "host": "osoyz0xv.ottclub.xyz",
       "found": "שידור ישראלי מקורי צ'רלטון FHD",
       "web": "❌ רק באפליקציה (הפניה בלי CORS)"
     },
@@ -1042,14 +1048,16 @@
       "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2389/index.m3u8",
       "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2389/index.m3u8",
       "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2389/index.m3u8",
-      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2389/index.m3u8"
+      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2389/index.m3u8",
+      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12252/index.m3u8"
     ],
     "backupUrls": [
       "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12252/index.m3u8",
       "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12252/index.m3u8",
       "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12252/index.m3u8"
     ],
-    "webOk": false
+    "webOk": false,
+    "hamalSlug": "yes-4"
   },
   {
     "id": "arutz_hayeladim",
@@ -2289,6 +2297,7 @@
       "web": "✅"
     },
     "backups": [
+      "https://2lacasaba.site/yessport5/index.m3u8?token=2b52fb1ea72be5242bc8333cd8adcdce3db2bb41&expires=1795454378",
       "http://stream.mcquack.net/212/index.m3u8",
       "http://stream.mcquack.net/55/index.m3u8",
       "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32001/index.m3u8",
@@ -2313,7 +2322,8 @@
       "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32001/index.m3u8",
       "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32001/index.m3u8"
     ],
-    "webOk": true
+    "webOk": true,
+    "hamalSlug": "yes-5"
   },
   {
     "id": "sport5_plus_hd",
@@ -2330,6 +2340,7 @@
     "countryHe": "ישראל",
     "number": 101,
     "backups": [
+      "https://2lacasaba.site/yessport5plus/index.m3u8?token=2c73d12ac55675d862ba1977f6aad4d8bc8522aa&expires=1795454380",
       "http://stream.mcquack.net/333/index.m3u8",
       "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32002/index.m3u8",
       "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32002/index.m3u8",
@@ -2356,7 +2367,8 @@
       "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32002/index.m3u8",
       "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32002/index.m3u8"
     ],
-    "webOk": true
+    "webOk": true,
+    "hamalSlug": "yes-5-plus"
   },
   {
     "id": "sport5_live_hd",
@@ -2373,6 +2385,7 @@
     "countryHe": "ישראל",
     "number": 102,
     "backups": [
+      "https://2lacasaba.site/yessport5live/index.m3u8?token=9cbeecd52019544cf46181018a6d98f80de6eee4&expires=1795454379",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5_live_hevc/live.livx/playlist.m3u8",
       "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2362/index.m3u8",
       "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2362/index.m3u8",
@@ -2393,7 +2406,8 @@
       "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2362/index.m3u8",
       "https://r.il.cdn-redge.media/livehls/oil/freetv/live/sport_5_live/live.livx/playlist.m3u8"
     ],
-    "iptv": "Sport5Live.il"
+    "iptv": "Sport5Live.il",
+    "hamalSlug": "yes-5-live"
   },
   {
     "id": "sport5_gold_hd",
@@ -2424,11 +2438,13 @@
     ],
     "iptv": "Sport5Gold.il",
     "backups": [
+      "https://2lacasaba.site/5sportgold/index.m3u8?token=0afc7e9c8ce1efcca23eb5f23025e6601f2fa3a4&expires=1795454381",
       "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12254/index.m3u8",
       "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12254/index.m3u8",
       "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12254/index.m3u8",
       "https://r.il.cdn-redge.media/livehls/oil/freetv/live/sport_5_gold/live.livx/playlist.m3u8"
-    ]
+    ],
+    "hamalSlug": "yes-5-gold"
   },
   {
     "id": "sport5_stars_hd",
@@ -2458,10 +2474,12 @@
     ],
     "iptv": "Sport5Stars.il",
     "backups": [
+      "https://2lacasaba.site/5stars/index.m3u8?token=11bc03ab68ab0809bd4f9a7cde231b52c0ebbec3&expires=1795454382",
       "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12278/index.m3u8",
       "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12278/index.m3u8",
       "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12278/index.m3u8"
-    ]
+    ],
+    "hamalSlug": "yes-5-stars"
   },
   {
     "id": "sport5_max_hd",
@@ -2491,11 +2509,13 @@
       "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32147/index.m3u8"
     ],
     "backups": [
+      "https://2lacasaba.site/5max/index.m3u8?token=62d19a9f2ab5452c7ec7460cbb44d833f6e78b4c&expires=1795454383",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5_max_hevc/live.livx/playlist.m3u8",
       "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32147/index.m3u8",
       "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32147/index.m3u8",
       "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32147/index.m3u8"
-    ]
+    ],
+    "hamalSlug": "sport-5-max"
   },
   {
     "id": "one_1_hd",
@@ -2512,6 +2532,7 @@
     "countryHe": "ישראל",
     "number": 107,
     "backups": [
+      "https://2lacasaba.site/onesport/index.m3u8?token=835ce677a9269ec1a28ece554c858a19290736d8&expires=1795454375",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/one_1_hevc/live.livx/playlist.m3u8",
       "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2340/index.m3u8",
       "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2340/index.m3u8",
@@ -2530,7 +2551,8 @@
       "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2340/index.m3u8",
       "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2340/index.m3u8"
     ],
-    "iptv": "One.il"
+    "iptv": "One.il",
+    "hamalSlug": "One-1"
   },
   {
     "id": "one_2_hd",
@@ -2547,6 +2569,7 @@
     "logo": "assets/logos/one_2_hd.png",
     "number": 108,
     "backups": [
+      "https://2lacasaba.site/onesport2/index.m3u8?token=b41e890f99e68b3d798c31cd00650aeb393ebdb6&expires=1795454377",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/one_2_hevc/live.livx/playlist.m3u8",
       "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12231/index.m3u8",
       "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12231/index.m3u8",
@@ -2565,7 +2588,8 @@
       "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12231/index.m3u8",
       "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12231/index.m3u8"
     ],
-    "iptv": "One2.il"
+    "iptv": "One2.il",
+    "hamalSlug": "one-2"
   },
   {
     "id": "one_edge_hd",
