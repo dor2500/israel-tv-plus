@@ -70,6 +70,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
 import com.israeltv.plus.data.ChannelStore
 import com.israeltv.plus.data.M3uPlaylist
+import com.israeltv.plus.data.StalkerPortalAccount
 import com.israeltv.plus.data.AppPrefs
 import com.israeltv.plus.data.GoogleAccount
 import com.israeltv.plus.data.ChannelData
@@ -100,6 +101,12 @@ fun SettingsScreen(data: ChannelData?, prefs: AppPrefs, updater: Updater, google
     var m3uUrlInput by remember { mutableStateOf("") }
     var m3uNameInput by remember { mutableStateOf("") }
     var m3uLoading by remember { mutableStateOf(false) }
+    var stalkerList by remember { mutableStateOf(store.stalker.load()) }
+    var showStalkerDialog by remember { mutableStateOf(false) }
+    var stalkerUrlInput by remember { mutableStateOf("") }
+    var stalkerMacInput by remember { mutableStateOf("") }
+    var stalkerNameInput by remember { mutableStateOf("") }
+    var stalkerLoading by remember { mutableStateOf(false) }
 
     val m3uFilePicker = rememberLauncherForActivityResult(ActivityResultContracts.OpenDocument()) { uri: Uri? ->
         if (uri == null) return@rememberLauncherForActivityResult
@@ -178,6 +185,66 @@ fun SettingsScreen(data: ChannelData?, prefs: AppPrefs, updater: Updater, google
             },
         )
     }
+    if (showStalkerDialog) {
+        AlertDialog(
+            onDismissRequest = { if (!stalkerLoading) showStalkerDialog = false },
+            title = { Text("הוספת פורטל Stalker / MAC אישי") },
+            text = {
+                Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                    OutlinedTextField(
+                        value = stalkerUrlInput,
+                        onValueChange = { stalkerUrlInput = it },
+                        label = { Text("כתובת פורטל (Portal URL)") },
+                        placeholder = { Text("http://example.com/c/") },
+                        singleLine = true,
+                        modifier = Modifier.fillMaxWidth(),
+                    )
+                    OutlinedTextField(
+                        value = stalkerMacInput,
+                        onValueChange = { stalkerMacInput = it },
+                        label = { Text("כתובת MAC") },
+                        placeholder = { Text("00:1A:79:XX:XX:XX") },
+                        singleLine = true,
+                        modifier = Modifier.fillMaxWidth(),
+                    )
+                    OutlinedTextField(
+                        value = stalkerNameInput,
+                        onValueChange = { stalkerNameInput = it },
+                        label = { Text("שם לתצוגה (אופציונלי)") },
+                        singleLine = true,
+                        modifier = Modifier.fillMaxWidth(),
+                    )
+                }
+            },
+            confirmButton = {
+                Button(
+                    enabled = !stalkerLoading && stalkerUrlInput.isNotBlank() && stalkerMacInput.isNotBlank(),
+                    onClick = {
+                        stalkerLoading = true
+                        scope.launch {
+                            val res = store.stalker.addOrRefresh(stalkerUrlInput, stalkerMacInput, stalkerNameInput)
+                            stalkerLoading = false
+                            res.onSuccess { acct ->
+                                stalkerList = store.stalker.load()
+                                store.reloadWithM3u()
+                                showStalkerDialog = false
+                                stalkerUrlInput = ""
+                                stalkerMacInput = ""
+                                stalkerNameInput = ""
+                                Toast.makeText(ctx, "נטענו ${acct.channels.size} ערוצים מ-\"${acct.name}\"", Toast.LENGTH_LONG).show()
+                            }.onFailure { err ->
+                                Toast.makeText(ctx, "שגיאה בחיבור לפורטל: ${err.message ?: "בדקו כתובת ו-MAC"}", Toast.LENGTH_LONG).show()
+                            }
+                        }
+                    },
+                ) { Text(if (stalkerLoading) "מתחבר..." else "התחבר וטען") }
+            },
+            dismissButton = {
+                TextButton(enabled = !stalkerLoading, onClick = { showStalkerDialog = false }) { Text("ביטול") }
+            },
+        )
+    }
+
     var changelog by remember { mutableStateOf<List<Pair<String, List<String>>>?>(null) }
     changelog?.let { list ->
         AlertDialog(
@@ -319,6 +386,71 @@ fun SettingsScreen(data: ChannelData?, prefs: AppPrefs, updater: Updater, google
                                 onCheckedChange = {
                                     store.m3u.toggle(pl.id)
                                     m3uList = store.m3u.load()
+                                    store.reloadWithM3u()
+                                },
+                            )
+                        }
+                    }
+                }
+            }
+            Spacer(Modifier.height(28.dp))
+        }
+        item(key = "stalker") {
+            val activeStalkerCount = stalkerList.filter { it.enabled }.sumOf { it.channels.size }
+            SectionHeader("פורטל Stalker / MAC (IPTV אישי)")
+            SettingsGroup {
+                SettingRow(
+                    Icons.Rounded.AddLink,
+                    "הוספת פורטל Stalker / MAC",
+                    "הזנה מקומית של כתובת פורטל ו-MAC של המנוי האישי שלך (נשמר במכשיר בלבד)",
+                    onClick = { showStalkerDialog = true },
+                )
+                if (stalkerList.isNotEmpty()) {
+                    SettingRow(
+                        Icons.Rounded.Tv,
+                        "ערוצי Stalker פעילים",
+                        "$activeStalkerCount ערוצים מתוך ${stalkerList.size} פורטלים",
+                    )
+                }
+                stalkerList.forEach { acct: StalkerPortalAccount ->
+                    SettingRow(
+                        Icons.Rounded.Tv,
+                        acct.name,
+                        "${acct.channels.size} ערוצים · ${acct.mac}",
+                        onClick = {
+                            store.stalker.toggle(acct.id)
+                            stalkerList = store.stalker.load()
+                            store.reloadWithM3u()
+                        },
+                    ) {
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            IconButton(onClick = {
+                                scope.launch {
+                                    val res = store.stalker.addOrRefresh(acct.portalUrl, acct.mac, acct.name, acct.id)
+                                    res.onSuccess {
+                                        stalkerList = store.stalker.load()
+                                        store.reloadWithM3u()
+                                        Toast.makeText(ctx, "הפורטל \"${acct.name}\" רוענן", Toast.LENGTH_SHORT).show()
+                                    }.onFailure { err ->
+                                        Toast.makeText(ctx, "שגיאה ברענון: ${err.message}", Toast.LENGTH_SHORT).show()
+                                    }
+                                }
+                            }) {
+                                BoldIcon(Icons.Rounded.Refresh, "רענן")
+                            }
+                            IconButton(onClick = {
+                                store.stalker.delete(acct.id)
+                                stalkerList = store.stalker.load()
+                                store.reloadWithM3u()
+                                Toast.makeText(ctx, "הפורטל \"${acct.name}\" הוסר", Toast.LENGTH_SHORT).show()
+                            }) {
+                                BoldIcon(Icons.Rounded.Delete, "מחק")
+                            }
+                            Switch(
+                                checked = acct.enabled,
+                                onCheckedChange = {
+                                    store.stalker.toggle(acct.id)
+                                    stalkerList = store.stalker.load()
                                     store.reloadWithM3u()
                                 },
                             )

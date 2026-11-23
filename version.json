@@ -1,24 +1,23 @@
 {
-  "version": "4.8.87",
-  "code": 202611231553,
-  "app": 40887,
+  "version": "4.8.88",
+  "code": 202611231702,
+  "app": 40888,
   "shell": 3,
   "date": "2026-11-23",
   "notes": [
-    "בדיקת תקינות מקיפה ושחזור מלא של ערוצי ספורט צ'רלטון (1–4) + שידורי ספורט ישירים:",
-    "סריקת 331 הערוצים באפליקציה והחלפת מקורות שבורים — 100% מהערוצים פעילים.",
-    "הטמעת שידורי HLS ישירים ורענון טוקנים אוטומטי מ-hamalsport.tv עבור ספורט 1, ספורט 2, ספורט 3, ספורט 4 (ראשי) וגיבויים ישירים לערוצי ספורט 5 ו-ONE – ישירות בנגן המובנה ללא דפי אינטרנט או פרסומות.",
-    "שדרוג ספריית ה-VOD הישראלית עם פוסטרים נקיים וסנכרון מדויק של מספר הפרקים בין מסך הבית למסך הפרטים.",
-    "שדרוג ממשק הנגן והאפליקציה במובייל (Android & Web Mobile):",
-    "הסרת סרגל המידע התחתון בנגן במובייל בלבד (כרטיס ערוץ, תוכנית, פס התקדמות ואפשרויות תחתונות) לטובת צפייה נקייה עם סרגל עליון מינימלי, תוך שמירה מלאה על ממשק הטלוויזיה והדסקטופ.",
-    "תיקון חפיפת סרגל הניווט הצף בתחתית כל המסכים הנגללים (FloatingBarClearance ו-padding-bottom).",
-    "ניקוי באנר ה-Hero (הסרת לוגו כפול ברקע וחיזוק שכבת ההצללה לקריאות טקסט מושלמת).",
-    "הצגת שם התוכנית המשודרת כעת (מלוח השידורים EPG) מתחת לשם הערוץ בכרטיסי המשך צפייה.",
-    "האחדת מסגרות עגולות ללוגואים במצב כהה וקיצור כותרות ארוכות בכרטיסי הערוצים.",
-    "הוספת מתג כניסה אוטומטית לפרופיל האחרון בהגדרות ודילוג אוטומטי על מסך \"מי צופה?\" כשקיים פרופיל יחיד.",
-    "תמיכה מלאה ב-Catch-up ושמירת הקלטות ענן/שרת (Server DVR)."
+    "תמיכה מובנית בפורטלי Stalker / MAC (IPTV אישי) באנדרואיד, טלוויזיות ודסקטופ:",
+    "הוספת לקוח Stalker / Ministra Portal (MAG/MAC) גנרי ומאובטח בהגדרות (תחת רשימות M3U ו-IPTV אישיות), המאפשר לכל משתמש להזין מקומית על המכשיר את כתובת הפורטל וכתובת ה-MAC של המנוי האישי שלו.",
+    "חיבור אוטומטי (handshake, טעינת קטגוריות וערוצים, ותמיכה ב-create_link ישירות בנגן המובנה), כולל רענון, הפעלה/השבתה ומחיקה — ללא שמירה או חשיפה של מנויים בקוד האפליקציה."
   ],
   "history": [
+    {
+      "version": "4.8.88",
+      "notes": [
+        "תמיכה מובנית בפורטלי Stalker / MAC (IPTV אישי) באנדרואיד, טלוויזיות ודסקטופ:",
+        "הוספת לקוח Stalker / Ministra Portal (MAG/MAC) גנרי ומאובטח בהגדרות (תחת רשימות M3U ו-IPTV אישיות), המאפשר לכל משתמש להזין מקומית על המכשיר את כתובת הפורטל וכתובת ה-MAC של המנוי האישי שלו.",
+        "חיבור אוטומטי (handshake, טעינת קטגוריות וערוצים, ותמיכה ב-create_link ישירות בנגן המובנה), כולל רענון, הפעלה/השבתה ומחיקה — ללא שמירה או חשיפה של מנויים בקוד האפליקציה."
+      ]
+    },
     {
       "version": "4.8.87",
       "notes": [
@@ -278,51 +277,44 @@
         "סידור מסך הבית ולוח השידורים (EPG) ללא חפיפות: תפריט הקטגוריות בראש המסך, חלוקה אופקית בין רשת הערוצים משמאל לבין חלונית פרטי התוכנית ברוחב קבוע מימין, ושורת מקשי הפעולה הצבעוניים ישירות מתחת לרשת הערוצים.",
         "מסך הגדרות במסך מלא ללא שוליים צפים ותמיכה מלאה בכפתור \"אחורה\" בעכבר במחשב לחזרה מהירה למסך הבית."
       ]
-    },
-    {
-      "version": "4.8.63",
-      "notes": [
-        "נגן בטלפון ובטאבלט: אותו עיצוב כמו בטלוויזיה. התוכנית המשודרת בכרטיס גדול במרכז עם פס התקדמות ושעות, התוכנית הבאה בכרטיס קטן לידה, \"לתכנית הקודמת\" בצד השני, כפתור \"אפשרויות\" אחד מתחת, השעון בפינה השמאלית ורשימת ערוצים עם מספרים בצד ימין.",
-        "בדיקת עדכונים: כשיש גרסה חדשה של האפליקציה, לחיצה אחת על הכפתור פותחת ישר את חלון העדכון (קודם היה צריך ללחוץ פעמיים)."
-      ]
     }
   ],
   "native": {
     "android": {
-      "version": "4.8.87",
-      "app": 40887,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.87/IsraelTVPlus-android.apk"
+      "version": "4.8.88",
+      "app": 40888,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.88/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "4.8.87",
-      "app": 40887,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.87/IsraelTVPlus-windows-setup.exe"
+      "version": "4.8.88",
+      "app": 40888,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.88/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "4.8.87",
-      "app": 40887,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.87/com.israeltv.plus_all.ipk",
+      "version": "4.8.88",
+      "app": 40888,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.88/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "4.8.87",
-      "app": 40887,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.87/IsraelTVPlus-tizen-project.zip"
+      "version": "4.8.88",
+      "app": 40888,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.88/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "4.8.87",
-      "app": 40887,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.87/IsraelTVPlus-macos-arm64.zip"
+      "version": "4.8.88",
+      "app": 40888,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.88/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "4.8.87",
-      "app": 40887,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.87/IsraelTVPlus-linux-x64.zip"
+      "version": "4.8.88",
+      "app": 40888,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.88/IsraelTVPlus-linux-x64.zip"
     },
     "wear": {
-      "version": "4.8.87",
-      "app": 1040887,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.87/IsraelTVPlus-wearos.apk"
+      "version": "4.8.88",
+      "app": 1040888,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.88/IsraelTVPlus-wearos.apk"
     }
   }
 }

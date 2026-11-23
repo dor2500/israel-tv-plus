@@ -117,6 +117,13 @@ suspend fun playableUrl(
     forceRefresh: Boolean = false,
     hamalSlug: String = "",
 ): String = withContext(Dispatchers.IO) {
+    if (rawUrl.startsWith("stalker://", ignoreCase = true)) {
+        val client = OkHttpClient.Builder()
+            .connectTimeout(8, java.util.concurrent.TimeUnit.SECONDS)
+            .readTimeout(10, java.util.concurrent.TimeUnit.SECONDS)
+            .build()
+        return@withContext StalkerApi.resolveLink(client, rawUrl)
+    }
     val isHamal = rawUrl.contains("2lacasaba.site", ignoreCase = true) && hamalSlug.isNotBlank()
     if (isHamal) {
         val now = System.currentTimeMillis()
@@ -226,6 +233,7 @@ fun Channel.subtitle(): String = when {
 @Stable
 class ChannelStore(private val context: Context, private val http: OkHttpClient) {
     val m3u = M3uStore(context, http)
+    val stalker = StalkerStore(context, http)
     private val json = Json { ignoreUnknownKeys = true; coerceInputValues = true }
     @Volatile private var lastBaseJson: String? = null
     // per app version: after an update the list bundled with the new APK is used until the site's list is fetched
@@ -298,7 +306,9 @@ class ChannelStore(private val context: Context, private val http: OkHttpClient)
             .sortedBy { it.number }
         if (base.isEmpty()) return null
         val maxNum = base.maxOfOrNull { it.number } ?: 999
-        val all = base + m3u.toChannels(maxNum)
+        val m3uChans = m3u.toChannels(maxNum)
+        val stalkerChans = stalker.toChannels(maxNum + m3uChans.size + 100)
+        val all = base + m3uChans + stalkerChans
         val cats = all.groupBy { it.category }.map { (k, v) -> Category(k, shortCategory(k), v) }
         val israel = cats.firstOrNull { it.channels.first().categoryEn == "israel" }?.channels.orEmpty()
         ChannelData(all, cats, all.associateBy { it.id }, israel.filter { !it.isRadio }.take(8), vod)

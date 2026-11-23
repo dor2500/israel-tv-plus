@@ -1216,11 +1216,164 @@
     });
   }
 
+  // ================================================================== Stalker / MAC Portals (local user-entered only)
+  var STALKER_LS_KEY = 'itv_stalker_portals';
+  function loadStalkerPortals() {
+    var list = lsGet(STALKER_LS_KEY, []);
+    return Array.isArray(list) ? list : [];
+  }
+  function saveStalkerPortals(list) { lsSet(STALKER_LS_KEY, list); }
+  function normalizeStalkerBase(raw) {
+    var u = String(raw || '').trim().replace(/\/+$/, '');
+    if (!/^https?:\/\//i.test(u)) u = 'http://' + u;
+    return u.replace(/\/c\/?$/i, '').replace(/\/portal\.php$/i, '');
+  }
+  function normalizeStalkerMac(raw) {
+    return String(raw || '').trim().toUpperCase().replace(/-/g, ':');
+  }
+  function stalkerReq(url, mac, token, ok, fail) {
+    var target = (IS_WEB && RELAY && /^http:/i.test(url)) ? (RELAY + '/?u=' + encodeURIComponent(url)) : url;
+    var hdrs = { 'X-User-Agent': 'Model: MAG250; Link: WiFi' };
+    if (token) hdrs['Authorization'] = 'Bearer ' + token;
+    fetch(target, { headers: hdrs, credentials: 'omit' }).then(function (r) {
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      return r.json();
+    }).then(ok).catch(fail);
+  }
+  function stalkerHandshake(base, mac, ok, fail) {
+    var eps = [base + '/portal.php', base + '/server/load.php', base + '/stalker_portal/server/load.php'];
+    var i = 0;
+    (function next(lastErr) {
+      if (i >= eps.length) { fail(lastErr || new Error('Handshake נכשל')); return; }
+      var ep = eps[i++];
+      stalkerReq(ep + '?type=stb&action=handshake&token=&mac=' + encodeURIComponent(mac) + '&JsHttpRequest=1-xml', mac, '', function (d) {
+        var tok = d && d.js && d.js.token;
+        if (tok) ok(ep, tok);
+        else next(new Error('לא התקבל טוקן מהפורטל'));
+      }, next);
+    })(null);
+  }
+  function addOrRefreshStalkerPortal(portalUrl, macRaw, name, existingId, onDone) {
+    var base = normalizeStalkerBase(portalUrl);
+    var mac = normalizeStalkerMac(macRaw);
+    if (!/^([0-9A-F]{2}:){5}[0-9A-F]{2}$/.test(mac)) {
+      toast('⚠️ כתובת MAC לא תקינה (לדוגמה 00:1A:79:XX:XX:XX)');
+      if (onDone) onDone(false);
+      return;
+    }
+    toast('⏳ מתחבר לפורטל Stalker...');
+    stalkerHandshake(base, mac, function (ep, tok) {
+      stalkerReq(ep + '?type=itv&action=get_all_channels&JsHttpRequest=1-xml', mac, tok, function (d) {
+        var arr = (d && d.js && d.js.data) || [];
+        if (!arr.length) { toast('⚠️ לא נמצאו ערוצים בפורטל'); if (onDone) onDone(false); return; }
+        var chans = [];
+        for (var i = 0; i < arr.length; i++) {
+          var o = arr[i];
+          if (!o || !o.name || !o.cmd) continue;
+          chans.push({
+            id: String(o.id || i),
+            name: String(o.name).trim(),
+            cmd: String(o.cmd).trim(),
+            logo: o.logo ? (/^https?:/i.test(o.logo) ? o.logo : (base + '/stalker_portal/misc/logos/320/' + o.logo)) : '',
+            chno: parseInt(o.number, 10) || 0,
+            archiveDays: o.tv_archive ? Math.max(1, Math.floor((parseInt(o.tv_archive_duration, 10) || 24) / 24)) : 0
+          });
+        }
+        var pid = existingId || ('st_' + Date.now().toString(36));
+        var labelName = (name || '').trim() || hostOf(base) || 'Stalker';
+        var entry = { id: pid, name: labelName, portalUrl: base, mac: mac, enabled: true, updatedAt: Date.now(), channels: chans };
+        var list = loadStalkerPortals().slice(), idx = -1;
+        for (var j = 0; j < list.length; j++) if (list[j].id === pid) { idx = j; break; }
+        if (idx !== -1) list[idx] = entry; else list.push(entry);
+        saveStalkerPortals(list);
+        refreshM3uViews();
+        toast('✅ נטענו ' + chans.length + ' ערוצים מפורטל "' + labelName + '"');
+        if (onDone) onDone(true);
+      }, function (err) {
+        toast('⚠️ שגיאה בטעינת ערוצי הפורטל: ' + (err && err.message || ''));
+        if (onDone) onDone(false);
+      });
+    }, function (err) {
+      toast('⚠️ החיבור לפורטל נכשל: ' + (err && err.message || 'בדקו כתובת/MAC או CORS'));
+      if (onDone) onDone(false);
+    });
+  }
+  function getStalkerChannels() {
+    var list = loadStalkerPortals();
+    if (!list.length) return [];
+    var baseNum = 5000, out = [];
+    list.forEach(function (acct) {
+      if (acct.enabled === false || !Array.isArray(acct.channels)) return;
+      acct.channels.forEach(function (c) {
+        baseNum++;
+        out.push({
+          id: 'stalker_' + acct.id + '_' + c.id,
+          name: c.name,
+          number: c.chno || baseNum,
+          url: 'stalker://' + encodeURIComponent(acct.portalUrl) + '|' + acct.mac + '|' + encodeURIComponent(c.cmd),
+          logo: c.logo || '',
+          category: '📡 ' + acct.name + ' (Stalker)',
+          categoryEn: 'stalker',
+          kind: 'tv',
+          badge: 'IPTV',
+          desc: 'פורטל Stalker: ' + acct.name,
+          lang: 'he',
+          isM3u: true,
+          catchupDays: c.archiveDays || 0
+        });
+      });
+    });
+    return out;
+  }
+  function resolveStalkerUrl(rawUrl, ok, fail) {
+    var parts = String(rawUrl || '').replace(/^stalker:\/\//i, '').split('|');
+    if (parts.length < 3) { fail(new Error('invalid stalker url')); return; }
+    var base = decodeURIComponent(parts[0]), mac = parts[1], cmd = decodeURIComponent(parts[2]);
+    var direct = /https?:\/\/\S+/.exec(cmd);
+    if (direct && !/localhost/i.test(direct[0]) && cmd.indexOf('stream=') === -1) { ok(direct[0]); return; }
+    stalkerHandshake(base, mac, function (ep, tok) {
+      stalkerReq(ep + '?type=itv&action=create_link&cmd=' + encodeURIComponent(cmd) + '&JsHttpRequest=1-xml', mac, tok, function (d) {
+        var rcmd = (d && d.js && d.js.cmd) || '';
+        var m = /https?:\/\/\S+/.exec(rcmd);
+        if (m) ok(m[0]);
+        else if (direct) ok(direct[0]);
+        else fail(new Error('הפורטל לא החזיר קישור שידור'));
+      }, fail);
+    }, fail);
+  }
+  function openStalkerAddDialog() {
+    openDialog({
+      ico: '📡',
+      title: 'הוספת פורטל Stalker / MAC אישי',
+      html: '<div style="text-align:right;display:flex;flex-direction:column;gap:0.8rem;margin:0.5rem 0;">' +
+        '<label style="font-size:0.95rem;opacity:0.85;">כתובת פורטל (Portal URL):</label>' +
+        '<input id="st-url-in" type="url" dir="ltr" placeholder="http://example.com/c/" style="width:100%;box-sizing:border-box;padding:0.75rem 1rem;border-radius:10px;border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.08);color:#fff;font-size:1rem;">' +
+        '<label style="font-size:0.95rem;opacity:0.85;">כתובת MAC:</label>' +
+        '<input id="st-mac-in" type="text" dir="ltr" placeholder="00:1A:79:XX:XX:XX" style="width:100%;box-sizing:border-box;padding:0.75rem 1rem;border-radius:10px;border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.08);color:#fff;font-size:1rem;">' +
+        '<label style="font-size:0.95rem;opacity:0.85;">שם לתצוגה (אופציונלי):</label>' +
+        '<input id="st-name-in" type="text" placeholder="הפורטל שלי" style="width:100%;box-sizing:border-box;padding:0.75rem 1rem;border-radius:10px;border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.08);color:#fff;font-size:1rem;">' +
+        '</div>',
+      buttons: [
+        { label: 'ביטול' },
+        {
+          label: 'התחבר וטען', primary: true, keep: true, act: function () {
+            var u = ($('st-url-in') && $('st-url-in').value || '').trim();
+            var m = ($('st-mac-in') && $('st-mac-in').value || '').trim();
+            var n = ($('st-name-in') && $('st-name-in').value || '').trim();
+            if (!u || !m) { toast('⚠️ יש להזין כתובת פורטל וכתובת MAC'); return; }
+            closeDialog();
+            addOrRefreshStalkerPortal(u, m, n, null, function () { if (state.overlay === 'settings') renderSettings(); });
+          }
+        }
+      ]
+    });
+  }
+
   // ================================================================== channels & categories
   function loadChannels() {
     var hidden = S.hidden || [];
     var hiddenCats = S.hiddenCats || [];
-    var merged = (window.CHANNELS_DATA || []).concat(getM3uChannels());
+    var merged = (window.CHANNELS_DATA || []).concat(getM3uChannels()).concat(getStalkerChannels());
     state.all = merged.filter(function (c) {
       if (hidden.indexOf(c.id) !== -1) return false;
       if (hiddenCats.indexOf(c.category) !== -1) return false;
@@ -4200,6 +4353,13 @@
 
   function loadCandidate(ch, rawUrl) {
     var cleanUrl = normalizeStreamUrl(rawUrl);
+    if (/^stalker:\/\//i.test(cleanUrl)) {
+      hideError();
+      spinner(true, 'מתחבר לפורטל Stalker...');
+      resolveStalkerUrl(cleanUrl, function (url) { if (state.playing === ch) loadResolved(ch, url); },
+        function () { if (state.playing === ch) onFatal(ch, 'לא התקבל קישור שידור מפורטל Stalker'); });
+      return;
+    }
     if ((cleanUrl === streamUrl(ch) && ch.auth === 'mako') || /mako-streaming\.akamaized\.net/i.test(cleanUrl)) {
       hideError();
       spinner(true);
@@ -6115,6 +6275,7 @@
             action('📂 בחירת קובץ M3U / M3U8 מהמכשיר', function () { pickM3uFile(); }, 'טעינת קובץ פלייליסט מקומי מהמחשב או מהטלפון'),
             action('🔗 טעינת רשימת M3U מקישור (URL)', function () { openM3uUrlDialog(); }, 'הדבקת כתובת HTTP / HTTPS של פלייליסט'),
             action('📝 הדבקת תוכן M3U ידנית', function () { openM3uPasteDialog(); }, 'הדבקת תוכן #EXTM3U ישירות'),
+            action('📡 הוספת פורטל Stalker / MAC אישי', function () { openStalkerAddDialog(); }, 'הזנה מקומית של כתובת פורטל ו-MAC של המנוי האישי שלך (נשמר במכשיר בלבד)'),
             action('📋 פתיחת מנהל הרשימות המלא', function () { openM3uDialog(); }, 'צפייה, רענון, השבתה ומחיקה של רשימות M3U'),
             sep('רשימות טעונות (' + pls.length + ' · ' + total + ' ערוצים פעילים)')
           ];
@@ -6141,6 +6302,32 @@
                 saveM3uPlaylists([]);
                 refreshM3uViews();
                 toast('כל רשימות ה-M3U נמחקו');
+              });
+            }, '', true));
+          }
+          var stList = loadStalkerPortals();
+          if (stList.length) {
+            rows.push(sep('פורטלי Stalker / MAC (' + stList.length + ')'));
+            stList.forEach(function (st, si) {
+              rows.push({
+                type: 'toggle',
+                label: '📡 ' + st.name,
+                help: (st.channels ? st.channels.length : 0) + ' ערוצים · ' + st.mac,
+                on: function () { return st.enabled !== false; },
+                act: function () {
+                  var list = loadStalkerPortals().slice();
+                  if (!list[si]) return;
+                  list[si].enabled = list[si].enabled === false;
+                  saveStalkerPortals(list);
+                  refreshM3uViews();
+                }
+              });
+            });
+            rows.push(action('🗑️ מחיקת כל פורטלי Stalker', function () {
+              confirmBox('למחוק את כל פורטלי ה-Stalker השמורים?', function () {
+                saveStalkerPortals([]);
+                refreshM3uViews();
+                toast('כל פורטלי ה-Stalker נמחקו');
               });
             }, '', true));
           }
