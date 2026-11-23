@@ -1,15 +1,23 @@
 {
-  "version": "4.8.88",
-  "code": 202611231702,
-  "app": 40888,
+  "version": "4.8.89",
+  "code": 202611231800,
+  "app": 40889,
   "shell": 3,
   "date": "2026-11-23",
   "notes": [
-    "תמיכה מובנית בפורטלי Stalker / MAC (IPTV אישי) באנדרואיד, טלוויזיות ודסקטופ:",
-    "הוספת לקוח Stalker / Ministra Portal (MAG/MAC) גנרי ומאובטח בהגדרות (תחת רשימות M3U ו-IPTV אישיות), המאפשר לכל משתמש להזין מקומית על המכשיר את כתובת הפורטל וכתובת ה-MAC של המנוי האישי שלו.",
-    "חיבור אוטומטי (handshake, טעינת קטגוריות וערוצים, ותמיכה ב-create_link ישירות בנגן המובנה), כולל רענון, הפעלה/השבתה ומחיקה — ללא שמירה או חשיפה של מנויים בקוד האפליקציה."
+    "מרכז פלטפורמות ושירותי VOD ישראליים ובינלאומיים מלא (במובייל, בטלוויזיה ובדסקטופ):",
+    "הוספת 51 שירותי ופורטלי VOD ישירות ללשונית ה-VOD באפליקציית האנדרואיד ([VodScreen.kt](android/app/src/main/kotlin/com/israeltv/plus/ui/screens/VodScreen.kt)) ובמדף ה-VOD בגרסת Web/TV/Desktop ([app.js](app.js)).",
+    "סינון לפי קטגוריות (הכל / חינם / OTT ישראלי / ילדים ונוער / קולנוע ודוקו / מורשת ומשפחה / ספורט / בינלאומי), תגי חינם/מנוי ופתיחה ישירה באפליקציה הרשמית או בדפדפן."
   ],
   "history": [
+    {
+      "version": "4.8.89",
+      "notes": [
+        "מרכז פלטפורמות ושירותי VOD ישראליים ובינלאומיים מלא (במובייל, בטלוויזיה ובדסקטופ):",
+        "הוספת 51 שירותי ופורטלי VOD ישירות ללשונית ה-VOD באפליקציית האנדרואיד ([VodScreen.kt](android/app/src/main/kotlin/com/israeltv/plus/ui/screens/VodScreen.kt)) ובמדף ה-VOD בגרסת Web/TV/Desktop ([app.js](app.js)).",
+        "סינון לפי קטגוריות (הכל / חינם / OTT ישראלי / ילדים ונוער / קולנוע ודוקו / מורשת ומשפחה / ספורט / בינלאומי), תגי חינם/מנוי ופתיחה ישירה באפליקציה הרשמית או בדפדפן."
+      ]
+    },
     {
       "version": "4.8.88",
       "notes": [
@@ -268,53 +276,44 @@
         "מסך הבית בטלוויזיה ובמחשב: סרגל הקטגוריות המעוגל בראש המסך, פרטי הערוץ (לוגו, תגיות, תקציר ומקור שידור) בצד ימין מעל המדפים ללא חפיפה, מדפי הערוצים בתחתית (\"צפייה לאחרונה ומועדפים\", \"כל הערוצים\" ועוד) על גבי וידאו חי במסך מלא ברקע, ושורת מקשי הצבע בתחתית (\"אפשרויות\", \"גודל תמונה\", \"מועדף\", \"דיבוב\").",
         "נגן הווידאו בטלוויזיה, במחשב ובאנדרואיד: תצוגת OSD זהה לחלוטין – רשימת ערוצים אנכית עם לוגו ומספר ערוץ בצד ימין, \"לתכנית הקודמת\" עם חץ ימינה ושעות שידור, כרטיס התוכנית הנוכחית במרכז עם פס התקדמות אדום, שעות שידור וכפתור \"אפשרויות\" לבן מתחתיו, כרטיס \"בהמשך\" משמאלו עם חץ שמאלה, ושעון בפינה השמאלית התחתונה."
       ]
-    },
-    {
-      "version": "4.8.64",
-      "notes": [
-        "עדכון מקורות שידור וערוצי ילדים, סרטים, ספורט ואוכל: דיסני ג'וניור בעברית (ערוץ 49), ניקלודיאון ישראל (ערוץ 50), הפרדה מלאה בין ערוץ זום (ערוץ 53) לזום טון (ערוץ 519), HOT Cinema Family (ערוץ 58), HOT Buzz (ערוץ 60), הופ! ילדות ישראלית בשידור חי, ספורט 6 (ערוץ 511), ערוץ האוכל Food Network (ערוץ 173) וקטגוריית \"ערוצי אוכל\" חדשה.",
-        "עיצוב מחדש של שכבת הנגן (Overlay) לטלוויזיה ולמצב רוחבי: סרגל שליטה תחתון עם גרדיאנט כהה, כרטיס תוכנית נוכחית מרכזי ובולט ולצידו כרטיס התוכנית הבאה, כפתור \"אפשרויות\" ממורכז מתחת לכרטיס הראשי ופס התקדמות מלא עם שעות השידור בתחתית.",
-        "סידור מסך הבית ולוח השידורים (EPG) ללא חפיפות: תפריט הקטגוריות בראש המסך, חלוקה אופקית בין רשת הערוצים משמאל לבין חלונית פרטי התוכנית ברוחב קבוע מימין, ושורת מקשי הפעולה הצבעוניים ישירות מתחת לרשת הערוצים.",
-        "מסך הגדרות במסך מלא ללא שוליים צפים ותמיכה מלאה בכפתור \"אחורה\" בעכבר במחשב לחזרה מהירה למסך הבית."
-      ]
     }
   ],
   "native": {
     "android": {
-      "version": "4.8.88",
-      "app": 40888,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.88/IsraelTVPlus-android.apk"
+      "version": "4.8.89",
+      "app": 40889,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.89/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "4.8.88",
-      "app": 40888,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.88/IsraelTVPlus-windows-setup.exe"
+      "version": "4.8.89",
+      "app": 40889,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.89/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "4.8.88",
-      "app": 40888,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.88/com.israeltv.plus_all.ipk",
+      "version": "4.8.89",
+      "app": 40889,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.89/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "4.8.88",
-      "app": 40888,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.88/IsraelTVPlus-tizen-project.zip"
+      "version": "4.8.89",
+      "app": 40889,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.89/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "4.8.88",
-      "app": 40888,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.88/IsraelTVPlus-macos-arm64.zip"
+      "version": "4.8.89",
+      "app": 40889,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.89/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "4.8.88",
-      "app": 40888,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.88/IsraelTVPlus-linux-x64.zip"
+      "version": "4.8.89",
+      "app": 40889,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.89/IsraelTVPlus-linux-x64.zip"
     },
     "wear": {
-      "version": "4.8.88",
-      "app": 1040888,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.88/IsraelTVPlus-wearos.apk"
+      "version": "4.8.89",
+      "app": 1040889,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.89/IsraelTVPlus-wearos.apk"
     }
   }
 }

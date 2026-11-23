@@ -2834,6 +2834,63 @@
         };
       });
     }
+    var VOD_PORTALS = [
+      { id: 'vp_kanbox', name: 'כאן BOX / כאן 11 VOD', badge: 'חינם', desc: 'קופה ראשית, מנאייכ, טהרן, המפקדת, היהודים באים ודוקו', url: 'https://www.kan.org.il/lobby/kan-box/' },
+      { id: 'vp_kankids', name: 'כאן חינוכית VOD', badge: 'חינם', desc: 'כראמל, ילדי בית העץ, האחיין שלי בנץ ושקשוקה', url: 'https://www.kankids.org.il' },
+      { id: 'vp_12plus', name: '12+ (Mako VOD)', badge: 'חינם', desc: 'ארץ נהדרת, סברי מרנן, צומת מילר ודרמות קשת', url: 'https://www.mako.co.il/mako-vod' },
+      { id: 'vp_13plus', name: '13+ (רשת 13 VOD)', badge: 'חינם', desc: 'האח הגדול, הישרדות, שנות ה-80/90 והמקור', url: 'https://13tv.co.il' },
+      { id: 'vp_now14', name: 'עכשיו 14 VOD', badge: 'חינם', desc: 'הפטריוטים, מהדורות ותוכניות אולפן', url: 'https://www.now14.co.il' },
+      { id: 'vp_i24', name: 'i24NEWS VOD', badge: 'חינם', desc: 'מהדורות ותחקירים ב-4 שפות', url: 'https://www.i24news.tv' },
+      { id: 'vp_walla', name: 'וואלה VOD', badge: 'חינם', desc: 'סרטים, סדרות ובידור ישראלי', url: 'https://vod.walla.co.il' },
+      { id: 'vp_yes', name: 'yes+', badge: 'מנוי', desc: 'הפקות המקור של yes (פאודה, שטיסל, תאג"ד) ו-HBO', url: 'https://www.yes.co.il' },
+      { id: 'vp_sting', name: 'STING+', badge: 'מנוי', desc: 'ספריית הסדרות והסרטים של yes במסלול גמיש', url: 'https://www.stingtv.co.il' },
+      { id: 'vp_next', name: 'HOT VOD / NEXT TV', badge: 'מנוי', desc: 'שבאבניקים, הבורר, זגורי אימפריה והפקות HOT', url: 'https://www.nexttv.co.il' },
+      { id: 'vp_freetv', name: 'FreeTV', badge: 'מנוי', desc: 'סדרות ישראליות, ערוצי קולנוע 24/7, ילדים וספורט', url: 'https://www.freetv.tv' },
+      { id: 'vp_cellcom', name: 'Cellcom TV+', badge: 'מנוי', desc: 'ספריית VOD רחבה כולל שיתופי תוכן מקומיים', url: 'https://www.cellcomtv.co.il' },
+      { id: 'vp_partner', name: 'Partner TV+', badge: 'מנוי', desc: 'סדרות, סרטים, ספורט וסטרימינג משולב', url: 'https://www.partner.co.il/tv' },
+      { id: 'vp_bigi', name: 'BIGI (ביגי)', badge: 'ילדים', desc: 'הפיג\'מות, השמינייה, גאליס וספריית ערוץ הילדים', url: 'https://www.bigi.tv' },
+      { id: 'vp_hop', name: 'הופ! פלוס', badge: 'ילדים', desc: 'סדרות ושירים לגיל הרך של הופ! ולולי', url: 'https://www.hop.co.il' },
+      { id: 'vp_youkid', name: 'יוקיד (YouKid)', badge: 'ילדים', desc: 'קלטות ילדים קלאסיות והצגות', url: 'https://www.youkid.co.il' },
+      { id: 'vp_podi', name: 'Podi.TV', badge: 'ילדים', desc: 'הצגות מלאות של התיאטרון שלנו ללא פרסומות', url: 'https://www.podi.tv' },
+      { id: 'vp_jfc', name: 'הארכיון הישראלי לסרטים', badge: 'חינם', desc: 'מאות סרטים ישראליים קלאסיים ותיעודיים (סינמטק ירושלים)', url: 'https://jfc.org.il' },
+      { id: 'vp_tlvcin', name: 'סינמטק תל אביב VOD', badge: 'קולנוע', desc: 'קולנוע ישראלי עצמאי ודוקו איכות', url: 'https://www.cinema.co.il' },
+      { id: 'vp_ifcs', name: 'Israel Film Center Stream', badge: 'קולנוע', desc: 'קטלוג ענק של קולנוע ישראלי וזוכי פסטיבלים', url: 'https://www.israelfilmcenterstream.org' },
+      { id: 'vp_go2films', name: 'Go2Films VOD', badge: 'דוקו', desc: 'קולנוע דוקומנטרי ישראלי ויצירה עצמאית', url: 'https://www.go2films.com' },
+      { id: 'vp_docaviv', name: 'דוקאביב VOD', badge: 'דוקו', desc: 'סרטי פסטיבל הקולנוע התיעודי דוקאביב', url: 'https://www.docaviv.co.il' },
+      { id: 'vp_habima', name: 'הבימה פלוס', badge: 'תיאטרון', desc: 'הצגות ומחזות זמר של התיאטרון הלאומי', url: 'https://www.habima.co.il' },
+      { id: 'vp_hidabroot', name: 'הידברות VOD ועולם הילדים', badge: 'חינם', desc: 'הרצאות, תוכניות אולפן וספריית ילדים מפוקחת', url: 'https://www.hidabroot.org/vod' },
+      { id: 'vp_tv2000', name: 'ערוץ 2000 VOD', badge: 'חינם', desc: 'שיעורים, חיזוק ורצועת ילדים', url: 'https://www.tv2000.co.il' },
+      { id: 'vp_mainstream', name: 'מיינסטרים (Mainstream)', badge: 'משפחה', desc: 'סרטים באורך מלא ותוכן מפוקח למשפחות', url: 'https://mainstream.online' },
+      { id: 'vp_sport5', name: 'ספורט 5 VOD', badge: 'ספורט', desc: 'תקצירים, ליגת האלופות וליגת העל בכדורסל', url: 'https://www.sport5.co.il' },
+      { id: 'vp_one', name: 'ONE VOD', badge: 'ספורט', desc: 'תקצירי ליגה ספרדית, איטלקית וכדורגל ישראלי', url: 'https://www.one.co.il' },
+      { id: 'vp_screenil', name: 'Screen iL (חו"ל)', badge: 'חו"ל', desc: 'שידורים חיים, Catch-up ו-VOD ישראלי בחו"ל', url: 'https://www.screenil.com' },
+      { id: 'vp_izzy', name: 'IZZY (Stream Israel)', badge: 'בינלאומי', desc: 'סדרות, סרטים ודוקו ישראליים עם כתוביות', url: 'https://www.streamisrael.tv' },
+      { id: 'vp_chaiflicks', name: 'ChaiFlicks', badge: 'בינלאומי', desc: 'קולנוע ישראלי ויהודי, דרמות ודוקו', url: 'https://www.chaiflicks.com' },
+      { id: 'vp_max', name: 'HBO Max', badge: 'מנוי', desc: 'ספריית HBO, Warner Bros. ו-DC עם עברית', url: 'https://www.max.com' },
+      { id: 'vp_netflix', name: 'Netflix', badge: 'מנוי', desc: 'פאודה, שטיסל, קוגל וקטלוג עולמי בעברית', url: 'https://www.netflix.com' },
+      { id: 'vp_disney', name: 'Disney+', badge: 'מנוי', desc: 'דיסני, פיקסאר, מארוול ו-Star עם עברית', url: 'https://www.disneyplus.com' },
+      { id: 'vp_appletv', name: 'Apple TV+', badge: 'מנוי', desc: 'הפקות מקור 4K HDR (כולל טהרן) בעברית', url: 'https://tv.apple.com' },
+      { id: 'vp_prime', name: 'Prime Video', badge: 'מנוי', desc: 'סדרות מקור וסרטים עם כתוביות בעברית', url: 'https://www.primevideo.com' },
+      { id: 'vp_plex', name: 'Plex Free Movies & TV', badge: 'חינם', desc: 'אלפי סרטים, סדרות וערוצי FAST חינמיים', url: 'https://watch.plex.tv' },
+      { id: 'vp_tubi', name: 'Tubi', badge: 'חינם', desc: 'אלפי סרטים וסדרות חינמיים', url: 'https://tubitv.com' },
+      { id: 'vp_pluto', name: 'Pluto TV', badge: 'חינם', desc: 'ערוצי תוכן ליניאריים וספריית VOD חינמית', url: 'https://pluto.tv' },
+      { id: 'vp_kanopy', name: 'Kanopy', badge: 'חינם', desc: 'קולנוע ישראלי ואמנותי מובחר עם כרטיס ספרייה', url: 'https://www.kanopy.com' }
+    ];
+    buckets.vod = (buckets.vod || []).concat(VOD_PORTALS.map(function (p) {
+      return {
+        id: p.id,
+        name: p.name,
+        title: p.name,
+        badge: p.badge,
+        category: 'סדרות VOD',
+        categoryEn: 'vod',
+        kind: 'app',
+        site: p.url,
+        url: p.url,
+        logo: '',
+        desc: p.desc
+      };
+    }));
     var kidsRadio = [];
     state.all.forEach(function (c) {
       var b = atvBucket(c);
