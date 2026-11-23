@@ -4409,3 +4409,164 @@ body.phone #live-clock-badge {
   font-size: 0.92rem;
   padding: 4px 10px;
 }
+
+/* ==================== WOW FEATURES CSS (v4.8.91) ==================== */
+
+/* 1. Retro 90s CRT TV Mode */
+#player.retro-crt-on #video {
+  filter: contrast(1.14) saturate(1.22) sepia(0.14) brightness(0.96);
+}
+#retro-crt-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 42;
+}
+#retro-crt-overlay .crt-scanlines {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0px,
+    rgba(0, 0, 0, 0) 2px,
+    rgba(0, 0, 0, 0.28) 3px,
+    rgba(0, 0, 0, 0.28) 4px
+  );
+  opacity: 0.72;
+}
+#retro-crt-overlay .crt-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, rgba(0,0,0,0) 56%, rgba(0,0,0,0.68) 100%);
+  box-shadow: inset 0 0 60px rgba(0, 255, 128, 0.08);
+}
+#retro-crt-overlay .crt-badge {
+  position: absolute;
+  top: 24px;
+  right: 28px;
+  font-family: 'Courier New', monospace;
+  font-size: 1.9rem;
+  font-weight: 800;
+  color: #39ff14;
+  text-shadow: 0 0 10px rgba(57, 255, 20, 0.85), 2px 2px 0 rgba(0, 0, 0, 0.9);
+  letter-spacing: 0.08em;
+}
+
+/* 2. Live Breaking News Ticker */
+#live-news-ticker {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 46;
+  height: 38px;
+  background: linear-gradient(90deg, rgba(12, 16, 28, 0.92), rgba(20, 24, 38, 0.92));
+  border-bottom: 2px solid #ef4444;
+  display: flex;
+  align-items: center;
+  direction: rtl;
+  overflow: hidden;
+  pointer-events: none;
+}
+#live-news-ticker .nt-tag {
+  background: #dc2626;
+  color: #fff;
+  font-weight: 800;
+  font-size: 1.15rem;
+  padding: 0 14px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  z-index: 2;
+}
+#live-news-ticker .nt-track {
+  flex: 1;
+  overflow: hidden;
+  white-space: nowrap;
+}
+#live-news-ticker .nt-text {
+  display: inline-block;
+  color: #f8fafc;
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding-right: 100%;
+  animation: itv-news-marquee 58s linear infinite;
+}
+@keyframes itv-news-marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(100%); }
+}
+
+/* 3. Live Stream Telemetry HUD */
+#telemetry-hud {
+  position: fixed;
+  top: 68px;
+  left: 24px;
+  z-index: 46;
+  width: 240px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: rgba(6, 11, 22, 0.78);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  color: #e2e8f0;
+  font-family: monospace;
+  font-size: 1.05rem;
+  direction: rtl;
+  pointer-events: none;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.45);
+}
+#telemetry-hud .th-title {
+  color: #38bdf8;
+  font-weight: 800;
+  margin-bottom: 6px;
+  letter-spacing: 0.06em;
+  border-bottom: 1px solid rgba(56, 189, 248, 0.22);
+  padding-bottom: 4px;
+}
+#telemetry-hud .th-row {
+  display: flex;
+  justify-content: space-between;
+  margin: 3px 0;
+}
+#telemetry-hud .th-row span { color: #94a3b8; }
+#telemetry-hud .th-row b { color: #f8fafc; }
+#telemetry-hud .th-bar {
+  margin-top: 6px;
+  height: 5px;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+}
+#telemetry-hud .th-bar div {
+  height: 100%;
+  background: linear-gradient(90deg, #38bdf8, #34d399);
+  transition: width 0.4s ease;
+}
+
+/* 4. Stealth / Boss Key Overlay */
+#stealth-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: #03050a;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+#stealth-overlay .st-clock {
+  font-size: 7rem;
+  font-weight: 200;
+  color: rgba(255, 255, 255, 0.78);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.06em;
+}
+#stealth-overlay .st-sub {
+  margin-top: 14px;
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.32);
+}

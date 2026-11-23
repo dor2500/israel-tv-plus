@@ -3676,6 +3676,266 @@
     }
   }
 
+  // ==================== WOW FEATURES (v4.8.91) ====================
+
+  // 1. Retro 90s CRT TV Mode (scanlines + warm phosphor vignette + green AV-1 HUD)
+  var retroCrtEnabled = false;
+  function updateRetroCrtDom() {
+    if (!el.player) return;
+    var overlay = document.getElementById('retro-crt-overlay');
+    if (!retroCrtEnabled) {
+      el.player.classList.remove('retro-crt-on');
+      if (overlay) overlay.style.display = 'none';
+      return;
+    }
+    el.player.classList.add('retro-crt-on');
+    if (!overlay) {
+      overlay = document.createElement('div');
+      overlay.id = 'retro-crt-overlay';
+      overlay.innerHTML = '<div class="crt-scanlines"></div><div class="crt-vignette"></div><div class="crt-badge" id="crt-ch-badge">AV-1</div>';
+      el.player.appendChild(overlay);
+    }
+    var badge = document.getElementById('crt-ch-badge');
+    if (badge) {
+      var num = (state.playing && state.playing.number) ? ('CH ' + (state.playing.number < 10 ? '0' : '') + state.playing.number) : 'AV-1';
+      badge.textContent = num + ' • PAL';
+    }
+    overlay.style.display = 'block';
+  }
+  function toggleRetroCrt() {
+    retroCrtEnabled = !retroCrtEnabled;
+    updateRetroCrtDom();
+    toast(retroCrtEnabled ? '📺 מצב רטרו 90s CRT הופעל!' : '📺 מצב רטרו CRT כבוי');
+  }
+
+  // 2. Live Israeli Breaking News Ticker on ANY Channel (Ynet RSS)
+  var newsTickerEnabled = false;
+  var newsTickerTimer = null;
+  var newsHeadlines = [];
+
+  function fetchBreakingNews(cb) {
+    var rssUrl = 'https://www.ynet.co.il/Integration/StoryRss1854.xml';
+    var api = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(rssUrl);
+    try {
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', api, true);
+      xhr.timeout = 8000;
+      xhr.onload = function () {
+        if (xhr.status === 200) {
+          try {
+            var d = JSON.parse(xhr.responseText);
+            if (d && d.items && d.items.length) {
+              newsHeadlines = d.items.slice(0, 12).map(function (it) { return it.title; });
+              if (cb) cb(newsHeadlines);
+              return;
+            }
+          } catch (e) { }
+        }
+        if (cb) cb(newsHeadlines);
+      };
+      xhr.onerror = xhr.ontimeout = function () { if (cb) cb(newsHeadlines); };
+      xhr.send();
+    } catch (e) { if (cb) cb(newsHeadlines); }
+  }
+
+  function updateNewsTickerDom() {
+    var bar = document.getElementById('live-news-ticker');
+    if (!newsTickerEnabled) {
+      if (bar) bar.style.display = 'none';
+      if (newsTickerTimer) { clearInterval(newsTickerTimer); newsTickerTimer = null; }
+      return;
+    }
+    if (!bar && el.player) {
+      bar = document.createElement('div');
+      bar.id = 'live-news-ticker';
+      bar.innerHTML = '<span class="nt-tag">🔴 מבזקים</span><div class="nt-track"><span class="nt-text" id="nt-text">טוען מבזקי חדשות בזמן אמת...</span></div>';
+      el.player.appendChild(bar);
+    }
+    if (bar) bar.style.display = 'flex';
+    var refresh = function () {
+      fetchBreakingNews(function (items) {
+        var span = document.getElementById('nt-text');
+        if (span && items && items.length) {
+          span.textContent = items.join('   ✦   ') + '   ✦   ' + items.join('   ✦   ');
+        }
+      });
+    };
+    refresh();
+    if (!newsTickerTimer) newsTickerTimer = setInterval(refresh, 180000);
+  }
+
+  function toggleNewsTicker() {
+    newsTickerEnabled = !newsTickerEnabled;
+    updateNewsTickerDom();
+    toast(newsTickerEnabled ? '📰 פס מבזקי חדשות חי הופעל על גבי השידור' : '📰 פס מבזקי חדשות הוסתר');
+  }
+
+  // 3. Procedural Ambient Soundscape Mixer (Rain / Ocean / Deep Space - zero external files!)
+  var ambientModes = [
+    { id: 'off', label: 'כבוי' },
+    { id: 'rain', label: '🌧️ גשם עדין' },
+    { id: 'ocean', label: '🌊 גלי ים' },
+    { id: 'space', label: '🌌 חלל עמוק' }
+  ];
+  var ambientModeIdx = 0;
+  var ambientCtx = null;
+  var ambientNodes = null;
+
+  function stopAmbientSound() {
+    if (ambientNodes) {
+      try { if (ambientNodes.src) ambientNodes.src.stop(); } catch (e) { }
+      try { if (ambientNodes.lfo) ambientNodes.lfo.stop(); } catch (e) { }
+      try { if (ambientNodes.gain) ambientNodes.gain.disconnect(); } catch (e) { }
+      ambientNodes = null;
+    }
+  }
+
+  function startAmbientSound(modeId) {
+    stopAmbientSound();
+    if (modeId === 'off') return;
+    try {
+      var AC = window.AudioContext || window.webkitAudioContext;
+      if (!AC) return;
+      if (!ambientCtx) ambientCtx = new AC();
+      if (ambientCtx.state === 'suspended') ambientCtx.resume();
+      var bufSize = ambientCtx.sampleRate * 3;
+      var buf = ambientCtx.createBuffer(1, bufSize, ambientCtx.sampleRate);
+      var data = buf.getChannelData(0);
+      var lastOut = 0;
+      for (var i = 0; i < bufSize; i++) {
+        var white = Math.random() * 2 - 1;
+        // Brown/pink noise shaping
+        data[i] = (lastOut + (0.04 * white)) / 1.04;
+        lastOut = data[i];
+        data[i] *= 2.8;
+      }
+      var src = ambientCtx.createBufferSource();
+      src.buffer = buf;
+      src.loop = true;
+
+      var filter = ambientCtx.createBiquadFilter();
+      var gain = ambientCtx.createGain();
+      var lfo = null;
+
+      if (modeId === 'rain') {
+        filter.type = 'bandpass';
+        filter.frequency.value = 950;
+        filter.Q.value = 0.6;
+        gain.gain.value = 0.16;
+      } else if (modeId === 'ocean') {
+        filter.type = 'lowpass';
+        filter.frequency.value = 420;
+        gain.gain.value = 0.18;
+        lfo = ambientCtx.createOscillator();
+        var lfoGain = ambientCtx.createGain();
+        lfo.frequency.value = 0.12;
+        lfoGain.gain.value = 0.11;
+        lfo.connect(lfoGain);
+        lfoGain.connect(gain.gain);
+        lfo.start();
+      } else if (modeId === 'space') {
+        filter.type = 'lowpass';
+        filter.frequency.value = 180;
+        gain.gain.value = 0.24;
+      }
+
+      src.connect(filter);
+      filter.connect(gain);
+      gain.connect(ambientCtx.destination);
+      src.start();
+      ambientNodes = { src: src, lfo: lfo, gain: gain };
+    } catch (e) { }
+  }
+
+  function cycleAmbientSound() {
+    ambientModeIdx = (ambientModeIdx + 1) % ambientModes.length;
+    var m = ambientModes[ambientModeIdx];
+    startAmbientSound(m.id);
+    toast('🎧 צלילי רקע ואווירה: ' + m.label);
+  }
+
+  // 4. Live Stream Telemetry HUD (Stats for Nerds)
+  var telemetryEnabled = false;
+  var telemetryTimer = null;
+
+  function updateTelemetryHud() {
+    var hud = document.getElementById('telemetry-hud');
+    if (!telemetryEnabled) {
+      if (hud) hud.style.display = 'none';
+      if (telemetryTimer) { clearInterval(telemetryTimer); telemetryTimer = null; }
+      return;
+    }
+    if (!hud && el.player) {
+      hud = document.createElement('div');
+      hud.id = 'telemetry-hud';
+      el.player.appendChild(hud);
+    }
+    var render = function () {
+      if (!hud || !el.video) return;
+      var v = el.video;
+      var w = v.videoWidth || 0;
+      var h = v.videoHeight || 0;
+      var bufSec = 0;
+      try {
+        if (v.buffered && v.buffered.length) {
+          bufSec = Math.max(0, v.buffered.end(v.buffered.length - 1) - v.currentTime);
+        }
+      } catch (e) { }
+      var bw = '—';
+      if (state.hls && state.hls.levels && state.hls.currentLevel >= 0 && state.hls.levels[state.hls.currentLevel]) {
+        var br = state.hls.levels[state.hls.currentLevel].bitrate || 0;
+        if (br > 0) bw = (br / 1000000).toFixed(2) + ' Mbps';
+      }
+      var chName = (state.playing && state.playing.name) ? state.playing.name : 'Live';
+      var pct = Math.min(100, Math.round((bufSec / 30) * 100));
+      hud.innerHTML =
+        '<div class="th-title">⚡ TELEMETRY HUD</div>' +
+        '<div class="th-row"><span>ערוץ</span><b>' + chName + '</b></div>' +
+        '<div class="th-row"><span>רזולוציה</span><b>' + (w ? (w + '×' + h) : 'טוען...') + '</b></div>' +
+        '<div class="th-row"><span>קצב נתונים</span><b>' + bw + '</b></div>' +
+        '<div class="th-row"><span>באפר חי</span><b>' + bufSec.toFixed(1) + 's</b></div>' +
+        '<div class="th-bar"><div style="width:' + pct + '%"></div></div>';
+    };
+    if (hud) hud.style.display = 'block';
+    render();
+    if (!telemetryTimer) telemetryTimer = setInterval(render, 1000);
+  }
+
+  function toggleTelemetryHud() {
+    telemetryEnabled = !telemetryEnabled;
+    updateTelemetryHud();
+    toast(telemetryEnabled ? '📊 נתוני שידור חיים (Telemetry HUD) הופעלו' : '📊 נתוני שידור הוסתרו');
+  }
+
+  // 5. Stealth / Boss Key Mode (Instant Mute + Minimal Clock Blackout)
+  var stealthActive = false;
+  var stealthPrevMuted = false;
+
+  function toggleStealthMode() {
+    stealthActive = !stealthActive;
+    var ov = document.getElementById('stealth-overlay');
+    if (stealthActive) {
+      if (el.video) {
+        stealthPrevMuted = el.video.muted;
+        el.video.muted = true;
+      }
+      if (!ov) {
+        ov = document.createElement('div');
+        ov.id = 'stealth-overlay';
+        ov.onclick = toggleStealthMode;
+        document.body.appendChild(ov);
+      }
+      var d = new Date();
+      var hh = (d.getHours() < 10 ? '0' : '') + d.getHours();
+      var mm = (d.getMinutes() < 10 ? '0' : '') + d.getMinutes();
+      ov.innerHTML = '<div class="st-clock">' + hh + ':' + mm + '</div><div class="st-sub">מצב השהיה שקט — לחצו בכל מקום או B לחזרה לשידור</div>';
+      ov.style.display = 'flex';
+    } else {
+      if (ov) ov.style.display = 'none';
+      if (el.video) el.video.muted = stealthPrevMuted;
+    }
+  }
+
   function setAudioBoost(lvl) {
     audioBoostLevel = lvl;
     initAudioBoost();
@@ -4110,12 +4370,21 @@
     }
     native('setPlaying', true);
     updateLiveClockDom();
+    updateRetroCrtDom();
+    updateNewsTickerDom();
+    updateTelemetryHud();
     toggleClass(el.obPip, 'hidden', !(native('canPip') || (document.pictureInPictureEnabled && !state.isRadio)));
   }
 
   function closePlayer(keepPlaying) {
     var clockEl = document.getElementById('live-clock-badge');
     if (clockEl) clockEl.style.display = 'none';
+    var hudEl = document.getElementById('telemetry-hud');
+    if (hudEl) hudEl.style.display = 'none';
+    var ntEl = document.getElementById('live-news-ticker');
+    if (ntEl) ntEl.style.display = 'none';
+    var crtEl = document.getElementById('retro-crt-overlay');
+    if (crtEl) crtEl.style.display = 'none';
     hideError();
     spinner(false);
     closeDrawer(true);
@@ -5548,6 +5817,39 @@
         return r > 0 ? r + ' דק׳' : 'כבוי';
       },
       act: openSleepTimerDialog
+    });
+    items.push({
+      ico: '📺',
+      label: 'מצב טלוויזיה רטרו שנות ה-90 (CRT)',
+      stay: true,
+      val: function () { return retroCrtEnabled ? 'פועל' : 'כבוי'; },
+      act: toggleRetroCrt
+    });
+    items.push({
+      ico: '📰',
+      label: 'פס מבזקי חדשות חי (על כל ערוץ)',
+      stay: true,
+      val: function () { return newsTickerEnabled ? 'פועל' : 'כבוי'; },
+      act: toggleNewsTicker
+    });
+    items.push({
+      ico: '🎧',
+      label: 'מיקסר צלילי רקע ואווירה',
+      stay: true,
+      val: function () { return ambientModes[ambientModeIdx].label; },
+      act: cycleAmbientSound
+    });
+    items.push({
+      ico: '📊',
+      label: 'מד דופק שידור חי (Telemetry HUD)',
+      stay: true,
+      val: function () { return telemetryEnabled ? 'פועל' : 'כבוי'; },
+      act: toggleTelemetryHud
+    });
+    items.push({
+      ico: '🤫',
+      label: 'מצב בוס / השתקת מסך מיידית (B)',
+      act: toggleStealthMode
     });
     items.push({
       ico: '🎲',
@@ -8319,6 +8621,9 @@
     else if (code === 39) playerMenu();
     else if (code === 82) playRandomChannel();
     else if (code === 67) toggleLiveClock();
+    else if (code === 66) toggleStealthMode();
+    else if (code === 73) toggleTelemetryHud();
+    else if (code === 78) toggleNewsTicker();
   }
 
   function drawerKey(code) {

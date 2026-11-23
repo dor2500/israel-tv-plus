@@ -333,6 +333,17 @@ fun PlayerScreen(
     var isAudioOnlyMode by remember { mutableStateOf(false) }
     var showLiveClock by remember { mutableStateOf(false) }
     var liveClockText by remember { mutableStateOf("") }
+    var retroCrtMode by remember { mutableStateOf(false) }
+    var newsTickerMode by remember { mutableStateOf(false) }
+    var telemetryHudMode by remember { mutableStateOf(false) }
+    var stealthMode by remember { mutableStateOf(false) }
+    var ambientMode by remember { mutableStateOf(AmbientSoundMode.OFF) }
+
+    AmbientSoundEffect(ambientMode)
+
+    LaunchedEffect(stealthMode) {
+        player.volume = if (stealthMode) 0f else 1f
+    }
 
     LaunchedEffect(showLiveClock) {
         while (showLiveClock) {
@@ -862,6 +873,23 @@ fun PlayerScreen(
                 ) {
                     Text("🕒", fontSize = 14.sp)
                 }
+                Box(
+                    Modifier
+                        .padding(end = 6.dp)
+                        .clip(CircleShape)
+                        .background(
+                            if (retroCrtMode || newsTickerMode || telemetryHudMode || ambientMode != AmbientSoundMode.OFF)
+                                Color(0xFFA855F7).copy(alpha = 0.5f)
+                            else Color.White.copy(alpha = 0.14f)
+                        )
+                        .clickable {
+                            touchTick++
+                            sheet = "wow"
+                        }
+                        .padding(horizontal = 10.dp, vertical = 8.dp),
+                ) {
+                    Text("✨", fontSize = 14.sp)
+                }
                 GlassIconButton(
                     Icons.Rounded.MoreHoriz,
                     "אפשרויות",
@@ -872,6 +900,52 @@ fun PlayerScreen(
                     size = 40.dp,
                 )
             }
+        }
+
+        // WOW Overlays (Retro 90s CRT, Live Breaking News Ticker, Telemetry HUD, Stealth Mode)
+        if (retroCrtMode && !inPip && !multiViewActive) {
+            RetroCrtOverlay(channelLabel = "CH ${(index + 1).toString().padStart(2, '0')}")
+        }
+        if (newsTickerMode && !inPip && !multiViewActive) {
+            LiveNewsTickerBar(modifier = Modifier.align(Alignment.TopCenter))
+        }
+        if (telemetryHudMode && !inPip && !multiViewActive) {
+            TelemetryHudOverlay(
+                player = player,
+                channelName = current.name,
+                modifier = Modifier.align(Alignment.TopStart),
+            )
+        }
+        if (stealthMode) {
+            StealthClockOverlay(onDismiss = { stealthMode = false })
+        }
+        if (sheet == "wow") {
+            WowModesSheet(
+                retroCrt = retroCrtMode,
+                newsTicker = newsTickerMode,
+                telemetryHud = telemetryHudMode,
+                ambientMode = ambientMode,
+                onToggleRetroCrt = {
+                    retroCrtMode = !retroCrtMode
+                    statusToast = if (retroCrtMode) "📺 מצב רטרו 90s CRT הופעל!" else "📺 מצב רטרו CRT כבוי"
+                },
+                onToggleNewsTicker = {
+                    newsTickerMode = !newsTickerMode
+                    statusToast = if (newsTickerMode) "📰 פס מבזקי חדשות חי הופעל" else "📰 פס מבזקי חדשות הוסתר"
+                },
+                onToggleTelemetryHud = {
+                    telemetryHudMode = !telemetryHudMode
+                    statusToast = if (telemetryHudMode) "📊 מד דופק שידור חי הופעל" else "📊 מד דופק הוסתר"
+                },
+                onCycleAmbient = {
+                    ambientMode = ambientMode.next()
+                    statusToast = "🎧 צלילי רקע: ${ambientMode.label}"
+                },
+                onActivateStealth = {
+                    stealthMode = true
+                },
+                onDismiss = { sheet = null },
+            )
         }
 
         // Persistent Floating Live TV Clock (stays visible even when top bar auto-hides)
