@@ -110,7 +110,7 @@ private val FloatingBarFade = 120.dp
  * Space the feed keeps free under its last row: clear of the whole fade behind the floating bar plus breathing room,
  * so the bottom row of channels (poster, two-line name and subtitle) can always be scrolled fully into view.
  */
-val FloatingBarClearance = maxOf(FloatingBarFade, FloatingBarHeight + FloatingBarMargin) + 36.dp
+val FloatingBarClearance = maxOf(FloatingBarFade, FloatingBarHeight + FloatingBarMargin) + 60.dp
 
 /** The master LazyColumn's insets: under the header + macro categories (114 dp on Home, 72 dp on inner tabs) and clear of the floating bar. */
 @Composable

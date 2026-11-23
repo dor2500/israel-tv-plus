@@ -290,6 +290,7 @@ private val CardTitle = TextStyle(fontSize = 12.5.sp, lineHeight = 15.sp)
 
 @Composable
 fun ChannelLogo(url: String, modifier: Modifier = Modifier, isRadio: Boolean = false) {
+    val logoShape = RoundedCornerShape(12.dp)
     if (url.isEmpty()) {
         Box(modifier, contentAlignment = Alignment.Center) {
             Icon(
@@ -304,7 +305,20 @@ fun ChannelLogo(url: String, modifier: Modifier = Modifier, isRadio: Boolean = f
         val request = remember(url) {
             ImageRequest.Builder(context).data(url).crossfade(true).build()
         }
-        AsyncImage(model = request, contentDescription = null, modifier = modifier, contentScale = ContentScale.Fit)
+        Box(
+            modifier
+                .clip(logoShape)
+                .background(Color.White.copy(alpha = 0.04f))
+                .padding(4.dp),
+            contentAlignment = Alignment.Center,
+        ) {
+            AsyncImage(
+                model = request,
+                contentDescription = null,
+                modifier = Modifier.fillMaxSize().clip(RoundedCornerShape(8.dp)),
+                contentScale = ContentScale.Fit,
+            )
+        }
     }
 }
 
@@ -748,6 +762,7 @@ fun ContinueWatchingShelf(
     onPlay: (Channel) -> Unit,
     modifier: Modifier = Modifier,
     headerTrailing: (@Composable () -> Unit)? = null,
+    epgProgram: (Channel) -> String? = { null },
 ) {
     val d = LocalDimens.current
     Column(modifier.padding(bottom = d.shelfGap)) {
@@ -763,10 +778,11 @@ fun ContinueWatchingShelf(
                     val hash = abs(ch.id.hashCode() % 60) / 100f
                     (0.32f + hash).coerceIn(0.24f, 0.88f)
                 }
+                val liveTitle = epgProgram(ch)?.takeIf { it.isNotBlank() } ?: subtitle(ch)
                 ContinueWatchingCard(
                     channel = ch,
                     logo = logo(ch),
-                    subtitle = subtitle(ch),
+                    subtitle = liveTitle,
                     progress = p,
                     onClick = { onPlay(ch) },
                     sharedKey = "continue:${ch.id}",

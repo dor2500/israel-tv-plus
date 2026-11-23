@@ -114,7 +114,8 @@ fun ItvApp(
     onEnterPip: () -> Unit,
 ) {
     val data by store.state.collectAsStateWithLifecycle()
-    var page by remember { mutableStateOf<Page>(if (coldStart) Page.Profiles else Page.Feed) }
+    val skipProfiles = !coldStart || prefs.profiles.size <= 1 || prefs.autoLoginProfile
+    var page by remember { mutableStateOf<Page>(if (skipProfiles) Page.Feed else Page.Profiles) }
     var intro by rememberSaveable { mutableStateOf(coldStart) }
     val cascade = remember { Cascade(active = coldStart) }
     val origin = remember { PlayOrigin() }

@@ -4350,3 +4350,35 @@ body.design-cinematic-preview .atv-card {
   display: inline-flex;
   align-items: center;
 }
+
+/* ================================================================== v4.8.87 Mobile Player Cleanliness, Nav Clearance & Dark Logo Framing */
+body.phone .osd-bottom,
+body.phone #tvosd {
+  display: none !important;
+}
+body.phone .home,
+body.phone .guide,
+body.phone .shelves,
+body.phone .settings-rows {
+  padding-bottom: calc(9.5rem + env(safe-area-inset-bottom, 0px)) !important;
+}
+.card-logo img,
+.pc-media img,
+.atv-logo img {
+  border-radius: 10px;
+}
+body.phone .slide::after,
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(5, 8, 17, .92) 0%, rgba(5, 8, 17, .48) 45%, rgba(5, 8, 17, .22) 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+body.phone .slide-body,
+.hero-info,
+.hero-logo {
+  position: relative;
+  z-index: 1;
+}

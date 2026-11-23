@@ -102,6 +102,7 @@ import androidx.media3.ui.PlayerView
 import coil3.compose.AsyncImage
 import com.israeltv.plus.R
 import com.israeltv.plus.data.AppPrefs
+import com.israeltv.plus.data.CatchupRepository
 import com.israeltv.plus.data.Channel
 import com.israeltv.plus.data.ChannelData
 import com.israeltv.plus.data.USER_AGENT
@@ -173,6 +174,20 @@ fun HomeScreen(
         { if (listState.firstVisibleItemIndex == 0) listState.firstVisibleItemScrollOffset.toFloat() else 900f }
     }
     var selectedVodSeries by remember { mutableStateOf<VodSeries?>(null) }
+    val ctx = LocalContext.current
+    var recentEpg by remember { mutableStateOf<Map<String, String>>(emptyMap()) }
+    val recentIds = prefs.recents
+    LaunchedEffect(recentIds, data) {
+        if (data == null || recentIds.isEmpty()) return@LaunchedEffect
+        val resolved = mutableMapOf<String, String>()
+        recentIds.take(12).forEach { id ->
+            val ch = data.byId[id] ?: return@forEach
+            val progs = runCatching { CatchupRepository.getProgramsForChannel(ctx, ch) }.getOrNull().orEmpty()
+            val cur = progs.firstOrNull { it.isLiveNow }
+            if (cur != null && cur.title.isNotBlank()) resolved[id] = cur.title
+        }
+        recentEpg = resolved
+    }
 
     LazyColumn(
         Modifier.fillMaxSize(),
@@ -221,6 +236,7 @@ fun HomeScreen(
                     subtitle = subtitle,
                     onPlay = { onPlay(it, recent) },
                     headerTrailing = if (!chipOnCategory) filterChip else null,
+                    epgProgram = { ch -> recentEpg[ch.id] },
                     modifier = Modifier.cascadeIn(i),
                 )
             }
@@ -582,34 +598,22 @@ private fun HeroStaticFallbackPoster(
             .background(
                 Brush.linearGradient(
                     listOf(
-                        Color(0xFF070913),
-                        glowA.copy(alpha = 0.42f),
-                        glowB.copy(alpha = 0.28f),
-                        Color(0xFF07080D),
+                        Color(0xFF060812),
+                        glowA.copy(alpha = 0.34f),
+                        glowB.copy(alpha = 0.24f),
+                        Color(0xFF05070E),
                     )
                 )
             )
     ) {
-        if (logo.isNotEmpty()) {
-            AsyncImage(
-                model = logo,
-                contentDescription = null,
-                modifier = Modifier
-                    .align(Alignment.Center)
-                    .padding(top = topInset * 0.45f)
-                    .fillMaxWidth(0.85f)
-                    .height(220.dp)
-                    .graphicsLayer { alpha = 0.38f },
-                contentScale = ContentScale.Fit,
-            )
-        }
         Box(
             Modifier
                 .fillMaxSize()
                 .background(
                     Brush.radialGradient(
                         listOf(
-                            glowA.copy(alpha = 0.34f),
+                            glowA.copy(alpha = 0.26f),
+                            glowB.copy(alpha = 0.14f),
                             Color.Transparent,
                         )
                     )
@@ -729,14 +733,14 @@ private fun HeroPage(
             }
         }
 
-        // Overall veil, then a dedicated fade into the feed background
+        // Strong dark gradient scrim so cropped/bright video or watermarks never clash behind title text
         Box(
             Modifier.fillMaxSize().background(
                 Brush.verticalGradient(
                     colorStops = arrayOf(
-                        0.00f to Color.Transparent,
-                        0.40f to scheme.background.copy(alpha = 0.35f),
-                        0.75f to scheme.background.copy(alpha = 0.85f),
+                        0.00f to Color.Black.copy(alpha = 0.35f),
+                        0.38f to scheme.background.copy(alpha = 0.52f),
+                        0.72f to scheme.background.copy(alpha = 0.90f),
                         1.00f to scheme.background,
                     )
                 )

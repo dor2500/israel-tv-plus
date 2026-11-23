@@ -182,7 +182,7 @@ fun VodSeriesCard(
 
                 // Episodes Badge
                 Text(
-                    "${series.episodes.size.coerceAtLeast(series.totalEpisodes)} פרקים",
+                    "${series.episodes.size} פרקים",
                     modifier = Modifier
                         .clip(RoundedCornerShape(6.dp))
                         .background(Color.Black.copy(alpha = 0.72f))
