@@ -2470,6 +2470,30 @@
     ilRow.className = 'il-row';
     ilRow.innerHTML = '<span>רק ישראלי</span><input type="checkbox" class="il-toggle"' + (ilOnly ? ' checked' : '') + '><i class="il-switch"></i>';
     frag.appendChild(ilRow);
+
+    // Futuristic WOW Experiences Launchpad (v4.8.94)
+    if (!S.kids && !macro) {
+      var wowWrap = document.createElement('section');
+      wowWrap.className = 'wow-launchpad';
+      wowWrap.innerHTML =
+        '<div class="wow-lp-head"><span>✨ חוויות מיוחדות · מעבדת העתיד</span><b>חדש!</b></div>' +
+        '<div class="wow-lp-row">' +
+          '<button class="wow-lp-card wlp-reels" data-wow="reels"><strong>🔥 רילס TV חי</strong><small>זפזופ אנכי בסגנון טיקטוק</small></button>' +
+          '<button class="wow-lp-card wlp-wall" data-wow="wall"><strong>🛰️ חמ״ל 4 ערוצים</strong><small>קיר שידורים 2×2 בו-זמנית</small></button>' +
+          '<button class="wow-lp-card wlp-globe" data-wow="globe"><strong>🌍 גלובוס 3D חי</strong><small>סובבו את כדור הארץ וצפו</small></button>' +
+          '<button class="wow-lp-card wlp-slot" data-wow="slot"><strong>🎰 רולטת הקסם</strong><small>מכונת מזל לשידור הבא</small></button>' +
+        '</div>';
+      Array.prototype.forEach.call(wowWrap.querySelectorAll('button[data-wow]'), function (btn) {
+        btn.onclick = function () {
+          var act = btn.getAttribute('data-wow');
+          if (act === 'reels') openTvReelsOverlay();
+          else if (act === 'wall') openCommandWallDialog();
+          else if (act === 'globe') openGlobe3dOverlay();
+          else if (act === 'slot') openJackpotSlotOverlay();
+        };
+      });
+      frag.appendChild(wowWrap);
+    }
     shelves.forEach(function (sh, si) {
       var sec = document.createElement('section');
       sec.className = 'shelf' + (sh.wide ? ' wide' : '');
@@ -2759,6 +2783,10 @@
     ['רשימות M3U', 'm3u'],
     ['מועדפים', 'mine'], ['לוח שידורים', 'guide'],
     ['חיפוש', 'search'],
+    ['🔥 רילס TV', 'reels'],
+    ['🌍 גלובוס 3D', 'globe3d'],
+    ['🎰 רולטת הקסם', 'jackpot'],
+    ['🛰️ חמ״ל 2×2', 'cmdwall'],
     ['פיצול מסך', 'multiview'],
     ['הקלטות Drive', 'gdrive'],
     ['הגדרות', 'settings']
@@ -3001,7 +3029,7 @@
     if (!pill) return;
     try {
       var tabs = ATV_TABS.filter(function (t) {
-        return t[1] === 'profiles' || t[1] === 'all_channels' || t[1] === 'top' || t[1] === 'vod' || t[1] === 'search' || t[1] === 'multiview' || t[1] === 'guide' || t[1] === 'gdrive' || t[1] === 'settings' || atvRowIndex(t[1]) !== -1 || (atv.search && t[1] !== 'mine');
+        return t[1] === 'profiles' || t[1] === 'all_channels' || t[1] === 'top' || t[1] === 'vod' || t[1] === 'search' || t[1] === 'reels' || t[1] === 'globe3d' || t[1] === 'jackpot' || t[1] === 'cmdwall' || t[1] === 'multiview' || t[1] === 'guide' || t[1] === 'gdrive' || t[1] === 'settings' || atvRowIndex(t[1]) !== -1 || (atv.search && t[1] !== 'mine');
       });
       if (!tabs || !tabs.length) {
         tabs = [['מי צופה?', 'profiles'], ['כל הערוצים', 'all_channels'], ['צפייה כעת', 'top'], ['סדרות VOD', 'vod'], ['מדריך שידורים', 'guide'], ['חיפוש', 'search'], ['הגדרות', 'settings']];
@@ -4062,6 +4090,370 @@
     toast(lvl > 0 ? ('🌑 עמעום לילה עמוק: ' + Math.round(lvl * 100) + '%') : '🌑 עמעום לילה כבוי');
   }
 
+  // ==================== INTERACTIVE WOW EXPERIENCES (v4.8.94) ====================
+
+  // A. 2x2 Live Broadcast Command Wall Presets
+  function launchCommandWallPreset(presetKey) {
+    closeDialog();
+    var mapIds = {
+      news_il: ['kan11', 'keshet12', 'reshet13', 'now14'],
+      sports: ['sport1_israel', 'sport2_israel', 'sport5', 'sport4_israel'],
+      cinema: ['hot_3_fhd', 'yes_movies_action', 'hot_cinema_1', 'erez_nehederet_tv'],
+      world: ['abc_news_live', 'cbs_news_247', 'aljazeera_en_hd', 'bloomberg_tv_plus']
+    };
+    var tvPool = (state.all || []).filter(function (c) { return c && c.url && !c.isVod && !isRadioCh(c) && !isApp(c); });
+    var chosen = [];
+    if (mapIds[presetKey]) {
+      mapIds[presetKey].forEach(function (id) {
+        var idx = indexInAll(id);
+        if (idx !== -1) chosen.push(state.all[idx]);
+      });
+    }
+    while (chosen.length < 4 && tvPool.length) {
+      var rnd = tvPool[Math.floor(Math.random() * tvPool.length)];
+      var exists = false;
+      for (var j = 0; j < chosen.length; j++) if (chosen[j].id === rnd.id) exists = true;
+      if (!exists) chosen.push(rnd);
+    }
+    for (var i = 0; i < mv.cells.length; i++) mvDestroyCellPlayer(mv.cells[i]);
+    mv.cells = [];
+    mv.layout = 4;
+    mv.activeAudio = 0;
+    for (var k = 0; k < 4; k++) {
+      var ch = chosen[k] || state.all[k] || state.all[0];
+      mv.cells.push({ id: ch.id, ch: ch, hls: null, candIdx: 0, candidates: [] });
+    }
+    openMultiView();
+    setMultiViewLayout(4);
+    toast('🛰️ חדר בקרה 2×2 הופעל!');
+  }
+
+  function openCommandWallDialog() {
+    var html =
+      '<div class="cmd-wall-grid">' +
+        '<button class="btn dlg-focus cmd-preset-btn" data-preset="news_il"><strong>🇮🇱 חמ״ל חדשות ישראל</strong><small>כאן 11 · קשת 12 · רשת 13 · עכשיו 14</small></button>' +
+        '<button class="btn dlg-focus cmd-preset-btn" data-preset="sports"><strong>⚽ חמ״ל ספורט חי</strong><small>ספורט 1 · ספורט 2 · ספורט 5 · ספורט 4</small></button>' +
+        '<button class="btn dlg-focus cmd-preset-btn" data-preset="cinema"><strong>🎬 קיר בידור וסרטים</strong><small>HOT 3 · yes אקשן · HOT סינמה · ארץ נהדרת</small></button>' +
+        '<button class="btn dlg-focus cmd-preset-btn" data-preset="world"><strong>🌍 חמ״ל חדשות עולם</strong><small>ABC · CBS · Al Jazeera · Bloomberg</small></button>' +
+        '<button class="btn dlg-focus cmd-preset-btn" data-preset="random"><strong>🎲 קיר הפתעה אקראי 2×2</strong><small>4 שידורים חיים מפתיעים במקביל</small></button>' +
+      '</div>';
+    openDialog({
+      title: '🛰️ חדר בקרה חמ״ל 4 ערוצים (2×2)',
+      ico: '🛰️',
+      html: html,
+      buttons: [{ label: 'סגירה', primary: true, act: closeDialog }]
+    });
+    setTimeout(function () {
+      if (!el.dialogBody) return;
+      Array.prototype.forEach.call(el.dialogBody.querySelectorAll('button[data-preset]'), function (b) {
+        b.onclick = function () { launchCommandWallPreset(b.getAttribute('data-preset')); };
+      });
+    }, 50);
+  }
+
+  // B. Neon Vegas Slot-Machine Jackpot Spinner
+  function openJackpotSlotOverlay() {
+    var pool = (state.all || []).filter(function (c) { return c && c.url && !isRadioCh(c) && !isApp(c); });
+    if (!pool.length) return;
+    var vibes = ['🍿 צפיית בינג׳', '🔥 מצב אדרנלין', '🌙 צפיית לילה', '🎉 הפתעת השף', '⚡ שידור חי לוהט'];
+    var winner = pool[Math.floor(Math.random() * pool.length)];
+
+    var ov = document.getElementById('wow-slot-modal');
+    if (!ov) {
+      ov = document.createElement('div');
+      ov.id = 'wow-slot-modal';
+      document.body.appendChild(ov);
+    }
+    ov.innerHTML =
+      '<div class="wslot-box">' +
+        '<div class="wslot-head"><h3>🎰 מכונת המזל של ישראל TV+</h3><button class="wslot-close">✕</button></div>' +
+        '<p class="wslot-sub" id="wslot-status">מסובב את גלגלי השידור...</p>' +
+        '<div class="wslot-window" id="wslot-win">' +
+          '<div class="wslot-name" id="wslot-name">...</div>' +
+          '<div class="wslot-tags"><span id="wslot-cat">טוען</span><span id="wslot-vibe">🎲</span></div>' +
+        '</div>' +
+        '<div class="wslot-actions">' +
+          '<button class="wslot-btn sec" id="wslot-respin">🎰 סובב שוב!</button>' +
+          '<button class="wslot-btn pri" id="wslot-play">▶ שגר לצפייה!</button>' +
+        '</div>' +
+      '</div>';
+    ov.style.display = 'flex';
+
+    var spinning = false;
+    function spin() {
+      if (spinning) return;
+      spinning = true;
+      var stEl = document.getElementById('wslot-status');
+      var nmEl = document.getElementById('wslot-name');
+      var ctEl = document.getElementById('wslot-cat');
+      var vbEl = document.getElementById('wslot-vibe');
+      var winEl = document.getElementById('wslot-win');
+      if (winEl) winEl.classList.remove('won');
+      if (stEl) stEl.textContent = 'מסובב את גלגלי השידור...';
+      var step = 0;
+      function tick() {
+        winner = pool[Math.floor(Math.random() * pool.length)];
+        if (nmEl) nmEl.textContent = winner.name || winner.id;
+        if (ctEl) ctEl.textContent = (winner.category || '').split(' (')[0];
+        if (vbEl) vbEl.textContent = vibes[Math.floor(Math.random() * vibes.length)];
+        step++;
+        if (step < 22) {
+          setTimeout(tick, step > 13 ? 45 + (step - 13) * 28 : 45);
+        } else {
+          spinning = false;
+          if (winEl) winEl.classList.add('won');
+          if (stEl) stEl.textContent = '🎉 ג׳קפוט! מצאנו לך את השידור המושלם:';
+        }
+      }
+      tick();
+    }
+
+    ov.querySelector('.wslot-close').onclick = function () { ov.style.display = 'none'; };
+    document.getElementById('wslot-respin').onclick = spin;
+    document.getElementById('wslot-play').onclick = function () {
+      if (spinning) return;
+      ov.style.display = 'none';
+      openPlayer();
+      loadStream(winner);
+    };
+    spin();
+  }
+
+  // C. Interactive 3D Holographic Spinning Earth Globe Explorer
+  var globeAnimId = null;
+  function openGlobe3dOverlay() {
+    var ov = document.getElementById('wow-globe-overlay');
+    if (!ov) {
+      ov = document.createElement('div');
+      ov.id = 'wow-globe-overlay';
+      document.body.appendChild(ov);
+    }
+    var beacons = [
+      { code: 'IL', name: '🇮🇱 ישראל', lat: 31.8, lon: 35.2, color: '#38bdf8' },
+      { code: 'US', name: '🇺🇸 ארה״ב', lat: 39.0, lon: -98.0, color: '#a855f7' },
+      { code: 'GB', name: '🇬🇧 בריטניה', lat: 53.5, lon: -2.2, color: '#34d399' },
+      { code: 'FR', name: '🇫🇷 צרפת', lat: 46.6, lon: 2.3, color: '#f472b6' },
+      { code: 'DE', name: '🇩🇪 גרמניה', lat: 51.1, lon: 10.4, color: '#fbbf24' },
+      { code: 'JP', name: '🇯🇵 יפן', lat: 36.2, lon: 138.2, color: '#fb7185' },
+      { code: 'KR', name: '🇰🇷 קוריאה', lat: 36.5, lon: 127.8, color: '#60a5fa' },
+      { code: 'CN', name: '🇨🇳 סין', lat: 35.8, lon: 104.2, color: '#f97316' }
+    ];
+    ov.innerHTML =
+      '<div class="wglobe-top">' +
+        '<button class="wglobe-close">✕ סגירה</button>' +
+        '<div class="wglobe-titles"><h2>🌍 גלובוס שידורים 3D הולוגרפי</h2><p>גררו את כדור הארץ עם העכבר/האצבע ובחרו מדינה לצפייה חיה</p></div>' +
+        '<button class="wglobe-spinbtn" id="wglobe-spin">⏸ עצור סיבוב</button>' +
+      '</div>' +
+      '<div class="wglobe-stage"><canvas id="wglobe-canvas"></canvas></div>' +
+      '<div class="wglobe-beacons" id="wglobe-beacons"></div>' +
+      '<div class="wglobe-shelf" id="wglobe-shelf"></div>';
+    ov.style.display = 'flex';
+
+    var canvas = document.getElementById('wglobe-canvas');
+    var ctx = canvas.getContext('2d');
+    var rotLon = -35.2, rotLat = 20, autoSpin = true, selCode = 'IL';
+    var dragging = false, lastX = 0, lastY = 0;
+
+    function selectCountry(b) {
+      selCode = b.code;
+      autoSpin = false;
+      rotLon = -b.lon;
+      rotLat = b.lat * 0.55;
+      var spBtn = document.getElementById('wglobe-spin');
+      if (spBtn) spBtn.textContent = '▶ סובב';
+      renderBeacons();
+      renderCountryShelf();
+    }
+
+    function renderBeacons() {
+      var wrap = document.getElementById('wglobe-beacons');
+      if (!wrap) return;
+      wrap.innerHTML = beacons.map(function (b, idx) {
+        return '<button class="wglobe-pill' + (b.code === selCode ? ' on' : '') + '" data-idx="' + idx + '">' + b.name + '</button>';
+      }).join('');
+      Array.prototype.forEach.call(wrap.querySelectorAll('button[data-idx]'), function (btn) {
+        btn.onclick = function () { selectCountry(beacons[parseInt(btn.getAttribute('data-idx'), 10)]); };
+      });
+    }
+
+    function renderCountryShelf() {
+      var shelf = document.getElementById('wglobe-shelf');
+      if (!shelf) return;
+      var list = (state.all || []).filter(function (c) {
+        if (!c || !c.url || isApp(c)) return false;
+        if (selCode === 'IL') return c.country === 'IL' || c.categoryEn === 'israel';
+        return (c.country || '').toUpperCase() === selCode;
+      });
+      shelf.innerHTML = list.slice(0, 28).map(function (c, i) {
+        return '<button class="wglobe-ch" data-cid="' + esc(c.id) + '"><strong>' + esc(c.name) + '</strong><span>▶ שידור חי</span></button>';
+      }).join('');
+      Array.prototype.forEach.call(shelf.querySelectorAll('button[data-cid]'), function (btn) {
+        btn.onclick = function () {
+          var idx = indexInAll(btn.getAttribute('data-cid'));
+          if (idx !== -1) {
+            closeGlobe();
+            openPlayer();
+            loadStream(state.all[idx]);
+          }
+        };
+      });
+    }
+
+    canvas.onmousedown = function (e) { dragging = true; autoSpin = false; lastX = e.clientX; lastY = e.clientY; };
+    window.addEventListener('mousemove', function (e) {
+      if (!dragging) return;
+      rotLon -= (e.clientX - lastX) * 0.4;
+      rotLat = Math.max(-65, Math.min(65, rotLat + (e.clientY - lastY) * 0.3));
+      lastX = e.clientX; lastY = e.clientY;
+    });
+    window.addEventListener('mouseup', function () { dragging = false; });
+    canvas.ontouchstart = function (e) { if (e.touches[0]) { dragging = true; autoSpin = false; lastX = e.touches[0].clientX; lastY = e.touches[0].clientY; } };
+    canvas.ontouchmove = function (e) {
+      if (!dragging || !e.touches[0]) return;
+      rotLon -= (e.touches[0].clientX - lastX) * 0.4;
+      rotLat = Math.max(-65, Math.min(65, rotLat + (e.touches[0].clientY - lastY) * 0.3));
+      lastX = e.touches[0].clientX; lastY = e.touches[0].clientY;
+    };
+    canvas.ontouchend = function () { dragging = false; };
+
+    function drawFrame() {
+      if (ov.style.display === 'none') return;
+      var w = canvas.clientWidth || 360, h = canvas.clientHeight || 300;
+      if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; }
+      ctx.clearRect(0, 0, w, h);
+      if (autoSpin) rotLon = (rotLon + 0.32) % 360;
+      var cx = w / 2, cy = h / 2, r = Math.min(w, h) * 0.41;
+
+      var grd = ctx.createRadialGradient(cx - r * 0.25, cy - r * 0.25, r * 0.1, cx, cy, r * 1.15);
+      grd.addColorStop(0, '#0f2d59');
+      grd.addColorStop(0.82, '#051024');
+      grd.addColorStop(1, 'rgba(56,189,248,0.22)');
+      ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.fillStyle = grd; ctx.fill();
+      ctx.lineWidth = 2; ctx.strokeStyle = 'rgba(56,189,248,0.65)'; ctx.stroke();
+
+      var rLat = rotLat * Math.PI / 180, rLon = rotLon * Math.PI / 180;
+      function proj(la, lo) {
+        var lat = la * Math.PI / 180, lon = lo * Math.PI / 180 + rLon;
+        var x0 = Math.cos(lat) * Math.sin(lon), y0 = Math.sin(lat), z0 = Math.cos(lat) * Math.cos(lon);
+        var y1 = y0 * Math.cos(rLat) - z0 * Math.sin(rLat);
+        var z1 = y0 * Math.sin(rLat) + z0 * Math.cos(rLat);
+        return [cx + x0 * r, cy - y1 * r, z1];
+      }
+
+      ctx.strokeStyle = 'rgba(56,189,248,0.18)'; ctx.lineWidth = 1;
+      for (var la = -60; la <= 60; la += 20) {
+        ctx.beginPath();
+        for (var lo = -180; lo <= 180; lo += 10) {
+          var p = proj(la, lo);
+          if (p[2] > 0) ctx.lineTo(p[0], p[1]); else ctx.moveTo(p[0], p[1]);
+        }
+        ctx.stroke();
+      }
+      for (var lo2 = -180; lo2 < 180; lo2 += 20) {
+        ctx.beginPath();
+        for (var la2 = -80; la2 <= 80; la2 += 10) {
+          var p2 = proj(la2, lo2);
+          if (p2[2] > 0) ctx.lineTo(p2[0], p2[1]); else ctx.moveTo(p2[0], p2[1]);
+        }
+        ctx.stroke();
+      }
+
+      beacons.forEach(function (b) {
+        var pb = proj(b.lat, b.lon);
+        if (pb[2] > -0.05) {
+          var sel = b.code === selCode;
+          ctx.beginPath(); ctx.arc(pb[0], pb[1], sel ? 16 : 10, 0, Math.PI * 2);
+          ctx.fillStyle = sel ? 'rgba(56,189,248,0.38)' : 'rgba(255,255,255,0.16)'; ctx.fill();
+          ctx.beginPath(); ctx.arc(pb[0], pb[1], sel ? 6.5 : 4.5, 0, Math.PI * 2);
+          ctx.fillStyle = b.color; ctx.fill();
+        }
+      });
+      globeAnimId = requestAnimationFrame(drawFrame);
+    }
+
+    function closeGlobe() {
+      ov.style.display = 'none';
+      if (globeAnimId) { cancelAnimationFrame(globeAnimId); globeAnimId = null; }
+    }
+    ov.querySelector('.wglobe-close').onclick = closeGlobe;
+    document.getElementById('wglobe-spin').onclick = function () {
+      autoSpin = !autoSpin;
+      this.textContent = autoSpin ? '⏸ עצור סיבוב' : '▶ סובב';
+    };
+    renderBeacons();
+    renderCountryShelf();
+    if (globeAnimId) cancelAnimationFrame(globeAnimId);
+    drawFrame();
+  }
+
+  // D. Fullscreen Vertical TikTok-Style Live TV Reels Feed
+  var reelsHls = null;
+  function openTvReelsOverlay() {
+    var deck = (state.all || []).filter(function (c) { return c && c.url && !isRadioCh(c) && !isApp(c) && !c.isVod; });
+    if (!deck.length) return;
+    stopPlayback();
+    var idx = 0;
+    var ov = document.getElementById('wow-reels-overlay');
+    if (!ov) {
+      ov = document.createElement('div');
+      ov.id = 'wow-reels-overlay';
+      document.body.appendChild(ov);
+    }
+    ov.innerHTML =
+      '<div class="wreels-stage">' +
+        '<video id="wreels-video" autoplay playsinline></video>' +
+        '<div class="wreels-top"><button id="wreels-close">✕ סגירה</button><span>🔥 רילס TV חי</span><span>⬆️⬇️ החלף ערוץ</span></div>' +
+        '<div class="wreels-info"><span class="wreels-live" id="wreels-badge">● LIVE REEL #1</span><h2 id="wreels-title"></h2><p id="wreels-desc"></p></div>' +
+        '<div class="wreels-rail">' +
+          '<button id="wreels-prev" title="ערוץ קודם">⬆️</button>' +
+          '<button id="wreels-next" title="ערוץ הבא">⬇️</button>' +
+          '<button id="wreels-shuf" title="ערבב">🎲</button>' +
+          '<button id="wreels-full" title="מסך מלא">📺</button>' +
+        '</div>' +
+      '</div>';
+    ov.style.display = 'flex';
+    var vid = document.getElementById('wreels-video');
+
+    function playReel(i) {
+      idx = (i + deck.length) % deck.length;
+      var ch = deck[idx];
+      document.getElementById('wreels-badge').textContent = '● LIVE REEL #' + (idx + 1) + ' · ' + (ch.category || '').split(' (')[0];
+      document.getElementById('wreels-title').textContent = ch.name || ch.id;
+      document.getElementById('wreels-desc').textContent = ch.desc || '';
+      if (reelsHls) { try { reelsHls.destroy(); } catch (e) { } reelsHls = null; }
+      if (window.Hls && window.Hls.isSupported()) {
+        reelsHls = new window.Hls({ maxBufferLength: 12 });
+        reelsHls.loadSource(ch.url);
+        reelsHls.attachMedia(vid);
+        reelsHls.on(window.Hls.Events.MANIFEST_PARSED, function () { try { vid.play(); } catch (e) { } });
+      } else {
+        vid.src = ch.url;
+        try { vid.play(); } catch (e) { }
+      }
+    }
+
+    function closeReels() {
+      if (reelsHls) { try { reelsHls.destroy(); } catch (e) { } reelsHls = null; }
+      if (vid) { try { vid.pause(); vid.removeAttribute('src'); vid.load(); } catch (e) { } }
+      ov.style.display = 'none';
+    }
+
+    document.getElementById('wreels-close').onclick = closeReels;
+    document.getElementById('wreels-prev').onclick = function () { playReel(idx - 1); };
+    document.getElementById('wreels-next').onclick = function () { playReel(idx + 1); };
+    document.getElementById('wreels-shuf').onclick = function () { playReel(Math.floor(Math.random() * deck.length)); };
+    document.getElementById('wreels-full').onclick = function () {
+      var ch = deck[idx];
+      closeReels();
+      openPlayer();
+      loadStream(ch);
+    };
+    ov.onwheel = function (e) {
+      if (Math.abs(e.deltaY) > 25) playReel(idx + (e.deltaY > 0 ? 1 : -1));
+    };
+    playReel(Math.floor(Math.random() * Math.min(20, deck.length)));
+  }
+
   function setAudioBoost(lvl) {
     audioBoostLevel = lvl;
     initAudioBoost();
@@ -4124,6 +4516,10 @@
       var t = atv.tabs[atv.tab] && atv.tabs[atv.tab][1];
       if (t === 'profiles') openTvProfiles();
       else if (t === 'search') atvOpenSearch();
+      else if (t === 'reels') openTvReelsOverlay();
+      else if (t === 'globe3d') openGlobe3dOverlay();
+      else if (t === 'jackpot') openJackpotSlotOverlay();
+      else if (t === 'cmdwall') openCommandWallDialog();
       else if (t === 'multiview') openMultiView(atvCurrent() || state.playing);
       else if (t === 'guide') { if (Guide) Guide.open(); }
       else if (t === 'gdrive') openDriveRecordingsDialog();

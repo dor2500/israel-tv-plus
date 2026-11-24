@@ -1,15 +1,19 @@
 {
-  "version": "4.8.93",
-  "code": 202611242015,
-  "app": 40893,
+  "version": "4.8.94",
+  "code": 202611242159,
+  "app": 40894,
   "shell": 3,
   "date": "2026-11-24",
   "notes": [
-    "⚽ תיקון מלא לערוצי ספורט 1–4 (צ׳רלטון): הוחלפו כל שרתי הגיבוי השבורים בשרתי שידור חיים ומאומתים (osoyz0xv.ottclub.xyz כשרת ראשי מהיר בפורמט MPEG-TS תקני + גיבוי 2lacasaba), תוקן באג חילוץ הקישורים ב-Channels.kt ותוקנה העברת כותרות Referer/Origin לשרתי הווידאו ב-PlayerScreen.kt.",
-    "🇮🇱 נוספו 84 ערוצי טלוויזיה ישראליים חיים ומאומתים (סה״כ 489 ערוצים!): כולל ערוצי *HOT 3, HOT HBO, HOT סינמה 1–5, HOT קולנוע ישראלי, HOT דרמה, HOT זון, HOT קומדי, HOT בידור ישראלי, HOT 8*, ערוצי *yes קולנוע ישראלי, yes TV דרמה/אקשן, yes קולנוע אקשן/קומדיה/דרמה/ילדים, yes דוקו*, ערוצי ספורט (*ספורט 6 HD*), ערוצי ילדים בעברית (*הופ!, הופ! פלוס, לולי, דיסני ישראל, ניקלודיאון, ניק ג׳וניור, טין ניק, זום ZOOM, WIZ!*), וערוצי לייפסטייל ודוקו ישראליים (*החיים הטובים, בית+, ערוץ האוכל, ערוץ הבריאות, E! ישראל, דיסקברי, נשיונל ג׳יאוגרפיק, ההיסטוריה, הים תיכוני, ויוה פרימיום, i24NEWS*).",
-    "✨ 5 אופציות מיוחדות חדשות בנגן (במובייל ובטלוויזיה/ווב):"
+    "🚀 משגר \"חוויות מיוחדות · מעבדת העתיד\" ישירות במסך הבית ובסרגל ה-TV: 4 מצבי חוויה אינטראקטיביים במסך מלא שלא קיימים באף אפליקציית טלוויזיה רגילה (במובייל Android Compose ובטלוויזיה/ווב/דסקטופ):"
   ],
   "history": [
+    {
+      "version": "4.8.94",
+      "notes": [
+        "🚀 משגר \"חוויות מיוחדות · מעבדת העתיד\" ישירות במסך הבית ובסרגל ה-TV: 4 מצבי חוויה אינטראקטיביים במסך מלא שלא קיימים באף אפליקציית טלוויזיה רגילה (במובייל Android Compose ובטלוויזיה/ווב/דסקטופ):"
+      ]
+    },
     {
       "version": "4.8.93",
       "notes": [
@@ -269,57 +273,44 @@
         "השהיית נגן הרקע של ה-Hero (MutedHeroHls) באופן מיידי ברגע שהמשתמש גולל מטה אל עבר רשימת הערוצים, לשחרור מלא של מפענח הווידאו החומרתי והמעבד.",
         "שיפור חוויית ה-Web וה-TV: ביטול סינוני backdrop-filter: blur(...) כבדים במסכי טלוויזיה, ייעול אנימציות ה-shimmer והרחבת טווח ה-IntersectionObserver לצד טעינה מיידית של כרטיסיות המסך הראשי לניווט חלק ב-60fps."
       ]
-    },
-    {
-      "version": "4.8.69",
-      "notes": [
-        "תיקון שידורי וידאו בערוצים עם תקלות תמונה (מסך שחור / השהיות): מעבר להזרמות ישירות ואיכותיות ב-1080p/720p בערוץ סברי מרנן 24/7 HD (ערוץ 25), ערוץ בייבי ישראל HD (ערוץ 56), ערוץ מוזיקה il HD (ערוץ 72), FreeTV סרטים פיל גוד HD (ערוץ 167), FreeTV 10 כוכבים סרטים HD (ערוץ 168 – מעבר מ-HEVC נטול וידאו ל-AVC 1080p נקי), ו-i24NEWS English World HD (ערוץ 183 – מעבר להזרמת Immergo CDN פעילה).",
-        "הוספת ערוצים ישראליים מקוריים חדשים:",
-        "ערוץ מכאן 33 FHD (ערוץ 33) – שידורי כאן 33 הרשמיים מתאגיד השידור הישראלי באיכות 1080p מלאה כולל גיבוי מלא.",
-        "HOT זון HD (ערוץ 524) – ערוץ סדרות האקשן, המתח והפעולה של HOT.",
-        "הערוץ הים תיכוני HD (ערוץ 525) – ערוץ הסדרות והדרמות הים תיכוניות והטורקיות המוביל בישראל.",
-        "ערוץ 24 הישראלי HD (ערוץ 526) – ערוץ המוזיקה והבידור הישראלי 24 בהזרמת HD ישירה.",
-        "ערוץ קבלה לעם ברוסית HD (ערוץ 527) – שידורי ערוץ קבלה לעם מישראל בשפה הרוסית.",
-        "אימות ובדיקת וידאו מלאה: כלל הערוצים עודכנו ונבדקו במפענח הווידאו לווידוא תמונה חלקה, צבעים מלאים וללא תקיעות."
-      ]
     }
   ],
   "native": {
     "android": {
-      "version": "4.8.93",
-      "app": 40893,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.93/IsraelTVPlus-android.apk"
+      "version": "4.8.94",
+      "app": 40894,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.94/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "4.8.93",
-      "app": 40893,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.93/IsraelTVPlus-windows-setup.exe"
+      "version": "4.8.94",
+      "app": 40894,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.94/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "4.8.93",
-      "app": 40893,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.93/com.israeltv.plus_all.ipk",
+      "version": "4.8.94",
+      "app": 40894,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.94/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "4.8.93",
-      "app": 40893,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.93/IsraelTVPlus-tizen-project.zip"
+      "version": "4.8.94",
+      "app": 40894,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.94/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "4.8.93",
-      "app": 40893,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.93/IsraelTVPlus-macos-arm64.zip"
+      "version": "4.8.94",
+      "app": 40894,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.94/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "4.8.93",
-      "app": 40893,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.93/IsraelTVPlus-linux-x64.zip"
+      "version": "4.8.94",
+      "app": 40894,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.94/IsraelTVPlus-linux-x64.zip"
     },
     "wear": {
-      "version": "4.8.93",
-      "app": 1040893,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.93/IsraelTVPlus-wearos.apk"
+      "version": "4.8.94",
+      "app": 1040894,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.94/IsraelTVPlus-wearos.apk"
     }
   }
 }

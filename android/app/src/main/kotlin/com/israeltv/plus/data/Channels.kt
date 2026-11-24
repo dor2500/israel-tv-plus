@@ -66,6 +66,7 @@ data class Channel(
     val number: Int = 0,
     val lang: String = "",
     val kind: String = "",
+    val country: String = "",
     val countryHe: String = "",
     /** "mako": Keshet's own CDN, the URL needs a viewing ticket from mako (see [playableUrl]). */
     val auth: String = "",

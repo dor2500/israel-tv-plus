@@ -75,6 +75,11 @@ import com.israeltv.plus.ui.screens.VodScreen
 import com.israeltv.plus.ui.screens.StyleScreen
 import com.israeltv.plus.ui.screens.UpdateModal
 import com.israeltv.plus.ui.screens.UpdatingScreen
+import com.israeltv.plus.ui.screens.CommandWallScreen
+import com.israeltv.plus.ui.screens.Globe3dExplorerScreen
+import com.israeltv.plus.ui.screens.JackpotSlotModal
+import com.israeltv.plus.ui.screens.LiveTvReelsScreen
+import com.israeltv.plus.ui.screens.WowExperience
 import dev.chrisbanes.haze.HazeState
 import dev.chrisbanes.haze.hazeSource
 import dev.chrisbanes.haze.rememberHazeState
@@ -121,6 +126,7 @@ fun ItvApp(
     val origin = remember { PlayOrigin() }
     var updateOpen by remember { mutableStateOf(false) }
     var info by remember { mutableStateOf<Channel?>(null) }
+    var activeWow by remember { mutableStateOf<WowExperience?>(null) }
     val feed = remember { FeedState() }
     val haze = rememberHazeState()
     var profilesFromFeed by remember { mutableStateOf(false) }
@@ -199,6 +205,7 @@ fun ItvApp(
                                 },
                                 onInfo = { info = it },
                                 onProfiles = { profilesFromFeed = true; page = Page.Profiles },
+                                onOpenWow = { activeWow = it },
                             )
                             is Page.Player -> PlayerScreen(
                                 start = p.request.channel,
@@ -225,6 +232,53 @@ fun ItvApp(
             }
         }
         info?.let { ch -> ChannelInfoSheet(ch, logo(ch), prefs, onPlay = { onPlay(ch, listOf(ch)) }, onDismiss = { info = null }) }
+
+        // Fullscreen Interactive WOW Experiences (Reels Feed, 2x2 Command Wall, 3D Globe, Slot Jackpot)
+        val curData = data
+        val curWow = activeWow
+        if (curWow != null && curData != null && page == Page.Feed) {
+            Box(Modifier.fillMaxSize().zIndex(45f)) {
+                when (curWow) {
+                    WowExperience.REELS -> LiveTvReelsScreen(
+                        data = curData,
+                        prefs = prefs,
+                        logo = logo,
+                        onOpenFullPlayer = { ch, list ->
+                            activeWow = null
+                            onPlay(ch, list)
+                        },
+                        onClose = { activeWow = null },
+                    )
+                    WowExperience.COMMAND_WALL -> CommandWallScreen(
+                        data = curData,
+                        logo = logo,
+                        onExpandChannel = { ch, list ->
+                            activeWow = null
+                            onPlay(ch, list)
+                        },
+                        onClose = { activeWow = null },
+                    )
+                    WowExperience.GLOBE_3D -> Globe3dExplorerScreen(
+                        data = curData,
+                        logo = logo,
+                        onPlay = { ch, list ->
+                            activeWow = null
+                            onPlay(ch, list)
+                        },
+                        onClose = { activeWow = null },
+                    )
+                    WowExperience.JACKPOT_SLOT -> JackpotSlotModal(
+                        data = curData,
+                        logo = logo,
+                        onPlay = { ch, list ->
+                            activeWow = null
+                            onPlay(ch, list)
+                        },
+                        onClose = { activeWow = null },
+                    )
+                }
+            }
+        }
 
         if (!updateOpen && (update is UpdateState.Downloading || update is UpdateState.Installing)) {
             Box(Modifier.fillMaxSize().zIndex(110f)) { UpdatingScreen(update) }
@@ -281,6 +335,7 @@ private fun Feed(
     onOpenCast: () -> Unit,
     onInfo: (Channel) -> Unit,
     onProfiles: () -> Unit,
+    onOpenWow: (WowExperience) -> Unit,
 ) {
     val subtitle: (Channel) -> String = remember { { it.subtitle() } }
 
@@ -371,6 +426,7 @@ private fun Feed(
                                 s.tab = Tab.Channels
                             },
                             onSeeAllVod = { s.tab = Tab.Vod },
+                            onOpenWow = onOpenWow,
                         )
                         Tab.Channels -> ChannelsScreen(
                             data = data,

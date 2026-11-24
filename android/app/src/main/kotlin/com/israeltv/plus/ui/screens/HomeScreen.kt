@@ -156,6 +156,7 @@ fun HomeScreen(
     onInfo: (Channel) -> Unit,
     onSeeAll: (String) -> Unit,
     onSeeAllVod: (() -> Unit)? = null,
+    onOpenWow: ((WowExperience) -> Unit)? = null,
 ) {
     val padding = feedPadding(withCategories = true)
     val isKids = prefs.isKids
@@ -234,6 +235,12 @@ fun HomeScreen(
                 onInfo = onInfo,
                 modifier = Modifier.bleedToTop(padding).cascadeIn(0),
             )
+        }
+        // Futuristic WOW Experiences Launchpad (Reels, 2x2 Command Wall, 3D Globe, Slot Jackpot)
+        if (!isKids && macroCategory == null && onOpenWow != null) {
+            item(key = "wow_launchpad") {
+                WowLaunchpadStrip(onOpen = onOpenWow)
+            }
         }
         // Quick TV Actions: "הפתע אותי" (Channel Roulette) + Live "משודר עכשיו" Strip
         item(key = "tv_quick_actions") {
