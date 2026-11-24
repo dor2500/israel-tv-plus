@@ -77,7 +77,9 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "category": "ערוצי ישראל - שידור חי",
   "categoryEn": "israel",
   "url": "https://d15ds134q59udk.cloudfront.net/media/3b45de9e-c944-4fdc-a344-7c3042b5b104/mainManifest.m3u8",
-  "fallbackUrls": [],
+  "fallbackUrls": [
+   "http://stream.mcquack.net/295/index.m3u8"
+  ],
   "logo": "assets/logos/reshet13_comedy_il.png",
   "badge": "HD",
   "lang": "he",
@@ -91,7 +93,9 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
    "found": "iptv-org (Reshet13Comedy.il)",
    "web": "✅"
   },
-  "backups": [],
+  "backups": [
+   "http://stream.mcquack.net/295/index.m3u8"
+  ],
   "backupUrls": [
    "http://stream.mcquack.net/295/index.m3u8"
   ]
@@ -148,8 +152,6 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
    "https://contact.gostreaming.tv/Con-11/index.m3u8",
    "https://contact.gostreaming.tv/Channel9/myStream/playlist.m3u8",
    "http://stream.mcquack.net/454/index.m3u8",
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2331/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2331/index.m3u8",
    "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2331/index.m3u8"
   ],
   "country": "IL",
@@ -158,8 +160,6 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
    "https://contact.gostreaming.tv/Con-11/index.m3u8",
    "https://contact.gostreaming.tv/Channel9/myStream/playlist.m3u8",
    "http://stream.mcquack.net/454/index.m3u8",
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2331/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2331/index.m3u8",
    "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2331/index.m3u8"
   ]
  },
@@ -261,8 +261,6 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
    "http://stream.mcquack.net/294/index.m3u8",
    "https://mako-streaming.akamaized.net/stream/hls/live/2033791/k12n12wad/index.m3u8",
    "http://stream.mcquack.net/293/index.m3u8",
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2345/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2345/index.m3u8",
    "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2345/index.m3u8"
   ],
   "country": "IL",
@@ -280,8 +278,6 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
    "http://stream.mcquack.net/294/index.m3u8",
    "https://mako-streaming.akamaized.net/stream/hls/live/2033791/k12n12wad/index.m3u8",
    "http://stream.mcquack.net/293/index.m3u8",
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2345/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2345/index.m3u8",
    "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2345/index.m3u8"
   ],
   "auth": "",
@@ -298,9 +294,6 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
    "http://stream.mcquack.net/294/index.m3u8",
    "https://mako-streaming.akamaized.net/stream/hls/live/2033791/k12n12wad/index.m3u8",
    "http://stream.mcquack.net/293/index.m3u8",
-   "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2345/index.m3u8",
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2345/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2345/index.m3u8",
    "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2345/index.m3u8"
   ]
  },
@@ -338,8 +331,6 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
    "https://reshet.g-mana.live/media/87f59c77-03f6-4bad-a648-897e095e7360/mainManifest.m3u8",
    "http://stream.mcquack.net/294/index.m3u8",
    "https://d15ds134q59udk.cloudfront.net/media/3b45de9e-c944-4fdc-a344-7c3042b5b104/mainManifest.m3u8",
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32249/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32249/index.m3u8",
    "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32249/index.m3u8"
   ],
   "country": "IL",
@@ -359,8 +350,6 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
    "https://reshet.g-mana.live/media/87f59c77-03f6-4bad-a648-897e095e7360/mainManifest.m3u8",
    "http://stream.mcquack.net/294/index.m3u8",
    "https://d15ds134q59udk.cloudfront.net/media/3b45de9e-c944-4fdc-a344-7c3042b5b104/mainManifest.m3u8",
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32249/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32249/index.m3u8",
    "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32249/index.m3u8"
   ],
   "iptv": "Reshet13.il",
@@ -379,9 +368,6 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
    "https://reshet.g-mana.live/media/87f59c77-03f6-4bad-a648-897e095e7360/mainManifest.m3u8",
    "http://stream.mcquack.net/294/index.m3u8",
    "https://d15ds134q59udk.cloudfront.net/media/3b45de9e-c944-4fdc-a344-7c3042b5b104/mainManifest.m3u8",
-   "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32249/index.m3u8",
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32249/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32249/index.m3u8",
    "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32249/index.m3u8"
   ]
  },
@@ -412,8 +398,6 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
    "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/ch14_subs/live.livx/playlist.m3u8",
    "https://channel14-live-consume.immergo.tv/output/2/streamPlaylist-archive.m3u8",
    "http://stream.mcquack.net/295/index.m3u8",
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32325/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32325/index.m3u8",
    "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32325/index.m3u8",
    "https://r.il.cdn-redge.media/livehls/oil/freetv/live/ch14/live.livx/playlist.m3u8"
   ],
@@ -426,8 +410,6 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
    "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/ch14_subs/live.livx/playlist.m3u8",
    "https://channel14-live-consume.immergo.tv/output/2/streamPlaylist-archive.m3u8",
    "http://stream.mcquack.net/295/index.m3u8",
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32325/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32325/index.m3u8",
    "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32325/index.m3u8",
    "https://r.il.cdn-redge.media/livehls/oil/freetv/live/ch14/live.livx/playlist.m3u8"
   ]
@@ -459,8 +441,6 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
    "https://i24newshebrew-cdn.encoders.immergo.tv/2/streamPlaylist.m3u8",
    "https://hlspackager.akamaized.net/live/bitmovin-i24news/2589137645123855490/index.m3u8",
    "http://stream.mcquack.net/45/index.m3u8",
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/19194/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/19194/index.m3u8",
    "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/19194/index.m3u8"
   ],
   "country": "IL",
@@ -472,8 +452,6 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
    "https://i24newshebrew-cdn.encoders.immergo.tv/2/streamPlaylist.m3u8",
    "https://hlspackager.akamaized.net/live/bitmovin-i24news/2589137645123855490/index.m3u8",
    "http://stream.mcquack.net/45/index.m3u8",
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/19194/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/19194/index.m3u8",
    "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/19194/index.m3u8"
   ]
  },
@@ -555,13 +533,9 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
    "web": "✅"
   },
   "fallbackUrls": [
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32160/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32160/index.m3u8",
    "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32160/index.m3u8"
   ],
   "backups": [
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32160/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32160/index.m3u8",
    "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32160/index.m3u8"
   ],
   "webOk": true
@@ -590,7 +564,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
    "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/edu23/live.livx/playlist.m3u8",
    "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan_edu/live.livx/playlist.m3u8",
    "http://stream.mcquack.net/378/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32149/index.m3u8"
+   "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32149/index.m3u8"
   ],
   "country": "IL",
   "countryHe": "ישראל",
@@ -598,7 +572,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
    "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/edu23/live.livx/playlist.m3u8",
    "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan_edu/live.livx/playlist.m3u8",
    "http://stream.mcquack.net/378/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32149/index.m3u8"
+   "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32149/index.m3u8"
   ]
  },
  {
@@ -628,8 +602,6 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
    "http://stream.mcquack.net/42/index.m3u8",
    "https://mako-streaming.akamaized.net/direct/hls/live/2035340/ch24live/index.m3u8?as=1",
    "https://mako-streaming.akamaized.net/evrideo/hls/live/20001278/ch24live/index.m3u8",
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2330/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2330/index.m3u8",
    "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2330/index.m3u8"
   ],
   "country": "IL",
@@ -641,8 +613,6 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
    "http://stream.mcquack.net/42/index.m3u8",
    "https://mako-streaming.akamaized.net/direct/hls/live/2035340/ch24live/index.m3u8?as=1",
    "https://mako-streaming.akamaized.net/evrideo/hls/live/20001278/ch24live/index.m3u8",
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2330/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2330/index.m3u8",
    "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2330/index.m3u8"
   ]
  },
@@ -718,14 +688,10 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
    "web": "✅"
   },
   "fallbackUrls": [
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12208/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12208/index.m3u8",
    "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12208/index.m3u8"
   ],
   "iptv": "VivaPlus.il",
   "backups": [
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12208/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12208/index.m3u8",
    "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12208/index.m3u8"
   ]
  },
@@ -751,15 +717,11 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   },
   "backups": [
    "http://stream.mcquack.net/43/index.m3u8",
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32127/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32127/index.m3u8",
    "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32127/index.m3u8"
   ],
   "countryHe": "ישראל",
   "fallbackUrls": [
    "http://stream.mcquack.net/43/index.m3u8",
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32127/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32127/index.m3u8",
    "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32127/index.m3u8"
   ],
   "iptv": "Viva.il"
@@ -807,7 +769,6 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "country": "IL",
   "countryHe": "ישראל",
   "backups": [
-   "https://r.il.cdn-redge.media/livehls/oil/freetv/live/sport_5_4k_avc/live.livx/playlist.m3u8",
    "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5/live.livx/playlist.m3u8",
    "http://stream.mcquack.net/212/index.m3u8"
   ],
@@ -820,7 +781,6 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
    "web": "✅"
   },
   "fallbackUrls": [
-   "https://r.il.cdn-redge.media/livehls/oil/freetv/live/sport_5_4k_avc/live.livx/playlist.m3u8",
    "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5/live.livx/playlist.m3u8",
    "http://stream.mcquack.net/212/index.m3u8"
   ],
@@ -857,7 +817,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "title": "ערוץ ספורט 1 צ'רלטון שידור חי (Charlton Sport 1 HD)",
   "category": "ספורט (Sports)",
   "categoryEn": "sports",
-  "url": "https://2lacasaba.site/yessport1/index.m3u8?token=5ef9ca0f660144278cc5252bc5b3032001ffe9e9&expires=1795454371",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12249/index.m3u8",
   "logo": "assets/logos/sport1_israel.png",
   "badge": "HD",
   "desc": "ספורט 1 (צ'רלטון) – ליגת העל הישראלית, הפרמייר ליג האנגלית, גביע המדינה ומשחקים מרכזיים בשידור חי",
@@ -866,40 +826,24 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "number": 38,
   "countryHe": "ישראל",
   "src": {
-   "by": "2lacasaba.site",
+   "by": "osoyz0xv.ottclub.xyz",
    "kind": "restream",
-   "host": "2lacasaba.site",
+   "host": "osoyz0xv.ottclub.xyz",
    "found": "שידור ישראלי מקורי צ'רלטון FHD",
    "web": "❌ רק באפליקציה (הפניה בלי CORS)"
   },
   "fallbackUrls": [
-   "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12249/index.m3u8",
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12249/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12249/index.m3u8",
-   "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12249/index.m3u8",
-   "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2353/index.m3u8",
-   "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2353/index.m3u8",
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2353/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2353/index.m3u8",
-   "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2353/index.m3u8"
+   "https://2lacasaba.site/yessport1/index.m3u8?token=5ef9ca0f660144278cc5252bc5b3032001ffe9e9&expires=1795454371",
+   "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2353/index.m3u8"
   ],
   "iptv": "Sport1.il",
   "backups": [
-   "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12249/index.m3u8",
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12249/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12249/index.m3u8",
-   "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12249/index.m3u8",
-   "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2353/index.m3u8",
-   "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2353/index.m3u8",
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2353/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2353/index.m3u8",
-   "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2353/index.m3u8",
-   "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12249/index.m3u8"
+   "https://2lacasaba.site/yessport1/index.m3u8?token=5ef9ca0f660144278cc5252bc5b3032001ffe9e9&expires=1795454371",
+   "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2353/index.m3u8"
   ],
   "backupUrls": [
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12249/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12249/index.m3u8",
-   "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12249/index.m3u8"
+   "https://2lacasaba.site/yessport1/index.m3u8?token=5ef9ca0f660144278cc5252bc5b3032001ffe9e9&expires=1795454371",
+   "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2353/index.m3u8"
   ],
   "webOk": false,
   "hamalSlug": "yes-1"
@@ -910,7 +854,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "title": "ערוץ ספורט 2 צ'רלטון שידור חי (Charlton Sport 2 HD)",
   "category": "ספורט (Sports)",
   "categoryEn": "sports",
-  "url": "https://2lacasaba.site/yessport2/index.m3u8?token=c8b17ffcb18932d20487d603c813fcf039bc406a&expires=1795454372",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12250/index.m3u8",
   "logo": "assets/logos/sport2_israel.png",
   "badge": "HD",
   "desc": "ספורט 2 (צ'רלטון) – שידורים ישירים מהליגה האנגלית, הליגה האיטלקית, בונדסליגה, ליגה אירופית וטניס",
@@ -919,40 +863,24 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "number": 39,
   "countryHe": "ישראל",
   "src": {
-   "by": "2lacasaba.site",
+   "by": "osoyz0xv.ottclub.xyz",
    "kind": "restream",
-   "host": "2lacasaba.site",
+   "host": "osoyz0xv.ottclub.xyz",
    "found": "שידור ישראלי מקורי צ'רלטון FHD",
    "web": "❌ רק באפליקציה (הפניה בלי CORS)"
   },
   "fallbackUrls": [
-   "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12250/index.m3u8",
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12250/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12250/index.m3u8",
-   "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12250/index.m3u8",
-   "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2352/index.m3u8",
-   "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2352/index.m3u8",
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2352/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2352/index.m3u8",
-   "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2352/index.m3u8"
+   "https://2lacasaba.site/yessport2/index.m3u8?token=c8b17ffcb18932d20487d603c813fcf039bc406a&expires=1795454372",
+   "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2352/index.m3u8"
   ],
   "iptv": "Sport2.il",
   "backups": [
-   "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12250/index.m3u8",
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12250/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12250/index.m3u8",
-   "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12250/index.m3u8",
-   "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2352/index.m3u8",
-   "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2352/index.m3u8",
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2352/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2352/index.m3u8",
-   "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2352/index.m3u8",
-   "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12250/index.m3u8"
+   "https://2lacasaba.site/yessport2/index.m3u8?token=c8b17ffcb18932d20487d603c813fcf039bc406a&expires=1795454372",
+   "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2352/index.m3u8"
   ],
   "backupUrls": [
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12250/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12250/index.m3u8",
-   "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12250/index.m3u8"
+   "https://2lacasaba.site/yessport2/index.m3u8?token=c8b17ffcb18932d20487d603c813fcf039bc406a&expires=1795454372",
+   "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2352/index.m3u8"
   ],
   "webOk": false,
   "hamalSlug": "yes-2"
@@ -963,7 +891,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "title": "ערוץ ספורט 3 צ'רלטון שידור חי (Charlton Sport 3 HD)",
   "category": "ספורט (Sports)",
   "categoryEn": "sports",
-  "url": "https://2lacasaba.site/yessport3/index.m3u8?token=9c49ea3e70f91a96664e2736c22cb2689b60ea8f&expires=1795454373",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12251/index.m3u8",
   "logo": "assets/logos/sport3_israel.png",
   "badge": "HD",
   "desc": "ספורט 3 (צ'רלטון) – כדורגל ישראלי ואירופי, כדורסל, אולפנים חיים ואירועי ספורט בינלאומיים",
@@ -972,40 +900,24 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "number": 40,
   "countryHe": "ישראל",
   "src": {
-   "by": "2lacasaba.site",
+   "by": "osoyz0xv.ottclub.xyz",
    "kind": "restream",
-   "host": "2lacasaba.site",
+   "host": "osoyz0xv.ottclub.xyz",
    "found": "שידור ישראלי מקורי צ'רלטון FHD",
    "web": "❌ רק באפליקציה (הפניה בלי CORS)"
   },
   "fallbackUrls": [
-   "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12251/index.m3u8",
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12251/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12251/index.m3u8",
-   "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12251/index.m3u8",
-   "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2388/index.m3u8",
-   "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2388/index.m3u8",
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2388/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2388/index.m3u8",
-   "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2388/index.m3u8"
+   "https://2lacasaba.site/yessport3/index.m3u8?token=9c49ea3e70f91a96664e2736c22cb2689b60ea8f&expires=1795454373",
+   "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2388/index.m3u8"
   ],
   "iptv": "Sport3.il",
   "backups": [
-   "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12251/index.m3u8",
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12251/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12251/index.m3u8",
-   "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12251/index.m3u8",
-   "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2388/index.m3u8",
-   "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2388/index.m3u8",
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2388/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2388/index.m3u8",
-   "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2388/index.m3u8",
-   "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12251/index.m3u8"
+   "https://2lacasaba.site/yessport3/index.m3u8?token=9c49ea3e70f91a96664e2736c22cb2689b60ea8f&expires=1795454373",
+   "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2388/index.m3u8"
   ],
   "backupUrls": [
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12251/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12251/index.m3u8",
-   "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12251/index.m3u8"
+   "https://2lacasaba.site/yessport3/index.m3u8?token=9c49ea3e70f91a96664e2736c22cb2689b60ea8f&expires=1795454373",
+   "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2388/index.m3u8"
   ],
   "webOk": false,
   "hamalSlug": "yes-3"
@@ -1016,7 +928,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "title": "ערוץ ספורט 4 צ'רלטון שידור חי (Charlton Sport 4 FHD)",
   "category": "ספורט (Sports)",
   "categoryEn": "sports",
-  "url": "https://2lacasaba.site/yessport4/index.m3u8?token=d30f5fd0f552d7bf8cbafce906ec8bd48d862afc&expires=1795454374",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12252/index.m3u8",
   "logo": "assets/logos/sport4_israel.png",
   "badge": "FHD",
   "desc": "ספורט 4 FHD (צ'רלטון) – שידורים חיים באיכות FHD מליגת העל, הפרמייר ליג ומפעלי אופ\"א",
@@ -1025,40 +937,24 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "number": 41,
   "countryHe": "ישראל",
   "src": {
-   "by": "2lacasaba.site",
+   "by": "osoyz0xv.ottclub.xyz",
    "kind": "restream",
-   "host": "2lacasaba.site",
+   "host": "osoyz0xv.ottclub.xyz",
    "found": "שידור ישראלי מקורי צ'רלטון FHD",
    "web": "❌ רק באפליקציה (הפניה בלי CORS)"
   },
   "fallbackUrls": [
-   "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12252/index.m3u8",
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12252/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12252/index.m3u8",
-   "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12252/index.m3u8",
    "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2389/index.m3u8",
-   "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2389/index.m3u8",
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2389/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2389/index.m3u8",
-   "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2389/index.m3u8"
+   "https://2lacasaba.site/yessport4/index.m3u8?token=d30f5fd0f552d7bf8cbafce906ec8bd48d862afc&expires=1795454374"
   ],
   "iptv": "Sport4.il",
   "backups": [
-   "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12252/index.m3u8",
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12252/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12252/index.m3u8",
-   "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12252/index.m3u8",
    "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2389/index.m3u8",
-   "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2389/index.m3u8",
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2389/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2389/index.m3u8",
-   "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2389/index.m3u8",
-   "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12252/index.m3u8"
+   "https://2lacasaba.site/yessport4/index.m3u8?token=d30f5fd0f552d7bf8cbafce906ec8bd48d862afc&expires=1795454374"
   ],
   "backupUrls": [
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12252/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12252/index.m3u8",
-   "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12252/index.m3u8"
+   "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2389/index.m3u8",
+   "https://2lacasaba.site/yessport4/index.m3u8?token=d30f5fd0f552d7bf8cbafce906ec8bd48d862afc&expires=1795454374"
   ],
   "webOk": false,
   "hamalSlug": "yes-4"
@@ -1130,7 +1026,9 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
    "found": "רשימה ידנית (גרסה קודמת)",
    "web": "✅"
   },
-  "fallbackUrls": [],
+  "fallbackUrls": [
+   "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/yalduti_songs/live.livx/playlist.m3u8"
+  ],
   "backups": [
    "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/yalduti_songs/live.livx/playlist.m3u8"
   ]
@@ -1204,14 +1102,10 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
    "web": "✅"
   },
   "fallbackUrls": [
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2366/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2366/index.m3u8",
    "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2366/index.m3u8"
   ],
   "iptv": "Junior.il",
   "backups": [
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2366/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2366/index.m3u8",
    "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2366/index.m3u8"
   ]
  },
@@ -1262,15 +1156,11 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   },
   "fallbackUrls": [
    "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/baby/live.livx/playlist.m3u8",
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2370/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2370/index.m3u8",
    "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2370/index.m3u8"
   ],
   "iptv": "BabyTV.il",
   "backups": [
    "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/baby/live.livx/playlist.m3u8",
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2370/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2370/index.m3u8",
    "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2370/index.m3u8"
   ]
  },
@@ -1495,8 +1385,6 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
    "https://contact.gostreaming.tv/Knesset/myStream/playlist.m3u8",
    "https://kneset.gostreaming.tv/p2-kneset/_definst_/myStream/index.m3u8",
    "http://stream.mcquack.net/48/index.m3u8",
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12269/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12269/index.m3u8",
    "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12269/index.m3u8"
   ],
   "country": "IL",
@@ -1507,8 +1395,6 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
    "https://contact.gostreaming.tv/Knesset/myStream/playlist.m3u8",
    "https://kneset.gostreaming.tv/p2-kneset/_definst_/myStream/index.m3u8",
    "http://stream.mcquack.net/48/index.m3u8",
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12269/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12269/index.m3u8",
    "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12269/index.m3u8"
   ]
  },
@@ -1534,13 +1420,9 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
    "web": "✅"
   },
   "fallbackUrls": [
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32164/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32164/index.m3u8",
    "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32164/index.m3u8"
   ],
   "backups": [
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32164/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32164/index.m3u8",
    "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32164/index.m3u8"
   ]
  },
@@ -1674,13 +1556,17 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   },
   "fallbackUrls": [
    "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/keshet_12/live.livx/playlist.m3u8",
-   "https://mako-streaming.akamaized.net/stream/hls/live/2033791/k12dvr/index.m3u8"
+   "https://mako-streaming.akamaized.net/stream/hls/live/2033791/k12dvr/index.m3u8",
+   "http://stream.mcquack.net/294/index.m3u8"
   ],
   "backups": [
    "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/keshet_12/live.livx/playlist.m3u8",
-   "https://mako-streaming.akamaized.net/stream/hls/live/2033791/k12dvr/index.m3u8"
+   "https://mako-streaming.akamaized.net/stream/hls/live/2033791/k12dvr/index.m3u8",
+   "http://stream.mcquack.net/294/index.m3u8"
   ],
   "backupUrls": [
+   "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/keshet_12/live.livx/playlist.m3u8",
+   "https://mako-streaming.akamaized.net/stream/hls/live/2033791/k12dvr/index.m3u8",
    "http://stream.mcquack.net/294/index.m3u8"
   ]
  },
@@ -1693,7 +1579,8 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/reshet_13_subs/live.livx/playlist.m3u8",
   "fallbackUrls": [
    "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/reshet_13/live.livx/playlist.m3u8",
-   "https://d18b0e6mopany4.cloudfront.net/out/v1/2f2bc414a3db4698a8e94b89eaf2da2a/index.m3u8"
+   "https://d18b0e6mopany4.cloudfront.net/out/v1/2f2bc414a3db4698a8e94b89eaf2da2a/index.m3u8",
+   "http://stream.mcquack.net/295/index.m3u8"
   ],
   "logo": "assets/logos/reshet13.png",
   "badge": "נגיש",
@@ -1710,9 +1597,12 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   },
   "backups": [
    "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/reshet_13/live.livx/playlist.m3u8",
-   "https://d18b0e6mopany4.cloudfront.net/out/v1/2f2bc414a3db4698a8e94b89eaf2da2a/index.m3u8"
+   "https://d18b0e6mopany4.cloudfront.net/out/v1/2f2bc414a3db4698a8e94b89eaf2da2a/index.m3u8",
+   "http://stream.mcquack.net/295/index.m3u8"
   ],
   "backupUrls": [
+   "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/reshet_13/live.livx/playlist.m3u8",
+   "https://d18b0e6mopany4.cloudfront.net/out/v1/2f2bc414a3db4698a8e94b89eaf2da2a/index.m3u8",
    "http://stream.mcquack.net/295/index.m3u8"
   ]
  },
@@ -1769,13 +1659,9 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   },
   "number": 79,
   "fallbackUrls": [
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32160/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32160/index.m3u8",
    "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32160/index.m3u8"
   ],
   "backups": [
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32160/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32160/index.m3u8",
    "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32160/index.m3u8"
   ]
  },
@@ -1925,8 +1811,12 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   },
   "country": "IL",
   "countryHe": "ישראל",
-  "fallbackUrls": [],
-  "backups": [],
+  "fallbackUrls": [
+   "http://stream.mcquack.net/295/index.m3u8"
+  ],
+  "backups": [
+   "http://stream.mcquack.net/295/index.m3u8"
+  ],
   "backupUrls": [
    "http://stream.mcquack.net/295/index.m3u8"
   ]
@@ -1954,14 +1844,10 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "countryHe": "ישראל",
   "fallbackUrls": [
    "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kneset/live.livx/playlist.m3u8",
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12269/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12269/index.m3u8",
    "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12269/index.m3u8"
   ],
   "backups": [
    "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kneset/live.livx/playlist.m3u8",
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12269/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12269/index.m3u8",
    "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12269/index.m3u8"
   ]
  },
@@ -2087,7 +1973,9 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "name": "רשת 13 ערוץ הנופש HD",
   "category": "ערוצי ישראל - שידור חי",
   "url": "https://d1yd8hohnldm33.cloudfront.net/out/v1/19dee23c2cc24f689bd4e1288661ee0c/index.m3u8",
-  "fallbackUrls": [],
+  "fallbackUrls": [
+   "http://stream.mcquack.net/295/index.m3u8"
+  ],
   "logo": "assets/logos/reshet13_nofesh_il.png",
   "badge": "HD",
   "color": "#38bdf8",
@@ -2102,7 +1990,9 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
    "found": "רשימה ידנית (גרסה קודמת)",
    "web": "✅"
   },
-  "backups": [],
+  "backups": [
+   "http://stream.mcquack.net/295/index.m3u8"
+  ],
   "backupUrls": [
    "http://stream.mcquack.net/295/index.m3u8"
   ]
@@ -2113,7 +2003,8 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "category": "ערוצי ישראל - שידור חי",
   "url": "https://d2dffl3588mvfk.cloudfront.net/out/v1/d8e15050ca4148aab0ee387a5e2eb46b/index.m3u8",
   "fallbackUrls": [
-   "https://d2dffl3588mvfk.cloudfront.net/out/v1/d8e15050ca4148aab0ee387a5e2eb46b/index_1.m3u8"
+   "https://d2dffl3588mvfk.cloudfront.net/out/v1/d8e15050ca4148aab0ee387a5e2eb46b/index_1.m3u8",
+   "http://stream.mcquack.net/295/index.m3u8"
   ],
   "logo": "assets/logos/reshet13_reality_il.png",
   "badge": "HD",
@@ -2130,9 +2021,11 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
    "web": "✅"
   },
   "backups": [
-   "https://d2dffl3588mvfk.cloudfront.net/out/v1/d8e15050ca4148aab0ee387a5e2eb46b/index_1.m3u8"
+   "https://d2dffl3588mvfk.cloudfront.net/out/v1/d8e15050ca4148aab0ee387a5e2eb46b/index_1.m3u8",
+   "http://stream.mcquack.net/295/index.m3u8"
   ],
   "backupUrls": [
+   "https://d2dffl3588mvfk.cloudfront.net/out/v1/d8e15050ca4148aab0ee387a5e2eb46b/index_1.m3u8",
    "http://stream.mcquack.net/295/index.m3u8"
   ]
  },
@@ -2304,27 +2197,23 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
    "https://2lacasaba.site/yessport5/index.m3u8?token=2b52fb1ea72be5242bc8333cd8adcdce3db2bb41&expires=1795454378",
    "http://stream.mcquack.net/212/index.m3u8",
    "http://stream.mcquack.net/55/index.m3u8",
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32001/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32001/index.m3u8",
    "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32001/index.m3u8",
    "https://r.il.cdn-redge.media/livehls/oil/freetv/live/sport_5/live.livx/playlist.m3u8"
   ],
   "fallbackUrls": [
+   "https://2lacasaba.site/yessport5/index.m3u8?token=2b52fb1ea72be5242bc8333cd8adcdce3db2bb41&expires=1795454378",
    "http://stream.mcquack.net/212/index.m3u8",
    "http://stream.mcquack.net/55/index.m3u8",
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32001/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32001/index.m3u8",
    "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32001/index.m3u8",
    "https://r.il.cdn-redge.media/livehls/oil/freetv/live/sport_5/live.livx/playlist.m3u8"
   ],
   "iptv": "Sport5.il",
   "backupUrls": [
+   "https://2lacasaba.site/yessport5/index.m3u8?token=2b52fb1ea72be5242bc8333cd8adcdce3db2bb41&expires=1795454378",
    "http://stream.mcquack.net/212/index.m3u8",
    "http://stream.mcquack.net/55/index.m3u8",
-   "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32001/index.m3u8",
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32001/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32001/index.m3u8",
-   "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32001/index.m3u8"
+   "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32001/index.m3u8",
+   "https://r.il.cdn-redge.media/livehls/oil/freetv/live/sport_5/live.livx/playlist.m3u8"
   ],
   "webOk": true,
   "hamalSlug": "yes-5"
@@ -2346,8 +2235,6 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "backups": [
    "https://2lacasaba.site/yessport5plus/index.m3u8?token=2c73d12ac55675d862ba1977f6aad4d8bc8522aa&expires=1795454380",
    "http://stream.mcquack.net/333/index.m3u8",
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32002/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32002/index.m3u8",
    "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32002/index.m3u8"
   ],
   "src": {
@@ -2358,17 +2245,14 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
    "web": "✅"
   },
   "fallbackUrls": [
+   "https://2lacasaba.site/yessport5plus/index.m3u8?token=2c73d12ac55675d862ba1977f6aad4d8bc8522aa&expires=1795454380",
    "http://stream.mcquack.net/333/index.m3u8",
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32002/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32002/index.m3u8",
    "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32002/index.m3u8"
   ],
   "iptv": "Sport5Plus.il",
   "backupUrls": [
+   "https://2lacasaba.site/yessport5plus/index.m3u8?token=2c73d12ac55675d862ba1977f6aad4d8bc8522aa&expires=1795454380",
    "http://stream.mcquack.net/333/index.m3u8",
-   "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32002/index.m3u8",
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32002/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32002/index.m3u8",
    "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32002/index.m3u8"
   ],
   "webOk": true,
@@ -2391,8 +2275,6 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "backups": [
    "https://2lacasaba.site/yessport5live/index.m3u8?token=9cbeecd52019544cf46181018a6d98f80de6eee4&expires=1795454379",
    "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5_live_hevc/live.livx/playlist.m3u8",
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2362/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2362/index.m3u8",
    "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2362/index.m3u8",
    "https://r.il.cdn-redge.media/livehls/oil/freetv/live/sport_5_live/live.livx/playlist.m3u8"
   ],
@@ -2404,9 +2286,8 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
    "web": "✅"
   },
   "fallbackUrls": [
+   "https://2lacasaba.site/yessport5live/index.m3u8?token=9cbeecd52019544cf46181018a6d98f80de6eee4&expires=1795454379",
    "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5_live_hevc/live.livx/playlist.m3u8",
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2362/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2362/index.m3u8",
    "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2362/index.m3u8",
    "https://r.il.cdn-redge.media/livehls/oil/freetv/live/sport_5_live/live.livx/playlist.m3u8"
   ],
@@ -2435,16 +2316,13 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
    "web": "✅"
   },
   "fallbackUrls": [
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12254/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12254/index.m3u8",
+   "https://2lacasaba.site/5sportgold/index.m3u8?token=0afc7e9c8ce1efcca23eb5f23025e6601f2fa3a4&expires=1795454381",
    "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12254/index.m3u8",
    "https://r.il.cdn-redge.media/livehls/oil/freetv/live/sport_5_gold/live.livx/playlist.m3u8"
   ],
   "iptv": "Sport5Gold.il",
   "backups": [
    "https://2lacasaba.site/5sportgold/index.m3u8?token=0afc7e9c8ce1efcca23eb5f23025e6601f2fa3a4&expires=1795454381",
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12254/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12254/index.m3u8",
    "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12254/index.m3u8",
    "https://r.il.cdn-redge.media/livehls/oil/freetv/live/sport_5_gold/live.livx/playlist.m3u8"
   ],
@@ -2472,15 +2350,12 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
    "web": "✅"
   },
   "fallbackUrls": [
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12278/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12278/index.m3u8",
+   "https://2lacasaba.site/5stars/index.m3u8?token=11bc03ab68ab0809bd4f9a7cde231b52c0ebbec3&expires=1795454382",
    "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12278/index.m3u8"
   ],
   "iptv": "Sport5Stars.il",
   "backups": [
    "https://2lacasaba.site/5stars/index.m3u8?token=11bc03ab68ab0809bd4f9a7cde231b52c0ebbec3&expires=1795454382",
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12278/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12278/index.m3u8",
    "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12278/index.m3u8"
   ],
   "hamalSlug": "yes-5-stars"
@@ -2507,16 +2382,13 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
    "web": "✅"
   },
   "fallbackUrls": [
+   "https://2lacasaba.site/5max/index.m3u8?token=62d19a9f2ab5452c7ec7460cbb44d833f6e78b4c&expires=1795454383",
    "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5_max_hevc/live.livx/playlist.m3u8",
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32147/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32147/index.m3u8",
    "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32147/index.m3u8"
   ],
   "backups": [
    "https://2lacasaba.site/5max/index.m3u8?token=62d19a9f2ab5452c7ec7460cbb44d833f6e78b4c&expires=1795454383",
    "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5_max_hevc/live.livx/playlist.m3u8",
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32147/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32147/index.m3u8",
    "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32147/index.m3u8"
   ],
   "hamalSlug": "sport-5-max"
@@ -2538,8 +2410,6 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "backups": [
    "https://2lacasaba.site/onesport/index.m3u8?token=835ce677a9269ec1a28ece554c858a19290736d8&expires=1795454375",
    "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/one_1_hevc/live.livx/playlist.m3u8",
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2340/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2340/index.m3u8",
    "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2340/index.m3u8"
   ],
   "src": {
@@ -2550,9 +2420,8 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
    "web": "✅"
   },
   "fallbackUrls": [
+   "https://2lacasaba.site/onesport/index.m3u8?token=835ce677a9269ec1a28ece554c858a19290736d8&expires=1795454375",
    "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/one_1_hevc/live.livx/playlist.m3u8",
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2340/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2340/index.m3u8",
    "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2340/index.m3u8"
   ],
   "iptv": "One.il",
@@ -2575,8 +2444,6 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "backups": [
    "https://2lacasaba.site/onesport2/index.m3u8?token=b41e890f99e68b3d798c31cd00650aeb393ebdb6&expires=1795454377",
    "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/one_2_hevc/live.livx/playlist.m3u8",
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12231/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12231/index.m3u8",
    "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12231/index.m3u8"
   ],
   "src": {
@@ -2587,9 +2454,8 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
    "web": "✅"
   },
   "fallbackUrls": [
+   "https://2lacasaba.site/onesport2/index.m3u8?token=b41e890f99e68b3d798c31cd00650aeb393ebdb6&expires=1795454377",
    "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/one_2_hevc/live.livx/playlist.m3u8",
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12231/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12231/index.m3u8",
    "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12231/index.m3u8"
   ],
   "iptv": "One2.il",
@@ -2617,13 +2483,9 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
    "web": "✅"
   },
   "fallbackUrls": [
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32002/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32002/index.m3u8",
    "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32002/index.m3u8"
   ],
   "backups": [
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32002/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32002/index.m3u8",
    "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32002/index.m3u8"
   ]
  },
@@ -2673,23 +2535,16 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "fallbackUrls": [
    "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport5_fhd/live.livx/playlist.m3u8",
    "http://stream.mcquack.net/55/index.m3u8",
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12252/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12252/index.m3u8",
    "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12252/index.m3u8"
   ],
   "backups": [
    "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport5_fhd/live.livx/playlist.m3u8",
    "http://stream.mcquack.net/55/index.m3u8",
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12252/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12252/index.m3u8",
    "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12252/index.m3u8"
   ],
   "backupUrls": [
    "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport5_fhd/live.livx/playlist.m3u8",
    "http://stream.mcquack.net/55/index.m3u8",
-   "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12252/index.m3u8",
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12252/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12252/index.m3u8",
    "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12252/index.m3u8"
   ]
  },
@@ -3363,8 +3218,12 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
    "web": "✅"
   },
   "number": 185,
-  "fallbackUrls": [],
-  "backups": [],
+  "fallbackUrls": [
+   "https://skynewsau-live.akamaized.net/hls/live/2002690/skynewsau-extra2/master.m3u8"
+  ],
+  "backups": [
+   "https://skynewsau-live.akamaized.net/hls/live/2002690/skynewsau-extra2/master.m3u8"
+  ],
   "backupUrls": [
    "https://skynewsau-live.akamaized.net/hls/live/2002690/skynewsau-extra2/master.m3u8"
   ]
@@ -3459,12 +3318,8 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
    "found": "iptv-org (BFMTV.fr)",
    "web": "✅"
   },
-  "fallbackUrls": [
-   "https://live-cdn-stream-euw1.bfmtv.bct.nextradiotv.com/master.m3u8"
-  ],
-  "backups": [
-   "https://live-cdn-stream-euw1.bfmtv.bct.nextradiotv.com/master.m3u8"
-  ]
+  "fallbackUrls": [],
+  "backups": []
  },
  {
   "id": "bfm_tech",
@@ -3546,7 +3401,7 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "categoryEn": "news",
   "url": "https://jmp2.uk/plu-5421f71da6af422839419cb3.m3u8",
   "fallbackUrls": [
-   "https://jmp2.uk/plu-5421f71da6af422839419cb3.m3u8"
+   "https://turnerlive.warnermediacdn.com/hls/live/586495/cnngo/cnn_slate/VIDEO_0_3564000.m3u8"
   ],
   "badge": "HD",
   "color": "#ef4444",
@@ -3838,14 +3693,10 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "countryHe": "ישראל",
   "fallbackUrls": [
    "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/hidabroot/live.livx/playlist.m3u8",
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32319/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32319/index.m3u8",
    "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32319/index.m3u8"
   ],
   "backups": [
    "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/hidabroot/live.livx/playlist.m3u8",
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32319/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32319/index.m3u8",
    "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32319/index.m3u8"
   ]
  },
@@ -7406,7 +7257,9 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "backups": [
    "https://dh18i7whff86v.cloudfront.net/index.m3u8"
   ],
-  "fallbackUrls": []
+  "fallbackUrls": [
+   "https://dh18i7whff86v.cloudfront.net/index.m3u8"
+  ]
  },
  {
   "id": "ducktv_hd",
@@ -7433,7 +7286,11 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
    "https://stream.ads.ottera.tv/playlist.m3u8?network_id=13168",
    "https://d6lk10bkdgfae.cloudfront.net/playlist.m3u8"
   ],
-  "fallbackUrls": []
+  "fallbackUrls": [
+   "https://mmm-dk.otteravision.com/DexaYJdJXkLqFxTK_DuckTVHDSAMS/DuckTVHDSAMS.stream/playlist.m3u8",
+   "https://stream.ads.ottera.tv/playlist.m3u8?network_id=13168",
+   "https://d6lk10bkdgfae.cloudfront.net/playlist.m3u8"
+  ]
  },
  {
   "id": "beinsports_xtra_fhd",
@@ -7453,7 +7310,11 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
    "https://bein-xtra-xumo.amagi.tv/playlist.m3u8",
    "https://aegis-cloudfront-1.tubi.video/651ee7d3-e75b-4748-be86-422d43ff24b6/playlist.m3u8"
   ],
-  "fallbackUrls": [],
+  "fallbackUrls": [
+   "https://bein-beinxtrasports-firetv.amagi.tv/playlist.m3u8",
+   "https://bein-xtra-xumo.amagi.tv/playlist.m3u8",
+   "https://aegis-cloudfront-1.tubi.video/651ee7d3-e75b-4748-be86-422d43ff24b6/playlist.m3u8"
+  ],
   "number": 364,
   "src": {
    "by": "bein-xtra-bein.amagi.tv",
@@ -7480,7 +7341,9 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "backups": [
    "https://jmp2.uk/plu-66c870112630fc0008137ae2.m3u8"
   ],
-  "fallbackUrls": [],
+  "fallbackUrls": [
+   "https://jmp2.uk/plu-66c870112630fc0008137ae2.m3u8"
+  ],
   "number": 365,
   "src": {
    "by": "d11k1mnrgfposz.cloudfront.net",
@@ -7508,7 +7371,10 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
    "https://jmp2.uk/plu-5d93b635b43dd1a399b39eee.m3u8",
    "https://amg00056-amg00056c8-rakuten-it-3239.playouts.now.amagi.tv/playlist.m3u8"
   ],
-  "fallbackUrls": [],
+  "fallbackUrls": [
+   "https://jmp2.uk/plu-5d93b635b43dd1a399b39eee.m3u8",
+   "https://amg00056-amg00056c8-rakuten-it-3239.playouts.now.amagi.tv/playlist.m3u8"
+  ],
   "number": 366,
   "src": {
    "by": "amg00056-amg00056c6-rakuten-uk-3235.playouts.now.amagi.tv",
@@ -7654,13 +7520,9 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "categoryEn": "israel",
   "url": "https://d15ds134q59udk.cloudfront.net/out/v1/fbba879221d045598540ee783b140fe2/index.m3u8",
   "backups": [
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32136/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32136/index.m3u8",
    "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32136/index.m3u8"
   ],
   "fallbackUrls": [
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32136/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32136/index.m3u8",
    "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32136/index.m3u8"
   ],
   "badge": "HD",
@@ -7709,12 +7571,8 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "category": "ספורט (Sports)",
   "categoryEn": "sports",
   "url": "https://mvg-mv-xumo.otteravision.com/mvg/mv/mv.m3u8",
-  "backups": [
-   "https://mvg-mv-xumo.otteravision.com/mvg/mv/mv.m3u8"
-  ],
-  "fallbackUrls": [
-   "https://mvg-mv-xumo.otteravision.com/mvg/mv/mv.m3u8"
-  ],
+  "backups": [],
+  "fallbackUrls": [],
   "badge": "HD",
   "desc": "ערוץ הספורט המוביל בעולם לשידורי פורמולה 1 Formula 1 בשידור חי ובאיכות HD – מרוצים, מקצי דירוג, אימונים ופרשנות עולמית",
   "lang": "en",
@@ -7868,13 +7726,9 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "categoryEn": "israel",
   "url": "https://i24newshebrew-cdn.encoders.immergo.tv/master.m3u8",
   "backups": [
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2386/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2386/index.m3u8",
    "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2386/index.m3u8"
   ],
   "fallbackUrls": [
-   "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2386/index.m3u8",
-   "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2386/index.m3u8",
    "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2386/index.m3u8"
   ],
   "badge": "HD",
@@ -8993,7 +8847,9 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "quality": "HD",
   "resolution": "1080p",
   "desc": "ערוץ 9 הישראלי המשדר חדשות, אקטואליה, תרבות ותוכן ישראלי ורוסי.",
-  "backups": [],
+  "backups": [
+   "https://hlspackager.akamaized.net/live/DB/Israel9/HLS/Israel9.m3u8"
+  ],
   "src": {
    "by": "GoStreaming – ספק השידור של ערוץ 9",
    "kind": "official",
@@ -9001,7 +8857,9 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
    "found": "רשימה ידנית (גרסה קודמת)",
    "web": "✅"
   },
-  "fallbackUrls": []
+  "fallbackUrls": [
+   "https://hlspackager.akamaized.net/live/DB/Israel9/HLS/Israel9.m3u8"
+  ]
  },
  {
   "id": "i24news_arabic_hd",
@@ -11496,6 +11354,2190 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
    "web": "✅"
   },
   "number": 634
+ },
+ {
+  "id": "hot_bidur",
+  "name": "HOT בידור ישראלי HD",
+  "title": "ערוץ HOT בידור ישראלי וסלבס HD",
+  "category": "ערוצי ישראל - שידור חי",
+  "categoryEn": "israel",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32141/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/hot_bidur.png",
+  "badge": "HD",
+  "desc": "HOT בידור – דוקו-ריאליטי ישראלי, חדשות הבידור, סדרות מקור ואירוח",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 4,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "hot_reality",
+  "name": "HOT ריאל HD (HOT Real)",
+  "title": "ערוץ HOT Real סדרות ריאליטי HD",
+  "category": "ערוצי ישראל - שידור חי",
+  "categoryEn": "israel",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12274/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/hot_reality.png",
+  "badge": "HD",
+  "desc": "ערוץ HOT Real – מיטב סדרות הריאליטי והדוקו-ריאליטי מישראל ומהעולם",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 5,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "gameshow_channel_il",
+  "name": "ערוץ השעשועונים והמשחקים HD",
+  "title": "ערוץ השעשועונים והחידונים 24/7",
+  "category": "ערוצי ישראל - שידור חי",
+  "categoryEn": "israel",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32158/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/partner.png",
+  "badge": "HD",
+  "desc": "שעשועוני טלוויזיה, משחקי ידע, אתגרים וחידונים מרתקים לכל המשפחה בפרטנר TV.",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 8,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "yes_docu",
+  "name": "yes דוקו HD",
+  "title": "ערוץ yes דוקו קולנוע תיעודי ישראלי ועולמי HD",
+  "category": "ערוצי ישראל - שידור חי",
+  "categoryEn": "israel",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12258/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/yes_docu.png",
+  "badge": "HD",
+  "desc": "ערוץ yes דוקו – סרטים וסדרות דוקומנטריות עטורי פרסים מישראל ומהעולם",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 18,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "hot_8",
+  "name": "HOT 8 מדע ודוקו HD",
+  "title": "ערוץ HOT 8 דוקו, מדע ותרבות HD",
+  "category": "ערוצי ישראל - שידור חי",
+  "categoryEn": "israel",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32142/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/hot_8.png",
+  "badge": "HD",
+  "desc": "ערוץ HOT 8 – יצירה דוקומנטרית ישראלית מקורית, מדע, טבע, היסטוריה ותרבות",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 19,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "home_plus_il",
+  "name": "ערוץ בית+ Home Plus HD",
+  "title": "ערוץ הבית פלוס עיצוב ולייף סטייל (Home+ HD)",
+  "category": "ערוצי ישראל - שידור חי",
+  "categoryEn": "israel",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2339/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/home_plus_il.png",
+  "badge": "HD",
+  "desc": "ערוץ בית+ (Home Plus) – עיצוב הבית, אדריכלות, שיפוץ, גינון ולייף סטייל ישראלי",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 20,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "health_channel_il",
+  "name": "ערוץ הבריאות HD",
+  "title": "ערוץ הבריאות והרפואה הישראלי HD",
+  "category": "ערוצי ישראל - שידור חי",
+  "categoryEn": "israel",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2378/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/health_channel_il.png",
+  "badge": "HD",
+  "desc": "ערוץ הבריאות – רפואה, תזונה נכונה, כושר גופני ואיכות חיים",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 21,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "e_entertainment_il",
+  "name": "ערוץ הבידור E! ישראל HD",
+  "title": "ערוץ E! בידור וסלבס עם תרגום לעברית HD",
+  "category": "ערוצי ישראל - שידור חי",
+  "categoryEn": "israel",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12243/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/e_entertainment_il.png",
+  "badge": "HD",
+  "desc": "ערוץ E! ישראל – חדשות הוליווד, שטיח אדום, ריאליטי ולייף סטייל בתרגום לעברית",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 26,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "cbs_reality_il",
+  "name": "ערוץ הריאליטי HD",
+  "title": "ערוץ הריאליטי והמציאות בעברית HD",
+  "category": "ערוצי ישראל - שידור חי",
+  "categoryEn": "israel",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32159/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/cbs_reality_il.png",
+  "badge": "HD",
+  "desc": "ערוץ הריאליטי – סדרות מציאות, דרמות אמיתיות וסיפורים אנושיים בתרגום לעברית",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 28,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "humor_channel_il",
+  "name": "ערוץ ההומור והצחוק HD",
+  "title": "ערוץ ההומור סטנדאפ ומערכונים ישראלי HD",
+  "category": "ערוצי ישראל - שידור חי",
+  "categoryEn": "israel",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32161/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/humor_channel_il.png",
+  "badge": "HD",
+  "desc": "ערוץ ההומור – מערכונים, מופעי סטנדאפ, קומדיות ישראליות ובידור",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 29,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "hot_mind",
+  "name": "HOT מיינד דוקו והעשרה HD",
+  "title": "ערוץ HOT Mind מדע, פסיכולוגיה והעשרה HD",
+  "category": "ערוצי ישראל - שידור חי",
+  "categoryEn": "israel",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32143/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/hot_mind.png",
+  "badge": "HD",
+  "desc": "ערוץ HOT Mind – תוכניות העשרה, מדע, היסטוריה, פסיכולוגיה וטבע",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 35,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "hop_kids_israel",
+  "name": "ערוץ הופ! ילדים בעברית HD",
+  "title": "ערוץ הופ! (Hop!) לגיל הרך וילדים בעברית HD",
+  "category": "ילדים ונוער (בעברית)",
+  "categoryEn": "kids_he",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12244/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/hop.png",
+  "badge": "HD",
+  "desc": "ערוץ הופ! – לגדול בידיים טובות: יובל המבולבל, דוד חיים, מטוסי על, סמי הכבאי ותוכניות לגיל הרך",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 44,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "luli_tv_il",
+  "name": "ערוץ לולי לפעוטות בעברית HD",
+  "title": "ערוץ לולי (Luli TV) לפעוטות בעברית HD",
+  "category": "ילדים ונוער (בעברית)",
+  "categoryEn": "kids_he",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2364/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/luli_tv.png",
+  "badge": "HD",
+  "desc": "ערוץ לולי – ערוץ ייעודי לפעוטות עד גיל 3 בעברית: שירים ראשונים, צבעים, חיות ומשחקים",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 47,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "disney_channel_il",
+  "name": "ערוץ דיסני ישראל HD (Disney Channel)",
+  "title": "ערוץ דיסני ישראל (Disney Channel Israel HD)",
+  "category": "ילדים ונוער (בעברית)",
+  "categoryEn": "kids_he",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2382/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/disney.png",
+  "badge": "HD",
+  "desc": "ערוץ דיסני ישראל – החממה, כפולה, המופלאה, פיניאס ופרב וסרטי דיסני בדיבוב וכתוביות בעברית",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 48,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "nickelodeon_il",
+  "name": "ערוץ ניקלודיאון ישראל HD (Nickelodeon)",
+  "title": "ערוץ ניקלודיאון לילדים ונוער בעברית (Nickelodeon Israel HD)",
+  "category": "ילדים ונוער (בעברית)",
+  "categoryEn": "kids_he",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12240/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/nickelodeon.png",
+  "badge": "HD",
+  "desc": "ערוץ ניקלודיאון – בובספוג מכנסמרובע, הרעשנים, אווטאר, צבי הנינג'ה וקומדיות לילדים",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 50,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "nick_jr_il",
+  "name": "ערוץ ניק ג'וניור ישראל HD (Nick Jr.)",
+  "title": "ערוץ ניק ג'וניור בעברית (Nick Jr. Israel HD)",
+  "category": "ילדים ונוער (בעברית)",
+  "categoryEn": "kids_he",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2337/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/nick_jr.png",
+  "badge": "HD",
+  "desc": "ערוץ ניק ג'וניור ישראל – מפרץ ההרפתקאות (PAW Patrol), דורה, בלייז, פפה פיג ומסעדת החיות בעברית",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 51,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "teennick_il",
+  "name": "ערוץ טין ניק ישראל HD (TeenNick)",
+  "title": "ערוץ טין ניק לנוער בעברית (TeenNick Israel HD)",
+  "category": "ילדים ונוער (בעברית)",
+  "categoryEn": "kids_he",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32148/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/teennick.png",
+  "badge": "HD",
+  "desc": "ערוץ טין ניק ישראל – שכונה, נעלמים, פלמ\"ח, זיגי, סדרות נוער ישראליות ולהיטי נוער מהעולם",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 52,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "zoom_kids",
+  "name": "ערוץ זום ZOOM ילדים ונוער HD",
+  "title": "ערוץ זום (ZOOM) לילדים ונוער בעברית HD",
+  "category": "ילדים ונוער (בעברית)",
+  "categoryEn": "kids_he",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2359/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/zoom.png",
+  "badge": "HD",
+  "desc": "ערוץ ZOOM לילדים ונוער – מועדון החנונים, סדרות אקשן, אנימציה וקומדיה בעברית",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 53,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "yes_movies_kids_il",
+  "name": "yes קולנוע ילדים FHD (yes Movies Kids)",
+  "title": "ערוץ סרטי הילדים של יס (yes Movies Kids FHD)",
+  "category": "ילדים ונוער (בעברית)",
+  "categoryEn": "kids_he",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2365/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/yes_cinema_kids.png",
+  "badge": "FHD",
+  "desc": "ערוץ yes Movies Kids – שוברי קופות מונפשים, סרטי דיסני, פיקסאר ודרימוורקס בדיבוב לעברית",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 57,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "hot_cinema_family_il",
+  "name": "HOT סינמה פמילי HD (סרטי ילדים ומשפחה)",
+  "title": "ערוץ HOT Cinema Family סרטי משפחה וילדים HD",
+  "category": "ילדים ונוער (בעברית)",
+  "categoryEn": "kids_he",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32146/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/hot_cinema_family_il.png",
+  "badge": "HD",
+  "desc": "HOT Cinema Family – סרטי אנימציה, הרפתקאות וקומדיות לכל המשפחה בדיבוב וכתוביות בעברית",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 58,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "wiz_kids_il",
+  "name": "ערוץ WIZ! לילדים ונוער HD",
+  "title": "ערוץ הילדים החכם WIZ! בעברית HD",
+  "category": "ילדים ונוער (בעברית)",
+  "categoryEn": "kids_he",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12283/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/wiz.png",
+  "badge": "HD",
+  "desc": "ערוץ WIZ! – סדרות מדע, טבע, הרפתקאות וידע מרתק לילדים סקרנים בעברית",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 59,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "hot_buzz_il",
+  "name": "HOT באזז לילדים ונוער HD (HOT Buzz)",
+  "title": "HOT באזז HD",
+  "category": "ילדים ונוער (בעברית)",
+  "categoryEn": "kids",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32139/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "",
+  "badge": "HD",
+  "desc": "ערוץ HOT באזז – תכניות לילדים ונוער, סדרות, אנימציה והרפתקאות בעברית 24/7",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 68,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "channel_98_il",
+  "name": "ערוץ 98 – האזרח הוותיק HD",
+  "title": "ערוץ 98 שידורי קהילה והאזרח הוותיק",
+  "category": "ערוצי ישראל - שידור חי",
+  "categoryEn": "israel",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2369/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/channel_98_il.png",
+  "badge": "HD",
+  "desc": "ערוץ 98 – תוכניות תרבות, בריאות, פנאי וקהילה לאזרחים ותיקים בישראל",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 69,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "hot_3_fhd",
+  "name": "HOT 3 ערוץ הדגל FHD",
+  "title": "ערוץ הסדרות הישראליות והבינלאומיות HOT 3 FHD",
+  "category": "סרטים וסדרות (Movies & Series)",
+  "categoryEn": "movies",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12214/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/hot_3_fhd.png",
+  "badge": "FHD",
+  "desc": "ערוץ HOT 3 – סדרות המקור הגדולות של הוט, דרמות ישראליות ולהיטים מהעולם ב-FHD",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 115,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "hot_hbo_hd",
+  "name": "HOT HBO סדרות פרימיום HD",
+  "title": "ערוץ סדרות הפרימיום HOT HBO עם תרגום לעברית HD",
+  "category": "סרטים וסדרות (Movies & Series)",
+  "categoryEn": "movies",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2354/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/hot_hbo_hd.png",
+  "badge": "HD",
+  "desc": "ערוץ HOT HBO – מיטב סדרות המופת של HBO וסדרות בינלאומיות מובילות בתרגום לעברית",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 116,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "hot_cinema_1",
+  "name": "HOT סינמה 1 FHD",
+  "title": "ערוץ הסרטים HOT Cinema 1 שוברי קופות FHD",
+  "category": "סרטים וסדרות (Movies & Series)",
+  "categoryEn": "movies",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2357/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/hot_cinema_1.png",
+  "badge": "FHD",
+  "desc": "HOT סינמה 1 FHD – בכורות הוליוודיות ושוברי קופות מובילים עם כתוביות בעברית",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 117,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "hot_cinema_2",
+  "name": "HOT סינמה 2 HD",
+  "title": "ערוץ הסרטים HOT Cinema 2 אקשן ומתח HD",
+  "category": "סרטים וסדרות (Movies & Series)",
+  "categoryEn": "movies",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12215/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/hot_cinema_2.png",
+  "badge": "HD",
+  "desc": "HOT סינמה 2 – סרטי אקשן, מתח, מדע בדיוני והרפתקאות עם כתוביות בעברית",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 118,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "hot_cinema_3",
+  "name": "HOT סינמה 3 FHD",
+  "title": "ערוץ הסרטים HOT Cinema 3 קומדיה ודרמה FHD",
+  "category": "סרטים וסדרות (Movies & Series)",
+  "categoryEn": "movies",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2372/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/hot_cinema_3.png",
+  "badge": "FHD",
+  "desc": "HOT סינמה 3 FHD – קומדיות, סרטי דרמה ורומנטיקה עם כתוביות בעברית",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 119,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "hot_cinema_4",
+  "name": "HOT סינמה 4 HD",
+  "title": "ערוץ הסרטים HOT Cinema 4 קולנוע נבחר HD",
+  "category": "סרטים וסדרות (Movies & Series)",
+  "categoryEn": "movies",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2356/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/hot_cinema_4.png",
+  "badge": "HD",
+  "desc": "HOT סינמה 4 – קולנוע עולמי, להיטים אהובים וקלאסיקות מודרניות עם תרגום לעברית",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 120,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "hot_cinema_5",
+  "name": "HOT סינמה 5 HD",
+  "title": "ערוץ הסרטים HOT Cinema 5 HD",
+  "category": "סרטים וסדרות (Movies & Series)",
+  "categoryEn": "movies",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32137/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/hot_cinema_5.png",
+  "badge": "HD",
+  "desc": "HOT סינמה 5 – סרטים מגוונים מכל הז'אנרים 24/7 עם תרגום לעברית",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 121,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "hot_israeli_cinema",
+  "name": "HOT קולנוע ישראלי HD",
+  "title": "ערוץ HOT קולנוע ישראלי סרטים ישראליים HD",
+  "category": "סרטים וסדרות (Movies & Series)",
+  "categoryEn": "movies",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32138/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/hot_israeli.png",
+  "badge": "HD",
+  "desc": "HOT קולנוע ישראלי – מיטב הסרטים הישראליים מכל הזמנים, קלאסיקות בורקס וקולנוע עכשווי",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 122,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "hot_romantic_cinema",
+  "name": "HOT קולנוע רומנטי HD",
+  "title": "ערוץ HOT קולנוע רומנטי סרטי אהבה ורגש HD",
+  "category": "סרטים וסדרות (Movies & Series)",
+  "categoryEn": "movies",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32144/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/hot_romantic_cinema.png",
+  "badge": "HD",
+  "desc": "HOT קולנוע רומנטי – קומדיות רומנטיות ודרמות אהבה מרגשות עם תרגום לעברית",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 123,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "hot_drama",
+  "name": "HOT דרמה HD",
+  "title": "ערוץ הסדרות HOT Drama בתרגום לעברית HD",
+  "category": "סרטים וסדרות (Movies & Series)",
+  "categoryEn": "movies",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32140/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/hot_drama.png",
+  "badge": "HD",
+  "desc": "HOT דרמה – סדרות דרמה ישראליות ובינלאומיות מובילות עם כתוביות בעברית",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 124,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "hot_zone",
+  "name": "HOT זון HD (HOT Zone)",
+  "title": "ערוץ סדרות האקשן והמתח HOT Zone HD",
+  "category": "סרטים וסדרות (Movies & Series)",
+  "categoryEn": "movies",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2360/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/hot_zone.png",
+  "badge": "HD",
+  "desc": "HOT זון – סדרות אקשן, פשע, מתח וחקירות מארה״ב ומהעולם בתרגום לעברית",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 125,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "hot_comedy",
+  "name": "HOT קומדי HD (HOT Comedy)",
+  "title": "ערוץ הקומדיות והסיטקומים HOT Comedy HD",
+  "category": "סרטים וסדרות (Movies & Series)",
+  "categoryEn": "movies",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12217/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/hot_comedy.png",
+  "badge": "HD",
+  "desc": "HOT קומדי – סיטקומים, סדרות קומיות ומופעי סטנדאפ בתרגום לעברית",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 126,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "yes_israeli_cinema",
+  "name": "yes קולנוע ישראלי HD",
+  "title": "ערוץ yes קולנוע ישראלי סרטים וסדרות מישראל HD",
+  "category": "סרטים וסדרות (Movies & Series)",
+  "categoryEn": "movies",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2342/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/yes_israeli.png",
+  "badge": "HD",
+  "desc": "yes קולנוע ישראלי – סרטים ישראליים חדשים, קלאסיקות אהובות ויצירה מקורית",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 127,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "yes_movies_action",
+  "name": "yes קולנוע אקשן FHD (yes Movies Action)",
+  "title": "ערוץ הסרטים yes Movies Action FHD",
+  "category": "סרטים וסדרות (Movies & Series)",
+  "categoryEn": "movies",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12270/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/yes_movies_action.png",
+  "badge": "FHD",
+  "desc": "yes קולנוע אקשן FHD – סרטי פעולה, מתח, גיבורי-על ומדע בדיוני עם כתוביות בעברית",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 128,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "yes_movies_drama",
+  "name": "yes קולנוע דרמה FHD (yes Movies Drama)",
+  "title": "ערוץ הסרטים yes Movies Drama FHD",
+  "category": "סרטים וסדרות (Movies & Series)",
+  "categoryEn": "movies",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12272/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/yes_movies_drama.png",
+  "badge": "FHD",
+  "desc": "yes קולנוע דרמה FHD – סרטי דרמה מרגשים, ביוגרפיות וזוכי אוסקר עם תרגום לעברית",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 129,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "yes_movies_comedy",
+  "name": "yes קולנוע קומדיה FHD (yes Movies Comedy)",
+  "title": "ערוץ הסרטים yes Movies Comedy FHD",
+  "category": "סרטים וסדרות (Movies & Series)",
+  "categoryEn": "movies",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12271/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/yes_movies_comedy.png",
+  "badge": "FHD",
+  "desc": "yes קולנוע קומדיה FHD – קומדיות הוליוודיות, סרטי פיל-גוד ורומנטיקה עם תרגום לעברית",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 130,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "yes_tv_action",
+  "name": "yes TV אקשן HD (yes TV Action)",
+  "title": "ערוץ הסדרות yes TV Action HD",
+  "category": "סרטים וסדרות (Movies & Series)",
+  "categoryEn": "movies",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2346/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/yes_tv_action.png",
+  "badge": "HD",
+  "desc": "yes TV Action – סדרות מתח, אקשן, פשע ומדע בדיוני מובילות עם כתוביות בעברית",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 131,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "yes_tv_drama",
+  "name": "yes TV דרמה HD (yes TV Drama)",
+  "title": "ערוץ הסדרות yes TV Drama HD",
+  "category": "סרטים וסדרות (Movies & Series)",
+  "categoryEn": "movies",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2343/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/yes_tv_drama.png",
+  "badge": "HD",
+  "desc": "yes TV Drama – סדרות המקור של yes וסדרות הדרמה הטובות בעולם בתרגום לעברית",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 132,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "yes_tv_comedy",
+  "name": "yes TV קומדיה HD (yes TV Comedy)",
+  "title": "ערוץ הסדרות yes TV Comedy HD",
+  "category": "סרטים וסדרות (Movies & Series)",
+  "categoryEn": "movies",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2345/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/yes_tv_comedy.png",
+  "badge": "HD",
+  "desc": "yes TV Comedy – הקומדיות והסיטקומים המצחיקים ביותר מארה״ב ומישראל בתרגום לעברית",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 133,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "viva_premium_il",
+  "name": "ערוץ ויוה פרימיום HD (Viva Premium)",
+  "title": "ערוץ ויוה פרימיום דרמות וטלנובלות HD",
+  "category": "סרטים וסדרות (Movies & Series)",
+  "categoryEn": "movies",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12226/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/viva_premium_il.png",
+  "badge": "HD",
+  "desc": "ערוץ ויוה פרימיום – בכורות בלעדיות של סדרות וטלנובלות מובילות בתרגום לעברית",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 134,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "yam_tichoni_hd",
+  "name": "הערוץ הים תיכוני HD",
+  "title": "הערוץ הים תיכוני סדרות, סרטים ומוזיקה HD",
+  "category": "סרטים וסדרות (Movies & Series)",
+  "categoryEn": "movies",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2390/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/yam_tichoni_hd.png",
+  "badge": "HD",
+  "desc": "הערוץ הים תיכוני – סדרות דרמה, סרטים, הופעות ומוזיקה ים תיכונית וישראלית",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 135,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "yam_tichoni_plus_il",
+  "name": "הערוץ הים תיכוני+ HD",
+  "title": "הערוץ הים תיכוני פלוס סדרות ודרמות HD",
+  "category": "סרטים וסדרות (Movies & Series)",
+  "categoryEn": "movies",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12224/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/yam_tichoni_plus_il.png",
+  "badge": "HD",
+  "desc": "הערוץ הים תיכוני+ – דרמות, קולנוע, מוזיקה ותוכניות בידור ים תיכוניות",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 136,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "turkish_dramas_plus",
+  "name": "ערוץ הדרמות הטורקיות+ FHD",
+  "title": "ערוץ הדרמות הטורקיות פלוס בתרגום לעברית FHD",
+  "category": "סרטים וסדרות (Movies & Series)",
+  "categoryEn": "movies",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12257/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/turkish_dramas_plus.png",
+  "badge": "FHD",
+  "desc": "ערוץ הדרמות הטורקיות+ – הסדרות הטורקיות המצליחות ביותר באיכות FHD עם תרגום לעברית",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 137,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "turkish_dramas_2",
+  "name": "ערוץ הדרמות הטורקיות 2 FHD",
+  "title": "ערוץ הדרמות הטורקיות 2 בתרגום לעברית FHD",
+  "category": "סרטים וסדרות (Movies & Series)",
+  "categoryEn": "movies",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12262/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/turkish_dramas_2.png",
+  "badge": "FHD",
+  "desc": "ערוץ הדרמות הטורקיות 2 – סדרות רומנטיקה, משפחה ומתח מטורקיה בתרגום לעברית",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 138,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "turkish_dramas_3",
+  "name": "ערוץ הדרמות הטורקיות 3 FHD",
+  "title": "ערוץ הדרמות הטורקיות 3 בתרגום לעברית FHD",
+  "category": "סרטים וסדרות (Movies & Series)",
+  "categoryEn": "movies",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12264/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/turkish_dramas_3.png",
+  "badge": "FHD",
+  "desc": "ערוץ הדרמות הטורקיות 3 – מרתונים ופרקים חדשים של להיטים טורקיים בתרגום לעברית",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 139,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "mediterranean_movies_2",
+  "name": "ערוץ הסרטים הים תיכוני 2 HD",
+  "title": "ערוץ הסרטים הים תיכוני 2 בתרגום לעברית HD",
+  "category": "סרטים וסדרות (Movies & Series)",
+  "categoryEn": "movies",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32163/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/mediterranean_movies_2.png",
+  "badge": "HD",
+  "desc": "ערוץ הסרטים הים תיכוני 2 – סרטי דרמה, קומדיה ורומנטיקה מאגן הים התיכון בתרגום לעברית",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 141,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "global_action_1",
+  "name": "ערוץ האקשן העולמי 1 HD",
+  "title": "ערוץ האקשן העולמי 1 סדרות וסרטי פעולה HD",
+  "category": "סרטים וסדרות (Movies & Series)",
+  "categoryEn": "movies",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32130/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/global_action_1.png",
+  "badge": "HD",
+  "desc": "ערוץ האקשן העולמי 1 – סדרות וסרטי אקשן, פשע ומתח בינלאומיים עם כתוביות בעברית",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 142,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "global_action_2",
+  "name": "ערוץ האקשן העולמי 2 HD",
+  "title": "ערוץ האקשן העולמי 2 סדרות וסרטי פעולה HD",
+  "category": "סרטים וסדרות (Movies & Series)",
+  "categoryEn": "movies",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32131/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/global_action_2.png",
+  "badge": "HD",
+  "desc": "ערוץ האקשן העולמי 2 – אקשן חוצה גבולות, מתח ופעולה 24/7 עם כתוביות בעברית",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 143,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "spanish_dramas_1",
+  "name": "ערוץ הדרמות הספרדיות 1 HD",
+  "title": "ערוץ הדרמות הספרדיות 1 בתרגום לעברית HD",
+  "category": "סרטים וסדרות (Movies & Series)",
+  "categoryEn": "movies",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32132/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/spanish_dramas_1.png",
+  "badge": "HD",
+  "desc": "ערוץ הדרמות הספרדיות 1 – מיטב הסדרות והטלנובלות מספרד ואמריקה הלטינית בתרגום לעברית",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 144,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "spanish_dramas_2",
+  "name": "ערוץ הדרמות הספרדיות 2 HD",
+  "title": "ערוץ הדרמות הספרדיות 2 בתרגום לעברית HD",
+  "category": "סרטים וסדרות (Movies & Series)",
+  "categoryEn": "movies",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32133/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/spanish_dramas_2.png",
+  "badge": "HD",
+  "desc": "ערוץ הדרמות הספרדיות 2 – דרמות תקופתיות, מתח ורומנטיקה בספרדית עם כתוביות בעברית",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 145,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "indian_series_1",
+  "name": "ערוץ הדרמות ההודיות 1 HD",
+  "title": "ערוץ הדרמות ההודיות 1 בתרגום לעברית HD",
+  "category": "סרטים וסדרות (Movies & Series)",
+  "categoryEn": "movies",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32134/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/indian_series_1.png",
+  "badge": "HD",
+  "desc": "ערוץ הדרמות ההודיות 1 – סדרות רומנטיקה ומשפחה צבעוניות מהודו עם כתוביות בעברית",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 146,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "indian_series_2",
+  "name": "ערוץ הדרמות ההודיות 2 HD",
+  "title": "ערוץ הדרמות ההודיות 2 בתרגום לעברית HD",
+  "category": "סרטים וסדרות (Movies & Series)",
+  "categoryEn": "movies",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32135/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/indian_series_2.png",
+  "badge": "HD",
+  "desc": "ערוץ הדרמות ההודיות 2 – דרמות וסיפורי אהבה מהודו עם תרגום מלא לעברית",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 147,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "bollywood_hd",
+  "name": "ערוץ בוליווד סרטים הודיים HD",
+  "title": "ערוץ בוליווד Bollywood HD בתרגום לעברית",
+  "category": "סרטים וסדרות (Movies & Series)",
+  "categoryEn": "movies",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12267/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/bollywood_hd.png",
+  "badge": "HD",
+  "desc": "ערוץ בוליווד HD – שוברי קופות וסרטים הודיים חדשים עם כתוביות בעברית",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 148,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "bollywood_classic_hd",
+  "name": "ערוץ בוליווד קלאסי HD",
+  "title": "ערוץ בוליווד סרטים הודיים קלאסיים HD",
+  "category": "סרטים וסדרות (Movies & Series)",
+  "categoryEn": "movies",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32150/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/bollywood_classic_hd.png",
+  "badge": "HD",
+  "desc": "ערוץ בוליווד קלאסי – הקלאסיקות האהובות של הקולנוע ההודי בתרגום לעברית",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 149,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "bollyshow_hd",
+  "name": "ערוץ בולישואו Bollyshow HD",
+  "title": "ערוץ בולישואו סדרות ובידור הודי HD",
+  "category": "סרטים וסדרות (Movies & Series)",
+  "categoryEn": "movies",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32125/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/bollyshow_hd.png",
+  "badge": "HD",
+  "desc": "ערוץ Bollyshow – סדרות, מוזיקה ובידור מבוליווד עם תרגום לעברית",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 150,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "zee_tv_il",
+  "name": "ערוץ ZEE TV ישראל HD",
+  "title": "ערוץ הסדרות והסרטים ZEE TV ישראל (Zee TV Israel HD)",
+  "category": "סרטים וסדרות (Movies & Series)",
+  "categoryEn": "movies",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32153/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/zee_tv_il.png",
+  "badge": "HD",
+  "desc": "ערוץ ZEE TV בישראל – מיטב הדרמות, הסרטים והסדרות מבית ZEE עם תרגום",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 151,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "gtv_il",
+  "name": "ערוץ GTV דרמות וקולנוע HD",
+  "title": "ערוץ GTV סדרות וקולנוע (GTV HD)",
+  "category": "סרטים וסדרות (Movies & Series)",
+  "categoryEn": "movies",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32157/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/gtv_il.png",
+  "badge": "HD",
+  "desc": "ערוץ GTV – סדרות דרמה, קולנוע ובידור בשידור חי",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 152,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "classic_comedy_il",
+  "name": "ערוץ הקומדיות הקלאסיות HD",
+  "title": "ערוץ הקומדיות הקלאסיות והישראליות HD",
+  "category": "ערוצי ישראל - שידור חי",
+  "categoryEn": "israel",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32136/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/reshet13_comedy_il.png",
+  "badge": "HD",
+  "desc": "ערוץ הקומדיות הקלאסיות – סדרות הקומדיה האהובות מכל הזמנים, מערכונים נוסטלגיים וסרטי בורקס.",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 153,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "love_channel_il",
+  "name": "ערוץ האהבה והרומנטיקה HD",
+  "title": "ערוץ האהבה סדרות וסרטים רומנטיים HD",
+  "category": "סרטים וסדרות (Movies & Series)",
+  "categoryEn": "movies",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32145/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/love_channel_il.png",
+  "badge": "HD",
+  "desc": "ערוץ האהבה – סדרות וסרטים רומנטיים מרגשים עם כתוביות בעברית",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 154,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "food_network_il",
+  "name": "ערוץ האוכל HD (Food Network / החיים הטובים)",
+  "title": "ערוץ האוכל הישראלי ו-Food Network HD",
+  "category": "ערוצי אוכל (Food Channels)",
+  "categoryEn": "food",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12209/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/food_channel.png",
+  "badge": "HD",
+  "desc": "ערוץ האוכל הישראלי מבית החיים הטובים וענני תקשורת – שפים ישראליים, מתכונים וקולינריה בעברית",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 173,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "nat_geo_il",
+  "name": "נשיונל ג'יאוגרפיק ישראל HD (Nat Geo)",
+  "title": "ערוץ נשיונל ג'יאוגרפיק עם תרגום לעברית HD",
+  "category": "טבע ודוקו (Documentary & Nature)",
+  "categoryEn": "docu",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12247/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/nat_geo_il.png",
+  "badge": "HD",
+  "desc": "נשיונל ג'יאוגרפיק ישראל – מדע, טבע, תעופה, חלל וחקר העולם עם כתוביות בעברית",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 202,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "nat_geo_wild_il",
+  "name": "נשיונל ג'יאוגרפיק וויילד FHD (Nat Geo Wild)",
+  "title": "ערוץ הטבע Nat Geo Wild עם תרגום לעברית FHD",
+  "category": "טבע ודוקו (Documentary & Nature)",
+  "categoryEn": "docu",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12259/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/nat_geo_wild_il.png",
+  "badge": "FHD",
+  "desc": "נשיונל ג'יאוגרפיק וויילד FHD – עולם החי, תיעוד טבע פראי ומשלחות מחקר עם כתוביות בעברית",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 203,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "discovery_il",
+  "name": "ערוץ דיסקברי ישראל FHD (Discovery)",
+  "title": "ערוץ דיסקברי עם תרגום לעברית (Discovery Channel FHD)",
+  "category": "טבע ודוקו (Documentary & Nature)",
+  "categoryEn": "docu",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2358/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/discovery_il.png",
+  "badge": "FHD",
+  "desc": "ערוץ דיסקברי ישראל FHD – הישרדות, הנדסה, רכב, מדע והרפתקאות עם כתוביות בעברית",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 204,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "history_il",
+  "name": "ערוץ ההיסטוריה ישראל FHD (History)",
+  "title": "ערוץ ההיסטוריה עם תרגום לעברית (History Channel FHD)",
+  "category": "טבע ודוקו (Documentary & Nature)",
+  "categoryEn": "docu",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12265/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/history_il.png",
+  "badge": "FHD",
+  "desc": "ערוץ ההיסטוריה ישראל FHD – היסטוריה עולמית, תעלומות, תרבויות עתיקות ודוקו בתרגום לעברית",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 205,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "hop_plus_kids_il",
+  "name": "ערוץ הופ! פלוס HD",
+  "title": "ערוץ הופ! פלוס HD",
+  "category": "ילדים ונוער (בעברית)",
+  "categoryEn": "kids_he",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2338/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/hop_plus_kids_il.png",
+  "badge": "HD",
+  "desc": "ערוץ הופ! פלוס – תוכניות אהובות, לימוד והרפתקאות לקטנטנים.",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 384,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "humor_2_channel_il",
+  "name": "ערוץ ההומור 2 HD",
+  "title": "ערוץ ההומור 2 – צחוק ובידור HD",
+  "category": "ערוצי ישראל - שידור חי",
+  "categoryEn": "israel",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32316/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/humor_channel_il.png",
+  "badge": "HD",
+  "desc": "ערוץ ההומור 2 – סטנדאפ, מערכונים, קומדיות ובידור ישראלי ברצף 24/7.",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 390,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "natgeo_wild_il",
+  "name": "National Geographic WILD FHD",
+  "title": "נשיונל ג'יאוגרפיק WILD טבע וחיות FHD",
+  "category": "ערוצי ישראל - שידור חי",
+  "categoryEn": "israel",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12248/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/nat_geo_wild_il.png",
+  "badge": "FHD",
+  "desc": "ערוץ נשיונל ג'יאוגרפיק WILD – עולם החי, טבע פראי וטורפים בסרטי תעודה מרהיבים.",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 399,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "beautyz_fashion_il",
+  "name": "ערוץ Beautyz אופנה ולייפסטייל HD",
+  "title": "ערוץ Beautyz אופנה ויופי HD",
+  "category": "ערוצי ישראל - שידור חי",
+  "categoryEn": "israel",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32164/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/hot_reality.png",
+  "badge": "HD",
+  "desc": "ערוץ Beautyz – אופנה, יופי, עיצוב ולייפסטייל ישראלי ובינלאומי.",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 401,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "junior_channel_hd",
+  "name": "ערוץ ג'וניור HD (Junior)",
+  "title": "ערוץ ג'וניור HD (Junior)",
+  "category": "ילדים ונוער (בעברית)",
+  "categoryEn": "kids_he",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2366/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/junior.png",
+  "badge": "HD",
+  "desc": "ערוץ ג'וניור HD (Junior) — שידור חי ישיר בעברית.",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 404,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "baby_channel_hd",
+  "name": "ערוץ בייבי HD (Baby Channel)",
+  "title": "ערוץ בייבי HD (Baby Channel)",
+  "category": "ילדים ונוער (בעברית)",
+  "categoryEn": "kids_he",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2370/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/baby_tv_he.png",
+  "badge": "HD",
+  "desc": "ערוץ בייבי HD (Baby Channel) — שידור חי ישיר בעברית.",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 405,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "yes_movies_kids_hd",
+  "name": "yes קולנוע ילדים HD (yes Movies Kids)",
+  "title": "yes קולנוע ילדים HD (yes Movies Kids)",
+  "category": "ילדים ונוער (בעברית)",
+  "categoryEn": "kids_he",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12273/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/yes_movies_kids_il.png",
+  "badge": "HD",
+  "desc": "yes קולנוע ילדים HD (yes Movies Kids) — שידור חי ישיר בעברית.",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 407,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "good_life_channel_hd",
+  "name": "ערוץ החיים הטובים HD (Good Life)",
+  "title": "ערוץ החיים הטובים והלייפסטייל מבית ענני תקשורת HD",
+  "category": "ערוצי ישראל - שידור חי",
+  "categoryEn": "lifestyle",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2355/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/good_life_israel.png",
+  "badge": "HD",
+  "desc": "ערוץ החיים הטובים – תיירות, קולינריה, עיצוב הבית, לייפסטייל ואירוח ישראלי ועולמי מבית ענני תקשורת.",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 409,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "sport6_israel",
+  "name": "ספורט 6 HD (Sport 6)",
+  "title": "ספורט 6 ישיר HD (צ'רלטון Sport 6)",
+  "category": "ספורט (Sports)",
+  "categoryEn": "sports",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32003/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/sport6_israel.png",
+  "badge": "HD",
+  "desc": "ערוץ ספורט 6 מבית צ'רלטון – שידורים חיים של טניס, פאדל, כדורגל עולמי וספורט בינלאומי ב-HD",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 511,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "mediterranean_movies_1",
+  "name": "ערוץ הסרטים הים תיכוני 1 HD",
+  "title": "ערוץ הסרטים הים תיכוני 1 בתרגום לעברית HD",
+  "category": "סרטים וסדרות (Movies & Series)",
+  "categoryEn": "movies",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32162/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/mediterranean_movies_1.png",
+  "badge": "HD",
+  "desc": "ערוץ הסרטים הים תיכוני 1 – קולנוע טורקי, יווני וים תיכוני מרגש בתרגום לעברית",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 512,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "turkish_dramas_plus_il",
+  "name": "ערוץ הדרמות הטורקיות פלוס HD",
+  "title": "דרמות טורקיות פלוס HD",
+  "category": "סרטים וסדרות (Movies & Series)",
+  "categoryEn": "series",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2363/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "",
+  "badge": "HD",
+  "desc": "ערוץ הדרמות הטורקיות פלוס – מיטב הסדרות הטורקיות מתורגמות לעברית 24/7",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 537,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "ego_channel_il",
+  "name": "ערוץ אגו Ego HD",
+  "title": "ערוץ אגו רכב, אקסטרים ולייף סטייל HD",
+  "category": "ערוצי ישראל - שידור חי",
+  "categoryEn": "israel",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32317/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/ego_channel_il.png",
+  "badge": "HD",
+  "desc": "ערוץ אגו – מכוניות, אקסטרים, ספורט זירה, טכנולוגיה ודוקו מרתק",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 27,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "sport5_4k_uhd",
+  "name": "ספורט 5 4K UHD",
+  "title": "ערוץ ספורט 5 4K אולטרה HD",
+  "category": "ספורט (Sports)",
+  "categoryEn": "sports",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32004/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/sport5.png",
+  "badge": "4K",
+  "desc": "שידורי ספורט ישירים בטכנולוגיית 4K Ultra HD ו-FHD H.264 מלא: ליגת האלופות, ליגת העל בכדורגל, מכבי תל אביב ביורוליג והמשחקים המרכזיים בחדות שיא עם גיבוי FHD אוטומטי.",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 106,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "one_doco_hd",
+  "name": "ערוץ ONE דוקו HD (ONE DOCO)",
+  "title": "ערוץ ONE DOCO סרטי וסדרות דוקו ספורט HD",
+  "category": "ספורט (Sports)",
+  "categoryEn": "sports",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32129/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/one_doco_hd.png",
+  "badge": "HD",
+  "desc": "ערוץ ONE DOCO – סרטים דוקומנטריים וסיפורים מרתקים מעולם הכדורגל והספורט",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 109,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "foody_tv",
+  "name": "ערוץ פודי Foody HD",
+  "title": "ערוץ פודי אוכל ובישול ישראלי (Foody HD)",
+  "category": "ערוצי אוכל (Food Channels)",
+  "categoryEn": "food",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32154/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/foody_tv.png",
+  "badge": "HD",
+  "desc": "ערוץ פודי (Foody) – מיטב השפים, המתכונים ותוכניות הבישול והאפייה מישראל",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 174,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "partner_design_il",
+  "name": "ערוץ פרטנר TV – עיצוב ולייף סטייל HD",
+  "title": "ערוץ פרטנר TV – ערוץ העיצוב והאדריכלות",
+  "category": "ערוצי ישראל - שידור חי",
+  "categoryEn": "israel",
+  "kind": "tv",
+  "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32124/index.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "assets/logos/partner.svg",
+  "badge": "HD",
+  "desc": "עיצוב פנים, אדריכלות ישראלית ובינלאומית, סיורים בבתים מעוצבים בפרטנר TV.",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 111,
+  "webOk": false,
+  "src": {
+   "by": "osoyz0xv.ottclub.xyz",
+   "kind": "restream",
+   "host": "osoyz0xv.ottclub.xyz",
+   "found": "שידור ישראלי חי מאומת",
+   "web": "❌ באפליקציות"
+  }
+ },
+ {
+  "id": "kabbalah_66_hd",
+  "name": "קבלה לעם (ערוץ 66) HD",
+  "title": "קבלה לעם (ערוץ 66) HD",
+  "category": "מסורת וקהילה",
+  "categoryEn": "heritage",
+  "kind": "tv",
+  "url": "https://edge1.il.kab.tv/rtplive/tv66-heb-medium.stream/playlist.m3u8",
+  "backups": [],
+  "fallbackUrls": [],
+  "logo": "",
+  "badge": "FHD",
+  "desc": "ערוץ קבלה לעם בעברית (ערוץ 66) בשידור חי 24/7.",
+  "lang": "he",
+  "country": "IL",
+  "countryHe": "ישראל",
+  "number": 635,
+  "webOk": true,
+  "src": {
+   "by": "Official Israeli CDN",
+   "kind": "official",
+   "host": "edge1.il.kab.tv",
+   "found": "שידור רשמי ישיר",
+   "web": "✅"
+  }
  }
 ];
 window.VOD_DATA = [{"id": "vod_checkout", "pid": 12832, "title": "קופה ראשית", "originalTitle": "קופה ראשית", "year": "2020-2026", "rating": "9.3", "genres": ["קומדיה", "כאן 11", "סאטירה"], "desc": "עלילותיהם הקורעות מצחוק של עובדי ולקוחות סניף שפע יששכר ביבנה: כוכבה, ראמזי, שירה, ניסים, אנטולי ואמנון טיטינסקי.", "poster": "assets/vod/checkout.png", "backdrop": "assets/vod/checkout.png", "episodes": [{"id": "vod_checkout_ep_1098487", "title": "פרק 1 - אבא גנוב", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2246979/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/checkout.png"}, {"id": "vod_checkout_ep_1102541", "title": "פרק 2 - אנטולי קצב עליון", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2248982/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/checkout.png"}, {"id": "vod_checkout_ep_1098490", "title": "פרק 3 -  ניסים משלים מניין", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2244718/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/checkout.png"}, {"id": "vod_checkout_ep_1098491", "title": "פרק 4 - זהבה וארנון", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2244719/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/checkout.png"}, {"id": "vod_checkout_ep_1098375", "title": "פרק 5 - שמור לי תור לי", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2244720/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/checkout.png"}, {"id": "vod_checkout_ep_1098376", "title": "פרק 6 - ראמזי תמיד אשם", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2244721/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/checkout.png"}, {"id": "vod_checkout_ep_1098378", "title": "פרק 7 - אביחי הרקדן", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2244722/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/checkout.png"}, {"id": "vod_checkout_ep_1098380", "title": "פרק 8 - חבילות", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2244723/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/checkout.png"}, {"id": "vod_checkout_ep_1098381", "title": "פרק 9 - מרגי שביט", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2244724/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/checkout.png"}, {"id": "vod_checkout_ep_1113189", "title": "ספיישל בחירות 2026 - אמנון לשלטון", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2259546/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/checkout.png"}, {"id": "vod_checkout_ep_809113", "title": "פרק 1 - כפרות", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_csokhtwe/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/checkout.png"}, {"id": "vod_checkout_ep_809157", "title": "פרק 2 - הסטארט-אפ של כוכבה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_ygac97dd/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/checkout.png"}, {"id": "vod_checkout_ep_809161", "title": "פרק 3 - שברת שילמת", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_y8emnwxk/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/checkout.png"}, {"id": "vod_checkout_ep_809162", "title": "פרק 4 - דניס קמחי", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_wy8yk2x8/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/checkout.png"}], "totalEpisodes": 14}, {"id": "vod_manayek", "pid": 12394, "title": "מנאייכ", "originalTitle": "מנאייכ", "year": "2020-2026", "rating": "9.1", "genres": ["דרמה", "מתח", "פשע", "כאן 11"], "desc": "דרמת מתח משטרתית זוכת פרסי האקדמיה. חוקר מח\"ש איזי בכר יוצא לחקור פרשת שחיתות שמובילה לחברו הטוב ביותר במשטרה.", "poster": "assets/vod/manayek.jpg", "backdrop": "assets/vod/manayek.jpg", "episodes": [{"id": "vod_manayek_ep_686141", "title": "פרק 1 - הבכורה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_4a6kir7n/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/manayek.jpg"}, {"id": "vod_manayek_ep_686145", "title": "פרק 2 - בריחה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_tsgj6ml2/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/manayek.jpg"}, {"id": "vod_manayek_ep_693480", "title": "פרק 3 - אמת", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_u03397eb/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/manayek.jpg"}, {"id": "vod_manayek_ep_693488", "title": "פרק 4 - אודי", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_si83kkaa/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/manayek.jpg"}, {"id": "vod_manayek_ep_695456", "title": "פרק 5 - מבחן", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_bghfulgx/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/manayek.jpg"}, {"id": "vod_manayek_ep_695459", "title": "פרק 6 - מלכודות", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_f27osj0m/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/manayek.jpg"}, {"id": "vod_manayek_ep_699113", "title": "פרק 7 - מניע", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_0mppw3wa/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/manayek.jpg"}, {"id": "vod_manayek_ep_699461", "title": "פרק 8 - תוצאות", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_8787h75d/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/manayek.jpg"}, {"id": "vod_manayek_ep_704401", "title": "פרק 9 - התפרקות", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_1zxap76o/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/manayek.jpg"}, {"id": "vod_manayek_ep_707890", "title": "פרק 10 (אחרון) - תקווה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_52mtat4f/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/manayek.jpg"}, {"id": "vod_manayek_ep_146166", "title": "פרק 1 - לחץ", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_8j349kh7/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/manayek.jpg"}, {"id": "vod_manayek_ep_146307", "title": "פרק 2 - האשמה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_qnmt6aqc/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/manayek.jpg"}, {"id": "vod_manayek_ep_146517", "title": "פרק 3 - שיבוש", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_0bfzlxl0/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/manayek.jpg"}, {"id": "vod_manayek_ep_147090", "title": "פרק 4 - עובדים", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_njbfku1j/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/manayek.jpg"}], "totalEpisodes": 14}, {"id": "vod_tehran", "pid": 12317, "title": "טהרן", "originalTitle": "טהרן", "year": "2020-2026", "rating": "8.9", "genres": ["מתח", "ריגול", "אקשן", "כאן 11"], "desc": "תמר רביניאן, האקרית מבריקה של המוסד, נשלחת בזהות בדויה ללב טהרן למשימה חשאית ומסוכנת.", "poster": "assets/vod/tehran.jpg", "backdrop": "assets/vod/tehran.jpg", "episodes": [{"id": "vod_tehran_ep_833707", "title": "פרק 1 - עולם רדיואקטיבי", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_5kuznpwi/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/tehran.jpg"}, {"id": "vod_tehran_ep_836534", "title": "פרק 2 - אגרוף בפרצוף", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_xov7asuv/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/tehran.jpg"}, {"id": "vod_tehran_ep_839205", "title": "פרק 3 - בגוב האריות", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_am337lsk/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/tehran.jpg"}, {"id": "vod_tehran_ep_841808", "title": "פרק 4 - אל תוך האש", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_7g2761vp/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/tehran.jpg"}, {"id": "vod_tehran_ep_844227", "title": "פרק 5 - עסק לא גמור", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_oh4gnroy/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/tehran.jpg"}, {"id": "vod_tehran_ep_846647", "title": "פרק 6 - אין מוצא", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_l4f97mga/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/tehran.jpg"}, {"id": "vod_tehran_ep_852555", "title": "פרק 7 - רגע האמת של ניסן", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_y2ldj9td/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/tehran.jpg"}, {"id": "vod_tehran_ep_852556", "title": "פרק 8 - על סף תהום", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_vszyia2l/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/tehran.jpg"}, {"id": "vod_tehran_ep_144504", "title": "פרק 1 - 13,000", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_fanlu3fh/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/tehran.jpg"}, {"id": "vod_tehran_ep_144507", "title": "פרק 2 - שינוי בתוכנית", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_88ds59jp/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/tehran.jpg"}, {"id": "vod_tehran_ep_144879", "title": "פרק 3 - PTSD", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_8ff00dg3/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/tehran.jpg"}, {"id": "vod_tehran_ep_145326", "title": "פרק 4 - בני עשירים", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_y9uoh1wc/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/tehran.jpg"}, {"id": "vod_tehran_ep_145647", "title": "פרק 5 - טעות כפולה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_8jc56xle/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/tehran.jpg"}, {"id": "vod_tehran_ep_146070", "title": "פרק 6 - הבחירה של פראז", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_urlv5qt6/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/tehran.jpg"}], "totalEpisodes": 14}, {"id": "vod_cramel", "pid": 11204, "title": "כראמל", "originalTitle": "Cramel", "year": "2022-2024", "rating": "9.1", "genres": ["פנטזיה", "ילדים ונוער", "הרפתקאות", "כאן 11"], "desc": "שלושה אחים יתומים מאומצים על ידי גבירה עשירה ומקבלים בירושה חתול מיוחד ומדבר בעל יכולות קסומות בשם כראמל.", "poster": "assets/vod/cramel.jpg", "backdrop": "assets/vod/cramel.jpg", "episodes": [{"id": "vod_cramel_ep_1000631", "title": "פרק 1 - החלום", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1948788/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/cramel.jpg"}, {"id": "vod_cramel_ep_1000635", "title": "פרק 2 - האיש בסרבל האפור", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1948755/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/cramel.jpg"}, {"id": "vod_cramel_ep_1000643", "title": "פרק 3 - גול החדש", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1948787/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/cramel.jpg"}, {"id": "vod_cramel_ep_1000655", "title": "פרק 4 - השליטה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1961752/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/cramel.jpg"}, {"id": "vod_cramel_ep_1002501", "title": "פרק 5 - דולי", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1961764/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/cramel.jpg"}, {"id": "vod_cramel_ep_1002511", "title": "פרק 6 - האחד", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1975056/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/cramel.jpg"}, {"id": "vod_cramel_ep_1001867", "title": "פרק 7 - מוצאים את כראמל", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2169704/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/cramel.jpg"}, {"id": "vod_cramel_ep_995457", "title": "פרק 8 - ההפנוט", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2158206/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/cramel.jpg"}, {"id": "vod_cramel_ep_1006477", "title": "פרק 9 - החיים הם לא עוגת גבינה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2044429/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/cramel.jpg"}, {"id": "vod_cramel_ep_1006483", "title": "פרק 10 - מלחמת העולמות", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2070392/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/cramel.jpg"}, {"id": "vod_cramel_ep_1006493", "title": "פרק 11- מאגיה פיניטו", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2070362/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/cramel.jpg"}, {"id": "vod_cramel_ep_993153", "title": "פרק 12 - עוזבים את הטירה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2121358/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/cramel.jpg"}], "totalEpisodes": 12}, {"id": "vod_eretz_nehederet", "title": "ארץ נהדרת", "originalTitle": "Eretz Nehederet", "year": "2003-2026", "rating": "9.4", "genres": ["סאטירה", "קומדיה", "קשת 12"], "desc": "תוכנית הסאטירה הלאומית של ישראל בשידור רצוף של מיטב המערכונים והעונות.", "poster": "assets/vod/eretz_nehederet.jpg", "backdrop": "assets/vod/eretz_nehederet.jpg", "totalEpisodes": 1, "episodes": [{"id": "vod_eretz_nehederet_247", "title": "מרתון ארץ נהדרת 24/7 (שידור ישיר רצוף)", "duration": "שידור רצוף", "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/erez_nehederet/live.livx/playlist.m3u8", "thumb": "assets/vod/eretz_nehederet.jpg"}]}, {"id": "vod_savri_maranan", "title": "סברי מרנן", "originalTitle": "Savri Maranan", "year": "2011-2025", "rating": "8.6", "genres": ["קומדיה", "קשת 12", "נוסטלגיה וקאלט"], "desc": "קומדיית המצבים הישראלית האהובה על משפחות רוזן וחסון בארוחות ליל שישי.", "poster": "assets/vod/savri_maranan.jpg", "backdrop": "assets/vod/savri_maranan.jpg", "totalEpisodes": 1, "episodes": [{"id": "vod_savri_maranan_247", "title": "מרתון סברי מרנן 24/7 (שידור ישיר רצוף)", "duration": "שידור רצוף", "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/savri/live.livx/playlist.m3u8", "thumb": "assets/vod/savri_maranan.jpg"}]}, {"id": "vod_hamefakedet", "pid": 11766, "title": "המפקדת", "originalTitle": "המפקדת", "year": "2020-2026", "rating": "8.9", "genres": ["קומדיה", "דרמה", "כאן 11"], "desc": "נועה, קצינה צעירה ומורעלת, מקבלת פיקוד על מחלקת טירוניות מאתגרת בבסיס חוות השומר.", "poster": "assets/vod/hamefakedet.jpg", "backdrop": "assets/vod/hamefakedet.jpg", "episodes": [{"id": "vod_hamefakedet_ep_771333", "title": "פרק 1 - הבוגדת חלק א'", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_0ri1dbs7/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/hamefakedet.jpg"}, {"id": "vod_hamefakedet_ep_771335", "title": "פרק 2 - הבוגדת חלק ב'", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_7poovgt4/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/hamefakedet.jpg"}, {"id": "vod_hamefakedet_ep_772921", "title": "פרק 3 - ציפיות", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_9yl7d297/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/hamefakedet.jpg"}, {"id": "vod_hamefakedet_ep_772922", "title": "פרק 4 - סרגל מאמצים", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_fy4x26np/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/hamefakedet.jpg"}, {"id": "vod_hamefakedet_ep_772924", "title": "פרק 5 - רעיונות לא תקינים", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_ew6rztg7/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/hamefakedet.jpg"}, {"id": "vod_hamefakedet_ep_772925", "title": "פרק 6 - איפוס כוונות", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_i1idr3if/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/hamefakedet.jpg"}, {"id": "vod_hamefakedet_ep_772912", "title": "פרק 7 - מהנה ומגבש", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_r9mpnanp/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/hamefakedet.jpg"}, {"id": "vod_hamefakedet_ep_772914", "title": "פרק 8 - המפקד", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_lekkvqvw/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/hamefakedet.jpg"}, {"id": "vod_hamefakedet_ep_772926", "title": "פרק 9 - סיפור דרך", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_vq8jmv42/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/hamefakedet.jpg"}, {"id": "vod_hamefakedet_ep_772927", "title": "פרק 10 - שירות משמעותי", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_hhqmvjqw/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/hamefakedet.jpg"}, {"id": "vod_hamefakedet_ep_794952", "title": "צריכים תזכורת? יוגב מ\"המפקדת\" עושה לכם ריקאפ", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_7bm87dkj/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/hamefakedet.jpg"}, {"id": "vod_hamefakedet_ep_802979", "title": "ריכולים על הסט של \"המפקדת\" וקרמבו", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_di44iuo0/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/hamefakedet.jpg"}, {"id": "vod_hamefakedet_ep_151001", "title": "פרק 1 - נוהל כיף", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_b5qgipfs/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/hamefakedet.jpg"}, {"id": "vod_hamefakedet_ep_151070", "title": "פרק 2 - הכאב הוא רגעי", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_rw8wcwmn/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/hamefakedet.jpg"}], "totalEpisodes": 14}, {"id": "vod_hayehudim_baim", "pid": 12614, "title": "היהודים באים", "originalTitle": "היהודים באים", "year": "2020-2026", "rating": "9.0", "genres": ["סאטירה", "קומדיה", "כאן 11"], "desc": "תוכנית המערכונים הסאטירית עטורת הפרסים על ההיסטוריה היהודית והישראלית מתקופת התנ\"ך ועד ימינו.", "poster": "assets/vod/hayehudim_baim.jpg", "backdrop": "assets/vod/hayehudim_baim.jpg", "episodes": [{"id": "vod_hayehudim_baim_ep_783879", "title": "לקט ראש השנה - בראשית", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_2g3g8n3j/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/hayehudim_baim.jpg"}, {"id": "vod_hayehudim_baim_ep_759232", "title": "לקט שבועות", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_75y87nco/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/hayehudim_baim.jpg"}, {"id": "vod_hayehudim_baim_ep_837936", "title": "לקט חנוכה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_hdjm43ts/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/hayehudim_baim.jpg"}, {"id": "vod_hayehudim_baim_ep_783881", "title": "לקט נשים בציונות", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_f69kcijb/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/hayehudim_baim.jpg"}, {"id": "vod_hayehudim_baim_ep_783883", "title": "לקט מעבדות לחירות", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_0dk8geyz/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/hayehudim_baim.jpg"}, {"id": "vod_hayehudim_baim_ep_783877", "title": "לקט קיבוץ גלויות", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_swuewtay/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/hayehudim_baim.jpg"}, {"id": "vod_hayehudim_baim_ep_783869", "title": "לקט ראשי ממשלות", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_74gr2qjl/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/hayehudim_baim.jpg"}, {"id": "vod_hayehudim_baim_ep_748629", "title": "פרק 1 - ספיישל עצמאות", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_88c72fv6/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/hayehudim_baim.jpg"}, {"id": "vod_hayehudim_baim_ep_748630", "title": "פרק 2", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_1x4kxgp7/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/hayehudim_baim.jpg"}, {"id": "vod_hayehudim_baim_ep_748698", "title": "פרק 3", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_470kg86z/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/hayehudim_baim.jpg"}, {"id": "vod_hayehudim_baim_ep_751088", "title": "פרק 4", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_1eubipqy/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/hayehudim_baim.jpg"}, {"id": "vod_hayehudim_baim_ep_757726", "title": "פרק 5", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_oljq8q9b/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/hayehudim_baim.jpg"}, {"id": "vod_hayehudim_baim_ep_765598", "title": "פרק 6", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_q55r111g/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/hayehudim_baim.jpg"}, {"id": "vod_hayehudim_baim_ep_762454", "title": "פרק 7", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_u8iyng4c/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/hayehudim_baim.jpg"}], "totalEpisodes": 14}, {"id": "vod_valley_of_tears", "pid": 13173, "title": "שעת נעילה", "originalTitle": "שעת נעילה", "year": "2020-2026", "rating": "8.8", "genres": ["דרמה", "מלחמה", "מתח", "כאן 11"], "desc": "דרמת המלחמה העוצמתית על הקרבות בחזית רמת הגולן ומוצב החרמון במלחמת יום הכיפורים.", "poster": "assets/vod/valley_of_tears.jpg", "backdrop": "assets/vod/valley_of_tears.jpg", "episodes": [{"id": "vod_valley_of_tears_ep_117278", "title": "פרק בכורה כפול", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_ajaped1u/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/valley_of_tears.jpg"}, {"id": "vod_valley_of_tears_ep_117281", "title": "פרק 3", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_fx0k9jpy/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/valley_of_tears.jpg"}, {"id": "vod_valley_of_tears_ep_117284", "title": "פרק 4", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_5ct5o3zt/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/valley_of_tears.jpg"}, {"id": "vod_valley_of_tears_ep_117287", "title": "פרק 5", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_fnfjorco/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/valley_of_tears.jpg"}, {"id": "vod_valley_of_tears_ep_117290", "title": "פרק 6", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_2ihb33gr/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/valley_of_tears.jpg"}, {"id": "vod_valley_of_tears_ep_117293", "title": "פרק 7", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_i64grnno/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/valley_of_tears.jpg"}, {"id": "vod_valley_of_tears_ep_117296", "title": "פרק 8", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_1lih95oz/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/valley_of_tears.jpg"}, {"id": "vod_valley_of_tears_ep_117299", "title": "פרק סיום כפול", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_7bovtnb6/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/valley_of_tears.jpg"}, {"id": "vod_valley_of_tears_ep_866531", "title": "סימני מלחמה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_2x78e9bg/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/valley_of_tears.jpg"}, {"id": "vod_valley_of_tears_ep_866534", "title": "כוננות ליום קרב", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_eq84htcy/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/valley_of_tears.jpg"}, {"id": "vod_valley_of_tears_ep_117603", "title": "האמת מאחורי שעת נעילה | פרק 2", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_r4naruq0/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/valley_of_tears.jpg"}, {"id": "vod_valley_of_tears_ep_117803", "title": "האמת מאחורי שעת נעילה | פרק 3", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_6v45pdz8/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/valley_of_tears.jpg"}, {"id": "vod_valley_of_tears_ep_118259", "title": "האמת מאחורי שעת נעילה | חלק 4", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_0rxnzvcv/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/valley_of_tears.jpg"}, {"id": "vod_valley_of_tears_ep_118486", "title": "האמת מאחורי שעת נעילה | הפרק מלא", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_pufsta4f/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/valley_of_tears.jpg"}], "totalEpisodes": 14}, {"id": "vod_kan_538817", "pid": 538817, "title": "המזח", "originalTitle": "המזח", "year": "2020-2026", "rating": "8.9", "genres": ["דרמה", "מלחמה", "כאן 11"], "desc": "דרמת מלחמה מרגשת המבוססת על סיפורם האמיתי של לוחמי מעוז המזח על שפת תעלת סואץ במלחמת יום הכיפורים.", "poster": "https://mobapi.kan.org.il/media/dsph2bhg/%D7%9E%D7%96%D7%97-1.jpg?width=480", "backdrop": "https://mobapi.kan.org.il/media/dsph2bhg/%D7%9E%D7%96%D7%97-1.jpg?width=480", "episodes": [{"id": "vod_kan_538817_ep_555859", "title": "פרק 1 - מתקפת פתע", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_kx1e31tw/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/dsph2bhg/%D7%9E%D7%96%D7%97-1.jpg?width=480"}, {"id": "vod_kan_538817_ep_555862", "title": "פרק 2 - האדם הוא הפלדה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_h3g7trtp/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/dsph2bhg/%D7%9E%D7%96%D7%97-1.jpg?width=480"}, {"id": "vod_kan_538817_ep_555866", "title": "פרק 3 - האופציה של הדוקטור", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_mhuvabgz/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/dsph2bhg/%D7%9E%D7%96%D7%97-1.jpg?width=480"}, {"id": "vod_kan_538817_ep_609199", "title": "פרק 4 - \"אני משנה את הפקודה\"", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_a7vmyi27/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/dsph2bhg/%D7%9E%D7%96%D7%97-1.jpg?width=480"}, {"id": "vod_kan_538817_ep_609201", "title": "פרק 5 - רגע האמת", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_gyfpsaky/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/dsph2bhg/%D7%9E%D7%96%D7%97-1.jpg?width=480"}, {"id": "vod_kan_538817_ep_888020", "title": "אחרי המזח | פרק 1", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_rlw3l1i0/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/dsph2bhg/%D7%9E%D7%96%D7%97-1.jpg?width=480"}, {"id": "vod_kan_538817_ep_896384", "title": "אחרי המזח | פרק 2", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_uugcy0oc/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/dsph2bhg/%D7%9E%D7%96%D7%97-1.jpg?width=480"}, {"id": "vod_kan_538817_ep_901093", "title": "אחרי המזח | פרק 3", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_kk7q1fs4/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/dsph2bhg/%D7%9E%D7%96%D7%97-1.jpg?width=480"}, {"id": "vod_kan_538817_ep_904600", "title": "אחרי המזח | פרק 4", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_hn63jw7q/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/dsph2bhg/%D7%9E%D7%96%D7%97-1.jpg?width=480"}, {"id": "vod_kan_538817_ep_908723", "title": "אחרי המזח | פרק 5", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_xewjamsc/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/dsph2bhg/%D7%9E%D7%96%D7%97-1.jpg?width=480"}, {"id": "vod_kan_538817_ep_855873", "title": "\"תפסו אותנו עם המכנסיים למטה\"", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_3ecwat92/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/dsph2bhg/%D7%9E%D7%96%D7%97-1.jpg?width=480"}], "totalEpisodes": 11}, {"id": "vod_shisha_afasim", "pid": 389355, "title": "שישה אפסים", "originalTitle": "שישה אפסים", "year": "2020-2026", "rating": "8.9", "genres": ["קומדיה", "דרמה", "כאן 11"], "desc": "שישה ישראלים זוכים בפרס הגדול בלוטו ומחויבים לעבור סדנה מיוחדת לניהול זכייה פתאומית לפני קבלת הכסף.", "poster": "assets/vod/shisha_afasim.jpg", "backdrop": "assets/vod/shisha_afasim.jpg", "episodes": [{"id": "vod_shisha_afasim_ep_390646", "title": "פרק 1 - מפגש ראשון", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_q2ybozkc/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/shisha_afasim.jpg"}, {"id": "vod_shisha_afasim_ep_390647", "title": "פרק 2 - מפגש שני", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_g5llko7f/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/shisha_afasim.jpg"}, {"id": "vod_shisha_afasim_ep_402602", "title": "פרק 3 - מפגש שלישי", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_zq684ivr/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/shisha_afasim.jpg"}, {"id": "vod_shisha_afasim_ep_409377", "title": "פרק 4 - מפגש רביעי", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_lpk0zvun/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/shisha_afasim.jpg"}, {"id": "vod_shisha_afasim_ep_417699", "title": "פרק 5 - מפגש חמישי", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_l30zd0ir/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/shisha_afasim.jpg"}, {"id": "vod_shisha_afasim_ep_417702", "title": "פרק 6 - מפגש שישי", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_83i2k0qs/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/shisha_afasim.jpg"}, {"id": "vod_shisha_afasim_ep_443013", "title": "פרק 7 - מפגש שביעי", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_dsk8tgf5/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/shisha_afasim.jpg"}, {"id": "vod_shisha_afasim_ep_443017", "title": "פרק 8 - מפגש שמיני ואחרון", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_v5xmz0jh/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/shisha_afasim.jpg"}, {"id": "vod_shisha_afasim_ep_855898", "title": "כסף מערער יחסים", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_ho0kwwrx/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/shisha_afasim.jpg"}, {"id": "vod_shisha_afasim_ep_855897", "title": "סדנה למיליונרים חדשים?", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_mc7vr5tt/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/shisha_afasim.jpg"}], "totalEpisodes": 10}, {"id": "vod_kan_11332", "pid": 11332, "title": "איסט סייד", "originalTitle": "איסט סייד", "year": "2020-2026", "rating": "8.8", "genres": ["דרמה", "מתח", "כאן 11"], "desc": "מומי (יהודה לוי), סוחר נדל\"ן במזרח ירושלים ואב יחידני לבת על הרצף האוטיסטי, נסחף לעסקה מסוכנת שמעמידה הכל במבחן.", "poster": "https://mobapi.kan.org.il/media/ak3pozv2/2023-2-1-imgid-92809_b.jpeg?width=480", "backdrop": "https://mobapi.kan.org.il/media/ak3pozv2/2023-2-1-imgid-92809_b.jpeg?width=480", "episodes": [{"id": "vod_kan_11332_ep_158925", "title": "פרק 1 - מומי", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_2bwu4ljw/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/ak3pozv2/2023-2-1-imgid-92809_b.jpeg?width=480"}, {"id": "vod_kan_11332_ep_158931", "title": "פרק 2 - עיסאם", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_csproann/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/ak3pozv2/2023-2-1-imgid-92809_b.jpeg?width=480"}, {"id": "vod_kan_11332_ep_158934", "title": "פרק 3 - אליס", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_2g2z2pzm/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/ak3pozv2/2023-2-1-imgid-92809_b.jpeg?width=480"}, {"id": "vod_kan_11332_ep_158937", "title": "פרק 4 - אשרף", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_0z74cmxu/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/ak3pozv2/2023-2-1-imgid-92809_b.jpeg?width=480"}, {"id": "vod_kan_11332_ep_158940", "title": "פרק 5 - תיאודורוס", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_r67ltzcd/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/ak3pozv2/2023-2-1-imgid-92809_b.jpeg?width=480"}, {"id": "vod_kan_11332_ep_158943", "title": "פרק 6 - סופרוניוס", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_w76du5zr/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/ak3pozv2/2023-2-1-imgid-92809_b.jpeg?width=480"}, {"id": "vod_kan_11332_ep_158946", "title": "פרק 7 - אמל", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_jpnary4v/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/ak3pozv2/2023-2-1-imgid-92809_b.jpeg?width=480"}, {"id": "vod_kan_11332_ep_158949", "title": "פרק 8 - מאירה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_106mwb84/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/ak3pozv2/2023-2-1-imgid-92809_b.jpeg?width=480"}, {"id": "vod_kan_11332_ep_158952", "title": "פרק 9 - אסתי", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_m398kqj1/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/ak3pozv2/2023-2-1-imgid-92809_b.jpeg?width=480"}, {"id": "vod_kan_11332_ep_158955", "title": "פרק 10 - מאיה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_gr5vy24v/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/ak3pozv2/2023-2-1-imgid-92809_b.jpeg?width=480"}, {"id": "vod_kan_11332_ep_855888", "title": "הבית נמכר ליהודים", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_nnb8gzfi/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/ak3pozv2/2023-2-1-imgid-92809_b.jpeg?width=480"}, {"id": "vod_kan_11332_ep_855890", "title": "שיעורים במלצרות", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_k04plq96/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/ak3pozv2/2023-2-1-imgid-92809_b.jpeg?width=480"}], "totalEpisodes": 12}, {"id": "vod_kan_829567", "pid": 829567, "title": "מגרש הרוסים", "originalTitle": "מגרש הרוסים", "year": "2020-2026", "rating": "8.8", "genres": ["מתח", "פשע", "היסטורי", "כאן 11"], "desc": "דרמת מתח בלשית בירושלים של שנות ה-90 בעקבות גל העלייה הגדול מברית המועצות וחקירת סדרת פשעים.", "poster": "https://mobapi.kan.org.il/media/5xjnelze/%D7%A4%D7%A8%D7%A7-1-%D7%9C%D7%90%D7%AA%D7%A8_.jpg?width=480", "backdrop": "https://mobapi.kan.org.il/media/5xjnelze/%D7%A4%D7%A8%D7%A7-1-%D7%9C%D7%90%D7%AA%D7%A8_.jpg?width=480", "episodes": [{"id": "vod_kan_829567_ep_840303", "title": "פרק 1 - גזר דין", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_g9r1iy0w/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/5xjnelze/%D7%A4%D7%A8%D7%A7-1-%D7%9C%D7%90%D7%AA%D7%A8_.jpg?width=480"}, {"id": "vod_kan_829567_ep_840305", "title": "פרק 2 - קרוקודיל", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_pn50viki/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/5xjnelze/%D7%A4%D7%A8%D7%A7-1-%D7%9C%D7%90%D7%AA%D7%A8_.jpg?width=480"}, {"id": "vod_kan_829567_ep_840307", "title": "פרק 3 - מולדת", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_vglb2gy5/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/5xjnelze/%D7%A4%D7%A8%D7%A7-1-%D7%9C%D7%90%D7%AA%D7%A8_.jpg?width=480"}, {"id": "vod_kan_829567_ep_840310", "title": "פרק 4 - מתחת לחול", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_5l3ykfcl/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/5xjnelze/%D7%A4%D7%A8%D7%A7-1-%D7%9C%D7%90%D7%AA%D7%A8_.jpg?width=480"}, {"id": "vod_kan_829567_ep_840311", "title": "פרק 5 - בוגה נייט", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_a51pyeui/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/5xjnelze/%D7%A4%D7%A8%D7%A7-1-%D7%9C%D7%90%D7%AA%D7%A8_.jpg?width=480"}, {"id": "vod_kan_829567_ep_840312", "title": "פרק 6 - בעלטה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_5uua6li1/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/5xjnelze/%D7%A4%D7%A8%D7%A7-1-%D7%9C%D7%90%D7%AA%D7%A8_.jpg?width=480"}, {"id": "vod_kan_829567_ep_840313", "title": "פרק 7 - הבן האבוד", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_kl18jeau/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/5xjnelze/%D7%A4%D7%A8%D7%A7-1-%D7%9C%D7%90%D7%AA%D7%A8_.jpg?width=480"}, {"id": "vod_kan_829567_ep_840315", "title": "פרק 8 - שבות", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_ux13c834/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/5xjnelze/%D7%A4%D7%A8%D7%A7-1-%D7%9C%D7%90%D7%AA%D7%A8_.jpg?width=480"}], "totalEpisodes": 8}, {"id": "vod_hachamam", "pid": 371806, "title": "החמאם", "originalTitle": "החמאם", "year": "2020-2026", "rating": "8.6", "genres": ["מתח", "מסתורין", "דרמה", "כאן 11"], "desc": "בבסיס צבאי מבודד בבקעת הירדן מתגלה חמאם עתיק שמעורר מתחים וסודות אפלים בקרב החיילים.", "poster": "assets/vod/hachamam.jpg", "backdrop": "assets/vod/hachamam.jpg", "episodes": [{"id": "vod_hachamam_ep_380463", "title": "פרק 1 - המנחוס מנחוס", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_g1xt2wu8/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/hachamam.jpg"}, {"id": "vod_hachamam_ep_380468", "title": "פרק 2 - ניגון עתיק", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_kwf8i2r7/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/hachamam.jpg"}, {"id": "vod_hachamam_ep_380471", "title": "פרק 3 – גבעת האנטנה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_qh9fr48c/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/hachamam.jpg"}, {"id": "vod_hachamam_ep_380469", "title": "פרק 4 - מלכות חדשה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_80mqrmhl/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/hachamam.jpg"}, {"id": "vod_hachamam_ep_380478", "title": "פרק 5 – איילת חן", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_7pvjtfko/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/hachamam.jpg"}, {"id": "vod_hachamam_ep_383232", "title": "פרק 6 – יום הדין", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_e370iicv/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/hachamam.jpg"}], "totalEpisodes": 6}, {"id": "vod_huligans", "pid": 841973, "title": "חוליגנים", "originalTitle": "חוליגנים", "year": "2020-2026", "rating": "8.7", "genres": ["דרמה", "פשע", "כאן 11"], "desc": "דרמה סוחפת על עולם אוהדי הכדורגל השרופים, הנאמנות הקיצונית והמאבקים ביציעים ומחוצה להם.", "poster": "assets/vod/huligans.jpg", "backdrop": "assets/vod/huligans.jpg", "episodes": [{"id": "vod_huligans_ep_841980", "title": "פרק 1 - הנה היא עולה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_gyb847em/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/huligans.jpg"}, {"id": "vod_huligans_ep_841981", "title": "פרק 2 - העיר הזאת שייכת לי", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_lwpgomrg/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/huligans.jpg"}, {"id": "vod_huligans_ep_841982", "title": "פרק 3 - קראו לי אלים", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_udji50fc/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/huligans.jpg"}, {"id": "vod_huligans_ep_841984", "title": "פרק 4 - להיות עם חופשי", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_aq74hhed/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/huligans.jpg"}, {"id": "vod_huligans_ep_841986", "title": "פרק 5 - אל תירא ישראל", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_5zkrxnz1/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/huligans.jpg"}, {"id": "vod_huligans_ep_841987", "title": "פרק 6 - אוהב אותך", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_5ovgfs6n/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/huligans.jpg"}, {"id": "vod_huligans_ep_841988", "title": "פרק 7 - אני נשבע", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_ra11gvgn/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/huligans.jpg"}, {"id": "vod_huligans_ep_841989", "title": "פרק 8 - אם אשכחך ירושלים", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_d5yh9w7r/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/huligans.jpg"}], "totalEpisodes": 8}, {"id": "vod_yafa", "pid": 882422, "title": "יאפא", "originalTitle": "יאפא", "year": "2020-2026", "rating": "8.8", "genres": ["דרמה", "פשע", "כאן 11"], "desc": "דרמת פשע ומשפחה ביפו העכשווית בין מסורת, נאמנות ומאבקי כוח.", "poster": "assets/vod/yafa.jpg", "backdrop": "assets/vod/yafa.jpg", "episodes": [{"id": "vod_yafa_ep_882443", "title": "פרק 1 - יפו בלילות", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_41jb598t/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/yafa.jpg"}, {"id": "vod_yafa_ep_882446", "title": "פרק 2 - אופנוע", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_i7pfk7g4/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/yafa.jpg"}, {"id": "vod_yafa_ep_882447", "title": "פרק 3 - אחים", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_tlsfmrhx/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/yafa.jpg"}, {"id": "vod_yafa_ep_882448", "title": "פרק 4 - טוקבק", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_2n62tkqv/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/yafa.jpg"}, {"id": "vod_yafa_ep_882449", "title": "פרק 5 - משפחה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_lf42j4ai/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/yafa.jpg"}, {"id": "vod_yafa_ep_882450", "title": "פרק 6 - יאפא דאפא", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_gwguo4rt/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/yafa.jpg"}, {"id": "vod_yafa_ep_882451", "title": "פרק 7 - אשמה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_gx7ed3hf/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/yafa.jpg"}, {"id": "vod_yafa_ep_882719", "title": "פרק 8 - אזרח סוג מת", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_w36nxiuw/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/yafa.jpg"}], "totalEpisodes": 8}, {"id": "vod_rehearsals", "pid": 13081, "title": "חזרות", "originalTitle": "חזרות", "year": "2020-2026", "rating": "8.9", "genres": ["דרמה", "קומדיה", "רומנטי", "כאן 11"], "desc": "איריס ותומר, זוג יוצרי תיאטרון שנפרדים בדיוק כשהמחזה המשותף שלהם מתקבל להפקה בתיאטרון הגדול.", "poster": "assets/vod/chazarot.jpg", "backdrop": "assets/vod/chazarot.jpg", "episodes": [{"id": "vod_rehearsals_ep_117923", "title": "פרק 1", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_817geznm/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/chazarot.jpg"}, {"id": "vod_rehearsals_ep_117925", "title": "פרק 2", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_9r4v43jo/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/chazarot.jpg"}, {"id": "vod_rehearsals_ep_117927", "title": "פרק 3", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_a4d23hat/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/chazarot.jpg"}, {"id": "vod_rehearsals_ep_117929", "title": "פרק 4", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_cae13m03/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/chazarot.jpg"}, {"id": "vod_rehearsals_ep_117931", "title": "פרק 5", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_pawj9j8q/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/chazarot.jpg"}, {"id": "vod_rehearsals_ep_117933", "title": "פרק 6", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_tdhrfqgf/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/chazarot.jpg"}, {"id": "vod_rehearsals_ep_117935", "title": "פרק 7", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_8fuuygax/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/chazarot.jpg"}, {"id": "vod_rehearsals_ep_117937", "title": "פרק 8", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_jcbzlusy/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/chazarot.jpg"}, {"id": "vod_rehearsals_ep_117939", "title": "פרק 9", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_88m2sqqg/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/chazarot.jpg"}, {"id": "vod_rehearsals_ep_117942", "title": "פרק אחרון לעונה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_7yuptbxr/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/chazarot.jpg"}, {"id": "vod_rehearsals_ep_855965", "title": "טעות בליהוק", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_j54ll6qm/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/chazarot.jpg"}, {"id": "vod_rehearsals_ep_855955", "title": "אני נינה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_kl7p0u3r/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/chazarot.jpg"}], "totalEpisodes": 12}, {"id": "vod_bo_nechol", "pid": 11843, "title": "בואו לאכול איתי", "originalTitle": "בואו לאכול איתי", "year": "2020-2026", "rating": "9.0", "genres": ["דוקו-ריאליטי", "אוכל", "קומדיה", "כאן 11"], "desc": "חמישה בשלנים חובבים מארחים זה את זה לארוחות ערב בלתי נשכחות, בקריינותו המושחזת של שי אביבי.", "poster": "assets/vod/bo_nechol.jpg", "backdrop": "assets/vod/bo_nechol.jpg", "episodes": [{"id": "vod_bo_nechol_ep_1059625", "title": "פרק 1 - שבוע ירושלים, יום א'", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2214986/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/bo_nechol.jpg"}, {"id": "vod_bo_nechol_ep_1059627", "title": "פרק 2 - שבוע ירושלים, יום ב'", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2214987/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/bo_nechol.jpg"}, {"id": "vod_bo_nechol_ep_1059652", "title": "פרק 3 - שבוע ירושלים, יום ג'", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2215013/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/bo_nechol.jpg"}, {"id": "vod_bo_nechol_ep_1059629", "title": "פרק 4 - שבוע ירושלים, יום ד'", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2214993/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/bo_nechol.jpg"}, {"id": "vod_bo_nechol_ep_1059645", "title": "פרק 5 - שבוע ירושלים, יום ה'", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2215008/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/bo_nechol.jpg"}, {"id": "vod_bo_nechol_ep_1061353", "title": "פרק 6 - שבוע שפלה, יום א'", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2215941/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/bo_nechol.jpg"}, {"id": "vod_bo_nechol_ep_1061354", "title": "פרק 7 - שבוע שפלה, יום ב'", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2215942/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/bo_nechol.jpg"}, {"id": "vod_bo_nechol_ep_1061355", "title": "פרק 8 - שבוע שפלה, יום ג'", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2215943/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/bo_nechol.jpg"}, {"id": "vod_bo_nechol_ep_1073273", "title": "פרק 9 - שבוע שפלה, יום ד'", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2223042/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/bo_nechol.jpg"}, {"id": "vod_bo_nechol_ep_1073279", "title": "פרק 10 - שבוע שפלה, יום ה'", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2223043/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/bo_nechol.jpg"}, {"id": "vod_bo_nechol_ep_1077371", "title": "פרק 11 - שבוע צפון, יום א'", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2226083/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/bo_nechol.jpg"}, {"id": "vod_bo_nechol_ep_1077372", "title": "פרק 12 - שבוע צפון, יום ב'", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2226084/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/bo_nechol.jpg"}, {"id": "vod_bo_nechol_ep_1077373", "title": "פרק 13 - שבוע צפון, יום ג'", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2226085/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/bo_nechol.jpg"}, {"id": "vod_bo_nechol_ep_1077374", "title": "פרק 14 - שבוע צפון, יום ד'", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2226086/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/bo_nechol.jpg"}], "totalEpisodes": 14}, {"id": "vod_zehu_ze", "pid": 12002, "title": "זהו זה!", "originalTitle": "זהו זה!", "year": "2020-2026", "rating": "9.1", "genres": ["סאטירה", "קומדיה", "כאן 11"], "desc": "חמישיית הקאלט המיתולוגית — מוני מושונוב, שלמה בראבא, גידי גוב, דובל׳ה גליקמן ואבי קושניר במערכונים ושירים.", "poster": "assets/vod/zehu_ze.jpg", "backdrop": "assets/vod/zehu_ze.jpg", "episodes": [{"id": "vod_zehu_ze_ep_1115143", "title": "פרק 2 - 10.11.26", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2261425/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/zehu_ze.jpg"}, {"id": "vod_zehu_ze_ep_1037654", "title": "פרק 24 - 05.05.26", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2197024/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/zehu_ze.jpg"}, {"id": "vod_zehu_ze_ep_1034603", "title": "פרק 23 - 28.04.26", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2194840/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/zehu_ze.jpg"}, {"id": "vod_zehu_ze_ep_1032571", "title": "פרק 22 - 23.04.26", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2192956/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/zehu_ze.jpg"}, {"id": "vod_zehu_ze_ep_1028838", "title": "פרק 21 - 14.04.26", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2189754/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/zehu_ze.jpg"}, {"id": "vod_zehu_ze_ep_1024986", "title": "פרק 20 - 12.04.26", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2188482/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/zehu_ze.jpg"}, {"id": "vod_zehu_ze_ep_1017979", "title": "פרק 19 - 24.03.26", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2180816/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/zehu_ze.jpg"}, {"id": "vod_zehu_ze_ep_1014158", "title": "פרק 18 - 17.03.26", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2179262/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/zehu_ze.jpg"}, {"id": "vod_zehu_ze_ep_1009902", "title": "פרק 17 - 10.03.26", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2176319/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/zehu_ze.jpg"}, {"id": "vod_zehu_ze_ep_1006166", "title": "פרק 16 - 03.03.26", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2173358/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/zehu_ze.jpg"}, {"id": "vod_zehu_ze_ep_1000214", "title": "פרק 15 - 17.02.26", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2168085/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/zehu_ze.jpg"}, {"id": "vod_zehu_ze_ep_997755", "title": "פרק 14 - 10.02.26", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2165567/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/zehu_ze.jpg"}, {"id": "vod_zehu_ze_ep_995573", "title": "פרק 13 - 03.02.26", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2158759/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/zehu_ze.jpg"}, {"id": "vod_zehu_ze_ep_993498", "title": "פרק 12 - 27.01.26", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2126286/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "assets/vod/zehu_ze.jpg"}], "totalEpisodes": 14}, {"id": "vod_bourekas", "title": "קולנוע ישראלי וקלאסיקות בורקס", "originalTitle": "Israeli Cult Cinema", "year": "1970-2025", "rating": "9.1", "genres": ["קולנוע ישראלי", "קומדיה", "קאלט ובורקס"], "desc": "מיטב סרטי הקאלט והקולנוע הישראלי בשידור רצוף HD: גבעת חלפון אינה עונה, חגיגה בסנוקר, צ׳רלי וחצי, אלכס חולה אהבה ועוד.", "poster": "assets/vod/bourekas.jpg", "backdrop": "assets/vod/bourekas.jpg", "episodes": [{"id": "vod_bourekas_247", "title": "שידור רצוף 24/7 - סרטי קאלט וקולנוע ישראלי HD", "duration": "שידור רצוף", "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/free_israeli_movies/live.livx/playlist.m3u8", "thumb": "assets/vod/bourekas.jpg"}], "totalEpisodes": 1}, {"id": "vod_kan_12657", "pid": 12657, "title": "שעת אפס", "originalTitle": "שעת אפס", "year": "2020-2026", "rating": "8.7", "genres": ["דרמה", "כאן 11"], "desc": "דרמה עטורת פרסים (זוכת פסטיבל קאן לסדרות) על עימות סוער בין מורה לאזרחות לתלמידה בתיכון שיוצא משליטה.", "poster": "https://mobapi.kan.org.il/media/xgtiowyd/https-kanstaticazureedgenet-download-pictures-2021-12-7-imgid-65512_aa.jpeg?width=480", "backdrop": "https://mobapi.kan.org.il/media/xgtiowyd/https-kanstaticazureedgenet-download-pictures-2021-12-7-imgid-65512_aa.jpeg?width=480", "episodes": [{"id": "vod_kan_12657_ep_138567", "title": "פרק 1 - השיעור", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_jki5w0f8/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/xgtiowyd/https-kanstaticazureedgenet-download-pictures-2021-12-7-imgid-65512_aa.jpeg?width=480"}, {"id": "vod_kan_12657_ep_138570", "title": "פרק 2 - הפוסט", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_hkv2p7k8/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/xgtiowyd/https-kanstaticazureedgenet-download-pictures-2021-12-7-imgid-65512_aa.jpeg?width=480"}, {"id": "vod_kan_12657_ep_138573", "title": "פרק 3 - הבחירה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_pvnnaka9/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/xgtiowyd/https-kanstaticazureedgenet-download-pictures-2021-12-7-imgid-65512_aa.jpeg?width=480"}, {"id": "vod_kan_12657_ep_138576", "title": "פרק 4 - הטלוויזיה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_gpkb34jq/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/xgtiowyd/https-kanstaticazureedgenet-download-pictures-2021-12-7-imgid-65512_aa.jpeg?width=480"}, {"id": "vod_kan_12657_ep_138579", "title": "פרק 5 - ההפגנה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_buadolvt/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/xgtiowyd/https-kanstaticazureedgenet-download-pictures-2021-12-7-imgid-65512_aa.jpeg?width=480"}, {"id": "vod_kan_12657_ep_138582", "title": "פרק 6 - השימוע", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_17c19sbc/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/xgtiowyd/https-kanstaticazureedgenet-download-pictures-2021-12-7-imgid-65512_aa.jpeg?width=480"}, {"id": "vod_kan_12657_ep_856057", "title": "ליאן עפה מהכיתה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_c9iue93c/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/xgtiowyd/https-kanstaticazureedgenet-download-pictures-2021-12-7-imgid-65512_aa.jpeg?width=480"}, {"id": "vod_kan_12657_ep_856074", "title": "הכביש של אבא שלי", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_n5lpshs6/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/xgtiowyd/https-kanstaticazureedgenet-download-pictures-2021-12-7-imgid-65512_aa.jpeg?width=480"}], "totalEpisodes": 8}, {"id": "vod_kan_13038", "pid": 13038, "title": "פמת\"א", "originalTitle": "פמת\"א", "year": "2020-2026", "rating": "8.5", "genres": ["דרמה", "משפט", "מתח", "כאן 11"], "desc": "דרמה משפטית מרתקת המלווה את פרקליטי מחוז תל אביב בתיקי פשע ושחיתות מורכבים.", "poster": "https://mobapi.kan.org.il/media/wxudn20c/https-kanstaticazureedgenet-download-pictures-2021-6-3-imgid-54392_aa.jpeg?width=480", "backdrop": "https://mobapi.kan.org.il/media/wxudn20c/https-kanstaticazureedgenet-download-pictures-2021-6-3-imgid-54392_aa.jpeg?width=480", "episodes": [{"id": "vod_kan_13038_ep_132012", "title": "פרק 1 - חקירת סיבת מוות", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_8jl7bngv/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/wxudn20c/https-kanstaticazureedgenet-download-pictures-2021-6-3-imgid-54392_aa.jpeg?width=480"}, {"id": "vod_kan_13038_ep_132015", "title": "פרק 2 - הסגת גבול", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_olxxhudk/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/wxudn20c/https-kanstaticazureedgenet-download-pictures-2021-6-3-imgid-54392_aa.jpeg?width=480"}, {"id": "vod_kan_13038_ep_132018", "title": "פרק 3 - חלופת מעצר", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_nlfhunvf/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/wxudn20c/https-kanstaticazureedgenet-download-pictures-2021-6-3-imgid-54392_aa.jpeg?width=480"}, {"id": "vod_kan_13038_ep_132021", "title": "פרק 4 - דַּיּוּת ראיות", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_wymfqggj/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/wxudn20c/https-kanstaticazureedgenet-download-pictures-2021-6-3-imgid-54392_aa.jpeg?width=480"}, {"id": "vod_kan_13038_ep_132024", "title": "פרק 5 - חסיון לתפוס", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_lipuglgt/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/wxudn20c/https-kanstaticazureedgenet-download-pictures-2021-6-3-imgid-54392_aa.jpeg?width=480"}, {"id": "vod_kan_13038_ep_132027", "title": "פרק 6 - עדות כבושה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_ipumyi3e/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/wxudn20c/https-kanstaticazureedgenet-download-pictures-2021-6-3-imgid-54392_aa.jpeg?width=480"}, {"id": "vod_kan_13038_ep_132030", "title": "פרק 7 - אקטוס ראוס", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_uo22i0ev/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/wxudn20c/https-kanstaticazureedgenet-download-pictures-2021-6-3-imgid-54392_aa.jpeg?width=480"}, {"id": "vod_kan_13038_ep_132033", "title": "פרק 8 - פרק אחרון", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_ehdxhvbl/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/wxudn20c/https-kanstaticazureedgenet-download-pictures-2021-6-3-imgid-54392_aa.jpeg?width=480"}, {"id": "vod_kan_13038_ep_104602", "title": "הצהרת תובע - פרק 1", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_0bn0jfcz/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/wxudn20c/https-kanstaticazureedgenet-download-pictures-2021-6-3-imgid-54392_aa.jpeg?width=480"}, {"id": "vod_kan_13038_ep_98217", "title": "פרק 1 - הצהרת תובע", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_ln0gprb4/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/wxudn20c/https-kanstaticazureedgenet-download-pictures-2021-6-3-imgid-54392_aa.jpeg?width=480"}, {"id": "vod_kan_13038_ep_104611", "title": "ראייה חסויה - פרק 2", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_hm85jrgv/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/wxudn20c/https-kanstaticazureedgenet-download-pictures-2021-6-3-imgid-54392_aa.jpeg?width=480"}, {"id": "vod_kan_13038_ep_98220", "title": "פרק 2 - ראייה חסויה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_o7tbqvmh/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/wxudn20c/https-kanstaticazureedgenet-download-pictures-2021-6-3-imgid-54392_aa.jpeg?width=480"}, {"id": "vod_kan_13038_ep_104614", "title": "קופים - פרק 3", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_nqqzq9ip/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/wxudn20c/https-kanstaticazureedgenet-download-pictures-2021-6-3-imgid-54392_aa.jpeg?width=480"}, {"id": "vod_kan_13038_ep_98223", "title": "פרק 3 - קופים", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_04swx9mc/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/wxudn20c/https-kanstaticazureedgenet-download-pictures-2021-6-3-imgid-54392_aa.jpeg?width=480"}], "totalEpisodes": 14}, {"id": "vod_kan_13077", "pid": 13077, "title": "מותק בול באמצע", "originalTitle": "מותק בול באמצע", "year": "2020-2026", "rating": "8.4", "genres": ["קומדיה", "סאטירה", "כאן 11"], "desc": "קומדיה פוליטית על פליטת ריאליטי שנבחרת בטעות לכנסת ומגלה את אחורי הקלעים של הפוליטיקה הישראלית.", "poster": "https://mobapi.kan.org.il/media/jrkfkyv0/1.jpg?width=480", "backdrop": "https://mobapi.kan.org.il/media/jrkfkyv0/1.jpg?width=480", "episodes": [{"id": "vod_kan_13077_ep_919202", "title": "פרק 1 - תלך תבוא", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_zarmqpvs/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/jrkfkyv0/1.jpg?width=480"}, {"id": "vod_kan_13077_ep_924710", "title": "פרק 2 - טובעים השניים", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_583eng33/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/jrkfkyv0/1.jpg?width=480"}, {"id": "vod_kan_13077_ep_924719", "title": "פרק 3 - הטיש הגדול", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_vlu4kw1e/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/jrkfkyv0/1.jpg?width=480"}, {"id": "vod_kan_13077_ep_924722", "title": "פרק 4 - עצת אחיתופל", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_6os4s5p5/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/jrkfkyv0/1.jpg?width=480"}, {"id": "vod_kan_13077_ep_924729", "title": "פרק 5 - התמנון שלך חזר", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_gafim2ik/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/jrkfkyv0/1.jpg?width=480"}, {"id": "vod_kan_13077_ep_924735", "title": "פרק 6 - נפגש בשביעיות", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_qi9mpcw2/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/jrkfkyv0/1.jpg?width=480"}, {"id": "vod_kan_13077_ep_927057", "title": "פרק 7 - זרע עמלק", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_jceasoj6/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/jrkfkyv0/1.jpg?width=480"}, {"id": "vod_kan_13077_ep_929049", "title": "פרק 8 - גז ונעלם", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_rxjreqjp/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/jrkfkyv0/1.jpg?width=480"}, {"id": "vod_kan_13077_ep_932141", "title": "פרק 9 - פליק פלאק", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_dfvjm5r4/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/jrkfkyv0/1.jpg?width=480"}, {"id": "vod_kan_13077_ep_932410", "title": "פרק 10 - המותק מכה שנית", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_gwuh5rk5/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/jrkfkyv0/1.jpg?width=480"}, {"id": "vod_kan_13077_ep_128026", "title": "קליפת אגוז - פרק 1", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_hbqqdhmk/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/jrkfkyv0/1.jpg?width=480"}, {"id": "vod_kan_13077_ep_128442", "title": "בארץ פלאות - פרק 2", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_ze2locd5/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/jrkfkyv0/1.jpg?width=480"}, {"id": "vod_kan_13077_ep_128445", "title": "שיפוי ופיצוי - פרק 3", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_j8wou84p/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/jrkfkyv0/1.jpg?width=480"}, {"id": "vod_kan_13077_ep_128447", "title": "זובור - פרק 4", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_nnhij0ha/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/jrkfkyv0/1.jpg?width=480"}], "totalEpisodes": 14}, {"id": "vod_kan_11568", "pid": 11568, "title": "אבירם כץ", "originalTitle": "אבירם כץ", "year": "2020-2026", "rating": "8.6", "genres": ["קומדיה", "מתח", "כאן 11"], "desc": "סופר מצליח הסובל ממחסום כתיבה מוצא כתב יד מסתורי ומחליט לפרסם אותו תחת שמו — החלטה שמסבכת את חייו.", "poster": "https://mobapi.kan.org.il/media/m1gpppvd/2023-1-19-imgid-91625_b.jpeg?width=480", "backdrop": "https://mobapi.kan.org.il/media/m1gpppvd/2023-1-19-imgid-91625_b.jpeg?width=480", "episodes": [{"id": "vod_kan_11568_ep_157799", "title": "פרק 1", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_c2frjc2y/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/m1gpppvd/2023-1-19-imgid-91625_b.jpeg?width=480"}, {"id": "vod_kan_11568_ep_157802", "title": "פרק 2", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_qtit680g/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/m1gpppvd/2023-1-19-imgid-91625_b.jpeg?width=480"}, {"id": "vod_kan_11568_ep_158430", "title": "פרק 3", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_q6v06kpy/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/m1gpppvd/2023-1-19-imgid-91625_b.jpeg?width=480"}, {"id": "vod_kan_11568_ep_158433", "title": "פרק 4", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_ua29nyhu/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/m1gpppvd/2023-1-19-imgid-91625_b.jpeg?width=480"}, {"id": "vod_kan_11568_ep_158958", "title": "פרק 5", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_qlt2g02i/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/m1gpppvd/2023-1-19-imgid-91625_b.jpeg?width=480"}, {"id": "vod_kan_11568_ep_159222", "title": "פרק 6", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_5dve46d8/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/m1gpppvd/2023-1-19-imgid-91625_b.jpeg?width=480"}, {"id": "vod_kan_11568_ep_159762", "title": "פרק 7", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_20p2rwbv/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/m1gpppvd/2023-1-19-imgid-91625_b.jpeg?width=480"}, {"id": "vod_kan_11568_ep_159936", "title": "פרק 8", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_76sornrg/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/m1gpppvd/2023-1-19-imgid-91625_b.jpeg?width=480"}, {"id": "vod_kan_11568_ep_855895", "title": "כל אחד יכול להיות סופר", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_3464cyuf/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/m1gpppvd/2023-1-19-imgid-91625_b.jpeg?width=480"}, {"id": "vod_kan_11568_ep_855899", "title": "אבירם נחקר", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_x95x43wi/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/m1gpppvd/2023-1-19-imgid-91625_b.jpeg?width=480"}], "totalEpisodes": 10}, {"id": "vod_kan_485095", "pid": 485095, "title": "סובייצקה", "originalTitle": "סובייצקה", "year": "2020-2026", "rating": "8.5", "genres": ["קומדיה", "דרמה", "כאן 11"], "desc": "ענת, צעירה מבריקה ממשפחת עולים, הופכת לכוכבת רשת בעל כורחה אחרי סרטון ויראלי סוער.", "poster": "https://mobapi.kan.org.il/media/kuqhottu/%D7%A4%D7%A8%D7%A7-1-%D7%9C%D7%90%D7%AA%D7%A8.jpg?width=480", "backdrop": "https://mobapi.kan.org.il/media/kuqhottu/%D7%A4%D7%A8%D7%A7-1-%D7%9C%D7%90%D7%AA%D7%A8.jpg?width=480", "episodes": [{"id": "vod_kan_485095_ep_485102", "title": "פרק 1 - המילה האחרונה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_j3m0510k/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/kuqhottu/%D7%A4%D7%A8%D7%A7-1-%D7%9C%D7%90%D7%AA%D7%A8.jpg?width=480"}, {"id": "vod_kan_485095_ep_485128", "title": "פרק 2 - מפרש בודד מלבין באופק", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_4k7b3o5c/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/kuqhottu/%D7%A4%D7%A8%D7%A7-1-%D7%9C%D7%90%D7%AA%D7%A8.jpg?width=480"}, {"id": "vod_kan_485095_ep_494674", "title": "פרק 3 - מלחמת עולם שלישית", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_2m52trp4/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/kuqhottu/%D7%A4%D7%A8%D7%A7-1-%D7%9C%D7%90%D7%AA%D7%A8.jpg?width=480"}, {"id": "vod_kan_485095_ep_500820", "title": "פרק 4 – דוז פואה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_ys93oedh/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/kuqhottu/%D7%A4%D7%A8%D7%A7-1-%D7%9C%D7%90%D7%AA%D7%A8.jpg?width=480"}, {"id": "vod_kan_485095_ep_505519", "title": "פרק 5 – גם כן, טרקובסקי", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_ofp29a6g/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/kuqhottu/%D7%A4%D7%A8%D7%A7-1-%D7%9C%D7%90%D7%AA%D7%A8.jpg?width=480"}, {"id": "vod_kan_485095_ep_510325", "title": "פרק 6 - Soviet Washing", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_mlf7u2of/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/kuqhottu/%D7%A4%D7%A8%D7%A7-1-%D7%9C%D7%90%D7%AA%D7%A8.jpg?width=480"}, {"id": "vod_kan_485095_ep_515235", "title": "פרק 7 - סערה בכוס תה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_h9hw28j5/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/kuqhottu/%D7%A4%D7%A8%D7%A7-1-%D7%9C%D7%90%D7%AA%D7%A8.jpg?width=480"}, {"id": "vod_kan_485095_ep_521047", "title": "פרק 8 - צ'כובה הבאה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_afkd332r/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/kuqhottu/%D7%A4%D7%A8%D7%A7-1-%D7%9C%D7%90%D7%AA%D7%A8.jpg?width=480"}, {"id": "vod_kan_485095_ep_855894", "title": "שדים מהעבר", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_q8ui5rx2/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/kuqhottu/%D7%A4%D7%A8%D7%A7-1-%D7%9C%D7%90%D7%AA%D7%A8.jpg?width=480"}, {"id": "vod_kan_485095_ep_869882", "title": "נייט מאני", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_ltm7ay15/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/kuqhottu/%D7%A4%D7%A8%D7%A7-1-%D7%9C%D7%90%D7%AA%D7%A8.jpg?width=480"}], "totalEpisodes": 10}, {"id": "vod_kan_710233", "pid": 710233, "title": "הצבי", "originalTitle": "הצבי", "year": "2020-2026", "rating": "8.7", "genres": ["דרמה", "היסטורי", "כאן 11"], "desc": "דרמה תקופתית מרהיבה בירושלים של סוף המאה ה-19 בהשראת סיפור חייו ומשפחתו של אליעזר בן-יהודה.", "poster": "https://mobapi.kan.org.il/media/fhyggfde/hatzvi_ep01_260224_t.jpg?width=480", "backdrop": "https://mobapi.kan.org.il/media/fhyggfde/hatzvi_ep01_260224_t.jpg?width=480", "episodes": [{"id": "vod_kan_710233_ep_713643", "title": "פרק 1 - פרומה ציפיס", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_jxo65s0a/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/fhyggfde/hatzvi_ep01_260224_t.jpg?width=480"}, {"id": "vod_kan_710233_ep_713646", "title": "פרק 2 - מעניין", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_7whutnys/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/fhyggfde/hatzvi_ep01_260224_t.jpg?width=480"}, {"id": "vod_kan_710233_ep_724805", "title": "פרק 3 - משווה ומעלה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_1w7rhabb/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/fhyggfde/hatzvi_ep01_260224_t.jpg?width=480"}, {"id": "vod_kan_710233_ep_724815", "title": "פרק 4 - לא כל עלמה באשר היא", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_jpfjwwyx/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/fhyggfde/hatzvi_ep01_260224_t.jpg?width=480"}, {"id": "vod_kan_710233_ep_731360", "title": "פרק 5 - המילים מתקיפות אותי", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_tnh20omj/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/fhyggfde/hatzvi_ep01_260224_t.jpg?width=480"}, {"id": "vod_kan_710233_ep_734106", "title": "פרק 6 - אסור לך למות פרומה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_2wn2j0dd/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/fhyggfde/hatzvi_ep01_260224_t.jpg?width=480"}, {"id": "vod_kan_710233_ep_710356", "title": "על אהבה, עיתונות ועברית | קדימון", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_59q04l66/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/fhyggfde/hatzvi_ep01_260224_t.jpg?width=480"}, {"id": "vod_kan_710233_ep_716192", "title": "ברוכים הבאים לירושלים של 1885", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_31irdjsh/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/fhyggfde/hatzvi_ep01_260224_t.jpg?width=480"}, {"id": "vod_kan_710233_ep_724814", "title": "איזה באד אס, כלומר רע עכוז, היה אליעזר בן יהודה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_ch81k9sy/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/fhyggfde/hatzvi_ep01_260224_t.jpg?width=480"}, {"id": "vod_kan_710233_ep_855887", "title": "בן יהודה הכופר", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_t8ubnsah/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/fhyggfde/hatzvi_ep01_260224_t.jpg?width=480"}], "totalEpisodes": 10}, {"id": "vod_kan_535919", "pid": 535919, "title": "האמת", "originalTitle": "האמת", "year": "2020-2026", "rating": "8.6", "genres": ["מתח", "פשע", "דרמה", "כאן 11"], "desc": "רצח מסתורי מתרחש בדיוק עשור אחרי פרשת רצח מפורסמת ומטלטל מחדש את החוקרים והחשודים.", "poster": "https://mobapi.kan.org.il/media/fzjlbk1y/vlcsnap-2024-06-20-14h22m41s288.jpg?width=480", "backdrop": "https://mobapi.kan.org.il/media/fzjlbk1y/vlcsnap-2024-06-20-14h22m41s288.jpg?width=480", "episodes": [{"id": "vod_kan_535919_ep_535920", "title": "פרק 1 - ילדה קטנה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_mniu8l17/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/fzjlbk1y/vlcsnap-2024-06-20-14h22m41s288.jpg?width=480"}, {"id": "vod_kan_535919_ep_535930", "title": "פרק 2 - משחקת באש", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_u437uzw6/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/fzjlbk1y/vlcsnap-2024-06-20-14h22m41s288.jpg?width=480"}, {"id": "vod_kan_535919_ep_761805", "title": "פרק 3 - הדסה שלי", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_3yd5xr4a/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/fzjlbk1y/vlcsnap-2024-06-20-14h22m41s288.jpg?width=480"}, {"id": "vod_kan_535919_ep_761808", "title": "פרק 4 - אנשים לא משתנים", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_eessqnd3/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/fzjlbk1y/vlcsnap-2024-06-20-14h22m41s288.jpg?width=480"}, {"id": "vod_kan_535919_ep_761809", "title": "פרק 5 - ירדן פלאי בלב", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_yc0rd2r9/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/fzjlbk1y/vlcsnap-2024-06-20-14h22m41s288.jpg?width=480"}, {"id": "vod_kan_535919_ep_761814", "title": "פרק 6 - שפן לשפן זאב", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_y6gn5pqw/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/fzjlbk1y/vlcsnap-2024-06-20-14h22m41s288.jpg?width=480"}, {"id": "vod_kan_535919_ep_761815", "title": "פרק 7 - נחשים חלקלקים", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_h9uhi6oo/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/fzjlbk1y/vlcsnap-2024-06-20-14h22m41s288.jpg?width=480"}, {"id": "vod_kan_535919_ep_761816", "title": "פרק 8 - האמת", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_8cbc27br/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/fzjlbk1y/vlcsnap-2024-06-20-14h22m41s288.jpg?width=480"}, {"id": "vod_kan_535919_ep_855885", "title": "שתי נערות נרצחות", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_zke14qpp/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/fzjlbk1y/vlcsnap-2024-06-20-14h22m41s288.jpg?width=480"}], "totalEpisodes": 9}, {"id": "vod_kan_612692", "pid": 612692, "title": "מחוננת", "originalTitle": "מחוננת", "year": "2020-2026", "rating": "8.5", "genres": ["דרמה", "כאן 11"], "desc": "נערה מחוננת מאופקים מגלה סוד משפחתי שמטלטל את עולמה ואת יחסיה עם סביבתה.", "poster": "https://mobapi.kan.org.il/media/bl3jqb51/%D7%A25%D7%A41-%D7%9E%D7%95%D7%A7%D7%98%D7%9F.jpg?width=480", "backdrop": "https://mobapi.kan.org.il/media/bl3jqb51/%D7%A25%D7%A41-%D7%9E%D7%95%D7%A7%D7%98%D7%9F.jpg?width=480", "episodes": [{"id": "vod_kan_612692_ep_985226", "title": "פרק 1 - מהנמוך לגבוה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2026628/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/bl3jqb51/%D7%A25%D7%A41-%D7%9E%D7%95%D7%A7%D7%98%D7%9F.jpg?width=480"}, {"id": "vod_kan_612692_ep_986485", "title": "פרק 2 - גלתיאה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2026639/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/bl3jqb51/%D7%A25%D7%A41-%D7%9E%D7%95%D7%A7%D7%98%D7%9F.jpg?width=480"}, {"id": "vod_kan_612692_ep_986489", "title": "פרק 3 - אפקט ברנום", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2026691/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/bl3jqb51/%D7%A25%D7%A41-%D7%9E%D7%95%D7%A7%D7%98%D7%9F.jpg?width=480"}, {"id": "vod_kan_612692_ep_986499", "title": "פרק 4 - האיש עם הסודה החצי מלאה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2026706/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/bl3jqb51/%D7%A25%D7%A41-%D7%9E%D7%95%D7%A7%D7%98%D7%9F.jpg?width=480"}, {"id": "vod_kan_612692_ep_986502", "title": "פרק 5 - המוסקטרים מליל", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2035408/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/bl3jqb51/%D7%A25%D7%A41-%D7%9E%D7%95%D7%A7%D7%98%D7%9F.jpg?width=480"}, {"id": "vod_kan_612692_ep_986504", "title": "פרק 6 - טאקילה סאנרייז", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2035447/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/bl3jqb51/%D7%A25%D7%A41-%D7%9E%D7%95%D7%A7%D7%98%D7%9F.jpg?width=480"}, {"id": "vod_kan_612692_ep_986508", "title": "פרק 7 - אנחנו צריכים לדבר", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2035018/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/bl3jqb51/%D7%A25%D7%A41-%D7%9E%D7%95%D7%A7%D7%98%D7%9F.jpg?width=480"}, {"id": "vod_kan_612692_ep_986512", "title": "פרק 8 - סופרנובה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2035137/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/bl3jqb51/%D7%A25%D7%A41-%D7%9E%D7%95%D7%A7%D7%98%D7%9F.jpg?width=480"}], "totalEpisodes": 8}, {"id": "vod_kan_936955", "pid": 936955, "title": "התנתקות", "originalTitle": "התנתקות", "year": "2020-2026", "rating": "8.7", "genres": ["דרמה", "כאן 11"], "desc": "דרמה ישראלית מרגשת סביב אירועי קיץ 2005 והשסע המשפחתי והלאומי.", "poster": "https://mobapi.kan.org.il/media/jsollljy/%D7%9C%D7%90%D7%AA%D7%A8.jpg?width=480", "backdrop": "https://mobapi.kan.org.il/media/jsollljy/%D7%9C%D7%90%D7%AA%D7%A8.jpg?width=480", "episodes": [{"id": "vod_kan_936955_ep_936960", "title": "פרק 1 - וארשתיך לי לעולם", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_rqrz51v5/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/jsollljy/%D7%9C%D7%90%D7%AA%D7%A8.jpg?width=480"}, {"id": "vod_kan_936955_ep_936961", "title": "פרק 2 - הכנה מנטלית", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_3uzd0uhk/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/jsollljy/%D7%9C%D7%90%D7%AA%D7%A8.jpg?width=480"}, {"id": "vod_kan_936955_ep_936962", "title": "פרק 3 - יש בנו אהבה והיא תנצח", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_tyxbny4k/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/jsollljy/%D7%9C%D7%90%D7%AA%D7%A8.jpg?width=480"}, {"id": "vod_kan_936955_ep_936963", "title": "פרק 4 -  בין המצרים", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_gj6kggrg/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/jsollljy/%D7%9C%D7%90%D7%AA%D7%A8.jpg?width=480"}, {"id": "vod_kan_936955_ep_936964", "title": "פרק 5 - האהבה מתה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_wl6qgw13/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/jsollljy/%D7%9C%D7%90%D7%AA%D7%A8.jpg?width=480"}], "totalEpisodes": 5}, {"id": "vod_kan_962212", "pid": 962212, "title": "מקום שמח", "originalTitle": "מקום שמח", "year": "2020-2026", "rating": "8.6", "genres": ["דרמה", "קומדיה", "כאן 11"], "desc": "דרמה קומית חכמה ומרגשת מבית כאן 11 על משפחה, זוגיות וחיפוש אחר משמעות.", "poster": "https://mobapi.kan.org.il/media/3ouahgan/%D7%97%D7%93%D7%A9-%D7%9C%D7%90%D7%AA%D7%A8.jpg?width=480", "backdrop": "https://mobapi.kan.org.il/media/3ouahgan/%D7%97%D7%93%D7%A9-%D7%9C%D7%90%D7%AA%D7%A8.jpg?width=480", "episodes": [{"id": "vod_kan_962212_ep_962230", "title": "פרק 1 - נא לגעת", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1890934/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/3ouahgan/%D7%97%D7%93%D7%A9-%D7%9C%D7%90%D7%AA%D7%A8.jpg?width=480"}, {"id": "vod_kan_962212_ep_962235", "title": "פרק 2 - שמחה בחלקך", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1890935/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/3ouahgan/%D7%97%D7%93%D7%A9-%D7%9C%D7%90%D7%AA%D7%A8.jpg?width=480"}, {"id": "vod_kan_962212_ep_962236", "title": "פרק 3 - בובות על חוטים", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1890937/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/3ouahgan/%D7%97%D7%93%D7%A9-%D7%9C%D7%90%D7%AA%D7%A8.jpg?width=480"}, {"id": "vod_kan_962212_ep_962239", "title": "פרק 4 - הנקניקייה שלי", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1890938/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/3ouahgan/%D7%97%D7%93%D7%A9-%D7%9C%D7%90%D7%AA%D7%A8.jpg?width=480"}, {"id": "vod_kan_962212_ep_966637", "title": "פרק 5 - כשהייתי יפה, לא ידעתי", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1913610/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/3ouahgan/%D7%97%D7%93%D7%A9-%D7%9C%D7%90%D7%AA%D7%A8.jpg?width=480"}, {"id": "vod_kan_962212_ep_966639", "title": "פרק 6 - סודות חבויים", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1913611/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/3ouahgan/%D7%97%D7%93%D7%A9-%D7%9C%D7%90%D7%AA%D7%A8.jpg?width=480"}, {"id": "vod_kan_962212_ep_966641", "title": "פרק 7 - תיירות יהודית", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1946467/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/3ouahgan/%D7%97%D7%93%D7%A9-%D7%9C%D7%90%D7%AA%D7%A8.jpg?width=480"}, {"id": "vod_kan_962212_ep_966640", "title": "פרק 8 - רחוק ולבד", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1913647/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/3ouahgan/%D7%97%D7%93%D7%A9-%D7%9C%D7%90%D7%AA%D7%A8.jpg?width=480"}, {"id": "vod_kan_962212_ep_974938", "title": "מקום שמח | קליפ סיום העונה - כחול וירוק", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1950634/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/3ouahgan/%D7%97%D7%93%D7%A9-%D7%9C%D7%90%D7%AA%D7%A8.jpg?width=480"}], "totalEpisodes": 9}, {"id": "vod_kan_984859", "pid": 984859, "title": "כל האימהות משקרות", "originalTitle": "כל האימהות משקרות", "year": "2020-2026", "rating": "8.5", "genres": ["דרמה", "קומדיה", "כאן 11"], "desc": "סדרה חדשה של כאן 11 על סודות משפחתיים, אימהות והשקרים הקטנים שמחזיקים הכל יחד.", "poster": "https://mobapi.kan.org.il/media/j5aj1ova/%D7%9C%D7%90%D7%AA%D7%A8.jpg?width=480", "backdrop": "https://mobapi.kan.org.il/media/j5aj1ova/%D7%9C%D7%90%D7%AA%D7%A8.jpg?width=480", "episodes": [{"id": "vod_kan_984859_ep_984861", "title": "פרק 1 - ערב סרט", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2104131/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/j5aj1ova/%D7%9C%D7%90%D7%AA%D7%A8.jpg?width=480"}, {"id": "vod_kan_984859_ep_984862", "title": "פרק 2 - ערב טוב המאמן", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2104178/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/j5aj1ova/%D7%9C%D7%90%D7%AA%D7%A8.jpg?width=480"}, {"id": "vod_kan_984859_ep_996038", "title": "פרק 3 - כאילו כלום לא קרה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2163874/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/j5aj1ova/%D7%9C%D7%90%D7%AA%D7%A8.jpg?width=480"}, {"id": "vod_kan_984859_ep_996039", "title": "פרק 4 - רק נקודה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2163875/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/j5aj1ova/%D7%9C%D7%90%D7%AA%D7%A8.jpg?width=480"}, {"id": "vod_kan_984859_ep_997598", "title": "פרק 5 - יהלומים", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2165518/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/j5aj1ova/%D7%9C%D7%90%D7%AA%D7%A8.jpg?width=480"}, {"id": "vod_kan_984859_ep_997599", "title": "פרק 6 - צמד טוב", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2165519/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/j5aj1ova/%D7%9C%D7%90%D7%AA%D7%A8.jpg?width=480"}, {"id": "vod_kan_984859_ep_1000404", "title": "פרק 7 - הלילה של רוזי וסופי", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2168318/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/j5aj1ova/%D7%9C%D7%90%D7%AA%D7%A8.jpg?width=480"}, {"id": "vod_kan_984859_ep_1002623", "title": "פרק 8 - אף אחד לא אוהב ילדים רעים", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2170554/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/j5aj1ova/%D7%9C%D7%90%D7%AA%D7%A8.jpg?width=480"}, {"id": "vod_kan_984859_ep_1002688", "title": "פרק 9 - החוליה החלשה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2170571/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/j5aj1ova/%D7%9C%D7%90%D7%AA%D7%A8.jpg?width=480"}], "totalEpisodes": 9}, {"id": "vod_kan_983439", "pid": 983439, "title": "בהסתורה", "originalTitle": "בהסתורה", "year": "2020-2026", "rating": "8.6", "genres": ["דרמה", "כאן 11"], "desc": "דרמה אינטימית ונוגעת ללב על חיים כפולים וסודות בקהילה סגורה.", "poster": "https://mobapi.kan.org.il/media/nkrlwbt4/fa9aea5d-dd4e-4ef7-a3d6-0fd32e16feb4.jpeg?width=480", "backdrop": "https://mobapi.kan.org.il/media/nkrlwbt4/fa9aea5d-dd4e-4ef7-a3d6-0fd32e16feb4.jpeg?width=480", "episodes": [{"id": "vod_kan_983439_ep_989302", "title": "פרק 1 - רוחל'ה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2067094/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/nkrlwbt4/fa9aea5d-dd4e-4ef7-a3d6-0fd32e16feb4.jpeg?width=480"}, {"id": "vod_kan_983439_ep_989308", "title": "פרק 2 - שרה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2011277/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/nkrlwbt4/fa9aea5d-dd4e-4ef7-a3d6-0fd32e16feb4.jpeg?width=480"}, {"id": "vod_kan_983439_ep_989309", "title": "פרק 3 - מיכל ופנחס-מנחם", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2067158/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/nkrlwbt4/fa9aea5d-dd4e-4ef7-a3d6-0fd32e16feb4.jpeg?width=480"}, {"id": "vod_kan_983439_ep_989316", "title": "פרק 4 - משה אזולאי", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2011428/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/nkrlwbt4/fa9aea5d-dd4e-4ef7-a3d6-0fd32e16feb4.jpeg?width=480"}, {"id": "vod_kan_983439_ep_989322", "title": "פרק 5 - הנרי", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2011472/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/nkrlwbt4/fa9aea5d-dd4e-4ef7-a3d6-0fd32e16feb4.jpeg?width=480"}, {"id": "vod_kan_983439_ep_989323", "title": "פרק 6 - הניה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2067575/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/nkrlwbt4/fa9aea5d-dd4e-4ef7-a3d6-0fd32e16feb4.jpeg?width=480"}, {"id": "vod_kan_983439_ep_989324", "title": "פרק 7 - גיטי", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2067576/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/nkrlwbt4/fa9aea5d-dd4e-4ef7-a3d6-0fd32e16feb4.jpeg?width=480"}, {"id": "vod_kan_983439_ep_989325", "title": "פרק 8 - דונלד", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2073571/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/nkrlwbt4/fa9aea5d-dd4e-4ef7-a3d6-0fd32e16feb4.jpeg?width=480"}, {"id": "vod_kan_983439_ep_989327", "title": "פרק 9 - יוסי זוכמיר", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2067577/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/nkrlwbt4/fa9aea5d-dd4e-4ef7-a3d6-0fd32e16feb4.jpeg?width=480"}], "totalEpisodes": 9}, {"id": "vod_kan_11247", "pid": 11247, "title": "מלאך משחית", "originalTitle": "מלאך משחית", "year": "2020-2026", "rating": "8.5", "genres": ["מתח", "מסתורין", "דרמה", "כאן 11"], "desc": "מותחן על-טבעי פסיכולוגי בשכונת מאה שערים בירושלים.", "poster": "https://mobapi.kan.org.il/media/ginh5jby/2023-2-8-imgid-93458_b.jpeg?width=480", "backdrop": "https://mobapi.kan.org.il/media/ginh5jby/2023-2-8-imgid-93458_b.jpeg?width=480", "episodes": [{"id": "vod_kan_11247_ep_159765", "title": "פרק 1 - אוקסן אוקסן", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1891552/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/ginh5jby/2023-2-8-imgid-93458_b.jpeg?width=480"}, {"id": "vod_kan_11247_ep_159771", "title": "פרק 2 - דב-בער מברודי", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1891554/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/ginh5jby/2023-2-8-imgid-93458_b.jpeg?width=480"}, {"id": "vod_kan_11247_ep_159777", "title": "פרק 3 - אשת זנונים", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1891555/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/ginh5jby/2023-2-8-imgid-93458_b.jpeg?width=480"}, {"id": "vod_kan_11247_ep_159783", "title": "פרק 4 - ידידה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1891557/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/ginh5jby/2023-2-8-imgid-93458_b.jpeg?width=480"}, {"id": "vod_kan_11247_ep_159789", "title": "פרק 5 – אור מלפני 1300 שנה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1891556/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/ginh5jby/2023-2-8-imgid-93458_b.jpeg?width=480"}, {"id": "vod_kan_11247_ep_159792", "title": "פרק 6 - אשמדאי", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1891560/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/ginh5jby/2023-2-8-imgid-93458_b.jpeg?width=480"}, {"id": "vod_kan_11247_ep_159795", "title": "פרק 7 - נחמי", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1891562/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/ginh5jby/2023-2-8-imgid-93458_b.jpeg?width=480"}, {"id": "vod_kan_11247_ep_159798", "title": "פרק 8 - צא טמא", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1891558/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/ginh5jby/2023-2-8-imgid-93458_b.jpeg?width=480"}, {"id": "vod_kan_11247_ep_866280", "title": "כלה אדומה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_svk86d42/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/ginh5jby/2023-2-8-imgid-93458_b.jpeg?width=480"}, {"id": "vod_kan_11247_ep_866286", "title": "שרלטן", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_ujklt9j1/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/ginh5jby/2023-2-8-imgid-93458_b.jpeg?width=480"}], "totalEpisodes": 10}, {"id": "vod_kan_1033206", "pid": "1033206", "title": "לא לריב", "originalTitle": "לא לריב", "year": "2021-2026", "rating": "8.6", "genres": ["כאן 11", "ישראלי", "דרמה"], "desc": "שלושה אחים מנסים להחזיר לעצמם את הבית שאביהם הוריש לנערת ליווי | 14+", "poster": "https://mobapi.kan.org.il/media/eqvgjg0t/1920x1080_no-logo_%D7%9C%D7%90-%D7%9C%D7%A8%D7%99%D7%91.jpg?width=480", "backdrop": "https://mobapi.kan.org.il/media/eqvgjg0t/1920x1080_no-logo_%D7%9C%D7%90-%D7%9C%D7%A8%D7%99%D7%91.jpg?width=480", "episodes": [{"id": "vod_kan_1033206_ep_1033207", "title": "פרק 1 - הצוואה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2194031/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/eqvgjg0t/1920x1080_no-logo_%D7%9C%D7%90-%D7%9C%D7%A8%D7%99%D7%91.jpg?width=480"}, {"id": "vod_kan_1033206_ep_1033208", "title": "פרק 2 - בארץ מותר", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2194032/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/eqvgjg0t/1920x1080_no-logo_%D7%9C%D7%90-%D7%9C%D7%A8%D7%99%D7%91.jpg?width=480"}, {"id": "vod_kan_1033206_ep_1033211", "title": "פרק 3 - תצהיר הסתלקות מעזבון", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2194041/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/eqvgjg0t/1920x1080_no-logo_%D7%9C%D7%90-%D7%9C%D7%A8%D7%99%D7%91.jpg?width=480"}, {"id": "vod_kan_1033206_ep_1033215", "title": "פרק 4 - האותיות הקטנות", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2194042/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/eqvgjg0t/1920x1080_no-logo_%D7%9C%D7%90-%D7%9C%D7%A8%D7%99%D7%91.jpg?width=480"}, {"id": "vod_kan_1033206_ep_1033216", "title": "פרק 5 - רוביק", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2194044/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/eqvgjg0t/1920x1080_no-logo_%D7%9C%D7%90-%D7%9C%D7%A8%D7%99%D7%91.jpg?width=480"}, {"id": "vod_kan_1033206_ep_1033238", "title": "פרק 6 - מרפסת לשאנז אליזה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2194045/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/eqvgjg0t/1920x1080_no-logo_%D7%9C%D7%90-%D7%9C%D7%A8%D7%99%D7%91.jpg?width=480"}, {"id": "vod_kan_1033206_ep_1033438", "title": "פרק 7 - מצדה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2194078/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/eqvgjg0t/1920x1080_no-logo_%D7%9C%D7%90-%D7%9C%D7%A8%D7%99%D7%91.jpg?width=480"}, {"id": "vod_kan_1033206_ep_1034645", "title": "פרק 8 - קבר אחים", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2194852/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/eqvgjg0t/1920x1080_no-logo_%D7%9C%D7%90-%D7%9C%D7%A8%D7%99%D7%91.jpg?width=480"}, {"id": "vod_kan_1033206_ep_1044425", "title": "\"מי זאת יפית לוי?\"", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2203725/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/eqvgjg0t/1920x1080_no-logo_%D7%9C%D7%90-%D7%9C%D7%A8%D7%99%D7%91.jpg?width=480"}], "totalEpisodes": 9}, {"id": "vod_kan_578430", "pid": "578430", "title": "האיש שרצה לדעת הכול", "originalTitle": "האיש שרצה לדעת הכול", "year": "2021-2026", "rating": "8.6", "genres": ["כאן 11", "ישראלי", "דרמה"], "desc": "זוג חוקרים מנסה לפענח את מניעיו של תוקף מסתורי שדורש לדעת הכל", "poster": "https://mobapi.kan.org.il/media/r4slef0e/1920x1080_no-logo_%D7%94%D7%90%D7%99%D7%A9-%D7%A9%D7%A8%D7%A6%D7%94-%D7%9C%D7%93%D7%A2%D7%AA-%D7%94%D7%9B%D7%9C.jpg?width=480", "backdrop": "https://mobapi.kan.org.il/media/r4slef0e/1920x1080_no-logo_%D7%94%D7%90%D7%99%D7%A9-%D7%A9%D7%A8%D7%A6%D7%94-%D7%9C%D7%93%D7%A2%D7%AA-%D7%94%D7%9B%D7%9C.jpg?width=480", "episodes": [{"id": "vod_kan_578430_ep_578431", "title": "פרק 1", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_6ee94am7/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/r4slef0e/1920x1080_no-logo_%D7%94%D7%90%D7%99%D7%A9-%D7%A9%D7%A8%D7%A6%D7%94-%D7%9C%D7%93%D7%A2%D7%AA-%D7%94%D7%9B%D7%9C.jpg?width=480"}, {"id": "vod_kan_578430_ep_578453", "title": "פרק 2", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_59336558/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/r4slef0e/1920x1080_no-logo_%D7%94%D7%90%D7%99%D7%A9-%D7%A9%D7%A8%D7%A6%D7%94-%D7%9C%D7%93%D7%A2%D7%AA-%D7%94%D7%9B%D7%9C.jpg?width=480"}, {"id": "vod_kan_578430_ep_666304", "title": "פרק 3", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_b3rs7xhx/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/r4slef0e/1920x1080_no-logo_%D7%94%D7%90%D7%99%D7%A9-%D7%A9%D7%A8%D7%A6%D7%94-%D7%9C%D7%93%D7%A2%D7%AA-%D7%94%D7%9B%D7%9C.jpg?width=480"}, {"id": "vod_kan_578430_ep_631961", "title": "פרק 4", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_f8vt085r/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/r4slef0e/1920x1080_no-logo_%D7%94%D7%90%D7%99%D7%A9-%D7%A9%D7%A8%D7%A6%D7%94-%D7%9C%D7%93%D7%A2%D7%AA-%D7%94%D7%9B%D7%9C.jpg?width=480"}, {"id": "vod_kan_578430_ep_666308", "title": "פרק 5", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_y8dyyn1u/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/r4slef0e/1920x1080_no-logo_%D7%94%D7%90%D7%99%D7%A9-%D7%A9%D7%A8%D7%A6%D7%94-%D7%9C%D7%93%D7%A2%D7%AA-%D7%94%D7%9B%D7%9C.jpg?width=480"}, {"id": "vod_kan_578430_ep_631964", "title": "פרק 6", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_jpvyv06c/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/r4slef0e/1920x1080_no-logo_%D7%94%D7%90%D7%99%D7%A9-%D7%A9%D7%A8%D7%A6%D7%94-%D7%9C%D7%93%D7%A2%D7%AA-%D7%94%D7%9B%D7%9C.jpg?width=480"}, {"id": "vod_kan_578430_ep_666311", "title": "פרק 7", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_nni6we8d/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/r4slef0e/1920x1080_no-logo_%D7%94%D7%90%D7%99%D7%A9-%D7%A9%D7%A8%D7%A6%D7%94-%D7%9C%D7%93%D7%A2%D7%AA-%D7%94%D7%9B%D7%9C.jpg?width=480"}, {"id": "vod_kan_578430_ep_681399", "title": "פרק 8", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_bcdksgxy/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/r4slef0e/1920x1080_no-logo_%D7%94%D7%90%D7%99%D7%A9-%D7%A9%D7%A8%D7%A6%D7%94-%D7%9C%D7%93%D7%A2%D7%AA-%D7%94%D7%9B%D7%9C.jpg?width=480"}, {"id": "vod_kan_578430_ep_866269", "title": "תלונה במשטרה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_qfj9cw1l/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/r4slef0e/1920x1080_no-logo_%D7%94%D7%90%D7%99%D7%A9-%D7%A9%D7%A8%D7%A6%D7%94-%D7%9C%D7%93%D7%A2%D7%AA-%D7%94%D7%9B%D7%9C.jpg?width=480"}, {"id": "vod_kan_578430_ep_866273", "title": "עוד אישה הותקפה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_9y12wkko/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/r4slef0e/1920x1080_no-logo_%D7%94%D7%90%D7%99%D7%A9-%D7%A9%D7%A8%D7%A6%D7%94-%D7%9C%D7%93%D7%A2%D7%AA-%D7%94%D7%9B%D7%9C.jpg?width=480"}], "totalEpisodes": 10}, {"id": "vod_kan_13688", "pid": "13688", "title": "מתיר עגונות", "originalTitle": "מתיר עגונות", "year": "2021-2026", "rating": "8.6", "genres": ["כאן 11", "ישראלי", "דרמה"], "desc": "אביב אלוש מגלם רב-בלש שמסייע לנשים מסורבות גט להשתחרר מן הכלא ההלכתי", "poster": "https://mobapi.kan.org.il/media/1hibahvm/https-kanwebblobcorewindowsnet-download-pictures-2022-10-24-imgid-83942_aa.jpeg?width=480", "backdrop": "https://mobapi.kan.org.il/media/1hibahvm/https-kanwebblobcorewindowsnet-download-pictures-2022-10-24-imgid-83942_aa.jpeg?width=480", "episodes": [{"id": "vod_kan_13688_ep_866545", "title": "עקרות הלכתית", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_w9792wpt/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/1hibahvm/https-kanwebblobcorewindowsnet-download-pictures-2022-10-24-imgid-83942_aa.jpeg?width=480"}, {"id": "vod_kan_13688_ep_866543", "title": "הרב מתגרש", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_qt4cvut1/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/1hibahvm/https-kanwebblobcorewindowsnet-download-pictures-2022-10-24-imgid-83942_aa.jpeg?width=480"}, {"id": "vod_kan_13688_ep_106488", "title": "מתיר עגונות | פרק 1", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_5jv6cnyt/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/1hibahvm/https-kanwebblobcorewindowsnet-download-pictures-2022-10-24-imgid-83942_aa.jpeg?width=480"}, {"id": "vod_kan_13688_ep_106490", "title": "מתיר עגונות | פרק 2", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_nv4qz7or/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/1hibahvm/https-kanwebblobcorewindowsnet-download-pictures-2022-10-24-imgid-83942_aa.jpeg?width=480"}, {"id": "vod_kan_13688_ep_106492", "title": "מתיר עגונות | פרק 3", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_ry0dmwo7/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/1hibahvm/https-kanwebblobcorewindowsnet-download-pictures-2022-10-24-imgid-83942_aa.jpeg?width=480"}, {"id": "vod_kan_13688_ep_106494", "title": "מתיר עגונות | פרק 4", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_reorzb0e/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/1hibahvm/https-kanwebblobcorewindowsnet-download-pictures-2022-10-24-imgid-83942_aa.jpeg?width=480"}, {"id": "vod_kan_13688_ep_106496", "title": "מתיר עגונות | פרק 5", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_c1o7dm89/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/1hibahvm/https-kanwebblobcorewindowsnet-download-pictures-2022-10-24-imgid-83942_aa.jpeg?width=480"}, {"id": "vod_kan_13688_ep_106498", "title": "מתיר עגונות | פרק 6", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_7em6s6gp/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/1hibahvm/https-kanwebblobcorewindowsnet-download-pictures-2022-10-24-imgid-83942_aa.jpeg?width=480"}, {"id": "vod_kan_13688_ep_106500", "title": "מתיר עגונות | פרק 7", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_qazlamcp/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/1hibahvm/https-kanwebblobcorewindowsnet-download-pictures-2022-10-24-imgid-83942_aa.jpeg?width=480"}, {"id": "vod_kan_13688_ep_106502", "title": "מתיר עגונות | פרק 8", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_3vj6sxzd/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/1hibahvm/https-kanwebblobcorewindowsnet-download-pictures-2022-10-24-imgid-83942_aa.jpeg?width=480"}], "totalEpisodes": 10}, {"id": "vod_kan_13815", "pid": "13815", "title": "תיק נעדר", "originalTitle": "תיק נעדר", "year": "2021-2026", "rating": "8.6", "genres": ["כאן 11", "ישראלי", "דרמה"], "desc": "סדרת דרמה בלשית, המבוססת על ספריו של דרור משעני", "poster": "https://mobapi.kan.org.il/media/wpodez4c/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-dab6bad0-e2f1-474d-aad5-ef16c6055d21.jpg?width=480", "backdrop": "https://mobapi.kan.org.il/media/wpodez4c/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-dab6bad0-e2f1-474d-aad5-ef16c6055d21.jpg?width=480", "episodes": [{"id": "vod_kan_13815_ep_102394", "title": "פרק 1 - חקירה ראשונה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_yqmgqpz1/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/wpodez4c/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-dab6bad0-e2f1-474d-aad5-ef16c6055d21.jpg?width=480"}, {"id": "vod_kan_13815_ep_102396", "title": "פרק 2 - החיפושים", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_x1c9cs99/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/wpodez4c/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-dab6bad0-e2f1-474d-aad5-ef16c6055d21.jpg?width=480"}, {"id": "vod_kan_13815_ep_102399", "title": "פרק 3 - המכתב", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_dgauc2bl/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/wpodez4c/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-dab6bad0-e2f1-474d-aad5-ef16c6055d21.jpg?width=480"}, {"id": "vod_kan_13815_ep_102402", "title": "פרק 4 - המורה הפרטי", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_pulfmm2u/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/wpodez4c/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-dab6bad0-e2f1-474d-aad5-ef16c6055d21.jpg?width=480"}, {"id": "vod_kan_13815_ep_102404", "title": "פרק 5 - החקירה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_ikmd3r9g/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/wpodez4c/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-dab6bad0-e2f1-474d-aad5-ef16c6055d21.jpg?width=480"}, {"id": "vod_kan_13815_ep_102406", "title": "פרק 6 - חקירה שנייה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_us6bunm8/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/wpodez4c/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-dab6bad0-e2f1-474d-aad5-ef16c6055d21.jpg?width=480"}, {"id": "vod_kan_13815_ep_102408", "title": "פרק 7 - החשוד המרכזי", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_xtm9bdgh/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/wpodez4c/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-dab6bad0-e2f1-474d-aad5-ef16c6055d21.jpg?width=480"}, {"id": "vod_kan_13815_ep_102410", "title": "פרק 8 - פרידה בשדה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_2by3d4jb/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/wpodez4c/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-dab6bad0-e2f1-474d-aad5-ef16c6055d21.jpg?width=480"}, {"id": "vod_kan_13815_ep_866552", "title": "נער נעדר", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_lyyi8grm/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/wpodez4c/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-dab6bad0-e2f1-474d-aad5-ef16c6055d21.jpg?width=480"}, {"id": "vod_kan_13815_ep_866555", "title": "החקירה מתחילה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_1xfc5lmz/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/wpodez4c/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-dab6bad0-e2f1-474d-aad5-ef16c6055d21.jpg?width=480"}], "totalEpisodes": 10}, {"id": "vod_kan_12967", "pid": "12967", "title": "הד קולך", "originalTitle": "הד קולך", "year": "2021-2026", "rating": "8.6", "genres": ["כאן 11", "ישראלי", "דרמה"], "desc": "דרמה מוזיקלית על יחסי אבות ובנים", "poster": "https://mobapi.kan.org.il/media/mpdfmwjg/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-797c6a8e-c750-47b3-bf44-bf1975709084.jpg?width=480", "backdrop": "https://mobapi.kan.org.il/media/mpdfmwjg/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-797c6a8e-c750-47b3-bf44-bf1975709084.jpg?width=480", "episodes": [{"id": "vod_kan_12967_ep_135563", "title": "פרק 1 - לוקסמבורג", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_m0gbfydv/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/mpdfmwjg/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-797c6a8e-c750-47b3-bf44-bf1975709084.jpg?width=480"}, {"id": "vod_kan_12967_ep_135566", "title": "פרק 2 - תולדות השקר", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_ws0juznc/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/mpdfmwjg/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-797c6a8e-c750-47b3-bf44-bf1975709084.jpg?width=480"}, {"id": "vod_kan_12967_ep_135569", "title": "פרק 3 - נקודת האל חזור", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_oskx3p6q/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/mpdfmwjg/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-797c6a8e-c750-47b3-bf44-bf1975709084.jpg?width=480"}, {"id": "vod_kan_12967_ep_135572", "title": "פרק 4 - יפה ומסריח", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_9qr1tsix/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/mpdfmwjg/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-797c6a8e-c750-47b3-bf44-bf1975709084.jpg?width=480"}, {"id": "vod_kan_12967_ep_136837", "title": "פרק 5 - הזמן הוא חבר ואויב", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_bxpzhofa/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/mpdfmwjg/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-797c6a8e-c750-47b3-bf44-bf1975709084.jpg?width=480"}, {"id": "vod_kan_12967_ep_136840", "title": "פרק 6 - תולדות השקר רסטורציה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_j3i3roj2/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/mpdfmwjg/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-797c6a8e-c750-47b3-bf44-bf1975709084.jpg?width=480"}, {"id": "vod_kan_12967_ep_136842", "title": "פרק 7 - שיר לאף אחד", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_qhdkblxb/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/mpdfmwjg/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-797c6a8e-c750-47b3-bf44-bf1975709084.jpg?width=480"}, {"id": "vod_kan_12967_ep_136845", "title": "פרק 8 - מותו של ארי שמר", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_qjnnfgcr/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/mpdfmwjg/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-797c6a8e-c750-47b3-bf44-bf1975709084.jpg?width=480"}, {"id": "vod_kan_12967_ep_136848", "title": "פרק 9 - נפל דבר נפלא", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_en24tmqi/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/mpdfmwjg/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-797c6a8e-c750-47b3-bf44-bf1975709084.jpg?width=480"}, {"id": "vod_kan_12967_ep_136851", "title": "פרק 10 - הגרסה שלי שלך", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_wn98hpeo/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/mpdfmwjg/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-797c6a8e-c750-47b3-bf44-bf1975709084.jpg?width=480"}], "totalEpisodes": 10}, {"id": "vod_kan_13684", "pid": "13684", "title": "הדבר הגדול המיוחד", "originalTitle": "הדבר הגדול המיוחד", "year": "2021-2026", "rating": "8.6", "genres": ["כאן 11", "ישראלי", "דרמה"], "desc": "כשיהודית מגלה שהיא חולה בסרטן, דניאלה מחליטה לקחת אותה למסע משנה חיים", "poster": "https://mobapi.kan.org.il/media/k01djoku/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-e44336df-3673-4194-9ec5-d2ed64b1df40.jpg?width=480", "backdrop": "https://mobapi.kan.org.il/media/k01djoku/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-e44336df-3673-4194-9ec5-d2ed64b1df40.jpg?width=480", "episodes": [{"id": "vod_kan_13684_ep_108483", "title": "הדבר הגדול המיוחד - פרק 1", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_p01v0gzy/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/k01djoku/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-e44336df-3673-4194-9ec5-d2ed64b1df40.jpg?width=480"}, {"id": "vod_kan_13684_ep_108486", "title": "הדבר הגדול המיוחד - פרק 2", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_18jz48km/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/k01djoku/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-e44336df-3673-4194-9ec5-d2ed64b1df40.jpg?width=480"}, {"id": "vod_kan_13684_ep_108489", "title": "הדבר הגדול המיוחד - פרק 3", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_9y4b7u39/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/k01djoku/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-e44336df-3673-4194-9ec5-d2ed64b1df40.jpg?width=480"}, {"id": "vod_kan_13684_ep_108492", "title": "הדבר הגדול המיוחד - פרק 4", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_pajul3kq/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/k01djoku/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-e44336df-3673-4194-9ec5-d2ed64b1df40.jpg?width=480"}, {"id": "vod_kan_13684_ep_108495", "title": "הדבר הגדול המיוחד - פרק 5", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_z01nc9dn/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/k01djoku/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-e44336df-3673-4194-9ec5-d2ed64b1df40.jpg?width=480"}, {"id": "vod_kan_13684_ep_108498", "title": "הדבר הגדול המיוחד - פרק 6", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_51yuxggu/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/k01djoku/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-e44336df-3673-4194-9ec5-d2ed64b1df40.jpg?width=480"}, {"id": "vod_kan_13684_ep_108501", "title": "הדבר הגדול המיוחד - פרק 7", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_wgnn0hy1/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/k01djoku/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-e44336df-3673-4194-9ec5-d2ed64b1df40.jpg?width=480"}, {"id": "vod_kan_13684_ep_108504", "title": "הדבר הגדול המיוחד - פרק 8", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_0luul0jo/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/k01djoku/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-e44336df-3673-4194-9ec5-d2ed64b1df40.jpg?width=480"}, {"id": "vod_kan_13684_ep_876124", "title": "סרטן צוואר הרחם", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_g7mty9xb/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/k01djoku/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-e44336df-3673-4194-9ec5-d2ed64b1df40.jpg?width=480"}], "totalEpisodes": 9}, {"id": "vod_kan_13827", "pid": "13827", "title": "מונא", "originalTitle": "מונא", "year": "2021-2026", "rating": "8.6", "genres": ["כאן 11", "ישראלי", "דרמה"], "desc": "אהבה וזהות ישראלית נבחנות על רקע סבב לחימה נוסף בעזה", "poster": "https://mobapi.kan.org.il/media/af2ablwx/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-1035748f-13e0-41ca-9d77-8f91a9b523dc.jpg?width=480", "backdrop": "https://mobapi.kan.org.il/media/af2ablwx/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-1035748f-13e0-41ca-9d77-8f91a9b523dc.jpg?width=480", "episodes": [{"id": "vod_kan_13827_ep_98663", "title": "פרק 1 | גאות ושפל", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_jgq2c4qo/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/af2ablwx/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-1035748f-13e0-41ca-9d77-8f91a9b523dc.jpg?width=480"}, {"id": "vod_kan_13827_ep_98666", "title": "פרק 2 | צבע אדום", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_5hempk6u/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/af2ablwx/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-1035748f-13e0-41ca-9d77-8f91a9b523dc.jpg?width=480"}, {"id": "vod_kan_13827_ep_98669", "title": "פרק 3 | אורחים לרגע", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_y7274y7z/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/af2ablwx/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-1035748f-13e0-41ca-9d77-8f91a9b523dc.jpg?width=480"}, {"id": "vod_kan_13827_ep_98672", "title": "פרק 4 | עשו מלחמה, לא אהבה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_kipju3m1/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/af2ablwx/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-1035748f-13e0-41ca-9d77-8f91a9b523dc.jpg?width=480"}, {"id": "vod_kan_13827_ep_98675", "title": "פרק 5 | נקודות תורפה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_3mwmrd9o/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/af2ablwx/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-1035748f-13e0-41ca-9d77-8f91a9b523dc.jpg?width=480"}, {"id": "vod_kan_13827_ep_98678", "title": "פרק 6 | משפחה לא בוחרים", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_580t2j5h/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/af2ablwx/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-1035748f-13e0-41ca-9d77-8f91a9b523dc.jpg?width=480"}, {"id": "vod_kan_13827_ep_98681", "title": "פרק 7 | נחמות קטנות", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_qdtvdgic/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/af2ablwx/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-1035748f-13e0-41ca-9d77-8f91a9b523dc.jpg?width=480"}, {"id": "vod_kan_13827_ep_98684", "title": "פרק סיום העונה | לרדת מן הגדר", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_7a9j6yb1/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/af2ablwx/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-1035748f-13e0-41ca-9d77-8f91a9b523dc.jpg?width=480"}], "totalEpisodes": 8}, {"id": "vod_kan_11635", "pid": "11635", "title": "קרתגו", "originalTitle": "קרתגו", "year": "2021-2026", "rating": "8.6", "genres": ["כאן 11", "ישראלי", "דרמה"], "desc": "סיפורם הנשכח של לוחמי המחתרות שגורשו למחנה העצורים \"קרתגו\"", "poster": "https://mobapi.kan.org.il/media/54blximc/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-36961caa-1580-47cf-a8ac-019ce4ddd2e4.jpg?width=480", "backdrop": "https://mobapi.kan.org.il/media/54blximc/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-36961caa-1580-47cf-a8ac-019ce4ddd2e4.jpg?width=480", "episodes": [{"id": "vod_kan_11635_ep_155159", "title": "פרק 1", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_smjq0z1p/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/54blximc/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-36961caa-1580-47cf-a8ac-019ce4ddd2e4.jpg?width=480"}, {"id": "vod_kan_11635_ep_155078", "title": "פרק 2", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_8tlydi8n/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/54blximc/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-36961caa-1580-47cf-a8ac-019ce4ddd2e4.jpg?width=480"}, {"id": "vod_kan_11635_ep_155237", "title": "פרק 3", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_jzuysdwa/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/54blximc/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-36961caa-1580-47cf-a8ac-019ce4ddd2e4.jpg?width=480"}, {"id": "vod_kan_11635_ep_155456", "title": "פרק 4", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_f9tx1y7p/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/54blximc/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-36961caa-1580-47cf-a8ac-019ce4ddd2e4.jpg?width=480"}, {"id": "vod_kan_11635_ep_155999", "title": "פרק 5", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_ewxwehnx/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/54blximc/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-36961caa-1580-47cf-a8ac-019ce4ddd2e4.jpg?width=480"}, {"id": "vod_kan_11635_ep_156342", "title": "פרק 6", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_8mjozo25/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/54blximc/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-36961caa-1580-47cf-a8ac-019ce4ddd2e4.jpg?width=480"}, {"id": "vod_kan_11635_ep_156481", "title": "פרק 7", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_layjrmd6/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/54blximc/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-36961caa-1580-47cf-a8ac-019ce4ddd2e4.jpg?width=480"}, {"id": "vod_kan_11635_ep_156908", "title": "פרק 8", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_v9wvv25x/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/54blximc/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-36961caa-1580-47cf-a8ac-019ce4ddd2e4.jpg?width=480"}, {"id": "vod_kan_11635_ep_157058", "title": "פרק 9", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_omn0f4db/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/54blximc/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-36961caa-1580-47cf-a8ac-019ce4ddd2e4.jpg?width=480"}, {"id": "vod_kan_11635_ep_157367", "title": "פרק 10", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_fooswayb/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/54blximc/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-36961caa-1580-47cf-a8ac-019ce4ddd2e4.jpg?width=480"}], "totalEpisodes": 10}, {"id": "vod_kan_13291", "pid": "13291", "title": "שטוקהולם", "originalTitle": "שטוקהולם", "year": "2021-2026", "rating": "8.6", "genres": ["כאן 11", "ישראלי", "דרמה"], "desc": "דרמה קומית המבוססת על ספרה של נעה ידלין", "poster": "https://mobapi.kan.org.il/media/pmlnzzoq/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-bf77dbb4-fa5d-4053-8883-93a8a56d536f.jpg?width=480", "backdrop": "https://mobapi.kan.org.il/media/pmlnzzoq/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-bf77dbb4-fa5d-4053-8883-93a8a56d536f.jpg?width=480", "episodes": [{"id": "vod_kan_13291_ep_112510", "title": "פרק 1 - מאדם אתה ואל אדם תשוב", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_j0yj95ph/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/pmlnzzoq/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-bf77dbb4-fa5d-4053-8883-93a8a56d536f.jpg?width=480"}, {"id": "vod_kan_13291_ep_112513", "title": "פרק 2 - דגים שמנים", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_134f8w93/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/pmlnzzoq/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-bf77dbb4-fa5d-4053-8883-93a8a56d536f.jpg?width=480"}, {"id": "vod_kan_13291_ep_112516", "title": "פרק 3 - אישה עם ציצים", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_mh0hw6c2/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/pmlnzzoq/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-bf77dbb4-fa5d-4053-8883-93a8a56d536f.jpg?width=480"}, {"id": "vod_kan_13291_ep_112522", "title": "פרק 4 - כסף וכוח", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_gbkrilcx/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/pmlnzzoq/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-bf77dbb4-fa5d-4053-8883-93a8a56d536f.jpg?width=480"}, {"id": "vod_kan_13291_ep_113353", "title": "פרק 5 - אפרסמון לא בשל", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_5hq91xlh/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/pmlnzzoq/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-bf77dbb4-fa5d-4053-8883-93a8a56d536f.jpg?width=480"}, {"id": "vod_kan_13291_ep_113531", "title": "פרק 6 - איש קריות", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_8rhb9ozy/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/pmlnzzoq/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-bf77dbb4-fa5d-4053-8883-93a8a56d536f.jpg?width=480"}, {"id": "vod_kan_13291_ep_113766", "title": "פרק 7 - גמל עם עניבה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_i7nvejit/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/pmlnzzoq/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-bf77dbb4-fa5d-4053-8883-93a8a56d536f.jpg?width=480"}, {"id": "vod_kan_13291_ep_113945", "title": "פרק 8 - ספירלה של פרדוקסים", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_cle4pyah/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/pmlnzzoq/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-bf77dbb4-fa5d-4053-8883-93a8a56d536f.jpg?width=480"}, {"id": "vod_kan_13291_ep_87633", "title": "פרק 1 - זוהרה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_0sygkyt2/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/pmlnzzoq/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-bf77dbb4-fa5d-4053-8883-93a8a56d536f.jpg?width=480"}, {"id": "vod_kan_13291_ep_87636", "title": "פרק 2 - עמוס", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_usjmhtkz/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/pmlnzzoq/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-bf77dbb4-fa5d-4053-8883-93a8a56d536f.jpg?width=480"}], "totalEpisodes": 10}, {"id": "vod_kan_13237", "pid": "13237", "title": "אחד על אחד", "originalTitle": "אחד על אחד", "year": "2021-2026", "rating": "8.6", "genres": ["כאן 11", "ישראלי", "דרמה"], "desc": "דרמה מרגשת על מורה פרטי (תומר קאפון) המתמודד עם אובדן, אהבה והתבגרות", "poster": "https://mobapi.kan.org.il/media/cnonh44v/1920_1080_%D7%90%D7%97%D7%93-%D7%A2%D7%9C-%D7%90%D7%97%D7%93_%D7%9C%D7%9C%D7%90-%D7%9C%D7%95%D7%92%D7%95.jpg?width=480", "backdrop": "https://mobapi.kan.org.il/media/cnonh44v/1920_1080_%D7%90%D7%97%D7%93-%D7%A2%D7%9C-%D7%90%D7%97%D7%93_%D7%9C%D7%9C%D7%90-%D7%9C%D7%95%D7%92%D7%95.jpg?width=480", "episodes": [{"id": "vod_kan_13237_ep_855971", "title": "שיעור פרטי שיצא משליטה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_zk00rvkx/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/cnonh44v/1920_1080_%D7%90%D7%97%D7%93-%D7%A2%D7%9C-%D7%90%D7%97%D7%93_%D7%9C%D7%9C%D7%90-%D7%9C%D7%95%D7%92%D7%95.jpg?width=480"}, {"id": "vod_kan_13237_ep_119335", "title": "פרק 1 - אמא חזרה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_dgokcsm7/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/cnonh44v/1920_1080_%D7%90%D7%97%D7%93-%D7%A2%D7%9C-%D7%90%D7%97%D7%93_%D7%9C%D7%9C%D7%90-%D7%9C%D7%95%D7%92%D7%95.jpg?width=480"}, {"id": "vod_kan_13237_ep_119338", "title": "פרק 2 - הפוך קטן", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_3vrmw4lj/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/cnonh44v/1920_1080_%D7%90%D7%97%D7%93-%D7%A2%D7%9C-%D7%90%D7%97%D7%93_%D7%9C%D7%9C%D7%90-%D7%9C%D7%95%D7%92%D7%95.jpg?width=480"}, {"id": "vod_kan_13237_ep_119341", "title": "פרק 3 - שיהיה בהצלחה מוטי", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_fc00ifzm/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/cnonh44v/1920_1080_%D7%90%D7%97%D7%93-%D7%A2%D7%9C-%D7%90%D7%97%D7%93_%D7%9C%D7%9C%D7%90-%D7%9C%D7%95%D7%92%D7%95.jpg?width=480"}, {"id": "vod_kan_13237_ep_119344", "title": "פרק 4 - סלט בורגול", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_qmi1rxs9/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/cnonh44v/1920_1080_%D7%90%D7%97%D7%93-%D7%A2%D7%9C-%D7%90%D7%97%D7%93_%D7%9C%D7%9C%D7%90-%D7%9C%D7%95%D7%92%D7%95.jpg?width=480"}, {"id": "vod_kan_13237_ep_119346", "title": "פרק 5 - בעיות מילוליות", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_m83i66wn/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/cnonh44v/1920_1080_%D7%90%D7%97%D7%93-%D7%A2%D7%9C-%D7%90%D7%97%D7%93_%D7%9C%D7%9C%D7%90-%D7%9C%D7%95%D7%92%D7%95.jpg?width=480"}, {"id": "vod_kan_13237_ep_119349", "title": "פרק 6 - זה 20 מיליון", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_ib8jy5oi/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/cnonh44v/1920_1080_%D7%90%D7%97%D7%93-%D7%A2%D7%9C-%D7%90%D7%97%D7%93_%D7%9C%D7%9C%D7%90-%D7%9C%D7%95%D7%92%D7%95.jpg?width=480"}, {"id": "vod_kan_13237_ep_119352", "title": "פרק 7 - יותר לצחוק", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_cl0l0buj/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/cnonh44v/1920_1080_%D7%90%D7%97%D7%93-%D7%A2%D7%9C-%D7%90%D7%97%D7%93_%D7%9C%D7%9C%D7%90-%D7%9C%D7%95%D7%92%D7%95.jpg?width=480"}, {"id": "vod_kan_13237_ep_119354", "title": "פרק 8 - מין ומזלות", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_03y49m17/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/cnonh44v/1920_1080_%D7%90%D7%97%D7%93-%D7%A2%D7%9C-%D7%90%D7%97%D7%93_%D7%9C%D7%9C%D7%90-%D7%9C%D7%95%D7%92%D7%95.jpg?width=480"}, {"id": "vod_kan_13237_ep_119357", "title": "פרק 9 - נפלנו בבאר שבע", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_r1ehsfy8/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/cnonh44v/1920_1080_%D7%90%D7%97%D7%93-%D7%A2%D7%9C-%D7%90%D7%97%D7%93_%D7%9C%D7%9C%D7%90-%D7%9C%D7%95%D7%92%D7%95.jpg?width=480"}], "totalEpisodes": 10}, {"id": "vod_kan_13157", "pid": "13157", "title": "הלילה הארוך ביותר", "originalTitle": "הלילה הארוך ביותר", "year": "2021-2026", "rating": "8.6", "genres": ["כאן 11", "ישראלי", "דוקו"], "desc": "דוקו דרמה בשני חלקים אודות חטיפת בית הילדים בקיבוץ משגב עם", "poster": "https://mobapi.kan.org.il/media/tvpbg5ab/https-kanstaticazureedgenet-download-pictures-2021-5-18-imgid-53303_aa.jpeg?width=480", "backdrop": "https://mobapi.kan.org.il/media/tvpbg5ab/https-kanstaticazureedgenet-download-pictures-2021-5-18-imgid-53303_aa.jpeg?width=480", "episodes": [{"id": "vod_kan_13157_ep_876130", "title": "בית ילדים", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_we9j9n7x/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/tvpbg5ab/https-kanstaticazureedgenet-download-pictures-2021-5-18-imgid-53303_aa.jpeg?width=480"}, {"id": "vod_kan_13157_ep_129541", "title": "חלק א'", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_w2ja5hy1/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/tvpbg5ab/https-kanstaticazureedgenet-download-pictures-2021-5-18-imgid-53303_aa.jpeg?width=480"}, {"id": "vod_kan_13157_ep_129544", "title": "חלק ב'", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_k73ws06t/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/tvpbg5ab/https-kanstaticazureedgenet-download-pictures-2021-5-18-imgid-53303_aa.jpeg?width=480"}], "totalEpisodes": 3}, {"id": "vod_kan_13835", "pid": "13835", "title": "התסריטאי", "originalTitle": "התסריטאי", "year": "2021-2026", "rating": "8.6", "genres": ["כאן 11", "ישראלי", "דרמה"], "desc": "דרמה המבוססת על חייו של היוצר המוערך סייד קשוע", "poster": "https://mobapi.kan.org.il/media/e0kd4bpq/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-6a061e2a-eac1-4069-99ab-3ad53f369975.jpg?width=480", "backdrop": "https://mobapi.kan.org.il/media/e0kd4bpq/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-6a061e2a-eac1-4069-99ab-3ad53f369975.jpg?width=480", "episodes": [{"id": "vod_kan_13835_ep_78334", "title": "פרק 1", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_p3y1xy2g/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/e0kd4bpq/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-6a061e2a-eac1-4069-99ab-3ad53f369975.jpg?width=480"}, {"id": "vod_kan_13835_ep_78545", "title": "פרק 2", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_1oo0a145/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/e0kd4bpq/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-6a061e2a-eac1-4069-99ab-3ad53f369975.jpg?width=480"}, {"id": "vod_kan_13835_ep_78750", "title": "פרק 3", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_i0ozt56h/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/e0kd4bpq/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-6a061e2a-eac1-4069-99ab-3ad53f369975.jpg?width=480"}, {"id": "vod_kan_13835_ep_79101", "title": "פרק 4", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_r60znafz/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/e0kd4bpq/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-6a061e2a-eac1-4069-99ab-3ad53f369975.jpg?width=480"}, {"id": "vod_kan_13835_ep_79309", "title": "פרק 5", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_qbhx0and/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/e0kd4bpq/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-6a061e2a-eac1-4069-99ab-3ad53f369975.jpg?width=480"}, {"id": "vod_kan_13835_ep_79575", "title": "פרק 6", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_2j36si5d/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/e0kd4bpq/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-6a061e2a-eac1-4069-99ab-3ad53f369975.jpg?width=480"}, {"id": "vod_kan_13835_ep_80092", "title": "פרק 7", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_u35wm3u1/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/e0kd4bpq/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-6a061e2a-eac1-4069-99ab-3ad53f369975.jpg?width=480"}, {"id": "vod_kan_13835_ep_80095", "title": "פרק 8", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_46by27nw/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/e0kd4bpq/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-6a061e2a-eac1-4069-99ab-3ad53f369975.jpg?width=480"}, {"id": "vod_kan_13835_ep_80098", "title": "פרק 9", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_nwkmf59o/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/e0kd4bpq/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-6a061e2a-eac1-4069-99ab-3ad53f369975.jpg?width=480"}, {"id": "vod_kan_13835_ep_80101", "title": "פרק 10", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_odhz69tx/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/e0kd4bpq/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-6a061e2a-eac1-4069-99ab-3ad53f369975.jpg?width=480"}], "totalEpisodes": 10}, {"id": "vod_kan_12845", "pid": "12845", "title": "עלומים", "originalTitle": "עלומים", "year": "2021-2026", "rating": "8.6", "genres": ["כאן 11", "ישראלי", "מתח"], "desc": "דרמת מתח בכיכובם של יהודה לוי, שני כהן, יניב ביטון, אופק פסח ועוד", "poster": "https://mobapi.kan.org.il/media/invji15o/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-0890035c-090f-435f-8e88-a29cd61bffb4.jpg?width=480", "backdrop": "https://mobapi.kan.org.il/media/invji15o/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-0890035c-090f-435f-8e88-a29cd61bffb4.jpg?width=480", "episodes": [{"id": "vod_kan_12845_ep_134627", "title": "פרק 1 - תמיד צריך לתת את הכאפה הראשונה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_avpzqwxi/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/invji15o/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-0890035c-090f-435f-8e88-a29cd61bffb4.jpg?width=480"}, {"id": "vod_kan_12845_ep_134630", "title": "פרק 2 - ילד, חסר לך משהו?", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_1z78mwkr/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/invji15o/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-0890035c-090f-435f-8e88-a29cd61bffb4.jpg?width=480"}, {"id": "vod_kan_12845_ep_134805", "title": "פרק 3 - ראינו \"אלמנות\" עד שש בבוקר", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_2lx0iese/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/invji15o/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-0890035c-090f-435f-8e88-a29cd61bffb4.jpg?width=480"}, {"id": "vod_kan_12845_ep_134807", "title": "פרק 4 - רגוע כמו המוות", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_cdd61q7l/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/invji15o/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-0890035c-090f-435f-8e88-a29cd61bffb4.jpg?width=480"}, {"id": "vod_kan_12845_ep_134809", "title": "פרק 5 - איפה הכלה?", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_a9a9fl0s/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/invji15o/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-0890035c-090f-435f-8e88-a29cd61bffb4.jpg?width=480"}, {"id": "vod_kan_12845_ep_134812", "title": "פרק 6 - חמישים גרם קריסטל", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_7hz3fjv3/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/invji15o/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-0890035c-090f-435f-8e88-a29cd61bffb4.jpg?width=480"}, {"id": "vod_kan_12845_ep_134815", "title": "פרק 7 - מדליק נר לאימא", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_prmxhte9/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/invji15o/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-0890035c-090f-435f-8e88-a29cd61bffb4.jpg?width=480"}, {"id": "vod_kan_12845_ep_134818", "title": "פרק 8 - בכמה הוא קנה אותך אח שלי היקר?", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_ya9vktsc/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/invji15o/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-0890035c-090f-435f-8e88-a29cd61bffb4.jpg?width=480"}, {"id": "vod_kan_12845_ep_134821", "title": "פרק 9 - מכירה אותך כמו את כף היד שלי", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_52hvhhlg/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/invji15o/https-cdnbackstage-apicom-key-backstage-cms-production-uploads-1920x1080-1653bcb0-f2c7-11ec-87e7-b1d975722ca7-assets-images-0890035c-090f-435f-8e88-a29cd61bffb4.jpg?width=480"}], "totalEpisodes": 9}, {"id": "vod_kan_1094066", "pid": "1094066", "title": "החמישיה הקאמרית", "originalTitle": "החמישיה הקאמרית", "year": "2021-2026", "rating": "8.6", "genres": ["כאן 11", "ישראלי", "קומדיה"], "desc": "כל הפרקים של תוכנית הסאטירה המיתולוגית", "poster": "https://mobapi.kan.org.il/media/21wgdvip/1920x1080_no-logo%D7%94%D7%97%D7%9E%D7%99%D7%A9%D7%99%D7%99%D7%94-%D7%94%D7%A7%D7%90%D7%9E%D7%A8%D7%99%D7%AA_.jpg?width=480", "backdrop": "https://mobapi.kan.org.il/media/21wgdvip/1920x1080_no-logo%D7%94%D7%97%D7%9E%D7%99%D7%A9%D7%99%D7%99%D7%94-%D7%94%D7%A7%D7%90%D7%9E%D7%A8%D7%99%D7%AA_.jpg?width=480", "episodes": [{"id": "vod_kan_1094066_ep_1101254", "title": "פרק 1", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2246397/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/21wgdvip/1920x1080_no-logo%D7%94%D7%97%D7%9E%D7%99%D7%A9%D7%99%D7%99%D7%94-%D7%94%D7%A7%D7%90%D7%9E%D7%A8%D7%99%D7%AA_.jpg?width=480"}, {"id": "vod_kan_1094066_ep_1101293", "title": "פרק 3", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2246399/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/21wgdvip/1920x1080_no-logo%D7%94%D7%97%D7%9E%D7%99%D7%A9%D7%99%D7%99%D7%94-%D7%94%D7%A7%D7%90%D7%9E%D7%A8%D7%99%D7%AA_.jpg?width=480"}, {"id": "vod_kan_1094066_ep_1101298", "title": "פרק 5", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2246401/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/21wgdvip/1920x1080_no-logo%D7%94%D7%97%D7%9E%D7%99%D7%A9%D7%99%D7%99%D7%94-%D7%94%D7%A7%D7%90%D7%9E%D7%A8%D7%99%D7%AA_.jpg?width=480"}, {"id": "vod_kan_1094066_ep_1101301", "title": "פרק 7", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2246403/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/21wgdvip/1920x1080_no-logo%D7%94%D7%97%D7%9E%D7%99%D7%A9%D7%99%D7%99%D7%94-%D7%94%D7%A7%D7%90%D7%9E%D7%A8%D7%99%D7%AA_.jpg?width=480"}, {"id": "vod_kan_1094066_ep_1101311", "title": "פרק 8", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2246404/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/21wgdvip/1920x1080_no-logo%D7%94%D7%97%D7%9E%D7%99%D7%A9%D7%99%D7%99%D7%94-%D7%94%D7%A7%D7%90%D7%9E%D7%A8%D7%99%D7%AA_.jpg?width=480"}, {"id": "vod_kan_1094066_ep_1101317", "title": "פרק 9", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2246405/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/21wgdvip/1920x1080_no-logo%D7%94%D7%97%D7%9E%D7%99%D7%A9%D7%99%D7%99%D7%94-%D7%94%D7%A7%D7%90%D7%9E%D7%A8%D7%99%D7%AA_.jpg?width=480"}, {"id": "vod_kan_1094066_ep_1101314", "title": "פרק 10", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2246406/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/21wgdvip/1920x1080_no-logo%D7%94%D7%97%D7%9E%D7%99%D7%A9%D7%99%D7%99%D7%94-%D7%94%D7%A7%D7%90%D7%9E%D7%A8%D7%99%D7%AA_.jpg?width=480"}, {"id": "vod_kan_1094066_ep_1100161", "title": "פרק 11", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2246407/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/21wgdvip/1920x1080_no-logo%D7%94%D7%97%D7%9E%D7%99%D7%A9%D7%99%D7%99%D7%94-%D7%94%D7%A7%D7%90%D7%9E%D7%A8%D7%99%D7%AA_.jpg?width=480"}, {"id": "vod_kan_1094066_ep_1100163", "title": "לקט ראשון", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2246409/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/21wgdvip/1920x1080_no-logo%D7%94%D7%97%D7%9E%D7%99%D7%A9%D7%99%D7%99%D7%94-%D7%94%D7%A7%D7%90%D7%9E%D7%A8%D7%99%D7%AA_.jpg?width=480"}, {"id": "vod_kan_1094066_ep_1100164", "title": "לקט שני", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2246410/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/21wgdvip/1920x1080_no-logo%D7%94%D7%97%D7%9E%D7%99%D7%A9%D7%99%D7%99%D7%94-%D7%94%D7%A7%D7%90%D7%9E%D7%A8%D7%99%D7%AA_.jpg?width=480"}], "totalEpisodes": 10}, {"id": "vod_kan_1071926", "pid": "1071926", "title": "תום יער עושה סטנדאפ", "originalTitle": "תום יער עושה סטנדאפ", "year": "2021-2026", "rating": "8.6", "genres": ["כאן 11", "ישראלי", "דרמה"], "desc": "תום יער פותחת הכל על הזוגיות שנשחקת, בינה מלאכותית ויוקר המחיה", "poster": "https://mobapi.kan.org.il/media/zx2dt5kc/1920x1080_no-logo_%D7%AA%D7%95%D7%9D-%D7%99%D7%A2%D7%A8.jpg?width=480", "backdrop": "https://mobapi.kan.org.il/media/zx2dt5kc/1920x1080_no-logo_%D7%AA%D7%95%D7%9D-%D7%99%D7%A2%D7%A8.jpg?width=480", "episodes": [{"id": "vod_kan_1071926_ep_1073195", "title": "תום יער עושה סטנדאפ", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2222466/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/zx2dt5kc/1920x1080_no-logo_%D7%AA%D7%95%D7%9D-%D7%99%D7%A2%D7%A8.jpg?width=480"}], "totalEpisodes": 1}, {"id": "vod_kan_1084615", "pid": "1084615", "title": "ספיישל סטנדאפ - עידן אלתרמן", "originalTitle": "ספיישל סטנדאפ - עידן אלתרמן", "year": "2021-2026", "rating": "8.6", "genres": ["כאן 11", "ישראלי", "דרמה"], "desc": "הקומיקאי האהוב מספר על התנסויות אחרי הגירושים, ההורים וגם הזיקנה", "poster": "https://mobapi.kan.org.il/media/0qfjvv2c/1920x1080_no-logo_%D7%A2%D7%99%D7%93%D7%9F-%D7%90%D7%9C%D7%AA%D7%A8%D7%9E%D7%9F.jpg?width=480", "backdrop": "https://mobapi.kan.org.il/media/0qfjvv2c/1920x1080_no-logo_%D7%A2%D7%99%D7%93%D7%9F-%D7%90%D7%9C%D7%AA%D7%A8%D7%9E%D7%9F.jpg?width=480", "episodes": [{"id": "vod_kan_1084615_ep_1084618", "title": "עידן אלתרמן - מופע סטנדאפ", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2231640/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/0qfjvv2c/1920x1080_no-logo_%D7%A2%D7%99%D7%93%D7%9F-%D7%90%D7%9C%D7%AA%D7%A8%D7%9E%D7%9F.jpg?width=480"}], "totalEpisodes": 1}, {"id": "vod_kan_1063434", "pid": "1063434", "title": "קופה ראשית - הסרט: מאחורי הקלעים", "originalTitle": "קופה ראשית - הסרט: מאחורי הקלעים", "year": "2021-2026", "rating": "8.6", "genres": ["כאן 11", "ישראלי", "דרמה"], "desc": "הצצה מיוחדת אל מאחורי הקלעים של הסרט, וראיונות עם היוצרים והשחקנים", "poster": "https://mobapi.kan.org.il/media/rphp2ksg/169-no-logo-1920x1080%D7%A7%D7%95%D7%A4%D7%94-%D7%A8%D7%90%D7%A9%D7%99%D7%AA-%D7%94%D7%A1%D7%A8%D7%98_%D7%9E%D7%90%D7%97%D7%95%D7%A8%D7%99-%D7%94%D7%A7%D7%9C%D7%A2%D7%99%D7%9D.jpg?width=480", "backdrop": "https://mobapi.kan.org.il/media/rphp2ksg/169-no-logo-1920x1080%D7%A7%D7%95%D7%A4%D7%94-%D7%A8%D7%90%D7%A9%D7%99%D7%AA-%D7%94%D7%A1%D7%A8%D7%98_%D7%9E%D7%90%D7%97%D7%95%D7%A8%D7%99-%D7%94%D7%A7%D7%9C%D7%A2%D7%99%D7%9D.jpg?width=480", "episodes": [{"id": "vod_kan_1063434_ep_1063435", "title": "קופה ראשית - הסרט: מאחורי הקלעים", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2217037/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/rphp2ksg/169-no-logo-1920x1080%D7%A7%D7%95%D7%A4%D7%94-%D7%A8%D7%90%D7%A9%D7%99%D7%AA-%D7%94%D7%A1%D7%A8%D7%98_%D7%9E%D7%90%D7%97%D7%95%D7%A8%D7%99-%D7%94%D7%A7%D7%9C%D7%A2%D7%99%D7%9D.jpg?width=480"}], "totalEpisodes": 1}, {"id": "vod_kan_1003359", "pid": "1003359", "title": "אלי חביב - בסדר גמור", "originalTitle": "אלי חביב - בסדר גמור", "year": "2021-2026", "rating": "8.6", "genres": ["כאן 11", "ישראלי", "דרמה"], "desc": "ספיישל הסטנדאפ של הקומיקאי עם ההומור הכי אינטליגנטי, מושחז ורגיש", "poster": "https://mobapi.kan.org.il/media/rdkoffvu/1920x1080_no-logo_%D7%90%D7%9C%D7%99-%D7%97%D7%91%D7%99%D7%91.jpg?width=480", "backdrop": "https://mobapi.kan.org.il/media/rdkoffvu/1920x1080_no-logo_%D7%90%D7%9C%D7%99-%D7%97%D7%91%D7%99%D7%91.jpg?width=480", "episodes": [{"id": "vod_kan_1003359_ep_1003373", "title": "אלי חביב - בסדר גמור", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2171294/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/rdkoffvu/1920x1080_no-logo_%D7%90%D7%9C%D7%99-%D7%97%D7%91%D7%99%D7%91.jpg?width=480"}], "totalEpisodes": 1}, {"id": "vod_kan_783056", "pid": "783056", "title": "מי זאת?", "originalTitle": "מי זאת?", "year": "2021-2026", "rating": "8.6", "genres": ["כאן 11", "ישראלי", "דרמה"], "desc": "תוכנית מערכונים לא שגרתית, על נשיות במלוא הדרה", "poster": "https://mobapi.kan.org.il/media/zwjjnb4g/1920x1080_no-logo_%D7%9E%D7%99-%D7%96%D7%90%D7%AA_%D7%A2%D7%95%D7%A0%D7%942.jpg?width=480", "backdrop": "https://mobapi.kan.org.il/media/zwjjnb4g/1920x1080_no-logo_%D7%9E%D7%99-%D7%96%D7%90%D7%AA_%D7%A2%D7%95%D7%A0%D7%942.jpg?width=480", "episodes": [{"id": "vod_kan_783056_ep_988984", "title": "פרק 1 - לא עוזבים קוסמטיקאית", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2105341/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/zwjjnb4g/1920x1080_no-logo_%D7%9E%D7%99-%D7%96%D7%90%D7%AA_%D7%A2%D7%95%D7%A0%D7%942.jpg?width=480"}, {"id": "vod_kan_783056_ep_988985", "title": "פרק 2 - הגבר הסבבה האחרון", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2064355/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/zwjjnb4g/1920x1080_no-logo_%D7%9E%D7%99-%D7%96%D7%90%D7%AA_%D7%A2%D7%95%D7%A0%D7%942.jpg?width=480"}, {"id": "vod_kan_783056_ep_993436", "title": "פרק  3 - אקס מטריד", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2125612/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/zwjjnb4g/1920x1080_no-logo_%D7%9E%D7%99-%D7%96%D7%90%D7%AA_%D7%A2%D7%95%D7%A0%D7%942.jpg?width=480"}, {"id": "vod_kan_783056_ep_993445", "title": "פרק 4 - תשוקה בקופסה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2125643/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/zwjjnb4g/1920x1080_no-logo_%D7%9E%D7%99-%D7%96%D7%90%D7%AA_%D7%A2%D7%95%D7%A0%D7%942.jpg?width=480"}, {"id": "vod_kan_783056_ep_998343", "title": "פרק 5 - בפרקים הקודמים", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2166225/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/zwjjnb4g/1920x1080_no-logo_%D7%9E%D7%99-%D7%96%D7%90%D7%AA_%D7%A2%D7%95%D7%A0%D7%942.jpg?width=480"}, {"id": "vod_kan_783056_ep_997742", "title": "פרק 6 - בחדר עם חני", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2165547/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/zwjjnb4g/1920x1080_no-logo_%D7%9E%D7%99-%D7%96%D7%90%D7%AA_%D7%A2%D7%95%D7%A0%D7%942.jpg?width=480"}, {"id": "vod_kan_783056_ep_997744", "title": "פרק 7 - אוכלת סרט", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2165548/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/zwjjnb4g/1920x1080_no-logo_%D7%9E%D7%99-%D7%96%D7%90%D7%AA_%D7%A2%D7%95%D7%A0%D7%942.jpg?width=480"}, {"id": "vod_kan_783056_ep_1020891", "title": "פרק 8 - קשה לומר שלום", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2183633/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/zwjjnb4g/1920x1080_no-logo_%D7%9E%D7%99-%D7%96%D7%90%D7%AA_%D7%A2%D7%95%D7%A0%D7%942.jpg?width=480"}, {"id": "vod_kan_783056_ep_1000408", "title": "פרק 9 - אמא יודעת הכי טוב", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2168319/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/zwjjnb4g/1920x1080_no-logo_%D7%9E%D7%99-%D7%96%D7%90%D7%AA_%D7%A2%D7%95%D7%A0%D7%942.jpg?width=480"}, {"id": "vod_kan_783056_ep_1023661", "title": "פרק 10 - רק בנות", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/2185793/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/zwjjnb4g/1920x1080_no-logo_%D7%9E%D7%99-%D7%96%D7%90%D7%AA_%D7%A2%D7%95%D7%A0%D7%942.jpg?width=480"}], "totalEpisodes": 10}, {"id": "vod_kan_969367", "pid": "969367", "title": "יקומות", "originalTitle": "יקומות", "year": "2021-2026", "rating": "8.6", "genres": ["כאן 11", "ישראלי", "דרמה"], "desc": "בין שפיות לנונסנס, גבוה לנמוך, חכם למטומטם", "poster": "https://mobapi.kan.org.il/media/4andmnaq/1920x1080_no-logo-%D7%99%D7%A7%D7%95%D7%9E%D7%95%D7%AA_2.jpg?width=480", "backdrop": "https://mobapi.kan.org.il/media/4andmnaq/1920x1080_no-logo-%D7%99%D7%A7%D7%95%D7%9E%D7%95%D7%AA_2.jpg?width=480", "episodes": [{"id": "vod_kan_969367_ep_969372", "title": "פרק 1 - שרה ואהרון", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1903704/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/4andmnaq/1920x1080_no-logo-%D7%99%D7%A7%D7%95%D7%9E%D7%95%D7%AA_2.jpg?width=480"}, {"id": "vod_kan_969367_ep_969388", "title": "פרק 2 - אזכרה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1903705/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/4andmnaq/1920x1080_no-logo-%D7%99%D7%A7%D7%95%D7%9E%D7%95%D7%AA_2.jpg?width=480"}, {"id": "vod_kan_969367_ep_969712", "title": "פרק 3 - אהבה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1953519/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/4andmnaq/1920x1080_no-logo-%D7%99%D7%A7%D7%95%D7%9E%D7%95%D7%AA_2.jpg?width=480"}, {"id": "vod_kan_969367_ep_969391", "title": "פרק 4 - אבוקסיטה - חלק א'", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1978671/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/4andmnaq/1920x1080_no-logo-%D7%99%D7%A7%D7%95%D7%9E%D7%95%D7%AA_2.jpg?width=480"}, {"id": "vod_kan_969367_ep_969395", "title": "פרק 5 - אבוקסיטה - חלק ב'", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1978727/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/4andmnaq/1920x1080_no-logo-%D7%99%D7%A7%D7%95%D7%9E%D7%95%D7%AA_2.jpg?width=480"}, {"id": "vod_kan_969367_ep_969708", "title": "פרק 6 - שקרנים", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1981756/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/4andmnaq/1920x1080_no-logo-%D7%99%D7%A7%D7%95%D7%9E%D7%95%D7%AA_2.jpg?width=480"}, {"id": "vod_kan_969367_ep_970347", "title": "פרק 7 - סקאווט-מן חלק א׳", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1981847/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/4andmnaq/1920x1080_no-logo-%D7%99%D7%A7%D7%95%D7%9E%D7%95%D7%AA_2.jpg?width=480"}, {"id": "vod_kan_969367_ep_970350", "title": "פרק 8 - סקאווט-מן חלק ב׳", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1981792/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/4andmnaq/1920x1080_no-logo-%D7%99%D7%A7%D7%95%D7%9E%D7%95%D7%AA_2.jpg?width=480"}], "totalEpisodes": 8}, {"id": "vod_kan_441828", "pid": "441828", "title": "מועדון הסטנד-אפ", "originalTitle": "מועדון הסטנד-אפ", "year": "2021-2026", "rating": "8.6", "genres": ["כאן 11", "ישראלי", "דרמה"], "desc": "תוכנית בידור קומית שמשלבת סטנד-אפ עם מערכונים", "poster": "https://mobapi.kan.org.il/media/iqvhgxlt/2_clean-cover-image_1920x1080_no-logo_%D7%9E%D7%95%D7%A2%D7%93%D7%95%D7%9F-%D7%94%D7%A1%D7%98%D7%A0%D7%93%D7%90%D7%A4_%D7%92%D7%95%D7%A8%D7%99.jpg?width=480", "backdrop": "https://mobapi.kan.org.il/media/iqvhgxlt/2_clean-cover-image_1920x1080_no-logo_%D7%9E%D7%95%D7%A2%D7%93%D7%95%D7%9F-%D7%94%D7%A1%D7%98%D7%A0%D7%93%D7%90%D7%A4_%D7%92%D7%95%D7%A8%D7%99.jpg?width=480", "episodes": [{"id": "vod_kan_441828_ep_800663", "title": "פרק 1 - פרצוף בעייתי, ערומים בקאנטרי וזיווג הגון", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_9kbbdn1q/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/iqvhgxlt/2_clean-cover-image_1920x1080_no-logo_%D7%9E%D7%95%D7%A2%D7%93%D7%95%D7%9F-%D7%94%D7%A1%D7%98%D7%A0%D7%93%D7%90%D7%A4_%D7%92%D7%95%D7%A8%D7%99.jpg?width=480"}, {"id": "vod_kan_441828_ep_800664", "title": "פרק 2 - גרוזינים, לסביות ובנות שמעשנות וויד", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_mih5ofiy/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/iqvhgxlt/2_clean-cover-image_1920x1080_no-logo_%D7%9E%D7%95%D7%A2%D7%93%D7%95%D7%9F-%D7%94%D7%A1%D7%98%D7%A0%D7%93%D7%90%D7%A4_%D7%92%D7%95%D7%A8%D7%99.jpg?width=480"}, {"id": "vod_kan_441828_ep_800666", "title": "פרק 3 - שד רוסי, מוכר פרסי וקרחת", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_b3sbzy5h/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/iqvhgxlt/2_clean-cover-image_1920x1080_no-logo_%D7%9E%D7%95%D7%A2%D7%93%D7%95%D7%9F-%D7%94%D7%A1%D7%98%D7%A0%D7%93%D7%90%D7%A4_%D7%92%D7%95%D7%A8%D7%99.jpg?width=480"}, {"id": "vod_kan_441828_ep_800667", "title": "פרק 4 - תאילנד, פייסבוק וקרנף", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_sfvi4oif/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/iqvhgxlt/2_clean-cover-image_1920x1080_no-logo_%D7%9E%D7%95%D7%A2%D7%93%D7%95%D7%9F-%D7%94%D7%A1%D7%98%D7%A0%D7%93%D7%90%D7%A4_%D7%92%D7%95%D7%A8%D7%99.jpg?width=480"}, {"id": "vod_kan_441828_ep_812124", "title": "פרק 5 - ליבידו, אמא והשוטר צורי", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_g0faxoav/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/iqvhgxlt/2_clean-cover-image_1920x1080_no-logo_%D7%9E%D7%95%D7%A2%D7%93%D7%95%D7%9F-%D7%94%D7%A1%D7%98%D7%A0%D7%93%D7%90%D7%A4_%D7%92%D7%95%D7%A8%D7%99.jpg?width=480"}, {"id": "vod_kan_441828_ep_812125", "title": "פרק 6 - נערה מתבגרת, חברה עשירה ואבי קושניר", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_e1cnkjn4/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/iqvhgxlt/2_clean-cover-image_1920x1080_no-logo_%D7%9E%D7%95%D7%A2%D7%93%D7%95%D7%9F-%D7%94%D7%A1%D7%98%D7%A0%D7%93%D7%90%D7%A4_%D7%92%D7%95%D7%A8%D7%99.jpg?width=480"}, {"id": "vod_kan_441828_ep_812146", "title": "פרק 7 - כלב, בופה ואמא שלך", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_0ikc3lko/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/iqvhgxlt/2_clean-cover-image_1920x1080_no-logo_%D7%9E%D7%95%D7%A2%D7%93%D7%95%D7%9F-%D7%94%D7%A1%D7%98%D7%A0%D7%93%D7%90%D7%A4_%D7%92%D7%95%D7%A8%D7%99.jpg?width=480"}, {"id": "vod_kan_441828_ep_812147", "title": "פרק 8 - משלוחים, אודישן ולילילי לולולו", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_cpvr4znf/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/iqvhgxlt/2_clean-cover-image_1920x1080_no-logo_%D7%9E%D7%95%D7%A2%D7%93%D7%95%D7%9F-%D7%94%D7%A1%D7%98%D7%A0%D7%93%D7%90%D7%A4_%D7%92%D7%95%D7%A8%D7%99.jpg?width=480"}, {"id": "vod_kan_441828_ep_812149", "title": "פרק 9 - אינסטגרם, יוגה ופוליטיקלי קורקט", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_7ji62j8u/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/iqvhgxlt/2_clean-cover-image_1920x1080_no-logo_%D7%9E%D7%95%D7%A2%D7%93%D7%95%D7%9F-%D7%94%D7%A1%D7%98%D7%A0%D7%93%D7%90%D7%A4_%D7%92%D7%95%D7%A8%D7%99.jpg?width=480"}, {"id": "vod_kan_441828_ep_812151", "title": "פרק 10 - טסט, פיקניק ודילר", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1_3nvxi4dx/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/iqvhgxlt/2_clean-cover-image_1920x1080_no-logo_%D7%9E%D7%95%D7%A2%D7%93%D7%95%D7%9F-%D7%94%D7%A1%D7%98%D7%A0%D7%93%D7%90%D7%A4_%D7%92%D7%95%D7%A8%D7%99.jpg?width=480"}], "totalEpisodes": 10}, {"id": "vod_kan_12955", "pid": "12955", "title": "סיפורים מהכורסה", "originalTitle": "סיפורים מהכורסה", "year": "2021-2026", "rating": "8.6", "genres": ["כאן 11", "ישראלי", "קומדיה"], "desc": "הקומיקאים האהובים בישראל יושבים על ספה ומשתפים בחוויות המצחיקות בחייהם", "poster": "https://mobapi.kan.org.il/media/fibnr1ns/1920x1080_no-logo_%D7%A1%D7%99%D7%A4%D7%95%D7%A8%D7%99%D7%9D-%D7%9E%D7%94%D7%9B%D7%95%D7%A8%D7%A1%D7%945.jpg?width=480", "backdrop": "https://mobapi.kan.org.il/media/fibnr1ns/1920x1080_no-logo_%D7%A1%D7%99%D7%A4%D7%95%D7%A8%D7%99%D7%9D-%D7%9E%D7%94%D7%9B%D7%95%D7%A8%D7%A1%D7%945.jpg?width=480", "episodes": [{"id": "vod_kan_12955_ep_967893", "title": "פרק 1 - אופנה וטרנדים", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1903221/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/fibnr1ns/1920x1080_no-logo_%D7%A1%D7%99%D7%A4%D7%95%D7%A8%D7%99%D7%9D-%D7%9E%D7%94%D7%9B%D7%95%D7%A8%D7%A1%D7%945.jpg?width=480"}, {"id": "vod_kan_12955_ep_967894", "title": "פרק 2 - בתיאבון", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1907019/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/fibnr1ns/1920x1080_no-logo_%D7%A1%D7%99%D7%A4%D7%95%D7%A8%D7%99%D7%9D-%D7%9E%D7%94%D7%9B%D7%95%D7%A8%D7%A1%D7%945.jpg?width=480"}, {"id": "vod_kan_12955_ep_967895", "title": "פרק 3 - ספורט", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1907052/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/fibnr1ns/1920x1080_no-logo_%D7%A1%D7%99%D7%A4%D7%95%D7%A8%D7%99%D7%9D-%D7%9E%D7%94%D7%9B%D7%95%D7%A8%D7%A1%D7%945.jpg?width=480"}, {"id": "vod_kan_12955_ep_967896", "title": "פרק 4 - השכונה שלי", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1907053/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/fibnr1ns/1920x1080_no-logo_%D7%A1%D7%99%D7%A4%D7%95%D7%A8%D7%99%D7%9D-%D7%9E%D7%94%D7%9B%D7%95%D7%A8%D7%A1%D7%945.jpg?width=480"}, {"id": "vod_kan_12955_ep_967898", "title": "פרק 5 - אני מול הטבע", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1952000/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/fibnr1ns/1920x1080_no-logo_%D7%A1%D7%99%D7%A4%D7%95%D7%A8%D7%99%D7%9D-%D7%9E%D7%94%D7%9B%D7%95%D7%A8%D7%A1%D7%945.jpg?width=480"}, {"id": "vod_kan_12955_ep_967899", "title": "פרק 6 - חידושים והמצאות", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1923588/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/fibnr1ns/1920x1080_no-logo_%D7%A1%D7%99%D7%A4%D7%95%D7%A8%D7%99%D7%9D-%D7%9E%D7%94%D7%9B%D7%95%D7%A8%D7%A1%D7%945.jpg?width=480"}, {"id": "vod_kan_12955_ep_967902", "title": "פרק 7 - קורונה", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1949531/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/fibnr1ns/1920x1080_no-logo_%D7%A1%D7%99%D7%A4%D7%95%D7%A8%D7%99%D7%9D-%D7%9E%D7%94%D7%9B%D7%95%D7%A8%D7%A1%D7%945.jpg?width=480"}, {"id": "vod_kan_12955_ep_967904", "title": "פרק 8 -  אהבה וזוגיות", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1913846/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/fibnr1ns/1920x1080_no-logo_%D7%A1%D7%99%D7%A4%D7%95%D7%A8%D7%99%D7%9D-%D7%9E%D7%94%D7%9B%D7%95%D7%A8%D7%A1%D7%945.jpg?width=480"}, {"id": "vod_kan_12955_ep_967906", "title": "פרק 9 - הורות", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1949532/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/fibnr1ns/1920x1080_no-logo_%D7%A1%D7%99%D7%A4%D7%95%D7%A8%D7%99%D7%9D-%D7%9E%D7%94%D7%9B%D7%95%D7%A8%D7%A1%D7%945.jpg?width=480"}, {"id": "vod_kan_12955_ep_967909", "title": "פרק 10 - טעויות", "duration": "פרק מלא", "url": "https://r.il.cdn-redge.media/webcache/gorigin/hls/oil/kancdn/vod/1978586/LIBCODER_SMOOTH_1080_KAN/Manifest.ism/playlist.m3u8?fmp4", "thumb": "https://mobapi.kan.org.il/media/fibnr1ns/1920x1080_no-logo_%D7%A1%D7%99%D7%A4%D7%95%D7%A8%D7%99%D7%9D-%D7%9E%D7%94%D7%9B%D7%95%D7%A8%D7%A1%D7%945.jpg?width=480"}], "totalEpisodes": 10}];

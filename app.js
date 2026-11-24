@@ -3936,6 +3936,132 @@
     }
   }
 
+  // ==================== SPECIAL OPTIONS (v4.8.93) ====================
+
+  // 6. Live Sports Scoreboard HUD (ESPN Public JSON API)
+  var sportsBoardEnabled = false;
+  var sportsBoardTimer = null;
+
+  function updateSportsScoreboardDom() {
+    var box = document.getElementById('sports-scoreboard-hud');
+    if (!sportsBoardEnabled) {
+      if (box) box.style.display = 'none';
+      if (sportsBoardTimer) { clearInterval(sportsBoardTimer); sportsBoardTimer = null; }
+      return;
+    }
+    if (!box && el.player) {
+      box = document.createElement('div');
+      box.id = 'sports-scoreboard-hud';
+      el.player.appendChild(box);
+    }
+    if (box) {
+      box.style.display = 'block';
+      if (!box.innerHTML) box.innerHTML = '<div class="sb-title">⚽ לוח תוצאות ספורט חי</div><div class="sb-empty">טוען משחקים חיים...</div>';
+    }
+    var refresh = function () {
+      try {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'https://site.api.espn.com/apis/site/v2/sports/soccer/all/scoreboard', true);
+        xhr.timeout = 7000;
+        xhr.onload = function () {
+          if (xhr.status !== 200 || !box) return;
+          try {
+            var d = JSON.parse(xhr.responseText);
+            var evs = (d && d.events) ? d.events.slice(0, 6) : [];
+            if (!evs.length) {
+              box.innerHTML = '<div class="sb-title">⚽ לוח תוצאות ספורט חי</div><div class="sb-empty">אין משחקים פעילים כרגע</div>';
+              return;
+            }
+            var rows = evs.map(function (ev) {
+              var comp = ev.competitions && ev.competitions[0];
+              var cs = comp && comp.competitors ? comp.competitors : [];
+              if (cs.length < 2) return '';
+              var t0 = (cs[0].team && (cs[0].team.abbreviation || cs[0].team.shortDisplayName)) || '';
+              var t1 = (cs[1].team && (cs[1].team.abbreviation || cs[1].team.shortDisplayName)) || '';
+              var sc = (cs[0].score || '0') + ':' + (cs[1].score || '0');
+              var st = (ev.status && ev.status.type && ev.status.type.shortDetail) ? ev.status.type.shortDetail : '';
+              return '<div class="sb-row"><span class="sb-teams">' + t0 + ' - ' + t1 + '</span><b class="sb-score">' + sc + '</b><span class="sb-st">' + st + '</span></div>';
+            }).join('');
+            box.innerHTML = '<div class="sb-title">⚽ לוח תוצאות ספורט חי</div>' + rows;
+          } catch (e) { }
+        };
+        xhr.send();
+      } catch (e) { }
+    };
+    refresh();
+    if (!sportsBoardTimer) sportsBoardTimer = setInterval(refresh, 60000);
+  }
+
+  function toggleSportsScoreboard() {
+    sportsBoardEnabled = !sportsBoardEnabled;
+    updateSportsScoreboardDom();
+    toast(sportsBoardEnabled ? '⚽ לוח תוצאות ספורט חי הופעל!' : '⚽ לוח תוצאות ספורט הוסתר');
+  }
+
+  // 7. Live VAR Super-Zoom (1x / 1.5x / 2x / 2.5x)
+  var varZoomLevels = [1, 1.5, 2, 2.5];
+  var varZoomIdx = 0;
+
+  function cycleVarZoom() {
+    varZoomIdx = (varZoomIdx + 1) % varZoomLevels.length;
+    var z = varZoomLevels[varZoomIdx];
+    if (el.video) {
+      el.video.style.transform = z > 1 ? ('scale(' + z + ')') : '';
+      el.video.style.transformOrigin = 'center center';
+    }
+    toast(z > 1 ? ('🔍 זום שידור חי (VAR): ' + z + 'x') : '🔍 זום שידור: רגיל (1x)');
+  }
+
+  // 8. Hands-Free Channel Auto-Tour / Scanner (every 12s)
+  var autoTourTimer = null;
+
+  function toggleAutoTour() {
+    if (autoTourTimer) {
+      clearInterval(autoTourTimer);
+      autoTourTimer = null;
+      toast('⚡ סיור ערוצים אוטומטי הופסק');
+      return;
+    }
+    toast('⚡ סיור ערוצים אוטומטי הופעל (עובר ערוץ כל 12 שניות)');
+    autoTourTimer = setInterval(function () {
+      if (state.overlay !== 'player') {
+        clearInterval(autoTourTimer);
+        autoTourTimer = null;
+        return;
+      }
+      zap(1);
+    }, 12000);
+  }
+
+  // 9. Deep Night Extra-Dimmer (0% / 35% / 55% / 75%)
+  var nightDimLevels = [0, 0.35, 0.55, 0.75];
+  var nightDimIdx = 0;
+
+  function updateNightDimDom() {
+    var veil = document.getElementById('night-dimmer-veil');
+    var lvl = nightDimLevels[nightDimIdx];
+    if (lvl <= 0) {
+      if (veil) veil.style.display = 'none';
+      return;
+    }
+    if (!veil && el.player) {
+      veil = document.createElement('div');
+      veil.id = 'night-dimmer-veil';
+      el.player.appendChild(veil);
+    }
+    if (veil) {
+      veil.style.background = 'rgba(0,0,0,' + lvl + ')';
+      veil.style.display = 'block';
+    }
+  }
+
+  function cycleNightDimmer() {
+    nightDimIdx = (nightDimIdx + 1) % nightDimLevels.length;
+    var lvl = nightDimLevels[nightDimIdx];
+    updateNightDimDom();
+    toast(lvl > 0 ? ('🌑 עמעום לילה עמוק: ' + Math.round(lvl * 100) + '%') : '🌑 עמעום לילה כבוי');
+  }
+
   function setAudioBoost(lvl) {
     audioBoostLevel = lvl;
     initAudioBoost();
@@ -4373,6 +4499,8 @@
     updateRetroCrtDom();
     updateNewsTickerDom();
     updateTelemetryHud();
+    updateSportsScoreboardDom();
+    updateNightDimDom();
     toggleClass(el.obPip, 'hidden', !(native('canPip') || (document.pictureInPictureEnabled && !state.isRadio)));
   }
 
@@ -4381,6 +4509,10 @@
     if (clockEl) clockEl.style.display = 'none';
     var hudEl = document.getElementById('telemetry-hud');
     if (hudEl) hudEl.style.display = 'none';
+    var sbEl = document.getElementById('sports-scoreboard-hud');
+    if (sbEl) sbEl.style.display = 'none';
+    var veilEl = document.getElementById('night-dimmer-veil');
+    if (veilEl) veilEl.style.display = 'none';
     var ntEl = document.getElementById('live-news-ticker');
     if (ntEl) ntEl.style.display = 'none';
     var crtEl = document.getElementById('retro-crt-overlay');
@@ -5817,6 +5949,34 @@
         return r > 0 ? r + ' דק׳' : 'כבוי';
       },
       act: openSleepTimerDialog
+    });
+    items.push({
+      ico: '⚽',
+      label: 'לוח תוצאות כדורגל וספורט חי',
+      stay: true,
+      val: function () { return sportsBoardEnabled ? 'פועל' : 'כבוי'; },
+      act: toggleSportsScoreboard
+    });
+    items.push({
+      ico: '🔍',
+      label: 'זום שידור חי (VAR Super-Zoom)',
+      stay: true,
+      val: function () { return varZoomLevels[varZoomIdx] > 1 ? (varZoomLevels[varZoomIdx] + 'x') : '1x'; },
+      act: cycleVarZoom
+    });
+    items.push({
+      ico: '⚡',
+      label: 'סיור ערוצים אוטומטי (כל 12 שניות)',
+      stay: true,
+      val: function () { return autoTourTimer ? 'פועל' : 'כבוי'; },
+      act: toggleAutoTour
+    });
+    items.push({
+      ico: '🌑',
+      label: 'עמעום לילה עמוק (Extra Dimmer)',
+      stay: true,
+      val: function () { return nightDimLevels[nightDimIdx] > 0 ? (Math.round(nightDimLevels[nightDimIdx] * 100) + '%') : 'כבוי'; },
+      act: cycleNightDimmer
     });
     items.push({
       ico: '📺',
@@ -8624,6 +8784,8 @@
     else if (code === 66) toggleStealthMode();
     else if (code === 73) toggleTelemetryHud();
     else if (code === 78) toggleNewsTicker();
+    else if (code === 83) toggleSportsScoreboard();
+    else if (code === 90) cycleVarZoom();
   }
 
   function drawerKey(code) {

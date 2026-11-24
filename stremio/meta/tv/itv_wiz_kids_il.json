@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_wiz_kids_il",
+    "type": "tv",
+    "name": "59. ערוץ WIZ! לילדים ונוער HD",
+    "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/wiz.png",
+    "posterShape": "landscape",
+    "logo": "https://dor2500.github.io/israel-tv-plus/assets/logos/wiz.png",
+    "background": "https://dor2500.github.io/israel-tv-plus/assets/logos/wiz.png",
+    "description": "ערוץ WIZ! – סדרות מדע, טבע, הרפתקאות וידע מרתק לילדים סקרנים בעברית\n\n📡 מקור השידור: osoyz0xv.ottclub.xyz\n⚠️ ממסר צד שלישי",
+    "genres": [
+      "ילדים ונוער",
+      "ישראל"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "ישראל"
+  }
+}

@@ -230,7 +230,13 @@ private fun buildPlayer(context: Context, handleAudioFocus: Boolean = true): Exo
             }
             override fun open(dataSpec: androidx.media3.datasource.DataSpec): Long {
                 val host = dataSpec.uri.host.orEmpty()
-                active = if (host.contains("2lacasaba", ignoreCase = true) || host.contains("hamalsport", ignoreCase = true)) hamal else base
+                val path = dataSpec.uri.encodedPath.orEmpty()
+                val needsHamalHeaders = host.contains("2lacasaba", ignoreCase = true) ||
+                    host.contains("hamalsport", ignoreCase = true) ||
+                    host.contains("hepbettv", ignoreCase = true) ||
+                    path.contains("/tracks-v1a1/", ignoreCase = true) ||
+                    path.contains("/yessport", ignoreCase = true)
+                active = if (needsHamalHeaders) hamal else base
                 return active.open(dataSpec)
             }
             override fun read(buffer: ByteArray, offset: Int, length: Int): Int = active.read(buffer, offset, length)
@@ -336,6 +342,11 @@ fun PlayerScreen(
     var retroCrtMode by remember { mutableStateOf(false) }
     var newsTickerMode by remember { mutableStateOf(false) }
     var telemetryHudMode by remember { mutableStateOf(false) }
+    var sportsBoardMode by remember { mutableStateOf(false) }
+    var autoTourMode by remember { mutableStateOf(false) }
+    var varZoom by remember { mutableFloatStateOf(1.0f) }
+    var nightDim by remember { mutableFloatStateOf(0.0f) }
+    var touchLockMode by remember { mutableStateOf(false) }
     var stealthMode by remember { mutableStateOf(false) }
     var ambientMode by remember { mutableStateOf(AmbientSoundMode.OFF) }
 
@@ -450,6 +461,18 @@ fun PlayerScreen(
         catchupProgram = null
         sourceIndex = 0
         touchTick++
+    }
+
+    LaunchedEffect(autoTourMode, list.size) {
+        if (!autoTourMode || list.size <= 1) return@LaunchedEffect
+        while (autoTourMode) {
+            delay(12_000)
+            if (autoTourMode) {
+                val nextIdx = (index + 1) % list.size
+                statusToast = "⚡ סיור אוטומטי: ${list[nextIdx].name}"
+                switchTo(nextIdx)
+            }
+        }
     }
 
     // the guide behind the overlay's programme carousel, oldest first
@@ -674,6 +697,7 @@ fun PlayerScreen(
         Box(
             Modifier
                 .fillMaxSize()
+                .graphicsLayer(scaleX = varZoom, scaleY = varZoom)
                 .hazeSource(playerHaze)
         ) {
             if ((settled || inPip) && !multiViewActive) AndroidView(
@@ -700,12 +724,18 @@ fun PlayerScreen(
         Box(
             Modifier.fillMaxSize().pointerInputs(
                 onTap = {
-                    controls = !controls
-                    touchTick++
+                    if (!touchLockMode) {
+                        controls = !controls
+                        touchTick++
+                    } else {
+                        statusToast = "🔒 המסך נעול — הקש על המנעול בפינה לשחרור"
+                    }
                 },
                 onSwipe = { up ->
-                    haptic.performHapticFeedback(HapticFeedbackType.GestureThresholdActivate)
-                    switchTo(if (up) index + 1 else index - 1)
+                    if (!touchLockMode) {
+                        haptic.performHapticFeedback(HapticFeedbackType.GestureThresholdActivate)
+                        switchTo(if (up) index + 1 else index - 1)
+                    }
                 },
             )
         )
@@ -790,7 +820,7 @@ fun PlayerScreen(
 
         // Mobile-only player chrome: clean minimal top bar only (bottom info bar completely removed on mobile)
         AnimatedVisibility(
-            !multiViewActive && controls && error == null && !castController.isCasting && !castController.isConnecting,
+            !touchLockMode && !multiViewActive && controls && error == null && !castController.isCasting && !castController.isConnecting,
             enter = fadeIn(tween(220)),
             exit = fadeOut(tween(320)),
             modifier = Modifier.align(Alignment.TopCenter).fillMaxWidth(),
@@ -902,7 +932,10 @@ fun PlayerScreen(
             }
         }
 
-        // WOW Overlays (Retro 90s CRT, Live Breaking News Ticker, Telemetry HUD, Stealth Mode)
+        // WOW Overlays (Night Dimmer, Retro 90s CRT, Live Breaking News Ticker, Telemetry HUD, Live Sports Scoreboard, Touch Lock, Stealth Mode)
+        if (nightDim > 0f && !inPip) {
+            Box(Modifier.fillMaxSize().background(Color.Black.copy(alpha = nightDim)))
+        }
         if (retroCrtMode && !inPip && !multiViewActive) {
             RetroCrtOverlay(channelLabel = "CH ${(index + 1).toString().padStart(2, '0')}")
         }
@@ -916,6 +949,28 @@ fun PlayerScreen(
                 modifier = Modifier.align(Alignment.TopStart),
             )
         }
+        if (sportsBoardMode && !inPip && !multiViewActive) {
+            LiveSportsScoreboardHud(modifier = Modifier.align(Alignment.TopEnd))
+        }
+        if (touchLockMode && !inPip) {
+            Box(
+                Modifier
+                    .align(Alignment.TopStart)
+                    .windowInsetsPadding(WindowInsets.statusBars)
+                    .padding(14.dp)
+                    .clip(RoundedCornerShape(999.dp))
+                    .background(Color.Black.copy(alpha = 0.68f))
+                    .border(1.dp, Color(0xFFFACC15).copy(alpha = 0.65f), RoundedCornerShape(999.dp))
+                    .clickable {
+                        touchLockMode = false
+                        controls = true
+                        statusToast = "🔓 נעילת המסך שוחררה"
+                    }
+                    .padding(horizontal = 12.dp, vertical = 7.dp),
+            ) {
+                Text("🔒 שחרר נעילה", color = Color(0xFFFACC15), fontSize = 12.sp, fontWeight = FontWeight.Bold)
+            }
+        }
         if (stealthMode) {
             StealthClockOverlay(onDismiss = { stealthMode = false })
         }
@@ -924,6 +979,10 @@ fun PlayerScreen(
                 retroCrt = retroCrtMode,
                 newsTicker = newsTickerMode,
                 telemetryHud = telemetryHudMode,
+                sportsBoard = sportsBoardMode,
+                autoTour = autoTourMode,
+                varZoom = varZoom,
+                nightDim = nightDim,
                 ambientMode = ambientMode,
                 onToggleRetroCrt = {
                     retroCrtMode = !retroCrtMode
@@ -936,6 +995,31 @@ fun PlayerScreen(
                 onToggleTelemetryHud = {
                     telemetryHudMode = !telemetryHudMode
                     statusToast = if (telemetryHudMode) "📊 מד דופק שידור חי הופעל" else "📊 מד דופק הוסתר"
+                },
+                onToggleSportsBoard = {
+                    sportsBoardMode = !sportsBoardMode
+                    statusToast = if (sportsBoardMode) "⚽ לוח תוצאות ספורט חי הופעל" else "⚽ לוח תוצאות הוסתר"
+                },
+                onToggleAutoTour = {
+                    autoTourMode = !autoTourMode
+                    statusToast = if (autoTourMode) "⚡ סיור ערוצים אוטומטי הופעל (כל 12 שניות)" else "⚡ סיור ערוצים עצר"
+                },
+                onCycleVarZoom = {
+                    val levels = listOf(1.0f, 1.5f, 2.0f, 2.5f)
+                    val next = levels[(levels.indexOf(varZoom) + 1) % levels.size]
+                    varZoom = next
+                    statusToast = if (next > 1.05f) "🔍 זום שידור חי: ${next}x" else "🔍 זום שידור: רגיל (1x)"
+                },
+                onCycleNightDim = {
+                    val dims = listOf(0.0f, 0.35f, 0.55f, 0.75f)
+                    val next = dims[(dims.indexOf(nightDim) + 1) % dims.size]
+                    nightDim = next
+                    statusToast = if (next > 0f) "🌑 עמעום לילה: ${(next * 100).toInt()}%" else "🌑 עמעום לילה כבוי"
+                },
+                onActivateTouchLock = {
+                    touchLockMode = true
+                    controls = false
+                    statusToast = "🔒 המסך ננעל למניעת נגיעות"
                 },
                 onCycleAmbient = {
                     ambientMode = ambientMode.next()

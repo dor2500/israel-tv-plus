@@ -30,7 +30,7 @@
       "name": "38. ספורט 1 HD (Sport 1)",
       "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/sport1_israel.png",
       "posterShape": "landscape",
-      "description": "ספורט 1 (צ'רלטון) – ליגת העל הישראלית, הפרמייר ליג האנגלית, גביע המדינה ומשחקים מרכזיים בשידור חי\n\n📡 מקור השידור: 2lacasaba.site\n⚠️ ממסר צד שלישי",
+      "description": "ספורט 1 (צ'רלטון) – ליגת העל הישראלית, הפרמייר ליג האנגלית, גביע המדינה ומשחקים מרכזיים בשידור חי\n\n📡 מקור השידור: osoyz0xv.ottclub.xyz\n⚠️ ממסר צד שלישי",
       "genres": [
         "ספורט",
         "ישראל"
@@ -42,7 +42,7 @@
       "name": "39. ספורט 2 HD (Sport 2)",
       "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/sport2_israel.png",
       "posterShape": "landscape",
-      "description": "ספורט 2 (צ'רלטון) – שידורים ישירים מהליגה האנגלית, הליגה האיטלקית, בונדסליגה, ליגה אירופית וטניס\n\n📡 מקור השידור: 2lacasaba.site\n⚠️ ממסר צד שלישי",
+      "description": "ספורט 2 (צ'רלטון) – שידורים ישירים מהליגה האנגלית, הליגה האיטלקית, בונדסליגה, ליגה אירופית וטניס\n\n📡 מקור השידור: osoyz0xv.ottclub.xyz\n⚠️ ממסר צד שלישי",
       "genres": [
         "ספורט",
         "ישראל"
@@ -54,7 +54,7 @@
       "name": "40. ספורט 3 HD (Sport 3)",
       "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/sport3_israel.png",
       "posterShape": "landscape",
-      "description": "ספורט 3 (צ'רלטון) – כדורגל ישראלי ואירופי, כדורסל, אולפנים חיים ואירועי ספורט בינלאומיים\n\n📡 מקור השידור: 2lacasaba.site\n⚠️ ממסר צד שלישי",
+      "description": "ספורט 3 (צ'רלטון) – כדורגל ישראלי ואירופי, כדורסל, אולפנים חיים ואירועי ספורט בינלאומיים\n\n📡 מקור השידור: osoyz0xv.ottclub.xyz\n⚠️ ממסר צד שלישי",
       "genres": [
         "ספורט",
         "ישראל"
@@ -66,7 +66,7 @@
       "name": "41. ספורט 4 FHD (Sport 4)",
       "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/sport4_israel.png",
       "posterShape": "landscape",
-      "description": "ספורט 4 FHD (צ'רלטון) – שידורים חיים באיכות FHD מליגת העל, הפרמייר ליג ומפעלי אופ\"א\n\n📡 מקור השידור: 2lacasaba.site\n⚠️ ממסר צד שלישי",
+      "description": "ספורט 4 FHD (צ'רלטון) – שידורים חיים באיכות FHD מליגת העל, הפרמייר ליג ומפעלי אופ\"א\n\n📡 מקור השידור: osoyz0xv.ottclub.xyz\n⚠️ ממסר צד שלישי",
       "genres": [
         "ספורט",
         "ישראל"
@@ -145,6 +145,18 @@
       ]
     },
     {
+      "id": "itv_sport5_4k_uhd",
+      "type": "tv",
+      "name": "106. ספורט 5 4K UHD",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/sport5.png",
+      "posterShape": "landscape",
+      "description": "שידורי ספורט ישירים בטכנולוגיית 4K Ultra HD ו-FHD H.264 מלא: ליגת האלופות, ליגת העל בכדורגל, מכבי תל אביב ביורוליג והמשחקים המרכזיים בחדות שיא עם גיבוי FHD אוטומטי.\n\n📡 מקור השידור: osoyz0xv.ottclub.xyz\n⚠️ ממסר צד שלישי",
+      "genres": [
+        "ספורט",
+        "ישראל"
+      ]
+    },
+    {
       "id": "itv_one_1_hd",
       "type": "tv",
       "name": "107. ערוץ ONE 1 FHD",
@@ -169,6 +181,18 @@
       ]
     },
     {
+      "id": "itv_one_doco_hd",
+      "type": "tv",
+      "name": "109. ערוץ ONE דוקו HD (ONE DOCO)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/one_doco_hd.png",
+      "posterShape": "landscape",
+      "description": "ערוץ ONE DOCO – סרטים דוקומנטריים וסיפורים מרתקים מעולם הכדורגל והספורט\n\n📡 מקור השידור: osoyz0xv.ottclub.xyz\n⚠️ ממסר צד שלישי",
+      "genres": [
+        "ספורט",
+        "ישראל"
+      ]
+    },
+    {
       "id": "itv_one_edge_hd",
       "type": "tv",
       "name": "110. ערוץ ONE Edge HD (אדג' ספורט)",
@@ -187,6 +211,18 @@
       "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/sport5_live.png",
       "posterShape": "landscape",
       "description": "השידור החי החינמי מאתר ספורט 5 (sport5.co.il) – משדר בזמן משחקים ושידורים חיים באתר; בין השידורים המסך שחור\n\n📡 מקור השידור: ספורט 5 – השידור הרשמי של RGE (Akamai)\n✅ שידור רשמי ישיר",
+      "genres": [
+        "ספורט",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_sport6_israel",
+      "type": "tv",
+      "name": "511. ספורט 6 HD (Sport 6)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/sport6_israel.png",
+      "posterShape": "landscape",
+      "description": "ערוץ ספורט 6 מבית צ'רלטון – שידורים חיים של טניס, פאדל, כדורגל עולמי וספורט בינלאומי ב-HD\n\n📡 מקור השידור: osoyz0xv.ottclub.xyz\n⚠️ ממסר צד שלישי",
       "genres": [
         "ספורט",
         "ישראל"

@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_health_channel_il",
+    "type": "tv",
+    "name": "21. ערוץ הבריאות HD",
+    "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/health_channel_il.png",
+    "posterShape": "landscape",
+    "logo": "https://dor2500.github.io/israel-tv-plus/assets/logos/health_channel_il.png",
+    "background": "https://dor2500.github.io/israel-tv-plus/assets/logos/health_channel_il.png",
+    "description": "ערוץ הבריאות – רפואה, תזונה נכונה, כושר גופני ואיכות חיים\n\n📡 מקור השידור: osoyz0xv.ottclub.xyz\n⚠️ ממסר צד שלישי",
+    "genres": [
+      "ערוצי ישראל - שידור חי",
+      "ישראל"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "ישראל"
+  }
+}

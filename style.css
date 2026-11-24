@@ -4570,3 +4570,63 @@ body.phone #live-clock-badge {
   font-size: 1.2rem;
   color: rgba(255, 255, 255, 0.32);
 }
+
+/* 5. Live Sports Scoreboard HUD & Night Dimmer (v4.8.93) */
+#sports-scoreboard-hud {
+  position: fixed;
+  top: 68px;
+  right: 24px;
+  z-index: 46;
+  width: 265px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: rgba(7, 16, 30, 0.84);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(34, 197, 94, 0.45);
+  color: #f8fafc;
+  direction: rtl;
+  pointer-events: none;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.5);
+}
+#sports-scoreboard-hud .sb-title {
+  color: #4ade80;
+  font-weight: 800;
+  font-size: 1.08rem;
+  margin-bottom: 6px;
+  border-bottom: 1px solid rgba(74, 222, 128, 0.22);
+  padding-bottom: 4px;
+}
+#sports-scoreboard-hud .sb-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 3px 0;
+  font-size: 0.98rem;
+}
+#sports-scoreboard-hud .sb-teams {
+  flex: 1;
+  font-weight: 600;
+  direction: ltr;
+  text-align: left;
+}
+#sports-scoreboard-hud .sb-score {
+  color: #facc15;
+  font-family: monospace;
+  font-size: 1.05rem;
+}
+#sports-scoreboard-hud .sb-st {
+  color: #94a3b8;
+  font-size: 0.85rem;
+}
+#sports-scoreboard-hud .sb-empty {
+  color: #94a3b8;
+  font-size: 0.95rem;
+}
+#night-dimmer-veil {
+  position: fixed;
+  inset: 0;
+  z-index: 41;
+  pointer-events: none;
+}

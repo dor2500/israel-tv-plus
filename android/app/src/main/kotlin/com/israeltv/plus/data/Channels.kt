@@ -138,14 +138,16 @@ suspend fun playableUrl(
                 connectTimeout = 8_000
                 readTimeout = 8_000
                 setRequestProperty("User-Agent", USER_AGENT)
+                setRequestProperty("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8")
+                setRequestProperty("Accept-Language", "he-IL,he;q=0.9,en-US;q=0.8,en;q=0.7")
                 setRequestProperty("Referer", "https://hamalsport.tv/")
                 inputStream.bufferedReader().use { it.readText() }
             }
-            val found = Regex("""<source[^>]+src="([^"]+)"[^>]*type="application/x-mpegURL"""", RegexOption.IGNORE_CASE)
-                .find(html)?.groupValues?.get(1)
-                ?: Regex("""src="(https?://[^"]+(?:m3u8|mono\.css)[^"]*)"""", RegexOption.IGNORE_CASE)
+            val found = Regex("""https?://[^"'\s<>]*2lacasaba\.site/[^"'\s<>]+""", RegexOption.IGNORE_CASE)
+                .find(html)?.value
+                ?: Regex("""<source[^>]+src="(https?://[^"]*2lacasaba[^"]+)"[^>]*>""", RegexOption.IGNORE_CASE)
                     .find(html)?.groupValues?.get(1)
-            found?.replace("mono.css", "index.m3u8")
+            found?.replace("mono.css", "index.m3u8")?.replace("&amp;", "&")
         }.getOrNull()
         val resolved = fresh ?: rawUrl.replace("mono.css", "index.m3u8")
         hamalUrlCache[hamalSlug] = resolved to now

@@ -1,0 +1,13 @@
+{
+  "streams": [
+    {
+      "name": "ישראל TV+\n[FHD ראשי]",
+      "title": "ערוץ הדרמות ההודיות 1 HD\n📡 osoyz0xv.ottclub.xyz\n⚠️ ממסר צד שלישי",
+      "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32134/index.m3u8",
+      "behaviorHints": {
+        "notWebReady": true,
+        "bingeGroup": "itv-live"
+      }
+    }
+  ]
+}

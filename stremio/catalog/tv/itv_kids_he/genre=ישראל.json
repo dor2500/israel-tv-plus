@@ -37,6 +37,18 @@
       ]
     },
     {
+      "id": "itv_hop_kids_israel",
+      "type": "tv",
+      "name": "44. ערוץ הופ! ילדים בעברית HD",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/hop.png",
+      "posterShape": "landscape",
+      "description": "ערוץ הופ! – לגדול בידיים טובות: יובל המבולבל, דוד חיים, מטוסי על, סמי הכבאי ותוכניות לגיל הרך\n\n📡 מקור השידור: osoyz0xv.ottclub.xyz\n⚠️ ממסר צד שלישי",
+      "genres": [
+        "ילדים ונוער",
+        "ישראל"
+      ]
+    },
+    {
       "id": "itv_yalduti_tv",
       "type": "tv",
       "name": "45. ערוץ ילדותי ישראלי HD (FreeTV Yalduti)",
@@ -61,12 +73,84 @@
       ]
     },
     {
+      "id": "itv_luli_tv_il",
+      "type": "tv",
+      "name": "47. ערוץ לולי לפעוטות בעברית HD",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/luli_tv.png",
+      "posterShape": "landscape",
+      "description": "ערוץ לולי – ערוץ ייעודי לפעוטות עד גיל 3 בעברית: שירים ראשונים, צבעים, חיות ומשחקים\n\n📡 מקור השידור: osoyz0xv.ottclub.xyz\n⚠️ ממסר צד שלישי",
+      "genres": [
+        "ילדים ונוער",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_disney_channel_il",
+      "type": "tv",
+      "name": "48. ערוץ דיסני ישראל HD (Disney Channel)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/disney.png",
+      "posterShape": "landscape",
+      "description": "ערוץ דיסני ישראל – החממה, כפולה, המופלאה, פיניאס ופרב וסרטי דיסני בדיבוב וכתוביות בעברית\n\n📡 מקור השידור: osoyz0xv.ottclub.xyz\n⚠️ ממסר צד שלישי",
+      "genres": [
+        "ילדים ונוער",
+        "ישראל"
+      ]
+    },
+    {
       "id": "itv_disney_jr_il",
       "type": "tv",
       "name": "49. ערוץ דיסני ג'וניור ישראל HD (Disney Jr.)",
       "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/disney_junior.png",
       "posterShape": "landscape",
       "description": "ערוץ דיסני ג'וניור ישראל – שידור חי ישיר 24/7 ללא לופים\n\n📡 מקור השידור: 88.212.15.50\n⚠️ ממסר צד שלישי",
+      "genres": [
+        "ילדים ונוער",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_nickelodeon_il",
+      "type": "tv",
+      "name": "50. ערוץ ניקלודיאון ישראל HD (Nickelodeon)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/nickelodeon.png",
+      "posterShape": "landscape",
+      "description": "ערוץ ניקלודיאון – בובספוג מכנסמרובע, הרעשנים, אווטאר, צבי הנינג'ה וקומדיות לילדים\n\n📡 מקור השידור: osoyz0xv.ottclub.xyz\n⚠️ ממסר צד שלישי",
+      "genres": [
+        "ילדים ונוער",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_nick_jr_il",
+      "type": "tv",
+      "name": "51. ערוץ ניק ג'וניור ישראל HD (Nick Jr.)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/nick_jr.png",
+      "posterShape": "landscape",
+      "description": "ערוץ ניק ג'וניור ישראל – מפרץ ההרפתקאות (PAW Patrol), דורה, בלייז, פפה פיג ומסעדת החיות בעברית\n\n📡 מקור השידור: osoyz0xv.ottclub.xyz\n⚠️ ממסר צד שלישי",
+      "genres": [
+        "ילדים ונוער",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_teennick_il",
+      "type": "tv",
+      "name": "52. ערוץ טין ניק ישראל HD (TeenNick)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/teennick.png",
+      "posterShape": "landscape",
+      "description": "ערוץ טין ניק ישראל – שכונה, נעלמים, פלמ\"ח, זיגי, סדרות נוער ישראליות ולהיטי נוער מהעולם\n\n📡 מקור השידור: osoyz0xv.ottclub.xyz\n⚠️ ממסר צד שלישי",
+      "genres": [
+        "ילדים ונוער",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_zoom_kids",
+      "type": "tv",
+      "name": "53. ערוץ זום ZOOM ילדים ונוער HD",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/zoom.png",
+      "posterShape": "landscape",
+      "description": "ערוץ ZOOM לילדים ונוער – מועדון החנונים, סדרות אקשן, אנימציה וקומדיה בעברית\n\n📡 מקור השידור: osoyz0xv.ottclub.xyz\n⚠️ ממסר צד שלישי",
       "genres": [
         "ילדים ונוער",
         "ישראל"
@@ -103,6 +187,42 @@
       "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/baby_tv_he.png",
       "posterShape": "landscape",
       "description": "ערוץ בייבי ישראל – תוכניות התפתחות, שירים, צורות וצבעים לתינוקות ופעוטות בעברית 24/7\n\n📡 מקור השידור: FreeTV – השידור הרשמי (AWS CloudFront)\n✅ שידור רשמי ישיר",
+      "genres": [
+        "ילדים ונוער",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_yes_movies_kids_il",
+      "type": "tv",
+      "name": "57. yes קולנוע ילדים FHD (yes Movies Kids)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/yes_cinema_kids.png",
+      "posterShape": "landscape",
+      "description": "ערוץ yes Movies Kids – שוברי קופות מונפשים, סרטי דיסני, פיקסאר ודרימוורקס בדיבוב לעברית\n\n📡 מקור השידור: osoyz0xv.ottclub.xyz\n⚠️ ממסר צד שלישי",
+      "genres": [
+        "ילדים ונוער",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_hot_cinema_family_il",
+      "type": "tv",
+      "name": "58. HOT סינמה פמילי HD (סרטי ילדים ומשפחה)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/hot_cinema_family_il.png",
+      "posterShape": "landscape",
+      "description": "HOT Cinema Family – סרטי אנימציה, הרפתקאות וקומדיות לכל המשפחה בדיבוב וכתוביות בעברית\n\n📡 מקור השידור: osoyz0xv.ottclub.xyz\n⚠️ ממסר צד שלישי",
+      "genres": [
+        "ילדים ונוער",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_wiz_kids_il",
+      "type": "tv",
+      "name": "59. ערוץ WIZ! לילדים ונוער HD",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/wiz.png",
+      "posterShape": "landscape",
+      "description": "ערוץ WIZ! – סדרות מדע, טבע, הרפתקאות וידע מרתק לילדים סקרנים בעברית\n\n📡 מקור השידור: osoyz0xv.ottclub.xyz\n⚠️ ממסר צד שלישי",
       "genres": [
         "ילדים ונוער",
         "ישראל"
@@ -199,6 +319,66 @@
       "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/radios_stars.png",
       "posterShape": "landscape",
       "description": "שירי ילדים וכוכבי ילדים\n\n📡 מקור השידור: StreamGates – ערוצי רדיוס 100FM\n✅ שידור רשמי ישיר",
+      "genres": [
+        "ילדים ונוער",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_hot_buzz_il",
+      "type": "tv",
+      "name": "68. HOT באזז לילדים ונוער HD (HOT Buzz)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/icon.png",
+      "posterShape": "landscape",
+      "description": "ערוץ HOT באזז – תכניות לילדים ונוער, סדרות, אנימציה והרפתקאות בעברית 24/7\n\n📡 מקור השידור: osoyz0xv.ottclub.xyz\n⚠️ ממסר צד שלישי",
+      "genres": [
+        "ילדים ונוער",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_hop_plus_kids_il",
+      "type": "tv",
+      "name": "384. ערוץ הופ! פלוס HD",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/hop_plus_kids_il.png",
+      "posterShape": "landscape",
+      "description": "ערוץ הופ! פלוס – תוכניות אהובות, לימוד והרפתקאות לקטנטנים.\n\n📡 מקור השידור: osoyz0xv.ottclub.xyz\n⚠️ ממסר צד שלישי",
+      "genres": [
+        "ילדים ונוער",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_junior_channel_hd",
+      "type": "tv",
+      "name": "404. ערוץ ג'וניור HD (Junior)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/junior.png",
+      "posterShape": "landscape",
+      "description": "ערוץ ג'וניור HD (Junior) — שידור חי ישיר בעברית.\n\n📡 מקור השידור: osoyz0xv.ottclub.xyz\n⚠️ ממסר צד שלישי",
+      "genres": [
+        "ילדים ונוער",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_baby_channel_hd",
+      "type": "tv",
+      "name": "405. ערוץ בייבי HD (Baby Channel)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/baby_tv_he.png",
+      "posterShape": "landscape",
+      "description": "ערוץ בייבי HD (Baby Channel) — שידור חי ישיר בעברית.\n\n📡 מקור השידור: osoyz0xv.ottclub.xyz\n⚠️ ממסר צד שלישי",
+      "genres": [
+        "ילדים ונוער",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_yes_movies_kids_hd",
+      "type": "tv",
+      "name": "407. yes קולנוע ילדים HD (yes Movies Kids)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/yes_movies_kids_il.png",
+      "posterShape": "landscape",
+      "description": "yes קולנוע ילדים HD (yes Movies Kids) — שידור חי ישיר בעברית.\n\n📡 מקור השידור: osoyz0xv.ottclub.xyz\n⚠️ ממסר צד שלישי",
       "genres": [
         "ילדים ונוער",
         "ישראל"

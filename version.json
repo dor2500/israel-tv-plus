@@ -1,15 +1,23 @@
 {
-  "version": "4.8.92",
-  "code": 202611241956,
-  "app": 40892,
+  "version": "4.8.93",
+  "code": 202611242015,
+  "app": 40893,
   "shell": 3,
   "date": "2026-11-24",
   "notes": [
-    "🎬 הרחבת ענק לספריית ה-VOD הישראלית (55 סדרות מלאות · 497 פרקים מאומתים ב-1080p): נוספו עשרות סדרות דגל ישראליות לצפייה ישירה בנגן המובנה (ללא פרסומות וללא DRM): *קופה ראשית, מנאייכ, טהרן, המפקדת, היהודים באים, שעת נעילה, המזח, שישה אפסים, איסט סייד, מגרש הרוסים, החמאם, חוליגנים, יאפא, חזרות, בואו לאכול איתי, זהו זה!, החמישיה הקאמרית, עלומים, קרתגו, שטוקהולם, התסריטאי, מתיר עגונות, תיק נעדר, שעת אפס, פמת\"א, מותק בול באמצע, אבירם כץ, סובייצקה, הצבי, האמת, מחוננת, התנתקות, מקום שמח, כל האימהות משקרות, בהסתורה, מלאך משחית, מועדון הסטנד-אפ, סיפורים מהכורסה, מי זאת?, יקומות, אחד על אחד, מונא, האיש שרצה לדעת הכול, קולנוע ישראלי וקלאסיקות בורקס* ועוד!",
-    "📺 46 ערוצי לייב חדשים ומאומתים (חצינו את רף 405 הערוצים!): כולל *ערוץ קולנוע ישראלי ובורקס 24/7 HD*, ערוצי חדשות וכלכלה (*ABC News Live, CBS News 24/7, Al Jazeera English, NHK World, Bloomberg TV+, Bloomberg Originals, Bloomberg Europe*), ילדים ואנימה (*LEGO Kids TV, Garfield, Cartoonito HD, Kartoon Channel!, MeTV Toons, Sonic TV, Naruto, Naruto Shippuden, Anime x HIDIVE, RetroCrush*), סדרות וקומדיה (*CSI, CSI: Miami, CSI: NY, Doctor Who Classic, Sherlock, BBC Drama, iCarly, Cartman 24/7*), אוכל ולייפסטייל (*BBC Food, Jamie Oliver, Tastemade, America's Test Kitchen, K-FOOD, Top Gear, Motorvision FHD, Cars.TV, Wipeout, Fear Factor, Deal or No Deal, BBC Home & Garden, BBC Travel, FashionTV Paris*).",
-    "🔄 סנכרון מלא של channels.js, CHANNELS.md ופלייליסטים: כל 405 הערוצים ו-55 סדרות ה-VOD מסונכרנים במלואם בין Android Mobile, Android TV, LG webOS, Samsung Tizen, Windows, Kodi, Stremio ו-Home Assistant."
+    "⚽ תיקון מלא לערוצי ספורט 1–4 (צ׳רלטון): הוחלפו כל שרתי הגיבוי השבורים בשרתי שידור חיים ומאומתים (osoyz0xv.ottclub.xyz כשרת ראשי מהיר בפורמט MPEG-TS תקני + גיבוי 2lacasaba), תוקן באג חילוץ הקישורים ב-Channels.kt ותוקנה העברת כותרות Referer/Origin לשרתי הווידאו ב-PlayerScreen.kt.",
+    "🇮🇱 נוספו 84 ערוצי טלוויזיה ישראליים חיים ומאומתים (סה״כ 489 ערוצים!): כולל ערוצי *HOT 3, HOT HBO, HOT סינמה 1–5, HOT קולנוע ישראלי, HOT דרמה, HOT זון, HOT קומדי, HOT בידור ישראלי, HOT 8*, ערוצי *yes קולנוע ישראלי, yes TV דרמה/אקשן, yes קולנוע אקשן/קומדיה/דרמה/ילדים, yes דוקו*, ערוצי ספורט (*ספורט 6 HD*), ערוצי ילדים בעברית (*הופ!, הופ! פלוס, לולי, דיסני ישראל, ניקלודיאון, ניק ג׳וניור, טין ניק, זום ZOOM, WIZ!*), וערוצי לייפסטייל ודוקו ישראליים (*החיים הטובים, בית+, ערוץ האוכל, ערוץ הבריאות, E! ישראל, דיסקברי, נשיונל ג׳יאוגרפיק, ההיסטוריה, הים תיכוני, ויוה פרימיום, i24NEWS*).",
+    "✨ 5 אופציות מיוחדות חדשות בנגן (במובייל ובטלוויזיה/ווב):"
   ],
   "history": [
+    {
+      "version": "4.8.93",
+      "notes": [
+        "⚽ תיקון מלא לערוצי ספורט 1–4 (צ׳רלטון): הוחלפו כל שרתי הגיבוי השבורים בשרתי שידור חיים ומאומתים (osoyz0xv.ottclub.xyz כשרת ראשי מהיר בפורמט MPEG-TS תקני + גיבוי 2lacasaba), תוקן באג חילוץ הקישורים ב-Channels.kt ותוקנה העברת כותרות Referer/Origin לשרתי הווידאו ב-PlayerScreen.kt.",
+        "🇮🇱 נוספו 84 ערוצי טלוויזיה ישראליים חיים ומאומתים (סה״כ 489 ערוצים!): כולל ערוצי *HOT 3, HOT HBO, HOT סינמה 1–5, HOT קולנוע ישראלי, HOT דרמה, HOT זון, HOT קומדי, HOT בידור ישראלי, HOT 8*, ערוצי *yes קולנוע ישראלי, yes TV דרמה/אקשן, yes קולנוע אקשן/קומדיה/דרמה/ילדים, yes דוקו*, ערוצי ספורט (*ספורט 6 HD*), ערוצי ילדים בעברית (*הופ!, הופ! פלוס, לולי, דיסני ישראל, ניקלודיאון, ניק ג׳וניור, טין ניק, זום ZOOM, WIZ!*), וערוצי לייפסטייל ודוקו ישראליים (*החיים הטובים, בית+, ערוץ האוכל, ערוץ הבריאות, E! ישראל, דיסקברי, נשיונל ג׳יאוגרפיק, ההיסטוריה, הים תיכוני, ויוה פרימיום, i24NEWS*).",
+        "✨ 5 אופציות מיוחדות חדשות בנגן (במובייל ובטלוויזיה/ווב):"
+      ]
+    },
     {
       "version": "4.8.92",
       "notes": [
@@ -274,52 +282,44 @@
         "ערוץ קבלה לעם ברוסית HD (ערוץ 527) – שידורי ערוץ קבלה לעם מישראל בשפה הרוסית.",
         "אימות ובדיקת וידאו מלאה: כלל הערוצים עודכנו ונבדקו במפענח הווידאו לווידוא תמונה חלקה, צבעים מלאים וללא תקיעות."
       ]
-    },
-    {
-      "version": "4.8.68",
-      "notes": [
-        "ערוצי ספורט צ'רלטון מקוריים בישראל: תיקון ועדכון ערוצי ספורט 1 (ערוץ 38), ספורט 2 (ערוץ 39), ספורט 3 (ערוץ 40), ספורט 4 (ערוץ 41) וספורט 6 (ערוץ 511) – חזרה מלאה לשידורי צ'רלטון המקוריים בישראל ב-HD/FHD עם קריינות עברית ואולפנים מקוריים (הסרת קישורי FreeTV שגויים והסרת מקורות זרים), בתוספת שרתי גיבוי ישירים.",
-        "אימות ובדיקת תקינות מקיפה של 100% מכלל 434 הערוצים בפרויקט: ביצוע בדיקות סגמנטים ושרתים לכלל ערוצי הטלוויזיה והרדיו. תיקון ערוץ הטיולים והנופש (ערוץ 22), ערוץ הילדים HD (ערוץ 403), וערוץ לולי לפעוטות HD (ערוץ 406).",
-        "סנכרון רשימות ופלטפורמות: עדכון רשימות הנגינה (M3U), תוסף Stremio (כולל תיקון תווי גרשיים במערכות הפעלה), ועדכון קובצי המקורות CHANNELS.md ו-SOURCES.md."
-      ]
     }
   ],
   "native": {
     "android": {
-      "version": "4.8.92",
-      "app": 40892,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.92/IsraelTVPlus-android.apk"
+      "version": "4.8.93",
+      "app": 40893,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.93/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "4.8.92",
-      "app": 40892,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.92/IsraelTVPlus-windows-setup.exe"
+      "version": "4.8.93",
+      "app": 40893,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.93/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "4.8.92",
-      "app": 40892,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.92/com.israeltv.plus_all.ipk",
+      "version": "4.8.93",
+      "app": 40893,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.93/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "4.8.92",
-      "app": 40892,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.92/IsraelTVPlus-tizen-project.zip"
+      "version": "4.8.93",
+      "app": 40893,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.93/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "4.8.92",
-      "app": 40892,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.92/IsraelTVPlus-macos-arm64.zip"
+      "version": "4.8.93",
+      "app": 40893,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.93/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "4.8.92",
-      "app": 40892,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.92/IsraelTVPlus-linux-x64.zip"
+      "version": "4.8.93",
+      "app": 40893,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.93/IsraelTVPlus-linux-x64.zip"
     },
     "wear": {
-      "version": "4.8.92",
-      "app": 1040892,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.92/IsraelTVPlus-wearos.apk"
+      "version": "4.8.93",
+      "app": 1040893,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.93/IsraelTVPlus-wearos.apk"
     }
   }
 }

@@ -3,6 +3,9 @@ package com.israeltv.plus.ui.player
 import android.media.AudioAttributes
 import android.media.AudioFormat
 import android.media.AudioTrack
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import org.json.JSONObject
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.basicMarquee
@@ -335,16 +338,107 @@ fun AmbientSoundEffect(mode: AmbientSoundMode) {
     }
 }
 
+/**
+ * 6. Live Sports Scoreboard HUD (Fetches real-time soccer match scores from ESPN open JSON API).
+ */
+@Composable
+fun LiveSportsScoreboardHud(modifier: Modifier = Modifier) {
+    var matches by remember { mutableStateOf<List<Triple<String, String, String>>>(emptyList()) }
+    var loading by remember { mutableStateOf(true) }
+
+    LaunchedEffect(Unit) {
+        while (isActive) {
+            val fetched = withContext(Dispatchers.IO) { fetchLiveSoccerScores() }
+            matches = fetched
+            loading = false
+            delay(60_000)
+        }
+    }
+
+    Column(
+        modifier = modifier
+            .windowInsetsPadding(WindowInsets.statusBars)
+            .padding(top = 54.dp, start = 14.dp, end = 14.dp)
+            .width(235.dp)
+            .clip(RoundedCornerShape(14.dp))
+            .background(Color(0xD907101E))
+            .border(1.dp, Color(0xFF22C55E).copy(alpha = 0.45f), RoundedCornerShape(14.dp))
+            .padding(10.dp),
+        verticalArrangement = Arrangement.spacedBy(4.dp),
+    ) {
+        Text("⚽ לוח תוצאות ספורט חי", color = Color(0xFF4ADE80), fontWeight = FontWeight.ExtraBold, fontSize = 11.sp)
+        if (loading) {
+            Text("טוען משחקים חיים...", color = Color(0xFF94A3B8), fontSize = 11.sp)
+        } else if (matches.isEmpty()) {
+            Text("אין משחקים משודרים כרגע", color = Color(0xFF94A3B8), fontSize = 11.sp)
+        } else {
+            matches.take(5).forEach { (teams, score, status) ->
+                Row(
+                    Modifier.fillMaxWidth().padding(vertical = 2.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Text(teams, color = Color.White, fontSize = 10.sp, fontWeight = FontWeight.SemiBold, maxLines = 1, modifier = Modifier.weight(1f))
+                    Spacer(Modifier.width(6.dp))
+                    Text(score, color = Color(0xFFFACC15), fontFamily = FontFamily.Monospace, fontWeight = FontWeight.ExtraBold, fontSize = 11.sp)
+                    Spacer(Modifier.width(5.dp))
+                    Text(status, color = Color(0xFF94A3B8), fontSize = 9.sp)
+                }
+            }
+        }
+    }
+}
+
+private fun fetchLiveSoccerScores(): List<Triple<String, String, String>> = runCatching {
+    val conn = (URL("https://site.api.espn.com/apis/site/v2/sports/soccer/all/scoreboard").openConnection() as HttpURLConnection).apply {
+        connectTimeout = 6_000
+        readTimeout = 6_000
+        setRequestProperty("User-Agent", "Mozilla/5.0")
+    }
+    val raw = conn.inputStream.bufferedReader(Charsets.UTF_8).use { it.readText() }
+    val root = JSONObject(raw)
+    val events = root.optJSONArray("events") ?: return emptyList()
+    val list = mutableListOf<Triple<String, String, String>>()
+    for (i in 0 until minOf(events.length(), 8)) {
+        val ev = events.optJSONObject(i) ?: continue
+        val comp = ev.optJSONArray("competitions")?.optJSONObject(0) ?: continue
+        val competitors = comp.optJSONArray("competitors") ?: continue
+        if (competitors.length() < 2) continue
+        val c0 = competitors.getJSONObject(0)
+        val c1 = competitors.getJSONObject(1)
+        val t0 = c0.optJSONObject("team")?.optString("abbreviation").orEmpty().ifBlank {
+            c0.optJSONObject("team")?.optString("shortDisplayName").orEmpty()
+        }
+        val t1 = c1.optJSONObject("team")?.optString("abbreviation").orEmpty().ifBlank {
+            c1.optJSONObject("team")?.optString("shortDisplayName").orEmpty()
+        }
+        val s0 = c0.optString("score", "0")
+        val s1 = c1.optString("score", "0")
+        val st = ev.optJSONObject("status")?.optJSONObject("type")?.optString("shortDetail").orEmpty()
+        list.add(Triple("$t0 - $t1", "$s0:$s1", st.take(8)))
+    }
+    list
+}.getOrDefault(emptyList())
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun WowModesSheet(
     retroCrt: Boolean,
     newsTicker: Boolean,
     telemetryHud: Boolean,
+    sportsBoard: Boolean,
+    autoTour: Boolean,
+    varZoom: Float,
+    nightDim: Float,
     ambientMode: AmbientSoundMode,
     onToggleRetroCrt: () -> Unit,
     onToggleNewsTicker: () -> Unit,
     onToggleTelemetryHud: () -> Unit,
+    onToggleSportsBoard: () -> Unit,
+    onToggleAutoTour: () -> Unit,
+    onCycleVarZoom: () -> Unit,
+    onCycleNightDim: () -> Unit,
+    onActivateTouchLock: () -> Unit,
     onCycleAmbient: () -> Unit,
     onActivateStealth: () -> Unit,
     onDismiss: () -> Unit,
@@ -353,16 +447,25 @@ fun WowModesSheet(
         Column(
             Modifier
                 .fillMaxWidth()
+                .verticalScroll(rememberScrollState())
                 .navigationBarsPadding()
-                .padding(horizontal = 20.dp, vertical = 10.dp),
-            verticalArrangement = Arrangement.spacedBy(10.dp),
+                .padding(horizontal = 20.dp, vertical = 8.dp),
+            verticalArrangement = Arrangement.spacedBy(8.dp),
         ) {
             Text(
-                "✨ מצבי WOW מיוחדים לטלוויזיה",
+                "✨ מצבי WOW ואופציות מיוחדות",
                 fontSize = 18.sp,
                 fontWeight = FontWeight.Bold,
                 color = MaterialTheme.colorScheme.onSurface,
             )
+            WowRow("⚽ לוח תוצאות כדורגל וספורט חי", if (sportsBoard) "פועל" else "כבוי", sportsBoard, onToggleSportsBoard)
+            WowRow("🔍 זום שידור חי (VAR Super-Zoom)", if (varZoom > 1.05f) "${varZoom}x" else "רגיל (1x)", varZoom > 1.05f, onCycleVarZoom)
+            WowRow("⚡ סיור ערוצים אוטומטי (כל 12 שניות)", if (autoTour) "פועל" else "כבוי", autoTour, onToggleAutoTour)
+            WowRow("🌑 עמעום לילה עמוק (Extra Dimmer)", if (nightDim > 0f) "${(nightDim * 100).toInt()}%" else "כבוי", nightDim > 0f, onCycleNightDim)
+            WowRow("🔒 נעילת מסך למניעת נגיעות (ילדים/כיס)", "נעל מסך", false) {
+                onDismiss()
+                onActivateTouchLock()
+            }
             WowRow("📺 מצב רטרו שנות ה-90 (CRT)", if (retroCrt) "פועל" else "כבוי", retroCrt, onToggleRetroCrt)
             WowRow("📰 פס מבזקי חדשות חי (על כל ערוץ)", if (newsTicker) "פועל" else "כבוי", newsTicker, onToggleNewsTicker)
             WowRow("🎧 מיקסר צלילי רקע ואווירה", ambientMode.label, ambientMode != AmbientSoundMode.OFF, onCycleAmbient)
@@ -371,7 +474,7 @@ fun WowModesSheet(
                 onDismiss()
                 onActivateStealth()
             }
-            Spacer(Modifier.height(12.dp))
+            Spacer(Modifier.height(10.dp))
         }
     }
 }
