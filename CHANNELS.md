@@ -1,6 +1,6 @@
 # 📺 כל הערוצים – ישראל TV+
 
-נוצר אוטומטית מ-`channels.json` (`tools/make_channel_list.py`). **331** פריטים: **195** ערוצי טלוויזיה, **136** תחנות רדיו ו-**0** שירותי מנויים, מ-**8** מדינות. 316 מהם מתנגנים גם באתר; כל השאר באפליקציות (Android, טלוויזיה, Windows, Mac, Linux) וב-Stremio.
+נוצר אוטומטית מ-`channels.json` (`tools/make_channel_list.py`). **405** פריטים: **269** ערוצי טלוויזיה, **136** תחנות רדיו ו-**0** שירותי מנויים, מ-**13** מדינות. 390 מהם מתנגנים גם באתר; כל השאר באפליקציות (Android, טלוויזיה, Windows, Mac, Linux) וב-Stremio.
 
 **▶ צפייה:** https://dor2500.github.io/israel-tv-plus/ · **🎬 Stremio:** https://dor2500.github.io/israel-tv-plus/stremio/ · **📋 מקור כל שידור:** [SOURCES.md](SOURCES.md)
 
@@ -10,13 +10,17 @@
 - 🧸 [ילדים ונוער (בעברית)](#ילדים-ונוער-בעברית) – 17
 - 📻 [רדיו ישראלי (Israeli Radio)](#רדיו-ישראלי-israeli-radio) – 132
 - 🕯️ [מסורת וקהילה](#מסורת-וקהילה) – 12
-- ⚽ [ספורט (Sports)](#ספורט-sports) – 26
-- 📰 [חדשות מהעולם (News)](#חדשות-מהעולם-news) – 18
-- 🎬 [סרטים וסדרות (Movies & Series)](#סרטים-וסדרות-movies--series) – 26
-- 🍳 [ערוצי אוכל (Food Channels)](#ערוצי-אוכל-food-channels) – 7
-- 🎈 [ילדים מהעולם (Kids World)](#ילדים-מהעולם-kids-world) – 16
-- 🌍 [טבע ודוקו (Documentary & Nature)](#טבע-ודוקו-documentary--nature) – 7
-- 🎵 [מוזיקה (Music TV)](#מוזיקה-music-tv) – 6
+- ⚽ [ספורט (Sports)](#ספורט-sports) – 33
+- 📰 [חדשות מהעולם (News)](#חדשות-מהעולם-news) – 22
+- 📈 [כלכלה ועסקים (Business)](#כלכלה-ועסקים-business) – 4
+- 🎬 [סרטים וסדרות (Movies & Series)](#סרטים-וסדרות-movies--series) – 38
+- 😂 [קומדיה (Comedy)](#קומדיה-comedy) – 3
+- 🍳 [ערוצי אוכל (Food Channels)](#ערוצי-אוכל-food-channels) – 12
+- 🎈 [ילדים מהעולם (Kids World)](#ילדים-מהעולם-kids-world) – 27
+- 🌍 [טבע ודוקו (Documentary & Nature)](#טבע-ודוקו-documentary--nature) – 17
+- ✈️ [טיולים והרפתקאות (Travel)](#טיולים-והרפתקאות-travel) – 2
+- 🎵 [מוזיקה (Music TV)](#מוזיקה-music-tv) – 12
+- 🍿 [לייף סטייל ובידור](#לייף-סטייל-ובידור) – 10
 - 📺 [סדרות לצפייה ישירה (VOD)](#סדרות-לצפייה-ישירה-vod) – 10
 
 ## ערוצי ישראל - שידור חי
@@ -264,7 +268,7 @@
 
 ## ספורט (Sports)
 
-⚽ 26 ערוצים
+⚽ 33 ערוצים
 
 | # | | ערוץ | מדינה | שפה | איכות | איפה מתנגן |
 |---|---|---|---|---|---|---|
@@ -286,18 +290,25 @@
 | 112 | <img src="assets/logos/sky_sports_racing.png" width="56" alt=""> | **Sky Racing 1 HD (סקיי רייסינג ספורט)** | 🇦🇺 אוסטרליה | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
 | 113 | <img src="assets/logos/sport5_live.png" width="56" alt=""> | **ספורט 5 – שידור חי** |  | עברית | HD | 🌐 אתר + 📲 אפליקציות |
 | 114 | <img src="assets/logos/eurosport_1_il.png" width="56" alt=""> | **Red Bull TV Extreme Sports FHD** | 🇦🇹 בינלאומי | אנגלית | FHD | 🌐 אתר + 📲 אפליקציות |
-| 364 | <img src="assets/logos/beinsports_xtra_fhd.png" width="56" alt=""> | **beIN SPORTS XTRA FHD** |  |  |  | 🌐 אתר + 📲 אפליקציות |
-| 365 | <img src="assets/logos/pga_tour_golf_fhd.png" width="56" alt=""> | **PGA Tour Golf Live FHD** |  |  |  | 🌐 אתר + 📲 אפליקציות |
-| 367 | <img src="assets/logos/cbs_sports_hq_fhd.png" width="56" alt=""> | **CBS Sports HQ FHD** |  |  |  | 🌐 אתר + 📲 אפליקציות |
+| 364 | <img src="assets/logos/beinsports_xtra_fhd.png" width="56" alt=""> | **beIN SPORTS XTRA FHD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 365 | <img src="assets/logos/pga_tour_golf_fhd.png" width="56" alt=""> | **PGA Tour Golf Live FHD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 367 | <img src="assets/logos/cbs_sports_hq_fhd.png" width="56" alt=""> | **CBS Sports HQ FHD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
 | 375 | <img src="assets/logos/formula1.png" width="56" alt=""> | **Sky Sports F1 HD (פורמולה 1 שידור חי)** | 🇬🇧 בריטניה | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
 | 376 | <img src="assets/logos/motorvision_hd.png" width="56" alt=""> | **מוטורוויז'ן Motorvision HD** | 🇩🇪 גרמניה | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
 | 378 | <img src="assets/logos/racer_international_hd.png" width="56" alt=""> | **ערוץ מרוצים RACER International HD** | 🇺🇸 ארה״ב | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
 | 379 | <img src="assets/logos/powernation.png" width="56" alt=""> | **ערוץ PowerNation TV מנועים ומוטורספורט** | 🇺🇸 ארה״ב | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
 | 380 | <img src="assets/logos/sky_racing_hd.png" width="56" alt=""> | **ערוץ מרוצים Sky Racing 1 HD** | 🇦🇺 אוסטרליה | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
+| 571 | <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/FIFA%2B_(2025).svg/960px-FIFA%2B_(2025).svg.png" width="56" alt=""> | **פיפ״א+ כדורגל (FIFA+)** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 572 | <img src="https://i.imgur.com/I8mviBy.png" width="56" alt=""> | **ספורט אקסטרים (FUEL TV)** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 573 | <img src="https://i.imgur.com/mRsnztA.png" width="56" alt=""> | **אומנויות לחימה (FightBox HD)** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 574 | <img src="https://i.imgur.com/VBKoLHk.png" width="56" alt=""> | **בלטור MMA (Bellator)** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 575 | <img src="https://images.fubo.tv/channel-config-ui/station-logos/on-dark/floracing-white.png" width="56" alt=""> | **מרוצי מוטורספורט (FloRacing)** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 576 | <img src="https://images.pluto.tv/channels/64b67f0424ade50008a3be17/colorLogoPNG.png" width="56" alt=""> | **DAZN חצים (DAZN Darts)** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 577 | <img src="https://i.imgur.com/Lv53nh4.png" width="56" alt=""> | **גולף עולמי (Golf Kingdom)** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
 
 ## חדשות מהעולם (News)
 
-📰 18 ערוצים
+📰 22 ערוצים
 
 | # | | ערוץ | מדינה | שפה | איכות | איפה מתנגן |
 |---|---|---|---|---|---|---|
@@ -319,10 +330,25 @@
 | 200 | <img src="assets/logos/trt_world_hd.png" width="56" alt=""> | **TRT World News FHD** |  |  | FHD | 🌐 אתר + 📲 אפליקציות |
 | 201 | <img src="assets/logos/cgtn_news_hd.png" width="56" alt=""> | **CGTN News English FHD** |  |  | FHD | 🌐 אתר + 📲 אפליקציות |
 | 515 | <img src="assets/logos/i24news_ar.png" width="56" alt=""> | **ערוץ i24NEWS ערבית HD** | 🇮🇱 ישראל | ערבית | HD | 🌐 אתר + 📲 אפליקציות |
+| 590 | <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/ABC_News_Live_logo_2021.svg/960px-ABC_News_Live_logo_2021.svg.png" width="56" alt=""> | **ABC News Live HD** | 🇺🇸 ארה״ב | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
+| 591 | <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/CBS_News_247_logo.svg/960px-CBS_News_247_logo.svg.png" width="56" alt=""> | **CBS News 24/7 HD** | 🇺🇸 ארה״ב | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
+| 592 | <img src="https://i.imgur.com/7bRVpnu.png" width="56" alt=""> | **Al Jazeera English HD** | 🇶🇦 קטאר | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
+| 593 | <img src="https://i.imgur.com/4ESi2La.png" width="56" alt=""> | **NHK World יפן HD** | 🇯🇵 יפן | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
+
+## כלכלה ועסקים (Business)
+
+📈 4 ערוצים
+
+| # | | ערוץ | מדינה | שפה | איכות | איפה מתנגן |
+|---|---|---|---|---|---|---|
+| 594 | <img src="https://i.imgur.com/OuogLHx.png" width="56" alt=""> | **Bloomberg TV+ כלכלה ועסקים** | 🇺🇸 ארה״ב | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
+| 595 | <img src="https://jiotvimages.cdn.jio.com/dare_images/images/Bloomberg_Originals.png" width="56" alt=""> | **Bloomberg Originals דוקו ועסקים** | 🇺🇸 ארה״ב | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
+| 596 | <img src="https://i.imgur.com/OuogLHx.png" width="56" alt=""> | **Bloomberg Europe שוק ההון** | 🇬🇧 בריטניה | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
+| 597 | <img src="https://i.imgur.com/qBmomnF.png" width="56" alt=""> | **CGTN Global Business** | 🇨🇳 סין | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
 
 ## סרטים וסדרות (Movies & Series)
 
-🎬 26 ערוצים
+🎬 38 ערוצים
 
 | # | | ערוץ | מדינה | שפה | איכות | איפה מתנגן |
 |---|---|---|---|---|---|---|
@@ -352,10 +378,32 @@
 | 554 |  | **80s Rewind (קולנוע שנות ה-80)** | 🇺🇸 ארצות הברית | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
 | 555 |  | **90s Throwback (קולנוע שנות ה-90)** | 🇺🇸 ארצות הברית | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
 | 556 |  | **00s Replay (קולנוע שנות ה-2000)** | 🇺🇸 ארצות הברית | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
+| 578 | <img src="https://images.pluto.tv/channels/609ae66b359b270007869ff1/colorLogoPNG_1733160636316.png" width="56" alt=""> | **סאות׳ פארק 24/7 (South Park)** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 579 | <img src="https://images.pluto.tv/channels/6641fd41b18d700008e7e2b8/colorLogoPNG.png" width="56" alt=""> | **קומדי סנטרל רוסט (CC Roast)** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 580 | <img src="https://i.imgur.com/3N2C60N.png" width="56" alt=""> | **סטנדאפ נקי (Dry Bar Comedy)** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 581 | <img src="https://images.pluto.tv/channels/638e11951177840007fdd6b2/colorLogoPNG_1745597179027.png" width="56" alt=""> | **קומדיה בריטית (British Comedy)** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 582 |  | **סרטים קלאסיים (Classic Movies)** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 583 | <img src="https://provider-static.plex.tv/epg/cms/production/bcfb9977-809f-49ae-acc7-430f2c6ffb26/50CentAction_Logo_1500x1000_DarkBG_-_Chris_Connors.png" width="56" alt=""> | **סרטי אקשן (50 Cent Action)** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 609 | <img src="https://i.imgur.com/xLLNEfA.png" width="56" alt=""> | **זירת הפשע 24/7 (CSI)** | 🇺🇸 ארה״ב | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
+| 610 | <img src="https://images.pluto.tv/channels/63eb9c5351f5d000085e8d7e/colorLogoPNG.png" width="56" alt=""> | **זירת הפשע מיאמי (CSI: Miami)** | 🇺🇸 ארה״ב | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
+| 611 | <img src="https://images.pluto.tv/channels/62f54c6439183b000769fb8f/colorLogoPNG_1731837277521.png" width="56" alt=""> | **זירת הפשע ניו יורק (CSI: NY)** | 🇺🇸 ארה״ב | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
+| 612 | <img src="https://i.imgur.com/JIqJQQM.png" width="56" alt=""> | **דוקטור הו קלאסי (Doctor Who)** | 🇬🇧 בריטניה | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
+| 613 | <img src="https://images.pluto.tv/channels/5dc2c00abfed110009d97243/colorLogoPNG.png" width="56" alt=""> | **שרלוק הולמס 24/7 (Sherlock)** | 🇬🇧 בריטניה | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
+| 614 | <img src="https://i.imgur.com/HctHhLL.png" width="56" alt=""> | **דרמות בריטיות (BBC Drama)** | 🇬🇧 בריטניה | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
+
+## קומדיה (Comedy)
+
+😂 3 ערוצים
+
+| # | | ערוץ | מדינה | שפה | איכות | איפה מתנגן |
+|---|---|---|---|---|---|---|
+| 615 | <img src="https://images.pluto.tv/channels/65df4934f7f0af0008c32545/colorLogoPNG.png" width="56" alt=""> | **סאות׳ פארק: קרטמן (Cartman 24/7)** | 🇺🇸 ארה״ב | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
+| 616 | <img src="https://i.imgur.com/1a03FlX.png" width="56" alt=""> | **מופע קומדיה קלאסי (Carol Burnett)** | 🇺🇸 ארה״ב | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
+| 617 | <img src="https://images.pluto.tv/channels/620ff46e0a576e0007dc2f89/colorLogoPNG.png" width="56" alt=""> | **איי קארלי 24/7 (iCarly)** | 🇺🇸 ארה״ב | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
 
 ## ערוצי אוכל (Food Channels)
 
-🍳 7 ערוצים
+🍳 12 ערוצים
 
 | # | | ערוץ | מדינה | שפה | איכות | איפה מתנגן |
 |---|---|---|---|---|---|---|
@@ -366,10 +414,15 @@
 | 179 | <img src="assets/logos/food_network_eu.png" width="56" alt=""> | **Food Network International HD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
 | 180 | <img src="assets/logos/tv5monde_chefs_hd.png" width="56" alt=""> | **TV5MONDE Chefs HD – שפים וגסטרונומיה** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
 | 181 | <img src="assets/logos/cooking_panda_hd.png" width="56" alt=""> | **Cooking Panda HD – מתכונים ובישול** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 618 | <img src="https://i.imgur.com/kcmHcSx.png" width="56" alt=""> | **ערוץ הבישול הבריטי (BBC Food)** | 🇬🇧 בריטניה | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
+| 619 | <img src="https://i.imgur.com/4v93XUB.png" width="56" alt=""> | **השף ג׳יימי אוליבר (Jamie Oliver)** | 🇬🇧 בריטניה | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
+| 620 | <img src="https://i.imgur.com/xP7Ehn8.png" width="56" alt=""> | **אוכל וקולינריה (Tastemade)** | 🇺🇸 ארה״ב | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
+| 621 | <img src="https://i.imgur.com/prMkTsZ.png" width="56" alt=""> | **מטבח המבחן (Test Kitchen)** | 🇺🇸 ארה״ב | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
+| 622 | <img src="https://images.pluto.tv/channels/633ee9ba83c08f00076b60a6/colorLogoPNG.png" width="56" alt=""> | **אוכל קוריאני (K-FOOD)** | 🇰🇷 דרום קוריאה | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
 
 ## ילדים מהעולם (Kids World)
 
-🎈 16 ערוצים
+🎈 27 ערוצים
 
 | # | | ערוץ | מדינה | שפה | איכות | איפה מתנגן |
 |---|---|---|---|---|---|---|
@@ -389,10 +442,21 @@
 | 542 |  | **Nick Jr. Pluto TV HD (ניק ג'וניור עולמי)** | 🇺🇸 ארצות הברית | אנגלית | 720p | 🌐 אתר + 📲 אפליקציות |
 | 543 |  | **Nickelodeon Pluto TV HD (ניקלודיאון עולמי)** | 🇺🇸 ארצות הברית | אנגלית | 720p | 🌐 אתר + 📲 אפליקציות |
 | 544 |  | **NickToons Pluto TV HD (ניקטונס)** | 🇺🇸 ארצות הברית | אנגלית | 720p | 🌐 אתר + 📲 אפליקציות |
+| 598 | <img src="https://i.imgur.com/tMfEsVr.png" width="56" alt=""> | **ערוץ לגו לילדים (LEGO Kids TV)** | 🇺🇸 ארה״ב | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
+| 599 | <img src="https://i.imgur.com/evzfe9C.png" width="56" alt=""> | **גארפילד וחברים 24/7 (Garfield)** | 🇺🇸 ארה״ב | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
+| 600 | <img src="https://i.imgur.com/6vYWCD0.png" width="56" alt=""> | **קרטוניטו לילדים (Cartoonito HD)** | 🇬🇧 בריטניה | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
+| 601 | <img src="https://i.imgur.com/1luzP3T.png" width="56" alt=""> | **ערוץ המצוירים (Kartoon Channel!)** | 🇺🇸 ארה״ב | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
+| 602 | <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/MeTV_Toons.png/250px-MeTV_Toons.png" width="56" alt=""> | **מצוירים קלאסיים (MeTV Toons)** | 🇺🇸 ארה״ב | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
+| 603 | <img src="https://i.imgur.com/TKhRlrR.png" width="56" alt=""> | **סוניק הקיפוד 24/7 (Sonic TV)** | 🇺🇸 ארה״ב | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
+| 604 | <img src="https://i.imgur.com/M8X3Kvc.png" width="56" alt=""> | **נארוטו 24/7 (Naruto)** | 🇯🇵 יפן | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
+| 605 | <img src="https://images.pluto.tv/channels/64c92fea3c3344000869e8a9/colorLogoPNG.png" width="56" alt=""> | **נארוטו שיפודן 24/7 (Shippuden)** | 🇯🇵 יפן | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
+| 606 | <img src="https://i.imgur.com/v0BlxCa.png" width="56" alt=""> | **ערוץ אנימה (Anime x HIDIVE)** | 🇺🇸 ארה״ב | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
+| 607 | <img src="https://i.imgur.com/M40b4YI.png" width="56" alt=""> | **אנימה רטרו קלאסית (RetroCrush)** | 🇺🇸 ארה״ב | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
+| 608 | <img src="https://images.pluto.tv/channels/67ed8f7e443f0671bc2b2368/colorLogoPNG.png" width="56" alt=""> | **סרטי אנימה (Pluto Anime Movies)** | 🇺🇸 ארה״ב | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
 
 ## טבע ודוקו (Documentary & Nature)
 
-🌍 7 ערוצים
+🌍 17 ערוצים
 
 | # | | ערוץ | מדינה | שפה | איכות | איפה מתנגן |
 |---|---|---|---|---|---|---|
@@ -403,19 +467,61 @@
 | 548 |  | **Love The Planet HD (כדור הארץ)** | 🇺🇸 ארצות הברית | אנגלית | 1080p | 🌐 אתר + 📲 אפליקציות |
 | 549 |  | **Love Pets HD (חיות מחמד וטבע)** | 🇺🇸 ארצות הברית | אנגלית | 1080p | 🌐 אתר + 📲 אפליקציות |
 | 550 |  | **INWILD HD (חיות בר)** | 🇺🇸 ארצות הברית | אנגלית | 1080p | 🌐 אתר + 📲 אפליקציות |
+| 561 | <img src="https://static.frequency.com/studio/itv/channels/1224-400x200.png" width="56" alt=""> | **חלל בשידור חי (Space Live 4K)** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 562 | <img src="https://i.imgur.com/Vhv5gjN.png" width="56" alt=""> | **ספארי חי באפריקה (WildEarth)** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 563 | <img src="https://www.stingray.com/wp-content/uploads/2023/12/stingray_zenlifebystingray_white.svg" width="56" alt=""> | **אווירה ורגיעה (ZenLIFE)** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 564 | <img src="https://tv.lovenature.com/wp-content/uploads/2024/10/LoveNature2024_Logo_full_colour-copy.png" width="56" alt=""> | **טבע פראי (Love Nature)** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 565 | <img src="https://i.imgur.com/D8Vuw6I.png" width="56" alt=""> | **טבע ונופים (Better Life)** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 566 | <img src="https://i.imgur.com/Kt5j8Vr.png" width="56" alt=""> | **סמית׳סוניאן דוקו (Smithsonian)** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 567 | <img src="https://i.imgur.com/uhunRoU.png" width="56" alt=""> | **ערוץ המדע (Pluto Science)** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 568 | <img src="https://i.imgur.com/OGyeLLR.png" width="56" alt=""> | **דוקו עולמי (DocuBay)** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 569 | <img src="https://i.imgur.com/x57klfS.png" width="56" alt=""> | **דוקומנטרי+ (Documentary+)** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 570 | <img src="https://jiotvimages.cdn.jio.com/dare_images/images/Intravel.png" width="56" alt=""> | **טיולים בעולם (INTRAVEL)** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+
+## טיולים והרפתקאות (Travel)
+
+✈️ 2 ערוצים
+
+| # | | ערוץ | מדינה | שפה | איכות | איפה מתנגן |
+|---|---|---|---|---|---|---|
+| 633 | <img src="https://i.imgur.com/QiuYWs9.png" width="56" alt=""> | **מסעות בעולם (BBC Travel)** | 🇬🇧 בריטניה | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
+| 634 | <img src="https://i.imgur.com/8s6aRwv.png" width="56" alt=""> | **קולינריה וטיולים (Tastemade Travel)** | 🇺🇸 ארה״ב | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
 
 ## מוזיקה (Music TV)
 
-🎵 6 ערוצים
+🎵 12 ערוצים
 
 | # | | ערוץ | מדינה | שפה | איכות | איפה מתנגן |
 |---|---|---|---|---|---|---|
 | 207 | <img src="assets/logos/radios_video.png" width="56" alt=""> | **רדיוס 100FM – אולפן וידאו HD** | 🇮🇱 ישראל | עברית | HD | 🌐 אתר + 📲 אפליקציות |
 | 208 | <img src="assets/logos/sky_news.png" width="56" alt=""> | **Sky Folk TV HD (סקיי פולק)** | 🇲🇰 מקדוניה | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
 | 212 | <img src="assets/logos/music_1hd.png" width="56" alt=""> | **1HD Music Television** |  | מוזיקה | FHD | 📲 אפליקציות בלבד |
-| 366 | <img src="assets/logos/vevo_pop_live_fhd.png" width="56" alt=""> | **Vevo Pop Music Hits FHD** |  |  |  | 🌐 אתר + 📲 אפליקציות |
-| 387 | <img src="assets/logos/keshet_music.png" width="56" alt=""> | **ערוץ מוזיקה ישראלית 24/7 HD** | 🇮🇱 ישראל | עברית |  | 🌐 אתר + 📲 אפליקציות |
+| 366 | <img src="assets/logos/vevo_pop_live_fhd.png" width="56" alt=""> | **Vevo Pop Music Hits FHD** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 387 | <img src="assets/logos/keshet_music.png" width="56" alt=""> | **ערוץ מוזיקה ישראלית 24/7 HD** | 🇮🇱 ישראל | עברית | HD | 🌐 אתר + 📲 אפליקציות |
 | 397 | <img src="assets/logos/mtv_hits.png" width="56" alt=""> | **MTV Hits & Clips HD** | 🇺🇸 ארה״ב | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
+| 584 | <img src="https://images.pluto.tv/channels/6047fbdbbb776a0007e7f2ff/colorLogoPNG.png" width="56" alt=""> | **MTV להיטי פופ (MTV Pop)** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 585 | <img src="https://images.pluto.tv/channels/6541010f770cf1000866be98/colorLogoPNG.png" width="56" alt=""> | **MTV שירים חדשים (MTV New)** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 586 | <img src="https://i.imgur.com/GuM4GnX.png" width="56" alt=""> | **ערוץ הרוק (NOW Rock)** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 587 | <img src="https://i.imgur.com/MyiA92q.png" width="56" alt=""> | **מוזיקה אלקטרונית (Clubbing TV)** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 588 | <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2CSpCdAxnLpqebMLZh6h7vMPk6LYpdqkVHA&s" width="56" alt=""> | **פסקולים מסרטים (Movie Music)** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+| 589 | <img src="https://i.imgur.com/bLjmQTU.png" width="56" alt=""> | **מוזיקה קלאסית (Classica)** |  |  | HD | 🌐 אתר + 📲 אפליקציות |
+
+## לייף סטייל ובידור
+
+🍿 10 ערוצים
+
+| # | | ערוץ | מדינה | שפה | איכות | איפה מתנגן |
+|---|---|---|---|---|---|---|
+| 623 | <img src="https://i.imgur.com/S6Su6QH.png" width="56" alt=""> | **טופ גיר רכב 24/7 (Top Gear)** | 🇬🇧 בריטניה | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
+| 624 | <img src="https://i.imgur.com/v4kj8pI.png" width="56" alt=""> | **עולם הרכב והמרוצים (Motorvision FHD)** | 🇩🇪 גרמניה | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
+| 625 | <img src="https://i.imgur.com/JLSHiTp.png" width="56" alt=""> | **מכוניות על (Cars.TV)** | 🇺🇸 ארה״ב | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
+| 626 | <img src="https://images.pluto.tv/channels/65244c403fd33c0008ffff31/colorLogoPNG.png" width="56" alt=""> | **מרדפי מכוניות בשידור חי (Car Chase)** | 🇺🇸 ארה״ב | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
+| 627 | <img src="https://i.imgur.com/lZvNXA1.png" width="56" alt=""> | **דיל או לא דיל 24/7 (Deal or No Deal)** | 🇺🇸 ארה״ב | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
+| 628 | <img src="https://i.imgur.com/CIYnLWz.png" width="56" alt=""> | **אפקט הפחד 24/7 (Fear Factor)** | 🇺🇸 ארה״ב | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
+| 629 | <img src="https://i.imgur.com/UDeCRW1.png" width="56" alt=""> | **ווייפאאוט אקסטרים (Wipeout)** | 🇬🇧 בריטניה | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
+| 630 | <img src="https://i.imgur.com/rC0pi1D.png" width="56" alt=""> | **עיצוב הבית והגינה (BBC Home)** | 🇬🇧 בריטניה | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
+| 631 | <img src="https://i.imgur.com/GFTAN5Q.png" width="56" alt=""> | **ערוץ האופנה פריז (FashionTV)** | 🇫🇷 צרפת | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
+| 632 | <img src="https://i.imgur.com/J5YJ3r3.png" width="56" alt=""> | **עיצוב ואדריכלות (Design Network)** | 🇺🇸 ארה״ב | אנגלית | HD | 🌐 אתר + 📲 אפליקציות |
 
 ## סדרות לצפייה ישירה (VOD)
 

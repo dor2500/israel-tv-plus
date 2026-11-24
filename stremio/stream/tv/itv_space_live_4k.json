@@ -2,7 +2,7 @@
   "streams": [
     {
       "name": "ישראל TV+\n[FHD ראשי]",
-      "title": "חלל בשידור חי (Space Live 4K)\n📡 \n",
+      "title": "חלל בשידור חי (Space Live 4K)\n📡 FAST Public CDN\n✅ ערוץ FAST רשמי",
       "url": "https://linear-1224.frequency.stream/dist/lg-uk/1224/hls/master/playlist.m3u8",
       "behaviorHints": {
         "bingeGroup": "itv-live"

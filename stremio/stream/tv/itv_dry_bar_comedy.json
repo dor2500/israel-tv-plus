@@ -2,7 +2,7 @@
   "streams": [
     {
       "name": "ישראל TV+\n[FHD ראשי]",
-      "title": "סטנדאפ נקי (Dry Bar Comedy)\n📡 \n",
+      "title": "סטנדאפ נקי (Dry Bar Comedy)\n📡 FAST Public CDN\n✅ ערוץ FAST רשמי",
       "url": "https://drybar-drybarcomedy-1-au.samsung.wurl.tv/playlist.m3u8",
       "behaviorHints": {
         "bingeGroup": "itv-live"

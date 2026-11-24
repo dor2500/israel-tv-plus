@@ -138,7 +138,7 @@
       "name": "195. FOX LiveNOW News HD",
       "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/fox_livenow_hd.png",
       "posterShape": "landscape",
-      "description": "שידורי חדשות מתפרצות ואירועים חיים מארה\"ב ומהעולם מבית FOX\n\n📡 מקור השידור: cdn-uw2-prod.tsv2.amagi.tv\n⚠️ ממסר צד שלישי",
+      "description": "שידורי חדשות מתפרצות ואירועים חיים מארה״ב ומהעולם מבית FOX\n\n📡 מקור השידור: cdn-uw2-prod.tsv2.amagi.tv\n⚠️ ממסר צד שלישי",
       "genres": [
         "חדשות מהעולם",
         "עולם"
@@ -214,6 +214,54 @@
       "genres": [
         "חדשות מהעולם",
         "ישראל"
+      ]
+    },
+    {
+      "id": "itv_abc_news_live",
+      "type": "tv",
+      "name": "590. ABC News Live HD",
+      "poster": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/ABC_News_Live_logo_2021.svg/960px-ABC_News_Live_logo_2021.svg.png",
+      "posterShape": "landscape",
+      "description": "ABC News Live HD — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "חדשות מהעולם",
+        "ארה״ב"
+      ]
+    },
+    {
+      "id": "itv_cbs_news_247",
+      "type": "tv",
+      "name": "591. CBS News 24/7 HD",
+      "poster": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/CBS_News_247_logo.svg/960px-CBS_News_247_logo.svg.png",
+      "posterShape": "landscape",
+      "description": "CBS News 24/7 HD — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "חדשות מהעולם",
+        "ארה״ב"
+      ]
+    },
+    {
+      "id": "itv_aljazeera_en_hd",
+      "type": "tv",
+      "name": "592. Al Jazeera English HD",
+      "poster": "https://i.imgur.com/7bRVpnu.png",
+      "posterShape": "landscape",
+      "description": "Al Jazeera English HD — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: אל-ג'זירה – שרת רשמי\n✅ שידור רשמי ישיר",
+      "genres": [
+        "חדשות מהעולם",
+        "קטאר"
+      ]
+    },
+    {
+      "id": "itv_nhk_world_prem",
+      "type": "tv",
+      "name": "593. NHK World יפן HD",
+      "poster": "https://i.imgur.com/4ESi2La.png",
+      "posterShape": "landscape",
+      "description": "NHK World יפן HD — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "חדשות מהעולם",
+        "יפן"
       ]
     }
   ]

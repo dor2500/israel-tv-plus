@@ -1,48 +1,324 @@
 {
   "metas": [
     {
-      "id": "itv_cc_south_park",
+      "id": "itv_viva_plus_il",
       "type": "tv",
-      "name": "סאות׳ פארק 24/7 (South Park)",
-      "poster": "https://images.pluto.tv/channels/609ae66b359b270007869ff1/colorLogoPNG_1733160636316.png",
+      "name": "31. ערוץ ויוה איסטנבול HD (Viva Istanbul)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/viva_istanbul.png",
       "posterShape": "landscape",
-      "description": "📡 מקור השידור:",
+      "description": "ערוץ ויוה איסטנבול – הדרמות והסדרות הטורקיות האהובות ביותר בתרגום לעברית\n\n📡 מקור השידור: FreeTV – השידור הרשמי (AWS CloudFront)\n✅ שידור רשמי ישיר",
       "genres": [
         "סרטים וסדרות",
-        "עולם"
+        "ישראל"
       ]
     },
     {
-      "id": "itv_dry_bar_comedy",
+      "id": "itv_viva_israel",
       "type": "tv",
-      "name": "סטנדאפ נקי (Dry Bar Comedy)",
-      "poster": "https://i.imgur.com/3N2C60N.png",
+      "name": "32. ערוץ ויוה טלנובלות HD (Viva)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/viva_israel.png",
       "posterShape": "landscape",
-      "description": "📡 מקור השידור:",
+      "description": "ערוץ ויוה טלנובלות – מיטב הטלנובלות הלטיניות והבינלאומיות עם כתוביות בעברית\n\n📡 מקור השידור: FreeTV – השידור הרשמי (AWS CloudFront)\n✅ שידור רשמי ישיר",
       "genres": [
         "סרטים וסדרות",
-        "עולם"
+        "ישראל"
       ]
     },
     {
-      "id": "itv_action_50cent",
+      "id": "itv_savri_maranan",
       "type": "tv",
-      "name": "סרטי אקשן (50 Cent Action)",
-      "poster": "https://provider-static.plex.tv/epg/cms/production/bcfb9977-809f-49ae-acc7-430f2c6ffb26/50CentAction_Logo_1500x1000_DarkBG_-_Chris_Connors.png",
+      "name": "156. סברי מרנן 24/7 – קשת / FreeTV",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/keshet12.png",
       "posterShape": "landscape",
-      "description": "📡 מקור השידור:",
+      "description": "כל העונות והפרקים של סברי מרנן ברצף 24/7 – ערוץ חינמי של קשת ו-FreeTV\n\n📡 מקור השידור: FreeTV – השידור הרשמי (AWS CloudFront)\n✅ שידור רשמי ישיר",
       "genres": [
         "סרטים וסדרות",
-        "עולם"
+        "ישראל"
       ]
     },
     {
-      "id": "itv_classic_movies_30a",
+      "id": "itv_keshet_drama",
       "type": "tv",
-      "name": "סרטים קלאסיים (Classic Movies)",
+      "name": "157. ערוץ הדרמה – קשת / FreeTV",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/keshet_drama.png",
+      "posterShape": "landscape",
+      "description": "דרמות וסדרות ישראליות של קשת 24/7 – ערוץ חינמי של קשת ו-FreeTV\n\n📡 מקור השידור: FreeTV – השידור הרשמי (AWS CloudFront)\n✅ שידור רשמי ישיר",
+      "genres": [
+        "סרטים וסדרות",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_keshet_comedy",
+      "type": "tv",
+      "name": "158. ערוץ הקומדיה – קשת / FreeTV",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/keshet_comedy.png",
+      "posterShape": "landscape",
+      "description": "קומדיות ישראליות של קשת 24/7 – ערוץ חינמי של קשת ו-FreeTV\n\n📡 מקור השידור: FreeTV – השידור הרשמי (AWS CloudFront)\n✅ שידור רשמי ישיר",
+      "genres": [
+        "סרטים וסדרות",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_freetv_israeli_movies",
+      "type": "tv",
+      "name": "159. FreeTV סרטים ישראלי HD",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/freetv_israeli_movies.png",
+      "posterShape": "landscape",
+      "description": "ערוץ הסרטים הישראליים של FreeTV – קלאסיקות קולנוע ישראלי, קומדיות ודרמות 24/7\n\n📡 מקור השידור: FreeTV – השידור הרשמי (AWS CloudFront)\n✅ שידור רשמי ישיר",
+      "genres": [
+        "סרטים וסדרות",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_freetv_movies_action",
+      "type": "tv",
+      "name": "160. FreeTV סרטים פעולה HD",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/freetv_movies_action.png",
+      "posterShape": "landscape",
+      "description": "ערוץ סרטי הפעולה והאקשן של FreeTV עם תרגום לעברית 24/7\n\n📡 מקור השידור: FreeTV – השידור הרשמי (AWS CloudFront)\n✅ שידור רשמי ישיר",
+      "genres": [
+        "סרטים וסדרות",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_freetv_movies_comedy",
+      "type": "tv",
+      "name": "161. FreeTV סרטים קומדיה HD",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/freetv_movies_comedy.png",
+      "posterShape": "landscape",
+      "description": "ערוץ סרטי הקומדיה של FreeTV עם תרגום לעברית 24/7\n\n📡 מקור השידור: FreeTV – השידור הרשמי (AWS CloudFront)\n✅ שידור רשמי ישיר",
+      "genres": [
+        "סרטים וסדרות",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_freetv_movies_drama",
+      "type": "tv",
+      "name": "162. FreeTV סרטים דרמה HD",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/freetv_movies_drama.png",
+      "posterShape": "landscape",
+      "description": "ערוץ סרטי הדרמה של FreeTV עם תרגום לעברית 24/7\n\n📡 מקור השידור: FreeTV – השידור הרשמי (AWS CloudFront)\n✅ שידור רשמי ישיר",
+      "genres": [
+        "סרטים וסדרות",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_freetv_movies_thriller",
+      "type": "tv",
+      "name": "163. FreeTV סרטים מתח HD",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/freetv_movies_thriller.png",
+      "posterShape": "landscape",
+      "description": "ערוץ סרטי המתח והמסתורין של FreeTV עם תרגום לעברית 24/7\n\n📡 מקור השידור: FreeTV – השידור הרשמי (AWS CloudFront)\n✅ שידור רשמי ישיר",
+      "genres": [
+        "סרטים וסדרות",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_freetv_movies_horror",
+      "type": "tv",
+      "name": "164. FreeTV סרטים אימה HD",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/freetv_movies_horror.png",
+      "posterShape": "landscape",
+      "description": "ערוץ סרטי האימה של FreeTV עם תרגום לעברית 24/7\n\n📡 מקור השידור: FreeTV – השידור הרשמי (AWS CloudFront)\n✅ שידור רשמי ישיר",
+      "genres": [
+        "סרטים וסדרות",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_freetv_movies_romance",
+      "type": "tv",
+      "name": "165. FreeTV סרטים רומנטי HD",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/freetv_movies_romance.png",
+      "posterShape": "landscape",
+      "description": "ערוץ הסרטים הרומנטיים של FreeTV עם תרגום לעברית 24/7\n\n📡 מקור השידור: FreeTV – השידור הרשמי (AWS CloudFront)\n✅ שידור רשמי ישיר",
+      "genres": [
+        "סרטים וסדרות",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_freetv_movies_feelgood",
+      "type": "tv",
+      "name": "166. FreeTV סרטים פיל גוד HD",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/freetv_movies_feelgood.png",
+      "posterShape": "landscape",
+      "description": "ערוץ סרטי Feel Good מחממי לב של FreeTV עם תרגום לעברית 24/7\n\n📡 מקור השידור: FreeTV – השידור הרשמי (AWS CloudFront)\n✅ שידור רשמי ישיר",
+      "genres": [
+        "סרטים וסדרות",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_freetv_movies_family",
+      "type": "tv",
+      "name": "167. FreeTV סרטים משפחה HD",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/freetv_movies_family.png",
+      "posterShape": "landscape",
+      "description": "ערוץ סרטי המשפחה וההרפתקאות של FreeTV לכל המשפחה\n\n📡 מקור השידור: FreeTV – השידור הרשמי (AWS CloudFront)\n✅ שידור רשמי ישיר",
+      "genres": [
+        "סרטים וסדרות",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_freetv_movies_10stars",
+      "type": "tv",
+      "name": "168. FreeTV 10 Stars סרטים HD",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/freetv_movies_10stars.png",
+      "posterShape": "landscape",
+      "description": "ערוץ 10 כוכבים – סרטי קולנוע שוברי קופות בהזרמת FHD נקייה\n\n📡 מקור השידור: FreeTV – השידור הרשמי (AWS CloudFront)\n✅ שידור רשמי ישיר",
+      "genres": [
+        "סרטים וסדרות",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_freetv_series_comedy2",
+      "type": "tv",
+      "name": "169. FreeTV סדרות קומדיה 2 HD",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/freetv_series_comedy2.png",
+      "posterShape": "landscape",
+      "description": "ערוץ הקומדיה הנוסף של FreeTV – קומדיות אהובות 24 שעות ביממה\n\n📡 מקור השידור: FreeTV – השידור הרשמי (AWS CloudFront)\n✅ שידור רשמי ישיר",
+      "genres": [
+        "סרטים וסדרות",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_daily_drama_il",
+      "type": "tv",
+      "name": "170. ערוץ הדרמות היומיות HD",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/daily_drama_il.png",
+      "posterShape": "landscape",
+      "description": "ערוץ הדרמות היומיות (Daily Drama) – סדרות דרמה וטלנובלות אהובות ברצף\n\n📡 מקור השידור: FreeTV – השידור הרשמי (AWS CloudFront)\n✅ שידור רשמי ישיר",
+      "genres": [
+        "סרטים וסדרות",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_vamos_telenovela_il",
+      "type": "tv",
+      "name": "171. ערוץ וואמוס HD (Vamos)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/vamos_telenovela_il.png",
+      "posterShape": "landscape",
+      "description": "ערוץ וואמוס (Vamos) – דרמות ספרדיות ולטיניות עם תרגום לעברית\n\n📡 מקור השידור: FreeTV – השידור הרשמי (AWS CloudFront)\n✅ שידור רשמי ישיר",
+      "genres": [
+        "סרטים וסדרות",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_freetv_global_il",
+      "type": "tv",
+      "name": "172. FreeTV גלובל סדרות HD",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/freetv_global_il.png",
+      "posterShape": "landscape",
+      "description": "ערוץ הסדרות הבינלאומיות של FreeTV עם תרגום לעברית\n\n📡 מקור השידור: FreeTV – השידור הרשמי (AWS CloudFront)\n✅ שידור רשמי ישיר",
+      "genres": [
+        "סרטים וסדרות",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_partner_reality_il",
+      "type": "tv",
+      "name": "531. ערוץ הריאליטי הישראלי HD",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/partner_reality_il.png",
+      "posterShape": "landscape",
+      "description": "ערוץ הריאליטי הישראלי – כל תוכניות הריאליטי המובילות, התחרויות והדרמות ברצף שידורים HD\n\n📡 מקור השידור: ערוץ FAST ישראלי – AWS CloudFront\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "סרטים וסדרות",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_amc_thrillers_hd",
+      "type": "tv",
+      "name": "551. AMC Thrillers HD (סרטי מתח)",
       "poster": "https://dor2500.github.io/israel-tv-plus/icon.png",
       "posterShape": "landscape",
-      "description": "📡 מקור השידור:",
+      "description": "ערוץ סרטי המתח והאקשן של רשת AMC 24/7\n\n📡 מקור השידור: FAST Official\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "סרטים וסדרות",
+        "ארצות הברית"
+      ]
+    },
+    {
+      "id": "itv_artflix_classics_hd",
+      "type": "tv",
+      "name": "552. ARTFLIX Movie Classics HD (קלאסיקות)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/icon.png",
+      "posterShape": "landscape",
+      "description": "ערוץ סרטי הקולנוע הקלאסיים של כל הזמנים\n\n📡 מקור השידור: FAST Official\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "סרטים וסדרות",
+        "ארצות הברית"
+      ]
+    },
+    {
+      "id": "itv_pluto_70s_cinema",
+      "type": "tv",
+      "name": "553. 70s Cinema (קולנוע שנות ה-70)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/icon.png",
+      "posterShape": "landscape",
+      "description": "מיטב סרטי הקולנוע משנות ה-70 ברצף 24/7\n\n📡 מקור השידור: Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "סרטים וסדרות",
+        "ארצות הברית"
+      ]
+    },
+    {
+      "id": "itv_pluto_80s_rewind",
+      "type": "tv",
+      "name": "554. 80s Rewind (קולנוע שנות ה-80)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/icon.png",
+      "posterShape": "landscape",
+      "description": "סרטי הקאלט והלהיטים של שנות ה-80 ברצף\n\n📡 מקור השידור: Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "סרטים וסדרות",
+        "ארצות הברית"
+      ]
+    },
+    {
+      "id": "itv_pluto_90s_throwback",
+      "type": "tv",
+      "name": "555. 90s Throwback (קולנוע שנות ה-90)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/icon.png",
+      "posterShape": "landscape",
+      "description": "הסרטים הגדולים של שנות ה-90 ברצף\n\n📡 מקור השידור: Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "סרטים וסדרות",
+        "ארצות הברית"
+      ]
+    },
+    {
+      "id": "itv_pluto_00s_replay",
+      "type": "tv",
+      "name": "556. 00s Replay (קולנוע שנות ה-2000)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/icon.png",
+      "posterShape": "landscape",
+      "description": "להיטי הקולנוע של שנות ה-2000 ברצף 24/7\n\n📡 מקור השידור: Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "סרטים וסדרות",
+        "ארצות הברית"
+      ]
+    },
+    {
+      "id": "itv_cc_south_park",
+      "type": "tv",
+      "name": "578. סאות׳ פארק 24/7 (South Park)",
+      "poster": "https://images.pluto.tv/channels/609ae66b359b270007869ff1/colorLogoPNG_1733160636316.png",
+      "posterShape": "landscape",
+      "description": "📡 מקור השידור: Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk\n✅ ערוץ FAST רשמי",
       "genres": [
         "סרטים וסדרות",
         "עולם"
@@ -51,10 +327,22 @@
     {
       "id": "itv_cc_roast",
       "type": "tv",
-      "name": "קומדי סנטרל רוסט (CC Roast)",
+      "name": "579. קומדי סנטרל רוסט (CC Roast)",
       "poster": "https://images.pluto.tv/channels/6641fd41b18d700008e7e2b8/colorLogoPNG.png",
       "posterShape": "landscape",
-      "description": "📡 מקור השידור:",
+      "description": "📡 מקור השידור: Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "סרטים וסדרות",
+        "עולם"
+      ]
+    },
+    {
+      "id": "itv_dry_bar_comedy",
+      "type": "tv",
+      "name": "580. סטנדאפ נקי (Dry Bar Comedy)",
+      "poster": "https://i.imgur.com/3N2C60N.png",
+      "posterShape": "landscape",
+      "description": "📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
       "genres": [
         "סרטים וסדרות",
         "עולם"
@@ -63,13 +351,109 @@
     {
       "id": "itv_british_comedy",
       "type": "tv",
-      "name": "קומדיה בריטית (British Comedy)",
+      "name": "581. קומדיה בריטית (British Comedy)",
       "poster": "https://images.pluto.tv/channels/638e11951177840007fdd6b2/colorLogoPNG_1745597179027.png",
       "posterShape": "landscape",
-      "description": "📡 מקור השידור:",
+      "description": "📡 מקור השידור: Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk\n✅ ערוץ FAST רשמי",
       "genres": [
         "סרטים וסדרות",
         "עולם"
+      ]
+    },
+    {
+      "id": "itv_classic_movies_30a",
+      "type": "tv",
+      "name": "582. סרטים קלאסיים (Classic Movies)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/icon.png",
+      "posterShape": "landscape",
+      "description": "📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "סרטים וסדרות",
+        "עולם"
+      ]
+    },
+    {
+      "id": "itv_action_50cent",
+      "type": "tv",
+      "name": "583. סרטי אקשן (50 Cent Action)",
+      "poster": "https://provider-static.plex.tv/epg/cms/production/bcfb9977-809f-49ae-acc7-430f2c6ffb26/50CentAction_Logo_1500x1000_DarkBG_-_Chris_Connors.png",
+      "posterShape": "landscape",
+      "description": "📡 מקור השידור: Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "סרטים וסדרות",
+        "עולם"
+      ]
+    },
+    {
+      "id": "itv_csi_las_vegas_247",
+      "type": "tv",
+      "name": "609. זירת הפשע 24/7 (CSI)",
+      "poster": "https://i.imgur.com/xLLNEfA.png",
+      "posterShape": "landscape",
+      "description": "זירת הפשע 24/7 (CSI) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "סרטים וסדרות",
+        "ארה״ב"
+      ]
+    },
+    {
+      "id": "itv_csi_miami_247",
+      "type": "tv",
+      "name": "610. זירת הפשע מיאמי (CSI: Miami)",
+      "poster": "https://images.pluto.tv/channels/63eb9c5351f5d000085e8d7e/colorLogoPNG.png",
+      "posterShape": "landscape",
+      "description": "זירת הפשע מיאמי (CSI: Miami) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "סרטים וסדרות",
+        "ארה״ב"
+      ]
+    },
+    {
+      "id": "itv_csi_ny_247",
+      "type": "tv",
+      "name": "611. זירת הפשע ניו יורק (CSI: NY)",
+      "poster": "https://images.pluto.tv/channels/62f54c6439183b000769fb8f/colorLogoPNG_1731837277521.png",
+      "posterShape": "landscape",
+      "description": "זירת הפשע ניו יורק (CSI: NY) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "סרטים וסדרות",
+        "ארה״ב"
+      ]
+    },
+    {
+      "id": "itv_doctor_who_classic",
+      "type": "tv",
+      "name": "612. דוקטור הו קלאסי (Doctor Who)",
+      "poster": "https://i.imgur.com/JIqJQQM.png",
+      "posterShape": "landscape",
+      "description": "דוקטור הו קלאסי (Doctor Who) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "סרטים וסדרות",
+        "בריטניה"
+      ]
+    },
+    {
+      "id": "itv_pluto_sherlock",
+      "type": "tv",
+      "name": "613. שרלוק הולמס 24/7 (Sherlock)",
+      "poster": "https://images.pluto.tv/channels/5dc2c00abfed110009d97243/colorLogoPNG.png",
+      "posterShape": "landscape",
+      "description": "שרלוק הולמס 24/7 (Sherlock) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "סרטים וסדרות",
+        "בריטניה"
+      ]
+    },
+    {
+      "id": "itv_bbc_drama_fast",
+      "type": "tv",
+      "name": "614. דרמות בריטיות (BBC Drama)",
+      "poster": "https://i.imgur.com/HctHhLL.png",
+      "posterShape": "landscape",
+      "description": "דרמות בריטיות (BBC Drama) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "סרטים וסדרות",
+        "בריטניה"
       ]
     }
   ]

@@ -1,17 +1,23 @@
 {
-  "version": "4.8.91",
-  "code": 202611231828,
-  "app": 40891,
+  "version": "4.8.92",
+  "code": 202611241956,
+  "app": 40892,
   "shell": 3,
-  "date": "2026-11-23",
+  "date": "2026-11-24",
   "notes": [
-    "📺 מצב טלוויזיה רטרו שנות ה-90 (90s CRT Mode): הופך כל שידור חי לטלוויזיית CRT נוסטלגית עם קווי סריקה (Scanlines), וינייטת זרחן חמה ותג CH / PAL ירוק זוהר (במובייל ובטלוויזיה/ווב).",
-    "📰 פס מבזקי חדשות ישראלי חי על גבי כל ערוץ (Breaking News Ticker): צפו בספורט, סרט או סדרה וקבלו מבזקי חדשות בזמן אמת (Ynet RSS) רצים בפס חי בחלק העליון של המסך (קיצור מקש N בטלוויזיה/ווב + תפריט ✨ במובייל).",
-    "🎧 מיקסר צלילי רקע ואווירה פרוצדורלי (Ambient Soundscape Mixer): ייצור בזמן אמת של צלילי גשם עדין (🌧️), גלי ים (🌊) או חלל עמוק (🌌) מעורבבים ישירות מתחת לשידור (ללא קבצי שמע חיצוניים — Web Audio API בווב + מנוע סינתזה AudioTrack במובייל).",
-    "📊 מד דופק שידור חי (Live Telemetry HUD): תצוגת נתונים טכניים בזמן אמת בסגנון טייס: רזולוציה חיה, קצב נתונים (Mbps), קצב פריימים (FPS) ומד באפר חי (קיצור מקש I בטלוויזיה/ווב + תפריט ✨ במובייל).",
-    "🤫 מצב בוס / השתקת מסך מיידית (Stealth Boss Mode): בלחיצה אחת או מקש B — השתקה מיידית ומעבר למסך שעון מינימליסטי כהה, וחזרה מיידית לשידור בלחיצה."
+    "🎬 הרחבת ענק לספריית ה-VOD הישראלית (55 סדרות מלאות · 497 פרקים מאומתים ב-1080p): נוספו עשרות סדרות דגל ישראליות לצפייה ישירה בנגן המובנה (ללא פרסומות וללא DRM): *קופה ראשית, מנאייכ, טהרן, המפקדת, היהודים באים, שעת נעילה, המזח, שישה אפסים, איסט סייד, מגרש הרוסים, החמאם, חוליגנים, יאפא, חזרות, בואו לאכול איתי, זהו זה!, החמישיה הקאמרית, עלומים, קרתגו, שטוקהולם, התסריטאי, מתיר עגונות, תיק נעדר, שעת אפס, פמת\"א, מותק בול באמצע, אבירם כץ, סובייצקה, הצבי, האמת, מחוננת, התנתקות, מקום שמח, כל האימהות משקרות, בהסתורה, מלאך משחית, מועדון הסטנד-אפ, סיפורים מהכורסה, מי זאת?, יקומות, אחד על אחד, מונא, האיש שרצה לדעת הכול, קולנוע ישראלי וקלאסיקות בורקס* ועוד!",
+    "📺 46 ערוצי לייב חדשים ומאומתים (חצינו את רף 405 הערוצים!): כולל *ערוץ קולנוע ישראלי ובורקס 24/7 HD*, ערוצי חדשות וכלכלה (*ABC News Live, CBS News 24/7, Al Jazeera English, NHK World, Bloomberg TV+, Bloomberg Originals, Bloomberg Europe*), ילדים ואנימה (*LEGO Kids TV, Garfield, Cartoonito HD, Kartoon Channel!, MeTV Toons, Sonic TV, Naruto, Naruto Shippuden, Anime x HIDIVE, RetroCrush*), סדרות וקומדיה (*CSI, CSI: Miami, CSI: NY, Doctor Who Classic, Sherlock, BBC Drama, iCarly, Cartman 24/7*), אוכל ולייפסטייל (*BBC Food, Jamie Oliver, Tastemade, America's Test Kitchen, K-FOOD, Top Gear, Motorvision FHD, Cars.TV, Wipeout, Fear Factor, Deal or No Deal, BBC Home & Garden, BBC Travel, FashionTV Paris*).",
+    "🔄 סנכרון מלא של channels.js, CHANNELS.md ופלייליסטים: כל 405 הערוצים ו-55 סדרות ה-VOD מסונכרנים במלואם בין Android Mobile, Android TV, LG webOS, Samsung Tizen, Windows, Kodi, Stremio ו-Home Assistant."
   ],
   "history": [
+    {
+      "version": "4.8.92",
+      "notes": [
+        "🎬 הרחבת ענק לספריית ה-VOD הישראלית (55 סדרות מלאות · 497 פרקים מאומתים ב-1080p): נוספו עשרות סדרות דגל ישראליות לצפייה ישירה בנגן המובנה (ללא פרסומות וללא DRM): *קופה ראשית, מנאייכ, טהרן, המפקדת, היהודים באים, שעת נעילה, המזח, שישה אפסים, איסט סייד, מגרש הרוסים, החמאם, חוליגנים, יאפא, חזרות, בואו לאכול איתי, זהו זה!, החמישיה הקאמרית, עלומים, קרתגו, שטוקהולם, התסריטאי, מתיר עגונות, תיק נעדר, שעת אפס, פמת\"א, מותק בול באמצע, אבירם כץ, סובייצקה, הצבי, האמת, מחוננת, התנתקות, מקום שמח, כל האימהות משקרות, בהסתורה, מלאך משחית, מועדון הסטנד-אפ, סיפורים מהכורסה, מי זאת?, יקומות, אחד על אחד, מונא, האיש שרצה לדעת הכול, קולנוע ישראלי וקלאסיקות בורקס* ועוד!",
+        "📺 46 ערוצי לייב חדשים ומאומתים (חצינו את רף 405 הערוצים!): כולל *ערוץ קולנוע ישראלי ובורקס 24/7 HD*, ערוצי חדשות וכלכלה (*ABC News Live, CBS News 24/7, Al Jazeera English, NHK World, Bloomberg TV+, Bloomberg Originals, Bloomberg Europe*), ילדים ואנימה (*LEGO Kids TV, Garfield, Cartoonito HD, Kartoon Channel!, MeTV Toons, Sonic TV, Naruto, Naruto Shippuden, Anime x HIDIVE, RetroCrush*), סדרות וקומדיה (*CSI, CSI: Miami, CSI: NY, Doctor Who Classic, Sherlock, BBC Drama, iCarly, Cartman 24/7*), אוכל ולייפסטייל (*BBC Food, Jamie Oliver, Tastemade, America's Test Kitchen, K-FOOD, Top Gear, Motorvision FHD, Cars.TV, Wipeout, Fear Factor, Deal or No Deal, BBC Home & Garden, BBC Travel, FashionTV Paris*).",
+        "🔄 סנכרון מלא של channels.js, CHANNELS.md ופלייליסטים: כל 405 הערוצים ו-55 סדרות ה-VOD מסונכרנים במלואם בין Android Mobile, Android TV, LG webOS, Samsung Tizen, Windows, Kodi, Stremio ו-Home Assistant."
+      ]
+    },
     {
       "version": "4.8.91",
       "notes": [
@@ -276,52 +282,44 @@
         "אימות ובדיקת תקינות מקיפה של 100% מכלל 434 הערוצים בפרויקט: ביצוע בדיקות סגמנטים ושרתים לכלל ערוצי הטלוויזיה והרדיו. תיקון ערוץ הטיולים והנופש (ערוץ 22), ערוץ הילדים HD (ערוץ 403), וערוץ לולי לפעוטות HD (ערוץ 406).",
         "סנכרון רשימות ופלטפורמות: עדכון רשימות הנגינה (M3U), תוסף Stremio (כולל תיקון תווי גרשיים במערכות הפעלה), ועדכון קובצי המקורות CHANNELS.md ו-SOURCES.md."
       ]
-    },
-    {
-      "version": "4.8.67",
-      "notes": [
-        "ערוצי ספורט ישראליים מקוריים מהארץ: ספורט 1 (ערוץ 38), ספורט 2 (ערוץ 39), ספורט 3 (ערוץ 40), ספורט 4 (ערוץ 41) וספורט 6 (ערוץ 511) – הסרת כל המקורות הזרים מחו\"ל (אוקראינה/בלטיות) ומעבר מלא לשידורי ספורט ישראליים רשמיים וחיים בעברית עם שדרנים ישראליים ב-FHD (ערוצי Sport 5 Live, Sport 5 Stars, ONE 1, ONE 2, Sport 5 Max) וגיבוי מלא ללא הודעות \"מתחבר מחדש\".",
-        "ערוצי ילדים בעברית: עדכון דיסני ג'וניור (ערוץ 49) וניקלודיאון ישראל (ערוץ 50) למקורות פעילים ויציבים בעברית.",
-        "חבילות התקנה ועדכון OTA מלאות בכל הפלטפורמות: Android, Android TV, Wear OS, LG webOS, Samsung Tizen, Kodi, Windows, macOS ו-Linux."
-      ]
     }
   ],
   "native": {
     "android": {
-      "version": "4.8.91",
-      "app": 40891,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.91/IsraelTVPlus-android.apk"
+      "version": "4.8.92",
+      "app": 40892,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.92/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "4.8.91",
-      "app": 40891,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.91/IsraelTVPlus-windows-setup.exe"
+      "version": "4.8.92",
+      "app": 40892,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.92/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "4.8.91",
-      "app": 40891,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.91/com.israeltv.plus_all.ipk",
+      "version": "4.8.92",
+      "app": 40892,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.92/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "4.8.91",
-      "app": 40891,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.91/IsraelTVPlus-tizen-project.zip"
+      "version": "4.8.92",
+      "app": 40892,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.92/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "4.8.91",
-      "app": 40891,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.91/IsraelTVPlus-macos-arm64.zip"
+      "version": "4.8.92",
+      "app": 40892,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.92/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "4.8.91",
-      "app": 40891,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.91/IsraelTVPlus-linux-x64.zip"
+      "version": "4.8.92",
+      "app": 40892,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.92/IsraelTVPlus-linux-x64.zip"
     },
     "wear": {
-      "version": "4.8.91",
-      "app": 1040891,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.91/IsraelTVPlus-wearos.apk"
+      "version": "4.8.92",
+      "app": 1040892,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.92/IsraelTVPlus-wearos.apk"
     }
   }
 }

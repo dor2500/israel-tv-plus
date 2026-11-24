@@ -2,12 +2,12 @@
   "meta": {
     "id": "itv_stingray_movie_music",
     "type": "tv",
-    "name": "פסקולים מסרטים (Movie Music)",
+    "name": "588. פסקולים מסרטים (Movie Music)",
     "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2CSpCdAxnLpqebMLZh6h7vMPk6LYpdqkVHA&s",
     "posterShape": "landscape",
     "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2CSpCdAxnLpqebMLZh6h7vMPk6LYpdqkVHA&s",
     "background": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2CSpCdAxnLpqebMLZh6h7vMPk6LYpdqkVHA&s",
-    "description": "📡 מקור השידור:",
+    "description": "📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
     "genres": [
       "מוזיקה",
       "עולם"

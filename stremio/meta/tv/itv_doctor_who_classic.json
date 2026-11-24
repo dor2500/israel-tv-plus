@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_doctor_who_classic",
+    "type": "tv",
+    "name": "612. דוקטור הו קלאסי (Doctor Who)",
+    "poster": "https://i.imgur.com/JIqJQQM.png",
+    "posterShape": "landscape",
+    "logo": "https://i.imgur.com/JIqJQQM.png",
+    "background": "https://i.imgur.com/JIqJQQM.png",
+    "description": "דוקטור הו קלאסי (Doctor Who) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
+    "genres": [
+      "סרטים וסדרות",
+      "בריטניה"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "בריטניה"
+  }
+}

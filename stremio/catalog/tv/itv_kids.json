@@ -191,6 +191,138 @@
         "ילדים מהעולם",
         "ארצות הברית"
       ]
+    },
+    {
+      "id": "itv_lego_kids_tv",
+      "type": "tv",
+      "name": "598. ערוץ לגו לילדים (LEGO Kids TV)",
+      "poster": "https://i.imgur.com/tMfEsVr.png",
+      "posterShape": "landscape",
+      "description": "ערוץ לגו לילדים (LEGO Kids TV) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "ילדים מהעולם",
+        "ארה״ב"
+      ]
+    },
+    {
+      "id": "itv_garfield_tv",
+      "type": "tv",
+      "name": "599. גארפילד וחברים 24/7 (Garfield)",
+      "poster": "https://i.imgur.com/evzfe9C.png",
+      "posterShape": "landscape",
+      "description": "גארפילד וחברים 24/7 (Garfield) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "ילדים מהעולם",
+        "ארה״ב"
+      ]
+    },
+    {
+      "id": "itv_cartoonito_hd",
+      "type": "tv",
+      "name": "600. קרטוניטו לילדים (Cartoonito HD)",
+      "poster": "https://i.imgur.com/6vYWCD0.png",
+      "posterShape": "landscape",
+      "description": "קרטוניטו לילדים (Cartoonito HD) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "ילדים מהעולם",
+        "בריטניה"
+      ]
+    },
+    {
+      "id": "itv_kartoon_channel",
+      "type": "tv",
+      "name": "601. ערוץ המצוירים (Kartoon Channel!)",
+      "poster": "https://i.imgur.com/1luzP3T.png",
+      "posterShape": "landscape",
+      "description": "ערוץ המצוירים (Kartoon Channel!) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "ילדים מהעולם",
+        "ארה״ב"
+      ]
+    },
+    {
+      "id": "itv_metv_toons",
+      "type": "tv",
+      "name": "602. מצוירים קלאסיים (MeTV Toons)",
+      "poster": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/MeTV_Toons.png/250px-MeTV_Toons.png",
+      "posterShape": "landscape",
+      "description": "מצוירים קלאסיים (MeTV Toons) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "ילדים מהעולם",
+        "ארה״ב"
+      ]
+    },
+    {
+      "id": "itv_sonic_tv_fast",
+      "type": "tv",
+      "name": "603. סוניק הקיפוד 24/7 (Sonic TV)",
+      "poster": "https://i.imgur.com/TKhRlrR.png",
+      "posterShape": "landscape",
+      "description": "סוניק הקיפוד 24/7 (Sonic TV) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "ילדים מהעולם",
+        "ארה״ב"
+      ]
+    },
+    {
+      "id": "itv_naruto_247",
+      "type": "tv",
+      "name": "604. נארוטו 24/7 (Naruto)",
+      "poster": "https://i.imgur.com/M8X3Kvc.png",
+      "posterShape": "landscape",
+      "description": "נארוטו 24/7 (Naruto) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "ילדים מהעולם",
+        "יפן"
+      ]
+    },
+    {
+      "id": "itv_naruto_shippuden_247",
+      "type": "tv",
+      "name": "605. נארוטו שיפודן 24/7 (Shippuden)",
+      "poster": "https://images.pluto.tv/channels/64c92fea3c3344000869e8a9/colorLogoPNG.png",
+      "posterShape": "landscape",
+      "description": "נארוטו שיפודן 24/7 (Shippuden) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "ילדים מהעולם",
+        "יפן"
+      ]
+    },
+    {
+      "id": "itv_anime_hidive",
+      "type": "tv",
+      "name": "606. ערוץ אנימה (Anime x HIDIVE)",
+      "poster": "https://i.imgur.com/v0BlxCa.png",
+      "posterShape": "landscape",
+      "description": "ערוץ אנימה (Anime x HIDIVE) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "ילדים מהעולם",
+        "ארה״ב"
+      ]
+    },
+    {
+      "id": "itv_retrocrush_anime",
+      "type": "tv",
+      "name": "607. אנימה רטרו קלאסית (RetroCrush)",
+      "poster": "https://i.imgur.com/M40b4YI.png",
+      "posterShape": "landscape",
+      "description": "אנימה רטרו קלאסית (RetroCrush) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "ילדים מהעולם",
+        "ארה״ב"
+      ]
+    },
+    {
+      "id": "itv_pluto_anime_movies",
+      "type": "tv",
+      "name": "608. סרטי אנימה (Pluto Anime Movies)",
+      "poster": "https://images.pluto.tv/channels/67ed8f7e443f0671bc2b2368/colorLogoPNG.png",
+      "posterShape": "landscape",
+      "description": "סרטי אנימה (Pluto Anime Movies) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "ילדים מהעולם",
+        "ארה״ב"
+      ]
     }
   ]
 }

@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_sonic_tv_fast",
+    "type": "tv",
+    "name": "603. סוניק הקיפוד 24/7 (Sonic TV)",
+    "poster": "https://i.imgur.com/TKhRlrR.png",
+    "posterShape": "landscape",
+    "logo": "https://i.imgur.com/TKhRlrR.png",
+    "background": "https://i.imgur.com/TKhRlrR.png",
+    "description": "סוניק הקיפוד 24/7 (Sonic TV) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
+    "genres": [
+      "ילדים מהעולם",
+      "ארה״ב"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "ארה״ב"
+  }
+}

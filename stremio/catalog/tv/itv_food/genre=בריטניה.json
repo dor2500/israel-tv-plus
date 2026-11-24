@@ -1,0 +1,28 @@
+{
+  "metas": [
+    {
+      "id": "itv_bbc_food_hd",
+      "type": "tv",
+      "name": "618. ערוץ הבישול הבריטי (BBC Food)",
+      "poster": "https://i.imgur.com/kcmHcSx.png",
+      "posterShape": "landscape",
+      "description": "ערוץ הבישול הבריטי (BBC Food) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "ערוצי אוכל",
+        "בריטניה"
+      ]
+    },
+    {
+      "id": "itv_jamie_oliver_tv",
+      "type": "tv",
+      "name": "619. השף ג׳יימי אוליבר (Jamie Oliver)",
+      "poster": "https://i.imgur.com/4v93XUB.png",
+      "posterShape": "landscape",
+      "description": "השף ג׳יימי אוליבר (Jamie Oliver) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "ערוצי אוכל",
+        "בריטניה"
+      ]
+    }
+  ]
+}

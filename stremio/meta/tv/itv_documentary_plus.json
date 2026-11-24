@@ -2,14 +2,14 @@
   "meta": {
     "id": "itv_documentary_plus",
     "type": "tv",
-    "name": "דוקומנטרי+ (Documentary+)",
+    "name": "569. דוקומנטרי+ (Documentary+)",
     "poster": "https://i.imgur.com/x57klfS.png",
     "posterShape": "landscape",
     "logo": "https://i.imgur.com/x57klfS.png",
     "background": "https://i.imgur.com/x57klfS.png",
-    "description": "📡 מקור השידור:",
+    "description": "📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
     "genres": [
-      "מדע וטבע",
+      "טבע ודוקו",
       "עולם"
     ],
     "releaseInfo": "LIVE",

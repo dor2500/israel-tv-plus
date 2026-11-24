@@ -1,0 +1,40 @@
+{
+  "metas": [
+    {
+      "id": "itv_doctor_who_classic",
+      "type": "tv",
+      "name": "612. דוקטור הו קלאסי (Doctor Who)",
+      "poster": "https://i.imgur.com/JIqJQQM.png",
+      "posterShape": "landscape",
+      "description": "דוקטור הו קלאסי (Doctor Who) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "סרטים וסדרות",
+        "בריטניה"
+      ]
+    },
+    {
+      "id": "itv_pluto_sherlock",
+      "type": "tv",
+      "name": "613. שרלוק הולמס 24/7 (Sherlock)",
+      "poster": "https://images.pluto.tv/channels/5dc2c00abfed110009d97243/colorLogoPNG.png",
+      "posterShape": "landscape",
+      "description": "שרלוק הולמס 24/7 (Sherlock) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "סרטים וסדרות",
+        "בריטניה"
+      ]
+    },
+    {
+      "id": "itv_bbc_drama_fast",
+      "type": "tv",
+      "name": "614. דרמות בריטיות (BBC Drama)",
+      "poster": "https://i.imgur.com/HctHhLL.png",
+      "posterShape": "landscape",
+      "description": "דרמות בריטיות (BBC Drama) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "סרטים וסדרות",
+        "בריטניה"
+      ]
+    }
+  ]
+}

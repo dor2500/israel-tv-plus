@@ -83,6 +83,66 @@
         "ערוצי אוכל",
         "עולם"
       ]
+    },
+    {
+      "id": "itv_bbc_food_hd",
+      "type": "tv",
+      "name": "618. ערוץ הבישול הבריטי (BBC Food)",
+      "poster": "https://i.imgur.com/kcmHcSx.png",
+      "posterShape": "landscape",
+      "description": "ערוץ הבישול הבריטי (BBC Food) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "ערוצי אוכל",
+        "בריטניה"
+      ]
+    },
+    {
+      "id": "itv_jamie_oliver_tv",
+      "type": "tv",
+      "name": "619. השף ג׳יימי אוליבר (Jamie Oliver)",
+      "poster": "https://i.imgur.com/4v93XUB.png",
+      "posterShape": "landscape",
+      "description": "השף ג׳יימי אוליבר (Jamie Oliver) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "ערוצי אוכל",
+        "בריטניה"
+      ]
+    },
+    {
+      "id": "itv_tastemade_food",
+      "type": "tv",
+      "name": "620. אוכל וקולינריה (Tastemade)",
+      "poster": "https://i.imgur.com/xP7Ehn8.png",
+      "posterShape": "landscape",
+      "description": "אוכל וקולינריה (Tastemade) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "ערוצי אוכל",
+        "ארה״ב"
+      ]
+    },
+    {
+      "id": "itv_americas_test_kitchen",
+      "type": "tv",
+      "name": "621. מטבח המבחן (Test Kitchen)",
+      "poster": "https://i.imgur.com/prMkTsZ.png",
+      "posterShape": "landscape",
+      "description": "מטבח המבחן (Test Kitchen) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "ערוצי אוכל",
+        "ארה״ב"
+      ]
+    },
+    {
+      "id": "itv_pluto_kfood",
+      "type": "tv",
+      "name": "622. אוכל קוריאני (K-FOOD)",
+      "poster": "https://images.pluto.tv/channels/633ee9ba83c08f00076b60a6/colorLogoPNG.png",
+      "posterShape": "landscape",
+      "description": "אוכל קוריאני (K-FOOD) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "ערוצי אוכל",
+        "דרום קוריאה"
+      ]
     }
   ]
 }

@@ -1,0 +1,16 @@
+{
+  "metas": [
+    {
+      "id": "itv_aljazeera_en_hd",
+      "type": "tv",
+      "name": "592. Al Jazeera English HD",
+      "poster": "https://i.imgur.com/7bRVpnu.png",
+      "posterShape": "landscape",
+      "description": "Al Jazeera English HD — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: אל-ג'זירה – שרת רשמי\n✅ שידור רשמי ישיר",
+      "genres": [
+        "חדשות מהעולם",
+        "קטאר"
+      ]
+    }
+  ]
+}

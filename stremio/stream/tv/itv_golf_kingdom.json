@@ -2,7 +2,7 @@
   "streams": [
     {
       "name": "ישראל TV+\n[FHD ראשי]",
-      "title": "גולף עולמי (Golf Kingdom)\n📡 \n",
+      "title": "גולף עולמי (Golf Kingdom)\n📡 FAST Public CDN\n✅ ערוץ FAST רשמי",
       "url": "https://30a-tv.com/feeds/vidaa/golf.m3u8",
       "behaviorHints": {
         "bingeGroup": "itv-live"

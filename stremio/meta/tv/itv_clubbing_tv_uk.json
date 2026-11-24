@@ -2,12 +2,12 @@
   "meta": {
     "id": "itv_clubbing_tv_uk",
     "type": "tv",
-    "name": "מוזיקה אלקטרונית (Clubbing TV)",
+    "name": "587. מוזיקה אלקטרונית (Clubbing TV)",
     "poster": "https://i.imgur.com/MyiA92q.png",
     "posterShape": "landscape",
     "logo": "https://i.imgur.com/MyiA92q.png",
     "background": "https://i.imgur.com/MyiA92q.png",
-    "description": "📡 מקור השידור:",
+    "description": "📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
     "genres": [
       "מוזיקה",
       "עולם"

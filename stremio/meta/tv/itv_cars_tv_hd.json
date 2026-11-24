@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_cars_tv_hd",
+    "type": "tv",
+    "name": "625. מכוניות על (Cars.TV)",
+    "poster": "https://i.imgur.com/JLSHiTp.png",
+    "posterShape": "landscape",
+    "logo": "https://i.imgur.com/JLSHiTp.png",
+    "background": "https://i.imgur.com/JLSHiTp.png",
+    "description": "מכוניות על (Cars.TV) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
+    "genres": [
+      "לייף סטייל ובידור",
+      "ארה״ב"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "ארה״ב"
+  }
+}

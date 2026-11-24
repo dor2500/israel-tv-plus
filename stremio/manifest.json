@@ -1,8 +1,8 @@
 {
   "id": "org.israeltvplus.addon",
-  "version": "4.8.91",
+  "version": "4.8.92",
   "name": "ישראל TV+ Live",
-  "description": "360 ערוצי טלוויזיה ישראליים ובינלאומיים בשידור חי, תחנות רדיו, שרתי גיבוי ומספור שלט נוח.",
+  "description": "405 ערוצי טלוויזיה ישראליים ובינלאומיים בשידור חי, תחנות רדיו, שרתי גיבוי ומספור שלט נוח.",
   "logo": "https://dor2500.github.io/israel-tv-plus/assets/app/icon-512.png",
   "background": "https://dor2500.github.io/israel-tv-plus/splash.png",
   "types": [
@@ -69,9 +69,27 @@
           "name": "genre",
           "options": [
             "אוסטרליה",
+            "ארה״ב",
             "בריטניה",
+            "יפן",
             "ישראל",
-            "עולם"
+            "עולם",
+            "קטאר"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "tv",
+      "id": "itv_business",
+      "name": "כלכלה ועסקים",
+      "extra": [
+        {
+          "name": "genre",
+          "options": [
+            "ארה״ב",
+            "בריטניה",
+            "סין"
           ]
         }
       ]
@@ -84,11 +102,20 @@
         {
           "name": "genre",
           "options": [
+            "ארה״ב",
             "ארצות הברית",
-            "ישראל"
+            "בריטניה",
+            "ישראל",
+            "עולם"
           ]
         }
       ]
+    },
+    {
+      "type": "tv",
+      "id": "itv_comedy",
+      "name": "קומדיה",
+      "extra": []
     },
     {
       "type": "tv",
@@ -98,6 +125,9 @@
         {
           "name": "genre",
           "options": [
+            "ארה״ב",
+            "בריטניה",
+            "דרום קוריאה",
             "ישראל",
             "עולם"
           ]
@@ -114,6 +144,8 @@
           "options": [
             "ארה״ב",
             "ארצות הברית",
+            "בריטניה",
+            "יפן",
             "עולם"
           ]
         }
@@ -128,7 +160,22 @@
           "name": "genre",
           "options": [
             "ארצות הברית",
-            "ישראל"
+            "ישראל",
+            "עולם"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "tv",
+      "id": "itv_travel",
+      "name": "טיולים והרפתקאות",
+      "extra": [
+        {
+          "name": "genre",
+          "options": [
+            "ארה״ב",
+            "בריטניה"
           ]
         }
       ]
@@ -151,32 +198,24 @@
     },
     {
       "type": "tv",
-      "id": "itv_docu",
-      "name": "מדע וטבע",
-      "extra": []
-    },
-    {
-      "type": "tv",
-      "id": "itv_music",
-      "name": "מוזיקה",
-      "extra": []
+      "id": "itv_lifestyle",
+      "name": "לייף סטייל ובידור",
+      "extra": [
+        {
+          "name": "genre",
+          "options": [
+            "ארה״ב",
+            "בריטניה",
+            "גרמניה",
+            "צרפת"
+          ]
+        }
+      ]
     },
     {
       "type": "tv",
       "id": "itv_vod",
       "name": "סדרות לצפייה ישירה",
-      "extra": []
-    },
-    {
-      "type": "tv",
-      "id": "itv_sports",
-      "name": "ספורט",
-      "extra": []
-    },
-    {
-      "type": "tv",
-      "id": "itv_movies",
-      "name": "סרטים וסדרות",
       "extra": []
     }
   ]

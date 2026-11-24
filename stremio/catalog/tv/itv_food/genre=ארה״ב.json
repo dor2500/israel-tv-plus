@@ -1,0 +1,28 @@
+{
+  "metas": [
+    {
+      "id": "itv_tastemade_food",
+      "type": "tv",
+      "name": "620. אוכל וקולינריה (Tastemade)",
+      "poster": "https://i.imgur.com/xP7Ehn8.png",
+      "posterShape": "landscape",
+      "description": "אוכל וקולינריה (Tastemade) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "ערוצי אוכל",
+        "ארה״ב"
+      ]
+    },
+    {
+      "id": "itv_americas_test_kitchen",
+      "type": "tv",
+      "name": "621. מטבח המבחן (Test Kitchen)",
+      "poster": "https://i.imgur.com/prMkTsZ.png",
+      "posterShape": "landscape",
+      "description": "מטבח המבחן (Test Kitchen) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "ערוצי אוכל",
+        "ארה״ב"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_bbc_home_garden",
+    "type": "tv",
+    "name": "630. עיצוב הבית והגינה (BBC Home)",
+    "poster": "https://i.imgur.com/rC0pi1D.png",
+    "posterShape": "landscape",
+    "logo": "https://i.imgur.com/rC0pi1D.png",
+    "background": "https://i.imgur.com/rC0pi1D.png",
+    "description": "עיצוב הבית והגינה (BBC Home) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
+    "genres": [
+      "לייף סטייל ובידור",
+      "בריטניה"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "בריטניה"
+  }
+}

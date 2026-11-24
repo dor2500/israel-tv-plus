@@ -1,0 +1,40 @@
+{
+  "metas": [
+    {
+      "id": "itv_southpark_cartman",
+      "type": "tv",
+      "name": "615. סאות׳ פארק: קרטמן (Cartman 24/7)",
+      "poster": "https://images.pluto.tv/channels/65df4934f7f0af0008c32545/colorLogoPNG.png",
+      "posterShape": "landscape",
+      "description": "סאות׳ פארק: קרטמן (Cartman 24/7) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "קומדיה",
+        "ארה״ב"
+      ]
+    },
+    {
+      "id": "itv_carol_burnett_247",
+      "type": "tv",
+      "name": "616. מופע קומדיה קלאסי (Carol Burnett)",
+      "poster": "https://i.imgur.com/1a03FlX.png",
+      "posterShape": "landscape",
+      "description": "מופע קומדיה קלאסי (Carol Burnett) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "קומדיה",
+        "ארה״ב"
+      ]
+    },
+    {
+      "id": "itv_icarly_247",
+      "type": "tv",
+      "name": "617. איי קארלי 24/7 (iCarly)",
+      "poster": "https://images.pluto.tv/channels/620ff46e0a576e0007dc2f89/colorLogoPNG.png",
+      "posterShape": "landscape",
+      "description": "איי קארלי 24/7 (iCarly) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "קומדיה",
+        "ארה״ב"
+      ]
+    }
+  ]
+}

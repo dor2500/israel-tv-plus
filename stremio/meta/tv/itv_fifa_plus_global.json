@@ -2,12 +2,12 @@
   "meta": {
     "id": "itv_fifa_plus_global",
     "type": "tv",
-    "name": "פיפ״א+ כדורגל (FIFA+)",
+    "name": "571. פיפ״א+ כדורגל (FIFA+)",
     "poster": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/FIFA%2B_(2025).svg/960px-FIFA%2B_(2025).svg.png",
     "posterShape": "landscape",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/FIFA%2B_(2025).svg/960px-FIFA%2B_(2025).svg.png",
     "background": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/FIFA%2B_(2025).svg/960px-FIFA%2B_(2025).svg.png",
-    "description": "📡 מקור השידור:",
+    "description": "📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
     "genres": [
       "ספורט",
       "עולם"

@@ -1,0 +1,40 @@
+{
+  "metas": [
+    {
+      "id": "itv_top_gear_247",
+      "type": "tv",
+      "name": "623. טופ גיר רכב 24/7 (Top Gear)",
+      "poster": "https://i.imgur.com/S6Su6QH.png",
+      "posterShape": "landscape",
+      "description": "טופ גיר רכב 24/7 (Top Gear) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "לייף סטייל ובידור",
+        "בריטניה"
+      ]
+    },
+    {
+      "id": "itv_wipeout_xtra_247",
+      "type": "tv",
+      "name": "629. ווייפאאוט אקסטרים (Wipeout)",
+      "poster": "https://i.imgur.com/UDeCRW1.png",
+      "posterShape": "landscape",
+      "description": "ווייפאאוט אקסטרים (Wipeout) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "לייף סטייל ובידור",
+        "בריטניה"
+      ]
+    },
+    {
+      "id": "itv_bbc_home_garden",
+      "type": "tv",
+      "name": "630. עיצוב הבית והגינה (BBC Home)",
+      "poster": "https://i.imgur.com/rC0pi1D.png",
+      "posterShape": "landscape",
+      "description": "עיצוב הבית והגינה (BBC Home) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "לייף סטייל ובידור",
+        "בריטניה"
+      ]
+    }
+  ]
+}

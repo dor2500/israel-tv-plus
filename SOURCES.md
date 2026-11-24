@@ -1,6 +1,6 @@
 # מקורות – מאיפה מגיע כל ערוץ
 
-נוצר אוטומטית מ-`channels.json` על ידי `tools/make_sources.py`. סה"כ **331** פריטים: 195 ערוצי טלוויזיה, 136 תחנות רדיו, 0 אפליקציות/שירותים.
+נוצר אוטומטית מ-`channels.json` על ידי `tools/make_sources.py`. סה"כ **405** פריטים: 269 ערוצי טלוויזיה, 136 תחנות רדיו, 0 אפליקציות/שירותים.
 
 ## איך הערוצים נאספו ונבדקו
 
@@ -17,8 +17,8 @@
 
 ## ⚖️ מצב הזכויות – חשוב לדעת
 
-- **231 שידורים רשמיים** – מהשרתים של הגוף המשדר עצמו או של המפיץ שלו (כאן, 13, 14, i24NEWS, גלי צה"ל, תחנות הרדיו, DW, אל-ג'זירה...).
-- **31 ערוצי FAST** – ערוצים חינמיים עם פרסומות שהבעלים מפיצים בעצמם (Pluto TV, BabyFirst, LEGO, Baby Shark...).
+- **232 שידורים רשמיים** – מהשרתים של הגוף המשדר עצמו או של המפיץ שלו (כאן, 13, 14, i24NEWS, גלי צה"ל, תחנות הרדיו, DW, אל-ג'זירה...).
+- **104 ערוצי FAST** – ערוצים חינמיים עם פרסומות שהבעלים מפיצים בעצמם (Pluto TV, BabyFirst, LEGO, Baby Shark...).
 - **0 ערוצים מהעולם** – שידורים פתוחים מהמאגר הציבורי iptv-org (ייבוא אוטומטי, `tools/import_iptv.py`): כל אחד נבדק שהוא משדר ושיש בו תמונה, ללא ערוצים שדורשים מנוי/כתובת מיוחדת. רובם מהשרתים של הערוצים עצמם, אבל הבעלים לא נבדקו אחד-אחד.
 - **67 ממסרי צד שלישי** – בעיקר `stream.mcquack.net` (0 ערוצים). אלה **אינם** השרתים של הערוצים: אתר חיצוני קולט את השידור ומפיץ אותו מחדש. בהם נמצאים גם ערוצים בתשלום (HOT, yes, viju/TV1000, ערוצי ספורט) – סביר מאוד שההפצה הזו **ללא רישיון** מבעלי הזכויות, והם עלולים להיעלם בכל רגע. ההחלטה אם להשאיר אותם היא שלך; הסקריפטים לא מוסיפים ממסרים חדשים של ערוצים בתשלום.
 - **שירותי המנויים** (פרטנר, סלקום, STING, yes, HOT) – אין בפרויקט שום שידור שלהם; הכרטיס רק פותח את האפליקציה/האתר הרשמי, וצפייה דורשת מנוי.
@@ -31,13 +31,13 @@
 |---|---|---|---|
 | `d1zqtf09wb8nt5.cloudfront.net` | FreeTV – השידור הרשמי (AWS CloudFront) | ✅ רשמי | 69 |
 | `gb25.streamgates.net` | StreamGates – ערוצי רדיוס 100FM | ✅ רשמי | 60 |
+| `jmp2.uk` | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | 39 |
 | `cdn.cybercdn.live` | CyberCDN – ה-CDN של תחנות הרדיו עצמן | ✅ רשמי | 18 |
 | `r.il.cdn-redge.media` | Redge – ה-CDN הרשמי של כאן, ערוץ 14 וכלכלה 10 | ✅ רשמי | 16 |
-| `jmp2.uk` | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | 11 |
 | `playerservices.streamtheworld.com` | Triton StreamTheWorld – מפיץ הרדיו של כאן | ✅ רשמי | 7 |
 | `glzwizzlv.bynetcdn.com` | גלי צה"ל / גלגלצ – CDN רשמי (Bynet) | ✅ רשמי | 6 |
 | `cast.breslevforyou.co.il` | רדיו ברסלב – שרת התחנה | ✅ רשמי | 5 |
-| `osoyz0xv.ottclub.xyz` | osoyz0xv.ottclub.xyz | ⚠️ ממסר צד שלישי | 4 |
+| `2lacasaba.site` | 2lacasaba.site | ⚠️ ממסר צד שלישי | 4 |
 | `edge1.il.kab.tv` | edge1.il.kab.tv | ⚠️ ממסר צד שלישי | 4 |
 | `cdna.streamgates.net` | StreamGates – ה-CDN של התחנה | ✅ רשמי | 4 |
 | `d1yd8hohnldm33.cloudfront.net` | ערוץ FAST ישראלי – AWS CloudFront | ✅ FAST חינמי | 3 |
@@ -50,9 +50,14 @@
 | `d2dffl3588mvfk.cloudfront.net` | ערוץ FAST ישראלי – AWS CloudFront | ✅ FAST חינמי | 2 |
 | `636ffd31f0e12.streamlock.net` | 636ffd31f0e12.streamlock.net | ⚠️ ממסר צד שלישי | 2 |
 | `rgelive.akamaized.net` | ספורט 5 – השידור הרשמי של RGE (Akamai) | ✅ רשמי | 2 |
+| `stream-us-east-1.getpublica.com` | stream-us-east-1.getpublica.com | ⚠️ ממסר צד שלישי | 2 |
 | `dash3.antik.sk` | Antik Telecom (סלובקיה), נתיבי test | ⚠️ ממסר צד שלישי | 2 |
 | `edge3.uk.kab.tv` | קבלה לעם – שרת רשמי | ✅ רשמי | 2 |
 | `mvg-mv-xumo.otteravision.com` | mvg-mv-xumo.otteravision.com | ⚠️ ממסר צד שלישי | 2 |
+| `lotus.stingray.com` | FAST Public CDN | ✅ FAST חינמי | 2 |
+| `30a-tv.com` | FAST Public CDN | ✅ FAST חינמי | 2 |
+| `a-cdn.klowdtv.com` | FAST Public CDN | ✅ FAST חינמי | 2 |
+| `bloomberg.com` | FAST Public CDN | ✅ FAST חינמי | 2 |
 | `radio.streamgates.net` | StreamGates – ה-CDN של התחנה | ✅ רשמי | 2 |
 | `media2.93fm.co.il` | קול חי – שרת התחנה | ✅ רשמי | 2 |
 | `icecast.live` | icecast.live | ⚠️ ממסר צד שלישי | 2 |
@@ -73,7 +78,6 @@
 | `e75fc053c0d2406fb74cdd71d77e1a7f.mediatailor.us-east-1.amazonaws.com` | e75fc053c0d2406fb74cdd71d77e1a7f.mediatailor.us-east-1.amazonaws.com | ⚠️ ממסר צד שלישי | 1 |
 | `streaming.aurora.enhanced.live` | streaming.aurora.enhanced.live | ⚠️ ממסר צד שלישי | 1 |
 | `tvf-tv5ch.otteravision.com` | tvf-tv5ch.otteravision.com | ⚠️ ממסר צד שלישי | 1 |
-| `stream-us-east-1.getpublica.com` | stream-us-east-1.getpublica.com | ⚠️ ממסר צד שלישי | 1 |
 | `i24newsenglish-cdn.encoders.immergo.tv` | i24NEWS – שרת רשמי | ✅ רשמי | 1 |
 | `linear901-oo-hls0-prd-gtm.delivery.skycdp.com` | linear901-oo-hls0-prd-gtm.delivery.skycdp.com | ⚠️ ממסר צד שלישי | 1 |
 | `dwamdstream102.akamaized.net` | DW – Akamai (רשמי) | ✅ רשמי | 1 |
@@ -118,6 +122,43 @@
 | `amg00861-terninternation-inwild-samsunguk-w5wic.amagi.tv` | FAST Official | ✅ FAST חינמי | 1 |
 | `amc-rushbyamc-1-us.vizio.wurl.tv` | FAST Official | ✅ FAST חינמי | 1 |
 | `amogonetworx-artflix-1-nl.samsung.wurl.tv` | FAST Official | ✅ FAST חינמי | 1 |
+| `linear-1224.frequency.stream` | FAST Public CDN | ✅ FAST חינמי | 1 |
+| `dqga3jatxofgx.cloudfront.net` | FAST Public CDN | ✅ FAST חינמי | 1 |
+| `aegis-cloudfront-1.tubi.video` | FAST Public CDN | ✅ FAST חינמי | 1 |
+| `tgn.bozztv.com` | FAST Public CDN | ✅ FAST חינמי | 1 |
+| `cc-mgr91yrk4pehy.akamaized.net` | FAST Public CDN | ✅ FAST חינמי | 1 |
+| `ef79b15c8c7c46c7a9de9d33001dbd07.mediatailor.us-west-2.amazonaws.com` | FAST Public CDN | ✅ FAST חינמי | 1 |
+| `amg00861-amg00861c10-rakuten-uk-3152.playouts.now.amagi.tv` | FAST Public CDN | ✅ FAST חינמי | 1 |
+| `95cedebd.wurl.com` | FAST Public CDN | ✅ FAST חינמי | 1 |
+| `amg01074-fueltv-fueltvemeaen-rakuten-b6j62.amagi.tv` | FAST Public CDN | ✅ FAST חינמי | 1 |
+| `nosignal1.antenaplay.ro` | FAST Public CDN | ✅ FAST חינמי | 1 |
+| `amg02278-amg02278c1-flosports-worldwide-7592.playouts.now.amagi.tv` | FAST Public CDN | ✅ FAST חינמי | 1 |
+| `drybar-drybarcomedy-1-au.samsung.wurl.tv` | FAST Public CDN | ✅ FAST חינמי | 1 |
+| `lightning-now90s-samsungnz.amagi.tv` | FAST Public CDN | ✅ FAST חינמי | 1 |
+| `live-hls-apps-aje-fa.getaj.net` | אל-ג'זירה – שרת רשמי | ✅ רשמי | 1 |
+| `media-tyo.hls.nhkworld.jp` | FAST Public CDN | ✅ FAST חינמי | 1 |
+| `d8975dc3.wurl.com` | FAST Public CDN | ✅ FAST חינמי | 1 |
+| `fastlive.cctvplus.com` | FAST Public CDN | ✅ FAST חינמי | 1 |
+| `boing.akamaized.net` | FAST Public CDN | ✅ FAST חינמי | 1 |
+| `lightning-fnf-samsungaus.amagi.tv` | FAST Public CDN | ✅ FAST חינמי | 1 |
+| `sr-live-weigel1.akamaized.net` | FAST Public CDN | ✅ FAST חינמי | 1 |
+| `d21vn5eki5qsdi.cloudfront.net` | FAST Public CDN | ✅ FAST חינמי | 1 |
+| `linear-899.frequency.stream` | FAST Public CDN | ✅ FAST חינמי | 1 |
+| `bbc-classicdrwho-1-us.roku.wurl.tv` | FAST Public CDN | ✅ FAST חינמי | 1 |
+| `linear-938.frequency.stream` | FAST Public CDN | ✅ FAST חינמי | 1 |
+| `vizioaaaa-carol-burnett-vizio-xam92.amagi.tv` | FAST Public CDN | ✅ FAST חינמי | 1 |
+| `d1e9r0b71zfwk7.cloudfront.net` | FAST Public CDN | ✅ FAST חינמי | 1 |
+| `d3i68hpvh19xjd.cloudfront.net` | FAST Public CDN | ✅ FAST חינמי | 1 |
+| `rakutenaa-tm-intl-aus-rakuten-eu-n1gtg.amagi.tv` | FAST Public CDN | ✅ FAST חינמי | 1 |
+| `amg00793-amg00793c5-vizio-us-2666.playouts.now.amagi.tv` | FAST Public CDN | ✅ FAST חינמי | 1 |
+| `mvg-mv.otteravision.com` | FAST Public CDN | ✅ FAST חינמי | 1 |
+| `amg00627-banijaygroup-dealornodeal-samsungau-si7xg.amagi.tv` | FAST Public CDN | ✅ FAST חינמי | 1 |
+| `amg00627-banijaygroup-fearfactor-samsungau-9vdod.amagi.tv` | FAST Public CDN | ✅ FAST חינמי | 1 |
+| `amg00627-banijaygroup-wipeoutxtraau-samsungau-ashbl.amagi.tv` | FAST Public CDN | ✅ FAST חינמי | 1 |
+| `d11r33s5i066xh.cloudfront.net` | FAST Public CDN | ✅ FAST חינמי | 1 |
+| `edge-fast3.evrideo.tv` | FAST Public CDN | ✅ FAST חינמי | 1 |
+| `amg00441-amg00441c1-rakuten-us-6050.playouts.now.amagi.tv` | FAST Public CDN | ✅ FAST חינמי | 1 |
+| `d6ef3usc6d9cl.cloudfront.net` | FAST Public CDN | ✅ FAST חינמי | 1 |
 | `eco-live.mediacast.co.il` | eco99fm – Mediacast (רשמי) | ✅ רשמי | 1 |
 | `102.livecdn.biz` | 102FM – LiveCDN (רשמי) | ✅ רשמי | 1 |
 | `1075.livecdn.biz` | רדיו חיפה – LiveCDN (רשמי) | ✅ רשמי | 1 |
@@ -236,6 +277,11 @@
 | 179 | Food Network International HD | streaming.aurora.enhanced.live | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
 | 180 | TV5MONDE Chefs HD – שפים וגסטרונומיה | tvf-tv5ch.otteravision.com | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
 | 181 | Cooking Panda HD – מתכונים ובישול | stream-us-east-1.getpublica.com | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 618 | ערוץ הבישול הבריטי (BBC Food) | FAST Public CDN | ✅ FAST חינמי | iptv-org verified | ✅ |
+| 619 | השף ג׳יימי אוליבר (Jamie Oliver) | FAST Public CDN | ✅ FAST חינמי | iptv-org verified | ✅ |
+| 620 | אוכל וקולינריה (Tastemade) | FAST Public CDN | ✅ FAST חינמי | iptv-org verified | ✅ |
+| 621 | מטבח המבחן (Test Kitchen) | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org verified | ✅ |
+| 622 | אוכל קוריאני (K-FOOD) | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org verified | ✅ |
 
 ## 📺 סרטים וסדרות (Movies & Series)
 
@@ -267,6 +313,18 @@
 | 554 | 80s Rewind (קולנוע שנות ה-80) | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | שידור FAST רשמי | ✅ |
 | 555 | 90s Throwback (קולנוע שנות ה-90) | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | שידור FAST רשמי | ✅ |
 | 556 | 00s Replay (קולנוע שנות ה-2000) | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | שידור FAST רשמי | ✅ |
+| 578 | סאות׳ פארק 24/7 (South Park) | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | verified | ✅ |
+| 579 | קומדי סנטרל רוסט (CC Roast) | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | verified | ✅ |
+| 580 | סטנדאפ נקי (Dry Bar Comedy) | FAST Public CDN | ✅ FAST חינמי | verified | ✅ |
+| 581 | קומדיה בריטית (British Comedy) | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | verified | ✅ |
+| 582 | סרטים קלאסיים (Classic Movies) | FAST Public CDN | ✅ FAST חינמי | verified | ✅ |
+| 583 | סרטי אקשן (50 Cent Action) | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | verified | ✅ |
+| 609 | זירת הפשע 24/7 (CSI) | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org verified | ✅ |
+| 610 | זירת הפשע מיאמי (CSI: Miami) | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org verified | ✅ |
+| 611 | זירת הפשע ניו יורק (CSI: NY) | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org verified | ✅ |
+| 612 | דוקטור הו קלאסי (Doctor Who) | FAST Public CDN | ✅ FAST חינמי | iptv-org verified | ✅ |
+| 613 | שרלוק הולמס 24/7 (Sherlock) | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org verified | ✅ |
+| 614 | דרמות בריטיות (BBC Drama) | FAST Public CDN | ✅ FAST חינמי | iptv-org verified | ✅ |
 
 ## 📺 ספורט (Sports)
 
@@ -274,10 +332,10 @@
 |---|---|---|---|---|---|
 | 36 | ערוץ ספורט 5 4K UHD | Redge – ה-CDN הרשמי של כאן, ערוץ 14 וכלכלה 10 | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
 | 37 | ערוץ ONE דוקו ספורט HD | FreeTV – השידור הרשמי (AWS CloudFront) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
-| 38 | ספורט 1 HD (Sport 1) | osoyz0xv.ottclub.xyz | ⚠️ ממסר צד שלישי | שידור ישראלי מקורי צ'רלטון FHD | ❌ רק באפליקציה (הפניה בלי CORS) |
-| 39 | ספורט 2 HD (Sport 2) | osoyz0xv.ottclub.xyz | ⚠️ ממסר צד שלישי | שידור ישראלי מקורי צ'רלטון FHD | ❌ רק באפליקציה (הפניה בלי CORS) |
-| 40 | ספורט 3 HD (Sport 3) | osoyz0xv.ottclub.xyz | ⚠️ ממסר צד שלישי | שידור ישראלי מקורי צ'רלטון FHD | ❌ רק באפליקציה (הפניה בלי CORS) |
-| 41 | ספורט 4 FHD (Sport 4) | osoyz0xv.ottclub.xyz | ⚠️ ממסר צד שלישי | שידור ישראלי מקורי צ'רלטון FHD | ❌ רק באפליקציה (הפניה בלי CORS) |
+| 38 | ספורט 1 HD (Sport 1) | 2lacasaba.site | ⚠️ ממסר צד שלישי | שידור ישראלי מקורי צ'רלטון FHD | ❌ רק באפליקציה (הפניה בלי CORS) |
+| 39 | ספורט 2 HD (Sport 2) | 2lacasaba.site | ⚠️ ממסר צד שלישי | שידור ישראלי מקורי צ'רלטון FHD | ❌ רק באפליקציה (הפניה בלי CORS) |
+| 40 | ספורט 3 HD (Sport 3) | 2lacasaba.site | ⚠️ ממסר צד שלישי | שידור ישראלי מקורי צ'רלטון FHD | ❌ רק באפליקציה (הפניה בלי CORS) |
+| 41 | ספורט 4 FHD (Sport 4) | 2lacasaba.site | ⚠️ ממסר צד שלישי | שידור ישראלי מקורי צ'רלטון FHD | ❌ רק באפליקציה (הפניה בלי CORS) |
 | 100 | ספורט 5 FHD (5SPORT) | FreeTV – השידור הרשמי (AWS CloudFront) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
 | 101 | ספורט 5 פלוס FHD (5PLUS) | FreeTV – השידור הרשמי (AWS CloudFront) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
 | 102 | ספורט 5 לייב FHD (5LIVE) | FreeTV – השידור הרשמי (AWS CloudFront) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
@@ -298,6 +356,13 @@
 | 378 | ערוץ מרוצים RACER International HD | amg00378-mavtv-amg00378c2-rakuten-us-1048.playouts.now.amagi.tv | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
 | 379 | ערוץ PowerNation TV מנועים ומוטורספורט | amg01258-raycomsports-powernationau-samsungau-18bwc.amagi.tv | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
 | 380 | ערוץ מרוצים Sky Racing 1 HD | 636ffd31f0e12.streamlock.net | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 571 | פיפ״א+ כדורגל (FIFA+) | FAST Public CDN | ✅ FAST חינמי | verified | ✅ |
+| 572 | ספורט אקסטרים (FUEL TV) | FAST Public CDN | ✅ FAST חינמי | verified | ✅ |
+| 573 | אומנויות לחימה (FightBox HD) | FAST Public CDN | ✅ FAST חינמי | verified | ✅ |
+| 574 | בלטור MMA (Bellator) | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | verified | ✅ |
+| 575 | מרוצי מוטורספורט (FloRacing) | FAST Public CDN | ✅ FAST חינמי | verified | ✅ |
+| 576 | DAZN חצים (DAZN Darts) | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | verified | ✅ |
+| 577 | גולף עולמי (Golf Kingdom) | FAST Public CDN | ✅ FAST חינמי | verified | ✅ |
 
 ## 📺 מסורת וקהילה
 
@@ -334,6 +399,10 @@
 | 200 | TRT World News FHD | tv-trtworld.medya.trt.com.tr | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
 | 201 | CGTN News English FHD | english-livetx.cgtn.com | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
 | 515 | ערוץ i24NEWS ערבית HD | i24NEWS – שרת רשמי | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 590 | ABC News Live HD | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org verified | ✅ |
+| 591 | CBS News 24/7 HD | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org verified | ✅ |
+| 592 | Al Jazeera English HD | אל-ג'זירה – שרת רשמי | ✅ רשמי | iptv-org verified | ✅ |
+| 593 | NHK World יפן HD | FAST Public CDN | ✅ FAST חינמי | iptv-org verified | ✅ |
 
 ## 📺 טבע ודוקו (Documentary & Nature)
 
@@ -346,6 +415,16 @@
 | 548 | Love The Planet HD (כדור הארץ) | FAST Official | ✅ FAST חינמי | שידור FAST רשמי | ✅ |
 | 549 | Love Pets HD (חיות מחמד וטבע) | FAST Official | ✅ FAST חינמי | שידור FAST רשמי | ✅ |
 | 550 | INWILD HD (חיות בר) | FAST Official | ✅ FAST חינמי | שידור FAST רשמי | ✅ |
+| 561 | חלל בשידור חי (Space Live 4K) | FAST Public CDN | ✅ FAST חינמי | verified | ✅ |
+| 562 | ספארי חי באפריקה (WildEarth) | FAST Public CDN | ✅ FAST חינמי | verified | ✅ |
+| 563 | אווירה ורגיעה (ZenLIFE) | FAST Public CDN | ✅ FAST חינמי | verified | ✅ |
+| 564 | טבע פראי (Love Nature) | FAST Public CDN | ✅ FAST חינמי | verified | ✅ |
+| 565 | טבע ונופים (Better Life) | FAST Public CDN | ✅ FAST חינמי | verified | ✅ |
+| 566 | סמית׳סוניאן דוקו (Smithsonian) | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | verified | ✅ |
+| 567 | ערוץ המדע (Pluto Science) | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | verified | ✅ |
+| 568 | דוקו עולמי (DocuBay) | FAST Public CDN | ✅ FAST חינמי | verified | ✅ |
+| 569 | דוקומנטרי+ (Documentary+) | FAST Public CDN | ✅ FAST חינמי | verified | ✅ |
+| 570 | טיולים בעולם (INTRAVEL) | FAST Public CDN | ✅ FAST חינמי | verified | ✅ |
 
 ## 📺 מוזיקה (Music TV)
 
@@ -357,6 +436,12 @@
 | 366 | Vevo Pop Music Hits FHD | amg00056-amg00056c6-rakuten-uk-3235.playouts.now.amagi.tv | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
 | 387 | ערוץ מוזיקה ישראלית 24/7 HD | FreeTV – השידור הרשמי (AWS CloudFront) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
 | 397 | MTV Hits & Clips HD | ma.anixa.tv | ⚠️ ממסר צד שלישי | רשימה ידנית (גרסה קודמת) | ✅ |
+| 584 | MTV להיטי פופ (MTV Pop) | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | verified | ✅ |
+| 585 | MTV שירים חדשים (MTV New) | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | verified | ✅ |
+| 586 | ערוץ הרוק (NOW Rock) | FAST Public CDN | ✅ FAST חינמי | verified | ✅ |
+| 587 | מוזיקה אלקטרונית (Clubbing TV) | FAST Public CDN | ✅ FAST חינמי | verified | ✅ |
+| 588 | פסקולים מסרטים (Movie Music) | FAST Public CDN | ✅ FAST חינמי | verified | ✅ |
+| 589 | מוזיקה קלאסית (Classica) | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | verified | ✅ |
 
 ## 📺 ילדים מהעולם (Kids World)
 
@@ -378,6 +463,17 @@
 | 542 | Nick Jr. Pluto TV HD (ניק ג'וניור עולמי) | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | שידור FAST רשמי Pluto TV | ✅ |
 | 543 | Nickelodeon Pluto TV HD (ניקלודיאון עולמי) | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | שידור FAST רשמי Pluto TV | ✅ |
 | 544 | NickToons Pluto TV HD (ניקטונס) | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | שידור FAST רשמי Pluto TV | ✅ |
+| 598 | ערוץ לגו לילדים (LEGO Kids TV) | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org verified | ✅ |
+| 599 | גארפילד וחברים 24/7 (Garfield) | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org verified | ✅ |
+| 600 | קרטוניטו לילדים (Cartoonito HD) | FAST Public CDN | ✅ FAST חינמי | iptv-org verified | ✅ |
+| 601 | ערוץ המצוירים (Kartoon Channel!) | FAST Public CDN | ✅ FAST חינמי | iptv-org verified | ✅ |
+| 602 | מצוירים קלאסיים (MeTV Toons) | FAST Public CDN | ✅ FAST חינמי | iptv-org verified | ✅ |
+| 603 | סוניק הקיפוד 24/7 (Sonic TV) | FAST Public CDN | ✅ FAST חינמי | iptv-org verified | ✅ |
+| 604 | נארוטו 24/7 (Naruto) | FAST Public CDN | ✅ FAST חינמי | iptv-org verified | ✅ |
+| 605 | נארוטו שיפודן 24/7 (Shippuden) | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org verified | ✅ |
+| 606 | ערוץ אנימה (Anime x HIDIVE) | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org verified | ✅ |
+| 607 | אנימה רטרו קלאסית (RetroCrush) | FAST Public CDN | ✅ FAST חינמי | iptv-org verified | ✅ |
+| 608 | סרטי אנימה (Pluto Anime Movies) | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org verified | ✅ |
 
 ## 📺 סדרות לצפייה ישירה (VOD)
 
@@ -401,6 +497,45 @@
 | 533 | הרדיו הטוב 106.4FM (The Best Radio) | StreamGates – ה-CDN של התחנה | ✅ רשמי | שידור רשמי הרדיו הטוב | ✅ |
 | 534 | הרדיו הראשון 89.1FM (Первое радио) | CyberCDN – ה-CDN של תחנות הרדיו עצמן | ✅ רשמי | שידור רשמי הרדיו הראשון | ✅ |
 | 535 | רדיוס 100% רוסית 89.1 (Radios Russian) | StreamGates – ערוצי רדיוס 100FM | ✅ רשמי | שידור רדיוס 100FM רשמי | ✅ |
+
+## 📺 כלכלה ועסקים (Business)
+
+| # | ערוץ | שרת השידור | סוג | נמצא ב | באתר (דפדפן) |
+|---|---|---|---|---|---|
+| 594 | Bloomberg TV+ כלכלה ועסקים | FAST Public CDN | ✅ FAST חינמי | iptv-org verified | ✅ |
+| 595 | Bloomberg Originals דוקו ועסקים | FAST Public CDN | ✅ FAST חינמי | iptv-org verified | ✅ |
+| 596 | Bloomberg Europe שוק ההון | FAST Public CDN | ✅ FAST חינמי | iptv-org verified | ✅ |
+| 597 | CGTN Global Business | FAST Public CDN | ✅ FAST חינמי | iptv-org verified | ✅ |
+
+## 📺 קומדיה (Comedy)
+
+| # | ערוץ | שרת השידור | סוג | נמצא ב | באתר (דפדפן) |
+|---|---|---|---|---|---|
+| 615 | סאות׳ פארק: קרטמן (Cartman 24/7) | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org verified | ✅ |
+| 616 | מופע קומדיה קלאסי (Carol Burnett) | FAST Public CDN | ✅ FAST חינמי | iptv-org verified | ✅ |
+| 617 | איי קארלי 24/7 (iCarly) | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org verified | ✅ |
+
+## 📺 לייף סטייל ובידור
+
+| # | ערוץ | שרת השידור | סוג | נמצא ב | באתר (דפדפן) |
+|---|---|---|---|---|---|
+| 623 | טופ גיר רכב 24/7 (Top Gear) | FAST Public CDN | ✅ FAST חינמי | iptv-org verified | ✅ |
+| 624 | עולם הרכב והמרוצים (Motorvision FHD) | FAST Public CDN | ✅ FAST חינמי | iptv-org verified | ✅ |
+| 625 | מכוניות על (Cars.TV) | FAST Public CDN | ✅ FAST חינמי | iptv-org verified | ✅ |
+| 626 | מרדפי מכוניות בשידור חי (Car Chase) | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org verified | ✅ |
+| 627 | דיל או לא דיל 24/7 (Deal or No Deal) | FAST Public CDN | ✅ FAST חינמי | iptv-org verified | ✅ |
+| 628 | אפקט הפחד 24/7 (Fear Factor) | FAST Public CDN | ✅ FAST חינמי | iptv-org verified | ✅ |
+| 629 | ווייפאאוט אקסטרים (Wipeout) | FAST Public CDN | ✅ FAST חינמי | iptv-org verified | ✅ |
+| 630 | עיצוב הבית והגינה (BBC Home) | FAST Public CDN | ✅ FAST חינמי | iptv-org verified | ✅ |
+| 631 | ערוץ האופנה פריז (FashionTV) | FAST Public CDN | ✅ FAST חינמי | iptv-org verified | ✅ |
+| 632 | עיצוב ואדריכלות (Design Network) | FAST Public CDN | ✅ FAST חינמי | iptv-org verified | ✅ |
+
+## 📺 טיולים והרפתקאות (Travel)
+
+| # | ערוץ | שרת השידור | סוג | נמצא ב | באתר (דפדפן) |
+|---|---|---|---|---|---|
+| 633 | מסעות בעולם (BBC Travel) | Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk | ✅ FAST חינמי | iptv-org verified | ✅ |
+| 634 | קולינריה וטיולים (Tastemade Travel) | FAST Public CDN | ✅ FAST חינמי | iptv-org verified | ✅ |
 
 ## 📻 רדיו
 

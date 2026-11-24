@@ -1,0 +1,12 @@
+{
+  "streams": [
+    {
+      "name": "ישראל TV+\n[FHD ראשי]",
+      "title": "אפקט הפחד 24/7 (Fear Factor)\n📡 FAST Public CDN\n✅ ערוץ FAST רשמי",
+      "url": "https://amg00627-banijaygroup-fearfactor-samsungau-9vdod.amagi.tv/playlist/amg00627-banijaygroup-fearfactor-samsungau/playlist.m3u8",
+      "behaviorHints": {
+        "bingeGroup": "itv-live"
+      }
+    }
+  ]
+}

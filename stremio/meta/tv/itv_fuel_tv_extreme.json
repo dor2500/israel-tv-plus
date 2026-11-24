@@ -2,12 +2,12 @@
   "meta": {
     "id": "itv_fuel_tv_extreme",
     "type": "tv",
-    "name": "ספורט אקסטרים (FUEL TV)",
+    "name": "572. ספורט אקסטרים (FUEL TV)",
     "poster": "https://i.imgur.com/I8mviBy.png",
     "posterShape": "landscape",
     "logo": "https://i.imgur.com/I8mviBy.png",
     "background": "https://i.imgur.com/I8mviBy.png",
-    "description": "📡 מקור השידור:",
+    "description": "📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
     "genres": [
       "ספורט",
       "עולם"

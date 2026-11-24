@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_kartoon_channel",
+    "type": "tv",
+    "name": "601. ערוץ המצוירים (Kartoon Channel!)",
+    "poster": "https://i.imgur.com/1luzP3T.png",
+    "posterShape": "landscape",
+    "logo": "https://i.imgur.com/1luzP3T.png",
+    "background": "https://i.imgur.com/1luzP3T.png",
+    "description": "ערוץ המצוירים (Kartoon Channel!) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
+    "genres": [
+      "ילדים מהעולם",
+      "ארה״ב"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "ארה״ב"
+  }
+}

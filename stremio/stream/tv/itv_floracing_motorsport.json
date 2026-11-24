@@ -2,7 +2,7 @@
   "streams": [
     {
       "name": "ישראל TV+\n[FHD ראשי]",
-      "title": "מרוצי מוטורספורט (FloRacing)\n📡 \n",
+      "title": "מרוצי מוטורספורט (FloRacing)\n📡 FAST Public CDN\n✅ ערוץ FAST רשמי",
       "url": "https://amg02278-amg02278c1-flosports-worldwide-7592.playouts.now.amagi.tv/playlist.m3u8",
       "behaviorHints": {
         "bingeGroup": "itv-live"

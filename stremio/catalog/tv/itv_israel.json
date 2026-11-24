@@ -83,6 +83,126 @@
         "טבע ודוקו",
         "ארצות הברית"
       ]
+    },
+    {
+      "id": "itv_space_live_4k",
+      "type": "tv",
+      "name": "561. חלל בשידור חי (Space Live 4K)",
+      "poster": "https://static.frequency.com/studio/itv/channels/1224-400x200.png",
+      "posterShape": "landscape",
+      "description": "📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "טבע ודוקו",
+        "עולם"
+      ]
+    },
+    {
+      "id": "itv_wildearth_safari",
+      "type": "tv",
+      "name": "562. ספארי חי באפריקה (WildEarth)",
+      "poster": "https://i.imgur.com/Vhv5gjN.png",
+      "posterShape": "landscape",
+      "description": "📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "טבע ודוקו",
+        "עולם"
+      ]
+    },
+    {
+      "id": "itv_zenlife_ambient",
+      "type": "tv",
+      "name": "563. אווירה ורגיעה (ZenLIFE)",
+      "poster": "https://www.stingray.com/wp-content/uploads/2023/12/stingray_zenlifebystingray_white.svg",
+      "posterShape": "landscape",
+      "description": "📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "טבע ודוקו",
+        "עולם"
+      ]
+    },
+    {
+      "id": "itv_love_nature_fast",
+      "type": "tv",
+      "name": "564. טבע פראי (Love Nature)",
+      "poster": "https://tv.lovenature.com/wp-content/uploads/2024/10/LoveNature2024_Logo_full_colour-copy.png",
+      "posterShape": "landscape",
+      "description": "📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "טבע ודוקו",
+        "עולם"
+      ]
+    },
+    {
+      "id": "itv_better_life_nature",
+      "type": "tv",
+      "name": "565. טבע ונופים (Better Life)",
+      "poster": "https://i.imgur.com/D8Vuw6I.png",
+      "posterShape": "landscape",
+      "description": "📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "טבע ודוקו",
+        "עולם"
+      ]
+    },
+    {
+      "id": "itv_smithsonian_selects",
+      "type": "tv",
+      "name": "566. סמית׳סוניאן דוקו (Smithsonian)",
+      "poster": "https://i.imgur.com/Kt5j8Vr.png",
+      "posterShape": "landscape",
+      "description": "📡 מקור השידור: Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "טבע ודוקו",
+        "עולם"
+      ]
+    },
+    {
+      "id": "itv_pluto_science",
+      "type": "tv",
+      "name": "567. ערוץ המדע (Pluto Science)",
+      "poster": "https://i.imgur.com/uhunRoU.png",
+      "posterShape": "landscape",
+      "description": "📡 מקור השידור: Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "טבע ודוקו",
+        "עולם"
+      ]
+    },
+    {
+      "id": "itv_docubay_tv",
+      "type": "tv",
+      "name": "568. דוקו עולמי (DocuBay)",
+      "poster": "https://i.imgur.com/OGyeLLR.png",
+      "posterShape": "landscape",
+      "description": "📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "טבע ודוקו",
+        "עולם"
+      ]
+    },
+    {
+      "id": "itv_documentary_plus",
+      "type": "tv",
+      "name": "569. דוקומנטרי+ (Documentary+)",
+      "poster": "https://i.imgur.com/x57klfS.png",
+      "posterShape": "landscape",
+      "description": "📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "טבע ודוקו",
+        "עולם"
+      ]
+    },
+    {
+      "id": "itv_intravel_fast",
+      "type": "tv",
+      "name": "570. טיולים בעולם (INTRAVEL)",
+      "poster": "https://jiotvimages.cdn.jio.com/dare_images/images/Intravel.png",
+      "posterShape": "landscape",
+      "description": "📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "טבע ודוקו",
+        "עולם"
+      ]
     }
   ]
 }

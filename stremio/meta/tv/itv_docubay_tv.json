@@ -2,14 +2,14 @@
   "meta": {
     "id": "itv_docubay_tv",
     "type": "tv",
-    "name": "דוקו עולמי (DocuBay)",
+    "name": "568. דוקו עולמי (DocuBay)",
     "poster": "https://i.imgur.com/OGyeLLR.png",
     "posterShape": "landscape",
     "logo": "https://i.imgur.com/OGyeLLR.png",
     "background": "https://i.imgur.com/OGyeLLR.png",
-    "description": "📡 מקור השידור:",
+    "description": "📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
     "genres": [
-      "מדע וטבע",
+      "טבע ודוקו",
       "עולם"
     ],
     "releaseInfo": "LIVE",

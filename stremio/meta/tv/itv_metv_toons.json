@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_metv_toons",
+    "type": "tv",
+    "name": "602. מצוירים קלאסיים (MeTV Toons)",
+    "poster": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/MeTV_Toons.png/250px-MeTV_Toons.png",
+    "posterShape": "landscape",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/MeTV_Toons.png/250px-MeTV_Toons.png",
+    "background": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/MeTV_Toons.png/250px-MeTV_Toons.png",
+    "description": "מצוירים קלאסיים (MeTV Toons) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
+    "genres": [
+      "ילדים מהעולם",
+      "ארה״ב"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "ארה״ב"
+  }
+}

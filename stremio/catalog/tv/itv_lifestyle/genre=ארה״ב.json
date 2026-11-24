@@ -1,0 +1,64 @@
+{
+  "metas": [
+    {
+      "id": "itv_cars_tv_hd",
+      "type": "tv",
+      "name": "625. מכוניות על (Cars.TV)",
+      "poster": "https://i.imgur.com/JLSHiTp.png",
+      "posterShape": "landscape",
+      "description": "מכוניות על (Cars.TV) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "לייף סטייל ובידור",
+        "ארה״ב"
+      ]
+    },
+    {
+      "id": "itv_car_chase_tv",
+      "type": "tv",
+      "name": "626. מרדפי מכוניות בשידור חי (Car Chase)",
+      "poster": "https://images.pluto.tv/channels/65244c403fd33c0008ffff31/colorLogoPNG.png",
+      "posterShape": "landscape",
+      "description": "מרדפי מכוניות בשידור חי (Car Chase) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "לייף סטייל ובידור",
+        "ארה״ב"
+      ]
+    },
+    {
+      "id": "itv_deal_or_no_deal_247",
+      "type": "tv",
+      "name": "627. דיל או לא דיל 24/7 (Deal or No Deal)",
+      "poster": "https://i.imgur.com/lZvNXA1.png",
+      "posterShape": "landscape",
+      "description": "דיל או לא דיל 24/7 (Deal or No Deal) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "לייף סטייל ובידור",
+        "ארה״ב"
+      ]
+    },
+    {
+      "id": "itv_fear_factor_247",
+      "type": "tv",
+      "name": "628. אפקט הפחד 24/7 (Fear Factor)",
+      "poster": "https://i.imgur.com/CIYnLWz.png",
+      "posterShape": "landscape",
+      "description": "אפקט הפחד 24/7 (Fear Factor) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "לייף סטייל ובידור",
+        "ארה״ב"
+      ]
+    },
+    {
+      "id": "itv_design_network_tv",
+      "type": "tv",
+      "name": "632. עיצוב ואדריכלות (Design Network)",
+      "poster": "https://i.imgur.com/J5YJ3r3.png",
+      "posterShape": "landscape",
+      "description": "עיצוב ואדריכלות (Design Network) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "לייף סטייל ובידור",
+        "ארה״ב"
+      ]
+    }
+  ]
+}
