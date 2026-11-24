@@ -88,6 +88,8 @@ import androidx.media3.common.AudioAttributes
 import androidx.media3.common.C
 import androidx.media3.common.MediaItem
 import androidx.media3.common.MimeTypes
+import androidx.media3.common.PlaybackException
+import androidx.media3.common.Player
 import androidx.media3.datasource.DefaultHttpDataSource
 import androidx.media3.exoplayer.DefaultLoadControl
 import androidx.media3.exoplayer.ExoPlayer
@@ -99,6 +101,7 @@ import com.israeltv.plus.data.AppPrefs
 import com.israeltv.plus.data.Channel
 import com.israeltv.plus.data.ChannelData
 import com.israeltv.plus.data.USER_AGENT
+import com.israeltv.plus.data.VodSeries
 import com.israeltv.plus.data.playableUrl
 import com.israeltv.plus.ui.components.ChannelLogo
 import kotlinx.coroutines.delay
@@ -113,11 +116,13 @@ enum class WowExperience {
     REELS,
     COMMAND_WALL,
     GLOBE_3D,
+    TIME_MACHINE,
+    TV_TRIVIA,
     JACKPOT_SLOT,
 }
 
 /**
- * Futuristic 4-card Neon Launchpad shown right at the top of the Home Screen.
+ * Futuristic 6-card Neon Launchpad shown right at the top of the Home Screen.
  */
 @Composable
 fun WowLaunchpadStrip(
@@ -141,6 +146,16 @@ fun WowLaunchpadStrip(
                 "🌍 גלובוס 3D חי",
                 "סובבו את כדור הארץ וצפו",
             ) to listOf(Color(0xFF10B981), Color(0xFF059669)),
+            Triple(
+                WowExperience.TIME_MACHINE,
+                "🕰️ מכונת הזמן",
+                "מסע בין עשורי הטלוויזיה",
+            ) to listOf(Color(0xFFA855F7), Color(0xFF6366F1)),
+            Triple(
+                WowExperience.TV_TRIVIA,
+                "🧠 טריוויה TV",
+                "חידון חי נושא דרגות ורצף",
+            ) to listOf(Color(0xFF06B6D4), Color(0xFF3B82F6)),
             Triple(
                 WowExperience.JACKPOT_SLOT,
                 "🎰 רולטת הקסם",
@@ -209,11 +224,40 @@ fun WowLaunchpadStrip(
 }
 
 private fun buildLightPlayer(context: Context, lowBitrate: Boolean = true, muted: Boolean = false): ExoPlayer {
-    val http = DefaultHttpDataSource.Factory()
+    val defaultHttp = DefaultHttpDataSource.Factory()
         .setUserAgent(USER_AGENT)
         .setAllowCrossProtocolRedirects(true)
         .setConnectTimeoutMs(6_000)
         .setReadTimeoutMs(10_000)
+        .setDefaultRequestProperties(mapOf("Referer" to "https://stmify.com/"))
+    val hamalHttp = DefaultHttpDataSource.Factory()
+        .setUserAgent(USER_AGENT)
+        .setAllowCrossProtocolRedirects(true)
+        .setConnectTimeoutMs(6_000)
+        .setReadTimeoutMs(10_000)
+        .setDefaultRequestProperties(mapOf("Referer" to "https://hamalsport.tv/", "Origin" to "https://hamalsport.tv"))
+    val routingHttp = androidx.media3.datasource.DataSource.Factory {
+        val base = defaultHttp.createDataSource()
+        val hamal = hamalHttp.createDataSource()
+        object : androidx.media3.datasource.DataSource {
+            private var active: androidx.media3.datasource.DataSource = base
+            override fun addTransferListener(transferListener: androidx.media3.datasource.TransferListener) {
+                base.addTransferListener(transferListener)
+                hamal.addTransferListener(transferListener)
+            }
+            override fun open(dataSpec: androidx.media3.datasource.DataSpec): Long {
+                val host = dataSpec.uri.host.orEmpty()
+                val path = dataSpec.uri.encodedPath.orEmpty()
+                val isHamal = host.contains("2lacasaba", true) || host.contains("hamalsport", true) ||
+                    host.contains("hepbettv", true) || path.contains("/tracks-v1a1/", true) || path.contains("/yessport", true)
+                active = if (isHamal) hamal else base
+                return active.open(dataSpec)
+            }
+            override fun read(buffer: ByteArray, offset: Int, length: Int): Int = active.read(buffer, offset, length)
+            override fun getUri(): android.net.Uri? = active.uri
+            override fun close() = active.close()
+        }
+    }
     val trackSelector = DefaultTrackSelector(context).apply {
         parameters = buildUponParameters().apply {
             if (lowBitrate) {
@@ -228,7 +272,7 @@ private fun buildLightPlayer(context: Context, lowBitrate: Boolean = true, muted
     return ExoPlayer.Builder(context)
         .setTrackSelector(trackSelector)
         .setLoadControl(loadControl)
-        .setMediaSourceFactory(DefaultMediaSourceFactory(http))
+        .setMediaSourceFactory(DefaultMediaSourceFactory(routingHttp))
         .setAudioAttributes(
             AudioAttributes.Builder().setUsage(C.USAGE_MEDIA).setContentType(C.AUDIO_CONTENT_TYPE_MOVIE).build(),
             !muted,
@@ -275,12 +319,30 @@ fun LiveTvReelsScreen(
     }
 
     val activeChannel = deck.getOrNull(pagerState.settledPage)
-    LaunchedEffect(activeChannel?.id) {
+    var reelCandIdx by remember(activeChannel?.id) { mutableIntStateOf(0) }
+    val reelCandidates = remember(activeChannel?.id) {
+        activeChannel?.let { listOf(it.url) + it.backups + it.fallbackUrls }?.distinct()?.filter { it.isNotBlank() }.orEmpty()
+    }
+
+    DisposableEffect(player, activeChannel?.id, reelCandidates) {
+        val listener = object : Player.Listener {
+            override fun onPlayerError(error: PlaybackException) {
+                if (reelCandIdx + 1 < reelCandidates.size) {
+                    reelCandIdx++
+                }
+            }
+        }
+        player.addListener(listener)
+        onDispose { player.removeListener(listener) }
+    }
+
+    LaunchedEffect(activeChannel?.id, reelCandIdx) {
         val ch = activeChannel ?: return@LaunchedEffect
-        haptic.performHapticFeedback(HapticFeedbackType.TextHandleMove)
+        val raw = reelCandidates.getOrElse(reelCandIdx) { ch.url }
+        if (reelCandIdx == 0) haptic.performHapticFeedback(HapticFeedbackType.TextHandleMove)
         player.stop()
         player.clearMediaItems()
-        val url = runCatching { playableUrl(ch.url, ch.auth, hamalSlug = ch.hamalSlug) }.getOrDefault(ch.url)
+        val url = runCatching { playableUrl(raw, ch.auth, hamalSlug = ch.hamalSlug) }.getOrDefault(raw)
         player.setMediaItem(MediaItem.Builder().setUri(url).setMimeType(MimeTypes.APPLICATION_M3U8).build())
         player.prepare()
         player.playWhenReady = true
@@ -531,11 +593,23 @@ fun CommandWallScreen(
     }
 
     quadChannels.forEachIndexed { idx, ch ->
-        LaunchedEffect(idx, ch.id) {
+        var qCandIdx by remember(idx, ch.id) { mutableIntStateOf(0) }
+        val qCandidates = remember(ch.id) { (listOf(ch.url) + ch.backups + ch.fallbackUrls).distinct().filter { it.isNotBlank() } }
+        DisposableEffect(players[idx], ch.id) {
+            val l = object : Player.Listener {
+                override fun onPlayerError(error: PlaybackException) {
+                    if (qCandIdx + 1 < qCandidates.size) qCandIdx++
+                }
+            }
+            players[idx].addListener(l)
+            onDispose { players[idx].removeListener(l) }
+        }
+        LaunchedEffect(idx, ch.id, qCandIdx) {
             val p = players[idx]
+            val raw = qCandidates.getOrElse(qCandIdx) { ch.url }
             p.stop()
             p.clearMediaItems()
-            val url = runCatching { playableUrl(ch.url, ch.auth, hamalSlug = ch.hamalSlug) }.getOrDefault(ch.url)
+            val url = runCatching { playableUrl(raw, ch.auth, hamalSlug = ch.hamalSlug) }.getOrDefault(raw)
             p.setMediaItem(MediaItem.Builder().setUri(url).setMimeType(MimeTypes.APPLICATION_M3U8).build())
             p.volume = if (idx == activeAudioIdx) 1f else 0f
             p.prepare()
@@ -1101,5 +1175,305 @@ private fun SlotPill(text: String, color: Color) {
             .padding(horizontal = 11.dp, vertical = 5.dp),
     ) {
         Text(text, color = color, fontSize = 11.sp, fontWeight = FontWeight.Bold, maxLines = 1)
+    }
+}
+
+/**
+ * 5. ISRAELI TV TIME MACHINE (מכונת הזמן של הטלוויזיה הישראלית — שנות ה-70 עד 2026!)
+ */
+private data class TvEra(
+    val id: String,
+    val decade: String,
+    val title: String,
+    val subtitle: String,
+    val accent: Color,
+    val keywords: List<String>,
+)
+
+private val TV_ERAS = listOf(
+    TvEra(
+        "70s", "1970s", "🎞️ שנות ה-70 · שחור-לבן ובורקס",
+        "עידן הערוץ היחיד, גבעת חלפון, חגיגה בסנוקר וצ׳רלי וחצי",
+        Color(0xFFF59E0B),
+        listOf("בורקס", "קולנוע ישראלי", "זהו זה", "הצבי", "קלאסי"),
+    ),
+    TvEra(
+        "80s", "1980s", "📼 שנות ה-80 · קלטות VHS ומיתולוגיה",
+        "זהו זה!, אנטי-מחיקון, סרטי קאלט ומוזיקה נוסטלגית",
+        Color(0xFFEC4899),
+        listOf("זהו זה", "בורקס", "שעת נעילה", "המזח", "חינוכית", "מוזיקה"),
+    ),
+    TvEra(
+        "90s", "1990s", "📺 שנות ה-90 · תור הזהב של ערוץ 2",
+        "החמישיה הקאמרית, מגרש הרוסים, קומדיות וסאטירה חדה",
+        Color(0xFF38BDF8),
+        listOf("החמישיה", "מגרש הרוסים", "קשת", "רשת", "קומדי", "ספורט"),
+    ),
+    TvEra(
+        "2000s", "2000s", "💿 שנות ה-2000 · מהפכת הקאלט",
+        "ארץ נהדרת, סברי מרנן, הבורר ודרמות המקור הגדולות",
+        Color(0xFF10B981),
+        listOf("ארץ נהדרת", "סברי מרנן", "התנתקות", "בואו לאכול", "HOT", "yes"),
+    ),
+    TvEra(
+        "2020s", "2020s", "🚀 שנות ה-2020 · תור הזהב החדש",
+        "קופה ראשית, מנאייכ, טהרן, המפקדת, איסט סייד וכראמל",
+        Color(0xFFA855F7),
+        listOf("קופה ראשית", "מנאייכ", "טהרן", "המפקדת", "כראמל", "איסט סייד", "חוליגנים", "החמאם"),
+    ),
+)
+
+@Composable
+fun TimeMachineScreen(
+    data: ChannelData,
+    logo: (Channel) -> String,
+    onPlay: (Channel, List<Channel>) -> Unit,
+    onClose: () -> Unit,
+) {
+    BackHandler(onBack = onClose)
+    var selectedEraIdx by remember { mutableIntStateOf(0) }
+    val era = TV_ERAS[selectedEraIdx]
+
+    val matchingItems = remember(era, data) {
+        val vodChannels = data.vod.mapNotNull { series ->
+            val firstEp = series.episodes.firstOrNull() ?: return@mapNotNull null
+            if (era.keywords.any { kw -> series.title.contains(kw, true) || series.desc.contains(kw, true) }) {
+                firstEp.toChannel(series).copy(name = "🎬 ${series.title}")
+            } else null
+        }
+        val liveMatches = data.channels.filter { ch ->
+            !ch.isRadio && ch.kind != "app" && era.keywords.any { kw -> ch.name.contains(kw, true) || ch.desc.contains(kw, true) }
+        }
+        (vodChannels + liveMatches).distinctBy { it.id }.ifEmpty { data.featured }
+    }
+
+    Column(
+        Modifier
+            .fillMaxSize()
+            .background(Brush.verticalGradient(listOf(Color(0xFF090518), Color(0xFF120B29), Color(0xFF040711))))
+            .windowInsetsPadding(WindowInsets.statusBars)
+            .navigationBarsPadding()
+            .padding(16.dp),
+        verticalArrangement = Arrangement.spacedBy(12.dp),
+    ) {
+        Row(
+            Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Box(
+                Modifier.size(40.dp).clip(CircleShape).background(Color.White.copy(alpha = 0.1f)).clickable { onClose() },
+                contentAlignment = Alignment.Center,
+            ) {
+                Icon(Icons.Rounded.Close, contentDescription = "סגירה", tint = Color.White)
+            }
+            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                Text("🕰️ מכונת הזמן של הטלוויזיה", color = Color.White, fontSize = 18.sp, fontWeight = FontWeight.ExtraBold)
+                Text("סובבו את מחוג הזמן בין עשורי השידור בישראל", color = era.accent, fontSize = 11.sp, fontWeight = FontWeight.SemiBold)
+            }
+            Spacer(Modifier.size(40.dp))
+        }
+
+        // Decade Dial Pills
+        LazyRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            items(TV_ERAS.size) { idx ->
+                val item = TV_ERAS[idx]
+                val sel = idx == selectedEraIdx
+                Box(
+                    Modifier
+                        .clip(RoundedCornerShape(16.dp))
+                        .background(if (sel) item.accent.copy(alpha = 0.28f) else Color.White.copy(alpha = 0.07f))
+                        .border(1.5.dp, if (sel) item.accent else Color.White.copy(alpha = 0.14f), RoundedCornerShape(16.dp))
+                        .clickable { selectedEraIdx = idx }
+                        .padding(horizontal = 16.dp, vertical = 10.dp),
+                ) {
+                    Text(item.decade, color = if (sel) item.accent else Color.White, fontFamily = FontFamily.Monospace, fontWeight = FontWeight.ExtraBold, fontSize = 15.sp)
+                }
+            }
+        }
+
+        // Era Portal Banner
+        Column(
+            Modifier
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(24.dp))
+                .background(Brush.linearGradient(listOf(era.accent.copy(alpha = 0.25f), Color.Black.copy(alpha = 0.65f))))
+                .border(1.5.dp, era.accent.copy(alpha = 0.6f), RoundedCornerShape(24.dp))
+                .padding(18.dp),
+            verticalArrangement = Arrangement.spacedBy(6.dp),
+        ) {
+            Text(era.title, color = Color.White, fontSize = 19.sp, fontWeight = FontWeight.ExtraBold)
+            Text(era.subtitle, color = Color.White.copy(alpha = 0.84f), fontSize = 13.sp)
+        }
+
+        Text("📡 שידורים וסדרות מהתקופה (${matchingItems.size}):", color = Color.White, fontSize = 14.sp, fontWeight = FontWeight.Bold)
+
+        LazyRow(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+            items(matchingItems.take(24), key = { it.id }) { ch ->
+                Column(
+                    Modifier
+                        .width(156.dp)
+                        .clip(RoundedCornerShape(18.dp))
+                        .background(Color.White.copy(alpha = 0.08f))
+                        .border(1.dp, era.accent.copy(alpha = 0.4f), RoundedCornerShape(18.dp))
+                        .clickable { onPlay(ch, matchingItems) }
+                        .padding(12.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.spacedBy(8.dp),
+                ) {
+                    ChannelLogo(logo(ch), Modifier.size(64.dp), true)
+                    Text(ch.name, color = Color.White, fontSize = 13.sp, fontWeight = FontWeight.ExtraBold, maxLines = 2, textAlign = TextAlign.Center)
+                    Text("▶ שגר לתקופה זו", color = era.accent, fontSize = 11.sp, fontWeight = FontWeight.Bold)
+                }
+            }
+        }
+    }
+}
+
+/**
+ * 6. LIVE TV & ISRAELI CULTURE TRIVIA CHALLENGE (טריוויה TV להפסקת פרסומות ולסלון!)
+ */
+data class TvTriviaQuestion(
+    val q: String,
+    val options: List<String>,
+    val answerIdx: Int,
+)
+
+val ISRAELI_TV_TRIVIA_BANK = listOf(
+    TvTriviaQuestion("איך קוראים לסופרמרקט המיתולוגי בסדרה 'קופה ראשית'?", listOf("שפע יששכר", "זול ובגדול", "סופר שמש", "מחסני כוכבה"), 0),
+    TvTriviaQuestion("מי מגלם את ראמזי עבד ראמזי ב'קופה ראשית'?", listOf("אמיר שורוש", "יניב סוויסה", "דניאל סטיופין", "יעקב בודו"), 0),
+    TvTriviaQuestion("באיזו עיר מתרחשת עלילת 'קופה ראשית'?", listOf("יבנה", "ראשון לציון", "פתח תקווה", "חולון"), 0),
+    TvTriviaQuestion("מה שם סוכנת המוסד הראשית בסדרה 'טהרן'?", listOf("תמר רביניאן", "נועה הולנדר", "יעל כץ", "דנה לוי"), 0),
+    TvTriviaQuestion("מה תפקידו של איזי בכר בסדרה 'מנאייכ'?", listOf("חוקר מח״ש", "מפקד תחנה", "שופט מחוזי", "עיתונאי חוקר"), 0),
+    TvTriviaQuestion("איזה חתול קסום ומדבר עומד במרכז סדרת הלהיט של כאן חינוכית?", listOf("כראמל", "שקשוקה", "מיצי", "גארפילד"), 0),
+    TvTriviaQuestion("איזו שלישייה מיתולוגית כיכבה בסרט 'גבעת חלפון אינה עונה'?", listOf("הגשש החיוור", "זהו זה", "שלישיית מה קשור", "החמישיה הקאמרית"), 0),
+    TvTriviaQuestion("באיזה בסיס טירונים מתרחשת הסדרה 'המפקדת'?", listOf("חוות השומר", "מחנה 80", "זיקים", "ניצנים"), 0),
+    TvTriviaQuestion("אילו שתי משפחות נפגשות לארוחות שישי בסדרה 'סברי מרנן'?", listOf("חסון ורוזן", "כהן ולוי", "מזרחי ושפירא", "אבוטבול וברק"), 0),
+    TvTriviaQuestion("מי מקריין בהומור מושחז את התוכנית 'בואו לאכול איתי'?", listOf("שי אביבי", "איל קיציס", "ליאור שליין", "דרור קרן"), 0),
+    TvTriviaQuestion("על איזו מלחמה מבוססות הסדרות 'שעת נעילה' ו'המזח'?", listOf("מלחמת יום הכיפורים", "מלחמת ששת הימים", "מלחמת לבנון הראשונה", "מבצע קדש"), 0),
+    TvTriviaQuestion("באיזה אפיק משודר תאגיד השידור הישראלי 'כאן 11'?", listOf("ערוץ 11", "ערוץ 1", "ערוץ 22", "ערוץ 33"), 0),
+    TvTriviaQuestion("כמה זוכים בלוטו משתתפים בסדנה בסדרה 'שישה אפסים'?", listOf("6", "5", "7", "10"), 0),
+    TvTriviaQuestion("באיזו שכונה בירושלים מתרחשת עלילת הסדרה 'איסט סייד' בכיכובו של יהודה לוי?", listOf("מזרח ירושלים / עיר דוד", "מאה שערים", "רחביה", "עין כרם"), 0),
+    TvTriviaQuestion("איזה שחקן מגלם את דורון קביליו בסדרה 'פאודה'?", listOf("ליאור רז", "צחי הלוי", "עידן עמדי", "איציק כהן"), 0),
+    TvTriviaQuestion("איזו תוכנית סאטירה ישראלית משודרת בקשת מאז שנת 2003?", listOf("ארץ נהדרת", "מצב האומה", "גב האומה", "מועדון לילה"), 0),
+)
+
+@Composable
+fun TvTriviaOverlayCard(
+    compact: Boolean = false,
+    onClose: () -> Unit,
+) {
+    BackHandler(onBack = onClose)
+    val haptic = LocalHapticFeedback.current
+    val questions = remember { ISRAELI_TV_TRIVIA_BANK.shuffled() }
+    var qIdx by remember { mutableIntStateOf(0) }
+    var score by remember { mutableIntStateOf(0) }
+    var streak by remember { mutableIntStateOf(0) }
+    var pickedOption by remember { mutableIntStateOf(-1) }
+
+    val cur = questions[qIdx % questions.size]
+    val shuffledOpts = remember(qIdx) {
+        cur.options.mapIndexed { i, txt -> i to txt }.shuffled()
+    }
+
+    val rank = when {
+        score >= 100 -> "👑 אגדת טלוויזיה"
+        score >= 50 -> "🔥 אלוף השלט"
+        score >= 20 -> "📺 חובב שידורים"
+        else -> "🎬 צופה מתחיל"
+    }
+
+    Box(
+        Modifier
+            .fillMaxSize()
+            .background(if (compact) Color.Black.copy(alpha = 0.45f) else Color(0xEB040814))
+            .padding(18.dp),
+        contentAlignment = Alignment.Center,
+    ) {
+        Column(
+            Modifier
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(26.dp))
+                .background(Brush.verticalGradient(listOf(Color(0xE60D1B38), Color(0xF2070D1E))))
+                .border(1.5.dp, Color(0xFF38BDF8).copy(alpha = 0.65f), RoundedCornerShape(26.dp))
+                .padding(20.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp),
+        ) {
+            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
+                Text("🧠 טריוויה TV ישראלית", color = Color(0xFF38BDF8), fontSize = 17.sp, fontWeight = FontWeight.ExtraBold)
+                Row(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
+                    Text("⭐ $score · 🔥 $streak", color = Color(0xFFFACC15), fontSize = 13.sp, fontWeight = FontWeight.ExtraBold)
+                    Box(
+                        Modifier.size(32.dp).clip(CircleShape).background(Color.White.copy(alpha = 0.12f)).clickable { onClose() },
+                        contentAlignment = Alignment.Center,
+                    ) {
+                        Icon(Icons.Rounded.Close, contentDescription = "סגירה", tint = Color.White, modifier = Modifier.size(18.dp))
+                    }
+                }
+            }
+
+            Text("דרגה נוכחית: $rank", color = Color(0xFF94A3B8), fontSize = 12.sp, fontWeight = FontWeight.SemiBold)
+
+            Text(
+                cur.q,
+                color = Color.White,
+                fontSize = 17.sp,
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier.padding(vertical = 4.dp),
+            )
+
+            shuffledOpts.forEach { (origIdx, label) ->
+                val revealed = pickedOption != -1
+                val isCorrect = origIdx == cur.answerIdx
+                val isChosen = pickedOption == origIdx
+                val bg = when {
+                    !revealed -> Color.White.copy(alpha = 0.08f)
+                    isCorrect -> Color(0xFF16A34A).copy(alpha = 0.45f)
+                    isChosen -> Color(0xFFDC2626).copy(alpha = 0.45f)
+                    else -> Color.White.copy(alpha = 0.04f)
+                }
+                val borderCol = when {
+                    !revealed -> Color.White.copy(alpha = 0.16f)
+                    isCorrect -> Color(0xFF4ADE80)
+                    isChosen -> Color(0xFFF87171)
+                    else -> Color.Transparent
+                }
+                Box(
+                    Modifier
+                        .fillMaxWidth()
+                        .clip(RoundedCornerShape(14.dp))
+                        .background(bg)
+                        .border(1.2.dp, borderCol, RoundedCornerShape(14.dp))
+                        .clickable(enabled = !revealed) {
+                            pickedOption = origIdx
+                            if (isCorrect) {
+                                score += 10 + streak * 2
+                                streak++
+                                haptic.performHapticFeedback(HapticFeedbackType.LongPress)
+                            } else {
+                                streak = 0
+                                haptic.performHapticFeedback(HapticFeedbackType.TextHandleMove)
+                            }
+                        }
+                        .padding(horizontal = 14.dp, vertical = 12.dp),
+                ) {
+                    Text(label, color = Color.White, fontSize = 14.sp, fontWeight = FontWeight.SemiBold)
+                }
+            }
+
+            if (pickedOption != -1) {
+                Button(
+                    onClick = {
+                        pickedOption = -1
+                        qIdx++
+                    },
+                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF0EA5E9)),
+                    shape = RoundedCornerShape(14.dp),
+                    modifier = Modifier.fillMaxWidth().height(46.dp),
+                ) {
+                    Text("שאלה הבאה ⬅️", color = Color.White, fontWeight = FontWeight.ExtraBold)
+                }
+            }
+        }
     }
 }

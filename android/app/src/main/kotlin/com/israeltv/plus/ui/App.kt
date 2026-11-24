@@ -79,6 +79,8 @@ import com.israeltv.plus.ui.screens.CommandWallScreen
 import com.israeltv.plus.ui.screens.Globe3dExplorerScreen
 import com.israeltv.plus.ui.screens.JackpotSlotModal
 import com.israeltv.plus.ui.screens.LiveTvReelsScreen
+import com.israeltv.plus.ui.screens.TimeMachineScreen
+import com.israeltv.plus.ui.screens.TvTriviaOverlayCard
 import com.israeltv.plus.ui.screens.WowExperience
 import dev.chrisbanes.haze.HazeState
 import dev.chrisbanes.haze.hazeSource
@@ -183,7 +185,7 @@ fun ItvApp(
                                 onPicked = { feed.reset(); page = Page.Feed },
                                 onClose = { page = Page.Feed },
                             )
-                            Page.Feed -> if (NuvioUi.enabled) NuvioShell(store, prefs, onPlay) else Feed(
+                            Page.Feed -> if (NuvioUi.enabled) NuvioShell(store, prefs, onPlay, onOpenWow = { activeWow = it }) else Feed(
                                 data, prefs, updater, google, store, feed, haze, logo, onPlay,
                                 onOpenMultiView = {
                                     val all = data?.channels.orEmpty()
@@ -265,6 +267,19 @@ fun ItvApp(
                             activeWow = null
                             onPlay(ch, list)
                         },
+                        onClose = { activeWow = null },
+                    )
+                    WowExperience.TIME_MACHINE -> TimeMachineScreen(
+                        data = curData,
+                        logo = logo,
+                        onPlay = { ch, list ->
+                            activeWow = null
+                            onPlay(ch, list)
+                        },
+                        onClose = { activeWow = null },
+                    )
+                    WowExperience.TV_TRIVIA -> TvTriviaOverlayCard(
+                        compact = false,
                         onClose = { activeWow = null },
                     )
                     WowExperience.JACKPOT_SLOT -> JackpotSlotModal(

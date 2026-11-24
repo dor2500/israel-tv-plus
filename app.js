@@ -2481,6 +2481,8 @@
           '<button class="wow-lp-card wlp-reels" data-wow="reels"><strong>🔥 רילס TV חי</strong><small>זפזופ אנכי בסגנון טיקטוק</small></button>' +
           '<button class="wow-lp-card wlp-wall" data-wow="wall"><strong>🛰️ חמ״ל 4 ערוצים</strong><small>קיר שידורים 2×2 בו-זמנית</small></button>' +
           '<button class="wow-lp-card wlp-globe" data-wow="globe"><strong>🌍 גלובוס 3D חי</strong><small>סובבו את כדור הארץ וצפו</small></button>' +
+          '<button class="wow-lp-card wlp-time" data-wow="time"><strong>🕰️ מכונת הזמן</strong><small>מסע בין עשורי הטלוויזיה</small></button>' +
+          '<button class="wow-lp-card wlp-triv" data-wow="trivia"><strong>🧠 טריוויה TV</strong><small>חידון חי נושא דרגות ורצף</small></button>' +
           '<button class="wow-lp-card wlp-slot" data-wow="slot"><strong>🎰 רולטת הקסם</strong><small>מכונת מזל לשידור הבא</small></button>' +
         '</div>';
       Array.prototype.forEach.call(wowWrap.querySelectorAll('button[data-wow]'), function (btn) {
@@ -2489,6 +2491,8 @@
           if (act === 'reels') openTvReelsOverlay();
           else if (act === 'wall') openCommandWallDialog();
           else if (act === 'globe') openGlobe3dOverlay();
+          else if (act === 'time') openTimeMachineOverlay();
+          else if (act === 'trivia') openTvTriviaOverlay();
           else if (act === 'slot') openJackpotSlotOverlay();
         };
       });
@@ -2785,6 +2789,8 @@
     ['חיפוש', 'search'],
     ['🔥 רילס TV', 'reels'],
     ['🌍 גלובוס 3D', 'globe3d'],
+    ['🕰️ מכונת הזמן', 'timemachine'],
+    ['🧠 טריוויה TV', 'trivia'],
     ['🎰 רולטת הקסם', 'jackpot'],
     ['🛰️ חמ״ל 2×2', 'cmdwall'],
     ['פיצול מסך', 'multiview'],
@@ -3029,7 +3035,7 @@
     if (!pill) return;
     try {
       var tabs = ATV_TABS.filter(function (t) {
-        return t[1] === 'profiles' || t[1] === 'all_channels' || t[1] === 'top' || t[1] === 'vod' || t[1] === 'search' || t[1] === 'reels' || t[1] === 'globe3d' || t[1] === 'jackpot' || t[1] === 'cmdwall' || t[1] === 'multiview' || t[1] === 'guide' || t[1] === 'gdrive' || t[1] === 'settings' || atvRowIndex(t[1]) !== -1 || (atv.search && t[1] !== 'mine');
+        return t[1] === 'profiles' || t[1] === 'all_channels' || t[1] === 'top' || t[1] === 'vod' || t[1] === 'search' || t[1] === 'reels' || t[1] === 'globe3d' || t[1] === 'timemachine' || t[1] === 'trivia' || t[1] === 'jackpot' || t[1] === 'cmdwall' || t[1] === 'multiview' || t[1] === 'guide' || t[1] === 'gdrive' || t[1] === 'settings' || atvRowIndex(t[1]) !== -1 || (atv.search && t[1] !== 'mine');
       });
       if (!tabs || !tabs.length) {
         tabs = [['מי צופה?', 'profiles'], ['כל הערוצים', 'all_channels'], ['צפייה כעת', 'top'], ['סדרות VOD', 'vod'], ['מדריך שידורים', 'guide'], ['חיפוש', 'search'], ['הגדרות', 'settings']];
@@ -4454,6 +4460,172 @@
     playReel(Math.floor(Math.random() * Math.min(20, deck.length)));
   }
 
+  // E. Israeli TV Time Machine (1970s - 2020s Era Portal)
+  function openTimeMachineOverlay() {
+    var eras = [
+      { id: '70s', dec: '1970s', title: '🎞️ שנות ה-70 · שחור-לבן ובורקס', sub: 'עידן הערוץ היחיד, גבעת חלפון, חגיגה בסנוקר וצ׳רלי וחצי', color: '#f59e0b', kw: ['בורקס', 'קולנוע ישראלי', 'זהו זה', 'הצבי', 'קלאסי'], filter: 'grayscale(0.82) contrast(1.18)' },
+      { id: '80s', dec: '1980s', title: '📼 שנות ה-80 · קלטות VHS ומיתולוגיה', sub: 'זהו זה!, אנטי-מחיקון, סרטי קאלט ומוזיקה נוסטלגית', color: '#ec4899', kw: ['זהו זה', 'בורקס', 'שעת נעילה', 'המזח', 'חינוכית', 'מוזיקה'], filter: 'saturate(1.35) sepia(0.22) contrast(1.1)' },
+      { id: '90s', dec: '1990s', title: '📺 שנות ה-90 · תור הזהב של ערוץ 2', sub: 'החמישיה הקאמרית, מגרש הרוסים, קומדיות וסאטירה חדה', color: '#38bdf8', kw: ['החמישיה', 'מגרש הרוסים', 'קשת', 'רשת', 'קומדי', 'ספורט'], filter: '' },
+      { id: '2000s', dec: '2000s', title: '💿 שנות ה-2000 · מהפכת הקאלט', sub: 'ארץ נהדרת, סברי מרנן, דרמות מקור וריאליטי', color: '#10b981', kw: ['ארץ נהדרת', 'סברי מרנן', 'התנתקות', 'בואו לאכול', 'HOT', 'yes'], filter: '' },
+      { id: '2020s', dec: '2020s', title: '🚀 שנות ה-2020 · תור הזהב החדש', sub: 'קופה ראשית, מנאייכ, טהרן, המפקדת, איסט סייד וכראמל', color: '#a855f7', kw: ['קופה ראשית', 'מנאייכ', 'טהרן', 'המפקדת', 'כראמל', 'איסט סייד', 'חוליגנים'], filter: '' }
+    ];
+    var ov = document.getElementById('wow-timemachine-modal');
+    if (!ov) {
+      ov = document.createElement('div');
+      ov.id = 'wow-timemachine-modal';
+      document.body.appendChild(ov);
+    }
+    var curIdx = 0;
+    function renderEra() {
+      var er = eras[curIdx];
+      var matches = [];
+      if (window.VOD_DATA && window.VOD_DATA.length) {
+        window.VOD_DATA.forEach(function (s) {
+          var hit = er.kw.some(function (k) { return (s.title || '').indexOf(k) !== -1 || (s.desc || '').indexOf(k) !== -1; });
+          if (hit && s.episodes && s.episodes.length) {
+            matches.push({ isVodSeries: true, series: s, name: '🎬 ' + s.title });
+          }
+        });
+      }
+      (state.all || []).forEach(function (c) {
+        if (!c || !c.url || isRadioCh(c) || isApp(c)) return;
+        var hit = er.kw.some(function (k) { return (c.name || '').indexOf(k) !== -1 || (c.desc || '').indexOf(k) !== -1; });
+        if (hit) matches.push({ isVodSeries: false, ch: c, name: c.name });
+      });
+      ov.innerHTML =
+        '<div class="wtm-box">' +
+          '<div class="wtm-head"><h2>🕰️ מכונת הזמן של הטלוויזיה</h2><button id="wtm-close">✕ סגירה</button></div>' +
+          '<div class="wtm-dials">' + eras.map(function (e, i) {
+            return '<button class="wtm-dial' + (i === curIdx ? ' on' : '') + '" data-i="' + i + '" style="' + (i === curIdx ? 'border-color:' + e.color + ';color:' + e.color : '') + '">' + e.dec + '</button>';
+          }).join('') + '</div>' +
+          '<div class="wtm-banner" style="border-color:' + er.color + '">' +
+            '<h3>' + er.title + '</h3><p>' + er.sub + '</p>' +
+          '</div>' +
+          '<div class="wtm-grid">' + matches.slice(0, 18).map(function (m, mi) {
+            return '<button class="wtm-card" data-mi="' + mi + '"><strong>' + esc(m.name) + '</strong><span style="color:' + er.color + '">▶ שגר לתקופה</span></button>';
+          }).join('') + '</div>' +
+        '</div>';
+      document.getElementById('wtm-close').onclick = function () { ov.style.display = 'none'; };
+      Array.prototype.forEach.call(ov.querySelectorAll('.wtm-dial'), function (b) {
+        b.onclick = function () { curIdx = parseInt(b.getAttribute('data-i'), 10); renderEra(); };
+      });
+      Array.prototype.forEach.call(ov.querySelectorAll('.wtm-card'), function (b) {
+        b.onclick = function () {
+          var m = matches[parseInt(b.getAttribute('data-mi'), 10)];
+          ov.style.display = 'none';
+          if (er.id === '90s') { retroCrtEnabled = true; }
+          if (el.video) el.video.style.filter = er.filter || '';
+          toast('🕰️ שיגור בזמן ל-' + er.dec + '!');
+          if (m.isVodSeries) playVodEpisode(m.series, m.series.episodes[0]);
+          else { openPlayer(); loadStream(m.ch); }
+        };
+      });
+    }
+    ov.style.display = 'flex';
+    renderEra();
+  }
+
+  // F. Commercial-Break Israeli TV Trivia Challenge
+  var TRIVIA_QUESTIONS = [
+    { q: 'איך קוראים לסופרמרקט בסדרה "קופה ראשית"?', o: ['שפע יששכר', 'זול ובגדול', 'סופר שמש', 'מחסני כוכבה'], a: 0 },
+    { q: 'מי מגלם את ראמזי עבד ראמזי ב"קופה ראשית"?', o: ['אמיר שורוש', 'יניב סוויסה', 'דניאל סטיופין', 'יעקב בודו'], a: 0 },
+    { q: 'מה שם סוכנת המוסד הראשית בסדרה "טהרן"?', o: ['תמר רביניאן', 'נועה הולנדר', 'יעל כץ', 'דנה לוי'], a: 0 },
+    { q: 'מה תפקידו של איזי בכר בסדרה "מנאייכ"?', o: ['חוקר מח״ש', 'מפקד תחנה', 'שופט מחוזי', 'עיתונאי חוקר'], a: 0 },
+    { q: 'איזה חתול קסום ומדבר עומד במרכז סדרת הלהיט של כאן חינוכית?', o: ['כראמל', 'שקשוקה', 'מיצי', 'גארפילד'], a: 0 },
+    { q: 'איזו שלישייה מיתולוגית כיכבה בסרט "גבעת חלפון אינה עונה"?', o: ['הגשש החיוור', 'זהו זה', 'מה קשור', 'החמישיה הקאמרית'], a: 0 },
+    { q: 'באיזה בסיס טירונים מתרחשת הסדרה "המפקדת"?', o: ['חוות השומר', 'מחנה 80', 'זיקים', 'ניצנים'], a: 0 },
+    { q: 'אילו שתי משפחות נפגשות לארוחות שישי ב"סברי מרנן"?', o: ['חסון ורוזן', 'כהן ולוי', 'מזרחי ושפירא', 'אבוטבול וברק'], a: 0 },
+    { q: 'מי מקריין בהומור מושחז את התוכנית "בואו לאכול איתי"?', o: ['שי אביבי', 'איל קיציס', 'ליאור שליין', 'דרור קרן'], a: 0 },
+    { q: 'על איזו מלחמה מבוססות הסדרות "שעת נעילה" ו"המזח"?', o: ['מלחמת יום הכיפורים', 'מלחמת ששת הימים', 'מלחמת לבנון', 'מבצע קדש'], a: 0 },
+    { q: 'איזה שחקן מגלם את דורון קביליו בסדרה "פאודה"?', o: ['ליאור רז', 'צחי הלוי', 'עידן עמדי', 'איציק כהן'], a: 0 },
+    { q: 'כמה זוכים בלוטו משתתפים בסדנה בסדרה "שישה אפסים"?', o: ['6', '5', '7', '10'], a: 0 }
+  ];
+
+  function openTvTriviaOverlay() {
+    var ov = document.getElementById('wow-trivia-modal');
+    if (!ov) {
+      ov = document.createElement('div');
+      ov.id = 'wow-trivia-modal';
+      document.body.appendChild(ov);
+    }
+    var deck = TRIVIA_QUESTIONS.slice().sort(function () { return Math.random() - 0.5; });
+    var qi = 0, score = 0, streak = 0;
+
+    function renderQ() {
+      var item = deck[qi % deck.length];
+      var opts = item.o.map(function (txt, idx) { return { txt: txt, ok: idx === item.a }; }).sort(function () { return Math.random() - 0.5; });
+      var rank = score >= 80 ? '👑 אגדת טלוויזיה' : score >= 40 ? '🔥 אלוף השלט' : score >= 20 ? '📺 חובב שידורים' : '🎬 צופה מתחיל';
+      ov.innerHTML =
+        '<div class="wtriv-box">' +
+          '<div class="wtriv-head"><h3>🧠 טריוויה TV ישראלית</h3><span>⭐ ' + score + ' · 🔥 ' + streak + '</span><button id="wtriv-close">✕</button></div>' +
+          '<div class="wtriv-rank">דרגה: ' + rank + ' (הקש 1–4 בשלט/מקלדת או לחץ)</div>' +
+          '<div class="wtriv-q">' + esc(item.q) + '</div>' +
+          '<div class="wtriv-opts">' + opts.map(function (op, oi) {
+            return '<button class="wtriv-opt" data-ok="' + (op.ok ? '1' : '0') + '"><b>' + (oi + 1) + '.</b> ' + esc(op.txt) + '</button>';
+          }).join('') + '</div>' +
+        '</div>';
+      document.getElementById('wtriv-close').onclick = function () { ov.style.display = 'none'; };
+      var answered = false;
+      Array.prototype.forEach.call(ov.querySelectorAll('.wtriv-opt'), function (btn) {
+        btn.onclick = function () {
+          if (answered) return;
+          answered = true;
+          var ok = btn.getAttribute('data-ok') === '1';
+          if (ok) {
+            btn.classList.add('correct');
+            score += 10 + streak * 2;
+            streak++;
+          } else {
+            btn.classList.add('wrong');
+            streak = 0;
+            Array.prototype.forEach.call(ov.querySelectorAll('.wtriv-opt'), function (b2) {
+              if (b2.getAttribute('data-ok') === '1') b2.classList.add('correct');
+            });
+          }
+          setTimeout(function () { qi++; renderQ(); }, 1050);
+        };
+      });
+    }
+    ov.style.display = 'flex';
+    renderQ();
+  }
+
+  function handleWowOverlayKey(code, e) {
+    var reels = document.getElementById('wow-reels-overlay');
+    if (reels && reels.style.display !== 'none') {
+      if (e && e.preventDefault) e.preventDefault();
+      if (isBack(code)) { var cb = document.getElementById('wreels-close'); if (cb) cb.click(); return true; }
+      if (code === 38) { var pb = document.getElementById('wreels-prev'); if (pb) pb.click(); return true; }
+      if (code === 40) { var nb = document.getElementById('wreels-next'); if (nb) nb.click(); return true; }
+      if (code === 13) { var fb = document.getElementById('wreels-full'); if (fb) fb.click(); return true; }
+      return true;
+    }
+    var globe = document.getElementById('wow-globe-overlay');
+    if (globe && globe.style.display !== 'none') {
+      if (isBack(code)) { if (e && e.preventDefault) e.preventDefault(); var gc = globe.querySelector('.wglobe-close'); if (gc) gc.click(); return true; }
+    }
+    var slot = document.getElementById('wow-slot-modal');
+    if (slot && slot.style.display !== 'none') {
+      if (isBack(code)) { if (e && e.preventDefault) e.preventDefault(); slot.style.display = 'none'; return true; }
+      if (code === 13) { var pl = document.getElementById('wslot-play'); if (pl) pl.click(); return true; }
+    }
+    var tm = document.getElementById('wow-timemachine-modal');
+    if (tm && tm.style.display !== 'none') {
+      if (isBack(code)) { if (e && e.preventDefault) e.preventDefault(); tm.style.display = 'none'; return true; }
+    }
+    var triv = document.getElementById('wow-trivia-modal');
+    if (triv && triv.style.display !== 'none') {
+      if (isBack(code)) { if (e && e.preventDefault) e.preventDefault(); triv.style.display = 'none'; return true; }
+      if (code >= 49 && code <= 52) {
+        var opts = triv.querySelectorAll('.wtriv-opt');
+        var pick = opts[code - 49];
+        if (pick) pick.click();
+        return true;
+      }
+    }
+    return false;
+  }
+
   function setAudioBoost(lvl) {
     audioBoostLevel = lvl;
     initAudioBoost();
@@ -4518,6 +4690,8 @@
       else if (t === 'search') atvOpenSearch();
       else if (t === 'reels') openTvReelsOverlay();
       else if (t === 'globe3d') openGlobe3dOverlay();
+      else if (t === 'timemachine') openTimeMachineOverlay();
+      else if (t === 'trivia') openTvTriviaOverlay();
       else if (t === 'jackpot') openJackpotSlotOverlay();
       else if (t === 'cmdwall') openCommandWallDialog();
       else if (t === 'multiview') openMultiView(atvCurrent() || state.playing);
@@ -6347,8 +6521,13 @@
       act: openSleepTimerDialog
     });
     items.push({
+      ico: '🧠',
+      label: 'משחק טריוויה להפסקת פרסומות',
+      act: openTvTriviaOverlay
+    });
+    items.push({
       ico: '⚽',
-      label: 'לוח תוצאות כדורגל וספורט חי',
+      label: 'לוח תוצאות כדורגל וספורט חי (G)',
       stay: true,
       val: function () { return sportsBoardEnabled ? 'פועל' : 'כבוי'; },
       act: toggleSportsScoreboard
@@ -8969,6 +9148,7 @@
     if (code === 23 || code === 66 || code === 160) code = 13;
     if (state.saverOn) { resetSaver(); if (e.preventDefault) e.preventDefault(); return; }
     resetSaver();
+    if (handleWowOverlayKey(code, e)) return;
 
     // text fields keep their keys (search box, API keys)
     var t = e.target;
@@ -9177,10 +9357,10 @@
     else if (code === 39) playerMenu();
     else if (code === 82) playRandomChannel();
     else if (code === 67) toggleLiveClock();
-    else if (code === 66) toggleStealthMode();
+    else if (code === 88) toggleStealthMode();
     else if (code === 73) toggleTelemetryHud();
     else if (code === 78) toggleNewsTicker();
-    else if (code === 83) toggleSportsScoreboard();
+    else if (code === 71) toggleSportsScoreboard();
     else if (code === 90) cycleVarZoom();
   }
 

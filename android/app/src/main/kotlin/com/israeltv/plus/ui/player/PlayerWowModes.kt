@@ -1,11 +1,19 @@
 package com.israeltv.plus.ui.player
 
+import android.content.Context
+import android.hardware.Sensor
+import android.hardware.SensorEvent
+import android.hardware.SensorEventListener
+import android.hardware.SensorManager
 import android.media.AudioAttributes
 import android.media.AudioFormat
 import android.media.AudioTrack
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.runtime.DisposableEffect
+import androidx.compose.ui.platform.LocalContext
 import org.json.JSONObject
+import kotlin.math.sqrt
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.basicMarquee
@@ -420,6 +428,39 @@ private fun fetchLiveSoccerScores(): List<Triple<String, String, String>> = runC
     list
 }.getOrDefault(emptyList())
 
+/**
+ * 7. Hardware Shake-to-Zap Accelerometer Listener (ניעור המכשיר מחליף לערוץ מפתיע!).
+ */
+@Composable
+fun ShakeToZapEffect(enabled: Boolean, onShake: () -> Unit) {
+    val context = LocalContext.current
+    DisposableEffect(enabled) {
+        if (!enabled) return@DisposableEffect onDispose {}
+        val sm = context.getSystemService(Context.SENSOR_SERVICE) as? SensorManager
+        val accel = sm?.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
+        if (sm == null || accel == null) return@DisposableEffect onDispose {}
+        var lastShakeMs = 0L
+        val listener = object : SensorEventListener {
+            override fun onSensorChanged(event: SensorEvent) {
+                val gx = event.values[0] / SensorManager.GRAVITY_EARTH
+                val gy = event.values[1] / SensorManager.GRAVITY_EARTH
+                val gz = event.values[2] / SensorManager.GRAVITY_EARTH
+                val gForce = sqrt(gx * gx + gy * gy + gz * gz)
+                if (gForce > 2.35f) {
+                    val now = System.currentTimeMillis()
+                    if (now - lastShakeMs > 1_300L) {
+                        lastShakeMs = now
+                        onShake()
+                    }
+                }
+            }
+            override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {}
+        }
+        sm.registerListener(listener, accel, SensorManager.SENSOR_DELAY_UI)
+        onDispose { sm.unregisterListener(listener) }
+    }
+}
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun WowModesSheet(
@@ -428,6 +469,7 @@ fun WowModesSheet(
     telemetryHud: Boolean,
     sportsBoard: Boolean,
     autoTour: Boolean,
+    shakeToZap: Boolean,
     varZoom: Float,
     nightDim: Float,
     ambientMode: AmbientSoundMode,
@@ -436,6 +478,8 @@ fun WowModesSheet(
     onToggleTelemetryHud: () -> Unit,
     onToggleSportsBoard: () -> Unit,
     onToggleAutoTour: () -> Unit,
+    onToggleShakeToZap: () -> Unit,
+    onOpenCommercialTrivia: () -> Unit,
     onCycleVarZoom: () -> Unit,
     onCycleNightDim: () -> Unit,
     onActivateTouchLock: () -> Unit,
@@ -458,6 +502,11 @@ fun WowModesSheet(
                 fontWeight = FontWeight.Bold,
                 color = MaterialTheme.colorScheme.onSurface,
             )
+            WowRow("🧠 משחק טריוויה להפסקת פרסומות", "שחק עכשיו!", false) {
+                onDismiss()
+                onOpenCommercialTrivia()
+            }
+            WowRow("📳 נענע לזפזופ (Shake-to-Zap)", if (shakeToZap) "פועל" else "כבוי", shakeToZap, onToggleShakeToZap)
             WowRow("⚽ לוח תוצאות כדורגל וספורט חי", if (sportsBoard) "פועל" else "כבוי", sportsBoard, onToggleSportsBoard)
             WowRow("🔍 זום שידור חי (VAR Super-Zoom)", if (varZoom > 1.05f) "${varZoom}x" else "רגיל (1x)", varZoom > 1.05f, onCycleVarZoom)
             WowRow("⚡ סיור ערוצים אוטומטי (כל 12 שניות)", if (autoTour) "פועל" else "כבוי", autoTour, onToggleAutoTour)

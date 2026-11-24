@@ -41,6 +41,7 @@ import com.israeltv.plus.data.Channel
 import com.israeltv.plus.data.ChannelStore
 import com.israeltv.plus.data.subtitle
 import com.israeltv.plus.ui.components.LocalHaze
+import com.israeltv.plus.ui.screens.WowExperience
 import com.israeltv.plus.ui.theme.LocalDimens
 import dev.chrisbanes.haze.hazeSource
 import dev.chrisbanes.haze.rememberHazeState
@@ -58,6 +59,7 @@ fun NuvioShell(
     prefs: AppPrefs,
     onPlay: (Channel, List<Channel>) -> Unit,
     modifier: Modifier = Modifier,
+    onOpenWow: ((WowExperience) -> Unit)? = null,
 ) {
     var tab by rememberSaveable { mutableStateOf(NuvioTab.Home) }
     val homeList = rememberLazyListState()
@@ -79,7 +81,7 @@ fun NuvioShell(
         Box(modifier.fillMaxSize().background(MaterialTheme.colorScheme.background)) {
             Box(Modifier.fillMaxSize().hazeSource(haze)) {
                 when (tab) {
-                    NuvioTab.Home -> NuvioHomeScreen(store = store, prefs = prefs, onPlay = onPlay, listState = homeList)
+                    NuvioTab.Home -> NuvioHomeScreen(store = store, prefs = prefs, onPlay = onPlay, listState = homeList, onOpenWow = onOpenWow)
                     NuvioTab.Channels -> NuvioChannelsTab(store = store, onPlay = onPlay)
                     NuvioTab.Mine -> NuvioMineTab(store = store, prefs = prefs, onPlay = onPlay)
                     NuvioTab.Settings -> NuvioSettingsTab(prefs = prefs)

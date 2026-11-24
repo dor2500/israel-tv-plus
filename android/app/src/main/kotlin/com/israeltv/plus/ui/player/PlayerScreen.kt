@@ -194,6 +194,7 @@ import com.israeltv.plus.ui.components.frostedGlass
 import com.israeltv.plus.ui.components.pressPhysics
 import com.israeltv.plus.ui.components.sharedContainer
 import com.israeltv.plus.ui.components.specularBorder
+import com.israeltv.plus.ui.screens.TvTriviaOverlayCard
 import dev.chrisbanes.haze.hazeSource
 import dev.chrisbanes.haze.rememberHazeState
 import kotlinx.coroutines.delay
@@ -344,6 +345,8 @@ fun PlayerScreen(
     var telemetryHudMode by remember { mutableStateOf(false) }
     var sportsBoardMode by remember { mutableStateOf(false) }
     var autoTourMode by remember { mutableStateOf(false) }
+    var shakeToZapMode by remember { mutableStateOf(false) }
+    var triviaOverlayMode by remember { mutableStateOf(false) }
     var varZoom by remember { mutableFloatStateOf(1.0f) }
     var nightDim by remember { mutableFloatStateOf(0.0f) }
     var touchLockMode by remember { mutableStateOf(false) }
@@ -473,6 +476,13 @@ fun PlayerScreen(
                 switchTo(nextIdx)
             }
         }
+    }
+
+    ShakeToZapEffect(enabled = shakeToZapMode && list.size > 1) {
+        haptic.performHapticFeedback(HapticFeedbackType.LongPress)
+        val nextIdx = (0 until list.size).filter { it != index }.randomOrNull() ?: index
+        statusToast = "📳 שקשוק הקסם: ${list[nextIdx].name}"
+        switchTo(nextIdx)
     }
 
     // the guide behind the overlay's programme carousel, oldest first
@@ -974,6 +984,12 @@ fun PlayerScreen(
         if (stealthMode) {
             StealthClockOverlay(onDismiss = { stealthMode = false })
         }
+        if (triviaOverlayMode && !inPip) {
+            TvTriviaOverlayCard(
+                compact = true,
+                onClose = { triviaOverlayMode = false },
+            )
+        }
         if (sheet == "wow") {
             WowModesSheet(
                 retroCrt = retroCrtMode,
@@ -981,6 +997,7 @@ fun PlayerScreen(
                 telemetryHud = telemetryHudMode,
                 sportsBoard = sportsBoardMode,
                 autoTour = autoTourMode,
+                shakeToZap = shakeToZapMode,
                 varZoom = varZoom,
                 nightDim = nightDim,
                 ambientMode = ambientMode,
@@ -1003,6 +1020,13 @@ fun PlayerScreen(
                 onToggleAutoTour = {
                     autoTourMode = !autoTourMode
                     statusToast = if (autoTourMode) "⚡ סיור ערוצים אוטומטי הופעל (כל 12 שניות)" else "⚡ סיור ערוצים עצר"
+                },
+                onToggleShakeToZap = {
+                    shakeToZapMode = !shakeToZapMode
+                    statusToast = if (shakeToZapMode) "📳 נענע את המכשיר לזפזופ מפתיע!" else "📳 נענע לזפזופ כבוי"
+                },
+                onOpenCommercialTrivia = {
+                    triviaOverlayMode = true
                 },
                 onCycleVarZoom = {
                     val levels = listOf(1.0f, 1.5f, 2.0f, 2.5f)
