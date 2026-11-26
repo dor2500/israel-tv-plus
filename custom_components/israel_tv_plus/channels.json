@@ -92,9 +92,7 @@
       "web": "✅"
     },
     "backups": [],
-    "backupUrls": [
-      "http://stream.mcquack.net/295/index.m3u8"
-    ]
+    "backupUrls": []
   },
   {
     "id": "home_design_israel_hd",
@@ -102,9 +100,7 @@
     "title": "ערוץ בית ועיצוב ישראלי – לייף סטייל ושיפוצים",
     "desc": "ערוץ העיצוב והסטיילינג הישראלי – שיפוצים, אדריכלות, עיצוב הבית ולייף סטייל בשידור חי 24/7 באיכות Full HD.",
     "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/imagin_lifestyle/live.livx/playlist.m3u8",
-    "backup_urls": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12266/index.m3u8"
-    ],
+    "backup_urls": [],
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
     "lang": "he",
@@ -146,21 +142,13 @@
     },
     "backups": [
       "https://contact.gostreaming.tv/Con-11/index.m3u8",
-      "https://contact.gostreaming.tv/Channel9/myStream/playlist.m3u8",
-      "http://stream.mcquack.net/454/index.m3u8",
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2331/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2331/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2331/index.m3u8"
+      "https://contact.gostreaming.tv/Channel9/myStream/playlist.m3u8"
     ],
     "country": "IL",
     "countryHe": "ישראל",
     "fallbackUrls": [
       "https://contact.gostreaming.tv/Con-11/index.m3u8",
-      "https://contact.gostreaming.tv/Channel9/myStream/playlist.m3u8",
-      "http://stream.mcquack.net/454/index.m3u8",
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2331/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2331/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2331/index.m3u8"
+      "https://contact.gostreaming.tv/Channel9/myStream/playlist.m3u8"
     ]
   },
   {
@@ -216,7 +204,6 @@
     "backups": [
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8",
       "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan11/live.livx/playlist.m3u8",
-      "http://stream.mcquack.net/20/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11_subs/live.livx/playlist.m3u8"
     ],
     "country": "IL",
@@ -224,7 +211,6 @@
     "fallbackUrls": [
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8",
       "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan11/live.livx/playlist.m3u8",
-      "http://stream.mcquack.net/20/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11_subs/live.livx/playlist.m3u8"
     ]
   },
@@ -254,16 +240,10 @@
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/keshet12_hevc/live.livx/playlist.m3u8",
       "https://mako-streaming.akamaized.net/stream/hls/live/2033791/k12dvr/index.m3u8",
       "https://keshethlslive-LH.akamaihd.net/i/c2n_1@195269/master.m3u8",
-      "http://stream.mcquack.net/449/index.m3u8",
       "https://mako-streaming.akamaized.net/stream/hls/live/2033791/k12/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/keshet_12_subs/live.livx/playlist.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/keshet_12_hevc/live.livx/playlist.m3u8",
-      "http://stream.mcquack.net/294/index.m3u8",
-      "https://mako-streaming.akamaized.net/stream/hls/live/2033791/k12n12wad/index.m3u8",
-      "http://stream.mcquack.net/293/index.m3u8",
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2345/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2345/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2345/index.m3u8"
+      "https://mako-streaming.akamaized.net/stream/hls/live/2033791/k12n12wad/index.m3u8"
     ],
     "country": "IL",
     "countryHe": "ישראל",
@@ -273,16 +253,10 @@
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/keshet12_hevc/live.livx/playlist.m3u8",
       "https://mako-streaming.akamaized.net/stream/hls/live/2033791/k12dvr/index.m3u8",
       "https://keshethlslive-LH.akamaihd.net/i/c2n_1@195269/master.m3u8",
-      "http://stream.mcquack.net/449/index.m3u8",
       "https://mako-streaming.akamaized.net/stream/hls/live/2033791/k12/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/keshet_12_subs/live.livx/playlist.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/keshet_12_hevc/live.livx/playlist.m3u8",
-      "http://stream.mcquack.net/294/index.m3u8",
-      "https://mako-streaming.akamaized.net/stream/hls/live/2033791/k12n12wad/index.m3u8",
-      "http://stream.mcquack.net/293/index.m3u8",
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2345/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2345/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2345/index.m3u8"
+      "https://mako-streaming.akamaized.net/stream/hls/live/2033791/k12n12wad/index.m3u8"
     ],
     "auth": "",
     "backupUrls": [
@@ -291,17 +265,10 @@
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/keshet12_hevc/live.livx/playlist.m3u8",
       "https://mako-streaming.akamaized.net/stream/hls/live/2033791/k12dvr/index.m3u8",
       "https://keshethlslive-LH.akamaihd.net/i/c2n_1@195269/master.m3u8",
-      "http://stream.mcquack.net/449/index.m3u8",
       "https://mako-streaming.akamaized.net/stream/hls/live/2033791/k12/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/keshet_12_subs/live.livx/playlist.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/keshet_12_hevc/live.livx/playlist.m3u8",
-      "http://stream.mcquack.net/294/index.m3u8",
-      "https://mako-streaming.akamaized.net/stream/hls/live/2033791/k12n12wad/index.m3u8",
-      "http://stream.mcquack.net/293/index.m3u8",
-      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2345/index.m3u8",
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2345/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2345/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2345/index.m3u8"
+      "https://mako-streaming.akamaized.net/stream/hls/live/2033791/k12n12wad/index.m3u8"
     ]
   },
   {
@@ -329,18 +296,12 @@
       "https://d18b0e6mopany4.cloudfront.net/out/v1/08bc71cf0a0f4712b6b03c732b0e6d25/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/reshet13_subs/live.livx/playlist.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/reshet13_hevc/live.livx/playlist.m3u8",
-      "http://stream.mcquack.net/450/index.m3u8",
       "https://d198ztbnlup2iq.cloudfront.net/out/v1/2d9050c90fb94df8b78d1d98306a1a65/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/reshet_13_subs/live.livx/playlist.m3u8",
-      "http://stream.mcquack.net/295/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/reshet_13_hevc/live.livx/playlist.m3u8",
       "https://d2xg1g9o5vns8m.cloudfront.net/out/v1/0855d703f7d5436fae6a9c7ce8ca5075/index.m3u8",
       "https://reshet.g-mana.live/media/87f59c77-03f6-4bad-a648-897e095e7360/mainManifest.m3u8",
-      "http://stream.mcquack.net/294/index.m3u8",
-      "https://d15ds134q59udk.cloudfront.net/media/3b45de9e-c944-4fdc-a344-7c3042b5b104/mainManifest.m3u8",
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32249/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32249/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32249/index.m3u8"
+      "https://d15ds134q59udk.cloudfront.net/media/3b45de9e-c944-4fdc-a344-7c3042b5b104/mainManifest.m3u8"
     ],
     "country": "IL",
     "countryHe": "ישראל",
@@ -350,18 +311,12 @@
       "https://d18b0e6mopany4.cloudfront.net/out/v1/08bc71cf0a0f4712b6b03c732b0e6d25/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/reshet13_subs/live.livx/playlist.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/reshet13_hevc/live.livx/playlist.m3u8",
-      "http://stream.mcquack.net/450/index.m3u8",
       "https://d198ztbnlup2iq.cloudfront.net/out/v1/2d9050c90fb94df8b78d1d98306a1a65/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/reshet_13_subs/live.livx/playlist.m3u8",
-      "http://stream.mcquack.net/295/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/reshet_13_hevc/live.livx/playlist.m3u8",
       "https://d2xg1g9o5vns8m.cloudfront.net/out/v1/0855d703f7d5436fae6a9c7ce8ca5075/index.m3u8",
       "https://reshet.g-mana.live/media/87f59c77-03f6-4bad-a648-897e095e7360/mainManifest.m3u8",
-      "http://stream.mcquack.net/294/index.m3u8",
-      "https://d15ds134q59udk.cloudfront.net/media/3b45de9e-c944-4fdc-a344-7c3042b5b104/mainManifest.m3u8",
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32249/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32249/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32249/index.m3u8"
+      "https://d15ds134q59udk.cloudfront.net/media/3b45de9e-c944-4fdc-a344-7c3042b5b104/mainManifest.m3u8"
     ],
     "iptv": "Reshet13.il",
     "backupUrls": [
@@ -370,19 +325,12 @@
       "https://d18b0e6mopany4.cloudfront.net/out/v1/08bc71cf0a0f4712b6b03c732b0e6d25/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/reshet13_subs/live.livx/playlist.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/reshet13_hevc/live.livx/playlist.m3u8",
-      "http://stream.mcquack.net/450/index.m3u8",
       "https://d198ztbnlup2iq.cloudfront.net/out/v1/2d9050c90fb94df8b78d1d98306a1a65/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/reshet_13_subs/live.livx/playlist.m3u8",
-      "http://stream.mcquack.net/295/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/reshet_13_hevc/live.livx/playlist.m3u8",
       "https://d2xg1g9o5vns8m.cloudfront.net/out/v1/0855d703f7d5436fae6a9c7ce8ca5075/index.m3u8",
       "https://reshet.g-mana.live/media/87f59c77-03f6-4bad-a648-897e095e7360/mainManifest.m3u8",
-      "http://stream.mcquack.net/294/index.m3u8",
-      "https://d15ds134q59udk.cloudfront.net/media/3b45de9e-c944-4fdc-a344-7c3042b5b104/mainManifest.m3u8",
-      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32249/index.m3u8",
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32249/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32249/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32249/index.m3u8"
+      "https://d15ds134q59udk.cloudfront.net/media/3b45de9e-c944-4fdc-a344-7c3042b5b104/mainManifest.m3u8"
     ]
   },
   {
@@ -408,13 +356,8 @@
     "backups": [
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/ch14/live.livx/playlist.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/ch14_hevc/live.livx/playlist.m3u8",
-      "http://stream.mcquack.net/451/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/ch14_subs/live.livx/playlist.m3u8",
       "https://channel14-live-consume.immergo.tv/output/2/streamPlaylist-archive.m3u8",
-      "http://stream.mcquack.net/295/index.m3u8",
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32325/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32325/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32325/index.m3u8",
       "https://r.il.cdn-redge.media/livehls/oil/freetv/live/ch14/live.livx/playlist.m3u8"
     ],
     "country": "IL",
@@ -422,13 +365,8 @@
     "fallbackUrls": [
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/ch14/live.livx/playlist.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/ch14_hevc/live.livx/playlist.m3u8",
-      "http://stream.mcquack.net/451/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/ch14_subs/live.livx/playlist.m3u8",
       "https://channel14-live-consume.immergo.tv/output/2/streamPlaylist-archive.m3u8",
-      "http://stream.mcquack.net/295/index.m3u8",
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32325/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32325/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32325/index.m3u8",
       "https://r.il.cdn-redge.media/livehls/oil/freetv/live/ch14/live.livx/playlist.m3u8"
     ]
   },
@@ -457,11 +395,7 @@
       "https://bcovlive-a.akamaihd.net/d8958672620e4ff3925c42b38c93e86f/eu-central-1/5377161796001/playlist.m3u8",
       "https://i24newshebrew-cdn.encoders.immergo.tv/master.m3u8",
       "https://i24newshebrew-cdn.encoders.immergo.tv/2/streamPlaylist.m3u8",
-      "https://hlspackager.akamaized.net/live/bitmovin-i24news/2589137645123855490/index.m3u8",
-      "http://stream.mcquack.net/45/index.m3u8",
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/19194/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/19194/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/19194/index.m3u8"
+      "https://hlspackager.akamaized.net/live/bitmovin-i24news/2589137645123855490/index.m3u8"
     ],
     "country": "IL",
     "countryHe": "ישראל",
@@ -470,11 +404,7 @@
       "https://bcovlive-a.akamaihd.net/d8958672620e4ff3925c42b38c93e86f/eu-central-1/5377161796001/playlist.m3u8",
       "https://i24newshebrew-cdn.encoders.immergo.tv/master.m3u8",
       "https://i24newshebrew-cdn.encoders.immergo.tv/2/streamPlaylist.m3u8",
-      "https://hlspackager.akamaized.net/live/bitmovin-i24news/2589137645123855490/index.m3u8",
-      "http://stream.mcquack.net/45/index.m3u8",
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/19194/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/19194/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/19194/index.m3u8"
+      "https://hlspackager.akamaized.net/live/bitmovin-i24news/2589137645123855490/index.m3u8"
     ]
   },
   {
@@ -532,7 +462,8 @@
       "host": "d1zqtf09wb8nt5.cloudfront.net",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
-    }
+    },
+    "fallbackUrls": []
   },
   {
     "id": "travel_channel_il",
@@ -553,16 +484,8 @@
       "found": "שידור רשמי ערוץ הנופש והתיירות HD",
       "web": "✅"
     },
-    "fallbackUrls": [
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32160/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32160/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32160/index.m3u8"
-    ],
-    "backups": [
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32160/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32160/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32160/index.m3u8"
-    ],
+    "fallbackUrls": [],
+    "backups": [],
     "webOk": true
   },
   {
@@ -587,17 +510,13 @@
     },
     "backups": [
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/edu23/live.livx/playlist.m3u8",
-      "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan_edu/live.livx/playlist.m3u8",
-      "http://stream.mcquack.net/378/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32149/index.m3u8"
+      "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan_edu/live.livx/playlist.m3u8"
     ],
     "country": "IL",
     "countryHe": "ישראל",
     "fallbackUrls": [
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/edu23/live.livx/playlist.m3u8",
-      "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan_edu/live.livx/playlist.m3u8",
-      "http://stream.mcquack.net/378/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32149/index.m3u8"
+      "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan_edu/live.livx/playlist.m3u8"
     ]
   },
   {
@@ -623,26 +542,16 @@
     "backups": [
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/ch24/live.livx/playlist.m3u8",
       "https://mako-streaming.akamaized.net/stream/hls/live/2035897/ch24/index.m3u8",
-      "http://stream.mcquack.net/452/index.m3u8",
-      "http://stream.mcquack.net/42/index.m3u8",
       "https://mako-streaming.akamaized.net/direct/hls/live/2035340/ch24live/index.m3u8?as=1",
-      "https://mako-streaming.akamaized.net/evrideo/hls/live/20001278/ch24live/index.m3u8",
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2330/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2330/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2330/index.m3u8"
+      "https://mako-streaming.akamaized.net/evrideo/hls/live/20001278/ch24live/index.m3u8"
     ],
     "country": "IL",
     "countryHe": "ישראל",
     "fallbackUrls": [
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/ch24/live.livx/playlist.m3u8",
       "https://mako-streaming.akamaized.net/stream/hls/live/2035897/ch24/index.m3u8",
-      "http://stream.mcquack.net/452/index.m3u8",
-      "http://stream.mcquack.net/42/index.m3u8",
       "https://mako-streaming.akamaized.net/direct/hls/live/2035340/ch24live/index.m3u8?as=1",
-      "https://mako-streaming.akamaized.net/evrideo/hls/live/20001278/ch24live/index.m3u8",
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2330/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2330/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2330/index.m3u8"
+      "https://mako-streaming.akamaized.net/evrideo/hls/live/20001278/ch24live/index.m3u8"
     ]
   },
   {
@@ -667,7 +576,8 @@
       "host": "d1zqtf09wb8nt5.cloudfront.net",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
-    }
+    },
+    "fallbackUrls": []
   },
   {
     "id": "foody_il",
@@ -691,7 +601,8 @@
       "host": "d1zqtf09wb8nt5.cloudfront.net",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
-    }
+    },
+    "fallbackUrls": []
   },
   {
     "id": "viva_plus_il",
@@ -714,17 +625,9 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
-    "fallbackUrls": [
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12208/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12208/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12208/index.m3u8"
-    ],
+    "fallbackUrls": [],
     "iptv": "VivaPlus.il",
-    "backups": [
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12208/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12208/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12208/index.m3u8"
-    ]
+    "backups": []
   },
   {
     "id": "viva_israel",
@@ -746,19 +649,9 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
-    "backups": [
-      "http://stream.mcquack.net/43/index.m3u8",
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32127/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32127/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32127/index.m3u8"
-    ],
+    "backups": [],
     "countryHe": "ישראל",
-    "fallbackUrls": [
-      "http://stream.mcquack.net/43/index.m3u8",
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32127/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32127/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32127/index.m3u8"
-    ],
+    "fallbackUrls": [],
     "iptv": "Viva.il"
   },
   {
@@ -804,9 +697,7 @@
     "country": "IL",
     "countryHe": "ישראל",
     "backups": [
-      "https://r.il.cdn-redge.media/livehls/oil/freetv/live/sport_5_4k_avc/live.livx/playlist.m3u8",
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5/live.livx/playlist.m3u8",
-      "http://stream.mcquack.net/212/index.m3u8"
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5/live.livx/playlist.m3u8"
     ],
     "number": 36,
     "src": {
@@ -817,9 +708,7 @@
       "web": "✅"
     },
     "fallbackUrls": [
-      "https://r.il.cdn-redge.media/livehls/oil/freetv/live/sport_5_4k_avc/live.livx/playlist.m3u8",
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5/live.livx/playlist.m3u8",
-      "http://stream.mcquack.net/212/index.m3u8"
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5/live.livx/playlist.m3u8"
     ],
     "webOk": true
   },
@@ -845,219 +734,8 @@
       "host": "d1zqtf09wb8nt5.cloudfront.net",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
-    }
-  },
-  {
-    "id": "sport1_israel",
-    "name": "ספורט 1 HD (Sport 1)",
-    "title": "ערוץ ספורט 1 צ'רלטון שידור חי (Charlton Sport 1 HD)",
-    "category": "ספורט (Sports)",
-    "categoryEn": "sports",
-    "url": "https://2lacasaba.site/yessport1/index.m3u8?token=5ef9ca0f660144278cc5252bc5b3032001ffe9e9&expires=1795454371",
-    "logo": "assets/logos/sport1_israel.png",
-    "badge": "HD",
-    "desc": "ספורט 1 (צ'רלטון) – ליגת העל הישראלית, הפרמייר ליג האנגלית, גביע המדינה ומשחקים מרכזיים בשידור חי",
-    "lang": "he",
-    "country": "IL",
-    "number": 38,
-    "countryHe": "ישראל",
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי מקורי צ'רלטון FHD",
-      "web": "❌ רק באפליקציה (הפניה בלי CORS)"
     },
-    "fallbackUrls": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12249/index.m3u8",
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12249/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12249/index.m3u8",
-      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12249/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2353/index.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2353/index.m3u8",
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2353/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2353/index.m3u8",
-      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2353/index.m3u8"
-    ],
-    "iptv": "Sport1.il",
-    "backups": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12249/index.m3u8",
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12249/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12249/index.m3u8",
-      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12249/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2353/index.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2353/index.m3u8",
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2353/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2353/index.m3u8",
-      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2353/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12249/index.m3u8"
-    ],
-    "backupUrls": [
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12249/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12249/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12249/index.m3u8"
-    ],
-    "webOk": false,
-    "hamalSlug": "yes-1"
-  },
-  {
-    "id": "sport2_israel",
-    "name": "ספורט 2 HD (Sport 2)",
-    "title": "ערוץ ספורט 2 צ'רלטון שידור חי (Charlton Sport 2 HD)",
-    "category": "ספורט (Sports)",
-    "categoryEn": "sports",
-    "url": "https://2lacasaba.site/yessport2/index.m3u8?token=c8b17ffcb18932d20487d603c813fcf039bc406a&expires=1795454372",
-    "logo": "assets/logos/sport2_israel.png",
-    "badge": "HD",
-    "desc": "ספורט 2 (צ'רלטון) – שידורים ישירים מהליגה האנגלית, הליגה האיטלקית, בונדסליגה, ליגה אירופית וטניס",
-    "lang": "he",
-    "country": "IL",
-    "number": 39,
-    "countryHe": "ישראל",
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי מקורי צ'רלטון FHD",
-      "web": "❌ רק באפליקציה (הפניה בלי CORS)"
-    },
-    "fallbackUrls": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12250/index.m3u8",
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12250/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12250/index.m3u8",
-      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12250/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2352/index.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2352/index.m3u8",
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2352/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2352/index.m3u8",
-      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2352/index.m3u8"
-    ],
-    "iptv": "Sport2.il",
-    "backups": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12250/index.m3u8",
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12250/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12250/index.m3u8",
-      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12250/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2352/index.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2352/index.m3u8",
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2352/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2352/index.m3u8",
-      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2352/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12250/index.m3u8"
-    ],
-    "backupUrls": [
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12250/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12250/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12250/index.m3u8"
-    ],
-    "webOk": false,
-    "hamalSlug": "yes-2"
-  },
-  {
-    "id": "sport3_israel",
-    "name": "ספורט 3 HD (Sport 3)",
-    "title": "ערוץ ספורט 3 צ'רלטון שידור חי (Charlton Sport 3 HD)",
-    "category": "ספורט (Sports)",
-    "categoryEn": "sports",
-    "url": "https://2lacasaba.site/yessport3/index.m3u8?token=9c49ea3e70f91a96664e2736c22cb2689b60ea8f&expires=1795454373",
-    "logo": "assets/logos/sport3_israel.png",
-    "badge": "HD",
-    "desc": "ספורט 3 (צ'רלטון) – כדורגל ישראלי ואירופי, כדורסל, אולפנים חיים ואירועי ספורט בינלאומיים",
-    "lang": "he",
-    "country": "IL",
-    "number": 40,
-    "countryHe": "ישראל",
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי מקורי צ'רלטון FHD",
-      "web": "❌ רק באפליקציה (הפניה בלי CORS)"
-    },
-    "fallbackUrls": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12251/index.m3u8",
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12251/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12251/index.m3u8",
-      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12251/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2388/index.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2388/index.m3u8",
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2388/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2388/index.m3u8",
-      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2388/index.m3u8"
-    ],
-    "iptv": "Sport3.il",
-    "backups": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12251/index.m3u8",
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12251/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12251/index.m3u8",
-      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12251/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2388/index.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2388/index.m3u8",
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2388/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2388/index.m3u8",
-      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2388/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12251/index.m3u8"
-    ],
-    "backupUrls": [
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12251/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12251/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12251/index.m3u8"
-    ],
-    "webOk": false,
-    "hamalSlug": "yes-3"
-  },
-  {
-    "id": "sport4_israel",
-    "name": "ספורט 4 FHD (Sport 4)",
-    "title": "ערוץ ספורט 4 צ'רלטון שידור חי (Charlton Sport 4 FHD)",
-    "category": "ספורט (Sports)",
-    "categoryEn": "sports",
-    "url": "https://2lacasaba.site/yessport4/index.m3u8?token=d30f5fd0f552d7bf8cbafce906ec8bd48d862afc&expires=1795454374",
-    "logo": "assets/logos/sport4_israel.png",
-    "badge": "FHD",
-    "desc": "ספורט 4 FHD (צ'רלטון) – שידורים חיים באיכות FHD מליגת העל, הפרמייר ליג ומפעלי אופ\"א",
-    "lang": "he",
-    "country": "IL",
-    "number": 41,
-    "countryHe": "ישראל",
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי מקורי צ'רלטון FHD",
-      "web": "❌ רק באפליקציה (הפניה בלי CORS)"
-    },
-    "fallbackUrls": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12252/index.m3u8",
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12252/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12252/index.m3u8",
-      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12252/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2389/index.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2389/index.m3u8",
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2389/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2389/index.m3u8",
-      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2389/index.m3u8"
-    ],
-    "iptv": "Sport4.il",
-    "backups": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12252/index.m3u8",
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12252/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12252/index.m3u8",
-      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12252/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2389/index.m3u8",
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/2389/index.m3u8",
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2389/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2389/index.m3u8",
-      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/2389/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12252/index.m3u8"
-    ],
-    "backupUrls": [
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12252/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12252/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12252/index.m3u8"
-    ],
-    "webOk": false,
-    "hamalSlug": "yes-4"
+    "fallbackUrls": []
   },
   {
     "id": "arutz_hayeladim",
@@ -1126,7 +804,9 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
-    "fallbackUrls": [],
+    "fallbackUrls": [
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/yalduti_songs/live.livx/playlist.m3u8"
+    ],
     "backups": [
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/yalduti_songs/live.livx/playlist.m3u8"
     ]
@@ -1199,17 +879,9 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
-    "fallbackUrls": [
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2366/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2366/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2366/index.m3u8"
-    ],
+    "fallbackUrls": [],
     "iptv": "Junior.il",
-    "backups": [
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2366/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2366/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2366/index.m3u8"
-    ]
+    "backups": []
   },
   {
     "id": "yoyo_tv",
@@ -1257,17 +929,11 @@
       "web": "✅"
     },
     "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/baby/live.livx/playlist.m3u8",
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2370/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2370/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2370/index.m3u8"
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/baby/live.livx/playlist.m3u8"
     ],
     "iptv": "BabyTV.il",
     "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/baby/live.livx/playlist.m3u8",
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2370/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2370/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2370/index.m3u8"
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/baby/live.livx/playlist.m3u8"
     ]
   },
   {
@@ -1489,11 +1155,7 @@
       "https://kneset.gostreaming.tv/p2-kneset/_definst_/myStream/playlist.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/knesset/live.livx/playlist.m3u8",
       "https://contact.gostreaming.tv/Knesset/myStream/playlist.m3u8",
-      "https://kneset.gostreaming.tv/p2-kneset/_definst_/myStream/index.m3u8",
-      "http://stream.mcquack.net/48/index.m3u8",
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12269/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12269/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12269/index.m3u8"
+      "https://kneset.gostreaming.tv/p2-kneset/_definst_/myStream/index.m3u8"
     ],
     "country": "IL",
     "countryHe": "ישראל",
@@ -1501,11 +1163,7 @@
       "https://kneset.gostreaming.tv/p2-kneset/_definst_/myStream/playlist.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/knesset/live.livx/playlist.m3u8",
       "https://contact.gostreaming.tv/Knesset/myStream/playlist.m3u8",
-      "https://kneset.gostreaming.tv/p2-kneset/_definst_/myStream/index.m3u8",
-      "http://stream.mcquack.net/48/index.m3u8",
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12269/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12269/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12269/index.m3u8"
+      "https://kneset.gostreaming.tv/p2-kneset/_definst_/myStream/index.m3u8"
     ]
   },
   {
@@ -1529,16 +1187,8 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
-    "fallbackUrls": [
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32164/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32164/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32164/index.m3u8"
-    ],
-    "backups": [
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32164/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32164/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32164/index.m3u8"
-    ]
+    "fallbackUrls": [],
+    "backups": []
   },
   {
     "id": "music_il_tv",
@@ -1677,7 +1327,8 @@
       "https://mako-streaming.akamaized.net/stream/hls/live/2033791/k12dvr/index.m3u8"
     ],
     "backupUrls": [
-      "http://stream.mcquack.net/294/index.m3u8"
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/keshet_12/live.livx/playlist.m3u8",
+      "https://mako-streaming.akamaized.net/stream/hls/live/2033791/k12dvr/index.m3u8"
     ]
   },
   {
@@ -1709,7 +1360,8 @@
       "https://d18b0e6mopany4.cloudfront.net/out/v1/2f2bc414a3db4698a8e94b89eaf2da2a/index.m3u8"
     ],
     "backupUrls": [
-      "http://stream.mcquack.net/295/index.m3u8"
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/reshet_13/live.livx/playlist.m3u8",
+      "https://d18b0e6mopany4.cloudfront.net/out/v1/2f2bc414a3db4698a8e94b89eaf2da2a/index.m3u8"
     ]
   },
   {
@@ -1764,16 +1416,8 @@
       "web": "✅"
     },
     "number": 79,
-    "fallbackUrls": [
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32160/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32160/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32160/index.m3u8"
-    ],
-    "backups": [
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32160/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32160/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32160/index.m3u8"
-    ]
+    "fallbackUrls": [],
+    "backups": []
   },
   {
     "id": "shelanu_tv_live",
@@ -1923,9 +1567,7 @@
     "countryHe": "ישראל",
     "fallbackUrls": [],
     "backups": [],
-    "backupUrls": [
-      "http://stream.mcquack.net/295/index.m3u8"
-    ]
+    "backupUrls": []
   },
   {
     "id": "knesset_access",
@@ -1949,16 +1591,10 @@
     "country": "IL",
     "countryHe": "ישראל",
     "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kneset/live.livx/playlist.m3u8",
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12269/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12269/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12269/index.m3u8"
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kneset/live.livx/playlist.m3u8"
     ],
     "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kneset/live.livx/playlist.m3u8",
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12269/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12269/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12269/index.m3u8"
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kneset/live.livx/playlist.m3u8"
     ]
   },
   {
@@ -2099,9 +1735,7 @@
       "web": "✅"
     },
     "backups": [],
-    "backupUrls": [
-      "http://stream.mcquack.net/295/index.m3u8"
-    ]
+    "backupUrls": []
   },
   {
     "id": "reshet13_reality_il",
@@ -2129,7 +1763,7 @@
       "https://d2dffl3588mvfk.cloudfront.net/out/v1/d8e15050ca4148aab0ee387a5e2eb46b/index_1.m3u8"
     ],
     "backupUrls": [
-      "http://stream.mcquack.net/295/index.m3u8"
+      "https://d2dffl3588mvfk.cloudfront.net/out/v1/d8e15050ca4148aab0ee387a5e2eb46b/index_1.m3u8"
     ]
   },
   {
@@ -2297,30 +1931,14 @@
       "web": "✅"
     },
     "backups": [
-      "https://2lacasaba.site/yessport5/index.m3u8?token=2b52fb1ea72be5242bc8333cd8adcdce3db2bb41&expires=1795454378",
-      "http://stream.mcquack.net/212/index.m3u8",
-      "http://stream.mcquack.net/55/index.m3u8",
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32001/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32001/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32001/index.m3u8",
       "https://r.il.cdn-redge.media/livehls/oil/freetv/live/sport_5/live.livx/playlist.m3u8"
     ],
     "fallbackUrls": [
-      "http://stream.mcquack.net/212/index.m3u8",
-      "http://stream.mcquack.net/55/index.m3u8",
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32001/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32001/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32001/index.m3u8",
       "https://r.il.cdn-redge.media/livehls/oil/freetv/live/sport_5/live.livx/playlist.m3u8"
     ],
     "iptv": "Sport5.il",
     "backupUrls": [
-      "http://stream.mcquack.net/212/index.m3u8",
-      "http://stream.mcquack.net/55/index.m3u8",
-      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32001/index.m3u8",
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32001/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32001/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32001/index.m3u8"
+      "https://r.il.cdn-redge.media/livehls/oil/freetv/live/sport_5/live.livx/playlist.m3u8"
     ],
     "webOk": true,
     "hamalSlug": "yes-5"
@@ -2339,13 +1957,7 @@
     "country": "IL",
     "countryHe": "ישראל",
     "number": 101,
-    "backups": [
-      "https://2lacasaba.site/yessport5plus/index.m3u8?token=2c73d12ac55675d862ba1977f6aad4d8bc8522aa&expires=1795454380",
-      "http://stream.mcquack.net/333/index.m3u8",
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32002/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32002/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32002/index.m3u8"
-    ],
+    "backups": [],
     "src": {
       "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
       "kind": "official",
@@ -2353,20 +1965,9 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
-    "fallbackUrls": [
-      "http://stream.mcquack.net/333/index.m3u8",
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32002/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32002/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32002/index.m3u8"
-    ],
+    "fallbackUrls": [],
     "iptv": "Sport5Plus.il",
-    "backupUrls": [
-      "http://stream.mcquack.net/333/index.m3u8",
-      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/32002/index.m3u8",
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32002/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32002/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32002/index.m3u8"
-    ],
+    "backupUrls": [],
     "webOk": true,
     "hamalSlug": "yes-5-plus"
   },
@@ -2385,11 +1986,7 @@
     "countryHe": "ישראל",
     "number": 102,
     "backups": [
-      "https://2lacasaba.site/yessport5live/index.m3u8?token=9cbeecd52019544cf46181018a6d98f80de6eee4&expires=1795454379",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5_live_hevc/live.livx/playlist.m3u8",
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2362/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2362/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2362/index.m3u8",
       "https://r.il.cdn-redge.media/livehls/oil/freetv/live/sport_5_live/live.livx/playlist.m3u8"
     ],
     "src": {
@@ -2401,9 +1998,6 @@
     },
     "fallbackUrls": [
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5_live_hevc/live.livx/playlist.m3u8",
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2362/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2362/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2362/index.m3u8",
       "https://r.il.cdn-redge.media/livehls/oil/freetv/live/sport_5_live/live.livx/playlist.m3u8"
     ],
     "iptv": "Sport5Live.il",
@@ -2431,17 +2025,10 @@
       "web": "✅"
     },
     "fallbackUrls": [
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12254/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12254/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12254/index.m3u8",
       "https://r.il.cdn-redge.media/livehls/oil/freetv/live/sport_5_gold/live.livx/playlist.m3u8"
     ],
     "iptv": "Sport5Gold.il",
     "backups": [
-      "https://2lacasaba.site/5sportgold/index.m3u8?token=0afc7e9c8ce1efcca23eb5f23025e6601f2fa3a4&expires=1795454381",
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12254/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12254/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12254/index.m3u8",
       "https://r.il.cdn-redge.media/livehls/oil/freetv/live/sport_5_gold/live.livx/playlist.m3u8"
     ],
     "hamalSlug": "yes-5-gold"
@@ -2467,18 +2054,9 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
-    "fallbackUrls": [
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12278/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12278/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12278/index.m3u8"
-    ],
+    "fallbackUrls": [],
     "iptv": "Sport5Stars.il",
-    "backups": [
-      "https://2lacasaba.site/5stars/index.m3u8?token=11bc03ab68ab0809bd4f9a7cde231b52c0ebbec3&expires=1795454382",
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12278/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12278/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12278/index.m3u8"
-    ],
+    "backups": [],
     "hamalSlug": "yes-5-stars"
   },
   {
@@ -2503,17 +2081,10 @@
       "web": "✅"
     },
     "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5_max_hevc/live.livx/playlist.m3u8",
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32147/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32147/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32147/index.m3u8"
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5_max_hevc/live.livx/playlist.m3u8"
     ],
     "backups": [
-      "https://2lacasaba.site/5max/index.m3u8?token=62d19a9f2ab5452c7ec7460cbb44d833f6e78b4c&expires=1795454383",
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5_max_hevc/live.livx/playlist.m3u8",
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32147/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32147/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32147/index.m3u8"
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5_max_hevc/live.livx/playlist.m3u8"
     ],
     "hamalSlug": "sport-5-max"
   },
@@ -2532,11 +2103,7 @@
     "countryHe": "ישראל",
     "number": 107,
     "backups": [
-      "https://2lacasaba.site/onesport/index.m3u8?token=835ce677a9269ec1a28ece554c858a19290736d8&expires=1795454375",
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/one_1_hevc/live.livx/playlist.m3u8",
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2340/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2340/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2340/index.m3u8"
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/one_1_hevc/live.livx/playlist.m3u8"
     ],
     "src": {
       "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
@@ -2546,10 +2113,7 @@
       "web": "✅"
     },
     "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/one_1_hevc/live.livx/playlist.m3u8",
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2340/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2340/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2340/index.m3u8"
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/one_1_hevc/live.livx/playlist.m3u8"
     ],
     "iptv": "One.il",
     "hamalSlug": "One-1"
@@ -2569,11 +2133,7 @@
     "logo": "assets/logos/one_2_hd.png",
     "number": 108,
     "backups": [
-      "https://2lacasaba.site/onesport2/index.m3u8?token=b41e890f99e68b3d798c31cd00650aeb393ebdb6&expires=1795454377",
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/one_2_hevc/live.livx/playlist.m3u8",
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12231/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12231/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12231/index.m3u8"
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/one_2_hevc/live.livx/playlist.m3u8"
     ],
     "src": {
       "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
@@ -2583,10 +2143,7 @@
       "web": "✅"
     },
     "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/one_2_hevc/live.livx/playlist.m3u8",
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12231/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12231/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12231/index.m3u8"
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/one_2_hevc/live.livx/playlist.m3u8"
     ],
     "iptv": "One2.il",
     "hamalSlug": "one-2"
@@ -2612,16 +2169,8 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
-    "fallbackUrls": [
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32002/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32002/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32002/index.m3u8"
-    ],
-    "backups": [
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32002/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32002/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32002/index.m3u8"
-    ]
+    "fallbackUrls": [],
+    "backups": []
   },
   {
     "id": "sky_racing_1",
@@ -2667,26 +2216,13 @@
       "web": "✅"
     },
     "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport5_fhd/live.livx/playlist.m3u8",
-      "http://stream.mcquack.net/55/index.m3u8",
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12252/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12252/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12252/index.m3u8"
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport5_fhd/live.livx/playlist.m3u8"
     ],
     "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport5_fhd/live.livx/playlist.m3u8",
-      "http://stream.mcquack.net/55/index.m3u8",
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12252/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12252/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12252/index.m3u8"
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport5_fhd/live.livx/playlist.m3u8"
     ],
     "backupUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport5_fhd/live.livx/playlist.m3u8",
-      "http://stream.mcquack.net/55/index.m3u8",
-      "http://ztf5jtil.zyntras.top/iptv/KLEYQYC7TPZ8G7W822WQCXNQ/12252/index.m3u8",
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/12252/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/12252/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12252/index.m3u8"
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport5_fhd/live.livx/playlist.m3u8"
     ]
   },
   {
@@ -2822,7 +2358,8 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "freetv_movies_action",
@@ -2845,7 +2382,8 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "freetv_movies_comedy",
@@ -2868,7 +2406,8 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "freetv_movies_drama",
@@ -2891,7 +2430,8 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "freetv_movies_thriller",
@@ -2914,7 +2454,8 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "freetv_movies_horror",
@@ -2937,7 +2478,8 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "freetv_movies_romance",
@@ -2960,7 +2502,8 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "freetv_movies_feelgood",
@@ -2983,7 +2526,8 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "freetv_movies_family",
@@ -3030,7 +2574,8 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "freetv_series_comedy2",
@@ -3053,7 +2598,8 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "daily_drama_il",
@@ -3076,7 +2622,8 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "vamos_telenovela_il",
@@ -3099,7 +2646,8 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "freetv_global_il",
@@ -3122,7 +2670,8 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "keshet_food",
@@ -3346,8 +2895,12 @@
       "web": "✅"
     },
     "number": 185,
-    "fallbackUrls": [],
-    "backups": [],
+    "fallbackUrls": [
+      "https://skynewsau-live.akamaized.net/hls/live/2002690/skynewsau-extra2/master.m3u8"
+    ],
+    "backups": [
+      "https://skynewsau-live.akamaized.net/hls/live/2002690/skynewsau-extra2/master.m3u8"
+    ],
     "backupUrls": [
       "https://skynewsau-live.akamaized.net/hls/live/2002690/skynewsau-extra2/master.m3u8"
     ]
@@ -3442,12 +2995,8 @@
       "found": "iptv-org (BFMTV.fr)",
       "web": "✅"
     },
-    "fallbackUrls": [
-      "https://live-cdn-stream-euw1.bfmtv.bct.nextradiotv.com/master.m3u8"
-    ],
-    "backups": [
-      "https://live-cdn-stream-euw1.bfmtv.bct.nextradiotv.com/master.m3u8"
-    ]
+    "fallbackUrls": [],
+    "backups": []
   },
   {
     "id": "bfm_tech",
@@ -3501,9 +3050,7 @@
     "category": "חדשות מהעולם (News)",
     "categoryEn": "news",
     "url": "https://vs-hls-push-ww-live.akamaized.net/x=4/i=urn:bbc:pips:service:bbc_news_channel_hd/t=3840/v=pv14/b=5070016/main.m3u8",
-    "fallbackUrls": [
-      "http://stream.mcquack.net/363/index.m3u8"
-    ],
+    "fallbackUrls": [],
     "badge": "FHD",
     "color": "#dc2626",
     "isIsraeli": false,
@@ -3518,9 +3065,7 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
-    "backups": [
-      "http://stream.mcquack.net/363/index.m3u8"
-    ]
+    "backups": []
   },
   {
     "id": "cnn_intl_hd",
@@ -3529,7 +3074,7 @@
     "categoryEn": "news",
     "url": "https://jmp2.uk/plu-5421f71da6af422839419cb3.m3u8",
     "fallbackUrls": [
-      "https://jmp2.uk/plu-5421f71da6af422839419cb3.m3u8"
+      "https://turnerlive.warnermediacdn.com/hls/live/586495/cnngo/cnn_slate/VIDEO_0_3564000.m3u8"
     ],
     "badge": "HD",
     "color": "#ef4444",
@@ -3562,7 +3107,7 @@
     "color": "#2563eb",
     "isIsraeli": false,
     "kind": "tv",
-    "desc": "שידורי חדשות מתפרצות ואירועים חיים מארה\"ב ומהעולם מבית FOX",
+    "desc": "שידורי חדשות מתפרצות ואירועים חיים מארה״ב ומהעולם מבית FOX",
     "logo": "assets/logos/fox_livenow_hd.png",
     "number": 195,
     "src": {
@@ -3724,7 +3269,8 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "radios_video",
@@ -3746,7 +3292,8 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "sky_folk_tv",
@@ -3769,7 +3316,8 @@
       "web": "✅ מתנגן בכל הפלטפורמות"
     },
     "number": 208,
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "music_1hd",
@@ -3791,7 +3339,8 @@
       "found": "iptv-org (1HDMusicTelevision.ru)",
       "web": "❌ רק באפליקציה (HTTP)"
     },
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "hidabroot",
@@ -3816,16 +3365,10 @@
     "country": "IL",
     "countryHe": "ישראל",
     "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/hidabroot/live.livx/playlist.m3u8",
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32319/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32319/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32319/index.m3u8"
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/hidabroot/live.livx/playlist.m3u8"
     ],
     "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/hidabroot/live.livx/playlist.m3u8",
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32319/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32319/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32319/index.m3u8"
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/hidabroot/live.livx/playlist.m3u8"
     ]
   },
   {
@@ -3967,7 +3510,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "breslev_books",
@@ -3991,7 +3535,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "breslev_shorts",
@@ -4015,7 +3560,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "breslev_torah",
@@ -4039,7 +3585,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "kan_bet",
@@ -4272,7 +3819,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "glz_live",
@@ -4296,7 +3844,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "galgalatz_hits_live",
@@ -4320,7 +3869,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "eco99fm",
@@ -4344,7 +3894,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "radio_103fm",
@@ -4368,7 +3919,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "radios_100fm",
@@ -4392,7 +3944,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "lev_hamedina",
@@ -4416,7 +3969,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "radio_102fm",
@@ -4440,7 +3994,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "radio_haifa",
@@ -4464,7 +4019,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "radio_101fm",
@@ -4488,7 +4044,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "radio_90fm",
@@ -4512,7 +4069,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "radio_darom_live",
@@ -4536,7 +4094,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "radio_darom_97",
@@ -4560,7 +4119,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "radio_1045fm",
@@ -4613,7 +4173,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "radio_eilat",
@@ -4637,7 +4198,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "galei_israel",
@@ -4690,7 +4252,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "kol_chai_music",
@@ -4772,7 +4335,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "radio_2000_live",
@@ -4796,7 +4360,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "radio_breslev",
@@ -4820,7 +4385,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "mizrahit_fm",
@@ -4844,7 +4410,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "noshmim_mizrahit",
@@ -4868,7 +4435,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "ivri6",
@@ -4892,7 +4460,8 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "kz_radio_live",
@@ -4916,7 +4485,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "radio_sport5",
@@ -4940,7 +4510,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "radio_995",
@@ -4964,7 +4535,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "aviv_media",
@@ -4988,7 +4560,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "israeli_voice",
@@ -5012,7 +4585,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "timbr_radio",
@@ -5036,7 +4610,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "up2dance",
@@ -5060,7 +4635,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "ystream",
@@ -5084,7 +4660,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "joint_blues",
@@ -5108,7 +4685,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "joint_beat",
@@ -5132,7 +4710,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "joint_reggae",
@@ -5156,7 +4735,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "glglz_decades",
@@ -5180,7 +4760,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "glglz_weekend",
@@ -5204,7 +4785,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "glglz_rock",
@@ -5228,7 +4810,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "star33",
@@ -5252,7 +4835,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "kol_hatzafon",
@@ -5276,7 +4860,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "radio_cs",
@@ -5300,7 +4885,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "radio_love_romantic",
@@ -5324,7 +4910,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "radio_hatahana",
@@ -5348,7 +4935,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "radio_nahariya",
@@ -5372,7 +4960,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "radio_sahar",
@@ -5396,7 +4985,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "radio_diki",
@@ -5420,7 +5010,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "radios_kpop",
@@ -5444,7 +5035,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "radios_legends",
@@ -5526,7 +5118,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "radios_workout",
@@ -5550,7 +5143,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "radios_eurovision",
@@ -5661,7 +5255,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "radios_gamer",
@@ -5685,7 +5280,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "radios_top40",
@@ -5709,7 +5305,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "radios_tiktok",
@@ -5733,7 +5330,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "radios_yehudi",
@@ -5873,7 +5471,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "radios_standup",
@@ -5897,7 +5496,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "radios_selfie",
@@ -5950,7 +5550,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "radios_chillout",
@@ -6061,7 +5662,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "radios_classic",
@@ -6114,7 +5716,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "radios_rock",
@@ -6196,7 +5799,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "radios_80s",
@@ -6220,7 +5824,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "radios_90s",
@@ -6244,7 +5849,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "radios_nostalgia",
@@ -6268,7 +5874,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "rak_musica",
@@ -6292,7 +5899,8 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "audioversity_live",
@@ -6316,7 +5924,8 @@
     "number": 316,
     "kind": "radio",
     "countryHe": "ישראל",
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "radio_angelika_live",
@@ -6340,7 +5949,8 @@
     "number": 317,
     "kind": "radio",
     "countryHe": "ישראל",
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "radio_qualita",
@@ -6364,7 +5974,8 @@
       "web": "✅"
     },
     "countryHe": "ישראל",
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "radio_plus_il",
@@ -6388,7 +5999,8 @@
       "web": "✅"
     },
     "countryHe": "ישראל",
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "jewish_music_stream_live",
@@ -6412,7 +6024,8 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "radios_shlomo_artzi",
@@ -7220,7 +6833,8 @@
       "web": "✅"
     },
     "number": 352,
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "babytv_global_hd",
@@ -7242,7 +6856,8 @@
       "web": "✅"
     },
     "number": 353,
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "zoomoo_kids_hd",
@@ -7264,7 +6879,8 @@
       "web": "✅"
     },
     "number": 354,
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "ducktv_plus_hd",
@@ -7286,7 +6902,8 @@
       "found": "iptv-org (ducktvPLUS.sk)",
       "web": "✅"
     },
-    "backups": []
+    "backups": [],
+    "fallbackUrls": []
   },
   {
     "id": "lego_channel_hd",
@@ -7309,6 +6926,9 @@
       "web": "✅"
     },
     "backups": [
+      "https://dh18i7whff86v.cloudfront.net/index.m3u8"
+    ],
+    "fallbackUrls": [
       "https://dh18i7whff86v.cloudfront.net/index.m3u8"
     ]
   },
@@ -7336,6 +6956,11 @@
       "https://mmm-dk.otteravision.com/DexaYJdJXkLqFxTK_DuckTVHDSAMS/DuckTVHDSAMS.stream/playlist.m3u8",
       "https://stream.ads.ottera.tv/playlist.m3u8?network_id=13168",
       "https://d6lk10bkdgfae.cloudfront.net/playlist.m3u8"
+    ],
+    "fallbackUrls": [
+      "https://mmm-dk.otteravision.com/DexaYJdJXkLqFxTK_DuckTVHDSAMS/DuckTVHDSAMS.stream/playlist.m3u8",
+      "https://stream.ads.ottera.tv/playlist.m3u8?network_id=13168",
+      "https://d6lk10bkdgfae.cloudfront.net/playlist.m3u8"
     ]
   },
   {
@@ -7356,7 +6981,11 @@
       "https://bein-xtra-xumo.amagi.tv/playlist.m3u8",
       "https://aegis-cloudfront-1.tubi.video/651ee7d3-e75b-4748-be86-422d43ff24b6/playlist.m3u8"
     ],
-    "fallbackUrls": [],
+    "fallbackUrls": [
+      "https://bein-beinxtrasports-firetv.amagi.tv/playlist.m3u8",
+      "https://bein-xtra-xumo.amagi.tv/playlist.m3u8",
+      "https://aegis-cloudfront-1.tubi.video/651ee7d3-e75b-4748-be86-422d43ff24b6/playlist.m3u8"
+    ],
     "number": 364,
     "src": {
       "by": "bein-xtra-bein.amagi.tv",
@@ -7364,7 +6993,8 @@
       "host": "bein-xtra-bein.amagi.tv",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
-    }
+    },
+    "badge": "HD"
   },
   {
     "id": "pga_tour_golf_fhd",
@@ -7382,7 +7012,9 @@
     "backups": [
       "https://jmp2.uk/plu-66c870112630fc0008137ae2.m3u8"
     ],
-    "fallbackUrls": [],
+    "fallbackUrls": [
+      "https://jmp2.uk/plu-66c870112630fc0008137ae2.m3u8"
+    ],
     "number": 365,
     "src": {
       "by": "d11k1mnrgfposz.cloudfront.net",
@@ -7390,7 +7022,8 @@
       "host": "d11k1mnrgfposz.cloudfront.net",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
-    }
+    },
+    "badge": "HD"
   },
   {
     "id": "vevo_pop_live_fhd",
@@ -7409,7 +7042,10 @@
       "https://jmp2.uk/plu-5d93b635b43dd1a399b39eee.m3u8",
       "https://amg00056-amg00056c8-rakuten-it-3239.playouts.now.amagi.tv/playlist.m3u8"
     ],
-    "fallbackUrls": [],
+    "fallbackUrls": [
+      "https://jmp2.uk/plu-5d93b635b43dd1a399b39eee.m3u8",
+      "https://amg00056-amg00056c8-rakuten-it-3239.playouts.now.amagi.tv/playlist.m3u8"
+    ],
     "number": 366,
     "src": {
       "by": "amg00056-amg00056c6-rakuten-uk-3235.playouts.now.amagi.tv",
@@ -7417,7 +7053,8 @@
       "host": "amg00056-amg00056c6-rakuten-uk-3235.playouts.now.amagi.tv",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
-    }
+    },
+    "badge": "HD"
   },
   {
     "id": "cbs_sports_hq_fhd",
@@ -7441,7 +7078,8 @@
       "host": "dai.google.com",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
-    }
+    },
+    "badge": "HD"
   },
   {
     "id": "cartoon_network_hd",
@@ -7552,16 +7190,8 @@
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
     "url": "https://d15ds134q59udk.cloudfront.net/out/v1/fbba879221d045598540ee783b140fe2/index.m3u8",
-    "backups": [
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32136/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32136/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32136/index.m3u8"
-    ],
-    "fallbackUrls": [
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/32136/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/32136/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32136/index.m3u8"
-    ],
+    "backups": [],
+    "fallbackUrls": [],
     "badge": "HD",
     "desc": "מיטב הקומדיות, המערכונים והסטנדאפ הישראלי 24/7",
     "lang": "he",
@@ -7608,12 +7238,8 @@
     "category": "ספורט (Sports)",
     "categoryEn": "sports",
     "url": "https://mvg-mv-xumo.otteravision.com/mvg/mv/mv.m3u8",
-    "backups": [
-      "https://mvg-mv-xumo.otteravision.com/mvg/mv/mv.m3u8"
-    ],
-    "fallbackUrls": [
-      "https://mvg-mv-xumo.otteravision.com/mvg/mv/mv.m3u8"
-    ],
+    "backups": [],
+    "fallbackUrls": [],
     "badge": "HD",
     "desc": "ערוץ הספורט המוביל בעולם לשידורי פורמולה 1 Formula 1 בשידור חי ובאיכות HD – מרוצים, מקצי דירוג, אימונים ופרשנות עולמית",
     "lang": "en",
@@ -7766,16 +7392,8 @@
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
     "url": "https://i24newshebrew-cdn.encoders.immergo.tv/master.m3u8",
-    "backups": [
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2386/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2386/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2386/index.m3u8"
-    ],
-    "fallbackUrls": [
-      "http://tqsxcvnh.ukminlt.fun/iptv/U79ZHEVAQ8WLQMVN8NHEXSEV/2386/index.m3u8",
-      "http://d875e960.megatv.fun/iptv/SM7W5YZTYGY965/2386/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2386/index.m3u8"
-    ],
+    "backups": [],
+    "fallbackUrls": [],
     "badge": "HD",
     "desc": "ערוץ החדשות והאקטואליה הבינלאומי i24NEWS בשידור חי בעברית 24/7",
     "lang": "he",
@@ -7812,7 +7430,9 @@
     },
     "desc": "להיטי מוזיקה ישראלית מכל הזמנים, קליפים והופעות חיות 24 שעות ביממה.",
     "webOk": true,
-    "backups": []
+    "backups": [],
+    "fallbackUrls": [],
+    "badge": "HD"
   },
   {
     "id": "mtv_clips_hd",
@@ -7868,7 +7488,8 @@
       "host": "stream.panet.com",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
-    }
+    },
+    "fallbackUrls": []
   },
   {
     "id": "vod_checkout",
@@ -8889,14 +8510,19 @@
     "quality": "HD",
     "resolution": "1080p",
     "desc": "ערוץ 9 הישראלי המשדר חדשות, אקטואליה, תרבות ותוכן ישראלי ורוסי.",
-    "backups": [],
+    "backups": [
+      "https://hlspackager.akamaized.net/live/DB/Israel9/HLS/Israel9.m3u8"
+    ],
     "src": {
       "by": "GoStreaming – ספק השידור של ערוץ 9",
       "kind": "official",
       "host": "contact.gostreaming.tv",
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
-    }
+    },
+    "fallbackUrls": [
+      "https://hlspackager.akamaized.net/live/DB/Israel9/HLS/Israel9.m3u8"
+    ]
   },
   {
     "id": "i24news_arabic_hd",
@@ -9655,6 +9281,1766 @@
       "kind": "restream",
       "host": "listen6.myradio24.com",
       "found": "שידור רשמי Eli Nisman",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "space_live_4k",
+    "name": "חלל בשידור חי (Space Live 4K)",
+    "nameEn": "Space Live powered by sen",
+    "category": "טבע ודוקו (Documentary & Nature)",
+    "categoryEn": "docu",
+    "url": "https://linear-1224.frequency.stream/dist/lg-uk/1224/hls/master/playlist.m3u8",
+    "logo": "https://static.frequency.com/studio/itv/channels/1224-400x200.png",
+    "source": "FAST",
+    "number": 561,
+    "backups": [],
+    "fallbackUrls": [],
+    "badge": "HD",
+    "src": {
+      "by": "FAST Public CDN",
+      "kind": "fast",
+      "host": "linear-1224.frequency.stream",
+      "found": "verified",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "wildearth_safari",
+    "name": "ספארי חי באפריקה (WildEarth)",
+    "nameEn": "WildEarth",
+    "category": "טבע ודוקו (Documentary & Nature)",
+    "categoryEn": "docu",
+    "url": "https://dqga3jatxofgx.cloudfront.net/WildEarth.m3u8",
+    "logo": "https://i.imgur.com/Vhv5gjN.png",
+    "source": "FAST",
+    "number": 562,
+    "backups": [],
+    "fallbackUrls": [],
+    "badge": "HD",
+    "src": {
+      "by": "FAST Public CDN",
+      "kind": "fast",
+      "host": "dqga3jatxofgx.cloudfront.net",
+      "found": "verified",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "zenlife_ambient",
+    "name": "אווירה ורגיעה (ZenLIFE)",
+    "nameEn": "ZenLIFE by Stingray",
+    "category": "טבע ודוקו (Documentary & Nature)",
+    "categoryEn": "docu",
+    "url": "https://lotus.stingray.com/manifest/zenlife-zen001-montreal/samsungtvplus/master.m3u8",
+    "logo": "https://www.stingray.com/wp-content/uploads/2023/12/stingray_zenlifebystingray_white.svg",
+    "source": "FAST",
+    "number": 563,
+    "backups": [],
+    "fallbackUrls": [],
+    "badge": "HD",
+    "src": {
+      "by": "FAST Public CDN",
+      "kind": "fast",
+      "host": "lotus.stingray.com",
+      "found": "verified",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "love_nature_fast",
+    "name": "טבע פראי (Love Nature)",
+    "nameEn": "Love Nature",
+    "category": "טבע ודוקו (Documentary & Nature)",
+    "categoryEn": "docu",
+    "url": "https://aegis-cloudfront-1.tubi.video/6d6d0f24-8445-4b4c-bdf6-44f9e38beaa4/playlist.m3u8",
+    "logo": "https://tv.lovenature.com/wp-content/uploads/2024/10/LoveNature2024_Logo_full_colour-copy.png",
+    "source": "FAST",
+    "number": 564,
+    "backups": [],
+    "fallbackUrls": [],
+    "badge": "HD",
+    "src": {
+      "by": "FAST Public CDN",
+      "kind": "fast",
+      "host": "aegis-cloudfront-1.tubi.video",
+      "found": "verified",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "better_life_nature",
+    "name": "טבע ונופים (Better Life)",
+    "nameEn": "Better Life Nature Channel",
+    "category": "טבע ודוקו (Documentary & Nature)",
+    "categoryEn": "docu",
+    "url": "https://tgn.bozztv.com/betterlife/betternature/betternature/index.m3u8",
+    "logo": "https://i.imgur.com/D8Vuw6I.png",
+    "source": "FAST",
+    "number": 565,
+    "backups": [],
+    "fallbackUrls": [],
+    "badge": "HD",
+    "src": {
+      "by": "FAST Public CDN",
+      "kind": "fast",
+      "host": "tgn.bozztv.com",
+      "found": "verified",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "smithsonian_selects",
+    "name": "סמית׳סוניאן דוקו (Smithsonian)",
+    "nameEn": "Smithsonian Channel Selects",
+    "category": "טבע ודוקו (Documentary & Nature)",
+    "categoryEn": "docu",
+    "url": "https://jmp2.uk/plu-5f21ea08007a49000762d349.m3u8",
+    "logo": "https://i.imgur.com/Kt5j8Vr.png",
+    "source": "FAST",
+    "number": 566,
+    "backups": [],
+    "fallbackUrls": [],
+    "badge": "HD",
+    "src": {
+      "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
+      "kind": "fast",
+      "host": "jmp2.uk",
+      "found": "verified",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "pluto_science",
+    "name": "ערוץ המדע (Pluto Science)",
+    "nameEn": "Pluto TV Science",
+    "category": "טבע ודוקו (Documentary & Nature)",
+    "categoryEn": "docu",
+    "url": "https://jmp2.uk/plu-563a970aa1a1f7fe7c9daad7.m3u8",
+    "logo": "https://i.imgur.com/uhunRoU.png",
+    "source": "FAST",
+    "number": 567,
+    "backups": [],
+    "fallbackUrls": [],
+    "badge": "HD",
+    "src": {
+      "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
+      "kind": "fast",
+      "host": "jmp2.uk",
+      "found": "verified",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "docubay_tv",
+    "name": "דוקו עולמי (DocuBay)",
+    "nameEn": "DocuBay TV",
+    "category": "טבע ודוקו (Documentary & Nature)",
+    "categoryEn": "docu",
+    "url": "https://cc-mgr91yrk4pehy.akamaized.net/v1/master/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-mgr91yrk4pehy/playlist.m3u8",
+    "logo": "https://i.imgur.com/OGyeLLR.png",
+    "source": "FAST",
+    "number": 568,
+    "backups": [],
+    "fallbackUrls": [],
+    "badge": "HD",
+    "src": {
+      "by": "FAST Public CDN",
+      "kind": "fast",
+      "host": "cc-mgr91yrk4pehy.akamaized.net",
+      "found": "verified",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "documentary_plus",
+    "name": "דוקומנטרי+ (Documentary+)",
+    "nameEn": "Documentary+",
+    "category": "טבע ודוקו (Documentary & Nature)",
+    "categoryEn": "docu",
+    "url": "https://ef79b15c8c7c46c7a9de9d33001dbd07.mediatailor.us-west-2.amazonaws.com/v1/master/ba62fe743df0fe93366eba3a257d792884136c7f/LINEAR-859-DOCUMENTARYPLUS-DOCUMENTARYPLUS/mt/documentaryplus/859/hls/master/playlist.m3u8",
+    "logo": "https://i.imgur.com/x57klfS.png",
+    "source": "FAST",
+    "number": 569,
+    "backups": [],
+    "fallbackUrls": [],
+    "badge": "HD",
+    "src": {
+      "by": "FAST Public CDN",
+      "kind": "fast",
+      "host": "ef79b15c8c7c46c7a9de9d33001dbd07.mediatailor.us-west-2.amazonaws.com",
+      "found": "verified",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "intravel_fast",
+    "name": "טיולים בעולם (INTRAVEL)",
+    "nameEn": "INTRAVEL",
+    "category": "טבע ודוקו (Documentary & Nature)",
+    "categoryEn": "docu",
+    "url": "https://amg00861-amg00861c10-rakuten-uk-3152.playouts.now.amagi.tv/playlist.m3u8",
+    "logo": "https://jiotvimages.cdn.jio.com/dare_images/images/Intravel.png",
+    "source": "FAST",
+    "number": 570,
+    "backups": [],
+    "fallbackUrls": [],
+    "badge": "HD",
+    "src": {
+      "by": "FAST Public CDN",
+      "kind": "fast",
+      "host": "amg00861-amg00861c10-rakuten-uk-3152.playouts.now.amagi.tv",
+      "found": "verified",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "fifa_plus_global",
+    "name": "פיפ״א+ כדורגל (FIFA+)",
+    "nameEn": "FIFA+",
+    "category": "ספורט (Sports)",
+    "categoryEn": "sports",
+    "url": "https://95cedebd.wurl.com/master/f36d25e7e52f1ba8d7e56eb859c636563214f541/Vml6aW9fRklGQVBsdXNFbmdsaXNoX0hMUw/playlist.m3u8",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/FIFA%2B_(2025).svg/960px-FIFA%2B_(2025).svg.png",
+    "source": "FAST",
+    "number": 571,
+    "backups": [],
+    "fallbackUrls": [],
+    "badge": "HD",
+    "src": {
+      "by": "FAST Public CDN",
+      "kind": "fast",
+      "host": "95cedebd.wurl.com",
+      "found": "verified",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "fuel_tv_extreme",
+    "name": "ספורט אקסטרים (FUEL TV)",
+    "nameEn": "FUEL TV",
+    "category": "ספורט (Sports)",
+    "categoryEn": "sports",
+    "url": "https://amg01074-fueltv-fueltvemeaen-rakuten-b6j62.amagi.tv/hls/amagi_hls_data_rakutenAA-fueltvemeaen/CDN/master.m3u8",
+    "logo": "https://i.imgur.com/I8mviBy.png",
+    "source": "FAST",
+    "number": 572,
+    "backups": [],
+    "fallbackUrls": [],
+    "badge": "HD",
+    "src": {
+      "by": "FAST Public CDN",
+      "kind": "fast",
+      "host": "amg01074-fueltv-fueltvemeaen-rakuten-b6j62.amagi.tv",
+      "found": "verified",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "fightbox_hd",
+    "name": "אומנויות לחימה (FightBox HD)",
+    "nameEn": "FightBox HD",
+    "category": "ספורט (Sports)",
+    "categoryEn": "sports",
+    "url": "https://nosignal1.antenaplay.ro/hls/fightbox-hd/index.m3u8",
+    "logo": "https://i.imgur.com/mRsnztA.png",
+    "source": "FAST",
+    "number": 573,
+    "backups": [],
+    "fallbackUrls": [],
+    "badge": "HD",
+    "src": {
+      "by": "FAST Public CDN",
+      "kind": "fast",
+      "host": "nosignal1.antenaplay.ro",
+      "found": "verified",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "bellator_mma",
+    "name": "בלטור MMA (Bellator)",
+    "nameEn": "Bellator MMA",
+    "category": "ספורט (Sports)",
+    "categoryEn": "sports",
+    "url": "https://jmp2.uk/plu-5ebc8688f3697d00072f7cf8.m3u8",
+    "logo": "https://i.imgur.com/VBKoLHk.png",
+    "source": "FAST",
+    "number": 574,
+    "backups": [],
+    "fallbackUrls": [],
+    "badge": "HD",
+    "src": {
+      "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
+      "kind": "fast",
+      "host": "jmp2.uk",
+      "found": "verified",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "floracing_motorsport",
+    "name": "מרוצי מוטורספורט (FloRacing)",
+    "nameEn": "FloRacing",
+    "category": "ספורט (Sports)",
+    "categoryEn": "sports",
+    "url": "https://amg02278-amg02278c1-flosports-worldwide-7592.playouts.now.amagi.tv/playlist.m3u8",
+    "logo": "https://images.fubo.tv/channel-config-ui/station-logos/on-dark/floracing-white.png",
+    "source": "FAST",
+    "number": 575,
+    "backups": [],
+    "fallbackUrls": [],
+    "badge": "HD",
+    "src": {
+      "by": "FAST Public CDN",
+      "kind": "fast",
+      "host": "amg02278-amg02278c1-flosports-worldwide-7592.playouts.now.amagi.tv",
+      "found": "verified",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "dazn_darts",
+    "name": "DAZN חצים (DAZN Darts)",
+    "nameEn": "DAZN Darts x Pluto TV",
+    "category": "ספורט (Sports)",
+    "categoryEn": "sports",
+    "url": "https://jmp2.uk/plu-64b67f0424ade50008a3be17.m3u8",
+    "logo": "https://images.pluto.tv/channels/64b67f0424ade50008a3be17/colorLogoPNG.png",
+    "source": "FAST",
+    "number": 576,
+    "backups": [],
+    "fallbackUrls": [],
+    "badge": "HD",
+    "src": {
+      "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
+      "kind": "fast",
+      "host": "jmp2.uk",
+      "found": "verified",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "golf_kingdom",
+    "name": "גולף עולמי (Golf Kingdom)",
+    "nameEn": "30A Golf Kingdom",
+    "category": "ספורט (Sports)",
+    "categoryEn": "sports",
+    "url": "https://30a-tv.com/feeds/vidaa/golf.m3u8",
+    "logo": "https://i.imgur.com/Lv53nh4.png",
+    "source": "FAST",
+    "number": 577,
+    "backups": [],
+    "fallbackUrls": [],
+    "badge": "HD",
+    "src": {
+      "by": "FAST Public CDN",
+      "kind": "fast",
+      "host": "30a-tv.com",
+      "found": "verified",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "cc_south_park",
+    "name": "סאות׳ פארק 24/7 (South Park)",
+    "nameEn": "Comedy Central South Park",
+    "category": "סרטים וסדרות (Movies & Series)",
+    "categoryEn": "movies",
+    "url": "https://jmp2.uk/plu-609ae66b359b270007869ff1.m3u8",
+    "logo": "https://images.pluto.tv/channels/609ae66b359b270007869ff1/colorLogoPNG_1733160636316.png",
+    "source": "FAST",
+    "number": 578,
+    "backups": [],
+    "fallbackUrls": [],
+    "badge": "HD",
+    "src": {
+      "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
+      "kind": "fast",
+      "host": "jmp2.uk",
+      "found": "verified",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "cc_roast",
+    "name": "קומדי סנטרל רוסט (CC Roast)",
+    "nameEn": "Comedy Central Roast",
+    "category": "סרטים וסדרות (Movies & Series)",
+    "categoryEn": "movies",
+    "url": "https://jmp2.uk/plu-6641fd41b18d700008e7e2b8.m3u8",
+    "logo": "https://images.pluto.tv/channels/6641fd41b18d700008e7e2b8/colorLogoPNG.png",
+    "source": "FAST",
+    "number": 579,
+    "backups": [],
+    "fallbackUrls": [],
+    "badge": "HD",
+    "src": {
+      "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
+      "kind": "fast",
+      "host": "jmp2.uk",
+      "found": "verified",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "dry_bar_comedy",
+    "name": "סטנדאפ נקי (Dry Bar Comedy)",
+    "nameEn": "Dry Bar Comedy+",
+    "category": "סרטים וסדרות (Movies & Series)",
+    "categoryEn": "movies",
+    "url": "https://drybar-drybarcomedy-1-au.samsung.wurl.tv/playlist.m3u8",
+    "logo": "https://i.imgur.com/3N2C60N.png",
+    "source": "FAST",
+    "number": 580,
+    "backups": [],
+    "fallbackUrls": [],
+    "badge": "HD",
+    "src": {
+      "by": "FAST Public CDN",
+      "kind": "fast",
+      "host": "drybar-drybarcomedy-1-au.samsung.wurl.tv",
+      "found": "verified",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "british_comedy",
+    "name": "קומדיה בריטית (British Comedy)",
+    "nameEn": "British Comedy",
+    "category": "סרטים וסדרות (Movies & Series)",
+    "categoryEn": "movies",
+    "url": "https://jmp2.uk/plu-638e11951177840007fdd6b2.m3u8",
+    "logo": "https://images.pluto.tv/channels/638e11951177840007fdd6b2/colorLogoPNG_1745597179027.png",
+    "source": "FAST",
+    "number": 581,
+    "backups": [],
+    "fallbackUrls": [],
+    "badge": "HD",
+    "src": {
+      "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
+      "kind": "fast",
+      "host": "jmp2.uk",
+      "found": "verified",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "classic_movies_30a",
+    "name": "סרטים קלאסיים (Classic Movies)",
+    "nameEn": "30A TV Classic Movies",
+    "category": "סרטים וסדרות (Movies & Series)",
+    "categoryEn": "movies",
+    "url": "https://30a-tv.com/feeds/pzaz/30atvmovies.m3u8",
+    "logo": "",
+    "source": "FAST",
+    "number": 582,
+    "backups": [],
+    "fallbackUrls": [],
+    "badge": "HD",
+    "src": {
+      "by": "FAST Public CDN",
+      "kind": "fast",
+      "host": "30a-tv.com",
+      "found": "verified",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "action_50cent",
+    "name": "סרטי אקשן (50 Cent Action)",
+    "nameEn": "50 Cent Action",
+    "category": "סרטים וסדרות (Movies & Series)",
+    "categoryEn": "movies",
+    "url": "https://jmp2.uk/plu-68487fb3f212bedacf5a53e3.m3u8",
+    "logo": "https://provider-static.plex.tv/epg/cms/production/bcfb9977-809f-49ae-acc7-430f2c6ffb26/50CentAction_Logo_1500x1000_DarkBG_-_Chris_Connors.png",
+    "source": "FAST",
+    "number": 583,
+    "backups": [],
+    "fallbackUrls": [],
+    "badge": "HD",
+    "src": {
+      "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
+      "kind": "fast",
+      "host": "jmp2.uk",
+      "found": "verified",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "mtv_biggest_pop",
+    "name": "MTV להיטי פופ (MTV Pop)",
+    "nameEn": "MTV Biggest Pop",
+    "category": "מוזיקה (Music TV)",
+    "categoryEn": "music",
+    "url": "https://jmp2.uk/plu-5d14fd1a252d35decbc4080c.m3u8",
+    "logo": "https://images.pluto.tv/channels/6047fbdbbb776a0007e7f2ff/colorLogoPNG.png",
+    "source": "FAST",
+    "number": 584,
+    "backups": [],
+    "fallbackUrls": [],
+    "badge": "HD",
+    "src": {
+      "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
+      "kind": "fast",
+      "host": "jmp2.uk",
+      "found": "verified",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "mtv_spankin_new",
+    "name": "MTV שירים חדשים (MTV New)",
+    "nameEn": "MTV Spankin' New",
+    "category": "מוזיקה (Music TV)",
+    "categoryEn": "music",
+    "url": "https://jmp2.uk/plu-5d14fdb8ca91eedee1633117.m3u8",
+    "logo": "https://images.pluto.tv/channels/6541010f770cf1000866be98/colorLogoPNG.png",
+    "source": "FAST",
+    "number": 585,
+    "backups": [],
+    "fallbackUrls": [],
+    "badge": "HD",
+    "src": {
+      "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
+      "kind": "fast",
+      "host": "jmp2.uk",
+      "found": "verified",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "now_rock_tv",
+    "name": "ערוץ הרוק (NOW Rock)",
+    "nameEn": "NOW Rock",
+    "category": "מוזיקה (Music TV)",
+    "categoryEn": "music",
+    "url": "https://lightning-now90s-samsungnz.amagi.tv/playlist.m3u8",
+    "logo": "https://i.imgur.com/GuM4GnX.png",
+    "source": "FAST",
+    "number": 586,
+    "backups": [],
+    "fallbackUrls": [],
+    "badge": "HD",
+    "src": {
+      "by": "FAST Public CDN",
+      "kind": "fast",
+      "host": "lightning-now90s-samsungnz.amagi.tv",
+      "found": "verified",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "clubbing_tv_uk",
+    "name": "מוזיקה אלקטרונית (Clubbing TV)",
+    "nameEn": "Clubbing TV UK",
+    "category": "מוזיקה (Music TV)",
+    "categoryEn": "music",
+    "url": "https://a-cdn.klowdtv.com/live3/clubbingtv_720p/playlist.m3u8",
+    "logo": "https://i.imgur.com/MyiA92q.png",
+    "source": "FAST",
+    "number": 587,
+    "backups": [],
+    "fallbackUrls": [],
+    "badge": "HD",
+    "src": {
+      "by": "FAST Public CDN",
+      "kind": "fast",
+      "host": "a-cdn.klowdtv.com",
+      "found": "verified",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "stingray_movie_music",
+    "name": "פסקולים מסרטים (Movie Music)",
+    "nameEn": "Movie Music by Stingray",
+    "category": "מוזיקה (Music TV)",
+    "categoryEn": "music",
+    "url": "https://lotus.stingray.com/manifest/cmusic-cme004-montreal/samsungtvplus/master.m3u8",
+    "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2CSpCdAxnLpqebMLZh6h7vMPk6LYpdqkVHA&s",
+    "source": "FAST",
+    "number": 588,
+    "backups": [],
+    "fallbackUrls": [],
+    "badge": "HD",
+    "src": {
+      "by": "FAST Public CDN",
+      "kind": "fast",
+      "host": "lotus.stingray.com",
+      "found": "verified",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "classica_music",
+    "name": "מוזיקה קלאסית (Classica)",
+    "nameEn": "Classica",
+    "category": "מוזיקה (Music TV)",
+    "categoryEn": "music",
+    "url": "https://jmp2.uk/plu-5f779951372da90007fd45e8.m3u8",
+    "logo": "https://i.imgur.com/bLjmQTU.png",
+    "source": "FAST",
+    "number": 589,
+    "backups": [],
+    "fallbackUrls": [],
+    "badge": "HD",
+    "src": {
+      "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
+      "kind": "fast",
+      "host": "jmp2.uk",
+      "found": "verified",
+      "web": "✅"
+    }
+  },
+  {
+    "id": "abc_news_live",
+    "name": "ABC News Live HD",
+    "title": "ABC News Live HD (ABC News Live)",
+    "category": "חדשות מהעולם (News)",
+    "categoryEn": "news",
+    "kind": "tv",
+    "url": "https://jmp2.uk/plu-6508be683a0d700008c534e4.m3u8",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/ABC_News_Live_logo_2021.svg/960px-ABC_News_Live_logo_2021.svg.png",
+    "badge": "HD",
+    "desc": "ABC News Live HD — שידור ישיר חינמי מסביב לשעון (FAST 24/7).",
+    "lang": "en",
+    "country": "US",
+    "countryHe": "ארה״ב",
+    "backups": [],
+    "fallbackUrls": [],
+    "src": {
+      "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
+      "kind": "fast",
+      "host": "jmp2.uk",
+      "found": "iptv-org verified",
+      "web": "✅"
+    },
+    "number": 590
+  },
+  {
+    "id": "cbs_news_247",
+    "name": "CBS News 24/7 HD",
+    "title": "CBS News 24/7 HD (CBS News 24/7)",
+    "category": "חדשות מהעולם (News)",
+    "categoryEn": "news",
+    "kind": "tv",
+    "url": "https://jmp2.uk/plu-6350fdd266e9ea0007bedec5.m3u8",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/CBS_News_247_logo.svg/960px-CBS_News_247_logo.svg.png",
+    "badge": "HD",
+    "desc": "CBS News 24/7 HD — שידור ישיר חינמי מסביב לשעון (FAST 24/7).",
+    "lang": "en",
+    "country": "US",
+    "countryHe": "ארה״ב",
+    "backups": [],
+    "fallbackUrls": [],
+    "src": {
+      "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
+      "kind": "fast",
+      "host": "jmp2.uk",
+      "found": "iptv-org verified",
+      "web": "✅"
+    },
+    "number": 591
+  },
+  {
+    "id": "aljazeera_en_hd",
+    "name": "Al Jazeera English HD",
+    "title": "Al Jazeera English HD (Al Jazeera English)",
+    "category": "חדשות מהעולם (News)",
+    "categoryEn": "news",
+    "kind": "tv",
+    "url": "https://live-hls-apps-aje-fa.getaj.net/AJE/index.m3u8",
+    "logo": "https://i.imgur.com/7bRVpnu.png",
+    "badge": "HD",
+    "desc": "Al Jazeera English HD — שידור ישיר חינמי מסביב לשעון (FAST 24/7).",
+    "lang": "en",
+    "country": "QA",
+    "countryHe": "קטאר",
+    "backups": [],
+    "fallbackUrls": [],
+    "src": {
+      "by": "אל-ג'זירה – שרת רשמי",
+      "kind": "official",
+      "host": "live-hls-apps-aje-fa.getaj.net",
+      "found": "iptv-org verified",
+      "web": "✅"
+    },
+    "number": 592
+  },
+  {
+    "id": "nhk_world_prem",
+    "name": "NHK World יפן HD",
+    "title": "NHK World יפן HD (NHK World Premium)",
+    "category": "חדשות מהעולם (News)",
+    "categoryEn": "news",
+    "kind": "tv",
+    "url": "https://media-tyo.hls.nhkworld.jp/hls/wp/live/master.m3u8",
+    "logo": "https://i.imgur.com/4ESi2La.png",
+    "badge": "HD",
+    "desc": "NHK World יפן HD — שידור ישיר חינמי מסביב לשעון (FAST 24/7).",
+    "lang": "en",
+    "country": "JP",
+    "countryHe": "יפן",
+    "backups": [],
+    "fallbackUrls": [],
+    "src": {
+      "by": "FAST Public CDN",
+      "kind": "fast",
+      "host": "media-tyo.hls.nhkworld.jp",
+      "found": "iptv-org verified",
+      "web": "✅"
+    },
+    "number": 593
+  },
+  {
+    "id": "bloomberg_tv_plus",
+    "name": "Bloomberg TV+ כלכלה ועסקים",
+    "title": "Bloomberg TV+ כלכלה ועסקים (Bloomberg TV +)",
+    "category": "כלכלה ועסקים (Business)",
+    "categoryEn": "business",
+    "kind": "tv",
+    "url": "https://d8975dc3.wurl.com/master/f36d25e7e52f1ba8d7e56eb859c636563214f541/U2Ftc3VuZy1nYl9CbG9vbWJlcmdUVlBsdXNfSExT/playlist.m3u8",
+    "logo": "https://i.imgur.com/OuogLHx.png",
+    "badge": "HD",
+    "desc": "Bloomberg TV+ כלכלה ועסקים — שידור ישיר חינמי מסביב לשעון (FAST 24/7).",
+    "lang": "en",
+    "country": "US",
+    "countryHe": "ארה״ב",
+    "backups": [],
+    "fallbackUrls": [],
+    "src": {
+      "by": "FAST Public CDN",
+      "kind": "fast",
+      "host": "d8975dc3.wurl.com",
+      "found": "iptv-org verified",
+      "web": "✅"
+    },
+    "number": 594
+  },
+  {
+    "id": "bloomberg_originals",
+    "name": "Bloomberg Originals דוקו ועסקים",
+    "title": "Bloomberg Originals דוקו ועסקים (Bloomberg Originals)",
+    "category": "כלכלה ועסקים (Business)",
+    "categoryEn": "business",
+    "kind": "tv",
+    "url": "https://bloomberg.com/media-manifest/streams/qt.m3u8",
+    "logo": "https://jiotvimages.cdn.jio.com/dare_images/images/Bloomberg_Originals.png",
+    "badge": "HD",
+    "desc": "Bloomberg Originals דוקו ועסקים — שידור ישיר חינמי מסביב לשעון (FAST 24/7).",
+    "lang": "en",
+    "country": "US",
+    "countryHe": "ארה״ב",
+    "backups": [],
+    "fallbackUrls": [],
+    "src": {
+      "by": "FAST Public CDN",
+      "kind": "fast",
+      "host": "bloomberg.com",
+      "found": "iptv-org verified",
+      "web": "✅"
+    },
+    "number": 595
+  },
+  {
+    "id": "bloomberg_europe",
+    "name": "Bloomberg Europe שוק ההון",
+    "title": "Bloomberg Europe שוק ההון (Bloomberg TV Europe)",
+    "category": "כלכלה ועסקים (Business)",
+    "categoryEn": "business",
+    "kind": "tv",
+    "url": "https://bloomberg.com/media-manifest/streams/eu.m3u8",
+    "logo": "https://i.imgur.com/OuogLHx.png",
+    "badge": "HD",
+    "desc": "Bloomberg Europe שוק ההון — שידור ישיר חינמי מסביב לשעון (FAST 24/7).",
+    "lang": "en",
+    "country": "GB",
+    "countryHe": "בריטניה",
+    "backups": [],
+    "fallbackUrls": [],
+    "src": {
+      "by": "FAST Public CDN",
+      "kind": "fast",
+      "host": "bloomberg.com",
+      "found": "iptv-org verified",
+      "web": "✅"
+    },
+    "number": 596
+  },
+  {
+    "id": "cgtn_global_biz",
+    "name": "CGTN Global Business",
+    "title": "CGTN Global Business (CGTN Global Biz)",
+    "category": "כלכלה ועסקים (Business)",
+    "categoryEn": "business",
+    "kind": "tv",
+    "url": "https://fastlive.cctvplus.com/out/v1/2b3d8a0c805d437f9dc85b764c2ac599/index.m3u8",
+    "logo": "https://i.imgur.com/qBmomnF.png",
+    "badge": "HD",
+    "desc": "CGTN Global Business — שידור ישיר חינמי מסביב לשעון (FAST 24/7).",
+    "lang": "en",
+    "country": "CN",
+    "countryHe": "סין",
+    "backups": [],
+    "fallbackUrls": [],
+    "src": {
+      "by": "FAST Public CDN",
+      "kind": "fast",
+      "host": "fastlive.cctvplus.com",
+      "found": "iptv-org verified",
+      "web": "✅"
+    },
+    "number": 597
+  },
+  {
+    "id": "lego_kids_tv",
+    "name": "ערוץ לגו לילדים (LEGO Kids TV)",
+    "title": "ערוץ לגו לילדים (LEGO Kids TV) (LEGO Kids TV)",
+    "category": "ילדים מהעולם (Kids World)",
+    "categoryEn": "kids_world",
+    "kind": "tv",
+    "url": "https://jmp2.uk/plu-60fb01a24795a6000762fe83.m3u8",
+    "logo": "https://i.imgur.com/tMfEsVr.png",
+    "badge": "HD",
+    "desc": "ערוץ לגו לילדים (LEGO Kids TV) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).",
+    "lang": "en",
+    "country": "US",
+    "countryHe": "ארה״ב",
+    "backups": [],
+    "fallbackUrls": [],
+    "src": {
+      "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
+      "kind": "fast",
+      "host": "jmp2.uk",
+      "found": "iptv-org verified",
+      "web": "✅"
+    },
+    "number": 598
+  },
+  {
+    "id": "garfield_tv",
+    "name": "גארפילד וחברים 24/7 (Garfield)",
+    "title": "גארפילד וחברים 24/7 (Garfield) (Garfield and Friends)",
+    "category": "ילדים מהעולם (Kids World)",
+    "categoryEn": "kids_world",
+    "kind": "tv",
+    "url": "https://jmp2.uk/plu-677f927554f43dad4b3258aa.m3u8",
+    "logo": "https://i.imgur.com/evzfe9C.png",
+    "badge": "HD",
+    "desc": "גארפילד וחברים 24/7 (Garfield) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).",
+    "lang": "en",
+    "country": "US",
+    "countryHe": "ארה״ב",
+    "backups": [],
+    "fallbackUrls": [],
+    "src": {
+      "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
+      "kind": "fast",
+      "host": "jmp2.uk",
+      "found": "iptv-org verified",
+      "web": "✅"
+    },
+    "number": 599
+  },
+  {
+    "id": "cartoonito_hd",
+    "name": "קרטוניטו לילדים (Cartoonito HD)",
+    "title": "קרטוניטו לילדים (Cartoonito HD) (Cartoonito HD)",
+    "category": "ילדים מהעולם (Kids World)",
+    "categoryEn": "kids_world",
+    "kind": "tv",
+    "url": "https://boing.akamaized.net/6380673432112/eu-central-1/6284318116001/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJob3N0Ijoib3dwbnN1LmVncmVzcy5haGc3NmwiLCJhY2NvdW50X2lkIjoiNjI4NDMxODExNjAwMSIsImVobiI6ImJvaW5nLmFrYW1haXplZC5uZXQiLCJpc3MiOiJibGl2ZS1wbGF5YmFjay1zb3VyY2UtYXBpIiwic3ViIjoicGF0aG1hcHRva2VuIiwiYXVkIjpbIjYyODQzMTgxMTYwMDEiXSwianRpIjoiNjM4MDY3MzQzMjExMiJ9.WACYETOZxZYmZHRpxwRrATxVZQBdSoeaWdfhtLKx1kI/playlist-hls.m3u8",
+    "logo": "https://i.imgur.com/6vYWCD0.png",
+    "badge": "HD",
+    "desc": "קרטוניטו לילדים (Cartoonito HD) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).",
+    "lang": "en",
+    "country": "GB",
+    "countryHe": "בריטניה",
+    "backups": [],
+    "fallbackUrls": [],
+    "src": {
+      "by": "FAST Public CDN",
+      "kind": "fast",
+      "host": "boing.akamaized.net",
+      "found": "iptv-org verified",
+      "web": "✅"
+    },
+    "number": 600
+  },
+  {
+    "id": "kartoon_channel",
+    "name": "ערוץ המצוירים (Kartoon Channel!)",
+    "title": "ערוץ המצוירים (Kartoon Channel!) (Kartoon Channel!)",
+    "category": "ילדים מהעולם (Kids World)",
+    "categoryEn": "kids_world",
+    "kind": "tv",
+    "url": "https://lightning-fnf-samsungaus.amagi.tv/playlist.m3u8",
+    "logo": "https://i.imgur.com/1luzP3T.png",
+    "badge": "HD",
+    "desc": "ערוץ המצוירים (Kartoon Channel!) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).",
+    "lang": "en",
+    "country": "US",
+    "countryHe": "ארה״ב",
+    "backups": [],
+    "fallbackUrls": [],
+    "src": {
+      "by": "FAST Public CDN",
+      "kind": "fast",
+      "host": "lightning-fnf-samsungaus.amagi.tv",
+      "found": "iptv-org verified",
+      "web": "✅"
+    },
+    "number": 601
+  },
+  {
+    "id": "metv_toons",
+    "name": "מצוירים קלאסיים (MeTV Toons)",
+    "title": "מצוירים קלאסיים (MeTV Toons) (MeTV Toons)",
+    "category": "ילדים מהעולם (Kids World)",
+    "categoryEn": "kids_world",
+    "kind": "tv",
+    "url": "https://sr-live-weigel1.akamaized.net/out/v1/0d1dbf29e64e47bc991796cc24fbeb97/index_2.m3u8",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/MeTV_Toons.png/250px-MeTV_Toons.png",
+    "badge": "HD",
+    "desc": "מצוירים קלאסיים (MeTV Toons) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).",
+    "lang": "en",
+    "country": "US",
+    "countryHe": "ארה״ב",
+    "backups": [],
+    "fallbackUrls": [],
+    "src": {
+      "by": "FAST Public CDN",
+      "kind": "fast",
+      "host": "sr-live-weigel1.akamaized.net",
+      "found": "iptv-org verified",
+      "web": "✅"
+    },
+    "number": 602
+  },
+  {
+    "id": "sonic_tv_fast",
+    "name": "סוניק הקיפוד 24/7 (Sonic TV)",
+    "title": "סוניק הקיפוד 24/7 (Sonic TV) (Sonic TV)",
+    "category": "ילדים מהעולם (Kids World)",
+    "categoryEn": "kids_world",
+    "kind": "tv",
+    "url": "https://stream-us-east-1.getpublica.com/playlist.m3u8?network_id=2260",
+    "logo": "https://i.imgur.com/TKhRlrR.png",
+    "badge": "HD",
+    "desc": "סוניק הקיפוד 24/7 (Sonic TV) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).",
+    "lang": "en",
+    "country": "US",
+    "countryHe": "ארה״ב",
+    "backups": [],
+    "fallbackUrls": [],
+    "src": {
+      "by": "FAST Public CDN",
+      "kind": "fast",
+      "host": "stream-us-east-1.getpublica.com",
+      "found": "iptv-org verified",
+      "web": "✅"
+    },
+    "number": 603
+  },
+  {
+    "id": "naruto_247",
+    "name": "נארוטו 24/7 (Naruto)",
+    "title": "נארוטו 24/7 (Naruto) (Naruto)",
+    "category": "ילדים מהעולם (Kids World)",
+    "categoryEn": "kids_world",
+    "kind": "tv",
+    "url": "https://d21vn5eki5qsdi.cloudfront.net/playlist.m3u8",
+    "logo": "https://i.imgur.com/M8X3Kvc.png",
+    "badge": "HD",
+    "desc": "נארוטו 24/7 (Naruto) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).",
+    "lang": "en",
+    "country": "JP",
+    "countryHe": "יפן",
+    "backups": [],
+    "fallbackUrls": [],
+    "src": {
+      "by": "FAST Public CDN",
+      "kind": "fast",
+      "host": "d21vn5eki5qsdi.cloudfront.net",
+      "found": "iptv-org verified",
+      "web": "✅"
+    },
+    "number": 604
+  },
+  {
+    "id": "naruto_shippuden_247",
+    "name": "נארוטו שיפודן 24/7 (Shippuden)",
+    "title": "נארוטו שיפודן 24/7 (Shippuden) (Naruto Shippuden)",
+    "category": "ילדים מהעולם (Kids World)",
+    "categoryEn": "kids_world",
+    "kind": "tv",
+    "url": "https://jmp2.uk/plu-64c92f965580090008084968.m3u8",
+    "logo": "https://images.pluto.tv/channels/64c92fea3c3344000869e8a9/colorLogoPNG.png",
+    "badge": "HD",
+    "desc": "נארוטו שיפודן 24/7 (Shippuden) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).",
+    "lang": "en",
+    "country": "JP",
+    "countryHe": "יפן",
+    "backups": [],
+    "fallbackUrls": [],
+    "src": {
+      "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
+      "kind": "fast",
+      "host": "jmp2.uk",
+      "found": "iptv-org verified",
+      "web": "✅"
+    },
+    "number": 605
+  },
+  {
+    "id": "anime_hidive",
+    "name": "ערוץ אנימה (Anime x HIDIVE)",
+    "title": "ערוץ אנימה (Anime x HIDIVE) (Anime x HIDIVE)",
+    "category": "ילדים מהעולם (Kids World)",
+    "categoryEn": "kids_world",
+    "kind": "tv",
+    "url": "https://jmp2.uk/plu-6793eaa4bc03978b9bc63db1.m3u8",
+    "logo": "https://i.imgur.com/v0BlxCa.png",
+    "badge": "HD",
+    "desc": "ערוץ אנימה (Anime x HIDIVE) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).",
+    "lang": "en",
+    "country": "US",
+    "countryHe": "ארה״ב",
+    "backups": [],
+    "fallbackUrls": [],
+    "src": {
+      "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
+      "kind": "fast",
+      "host": "jmp2.uk",
+      "found": "iptv-org verified",
+      "web": "✅"
+    },
+    "number": 606
+  },
+  {
+    "id": "retrocrush_anime",
+    "name": "אנימה רטרו קלאסית (RetroCrush)",
+    "title": "אנימה רטרו קלאסית (RetroCrush) (RetroCrush)",
+    "category": "ילדים מהעולם (Kids World)",
+    "categoryEn": "kids_world",
+    "kind": "tv",
+    "url": "https://linear-899.frequency.stream/dist/cineverse/899/hls/master/playlist.m3u8",
+    "logo": "https://i.imgur.com/M40b4YI.png",
+    "badge": "HD",
+    "desc": "אנימה רטרו קלאסית (RetroCrush) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).",
+    "lang": "en",
+    "country": "US",
+    "countryHe": "ארה״ב",
+    "backups": [],
+    "fallbackUrls": [],
+    "src": {
+      "by": "FAST Public CDN",
+      "kind": "fast",
+      "host": "linear-899.frequency.stream",
+      "found": "iptv-org verified",
+      "web": "✅"
+    },
+    "number": 607
+  },
+  {
+    "id": "pluto_anime_movies",
+    "name": "סרטי אנימה (Pluto Anime Movies)",
+    "title": "סרטי אנימה (Pluto Anime Movies) (Pluto TV Anime Movies)",
+    "category": "ילדים מהעולם (Kids World)",
+    "categoryEn": "kids_world",
+    "kind": "tv",
+    "url": "https://jmp2.uk/plu-67ed8f7e443f0671bc2b2368.m3u8",
+    "logo": "https://images.pluto.tv/channels/67ed8f7e443f0671bc2b2368/colorLogoPNG.png",
+    "badge": "HD",
+    "desc": "סרטי אנימה (Pluto Anime Movies) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).",
+    "lang": "en",
+    "country": "US",
+    "countryHe": "ארה״ב",
+    "backups": [],
+    "fallbackUrls": [],
+    "src": {
+      "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
+      "kind": "fast",
+      "host": "jmp2.uk",
+      "found": "iptv-org verified",
+      "web": "✅"
+    },
+    "number": 608
+  },
+  {
+    "id": "csi_las_vegas_247",
+    "name": "זירת הפשע 24/7 (CSI)",
+    "title": "זירת הפשע 24/7 (CSI) (CSI)",
+    "category": "סרטים וסדרות (Movies & Series)",
+    "categoryEn": "movies",
+    "kind": "tv",
+    "url": "https://jmp2.uk/plu-5efbd29e4aa26700076c0d06.m3u8",
+    "logo": "https://i.imgur.com/xLLNEfA.png",
+    "badge": "HD",
+    "desc": "זירת הפשע 24/7 (CSI) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).",
+    "lang": "en",
+    "country": "US",
+    "countryHe": "ארה״ב",
+    "backups": [],
+    "fallbackUrls": [],
+    "src": {
+      "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
+      "kind": "fast",
+      "host": "jmp2.uk",
+      "found": "iptv-org verified",
+      "web": "✅"
+    },
+    "number": 609
+  },
+  {
+    "id": "csi_miami_247",
+    "name": "זירת הפשע מיאמי (CSI: Miami)",
+    "title": "זירת הפשע מיאמי (CSI: Miami) (CSI: Miami)",
+    "category": "סרטים וסדרות (Movies & Series)",
+    "categoryEn": "movies",
+    "kind": "tv",
+    "url": "https://jmp2.uk/plu-62f54c11b3af68000702c304.m3u8",
+    "logo": "https://images.pluto.tv/channels/63eb9c5351f5d000085e8d7e/colorLogoPNG.png",
+    "badge": "HD",
+    "desc": "זירת הפשע מיאמי (CSI: Miami) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).",
+    "lang": "en",
+    "country": "US",
+    "countryHe": "ארה״ב",
+    "backups": [],
+    "fallbackUrls": [],
+    "src": {
+      "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
+      "kind": "fast",
+      "host": "jmp2.uk",
+      "found": "iptv-org verified",
+      "web": "✅"
+    },
+    "number": 610
+  },
+  {
+    "id": "csi_ny_247",
+    "name": "זירת הפשע ניו יורק (CSI: NY)",
+    "title": "זירת הפשע ניו יורק (CSI: NY) (CSI: NY)",
+    "category": "סרטים וסדרות (Movies & Series)",
+    "categoryEn": "movies",
+    "kind": "tv",
+    "url": "https://jmp2.uk/plu-62f54c6439183b000769fb8f.m3u8",
+    "logo": "https://images.pluto.tv/channels/62f54c6439183b000769fb8f/colorLogoPNG_1731837277521.png",
+    "badge": "HD",
+    "desc": "זירת הפשע ניו יורק (CSI: NY) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).",
+    "lang": "en",
+    "country": "US",
+    "countryHe": "ארה״ב",
+    "backups": [],
+    "fallbackUrls": [],
+    "src": {
+      "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
+      "kind": "fast",
+      "host": "jmp2.uk",
+      "found": "iptv-org verified",
+      "web": "✅"
+    },
+    "number": 611
+  },
+  {
+    "id": "doctor_who_classic",
+    "name": "דוקטור הו קלאסי (Doctor Who)",
+    "title": "דוקטור הו קלאסי (Doctor Who) (Doctor Who Classic)",
+    "category": "סרטים וסדרות (Movies & Series)",
+    "categoryEn": "movies",
+    "kind": "tv",
+    "url": "https://bbc-classicdrwho-1-us.roku.wurl.tv/playlist.m3u8",
+    "logo": "https://i.imgur.com/JIqJQQM.png",
+    "badge": "HD",
+    "desc": "דוקטור הו קלאסי (Doctor Who) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).",
+    "lang": "en",
+    "country": "GB",
+    "countryHe": "בריטניה",
+    "backups": [],
+    "fallbackUrls": [],
+    "src": {
+      "by": "FAST Public CDN",
+      "kind": "fast",
+      "host": "bbc-classicdrwho-1-us.roku.wurl.tv",
+      "found": "iptv-org verified",
+      "web": "✅"
+    },
+    "number": 612
+  },
+  {
+    "id": "pluto_sherlock",
+    "name": "שרלוק הולמס 24/7 (Sherlock)",
+    "title": "שרלוק הולמס 24/7 (Sherlock) (Pluto TV Sherlock)",
+    "category": "סרטים וסדרות (Movies & Series)",
+    "categoryEn": "movies",
+    "kind": "tv",
+    "url": "https://jmp2.uk/plu-5dc2c00abfed110009d97243.m3u8",
+    "logo": "https://images.pluto.tv/channels/5dc2c00abfed110009d97243/colorLogoPNG.png",
+    "badge": "HD",
+    "desc": "שרלוק הולמס 24/7 (Sherlock) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).",
+    "lang": "en",
+    "country": "GB",
+    "countryHe": "בריטניה",
+    "backups": [],
+    "fallbackUrls": [],
+    "src": {
+      "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
+      "kind": "fast",
+      "host": "jmp2.uk",
+      "found": "iptv-org verified",
+      "web": "✅"
+    },
+    "number": 613
+  },
+  {
+    "id": "bbc_drama_fast",
+    "name": "דרמות בריטיות (BBC Drama)",
+    "title": "דרמות בריטיות (BBC Drama) (BBC Drama US)",
+    "category": "סרטים וסדרות (Movies & Series)",
+    "categoryEn": "movies",
+    "kind": "tv",
+    "url": "https://linear-938.frequency.stream/mt/vizio/938/hls/master/playlist.m3u8",
+    "logo": "https://i.imgur.com/HctHhLL.png",
+    "badge": "HD",
+    "desc": "דרמות בריטיות (BBC Drama) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).",
+    "lang": "en",
+    "country": "GB",
+    "countryHe": "בריטניה",
+    "backups": [],
+    "fallbackUrls": [],
+    "src": {
+      "by": "FAST Public CDN",
+      "kind": "fast",
+      "host": "linear-938.frequency.stream",
+      "found": "iptv-org verified",
+      "web": "✅"
+    },
+    "number": 614
+  },
+  {
+    "id": "southpark_cartman",
+    "name": "סאות׳ פארק: קרטמן (Cartman 24/7)",
+    "title": "סאות׳ פארק: קרטמן (Cartman 24/7) (South Park: Cartman Collection)",
+    "category": "קומדיה (Comedy)",
+    "categoryEn": "comedy",
+    "kind": "tv",
+    "url": "https://jmp2.uk/plu-65df4934f7f0af0008c32545.m3u8",
+    "logo": "https://images.pluto.tv/channels/65df4934f7f0af0008c32545/colorLogoPNG.png",
+    "badge": "HD",
+    "desc": "סאות׳ פארק: קרטמן (Cartman 24/7) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).",
+    "lang": "en",
+    "country": "US",
+    "countryHe": "ארה״ב",
+    "backups": [],
+    "fallbackUrls": [],
+    "src": {
+      "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
+      "kind": "fast",
+      "host": "jmp2.uk",
+      "found": "iptv-org verified",
+      "web": "✅"
+    },
+    "number": 615
+  },
+  {
+    "id": "carol_burnett_247",
+    "name": "מופע קומדיה קלאסי (Carol Burnett)",
+    "title": "מופע קומדיה קלאסי (Carol Burnett) (The Carol Burnett Show)",
+    "category": "קומדיה (Comedy)",
+    "categoryEn": "comedy",
+    "kind": "tv",
+    "url": "https://vizioaaaa-carol-burnett-vizio-xam92.amagi.tv/playlist/vizioAAAA-carol-burnett-vizio/playlist.m3u8",
+    "logo": "https://i.imgur.com/1a03FlX.png",
+    "badge": "HD",
+    "desc": "מופע קומדיה קלאסי (Carol Burnett) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).",
+    "lang": "en",
+    "country": "US",
+    "countryHe": "ארה״ב",
+    "backups": [],
+    "fallbackUrls": [],
+    "src": {
+      "by": "FAST Public CDN",
+      "kind": "fast",
+      "host": "vizioaaaa-carol-burnett-vizio-xam92.amagi.tv",
+      "found": "iptv-org verified",
+      "web": "✅"
+    },
+    "number": 616
+  },
+  {
+    "id": "icarly_247",
+    "name": "איי קארלי 24/7 (iCarly)",
+    "title": "איי קארלי 24/7 (iCarly) (iCarly)",
+    "category": "קומדיה (Comedy)",
+    "categoryEn": "comedy",
+    "kind": "tv",
+    "url": "https://jmp2.uk/plu-620ff46e0a576e0007dc2f89.m3u8",
+    "logo": "https://images.pluto.tv/channels/620ff46e0a576e0007dc2f89/colorLogoPNG.png",
+    "badge": "HD",
+    "desc": "איי קארלי 24/7 (iCarly) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).",
+    "lang": "en",
+    "country": "US",
+    "countryHe": "ארה״ב",
+    "backups": [],
+    "fallbackUrls": [],
+    "src": {
+      "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
+      "kind": "fast",
+      "host": "jmp2.uk",
+      "found": "iptv-org verified",
+      "web": "✅"
+    },
+    "number": 617
+  },
+  {
+    "id": "bbc_food_hd",
+    "name": "ערוץ הבישול הבריטי (BBC Food)",
+    "title": "ערוץ הבישול הבריטי (BBC Food) (BBC Food)",
+    "category": "ערוצי אוכל (Food Channels)",
+    "categoryEn": "food",
+    "kind": "tv",
+    "url": "https://d1e9r0b71zfwk7.cloudfront.net/playlist.m3u8",
+    "logo": "https://i.imgur.com/kcmHcSx.png",
+    "badge": "HD",
+    "desc": "ערוץ הבישול הבריטי (BBC Food) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).",
+    "lang": "en",
+    "country": "GB",
+    "countryHe": "בריטניה",
+    "backups": [],
+    "fallbackUrls": [],
+    "src": {
+      "by": "FAST Public CDN",
+      "kind": "fast",
+      "host": "d1e9r0b71zfwk7.cloudfront.net",
+      "found": "iptv-org verified",
+      "web": "✅"
+    },
+    "number": 618
+  },
+  {
+    "id": "jamie_oliver_tv",
+    "name": "השף ג׳יימי אוליבר (Jamie Oliver)",
+    "title": "השף ג׳יימי אוליבר (Jamie Oliver) (The Jamie Oliver Channel)",
+    "category": "ערוצי אוכל (Food Channels)",
+    "categoryEn": "food",
+    "kind": "tv",
+    "url": "https://d3i68hpvh19xjd.cloudfront.net/JamieOliver_GB.m3u8",
+    "logo": "https://i.imgur.com/4v93XUB.png",
+    "badge": "HD",
+    "desc": "השף ג׳יימי אוליבר (Jamie Oliver) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).",
+    "lang": "en",
+    "country": "GB",
+    "countryHe": "בריטניה",
+    "backups": [],
+    "fallbackUrls": [],
+    "src": {
+      "by": "FAST Public CDN",
+      "kind": "fast",
+      "host": "d3i68hpvh19xjd.cloudfront.net",
+      "found": "iptv-org verified",
+      "web": "✅"
+    },
+    "number": 619
+  },
+  {
+    "id": "tastemade_food",
+    "name": "אוכל וקולינריה (Tastemade)",
+    "title": "אוכל וקולינריה (Tastemade) (Tastemade)",
+    "category": "ערוצי אוכל (Food Channels)",
+    "categoryEn": "food",
+    "kind": "tv",
+    "url": "https://rakutenaa-tm-intl-aus-rakuten-eu-n1gtg.amagi.tv/playlist/rakutenAA-tm-intl-aus-rakuten-eu/playlist.m3u8",
+    "logo": "https://i.imgur.com/xP7Ehn8.png",
+    "badge": "HD",
+    "desc": "אוכל וקולינריה (Tastemade) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).",
+    "lang": "en",
+    "country": "US",
+    "countryHe": "ארה״ב",
+    "backups": [],
+    "fallbackUrls": [],
+    "src": {
+      "by": "FAST Public CDN",
+      "kind": "fast",
+      "host": "rakutenaa-tm-intl-aus-rakuten-eu-n1gtg.amagi.tv",
+      "found": "iptv-org verified",
+      "web": "✅"
+    },
+    "number": 620
+  },
+  {
+    "id": "americas_test_kitchen",
+    "name": "מטבח המבחן (Test Kitchen)",
+    "title": "מטבח המבחן (Test Kitchen) (America's Test Kitchen)",
+    "category": "ערוצי אוכל (Food Channels)",
+    "categoryEn": "food",
+    "kind": "tv",
+    "url": "https://jmp2.uk/plu-5e84f54a82f05300080e6746.m3u8",
+    "logo": "https://i.imgur.com/prMkTsZ.png",
+    "badge": "HD",
+    "desc": "מטבח המבחן (Test Kitchen) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).",
+    "lang": "en",
+    "country": "US",
+    "countryHe": "ארה״ב",
+    "backups": [],
+    "fallbackUrls": [],
+    "src": {
+      "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
+      "kind": "fast",
+      "host": "jmp2.uk",
+      "found": "iptv-org verified",
+      "web": "✅"
+    },
+    "number": 621
+  },
+  {
+    "id": "pluto_kfood",
+    "name": "אוכל קוריאני (K-FOOD)",
+    "title": "אוכל קוריאני (K-FOOD) (Pluto TV KFOOD)",
+    "category": "ערוצי אוכל (Food Channels)",
+    "categoryEn": "food",
+    "kind": "tv",
+    "url": "https://jmp2.uk/plu-633ee9ba83c08f00076b60a6.m3u8",
+    "logo": "https://images.pluto.tv/channels/633ee9ba83c08f00076b60a6/colorLogoPNG.png",
+    "badge": "HD",
+    "desc": "אוכל קוריאני (K-FOOD) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).",
+    "lang": "en",
+    "country": "KR",
+    "countryHe": "דרום קוריאה",
+    "backups": [],
+    "fallbackUrls": [],
+    "src": {
+      "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
+      "kind": "fast",
+      "host": "jmp2.uk",
+      "found": "iptv-org verified",
+      "web": "✅"
+    },
+    "number": 622
+  },
+  {
+    "id": "top_gear_247",
+    "name": "טופ גיר רכב 24/7 (Top Gear)",
+    "title": "טופ גיר רכב 24/7 (Top Gear) (Top Gear)",
+    "category": "לייף סטייל ובידור",
+    "categoryEn": "lifestyle",
+    "kind": "tv",
+    "url": "https://amg00793-amg00793c5-vizio-us-2666.playouts.now.amagi.tv/playlist/amg00793-bbcstudios-bbctopgear8minother-vizious/playlist.m3u8",
+    "logo": "https://i.imgur.com/S6Su6QH.png",
+    "badge": "HD",
+    "desc": "טופ גיר רכב 24/7 (Top Gear) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).",
+    "lang": "en",
+    "country": "GB",
+    "countryHe": "בריטניה",
+    "backups": [],
+    "fallbackUrls": [],
+    "src": {
+      "by": "FAST Public CDN",
+      "kind": "fast",
+      "host": "amg00793-amg00793c5-vizio-us-2666.playouts.now.amagi.tv",
+      "found": "iptv-org verified",
+      "web": "✅"
+    },
+    "number": 623
+  },
+  {
+    "id": "motorvision_fhd",
+    "name": "עולם הרכב והמרוצים (Motorvision FHD)",
+    "title": "עולם הרכב והמרוצים (Motorvision FHD) (Motorvision (1080i))",
+    "category": "לייף סטייל ובידור",
+    "categoryEn": "lifestyle",
+    "kind": "tv",
+    "url": "https://mvg-mv.otteravision.com/mvg/mv/mv_1080p.m3u8",
+    "logo": "https://i.imgur.com/v4kj8pI.png",
+    "badge": "HD",
+    "desc": "עולם הרכב והמרוצים (Motorvision FHD) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).",
+    "lang": "en",
+    "country": "DE",
+    "countryHe": "גרמניה",
+    "backups": [],
+    "fallbackUrls": [],
+    "src": {
+      "by": "FAST Public CDN",
+      "kind": "fast",
+      "host": "mvg-mv.otteravision.com",
+      "found": "iptv-org verified",
+      "web": "✅"
+    },
+    "number": 624
+  },
+  {
+    "id": "cars_tv_hd",
+    "name": "מכוניות על (Cars.TV)",
+    "title": "מכוניות על (Cars.TV) (Cars.TV)",
+    "category": "לייף סטייל ובידור",
+    "categoryEn": "lifestyle",
+    "kind": "tv",
+    "url": "https://a-cdn.klowdtv.com/live2/carstv_720p/playlist.m3u8",
+    "logo": "https://i.imgur.com/JLSHiTp.png",
+    "badge": "HD",
+    "desc": "מכוניות על (Cars.TV) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).",
+    "lang": "en",
+    "country": "US",
+    "countryHe": "ארה״ב",
+    "backups": [],
+    "fallbackUrls": [],
+    "src": {
+      "by": "FAST Public CDN",
+      "kind": "fast",
+      "host": "a-cdn.klowdtv.com",
+      "found": "iptv-org verified",
+      "web": "✅"
+    },
+    "number": 625
+  },
+  {
+    "id": "car_chase_tv",
+    "name": "מרדפי מכוניות בשידור חי (Car Chase)",
+    "title": "מרדפי מכוניות בשידור חי (Car Chase) (Car Chase)",
+    "category": "לייף סטייל ובידור",
+    "categoryEn": "lifestyle",
+    "kind": "tv",
+    "url": "https://jmp2.uk/plu-65244c403fd33c0008ffff31.m3u8",
+    "logo": "https://images.pluto.tv/channels/65244c403fd33c0008ffff31/colorLogoPNG.png",
+    "badge": "HD",
+    "desc": "מרדפי מכוניות בשידור חי (Car Chase) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).",
+    "lang": "en",
+    "country": "US",
+    "countryHe": "ארה״ב",
+    "backups": [],
+    "fallbackUrls": [],
+    "src": {
+      "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
+      "kind": "fast",
+      "host": "jmp2.uk",
+      "found": "iptv-org verified",
+      "web": "✅"
+    },
+    "number": 626
+  },
+  {
+    "id": "deal_or_no_deal_247",
+    "name": "דיל או לא דיל 24/7 (Deal or No Deal)",
+    "title": "דיל או לא דיל 24/7 (Deal or No Deal) (Deal or No Deal)",
+    "category": "לייף סטייל ובידור",
+    "categoryEn": "lifestyle",
+    "kind": "tv",
+    "url": "https://amg00627-banijaygroup-dealornodeal-samsungau-si7xg.amagi.tv/playlist/amg00627-banijaygroup-dealornodeal-samsungau/playlist.m3u8",
+    "logo": "https://i.imgur.com/lZvNXA1.png",
+    "badge": "HD",
+    "desc": "דיל או לא דיל 24/7 (Deal or No Deal) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).",
+    "lang": "en",
+    "country": "US",
+    "countryHe": "ארה״ב",
+    "backups": [],
+    "fallbackUrls": [],
+    "src": {
+      "by": "FAST Public CDN",
+      "kind": "fast",
+      "host": "amg00627-banijaygroup-dealornodeal-samsungau-si7xg.amagi.tv",
+      "found": "iptv-org verified",
+      "web": "✅"
+    },
+    "number": 627
+  },
+  {
+    "id": "fear_factor_247",
+    "name": "אפקט הפחד 24/7 (Fear Factor)",
+    "title": "אפקט הפחד 24/7 (Fear Factor) (Fear Factor)",
+    "category": "לייף סטייל ובידור",
+    "categoryEn": "lifestyle",
+    "kind": "tv",
+    "url": "https://amg00627-banijaygroup-fearfactor-samsungau-9vdod.amagi.tv/playlist/amg00627-banijaygroup-fearfactor-samsungau/playlist.m3u8",
+    "logo": "https://i.imgur.com/CIYnLWz.png",
+    "badge": "HD",
+    "desc": "אפקט הפחד 24/7 (Fear Factor) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).",
+    "lang": "en",
+    "country": "US",
+    "countryHe": "ארה״ב",
+    "backups": [],
+    "fallbackUrls": [],
+    "src": {
+      "by": "FAST Public CDN",
+      "kind": "fast",
+      "host": "amg00627-banijaygroup-fearfactor-samsungau-9vdod.amagi.tv",
+      "found": "iptv-org verified",
+      "web": "✅"
+    },
+    "number": 628
+  },
+  {
+    "id": "wipeout_xtra_247",
+    "name": "ווייפאאוט אקסטרים (Wipeout)",
+    "title": "ווייפאאוט אקסטרים (Wipeout) (Wipeout Xtra)",
+    "category": "לייף סטייל ובידור",
+    "categoryEn": "lifestyle",
+    "kind": "tv",
+    "url": "https://amg00627-banijaygroup-wipeoutxtraau-samsungau-ashbl.amagi.tv/playlist/amg00627-banijaygroup-wipeoutxtraau-samsungau/playlist.m3u8",
+    "logo": "https://i.imgur.com/UDeCRW1.png",
+    "badge": "HD",
+    "desc": "ווייפאאוט אקסטרים (Wipeout) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).",
+    "lang": "en",
+    "country": "GB",
+    "countryHe": "בריטניה",
+    "backups": [],
+    "fallbackUrls": [],
+    "src": {
+      "by": "FAST Public CDN",
+      "kind": "fast",
+      "host": "amg00627-banijaygroup-wipeoutxtraau-samsungau-ashbl.amagi.tv",
+      "found": "iptv-org verified",
+      "web": "✅"
+    },
+    "number": 629
+  },
+  {
+    "id": "bbc_home_garden",
+    "name": "עיצוב הבית והגינה (BBC Home)",
+    "title": "עיצוב הבית והגינה (BBC Home) (BBC Home & Garden)",
+    "category": "לייף סטייל ובידור",
+    "categoryEn": "lifestyle",
+    "kind": "tv",
+    "url": "https://d11r33s5i066xh.cloudfront.net/playlist.m3u8",
+    "logo": "https://i.imgur.com/rC0pi1D.png",
+    "badge": "HD",
+    "desc": "עיצוב הבית והגינה (BBC Home) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).",
+    "lang": "en",
+    "country": "GB",
+    "countryHe": "בריטניה",
+    "backups": [],
+    "fallbackUrls": [],
+    "src": {
+      "by": "FAST Public CDN",
+      "kind": "fast",
+      "host": "d11r33s5i066xh.cloudfront.net",
+      "found": "iptv-org verified",
+      "web": "✅"
+    },
+    "number": 630
+  },
+  {
+    "id": "fashiontv_paris_orig",
+    "name": "ערוץ האופנה פריז (FashionTV)",
+    "title": "ערוץ האופנה פריז (FashionTV) (FashionTV Paris L'Original)",
+    "category": "לייף סטייל ובידור",
+    "categoryEn": "lifestyle",
+    "kind": "tv",
+    "url": "https://edge-fast3.evrideo.tv/bfdbb576-83f7-11f0-9f89-0200170e3e04_1000028043_HLS/manifest.m3u8",
+    "logo": "https://i.imgur.com/GFTAN5Q.png",
+    "badge": "HD",
+    "desc": "ערוץ האופנה פריז (FashionTV) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).",
+    "lang": "en",
+    "country": "FR",
+    "countryHe": "צרפת",
+    "backups": [],
+    "fallbackUrls": [],
+    "src": {
+      "by": "FAST Public CDN",
+      "kind": "fast",
+      "host": "edge-fast3.evrideo.tv",
+      "found": "iptv-org verified",
+      "web": "✅"
+    },
+    "number": 631
+  },
+  {
+    "id": "design_network_tv",
+    "name": "עיצוב ואדריכלות (Design Network)",
+    "title": "עיצוב ואדריכלות (Design Network) (The Design Network)",
+    "category": "לייף סטייל ובידור",
+    "categoryEn": "lifestyle",
+    "kind": "tv",
+    "url": "https://amg00441-amg00441c1-rakuten-us-6050.playouts.now.amagi.tv/playlist.m3u8",
+    "logo": "https://i.imgur.com/J5YJ3r3.png",
+    "badge": "HD",
+    "desc": "עיצוב ואדריכלות (Design Network) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).",
+    "lang": "en",
+    "country": "US",
+    "countryHe": "ארה״ב",
+    "backups": [],
+    "fallbackUrls": [],
+    "src": {
+      "by": "FAST Public CDN",
+      "kind": "fast",
+      "host": "amg00441-amg00441c1-rakuten-us-6050.playouts.now.amagi.tv",
+      "found": "iptv-org verified",
+      "web": "✅"
+    },
+    "number": 632
+  },
+  {
+    "id": "bbc_travel_fast",
+    "name": "מסעות בעולם (BBC Travel)",
+    "title": "מסעות בעולם (BBC Travel) (BBC Travel)",
+    "category": "טיולים והרפתקאות (Travel)",
+    "categoryEn": "travel",
+    "kind": "tv",
+    "url": "https://jmp2.uk/plu-60e4519e6873180007d3cddb.m3u8",
+    "logo": "https://i.imgur.com/QiuYWs9.png",
+    "badge": "HD",
+    "desc": "מסעות בעולם (BBC Travel) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).",
+    "lang": "en",
+    "country": "GB",
+    "countryHe": "בריטניה",
+    "backups": [],
+    "fallbackUrls": [],
+    "src": {
+      "by": "Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk",
+      "kind": "fast",
+      "host": "jmp2.uk",
+      "found": "iptv-org verified",
+      "web": "✅"
+    },
+    "number": 633
+  },
+  {
+    "id": "tastemade_travel",
+    "name": "קולינריה וטיולים (Tastemade Travel)",
+    "title": "קולינריה וטיולים (Tastemade Travel) (Tastemade Travel)",
+    "category": "טיולים והרפתקאות (Travel)",
+    "categoryEn": "travel",
+    "kind": "tv",
+    "url": "https://d6ef3usc6d9cl.cloudfront.net/Tastemade_Travel.m3u8",
+    "logo": "https://i.imgur.com/8s6aRwv.png",
+    "badge": "HD",
+    "desc": "קולינריה וטיולים (Tastemade Travel) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).",
+    "lang": "en",
+    "country": "US",
+    "countryHe": "ארה״ב",
+    "backups": [],
+    "fallbackUrls": [],
+    "src": {
+      "by": "FAST Public CDN",
+      "kind": "fast",
+      "host": "d6ef3usc6d9cl.cloudfront.net",
+      "found": "iptv-org verified",
+      "web": "✅"
+    },
+    "number": 634
+  },
+  {
+    "id": "kabbalah_66_hd",
+    "name": "קבלה לעם (ערוץ 66) HD",
+    "title": "קבלה לעם (ערוץ 66) HD",
+    "category": "מסורת וקהילה",
+    "categoryEn": "heritage",
+    "kind": "tv",
+    "url": "https://edge1.il.kab.tv/rtplive/tv66-heb-medium.stream/playlist.m3u8",
+    "backups": [],
+    "fallbackUrls": [],
+    "logo": "",
+    "badge": "FHD",
+    "desc": "ערוץ קבלה לעם בעברית (ערוץ 66) בשידור חי 24/7.",
+    "lang": "he",
+    "country": "IL",
+    "countryHe": "ישראל",
+    "number": 635,
+    "webOk": true,
+    "src": {
+      "by": "Official Israeli CDN",
+      "kind": "official",
+      "host": "edge1.il.kab.tv",
+      "found": "שידור רשמי ישיר",
       "web": "✅"
     }
   }

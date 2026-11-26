@@ -4103,8 +4103,8 @@
     closeDialog();
     var mapIds = {
       news_il: ['kan11', 'keshet12', 'reshet13', 'now14'],
-      sports: ['sport1_israel', 'sport2_israel', 'sport5', 'sport4_israel'],
-      cinema: ['hot_3_fhd', 'yes_movies_action', 'hot_cinema_1', 'erez_nehederet_tv'],
+      sports: ['sport5_israel_hd', 'sport5_plus_hd', 'one_1_hd', 'one_2_hd'],
+      cinema: ['freetv_israeli_movies', 'freetv_movies_action', 'keshet_drama', 'erez_nehederet_tv'],
       world: ['abc_news_live', 'cbs_news_247', 'aljazeera_en_hd', 'bloomberg_tv_plus']
     };
     var tvPool = (state.all || []).filter(function (c) { return c && c.url && !c.isVod && !isRadioCh(c) && !isApp(c); });

@@ -27,6 +27,7 @@ import androidx.media3.session.LibraryResult
 import androidx.media3.session.MediaLibraryService
 import androidx.media3.session.MediaSession
 import com.google.common.collect.ImmutableList
+import com.google.common.util.concurrent.Futures
 import com.google.common.util.concurrent.ListenableFuture
 import com.israeltv.plus.data.AppPrefs
 import com.israeltv.plus.data.AutoArtworkProvider
@@ -255,7 +256,7 @@ class AutoService : MediaLibraryService() {
     private val topTvIds = listOf(
         "kan11", "keshet12", "reshet13", "now14", "i24news_he",
         "channel9", "channel24_israel", "ch33_makan", "knesset",
-        "ynet_live", "walla_news_il", "sport5_israel_hd", "sport1_israel"
+        "ynet_live", "walla_news_il", "sport5_israel_hd", "one_1_hd"
     )
 
     private fun tvMain(d: ChannelData): List<Channel> {
@@ -461,9 +462,12 @@ class AutoService : MediaLibraryService() {
             params: LibraryParams?,
         ): ListenableFuture<LibraryResult<MediaItem>> {
             val extras = Bundle().apply { putInt(CONTENT_STYLE_PLAYABLE, CONTENT_STYLE_GRID) }
-            return scope.future {
+            // Must complete synchronously: for legacy MediaBrowser clients (Android Auto, AAOS media center)
+            // Media3 calls this on the main thread and blocks it until the future is done, so a future that
+            // needs Dispatchers.Main (scope.future) deadlocks and the car shows an empty app.
+            return Futures.immediateFuture(
                 LibraryResult.ofItem(folder(ROOT, "ישראל TV+"), LibraryParams.Builder().setExtras(extras).build())
-            }
+            )
         }
 
         override fun onGetItem(

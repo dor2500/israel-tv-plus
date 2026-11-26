@@ -77,9 +77,7 @@
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
     "url": "https://d15ds134q59udk.cloudfront.net/media/3b45de9e-c944-4fdc-a344-7c3042b5b104/mainManifest.m3u8",
-    "fallbackUrls": [
-      "http://stream.mcquack.net/295/index.m3u8"
-    ],
+    "fallbackUrls": [],
     "logo": "assets/logos/reshet13_comedy_il.png",
     "badge": "HD",
     "lang": "he",
@@ -93,12 +91,8 @@
       "found": "iptv-org (Reshet13Comedy.il)",
       "web": "✅"
     },
-    "backups": [
-      "http://stream.mcquack.net/295/index.m3u8"
-    ],
-    "backupUrls": [
-      "http://stream.mcquack.net/295/index.m3u8"
-    ]
+    "backups": [],
+    "backupUrls": []
   },
   {
     "id": "home_design_israel_hd",
@@ -106,9 +100,7 @@
     "title": "ערוץ בית ועיצוב ישראלי – לייף סטייל ושיפוצים",
     "desc": "ערוץ העיצוב והסטיילינג הישראלי – שיפוצים, אדריכלות, עיצוב הבית ולייף סטייל בשידור חי 24/7 באיכות Full HD.",
     "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/imagin_lifestyle/live.livx/playlist.m3u8",
-    "backup_urls": [
-      "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/12266/index.m3u8"
-    ],
+    "backup_urls": [],
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
     "lang": "he",
@@ -150,17 +142,13 @@
     },
     "backups": [
       "https://contact.gostreaming.tv/Con-11/index.m3u8",
-      "https://contact.gostreaming.tv/Channel9/myStream/playlist.m3u8",
-      "http://stream.mcquack.net/454/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2331/index.m3u8"
+      "https://contact.gostreaming.tv/Channel9/myStream/playlist.m3u8"
     ],
     "country": "IL",
     "countryHe": "ישראל",
     "fallbackUrls": [
       "https://contact.gostreaming.tv/Con-11/index.m3u8",
-      "https://contact.gostreaming.tv/Channel9/myStream/playlist.m3u8",
-      "http://stream.mcquack.net/454/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2331/index.m3u8"
+      "https://contact.gostreaming.tv/Channel9/myStream/playlist.m3u8"
     ]
   },
   {
@@ -216,7 +204,6 @@
     "backups": [
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8",
       "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan11/live.livx/playlist.m3u8",
-      "http://stream.mcquack.net/20/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11_subs/live.livx/playlist.m3u8"
     ],
     "country": "IL",
@@ -224,7 +211,6 @@
     "fallbackUrls": [
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11/live.livx/playlist.m3u8",
       "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan11/live.livx/playlist.m3u8",
-      "http://stream.mcquack.net/20/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kan11_subs/live.livx/playlist.m3u8"
     ]
   },
@@ -254,14 +240,10 @@
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/keshet12_hevc/live.livx/playlist.m3u8",
       "https://mako-streaming.akamaized.net/stream/hls/live/2033791/k12dvr/index.m3u8",
       "https://keshethlslive-LH.akamaihd.net/i/c2n_1@195269/master.m3u8",
-      "http://stream.mcquack.net/449/index.m3u8",
       "https://mako-streaming.akamaized.net/stream/hls/live/2033791/k12/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/keshet_12_subs/live.livx/playlist.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/keshet_12_hevc/live.livx/playlist.m3u8",
-      "http://stream.mcquack.net/294/index.m3u8",
-      "https://mako-streaming.akamaized.net/stream/hls/live/2033791/k12n12wad/index.m3u8",
-      "http://stream.mcquack.net/293/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2345/index.m3u8"
+      "https://mako-streaming.akamaized.net/stream/hls/live/2033791/k12n12wad/index.m3u8"
     ],
     "country": "IL",
     "countryHe": "ישראל",
@@ -271,14 +253,10 @@
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/keshet12_hevc/live.livx/playlist.m3u8",
       "https://mako-streaming.akamaized.net/stream/hls/live/2033791/k12dvr/index.m3u8",
       "https://keshethlslive-LH.akamaihd.net/i/c2n_1@195269/master.m3u8",
-      "http://stream.mcquack.net/449/index.m3u8",
       "https://mako-streaming.akamaized.net/stream/hls/live/2033791/k12/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/keshet_12_subs/live.livx/playlist.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/keshet_12_hevc/live.livx/playlist.m3u8",
-      "http://stream.mcquack.net/294/index.m3u8",
-      "https://mako-streaming.akamaized.net/stream/hls/live/2033791/k12n12wad/index.m3u8",
-      "http://stream.mcquack.net/293/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2345/index.m3u8"
+      "https://mako-streaming.akamaized.net/stream/hls/live/2033791/k12n12wad/index.m3u8"
     ],
     "auth": "",
     "backupUrls": [
@@ -287,14 +265,10 @@
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/keshet12_hevc/live.livx/playlist.m3u8",
       "https://mako-streaming.akamaized.net/stream/hls/live/2033791/k12dvr/index.m3u8",
       "https://keshethlslive-LH.akamaihd.net/i/c2n_1@195269/master.m3u8",
-      "http://stream.mcquack.net/449/index.m3u8",
       "https://mako-streaming.akamaized.net/stream/hls/live/2033791/k12/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/keshet_12_subs/live.livx/playlist.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/keshet_12_hevc/live.livx/playlist.m3u8",
-      "http://stream.mcquack.net/294/index.m3u8",
-      "https://mako-streaming.akamaized.net/stream/hls/live/2033791/k12n12wad/index.m3u8",
-      "http://stream.mcquack.net/293/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2345/index.m3u8"
+      "https://mako-streaming.akamaized.net/stream/hls/live/2033791/k12n12wad/index.m3u8"
     ]
   },
   {
@@ -322,16 +296,12 @@
       "https://d18b0e6mopany4.cloudfront.net/out/v1/08bc71cf0a0f4712b6b03c732b0e6d25/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/reshet13_subs/live.livx/playlist.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/reshet13_hevc/live.livx/playlist.m3u8",
-      "http://stream.mcquack.net/450/index.m3u8",
       "https://d198ztbnlup2iq.cloudfront.net/out/v1/2d9050c90fb94df8b78d1d98306a1a65/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/reshet_13_subs/live.livx/playlist.m3u8",
-      "http://stream.mcquack.net/295/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/reshet_13_hevc/live.livx/playlist.m3u8",
       "https://d2xg1g9o5vns8m.cloudfront.net/out/v1/0855d703f7d5436fae6a9c7ce8ca5075/index.m3u8",
       "https://reshet.g-mana.live/media/87f59c77-03f6-4bad-a648-897e095e7360/mainManifest.m3u8",
-      "http://stream.mcquack.net/294/index.m3u8",
-      "https://d15ds134q59udk.cloudfront.net/media/3b45de9e-c944-4fdc-a344-7c3042b5b104/mainManifest.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32249/index.m3u8"
+      "https://d15ds134q59udk.cloudfront.net/media/3b45de9e-c944-4fdc-a344-7c3042b5b104/mainManifest.m3u8"
     ],
     "country": "IL",
     "countryHe": "ישראל",
@@ -341,16 +311,12 @@
       "https://d18b0e6mopany4.cloudfront.net/out/v1/08bc71cf0a0f4712b6b03c732b0e6d25/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/reshet13_subs/live.livx/playlist.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/reshet13_hevc/live.livx/playlist.m3u8",
-      "http://stream.mcquack.net/450/index.m3u8",
       "https://d198ztbnlup2iq.cloudfront.net/out/v1/2d9050c90fb94df8b78d1d98306a1a65/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/reshet_13_subs/live.livx/playlist.m3u8",
-      "http://stream.mcquack.net/295/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/reshet_13_hevc/live.livx/playlist.m3u8",
       "https://d2xg1g9o5vns8m.cloudfront.net/out/v1/0855d703f7d5436fae6a9c7ce8ca5075/index.m3u8",
       "https://reshet.g-mana.live/media/87f59c77-03f6-4bad-a648-897e095e7360/mainManifest.m3u8",
-      "http://stream.mcquack.net/294/index.m3u8",
-      "https://d15ds134q59udk.cloudfront.net/media/3b45de9e-c944-4fdc-a344-7c3042b5b104/mainManifest.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32249/index.m3u8"
+      "https://d15ds134q59udk.cloudfront.net/media/3b45de9e-c944-4fdc-a344-7c3042b5b104/mainManifest.m3u8"
     ],
     "iptv": "Reshet13.il",
     "backupUrls": [
@@ -359,16 +325,12 @@
       "https://d18b0e6mopany4.cloudfront.net/out/v1/08bc71cf0a0f4712b6b03c732b0e6d25/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/reshet13_subs/live.livx/playlist.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/reshet13_hevc/live.livx/playlist.m3u8",
-      "http://stream.mcquack.net/450/index.m3u8",
       "https://d198ztbnlup2iq.cloudfront.net/out/v1/2d9050c90fb94df8b78d1d98306a1a65/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/reshet_13_subs/live.livx/playlist.m3u8",
-      "http://stream.mcquack.net/295/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/reshet_13_hevc/live.livx/playlist.m3u8",
       "https://d2xg1g9o5vns8m.cloudfront.net/out/v1/0855d703f7d5436fae6a9c7ce8ca5075/index.m3u8",
       "https://reshet.g-mana.live/media/87f59c77-03f6-4bad-a648-897e095e7360/mainManifest.m3u8",
-      "http://stream.mcquack.net/294/index.m3u8",
-      "https://d15ds134q59udk.cloudfront.net/media/3b45de9e-c944-4fdc-a344-7c3042b5b104/mainManifest.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32249/index.m3u8"
+      "https://d15ds134q59udk.cloudfront.net/media/3b45de9e-c944-4fdc-a344-7c3042b5b104/mainManifest.m3u8"
     ]
   },
   {
@@ -394,11 +356,8 @@
     "backups": [
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/ch14/live.livx/playlist.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/ch14_hevc/live.livx/playlist.m3u8",
-      "http://stream.mcquack.net/451/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/ch14_subs/live.livx/playlist.m3u8",
       "https://channel14-live-consume.immergo.tv/output/2/streamPlaylist-archive.m3u8",
-      "http://stream.mcquack.net/295/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32325/index.m3u8",
       "https://r.il.cdn-redge.media/livehls/oil/freetv/live/ch14/live.livx/playlist.m3u8"
     ],
     "country": "IL",
@@ -406,11 +365,8 @@
     "fallbackUrls": [
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/ch14/live.livx/playlist.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/ch14_hevc/live.livx/playlist.m3u8",
-      "http://stream.mcquack.net/451/index.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/ch14_subs/live.livx/playlist.m3u8",
       "https://channel14-live-consume.immergo.tv/output/2/streamPlaylist-archive.m3u8",
-      "http://stream.mcquack.net/295/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32325/index.m3u8",
       "https://r.il.cdn-redge.media/livehls/oil/freetv/live/ch14/live.livx/playlist.m3u8"
     ]
   },
@@ -439,9 +395,7 @@
       "https://bcovlive-a.akamaihd.net/d8958672620e4ff3925c42b38c93e86f/eu-central-1/5377161796001/playlist.m3u8",
       "https://i24newshebrew-cdn.encoders.immergo.tv/master.m3u8",
       "https://i24newshebrew-cdn.encoders.immergo.tv/2/streamPlaylist.m3u8",
-      "https://hlspackager.akamaized.net/live/bitmovin-i24news/2589137645123855490/index.m3u8",
-      "http://stream.mcquack.net/45/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/19194/index.m3u8"
+      "https://hlspackager.akamaized.net/live/bitmovin-i24news/2589137645123855490/index.m3u8"
     ],
     "country": "IL",
     "countryHe": "ישראל",
@@ -450,9 +404,7 @@
       "https://bcovlive-a.akamaihd.net/d8958672620e4ff3925c42b38c93e86f/eu-central-1/5377161796001/playlist.m3u8",
       "https://i24newshebrew-cdn.encoders.immergo.tv/master.m3u8",
       "https://i24newshebrew-cdn.encoders.immergo.tv/2/streamPlaylist.m3u8",
-      "https://hlspackager.akamaized.net/live/bitmovin-i24news/2589137645123855490/index.m3u8",
-      "http://stream.mcquack.net/45/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/19194/index.m3u8"
+      "https://hlspackager.akamaized.net/live/bitmovin-i24news/2589137645123855490/index.m3u8"
     ]
   },
   {
@@ -532,12 +484,8 @@
       "found": "שידור רשמי ערוץ הנופש והתיירות HD",
       "web": "✅"
     },
-    "fallbackUrls": [
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32160/index.m3u8"
-    ],
-    "backups": [
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32160/index.m3u8"
-    ],
+    "fallbackUrls": [],
+    "backups": [],
     "webOk": true
   },
   {
@@ -562,17 +510,13 @@
     },
     "backups": [
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/edu23/live.livx/playlist.m3u8",
-      "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan_edu/live.livx/playlist.m3u8",
-      "http://stream.mcquack.net/378/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32149/index.m3u8"
+      "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan_edu/live.livx/playlist.m3u8"
     ],
     "country": "IL",
     "countryHe": "ישראל",
     "fallbackUrls": [
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/edu23/live.livx/playlist.m3u8",
-      "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan_edu/live.livx/playlist.m3u8",
-      "http://stream.mcquack.net/378/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32149/index.m3u8"
+      "https://kancdn.medonecdn.net/livehls/oil/kancdn-live/live/kan_edu/live.livx/playlist.m3u8"
     ]
   },
   {
@@ -598,22 +542,16 @@
     "backups": [
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/ch24/live.livx/playlist.m3u8",
       "https://mako-streaming.akamaized.net/stream/hls/live/2035897/ch24/index.m3u8",
-      "http://stream.mcquack.net/452/index.m3u8",
-      "http://stream.mcquack.net/42/index.m3u8",
       "https://mako-streaming.akamaized.net/direct/hls/live/2035340/ch24live/index.m3u8?as=1",
-      "https://mako-streaming.akamaized.net/evrideo/hls/live/20001278/ch24live/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2330/index.m3u8"
+      "https://mako-streaming.akamaized.net/evrideo/hls/live/20001278/ch24live/index.m3u8"
     ],
     "country": "IL",
     "countryHe": "ישראל",
     "fallbackUrls": [
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/ch24/live.livx/playlist.m3u8",
       "https://mako-streaming.akamaized.net/stream/hls/live/2035897/ch24/index.m3u8",
-      "http://stream.mcquack.net/452/index.m3u8",
-      "http://stream.mcquack.net/42/index.m3u8",
       "https://mako-streaming.akamaized.net/direct/hls/live/2035340/ch24live/index.m3u8?as=1",
-      "https://mako-streaming.akamaized.net/evrideo/hls/live/20001278/ch24live/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2330/index.m3u8"
+      "https://mako-streaming.akamaized.net/evrideo/hls/live/20001278/ch24live/index.m3u8"
     ]
   },
   {
@@ -687,13 +625,9 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
-    "fallbackUrls": [
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12208/index.m3u8"
-    ],
+    "fallbackUrls": [],
     "iptv": "VivaPlus.il",
-    "backups": [
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12208/index.m3u8"
-    ]
+    "backups": []
   },
   {
     "id": "viva_israel",
@@ -715,15 +649,9 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
-    "backups": [
-      "http://stream.mcquack.net/43/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32127/index.m3u8"
-    ],
+    "backups": [],
     "countryHe": "ישראל",
-    "fallbackUrls": [
-      "http://stream.mcquack.net/43/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32127/index.m3u8"
-    ],
+    "fallbackUrls": [],
     "iptv": "Viva.il"
   },
   {
@@ -769,8 +697,7 @@
     "country": "IL",
     "countryHe": "ישראל",
     "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5/live.livx/playlist.m3u8",
-      "http://stream.mcquack.net/212/index.m3u8"
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5/live.livx/playlist.m3u8"
     ],
     "number": 36,
     "src": {
@@ -781,8 +708,7 @@
       "web": "✅"
     },
     "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5/live.livx/playlist.m3u8",
-      "http://stream.mcquack.net/212/index.m3u8"
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5/live.livx/playlist.m3u8"
     ],
     "webOk": true
   },
@@ -810,154 +736,6 @@
       "web": "✅"
     },
     "fallbackUrls": []
-  },
-  {
-    "id": "sport1_israel",
-    "name": "ספורט 1 HD (Sport 1)",
-    "title": "ערוץ ספורט 1 צ'רלטון שידור חי (Charlton Sport 1 HD)",
-    "category": "ספורט (Sports)",
-    "categoryEn": "sports",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12249/index.m3u8",
-    "logo": "assets/logos/sport1_israel.png",
-    "badge": "HD",
-    "desc": "ספורט 1 (צ'רלטון) – ליגת העל הישראלית, הפרמייר ליג האנגלית, גביע המדינה ומשחקים מרכזיים בשידור חי",
-    "lang": "he",
-    "country": "IL",
-    "number": 38,
-    "countryHe": "ישראל",
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי מקורי צ'רלטון FHD",
-      "web": "❌ רק באפליקציה (הפניה בלי CORS)"
-    },
-    "fallbackUrls": [
-      "https://2lacasaba.site/yessport1/index.m3u8?token=5ef9ca0f660144278cc5252bc5b3032001ffe9e9&expires=1795454371",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2353/index.m3u8"
-    ],
-    "iptv": "Sport1.il",
-    "backups": [
-      "https://2lacasaba.site/yessport1/index.m3u8?token=5ef9ca0f660144278cc5252bc5b3032001ffe9e9&expires=1795454371",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2353/index.m3u8"
-    ],
-    "backupUrls": [
-      "https://2lacasaba.site/yessport1/index.m3u8?token=5ef9ca0f660144278cc5252bc5b3032001ffe9e9&expires=1795454371",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2353/index.m3u8"
-    ],
-    "webOk": false,
-    "hamalSlug": "yes-1"
-  },
-  {
-    "id": "sport2_israel",
-    "name": "ספורט 2 HD (Sport 2)",
-    "title": "ערוץ ספורט 2 צ'רלטון שידור חי (Charlton Sport 2 HD)",
-    "category": "ספורט (Sports)",
-    "categoryEn": "sports",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12250/index.m3u8",
-    "logo": "assets/logos/sport2_israel.png",
-    "badge": "HD",
-    "desc": "ספורט 2 (צ'רלטון) – שידורים ישירים מהליגה האנגלית, הליגה האיטלקית, בונדסליגה, ליגה אירופית וטניס",
-    "lang": "he",
-    "country": "IL",
-    "number": 39,
-    "countryHe": "ישראל",
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי מקורי צ'רלטון FHD",
-      "web": "❌ רק באפליקציה (הפניה בלי CORS)"
-    },
-    "fallbackUrls": [
-      "https://2lacasaba.site/yessport2/index.m3u8?token=c8b17ffcb18932d20487d603c813fcf039bc406a&expires=1795454372",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2352/index.m3u8"
-    ],
-    "iptv": "Sport2.il",
-    "backups": [
-      "https://2lacasaba.site/yessport2/index.m3u8?token=c8b17ffcb18932d20487d603c813fcf039bc406a&expires=1795454372",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2352/index.m3u8"
-    ],
-    "backupUrls": [
-      "https://2lacasaba.site/yessport2/index.m3u8?token=c8b17ffcb18932d20487d603c813fcf039bc406a&expires=1795454372",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2352/index.m3u8"
-    ],
-    "webOk": false,
-    "hamalSlug": "yes-2"
-  },
-  {
-    "id": "sport3_israel",
-    "name": "ספורט 3 HD (Sport 3)",
-    "title": "ערוץ ספורט 3 צ'רלטון שידור חי (Charlton Sport 3 HD)",
-    "category": "ספורט (Sports)",
-    "categoryEn": "sports",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12251/index.m3u8",
-    "logo": "assets/logos/sport3_israel.png",
-    "badge": "HD",
-    "desc": "ספורט 3 (צ'רלטון) – כדורגל ישראלי ואירופי, כדורסל, אולפנים חיים ואירועי ספורט בינלאומיים",
-    "lang": "he",
-    "country": "IL",
-    "number": 40,
-    "countryHe": "ישראל",
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי מקורי צ'רלטון FHD",
-      "web": "❌ רק באפליקציה (הפניה בלי CORS)"
-    },
-    "fallbackUrls": [
-      "https://2lacasaba.site/yessport3/index.m3u8?token=9c49ea3e70f91a96664e2736c22cb2689b60ea8f&expires=1795454373",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2388/index.m3u8"
-    ],
-    "iptv": "Sport3.il",
-    "backups": [
-      "https://2lacasaba.site/yessport3/index.m3u8?token=9c49ea3e70f91a96664e2736c22cb2689b60ea8f&expires=1795454373",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2388/index.m3u8"
-    ],
-    "backupUrls": [
-      "https://2lacasaba.site/yessport3/index.m3u8?token=9c49ea3e70f91a96664e2736c22cb2689b60ea8f&expires=1795454373",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2388/index.m3u8"
-    ],
-    "webOk": false,
-    "hamalSlug": "yes-3"
-  },
-  {
-    "id": "sport4_israel",
-    "name": "ספורט 4 FHD (Sport 4)",
-    "title": "ערוץ ספורט 4 צ'רלטון שידור חי (Charlton Sport 4 FHD)",
-    "category": "ספורט (Sports)",
-    "categoryEn": "sports",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12252/index.m3u8",
-    "logo": "assets/logos/sport4_israel.png",
-    "badge": "FHD",
-    "desc": "ספורט 4 FHD (צ'רלטון) – שידורים חיים באיכות FHD מליגת העל, הפרמייר ליג ומפעלי אופ\"א",
-    "lang": "he",
-    "country": "IL",
-    "number": 41,
-    "countryHe": "ישראל",
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי מקורי צ'רלטון FHD",
-      "web": "❌ רק באפליקציה (הפניה בלי CORS)"
-    },
-    "fallbackUrls": [
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2389/index.m3u8",
-      "https://2lacasaba.site/yessport4/index.m3u8?token=d30f5fd0f552d7bf8cbafce906ec8bd48d862afc&expires=1795454374"
-    ],
-    "iptv": "Sport4.il",
-    "backups": [
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2389/index.m3u8",
-      "https://2lacasaba.site/yessport4/index.m3u8?token=d30f5fd0f552d7bf8cbafce906ec8bd48d862afc&expires=1795454374"
-    ],
-    "backupUrls": [
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2389/index.m3u8",
-      "https://2lacasaba.site/yessport4/index.m3u8?token=d30f5fd0f552d7bf8cbafce906ec8bd48d862afc&expires=1795454374"
-    ],
-    "webOk": false,
-    "hamalSlug": "yes-4"
   },
   {
     "id": "arutz_hayeladim",
@@ -1101,13 +879,9 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
-    "fallbackUrls": [
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2366/index.m3u8"
-    ],
+    "fallbackUrls": [],
     "iptv": "Junior.il",
-    "backups": [
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2366/index.m3u8"
-    ]
+    "backups": []
   },
   {
     "id": "yoyo_tv",
@@ -1155,13 +929,11 @@
       "web": "✅"
     },
     "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/baby/live.livx/playlist.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2370/index.m3u8"
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/baby/live.livx/playlist.m3u8"
     ],
     "iptv": "BabyTV.il",
     "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/baby/live.livx/playlist.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2370/index.m3u8"
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/baby/live.livx/playlist.m3u8"
     ]
   },
   {
@@ -1383,9 +1155,7 @@
       "https://kneset.gostreaming.tv/p2-kneset/_definst_/myStream/playlist.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/knesset/live.livx/playlist.m3u8",
       "https://contact.gostreaming.tv/Knesset/myStream/playlist.m3u8",
-      "https://kneset.gostreaming.tv/p2-kneset/_definst_/myStream/index.m3u8",
-      "http://stream.mcquack.net/48/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12269/index.m3u8"
+      "https://kneset.gostreaming.tv/p2-kneset/_definst_/myStream/index.m3u8"
     ],
     "country": "IL",
     "countryHe": "ישראל",
@@ -1393,9 +1163,7 @@
       "https://kneset.gostreaming.tv/p2-kneset/_definst_/myStream/playlist.m3u8",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/knesset/live.livx/playlist.m3u8",
       "https://contact.gostreaming.tv/Knesset/myStream/playlist.m3u8",
-      "https://kneset.gostreaming.tv/p2-kneset/_definst_/myStream/index.m3u8",
-      "http://stream.mcquack.net/48/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12269/index.m3u8"
+      "https://kneset.gostreaming.tv/p2-kneset/_definst_/myStream/index.m3u8"
     ]
   },
   {
@@ -1419,12 +1187,8 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
-    "fallbackUrls": [
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32164/index.m3u8"
-    ],
-    "backups": [
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32164/index.m3u8"
-    ]
+    "fallbackUrls": [],
+    "backups": []
   },
   {
     "id": "music_il_tv",
@@ -1556,18 +1320,15 @@
     },
     "fallbackUrls": [
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/keshet_12/live.livx/playlist.m3u8",
-      "https://mako-streaming.akamaized.net/stream/hls/live/2033791/k12dvr/index.m3u8",
-      "http://stream.mcquack.net/294/index.m3u8"
+      "https://mako-streaming.akamaized.net/stream/hls/live/2033791/k12dvr/index.m3u8"
     ],
     "backups": [
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/keshet_12/live.livx/playlist.m3u8",
-      "https://mako-streaming.akamaized.net/stream/hls/live/2033791/k12dvr/index.m3u8",
-      "http://stream.mcquack.net/294/index.m3u8"
+      "https://mako-streaming.akamaized.net/stream/hls/live/2033791/k12dvr/index.m3u8"
     ],
     "backupUrls": [
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/keshet_12/live.livx/playlist.m3u8",
-      "https://mako-streaming.akamaized.net/stream/hls/live/2033791/k12dvr/index.m3u8",
-      "http://stream.mcquack.net/294/index.m3u8"
+      "https://mako-streaming.akamaized.net/stream/hls/live/2033791/k12dvr/index.m3u8"
     ]
   },
   {
@@ -1579,8 +1340,7 @@
     "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/reshet_13_subs/live.livx/playlist.m3u8",
     "fallbackUrls": [
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/reshet_13/live.livx/playlist.m3u8",
-      "https://d18b0e6mopany4.cloudfront.net/out/v1/2f2bc414a3db4698a8e94b89eaf2da2a/index.m3u8",
-      "http://stream.mcquack.net/295/index.m3u8"
+      "https://d18b0e6mopany4.cloudfront.net/out/v1/2f2bc414a3db4698a8e94b89eaf2da2a/index.m3u8"
     ],
     "logo": "assets/logos/reshet13.png",
     "badge": "נגיש",
@@ -1597,13 +1357,11 @@
     },
     "backups": [
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/reshet_13/live.livx/playlist.m3u8",
-      "https://d18b0e6mopany4.cloudfront.net/out/v1/2f2bc414a3db4698a8e94b89eaf2da2a/index.m3u8",
-      "http://stream.mcquack.net/295/index.m3u8"
+      "https://d18b0e6mopany4.cloudfront.net/out/v1/2f2bc414a3db4698a8e94b89eaf2da2a/index.m3u8"
     ],
     "backupUrls": [
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/reshet_13/live.livx/playlist.m3u8",
-      "https://d18b0e6mopany4.cloudfront.net/out/v1/2f2bc414a3db4698a8e94b89eaf2da2a/index.m3u8",
-      "http://stream.mcquack.net/295/index.m3u8"
+      "https://d18b0e6mopany4.cloudfront.net/out/v1/2f2bc414a3db4698a8e94b89eaf2da2a/index.m3u8"
     ]
   },
   {
@@ -1658,12 +1416,8 @@
       "web": "✅"
     },
     "number": 79,
-    "fallbackUrls": [
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32160/index.m3u8"
-    ],
-    "backups": [
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32160/index.m3u8"
-    ]
+    "fallbackUrls": [],
+    "backups": []
   },
   {
     "id": "shelanu_tv_live",
@@ -1811,15 +1565,9 @@
     },
     "country": "IL",
     "countryHe": "ישראל",
-    "fallbackUrls": [
-      "http://stream.mcquack.net/295/index.m3u8"
-    ],
-    "backups": [
-      "http://stream.mcquack.net/295/index.m3u8"
-    ],
-    "backupUrls": [
-      "http://stream.mcquack.net/295/index.m3u8"
-    ]
+    "fallbackUrls": [],
+    "backups": [],
+    "backupUrls": []
   },
   {
     "id": "knesset_access",
@@ -1843,12 +1591,10 @@
     "country": "IL",
     "countryHe": "ישראל",
     "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kneset/live.livx/playlist.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12269/index.m3u8"
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kneset/live.livx/playlist.m3u8"
     ],
     "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kneset/live.livx/playlist.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12269/index.m3u8"
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/kneset/live.livx/playlist.m3u8"
     ]
   },
   {
@@ -1973,9 +1719,7 @@
     "name": "רשת 13 ערוץ הנופש HD",
     "category": "ערוצי ישראל - שידור חי",
     "url": "https://d1yd8hohnldm33.cloudfront.net/out/v1/19dee23c2cc24f689bd4e1288661ee0c/index.m3u8",
-    "fallbackUrls": [
-      "http://stream.mcquack.net/295/index.m3u8"
-    ],
+    "fallbackUrls": [],
     "logo": "assets/logos/reshet13_nofesh_il.png",
     "badge": "HD",
     "color": "#38bdf8",
@@ -1990,12 +1734,8 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
-    "backups": [
-      "http://stream.mcquack.net/295/index.m3u8"
-    ],
-    "backupUrls": [
-      "http://stream.mcquack.net/295/index.m3u8"
-    ]
+    "backups": [],
+    "backupUrls": []
   },
   {
     "id": "reshet13_reality_il",
@@ -2003,8 +1743,7 @@
     "category": "ערוצי ישראל - שידור חי",
     "url": "https://d2dffl3588mvfk.cloudfront.net/out/v1/d8e15050ca4148aab0ee387a5e2eb46b/index.m3u8",
     "fallbackUrls": [
-      "https://d2dffl3588mvfk.cloudfront.net/out/v1/d8e15050ca4148aab0ee387a5e2eb46b/index_1.m3u8",
-      "http://stream.mcquack.net/295/index.m3u8"
+      "https://d2dffl3588mvfk.cloudfront.net/out/v1/d8e15050ca4148aab0ee387a5e2eb46b/index_1.m3u8"
     ],
     "logo": "assets/logos/reshet13_reality_il.png",
     "badge": "HD",
@@ -2021,12 +1760,10 @@
       "web": "✅"
     },
     "backups": [
-      "https://d2dffl3588mvfk.cloudfront.net/out/v1/d8e15050ca4148aab0ee387a5e2eb46b/index_1.m3u8",
-      "http://stream.mcquack.net/295/index.m3u8"
+      "https://d2dffl3588mvfk.cloudfront.net/out/v1/d8e15050ca4148aab0ee387a5e2eb46b/index_1.m3u8"
     ],
     "backupUrls": [
-      "https://d2dffl3588mvfk.cloudfront.net/out/v1/d8e15050ca4148aab0ee387a5e2eb46b/index_1.m3u8",
-      "http://stream.mcquack.net/295/index.m3u8"
+      "https://d2dffl3588mvfk.cloudfront.net/out/v1/d8e15050ca4148aab0ee387a5e2eb46b/index_1.m3u8"
     ]
   },
   {
@@ -2194,25 +1931,13 @@
       "web": "✅"
     },
     "backups": [
-      "https://2lacasaba.site/yessport5/index.m3u8?token=2b52fb1ea72be5242bc8333cd8adcdce3db2bb41&expires=1795454378",
-      "http://stream.mcquack.net/212/index.m3u8",
-      "http://stream.mcquack.net/55/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32001/index.m3u8",
       "https://r.il.cdn-redge.media/livehls/oil/freetv/live/sport_5/live.livx/playlist.m3u8"
     ],
     "fallbackUrls": [
-      "https://2lacasaba.site/yessport5/index.m3u8?token=2b52fb1ea72be5242bc8333cd8adcdce3db2bb41&expires=1795454378",
-      "http://stream.mcquack.net/212/index.m3u8",
-      "http://stream.mcquack.net/55/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32001/index.m3u8",
       "https://r.il.cdn-redge.media/livehls/oil/freetv/live/sport_5/live.livx/playlist.m3u8"
     ],
     "iptv": "Sport5.il",
     "backupUrls": [
-      "https://2lacasaba.site/yessport5/index.m3u8?token=2b52fb1ea72be5242bc8333cd8adcdce3db2bb41&expires=1795454378",
-      "http://stream.mcquack.net/212/index.m3u8",
-      "http://stream.mcquack.net/55/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32001/index.m3u8",
       "https://r.il.cdn-redge.media/livehls/oil/freetv/live/sport_5/live.livx/playlist.m3u8"
     ],
     "webOk": true,
@@ -2232,11 +1957,7 @@
     "country": "IL",
     "countryHe": "ישראל",
     "number": 101,
-    "backups": [
-      "https://2lacasaba.site/yessport5plus/index.m3u8?token=2c73d12ac55675d862ba1977f6aad4d8bc8522aa&expires=1795454380",
-      "http://stream.mcquack.net/333/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32002/index.m3u8"
-    ],
+    "backups": [],
     "src": {
       "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
       "kind": "official",
@@ -2244,17 +1965,9 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
-    "fallbackUrls": [
-      "https://2lacasaba.site/yessport5plus/index.m3u8?token=2c73d12ac55675d862ba1977f6aad4d8bc8522aa&expires=1795454380",
-      "http://stream.mcquack.net/333/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32002/index.m3u8"
-    ],
+    "fallbackUrls": [],
     "iptv": "Sport5Plus.il",
-    "backupUrls": [
-      "https://2lacasaba.site/yessport5plus/index.m3u8?token=2c73d12ac55675d862ba1977f6aad4d8bc8522aa&expires=1795454380",
-      "http://stream.mcquack.net/333/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32002/index.m3u8"
-    ],
+    "backupUrls": [],
     "webOk": true,
     "hamalSlug": "yes-5-plus"
   },
@@ -2273,9 +1986,7 @@
     "countryHe": "ישראל",
     "number": 102,
     "backups": [
-      "https://2lacasaba.site/yessport5live/index.m3u8?token=9cbeecd52019544cf46181018a6d98f80de6eee4&expires=1795454379",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5_live_hevc/live.livx/playlist.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2362/index.m3u8",
       "https://r.il.cdn-redge.media/livehls/oil/freetv/live/sport_5_live/live.livx/playlist.m3u8"
     ],
     "src": {
@@ -2286,9 +1997,7 @@
       "web": "✅"
     },
     "fallbackUrls": [
-      "https://2lacasaba.site/yessport5live/index.m3u8?token=9cbeecd52019544cf46181018a6d98f80de6eee4&expires=1795454379",
       "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5_live_hevc/live.livx/playlist.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2362/index.m3u8",
       "https://r.il.cdn-redge.media/livehls/oil/freetv/live/sport_5_live/live.livx/playlist.m3u8"
     ],
     "iptv": "Sport5Live.il",
@@ -2316,14 +2025,10 @@
       "web": "✅"
     },
     "fallbackUrls": [
-      "https://2lacasaba.site/5sportgold/index.m3u8?token=0afc7e9c8ce1efcca23eb5f23025e6601f2fa3a4&expires=1795454381",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12254/index.m3u8",
       "https://r.il.cdn-redge.media/livehls/oil/freetv/live/sport_5_gold/live.livx/playlist.m3u8"
     ],
     "iptv": "Sport5Gold.il",
     "backups": [
-      "https://2lacasaba.site/5sportgold/index.m3u8?token=0afc7e9c8ce1efcca23eb5f23025e6601f2fa3a4&expires=1795454381",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12254/index.m3u8",
       "https://r.il.cdn-redge.media/livehls/oil/freetv/live/sport_5_gold/live.livx/playlist.m3u8"
     ],
     "hamalSlug": "yes-5-gold"
@@ -2349,15 +2054,9 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
-    "fallbackUrls": [
-      "https://2lacasaba.site/5stars/index.m3u8?token=11bc03ab68ab0809bd4f9a7cde231b52c0ebbec3&expires=1795454382",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12278/index.m3u8"
-    ],
+    "fallbackUrls": [],
     "iptv": "Sport5Stars.il",
-    "backups": [
-      "https://2lacasaba.site/5stars/index.m3u8?token=11bc03ab68ab0809bd4f9a7cde231b52c0ebbec3&expires=1795454382",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12278/index.m3u8"
-    ],
+    "backups": [],
     "hamalSlug": "yes-5-stars"
   },
   {
@@ -2382,14 +2081,10 @@
       "web": "✅"
     },
     "fallbackUrls": [
-      "https://2lacasaba.site/5max/index.m3u8?token=62d19a9f2ab5452c7ec7460cbb44d833f6e78b4c&expires=1795454383",
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5_max_hevc/live.livx/playlist.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32147/index.m3u8"
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5_max_hevc/live.livx/playlist.m3u8"
     ],
     "backups": [
-      "https://2lacasaba.site/5max/index.m3u8?token=62d19a9f2ab5452c7ec7460cbb44d833f6e78b4c&expires=1795454383",
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5_max_hevc/live.livx/playlist.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32147/index.m3u8"
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport_5_max_hevc/live.livx/playlist.m3u8"
     ],
     "hamalSlug": "sport-5-max"
   },
@@ -2408,9 +2103,7 @@
     "countryHe": "ישראל",
     "number": 107,
     "backups": [
-      "https://2lacasaba.site/onesport/index.m3u8?token=835ce677a9269ec1a28ece554c858a19290736d8&expires=1795454375",
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/one_1_hevc/live.livx/playlist.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2340/index.m3u8"
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/one_1_hevc/live.livx/playlist.m3u8"
     ],
     "src": {
       "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
@@ -2420,9 +2113,7 @@
       "web": "✅"
     },
     "fallbackUrls": [
-      "https://2lacasaba.site/onesport/index.m3u8?token=835ce677a9269ec1a28ece554c858a19290736d8&expires=1795454375",
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/one_1_hevc/live.livx/playlist.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2340/index.m3u8"
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/one_1_hevc/live.livx/playlist.m3u8"
     ],
     "iptv": "One.il",
     "hamalSlug": "One-1"
@@ -2442,9 +2133,7 @@
     "logo": "assets/logos/one_2_hd.png",
     "number": 108,
     "backups": [
-      "https://2lacasaba.site/onesport2/index.m3u8?token=b41e890f99e68b3d798c31cd00650aeb393ebdb6&expires=1795454377",
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/one_2_hevc/live.livx/playlist.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12231/index.m3u8"
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/one_2_hevc/live.livx/playlist.m3u8"
     ],
     "src": {
       "by": "FreeTV – השידור הרשמי (AWS CloudFront)",
@@ -2454,9 +2143,7 @@
       "web": "✅"
     },
     "fallbackUrls": [
-      "https://2lacasaba.site/onesport2/index.m3u8?token=b41e890f99e68b3d798c31cd00650aeb393ebdb6&expires=1795454377",
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/one_2_hevc/live.livx/playlist.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12231/index.m3u8"
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/one_2_hevc/live.livx/playlist.m3u8"
     ],
     "iptv": "One2.il",
     "hamalSlug": "one-2"
@@ -2482,12 +2169,8 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
-    "fallbackUrls": [
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32002/index.m3u8"
-    ],
-    "backups": [
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32002/index.m3u8"
-    ]
+    "fallbackUrls": [],
+    "backups": []
   },
   {
     "id": "sky_racing_1",
@@ -2533,19 +2216,13 @@
       "web": "✅"
     },
     "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport5_fhd/live.livx/playlist.m3u8",
-      "http://stream.mcquack.net/55/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12252/index.m3u8"
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport5_fhd/live.livx/playlist.m3u8"
     ],
     "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport5_fhd/live.livx/playlist.m3u8",
-      "http://stream.mcquack.net/55/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12252/index.m3u8"
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport5_fhd/live.livx/playlist.m3u8"
     ],
     "backupUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport5_fhd/live.livx/playlist.m3u8",
-      "http://stream.mcquack.net/55/index.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12252/index.m3u8"
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/sport5_fhd/live.livx/playlist.m3u8"
     ]
   },
   {
@@ -3373,9 +3050,7 @@
     "category": "חדשות מהעולם (News)",
     "categoryEn": "news",
     "url": "https://vs-hls-push-ww-live.akamaized.net/x=4/i=urn:bbc:pips:service:bbc_news_channel_hd/t=3840/v=pv14/b=5070016/main.m3u8",
-    "fallbackUrls": [
-      "http://stream.mcquack.net/363/index.m3u8"
-    ],
+    "fallbackUrls": [],
     "badge": "FHD",
     "color": "#dc2626",
     "isIsraeli": false,
@@ -3390,9 +3065,7 @@
       "found": "רשימה ידנית (גרסה קודמת)",
       "web": "✅"
     },
-    "backups": [
-      "http://stream.mcquack.net/363/index.m3u8"
-    ]
+    "backups": []
   },
   {
     "id": "cnn_intl_hd",
@@ -3692,12 +3365,10 @@
     "country": "IL",
     "countryHe": "ישראל",
     "fallbackUrls": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/hidabroot/live.livx/playlist.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32319/index.m3u8"
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/hidabroot/live.livx/playlist.m3u8"
     ],
     "backups": [
-      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/hidabroot/live.livx/playlist.m3u8",
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32319/index.m3u8"
+      "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/hidabroot/live.livx/playlist.m3u8"
     ]
   },
   {
@@ -7519,12 +7190,8 @@
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
     "url": "https://d15ds134q59udk.cloudfront.net/out/v1/fbba879221d045598540ee783b140fe2/index.m3u8",
-    "backups": [
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32136/index.m3u8"
-    ],
-    "fallbackUrls": [
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32136/index.m3u8"
-    ],
+    "backups": [],
+    "fallbackUrls": [],
     "badge": "HD",
     "desc": "מיטב הקומדיות, המערכונים והסטנדאפ הישראלי 24/7",
     "lang": "he",
@@ -7725,12 +7392,8 @@
     "category": "ערוצי ישראל - שידור חי",
     "categoryEn": "israel",
     "url": "https://i24newshebrew-cdn.encoders.immergo.tv/master.m3u8",
-    "backups": [
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2386/index.m3u8"
-    ],
-    "fallbackUrls": [
-      "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2386/index.m3u8"
-    ],
+    "backups": [],
+    "fallbackUrls": [],
     "badge": "HD",
     "desc": "ערוץ החדשות והאקטואליה הבינלאומי i24NEWS בשידור חי בעברית 24/7",
     "lang": "he",
@@ -11354,2164 +11017,6 @@
       "web": "✅"
     },
     "number": 634
-  },
-  {
-    "id": "hot_bidur",
-    "name": "HOT בידור ישראלי HD",
-    "title": "ערוץ HOT בידור ישראלי וסלבס HD",
-    "category": "ערוצי ישראל - שידור חי",
-    "categoryEn": "israel",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32141/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/hot_bidur.png",
-    "badge": "HD",
-    "desc": "HOT בידור – דוקו-ריאליטי ישראלי, חדשות הבידור, סדרות מקור ואירוח",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 4,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "hot_reality",
-    "name": "HOT ריאל HD (HOT Real)",
-    "title": "ערוץ HOT Real סדרות ריאליטי HD",
-    "category": "ערוצי ישראל - שידור חי",
-    "categoryEn": "israel",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12274/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/hot_reality.png",
-    "badge": "HD",
-    "desc": "ערוץ HOT Real – מיטב סדרות הריאליטי והדוקו-ריאליטי מישראל ומהעולם",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 5,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "gameshow_channel_il",
-    "name": "ערוץ השעשועונים והמשחקים HD",
-    "title": "ערוץ השעשועונים והחידונים 24/7",
-    "category": "ערוצי ישראל - שידור חי",
-    "categoryEn": "israel",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32158/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/partner.png",
-    "badge": "HD",
-    "desc": "שעשועוני טלוויזיה, משחקי ידע, אתגרים וחידונים מרתקים לכל המשפחה בפרטנר TV.",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 8,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "yes_docu",
-    "name": "yes דוקו HD",
-    "title": "ערוץ yes דוקו קולנוע תיעודי ישראלי ועולמי HD",
-    "category": "ערוצי ישראל - שידור חי",
-    "categoryEn": "israel",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12258/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/yes_docu.png",
-    "badge": "HD",
-    "desc": "ערוץ yes דוקו – סרטים וסדרות דוקומנטריות עטורי פרסים מישראל ומהעולם",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 18,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "hot_8",
-    "name": "HOT 8 מדע ודוקו HD",
-    "title": "ערוץ HOT 8 דוקו, מדע ותרבות HD",
-    "category": "ערוצי ישראל - שידור חי",
-    "categoryEn": "israel",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32142/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/hot_8.png",
-    "badge": "HD",
-    "desc": "ערוץ HOT 8 – יצירה דוקומנטרית ישראלית מקורית, מדע, טבע, היסטוריה ותרבות",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 19,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "home_plus_il",
-    "name": "ערוץ בית+ Home Plus HD",
-    "title": "ערוץ הבית פלוס עיצוב ולייף סטייל (Home+ HD)",
-    "category": "ערוצי ישראל - שידור חי",
-    "categoryEn": "israel",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2339/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/home_plus_il.png",
-    "badge": "HD",
-    "desc": "ערוץ בית+ (Home Plus) – עיצוב הבית, אדריכלות, שיפוץ, גינון ולייף סטייל ישראלי",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 20,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "health_channel_il",
-    "name": "ערוץ הבריאות HD",
-    "title": "ערוץ הבריאות והרפואה הישראלי HD",
-    "category": "ערוצי ישראל - שידור חי",
-    "categoryEn": "israel",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2378/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/health_channel_il.png",
-    "badge": "HD",
-    "desc": "ערוץ הבריאות – רפואה, תזונה נכונה, כושר גופני ואיכות חיים",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 21,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "e_entertainment_il",
-    "name": "ערוץ הבידור E! ישראל HD",
-    "title": "ערוץ E! בידור וסלבס עם תרגום לעברית HD",
-    "category": "ערוצי ישראל - שידור חי",
-    "categoryEn": "israel",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12243/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/e_entertainment_il.png",
-    "badge": "HD",
-    "desc": "ערוץ E! ישראל – חדשות הוליווד, שטיח אדום, ריאליטי ולייף סטייל בתרגום לעברית",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 26,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "cbs_reality_il",
-    "name": "ערוץ הריאליטי HD",
-    "title": "ערוץ הריאליטי והמציאות בעברית HD",
-    "category": "ערוצי ישראל - שידור חי",
-    "categoryEn": "israel",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32159/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/cbs_reality_il.png",
-    "badge": "HD",
-    "desc": "ערוץ הריאליטי – סדרות מציאות, דרמות אמיתיות וסיפורים אנושיים בתרגום לעברית",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 28,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "humor_channel_il",
-    "name": "ערוץ ההומור והצחוק HD",
-    "title": "ערוץ ההומור סטנדאפ ומערכונים ישראלי HD",
-    "category": "ערוצי ישראל - שידור חי",
-    "categoryEn": "israel",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32161/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/humor_channel_il.png",
-    "badge": "HD",
-    "desc": "ערוץ ההומור – מערכונים, מופעי סטנדאפ, קומדיות ישראליות ובידור",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 29,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "hot_mind",
-    "name": "HOT מיינד דוקו והעשרה HD",
-    "title": "ערוץ HOT Mind מדע, פסיכולוגיה והעשרה HD",
-    "category": "ערוצי ישראל - שידור חי",
-    "categoryEn": "israel",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32143/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/hot_mind.png",
-    "badge": "HD",
-    "desc": "ערוץ HOT Mind – תוכניות העשרה, מדע, היסטוריה, פסיכולוגיה וטבע",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 35,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "hop_kids_israel",
-    "name": "ערוץ הופ! ילדים בעברית HD",
-    "title": "ערוץ הופ! (Hop!) לגיל הרך וילדים בעברית HD",
-    "category": "ילדים ונוער (בעברית)",
-    "categoryEn": "kids_he",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12244/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/hop.png",
-    "badge": "HD",
-    "desc": "ערוץ הופ! – לגדול בידיים טובות: יובל המבולבל, דוד חיים, מטוסי על, סמי הכבאי ותוכניות לגיל הרך",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 44,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "luli_tv_il",
-    "name": "ערוץ לולי לפעוטות בעברית HD",
-    "title": "ערוץ לולי (Luli TV) לפעוטות בעברית HD",
-    "category": "ילדים ונוער (בעברית)",
-    "categoryEn": "kids_he",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2364/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/luli_tv.png",
-    "badge": "HD",
-    "desc": "ערוץ לולי – ערוץ ייעודי לפעוטות עד גיל 3 בעברית: שירים ראשונים, צבעים, חיות ומשחקים",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 47,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "disney_channel_il",
-    "name": "ערוץ דיסני ישראל HD (Disney Channel)",
-    "title": "ערוץ דיסני ישראל (Disney Channel Israel HD)",
-    "category": "ילדים ונוער (בעברית)",
-    "categoryEn": "kids_he",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2382/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/disney.png",
-    "badge": "HD",
-    "desc": "ערוץ דיסני ישראל – החממה, כפולה, המופלאה, פיניאס ופרב וסרטי דיסני בדיבוב וכתוביות בעברית",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 48,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "nickelodeon_il",
-    "name": "ערוץ ניקלודיאון ישראל HD (Nickelodeon)",
-    "title": "ערוץ ניקלודיאון לילדים ונוער בעברית (Nickelodeon Israel HD)",
-    "category": "ילדים ונוער (בעברית)",
-    "categoryEn": "kids_he",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12240/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/nickelodeon.png",
-    "badge": "HD",
-    "desc": "ערוץ ניקלודיאון – בובספוג מכנסמרובע, הרעשנים, אווטאר, צבי הנינג'ה וקומדיות לילדים",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 50,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "nick_jr_il",
-    "name": "ערוץ ניק ג'וניור ישראל HD (Nick Jr.)",
-    "title": "ערוץ ניק ג'וניור בעברית (Nick Jr. Israel HD)",
-    "category": "ילדים ונוער (בעברית)",
-    "categoryEn": "kids_he",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2337/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/nick_jr.png",
-    "badge": "HD",
-    "desc": "ערוץ ניק ג'וניור ישראל – מפרץ ההרפתקאות (PAW Patrol), דורה, בלייז, פפה פיג ומסעדת החיות בעברית",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 51,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "teennick_il",
-    "name": "ערוץ טין ניק ישראל HD (TeenNick)",
-    "title": "ערוץ טין ניק לנוער בעברית (TeenNick Israel HD)",
-    "category": "ילדים ונוער (בעברית)",
-    "categoryEn": "kids_he",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32148/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/teennick.png",
-    "badge": "HD",
-    "desc": "ערוץ טין ניק ישראל – שכונה, נעלמים, פלמ\"ח, זיגי, סדרות נוער ישראליות ולהיטי נוער מהעולם",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 52,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "zoom_kids",
-    "name": "ערוץ זום ZOOM ילדים ונוער HD",
-    "title": "ערוץ זום (ZOOM) לילדים ונוער בעברית HD",
-    "category": "ילדים ונוער (בעברית)",
-    "categoryEn": "kids_he",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2359/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/zoom.png",
-    "badge": "HD",
-    "desc": "ערוץ ZOOM לילדים ונוער – מועדון החנונים, סדרות אקשן, אנימציה וקומדיה בעברית",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 53,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "yes_movies_kids_il",
-    "name": "yes קולנוע ילדים FHD (yes Movies Kids)",
-    "title": "ערוץ סרטי הילדים של יס (yes Movies Kids FHD)",
-    "category": "ילדים ונוער (בעברית)",
-    "categoryEn": "kids_he",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2365/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/yes_cinema_kids.png",
-    "badge": "FHD",
-    "desc": "ערוץ yes Movies Kids – שוברי קופות מונפשים, סרטי דיסני, פיקסאר ודרימוורקס בדיבוב לעברית",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 57,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "hot_cinema_family_il",
-    "name": "HOT סינמה פמילי HD (סרטי ילדים ומשפחה)",
-    "title": "ערוץ HOT Cinema Family סרטי משפחה וילדים HD",
-    "category": "ילדים ונוער (בעברית)",
-    "categoryEn": "kids_he",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32146/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/hot_cinema_family_il.png",
-    "badge": "HD",
-    "desc": "HOT Cinema Family – סרטי אנימציה, הרפתקאות וקומדיות לכל המשפחה בדיבוב וכתוביות בעברית",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 58,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "wiz_kids_il",
-    "name": "ערוץ WIZ! לילדים ונוער HD",
-    "title": "ערוץ הילדים החכם WIZ! בעברית HD",
-    "category": "ילדים ונוער (בעברית)",
-    "categoryEn": "kids_he",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12283/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/wiz.png",
-    "badge": "HD",
-    "desc": "ערוץ WIZ! – סדרות מדע, טבע, הרפתקאות וידע מרתק לילדים סקרנים בעברית",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 59,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "hot_buzz_il",
-    "name": "HOT באזז לילדים ונוער HD (HOT Buzz)",
-    "title": "HOT באזז HD",
-    "category": "ילדים ונוער (בעברית)",
-    "categoryEn": "kids",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32139/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "",
-    "badge": "HD",
-    "desc": "ערוץ HOT באזז – תכניות לילדים ונוער, סדרות, אנימציה והרפתקאות בעברית 24/7",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 68,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "channel_98_il",
-    "name": "ערוץ 98 – האזרח הוותיק HD",
-    "title": "ערוץ 98 שידורי קהילה והאזרח הוותיק",
-    "category": "ערוצי ישראל - שידור חי",
-    "categoryEn": "israel",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2369/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/channel_98_il.png",
-    "badge": "HD",
-    "desc": "ערוץ 98 – תוכניות תרבות, בריאות, פנאי וקהילה לאזרחים ותיקים בישראל",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 69,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "hot_3_fhd",
-    "name": "HOT 3 ערוץ הדגל FHD",
-    "title": "ערוץ הסדרות הישראליות והבינלאומיות HOT 3 FHD",
-    "category": "סרטים וסדרות (Movies & Series)",
-    "categoryEn": "movies",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12214/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/hot_3_fhd.png",
-    "badge": "FHD",
-    "desc": "ערוץ HOT 3 – סדרות המקור הגדולות של הוט, דרמות ישראליות ולהיטים מהעולם ב-FHD",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 115,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "hot_hbo_hd",
-    "name": "HOT HBO סדרות פרימיום HD",
-    "title": "ערוץ סדרות הפרימיום HOT HBO עם תרגום לעברית HD",
-    "category": "סרטים וסדרות (Movies & Series)",
-    "categoryEn": "movies",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2354/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/hot_hbo_hd.png",
-    "badge": "HD",
-    "desc": "ערוץ HOT HBO – מיטב סדרות המופת של HBO וסדרות בינלאומיות מובילות בתרגום לעברית",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 116,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "hot_cinema_1",
-    "name": "HOT סינמה 1 FHD",
-    "title": "ערוץ הסרטים HOT Cinema 1 שוברי קופות FHD",
-    "category": "סרטים וסדרות (Movies & Series)",
-    "categoryEn": "movies",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2357/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/hot_cinema_1.png",
-    "badge": "FHD",
-    "desc": "HOT סינמה 1 FHD – בכורות הוליוודיות ושוברי קופות מובילים עם כתוביות בעברית",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 117,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "hot_cinema_2",
-    "name": "HOT סינמה 2 HD",
-    "title": "ערוץ הסרטים HOT Cinema 2 אקשן ומתח HD",
-    "category": "סרטים וסדרות (Movies & Series)",
-    "categoryEn": "movies",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12215/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/hot_cinema_2.png",
-    "badge": "HD",
-    "desc": "HOT סינמה 2 – סרטי אקשן, מתח, מדע בדיוני והרפתקאות עם כתוביות בעברית",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 118,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "hot_cinema_3",
-    "name": "HOT סינמה 3 FHD",
-    "title": "ערוץ הסרטים HOT Cinema 3 קומדיה ודרמה FHD",
-    "category": "סרטים וסדרות (Movies & Series)",
-    "categoryEn": "movies",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2372/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/hot_cinema_3.png",
-    "badge": "FHD",
-    "desc": "HOT סינמה 3 FHD – קומדיות, סרטי דרמה ורומנטיקה עם כתוביות בעברית",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 119,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "hot_cinema_4",
-    "name": "HOT סינמה 4 HD",
-    "title": "ערוץ הסרטים HOT Cinema 4 קולנוע נבחר HD",
-    "category": "סרטים וסדרות (Movies & Series)",
-    "categoryEn": "movies",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2356/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/hot_cinema_4.png",
-    "badge": "HD",
-    "desc": "HOT סינמה 4 – קולנוע עולמי, להיטים אהובים וקלאסיקות מודרניות עם תרגום לעברית",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 120,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "hot_cinema_5",
-    "name": "HOT סינמה 5 HD",
-    "title": "ערוץ הסרטים HOT Cinema 5 HD",
-    "category": "סרטים וסדרות (Movies & Series)",
-    "categoryEn": "movies",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32137/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/hot_cinema_5.png",
-    "badge": "HD",
-    "desc": "HOT סינמה 5 – סרטים מגוונים מכל הז'אנרים 24/7 עם תרגום לעברית",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 121,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "hot_israeli_cinema",
-    "name": "HOT קולנוע ישראלי HD",
-    "title": "ערוץ HOT קולנוע ישראלי סרטים ישראליים HD",
-    "category": "סרטים וסדרות (Movies & Series)",
-    "categoryEn": "movies",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32138/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/hot_israeli.png",
-    "badge": "HD",
-    "desc": "HOT קולנוע ישראלי – מיטב הסרטים הישראליים מכל הזמנים, קלאסיקות בורקס וקולנוע עכשווי",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 122,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "hot_romantic_cinema",
-    "name": "HOT קולנוע רומנטי HD",
-    "title": "ערוץ HOT קולנוע רומנטי סרטי אהבה ורגש HD",
-    "category": "סרטים וסדרות (Movies & Series)",
-    "categoryEn": "movies",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32144/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/hot_romantic_cinema.png",
-    "badge": "HD",
-    "desc": "HOT קולנוע רומנטי – קומדיות רומנטיות ודרמות אהבה מרגשות עם תרגום לעברית",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 123,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "hot_drama",
-    "name": "HOT דרמה HD",
-    "title": "ערוץ הסדרות HOT Drama בתרגום לעברית HD",
-    "category": "סרטים וסדרות (Movies & Series)",
-    "categoryEn": "movies",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32140/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/hot_drama.png",
-    "badge": "HD",
-    "desc": "HOT דרמה – סדרות דרמה ישראליות ובינלאומיות מובילות עם כתוביות בעברית",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 124,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "hot_zone",
-    "name": "HOT זון HD (HOT Zone)",
-    "title": "ערוץ סדרות האקשן והמתח HOT Zone HD",
-    "category": "סרטים וסדרות (Movies & Series)",
-    "categoryEn": "movies",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2360/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/hot_zone.png",
-    "badge": "HD",
-    "desc": "HOT זון – סדרות אקשן, פשע, מתח וחקירות מארה״ב ומהעולם בתרגום לעברית",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 125,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "hot_comedy",
-    "name": "HOT קומדי HD (HOT Comedy)",
-    "title": "ערוץ הקומדיות והסיטקומים HOT Comedy HD",
-    "category": "סרטים וסדרות (Movies & Series)",
-    "categoryEn": "movies",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12217/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/hot_comedy.png",
-    "badge": "HD",
-    "desc": "HOT קומדי – סיטקומים, סדרות קומיות ומופעי סטנדאפ בתרגום לעברית",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 126,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "yes_israeli_cinema",
-    "name": "yes קולנוע ישראלי HD",
-    "title": "ערוץ yes קולנוע ישראלי סרטים וסדרות מישראל HD",
-    "category": "סרטים וסדרות (Movies & Series)",
-    "categoryEn": "movies",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2342/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/yes_israeli.png",
-    "badge": "HD",
-    "desc": "yes קולנוע ישראלי – סרטים ישראליים חדשים, קלאסיקות אהובות ויצירה מקורית",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 127,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "yes_movies_action",
-    "name": "yes קולנוע אקשן FHD (yes Movies Action)",
-    "title": "ערוץ הסרטים yes Movies Action FHD",
-    "category": "סרטים וסדרות (Movies & Series)",
-    "categoryEn": "movies",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12270/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/yes_movies_action.png",
-    "badge": "FHD",
-    "desc": "yes קולנוע אקשן FHD – סרטי פעולה, מתח, גיבורי-על ומדע בדיוני עם כתוביות בעברית",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 128,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "yes_movies_drama",
-    "name": "yes קולנוע דרמה FHD (yes Movies Drama)",
-    "title": "ערוץ הסרטים yes Movies Drama FHD",
-    "category": "סרטים וסדרות (Movies & Series)",
-    "categoryEn": "movies",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12272/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/yes_movies_drama.png",
-    "badge": "FHD",
-    "desc": "yes קולנוע דרמה FHD – סרטי דרמה מרגשים, ביוגרפיות וזוכי אוסקר עם תרגום לעברית",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 129,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "yes_movies_comedy",
-    "name": "yes קולנוע קומדיה FHD (yes Movies Comedy)",
-    "title": "ערוץ הסרטים yes Movies Comedy FHD",
-    "category": "סרטים וסדרות (Movies & Series)",
-    "categoryEn": "movies",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12271/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/yes_movies_comedy.png",
-    "badge": "FHD",
-    "desc": "yes קולנוע קומדיה FHD – קומדיות הוליוודיות, סרטי פיל-גוד ורומנטיקה עם תרגום לעברית",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 130,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "yes_tv_action",
-    "name": "yes TV אקשן HD (yes TV Action)",
-    "title": "ערוץ הסדרות yes TV Action HD",
-    "category": "סרטים וסדרות (Movies & Series)",
-    "categoryEn": "movies",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2346/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/yes_tv_action.png",
-    "badge": "HD",
-    "desc": "yes TV Action – סדרות מתח, אקשן, פשע ומדע בדיוני מובילות עם כתוביות בעברית",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 131,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "yes_tv_drama",
-    "name": "yes TV דרמה HD (yes TV Drama)",
-    "title": "ערוץ הסדרות yes TV Drama HD",
-    "category": "סרטים וסדרות (Movies & Series)",
-    "categoryEn": "movies",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2343/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/yes_tv_drama.png",
-    "badge": "HD",
-    "desc": "yes TV Drama – סדרות המקור של yes וסדרות הדרמה הטובות בעולם בתרגום לעברית",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 132,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "yes_tv_comedy",
-    "name": "yes TV קומדיה HD (yes TV Comedy)",
-    "title": "ערוץ הסדרות yes TV Comedy HD",
-    "category": "סרטים וסדרות (Movies & Series)",
-    "categoryEn": "movies",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2345/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/yes_tv_comedy.png",
-    "badge": "HD",
-    "desc": "yes TV Comedy – הקומדיות והסיטקומים המצחיקים ביותר מארה״ב ומישראל בתרגום לעברית",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 133,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "viva_premium_il",
-    "name": "ערוץ ויוה פרימיום HD (Viva Premium)",
-    "title": "ערוץ ויוה פרימיום דרמות וטלנובלות HD",
-    "category": "סרטים וסדרות (Movies & Series)",
-    "categoryEn": "movies",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12226/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/viva_premium_il.png",
-    "badge": "HD",
-    "desc": "ערוץ ויוה פרימיום – בכורות בלעדיות של סדרות וטלנובלות מובילות בתרגום לעברית",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 134,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "yam_tichoni_hd",
-    "name": "הערוץ הים תיכוני HD",
-    "title": "הערוץ הים תיכוני סדרות, סרטים ומוזיקה HD",
-    "category": "סרטים וסדרות (Movies & Series)",
-    "categoryEn": "movies",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2390/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/yam_tichoni_hd.png",
-    "badge": "HD",
-    "desc": "הערוץ הים תיכוני – סדרות דרמה, סרטים, הופעות ומוזיקה ים תיכונית וישראלית",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 135,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "yam_tichoni_plus_il",
-    "name": "הערוץ הים תיכוני+ HD",
-    "title": "הערוץ הים תיכוני פלוס סדרות ודרמות HD",
-    "category": "סרטים וסדרות (Movies & Series)",
-    "categoryEn": "movies",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12224/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/yam_tichoni_plus_il.png",
-    "badge": "HD",
-    "desc": "הערוץ הים תיכוני+ – דרמות, קולנוע, מוזיקה ותוכניות בידור ים תיכוניות",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 136,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "turkish_dramas_plus",
-    "name": "ערוץ הדרמות הטורקיות+ FHD",
-    "title": "ערוץ הדרמות הטורקיות פלוס בתרגום לעברית FHD",
-    "category": "סרטים וסדרות (Movies & Series)",
-    "categoryEn": "movies",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12257/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/turkish_dramas_plus.png",
-    "badge": "FHD",
-    "desc": "ערוץ הדרמות הטורקיות+ – הסדרות הטורקיות המצליחות ביותר באיכות FHD עם תרגום לעברית",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 137,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "turkish_dramas_2",
-    "name": "ערוץ הדרמות הטורקיות 2 FHD",
-    "title": "ערוץ הדרמות הטורקיות 2 בתרגום לעברית FHD",
-    "category": "סרטים וסדרות (Movies & Series)",
-    "categoryEn": "movies",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12262/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/turkish_dramas_2.png",
-    "badge": "FHD",
-    "desc": "ערוץ הדרמות הטורקיות 2 – סדרות רומנטיקה, משפחה ומתח מטורקיה בתרגום לעברית",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 138,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "turkish_dramas_3",
-    "name": "ערוץ הדרמות הטורקיות 3 FHD",
-    "title": "ערוץ הדרמות הטורקיות 3 בתרגום לעברית FHD",
-    "category": "סרטים וסדרות (Movies & Series)",
-    "categoryEn": "movies",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12264/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/turkish_dramas_3.png",
-    "badge": "FHD",
-    "desc": "ערוץ הדרמות הטורקיות 3 – מרתונים ופרקים חדשים של להיטים טורקיים בתרגום לעברית",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 139,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "mediterranean_movies_2",
-    "name": "ערוץ הסרטים הים תיכוני 2 HD",
-    "title": "ערוץ הסרטים הים תיכוני 2 בתרגום לעברית HD",
-    "category": "סרטים וסדרות (Movies & Series)",
-    "categoryEn": "movies",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32163/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/mediterranean_movies_2.png",
-    "badge": "HD",
-    "desc": "ערוץ הסרטים הים תיכוני 2 – סרטי דרמה, קומדיה ורומנטיקה מאגן הים התיכון בתרגום לעברית",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 141,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "global_action_1",
-    "name": "ערוץ האקשן העולמי 1 HD",
-    "title": "ערוץ האקשן העולמי 1 סדרות וסרטי פעולה HD",
-    "category": "סרטים וסדרות (Movies & Series)",
-    "categoryEn": "movies",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32130/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/global_action_1.png",
-    "badge": "HD",
-    "desc": "ערוץ האקשן העולמי 1 – סדרות וסרטי אקשן, פשע ומתח בינלאומיים עם כתוביות בעברית",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 142,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "global_action_2",
-    "name": "ערוץ האקשן העולמי 2 HD",
-    "title": "ערוץ האקשן העולמי 2 סדרות וסרטי פעולה HD",
-    "category": "סרטים וסדרות (Movies & Series)",
-    "categoryEn": "movies",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32131/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/global_action_2.png",
-    "badge": "HD",
-    "desc": "ערוץ האקשן העולמי 2 – אקשן חוצה גבולות, מתח ופעולה 24/7 עם כתוביות בעברית",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 143,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "spanish_dramas_1",
-    "name": "ערוץ הדרמות הספרדיות 1 HD",
-    "title": "ערוץ הדרמות הספרדיות 1 בתרגום לעברית HD",
-    "category": "סרטים וסדרות (Movies & Series)",
-    "categoryEn": "movies",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32132/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/spanish_dramas_1.png",
-    "badge": "HD",
-    "desc": "ערוץ הדרמות הספרדיות 1 – מיטב הסדרות והטלנובלות מספרד ואמריקה הלטינית בתרגום לעברית",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 144,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "spanish_dramas_2",
-    "name": "ערוץ הדרמות הספרדיות 2 HD",
-    "title": "ערוץ הדרמות הספרדיות 2 בתרגום לעברית HD",
-    "category": "סרטים וסדרות (Movies & Series)",
-    "categoryEn": "movies",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32133/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/spanish_dramas_2.png",
-    "badge": "HD",
-    "desc": "ערוץ הדרמות הספרדיות 2 – דרמות תקופתיות, מתח ורומנטיקה בספרדית עם כתוביות בעברית",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 145,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "indian_series_1",
-    "name": "ערוץ הדרמות ההודיות 1 HD",
-    "title": "ערוץ הדרמות ההודיות 1 בתרגום לעברית HD",
-    "category": "סרטים וסדרות (Movies & Series)",
-    "categoryEn": "movies",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32134/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/indian_series_1.png",
-    "badge": "HD",
-    "desc": "ערוץ הדרמות ההודיות 1 – סדרות רומנטיקה ומשפחה צבעוניות מהודו עם כתוביות בעברית",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 146,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "indian_series_2",
-    "name": "ערוץ הדרמות ההודיות 2 HD",
-    "title": "ערוץ הדרמות ההודיות 2 בתרגום לעברית HD",
-    "category": "סרטים וסדרות (Movies & Series)",
-    "categoryEn": "movies",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32135/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/indian_series_2.png",
-    "badge": "HD",
-    "desc": "ערוץ הדרמות ההודיות 2 – דרמות וסיפורי אהבה מהודו עם תרגום מלא לעברית",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 147,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "bollywood_hd",
-    "name": "ערוץ בוליווד סרטים הודיים HD",
-    "title": "ערוץ בוליווד Bollywood HD בתרגום לעברית",
-    "category": "סרטים וסדרות (Movies & Series)",
-    "categoryEn": "movies",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12267/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/bollywood_hd.png",
-    "badge": "HD",
-    "desc": "ערוץ בוליווד HD – שוברי קופות וסרטים הודיים חדשים עם כתוביות בעברית",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 148,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "bollywood_classic_hd",
-    "name": "ערוץ בוליווד קלאסי HD",
-    "title": "ערוץ בוליווד סרטים הודיים קלאסיים HD",
-    "category": "סרטים וסדרות (Movies & Series)",
-    "categoryEn": "movies",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32150/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/bollywood_classic_hd.png",
-    "badge": "HD",
-    "desc": "ערוץ בוליווד קלאסי – הקלאסיקות האהובות של הקולנוע ההודי בתרגום לעברית",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 149,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "bollyshow_hd",
-    "name": "ערוץ בולישואו Bollyshow HD",
-    "title": "ערוץ בולישואו סדרות ובידור הודי HD",
-    "category": "סרטים וסדרות (Movies & Series)",
-    "categoryEn": "movies",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32125/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/bollyshow_hd.png",
-    "badge": "HD",
-    "desc": "ערוץ Bollyshow – סדרות, מוזיקה ובידור מבוליווד עם תרגום לעברית",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 150,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "zee_tv_il",
-    "name": "ערוץ ZEE TV ישראל HD",
-    "title": "ערוץ הסדרות והסרטים ZEE TV ישראל (Zee TV Israel HD)",
-    "category": "סרטים וסדרות (Movies & Series)",
-    "categoryEn": "movies",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32153/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/zee_tv_il.png",
-    "badge": "HD",
-    "desc": "ערוץ ZEE TV בישראל – מיטב הדרמות, הסרטים והסדרות מבית ZEE עם תרגום",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 151,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "gtv_il",
-    "name": "ערוץ GTV דרמות וקולנוע HD",
-    "title": "ערוץ GTV סדרות וקולנוע (GTV HD)",
-    "category": "סרטים וסדרות (Movies & Series)",
-    "categoryEn": "movies",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32157/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/gtv_il.png",
-    "badge": "HD",
-    "desc": "ערוץ GTV – סדרות דרמה, קולנוע ובידור בשידור חי",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 152,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "classic_comedy_il",
-    "name": "ערוץ הקומדיות הקלאסיות HD",
-    "title": "ערוץ הקומדיות הקלאסיות והישראליות HD",
-    "category": "ערוצי ישראל - שידור חי",
-    "categoryEn": "israel",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32136/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/reshet13_comedy_il.png",
-    "badge": "HD",
-    "desc": "ערוץ הקומדיות הקלאסיות – סדרות הקומדיה האהובות מכל הזמנים, מערכונים נוסטלגיים וסרטי בורקס.",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 153,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "love_channel_il",
-    "name": "ערוץ האהבה והרומנטיקה HD",
-    "title": "ערוץ האהבה סדרות וסרטים רומנטיים HD",
-    "category": "סרטים וסדרות (Movies & Series)",
-    "categoryEn": "movies",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32145/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/love_channel_il.png",
-    "badge": "HD",
-    "desc": "ערוץ האהבה – סדרות וסרטים רומנטיים מרגשים עם כתוביות בעברית",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 154,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "food_network_il",
-    "name": "ערוץ האוכל HD (Food Network / החיים הטובים)",
-    "title": "ערוץ האוכל הישראלי ו-Food Network HD",
-    "category": "ערוצי אוכל (Food Channels)",
-    "categoryEn": "food",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12209/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/food_channel.png",
-    "badge": "HD",
-    "desc": "ערוץ האוכל הישראלי מבית החיים הטובים וענני תקשורת – שפים ישראליים, מתכונים וקולינריה בעברית",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 173,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "nat_geo_il",
-    "name": "נשיונל ג'יאוגרפיק ישראל HD (Nat Geo)",
-    "title": "ערוץ נשיונל ג'יאוגרפיק עם תרגום לעברית HD",
-    "category": "טבע ודוקו (Documentary & Nature)",
-    "categoryEn": "docu",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12247/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/nat_geo_il.png",
-    "badge": "HD",
-    "desc": "נשיונל ג'יאוגרפיק ישראל – מדע, טבע, תעופה, חלל וחקר העולם עם כתוביות בעברית",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 202,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "nat_geo_wild_il",
-    "name": "נשיונל ג'יאוגרפיק וויילד FHD (Nat Geo Wild)",
-    "title": "ערוץ הטבע Nat Geo Wild עם תרגום לעברית FHD",
-    "category": "טבע ודוקו (Documentary & Nature)",
-    "categoryEn": "docu",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12259/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/nat_geo_wild_il.png",
-    "badge": "FHD",
-    "desc": "נשיונל ג'יאוגרפיק וויילד FHD – עולם החי, תיעוד טבע פראי ומשלחות מחקר עם כתוביות בעברית",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 203,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "discovery_il",
-    "name": "ערוץ דיסקברי ישראל FHD (Discovery)",
-    "title": "ערוץ דיסקברי עם תרגום לעברית (Discovery Channel FHD)",
-    "category": "טבע ודוקו (Documentary & Nature)",
-    "categoryEn": "docu",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2358/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/discovery_il.png",
-    "badge": "FHD",
-    "desc": "ערוץ דיסקברי ישראל FHD – הישרדות, הנדסה, רכב, מדע והרפתקאות עם כתוביות בעברית",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 204,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "history_il",
-    "name": "ערוץ ההיסטוריה ישראל FHD (History)",
-    "title": "ערוץ ההיסטוריה עם תרגום לעברית (History Channel FHD)",
-    "category": "טבע ודוקו (Documentary & Nature)",
-    "categoryEn": "docu",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12265/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/history_il.png",
-    "badge": "FHD",
-    "desc": "ערוץ ההיסטוריה ישראל FHD – היסטוריה עולמית, תעלומות, תרבויות עתיקות ודוקו בתרגום לעברית",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 205,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "hop_plus_kids_il",
-    "name": "ערוץ הופ! פלוס HD",
-    "title": "ערוץ הופ! פלוס HD",
-    "category": "ילדים ונוער (בעברית)",
-    "categoryEn": "kids_he",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2338/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/hop_plus_kids_il.png",
-    "badge": "HD",
-    "desc": "ערוץ הופ! פלוס – תוכניות אהובות, לימוד והרפתקאות לקטנטנים.",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 384,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "humor_2_channel_il",
-    "name": "ערוץ ההומור 2 HD",
-    "title": "ערוץ ההומור 2 – צחוק ובידור HD",
-    "category": "ערוצי ישראל - שידור חי",
-    "categoryEn": "israel",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32316/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/humor_channel_il.png",
-    "badge": "HD",
-    "desc": "ערוץ ההומור 2 – סטנדאפ, מערכונים, קומדיות ובידור ישראלי ברצף 24/7.",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 390,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "natgeo_wild_il",
-    "name": "National Geographic WILD FHD",
-    "title": "נשיונל ג'יאוגרפיק WILD טבע וחיות FHD",
-    "category": "ערוצי ישראל - שידור חי",
-    "categoryEn": "israel",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12248/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/nat_geo_wild_il.png",
-    "badge": "FHD",
-    "desc": "ערוץ נשיונל ג'יאוגרפיק WILD – עולם החי, טבע פראי וטורפים בסרטי תעודה מרהיבים.",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 399,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "beautyz_fashion_il",
-    "name": "ערוץ Beautyz אופנה ולייפסטייל HD",
-    "title": "ערוץ Beautyz אופנה ויופי HD",
-    "category": "ערוצי ישראל - שידור חי",
-    "categoryEn": "israel",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32164/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/hot_reality.png",
-    "badge": "HD",
-    "desc": "ערוץ Beautyz – אופנה, יופי, עיצוב ולייפסטייל ישראלי ובינלאומי.",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 401,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "junior_channel_hd",
-    "name": "ערוץ ג'וניור HD (Junior)",
-    "title": "ערוץ ג'וניור HD (Junior)",
-    "category": "ילדים ונוער (בעברית)",
-    "categoryEn": "kids_he",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2366/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/junior.png",
-    "badge": "HD",
-    "desc": "ערוץ ג'וניור HD (Junior) — שידור חי ישיר בעברית.",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 404,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "baby_channel_hd",
-    "name": "ערוץ בייבי HD (Baby Channel)",
-    "title": "ערוץ בייבי HD (Baby Channel)",
-    "category": "ילדים ונוער (בעברית)",
-    "categoryEn": "kids_he",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2370/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/baby_tv_he.png",
-    "badge": "HD",
-    "desc": "ערוץ בייבי HD (Baby Channel) — שידור חי ישיר בעברית.",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 405,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "yes_movies_kids_hd",
-    "name": "yes קולנוע ילדים HD (yes Movies Kids)",
-    "title": "yes קולנוע ילדים HD (yes Movies Kids)",
-    "category": "ילדים ונוער (בעברית)",
-    "categoryEn": "kids_he",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12273/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/yes_movies_kids_il.png",
-    "badge": "HD",
-    "desc": "yes קולנוע ילדים HD (yes Movies Kids) — שידור חי ישיר בעברית.",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 407,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "good_life_channel_hd",
-    "name": "ערוץ החיים הטובים HD (Good Life)",
-    "title": "ערוץ החיים הטובים והלייפסטייל מבית ענני תקשורת HD",
-    "category": "ערוצי ישראל - שידור חי",
-    "categoryEn": "lifestyle",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2355/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/good_life_israel.png",
-    "badge": "HD",
-    "desc": "ערוץ החיים הטובים – תיירות, קולינריה, עיצוב הבית, לייפסטייל ואירוח ישראלי ועולמי מבית ענני תקשורת.",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 409,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "sport6_israel",
-    "name": "ספורט 6 HD (Sport 6)",
-    "title": "ספורט 6 ישיר HD (צ'רלטון Sport 6)",
-    "category": "ספורט (Sports)",
-    "categoryEn": "sports",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32003/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/sport6_israel.png",
-    "badge": "HD",
-    "desc": "ערוץ ספורט 6 מבית צ'רלטון – שידורים חיים של טניס, פאדל, כדורגל עולמי וספורט בינלאומי ב-HD",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 511,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "mediterranean_movies_1",
-    "name": "ערוץ הסרטים הים תיכוני 1 HD",
-    "title": "ערוץ הסרטים הים תיכוני 1 בתרגום לעברית HD",
-    "category": "סרטים וסדרות (Movies & Series)",
-    "categoryEn": "movies",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32162/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/mediterranean_movies_1.png",
-    "badge": "HD",
-    "desc": "ערוץ הסרטים הים תיכוני 1 – קולנוע טורקי, יווני וים תיכוני מרגש בתרגום לעברית",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 512,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "turkish_dramas_plus_il",
-    "name": "ערוץ הדרמות הטורקיות פלוס HD",
-    "title": "דרמות טורקיות פלוס HD",
-    "category": "סרטים וסדרות (Movies & Series)",
-    "categoryEn": "series",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/2363/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "",
-    "badge": "HD",
-    "desc": "ערוץ הדרמות הטורקיות פלוס – מיטב הסדרות הטורקיות מתורגמות לעברית 24/7",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 537,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "ego_channel_il",
-    "name": "ערוץ אגו Ego HD",
-    "title": "ערוץ אגו רכב, אקסטרים ולייף סטייל HD",
-    "category": "ערוצי ישראל - שידור חי",
-    "categoryEn": "israel",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32317/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/ego_channel_il.png",
-    "badge": "HD",
-    "desc": "ערוץ אגו – מכוניות, אקסטרים, ספורט זירה, טכנולוגיה ודוקו מרתק",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 27,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "sport5_4k_uhd",
-    "name": "ספורט 5 4K UHD",
-    "title": "ערוץ ספורט 5 4K אולטרה HD",
-    "category": "ספורט (Sports)",
-    "categoryEn": "sports",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32004/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/sport5.png",
-    "badge": "4K",
-    "desc": "שידורי ספורט ישירים בטכנולוגיית 4K Ultra HD ו-FHD H.264 מלא: ליגת האלופות, ליגת העל בכדורגל, מכבי תל אביב ביורוליג והמשחקים המרכזיים בחדות שיא עם גיבוי FHD אוטומטי.",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 106,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "one_doco_hd",
-    "name": "ערוץ ONE דוקו HD (ONE DOCO)",
-    "title": "ערוץ ONE DOCO סרטי וסדרות דוקו ספורט HD",
-    "category": "ספורט (Sports)",
-    "categoryEn": "sports",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32129/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/one_doco_hd.png",
-    "badge": "HD",
-    "desc": "ערוץ ONE DOCO – סרטים דוקומנטריים וסיפורים מרתקים מעולם הכדורגל והספורט",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 109,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "foody_tv",
-    "name": "ערוץ פודי Foody HD",
-    "title": "ערוץ פודי אוכל ובישול ישראלי (Foody HD)",
-    "category": "ערוצי אוכל (Food Channels)",
-    "categoryEn": "food",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32154/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/foody_tv.png",
-    "badge": "HD",
-    "desc": "ערוץ פודי (Foody) – מיטב השפים, המתכונים ותוכניות הבישול והאפייה מישראל",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 174,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
-  },
-  {
-    "id": "partner_design_il",
-    "name": "ערוץ פרטנר TV – עיצוב ולייף סטייל HD",
-    "title": "ערוץ פרטנר TV – ערוץ העיצוב והאדריכלות",
-    "category": "ערוצי ישראל - שידור חי",
-    "categoryEn": "israel",
-    "kind": "tv",
-    "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32124/index.m3u8",
-    "backups": [],
-    "fallbackUrls": [],
-    "logo": "assets/logos/partner.svg",
-    "badge": "HD",
-    "desc": "עיצוב פנים, אדריכלות ישראלית ובינלאומית, סיורים בבתים מעוצבים בפרטנר TV.",
-    "lang": "he",
-    "country": "IL",
-    "countryHe": "ישראל",
-    "number": 111,
-    "webOk": false,
-    "src": {
-      "by": "osoyz0xv.ottclub.xyz",
-      "kind": "restream",
-      "host": "osoyz0xv.ottclub.xyz",
-      "found": "שידור ישראלי חי מאומת",
-      "web": "❌ באפליקציות"
-    }
   },
   {
     "id": "kabbalah_66_hd",

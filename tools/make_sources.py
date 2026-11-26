@@ -230,8 +230,17 @@ def main():
             c["src"] = {"by": name, "kind": k, "host": host(c["url"]), "found": plain(found(c)), "web": plain(web(c))}
     with open(os.path.join(ROOT, "channels.json"), "w", encoding="utf-8") as f:
         json.dump(chans, f, ensure_ascii=False, indent=2)
-    with open(os.path.join(ROOT, "channels.js"), "w", encoding="utf-8") as f:
-        f.write("window.CHANNELS_DATA = window.ITV_CHANNELS = " + json.dumps(chans, ensure_ascii=False, indent=1) + ";\n")
+    # channels.js also carries window.VOD_DATA (and anything else) after the channel array: keep it
+    js_path = os.path.join(ROOT, "channels.js")
+    tail = ""
+    if os.path.isfile(js_path):
+        with open(js_path, encoding="utf-8") as f:
+            old_js = f.read()
+        cut = old_js.find("\nwindow.", 1)
+        if cut != -1:
+            tail = old_js[cut + 1:]
+    with open(js_path, "w", encoding="utf-8") as f:
+        f.write("window.CHANNELS_DATA = window.ITV_CHANNELS = " + json.dumps(chans, ensure_ascii=False, indent=1) + ";\n" + tail)
     print("channels.json / channels.js: source details written")
 
     # hosts the https relay (relay/worker.js) may fetch for the web site: http streams + https ones without CORS

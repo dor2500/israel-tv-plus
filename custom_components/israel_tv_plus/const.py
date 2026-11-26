@@ -16,7 +16,7 @@ DEFAULT_USER_AGENT = (
 TOP_TV_IDS = [
     "kan11", "keshet12", "reshet13", "now14", "i24news_he",
     "channel9", "channel24_israel", "ch33_makan", "knesset",
-    "ynet_live", "walla_news_il", "sport5_israel_hd", "sport1_israel",
+    "ynet_live", "walla_news_il", "sport5_israel_hd", "one_1_hd",
 ]
 
 # Top Israeli radio stations

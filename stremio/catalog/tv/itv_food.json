@@ -13,30 +13,6 @@
       ]
     },
     {
-      "id": "itv_food_network_il",
-      "type": "tv",
-      "name": "173. ערוץ האוכל HD (Food Network / החיים הטובים)",
-      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/food_channel.png",
-      "posterShape": "landscape",
-      "description": "ערוץ האוכל הישראלי מבית החיים הטובים וענני תקשורת – שפים ישראליים, מתכונים וקולינריה בעברית\n\n📡 מקור השידור: osoyz0xv.ottclub.xyz\n⚠️ ממסר צד שלישי",
-      "genres": [
-        "ערוצי אוכל",
-        "ישראל"
-      ]
-    },
-    {
-      "id": "itv_foody_tv",
-      "type": "tv",
-      "name": "174. ערוץ פודי Foody HD",
-      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/foody_tv.png",
-      "posterShape": "landscape",
-      "description": "ערוץ פודי (Foody) – מיטב השפים, המתכונים ותוכניות הבישול והאפייה מישראל\n\n📡 מקור השידור: osoyz0xv.ottclub.xyz\n⚠️ ממסר צד שלישי",
-      "genres": [
-        "ערוצי אוכל",
-        "ישראל"
-      ]
-    },
-    {
       "id": "itv_keshet_food",
       "type": "tv",
       "name": "175. ערוץ האוכל והבישול – קשת / FreeTV",

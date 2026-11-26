@@ -91,6 +91,10 @@
                 <action android:name="androidx.media3.session.MediaLibraryService" />
                 <action android:name="android.media.browse.MediaBrowserService" />
             </intent-filter>
+            <!-- Android Automotive: show this service in the system media center (browse + play) -->
+            <meta-data
+                android:name="androidx.car.app.launchable"
+                android:value="true" />
         </service>
         <provider
             android:name="androidx.core.content.FileProvider"
