@@ -1,0 +1,148 @@
+{
+  "metas": [
+    {
+      "id": "itv_radios_video",
+      "type": "tv",
+      "name": "207. רדיוס 100FM – אולפן וידאו HD",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/radios_video.png",
+      "posterShape": "landscape",
+      "description": "האולפן של רדיוס 100FM בשידור וידאו חי מהאולפן\n\n📡 מקור השידור: CyberCDN – ה-CDN של תחנות הרדיו עצמן\n✅ שידור רשמי ישיר",
+      "genres": [
+        "מוזיקה",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_sky_folk_tv",
+      "type": "tv",
+      "name": "208. Sky Folk TV HD (סקיי פולק)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/sky_news.png",
+      "posterShape": "landscape",
+      "description": "ערוץ שידורי המוזיקה והתרבות הבינלאומי של סקיי ב-HD\n\n📡 מקור השידור: Sky Folk Live\n✅ שידור רשמי ישיר",
+      "genres": [
+        "מוזיקה",
+        "מקדוניה"
+      ]
+    },
+    {
+      "id": "itv_music_1hd",
+      "type": "tv",
+      "name": "212. 1HD Music Television",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/music_1hd.png",
+      "posterShape": "landscape",
+      "description": "ערוץ מוזיקה בינלאומי באיכות תמונה וסאונד מדהימים\n\n📡 מקור השידור: שרת IP ללא שם (1HD)\n⚠️ ממסר צד שלישי",
+      "genres": [
+        "מוזיקה",
+        "עולם"
+      ]
+    },
+    {
+      "id": "itv_vevo_pop_live_fhd",
+      "type": "tv",
+      "name": "366. Vevo Pop Music Hits FHD",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/vevo_pop_live_fhd.png",
+      "posterShape": "landscape",
+      "description": "קליפים ולהיטי פופ עולמיים מבית Vevo ב-Full HD.\n\n📡 מקור השידור: amg00056-amg00056c6-rakuten-uk-3235.playouts.now.amagi.tv\n⚠️ ממסר צד שלישי",
+      "genres": [
+        "מוזיקה",
+        "עולם"
+      ]
+    },
+    {
+      "id": "itv_keshet_music_il",
+      "type": "tv",
+      "name": "387. ערוץ מוזיקה ישראלית 24/7 HD",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/keshet_music.png",
+      "posterShape": "landscape",
+      "description": "להיטי מוזיקה ישראלית מכל הזמנים, קליפים והופעות חיות 24 שעות ביממה.\n\n📡 מקור השידור: FreeTV – השידור הרשמי (AWS CloudFront)\n✅ שידור רשמי ישיר",
+      "genres": [
+        "מוזיקה",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_mtv_clips_hd",
+      "type": "tv",
+      "name": "397. MTV Hits & Clips HD",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/mtv_hits.png",
+      "posterShape": "landscape",
+      "description": "ערוץ MTV להיטים וקליפים ברצף 24 שעות ביממה.\n\n📡 מקור השידור: ma.anixa.tv\n⚠️ ממסר צד שלישי",
+      "genres": [
+        "מוזיקה",
+        "ארה״ב"
+      ]
+    },
+    {
+      "id": "itv_mtv_biggest_pop",
+      "type": "tv",
+      "name": "584. MTV להיטי פופ (MTV Pop)",
+      "poster": "https://images.pluto.tv/channels/6047fbdbbb776a0007e7f2ff/colorLogoPNG.png",
+      "posterShape": "landscape",
+      "description": "📡 מקור השידור: Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "מוזיקה",
+        "עולם"
+      ]
+    },
+    {
+      "id": "itv_mtv_spankin_new",
+      "type": "tv",
+      "name": "585. MTV שירים חדשים (MTV New)",
+      "poster": "https://images.pluto.tv/channels/6541010f770cf1000866be98/colorLogoPNG.png",
+      "posterShape": "landscape",
+      "description": "📡 מקור השידור: Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "מוזיקה",
+        "עולם"
+      ]
+    },
+    {
+      "id": "itv_now_rock_tv",
+      "type": "tv",
+      "name": "586. ערוץ הרוק (NOW Rock)",
+      "poster": "https://i.imgur.com/GuM4GnX.png",
+      "posterShape": "landscape",
+      "description": "📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "מוזיקה",
+        "עולם"
+      ]
+    },
+    {
+      "id": "itv_clubbing_tv_uk",
+      "type": "tv",
+      "name": "587. מוזיקה אלקטרונית (Clubbing TV)",
+      "poster": "https://i.imgur.com/MyiA92q.png",
+      "posterShape": "landscape",
+      "description": "📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "מוזיקה",
+        "עולם"
+      ]
+    },
+    {
+      "id": "itv_stingray_movie_music",
+      "type": "tv",
+      "name": "588. פסקולים מסרטים (Movie Music)",
+      "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2CSpCdAxnLpqebMLZh6h7vMPk6LYpdqkVHA&s",
+      "posterShape": "landscape",
+      "description": "📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "מוזיקה",
+        "עולם"
+      ]
+    },
+    {
+      "id": "itv_classica_music",
+      "type": "tv",
+      "name": "589. מוזיקה קלאסית (Classica)",
+      "poster": "https://i.imgur.com/bLjmQTU.png",
+      "posterShape": "landscape",
+      "description": "📡 מקור השידור: Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "מוזיקה",
+        "עולם"
+      ]
+    }
+  ]
+}

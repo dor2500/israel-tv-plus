@@ -91,7 +91,11 @@ window.ITVGuide = function (api) {
     return d.toDateString() === today.toDateString() ? 'היום' : 'יום ' + DAYS[d.getDay()];
   }
   function logo(ch) {
-    return '<img class="tv-logo" alt="" src="' + esc(api.logoUrl(ch)) + '" onerror="this.style.visibility=\'hidden\'">';
+    if (!ch) return '';
+    var rel = (ch.logo || '').replace(/^\/+/, '');
+    var local = (window.ITV_BASE || '') + rel;
+    var remote = 'https://dor2500.github.io/israel-tv-plus/' + rel;
+    return '<img class="tv-logo" alt="" src="' + esc(local) + '" onerror="if(this.src!=\'' + esc(remote) + '\'){this.src=\'' + esc(remote) + '\';}else{this.style.visibility=\'hidden\';}">';
   }
   // A programme's own picture when the feed has one, otherwise the channel logo on a dark card.
   function poster(ch, p) {
@@ -251,7 +255,10 @@ window.ITVGuide = function (api) {
     if (osd.zone === 'strip') { var c = osd.browse; resetOsd(); if (c && c.id !== api.state.playing.id) api.play(c); else renderOsd(); return; }
     var p = progs(ch)[airingIndex(ch) + osd.offset];
     if (osd.offset < 0 && p && canCatchup(ch, p)) { var cs = startOf(p), ce = endOf(p); resetOsd(); api.playCatchup(ch, cs, ce); return; }
-    if (osd.offset > 0 && p) api.toast(p[2] + ' · ' + dayLabel(startOf(p)) + ' ב-' + clock(startOf(p)));
+    if (osd.offset > 0 && p) {
+      if (api.toggleReminder) { api.toggleReminder(ch, p); renderOsd(); }
+      else api.toast(p[2] + ' · ' + dayLabel(startOf(p)) + ' ב-' + clock(startOf(p)));
+    }
     else if (osd.offset === 0) api.hideOsd();
   }
   // Returns true when the key was used here; app.js handles the rest (zapping with the OSD closed).
@@ -300,15 +307,35 @@ window.ITVGuide = function (api) {
     box.id = 'tvguide';
     box.className = 'hidden';
     box.innerHTML =
-      '<div id="tvg-head"><div id="tvg-title"><b>לוח שידורים</b><span id="tvg-day"></span></div><div id="tvg-ruler"></div></div>' +
+      '<div id="tvg-head">' +
+        '<div id="tvg-title"><b>לוח שידורים</b><span id="tvg-day"></span>' +
+          '<div id="tvg-tools">' +
+            '<input id="tvg-search" type="search" autocomplete="off" spellcheck="false" placeholder="חיפוש ערוץ או תוכנית...">' +
+            '<button type="button" class="tvg-slot" data-slot="now">עכשיו</button>' +
+            '<button type="button" class="tvg-slot" data-slot="prime">21:00</button>' +
+            '<button type="button" class="tvg-slot" data-slot="tomorrow">מחר</button>' +
+          '</div>' +
+        '</div>' +
+        '<div id="tvg-ruler"></div>' +
+      '</div>' +
       '<div id="tvg-body"><div id="tvg-rail"></div><div id="tvg-grid"></div></div>' +
       '<div id="tvg-empty" class="hidden">טוען את לוח השידורים…</div>' +
       '<div id="tvg-detail"><div id="tvg-thumb"></div><div id="tvg-txt"><div id="tvg-name" class="tv-clip"></div><div id="tvg-time"></div><div id="tvg-desc"></div><div id="tvg-cta"></div></div></div>' +
       '<div class="tv-brand"><div class="tv-clock"></div></div>';
     document.getElementById('root').appendChild(box);
     gui.box = box;
-    ['ruler', 'rail', 'grid', 'empty', 'detail', 'thumb', 'name', 'time', 'desc', 'cta', 'day'].forEach(function (k) { gui[k] = document.getElementById('tvg-' + k); });
+    ['ruler', 'rail', 'grid', 'empty', 'detail', 'thumb', 'name', 'time', 'desc', 'cta', 'day', 'search'].forEach(function (k) { gui[k] = document.getElementById('tvg-' + k); });
+    if (gui.search) {
+      gui.search.addEventListener('input', function () { filterGuide(gui.search.value); });
+      gui.search.addEventListener('keydown', function (e) {
+        var kc = e.keyCode || e.which;
+        if (kc === 40 || kc === 13) { e.preventDefault(); gui.search.blur(); renderGuide(); }
+        else if (api.isBack(kc) && kc !== 8) { e.preventDefault(); gui.search.blur(); if (gui.search.value) { gui.search.value = ''; filterGuide(''); } }
+      });
+    }
     box.addEventListener('click', function (e) {
+      var sl = e.target.closest('[data-slot]');
+      if (sl) { jumpSlot(sl.getAttribute('data-slot')); return; }
       var h = e.target.closest('[data-heart]'), c = e.target.closest('[data-p]');
       if (h) { api.toggleFav(chById(h.getAttribute('data-heart'))); renderGuide(); }
       else if (c) { pick(c); activate(); }
@@ -336,8 +363,63 @@ window.ITVGuide = function (api) {
     for (var i = first; i < list.length; i++) if (m < endOf(list[i])) return i;
     return list.length - 1;
   }
+  function filterGuide(raw) {
+    var q = String(raw || '').trim().toLowerCase(), s = api.state, m = now();
+    var all = s.all.filter(function (c) { return airingIndex(c) !== -1 && api.playable(c); });
+    all.sort(function (a, b) { return a.number - b.number; });
+    if (!q) {
+      g.rows = all;
+      g.row = 0; g.top = 0; g.anchor = m; g.win = floor30(m);
+      if (g.rows.length) g.i = indexAt(g.rows[0], m);
+      renderGuide();
+      return;
+    }
+    var matched = [], firstHit = null;
+    for (var i = 0; i < all.length; i++) {
+      var c = all[i];
+      var chMatch = (c.name || '').toLowerCase().indexOf(q) !== -1 || String(c.number) === q;
+      var pl = progs(c), hitIdx = -1;
+      for (var j = Math.max(0, firstIndex(c)); j < pl.length; j++) {
+        if ((pl[j][2] || '').toLowerCase().indexOf(q) !== -1 || (pl[j][3] || '').toLowerCase().indexOf(q) !== -1) {
+          hitIdx = j; break;
+        }
+      }
+      if (chMatch || hitIdx !== -1) {
+        if (!firstHit) firstHit = { r: matched.length, i: hitIdx !== -1 ? hitIdx : indexAt(c, m) };
+        matched.push(c);
+      }
+    }
+    g.rows = matched;
+    g.row = firstHit ? firstHit.r : 0;
+    g.top = 0;
+    if (g.rows.length) {
+      g.i = firstHit ? firstHit.i : indexAt(g.rows[0], m);
+      var p = progs(g.rows[g.row])[g.i];
+      g.anchor = p ? Math.max(startOf(p), m) : m;
+      g.win = p ? floor30(startOf(p)) : floor30(m);
+    }
+    renderGuide();
+  }
+  function jumpSlot(slot) {
+    if (!g.rows.length) return;
+    var m = now(), d = new Date(m * 60000), target = m;
+    if (slot === 'prime') {
+      d.setHours(21, 0, 0, 0);
+      target = d.getTime() / 60000;
+      if (target < m - 30) target += 1440;
+    } else if (slot === 'tomorrow') {
+      d.setDate(d.getDate() + 1);
+      d.setHours(8, 0, 0, 0);
+      target = d.getTime() / 60000;
+    }
+    g.anchor = target;
+    g.win = floor30(target);
+    g.i = indexAt(g.rows[g.row], target);
+    renderGuide();
+  }
   function openGuide() {
     var s = api.state, m = now();
+    if (gui.search) gui.search.value = '';
     g.rows = s.all.filter(function (c) { return airingIndex(c) !== -1 && api.playable(c); });
     g.rows.sort(function (a, b) { return a.number - b.number; });
     g.row = 0;
@@ -398,19 +480,21 @@ window.ITVGuide = function (api) {
         var q = pl[i], s = startOf(q), e = endOf(q);
         if (e <= a || s >= b) continue;
         var vs = Math.max(s, a), w = (Math.min(e, b) - vs) * SCALE;
-        var cls = (e <= m ? (canCatchup(c, q) ? ' cu' : ' past') : '') + (s <= m && m < e ? ' air' : '') + (g.zone === 'grid' && r === g.row && i === g.i ? ' focus' : '');
-        rows += '<div class="tv-p' + cls + '" data-p="' + r + ':' + i + '" style="top:' + rowTop + 'rem;right:' + x(vs) + 'rem;width:' + w + 'rem"><span class="tv-ttl">' + (w < 3.5 ? '' : esc(q[2])) + '</span></div>';
+        var hasRem = api.hasReminder && api.hasReminder(c, q);
+        var cls = (e <= m ? (canCatchup(c, q) ? ' cu' : ' past') : '') + (s <= m && m < e ? ' air' : '') + (hasRem ? ' rem' : '') + (g.zone === 'grid' && r === g.row && i === g.i ? ' focus' : '');
+        rows += '<div class="tv-p' + cls + '" data-p="' + r + ':' + i + '" style="top:' + rowTop + 'rem;right:' + x(vs) + 'rem;width:' + w + 'rem"><span class="tv-ttl">' + (w < 3.5 ? '' : (hasRem ? '🔔 ' : '') + esc(q[2])) + '</span></div>';
       }
     }
     gui.rail.innerHTML = rail;
     gui.grid.innerHTML = rows + (nowIn ? '<div class="tv-nowline" style="right:' + x(m) + 'rem"></div>' : '');
 
-    var airing = startOf(p) <= m && m < endOf(p), d = new Date(startOf(p) * 60000);
+    var airing = startOf(p) <= m && m < endOf(p), future = startOf(p) > m, d = new Date(startOf(p) * 60000);
+    var pRem = future && api.hasReminder && api.hasReminder(ch, p);
     gui.thumb.innerHTML = poster(ch, p);
     gui.name.textContent = p[2];
     gui.time.innerHTML = esc(ch.name) + ' · ' + d.getDate() + ' ' + MONTHS[d.getMonth()] + ' · ' + range(p);
     gui.desc.textContent = p[3];
-    gui.cta.textContent = g.zone === 'rail' ? (api.isFav(ch) ? 'OK להסרה מהמועדפים' : 'OK להוספה למועדפים') : airing ? 'OK לצפייה עכשיו' : canCatchup(ch, p) ? 'OK לצפייה חוזרת' : '';
+    gui.cta.textContent = g.zone === 'rail' ? (api.isFav(ch) ? 'OK להסרה מהמועדפים' : 'OK להוספה למועדפים') : airing ? 'OK לצפייה עכשיו' : canCatchup(ch, p) ? 'OK לצפייה חוזרת' : future ? (pRem ? '🔔 תזכורת פעילה · OK לביטול' : '🔔 OK לתזכורת לפני תחילת התכנית') : '';
   }
   function activate() {
     var ch = g.rows[g.row], p = progs(ch)[g.i];
@@ -425,10 +509,13 @@ window.ITVGuide = function (api) {
         return;
       }
       closeGuide(); resetOsd(); api.play(ch);
-    }
-    else api.toast(p[2] + ' · ' + dayLabel(startOf(p)) + ' ב-' + clock(startOf(p)));
+    } else if (startOf(p) > m && api.toggleReminder) {
+      api.toggleReminder(ch, p);
+      renderGuide();
+    } else api.toast(p[2] + ' · ' + dayLabel(startOf(p)) + ' ב-' + clock(startOf(p)));
   }
   function guideKey(code) {
+    if (code === 191 && gui.search) { gui.search.focus(); return; }
     if (api.isBack(code)) { closeGuide(); return; }
     if (!g.rows.length) return;
     var ch = g.rows[g.row], list = progs(ch);
@@ -483,7 +570,7 @@ window.ITVGuide = function (api) {
     open: openGuide,
     key: guideKey,
     page: page,
-    airing: function (ch) { var list = shows(ch), i = airingIndex(ch); return i >= 0 ? list[i] : null; },
+    airing: function (ch) { var list = progs(ch), i = airingIndex(ch); return i >= 0 ? list[i] : null; },
     range: range
   };
 };

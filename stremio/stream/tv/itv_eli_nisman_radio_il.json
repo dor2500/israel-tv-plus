@@ -1,0 +1,12 @@
+{
+  "streams": [
+    {
+      "name": "ישראל TV+\n[FHD ראשי]",
+      "title": "רדיו אלי ניסמן ישראל (Eli Nisman)\n📡 listen6.myradio24.com\n⚠️ ממסר צד שלישי",
+      "url": "https://listen6.myradio24.com/25715",
+      "behaviorHints": {
+        "bingeGroup": "itv-live"
+      }
+    }
+  ]
+}

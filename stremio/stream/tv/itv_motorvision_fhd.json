@@ -1,0 +1,12 @@
+{
+  "streams": [
+    {
+      "name": "ישראל TV+\n[FHD ראשי]",
+      "title": "עולם הרכב והמרוצים (Motorvision FHD)\n📡 FAST Public CDN\n✅ ערוץ FAST רשמי",
+      "url": "https://mvg-mv.otteravision.com/mvg/mv/mv_1080p.m3u8",
+      "behaviorHints": {
+        "bingeGroup": "itv-live"
+      }
+    }
+  ]
+}

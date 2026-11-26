@@ -1,0 +1,12 @@
+{
+  "streams": [
+    {
+      "name": "ישראל TV+\n[FHD ראשי]",
+      "title": "MTV שירים חדשים (MTV New)\n📡 Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk\n✅ ערוץ FAST רשמי",
+      "url": "https://jmp2.uk/plu-5d14fdb8ca91eedee1633117.m3u8",
+      "behaviorHints": {
+        "bingeGroup": "itv-live"
+      }
+    }
+  ]
+}

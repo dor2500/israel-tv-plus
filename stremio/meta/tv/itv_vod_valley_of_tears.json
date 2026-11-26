@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_vod_valley_of_tears",
+    "type": "tv",
+    "name": "510. שעת נעילה FHD (VOD)",
+    "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/vod_valley_of_tears.jpg",
+    "posterShape": "landscape",
+    "logo": "https://dor2500.github.io/israel-tv-plus/assets/logos/vod_valley_of_tears.jpg",
+    "background": "https://dor2500.github.io/israel-tv-plus/assets/logos/vod_valley_of_tears.jpg",
+    "description": "סדרת המלחמה העוצמתית והגדולה בתולדות הטלוויזיה הישראלית, על לוחמי חרמון ורמת הגולן במלחמת יום הכיפורים.\n\n📡 מקור השידור: Redge – ה-CDN הרשמי של כאן, ערוץ 14 וכלכלה 10\n✅ שידור רשמי ישיר",
+    "genres": [
+      "סדרות לצפייה ישירה",
+      "ישראל"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "ישראל"
+  }
+}

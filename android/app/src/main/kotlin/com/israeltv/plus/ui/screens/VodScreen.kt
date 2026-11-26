@@ -1,8 +1,15 @@
 package com.israeltv.plus.ui.screens
 
+import android.content.Intent
+import android.net.Uri
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.material.icons.automirrored.rounded.OpenInNew
+import androidx.compose.ui.platform.LocalContext
+import com.israeltv.plus.data.ISRAELI_VOD_PORTALS
+import com.israeltv.plus.data.VOD_PORTAL_CATEGORIES
+import com.israeltv.plus.data.VodPortal
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -96,12 +103,21 @@ fun VodScreen(
 ) {
     val seriesList = data?.vod.orEmpty()
     var selectedGenre by remember { mutableStateOf("הכל") }
+    var selectedPortalCat by remember { mutableStateOf("הכל") }
     var inspectingSeries by remember { mutableStateOf<VodSeries?>(null) }
     val haptic = LocalHapticFeedback.current
+    val ctx = LocalContext.current
 
     val filteredList = remember(seriesList, selectedGenre) {
         if (selectedGenre == "הכל") seriesList
         else seriesList.filter { s -> s.genres.any { it.contains(selectedGenre, ignoreCase = true) } }
+    }
+    val filteredPortals = remember(selectedPortalCat) {
+        when (selectedPortalCat) {
+            "הכל" -> ISRAELI_VOD_PORTALS
+            "חינם" -> ISRAELI_VOD_PORTALS.filter { it.isFree }
+            else -> ISRAELI_VOD_PORTALS.filter { it.category == selectedPortalCat }
+        }
     }
 
     val hero = remember(seriesList) { seriesList.firstOrNull() }
@@ -183,6 +199,61 @@ fun VodScreen(
                     modifier = Modifier.fillMaxWidth()
                 )
             }
+
+            // All Israeli & International VOD Services Hub
+            item(span = { GridItemSpan(maxLineSpan) }, key = "vod_portals_title") {
+                Column(Modifier.padding(top = 14.dp)) {
+                    SectionHeader("פלטפורמות ושירותי VOD", count = filteredPortals.size)
+                    LazyRow(
+                        modifier = Modifier.fillMaxWidth().padding(bottom = 6.dp),
+                        horizontalArrangement = Arrangement.spacedBy(8.dp),
+                        contentPadding = PaddingValues(horizontal = 4.dp)
+                    ) {
+                        items(VOD_PORTAL_CATEGORIES) { cat ->
+                            val isSelected = cat == selectedPortalCat
+                            Box(
+                                modifier = Modifier
+                                    .clip(RoundedCornerShape(20.dp))
+                                    .background(
+                                        if (isSelected) MaterialTheme.colorScheme.primary
+                                        else MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f)
+                                    )
+                                    .border(
+                                        1.dp,
+                                        if (isSelected) MaterialTheme.colorScheme.primary
+                                        else Color.White.copy(alpha = 0.12f),
+                                        RoundedCornerShape(20.dp)
+                                    )
+                                    .clickable {
+                                        haptic.performHapticFeedback(HapticFeedbackType.SegmentTick)
+                                        selectedPortalCat = cat
+                                    }
+                                    .padding(horizontal = 14.dp, vertical = 7.dp)
+                            ) {
+                                Text(
+                                    cat,
+                                    style = Rtl,
+                                    color = if (isSelected) MaterialTheme.colorScheme.onPrimary else MaterialTheme.colorScheme.onSurface,
+                                    fontSize = 12.5.sp,
+                                    fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Medium
+                                )
+                            }
+                        }
+                    }
+                }
+            }
+
+            items(filteredPortals, key = { it.id }) { portal ->
+                VodPortalCard(
+                    portal = portal,
+                    onClick = {
+                        haptic.performHapticFeedback(HapticFeedbackType.Confirm)
+                        runCatching {
+                            ctx.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(portal.url)))
+                        }
+                    },
+                )
+            }
         }
 
         // Details Bottom Sheet
@@ -198,6 +269,74 @@ fun VodScreen(
                 onDismiss = { inspectingSeries = null }
             )
         }
+    }
+}
+
+@Composable
+private fun VodPortalCard(
+    portal: VodPortal,
+    onClick: () -> Unit,
+) {
+    val scheme = MaterialTheme.colorScheme
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(16.dp))
+            .background(Color.White.copy(alpha = 0.06f))
+            .border(1.dp, Color.White.copy(alpha = 0.13f), RoundedCornerShape(16.dp))
+            .clickable(onClick = onClick)
+            .padding(12.dp),
+        verticalArrangement = Arrangement.spacedBy(6.dp),
+    ) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Box(
+                modifier = Modifier
+                    .clip(RoundedCornerShape(8.dp))
+                    .background(if (portal.isFree) Color(0xFF10B981).copy(alpha = 0.22f) else scheme.primary.copy(alpha = 0.22f))
+                    .border(
+                        0.75.dp,
+                        if (portal.isFree) Color(0xFF34D399).copy(alpha = 0.55f) else scheme.primary.copy(alpha = 0.5f),
+                        RoundedCornerShape(8.dp)
+                    )
+                    .padding(horizontal = 7.dp, vertical = 2.dp)
+            ) {
+                Text(
+                    portal.badge,
+                    color = if (portal.isFree) Color(0xFF6EE7B7) else Color.White,
+                    fontSize = 10.sp,
+                    fontWeight = FontWeight.Bold,
+                    maxLines = 1,
+                )
+            }
+            Icon(
+                Icons.AutoMirrored.Rounded.OpenInNew,
+                contentDescription = "פתח",
+                tint = Color.White.copy(alpha = 0.65f),
+                modifier = Modifier.size(16.dp),
+            )
+        }
+        Text(
+            portal.name,
+            style = Rtl,
+            color = Color.White,
+            fontSize = 14.sp,
+            fontWeight = FontWeight.Bold,
+            maxLines = 2,
+            overflow = TextOverflow.Ellipsis,
+        )
+        Text(
+            portal.desc,
+            style = Rtl,
+            color = Color.White.copy(alpha = 0.68f),
+            fontSize = 11.5.sp,
+            lineHeight = 15.sp,
+            maxLines = 3,
+            overflow = TextOverflow.Ellipsis,
+        )
     }
 }
 

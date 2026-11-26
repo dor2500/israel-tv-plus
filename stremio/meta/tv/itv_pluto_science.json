@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_pluto_science",
+    "type": "tv",
+    "name": "567. ערוץ המדע (Pluto Science)",
+    "poster": "https://i.imgur.com/uhunRoU.png",
+    "posterShape": "landscape",
+    "logo": "https://i.imgur.com/uhunRoU.png",
+    "background": "https://i.imgur.com/uhunRoU.png",
+    "description": "📡 מקור השידור: Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk\n✅ ערוץ FAST רשמי",
+    "genres": [
+      "טבע ודוקו",
+      "עולם"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "עולם"
+  }
+}

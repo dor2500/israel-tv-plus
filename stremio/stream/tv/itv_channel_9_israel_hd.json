@@ -2,7 +2,7 @@
   "streams": [
     {
       "name": "ישראל TV+\n[FHD ראשי]",
-      "title": "ערוץ 9 ישראל HD\n📡 \n",
+      "title": "ערוץ 9 ישראל HD\n📡 GoStreaming – ספק השידור של ערוץ 9\n✅ שידור רשמי ישיר",
       "url": "https://contact.gostreaming.tv/Con-11/index.m3u8",
       "behaviorHints": {
         "bingeGroup": "itv-live"

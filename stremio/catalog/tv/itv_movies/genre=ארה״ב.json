@@ -1,0 +1,40 @@
+{
+  "metas": [
+    {
+      "id": "itv_csi_las_vegas_247",
+      "type": "tv",
+      "name": "609. זירת הפשע 24/7 (CSI)",
+      "poster": "https://i.imgur.com/xLLNEfA.png",
+      "posterShape": "landscape",
+      "description": "זירת הפשע 24/7 (CSI) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "סרטים וסדרות",
+        "ארה״ב"
+      ]
+    },
+    {
+      "id": "itv_csi_miami_247",
+      "type": "tv",
+      "name": "610. זירת הפשע מיאמי (CSI: Miami)",
+      "poster": "https://images.pluto.tv/channels/63eb9c5351f5d000085e8d7e/colorLogoPNG.png",
+      "posterShape": "landscape",
+      "description": "זירת הפשע מיאמי (CSI: Miami) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "סרטים וסדרות",
+        "ארה״ב"
+      ]
+    },
+    {
+      "id": "itv_csi_ny_247",
+      "type": "tv",
+      "name": "611. זירת הפשע ניו יורק (CSI: NY)",
+      "poster": "https://images.pluto.tv/channels/62f54c6439183b000769fb8f/colorLogoPNG_1731837277521.png",
+      "posterShape": "landscape",
+      "description": "זירת הפשע ניו יורק (CSI: NY) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "סרטים וסדרות",
+        "ארה״ב"
+      ]
+    }
+  ]
+}

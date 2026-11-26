@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_nature_time_hd",
+    "type": "tv",
+    "name": "547. NatureTime HD (עולם הטבע)",
+    "poster": "https://dor2500.github.io/israel-tv-plus/icon.png",
+    "posterShape": "landscape",
+    "logo": "https://dor2500.github.io/israel-tv-plus/icon.png",
+    "background": "https://dor2500.github.io/israel-tv-plus/icon.png",
+    "description": "ערוץ טבע ובעלי חיים מבית Rakuten באיכות Full HD 24/7\n\n📡 מקור השידור: FAST Official\n✅ ערוץ FAST רשמי",
+    "genres": [
+      "טבע ודוקו",
+      "ארצות הברית"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "ארצות הברית"
+  }
+}

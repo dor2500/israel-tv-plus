@@ -1,0 +1,160 @@
+{
+  "metas": [
+    {
+      "id": "itv_kotel_live_il",
+      "type": "tv",
+      "name": "90. הכותל המערבי – שידור חי 24/7 HD",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/kotel_live_il.png",
+      "posterShape": "landscape",
+      "description": "מצלמות הכותל המערבי בירושלים – שידור ישיר באיכות Full HD 24/7 מסביב לשעון\n\n📡 מקור השידור: cdn1.cast-tv.com\n⚠️ ממסר צד שלישי",
+      "genres": [
+        "מסורת וקהילה",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_hidabroot",
+      "type": "tv",
+      "name": "213. ערוץ הידברות 97 HD",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/hidabroot.png",
+      "posterShape": "landscape",
+      "description": "ערוץ הידברות (אפיק 97) – הרצאות, שיעורי תורה, תוכניות משפחה, מדע ויהדות\n\n📡 מקור השידור: CyberCDN – ה-CDN של תחנות הרדיו עצמן\n✅ שידור רשמי ישיר",
+      "genres": [
+        "מסורת וקהילה",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_kabbalah_heb",
+      "type": "tv",
+      "name": "214. ערוץ קבלה לעם 66 HD",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/kabbalah.png",
+      "posterShape": "landscape",
+      "description": "ערוץ קבלה לעם (אפיק 66) – שיעורים יומיים, תוכניות העשרה, חברה ורוחניות בעברית\n\n📡 מקור השידור: edge1.il.kab.tv\n⚠️ ממסר צד שלישי",
+      "genres": [
+        "מסורת וקהילה",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_kabbalah_tv_fr_il",
+      "type": "tv",
+      "name": "215. קבלה לעם – צרפתית HD",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/kabbalah_tv_fr_il.png",
+      "posterShape": "landscape",
+      "description": "ערוץ קבלה לעם (ערוץ 66) בצרפתית בשידור חי מישראל\n\n📡 מקור השידור: edge1.il.kab.tv\n⚠️ ממסר צד שלישי",
+      "genres": [
+        "מסורת וקהילה",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_kabbalah_tv_de_il",
+      "type": "tv",
+      "name": "216. קבלה לעם – גרמנית HD",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/kabbalah_tv_de_il.png",
+      "posterShape": "landscape",
+      "description": "ערוץ קבלה לעם (ערוץ 66) בגרמנית בשידור חי מישראל\n\n📡 מקור השידור: edge1.il.kab.tv\n⚠️ ממסר צד שלישי",
+      "genres": [
+        "מסורת וקהילה",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_kabbalah_tv_it_il",
+      "type": "tv",
+      "name": "217. קבלה לעם – איטלקית HD",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/kabbalah_tv_it_il.png",
+      "posterShape": "landscape",
+      "description": "ערוץ קבלה לעם (ערוץ 66) באיטלקית בשידור חי מישראל\n\n📡 מקור השידור: edge1.il.kab.tv\n⚠️ ממסר צד שלישי",
+      "genres": [
+        "מסורת וקהילה",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_jaitv_il",
+      "type": "tv",
+      "name": "218. Jai TV – טלוויזיה יהודית וישראלית",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/jaitv_il.png",
+      "posterShape": "landscape",
+      "description": "ערוץ הטלוויזיה והרדיו היהודי-ישראלי Radio Jai TV בשידור חי\n\n📡 מקור השידור: vivo.solumedia.com\n⚠️ ממסר צד שלישי",
+      "genres": [
+        "מסורת וקהילה",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_breslev_halachot",
+      "type": "tv",
+      "name": "219. ברסלב: הלכות ודף יומי",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/breslev_halachot.png",
+      "posterShape": "landscape",
+      "description": "הלכה יומית ודף יומי\n\n📡 מקור השידור: רדיו ברסלב – שרת התחנה\n✅ שידור רשמי ישיר",
+      "genres": [
+        "מסורת וקהילה",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_breslev_books",
+      "type": "tv",
+      "name": "220. ברסלב: ספרי ברסלב",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/breslev_books.png",
+      "posterShape": "landscape",
+      "description": "קריאה בספרי ברסלב\n\n📡 מקור השידור: רדיו ברסלב – שרת התחנה\n✅ שידור רשמי ישיר",
+      "genres": [
+        "מסורת וקהילה",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_breslev_shorts",
+      "type": "tv",
+      "name": "221. ברסלב: קצר וקולע",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/breslev_shorts.png",
+      "posterShape": "landscape",
+      "description": "שיעורים קצרים\n\n📡 מקור השידור: רדיו ברסלב – שרת התחנה\n✅ שידור רשמי ישיר",
+      "genres": [
+        "מסורת וקהילה",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_breslev_torah",
+      "type": "tv",
+      "name": "222. ברסלב: תורה וזימרה",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/breslev_torah.png",
+      "posterShape": "landscape",
+      "description": "שיעורים ונגינה חסידית\n\n📡 מקור השידור: רדיו ברסלב – שרת התחנה\n✅ שידור רשמי ישיר",
+      "genres": [
+        "מסורת וקהילה",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_kabbalah_tv_rus",
+      "type": "tv",
+      "name": "527. ערוץ קבלה לעם ברוסית HD",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/kabbalah_tv_ru_il.png",
+      "posterShape": "landscape",
+      "description": "שידורי ערוץ קבלה לעם מישראל בשפה הרוסית – שיעורים, ראיונות ושידורים חיים\n\n📡 מקור השידור: קבלה לעם – שרת רשמי\n✅ שידור רשמי ישיר",
+      "genres": [
+        "מסורת וקהילה",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_kabbalah_66_hd",
+      "type": "tv",
+      "name": "635. קבלה לעם (ערוץ 66) HD",
+      "poster": "https://dor2500.github.io/israel-tv-plus/icon.png",
+      "posterShape": "landscape",
+      "description": "ערוץ קבלה לעם בעברית (ערוץ 66) בשידור חי 24/7.\n\n📡 מקור השידור: Official Israeli CDN\n✅ שידור רשמי ישיר",
+      "genres": [
+        "מסורת וקהילה",
+        "ישראל"
+      ]
+    }
+  ]
+}

@@ -1,8 +1,8 @@
 {
   "id": "org.israeltvplus.addon",
-  "version": "4.8.2",
+  "version": "4.8.95",
   "name": "ישראל TV+ Live",
-  "description": "390+ ערוצי טלוויזיה ישראליים ובינלאומיים בשידור חי, תחנות רדיו, שרתי גיבוי ומספור שלט נוח.",
+  "description": "489 ערוצי טלוויזיה ישראליים ובינלאומיים בשידור חי, תחנות רדיו, שרתי גיבוי ומספור שלט נוח.",
   "logo": "https://dor2500.github.io/israel-tv-plus/assets/app/icon-512.png",
   "background": "https://dor2500.github.io/israel-tv-plus/splash.png",
   "types": [
@@ -25,86 +25,197 @@
     },
     {
       "type": "tv",
-      "id": "itv_israel",
-      "name": "ערוצי ישראל - שידור חי",
+      "id": "itv_kids_he",
+      "name": "ילדים ונוער",
       "extra": []
     },
     {
       "type": "tv",
       "id": "itv_israel",
-      "name": "ערוצי ישראל - שידור חי",
+      "name": "רדיו ישראלי",
       "extra": []
     },
     {
       "type": "tv",
-      "id": "itv_israel",
-      "name": "ערוצי ישראל - שידור חי",
+      "id": "itv_heritage",
+      "name": "מסורת וקהילה",
       "extra": []
     },
     {
       "type": "tv",
-      "id": "itv_israel",
-      "name": "ערוצי ישראל - שידור חי",
+      "id": "itv_sports",
+      "name": "ספורט",
+      "extra": [
+        {
+          "name": "genre",
+          "options": [
+            "אוסטרליה",
+            "ארה״ב",
+            "בינלאומי",
+            "בריטניה",
+            "גרמניה",
+            "ישראל",
+            "עולם"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "tv",
+      "id": "itv_news",
+      "name": "חדשות מהעולם",
+      "extra": [
+        {
+          "name": "genre",
+          "options": [
+            "אוסטרליה",
+            "ארה״ב",
+            "בריטניה",
+            "יפן",
+            "ישראל",
+            "עולם",
+            "קטאר"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "tv",
+      "id": "itv_business",
+      "name": "כלכלה ועסקים",
+      "extra": [
+        {
+          "name": "genre",
+          "options": [
+            "ארה״ב",
+            "בריטניה",
+            "סין"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "tv",
+      "id": "itv_movies",
+      "name": "סרטים וסדרות",
+      "extra": [
+        {
+          "name": "genre",
+          "options": [
+            "ארה״ב",
+            "ארצות הברית",
+            "בריטניה",
+            "ישראל",
+            "עולם"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "tv",
+      "id": "itv_comedy",
+      "name": "קומדיה",
       "extra": []
     },
     {
       "type": "tv",
-      "id": "itv_israel",
-      "name": "ערוצי ישראל - שידור חי",
-      "extra": []
+      "id": "itv_food",
+      "name": "ערוצי אוכל",
+      "extra": [
+        {
+          "name": "genre",
+          "options": [
+            "ארה״ב",
+            "בריטניה",
+            "דרום קוריאה",
+            "ישראל",
+            "עולם"
+          ]
+        }
+      ]
     },
     {
       "type": "tv",
-      "id": "itv_israel",
-      "name": "ערוצי ישראל - שידור חי",
-      "extra": []
+      "id": "itv_kids",
+      "name": "ילדים מהעולם",
+      "extra": [
+        {
+          "name": "genre",
+          "options": [
+            "ארה״ב",
+            "ארצות הברית",
+            "בריטניה",
+            "יפן",
+            "עולם"
+          ]
+        }
+      ]
     },
     {
       "type": "tv",
-      "id": "itv_israel",
-      "name": "ערוצי ישראל - שידור חי",
-      "extra": []
+      "id": "itv_docu",
+      "name": "טבע ודוקו",
+      "extra": [
+        {
+          "name": "genre",
+          "options": [
+            "ארצות הברית",
+            "ישראל",
+            "עולם"
+          ]
+        }
+      ]
     },
     {
       "type": "tv",
-      "id": "itv_israel",
-      "name": "ערוצי ישראל - שידור חי",
-      "extra": []
+      "id": "itv_travel",
+      "name": "טיולים והרפתקאות",
+      "extra": [
+        {
+          "name": "genre",
+          "options": [
+            "ארה״ב",
+            "בריטניה"
+          ]
+        }
+      ]
     },
     {
       "type": "tv",
-      "id": "itv_israel",
-      "name": "ערוצי ישראל - שידור חי",
-      "extra": []
+      "id": "itv_music",
+      "name": "מוזיקה",
+      "extra": [
+        {
+          "name": "genre",
+          "options": [
+            "ארה״ב",
+            "ישראל",
+            "מקדוניה",
+            "עולם"
+          ]
+        }
+      ]
     },
     {
       "type": "tv",
-      "id": "itv_israel",
-      "name": "ערוצי ישראל - שידור חי",
-      "extra": []
+      "id": "itv_lifestyle",
+      "name": "לייף סטייל ובידור",
+      "extra": [
+        {
+          "name": "genre",
+          "options": [
+            "ארה״ב",
+            "בריטניה",
+            "גרמניה",
+            "צרפת"
+          ]
+        }
+      ]
     },
     {
       "type": "tv",
-      "id": "itv_israel",
-      "name": "ערוצי ישראל - שידור חי",
-      "extra": []
-    },
-    {
-      "type": "tv",
-      "id": "itv_israel",
-      "name": "ערוצי ישראל - שידור חי",
-      "extra": []
-    },
-    {
-      "type": "tv",
-      "id": "itv_israel",
-      "name": "ערוצי ישראל - שידור חי",
-      "extra": []
-    },
-    {
-      "type": "tv",
-      "id": "itv_israel",
-      "name": "ערוצי ישראל - שידור חי",
+      "id": "itv_vod",
+      "name": "סדרות לצפייה ישירה",
       "extra": []
     }
   ]

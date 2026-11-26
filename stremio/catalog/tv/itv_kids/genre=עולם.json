@@ -1,0 +1,76 @@
+{
+  "metas": [
+    {
+      "id": "itv_babyshark_tv",
+      "type": "tv",
+      "name": "352. Baby Shark TV (בייבי שארק לילדים)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/babyshark_tv_hd.png",
+      "posterShape": "landscape",
+      "description": "ערוץ שידורי בייבי שארק הרשמי 24/7 – שירים, ריקודים והרפתקאות לפעוטות וילדים\n\n📡 מקור השידור: Baby Shark TV – Wurl (Roku FAST)\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "ילדים מהעולם",
+        "עולם"
+      ]
+    },
+    {
+      "id": "itv_babytv_global_hd",
+      "type": "tv",
+      "name": "353. ערוץ בייבי BabyTV Global HD",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/babytv_global_hd.png",
+      "posterShape": "landscape",
+      "description": "ערוץ בייבי הבינלאומי המוביל בעולם לפעוטות ולגיל הרך בשידור חי רצוף\n\n📡 מקור השידור: BabyFirst – JW Player FAST\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "ילדים מהעולם",
+        "עולם"
+      ]
+    },
+    {
+      "id": "itv_zoomoo_kids_hd",
+      "type": "tv",
+      "name": "354. ערוץ זו-מו לילדים (ZooMoo HD)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/zoomoo_kids_hd.png",
+      "posterShape": "landscape",
+      "description": "ערוץ הטבע, בעלי החיים והאנימציה החינוכית המוביל לילדים\n\n📡 מקור השידור: amagi.tv\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "ילדים מהעולם",
+        "עולם"
+      ]
+    },
+    {
+      "id": "itv_ducktv_plus_hd",
+      "type": "tv",
+      "name": "361. דאק טי וי פלוס ducktv PLUS HD",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/ducktv_plus_hd.png",
+      "posterShape": "landscape",
+      "description": "ערוץ תוכניות העשרה והפעלות נוספות לגיל הרך מבית ducktv\n\n📡 מקור השידור: Antik Telecom (סלובקיה), נתיבי test\n⚠️ ממסר צד שלישי",
+      "genres": [
+        "ילדים מהעולם",
+        "עולם"
+      ]
+    },
+    {
+      "id": "itv_lego_channel_hd",
+      "type": "tv",
+      "name": "362. ערוץ לגו Lego Channel HD",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/lego_channel_hd.png",
+      "posterShape": "landscape",
+      "description": "ערוץ סדרות וסרטי לגו נינג'גו, לגו חברים, הרפתקאות ובנייה\n\n📡 מקור השידור: LEGO Channel – AWS CloudFront FAST\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "ילדים מהעולם",
+        "עולם"
+      ]
+    },
+    {
+      "id": "itv_ducktv_hd",
+      "type": "tv",
+      "name": "363. דאק טי וי ducktv HD",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/ducktv_hd.png",
+      "posterShape": "landscape",
+      "description": "ערוץ הפעוטות וההתפתחות המוביל מבית yes ו-HOT - אנימציה עדינה וצבעים\n\n📡 מקור השידור: Antik Telecom (סלובקיה), נתיבי test\n⚠️ ממסר צד שלישי",
+      "genres": [
+        "ילדים מהעולם",
+        "עולם"
+      ]
+    }
+  ]
+}

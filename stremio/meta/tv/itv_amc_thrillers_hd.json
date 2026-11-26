@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_amc_thrillers_hd",
+    "type": "tv",
+    "name": "551. AMC Thrillers HD (סרטי מתח)",
+    "poster": "https://dor2500.github.io/israel-tv-plus/icon.png",
+    "posterShape": "landscape",
+    "logo": "https://dor2500.github.io/israel-tv-plus/icon.png",
+    "background": "https://dor2500.github.io/israel-tv-plus/icon.png",
+    "description": "ערוץ סרטי המתח והאקשן של רשת AMC 24/7\n\n📡 מקור השידור: FAST Official\n✅ ערוץ FAST רשמי",
+    "genres": [
+      "סרטים וסדרות",
+      "ארצות הברית"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "ארצות הברית"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_cbs_news_247",
+    "type": "tv",
+    "name": "591. CBS News 24/7 HD",
+    "poster": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/CBS_News_247_logo.svg/960px-CBS_News_247_logo.svg.png",
+    "posterShape": "landscape",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/CBS_News_247_logo.svg/960px-CBS_News_247_logo.svg.png",
+    "background": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/CBS_News_247_logo.svg/960px-CBS_News_247_logo.svg.png",
+    "description": "CBS News 24/7 HD — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk\n✅ ערוץ FAST רשמי",
+    "genres": [
+      "חדשות מהעולם",
+      "ארה״ב"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "ארה״ב"
+  }
+}

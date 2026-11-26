@@ -2,8 +2,8 @@
   "streams": [
     {
       "name": "ישראל TV+\n[FHD ראשי]",
-      "title": "ערוץ ניקלודיאון ישראל HD (Nickelodeon)\n📡 mcquack.net – אתר ממסר (restream) של צד שלישי\n⚠️ ממסר צד שלישי",
-      "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32275/index.m3u8",
+      "title": "ערוץ ניקלודיאון ישראל HD (Nickelodeon)\n📡 osoyz0xv.ottclub.xyz\n⚠️ ממסר צד שלישי",
+      "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/12240/index.m3u8",
       "behaviorHints": {
         "notWebReady": true,
         "bingeGroup": "itv-live"

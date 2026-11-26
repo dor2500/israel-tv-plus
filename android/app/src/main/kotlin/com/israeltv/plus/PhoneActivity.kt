@@ -29,9 +29,12 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.lifecycleScope
 import coil3.ImageLoader
 import coil3.SingletonImageLoader
+import coil3.disk.DiskCache
+import coil3.memory.MemoryCache
 import coil3.network.okhttp.OkHttpNetworkFetcherFactory
 import coil3.request.crossfade
 import coil3.svg.SvgDecoder
+import okio.Path.Companion.toOkioPath
 import com.israeltv.plus.data.AppPrefs
 import com.israeltv.plus.data.ChannelStore
 import com.israeltv.plus.data.GoogleAccount
@@ -41,6 +44,7 @@ import com.israeltv.plus.ui.ItvApp
 import com.israeltv.plus.ui.theme.ItvTheme
 import kotlinx.coroutines.launch
 import okhttp3.OkHttpClient
+import java.io.File
 import java.util.Locale
 import java.util.concurrent.TimeUnit
 
@@ -56,6 +60,7 @@ class PhoneActivity : ComponentActivity() {
     private lateinit var google: GoogleAccount
     private val http by lazy {
         OkHttpClient.Builder()
+            .cache(okhttp3.Cache(File(cacheDir, "http_cache"), 64L * 1024 * 1024))
             .connectTimeout(10, TimeUnit.SECONDS)
             .readTimeout(30, TimeUnit.SECONDS)
             .addInterceptor { it.proceed(it.request().newBuilder().header("User-Agent", USER_AGENT).build()) }
@@ -97,6 +102,17 @@ class PhoneActivity : ComponentActivity() {
                 .components {
                     add(SvgDecoder.Factory())
                     add(OkHttpNetworkFetcherFactory(callFactory = { http }))
+                }
+                .memoryCache {
+                    MemoryCache.Builder()
+                        .maxSizePercent(ctx, 0.25)
+                        .build()
+                }
+                .diskCache {
+                    DiskCache.Builder()
+                        .directory(ctx.cacheDir.resolve("image_cache").toOkioPath())
+                        .maxSizeBytes(128L * 1024 * 1024)
+                        .build()
                 }
                 .crossfade(true)
                 .build()

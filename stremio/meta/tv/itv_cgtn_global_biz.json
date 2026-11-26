@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_cgtn_global_biz",
+    "type": "tv",
+    "name": "597. CGTN Global Business",
+    "poster": "https://i.imgur.com/qBmomnF.png",
+    "posterShape": "landscape",
+    "logo": "https://i.imgur.com/qBmomnF.png",
+    "background": "https://i.imgur.com/qBmomnF.png",
+    "description": "CGTN Global Business — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
+    "genres": [
+      "כלכלה ועסקים",
+      "סין"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "סין"
+  }
+}

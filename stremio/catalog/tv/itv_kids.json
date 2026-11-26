@@ -1,0 +1,328 @@
+{
+  "metas": [
+    {
+      "id": "itv_babyshark_tv",
+      "type": "tv",
+      "name": "352. Baby Shark TV (בייבי שארק לילדים)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/babyshark_tv_hd.png",
+      "posterShape": "landscape",
+      "description": "ערוץ שידורי בייבי שארק הרשמי 24/7 – שירים, ריקודים והרפתקאות לפעוטות וילדים\n\n📡 מקור השידור: Baby Shark TV – Wurl (Roku FAST)\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "ילדים מהעולם",
+        "עולם"
+      ]
+    },
+    {
+      "id": "itv_babytv_global_hd",
+      "type": "tv",
+      "name": "353. ערוץ בייבי BabyTV Global HD",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/babytv_global_hd.png",
+      "posterShape": "landscape",
+      "description": "ערוץ בייבי הבינלאומי המוביל בעולם לפעוטות ולגיל הרך בשידור חי רצוף\n\n📡 מקור השידור: BabyFirst – JW Player FAST\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "ילדים מהעולם",
+        "עולם"
+      ]
+    },
+    {
+      "id": "itv_zoomoo_kids_hd",
+      "type": "tv",
+      "name": "354. ערוץ זו-מו לילדים (ZooMoo HD)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/zoomoo_kids_hd.png",
+      "posterShape": "landscape",
+      "description": "ערוץ הטבע, בעלי החיים והאנימציה החינוכית המוביל לילדים\n\n📡 מקור השידור: amagi.tv\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "ילדים מהעולם",
+        "עולם"
+      ]
+    },
+    {
+      "id": "itv_ducktv_plus_hd",
+      "type": "tv",
+      "name": "361. דאק טי וי פלוס ducktv PLUS HD",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/ducktv_plus_hd.png",
+      "posterShape": "landscape",
+      "description": "ערוץ תוכניות העשרה והפעלות נוספות לגיל הרך מבית ducktv\n\n📡 מקור השידור: Antik Telecom (סלובקיה), נתיבי test\n⚠️ ממסר צד שלישי",
+      "genres": [
+        "ילדים מהעולם",
+        "עולם"
+      ]
+    },
+    {
+      "id": "itv_lego_channel_hd",
+      "type": "tv",
+      "name": "362. ערוץ לגו Lego Channel HD",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/lego_channel_hd.png",
+      "posterShape": "landscape",
+      "description": "ערוץ סדרות וסרטי לגו נינג'גו, לגו חברים, הרפתקאות ובנייה\n\n📡 מקור השידור: LEGO Channel – AWS CloudFront FAST\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "ילדים מהעולם",
+        "עולם"
+      ]
+    },
+    {
+      "id": "itv_ducktv_hd",
+      "type": "tv",
+      "name": "363. דאק טי וי ducktv HD",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/ducktv_hd.png",
+      "posterShape": "landscape",
+      "description": "ערוץ הפעוטות וההתפתחות המוביל מבית yes ו-HOT - אנימציה עדינה וצבעים\n\n📡 מקור השידור: Antik Telecom (סלובקיה), נתיבי test\n⚠️ ממסר צד שלישי",
+      "genres": [
+        "ילדים מהעולם",
+        "עולם"
+      ]
+    },
+    {
+      "id": "itv_cartoon_network_hd",
+      "type": "tv",
+      "name": "368. Cartoon Network HD (קארטון נטוורק)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/cartoon_network_hd.png",
+      "posterShape": "landscape",
+      "description": "ערוץ האנימציה והסדרות המוביל בעולם Cartoon Network – שידור חי באיכות HD\n\n📡 מקור השידור: Cartoon Network Broadcast Stream",
+      "genres": [
+        "ילדים מהעולם",
+        "ארה״ב"
+      ]
+    },
+    {
+      "id": "itv_disney_channel_global",
+      "type": "tv",
+      "name": "370. Disney Channel Global HD",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/disney.png",
+      "posterShape": "landscape",
+      "description": "ערוץ דיסני הבינלאומי – סדרות, סרטים ואנימציה של דיסני\n\n📡 מקור השידור: Disney Channel Stream",
+      "genres": [
+        "ילדים מהעולם",
+        "ארה״ב"
+      ]
+    },
+    {
+      "id": "itv_crunchyroll_anime",
+      "type": "tv",
+      "name": "371. Crunchyroll Anime HD",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/crunchyroll_anime.png",
+      "posterShape": "landscape",
+      "description": "ערוץ האנימה הרשמי של Crunchyroll 24/7 מבית סמסונג TV Plus\n\n📡 מקור השידור: Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "ילדים מהעולם",
+        "ארה״ב"
+      ]
+    },
+    {
+      "id": "itv_pbs_kids_hd",
+      "type": "tv",
+      "name": "372. PBS Kids HD",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/pbs_kids.png",
+      "posterShape": "landscape",
+      "description": "ערוץ הילדים החינוכי והפופולרי בארה״ב PBS Kids\n\n📡 מקור השידור: Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "ילדים מהעולם",
+        "ארה״ב"
+      ]
+    },
+    {
+      "id": "itv_moonbug_kids_hd",
+      "type": "tv",
+      "name": "539. Moonbug Kids HD (קוקומלון ומונבאג קידס)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/icon.png",
+      "posterShape": "landscape",
+      "description": "ערוץ Moonbug Kids הרשמי – CoComelon, Blippi, Little Baby Bum ועוד לפעוטות וילדים\n\n📡 מקור השידור: moonbug-rokuus.amagi.tv\n⚠️ ממסר צד שלישי",
+      "genres": [
+        "ילדים מהעולם",
+        "ארצות הברית"
+      ]
+    },
+    {
+      "id": "itv_peppa_pig_tv",
+      "type": "tv",
+      "name": "540. Peppa Pig TV (פפה פיג 24/7)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/icon.png",
+      "posterShape": "landscape",
+      "description": "ערוץ פפה פיג 24/7 – פרקים מלאים ברצף לפעוטות וילדים\n\n📡 מקור השידור: Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "ילדים מהעולם",
+        "ארצות הברית"
+      ]
+    },
+    {
+      "id": "itv_smurf_tv",
+      "type": "tv",
+      "name": "541. Smurf TV (הדרדסים 24/7)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/icon.png",
+      "posterShape": "landscape",
+      "description": "ערוץ הדרדסים הרשמי 24/7 – כל פרקי הדרדסים הקלאסיים ברצף\n\n📡 מקור השידור: stream.ads.ottera.tv\n⚠️ ממסר צד שלישי",
+      "genres": [
+        "ילדים מהעולם",
+        "ארצות הברית"
+      ]
+    },
+    {
+      "id": "itv_nick_jr_pluto_hd",
+      "type": "tv",
+      "name": "542. Nick Jr. Pluto TV HD (ניק ג'וניור עולמי)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/icon.png",
+      "posterShape": "landscape",
+      "description": "ערוץ Nick Jr. Pluto TV – מפרץ ההרפתקאות, דורה, בייבי שארק ועוד לגיל הרך\n\n📡 מקור השידור: Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "ילדים מהעולם",
+        "ארצות הברית"
+      ]
+    },
+    {
+      "id": "itv_nickelodeon_pluto_hd",
+      "type": "tv",
+      "name": "543. Nickelodeon Pluto TV HD (ניקלודיאון עולמי)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/icon.png",
+      "posterShape": "landscape",
+      "description": "ערוץ ניקלודיאון Pluto TV – בובספוג, אוואטר, סדרות אנימציה ונוער 24/7\n\n📡 מקור השידור: Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "ילדים מהעולם",
+        "ארצות הברית"
+      ]
+    },
+    {
+      "id": "itv_nicktoons_pluto_hd",
+      "type": "tv",
+      "name": "544. NickToons Pluto TV HD (ניקטונס)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/icon.png",
+      "posterShape": "landscape",
+      "description": "ערוץ NickToons Pluto TV – סדרות האנימציה האהובות של ניקלודיאון 24/7\n\n📡 מקור השידור: Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "ילדים מהעולם",
+        "ארצות הברית"
+      ]
+    },
+    {
+      "id": "itv_lego_kids_tv",
+      "type": "tv",
+      "name": "598. ערוץ לגו לילדים (LEGO Kids TV)",
+      "poster": "https://i.imgur.com/tMfEsVr.png",
+      "posterShape": "landscape",
+      "description": "ערוץ לגו לילדים (LEGO Kids TV) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "ילדים מהעולם",
+        "ארה״ב"
+      ]
+    },
+    {
+      "id": "itv_garfield_tv",
+      "type": "tv",
+      "name": "599. גארפילד וחברים 24/7 (Garfield)",
+      "poster": "https://i.imgur.com/evzfe9C.png",
+      "posterShape": "landscape",
+      "description": "גארפילד וחברים 24/7 (Garfield) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "ילדים מהעולם",
+        "ארה״ב"
+      ]
+    },
+    {
+      "id": "itv_cartoonito_hd",
+      "type": "tv",
+      "name": "600. קרטוניטו לילדים (Cartoonito HD)",
+      "poster": "https://i.imgur.com/6vYWCD0.png",
+      "posterShape": "landscape",
+      "description": "קרטוניטו לילדים (Cartoonito HD) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "ילדים מהעולם",
+        "בריטניה"
+      ]
+    },
+    {
+      "id": "itv_kartoon_channel",
+      "type": "tv",
+      "name": "601. ערוץ המצוירים (Kartoon Channel!)",
+      "poster": "https://i.imgur.com/1luzP3T.png",
+      "posterShape": "landscape",
+      "description": "ערוץ המצוירים (Kartoon Channel!) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "ילדים מהעולם",
+        "ארה״ב"
+      ]
+    },
+    {
+      "id": "itv_metv_toons",
+      "type": "tv",
+      "name": "602. מצוירים קלאסיים (MeTV Toons)",
+      "poster": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/MeTV_Toons.png/250px-MeTV_Toons.png",
+      "posterShape": "landscape",
+      "description": "מצוירים קלאסיים (MeTV Toons) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "ילדים מהעולם",
+        "ארה״ב"
+      ]
+    },
+    {
+      "id": "itv_sonic_tv_fast",
+      "type": "tv",
+      "name": "603. סוניק הקיפוד 24/7 (Sonic TV)",
+      "poster": "https://i.imgur.com/TKhRlrR.png",
+      "posterShape": "landscape",
+      "description": "סוניק הקיפוד 24/7 (Sonic TV) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "ילדים מהעולם",
+        "ארה״ב"
+      ]
+    },
+    {
+      "id": "itv_naruto_247",
+      "type": "tv",
+      "name": "604. נארוטו 24/7 (Naruto)",
+      "poster": "https://i.imgur.com/M8X3Kvc.png",
+      "posterShape": "landscape",
+      "description": "נארוטו 24/7 (Naruto) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "ילדים מהעולם",
+        "יפן"
+      ]
+    },
+    {
+      "id": "itv_naruto_shippuden_247",
+      "type": "tv",
+      "name": "605. נארוטו שיפודן 24/7 (Shippuden)",
+      "poster": "https://images.pluto.tv/channels/64c92fea3c3344000869e8a9/colorLogoPNG.png",
+      "posterShape": "landscape",
+      "description": "נארוטו שיפודן 24/7 (Shippuden) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "ילדים מהעולם",
+        "יפן"
+      ]
+    },
+    {
+      "id": "itv_anime_hidive",
+      "type": "tv",
+      "name": "606. ערוץ אנימה (Anime x HIDIVE)",
+      "poster": "https://i.imgur.com/v0BlxCa.png",
+      "posterShape": "landscape",
+      "description": "ערוץ אנימה (Anime x HIDIVE) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "ילדים מהעולם",
+        "ארה״ב"
+      ]
+    },
+    {
+      "id": "itv_retrocrush_anime",
+      "type": "tv",
+      "name": "607. אנימה רטרו קלאסית (RetroCrush)",
+      "poster": "https://i.imgur.com/M40b4YI.png",
+      "posterShape": "landscape",
+      "description": "אנימה רטרו קלאסית (RetroCrush) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "ילדים מהעולם",
+        "ארה״ב"
+      ]
+    },
+    {
+      "id": "itv_pluto_anime_movies",
+      "type": "tv",
+      "name": "608. סרטי אנימה (Pluto Anime Movies)",
+      "poster": "https://images.pluto.tv/channels/67ed8f7e443f0671bc2b2368/colorLogoPNG.png",
+      "posterShape": "landscape",
+      "description": "סרטי אנימה (Pluto Anime Movies) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "ילדים מהעולם",
+        "ארה״ב"
+      ]
+    }
+  ]
+}

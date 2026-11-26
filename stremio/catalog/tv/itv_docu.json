@@ -1,0 +1,256 @@
+{
+  "metas": [
+    {
+      "id": "itv_nat_geo_il",
+      "type": "tv",
+      "name": "202. נשיונל ג'יאוגרפיק ישראל HD (Nat Geo)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/nat_geo_il.png",
+      "posterShape": "landscape",
+      "description": "נשיונל ג'יאוגרפיק ישראל – מדע, טבע, תעופה, חלל וחקר העולם עם כתוביות בעברית\n\n📡 מקור השידור: osoyz0xv.ottclub.xyz\n⚠️ ממסר צד שלישי",
+      "genres": [
+        "טבע ודוקו",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_nat_geo_wild_il",
+      "type": "tv",
+      "name": "203. נשיונל ג'יאוגרפיק וויילד FHD (Nat Geo Wild)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/nat_geo_wild_il.png",
+      "posterShape": "landscape",
+      "description": "נשיונל ג'יאוגרפיק וויילד FHD – עולם החי, תיעוד טבע פראי ומשלחות מחקר עם כתוביות בעברית\n\n📡 מקור השידור: osoyz0xv.ottclub.xyz\n⚠️ ממסר צד שלישי",
+      "genres": [
+        "טבע ודוקו",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_discovery_il",
+      "type": "tv",
+      "name": "204. ערוץ דיסקברי ישראל FHD (Discovery)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/discovery_il.png",
+      "posterShape": "landscape",
+      "description": "ערוץ דיסקברי ישראל FHD – הישרדות, הנדסה, רכב, מדע והרפתקאות עם כתוביות בעברית\n\n📡 מקור השידור: osoyz0xv.ottclub.xyz\n⚠️ ממסר צד שלישי",
+      "genres": [
+        "טבע ודוקו",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_history_il",
+      "type": "tv",
+      "name": "205. ערוץ ההיסטוריה ישראל FHD (History)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/history_il.png",
+      "posterShape": "landscape",
+      "description": "ערוץ ההיסטוריה ישראל FHD – היסטוריה עולמית, תעלומות, תרבויות עתיקות ודוקו בתרגום לעברית\n\n📡 מקור השידור: osoyz0xv.ottclub.xyz\n⚠️ ממסר צד שלישי",
+      "genres": [
+        "טבע ודוקו",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_teva_israel_hd",
+      "type": "tv",
+      "name": "206. ערוץ הטבע הישראלי HD (Teva)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/teva_israel_hd.png",
+      "posterShape": "landscape",
+      "description": "ערוץ הטבע הישראלי – עולם החי, נופים, שמורות טבע ותיעוד מרהיב בעברית 24/7\n\n📡 מקור השידור: FreeTV – השידור הרשמי (AWS CloudFront)\n✅ שידור רשמי ישיר",
+      "genres": [
+        "טבע ודוקו",
+        "ישראל"
+      ]
+    },
+    {
+      "id": "itv_bbc_earth_us_hd",
+      "type": "tv",
+      "name": "545. BBC Earth HD (טבע ומדע)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/icon.png",
+      "posterShape": "landscape",
+      "description": "ערוץ הטבע והמדע של BBC – סדרות דוקומנטריות מרהיבות באיכות Full HD\n\n📡 מקור השידור: FAST Official\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "טבע ודוקו",
+        "ארצות הברית"
+      ]
+    },
+    {
+      "id": "itv_history_hit_hd",
+      "type": "tv",
+      "name": "546. History Hit HD (היסטוריה)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/icon.png",
+      "posterShape": "landscape",
+      "description": "ערוץ ההיסטוריה והתעודה History Hit – מלחמות, ארכיאולוגיה והיסטוריה עולמית\n\n📡 מקור השידור: FAST Official\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "טבע ודוקו",
+        "ארצות הברית"
+      ]
+    },
+    {
+      "id": "itv_nature_time_hd",
+      "type": "tv",
+      "name": "547. NatureTime HD (עולם הטבע)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/icon.png",
+      "posterShape": "landscape",
+      "description": "ערוץ טבע ובעלי חיים מבית Rakuten באיכות Full HD 24/7\n\n📡 מקור השידור: FAST Official\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "טבע ודוקו",
+        "ארצות הברית"
+      ]
+    },
+    {
+      "id": "itv_love_the_planet_hd",
+      "type": "tv",
+      "name": "548. Love The Planet HD (כדור הארץ)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/icon.png",
+      "posterShape": "landscape",
+      "description": "ערוץ סביבה, טבע ואקולוגיה מרהיב באיכות HD\n\n📡 מקור השידור: FAST Official\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "טבע ודוקו",
+        "ארצות הברית"
+      ]
+    },
+    {
+      "id": "itv_love_pets_hd",
+      "type": "tv",
+      "name": "549. Love Pets HD (חיות מחמד וטבע)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/icon.png",
+      "posterShape": "landscape",
+      "description": "ערוץ חיות מחמד, וטרינריה וסיפורים מרגשים על בעלי חיים\n\n📡 מקור השידור: FAST Official\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "טבע ודוקו",
+        "ארצות הברית"
+      ]
+    },
+    {
+      "id": "itv_inwild_hd",
+      "type": "tv",
+      "name": "550. INWILD HD (חיות בר)",
+      "poster": "https://dor2500.github.io/israel-tv-plus/icon.png",
+      "posterShape": "landscape",
+      "description": "ערוץ חיות הבר והטבע הפראי INWILD באיכות Full HD\n\n📡 מקור השידור: FAST Official\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "טבע ודוקו",
+        "ארצות הברית"
+      ]
+    },
+    {
+      "id": "itv_space_live_4k",
+      "type": "tv",
+      "name": "561. חלל בשידור חי (Space Live 4K)",
+      "poster": "https://static.frequency.com/studio/itv/channels/1224-400x200.png",
+      "posterShape": "landscape",
+      "description": "📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "טבע ודוקו",
+        "עולם"
+      ]
+    },
+    {
+      "id": "itv_wildearth_safari",
+      "type": "tv",
+      "name": "562. ספארי חי באפריקה (WildEarth)",
+      "poster": "https://i.imgur.com/Vhv5gjN.png",
+      "posterShape": "landscape",
+      "description": "📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "טבע ודוקו",
+        "עולם"
+      ]
+    },
+    {
+      "id": "itv_zenlife_ambient",
+      "type": "tv",
+      "name": "563. אווירה ורגיעה (ZenLIFE)",
+      "poster": "https://www.stingray.com/wp-content/uploads/2023/12/stingray_zenlifebystingray_white.svg",
+      "posterShape": "landscape",
+      "description": "📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "טבע ודוקו",
+        "עולם"
+      ]
+    },
+    {
+      "id": "itv_love_nature_fast",
+      "type": "tv",
+      "name": "564. טבע פראי (Love Nature)",
+      "poster": "https://tv.lovenature.com/wp-content/uploads/2024/10/LoveNature2024_Logo_full_colour-copy.png",
+      "posterShape": "landscape",
+      "description": "📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "טבע ודוקו",
+        "עולם"
+      ]
+    },
+    {
+      "id": "itv_better_life_nature",
+      "type": "tv",
+      "name": "565. טבע ונופים (Better Life)",
+      "poster": "https://i.imgur.com/D8Vuw6I.png",
+      "posterShape": "landscape",
+      "description": "📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "טבע ודוקו",
+        "עולם"
+      ]
+    },
+    {
+      "id": "itv_smithsonian_selects",
+      "type": "tv",
+      "name": "566. סמית׳סוניאן דוקו (Smithsonian)",
+      "poster": "https://i.imgur.com/Kt5j8Vr.png",
+      "posterShape": "landscape",
+      "description": "📡 מקור השידור: Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "טבע ודוקו",
+        "עולם"
+      ]
+    },
+    {
+      "id": "itv_pluto_science",
+      "type": "tv",
+      "name": "567. ערוץ המדע (Pluto Science)",
+      "poster": "https://i.imgur.com/uhunRoU.png",
+      "posterShape": "landscape",
+      "description": "📡 מקור השידור: Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "טבע ודוקו",
+        "עולם"
+      ]
+    },
+    {
+      "id": "itv_docubay_tv",
+      "type": "tv",
+      "name": "568. דוקו עולמי (DocuBay)",
+      "poster": "https://i.imgur.com/OGyeLLR.png",
+      "posterShape": "landscape",
+      "description": "📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "טבע ודוקו",
+        "עולם"
+      ]
+    },
+    {
+      "id": "itv_documentary_plus",
+      "type": "tv",
+      "name": "569. דוקומנטרי+ (Documentary+)",
+      "poster": "https://i.imgur.com/x57klfS.png",
+      "posterShape": "landscape",
+      "description": "📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "טבע ודוקו",
+        "עולם"
+      ]
+    },
+    {
+      "id": "itv_intravel_fast",
+      "type": "tv",
+      "name": "570. טיולים בעולם (INTRAVEL)",
+      "poster": "https://jiotvimages.cdn.jio.com/dare_images/images/Intravel.png",
+      "posterShape": "landscape",
+      "description": "📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "טבע ודוקו",
+        "עולם"
+      ]
+    }
+  ]
+}

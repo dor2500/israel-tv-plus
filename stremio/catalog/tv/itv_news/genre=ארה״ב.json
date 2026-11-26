@@ -1,0 +1,28 @@
+{
+  "metas": [
+    {
+      "id": "itv_abc_news_live",
+      "type": "tv",
+      "name": "590. ABC News Live HD",
+      "poster": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/ABC_News_Live_logo_2021.svg/960px-ABC_News_Live_logo_2021.svg.png",
+      "posterShape": "landscape",
+      "description": "ABC News Live HD — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "חדשות מהעולם",
+        "ארה״ב"
+      ]
+    },
+    {
+      "id": "itv_cbs_news_247",
+      "type": "tv",
+      "name": "591. CBS News 24/7 HD",
+      "poster": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/CBS_News_247_logo.svg/960px-CBS_News_247_logo.svg.png",
+      "posterShape": "landscape",
+      "description": "CBS News 24/7 HD — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "חדשות מהעולם",
+        "ארה״ב"
+      ]
+    }
+  ]
+}

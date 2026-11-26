@@ -3,7 +3,7 @@
     {
       "name": "ישראל TV+\n[FHD ראשי]",
       "title": "FreeTV 10 Stars סרטים HD\n📡 FreeTV – השידור הרשמי (AWS CloudFront)\n✅ שידור רשמי ישיר",
-      "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/free_movies_10_hevc/live.livx/playlist.m3u8",
+      "url": "https://d1zqtf09wb8nt5.cloudfront.net/livehls/oil/freetv/live/free_movies_10/live.livx/playlist.m3u8?bitrate=5628000&audioId=1&videoId=0",
       "behaviorHints": {
         "bingeGroup": "itv-live"
       }

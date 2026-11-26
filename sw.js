@@ -1,8 +1,8 @@
 // Israel TV+ service worker: makes the site installable and opens it offline-fast.
 // Same-origin files: network first (updates show up at once), cache as fallback. Streams are never touched.
-const CACHE = 'itv-v4';
+const CACHE = 'itv-v5';
 const SHELL = ['./', './index.html', './version.js', './boot.js', './ui.js', './fonts.css', './style.css', './app.js',
-  './dub.js', './tvguide.js', './gdrive.js', './channels.js', './assets/hls.min.js', './assets/qrcode.js',
+  './dub.js', './dub-local-worker.js', './tvguide.js', './gdrive.js', './channels.js', './vod_data.json', './assets/hls.min.js', './assets/qrcode.js',
   './manifest.webmanifest', './icon.png', './assets/app/icon-192.png', './assets/app/icon-512.png'];
 
 self.addEventListener('install', (e) => {

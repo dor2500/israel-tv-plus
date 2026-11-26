@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_love_the_planet_hd",
+    "type": "tv",
+    "name": "548. Love The Planet HD (כדור הארץ)",
+    "poster": "https://dor2500.github.io/israel-tv-plus/icon.png",
+    "posterShape": "landscape",
+    "logo": "https://dor2500.github.io/israel-tv-plus/icon.png",
+    "background": "https://dor2500.github.io/israel-tv-plus/icon.png",
+    "description": "ערוץ סביבה, טבע ואקולוגיה מרהיב באיכות HD\n\n📡 מקור השידור: FAST Official\n✅ ערוץ FAST רשמי",
+    "genres": [
+      "טבע ודוקו",
+      "ארצות הברית"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "ארצות הברית"
+  }
+}

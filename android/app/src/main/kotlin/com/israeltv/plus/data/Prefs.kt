@@ -127,6 +127,8 @@ class AppPrefs(context: Context) {
         private set
     var launchSound by mutableStateOf(sp.getBoolean("launchSound", true))
         private set
+    var autoLoginProfile by mutableStateOf(sp.getBoolean("autoLoginProfile", false))
+        private set
     /** The update version whose modal was already shown on start (it opens once per version). */
     var updatePrompted by mutableStateOf(sp.getString("phoneUpdatePrompted", "") ?: "")
         private set
@@ -176,6 +178,11 @@ class AppPrefs(context: Context) {
     fun setLaunchSoundOn(on: Boolean) {
         launchSound = on
         sp.edit { putBoolean("launchSound", on) }
+    }
+
+    fun setAutoLoginProfileOn(on: Boolean) {
+        autoLoginProfile = on
+        sp.edit { putBoolean("autoLoginProfile", on) }
     }
 
     fun markUpdatePrompted(version: String) {

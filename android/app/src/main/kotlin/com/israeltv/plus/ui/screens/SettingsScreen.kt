@@ -60,6 +60,17 @@ import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import android.provider.OpenableColumns
+import android.widget.Toast
+import androidx.compose.material.icons.rounded.AddLink
+import androidx.compose.material.icons.rounded.Delete
+import androidx.compose.material.icons.rounded.FolderOpen
+import androidx.compose.material.icons.rounded.PlaylistPlay
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.OutlinedTextField
+import com.israeltv.plus.data.ChannelStore
+import com.israeltv.plus.data.M3uPlaylist
+import com.israeltv.plus.data.StalkerPortalAccount
 import com.israeltv.plus.data.AppPrefs
 import com.israeltv.plus.data.GoogleAccount
 import com.israeltv.plus.data.ChannelData
@@ -80,11 +91,160 @@ import java.util.Date
 import java.util.Locale
 
 @Composable
-fun SettingsScreen(data: ChannelData?, prefs: AppPrefs, updater: Updater, google: GoogleAccount, onProfiles: () -> Unit, onStyle: () -> Unit) {
+fun SettingsScreen(data: ChannelData?, prefs: AppPrefs, updater: Updater, google: GoogleAccount, store: ChannelStore, onProfiles: () -> Unit, onStyle: () -> Unit) {
     val ctx = LocalContext.current
     val haptic = LocalHapticFeedback.current
     var showPlexDialog by remember { mutableStateOf(false) }
     val scope = rememberCoroutineScope()
+    var m3uList by remember { mutableStateOf(store.m3u.load()) }
+    var showM3uUrlDialog by remember { mutableStateOf(false) }
+    var m3uUrlInput by remember { mutableStateOf("") }
+    var m3uNameInput by remember { mutableStateOf("") }
+    var m3uLoading by remember { mutableStateOf(false) }
+    var stalkerList by remember { mutableStateOf(store.stalker.load()) }
+    var showStalkerDialog by remember { mutableStateOf(false) }
+    var stalkerUrlInput by remember { mutableStateOf("") }
+    var stalkerMacInput by remember { mutableStateOf("") }
+    var stalkerNameInput by remember { mutableStateOf("") }
+    var stalkerLoading by remember { mutableStateOf(false) }
+
+    val m3uFilePicker = rememberLauncherForActivityResult(ActivityResultContracts.OpenDocument()) { uri: Uri? ->
+        if (uri == null) return@rememberLauncherForActivityResult
+        scope.launch {
+            val fileName = runCatching {
+                ctx.contentResolver.query(uri, arrayOf(OpenableColumns.DISPLAY_NAME), null, null, null)?.use { c ->
+                    if (c.moveToFirst()) c.getString(0) else null
+                }
+            }.getOrNull() ?: uri.lastPathSegment ?: "רשימת M3U"
+            val cleanName = fileName.replace(Regex("\\.(m3u8?|txt)$", RegexOption.IGNORE_CASE), "")
+            val text = runCatching {
+                ctx.contentResolver.openInputStream(uri)?.bufferedReader()?.use { it.readText() }
+            }.getOrNull()
+            if (text.isNullOrBlank()) {
+                Toast.makeText(ctx, "שגיאה בקריאת הקובץ", Toast.LENGTH_SHORT).show()
+                return@launch
+            }
+            val res = store.m3u.addFromText(text, cleanName, sourceType = "file")
+            res.onSuccess { pl ->
+                m3uList = store.m3u.load()
+                store.reloadWithM3u()
+                Toast.makeText(ctx, "נטענו ${pl.channels.size} ערוצים מ-\"${pl.name}\"", Toast.LENGTH_LONG).show()
+            }.onFailure { err ->
+                Toast.makeText(ctx, err.message ?: "לא נמצאו ערוצים תקינים", Toast.LENGTH_LONG).show()
+            }
+        }
+    }
+
+    if (showM3uUrlDialog) {
+        AlertDialog(
+            onDismissRequest = { if (!m3uLoading) showM3uUrlDialog = false },
+            title = { Text("טעינת M3U מקישור (URL)") },
+            text = {
+                Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                    OutlinedTextField(
+                        value = m3uUrlInput,
+                        onValueChange = { m3uUrlInput = it },
+                        label = { Text("כתובת קובץ M3U / M3U8") },
+                        placeholder = { Text("https://example.com/playlist.m3u") },
+                        singleLine = true,
+                        modifier = Modifier.fillMaxWidth(),
+                    )
+                    OutlinedTextField(
+                        value = m3uNameInput,
+                        onValueChange = { m3uNameInput = it },
+                        label = { Text("שם הרשימה (אופציונלי)") },
+                        singleLine = true,
+                        modifier = Modifier.fillMaxWidth(),
+                    )
+                }
+            },
+            confirmButton = {
+                Button(
+                    enabled = !m3uLoading && m3uUrlInput.isNotBlank(),
+                    onClick = {
+                        m3uLoading = true
+                        scope.launch {
+                            val res = store.m3u.addFromUrl(m3uUrlInput, m3uNameInput)
+                            m3uLoading = false
+                            res.onSuccess { pl ->
+                                m3uList = store.m3u.load()
+                                store.reloadWithM3u()
+                                showM3uUrlDialog = false
+                                m3uUrlInput = ""
+                                m3uNameInput = ""
+                                Toast.makeText(ctx, "נטענו ${pl.channels.size} ערוצים מ-\"${pl.name}\"", Toast.LENGTH_LONG).show()
+                            }.onFailure { err ->
+                                Toast.makeText(ctx, "שגיאה בטעינה: ${err.message ?: "בדקו את הקישור"}", Toast.LENGTH_LONG).show()
+                            }
+                        }
+                    },
+                ) { Text(if (m3uLoading) "טוען..." else "טען") }
+            },
+            dismissButton = {
+                TextButton(enabled = !m3uLoading, onClick = { showM3uUrlDialog = false }) { Text("ביטול") }
+            },
+        )
+    }
+    if (showStalkerDialog) {
+        AlertDialog(
+            onDismissRequest = { if (!stalkerLoading) showStalkerDialog = false },
+            title = { Text("הוספת פורטל Stalker / MAC אישי") },
+            text = {
+                Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                    OutlinedTextField(
+                        value = stalkerUrlInput,
+                        onValueChange = { stalkerUrlInput = it },
+                        label = { Text("כתובת פורטל (Portal URL)") },
+                        placeholder = { Text("http://example.com/c/") },
+                        singleLine = true,
+                        modifier = Modifier.fillMaxWidth(),
+                    )
+                    OutlinedTextField(
+                        value = stalkerMacInput,
+                        onValueChange = { stalkerMacInput = it },
+                        label = { Text("כתובת MAC") },
+                        placeholder = { Text("00:1A:79:XX:XX:XX") },
+                        singleLine = true,
+                        modifier = Modifier.fillMaxWidth(),
+                    )
+                    OutlinedTextField(
+                        value = stalkerNameInput,
+                        onValueChange = { stalkerNameInput = it },
+                        label = { Text("שם לתצוגה (אופציונלי)") },
+                        singleLine = true,
+                        modifier = Modifier.fillMaxWidth(),
+                    )
+                }
+            },
+            confirmButton = {
+                Button(
+                    enabled = !stalkerLoading && stalkerUrlInput.isNotBlank() && stalkerMacInput.isNotBlank(),
+                    onClick = {
+                        stalkerLoading = true
+                        scope.launch {
+                            val res = store.stalker.addOrRefresh(stalkerUrlInput, stalkerMacInput, stalkerNameInput)
+                            stalkerLoading = false
+                            res.onSuccess { acct ->
+                                stalkerList = store.stalker.load()
+                                store.reloadWithM3u()
+                                showStalkerDialog = false
+                                stalkerUrlInput = ""
+                                stalkerMacInput = ""
+                                stalkerNameInput = ""
+                                Toast.makeText(ctx, "נטענו ${acct.channels.size} ערוצים מ-\"${acct.name}\"", Toast.LENGTH_LONG).show()
+                            }.onFailure { err ->
+                                Toast.makeText(ctx, "שגיאה בחיבור לפורטל: ${err.message ?: "בדקו כתובת ו-MAC"}", Toast.LENGTH_LONG).show()
+                            }
+                        }
+                    },
+                ) { Text(if (stalkerLoading) "מתחבר..." else "התחבר וטען") }
+            },
+            dismissButton = {
+                TextButton(enabled = !stalkerLoading, onClick = { showStalkerDialog = false }) { Text("ביטול") }
+            },
+        )
+    }
+
     var changelog by remember { mutableStateOf<List<Pair<String, List<String>>>?>(null) }
     changelog?.let { list ->
         AlertDialog(
@@ -133,6 +293,24 @@ fun SettingsScreen(data: ChannelData?, prefs: AppPrefs, updater: Updater, google
                 SettingRow(Icons.Rounded.Face, "פרופילים", "${prefs.profile.name} · ${prefs.profiles.size} פרופילים", onClick = onProfiles) {
                     ProfileAvatar(prefs.avatar, glyphSize = 30.dp)
                 }
+                SettingRow(
+                    Icons.Rounded.Face,
+                    "כניסה אוטומטית לפרופיל האחרון",
+                    "דילוג על מסך \"מי צופה?\" בפתיחת האפליקציה",
+                    onClick = {
+                        val next = !prefs.autoLoginProfile
+                        haptic.performHapticFeedback(if (next) HapticFeedbackType.ToggleOn else HapticFeedbackType.ToggleOff)
+                        prefs.setAutoLoginProfileOn(next)
+                    },
+                ) {
+                    Switch(
+                        checked = prefs.autoLoginProfile,
+                        onCheckedChange = {
+                            haptic.performHapticFeedback(if (it) HapticFeedbackType.ToggleOn else HapticFeedbackType.ToggleOff)
+                            prefs.setAutoLoginProfileOn(it)
+                        },
+                    )
+                }
                 SettingRow(Icons.Rounded.MusicNote, "צליל פתיחה", "צליל קצר כשהאפליקציה נפתחת (שקט כשהטלפון על שקט)",
                     onClick = {
                         haptic.performHapticFeedback(if (prefs.launchSound) HapticFeedbackType.ToggleOff else HapticFeedbackType.ToggleOn)
@@ -142,6 +320,142 @@ fun SettingsScreen(data: ChannelData?, prefs: AppPrefs, updater: Updater, google
                         haptic.performHapticFeedback(if (it) HapticFeedbackType.ToggleOn else HapticFeedbackType.ToggleOff)
                         prefs.setLaunchSoundOn(it)
                     })
+                }
+            }
+            Spacer(Modifier.height(28.dp))
+        }
+        item(key = "m3u") {
+            val activeM3uCount = m3uList.filter { it.enabled }.sumOf { it.channels.size }
+            SectionHeader("רשימות M3U / IPTV אישיות")
+            SettingsGroup {
+                SettingRow(
+                    Icons.Rounded.FolderOpen,
+                    "בחירת קובץ M3U / M3U8 מהמכשיר",
+                    "טעינת קובץ פלייליסט כערוצים חיים לצפייה ישירה באפליקציה",
+                    onClick = { m3uFilePicker.launch(arrayOf("*/*")) },
+                )
+                SettingRow(
+                    Icons.Rounded.AddLink,
+                    "טעינת רשימת M3U מקישור (URL)",
+                    "הוספת רשימת IPTV מרוחקת לפי כתובת אינטרנט",
+                    onClick = { showM3uUrlDialog = true },
+                )
+                if (m3uList.isNotEmpty()) {
+                    SettingRow(
+                        Icons.Rounded.PlaylistPlay,
+                        "ערוצי M3U פעילים",
+                        "$activeM3uCount ערוצים מתוך ${m3uList.size} רשימות (מוצגים בערוצים ובחיפוש)",
+                    )
+                }
+                m3uList.forEach { pl: M3uPlaylist ->
+                    SettingRow(
+                        Icons.Rounded.PlaylistPlay,
+                        pl.name,
+                        "${pl.channels.size} ערוצים · ${if (pl.sourceType == "url") "קישור" else "קובץ מקומי"}",
+                        onClick = {
+                            store.m3u.toggle(pl.id)
+                            m3uList = store.m3u.load()
+                            store.reloadWithM3u()
+                        },
+                    ) {
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            if (pl.sourceType == "url" && pl.url.isNotEmpty()) {
+                                IconButton(onClick = {
+                                    scope.launch {
+                                        val res = store.m3u.addFromUrl(pl.url, pl.name, pl.id)
+                                        res.onSuccess {
+                                            m3uList = store.m3u.load()
+                                            store.reloadWithM3u()
+                                            Toast.makeText(ctx, "הרשימה \"${pl.name}\" רועננה", Toast.LENGTH_SHORT).show()
+                                        }
+                                    }
+                                }) {
+                                    BoldIcon(Icons.Rounded.Refresh, "רענן")
+                                }
+                            }
+                            IconButton(onClick = {
+                                store.m3u.delete(pl.id)
+                                m3uList = store.m3u.load()
+                                store.reloadWithM3u()
+                                Toast.makeText(ctx, "הרשימה \"${pl.name}\" הוסרה", Toast.LENGTH_SHORT).show()
+                            }) {
+                                BoldIcon(Icons.Rounded.Delete, "מחק")
+                            }
+                            Switch(
+                                checked = pl.enabled,
+                                onCheckedChange = {
+                                    store.m3u.toggle(pl.id)
+                                    m3uList = store.m3u.load()
+                                    store.reloadWithM3u()
+                                },
+                            )
+                        }
+                    }
+                }
+            }
+            Spacer(Modifier.height(28.dp))
+        }
+        item(key = "stalker") {
+            val activeStalkerCount = stalkerList.filter { it.enabled }.sumOf { it.channels.size }
+            SectionHeader("פורטל Stalker / MAC (IPTV אישי)")
+            SettingsGroup {
+                SettingRow(
+                    Icons.Rounded.AddLink,
+                    "הוספת פורטל Stalker / MAC",
+                    "הזנה מקומית של כתובת פורטל ו-MAC של המנוי האישי שלך (נשמר במכשיר בלבד)",
+                    onClick = { showStalkerDialog = true },
+                )
+                if (stalkerList.isNotEmpty()) {
+                    SettingRow(
+                        Icons.Rounded.Tv,
+                        "ערוצי Stalker פעילים",
+                        "$activeStalkerCount ערוצים מתוך ${stalkerList.size} פורטלים",
+                    )
+                }
+                stalkerList.forEach { acct: StalkerPortalAccount ->
+                    SettingRow(
+                        Icons.Rounded.Tv,
+                        acct.name,
+                        "${acct.channels.size} ערוצים · ${acct.mac}",
+                        onClick = {
+                            store.stalker.toggle(acct.id)
+                            stalkerList = store.stalker.load()
+                            store.reloadWithM3u()
+                        },
+                    ) {
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            IconButton(onClick = {
+                                scope.launch {
+                                    val res = store.stalker.addOrRefresh(acct.portalUrl, acct.mac, acct.name, acct.id)
+                                    res.onSuccess {
+                                        stalkerList = store.stalker.load()
+                                        store.reloadWithM3u()
+                                        Toast.makeText(ctx, "הפורטל \"${acct.name}\" רוענן", Toast.LENGTH_SHORT).show()
+                                    }.onFailure { err ->
+                                        Toast.makeText(ctx, "שגיאה ברענון: ${err.message}", Toast.LENGTH_SHORT).show()
+                                    }
+                                }
+                            }) {
+                                BoldIcon(Icons.Rounded.Refresh, "רענן")
+                            }
+                            IconButton(onClick = {
+                                store.stalker.delete(acct.id)
+                                stalkerList = store.stalker.load()
+                                store.reloadWithM3u()
+                                Toast.makeText(ctx, "הפורטל \"${acct.name}\" הוסר", Toast.LENGTH_SHORT).show()
+                            }) {
+                                BoldIcon(Icons.Rounded.Delete, "מחק")
+                            }
+                            Switch(
+                                checked = acct.enabled,
+                                onCheckedChange = {
+                                    store.stalker.toggle(acct.id)
+                                    stalkerList = store.stalker.load()
+                                    store.reloadWithM3u()
+                                },
+                            )
+                        }
+                    }
                 }
             }
             Spacer(Modifier.height(28.dp))

@@ -1,0 +1,12 @@
+{
+  "streams": [
+    {
+      "name": "ישראל TV+\n[FHD ראשי]",
+      "title": "רדיו זה רוק (Ze Rock Radio)\n📡 rocky.kupernet.com\n⚠️ ממסר צד שלישי",
+      "url": "https://rocky.kupernet.com/stream",
+      "behaviorHints": {
+        "bingeGroup": "itv-live"
+      }
+    }
+  ]
+}

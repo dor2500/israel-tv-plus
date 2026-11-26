@@ -1,0 +1,12 @@
+{
+  "streams": [
+    {
+      "name": "ישראל TV+\n[FHD ראשי]",
+      "title": "ספארי חי באפריקה (WildEarth)\n📡 FAST Public CDN\n✅ ערוץ FAST רשמי",
+      "url": "https://dqga3jatxofgx.cloudfront.net/WildEarth.m3u8",
+      "behaviorHints": {
+        "bingeGroup": "itv-live"
+      }
+    }
+  ]
+}

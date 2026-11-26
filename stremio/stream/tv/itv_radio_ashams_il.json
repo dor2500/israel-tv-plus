@@ -1,0 +1,12 @@
+{
+  "streams": [
+    {
+      "name": "ישראל TV+\n[FHD ראשי]",
+      "title": "רדיו א-שמס 101FM (A-Shams)\n📡 StreamGates – ה-CDN של התחנה\n✅ שידור רשמי ישיר",
+      "url": "https://cdna.streamgates.net/Ashams/Live/icecast.audio",
+      "behaviorHints": {
+        "bingeGroup": "itv-live"
+      }
+    }
+  ]
+}

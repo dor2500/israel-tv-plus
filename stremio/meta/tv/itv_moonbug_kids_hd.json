@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_moonbug_kids_hd",
+    "type": "tv",
+    "name": "539. Moonbug Kids HD (קוקומלון ומונבאג קידס)",
+    "poster": "https://dor2500.github.io/israel-tv-plus/icon.png",
+    "posterShape": "landscape",
+    "logo": "https://dor2500.github.io/israel-tv-plus/icon.png",
+    "background": "https://dor2500.github.io/israel-tv-plus/icon.png",
+    "description": "ערוץ Moonbug Kids הרשמי – CoComelon, Blippi, Little Baby Bum ועוד לפעוטות וילדים\n\n📡 מקור השידור: moonbug-rokuus.amagi.tv\n⚠️ ממסר צד שלישי",
+    "genres": [
+      "ילדים מהעולם",
+      "ארצות הברית"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "ארצות הברית"
+  }
+}

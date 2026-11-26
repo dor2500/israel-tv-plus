@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_wildearth_safari",
+    "type": "tv",
+    "name": "562. ספארי חי באפריקה (WildEarth)",
+    "poster": "https://i.imgur.com/Vhv5gjN.png",
+    "posterShape": "landscape",
+    "logo": "https://i.imgur.com/Vhv5gjN.png",
+    "background": "https://i.imgur.com/Vhv5gjN.png",
+    "description": "📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
+    "genres": [
+      "טבע ודוקו",
+      "עולם"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "עולם"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_bbc_food_hd",
+    "type": "tv",
+    "name": "618. ערוץ הבישול הבריטי (BBC Food)",
+    "poster": "https://i.imgur.com/kcmHcSx.png",
+    "posterShape": "landscape",
+    "logo": "https://i.imgur.com/kcmHcSx.png",
+    "background": "https://i.imgur.com/kcmHcSx.png",
+    "description": "ערוץ הבישול הבריטי (BBC Food) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
+    "genres": [
+      "ערוצי אוכל",
+      "בריטניה"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "בריטניה"
+  }
+}

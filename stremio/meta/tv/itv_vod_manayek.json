@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_vod_manayek",
+    "type": "tv",
+    "name": "502. מנאייכ FHD (VOD)",
+    "poster": "https://dor2500.github.io/israel-tv-plus/assets/logos/vod_manayek.jpg",
+    "posterShape": "landscape",
+    "logo": "https://dor2500.github.io/israel-tv-plus/assets/logos/vod_manayek.jpg",
+    "background": "https://dor2500.github.io/israel-tv-plus/assets/logos/vod_manayek.jpg",
+    "description": "דרמת מתח משטרתית זוכת פרסי האקדמיה. חוקר מח\"ש איזי בכר יוצא לחקור את חברו הטוב ביותר במשטרה, ברק הראל.\n\n📡 מקור השידור: Redge – ה-CDN הרשמי של כאן, ערוץ 14 וכלכלה 10\n✅ שידור רשמי ישיר",
+    "genres": [
+      "סדרות לצפייה ישירה",
+      "ישראל"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "ישראל"
+  }
+}

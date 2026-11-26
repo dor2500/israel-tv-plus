@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_inwild_hd",
+    "type": "tv",
+    "name": "550. INWILD HD (חיות בר)",
+    "poster": "https://dor2500.github.io/israel-tv-plus/icon.png",
+    "posterShape": "landscape",
+    "logo": "https://dor2500.github.io/israel-tv-plus/icon.png",
+    "background": "https://dor2500.github.io/israel-tv-plus/icon.png",
+    "description": "ערוץ חיות הבר והטבע הפראי INWILD באיכות Full HD\n\n📡 מקור השידור: FAST Official\n✅ ערוץ FAST רשמי",
+    "genres": [
+      "טבע ודוקו",
+      "ארצות הברית"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "ארצות הברית"
+  }
+}

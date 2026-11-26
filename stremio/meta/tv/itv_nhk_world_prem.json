@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_nhk_world_prem",
+    "type": "tv",
+    "name": "593. NHK World יפן HD",
+    "poster": "https://i.imgur.com/4ESi2La.png",
+    "posterShape": "landscape",
+    "logo": "https://i.imgur.com/4ESi2La.png",
+    "background": "https://i.imgur.com/4ESi2La.png",
+    "description": "NHK World יפן HD — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
+    "genres": [
+      "חדשות מהעולם",
+      "יפן"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "יפן"
+  }
+}

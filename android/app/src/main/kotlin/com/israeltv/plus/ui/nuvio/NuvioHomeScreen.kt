@@ -81,6 +81,8 @@ import com.israeltv.plus.ui.components.ChannelLogo
 import com.israeltv.plus.ui.components.GlassIconButton
 import com.israeltv.plus.ui.components.NuvioPosterCard
 import com.israeltv.plus.ui.components.ShelfSkeleton
+import com.israeltv.plus.ui.screens.WowExperience
+import com.israeltv.plus.ui.screens.WowLaunchpadStrip
 import com.israeltv.plus.ui.components.pressPhysics
 import com.israeltv.plus.ui.components.rememberBitChordFlingBehavior
 import com.israeltv.plus.ui.theme.LocalDarkTheme
@@ -105,6 +107,7 @@ fun NuvioHomeScreen(
     onPlay: (Channel, List<Channel>) -> Unit,
     modifier: Modifier = Modifier,
     listState: LazyListState = rememberLazyListState(),
+    onOpenWow: ((WowExperience) -> Unit)? = null,
 ) {
     val data by store.state.collectAsStateWithLifecycle()
     val categories = data?.categories
@@ -148,6 +151,12 @@ fun NuvioHomeScreen(
                         onPlay = onPlay,
                         height = heroHeight,
                     )
+                }
+            }
+
+            if (!prefs.isKids && onOpenWow != null) {
+                item(key = "wow_launchpad", contentType = "launchpad") {
+                    WowLaunchpadStrip(onOpen = onOpenWow)
                 }
             }
 

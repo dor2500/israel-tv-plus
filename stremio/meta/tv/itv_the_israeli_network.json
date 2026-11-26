@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_the_israeli_network",
+    "type": "tv",
+    "name": "536. הרשת הישראלית – The Israeli Network HD",
+    "poster": "https://dor2500.github.io/israel-tv-plus/icon.png",
+    "posterShape": "landscape",
+    "logo": "https://dor2500.github.io/israel-tv-plus/icon.png",
+    "background": "https://dor2500.github.io/israel-tv-plus/icon.png",
+    "description": "ערוץ הטלוויזיה הישראלי הבינלאומי (TIN) – תכניות מובחרות מישראל, חדשות, תרבות ובידור 24/7\n\n📡 מקור השידור: r.eu.cdn-redge.media\n⚠️ ממסר צד שלישי",
+    "genres": [
+      "ערוצי ישראל - שידור חי",
+      "ישראל"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "ישראל"
+  }
+}

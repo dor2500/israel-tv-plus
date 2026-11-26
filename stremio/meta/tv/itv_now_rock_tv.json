@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_now_rock_tv",
+    "type": "tv",
+    "name": "586. ערוץ הרוק (NOW Rock)",
+    "poster": "https://i.imgur.com/GuM4GnX.png",
+    "posterShape": "landscape",
+    "logo": "https://i.imgur.com/GuM4GnX.png",
+    "background": "https://i.imgur.com/GuM4GnX.png",
+    "description": "📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
+    "genres": [
+      "מוזיקה",
+      "עולם"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "עולם"
+  }
+}

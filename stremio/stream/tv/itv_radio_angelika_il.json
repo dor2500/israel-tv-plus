@@ -1,0 +1,12 @@
+{
+  "streams": [
+    {
+      "name": "ישראל TV+\n[FHD ראשי]",
+      "title": "רדיו אנג'ליקה ישראל (Radio Angelika)\n📡 radioangelika.com\n✅ שידור רשמי ישיר",
+      "url": "https://radioangelika.com:8443/live",
+      "behaviorHints": {
+        "bingeGroup": "itv-live"
+      }
+    }
+  ]
+}

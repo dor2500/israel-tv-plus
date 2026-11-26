@@ -66,6 +66,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
 import com.israeltv.plus.data.Channel
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.material.icons.rounded.LiveTv
+import coil3.request.ImageRequest
+import coil3.request.crossfade
 import com.israeltv.plus.data.displayName
 import com.israeltv.plus.ui.theme.LocalDimens
 import kotlin.math.abs
@@ -126,9 +130,14 @@ fun NuvioPosterCard(
                 ),
             contentAlignment = Alignment.Center,
         ) {
-            if (!imageUrl.isNullOrBlank()) {
+            val context = LocalContext.current
+            val request = remember(imageUrl) {
+                if (imageUrl.isNullOrBlank()) null
+                else ImageRequest.Builder(context).data(imageUrl).crossfade(true).build()
+            }
+            if (request != null) {
                 AsyncImage(
-                    model = imageUrl,
+                    model = request,
                     contentDescription = title,
                     modifier = Modifier.fillMaxWidth(0.75f).aspectRatio(1f),
                     contentScale = ContentScale.Fit,
@@ -281,12 +290,35 @@ private val CardTitle = TextStyle(fontSize = 12.5.sp, lineHeight = 15.sp)
 
 @Composable
 fun ChannelLogo(url: String, modifier: Modifier = Modifier, isRadio: Boolean = false) {
+    val logoShape = RoundedCornerShape(12.dp)
     if (url.isEmpty()) {
         Box(modifier, contentAlignment = Alignment.Center) {
-            if (isRadio) Icon(Icons.Rounded.Radio, null, Modifier.size(36.dp), tint = MaterialTheme.colorScheme.primary)
+            Icon(
+                if (isRadio) Icons.Rounded.Radio else Icons.Rounded.LiveTv,
+                null,
+                Modifier.size(36.dp),
+                tint = MaterialTheme.colorScheme.primary,
+            )
         }
     } else {
-        AsyncImage(model = url, contentDescription = null, modifier = modifier, contentScale = ContentScale.Fit)
+        val context = LocalContext.current
+        val request = remember(url) {
+            ImageRequest.Builder(context).data(url).crossfade(true).build()
+        }
+        Box(
+            modifier
+                .clip(logoShape)
+                .background(Color.White.copy(alpha = 0.04f))
+                .padding(4.dp),
+            contentAlignment = Alignment.Center,
+        ) {
+            AsyncImage(
+                model = request,
+                contentDescription = null,
+                modifier = Modifier.fillMaxSize().clip(RoundedCornerShape(8.dp)),
+                contentScale = ContentScale.Fit,
+            )
+        }
     }
 }
 
@@ -730,6 +762,7 @@ fun ContinueWatchingShelf(
     onPlay: (Channel) -> Unit,
     modifier: Modifier = Modifier,
     headerTrailing: (@Composable () -> Unit)? = null,
+    epgProgram: (Channel) -> String? = { null },
 ) {
     val d = LocalDimens.current
     Column(modifier.padding(bottom = d.shelfGap)) {
@@ -745,10 +778,11 @@ fun ContinueWatchingShelf(
                     val hash = abs(ch.id.hashCode() % 60) / 100f
                     (0.32f + hash).coerceIn(0.24f, 0.88f)
                 }
+                val liveTitle = epgProgram(ch)?.takeIf { it.isNotBlank() } ?: subtitle(ch)
                 ContinueWatchingCard(
                     channel = ch,
                     logo = logo(ch),
-                    subtitle = subtitle(ch),
+                    subtitle = liveTitle,
                     progress = p,
                     onClick = { onPlay(ch) },
                     sharedKey = "continue:${ch.id}",

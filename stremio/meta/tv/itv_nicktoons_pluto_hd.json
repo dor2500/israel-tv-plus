@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_nicktoons_pluto_hd",
+    "type": "tv",
+    "name": "544. NickToons Pluto TV HD (ניקטונס)",
+    "poster": "https://dor2500.github.io/israel-tv-plus/icon.png",
+    "posterShape": "landscape",
+    "logo": "https://dor2500.github.io/israel-tv-plus/icon.png",
+    "background": "https://dor2500.github.io/israel-tv-plus/icon.png",
+    "description": "ערוץ NickToons Pluto TV – סדרות האנימציה האהובות של ניקלודיאון 24/7\n\n📡 מקור השידור: Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk\n✅ ערוץ FAST רשמי",
+    "genres": [
+      "ילדים מהעולם",
+      "ארצות הברית"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "ארצות הברית"
+  }
+}

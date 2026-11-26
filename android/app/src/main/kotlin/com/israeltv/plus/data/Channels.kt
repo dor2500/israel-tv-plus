@@ -66,9 +66,15 @@ data class Channel(
     val number: Int = 0,
     val lang: String = "",
     val kind: String = "",
+    val country: String = "",
     val countryHe: String = "",
     /** "mako": Keshet's own CDN, the URL needs a viewing ticket from mako (see [playableUrl]). */
     val auth: String = "",
+    val hamalSlug: String = "",
+    val epgId: String = "",
+    val catchupDays: Int = 0,
+    val catchupType: String = "",
+    val catchupSource: String = "",
 ) {
     val isRadio: Boolean get() = kind == "radio"
 
@@ -99,12 +105,56 @@ data class Channel(
 private const val MAKO_ENTITLEMENT = "https://mass.mako.co.il/ClicksStatistics/entitlementsServicesV2.jsp"
 private const val MAKO_TICKET_TTL_MS = 10 * 60_000L
 private val makoTicketCache = ConcurrentHashMap<String, Pair<String, Long>>()
+private const val HAMAL_TICKET_TTL_MS = 20 * 60_000L
+private val hamalUrlCache = ConcurrentHashMap<String, Pair<String, Long>>()
 
 /**
  * Resolves a single candidate stream URL. Automatically fetches a Mako entitlement ticket whenever the URL is hosted
- * on mako-streaming.akamaized.net (or when auth == "mako" and the URL is a Mako stream); every other stream plays as is.
+ * on mako-streaming.akamaized.net, and refreshes direct HLS tokens for HamalSport (2lacasaba.site) streams.
  */
-suspend fun playableUrl(rawUrl: String, auth: String = "", forceRefresh: Boolean = false): String = withContext(Dispatchers.IO) {
+suspend fun playableUrl(
+    rawUrl: String,
+    auth: String = "",
+    forceRefresh: Boolean = false,
+    hamalSlug: String = "",
+): String = withContext(Dispatchers.IO) {
+    if (rawUrl.startsWith("stalker://", ignoreCase = true)) {
+        val client = OkHttpClient.Builder()
+            .connectTimeout(8, java.util.concurrent.TimeUnit.SECONDS)
+            .readTimeout(10, java.util.concurrent.TimeUnit.SECONDS)
+            .build()
+        return@withContext StalkerApi.resolveLink(client, rawUrl)
+    }
+    val isHamal = rawUrl.contains("2lacasaba.site", ignoreCase = true) && hamalSlug.isNotBlank()
+    if (isHamal) {
+        val now = System.currentTimeMillis()
+        if (!forceRefresh) {
+            hamalUrlCache[hamalSlug]?.let { (cached, ts) ->
+                if (now - ts < HAMAL_TICKET_TTL_MS) return@withContext cached
+            }
+        }
+        val fresh = runCatching {
+            val req = java.net.URL("https://hamalsport.tv/kanal-izle/$hamalSlug")
+            val html = (req.openConnection() as java.net.HttpURLConnection).run {
+                connectTimeout = 8_000
+                readTimeout = 8_000
+                setRequestProperty("User-Agent", USER_AGENT)
+                setRequestProperty("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8")
+                setRequestProperty("Accept-Language", "he-IL,he;q=0.9,en-US;q=0.8,en;q=0.7")
+                setRequestProperty("Referer", "https://hamalsport.tv/")
+                inputStream.bufferedReader().use { it.readText() }
+            }
+            val found = Regex("""https?://[^"'\s<>]*2lacasaba\.site/[^"'\s<>]+""", RegexOption.IGNORE_CASE)
+                .find(html)?.value
+                ?: Regex("""<source[^>]+src="(https?://[^"]*2lacasaba[^"]+)"[^>]*>""", RegexOption.IGNORE_CASE)
+                    .find(html)?.groupValues?.get(1)
+            found?.replace("mono.css", "index.m3u8")?.replace("&amp;", "&")
+        }.getOrNull()
+        val resolved = fresh ?: rawUrl.replace("mono.css", "index.m3u8")
+        hamalUrlCache[hamalSlug] = resolved to now
+        return@withContext resolved
+    }
+
     val needsMakoTicket = rawUrl.contains("mako-streaming.akamaized.net", ignoreCase = true) ||
         (auth == "mako" && rawUrl.contains("mako", ignoreCase = true))
     if (!needsMakoTicket) return@withContext rawUrl
@@ -133,7 +183,7 @@ suspend fun playableUrl(rawUrl: String, auth: String = "", forceRefresh: Boolean
     resolved
 }
 
-suspend fun playableUrl(ch: Channel): String = playableUrl(ch.url, ch.auth)
+suspend fun playableUrl(ch: Channel): String = playableUrl(ch.url, ch.auth, hamalSlug = ch.hamalSlug)
 
 @Immutable
 data class Category(val key: String, val name: String, val channels: List<Channel>)
@@ -161,8 +211,15 @@ private val NumberOnly = Regex("^[\\d\\s+]*$")
  */
 val Channel.displayName: String
     get() {
-        val short = name.replace(ChannelWord, " ").replace(Regex("\\s+"), " ").trim().trimStart('-', '–', ' ')
-        return if (short.isEmpty() || NumberOnly.matches(short)) name else short
+        var short = name.replace(ChannelWord, " ")
+            .replace(Regex("\\s*\\([^)]*\\)\\s*"), " ")
+            .replace(Regex("\\b(FHD|UHD|4K|HD|LIVE|TV)\\b", RegexOption.IGNORE_CASE), " ")
+            .replace(Regex("\\s+"), " ")
+            .trim()
+            .trimStart('-', '–', ' ')
+            .trimEnd('-', '–', ' ')
+        if (short.isEmpty() || NumberOnly.matches(short)) short = name
+        return short
     }
 
 /** The line under a card: country for world channels, the category for Israeli ones. */
@@ -178,16 +235,22 @@ fun Channel.subtitle(): String = when {
  */
 @Stable
 class ChannelStore(private val context: Context, private val http: OkHttpClient) {
+    val m3u = M3uStore(context, http)
+    val stalker = StalkerStore(context, http)
     private val json = Json { ignoreUnknownKeys = true; coerceInputValues = true }
+    @Volatile private var lastBaseJson: String? = null
     // per app version: after an update the list bundled with the new APK is used until the site's list is fetched
     private val cache = File(context.filesDir, "channels-${com.israeltv.plus.BuildConfig.VERSION_CODE}.json")
-    private val bundledLogos: Set<String> by lazy {
-        val s = mutableSetOf<String>()
-        runCatching { context.assets.list("www/assets/logos")?.let { s.addAll(it) } }
-        runCatching { context.assets.list("www/assets/vod")?.let { s.addAll(it) } }
-        runCatching { context.assets.list("www/assets/app")?.let { s.addAll(it) } }
-        s
-    }
+    private val assetExistsCache = ConcurrentHashMap<String, Boolean>()
+    private fun isBundledAsset(path: String): Boolean =
+        assetExistsCache.computeIfAbsent(path) {
+            try {
+                context.assets.open(it).close()
+                true
+            } catch (_: Exception) {
+                false
+            }
+        }
     private val _state = MutableStateFlow<ChannelData?>(null)
     val state: StateFlow<ChannelData?> = _state
 
@@ -221,18 +284,34 @@ class ChannelStore(private val context: Context, private val http: OkHttpClient)
         }
     }
 
-    fun logoUrl(ch: Channel): String = when {
-        ch.logo.isEmpty() -> ""
-        ch.logo.startsWith("http") -> ch.logo
-        ch.logo.substringAfterLast('/') in bundledLogos -> "file:///android_asset/www/" + ch.logo.removePrefix("/")
-        else -> REMOTE + ch.logo.removePrefix("/")
+    fun logoUrl(ch: Channel): String {
+        if (ch.logo.isEmpty()) return ""
+        if (ch.logo.startsWith("http")) return ch.logo
+        val rel = ch.logo.removePrefix("/")
+        val assetPath = "www/$rel"
+        return if (isBundledAsset(assetPath)) {
+            "file:///android_asset/$assetPath"
+        } else {
+            REMOTE + rel
+        }
+    }
+
+    fun reloadWithM3u() {
+        val base = lastBaseJson ?: return
+        val currentVod = _state.value?.vod.orEmpty()
+        parse(base, currentVod)?.let { _state.value = it }
     }
 
     private fun parse(text: String, vod: List<VodSeries> = emptyList()): ChannelData? = runCatching {
-        val all = json.decodeFromString<List<Channel>>(text)
+        lastBaseJson = text
+        val base = json.decodeFromString<List<Channel>>(text)
             .filter { it.kind != "app" && it.url.isNotEmpty() }
             .sortedBy { it.number }
-        if (all.isEmpty()) return null
+        if (base.isEmpty()) return null
+        val maxNum = base.maxOfOrNull { it.number } ?: 999
+        val m3uChans = m3u.toChannels(maxNum)
+        val stalkerChans = stalker.toChannels(maxNum + m3uChans.size + 100)
+        val all = base + m3uChans + stalkerChans
         val cats = all.groupBy { it.category }.map { (k, v) -> Category(k, shortCategory(k), v) }
         val israel = cats.firstOrNull { it.channels.first().categoryEn == "israel" }?.channels.orEmpty()
         ChannelData(all, cats, all.associateBy { it.id }, israel.filter { !it.isRadio }.take(8), vod)

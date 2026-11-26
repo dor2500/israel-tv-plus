@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_action_50cent",
+    "type": "tv",
+    "name": "583. סרטי אקשן (50 Cent Action)",
+    "poster": "https://provider-static.plex.tv/epg/cms/production/bcfb9977-809f-49ae-acc7-430f2c6ffb26/50CentAction_Logo_1500x1000_DarkBG_-_Chris_Connors.png",
+    "posterShape": "landscape",
+    "logo": "https://provider-static.plex.tv/epg/cms/production/bcfb9977-809f-49ae-acc7-430f2c6ffb26/50CentAction_Logo_1500x1000_DarkBG_-_Chris_Connors.png",
+    "background": "https://provider-static.plex.tv/epg/cms/production/bcfb9977-809f-49ae-acc7-430f2c6ffb26/50CentAction_Logo_1500x1000_DarkBG_-_Chris_Connors.png",
+    "description": "📡 מקור השידור: Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk\n✅ ערוץ FAST רשמי",
+    "genres": [
+      "סרטים וסדרות",
+      "עולם"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "עולם"
+  }
+}

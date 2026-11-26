@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_floracing_motorsport",
+    "type": "tv",
+    "name": "575. מרוצי מוטורספורט (FloRacing)",
+    "poster": "https://images.fubo.tv/channel-config-ui/station-logos/on-dark/floracing-white.png",
+    "posterShape": "landscape",
+    "logo": "https://images.fubo.tv/channel-config-ui/station-logos/on-dark/floracing-white.png",
+    "background": "https://images.fubo.tv/channel-config-ui/station-logos/on-dark/floracing-white.png",
+    "description": "📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
+    "genres": [
+      "ספורט",
+      "עולם"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "עולם"
+  }
+}

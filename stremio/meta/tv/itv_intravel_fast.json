@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_intravel_fast",
+    "type": "tv",
+    "name": "570. טיולים בעולם (INTRAVEL)",
+    "poster": "https://jiotvimages.cdn.jio.com/dare_images/images/Intravel.png",
+    "posterShape": "landscape",
+    "logo": "https://jiotvimages.cdn.jio.com/dare_images/images/Intravel.png",
+    "background": "https://jiotvimages.cdn.jio.com/dare_images/images/Intravel.png",
+    "description": "📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
+    "genres": [
+      "טבע ודוקו",
+      "עולם"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "עולם"
+  }
+}

@@ -179,6 +179,7 @@ import com.israeltv.plus.data.CastController
 import com.israeltv.plus.data.CastDeviceItem
 import com.israeltv.plus.data.CastProtocol
 import com.israeltv.plus.data.Channel
+import com.israeltv.plus.data.CatchupArchive
 import com.israeltv.plus.data.CatchupDvr
 import com.israeltv.plus.data.CatchupProgram
 import com.israeltv.plus.data.CatchupRepository
@@ -193,6 +194,7 @@ import com.israeltv.plus.ui.components.frostedGlass
 import com.israeltv.plus.ui.components.pressPhysics
 import com.israeltv.plus.ui.components.sharedContainer
 import com.israeltv.plus.ui.components.specularBorder
+import com.israeltv.plus.ui.screens.TvTriviaOverlayCard
 import dev.chrisbanes.haze.hazeSource
 import dev.chrisbanes.haze.rememberHazeState
 import kotlinx.coroutines.delay
@@ -206,24 +208,56 @@ private val GlassDark = Color.Black.copy(alpha = 0.24f)
  * and automatic highest bitrate (1080p FHD) selection.
  */
 private fun buildPlayer(context: Context, handleAudioFocus: Boolean = true): ExoPlayer {
-    val http = DefaultHttpDataSource.Factory()
+    val defaultHttp = DefaultHttpDataSource.Factory()
         .setUserAgent(USER_AGENT)
         .setAllowCrossProtocolRedirects(true)
         .setConnectTimeoutMs(6_000)
         .setReadTimeoutMs(10_000)
         .setDefaultRequestProperties(mapOf("Referer" to "https://stmify.com/"))
+    val hamalHttp = DefaultHttpDataSource.Factory()
+        .setUserAgent(USER_AGENT)
+        .setAllowCrossProtocolRedirects(true)
+        .setConnectTimeoutMs(6_000)
+        .setReadTimeoutMs(10_000)
+        .setDefaultRequestProperties(mapOf("Referer" to "https://hamalsport.tv/", "Origin" to "https://hamalsport.tv"))
+    val routingHttp = androidx.media3.datasource.DataSource.Factory {
+        val base = defaultHttp.createDataSource()
+        val hamal = hamalHttp.createDataSource()
+        object : androidx.media3.datasource.DataSource {
+            private var active: androidx.media3.datasource.DataSource = base
+            override fun addTransferListener(transferListener: androidx.media3.datasource.TransferListener) {
+                base.addTransferListener(transferListener)
+                hamal.addTransferListener(transferListener)
+            }
+            override fun open(dataSpec: androidx.media3.datasource.DataSpec): Long {
+                val host = dataSpec.uri.host.orEmpty()
+                val path = dataSpec.uri.encodedPath.orEmpty()
+                val needsHamalHeaders = host.contains("2lacasaba", ignoreCase = true) ||
+                    host.contains("hamalsport", ignoreCase = true) ||
+                    host.contains("hepbettv", ignoreCase = true) ||
+                    path.contains("/tracks-v1a1/", ignoreCase = true) ||
+                    path.contains("/yessport", ignoreCase = true)
+                active = if (needsHamalHeaders) hamal else base
+                return active.open(dataSpec)
+            }
+            override fun read(buffer: ByteArray, offset: Int, length: Int): Int = active.read(buffer, offset, length)
+            override fun getUri(): android.net.Uri? = active.uri
+            override fun close() = active.close()
+        }
+    }
     val loadControl = DefaultLoadControl.Builder()
         .setBufferDurationsMs(
-            /* minBufferMs = */ 15_000,
+            /* minBufferMs = */ 20_000,
             /* maxBufferMs = */ 60_000,
-            /* bufferForPlaybackMs = */ 500,
-            /* bufferForPlaybackAfterRebufferMs = */ 2_500,
+            /* bufferForPlaybackMs = */ 1_000,
+            /* bufferForPlaybackAfterRebufferMs = */ 3_000,
         )
         .setPrioritizeTimeOverSizeThresholds(true)
         .build()
     val trackSelector = DefaultTrackSelector(context).apply {
         parameters = buildUponParameters()
-            .setForceHighestSupportedBitrate(true)
+            .setAllowVideoMixedMimeTypeAdaptiveness(true)
+            .setAllowVideoNonSeamlessAdaptiveness(true)
             .build()
     }
     val renderersFactory = DefaultRenderersFactory(context)
@@ -233,7 +267,7 @@ private fun buildPlayer(context: Context, handleAudioFocus: Boolean = true): Exo
     return ExoPlayer.Builder(context, renderersFactory)
         .setTrackSelector(trackSelector)
         .setLoadControl(loadControl)
-        .setMediaSourceFactory(DefaultMediaSourceFactory(http))
+        .setMediaSourceFactory(DefaultMediaSourceFactory(routingHttp))
         .setAudioAttributes(
             AudioAttributes.Builder().setUsage(C.USAGE_MEDIA).setContentType(C.AUDIO_CONTENT_TYPE_MOVIE).build(),
             /* handleAudioFocus = */ handleAudioFocus,
@@ -304,6 +338,34 @@ fun PlayerScreen(
     var catchupProgram by remember(current.id) { mutableStateOf<CatchupProgram?>(null) }
     var lowBandwidthMode by remember { mutableStateOf(false) }
     var isAudioOnlyMode by remember { mutableStateOf(false) }
+    var showLiveClock by remember { mutableStateOf(false) }
+    var liveClockText by remember { mutableStateOf("") }
+    var retroCrtMode by remember { mutableStateOf(false) }
+    var newsTickerMode by remember { mutableStateOf(false) }
+    var telemetryHudMode by remember { mutableStateOf(false) }
+    var sportsBoardMode by remember { mutableStateOf(false) }
+    var autoTourMode by remember { mutableStateOf(false) }
+    var shakeToZapMode by remember { mutableStateOf(false) }
+    var triviaOverlayMode by remember { mutableStateOf(false) }
+    var varZoom by remember { mutableFloatStateOf(1.0f) }
+    var nightDim by remember { mutableFloatStateOf(0.0f) }
+    var touchLockMode by remember { mutableStateOf(false) }
+    var stealthMode by remember { mutableStateOf(false) }
+    var ambientMode by remember { mutableStateOf(AmbientSoundMode.OFF) }
+
+    AmbientSoundEffect(ambientMode)
+
+    LaunchedEffect(stealthMode) {
+        player.volume = if (stealthMode) 0f else 1f
+    }
+
+    LaunchedEffect(showLiveClock) {
+        while (showLiveClock) {
+            val cal = java.util.Calendar.getInstance()
+            liveClockText = String.format(Locale.US, "%02d:%02d", cal.get(java.util.Calendar.HOUR_OF_DAY), cal.get(java.util.Calendar.MINUTE))
+            delay(15_000)
+        }
+    }
 
     LaunchedEffect(lowBandwidthMode) {
         val p = player.trackSelectionParameters.buildUpon()
@@ -404,6 +466,25 @@ fun PlayerScreen(
         touchTick++
     }
 
+    LaunchedEffect(autoTourMode, list.size) {
+        if (!autoTourMode || list.size <= 1) return@LaunchedEffect
+        while (autoTourMode) {
+            delay(12_000)
+            if (autoTourMode) {
+                val nextIdx = (index + 1) % list.size
+                statusToast = "⚡ סיור אוטומטי: ${list[nextIdx].name}"
+                switchTo(nextIdx)
+            }
+        }
+    }
+
+    ShakeToZapEffect(enabled = shakeToZapMode && list.size > 1) {
+        haptic.performHapticFeedback(HapticFeedbackType.LongPress)
+        val nextIdx = (0 until list.size).filter { it != index }.randomOrNull() ?: index
+        statusToast = "📳 שקשוק הקסם: ${list[nextIdx].name}"
+        switchTo(nextIdx)
+    }
+
     // the guide behind the overlay's programme carousel, oldest first
     var programs by remember(current.id) { mutableStateOf<List<CatchupProgram>>(emptyList()) }
     LaunchedEffect(current.id) {
@@ -416,10 +497,18 @@ fun PlayerScreen(
         isCatchupMode = true
         catchupProgram = prog
         val dvrUrl = CatchupDvr.dvrUrlFor(current)
+        val archiveUrl = if (dvrUrl == null) {
+            val durSec = (prog.durationMin.coerceAtLeast(30) * 60)
+            CatchupArchive.archiveUrlFor(current, prog.startMs, durSec)
+        } else null
         val offsetFromLiveMs = (System.currentTimeMillis() - prog.startMs).coerceAtLeast(0L)
         statusToast = "⏮️ שידור חוזר: ${prog.title}"
         sheet = null
-        if (dvrUrl != null) {
+        if (archiveUrl != null) {
+            player.setMediaItem(MediaItem.Builder().setUri(archiveUrl).setMimeType(MimeTypes.APPLICATION_M3U8).build())
+            player.prepare()
+            player.playWhenReady = true
+        } else if (dvrUrl != null) {
             player.setMediaItem(MediaItem.Builder().setUri(dvrUrl).setMimeType(MimeTypes.APPLICATION_M3U8).build())
             player.prepare()
             player.playWhenReady = true
@@ -458,7 +547,7 @@ fun PlayerScreen(
         if (prevWasOttrast && rawCandidate.contains("ottrast.com", ignoreCase = true)) {
             delay(250)
         }
-        val url = runCatching { playableUrl(rawCandidate, current.auth, forceRefresh = attempt > 0) }.getOrElse {
+        val url = runCatching { playableUrl(rawCandidate, current.auth, forceRefresh = attempt > 0, hamalSlug = current.hamalSlug) }.getOrElse {
             if (sourceIndex + 1 < candidates.size) {
                 sourceIndex += 1
                 return@LaunchedEffect
@@ -618,6 +707,7 @@ fun PlayerScreen(
         Box(
             Modifier
                 .fillMaxSize()
+                .graphicsLayer(scaleX = varZoom, scaleY = varZoom)
                 .hazeSource(playerHaze)
         ) {
             if ((settled || inPip) && !multiViewActive) AndroidView(
@@ -634,8 +724,7 @@ fun PlayerScreen(
                 },
                 update = { v ->
                     v.resizeMode = fit.resizeMode
-                    val lift = if (controls && !inPip) with(density) { 240.dp.roundToPx() } else 0
-                    v.subtitleView?.setPadding(0, 0, 0, lift)
+                    v.subtitleView?.setPadding(0, 0, 0, with(density) { 24.dp.roundToPx() })
                 },
                 modifier = Modifier.fillMaxSize(),
             )
@@ -645,12 +734,18 @@ fun PlayerScreen(
         Box(
             Modifier.fillMaxSize().pointerInputs(
                 onTap = {
-                    controls = !controls
-                    touchTick++
+                    if (!touchLockMode) {
+                        controls = !controls
+                        touchTick++
+                    } else {
+                        statusToast = "🔒 המסך נעול — הקש על המנעול בפינה לשחרור"
+                    }
                 },
                 onSwipe = { up ->
-                    haptic.performHapticFeedback(HapticFeedbackType.GestureThresholdActivate)
-                    switchTo(if (up) index + 1 else index - 1)
+                    if (!touchLockMode) {
+                        haptic.performHapticFeedback(HapticFeedbackType.GestureThresholdActivate)
+                        switchTo(if (up) index + 1 else index - 1)
+                    }
                 },
             )
         )
@@ -733,59 +828,253 @@ fun PlayerScreen(
             }
         }
 
-        // the single bottom-anchored overlay: programme carousel, Options, time (left) and mini channel list (right)
+        // Mobile-only player chrome: clean minimal top bar only (bottom info bar completely removed on mobile)
         AnimatedVisibility(
-            !multiViewActive && controls && error == null && !castController.isCasting && !castController.isConnecting,
+            !touchLockMode && !multiViewActive && controls && error == null && !castController.isCasting && !castController.isConnecting,
             enter = fadeIn(tween(220)),
             exit = fadeOut(tween(320)),
-            modifier = Modifier.fillMaxSize(),
+            modifier = Modifier.align(Alignment.TopCenter).fillMaxWidth(),
         ) {
-            val isVodNow = current.kind == "vod" || current.categoryEn == "vod"
-            PlayerOverlay(
-                channel = current,
-                programs = programs,
-                positionMs = currentPositionMs,
-                durationMs = durationMs,
-                isVod = isVodNow,
-                inCatchup = isCatchupMode,
-                catchupTitle = catchupProgram?.title,
-                canCatchup = CatchupRepository.hasCatchup(current),
-                channels = list,
-                currentIndex = index,
-                logo = logo,
-                onProgramClick = { prog ->
-                    touchTick++
-                    when {
-                        // the live programme, catch-up playback or no guide at all: the card is the play/pause control
-                        // (in catch-up, "לשידור החי" beside Options returns to live)
-                        prog == null || prog.isLiveNow -> {
-                            if (player.isPlaying) {
-                                player.pause()
-                            } else {
-                                player.volume = 1.0f
-                                player.play()
-                            }
-                        }
-                        prog.isPast -> if (CatchupRepository.hasCatchup(current)) startCatchup(prog) else statusToast = "לערוץ הזה אין שידור חוזר"
-                        else -> statusToast = "${prog.title} · ${prog.timeLabel}"
+            Row(
+                Modifier
+                    .fillMaxWidth()
+                    .background(Brush.verticalGradient(listOf(Color.Black.copy(alpha = 0.72f), Color.Transparent)))
+                    .windowInsetsPadding(WindowInsets.statusBars)
+                    .padding(horizontal = 14.dp, vertical = 12.dp),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                GlassIconButton(Icons.AutoMirrored.Rounded.ArrowBack, "חזרה", onClose, size = 40.dp)
+                Spacer(Modifier.width(10.dp))
+                Column(Modifier.weight(1f)) {
+                    Text(
+                        current.name,
+                        color = Color.White,
+                        fontSize = 15.sp,
+                        fontWeight = FontWeight.Bold,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis,
+                    )
+                    if (isCatchupMode && catchupProgram != null) {
+                        Text(
+                            "⏮️ ${catchupProgram!!.title}",
+                            color = Color(0xFF7DD3FC),
+                            fontSize = 12.sp,
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis,
+                        )
                     }
-                },
-                onOptions = {
-                    touchTick++
-                    sheet = "more"
-                },
-                onGoLive = {
-                    touchTick++
-                    isCatchupMode = false
-                    catchupProgram = null
-                    statusToast = "🔴 חזרה לשידור חי"
-                    if (player.isCurrentMediaItemLive) player.seekToDefaultPosition() else switchTo(index)
-                },
-                onPickChannel = { i ->
-                    touchTick++
-                    if (i != index) switchTo(i)
-                },
+                }
+                if (isCatchupMode) {
+                    Box(
+                        Modifier
+                            .padding(end = 8.dp)
+                            .clip(RoundedCornerShape(16.dp))
+                            .background(Color(0xFFE5202E))
+                            .clickable {
+                                touchTick++
+                                isCatchupMode = false
+                                catchupProgram = null
+                                statusToast = "🔴 חזרה לשידור חי"
+                                if (player.isCurrentMediaItemLive) player.seekToDefaultPosition() else switchTo(index)
+                            }
+                            .padding(horizontal = 10.dp, vertical = 6.dp),
+                    ) {
+                        Text("לשידור החי", color = Color.White, fontSize = 11.sp, fontWeight = FontWeight.Bold)
+                    }
+                }
+                if (list.size > 1) {
+                    Box(
+                        Modifier
+                            .padding(end = 6.dp)
+                            .clip(CircleShape)
+                            .background(Color.White.copy(alpha = 0.14f))
+                            .clickable {
+                                touchTick++
+                                val nextIdx = (0 until list.size).filter { it != index }.randomOrNull() ?: index
+                                statusToast = "🎲 זפזופ אקראי: ${list[nextIdx].name}"
+                                switchTo(nextIdx)
+                            }
+                            .padding(horizontal = 10.dp, vertical = 8.dp),
+                    ) {
+                        Text("🎲", fontSize = 14.sp)
+                    }
+                }
+                Box(
+                    Modifier
+                        .padding(end = 6.dp)
+                        .clip(CircleShape)
+                        .background(if (showLiveClock) Color(0xFF3B82F6).copy(alpha = 0.45f) else Color.White.copy(alpha = 0.14f))
+                        .clickable {
+                            touchTick++
+                            showLiveClock = !showLiveClock
+                            statusToast = if (showLiveClock) "🕒 שעון צף הופעל" else "🕒 שעון צף הוסתר"
+                        }
+                        .padding(horizontal = 10.dp, vertical = 8.dp),
+                ) {
+                    Text("🕒", fontSize = 14.sp)
+                }
+                Box(
+                    Modifier
+                        .padding(end = 6.dp)
+                        .clip(CircleShape)
+                        .background(
+                            if (retroCrtMode || newsTickerMode || telemetryHudMode || ambientMode != AmbientSoundMode.OFF)
+                                Color(0xFFA855F7).copy(alpha = 0.5f)
+                            else Color.White.copy(alpha = 0.14f)
+                        )
+                        .clickable {
+                            touchTick++
+                            sheet = "wow"
+                        }
+                        .padding(horizontal = 10.dp, vertical = 8.dp),
+                ) {
+                    Text("✨", fontSize = 14.sp)
+                }
+                GlassIconButton(
+                    Icons.Rounded.MoreHoriz,
+                    "אפשרויות",
+                    {
+                        touchTick++
+                        sheet = "more"
+                    },
+                    size = 40.dp,
+                )
+            }
+        }
+
+        // WOW Overlays (Night Dimmer, Retro 90s CRT, Live Breaking News Ticker, Telemetry HUD, Live Sports Scoreboard, Touch Lock, Stealth Mode)
+        if (nightDim > 0f && !inPip) {
+            Box(Modifier.fillMaxSize().background(Color.Black.copy(alpha = nightDim)))
+        }
+        if (retroCrtMode && !inPip && !multiViewActive) {
+            RetroCrtOverlay(channelLabel = "CH ${(index + 1).toString().padStart(2, '0')}")
+        }
+        if (newsTickerMode && !inPip && !multiViewActive) {
+            LiveNewsTickerBar(modifier = Modifier.align(Alignment.TopCenter))
+        }
+        if (telemetryHudMode && !inPip && !multiViewActive) {
+            TelemetryHudOverlay(
+                player = player,
+                channelName = current.name,
+                modifier = Modifier.align(Alignment.TopStart),
             )
+        }
+        if (sportsBoardMode && !inPip && !multiViewActive) {
+            LiveSportsScoreboardHud(modifier = Modifier.align(Alignment.TopEnd))
+        }
+        if (touchLockMode && !inPip) {
+            Box(
+                Modifier
+                    .align(Alignment.TopStart)
+                    .windowInsetsPadding(WindowInsets.statusBars)
+                    .padding(14.dp)
+                    .clip(RoundedCornerShape(999.dp))
+                    .background(Color.Black.copy(alpha = 0.68f))
+                    .border(1.dp, Color(0xFFFACC15).copy(alpha = 0.65f), RoundedCornerShape(999.dp))
+                    .clickable {
+                        touchLockMode = false
+                        controls = true
+                        statusToast = "🔓 נעילת המסך שוחררה"
+                    }
+                    .padding(horizontal = 12.dp, vertical = 7.dp),
+            ) {
+                Text("🔒 שחרר נעילה", color = Color(0xFFFACC15), fontSize = 12.sp, fontWeight = FontWeight.Bold)
+            }
+        }
+        if (stealthMode) {
+            StealthClockOverlay(onDismiss = { stealthMode = false })
+        }
+        if (triviaOverlayMode && !inPip) {
+            TvTriviaOverlayCard(
+                compact = true,
+                onClose = { triviaOverlayMode = false },
+            )
+        }
+        if (sheet == "wow") {
+            WowModesSheet(
+                retroCrt = retroCrtMode,
+                newsTicker = newsTickerMode,
+                telemetryHud = telemetryHudMode,
+                sportsBoard = sportsBoardMode,
+                autoTour = autoTourMode,
+                shakeToZap = shakeToZapMode,
+                varZoom = varZoom,
+                nightDim = nightDim,
+                ambientMode = ambientMode,
+                onToggleRetroCrt = {
+                    retroCrtMode = !retroCrtMode
+                    statusToast = if (retroCrtMode) "📺 מצב רטרו 90s CRT הופעל!" else "📺 מצב רטרו CRT כבוי"
+                },
+                onToggleNewsTicker = {
+                    newsTickerMode = !newsTickerMode
+                    statusToast = if (newsTickerMode) "📰 פס מבזקי חדשות חי הופעל" else "📰 פס מבזקי חדשות הוסתר"
+                },
+                onToggleTelemetryHud = {
+                    telemetryHudMode = !telemetryHudMode
+                    statusToast = if (telemetryHudMode) "📊 מד דופק שידור חי הופעל" else "📊 מד דופק הוסתר"
+                },
+                onToggleSportsBoard = {
+                    sportsBoardMode = !sportsBoardMode
+                    statusToast = if (sportsBoardMode) "⚽ לוח תוצאות ספורט חי הופעל" else "⚽ לוח תוצאות הוסתר"
+                },
+                onToggleAutoTour = {
+                    autoTourMode = !autoTourMode
+                    statusToast = if (autoTourMode) "⚡ סיור ערוצים אוטומטי הופעל (כל 12 שניות)" else "⚡ סיור ערוצים עצר"
+                },
+                onToggleShakeToZap = {
+                    shakeToZapMode = !shakeToZapMode
+                    statusToast = if (shakeToZapMode) "📳 נענע את המכשיר לזפזופ מפתיע!" else "📳 נענע לזפזופ כבוי"
+                },
+                onOpenCommercialTrivia = {
+                    triviaOverlayMode = true
+                },
+                onCycleVarZoom = {
+                    val levels = listOf(1.0f, 1.5f, 2.0f, 2.5f)
+                    val next = levels[(levels.indexOf(varZoom) + 1) % levels.size]
+                    varZoom = next
+                    statusToast = if (next > 1.05f) "🔍 זום שידור חי: ${next}x" else "🔍 זום שידור: רגיל (1x)"
+                },
+                onCycleNightDim = {
+                    val dims = listOf(0.0f, 0.35f, 0.55f, 0.75f)
+                    val next = dims[(dims.indexOf(nightDim) + 1) % dims.size]
+                    nightDim = next
+                    statusToast = if (next > 0f) "🌑 עמעום לילה: ${(next * 100).toInt()}%" else "🌑 עמעום לילה כבוי"
+                },
+                onActivateTouchLock = {
+                    touchLockMode = true
+                    controls = false
+                    statusToast = "🔒 המסך ננעל למניעת נגיעות"
+                },
+                onCycleAmbient = {
+                    ambientMode = ambientMode.next()
+                    statusToast = "🎧 צלילי רקע: ${ambientMode.label}"
+                },
+                onActivateStealth = {
+                    stealthMode = true
+                },
+                onDismiss = { sheet = null },
+            )
+        }
+
+        // Persistent Floating Live TV Clock (stays visible even when top bar auto-hides)
+        if (showLiveClock && liveClockText.isNotEmpty() && !controls && !inPip && !multiViewActive) {
+            Box(
+                Modifier
+                    .align(Alignment.TopEnd)
+                    .windowInsetsPadding(WindowInsets.statusBars)
+                    .padding(14.dp)
+                    .clip(RoundedCornerShape(999.dp))
+                    .background(Color.Black.copy(alpha = 0.55f))
+                    .border(1.dp, Color.White.copy(alpha = 0.16f), RoundedCornerShape(999.dp))
+                    .padding(horizontal = 12.dp, vertical = 5.dp),
+            ) {
+                Text(
+                    liveClockText,
+                    color = Color.White.copy(alpha = 0.92f),
+                    fontSize = 13.sp,
+                    fontWeight = FontWeight.Bold,
+                )
+            }
         }
 
         PlayerOptionsDrawer(
@@ -992,10 +1281,22 @@ fun PlayerScreen(
                     title = "לפני $mins דקות"
                 )
                 val dvrUrl = CatchupDvr.dvrUrlFor(current)
+                val archiveUrl = if (dvrUrl == null) {
+                    CatchupArchive.archiveUrlFor(current, System.currentTimeMillis() - mins * 60_000L, (mins + 60) * 60)
+                } else null
                 val rewindMs = mins * 60_000L
                 statusToast = "⏮️ חזרה $mins דקות אחורה"
                 sheet = null
-                if (dvrUrl != null) {
+                if (archiveUrl != null) {
+                    player.setMediaItem(
+                        androidx.media3.common.MediaItem.Builder()
+                            .setUri(archiveUrl)
+                            .setMimeType(androidx.media3.common.MimeTypes.APPLICATION_M3U8)
+                            .build()
+                    )
+                    player.prepare()
+                    player.playWhenReady = true
+                } else if (dvrUrl != null) {
                     player.setMediaItem(
                         androidx.media3.common.MediaItem.Builder()
                             .setUri(dvrUrl)

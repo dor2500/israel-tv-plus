@@ -1,0 +1,28 @@
+{
+  "metas": [
+    {
+      "id": "itv_naruto_247",
+      "type": "tv",
+      "name": "604. נארוטו 24/7 (Naruto)",
+      "poster": "https://i.imgur.com/M8X3Kvc.png",
+      "posterShape": "landscape",
+      "description": "נארוטו 24/7 (Naruto) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "ילדים מהעולם",
+        "יפן"
+      ]
+    },
+    {
+      "id": "itv_naruto_shippuden_247",
+      "type": "tv",
+      "name": "605. נארוטו שיפודן 24/7 (Shippuden)",
+      "poster": "https://images.pluto.tv/channels/64c92fea3c3344000869e8a9/colorLogoPNG.png",
+      "posterShape": "landscape",
+      "description": "נארוטו שיפודן 24/7 (Shippuden) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: Pluto TV (חינמי) דרך שירות ההפניה jmp2.uk\n✅ ערוץ FAST רשמי",
+      "genres": [
+        "ילדים מהעולם",
+        "יפן"
+      ]
+    }
+  ]
+}

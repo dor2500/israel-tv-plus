@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_fashiontv_paris_orig",
+    "type": "tv",
+    "name": "631. ערוץ האופנה פריז (FashionTV)",
+    "poster": "https://i.imgur.com/GFTAN5Q.png",
+    "posterShape": "landscape",
+    "logo": "https://i.imgur.com/GFTAN5Q.png",
+    "background": "https://i.imgur.com/GFTAN5Q.png",
+    "description": "ערוץ האופנה פריז (FashionTV) — שידור ישיר חינמי מסביב לשעון (FAST 24/7).\n\n📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
+    "genres": [
+      "לייף סטייל ובידור",
+      "צרפת"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "צרפת"
+  }
+}

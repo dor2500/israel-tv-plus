@@ -2,8 +2,8 @@
   "streams": [
     {
       "name": "ישראל TV+\n[FHD ראשי]",
-      "title": "i24NEWS English World HD\n📡 i24NEWS – CDN Akamai של השידור הרשמי\n✅ שידור רשמי ישיר",
-      "url": "https://hlspackager.akamaized.net/live/DB/i24_ENGLISH/HLS/i24_ENGLISH.m3u8",
+      "title": "i24NEWS English World HD\n📡 i24NEWS – שרת רשמי\n✅ שידור רשמי ישיר",
+      "url": "https://i24newsenglish-cdn.encoders.immergo.tv/master.m3u8",
       "behaviorHints": {
         "bingeGroup": "itv-live"
       }

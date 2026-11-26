@@ -1,0 +1,12 @@
+{
+  "streams": [
+    {
+      "name": "ישראל TV+\n[FHD ראשי]",
+      "title": "Smurf TV (הדרדסים 24/7)\n📡 stream.ads.ottera.tv\n⚠️ ממסר צד שלישי",
+      "url": "https://stream.ads.ottera.tv/playlist.m3u8?network_id=4065",
+      "behaviorHints": {
+        "bingeGroup": "itv-live"
+      }
+    }
+  ]
+}

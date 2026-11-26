@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "id": "itv_better_life_nature",
+    "type": "tv",
+    "name": "565. טבע ונופים (Better Life)",
+    "poster": "https://i.imgur.com/D8Vuw6I.png",
+    "posterShape": "landscape",
+    "logo": "https://i.imgur.com/D8Vuw6I.png",
+    "background": "https://i.imgur.com/D8Vuw6I.png",
+    "description": "📡 מקור השידור: FAST Public CDN\n✅ ערוץ FAST רשמי",
+    "genres": [
+      "טבע ודוקו",
+      "עולם"
+    ],
+    "releaseInfo": "LIVE",
+    "country": "עולם"
+  }
+}

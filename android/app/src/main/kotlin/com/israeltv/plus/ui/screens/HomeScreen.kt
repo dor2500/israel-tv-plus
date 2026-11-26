@@ -32,6 +32,9 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.CircleShape
@@ -102,6 +105,8 @@ import androidx.media3.ui.PlayerView
 import coil3.compose.AsyncImage
 import com.israeltv.plus.R
 import com.israeltv.plus.data.AppPrefs
+import com.israeltv.plus.data.CatchupProgram
+import com.israeltv.plus.data.CatchupRepository
 import com.israeltv.plus.data.Channel
 import com.israeltv.plus.data.ChannelData
 import com.israeltv.plus.data.USER_AGENT
@@ -151,6 +156,7 @@ fun HomeScreen(
     onInfo: (Channel) -> Unit,
     onSeeAll: (String) -> Unit,
     onSeeAllVod: (() -> Unit)? = null,
+    onOpenWow: ((WowExperience) -> Unit)? = null,
 ) {
     val padding = feedPadding(withCategories = true)
     val isKids = prefs.isKids
@@ -169,12 +175,37 @@ fun HomeScreen(
     val visibleCategories = if (macroCategory == null) pool else pool.filter { it.name == macroCategory }
 
     // Parallax offset derived from the LazyColumn's first item scroll position
-    val heroScrollPx by remember(listState) {
-        derivedStateOf {
-            if (listState.firstVisibleItemIndex == 0) listState.firstVisibleItemScrollOffset.toFloat() else 900f
-        }
+    val heroScrollProvider = remember(listState) {
+        { if (listState.firstVisibleItemIndex == 0) listState.firstVisibleItemScrollOffset.toFloat() else 900f }
     }
     var selectedVodSeries by remember { mutableStateOf<VodSeries?>(null) }
+    val ctx = LocalContext.current
+    var recentEpg by remember { mutableStateOf<Map<String, String>>(emptyMap()) }
+    var liveNowItems by remember { mutableStateOf<List<Pair<Channel, CatchupProgram>>>(emptyList()) }
+    val recentIds = prefs.recents
+    LaunchedEffect(recentIds, data) {
+        if (data == null) return@LaunchedEffect
+        val resolved = mutableMapOf<String, String>()
+        recentIds.take(12).forEach { id ->
+            val ch = data.byId[id] ?: return@forEach
+            val progs = runCatching { CatchupRepository.getProgramsForChannel(ctx, ch) }.getOrNull().orEmpty()
+            val cur = progs.firstOrNull { it.isLiveNow }
+            if (cur != null && cur.title.isNotBlank()) resolved[id] = cur.title
+        }
+        recentEpg = resolved
+        // Load "On Air Now" live EPG snapshot for flagship Israeli channels
+        val flagshipIds = listOf("kan11", "keshet12", "reshet13", "channel14", "i24news_he", "i24news", "sport5", "kan_educational", "channel9")
+        val onAir = mutableListOf<Pair<Channel, CatchupProgram>>()
+        val candidates = flagshipIds.mapNotNull { data.byId[it] }.ifEmpty {
+            data.channels.filter { it.categoryEn == "israel" && !it.isRadio }.take(8)
+        }
+        candidates.forEach { ch ->
+            val progs = runCatching { CatchupRepository.getProgramsForChannel(ctx, ch) }.getOrNull().orEmpty()
+            val cur = progs.firstOrNull { it.isLiveNow }
+            if (cur != null && cur.title.isNotBlank()) onAir.add(ch to cur)
+        }
+        liveNowItems = onAir
+    }
 
     LazyColumn(
         Modifier.fillMaxSize(),
@@ -198,12 +229,121 @@ fun HomeScreen(
                 featured = heroFeatured,
                 prefs = prefs,
                 logo = logo,
-                scrollOffsetPx = heroScrollPx,
+                scrollOffsetProvider = heroScrollProvider,
                 topInset = padding.calculateTopPadding(),
                 onPlay = { onPlay(it, heroFeatured) },
                 onInfo = onInfo,
                 modifier = Modifier.bleedToTop(padding).cascadeIn(0),
             )
+        }
+        // Futuristic WOW Experiences Launchpad (Reels, 2x2 Command Wall, 3D Globe, Slot Jackpot)
+        if (!isKids && macroCategory == null && onOpenWow != null) {
+            item(key = "wow_launchpad") {
+                WowLaunchpadStrip(onOpen = onOpenWow)
+            }
+        }
+        // Quick TV Actions: "הפתע אותי" (Channel Roulette) + Live "משודר עכשיו" Strip
+        item(key = "tv_quick_actions") {
+            val roulettePool = remember(pool, data) {
+                pool.flatMap { it.channels }.filter { !it.isRadio && it.url.isNotBlank() }.ifEmpty { data.channels }
+            }
+            Column(Modifier.fillMaxWidth().padding(bottom = 14.dp)) {
+                Row(
+                    Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 6.dp),
+                    horizontalArrangement = Arrangement.spacedBy(10.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Row(
+                        Modifier
+                            .clip(RoundedCornerShape(18.dp))
+                            .background(MaterialTheme.colorScheme.primary.copy(alpha = 0.18f))
+                            .border(1.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.45f), RoundedCornerShape(18.dp))
+                            .clickable {
+                                if (roulettePool.isNotEmpty()) {
+                                    val pick = roulettePool.random()
+                                    onPlay(pick, roulettePool)
+                                }
+                            }
+                            .padding(horizontal = 14.dp, vertical = 9.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(6.dp),
+                    ) {
+                        Text("🎲", fontSize = 14.sp)
+                        Text(
+                            "הפתע אותי",
+                            color = MaterialTheme.colorScheme.onSurface,
+                            fontSize = 13.sp,
+                            fontWeight = FontWeight.Bold,
+                        )
+                    }
+                    if (liveNowItems.isNotEmpty()) {
+                        Text(
+                            "🔴 משודר עכשיו (${liveNowItems.size})",
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            fontSize = 12.sp,
+                            fontWeight = FontWeight.Medium,
+                        )
+                    }
+                }
+                if (liveNowItems.isNotEmpty() && !isKids && macroCategory == null) {
+                    Spacer(Modifier.height(6.dp))
+                    LazyRow(
+                        contentPadding = PaddingValues(horizontal = 16.dp),
+                        horizontalArrangement = Arrangement.spacedBy(10.dp),
+                    ) {
+                        items(liveNowItems, key = { it.first.id }) { (ch, prog) ->
+                            val nowMs = System.currentTimeMillis()
+                            val totalMs = (prog.endMs - prog.startMs).coerceAtLeast(1L)
+                            val frac = ((nowMs - prog.startMs).toFloat() / totalMs.toFloat()).coerceIn(0f, 1f)
+                            Column(
+                                Modifier
+                                    .width(196.dp)
+                                    .clip(RoundedCornerShape(14.dp))
+                                    .background(MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.42f))
+                                    .border(1.dp, Color.White.copy(alpha = 0.08f), RoundedCornerShape(14.dp))
+                                    .clickable { onPlay(ch, liveNowItems.map { it.first }) }
+                                    .padding(11.dp),
+                            ) {
+                                Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                                    Box(Modifier.size(7.dp).clip(CircleShape).background(Color(0xFFEF4444)))
+                                    Text(
+                                        ch.name,
+                                        color = MaterialTheme.colorScheme.primary,
+                                        fontSize = 11.sp,
+                                        fontWeight = FontWeight.Bold,
+                                        maxLines = 1,
+                                        overflow = TextOverflow.Ellipsis,
+                                    )
+                                }
+                                Spacer(Modifier.height(4.dp))
+                                Text(
+                                    prog.title,
+                                    color = MaterialTheme.colorScheme.onSurface,
+                                    fontSize = 13.sp,
+                                    fontWeight = FontWeight.SemiBold,
+                                    maxLines = 1,
+                                    overflow = TextOverflow.Ellipsis,
+                                )
+                                Spacer(Modifier.height(8.dp))
+                                Box(
+                                    Modifier
+                                        .fillMaxWidth()
+                                        .height(3.dp)
+                                        .clip(RoundedCornerShape(2.dp))
+                                        .background(Color.White.copy(alpha = 0.14f)),
+                                ) {
+                                    Box(
+                                        Modifier
+                                            .fillMaxWidth(frac)
+                                            .fillMaxHeight()
+                                            .background(Color(0xFFEF4444)),
+                                    )
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
         // The "רק ישראלי" chip docks into the trailing edge of the Israeli shelf header (else the first shelf)
         val israeliKey = visibleCategories.firstOrNull { "ישראל" in it.name }?.key
@@ -223,6 +363,7 @@ fun HomeScreen(
                     subtitle = subtitle,
                     onPlay = { onPlay(it, recent) },
                     headerTrailing = if (!chipOnCategory) filterChip else null,
+                    epgProgram = { ch -> recentEpg[ch.id] },
                     modifier = Modifier.cascadeIn(i),
                 )
             }
@@ -372,7 +513,7 @@ private fun HeroPager(
     featured: List<Channel>,
     prefs: AppPrefs,
     logo: (Channel) -> String,
-    scrollOffsetPx: Float,
+    scrollOffsetProvider: () -> Float,
     topInset: androidx.compose.ui.unit.Dp,
     onPlay: (Channel) -> Unit,
     onInfo: (Channel) -> Unit,
@@ -383,7 +524,9 @@ private fun HeroPager(
     LaunchedEffect(pager.settledPage, pager.isScrollInProgress) {
         if (pager.isScrollInProgress) return@LaunchedEffect
         delay(8000)
-        pager.animateScrollToPage((pager.currentPage + 1) % featured.size)
+        if (scrollOffsetProvider() < 250f) {
+            pager.animateScrollToPage((pager.currentPage + 1) % featured.size)
+        }
     }
     Box(modifier.padding(bottom = 8.dp)) {
         HorizontalPager(pager, key = { featured[it].id }) { page ->
@@ -393,7 +536,7 @@ private fun HeroPager(
                 logo = logo(ch),
                 favorite = prefs.isFavorite(ch.id),
                 playBackground = page == pager.settledPage,
-                scrollOffsetPx = scrollOffsetPx,
+                scrollOffsetProvider = scrollOffsetProvider,
                 topInset = topInset,
                 onPlay = onPlay,
                 onInfo = onInfo,
@@ -428,6 +571,7 @@ private fun HeroPager(
 @Composable
 private fun MutedHeroHls(
     channel: Channel,
+    scrollOffsetProvider: () -> Float,
     onFirstFrame: () -> Unit,
     onError: () -> Unit,
     modifier: Modifier = Modifier,
@@ -449,6 +593,16 @@ private fun MutedHeroHls(
                 repeatMode = Player.REPEAT_MODE_ONE
                 volume = 0f
             }
+    }
+
+    val isScrolledAway = scrollOffsetProvider() > 480f
+    LaunchedEffect(isScrolledAway, player) {
+        if (isScrolledAway) {
+            player.pause()
+        } else {
+            player.volume = 0f
+            player.play()
+        }
     }
 
     val candidates = remember(channel.id, channel.url, channel.fallbackUrls, channel.backups) { channel.allCandidateUrls() }
@@ -571,35 +725,22 @@ private fun HeroStaticFallbackPoster(
             .background(
                 Brush.linearGradient(
                     listOf(
-                        Color(0xFF070913),
-                        glowA.copy(alpha = 0.42f),
-                        glowB.copy(alpha = 0.28f),
-                        Color(0xFF07080D),
+                        Color(0xFF060812),
+                        glowA.copy(alpha = 0.34f),
+                        glowB.copy(alpha = 0.24f),
+                        Color(0xFF05070E),
                     )
                 )
             )
     ) {
-        if (logo.isNotEmpty()) {
-            AsyncImage(
-                model = logo,
-                contentDescription = null,
-                modifier = Modifier
-                    .align(Alignment.Center)
-                    .padding(top = topInset * 0.45f)
-                    .fillMaxWidth(0.85f)
-                    .height(220.dp)
-                    .blur(26.dp)
-                    .graphicsLayer { alpha = 0.42f },
-                contentScale = ContentScale.Fit,
-            )
-        }
         Box(
             Modifier
                 .fillMaxSize()
                 .background(
                     Brush.radialGradient(
                         listOf(
-                            glowA.copy(alpha = 0.34f),
+                            glowA.copy(alpha = 0.26f),
+                            glowB.copy(alpha = 0.14f),
                             Color.Transparent,
                         )
                     )
@@ -622,7 +763,7 @@ private fun HeroPage(
     logo: String,
     favorite: Boolean,
     playBackground: Boolean,
-    scrollOffsetPx: Float,
+    scrollOffsetProvider: () -> Float,
     topInset: androidx.compose.ui.unit.Dp,
     onPlay: (Channel) -> Unit,
     onInfo: (Channel) -> Unit,
@@ -639,7 +780,6 @@ private fun HeroPage(
     val d = LocalDimens.current
     // 82% of the viewport, within 360-760 dp
     val heroHeight = HeroHeight
-    val foregroundAlpha = (1f - (scrollOffsetPx / 260f)).coerceIn(0f, 1f)
 
     var videoReady by remember(ch.id, playBackground) { mutableStateOf(false) }
     var videoFailed by remember(ch.id, playBackground) { mutableStateOf(false) }
@@ -657,11 +797,10 @@ private fun HeroPage(
             .clip(HeroShape)
             .background(scheme.background)
     ) {
-        // Heavily blurred dynamic color Ambient Glow behind the Hero preview video (preserved untouched)
+        // Dynamic color Ambient Glow behind the Hero preview video (smooth radial gradient)
         Box(
             Modifier
                 .fillMaxSize()
-                .blur(76.dp)
                 .background(
                     Brush.radialGradient(
                         colors = listOf(
@@ -679,13 +818,14 @@ private fun HeroPage(
             Modifier
                 .fillMaxSize()
                 .graphicsLayer {
-                    translationY = scrollOffsetPx * 0.42f
-                    val s = 1f + (scrollOffsetPx / 2400f).coerceIn(0f, 0.10f)
+                    val offset = scrollOffsetProvider()
+                    translationY = offset * 0.42f
+                    val s = 1f + (offset / 2400f).coerceIn(0f, 0.10f)
                     scaleX = s
                     scaleY = s
                 }
         ) {
-            // Graceful degradation: static blurred hero poster shown while buffering or if video fails
+            // Graceful degradation: static hero poster shown while buffering or if video fails
             HeroStaticFallbackPoster(ch = ch, logo = logo, topInset = topInset)
 
             if (playBackground && !videoFailed && !ch.isRadio && (ch.url.contains(".m3u8", ignoreCase = true) || ch.auth == "mako")) {
@@ -696,17 +836,17 @@ private fun HeroPage(
                 ) {
                     MutedHeroHls(
                         channel = ch,
+                        scrollOffsetProvider = scrollOffsetProvider,
                         onFirstFrame = { videoReady = true },
                         onError = { videoFailed = true },
                         modifier = Modifier.fillMaxSize(),
                     )
-                    // Seamless Transition: gentle blur + ambient color glow + soft bottom edge fade
+                    // Seamless Transition: ambient color glow + soft bottom edge fade
                     Box(
                         Modifier
                             .align(Alignment.BottomCenter)
                             .fillMaxWidth()
                             .height(144.dp)
-                            .blur(18.dp)
                             .background(
                                 Brush.verticalGradient(
                                     0f to Color.Transparent,
@@ -720,14 +860,14 @@ private fun HeroPage(
             }
         }
 
-        // Overall veil, then a dedicated fade into the feed background
+        // Strong dark gradient scrim so cropped/bright video or watermarks never clash behind title text
         Box(
             Modifier.fillMaxSize().background(
                 Brush.verticalGradient(
                     colorStops = arrayOf(
-                        0.00f to Color.Transparent,
-                        0.40f to scheme.background.copy(alpha = 0.35f),
-                        0.75f to scheme.background.copy(alpha = 0.85f),
+                        0.00f to Color.Black.copy(alpha = 0.35f),
+                        0.38f to scheme.background.copy(alpha = 0.52f),
+                        0.72f to scheme.background.copy(alpha = 0.90f),
                         1.00f to scheme.background,
                     )
                 )
@@ -756,7 +896,10 @@ private fun HeroPage(
                 .widthIn(max = d.heroContentMaxWidth)
                 .fillMaxWidth()
                 .padding(top = topInset + 8.dp, start = d.heroContentPadding, end = d.heroContentPadding, bottom = 28.dp)
-                .graphicsLayer { alpha = foregroundAlpha },
+                .graphicsLayer {
+                    val offset = scrollOffsetProvider()
+                    alpha = (1f - (offset / 260f)).coerceIn(0f, 1f)
+                },
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center,
         ) {
@@ -767,7 +910,6 @@ private fun HeroPage(
                 Box(
                     Modifier
                         .size(width = 180.dp, height = 80.dp)
-                        .blur(32.dp)
                         .background(
                             Brush.radialGradient(
                                 listOf(

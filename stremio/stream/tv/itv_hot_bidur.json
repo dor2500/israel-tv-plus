@@ -1,14 +1,9 @@
 {
   "streams": [
     {
-      "name": "ישראל TV+\nרשמי",
-      "title": "פתיחה באתר הרשמי של HOT בידור ישראלי HD",
-      "externalUrl": "https://12plus.co.il"
-    },
-    {
-      "name": "ישראל TV+\n[FHD 1080p]",
-      "title": "HOT בידור ישראלי HD\n📡 פרטנר TV וסלקום – שרתי שידור ישראליים\n✅ שידור רשמי ישיר",
-      "url": "http://b84203c4.ottrast.com/iptv/QAP2YS2594ZQS3/32141/index.m3u8",
+      "name": "ישראל TV+\n[FHD ראשי]",
+      "title": "HOT בידור ישראלי HD\n📡 osoyz0xv.ottclub.xyz\n⚠️ ממסר צד שלישי",
+      "url": "http://osoyz0xv.ottclub.xyz/iptv/HSD8UEK6E2AENH/32141/index.m3u8",
       "behaviorHints": {
         "notWebReady": true,
         "bingeGroup": "itv-live"
