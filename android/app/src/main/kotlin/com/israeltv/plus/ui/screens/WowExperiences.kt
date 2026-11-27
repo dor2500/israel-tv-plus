@@ -230,12 +230,7 @@ private fun buildLightPlayer(context: Context, lowBitrate: Boolean = true, muted
         .setConnectTimeoutMs(6_000)
         .setReadTimeoutMs(10_000)
         .setDefaultRequestProperties(mapOf("Referer" to "https://stmify.com/"))
-    val hamalHttp = DefaultHttpDataSource.Factory()
-        .setUserAgent(USER_AGENT)
-        .setAllowCrossProtocolRedirects(true)
-        .setConnectTimeoutMs(6_000)
-        .setReadTimeoutMs(10_000)
-        .setDefaultRequestProperties(mapOf("Referer" to "https://hamalsport.tv/", "Origin" to "https://hamalsport.tv"))
+    val hamalHttp = com.israeltv.plus.data.createHamalDataSourceFactory()
     val routingHttp = androidx.media3.datasource.DataSource.Factory {
         val base = defaultHttp.createDataSource()
         val hamal = hamalHttp.createDataSource()
@@ -255,6 +250,7 @@ private fun buildLightPlayer(context: Context, lowBitrate: Boolean = true, muted
             }
             override fun read(buffer: ByteArray, offset: Int, length: Int): Int = active.read(buffer, offset, length)
             override fun getUri(): android.net.Uri? = active.uri
+            override fun getResponseHeaders(): Map<String, List<String>> = active.responseHeaders
             override fun close() = active.close()
         }
     }

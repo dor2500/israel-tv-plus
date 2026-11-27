@@ -107,6 +107,122 @@ private const val MAKO_TICKET_TTL_MS = 10 * 60_000L
 private val makoTicketCache = ConcurrentHashMap<String, Pair<String, Long>>()
 private const val HAMAL_TICKET_TTL_MS = 20 * 60_000L
 private val hamalUrlCache = ConcurrentHashMap<String, Pair<String, Long>>()
+private val dohCache = ConcurrentHashMap<String, Pair<List<java.net.InetAddress>, Long>>()
+
+/**
+ * DNS-over-HTTPS (Cloudflare 1.1.1.1) resolver so sports domains blocked or poisoned by Israeli mobile/home ISP DNS
+ * resolve reliably on every Android phone, tablet, and Android TV.
+ */
+object SmartHamalDns : okhttp3.Dns {
+    private val dohBootstrapClient = OkHttpClient.Builder()
+        .connectTimeout(4, java.util.concurrent.TimeUnit.SECONDS)
+        .readTimeout(4, java.util.concurrent.TimeUnit.SECONDS)
+        .build()
+
+    override fun lookup(hostname: String): List<java.net.InetAddress> {
+        val h = hostname.lowercase()
+        val now = System.currentTimeMillis()
+        dohCache[h]?.let { (addrs, ts) ->
+            if (now - ts < 15 * 60_000L && addrs.isNotEmpty()) return addrs
+        }
+        val forceDoh = h.contains("hamalsport") || h.contains("2lacasaba") || h.contains("hepbettv")
+        if (!forceDoh) {
+            val sys = runCatching { okhttp3.Dns.SYSTEM.lookup(hostname) }.getOrNull()
+            if (!sys.isNullOrEmpty() && sys.none { it.isLoopbackAddress || it.isSiteLocalAddress || it.hostAddress == "0.0.0.0" }) {
+                return sys
+            }
+        }
+        val dohAddrs = runCatching {
+            val req = Request.Builder()
+                .url("https://1.1.1.1/dns-query?name=${java.net.URLEncoder.encode(hostname, "UTF-8")}&type=A")
+                .header("Accept", "application/dns-json")
+                .build()
+            dohBootstrapClient.newCall(req).execute().use { resp ->
+                if (!resp.isSuccessful) return@use emptyList()
+                val body = resp.body.string()
+                Regex(""""type"\s*:\s*1\b[^}]*"data"\s*:\s*"(\d+\.\d+\.\d+\.\d+)"""")
+                    .findAll(body)
+                    .mapNotNull { m -> runCatching { java.net.InetAddress.getByName(m.groupValues[1]) }.getOrNull() }
+                    .toList()
+            }
+        }.getOrDefault(emptyList())
+        if (dohAddrs.isNotEmpty()) {
+            dohCache[h] = dohAddrs to now
+            return dohAddrs
+        }
+        return okhttp3.Dns.SYSTEM.lookup(hostname)
+    }
+}
+
+val hamalHttpClient: OkHttpClient by lazy {
+    OkHttpClient.Builder()
+        .dns(SmartHamalDns)
+        .followRedirects(true)
+        .followSslRedirects(true)
+        .connectTimeout(7, java.util.concurrent.TimeUnit.SECONDS)
+        .readTimeout(10, java.util.concurrent.TimeUnit.SECONDS)
+        .build()
+}
+
+fun createHamalDataSourceFactory(): androidx.media3.datasource.DataSource.Factory =
+    androidx.media3.datasource.DataSource.Factory {
+        object : androidx.media3.datasource.DataSource {
+            private var resp: okhttp3.Response? = null
+            private var stream: java.io.InputStream? = null
+            private var openedUri: android.net.Uri? = null
+            private var headersMap: Map<String, List<String>> = emptyMap()
+
+            override fun addTransferListener(transferListener: androidx.media3.datasource.TransferListener) {}
+
+            override fun open(dataSpec: androidx.media3.datasource.DataSpec): Long {
+                close()
+                val reqBuilder = Request.Builder()
+                    .url(dataSpec.uri.toString())
+                    .header("User-Agent", USER_AGENT)
+                    .header("Accept", "*/*")
+                    .header("Referer", "https://hamalsport.tv/")
+                    .header("Origin", "https://hamalsport.tv")
+                if (dataSpec.position > 0L || dataSpec.length != androidx.media3.common.C.LENGTH_UNSET.toLong()) {
+                    val end = if (dataSpec.length != androidx.media3.common.C.LENGTH_UNSET.toLong()) {
+                        (dataSpec.position + dataSpec.length - 1).toString()
+                    } else ""
+                    reqBuilder.header("Range", "bytes=${dataSpec.position}-$end")
+                }
+                val r = hamalHttpClient.newCall(reqBuilder.build()).execute()
+                if (!r.isSuccessful) {
+                    val code = r.code
+                    r.close()
+                    throw androidx.media3.datasource.HttpDataSource.InvalidResponseCodeException(
+                        code, null, null, emptyMap(), dataSpec, ByteArray(0)
+                    )
+                }
+                resp = r
+                openedUri = android.net.Uri.parse(r.request.url.toString())
+                headersMap = r.headers.toMultimap()
+                val body = r.body
+                stream = body.byteStream()
+                val cl = body.contentLength()
+                return if (dataSpec.length != androidx.media3.common.C.LENGTH_UNSET.toLong()) dataSpec.length
+                else if (cl >= 0L) cl else androidx.media3.common.C.LENGTH_UNSET.toLong()
+            }
+
+            override fun read(buffer: ByteArray, offset: Int, length: Int): Int {
+                if (length == 0) return 0
+                val s = stream ?: return androidx.media3.common.C.RESULT_END_OF_INPUT
+                val n = s.read(buffer, offset, length)
+                return if (n == -1) androidx.media3.common.C.RESULT_END_OF_INPUT else n
+            }
+
+            override fun getUri(): android.net.Uri? = openedUri
+            override fun getResponseHeaders(): Map<String, List<String>> = headersMap
+            override fun close() {
+                runCatching { stream?.close() }
+                runCatching { resp?.close() }
+                stream = null
+                resp = null
+            }
+        }
+    }
 
 /**
  * Resolves a single candidate stream URL. Automatically fetches a Mako entitlement ticket whenever the URL is hosted
@@ -125,7 +241,7 @@ suspend fun playableUrl(
             .build()
         return@withContext StalkerApi.resolveLink(client, rawUrl)
     }
-    val isHamal = rawUrl.contains("2lacasaba.site", ignoreCase = true) && hamalSlug.isNotBlank()
+    val isHamal = (rawUrl.contains("2lacasaba.site", ignoreCase = true) || hamalSlug.isNotBlank()) && hamalSlug.isNotBlank()
     if (isHamal) {
         val now = System.currentTimeMillis()
         if (!forceRefresh) {
@@ -134,15 +250,15 @@ suspend fun playableUrl(
             }
         }
         val fresh = runCatching {
-            val req = java.net.URL("https://hamalsport.tv/kanal-izle/$hamalSlug")
-            val html = (req.openConnection() as java.net.HttpURLConnection).run {
-                connectTimeout = 8_000
-                readTimeout = 8_000
-                setRequestProperty("User-Agent", USER_AGENT)
-                setRequestProperty("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8")
-                setRequestProperty("Accept-Language", "he-IL,he;q=0.9,en-US;q=0.8,en;q=0.7")
-                setRequestProperty("Referer", "https://hamalsport.tv/")
-                inputStream.bufferedReader().use { it.readText() }
+            val req = Request.Builder()
+                .url("https://hamalsport.tv/kanal-izle/$hamalSlug")
+                .header("User-Agent", USER_AGENT)
+                .header("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8")
+                .header("Accept-Language", "he-IL,he;q=0.9,en-US;q=0.8,en;q=0.7")
+                .header("Referer", "https://hamalsport.tv/")
+                .build()
+            val html = hamalHttpClient.newCall(req).execute().use { r ->
+                if (!r.isSuccessful) "" else r.body.string()
             }
             val found = Regex("""https?://[^"'\s<>]*2lacasaba\.site/[^"'\s<>]+""", RegexOption.IGNORE_CASE)
                 .find(html)?.value
@@ -151,7 +267,7 @@ suspend fun playableUrl(
             found?.replace("mono.css", "index.m3u8")?.replace("&amp;", "&")
         }.getOrNull()
         val resolved = fresh ?: rawUrl.replace("mono.css", "index.m3u8")
-        hamalUrlCache[hamalSlug] = resolved to now
+        if (fresh != null) hamalUrlCache[hamalSlug] = resolved to now
         return@withContext resolved
     }
 

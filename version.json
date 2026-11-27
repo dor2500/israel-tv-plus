@@ -1,14 +1,19 @@
 {
-  "version": "4.8.97",
-  "code": 202611271515,
-  "app": 40897,
+  "version": "4.8.98",
+  "code": 202611271554,
+  "app": 40898,
   "shell": 3,
   "date": "2026-11-27",
   "notes": [
-    "⚽ החזרת ערוצי הספורט של צ׳רלטון (*ספורט 1 HD, ספורט 2 HD, ספורט 3 HD, ספורט 4 FHD*) לשידור חי מלא: הטמעת מנוע חילוץ טוקנים דינמי בזמן אמת (resolveHamalUrl כל 20 דקות מול טוקני 90-דקות מתחלפים) והזרקת כותרות Referer ו-Origin ברמת ה-Native WebView / Media3 בכל הפלטפורמות (*Windows WebView2*, *Android TV*, *Android Mobile*, מצב פיצול מסך, חמ״ל 2×2 ורילס TV) — כולל תבנית חדשה 🏆 חמ״ל צ׳רלטון (ספורט 1–4 במקביל) בחדר הבקרה 2×2.",
-    "🖥️ תיקון תצוגה מלא במסכי Windows Desktop וטלוויזיה חכמה (TV UI):"
+    "⚽ תיקון שלם מקצה לקצה לניגון ערוצי ספורט 1–4 (צ׳רלטון) ב-Windows, Android Mobile ו-Android TV:"
   ],
   "history": [
+    {
+      "version": "4.8.98",
+      "notes": [
+        "⚽ תיקון שלם מקצה לקצה לניגון ערוצי ספורט 1–4 (צ׳רלטון) ב-Windows, Android Mobile ו-Android TV:"
+      ]
+    },
     {
       "version": "4.8.97",
       "notes": [
@@ -246,54 +251,44 @@
         "התאמה אוטומטית מלאה למסך הבית (Dashboard Embed): זיהוי אוטומטי של הטמעה בתוך מסגרת (iframe) או כרטיסייה, עיצוב קומפקטי ונקי, ביטול גלילות כפולות, פריסת ערוצים אופטימלית ונגן וידאו מלא המשתלב באופן מושלם בלוח הבקרה של Home Assistant.",
         "כרטיס Lovelace חכם (israel-tv-card.js): חיפוש חי (Live Search) לפי שם או מספר ערוץ, טאבים לסינון מהיר לפי קטגוריות (מומלצים, טלוויזיה, חדשות, ספורט, ילדים, סרטים, מסורת, רדיו), 45+ ערוצים עם לוגואים רשמיים, ובקרי שליטה מלאים (נגן/השהה, עצור, השתק וסליידר ווליום) ישירות מהכרטיס."
       ]
-    },
-    {
-      "version": "4.8.73",
-      "notes": [
-        "החלפת ערוץ 60 לערוץ ילדים ומשפחה ישראלי פעיל והסרת כלל הכפילויות:",
-        "ערוץ 60 הוחלף מ-HOT באזז (ששרת המקור החיצוני שלו נפל) לערוץ סרטי ילדים ומשפחה HD (FreeTV Kids Movies & Family) – ערוץ ישראלי רשמי פעיל 24/7 בדיבוב לעברית.",
-        "הפרדה מוחלטת מערוץ 61 (FOMO) ומניעת כפילויות שידור בכלל הפלטפורמות.",
-        "חידוש ותיקון שידור ערוץ 44 (ערוץ הופ! ילדים) והסרת כפילויות ישנות.",
-        "סנכרון מלא של קובצי הערוצים, הפלייליסטים, רכיב Home Assistant ותוספי Stremio."
-      ]
     }
   ],
   "native": {
     "android": {
-      "version": "4.8.97",
-      "app": 40897,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.97/IsraelTVPlus-android.apk"
+      "version": "4.8.98",
+      "app": 40898,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.98/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "4.8.97",
-      "app": 40897,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.97/IsraelTVPlus-windows-setup.exe"
+      "version": "4.8.98",
+      "app": 40898,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.98/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "4.8.97",
-      "app": 40897,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.97/com.israeltv.plus_all.ipk",
+      "version": "4.8.98",
+      "app": 40898,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.98/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "4.8.97",
-      "app": 40897,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.97/IsraelTVPlus-tizen-project.zip"
+      "version": "4.8.98",
+      "app": 40898,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.98/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "4.8.97",
-      "app": 40897,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.97/IsraelTVPlus-macos-arm64.zip"
+      "version": "4.8.98",
+      "app": 40898,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.98/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "4.8.97",
-      "app": 40897,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.97/IsraelTVPlus-linux-x64.zip"
+      "version": "4.8.98",
+      "app": 40898,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.98/IsraelTVPlus-linux-x64.zip"
     },
     "wear": {
-      "version": "4.8.97",
-      "app": 1040897,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.97/IsraelTVPlus-wearos.apk"
+      "version": "4.8.98",
+      "app": 1040898,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.98/IsraelTVPlus-wearos.apk"
     }
   }
 }

@@ -12,7 +12,7 @@ using Microsoft.Web.WebView2.WinForms;
 
 [assembly: System.Reflection.AssemblyTitle("Israel TV+")]
 [assembly: System.Reflection.AssemblyProduct("Israel TV+")]
-[assembly: System.Reflection.AssemblyVersion("4.8.97.0")]
+[assembly: System.Reflection.AssemblyVersion("4.8.98.0")]
 
 namespace IsraelTVPlus
 {
@@ -63,7 +63,7 @@ namespace IsraelTVPlus
             core.Settings.AreDevToolsEnabled = true;
             core.Settings.IsStatusBarEnabled = false;
             core.Settings.AreDefaultContextMenusEnabled = false;
-            core.Settings.UserAgent = core.Settings.UserAgent + " IsraelTVPlus/3 Windows";
+            core.Settings.UserAgent = core.Settings.UserAgent + " IsraelTVPlus/4 Windows";
             core.AddWebResourceRequestedFilter("*", CoreWebView2WebResourceContext.All);
             core.WebResourceRequested += (s, e) =>
             {
@@ -138,7 +138,10 @@ namespace IsraelTVPlus
             {
                 if (e.Error != null) { Report("error", e.Error.Message); return; }
                 Report("installing", "");
-                Process.Start(new ProcessStartInfo(file, "/SILENT /SUPPRESSMSGBOXES /NORESTART /CLOSEAPPLICATIONS") { UseShellExecute = true });
+                var psi = new ProcessStartInfo(file, "/SILENT /SUPPRESSMSGBOXES /NORESTART /CLOSEAPPLICATIONS /FORCECLOSEAPPLICATIONS") { UseShellExecute = true };
+                if (dir.IndexOf("Program Files", StringComparison.OrdinalIgnoreCase) >= 0) psi.Verb = "runas";
+                try { Process.Start(psi); }
+                catch { Open("https://github.com/dor2500/israel-tv-plus/releases/latest"); return; }
                 BeginInvoke((Action)Close);
             };
             wc.DownloadFileAsync(new Uri(url), file);

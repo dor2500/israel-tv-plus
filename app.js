@@ -5870,6 +5870,15 @@
     el.perrorDesc.textContent = insecure
       ? 'הערוץ משדר ב-HTTP, ודפדפנים חוסמים שידור כזה מאתר מאובטח. באפליקציות טלוויזיה, אנדרואיד ומחשב השידור פועל תקין.'
       : ('אנו מתנצלים על אי הנוחות. השידור בערוץ "' + ch.name + '" אינו זמין כעת.' + (reason ? ' (' + reason + ')' : ''));
+    if (ch && ch.hamalSlug && !/IsraelTVPlus\/([4-9]|\d\d)/i.test(UA)) {
+      if (PLATFORM === 'windows' || PLATFORM === 'android') {
+        el.perrorTitle.textContent = '⚡ נדרש עדכון מנוע האפליקציה (4.8.98)';
+        el.perrorDesc.textContent = 'מותקנת אצלך גרסת EXE/APK ישנה שחסרה את מנוע ההזרמה החדש של ערוצי ספורט 1–4 (צ׳רלטון). הורד והתקן את גרסה 4.8.98 מדף ההורדות או מתפריט הגדרות ← בדיקת עדכונים.';
+      } else if (IS_WEB) {
+        el.perrorTitle.textContent = '📲 ערוצי צ׳רלטון פועלים באפליקציה';
+        el.perrorDesc.textContent = 'ערוצי ספורט 1–4 דורשים הזרקת כותרות ברמת מערכת ההפעלה ואינם נתמכים בדפדפן רגיל – השידור פועל חלק באפליקציית Windows ובאפליקציית Android (גרסה 4.8.98).';
+      }
+    }
     var hasAltServers = cands && cands.length > 1;
     if (el.perrorSwitch) toggleClass(el.perrorSwitch, 'hidden', !hasAltServers);
     el.perror.classList.remove('hidden');

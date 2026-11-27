@@ -139,7 +139,7 @@ public class MainActivity extends Activity {
         // TVs: honour the page's fixed-width viewport (app.js sets width=1600 for "AndroidTV"), like the LG app
         s.setUseWideViewPort(true);
         s.setLoadWithOverviewMode(true);
-        s.setUserAgentString(s.getUserAgentString() + " IsraelTVPlus/3 " + (tv ? "AndroidTV" : "AndroidPhone"));
+        s.setUserAgentString(s.getUserAgentString() + " IsraelTVPlus/4 " + (tv ? "AndroidTV" : "AndroidPhone"));
 
         web.setWebViewClient(new WebViewClient() {
             @Override
@@ -148,6 +148,13 @@ public class MainActivity extends Activity {
                 if (u != null) {
                     String s = u.toString().toLowerCase(Locale.US);
                     if (s.contains("2lacasaba") || s.contains("hamalsport.tv/kanal-izle/") || s.contains("hepbettv") || s.contains("/tracks-v1a1/") || s.contains("/yessport")) {
+                        java.util.Map<String, String> respHeaders = new java.util.HashMap<>();
+                        respHeaders.put("Access-Control-Allow-Origin", "*");
+                        respHeaders.put("Access-Control-Allow-Methods", "GET, HEAD, OPTIONS");
+                        respHeaders.put("Access-Control-Allow-Headers", "*");
+                        if ("OPTIONS".equalsIgnoreCase(r.getMethod())) {
+                            return new WebResourceResponse("text/plain", "UTF-8", 200, "OK", respHeaders, new java.io.ByteArrayInputStream(new byte[0]));
+                        }
                         try {
                             HttpURLConnection conn = (HttpURLConnection) new URL(u.toString()).openConnection();
                             conn.setConnectTimeout(7000);
@@ -160,10 +167,8 @@ public class MainActivity extends Activity {
                             int code = conn.getResponseCode();
                             String ct = conn.getContentType();
                             String mime = ct != null ? ct.split(";")[0].trim() : (s.contains(".m3u8") || s.contains("mono.css") ? "application/vnd.apple.mpegurl" : "video/mp2t");
-                            java.util.Map<String, String> respHeaders = new java.util.HashMap<>();
-                            respHeaders.put("Access-Control-Allow-Origin", "*");
-                            respHeaders.put("Access-Control-Allow-Methods", "GET, HEAD, OPTIONS");
-                            return new WebResourceResponse(mime, "UTF-8", code, "OK", respHeaders, conn.getInputStream());
+                            boolean isText = mime.contains("mpegurl") || mime.contains("text") || mime.contains("json") || s.contains(".m3u8") || s.contains("mono.css") || s.contains("kanal-izle");
+                            return new WebResourceResponse(mime, isText ? "UTF-8" : null, code, "OK", respHeaders, conn.getInputStream());
                         } catch (Exception ignored) { }
                     }
                 }

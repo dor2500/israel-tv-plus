@@ -214,12 +214,7 @@ private fun buildPlayer(context: Context, handleAudioFocus: Boolean = true): Exo
         .setConnectTimeoutMs(6_000)
         .setReadTimeoutMs(10_000)
         .setDefaultRequestProperties(mapOf("Referer" to "https://stmify.com/"))
-    val hamalHttp = DefaultHttpDataSource.Factory()
-        .setUserAgent(USER_AGENT)
-        .setAllowCrossProtocolRedirects(true)
-        .setConnectTimeoutMs(6_000)
-        .setReadTimeoutMs(10_000)
-        .setDefaultRequestProperties(mapOf("Referer" to "https://hamalsport.tv/", "Origin" to "https://hamalsport.tv"))
+    val hamalHttp = com.israeltv.plus.data.createHamalDataSourceFactory()
     val routingHttp = androidx.media3.datasource.DataSource.Factory {
         val base = defaultHttp.createDataSource()
         val hamal = hamalHttp.createDataSource()
@@ -242,6 +237,7 @@ private fun buildPlayer(context: Context, handleAudioFocus: Boolean = true): Exo
             }
             override fun read(buffer: ByteArray, offset: Int, length: Int): Int = active.read(buffer, offset, length)
             override fun getUri(): android.net.Uri? = active.uri
+            override fun getResponseHeaders(): Map<String, List<String>> = active.responseHeaders
             override fun close() = active.close()
         }
     }
@@ -1904,7 +1900,7 @@ private fun MultiViewCell(
         cellPlayer.clearMediaItems()
         // Stagger initial connection slightly per slot so simultaneous handshakes don't collide
         if (slotIndex > 0 && srvIdx == 0) delay(slotIndex * 90L)
-        val resolved = runCatching { playableUrl(raw, channel.auth) }.getOrElse {
+        val resolved = runCatching { playableUrl(raw, channel.auth, hamalSlug = channel.hamalSlug) }.getOrElse {
             if (srvIdx + 1 < candidates.size) {
                 srvIdx += 1
             }

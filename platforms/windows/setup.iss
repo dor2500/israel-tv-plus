@@ -1,7 +1,7 @@
 ; Israel TV+ Windows installer (Inno Setup 6). Built by tools\build_windows.ps1, which passes
 ; AppVersion, SrcDir (the built app folder), OutDir and IconFile.
 #ifndef AppVersion
-  #define AppVersion "4.8.97"
+  #define AppVersion "4.8.98"
 #endif
 
 [Setup]
@@ -21,8 +21,8 @@ Compression=lzma2/max
 SolidCompression=yes
 ArchitecturesAllowed=x64compatible
 ArchitecturesInstallIn64BitMode=x64compatible
-PrivilegesRequired=lowest
-PrivilegesRequiredOverridesAllowed=dialog
+PrivilegesRequired=admin
+CloseApplications=force
 WizardStyle=modern
 
 [Languages]
