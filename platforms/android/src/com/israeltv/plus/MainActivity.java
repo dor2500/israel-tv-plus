@@ -36,6 +36,7 @@ import android.view.WindowManager;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceRequest;
+import android.webkit.WebResourceResponse;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -141,6 +142,34 @@ public class MainActivity extends Activity {
         s.setUserAgentString(s.getUserAgentString() + " IsraelTVPlus/3 " + (tv ? "AndroidTV" : "AndroidPhone"));
 
         web.setWebViewClient(new WebViewClient() {
+            @Override
+            public WebResourceResponse shouldInterceptRequest(WebView v, WebResourceRequest r) {
+                Uri u = r.getUrl();
+                if (u != null) {
+                    String s = u.toString().toLowerCase(Locale.US);
+                    if (s.contains("2lacasaba") || s.contains("hamalsport.tv/kanal-izle/") || s.contains("hepbettv") || s.contains("/tracks-v1a1/") || s.contains("/yessport")) {
+                        try {
+                            HttpURLConnection conn = (HttpURLConnection) new URL(u.toString()).openConnection();
+                            conn.setConnectTimeout(7000);
+                            conn.setReadTimeout(9000);
+                            conn.setInstanceFollowRedirects(true);
+                            conn.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36");
+                            conn.setRequestProperty("Accept", "*/*");
+                            conn.setRequestProperty("Referer", "https://hamalsport.tv/");
+                            conn.setRequestProperty("Origin", "https://hamalsport.tv");
+                            int code = conn.getResponseCode();
+                            String ct = conn.getContentType();
+                            String mime = ct != null ? ct.split(";")[0].trim() : (s.contains(".m3u8") || s.contains("mono.css") ? "application/vnd.apple.mpegurl" : "video/mp2t");
+                            java.util.Map<String, String> respHeaders = new java.util.HashMap<>();
+                            respHeaders.put("Access-Control-Allow-Origin", "*");
+                            respHeaders.put("Access-Control-Allow-Methods", "GET, HEAD, OPTIONS");
+                            return new WebResourceResponse(mime, "UTF-8", code, "OK", respHeaders, conn.getInputStream());
+                        } catch (Exception ignored) { }
+                    }
+                }
+                return super.shouldInterceptRequest(v, r);
+            }
+
             @Override
             public boolean shouldOverrideUrlLoading(WebView v, WebResourceRequest r) {
                 Uri u = r.getUrl();

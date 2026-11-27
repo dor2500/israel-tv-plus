@@ -1,0 +1,13 @@
+{
+  "streams": [
+    {
+      "name": "ישראל TV+\n[FHD ראשי]",
+      "title": "ספורט 3 HD (Sport 3)\n📡 HamalSport Direct HLS – שידור ספורט ישיר (רענון טוקן אוטומטי)\n⚠️ ממסר צד שלישי",
+      "url": "https://2lacasaba.site/yessport3/index.m3u8?token=85df683029ea3fe83fd3bb5e2f2bf59b9882b756&expires=1795797905",
+      "behaviorHints": {
+        "notWebReady": true,
+        "bingeGroup": "itv-live"
+      }
+    }
+  ]
+}

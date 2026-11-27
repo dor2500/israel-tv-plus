@@ -12,7 +12,7 @@ using Microsoft.Web.WebView2.WinForms;
 
 [assembly: System.Reflection.AssemblyTitle("Israel TV+")]
 [assembly: System.Reflection.AssemblyProduct("Israel TV+")]
-[assembly: System.Reflection.AssemblyVersion("4.8.96.0")]
+[assembly: System.Reflection.AssemblyVersion("4.8.97.0")]
 
 namespace IsraelTVPlus
 {
@@ -64,6 +64,20 @@ namespace IsraelTVPlus
             core.Settings.IsStatusBarEnabled = false;
             core.Settings.AreDefaultContextMenusEnabled = false;
             core.Settings.UserAgent = core.Settings.UserAgent + " IsraelTVPlus/3 Windows";
+            core.AddWebResourceRequestedFilter("*", CoreWebView2WebResourceContext.All);
+            core.WebResourceRequested += (s, e) =>
+            {
+                string u = e.Request.Uri ?? "";
+                if (u.IndexOf("2lacasaba", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                    u.IndexOf("hamalsport", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                    u.IndexOf("hepbettv", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                    u.IndexOf("/tracks-v1a1/", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                    u.IndexOf("/yessport", StringComparison.OrdinalIgnoreCase) >= 0)
+                {
+                    e.Request.Headers.SetHeader("Referer", "https://hamalsport.tv/");
+                    e.Request.Headers.SetHeader("Origin", "https://hamalsport.tv");
+                }
+            };
             core.WebMessageReceived += OnMessage;
             core.NewWindowRequested += (s, e) => { e.Handled = true; Open(e.Uri); };
             core.NavigationStarting += (s, e) =>

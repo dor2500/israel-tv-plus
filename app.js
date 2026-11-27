@@ -2787,12 +2787,7 @@
     ['רשימות M3U', 'm3u'],
     ['מועדפים', 'mine'], ['לוח שידורים', 'guide'],
     ['חיפוש', 'search'],
-    ['🔥 רילס TV', 'reels'],
-    ['🌍 גלובוס 3D', 'globe3d'],
-    ['🕰️ מכונת הזמן', 'timemachine'],
-    ['🧠 טריוויה TV', 'trivia'],
-    ['🎰 רולטת הקסם', 'jackpot'],
-    ['🛰️ חמ״ל 2×2', 'cmdwall'],
+    ['✨ חוויות', 'wow_hub'],
     ['פיצול מסך', 'multiview'],
     ['הקלטות Drive', 'gdrive'],
     ['הגדרות', 'settings']
@@ -3035,7 +3030,7 @@
     if (!pill) return;
     try {
       var tabs = ATV_TABS.filter(function (t) {
-        return t[1] === 'profiles' || t[1] === 'all_channels' || t[1] === 'top' || t[1] === 'vod' || t[1] === 'search' || t[1] === 'reels' || t[1] === 'globe3d' || t[1] === 'timemachine' || t[1] === 'trivia' || t[1] === 'jackpot' || t[1] === 'cmdwall' || t[1] === 'multiview' || t[1] === 'guide' || t[1] === 'gdrive' || t[1] === 'settings' || atvRowIndex(t[1]) !== -1 || (atv.search && t[1] !== 'mine');
+        return t[1] === 'profiles' || t[1] === 'all_channels' || t[1] === 'top' || t[1] === 'vod' || t[1] === 'search' || t[1] === 'wow_hub' || t[1] === 'multiview' || t[1] === 'guide' || t[1] === 'gdrive' || t[1] === 'settings' || atvRowIndex(t[1]) !== -1 || (atv.search && t[1] !== 'mine');
       });
       if (!tabs || !tabs.length) {
         tabs = [['מי צופה?', 'profiles'], ['כל הערוצים', 'all_channels'], ['צפייה כעת', 'top'], ['סדרות VOD', 'vod'], ['מדריך שידורים', 'guide'], ['חיפוש', 'search'], ['הגדרות', 'settings']];
@@ -3109,7 +3104,14 @@
       atv.rowEls[i].className = cls;
     }
     var c = atv.cols[r] || 0;
-    if (atv.tracks[r]) atv.tracks[r].style.transform = 'translate3d(' + (Math.max(0, c - 1) * atvRem(atvGeo().pitch)) + 'px,0,0)';
+    if (atv.tracks[r]) {
+      var pitchPx = atvRem(atvGeo().pitch);
+      var rowLen = (atv.rows[r] && atv.rows[r].list) ? atv.rows[r].list.length : 0;
+      var availW = Math.max(320, (window.innerWidth || 1600) - atvRem(9));
+      var maxShift = Math.max(0, rowLen * pitchPx - availW);
+      var wantShift = Math.min(maxShift, Math.max(0, c - 1) * pitchPx);
+      atv.tracks[r].style.transform = 'translate3d(' + wantShift + 'px,0,0)';
+    }
   }
 
   function atvMark() {
@@ -3157,6 +3159,7 @@
     atvPillState();
     var btns = $('atv-pill').children;
     for (var k = 0; k < btns.length; k++) toggleClass(btns[k], 'focused', k === atv.tab);
+    if (btns[atv.tab] && btns[atv.tab].scrollIntoView) { try { btns[atv.tab].scrollIntoView({ inline: 'nearest', block: 'nearest' }); } catch (e) { } }
     atvSettle(atvCurrent());
   }
 
@@ -4096,14 +4099,86 @@
     toast(lvl > 0 ? ('🌑 עמעום לילה עמוק: ' + Math.round(lvl * 100) + '%') : '🌑 עמעום לילה כבוי');
   }
 
-  // ==================== INTERACTIVE WOW EXPERIENCES (v4.8.94) ====================
+  // ==================== INTERACTIVE WOW EXPERIENCES (v4.8.94 - v4.8.97) ====================
+
+  function openWowHubDialog() {
+    var html =
+      '<div class="cmd-wall-grid">' +
+        '<button class="btn dlg-focus cmd-preset-btn wlp-reels" data-wowhub="reels"><strong>🔥 רילס TV חי</strong><small>פיד שידורים אנכי בסגנון טיקטוק</small></button>' +
+        '<button class="btn dlg-focus cmd-preset-btn wlp-wall" data-wowhub="wall"><strong>🛰️ חדר בקרה חמ״ל 2×2</strong><small>4 ערוצי חדשות / ספורט במקביל</small></button>' +
+        '<button class="btn dlg-focus cmd-preset-btn wlp-globe" data-wowhub="globe"><strong>🌍 גלובוס שידורים 3D</strong><small>סובבו את כדור הארץ וצפו בשידור חי</small></button>' +
+        '<button class="btn dlg-focus cmd-preset-btn wlp-time" data-wowhub="time"><strong>🕰️ מכונת הזמן</strong><small>מסע בין שנות ה-70 עד שנות ה-2020</small></button>' +
+        '<button class="btn dlg-focus cmd-preset-btn wlp-triv" data-wowhub="trivia"><strong>🧠 טריוויה TV ישראלית</strong><small>חידון חי נושא נקודות, רצף ודרגות</small></button>' +
+        '<button class="btn dlg-focus cmd-preset-btn wlp-slot" data-wowhub="slot"><strong>🎰 מכונת המזל</strong><small>רולטת קזינו נוצצת לשידור הבא</small></button>' +
+      '</div>';
+    openDialog({
+      title: '✨ מעבדת העתיד · חוויות מיוחדות',
+      ico: '✨',
+      html: html,
+      buttons: [{ label: 'סגירה', primary: true, act: closeDialog }]
+    });
+    setTimeout(function () {
+      if (!el.dialogBody) return;
+      Array.prototype.forEach.call(el.dialogBody.querySelectorAll('button[data-wowhub]'), function (b) {
+        b.onclick = function () {
+          var act = b.getAttribute('data-wowhub');
+          closeDialog();
+          if (act === 'reels') openTvReelsOverlay();
+          else if (act === 'wall') openCommandWallDialog();
+          else if (act === 'globe') openGlobe3dOverlay();
+          else if (act === 'time') openTimeMachineOverlay();
+          else if (act === 'trivia') openTvTriviaOverlay();
+          else if (act === 'slot') openJackpotSlotOverlay();
+        };
+      });
+    }, 50);
+  }
+
+  // Dynamic Charlton / HamalSport direct HLS token resolver (90-min tokens refreshed live)
+  var hamalTokenCache = {};
+  function resolveHamalUrl(ch, rawUrl, okCb, errCb) {
+    var slug = ch && ch.hamalSlug;
+    if (!slug) { okCb(rawUrl); return; }
+    var cached = hamalTokenCache[slug];
+    if (cached && (Date.now() - cached.ts < 20 * 60 * 1000)) {
+      okCb(cached.url);
+      return;
+    }
+    try {
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', 'https://hamalsport.tv/kanal-izle/' + slug, true);
+      xhr.timeout = 8000;
+      xhr.onload = function () {
+        if (xhr.status === 200 && xhr.responseText) {
+          var m = xhr.responseText.match(/https?:\/\/[^"'\s<>]*2lacasaba\.site\/[^"'\s<>]+/i);
+          if (m && m[0]) {
+            var fresh = m[0].replace(/&amp;/g, '&').replace('mono.css', 'index.m3u8');
+            hamalTokenCache[slug] = { url: fresh, ts: Date.now() };
+            okCb(fresh);
+            return;
+          }
+        }
+        if (rawUrl) okCb(rawUrl.replace('mono.css', 'index.m3u8'));
+        else if (errCb) errCb();
+      };
+      xhr.onerror = xhr.ontimeout = function () {
+        if (rawUrl) okCb(rawUrl.replace('mono.css', 'index.m3u8'));
+        else if (errCb) errCb();
+      };
+      xhr.send();
+    } catch (e) {
+      if (rawUrl) okCb(rawUrl.replace('mono.css', 'index.m3u8'));
+      else if (errCb) errCb();
+    }
+  }
 
   // A. 2x2 Live Broadcast Command Wall Presets
   function launchCommandWallPreset(presetKey) {
     closeDialog();
     var mapIds = {
       news_il: ['kan11', 'keshet12', 'reshet13', 'now14'],
-      sports: ['sport5_israel_hd', 'sport5_plus_hd', 'one_1_hd', 'one_2_hd'],
+      charlton: ['sport1_israel', 'sport2_israel', 'sport3_israel', 'sport4_israel'],
+      sports: ['sport1_israel', 'sport2_israel', 'sport5_israel_hd', 'one_1_hd'],
       cinema: ['freetv_israeli_movies', 'freetv_movies_action', 'keshet_drama', 'erez_nehederet_tv'],
       world: ['abc_news_live', 'cbs_news_247', 'aljazeera_en_hd', 'bloomberg_tv_plus']
     };
@@ -4138,8 +4213,9 @@
     var html =
       '<div class="cmd-wall-grid">' +
         '<button class="btn dlg-focus cmd-preset-btn" data-preset="news_il"><strong>🇮🇱 חמ״ל חדשות ישראל</strong><small>כאן 11 · קשת 12 · רשת 13 · עכשיו 14</small></button>' +
-        '<button class="btn dlg-focus cmd-preset-btn" data-preset="sports"><strong>⚽ חמ״ל ספורט חי</strong><small>ספורט 1 · ספורט 2 · ספורט 5 · ספורט 4</small></button>' +
-        '<button class="btn dlg-focus cmd-preset-btn" data-preset="cinema"><strong>🎬 קיר בידור וסרטים</strong><small>HOT 3 · yes אקשן · HOT סינמה · ארץ נהדרת</small></button>' +
+        '<button class="btn dlg-focus cmd-preset-btn" data-preset="charlton"><strong>🏆 חמ״ל צ׳רלטון חי</strong><small>ספורט 1 · ספורט 2 · ספורט 3 · ספורט 4</small></button>' +
+        '<button class="btn dlg-focus cmd-preset-btn" data-preset="sports"><strong>⚽ חמ״ל ספורט חי</strong><small>ספורט 1 · ספורט 2 · ספורט 5 · ONE 1</small></button>' +
+        '<button class="btn dlg-focus cmd-preset-btn" data-preset="cinema"><strong>🎬 קיר בידור וסרטים</strong><small>FreeTV סרטים · אקשן · קשת דרמה · ארץ נהדרת</small></button>' +
         '<button class="btn dlg-focus cmd-preset-btn" data-preset="world"><strong>🌍 חמ״ל חדשות עולם</strong><small>ABC · CBS · Al Jazeera · Bloomberg</small></button>' +
         '<button class="btn dlg-focus cmd-preset-btn" data-preset="random"><strong>🎲 קיר הפתעה אקראי 2×2</strong><small>4 שידורים חיים מפתיעים במקביל</small></button>' +
       '</div>';
@@ -4427,15 +4503,20 @@
       document.getElementById('wreels-title').textContent = ch.name || ch.id;
       document.getElementById('wreels-desc').textContent = ch.desc || '';
       if (reelsHls) { try { reelsHls.destroy(); } catch (e) { } reelsHls = null; }
-      if (window.Hls && window.Hls.isSupported()) {
-        reelsHls = new window.Hls({ maxBufferLength: 12 });
-        reelsHls.loadSource(ch.url);
-        reelsHls.attachMedia(vid);
-        reelsHls.on(window.Hls.Events.MANIFEST_PARSED, function () { try { vid.play(); } catch (e) { } });
-      } else {
-        vid.src = ch.url;
-        try { vid.play(); } catch (e) { }
-      }
+      var startReelUrl = function (u) {
+        if (deck[idx] !== ch) return;
+        if (window.Hls && window.Hls.isSupported()) {
+          reelsHls = new window.Hls({ maxBufferLength: 12 });
+          reelsHls.loadSource(u);
+          reelsHls.attachMedia(vid);
+          reelsHls.on(window.Hls.Events.MANIFEST_PARSED, function () { try { vid.play(); } catch (e) { } });
+        } else {
+          vid.src = u;
+          try { vid.play(); } catch (e) { }
+        }
+      };
+      if (ch.hamalSlug) resolveHamalUrl(ch, ch.url, startReelUrl, function () { startReelUrl(ch.url); });
+      else startReelUrl(ch.url);
     }
 
     function closeReels() {
@@ -4688,12 +4769,7 @@
       var t = atv.tabs[atv.tab] && atv.tabs[atv.tab][1];
       if (t === 'profiles') openTvProfiles();
       else if (t === 'search') atvOpenSearch();
-      else if (t === 'reels') openTvReelsOverlay();
-      else if (t === 'globe3d') openGlobe3dOverlay();
-      else if (t === 'timemachine') openTimeMachineOverlay();
-      else if (t === 'trivia') openTvTriviaOverlay();
-      else if (t === 'jackpot') openJackpotSlotOverlay();
-      else if (t === 'cmdwall') openCommandWallDialog();
+      else if (t === 'wow_hub') openWowHubDialog();
       else if (t === 'multiview') openMultiView(atvCurrent() || state.playing);
       else if (t === 'guide') { if (Guide) Guide.open(); }
       else if (t === 'gdrive') openDriveRecordingsDialog();
@@ -5484,6 +5560,13 @@
       spinner(true, 'מתחבר לפורטל Stalker...');
       resolveStalkerUrl(cleanUrl, function (url) { if (state.playing === ch) loadResolved(ch, url); },
         function () { if (state.playing === ch) onFatal(ch, 'לא התקבל קישור שידור מפורטל Stalker'); });
+      return;
+    }
+    if (ch && ch.hamalSlug && (/2lacasaba\.site/i.test(cleanUrl) || cleanUrl === streamUrl(ch))) {
+      hideError();
+      spinner(true, 'מתחבר לשידור ספורט ישיר...');
+      resolveHamalUrl(ch, cleanUrl, function (url) { if (state.playing === ch) loadResolved(ch, url); },
+        function () { if (state.playing === ch) onFatal(ch, 'לא התקבל קישור שידור ספורט'); });
       return;
     }
     if ((cleanUrl === streamUrl(ch) && ch.auth === 'mako') || /mako-streaming\.akamaized\.net/i.test(cleanUrl)) {
@@ -8904,6 +8987,14 @@
     if (!rawUrl) { mvShowStatus(cell, 'אין מקור שידור'); return; }
     mvShowStatus(cell, 'מתחבר...');
 
+    if (ch && ch.hamalSlug && (/2lacasaba\.site/i.test(rawUrl) || rawUrl === streamUrl(ch))) {
+      resolveHamalUrl(ch, rawUrl, function (resolvedUrl) {
+        if (state.overlay === 'multiview' && mv.cells[idx] === cell) mvStartResolvedCell(idx, resolvedUrl);
+      }, function () {
+        if (state.overlay === 'multiview' && mv.cells[idx] === cell) mvFailoverCell(idx);
+      });
+      return;
+    }
     var needsMako = (ch.auth === 'mako' && rawUrl === streamUrl(ch)) || /mako-streaming\.akamaized\.net/i.test(rawUrl);
     if (needsMako) {
       makoUrl(rawUrl, function (resolvedUrl) {

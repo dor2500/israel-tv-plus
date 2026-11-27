@@ -84,6 +84,7 @@ HOSTS = {
     "tv.mediacdn.ru": ("ערוץ השמש (Солнце) – CDN", "official"),
     "stream.smotrim.ru": ("Smotrim (VGTRK) – הבעלים של קרוסלה", "official"),
     "amg00793-amg00793c6-xumo-us-2669.playouts.now.amagi.tv": ("BBC Earth – Amagi / Xumo FAST", "fast"),
+    "2lacasaba.site": ("HamalSport Direct HLS – שידור ספורט ישיר (רענון טוקן אוטומטי)", "restream"),
 }
 KIND_HE = {"official": "✅ רשמי", "fast": "✅ FAST חינמי", "restream": "⚠️ ממסר צד שלישי", "public": "🌐 ציבורי (iptv-org)", "live": "✅ שידור חי"}
 

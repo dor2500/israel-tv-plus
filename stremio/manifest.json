@@ -1,8 +1,8 @@
 {
   "id": "org.israeltvplus.addon",
-  "version": "4.8.95",
+  "version": "4.8.97",
   "name": "ישראל TV+ Live",
-  "description": "402 ערוצי טלוויזיה ישראליים ובינלאומיים בשידור חי, תחנות רדיו, שרתי גיבוי ומספור שלט נוח.",
+  "description": "406 ערוצי טלוויזיה ישראליים ובינלאומיים בשידור חי, תחנות רדיו, שרתי גיבוי ומספור שלט נוח.",
   "logo": "https://dor2500.github.io/israel-tv-plus/assets/app/icon-512.png",
   "background": "https://dor2500.github.io/israel-tv-plus/splash.png",
   "types": [

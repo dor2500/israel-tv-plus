@@ -1,17 +1,21 @@
 {
-  "version": "4.8.96",
-  "code": 202611261826,
-  "app": 40896,
+  "version": "4.8.97",
+  "code": 202611271515,
+  "app": 40897,
   "shell": 3,
-  "date": "2026-11-26",
+  "date": "2026-11-27",
   "notes": [
-    "🧹 הוסרו 87 ערוצים שהשרתים שלהם הפסיקו לשדר (נשארו 402 ערוצים עובדים): ערוצי הספורט של צ׳רלטון (*ספורט 1, 2, 3, 4, 6*), ערוצי *HOT* ו-*yes*, ערוצי ילדים ועוד, שכולם רצו דרך שרתים לא רשמיים (ottclub, ottrast, 2lacasaba, mcquack). כל הקישורים שלהם, כולל הגיבויים, החזירו שגיאה, ובאפליקציה הם הופיעו כמסך שחור. *ספורט 5* על כל ערוציו ו-*ONE* ממשיכים לעבוד מהשידור הרשמי.",
-    "⚽ קיר 2×2 \"חמ״ל ספורט\" ו\"קיר סרטים\" מציגים עכשיו ערוצים שעובדים (ספורט 5, 5PLUS, ONE 1, ONE 2 / ערוצי הסרטים של FreeTV וקשת), במקום ערוצים אקראיים.",
-    "🚗 Android Auto ומערכות מולטימדיה ברכב (AAOS): האפליקציה מופיעה במרכז המדיה של הרכב, ומסך הבית שלה כבר לא נשאר ריק.",
-    "📺 נגן הטלוויזיה/מחשב: \"לשידור החי\" מופיע רק כשצופים בשידור חוזר, ליד \"אפשרויות\" (קודם הופיע תמיד, מעל השעון); החיצים ‹ › חזרו ונעלמים כשאין תכנית קודמת או הבאה.",
-    "🏠 Home Assistant: כרטיס הערוצים ורשימת הערוצים עודכנו לקישורים שעובדים."
+    "⚽ החזרת ערוצי הספורט של צ׳רלטון (*ספורט 1 HD, ספורט 2 HD, ספורט 3 HD, ספורט 4 FHD*) לשידור חי מלא: הטמעת מנוע חילוץ טוקנים דינמי בזמן אמת (resolveHamalUrl כל 20 דקות מול טוקני 90-דקות מתחלפים) והזרקת כותרות Referer ו-Origin ברמת ה-Native WebView / Media3 בכל הפלטפורמות (*Windows WebView2*, *Android TV*, *Android Mobile*, מצב פיצול מסך, חמ״ל 2×2 ורילס TV) — כולל תבנית חדשה 🏆 חמ״ל צ׳רלטון (ספורט 1–4 במקביל) בחדר הבקרה 2×2.",
+    "🖥️ תיקון תצוגה מלא במסכי Windows Desktop וטלוויזיה חכמה (TV UI):"
   ],
   "history": [
+    {
+      "version": "4.8.97",
+      "notes": [
+        "⚽ החזרת ערוצי הספורט של צ׳רלטון (*ספורט 1 HD, ספורט 2 HD, ספורט 3 HD, ספורט 4 FHD*) לשידור חי מלא: הטמעת מנוע חילוץ טוקנים דינמי בזמן אמת (resolveHamalUrl כל 20 דקות מול טוקני 90-דקות מתחלפים) והזרקת כותרות Referer ו-Origin ברמת ה-Native WebView / Media3 בכל הפלטפורמות (*Windows WebView2*, *Android TV*, *Android Mobile*, מצב פיצול מסך, חמ״ל 2×2 ורילס TV) — כולל תבנית חדשה 🏆 חמ״ל צ׳רלטון (ספורט 1–4 במקביל) בחדר הבקרה 2×2.",
+        "🖥️ תיקון תצוגה מלא במסכי Windows Desktop וטלוויזיה חכמה (TV UI):"
+      ]
+    },
     {
       "version": "4.8.96",
       "notes": [
@@ -252,56 +256,44 @@
         "חידוש ותיקון שידור ערוץ 44 (ערוץ הופ! ילדים) והסרת כפילויות ישנות.",
         "סנכרון מלא של קובצי הערוצים, הפלייליסטים, רכיב Home Assistant ותוספי Stremio."
       ]
-    },
-    {
-      "version": "4.8.72",
-      "notes": [
-        "השקת תמיכה מלאה ורשמית ב-Home Assistant:",
-        "אינטגרציה ייעודית מלאה (custom_components/israel_tv_plus) התומכת ב-HACS ובהתקנה ידנית.",
-        "תמיכה מלאה ב-Media Browser (דפדפן המדיה): גלישה נוחה בכל קטגוריות הטלוויזיה, הספורט, הילדים והרדיו ושידור בלחיצה אחת לכל טלוויזיה, Chromecast, רמקול חכם או מסך בבית.",
-        "שירות אוטומציות israel_tv_plus.play_channel: מאפשר הפעלת ערוצים על נגני מדיה לפי שם, מספר ערוץ או מזהה (לדוגמה: \"12\", \"ספורט 1\", \"גלגלצ\").",
-        "מודול כרטיס Lovelace מותאם אישית (israel-tv-card.js) לדשבורד של Home Assistant עם לוגואים ובחירת נגן יעד.",
-        "הרחבת Add-on רשמית ל-Home Assistant Supervisor עם תמיכה ב-Ingress ישירות בסרגל הצד.",
-        "חבילת הפצה ייעודית IsraelTVPlus-homeassistant.zip להורדה ישירה מתוך ה-Release."
-      ]
     }
   ],
   "native": {
     "android": {
-      "version": "4.8.96",
-      "app": 40896,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.96/IsraelTVPlus-android.apk"
+      "version": "4.8.97",
+      "app": 40897,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.97/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "4.8.96",
-      "app": 40896,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.96/IsraelTVPlus-windows-setup.exe"
+      "version": "4.8.97",
+      "app": 40897,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.97/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "4.8.96",
-      "app": 40896,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.96/com.israeltv.plus_all.ipk",
+      "version": "4.8.97",
+      "app": 40897,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.97/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "4.8.96",
-      "app": 40896,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.96/IsraelTVPlus-tizen-project.zip"
+      "version": "4.8.97",
+      "app": 40897,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.97/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "4.8.96",
-      "app": 40896,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.96/IsraelTVPlus-macos-arm64.zip"
+      "version": "4.8.97",
+      "app": 40897,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.97/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "4.8.96",
-      "app": 40896,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.96/IsraelTVPlus-linux-x64.zip"
+      "version": "4.8.97",
+      "app": 40897,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.97/IsraelTVPlus-linux-x64.zip"
     },
     "wear": {
-      "version": "4.8.96",
-      "app": 1040896,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.96/IsraelTVPlus-wearos.apk"
+      "version": "4.8.97",
+      "app": 1040897,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.97/IsraelTVPlus-wearos.apk"
     }
   }
 }

@@ -572,7 +572,8 @@ fun CommandWallScreen(
     val quadChannels = remember(preset, randomTick, data) {
         when (preset) {
             "news_il" -> pickByIds(listOf("kan11", "keshet12", "reshet13", "now14")) { it.categoryEn == "israel" }
-            "sports" -> pickByIds(listOf("sport5_israel_hd", "sport5_plus_hd", "one_1_hd", "one_2_hd")) { it.categoryEn == "sports" }
+            "charlton" -> pickByIds(listOf("sport1_israel", "sport2_israel", "sport3_israel", "sport4_israel")) { it.categoryEn == "sports" }
+            "sports" -> pickByIds(listOf("sport1_israel", "sport2_israel", "sport5_israel_hd", "one_1_hd")) { it.categoryEn == "sports" }
             "cinema" -> pickByIds(listOf("freetv_israeli_movies", "freetv_movies_action", "keshet_drama", "erez_nehederet_tv")) { it.categoryEn == "movies" || it.categoryEn == "israel" }
             "world" -> pickByIds(listOf("abc_news_live", "cbs_news_247", "aljazeera_en_hd", "bloomberg_tv_plus")) { it.categoryEn == "news" }
             else -> tvChannels.shuffled().take(4)
@@ -651,6 +652,7 @@ fun CommandWallScreen(
         ) {
             listOf(
                 "news_il" to "🇮🇱 חמ״ל חדשות ישראל",
+                "charlton" to "🏆 צ׳רלטון ספורט 1–4",
                 "sports" to "⚽ חמ״ל ספורט חי",
                 "cinema" to "🎬 קיר בידור וסרטים",
                 "world" to "🌍 חדשות מהעולם",
