@@ -4134,6 +4134,26 @@
     }, 50);
   }
 
+  // Dynamic TVNow247 direct CORS-enabled HLS token refresher (always fresh millisecond timestamp)
+  function resolveTvnowUrl(rawUrl, ch) {
+    if (!rawUrl || !/tvnow247\.today/i.test(rawUrl)) return rawUrl;
+    try {
+      var cid = (ch && ch.tvnowId) ? String(ch.tvnowId) : '';
+      if (!cid) {
+        var tm = rawUrl.match(/[?&]token=([^&]+)/);
+        if (tm && tm[1]) {
+          var dec = JSON.parse(atob(decodeURIComponent(tm[1])));
+          if (dec && dec.channelId) cid = String(dec.channelId);
+        }
+      }
+      if (cid) {
+        var tok = btoa(JSON.stringify({ channelId: cid, chain: 'r2', ts: Date.now() }));
+        return 'https://chunk.tvnow247.today/api/proxy/playlist?token=' + encodeURIComponent(tok);
+      }
+    } catch (e) { }
+    return rawUrl;
+  }
+
   // Dynamic Charlton / HamalSport direct HLS token resolver (90-min tokens refreshed live)
   var hamalTokenCache = {};
   function resolveHamalUrl(ch, rawUrl, okCb, errCb) {
@@ -4144,6 +4164,31 @@
       okCb(cached.url);
       return;
     }
+    var fallback = function () {
+      if (rawUrl) okCb(rawUrl.replace('mono.css', 'index.m3u8'));
+      else if (errCb) errCb();
+    };
+    var tryAjax = function () {
+      try {
+        var ax = new XMLHttpRequest();
+        ax.open('GET', 'https://hamalsport.tv/ajax?method=channel_stream&stream=' + encodeURIComponent(slug), true);
+        ax.timeout = 7000;
+        ax.onload = function () {
+          try {
+            var j = JSON.parse(ax.responseText || '{}');
+            if (j && j.ok && j.stream && /2lacasaba\.site/i.test(j.stream)) {
+              var fresh = j.stream.replace(/&amp;/g, '&').replace('mono.css', 'index.m3u8');
+              hamalTokenCache[slug] = { url: fresh, ts: Date.now() };
+              okCb(fresh);
+              return;
+            }
+          } catch (e) { }
+          fallback();
+        };
+        ax.onerror = ax.ontimeout = fallback;
+        ax.send();
+      } catch (e) { fallback(); }
+    };
     try {
       var xhr = new XMLHttpRequest();
       xhr.open('GET', 'https://hamalsport.tv/kanal-izle/' + slug, true);
@@ -4158,17 +4203,12 @@
             return;
           }
         }
-        if (rawUrl) okCb(rawUrl.replace('mono.css', 'index.m3u8'));
-        else if (errCb) errCb();
+        tryAjax();
       };
-      xhr.onerror = xhr.ontimeout = function () {
-        if (rawUrl) okCb(rawUrl.replace('mono.css', 'index.m3u8'));
-        else if (errCb) errCb();
-      };
+      xhr.onerror = xhr.ontimeout = tryAjax;
       xhr.send();
     } catch (e) {
-      if (rawUrl) okCb(rawUrl.replace('mono.css', 'index.m3u8'));
-      else if (errCb) errCb();
+      tryAjax();
     }
   }
 
@@ -4515,7 +4555,8 @@
           try { vid.play(); } catch (e) { }
         }
       };
-      if (ch.hamalSlug) resolveHamalUrl(ch, ch.url, startReelUrl, function () { startReelUrl(ch.url); });
+      if (/tvnow247\.today/i.test(ch.url)) startReelUrl(resolveTvnowUrl(ch.url, ch));
+      else if (ch.hamalSlug && /2lacasaba\.site|hamalsport/i.test(ch.url)) resolveHamalUrl(ch, ch.url, startReelUrl, function () { startReelUrl(ch.url); });
       else startReelUrl(ch.url);
     }
 
@@ -5562,7 +5603,11 @@
         function () { if (state.playing === ch) onFatal(ch, 'לא התקבל קישור שידור מפורטל Stalker'); });
       return;
     }
-    if (ch && ch.hamalSlug && (/2lacasaba\.site/i.test(cleanUrl) || cleanUrl === streamUrl(ch))) {
+    if (/tvnow247\.today/i.test(cleanUrl)) {
+      loadResolved(ch, resolveTvnowUrl(cleanUrl, ch));
+      return;
+    }
+    if (ch && ch.hamalSlug && /2lacasaba\.site|hamalsport/i.test(cleanUrl)) {
       hideError();
       spinner(true, 'מתחבר לשידור ספורט ישיר...');
       resolveHamalUrl(ch, cleanUrl, function (url) { if (state.playing === ch) loadResolved(ch, url); },
@@ -5870,7 +5915,7 @@
     el.perrorDesc.textContent = insecure
       ? 'הערוץ משדר ב-HTTP, ודפדפנים חוסמים שידור כזה מאתר מאובטח. באפליקציות טלוויזיה, אנדרואיד ומחשב השידור פועל תקין.'
       : ('אנו מתנצלים על אי הנוחות. השידור בערוץ "' + ch.name + '" אינו זמין כעת.' + (reason ? ' (' + reason + ')' : ''));
-    if (ch && ch.hamalSlug && !/IsraelTVPlus\/([4-9]|\d\d)/i.test(UA)) {
+    if (ch && ch.hamalSlug && /2lacasaba\.site|hamalsport/i.test(state.streamUrl || '') && !/IsraelTVPlus\/([4-9]|\d\d)/i.test(UA)) {
       if (PLATFORM === 'windows' || PLATFORM === 'android') {
         el.perrorTitle.textContent = '⚡ נדרש עדכון מנוע האפליקציה (4.8.98)';
         el.perrorDesc.textContent = 'מותקנת אצלך גרסת EXE/APK ישנה שחסרה את מנוע ההזרמה החדש של ערוצי ספורט 1–4 (צ׳רלטון). הורד והתקן את גרסה 4.8.98 מדף ההורדות או מתפריט הגדרות ← בדיקת עדכונים.';
@@ -8996,7 +9041,11 @@
     if (!rawUrl) { mvShowStatus(cell, 'אין מקור שידור'); return; }
     mvShowStatus(cell, 'מתחבר...');
 
-    if (ch && ch.hamalSlug && (/2lacasaba\.site/i.test(rawUrl) || rawUrl === streamUrl(ch))) {
+    if (/tvnow247\.today/i.test(rawUrl)) {
+      mvStartResolvedCell(idx, resolveTvnowUrl(rawUrl, ch));
+      return;
+    }
+    if (ch && ch.hamalSlug && /2lacasaba\.site|hamalsport/i.test(rawUrl)) {
       resolveHamalUrl(ch, rawUrl, function (resolvedUrl) {
         if (state.overlay === 'multiview' && mv.cells[idx] === cell) mvStartResolvedCell(idx, resolvedUrl);
       }, function () {

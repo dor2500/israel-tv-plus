@@ -1,13 +1,19 @@
 {
-  "version": "4.8.98",
-  "code": 202611271554,
-  "app": 40898,
+  "version": "4.8.99",
+  "code": 202611272350,
+  "app": 40899,
   "shell": 3,
   "date": "2026-11-27",
   "notes": [
-    "⚽ תיקון שלם מקצה לקצה לניגון ערוצי ספורט 1–4 (צ׳רלטון) ב-Windows, Android Mobile ו-Android TV:"
+    "⚽ שדרוג כפול לערוצי צ'רלטון (ספורט 1, 2, 3, 4) – 2 שרתי שידור חיים בלתי תלויים (TVNow247 + HamalSport):"
   ],
   "history": [
+    {
+      "version": "4.8.99",
+      "notes": [
+        "⚽ שדרוג כפול לערוצי צ'רלטון (ספורט 1, 2, 3, 4) – 2 שרתי שידור חיים בלתי תלויים (TVNow247 + HamalSport):"
+      ]
+    },
     {
       "version": "4.8.98",
       "notes": [
@@ -224,71 +230,44 @@
         "מפענח M3U מלא התומך ב-tvg-logo, tvg-id, group-title, tvg-chno ו-#EXTGRP, כולל שמירה מקומית, הפעלה/השבתה ומחיקה של מספר רשימות במקביל.",
         "תמיכה משופרת בניגון קבצי וידאו ישירים (.mp4, .mkv, .webm) מתוך רשימות M3U לצד שידורי HLS (.m3u8) ורדיו."
       ]
-    },
-    {
-      "version": "4.8.74",
-      "notes": [
-        "פתרון מלא ויסודי לתקיעות בערוצי כאן 11 וכאן חינוכית 23:",
-        "מעבר שרתי מקור ראשיים ל-CDN הרשמי והמהיר ביותר של תאגיד השידור (Redge Media IL) עם זמני תגובה של 100ms בלבד (מהיר פי 3 מהשרת הקודם).",
-        "הסרת כתובות גיבוי ישנות שסירבו לחיבורים (media.kan.org.il) והסדרת שרתי גיבוי איכותיים (Amazon CloudFront ו-MedOne).",
-        "כיול מחדש של גודל אגירת הווידאו (Buffer) ומניעת חנק בעת תנודות רשת ביתית/סלולרית.",
-        "באנדרואיד ובטלוויזיות: הפעלת התאמת קצב נתונים חכמה ב-ExoPlayer (ביטול כפיית ביטרייט מקסימלי שגרמה לקפיאות) להבטחת שידור רציף וחלק ללא עצירות.",
-        "הרחבת קטלוג הערוצים הישראליים בשידור חי 24/7 (444 ערוצים):",
-        "הכותל המערבי – שידור חי 24/7 HD (ערוץ 90): מצלמות הכותל המערבי בירושלים בשידור ישיר באיכות Full HD 1080p עם שרתי גיבוי רשמיים.",
-        "FreeTV לייף סטייל HD (ערוץ 529): ערוץ הלייף סטייל הישראלי של FreeTV – עיצוב, בית, בריאות וסגנון חיים.",
-        "ערוץ המוזיקה הישראלי 24/7 HD (ערוץ 530): מיטב הקליפים והלהיטים הישראליים ברצף שידורים באיכות HD.",
-        "ערוץ הריאליטי הישראלי HD (ערוץ 531): כל תוכניות הריאליטי המובילות והתחרויות ברצף שידורים HD.",
-        "ערוץ 9 ישראל – שידור אולפן ישיר HD (ערוץ 532): שידור ישיר מאולפני ערוץ 9.",
-        "הרדיו הטוב 106.4FM (ערוץ 533): שידורי מוזיקה ואקטואליה 24/7.",
-        "הרדיו הראשון 89.1FM (ערוץ 534): מוזיקה, חדשות ותרבות.",
-        "רדיוס 100% רוסית 89.1 (ערוץ 535): מיטב הלהיטים מרדיוס 100FM.",
-        "פיצ'רים חדשים וחוויית צפייה מתקדמת בנגן:",
-        "טיימר שינה וכיבוי אוטומטי (Sleep Timer): דיאלוג אינטראקטיבי לבחירת כיבוי (15, 30, 45, 60, 90, 120 דקות), כולל הנמכה הדרגתית של עוצמת השמע בדקה האחרונה (Smooth Audio Fade-Out) לפני כיבוי שקט למניעת התעוררות.",
-        "חזרה מהירה לערוץ קודם (Channel Recall / Q.View): זיפזופ מיידי בלחיצת מקש Q במקלדת, מקשי שלט PRE-CH / Recall, כפתורי צבע בהתאמה אישית, ומתפריט האפשרויות של הנגן.",
-        "הגברת שמע חזקה (Audio Volume Booster): הגברת עוצמת השמע עד 200% ו-300% באמצעות Web Audio API Gain Node לערוצים ותוכניות עם הקלטת שמע שקטה.",
-        "תמיכה מובנית בשלטי טלוויזיה: אפשרות שיוך כפתורי צבע (Red, Green, Yellow, Blue) לפונקציות זיפזופ (Recall) וטיימר שינה (Sleep Timer).",
-        "שדרוג מקיף ל-Home Assistant ולתצוגת ווידג'ט מוטמע (Dashboard Embed & Lovelace Card):",
-        "התאמה אוטומטית מלאה למסך הבית (Dashboard Embed): זיהוי אוטומטי של הטמעה בתוך מסגרת (iframe) או כרטיסייה, עיצוב קומפקטי ונקי, ביטול גלילות כפולות, פריסת ערוצים אופטימלית ונגן וידאו מלא המשתלב באופן מושלם בלוח הבקרה של Home Assistant.",
-        "כרטיס Lovelace חכם (israel-tv-card.js): חיפוש חי (Live Search) לפי שם או מספר ערוץ, טאבים לסינון מהיר לפי קטגוריות (מומלצים, טלוויזיה, חדשות, ספורט, ילדים, סרטים, מסורת, רדיו), 45+ ערוצים עם לוגואים רשמיים, ובקרי שליטה מלאים (נגן/השהה, עצור, השתק וסליידר ווליום) ישירות מהכרטיס."
-      ]
     }
   ],
   "native": {
     "android": {
-      "version": "4.8.98",
-      "app": 40898,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.98/IsraelTVPlus-android.apk"
+      "version": "4.8.99",
+      "app": 40899,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.99/IsraelTVPlus-android.apk"
     },
     "windows": {
-      "version": "4.8.98",
-      "app": 40898,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.98/IsraelTVPlus-windows-setup.exe"
+      "version": "4.8.99",
+      "app": 40899,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.99/IsraelTVPlus-windows-setup.exe"
     },
     "webos": {
-      "version": "4.8.98",
-      "app": 40898,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.98/com.israeltv.plus_all.ipk",
+      "version": "4.8.99",
+      "app": 40899,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.99/com.israeltv.plus_all.ipk",
       "note": "המסך, הקוד והערוצים מתעדכנים אונליין גם בלי התקנה מחדש"
     },
     "tizen": {
-      "version": "4.8.98",
-      "app": 40898,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.98/IsraelTVPlus-tizen-project.zip"
+      "version": "4.8.99",
+      "app": 40899,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.99/IsraelTVPlus-tizen-project.zip"
     },
     "mac": {
-      "version": "4.8.98",
-      "app": 40898,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.98/IsraelTVPlus-macos-arm64.zip"
+      "version": "4.8.99",
+      "app": 40899,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.99/IsraelTVPlus-macos-arm64.zip"
     },
     "linux": {
-      "version": "4.8.98",
-      "app": 40898,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.98/IsraelTVPlus-linux-x64.zip"
+      "version": "4.8.99",
+      "app": 40899,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.99/IsraelTVPlus-linux-x64.zip"
     },
     "wear": {
-      "version": "4.8.98",
-      "app": 1040898,
-      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.98/IsraelTVPlus-wearos.apk"
+      "version": "4.8.99",
+      "app": 1040899,
+      "url": "https://github.com/dor2500/israel-tv-plus/releases/download/v4.8.99/IsraelTVPlus-wearos.apk"
     }
   }
 }

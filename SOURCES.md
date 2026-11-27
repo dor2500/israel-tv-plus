@@ -38,7 +38,7 @@
 | `glzwizzlv.bynetcdn.com` | גלי צה"ל / גלגלצ – CDN רשמי (Bynet) | ✅ רשמי | 6 |
 | `edge1.il.kab.tv` | edge1.il.kab.tv | ⚠️ ממסר צד שלישי | 5 |
 | `cast.breslevforyou.co.il` | רדיו ברסלב – שרת התחנה | ✅ רשמי | 5 |
-| `2lacasaba.site` | HamalSport Direct HLS – שידור ספורט ישיר (רענון טוקן אוטומטי) | ⚠️ ממסר צד שלישי | 4 |
+| `chunk.tvnow247.today` | TVNow247 CORS + HamalSport Dual-Live (2 שרתים חיים) | ⚠️ ממסר צד שלישי | 4 |
 | `cdna.streamgates.net` | StreamGates – ה-CDN של התחנה | ✅ רשמי | 4 |
 | `d1yd8hohnldm33.cloudfront.net` | ערוץ FAST ישראלי – AWS CloudFront | ✅ FAST חינמי | 3 |
 | `skynewsau-live.akamaized.net` | skynewsau-live.akamaized.net | ⚠️ ממסר צד שלישי | 3 |
@@ -330,10 +330,10 @@
 
 | # | ערוץ | שרת השידור | סוג | נמצא ב | באתר (דפדפן) |
 |---|---|---|---|---|---|
-| 38 | ספורט 1 HD (Sport 1) | HamalSport Direct HLS – שידור ספורט ישיר (רענון טוקן אוטומטי) | ⚠️ ממסר צד שלישי | שידור ישיר צ׳רלטון HD (רענון טוקן אוטומטי) | ❌ רק באפליקציה (הפניה בלי CORS) |
-| 39 | ספורט 2 HD (Sport 2) | HamalSport Direct HLS – שידור ספורט ישיר (רענון טוקן אוטומטי) | ⚠️ ממסר צד שלישי | שידור ישיר צ׳רלטון HD (רענון טוקן אוטומטי) | ❌ רק באפליקציה (הפניה בלי CORS) |
-| 40 | ספורט 3 HD (Sport 3) | HamalSport Direct HLS – שידור ספורט ישיר (רענון טוקן אוטומטי) | ⚠️ ממסר צד שלישי | שידור ישיר צ׳רלטון HD (רענון טוקן אוטומטי) | ❌ רק באפליקציה (הפניה בלי CORS) |
-| 41 | ספורט 4 FHD (Sport 4) | HamalSport Direct HLS – שידור ספורט ישיר (רענון טוקן אוטומטי) | ⚠️ ממסר צד שלישי | שידור ישיר צ׳רלטון HD (רענון טוקן אוטומטי) | ❌ רק באפליקציה (הפניה בלי CORS) |
+| 38 | ספורט 1 HD (Sport 1) | TVNow247 CORS + HamalSport Dual-Live (2 שרתים חיים) | ⚠️ ממסר צד שלישי | שידור ישיר צ׳רלטון HD/FHD (שרת ראשי CORS * + גיבוי 2lacasaba) | ✅ |
+| 39 | ספורט 2 HD (Sport 2) | TVNow247 CORS + HamalSport Dual-Live (2 שרתים חיים) | ⚠️ ממסר צד שלישי | שידור ישיר צ׳רלטון HD/FHD (שרת ראשי CORS * + גיבוי 2lacasaba) | ✅ |
+| 40 | ספורט 3 HD (Sport 3) | TVNow247 CORS + HamalSport Dual-Live (2 שרתים חיים) | ⚠️ ממסר צד שלישי | שידור ישיר צ׳רלטון HD/FHD (שרת ראשי CORS * + גיבוי 2lacasaba) | ✅ |
+| 41 | ספורט 4 FHD (Sport 4) | TVNow247 CORS + HamalSport Dual-Live (2 שרתים חיים) | ⚠️ ממסר צד שלישי | שידור ישיר צ׳רלטון HD/FHD (שרת ראשי CORS * + גיבוי 2lacasaba) | ✅ |
 | 36 | ערוץ ספורט 5 4K UHD | Redge – ה-CDN הרשמי של כאן, ערוץ 14 וכלכלה 10 | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
 | 37 | ערוץ ONE דוקו ספורט HD | FreeTV – השידור הרשמי (AWS CloudFront) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
 | 100 | ספורט 5 FHD (5SPORT) | FreeTV – השידור הרשמי (AWS CloudFront) | ✅ רשמי | רשימה ידנית (גרסה קודמת) | ✅ |
