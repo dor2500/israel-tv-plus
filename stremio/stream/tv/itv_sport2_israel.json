@@ -2,10 +2,9 @@
   "streams": [
     {
       "name": "ישראל TV+\n[FHD ראשי]",
-      "title": "ספורט 2 HD (Sport 2)\n📡 HamalSport Direct HLS – שידור ספורט ישיר (רענון טוקן אוטומטי)\n⚠️ ממסר צד שלישי",
-      "url": "https://2lacasaba.site/yessport2/index.m3u8?token=edfe7b4cb422da4ecf76f2d29d51931d4e9a4458&expires=1795800249",
+      "title": "ספורט 2 HD (Sport 2)\n📡 TVNow247 CORS + HamalSport Dual-Live (2 שרתים חיים)\n⚠️ ממסר צד שלישי",
+      "url": "https://chunk.tvnow247.today/api/proxy/playlist?token=eyJjaGFubmVsSWQiOiIxNDEiLCJjaGFpbiI6InIyIiwidHMiOjE3OTU4MjM0NDM5NjB9",
       "behaviorHints": {
-        "notWebReady": true,
         "bingeGroup": "itv-live"
       }
     }

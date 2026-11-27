@@ -71,6 +71,7 @@ data class Channel(
     /** "mako": Keshet's own CDN, the URL needs a viewing ticket from mako (see [playableUrl]). */
     val auth: String = "",
     val hamalSlug: String = "",
+    val tvnowId: String = "",
     val epgId: String = "",
     val catchupDays: Int = 0,
     val catchupType: String = "",
@@ -125,7 +126,7 @@ object SmartHamalDns : okhttp3.Dns {
         dohCache[h]?.let { (addrs, ts) ->
             if (now - ts < 15 * 60_000L && addrs.isNotEmpty()) return addrs
         }
-        val forceDoh = h.contains("hamalsport") || h.contains("2lacasaba") || h.contains("hepbettv")
+        val forceDoh = h.contains("hamalsport") || h.contains("2lacasaba") || h.contains("hepbettv") || h.contains("tvnow247")
         if (!forceDoh) {
             val sys = runCatching { okhttp3.Dns.SYSTEM.lookup(hostname) }.getOrNull()
             if (!sys.isNullOrEmpty() && sys.none { it.isLoopbackAddress || it.isSiteLocalAddress || it.hostAddress == "0.0.0.0" }) {
@@ -241,7 +242,18 @@ suspend fun playableUrl(
             .build()
         return@withContext StalkerApi.resolveLink(client, rawUrl)
     }
-    val isHamal = (rawUrl.contains("2lacasaba.site", ignoreCase = true) || hamalSlug.isNotBlank()) && hamalSlug.isNotBlank()
+    if (rawUrl.contains("tvnow247.today", ignoreCase = true)) {
+        val freshTvnow = runCatching {
+            val tok = Regex("""[?&]token=([^&]+)""").find(rawUrl)?.groupValues?.get(1) ?: return@runCatching rawUrl
+            val dec = String(android.util.Base64.decode(java.net.URLDecoder.decode(tok, "UTF-8"), android.util.Base64.DEFAULT), Charsets.UTF_8)
+            val cid = Regex(""""channelId"\s*:\s*"([^"]+)"""").find(dec)?.groupValues?.get(1) ?: return@runCatching rawUrl
+            val payload = """{"channelId":"$cid","chain":"r2","ts":${System.currentTimeMillis()}}"""
+            val newTok = android.util.Base64.encodeToString(payload.toByteArray(Charsets.UTF_8), android.util.Base64.NO_WRAP)
+            "https://chunk.tvnow247.today/api/proxy/playlist?token=" + java.net.URLEncoder.encode(newTok, "UTF-8")
+        }.getOrDefault(rawUrl)
+        return@withContext freshTvnow
+    }
+    val isHamal = (rawUrl.contains("2lacasaba.site", ignoreCase = true) || rawUrl.contains("hamalsport", ignoreCase = true)) && hamalSlug.isNotBlank()
     if (isHamal) {
         val now = System.currentTimeMillis()
         if (!forceRefresh) {

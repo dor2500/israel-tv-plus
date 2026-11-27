@@ -697,17 +697,22 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "countryHe": "ישראל",
   "iptv": "Sport1.il",
   "hamalSlug": "yes-1",
-  "url": "https://2lacasaba.site/yessport1/index.m3u8?token=929f1dede576e2f033ba46403733ef2432779b64&expires=1795800248",
-  "fallbackUrls": [],
-  "backups": [],
-  "webOk": false,
+  "url": "https://chunk.tvnow247.today/api/proxy/playlist?token=eyJjaGFubmVsSWQiOiIxNDAiLCJjaGFpbiI6InIyIiwidHMiOjE3OTU4MjM0NDMwNjV9",
+  "fallbackUrls": [
+   "https://2lacasaba.site/yessport1/index.m3u8?token=a3ad8a1b461b398f04237e514ca910def2cb0cf1&expires=1795828843"
+  ],
+  "backups": [
+   "https://2lacasaba.site/yessport1/index.m3u8?token=a3ad8a1b461b398f04237e514ca910def2cb0cf1&expires=1795828843"
+  ],
+  "webOk": true,
   "src": {
-   "by": "HamalSport Direct HLS – שידור ספורט ישיר (רענון טוקן אוטומטי)",
+   "by": "TVNow247 CORS + HamalSport Dual-Live (2 שרתים חיים)",
    "kind": "restream",
-   "host": "2lacasaba.site",
-   "found": "שידור ישיר צ׳רלטון HD (רענון טוקן אוטומטי)",
-   "web": "❌ רק באפליקציה (הפניה בלי CORS)"
-  }
+   "host": "chunk.tvnow247.today",
+   "found": "שידור ישיר צ׳רלטון HD/FHD (שרת ראשי CORS * + גיבוי 2lacasaba)",
+   "web": "✅ עובד בדפדפן ובכל האפליקציות (CORS *)"
+  },
+  "tvnowId": "140"
  },
  {
   "id": "sport2_israel",
@@ -724,17 +729,22 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "countryHe": "ישראל",
   "iptv": "Sport2.il",
   "hamalSlug": "yes-2",
-  "url": "https://2lacasaba.site/yessport2/index.m3u8?token=edfe7b4cb422da4ecf76f2d29d51931d4e9a4458&expires=1795800249",
-  "fallbackUrls": [],
-  "backups": [],
-  "webOk": false,
+  "url": "https://chunk.tvnow247.today/api/proxy/playlist?token=eyJjaGFubmVsSWQiOiIxNDEiLCJjaGFpbiI6InIyIiwidHMiOjE3OTU4MjM0NDM5NjB9",
+  "fallbackUrls": [
+   "https://2lacasaba.site/yessport2/index.m3u8?token=c3aadeb6607b4917095a160439b1c2b07e64d53a&expires=1795828844"
+  ],
+  "backups": [
+   "https://2lacasaba.site/yessport2/index.m3u8?token=c3aadeb6607b4917095a160439b1c2b07e64d53a&expires=1795828844"
+  ],
+  "webOk": true,
   "src": {
-   "by": "HamalSport Direct HLS – שידור ספורט ישיר (רענון טוקן אוטומטי)",
+   "by": "TVNow247 CORS + HamalSport Dual-Live (2 שרתים חיים)",
    "kind": "restream",
-   "host": "2lacasaba.site",
-   "found": "שידור ישיר צ׳רלטון HD (רענון טוקן אוטומטי)",
-   "web": "❌ רק באפליקציה (הפניה בלי CORS)"
-  }
+   "host": "chunk.tvnow247.today",
+   "found": "שידור ישיר צ׳רלטון HD/FHD (שרת ראשי CORS * + גיבוי 2lacasaba)",
+   "web": "✅ עובד בדפדפן ובכל האפליקציות (CORS *)"
+  },
+  "tvnowId": "141"
  },
  {
   "id": "sport3_israel",
@@ -751,17 +761,22 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "countryHe": "ישראל",
   "iptv": "Sport3.il",
   "hamalSlug": "yes-3",
-  "url": "https://2lacasaba.site/yessport3/index.m3u8?token=2d64aa2b37d6a4bd67cbebc203b867226e32ecbf&expires=1795800250",
-  "fallbackUrls": [],
-  "backups": [],
-  "webOk": false,
+  "url": "https://chunk.tvnow247.today/api/proxy/playlist?token=eyJjaGFubmVsSWQiOiIxNDIiLCJjaGFpbiI6InIyIiwidHMiOjE3OTU4MjM0NDQ3MjV9",
+  "fallbackUrls": [
+   "https://2lacasaba.site/yessport3/index.m3u8?token=964cb0a9252531ebb53d4e45ebc4c6d161d04695&expires=1795828845"
+  ],
+  "backups": [
+   "https://2lacasaba.site/yessport3/index.m3u8?token=964cb0a9252531ebb53d4e45ebc4c6d161d04695&expires=1795828845"
+  ],
+  "webOk": true,
   "src": {
-   "by": "HamalSport Direct HLS – שידור ספורט ישיר (רענון טוקן אוטומטי)",
+   "by": "TVNow247 CORS + HamalSport Dual-Live (2 שרתים חיים)",
    "kind": "restream",
-   "host": "2lacasaba.site",
-   "found": "שידור ישיר צ׳רלטון HD (רענון טוקן אוטומטי)",
-   "web": "❌ רק באפליקציה (הפניה בלי CORS)"
-  }
+   "host": "chunk.tvnow247.today",
+   "found": "שידור ישיר צ׳רלטון HD/FHD (שרת ראשי CORS * + גיבוי 2lacasaba)",
+   "web": "✅ עובד בדפדפן ובכל האפליקציות (CORS *)"
+  },
+  "tvnowId": "142"
  },
  {
   "id": "sport4_israel",
@@ -778,17 +793,22 @@ window.CHANNELS_DATA = window.ITV_CHANNELS = [
   "countryHe": "ישראל",
   "iptv": "Sport4.il",
   "hamalSlug": "yes-4",
-  "url": "https://2lacasaba.site/yessport4/index.m3u8?token=1798f9c1a5ad72c2e95fe83a1f21d32a63e87576&expires=1795800251",
-  "fallbackUrls": [],
-  "backups": [],
-  "webOk": false,
+  "url": "https://chunk.tvnow247.today/api/proxy/playlist?token=eyJjaGFubmVsSWQiOiIxNDMiLCJjaGFpbiI6InIyIiwidHMiOjE3OTU4MjM0NDU1Njl9",
+  "fallbackUrls": [
+   "https://2lacasaba.site/yessport4/index.m3u8?token=964cb0a9252531ebb53d4e45ebc4c6d161d04695&expires=1795828845"
+  ],
+  "backups": [
+   "https://2lacasaba.site/yessport4/index.m3u8?token=964cb0a9252531ebb53d4e45ebc4c6d161d04695&expires=1795828845"
+  ],
+  "webOk": true,
   "src": {
-   "by": "HamalSport Direct HLS – שידור ספורט ישיר (רענון טוקן אוטומטי)",
+   "by": "TVNow247 CORS + HamalSport Dual-Live (2 שרתים חיים)",
    "kind": "restream",
-   "host": "2lacasaba.site",
-   "found": "שידור ישיר צ׳רלטון HD (רענון טוקן אוטומטי)",
-   "web": "❌ רק באפליקציה (הפניה בלי CORS)"
-  }
+   "host": "chunk.tvnow247.today",
+   "found": "שידור ישיר צ׳רלטון HD/FHD (שרת ראשי CORS * + גיבוי 2lacasaba)",
+   "web": "✅ עובד בדפדפן ובכל האפליקציות (CORS *)"
+  },
+  "tvnowId": "143"
  },
  {
   "id": "sport_5_4k",
