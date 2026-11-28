@@ -12,7 +12,7 @@ using Microsoft.Web.WebView2.WinForms;
 
 [assembly: System.Reflection.AssemblyTitle("Israel TV+")]
 [assembly: System.Reflection.AssemblyProduct("Israel TV+")]
-[assembly: System.Reflection.AssemblyVersion("4.8.99.0")]
+[assembly: System.Reflection.AssemblyVersion("4.8.100.0")]
 
 namespace IsraelTVPlus
 {

@@ -1,3 +1,6 @@
+## 4.8.100
+- **⚽ תיקון טעינה וייצוב ניגון בספורט 2 וספורט 4 (צ'רלטון):** הגדלת `manifestLoadingTimeOut` / `levelLoadingTimeOut` (`10s`) ו-`stallWait` (`12s`) והתאמת באפר `TARGETDURATION: 10` עבור שרתי `tvnow247.today` ו-`2lacasaba.site` כדי שטעינת המניפסט והמקטעים לא תיפול על Timeout לפני תחילת השידור.
+
 ## 4.8.99
 - **⚽ שדרוג כפול לערוצי צ'רלטון (ספורט 1, 2, 3, 4) – 2 שרתי שידור חיים בלתי תלויים (`TVNow247` + `HamalSport`):**
   1. **שרת ראשי חדש עם תמיכת CORS מלאה (`chunk.tvnow247.today`):** שידור חי HD/FHD ישיר עם `Access-Control-Allow-Origin: *` ללא צורך ב-`Referer` או `Origin`, שפועל חלק בדפדפנים, בטלוויזיות חכמות (LG webOS / Samsung Tizen), ב-Kodi, ב-Windows וב-Android — כולל רענון טוקן אוטומטי בזמן אמת (`resolveTvnowUrl` / `Channels.kt`).

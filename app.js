@@ -5645,7 +5645,8 @@
     }
     if (isOttrast) state.lastOttrastStop = Date.now();
     state.streamStartedAt = Date.now();
-    var stallWait = (Dub && Dub.wantsSync(ch)) ? 9500 : 5500;
+    var isProxySport = /tvnow247\.today|2lacasaba\.site/i.test(url);
+    var stallWait = (Dub && Dub.wantsSync(ch)) ? 9500 : (isProxySport ? 12000 : 5500);
     if (state.candidates && (state.candIdx || 0) + 1 < state.candidates.length) {
       state.stallTimer = setTimeout(function () {
         if (state.playing === ch && state.streamUrl === url) onFatal(ch, 'השרת לא הגיב בזמן · עובר לשרת גיבוי');
@@ -5699,23 +5700,23 @@
       var inCatchup = !!(state.catchup && state.catchup.ch === ch);
       var hls = new Hls({
         enableWorker: true,
-        lowLatencyMode: isSport && (S.latency === 'low' || S.latency === 'realtime') && !isVod && !isOttrast && !inCatchup,
+        lowLatencyMode: isSport && (S.latency === 'low' || S.latency === 'realtime') && !isVod && !isOttrast && !isProxySport && !inCatchup,
         startPosition: (isSport && !isOttrast) ? -1 : undefined,
         startFragPrefetch: true,
-        backBufferLength: fastMode() ? 8 : (isSport ? (isOttrast ? 15 : 4) : (isVod ? 30 : 20)),
-        liveSyncDurationCount: (isSport && !isOttrast) ? 2 : 4,
-        liveMaxLatencyDurationCount: inCatchup ? Infinity : ((isSport && !isOttrast) ? 5 : 10),
+        backBufferLength: fastMode() ? 8 : (isSport ? (isOttrast || isProxySport ? 15 : 4) : (isVod ? 30 : 20)),
+        liveSyncDurationCount: (isSport && !isOttrast && !isProxySport) ? 2 : 4,
+        liveMaxLatencyDurationCount: inCatchup ? Infinity : ((isSport && !isOttrast && !isProxySport) ? 5 : 10),
         liveDurationInfinity: !isVod,
         maxLiveSyncPlaybackRate: inCatchup ? 1 : 1.05,
-        maxBufferLength: isSport ? (isOttrast ? 25 : 15) : (isVod ? 60 : (is4K ? 35 : 30)),
-        maxMaxBufferLength: isSport ? (isOttrast ? 45 : 25) : (isVod ? 120 : (is4K ? 60 : 60)),
+        maxBufferLength: isSport ? (isOttrast || isProxySport ? 25 : 15) : (isVod ? 60 : (is4K ? 35 : 30)),
+        maxMaxBufferLength: isSport ? (isOttrast || isProxySport ? 45 : 25) : (isVod ? 120 : (is4K ? 60 : 60)),
         maxBufferSize: (isSport && !isOttrast) ? 10 * 1000 * 1000 : (isVod ? 60 * 1000 * 1000 : 50 * 1000 * 1000),
         manifestLoadingMaxRetry: hasBackups ? 1 : 4,
         levelLoadingMaxRetry: hasBackups ? 2 : 5,
         fragLoadingMaxRetry: 5,
-        manifestLoadingTimeOut: hasBackups ? 3500 : 5000,
+        manifestLoadingTimeOut: isProxySport ? 10000 : (hasBackups ? 3500 : 5000),
         fragLoadingTimeOut: 15000,
-        levelLoadingTimeOut: 5000,
+        levelLoadingTimeOut: isProxySport ? 10000 : 5000,
         abrEwmaDefaultEstimate: 3500000,
         fragLoadingRetryDelay: 300,
         capLevelToPlayerSize: S.quality === 'auto'
